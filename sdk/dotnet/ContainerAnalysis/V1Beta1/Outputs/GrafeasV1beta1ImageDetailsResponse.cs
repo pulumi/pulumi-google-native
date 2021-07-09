@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
     public sealed class GrafeasV1beta1ImageDetailsResponse
     {
         /// <summary>
-        /// Required. Immutable. The child image derived from the base image.
+        /// Immutable. The child image derived from the base image.
         /// </summary>
         public readonly Outputs.DerivedResponse DerivedImage;
 

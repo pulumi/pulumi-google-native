@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// </summary>
     public sealed class GoogleCloudDialogflowCxV3ResponseMessageTextArgs : Pulumi.ResourceArgs
     {
-        [Input("text")]
+        [Input("text", required: true)]
         private InputList<string>? _text;
 
         /// <summary>
-        /// Required. A collection of text responses.
+        /// A collection of text responses.
         /// </summary>
         public InputList<string> Text
         {

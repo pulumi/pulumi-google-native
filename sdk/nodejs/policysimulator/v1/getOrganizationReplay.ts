@@ -31,7 +31,7 @@ export interface GetOrganizationReplayArgs {
 
 export interface GetOrganizationReplayResult {
     /**
-     * Required. The configuration used for the `Replay`.
+     * The configuration used for the `Replay`.
      */
     readonly config: outputs.policysimulator.v1.GoogleCloudPolicysimulatorV1ReplayConfigResponse;
     /**

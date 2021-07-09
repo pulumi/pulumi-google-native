@@ -27,11 +27,11 @@ type LookupInstructionResult struct {
 	BlockingResources []string `pulumi:"blockingResources"`
 	// Creation time of instruction.
 	CreateTime string `pulumi:"createTime"`
-	// Required. The data type of this instruction.
+	// The data type of this instruction.
 	DataType string `pulumi:"dataType"`
 	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
 	Description string `pulumi:"description"`
-	// Required. The display name of the instruction. Maximum of 64 characters.
+	// The display name of the instruction. Maximum of 64 characters.
 	DisplayName string `pulumi:"displayName"`
 	// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
 	Name string `pulumi:"name"`

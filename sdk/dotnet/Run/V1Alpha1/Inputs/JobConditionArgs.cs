@@ -40,16 +40,16 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public Input<string>? Severity { get; set; }
 
         /// <summary>
-        /// Required. Status of the condition, one of True, False, Unknown.
+        /// Status of the condition, one of True, False, Unknown.
         /// </summary>
-        [Input("status")]
-        public Input<string>? Status { get; set; }
+        [Input("status", required: true)]
+        public Input<string> Status { get; set; } = null!;
 
         /// <summary>
-        /// Required. Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+        /// Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
         /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
 
         public JobConditionArgs()
         {

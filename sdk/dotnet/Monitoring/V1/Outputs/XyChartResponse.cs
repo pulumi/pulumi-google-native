@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         /// </summary>
         public readonly Outputs.ChartOptionsResponse ChartOptions;
         /// <summary>
-        /// Required. The data displayed in this chart.
+        /// The data displayed in this chart.
         /// </summary>
         public readonly ImmutableArray<Outputs.DataSetResponse> DataSets;
         /// <summary>

@@ -684,14 +684,14 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 
 // Details required for a contact associated with a `Registration`.
 type Contact struct {
-	// Required. Email address of the contact.
-	Email *string `pulumi:"email"`
+	// Email address of the contact.
+	Email string `pulumi:"email"`
 	// Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
 	FaxNumber *string `pulumi:"faxNumber"`
-	// Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
-	PhoneNumber *string `pulumi:"phoneNumber"`
-	// Required. Postal address of the contact.
-	PostalAddress *PostalAddress `pulumi:"postalAddress"`
+	// Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+	PhoneNumber string `pulumi:"phoneNumber"`
+	// Postal address of the contact.
+	PostalAddress PostalAddress `pulumi:"postalAddress"`
 }
 
 // ContactInput is an input type that accepts ContactArgs and ContactOutput values.
@@ -707,14 +707,14 @@ type ContactInput interface {
 
 // Details required for a contact associated with a `Registration`.
 type ContactArgs struct {
-	// Required. Email address of the contact.
-	Email pulumi.StringPtrInput `pulumi:"email"`
+	// Email address of the contact.
+	Email pulumi.StringInput `pulumi:"email"`
 	// Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
 	FaxNumber pulumi.StringPtrInput `pulumi:"faxNumber"`
-	// Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
-	PhoneNumber pulumi.StringPtrInput `pulumi:"phoneNumber"`
-	// Required. Postal address of the contact.
-	PostalAddress PostalAddressPtrInput `pulumi:"postalAddress"`
+	// Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+	PhoneNumber pulumi.StringInput `pulumi:"phoneNumber"`
+	// Postal address of the contact.
+	PostalAddress PostalAddressInput `pulumi:"postalAddress"`
 }
 
 func (ContactArgs) ElementType() reflect.Type {
@@ -795,9 +795,9 @@ func (o ContactOutput) ToContactPtrOutputWithContext(ctx context.Context) Contac
 	}).(ContactPtrOutput)
 }
 
-// Required. Email address of the contact.
-func (o ContactOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Contact) *string { return v.Email }).(pulumi.StringPtrOutput)
+// Email address of the contact.
+func (o ContactOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v Contact) string { return v.Email }).(pulumi.StringOutput)
 }
 
 // Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
@@ -805,14 +805,14 @@ func (o ContactOutput) FaxNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Contact) *string { return v.FaxNumber }).(pulumi.StringPtrOutput)
 }
 
-// Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
-func (o ContactOutput) PhoneNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Contact) *string { return v.PhoneNumber }).(pulumi.StringPtrOutput)
+// Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+func (o ContactOutput) PhoneNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v Contact) string { return v.PhoneNumber }).(pulumi.StringOutput)
 }
 
-// Required. Postal address of the contact.
-func (o ContactOutput) PostalAddress() PostalAddressPtrOutput {
-	return o.ApplyT(func(v Contact) *PostalAddress { return v.PostalAddress }).(PostalAddressPtrOutput)
+// Postal address of the contact.
+func (o ContactOutput) PostalAddress() PostalAddressOutput {
+	return o.ApplyT(func(v Contact) PostalAddress { return v.PostalAddress }).(PostalAddressOutput)
 }
 
 type ContactPtrOutput struct{ *pulumi.OutputState }
@@ -833,13 +833,13 @@ func (o ContactPtrOutput) Elem() ContactOutput {
 	return o.ApplyT(func(v *Contact) Contact { return *v }).(ContactOutput)
 }
 
-// Required. Email address of the contact.
+// Email address of the contact.
 func (o ContactPtrOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Contact) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Email
+		return &v.Email
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -853,35 +853,35 @@ func (o ContactPtrOutput) FaxNumber() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+// Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
 func (o ContactPtrOutput) PhoneNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Contact) *string {
 		if v == nil {
 			return nil
 		}
-		return v.PhoneNumber
+		return &v.PhoneNumber
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Postal address of the contact.
+// Postal address of the contact.
 func (o ContactPtrOutput) PostalAddress() PostalAddressPtrOutput {
 	return o.ApplyT(func(v *Contact) *PostalAddress {
 		if v == nil {
 			return nil
 		}
-		return v.PostalAddress
+		return &v.PostalAddress
 	}).(PostalAddressPtrOutput)
 }
 
 // Details required for a contact associated with a `Registration`.
 type ContactResponse struct {
-	// Required. Email address of the contact.
+	// Email address of the contact.
 	Email string `pulumi:"email"`
 	// Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
 	FaxNumber string `pulumi:"faxNumber"`
-	// Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+	// Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
 	PhoneNumber string `pulumi:"phoneNumber"`
-	// Required. Postal address of the contact.
+	// Postal address of the contact.
 	PostalAddress PostalAddressResponse `pulumi:"postalAddress"`
 }
 
@@ -898,13 +898,13 @@ type ContactResponseInput interface {
 
 // Details required for a contact associated with a `Registration`.
 type ContactResponseArgs struct {
-	// Required. Email address of the contact.
+	// Email address of the contact.
 	Email pulumi.StringInput `pulumi:"email"`
 	// Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
 	FaxNumber pulumi.StringInput `pulumi:"faxNumber"`
-	// Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+	// Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
 	PhoneNumber pulumi.StringInput `pulumi:"phoneNumber"`
-	// Required. Postal address of the contact.
+	// Postal address of the contact.
 	PostalAddress PostalAddressResponseInput `pulumi:"postalAddress"`
 }
 
@@ -986,7 +986,7 @@ func (o ContactResponseOutput) ToContactResponsePtrOutputWithContext(ctx context
 	}).(ContactResponsePtrOutput)
 }
 
-// Required. Email address of the contact.
+// Email address of the contact.
 func (o ContactResponseOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v ContactResponse) string { return v.Email }).(pulumi.StringOutput)
 }
@@ -996,12 +996,12 @@ func (o ContactResponseOutput) FaxNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v ContactResponse) string { return v.FaxNumber }).(pulumi.StringOutput)
 }
 
-// Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+// Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
 func (o ContactResponseOutput) PhoneNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v ContactResponse) string { return v.PhoneNumber }).(pulumi.StringOutput)
 }
 
-// Required. Postal address of the contact.
+// Postal address of the contact.
 func (o ContactResponseOutput) PostalAddress() PostalAddressResponseOutput {
 	return o.ApplyT(func(v ContactResponse) PostalAddressResponse { return v.PostalAddress }).(PostalAddressResponseOutput)
 }
@@ -1024,7 +1024,7 @@ func (o ContactResponsePtrOutput) Elem() ContactResponseOutput {
 	return o.ApplyT(func(v *ContactResponse) ContactResponse { return *v }).(ContactResponseOutput)
 }
 
-// Required. Email address of the contact.
+// Email address of the contact.
 func (o ContactResponsePtrOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContactResponse) *string {
 		if v == nil {
@@ -1044,7 +1044,7 @@ func (o ContactResponsePtrOutput) FaxNumber() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+// Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
 func (o ContactResponsePtrOutput) PhoneNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContactResponse) *string {
 		if v == nil {
@@ -1054,7 +1054,7 @@ func (o ContactResponsePtrOutput) PhoneNumber() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Postal address of the contact.
+// Postal address of the contact.
 func (o ContactResponsePtrOutput) PostalAddress() PostalAddressResponsePtrOutput {
 	return o.ApplyT(func(v *ContactResponse) *PostalAddressResponse {
 		if v == nil {
@@ -1066,14 +1066,14 @@ func (o ContactResponsePtrOutput) PostalAddress() PostalAddressResponsePtrOutput
 
 // Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
 type ContactSettings struct {
-	// Required. The administrative contact for the `Registration`.
-	AdminContact *Contact `pulumi:"adminContact"`
-	// Required. Privacy setting for the contacts associated with the `Registration`.
-	Privacy *string `pulumi:"privacy"`
-	// Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
-	RegistrantContact *Contact `pulumi:"registrantContact"`
-	// Required. The technical contact for the `Registration`.
-	TechnicalContact *Contact `pulumi:"technicalContact"`
+	// The administrative contact for the `Registration`.
+	AdminContact Contact `pulumi:"adminContact"`
+	// Privacy setting for the contacts associated with the `Registration`.
+	Privacy string `pulumi:"privacy"`
+	// The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+	RegistrantContact Contact `pulumi:"registrantContact"`
+	// The technical contact for the `Registration`.
+	TechnicalContact Contact `pulumi:"technicalContact"`
 }
 
 // ContactSettingsInput is an input type that accepts ContactSettingsArgs and ContactSettingsOutput values.
@@ -1089,14 +1089,14 @@ type ContactSettingsInput interface {
 
 // Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
 type ContactSettingsArgs struct {
-	// Required. The administrative contact for the `Registration`.
-	AdminContact ContactPtrInput `pulumi:"adminContact"`
-	// Required. Privacy setting for the contacts associated with the `Registration`.
-	Privacy *ContactSettingsPrivacy `pulumi:"privacy"`
-	// Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
-	RegistrantContact ContactPtrInput `pulumi:"registrantContact"`
-	// Required. The technical contact for the `Registration`.
-	TechnicalContact ContactPtrInput `pulumi:"technicalContact"`
+	// The administrative contact for the `Registration`.
+	AdminContact ContactInput `pulumi:"adminContact"`
+	// Privacy setting for the contacts associated with the `Registration`.
+	Privacy ContactSettingsPrivacy `pulumi:"privacy"`
+	// The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+	RegistrantContact ContactInput `pulumi:"registrantContact"`
+	// The technical contact for the `Registration`.
+	TechnicalContact ContactInput `pulumi:"technicalContact"`
 }
 
 func (ContactSettingsArgs) ElementType() reflect.Type {
@@ -1177,24 +1177,24 @@ func (o ContactSettingsOutput) ToContactSettingsPtrOutputWithContext(ctx context
 	}).(ContactSettingsPtrOutput)
 }
 
-// Required. The administrative contact for the `Registration`.
-func (o ContactSettingsOutput) AdminContact() ContactPtrOutput {
-	return o.ApplyT(func(v ContactSettings) *Contact { return v.AdminContact }).(ContactPtrOutput)
+// The administrative contact for the `Registration`.
+func (o ContactSettingsOutput) AdminContact() ContactOutput {
+	return o.ApplyT(func(v ContactSettings) Contact { return v.AdminContact }).(ContactOutput)
 }
 
-// Required. Privacy setting for the contacts associated with the `Registration`.
-func (o ContactSettingsOutput) Privacy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ContactSettings) *string { return v.Privacy }).(pulumi.StringPtrOutput)
+// Privacy setting for the contacts associated with the `Registration`.
+func (o ContactSettingsOutput) Privacy() pulumi.StringOutput {
+	return o.ApplyT(func(v ContactSettings) string { return v.Privacy }).(pulumi.StringOutput)
 }
 
-// Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
-func (o ContactSettingsOutput) RegistrantContact() ContactPtrOutput {
-	return o.ApplyT(func(v ContactSettings) *Contact { return v.RegistrantContact }).(ContactPtrOutput)
+// The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+func (o ContactSettingsOutput) RegistrantContact() ContactOutput {
+	return o.ApplyT(func(v ContactSettings) Contact { return v.RegistrantContact }).(ContactOutput)
 }
 
-// Required. The technical contact for the `Registration`.
-func (o ContactSettingsOutput) TechnicalContact() ContactPtrOutput {
-	return o.ApplyT(func(v ContactSettings) *Contact { return v.TechnicalContact }).(ContactPtrOutput)
+// The technical contact for the `Registration`.
+func (o ContactSettingsOutput) TechnicalContact() ContactOutput {
+	return o.ApplyT(func(v ContactSettings) Contact { return v.TechnicalContact }).(ContactOutput)
 }
 
 type ContactSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -1215,55 +1215,55 @@ func (o ContactSettingsPtrOutput) Elem() ContactSettingsOutput {
 	return o.ApplyT(func(v *ContactSettings) ContactSettings { return *v }).(ContactSettingsOutput)
 }
 
-// Required. The administrative contact for the `Registration`.
+// The administrative contact for the `Registration`.
 func (o ContactSettingsPtrOutput) AdminContact() ContactPtrOutput {
 	return o.ApplyT(func(v *ContactSettings) *Contact {
 		if v == nil {
 			return nil
 		}
-		return v.AdminContact
+		return &v.AdminContact
 	}).(ContactPtrOutput)
 }
 
-// Required. Privacy setting for the contacts associated with the `Registration`.
+// Privacy setting for the contacts associated with the `Registration`.
 func (o ContactSettingsPtrOutput) Privacy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContactSettings) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Privacy
+		return &v.Privacy
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+// The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
 func (o ContactSettingsPtrOutput) RegistrantContact() ContactPtrOutput {
 	return o.ApplyT(func(v *ContactSettings) *Contact {
 		if v == nil {
 			return nil
 		}
-		return v.RegistrantContact
+		return &v.RegistrantContact
 	}).(ContactPtrOutput)
 }
 
-// Required. The technical contact for the `Registration`.
+// The technical contact for the `Registration`.
 func (o ContactSettingsPtrOutput) TechnicalContact() ContactPtrOutput {
 	return o.ApplyT(func(v *ContactSettings) *Contact {
 		if v == nil {
 			return nil
 		}
-		return v.TechnicalContact
+		return &v.TechnicalContact
 	}).(ContactPtrOutput)
 }
 
 // Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
 type ContactSettingsResponse struct {
-	// Required. The administrative contact for the `Registration`.
+	// The administrative contact for the `Registration`.
 	AdminContact ContactResponse `pulumi:"adminContact"`
-	// Required. Privacy setting for the contacts associated with the `Registration`.
+	// Privacy setting for the contacts associated with the `Registration`.
 	Privacy string `pulumi:"privacy"`
-	// Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+	// The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
 	RegistrantContact ContactResponse `pulumi:"registrantContact"`
-	// Required. The technical contact for the `Registration`.
+	// The technical contact for the `Registration`.
 	TechnicalContact ContactResponse `pulumi:"technicalContact"`
 }
 
@@ -1280,13 +1280,13 @@ type ContactSettingsResponseInput interface {
 
 // Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
 type ContactSettingsResponseArgs struct {
-	// Required. The administrative contact for the `Registration`.
+	// The administrative contact for the `Registration`.
 	AdminContact ContactResponseInput `pulumi:"adminContact"`
-	// Required. Privacy setting for the contacts associated with the `Registration`.
+	// Privacy setting for the contacts associated with the `Registration`.
 	Privacy pulumi.StringInput `pulumi:"privacy"`
-	// Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+	// The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
 	RegistrantContact ContactResponseInput `pulumi:"registrantContact"`
-	// Required. The technical contact for the `Registration`.
+	// The technical contact for the `Registration`.
 	TechnicalContact ContactResponseInput `pulumi:"technicalContact"`
 }
 
@@ -1368,22 +1368,22 @@ func (o ContactSettingsResponseOutput) ToContactSettingsResponsePtrOutputWithCon
 	}).(ContactSettingsResponsePtrOutput)
 }
 
-// Required. The administrative contact for the `Registration`.
+// The administrative contact for the `Registration`.
 func (o ContactSettingsResponseOutput) AdminContact() ContactResponseOutput {
 	return o.ApplyT(func(v ContactSettingsResponse) ContactResponse { return v.AdminContact }).(ContactResponseOutput)
 }
 
-// Required. Privacy setting for the contacts associated with the `Registration`.
+// Privacy setting for the contacts associated with the `Registration`.
 func (o ContactSettingsResponseOutput) Privacy() pulumi.StringOutput {
 	return o.ApplyT(func(v ContactSettingsResponse) string { return v.Privacy }).(pulumi.StringOutput)
 }
 
-// Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+// The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
 func (o ContactSettingsResponseOutput) RegistrantContact() ContactResponseOutput {
 	return o.ApplyT(func(v ContactSettingsResponse) ContactResponse { return v.RegistrantContact }).(ContactResponseOutput)
 }
 
-// Required. The technical contact for the `Registration`.
+// The technical contact for the `Registration`.
 func (o ContactSettingsResponseOutput) TechnicalContact() ContactResponseOutput {
 	return o.ApplyT(func(v ContactSettingsResponse) ContactResponse { return v.TechnicalContact }).(ContactResponseOutput)
 }
@@ -1406,7 +1406,7 @@ func (o ContactSettingsResponsePtrOutput) Elem() ContactSettingsResponseOutput {
 	return o.ApplyT(func(v *ContactSettingsResponse) ContactSettingsResponse { return *v }).(ContactSettingsResponseOutput)
 }
 
-// Required. The administrative contact for the `Registration`.
+// The administrative contact for the `Registration`.
 func (o ContactSettingsResponsePtrOutput) AdminContact() ContactResponsePtrOutput {
 	return o.ApplyT(func(v *ContactSettingsResponse) *ContactResponse {
 		if v == nil {
@@ -1416,7 +1416,7 @@ func (o ContactSettingsResponsePtrOutput) AdminContact() ContactResponsePtrOutpu
 	}).(ContactResponsePtrOutput)
 }
 
-// Required. Privacy setting for the contacts associated with the `Registration`.
+// Privacy setting for the contacts associated with the `Registration`.
 func (o ContactSettingsResponsePtrOutput) Privacy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContactSettingsResponse) *string {
 		if v == nil {
@@ -1426,7 +1426,7 @@ func (o ContactSettingsResponsePtrOutput) Privacy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+// The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
 func (o ContactSettingsResponsePtrOutput) RegistrantContact() ContactResponsePtrOutput {
 	return o.ApplyT(func(v *ContactSettingsResponse) *ContactResponse {
 		if v == nil {
@@ -1436,7 +1436,7 @@ func (o ContactSettingsResponsePtrOutput) RegistrantContact() ContactResponsePtr
 	}).(ContactResponsePtrOutput)
 }
 
-// Required. The technical contact for the `Registration`.
+// The technical contact for the `Registration`.
 func (o ContactSettingsResponsePtrOutput) TechnicalContact() ContactResponsePtrOutput {
 	return o.ApplyT(func(v *ContactSettingsResponse) *ContactResponse {
 		if v == nil {
@@ -1450,7 +1450,7 @@ func (o ContactSettingsResponsePtrOutput) TechnicalContact() ContactResponsePtrO
 type CustomDns struct {
 	// The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
 	DsRecords []DsRecord `pulumi:"dsRecords"`
-	// Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+	// A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
 	NameServers []string `pulumi:"nameServers"`
 }
 
@@ -1469,7 +1469,7 @@ type CustomDnsInput interface {
 type CustomDnsArgs struct {
 	// The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
 	DsRecords DsRecordArrayInput `pulumi:"dsRecords"`
-	// Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+	// A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
 	NameServers pulumi.StringArrayInput `pulumi:"nameServers"`
 }
 
@@ -1556,7 +1556,7 @@ func (o CustomDnsOutput) DsRecords() DsRecordArrayOutput {
 	return o.ApplyT(func(v CustomDns) []DsRecord { return v.DsRecords }).(DsRecordArrayOutput)
 }
 
-// Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+// A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
 func (o CustomDnsOutput) NameServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CustomDns) []string { return v.NameServers }).(pulumi.StringArrayOutput)
 }
@@ -1589,7 +1589,7 @@ func (o CustomDnsPtrOutput) DsRecords() DsRecordArrayOutput {
 	}).(DsRecordArrayOutput)
 }
 
-// Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+// A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
 func (o CustomDnsPtrOutput) NameServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CustomDns) []string {
 		if v == nil {
@@ -1603,7 +1603,7 @@ func (o CustomDnsPtrOutput) NameServers() pulumi.StringArrayOutput {
 type CustomDnsResponse struct {
 	// The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
 	DsRecords []DsRecordResponse `pulumi:"dsRecords"`
-	// Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+	// A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
 	NameServers []string `pulumi:"nameServers"`
 }
 
@@ -1622,7 +1622,7 @@ type CustomDnsResponseInput interface {
 type CustomDnsResponseArgs struct {
 	// The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
 	DsRecords DsRecordResponseArrayInput `pulumi:"dsRecords"`
-	// Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+	// A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
 	NameServers pulumi.StringArrayInput `pulumi:"nameServers"`
 }
 
@@ -1709,7 +1709,7 @@ func (o CustomDnsResponseOutput) DsRecords() DsRecordResponseArrayOutput {
 	return o.ApplyT(func(v CustomDnsResponse) []DsRecordResponse { return v.DsRecords }).(DsRecordResponseArrayOutput)
 }
 
-// Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+// A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
 func (o CustomDnsResponseOutput) NameServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CustomDnsResponse) []string { return v.NameServers }).(pulumi.StringArrayOutput)
 }
@@ -1742,7 +1742,7 @@ func (o CustomDnsResponsePtrOutput) DsRecords() DsRecordResponseArrayOutput {
 	}).(DsRecordResponseArrayOutput)
 }
 
-// Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+// A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
 func (o CustomDnsResponsePtrOutput) NameServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CustomDnsResponse) []string {
 		if v == nil {
@@ -2625,8 +2625,8 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 
 // Defines a host on your domain that is a DNS name server for your domain and/or other domains. Glue records are a way of making the IP address of a name server known, even when it serves DNS queries for its parent domain. For example, when `ns.example.com` is a name server for `example.com`, the host `ns.example.com` must have a glue record to break the circular DNS reference.
 type GlueRecord struct {
-	// Required. Domain name of the host in Punycode format.
-	HostName *string `pulumi:"hostName"`
+	// Domain name of the host in Punycode format.
+	HostName string `pulumi:"hostName"`
 	// List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set.
 	Ipv4Addresses []string `pulumi:"ipv4Addresses"`
 	// List of IPv6 addresses corresponding to this host in the standard hexadecimal format (e.g. `2001:db8::`). At least one of `ipv4_address` and `ipv6_address` must be set.
@@ -2646,8 +2646,8 @@ type GlueRecordInput interface {
 
 // Defines a host on your domain that is a DNS name server for your domain and/or other domains. Glue records are a way of making the IP address of a name server known, even when it serves DNS queries for its parent domain. For example, when `ns.example.com` is a name server for `example.com`, the host `ns.example.com` must have a glue record to break the circular DNS reference.
 type GlueRecordArgs struct {
-	// Required. Domain name of the host in Punycode format.
-	HostName pulumi.StringPtrInput `pulumi:"hostName"`
+	// Domain name of the host in Punycode format.
+	HostName pulumi.StringInput `pulumi:"hostName"`
 	// List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set.
 	Ipv4Addresses pulumi.StringArrayInput `pulumi:"ipv4Addresses"`
 	// List of IPv6 addresses corresponding to this host in the standard hexadecimal format (e.g. `2001:db8::`). At least one of `ipv4_address` and `ipv6_address` must be set.
@@ -2706,9 +2706,9 @@ func (o GlueRecordOutput) ToGlueRecordOutputWithContext(ctx context.Context) Glu
 	return o
 }
 
-// Required. Domain name of the host in Punycode format.
-func (o GlueRecordOutput) HostName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GlueRecord) *string { return v.HostName }).(pulumi.StringPtrOutput)
+// Domain name of the host in Punycode format.
+func (o GlueRecordOutput) HostName() pulumi.StringOutput {
+	return o.ApplyT(func(v GlueRecord) string { return v.HostName }).(pulumi.StringOutput)
 }
 
 // List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set.
@@ -2743,7 +2743,7 @@ func (o GlueRecordArrayOutput) Index(i pulumi.IntInput) GlueRecordOutput {
 
 // Defines a host on your domain that is a DNS name server for your domain and/or other domains. Glue records are a way of making the IP address of a name server known, even when it serves DNS queries for its parent domain. For example, when `ns.example.com` is a name server for `example.com`, the host `ns.example.com` must have a glue record to break the circular DNS reference.
 type GlueRecordResponse struct {
-	// Required. Domain name of the host in Punycode format.
+	// Domain name of the host in Punycode format.
 	HostName string `pulumi:"hostName"`
 	// List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set.
 	Ipv4Addresses []string `pulumi:"ipv4Addresses"`
@@ -2764,7 +2764,7 @@ type GlueRecordResponseInput interface {
 
 // Defines a host on your domain that is a DNS name server for your domain and/or other domains. Glue records are a way of making the IP address of a name server known, even when it serves DNS queries for its parent domain. For example, when `ns.example.com` is a name server for `example.com`, the host `ns.example.com` must have a glue record to break the circular DNS reference.
 type GlueRecordResponseArgs struct {
-	// Required. Domain name of the host in Punycode format.
+	// Domain name of the host in Punycode format.
 	HostName pulumi.StringInput `pulumi:"hostName"`
 	// List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set.
 	Ipv4Addresses pulumi.StringArrayInput `pulumi:"ipv4Addresses"`
@@ -2824,7 +2824,7 @@ func (o GlueRecordResponseOutput) ToGlueRecordResponseOutputWithContext(ctx cont
 	return o
 }
 
-// Required. Domain name of the host in Punycode format.
+// Domain name of the host in Punycode format.
 func (o GlueRecordResponseOutput) HostName() pulumi.StringOutput {
 	return o.ApplyT(func(v GlueRecordResponse) string { return v.HostName }).(pulumi.StringOutput)
 }
@@ -2861,8 +2861,8 @@ func (o GlueRecordResponseArrayOutput) Index(i pulumi.IntInput) GlueRecordRespon
 
 // Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
 type GoogleDomainsDns struct {
-	// Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
-	DsState *string `pulumi:"dsState"`
+	// The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+	DsState string `pulumi:"dsState"`
 }
 
 // GoogleDomainsDnsInput is an input type that accepts GoogleDomainsDnsArgs and GoogleDomainsDnsOutput values.
@@ -2878,8 +2878,8 @@ type GoogleDomainsDnsInput interface {
 
 // Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
 type GoogleDomainsDnsArgs struct {
-	// Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
-	DsState *GoogleDomainsDnsDsState `pulumi:"dsState"`
+	// The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+	DsState GoogleDomainsDnsDsState `pulumi:"dsState"`
 }
 
 func (GoogleDomainsDnsArgs) ElementType() reflect.Type {
@@ -2960,9 +2960,9 @@ func (o GoogleDomainsDnsOutput) ToGoogleDomainsDnsPtrOutputWithContext(ctx conte
 	}).(GoogleDomainsDnsPtrOutput)
 }
 
-// Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
-func (o GoogleDomainsDnsOutput) DsState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleDomainsDns) *string { return v.DsState }).(pulumi.StringPtrOutput)
+// The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+func (o GoogleDomainsDnsOutput) DsState() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDomainsDns) string { return v.DsState }).(pulumi.StringOutput)
 }
 
 type GoogleDomainsDnsPtrOutput struct{ *pulumi.OutputState }
@@ -2983,13 +2983,13 @@ func (o GoogleDomainsDnsPtrOutput) Elem() GoogleDomainsDnsOutput {
 	return o.ApplyT(func(v *GoogleDomainsDns) GoogleDomainsDns { return *v }).(GoogleDomainsDnsOutput)
 }
 
-// Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+// The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
 func (o GoogleDomainsDnsPtrOutput) DsState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleDomainsDns) *string {
 		if v == nil {
 			return nil
 		}
-		return v.DsState
+		return &v.DsState
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2997,7 +2997,7 @@ func (o GoogleDomainsDnsPtrOutput) DsState() pulumi.StringPtrOutput {
 type GoogleDomainsDnsResponse struct {
 	// The list of DS records published for this domain. The list is automatically populated when `ds_state` is `DS_RECORDS_PUBLISHED`, otherwise it remains empty.
 	DsRecords []DsRecordResponse `pulumi:"dsRecords"`
-	// Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+	// The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
 	DsState string `pulumi:"dsState"`
 	// A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format. This field is automatically populated with the name servers assigned to the Google Domains DNS zone.
 	NameServers []string `pulumi:"nameServers"`
@@ -3018,7 +3018,7 @@ type GoogleDomainsDnsResponseInput interface {
 type GoogleDomainsDnsResponseArgs struct {
 	// The list of DS records published for this domain. The list is automatically populated when `ds_state` is `DS_RECORDS_PUBLISHED`, otherwise it remains empty.
 	DsRecords DsRecordResponseArrayInput `pulumi:"dsRecords"`
-	// Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+	// The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
 	DsState pulumi.StringInput `pulumi:"dsState"`
 	// A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format. This field is automatically populated with the name servers assigned to the Google Domains DNS zone.
 	NameServers pulumi.StringArrayInput `pulumi:"nameServers"`
@@ -3107,7 +3107,7 @@ func (o GoogleDomainsDnsResponseOutput) DsRecords() DsRecordResponseArrayOutput 
 	return o.ApplyT(func(v GoogleDomainsDnsResponse) []DsRecordResponse { return v.DsRecords }).(DsRecordResponseArrayOutput)
 }
 
-// Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+// The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
 func (o GoogleDomainsDnsResponseOutput) DsState() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleDomainsDnsResponse) string { return v.DsState }).(pulumi.StringOutput)
 }
@@ -3145,7 +3145,7 @@ func (o GoogleDomainsDnsResponsePtrOutput) DsRecords() DsRecordResponseArrayOutp
 	}).(DsRecordResponseArrayOutput)
 }
 
-// Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+// The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
 func (o GoogleDomainsDnsResponsePtrOutput) DsState() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleDomainsDnsResponse) *string {
 		if v == nil {
@@ -3640,8 +3640,8 @@ type PostalAddress struct {
 	PostalCode *string `pulumi:"postalCode"`
 	// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
 	Recipients []string `pulumi:"recipients"`
-	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
-	RegionCode *string `pulumi:"regionCode"`
+	// CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+	RegionCode string `pulumi:"regionCode"`
 	// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
 	Revision *int `pulumi:"revision"`
 	// Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
@@ -3677,8 +3677,8 @@ type PostalAddressArgs struct {
 	PostalCode pulumi.StringPtrInput `pulumi:"postalCode"`
 	// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
 	Recipients pulumi.StringArrayInput `pulumi:"recipients"`
-	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
-	RegionCode pulumi.StringPtrInput `pulumi:"regionCode"`
+	// CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+	RegionCode pulumi.StringInput `pulumi:"regionCode"`
 	// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
 	Revision pulumi.IntPtrInput `pulumi:"revision"`
 	// Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
@@ -3800,9 +3800,9 @@ func (o PostalAddressOutput) Recipients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PostalAddress) []string { return v.Recipients }).(pulumi.StringArrayOutput)
 }
 
-// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
-func (o PostalAddressOutput) RegionCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PostalAddress) *string { return v.RegionCode }).(pulumi.StringPtrOutput)
+// CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+func (o PostalAddressOutput) RegionCode() pulumi.StringOutput {
+	return o.ApplyT(func(v PostalAddress) string { return v.RegionCode }).(pulumi.StringOutput)
 }
 
 // The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
@@ -3908,13 +3908,13 @@ func (o PostalAddressPtrOutput) Recipients() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+// CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
 func (o PostalAddressPtrOutput) RegionCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PostalAddress) *string {
 		if v == nil {
 			return nil
 		}
-		return v.RegionCode
+		return &v.RegionCode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3964,7 +3964,7 @@ type PostalAddressResponse struct {
 	PostalCode string `pulumi:"postalCode"`
 	// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
 	Recipients []string `pulumi:"recipients"`
-	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+	// CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
 	RegionCode string `pulumi:"regionCode"`
 	// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
 	Revision int `pulumi:"revision"`
@@ -4001,7 +4001,7 @@ type PostalAddressResponseArgs struct {
 	PostalCode pulumi.StringInput `pulumi:"postalCode"`
 	// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
 	Recipients pulumi.StringArrayInput `pulumi:"recipients"`
-	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+	// CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
 	RegionCode pulumi.StringInput `pulumi:"regionCode"`
 	// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
 	Revision pulumi.IntInput `pulumi:"revision"`
@@ -4124,7 +4124,7 @@ func (o PostalAddressResponseOutput) Recipients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v PostalAddressResponse) []string { return v.Recipients }).(pulumi.StringArrayOutput)
 }
 
-// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+// CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
 func (o PostalAddressResponseOutput) RegionCode() pulumi.StringOutput {
 	return o.ApplyT(func(v PostalAddressResponse) string { return v.RegionCode }).(pulumi.StringOutput)
 }
@@ -4232,7 +4232,7 @@ func (o PostalAddressResponsePtrOutput) Recipients() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+// CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
 func (o PostalAddressResponsePtrOutput) RegionCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PostalAddressResponse) *string {
 		if v == nil {

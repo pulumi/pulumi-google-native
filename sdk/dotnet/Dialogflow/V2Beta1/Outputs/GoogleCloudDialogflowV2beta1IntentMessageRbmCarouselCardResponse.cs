@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardResponse
     {
         /// <summary>
-        /// Required. The cards in the carousel. A carousel must have at least 2 cards and at most 10.
+        /// The cards in the carousel. A carousel must have at least 2 cards and at most 10.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentResponse> CardContents;
         /// <summary>
-        /// Required. The width of the cards in the carousel.
+        /// The width of the cards in the carousel.
         /// </summary>
         public readonly string CardWidth;
 

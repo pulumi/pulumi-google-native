@@ -34,7 +34,7 @@ type LookupRealmResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
 	Name string `pulumi:"name"`
-	// Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+	// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
 	TimeZone string `pulumi:"timeZone"`
 	// The last-modified time.
 	UpdateTime string `pulumi:"updateTime"`

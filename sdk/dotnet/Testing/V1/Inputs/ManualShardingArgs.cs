@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// </summary>
     public sealed class ManualShardingArgs : Pulumi.ResourceArgs
     {
-        [Input("testTargetsForShard")]
+        [Input("testTargetsForShard", required: true)]
         private InputList<Inputs.TestTargetsForShardArgs>? _testTargetsForShard;
 
         /// <summary>
-        /// Required. Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be &gt;= 1 and &lt;= 50. When no physical devices are selected, the number must be &gt;= 1 and &lt;= 500.
+        /// Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be &gt;= 1 and &lt;= 50. When no physical devices are selected, the number must be &gt;= 1 and &lt;= 500.
         /// </summary>
         public InputList<Inputs.TestTargetsForShardArgs> TestTargetsForShard
         {

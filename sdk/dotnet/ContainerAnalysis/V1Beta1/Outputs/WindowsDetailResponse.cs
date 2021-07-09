@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
     public sealed class WindowsDetailResponse
     {
         /// <summary>
-        /// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+        /// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
         /// </summary>
         public readonly string CpeUri;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Required. The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
+        /// The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
         /// </summary>
         public readonly ImmutableArray<Outputs.KnowledgeBaseResponse> FixingKbs;
         /// <summary>
-        /// Required. The name of the vulnerability.
+        /// The name of the vulnerability.
         /// </summary>
         public readonly string Name;
 

@@ -890,21 +890,19 @@ class RuleArgs:
 @pulumi.input_type
 class ScalingConfigArgs:
     def __init__(__self__, *,
-                 fleet_autoscaler_spec: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
+                 fleet_autoscaler_spec: pulumi.Input[str],
+                 name: pulumi.Input[str],
                  schedules: Optional[pulumi.Input[Sequence[pulumi.Input['ScheduleArgs']]]] = None,
                  selectors: Optional[pulumi.Input[Sequence[pulumi.Input['LabelSelectorArgs']]]] = None):
         """
         Autoscaling config for an Agones fleet.
-        :param pulumi.Input[str] fleet_autoscaler_spec: Required. Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
-        :param pulumi.Input[str] name: Required. The name of the Scaling Config
+        :param pulumi.Input[str] fleet_autoscaler_spec: Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+        :param pulumi.Input[str] name: The name of the Scaling Config
         :param pulumi.Input[Sequence[pulumi.Input['ScheduleArgs']]] schedules: The schedules to which this Scaling Config applies.
         :param pulumi.Input[Sequence[pulumi.Input['LabelSelectorArgs']]] selectors: Labels used to identify the game server clusters to which this Agones scaling config applies. A game server cluster is subject to this Agones scaling config if its labels match any of the selector entries.
         """
-        if fleet_autoscaler_spec is not None:
-            pulumi.set(__self__, "fleet_autoscaler_spec", fleet_autoscaler_spec)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "fleet_autoscaler_spec", fleet_autoscaler_spec)
+        pulumi.set(__self__, "name", name)
         if schedules is not None:
             pulumi.set(__self__, "schedules", schedules)
         if selectors is not None:
@@ -912,26 +910,26 @@ class ScalingConfigArgs:
 
     @property
     @pulumi.getter(name="fleetAutoscalerSpec")
-    def fleet_autoscaler_spec(self) -> Optional[pulumi.Input[str]]:
+    def fleet_autoscaler_spec(self) -> pulumi.Input[str]:
         """
-        Required. Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+        Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
         """
         return pulumi.get(self, "fleet_autoscaler_spec")
 
     @fleet_autoscaler_spec.setter
-    def fleet_autoscaler_spec(self, value: Optional[pulumi.Input[str]]):
+    def fleet_autoscaler_spec(self, value: pulumi.Input[str]):
         pulumi.set(self, "fleet_autoscaler_spec", value)
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def name(self) -> pulumi.Input[str]:
         """
-        Required. The name of the Scaling Config
+        The name of the Scaling Config
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property

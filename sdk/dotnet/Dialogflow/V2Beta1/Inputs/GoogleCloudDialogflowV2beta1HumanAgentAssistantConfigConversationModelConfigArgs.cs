@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     public sealed class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Conversation model resource name. Format: `projects//conversationModels/`.
+        /// Conversation model resource name. Format: `projects//conversationModels/`.
         /// </summary>
-        [Input("model")]
-        public Input<string>? Model { get; set; }
+        [Input("model", required: true)]
+        public Input<string> Model { get; set; } = null!;
 
         public GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs()
         {

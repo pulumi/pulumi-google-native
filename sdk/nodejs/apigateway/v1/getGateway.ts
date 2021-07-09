@@ -31,7 +31,7 @@ export interface GetGatewayArgs {
 
 export interface GetGatewayResult {
     /**
-     * Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+     * Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
      */
     readonly apiConfig: string;
     /**

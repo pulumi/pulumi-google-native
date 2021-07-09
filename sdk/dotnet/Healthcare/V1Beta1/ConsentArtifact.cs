@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required. User's UUID provided by the client.
+        /// User's UUID provided by the client.
         /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
@@ -163,10 +163,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Required. User's UUID provided by the client.
+        /// User's UUID provided by the client.
         /// </summary>
-        [Input("userId")]
-        public Input<string>? UserId { get; set; }
+        [Input("userId", required: true)]
+        public Input<string> UserId { get; set; } = null!;
 
         /// <summary>
         /// Optional. User's signature.

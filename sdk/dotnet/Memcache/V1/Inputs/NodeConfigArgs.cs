@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Memcache.V1.Inputs
     public sealed class NodeConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Number of cpus per Memcached node.
+        /// Number of cpus per Memcached node.
         /// </summary>
-        [Input("cpuCount")]
-        public Input<int>? CpuCount { get; set; }
+        [Input("cpuCount", required: true)]
+        public Input<int> CpuCount { get; set; } = null!;
 
         /// <summary>
-        /// Required. Memory size in MiB for each Memcached node.
+        /// Memory size in MiB for each Memcached node.
         /// </summary>
-        [Input("memorySizeMb")]
-        public Input<int>? MemorySizeMb { get; set; }
+        [Input("memorySizeMb", required: true)]
+        public Input<int> MemorySizeMb { get; set; } = null!;
 
         public NodeConfigArgs()
         {

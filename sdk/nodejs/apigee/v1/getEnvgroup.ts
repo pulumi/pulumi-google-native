@@ -33,7 +33,7 @@ export interface GetEnvgroupResult {
      */
     readonly createdAt: string;
     /**
-     * Required. Host names for this environment group.
+     * Host names for this environment group.
      */
     readonly hostnames: string[];
     /**

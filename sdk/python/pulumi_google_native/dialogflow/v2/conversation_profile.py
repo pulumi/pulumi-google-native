@@ -16,10 +16,10 @@ __all__ = ['ConversationProfileArgs', 'ConversationProfile']
 @pulumi.input_type
 class ConversationProfileArgs:
     def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  automated_agent_config: Optional[pulumi.Input['GoogleCloudDialogflowV2AutomatedAgentConfigArgs']] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
                  human_agent_assistant_config: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs']] = None,
                  human_agent_handoff_config: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs']] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
@@ -30,8 +30,8 @@ class ConversationProfileArgs:
                  stt_config: Optional[pulumi.Input['GoogleCloudDialogflowV2SpeechToTextConfigArgs']] = None):
         """
         The set of arguments for constructing a ConversationProfile resource.
+        :param pulumi.Input[str] display_name: Human readable name for this profile. Max length 1024 bytes.
         :param pulumi.Input['GoogleCloudDialogflowV2AutomatedAgentConfigArgs'] automated_agent_config: Configuration for an automated agent to use with this profile.
-        :param pulumi.Input[str] display_name: Required. Human readable name for this profile. Max length 1024 bytes.
         :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs'] human_agent_assistant_config: Configuration for agent assistance to use with this profile.
         :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs'] human_agent_handoff_config: Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
         :param pulumi.Input[str] language_code: Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
@@ -41,12 +41,11 @@ class ConversationProfileArgs:
         :param pulumi.Input['GoogleCloudDialogflowV2NotificationConfigArgs'] notification_config: Configuration for publishing conversation lifecycle events.
         :param pulumi.Input['GoogleCloudDialogflowV2SpeechToTextConfigArgs'] stt_config: Settings for speech transcription.
         """
+        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if automated_agent_config is not None:
             pulumi.set(__self__, "automated_agent_config", automated_agent_config)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if human_agent_assistant_config is not None:
             pulumi.set(__self__, "human_agent_assistant_config", human_agent_assistant_config)
         if human_agent_handoff_config is not None:
@@ -63,6 +62,18 @@ class ConversationProfileArgs:
             pulumi.set(__self__, "notification_config", notification_config)
         if stt_config is not None:
             pulumi.set(__self__, "stt_config", stt_config)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        Human readable name for this profile. Max length 1024 bytes.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter
@@ -93,18 +104,6 @@ class ConversationProfileArgs:
     @automated_agent_config.setter
     def automated_agent_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2AutomatedAgentConfigArgs']]):
         pulumi.set(self, "automated_agent_config", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Human readable name for this profile. Max length 1024 bytes.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="humanAgentAssistantConfig")
@@ -227,7 +226,7 @@ class ConversationProfile(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2AutomatedAgentConfigArgs']] automated_agent_config: Configuration for an automated agent to use with this profile.
-        :param pulumi.Input[str] display_name: Required. Human readable name for this profile. Max length 1024 bytes.
+        :param pulumi.Input[str] display_name: Human readable name for this profile. Max length 1024 bytes.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs']] human_agent_assistant_config: Configuration for agent assistance to use with this profile.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs']] human_agent_handoff_config: Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
         :param pulumi.Input[str] language_code: Language which represents the conversationProfile. If unspecified, the default language code en-us applies. Users need to create a ConversationProfile for each language they want to support.
@@ -286,6 +285,8 @@ class ConversationProfile(pulumi.CustomResource):
             __props__ = ConversationProfileArgs.__new__(ConversationProfileArgs)
 
             __props__.__dict__["automated_agent_config"] = automated_agent_config
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["human_agent_assistant_config"] = human_agent_assistant_config
             __props__.__dict__["human_agent_handoff_config"] = human_agent_handoff_config
@@ -359,7 +360,7 @@ class ConversationProfile(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Required. Human readable name for this profile. Max length 1024 bytes.
+        Human readable name for this profile. Max length 1024 bytes.
         """
         return pulumi.get(self, "display_name")
 

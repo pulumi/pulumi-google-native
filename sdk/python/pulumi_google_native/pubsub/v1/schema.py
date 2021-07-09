@@ -14,26 +14,37 @@ __all__ = ['SchemaArgs', 'Schema']
 @pulumi.input_type
 class SchemaArgs:
     def __init__(__self__, *,
+                 name: pulumi.Input[str],
                  project: pulumi.Input[str],
                  definition: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  schema_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['SchemaType']] = None):
         """
         The set of arguments for constructing a Schema resource.
+        :param pulumi.Input[str] name: Name of the schema. Format is `projects/{project}/schemas/{schema}`.
         :param pulumi.Input[str] definition: The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
-        :param pulumi.Input[str] name: Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
         :param pulumi.Input['SchemaType'] type: The type of the schema definition.
         """
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "project", project)
         if definition is not None:
             pulumi.set(__self__, "definition", definition)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if schema_id is not None:
             pulumi.set(__self__, "schema_id", schema_id)
         if type is not None:
             pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -55,18 +66,6 @@ class SchemaArgs:
     @definition.setter
     def definition(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "definition", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="schemaId")
@@ -107,7 +106,7 @@ class Schema(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] definition: The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
-        :param pulumi.Input[str] name: Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+        :param pulumi.Input[str] name: Name of the schema. Format is `projects/{project}/schemas/{schema}`.
         :param pulumi.Input['SchemaType'] type: The type of the schema definition.
         """
         ...
@@ -152,6 +151,8 @@ class Schema(pulumi.CustomResource):
             __props__ = SchemaArgs.__new__(SchemaArgs)
 
             __props__.__dict__["definition"] = definition
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
@@ -197,7 +198,7 @@ class Schema(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+        Name of the schema. Format is `projects/{project}/schemas/{schema}`.
         """
         return pulumi.get(self, "name")
 

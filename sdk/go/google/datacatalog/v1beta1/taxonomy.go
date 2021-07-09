@@ -19,7 +19,7 @@ type Taxonomy struct {
 	ActivatedPolicyTypes pulumi.StringArrayOutput `pulumi:"activatedPolicyTypes"`
 	// Optional. Description of this taxonomy. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Required. User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
+	// User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -36,6 +36,9 @@ func NewTaxonomy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -68,7 +71,7 @@ type taxonomyState struct {
 	ActivatedPolicyTypes []string `pulumi:"activatedPolicyTypes"`
 	// Optional. Description of this taxonomy. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.
 	Description *string `pulumi:"description"`
-	// Required. User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
+	// User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
 	DisplayName *string `pulumi:"displayName"`
 	// Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
 	Name *string `pulumi:"name"`
@@ -83,7 +86,7 @@ type TaxonomyState struct {
 	ActivatedPolicyTypes pulumi.StringArrayInput
 	// Optional. Description of this taxonomy. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.
 	Description pulumi.StringPtrInput
-	// Required. User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
+	// User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
 	DisplayName pulumi.StringPtrInput
 	// Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
 	Name pulumi.StringPtrInput
@@ -102,10 +105,10 @@ type taxonomyArgs struct {
 	ActivatedPolicyTypes []string `pulumi:"activatedPolicyTypes"`
 	// Optional. Description of this taxonomy. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.
 	Description *string `pulumi:"description"`
-	// Required. User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
-	DisplayName *string `pulumi:"displayName"`
-	Location    string  `pulumi:"location"`
-	Project     string  `pulumi:"project"`
+	// User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
+	DisplayName string `pulumi:"displayName"`
+	Location    string `pulumi:"location"`
+	Project     string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Taxonomy resource.
@@ -114,8 +117,8 @@ type TaxonomyArgs struct {
 	ActivatedPolicyTypes TaxonomyActivatedPolicyTypesItemArrayInput
 	// Optional. Description of this taxonomy. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.
 	Description pulumi.StringPtrInput
-	// Required. User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
-	DisplayName pulumi.StringPtrInput
+	// User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
+	DisplayName pulumi.StringInput
 	Location    pulumi.StringInput
 	Project     pulumi.StringInput
 }

@@ -44,7 +44,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         /// </summary>
         public readonly string Definition;
         /// <summary>
-        /// Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+        /// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
         /// </summary>
         public readonly string Name;
         /// <summary>

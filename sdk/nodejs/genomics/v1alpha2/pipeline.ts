@@ -48,7 +48,7 @@ export class Pipeline extends pulumi.CustomResource {
      */
     public readonly inputParameters!: pulumi.Output<outputs.genomics.v1alpha2.PipelineParameterResponse[]>;
     /**
-     * Required. A user specified pipeline name that does not have to be unique. This name can be used for filtering Pipelines in ListPipelines.
+     * A user specified pipeline name that does not have to be unique. This name can be used for filtering Pipelines in ListPipelines.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -60,11 +60,11 @@ export class Pipeline extends pulumi.CustomResource {
      */
     public readonly pipelineId!: pulumi.Output<string>;
     /**
-     * Required. The project in which to create the pipeline. The caller must have WRITE access.
+     * The project in which to create the pipeline. The caller must have WRITE access.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Required. Specifies resource requirements for the pipeline run. Required fields: * minimumCpuCores * minimumRamGb
+     * Specifies resource requirements for the pipeline run. Required fields: * minimumCpuCores * minimumRamGb
      */
     public readonly resources!: pulumi.Output<outputs.genomics.v1alpha2.PipelineResourcesResponse>;
 
@@ -75,10 +75,19 @@ export class Pipeline extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: PipelineArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: PipelineArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
+            if ((!args || args.project === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.resources === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'resources'");
+            }
             inputs["description"] = args ? args.description : undefined;
             inputs["docker"] = args ? args.docker : undefined;
             inputs["inputParameters"] = args ? args.inputParameters : undefined;
@@ -121,9 +130,9 @@ export interface PipelineArgs {
      */
     inputParameters?: pulumi.Input<pulumi.Input<inputs.genomics.v1alpha2.PipelineParameterArgs>[]>;
     /**
-     * Required. A user specified pipeline name that does not have to be unique. This name can be used for filtering Pipelines in ListPipelines.
+     * A user specified pipeline name that does not have to be unique. This name can be used for filtering Pipelines in ListPipelines.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * Output parameters of the pipeline.
      */
@@ -133,11 +142,11 @@ export interface PipelineArgs {
      */
     pipelineId?: pulumi.Input<string>;
     /**
-     * Required. The project in which to create the pipeline. The caller must have WRITE access.
+     * The project in which to create the pipeline. The caller must have WRITE access.
      */
-    project?: pulumi.Input<string>;
+    project: pulumi.Input<string>;
     /**
-     * Required. Specifies resource requirements for the pipeline run. Required fields: * minimumCpuCores * minimumRamGb
+     * Specifies resource requirements for the pipeline run. Required fields: * minimumCpuCores * minimumRamGb
      */
-    resources?: pulumi.Input<inputs.genomics.v1alpha2.PipelineResourcesArgs>;
+    resources: pulumi.Input<inputs.genomics.v1alpha2.PipelineResourcesArgs>;
 }

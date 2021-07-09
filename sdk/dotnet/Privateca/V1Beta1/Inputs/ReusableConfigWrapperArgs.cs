@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
     public sealed class ReusableConfigWrapperArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
+        /// A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
         /// </summary>
-        [Input("reusableConfig")]
-        public Input<string>? ReusableConfig { get; set; }
+        [Input("reusableConfig", required: true)]
+        public Input<string> ReusableConfig { get; set; } = null!;
 
         /// <summary>
-        /// Required. A user-specified inline ReusableConfigValues.
+        /// A user-specified inline ReusableConfigValues.
         /// </summary>
-        [Input("reusableConfigValues")]
-        public Input<Inputs.ReusableConfigValuesArgs>? ReusableConfigValues { get; set; }
+        [Input("reusableConfigValues", required: true)]
+        public Input<Inputs.ReusableConfigValuesArgs> ReusableConfigValues { get; set; } = null!;
 
         public ReusableConfigWrapperArgs()
         {

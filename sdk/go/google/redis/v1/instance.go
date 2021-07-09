@@ -35,9 +35,9 @@ type Instance struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Required. Redis memory size in GiB.
+	// Redis memory size in GiB.
 	MemorySizeGb pulumi.IntOutput `pulumi:"memorySizeGb"`
-	// Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
+	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export operation.
 	PersistenceIamIdentity pulumi.StringOutput `pulumi:"persistenceIamIdentity"`
@@ -55,7 +55,7 @@ type Instance struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// Additional information about the current status of this instance, if available.
 	StatusMessage pulumi.StringOutput `pulumi:"statusMessage"`
-	// Required. The service tier of the instance.
+	// The service tier of the instance.
 	Tier pulumi.StringOutput `pulumi:"tier"`
 	// Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
 	TransitEncryptionMode pulumi.StringOutput `pulumi:"transitEncryptionMode"`
@@ -73,6 +73,12 @@ func NewInstance(ctx *pulumi.Context,
 	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
+	}
+	if args.MemorySizeGb == nil {
+		return nil, errors.New("invalid value for required argument 'MemorySizeGb'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
@@ -119,9 +125,9 @@ type instanceState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
 	Location *string `pulumi:"location"`
-	// Required. Redis memory size in GiB.
+	// Redis memory size in GiB.
 	MemorySizeGb *int `pulumi:"memorySizeGb"`
-	// Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
+	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
 	Name *string `pulumi:"name"`
 	// Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export operation.
 	PersistenceIamIdentity *string `pulumi:"persistenceIamIdentity"`
@@ -139,7 +145,7 @@ type instanceState struct {
 	State *string `pulumi:"state"`
 	// Additional information about the current status of this instance, if available.
 	StatusMessage *string `pulumi:"statusMessage"`
-	// Required. The service tier of the instance.
+	// The service tier of the instance.
 	Tier *string `pulumi:"tier"`
 	// Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
 	TransitEncryptionMode *string `pulumi:"transitEncryptionMode"`
@@ -166,9 +172,9 @@ type InstanceState struct {
 	Labels pulumi.StringMapInput
 	// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
 	Location pulumi.StringPtrInput
-	// Required. Redis memory size in GiB.
+	// Redis memory size in GiB.
 	MemorySizeGb pulumi.IntPtrInput
-	// Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
+	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
 	Name pulumi.StringPtrInput
 	// Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export operation.
 	PersistenceIamIdentity pulumi.StringPtrInput
@@ -186,7 +192,7 @@ type InstanceState struct {
 	State pulumi.StringPtrInput
 	// Additional information about the current status of this instance, if available.
 	StatusMessage pulumi.StringPtrInput
-	// Required. The service tier of the instance.
+	// The service tier of the instance.
 	Tier pulumi.StringPtrInput
 	// Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
 	TransitEncryptionMode pulumi.StringPtrInput
@@ -212,19 +218,19 @@ type instanceArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
 	Location string `pulumi:"location"`
-	// Required. Redis memory size in GiB.
-	MemorySizeGb *int `pulumi:"memorySizeGb"`
-	// Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
-	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	// Redis memory size in GiB.
+	MemorySizeGb int `pulumi:"memorySizeGb"`
+	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
+	Name    string `pulumi:"name"`
+	Project string `pulumi:"project"`
 	// Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
 	RedisConfigs map[string]string `pulumi:"redisConfigs"`
 	// Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility
 	RedisVersion *string `pulumi:"redisVersion"`
 	// Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29.
 	ReservedIpRange *string `pulumi:"reservedIpRange"`
-	// Required. The service tier of the instance.
-	Tier *string `pulumi:"tier"`
+	// The service tier of the instance.
+	Tier string `pulumi:"tier"`
 	// Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
 	TransitEncryptionMode *string `pulumi:"transitEncryptionMode"`
 }
@@ -246,10 +252,10 @@ type InstanceArgs struct {
 	Labels pulumi.StringMapInput
 	// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
 	Location pulumi.StringInput
-	// Required. Redis memory size in GiB.
-	MemorySizeGb pulumi.IntPtrInput
-	// Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
-	Name    pulumi.StringPtrInput
+	// Redis memory size in GiB.
+	MemorySizeGb pulumi.IntInput
+	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
+	Name    pulumi.StringInput
 	Project pulumi.StringInput
 	// Optional. Redis configuration parameters, according to http://redis.io/topics/config. Currently, the only supported parameters are: Redis version 3.2 and newer: * maxmemory-policy * notify-keyspace-events Redis version 4.0 and newer: * activedefrag * lfu-decay-time * lfu-log-factor * maxmemory-gb Redis version 5.0 and newer: * stream-node-max-bytes * stream-node-max-entries
 	RedisConfigs pulumi.StringMapInput
@@ -257,8 +263,8 @@ type InstanceArgs struct {
 	RedisVersion pulumi.StringPtrInput
 	// Optional. For DIRECT_PEERING mode, the CIDR range of internal addresses that are reserved for this instance. Range must be unique and non-overlapping with existing subnets in an authorized network. For PRIVATE_SERVICE_ACCESS mode, the name of one allocated IP address ranges associated with this private service access connection. If not provided, the service will choose an unused /29 block, for example, 10.0.0.0/29 or 192.168.0.0/29.
 	ReservedIpRange pulumi.StringPtrInput
-	// Required. The service tier of the instance.
-	Tier *InstanceTier
+	// The service tier of the instance.
+	Tier InstanceTier
 	// Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
 	TransitEncryptionMode *InstanceTransitEncryptionMode
 }

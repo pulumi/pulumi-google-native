@@ -1582,28 +1582,27 @@ class GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextArgs:
 @pulumi.input_type
 class GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextArgs:
     def __init__(__self__, *,
-                 revision_id: Optional[pulumi.Input[str]] = None,
+                 revision_id: pulumi.Input[str],
                  url: Optional[pulumi.Input[str]] = None):
         """
         A GitSourceContext denotes a particular revision in a third party Git repository (e.g., GitHub).
-        :param pulumi.Input[str] revision_id: Required. Git commit hash.
+        :param pulumi.Input[str] revision_id: Git commit hash.
         :param pulumi.Input[str] url: Git repository URL.
         """
-        if revision_id is not None:
-            pulumi.set(__self__, "revision_id", revision_id)
+        pulumi.set(__self__, "revision_id", revision_id)
         if url is not None:
             pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter(name="revisionId")
-    def revision_id(self) -> Optional[pulumi.Input[str]]:
+    def revision_id(self) -> pulumi.Input[str]:
         """
-        Required. Git commit hash.
+        Git commit hash.
         """
         return pulumi.get(self, "revision_id")
 
     @revision_id.setter
-    def revision_id(self, value: Optional[pulumi.Input[str]]):
+    def revision_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "revision_id", value)
 
     @property

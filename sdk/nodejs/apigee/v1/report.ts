@@ -80,11 +80,11 @@ export class Report extends pulumi.CustomResource {
      */
     public readonly limit!: pulumi.Output<string>;
     /**
-     * Required. This contains the list of metrics
+     * This contains the list of metrics
      */
     public readonly metrics!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1CustomReportMetricResponse[]>;
     /**
-     * Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
+     * Unique identifier for the report T his is a legacy field used to encode custom report unique id
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -135,6 +135,12 @@ export class Report extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.metrics === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'metrics'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
@@ -225,13 +231,13 @@ export interface ReportArgs {
      */
     limit?: pulumi.Input<string>;
     /**
-     * Required. This contains the list of metrics
+     * This contains the list of metrics
      */
-    metrics?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1CustomReportMetricArgs>[]>;
+    metrics: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1CustomReportMetricArgs>[]>;
     /**
-     * Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
+     * Unique identifier for the report T his is a legacy field used to encode custom report unique id
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * Legacy field: not used. This field contains the offset for the data
      */

@@ -534,33 +534,77 @@ class ExprArgs:
 @pulumi.input_type
 class MySqlConnectionProfileArgs:
     def __init__(__self__, *,
+                 host: pulumi.Input[str],
+                 password: pulumi.Input[str],
+                 port: pulumi.Input[int],
+                 username: pulumi.Input[str],
                  cloud_sql_id: Optional[pulumi.Input[str]] = None,
-                 host: Optional[pulumi.Input[str]] = None,
-                 password: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[int]] = None,
-                 ssl: Optional[pulumi.Input['SslConfigArgs']] = None,
-                 username: Optional[pulumi.Input[str]] = None):
+                 ssl: Optional[pulumi.Input['SslConfigArgs']] = None):
         """
         Specifies connection parameters required specifically for MySQL databases.
+        :param pulumi.Input[str] host: The IP or hostname of the source MySQL database.
+        :param pulumi.Input[str] password: Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+        :param pulumi.Input[int] port: The network port of the source MySQL database.
+        :param pulumi.Input[str] username: The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
         :param pulumi.Input[str] cloud_sql_id: If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
-        :param pulumi.Input[str] host: Required. The IP or hostname of the source MySQL database.
-        :param pulumi.Input[str] password: Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
-        :param pulumi.Input[int] port: Required. The network port of the source MySQL database.
         :param pulumi.Input['SslConfigArgs'] ssl: SSL configuration for the destination to connect to the source database.
-        :param pulumi.Input[str] username: Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
         """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "username", username)
         if cloud_sql_id is not None:
             pulumi.set(__self__, "cloud_sql_id", cloud_sql_id)
-        if host is not None:
-            pulumi.set(__self__, "host", host)
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
         if ssl is not None:
             pulumi.set(__self__, "ssl", ssl)
-        if username is not None:
-            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[str]:
+        """
+        The IP or hostname of the source MySQL database.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[str]:
+        """
+        Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        """
+        The network port of the source MySQL database.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[str]:
+        """
+        The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[str]):
+        pulumi.set(self, "username", value)
 
     @property
     @pulumi.getter(name="cloudSqlId")
@@ -576,42 +620,6 @@ class MySqlConnectionProfileArgs:
 
     @property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The IP or hostname of the source MySQL database.
-        """
-        return pulumi.get(self, "host")
-
-    @host.setter
-    def host(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "host", value)
-
-    @property
-    @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "password", value)
-
-    @property
-    @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[int]]:
-        """
-        Required. The network port of the source MySQL database.
-        """
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "port", value)
-
-    @property
-    @pulumi.getter
     def ssl(self) -> Optional[pulumi.Input['SslConfigArgs']]:
         """
         SSL configuration for the destination to connect to the source database.
@@ -621,50 +629,82 @@ class MySqlConnectionProfileArgs:
     @ssl.setter
     def ssl(self, value: Optional[pulumi.Input['SslConfigArgs']]):
         pulumi.set(self, "ssl", value)
-
-    @property
-    @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-        """
-        return pulumi.get(self, "username")
-
-    @username.setter
-    def username(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "username", value)
 
 
 @pulumi.input_type
 class PostgreSqlConnectionProfileArgs:
     def __init__(__self__, *,
+                 host: pulumi.Input[str],
+                 password: pulumi.Input[str],
+                 port: pulumi.Input[int],
+                 username: pulumi.Input[str],
                  cloud_sql_id: Optional[pulumi.Input[str]] = None,
-                 host: Optional[pulumi.Input[str]] = None,
-                 password: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[int]] = None,
-                 ssl: Optional[pulumi.Input['SslConfigArgs']] = None,
-                 username: Optional[pulumi.Input[str]] = None):
+                 ssl: Optional[pulumi.Input['SslConfigArgs']] = None):
         """
         Specifies connection parameters required specifically for PostgreSQL databases.
+        :param pulumi.Input[str] host: The IP or hostname of the source PostgreSQL database.
+        :param pulumi.Input[str] password: Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+        :param pulumi.Input[int] port: The network port of the source PostgreSQL database.
+        :param pulumi.Input[str] username: The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
         :param pulumi.Input[str] cloud_sql_id: If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
-        :param pulumi.Input[str] host: Required. The IP or hostname of the source PostgreSQL database.
-        :param pulumi.Input[str] password: Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
-        :param pulumi.Input[int] port: Required. The network port of the source PostgreSQL database.
         :param pulumi.Input['SslConfigArgs'] ssl: SSL configuration for the destination to connect to the source database.
-        :param pulumi.Input[str] username: Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
         """
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "username", username)
         if cloud_sql_id is not None:
             pulumi.set(__self__, "cloud_sql_id", cloud_sql_id)
-        if host is not None:
-            pulumi.set(__self__, "host", host)
-        if password is not None:
-            pulumi.set(__self__, "password", password)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
         if ssl is not None:
             pulumi.set(__self__, "ssl", ssl)
-        if username is not None:
-            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[str]:
+        """
+        The IP or hostname of the source PostgreSQL database.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[str]:
+        """
+        Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        """
+        The network port of the source PostgreSQL database.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[str]:
+        """
+        The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[str]):
+        pulumi.set(self, "username", value)
 
     @property
     @pulumi.getter(name="cloudSqlId")
@@ -680,42 +720,6 @@ class PostgreSqlConnectionProfileArgs:
 
     @property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The IP or hostname of the source PostgreSQL database.
-        """
-        return pulumi.get(self, "host")
-
-    @host.setter
-    def host(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "host", value)
-
-    @property
-    @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
-        """
-        return pulumi.get(self, "password")
-
-    @password.setter
-    def password(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "password", value)
-
-    @property
-    @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[int]]:
-        """
-        Required. The network port of the source PostgreSQL database.
-        """
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "port", value)
-
-    @property
-    @pulumi.getter
     def ssl(self) -> Optional[pulumi.Input['SslConfigArgs']]:
         """
         SSL configuration for the destination to connect to the source database.
@@ -726,41 +730,51 @@ class PostgreSqlConnectionProfileArgs:
     def ssl(self, value: Optional[pulumi.Input['SslConfigArgs']]):
         pulumi.set(self, "ssl", value)
 
-    @property
-    @pulumi.getter
-    def username(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-        """
-        return pulumi.get(self, "username")
-
-    @username.setter
-    def username(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "username", value)
-
 
 @pulumi.input_type
 class ReverseSshConnectivityArgs:
     def __init__(__self__, *,
+                 vm_ip: pulumi.Input[str],
+                 vm_port: pulumi.Input[int],
                  vm: Optional[pulumi.Input[str]] = None,
-                 vm_ip: Optional[pulumi.Input[str]] = None,
-                 vm_port: Optional[pulumi.Input[int]] = None,
                  vpc: Optional[pulumi.Input[str]] = None):
         """
         The details needed to configure a reverse SSH tunnel between the source and destination databases. These details will be used when calling the generateSshScript method (see https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.migrationJobs/generateSshScript) to produce the script that will help set up the reverse SSH tunnel, and to set up the VPC peering between the Cloud SQL private network and the VPC.
+        :param pulumi.Input[str] vm_ip: The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+        :param pulumi.Input[int] vm_port: The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
         :param pulumi.Input[str] vm: The name of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
-        :param pulumi.Input[str] vm_ip: Required. The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
-        :param pulumi.Input[int] vm_port: Required. The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
         :param pulumi.Input[str] vpc: The name of the VPC to peer with the Cloud SQL private network.
         """
+        pulumi.set(__self__, "vm_ip", vm_ip)
+        pulumi.set(__self__, "vm_port", vm_port)
         if vm is not None:
             pulumi.set(__self__, "vm", vm)
-        if vm_ip is not None:
-            pulumi.set(__self__, "vm_ip", vm_ip)
-        if vm_port is not None:
-            pulumi.set(__self__, "vm_port", vm_port)
         if vpc is not None:
             pulumi.set(__self__, "vpc", vpc)
+
+    @property
+    @pulumi.getter(name="vmIp")
+    def vm_ip(self) -> pulumi.Input[str]:
+        """
+        The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+        """
+        return pulumi.get(self, "vm_ip")
+
+    @vm_ip.setter
+    def vm_ip(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vm_ip", value)
+
+    @property
+    @pulumi.getter(name="vmPort")
+    def vm_port(self) -> pulumi.Input[int]:
+        """
+        The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+        """
+        return pulumi.get(self, "vm_port")
+
+    @vm_port.setter
+    def vm_port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "vm_port", value)
 
     @property
     @pulumi.getter
@@ -773,30 +787,6 @@ class ReverseSshConnectivityArgs:
     @vm.setter
     def vm(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vm", value)
-
-    @property
-    @pulumi.getter(name="vmIp")
-    def vm_ip(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
-        """
-        return pulumi.get(self, "vm_ip")
-
-    @vm_ip.setter
-    def vm_ip(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "vm_ip", value)
-
-    @property
-    @pulumi.getter(name="vmPort")
-    def vm_port(self) -> Optional[pulumi.Input[int]]:
-        """
-        Required. The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
-        """
-        return pulumi.get(self, "vm_port")
-
-    @vm_port.setter
-    def vm_port(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "vm_port", value)
 
     @property
     @pulumi.getter
@@ -958,17 +948,16 @@ class SqlIpConfigArgs:
 @pulumi.input_type
 class SslConfigArgs:
     def __init__(__self__, *,
-                 ca_certificate: Optional[pulumi.Input[str]] = None,
+                 ca_certificate: pulumi.Input[str],
                  client_certificate: Optional[pulumi.Input[str]] = None,
                  client_key: Optional[pulumi.Input[str]] = None):
         """
         SSL configuration information.
-        :param pulumi.Input[str] ca_certificate: Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
+        :param pulumi.Input[str] ca_certificate: Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
         :param pulumi.Input[str] client_certificate: Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.If this field is used then the 'client_key' field is mandatory.
         :param pulumi.Input[str] client_key: Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' field is mandatory.
         """
-        if ca_certificate is not None:
-            pulumi.set(__self__, "ca_certificate", ca_certificate)
+        pulumi.set(__self__, "ca_certificate", ca_certificate)
         if client_certificate is not None:
             pulumi.set(__self__, "client_certificate", client_certificate)
         if client_key is not None:
@@ -976,14 +965,14 @@ class SslConfigArgs:
 
     @property
     @pulumi.getter(name="caCertificate")
-    def ca_certificate(self) -> Optional[pulumi.Input[str]]:
+    def ca_certificate(self) -> pulumi.Input[str]:
         """
-        Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
+        Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
         """
         return pulumi.get(self, "ca_certificate")
 
     @ca_certificate.setter
-    def ca_certificate(self, value: Optional[pulumi.Input[str]]):
+    def ca_certificate(self, value: pulumi.Input[str]):
         pulumi.set(self, "ca_certificate", value)
 
     @property

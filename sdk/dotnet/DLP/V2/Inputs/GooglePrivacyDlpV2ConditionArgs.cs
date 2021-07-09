@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     public sealed class GooglePrivacyDlpV2ConditionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Field within the record this condition is evaluated against.
+        /// Field within the record this condition is evaluated against.
         /// </summary>
-        [Input("field")]
-        public Input<Inputs.GooglePrivacyDlpV2FieldIdArgs>? Field { get; set; }
+        [Input("field", required: true)]
+        public Input<Inputs.GooglePrivacyDlpV2FieldIdArgs> Field { get; set; } = null!;
 
         /// <summary>
-        /// Required. Operator used to compare the field or infoType to the value.
+        /// Operator used to compare the field or infoType to the value.
         /// </summary>
-        [Input("operator")]
-        public Input<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2ConditionOperator>? Operator { get; set; }
+        [Input("operator", required: true)]
+        public Input<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2ConditionOperator> Operator { get; set; } = null!;
 
         /// <summary>
         /// Value to compare against. [Mandatory, except for `EXISTS` tests.]

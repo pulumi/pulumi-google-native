@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
     public sealed class GetConsentResult
     {
         /// <summary>
-        /// Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+        /// The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
         /// </summary>
         public readonly string ConsentArtifact;
         /// <summary>
@@ -74,7 +74,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// </summary>
         public readonly string RevisionId;
         /// <summary>
-        /// Required. Indicates the current state of this Consent.
+        /// Indicates the current state of this Consent.
         /// </summary>
         public readonly string State;
         /// <summary>
@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// </summary>
         public readonly string Ttl;
         /// <summary>
-        /// Required. User's UUID provided by the client.
+        /// User's UUID provided by the client.
         /// </summary>
         public readonly string UserId;
 

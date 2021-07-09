@@ -303,10 +303,10 @@ type LogExclusion struct {
 	Description *string `pulumi:"description"`
 	// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
 	Disabled *bool `pulumi:"disabled"`
-	// Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
-	Filter *string `pulumi:"filter"`
-	// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
-	Name *string `pulumi:"name"`
+	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
+	Filter string `pulumi:"filter"`
+	// A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+	Name string `pulumi:"name"`
 }
 
 // LogExclusionInput is an input type that accepts LogExclusionArgs and LogExclusionOutput values.
@@ -326,10 +326,10 @@ type LogExclusionArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
-	Filter pulumi.StringPtrInput `pulumi:"filter"`
-	// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
+	Filter pulumi.StringInput `pulumi:"filter"`
+	// A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (LogExclusionArgs) ElementType() reflect.Type {
@@ -394,14 +394,14 @@ func (o LogExclusionOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v LogExclusion) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
-func (o LogExclusionOutput) Filter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogExclusion) *string { return v.Filter }).(pulumi.StringPtrOutput)
+// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
+func (o LogExclusionOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v LogExclusion) string { return v.Filter }).(pulumi.StringOutput)
 }
 
-// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
-func (o LogExclusionOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LogExclusion) *string { return v.Name }).(pulumi.StringPtrOutput)
+// A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+func (o LogExclusionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LogExclusion) string { return v.Name }).(pulumi.StringOutput)
 }
 
 type LogExclusionArrayOutput struct{ *pulumi.OutputState }
@@ -432,9 +432,9 @@ type LogExclusionResponse struct {
 	Description string `pulumi:"description"`
 	// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
 	Disabled bool `pulumi:"disabled"`
-	// Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
+	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
 	Filter string `pulumi:"filter"`
-	// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+	// A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name string `pulumi:"name"`
 	// The last update timestamp of the exclusion.This field may not be present for older exclusions.
 	UpdateTime string `pulumi:"updateTime"`
@@ -459,9 +459,9 @@ type LogExclusionResponseArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
-	// Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
+	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
 	Filter pulumi.StringInput `pulumi:"filter"`
-	// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+	// A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The last update timestamp of the exclusion.This field may not be present for older exclusions.
 	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
@@ -534,12 +534,12 @@ func (o LogExclusionResponseOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v LogExclusionResponse) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
-// Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
+// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
 func (o LogExclusionResponseOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v LogExclusionResponse) string { return v.Filter }).(pulumi.StringOutput)
 }
 
-// Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+// A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
 func (o LogExclusionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LogExclusionResponse) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -140,7 +140,7 @@ class ContainerImageResponse(dict):
                  tag: str):
         """
         Definition of a container image for starting a notebook instance with the environment installed in a container.
-        :param str repository: Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+        :param str repository: The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
         :param str tag: The tag of the container image. If not specified, this defaults to the latest tag.
         """
         pulumi.set(__self__, "repository", repository)
@@ -150,7 +150,7 @@ class ContainerImageResponse(dict):
     @pulumi.getter
     def repository(self) -> str:
         """
-        Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+        The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
         """
         return pulumi.get(self, "repository")
 
@@ -549,7 +549,7 @@ class ExecutionTemplateResponse(dict):
         :param str output_notebook_folder: Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
         :param str parameters: Parameters used within the 'input_notebook_file' notebook.
         :param str params_yaml_file: Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
-        :param str scale_tier: Required. Scale tier of the hardware used for notebook execution.
+        :param str scale_tier: Scale tier of the hardware used for notebook execution.
         :param str service_account: The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
         """
         pulumi.set(__self__, "accelerator_config", accelerator_config)
@@ -631,7 +631,7 @@ class ExecutionTemplateResponse(dict):
     @pulumi.getter(name="scaleTier")
     def scale_tier(self) -> str:
         """
-        Required. Scale tier of the hardware used for notebook execution.
+        Scale tier of the hardware used for notebook execution.
         """
         return pulumi.get(self, "scale_tier")
 
@@ -855,11 +855,11 @@ class LocalDiskResponse(dict):
         :param bool boot: Indicates that this is a boot disk. The virtual machine will use the first partition of the disk for its root filesystem.
         :param str device_name: Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. This name can be used to reference the device for mounting, resizing, and so on, from within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
         :param Sequence['RuntimeGuestOsFeatureResponse'] guest_os_features: Indicates a list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
-        :param int index: [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+        :param int index: A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
         :param 'LocalDiskInitializeParamsResponse' initialize_params: Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
         :param str interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
         :param str kind: Type of the resource. Always compute#attachedDisk for attached disks.
-        :param Sequence[str] licenses: [Output Only] Any valid publicly visible licenses.
+        :param Sequence[str] licenses: Any valid publicly visible licenses.
         :param str mode: The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
         :param str source: Specifies a valid partial or full URL to an existing Persistent Disk resource.
         :param str type: Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: PERSISTENT SCRATCH
@@ -913,7 +913,7 @@ class LocalDiskResponse(dict):
     @pulumi.getter
     def index(self) -> int:
         """
-        [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+        A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
         """
         return pulumi.get(self, "index")
 
@@ -945,7 +945,7 @@ class LocalDiskResponse(dict):
     @pulumi.getter
     def licenses(self) -> Sequence[str]:
         """
-        [Output Only] Any valid publicly visible licenses.
+        Any valid publicly visible licenses.
         """
         return pulumi.get(self, "licenses")
 
@@ -1651,12 +1651,12 @@ class VirtualMachineConfigResponse(dict):
         The config settings for virtual machine.
         :param 'RuntimeAcceleratorConfigResponse' accelerator_config: Optional. The Compute Engine accelerator configuration for this runtime.
         :param Sequence['ContainerImageResponse'] container_images: Optional. Use a list of container images to start the notebook instance.
-        :param 'LocalDiskResponse' data_disk: Required. Data disk option configuration settings.
+        :param 'LocalDiskResponse' data_disk: Data disk option configuration settings.
         :param 'EncryptionConfigResponse' encryption_config: Optional. Encryption settings for virtual machine data disk.
         :param Mapping[str, str] guest_attributes: The Compute Engine guest attributes. (see [Project and instance guest attributes](https://cloud.google.com/compute/docs/storing-retrieving-metadata#guest_attributes)).
         :param bool internal_ip_only: Optional. If true, runtime will only have internal IP addresses. By default, runtimes are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each vm. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all dependencies must be configured to be accessible without external IP addresses.
         :param Mapping[str, str] labels: Optional. The labels to associate with this runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
-        :param str machine_type: Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
+        :param str machine_type: The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
         :param Mapping[str, str] metadata: Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
         :param str network: Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
         :param str nic_type: Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
@@ -1701,7 +1701,7 @@ class VirtualMachineConfigResponse(dict):
     @pulumi.getter(name="dataDisk")
     def data_disk(self) -> 'outputs.LocalDiskResponse':
         """
-        Required. Data disk option configuration settings.
+        Data disk option configuration settings.
         """
         return pulumi.get(self, "data_disk")
 
@@ -1741,7 +1741,7 @@ class VirtualMachineConfigResponse(dict):
     @pulumi.getter(name="machineType")
     def machine_type(self) -> str:
         """
-        Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
+        The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
         """
         return pulumi.get(self, "machine_type")
 
@@ -1899,7 +1899,7 @@ class VmImageResponse(dict):
         Definition of a custom Compute Engine virtual machine image for starting a notebook instance with the environment installed directly on the VM.
         :param str image_family: Use this VM image family to find the image; the newest image in this family will be used.
         :param str image_name: Use VM image name to find the image.
-        :param str project: Required. The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+        :param str project: The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
         """
         pulumi.set(__self__, "image_family", image_family)
         pulumi.set(__self__, "image_name", image_name)
@@ -1925,7 +1925,7 @@ class VmImageResponse(dict):
     @pulumi.getter
     def project(self) -> str:
         """
-        Required. The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+        The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
         """
         return pulumi.get(self, "project")
 

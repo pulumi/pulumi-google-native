@@ -33,7 +33,7 @@ export interface GetTestMatrixResult {
      */
     readonly clientInfo: outputs.testing.v1.ClientInfoResponse;
     /**
-     * Required. The devices the tests are being executed on.
+     * The devices the tests are being executed on.
      */
     readonly environmentMatrix: outputs.testing.v1.EnvironmentMatrixResponse;
     /**
@@ -57,7 +57,7 @@ export interface GetTestMatrixResult {
      */
     readonly project: string;
     /**
-     * Required. Where the results for the matrix are written.
+     * Where the results for the matrix are written.
      */
     readonly resultStorage: outputs.testing.v1.ResultStorageResponse;
     /**
@@ -73,7 +73,7 @@ export interface GetTestMatrixResult {
      */
     readonly testMatrixId: string;
     /**
-     * Required. How to run the test.
+     * How to run the test.
      */
     readonly testSpecification: outputs.testing.v1.TestSpecificationResponse;
     /**

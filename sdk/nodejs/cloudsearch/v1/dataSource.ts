@@ -44,7 +44,7 @@ export class DataSource extends pulumi.CustomResource {
      */
     public readonly disableServing!: pulumi.Output<boolean>;
     /**
-     * Required. Display name of the datasource The maximum length is 300 characters.
+     * Display name of the datasource The maximum length is 300 characters.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -75,10 +75,13 @@ export class DataSource extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: DataSourceArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: DataSourceArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
             inputs["disableModifications"] = args ? args.disableModifications : undefined;
             inputs["disableServing"] = args ? args.disableServing : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -117,9 +120,9 @@ export interface DataSourceArgs {
      */
     disableServing?: pulumi.Input<boolean>;
     /**
-     * Required. Display name of the datasource The maximum length is 300 characters.
+     * Display name of the datasource The maximum length is 300 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * List of service accounts that have indexing access.
      */

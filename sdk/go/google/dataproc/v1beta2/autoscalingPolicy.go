@@ -20,7 +20,7 @@ type AutoscalingPolicy struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. Describes how the autoscaler will operate for secondary workers.
 	SecondaryWorkerConfig InstanceGroupAutoscalingPolicyConfigResponseOutput `pulumi:"secondaryWorkerConfig"`
-	// Required. Describes how the autoscaler will operate for primary workers.
+	// Describes how the autoscaler will operate for primary workers.
 	WorkerConfig InstanceGroupAutoscalingPolicyConfigResponseOutput `pulumi:"workerConfig"`
 }
 
@@ -31,11 +31,17 @@ func NewAutoscalingPolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Id == nil {
+		return nil, errors.New("invalid value for required argument 'Id'")
+	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.WorkerConfig == nil {
+		return nil, errors.New("invalid value for required argument 'WorkerConfig'")
 	}
 	var resource AutoscalingPolicy
 	err := ctx.RegisterResource("google-native:dataproc/v1beta2:AutoscalingPolicy", name, args, &resource, opts...)
@@ -64,7 +70,7 @@ type autoscalingPolicyState struct {
 	Name *string `pulumi:"name"`
 	// Optional. Describes how the autoscaler will operate for secondary workers.
 	SecondaryWorkerConfig *InstanceGroupAutoscalingPolicyConfigResponse `pulumi:"secondaryWorkerConfig"`
-	// Required. Describes how the autoscaler will operate for primary workers.
+	// Describes how the autoscaler will operate for primary workers.
 	WorkerConfig *InstanceGroupAutoscalingPolicyConfigResponse `pulumi:"workerConfig"`
 }
 
@@ -74,7 +80,7 @@ type AutoscalingPolicyState struct {
 	Name pulumi.StringPtrInput
 	// Optional. Describes how the autoscaler will operate for secondary workers.
 	SecondaryWorkerConfig InstanceGroupAutoscalingPolicyConfigResponsePtrInput
-	// Required. Describes how the autoscaler will operate for primary workers.
+	// Describes how the autoscaler will operate for primary workers.
 	WorkerConfig InstanceGroupAutoscalingPolicyConfigResponsePtrInput
 }
 
@@ -84,27 +90,27 @@ func (AutoscalingPolicyState) ElementType() reflect.Type {
 
 type autoscalingPolicyArgs struct {
 	BasicAlgorithm *BasicAutoscalingAlgorithm `pulumi:"basicAlgorithm"`
-	// Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-	Id       *string `pulumi:"id"`
-	Location string  `pulumi:"location"`
-	Project  string  `pulumi:"project"`
+	// The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+	Id       string `pulumi:"id"`
+	Location string `pulumi:"location"`
+	Project  string `pulumi:"project"`
 	// Optional. Describes how the autoscaler will operate for secondary workers.
 	SecondaryWorkerConfig *InstanceGroupAutoscalingPolicyConfig `pulumi:"secondaryWorkerConfig"`
-	// Required. Describes how the autoscaler will operate for primary workers.
-	WorkerConfig *InstanceGroupAutoscalingPolicyConfig `pulumi:"workerConfig"`
+	// Describes how the autoscaler will operate for primary workers.
+	WorkerConfig InstanceGroupAutoscalingPolicyConfig `pulumi:"workerConfig"`
 }
 
 // The set of arguments for constructing a AutoscalingPolicy resource.
 type AutoscalingPolicyArgs struct {
 	BasicAlgorithm BasicAutoscalingAlgorithmPtrInput
-	// Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-	Id       pulumi.StringPtrInput
+	// The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+	Id       pulumi.StringInput
 	Location pulumi.StringInput
 	Project  pulumi.StringInput
 	// Optional. Describes how the autoscaler will operate for secondary workers.
 	SecondaryWorkerConfig InstanceGroupAutoscalingPolicyConfigPtrInput
-	// Required. Describes how the autoscaler will operate for primary workers.
-	WorkerConfig InstanceGroupAutoscalingPolicyConfigPtrInput
+	// Describes how the autoscaler will operate for primary workers.
+	WorkerConfig InstanceGroupAutoscalingPolicyConfigInput
 }
 
 func (AutoscalingPolicyArgs) ElementType() reflect.Type {

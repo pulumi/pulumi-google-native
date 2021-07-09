@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     public sealed class GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Format: projects//locations//agents//flows//versions/.
+        /// Format: projects//locations//agents//flows//versions/.
         /// </summary>
-        [Input("version")]
-        public Input<string>? Version { get; set; }
+        [Input("version", required: true)]
+        public Input<string> Version { get; set; } = null!;
 
         public GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs()
         {

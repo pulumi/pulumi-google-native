@@ -40,7 +40,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly addresses!: pulumi.Output<string[]>;
     /**
-     * Required. At least one field within ApplicationInfo must be specified. Job application information.
+     * At least one field within ApplicationInfo must be specified. Job application information.
      */
     public readonly applicationInfo!: pulumi.Output<outputs.jobs.v3.ApplicationInfoResponse>;
     /**
@@ -48,7 +48,7 @@ export class Job extends pulumi.CustomResource {
      */
     public /*out*/ readonly companyDisplayName!: pulumi.Output<string>;
     /**
-     * Required. The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
+     * The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
      */
     public readonly companyName!: pulumi.Output<string>;
     /**
@@ -72,7 +72,7 @@ export class Job extends pulumi.CustomResource {
      */
     public /*out*/ readonly derivedInfo!: pulumi.Output<outputs.jobs.v3.JobDerivedInfoResponse>;
     /**
-     * Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
+     * The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
      */
     public readonly description!: pulumi.Output<string>;
     /**
@@ -140,7 +140,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly qualifications!: pulumi.Output<string>;
     /**
-     * Required. The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job is not allowed to be created if there is another job with the same [company_name], language_code and requisition_id. The maximum number of allowed characters is 255.
+     * The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job is not allowed to be created if there is another job with the same [company_name], language_code and requisition_id. The maximum number of allowed characters is 255.
      */
     public readonly requisitionId!: pulumi.Output<string>;
     /**
@@ -148,7 +148,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly responsibilities!: pulumi.Output<string>;
     /**
-     * Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
+     * The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
      */
     public readonly title!: pulumi.Output<string>;
 
@@ -163,8 +163,23 @@ export class Job extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.applicationInfo === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'applicationInfo'");
+            }
+            if ((!args || args.companyName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'companyName'");
+            }
+            if ((!args || args.description === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'description'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.requisitionId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'requisitionId'");
+            }
+            if ((!args || args.title === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'title'");
             }
             inputs["addresses"] = args ? args.addresses : undefined;
             inputs["applicationInfo"] = args ? args.applicationInfo : undefined;
@@ -243,13 +258,13 @@ export interface JobArgs {
      */
     addresses?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Required. At least one field within ApplicationInfo must be specified. Job application information.
+     * At least one field within ApplicationInfo must be specified. Job application information.
      */
-    applicationInfo?: pulumi.Input<inputs.jobs.v3.ApplicationInfoArgs>;
+    applicationInfo: pulumi.Input<inputs.jobs.v3.ApplicationInfoArgs>;
     /**
-     * Required. The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
+     * The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
      */
-    companyName?: pulumi.Input<string>;
+    companyName: pulumi.Input<string>;
     /**
      * Optional. Job compensation information.
      */
@@ -267,9 +282,9 @@ export interface JobArgs {
      */
     department?: pulumi.Input<string>;
     /**
-     * Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
+     * The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
      */
-    description?: pulumi.Input<string>;
+    description: pulumi.Input<string>;
     /**
      * Optional. The employment type(s) of a job, for example, full time or part time.
      */
@@ -328,15 +343,15 @@ export interface JobArgs {
      */
     qualifications?: pulumi.Input<string>;
     /**
-     * Required. The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job is not allowed to be created if there is another job with the same [company_name], language_code and requisition_id. The maximum number of allowed characters is 255.
+     * The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job is not allowed to be created if there is another job with the same [company_name], language_code and requisition_id. The maximum number of allowed characters is 255.
      */
-    requisitionId?: pulumi.Input<string>;
+    requisitionId: pulumi.Input<string>;
     /**
      * Optional. A description of job responsibilities. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
      */
     responsibilities?: pulumi.Input<string>;
     /**
-     * Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
+     * The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
      */
-    title?: pulumi.Input<string>;
+    title: pulumi.Input<string>;
 }

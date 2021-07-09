@@ -99,7 +99,7 @@ class GetIntentResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The name of this intent.
+        The name of this intent.
         """
         return pulumi.get(self, "display_name")
 

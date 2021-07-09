@@ -28,7 +28,7 @@ type LookupIntentArgs struct {
 type LookupIntentResult struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description string `pulumi:"description"`
-	// Required. The human-readable name of the intent, unique within the agent.
+	// The human-readable name of the intent, unique within the agent.
 	DisplayName string `pulumi:"displayName"`
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
 	IsFallback bool `pulumi:"isFallback"`

@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     public sealed class DerivedArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The fingerprint of the derived image.
+        /// The fingerprint of the derived image.
         /// </summary>
-        [Input("fingerprint")]
-        public Input<Inputs.FingerprintArgs>? Fingerprint { get; set; }
+        [Input("fingerprint", required: true)]
+        public Input<Inputs.FingerprintArgs> Fingerprint { get; set; } = null!;
 
         [Input("layerInfo")]
         private InputList<Inputs.LayerArgs>? _layerInfo;

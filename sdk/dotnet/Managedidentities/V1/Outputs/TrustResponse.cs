@@ -34,23 +34,23 @@ namespace Pulumi.GoogleNative.Managedidentities.V1.Outputs
         /// </summary>
         public readonly string StateDescription;
         /// <summary>
-        /// Required. The target DNS server IP addresses which can resolve the remote domain involved in the trust.
+        /// The target DNS server IP addresses which can resolve the remote domain involved in the trust.
         /// </summary>
         public readonly ImmutableArray<string> TargetDnsIpAddresses;
         /// <summary>
-        /// Required. The fully qualified target domain name which will be in trust with the current domain.
+        /// The fully qualified target domain name which will be in trust with the current domain.
         /// </summary>
         public readonly string TargetDomainName;
         /// <summary>
-        /// Required. The trust direction, which decides if the current domain is trusted, trusting, or both.
+        /// The trust direction, which decides if the current domain is trusted, trusting, or both.
         /// </summary>
         public readonly string TrustDirection;
         /// <summary>
-        /// Required. The trust secret used for the handshake with the target domain. This will not be stored.
+        /// The trust secret used for the handshake with the target domain. This will not be stored.
         /// </summary>
         public readonly string TrustHandshakeSecret;
         /// <summary>
-        /// Required. The type of trust represented by the trust resource.
+        /// The type of trust represented by the trust resource.
         /// </summary>
         public readonly string TrustType;
         /// <summary>

@@ -42,11 +42,11 @@ type LookupInstanceResult struct {
 	MemcacheNodes []NodeResponse `pulumi:"memcacheNodes"`
 	// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
 	MemcacheVersion string `pulumi:"memcacheVersion"`
-	// Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
+	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
 	Name string `pulumi:"name"`
-	// Required. Configuration for Memcached nodes.
+	// Configuration for Memcached nodes.
 	NodeConfig NodeConfigResponse `pulumi:"nodeConfig"`
-	// Required. Number of nodes in the Memcached instance.
+	// Number of nodes in the Memcached instance.
 	NodeCount int `pulumi:"nodeCount"`
 	// Optional: User defined parameters to apply to the memcached process on each node.
 	Parameters MemcacheParametersResponse `pulumi:"parameters"`

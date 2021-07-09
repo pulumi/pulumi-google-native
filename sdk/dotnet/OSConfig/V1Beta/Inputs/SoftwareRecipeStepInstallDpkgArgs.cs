@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     public sealed class SoftwareRecipeStepInstallDpkgArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The id of the relevant artifact in the recipe.
+        /// The id of the relevant artifact in the recipe.
         /// </summary>
-        [Input("artifactId")]
-        public Input<string>? ArtifactId { get; set; }
+        [Input("artifactId", required: true)]
+        public Input<string> ArtifactId { get; set; } = null!;
 
         public SoftwareRecipeStepInstallDpkgArgs()
         {

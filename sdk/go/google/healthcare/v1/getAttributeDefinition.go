@@ -26,9 +26,9 @@ type LookupAttributeDefinitionArgs struct {
 }
 
 type LookupAttributeDefinitionResult struct {
-	// Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+	// Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
 	AllowedValues []string `pulumi:"allowedValues"`
-	// Required. The category of the attribute. The value of this field cannot be changed after creation.
+	// The category of the attribute. The value of this field cannot be changed after creation.
 	Category string `pulumi:"category"`
 	// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
 	ConsentDefaultValues []string `pulumi:"consentDefaultValues"`

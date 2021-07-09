@@ -22,10 +22,10 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public Input<bool>? TestSpecialEntitlements { get; set; }
 
         /// <summary>
-        /// Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
+        /// The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
         /// </summary>
-        [Input("testsZip")]
-        public Input<Inputs.FileReferenceArgs>? TestsZip { get; set; }
+        [Input("testsZip", required: true)]
+        public Input<Inputs.FileReferenceArgs> TestsZip { get; set; } = null!;
 
         /// <summary>
         /// The Xcode version that should be used for the test. Use the TestEnvironmentDiscoveryService to get supported options. Defaults to the latest Xcode version Firebase Test Lab supports.

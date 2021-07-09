@@ -39,7 +39,7 @@ class GetSchemaResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+        Name of the schema. Format is `projects/{project}/schemas/{schema}`.
         """
         return pulumi.get(self, "name")
 

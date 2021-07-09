@@ -16,22 +16,22 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     public sealed class GcsObjectArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Bucket of the Google Cloud Storage object.
+        /// Bucket of the Google Cloud Storage object.
         /// </summary>
-        [Input("bucket")]
-        public Input<string>? Bucket { get; set; }
+        [Input("bucket", required: true)]
+        public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
-        /// Required. Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+        /// Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
         /// </summary>
-        [Input("generationNumber")]
-        public Input<string>? GenerationNumber { get; set; }
+        [Input("generationNumber", required: true)]
+        public Input<string> GenerationNumber { get; set; } = null!;
 
         /// <summary>
-        /// Required. Name of the Google Cloud Storage object.
+        /// Name of the Google Cloud Storage object.
         /// </summary>
-        [Input("object")]
-        public Input<string>? Object { get; set; }
+        [Input("object", required: true)]
+        public Input<string> Object { get; set; } = null!;
 
         public GcsObjectArgs()
         {

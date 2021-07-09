@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1.Outputs
         /// </summary>
         public readonly Outputs.GoogleTypeDateResponse EndDate;
         /// <summary>
-        /// Required. The start date must be after January 1, 2017.
+        /// The start date must be after January 1, 2017.
         /// </summary>
         public readonly Outputs.GoogleTypeDateResponse StartDate;
 

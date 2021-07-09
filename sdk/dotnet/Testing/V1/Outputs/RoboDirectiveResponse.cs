@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
     public sealed class RoboDirectiveResponse
     {
         /// <summary>
-        /// Required. The type of action that Robo should perform on the specified element.
+        /// The type of action that Robo should perform on the specified element.
         /// </summary>
         public readonly string ActionType;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         /// </summary>
         public readonly string InputText;
         /// <summary>
-        /// Required. The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
+        /// The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
         /// </summary>
         public readonly string ResourceName;
 

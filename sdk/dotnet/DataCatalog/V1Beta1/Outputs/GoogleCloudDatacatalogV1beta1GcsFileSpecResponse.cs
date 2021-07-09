@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1.Outputs
     public sealed class GoogleCloudDatacatalogV1beta1GcsFileSpecResponse
     {
         /// <summary>
-        /// Required. The full file path. Example: `gs://bucket_name/a/b.txt`.
+        /// The full file path. Example: `gs://bucket_name/a/b.txt`.
         /// </summary>
         public readonly string FilePath;
         /// <summary>

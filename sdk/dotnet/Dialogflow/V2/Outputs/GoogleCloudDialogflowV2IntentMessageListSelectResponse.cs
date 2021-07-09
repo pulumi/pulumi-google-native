@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
     public sealed class GoogleCloudDialogflowV2IntentMessageListSelectResponse
     {
         /// <summary>
-        /// Required. List items.
+        /// List items.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDialogflowV2IntentMessageListSelectItemResponse> Items;
         /// <summary>

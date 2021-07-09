@@ -40,6 +40,9 @@ func NewServiceAccount(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AccountId == nil {
+		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -107,8 +110,8 @@ func (ServiceAccountState) ElementType() reflect.Type {
 }
 
 type serviceAccountArgs struct {
-	// Required. The account id that is used to generate the service account email address and a stable unique id. It is unique within a project, must be 6-30 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
-	AccountId *string `pulumi:"accountId"`
+	// The account id that is used to generate the service account email address and a stable unique id. It is unique within a project, must be 6-30 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
+	AccountId string `pulumi:"accountId"`
 	// Optional. A user-specified, human-readable description of the service account. The maximum length is 256 UTF-8 bytes.
 	Description *string `pulumi:"description"`
 	// Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.
@@ -120,8 +123,8 @@ type serviceAccountArgs struct {
 
 // The set of arguments for constructing a ServiceAccount resource.
 type ServiceAccountArgs struct {
-	// Required. The account id that is used to generate the service account email address and a stable unique id. It is unique within a project, must be 6-30 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
-	AccountId pulumi.StringPtrInput
+	// The account id that is used to generate the service account email address and a stable unique id. It is unique within a project, must be 6-30 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
+	AccountId pulumi.StringInput
 	// Optional. A user-specified, human-readable description of the service account. The maximum length is 256 UTF-8 bytes.
 	Description pulumi.StringPtrInput
 	// Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes.

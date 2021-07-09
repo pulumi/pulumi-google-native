@@ -66,7 +66,7 @@ class GetWorkflowTemplateResult:
     @pulumi.getter
     def jobs(self) -> Sequence['outputs.OrderedJobResponse']:
         """
-        Required. The Directed Acyclic Graph of Jobs to submit.
+        The Directed Acyclic Graph of Jobs to submit.
         """
         return pulumi.get(self, "jobs")
 
@@ -98,7 +98,7 @@ class GetWorkflowTemplateResult:
     @pulumi.getter
     def placement(self) -> 'outputs.WorkflowTemplatePlacementResponse':
         """
-        Required. WorkflowTemplate scheduling information.
+        WorkflowTemplate scheduling information.
         """
         return pulumi.get(self, "placement")
 

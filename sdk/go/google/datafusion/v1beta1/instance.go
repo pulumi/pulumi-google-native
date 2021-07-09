@@ -57,7 +57,7 @@ type Instance struct {
 	StateMessage pulumi.StringOutput `pulumi:"stateMessage"`
 	// The name of the tenant project.
 	TenantProjectId pulumi.StringOutput `pulumi:"tenantProjectId"`
-	// Required. Instance type.
+	// Instance type.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The time the instance was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -144,7 +144,7 @@ type instanceState struct {
 	StateMessage *string `pulumi:"stateMessage"`
 	// The name of the tenant project.
 	TenantProjectId *string `pulumi:"tenantProjectId"`
-	// Required. Instance type.
+	// Instance type.
 	Type *string `pulumi:"type"`
 	// The time the instance was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -197,7 +197,7 @@ type InstanceState struct {
 	StateMessage pulumi.StringPtrInput
 	// The name of the tenant project.
 	TenantProjectId pulumi.StringPtrInput
-	// Required. Instance type.
+	// Instance type.
 	Type pulumi.StringPtrInput
 	// The time the instance was last updated.
 	UpdateTime pulumi.StringPtrInput
@@ -239,8 +239,8 @@ type instanceArgs struct {
 	// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
 	PrivateInstance *bool  `pulumi:"privateInstance"`
 	Project         string `pulumi:"project"`
-	// Required. Instance type.
-	Type *string `pulumi:"type"`
+	// Instance type.
+	Type string `pulumi:"type"`
 	// Current version of Data Fusion.
 	Version *string `pulumi:"version"`
 	// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
@@ -276,8 +276,8 @@ type InstanceArgs struct {
 	// Specifies whether the Data Fusion instance should be private. If set to true, all Data Fusion nodes will have private IP addresses and will not be able to access the public internet.
 	PrivateInstance pulumi.BoolPtrInput
 	Project         pulumi.StringInput
-	// Required. Instance type.
-	Type *InstanceType
+	// Instance type.
+	Type InstanceType
 	// Current version of Data Fusion.
 	Version pulumi.StringPtrInput
 	// Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.

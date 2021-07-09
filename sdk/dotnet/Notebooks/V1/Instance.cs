@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+        /// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
         /// </summary>
         [Output("machineType")]
         public Output<string> MachineType { get; private set; } = null!;
@@ -349,10 +349,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+        /// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
         /// </summary>
-        [Input("machineType")]
-        public Input<string>? MachineType { get; set; }
+        [Input("machineType", required: true)]
+        public Input<string> MachineType { get; set; } = null!;
 
         [Input("metadata")]
         private InputMap<string>? _metadata;

@@ -27,11 +27,11 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
 
-        [Input("labels")]
+        [Input("labels", required: true)]
         private InputList<Inputs.LabelDescriptorArgs>? _labels;
 
         /// <summary>
-        /// Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
+        /// A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
         /// </summary>
         public InputList<Inputs.LabelDescriptorArgs> Labels
         {
@@ -52,10 +52,10 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+        /// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
         /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
 
         public MonitoredResourceDescriptorArgs()
         {

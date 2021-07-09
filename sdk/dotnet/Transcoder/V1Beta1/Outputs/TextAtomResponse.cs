@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.TextInputResponse> Inputs;
         /// <summary>
-        /// Required. The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
+        /// The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
         /// </summary>
         public readonly string Key;
 

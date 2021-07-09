@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         /// </summary>
         public readonly string MinAlignmentPeriod;
         /// <summary>
-        /// Required. The type of sparkchart to show in this chartView.
+        /// The type of sparkchart to show in this chartView.
         /// </summary>
         public readonly string SparkChartType;
 

@@ -50,7 +50,7 @@ class GetCanaryEvaluationResult:
     @pulumi.getter
     def control(self) -> str:
         """
-        Required. The stable version that is serving requests.
+        The stable version that is serving requests.
         """
         return pulumi.get(self, "control")
 
@@ -66,7 +66,7 @@ class GetCanaryEvaluationResult:
     @pulumi.getter(name="endTime")
     def end_time(self) -> str:
         """
-        Required. End time for the evaluation's analysis.
+        End time for the evaluation's analysis.
         """
         return pulumi.get(self, "end_time")
 
@@ -74,7 +74,7 @@ class GetCanaryEvaluationResult:
     @pulumi.getter(name="metricLabels")
     def metric_labels(self) -> 'outputs.GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse':
         """
-        Required. Labels used to filter the metrics used for a canary evaluation.
+        Labels used to filter the metrics used for a canary evaluation.
         """
         return pulumi.get(self, "metric_labels")
 
@@ -90,7 +90,7 @@ class GetCanaryEvaluationResult:
     @pulumi.getter(name="startTime")
     def start_time(self) -> str:
         """
-        Required. Start time for the canary evaluation's analysis.
+        Start time for the canary evaluation's analysis.
         """
         return pulumi.get(self, "start_time")
 
@@ -106,7 +106,7 @@ class GetCanaryEvaluationResult:
     @pulumi.getter
     def treatment(self) -> str:
         """
-        Required. The newer version that is serving requests.
+        The newer version that is serving requests.
         """
         return pulumi.get(self, "treatment")
 

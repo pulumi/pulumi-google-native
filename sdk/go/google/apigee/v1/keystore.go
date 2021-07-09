@@ -17,7 +17,7 @@ type Keystore struct {
 
 	// Aliases in this keystore.
 	Aliases pulumi.StringArrayOutput `pulumi:"aliases"`
-	// Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+	// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -30,6 +30,9 @@ func NewKeystore(ctx *pulumi.Context,
 
 	if args.EnvironmentId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
@@ -58,14 +61,14 @@ func GetKeystore(ctx *pulumi.Context,
 type keystoreState struct {
 	// Aliases in this keystore.
 	Aliases []string `pulumi:"aliases"`
-	// Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+	// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
 	Name *string `pulumi:"name"`
 }
 
 type KeystoreState struct {
 	// Aliases in this keystore.
 	Aliases pulumi.StringArrayInput
-	// Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+	// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
 	Name pulumi.StringPtrInput
 }
 
@@ -75,16 +78,16 @@ func (KeystoreState) ElementType() reflect.Type {
 
 type keystoreArgs struct {
 	EnvironmentId string `pulumi:"environmentId"`
-	// Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
-	Name           *string `pulumi:"name"`
-	OrganizationId string  `pulumi:"organizationId"`
+	// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+	Name           string `pulumi:"name"`
+	OrganizationId string `pulumi:"organizationId"`
 }
 
 // The set of arguments for constructing a Keystore resource.
 type KeystoreArgs struct {
 	EnvironmentId pulumi.StringInput
-	// Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
-	Name           pulumi.StringPtrInput
+	// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+	Name           pulumi.StringInput
 	OrganizationId pulumi.StringInput
 }
 

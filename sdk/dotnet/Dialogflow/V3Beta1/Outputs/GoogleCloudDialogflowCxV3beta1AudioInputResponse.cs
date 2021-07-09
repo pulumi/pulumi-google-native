@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
         /// </summary>
         public readonly string Audio;
         /// <summary>
-        /// Required. Instructs the speech recognizer how to process the speech audio.
+        /// Instructs the speech recognizer how to process the speech audio.
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowCxV3beta1InputAudioConfigResponse Config;
 

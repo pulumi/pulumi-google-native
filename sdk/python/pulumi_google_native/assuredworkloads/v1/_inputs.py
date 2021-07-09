@@ -17,40 +17,38 @@ __all__ = [
 @pulumi.input_type
 class GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs:
     def __init__(__self__, *,
-                 next_rotation_time: Optional[pulumi.Input[str]] = None,
-                 rotation_period: Optional[pulumi.Input[str]] = None):
+                 next_rotation_time: pulumi.Input[str],
+                 rotation_period: pulumi.Input[str]):
         """
         Settings specific to the Key Management Service.
-        :param pulumi.Input[str] next_rotation_time: Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
-        :param pulumi.Input[str] rotation_period: Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+        :param pulumi.Input[str] next_rotation_time: Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+        :param pulumi.Input[str] rotation_period: Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
         """
-        if next_rotation_time is not None:
-            pulumi.set(__self__, "next_rotation_time", next_rotation_time)
-        if rotation_period is not None:
-            pulumi.set(__self__, "rotation_period", rotation_period)
+        pulumi.set(__self__, "next_rotation_time", next_rotation_time)
+        pulumi.set(__self__, "rotation_period", rotation_period)
 
     @property
     @pulumi.getter(name="nextRotationTime")
-    def next_rotation_time(self) -> Optional[pulumi.Input[str]]:
+    def next_rotation_time(self) -> pulumi.Input[str]:
         """
-        Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+        Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
         """
         return pulumi.get(self, "next_rotation_time")
 
     @next_rotation_time.setter
-    def next_rotation_time(self, value: Optional[pulumi.Input[str]]):
+    def next_rotation_time(self, value: pulumi.Input[str]):
         pulumi.set(self, "next_rotation_time", value)
 
     @property
     @pulumi.getter(name="rotationPeriod")
-    def rotation_period(self) -> Optional[pulumi.Input[str]]:
+    def rotation_period(self) -> pulumi.Input[str]:
         """
-        Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+        Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
         """
         return pulumi.get(self, "rotation_period")
 
     @rotation_period.setter
-    def rotation_period(self, value: Optional[pulumi.Input[str]]):
+    def rotation_period(self, value: pulumi.Input[str]):
         pulumi.set(self, "rotation_period", value)
 
 

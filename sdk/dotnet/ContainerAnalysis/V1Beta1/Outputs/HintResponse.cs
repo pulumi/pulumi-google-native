@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
     public sealed class HintResponse
     {
         /// <summary>
-        /// Required. The human readable name of this attestation authority, for example "qa".
+        /// The human readable name of this attestation authority, for example "qa".
         /// </summary>
         public readonly string HumanReadableName;
 

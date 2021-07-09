@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     public sealed class AzureBlobStorageDataArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+        /// Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
         /// </summary>
-        [Input("azureCredentials")]
-        public Input<Inputs.AzureCredentialsArgs>? AzureCredentials { get; set; }
+        [Input("azureCredentials", required: true)]
+        public Input<Inputs.AzureCredentialsArgs> AzureCredentials { get; set; } = null!;
 
         /// <summary>
-        /// Required. The container to transfer from the Azure Storage account.
+        /// The container to transfer from the Azure Storage account.
         /// </summary>
-        [Input("container")]
-        public Input<string>? Container { get; set; }
+        [Input("container", required: true)]
+        public Input<string> Container { get; set; } = null!;
 
         /// <summary>
         /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
@@ -34,10 +34,10 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// Required. The name of the Azure Storage account.
+        /// The name of the Azure Storage account.
         /// </summary>
-        [Input("storageAccount")]
-        public Input<string>? StorageAccount { get; set; }
+        [Input("storageAccount", required: true)]
+        public Input<string> StorageAccount { get; set; } = null!;
 
         public AzureBlobStorageDataArgs()
         {

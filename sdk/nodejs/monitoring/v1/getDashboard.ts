@@ -33,7 +33,7 @@ export interface GetDashboardResult {
      */
     readonly columnLayout: outputs.monitoring.v1.ColumnLayoutResponse;
     /**
-     * Required. The mutable, human-readable name.
+     * The mutable, human-readable name.
      */
     readonly displayName: string;
     /**

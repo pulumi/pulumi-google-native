@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public Output<string> ContentUri { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
+        /// The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public Output<bool> EnableAutoReload { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The knowledge type of document content.
+        /// The knowledge type of document content.
         /// </summary>
         [Output("knowledgeTypes")]
         public Output<ImmutableArray<string>> KnowledgeTypes { get; private set; } = null!;
@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public Output<ImmutableDictionary<string, string>> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The MIME type of this document.
+        /// The MIME type of this document.
         /// </summary>
         [Output("mimeType")]
         public Output<string> MimeType { get; private set; } = null!;
@@ -133,10 +133,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public Input<string>? ContentUri { get; set; }
 
         /// <summary>
-        /// Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
+        /// The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
         /// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
@@ -150,11 +150,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         [Input("knowledgeBaseId", required: true)]
         public Input<string> KnowledgeBaseId { get; set; } = null!;
 
-        [Input("knowledgeTypes")]
+        [Input("knowledgeTypes", required: true)]
         private InputList<Pulumi.GoogleNative.Dialogflow.V2Beta1.DocumentKnowledgeTypesItem>? _knowledgeTypes;
 
         /// <summary>
-        /// Required. The knowledge type of document content.
+        /// The knowledge type of document content.
         /// </summary>
         public InputList<Pulumi.GoogleNative.Dialogflow.V2Beta1.DocumentKnowledgeTypesItem> KnowledgeTypes
         {
@@ -178,10 +178,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         }
 
         /// <summary>
-        /// Required. The MIME type of this document.
+        /// The MIME type of this document.
         /// </summary>
-        [Input("mimeType")]
-        public Input<string>? MimeType { get; set; }
+        [Input("mimeType", required: true)]
+        public Input<string> MimeType { get; set; } = null!;
 
         /// <summary>
         /// Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.

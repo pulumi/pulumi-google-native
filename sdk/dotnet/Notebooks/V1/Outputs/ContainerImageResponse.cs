@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
     public sealed class ContainerImageResponse
     {
         /// <summary>
-        /// Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+        /// The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
         /// </summary>
         public readonly string Repository;
         /// <summary>

@@ -47,7 +47,7 @@ export interface GetEntitlementResult {
      */
     readonly name: string;
     /**
-     * Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+     * The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
      */
     readonly offer: string;
     /**

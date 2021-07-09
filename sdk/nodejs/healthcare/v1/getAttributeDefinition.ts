@@ -35,11 +35,11 @@ export interface GetAttributeDefinitionArgs {
 
 export interface GetAttributeDefinitionResult {
     /**
-     * Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+     * Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
      */
     readonly allowedValues: string[];
     /**
-     * Required. The category of the attribute. The value of this field cannot be changed after creation.
+     * The category of the attribute. The value of this field cannot be changed after creation.
      */
     readonly category: string;
     /**

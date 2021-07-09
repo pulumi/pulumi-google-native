@@ -39,7 +39,7 @@ export class Envgroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
-     * Required. Host names for this environment group.
+     * Host names for this environment group.
      */
     public readonly hostnames!: pulumi.Output<string[]>;
     /**
@@ -66,6 +66,9 @@ export class Envgroup extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.hostnames === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'hostnames'");
+            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
@@ -94,9 +97,9 @@ export class Envgroup extends pulumi.CustomResource {
  */
 export interface EnvgroupArgs {
     /**
-     * Required. Host names for this environment group.
+     * Host names for this environment group.
      */
-    hostnames?: pulumi.Input<pulumi.Input<string>[]>;
+    hostnames: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * ID of the environment group.
      */

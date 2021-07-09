@@ -38,18 +38,18 @@ type LookupDeveloperResult struct {
 	CreatedAt string `pulumi:"createdAt"`
 	// ID of the developer. **Note**: IDs are generated internally by Apigee and are not guaranteed to stay the same over time.
 	DeveloperId string `pulumi:"developerId"`
-	// Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
+	// Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
 	Email string `pulumi:"email"`
-	// Required. First name of the developer.
+	// First name of the developer.
 	FirstName string `pulumi:"firstName"`
 	// Time at which the developer was last modified in milliseconds since epoch.
 	LastModifiedAt string `pulumi:"lastModifiedAt"`
-	// Required. Last name of the developer.
+	// Last name of the developer.
 	LastName string `pulumi:"lastName"`
 	// Name of the Apigee organization in which the developer resides.
 	OrganizationName string `pulumi:"organizationName"`
 	// Status of the developer. Valid values are `active` and `inactive`.
 	Status string `pulumi:"status"`
-	// Required. User name of the developer. Not used by Apigee hybrid.
+	// User name of the developer. Not used by Apigee hybrid.
 	UserName string `pulumi:"userName"`
 }

@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The `EntityKey` of the member.
+        /// Immutable. The `EntityKey` of the member.
         /// </summary>
         [Output("preferredMemberKey")]
         public Output<Outputs.EntityKeyResponse> PreferredMemberKey { get; private set; } = null!;
@@ -100,10 +100,10 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         public Input<string> GroupId { get; set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The `EntityKey` of the member.
+        /// Immutable. The `EntityKey` of the member.
         /// </summary>
-        [Input("preferredMemberKey")]
-        public Input<Inputs.EntityKeyArgs>? PreferredMemberKey { get; set; }
+        [Input("preferredMemberKey", required: true)]
+        public Input<Inputs.EntityKeyArgs> PreferredMemberKey { get; set; } = null!;
 
         [Input("roles")]
         private InputList<Inputs.MembershipRoleArgs>? _roles;

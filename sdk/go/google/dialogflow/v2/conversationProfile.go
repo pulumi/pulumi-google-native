@@ -19,7 +19,7 @@ type ConversationProfile struct {
 	AutomatedAgentConfig GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput `pulumi:"automatedAgentConfig"`
 	// Create time of the conversation profile.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Required. Human readable name for this profile. Max length 1024 bytes.
+	// Human readable name for this profile. Max length 1024 bytes.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Configuration for agent assistance to use with this profile.
 	HumanAgentAssistantConfig GoogleCloudDialogflowV2HumanAgentAssistantConfigResponseOutput `pulumi:"humanAgentAssistantConfig"`
@@ -48,6 +48,9 @@ func NewConversationProfile(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -80,7 +83,7 @@ type conversationProfileState struct {
 	AutomatedAgentConfig *GoogleCloudDialogflowV2AutomatedAgentConfigResponse `pulumi:"automatedAgentConfig"`
 	// Create time of the conversation profile.
 	CreateTime *string `pulumi:"createTime"`
-	// Required. Human readable name for this profile. Max length 1024 bytes.
+	// Human readable name for this profile. Max length 1024 bytes.
 	DisplayName *string `pulumi:"displayName"`
 	// Configuration for agent assistance to use with this profile.
 	HumanAgentAssistantConfig *GoogleCloudDialogflowV2HumanAgentAssistantConfigResponse `pulumi:"humanAgentAssistantConfig"`
@@ -107,7 +110,7 @@ type ConversationProfileState struct {
 	AutomatedAgentConfig GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrInput
 	// Create time of the conversation profile.
 	CreateTime pulumi.StringPtrInput
-	// Required. Human readable name for this profile. Max length 1024 bytes.
+	// Human readable name for this profile. Max length 1024 bytes.
 	DisplayName pulumi.StringPtrInput
 	// Configuration for agent assistance to use with this profile.
 	HumanAgentAssistantConfig GoogleCloudDialogflowV2HumanAgentAssistantConfigResponsePtrInput
@@ -136,8 +139,8 @@ func (ConversationProfileState) ElementType() reflect.Type {
 type conversationProfileArgs struct {
 	// Configuration for an automated agent to use with this profile.
 	AutomatedAgentConfig *GoogleCloudDialogflowV2AutomatedAgentConfig `pulumi:"automatedAgentConfig"`
-	// Required. Human readable name for this profile. Max length 1024 bytes.
-	DisplayName *string `pulumi:"displayName"`
+	// Human readable name for this profile. Max length 1024 bytes.
+	DisplayName string `pulumi:"displayName"`
 	// Configuration for agent assistance to use with this profile.
 	HumanAgentAssistantConfig *GoogleCloudDialogflowV2HumanAgentAssistantConfig `pulumi:"humanAgentAssistantConfig"`
 	// Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.
@@ -162,8 +165,8 @@ type conversationProfileArgs struct {
 type ConversationProfileArgs struct {
 	// Configuration for an automated agent to use with this profile.
 	AutomatedAgentConfig GoogleCloudDialogflowV2AutomatedAgentConfigPtrInput
-	// Required. Human readable name for this profile. Max length 1024 bytes.
-	DisplayName pulumi.StringPtrInput
+	// Human readable name for this profile. Max length 1024 bytes.
+	DisplayName pulumi.StringInput
 	// Configuration for agent assistance to use with this profile.
 	HumanAgentAssistantConfig GoogleCloudDialogflowV2HumanAgentAssistantConfigPtrInput
 	// Configuration for connecting to a live agent. Currently, this feature is not general available, please contact Google to get access.

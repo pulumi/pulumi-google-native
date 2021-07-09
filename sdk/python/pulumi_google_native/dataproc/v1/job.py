@@ -15,13 +15,13 @@ __all__ = ['JobArgs', 'Job']
 @pulumi.input_type
 class JobArgs:
     def __init__(__self__, *,
+                 placement: pulumi.Input['JobPlacementArgs'],
                  project: pulumi.Input[str],
                  region: pulumi.Input[str],
                  hadoop_job: Optional[pulumi.Input['HadoopJobArgs']] = None,
                  hive_job: Optional[pulumi.Input['HiveJobArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  pig_job: Optional[pulumi.Input['PigJobArgs']] = None,
-                 placement: Optional[pulumi.Input['JobPlacementArgs']] = None,
                  presto_job: Optional[pulumi.Input['PrestoJobArgs']] = None,
                  pyspark_job: Optional[pulumi.Input['PySparkJobArgs']] = None,
                  reference: Optional[pulumi.Input['JobReferenceArgs']] = None,
@@ -32,11 +32,11 @@ class JobArgs:
                  spark_sql_job: Optional[pulumi.Input['SparkSqlJobArgs']] = None):
         """
         The set of arguments for constructing a Job resource.
+        :param pulumi.Input['JobPlacementArgs'] placement: Job information, including how, when, and where to run the job.
         :param pulumi.Input['HadoopJobArgs'] hadoop_job: Optional. Job is a Hadoop job.
         :param pulumi.Input['HiveJobArgs'] hive_job: Optional. Job is a Hive job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
         :param pulumi.Input['PigJobArgs'] pig_job: Optional. Job is a Pig job.
-        :param pulumi.Input['JobPlacementArgs'] placement: Required. Job information, including how, when, and where to run the job.
         :param pulumi.Input['PrestoJobArgs'] presto_job: Optional. Job is a Presto job.
         :param pulumi.Input['PySparkJobArgs'] pyspark_job: Optional. Job is a PySpark job.
         :param pulumi.Input['JobReferenceArgs'] reference: Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST path of the job resource. If this property is not specified when a job is created, the server generates a job_id.
@@ -46,6 +46,7 @@ class JobArgs:
         :param pulumi.Input['SparkRJobArgs'] spark_r_job: Optional. Job is a SparkR job.
         :param pulumi.Input['SparkSqlJobArgs'] spark_sql_job: Optional. Job is a SparkSql job.
         """
+        pulumi.set(__self__, "placement", placement)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
         if hadoop_job is not None:
@@ -56,8 +57,6 @@ class JobArgs:
             pulumi.set(__self__, "labels", labels)
         if pig_job is not None:
             pulumi.set(__self__, "pig_job", pig_job)
-        if placement is not None:
-            pulumi.set(__self__, "placement", placement)
         if presto_job is not None:
             pulumi.set(__self__, "presto_job", presto_job)
         if pyspark_job is not None:
@@ -74,6 +73,18 @@ class JobArgs:
             pulumi.set(__self__, "spark_r_job", spark_r_job)
         if spark_sql_job is not None:
             pulumi.set(__self__, "spark_sql_job", spark_sql_job)
+
+    @property
+    @pulumi.getter
+    def placement(self) -> pulumi.Input['JobPlacementArgs']:
+        """
+        Job information, including how, when, and where to run the job.
+        """
+        return pulumi.get(self, "placement")
+
+    @placement.setter
+    def placement(self, value: pulumi.Input['JobPlacementArgs']):
+        pulumi.set(self, "placement", value)
 
     @property
     @pulumi.getter
@@ -140,18 +151,6 @@ class JobArgs:
     @pig_job.setter
     def pig_job(self, value: Optional[pulumi.Input['PigJobArgs']]):
         pulumi.set(self, "pig_job", value)
-
-    @property
-    @pulumi.getter
-    def placement(self) -> Optional[pulumi.Input['JobPlacementArgs']]:
-        """
-        Required. Job information, including how, when, and where to run the job.
-        """
-        return pulumi.get(self, "placement")
-
-    @placement.setter
-    def placement(self, value: Optional[pulumi.Input['JobPlacementArgs']]):
-        pulumi.set(self, "placement", value)
 
     @property
     @pulumi.getter(name="prestoJob")
@@ -280,7 +279,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['HiveJobArgs']] hive_job: Optional. Job is a Hive job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a job.
         :param pulumi.Input[pulumi.InputType['PigJobArgs']] pig_job: Optional. Job is a Pig job.
-        :param pulumi.Input[pulumi.InputType['JobPlacementArgs']] placement: Required. Job information, including how, when, and where to run the job.
+        :param pulumi.Input[pulumi.InputType['JobPlacementArgs']] placement: Job information, including how, when, and where to run the job.
         :param pulumi.Input[pulumi.InputType['PrestoJobArgs']] presto_job: Optional. Job is a Presto job.
         :param pulumi.Input[pulumi.InputType['PySparkJobArgs']] pyspark_job: Optional. Job is a PySpark job.
         :param pulumi.Input[pulumi.InputType['JobReferenceArgs']] reference: Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST path of the job resource. If this property is not specified when a job is created, the server generates a job_id.
@@ -345,6 +344,8 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["hive_job"] = hive_job
             __props__.__dict__["labels"] = labels
             __props__.__dict__["pig_job"] = pig_job
+            if placement is None and not opts.urn:
+                raise TypeError("Missing required property 'placement'")
             __props__.__dict__["placement"] = placement
             __props__.__dict__["presto_job"] = presto_job
             if project is None and not opts.urn:
@@ -478,7 +479,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def placement(self) -> pulumi.Output['outputs.JobPlacementResponse']:
         """
-        Required. Job information, including how, when, and where to run the job.
+        Job information, including how, when, and where to run the job.
         """
         return pulumi.get(self, "placement")
 

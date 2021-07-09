@@ -43,7 +43,7 @@ class GetAttestorResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
+        The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
         """
         return pulumi.get(self, "name")
 

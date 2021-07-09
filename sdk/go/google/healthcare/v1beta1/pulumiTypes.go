@@ -2201,8 +2201,8 @@ func (o FieldResponseArrayOutput) Index(i pulumi.IntInput) FieldResponseOutput {
 
 // Represents a user's consent in terms of the resources that can be accessed and under what conditions.
 type GoogleCloudHealthcareV1beta1ConsentPolicy struct {
-	// Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
-	AuthorizationRule *Expr `pulumi:"authorizationRule"`
+	// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+	AuthorizationRule Expr `pulumi:"authorizationRule"`
 	// The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
 	ResourceAttributes []Attribute `pulumi:"resourceAttributes"`
 }
@@ -2220,8 +2220,8 @@ type GoogleCloudHealthcareV1beta1ConsentPolicyInput interface {
 
 // Represents a user's consent in terms of the resources that can be accessed and under what conditions.
 type GoogleCloudHealthcareV1beta1ConsentPolicyArgs struct {
-	// Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
-	AuthorizationRule ExprPtrInput `pulumi:"authorizationRule"`
+	// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+	AuthorizationRule ExprInput `pulumi:"authorizationRule"`
 	// The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
 	ResourceAttributes AttributeArrayInput `pulumi:"resourceAttributes"`
 }
@@ -2278,9 +2278,9 @@ func (o GoogleCloudHealthcareV1beta1ConsentPolicyOutput) ToGoogleCloudHealthcare
 	return o
 }
 
-// Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
-func (o GoogleCloudHealthcareV1beta1ConsentPolicyOutput) AuthorizationRule() ExprPtrOutput {
-	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1ConsentPolicy) *Expr { return v.AuthorizationRule }).(ExprPtrOutput)
+// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+func (o GoogleCloudHealthcareV1beta1ConsentPolicyOutput) AuthorizationRule() ExprOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1ConsentPolicy) Expr { return v.AuthorizationRule }).(ExprOutput)
 }
 
 // The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
@@ -2310,7 +2310,7 @@ func (o GoogleCloudHealthcareV1beta1ConsentPolicyArrayOutput) Index(i pulumi.Int
 
 // Represents a user's consent in terms of the resources that can be accessed and under what conditions.
 type GoogleCloudHealthcareV1beta1ConsentPolicyResponse struct {
-	// Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+	// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
 	AuthorizationRule ExprResponse `pulumi:"authorizationRule"`
 	// The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
 	ResourceAttributes []AttributeResponse `pulumi:"resourceAttributes"`
@@ -2329,7 +2329,7 @@ type GoogleCloudHealthcareV1beta1ConsentPolicyResponseInput interface {
 
 // Represents a user's consent in terms of the resources that can be accessed and under what conditions.
 type GoogleCloudHealthcareV1beta1ConsentPolicyResponseArgs struct {
-	// Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+	// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
 	AuthorizationRule ExprResponseInput `pulumi:"authorizationRule"`
 	// The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
 	ResourceAttributes AttributeResponseArrayInput `pulumi:"resourceAttributes"`
@@ -2387,7 +2387,7 @@ func (o GoogleCloudHealthcareV1beta1ConsentPolicyResponseOutput) ToGoogleCloudHe
 	return o
 }
 
-// Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
 func (o GoogleCloudHealthcareV1beta1ConsentPolicyResponseOutput) AuthorizationRule() ExprResponseOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1beta1ConsentPolicyResponse) ExprResponse { return v.AuthorizationRule }).(ExprResponseOutput)
 }
@@ -7105,8 +7105,8 @@ type Signature struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// Optional. Timestamp of the signature.
 	SignatureTime *string `pulumi:"signatureTime"`
-	// Required. User's UUID provided by the client.
-	UserId *string `pulumi:"userId"`
+	// User's UUID provided by the client.
+	UserId string `pulumi:"userId"`
 }
 
 // SignatureInput is an input type that accepts SignatureArgs and SignatureOutput values.
@@ -7128,8 +7128,8 @@ type SignatureArgs struct {
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// Optional. Timestamp of the signature.
 	SignatureTime pulumi.StringPtrInput `pulumi:"signatureTime"`
-	// Required. User's UUID provided by the client.
-	UserId pulumi.StringPtrInput `pulumi:"userId"`
+	// User's UUID provided by the client.
+	UserId pulumi.StringInput `pulumi:"userId"`
 }
 
 func (SignatureArgs) ElementType() reflect.Type {
@@ -7225,9 +7225,9 @@ func (o SignatureOutput) SignatureTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Signature) *string { return v.SignatureTime }).(pulumi.StringPtrOutput)
 }
 
-// Required. User's UUID provided by the client.
-func (o SignatureOutput) UserId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Signature) *string { return v.UserId }).(pulumi.StringPtrOutput)
+// User's UUID provided by the client.
+func (o SignatureOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v Signature) string { return v.UserId }).(pulumi.StringOutput)
 }
 
 type SignaturePtrOutput struct{ *pulumi.OutputState }
@@ -7278,13 +7278,13 @@ func (o SignaturePtrOutput) SignatureTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. User's UUID provided by the client.
+// User's UUID provided by the client.
 func (o SignaturePtrOutput) UserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Signature) *string {
 		if v == nil {
 			return nil
 		}
-		return v.UserId
+		return &v.UserId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7296,7 +7296,7 @@ type SignatureResponse struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// Optional. Timestamp of the signature.
 	SignatureTime string `pulumi:"signatureTime"`
-	// Required. User's UUID provided by the client.
+	// User's UUID provided by the client.
 	UserId string `pulumi:"userId"`
 }
 
@@ -7319,7 +7319,7 @@ type SignatureResponseArgs struct {
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// Optional. Timestamp of the signature.
 	SignatureTime pulumi.StringInput `pulumi:"signatureTime"`
-	// Required. User's UUID provided by the client.
+	// User's UUID provided by the client.
 	UserId pulumi.StringInput `pulumi:"userId"`
 }
 
@@ -7416,7 +7416,7 @@ func (o SignatureResponseOutput) SignatureTime() pulumi.StringOutput {
 	return o.ApplyT(func(v SignatureResponse) string { return v.SignatureTime }).(pulumi.StringOutput)
 }
 
-// Required. User's UUID provided by the client.
+// User's UUID provided by the client.
 func (o SignatureResponseOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v SignatureResponse) string { return v.UserId }).(pulumi.StringOutput)
 }
@@ -7469,7 +7469,7 @@ func (o SignatureResponsePtrOutput) SignatureTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. User's UUID provided by the client.
+// User's UUID provided by the client.
 func (o SignatureResponsePtrOutput) UserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SignatureResponse) *string {
 		if v == nil {

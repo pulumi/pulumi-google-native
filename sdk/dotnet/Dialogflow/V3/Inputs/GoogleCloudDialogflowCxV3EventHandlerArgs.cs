@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     public sealed class GoogleCloudDialogflowCxV3EventHandlerArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The name of the event to handle.
+        /// The name of the event to handle.
         /// </summary>
-        [Input("event")]
-        public Input<string>? Event { get; set; }
+        [Input("event", required: true)]
+        public Input<string> Event { get; set; } = null!;
 
         /// <summary>
         /// The target flow to transition to. Format: `projects//locations//agents//flows/`.

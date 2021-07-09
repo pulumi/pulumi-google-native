@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.DsRecordResponse> DsRecords;
         /// <summary>
-        /// Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+        /// The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
         /// </summary>
         public readonly string DsState;
         /// <summary>

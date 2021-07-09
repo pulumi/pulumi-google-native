@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// </summary>
     public sealed class InstallationArgs : Pulumi.ResourceArgs
     {
-        [Input("location")]
+        [Input("location", required: true)]
         private InputList<Inputs.LocationArgs>? _location;
 
         /// <summary>
-        /// Required. All of the places within the filesystem versions of this package have been found.
+        /// All of the places within the filesystem versions of this package have been found.
         /// </summary>
         public InputList<Inputs.LocationArgs> Location
         {

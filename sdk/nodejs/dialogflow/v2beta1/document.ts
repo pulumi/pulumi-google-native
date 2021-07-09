@@ -44,7 +44,7 @@ export class Document extends pulumi.CustomResource {
      */
     public readonly contentUri!: pulumi.Output<string>;
     /**
-     * Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
+     * The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -52,7 +52,7 @@ export class Document extends pulumi.CustomResource {
      */
     public readonly enableAutoReload!: pulumi.Output<boolean>;
     /**
-     * Required. The knowledge type of document content.
+     * The knowledge type of document content.
      */
     public readonly knowledgeTypes!: pulumi.Output<string[]>;
     /**
@@ -64,7 +64,7 @@ export class Document extends pulumi.CustomResource {
      */
     public readonly metadata!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Required. The MIME type of this document.
+     * The MIME type of this document.
      */
     public readonly mimeType!: pulumi.Output<string>;
     /**
@@ -87,11 +87,20 @@ export class Document extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
             if ((!args || args.knowledgeBaseId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'knowledgeBaseId'");
             }
+            if ((!args || args.knowledgeTypes === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'knowledgeTypes'");
+            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
+            }
+            if ((!args || args.mimeType === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'mimeType'");
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
@@ -142,9 +151,9 @@ export interface DocumentArgs {
      */
     contentUri?: pulumi.Input<string>;
     /**
-     * Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
+     * The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
      */
@@ -152,18 +161,18 @@ export interface DocumentArgs {
     importGcsCustomMetadata?: pulumi.Input<string>;
     knowledgeBaseId: pulumi.Input<string>;
     /**
-     * Required. The knowledge type of document content.
+     * The knowledge type of document content.
      */
-    knowledgeTypes?: pulumi.Input<pulumi.Input<enums.dialogflow.v2beta1.DocumentKnowledgeTypesItem>[]>;
+    knowledgeTypes: pulumi.Input<pulumi.Input<enums.dialogflow.v2beta1.DocumentKnowledgeTypesItem>[]>;
     location: pulumi.Input<string>;
     /**
      * Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
      */
     metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. The MIME type of this document.
+     * The MIME type of this document.
      */
-    mimeType?: pulumi.Input<string>;
+    mimeType: pulumi.Input<string>;
     /**
      * Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
      */

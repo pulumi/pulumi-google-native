@@ -39,7 +39,7 @@ export interface GetEntityTypeResult {
      */
     readonly autoExpansionMode: string;
     /**
-     * Required. The human-readable name of the entity type, unique within the agent.
+     * The human-readable name of the entity type, unique within the agent.
      */
     readonly displayName: string;
     /**
@@ -55,7 +55,7 @@ export interface GetEntityTypeResult {
      */
     readonly excludedPhrases: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponse[];
     /**
-     * Required. Indicates the kind of entity type.
+     * Indicates the kind of entity type.
      */
     readonly kind: string;
     /**

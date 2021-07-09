@@ -23,7 +23,7 @@ type Certificate struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. Labels with user-defined metadata.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Required. Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
+	// Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
 	Lifetime pulumi.StringOutput `pulumi:"lifetime"`
 	// The resource path for this Certificate in the format `projects/*/locations/*/certificateAuthorities/*/certificates/*`.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -48,6 +48,9 @@ func NewCertificate(ctx *pulumi.Context,
 
 	if args.CertificateAuthorityId == nil {
 		return nil, errors.New("invalid value for required argument 'CertificateAuthorityId'")
+	}
+	if args.Lifetime == nil {
+		return nil, errors.New("invalid value for required argument 'Lifetime'")
 	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
@@ -85,7 +88,7 @@ type certificateState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Optional. Labels with user-defined metadata.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
+	// Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
 	Lifetime *string `pulumi:"lifetime"`
 	// The resource path for this Certificate in the format `projects/*/locations/*/certificateAuthorities/*/certificates/*`.
 	Name *string `pulumi:"name"`
@@ -110,7 +113,7 @@ type CertificateState struct {
 	CreateTime pulumi.StringPtrInput
 	// Optional. Labels with user-defined metadata.
 	Labels pulumi.StringMapInput
-	// Required. Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
+	// Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
 	Lifetime pulumi.StringPtrInput
 	// The resource path for this Certificate in the format `projects/*/locations/*/certificateAuthorities/*/certificates/*`.
 	Name pulumi.StringPtrInput
@@ -137,9 +140,9 @@ type certificateArgs struct {
 	Config *CertificateConfig `pulumi:"config"`
 	// Optional. Labels with user-defined metadata.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
-	Lifetime *string `pulumi:"lifetime"`
-	Location string  `pulumi:"location"`
+	// Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
+	Lifetime string `pulumi:"lifetime"`
+	Location string `pulumi:"location"`
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 	PemCsr    *string `pulumi:"pemCsr"`
 	Project   string  `pulumi:"project"`
@@ -154,8 +157,8 @@ type CertificateArgs struct {
 	Config CertificateConfigPtrInput
 	// Optional. Labels with user-defined metadata.
 	Labels pulumi.StringMapInput
-	// Required. Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
-	Lifetime pulumi.StringPtrInput
+	// Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
+	Lifetime pulumi.StringInput
 	Location pulumi.StringInput
 	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
 	PemCsr    pulumi.StringPtrInput

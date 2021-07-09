@@ -47,7 +47,7 @@ export interface GetDatabaseResult {
      */
     readonly encryptionInfo: outputs.spanner.v1.EncryptionInfoResponse[];
     /**
-     * Required. The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
+     * The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
      */
     readonly name: string;
     /**

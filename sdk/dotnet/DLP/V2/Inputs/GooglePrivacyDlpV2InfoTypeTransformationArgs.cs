@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         }
 
         /// <summary>
-        /// Required. Primitive transformation to apply to the infoType.
+        /// Primitive transformation to apply to the infoType.
         /// </summary>
-        [Input("primitiveTransformation")]
-        public Input<Inputs.GooglePrivacyDlpV2PrimitiveTransformationArgs>? PrimitiveTransformation { get; set; }
+        [Input("primitiveTransformation", required: true)]
+        public Input<Inputs.GooglePrivacyDlpV2PrimitiveTransformationArgs> PrimitiveTransformation { get; set; } = null!;
 
         public GooglePrivacyDlpV2InfoTypeTransformationArgs()
         {

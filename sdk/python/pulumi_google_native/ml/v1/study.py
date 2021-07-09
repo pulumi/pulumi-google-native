@@ -18,17 +18,16 @@ class StudyArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 study_id: pulumi.Input[str],
-                 study_config: Optional[pulumi.Input['GoogleCloudMlV1__StudyConfigArgs']] = None):
+                 study_config: pulumi.Input['GoogleCloudMlV1__StudyConfigArgs'],
+                 study_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a Study resource.
-        :param pulumi.Input['GoogleCloudMlV1__StudyConfigArgs'] study_config: Required. Configuration of the study.
+        :param pulumi.Input['GoogleCloudMlV1__StudyConfigArgs'] study_config: Configuration of the study.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "study_config", study_config)
         pulumi.set(__self__, "study_id", study_id)
-        if study_config is not None:
-            pulumi.set(__self__, "study_config", study_config)
 
     @property
     @pulumi.getter
@@ -49,6 +48,18 @@ class StudyArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="studyConfig")
+    def study_config(self) -> pulumi.Input['GoogleCloudMlV1__StudyConfigArgs']:
+        """
+        Configuration of the study.
+        """
+        return pulumi.get(self, "study_config")
+
+    @study_config.setter
+    def study_config(self, value: pulumi.Input['GoogleCloudMlV1__StudyConfigArgs']):
+        pulumi.set(self, "study_config", value)
+
+    @property
     @pulumi.getter(name="studyId")
     def study_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "study_id")
@@ -56,18 +67,6 @@ class StudyArgs:
     @study_id.setter
     def study_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "study_id", value)
-
-    @property
-    @pulumi.getter(name="studyConfig")
-    def study_config(self) -> Optional[pulumi.Input['GoogleCloudMlV1__StudyConfigArgs']]:
-        """
-        Required. Configuration of the study.
-        """
-        return pulumi.get(self, "study_config")
-
-    @study_config.setter
-    def study_config(self, value: Optional[pulumi.Input['GoogleCloudMlV1__StudyConfigArgs']]):
-        pulumi.set(self, "study_config", value)
 
 
 class Study(pulumi.CustomResource):
@@ -85,7 +84,7 @@ class Study(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__StudyConfigArgs']] study_config: Required. Configuration of the study.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__StudyConfigArgs']] study_config: Configuration of the study.
         """
         ...
     @overload
@@ -133,6 +132,8 @@ class Study(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            if study_config is None and not opts.urn:
+                raise TypeError("Missing required property 'study_config'")
             __props__.__dict__["study_config"] = study_config
             if study_id is None and not opts.urn:
                 raise TypeError("Missing required property 'study_id'")
@@ -206,7 +207,7 @@ class Study(pulumi.CustomResource):
     @pulumi.getter(name="studyConfig")
     def study_config(self) -> pulumi.Output['outputs.GoogleCloudMlV1__StudyConfigResponse']:
         """
-        Required. Configuration of the study.
+        Configuration of the study.
         """
         return pulumi.get(self, "study_config")
 

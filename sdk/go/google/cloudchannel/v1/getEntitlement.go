@@ -32,7 +32,7 @@ type LookupEntitlementResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.
 	Name string `pulumi:"name"`
-	// Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+	// The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
 	Offer string `pulumi:"offer"`
 	// Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
 	Parameters []GoogleCloudChannelV1ParameterResponse `pulumi:"parameters"`

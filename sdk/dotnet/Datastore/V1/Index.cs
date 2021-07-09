@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Datastore.V1
     public partial class Index : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+        /// The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
         /// </summary>
         [Output("ancestor")]
         public Output<string> Ancestor { get; private set; } = null!;
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Datastore.V1
         public Output<string> IndexId { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The entity kind to which this index applies.
+        /// The entity kind to which this index applies.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Datastore.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Required. An ordered sequence of property names and their index attributes.
+        /// An ordered sequence of property names and their index attributes.
         /// </summary>
         [Output("properties")]
         public Output<ImmutableArray<Outputs.GoogleDatastoreAdminV1IndexedPropertyResponse>> Properties { get; private set; } = null!;
@@ -97,25 +97,25 @@ namespace Pulumi.GoogleNative.Datastore.V1
     public sealed class IndexArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+        /// The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
         /// </summary>
-        [Input("ancestor")]
-        public Input<Pulumi.GoogleNative.Datastore.V1.IndexAncestor>? Ancestor { get; set; }
+        [Input("ancestor", required: true)]
+        public Input<Pulumi.GoogleNative.Datastore.V1.IndexAncestor> Ancestor { get; set; } = null!;
 
         /// <summary>
-        /// Required. The entity kind to which this index applies.
+        /// The entity kind to which this index applies.
         /// </summary>
-        [Input("kind")]
-        public Input<string>? Kind { get; set; }
+        [Input("kind", required: true)]
+        public Input<string> Kind { get; set; } = null!;
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
-        [Input("properties")]
+        [Input("properties", required: true)]
         private InputList<Inputs.GoogleDatastoreAdminV1IndexedPropertyArgs>? _properties;
 
         /// <summary>
-        /// Required. An ordered sequence of property names and their index attributes.
+        /// An ordered sequence of property names and their index attributes.
         /// </summary>
         public InputList<Inputs.GoogleDatastoreAdminV1IndexedPropertyArgs> Properties
         {

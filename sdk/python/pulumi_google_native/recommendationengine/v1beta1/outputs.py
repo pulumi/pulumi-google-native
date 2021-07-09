@@ -28,7 +28,7 @@ class GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse
                  categories: Sequence[str]):
         """
         Category represents catalog item category hierarchy.
-        :param Sequence[str] categories: Required. Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
+        :param Sequence[str] categories: Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
         """
         pulumi.set(__self__, "categories", categories)
 
@@ -36,7 +36,7 @@ class GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse
     @pulumi.getter
     def categories(self) -> Sequence[str]:
         """
-        Required. Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
+        Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
         """
         return pulumi.get(self, "categories")
 
@@ -105,7 +105,7 @@ class GoogleCloudRecommendationengineV1beta1ImageResponse(dict):
         """
         Catalog item thumbnail/detail image.
         :param int height: Optional. Height of the image in number of pixels.
-        :param str uri: Required. URL of the image with a length limit of 5 KiB.
+        :param str uri: URL of the image with a length limit of 5 KiB.
         :param int width: Optional. Width of the image in number of pixels.
         """
         pulumi.set(__self__, "height", height)
@@ -124,7 +124,7 @@ class GoogleCloudRecommendationengineV1beta1ImageResponse(dict):
     @pulumi.getter
     def uri(self) -> str:
         """
-        Required. URL of the image with a length limit of 5 KiB.
+        URL of the image with a length limit of 5 KiB.
         """
         return pulumi.get(self, "uri")
 
@@ -199,8 +199,8 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse
                  min: float):
         """
         Product price range when there are a range of prices for different variations of the same product.
-        :param float max: Required. The maximum product price.
-        :param float min: Required. The minimum product price.
+        :param float max: The maximum product price.
+        :param float min: The minimum product price.
         """
         pulumi.set(__self__, "max", max)
         pulumi.set(__self__, "min", min)
@@ -209,7 +209,7 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse
     @pulumi.getter
     def max(self) -> float:
         """
-        Required. The maximum product price.
+        The maximum product price.
         """
         return pulumi.get(self, "max")
 
@@ -217,7 +217,7 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse
     @pulumi.getter
     def min(self) -> float:
         """
-        Required. The minimum product price.
+        The minimum product price.
         """
         return pulumi.get(self, "min")
 

@@ -34,16 +34,16 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public Input<Inputs.GoogleCloudDialogflowV2IntentMessageImageArgs>? Image { get; set; }
 
         /// <summary>
-        /// Required. Action to present to the user.
+        /// Action to present to the user.
         /// </summary>
-        [Input("openUriAction")]
-        public Input<Inputs.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs>? OpenUriAction { get; set; }
+        [Input("openUriAction", required: true)]
+        public Input<Inputs.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs> OpenUriAction { get; set; } = null!;
 
         /// <summary>
-        /// Required. Title of the carousel item. Maximum of two lines of text.
+        /// Title of the carousel item. Maximum of two lines of text.
         /// </summary>
-        [Input("title")]
-        public Input<string>? Title { get; set; }
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
 
         public GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs()
         {

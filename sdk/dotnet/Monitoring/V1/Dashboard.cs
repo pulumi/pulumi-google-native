@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         public Output<Outputs.ColumnLayoutResponse> ColumnLayout { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The mutable, human-readable name.
+        /// The mutable, human-readable name.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -109,10 +109,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         public Input<Inputs.ColumnLayoutArgs>? ColumnLayout { get; set; }
 
         /// <summary>
-        /// Required. The mutable, human-readable name.
+        /// The mutable, human-readable name.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
         /// etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are expected to put that etag in the request to UpdateDashboard to ensure that their change will be applied to the same version of the Dashboard configuration. The field should not be passed during dashboard creation.

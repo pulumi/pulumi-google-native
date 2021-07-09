@@ -48,7 +48,7 @@ namespace Pulumi.GoogleNative.Jobs.V4
         /// </summary>
         public readonly Outputs.CompanyDerivedInfoResponse DerivedInfo;
         /// <summary>
-        /// Required. The display name of the company, for example, "Google LLC".
+        /// The display name of the company, for example, "Google LLC".
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.Jobs.V4
         /// </summary>
         public readonly string EeoText;
         /// <summary>
-        /// Required. Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
+        /// Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
         /// </summary>
         public readonly string ExternalId;
         /// <summary>

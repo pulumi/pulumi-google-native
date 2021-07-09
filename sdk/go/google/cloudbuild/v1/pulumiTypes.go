@@ -661,7 +661,7 @@ type BuildType struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The location of the source files to build.
 	Source *Source `pulumi:"source"`
-	// Required. The operations to be performed on the workspace.
+	// The operations to be performed on the workspace.
 	Steps []BuildStep `pulumi:"steps"`
 	// Substitutions data for `Build` resource.
 	Substitutions map[string]string `pulumi:"substitutions"`
@@ -702,7 +702,7 @@ type BuildTypeArgs struct {
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 	// The location of the source files to build.
 	Source SourcePtrInput `pulumi:"source"`
-	// Required. The operations to be performed on the workspace.
+	// The operations to be performed on the workspace.
 	Steps BuildStepArrayInput `pulumi:"steps"`
 	// Substitutions data for `Build` resource.
 	Substitutions pulumi.StringMapInput `pulumi:"substitutions"`
@@ -835,7 +835,7 @@ func (o BuildTypeOutput) Source() SourcePtrOutput {
 	return o.ApplyT(func(v BuildType) *Source { return v.Source }).(SourcePtrOutput)
 }
 
-// Required. The operations to be performed on the workspace.
+// The operations to be performed on the workspace.
 func (o BuildTypeOutput) Steps() BuildStepArrayOutput {
 	return o.ApplyT(func(v BuildType) []BuildStep { return v.Steps }).(BuildStepArrayOutput)
 }
@@ -963,7 +963,7 @@ func (o BuildTypePtrOutput) Source() SourcePtrOutput {
 	}).(SourcePtrOutput)
 }
 
-// Required. The operations to be performed on the workspace.
+// The operations to be performed on the workspace.
 func (o BuildTypePtrOutput) Steps() BuildStepArrayOutput {
 	return o.ApplyT(func(v *BuildType) []BuildStep {
 		if v == nil {
@@ -1731,7 +1731,7 @@ type BuildResponse struct {
 	Status string `pulumi:"status"`
 	// Customer-readable message about the current status.
 	StatusDetail string `pulumi:"statusDetail"`
-	// Required. The operations to be performed on the workspace.
+	// The operations to be performed on the workspace.
 	Steps []BuildStepResponse `pulumi:"steps"`
 	// Substitutions data for `Build` resource.
 	Substitutions map[string]string `pulumi:"substitutions"`
@@ -1796,7 +1796,7 @@ type BuildResponseArgs struct {
 	Status pulumi.StringInput `pulumi:"status"`
 	// Customer-readable message about the current status.
 	StatusDetail pulumi.StringInput `pulumi:"statusDetail"`
-	// Required. The operations to be performed on the workspace.
+	// The operations to be performed on the workspace.
 	Steps BuildStepResponseArrayInput `pulumi:"steps"`
 	// Substitutions data for `Build` resource.
 	Substitutions pulumi.StringMapInput `pulumi:"substitutions"`
@@ -1986,7 +1986,7 @@ func (o BuildResponseOutput) StatusDetail() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildResponse) string { return v.StatusDetail }).(pulumi.StringOutput)
 }
 
-// Required. The operations to be performed on the workspace.
+// The operations to be performed on the workspace.
 func (o BuildResponseOutput) Steps() BuildStepResponseArrayOutput {
 	return o.ApplyT(func(v BuildResponse) []BuildStepResponse { return v.Steps }).(BuildStepResponseArrayOutput)
 }
@@ -2229,7 +2229,7 @@ func (o BuildResponsePtrOutput) StatusDetail() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The operations to be performed on the workspace.
+// The operations to be performed on the workspace.
 func (o BuildResponsePtrOutput) Steps() BuildStepResponseArrayOutput {
 	return o.ApplyT(func(v *BuildResponse) []BuildStepResponse {
 		if v == nil {
@@ -2291,8 +2291,8 @@ type BuildStep struct {
 	Env []string `pulumi:"env"`
 	// Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
 	Id *string `pulumi:"id"`
-	// Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
-	Name *string `pulumi:"name"`
+	// The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
+	Name string `pulumi:"name"`
 	// A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
 	SecretEnv []string `pulumi:"secretEnv"`
 	// Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out.
@@ -2326,8 +2326,8 @@ type BuildStepArgs struct {
 	Env pulumi.StringArrayInput `pulumi:"env"`
 	// Unique identifier for this build step, used in `wait_for` to reference this build step as a dependency.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
+	Name pulumi.StringInput `pulumi:"name"`
 	// A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
 	SecretEnv pulumi.StringArrayInput `pulumi:"secretEnv"`
 	// Time limit for executing this build step. If not defined, the step has no time limit and will be allowed to continue to run until either it completes or the build itself times out.
@@ -2415,9 +2415,9 @@ func (o BuildStepOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildStep) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
-func (o BuildStepOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuildStep) *string { return v.Name }).(pulumi.StringPtrOutput)
+// The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
+func (o BuildStepOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildStep) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
@@ -2470,7 +2470,7 @@ type BuildStepResponse struct {
 	Entrypoint string `pulumi:"entrypoint"`
 	// A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
 	Env []string `pulumi:"env"`
-	// Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
+	// The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
 	Name string `pulumi:"name"`
 	// Stores timing information for pulling this build step's builder image only.
 	PullTiming TimeSpanResponse `pulumi:"pullTiming"`
@@ -2509,7 +2509,7 @@ type BuildStepResponseArgs struct {
 	Entrypoint pulumi.StringInput `pulumi:"entrypoint"`
 	// A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
 	Env pulumi.StringArrayInput `pulumi:"env"`
-	// Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
+	// The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Stores timing information for pulling this build step's builder image only.
 	PullTiming TimeSpanResponseInput `pulumi:"pullTiming"`
@@ -2599,7 +2599,7 @@ func (o BuildStepResponseOutput) Env() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BuildStepResponse) []string { return v.Env }).(pulumi.StringArrayOutput)
 }
 
-// Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
+// The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
 func (o BuildStepResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildStepResponse) string { return v.Name }).(pulumi.StringOutput)
 }

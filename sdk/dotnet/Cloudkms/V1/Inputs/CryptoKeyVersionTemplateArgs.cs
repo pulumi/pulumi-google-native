@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Cloudkms.V1.Inputs
     public sealed class CryptoKeyVersionTemplateArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
+        /// Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
         /// </summary>
-        [Input("algorithm")]
-        public Input<Pulumi.GoogleNative.Cloudkms.V1.CryptoKeyVersionTemplateAlgorithm>? Algorithm { get; set; }
+        [Input("algorithm", required: true)]
+        public Input<Pulumi.GoogleNative.Cloudkms.V1.CryptoKeyVersionTemplateAlgorithm> Algorithm { get; set; } = null!;
 
         /// <summary>
         /// ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.

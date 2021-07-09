@@ -39,7 +39,7 @@ export interface GetPipelineResult {
      */
     readonly inputParameters: outputs.genomics.v1alpha2.PipelineParameterResponse[];
     /**
-     * Required. A user specified pipeline name that does not have to be unique. This name can be used for filtering Pipelines in ListPipelines.
+     * A user specified pipeline name that does not have to be unique. This name can be used for filtering Pipelines in ListPipelines.
      */
     readonly name: string;
     /**
@@ -51,11 +51,11 @@ export interface GetPipelineResult {
      */
     readonly pipelineId: string;
     /**
-     * Required. The project in which to create the pipeline. The caller must have WRITE access.
+     * The project in which to create the pipeline. The caller must have WRITE access.
      */
     readonly project: string;
     /**
-     * Required. Specifies resource requirements for the pipeline run. Required fields: * minimumCpuCores * minimumRamGb
+     * Specifies resource requirements for the pipeline run. Required fields: * minimumCpuCores * minimumRamGb
      */
     readonly resources: outputs.genomics.v1alpha2.PipelineResourcesResponse;
 }

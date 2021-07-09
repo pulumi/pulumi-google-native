@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -24,7 +25,7 @@ type Folder struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The resource name of the folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
+	// The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
 	Parent pulumi.StringOutput `pulumi:"parent"`
 	// The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder and UndeleteFolder.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -36,9 +37,12 @@ type Folder struct {
 func NewFolder(ctx *pulumi.Context,
 	name string, args *FolderArgs, opts ...pulumi.ResourceOption) (*Folder, error) {
 	if args == nil {
-		args = &FolderArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Parent == nil {
+		return nil, errors.New("invalid value for required argument 'Parent'")
+	}
 	var resource Folder
 	err := ctx.RegisterResource("google-native:cloudresourcemanager/v3:Folder", name, args, &resource, opts...)
 	if err != nil {
@@ -71,7 +75,7 @@ type folderState struct {
 	Etag *string `pulumi:"etag"`
 	// The resource name of the folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
 	Name *string `pulumi:"name"`
-	// Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
+	// The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
 	Parent *string `pulumi:"parent"`
 	// The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder and UndeleteFolder.
 	State *string `pulumi:"state"`
@@ -90,7 +94,7 @@ type FolderState struct {
 	Etag pulumi.StringPtrInput
 	// The resource name of the folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
 	Name pulumi.StringPtrInput
-	// Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
+	// The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
 	Parent pulumi.StringPtrInput
 	// The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder and UndeleteFolder.
 	State pulumi.StringPtrInput
@@ -105,16 +109,16 @@ func (FolderState) ElementType() reflect.Type {
 type folderArgs struct {
 	// The folder's display name. A folder's display name must be unique amongst its siblings. For example, no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
 	DisplayName *string `pulumi:"displayName"`
-	// Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
-	Parent *string `pulumi:"parent"`
+	// The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
+	Parent string `pulumi:"parent"`
 }
 
 // The set of arguments for constructing a Folder resource.
 type FolderArgs struct {
 	// The folder's display name. A folder's display name must be unique amongst its siblings. For example, no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
 	DisplayName pulumi.StringPtrInput
-	// Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
-	Parent pulumi.StringPtrInput
+	// The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
+	Parent pulumi.StringInput
 }
 
 func (FolderArgs) ElementType() reflect.Type {

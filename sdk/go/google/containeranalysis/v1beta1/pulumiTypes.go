@@ -1484,10 +1484,10 @@ func (o AuthorityResponsePtrOutput) Hint() HintResponsePtrOutput {
 
 // Basis describes the base image portion (Note) of the DockerImage relationship. Linked occurrences are derived from this or an equivalent image via: FROM Or an equivalent reference, e.g. a tag of the resource_url.
 type Basis struct {
-	// Required. Immutable. The fingerprint of the base image.
-	Fingerprint *Fingerprint `pulumi:"fingerprint"`
-	// Required. Immutable. The resource_url for the resource representing the basis of associated occurrence images.
-	ResourceUrl *string `pulumi:"resourceUrl"`
+	// Immutable. The fingerprint of the base image.
+	Fingerprint Fingerprint `pulumi:"fingerprint"`
+	// Immutable. The resource_url for the resource representing the basis of associated occurrence images.
+	ResourceUrl string `pulumi:"resourceUrl"`
 }
 
 // BasisInput is an input type that accepts BasisArgs and BasisOutput values.
@@ -1503,10 +1503,10 @@ type BasisInput interface {
 
 // Basis describes the base image portion (Note) of the DockerImage relationship. Linked occurrences are derived from this or an equivalent image via: FROM Or an equivalent reference, e.g. a tag of the resource_url.
 type BasisArgs struct {
-	// Required. Immutable. The fingerprint of the base image.
-	Fingerprint FingerprintPtrInput `pulumi:"fingerprint"`
-	// Required. Immutable. The resource_url for the resource representing the basis of associated occurrence images.
-	ResourceUrl pulumi.StringPtrInput `pulumi:"resourceUrl"`
+	// Immutable. The fingerprint of the base image.
+	Fingerprint FingerprintInput `pulumi:"fingerprint"`
+	// Immutable. The resource_url for the resource representing the basis of associated occurrence images.
+	ResourceUrl pulumi.StringInput `pulumi:"resourceUrl"`
 }
 
 func (BasisArgs) ElementType() reflect.Type {
@@ -1587,14 +1587,14 @@ func (o BasisOutput) ToBasisPtrOutputWithContext(ctx context.Context) BasisPtrOu
 	}).(BasisPtrOutput)
 }
 
-// Required. Immutable. The fingerprint of the base image.
-func (o BasisOutput) Fingerprint() FingerprintPtrOutput {
-	return o.ApplyT(func(v Basis) *Fingerprint { return v.Fingerprint }).(FingerprintPtrOutput)
+// Immutable. The fingerprint of the base image.
+func (o BasisOutput) Fingerprint() FingerprintOutput {
+	return o.ApplyT(func(v Basis) Fingerprint { return v.Fingerprint }).(FingerprintOutput)
 }
 
-// Required. Immutable. The resource_url for the resource representing the basis of associated occurrence images.
-func (o BasisOutput) ResourceUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Basis) *string { return v.ResourceUrl }).(pulumi.StringPtrOutput)
+// Immutable. The resource_url for the resource representing the basis of associated occurrence images.
+func (o BasisOutput) ResourceUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v Basis) string { return v.ResourceUrl }).(pulumi.StringOutput)
 }
 
 type BasisPtrOutput struct{ *pulumi.OutputState }
@@ -1615,31 +1615,31 @@ func (o BasisPtrOutput) Elem() BasisOutput {
 	return o.ApplyT(func(v *Basis) Basis { return *v }).(BasisOutput)
 }
 
-// Required. Immutable. The fingerprint of the base image.
+// Immutable. The fingerprint of the base image.
 func (o BasisPtrOutput) Fingerprint() FingerprintPtrOutput {
 	return o.ApplyT(func(v *Basis) *Fingerprint {
 		if v == nil {
 			return nil
 		}
-		return v.Fingerprint
+		return &v.Fingerprint
 	}).(FingerprintPtrOutput)
 }
 
-// Required. Immutable. The resource_url for the resource representing the basis of associated occurrence images.
+// Immutable. The resource_url for the resource representing the basis of associated occurrence images.
 func (o BasisPtrOutput) ResourceUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Basis) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ResourceUrl
+		return &v.ResourceUrl
 	}).(pulumi.StringPtrOutput)
 }
 
 // Basis describes the base image portion (Note) of the DockerImage relationship. Linked occurrences are derived from this or an equivalent image via: FROM Or an equivalent reference, e.g. a tag of the resource_url.
 type BasisResponse struct {
-	// Required. Immutable. The fingerprint of the base image.
+	// Immutable. The fingerprint of the base image.
 	Fingerprint FingerprintResponse `pulumi:"fingerprint"`
-	// Required. Immutable. The resource_url for the resource representing the basis of associated occurrence images.
+	// Immutable. The resource_url for the resource representing the basis of associated occurrence images.
 	ResourceUrl string `pulumi:"resourceUrl"`
 }
 
@@ -1656,9 +1656,9 @@ type BasisResponseInput interface {
 
 // Basis describes the base image portion (Note) of the DockerImage relationship. Linked occurrences are derived from this or an equivalent image via: FROM Or an equivalent reference, e.g. a tag of the resource_url.
 type BasisResponseArgs struct {
-	// Required. Immutable. The fingerprint of the base image.
+	// Immutable. The fingerprint of the base image.
 	Fingerprint FingerprintResponseInput `pulumi:"fingerprint"`
-	// Required. Immutable. The resource_url for the resource representing the basis of associated occurrence images.
+	// Immutable. The resource_url for the resource representing the basis of associated occurrence images.
 	ResourceUrl pulumi.StringInput `pulumi:"resourceUrl"`
 }
 
@@ -1740,12 +1740,12 @@ func (o BasisResponseOutput) ToBasisResponsePtrOutputWithContext(ctx context.Con
 	}).(BasisResponsePtrOutput)
 }
 
-// Required. Immutable. The fingerprint of the base image.
+// Immutable. The fingerprint of the base image.
 func (o BasisResponseOutput) Fingerprint() FingerprintResponseOutput {
 	return o.ApplyT(func(v BasisResponse) FingerprintResponse { return v.Fingerprint }).(FingerprintResponseOutput)
 }
 
-// Required. Immutable. The resource_url for the resource representing the basis of associated occurrence images.
+// Immutable. The resource_url for the resource representing the basis of associated occurrence images.
 func (o BasisResponseOutput) ResourceUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v BasisResponse) string { return v.ResourceUrl }).(pulumi.StringOutput)
 }
@@ -1768,7 +1768,7 @@ func (o BasisResponsePtrOutput) Elem() BasisResponseOutput {
 	return o.ApplyT(func(v *BasisResponse) BasisResponse { return *v }).(BasisResponseOutput)
 }
 
-// Required. Immutable. The fingerprint of the base image.
+// Immutable. The fingerprint of the base image.
 func (o BasisResponsePtrOutput) Fingerprint() FingerprintResponsePtrOutput {
 	return o.ApplyT(func(v *BasisResponse) *FingerprintResponse {
 		if v == nil {
@@ -1778,7 +1778,7 @@ func (o BasisResponsePtrOutput) Fingerprint() FingerprintResponsePtrOutput {
 	}).(FingerprintResponsePtrOutput)
 }
 
-// Required. Immutable. The resource_url for the resource representing the basis of associated occurrence images.
+// Immutable. The resource_url for the resource representing the basis of associated occurrence images.
 func (o BasisResponsePtrOutput) ResourceUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BasisResponse) *string {
 		if v == nil {
@@ -2026,8 +2026,8 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 
 // Note holding the version of the provider's builder and the signature of the provenance message in the build details occurrence.
 type Build struct {
-	// Required. Immutable. Version of the builder which produced this build.
-	BuilderVersion *string `pulumi:"builderVersion"`
+	// Immutable. Version of the builder which produced this build.
+	BuilderVersion string `pulumi:"builderVersion"`
 	// Signature of the build in occurrences pointing to this build note containing build details.
 	Signature *BuildSignature `pulumi:"signature"`
 }
@@ -2045,8 +2045,8 @@ type BuildInput interface {
 
 // Note holding the version of the provider's builder and the signature of the provenance message in the build details occurrence.
 type BuildArgs struct {
-	// Required. Immutable. Version of the builder which produced this build.
-	BuilderVersion pulumi.StringPtrInput `pulumi:"builderVersion"`
+	// Immutable. Version of the builder which produced this build.
+	BuilderVersion pulumi.StringInput `pulumi:"builderVersion"`
 	// Signature of the build in occurrences pointing to this build note containing build details.
 	Signature BuildSignaturePtrInput `pulumi:"signature"`
 }
@@ -2129,9 +2129,9 @@ func (o BuildOutput) ToBuildPtrOutputWithContext(ctx context.Context) BuildPtrOu
 	}).(BuildPtrOutput)
 }
 
-// Required. Immutable. Version of the builder which produced this build.
-func (o BuildOutput) BuilderVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Build) *string { return v.BuilderVersion }).(pulumi.StringPtrOutput)
+// Immutable. Version of the builder which produced this build.
+func (o BuildOutput) BuilderVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v Build) string { return v.BuilderVersion }).(pulumi.StringOutput)
 }
 
 // Signature of the build in occurrences pointing to this build note containing build details.
@@ -2157,13 +2157,13 @@ func (o BuildPtrOutput) Elem() BuildOutput {
 	return o.ApplyT(func(v *Build) Build { return *v }).(BuildOutput)
 }
 
-// Required. Immutable. Version of the builder which produced this build.
+// Immutable. Version of the builder which produced this build.
 func (o BuildPtrOutput) BuilderVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Build) *string {
 		if v == nil {
 			return nil
 		}
-		return v.BuilderVersion
+		return &v.BuilderVersion
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2193,8 +2193,8 @@ type BuildProvenance struct {
 	Creator *string `pulumi:"creator"`
 	// Time at which execution of the build was finished.
 	EndTime *string `pulumi:"endTime"`
-	// Required. Unique identifier of the build.
-	Id *string `pulumi:"id"`
+	// Unique identifier of the build.
+	Id string `pulumi:"id"`
 	// URI where any logs for this provenance were written.
 	LogsUri *string `pulumi:"logsUri"`
 	// ID of the project.
@@ -2234,8 +2234,8 @@ type BuildProvenanceArgs struct {
 	Creator pulumi.StringPtrInput `pulumi:"creator"`
 	// Time at which execution of the build was finished.
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	// Required. Unique identifier of the build.
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Unique identifier of the build.
+	Id pulumi.StringInput `pulumi:"id"`
 	// URI where any logs for this provenance were written.
 	LogsUri pulumi.StringPtrInput `pulumi:"logsUri"`
 	// ID of the project.
@@ -2361,9 +2361,9 @@ func (o BuildProvenanceOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildProvenance) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
-// Required. Unique identifier of the build.
-func (o BuildProvenanceOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuildProvenance) *string { return v.Id }).(pulumi.StringPtrOutput)
+// Unique identifier of the build.
+func (o BuildProvenanceOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildProvenance) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // URI where any logs for this provenance were written.
@@ -2479,13 +2479,13 @@ func (o BuildProvenancePtrOutput) EndTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Unique identifier of the build.
+// Unique identifier of the build.
 func (o BuildProvenancePtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BuildProvenance) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Id
+		return &v.Id
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2884,7 +2884,7 @@ func (o BuildProvenanceResponsePtrOutput) TriggerId() pulumi.StringPtrOutput {
 
 // Note holding the version of the provider's builder and the signature of the provenance message in the build details occurrence.
 type BuildResponse struct {
-	// Required. Immutable. Version of the builder which produced this build.
+	// Immutable. Version of the builder which produced this build.
 	BuilderVersion string `pulumi:"builderVersion"`
 	// Signature of the build in occurrences pointing to this build note containing build details.
 	Signature BuildSignatureResponse `pulumi:"signature"`
@@ -2903,7 +2903,7 @@ type BuildResponseInput interface {
 
 // Note holding the version of the provider's builder and the signature of the provenance message in the build details occurrence.
 type BuildResponseArgs struct {
-	// Required. Immutable. Version of the builder which produced this build.
+	// Immutable. Version of the builder which produced this build.
 	BuilderVersion pulumi.StringInput `pulumi:"builderVersion"`
 	// Signature of the build in occurrences pointing to this build note containing build details.
 	Signature BuildSignatureResponseInput `pulumi:"signature"`
@@ -2987,7 +2987,7 @@ func (o BuildResponseOutput) ToBuildResponsePtrOutputWithContext(ctx context.Con
 	}).(BuildResponsePtrOutput)
 }
 
-// Required. Immutable. Version of the builder which produced this build.
+// Immutable. Version of the builder which produced this build.
 func (o BuildResponseOutput) BuilderVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildResponse) string { return v.BuilderVersion }).(pulumi.StringOutput)
 }
@@ -3015,7 +3015,7 @@ func (o BuildResponsePtrOutput) Elem() BuildResponseOutput {
 	return o.ApplyT(func(v *BuildResponse) BuildResponse { return *v }).(BuildResponseOutput)
 }
 
-// Required. Immutable. Version of the builder which produced this build.
+// Immutable. Version of the builder which produced this build.
 func (o BuildResponsePtrOutput) BuilderVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BuildResponse) *string {
 		if v == nil {
@@ -3043,8 +3043,8 @@ type BuildSignature struct {
 	KeyType *string `pulumi:"keyType"`
 	// Public key of the builder which can be used to verify that the related findings are valid and unchanged. If `key_type` is empty, this defaults to PEM encoded public keys. This field may be empty if `key_id` references an external key. For Cloud Build based signatures, this is a PEM encoded public key. To verify the Cloud Build signature, place the contents of this field into a file (public.pem). The signature field is base64-decoded into its binary representation in signature.bin, and the provenance bytes from `BuildDetails` are base64-decoded into a binary representation in signed.bin. OpenSSL can then verify the signature: `openssl sha256 -verify public.pem -signature signature.bin signed.bin`
 	PublicKey *string `pulumi:"publicKey"`
-	// Required. Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
-	Signature *string `pulumi:"signature"`
+	// Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
+	Signature string `pulumi:"signature"`
 }
 
 // BuildSignatureInput is an input type that accepts BuildSignatureArgs and BuildSignatureOutput values.
@@ -3066,8 +3066,8 @@ type BuildSignatureArgs struct {
 	KeyType *BuildSignatureKeyType `pulumi:"keyType"`
 	// Public key of the builder which can be used to verify that the related findings are valid and unchanged. If `key_type` is empty, this defaults to PEM encoded public keys. This field may be empty if `key_id` references an external key. For Cloud Build based signatures, this is a PEM encoded public key. To verify the Cloud Build signature, place the contents of this field into a file (public.pem). The signature field is base64-decoded into its binary representation in signature.bin, and the provenance bytes from `BuildDetails` are base64-decoded into a binary representation in signed.bin. OpenSSL can then verify the signature: `openssl sha256 -verify public.pem -signature signature.bin signed.bin`
 	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
-	// Required. Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
-	Signature pulumi.StringPtrInput `pulumi:"signature"`
+	// Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
+	Signature pulumi.StringInput `pulumi:"signature"`
 }
 
 func (BuildSignatureArgs) ElementType() reflect.Type {
@@ -3163,9 +3163,9 @@ func (o BuildSignatureOutput) PublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BuildSignature) *string { return v.PublicKey }).(pulumi.StringPtrOutput)
 }
 
-// Required. Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
-func (o BuildSignatureOutput) Signature() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuildSignature) *string { return v.Signature }).(pulumi.StringPtrOutput)
+// Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
+func (o BuildSignatureOutput) Signature() pulumi.StringOutput {
+	return o.ApplyT(func(v BuildSignature) string { return v.Signature }).(pulumi.StringOutput)
 }
 
 type BuildSignaturePtrOutput struct{ *pulumi.OutputState }
@@ -3216,13 +3216,13 @@ func (o BuildSignaturePtrOutput) PublicKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
+// Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
 func (o BuildSignaturePtrOutput) Signature() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BuildSignature) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Signature
+		return &v.Signature
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3234,7 +3234,7 @@ type BuildSignatureResponse struct {
 	KeyType string `pulumi:"keyType"`
 	// Public key of the builder which can be used to verify that the related findings are valid and unchanged. If `key_type` is empty, this defaults to PEM encoded public keys. This field may be empty if `key_id` references an external key. For Cloud Build based signatures, this is a PEM encoded public key. To verify the Cloud Build signature, place the contents of this field into a file (public.pem). The signature field is base64-decoded into its binary representation in signature.bin, and the provenance bytes from `BuildDetails` are base64-decoded into a binary representation in signed.bin. OpenSSL can then verify the signature: `openssl sha256 -verify public.pem -signature signature.bin signed.bin`
 	PublicKey string `pulumi:"publicKey"`
-	// Required. Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
+	// Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
 	Signature string `pulumi:"signature"`
 }
 
@@ -3257,7 +3257,7 @@ type BuildSignatureResponseArgs struct {
 	KeyType pulumi.StringInput `pulumi:"keyType"`
 	// Public key of the builder which can be used to verify that the related findings are valid and unchanged. If `key_type` is empty, this defaults to PEM encoded public keys. This field may be empty if `key_id` references an external key. For Cloud Build based signatures, this is a PEM encoded public key. To verify the Cloud Build signature, place the contents of this field into a file (public.pem). The signature field is base64-decoded into its binary representation in signature.bin, and the provenance bytes from `BuildDetails` are base64-decoded into a binary representation in signed.bin. OpenSSL can then verify the signature: `openssl sha256 -verify public.pem -signature signature.bin signed.bin`
 	PublicKey pulumi.StringInput `pulumi:"publicKey"`
-	// Required. Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
+	// Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
 	Signature pulumi.StringInput `pulumi:"signature"`
 }
 
@@ -3354,7 +3354,7 @@ func (o BuildSignatureResponseOutput) PublicKey() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildSignatureResponse) string { return v.PublicKey }).(pulumi.StringOutput)
 }
 
-// Required. Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
+// Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
 func (o BuildSignatureResponseOutput) Signature() pulumi.StringOutput {
 	return o.ApplyT(func(v BuildSignatureResponse) string { return v.Signature }).(pulumi.StringOutput)
 }
@@ -3407,7 +3407,7 @@ func (o BuildSignatureResponsePtrOutput) PublicKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
+// Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
 func (o BuildSignatureResponsePtrOutput) Signature() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BuildSignatureResponse) *string {
 		if v == nil {
@@ -4603,8 +4603,8 @@ type Command struct {
 	Env []string `pulumi:"env"`
 	// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
 	Id *string `pulumi:"id"`
-	// Required. Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
-	Name *string `pulumi:"name"`
+	// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
+	Name string `pulumi:"name"`
 	// The ID(s) of the command(s) that this command depends on.
 	WaitFor []string `pulumi:"waitFor"`
 }
@@ -4630,8 +4630,8 @@ type CommandArgs struct {
 	Env pulumi.StringArrayInput `pulumi:"env"`
 	// Optional unique identifier for this command, used in wait_for to reference this command as a dependency.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// Required. Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
+	Name pulumi.StringInput `pulumi:"name"`
 	// The ID(s) of the command(s) that this command depends on.
 	WaitFor pulumi.StringArrayInput `pulumi:"waitFor"`
 }
@@ -4708,9 +4708,9 @@ func (o CommandOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Command) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// Required. Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
-func (o CommandOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Command) *string { return v.Name }).(pulumi.StringPtrOutput)
+// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
+func (o CommandOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v Command) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The ID(s) of the command(s) that this command depends on.
@@ -4746,7 +4746,7 @@ type CommandResponse struct {
 	Dir string `pulumi:"dir"`
 	// Environment variables set before running this command.
 	Env []string `pulumi:"env"`
-	// Required. Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
+	// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
 	Name string `pulumi:"name"`
 	// The ID(s) of the command(s) that this command depends on.
 	WaitFor []string `pulumi:"waitFor"`
@@ -4771,7 +4771,7 @@ type CommandResponseArgs struct {
 	Dir pulumi.StringInput `pulumi:"dir"`
 	// Environment variables set before running this command.
 	Env pulumi.StringArrayInput `pulumi:"env"`
-	// Required. Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
+	// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The ID(s) of the command(s) that this command depends on.
 	WaitFor pulumi.StringArrayInput `pulumi:"waitFor"`
@@ -4844,7 +4844,7 @@ func (o CommandResponseOutput) Env() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v CommandResponse) []string { return v.Env }).(pulumi.StringArrayOutput)
 }
 
-// Required. Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
+// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
 func (o CommandResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v CommandResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -4876,7 +4876,7 @@ func (o CommandResponseArrayOutput) Index(i pulumi.IntInput) CommandResponseOutp
 
 // An artifact that can be deployed in some runtime.
 type Deployable struct {
-	// Required. Resource URI for the artifact being deployed.
+	// Resource URI for the artifact being deployed.
 	ResourceUri []string `pulumi:"resourceUri"`
 }
 
@@ -4893,7 +4893,7 @@ type DeployableInput interface {
 
 // An artifact that can be deployed in some runtime.
 type DeployableArgs struct {
-	// Required. Resource URI for the artifact being deployed.
+	// Resource URI for the artifact being deployed.
 	ResourceUri pulumi.StringArrayInput `pulumi:"resourceUri"`
 }
 
@@ -4975,7 +4975,7 @@ func (o DeployableOutput) ToDeployablePtrOutputWithContext(ctx context.Context) 
 	}).(DeployablePtrOutput)
 }
 
-// Required. Resource URI for the artifact being deployed.
+// Resource URI for the artifact being deployed.
 func (o DeployableOutput) ResourceUri() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Deployable) []string { return v.ResourceUri }).(pulumi.StringArrayOutput)
 }
@@ -4998,7 +4998,7 @@ func (o DeployablePtrOutput) Elem() DeployableOutput {
 	return o.ApplyT(func(v *Deployable) Deployable { return *v }).(DeployableOutput)
 }
 
-// Required. Resource URI for the artifact being deployed.
+// Resource URI for the artifact being deployed.
 func (o DeployablePtrOutput) ResourceUri() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Deployable) []string {
 		if v == nil {
@@ -5010,7 +5010,7 @@ func (o DeployablePtrOutput) ResourceUri() pulumi.StringArrayOutput {
 
 // An artifact that can be deployed in some runtime.
 type DeployableResponse struct {
-	// Required. Resource URI for the artifact being deployed.
+	// Resource URI for the artifact being deployed.
 	ResourceUri []string `pulumi:"resourceUri"`
 }
 
@@ -5027,7 +5027,7 @@ type DeployableResponseInput interface {
 
 // An artifact that can be deployed in some runtime.
 type DeployableResponseArgs struct {
-	// Required. Resource URI for the artifact being deployed.
+	// Resource URI for the artifact being deployed.
 	ResourceUri pulumi.StringArrayInput `pulumi:"resourceUri"`
 }
 
@@ -5109,7 +5109,7 @@ func (o DeployableResponseOutput) ToDeployableResponsePtrOutputWithContext(ctx c
 	}).(DeployableResponsePtrOutput)
 }
 
-// Required. Resource URI for the artifact being deployed.
+// Resource URI for the artifact being deployed.
 func (o DeployableResponseOutput) ResourceUri() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v DeployableResponse) []string { return v.ResourceUri }).(pulumi.StringArrayOutput)
 }
@@ -5132,7 +5132,7 @@ func (o DeployableResponsePtrOutput) Elem() DeployableResponseOutput {
 	return o.ApplyT(func(v *DeployableResponse) DeployableResponse { return *v }).(DeployableResponseOutput)
 }
 
-// Required. Resource URI for the artifact being deployed.
+// Resource URI for the artifact being deployed.
 func (o DeployableResponsePtrOutput) ResourceUri() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DeployableResponse) []string {
 		if v == nil {
@@ -5148,8 +5148,8 @@ type Deployment struct {
 	Address *string `pulumi:"address"`
 	// Configuration used to create this deployment.
 	Config *string `pulumi:"config"`
-	// Required. Beginning of the lifetime of this deployment.
-	DeployTime *string `pulumi:"deployTime"`
+	// Beginning of the lifetime of this deployment.
+	DeployTime string `pulumi:"deployTime"`
 	// Platform hosting this deployment.
 	Platform *string `pulumi:"platform"`
 	// End of the lifetime of this deployment.
@@ -5175,8 +5175,8 @@ type DeploymentArgs struct {
 	Address pulumi.StringPtrInput `pulumi:"address"`
 	// Configuration used to create this deployment.
 	Config pulumi.StringPtrInput `pulumi:"config"`
-	// Required. Beginning of the lifetime of this deployment.
-	DeployTime pulumi.StringPtrInput `pulumi:"deployTime"`
+	// Beginning of the lifetime of this deployment.
+	DeployTime pulumi.StringInput `pulumi:"deployTime"`
 	// Platform hosting this deployment.
 	Platform *DeploymentPlatform `pulumi:"platform"`
 	// End of the lifetime of this deployment.
@@ -5273,9 +5273,9 @@ func (o DeploymentOutput) Config() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Deployment) *string { return v.Config }).(pulumi.StringPtrOutput)
 }
 
-// Required. Beginning of the lifetime of this deployment.
-func (o DeploymentOutput) DeployTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Deployment) *string { return v.DeployTime }).(pulumi.StringPtrOutput)
+// Beginning of the lifetime of this deployment.
+func (o DeploymentOutput) DeployTime() pulumi.StringOutput {
+	return o.ApplyT(func(v Deployment) string { return v.DeployTime }).(pulumi.StringOutput)
 }
 
 // Platform hosting this deployment.
@@ -5331,13 +5331,13 @@ func (o DeploymentPtrOutput) Config() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Beginning of the lifetime of this deployment.
+// Beginning of the lifetime of this deployment.
 func (o DeploymentPtrOutput) DeployTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Deployment) *string {
 		if v == nil {
 			return nil
 		}
-		return v.DeployTime
+		return &v.DeployTime
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5377,7 +5377,7 @@ type DeploymentResponse struct {
 	Address string `pulumi:"address"`
 	// Configuration used to create this deployment.
 	Config string `pulumi:"config"`
-	// Required. Beginning of the lifetime of this deployment.
+	// Beginning of the lifetime of this deployment.
 	DeployTime string `pulumi:"deployTime"`
 	// Platform hosting this deployment.
 	Platform string `pulumi:"platform"`
@@ -5406,7 +5406,7 @@ type DeploymentResponseArgs struct {
 	Address pulumi.StringInput `pulumi:"address"`
 	// Configuration used to create this deployment.
 	Config pulumi.StringInput `pulumi:"config"`
-	// Required. Beginning of the lifetime of this deployment.
+	// Beginning of the lifetime of this deployment.
 	DeployTime pulumi.StringInput `pulumi:"deployTime"`
 	// Platform hosting this deployment.
 	Platform pulumi.StringInput `pulumi:"platform"`
@@ -5506,7 +5506,7 @@ func (o DeploymentResponseOutput) Config() pulumi.StringOutput {
 	return o.ApplyT(func(v DeploymentResponse) string { return v.Config }).(pulumi.StringOutput)
 }
 
-// Required. Beginning of the lifetime of this deployment.
+// Beginning of the lifetime of this deployment.
 func (o DeploymentResponseOutput) DeployTime() pulumi.StringOutput {
 	return o.ApplyT(func(v DeploymentResponse) string { return v.DeployTime }).(pulumi.StringOutput)
 }
@@ -5569,7 +5569,7 @@ func (o DeploymentResponsePtrOutput) Config() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Beginning of the lifetime of this deployment.
+// Beginning of the lifetime of this deployment.
 func (o DeploymentResponsePtrOutput) DeployTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeploymentResponse) *string {
 		if v == nil {
@@ -5621,8 +5621,8 @@ func (o DeploymentResponsePtrOutput) UserEmail() pulumi.StringPtrOutput {
 
 // Derived describes the derived image portion (Occurrence) of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .
 type Derived struct {
-	// Required. The fingerprint of the derived image.
-	Fingerprint *Fingerprint `pulumi:"fingerprint"`
+	// The fingerprint of the derived image.
+	Fingerprint Fingerprint `pulumi:"fingerprint"`
 	// This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
 	LayerInfo []Layer `pulumi:"layerInfo"`
 }
@@ -5640,8 +5640,8 @@ type DerivedInput interface {
 
 // Derived describes the derived image portion (Occurrence) of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .
 type DerivedArgs struct {
-	// Required. The fingerprint of the derived image.
-	Fingerprint FingerprintPtrInput `pulumi:"fingerprint"`
+	// The fingerprint of the derived image.
+	Fingerprint FingerprintInput `pulumi:"fingerprint"`
 	// This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
 	LayerInfo LayerArrayInput `pulumi:"layerInfo"`
 }
@@ -5724,9 +5724,9 @@ func (o DerivedOutput) ToDerivedPtrOutputWithContext(ctx context.Context) Derive
 	}).(DerivedPtrOutput)
 }
 
-// Required. The fingerprint of the derived image.
-func (o DerivedOutput) Fingerprint() FingerprintPtrOutput {
-	return o.ApplyT(func(v Derived) *Fingerprint { return v.Fingerprint }).(FingerprintPtrOutput)
+// The fingerprint of the derived image.
+func (o DerivedOutput) Fingerprint() FingerprintOutput {
+	return o.ApplyT(func(v Derived) Fingerprint { return v.Fingerprint }).(FingerprintOutput)
 }
 
 // This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
@@ -5752,13 +5752,13 @@ func (o DerivedPtrOutput) Elem() DerivedOutput {
 	return o.ApplyT(func(v *Derived) Derived { return *v }).(DerivedOutput)
 }
 
-// Required. The fingerprint of the derived image.
+// The fingerprint of the derived image.
 func (o DerivedPtrOutput) Fingerprint() FingerprintPtrOutput {
 	return o.ApplyT(func(v *Derived) *Fingerprint {
 		if v == nil {
 			return nil
 		}
-		return v.Fingerprint
+		return &v.Fingerprint
 	}).(FingerprintPtrOutput)
 }
 
@@ -5778,7 +5778,7 @@ type DerivedResponse struct {
 	BaseResourceUrl string `pulumi:"baseResourceUrl"`
 	// The number of layers by which this image differs from the associated image basis.
 	Distance int `pulumi:"distance"`
-	// Required. The fingerprint of the derived image.
+	// The fingerprint of the derived image.
 	Fingerprint FingerprintResponse `pulumi:"fingerprint"`
 	// This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
 	LayerInfo []LayerResponse `pulumi:"layerInfo"`
@@ -5801,7 +5801,7 @@ type DerivedResponseArgs struct {
 	BaseResourceUrl pulumi.StringInput `pulumi:"baseResourceUrl"`
 	// The number of layers by which this image differs from the associated image basis.
 	Distance pulumi.IntInput `pulumi:"distance"`
-	// Required. The fingerprint of the derived image.
+	// The fingerprint of the derived image.
 	Fingerprint FingerprintResponseInput `pulumi:"fingerprint"`
 	// This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
 	LayerInfo LayerResponseArrayInput `pulumi:"layerInfo"`
@@ -5895,7 +5895,7 @@ func (o DerivedResponseOutput) Distance() pulumi.IntOutput {
 	return o.ApplyT(func(v DerivedResponse) int { return v.Distance }).(pulumi.IntOutput)
 }
 
-// Required. The fingerprint of the derived image.
+// The fingerprint of the derived image.
 func (o DerivedResponseOutput) Fingerprint() FingerprintResponseOutput {
 	return o.ApplyT(func(v DerivedResponse) FingerprintResponse { return v.Fingerprint }).(FingerprintResponseOutput)
 }
@@ -5943,7 +5943,7 @@ func (o DerivedResponsePtrOutput) Distance() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Required. The fingerprint of the derived image.
+// The fingerprint of the derived image.
 func (o DerivedResponsePtrOutput) Fingerprint() FingerprintResponsePtrOutput {
 	return o.ApplyT(func(v *DerivedResponse) *FingerprintResponse {
 		if v == nil {
@@ -5965,8 +5965,8 @@ func (o DerivedResponsePtrOutput) LayerInfo() LayerResponseArrayOutput {
 
 // Identifies all appearances of this vulnerability in the package for a specific distro/location. For example: glibc in cpe:/o:debian:debian_linux:8 for versions 2.1 - 2.2
 type Detail struct {
-	// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
-	CpeUri *string `pulumi:"cpeUri"`
+	// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+	CpeUri string `pulumi:"cpeUri"`
 	// A vendor-specific description of this note.
 	Description *string `pulumi:"description"`
 	// The fix for this specific package version.
@@ -5977,8 +5977,8 @@ type Detail struct {
 	MaxAffectedVersion *Version `pulumi:"maxAffectedVersion"`
 	// The min version of the package in which the vulnerability exists.
 	MinAffectedVersion *Version `pulumi:"minAffectedVersion"`
-	// Required. The name of the package where the vulnerability was found.
-	Package *string `pulumi:"package"`
+	// The name of the package where the vulnerability was found.
+	Package string `pulumi:"package"`
 	// The type of package; whether native or non native(ruby gems, node.js packages etc).
 	PackageType *string `pulumi:"packageType"`
 	// The severity (eg: distro assigned severity) for this vulnerability.
@@ -6004,8 +6004,8 @@ type DetailInput interface {
 
 // Identifies all appearances of this vulnerability in the package for a specific distro/location. For example: glibc in cpe:/o:debian:debian_linux:8 for versions 2.1 - 2.2
 type DetailArgs struct {
-	// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
-	CpeUri pulumi.StringPtrInput `pulumi:"cpeUri"`
+	// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
 	// A vendor-specific description of this note.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The fix for this specific package version.
@@ -6016,8 +6016,8 @@ type DetailArgs struct {
 	MaxAffectedVersion VersionPtrInput `pulumi:"maxAffectedVersion"`
 	// The min version of the package in which the vulnerability exists.
 	MinAffectedVersion VersionPtrInput `pulumi:"minAffectedVersion"`
-	// Required. The name of the package where the vulnerability was found.
-	Package pulumi.StringPtrInput `pulumi:"package"`
+	// The name of the package where the vulnerability was found.
+	Package pulumi.StringInput `pulumi:"package"`
 	// The type of package; whether native or non native(ruby gems, node.js packages etc).
 	PackageType pulumi.StringPtrInput `pulumi:"packageType"`
 	// The severity (eg: distro assigned severity) for this vulnerability.
@@ -6082,9 +6082,9 @@ func (o DetailOutput) ToDetailOutputWithContext(ctx context.Context) DetailOutpu
 	return o
 }
 
-// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
-func (o DetailOutput) CpeUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Detail) *string { return v.CpeUri }).(pulumi.StringPtrOutput)
+// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+func (o DetailOutput) CpeUri() pulumi.StringOutput {
+	return o.ApplyT(func(v Detail) string { return v.CpeUri }).(pulumi.StringOutput)
 }
 
 // A vendor-specific description of this note.
@@ -6112,9 +6112,9 @@ func (o DetailOutput) MinAffectedVersion() VersionPtrOutput {
 	return o.ApplyT(func(v Detail) *Version { return v.MinAffectedVersion }).(VersionPtrOutput)
 }
 
-// Required. The name of the package where the vulnerability was found.
-func (o DetailOutput) Package() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Detail) *string { return v.Package }).(pulumi.StringPtrOutput)
+// The name of the package where the vulnerability was found.
+func (o DetailOutput) Package() pulumi.StringOutput {
+	return o.ApplyT(func(v Detail) string { return v.Package }).(pulumi.StringOutput)
 }
 
 // The type of package; whether native or non native(ruby gems, node.js packages etc).
@@ -6164,7 +6164,7 @@ func (o DetailArrayOutput) Index(i pulumi.IntInput) DetailOutput {
 
 // Identifies all appearances of this vulnerability in the package for a specific distro/location. For example: glibc in cpe:/o:debian:debian_linux:8 for versions 2.1 - 2.2
 type DetailResponse struct {
-	// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+	// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
 	CpeUri string `pulumi:"cpeUri"`
 	// A vendor-specific description of this note.
 	Description string `pulumi:"description"`
@@ -6176,7 +6176,7 @@ type DetailResponse struct {
 	MaxAffectedVersion VersionResponse `pulumi:"maxAffectedVersion"`
 	// The min version of the package in which the vulnerability exists.
 	MinAffectedVersion VersionResponse `pulumi:"minAffectedVersion"`
-	// Required. The name of the package where the vulnerability was found.
+	// The name of the package where the vulnerability was found.
 	Package string `pulumi:"package"`
 	// The type of package; whether native or non native(ruby gems, node.js packages etc).
 	PackageType string `pulumi:"packageType"`
@@ -6203,7 +6203,7 @@ type DetailResponseInput interface {
 
 // Identifies all appearances of this vulnerability in the package for a specific distro/location. For example: glibc in cpe:/o:debian:debian_linux:8 for versions 2.1 - 2.2
 type DetailResponseArgs struct {
-	// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+	// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
 	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
 	// A vendor-specific description of this note.
 	Description pulumi.StringInput `pulumi:"description"`
@@ -6215,7 +6215,7 @@ type DetailResponseArgs struct {
 	MaxAffectedVersion VersionResponseInput `pulumi:"maxAffectedVersion"`
 	// The min version of the package in which the vulnerability exists.
 	MinAffectedVersion VersionResponseInput `pulumi:"minAffectedVersion"`
-	// Required. The name of the package where the vulnerability was found.
+	// The name of the package where the vulnerability was found.
 	Package pulumi.StringInput `pulumi:"package"`
 	// The type of package; whether native or non native(ruby gems, node.js packages etc).
 	PackageType pulumi.StringInput `pulumi:"packageType"`
@@ -6281,7 +6281,7 @@ func (o DetailResponseOutput) ToDetailResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
 func (o DetailResponseOutput) CpeUri() pulumi.StringOutput {
 	return o.ApplyT(func(v DetailResponse) string { return v.CpeUri }).(pulumi.StringOutput)
 }
@@ -6311,7 +6311,7 @@ func (o DetailResponseOutput) MinAffectedVersion() VersionResponseOutput {
 	return o.ApplyT(func(v DetailResponse) VersionResponse { return v.MinAffectedVersion }).(VersionResponseOutput)
 }
 
-// Required. The name of the package where the vulnerability was found.
+// The name of the package where the vulnerability was found.
 func (o DetailResponseOutput) Package() pulumi.StringOutput {
 	return o.ApplyT(func(v DetailResponse) string { return v.Package }).(pulumi.StringOutput)
 }
@@ -6363,8 +6363,8 @@ func (o DetailResponseArrayOutput) Index(i pulumi.IntInput) DetailResponseOutput
 
 // Details of an attestation occurrence.
 type Details struct {
-	// Required. Attestation for the resource.
-	Attestation *Attestation `pulumi:"attestation"`
+	// Attestation for the resource.
+	Attestation Attestation `pulumi:"attestation"`
 }
 
 // DetailsInput is an input type that accepts DetailsArgs and DetailsOutput values.
@@ -6380,8 +6380,8 @@ type DetailsInput interface {
 
 // Details of an attestation occurrence.
 type DetailsArgs struct {
-	// Required. Attestation for the resource.
-	Attestation AttestationPtrInput `pulumi:"attestation"`
+	// Attestation for the resource.
+	Attestation AttestationInput `pulumi:"attestation"`
 }
 
 func (DetailsArgs) ElementType() reflect.Type {
@@ -6462,9 +6462,9 @@ func (o DetailsOutput) ToDetailsPtrOutputWithContext(ctx context.Context) Detail
 	}).(DetailsPtrOutput)
 }
 
-// Required. Attestation for the resource.
-func (o DetailsOutput) Attestation() AttestationPtrOutput {
-	return o.ApplyT(func(v Details) *Attestation { return v.Attestation }).(AttestationPtrOutput)
+// Attestation for the resource.
+func (o DetailsOutput) Attestation() AttestationOutput {
+	return o.ApplyT(func(v Details) Attestation { return v.Attestation }).(AttestationOutput)
 }
 
 type DetailsPtrOutput struct{ *pulumi.OutputState }
@@ -6485,19 +6485,19 @@ func (o DetailsPtrOutput) Elem() DetailsOutput {
 	return o.ApplyT(func(v *Details) Details { return *v }).(DetailsOutput)
 }
 
-// Required. Attestation for the resource.
+// Attestation for the resource.
 func (o DetailsPtrOutput) Attestation() AttestationPtrOutput {
 	return o.ApplyT(func(v *Details) *Attestation {
 		if v == nil {
 			return nil
 		}
-		return v.Attestation
+		return &v.Attestation
 	}).(AttestationPtrOutput)
 }
 
 // Details of an attestation occurrence.
 type DetailsResponse struct {
-	// Required. Attestation for the resource.
+	// Attestation for the resource.
 	Attestation AttestationResponse `pulumi:"attestation"`
 }
 
@@ -6514,7 +6514,7 @@ type DetailsResponseInput interface {
 
 // Details of an attestation occurrence.
 type DetailsResponseArgs struct {
-	// Required. Attestation for the resource.
+	// Attestation for the resource.
 	Attestation AttestationResponseInput `pulumi:"attestation"`
 }
 
@@ -6596,7 +6596,7 @@ func (o DetailsResponseOutput) ToDetailsResponsePtrOutputWithContext(ctx context
 	}).(DetailsResponsePtrOutput)
 }
 
-// Required. Attestation for the resource.
+// Attestation for the resource.
 func (o DetailsResponseOutput) Attestation() AttestationResponseOutput {
 	return o.ApplyT(func(v DetailsResponse) AttestationResponse { return v.Attestation }).(AttestationResponseOutput)
 }
@@ -6619,7 +6619,7 @@ func (o DetailsResponsePtrOutput) Elem() DetailsResponseOutput {
 	return o.ApplyT(func(v *DetailsResponse) DetailsResponse { return *v }).(DetailsResponseOutput)
 }
 
-// Required. Attestation for the resource.
+// Attestation for the resource.
 func (o DetailsResponsePtrOutput) Attestation() AttestationResponsePtrOutput {
 	return o.ApplyT(func(v *DetailsResponse) *AttestationResponse {
 		if v == nil {
@@ -6975,8 +6975,8 @@ func (o DiscoveredResponsePtrOutput) ContinuousAnalysis() pulumi.StringPtrOutput
 
 // A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis.
 type Discovery struct {
-	// Required. Immutable. The kind of analysis that is handled by this discovery.
-	AnalysisKind *string `pulumi:"analysisKind"`
+	// Immutable. The kind of analysis that is handled by this discovery.
+	AnalysisKind string `pulumi:"analysisKind"`
 }
 
 // DiscoveryInput is an input type that accepts DiscoveryArgs and DiscoveryOutput values.
@@ -6992,8 +6992,8 @@ type DiscoveryInput interface {
 
 // A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis.
 type DiscoveryArgs struct {
-	// Required. Immutable. The kind of analysis that is handled by this discovery.
-	AnalysisKind *DiscoveryAnalysisKind `pulumi:"analysisKind"`
+	// Immutable. The kind of analysis that is handled by this discovery.
+	AnalysisKind DiscoveryAnalysisKind `pulumi:"analysisKind"`
 }
 
 func (DiscoveryArgs) ElementType() reflect.Type {
@@ -7074,9 +7074,9 @@ func (o DiscoveryOutput) ToDiscoveryPtrOutputWithContext(ctx context.Context) Di
 	}).(DiscoveryPtrOutput)
 }
 
-// Required. Immutable. The kind of analysis that is handled by this discovery.
-func (o DiscoveryOutput) AnalysisKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Discovery) *string { return v.AnalysisKind }).(pulumi.StringPtrOutput)
+// Immutable. The kind of analysis that is handled by this discovery.
+func (o DiscoveryOutput) AnalysisKind() pulumi.StringOutput {
+	return o.ApplyT(func(v Discovery) string { return v.AnalysisKind }).(pulumi.StringOutput)
 }
 
 type DiscoveryPtrOutput struct{ *pulumi.OutputState }
@@ -7097,19 +7097,19 @@ func (o DiscoveryPtrOutput) Elem() DiscoveryOutput {
 	return o.ApplyT(func(v *Discovery) Discovery { return *v }).(DiscoveryOutput)
 }
 
-// Required. Immutable. The kind of analysis that is handled by this discovery.
+// Immutable. The kind of analysis that is handled by this discovery.
 func (o DiscoveryPtrOutput) AnalysisKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Discovery) *string {
 		if v == nil {
 			return nil
 		}
-		return v.AnalysisKind
+		return &v.AnalysisKind
 	}).(pulumi.StringPtrOutput)
 }
 
 // A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis.
 type DiscoveryResponse struct {
-	// Required. Immutable. The kind of analysis that is handled by this discovery.
+	// Immutable. The kind of analysis that is handled by this discovery.
 	AnalysisKind string `pulumi:"analysisKind"`
 }
 
@@ -7126,7 +7126,7 @@ type DiscoveryResponseInput interface {
 
 // A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis.
 type DiscoveryResponseArgs struct {
-	// Required. Immutable. The kind of analysis that is handled by this discovery.
+	// Immutable. The kind of analysis that is handled by this discovery.
 	AnalysisKind pulumi.StringInput `pulumi:"analysisKind"`
 }
 
@@ -7208,7 +7208,7 @@ func (o DiscoveryResponseOutput) ToDiscoveryResponsePtrOutputWithContext(ctx con
 	}).(DiscoveryResponsePtrOutput)
 }
 
-// Required. Immutable. The kind of analysis that is handled by this discovery.
+// Immutable. The kind of analysis that is handled by this discovery.
 func (o DiscoveryResponseOutput) AnalysisKind() pulumi.StringOutput {
 	return o.ApplyT(func(v DiscoveryResponse) string { return v.AnalysisKind }).(pulumi.StringOutput)
 }
@@ -7231,7 +7231,7 @@ func (o DiscoveryResponsePtrOutput) Elem() DiscoveryResponseOutput {
 	return o.ApplyT(func(v *DiscoveryResponse) DiscoveryResponse { return *v }).(DiscoveryResponseOutput)
 }
 
-// Required. Immutable. The kind of analysis that is handled by this discovery.
+// Immutable. The kind of analysis that is handled by this discovery.
 func (o DiscoveryResponsePtrOutput) AnalysisKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DiscoveryResponse) *string {
 		if v == nil {
@@ -7245,8 +7245,8 @@ func (o DiscoveryResponsePtrOutput) AnalysisKind() pulumi.StringPtrOutput {
 type Distribution struct {
 	// The CPU architecture for which packages in this distribution channel were built.
 	Architecture *string `pulumi:"architecture"`
-	// Required. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
-	CpeUri *string `pulumi:"cpeUri"`
+	// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+	CpeUri string `pulumi:"cpeUri"`
 	// The distribution channel-specific description of this package.
 	Description *string `pulumi:"description"`
 	// The latest available version of this package in this distribution channel.
@@ -7272,8 +7272,8 @@ type DistributionInput interface {
 type DistributionArgs struct {
 	// The CPU architecture for which packages in this distribution channel were built.
 	Architecture *DistributionArchitecture `pulumi:"architecture"`
-	// Required. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
-	CpeUri pulumi.StringPtrInput `pulumi:"cpeUri"`
+	// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
 	// The distribution channel-specific description of this package.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The latest available version of this package in this distribution channel.
@@ -7341,9 +7341,9 @@ func (o DistributionOutput) Architecture() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Distribution) *string { return v.Architecture }).(pulumi.StringPtrOutput)
 }
 
-// Required. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
-func (o DistributionOutput) CpeUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Distribution) *string { return v.CpeUri }).(pulumi.StringPtrOutput)
+// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+func (o DistributionOutput) CpeUri() pulumi.StringOutput {
+	return o.ApplyT(func(v Distribution) string { return v.CpeUri }).(pulumi.StringOutput)
 }
 
 // The distribution channel-specific description of this package.
@@ -7390,7 +7390,7 @@ func (o DistributionArrayOutput) Index(i pulumi.IntInput) DistributionOutput {
 type DistributionResponse struct {
 	// The CPU architecture for which packages in this distribution channel were built.
 	Architecture string `pulumi:"architecture"`
-	// Required. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+	// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
 	CpeUri string `pulumi:"cpeUri"`
 	// The distribution channel-specific description of this package.
 	Description string `pulumi:"description"`
@@ -7417,7 +7417,7 @@ type DistributionResponseInput interface {
 type DistributionResponseArgs struct {
 	// The CPU architecture for which packages in this distribution channel were built.
 	Architecture pulumi.StringInput `pulumi:"architecture"`
-	// Required. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+	// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
 	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
 	// The distribution channel-specific description of this package.
 	Description pulumi.StringInput `pulumi:"description"`
@@ -7486,7 +7486,7 @@ func (o DistributionResponseOutput) Architecture() pulumi.StringOutput {
 	return o.ApplyT(func(v DistributionResponse) string { return v.Architecture }).(pulumi.StringOutput)
 }
 
-// Required. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+// The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
 func (o DistributionResponseOutput) CpeUri() pulumi.StringOutput {
 	return o.ApplyT(func(v DistributionResponse) string { return v.CpeUri }).(pulumi.StringOutput)
 }
@@ -8064,9 +8064,9 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 
 // A set of properties that uniquely identify a given Docker image.
 type Fingerprint struct {
-	// Required. The layer ID of the final layer in the Docker image's v1 representation.
-	V1Name *string `pulumi:"v1Name"`
-	// Required. The ordered list of v2 blobs that represent a given image.
+	// The layer ID of the final layer in the Docker image's v1 representation.
+	V1Name string `pulumi:"v1Name"`
+	// The ordered list of v2 blobs that represent a given image.
 	V2Blob []string `pulumi:"v2Blob"`
 }
 
@@ -8083,9 +8083,9 @@ type FingerprintInput interface {
 
 // A set of properties that uniquely identify a given Docker image.
 type FingerprintArgs struct {
-	// Required. The layer ID of the final layer in the Docker image's v1 representation.
-	V1Name pulumi.StringPtrInput `pulumi:"v1Name"`
-	// Required. The ordered list of v2 blobs that represent a given image.
+	// The layer ID of the final layer in the Docker image's v1 representation.
+	V1Name pulumi.StringInput `pulumi:"v1Name"`
+	// The ordered list of v2 blobs that represent a given image.
 	V2Blob pulumi.StringArrayInput `pulumi:"v2Blob"`
 }
 
@@ -8167,12 +8167,12 @@ func (o FingerprintOutput) ToFingerprintPtrOutputWithContext(ctx context.Context
 	}).(FingerprintPtrOutput)
 }
 
-// Required. The layer ID of the final layer in the Docker image's v1 representation.
-func (o FingerprintOutput) V1Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Fingerprint) *string { return v.V1Name }).(pulumi.StringPtrOutput)
+// The layer ID of the final layer in the Docker image's v1 representation.
+func (o FingerprintOutput) V1Name() pulumi.StringOutput {
+	return o.ApplyT(func(v Fingerprint) string { return v.V1Name }).(pulumi.StringOutput)
 }
 
-// Required. The ordered list of v2 blobs that represent a given image.
+// The ordered list of v2 blobs that represent a given image.
 func (o FingerprintOutput) V2Blob() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Fingerprint) []string { return v.V2Blob }).(pulumi.StringArrayOutput)
 }
@@ -8195,17 +8195,17 @@ func (o FingerprintPtrOutput) Elem() FingerprintOutput {
 	return o.ApplyT(func(v *Fingerprint) Fingerprint { return *v }).(FingerprintOutput)
 }
 
-// Required. The layer ID of the final layer in the Docker image's v1 representation.
+// The layer ID of the final layer in the Docker image's v1 representation.
 func (o FingerprintPtrOutput) V1Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Fingerprint) *string {
 		if v == nil {
 			return nil
 		}
-		return v.V1Name
+		return &v.V1Name
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The ordered list of v2 blobs that represent a given image.
+// The ordered list of v2 blobs that represent a given image.
 func (o FingerprintPtrOutput) V2Blob() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Fingerprint) []string {
 		if v == nil {
@@ -8217,9 +8217,9 @@ func (o FingerprintPtrOutput) V2Blob() pulumi.StringArrayOutput {
 
 // A set of properties that uniquely identify a given Docker image.
 type FingerprintResponse struct {
-	// Required. The layer ID of the final layer in the Docker image's v1 representation.
+	// The layer ID of the final layer in the Docker image's v1 representation.
 	V1Name string `pulumi:"v1Name"`
-	// Required. The ordered list of v2 blobs that represent a given image.
+	// The ordered list of v2 blobs that represent a given image.
 	V2Blob []string `pulumi:"v2Blob"`
 	// The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept.
 	V2Name string `pulumi:"v2Name"`
@@ -8238,9 +8238,9 @@ type FingerprintResponseInput interface {
 
 // A set of properties that uniquely identify a given Docker image.
 type FingerprintResponseArgs struct {
-	// Required. The layer ID of the final layer in the Docker image's v1 representation.
+	// The layer ID of the final layer in the Docker image's v1 representation.
 	V1Name pulumi.StringInput `pulumi:"v1Name"`
-	// Required. The ordered list of v2 blobs that represent a given image.
+	// The ordered list of v2 blobs that represent a given image.
 	V2Blob pulumi.StringArrayInput `pulumi:"v2Blob"`
 	// The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept.
 	V2Name pulumi.StringInput `pulumi:"v2Name"`
@@ -8324,12 +8324,12 @@ func (o FingerprintResponseOutput) ToFingerprintResponsePtrOutputWithContext(ctx
 	}).(FingerprintResponsePtrOutput)
 }
 
-// Required. The layer ID of the final layer in the Docker image's v1 representation.
+// The layer ID of the final layer in the Docker image's v1 representation.
 func (o FingerprintResponseOutput) V1Name() pulumi.StringOutput {
 	return o.ApplyT(func(v FingerprintResponse) string { return v.V1Name }).(pulumi.StringOutput)
 }
 
-// Required. The ordered list of v2 blobs that represent a given image.
+// The ordered list of v2 blobs that represent a given image.
 func (o FingerprintResponseOutput) V2Blob() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FingerprintResponse) []string { return v.V2Blob }).(pulumi.StringArrayOutput)
 }
@@ -8357,7 +8357,7 @@ func (o FingerprintResponsePtrOutput) Elem() FingerprintResponseOutput {
 	return o.ApplyT(func(v *FingerprintResponse) FingerprintResponse { return *v }).(FingerprintResponseOutput)
 }
 
-// Required. The layer ID of the final layer in the Docker image's v1 representation.
+// The layer ID of the final layer in the Docker image's v1 representation.
 func (o FingerprintResponsePtrOutput) V1Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FingerprintResponse) *string {
 		if v == nil {
@@ -8367,7 +8367,7 @@ func (o FingerprintResponsePtrOutput) V1Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The ordered list of v2 blobs that represent a given image.
+// The ordered list of v2 blobs that represent a given image.
 func (o FingerprintResponsePtrOutput) V2Blob() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FingerprintResponse) []string {
 		if v == nil {
@@ -9421,8 +9421,8 @@ func (o GitSourceContextResponsePtrOutput) Url() pulumi.StringPtrOutput {
 
 // Details of a build occurrence.
 type GrafeasV1beta1BuildDetails struct {
-	// Required. The actual provenance for the build.
-	Provenance *BuildProvenance `pulumi:"provenance"`
+	// The actual provenance for the build.
+	Provenance BuildProvenance `pulumi:"provenance"`
 	// Serialized JSON representation of the provenance, used in generating the build signature in the corresponding build note. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
 	ProvenanceBytes *string `pulumi:"provenanceBytes"`
 }
@@ -9440,8 +9440,8 @@ type GrafeasV1beta1BuildDetailsInput interface {
 
 // Details of a build occurrence.
 type GrafeasV1beta1BuildDetailsArgs struct {
-	// Required. The actual provenance for the build.
-	Provenance BuildProvenancePtrInput `pulumi:"provenance"`
+	// The actual provenance for the build.
+	Provenance BuildProvenanceInput `pulumi:"provenance"`
 	// Serialized JSON representation of the provenance, used in generating the build signature in the corresponding build note. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
 	ProvenanceBytes pulumi.StringPtrInput `pulumi:"provenanceBytes"`
 }
@@ -9524,9 +9524,9 @@ func (o GrafeasV1beta1BuildDetailsOutput) ToGrafeasV1beta1BuildDetailsPtrOutputW
 	}).(GrafeasV1beta1BuildDetailsPtrOutput)
 }
 
-// Required. The actual provenance for the build.
-func (o GrafeasV1beta1BuildDetailsOutput) Provenance() BuildProvenancePtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1BuildDetails) *BuildProvenance { return v.Provenance }).(BuildProvenancePtrOutput)
+// The actual provenance for the build.
+func (o GrafeasV1beta1BuildDetailsOutput) Provenance() BuildProvenanceOutput {
+	return o.ApplyT(func(v GrafeasV1beta1BuildDetails) BuildProvenance { return v.Provenance }).(BuildProvenanceOutput)
 }
 
 // Serialized JSON representation of the provenance, used in generating the build signature in the corresponding build note. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
@@ -9552,13 +9552,13 @@ func (o GrafeasV1beta1BuildDetailsPtrOutput) Elem() GrafeasV1beta1BuildDetailsOu
 	return o.ApplyT(func(v *GrafeasV1beta1BuildDetails) GrafeasV1beta1BuildDetails { return *v }).(GrafeasV1beta1BuildDetailsOutput)
 }
 
-// Required. The actual provenance for the build.
+// The actual provenance for the build.
 func (o GrafeasV1beta1BuildDetailsPtrOutput) Provenance() BuildProvenancePtrOutput {
 	return o.ApplyT(func(v *GrafeasV1beta1BuildDetails) *BuildProvenance {
 		if v == nil {
 			return nil
 		}
-		return v.Provenance
+		return &v.Provenance
 	}).(BuildProvenancePtrOutput)
 }
 
@@ -9574,7 +9574,7 @@ func (o GrafeasV1beta1BuildDetailsPtrOutput) ProvenanceBytes() pulumi.StringPtrO
 
 // Details of a build occurrence.
 type GrafeasV1beta1BuildDetailsResponse struct {
-	// Required. The actual provenance for the build.
+	// The actual provenance for the build.
 	Provenance BuildProvenanceResponse `pulumi:"provenance"`
 	// Serialized JSON representation of the provenance, used in generating the build signature in the corresponding build note. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
 	ProvenanceBytes string `pulumi:"provenanceBytes"`
@@ -9593,7 +9593,7 @@ type GrafeasV1beta1BuildDetailsResponseInput interface {
 
 // Details of a build occurrence.
 type GrafeasV1beta1BuildDetailsResponseArgs struct {
-	// Required. The actual provenance for the build.
+	// The actual provenance for the build.
 	Provenance BuildProvenanceResponseInput `pulumi:"provenance"`
 	// Serialized JSON representation of the provenance, used in generating the build signature in the corresponding build note. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
 	ProvenanceBytes pulumi.StringInput `pulumi:"provenanceBytes"`
@@ -9677,7 +9677,7 @@ func (o GrafeasV1beta1BuildDetailsResponseOutput) ToGrafeasV1beta1BuildDetailsRe
 	}).(GrafeasV1beta1BuildDetailsResponsePtrOutput)
 }
 
-// Required. The actual provenance for the build.
+// The actual provenance for the build.
 func (o GrafeasV1beta1BuildDetailsResponseOutput) Provenance() BuildProvenanceResponseOutput {
 	return o.ApplyT(func(v GrafeasV1beta1BuildDetailsResponse) BuildProvenanceResponse { return v.Provenance }).(BuildProvenanceResponseOutput)
 }
@@ -9705,7 +9705,7 @@ func (o GrafeasV1beta1BuildDetailsResponsePtrOutput) Elem() GrafeasV1beta1BuildD
 	return o.ApplyT(func(v *GrafeasV1beta1BuildDetailsResponse) GrafeasV1beta1BuildDetailsResponse { return *v }).(GrafeasV1beta1BuildDetailsResponseOutput)
 }
 
-// Required. The actual provenance for the build.
+// The actual provenance for the build.
 func (o GrafeasV1beta1BuildDetailsResponsePtrOutput) Provenance() BuildProvenanceResponsePtrOutput {
 	return o.ApplyT(func(v *GrafeasV1beta1BuildDetailsResponse) *BuildProvenanceResponse {
 		if v == nil {
@@ -9727,8 +9727,8 @@ func (o GrafeasV1beta1BuildDetailsResponsePtrOutput) ProvenanceBytes() pulumi.St
 
 // Details of a deployment occurrence.
 type GrafeasV1beta1DeploymentDetails struct {
-	// Required. Deployment history for the resource.
-	Deployment *Deployment `pulumi:"deployment"`
+	// Deployment history for the resource.
+	Deployment Deployment `pulumi:"deployment"`
 }
 
 // GrafeasV1beta1DeploymentDetailsInput is an input type that accepts GrafeasV1beta1DeploymentDetailsArgs and GrafeasV1beta1DeploymentDetailsOutput values.
@@ -9744,8 +9744,8 @@ type GrafeasV1beta1DeploymentDetailsInput interface {
 
 // Details of a deployment occurrence.
 type GrafeasV1beta1DeploymentDetailsArgs struct {
-	// Required. Deployment history for the resource.
-	Deployment DeploymentPtrInput `pulumi:"deployment"`
+	// Deployment history for the resource.
+	Deployment DeploymentInput `pulumi:"deployment"`
 }
 
 func (GrafeasV1beta1DeploymentDetailsArgs) ElementType() reflect.Type {
@@ -9826,9 +9826,9 @@ func (o GrafeasV1beta1DeploymentDetailsOutput) ToGrafeasV1beta1DeploymentDetails
 	}).(GrafeasV1beta1DeploymentDetailsPtrOutput)
 }
 
-// Required. Deployment history for the resource.
-func (o GrafeasV1beta1DeploymentDetailsOutput) Deployment() DeploymentPtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1DeploymentDetails) *Deployment { return v.Deployment }).(DeploymentPtrOutput)
+// Deployment history for the resource.
+func (o GrafeasV1beta1DeploymentDetailsOutput) Deployment() DeploymentOutput {
+	return o.ApplyT(func(v GrafeasV1beta1DeploymentDetails) Deployment { return v.Deployment }).(DeploymentOutput)
 }
 
 type GrafeasV1beta1DeploymentDetailsPtrOutput struct{ *pulumi.OutputState }
@@ -9849,19 +9849,19 @@ func (o GrafeasV1beta1DeploymentDetailsPtrOutput) Elem() GrafeasV1beta1Deploymen
 	return o.ApplyT(func(v *GrafeasV1beta1DeploymentDetails) GrafeasV1beta1DeploymentDetails { return *v }).(GrafeasV1beta1DeploymentDetailsOutput)
 }
 
-// Required. Deployment history for the resource.
+// Deployment history for the resource.
 func (o GrafeasV1beta1DeploymentDetailsPtrOutput) Deployment() DeploymentPtrOutput {
 	return o.ApplyT(func(v *GrafeasV1beta1DeploymentDetails) *Deployment {
 		if v == nil {
 			return nil
 		}
-		return v.Deployment
+		return &v.Deployment
 	}).(DeploymentPtrOutput)
 }
 
 // Details of a deployment occurrence.
 type GrafeasV1beta1DeploymentDetailsResponse struct {
-	// Required. Deployment history for the resource.
+	// Deployment history for the resource.
 	Deployment DeploymentResponse `pulumi:"deployment"`
 }
 
@@ -9878,7 +9878,7 @@ type GrafeasV1beta1DeploymentDetailsResponseInput interface {
 
 // Details of a deployment occurrence.
 type GrafeasV1beta1DeploymentDetailsResponseArgs struct {
-	// Required. Deployment history for the resource.
+	// Deployment history for the resource.
 	Deployment DeploymentResponseInput `pulumi:"deployment"`
 }
 
@@ -9960,7 +9960,7 @@ func (o GrafeasV1beta1DeploymentDetailsResponseOutput) ToGrafeasV1beta1Deploymen
 	}).(GrafeasV1beta1DeploymentDetailsResponsePtrOutput)
 }
 
-// Required. Deployment history for the resource.
+// Deployment history for the resource.
 func (o GrafeasV1beta1DeploymentDetailsResponseOutput) Deployment() DeploymentResponseOutput {
 	return o.ApplyT(func(v GrafeasV1beta1DeploymentDetailsResponse) DeploymentResponse { return v.Deployment }).(DeploymentResponseOutput)
 }
@@ -9983,7 +9983,7 @@ func (o GrafeasV1beta1DeploymentDetailsResponsePtrOutput) Elem() GrafeasV1beta1D
 	return o.ApplyT(func(v *GrafeasV1beta1DeploymentDetailsResponse) GrafeasV1beta1DeploymentDetailsResponse { return *v }).(GrafeasV1beta1DeploymentDetailsResponseOutput)
 }
 
-// Required. Deployment history for the resource.
+// Deployment history for the resource.
 func (o GrafeasV1beta1DeploymentDetailsResponsePtrOutput) Deployment() DeploymentResponsePtrOutput {
 	return o.ApplyT(func(v *GrafeasV1beta1DeploymentDetailsResponse) *DeploymentResponse {
 		if v == nil {
@@ -9995,8 +9995,8 @@ func (o GrafeasV1beta1DeploymentDetailsResponsePtrOutput) Deployment() Deploymen
 
 // Details of a discovery occurrence.
 type GrafeasV1beta1DiscoveryDetails struct {
-	// Required. Analysis status for the discovered resource.
-	Discovered *Discovered `pulumi:"discovered"`
+	// Analysis status for the discovered resource.
+	Discovered Discovered `pulumi:"discovered"`
 }
 
 // GrafeasV1beta1DiscoveryDetailsInput is an input type that accepts GrafeasV1beta1DiscoveryDetailsArgs and GrafeasV1beta1DiscoveryDetailsOutput values.
@@ -10012,8 +10012,8 @@ type GrafeasV1beta1DiscoveryDetailsInput interface {
 
 // Details of a discovery occurrence.
 type GrafeasV1beta1DiscoveryDetailsArgs struct {
-	// Required. Analysis status for the discovered resource.
-	Discovered DiscoveredPtrInput `pulumi:"discovered"`
+	// Analysis status for the discovered resource.
+	Discovered DiscoveredInput `pulumi:"discovered"`
 }
 
 func (GrafeasV1beta1DiscoveryDetailsArgs) ElementType() reflect.Type {
@@ -10094,9 +10094,9 @@ func (o GrafeasV1beta1DiscoveryDetailsOutput) ToGrafeasV1beta1DiscoveryDetailsPt
 	}).(GrafeasV1beta1DiscoveryDetailsPtrOutput)
 }
 
-// Required. Analysis status for the discovered resource.
-func (o GrafeasV1beta1DiscoveryDetailsOutput) Discovered() DiscoveredPtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1DiscoveryDetails) *Discovered { return v.Discovered }).(DiscoveredPtrOutput)
+// Analysis status for the discovered resource.
+func (o GrafeasV1beta1DiscoveryDetailsOutput) Discovered() DiscoveredOutput {
+	return o.ApplyT(func(v GrafeasV1beta1DiscoveryDetails) Discovered { return v.Discovered }).(DiscoveredOutput)
 }
 
 type GrafeasV1beta1DiscoveryDetailsPtrOutput struct{ *pulumi.OutputState }
@@ -10117,19 +10117,19 @@ func (o GrafeasV1beta1DiscoveryDetailsPtrOutput) Elem() GrafeasV1beta1DiscoveryD
 	return o.ApplyT(func(v *GrafeasV1beta1DiscoveryDetails) GrafeasV1beta1DiscoveryDetails { return *v }).(GrafeasV1beta1DiscoveryDetailsOutput)
 }
 
-// Required. Analysis status for the discovered resource.
+// Analysis status for the discovered resource.
 func (o GrafeasV1beta1DiscoveryDetailsPtrOutput) Discovered() DiscoveredPtrOutput {
 	return o.ApplyT(func(v *GrafeasV1beta1DiscoveryDetails) *Discovered {
 		if v == nil {
 			return nil
 		}
-		return v.Discovered
+		return &v.Discovered
 	}).(DiscoveredPtrOutput)
 }
 
 // Details of a discovery occurrence.
 type GrafeasV1beta1DiscoveryDetailsResponse struct {
-	// Required. Analysis status for the discovered resource.
+	// Analysis status for the discovered resource.
 	Discovered DiscoveredResponse `pulumi:"discovered"`
 }
 
@@ -10146,7 +10146,7 @@ type GrafeasV1beta1DiscoveryDetailsResponseInput interface {
 
 // Details of a discovery occurrence.
 type GrafeasV1beta1DiscoveryDetailsResponseArgs struct {
-	// Required. Analysis status for the discovered resource.
+	// Analysis status for the discovered resource.
 	Discovered DiscoveredResponseInput `pulumi:"discovered"`
 }
 
@@ -10228,7 +10228,7 @@ func (o GrafeasV1beta1DiscoveryDetailsResponseOutput) ToGrafeasV1beta1DiscoveryD
 	}).(GrafeasV1beta1DiscoveryDetailsResponsePtrOutput)
 }
 
-// Required. Analysis status for the discovered resource.
+// Analysis status for the discovered resource.
 func (o GrafeasV1beta1DiscoveryDetailsResponseOutput) Discovered() DiscoveredResponseOutput {
 	return o.ApplyT(func(v GrafeasV1beta1DiscoveryDetailsResponse) DiscoveredResponse { return v.Discovered }).(DiscoveredResponseOutput)
 }
@@ -10251,7 +10251,7 @@ func (o GrafeasV1beta1DiscoveryDetailsResponsePtrOutput) Elem() GrafeasV1beta1Di
 	return o.ApplyT(func(v *GrafeasV1beta1DiscoveryDetailsResponse) GrafeasV1beta1DiscoveryDetailsResponse { return *v }).(GrafeasV1beta1DiscoveryDetailsResponseOutput)
 }
 
-// Required. Analysis status for the discovered resource.
+// Analysis status for the discovered resource.
 func (o GrafeasV1beta1DiscoveryDetailsResponsePtrOutput) Discovered() DiscoveredResponsePtrOutput {
 	return o.ApplyT(func(v *GrafeasV1beta1DiscoveryDetailsResponse) *DiscoveredResponse {
 		if v == nil {
@@ -10263,8 +10263,8 @@ func (o GrafeasV1beta1DiscoveryDetailsResponsePtrOutput) Discovered() Discovered
 
 // Details of an image occurrence.
 type GrafeasV1beta1ImageDetails struct {
-	// Required. Immutable. The child image derived from the base image.
-	DerivedImage *Derived `pulumi:"derivedImage"`
+	// Immutable. The child image derived from the base image.
+	DerivedImage Derived `pulumi:"derivedImage"`
 }
 
 // GrafeasV1beta1ImageDetailsInput is an input type that accepts GrafeasV1beta1ImageDetailsArgs and GrafeasV1beta1ImageDetailsOutput values.
@@ -10280,8 +10280,8 @@ type GrafeasV1beta1ImageDetailsInput interface {
 
 // Details of an image occurrence.
 type GrafeasV1beta1ImageDetailsArgs struct {
-	// Required. Immutable. The child image derived from the base image.
-	DerivedImage DerivedPtrInput `pulumi:"derivedImage"`
+	// Immutable. The child image derived from the base image.
+	DerivedImage DerivedInput `pulumi:"derivedImage"`
 }
 
 func (GrafeasV1beta1ImageDetailsArgs) ElementType() reflect.Type {
@@ -10362,9 +10362,9 @@ func (o GrafeasV1beta1ImageDetailsOutput) ToGrafeasV1beta1ImageDetailsPtrOutputW
 	}).(GrafeasV1beta1ImageDetailsPtrOutput)
 }
 
-// Required. Immutable. The child image derived from the base image.
-func (o GrafeasV1beta1ImageDetailsOutput) DerivedImage() DerivedPtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1ImageDetails) *Derived { return v.DerivedImage }).(DerivedPtrOutput)
+// Immutable. The child image derived from the base image.
+func (o GrafeasV1beta1ImageDetailsOutput) DerivedImage() DerivedOutput {
+	return o.ApplyT(func(v GrafeasV1beta1ImageDetails) Derived { return v.DerivedImage }).(DerivedOutput)
 }
 
 type GrafeasV1beta1ImageDetailsPtrOutput struct{ *pulumi.OutputState }
@@ -10385,19 +10385,19 @@ func (o GrafeasV1beta1ImageDetailsPtrOutput) Elem() GrafeasV1beta1ImageDetailsOu
 	return o.ApplyT(func(v *GrafeasV1beta1ImageDetails) GrafeasV1beta1ImageDetails { return *v }).(GrafeasV1beta1ImageDetailsOutput)
 }
 
-// Required. Immutable. The child image derived from the base image.
+// Immutable. The child image derived from the base image.
 func (o GrafeasV1beta1ImageDetailsPtrOutput) DerivedImage() DerivedPtrOutput {
 	return o.ApplyT(func(v *GrafeasV1beta1ImageDetails) *Derived {
 		if v == nil {
 			return nil
 		}
-		return v.DerivedImage
+		return &v.DerivedImage
 	}).(DerivedPtrOutput)
 }
 
 // Details of an image occurrence.
 type GrafeasV1beta1ImageDetailsResponse struct {
-	// Required. Immutable. The child image derived from the base image.
+	// Immutable. The child image derived from the base image.
 	DerivedImage DerivedResponse `pulumi:"derivedImage"`
 }
 
@@ -10414,7 +10414,7 @@ type GrafeasV1beta1ImageDetailsResponseInput interface {
 
 // Details of an image occurrence.
 type GrafeasV1beta1ImageDetailsResponseArgs struct {
-	// Required. Immutable. The child image derived from the base image.
+	// Immutable. The child image derived from the base image.
 	DerivedImage DerivedResponseInput `pulumi:"derivedImage"`
 }
 
@@ -10496,7 +10496,7 @@ func (o GrafeasV1beta1ImageDetailsResponseOutput) ToGrafeasV1beta1ImageDetailsRe
 	}).(GrafeasV1beta1ImageDetailsResponsePtrOutput)
 }
 
-// Required. Immutable. The child image derived from the base image.
+// Immutable. The child image derived from the base image.
 func (o GrafeasV1beta1ImageDetailsResponseOutput) DerivedImage() DerivedResponseOutput {
 	return o.ApplyT(func(v GrafeasV1beta1ImageDetailsResponse) DerivedResponse { return v.DerivedImage }).(DerivedResponseOutput)
 }
@@ -10519,7 +10519,7 @@ func (o GrafeasV1beta1ImageDetailsResponsePtrOutput) Elem() GrafeasV1beta1ImageD
 	return o.ApplyT(func(v *GrafeasV1beta1ImageDetailsResponse) GrafeasV1beta1ImageDetailsResponse { return *v }).(GrafeasV1beta1ImageDetailsResponseOutput)
 }
 
-// Required. Immutable. The child image derived from the base image.
+// Immutable. The child image derived from the base image.
 func (o GrafeasV1beta1ImageDetailsResponsePtrOutput) DerivedImage() DerivedResponsePtrOutput {
 	return o.ApplyT(func(v *GrafeasV1beta1ImageDetailsResponse) *DerivedResponse {
 		if v == nil {
@@ -11227,8 +11227,8 @@ func (o GrafeasV1beta1IntotoSignatureResponseArrayOutput) Index(i pulumi.IntInpu
 
 // Details of a package occurrence.
 type GrafeasV1beta1PackageDetails struct {
-	// Required. Where the package was installed.
-	Installation *Installation `pulumi:"installation"`
+	// Where the package was installed.
+	Installation Installation `pulumi:"installation"`
 }
 
 // GrafeasV1beta1PackageDetailsInput is an input type that accepts GrafeasV1beta1PackageDetailsArgs and GrafeasV1beta1PackageDetailsOutput values.
@@ -11244,8 +11244,8 @@ type GrafeasV1beta1PackageDetailsInput interface {
 
 // Details of a package occurrence.
 type GrafeasV1beta1PackageDetailsArgs struct {
-	// Required. Where the package was installed.
-	Installation InstallationPtrInput `pulumi:"installation"`
+	// Where the package was installed.
+	Installation InstallationInput `pulumi:"installation"`
 }
 
 func (GrafeasV1beta1PackageDetailsArgs) ElementType() reflect.Type {
@@ -11326,9 +11326,9 @@ func (o GrafeasV1beta1PackageDetailsOutput) ToGrafeasV1beta1PackageDetailsPtrOut
 	}).(GrafeasV1beta1PackageDetailsPtrOutput)
 }
 
-// Required. Where the package was installed.
-func (o GrafeasV1beta1PackageDetailsOutput) Installation() InstallationPtrOutput {
-	return o.ApplyT(func(v GrafeasV1beta1PackageDetails) *Installation { return v.Installation }).(InstallationPtrOutput)
+// Where the package was installed.
+func (o GrafeasV1beta1PackageDetailsOutput) Installation() InstallationOutput {
+	return o.ApplyT(func(v GrafeasV1beta1PackageDetails) Installation { return v.Installation }).(InstallationOutput)
 }
 
 type GrafeasV1beta1PackageDetailsPtrOutput struct{ *pulumi.OutputState }
@@ -11349,19 +11349,19 @@ func (o GrafeasV1beta1PackageDetailsPtrOutput) Elem() GrafeasV1beta1PackageDetai
 	return o.ApplyT(func(v *GrafeasV1beta1PackageDetails) GrafeasV1beta1PackageDetails { return *v }).(GrafeasV1beta1PackageDetailsOutput)
 }
 
-// Required. Where the package was installed.
+// Where the package was installed.
 func (o GrafeasV1beta1PackageDetailsPtrOutput) Installation() InstallationPtrOutput {
 	return o.ApplyT(func(v *GrafeasV1beta1PackageDetails) *Installation {
 		if v == nil {
 			return nil
 		}
-		return v.Installation
+		return &v.Installation
 	}).(InstallationPtrOutput)
 }
 
 // Details of a package occurrence.
 type GrafeasV1beta1PackageDetailsResponse struct {
-	// Required. Where the package was installed.
+	// Where the package was installed.
 	Installation InstallationResponse `pulumi:"installation"`
 }
 
@@ -11378,7 +11378,7 @@ type GrafeasV1beta1PackageDetailsResponseInput interface {
 
 // Details of a package occurrence.
 type GrafeasV1beta1PackageDetailsResponseArgs struct {
-	// Required. Where the package was installed.
+	// Where the package was installed.
 	Installation InstallationResponseInput `pulumi:"installation"`
 }
 
@@ -11460,7 +11460,7 @@ func (o GrafeasV1beta1PackageDetailsResponseOutput) ToGrafeasV1beta1PackageDetai
 	}).(GrafeasV1beta1PackageDetailsResponsePtrOutput)
 }
 
-// Required. Where the package was installed.
+// Where the package was installed.
 func (o GrafeasV1beta1PackageDetailsResponseOutput) Installation() InstallationResponseOutput {
 	return o.ApplyT(func(v GrafeasV1beta1PackageDetailsResponse) InstallationResponse { return v.Installation }).(InstallationResponseOutput)
 }
@@ -11483,7 +11483,7 @@ func (o GrafeasV1beta1PackageDetailsResponsePtrOutput) Elem() GrafeasV1beta1Pack
 	return o.ApplyT(func(v *GrafeasV1beta1PackageDetailsResponse) GrafeasV1beta1PackageDetailsResponse { return *v }).(GrafeasV1beta1PackageDetailsResponseOutput)
 }
 
-// Required. Where the package was installed.
+// Where the package was installed.
 func (o GrafeasV1beta1PackageDetailsResponsePtrOutput) Installation() InstallationResponsePtrOutput {
 	return o.ApplyT(func(v *GrafeasV1beta1PackageDetailsResponse) *InstallationResponse {
 		if v == nil {
@@ -11497,7 +11497,7 @@ func (o GrafeasV1beta1PackageDetailsResponsePtrOutput) Installation() Installati
 type GrafeasV1beta1VulnerabilityDetails struct {
 	// The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
 	EffectiveSeverity *string `pulumi:"effectiveSeverity"`
-	// Required. The set of affected locations and their fixes (if available) within the associated resource.
+	// The set of affected locations and their fixes (if available) within the associated resource.
 	PackageIssue []PackageIssue `pulumi:"packageIssue"`
 	// The type of package; whether native or non native(ruby gems, node.js packages etc)
 	Type *string `pulumi:"type"`
@@ -11518,7 +11518,7 @@ type GrafeasV1beta1VulnerabilityDetailsInput interface {
 type GrafeasV1beta1VulnerabilityDetailsArgs struct {
 	// The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
 	EffectiveSeverity *GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity `pulumi:"effectiveSeverity"`
-	// Required. The set of affected locations and their fixes (if available) within the associated resource.
+	// The set of affected locations and their fixes (if available) within the associated resource.
 	PackageIssue PackageIssueArrayInput `pulumi:"packageIssue"`
 	// The type of package; whether native or non native(ruby gems, node.js packages etc)
 	Type pulumi.StringPtrInput `pulumi:"type"`
@@ -11607,7 +11607,7 @@ func (o GrafeasV1beta1VulnerabilityDetailsOutput) EffectiveSeverity() pulumi.Str
 	return o.ApplyT(func(v GrafeasV1beta1VulnerabilityDetails) *string { return v.EffectiveSeverity }).(pulumi.StringPtrOutput)
 }
 
-// Required. The set of affected locations and their fixes (if available) within the associated resource.
+// The set of affected locations and their fixes (if available) within the associated resource.
 func (o GrafeasV1beta1VulnerabilityDetailsOutput) PackageIssue() PackageIssueArrayOutput {
 	return o.ApplyT(func(v GrafeasV1beta1VulnerabilityDetails) []PackageIssue { return v.PackageIssue }).(PackageIssueArrayOutput)
 }
@@ -11645,7 +11645,7 @@ func (o GrafeasV1beta1VulnerabilityDetailsPtrOutput) EffectiveSeverity() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The set of affected locations and their fixes (if available) within the associated resource.
+// The set of affected locations and their fixes (if available) within the associated resource.
 func (o GrafeasV1beta1VulnerabilityDetailsPtrOutput) PackageIssue() PackageIssueArrayOutput {
 	return o.ApplyT(func(v *GrafeasV1beta1VulnerabilityDetails) []PackageIssue {
 		if v == nil {
@@ -11673,7 +11673,7 @@ type GrafeasV1beta1VulnerabilityDetailsResponse struct {
 	EffectiveSeverity string `pulumi:"effectiveSeverity"`
 	// A detailed description of this vulnerability.
 	LongDescription string `pulumi:"longDescription"`
-	// Required. The set of affected locations and their fixes (if available) within the associated resource.
+	// The set of affected locations and their fixes (if available) within the associated resource.
 	PackageIssue []PackageIssueResponse `pulumi:"packageIssue"`
 	// URLs related to this vulnerability.
 	RelatedUrls []RelatedUrlResponse `pulumi:"relatedUrls"`
@@ -11704,7 +11704,7 @@ type GrafeasV1beta1VulnerabilityDetailsResponseArgs struct {
 	EffectiveSeverity pulumi.StringInput `pulumi:"effectiveSeverity"`
 	// A detailed description of this vulnerability.
 	LongDescription pulumi.StringInput `pulumi:"longDescription"`
-	// Required. The set of affected locations and their fixes (if available) within the associated resource.
+	// The set of affected locations and their fixes (if available) within the associated resource.
 	PackageIssue PackageIssueResponseArrayInput `pulumi:"packageIssue"`
 	// URLs related to this vulnerability.
 	RelatedUrls RelatedUrlResponseArrayInput `pulumi:"relatedUrls"`
@@ -11809,7 +11809,7 @@ func (o GrafeasV1beta1VulnerabilityDetailsResponseOutput) LongDescription() pulu
 	return o.ApplyT(func(v GrafeasV1beta1VulnerabilityDetailsResponse) string { return v.LongDescription }).(pulumi.StringOutput)
 }
 
-// Required. The set of affected locations and their fixes (if available) within the associated resource.
+// The set of affected locations and their fixes (if available) within the associated resource.
 func (o GrafeasV1beta1VulnerabilityDetailsResponseOutput) PackageIssue() PackageIssueResponseArrayOutput {
 	return o.ApplyT(func(v GrafeasV1beta1VulnerabilityDetailsResponse) []PackageIssueResponse { return v.PackageIssue }).(PackageIssueResponseArrayOutput)
 }
@@ -11884,7 +11884,7 @@ func (o GrafeasV1beta1VulnerabilityDetailsResponsePtrOutput) LongDescription() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The set of affected locations and their fixes (if available) within the associated resource.
+// The set of affected locations and their fixes (if available) within the associated resource.
 func (o GrafeasV1beta1VulnerabilityDetailsResponsePtrOutput) PackageIssue() PackageIssueResponseArrayOutput {
 	return o.ApplyT(func(v *GrafeasV1beta1VulnerabilityDetailsResponse) []PackageIssueResponse {
 		if v == nil {
@@ -11936,8 +11936,8 @@ func (o GrafeasV1beta1VulnerabilityDetailsResponsePtrOutput) Type() pulumi.Strin
 
 // This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
 type Hint struct {
-	// Required. The human readable name of this attestation authority, for example "qa".
-	HumanReadableName *string `pulumi:"humanReadableName"`
+	// The human readable name of this attestation authority, for example "qa".
+	HumanReadableName string `pulumi:"humanReadableName"`
 }
 
 // HintInput is an input type that accepts HintArgs and HintOutput values.
@@ -11953,8 +11953,8 @@ type HintInput interface {
 
 // This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
 type HintArgs struct {
-	// Required. The human readable name of this attestation authority, for example "qa".
-	HumanReadableName pulumi.StringPtrInput `pulumi:"humanReadableName"`
+	// The human readable name of this attestation authority, for example "qa".
+	HumanReadableName pulumi.StringInput `pulumi:"humanReadableName"`
 }
 
 func (HintArgs) ElementType() reflect.Type {
@@ -12035,9 +12035,9 @@ func (o HintOutput) ToHintPtrOutputWithContext(ctx context.Context) HintPtrOutpu
 	}).(HintPtrOutput)
 }
 
-// Required. The human readable name of this attestation authority, for example "qa".
-func (o HintOutput) HumanReadableName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Hint) *string { return v.HumanReadableName }).(pulumi.StringPtrOutput)
+// The human readable name of this attestation authority, for example "qa".
+func (o HintOutput) HumanReadableName() pulumi.StringOutput {
+	return o.ApplyT(func(v Hint) string { return v.HumanReadableName }).(pulumi.StringOutput)
 }
 
 type HintPtrOutput struct{ *pulumi.OutputState }
@@ -12058,19 +12058,19 @@ func (o HintPtrOutput) Elem() HintOutput {
 	return o.ApplyT(func(v *Hint) Hint { return *v }).(HintOutput)
 }
 
-// Required. The human readable name of this attestation authority, for example "qa".
+// The human readable name of this attestation authority, for example "qa".
 func (o HintPtrOutput) HumanReadableName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Hint) *string {
 		if v == nil {
 			return nil
 		}
-		return v.HumanReadableName
+		return &v.HumanReadableName
 	}).(pulumi.StringPtrOutput)
 }
 
 // This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
 type HintResponse struct {
-	// Required. The human readable name of this attestation authority, for example "qa".
+	// The human readable name of this attestation authority, for example "qa".
 	HumanReadableName string `pulumi:"humanReadableName"`
 }
 
@@ -12087,7 +12087,7 @@ type HintResponseInput interface {
 
 // This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
 type HintResponseArgs struct {
-	// Required. The human readable name of this attestation authority, for example "qa".
+	// The human readable name of this attestation authority, for example "qa".
 	HumanReadableName pulumi.StringInput `pulumi:"humanReadableName"`
 }
 
@@ -12169,7 +12169,7 @@ func (o HintResponseOutput) ToHintResponsePtrOutputWithContext(ctx context.Conte
 	}).(HintResponsePtrOutput)
 }
 
-// Required. The human readable name of this attestation authority, for example "qa".
+// The human readable name of this attestation authority, for example "qa".
 func (o HintResponseOutput) HumanReadableName() pulumi.StringOutput {
 	return o.ApplyT(func(v HintResponse) string { return v.HumanReadableName }).(pulumi.StringOutput)
 }
@@ -12192,7 +12192,7 @@ func (o HintResponsePtrOutput) Elem() HintResponseOutput {
 	return o.ApplyT(func(v *HintResponse) HintResponse { return *v }).(HintResponseOutput)
 }
 
-// Required. The human readable name of this attestation authority, for example "qa".
+// The human readable name of this attestation authority, for example "qa".
 func (o HintResponsePtrOutput) HumanReadableName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HintResponse) *string {
 		if v == nil {
@@ -12654,7 +12654,7 @@ func (o InTotoResponsePtrOutput) Threshold() pulumi.StringPtrOutput {
 
 // This represents how a particular software package may be installed on a system.
 type Installation struct {
-	// Required. All of the places within the filesystem versions of this package have been found.
+	// All of the places within the filesystem versions of this package have been found.
 	Location []Location `pulumi:"location"`
 }
 
@@ -12671,7 +12671,7 @@ type InstallationInput interface {
 
 // This represents how a particular software package may be installed on a system.
 type InstallationArgs struct {
-	// Required. All of the places within the filesystem versions of this package have been found.
+	// All of the places within the filesystem versions of this package have been found.
 	Location LocationArrayInput `pulumi:"location"`
 }
 
@@ -12753,7 +12753,7 @@ func (o InstallationOutput) ToInstallationPtrOutputWithContext(ctx context.Conte
 	}).(InstallationPtrOutput)
 }
 
-// Required. All of the places within the filesystem versions of this package have been found.
+// All of the places within the filesystem versions of this package have been found.
 func (o InstallationOutput) Location() LocationArrayOutput {
 	return o.ApplyT(func(v Installation) []Location { return v.Location }).(LocationArrayOutput)
 }
@@ -12776,7 +12776,7 @@ func (o InstallationPtrOutput) Elem() InstallationOutput {
 	return o.ApplyT(func(v *Installation) Installation { return *v }).(InstallationOutput)
 }
 
-// Required. All of the places within the filesystem versions of this package have been found.
+// All of the places within the filesystem versions of this package have been found.
 func (o InstallationPtrOutput) Location() LocationArrayOutput {
 	return o.ApplyT(func(v *Installation) []Location {
 		if v == nil {
@@ -12788,7 +12788,7 @@ func (o InstallationPtrOutput) Location() LocationArrayOutput {
 
 // This represents how a particular software package may be installed on a system.
 type InstallationResponse struct {
-	// Required. All of the places within the filesystem versions of this package have been found.
+	// All of the places within the filesystem versions of this package have been found.
 	Location []LocationResponse `pulumi:"location"`
 	// The name of the installed package.
 	Name string `pulumi:"name"`
@@ -12807,7 +12807,7 @@ type InstallationResponseInput interface {
 
 // This represents how a particular software package may be installed on a system.
 type InstallationResponseArgs struct {
-	// Required. All of the places within the filesystem versions of this package have been found.
+	// All of the places within the filesystem versions of this package have been found.
 	Location LocationResponseArrayInput `pulumi:"location"`
 	// The name of the installed package.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -12891,7 +12891,7 @@ func (o InstallationResponseOutput) ToInstallationResponsePtrOutputWithContext(c
 	}).(InstallationResponsePtrOutput)
 }
 
-// Required. All of the places within the filesystem versions of this package have been found.
+// All of the places within the filesystem versions of this package have been found.
 func (o InstallationResponseOutput) Location() LocationResponseArrayOutput {
 	return o.ApplyT(func(v InstallationResponse) []LocationResponse { return v.Location }).(LocationResponseArrayOutput)
 }
@@ -12919,7 +12919,7 @@ func (o InstallationResponsePtrOutput) Elem() InstallationResponseOutput {
 	return o.ApplyT(func(v *InstallationResponse) InstallationResponse { return *v }).(InstallationResponseOutput)
 }
 
-// Required. All of the places within the filesystem versions of this package have been found.
+// All of the places within the filesystem versions of this package have been found.
 func (o InstallationResponsePtrOutput) Location() LocationResponseArrayOutput {
 	return o.ApplyT(func(v *InstallationResponse) []LocationResponse {
 		if v == nil {
@@ -13155,8 +13155,8 @@ func (o KnowledgeBaseResponseArrayOutput) Index(i pulumi.IntInput) KnowledgeBase
 type Layer struct {
 	// The recovered arguments to the Dockerfile directive.
 	Arguments *string `pulumi:"arguments"`
-	// Required. The recovered Dockerfile directive used to construct this layer.
-	Directive *string `pulumi:"directive"`
+	// The recovered Dockerfile directive used to construct this layer.
+	Directive string `pulumi:"directive"`
 }
 
 // LayerInput is an input type that accepts LayerArgs and LayerOutput values.
@@ -13174,8 +13174,8 @@ type LayerInput interface {
 type LayerArgs struct {
 	// The recovered arguments to the Dockerfile directive.
 	Arguments pulumi.StringPtrInput `pulumi:"arguments"`
-	// Required. The recovered Dockerfile directive used to construct this layer.
-	Directive *LayerDirective `pulumi:"directive"`
+	// The recovered Dockerfile directive used to construct this layer.
+	Directive LayerDirective `pulumi:"directive"`
 }
 
 func (LayerArgs) ElementType() reflect.Type {
@@ -13235,9 +13235,9 @@ func (o LayerOutput) Arguments() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Layer) *string { return v.Arguments }).(pulumi.StringPtrOutput)
 }
 
-// Required. The recovered Dockerfile directive used to construct this layer.
-func (o LayerOutput) Directive() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Layer) *string { return v.Directive }).(pulumi.StringPtrOutput)
+// The recovered Dockerfile directive used to construct this layer.
+func (o LayerOutput) Directive() pulumi.StringOutput {
+	return o.ApplyT(func(v Layer) string { return v.Directive }).(pulumi.StringOutput)
 }
 
 type LayerArrayOutput struct{ *pulumi.OutputState }
@@ -13264,7 +13264,7 @@ func (o LayerArrayOutput) Index(i pulumi.IntInput) LayerOutput {
 type LayerResponse struct {
 	// The recovered arguments to the Dockerfile directive.
 	Arguments string `pulumi:"arguments"`
-	// Required. The recovered Dockerfile directive used to construct this layer.
+	// The recovered Dockerfile directive used to construct this layer.
 	Directive string `pulumi:"directive"`
 }
 
@@ -13283,7 +13283,7 @@ type LayerResponseInput interface {
 type LayerResponseArgs struct {
 	// The recovered arguments to the Dockerfile directive.
 	Arguments pulumi.StringInput `pulumi:"arguments"`
-	// Required. The recovered Dockerfile directive used to construct this layer.
+	// The recovered Dockerfile directive used to construct this layer.
 	Directive pulumi.StringInput `pulumi:"directive"`
 }
 
@@ -13344,7 +13344,7 @@ func (o LayerResponseOutput) Arguments() pulumi.StringOutput {
 	return o.ApplyT(func(v LayerResponse) string { return v.Arguments }).(pulumi.StringOutput)
 }
 
-// Required. The recovered Dockerfile directive used to construct this layer.
+// The recovered Dockerfile directive used to construct this layer.
 func (o LayerResponseOutput) Directive() pulumi.StringOutput {
 	return o.ApplyT(func(v LayerResponse) string { return v.Directive }).(pulumi.StringOutput)
 }
@@ -13791,8 +13791,8 @@ func (o LinkResponsePtrOutput) Products() GrafeasV1beta1IntotoArtifactResponseAr
 
 // An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
 type Location struct {
-	// Required. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
-	CpeUri *string `pulumi:"cpeUri"`
+	// The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+	CpeUri string `pulumi:"cpeUri"`
 	// The path from which we gathered that this package/version is installed.
 	Path *string `pulumi:"path"`
 	// The version installed at this location.
@@ -13812,8 +13812,8 @@ type LocationInput interface {
 
 // An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
 type LocationArgs struct {
-	// Required. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
-	CpeUri pulumi.StringPtrInput `pulumi:"cpeUri"`
+	// The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
 	// The path from which we gathered that this package/version is installed.
 	Path pulumi.StringPtrInput `pulumi:"path"`
 	// The version installed at this location.
@@ -13872,9 +13872,9 @@ func (o LocationOutput) ToLocationOutputWithContext(ctx context.Context) Locatio
 	return o
 }
 
-// Required. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
-func (o LocationOutput) CpeUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Location) *string { return v.CpeUri }).(pulumi.StringPtrOutput)
+// The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+func (o LocationOutput) CpeUri() pulumi.StringOutput {
+	return o.ApplyT(func(v Location) string { return v.CpeUri }).(pulumi.StringOutput)
 }
 
 // The path from which we gathered that this package/version is installed.
@@ -13909,7 +13909,7 @@ func (o LocationArrayOutput) Index(i pulumi.IntInput) LocationOutput {
 
 // An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
 type LocationResponse struct {
-	// Required. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+	// The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
 	CpeUri string `pulumi:"cpeUri"`
 	// The path from which we gathered that this package/version is installed.
 	Path string `pulumi:"path"`
@@ -13930,7 +13930,7 @@ type LocationResponseInput interface {
 
 // An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
 type LocationResponseArgs struct {
-	// Required. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+	// The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
 	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
 	// The path from which we gathered that this package/version is installed.
 	Path pulumi.StringInput `pulumi:"path"`
@@ -13990,7 +13990,7 @@ func (o LocationResponseOutput) ToLocationResponseOutputWithContext(ctx context.
 	return o
 }
 
-// Required. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+// The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
 func (o LocationResponseOutput) CpeUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LocationResponse) string { return v.CpeUri }).(pulumi.StringOutput)
 }
@@ -14029,8 +14029,8 @@ func (o LocationResponseArrayOutput) Index(i pulumi.IntInput) LocationResponseOu
 type Package struct {
 	// The various channels by which a package is distributed.
 	Distribution []Distribution `pulumi:"distribution"`
-	// Required. Immutable. The name of the package.
-	Name *string `pulumi:"name"`
+	// Immutable. The name of the package.
+	Name string `pulumi:"name"`
 }
 
 // PackageInput is an input type that accepts PackageArgs and PackageOutput values.
@@ -14048,8 +14048,8 @@ type PackageInput interface {
 type PackageArgs struct {
 	// The various channels by which a package is distributed.
 	Distribution DistributionArrayInput `pulumi:"distribution"`
-	// Required. Immutable. The name of the package.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Immutable. The name of the package.
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (PackageArgs) ElementType() reflect.Type {
@@ -14135,9 +14135,9 @@ func (o PackageOutput) Distribution() DistributionArrayOutput {
 	return o.ApplyT(func(v Package) []Distribution { return v.Distribution }).(DistributionArrayOutput)
 }
 
-// Required. Immutable. The name of the package.
-func (o PackageOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Package) *string { return v.Name }).(pulumi.StringPtrOutput)
+// Immutable. The name of the package.
+func (o PackageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v Package) string { return v.Name }).(pulumi.StringOutput)
 }
 
 type PackagePtrOutput struct{ *pulumi.OutputState }
@@ -14168,20 +14168,20 @@ func (o PackagePtrOutput) Distribution() DistributionArrayOutput {
 	}).(DistributionArrayOutput)
 }
 
-// Required. Immutable. The name of the package.
+// Immutable. The name of the package.
 func (o PackagePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Package) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Name
+		return &v.Name
 	}).(pulumi.StringPtrOutput)
 }
 
 // This message wraps a location affected by a vulnerability and its associated fix (if one is available).
 type PackageIssue struct {
-	// Required. The location of the vulnerability.
-	AffectedLocation *VulnerabilityLocation `pulumi:"affectedLocation"`
+	// The location of the vulnerability.
+	AffectedLocation VulnerabilityLocation `pulumi:"affectedLocation"`
 	// The location of the available fix for vulnerability.
 	FixedLocation *VulnerabilityLocation `pulumi:"fixedLocation"`
 }
@@ -14199,8 +14199,8 @@ type PackageIssueInput interface {
 
 // This message wraps a location affected by a vulnerability and its associated fix (if one is available).
 type PackageIssueArgs struct {
-	// Required. The location of the vulnerability.
-	AffectedLocation VulnerabilityLocationPtrInput `pulumi:"affectedLocation"`
+	// The location of the vulnerability.
+	AffectedLocation VulnerabilityLocationInput `pulumi:"affectedLocation"`
 	// The location of the available fix for vulnerability.
 	FixedLocation VulnerabilityLocationPtrInput `pulumi:"fixedLocation"`
 }
@@ -14257,9 +14257,9 @@ func (o PackageIssueOutput) ToPackageIssueOutputWithContext(ctx context.Context)
 	return o
 }
 
-// Required. The location of the vulnerability.
-func (o PackageIssueOutput) AffectedLocation() VulnerabilityLocationPtrOutput {
-	return o.ApplyT(func(v PackageIssue) *VulnerabilityLocation { return v.AffectedLocation }).(VulnerabilityLocationPtrOutput)
+// The location of the vulnerability.
+func (o PackageIssueOutput) AffectedLocation() VulnerabilityLocationOutput {
+	return o.ApplyT(func(v PackageIssue) VulnerabilityLocation { return v.AffectedLocation }).(VulnerabilityLocationOutput)
 }
 
 // The location of the available fix for vulnerability.
@@ -14289,7 +14289,7 @@ func (o PackageIssueArrayOutput) Index(i pulumi.IntInput) PackageIssueOutput {
 
 // This message wraps a location affected by a vulnerability and its associated fix (if one is available).
 type PackageIssueResponse struct {
-	// Required. The location of the vulnerability.
+	// The location of the vulnerability.
 	AffectedLocation VulnerabilityLocationResponse `pulumi:"affectedLocation"`
 	// The location of the available fix for vulnerability.
 	FixedLocation VulnerabilityLocationResponse `pulumi:"fixedLocation"`
@@ -14308,7 +14308,7 @@ type PackageIssueResponseInput interface {
 
 // This message wraps a location affected by a vulnerability and its associated fix (if one is available).
 type PackageIssueResponseArgs struct {
-	// Required. The location of the vulnerability.
+	// The location of the vulnerability.
 	AffectedLocation VulnerabilityLocationResponseInput `pulumi:"affectedLocation"`
 	// The location of the available fix for vulnerability.
 	FixedLocation VulnerabilityLocationResponseInput `pulumi:"fixedLocation"`
@@ -14366,7 +14366,7 @@ func (o PackageIssueResponseOutput) ToPackageIssueResponseOutputWithContext(ctx 
 	return o
 }
 
-// Required. The location of the vulnerability.
+// The location of the vulnerability.
 func (o PackageIssueResponseOutput) AffectedLocation() VulnerabilityLocationResponseOutput {
 	return o.ApplyT(func(v PackageIssueResponse) VulnerabilityLocationResponse { return v.AffectedLocation }).(VulnerabilityLocationResponseOutput)
 }
@@ -14400,7 +14400,7 @@ func (o PackageIssueResponseArrayOutput) Index(i pulumi.IntInput) PackageIssueRe
 type PackageResponse struct {
 	// The various channels by which a package is distributed.
 	Distribution []DistributionResponse `pulumi:"distribution"`
-	// Required. Immutable. The name of the package.
+	// Immutable. The name of the package.
 	Name string `pulumi:"name"`
 }
 
@@ -14419,7 +14419,7 @@ type PackageResponseInput interface {
 type PackageResponseArgs struct {
 	// The various channels by which a package is distributed.
 	Distribution DistributionResponseArrayInput `pulumi:"distribution"`
-	// Required. Immutable. The name of the package.
+	// Immutable. The name of the package.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -14506,7 +14506,7 @@ func (o PackageResponseOutput) Distribution() DistributionResponseArrayOutput {
 	return o.ApplyT(func(v PackageResponse) []DistributionResponse { return v.Distribution }).(DistributionResponseArrayOutput)
 }
 
-// Required. Immutable. The name of the package.
+// Immutable. The name of the package.
 func (o PackageResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PackageResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -14539,7 +14539,7 @@ func (o PackageResponsePtrOutput) Distribution() DistributionResponseArrayOutput
 	}).(DistributionResponseArrayOutput)
 }
 
-// Required. Immutable. The name of the package.
+// Immutable. The name of the package.
 func (o PackageResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PackageResponse) *string {
 		if v == nil {
@@ -14555,8 +14555,8 @@ type PgpSignedAttestation struct {
 	ContentType *string `pulumi:"contentType"`
 	// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexidecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
 	PgpKeyId *string `pulumi:"pgpKeyId"`
-	// Required. The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
-	Signature *string `pulumi:"signature"`
+	// The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
+	Signature string `pulumi:"signature"`
 }
 
 // PgpSignedAttestationInput is an input type that accepts PgpSignedAttestationArgs and PgpSignedAttestationOutput values.
@@ -14576,8 +14576,8 @@ type PgpSignedAttestationArgs struct {
 	ContentType *PgpSignedAttestationContentType `pulumi:"contentType"`
 	// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexidecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
 	PgpKeyId pulumi.StringPtrInput `pulumi:"pgpKeyId"`
-	// Required. The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
-	Signature pulumi.StringPtrInput `pulumi:"signature"`
+	// The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
+	Signature pulumi.StringInput `pulumi:"signature"`
 }
 
 func (PgpSignedAttestationArgs) ElementType() reflect.Type {
@@ -14668,9 +14668,9 @@ func (o PgpSignedAttestationOutput) PgpKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PgpSignedAttestation) *string { return v.PgpKeyId }).(pulumi.StringPtrOutput)
 }
 
-// Required. The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
-func (o PgpSignedAttestationOutput) Signature() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PgpSignedAttestation) *string { return v.Signature }).(pulumi.StringPtrOutput)
+// The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
+func (o PgpSignedAttestationOutput) Signature() pulumi.StringOutput {
+	return o.ApplyT(func(v PgpSignedAttestation) string { return v.Signature }).(pulumi.StringOutput)
 }
 
 type PgpSignedAttestationPtrOutput struct{ *pulumi.OutputState }
@@ -14711,13 +14711,13 @@ func (o PgpSignedAttestationPtrOutput) PgpKeyId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
+// The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
 func (o PgpSignedAttestationPtrOutput) Signature() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgpSignedAttestation) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Signature
+		return &v.Signature
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -14727,7 +14727,7 @@ type PgpSignedAttestationResponse struct {
 	ContentType string `pulumi:"contentType"`
 	// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexidecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
 	PgpKeyId string `pulumi:"pgpKeyId"`
-	// Required. The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
+	// The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
 	Signature string `pulumi:"signature"`
 }
 
@@ -14748,7 +14748,7 @@ type PgpSignedAttestationResponseArgs struct {
 	ContentType pulumi.StringInput `pulumi:"contentType"`
 	// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexidecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
 	PgpKeyId pulumi.StringInput `pulumi:"pgpKeyId"`
-	// Required. The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
+	// The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
 	Signature pulumi.StringInput `pulumi:"signature"`
 }
 
@@ -14840,7 +14840,7 @@ func (o PgpSignedAttestationResponseOutput) PgpKeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v PgpSignedAttestationResponse) string { return v.PgpKeyId }).(pulumi.StringOutput)
 }
 
-// Required. The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
+// The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
 func (o PgpSignedAttestationResponseOutput) Signature() pulumi.StringOutput {
 	return o.ApplyT(func(v PgpSignedAttestationResponse) string { return v.Signature }).(pulumi.StringOutput)
 }
@@ -14883,7 +14883,7 @@ func (o PgpSignedAttestationResponsePtrOutput) PgpKeyId() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
+// The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
 func (o PgpSignedAttestationResponsePtrOutput) Signature() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PgpSignedAttestationResponse) *string {
 		if v == nil {
@@ -15725,8 +15725,8 @@ func (o RepoIdResponsePtrOutput) Uid() pulumi.StringPtrOutput {
 
 // An entity that can have metadata. For example, a Docker image.
 type Resource struct {
-	// Required. The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
-	Uri *string `pulumi:"uri"`
+	// The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
+	Uri string `pulumi:"uri"`
 }
 
 // ResourceInput is an input type that accepts ResourceArgs and ResourceOutput values.
@@ -15742,8 +15742,8 @@ type ResourceInput interface {
 
 // An entity that can have metadata. For example, a Docker image.
 type ResourceArgs struct {
-	// Required. The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
-	Uri pulumi.StringPtrInput `pulumi:"uri"`
+	// The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
+	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
 func (ResourceArgs) ElementType() reflect.Type {
@@ -15824,9 +15824,9 @@ func (o ResourceOutput) ToResourcePtrOutputWithContext(ctx context.Context) Reso
 	}).(ResourcePtrOutput)
 }
 
-// Required. The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
-func (o ResourceOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Resource) *string { return v.Uri }).(pulumi.StringPtrOutput)
+// The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
+func (o ResourceOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v Resource) string { return v.Uri }).(pulumi.StringOutput)
 }
 
 type ResourcePtrOutput struct{ *pulumi.OutputState }
@@ -15847,19 +15847,19 @@ func (o ResourcePtrOutput) Elem() ResourceOutput {
 	return o.ApplyT(func(v *Resource) Resource { return *v }).(ResourceOutput)
 }
 
-// Required. The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
+// The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
 func (o ResourcePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Resource) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Uri
+		return &v.Uri
 	}).(pulumi.StringPtrOutput)
 }
 
 // An entity that can have metadata. For example, a Docker image.
 type ResourceResponse struct {
-	// Required. The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
+	// The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
 	Uri string `pulumi:"uri"`
 }
 
@@ -15876,7 +15876,7 @@ type ResourceResponseInput interface {
 
 // An entity that can have metadata. For example, a Docker image.
 type ResourceResponseArgs struct {
-	// Required. The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
+	// The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -15958,7 +15958,7 @@ func (o ResourceResponseOutput) ToResourceResponsePtrOutputWithContext(ctx conte
 	}).(ResourceResponsePtrOutput)
 }
 
-// Required. The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
+// The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
 func (o ResourceResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v ResourceResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -15981,7 +15981,7 @@ func (o ResourceResponsePtrOutput) Elem() ResourceResponseOutput {
 	return o.ApplyT(func(v *ResourceResponse) ResourceResponse { return *v }).(ResourceResponseOutput)
 }
 
-// Required. The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
+// The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
 func (o ResourceResponsePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResourceResponse) *string {
 		if v == nil {
@@ -17667,8 +17667,8 @@ type Version struct {
 	Epoch *int `pulumi:"epoch"`
 	// Whether this version is specifying part of an inclusive range. Grafeas does not have the capability to specify version ranges; instead we have fields that specify start version and end versions. At times this is insufficient - we also need to specify whether the version is included in the range or is excluded from the range. This boolean is expected to be set to true when the version is included in a range.
 	Inclusive *bool `pulumi:"inclusive"`
-	// Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
-	Kind *string `pulumi:"kind"`
+	// Distinguishes between sentinel MIN/MAX versions and normal versions.
+	Kind string `pulumi:"kind"`
 	// Required only when version kind is NORMAL. The main part of the version name.
 	Name *string `pulumi:"name"`
 	// The iteration of the package build from the above version.
@@ -17692,8 +17692,8 @@ type VersionArgs struct {
 	Epoch pulumi.IntPtrInput `pulumi:"epoch"`
 	// Whether this version is specifying part of an inclusive range. Grafeas does not have the capability to specify version ranges; instead we have fields that specify start version and end versions. At times this is insufficient - we also need to specify whether the version is included in the range or is excluded from the range. This boolean is expected to be set to true when the version is included in a range.
 	Inclusive pulumi.BoolPtrInput `pulumi:"inclusive"`
-	// Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
-	Kind *VersionKind `pulumi:"kind"`
+	// Distinguishes between sentinel MIN/MAX versions and normal versions.
+	Kind VersionKind `pulumi:"kind"`
 	// Required only when version kind is NORMAL. The main part of the version name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The iteration of the package build from the above version.
@@ -17788,9 +17788,9 @@ func (o VersionOutput) Inclusive() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Version) *bool { return v.Inclusive }).(pulumi.BoolPtrOutput)
 }
 
-// Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
-func (o VersionOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Version) *string { return v.Kind }).(pulumi.StringPtrOutput)
+// Distinguishes between sentinel MIN/MAX versions and normal versions.
+func (o VersionOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v Version) string { return v.Kind }).(pulumi.StringOutput)
 }
 
 // Required only when version kind is NORMAL. The main part of the version name.
@@ -17841,13 +17841,13 @@ func (o VersionPtrOutput) Inclusive() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
+// Distinguishes between sentinel MIN/MAX versions and normal versions.
 func (o VersionPtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Version) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Kind
+		return &v.Kind
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -17877,7 +17877,7 @@ type VersionResponse struct {
 	Epoch int `pulumi:"epoch"`
 	// Whether this version is specifying part of an inclusive range. Grafeas does not have the capability to specify version ranges; instead we have fields that specify start version and end versions. At times this is insufficient - we also need to specify whether the version is included in the range or is excluded from the range. This boolean is expected to be set to true when the version is included in a range.
 	Inclusive bool `pulumi:"inclusive"`
-	// Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
+	// Distinguishes between sentinel MIN/MAX versions and normal versions.
 	Kind string `pulumi:"kind"`
 	// Required only when version kind is NORMAL. The main part of the version name.
 	Name string `pulumi:"name"`
@@ -17902,7 +17902,7 @@ type VersionResponseArgs struct {
 	Epoch pulumi.IntInput `pulumi:"epoch"`
 	// Whether this version is specifying part of an inclusive range. Grafeas does not have the capability to specify version ranges; instead we have fields that specify start version and end versions. At times this is insufficient - we also need to specify whether the version is included in the range or is excluded from the range. This boolean is expected to be set to true when the version is included in a range.
 	Inclusive pulumi.BoolInput `pulumi:"inclusive"`
-	// Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
+	// Distinguishes between sentinel MIN/MAX versions and normal versions.
 	Kind pulumi.StringInput `pulumi:"kind"`
 	// Required only when version kind is NORMAL. The main part of the version name.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -17947,7 +17947,7 @@ func (o VersionResponseOutput) Inclusive() pulumi.BoolOutput {
 	return o.ApplyT(func(v VersionResponse) bool { return v.Inclusive }).(pulumi.BoolOutput)
 }
 
-// Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
+// Distinguishes between sentinel MIN/MAX versions and normal versions.
 func (o VersionResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v VersionResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
@@ -18193,12 +18193,12 @@ func (o VulnerabilityPtrOutput) WindowsDetails() WindowsDetailArrayOutput {
 
 // The location of the vulnerability.
 type VulnerabilityLocation struct {
-	// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
-	CpeUri *string `pulumi:"cpeUri"`
-	// Required. The package being described.
-	Package *string `pulumi:"package"`
-	// Required. The version of the package being described.
-	Version *Version `pulumi:"version"`
+	// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
+	CpeUri string `pulumi:"cpeUri"`
+	// The package being described.
+	Package string `pulumi:"package"`
+	// The version of the package being described.
+	Version Version `pulumi:"version"`
 }
 
 // VulnerabilityLocationInput is an input type that accepts VulnerabilityLocationArgs and VulnerabilityLocationOutput values.
@@ -18214,12 +18214,12 @@ type VulnerabilityLocationInput interface {
 
 // The location of the vulnerability.
 type VulnerabilityLocationArgs struct {
-	// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
-	CpeUri pulumi.StringPtrInput `pulumi:"cpeUri"`
-	// Required. The package being described.
-	Package pulumi.StringPtrInput `pulumi:"package"`
-	// Required. The version of the package being described.
-	Version VersionPtrInput `pulumi:"version"`
+	// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
+	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
+	// The package being described.
+	Package pulumi.StringInput `pulumi:"package"`
+	// The version of the package being described.
+	Version VersionInput `pulumi:"version"`
 }
 
 func (VulnerabilityLocationArgs) ElementType() reflect.Type {
@@ -18300,19 +18300,19 @@ func (o VulnerabilityLocationOutput) ToVulnerabilityLocationPtrOutputWithContext
 	}).(VulnerabilityLocationPtrOutput)
 }
 
-// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
-func (o VulnerabilityLocationOutput) CpeUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VulnerabilityLocation) *string { return v.CpeUri }).(pulumi.StringPtrOutput)
+// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
+func (o VulnerabilityLocationOutput) CpeUri() pulumi.StringOutput {
+	return o.ApplyT(func(v VulnerabilityLocation) string { return v.CpeUri }).(pulumi.StringOutput)
 }
 
-// Required. The package being described.
-func (o VulnerabilityLocationOutput) Package() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VulnerabilityLocation) *string { return v.Package }).(pulumi.StringPtrOutput)
+// The package being described.
+func (o VulnerabilityLocationOutput) Package() pulumi.StringOutput {
+	return o.ApplyT(func(v VulnerabilityLocation) string { return v.Package }).(pulumi.StringOutput)
 }
 
-// Required. The version of the package being described.
-func (o VulnerabilityLocationOutput) Version() VersionPtrOutput {
-	return o.ApplyT(func(v VulnerabilityLocation) *Version { return v.Version }).(VersionPtrOutput)
+// The version of the package being described.
+func (o VulnerabilityLocationOutput) Version() VersionOutput {
+	return o.ApplyT(func(v VulnerabilityLocation) Version { return v.Version }).(VersionOutput)
 }
 
 type VulnerabilityLocationPtrOutput struct{ *pulumi.OutputState }
@@ -18333,43 +18333,43 @@ func (o VulnerabilityLocationPtrOutput) Elem() VulnerabilityLocationOutput {
 	return o.ApplyT(func(v *VulnerabilityLocation) VulnerabilityLocation { return *v }).(VulnerabilityLocationOutput)
 }
 
-// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
+// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
 func (o VulnerabilityLocationPtrOutput) CpeUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VulnerabilityLocation) *string {
 		if v == nil {
 			return nil
 		}
-		return v.CpeUri
+		return &v.CpeUri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The package being described.
+// The package being described.
 func (o VulnerabilityLocationPtrOutput) Package() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VulnerabilityLocation) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Package
+		return &v.Package
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The version of the package being described.
+// The version of the package being described.
 func (o VulnerabilityLocationPtrOutput) Version() VersionPtrOutput {
 	return o.ApplyT(func(v *VulnerabilityLocation) *Version {
 		if v == nil {
 			return nil
 		}
-		return v.Version
+		return &v.Version
 	}).(VersionPtrOutput)
 }
 
 // The location of the vulnerability.
 type VulnerabilityLocationResponse struct {
-	// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
+	// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
 	CpeUri string `pulumi:"cpeUri"`
-	// Required. The package being described.
+	// The package being described.
 	Package string `pulumi:"package"`
-	// Required. The version of the package being described.
+	// The version of the package being described.
 	Version VersionResponse `pulumi:"version"`
 }
 
@@ -18386,11 +18386,11 @@ type VulnerabilityLocationResponseInput interface {
 
 // The location of the vulnerability.
 type VulnerabilityLocationResponseArgs struct {
-	// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
+	// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
 	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
-	// Required. The package being described.
+	// The package being described.
 	Package pulumi.StringInput `pulumi:"package"`
-	// Required. The version of the package being described.
+	// The version of the package being described.
 	Version VersionResponseInput `pulumi:"version"`
 }
 
@@ -18421,17 +18421,17 @@ func (o VulnerabilityLocationResponseOutput) ToVulnerabilityLocationResponseOutp
 	return o
 }
 
-// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
+// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
 func (o VulnerabilityLocationResponseOutput) CpeUri() pulumi.StringOutput {
 	return o.ApplyT(func(v VulnerabilityLocationResponse) string { return v.CpeUri }).(pulumi.StringOutput)
 }
 
-// Required. The package being described.
+// The package being described.
 func (o VulnerabilityLocationResponseOutput) Package() pulumi.StringOutput {
 	return o.ApplyT(func(v VulnerabilityLocationResponse) string { return v.Package }).(pulumi.StringOutput)
 }
 
-// Required. The version of the package being described.
+// The version of the package being described.
 func (o VulnerabilityLocationResponseOutput) Version() VersionResponseOutput {
 	return o.ApplyT(func(v VulnerabilityLocationResponse) VersionResponse { return v.Version }).(VersionResponseOutput)
 }
@@ -18666,14 +18666,14 @@ func (o VulnerabilityResponsePtrOutput) WindowsDetails() WindowsDetailResponseAr
 }
 
 type WindowsDetail struct {
-	// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
-	CpeUri *string `pulumi:"cpeUri"`
+	// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+	CpeUri string `pulumi:"cpeUri"`
 	// The description of the vulnerability.
 	Description *string `pulumi:"description"`
-	// Required. The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
+	// The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
 	FixingKbs []KnowledgeBase `pulumi:"fixingKbs"`
-	// Required. The name of the vulnerability.
-	Name *string `pulumi:"name"`
+	// The name of the vulnerability.
+	Name string `pulumi:"name"`
 }
 
 // WindowsDetailInput is an input type that accepts WindowsDetailArgs and WindowsDetailOutput values.
@@ -18688,14 +18688,14 @@ type WindowsDetailInput interface {
 }
 
 type WindowsDetailArgs struct {
-	// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
-	CpeUri pulumi.StringPtrInput `pulumi:"cpeUri"`
+	// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
 	// The description of the vulnerability.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Required. The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
+	// The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
 	FixingKbs KnowledgeBaseArrayInput `pulumi:"fixingKbs"`
-	// Required. The name of the vulnerability.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The name of the vulnerability.
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (WindowsDetailArgs) ElementType() reflect.Type {
@@ -18749,9 +18749,9 @@ func (o WindowsDetailOutput) ToWindowsDetailOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
-func (o WindowsDetailOutput) CpeUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WindowsDetail) *string { return v.CpeUri }).(pulumi.StringPtrOutput)
+// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+func (o WindowsDetailOutput) CpeUri() pulumi.StringOutput {
+	return o.ApplyT(func(v WindowsDetail) string { return v.CpeUri }).(pulumi.StringOutput)
 }
 
 // The description of the vulnerability.
@@ -18759,14 +18759,14 @@ func (o WindowsDetailOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v WindowsDetail) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Required. The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
+// The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
 func (o WindowsDetailOutput) FixingKbs() KnowledgeBaseArrayOutput {
 	return o.ApplyT(func(v WindowsDetail) []KnowledgeBase { return v.FixingKbs }).(KnowledgeBaseArrayOutput)
 }
 
-// Required. The name of the vulnerability.
-func (o WindowsDetailOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WindowsDetail) *string { return v.Name }).(pulumi.StringPtrOutput)
+// The name of the vulnerability.
+func (o WindowsDetailOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v WindowsDetail) string { return v.Name }).(pulumi.StringOutput)
 }
 
 type WindowsDetailArrayOutput struct{ *pulumi.OutputState }
@@ -18790,13 +18790,13 @@ func (o WindowsDetailArrayOutput) Index(i pulumi.IntInput) WindowsDetailOutput {
 }
 
 type WindowsDetailResponse struct {
-	// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+	// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
 	CpeUri string `pulumi:"cpeUri"`
 	// The description of the vulnerability.
 	Description string `pulumi:"description"`
-	// Required. The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
+	// The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
 	FixingKbs []KnowledgeBaseResponse `pulumi:"fixingKbs"`
-	// Required. The name of the vulnerability.
+	// The name of the vulnerability.
 	Name string `pulumi:"name"`
 }
 
@@ -18812,13 +18812,13 @@ type WindowsDetailResponseInput interface {
 }
 
 type WindowsDetailResponseArgs struct {
-	// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+	// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
 	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
 	// The description of the vulnerability.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Required. The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
+	// The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
 	FixingKbs KnowledgeBaseResponseArrayInput `pulumi:"fixingKbs"`
-	// Required. The name of the vulnerability.
+	// The name of the vulnerability.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -18873,7 +18873,7 @@ func (o WindowsDetailResponseOutput) ToWindowsDetailResponseOutputWithContext(ct
 	return o
 }
 
-// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
 func (o WindowsDetailResponseOutput) CpeUri() pulumi.StringOutput {
 	return o.ApplyT(func(v WindowsDetailResponse) string { return v.CpeUri }).(pulumi.StringOutput)
 }
@@ -18883,12 +18883,12 @@ func (o WindowsDetailResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v WindowsDetailResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Required. The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
+// The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
 func (o WindowsDetailResponseOutput) FixingKbs() KnowledgeBaseResponseArrayOutput {
 	return o.ApplyT(func(v WindowsDetailResponse) []KnowledgeBaseResponse { return v.FixingKbs }).(KnowledgeBaseResponseArrayOutput)
 }
 
-// Required. The name of the vulnerability.
+// The name of the vulnerability.
 func (o WindowsDetailResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v WindowsDetailResponse) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1.Outputs
     public sealed class MatchingCriteriaResponse
     {
         /// <summary>
-        /// Required. The name of a CloudEvents attribute. Currently, only a subset of attributes can be specified. All triggers MUST provide a matching criteria for the 'type' attribute.
+        /// The name of a CloudEvents attribute. Currently, only a subset of attributes can be specified. All triggers MUST provide a matching criteria for the 'type' attribute.
         /// </summary>
         public readonly string Attribute;
         /// <summary>
-        /// Required. The value for the attribute.
+        /// The value for the attribute.
         /// </summary>
         public readonly string Value;
 

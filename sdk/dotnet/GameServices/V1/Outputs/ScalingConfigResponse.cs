@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.GameServices.V1.Outputs
     public sealed class ScalingConfigResponse
     {
         /// <summary>
-        /// Required. Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+        /// Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
         /// </summary>
         public readonly string FleetAutoscalerSpec;
         /// <summary>
-        /// Required. The name of the Scaling Config
+        /// The name of the Scaling Config
         /// </summary>
         public readonly string Name;
         /// <summary>

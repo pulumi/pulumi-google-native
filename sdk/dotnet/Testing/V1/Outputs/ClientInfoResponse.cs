@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ClientInfoDetailResponse> ClientInfoDetails;
         /// <summary>
-        /// Required. Client name, such as gcloud.
+        /// Client name, such as gcloud.
         /// </summary>
         public readonly string Name;
 

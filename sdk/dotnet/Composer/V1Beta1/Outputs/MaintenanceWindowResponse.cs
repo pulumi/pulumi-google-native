@@ -14,15 +14,15 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
     public sealed class MaintenanceWindowResponse
     {
         /// <summary>
-        /// Required. Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
+        /// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
         /// </summary>
         public readonly string EndTime;
         /// <summary>
-        /// Required. Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+        /// Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
         /// </summary>
         public readonly string Recurrence;
         /// <summary>
-        /// Required. Start time of the first recurrence of the maintenance window.
+        /// Start time of the first recurrence of the maintenance window.
         /// </summary>
         public readonly string StartTime;
 

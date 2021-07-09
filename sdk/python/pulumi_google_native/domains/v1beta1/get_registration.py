@@ -59,7 +59,7 @@ class GetRegistrationResult:
     @pulumi.getter(name="contactSettings")
     def contact_settings(self) -> 'outputs.ContactSettingsResponse':
         """
-        Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
+        Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
         """
         return pulumi.get(self, "contact_settings")
 
@@ -83,7 +83,7 @@ class GetRegistrationResult:
     @pulumi.getter(name="domainName")
     def domain_name(self) -> str:
         """
-        Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
+        Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
         """
         return pulumi.get(self, "domain_name")
 

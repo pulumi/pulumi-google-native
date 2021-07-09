@@ -129,28 +129,27 @@ class BindingArgs:
 @pulumi.input_type
 class ContainerImageArgs:
     def __init__(__self__, *,
-                 repository: Optional[pulumi.Input[str]] = None,
+                 repository: pulumi.Input[str],
                  tag: Optional[pulumi.Input[str]] = None):
         """
         Definition of a container image for starting a notebook instance with the environment installed in a container.
-        :param pulumi.Input[str] repository: Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+        :param pulumi.Input[str] repository: The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
         :param pulumi.Input[str] tag: The tag of the container image. If not specified, this defaults to the latest tag.
         """
-        if repository is not None:
-            pulumi.set(__self__, "repository", repository)
+        pulumi.set(__self__, "repository", repository)
         if tag is not None:
             pulumi.set(__self__, "tag", tag)
 
     @property
     @pulumi.getter
-    def repository(self) -> Optional[pulumi.Input[str]]:
+    def repository(self) -> pulumi.Input[str]:
         """
-        Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+        The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
         """
         return pulumi.get(self, "repository")
 
     @repository.setter
-    def repository(self, value: Optional[pulumi.Input[str]]):
+    def repository(self, value: pulumi.Input[str]):
         pulumi.set(self, "repository", value)
 
     @property
@@ -193,6 +192,7 @@ class EncryptionConfigArgs:
 @pulumi.input_type
 class ExecutionTemplateArgs:
     def __init__(__self__, *,
+                 scale_tier: pulumi.Input['ExecutionTemplateScaleTier'],
                  accelerator_config: Optional[pulumi.Input['SchedulerAcceleratorConfigArgs']] = None,
                  container_image_uri: Optional[pulumi.Input[str]] = None,
                  input_notebook_file: Optional[pulumi.Input[str]] = None,
@@ -201,10 +201,10 @@ class ExecutionTemplateArgs:
                  output_notebook_folder: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[str]] = None,
                  params_yaml_file: Optional[pulumi.Input[str]] = None,
-                 scale_tier: Optional[pulumi.Input['ExecutionTemplateScaleTier']] = None,
                  service_account: Optional[pulumi.Input[str]] = None):
         """
         The description a notebook execution workload.
+        :param pulumi.Input['ExecutionTemplateScaleTier'] scale_tier: Scale tier of the hardware used for notebook execution.
         :param pulumi.Input['SchedulerAcceleratorConfigArgs'] accelerator_config: Configuration (count and accelerator type) for hardware running notebook execution.
         :param pulumi.Input[str] container_image_uri: Container Image URI to a DLVM Example: 'gcr.io/deeplearning-platform-release/base-cu100' More examples can be found at: https://cloud.google.com/ai-platform/deep-learning-containers/docs/choosing-container
         :param pulumi.Input[str] input_notebook_file: Path to the notebook file to execute. Must be in a Google Cloud Storage bucket. Format: gs://{project_id}/{folder}/{notebook_file_name} Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook.ipynb
@@ -213,9 +213,9 @@ class ExecutionTemplateArgs:
         :param pulumi.Input[str] output_notebook_folder: Path to the notebook folder to write to. Must be in a Google Cloud Storage bucket path. Format: gs://{project_id}/{folder} Ex: gs://notebook_user/scheduled_notebooks
         :param pulumi.Input[str] parameters: Parameters used within the 'input_notebook_file' notebook.
         :param pulumi.Input[str] params_yaml_file: Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
-        :param pulumi.Input['ExecutionTemplateScaleTier'] scale_tier: Required. Scale tier of the hardware used for notebook execution.
         :param pulumi.Input[str] service_account: The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
         """
+        pulumi.set(__self__, "scale_tier", scale_tier)
         if accelerator_config is not None:
             pulumi.set(__self__, "accelerator_config", accelerator_config)
         if container_image_uri is not None:
@@ -232,10 +232,20 @@ class ExecutionTemplateArgs:
             pulumi.set(__self__, "parameters", parameters)
         if params_yaml_file is not None:
             pulumi.set(__self__, "params_yaml_file", params_yaml_file)
-        if scale_tier is not None:
-            pulumi.set(__self__, "scale_tier", scale_tier)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+
+    @property
+    @pulumi.getter(name="scaleTier")
+    def scale_tier(self) -> pulumi.Input['ExecutionTemplateScaleTier']:
+        """
+        Scale tier of the hardware used for notebook execution.
+        """
+        return pulumi.get(self, "scale_tier")
+
+    @scale_tier.setter
+    def scale_tier(self, value: pulumi.Input['ExecutionTemplateScaleTier']):
+        pulumi.set(self, "scale_tier", value)
 
     @property
     @pulumi.getter(name="acceleratorConfig")
@@ -332,18 +342,6 @@ class ExecutionTemplateArgs:
     @params_yaml_file.setter
     def params_yaml_file(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "params_yaml_file", value)
-
-    @property
-    @pulumi.getter(name="scaleTier")
-    def scale_tier(self) -> Optional[pulumi.Input['ExecutionTemplateScaleTier']]:
-        """
-        Required. Scale tier of the hardware used for notebook execution.
-        """
-        return pulumi.get(self, "scale_tier")
-
-    @scale_tier.setter
-    def scale_tier(self, value: Optional[pulumi.Input['ExecutionTemplateScaleTier']]):
-        pulumi.set(self, "scale_tier", value)
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -1153,13 +1151,13 @@ class VirtualMachineArgs:
 @pulumi.input_type
 class VirtualMachineConfigArgs:
     def __init__(__self__, *,
+                 data_disk: pulumi.Input['LocalDiskArgs'],
+                 machine_type: pulumi.Input[str],
                  accelerator_config: Optional[pulumi.Input['RuntimeAcceleratorConfigArgs']] = None,
                  container_images: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerImageArgs']]]] = None,
-                 data_disk: Optional[pulumi.Input['LocalDiskArgs']] = None,
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
                  internal_ip_only: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  nic_type: Optional[pulumi.Input['VirtualMachineConfigNicType']] = None,
@@ -1168,13 +1166,13 @@ class VirtualMachineConfigArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The config settings for virtual machine.
+        :param pulumi.Input['LocalDiskArgs'] data_disk: Data disk option configuration settings.
+        :param pulumi.Input[str] machine_type: The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
         :param pulumi.Input['RuntimeAcceleratorConfigArgs'] accelerator_config: Optional. The Compute Engine accelerator configuration for this runtime.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerImageArgs']]] container_images: Optional. Use a list of container images to start the notebook instance.
-        :param pulumi.Input['LocalDiskArgs'] data_disk: Required. Data disk option configuration settings.
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. Encryption settings for virtual machine data disk.
         :param pulumi.Input[bool] internal_ip_only: Optional. If true, runtime will only have internal IP addresses. By default, runtimes are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each vm. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all dependencies must be configured to be accessible without external IP addresses.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
-        :param pulumi.Input[str] machine_type: Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
         :param pulumi.Input[str] network: Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
         :param pulumi.Input['VirtualMachineConfigNicType'] nic_type: Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
@@ -1182,20 +1180,18 @@ class VirtualMachineConfigArgs:
         :param pulumi.Input[str] subnet: Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network. A full URL or partial URI are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0` * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
         """
+        pulumi.set(__self__, "data_disk", data_disk)
+        pulumi.set(__self__, "machine_type", machine_type)
         if accelerator_config is not None:
             pulumi.set(__self__, "accelerator_config", accelerator_config)
         if container_images is not None:
             pulumi.set(__self__, "container_images", container_images)
-        if data_disk is not None:
-            pulumi.set(__self__, "data_disk", data_disk)
         if encryption_config is not None:
             pulumi.set(__self__, "encryption_config", encryption_config)
         if internal_ip_only is not None:
             pulumi.set(__self__, "internal_ip_only", internal_ip_only)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-        if machine_type is not None:
-            pulumi.set(__self__, "machine_type", machine_type)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
         if network is not None:
@@ -1208,6 +1204,30 @@ class VirtualMachineConfigArgs:
             pulumi.set(__self__, "subnet", subnet)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
+
+    @property
+    @pulumi.getter(name="dataDisk")
+    def data_disk(self) -> pulumi.Input['LocalDiskArgs']:
+        """
+        Data disk option configuration settings.
+        """
+        return pulumi.get(self, "data_disk")
+
+    @data_disk.setter
+    def data_disk(self, value: pulumi.Input['LocalDiskArgs']):
+        pulumi.set(self, "data_disk", value)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> pulumi.Input[str]:
+        """
+        The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "machine_type", value)
 
     @property
     @pulumi.getter(name="acceleratorConfig")
@@ -1232,18 +1252,6 @@ class VirtualMachineConfigArgs:
     @container_images.setter
     def container_images(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ContainerImageArgs']]]]):
         pulumi.set(self, "container_images", value)
-
-    @property
-    @pulumi.getter(name="dataDisk")
-    def data_disk(self) -> Optional[pulumi.Input['LocalDiskArgs']]:
-        """
-        Required. Data disk option configuration settings.
-        """
-        return pulumi.get(self, "data_disk")
-
-    @data_disk.setter
-    def data_disk(self, value: Optional[pulumi.Input['LocalDiskArgs']]):
-        pulumi.set(self, "data_disk", value)
 
     @property
     @pulumi.getter(name="encryptionConfig")
@@ -1280,18 +1288,6 @@ class VirtualMachineConfigArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
-
-    @property
-    @pulumi.getter(name="machineType")
-    def machine_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
-        """
-        return pulumi.get(self, "machine_type")
-
-    @machine_type.setter
-    def machine_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "machine_type", value)
 
     @property
     @pulumi.getter
@@ -1369,21 +1365,32 @@ class VirtualMachineConfigArgs:
 @pulumi.input_type
 class VmImageArgs:
     def __init__(__self__, *,
+                 project: pulumi.Input[str],
                  image_family: Optional[pulumi.Input[str]] = None,
-                 image_name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 image_name: Optional[pulumi.Input[str]] = None):
         """
         Definition of a custom Compute Engine virtual machine image for starting a notebook instance with the environment installed directly on the VM.
+        :param pulumi.Input[str] project: The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
         :param pulumi.Input[str] image_family: Use this VM image family to find the image; the newest image in this family will be used.
         :param pulumi.Input[str] image_name: Use VM image name to find the image.
-        :param pulumi.Input[str] project: Required. The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
         """
+        pulumi.set(__self__, "project", project)
         if image_family is not None:
             pulumi.set(__self__, "image_family", image_family)
         if image_name is not None:
             pulumi.set(__self__, "image_name", image_name)
-        if project is not None:
-            pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter
+    def project(self) -> pulumi.Input[str]:
+        """
+        The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+        """
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: pulumi.Input[str]):
+        pulumi.set(self, "project", value)
 
     @property
     @pulumi.getter(name="imageFamily")
@@ -1408,17 +1415,5 @@ class VmImageArgs:
     @image_name.setter
     def image_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "image_name", value)
-
-    @property
-    @pulumi.getter
-    def project(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
-        """
-        return pulumi.get(self, "project")
-
-    @project.setter
-    def project(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "project", value)
 
 

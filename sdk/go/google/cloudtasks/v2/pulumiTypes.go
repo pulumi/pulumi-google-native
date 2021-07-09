@@ -1505,8 +1505,8 @@ type HttpRequest struct {
 	OauthToken *OAuthToken `pulumi:"oauthToken"`
 	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
 	OidcToken *OidcToken `pulumi:"oidcToken"`
-	// Required. The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
-	Url *string `pulumi:"url"`
+	// The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
+	Url string `pulumi:"url"`
 }
 
 // HttpRequestInput is an input type that accepts HttpRequestArgs and HttpRequestOutput values.
@@ -1532,8 +1532,8 @@ type HttpRequestArgs struct {
 	OauthToken OAuthTokenPtrInput `pulumi:"oauthToken"`
 	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
 	OidcToken OidcTokenPtrInput `pulumi:"oidcToken"`
-	// Required. The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
-	Url pulumi.StringPtrInput `pulumi:"url"`
+	// The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
+	Url pulumi.StringInput `pulumi:"url"`
 }
 
 func (HttpRequestArgs) ElementType() reflect.Type {
@@ -1639,9 +1639,9 @@ func (o HttpRequestOutput) OidcToken() OidcTokenPtrOutput {
 	return o.ApplyT(func(v HttpRequest) *OidcToken { return v.OidcToken }).(OidcTokenPtrOutput)
 }
 
-// Required. The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
-func (o HttpRequestOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HttpRequest) *string { return v.Url }).(pulumi.StringPtrOutput)
+// The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
+func (o HttpRequestOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpRequest) string { return v.Url }).(pulumi.StringOutput)
 }
 
 type HttpRequestPtrOutput struct{ *pulumi.OutputState }
@@ -1712,13 +1712,13 @@ func (o HttpRequestPtrOutput) OidcToken() OidcTokenPtrOutput {
 	}).(OidcTokenPtrOutput)
 }
 
-// Required. The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
+// The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
 func (o HttpRequestPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpRequest) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Url
+		return &v.Url
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1734,7 +1734,7 @@ type HttpRequestResponse struct {
 	OauthToken OAuthTokenResponse `pulumi:"oauthToken"`
 	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
 	OidcToken OidcTokenResponse `pulumi:"oidcToken"`
-	// Required. The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
+	// The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
 	Url string `pulumi:"url"`
 }
 
@@ -1761,7 +1761,7 @@ type HttpRequestResponseArgs struct {
 	OauthToken OAuthTokenResponseInput `pulumi:"oauthToken"`
 	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
 	OidcToken OidcTokenResponseInput `pulumi:"oidcToken"`
-	// Required. The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
+	// The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
 	Url pulumi.StringInput `pulumi:"url"`
 }
 
@@ -1868,7 +1868,7 @@ func (o HttpRequestResponseOutput) OidcToken() OidcTokenResponseOutput {
 	return o.ApplyT(func(v HttpRequestResponse) OidcTokenResponse { return v.OidcToken }).(OidcTokenResponseOutput)
 }
 
-// Required. The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
+// The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
 func (o HttpRequestResponseOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpRequestResponse) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -1941,7 +1941,7 @@ func (o HttpRequestResponsePtrOutput) OidcToken() OidcTokenResponsePtrOutput {
 	}).(OidcTokenResponsePtrOutput)
 }
 
-// Required. The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
+// The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
 func (o HttpRequestResponsePtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpRequestResponse) *string {
 		if v == nil {

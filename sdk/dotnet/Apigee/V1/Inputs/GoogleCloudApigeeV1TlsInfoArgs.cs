@@ -40,10 +40,10 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public Input<Inputs.GoogleCloudApigeeV1TlsInfoCommonNameArgs>? CommonName { get; set; }
 
         /// <summary>
-        /// Required. Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
+        /// Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
         /// </summary>
-        [Input("enabled")]
-        public Input<bool>? Enabled { get; set; }
+        [Input("enabled", required: true)]
+        public Input<bool> Enabled { get; set; } = null!;
 
         /// <summary>
         /// If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.

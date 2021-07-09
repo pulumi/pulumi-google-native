@@ -21,11 +21,11 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         [Input("operationConfigType")]
         public Input<string>? OperationConfigType { get; set; }
 
-        [Input("operationConfigs")]
+        [Input("operationConfigs", required: true)]
         private InputList<Inputs.GoogleCloudApigeeV1GraphQLOperationConfigArgs>? _operationConfigs;
 
         /// <summary>
-        /// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+        /// List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
         /// </summary>
         public InputList<Inputs.GoogleCloudApigeeV1GraphQLOperationConfigArgs> OperationConfigs
         {

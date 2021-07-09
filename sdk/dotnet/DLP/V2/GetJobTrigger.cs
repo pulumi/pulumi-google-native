@@ -68,7 +68,7 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. A status for this trigger.
+        /// A status for this trigger.
         /// </summary>
         public readonly string Status;
         /// <summary>

@@ -54,7 +54,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
         /// </summary>
         public readonly string Network;
         /// <summary>
-        /// Required. The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
+        /// The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
         /// </summary>
         public readonly ImmutableArray<string> PackageUris;
         /// <summary>
@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
         /// </summary>
         public readonly string ParameterServerType;
         /// <summary>
-        /// Required. The Python module name to run after installing the packages.
+        /// The Python module name to run after installing the packages.
         /// </summary>
         public readonly string PythonModule;
         /// <summary>
@@ -78,7 +78,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
         /// </summary>
         public readonly string PythonVersion;
         /// <summary>
-        /// Required. The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
+        /// The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
         /// </summary>
         public readonly string Region;
         /// <summary>
@@ -86,7 +86,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
         /// </summary>
         public readonly string RuntimeVersion;
         /// <summary>
-        /// Required. Specifies the machine types, the number of replicas for workers and parameter servers.
+        /// Specifies the machine types, the number of replicas for workers and parameter servers.
         /// </summary>
         public readonly string ScaleTier;
         /// <summary>

@@ -16,39 +16,48 @@ __all__ = ['TestMatrixArgs', 'TestMatrix']
 @pulumi.input_type
 class TestMatrixArgs:
     def __init__(__self__, *,
+                 environment_matrix: pulumi.Input['EnvironmentMatrixArgs'],
                  project: pulumi.Input[str],
+                 result_storage: pulumi.Input['ResultStorageArgs'],
+                 test_specification: pulumi.Input['TestSpecificationArgs'],
                  client_info: Optional[pulumi.Input['ClientInfoArgs']] = None,
-                 environment_matrix: Optional[pulumi.Input['EnvironmentMatrixArgs']] = None,
                  fail_fast: Optional[pulumi.Input[bool]] = None,
                  flaky_test_attempts: Optional[pulumi.Input[int]] = None,
-                 request_id: Optional[pulumi.Input[str]] = None,
-                 result_storage: Optional[pulumi.Input['ResultStorageArgs']] = None,
-                 test_specification: Optional[pulumi.Input['TestSpecificationArgs']] = None):
+                 request_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TestMatrix resource.
+        :param pulumi.Input['EnvironmentMatrixArgs'] environment_matrix: The devices the tests are being executed on.
         :param pulumi.Input[str] project: The cloud project that owns the test matrix.
+        :param pulumi.Input['ResultStorageArgs'] result_storage: Where the results for the matrix are written.
+        :param pulumi.Input['TestSpecificationArgs'] test_specification: How to run the test.
         :param pulumi.Input['ClientInfoArgs'] client_info: Information about the client which invoked the test.
-        :param pulumi.Input['EnvironmentMatrixArgs'] environment_matrix: Required. The devices the tests are being executed on.
         :param pulumi.Input[bool] fail_fast: If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
         :param pulumi.Input[int] flaky_test_attempts: The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
-        :param pulumi.Input['ResultStorageArgs'] result_storage: Required. Where the results for the matrix are written.
-        :param pulumi.Input['TestSpecificationArgs'] test_specification: Required. How to run the test.
         """
+        pulumi.set(__self__, "environment_matrix", environment_matrix)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "result_storage", result_storage)
+        pulumi.set(__self__, "test_specification", test_specification)
         if client_info is not None:
             pulumi.set(__self__, "client_info", client_info)
-        if environment_matrix is not None:
-            pulumi.set(__self__, "environment_matrix", environment_matrix)
         if fail_fast is not None:
             pulumi.set(__self__, "fail_fast", fail_fast)
         if flaky_test_attempts is not None:
             pulumi.set(__self__, "flaky_test_attempts", flaky_test_attempts)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
-        if result_storage is not None:
-            pulumi.set(__self__, "result_storage", result_storage)
-        if test_specification is not None:
-            pulumi.set(__self__, "test_specification", test_specification)
+
+    @property
+    @pulumi.getter(name="environmentMatrix")
+    def environment_matrix(self) -> pulumi.Input['EnvironmentMatrixArgs']:
+        """
+        The devices the tests are being executed on.
+        """
+        return pulumi.get(self, "environment_matrix")
+
+    @environment_matrix.setter
+    def environment_matrix(self, value: pulumi.Input['EnvironmentMatrixArgs']):
+        pulumi.set(self, "environment_matrix", value)
 
     @property
     @pulumi.getter
@@ -63,6 +72,30 @@ class TestMatrixArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="resultStorage")
+    def result_storage(self) -> pulumi.Input['ResultStorageArgs']:
+        """
+        Where the results for the matrix are written.
+        """
+        return pulumi.get(self, "result_storage")
+
+    @result_storage.setter
+    def result_storage(self, value: pulumi.Input['ResultStorageArgs']):
+        pulumi.set(self, "result_storage", value)
+
+    @property
+    @pulumi.getter(name="testSpecification")
+    def test_specification(self) -> pulumi.Input['TestSpecificationArgs']:
+        """
+        How to run the test.
+        """
+        return pulumi.get(self, "test_specification")
+
+    @test_specification.setter
+    def test_specification(self, value: pulumi.Input['TestSpecificationArgs']):
+        pulumi.set(self, "test_specification", value)
+
+    @property
     @pulumi.getter(name="clientInfo")
     def client_info(self) -> Optional[pulumi.Input['ClientInfoArgs']]:
         """
@@ -73,18 +106,6 @@ class TestMatrixArgs:
     @client_info.setter
     def client_info(self, value: Optional[pulumi.Input['ClientInfoArgs']]):
         pulumi.set(self, "client_info", value)
-
-    @property
-    @pulumi.getter(name="environmentMatrix")
-    def environment_matrix(self) -> Optional[pulumi.Input['EnvironmentMatrixArgs']]:
-        """
-        Required. The devices the tests are being executed on.
-        """
-        return pulumi.get(self, "environment_matrix")
-
-    @environment_matrix.setter
-    def environment_matrix(self, value: Optional[pulumi.Input['EnvironmentMatrixArgs']]):
-        pulumi.set(self, "environment_matrix", value)
 
     @property
     @pulumi.getter(name="failFast")
@@ -119,30 +140,6 @@ class TestMatrixArgs:
     def request_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_id", value)
 
-    @property
-    @pulumi.getter(name="resultStorage")
-    def result_storage(self) -> Optional[pulumi.Input['ResultStorageArgs']]:
-        """
-        Required. Where the results for the matrix are written.
-        """
-        return pulumi.get(self, "result_storage")
-
-    @result_storage.setter
-    def result_storage(self, value: Optional[pulumi.Input['ResultStorageArgs']]):
-        pulumi.set(self, "result_storage", value)
-
-    @property
-    @pulumi.getter(name="testSpecification")
-    def test_specification(self) -> Optional[pulumi.Input['TestSpecificationArgs']]:
-        """
-        Required. How to run the test.
-        """
-        return pulumi.get(self, "test_specification")
-
-    @test_specification.setter
-    def test_specification(self, value: Optional[pulumi.Input['TestSpecificationArgs']]):
-        pulumi.set(self, "test_specification", value)
-
 
 class TestMatrix(pulumi.CustomResource):
     @overload
@@ -164,12 +161,12 @@ class TestMatrix(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ClientInfoArgs']] client_info: Information about the client which invoked the test.
-        :param pulumi.Input[pulumi.InputType['EnvironmentMatrixArgs']] environment_matrix: Required. The devices the tests are being executed on.
+        :param pulumi.Input[pulumi.InputType['EnvironmentMatrixArgs']] environment_matrix: The devices the tests are being executed on.
         :param pulumi.Input[bool] fail_fast: If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
         :param pulumi.Input[int] flaky_test_attempts: The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
         :param pulumi.Input[str] project: The cloud project that owns the test matrix.
-        :param pulumi.Input[pulumi.InputType['ResultStorageArgs']] result_storage: Required. Where the results for the matrix are written.
-        :param pulumi.Input[pulumi.InputType['TestSpecificationArgs']] test_specification: Required. How to run the test.
+        :param pulumi.Input[pulumi.InputType['ResultStorageArgs']] result_storage: Where the results for the matrix are written.
+        :param pulumi.Input[pulumi.InputType['TestSpecificationArgs']] test_specification: How to run the test.
         """
         ...
     @overload
@@ -216,6 +213,8 @@ class TestMatrix(pulumi.CustomResource):
             __props__ = TestMatrixArgs.__new__(TestMatrixArgs)
 
             __props__.__dict__["client_info"] = client_info
+            if environment_matrix is None and not opts.urn:
+                raise TypeError("Missing required property 'environment_matrix'")
             __props__.__dict__["environment_matrix"] = environment_matrix
             __props__.__dict__["fail_fast"] = fail_fast
             __props__.__dict__["flaky_test_attempts"] = flaky_test_attempts
@@ -223,7 +222,11 @@ class TestMatrix(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
+            if result_storage is None and not opts.urn:
+                raise TypeError("Missing required property 'result_storage'")
             __props__.__dict__["result_storage"] = result_storage
+            if test_specification is None and not opts.urn:
+                raise TypeError("Missing required property 'test_specification'")
             __props__.__dict__["test_specification"] = test_specification
             __props__.__dict__["invalid_matrix_details"] = None
             __props__.__dict__["outcome_summary"] = None
@@ -280,7 +283,7 @@ class TestMatrix(pulumi.CustomResource):
     @pulumi.getter(name="environmentMatrix")
     def environment_matrix(self) -> pulumi.Output['outputs.EnvironmentMatrixResponse']:
         """
-        Required. The devices the tests are being executed on.
+        The devices the tests are being executed on.
         """
         return pulumi.get(self, "environment_matrix")
 
@@ -328,7 +331,7 @@ class TestMatrix(pulumi.CustomResource):
     @pulumi.getter(name="resultStorage")
     def result_storage(self) -> pulumi.Output['outputs.ResultStorageResponse']:
         """
-        Required. Where the results for the matrix are written.
+        Where the results for the matrix are written.
         """
         return pulumi.get(self, "result_storage")
 
@@ -360,7 +363,7 @@ class TestMatrix(pulumi.CustomResource):
     @pulumi.getter(name="testSpecification")
     def test_specification(self) -> pulumi.Output['outputs.TestSpecificationResponse']:
         """
-        Required. How to run the test.
+        How to run the test.
         """
         return pulumi.get(self, "test_specification")
 

@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         /// </summary>
         public readonly Outputs.CertificateAuthorityPolicyResponse CertificatePolicy;
         /// <summary>
-        /// Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
+        /// Immutable. The config used to create a self-signed X.509 certificate or CSR.
         /// </summary>
         public readonly Outputs.CertificateConfigResponse Config;
         /// <summary>
@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         /// </summary>
         public readonly Outputs.IssuingOptionsResponse IssuingOptions;
         /// <summary>
-        /// Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
+        /// Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
         /// </summary>
         public readonly Outputs.KeyVersionSpecResponse KeySpec;
         /// <summary>
@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+        /// The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
         /// </summary>
         public readonly string Lifetime;
         /// <summary>
@@ -100,11 +100,11 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         /// </summary>
         public readonly Outputs.SubordinateConfigResponse SubordinateConfig;
         /// <summary>
-        /// Required. Immutable. The Tier of this CertificateAuthority.
+        /// Immutable. The Tier of this CertificateAuthority.
         /// </summary>
         public readonly string Tier;
         /// <summary>
-        /// Required. Immutable. The Type of this CertificateAuthority.
+        /// Immutable. The Type of this CertificateAuthority.
         /// </summary>
         public readonly string Type;
         /// <summary>

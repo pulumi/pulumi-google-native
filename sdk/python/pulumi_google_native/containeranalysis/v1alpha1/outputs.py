@@ -1633,7 +1633,7 @@ class GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse(dict):
                  url: str):
         """
         A GitSourceContext denotes a particular revision in a third party Git repository (e.g., GitHub).
-        :param str revision_id: Required. Git commit hash.
+        :param str revision_id: Git commit hash.
         :param str url: Git repository URL.
         """
         pulumi.set(__self__, "revision_id", revision_id)
@@ -1643,7 +1643,7 @@ class GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse(dict):
     @pulumi.getter(name="revisionId")
     def revision_id(self) -> str:
         """
-        Required. Git commit hash.
+        Git commit hash.
         """
         return pulumi.get(self, "revision_id")
 

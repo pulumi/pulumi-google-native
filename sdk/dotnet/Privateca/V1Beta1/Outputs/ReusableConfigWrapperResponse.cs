@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Outputs
     public sealed class ReusableConfigWrapperResponse
     {
         /// <summary>
-        /// Required. A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
+        /// A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
         /// </summary>
         public readonly string ReusableConfig;
         /// <summary>
-        /// Required. A user-specified inline ReusableConfigValues.
+        /// A user-specified inline ReusableConfigValues.
         /// </summary>
         public readonly Outputs.ReusableConfigValuesResponse ReusableConfigValues;
 

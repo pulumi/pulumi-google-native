@@ -52,10 +52,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public Input<string>? Id { get; set; }
 
         /// <summary>
-        /// Required. Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
+        /// Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("waitFor")]
         private InputList<string>? _waitFor;

@@ -17,7 +17,7 @@ type TestCase struct {
 
 	// When the test was created.
 	CreationTime pulumi.StringOutput `pulumi:"creationTime"`
-	// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+	// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The latest test result.
 	LastTestResult GoogleCloudDialogflowCxV3TestCaseResultResponseOutput `pulumi:"lastTestResult"`
@@ -42,6 +42,9 @@ func NewTestCase(ctx *pulumi.Context,
 
 	if args.AgentId == nil {
 		return nil, errors.New("invalid value for required argument 'AgentId'")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
@@ -73,7 +76,7 @@ func GetTestCase(ctx *pulumi.Context,
 type testCaseState struct {
 	// When the test was created.
 	CreationTime *string `pulumi:"creationTime"`
-	// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+	// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// The latest test result.
 	LastTestResult *GoogleCloudDialogflowCxV3TestCaseResultResponse `pulumi:"lastTestResult"`
@@ -92,7 +95,7 @@ type testCaseState struct {
 type TestCaseState struct {
 	// When the test was created.
 	CreationTime pulumi.StringPtrInput
-	// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+	// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
 	DisplayName pulumi.StringPtrInput
 	// The latest test result.
 	LastTestResult GoogleCloudDialogflowCxV3TestCaseResultResponsePtrInput
@@ -114,8 +117,8 @@ func (TestCaseState) ElementType() reflect.Type {
 
 type testCaseArgs struct {
 	AgentId string `pulumi:"agentId"`
-	// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-	DisplayName *string `pulumi:"displayName"`
+	// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+	DisplayName string `pulumi:"displayName"`
 	// The latest test result.
 	LastTestResult *GoogleCloudDialogflowCxV3TestCaseResult `pulumi:"lastTestResult"`
 	Location       string                                   `pulumi:"location"`
@@ -135,8 +138,8 @@ type testCaseArgs struct {
 // The set of arguments for constructing a TestCase resource.
 type TestCaseArgs struct {
 	AgentId pulumi.StringInput
-	// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-	DisplayName pulumi.StringPtrInput
+	// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+	DisplayName pulumi.StringInput
 	// The latest test result.
 	LastTestResult GoogleCloudDialogflowCxV3TestCaseResultPtrInput
 	Location       pulumi.StringInput

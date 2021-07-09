@@ -56,7 +56,7 @@ export class ConsentArtifact extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Required. User's UUID provided by the client.
+     * User's UUID provided by the client.
      */
     public readonly userId!: pulumi.Output<string>;
     /**
@@ -90,6 +90,9 @@ export class ConsentArtifact extends pulumi.CustomResource {
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.userId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'userId'");
             }
             inputs["consentContentScreenshots"] = args ? args.consentContentScreenshots : undefined;
             inputs["consentContentVersion"] = args ? args.consentContentVersion : undefined;
@@ -149,9 +152,9 @@ export interface ConsentArtifactArgs {
     name?: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
-     * Required. User's UUID provided by the client.
+     * User's UUID provided by the client.
      */
-    userId?: pulumi.Input<string>;
+    userId: pulumi.Input<string>;
     /**
      * Optional. User's signature.
      */

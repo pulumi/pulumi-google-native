@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Outputs
     public sealed class IssuingOptionsResponse
     {
         /// <summary>
-        /// Required. When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
+        /// When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
         /// </summary>
         public readonly bool IncludeCaCertUrl;
         /// <summary>
-        /// Required. When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
+        /// When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
         /// </summary>
         public readonly bool IncludeCrlAccessUrl;
 

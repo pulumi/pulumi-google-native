@@ -27,7 +27,7 @@ type LookupDatastoreResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// Datastore Configurations.
 	DatastoreConfig GoogleCloudApigeeV1DatastoreConfigResponse `pulumi:"datastoreConfig"`
-	// Required. Display name in UI
+	// Display name in UI
 	DisplayName string `pulumi:"displayName"`
 	// Datastore last update time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
 	LastUpdateTime string `pulumi:"lastUpdateTime"`

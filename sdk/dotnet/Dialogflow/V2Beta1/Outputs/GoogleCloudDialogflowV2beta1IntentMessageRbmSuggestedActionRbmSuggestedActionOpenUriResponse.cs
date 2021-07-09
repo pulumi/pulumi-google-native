@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriResponse
     {
         /// <summary>
-        /// Required. The uri to open on the user device
+        /// The uri to open on the user device
         /// </summary>
         public readonly string Uri;
 

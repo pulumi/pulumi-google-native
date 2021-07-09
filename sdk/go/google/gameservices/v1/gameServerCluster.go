@@ -25,7 +25,7 @@ type GameServerCluster struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The labels associated with this game server cluster. Each label is a key-value pair.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Required. The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+	// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The last-modified time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -43,6 +43,9 @@ func NewGameServerCluster(ctx *pulumi.Context,
 	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
@@ -82,7 +85,7 @@ type gameServerClusterState struct {
 	Etag *string `pulumi:"etag"`
 	// The labels associated with this game server cluster. Each label is a key-value pair.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+	// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
 	Name *string `pulumi:"name"`
 	// The last-modified time.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -99,7 +102,7 @@ type GameServerClusterState struct {
 	Etag pulumi.StringPtrInput
 	// The labels associated with this game server cluster. Each label is a key-value pair.
 	Labels pulumi.StringMapInput
-	// Required. The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+	// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
 	Name pulumi.StringPtrInput
 	// The last-modified time.
 	UpdateTime pulumi.StringPtrInput
@@ -120,10 +123,10 @@ type gameServerClusterArgs struct {
 	// The labels associated with this game server cluster. Each label is a key-value pair.
 	Labels   map[string]string `pulumi:"labels"`
 	Location string            `pulumi:"location"`
-	// Required. The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
-	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
-	RealmId string  `pulumi:"realmId"`
+	// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+	Name    string `pulumi:"name"`
+	Project string `pulumi:"project"`
+	RealmId string `pulumi:"realmId"`
 }
 
 // The set of arguments for constructing a GameServerCluster resource.
@@ -138,8 +141,8 @@ type GameServerClusterArgs struct {
 	// The labels associated with this game server cluster. Each label is a key-value pair.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringInput
-	// Required. The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
-	Name    pulumi.StringPtrInput
+	// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+	Name    pulumi.StringInput
 	Project pulumi.StringInput
 	RealmId pulumi.StringInput
 }

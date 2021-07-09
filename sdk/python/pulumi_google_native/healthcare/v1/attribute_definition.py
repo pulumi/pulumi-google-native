@@ -14,35 +14,33 @@ __all__ = ['AttributeDefinitionArgs', 'AttributeDefinition']
 @pulumi.input_type
 class AttributeDefinitionArgs:
     def __init__(__self__, *,
+                 allowed_values: pulumi.Input[Sequence[pulumi.Input[str]]],
                  attribute_definition_id: pulumi.Input[str],
+                 category: pulumi.Input['AttributeDefinitionCategory'],
                  consent_store_id: pulumi.Input[str],
                  dataset_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 category: Optional[pulumi.Input['AttributeDefinitionCategory']] = None,
                  consent_default_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  data_mapping_default_value: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AttributeDefinition resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_values: Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
-        :param pulumi.Input['AttributeDefinitionCategory'] category: Required. The category of the attribute. The value of this field cannot be changed after creation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_values: Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+        :param pulumi.Input['AttributeDefinitionCategory'] category: The category of the attribute. The value of this field cannot be changed after creation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] consent_default_values: Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
         :param pulumi.Input[str] data_mapping_default_value: Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
         :param pulumi.Input[str] description: Optional. A description of the attribute.
         :param pulumi.Input[str] name: Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
         """
+        pulumi.set(__self__, "allowed_values", allowed_values)
         pulumi.set(__self__, "attribute_definition_id", attribute_definition_id)
+        pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "consent_store_id", consent_store_id)
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        if allowed_values is not None:
-            pulumi.set(__self__, "allowed_values", allowed_values)
-        if category is not None:
-            pulumi.set(__self__, "category", category)
         if consent_default_values is not None:
             pulumi.set(__self__, "consent_default_values", consent_default_values)
         if data_mapping_default_value is not None:
@@ -53,6 +51,18 @@ class AttributeDefinitionArgs:
             pulumi.set(__self__, "name", name)
 
     @property
+    @pulumi.getter(name="allowedValues")
+    def allowed_values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+        """
+        return pulumi.get(self, "allowed_values")
+
+    @allowed_values.setter
+    def allowed_values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "allowed_values", value)
+
+    @property
     @pulumi.getter(name="attributeDefinitionId")
     def attribute_definition_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "attribute_definition_id")
@@ -60,6 +70,18 @@ class AttributeDefinitionArgs:
     @attribute_definition_id.setter
     def attribute_definition_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "attribute_definition_id", value)
+
+    @property
+    @pulumi.getter
+    def category(self) -> pulumi.Input['AttributeDefinitionCategory']:
+        """
+        The category of the attribute. The value of this field cannot be changed after creation.
+        """
+        return pulumi.get(self, "category")
+
+    @category.setter
+    def category(self, value: pulumi.Input['AttributeDefinitionCategory']):
+        pulumi.set(self, "category", value)
 
     @property
     @pulumi.getter(name="consentStoreId")
@@ -96,30 +118,6 @@ class AttributeDefinitionArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="allowedValues")
-    def allowed_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
-        """
-        return pulumi.get(self, "allowed_values")
-
-    @allowed_values.setter
-    def allowed_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "allowed_values", value)
-
-    @property
-    @pulumi.getter
-    def category(self) -> Optional[pulumi.Input['AttributeDefinitionCategory']]:
-        """
-        Required. The category of the attribute. The value of this field cannot be changed after creation.
-        """
-        return pulumi.get(self, "category")
-
-    @category.setter
-    def category(self, value: Optional[pulumi.Input['AttributeDefinitionCategory']]):
-        pulumi.set(self, "category", value)
 
     @property
     @pulumi.getter(name="consentDefaultValues")
@@ -192,8 +190,8 @@ class AttributeDefinition(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_values: Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
-        :param pulumi.Input['AttributeDefinitionCategory'] category: Required. The category of the attribute. The value of this field cannot be changed after creation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_values: Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+        :param pulumi.Input['AttributeDefinitionCategory'] category: The category of the attribute. The value of this field cannot be changed after creation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] consent_default_values: Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
         :param pulumi.Input[str] data_mapping_default_value: Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
         :param pulumi.Input[str] description: Optional. A description of the attribute.
@@ -246,10 +244,14 @@ class AttributeDefinition(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AttributeDefinitionArgs.__new__(AttributeDefinitionArgs)
 
+            if allowed_values is None and not opts.urn:
+                raise TypeError("Missing required property 'allowed_values'")
             __props__.__dict__["allowed_values"] = allowed_values
             if attribute_definition_id is None and not opts.urn:
                 raise TypeError("Missing required property 'attribute_definition_id'")
             __props__.__dict__["attribute_definition_id"] = attribute_definition_id
+            if category is None and not opts.urn:
+                raise TypeError("Missing required property 'category'")
             __props__.__dict__["category"] = category
             __props__.__dict__["consent_default_values"] = consent_default_values
             if consent_store_id is None and not opts.urn:
@@ -301,7 +303,7 @@ class AttributeDefinition(pulumi.CustomResource):
     @pulumi.getter(name="allowedValues")
     def allowed_values(self) -> pulumi.Output[Sequence[str]]:
         """
-        Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+        Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
         """
         return pulumi.get(self, "allowed_values")
 
@@ -309,7 +311,7 @@ class AttributeDefinition(pulumi.CustomResource):
     @pulumi.getter
     def category(self) -> pulumi.Output[str]:
         """
-        Required. The category of the attribute. The value of this field cannot be changed after creation.
+        The category of the attribute. The value of this field cannot be changed after creation.
         """
         return pulumi.get(self, "category")
 

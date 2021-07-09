@@ -18,11 +18,11 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
         /// </summary>
         public readonly string BatchSize;
         /// <summary>
-        /// Required. The format of the input data files.
+        /// The format of the input data files.
         /// </summary>
         public readonly string DataFormat;
         /// <summary>
-        /// Required. The Cloud Storage location of the input data files. May contain wildcards.
+        /// The Cloud Storage location of the input data files. May contain wildcards.
         /// </summary>
         public readonly ImmutableArray<string> InputPaths;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
         /// </summary>
         public readonly string OutputDataFormat;
         /// <summary>
-        /// Required. The output Google Cloud Storage location.
+        /// The output Google Cloud Storage location.
         /// </summary>
         public readonly string OutputPath;
         /// <summary>
-        /// Required. The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
+        /// The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
         /// </summary>
         public readonly string Region;
         /// <summary>

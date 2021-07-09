@@ -49,15 +49,15 @@ export interface GetDomainResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+     * Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
      */
     readonly locations: string[];
     /**
-     * Required. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
+     * The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
      */
     readonly name: string;
     /**
-     * Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+     * The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
      */
     readonly reservedIpRange: string;
     /**

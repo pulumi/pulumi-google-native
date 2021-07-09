@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Inputs
     public sealed class MpegCommonEncryptionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
+        /// 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
         /// </summary>
-        [Input("keyId")]
-        public Input<string>? KeyId { get; set; }
+        [Input("keyId", required: true)]
+        public Input<string> KeyId { get; set; } = null!;
 
         /// <summary>
-        /// Required. Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
+        /// Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
         /// </summary>
-        [Input("scheme")]
-        public Input<string>? Scheme { get; set; }
+        [Input("scheme", required: true)]
+        public Input<string> Scheme { get; set; } = null!;
 
         public MpegCommonEncryptionArgs()
         {

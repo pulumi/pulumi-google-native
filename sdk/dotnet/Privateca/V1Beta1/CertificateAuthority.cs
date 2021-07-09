@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         public Output<Outputs.CertificateAuthorityPolicyResponse> CertificatePolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
+        /// Immutable. The config used to create a self-signed X.509 certificate or CSR.
         /// </summary>
         [Output("config")]
         public Output<Outputs.CertificateConfigResponse> Config { get; private set; } = null!;
@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         public Output<Outputs.IssuingOptionsResponse> IssuingOptions { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
+        /// Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
         /// </summary>
         [Output("keySpec")]
         public Output<Outputs.KeyVersionSpecResponse> KeySpec { get; private set; } = null!;
@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+        /// The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
         /// </summary>
         [Output("lifetime")]
         public Output<string> Lifetime { get; private set; } = null!;
@@ -106,13 +106,13 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         public Output<Outputs.SubordinateConfigResponse> SubordinateConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The Tier of this CertificateAuthority.
+        /// Immutable. The Tier of this CertificateAuthority.
         /// </summary>
         [Output("tier")]
         public Output<string> Tier { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The Type of this CertificateAuthority.
+        /// Immutable. The Type of this CertificateAuthority.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -178,10 +178,10 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         public Input<Inputs.CertificateAuthorityPolicyArgs>? CertificatePolicy { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
+        /// Immutable. The config used to create a self-signed X.509 certificate or CSR.
         /// </summary>
-        [Input("config")]
-        public Input<Inputs.CertificateConfigArgs>? Config { get; set; }
+        [Input("config", required: true)]
+        public Input<Inputs.CertificateConfigArgs> Config { get; set; } = null!;
 
         /// <summary>
         /// Immutable. The name of a Cloud Storage bucket where this CertificateAuthority will publish content, such as the CA certificate and CRLs. This must be a bucket name, without any prefixes (such as `gs://`) or suffixes (such as `.googleapis.com`). For example, to use a bucket named `my-bucket`, you would simply specify `my-bucket`. If not specified, a managed bucket will be created.
@@ -196,10 +196,10 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         public Input<Inputs.IssuingOptionsArgs>? IssuingOptions { get; set; }
 
         /// <summary>
-        /// Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
+        /// Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
         /// </summary>
-        [Input("keySpec")]
-        public Input<Inputs.KeyVersionSpecArgs>? KeySpec { get; set; }
+        [Input("keySpec", required: true)]
+        public Input<Inputs.KeyVersionSpecArgs> KeySpec { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -214,10 +214,10 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         }
 
         /// <summary>
-        /// Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+        /// The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
         /// </summary>
-        [Input("lifetime")]
-        public Input<string>? Lifetime { get; set; }
+        [Input("lifetime", required: true)]
+        public Input<string> Lifetime { get; set; } = null!;
 
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -235,16 +235,16 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         public Input<Inputs.SubordinateConfigArgs>? SubordinateConfig { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The Tier of this CertificateAuthority.
+        /// Immutable. The Tier of this CertificateAuthority.
         /// </summary>
-        [Input("tier")]
-        public Input<Pulumi.GoogleNative.Privateca.V1Beta1.CertificateAuthorityTier>? Tier { get; set; }
+        [Input("tier", required: true)]
+        public Input<Pulumi.GoogleNative.Privateca.V1Beta1.CertificateAuthorityTier> Tier { get; set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The Type of this CertificateAuthority.
+        /// Immutable. The Type of this CertificateAuthority.
         /// </summary>
-        [Input("type")]
-        public Input<Pulumi.GoogleNative.Privateca.V1Beta1.CertificateAuthorityType>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<Pulumi.GoogleNative.Privateca.V1Beta1.CertificateAuthorityType> Type { get; set; } = null!;
 
         public CertificateAuthorityArgs()
         {

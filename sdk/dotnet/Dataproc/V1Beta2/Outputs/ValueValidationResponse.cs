@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Outputs
     public sealed class ValueValidationResponse
     {
         /// <summary>
-        /// Required. List of allowed values for the parameter.
+        /// List of allowed values for the parameter.
         /// </summary>
         public readonly ImmutableArray<string> Values;
 

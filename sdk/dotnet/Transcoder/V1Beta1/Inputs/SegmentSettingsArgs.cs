@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Inputs
     public sealed class SegmentSettingsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Create an individual segment file. The default is `false`.
+        /// Create an individual segment file. The default is `false`.
         /// </summary>
-        [Input("individualSegments")]
-        public Input<bool>? IndividualSegments { get; set; }
+        [Input("individualSegments", required: true)]
+        public Input<bool> IndividualSegments { get; set; } = null!;
 
         /// <summary>
         /// Duration of the segments in seconds. The default is `"6.0s"`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).

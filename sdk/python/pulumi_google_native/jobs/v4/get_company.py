@@ -78,7 +78,7 @@ class GetCompanyResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The display name of the company, for example, "Google LLC".
+        The display name of the company, for example, "Google LLC".
         """
         return pulumi.get(self, "display_name")
 
@@ -94,7 +94,7 @@ class GetCompanyResult:
     @pulumi.getter(name="externalId")
     def external_id(self) -> str:
         """
-        Required. Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
+        Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
         """
         return pulumi.get(self, "external_id")
 

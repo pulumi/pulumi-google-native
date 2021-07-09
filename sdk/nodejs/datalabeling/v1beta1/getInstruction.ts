@@ -37,7 +37,7 @@ export interface GetInstructionResult {
      */
     readonly createTime: string;
     /**
-     * Required. The data type of this instruction.
+     * The data type of this instruction.
      */
     readonly dataType: string;
     /**
@@ -45,7 +45,7 @@ export interface GetInstructionResult {
      */
     readonly description: string;
     /**
-     * Required. The display name of the instruction. Maximum of 64 characters.
+     * The display name of the instruction. Maximum of 64 characters.
      */
     readonly displayName: string;
     /**

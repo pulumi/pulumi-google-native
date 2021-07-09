@@ -53,11 +53,11 @@ export interface GetInstanceResult {
      */
     readonly lastModifiedAt: string;
     /**
-     * Required. Compute Engine location where the instance resides.
+     * Compute Engine location where the instance resides.
      */
     readonly location: string;
     /**
-     * Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+     * Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
      */
     readonly name: string;
     /**

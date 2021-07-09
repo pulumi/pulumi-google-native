@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
     public sealed class PackageIssueResponse
     {
         /// <summary>
-        /// Required. The location of the vulnerability.
+        /// The location of the vulnerability.
         /// </summary>
         public readonly Outputs.VulnerabilityLocationResponse AffectedLocation;
         /// <summary>

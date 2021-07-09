@@ -41,7 +41,7 @@ export interface GetReferenceImageResult {
      */
     readonly name: string;
     /**
-     * Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
+     * The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
      */
     readonly uri: string;
 }

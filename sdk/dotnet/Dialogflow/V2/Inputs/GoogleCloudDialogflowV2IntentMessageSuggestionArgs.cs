@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     public sealed class GoogleCloudDialogflowV2IntentMessageSuggestionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The text shown the in the suggestion chip.
+        /// The text shown the in the suggestion chip.
         /// </summary>
-        [Input("title")]
-        public Input<string>? Title { get; set; }
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
 
         public GoogleCloudDialogflowV2IntentMessageSuggestionArgs()
         {

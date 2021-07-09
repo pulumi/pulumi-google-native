@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     public sealed class GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Git commit hash.
+        /// Git commit hash.
         /// </summary>
-        [Input("revisionId")]
-        public Input<string>? RevisionId { get; set; }
+        [Input("revisionId", required: true)]
+        public Input<string> RevisionId { get; set; } = null!;
 
         /// <summary>
         /// Git repository URL.

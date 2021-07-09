@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+        /// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
         /// </summary>
         public readonly int ServeNodes;
         /// <summary>

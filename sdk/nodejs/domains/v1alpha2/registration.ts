@@ -36,7 +36,7 @@ export class Registration extends pulumi.CustomResource {
     }
 
     /**
-     * Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
+     * Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
      */
     public readonly contactSettings!: pulumi.Output<outputs.domains.v1alpha2.ContactSettingsResponse>;
     /**
@@ -48,7 +48,7 @@ export class Registration extends pulumi.CustomResource {
      */
     public readonly dnsSettings!: pulumi.Output<outputs.domains.v1alpha2.DnsSettingsResponse>;
     /**
-     * Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
+     * Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
      */
     public readonly domainName!: pulumi.Output<string>;
     /**
@@ -95,11 +95,20 @@ export class Registration extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.contactSettings === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'contactSettings'");
+            }
+            if ((!args || args.domainName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'domainName'");
+            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.yearlyPrice === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'yearlyPrice'");
             }
             inputs["contactNotices"] = args ? args.contactNotices : undefined;
             inputs["contactSettings"] = args ? args.contactSettings : undefined;
@@ -149,17 +158,17 @@ export interface RegistrationArgs {
      */
     contactNotices?: pulumi.Input<pulumi.Input<enums.domains.v1alpha2.RegistrationContactNoticesItem>[]>;
     /**
-     * Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
+     * Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
      */
-    contactSettings?: pulumi.Input<inputs.domains.v1alpha2.ContactSettingsArgs>;
+    contactSettings: pulumi.Input<inputs.domains.v1alpha2.ContactSettingsArgs>;
     /**
      * Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
      */
     dnsSettings?: pulumi.Input<inputs.domains.v1alpha2.DnsSettingsArgs>;
     /**
-     * Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
+     * Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
      */
-    domainName?: pulumi.Input<string>;
+    domainName: pulumi.Input<string>;
     /**
      * The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement.
      */
@@ -179,7 +188,7 @@ export interface RegistrationArgs {
      */
     validateOnly?: pulumi.Input<boolean>;
     /**
-     * Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
+     * Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
      */
-    yearlyPrice?: pulumi.Input<inputs.domains.v1alpha2.MoneyArgs>;
+    yearlyPrice: pulumi.Input<inputs.domains.v1alpha2.MoneyArgs>;
 }

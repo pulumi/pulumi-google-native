@@ -26,7 +26,7 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Outputs
         /// </summary>
         public readonly Outputs.LocalCopyResponse LocalCopy;
         /// <summary>
-        /// Required. Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
+        /// Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
         /// </summary>
         public readonly string Name;
 

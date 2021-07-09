@@ -30,7 +30,7 @@ type LookupIntentResult struct {
 	Action string `pulumi:"action"`
 	// Optional. The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
 	DefaultResponsePlatforms []string `pulumi:"defaultResponsePlatforms"`
-	// Required. The name of this intent.
+	// The name of this intent.
 	DisplayName string `pulumi:"displayName"`
 	// Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
 	EndInteraction bool `pulumi:"endInteraction"`

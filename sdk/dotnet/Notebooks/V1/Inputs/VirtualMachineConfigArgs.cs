@@ -34,10 +34,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         }
 
         /// <summary>
-        /// Required. Data disk option configuration settings.
+        /// Data disk option configuration settings.
         /// </summary>
-        [Input("dataDisk")]
-        public Input<Inputs.LocalDiskArgs>? DataDisk { get; set; }
+        [Input("dataDisk", required: true)]
+        public Input<Inputs.LocalDiskArgs> DataDisk { get; set; } = null!;
 
         /// <summary>
         /// Optional. Encryption settings for virtual machine data disk.
@@ -64,10 +64,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         }
 
         /// <summary>
-        /// Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
+        /// The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
         /// </summary>
-        [Input("machineType")]
-        public Input<string>? MachineType { get; set; }
+        [Input("machineType", required: true)]
+        public Input<string> MachineType { get; set; } = null!;
 
         [Input("metadata")]
         private InputMap<string>? _metadata;

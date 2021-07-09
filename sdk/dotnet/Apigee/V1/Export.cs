@@ -121,16 +121,16 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<string>? CsvDelimiter { get; set; }
 
         /// <summary>
-        /// Required. Name of the preconfigured datastore.
+        /// Name of the preconfigured datastore.
         /// </summary>
-        [Input("datastoreName")]
-        public Input<string>? DatastoreName { get; set; }
+        [Input("datastoreName", required: true)]
+        public Input<string> DatastoreName { get; set; } = null!;
 
         /// <summary>
-        /// Required. Date range of the data to export.
+        /// Date range of the data to export.
         /// </summary>
-        [Input("dateRange")]
-        public Input<Inputs.GoogleCloudApigeeV1DateRangeArgs>? DateRange { get; set; }
+        [Input("dateRange", required: true)]
+        public Input<Inputs.GoogleCloudApigeeV1DateRangeArgs> DateRange { get; set; } = null!;
 
         /// <summary>
         /// Optional. Description of the export job.
@@ -142,10 +142,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<string> EnvironmentId { get; set; } = null!;
 
         /// <summary>
-        /// Required. Display name of the export job.
+        /// Display name of the export job.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;

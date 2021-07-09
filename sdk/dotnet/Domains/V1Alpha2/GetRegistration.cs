@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
     public sealed class GetRegistrationResult
     {
         /// <summary>
-        /// Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
+        /// Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
         /// </summary>
         public readonly Outputs.ContactSettingsResponse ContactSettings;
         /// <summary>
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
         /// </summary>
         public readonly Outputs.DnsSettingsResponse DnsSettings;
         /// <summary>
-        /// Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
+        /// Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
         /// </summary>
         public readonly string DomainName;
         /// <summary>

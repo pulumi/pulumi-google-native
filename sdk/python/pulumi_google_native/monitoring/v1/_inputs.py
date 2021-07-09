@@ -239,25 +239,36 @@ class ColumnLayoutArgs:
 @pulumi.input_type
 class DataSetArgs:
     def __init__(__self__, *,
+                 time_series_query: pulumi.Input['TimeSeriesQueryArgs'],
                  legend_template: Optional[pulumi.Input[str]] = None,
                  min_alignment_period: Optional[pulumi.Input[str]] = None,
-                 plot_type: Optional[pulumi.Input['DataSetPlotType']] = None,
-                 time_series_query: Optional[pulumi.Input['TimeSeriesQueryArgs']] = None):
+                 plot_type: Optional[pulumi.Input['DataSetPlotType']] = None):
         """
         Groups a time series query definition with charting options.
+        :param pulumi.Input['TimeSeriesQueryArgs'] time_series_query: Fields for querying time series data from the Stackdriver metrics API.
         :param pulumi.Input[str] legend_template: A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value.
         :param pulumi.Input[str] min_alignment_period: Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
         :param pulumi.Input['DataSetPlotType'] plot_type: How this data should be plotted on the chart.
-        :param pulumi.Input['TimeSeriesQueryArgs'] time_series_query: Required. Fields for querying time series data from the Stackdriver metrics API.
         """
+        pulumi.set(__self__, "time_series_query", time_series_query)
         if legend_template is not None:
             pulumi.set(__self__, "legend_template", legend_template)
         if min_alignment_period is not None:
             pulumi.set(__self__, "min_alignment_period", min_alignment_period)
         if plot_type is not None:
             pulumi.set(__self__, "plot_type", plot_type)
-        if time_series_query is not None:
-            pulumi.set(__self__, "time_series_query", time_series_query)
+
+    @property
+    @pulumi.getter(name="timeSeriesQuery")
+    def time_series_query(self) -> pulumi.Input['TimeSeriesQueryArgs']:
+        """
+        Fields for querying time series data from the Stackdriver metrics API.
+        """
+        return pulumi.get(self, "time_series_query")
+
+    @time_series_query.setter
+    def time_series_query(self, value: pulumi.Input['TimeSeriesQueryArgs']):
+        pulumi.set(self, "time_series_query", value)
 
     @property
     @pulumi.getter(name="legendTemplate")
@@ -294,18 +305,6 @@ class DataSetArgs:
     @plot_type.setter
     def plot_type(self, value: Optional[pulumi.Input['DataSetPlotType']]):
         pulumi.set(self, "plot_type", value)
-
-    @property
-    @pulumi.getter(name="timeSeriesQuery")
-    def time_series_query(self) -> Optional[pulumi.Input['TimeSeriesQueryArgs']]:
-        """
-        Required. Fields for querying time series data from the Stackdriver metrics API.
-        """
-        return pulumi.get(self, "time_series_query")
-
-    @time_series_query.setter
-    def time_series_query(self, value: Optional[pulumi.Input['TimeSeriesQueryArgs']]):
-        pulumi.set(self, "time_series_query", value)
 
 
 @pulumi.input_type
@@ -496,17 +495,28 @@ class PickTimeSeriesFilterArgs:
 @pulumi.input_type
 class RatioPartArgs:
     def __init__(__self__, *,
-                 aggregation: Optional[pulumi.Input['AggregationArgs']] = None,
-                 filter: Optional[pulumi.Input[str]] = None):
+                 filter: pulumi.Input[str],
+                 aggregation: Optional[pulumi.Input['AggregationArgs']] = None):
         """
         Describes a query to build the numerator or denominator of a TimeSeriesFilterRatio.
+        :param pulumi.Input[str] filter: The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
         :param pulumi.Input['AggregationArgs'] aggregation: By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
-        :param pulumi.Input[str] filter: Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
         """
+        pulumi.set(__self__, "filter", filter)
         if aggregation is not None:
             pulumi.set(__self__, "aggregation", aggregation)
-        if filter is not None:
-            pulumi.set(__self__, "filter", filter)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[str]:
+        """
+        The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter", value)
 
     @property
     @pulumi.getter
@@ -519,18 +529,6 @@ class RatioPartArgs:
     @aggregation.setter
     def aggregation(self, value: Optional[pulumi.Input['AggregationArgs']]):
         pulumi.set(self, "aggregation", value)
-
-    @property
-    @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
-        """
-        return pulumi.get(self, "filter")
-
-    @filter.setter
-    def filter(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "filter", value)
 
 
 @pulumi.input_type
@@ -600,25 +598,36 @@ class RowLayoutArgs:
 @pulumi.input_type
 class ScorecardArgs:
     def __init__(__self__, *,
+                 time_series_query: pulumi.Input['TimeSeriesQueryArgs'],
                  gauge_view: Optional[pulumi.Input['GaugeViewArgs']] = None,
                  spark_chart_view: Optional[pulumi.Input['SparkChartViewArgs']] = None,
-                 thresholds: Optional[pulumi.Input[Sequence[pulumi.Input['ThresholdArgs']]]] = None,
-                 time_series_query: Optional[pulumi.Input['TimeSeriesQueryArgs']] = None):
+                 thresholds: Optional[pulumi.Input[Sequence[pulumi.Input['ThresholdArgs']]]] = None):
         """
         A widget showing the latest value of a metric, and how this value relates to one or more thresholds.
+        :param pulumi.Input['TimeSeriesQueryArgs'] time_series_query: Fields for querying time series data from the Stackdriver metrics API.
         :param pulumi.Input['GaugeViewArgs'] gauge_view: Will cause the scorecard to show a gauge chart.
         :param pulumi.Input['SparkChartViewArgs'] spark_chart_view: Will cause the scorecard to show a spark chart.
         :param pulumi.Input[Sequence[pulumi.Input['ThresholdArgs']]] thresholds: The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', }Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
-        :param pulumi.Input['TimeSeriesQueryArgs'] time_series_query: Required. Fields for querying time series data from the Stackdriver metrics API.
         """
+        pulumi.set(__self__, "time_series_query", time_series_query)
         if gauge_view is not None:
             pulumi.set(__self__, "gauge_view", gauge_view)
         if spark_chart_view is not None:
             pulumi.set(__self__, "spark_chart_view", spark_chart_view)
         if thresholds is not None:
             pulumi.set(__self__, "thresholds", thresholds)
-        if time_series_query is not None:
-            pulumi.set(__self__, "time_series_query", time_series_query)
+
+    @property
+    @pulumi.getter(name="timeSeriesQuery")
+    def time_series_query(self) -> pulumi.Input['TimeSeriesQueryArgs']:
+        """
+        Fields for querying time series data from the Stackdriver metrics API.
+        """
+        return pulumi.get(self, "time_series_query")
+
+    @time_series_query.setter
+    def time_series_query(self, value: pulumi.Input['TimeSeriesQueryArgs']):
+        pulumi.set(self, "time_series_query", value)
 
     @property
     @pulumi.getter(name="gaugeView")
@@ -656,33 +665,32 @@ class ScorecardArgs:
     def thresholds(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ThresholdArgs']]]]):
         pulumi.set(self, "thresholds", value)
 
-    @property
-    @pulumi.getter(name="timeSeriesQuery")
-    def time_series_query(self) -> Optional[pulumi.Input['TimeSeriesQueryArgs']]:
-        """
-        Required. Fields for querying time series data from the Stackdriver metrics API.
-        """
-        return pulumi.get(self, "time_series_query")
-
-    @time_series_query.setter
-    def time_series_query(self, value: Optional[pulumi.Input['TimeSeriesQueryArgs']]):
-        pulumi.set(self, "time_series_query", value)
-
 
 @pulumi.input_type
 class SparkChartViewArgs:
     def __init__(__self__, *,
-                 min_alignment_period: Optional[pulumi.Input[str]] = None,
-                 spark_chart_type: Optional[pulumi.Input['SparkChartViewSparkChartType']] = None):
+                 spark_chart_type: pulumi.Input['SparkChartViewSparkChartType'],
+                 min_alignment_period: Optional[pulumi.Input[str]] = None):
         """
         A sparkChart is a small chart suitable for inclusion in a table-cell or inline in text. This message contains the configuration for a sparkChart to show up on a Scorecard, showing recent trends of the scorecard's timeseries.
+        :param pulumi.Input['SparkChartViewSparkChartType'] spark_chart_type: The type of sparkchart to show in this chartView.
         :param pulumi.Input[str] min_alignment_period: The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.
-        :param pulumi.Input['SparkChartViewSparkChartType'] spark_chart_type: Required. The type of sparkchart to show in this chartView.
         """
+        pulumi.set(__self__, "spark_chart_type", spark_chart_type)
         if min_alignment_period is not None:
             pulumi.set(__self__, "min_alignment_period", min_alignment_period)
-        if spark_chart_type is not None:
-            pulumi.set(__self__, "spark_chart_type", spark_chart_type)
+
+    @property
+    @pulumi.getter(name="sparkChartType")
+    def spark_chart_type(self) -> pulumi.Input['SparkChartViewSparkChartType']:
+        """
+        The type of sparkchart to show in this chartView.
+        """
+        return pulumi.get(self, "spark_chart_type")
+
+    @spark_chart_type.setter
+    def spark_chart_type(self, value: pulumi.Input['SparkChartViewSparkChartType']):
+        pulumi.set(self, "spark_chart_type", value)
 
     @property
     @pulumi.getter(name="minAlignmentPeriod")
@@ -695,18 +703,6 @@ class SparkChartViewArgs:
     @min_alignment_period.setter
     def min_alignment_period(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "min_alignment_period", value)
-
-    @property
-    @pulumi.getter(name="sparkChartType")
-    def spark_chart_type(self) -> Optional[pulumi.Input['SparkChartViewSparkChartType']]:
-        """
-        Required. The type of sparkchart to show in this chartView.
-        """
-        return pulumi.get(self, "spark_chart_type")
-
-    @spark_chart_type.setter
-    def spark_chart_type(self, value: Optional[pulumi.Input['SparkChartViewSparkChartType']]):
-        pulumi.set(self, "spark_chart_type", value)
 
 
 @pulumi.input_type
@@ -912,25 +908,36 @@ class TileArgs:
 @pulumi.input_type
 class TimeSeriesFilterArgs:
     def __init__(__self__, *,
+                 filter: pulumi.Input[str],
                  aggregation: Optional[pulumi.Input['AggregationArgs']] = None,
-                 filter: Optional[pulumi.Input[str]] = None,
                  pick_time_series_filter: Optional[pulumi.Input['PickTimeSeriesFilterArgs']] = None,
                  secondary_aggregation: Optional[pulumi.Input['AggregationArgs']] = None):
         """
         A filter that defines a subset of time series data that is displayed in a widget. Time series data is fetched using the ListTimeSeries (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method.
+        :param pulumi.Input[str] filter: The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
         :param pulumi.Input['AggregationArgs'] aggregation: By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
-        :param pulumi.Input[str] filter: Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
         :param pulumi.Input['PickTimeSeriesFilterArgs'] pick_time_series_filter: Ranking based time series filter.
         :param pulumi.Input['AggregationArgs'] secondary_aggregation: Apply a second aggregation after aggregation is applied.
         """
+        pulumi.set(__self__, "filter", filter)
         if aggregation is not None:
             pulumi.set(__self__, "aggregation", aggregation)
-        if filter is not None:
-            pulumi.set(__self__, "filter", filter)
         if pick_time_series_filter is not None:
             pulumi.set(__self__, "pick_time_series_filter", pick_time_series_filter)
         if secondary_aggregation is not None:
             pulumi.set(__self__, "secondary_aggregation", secondary_aggregation)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[str]:
+        """
+        The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter", value)
 
     @property
     @pulumi.getter
@@ -943,18 +950,6 @@ class TimeSeriesFilterArgs:
     @aggregation.setter
     def aggregation(self, value: Optional[pulumi.Input['AggregationArgs']]):
         pulumi.set(self, "aggregation", value)
-
-    @property
-    @pulumi.getter
-    def filter(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
-        """
-        return pulumi.get(self, "filter")
-
-    @filter.setter
-    def filter(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "filter", value)
 
     @property
     @pulumi.getter(name="pickTimeSeriesFilter")
@@ -1216,25 +1211,24 @@ class WidgetArgs:
 @pulumi.input_type
 class XyChartArgs:
     def __init__(__self__, *,
+                 data_sets: pulumi.Input[Sequence[pulumi.Input['DataSetArgs']]],
                  chart_options: Optional[pulumi.Input['ChartOptionsArgs']] = None,
-                 data_sets: Optional[pulumi.Input[Sequence[pulumi.Input['DataSetArgs']]]] = None,
                  thresholds: Optional[pulumi.Input[Sequence[pulumi.Input['ThresholdArgs']]]] = None,
                  timeshift_duration: Optional[pulumi.Input[str]] = None,
                  x_axis: Optional[pulumi.Input['AxisArgs']] = None,
                  y_axis: Optional[pulumi.Input['AxisArgs']] = None):
         """
         A chart that displays data on a 2D (X and Y axes) plane.
+        :param pulumi.Input[Sequence[pulumi.Input['DataSetArgs']]] data_sets: The data displayed in this chart.
         :param pulumi.Input['ChartOptionsArgs'] chart_options: Display options for the chart.
-        :param pulumi.Input[Sequence[pulumi.Input['DataSetArgs']]] data_sets: Required. The data displayed in this chart.
         :param pulumi.Input[Sequence[pulumi.Input['ThresholdArgs']]] thresholds: Threshold lines drawn horizontally across the chart.
         :param pulumi.Input[str] timeshift_duration: The duration used to display a comparison chart. A comparison chart simultaneously shows values from two similar-length time periods (e.g., week-over-week metrics). The duration must be positive, and it can only be applied to charts with data sets of LINE plot type.
         :param pulumi.Input['AxisArgs'] x_axis: The properties applied to the X axis.
         :param pulumi.Input['AxisArgs'] y_axis: The properties applied to the Y axis.
         """
+        pulumi.set(__self__, "data_sets", data_sets)
         if chart_options is not None:
             pulumi.set(__self__, "chart_options", chart_options)
-        if data_sets is not None:
-            pulumi.set(__self__, "data_sets", data_sets)
         if thresholds is not None:
             pulumi.set(__self__, "thresholds", thresholds)
         if timeshift_duration is not None:
@@ -1243,6 +1237,18 @@ class XyChartArgs:
             pulumi.set(__self__, "x_axis", x_axis)
         if y_axis is not None:
             pulumi.set(__self__, "y_axis", y_axis)
+
+    @property
+    @pulumi.getter(name="dataSets")
+    def data_sets(self) -> pulumi.Input[Sequence[pulumi.Input['DataSetArgs']]]:
+        """
+        The data displayed in this chart.
+        """
+        return pulumi.get(self, "data_sets")
+
+    @data_sets.setter
+    def data_sets(self, value: pulumi.Input[Sequence[pulumi.Input['DataSetArgs']]]):
+        pulumi.set(self, "data_sets", value)
 
     @property
     @pulumi.getter(name="chartOptions")
@@ -1255,18 +1261,6 @@ class XyChartArgs:
     @chart_options.setter
     def chart_options(self, value: Optional[pulumi.Input['ChartOptionsArgs']]):
         pulumi.set(self, "chart_options", value)
-
-    @property
-    @pulumi.getter(name="dataSets")
-    def data_sets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DataSetArgs']]]]:
-        """
-        Required. The data displayed in this chart.
-        """
-        return pulumi.get(self, "data_sets")
-
-    @data_sets.setter
-    def data_sets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DataSetArgs']]]]):
-        pulumi.set(self, "data_sets", value)
 
     @property
     @pulumi.getter

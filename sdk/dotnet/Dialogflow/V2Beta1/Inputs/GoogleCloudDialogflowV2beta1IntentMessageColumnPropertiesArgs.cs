@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Column heading.
+        /// Column heading.
         /// </summary>
-        [Input("header")]
-        public Input<string>? Header { get; set; }
+        [Input("header", required: true)]
+        public Input<string> Header { get; set; } = null!;
 
         /// <summary>
         /// Optional. Defines text alignment for all cells in this column.

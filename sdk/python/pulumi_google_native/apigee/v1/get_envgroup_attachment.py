@@ -39,7 +39,7 @@ class GetEnvgroupAttachmentResult:
     @pulumi.getter
     def environment(self) -> str:
         """
-        Required. ID of the attached environment.
+        ID of the attached environment.
         """
         return pulumi.get(self, "environment")
 

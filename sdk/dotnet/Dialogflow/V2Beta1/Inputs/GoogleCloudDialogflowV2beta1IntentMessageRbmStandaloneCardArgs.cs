@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Card content.
+        /// Card content.
         /// </summary>
-        [Input("cardContent")]
-        public Input<Inputs.GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs>? CardContent { get; set; }
+        [Input("cardContent", required: true)]
+        public Input<Inputs.GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs> CardContent { get; set; } = null!;
 
         /// <summary>
-        /// Required. Orientation of the card.
+        /// Orientation of the card.
         /// </summary>
-        [Input("cardOrientation")]
-        public Input<Pulumi.GoogleNative.Dialogflow.V2Beta1.GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation>? CardOrientation { get; set; }
+        [Input("cardOrientation", required: true)]
+        public Input<Pulumi.GoogleNative.Dialogflow.V2Beta1.GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation> CardOrientation { get; set; } = null!;
 
         /// <summary>
         /// Required if orientation is horizontal. Image preview alignment for standalone cards with horizontal layout.

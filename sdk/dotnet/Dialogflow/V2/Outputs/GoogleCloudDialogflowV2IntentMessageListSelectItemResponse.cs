@@ -22,11 +22,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowV2IntentMessageImageResponse Image;
         /// <summary>
-        /// Required. Additional information about this option.
+        /// Additional information about this option.
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse Info;
         /// <summary>
-        /// Required. The title of the list item.
+        /// The title of the list item.
         /// </summary>
         public readonly string Title;
 

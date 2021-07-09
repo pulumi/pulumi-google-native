@@ -15,23 +15,34 @@ __all__ = ['DatastoreArgs', 'Datastore']
 @pulumi.input_type
 class DatastoreArgs:
     def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  datastore_config: Optional[pulumi.Input['GoogleCloudApigeeV1DatastoreConfigArgs']] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
                  target_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Datastore resource.
+        :param pulumi.Input[str] display_name: Display name in UI
         :param pulumi.Input['GoogleCloudApigeeV1DatastoreConfigArgs'] datastore_config: Datastore Configurations.
-        :param pulumi.Input[str] display_name: Required. Display name in UI
         :param pulumi.Input[str] target_type: Destination storage type. Supported types `gcs` or `bigquery`.
         """
+        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "organization_id", organization_id)
         if datastore_config is not None:
             pulumi.set(__self__, "datastore_config", datastore_config)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if target_type is not None:
             pulumi.set(__self__, "target_type", target_type)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        Display name in UI
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -53,18 +64,6 @@ class DatastoreArgs:
     @datastore_config.setter
     def datastore_config(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1DatastoreConfigArgs']]):
         pulumi.set(self, "datastore_config", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Display name in UI
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="targetType")
@@ -95,7 +94,7 @@ class Datastore(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1DatastoreConfigArgs']] datastore_config: Datastore Configurations.
-        :param pulumi.Input[str] display_name: Required. Display name in UI
+        :param pulumi.Input[str] display_name: Display name in UI
         :param pulumi.Input[str] target_type: Destination storage type. Supported types `gcs` or `bigquery`.
         """
         ...
@@ -139,6 +138,8 @@ class Datastore(pulumi.CustomResource):
             __props__ = DatastoreArgs.__new__(DatastoreArgs)
 
             __props__.__dict__["datastore_config"] = datastore_config
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
@@ -199,7 +200,7 @@ class Datastore(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Required. Display name in UI
+        Display name in UI
         """
         return pulumi.get(self, "display_name")
 

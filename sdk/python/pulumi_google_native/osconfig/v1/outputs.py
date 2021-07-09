@@ -283,9 +283,9 @@ class GcsObjectResponse(dict):
                  object: str):
         """
         Cloud Storage object representation.
-        :param str bucket: Required. Bucket of the Cloud Storage object.
-        :param str generation_number: Required. Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-        :param str object: Required. Name of the Cloud Storage object.
+        :param str bucket: Bucket of the Cloud Storage object.
+        :param str generation_number: Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+        :param str object: Name of the Cloud Storage object.
         """
         pulumi.set(__self__, "bucket", bucket)
         pulumi.set(__self__, "generation_number", generation_number)
@@ -295,7 +295,7 @@ class GcsObjectResponse(dict):
     @pulumi.getter
     def bucket(self) -> str:
         """
-        Required. Bucket of the Cloud Storage object.
+        Bucket of the Cloud Storage object.
         """
         return pulumi.get(self, "bucket")
 
@@ -303,7 +303,7 @@ class GcsObjectResponse(dict):
     @pulumi.getter(name="generationNumber")
     def generation_number(self) -> str:
         """
-        Required. Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+        Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
         """
         return pulumi.get(self, "generation_number")
 
@@ -311,7 +311,7 @@ class GcsObjectResponse(dict):
     @pulumi.getter
     def object(self) -> str:
         """
-        Required. Name of the Cloud Storage object.
+        Name of the Cloud Storage object.
         """
         return pulumi.get(self, "object")
 
@@ -357,8 +357,8 @@ class MonthlyScheduleResponse(dict):
                  week_day_of_month: 'outputs.WeekDayOfMonthResponse'):
         """
         Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or "on the 15th of the month".
-        :param int month_day: Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
-        :param 'WeekDayOfMonthResponse' week_day_of_month: Required. Week day in a month.
+        :param int month_day: One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+        :param 'WeekDayOfMonthResponse' week_day_of_month: Week day in a month.
         """
         pulumi.set(__self__, "month_day", month_day)
         pulumi.set(__self__, "week_day_of_month", week_day_of_month)
@@ -367,7 +367,7 @@ class MonthlyScheduleResponse(dict):
     @pulumi.getter(name="monthDay")
     def month_day(self) -> int:
         """
-        Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+        One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
         """
         return pulumi.get(self, "month_day")
 
@@ -375,7 +375,7 @@ class MonthlyScheduleResponse(dict):
     @pulumi.getter(name="weekDayOfMonth")
     def week_day_of_month(self) -> 'outputs.WeekDayOfMonthResponse':
         """
-        Required. Week day in a month.
+        Week day in a month.
         """
         return pulumi.get(self, "week_day_of_month")
 
@@ -406,7 +406,7 @@ class OneTimeScheduleResponse(dict):
                  execute_time: str):
         """
         Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-        :param str execute_time: Required. The desired patch job execution time.
+        :param str execute_time: The desired patch job execution time.
         """
         pulumi.set(__self__, "execute_time", execute_time)
 
@@ -414,7 +414,7 @@ class OneTimeScheduleResponse(dict):
     @pulumi.getter(name="executeTime")
     def execute_time(self) -> str:
         """
-        Required. The desired patch job execution time.
+        The desired patch job execution time.
         """
         return pulumi.get(self, "execute_time")
 
@@ -743,14 +743,14 @@ class RecurringScheduleResponse(dict):
         """
         Sets the time for recurring patch deployments.
         :param str end_time: Optional. The end time at which a recurring patch deployment schedule is no longer active.
-        :param str frequency: Required. The frequency unit of this recurring schedule.
+        :param str frequency: The frequency unit of this recurring schedule.
         :param str last_execute_time: The time the last patch job ran successfully.
-        :param 'MonthlyScheduleResponse' monthly: Required. Schedule with monthly executions.
+        :param 'MonthlyScheduleResponse' monthly: Schedule with monthly executions.
         :param str next_execute_time: The time the next patch job is scheduled to run.
         :param str start_time: Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
-        :param 'TimeOfDayResponse' time_of_day: Required. Time of the day to run a recurring deployment.
-        :param 'TimeZoneResponse' time_zone: Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
-        :param 'WeeklyScheduleResponse' weekly: Required. Schedule with weekly executions.
+        :param 'TimeOfDayResponse' time_of_day: Time of the day to run a recurring deployment.
+        :param 'TimeZoneResponse' time_zone: Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+        :param 'WeeklyScheduleResponse' weekly: Schedule with weekly executions.
         """
         pulumi.set(__self__, "end_time", end_time)
         pulumi.set(__self__, "frequency", frequency)
@@ -774,7 +774,7 @@ class RecurringScheduleResponse(dict):
     @pulumi.getter
     def frequency(self) -> str:
         """
-        Required. The frequency unit of this recurring schedule.
+        The frequency unit of this recurring schedule.
         """
         return pulumi.get(self, "frequency")
 
@@ -790,7 +790,7 @@ class RecurringScheduleResponse(dict):
     @pulumi.getter
     def monthly(self) -> 'outputs.MonthlyScheduleResponse':
         """
-        Required. Schedule with monthly executions.
+        Schedule with monthly executions.
         """
         return pulumi.get(self, "monthly")
 
@@ -814,7 +814,7 @@ class RecurringScheduleResponse(dict):
     @pulumi.getter(name="timeOfDay")
     def time_of_day(self) -> 'outputs.TimeOfDayResponse':
         """
-        Required. Time of the day to run a recurring deployment.
+        Time of the day to run a recurring deployment.
         """
         return pulumi.get(self, "time_of_day")
 
@@ -822,7 +822,7 @@ class RecurringScheduleResponse(dict):
     @pulumi.getter(name="timeZone")
     def time_zone(self) -> 'outputs.TimeZoneResponse':
         """
-        Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+        Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
         """
         return pulumi.get(self, "time_zone")
 
@@ -830,7 +830,7 @@ class RecurringScheduleResponse(dict):
     @pulumi.getter
     def weekly(self) -> 'outputs.WeeklyScheduleResponse':
         """
-        Required. Schedule with weekly executions.
+        Schedule with weekly executions.
         """
         return pulumi.get(self, "weekly")
 
@@ -941,8 +941,8 @@ class WeekDayOfMonthResponse(dict):
                  week_ordinal: int):
         """
         Represents one week day in a month. An example is "the 4th Sunday".
-        :param str day_of_week: Required. A day of the week.
-        :param int week_ordinal: Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+        :param str day_of_week: A day of the week.
+        :param int week_ordinal: Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
         """
         pulumi.set(__self__, "day_of_week", day_of_week)
         pulumi.set(__self__, "week_ordinal", week_ordinal)
@@ -951,7 +951,7 @@ class WeekDayOfMonthResponse(dict):
     @pulumi.getter(name="dayOfWeek")
     def day_of_week(self) -> str:
         """
-        Required. A day of the week.
+        A day of the week.
         """
         return pulumi.get(self, "day_of_week")
 
@@ -959,7 +959,7 @@ class WeekDayOfMonthResponse(dict):
     @pulumi.getter(name="weekOrdinal")
     def week_ordinal(self) -> int:
         """
-        Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+        Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
         """
         return pulumi.get(self, "week_ordinal")
 
@@ -990,7 +990,7 @@ class WeeklyScheduleResponse(dict):
                  day_of_week: str):
         """
         Represents a weekly schedule.
-        :param str day_of_week: Required. Day of the week.
+        :param str day_of_week: Day of the week.
         """
         pulumi.set(__self__, "day_of_week", day_of_week)
 
@@ -998,7 +998,7 @@ class WeeklyScheduleResponse(dict):
     @pulumi.getter(name="dayOfWeek")
     def day_of_week(self) -> str:
         """
-        Required. Day of the week.
+        Day of the week.
         """
         return pulumi.get(self, "day_of_week")
 

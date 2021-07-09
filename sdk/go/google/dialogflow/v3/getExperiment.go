@@ -32,7 +32,7 @@ type LookupExperimentResult struct {
 	Definition GoogleCloudDialogflowCxV3ExperimentDefinitionResponse `pulumi:"definition"`
 	// The human-readable description of the experiment.
 	Description string `pulumi:"description"`
-	// Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
+	// The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
 	DisplayName string `pulumi:"displayName"`
 	// End time of this experiment.
 	EndTime string `pulumi:"endTime"`

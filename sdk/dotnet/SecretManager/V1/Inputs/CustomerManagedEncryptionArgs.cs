@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.SecretManager.V1.Inputs
     public sealed class CustomerManagedEncryptionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads. For secrets using the UserManaged replication policy type, Cloud KMS CryptoKeys must reside in the same location as the replica location. For secrets using the Automatic replication policy type, Cloud KMS CryptoKeys must reside in `global`. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        /// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads. For secrets using the UserManaged replication policy type, Cloud KMS CryptoKeys must reside in the same location as the replica location. For secrets using the Automatic replication policy type, Cloud KMS CryptoKeys must reside in `global`. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         /// </summary>
-        [Input("kmsKeyName")]
-        public Input<string>? KmsKeyName { get; set; }
+        [Input("kmsKeyName", required: true)]
+        public Input<string> KmsKeyName { get; set; } = null!;
 
         public CustomerManagedEncryptionArgs()
         {

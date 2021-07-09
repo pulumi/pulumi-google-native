@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
         /// </summary>
         public readonly string Operation;
         /// <summary>
-        /// Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+        /// `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
         /// </summary>
         public readonly ImmutableArray<string> OperationTypes;
 

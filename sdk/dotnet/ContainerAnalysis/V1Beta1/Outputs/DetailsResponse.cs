@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
     public sealed class DetailsResponse
     {
         /// <summary>
-        /// Required. Attestation for the resource.
+        /// Attestation for the resource.
         /// </summary>
         public readonly Outputs.AttestationResponse Attestation;
 

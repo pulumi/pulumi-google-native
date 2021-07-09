@@ -34,10 +34,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public Input<Pulumi.GoogleNative.Monitoring.V1.DataSetPlotType>? PlotType { get; set; }
 
         /// <summary>
-        /// Required. Fields for querying time series data from the Stackdriver metrics API.
+        /// Fields for querying time series data from the Stackdriver metrics API.
         /// </summary>
-        [Input("timeSeriesQuery")]
-        public Input<Inputs.TimeSeriesQueryArgs>? TimeSeriesQuery { get; set; }
+        [Input("timeSeriesQuery", required: true)]
+        public Input<Inputs.TimeSeriesQueryArgs> TimeSeriesQuery { get; set; } = null!;
 
         public DataSetArgs()
         {

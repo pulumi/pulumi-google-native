@@ -46,10 +46,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public Input<Inputs.GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs>? GenericWebService { get; set; }
 
         /// <summary>
-        /// Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+        /// The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public GoogleCloudDialogflowV2beta1FulfillmentArgs()
         {

@@ -17,7 +17,7 @@ type EnvgroupAttachment struct {
 
 	// The time at which the environment group attachment was created as milliseconds since epoch.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Required. ID of the attached environment.
+	// ID of the attached environment.
 	Environment pulumi.StringOutput `pulumi:"environment"`
 	// ID of the environment group attachment.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -32,6 +32,9 @@ func NewEnvgroupAttachment(ctx *pulumi.Context,
 
 	if args.EnvgroupId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvgroupId'")
+	}
+	if args.Environment == nil {
+		return nil, errors.New("invalid value for required argument 'Environment'")
 	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
@@ -60,7 +63,7 @@ func GetEnvgroupAttachment(ctx *pulumi.Context,
 type envgroupAttachmentState struct {
 	// The time at which the environment group attachment was created as milliseconds since epoch.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Required. ID of the attached environment.
+	// ID of the attached environment.
 	Environment *string `pulumi:"environment"`
 	// ID of the environment group attachment.
 	Name *string `pulumi:"name"`
@@ -69,7 +72,7 @@ type envgroupAttachmentState struct {
 type EnvgroupAttachmentState struct {
 	// The time at which the environment group attachment was created as milliseconds since epoch.
 	CreatedAt pulumi.StringPtrInput
-	// Required. ID of the attached environment.
+	// ID of the attached environment.
 	Environment pulumi.StringPtrInput
 	// ID of the environment group attachment.
 	Name pulumi.StringPtrInput
@@ -81,8 +84,8 @@ func (EnvgroupAttachmentState) ElementType() reflect.Type {
 
 type envgroupAttachmentArgs struct {
 	EnvgroupId string `pulumi:"envgroupId"`
-	// Required. ID of the attached environment.
-	Environment *string `pulumi:"environment"`
+	// ID of the attached environment.
+	Environment string `pulumi:"environment"`
 	// ID of the environment group attachment.
 	Name           *string `pulumi:"name"`
 	OrganizationId string  `pulumi:"organizationId"`
@@ -91,8 +94,8 @@ type envgroupAttachmentArgs struct {
 // The set of arguments for constructing a EnvgroupAttachment resource.
 type EnvgroupAttachmentArgs struct {
 	EnvgroupId pulumi.StringInput
-	// Required. ID of the attached environment.
-	Environment pulumi.StringPtrInput
+	// ID of the attached environment.
+	Environment pulumi.StringInput
 	// ID of the environment group attachment.
 	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput

@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Inputs
     public sealed class TextInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The `Input.key` that identifies the input file.
+        /// The `Input.key` that identifies the input file.
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        [Input("key", required: true)]
+        public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// Required. The zero-based index of the track in the input file.
+        /// The zero-based index of the track in the input file.
         /// </summary>
-        [Input("track")]
-        public Input<int>? Track { get; set; }
+        [Input("track", required: true)]
+        public Input<int> Track { get; set; } = null!;
 
         public TextInputArgs()
         {

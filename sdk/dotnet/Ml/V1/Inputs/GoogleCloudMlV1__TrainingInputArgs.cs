@@ -81,11 +81,11 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         [Input("network")]
         public Input<string>? Network { get; set; }
 
-        [Input("packageUris")]
+        [Input("packageUris", required: true)]
         private InputList<string>? _packageUris;
 
         /// <summary>
-        /// Required. The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
+        /// The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
         /// </summary>
         public InputList<string> PackageUris
         {
@@ -112,10 +112,10 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public Input<string>? ParameterServerType { get; set; }
 
         /// <summary>
-        /// Required. The Python module name to run after installing the packages.
+        /// The Python module name to run after installing the packages.
         /// </summary>
-        [Input("pythonModule")]
-        public Input<string>? PythonModule { get; set; }
+        [Input("pythonModule", required: true)]
+        public Input<string> PythonModule { get; set; } = null!;
 
         /// <summary>
         /// Optional. The version of Python used in training. You must either specify this field or specify `masterConfig.imageUri`. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
@@ -124,10 +124,10 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public Input<string>? PythonVersion { get; set; }
 
         /// <summary>
-        /// Required. The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
+        /// The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
         /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
 
         /// <summary>
         /// Optional. The AI Platform runtime version to use for training. You must either specify this field or specify `masterConfig.imageUri`. For more information, see the [runtime version list](/ai-platform/training/docs/runtime-version-list) and learn [how to manage runtime versions](/ai-platform/training/docs/versioning).
@@ -136,10 +136,10 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public Input<string>? RuntimeVersion { get; set; }
 
         /// <summary>
-        /// Required. Specifies the machine types, the number of replicas for workers and parameter servers.
+        /// Specifies the machine types, the number of replicas for workers and parameter servers.
         /// </summary>
-        [Input("scaleTier")]
-        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1__TrainingInputScaleTier>? ScaleTier { get; set; }
+        [Input("scaleTier", required: true)]
+        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1__TrainingInputScaleTier> ScaleTier { get; set; } = null!;
 
         /// <summary>
         /// Optional. Scheduling options for a training job.

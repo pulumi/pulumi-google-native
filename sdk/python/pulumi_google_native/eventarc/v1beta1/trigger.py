@@ -15,37 +15,46 @@ __all__ = ['TriggerArgs', 'Trigger']
 @pulumi.input_type
 class TriggerArgs:
     def __init__(__self__, *,
+                 destination: pulumi.Input['DestinationArgs'],
                  location: pulumi.Input[str],
+                 matching_criteria: pulumi.Input[Sequence[pulumi.Input['MatchingCriteriaArgs']]],
+                 name: pulumi.Input[str],
                  project: pulumi.Input[str],
                  trigger_id: pulumi.Input[str],
                  validate_only: pulumi.Input[str],
-                 destination: Optional[pulumi.Input['DestinationArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 matching_criteria: Optional[pulumi.Input[Sequence[pulumi.Input['MatchingCriteriaArgs']]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Trigger resource.
-        :param pulumi.Input['DestinationArgs'] destination: Required. Destination specifies where the events should be sent to.
+        :param pulumi.Input['DestinationArgs'] destination: Destination specifies where the events should be sent to.
+        :param pulumi.Input[Sequence[pulumi.Input['MatchingCriteriaArgs']]] matching_criteria: null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        :param pulumi.Input[str] name: The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
-        :param pulumi.Input[Sequence[pulumi.Input['MatchingCriteriaArgs']]] matching_criteria: Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
-        :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
         """
+        pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "matching_criteria", matching_criteria)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "trigger_id", trigger_id)
         pulumi.set(__self__, "validate_only", validate_only)
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
-        if matching_criteria is not None:
-            pulumi.set(__self__, "matching_criteria", matching_criteria)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> pulumi.Input['DestinationArgs']:
+        """
+        Destination specifies where the events should be sent to.
+        """
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: pulumi.Input['DestinationArgs']):
+        pulumi.set(self, "destination", value)
 
     @property
     @pulumi.getter
@@ -55,6 +64,30 @@ class TriggerArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="matchingCriteria")
+    def matching_criteria(self) -> pulumi.Input[Sequence[pulumi.Input['MatchingCriteriaArgs']]]:
+        """
+        null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        """
+        return pulumi.get(self, "matching_criteria")
+
+    @matching_criteria.setter
+    def matching_criteria(self, value: pulumi.Input[Sequence[pulumi.Input['MatchingCriteriaArgs']]]):
+        pulumi.set(self, "matching_criteria", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -85,18 +118,6 @@ class TriggerArgs:
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input['DestinationArgs']]:
-        """
-        Required. Destination specifies where the events should be sent to.
-        """
-        return pulumi.get(self, "destination")
-
-    @destination.setter
-    def destination(self, value: Optional[pulumi.Input['DestinationArgs']]):
-        pulumi.set(self, "destination", value)
-
-    @property
-    @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. User labels attached to the triggers that can be used to group resources.
@@ -106,30 +127,6 @@ class TriggerArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
-
-    @property
-    @pulumi.getter(name="matchingCriteria")
-    def matching_criteria(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['MatchingCriteriaArgs']]]]:
-        """
-        Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
-        """
-        return pulumi.get(self, "matching_criteria")
-
-    @matching_criteria.setter
-    def matching_criteria(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['MatchingCriteriaArgs']]]]):
-        pulumi.set(self, "matching_criteria", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -164,10 +161,10 @@ class Trigger(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['DestinationArgs']] destination: Required. Destination specifies where the events should be sent to.
+        :param pulumi.Input[pulumi.InputType['DestinationArgs']] destination: Destination specifies where the events should be sent to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MatchingCriteriaArgs']]]] matching_criteria: Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
-        :param pulumi.Input[str] name: Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['MatchingCriteriaArgs']]]] matching_criteria: null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        :param pulumi.Input[str] name: The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
         """
         ...
@@ -215,12 +212,18 @@ class Trigger(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TriggerArgs.__new__(TriggerArgs)
 
+            if destination is None and not opts.urn:
+                raise TypeError("Missing required property 'destination'")
             __props__.__dict__["destination"] = destination
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            if matching_criteria is None and not opts.urn:
+                raise TypeError("Missing required property 'matching_criteria'")
             __props__.__dict__["matching_criteria"] = matching_criteria
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
@@ -281,7 +284,7 @@ class Trigger(pulumi.CustomResource):
     @pulumi.getter
     def destination(self) -> pulumi.Output['outputs.DestinationResponse']:
         """
-        Required. Destination specifies where the events should be sent to.
+        Destination specifies where the events should be sent to.
         """
         return pulumi.get(self, "destination")
 
@@ -305,7 +308,7 @@ class Trigger(pulumi.CustomResource):
     @pulumi.getter(name="matchingCriteria")
     def matching_criteria(self) -> pulumi.Output[Sequence['outputs.MatchingCriteriaResponse']]:
         """
-        Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
         """
         return pulumi.get(self, "matching_criteria")
 
@@ -313,7 +316,7 @@ class Trigger(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+        The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         """
         return pulumi.get(self, "name")
 

@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly Outputs.StandardSqlStructTypeResponse StructType;
         /// <summary>
-        /// Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+        /// The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
         /// </summary>
         public readonly string TypeKind;
 

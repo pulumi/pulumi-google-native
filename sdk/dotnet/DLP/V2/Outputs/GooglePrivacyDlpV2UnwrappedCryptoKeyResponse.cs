@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
     public sealed class GooglePrivacyDlpV2UnwrappedCryptoKeyResponse
     {
         /// <summary>
-        /// Required. A 128/192/256 bit key.
+        /// A 128/192/256 bit key.
         /// </summary>
         public readonly string Key;
 

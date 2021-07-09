@@ -109,10 +109,10 @@ namespace Pulumi.GoogleNative.IAM.V1
     public sealed class ServiceAccountArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The account id that is used to generate the service account email address and a stable unique id. It is unique within a project, must be 6-30 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
+        /// The account id that is used to generate the service account email address and a stable unique id. It is unique within a project, must be 6-30 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
         /// </summary>
-        [Input("accountId")]
-        public Input<string>? AccountId { get; set; }
+        [Input("accountId", required: true)]
+        public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
         /// Optional. A user-specified, human-readable description of the service account. The maximum length is 256 UTF-8 bytes.

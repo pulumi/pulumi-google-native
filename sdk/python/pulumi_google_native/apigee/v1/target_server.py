@@ -16,34 +16,31 @@ __all__ = ['TargetServerArgs', 'TargetServer']
 class TargetServerArgs:
     def __init__(__self__, *,
                  environment_id: pulumi.Input[str],
+                 host: pulumi.Input[str],
+                 name: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
+                 port: pulumi.Input[int],
                  description: Optional[pulumi.Input[str]] = None,
-                 host: Optional[pulumi.Input[str]] = None,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 port: Optional[pulumi.Input[int]] = None,
                  s_sl_info: Optional[pulumi.Input['GoogleCloudApigeeV1TlsInfoArgs']] = None):
         """
         The set of arguments for constructing a TargetServer resource.
+        :param pulumi.Input[str] host: The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
+        :param pulumi.Input[str] name: The resource id of this target server. Values must match the regular expression 
+        :param pulumi.Input[int] port: The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
         :param pulumi.Input[str] description: Optional. A human-readable description of this TargetServer.
-        :param pulumi.Input[str] host: Required. The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
         :param pulumi.Input[bool] is_enabled: Optional. Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
-        :param pulumi.Input[str] name: Required. The resource id of this target server. Values must match the regular expression 
-        :param pulumi.Input[int] port: Required. The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
         :param pulumi.Input['GoogleCloudApigeeV1TlsInfoArgs'] s_sl_info: Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
         """
         pulumi.set(__self__, "environment_id", environment_id)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "organization_id", organization_id)
+        pulumi.set(__self__, "port", port)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if host is not None:
-            pulumi.set(__self__, "host", host)
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if port is not None:
-            pulumi.set(__self__, "port", port)
         if s_sl_info is not None:
             pulumi.set(__self__, "s_sl_info", s_sl_info)
 
@@ -57,6 +54,30 @@ class TargetServerArgs:
         pulumi.set(self, "environment_id", value)
 
     @property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[str]:
+        """
+        The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The resource id of this target server. Values must match the regular expression 
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "organization_id")
@@ -64,6 +85,18 @@ class TargetServerArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        """
+        The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
 
     @property
     @pulumi.getter
@@ -78,18 +111,6 @@ class TargetServerArgs:
         pulumi.set(self, "description", value)
 
     @property
-    @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
-        """
-        return pulumi.get(self, "host")
-
-    @host.setter
-    def host(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "host", value)
-
-    @property
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -100,30 +121,6 @@ class TargetServerArgs:
     @is_enabled.setter
     def is_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_enabled", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The resource id of this target server. Values must match the regular expression 
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[int]]:
-        """
-        Required. The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
-        """
-        return pulumi.get(self, "port")
-
-    @port.setter
-    def port(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "port", value)
 
     @property
     @pulumi.getter(name="sSLInfo")
@@ -158,10 +155,10 @@ class TargetServer(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. A human-readable description of this TargetServer.
-        :param pulumi.Input[str] host: Required. The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
+        :param pulumi.Input[str] host: The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
         :param pulumi.Input[bool] is_enabled: Optional. Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
-        :param pulumi.Input[str] name: Required. The resource id of this target server. Values must match the regular expression 
-        :param pulumi.Input[int] port: Required. The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
+        :param pulumi.Input[str] name: The resource id of this target server. Values must match the regular expression 
+        :param pulumi.Input[int] port: The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1TlsInfoArgs']] s_sl_info: Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
         """
         ...
@@ -212,12 +209,18 @@ class TargetServer(pulumi.CustomResource):
             if environment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'environment_id'")
             __props__.__dict__["environment_id"] = environment_id
+            if host is None and not opts.urn:
+                raise TypeError("Missing required property 'host'")
             __props__.__dict__["host"] = host
             __props__.__dict__["is_enabled"] = is_enabled
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
+            if port is None and not opts.urn:
+                raise TypeError("Missing required property 'port'")
             __props__.__dict__["port"] = port
             __props__.__dict__["s_sl_info"] = s_sl_info
         super(TargetServer, __self__).__init__(
@@ -262,7 +265,7 @@ class TargetServer(pulumi.CustomResource):
     @pulumi.getter
     def host(self) -> pulumi.Output[str]:
         """
-        Required. The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
+        The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
         """
         return pulumi.get(self, "host")
 
@@ -278,7 +281,7 @@ class TargetServer(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Required. The resource id of this target server. Values must match the regular expression 
+        The resource id of this target server. Values must match the regular expression 
         """
         return pulumi.get(self, "name")
 
@@ -286,7 +289,7 @@ class TargetServer(pulumi.CustomResource):
     @pulumi.getter
     def port(self) -> pulumi.Output[int]:
         """
-        Required. The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
+        The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
         """
         return pulumi.get(self, "port")
 

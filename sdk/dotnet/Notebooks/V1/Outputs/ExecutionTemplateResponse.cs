@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly string ParamsYamlFile;
         /// <summary>
-        /// Required. Scale tier of the hardware used for notebook execution.
+        /// Scale tier of the hardware used for notebook execution.
         /// </summary>
         public readonly string ScaleTier;
         /// <summary>

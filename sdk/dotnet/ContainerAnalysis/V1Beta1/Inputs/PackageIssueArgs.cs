@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     public sealed class PackageIssueArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The location of the vulnerability.
+        /// The location of the vulnerability.
         /// </summary>
-        [Input("affectedLocation")]
-        public Input<Inputs.VulnerabilityLocationArgs>? AffectedLocation { get; set; }
+        [Input("affectedLocation", required: true)]
+        public Input<Inputs.VulnerabilityLocationArgs> AffectedLocation { get; set; } = null!;
 
         /// <summary>
         /// The location of the available fix for vulnerability.

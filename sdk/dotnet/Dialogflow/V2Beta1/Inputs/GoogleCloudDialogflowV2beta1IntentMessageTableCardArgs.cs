@@ -64,10 +64,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public Input<string>? Subtitle { get; set; }
 
         /// <summary>
-        /// Required. Title of the card.
+        /// Title of the card.
         /// </summary>
-        [Input("title")]
-        public Input<string>? Title { get; set; }
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
 
         public GoogleCloudDialogflowV2beta1IntentMessageTableCardArgs()
         {

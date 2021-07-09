@@ -82,13 +82,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> Limit { get; private set; } = null!;
 
         /// <summary>
-        /// Required. This contains the list of metrics
+        /// This contains the list of metrics
         /// </summary>
         [Output("metrics")]
         public Output<ImmutableArray<Outputs.GoogleCloudApigeeV1CustomReportMetricResponse>> Metrics { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
+        /// Unique identifier for the report T his is a legacy field used to encode custom report unique id
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -246,11 +246,11 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Input("limit")]
         public Input<string>? Limit { get; set; }
 
-        [Input("metrics")]
+        [Input("metrics", required: true)]
         private InputList<Inputs.GoogleCloudApigeeV1CustomReportMetricArgs>? _metrics;
 
         /// <summary>
-        /// Required. This contains the list of metrics
+        /// This contains the list of metrics
         /// </summary>
         public InputList<Inputs.GoogleCloudApigeeV1CustomReportMetricArgs> Metrics
         {
@@ -259,10 +259,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
 
         /// <summary>
-        /// Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
+        /// Unique identifier for the report T his is a legacy field used to encode custom report unique id
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// Legacy field: not used. This field contains the offset for the data

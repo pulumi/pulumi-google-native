@@ -67,15 +67,15 @@ export interface GetInstanceResult {
      */
     readonly memcacheVersion: string;
     /**
-     * Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
+     * Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
      */
     readonly name: string;
     /**
-     * Required. Configuration for Memcached nodes.
+     * Configuration for Memcached nodes.
      */
     readonly nodeConfig: outputs.memcache.v1beta2.NodeConfigResponse;
     /**
-     * Required. Number of nodes in the Memcached instance.
+     * Number of nodes in the Memcached instance.
      */
     readonly nodeCount: number;
     /**

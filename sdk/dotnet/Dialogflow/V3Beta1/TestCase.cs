@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Output<string> CreationTime { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+        /// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -112,10 +112,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
-        /// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+        /// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
         /// The latest test result.

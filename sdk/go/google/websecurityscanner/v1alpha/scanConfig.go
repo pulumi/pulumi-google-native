@@ -19,7 +19,7 @@ type ScanConfig struct {
 	Authentication AuthenticationResponseOutput `pulumi:"authentication"`
 	// The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls
 	BlacklistPatterns pulumi.StringArrayOutput `pulumi:"blacklistPatterns"`
-	// Required. The user provided display name of the ScanConfig.
+	// The user provided display name of the ScanConfig.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Latest ScanRun if available.
 	LatestRun ScanRunResponseOutput `pulumi:"latestRun"`
@@ -29,7 +29,7 @@ type ScanConfig struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The schedule of the ScanConfig.
 	Schedule ScheduleResponseOutput `pulumi:"schedule"`
-	// Required. The starting URLs from which the scanner finds site pages.
+	// The starting URLs from which the scanner finds site pages.
 	StartingUrls pulumi.StringArrayOutput `pulumi:"startingUrls"`
 	// Set of Google Cloud platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	TargetPlatforms pulumi.StringArrayOutput `pulumi:"targetPlatforms"`
@@ -44,8 +44,14 @@ func NewScanConfig(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.StartingUrls == nil {
+		return nil, errors.New("invalid value for required argument 'StartingUrls'")
 	}
 	var resource ScanConfig
 	err := ctx.RegisterResource("google-native:websecurityscanner/v1alpha:ScanConfig", name, args, &resource, opts...)
@@ -73,7 +79,7 @@ type scanConfigState struct {
 	Authentication *AuthenticationResponse `pulumi:"authentication"`
 	// The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls
 	BlacklistPatterns []string `pulumi:"blacklistPatterns"`
-	// Required. The user provided display name of the ScanConfig.
+	// The user provided display name of the ScanConfig.
 	DisplayName *string `pulumi:"displayName"`
 	// Latest ScanRun if available.
 	LatestRun *ScanRunResponse `pulumi:"latestRun"`
@@ -83,7 +89,7 @@ type scanConfigState struct {
 	Name *string `pulumi:"name"`
 	// The schedule of the ScanConfig.
 	Schedule *ScheduleResponse `pulumi:"schedule"`
-	// Required. The starting URLs from which the scanner finds site pages.
+	// The starting URLs from which the scanner finds site pages.
 	StartingUrls []string `pulumi:"startingUrls"`
 	// Set of Google Cloud platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	TargetPlatforms []string `pulumi:"targetPlatforms"`
@@ -96,7 +102,7 @@ type ScanConfigState struct {
 	Authentication AuthenticationResponsePtrInput
 	// The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls
 	BlacklistPatterns pulumi.StringArrayInput
-	// Required. The user provided display name of the ScanConfig.
+	// The user provided display name of the ScanConfig.
 	DisplayName pulumi.StringPtrInput
 	// Latest ScanRun if available.
 	LatestRun ScanRunResponsePtrInput
@@ -106,7 +112,7 @@ type ScanConfigState struct {
 	Name pulumi.StringPtrInput
 	// The schedule of the ScanConfig.
 	Schedule ScheduleResponsePtrInput
-	// Required. The starting URLs from which the scanner finds site pages.
+	// The starting URLs from which the scanner finds site pages.
 	StartingUrls pulumi.StringArrayInput
 	// Set of Google Cloud platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	TargetPlatforms pulumi.StringArrayInput
@@ -123,8 +129,8 @@ type scanConfigArgs struct {
 	Authentication *Authentication `pulumi:"authentication"`
 	// The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls
 	BlacklistPatterns []string `pulumi:"blacklistPatterns"`
-	// Required. The user provided display name of the ScanConfig.
-	DisplayName *string `pulumi:"displayName"`
+	// The user provided display name of the ScanConfig.
+	DisplayName string `pulumi:"displayName"`
 	// Latest ScanRun if available.
 	LatestRun *ScanRun `pulumi:"latestRun"`
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. If the field is unspecified or its value is set 0, server will default to 15. Other values outside of [5, 20] range will be rejected with INVALID_ARGUMENT error.
@@ -134,7 +140,7 @@ type scanConfigArgs struct {
 	Project string  `pulumi:"project"`
 	// The schedule of the ScanConfig.
 	Schedule *Schedule `pulumi:"schedule"`
-	// Required. The starting URLs from which the scanner finds site pages.
+	// The starting URLs from which the scanner finds site pages.
 	StartingUrls []string `pulumi:"startingUrls"`
 	// Set of Google Cloud platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	TargetPlatforms []string `pulumi:"targetPlatforms"`
@@ -148,8 +154,8 @@ type ScanConfigArgs struct {
 	Authentication AuthenticationPtrInput
 	// The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls
 	BlacklistPatterns pulumi.StringArrayInput
-	// Required. The user provided display name of the ScanConfig.
-	DisplayName pulumi.StringPtrInput
+	// The user provided display name of the ScanConfig.
+	DisplayName pulumi.StringInput
 	// Latest ScanRun if available.
 	LatestRun ScanRunPtrInput
 	// The maximum QPS during scanning. A valid value ranges from 5 to 20 inclusively. If the field is unspecified or its value is set 0, server will default to 15. Other values outside of [5, 20] range will be rejected with INVALID_ARGUMENT error.
@@ -159,7 +165,7 @@ type ScanConfigArgs struct {
 	Project pulumi.StringInput
 	// The schedule of the ScanConfig.
 	Schedule SchedulePtrInput
-	// Required. The starting URLs from which the scanner finds site pages.
+	// The starting URLs from which the scanner finds site pages.
 	StartingUrls pulumi.StringArrayInput
 	// Set of Google Cloud platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	TargetPlatforms ScanConfigTargetPlatformsItemArrayInput

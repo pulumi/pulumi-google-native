@@ -31,7 +31,7 @@ type LookupWorkerPoolResult struct {
 	Name string `pulumi:"name"`
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig NetworkConfigResponse `pulumi:"networkConfig"`
-	// Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+	// Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
 	Region string `pulumi:"region"`
 	// WorkerPool state.
 	State string `pulumi:"state"`

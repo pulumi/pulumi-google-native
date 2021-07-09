@@ -87,7 +87,7 @@ export interface GetInstanceResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+     * The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
      */
     readonly machineType: string;
     /**

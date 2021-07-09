@@ -52,7 +52,7 @@ export class Study extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Required. Configuration of the study.
+     * Configuration of the study.
      */
     public readonly studyConfig!: pulumi.Output<outputs.ml.v1.GoogleCloudMlV1__StudyConfigResponse>;
 
@@ -72,6 +72,9 @@ export class Study extends pulumi.CustomResource {
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.studyConfig === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'studyConfig'");
             }
             if ((!args || args.studyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'studyId'");
@@ -105,8 +108,8 @@ export interface StudyArgs {
     location: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
-     * Required. Configuration of the study.
+     * Configuration of the study.
      */
-    studyConfig?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__StudyConfigArgs>;
+    studyConfig: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__StudyConfigArgs>;
     studyId: pulumi.Input<string>;
 }

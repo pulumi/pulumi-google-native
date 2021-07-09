@@ -31,7 +31,7 @@ type Job struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Optional. Job is a Pig job.
 	PigJob PigJobResponseOutput `pulumi:"pigJob"`
-	// Required. Job information, including how, when, and where to run the job.
+	// Job information, including how, when, and where to run the job.
 	Placement JobPlacementResponseOutput `pulumi:"placement"`
 	// Optional. Job is a Presto job.
 	PrestoJob PrestoJobResponseOutput `pulumi:"prestoJob"`
@@ -62,6 +62,9 @@ func NewJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Placement == nil {
+		return nil, errors.New("invalid value for required argument 'Placement'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -106,7 +109,7 @@ type jobState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. Job is a Pig job.
 	PigJob *PigJobResponse `pulumi:"pigJob"`
-	// Required. Job information, including how, when, and where to run the job.
+	// Job information, including how, when, and where to run the job.
 	Placement *JobPlacementResponse `pulumi:"placement"`
 	// Optional. Job is a Presto job.
 	PrestoJob *PrestoJobResponse `pulumi:"prestoJob"`
@@ -147,7 +150,7 @@ type JobState struct {
 	Labels pulumi.StringMapInput
 	// Optional. Job is a Pig job.
 	PigJob PigJobResponsePtrInput
-	// Required. Job information, including how, when, and where to run the job.
+	// Job information, including how, when, and where to run the job.
 	Placement JobPlacementResponsePtrInput
 	// Optional. Job is a Presto job.
 	PrestoJob PrestoJobResponsePtrInput
@@ -184,8 +187,8 @@ type jobArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. Job is a Pig job.
 	PigJob *PigJob `pulumi:"pigJob"`
-	// Required. Job information, including how, when, and where to run the job.
-	Placement *JobPlacement `pulumi:"placement"`
+	// Job information, including how, when, and where to run the job.
+	Placement JobPlacement `pulumi:"placement"`
 	// Optional. Job is a Presto job.
 	PrestoJob *PrestoJob `pulumi:"prestoJob"`
 	Project   string     `pulumi:"project"`
@@ -216,8 +219,8 @@ type JobArgs struct {
 	Labels pulumi.StringMapInput
 	// Optional. Job is a Pig job.
 	PigJob PigJobPtrInput
-	// Required. Job information, including how, when, and where to run the job.
-	Placement JobPlacementPtrInput
+	// Job information, including how, when, and where to run the job.
+	Placement JobPlacementInput
 	// Optional. Job is a Presto job.
 	PrestoJob PrestoJobPtrInput
 	Project   pulumi.StringInput

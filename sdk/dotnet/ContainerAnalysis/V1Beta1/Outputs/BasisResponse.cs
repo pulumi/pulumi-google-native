@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
     public sealed class BasisResponse
     {
         /// <summary>
-        /// Required. Immutable. The fingerprint of the base image.
+        /// Immutable. The fingerprint of the base image.
         /// </summary>
         public readonly Outputs.FingerprintResponse Fingerprint;
         /// <summary>
-        /// Required. Immutable. The resource_url for the resource representing the basis of associated occurrence images.
+        /// Immutable. The resource_url for the resource representing the basis of associated occurrence images.
         /// </summary>
         public readonly string ResourceUrl;
 

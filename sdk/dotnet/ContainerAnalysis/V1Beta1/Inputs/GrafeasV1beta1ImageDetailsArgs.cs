@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     public sealed class GrafeasV1beta1ImageDetailsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Immutable. The child image derived from the base image.
+        /// Immutable. The child image derived from the base image.
         /// </summary>
-        [Input("derivedImage")]
-        public Input<Inputs.DerivedArgs>? DerivedImage { get; set; }
+        [Input("derivedImage", required: true)]
+        public Input<Inputs.DerivedArgs> DerivedImage { get; set; } = null!;
 
         public GrafeasV1beta1ImageDetailsArgs()
         {

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
     public sealed class SslConfigResponse
     {
         /// <summary>
-        /// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
+        /// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
         /// </summary>
         public readonly string CaCertificate;
         /// <summary>

@@ -48,7 +48,7 @@ export class Agent extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Required. The human-readable name of the agent, unique within the location.
+     * The human-readable name of the agent, unique within the location.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -76,7 +76,7 @@ export class Agent extends pulumi.CustomResource {
      */
     public readonly startFlow!: pulumi.Output<string>;
     /**
-     * Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+     * The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
      */
     public readonly timeZone!: pulumi.Output<string>;
 
@@ -91,11 +91,17 @@ export class Agent extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.timeZone === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'timeZone'");
             }
             inputs["avatarUri"] = args ? args.avatarUri : undefined;
             inputs["defaultLanguageCode"] = args ? args.defaultLanguageCode : undefined;
@@ -147,9 +153,9 @@ export interface AgentArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Required. The human-readable name of the agent, unique within the location.
+     * The human-readable name of the agent, unique within the location.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * Indicates if automatic spell correction is enabled in detect intent requests.
      */
@@ -177,7 +183,7 @@ export interface AgentArgs {
      */
     startFlow?: pulumi.Input<string>;
     /**
-     * Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+     * The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
      */
-    timeZone?: pulumi.Input<string>;
+    timeZone: pulumi.Input<string>;
 }

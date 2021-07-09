@@ -531,15 +531,15 @@ type TrustResponse struct {
 	State string `pulumi:"state"`
 	// Additional information about the current state of the trust, if available.
 	StateDescription string `pulumi:"stateDescription"`
-	// Required. The target DNS server IP addresses which can resolve the remote domain involved in the trust.
+	// The target DNS server IP addresses which can resolve the remote domain involved in the trust.
 	TargetDnsIpAddresses []string `pulumi:"targetDnsIpAddresses"`
-	// Required. The fully qualified target domain name which will be in trust with the current domain.
+	// The fully qualified target domain name which will be in trust with the current domain.
 	TargetDomainName string `pulumi:"targetDomainName"`
-	// Required. The trust direction, which decides if the current domain is trusted, trusting, or both.
+	// The trust direction, which decides if the current domain is trusted, trusting, or both.
 	TrustDirection string `pulumi:"trustDirection"`
-	// Required. The trust secret used for the handshake with the target domain. This will not be stored.
+	// The trust secret used for the handshake with the target domain. This will not be stored.
 	TrustHandshakeSecret string `pulumi:"trustHandshakeSecret"`
-	// Required. The type of trust represented by the trust resource.
+	// The type of trust represented by the trust resource.
 	TrustType string `pulumi:"trustType"`
 	// The last update time.
 	UpdateTime string `pulumi:"updateTime"`
@@ -568,15 +568,15 @@ type TrustResponseArgs struct {
 	State pulumi.StringInput `pulumi:"state"`
 	// Additional information about the current state of the trust, if available.
 	StateDescription pulumi.StringInput `pulumi:"stateDescription"`
-	// Required. The target DNS server IP addresses which can resolve the remote domain involved in the trust.
+	// The target DNS server IP addresses which can resolve the remote domain involved in the trust.
 	TargetDnsIpAddresses pulumi.StringArrayInput `pulumi:"targetDnsIpAddresses"`
-	// Required. The fully qualified target domain name which will be in trust with the current domain.
+	// The fully qualified target domain name which will be in trust with the current domain.
 	TargetDomainName pulumi.StringInput `pulumi:"targetDomainName"`
-	// Required. The trust direction, which decides if the current domain is trusted, trusting, or both.
+	// The trust direction, which decides if the current domain is trusted, trusting, or both.
 	TrustDirection pulumi.StringInput `pulumi:"trustDirection"`
-	// Required. The trust secret used for the handshake with the target domain. This will not be stored.
+	// The trust secret used for the handshake with the target domain. This will not be stored.
 	TrustHandshakeSecret pulumi.StringInput `pulumi:"trustHandshakeSecret"`
-	// Required. The type of trust represented by the trust resource.
+	// The type of trust represented by the trust resource.
 	TrustType pulumi.StringInput `pulumi:"trustType"`
 	// The last update time.
 	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
@@ -659,27 +659,27 @@ func (o TrustResponseOutput) StateDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v TrustResponse) string { return v.StateDescription }).(pulumi.StringOutput)
 }
 
-// Required. The target DNS server IP addresses which can resolve the remote domain involved in the trust.
+// The target DNS server IP addresses which can resolve the remote domain involved in the trust.
 func (o TrustResponseOutput) TargetDnsIpAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TrustResponse) []string { return v.TargetDnsIpAddresses }).(pulumi.StringArrayOutput)
 }
 
-// Required. The fully qualified target domain name which will be in trust with the current domain.
+// The fully qualified target domain name which will be in trust with the current domain.
 func (o TrustResponseOutput) TargetDomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v TrustResponse) string { return v.TargetDomainName }).(pulumi.StringOutput)
 }
 
-// Required. The trust direction, which decides if the current domain is trusted, trusting, or both.
+// The trust direction, which decides if the current domain is trusted, trusting, or both.
 func (o TrustResponseOutput) TrustDirection() pulumi.StringOutput {
 	return o.ApplyT(func(v TrustResponse) string { return v.TrustDirection }).(pulumi.StringOutput)
 }
 
-// Required. The trust secret used for the handshake with the target domain. This will not be stored.
+// The trust secret used for the handshake with the target domain. This will not be stored.
 func (o TrustResponseOutput) TrustHandshakeSecret() pulumi.StringOutput {
 	return o.ApplyT(func(v TrustResponse) string { return v.TrustHandshakeSecret }).(pulumi.StringOutput)
 }
 
-// Required. The type of trust represented by the trust resource.
+// The type of trust represented by the trust resource.
 func (o TrustResponseOutput) TrustType() pulumi.StringOutput {
 	return o.ApplyT(func(v TrustResponse) string { return v.TrustType }).(pulumi.StringOutput)
 }

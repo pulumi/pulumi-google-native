@@ -27,13 +27,13 @@ type LookupEntityTypeArgs struct {
 type LookupEntityTypeResult struct {
 	// Optional. Indicates whether the entity type can be automatically expanded.
 	AutoExpansionMode string `pulumi:"autoExpansionMode"`
-	// Required. The name of the entity type.
+	// The name of the entity type.
 	DisplayName string `pulumi:"displayName"`
 	// Optional. Enables fuzzy entity extraction during classification.
 	EnableFuzzyExtraction bool `pulumi:"enableFuzzyExtraction"`
 	// Optional. The collection of entity entries associated with the entity type.
 	Entities []GoogleCloudDialogflowV2EntityTypeEntityResponse `pulumi:"entities"`
-	// Required. Indicates the kind of entity type.
+	// Indicates the kind of entity type.
 	Kind string `pulumi:"kind"`
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.
 	Name string `pulumi:"name"`

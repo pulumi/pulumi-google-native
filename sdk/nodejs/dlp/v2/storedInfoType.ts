@@ -59,6 +59,9 @@ export class StoredInfoType extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.config === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'config'");
+            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -89,9 +92,9 @@ export class StoredInfoType extends pulumi.CustomResource {
  */
 export interface StoredInfoTypeArgs {
     /**
-     * Required. Configuration of the storedInfoType to create.
+     * Configuration of the storedInfoType to create.
      */
-    config?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2StoredInfoTypeConfigArgs>;
+    config: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2StoredInfoTypeConfigArgs>;
     location: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**

@@ -36,7 +36,7 @@ export class Index extends pulumi.CustomResource {
     }
 
     /**
-     * Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+     * The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
      */
     public readonly ancestor!: pulumi.Output<string>;
     /**
@@ -44,7 +44,7 @@ export class Index extends pulumi.CustomResource {
      */
     public /*out*/ readonly indexId!: pulumi.Output<string>;
     /**
-     * Required. The entity kind to which this index applies.
+     * The entity kind to which this index applies.
      */
     public readonly kind!: pulumi.Output<string>;
     /**
@@ -52,7 +52,7 @@ export class Index extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Required. An ordered sequence of property names and their index attributes.
+     * An ordered sequence of property names and their index attributes.
      */
     public readonly properties!: pulumi.Output<outputs.datastore.v1.GoogleDatastoreAdminV1IndexedPropertyResponse[]>;
     /**
@@ -71,8 +71,17 @@ export class Index extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.ancestor === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'ancestor'");
+            }
+            if ((!args || args.kind === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'kind'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.properties === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'properties'");
             }
             inputs["ancestor"] = args ? args.ancestor : undefined;
             inputs["kind"] = args ? args.kind : undefined;
@@ -100,16 +109,16 @@ export class Index extends pulumi.CustomResource {
  */
 export interface IndexArgs {
     /**
-     * Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+     * The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
      */
-    ancestor?: pulumi.Input<enums.datastore.v1.IndexAncestor>;
+    ancestor: pulumi.Input<enums.datastore.v1.IndexAncestor>;
     /**
-     * Required. The entity kind to which this index applies.
+     * The entity kind to which this index applies.
      */
-    kind?: pulumi.Input<string>;
+    kind: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
-     * Required. An ordered sequence of property names and their index attributes.
+     * An ordered sequence of property names and their index attributes.
      */
-    properties?: pulumi.Input<pulumi.Input<inputs.datastore.v1.GoogleDatastoreAdminV1IndexedPropertyArgs>[]>;
+    properties: pulumi.Input<pulumi.Input<inputs.datastore.v1.GoogleDatastoreAdminV1IndexedPropertyArgs>[]>;
 }

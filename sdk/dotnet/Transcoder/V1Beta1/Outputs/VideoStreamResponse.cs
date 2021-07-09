@@ -30,7 +30,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
         /// </summary>
         public readonly bool BPyramid;
         /// <summary>
-        /// Required. The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+        /// The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
         /// </summary>
         public readonly int BitrateBps;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
         /// </summary>
         public readonly string EntropyCoder;
         /// <summary>
-        /// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+        /// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
         /// </summary>
         public readonly double FrameRate;
         /// <summary>

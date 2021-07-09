@@ -16,7 +16,9 @@ __all__ = ['OccurrenceArgs', 'Occurrence']
 @pulumi.input_type
 class OccurrenceArgs:
     def __init__(__self__, *,
+                 note_name: pulumi.Input[str],
                  project: pulumi.Input[str],
+                 resource: pulumi.Input['ResourceArgs'],
                  attestation: Optional[pulumi.Input['DetailsArgs']] = None,
                  build: Optional[pulumi.Input['GrafeasV1beta1BuildDetailsArgs']] = None,
                  deployment: Optional[pulumi.Input['GrafeasV1beta1DeploymentDetailsArgs']] = None,
@@ -24,12 +26,12 @@ class OccurrenceArgs:
                  discovered: Optional[pulumi.Input['GrafeasV1beta1DiscoveryDetailsArgs']] = None,
                  installation: Optional[pulumi.Input['GrafeasV1beta1PackageDetailsArgs']] = None,
                  intoto: Optional[pulumi.Input['GrafeasV1beta1IntotoDetailsArgs']] = None,
-                 note_name: Optional[pulumi.Input[str]] = None,
                  remediation: Optional[pulumi.Input[str]] = None,
-                 resource: Optional[pulumi.Input['ResourceArgs']] = None,
                  vulnerability: Optional[pulumi.Input['GrafeasV1beta1VulnerabilityDetailsArgs']] = None):
         """
         The set of arguments for constructing a Occurrence resource.
+        :param pulumi.Input[str] note_name: Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
+        :param pulumi.Input['ResourceArgs'] resource: Immutable. The resource for which the occurrence applies.
         :param pulumi.Input['DetailsArgs'] attestation: Describes an attestation of an artifact.
         :param pulumi.Input['GrafeasV1beta1BuildDetailsArgs'] build: Describes a verifiable build.
         :param pulumi.Input['GrafeasV1beta1DeploymentDetailsArgs'] deployment: Describes the deployment of an artifact on a runtime.
@@ -37,12 +39,12 @@ class OccurrenceArgs:
         :param pulumi.Input['GrafeasV1beta1DiscoveryDetailsArgs'] discovered: Describes when a resource was discovered.
         :param pulumi.Input['GrafeasV1beta1PackageDetailsArgs'] installation: Describes the installation of a package on the linked resource.
         :param pulumi.Input['GrafeasV1beta1IntotoDetailsArgs'] intoto: Describes a specific in-toto link.
-        :param pulumi.Input[str] note_name: Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the note.
-        :param pulumi.Input['ResourceArgs'] resource: Required. Immutable. The resource for which the occurrence applies.
         :param pulumi.Input['GrafeasV1beta1VulnerabilityDetailsArgs'] vulnerability: Describes a security vulnerability.
         """
+        pulumi.set(__self__, "note_name", note_name)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "resource", resource)
         if attestation is not None:
             pulumi.set(__self__, "attestation", attestation)
         if build is not None:
@@ -57,14 +59,22 @@ class OccurrenceArgs:
             pulumi.set(__self__, "installation", installation)
         if intoto is not None:
             pulumi.set(__self__, "intoto", intoto)
-        if note_name is not None:
-            pulumi.set(__self__, "note_name", note_name)
         if remediation is not None:
             pulumi.set(__self__, "remediation", remediation)
-        if resource is not None:
-            pulumi.set(__self__, "resource", resource)
         if vulnerability is not None:
             pulumi.set(__self__, "vulnerability", vulnerability)
+
+    @property
+    @pulumi.getter(name="noteName")
+    def note_name(self) -> pulumi.Input[str]:
+        """
+        Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
+        """
+        return pulumi.get(self, "note_name")
+
+    @note_name.setter
+    def note_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "note_name", value)
 
     @property
     @pulumi.getter
@@ -74,6 +84,18 @@ class OccurrenceArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def resource(self) -> pulumi.Input['ResourceArgs']:
+        """
+        Immutable. The resource for which the occurrence applies.
+        """
+        return pulumi.get(self, "resource")
+
+    @resource.setter
+    def resource(self, value: pulumi.Input['ResourceArgs']):
+        pulumi.set(self, "resource", value)
 
     @property
     @pulumi.getter
@@ -160,18 +182,6 @@ class OccurrenceArgs:
         pulumi.set(self, "intoto", value)
 
     @property
-    @pulumi.getter(name="noteName")
-    def note_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
-        """
-        return pulumi.get(self, "note_name")
-
-    @note_name.setter
-    def note_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "note_name", value)
-
-    @property
     @pulumi.getter
     def remediation(self) -> Optional[pulumi.Input[str]]:
         """
@@ -182,18 +192,6 @@ class OccurrenceArgs:
     @remediation.setter
     def remediation(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "remediation", value)
-
-    @property
-    @pulumi.getter
-    def resource(self) -> Optional[pulumi.Input['ResourceArgs']]:
-        """
-        Required. Immutable. The resource for which the occurrence applies.
-        """
-        return pulumi.get(self, "resource")
-
-    @resource.setter
-    def resource(self, value: Optional[pulumi.Input['ResourceArgs']]):
-        pulumi.set(self, "resource", value)
 
     @property
     @pulumi.getter
@@ -238,9 +236,9 @@ class Occurrence(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GrafeasV1beta1DiscoveryDetailsArgs']] discovered: Describes when a resource was discovered.
         :param pulumi.Input[pulumi.InputType['GrafeasV1beta1PackageDetailsArgs']] installation: Describes the installation of a package on the linked resource.
         :param pulumi.Input[pulumi.InputType['GrafeasV1beta1IntotoDetailsArgs']] intoto: Describes a specific in-toto link.
-        :param pulumi.Input[str] note_name: Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
+        :param pulumi.Input[str] note_name: Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
         :param pulumi.Input[str] remediation: A description of actions that can be taken to remedy the note.
-        :param pulumi.Input[pulumi.InputType['ResourceArgs']] resource: Required. Immutable. The resource for which the occurrence applies.
+        :param pulumi.Input[pulumi.InputType['ResourceArgs']] resource: Immutable. The resource for which the occurrence applies.
         :param pulumi.Input[pulumi.InputType['GrafeasV1beta1VulnerabilityDetailsArgs']] vulnerability: Describes a security vulnerability.
         """
         ...
@@ -298,11 +296,15 @@ class Occurrence(pulumi.CustomResource):
             __props__.__dict__["discovered"] = discovered
             __props__.__dict__["installation"] = installation
             __props__.__dict__["intoto"] = intoto
+            if note_name is None and not opts.urn:
+                raise TypeError("Missing required property 'note_name'")
             __props__.__dict__["note_name"] = note_name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["remediation"] = remediation
+            if resource is None and not opts.urn:
+                raise TypeError("Missing required property 'resource'")
             __props__.__dict__["resource"] = resource
             __props__.__dict__["vulnerability"] = vulnerability
             __props__.__dict__["create_time"] = None
@@ -432,7 +434,7 @@ class Occurrence(pulumi.CustomResource):
     @pulumi.getter(name="noteName")
     def note_name(self) -> pulumi.Output[str]:
         """
-        Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
+        Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
         """
         return pulumi.get(self, "note_name")
 
@@ -448,7 +450,7 @@ class Occurrence(pulumi.CustomResource):
     @pulumi.getter
     def resource(self) -> pulumi.Output['outputs.ResourceResponse']:
         """
-        Required. Immutable. The resource for which the occurrence applies.
+        Immutable. The resource for which the occurrence applies.
         """
         return pulumi.get(self, "resource")
 

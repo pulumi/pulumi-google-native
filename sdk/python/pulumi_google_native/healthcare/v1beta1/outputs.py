@@ -506,7 +506,7 @@ class GoogleCloudHealthcareV1beta1ConsentPolicyResponse(dict):
                  resource_attributes: Sequence['outputs.AttributeResponse']):
         """
         Represents a user's consent in terms of the resources that can be accessed and under what conditions.
-        :param 'ExprResponse' authorization_rule: Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+        :param 'ExprResponse' authorization_rule: The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
         :param Sequence['AttributeResponse'] resource_attributes: The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
         """
         pulumi.set(__self__, "authorization_rule", authorization_rule)
@@ -516,7 +516,7 @@ class GoogleCloudHealthcareV1beta1ConsentPolicyResponse(dict):
     @pulumi.getter(name="authorizationRule")
     def authorization_rule(self) -> 'outputs.ExprResponse':
         """
-        Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+        The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
         """
         return pulumi.get(self, "authorization_rule")
 
@@ -1421,7 +1421,7 @@ class SignatureResponse(dict):
         :param 'ImageResponse' image: Optional. An image of the user's signature.
         :param Mapping[str, str] metadata: Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
         :param str signature_time: Optional. Timestamp of the signature.
-        :param str user_id: Required. User's UUID provided by the client.
+        :param str user_id: User's UUID provided by the client.
         """
         pulumi.set(__self__, "image", image)
         pulumi.set(__self__, "metadata", metadata)
@@ -1456,7 +1456,7 @@ class SignatureResponse(dict):
     @pulumi.getter(name="userId")
     def user_id(self) -> str:
         """
-        Required. User's UUID provided by the client.
+        User's UUID provided by the client.
         """
         return pulumi.get(self, "user_id")
 

@@ -73,11 +73,11 @@ export interface GetReportResult {
      */
     readonly limit: string;
     /**
-     * Required. This contains the list of metrics
+     * This contains the list of metrics
      */
     readonly metrics: outputs.apigee.v1.GoogleCloudApigeeV1CustomReportMetricResponse[];
     /**
-     * Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
+     * Unique identifier for the report T his is a legacy field used to encode custom report unique id
      */
     readonly name: string;
     /**

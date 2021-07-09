@@ -121,7 +121,7 @@ class GetDeveloperResult:
     @pulumi.getter
     def email(self) -> str:
         """
-        Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
+        Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
         """
         return pulumi.get(self, "email")
 
@@ -129,7 +129,7 @@ class GetDeveloperResult:
     @pulumi.getter(name="firstName")
     def first_name(self) -> str:
         """
-        Required. First name of the developer.
+        First name of the developer.
         """
         return pulumi.get(self, "first_name")
 
@@ -145,7 +145,7 @@ class GetDeveloperResult:
     @pulumi.getter(name="lastName")
     def last_name(self) -> str:
         """
-        Required. Last name of the developer.
+        Last name of the developer.
         """
         return pulumi.get(self, "last_name")
 
@@ -169,7 +169,7 @@ class GetDeveloperResult:
     @pulumi.getter(name="userName")
     def user_name(self) -> str:
         """
-        Required. User name of the developer. Not used by Apigee hybrid.
+        User name of the developer. Not used by Apigee hybrid.
         """
         return pulumi.get(self, "user_name")
 

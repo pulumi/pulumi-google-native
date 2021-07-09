@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Required. The name specified for the model when it was created. The model name must be unique within the project it is created in.
+        /// The name specified for the model when it was created. The model name must be unique within the project it is created in.
         /// </summary>
         public readonly string Name;
         /// <summary>

@@ -26,7 +26,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudApigeeV1TlsInfoCommonNameResponse CommonName;
         /// <summary>
-        /// Required. Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
+        /// Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>

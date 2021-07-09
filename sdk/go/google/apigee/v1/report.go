@@ -37,9 +37,9 @@ type Report struct {
 	LastViewedAt pulumi.StringOutput `pulumi:"lastViewedAt"`
 	// Legacy field: not used This field contains the limit for the result retrieved
 	Limit pulumi.StringOutput `pulumi:"limit"`
-	// Required. This contains the list of metrics
+	// This contains the list of metrics
 	Metrics GoogleCloudApigeeV1CustomReportMetricResponseArrayOutput `pulumi:"metrics"`
-	// Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
+	// Unique identifier for the report T his is a legacy field used to encode custom report unique id
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Legacy field: not used. This field contains the offset for the data
 	Offset pulumi.StringOutput `pulumi:"offset"`
@@ -68,6 +68,12 @@ func NewReport(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Metrics == nil {
+		return nil, errors.New("invalid value for required argument 'Metrics'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -115,9 +121,9 @@ type reportState struct {
 	LastViewedAt *string `pulumi:"lastViewedAt"`
 	// Legacy field: not used This field contains the limit for the result retrieved
 	Limit *string `pulumi:"limit"`
-	// Required. This contains the list of metrics
+	// This contains the list of metrics
 	Metrics []GoogleCloudApigeeV1CustomReportMetricResponse `pulumi:"metrics"`
-	// Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
+	// Unique identifier for the report T his is a legacy field used to encode custom report unique id
 	Name *string `pulumi:"name"`
 	// Legacy field: not used. This field contains the offset for the data
 	Offset *string `pulumi:"offset"`
@@ -162,9 +168,9 @@ type ReportState struct {
 	LastViewedAt pulumi.StringPtrInput
 	// Legacy field: not used This field contains the limit for the result retrieved
 	Limit pulumi.StringPtrInput
-	// Required. This contains the list of metrics
+	// This contains the list of metrics
 	Metrics GoogleCloudApigeeV1CustomReportMetricResponseArrayInput
-	// Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
+	// Unique identifier for the report T his is a legacy field used to encode custom report unique id
 	Name pulumi.StringPtrInput
 	// Legacy field: not used. This field contains the offset for the data
 	Offset pulumi.StringPtrInput
@@ -205,10 +211,10 @@ type reportArgs struct {
 	FromTime *string `pulumi:"fromTime"`
 	// Legacy field: not used This field contains the limit for the result retrieved
 	Limit *string `pulumi:"limit"`
-	// Required. This contains the list of metrics
+	// This contains the list of metrics
 	Metrics []GoogleCloudApigeeV1CustomReportMetric `pulumi:"metrics"`
-	// Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
-	Name *string `pulumi:"name"`
+	// Unique identifier for the report T his is a legacy field used to encode custom report unique id
+	Name string `pulumi:"name"`
 	// Legacy field: not used. This field contains the offset for the data
 	Offset         *string `pulumi:"offset"`
 	OrganizationId string  `pulumi:"organizationId"`
@@ -244,10 +250,10 @@ type ReportArgs struct {
 	FromTime pulumi.StringPtrInput
 	// Legacy field: not used This field contains the limit for the result retrieved
 	Limit pulumi.StringPtrInput
-	// Required. This contains the list of metrics
+	// This contains the list of metrics
 	Metrics GoogleCloudApigeeV1CustomReportMetricArrayInput
-	// Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
-	Name pulumi.StringPtrInput
+	// Unique identifier for the report T his is a legacy field used to encode custom report unique id
+	Name pulumi.StringInput
 	// Legacy field: not used. This field contains the offset for the data
 	Offset         pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput

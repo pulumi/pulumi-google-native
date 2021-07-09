@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     public sealed class UniformShardingArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Total number of shards. When any physical devices are selected, the number must be &gt;= 1 and &lt;= 50. When no physical devices are selected, the number must be &gt;= 1 and &lt;= 500.
+        /// Total number of shards. When any physical devices are selected, the number must be &gt;= 1 and &lt;= 50. When no physical devices are selected, the number must be &gt;= 1 and &lt;= 500.
         /// </summary>
-        [Input("numShards")]
-        public Input<int>? NumShards { get; set; }
+        [Input("numShards", required: true)]
+        public Input<int> NumShards { get; set; } = null!;
 
         public UniformShardingArgs()
         {

@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// </summary>
         public readonly string Etag;
         /// <summary>
-        /// Required. The user-specified id of the job.
+        /// The user-specified id of the job.
         /// </summary>
         public readonly string JobId;
         /// <summary>

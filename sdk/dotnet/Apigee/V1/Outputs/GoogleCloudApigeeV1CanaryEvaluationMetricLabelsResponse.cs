@@ -18,11 +18,11 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
         /// </summary>
         public readonly string Env;
         /// <summary>
-        /// Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
+        /// The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
         /// </summary>
         public readonly string InstanceId;
         /// <summary>
-        /// Required. The location associated with the metrics.
+        /// The location associated with the metrics.
         /// </summary>
         public readonly string Location;
 

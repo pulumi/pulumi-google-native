@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     public sealed class IosTestLoopArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The .ipa of the application to test.
+        /// The .ipa of the application to test.
         /// </summary>
-        [Input("appIpa")]
-        public Input<Inputs.FileReferenceArgs>? AppIpa { get; set; }
+        [Input("appIpa", required: true)]
+        public Input<Inputs.FileReferenceArgs> AppIpa { get; set; } = null!;
 
         [Input("scenarios")]
         private InputList<int>? _scenarios;

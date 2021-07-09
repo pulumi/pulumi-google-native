@@ -164,7 +164,7 @@ func (o AccessUrlsResponsePtrOutput) CrlAccessUrl() pulumi.StringPtrOutput {
 }
 
 type AllowedConfigList struct {
-	// Required. All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
+	// All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
 	AllowedConfigValues []ReusableConfigWrapper `pulumi:"allowedConfigValues"`
 }
 
@@ -180,7 +180,7 @@ type AllowedConfigListInput interface {
 }
 
 type AllowedConfigListArgs struct {
-	// Required. All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
+	// All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
 	AllowedConfigValues ReusableConfigWrapperArrayInput `pulumi:"allowedConfigValues"`
 }
 
@@ -261,7 +261,7 @@ func (o AllowedConfigListOutput) ToAllowedConfigListPtrOutputWithContext(ctx con
 	}).(AllowedConfigListPtrOutput)
 }
 
-// Required. All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
+// All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
 func (o AllowedConfigListOutput) AllowedConfigValues() ReusableConfigWrapperArrayOutput {
 	return o.ApplyT(func(v AllowedConfigList) []ReusableConfigWrapper { return v.AllowedConfigValues }).(ReusableConfigWrapperArrayOutput)
 }
@@ -284,7 +284,7 @@ func (o AllowedConfigListPtrOutput) Elem() AllowedConfigListOutput {
 	return o.ApplyT(func(v *AllowedConfigList) AllowedConfigList { return *v }).(AllowedConfigListOutput)
 }
 
-// Required. All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
+// All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
 func (o AllowedConfigListPtrOutput) AllowedConfigValues() ReusableConfigWrapperArrayOutput {
 	return o.ApplyT(func(v *AllowedConfigList) []ReusableConfigWrapper {
 		if v == nil {
@@ -295,7 +295,7 @@ func (o AllowedConfigListPtrOutput) AllowedConfigValues() ReusableConfigWrapperA
 }
 
 type AllowedConfigListResponse struct {
-	// Required. All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
+	// All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
 	AllowedConfigValues []ReusableConfigWrapperResponse `pulumi:"allowedConfigValues"`
 }
 
@@ -311,7 +311,7 @@ type AllowedConfigListResponseInput interface {
 }
 
 type AllowedConfigListResponseArgs struct {
-	// Required. All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
+	// All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
 	AllowedConfigValues ReusableConfigWrapperResponseArrayInput `pulumi:"allowedConfigValues"`
 }
 
@@ -392,7 +392,7 @@ func (o AllowedConfigListResponseOutput) ToAllowedConfigListResponsePtrOutputWit
 	}).(AllowedConfigListResponsePtrOutput)
 }
 
-// Required. All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
+// All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
 func (o AllowedConfigListResponseOutput) AllowedConfigValues() ReusableConfigWrapperResponseArrayOutput {
 	return o.ApplyT(func(v AllowedConfigListResponse) []ReusableConfigWrapperResponse { return v.AllowedConfigValues }).(ReusableConfigWrapperResponseArrayOutput)
 }
@@ -415,7 +415,7 @@ func (o AllowedConfigListResponsePtrOutput) Elem() AllowedConfigListResponseOutp
 	return o.ApplyT(func(v *AllowedConfigListResponse) AllowedConfigListResponse { return *v }).(AllowedConfigListResponseOutput)
 }
 
-// Required. All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
+// All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
 func (o AllowedConfigListResponsePtrOutput) AllowedConfigValues() ReusableConfigWrapperResponseArrayOutput {
 	return o.ApplyT(func(v *AllowedConfigListResponse) []ReusableConfigWrapperResponse {
 		if v == nil {
@@ -2365,10 +2365,10 @@ func (o CertificateAuthorityPolicyResponsePtrOutput) OverwriteConfigValues() Reu
 type CertificateConfig struct {
 	// Optional. The public key that corresponds to this config. This is, for example, used when issuing Certificates, but not when creating a self-signed CertificateAuthority or CertificateAuthority CSR.
 	PublicKey *PublicKey `pulumi:"publicKey"`
-	// Required. Describes how some of the technical fields in a certificate should be populated.
-	ReusableConfig *ReusableConfigWrapper `pulumi:"reusableConfig"`
-	// Required. Specifies some of the values in a certificate that are related to the subject.
-	SubjectConfig *SubjectConfig `pulumi:"subjectConfig"`
+	// Describes how some of the technical fields in a certificate should be populated.
+	ReusableConfig ReusableConfigWrapper `pulumi:"reusableConfig"`
+	// Specifies some of the values in a certificate that are related to the subject.
+	SubjectConfig SubjectConfig `pulumi:"subjectConfig"`
 }
 
 // CertificateConfigInput is an input type that accepts CertificateConfigArgs and CertificateConfigOutput values.
@@ -2386,10 +2386,10 @@ type CertificateConfigInput interface {
 type CertificateConfigArgs struct {
 	// Optional. The public key that corresponds to this config. This is, for example, used when issuing Certificates, but not when creating a self-signed CertificateAuthority or CertificateAuthority CSR.
 	PublicKey PublicKeyPtrInput `pulumi:"publicKey"`
-	// Required. Describes how some of the technical fields in a certificate should be populated.
-	ReusableConfig ReusableConfigWrapperPtrInput `pulumi:"reusableConfig"`
-	// Required. Specifies some of the values in a certificate that are related to the subject.
-	SubjectConfig SubjectConfigPtrInput `pulumi:"subjectConfig"`
+	// Describes how some of the technical fields in a certificate should be populated.
+	ReusableConfig ReusableConfigWrapperInput `pulumi:"reusableConfig"`
+	// Specifies some of the values in a certificate that are related to the subject.
+	SubjectConfig SubjectConfigInput `pulumi:"subjectConfig"`
 }
 
 func (CertificateConfigArgs) ElementType() reflect.Type {
@@ -2475,14 +2475,14 @@ func (o CertificateConfigOutput) PublicKey() PublicKeyPtrOutput {
 	return o.ApplyT(func(v CertificateConfig) *PublicKey { return v.PublicKey }).(PublicKeyPtrOutput)
 }
 
-// Required. Describes how some of the technical fields in a certificate should be populated.
-func (o CertificateConfigOutput) ReusableConfig() ReusableConfigWrapperPtrOutput {
-	return o.ApplyT(func(v CertificateConfig) *ReusableConfigWrapper { return v.ReusableConfig }).(ReusableConfigWrapperPtrOutput)
+// Describes how some of the technical fields in a certificate should be populated.
+func (o CertificateConfigOutput) ReusableConfig() ReusableConfigWrapperOutput {
+	return o.ApplyT(func(v CertificateConfig) ReusableConfigWrapper { return v.ReusableConfig }).(ReusableConfigWrapperOutput)
 }
 
-// Required. Specifies some of the values in a certificate that are related to the subject.
-func (o CertificateConfigOutput) SubjectConfig() SubjectConfigPtrOutput {
-	return o.ApplyT(func(v CertificateConfig) *SubjectConfig { return v.SubjectConfig }).(SubjectConfigPtrOutput)
+// Specifies some of the values in a certificate that are related to the subject.
+func (o CertificateConfigOutput) SubjectConfig() SubjectConfigOutput {
+	return o.ApplyT(func(v CertificateConfig) SubjectConfig { return v.SubjectConfig }).(SubjectConfigOutput)
 }
 
 type CertificateConfigPtrOutput struct{ *pulumi.OutputState }
@@ -2513,23 +2513,23 @@ func (o CertificateConfigPtrOutput) PublicKey() PublicKeyPtrOutput {
 	}).(PublicKeyPtrOutput)
 }
 
-// Required. Describes how some of the technical fields in a certificate should be populated.
+// Describes how some of the technical fields in a certificate should be populated.
 func (o CertificateConfigPtrOutput) ReusableConfig() ReusableConfigWrapperPtrOutput {
 	return o.ApplyT(func(v *CertificateConfig) *ReusableConfigWrapper {
 		if v == nil {
 			return nil
 		}
-		return v.ReusableConfig
+		return &v.ReusableConfig
 	}).(ReusableConfigWrapperPtrOutput)
 }
 
-// Required. Specifies some of the values in a certificate that are related to the subject.
+// Specifies some of the values in a certificate that are related to the subject.
 func (o CertificateConfigPtrOutput) SubjectConfig() SubjectConfigPtrOutput {
 	return o.ApplyT(func(v *CertificateConfig) *SubjectConfig {
 		if v == nil {
 			return nil
 		}
-		return v.SubjectConfig
+		return &v.SubjectConfig
 	}).(SubjectConfigPtrOutput)
 }
 
@@ -2537,9 +2537,9 @@ func (o CertificateConfigPtrOutput) SubjectConfig() SubjectConfigPtrOutput {
 type CertificateConfigResponse struct {
 	// Optional. The public key that corresponds to this config. This is, for example, used when issuing Certificates, but not when creating a self-signed CertificateAuthority or CertificateAuthority CSR.
 	PublicKey PublicKeyResponse `pulumi:"publicKey"`
-	// Required. Describes how some of the technical fields in a certificate should be populated.
+	// Describes how some of the technical fields in a certificate should be populated.
 	ReusableConfig ReusableConfigWrapperResponse `pulumi:"reusableConfig"`
-	// Required. Specifies some of the values in a certificate that are related to the subject.
+	// Specifies some of the values in a certificate that are related to the subject.
 	SubjectConfig SubjectConfigResponse `pulumi:"subjectConfig"`
 }
 
@@ -2558,9 +2558,9 @@ type CertificateConfigResponseInput interface {
 type CertificateConfigResponseArgs struct {
 	// Optional. The public key that corresponds to this config. This is, for example, used when issuing Certificates, but not when creating a self-signed CertificateAuthority or CertificateAuthority CSR.
 	PublicKey PublicKeyResponseInput `pulumi:"publicKey"`
-	// Required. Describes how some of the technical fields in a certificate should be populated.
+	// Describes how some of the technical fields in a certificate should be populated.
 	ReusableConfig ReusableConfigWrapperResponseInput `pulumi:"reusableConfig"`
-	// Required. Specifies some of the values in a certificate that are related to the subject.
+	// Specifies some of the values in a certificate that are related to the subject.
 	SubjectConfig SubjectConfigResponseInput `pulumi:"subjectConfig"`
 }
 
@@ -2647,12 +2647,12 @@ func (o CertificateConfigResponseOutput) PublicKey() PublicKeyResponseOutput {
 	return o.ApplyT(func(v CertificateConfigResponse) PublicKeyResponse { return v.PublicKey }).(PublicKeyResponseOutput)
 }
 
-// Required. Describes how some of the technical fields in a certificate should be populated.
+// Describes how some of the technical fields in a certificate should be populated.
 func (o CertificateConfigResponseOutput) ReusableConfig() ReusableConfigWrapperResponseOutput {
 	return o.ApplyT(func(v CertificateConfigResponse) ReusableConfigWrapperResponse { return v.ReusableConfig }).(ReusableConfigWrapperResponseOutput)
 }
 
-// Required. Specifies some of the values in a certificate that are related to the subject.
+// Specifies some of the values in a certificate that are related to the subject.
 func (o CertificateConfigResponseOutput) SubjectConfig() SubjectConfigResponseOutput {
 	return o.ApplyT(func(v CertificateConfigResponse) SubjectConfigResponse { return v.SubjectConfig }).(SubjectConfigResponseOutput)
 }
@@ -2685,7 +2685,7 @@ func (o CertificateConfigResponsePtrOutput) PublicKey() PublicKeyResponsePtrOutp
 	}).(PublicKeyResponsePtrOutput)
 }
 
-// Required. Describes how some of the technical fields in a certificate should be populated.
+// Describes how some of the technical fields in a certificate should be populated.
 func (o CertificateConfigResponsePtrOutput) ReusableConfig() ReusableConfigWrapperResponsePtrOutput {
 	return o.ApplyT(func(v *CertificateConfigResponse) *ReusableConfigWrapperResponse {
 		if v == nil {
@@ -2695,7 +2695,7 @@ func (o CertificateConfigResponsePtrOutput) ReusableConfig() ReusableConfigWrapp
 	}).(ReusableConfigWrapperResponsePtrOutput)
 }
 
-// Required. Specifies some of the values in a certificate that are related to the subject.
+// Specifies some of the values in a certificate that are related to the subject.
 func (o CertificateConfigResponsePtrOutput) SubjectConfig() SubjectConfigResponsePtrOutput {
 	return o.ApplyT(func(v *CertificateConfigResponse) *SubjectConfigResponse {
 		if v == nil {
@@ -3884,10 +3884,10 @@ func (o ExtendedKeyUsageOptionsResponsePtrOutput) TimeStamping() pulumi.BoolPtrO
 
 // IssuanceModes specifies the allowed ways in which Certificates may be requested from this CertificateAuthority.
 type IssuanceModes struct {
-	// Required. When true, allows callers to create Certificates by specifying a CertificateConfig.
-	AllowConfigBasedIssuance *bool `pulumi:"allowConfigBasedIssuance"`
-	// Required. When true, allows callers to create Certificates by specifying a CSR.
-	AllowCsrBasedIssuance *bool `pulumi:"allowCsrBasedIssuance"`
+	// When true, allows callers to create Certificates by specifying a CertificateConfig.
+	AllowConfigBasedIssuance bool `pulumi:"allowConfigBasedIssuance"`
+	// When true, allows callers to create Certificates by specifying a CSR.
+	AllowCsrBasedIssuance bool `pulumi:"allowCsrBasedIssuance"`
 }
 
 // IssuanceModesInput is an input type that accepts IssuanceModesArgs and IssuanceModesOutput values.
@@ -3903,10 +3903,10 @@ type IssuanceModesInput interface {
 
 // IssuanceModes specifies the allowed ways in which Certificates may be requested from this CertificateAuthority.
 type IssuanceModesArgs struct {
-	// Required. When true, allows callers to create Certificates by specifying a CertificateConfig.
-	AllowConfigBasedIssuance pulumi.BoolPtrInput `pulumi:"allowConfigBasedIssuance"`
-	// Required. When true, allows callers to create Certificates by specifying a CSR.
-	AllowCsrBasedIssuance pulumi.BoolPtrInput `pulumi:"allowCsrBasedIssuance"`
+	// When true, allows callers to create Certificates by specifying a CertificateConfig.
+	AllowConfigBasedIssuance pulumi.BoolInput `pulumi:"allowConfigBasedIssuance"`
+	// When true, allows callers to create Certificates by specifying a CSR.
+	AllowCsrBasedIssuance pulumi.BoolInput `pulumi:"allowCsrBasedIssuance"`
 }
 
 func (IssuanceModesArgs) ElementType() reflect.Type {
@@ -3987,14 +3987,14 @@ func (o IssuanceModesOutput) ToIssuanceModesPtrOutputWithContext(ctx context.Con
 	}).(IssuanceModesPtrOutput)
 }
 
-// Required. When true, allows callers to create Certificates by specifying a CertificateConfig.
-func (o IssuanceModesOutput) AllowConfigBasedIssuance() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v IssuanceModes) *bool { return v.AllowConfigBasedIssuance }).(pulumi.BoolPtrOutput)
+// When true, allows callers to create Certificates by specifying a CertificateConfig.
+func (o IssuanceModesOutput) AllowConfigBasedIssuance() pulumi.BoolOutput {
+	return o.ApplyT(func(v IssuanceModes) bool { return v.AllowConfigBasedIssuance }).(pulumi.BoolOutput)
 }
 
-// Required. When true, allows callers to create Certificates by specifying a CSR.
-func (o IssuanceModesOutput) AllowCsrBasedIssuance() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v IssuanceModes) *bool { return v.AllowCsrBasedIssuance }).(pulumi.BoolPtrOutput)
+// When true, allows callers to create Certificates by specifying a CSR.
+func (o IssuanceModesOutput) AllowCsrBasedIssuance() pulumi.BoolOutput {
+	return o.ApplyT(func(v IssuanceModes) bool { return v.AllowCsrBasedIssuance }).(pulumi.BoolOutput)
 }
 
 type IssuanceModesPtrOutput struct{ *pulumi.OutputState }
@@ -4015,31 +4015,31 @@ func (o IssuanceModesPtrOutput) Elem() IssuanceModesOutput {
 	return o.ApplyT(func(v *IssuanceModes) IssuanceModes { return *v }).(IssuanceModesOutput)
 }
 
-// Required. When true, allows callers to create Certificates by specifying a CertificateConfig.
+// When true, allows callers to create Certificates by specifying a CertificateConfig.
 func (o IssuanceModesPtrOutput) AllowConfigBasedIssuance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IssuanceModes) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.AllowConfigBasedIssuance
+		return &v.AllowConfigBasedIssuance
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. When true, allows callers to create Certificates by specifying a CSR.
+// When true, allows callers to create Certificates by specifying a CSR.
 func (o IssuanceModesPtrOutput) AllowCsrBasedIssuance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IssuanceModes) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.AllowCsrBasedIssuance
+		return &v.AllowCsrBasedIssuance
 	}).(pulumi.BoolPtrOutput)
 }
 
 // IssuanceModes specifies the allowed ways in which Certificates may be requested from this CertificateAuthority.
 type IssuanceModesResponse struct {
-	// Required. When true, allows callers to create Certificates by specifying a CertificateConfig.
+	// When true, allows callers to create Certificates by specifying a CertificateConfig.
 	AllowConfigBasedIssuance bool `pulumi:"allowConfigBasedIssuance"`
-	// Required. When true, allows callers to create Certificates by specifying a CSR.
+	// When true, allows callers to create Certificates by specifying a CSR.
 	AllowCsrBasedIssuance bool `pulumi:"allowCsrBasedIssuance"`
 }
 
@@ -4056,9 +4056,9 @@ type IssuanceModesResponseInput interface {
 
 // IssuanceModes specifies the allowed ways in which Certificates may be requested from this CertificateAuthority.
 type IssuanceModesResponseArgs struct {
-	// Required. When true, allows callers to create Certificates by specifying a CertificateConfig.
+	// When true, allows callers to create Certificates by specifying a CertificateConfig.
 	AllowConfigBasedIssuance pulumi.BoolInput `pulumi:"allowConfigBasedIssuance"`
-	// Required. When true, allows callers to create Certificates by specifying a CSR.
+	// When true, allows callers to create Certificates by specifying a CSR.
 	AllowCsrBasedIssuance pulumi.BoolInput `pulumi:"allowCsrBasedIssuance"`
 }
 
@@ -4140,12 +4140,12 @@ func (o IssuanceModesResponseOutput) ToIssuanceModesResponsePtrOutputWithContext
 	}).(IssuanceModesResponsePtrOutput)
 }
 
-// Required. When true, allows callers to create Certificates by specifying a CertificateConfig.
+// When true, allows callers to create Certificates by specifying a CertificateConfig.
 func (o IssuanceModesResponseOutput) AllowConfigBasedIssuance() pulumi.BoolOutput {
 	return o.ApplyT(func(v IssuanceModesResponse) bool { return v.AllowConfigBasedIssuance }).(pulumi.BoolOutput)
 }
 
-// Required. When true, allows callers to create Certificates by specifying a CSR.
+// When true, allows callers to create Certificates by specifying a CSR.
 func (o IssuanceModesResponseOutput) AllowCsrBasedIssuance() pulumi.BoolOutput {
 	return o.ApplyT(func(v IssuanceModesResponse) bool { return v.AllowCsrBasedIssuance }).(pulumi.BoolOutput)
 }
@@ -4168,7 +4168,7 @@ func (o IssuanceModesResponsePtrOutput) Elem() IssuanceModesResponseOutput {
 	return o.ApplyT(func(v *IssuanceModesResponse) IssuanceModesResponse { return *v }).(IssuanceModesResponseOutput)
 }
 
-// Required. When true, allows callers to create Certificates by specifying a CertificateConfig.
+// When true, allows callers to create Certificates by specifying a CertificateConfig.
 func (o IssuanceModesResponsePtrOutput) AllowConfigBasedIssuance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IssuanceModesResponse) *bool {
 		if v == nil {
@@ -4178,7 +4178,7 @@ func (o IssuanceModesResponsePtrOutput) AllowConfigBasedIssuance() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. When true, allows callers to create Certificates by specifying a CSR.
+// When true, allows callers to create Certificates by specifying a CSR.
 func (o IssuanceModesResponsePtrOutput) AllowCsrBasedIssuance() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IssuanceModesResponse) *bool {
 		if v == nil {
@@ -4190,10 +4190,10 @@ func (o IssuanceModesResponsePtrOutput) AllowCsrBasedIssuance() pulumi.BoolPtrOu
 
 // Options that affect all certificates issued by a CertificateAuthority.
 type IssuingOptions struct {
-	// Required. When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
-	IncludeCaCertUrl *bool `pulumi:"includeCaCertUrl"`
-	// Required. When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
-	IncludeCrlAccessUrl *bool `pulumi:"includeCrlAccessUrl"`
+	// When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
+	IncludeCaCertUrl bool `pulumi:"includeCaCertUrl"`
+	// When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
+	IncludeCrlAccessUrl bool `pulumi:"includeCrlAccessUrl"`
 }
 
 // IssuingOptionsInput is an input type that accepts IssuingOptionsArgs and IssuingOptionsOutput values.
@@ -4209,10 +4209,10 @@ type IssuingOptionsInput interface {
 
 // Options that affect all certificates issued by a CertificateAuthority.
 type IssuingOptionsArgs struct {
-	// Required. When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
-	IncludeCaCertUrl pulumi.BoolPtrInput `pulumi:"includeCaCertUrl"`
-	// Required. When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
-	IncludeCrlAccessUrl pulumi.BoolPtrInput `pulumi:"includeCrlAccessUrl"`
+	// When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
+	IncludeCaCertUrl pulumi.BoolInput `pulumi:"includeCaCertUrl"`
+	// When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
+	IncludeCrlAccessUrl pulumi.BoolInput `pulumi:"includeCrlAccessUrl"`
 }
 
 func (IssuingOptionsArgs) ElementType() reflect.Type {
@@ -4293,14 +4293,14 @@ func (o IssuingOptionsOutput) ToIssuingOptionsPtrOutputWithContext(ctx context.C
 	}).(IssuingOptionsPtrOutput)
 }
 
-// Required. When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
-func (o IssuingOptionsOutput) IncludeCaCertUrl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v IssuingOptions) *bool { return v.IncludeCaCertUrl }).(pulumi.BoolPtrOutput)
+// When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
+func (o IssuingOptionsOutput) IncludeCaCertUrl() pulumi.BoolOutput {
+	return o.ApplyT(func(v IssuingOptions) bool { return v.IncludeCaCertUrl }).(pulumi.BoolOutput)
 }
 
-// Required. When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
-func (o IssuingOptionsOutput) IncludeCrlAccessUrl() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v IssuingOptions) *bool { return v.IncludeCrlAccessUrl }).(pulumi.BoolPtrOutput)
+// When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
+func (o IssuingOptionsOutput) IncludeCrlAccessUrl() pulumi.BoolOutput {
+	return o.ApplyT(func(v IssuingOptions) bool { return v.IncludeCrlAccessUrl }).(pulumi.BoolOutput)
 }
 
 type IssuingOptionsPtrOutput struct{ *pulumi.OutputState }
@@ -4321,31 +4321,31 @@ func (o IssuingOptionsPtrOutput) Elem() IssuingOptionsOutput {
 	return o.ApplyT(func(v *IssuingOptions) IssuingOptions { return *v }).(IssuingOptionsOutput)
 }
 
-// Required. When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
+// When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
 func (o IssuingOptionsPtrOutput) IncludeCaCertUrl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IssuingOptions) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.IncludeCaCertUrl
+		return &v.IncludeCaCertUrl
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
+// When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
 func (o IssuingOptionsPtrOutput) IncludeCrlAccessUrl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IssuingOptions) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.IncludeCrlAccessUrl
+		return &v.IncludeCrlAccessUrl
 	}).(pulumi.BoolPtrOutput)
 }
 
 // Options that affect all certificates issued by a CertificateAuthority.
 type IssuingOptionsResponse struct {
-	// Required. When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
+	// When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
 	IncludeCaCertUrl bool `pulumi:"includeCaCertUrl"`
-	// Required. When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
+	// When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
 	IncludeCrlAccessUrl bool `pulumi:"includeCrlAccessUrl"`
 }
 
@@ -4362,9 +4362,9 @@ type IssuingOptionsResponseInput interface {
 
 // Options that affect all certificates issued by a CertificateAuthority.
 type IssuingOptionsResponseArgs struct {
-	// Required. When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
+	// When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
 	IncludeCaCertUrl pulumi.BoolInput `pulumi:"includeCaCertUrl"`
-	// Required. When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
+	// When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
 	IncludeCrlAccessUrl pulumi.BoolInput `pulumi:"includeCrlAccessUrl"`
 }
 
@@ -4446,12 +4446,12 @@ func (o IssuingOptionsResponseOutput) ToIssuingOptionsResponsePtrOutputWithConte
 	}).(IssuingOptionsResponsePtrOutput)
 }
 
-// Required. When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
+// When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
 func (o IssuingOptionsResponseOutput) IncludeCaCertUrl() pulumi.BoolOutput {
 	return o.ApplyT(func(v IssuingOptionsResponse) bool { return v.IncludeCaCertUrl }).(pulumi.BoolOutput)
 }
 
-// Required. When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
+// When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
 func (o IssuingOptionsResponseOutput) IncludeCrlAccessUrl() pulumi.BoolOutput {
 	return o.ApplyT(func(v IssuingOptionsResponse) bool { return v.IncludeCrlAccessUrl }).(pulumi.BoolOutput)
 }
@@ -4474,7 +4474,7 @@ func (o IssuingOptionsResponsePtrOutput) Elem() IssuingOptionsResponseOutput {
 	return o.ApplyT(func(v *IssuingOptionsResponse) IssuingOptionsResponse { return *v }).(IssuingOptionsResponseOutput)
 }
 
-// Required. When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
+// When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
 func (o IssuingOptionsResponsePtrOutput) IncludeCaCertUrl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IssuingOptionsResponse) *bool {
 		if v == nil {
@@ -4484,7 +4484,7 @@ func (o IssuingOptionsResponsePtrOutput) IncludeCaCertUrl() pulumi.BoolPtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
+// When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
 func (o IssuingOptionsResponsePtrOutput) IncludeCrlAccessUrl() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *IssuingOptionsResponse) *bool {
 		if v == nil {
@@ -5546,10 +5546,10 @@ func (o KeyUsageResponsePtrOutput) UnknownExtendedKeyUsages() ObjectIdResponseAr
 
 // A Cloud KMS key configuration that a CertificateAuthority will use.
 type KeyVersionSpec struct {
-	// Required. The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
-	Algorithm *string `pulumi:"algorithm"`
-	// Required. The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
-	CloudKmsKeyVersion *string `pulumi:"cloudKmsKeyVersion"`
+	// The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
+	Algorithm string `pulumi:"algorithm"`
+	// The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
+	CloudKmsKeyVersion string `pulumi:"cloudKmsKeyVersion"`
 }
 
 // KeyVersionSpecInput is an input type that accepts KeyVersionSpecArgs and KeyVersionSpecOutput values.
@@ -5565,10 +5565,10 @@ type KeyVersionSpecInput interface {
 
 // A Cloud KMS key configuration that a CertificateAuthority will use.
 type KeyVersionSpecArgs struct {
-	// Required. The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
-	Algorithm *KeyVersionSpecAlgorithm `pulumi:"algorithm"`
-	// Required. The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
-	CloudKmsKeyVersion pulumi.StringPtrInput `pulumi:"cloudKmsKeyVersion"`
+	// The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
+	Algorithm KeyVersionSpecAlgorithm `pulumi:"algorithm"`
+	// The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
+	CloudKmsKeyVersion pulumi.StringInput `pulumi:"cloudKmsKeyVersion"`
 }
 
 func (KeyVersionSpecArgs) ElementType() reflect.Type {
@@ -5649,14 +5649,14 @@ func (o KeyVersionSpecOutput) ToKeyVersionSpecPtrOutputWithContext(ctx context.C
 	}).(KeyVersionSpecPtrOutput)
 }
 
-// Required. The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
-func (o KeyVersionSpecOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KeyVersionSpec) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
+// The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
+func (o KeyVersionSpecOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVersionSpec) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
-// Required. The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
-func (o KeyVersionSpecOutput) CloudKmsKeyVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KeyVersionSpec) *string { return v.CloudKmsKeyVersion }).(pulumi.StringPtrOutput)
+// The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
+func (o KeyVersionSpecOutput) CloudKmsKeyVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v KeyVersionSpec) string { return v.CloudKmsKeyVersion }).(pulumi.StringOutput)
 }
 
 type KeyVersionSpecPtrOutput struct{ *pulumi.OutputState }
@@ -5677,31 +5677,31 @@ func (o KeyVersionSpecPtrOutput) Elem() KeyVersionSpecOutput {
 	return o.ApplyT(func(v *KeyVersionSpec) KeyVersionSpec { return *v }).(KeyVersionSpecOutput)
 }
 
-// Required. The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
+// The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
 func (o KeyVersionSpecPtrOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeyVersionSpec) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Algorithm
+		return &v.Algorithm
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
+// The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
 func (o KeyVersionSpecPtrOutput) CloudKmsKeyVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeyVersionSpec) *string {
 		if v == nil {
 			return nil
 		}
-		return v.CloudKmsKeyVersion
+		return &v.CloudKmsKeyVersion
 	}).(pulumi.StringPtrOutput)
 }
 
 // A Cloud KMS key configuration that a CertificateAuthority will use.
 type KeyVersionSpecResponse struct {
-	// Required. The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
+	// The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
 	Algorithm string `pulumi:"algorithm"`
-	// Required. The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
+	// The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
 	CloudKmsKeyVersion string `pulumi:"cloudKmsKeyVersion"`
 }
 
@@ -5718,9 +5718,9 @@ type KeyVersionSpecResponseInput interface {
 
 // A Cloud KMS key configuration that a CertificateAuthority will use.
 type KeyVersionSpecResponseArgs struct {
-	// Required. The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
+	// The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
 	Algorithm pulumi.StringInput `pulumi:"algorithm"`
-	// Required. The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
+	// The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
 	CloudKmsKeyVersion pulumi.StringInput `pulumi:"cloudKmsKeyVersion"`
 }
 
@@ -5802,12 +5802,12 @@ func (o KeyVersionSpecResponseOutput) ToKeyVersionSpecResponsePtrOutputWithConte
 	}).(KeyVersionSpecResponsePtrOutput)
 }
 
-// Required. The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
+// The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
 func (o KeyVersionSpecResponseOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVersionSpecResponse) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
-// Required. The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
+// The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
 func (o KeyVersionSpecResponseOutput) CloudKmsKeyVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v KeyVersionSpecResponse) string { return v.CloudKmsKeyVersion }).(pulumi.StringOutput)
 }
@@ -5830,7 +5830,7 @@ func (o KeyVersionSpecResponsePtrOutput) Elem() KeyVersionSpecResponseOutput {
 	return o.ApplyT(func(v *KeyVersionSpecResponse) KeyVersionSpecResponse { return *v }).(KeyVersionSpecResponseOutput)
 }
 
-// Required. The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
+// The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
 func (o KeyVersionSpecResponsePtrOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeyVersionSpecResponse) *string {
 		if v == nil {
@@ -5840,7 +5840,7 @@ func (o KeyVersionSpecResponsePtrOutput) Algorithm() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
+// The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
 func (o KeyVersionSpecResponsePtrOutput) CloudKmsKeyVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KeyVersionSpecResponse) *string {
 		if v == nil {
@@ -5852,7 +5852,7 @@ func (o KeyVersionSpecResponsePtrOutput) CloudKmsKeyVersion() pulumi.StringPtrOu
 
 // An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 type ObjectId struct {
-	// Required. The parts of an OID path. The most significant parts of the path come first.
+	// The parts of an OID path. The most significant parts of the path come first.
 	ObjectIdPath []int `pulumi:"objectIdPath"`
 }
 
@@ -5869,7 +5869,7 @@ type ObjectIdInput interface {
 
 // An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 type ObjectIdArgs struct {
-	// Required. The parts of an OID path. The most significant parts of the path come first.
+	// The parts of an OID path. The most significant parts of the path come first.
 	ObjectIdPath pulumi.IntArrayInput `pulumi:"objectIdPath"`
 }
 
@@ -5883,47 +5883,6 @@ func (i ObjectIdArgs) ToObjectIdOutput() ObjectIdOutput {
 
 func (i ObjectIdArgs) ToObjectIdOutputWithContext(ctx context.Context) ObjectIdOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectIdOutput)
-}
-
-func (i ObjectIdArgs) ToObjectIdPtrOutput() ObjectIdPtrOutput {
-	return i.ToObjectIdPtrOutputWithContext(context.Background())
-}
-
-func (i ObjectIdArgs) ToObjectIdPtrOutputWithContext(ctx context.Context) ObjectIdPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectIdOutput).ToObjectIdPtrOutputWithContext(ctx)
-}
-
-// ObjectIdPtrInput is an input type that accepts ObjectIdArgs, ObjectIdPtr and ObjectIdPtrOutput values.
-// You can construct a concrete instance of `ObjectIdPtrInput` via:
-//
-//          ObjectIdArgs{...}
-//
-//  or:
-//
-//          nil
-type ObjectIdPtrInput interface {
-	pulumi.Input
-
-	ToObjectIdPtrOutput() ObjectIdPtrOutput
-	ToObjectIdPtrOutputWithContext(context.Context) ObjectIdPtrOutput
-}
-
-type objectIdPtrType ObjectIdArgs
-
-func ObjectIdPtr(v *ObjectIdArgs) ObjectIdPtrInput {
-	return (*objectIdPtrType)(v)
-}
-
-func (*objectIdPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectId)(nil)).Elem()
-}
-
-func (i *objectIdPtrType) ToObjectIdPtrOutput() ObjectIdPtrOutput {
-	return i.ToObjectIdPtrOutputWithContext(context.Background())
-}
-
-func (i *objectIdPtrType) ToObjectIdPtrOutputWithContext(ctx context.Context) ObjectIdPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectIdPtrOutput)
 }
 
 // ObjectIdArrayInput is an input type that accepts ObjectIdArray and ObjectIdArrayOutput values.
@@ -5966,47 +5925,9 @@ func (o ObjectIdOutput) ToObjectIdOutputWithContext(ctx context.Context) ObjectI
 	return o
 }
 
-func (o ObjectIdOutput) ToObjectIdPtrOutput() ObjectIdPtrOutput {
-	return o.ToObjectIdPtrOutputWithContext(context.Background())
-}
-
-func (o ObjectIdOutput) ToObjectIdPtrOutputWithContext(ctx context.Context) ObjectIdPtrOutput {
-	return o.ApplyT(func(v ObjectId) *ObjectId {
-		return &v
-	}).(ObjectIdPtrOutput)
-}
-
-// Required. The parts of an OID path. The most significant parts of the path come first.
+// The parts of an OID path. The most significant parts of the path come first.
 func (o ObjectIdOutput) ObjectIdPath() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v ObjectId) []int { return v.ObjectIdPath }).(pulumi.IntArrayOutput)
-}
-
-type ObjectIdPtrOutput struct{ *pulumi.OutputState }
-
-func (ObjectIdPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectId)(nil)).Elem()
-}
-
-func (o ObjectIdPtrOutput) ToObjectIdPtrOutput() ObjectIdPtrOutput {
-	return o
-}
-
-func (o ObjectIdPtrOutput) ToObjectIdPtrOutputWithContext(ctx context.Context) ObjectIdPtrOutput {
-	return o
-}
-
-func (o ObjectIdPtrOutput) Elem() ObjectIdOutput {
-	return o.ApplyT(func(v *ObjectId) ObjectId { return *v }).(ObjectIdOutput)
-}
-
-// Required. The parts of an OID path. The most significant parts of the path come first.
-func (o ObjectIdPtrOutput) ObjectIdPath() pulumi.IntArrayOutput {
-	return o.ApplyT(func(v *ObjectId) []int {
-		if v == nil {
-			return nil
-		}
-		return v.ObjectIdPath
-	}).(pulumi.IntArrayOutput)
 }
 
 type ObjectIdArrayOutput struct{ *pulumi.OutputState }
@@ -6031,7 +5952,7 @@ func (o ObjectIdArrayOutput) Index(i pulumi.IntInput) ObjectIdOutput {
 
 // An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 type ObjectIdResponse struct {
-	// Required. The parts of an OID path. The most significant parts of the path come first.
+	// The parts of an OID path. The most significant parts of the path come first.
 	ObjectIdPath []int `pulumi:"objectIdPath"`
 }
 
@@ -6048,7 +5969,7 @@ type ObjectIdResponseInput interface {
 
 // An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
 type ObjectIdResponseArgs struct {
-	// Required. The parts of an OID path. The most significant parts of the path come first.
+	// The parts of an OID path. The most significant parts of the path come first.
 	ObjectIdPath pulumi.IntArrayInput `pulumi:"objectIdPath"`
 }
 
@@ -6104,7 +6025,7 @@ func (o ObjectIdResponseOutput) ToObjectIdResponseOutputWithContext(ctx context.
 	return o
 }
 
-// Required. The parts of an OID path. The most significant parts of the path come first.
+// The parts of an OID path. The most significant parts of the path come first.
 func (o ObjectIdResponseOutput) ObjectIdPath() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v ObjectIdResponse) []int { return v.ObjectIdPath }).(pulumi.IntArrayOutput)
 }
@@ -6131,8 +6052,8 @@ func (o ObjectIdResponseArrayOutput) Index(i pulumi.IntInput) ObjectIdResponseOu
 
 // A PublicKey describes a public key.
 type PublicKey struct {
-	// Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
-	Key *string `pulumi:"key"`
+	// A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
+	Key string `pulumi:"key"`
 	// Optional. The type of public key. If specified, it must match the public key used for the`key` field.
 	Type *string `pulumi:"type"`
 }
@@ -6150,8 +6071,8 @@ type PublicKeyInput interface {
 
 // A PublicKey describes a public key.
 type PublicKeyArgs struct {
-	// Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
-	Key pulumi.StringPtrInput `pulumi:"key"`
+	// A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
+	Key pulumi.StringInput `pulumi:"key"`
 	// Optional. The type of public key. If specified, it must match the public key used for the`key` field.
 	Type *PublicKeyType `pulumi:"type"`
 }
@@ -6234,9 +6155,9 @@ func (o PublicKeyOutput) ToPublicKeyPtrOutputWithContext(ctx context.Context) Pu
 	}).(PublicKeyPtrOutput)
 }
 
-// Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
-func (o PublicKeyOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PublicKey) *string { return v.Key }).(pulumi.StringPtrOutput)
+// A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
+func (o PublicKeyOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v PublicKey) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // Optional. The type of public key. If specified, it must match the public key used for the`key` field.
@@ -6262,13 +6183,13 @@ func (o PublicKeyPtrOutput) Elem() PublicKeyOutput {
 	return o.ApplyT(func(v *PublicKey) PublicKey { return *v }).(PublicKeyOutput)
 }
 
-// Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
+// A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
 func (o PublicKeyPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PublicKey) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Key
+		return &v.Key
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6284,7 +6205,7 @@ func (o PublicKeyPtrOutput) Type() pulumi.StringPtrOutput {
 
 // A PublicKey describes a public key.
 type PublicKeyResponse struct {
-	// Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
+	// A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
 	Key string `pulumi:"key"`
 	// Optional. The type of public key. If specified, it must match the public key used for the`key` field.
 	Type string `pulumi:"type"`
@@ -6303,7 +6224,7 @@ type PublicKeyResponseInput interface {
 
 // A PublicKey describes a public key.
 type PublicKeyResponseArgs struct {
-	// Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
+	// A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
 	Key pulumi.StringInput `pulumi:"key"`
 	// Optional. The type of public key. If specified, it must match the public key used for the`key` field.
 	Type pulumi.StringInput `pulumi:"type"`
@@ -6387,7 +6308,7 @@ func (o PublicKeyResponseOutput) ToPublicKeyResponsePtrOutputWithContext(ctx con
 	}).(PublicKeyResponsePtrOutput)
 }
 
-// Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
+// A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
 func (o PublicKeyResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v PublicKeyResponse) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -6415,7 +6336,7 @@ func (o PublicKeyResponsePtrOutput) Elem() PublicKeyResponseOutput {
 	return o.ApplyT(func(v *PublicKeyResponse) PublicKeyResponse { return *v }).(PublicKeyResponseOutput)
 }
 
-// Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
+// A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
 func (o PublicKeyResponsePtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PublicKeyResponse) *string {
 		if v == nil {
@@ -6857,10 +6778,10 @@ func (o ReusableConfigValuesResponsePtrOutput) PolicyIds() ObjectIdResponseArray
 
 // A ReusableConfigWrapper describes values that may assist in creating an X.509 certificate, or a reference to a pre-defined set of values.
 type ReusableConfigWrapper struct {
-	// Required. A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
-	ReusableConfig *string `pulumi:"reusableConfig"`
-	// Required. A user-specified inline ReusableConfigValues.
-	ReusableConfigValues *ReusableConfigValues `pulumi:"reusableConfigValues"`
+	// A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
+	ReusableConfig string `pulumi:"reusableConfig"`
+	// A user-specified inline ReusableConfigValues.
+	ReusableConfigValues ReusableConfigValues `pulumi:"reusableConfigValues"`
 }
 
 // ReusableConfigWrapperInput is an input type that accepts ReusableConfigWrapperArgs and ReusableConfigWrapperOutput values.
@@ -6876,10 +6797,10 @@ type ReusableConfigWrapperInput interface {
 
 // A ReusableConfigWrapper describes values that may assist in creating an X.509 certificate, or a reference to a pre-defined set of values.
 type ReusableConfigWrapperArgs struct {
-	// Required. A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
-	ReusableConfig pulumi.StringPtrInput `pulumi:"reusableConfig"`
-	// Required. A user-specified inline ReusableConfigValues.
-	ReusableConfigValues ReusableConfigValuesPtrInput `pulumi:"reusableConfigValues"`
+	// A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
+	ReusableConfig pulumi.StringInput `pulumi:"reusableConfig"`
+	// A user-specified inline ReusableConfigValues.
+	ReusableConfigValues ReusableConfigValuesInput `pulumi:"reusableConfigValues"`
 }
 
 func (ReusableConfigWrapperArgs) ElementType() reflect.Type {
@@ -6985,14 +6906,14 @@ func (o ReusableConfigWrapperOutput) ToReusableConfigWrapperPtrOutputWithContext
 	}).(ReusableConfigWrapperPtrOutput)
 }
 
-// Required. A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
-func (o ReusableConfigWrapperOutput) ReusableConfig() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReusableConfigWrapper) *string { return v.ReusableConfig }).(pulumi.StringPtrOutput)
+// A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
+func (o ReusableConfigWrapperOutput) ReusableConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v ReusableConfigWrapper) string { return v.ReusableConfig }).(pulumi.StringOutput)
 }
 
-// Required. A user-specified inline ReusableConfigValues.
-func (o ReusableConfigWrapperOutput) ReusableConfigValues() ReusableConfigValuesPtrOutput {
-	return o.ApplyT(func(v ReusableConfigWrapper) *ReusableConfigValues { return v.ReusableConfigValues }).(ReusableConfigValuesPtrOutput)
+// A user-specified inline ReusableConfigValues.
+func (o ReusableConfigWrapperOutput) ReusableConfigValues() ReusableConfigValuesOutput {
+	return o.ApplyT(func(v ReusableConfigWrapper) ReusableConfigValues { return v.ReusableConfigValues }).(ReusableConfigValuesOutput)
 }
 
 type ReusableConfigWrapperPtrOutput struct{ *pulumi.OutputState }
@@ -7013,23 +6934,23 @@ func (o ReusableConfigWrapperPtrOutput) Elem() ReusableConfigWrapperOutput {
 	return o.ApplyT(func(v *ReusableConfigWrapper) ReusableConfigWrapper { return *v }).(ReusableConfigWrapperOutput)
 }
 
-// Required. A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
+// A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
 func (o ReusableConfigWrapperPtrOutput) ReusableConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReusableConfigWrapper) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ReusableConfig
+		return &v.ReusableConfig
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. A user-specified inline ReusableConfigValues.
+// A user-specified inline ReusableConfigValues.
 func (o ReusableConfigWrapperPtrOutput) ReusableConfigValues() ReusableConfigValuesPtrOutput {
 	return o.ApplyT(func(v *ReusableConfigWrapper) *ReusableConfigValues {
 		if v == nil {
 			return nil
 		}
-		return v.ReusableConfigValues
+		return &v.ReusableConfigValues
 	}).(ReusableConfigValuesPtrOutput)
 }
 
@@ -7055,9 +6976,9 @@ func (o ReusableConfigWrapperArrayOutput) Index(i pulumi.IntInput) ReusableConfi
 
 // A ReusableConfigWrapper describes values that may assist in creating an X.509 certificate, or a reference to a pre-defined set of values.
 type ReusableConfigWrapperResponse struct {
-	// Required. A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
+	// A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
 	ReusableConfig string `pulumi:"reusableConfig"`
-	// Required. A user-specified inline ReusableConfigValues.
+	// A user-specified inline ReusableConfigValues.
 	ReusableConfigValues ReusableConfigValuesResponse `pulumi:"reusableConfigValues"`
 }
 
@@ -7074,9 +6995,9 @@ type ReusableConfigWrapperResponseInput interface {
 
 // A ReusableConfigWrapper describes values that may assist in creating an X.509 certificate, or a reference to a pre-defined set of values.
 type ReusableConfigWrapperResponseArgs struct {
-	// Required. A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
+	// A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
 	ReusableConfig pulumi.StringInput `pulumi:"reusableConfig"`
-	// Required. A user-specified inline ReusableConfigValues.
+	// A user-specified inline ReusableConfigValues.
 	ReusableConfigValues ReusableConfigValuesResponseInput `pulumi:"reusableConfigValues"`
 }
 
@@ -7183,12 +7104,12 @@ func (o ReusableConfigWrapperResponseOutput) ToReusableConfigWrapperResponsePtrO
 	}).(ReusableConfigWrapperResponsePtrOutput)
 }
 
-// Required. A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
+// A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
 func (o ReusableConfigWrapperResponseOutput) ReusableConfig() pulumi.StringOutput {
 	return o.ApplyT(func(v ReusableConfigWrapperResponse) string { return v.ReusableConfig }).(pulumi.StringOutput)
 }
 
-// Required. A user-specified inline ReusableConfigValues.
+// A user-specified inline ReusableConfigValues.
 func (o ReusableConfigWrapperResponseOutput) ReusableConfigValues() ReusableConfigValuesResponseOutput {
 	return o.ApplyT(func(v ReusableConfigWrapperResponse) ReusableConfigValuesResponse { return v.ReusableConfigValues }).(ReusableConfigValuesResponseOutput)
 }
@@ -7211,7 +7132,7 @@ func (o ReusableConfigWrapperResponsePtrOutput) Elem() ReusableConfigWrapperResp
 	return o.ApplyT(func(v *ReusableConfigWrapperResponse) ReusableConfigWrapperResponse { return *v }).(ReusableConfigWrapperResponseOutput)
 }
 
-// Required. A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
+// A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
 func (o ReusableConfigWrapperResponsePtrOutput) ReusableConfig() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReusableConfigWrapperResponse) *string {
 		if v == nil {
@@ -7221,7 +7142,7 @@ func (o ReusableConfigWrapperResponsePtrOutput) ReusableConfig() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. A user-specified inline ReusableConfigValues.
+// A user-specified inline ReusableConfigValues.
 func (o ReusableConfigWrapperResponsePtrOutput) ReusableConfigValues() ReusableConfigValuesResponsePtrOutput {
 	return o.ApplyT(func(v *ReusableConfigWrapperResponse) *ReusableConfigValuesResponse {
 		if v == nil {
@@ -8121,8 +8042,8 @@ func (o SubjectAltNamesResponsePtrOutput) Uris() pulumi.StringArrayOutput {
 type SubjectConfig struct {
 	// Optional. The "common name" of the distinguished name.
 	CommonName *string `pulumi:"commonName"`
-	// Required. Contains distinguished name fields such as the location and organization.
-	Subject *Subject `pulumi:"subject"`
+	// Contains distinguished name fields such as the location and organization.
+	Subject Subject `pulumi:"subject"`
 	// Optional. The subject alternative name fields.
 	SubjectAltName *SubjectAltNames `pulumi:"subjectAltName"`
 }
@@ -8142,8 +8063,8 @@ type SubjectConfigInput interface {
 type SubjectConfigArgs struct {
 	// Optional. The "common name" of the distinguished name.
 	CommonName pulumi.StringPtrInput `pulumi:"commonName"`
-	// Required. Contains distinguished name fields such as the location and organization.
-	Subject SubjectPtrInput `pulumi:"subject"`
+	// Contains distinguished name fields such as the location and organization.
+	Subject SubjectInput `pulumi:"subject"`
 	// Optional. The subject alternative name fields.
 	SubjectAltName SubjectAltNamesPtrInput `pulumi:"subjectAltName"`
 }
@@ -8231,9 +8152,9 @@ func (o SubjectConfigOutput) CommonName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SubjectConfig) *string { return v.CommonName }).(pulumi.StringPtrOutput)
 }
 
-// Required. Contains distinguished name fields such as the location and organization.
-func (o SubjectConfigOutput) Subject() SubjectPtrOutput {
-	return o.ApplyT(func(v SubjectConfig) *Subject { return v.Subject }).(SubjectPtrOutput)
+// Contains distinguished name fields such as the location and organization.
+func (o SubjectConfigOutput) Subject() SubjectOutput {
+	return o.ApplyT(func(v SubjectConfig) Subject { return v.Subject }).(SubjectOutput)
 }
 
 // Optional. The subject alternative name fields.
@@ -8269,13 +8190,13 @@ func (o SubjectConfigPtrOutput) CommonName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Contains distinguished name fields such as the location and organization.
+// Contains distinguished name fields such as the location and organization.
 func (o SubjectConfigPtrOutput) Subject() SubjectPtrOutput {
 	return o.ApplyT(func(v *SubjectConfig) *Subject {
 		if v == nil {
 			return nil
 		}
-		return v.Subject
+		return &v.Subject
 	}).(SubjectPtrOutput)
 }
 
@@ -8293,7 +8214,7 @@ func (o SubjectConfigPtrOutput) SubjectAltName() SubjectAltNamesPtrOutput {
 type SubjectConfigResponse struct {
 	// Optional. The "common name" of the distinguished name.
 	CommonName string `pulumi:"commonName"`
-	// Required. Contains distinguished name fields such as the location and organization.
+	// Contains distinguished name fields such as the location and organization.
 	Subject SubjectResponse `pulumi:"subject"`
 	// Optional. The subject alternative name fields.
 	SubjectAltName SubjectAltNamesResponse `pulumi:"subjectAltName"`
@@ -8314,7 +8235,7 @@ type SubjectConfigResponseInput interface {
 type SubjectConfigResponseArgs struct {
 	// Optional. The "common name" of the distinguished name.
 	CommonName pulumi.StringInput `pulumi:"commonName"`
-	// Required. Contains distinguished name fields such as the location and organization.
+	// Contains distinguished name fields such as the location and organization.
 	Subject SubjectResponseInput `pulumi:"subject"`
 	// Optional. The subject alternative name fields.
 	SubjectAltName SubjectAltNamesResponseInput `pulumi:"subjectAltName"`
@@ -8403,7 +8324,7 @@ func (o SubjectConfigResponseOutput) CommonName() pulumi.StringOutput {
 	return o.ApplyT(func(v SubjectConfigResponse) string { return v.CommonName }).(pulumi.StringOutput)
 }
 
-// Required. Contains distinguished name fields such as the location and organization.
+// Contains distinguished name fields such as the location and organization.
 func (o SubjectConfigResponseOutput) Subject() SubjectResponseOutput {
 	return o.ApplyT(func(v SubjectConfigResponse) SubjectResponse { return v.Subject }).(SubjectResponseOutput)
 }
@@ -8441,7 +8362,7 @@ func (o SubjectConfigResponsePtrOutput) CommonName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Contains distinguished name fields such as the location and organization.
+// Contains distinguished name fields such as the location and organization.
 func (o SubjectConfigResponsePtrOutput) Subject() SubjectResponsePtrOutput {
 	return o.ApplyT(func(v *SubjectConfigResponse) *SubjectResponse {
 		if v == nil {
@@ -9004,10 +8925,10 @@ func (o SubjectResponseArrayOutput) Index(i pulumi.IntInput) SubjectResponseOutp
 
 // Describes a subordinate CA's issuers. This is either a resource path to a known issuing CertificateAuthority, or a PEM issuer certificate chain.
 type SubordinateConfig struct {
-	// Required. This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
-	CertificateAuthority *string `pulumi:"certificateAuthority"`
-	// Required. Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
-	PemIssuerChain *SubordinateConfigChain `pulumi:"pemIssuerChain"`
+	// This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
+	CertificateAuthority string `pulumi:"certificateAuthority"`
+	// Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
+	PemIssuerChain SubordinateConfigChain `pulumi:"pemIssuerChain"`
 }
 
 // SubordinateConfigInput is an input type that accepts SubordinateConfigArgs and SubordinateConfigOutput values.
@@ -9023,10 +8944,10 @@ type SubordinateConfigInput interface {
 
 // Describes a subordinate CA's issuers. This is either a resource path to a known issuing CertificateAuthority, or a PEM issuer certificate chain.
 type SubordinateConfigArgs struct {
-	// Required. This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
-	CertificateAuthority pulumi.StringPtrInput `pulumi:"certificateAuthority"`
-	// Required. Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
-	PemIssuerChain SubordinateConfigChainPtrInput `pulumi:"pemIssuerChain"`
+	// This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
+	CertificateAuthority pulumi.StringInput `pulumi:"certificateAuthority"`
+	// Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
+	PemIssuerChain SubordinateConfigChainInput `pulumi:"pemIssuerChain"`
 }
 
 func (SubordinateConfigArgs) ElementType() reflect.Type {
@@ -9107,14 +9028,14 @@ func (o SubordinateConfigOutput) ToSubordinateConfigPtrOutputWithContext(ctx con
 	}).(SubordinateConfigPtrOutput)
 }
 
-// Required. This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
-func (o SubordinateConfigOutput) CertificateAuthority() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SubordinateConfig) *string { return v.CertificateAuthority }).(pulumi.StringPtrOutput)
+// This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
+func (o SubordinateConfigOutput) CertificateAuthority() pulumi.StringOutput {
+	return o.ApplyT(func(v SubordinateConfig) string { return v.CertificateAuthority }).(pulumi.StringOutput)
 }
 
-// Required. Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
-func (o SubordinateConfigOutput) PemIssuerChain() SubordinateConfigChainPtrOutput {
-	return o.ApplyT(func(v SubordinateConfig) *SubordinateConfigChain { return v.PemIssuerChain }).(SubordinateConfigChainPtrOutput)
+// Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
+func (o SubordinateConfigOutput) PemIssuerChain() SubordinateConfigChainOutput {
+	return o.ApplyT(func(v SubordinateConfig) SubordinateConfigChain { return v.PemIssuerChain }).(SubordinateConfigChainOutput)
 }
 
 type SubordinateConfigPtrOutput struct{ *pulumi.OutputState }
@@ -9135,29 +9056,29 @@ func (o SubordinateConfigPtrOutput) Elem() SubordinateConfigOutput {
 	return o.ApplyT(func(v *SubordinateConfig) SubordinateConfig { return *v }).(SubordinateConfigOutput)
 }
 
-// Required. This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
+// This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
 func (o SubordinateConfigPtrOutput) CertificateAuthority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubordinateConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.CertificateAuthority
+		return &v.CertificateAuthority
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
+// Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
 func (o SubordinateConfigPtrOutput) PemIssuerChain() SubordinateConfigChainPtrOutput {
 	return o.ApplyT(func(v *SubordinateConfig) *SubordinateConfigChain {
 		if v == nil {
 			return nil
 		}
-		return v.PemIssuerChain
+		return &v.PemIssuerChain
 	}).(SubordinateConfigChainPtrOutput)
 }
 
 // This message describes a subordinate CA's issuer certificate chain. This wrapper exists for compatibility reasons.
 type SubordinateConfigChain struct {
-	// Required. Expected to be in leaf-to-root order according to RFC 5246.
+	// Expected to be in leaf-to-root order according to RFC 5246.
 	PemCertificates []string `pulumi:"pemCertificates"`
 }
 
@@ -9174,7 +9095,7 @@ type SubordinateConfigChainInput interface {
 
 // This message describes a subordinate CA's issuer certificate chain. This wrapper exists for compatibility reasons.
 type SubordinateConfigChainArgs struct {
-	// Required. Expected to be in leaf-to-root order according to RFC 5246.
+	// Expected to be in leaf-to-root order according to RFC 5246.
 	PemCertificates pulumi.StringArrayInput `pulumi:"pemCertificates"`
 }
 
@@ -9256,7 +9177,7 @@ func (o SubordinateConfigChainOutput) ToSubordinateConfigChainPtrOutputWithConte
 	}).(SubordinateConfigChainPtrOutput)
 }
 
-// Required. Expected to be in leaf-to-root order according to RFC 5246.
+// Expected to be in leaf-to-root order according to RFC 5246.
 func (o SubordinateConfigChainOutput) PemCertificates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SubordinateConfigChain) []string { return v.PemCertificates }).(pulumi.StringArrayOutput)
 }
@@ -9279,7 +9200,7 @@ func (o SubordinateConfigChainPtrOutput) Elem() SubordinateConfigChainOutput {
 	return o.ApplyT(func(v *SubordinateConfigChain) SubordinateConfigChain { return *v }).(SubordinateConfigChainOutput)
 }
 
-// Required. Expected to be in leaf-to-root order according to RFC 5246.
+// Expected to be in leaf-to-root order according to RFC 5246.
 func (o SubordinateConfigChainPtrOutput) PemCertificates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SubordinateConfigChain) []string {
 		if v == nil {
@@ -9291,7 +9212,7 @@ func (o SubordinateConfigChainPtrOutput) PemCertificates() pulumi.StringArrayOut
 
 // This message describes a subordinate CA's issuer certificate chain. This wrapper exists for compatibility reasons.
 type SubordinateConfigChainResponse struct {
-	// Required. Expected to be in leaf-to-root order according to RFC 5246.
+	// Expected to be in leaf-to-root order according to RFC 5246.
 	PemCertificates []string `pulumi:"pemCertificates"`
 }
 
@@ -9308,7 +9229,7 @@ type SubordinateConfigChainResponseInput interface {
 
 // This message describes a subordinate CA's issuer certificate chain. This wrapper exists for compatibility reasons.
 type SubordinateConfigChainResponseArgs struct {
-	// Required. Expected to be in leaf-to-root order according to RFC 5246.
+	// Expected to be in leaf-to-root order according to RFC 5246.
 	PemCertificates pulumi.StringArrayInput `pulumi:"pemCertificates"`
 }
 
@@ -9390,7 +9311,7 @@ func (o SubordinateConfigChainResponseOutput) ToSubordinateConfigChainResponsePt
 	}).(SubordinateConfigChainResponsePtrOutput)
 }
 
-// Required. Expected to be in leaf-to-root order according to RFC 5246.
+// Expected to be in leaf-to-root order according to RFC 5246.
 func (o SubordinateConfigChainResponseOutput) PemCertificates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v SubordinateConfigChainResponse) []string { return v.PemCertificates }).(pulumi.StringArrayOutput)
 }
@@ -9413,7 +9334,7 @@ func (o SubordinateConfigChainResponsePtrOutput) Elem() SubordinateConfigChainRe
 	return o.ApplyT(func(v *SubordinateConfigChainResponse) SubordinateConfigChainResponse { return *v }).(SubordinateConfigChainResponseOutput)
 }
 
-// Required. Expected to be in leaf-to-root order according to RFC 5246.
+// Expected to be in leaf-to-root order according to RFC 5246.
 func (o SubordinateConfigChainResponsePtrOutput) PemCertificates() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *SubordinateConfigChainResponse) []string {
 		if v == nil {
@@ -9425,9 +9346,9 @@ func (o SubordinateConfigChainResponsePtrOutput) PemCertificates() pulumi.String
 
 // Describes a subordinate CA's issuers. This is either a resource path to a known issuing CertificateAuthority, or a PEM issuer certificate chain.
 type SubordinateConfigResponse struct {
-	// Required. This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
+	// This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
 	CertificateAuthority string `pulumi:"certificateAuthority"`
-	// Required. Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
+	// Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
 	PemIssuerChain SubordinateConfigChainResponse `pulumi:"pemIssuerChain"`
 }
 
@@ -9444,9 +9365,9 @@ type SubordinateConfigResponseInput interface {
 
 // Describes a subordinate CA's issuers. This is either a resource path to a known issuing CertificateAuthority, or a PEM issuer certificate chain.
 type SubordinateConfigResponseArgs struct {
-	// Required. This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
+	// This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
 	CertificateAuthority pulumi.StringInput `pulumi:"certificateAuthority"`
-	// Required. Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
+	// Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
 	PemIssuerChain SubordinateConfigChainResponseInput `pulumi:"pemIssuerChain"`
 }
 
@@ -9528,12 +9449,12 @@ func (o SubordinateConfigResponseOutput) ToSubordinateConfigResponsePtrOutputWit
 	}).(SubordinateConfigResponsePtrOutput)
 }
 
-// Required. This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
+// This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
 func (o SubordinateConfigResponseOutput) CertificateAuthority() pulumi.StringOutput {
 	return o.ApplyT(func(v SubordinateConfigResponse) string { return v.CertificateAuthority }).(pulumi.StringOutput)
 }
 
-// Required. Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
+// Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
 func (o SubordinateConfigResponseOutput) PemIssuerChain() SubordinateConfigChainResponseOutput {
 	return o.ApplyT(func(v SubordinateConfigResponse) SubordinateConfigChainResponse { return v.PemIssuerChain }).(SubordinateConfigChainResponseOutput)
 }
@@ -9556,7 +9477,7 @@ func (o SubordinateConfigResponsePtrOutput) Elem() SubordinateConfigResponseOutp
 	return o.ApplyT(func(v *SubordinateConfigResponse) SubordinateConfigResponse { return *v }).(SubordinateConfigResponseOutput)
 }
 
-// Required. This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
+// This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
 func (o SubordinateConfigResponsePtrOutput) CertificateAuthority() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SubordinateConfigResponse) *string {
 		if v == nil {
@@ -9566,7 +9487,7 @@ func (o SubordinateConfigResponsePtrOutput) CertificateAuthority() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
+// Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
 func (o SubordinateConfigResponsePtrOutput) PemIssuerChain() SubordinateConfigChainResponsePtrOutput {
 	return o.ApplyT(func(v *SubordinateConfigResponse) *SubordinateConfigChainResponse {
 		if v == nil {
@@ -9578,12 +9499,12 @@ func (o SubordinateConfigResponsePtrOutput) PemIssuerChain() SubordinateConfigCh
 
 // An X509Extension specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
 type X509Extension struct {
-	// Required. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
-	Critical *bool `pulumi:"critical"`
-	// Required. The OID for this X.509 extension.
-	ObjectId *ObjectId `pulumi:"objectId"`
-	// Required. The value of this X.509 extension.
-	Value *string `pulumi:"value"`
+	// Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+	Critical bool `pulumi:"critical"`
+	// The OID for this X.509 extension.
+	ObjectId ObjectId `pulumi:"objectId"`
+	// The value of this X.509 extension.
+	Value string `pulumi:"value"`
 }
 
 // X509ExtensionInput is an input type that accepts X509ExtensionArgs and X509ExtensionOutput values.
@@ -9599,12 +9520,12 @@ type X509ExtensionInput interface {
 
 // An X509Extension specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
 type X509ExtensionArgs struct {
-	// Required. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
-	Critical pulumi.BoolPtrInput `pulumi:"critical"`
-	// Required. The OID for this X.509 extension.
-	ObjectId ObjectIdPtrInput `pulumi:"objectId"`
-	// Required. The value of this X.509 extension.
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	// Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+	Critical pulumi.BoolInput `pulumi:"critical"`
+	// The OID for this X.509 extension.
+	ObjectId ObjectIdInput `pulumi:"objectId"`
+	// The value of this X.509 extension.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (X509ExtensionArgs) ElementType() reflect.Type {
@@ -9659,19 +9580,19 @@ func (o X509ExtensionOutput) ToX509ExtensionOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Required. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
-func (o X509ExtensionOutput) Critical() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v X509Extension) *bool { return v.Critical }).(pulumi.BoolPtrOutput)
+// Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+func (o X509ExtensionOutput) Critical() pulumi.BoolOutput {
+	return o.ApplyT(func(v X509Extension) bool { return v.Critical }).(pulumi.BoolOutput)
 }
 
-// Required. The OID for this X.509 extension.
-func (o X509ExtensionOutput) ObjectId() ObjectIdPtrOutput {
-	return o.ApplyT(func(v X509Extension) *ObjectId { return v.ObjectId }).(ObjectIdPtrOutput)
+// The OID for this X.509 extension.
+func (o X509ExtensionOutput) ObjectId() ObjectIdOutput {
+	return o.ApplyT(func(v X509Extension) ObjectId { return v.ObjectId }).(ObjectIdOutput)
 }
 
-// Required. The value of this X.509 extension.
-func (o X509ExtensionOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v X509Extension) *string { return v.Value }).(pulumi.StringPtrOutput)
+// The value of this X.509 extension.
+func (o X509ExtensionOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v X509Extension) string { return v.Value }).(pulumi.StringOutput)
 }
 
 type X509ExtensionArrayOutput struct{ *pulumi.OutputState }
@@ -9696,11 +9617,11 @@ func (o X509ExtensionArrayOutput) Index(i pulumi.IntInput) X509ExtensionOutput {
 
 // An X509Extension specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
 type X509ExtensionResponse struct {
-	// Required. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+	// Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
 	Critical bool `pulumi:"critical"`
-	// Required. The OID for this X.509 extension.
+	// The OID for this X.509 extension.
 	ObjectId ObjectIdResponse `pulumi:"objectId"`
-	// Required. The value of this X.509 extension.
+	// The value of this X.509 extension.
 	Value string `pulumi:"value"`
 }
 
@@ -9717,11 +9638,11 @@ type X509ExtensionResponseInput interface {
 
 // An X509Extension specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
 type X509ExtensionResponseArgs struct {
-	// Required. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+	// Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
 	Critical pulumi.BoolInput `pulumi:"critical"`
-	// Required. The OID for this X.509 extension.
+	// The OID for this X.509 extension.
 	ObjectId ObjectIdResponseInput `pulumi:"objectId"`
-	// Required. The value of this X.509 extension.
+	// The value of this X.509 extension.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -9777,17 +9698,17 @@ func (o X509ExtensionResponseOutput) ToX509ExtensionResponseOutputWithContext(ct
 	return o
 }
 
-// Required. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+// Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
 func (o X509ExtensionResponseOutput) Critical() pulumi.BoolOutput {
 	return o.ApplyT(func(v X509ExtensionResponse) bool { return v.Critical }).(pulumi.BoolOutput)
 }
 
-// Required. The OID for this X.509 extension.
+// The OID for this X.509 extension.
 func (o X509ExtensionResponseOutput) ObjectId() ObjectIdResponseOutput {
 	return o.ApplyT(func(v X509ExtensionResponse) ObjectIdResponse { return v.ObjectId }).(ObjectIdResponseOutput)
 }
 
-// Required. The value of this X.509 extension.
+// The value of this X.509 extension.
 func (o X509ExtensionResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v X509ExtensionResponse) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -9882,7 +9803,6 @@ func init() {
 	pulumi.RegisterOutputType(KeyVersionSpecResponseOutput{})
 	pulumi.RegisterOutputType(KeyVersionSpecResponsePtrOutput{})
 	pulumi.RegisterOutputType(ObjectIdOutput{})
-	pulumi.RegisterOutputType(ObjectIdPtrOutput{})
 	pulumi.RegisterOutputType(ObjectIdArrayOutput{})
 	pulumi.RegisterOutputType(ObjectIdResponseOutput{})
 	pulumi.RegisterOutputType(ObjectIdResponseArrayOutput{})

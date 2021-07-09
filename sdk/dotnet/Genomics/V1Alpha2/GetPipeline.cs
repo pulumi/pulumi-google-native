@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2
         /// </summary>
         public readonly ImmutableArray<Outputs.PipelineParameterResponse> InputParameters;
         /// <summary>
-        /// Required. A user specified pipeline name that does not have to be unique. This name can be used for filtering Pipelines in ListPipelines.
+        /// A user specified pipeline name that does not have to be unique. This name can be used for filtering Pipelines in ListPipelines.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -58,11 +58,11 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2
         /// </summary>
         public readonly string PipelineId;
         /// <summary>
-        /// Required. The project in which to create the pipeline. The caller must have WRITE access.
+        /// The project in which to create the pipeline. The caller must have WRITE access.
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Required. Specifies resource requirements for the pipeline run. Required fields: * minimumCpuCores * minimumRamGb
+        /// Specifies resource requirements for the pipeline run. Required fields: * minimumCpuCores * minimumRamGb
         /// </summary>
         public readonly Outputs.PipelineResourcesResponse Resources;
 

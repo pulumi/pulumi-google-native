@@ -79,7 +79,7 @@ class GetModelResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. The name specified for the model when it was created. The model name must be unique within the project it is created in.
+        The name specified for the model when it was created. The model name must be unique within the project it is created in.
         """
         return pulumi.get(self, "name")
 

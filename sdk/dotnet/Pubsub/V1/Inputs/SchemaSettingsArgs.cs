@@ -22,10 +22,10 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Inputs
         public Input<Pulumi.GoogleNative.Pubsub.V1.SchemaSettingsEncoding>? Encoding { get; set; }
 
         /// <summary>
-        /// Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
+        /// The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
         /// </summary>
-        [Input("schema")]
-        public Input<string>? Schema { get; set; }
+        [Input("schema", required: true)]
+        public Input<string> Schema { get; set; } = null!;
 
         public SchemaSettingsArgs()
         {

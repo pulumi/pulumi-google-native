@@ -45,7 +45,7 @@ class GetEnvgroupResult:
     @pulumi.getter
     def hostnames(self) -> Sequence[str]:
         """
-        Required. Host names for this environment group.
+        Host names for this environment group.
         """
         return pulumi.get(self, "hostnames")
 

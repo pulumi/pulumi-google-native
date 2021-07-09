@@ -60,7 +60,7 @@ class GetDatastoreResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. Display name in UI
+        Display name in UI
         """
         return pulumi.get(self, "display_name")
 

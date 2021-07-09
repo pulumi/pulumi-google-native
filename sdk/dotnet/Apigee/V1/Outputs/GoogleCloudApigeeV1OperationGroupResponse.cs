@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
         /// </summary>
         public readonly string OperationConfigType;
         /// <summary>
-        /// Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+        /// List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudApigeeV1OperationConfigResponse> OperationConfigs;
 

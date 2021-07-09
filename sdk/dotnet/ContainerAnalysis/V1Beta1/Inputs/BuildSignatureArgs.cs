@@ -34,10 +34,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public Input<string>? PublicKey { get; set; }
 
         /// <summary>
-        /// Required. Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
+        /// Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
         /// </summary>
-        [Input("signature")]
-        public Input<string>? Signature { get; set; }
+        [Input("signature", required: true)]
+        public Input<string> Signature { get; set; } = null!;
 
         public BuildSignatureArgs()
         {

@@ -31,7 +31,7 @@ export interface GetOrganizationResult {
      */
     readonly addonsConfig: outputs.apigee.v1.GoogleCloudApigeeV1AddonsConfigResponse;
     /**
-     * Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+     * Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
      */
     readonly analyticsRegion: string;
     /**
@@ -92,7 +92,7 @@ export interface GetOrganizationResult {
      */
     readonly runtimeDatabaseEncryptionKeyName: string;
     /**
-     * Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
+     * Runtime type of the Apigee organization based on the Apigee subscription purchased.
      */
     readonly runtimeType: string;
     /**

@@ -43,7 +43,7 @@ export interface GetIntentResult {
      */
     readonly defaultResponsePlatforms: string[];
     /**
-     * Required. The name of this intent.
+     * The name of this intent.
      */
     readonly displayName: string;
     /**

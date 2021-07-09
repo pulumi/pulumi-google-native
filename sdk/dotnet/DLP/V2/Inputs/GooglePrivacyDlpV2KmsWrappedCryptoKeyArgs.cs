@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     public sealed class GooglePrivacyDlpV2KmsWrappedCryptoKeyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The resource name of the KMS CryptoKey to use for unwrapping.
+        /// The resource name of the KMS CryptoKey to use for unwrapping.
         /// </summary>
-        [Input("cryptoKeyName")]
-        public Input<string>? CryptoKeyName { get; set; }
+        [Input("cryptoKeyName", required: true)]
+        public Input<string> CryptoKeyName { get; set; } = null!;
 
         /// <summary>
-        /// Required. The wrapped data crypto key.
+        /// The wrapped data crypto key.
         /// </summary>
-        [Input("wrappedKey")]
-        public Input<string>? WrappedKey { get; set; }
+        [Input("wrappedKey", required: true)]
+        public Input<string> WrappedKey { get; set; } = null!;
 
         public GooglePrivacyDlpV2KmsWrappedCryptoKeyArgs()
         {

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesResponse
     {
         /// <summary>
-        /// Required. Column heading.
+        /// Column heading.
         /// </summary>
         public readonly string Header;
         /// <summary>

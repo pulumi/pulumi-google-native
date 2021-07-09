@@ -29,7 +29,7 @@ export interface GetIndexArgs {
 
 export interface GetIndexResult {
     /**
-     * Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+     * The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
      */
     readonly ancestor: string;
     /**
@@ -37,7 +37,7 @@ export interface GetIndexResult {
      */
     readonly indexId: string;
     /**
-     * Required. The entity kind to which this index applies.
+     * The entity kind to which this index applies.
      */
     readonly kind: string;
     /**
@@ -45,7 +45,7 @@ export interface GetIndexResult {
      */
     readonly project: string;
     /**
-     * Required. An ordered sequence of property names and their index attributes.
+     * An ordered sequence of property names and their index attributes.
      */
     readonly properties: outputs.datastore.v1.GoogleDatastoreAdminV1IndexedPropertyResponse[];
     /**

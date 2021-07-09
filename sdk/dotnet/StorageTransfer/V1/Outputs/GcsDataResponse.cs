@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
     public sealed class GcsDataResponse
     {
         /// <summary>
-        /// Required. Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
+        /// Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
         /// </summary>
         public readonly string BucketName;
         /// <summary>

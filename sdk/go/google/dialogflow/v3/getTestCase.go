@@ -27,7 +27,7 @@ type LookupTestCaseArgs struct {
 type LookupTestCaseResult struct {
 	// When the test was created.
 	CreationTime string `pulumi:"creationTime"`
-	// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+	// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
 	DisplayName string `pulumi:"displayName"`
 	// The latest test result.
 	LastTestResult GoogleCloudDialogflowCxV3TestCaseResultResponse `pulumi:"lastTestResult"`

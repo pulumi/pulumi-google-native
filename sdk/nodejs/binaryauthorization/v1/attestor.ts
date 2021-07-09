@@ -40,7 +40,7 @@ export class Attestor extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Required. The resource name, in the format: `projects/*&#47;attestors/*`. This field may not be updated.
+     * The resource name, in the format: `projects/*&#47;attestors/*`. This field may not be updated.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -65,6 +65,9 @@ export class Attestor extends pulumi.CustomResource {
         if (!opts.id) {
             if ((!args || args.attestorId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'attestorId'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
@@ -98,9 +101,9 @@ export interface AttestorArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Required. The resource name, in the format: `projects/*&#47;attestors/*`. This field may not be updated.
+     * The resource name, in the format: `projects/*&#47;attestors/*`. This field may not be updated.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
      * This specifies how an attestation will be read, and how it will be used during policy enforcement.

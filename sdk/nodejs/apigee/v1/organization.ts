@@ -40,7 +40,7 @@ export class Organization extends pulumi.CustomResource {
      */
     public readonly addonsConfig!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1AddonsConfigResponse>;
     /**
-     * Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+     * Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
      */
     public readonly analyticsRegion!: pulumi.Output<string>;
     /**
@@ -101,7 +101,7 @@ export class Organization extends pulumi.CustomResource {
      */
     public readonly runtimeDatabaseEncryptionKeyName!: pulumi.Output<string>;
     /**
-     * Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
+     * Runtime type of the Apigee organization based on the Apigee subscription purchased.
      */
     public readonly runtimeType!: pulumi.Output<string>;
     /**
@@ -124,8 +124,14 @@ export class Organization extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.analyticsRegion === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'analyticsRegion'");
+            }
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
+            }
+            if ((!args || args.runtimeType === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'runtimeType'");
             }
             inputs["addonsConfig"] = args ? args.addonsConfig : undefined;
             inputs["analyticsRegion"] = args ? args.analyticsRegion : undefined;
@@ -186,9 +192,9 @@ export interface OrganizationArgs {
      */
     addonsConfig?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1AddonsConfigArgs>;
     /**
-     * Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+     * Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
      */
-    analyticsRegion?: pulumi.Input<string>;
+    analyticsRegion: pulumi.Input<string>;
     /**
      * Not used by Apigee.
      */
@@ -220,9 +226,9 @@ export interface OrganizationArgs {
      */
     runtimeDatabaseEncryptionKeyName?: pulumi.Input<string>;
     /**
-     * Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
+     * Runtime type of the Apigee organization based on the Apigee subscription purchased.
      */
-    runtimeType?: pulumi.Input<enums.apigee.v1.OrganizationRuntimeType>;
+    runtimeType: pulumi.Input<enums.apigee.v1.OrganizationRuntimeType>;
     /**
      * Not used by Apigee.
      */

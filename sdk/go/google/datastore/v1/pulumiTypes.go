@@ -12,10 +12,10 @@ import (
 
 // A property of an index.
 type GoogleDatastoreAdminV1IndexedProperty struct {
-	// Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
-	Direction *string `pulumi:"direction"`
-	// Required. The property name to index.
-	Name *string `pulumi:"name"`
+	// The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
+	Direction string `pulumi:"direction"`
+	// The property name to index.
+	Name string `pulumi:"name"`
 }
 
 // GoogleDatastoreAdminV1IndexedPropertyInput is an input type that accepts GoogleDatastoreAdminV1IndexedPropertyArgs and GoogleDatastoreAdminV1IndexedPropertyOutput values.
@@ -31,10 +31,10 @@ type GoogleDatastoreAdminV1IndexedPropertyInput interface {
 
 // A property of an index.
 type GoogleDatastoreAdminV1IndexedPropertyArgs struct {
-	// Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
-	Direction *GoogleDatastoreAdminV1IndexedPropertyDirection `pulumi:"direction"`
-	// Required. The property name to index.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
+	Direction GoogleDatastoreAdminV1IndexedPropertyDirection `pulumi:"direction"`
+	// The property name to index.
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (GoogleDatastoreAdminV1IndexedPropertyArgs) ElementType() reflect.Type {
@@ -89,14 +89,14 @@ func (o GoogleDatastoreAdminV1IndexedPropertyOutput) ToGoogleDatastoreAdminV1Ind
 	return o
 }
 
-// Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
-func (o GoogleDatastoreAdminV1IndexedPropertyOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleDatastoreAdminV1IndexedProperty) *string { return v.Direction }).(pulumi.StringPtrOutput)
+// The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
+func (o GoogleDatastoreAdminV1IndexedPropertyOutput) Direction() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDatastoreAdminV1IndexedProperty) string { return v.Direction }).(pulumi.StringOutput)
 }
 
-// Required. The property name to index.
-func (o GoogleDatastoreAdminV1IndexedPropertyOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleDatastoreAdminV1IndexedProperty) *string { return v.Name }).(pulumi.StringPtrOutput)
+// The property name to index.
+func (o GoogleDatastoreAdminV1IndexedPropertyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDatastoreAdminV1IndexedProperty) string { return v.Name }).(pulumi.StringOutput)
 }
 
 type GoogleDatastoreAdminV1IndexedPropertyArrayOutput struct{ *pulumi.OutputState }
@@ -121,9 +121,9 @@ func (o GoogleDatastoreAdminV1IndexedPropertyArrayOutput) Index(i pulumi.IntInpu
 
 // A property of an index.
 type GoogleDatastoreAdminV1IndexedPropertyResponse struct {
-	// Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
+	// The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
 	Direction string `pulumi:"direction"`
-	// Required. The property name to index.
+	// The property name to index.
 	Name string `pulumi:"name"`
 }
 
@@ -140,9 +140,9 @@ type GoogleDatastoreAdminV1IndexedPropertyResponseInput interface {
 
 // A property of an index.
 type GoogleDatastoreAdminV1IndexedPropertyResponseArgs struct {
-	// Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
+	// The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
 	Direction pulumi.StringInput `pulumi:"direction"`
-	// Required. The property name to index.
+	// The property name to index.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -198,12 +198,12 @@ func (o GoogleDatastoreAdminV1IndexedPropertyResponseOutput) ToGoogleDatastoreAd
 	return o
 }
 
-// Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
+// The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
 func (o GoogleDatastoreAdminV1IndexedPropertyResponseOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleDatastoreAdminV1IndexedPropertyResponse) string { return v.Direction }).(pulumi.StringOutput)
 }
 
-// Required. The property name to index.
+// The property name to index.
 func (o GoogleDatastoreAdminV1IndexedPropertyResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleDatastoreAdminV1IndexedPropertyResponse) string { return v.Name }).(pulumi.StringOutput)
 }

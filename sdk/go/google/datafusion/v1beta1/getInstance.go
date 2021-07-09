@@ -66,7 +66,7 @@ type LookupInstanceResult struct {
 	StateMessage string `pulumi:"stateMessage"`
 	// The name of the tenant project.
 	TenantProjectId string `pulumi:"tenantProjectId"`
-	// Required. Instance type.
+	// Instance type.
 	Type string `pulumi:"type"`
 	// The time the instance was last updated.
 	UpdateTime string `pulumi:"updateTime"`

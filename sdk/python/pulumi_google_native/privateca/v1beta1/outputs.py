@@ -118,7 +118,7 @@ class AllowedConfigListResponse(dict):
     def __init__(__self__, *,
                  allowed_config_values: Sequence['outputs.ReusableConfigWrapperResponse']):
         """
-        :param Sequence['ReusableConfigWrapperResponse'] allowed_config_values: Required. All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
+        :param Sequence['ReusableConfigWrapperResponse'] allowed_config_values: All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
         """
         pulumi.set(__self__, "allowed_config_values", allowed_config_values)
 
@@ -126,7 +126,7 @@ class AllowedConfigListResponse(dict):
     @pulumi.getter(name="allowedConfigValues")
     def allowed_config_values(self) -> Sequence['outputs.ReusableConfigWrapperResponse']:
         """
-        Required. All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
+        All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
         """
         return pulumi.get(self, "allowed_config_values")
 
@@ -583,8 +583,8 @@ class CertificateConfigResponse(dict):
         """
         A CertificateConfig describes an X.509 certificate or CSR that is to be created, as an alternative to using ASN.1.
         :param 'PublicKeyResponse' public_key: Optional. The public key that corresponds to this config. This is, for example, used when issuing Certificates, but not when creating a self-signed CertificateAuthority or CertificateAuthority CSR.
-        :param 'ReusableConfigWrapperResponse' reusable_config: Required. Describes how some of the technical fields in a certificate should be populated.
-        :param 'SubjectConfigResponse' subject_config: Required. Specifies some of the values in a certificate that are related to the subject.
+        :param 'ReusableConfigWrapperResponse' reusable_config: Describes how some of the technical fields in a certificate should be populated.
+        :param 'SubjectConfigResponse' subject_config: Specifies some of the values in a certificate that are related to the subject.
         """
         pulumi.set(__self__, "public_key", public_key)
         pulumi.set(__self__, "reusable_config", reusable_config)
@@ -602,7 +602,7 @@ class CertificateConfigResponse(dict):
     @pulumi.getter(name="reusableConfig")
     def reusable_config(self) -> 'outputs.ReusableConfigWrapperResponse':
         """
-        Required. Describes how some of the technical fields in a certificate should be populated.
+        Describes how some of the technical fields in a certificate should be populated.
         """
         return pulumi.get(self, "reusable_config")
 
@@ -610,7 +610,7 @@ class CertificateConfigResponse(dict):
     @pulumi.getter(name="subjectConfig")
     def subject_config(self) -> 'outputs.SubjectConfigResponse':
         """
-        Required. Specifies some of the values in a certificate that are related to the subject.
+        Specifies some of the values in a certificate that are related to the subject.
         """
         return pulumi.get(self, "subject_config")
 
@@ -972,8 +972,8 @@ class IssuanceModesResponse(dict):
                  allow_csr_based_issuance: bool):
         """
         IssuanceModes specifies the allowed ways in which Certificates may be requested from this CertificateAuthority.
-        :param bool allow_config_based_issuance: Required. When true, allows callers to create Certificates by specifying a CertificateConfig.
-        :param bool allow_csr_based_issuance: Required. When true, allows callers to create Certificates by specifying a CSR.
+        :param bool allow_config_based_issuance: When true, allows callers to create Certificates by specifying a CertificateConfig.
+        :param bool allow_csr_based_issuance: When true, allows callers to create Certificates by specifying a CSR.
         """
         pulumi.set(__self__, "allow_config_based_issuance", allow_config_based_issuance)
         pulumi.set(__self__, "allow_csr_based_issuance", allow_csr_based_issuance)
@@ -982,7 +982,7 @@ class IssuanceModesResponse(dict):
     @pulumi.getter(name="allowConfigBasedIssuance")
     def allow_config_based_issuance(self) -> bool:
         """
-        Required. When true, allows callers to create Certificates by specifying a CertificateConfig.
+        When true, allows callers to create Certificates by specifying a CertificateConfig.
         """
         return pulumi.get(self, "allow_config_based_issuance")
 
@@ -990,7 +990,7 @@ class IssuanceModesResponse(dict):
     @pulumi.getter(name="allowCsrBasedIssuance")
     def allow_csr_based_issuance(self) -> bool:
         """
-        Required. When true, allows callers to create Certificates by specifying a CSR.
+        When true, allows callers to create Certificates by specifying a CSR.
         """
         return pulumi.get(self, "allow_csr_based_issuance")
 
@@ -1024,8 +1024,8 @@ class IssuingOptionsResponse(dict):
                  include_crl_access_url: bool):
         """
         Options that affect all certificates issued by a CertificateAuthority.
-        :param bool include_ca_cert_url: Required. When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
-        :param bool include_crl_access_url: Required. When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
+        :param bool include_ca_cert_url: When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
+        :param bool include_crl_access_url: When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
         """
         pulumi.set(__self__, "include_ca_cert_url", include_ca_cert_url)
         pulumi.set(__self__, "include_crl_access_url", include_crl_access_url)
@@ -1034,7 +1034,7 @@ class IssuingOptionsResponse(dict):
     @pulumi.getter(name="includeCaCertUrl")
     def include_ca_cert_url(self) -> bool:
         """
-        Required. When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
+        When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
         """
         return pulumi.get(self, "include_ca_cert_url")
 
@@ -1042,7 +1042,7 @@ class IssuingOptionsResponse(dict):
     @pulumi.getter(name="includeCrlAccessUrl")
     def include_crl_access_url(self) -> bool:
         """
-        Required. When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
+        When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
         """
         return pulumi.get(self, "include_crl_access_url")
 
@@ -1321,8 +1321,8 @@ class KeyVersionSpecResponse(dict):
                  cloud_kms_key_version: str):
         """
         A Cloud KMS key configuration that a CertificateAuthority will use.
-        :param str algorithm: Required. The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
-        :param str cloud_kms_key_version: Required. The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
+        :param str algorithm: The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
+        :param str cloud_kms_key_version: The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
         """
         pulumi.set(__self__, "algorithm", algorithm)
         pulumi.set(__self__, "cloud_kms_key_version", cloud_kms_key_version)
@@ -1331,7 +1331,7 @@ class KeyVersionSpecResponse(dict):
     @pulumi.getter
     def algorithm(self) -> str:
         """
-        Required. The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
+        The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
         """
         return pulumi.get(self, "algorithm")
 
@@ -1339,7 +1339,7 @@ class KeyVersionSpecResponse(dict):
     @pulumi.getter(name="cloudKmsKeyVersion")
     def cloud_kms_key_version(self) -> str:
         """
-        Required. The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
+        The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
         """
         return pulumi.get(self, "cloud_kms_key_version")
 
@@ -1370,7 +1370,7 @@ class ObjectIdResponse(dict):
                  object_id_path: Sequence[int]):
         """
         An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-        :param Sequence[int] object_id_path: Required. The parts of an OID path. The most significant parts of the path come first.
+        :param Sequence[int] object_id_path: The parts of an OID path. The most significant parts of the path come first.
         """
         pulumi.set(__self__, "object_id_path", object_id_path)
 
@@ -1378,7 +1378,7 @@ class ObjectIdResponse(dict):
     @pulumi.getter(name="objectIdPath")
     def object_id_path(self) -> Sequence[int]:
         """
-        Required. The parts of an OID path. The most significant parts of the path come first.
+        The parts of an OID path. The most significant parts of the path come first.
         """
         return pulumi.get(self, "object_id_path")
 
@@ -1393,7 +1393,7 @@ class PublicKeyResponse(dict):
                  type: str):
         """
         A PublicKey describes a public key.
-        :param str key: Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
+        :param str key: A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
         :param str type: Optional. The type of public key. If specified, it must match the public key used for the`key` field.
         """
         pulumi.set(__self__, "key", key)
@@ -1403,7 +1403,7 @@ class PublicKeyResponse(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
+        A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
         """
         return pulumi.get(self, "key")
 
@@ -1536,8 +1536,8 @@ class ReusableConfigWrapperResponse(dict):
                  reusable_config_values: 'outputs.ReusableConfigValuesResponse'):
         """
         A ReusableConfigWrapper describes values that may assist in creating an X.509 certificate, or a reference to a pre-defined set of values.
-        :param str reusable_config: Required. A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
-        :param 'ReusableConfigValuesResponse' reusable_config_values: Required. A user-specified inline ReusableConfigValues.
+        :param str reusable_config: A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
+        :param 'ReusableConfigValuesResponse' reusable_config_values: A user-specified inline ReusableConfigValues.
         """
         pulumi.set(__self__, "reusable_config", reusable_config)
         pulumi.set(__self__, "reusable_config_values", reusable_config_values)
@@ -1546,7 +1546,7 @@ class ReusableConfigWrapperResponse(dict):
     @pulumi.getter(name="reusableConfig")
     def reusable_config(self) -> str:
         """
-        Required. A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
+        A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
         """
         return pulumi.get(self, "reusable_config")
 
@@ -1554,7 +1554,7 @@ class ReusableConfigWrapperResponse(dict):
     @pulumi.getter(name="reusableConfigValues")
     def reusable_config_values(self) -> 'outputs.ReusableConfigValuesResponse':
         """
-        Required. A user-specified inline ReusableConfigValues.
+        A user-specified inline ReusableConfigValues.
         """
         return pulumi.get(self, "reusable_config_values")
 
@@ -1731,7 +1731,7 @@ class SubjectConfigResponse(dict):
         """
         These values are used to create the distinguished name and subject alternative name fields in an X.509 certificate.
         :param str common_name: Optional. The "common name" of the distinguished name.
-        :param 'SubjectResponse' subject: Required. Contains distinguished name fields such as the location and organization.
+        :param 'SubjectResponse' subject: Contains distinguished name fields such as the location and organization.
         :param 'SubjectAltNamesResponse' subject_alt_name: Optional. The subject alternative name fields.
         """
         pulumi.set(__self__, "common_name", common_name)
@@ -1750,7 +1750,7 @@ class SubjectConfigResponse(dict):
     @pulumi.getter
     def subject(self) -> 'outputs.SubjectResponse':
         """
-        Required. Contains distinguished name fields such as the location and organization.
+        Contains distinguished name fields such as the location and organization.
         """
         return pulumi.get(self, "subject")
 
@@ -2013,7 +2013,7 @@ class SubordinateConfigChainResponse(dict):
                  pem_certificates: Sequence[str]):
         """
         This message describes a subordinate CA's issuer certificate chain. This wrapper exists for compatibility reasons.
-        :param Sequence[str] pem_certificates: Required. Expected to be in leaf-to-root order according to RFC 5246.
+        :param Sequence[str] pem_certificates: Expected to be in leaf-to-root order according to RFC 5246.
         """
         pulumi.set(__self__, "pem_certificates", pem_certificates)
 
@@ -2021,7 +2021,7 @@ class SubordinateConfigChainResponse(dict):
     @pulumi.getter(name="pemCertificates")
     def pem_certificates(self) -> Sequence[str]:
         """
-        Required. Expected to be in leaf-to-root order according to RFC 5246.
+        Expected to be in leaf-to-root order according to RFC 5246.
         """
         return pulumi.get(self, "pem_certificates")
 
@@ -2055,8 +2055,8 @@ class SubordinateConfigResponse(dict):
                  pem_issuer_chain: 'outputs.SubordinateConfigChainResponse'):
         """
         Describes a subordinate CA's issuers. This is either a resource path to a known issuing CertificateAuthority, or a PEM issuer certificate chain.
-        :param str certificate_authority: Required. This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
-        :param 'SubordinateConfigChainResponse' pem_issuer_chain: Required. Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
+        :param str certificate_authority: This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
+        :param 'SubordinateConfigChainResponse' pem_issuer_chain: Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
         """
         pulumi.set(__self__, "certificate_authority", certificate_authority)
         pulumi.set(__self__, "pem_issuer_chain", pem_issuer_chain)
@@ -2065,7 +2065,7 @@ class SubordinateConfigResponse(dict):
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> str:
         """
-        Required. This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
+        This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -2073,7 +2073,7 @@ class SubordinateConfigResponse(dict):
     @pulumi.getter(name="pemIssuerChain")
     def pem_issuer_chain(self) -> 'outputs.SubordinateConfigChainResponse':
         """
-        Required. Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
+        Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
         """
         return pulumi.get(self, "pem_issuer_chain")
 
@@ -2106,9 +2106,9 @@ class X509ExtensionResponse(dict):
                  value: str):
         """
         An X509Extension specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
-        :param bool critical: Required. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
-        :param 'ObjectIdResponse' object_id: Required. The OID for this X.509 extension.
-        :param str value: Required. The value of this X.509 extension.
+        :param bool critical: Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+        :param 'ObjectIdResponse' object_id: The OID for this X.509 extension.
+        :param str value: The value of this X.509 extension.
         """
         pulumi.set(__self__, "critical", critical)
         pulumi.set(__self__, "object_id", object_id)
@@ -2118,7 +2118,7 @@ class X509ExtensionResponse(dict):
     @pulumi.getter
     def critical(self) -> bool:
         """
-        Required. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+        Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
         """
         return pulumi.get(self, "critical")
 
@@ -2126,7 +2126,7 @@ class X509ExtensionResponse(dict):
     @pulumi.getter(name="objectId")
     def object_id(self) -> 'outputs.ObjectIdResponse':
         """
-        Required. The OID for this X.509 extension.
+        The OID for this X.509 extension.
         """
         return pulumi.get(self, "object_id")
 
@@ -2134,7 +2134,7 @@ class X509ExtensionResponse(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        Required. The value of this X.509 extension.
+        The value of this X.509 extension.
         """
         return pulumi.get(self, "value")
 

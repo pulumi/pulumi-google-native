@@ -50,7 +50,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Required. The human-readable name of the flow.
+        /// The human-readable name of the flow.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

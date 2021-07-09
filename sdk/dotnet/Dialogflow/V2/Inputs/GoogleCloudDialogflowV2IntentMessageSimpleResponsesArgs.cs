@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// </summary>
     public sealed class GoogleCloudDialogflowV2IntentMessageSimpleResponsesArgs : Pulumi.ResourceArgs
     {
-        [Input("simpleResponses")]
+        [Input("simpleResponses", required: true)]
         private InputList<Inputs.GoogleCloudDialogflowV2IntentMessageSimpleResponseArgs>? _simpleResponses;
 
         /// <summary>
-        /// Required. The list of simple responses.
+        /// The list of simple responses.
         /// </summary>
         public InputList<Inputs.GoogleCloudDialogflowV2IntentMessageSimpleResponseArgs> SimpleResponses
         {

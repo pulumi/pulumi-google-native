@@ -97,8 +97,8 @@ class NodeConfigResponse(dict):
                  memory_size_mb: int):
         """
         Configuration for a Memcached Node.
-        :param int cpu_count: Required. Number of cpus per Memcached node.
-        :param int memory_size_mb: Required. Memory size in MiB for each Memcached node.
+        :param int cpu_count: Number of cpus per Memcached node.
+        :param int memory_size_mb: Memory size in MiB for each Memcached node.
         """
         pulumi.set(__self__, "cpu_count", cpu_count)
         pulumi.set(__self__, "memory_size_mb", memory_size_mb)
@@ -107,7 +107,7 @@ class NodeConfigResponse(dict):
     @pulumi.getter(name="cpuCount")
     def cpu_count(self) -> int:
         """
-        Required. Number of cpus per Memcached node.
+        Number of cpus per Memcached node.
         """
         return pulumi.get(self, "cpu_count")
 
@@ -115,7 +115,7 @@ class NodeConfigResponse(dict):
     @pulumi.getter(name="memorySizeMb")
     def memory_size_mb(self) -> int:
         """
-        Required. Memory size in MiB for each Memcached node.
+        Memory size in MiB for each Memcached node.
         """
         return pulumi.get(self, "memory_size_mb")
 

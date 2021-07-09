@@ -15,54 +15,63 @@ __all__ = ['DocumentArgs', 'Document']
 @pulumi.input_type
 class DocumentArgs:
     def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
                  knowledge_base_id: pulumi.Input[str],
+                 knowledge_types: pulumi.Input[Sequence[pulumi.Input['DocumentKnowledgeTypesItem']]],
                  location: pulumi.Input[str],
+                 mime_type: pulumi.Input[str],
                  project: pulumi.Input[str],
                  content: Optional[pulumi.Input[str]] = None,
                  content_uri: Optional[pulumi.Input[str]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
                  enable_auto_reload: Optional[pulumi.Input[bool]] = None,
                  import_gcs_custom_metadata: Optional[pulumi.Input[str]] = None,
-                 knowledge_types: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentKnowledgeTypesItem']]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 mime_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  raw_content: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Document resource.
+        :param pulumi.Input[str] display_name: The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
+        :param pulumi.Input[Sequence[pulumi.Input['DocumentKnowledgeTypesItem']]] knowledge_types: The knowledge type of document content.
+        :param pulumi.Input[str] mime_type: The MIME type of this document.
         :param pulumi.Input[str] content: The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types. Note: This field is in the process of being deprecated, please use raw_content instead.
         :param pulumi.Input[str] content_uri: The URI where the file content is located. For documents stored in Google Cloud Storage, these URIs must have the form `gs:///`. NOTE: External URLs must correspond to public webpages, i.e., they must be indexed by Google Search. In particular, URLs for showing documents in Google Cloud Storage (i.e. the URL in your browser) are not supported. Instead use the `gs://` format URI described above.
-        :param pulumi.Input[str] display_name: Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
         :param pulumi.Input[bool] enable_auto_reload: Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
-        :param pulumi.Input[Sequence[pulumi.Input['DocumentKnowledgeTypesItem']]] knowledge_types: Required. The knowledge type of document content.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
-        :param pulumi.Input[str] mime_type: Required. The MIME type of this document.
         :param pulumi.Input[str] name: Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
         :param pulumi.Input[str] raw_content: The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
         """
+        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "knowledge_base_id", knowledge_base_id)
+        pulumi.set(__self__, "knowledge_types", knowledge_types)
         pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "mime_type", mime_type)
         pulumi.set(__self__, "project", project)
         if content is not None:
             pulumi.set(__self__, "content", content)
         if content_uri is not None:
             pulumi.set(__self__, "content_uri", content_uri)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if enable_auto_reload is not None:
             pulumi.set(__self__, "enable_auto_reload", enable_auto_reload)
         if import_gcs_custom_metadata is not None:
             pulumi.set(__self__, "import_gcs_custom_metadata", import_gcs_custom_metadata)
-        if knowledge_types is not None:
-            pulumi.set(__self__, "knowledge_types", knowledge_types)
         if metadata is not None:
             pulumi.set(__self__, "metadata", metadata)
-        if mime_type is not None:
-            pulumi.set(__self__, "mime_type", mime_type)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if raw_content is not None:
             pulumi.set(__self__, "raw_content", raw_content)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="knowledgeBaseId")
@@ -74,6 +83,18 @@ class DocumentArgs:
         pulumi.set(self, "knowledge_base_id", value)
 
     @property
+    @pulumi.getter(name="knowledgeTypes")
+    def knowledge_types(self) -> pulumi.Input[Sequence[pulumi.Input['DocumentKnowledgeTypesItem']]]:
+        """
+        The knowledge type of document content.
+        """
+        return pulumi.get(self, "knowledge_types")
+
+    @knowledge_types.setter
+    def knowledge_types(self, value: pulumi.Input[Sequence[pulumi.Input['DocumentKnowledgeTypesItem']]]):
+        pulumi.set(self, "knowledge_types", value)
+
+    @property
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
         return pulumi.get(self, "location")
@@ -81,6 +102,18 @@ class DocumentArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="mimeType")
+    def mime_type(self) -> pulumi.Input[str]:
+        """
+        The MIME type of this document.
+        """
+        return pulumi.get(self, "mime_type")
+
+    @mime_type.setter
+    def mime_type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "mime_type", value)
 
     @property
     @pulumi.getter
@@ -116,18 +149,6 @@ class DocumentArgs:
         pulumi.set(self, "content_uri", value)
 
     @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
-
-    @property
     @pulumi.getter(name="enableAutoReload")
     def enable_auto_reload(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -149,18 +170,6 @@ class DocumentArgs:
         pulumi.set(self, "import_gcs_custom_metadata", value)
 
     @property
-    @pulumi.getter(name="knowledgeTypes")
-    def knowledge_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DocumentKnowledgeTypesItem']]]]:
-        """
-        Required. The knowledge type of document content.
-        """
-        return pulumi.get(self, "knowledge_types")
-
-    @knowledge_types.setter
-    def knowledge_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DocumentKnowledgeTypesItem']]]]):
-        pulumi.set(self, "knowledge_types", value)
-
-    @property
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -171,18 +180,6 @@ class DocumentArgs:
     @metadata.setter
     def metadata(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "metadata", value)
-
-    @property
-    @pulumi.getter(name="mimeType")
-    def mime_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The MIME type of this document.
-        """
-        return pulumi.get(self, "mime_type")
-
-    @mime_type.setter
-    def mime_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "mime_type", value)
 
     @property
     @pulumi.getter
@@ -235,11 +232,11 @@ class Document(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] content: The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types. Note: This field is in the process of being deprecated, please use raw_content instead.
         :param pulumi.Input[str] content_uri: The URI where the file content is located. For documents stored in Google Cloud Storage, these URIs must have the form `gs:///`. NOTE: External URLs must correspond to public webpages, i.e., they must be indexed by Google Search. In particular, URLs for showing documents in Google Cloud Storage (i.e. the URL in your browser) are not supported. Instead use the `gs://` format URI described above.
-        :param pulumi.Input[str] display_name: Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
+        :param pulumi.Input[str] display_name: The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
         :param pulumi.Input[bool] enable_auto_reload: Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
-        :param pulumi.Input[Sequence[pulumi.Input['DocumentKnowledgeTypesItem']]] knowledge_types: Required. The knowledge type of document content.
+        :param pulumi.Input[Sequence[pulumi.Input['DocumentKnowledgeTypesItem']]] knowledge_types: The knowledge type of document content.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
-        :param pulumi.Input[str] mime_type: Required. The MIME type of this document.
+        :param pulumi.Input[str] mime_type: The MIME type of this document.
         :param pulumi.Input[str] name: Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
         :param pulumi.Input[str] raw_content: The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types.
         """
@@ -294,17 +291,23 @@ class Document(pulumi.CustomResource):
 
             __props__.__dict__["content"] = content
             __props__.__dict__["content_uri"] = content_uri
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["enable_auto_reload"] = enable_auto_reload
             __props__.__dict__["import_gcs_custom_metadata"] = import_gcs_custom_metadata
             if knowledge_base_id is None and not opts.urn:
                 raise TypeError("Missing required property 'knowledge_base_id'")
             __props__.__dict__["knowledge_base_id"] = knowledge_base_id
+            if knowledge_types is None and not opts.urn:
+                raise TypeError("Missing required property 'knowledge_types'")
             __props__.__dict__["knowledge_types"] = knowledge_types
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["metadata"] = metadata
+            if mime_type is None and not opts.urn:
+                raise TypeError("Missing required property 'mime_type'")
             __props__.__dict__["mime_type"] = mime_type
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
@@ -366,7 +369,7 @@ class Document(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
+        The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
         """
         return pulumi.get(self, "display_name")
 
@@ -382,7 +385,7 @@ class Document(pulumi.CustomResource):
     @pulumi.getter(name="knowledgeTypes")
     def knowledge_types(self) -> pulumi.Output[Sequence[str]]:
         """
-        Required. The knowledge type of document content.
+        The knowledge type of document content.
         """
         return pulumi.get(self, "knowledge_types")
 
@@ -406,7 +409,7 @@ class Document(pulumi.CustomResource):
     @pulumi.getter(name="mimeType")
     def mime_type(self) -> pulumi.Output[str]:
         """
-        Required. The MIME type of this document.
+        The MIME type of this document.
         """
         return pulumi.get(self, "mime_type")
 

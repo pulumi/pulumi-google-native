@@ -15,28 +15,38 @@ __all__ = ['AutoscalingPolicyArgs', 'AutoscalingPolicy']
 @pulumi.input_type
 class AutoscalingPolicyArgs:
     def __init__(__self__, *,
+                 id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
+                 worker_config: pulumi.Input['InstanceGroupAutoscalingPolicyConfigArgs'],
                  basic_algorithm: Optional[pulumi.Input['BasicAutoscalingAlgorithmArgs']] = None,
-                 id: Optional[pulumi.Input[str]] = None,
-                 secondary_worker_config: Optional[pulumi.Input['InstanceGroupAutoscalingPolicyConfigArgs']] = None,
-                 worker_config: Optional[pulumi.Input['InstanceGroupAutoscalingPolicyConfigArgs']] = None):
+                 secondary_worker_config: Optional[pulumi.Input['InstanceGroupAutoscalingPolicyConfigArgs']] = None):
         """
         The set of arguments for constructing a AutoscalingPolicy resource.
-        :param pulumi.Input[str] id: Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+        :param pulumi.Input[str] id: The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+        :param pulumi.Input['InstanceGroupAutoscalingPolicyConfigArgs'] worker_config: Describes how the autoscaler will operate for primary workers.
         :param pulumi.Input['InstanceGroupAutoscalingPolicyConfigArgs'] secondary_worker_config: Optional. Describes how the autoscaler will operate for secondary workers.
-        :param pulumi.Input['InstanceGroupAutoscalingPolicyConfigArgs'] worker_config: Required. Describes how the autoscaler will operate for primary workers.
         """
+        pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "worker_config", worker_config)
         if basic_algorithm is not None:
             pulumi.set(__self__, "basic_algorithm", basic_algorithm)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if secondary_worker_config is not None:
             pulumi.set(__self__, "secondary_worker_config", secondary_worker_config)
-        if worker_config is not None:
-            pulumi.set(__self__, "worker_config", worker_config)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
@@ -57,6 +67,18 @@ class AutoscalingPolicyArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="workerConfig")
+    def worker_config(self) -> pulumi.Input['InstanceGroupAutoscalingPolicyConfigArgs']:
+        """
+        Describes how the autoscaler will operate for primary workers.
+        """
+        return pulumi.get(self, "worker_config")
+
+    @worker_config.setter
+    def worker_config(self, value: pulumi.Input['InstanceGroupAutoscalingPolicyConfigArgs']):
+        pulumi.set(self, "worker_config", value)
+
+    @property
     @pulumi.getter(name="basicAlgorithm")
     def basic_algorithm(self) -> Optional[pulumi.Input['BasicAutoscalingAlgorithmArgs']]:
         return pulumi.get(self, "basic_algorithm")
@@ -64,18 +86,6 @@ class AutoscalingPolicyArgs:
     @basic_algorithm.setter
     def basic_algorithm(self, value: Optional[pulumi.Input['BasicAutoscalingAlgorithmArgs']]):
         pulumi.set(self, "basic_algorithm", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter(name="secondaryWorkerConfig")
@@ -88,18 +98,6 @@ class AutoscalingPolicyArgs:
     @secondary_worker_config.setter
     def secondary_worker_config(self, value: Optional[pulumi.Input['InstanceGroupAutoscalingPolicyConfigArgs']]):
         pulumi.set(self, "secondary_worker_config", value)
-
-    @property
-    @pulumi.getter(name="workerConfig")
-    def worker_config(self) -> Optional[pulumi.Input['InstanceGroupAutoscalingPolicyConfigArgs']]:
-        """
-        Required. Describes how the autoscaler will operate for primary workers.
-        """
-        return pulumi.get(self, "worker_config")
-
-    @worker_config.setter
-    def worker_config(self, value: Optional[pulumi.Input['InstanceGroupAutoscalingPolicyConfigArgs']]):
-        pulumi.set(self, "worker_config", value)
 
 
 class AutoscalingPolicy(pulumi.CustomResource):
@@ -119,9 +117,9 @@ class AutoscalingPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] id: Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+        :param pulumi.Input[str] id: The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
         :param pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']] secondary_worker_config: Optional. Describes how the autoscaler will operate for secondary workers.
-        :param pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']] worker_config: Required. Describes how the autoscaler will operate for primary workers.
+        :param pulumi.Input[pulumi.InputType['InstanceGroupAutoscalingPolicyConfigArgs']] worker_config: Describes how the autoscaler will operate for primary workers.
         """
         ...
     @overload
@@ -166,6 +164,8 @@ class AutoscalingPolicy(pulumi.CustomResource):
             __props__ = AutoscalingPolicyArgs.__new__(AutoscalingPolicyArgs)
 
             __props__.__dict__["basic_algorithm"] = basic_algorithm
+            if id is None and not opts.urn:
+                raise TypeError("Missing required property 'id'")
             __props__.__dict__["id"] = id
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -174,6 +174,8 @@ class AutoscalingPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["secondary_worker_config"] = secondary_worker_config
+            if worker_config is None and not opts.urn:
+                raise TypeError("Missing required property 'worker_config'")
             __props__.__dict__["worker_config"] = worker_config
             __props__.__dict__["name"] = None
         super(AutoscalingPolicy, __self__).__init__(
@@ -229,7 +231,7 @@ class AutoscalingPolicy(pulumi.CustomResource):
     @pulumi.getter(name="workerConfig")
     def worker_config(self) -> pulumi.Output['outputs.InstanceGroupAutoscalingPolicyConfigResponse']:
         """
-        Required. Describes how the autoscaler will operate for primary workers.
+        Describes how the autoscaler will operate for primary workers.
         """
         return pulumi.get(self, "worker_config")
 

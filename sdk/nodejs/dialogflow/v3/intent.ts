@@ -40,7 +40,7 @@ export class Intent extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Required. The human-readable name of the intent, unique within the agent.
+     * The human-readable name of the intent, unique within the agent.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -81,6 +81,9 @@ export class Intent extends pulumi.CustomResource {
         if (!opts.id) {
             if ((!args || args.agentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
+            }
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
             }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
@@ -127,9 +130,9 @@ export interface IntentArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Required. The human-readable name of the intent, unique within the agent.
+     * The human-readable name of the intent, unique within the agent.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
      */

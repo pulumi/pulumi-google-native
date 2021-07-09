@@ -43,7 +43,7 @@ type Instance struct {
 	KmsKey pulumi.StringOutput `pulumi:"kmsKey"`
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+	// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
 	MachineType pulumi.StringOutput `pulumi:"machineType"`
 	// Custom metadata to apply to this instance.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
@@ -95,6 +95,9 @@ func NewInstance(ctx *pulumi.Context,
 	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
+	}
+	if args.MachineType == nil {
+		return nil, errors.New("invalid value for required argument 'MachineType'")
 	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
@@ -149,7 +152,7 @@ type instanceState struct {
 	KmsKey *string `pulumi:"kmsKey"`
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+	// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
 	MachineType *string `pulumi:"machineType"`
 	// Custom metadata to apply to this instance.
 	Metadata map[string]string `pulumi:"metadata"`
@@ -218,7 +221,7 @@ type InstanceState struct {
 	KmsKey pulumi.StringPtrInput
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
 	Labels pulumi.StringMapInput
-	// Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+	// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
 	MachineType pulumi.StringPtrInput
 	// Custom metadata to apply to this instance.
 	Metadata pulumi.StringMapInput
@@ -289,8 +292,8 @@ type instanceArgs struct {
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
 	Labels   map[string]string `pulumi:"labels"`
 	Location string            `pulumi:"location"`
-	// Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
-	MachineType *string `pulumi:"machineType"`
+	// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+	MachineType string `pulumi:"machineType"`
 	// Custom metadata to apply to this instance.
 	Metadata map[string]string `pulumi:"metadata"`
 	// The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
@@ -350,8 +353,8 @@ type InstanceArgs struct {
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringInput
-	// Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
-	MachineType pulumi.StringPtrInput
+	// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+	MachineType pulumi.StringInput
 	// Custom metadata to apply to this instance.
 	Metadata pulumi.StringMapInput
 	// The name of the VPC that this instance is in. Format: `projects/{project_id}/global/networks/{network_id}`

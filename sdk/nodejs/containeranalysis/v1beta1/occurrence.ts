@@ -76,7 +76,7 @@ export class Occurrence extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
+     * Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
      */
     public readonly noteName!: pulumi.Output<string>;
     /**
@@ -84,7 +84,7 @@ export class Occurrence extends pulumi.CustomResource {
      */
     public readonly remediation!: pulumi.Output<string>;
     /**
-     * Required. Immutable. The resource for which the occurrence applies.
+     * Immutable. The resource for which the occurrence applies.
      */
     public readonly resource!: pulumi.Output<outputs.containeranalysis.v1beta1.ResourceResponse>;
     /**
@@ -107,8 +107,14 @@ export class Occurrence extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.noteName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'noteName'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.resource === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'resource'");
             }
             inputs["attestation"] = args ? args.attestation : undefined;
             inputs["build"] = args ? args.build : undefined;
@@ -183,18 +189,18 @@ export interface OccurrenceArgs {
      */
     intoto?: pulumi.Input<inputs.containeranalysis.v1beta1.GrafeasV1beta1IntotoDetailsArgs>;
     /**
-     * Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
+     * Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
      */
-    noteName?: pulumi.Input<string>;
+    noteName: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
      * A description of actions that can be taken to remedy the note.
      */
     remediation?: pulumi.Input<string>;
     /**
-     * Required. Immutable. The resource for which the occurrence applies.
+     * Immutable. The resource for which the occurrence applies.
      */
-    resource?: pulumi.Input<inputs.containeranalysis.v1beta1.ResourceArgs>;
+    resource: pulumi.Input<inputs.containeranalysis.v1beta1.ResourceArgs>;
     /**
      * Describes a security vulnerability.
      */

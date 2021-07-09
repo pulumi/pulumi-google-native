@@ -87,7 +87,7 @@ class GetConsentArtifactResult:
     @pulumi.getter(name="userId")
     def user_id(self) -> str:
         """
-        Required. User's UUID provided by the client.
+        User's UUID provided by the client.
         """
         return pulumi.get(self, "user_id")
 

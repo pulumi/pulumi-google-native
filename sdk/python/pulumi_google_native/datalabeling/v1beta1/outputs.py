@@ -62,7 +62,7 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpecResponse(dict):
         """
         Container of information related to one possible annotation that can be used in a labeling task. For example, an image classification task where images are labeled as `dog` or `cat` must reference an AnnotationSpec for `dog` and an AnnotationSpec for `cat`.
         :param str description: Optional. User-provided description of the annotation specification. The description can be up to 10,000 characters long.
-        :param str display_name: Required. The display name of the AnnotationSpec. Maximum of 64 characters.
+        :param str display_name: The display name of the AnnotationSpec. Maximum of 64 characters.
         :param int index: This is the integer index of the AnnotationSpec. The index for the whole AnnotationSpecSet is sequential starting from 0. For example, an AnnotationSpecSet with classes `dog` and `cat`, might contain one AnnotationSpec with `{ display_name: "dog", index: 0 }` and one AnnotationSpec with `{ display_name: "cat", index: 1 }`. This is especially useful for model training as it encodes the string labels into numeric values.
         """
         pulumi.set(__self__, "description", description)
@@ -81,7 +81,7 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpecResponse(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The display name of the AnnotationSpec. Maximum of 64 characters.
+        The display name of the AnnotationSpec. Maximum of 64 characters.
         """
         return pulumi.get(self, "display_name")
 
@@ -168,7 +168,7 @@ class GoogleCloudDatalabelingV1beta1BigQuerySourceResponse(dict):
                  input_uri: str):
         """
         The BigQuery location for input data. If used in an EvaluationJob, this is where the service saves the prediction input and output sampled from the model version.
-        :param str input_uri: Required. BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
+        :param str input_uri: BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
         """
         pulumi.set(__self__, "input_uri", input_uri)
 
@@ -176,7 +176,7 @@ class GoogleCloudDatalabelingV1beta1BigQuerySourceResponse(dict):
     @pulumi.getter(name="inputUri")
     def input_uri(self) -> str:
         """
-        Required. BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
+        BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
         """
         return pulumi.get(self, "input_uri")
 
@@ -249,7 +249,7 @@ class GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse(dict):
                  instruction_message: str):
         """
         Config for image bounding poly (and bounding box) human labeling task.
-        :param str annotation_spec_set: Required. Annotation spec set resource name.
+        :param str annotation_spec_set: Annotation spec set resource name.
         :param str instruction_message: Optional. Instruction message showed on contributors UI.
         """
         pulumi.set(__self__, "annotation_spec_set", annotation_spec_set)
@@ -259,7 +259,7 @@ class GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse(dict):
     @pulumi.getter(name="annotationSpecSet")
     def annotation_spec_set(self) -> str:
         """
-        Required. Annotation spec set resource name.
+        Annotation spec set resource name.
         """
         return pulumi.get(self, "annotation_spec_set")
 
@@ -377,8 +377,8 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse(dict):
                  min_acceptable_mean_average_precision: float):
         """
         Provides details for how an evaluation job sends email alerts based on the results of a run.
-        :param str email: Required. An email address to send alerts to.
-        :param float min_acceptable_mean_average_precision: Required. A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
+        :param str email: An email address to send alerts to.
+        :param float min_acceptable_mean_average_precision: A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
         """
         pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "min_acceptable_mean_average_precision", min_acceptable_mean_average_precision)
@@ -387,7 +387,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse(dict):
     @pulumi.getter
     def email(self) -> str:
         """
-        Required. An email address to send alerts to.
+        An email address to send alerts to.
         """
         return pulumi.get(self, "email")
 
@@ -395,7 +395,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse(dict):
     @pulumi.getter(name="minAcceptableMeanAveragePrecision")
     def min_acceptable_mean_average_precision(self) -> float:
         """
-        Required. A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
+        A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
         """
         return pulumi.get(self, "min_acceptable_mean_average_precision")
 
@@ -453,12 +453,12 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse(dict):
                  text_classification_config: 'outputs.GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse'):
         """
         Configures specific details of how a continuous evaluation job works. Provide this configuration when you create an EvaluationJob.
-        :param Mapping[str, str] bigquery_import_keys: Required. Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
+        :param Mapping[str, str] bigquery_import_keys: Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
         :param 'GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse' bounding_poly_config: Specify this field if your model version performs image object detection (bounding box detection). `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet.
-        :param 'GoogleCloudDatalabelingV1beta1EvaluationConfigResponse' evaluation_config: Required. Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
+        :param 'GoogleCloudDatalabelingV1beta1EvaluationConfigResponse' evaluation_config: Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
         :param 'GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse' evaluation_job_alert_config: Optional. Configuration details for evaluation job alerts. Specify this field if you want to receive email alerts if the evaluation job finds that your predictions have low mean average precision during a run.
-        :param int example_count: Required. The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
-        :param float example_sample_percentage: Required. Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
+        :param int example_count: The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
+        :param float example_sample_percentage: Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
         :param 'GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse' human_annotation_config: Optional. Details for human annotation of your data. If you set labelMissingGroundTruth to `true` for this evaluation job, then you must specify this field. If you plan to provide your own ground truth labels, then omit this field. Note that you must create an Instruction resource before you can specify this field. Provide the name of the instruction resource in the `instruction` field within this configuration.
         :param 'GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse' image_classification_config: Specify this field if your model version performs image classification or general classification. `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet. `allowMultiLabel` in this configuration must match `classificationMetadata.isMultiLabel` in input_config.
         :param 'GoogleCloudDatalabelingV1beta1InputConfigResponse' input_config: Rquired. Details for the sampled prediction input. Within this configuration, there are requirements for several fields: * `dataType` must be one of `IMAGE`, `TEXT`, or `GENERAL_DATA`. * `annotationType` must be one of `IMAGE_CLASSIFICATION_ANNOTATION`, `TEXT_CLASSIFICATION_ANNOTATION`, `GENERAL_CLASSIFICATION_ANNOTATION`, or `IMAGE_BOUNDING_BOX_ANNOTATION` (image object detection). * If your machine learning model performs classification, you must specify `classificationMetadata.isMultiLabel`. * You must specify `bigquerySource` (not `gcsSource`).
@@ -479,7 +479,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse(dict):
     @pulumi.getter(name="bigqueryImportKeys")
     def bigquery_import_keys(self) -> Mapping[str, str]:
         """
-        Required. Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
+        Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
         """
         return pulumi.get(self, "bigquery_import_keys")
 
@@ -495,7 +495,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse(dict):
     @pulumi.getter(name="evaluationConfig")
     def evaluation_config(self) -> 'outputs.GoogleCloudDatalabelingV1beta1EvaluationConfigResponse':
         """
-        Required. Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
+        Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
         """
         return pulumi.get(self, "evaluation_config")
 
@@ -511,7 +511,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse(dict):
     @pulumi.getter(name="exampleCount")
     def example_count(self) -> int:
         """
-        Required. The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
+        The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
         """
         return pulumi.get(self, "example_count")
 
@@ -519,7 +519,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse(dict):
     @pulumi.getter(name="exampleSamplePercentage")
     def example_sample_percentage(self) -> float:
         """
-        Required. Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
+        Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
         """
         return pulumi.get(self, "example_sample_percentage")
 
@@ -585,8 +585,8 @@ class GoogleCloudDatalabelingV1beta1GcsSourceResponse(dict):
                  mime_type: str):
         """
         Source of the Cloud Storage file to be imported.
-        :param str input_uri: Required. The input URI of source file. This must be a Cloud Storage path (`gs://...`).
-        :param str mime_type: Required. The format of the source file. Only "text/csv" is supported.
+        :param str input_uri: The input URI of source file. This must be a Cloud Storage path (`gs://...`).
+        :param str mime_type: The format of the source file. Only "text/csv" is supported.
         """
         pulumi.set(__self__, "input_uri", input_uri)
         pulumi.set(__self__, "mime_type", mime_type)
@@ -595,7 +595,7 @@ class GoogleCloudDatalabelingV1beta1GcsSourceResponse(dict):
     @pulumi.getter(name="inputUri")
     def input_uri(self) -> str:
         """
-        Required. The input URI of source file. This must be a Cloud Storage path (`gs://...`).
+        The input URI of source file. This must be a Cloud Storage path (`gs://...`).
         """
         return pulumi.get(self, "input_uri")
 
@@ -603,7 +603,7 @@ class GoogleCloudDatalabelingV1beta1GcsSourceResponse(dict):
     @pulumi.getter(name="mimeType")
     def mime_type(self) -> str:
         """
-        Required. The format of the source file. Only "text/csv" is supported.
+        The format of the source file. Only "text/csv" is supported.
         """
         return pulumi.get(self, "mime_type")
 
@@ -657,9 +657,9 @@ class GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse(dict):
         """
         Configuration for how human labeling task should be done.
         :param str annotated_dataset_description: Optional. A human-readable description for AnnotatedDataset. The description can be up to 10000 characters long.
-        :param str annotated_dataset_display_name: Required. A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
+        :param str annotated_dataset_display_name: A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
         :param Sequence[str] contributor_emails: Optional. If you want your own labeling contributors to manage and work on this labeling request, you can set these contributors here. We will give them access to the question types in crowdcompute. Note that these emails must be registered in crowdcompute worker UI: https://crowd-compute.appspot.com/
-        :param str instruction: Required. Instruction resource name.
+        :param str instruction: Instruction resource name.
         :param str label_group: Optional. A human-readable label used to logically group labeling tasks. This string must match the regular expression `[a-zA-Z\\d_-]{0,128}`.
         :param str language_code: Optional. The Language of this question, as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Default value is en-US. Only need to set this when task is language related. For example, French text classification.
         :param str question_duration: Optional. Maximum duration for contributors to answer a question. Maximum is 3600 seconds. Default is 3600 seconds.
@@ -688,7 +688,7 @@ class GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse(dict):
     @pulumi.getter(name="annotatedDatasetDisplayName")
     def annotated_dataset_display_name(self) -> str:
         """
-        Required. A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
+        A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
         """
         return pulumi.get(self, "annotated_dataset_display_name")
 
@@ -704,7 +704,7 @@ class GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse(dict):
     @pulumi.getter
     def instruction(self) -> str:
         """
-        Required. Instruction resource name.
+        Instruction resource name.
         """
         return pulumi.get(self, "instruction")
 
@@ -782,7 +782,7 @@ class GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse(dict):
         """
         Config for image classification human labeling task.
         :param bool allow_multi_label: Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one image.
-        :param str annotation_spec_set: Required. Annotation spec set resource name.
+        :param str annotation_spec_set: Annotation spec set resource name.
         :param str answer_aggregation_type: Optional. The type of how to aggregate answers.
         """
         pulumi.set(__self__, "allow_multi_label", allow_multi_label)
@@ -801,7 +801,7 @@ class GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse(dict):
     @pulumi.getter(name="annotationSpecSet")
     def annotation_spec_set(self) -> str:
         """
-        Required. Annotation spec set resource name.
+        Annotation spec set resource name.
         """
         return pulumi.get(self, "annotation_spec_set")
 
@@ -858,7 +858,7 @@ class GoogleCloudDatalabelingV1beta1InputConfigResponse(dict):
         :param str annotation_type: Optional. The type of annotation to be performed on this data. You must specify this field if you are using this InputConfig in an EvaluationJob.
         :param 'GoogleCloudDatalabelingV1beta1BigQuerySourceResponse' bigquery_source: Source located in BigQuery. You must specify this field if you are using this InputConfig in an EvaluationJob.
         :param 'GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse' classification_metadata: Optional. Metadata about annotations for the input. You must specify this field if you are using this InputConfig in an EvaluationJob for a model version that performs classification.
-        :param str data_type: Required. Data type must be specifed when user tries to import data.
+        :param str data_type: Data type must be specifed when user tries to import data.
         :param 'GoogleCloudDatalabelingV1beta1GcsSourceResponse' gcs_source: Source located in Cloud Storage.
         :param 'GoogleCloudDatalabelingV1beta1TextMetadataResponse' text_metadata: Required for text import, as language code must be specified.
         """
@@ -897,7 +897,7 @@ class GoogleCloudDatalabelingV1beta1InputConfigResponse(dict):
     @pulumi.getter(name="dataType")
     def data_type(self) -> str:
         """
-        Required. Data type must be specifed when user tries to import data.
+        Data type must be specifed when user tries to import data.
         """
         return pulumi.get(self, "data_type")
 
@@ -1053,7 +1053,7 @@ class GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse(dict):
         """
         Config for text classification human labeling task.
         :param bool allow_multi_label: Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one text segment.
-        :param str annotation_spec_set: Required. Annotation spec set resource name.
+        :param str annotation_spec_set: Annotation spec set resource name.
         :param 'GoogleCloudDatalabelingV1beta1SentimentConfigResponse' sentiment_config: Optional. Configs for sentiment selection. We deprecate sentiment analysis in data labeling side as it is incompatible with uCAIP.
         """
         pulumi.set(__self__, "allow_multi_label", allow_multi_label)
@@ -1072,7 +1072,7 @@ class GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse(dict):
     @pulumi.getter(name="annotationSpecSet")
     def annotation_spec_set(self) -> str:
         """
-        Required. Annotation spec set resource name.
+        Annotation spec set resource name.
         """
         return pulumi.get(self, "annotation_spec_set")
 

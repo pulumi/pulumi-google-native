@@ -23,13 +23,13 @@ type LookupAnnotationSpecSetArgs struct {
 }
 
 type LookupAnnotationSpecSetResult struct {
-	// Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
+	// The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
 	AnnotationSpecs []GoogleCloudDatalabelingV1beta1AnnotationSpecResponse `pulumi:"annotationSpecs"`
 	// The names of any related resources that are blocking changes to the annotation spec set.
 	BlockingResources []string `pulumi:"blockingResources"`
 	// Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
 	Description string `pulumi:"description"`
-	// Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
+	// The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
 	DisplayName string `pulumi:"displayName"`
 	// The AnnotationSpecSet resource name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
 	Name string `pulumi:"name"`

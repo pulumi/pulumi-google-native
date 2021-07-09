@@ -71,7 +71,7 @@ class GetChannelPartnerLinkResult:
     @pulumi.getter(name="linkState")
     def link_state(self) -> str:
         """
-        Required. State of the channel partner link.
+        State of the channel partner link.
         """
         return pulumi.get(self, "link_state")
 
@@ -95,7 +95,7 @@ class GetChannelPartnerLinkResult:
     @pulumi.getter(name="resellerCloudIdentityId")
     def reseller_cloud_identity_id(self) -> str:
         """
-        Required. Cloud Identity ID of the linked reseller.
+        Cloud Identity ID of the linked reseller.
         """
         return pulumi.get(self, "reseller_cloud_identity_id")
 

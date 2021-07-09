@@ -40,7 +40,7 @@ type LookupJobResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. Job is a Pig job.
 	PigJob PigJobResponse `pulumi:"pigJob"`
-	// Required. Job information, including how, when, and where to run the job.
+	// Job information, including how, when, and where to run the job.
 	Placement JobPlacementResponse `pulumi:"placement"`
 	// Optional. Job is a Presto job.
 	PrestoJob PrestoJobResponse `pulumi:"prestoJob"`

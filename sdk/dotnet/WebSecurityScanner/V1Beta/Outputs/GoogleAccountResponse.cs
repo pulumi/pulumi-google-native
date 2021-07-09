@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta.Outputs
     public sealed class GoogleAccountResponse
     {
         /// <summary>
-        /// Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+        /// Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// Required. The user name of the Google account.
+        /// The user name of the Google account.
         /// </summary>
         public readonly string Username;
 

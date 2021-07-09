@@ -17,7 +17,10 @@ __all__ = ['VersionArgs', 'Version']
 class VersionArgs:
     def __init__(__self__, *,
                  model_id: pulumi.Input[str],
+                 name: pulumi.Input[str],
                  project: pulumi.Input[str],
+                 python_version: pulumi.Input[str],
+                 runtime_version: pulumi.Input[str],
                  accelerator_config: Optional[pulumi.Input['GoogleCloudMlV1__AcceleratorConfigArgs']] = None,
                  auto_scaling: Optional[pulumi.Input['GoogleCloudMlV1__AutoScalingArgs']] = None,
                  container: Optional[pulumi.Input['GoogleCloudMlV1__ContainerSpecArgs']] = None,
@@ -29,16 +32,16 @@ class VersionArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  manual_scaling: Optional[pulumi.Input['GoogleCloudMlV1__ManualScalingArgs']] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  package_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  prediction_class: Optional[pulumi.Input[str]] = None,
-                 python_version: Optional[pulumi.Input[str]] = None,
                  request_logging_config: Optional[pulumi.Input['GoogleCloudMlV1__RequestLoggingConfigArgs']] = None,
                  routes: Optional[pulumi.Input['GoogleCloudMlV1__RouteMapArgs']] = None,
-                 runtime_version: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Version resource.
+        :param pulumi.Input[str] name: The name specified for the version when it was created. The version name must be unique within the model it is created in.
+        :param pulumi.Input[str] python_version: The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
+        :param pulumi.Input[str] runtime_version: The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
         :param pulumi.Input['GoogleCloudMlV1__AcceleratorConfigArgs'] accelerator_config: Optional. Accelerator config for using GPUs for online prediction (beta). Only specify this field if you have specified a Compute Engine (N1) machine type in the `machineType` field. Learn more about [using GPUs for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
         :param pulumi.Input['GoogleCloudMlV1__AutoScalingArgs'] auto_scaling: Automatically scale the number of nodes used to serve the model in response to increases and decreases in traffic. Care should be taken to ramp up traffic according to the model's ability to scale or you will start seeing increases in latency and 429 response codes.
         :param pulumi.Input['GoogleCloudMlV1__ContainerSpecArgs'] container: Optional. Specifies a custom container to use for serving predictions. If you specify this field, then `machineType` is required. If you specify this field, then `deploymentUri` is optional. If you specify this field, then you must not specify `runtimeVersion`, `packageUris`, `framework`, `pythonVersion`, or `predictionClass`.
@@ -50,17 +53,17 @@ class VersionArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. One or more labels that you can add, to organize your model versions. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
         :param pulumi.Input[str] machine_type: Optional. The type of machine on which to serve the model. Currently only applies to online prediction service. To learn about valid values for this field, read [Choosing a machine type for online prediction](/ai-platform/prediction/docs/machine-types-online-prediction). If this field is not specified and you are using a [regional endpoint](/ai-platform/prediction/docs/regional-endpoints), then the machine type defaults to `n1-standard-2`. If this field is not specified and you are using the global endpoint (`ml.googleapis.com`), then the machine type defaults to `mls1-c1-m2`.
         :param pulumi.Input['GoogleCloudMlV1__ManualScalingArgs'] manual_scaling: Manually select the number of nodes to use for serving the model. You should generally use `auto_scaling` with an appropriate `min_nodes` instead, but this option is available if you want more predictable billing. Beware that latency and error rates will increase if the traffic exceeds that capability of the system to serve it based on the selected number of nodes.
-        :param pulumi.Input[str] name: Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] package_uris: Optional. Cloud Storage paths (`gs://…`) of packages for [custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines) or [scikit-learn pipelines with custom code](/ml-engine/docs/scikit/exporting-for-prediction#custom-pipeline-code). For a custom prediction routine, one of these packages must contain your Predictor class (see [`predictionClass`](#Version.FIELDS.prediction_class)). Additionally, include any dependencies used by your Predictor or scikit-learn pipeline uses that are not already included in your selected [runtime version](/ml-engine/docs/tensorflow/runtime-version-list). If you specify this field, you must also set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.
         :param pulumi.Input[str] prediction_class: Optional. The fully qualified name (module_name.class_name) of a class that implements the Predictor interface described in this reference field. The module containing this class should be included in a package provided to the [`packageUris` field](#Version.FIELDS.package_uris). Specify this field if and only if you are deploying a [custom prediction routine (beta)](/ml-engine/docs/tensorflow/custom-prediction-routines). If you specify this field, you must set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater and you must set `machineType` to a [legacy (MLS1) machine type](/ml-engine/docs/machine-types-online-prediction). The following code sample provides the Predictor interface: class Predictor(object): \"\"\"Interface for constructing custom predictors.\"\"\" def predict(self, instances, **kwargs): \"\"\"Performs custom prediction. Instances are the decoded values from the request. They have already been deserialized from JSON. Args: instances: A list of prediction input instances. **kwargs: A dictionary of keyword args provided as additional fields on the predict request body. Returns: A list of outputs containing the prediction results. This list must be JSON serializable. \"\"\" raise NotImplementedError() @classmethod def from_path(cls, model_dir): \"\"\"Creates an instance of Predictor using the given path. Loading of the predictor should be done in this method. Args: model_dir: The local directory that contains the exported model file along with any additional files uploaded when creating the version resource. Returns: An instance implementing this Predictor class. \"\"\" raise NotImplementedError() Learn more about [the Predictor interface and custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines).
-        :param pulumi.Input[str] python_version: Required. The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
         :param pulumi.Input['GoogleCloudMlV1__RequestLoggingConfigArgs'] request_logging_config: Optional. *Only* specify this field in a projects.models.versions.patch request. Specifying it in a projects.models.versions.create request has no effect. Configures the request-response pair logging on predictions from this Version.
         :param pulumi.Input['GoogleCloudMlV1__RouteMapArgs'] routes: Optional. Specifies paths on a custom container's HTTP server where AI Platform Prediction sends certain requests. If you specify this field, then you must also specify the `container` field. If you specify the `container` field and do not specify this field, it defaults to the following: ```json { "predict": "/v1/models/MODEL/versions/VERSION:predict", "health": "/v1/models/MODEL/versions/VERSION" } ``` See RouteMap for more details about these default values.
-        :param pulumi.Input[str] runtime_version: Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
         :param pulumi.Input[str] service_account: Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).
         """
         pulumi.set(__self__, "model_id", model_id)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "python_version", python_version)
+        pulumi.set(__self__, "runtime_version", runtime_version)
         if accelerator_config is not None:
             pulumi.set(__self__, "accelerator_config", accelerator_config)
         if auto_scaling is not None:
@@ -83,20 +86,14 @@ class VersionArgs:
             pulumi.set(__self__, "machine_type", machine_type)
         if manual_scaling is not None:
             pulumi.set(__self__, "manual_scaling", manual_scaling)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if package_uris is not None:
             pulumi.set(__self__, "package_uris", package_uris)
         if prediction_class is not None:
             pulumi.set(__self__, "prediction_class", prediction_class)
-        if python_version is not None:
-            pulumi.set(__self__, "python_version", python_version)
         if request_logging_config is not None:
             pulumi.set(__self__, "request_logging_config", request_logging_config)
         if routes is not None:
             pulumi.set(__self__, "routes", routes)
-        if runtime_version is not None:
-            pulumi.set(__self__, "runtime_version", runtime_version)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
 
@@ -111,12 +108,48 @@ class VersionArgs:
 
     @property
     @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name specified for the version when it was created. The version name must be unique within the model it is created in.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         return pulumi.get(self, "project")
 
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pythonVersion")
+    def python_version(self) -> pulumi.Input[str]:
+        """
+        The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
+        """
+        return pulumi.get(self, "python_version")
+
+    @python_version.setter
+    def python_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "python_version", value)
+
+    @property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> pulumi.Input[str]:
+        """
+        The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
+        """
+        return pulumi.get(self, "runtime_version")
+
+    @runtime_version.setter
+    def runtime_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "runtime_version", value)
 
     @property
     @pulumi.getter(name="acceleratorConfig")
@@ -251,18 +284,6 @@ class VersionArgs:
         pulumi.set(self, "manual_scaling", value)
 
     @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
     @pulumi.getter(name="packageUris")
     def package_uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -287,18 +308,6 @@ class VersionArgs:
         pulumi.set(self, "prediction_class", value)
 
     @property
-    @pulumi.getter(name="pythonVersion")
-    def python_version(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
-        """
-        return pulumi.get(self, "python_version")
-
-    @python_version.setter
-    def python_version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "python_version", value)
-
-    @property
     @pulumi.getter(name="requestLoggingConfig")
     def request_logging_config(self) -> Optional[pulumi.Input['GoogleCloudMlV1__RequestLoggingConfigArgs']]:
         """
@@ -321,18 +330,6 @@ class VersionArgs:
     @routes.setter
     def routes(self, value: Optional[pulumi.Input['GoogleCloudMlV1__RouteMapArgs']]):
         pulumi.set(self, "routes", value)
-
-    @property
-    @pulumi.getter(name="runtimeVersion")
-    def runtime_version(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
-        """
-        return pulumi.get(self, "runtime_version")
-
-    @runtime_version.setter
-    def runtime_version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "runtime_version", value)
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -390,13 +387,13 @@ class Version(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. One or more labels that you can add, to organize your model versions. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
         :param pulumi.Input[str] machine_type: Optional. The type of machine on which to serve the model. Currently only applies to online prediction service. To learn about valid values for this field, read [Choosing a machine type for online prediction](/ai-platform/prediction/docs/machine-types-online-prediction). If this field is not specified and you are using a [regional endpoint](/ai-platform/prediction/docs/regional-endpoints), then the machine type defaults to `n1-standard-2`. If this field is not specified and you are using the global endpoint (`ml.googleapis.com`), then the machine type defaults to `mls1-c1-m2`.
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__ManualScalingArgs']] manual_scaling: Manually select the number of nodes to use for serving the model. You should generally use `auto_scaling` with an appropriate `min_nodes` instead, but this option is available if you want more predictable billing. Beware that latency and error rates will increase if the traffic exceeds that capability of the system to serve it based on the selected number of nodes.
-        :param pulumi.Input[str] name: Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
+        :param pulumi.Input[str] name: The name specified for the version when it was created. The version name must be unique within the model it is created in.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] package_uris: Optional. Cloud Storage paths (`gs://…`) of packages for [custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines) or [scikit-learn pipelines with custom code](/ml-engine/docs/scikit/exporting-for-prediction#custom-pipeline-code). For a custom prediction routine, one of these packages must contain your Predictor class (see [`predictionClass`](#Version.FIELDS.prediction_class)). Additionally, include any dependencies used by your Predictor or scikit-learn pipeline uses that are not already included in your selected [runtime version](/ml-engine/docs/tensorflow/runtime-version-list). If you specify this field, you must also set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.
         :param pulumi.Input[str] prediction_class: Optional. The fully qualified name (module_name.class_name) of a class that implements the Predictor interface described in this reference field. The module containing this class should be included in a package provided to the [`packageUris` field](#Version.FIELDS.package_uris). Specify this field if and only if you are deploying a [custom prediction routine (beta)](/ml-engine/docs/tensorflow/custom-prediction-routines). If you specify this field, you must set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater and you must set `machineType` to a [legacy (MLS1) machine type](/ml-engine/docs/machine-types-online-prediction). The following code sample provides the Predictor interface: class Predictor(object): \"\"\"Interface for constructing custom predictors.\"\"\" def predict(self, instances, **kwargs): \"\"\"Performs custom prediction. Instances are the decoded values from the request. They have already been deserialized from JSON. Args: instances: A list of prediction input instances. **kwargs: A dictionary of keyword args provided as additional fields on the predict request body. Returns: A list of outputs containing the prediction results. This list must be JSON serializable. \"\"\" raise NotImplementedError() @classmethod def from_path(cls, model_dir): \"\"\"Creates an instance of Predictor using the given path. Loading of the predictor should be done in this method. Args: model_dir: The local directory that contains the exported model file along with any additional files uploaded when creating the version resource. Returns: An instance implementing this Predictor class. \"\"\" raise NotImplementedError() Learn more about [the Predictor interface and custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines).
-        :param pulumi.Input[str] python_version: Required. The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
+        :param pulumi.Input[str] python_version: The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__RequestLoggingConfigArgs']] request_logging_config: Optional. *Only* specify this field in a projects.models.versions.patch request. Specifying it in a projects.models.versions.create request has no effect. Configures the request-response pair logging on predictions from this Version.
         :param pulumi.Input[pulumi.InputType['GoogleCloudMlV1__RouteMapArgs']] routes: Optional. Specifies paths on a custom container's HTTP server where AI Platform Prediction sends certain requests. If you specify this field, then you must also specify the `container` field. If you specify the `container` field and do not specify this field, it defaults to the following: ```json { "predict": "/v1/models/MODEL/versions/VERSION:predict", "health": "/v1/models/MODEL/versions/VERSION" } ``` See RouteMap for more details about these default values.
-        :param pulumi.Input[str] runtime_version: Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
+        :param pulumi.Input[str] runtime_version: The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
         :param pulumi.Input[str] service_account: Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).
         """
         ...
@@ -470,15 +467,21 @@ class Version(pulumi.CustomResource):
             if model_id is None and not opts.urn:
                 raise TypeError("Missing required property 'model_id'")
             __props__.__dict__["model_id"] = model_id
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["package_uris"] = package_uris
             __props__.__dict__["prediction_class"] = prediction_class
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            if python_version is None and not opts.urn:
+                raise TypeError("Missing required property 'python_version'")
             __props__.__dict__["python_version"] = python_version
             __props__.__dict__["request_logging_config"] = request_logging_config
             __props__.__dict__["routes"] = routes
+            if runtime_version is None and not opts.urn:
+                raise TypeError("Missing required property 'runtime_version'")
             __props__.__dict__["runtime_version"] = runtime_version
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["create_time"] = None
@@ -678,7 +681,7 @@ class Version(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
+        The name specified for the version when it was created. The version name must be unique within the model it is created in.
         """
         return pulumi.get(self, "name")
 
@@ -702,7 +705,7 @@ class Version(pulumi.CustomResource):
     @pulumi.getter(name="pythonVersion")
     def python_version(self) -> pulumi.Output[str]:
         """
-        Required. The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
+        The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
         """
         return pulumi.get(self, "python_version")
 
@@ -726,7 +729,7 @@ class Version(pulumi.CustomResource):
     @pulumi.getter(name="runtimeVersion")
     def runtime_version(self) -> pulumi.Output[str]:
         """
-        Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
+        The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
         """
         return pulumi.get(self, "runtime_version")
 

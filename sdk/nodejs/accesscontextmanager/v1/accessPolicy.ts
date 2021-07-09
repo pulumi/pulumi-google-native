@@ -43,11 +43,11 @@ export class AccessPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+     * The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
      */
     public readonly parent!: pulumi.Output<string>;
     /**
-     * Required. Human readable title. Does not affect behavior.
+     * Human readable title. Does not affect behavior.
      */
     public readonly title!: pulumi.Output<string>;
 
@@ -58,10 +58,16 @@ export class AccessPolicy extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args?: AccessPolicyArgs, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: AccessPolicyArgs, opts?: pulumi.CustomResourceOptions) {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.parent === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'parent'");
+            }
+            if ((!args || args.title === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'title'");
+            }
             inputs["parent"] = args ? args.parent : undefined;
             inputs["title"] = args ? args.title : undefined;
             inputs["etag"] = undefined /*out*/;
@@ -84,11 +90,11 @@ export class AccessPolicy extends pulumi.CustomResource {
  */
 export interface AccessPolicyArgs {
     /**
-     * Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+     * The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
      */
-    parent?: pulumi.Input<string>;
+    parent: pulumi.Input<string>;
     /**
-     * Required. Human readable title. Does not affect behavior.
+     * Human readable title. Does not affect behavior.
      */
-    title?: pulumi.Input<string>;
+    title: pulumi.Input<string>;
 }

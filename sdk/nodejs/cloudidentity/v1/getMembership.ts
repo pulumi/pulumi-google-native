@@ -37,7 +37,7 @@ export interface GetMembershipResult {
      */
     readonly name: string;
     /**
-     * Required. Immutable. The `EntityKey` of the member.
+     * Immutable. The `EntityKey` of the member.
      */
     readonly preferredMemberKey: outputs.cloudidentity.v1.EntityKeyResponse;
     /**

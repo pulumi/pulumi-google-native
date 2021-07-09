@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     public sealed class DiscoveryArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Immutable. The kind of analysis that is handled by this discovery.
+        /// Immutable. The kind of analysis that is handled by this discovery.
         /// </summary>
-        [Input("analysisKind")]
-        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.DiscoveryAnalysisKind>? AnalysisKind { get; set; }
+        [Input("analysisKind", required: true)]
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.DiscoveryAnalysisKind> AnalysisKind { get; set; } = null!;
 
         public DiscoveryArgs()
         {

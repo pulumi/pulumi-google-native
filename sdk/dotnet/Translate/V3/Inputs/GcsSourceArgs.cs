@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Translate.V3.Inputs
     public sealed class GcsSourceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Source data URI. For example, `gs://my_bucket/my_object`.
+        /// Source data URI. For example, `gs://my_bucket/my_object`.
         /// </summary>
-        [Input("inputUri")]
-        public Input<string>? InputUri { get; set; }
+        [Input("inputUri", required: true)]
+        public Input<string> InputUri { get; set; } = null!;
 
         public GcsSourceArgs()
         {

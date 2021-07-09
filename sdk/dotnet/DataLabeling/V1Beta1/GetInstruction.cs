@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Required. The data type of this instruction.
+        /// The data type of this instruction.
         /// </summary>
         public readonly string DataType;
         /// <summary>
@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Required. The display name of the instruction. Maximum of 64 characters.
+        /// The display name of the instruction. Maximum of 64 characters.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

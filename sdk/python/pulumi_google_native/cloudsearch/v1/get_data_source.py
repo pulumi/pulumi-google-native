@@ -63,7 +63,7 @@ class GetDataSourceResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. Display name of the datasource The maximum length is 300 characters.
+        Display name of the datasource The maximum length is 300 characters.
         """
         return pulumi.get(self, "display_name")
 

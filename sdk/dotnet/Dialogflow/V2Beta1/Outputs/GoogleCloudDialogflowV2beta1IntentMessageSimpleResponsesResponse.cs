@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesResponse
     {
         /// <summary>
-        /// Required. The list of simple responses.
+        /// The list of simple responses.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseResponse> SimpleResponses;
 

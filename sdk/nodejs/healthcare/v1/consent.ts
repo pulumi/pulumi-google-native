@@ -36,7 +36,7 @@ export class Consent extends pulumi.CustomResource {
     }
 
     /**
-     * Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+     * The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
      */
     public readonly consentArtifact!: pulumi.Output<string>;
     /**
@@ -64,7 +64,7 @@ export class Consent extends pulumi.CustomResource {
      */
     public /*out*/ readonly revisionId!: pulumi.Output<string>;
     /**
-     * Required. Indicates the current state of this Consent.
+     * Indicates the current state of this Consent.
      */
     public readonly state!: pulumi.Output<string>;
     /**
@@ -72,7 +72,7 @@ export class Consent extends pulumi.CustomResource {
      */
     public readonly ttl!: pulumi.Output<string>;
     /**
-     * Required. User's UUID provided by the client.
+     * User's UUID provided by the client.
      */
     public readonly userId!: pulumi.Output<string>;
 
@@ -87,6 +87,9 @@ export class Consent extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.consentArtifact === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'consentArtifact'");
+            }
             if ((!args || args.consentStoreId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'consentStoreId'");
             }
@@ -98,6 +101,12 @@ export class Consent extends pulumi.CustomResource {
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.state === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'state'");
+            }
+            if ((!args || args.userId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'userId'");
             }
             inputs["consentArtifact"] = args ? args.consentArtifact : undefined;
             inputs["consentStoreId"] = args ? args.consentStoreId : undefined;
@@ -137,9 +146,9 @@ export class Consent extends pulumi.CustomResource {
  */
 export interface ConsentArgs {
     /**
-     * Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+     * The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
      */
-    consentArtifact?: pulumi.Input<string>;
+    consentArtifact: pulumi.Input<string>;
     consentStoreId: pulumi.Input<string>;
     datasetId: pulumi.Input<string>;
     /**
@@ -161,15 +170,15 @@ export interface ConsentArgs {
     policies?: pulumi.Input<pulumi.Input<inputs.healthcare.v1.GoogleCloudHealthcareV1ConsentPolicyArgs>[]>;
     project: pulumi.Input<string>;
     /**
-     * Required. Indicates the current state of this Consent.
+     * Indicates the current state of this Consent.
      */
-    state?: pulumi.Input<enums.healthcare.v1.ConsentState>;
+    state: pulumi.Input<enums.healthcare.v1.ConsentState>;
     /**
      * Input only. The time to live for this Consent from when it is created.
      */
     ttl?: pulumi.Input<string>;
     /**
-     * Required. User's UUID provided by the client.
+     * User's UUID provided by the client.
      */
-    userId?: pulumi.Input<string>;
+    userId: pulumi.Input<string>;
 }

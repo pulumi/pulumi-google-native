@@ -290,8 +290,8 @@ class BasisResponse(dict):
                  resource_url: str):
         """
         Basis describes the base image portion (Note) of the DockerImage relationship. Linked occurrences are derived from this or an equivalent image via: FROM Or an equivalent reference, e.g. a tag of the resource_url.
-        :param 'FingerprintResponse' fingerprint: Required. Immutable. The fingerprint of the base image.
-        :param str resource_url: Required. Immutable. The resource_url for the resource representing the basis of associated occurrence images.
+        :param 'FingerprintResponse' fingerprint: Immutable. The fingerprint of the base image.
+        :param str resource_url: Immutable. The resource_url for the resource representing the basis of associated occurrence images.
         """
         pulumi.set(__self__, "fingerprint", fingerprint)
         pulumi.set(__self__, "resource_url", resource_url)
@@ -300,7 +300,7 @@ class BasisResponse(dict):
     @pulumi.getter
     def fingerprint(self) -> 'outputs.FingerprintResponse':
         """
-        Required. Immutable. The fingerprint of the base image.
+        Immutable. The fingerprint of the base image.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -308,7 +308,7 @@ class BasisResponse(dict):
     @pulumi.getter(name="resourceUrl")
     def resource_url(self) -> str:
         """
-        Required. Immutable. The resource_url for the resource representing the basis of associated occurrence images.
+        Immutable. The resource_url for the resource representing the basis of associated occurrence images.
         """
         return pulumi.get(self, "resource_url")
 
@@ -560,7 +560,7 @@ class BuildResponse(dict):
                  signature: 'outputs.BuildSignatureResponse'):
         """
         Note holding the version of the provider's builder and the signature of the provenance message in the build details occurrence.
-        :param str builder_version: Required. Immutable. Version of the builder which produced this build.
+        :param str builder_version: Immutable. Version of the builder which produced this build.
         :param 'BuildSignatureResponse' signature: Signature of the build in occurrences pointing to this build note containing build details.
         """
         pulumi.set(__self__, "builder_version", builder_version)
@@ -570,7 +570,7 @@ class BuildResponse(dict):
     @pulumi.getter(name="builderVersion")
     def builder_version(self) -> str:
         """
-        Required. Immutable. Version of the builder which produced this build.
+        Immutable. Version of the builder which produced this build.
         """
         return pulumi.get(self, "builder_version")
 
@@ -619,7 +619,7 @@ class BuildSignatureResponse(dict):
         :param str key_id: An ID for the key used to sign. This could be either an ID for the key stored in `public_key` (such as the ID or fingerprint for a PGP key, or the CN for a cert), or a reference to an external key (such as a reference to a key in Cloud Key Management Service).
         :param str key_type: The type of the key, either stored in `public_key` or referenced in `key_id`.
         :param str public_key: Public key of the builder which can be used to verify that the related findings are valid and unchanged. If `key_type` is empty, this defaults to PEM encoded public keys. This field may be empty if `key_id` references an external key. For Cloud Build based signatures, this is a PEM encoded public key. To verify the Cloud Build signature, place the contents of this field into a file (public.pem). The signature field is base64-decoded into its binary representation in signature.bin, and the provenance bytes from `BuildDetails` are base64-decoded into a binary representation in signed.bin. OpenSSL can then verify the signature: `openssl sha256 -verify public.pem -signature signature.bin signed.bin`
-        :param str signature: Required. Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
+        :param str signature: Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
         """
         pulumi.set(__self__, "key_id", key_id)
         pulumi.set(__self__, "key_type", key_type)
@@ -654,7 +654,7 @@ class BuildSignatureResponse(dict):
     @pulumi.getter
     def signature(self) -> str:
         """
-        Required. Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
+        Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
         """
         return pulumi.get(self, "signature")
 
@@ -923,7 +923,7 @@ class CommandResponse(dict):
         :param Sequence[str] args: Command-line arguments used when executing this command.
         :param str dir: Working directory (relative to project source root) used when running this command.
         :param Sequence[str] env: Environment variables set before running this command.
-        :param str name: Required. Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
+        :param str name: Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
         :param Sequence[str] wait_for: The ID(s) of the command(s) that this command depends on.
         """
         pulumi.set(__self__, "args", args)
@@ -960,7 +960,7 @@ class CommandResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
+        Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
         """
         return pulumi.get(self, "name")
 
@@ -999,7 +999,7 @@ class DeployableResponse(dict):
                  resource_uri: Sequence[str]):
         """
         An artifact that can be deployed in some runtime.
-        :param Sequence[str] resource_uri: Required. Resource URI for the artifact being deployed.
+        :param Sequence[str] resource_uri: Resource URI for the artifact being deployed.
         """
         pulumi.set(__self__, "resource_uri", resource_uri)
 
@@ -1007,7 +1007,7 @@ class DeployableResponse(dict):
     @pulumi.getter(name="resourceUri")
     def resource_uri(self) -> Sequence[str]:
         """
-        Required. Resource URI for the artifact being deployed.
+        Resource URI for the artifact being deployed.
         """
         return pulumi.get(self, "resource_uri")
 
@@ -1052,7 +1052,7 @@ class DeploymentResponse(dict):
         The period during which some deployable was active in a runtime.
         :param str address: Address of the runtime element hosting this deployment.
         :param str config: Configuration used to create this deployment.
-        :param str deploy_time: Required. Beginning of the lifetime of this deployment.
+        :param str deploy_time: Beginning of the lifetime of this deployment.
         :param str platform: Platform hosting this deployment.
         :param Sequence[str] resource_uri: Resource URI for the artifact being deployed taken from the deployable field with the same name.
         :param str undeploy_time: End of the lifetime of this deployment.
@@ -1086,7 +1086,7 @@ class DeploymentResponse(dict):
     @pulumi.getter(name="deployTime")
     def deploy_time(self) -> str:
         """
-        Required. Beginning of the lifetime of this deployment.
+        Beginning of the lifetime of this deployment.
         """
         return pulumi.get(self, "deploy_time")
 
@@ -1156,7 +1156,7 @@ class DerivedResponse(dict):
         Derived describes the derived image portion (Occurrence) of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .
         :param str base_resource_url: This contains the base image URL for the derived image occurrence.
         :param int distance: The number of layers by which this image differs from the associated image basis.
-        :param 'FingerprintResponse' fingerprint: Required. The fingerprint of the derived image.
+        :param 'FingerprintResponse' fingerprint: The fingerprint of the derived image.
         :param Sequence['LayerResponse'] layer_info: This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
         """
         pulumi.set(__self__, "base_resource_url", base_resource_url)
@@ -1184,7 +1184,7 @@ class DerivedResponse(dict):
     @pulumi.getter
     def fingerprint(self) -> 'outputs.FingerprintResponse':
         """
-        Required. The fingerprint of the derived image.
+        The fingerprint of the derived image.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -1248,13 +1248,13 @@ class DetailResponse(dict):
                  vendor: str):
         """
         Identifies all appearances of this vulnerability in the package for a specific distro/location. For example: glibc in cpe:/o:debian:debian_linux:8 for versions 2.1 - 2.2
-        :param str cpe_uri: Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+        :param str cpe_uri: The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
         :param str description: A vendor-specific description of this note.
         :param 'VulnerabilityLocationResponse' fixed_location: The fix for this specific package version.
         :param bool is_obsolete: Whether this detail is obsolete. Occurrences are expected not to point to obsolete details.
         :param 'VersionResponse' max_affected_version: The max version of the package in which the vulnerability exists.
         :param 'VersionResponse' min_affected_version: The min version of the package in which the vulnerability exists.
-        :param str package: Required. The name of the package where the vulnerability was found.
+        :param str package: The name of the package where the vulnerability was found.
         :param str package_type: The type of package; whether native or non native(ruby gems, node.js packages etc).
         :param str severity_name: The severity (eg: distro assigned severity) for this vulnerability.
         :param str source: The source from which the information in this Detail was obtained.
@@ -1278,7 +1278,7 @@ class DetailResponse(dict):
     @pulumi.getter(name="cpeUri")
     def cpe_uri(self) -> str:
         """
-        Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+        The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
         """
         return pulumi.get(self, "cpe_uri")
 
@@ -1326,7 +1326,7 @@ class DetailResponse(dict):
     @pulumi.getter
     def package(self) -> str:
         """
-        Required. The name of the package where the vulnerability was found.
+        The name of the package where the vulnerability was found.
         """
         return pulumi.get(self, "package")
 
@@ -1380,7 +1380,7 @@ class DetailsResponse(dict):
                  attestation: 'outputs.AttestationResponse'):
         """
         Details of an attestation occurrence.
-        :param 'AttestationResponse' attestation: Required. Attestation for the resource.
+        :param 'AttestationResponse' attestation: Attestation for the resource.
         """
         pulumi.set(__self__, "attestation", attestation)
 
@@ -1388,7 +1388,7 @@ class DetailsResponse(dict):
     @pulumi.getter
     def attestation(self) -> 'outputs.AttestationResponse':
         """
-        Required. Attestation for the resource.
+        Attestation for the resource.
         """
         return pulumi.get(self, "attestation")
 
@@ -1484,7 +1484,7 @@ class DiscoveryResponse(dict):
                  analysis_kind: str):
         """
         A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis.
-        :param str analysis_kind: Required. Immutable. The kind of analysis that is handled by this discovery.
+        :param str analysis_kind: Immutable. The kind of analysis that is handled by this discovery.
         """
         pulumi.set(__self__, "analysis_kind", analysis_kind)
 
@@ -1492,7 +1492,7 @@ class DiscoveryResponse(dict):
     @pulumi.getter(name="analysisKind")
     def analysis_kind(self) -> str:
         """
-        Required. Immutable. The kind of analysis that is handled by this discovery.
+        Immutable. The kind of analysis that is handled by this discovery.
         """
         return pulumi.get(self, "analysis_kind")
 
@@ -1531,7 +1531,7 @@ class DistributionResponse(dict):
         """
         This represents a particular channel of distribution for a given package. E.g., Debian's jessie-backports dpkg mirror.
         :param str architecture: The CPU architecture for which packages in this distribution channel were built.
-        :param str cpe_uri: Required. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+        :param str cpe_uri: The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
         :param str description: The distribution channel-specific description of this package.
         :param 'VersionResponse' latest_version: The latest available version of this package in this distribution channel.
         :param str maintainer: A freeform string denoting the maintainer of this package.
@@ -1556,7 +1556,7 @@ class DistributionResponse(dict):
     @pulumi.getter(name="cpeUri")
     def cpe_uri(self) -> str:
         """
-        Required. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+        The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
         """
         return pulumi.get(self, "cpe_uri")
 
@@ -1715,8 +1715,8 @@ class FingerprintResponse(dict):
                  v2_name: str):
         """
         A set of properties that uniquely identify a given Docker image.
-        :param str v1_name: Required. The layer ID of the final layer in the Docker image's v1 representation.
-        :param Sequence[str] v2_blob: Required. The ordered list of v2 blobs that represent a given image.
+        :param str v1_name: The layer ID of the final layer in the Docker image's v1 representation.
+        :param Sequence[str] v2_blob: The ordered list of v2 blobs that represent a given image.
         :param str v2_name: The name of the image's v2 blobs computed via: [bottom] := v2_blobbottom := sha256(v2_blob[N] + " " + v2_name[N+1]) Only the name of the final blob is kept.
         """
         pulumi.set(__self__, "v1_name", v1_name)
@@ -1727,7 +1727,7 @@ class FingerprintResponse(dict):
     @pulumi.getter(name="v1Name")
     def v1_name(self) -> str:
         """
-        Required. The layer ID of the final layer in the Docker image's v1 representation.
+        The layer ID of the final layer in the Docker image's v1 representation.
         """
         return pulumi.get(self, "v1_name")
 
@@ -1735,7 +1735,7 @@ class FingerprintResponse(dict):
     @pulumi.getter(name="v2Blob")
     def v2_blob(self) -> Sequence[str]:
         """
-        Required. The ordered list of v2 blobs that represent a given image.
+        The ordered list of v2 blobs that represent a given image.
         """
         return pulumi.get(self, "v2_blob")
 
@@ -1966,7 +1966,7 @@ class GrafeasV1beta1BuildDetailsResponse(dict):
                  provenance_bytes: str):
         """
         Details of a build occurrence.
-        :param 'BuildProvenanceResponse' provenance: Required. The actual provenance for the build.
+        :param 'BuildProvenanceResponse' provenance: The actual provenance for the build.
         :param str provenance_bytes: Serialized JSON representation of the provenance, used in generating the build signature in the corresponding build note. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
         """
         pulumi.set(__self__, "provenance", provenance)
@@ -1976,7 +1976,7 @@ class GrafeasV1beta1BuildDetailsResponse(dict):
     @pulumi.getter
     def provenance(self) -> 'outputs.BuildProvenanceResponse':
         """
-        Required. The actual provenance for the build.
+        The actual provenance for the build.
         """
         return pulumi.get(self, "provenance")
 
@@ -1998,7 +1998,7 @@ class GrafeasV1beta1DeploymentDetailsResponse(dict):
                  deployment: 'outputs.DeploymentResponse'):
         """
         Details of a deployment occurrence.
-        :param 'DeploymentResponse' deployment: Required. Deployment history for the resource.
+        :param 'DeploymentResponse' deployment: Deployment history for the resource.
         """
         pulumi.set(__self__, "deployment", deployment)
 
@@ -2006,7 +2006,7 @@ class GrafeasV1beta1DeploymentDetailsResponse(dict):
     @pulumi.getter
     def deployment(self) -> 'outputs.DeploymentResponse':
         """
-        Required. Deployment history for the resource.
+        Deployment history for the resource.
         """
         return pulumi.get(self, "deployment")
 
@@ -2020,7 +2020,7 @@ class GrafeasV1beta1DiscoveryDetailsResponse(dict):
                  discovered: 'outputs.DiscoveredResponse'):
         """
         Details of a discovery occurrence.
-        :param 'DiscoveredResponse' discovered: Required. Analysis status for the discovered resource.
+        :param 'DiscoveredResponse' discovered: Analysis status for the discovered resource.
         """
         pulumi.set(__self__, "discovered", discovered)
 
@@ -2028,7 +2028,7 @@ class GrafeasV1beta1DiscoveryDetailsResponse(dict):
     @pulumi.getter
     def discovered(self) -> 'outputs.DiscoveredResponse':
         """
-        Required. Analysis status for the discovered resource.
+        Analysis status for the discovered resource.
         """
         return pulumi.get(self, "discovered")
 
@@ -2059,7 +2059,7 @@ class GrafeasV1beta1ImageDetailsResponse(dict):
                  derived_image: 'outputs.DerivedResponse'):
         """
         Details of an image occurrence.
-        :param 'DerivedResponse' derived_image: Required. Immutable. The child image derived from the base image.
+        :param 'DerivedResponse' derived_image: Immutable. The child image derived from the base image.
         """
         pulumi.set(__self__, "derived_image", derived_image)
 
@@ -2067,7 +2067,7 @@ class GrafeasV1beta1ImageDetailsResponse(dict):
     @pulumi.getter(name="derivedImage")
     def derived_image(self) -> 'outputs.DerivedResponse':
         """
-        Required. Immutable. The child image derived from the base image.
+        Immutable. The child image derived from the base image.
         """
         return pulumi.get(self, "derived_image")
 
@@ -2167,7 +2167,7 @@ class GrafeasV1beta1PackageDetailsResponse(dict):
                  installation: 'outputs.InstallationResponse'):
         """
         Details of a package occurrence.
-        :param 'InstallationResponse' installation: Required. Where the package was installed.
+        :param 'InstallationResponse' installation: Where the package was installed.
         """
         pulumi.set(__self__, "installation", installation)
 
@@ -2175,7 +2175,7 @@ class GrafeasV1beta1PackageDetailsResponse(dict):
     @pulumi.getter
     def installation(self) -> 'outputs.InstallationResponse':
         """
-        Required. Where the package was installed.
+        Where the package was installed.
         """
         return pulumi.get(self, "installation")
 
@@ -2226,7 +2226,7 @@ class GrafeasV1beta1VulnerabilityDetailsResponse(dict):
         :param float cvss_score: The CVSS score of this vulnerability. CVSS score is on a scale of 0-10 where 0 indicates low severity and 10 indicates high severity.
         :param str effective_severity: The distro assigned severity for this vulnerability when it is available, and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
         :param str long_description: A detailed description of this vulnerability.
-        :param Sequence['PackageIssueResponse'] package_issue: Required. The set of affected locations and their fixes (if available) within the associated resource.
+        :param Sequence['PackageIssueResponse'] package_issue: The set of affected locations and their fixes (if available) within the associated resource.
         :param Sequence['RelatedUrlResponse'] related_urls: URLs related to this vulnerability.
         :param str severity: The note provider assigned Severity of the vulnerability.
         :param str short_description: A one sentence description of this vulnerability.
@@ -2269,7 +2269,7 @@ class GrafeasV1beta1VulnerabilityDetailsResponse(dict):
     @pulumi.getter(name="packageIssue")
     def package_issue(self) -> Sequence['outputs.PackageIssueResponse']:
         """
-        Required. The set of affected locations and their fixes (if available) within the associated resource.
+        The set of affected locations and their fixes (if available) within the associated resource.
         """
         return pulumi.get(self, "package_issue")
 
@@ -2332,7 +2332,7 @@ class HintResponse(dict):
                  human_readable_name: str):
         """
         This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
-        :param str human_readable_name: Required. The human readable name of this attestation authority, for example "qa".
+        :param str human_readable_name: The human readable name of this attestation authority, for example "qa".
         """
         pulumi.set(__self__, "human_readable_name", human_readable_name)
 
@@ -2340,7 +2340,7 @@ class HintResponse(dict):
     @pulumi.getter(name="humanReadableName")
     def human_readable_name(self) -> str:
         """
-        Required. The human readable name of this attestation authority, for example "qa".
+        The human readable name of this attestation authority, for example "qa".
         """
         return pulumi.get(self, "human_readable_name")
 
@@ -2453,7 +2453,7 @@ class InstallationResponse(dict):
                  name: str):
         """
         This represents how a particular software package may be installed on a system.
-        :param Sequence['LocationResponse'] location: Required. All of the places within the filesystem versions of this package have been found.
+        :param Sequence['LocationResponse'] location: All of the places within the filesystem versions of this package have been found.
         :param str name: The name of the installed package.
         """
         pulumi.set(__self__, "location", location)
@@ -2463,7 +2463,7 @@ class InstallationResponse(dict):
     @pulumi.getter
     def location(self) -> Sequence['outputs.LocationResponse']:
         """
-        Required. All of the places within the filesystem versions of this package have been found.
+        All of the places within the filesystem versions of this package have been found.
         """
         return pulumi.get(self, "location")
 
@@ -2516,7 +2516,7 @@ class LayerResponse(dict):
         """
         Layer holds metadata specific to a layer of a Docker image.
         :param str arguments: The recovered arguments to the Dockerfile directive.
-        :param str directive: Required. The recovered Dockerfile directive used to construct this layer.
+        :param str directive: The recovered Dockerfile directive used to construct this layer.
         """
         pulumi.set(__self__, "arguments", arguments)
         pulumi.set(__self__, "directive", directive)
@@ -2533,7 +2533,7 @@ class LayerResponse(dict):
     @pulumi.getter
     def directive(self) -> str:
         """
-        Required. The recovered Dockerfile directive used to construct this layer.
+        The recovered Dockerfile directive used to construct this layer.
         """
         return pulumi.get(self, "directive")
 
@@ -2632,7 +2632,7 @@ class LocationResponse(dict):
                  version: 'outputs.VersionResponse'):
         """
         An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
-        :param str cpe_uri: Required. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+        :param str cpe_uri: The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
         :param str path: The path from which we gathered that this package/version is installed.
         :param 'VersionResponse' version: The version installed at this location.
         """
@@ -2644,7 +2644,7 @@ class LocationResponse(dict):
     @pulumi.getter(name="cpeUri")
     def cpe_uri(self) -> str:
         """
-        Required. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+        The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
         """
         return pulumi.get(self, "cpe_uri")
 
@@ -2694,7 +2694,7 @@ class PackageIssueResponse(dict):
                  fixed_location: 'outputs.VulnerabilityLocationResponse'):
         """
         This message wraps a location affected by a vulnerability and its associated fix (if one is available).
-        :param 'VulnerabilityLocationResponse' affected_location: Required. The location of the vulnerability.
+        :param 'VulnerabilityLocationResponse' affected_location: The location of the vulnerability.
         :param 'VulnerabilityLocationResponse' fixed_location: The location of the available fix for vulnerability.
         """
         pulumi.set(__self__, "affected_location", affected_location)
@@ -2704,7 +2704,7 @@ class PackageIssueResponse(dict):
     @pulumi.getter(name="affectedLocation")
     def affected_location(self) -> 'outputs.VulnerabilityLocationResponse':
         """
-        Required. The location of the vulnerability.
+        The location of the vulnerability.
         """
         return pulumi.get(self, "affected_location")
 
@@ -2728,7 +2728,7 @@ class PackageResponse(dict):
         """
         This represents a particular package that is distributed over various channels. E.g., glibc (aka libc6) is distributed by many, at various versions.
         :param Sequence['DistributionResponse'] distribution: The various channels by which a package is distributed.
-        :param str name: Required. Immutable. The name of the package.
+        :param str name: Immutable. The name of the package.
         """
         pulumi.set(__self__, "distribution", distribution)
         pulumi.set(__self__, "name", name)
@@ -2745,7 +2745,7 @@ class PackageResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. Immutable. The name of the package.
+        Immutable. The name of the package.
         """
         return pulumi.get(self, "name")
 
@@ -2782,7 +2782,7 @@ class PgpSignedAttestationResponse(dict):
         An attestation wrapper with a PGP-compatible signature. This message only supports `ATTACHED` signatures, where the payload that is signed is included alongside the signature itself in the same file.
         :param str content_type: Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
         :param str pgp_key_id: The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexidecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ``` gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB: ``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
-        :param str signature: Required. The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
+        :param str signature: The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
         """
         pulumi.set(__self__, "content_type", content_type)
         pulumi.set(__self__, "pgp_key_id", pgp_key_id)
@@ -2808,7 +2808,7 @@ class PgpSignedAttestationResponse(dict):
     @pulumi.getter
     def signature(self) -> str:
         """
-        Required. The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
+        The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
         """
         return pulumi.get(self, "signature")
 
@@ -2955,7 +2955,7 @@ class ResourceResponse(dict):
                  uri: str):
         """
         An entity that can have metadata. For example, a Docker image.
-        :param str uri: Required. The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
+        :param str uri: The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
         """
         pulumi.set(__self__, "uri", uri)
 
@@ -2963,7 +2963,7 @@ class ResourceResponse(dict):
     @pulumi.getter
     def uri(self) -> str:
         """
-        Required. The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
+        The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
         """
         return pulumi.get(self, "uri")
 
@@ -3303,7 +3303,7 @@ class VersionResponse(dict):
         Version contains structured information about the version of a package.
         :param int epoch: Used to correct mistakes in the version numbering scheme.
         :param bool inclusive: Whether this version is specifying part of an inclusive range. Grafeas does not have the capability to specify version ranges; instead we have fields that specify start version and end versions. At times this is insufficient - we also need to specify whether the version is included in the range or is excluded from the range. This boolean is expected to be set to true when the version is included in a range.
-        :param str kind: Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
+        :param str kind: Distinguishes between sentinel MIN/MAX versions and normal versions.
         :param str name: Required only when version kind is NORMAL. The main part of the version name.
         :param str revision: The iteration of the package build from the above version.
         """
@@ -3333,7 +3333,7 @@ class VersionResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         """
-        Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
+        Distinguishes between sentinel MIN/MAX versions and normal versions.
         """
         return pulumi.get(self, "kind")
 
@@ -3382,9 +3382,9 @@ class VulnerabilityLocationResponse(dict):
                  version: 'outputs.VersionResponse'):
         """
         The location of the vulnerability.
-        :param str cpe_uri: Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
-        :param str package: Required. The package being described.
-        :param 'VersionResponse' version: Required. The version of the package being described.
+        :param str cpe_uri: The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
+        :param str package: The package being described.
+        :param 'VersionResponse' version: The version of the package being described.
         """
         pulumi.set(__self__, "cpe_uri", cpe_uri)
         pulumi.set(__self__, "package", package)
@@ -3394,7 +3394,7 @@ class VulnerabilityLocationResponse(dict):
     @pulumi.getter(name="cpeUri")
     def cpe_uri(self) -> str:
         """
-        Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
+        The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
         """
         return pulumi.get(self, "cpe_uri")
 
@@ -3402,7 +3402,7 @@ class VulnerabilityLocationResponse(dict):
     @pulumi.getter
     def package(self) -> str:
         """
-        Required. The package being described.
+        The package being described.
         """
         return pulumi.get(self, "package")
 
@@ -3410,7 +3410,7 @@ class VulnerabilityLocationResponse(dict):
     @pulumi.getter
     def version(self) -> 'outputs.VersionResponse':
         """
-        Required. The version of the package being described.
+        The version of the package being described.
         """
         return pulumi.get(self, "version")
 
@@ -3542,10 +3542,10 @@ class WindowsDetailResponse(dict):
                  fixing_kbs: Sequence['outputs.KnowledgeBaseResponse'],
                  name: str):
         """
-        :param str cpe_uri: Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+        :param str cpe_uri: The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
         :param str description: The description of the vulnerability.
-        :param Sequence['KnowledgeBaseResponse'] fixing_kbs: Required. The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
-        :param str name: Required. The name of the vulnerability.
+        :param Sequence['KnowledgeBaseResponse'] fixing_kbs: The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
+        :param str name: The name of the vulnerability.
         """
         pulumi.set(__self__, "cpe_uri", cpe_uri)
         pulumi.set(__self__, "description", description)
@@ -3556,7 +3556,7 @@ class WindowsDetailResponse(dict):
     @pulumi.getter(name="cpeUri")
     def cpe_uri(self) -> str:
         """
-        Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+        The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
         """
         return pulumi.get(self, "cpe_uri")
 
@@ -3572,7 +3572,7 @@ class WindowsDetailResponse(dict):
     @pulumi.getter(name="fixingKbs")
     def fixing_kbs(self) -> Sequence['outputs.KnowledgeBaseResponse']:
         """
-        Required. The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
+        The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
         """
         return pulumi.get(self, "fixing_kbs")
 
@@ -3580,7 +3580,7 @@ class WindowsDetailResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. The name of the vulnerability.
+        The name of the vulnerability.
         """
         return pulumi.get(self, "name")
 

@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Outputs
     public sealed class GoogleCloudDatalabelingV1beta1GcsSourceResponse
     {
         /// <summary>
-        /// Required. The input URI of source file. This must be a Cloud Storage path (`gs://...`).
+        /// The input URI of source file. This must be a Cloud Storage path (`gs://...`).
         /// </summary>
         public readonly string InputUri;
         /// <summary>
-        /// Required. The format of the source file. Only "text/csv" is supported.
+        /// The format of the source file. Only "text/csv" is supported.
         /// </summary>
         public readonly string MimeType;
 

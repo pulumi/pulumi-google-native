@@ -23,15 +23,15 @@ type LookupIndexArgs struct {
 }
 
 type LookupIndexResult struct {
-	// Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+	// The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
 	Ancestor string `pulumi:"ancestor"`
 	// The resource ID of the index.
 	IndexId string `pulumi:"indexId"`
-	// Required. The entity kind to which this index applies.
+	// The entity kind to which this index applies.
 	Kind string `pulumi:"kind"`
 	// Project ID.
 	Project string `pulumi:"project"`
-	// Required. An ordered sequence of property names and their index attributes.
+	// An ordered sequence of property names and their index attributes.
 	Properties []GoogleDatastoreAdminV1IndexedPropertyResponse `pulumi:"properties"`
 	// The state of the index.
 	State string `pulumi:"state"`

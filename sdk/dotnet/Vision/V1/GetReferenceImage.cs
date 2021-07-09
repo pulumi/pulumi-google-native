@@ -51,7 +51,7 @@ namespace Pulumi.GoogleNative.Vision.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
+        /// The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
         /// </summary>
         public readonly string Uri;
 

@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecResponse IntegerValueSpec;
         /// <summary>
-        /// Required. The parameter name must be unique amongst all ParameterSpecs.
+        /// The parameter name must be unique amongst all ParameterSpecs.
         /// </summary>
         public readonly string Parameter;
         public readonly Outputs.GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecResponse ParentCategoricalValues;
@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
         /// </summary>
         public readonly string ScaleType;
         /// <summary>
-        /// Required. The type of the parameter.
+        /// The type of the parameter.
         /// </summary>
         public readonly string Type;
 

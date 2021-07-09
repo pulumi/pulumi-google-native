@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
         /// </summary>
         public readonly bool EnableTextToSpeech;
         /// <summary>
-        /// Required. Audio encoding of the synthesized audio content.
+        /// Audio encoding of the synthesized audio content.
         /// </summary>
         public readonly string OutputAudioEncoding;
         /// <summary>

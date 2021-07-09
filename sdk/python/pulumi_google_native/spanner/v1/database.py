@@ -15,25 +15,36 @@ __all__ = ['DatabaseArgs', 'Database']
 @pulumi.input_type
 class DatabaseArgs:
     def __init__(__self__, *,
+                 create_statement: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 create_statement: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
                  extra_statements: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Database resource.
-        :param pulumi.Input[str] create_statement: Required. A `CREATE DATABASE` statement, which specifies the ID of the new database. The database ID must conform to the regular expression `a-z*[a-z0-9]` and be between 2 and 30 characters in length. If the database ID is a reserved word or if it contains a hyphen, the database ID must be enclosed in backticks (`` ` ``).
+        :param pulumi.Input[str] create_statement: A `CREATE DATABASE` statement, which specifies the ID of the new database. The database ID must conform to the regular expression `a-z*[a-z0-9]` and be between 2 and 30 characters in length. If the database ID is a reserved word or if it contains a hyphen, the database ID must be enclosed in backticks (`` ` ``).
         :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_statements: Optional. A list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc. These statements execute atomically with the creation of the database: if there is an error in any statement, the database is not created.
         """
+        pulumi.set(__self__, "create_statement", create_statement)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "project", project)
-        if create_statement is not None:
-            pulumi.set(__self__, "create_statement", create_statement)
         if encryption_config is not None:
             pulumi.set(__self__, "encryption_config", encryption_config)
         if extra_statements is not None:
             pulumi.set(__self__, "extra_statements", extra_statements)
+
+    @property
+    @pulumi.getter(name="createStatement")
+    def create_statement(self) -> pulumi.Input[str]:
+        """
+        A `CREATE DATABASE` statement, which specifies the ID of the new database. The database ID must conform to the regular expression `a-z*[a-z0-9]` and be between 2 and 30 characters in length. If the database ID is a reserved word or if it contains a hyphen, the database ID must be enclosed in backticks (`` ` ``).
+        """
+        return pulumi.get(self, "create_statement")
+
+    @create_statement.setter
+    def create_statement(self, value: pulumi.Input[str]):
+        pulumi.set(self, "create_statement", value)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -52,18 +63,6 @@ class DatabaseArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="createStatement")
-    def create_statement(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. A `CREATE DATABASE` statement, which specifies the ID of the new database. The database ID must conform to the regular expression `a-z*[a-z0-9]` and be between 2 and 30 characters in length. If the database ID is a reserved word or if it contains a hyphen, the database ID must be enclosed in backticks (`` ` ``).
-        """
-        return pulumi.get(self, "create_statement")
-
-    @create_statement.setter
-    def create_statement(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "create_statement", value)
 
     @property
     @pulumi.getter(name="encryptionConfig")
@@ -106,7 +105,7 @@ class Database(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] create_statement: Required. A `CREATE DATABASE` statement, which specifies the ID of the new database. The database ID must conform to the regular expression `a-z*[a-z0-9]` and be between 2 and 30 characters in length. If the database ID is a reserved word or if it contains a hyphen, the database ID must be enclosed in backticks (`` ` ``).
+        :param pulumi.Input[str] create_statement: A `CREATE DATABASE` statement, which specifies the ID of the new database. The database ID must conform to the regular expression `a-z*[a-z0-9]` and be between 2 and 30 characters in length. If the database ID is a reserved word or if it contains a hyphen, the database ID must be enclosed in backticks (`` ` ``).
         :param pulumi.Input[pulumi.InputType['EncryptionConfigArgs']] encryption_config: Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] extra_statements: Optional. A list of DDL statements to run inside the newly created database. Statements can create tables, indexes, etc. These statements execute atomically with the creation of the database: if there is an error in any statement, the database is not created.
         """
@@ -151,6 +150,8 @@ class Database(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DatabaseArgs.__new__(DatabaseArgs)
 
+            if create_statement is None and not opts.urn:
+                raise TypeError("Missing required property 'create_statement'")
             __props__.__dict__["create_statement"] = create_statement
             __props__.__dict__["encryption_config"] = encryption_config
             __props__.__dict__["extra_statements"] = extra_statements
@@ -235,7 +236,7 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Required. The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
+        The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
         """
         return pulumi.get(self, "name")
 

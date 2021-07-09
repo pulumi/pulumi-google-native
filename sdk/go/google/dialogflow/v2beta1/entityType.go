@@ -17,13 +17,13 @@ type EntityType struct {
 
 	// Optional. Indicates whether the entity type can be automatically expanded.
 	AutoExpansionMode pulumi.StringOutput `pulumi:"autoExpansionMode"`
-	// Required. The name of the entity type.
+	// The name of the entity type.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Optional. Enables fuzzy entity extraction during classification.
 	EnableFuzzyExtraction pulumi.BoolOutput `pulumi:"enableFuzzyExtraction"`
 	// Optional. The collection of entity entries associated with the entity type.
 	Entities GoogleCloudDialogflowV2beta1EntityTypeEntityResponseArrayOutput `pulumi:"entities"`
-	// Required. Indicates the kind of entity type.
+	// Indicates the kind of entity type.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -36,6 +36,9 @@ func NewEntityType(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -66,13 +69,13 @@ func GetEntityType(ctx *pulumi.Context,
 type entityTypeState struct {
 	// Optional. Indicates whether the entity type can be automatically expanded.
 	AutoExpansionMode *string `pulumi:"autoExpansionMode"`
-	// Required. The name of the entity type.
+	// The name of the entity type.
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. Enables fuzzy entity extraction during classification.
 	EnableFuzzyExtraction *bool `pulumi:"enableFuzzyExtraction"`
 	// Optional. The collection of entity entries associated with the entity type.
 	Entities []GoogleCloudDialogflowV2beta1EntityTypeEntityResponse `pulumi:"entities"`
-	// Required. Indicates the kind of entity type.
+	// Indicates the kind of entity type.
 	Kind *string `pulumi:"kind"`
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
 	Name *string `pulumi:"name"`
@@ -81,13 +84,13 @@ type entityTypeState struct {
 type EntityTypeState struct {
 	// Optional. Indicates whether the entity type can be automatically expanded.
 	AutoExpansionMode pulumi.StringPtrInput
-	// Required. The name of the entity type.
+	// The name of the entity type.
 	DisplayName pulumi.StringPtrInput
 	// Optional. Enables fuzzy entity extraction during classification.
 	EnableFuzzyExtraction pulumi.BoolPtrInput
 	// Optional. The collection of entity entries associated with the entity type.
 	Entities GoogleCloudDialogflowV2beta1EntityTypeEntityResponseArrayInput
-	// Required. Indicates the kind of entity type.
+	// Indicates the kind of entity type.
 	Kind pulumi.StringPtrInput
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
 	Name pulumi.StringPtrInput
@@ -100,14 +103,14 @@ func (EntityTypeState) ElementType() reflect.Type {
 type entityTypeArgs struct {
 	// Optional. Indicates whether the entity type can be automatically expanded.
 	AutoExpansionMode *string `pulumi:"autoExpansionMode"`
-	// Required. The name of the entity type.
-	DisplayName *string `pulumi:"displayName"`
+	// The name of the entity type.
+	DisplayName string `pulumi:"displayName"`
 	// Optional. Enables fuzzy entity extraction during classification.
 	EnableFuzzyExtraction *bool `pulumi:"enableFuzzyExtraction"`
 	// Optional. The collection of entity entries associated with the entity type.
 	Entities []GoogleCloudDialogflowV2beta1EntityTypeEntity `pulumi:"entities"`
-	// Required. Indicates the kind of entity type.
-	Kind         *string `pulumi:"kind"`
+	// Indicates the kind of entity type.
+	Kind         string  `pulumi:"kind"`
 	LanguageCode *string `pulumi:"languageCode"`
 	Location     string  `pulumi:"location"`
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`
@@ -119,14 +122,14 @@ type entityTypeArgs struct {
 type EntityTypeArgs struct {
 	// Optional. Indicates whether the entity type can be automatically expanded.
 	AutoExpansionMode *EntityTypeAutoExpansionMode
-	// Required. The name of the entity type.
-	DisplayName pulumi.StringPtrInput
+	// The name of the entity type.
+	DisplayName pulumi.StringInput
 	// Optional. Enables fuzzy entity extraction during classification.
 	EnableFuzzyExtraction pulumi.BoolPtrInput
 	// Optional. The collection of entity entries associated with the entity type.
 	Entities GoogleCloudDialogflowV2beta1EntityTypeEntityArrayInput
-	// Required. Indicates the kind of entity type.
-	Kind         *EntityTypeKind
+	// Indicates the kind of entity type.
+	Kind         EntityTypeKind
 	LanguageCode pulumi.StringPtrInput
 	Location     pulumi.StringInput
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Supported formats: - `projects//agent/entityTypes/` - `projects//locations//agent/entityTypes/`

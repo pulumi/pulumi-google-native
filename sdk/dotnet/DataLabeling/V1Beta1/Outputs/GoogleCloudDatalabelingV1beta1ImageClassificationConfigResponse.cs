@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Outputs
         /// </summary>
         public readonly bool AllowMultiLabel;
         /// <summary>
-        /// Required. Annotation spec set resource name.
+        /// Annotation spec set resource name.
         /// </summary>
         public readonly string AnnotationSpecSet;
         /// <summary>

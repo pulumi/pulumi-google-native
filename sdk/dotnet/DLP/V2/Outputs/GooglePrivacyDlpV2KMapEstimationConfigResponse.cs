@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GooglePrivacyDlpV2AuxiliaryTableResponse> AuxiliaryTables;
         /// <summary>
-        /// Required. Fields considered to be quasi-identifiers. No two columns can have the same tag.
+        /// Fields considered to be quasi-identifiers. No two columns can have the same tag.
         /// </summary>
         public readonly ImmutableArray<Outputs.GooglePrivacyDlpV2TaggedFieldResponse> QuasiIds;
         /// <summary>

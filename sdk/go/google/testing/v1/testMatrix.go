@@ -17,7 +17,7 @@ type TestMatrix struct {
 
 	// Information about the client which invoked the test.
 	ClientInfo ClientInfoResponseOutput `pulumi:"clientInfo"`
-	// Required. The devices the tests are being executed on.
+	// The devices the tests are being executed on.
 	EnvironmentMatrix EnvironmentMatrixResponseOutput `pulumi:"environmentMatrix"`
 	// If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
 	FailFast pulumi.BoolOutput `pulumi:"failFast"`
@@ -29,7 +29,7 @@ type TestMatrix struct {
 	OutcomeSummary pulumi.StringOutput `pulumi:"outcomeSummary"`
 	// The cloud project that owns the test matrix.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Required. Where the results for the matrix are written.
+	// Where the results for the matrix are written.
 	ResultStorage ResultStorageResponseOutput `pulumi:"resultStorage"`
 	// Indicates the current progress of the test matrix.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -37,7 +37,7 @@ type TestMatrix struct {
 	TestExecutions TestExecutionResponseArrayOutput `pulumi:"testExecutions"`
 	// Unique id set by the service.
 	TestMatrixId pulumi.StringOutput `pulumi:"testMatrixId"`
-	// Required. How to run the test.
+	// How to run the test.
 	TestSpecification TestSpecificationResponseOutput `pulumi:"testSpecification"`
 	// The time this test matrix was initially created.
 	Timestamp pulumi.StringOutput `pulumi:"timestamp"`
@@ -50,8 +50,17 @@ func NewTestMatrix(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.EnvironmentMatrix == nil {
+		return nil, errors.New("invalid value for required argument 'EnvironmentMatrix'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.ResultStorage == nil {
+		return nil, errors.New("invalid value for required argument 'ResultStorage'")
+	}
+	if args.TestSpecification == nil {
+		return nil, errors.New("invalid value for required argument 'TestSpecification'")
 	}
 	var resource TestMatrix
 	err := ctx.RegisterResource("google-native:testing/v1:TestMatrix", name, args, &resource, opts...)
@@ -77,7 +86,7 @@ func GetTestMatrix(ctx *pulumi.Context,
 type testMatrixState struct {
 	// Information about the client which invoked the test.
 	ClientInfo *ClientInfoResponse `pulumi:"clientInfo"`
-	// Required. The devices the tests are being executed on.
+	// The devices the tests are being executed on.
 	EnvironmentMatrix *EnvironmentMatrixResponse `pulumi:"environmentMatrix"`
 	// If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
 	FailFast *bool `pulumi:"failFast"`
@@ -89,7 +98,7 @@ type testMatrixState struct {
 	OutcomeSummary *string `pulumi:"outcomeSummary"`
 	// The cloud project that owns the test matrix.
 	Project *string `pulumi:"project"`
-	// Required. Where the results for the matrix are written.
+	// Where the results for the matrix are written.
 	ResultStorage *ResultStorageResponse `pulumi:"resultStorage"`
 	// Indicates the current progress of the test matrix.
 	State *string `pulumi:"state"`
@@ -97,7 +106,7 @@ type testMatrixState struct {
 	TestExecutions []TestExecutionResponse `pulumi:"testExecutions"`
 	// Unique id set by the service.
 	TestMatrixId *string `pulumi:"testMatrixId"`
-	// Required. How to run the test.
+	// How to run the test.
 	TestSpecification *TestSpecificationResponse `pulumi:"testSpecification"`
 	// The time this test matrix was initially created.
 	Timestamp *string `pulumi:"timestamp"`
@@ -106,7 +115,7 @@ type testMatrixState struct {
 type TestMatrixState struct {
 	// Information about the client which invoked the test.
 	ClientInfo ClientInfoResponsePtrInput
-	// Required. The devices the tests are being executed on.
+	// The devices the tests are being executed on.
 	EnvironmentMatrix EnvironmentMatrixResponsePtrInput
 	// If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
 	FailFast pulumi.BoolPtrInput
@@ -118,7 +127,7 @@ type TestMatrixState struct {
 	OutcomeSummary pulumi.StringPtrInput
 	// The cloud project that owns the test matrix.
 	Project pulumi.StringPtrInput
-	// Required. Where the results for the matrix are written.
+	// Where the results for the matrix are written.
 	ResultStorage ResultStorageResponsePtrInput
 	// Indicates the current progress of the test matrix.
 	State pulumi.StringPtrInput
@@ -126,7 +135,7 @@ type TestMatrixState struct {
 	TestExecutions TestExecutionResponseArrayInput
 	// Unique id set by the service.
 	TestMatrixId pulumi.StringPtrInput
-	// Required. How to run the test.
+	// How to run the test.
 	TestSpecification TestSpecificationResponsePtrInput
 	// The time this test matrix was initially created.
 	Timestamp pulumi.StringPtrInput
@@ -139,8 +148,8 @@ func (TestMatrixState) ElementType() reflect.Type {
 type testMatrixArgs struct {
 	// Information about the client which invoked the test.
 	ClientInfo *ClientInfo `pulumi:"clientInfo"`
-	// Required. The devices the tests are being executed on.
-	EnvironmentMatrix *EnvironmentMatrix `pulumi:"environmentMatrix"`
+	// The devices the tests are being executed on.
+	EnvironmentMatrix EnvironmentMatrix `pulumi:"environmentMatrix"`
 	// If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
 	FailFast *bool `pulumi:"failFast"`
 	// The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
@@ -148,18 +157,18 @@ type testMatrixArgs struct {
 	// The cloud project that owns the test matrix.
 	Project   string  `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
-	// Required. Where the results for the matrix are written.
-	ResultStorage *ResultStorage `pulumi:"resultStorage"`
-	// Required. How to run the test.
-	TestSpecification *TestSpecification `pulumi:"testSpecification"`
+	// Where the results for the matrix are written.
+	ResultStorage ResultStorage `pulumi:"resultStorage"`
+	// How to run the test.
+	TestSpecification TestSpecification `pulumi:"testSpecification"`
 }
 
 // The set of arguments for constructing a TestMatrix resource.
 type TestMatrixArgs struct {
 	// Information about the client which invoked the test.
 	ClientInfo ClientInfoPtrInput
-	// Required. The devices the tests are being executed on.
-	EnvironmentMatrix EnvironmentMatrixPtrInput
+	// The devices the tests are being executed on.
+	EnvironmentMatrix EnvironmentMatrixInput
 	// If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
 	FailFast pulumi.BoolPtrInput
 	// The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
@@ -167,10 +176,10 @@ type TestMatrixArgs struct {
 	// The cloud project that owns the test matrix.
 	Project   pulumi.StringInput
 	RequestId pulumi.StringPtrInput
-	// Required. Where the results for the matrix are written.
-	ResultStorage ResultStoragePtrInput
-	// Required. How to run the test.
-	TestSpecification TestSpecificationPtrInput
+	// Where the results for the matrix are written.
+	ResultStorage ResultStorageInput
+	// How to run the test.
+	TestSpecification TestSpecificationInput
 }
 
 func (TestMatrixArgs) ElementType() reflect.Type {

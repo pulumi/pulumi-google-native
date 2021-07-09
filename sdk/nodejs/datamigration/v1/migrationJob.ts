@@ -40,7 +40,7 @@ export class MigrationJob extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Required. The resource name (URI) of the destination connection profile.
+     * The resource name (URI) of the destination connection profile.
      */
     public readonly destination!: pulumi.Output<string>;
     /**
@@ -84,7 +84,7 @@ export class MigrationJob extends pulumi.CustomResource {
      */
     public readonly reverseSshConnectivity!: pulumi.Output<outputs.datamigration.v1.ReverseSshConnectivityResponse>;
     /**
-     * Required. The resource name (URI) of the source connection profile.
+     * The resource name (URI) of the source connection profile.
      */
     public readonly source!: pulumi.Output<string>;
     /**
@@ -100,7 +100,7 @@ export class MigrationJob extends pulumi.CustomResource {
      */
     public readonly staticIpConnectivity!: pulumi.Output<outputs.datamigration.v1.StaticIpConnectivityResponse>;
     /**
-     * Required. The migration job type.
+     * The migration job type.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -123,6 +123,9 @@ export class MigrationJob extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.destination === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'destination'");
+            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -131,6 +134,12 @@ export class MigrationJob extends pulumi.CustomResource {
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.source === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'source'");
+            }
+            if ((!args || args.type === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'type'");
             }
             inputs["destination"] = args ? args.destination : undefined;
             inputs["destinationDatabase"] = args ? args.destinationDatabase : undefined;
@@ -188,9 +197,9 @@ export class MigrationJob extends pulumi.CustomResource {
  */
 export interface MigrationJobArgs {
     /**
-     * Required. The resource name (URI) of the destination connection profile.
+     * The resource name (URI) of the destination connection profile.
      */
-    destination?: pulumi.Input<string>;
+    destination: pulumi.Input<string>;
     /**
      * The database engine type and provider of the destination.
      */
@@ -220,9 +229,9 @@ export interface MigrationJobArgs {
      */
     reverseSshConnectivity?: pulumi.Input<inputs.datamigration.v1.ReverseSshConnectivityArgs>;
     /**
-     * Required. The resource name (URI) of the source connection profile.
+     * The resource name (URI) of the source connection profile.
      */
-    source?: pulumi.Input<string>;
+    source: pulumi.Input<string>;
     /**
      * The database engine type and provider of the source.
      */
@@ -236,9 +245,9 @@ export interface MigrationJobArgs {
      */
     staticIpConnectivity?: pulumi.Input<inputs.datamigration.v1.StaticIpConnectivityArgs>;
     /**
-     * Required. The migration job type.
+     * The migration job type.
      */
-    type?: pulumi.Input<enums.datamigration.v1.MigrationJobType>;
+    type: pulumi.Input<enums.datamigration.v1.MigrationJobType>;
     /**
      * The details of the VPC network that the source database is located in.
      */

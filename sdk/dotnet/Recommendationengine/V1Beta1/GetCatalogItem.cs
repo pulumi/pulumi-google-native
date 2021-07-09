@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
     public sealed class GetCatalogItemResult
     {
         /// <summary>
-        /// Required. Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes &amp; Accessories" -&gt; "Shoes"] and ["Sports &amp; Fitness" -&gt; "Athletic Clothing" -&gt; "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes &amp; Accessories", "Shoes"]}, { "categories": ["Sports &amp; Fitness", "Athletic Clothing", "Shoes"] } ]
+        /// Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes &amp; Accessories" -&gt; "Shoes"] and ["Sports &amp; Fitness" -&gt; "Athletic Clothing" -&gt; "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes &amp; Accessories", "Shoes"]}, { "categories": ["Sports &amp; Fitness", "Athletic Clothing", "Shoes"] } ]
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse> CategoryHierarchies;
         /// <summary>
@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Required. Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
+        /// Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
         /// </summary>
         public readonly string Title;
 

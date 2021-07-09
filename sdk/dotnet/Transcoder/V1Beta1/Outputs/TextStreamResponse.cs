@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
         /// </summary>
         public readonly string Codec;
         /// <summary>
-        /// Required. The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        /// The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         /// </summary>
         public readonly string LanguageCode;
         /// <summary>

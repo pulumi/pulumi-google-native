@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
     public sealed class GetAnnotationSpecSetResult
     {
         /// <summary>
-        /// Required. The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
+        /// The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDatalabelingV1beta1AnnotationSpecResponse> AnnotationSpecs;
         /// <summary>
@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Required. The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
+        /// The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

@@ -187,7 +187,7 @@ class CloudRunRewriteResponse(dict):
         """
         A configured rewrite that directs requests to a Cloud Run service. If the Cloud Run service does not exist when setting or updating your Firebase Hosting configuration, then the request fails. Any errors from the Cloud Run service are passed to the end user (for example, if you delete a service, any requests directed to that service receive a `404` error).
         :param str region: Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
-        :param str service_id: Required. User-defined ID of the Cloud Run service.
+        :param str service_id: User-defined ID of the Cloud Run service.
         """
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "service_id", service_id)
@@ -204,7 +204,7 @@ class CloudRunRewriteResponse(dict):
     @pulumi.getter(name="serviceId")
     def service_id(self) -> str:
         """
-        Required. User-defined ID of the Cloud Run service.
+        User-defined ID of the Cloud Run service.
         """
         return pulumi.get(self, "service_id")
 
@@ -366,8 +366,8 @@ class DomainRedirectResponse(dict):
                  type: str):
         """
         Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration.
-        :param str domain_name: Required. The domain name to redirect to.
-        :param str type: Required. The redirect status code.
+        :param str domain_name: The domain name to redirect to.
+        :param str type: The redirect status code.
         """
         pulumi.set(__self__, "domain_name", domain_name)
         pulumi.set(__self__, "type", type)
@@ -376,7 +376,7 @@ class DomainRedirectResponse(dict):
     @pulumi.getter(name="domainName")
     def domain_name(self) -> str:
         """
-        Required. The domain name to redirect to.
+        The domain name to redirect to.
         """
         return pulumi.get(self, "domain_name")
 
@@ -384,7 +384,7 @@ class DomainRedirectResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Required. The redirect status code.
+        The redirect status code.
         """
         return pulumi.get(self, "type")
 
@@ -401,7 +401,7 @@ class HeaderResponse(dict):
         """
         A [`Header`](https://firebase.google.com/docs/hosting/full-config#headers) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers.
         :param str glob: The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
-        :param Mapping[str, str] headers: Required. The additional headers to add to the response.
+        :param Mapping[str, str] headers: The additional headers to add to the response.
         :param str regex: The user-supplied RE2 regular expression to match against the request URL path.
         """
         pulumi.set(__self__, "glob", glob)
@@ -420,7 +420,7 @@ class HeaderResponse(dict):
     @pulumi.getter
     def headers(self) -> Mapping[str, str]:
         """
-        Required. The additional headers to add to the response.
+        The additional headers to add to the response.
         """
         return pulumi.get(self, "headers")
 
@@ -442,7 +442,7 @@ class I18nConfigResponse(dict):
                  root: str):
         """
         If provided, i18n rewrites are enabled.
-        :param str root: Required. The user-supplied path where country and language specific content will be looked for within the public directory.
+        :param str root: The user-supplied path where country and language specific content will be looked for within the public directory.
         """
         pulumi.set(__self__, "root", root)
 
@@ -450,7 +450,7 @@ class I18nConfigResponse(dict):
     @pulumi.getter
     def root(self) -> str:
         """
-        Required. The user-supplied path where country and language specific content will be looked for within the public directory.
+        The user-supplied path where country and language specific content will be looked for within the public directory.
         """
         return pulumi.get(self, "root")
 
@@ -485,9 +485,9 @@ class RedirectResponse(dict):
         """
         A [`Redirect`](https://firebase.google.com/docs/hosting/full-config#redirects) specifies a URL pattern that, if matched to the request URL path, triggers Hosting to respond with a redirect to the specified destination path.
         :param str glob: The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
-        :param str location: Required. The value to put in the HTTP location header of the response. The location can contain capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location": "https://example.com/foo/:capture"
+        :param str location: The value to put in the HTTP location header of the response. The location can contain capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location": "https://example.com/foo/:capture"
         :param str regex: The user-supplied RE2 regular expression to match against the request URL path.
-        :param int status_code: Required. The status HTTP code to return in the response. It must be a valid 3xx status code.
+        :param int status_code: The status HTTP code to return in the response. It must be a valid 3xx status code.
         """
         pulumi.set(__self__, "glob", glob)
         pulumi.set(__self__, "location", location)
@@ -506,7 +506,7 @@ class RedirectResponse(dict):
     @pulumi.getter
     def location(self) -> str:
         """
-        Required. The value to put in the HTTP location header of the response. The location can contain capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location": "https://example.com/foo/:capture"
+        The value to put in the HTTP location header of the response. The location can contain capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location": "https://example.com/foo/:capture"
         """
         return pulumi.get(self, "location")
 
@@ -522,7 +522,7 @@ class RedirectResponse(dict):
     @pulumi.getter(name="statusCode")
     def status_code(self) -> int:
         """
-        Required. The status HTTP code to return in the response. It must be a valid 3xx status code.
+        The status HTTP code to return in the response. It must be a valid 3xx status code.
         """
         return pulumi.get(self, "status_code")
 

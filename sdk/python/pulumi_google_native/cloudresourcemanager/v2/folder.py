@@ -17,7 +17,7 @@ class FolderArgs:
                  display_name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Folder resource.
-        :param pulumi.Input[str] parent: Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
+        :param pulumi.Input[str] parent: The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
         :param pulumi.Input[str] display_name: The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
         """
         pulumi.set(__self__, "parent", parent)
@@ -28,7 +28,7 @@ class FolderArgs:
     @pulumi.getter
     def parent(self) -> pulumi.Input[str]:
         """
-        Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
+        The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
         """
         return pulumi.get(self, "parent")
 
@@ -63,7 +63,7 @@ class Folder(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] display_name: The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
-        :param pulumi.Input[str] parent: Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
+        :param pulumi.Input[str] parent: The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
         """
         ...
     @overload
@@ -175,7 +175,7 @@ class Folder(pulumi.CustomResource):
     @pulumi.getter
     def parent(self) -> pulumi.Output[str]:
         """
-        Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
+        The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
         """
         return pulumi.get(self, "parent")
 

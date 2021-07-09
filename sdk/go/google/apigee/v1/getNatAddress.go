@@ -26,7 +26,7 @@ type LookupNatAddressArgs struct {
 type LookupNatAddressResult struct {
 	// The static IPV4 address.
 	IpAddress string `pulumi:"ipAddress"`
-	// Required. Resource ID of the NAT address.
+	// Resource ID of the NAT address.
 	Name string `pulumi:"name"`
 	// State of the nat address.
 	State string `pulumi:"state"`

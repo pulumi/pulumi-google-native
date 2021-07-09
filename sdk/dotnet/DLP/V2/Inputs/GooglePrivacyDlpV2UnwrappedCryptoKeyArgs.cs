@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     public sealed class GooglePrivacyDlpV2UnwrappedCryptoKeyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. A 128/192/256 bit key.
+        /// A 128/192/256 bit key.
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        [Input("key", required: true)]
+        public Input<string> Key { get; set; } = null!;
 
         public GooglePrivacyDlpV2UnwrappedCryptoKeyArgs()
         {

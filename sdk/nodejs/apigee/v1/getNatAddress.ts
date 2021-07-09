@@ -35,7 +35,7 @@ export interface GetNatAddressResult {
      */
     readonly ipAddress: string;
     /**
-     * Required. Resource ID of the NAT address.
+     * Resource ID of the NAT address.
      */
     readonly name: string;
     /**

@@ -18,11 +18,11 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.Aes128EncryptionResponse Aes128;
         /// <summary>
-        /// Required. 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
+        /// 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
         /// </summary>
         public readonly string Iv;
         /// <summary>
-        /// Required. 128 bit encryption key represented as lowercase hexadecimal digits.
+        /// 128 bit encryption key represented as lowercase hexadecimal digits.
         /// </summary>
         public readonly string Key;
         /// <summary>

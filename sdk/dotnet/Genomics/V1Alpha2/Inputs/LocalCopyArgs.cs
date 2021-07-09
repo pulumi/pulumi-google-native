@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Inputs
     public sealed class LocalCopyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
+        /// The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
         /// </summary>
-        [Input("disk")]
-        public Input<string>? Disk { get; set; }
+        [Input("disk", required: true)]
+        public Input<string> Disk { get; set; } = null!;
 
         /// <summary>
-        /// Required. The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
+        /// The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
         /// </summary>
-        [Input("path")]
-        public Input<string>? Path { get; set; }
+        [Input("path", required: true)]
+        public Input<string> Path { get; set; } = null!;
 
         public LocalCopyArgs()
         {

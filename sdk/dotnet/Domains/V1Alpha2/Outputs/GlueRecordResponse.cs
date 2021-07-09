@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2.Outputs
     public sealed class GlueRecordResponse
     {
         /// <summary>
-        /// Required. Domain name of the host in Punycode format.
+        /// Domain name of the host in Punycode format.
         /// </summary>
         public readonly string HostName;
         /// <summary>

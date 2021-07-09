@@ -46,19 +46,19 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+        /// Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
         /// </summary>
         [Output("locations")]
         public Output<ImmutableArray<string>> Locations { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
+        /// The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+        /// The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
         /// </summary>
         [Output("reservedIpRange")]
         public Output<string> ReservedIpRange { get; private set; } = null!;
@@ -165,11 +165,11 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
             set => _labels = value;
         }
 
-        [Input("locations")]
+        [Input("locations", required: true)]
         private InputList<string>? _locations;
 
         /// <summary>
-        /// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+        /// Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
         /// </summary>
         public InputList<string> Locations
         {
@@ -178,19 +178,19 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
         }
 
         /// <summary>
-        /// Required. The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
+        /// The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+        /// The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
         /// </summary>
-        [Input("reservedIpRange")]
-        public Input<string>? ReservedIpRange { get; set; }
+        [Input("reservedIpRange", required: true)]
+        public Input<string> ReservedIpRange { get; set; } = null!;
 
         public DomainArgs()
         {

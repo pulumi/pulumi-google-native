@@ -14,8 +14,8 @@ import (
 type GoogleCloudRetailV2betaImage struct {
 	// Height of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
 	Height *int `pulumi:"height"`
-	// Required. URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
-	Uri *string `pulumi:"uri"`
+	// URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+	Uri string `pulumi:"uri"`
 	// Width of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
 	Width *int `pulumi:"width"`
 }
@@ -35,8 +35,8 @@ type GoogleCloudRetailV2betaImageInput interface {
 type GoogleCloudRetailV2betaImageArgs struct {
 	// Height of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
 	Height pulumi.IntPtrInput `pulumi:"height"`
-	// Required. URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
-	Uri pulumi.StringPtrInput `pulumi:"uri"`
+	// URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+	Uri pulumi.StringInput `pulumi:"uri"`
 	// Width of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
 	Width pulumi.IntPtrInput `pulumi:"width"`
 }
@@ -98,9 +98,9 @@ func (o GoogleCloudRetailV2betaImageOutput) Height() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaImage) *int { return v.Height }).(pulumi.IntPtrOutput)
 }
 
-// Required. URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
-func (o GoogleCloudRetailV2betaImageOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRetailV2betaImage) *string { return v.Uri }).(pulumi.StringPtrOutput)
+// URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+func (o GoogleCloudRetailV2betaImageOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaImage) string { return v.Uri }).(pulumi.StringOutput)
 }
 
 // Width of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
@@ -132,7 +132,7 @@ func (o GoogleCloudRetailV2betaImageArrayOutput) Index(i pulumi.IntInput) Google
 type GoogleCloudRetailV2betaImageResponse struct {
 	// Height of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
 	Height int `pulumi:"height"`
-	// Required. URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+	// URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
 	Uri string `pulumi:"uri"`
 	// Width of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
 	Width int `pulumi:"width"`
@@ -153,7 +153,7 @@ type GoogleCloudRetailV2betaImageResponseInput interface {
 type GoogleCloudRetailV2betaImageResponseArgs struct {
 	// Height of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
 	Height pulumi.IntInput `pulumi:"height"`
-	// Required. URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+	// URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
 	Uri pulumi.StringInput `pulumi:"uri"`
 	// Width of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
 	Width pulumi.IntInput `pulumi:"width"`
@@ -216,7 +216,7 @@ func (o GoogleCloudRetailV2betaImageResponseOutput) Height() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaImageResponse) int { return v.Height }).(pulumi.IntOutput)
 }
 
-// Required. URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+// URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
 func (o GoogleCloudRetailV2betaImageResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaImageResponse) string { return v.Uri }).(pulumi.StringOutput)
 }

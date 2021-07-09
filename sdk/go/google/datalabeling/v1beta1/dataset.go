@@ -23,7 +23,7 @@ type Dataset struct {
 	DataItemCount pulumi.StringOutput `pulumi:"dataItemCount"`
 	// Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Required. The display name of the dataset. Maximum of 64 characters.
+	// The display name of the dataset. Maximum of 64 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
 	InputConfigs GoogleCloudDatalabelingV1beta1InputConfigResponseArrayOutput `pulumi:"inputConfigs"`
@@ -40,6 +40,9 @@ func NewDataset(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -73,7 +76,7 @@ type datasetState struct {
 	DataItemCount *string `pulumi:"dataItemCount"`
 	// Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
 	Description *string `pulumi:"description"`
-	// Required. The display name of the dataset. Maximum of 64 characters.
+	// The display name of the dataset. Maximum of 64 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
 	InputConfigs []GoogleCloudDatalabelingV1beta1InputConfigResponse `pulumi:"inputConfigs"`
@@ -92,7 +95,7 @@ type DatasetState struct {
 	DataItemCount pulumi.StringPtrInput
 	// Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
 	Description pulumi.StringPtrInput
-	// Required. The display name of the dataset. Maximum of 64 characters.
+	// The display name of the dataset. Maximum of 64 characters.
 	DisplayName pulumi.StringPtrInput
 	// This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
 	InputConfigs GoogleCloudDatalabelingV1beta1InputConfigResponseArrayInput
@@ -109,8 +112,8 @@ func (DatasetState) ElementType() reflect.Type {
 type datasetArgs struct {
 	// Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
 	Description *string `pulumi:"description"`
-	// Required. The display name of the dataset. Maximum of 64 characters.
-	DisplayName *string `pulumi:"displayName"`
+	// The display name of the dataset. Maximum of 64 characters.
+	DisplayName string `pulumi:"displayName"`
 	// Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
 	LastMigrateTime *string `pulumi:"lastMigrateTime"`
 	Project         string  `pulumi:"project"`
@@ -120,8 +123,8 @@ type datasetArgs struct {
 type DatasetArgs struct {
 	// Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
 	Description pulumi.StringPtrInput
-	// Required. The display name of the dataset. Maximum of 64 characters.
-	DisplayName pulumi.StringPtrInput
+	// The display name of the dataset. Maximum of 64 characters.
+	DisplayName pulumi.StringInput
 	// Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
 	LastMigrateTime pulumi.StringPtrInput
 	Project         pulumi.StringInput

@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
     public sealed class GoogleCloudDatalabelingV1beta1GcsSourceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The input URI of source file. This must be a Cloud Storage path (`gs://...`).
+        /// The input URI of source file. This must be a Cloud Storage path (`gs://...`).
         /// </summary>
-        [Input("inputUri")]
-        public Input<string>? InputUri { get; set; }
+        [Input("inputUri", required: true)]
+        public Input<string> InputUri { get; set; } = null!;
 
         /// <summary>
-        /// Required. The format of the source file. Only "text/csv" is supported.
+        /// The format of the source file. Only "text/csv" is supported.
         /// </summary>
-        [Input("mimeType")]
-        public Input<string>? MimeType { get; set; }
+        [Input("mimeType", required: true)]
+        public Input<string> MimeType { get; set; } = null!;
 
         public GoogleCloudDatalabelingV1beta1GcsSourceArgs()
         {

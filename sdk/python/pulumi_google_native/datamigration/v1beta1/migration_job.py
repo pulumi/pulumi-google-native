@@ -16,10 +16,12 @@ __all__ = ['MigrationJobArgs', 'MigrationJob']
 @pulumi.input_type
 class MigrationJobArgs:
     def __init__(__self__, *,
+                 destination: pulumi.Input[str],
                  location: pulumi.Input[str],
                  migration_job_id: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 destination: Optional[pulumi.Input[str]] = None,
+                 source: pulumi.Input[str],
+                 type: pulumi.Input['MigrationJobType'],
                  destination_database: Optional[pulumi.Input['DatabaseTypeArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  dump_path: Optional[pulumi.Input[str]] = None,
@@ -27,33 +29,32 @@ class MigrationJobArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reverse_ssh_connectivity: Optional[pulumi.Input['ReverseSshConnectivityArgs']] = None,
-                 source: Optional[pulumi.Input[str]] = None,
                  source_database: Optional[pulumi.Input['DatabaseTypeArgs']] = None,
                  state: Optional[pulumi.Input['MigrationJobState']] = None,
                  static_ip_connectivity: Optional[pulumi.Input['StaticIpConnectivityArgs']] = None,
-                 type: Optional[pulumi.Input['MigrationJobType']] = None,
                  vpc_peering_connectivity: Optional[pulumi.Input['VpcPeeringConnectivityArgs']] = None):
         """
         The set of arguments for constructing a MigrationJob resource.
-        :param pulumi.Input[str] destination: Required. The resource name (URI) of the destination connection profile.
+        :param pulumi.Input[str] destination: The resource name (URI) of the destination connection profile.
+        :param pulumi.Input[str] source: The resource name (URI) of the source connection profile.
+        :param pulumi.Input['MigrationJobType'] type: The migration job type.
         :param pulumi.Input['DatabaseTypeArgs'] destination_database: The database engine type and provider of the destination.
         :param pulumi.Input[str] display_name: The migration job display name.
         :param pulumi.Input[str] dump_path: The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] name: The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
         :param pulumi.Input['ReverseSshConnectivityArgs'] reverse_ssh_connectivity: The details needed to communicate to the source over Reverse SSH tunnel connectivity.
-        :param pulumi.Input[str] source: Required. The resource name (URI) of the source connection profile.
         :param pulumi.Input['DatabaseTypeArgs'] source_database: The database engine type and provider of the source.
         :param pulumi.Input['MigrationJobState'] state: The current migration job state.
         :param pulumi.Input['StaticIpConnectivityArgs'] static_ip_connectivity: static ip connectivity data (default, no additional details needed).
-        :param pulumi.Input['MigrationJobType'] type: Required. The migration job type.
         :param pulumi.Input['VpcPeeringConnectivityArgs'] vpc_peering_connectivity: The details of the VPC network that the source database is located in.
         """
+        pulumi.set(__self__, "destination", destination)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "migration_job_id", migration_job_id)
         pulumi.set(__self__, "project", project)
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "source", source)
+        pulumi.set(__self__, "type", type)
         if destination_database is not None:
             pulumi.set(__self__, "destination_database", destination_database)
         if display_name is not None:
@@ -68,18 +69,26 @@ class MigrationJobArgs:
             pulumi.set(__self__, "request_id", request_id)
         if reverse_ssh_connectivity is not None:
             pulumi.set(__self__, "reverse_ssh_connectivity", reverse_ssh_connectivity)
-        if source is not None:
-            pulumi.set(__self__, "source", source)
         if source_database is not None:
             pulumi.set(__self__, "source_database", source_database)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if static_ip_connectivity is not None:
             pulumi.set(__self__, "static_ip_connectivity", static_ip_connectivity)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
         if vpc_peering_connectivity is not None:
             pulumi.set(__self__, "vpc_peering_connectivity", vpc_peering_connectivity)
+
+    @property
+    @pulumi.getter
+    def destination(self) -> pulumi.Input[str]:
+        """
+        The resource name (URI) of the destination connection profile.
+        """
+        return pulumi.get(self, "destination")
+
+    @destination.setter
+    def destination(self, value: pulumi.Input[str]):
+        pulumi.set(self, "destination", value)
 
     @property
     @pulumi.getter
@@ -110,15 +119,27 @@ class MigrationJobArgs:
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
+    def source(self) -> pulumi.Input[str]:
         """
-        Required. The resource name (URI) of the destination connection profile.
+        The resource name (URI) of the source connection profile.
         """
-        return pulumi.get(self, "destination")
+        return pulumi.get(self, "source")
 
-    @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "destination", value)
+    @source.setter
+    def source(self, value: pulumi.Input[str]):
+        pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input['MigrationJobType']:
+        """
+        The migration job type.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input['MigrationJobType']):
+        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter(name="destinationDatabase")
@@ -202,18 +223,6 @@ class MigrationJobArgs:
         pulumi.set(self, "reverse_ssh_connectivity", value)
 
     @property
-    @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The resource name (URI) of the source connection profile.
-        """
-        return pulumi.get(self, "source")
-
-    @source.setter
-    def source(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "source", value)
-
-    @property
     @pulumi.getter(name="sourceDatabase")
     def source_database(self) -> Optional[pulumi.Input['DatabaseTypeArgs']]:
         """
@@ -248,18 +257,6 @@ class MigrationJobArgs:
     @static_ip_connectivity.setter
     def static_ip_connectivity(self, value: Optional[pulumi.Input['StaticIpConnectivityArgs']]):
         pulumi.set(self, "static_ip_connectivity", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input['MigrationJobType']]:
-        """
-        Required. The migration job type.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input['MigrationJobType']]):
-        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter(name="vpcPeeringConnectivity")
@@ -302,18 +299,18 @@ class MigrationJob(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] destination: Required. The resource name (URI) of the destination connection profile.
+        :param pulumi.Input[str] destination: The resource name (URI) of the destination connection profile.
         :param pulumi.Input[pulumi.InputType['DatabaseTypeArgs']] destination_database: The database engine type and provider of the destination.
         :param pulumi.Input[str] display_name: The migration job display name.
         :param pulumi.Input[str] dump_path: The path to the dump file in Google Cloud Storage, in the format: (gs://[BUCKET_NAME]/[OBJECT_NAME]).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for migration job to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
         :param pulumi.Input[str] name: The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/instances/{instance}.
         :param pulumi.Input[pulumi.InputType['ReverseSshConnectivityArgs']] reverse_ssh_connectivity: The details needed to communicate to the source over Reverse SSH tunnel connectivity.
-        :param pulumi.Input[str] source: Required. The resource name (URI) of the source connection profile.
+        :param pulumi.Input[str] source: The resource name (URI) of the source connection profile.
         :param pulumi.Input[pulumi.InputType['DatabaseTypeArgs']] source_database: The database engine type and provider of the source.
         :param pulumi.Input['MigrationJobState'] state: The current migration job state.
         :param pulumi.Input[pulumi.InputType['StaticIpConnectivityArgs']] static_ip_connectivity: static ip connectivity data (default, no additional details needed).
-        :param pulumi.Input['MigrationJobType'] type: Required. The migration job type.
+        :param pulumi.Input['MigrationJobType'] type: The migration job type.
         :param pulumi.Input[pulumi.InputType['VpcPeeringConnectivityArgs']] vpc_peering_connectivity: The details of the VPC network that the source database is located in.
         """
         ...
@@ -369,6 +366,8 @@ class MigrationJob(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = MigrationJobArgs.__new__(MigrationJobArgs)
 
+            if destination is None and not opts.urn:
+                raise TypeError("Missing required property 'destination'")
             __props__.__dict__["destination"] = destination
             __props__.__dict__["destination_database"] = destination_database
             __props__.__dict__["display_name"] = display_name
@@ -386,10 +385,14 @@ class MigrationJob(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["reverse_ssh_connectivity"] = reverse_ssh_connectivity
+            if source is None and not opts.urn:
+                raise TypeError("Missing required property 'source'")
             __props__.__dict__["source"] = source
             __props__.__dict__["source_database"] = source_database
             __props__.__dict__["state"] = state
             __props__.__dict__["static_ip_connectivity"] = static_ip_connectivity
+            if type is None and not opts.urn:
+                raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
             __props__.__dict__["vpc_peering_connectivity"] = vpc_peering_connectivity
             __props__.__dict__["create_time"] = None
@@ -453,7 +456,7 @@ class MigrationJob(pulumi.CustomResource):
     @pulumi.getter
     def destination(self) -> pulumi.Output[str]:
         """
-        Required. The resource name (URI) of the destination connection profile.
+        The resource name (URI) of the destination connection profile.
         """
         return pulumi.get(self, "destination")
 
@@ -541,7 +544,7 @@ class MigrationJob(pulumi.CustomResource):
     @pulumi.getter
     def source(self) -> pulumi.Output[str]:
         """
-        Required. The resource name (URI) of the source connection profile.
+        The resource name (URI) of the source connection profile.
         """
         return pulumi.get(self, "source")
 
@@ -573,7 +576,7 @@ class MigrationJob(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Required. The migration job type.
+        The migration job type.
         """
         return pulumi.get(self, "type")
 

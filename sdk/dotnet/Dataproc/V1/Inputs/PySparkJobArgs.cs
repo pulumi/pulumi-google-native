@@ -70,10 +70,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public Input<Inputs.LoggingConfigArgs>? LoggingConfig { get; set; }
 
         /// <summary>
-        /// Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+        /// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
         /// </summary>
-        [Input("mainPythonFileUri")]
-        public Input<string>? MainPythonFileUri { get; set; }
+        [Input("mainPythonFileUri", required: true)]
+        public Input<string> MainPythonFileUri { get; set; } = null!;
 
         [Input("properties")]
         private InputMap<string>? _properties;

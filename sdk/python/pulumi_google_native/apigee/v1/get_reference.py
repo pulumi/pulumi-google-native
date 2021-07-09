@@ -42,7 +42,7 @@ class GetReferenceResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+        The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
         """
         return pulumi.get(self, "name")
 
@@ -50,7 +50,7 @@ class GetReferenceResult:
     @pulumi.getter
     def refers(self) -> str:
         """
-        Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
+        The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
         """
         return pulumi.get(self, "refers")
 

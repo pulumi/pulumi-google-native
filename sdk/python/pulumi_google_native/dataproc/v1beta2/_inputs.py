@@ -124,17 +124,28 @@ class AutoscalingConfigArgs:
 @pulumi.input_type
 class BasicAutoscalingAlgorithmArgs:
     def __init__(__self__, *,
-                 cooldown_period: Optional[pulumi.Input[str]] = None,
-                 yarn_config: Optional[pulumi.Input['BasicYarnAutoscalingConfigArgs']] = None):
+                 yarn_config: pulumi.Input['BasicYarnAutoscalingConfigArgs'],
+                 cooldown_period: Optional[pulumi.Input[str]] = None):
         """
         Basic algorithm for autoscaling.
+        :param pulumi.Input['BasicYarnAutoscalingConfigArgs'] yarn_config: YARN autoscaling configuration.
         :param pulumi.Input[str] cooldown_period: Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
-        :param pulumi.Input['BasicYarnAutoscalingConfigArgs'] yarn_config: Required. YARN autoscaling configuration.
         """
+        pulumi.set(__self__, "yarn_config", yarn_config)
         if cooldown_period is not None:
             pulumi.set(__self__, "cooldown_period", cooldown_period)
-        if yarn_config is not None:
-            pulumi.set(__self__, "yarn_config", yarn_config)
+
+    @property
+    @pulumi.getter(name="yarnConfig")
+    def yarn_config(self) -> pulumi.Input['BasicYarnAutoscalingConfigArgs']:
+        """
+        YARN autoscaling configuration.
+        """
+        return pulumi.get(self, "yarn_config")
+
+    @yarn_config.setter
+    def yarn_config(self, value: pulumi.Input['BasicYarnAutoscalingConfigArgs']):
+        pulumi.set(self, "yarn_config", value)
 
     @property
     @pulumi.getter(name="cooldownPeriod")
@@ -148,69 +159,66 @@ class BasicAutoscalingAlgorithmArgs:
     def cooldown_period(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cooldown_period", value)
 
-    @property
-    @pulumi.getter(name="yarnConfig")
-    def yarn_config(self) -> Optional[pulumi.Input['BasicYarnAutoscalingConfigArgs']]:
-        """
-        Required. YARN autoscaling configuration.
-        """
-        return pulumi.get(self, "yarn_config")
-
-    @yarn_config.setter
-    def yarn_config(self, value: Optional[pulumi.Input['BasicYarnAutoscalingConfigArgs']]):
-        pulumi.set(self, "yarn_config", value)
-
 
 @pulumi.input_type
 class BasicYarnAutoscalingConfigArgs:
     def __init__(__self__, *,
-                 graceful_decommission_timeout: Optional[pulumi.Input[str]] = None,
-                 scale_down_factor: Optional[pulumi.Input[float]] = None,
+                 graceful_decommission_timeout: pulumi.Input[str],
+                 scale_down_factor: pulumi.Input[float],
+                 scale_up_factor: pulumi.Input[float],
                  scale_down_min_worker_fraction: Optional[pulumi.Input[float]] = None,
-                 scale_up_factor: Optional[pulumi.Input[float]] = None,
                  scale_up_min_worker_fraction: Optional[pulumi.Input[float]] = None):
         """
         Basic autoscaling configurations for YARN.
-        :param pulumi.Input[str] graceful_decommission_timeout: Required. Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
-        :param pulumi.Input[float] scale_down_factor: Required. Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works for more information.Bounds: 0.0, 1.0.
+        :param pulumi.Input[str] graceful_decommission_timeout: Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
+        :param pulumi.Input[float] scale_down_factor: Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works for more information.Bounds: 0.0, 1.0.
+        :param pulumi.Input[float] scale_up_factor: Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works for more information.Bounds: 0.0, 1.0.
         :param pulumi.Input[float] scale_down_min_worker_fraction: Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
-        :param pulumi.Input[float] scale_up_factor: Required. Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works for more information.Bounds: 0.0, 1.0.
         :param pulumi.Input[float] scale_up_min_worker_fraction: Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
         """
-        if graceful_decommission_timeout is not None:
-            pulumi.set(__self__, "graceful_decommission_timeout", graceful_decommission_timeout)
-        if scale_down_factor is not None:
-            pulumi.set(__self__, "scale_down_factor", scale_down_factor)
+        pulumi.set(__self__, "graceful_decommission_timeout", graceful_decommission_timeout)
+        pulumi.set(__self__, "scale_down_factor", scale_down_factor)
+        pulumi.set(__self__, "scale_up_factor", scale_up_factor)
         if scale_down_min_worker_fraction is not None:
             pulumi.set(__self__, "scale_down_min_worker_fraction", scale_down_min_worker_fraction)
-        if scale_up_factor is not None:
-            pulumi.set(__self__, "scale_up_factor", scale_up_factor)
         if scale_up_min_worker_fraction is not None:
             pulumi.set(__self__, "scale_up_min_worker_fraction", scale_up_min_worker_fraction)
 
     @property
     @pulumi.getter(name="gracefulDecommissionTimeout")
-    def graceful_decommission_timeout(self) -> Optional[pulumi.Input[str]]:
+    def graceful_decommission_timeout(self) -> pulumi.Input[str]:
         """
-        Required. Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
+        Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
         """
         return pulumi.get(self, "graceful_decommission_timeout")
 
     @graceful_decommission_timeout.setter
-    def graceful_decommission_timeout(self, value: Optional[pulumi.Input[str]]):
+    def graceful_decommission_timeout(self, value: pulumi.Input[str]):
         pulumi.set(self, "graceful_decommission_timeout", value)
 
     @property
     @pulumi.getter(name="scaleDownFactor")
-    def scale_down_factor(self) -> Optional[pulumi.Input[float]]:
+    def scale_down_factor(self) -> pulumi.Input[float]:
         """
-        Required. Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works for more information.Bounds: 0.0, 1.0.
+        Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works for more information.Bounds: 0.0, 1.0.
         """
         return pulumi.get(self, "scale_down_factor")
 
     @scale_down_factor.setter
-    def scale_down_factor(self, value: Optional[pulumi.Input[float]]):
+    def scale_down_factor(self, value: pulumi.Input[float]):
         pulumi.set(self, "scale_down_factor", value)
+
+    @property
+    @pulumi.getter(name="scaleUpFactor")
+    def scale_up_factor(self) -> pulumi.Input[float]:
+        """
+        Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works for more information.Bounds: 0.0, 1.0.
+        """
+        return pulumi.get(self, "scale_up_factor")
+
+    @scale_up_factor.setter
+    def scale_up_factor(self, value: pulumi.Input[float]):
+        pulumi.set(self, "scale_up_factor", value)
 
     @property
     @pulumi.getter(name="scaleDownMinWorkerFraction")
@@ -223,18 +231,6 @@ class BasicYarnAutoscalingConfigArgs:
     @scale_down_min_worker_fraction.setter
     def scale_down_min_worker_fraction(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "scale_down_min_worker_fraction", value)
-
-    @property
-    @pulumi.getter(name="scaleUpFactor")
-    def scale_up_factor(self) -> Optional[pulumi.Input[float]]:
-        """
-        Required. Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works for more information.Bounds: 0.0, 1.0.
-        """
-        return pulumi.get(self, "scale_up_factor")
-
-    @scale_up_factor.setter
-    def scale_up_factor(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "scale_up_factor", value)
 
     @property
     @pulumi.getter(name="scaleUpMinWorkerFraction")
@@ -556,28 +552,27 @@ class ClusterConfigArgs:
 @pulumi.input_type
 class ClusterSelectorArgs:
     def __init__(__self__, *,
-                 cluster_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 cluster_labels: pulumi.Input[Mapping[str, pulumi.Input[str]]],
                  zone: Optional[pulumi.Input[str]] = None):
         """
         A selector that chooses target cluster for jobs based on metadata.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] cluster_labels: Required. The cluster labels. Cluster must have all labels to match.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] cluster_labels: The cluster labels. Cluster must have all labels to match.
         :param pulumi.Input[str] zone: Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster.If unspecified, the zone of the first cluster matching the selector is used.
         """
-        if cluster_labels is not None:
-            pulumi.set(__self__, "cluster_labels", cluster_labels)
+        pulumi.set(__self__, "cluster_labels", cluster_labels)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="clusterLabels")
-    def cluster_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+    def cluster_labels(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
         """
-        Required. The cluster labels. Cluster must have all labels to match.
+        The cluster labels. Cluster must have all labels to match.
         """
         return pulumi.get(self, "cluster_labels")
 
     @cluster_labels.setter
-    def cluster_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+    def cluster_labels(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
         pulumi.set(self, "cluster_labels", value)
 
     @property
@@ -1412,17 +1407,28 @@ class InstanceGroupConfigArgs:
 @pulumi.input_type
 class JobPlacementArgs:
     def __init__(__self__, *,
-                 cluster_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 cluster_name: Optional[pulumi.Input[str]] = None):
+                 cluster_name: pulumi.Input[str],
+                 cluster_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Dataproc job config.
+        :param pulumi.Input[str] cluster_name: The name of the cluster where the job will be submitted.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] cluster_labels: Optional. Cluster labels to identify a cluster where the job will be submitted.
-        :param pulumi.Input[str] cluster_name: Required. The name of the cluster where the job will be submitted.
         """
+        pulumi.set(__self__, "cluster_name", cluster_name)
         if cluster_labels is not None:
             pulumi.set(__self__, "cluster_labels", cluster_labels)
-        if cluster_name is not None:
-            pulumi.set(__self__, "cluster_name", cluster_name)
+
+    @property
+    @pulumi.getter(name="clusterName")
+    def cluster_name(self) -> pulumi.Input[str]:
+        """
+        The name of the cluster where the job will be submitted.
+        """
+        return pulumi.get(self, "cluster_name")
+
+    @cluster_name.setter
+    def cluster_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_name", value)
 
     @property
     @pulumi.getter(name="clusterLabels")
@@ -1435,18 +1441,6 @@ class JobPlacementArgs:
     @cluster_labels.setter
     def cluster_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "cluster_labels", value)
-
-    @property
-    @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The name of the cluster where the job will be submitted.
-        """
-        return pulumi.get(self, "cluster_name")
-
-    @cluster_name.setter
-    def cluster_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "cluster_name", value)
 
 
 @pulumi.input_type
@@ -1860,44 +1854,42 @@ class LoggingConfigArgs:
 @pulumi.input_type
 class ManagedClusterArgs:
     def __init__(__self__, *,
-                 cluster_name: Optional[pulumi.Input[str]] = None,
-                 config: Optional[pulumi.Input['ClusterConfigArgs']] = None,
+                 cluster_name: pulumi.Input[str],
+                 config: pulumi.Input['ClusterConfigArgs'],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Cluster that is managed by the workflow.
-        :param pulumi.Input[str] cluster_name: Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
-        :param pulumi.Input['ClusterConfigArgs'] config: Required. The cluster configuration.
+        :param pulumi.Input[str] cluster_name: The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+        :param pulumi.Input['ClusterConfigArgs'] config: The cluster configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this cluster.Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given cluster.
         """
-        if cluster_name is not None:
-            pulumi.set(__self__, "cluster_name", cluster_name)
-        if config is not None:
-            pulumi.set(__self__, "config", config)
+        pulumi.set(__self__, "cluster_name", cluster_name)
+        pulumi.set(__self__, "config", config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
 
     @property
     @pulumi.getter(name="clusterName")
-    def cluster_name(self) -> Optional[pulumi.Input[str]]:
+    def cluster_name(self) -> pulumi.Input[str]:
         """
-        Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+        The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
         """
         return pulumi.get(self, "cluster_name")
 
     @cluster_name.setter
-    def cluster_name(self, value: Optional[pulumi.Input[str]]):
+    def cluster_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "cluster_name", value)
 
     @property
     @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['ClusterConfigArgs']]:
+    def config(self) -> pulumi.Input['ClusterConfigArgs']:
         """
-        Required. The cluster configuration.
+        The cluster configuration.
         """
         return pulumi.get(self, "config")
 
     @config.setter
-    def config(self, value: Optional[pulumi.Input['ClusterConfigArgs']]):
+    def config(self, value: pulumi.Input['ClusterConfigArgs']):
         pulumi.set(self, "config", value)
 
     @property
@@ -1916,24 +1908,23 @@ class ManagedClusterArgs:
 @pulumi.input_type
 class MetastoreConfigArgs:
     def __init__(__self__, *,
-                 dataproc_metastore_service: Optional[pulumi.Input[str]] = None):
+                 dataproc_metastore_service: pulumi.Input[str]):
         """
         Specifies a Metastore configuration.
-        :param pulumi.Input[str] dataproc_metastore_service: Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+        :param pulumi.Input[str] dataproc_metastore_service: Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
         """
-        if dataproc_metastore_service is not None:
-            pulumi.set(__self__, "dataproc_metastore_service", dataproc_metastore_service)
+        pulumi.set(__self__, "dataproc_metastore_service", dataproc_metastore_service)
 
     @property
     @pulumi.getter(name="dataprocMetastoreService")
-    def dataproc_metastore_service(self) -> Optional[pulumi.Input[str]]:
+    def dataproc_metastore_service(self) -> pulumi.Input[str]:
         """
-        Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+        Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
         """
         return pulumi.get(self, "dataproc_metastore_service")
 
     @dataproc_metastore_service.setter
-    def dataproc_metastore_service(self, value: Optional[pulumi.Input[str]]):
+    def dataproc_metastore_service(self, value: pulumi.Input[str]):
         pulumi.set(self, "dataproc_metastore_service", value)
 
 
@@ -1980,52 +1971,50 @@ class NamespacedGkeDeploymentTargetArgs:
 @pulumi.input_type
 class NodeGroupAffinityArgs:
     def __init__(__self__, *,
-                 node_group_uri: Optional[pulumi.Input[str]] = None):
+                 node_group_uri: pulumi.Input[str]):
         """
         Node Group Affinity for clusters using sole-tenant node groups.
-        :param pulumi.Input[str] node_group_uri: Required. The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
+        :param pulumi.Input[str] node_group_uri: The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
         """
-        if node_group_uri is not None:
-            pulumi.set(__self__, "node_group_uri", node_group_uri)
+        pulumi.set(__self__, "node_group_uri", node_group_uri)
 
     @property
     @pulumi.getter(name="nodeGroupUri")
-    def node_group_uri(self) -> Optional[pulumi.Input[str]]:
+    def node_group_uri(self) -> pulumi.Input[str]:
         """
-        Required. The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
+        The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
         """
         return pulumi.get(self, "node_group_uri")
 
     @node_group_uri.setter
-    def node_group_uri(self, value: Optional[pulumi.Input[str]]):
+    def node_group_uri(self, value: pulumi.Input[str]):
         pulumi.set(self, "node_group_uri", value)
 
 
 @pulumi.input_type
 class NodeInitializationActionArgs:
     def __init__(__self__, *,
-                 executable_file: Optional[pulumi.Input[str]] = None,
+                 executable_file: pulumi.Input[str],
                  execution_timeout: Optional[pulumi.Input[str]] = None):
         """
         Specifies an executable to run on a fully configured node and a timeout period for executable completion.
-        :param pulumi.Input[str] executable_file: Required. Cloud Storage URI of executable file.
+        :param pulumi.Input[str] executable_file: Cloud Storage URI of executable file.
         :param pulumi.Input[str] execution_timeout: Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
         """
-        if executable_file is not None:
-            pulumi.set(__self__, "executable_file", executable_file)
+        pulumi.set(__self__, "executable_file", executable_file)
         if execution_timeout is not None:
             pulumi.set(__self__, "execution_timeout", execution_timeout)
 
     @property
     @pulumi.getter(name="executableFile")
-    def executable_file(self) -> Optional[pulumi.Input[str]]:
+    def executable_file(self) -> pulumi.Input[str]:
         """
-        Required. Cloud Storage URI of executable file.
+        Cloud Storage URI of executable file.
         """
         return pulumi.get(self, "executable_file")
 
     @executable_file.setter
-    def executable_file(self, value: Optional[pulumi.Input[str]]):
+    def executable_file(self, value: pulumi.Input[str]):
         pulumi.set(self, "executable_file", value)
 
     @property
@@ -2044,6 +2033,7 @@ class NodeInitializationActionArgs:
 @pulumi.input_type
 class OrderedJobArgs:
     def __init__(__self__, *,
+                 step_id: pulumi.Input[str],
                  hadoop_job: Optional[pulumi.Input['HadoopJobArgs']] = None,
                  hive_job: Optional[pulumi.Input['HiveJobArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -2054,10 +2044,10 @@ class OrderedJobArgs:
                  scheduling: Optional[pulumi.Input['JobSchedulingArgs']] = None,
                  spark_job: Optional[pulumi.Input['SparkJobArgs']] = None,
                  spark_r_job: Optional[pulumi.Input['SparkRJobArgs']] = None,
-                 spark_sql_job: Optional[pulumi.Input['SparkSqlJobArgs']] = None,
-                 step_id: Optional[pulumi.Input[str]] = None):
+                 spark_sql_job: Optional[pulumi.Input['SparkSqlJobArgs']] = None):
         """
         A job executed by the workflow.
+        :param pulumi.Input[str] step_id: The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
         :param pulumi.Input['HadoopJobArgs'] hadoop_job: Optional. Job is a Hadoop job.
         :param pulumi.Input['HiveJobArgs'] hive_job: Optional. Job is a Hive job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. The labels to associate with this job.Label keys must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given job.
@@ -2069,8 +2059,8 @@ class OrderedJobArgs:
         :param pulumi.Input['SparkJobArgs'] spark_job: Optional. Job is a Spark job.
         :param pulumi.Input['SparkRJobArgs'] spark_r_job: Optional. Job is a SparkR job.
         :param pulumi.Input['SparkSqlJobArgs'] spark_sql_job: Optional. Job is a SparkSql job.
-        :param pulumi.Input[str] step_id: Required. The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
         """
+        pulumi.set(__self__, "step_id", step_id)
         if hadoop_job is not None:
             pulumi.set(__self__, "hadoop_job", hadoop_job)
         if hive_job is not None:
@@ -2093,8 +2083,18 @@ class OrderedJobArgs:
             pulumi.set(__self__, "spark_r_job", spark_r_job)
         if spark_sql_job is not None:
             pulumi.set(__self__, "spark_sql_job", spark_sql_job)
-        if step_id is not None:
-            pulumi.set(__self__, "step_id", step_id)
+
+    @property
+    @pulumi.getter(name="stepId")
+    def step_id(self) -> pulumi.Input[str]:
+        """
+        The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+        """
+        return pulumi.get(self, "step_id")
+
+    @step_id.setter
+    def step_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "step_id", value)
 
     @property
     @pulumi.getter(name="hadoopJob")
@@ -2227,18 +2227,6 @@ class OrderedJobArgs:
     @spark_sql_job.setter
     def spark_sql_job(self, value: Optional[pulumi.Input['SparkSqlJobArgs']]):
         pulumi.set(self, "spark_sql_job", value)
-
-    @property
-    @pulumi.getter(name="stepId")
-    def step_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-        """
-        return pulumi.get(self, "step_id")
-
-    @step_id.setter
-    def step_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "step_id", value)
 
 
 @pulumi.input_type
@@ -2524,25 +2512,26 @@ class PrestoJobArgs:
 @pulumi.input_type
 class PySparkJobArgs:
     def __init__(__self__, *,
+                 main_python_file_uri: pulumi.Input[str],
                  archive_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  jar_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logging_config: Optional[pulumi.Input['LoggingConfigArgs']] = None,
-                 main_python_file_uri: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  python_file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/python-programming-guide.html) applications on YARN.
+        :param pulumi.Input[str] main_python_file_uri: The HCFS URI of the main Python file to use as the driver. Must be a .py file.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] archive_uris: Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] jar_file_uris: Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
         :param pulumi.Input['LoggingConfigArgs'] logging_config: Optional. The runtime log config for job execution.
-        :param pulumi.Input[str] main_python_file_uri: Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] python_file_uris: Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
         """
+        pulumi.set(__self__, "main_python_file_uri", main_python_file_uri)
         if archive_uris is not None:
             pulumi.set(__self__, "archive_uris", archive_uris)
         if args is not None:
@@ -2553,12 +2542,22 @@ class PySparkJobArgs:
             pulumi.set(__self__, "jar_file_uris", jar_file_uris)
         if logging_config is not None:
             pulumi.set(__self__, "logging_config", logging_config)
-        if main_python_file_uri is not None:
-            pulumi.set(__self__, "main_python_file_uri", main_python_file_uri)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
         if python_file_uris is not None:
             pulumi.set(__self__, "python_file_uris", python_file_uris)
+
+    @property
+    @pulumi.getter(name="mainPythonFileUri")
+    def main_python_file_uri(self) -> pulumi.Input[str]:
+        """
+        The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+        """
+        return pulumi.get(self, "main_python_file_uri")
+
+    @main_python_file_uri.setter
+    def main_python_file_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "main_python_file_uri", value)
 
     @property
     @pulumi.getter(name="archiveUris")
@@ -2621,18 +2620,6 @@ class PySparkJobArgs:
         pulumi.set(self, "logging_config", value)
 
     @property
-    @pulumi.getter(name="mainPythonFileUri")
-    def main_python_file_uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
-        """
-        return pulumi.get(self, "main_python_file_uri")
-
-    @main_python_file_uri.setter
-    def main_python_file_uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "main_python_file_uri", value)
-
-    @property
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -2660,48 +2647,46 @@ class PySparkJobArgs:
 @pulumi.input_type
 class QueryListArgs:
     def __init__(__self__, *,
-                 queries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 queries: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         A list of queries to run on a cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] queries: Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } } 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] queries: The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } } 
         """
-        if queries is not None:
-            pulumi.set(__self__, "queries", queries)
+        pulumi.set(__self__, "queries", queries)
 
     @property
     @pulumi.getter
-    def queries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def queries(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } } 
+        The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } } 
         """
         return pulumi.get(self, "queries")
 
     @queries.setter
-    def queries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def queries(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "queries", value)
 
 
 @pulumi.input_type
 class RegexValidationArgs:
     def __init__(__self__, *,
-                 regexes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 regexes: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         Validation based on regular expressions.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] regexes: Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] regexes: RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
         """
-        if regexes is not None:
-            pulumi.set(__self__, "regexes", regexes)
+        pulumi.set(__self__, "regexes", regexes)
 
     @property
     @pulumi.getter
-    def regexes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def regexes(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
+        RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
         """
         return pulumi.get(self, "regexes")
 
     @regexes.setter
-    def regexes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def regexes(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "regexes", value)
 
 
@@ -3036,21 +3021,22 @@ class SparkJobArgs:
 @pulumi.input_type
 class SparkRJobArgs:
     def __init__(__self__, *,
+                 main_r_file_uri: pulumi.Input[str],
                  archive_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  file_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  logging_config: Optional[pulumi.Input['LoggingConfigArgs']] = None,
-                 main_r_file_uri: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         A Dataproc job for running Apache SparkR (https://spark.apache.org/docs/latest/sparkr.html) applications on YARN.
+        :param pulumi.Input[str] main_r_file_uri: The HCFS URI of the main R file to use as the driver. Must be a .R file.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] archive_uris: Optional. HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] file_uris: Optional. HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
         :param pulumi.Input['LoggingConfigArgs'] logging_config: Optional. The runtime log config for job execution.
-        :param pulumi.Input[str] main_r_file_uri: Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
         """
+        pulumi.set(__self__, "main_r_file_uri", main_r_file_uri)
         if archive_uris is not None:
             pulumi.set(__self__, "archive_uris", archive_uris)
         if args is not None:
@@ -3059,10 +3045,20 @@ class SparkRJobArgs:
             pulumi.set(__self__, "file_uris", file_uris)
         if logging_config is not None:
             pulumi.set(__self__, "logging_config", logging_config)
-        if main_r_file_uri is not None:
-            pulumi.set(__self__, "main_r_file_uri", main_r_file_uri)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
+
+    @property
+    @pulumi.getter(name="mainRFileUri")
+    def main_r_file_uri(self) -> pulumi.Input[str]:
+        """
+        The HCFS URI of the main R file to use as the driver. Must be a .R file.
+        """
+        return pulumi.get(self, "main_r_file_uri")
+
+    @main_r_file_uri.setter
+    def main_r_file_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "main_r_file_uri", value)
 
     @property
     @pulumi.getter(name="archiveUris")
@@ -3111,18 +3107,6 @@ class SparkRJobArgs:
     @logging_config.setter
     def logging_config(self, value: Optional[pulumi.Input['LoggingConfigArgs']]):
         pulumi.set(self, "logging_config", value)
-
-    @property
-    @pulumi.getter(name="mainRFileUri")
-    def main_r_file_uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
-        """
-        return pulumi.get(self, "main_r_file_uri")
-
-    @main_r_file_uri.setter
-    def main_r_file_uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "main_r_file_uri", value)
 
     @property
     @pulumi.getter
@@ -3244,25 +3228,47 @@ class SparkSqlJobArgs:
 @pulumi.input_type
 class TemplateParameterArgs:
     def __init__(__self__, *,
+                 fields: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 name: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  validation: Optional[pulumi.Input['ParameterValidationArgs']] = None):
         """
         A configurable parameter that replaces one or more fields in the template. Parameterizable fields: - Labels - File uris - Job properties - Job arguments - Script variables - Main class (in HadoopJob and SparkJob) - Zone (in ClusterSelector)
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] fields: Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
+        :param pulumi.Input[str] name: Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
         :param pulumi.Input[str] description: Optional. Brief description of the parameter. Must not exceed 1024 characters.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] fields: Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
-        :param pulumi.Input[str] name: Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
         :param pulumi.Input['ParameterValidationArgs'] validation: Optional. Validation rules to be applied to this parameter's value.
         """
+        pulumi.set(__self__, "fields", fields)
+        pulumi.set(__self__, "name", name)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if fields is not None:
-            pulumi.set(__self__, "fields", fields)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if validation is not None:
             pulumi.set(__self__, "validation", validation)
+
+    @property
+    @pulumi.getter
+    def fields(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "fields", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -3275,30 +3281,6 @@ class TemplateParameterArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
-        """
-        return pulumi.get(self, "fields")
-
-    @fields.setter
-    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "fields", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -3316,24 +3298,23 @@ class TemplateParameterArgs:
 @pulumi.input_type
 class ValueValidationArgs:
     def __init__(__self__, *,
-                 values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 values: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         Validation based on a list of allowed values.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Required. List of allowed values for the parameter.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] values: List of allowed values for the parameter.
         """
-        if values is not None:
-            pulumi.set(__self__, "values", values)
+        pulumi.set(__self__, "values", values)
 
     @property
     @pulumi.getter
-    def values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def values(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Required. List of allowed values for the parameter.
+        List of allowed values for the parameter.
         """
         return pulumi.get(self, "values")
 
     @values.setter
-    def values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def values(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "values", value)
 
 

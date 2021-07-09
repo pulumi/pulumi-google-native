@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. Immutable. The `EntityKey` of the member.
+        /// Immutable. The `EntityKey` of the member.
         /// </summary>
         public readonly Outputs.EntityKeyResponse PreferredMemberKey;
         /// <summary>

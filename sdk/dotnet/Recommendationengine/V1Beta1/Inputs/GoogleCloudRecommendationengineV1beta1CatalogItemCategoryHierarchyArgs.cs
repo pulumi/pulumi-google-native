@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Inputs
     /// </summary>
     public sealed class GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs : Pulumi.ResourceArgs
     {
-        [Input("categories")]
+        [Input("categories", required: true)]
         private InputList<string>? _categories;
 
         /// <summary>
-        /// Required. Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
+        /// Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
         /// </summary>
         public InputList<string> Categories
         {

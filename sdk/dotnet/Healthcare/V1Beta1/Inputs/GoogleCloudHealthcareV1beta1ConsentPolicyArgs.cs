@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     public sealed class GoogleCloudHealthcareV1beta1ConsentPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&amp;&amp;`), `OR` (`||`).
+        /// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&amp;&amp;`), `OR` (`||`).
         /// </summary>
-        [Input("authorizationRule")]
-        public Input<Inputs.ExprArgs>? AuthorizationRule { get; set; }
+        [Input("authorizationRule", required: true)]
+        public Input<Inputs.ExprArgs> AuthorizationRule { get; set; } = null!;
 
         [Input("resourceAttributes")]
         private InputList<Inputs.AttributeArgs>? _resourceAttributes;

@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
         /// </summary>
         public readonly bool AllowPlaybackInterruption;
         /// <summary>
-        /// Required. URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        /// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
         /// </summary>
         public readonly string AudioUri;
 

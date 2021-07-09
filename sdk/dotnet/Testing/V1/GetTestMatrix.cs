@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.Testing.V1
         /// </summary>
         public readonly Outputs.ClientInfoResponse ClientInfo;
         /// <summary>
-        /// Required. The devices the tests are being executed on.
+        /// The devices the tests are being executed on.
         /// </summary>
         public readonly Outputs.EnvironmentMatrixResponse EnvironmentMatrix;
         /// <summary>
@@ -65,7 +65,7 @@ namespace Pulumi.GoogleNative.Testing.V1
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Required. Where the results for the matrix are written.
+        /// Where the results for the matrix are written.
         /// </summary>
         public readonly Outputs.ResultStorageResponse ResultStorage;
         /// <summary>
@@ -81,7 +81,7 @@ namespace Pulumi.GoogleNative.Testing.V1
         /// </summary>
         public readonly string TestMatrixId;
         /// <summary>
-        /// Required. How to run the test.
+        /// How to run the test.
         /// </summary>
         public readonly Outputs.TestSpecificationResponse TestSpecification;
         /// <summary>

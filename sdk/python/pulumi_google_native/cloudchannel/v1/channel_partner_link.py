@@ -16,18 +16,16 @@ __all__ = ['ChannelPartnerLinkArgs', 'ChannelPartnerLink']
 class ChannelPartnerLinkArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
-                 link_state: Optional[pulumi.Input['ChannelPartnerLinkLinkState']] = None,
-                 reseller_cloud_identity_id: Optional[pulumi.Input[str]] = None):
+                 link_state: pulumi.Input['ChannelPartnerLinkLinkState'],
+                 reseller_cloud_identity_id: pulumi.Input[str]):
         """
         The set of arguments for constructing a ChannelPartnerLink resource.
-        :param pulumi.Input['ChannelPartnerLinkLinkState'] link_state: Required. State of the channel partner link.
-        :param pulumi.Input[str] reseller_cloud_identity_id: Required. Cloud Identity ID of the linked reseller.
+        :param pulumi.Input['ChannelPartnerLinkLinkState'] link_state: State of the channel partner link.
+        :param pulumi.Input[str] reseller_cloud_identity_id: Cloud Identity ID of the linked reseller.
         """
         pulumi.set(__self__, "account_id", account_id)
-        if link_state is not None:
-            pulumi.set(__self__, "link_state", link_state)
-        if reseller_cloud_identity_id is not None:
-            pulumi.set(__self__, "reseller_cloud_identity_id", reseller_cloud_identity_id)
+        pulumi.set(__self__, "link_state", link_state)
+        pulumi.set(__self__, "reseller_cloud_identity_id", reseller_cloud_identity_id)
 
     @property
     @pulumi.getter(name="accountId")
@@ -40,26 +38,26 @@ class ChannelPartnerLinkArgs:
 
     @property
     @pulumi.getter(name="linkState")
-    def link_state(self) -> Optional[pulumi.Input['ChannelPartnerLinkLinkState']]:
+    def link_state(self) -> pulumi.Input['ChannelPartnerLinkLinkState']:
         """
-        Required. State of the channel partner link.
+        State of the channel partner link.
         """
         return pulumi.get(self, "link_state")
 
     @link_state.setter
-    def link_state(self, value: Optional[pulumi.Input['ChannelPartnerLinkLinkState']]):
+    def link_state(self, value: pulumi.Input['ChannelPartnerLinkLinkState']):
         pulumi.set(self, "link_state", value)
 
     @property
     @pulumi.getter(name="resellerCloudIdentityId")
-    def reseller_cloud_identity_id(self) -> Optional[pulumi.Input[str]]:
+    def reseller_cloud_identity_id(self) -> pulumi.Input[str]:
         """
-        Required. Cloud Identity ID of the linked reseller.
+        Cloud Identity ID of the linked reseller.
         """
         return pulumi.get(self, "reseller_cloud_identity_id")
 
     @reseller_cloud_identity_id.setter
-    def reseller_cloud_identity_id(self, value: Optional[pulumi.Input[str]]):
+    def reseller_cloud_identity_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "reseller_cloud_identity_id", value)
 
 
@@ -77,8 +75,8 @@ class ChannelPartnerLink(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input['ChannelPartnerLinkLinkState'] link_state: Required. State of the channel partner link.
-        :param pulumi.Input[str] reseller_cloud_identity_id: Required. Cloud Identity ID of the linked reseller.
+        :param pulumi.Input['ChannelPartnerLinkLinkState'] link_state: State of the channel partner link.
+        :param pulumi.Input[str] reseller_cloud_identity_id: Cloud Identity ID of the linked reseller.
         """
         ...
     @overload
@@ -122,7 +120,11 @@ class ChannelPartnerLink(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            if link_state is None and not opts.urn:
+                raise TypeError("Missing required property 'link_state'")
             __props__.__dict__["link_state"] = link_state
+            if reseller_cloud_identity_id is None and not opts.urn:
+                raise TypeError("Missing required property 'reseller_cloud_identity_id'")
             __props__.__dict__["reseller_cloud_identity_id"] = reseller_cloud_identity_id
             __props__.__dict__["channel_partner_cloud_identity_info"] = None
             __props__.__dict__["create_time"] = None
@@ -190,7 +192,7 @@ class ChannelPartnerLink(pulumi.CustomResource):
     @pulumi.getter(name="linkState")
     def link_state(self) -> pulumi.Output[str]:
         """
-        Required. State of the channel partner link.
+        State of the channel partner link.
         """
         return pulumi.get(self, "link_state")
 
@@ -214,7 +216,7 @@ class ChannelPartnerLink(pulumi.CustomResource):
     @pulumi.getter(name="resellerCloudIdentityId")
     def reseller_cloud_identity_id(self) -> pulumi.Output[str]:
         """
-        Required. Cloud Identity ID of the linked reseller.
+        Cloud Identity ID of the linked reseller.
         """
         return pulumi.get(self, "reseller_cloud_identity_id")
 

@@ -79,7 +79,7 @@ class GetDatasetResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The display name of the dataset. Maximum of 64 characters.
+        The display name of the dataset. Maximum of 64 characters.
         """
         return pulumi.get(self, "display_name")
 

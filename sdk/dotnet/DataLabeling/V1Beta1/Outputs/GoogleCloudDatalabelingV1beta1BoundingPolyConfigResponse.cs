@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Outputs
     public sealed class GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse
     {
         /// <summary>
-        /// Required. Annotation spec set resource name.
+        /// Annotation spec set resource name.
         /// </summary>
         public readonly string AnnotationSpecSet;
         /// <summary>

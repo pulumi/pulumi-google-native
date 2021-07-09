@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     public sealed class AwsS3DataArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+        /// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
         /// </summary>
-        [Input("awsAccessKey")]
-        public Input<Inputs.AwsAccessKeyArgs>? AwsAccessKey { get; set; }
+        [Input("awsAccessKey", required: true)]
+        public Input<Inputs.AwsAccessKeyArgs> AwsAccessKey { get; set; } = null!;
 
         /// <summary>
-        /// Required. S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
+        /// S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
         /// </summary>
-        [Input("bucketName")]
-        public Input<string>? BucketName { get; set; }
+        [Input("bucketName", required: true)]
+        public Input<string> BucketName { get; set; } = null!;
 
         /// <summary>
         /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.

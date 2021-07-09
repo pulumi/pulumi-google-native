@@ -28,16 +28,16 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         }
 
         /// <summary>
-        /// Required. The desired format of the notification message payloads.
+        /// The desired format of the notification message payloads.
         /// </summary>
-        [Input("payloadFormat")]
-        public Input<Pulumi.GoogleNative.StorageTransfer.V1.NotificationConfigPayloadFormat>? PayloadFormat { get; set; }
+        [Input("payloadFormat", required: true)]
+        public Input<Pulumi.GoogleNative.StorageTransfer.V1.NotificationConfigPayloadFormat> PayloadFormat { get; set; } = null!;
 
         /// <summary>
-        /// Required. The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
+        /// The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
         /// </summary>
-        [Input("pubsubTopic")]
-        public Input<string>? PubsubTopic { get; set; }
+        [Input("pubsubTopic", required: true)]
+        public Input<string> PubsubTopic { get; set; } = null!;
 
         public NotificationConfigArgs()
         {

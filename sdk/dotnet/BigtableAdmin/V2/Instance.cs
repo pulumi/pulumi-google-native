@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     public partial class Instance : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
+        /// The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
+        /// Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The type of the instance. Defaults to `PRODUCTION`.
+        /// The type of the instance. Defaults to `PRODUCTION`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -90,11 +90,11 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
 
     public sealed class InstanceArgs : Pulumi.ResourceArgs
     {
-        [Input("clusters")]
+        [Input("clusters", required: true)]
         private InputMap<string>? _clusters;
 
         /// <summary>
-        /// Required. The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank. Currently, at most four clusters can be specified.
+        /// The clusters to be created within the instance, mapped by desired cluster ID, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. Fields marked `OutputOnly` must be left blank. Currently, at most four clusters can be specified.
         /// </summary>
         public InputMap<string> Clusters
         {
@@ -103,22 +103,22 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         }
 
         /// <summary>
-        /// Required. The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
+        /// The descriptive name for this instance as it appears in UIs. Can be changed at any time, but should be kept globally unique to avoid confusion.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// Required. The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
+        /// The ID to be used when referring to the new instance within its project, e.g., just `myinstance` rather than `projects/myproject/instances/myinstance`.
         /// </summary>
-        [Input("instanceId")]
-        public Input<string>? InstanceId { get; set; }
+        [Input("instanceId", required: true)]
+        public Input<string> InstanceId { get; set; } = null!;
 
-        [Input("labels")]
+        [Input("labels", required: true)]
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Required. Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
+        /// Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -133,19 +133,19 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required. The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`.
+        /// The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`.
         /// </summary>
-        [Input("parent")]
-        public Input<string>? Parent { get; set; }
+        [Input("parent", required: true)]
+        public Input<string> Parent { get; set; } = null!;
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Required. The type of the instance. Defaults to `PRODUCTION`.
+        /// The type of the instance. Defaults to `PRODUCTION`.
         /// </summary>
-        [Input("type")]
-        public Input<Pulumi.GoogleNative.BigtableAdmin.V2.InstanceType>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<Pulumi.GoogleNative.BigtableAdmin.V2.InstanceType> Type { get; set; } = null!;
 
         public InstanceArgs()
         {

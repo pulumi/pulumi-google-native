@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
         /// </summary>
         public readonly bool EnableTrialEarlyStopping;
         /// <summary>
-        /// Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
+        /// The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
         /// </summary>
         public readonly string Goal;
         /// <summary>
@@ -42,7 +42,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
         /// </summary>
         public readonly int MaxTrials;
         /// <summary>
-        /// Required. The set of parameters to tune.
+        /// The set of parameters to tune.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudMlV1__ParameterSpecResponse> Params;
         /// <summary>

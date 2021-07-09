@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1.Outputs
     public sealed class GoogleCloudDatacatalogV1beta1ColumnSchemaResponse
     {
         /// <summary>
-        /// Required. Name of the column.
+        /// Name of the column.
         /// </summary>
         public readonly string Column;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDatacatalogV1beta1ColumnSchemaResponse> Subcolumns;
         /// <summary>
-        /// Required. Type of the column.
+        /// Type of the column.
         /// </summary>
         public readonly string Type;
 

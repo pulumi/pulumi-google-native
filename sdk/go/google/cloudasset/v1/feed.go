@@ -23,9 +23,9 @@ type Feed struct {
 	Condition ExprResponseOutput `pulumi:"condition"`
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
 	ContentType pulumi.StringOutput `pulumi:"contentType"`
-	// Required. Feed output configuration defining where the asset updates are published to.
+	// Feed output configuration defining where the asset updates are published to.
 	FeedOutputConfig FeedOutputConfigResponseOutput `pulumi:"feedOutputConfig"`
-	// Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
+	// The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
 	Name pulumi.StringOutput `pulumi:"name"`
 }
 
@@ -36,6 +36,15 @@ func NewFeed(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.FeedId == nil {
+		return nil, errors.New("invalid value for required argument 'FeedId'")
+	}
+	if args.FeedOutputConfig == nil {
+		return nil, errors.New("invalid value for required argument 'FeedOutputConfig'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	if args.V1Id == nil {
 		return nil, errors.New("invalid value for required argument 'V1Id'")
 	}
@@ -72,9 +81,9 @@ type feedState struct {
 	Condition *ExprResponse `pulumi:"condition"`
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
 	ContentType *string `pulumi:"contentType"`
-	// Required. Feed output configuration defining where the asset updates are published to.
+	// Feed output configuration defining where the asset updates are published to.
 	FeedOutputConfig *FeedOutputConfigResponse `pulumi:"feedOutputConfig"`
-	// Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
+	// The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
 	Name *string `pulumi:"name"`
 }
 
@@ -87,9 +96,9 @@ type FeedState struct {
 	Condition ExprResponsePtrInput
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
 	ContentType pulumi.StringPtrInput
-	// Required. Feed output configuration defining where the asset updates are published to.
+	// Feed output configuration defining where the asset updates are published to.
 	FeedOutputConfig FeedOutputConfigResponsePtrInput
-	// Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
+	// The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
 	Name pulumi.StringPtrInput
 }
 
@@ -106,14 +115,14 @@ type feedArgs struct {
 	Condition *Expr `pulumi:"condition"`
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
 	ContentType *string `pulumi:"contentType"`
-	// Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
-	FeedId *string `pulumi:"feedId"`
-	// Required. Feed output configuration defining where the asset updates are published to.
-	FeedOutputConfig *FeedOutputConfig `pulumi:"feedOutputConfig"`
-	// Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
-	Name  *string `pulumi:"name"`
-	V1Id  string  `pulumi:"v1Id"`
-	V1Id1 string  `pulumi:"v1Id1"`
+	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
+	FeedId string `pulumi:"feedId"`
+	// Feed output configuration defining where the asset updates are published to.
+	FeedOutputConfig FeedOutputConfig `pulumi:"feedOutputConfig"`
+	// The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
+	Name  string `pulumi:"name"`
+	V1Id  string `pulumi:"v1Id"`
+	V1Id1 string `pulumi:"v1Id1"`
 }
 
 // The set of arguments for constructing a Feed resource.
@@ -126,12 +135,12 @@ type FeedArgs struct {
 	Condition ExprPtrInput
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
 	ContentType *FeedContentType
-	// Required. This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
-	FeedId pulumi.StringPtrInput
-	// Required. Feed output configuration defining where the asset updates are published to.
-	FeedOutputConfig FeedOutputConfigPtrInput
-	// Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
-	Name  pulumi.StringPtrInput
+	// This is the client-assigned asset feed identifier and it needs to be unique under a specific parent project/folder/organization.
+	FeedId pulumi.StringInput
+	// Feed output configuration defining where the asset updates are published to.
+	FeedOutputConfig FeedOutputConfigInput
+	// The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
+	Name  pulumi.StringInput
 	V1Id  pulumi.StringInput
 	V1Id1 pulumi.StringInput
 }

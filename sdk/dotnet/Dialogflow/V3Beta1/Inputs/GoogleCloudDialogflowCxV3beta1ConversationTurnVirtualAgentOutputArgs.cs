@@ -21,11 +21,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         [Input("currentPage")]
         public Input<Inputs.GoogleCloudDialogflowCxV3beta1PageArgs>? CurrentPage { get; set; }
 
-        [Input("diagnosticInfo")]
+        [Input("diagnosticInfo", required: true)]
         private InputMap<string>? _diagnosticInfo;
 
         /// <summary>
-        /// Required. Input only. The diagnostic info output for the turn.
+        /// Input only. The diagnostic info output for the turn.
         /// </summary>
         public InputMap<string> DiagnosticInfo
         {

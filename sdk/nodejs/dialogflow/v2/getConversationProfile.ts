@@ -39,7 +39,7 @@ export interface GetConversationProfileResult {
      */
     readonly createTime: string;
     /**
-     * Required. Human readable name for this profile. Max length 1024 bytes.
+     * Human readable name for this profile. Max length 1024 bytes.
      */
     readonly displayName: string;
     /**

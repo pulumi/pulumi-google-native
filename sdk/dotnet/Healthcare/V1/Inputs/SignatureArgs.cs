@@ -40,10 +40,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
         public Input<string>? SignatureTime { get; set; }
 
         /// <summary>
-        /// Required. User's UUID provided by the client.
+        /// User's UUID provided by the client.
         /// </summary>
-        [Input("userId")]
-        public Input<string>? UserId { get; set; }
+        [Input("userId", required: true)]
+        public Input<string> UserId { get; set; } = null!;
 
         public SignatureArgs()
         {

@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     public sealed class ClientInfoDetailArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The key of detailed client information.
+        /// The key of detailed client information.
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        [Input("key", required: true)]
+        public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// Required. The value of detailed client information.
+        /// The value of detailed client information.
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
 
         public ClientInfoDetailArgs()
         {

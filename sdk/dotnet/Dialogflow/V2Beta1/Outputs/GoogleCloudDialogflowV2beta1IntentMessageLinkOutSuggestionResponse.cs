@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionResponse
     {
         /// <summary>
-        /// Required. The name of the app or site this chip is linking to.
+        /// The name of the app or site this chip is linking to.
         /// </summary>
         public readonly string DestinationName;
         /// <summary>
-        /// Required. The URI of the app or site to open when the user taps the suggestion chip.
+        /// The URI of the app or site to open when the user taps the suggestion chip.
         /// </summary>
         public readonly string Uri;
 

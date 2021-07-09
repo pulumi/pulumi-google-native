@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public Input<string>? Config { get; set; }
 
         /// <summary>
-        /// Required. Beginning of the lifetime of this deployment.
+        /// Beginning of the lifetime of this deployment.
         /// </summary>
-        [Input("deployTime")]
-        public Input<string>? DeployTime { get; set; }
+        [Input("deployTime", required: true)]
+        public Input<string> DeployTime { get; set; } = null!;
 
         /// <summary>
         /// Platform hosting this deployment.

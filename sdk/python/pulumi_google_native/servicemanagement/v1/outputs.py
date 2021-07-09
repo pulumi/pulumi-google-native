@@ -2528,10 +2528,10 @@ class MonitoredResourceDescriptorResponse(dict):
         An object that describes the schema of a MonitoredResource object using a type name and a set of labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of `"gce_instance"` and specifies the use of the labels `"instance_id"` and `"zone"` to identify particular VM instances. Different APIs can support different monitored resource types. APIs generally provide a `list` method that returns the monitored resource descriptors used by the API. 
         :param str description: Optional. A detailed description of the monitored resource type that might be used in documentation.
         :param str display_name: Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, `"Google Cloud SQL Database"`.
-        :param Sequence['LabelDescriptorResponse'] labels: Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
+        :param Sequence['LabelDescriptorResponse'] labels: A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
         :param str launch_stage: Optional. The launch stage of the monitored resource definition.
         :param str name: Optional. The resource name of the monitored resource descriptor: `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format `"monitoredResourceDescriptors/{type}"`.
-        :param str type: Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+        :param str type: The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "display_name", display_name)
@@ -2560,7 +2560,7 @@ class MonitoredResourceDescriptorResponse(dict):
     @pulumi.getter
     def labels(self) -> Sequence['outputs.LabelDescriptorResponse']:
         """
-        Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
+        A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
         """
         return pulumi.get(self, "labels")
 
@@ -2584,7 +2584,7 @@ class MonitoredResourceDescriptorResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+        The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
         """
         return pulumi.get(self, "type")
 

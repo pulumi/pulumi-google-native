@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Required. The display name of the dataset. Maximum of 64 characters.
+        /// The display name of the dataset. Maximum of 64 characters.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

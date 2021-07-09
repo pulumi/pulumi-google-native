@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
     public sealed class SoftwareRecipeStepInstallRpmResponse
     {
         /// <summary>
-        /// Required. The id of the relevant artifact in the recipe.
+        /// The id of the relevant artifact in the recipe.
         /// </summary>
         public readonly string ArtifactId;
 

@@ -44,7 +44,7 @@ export class ConversationProfile extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Required. Human readable name for this profile. Max length 1024 bytes.
+     * Human readable name for this profile. Max length 1024 bytes.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -95,6 +95,9 @@ export class ConversationProfile extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -145,9 +148,9 @@ export interface ConversationProfileArgs {
      */
     automatedAgentConfig?: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs>;
     /**
-     * Required. Human readable name for this profile. Max length 1024 bytes.
+     * Human readable name for this profile. Max length 1024 bytes.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * Configuration for agent assistance to use with this profile.
      */

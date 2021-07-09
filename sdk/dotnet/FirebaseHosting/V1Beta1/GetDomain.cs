@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
     public sealed class GetDomainResult
     {
         /// <summary>
-        /// Required. The domain name of the association.
+        /// The domain name of the association.
         /// </summary>
         public readonly string DomainName;
         /// <summary>
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         /// </summary>
         public readonly Outputs.DomainProvisioningResponse Provisioning;
         /// <summary>
-        /// Required. The site name of the association.
+        /// The site name of the association.
         /// </summary>
         public readonly string Site;
         /// <summary>

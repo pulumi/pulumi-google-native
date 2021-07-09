@@ -30,7 +30,7 @@ type LookupCertificateAuthorityResult struct {
 	CaCertificateDescriptions []CertificateDescriptionResponse `pulumi:"caCertificateDescriptions"`
 	// Optional. The CertificateAuthorityPolicy to enforce when issuing Certificates from this CertificateAuthority.
 	CertificatePolicy CertificateAuthorityPolicyResponse `pulumi:"certificatePolicy"`
-	// Required. Immutable. The config used to create a self-signed X.509 certificate or CSR.
+	// Immutable. The config used to create a self-signed X.509 certificate or CSR.
 	Config CertificateConfigResponse `pulumi:"config"`
 	// The time at which this CertificateAuthority was created.
 	CreateTime string `pulumi:"createTime"`
@@ -40,11 +40,11 @@ type LookupCertificateAuthorityResult struct {
 	GcsBucket string `pulumi:"gcsBucket"`
 	// Optional. The IssuingOptions to follow when issuing Certificates from this CertificateAuthority.
 	IssuingOptions IssuingOptionsResponse `pulumi:"issuingOptions"`
-	// Required. Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
+	// Immutable. Used when issuing certificates for this CertificateAuthority. If this CertificateAuthority is a self-signed CertificateAuthority, this key is also used to sign the self-signed CA certificate. Otherwise, it is used to sign a CSR.
 	KeySpec KeyVersionSpecResponse `pulumi:"keySpec"`
 	// Optional. Labels with user-defined metadata.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
+	// The desired lifetime of the CA certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate.
 	Lifetime string `pulumi:"lifetime"`
 	// The resource name for this CertificateAuthority in the format `projects/*/locations/*/certificateAuthorities/*`.
 	Name string `pulumi:"name"`
@@ -54,9 +54,9 @@ type LookupCertificateAuthorityResult struct {
 	State string `pulumi:"state"`
 	// Optional. If this is a subordinate CertificateAuthority, this field will be set with the subordinate configuration, which describes its issuers. This may be updated, but this CertificateAuthority must continue to validate.
 	SubordinateConfig SubordinateConfigResponse `pulumi:"subordinateConfig"`
-	// Required. Immutable. The Tier of this CertificateAuthority.
+	// Immutable. The Tier of this CertificateAuthority.
 	Tier string `pulumi:"tier"`
-	// Required. Immutable. The Type of this CertificateAuthority.
+	// Immutable. The Type of this CertificateAuthority.
 	Type string `pulumi:"type"`
 	// The time at which this CertificateAuthority was updated.
 	UpdateTime string `pulumi:"updateTime"`

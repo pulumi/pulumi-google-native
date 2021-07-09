@@ -40,7 +40,7 @@ export class Webhook extends pulumi.CustomResource {
      */
     public readonly disabled!: pulumi.Output<boolean>;
     /**
-     * Required. The human-readable name of the webhook, unique within the agent.
+     * The human-readable name of the webhook, unique within the agent.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -69,6 +69,9 @@ export class Webhook extends pulumi.CustomResource {
         if (!opts.id) {
             if ((!args || args.agentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
+            }
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
             }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
@@ -108,9 +111,9 @@ export interface WebhookArgs {
      */
     disabled?: pulumi.Input<boolean>;
     /**
-     * Required. The human-readable name of the webhook, unique within the agent.
+     * The human-readable name of the webhook, unique within the agent.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * Configuration for a generic web service.
      */

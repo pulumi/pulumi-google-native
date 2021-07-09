@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
     public sealed class SubordinateConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
+        /// This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
         /// </summary>
-        [Input("certificateAuthority")]
-        public Input<string>? CertificateAuthority { get; set; }
+        [Input("certificateAuthority", required: true)]
+        public Input<string> CertificateAuthority { get; set; } = null!;
 
         /// <summary>
-        /// Required. Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
+        /// Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
         /// </summary>
-        [Input("pemIssuerChain")]
-        public Input<Inputs.SubordinateConfigChainArgs>? PemIssuerChain { get; set; }
+        [Input("pemIssuerChain", required: true)]
+        public Input<Inputs.SubordinateConfigChainArgs> PemIssuerChain { get; set; } = null!;
 
         public SubordinateConfigArgs()
         {

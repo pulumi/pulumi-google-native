@@ -18,11 +18,11 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.Outputs
         /// </summary>
         public readonly Outputs.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse Accelerator;
         /// <summary>
-        /// Required. Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
+        /// Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
         /// </summary>
         public readonly string DiskSizeGb;
         /// <summary>
-        /// Required. Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
+        /// Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
         /// </summary>
         public readonly string DiskType;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
+        /// Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
         /// </summary>
         public readonly string MachineType;
         /// <summary>

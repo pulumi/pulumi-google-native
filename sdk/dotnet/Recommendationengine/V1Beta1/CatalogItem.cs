@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
     public partial class CatalogItem : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes &amp; Accessories" -&gt; "Shoes"] and ["Sports &amp; Fitness" -&gt; "Athletic Clothing" -&gt; "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes &amp; Accessories", "Shoes"]}, { "categories": ["Sports &amp; Fitness", "Athletic Clothing", "Shoes"] } ]
+        /// Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes &amp; Accessories" -&gt; "Shoes"] and ["Sports &amp; Fitness" -&gt; "Athletic Clothing" -&gt; "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes &amp; Accessories", "Shoes"]}, { "categories": ["Sports &amp; Fitness", "Athletic Clothing", "Shoes"] } ]
         /// </summary>
         [Output("categoryHierarchies")]
         public Output<ImmutableArray<Outputs.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse>> CategoryHierarchies { get; private set; } = null!;
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         public Output<ImmutableArray<string>> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
+        /// Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
         /// </summary>
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
@@ -105,11 +105,11 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         [Input("catalogId", required: true)]
         public Input<string> CatalogId { get; set; } = null!;
 
-        [Input("categoryHierarchies")]
+        [Input("categoryHierarchies", required: true)]
         private InputList<Inputs.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs>? _categoryHierarchies;
 
         /// <summary>
-        /// Required. Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes &amp; Accessories" -&gt; "Shoes"] and ["Sports &amp; Fitness" -&gt; "Athletic Clothing" -&gt; "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes &amp; Accessories", "Shoes"]}, { "categories": ["Sports &amp; Fitness", "Athletic Clothing", "Shoes"] } ]
+        /// Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes &amp; Accessories" -&gt; "Shoes"] and ["Sports &amp; Fitness" -&gt; "Athletic Clothing" -&gt; "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes &amp; Accessories", "Shoes"]}, { "categories": ["Sports &amp; Fitness", "Athletic Clothing", "Shoes"] } ]
         /// </summary>
         public InputList<Inputs.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs> CategoryHierarchies
         {
@@ -124,10 +124,10 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Required. Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
+        /// Catalog item identifier. UTF-8 encoded string with a length limit of 128 bytes. This id must be unique among all catalog items within the same catalog. It should also be used when logging user events in order for the user events to be joined with the Catalog.
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
 
         /// <summary>
         /// Optional. Highly encouraged. Extra catalog item attributes to be included in the recommendation model. For example, for retail products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the item attributes here.
@@ -166,10 +166,10 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         }
 
         /// <summary>
-        /// Required. Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
+        /// Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
         /// </summary>
-        [Input("title")]
-        public Input<string>? Title { get; set; }
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
 
         public CatalogItemArgs()
         {

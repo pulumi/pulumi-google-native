@@ -59,7 +59,7 @@ export interface GetJobTriggerResult {
      */
     readonly name: string;
     /**
-     * Required. A status for this trigger.
+     * A status for this trigger.
      */
     readonly status: string;
     /**

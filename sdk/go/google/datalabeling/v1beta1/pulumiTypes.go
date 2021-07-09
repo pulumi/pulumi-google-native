@@ -14,8 +14,8 @@ import (
 type GoogleCloudDatalabelingV1beta1AnnotationSpec struct {
 	// Optional. User-provided description of the annotation specification. The description can be up to 10,000 characters long.
 	Description *string `pulumi:"description"`
-	// Required. The display name of the AnnotationSpec. Maximum of 64 characters.
-	DisplayName *string `pulumi:"displayName"`
+	// The display name of the AnnotationSpec. Maximum of 64 characters.
+	DisplayName string `pulumi:"displayName"`
 }
 
 // GoogleCloudDatalabelingV1beta1AnnotationSpecInput is an input type that accepts GoogleCloudDatalabelingV1beta1AnnotationSpecArgs and GoogleCloudDatalabelingV1beta1AnnotationSpecOutput values.
@@ -33,8 +33,8 @@ type GoogleCloudDatalabelingV1beta1AnnotationSpecInput interface {
 type GoogleCloudDatalabelingV1beta1AnnotationSpecArgs struct {
 	// Optional. User-provided description of the annotation specification. The description can be up to 10,000 characters long.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Required. The display name of the AnnotationSpec. Maximum of 64 characters.
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The display name of the AnnotationSpec. Maximum of 64 characters.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
 }
 
 func (GoogleCloudDatalabelingV1beta1AnnotationSpecArgs) ElementType() reflect.Type {
@@ -94,9 +94,9 @@ func (o GoogleCloudDatalabelingV1beta1AnnotationSpecOutput) Description() pulumi
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1AnnotationSpec) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Required. The display name of the AnnotationSpec. Maximum of 64 characters.
-func (o GoogleCloudDatalabelingV1beta1AnnotationSpecOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1AnnotationSpec) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+// The display name of the AnnotationSpec. Maximum of 64 characters.
+func (o GoogleCloudDatalabelingV1beta1AnnotationSpecOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1AnnotationSpec) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDatalabelingV1beta1AnnotationSpecArrayOutput struct{ *pulumi.OutputState }
@@ -123,7 +123,7 @@ func (o GoogleCloudDatalabelingV1beta1AnnotationSpecArrayOutput) Index(i pulumi.
 type GoogleCloudDatalabelingV1beta1AnnotationSpecResponse struct {
 	// Optional. User-provided description of the annotation specification. The description can be up to 10,000 characters long.
 	Description string `pulumi:"description"`
-	// Required. The display name of the AnnotationSpec. Maximum of 64 characters.
+	// The display name of the AnnotationSpec. Maximum of 64 characters.
 	DisplayName string `pulumi:"displayName"`
 	// This is the integer index of the AnnotationSpec. The index for the whole AnnotationSpecSet is sequential starting from 0. For example, an AnnotationSpecSet with classes `dog` and `cat`, might contain one AnnotationSpec with `{ display_name: "dog", index: 0 }` and one AnnotationSpec with `{ display_name: "cat", index: 1 }`. This is especially useful for model training as it encodes the string labels into numeric values.
 	Index int `pulumi:"index"`
@@ -144,7 +144,7 @@ type GoogleCloudDatalabelingV1beta1AnnotationSpecResponseInput interface {
 type GoogleCloudDatalabelingV1beta1AnnotationSpecResponseArgs struct {
 	// Optional. User-provided description of the annotation specification. The description can be up to 10,000 characters long.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Required. The display name of the AnnotationSpec. Maximum of 64 characters.
+	// The display name of the AnnotationSpec. Maximum of 64 characters.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// This is the integer index of the AnnotationSpec. The index for the whole AnnotationSpecSet is sequential starting from 0. For example, an AnnotationSpecSet with classes `dog` and `cat`, might contain one AnnotationSpec with `{ display_name: "dog", index: 0 }` and one AnnotationSpec with `{ display_name: "cat", index: 1 }`. This is especially useful for model training as it encodes the string labels into numeric values.
 	Index pulumi.IntInput `pulumi:"index"`
@@ -207,7 +207,7 @@ func (o GoogleCloudDatalabelingV1beta1AnnotationSpecResponseOutput) Description(
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1AnnotationSpecResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Required. The display name of the AnnotationSpec. Maximum of 64 characters.
+// The display name of the AnnotationSpec. Maximum of 64 characters.
 func (o GoogleCloudDatalabelingV1beta1AnnotationSpecResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1AnnotationSpecResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -347,8 +347,8 @@ func (o GoogleCloudDatalabelingV1beta1AttemptResponseArrayOutput) Index(i pulumi
 
 // The BigQuery location for input data. If used in an EvaluationJob, this is where the service saves the prediction input and output sampled from the model version.
 type GoogleCloudDatalabelingV1beta1BigQuerySource struct {
-	// Required. BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
-	InputUri *string `pulumi:"inputUri"`
+	// BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
+	InputUri string `pulumi:"inputUri"`
 }
 
 // GoogleCloudDatalabelingV1beta1BigQuerySourceInput is an input type that accepts GoogleCloudDatalabelingV1beta1BigQuerySourceArgs and GoogleCloudDatalabelingV1beta1BigQuerySourceOutput values.
@@ -364,8 +364,8 @@ type GoogleCloudDatalabelingV1beta1BigQuerySourceInput interface {
 
 // The BigQuery location for input data. If used in an EvaluationJob, this is where the service saves the prediction input and output sampled from the model version.
 type GoogleCloudDatalabelingV1beta1BigQuerySourceArgs struct {
-	// Required. BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
-	InputUri pulumi.StringPtrInput `pulumi:"inputUri"`
+	// BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
+	InputUri pulumi.StringInput `pulumi:"inputUri"`
 }
 
 func (GoogleCloudDatalabelingV1beta1BigQuerySourceArgs) ElementType() reflect.Type {
@@ -446,9 +446,9 @@ func (o GoogleCloudDatalabelingV1beta1BigQuerySourceOutput) ToGoogleCloudDatalab
 	}).(GoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutput)
 }
 
-// Required. BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
-func (o GoogleCloudDatalabelingV1beta1BigQuerySourceOutput) InputUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1BigQuerySource) *string { return v.InputUri }).(pulumi.StringPtrOutput)
+// BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
+func (o GoogleCloudDatalabelingV1beta1BigQuerySourceOutput) InputUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1BigQuerySource) string { return v.InputUri }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutput struct{ *pulumi.OutputState }
@@ -471,19 +471,19 @@ func (o GoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutput) Elem() GoogleClou
 	}).(GoogleCloudDatalabelingV1beta1BigQuerySourceOutput)
 }
 
-// Required. BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
+// BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
 func (o GoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutput) InputUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1BigQuerySource) *string {
 		if v == nil {
 			return nil
 		}
-		return v.InputUri
+		return &v.InputUri
 	}).(pulumi.StringPtrOutput)
 }
 
 // The BigQuery location for input data. If used in an EvaluationJob, this is where the service saves the prediction input and output sampled from the model version.
 type GoogleCloudDatalabelingV1beta1BigQuerySourceResponse struct {
-	// Required. BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
+	// BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
 	InputUri string `pulumi:"inputUri"`
 }
 
@@ -500,7 +500,7 @@ type GoogleCloudDatalabelingV1beta1BigQuerySourceResponseInput interface {
 
 // The BigQuery location for input data. If used in an EvaluationJob, this is where the service saves the prediction input and output sampled from the model version.
 type GoogleCloudDatalabelingV1beta1BigQuerySourceResponseArgs struct {
-	// Required. BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
+	// BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
 	InputUri pulumi.StringInput `pulumi:"inputUri"`
 }
 
@@ -582,7 +582,7 @@ func (o GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput) ToGoogleClou
 	}).(GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput)
 }
 
-// Required. BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
+// BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
 func (o GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput) InputUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1BigQuerySourceResponse) string { return v.InputUri }).(pulumi.StringOutput)
 }
@@ -607,7 +607,7 @@ func (o GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput) Elem() Go
 	}).(GoogleCloudDatalabelingV1beta1BigQuerySourceResponseOutput)
 }
 
-// Required. BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
+// BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
 func (o GoogleCloudDatalabelingV1beta1BigQuerySourceResponsePtrOutput) InputUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1BigQuerySourceResponse) *string {
 		if v == nil {
@@ -893,8 +893,8 @@ func (o GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsResponsePtrOut
 
 // Config for image bounding poly (and bounding box) human labeling task.
 type GoogleCloudDatalabelingV1beta1BoundingPolyConfig struct {
-	// Required. Annotation spec set resource name.
-	AnnotationSpecSet *string `pulumi:"annotationSpecSet"`
+	// Annotation spec set resource name.
+	AnnotationSpecSet string `pulumi:"annotationSpecSet"`
 	// Optional. Instruction message showed on contributors UI.
 	InstructionMessage *string `pulumi:"instructionMessage"`
 }
@@ -912,8 +912,8 @@ type GoogleCloudDatalabelingV1beta1BoundingPolyConfigInput interface {
 
 // Config for image bounding poly (and bounding box) human labeling task.
 type GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs struct {
-	// Required. Annotation spec set resource name.
-	AnnotationSpecSet pulumi.StringPtrInput `pulumi:"annotationSpecSet"`
+	// Annotation spec set resource name.
+	AnnotationSpecSet pulumi.StringInput `pulumi:"annotationSpecSet"`
 	// Optional. Instruction message showed on contributors UI.
 	InstructionMessage pulumi.StringPtrInput `pulumi:"instructionMessage"`
 }
@@ -996,9 +996,9 @@ func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigOutput) ToGoogleCloudDat
 	}).(GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput)
 }
 
-// Required. Annotation spec set resource name.
-func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigOutput) AnnotationSpecSet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1BoundingPolyConfig) *string { return v.AnnotationSpecSet }).(pulumi.StringPtrOutput)
+// Annotation spec set resource name.
+func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigOutput) AnnotationSpecSet() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1BoundingPolyConfig) string { return v.AnnotationSpecSet }).(pulumi.StringOutput)
 }
 
 // Optional. Instruction message showed on contributors UI.
@@ -1026,13 +1026,13 @@ func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput) Elem() Google
 	}).(GoogleCloudDatalabelingV1beta1BoundingPolyConfigOutput)
 }
 
-// Required. Annotation spec set resource name.
+// Annotation spec set resource name.
 func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput) AnnotationSpecSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1BoundingPolyConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.AnnotationSpecSet
+		return &v.AnnotationSpecSet
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1048,7 +1048,7 @@ func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput) InstructionMe
 
 // Config for image bounding poly (and bounding box) human labeling task.
 type GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse struct {
-	// Required. Annotation spec set resource name.
+	// Annotation spec set resource name.
 	AnnotationSpecSet string `pulumi:"annotationSpecSet"`
 	// Optional. Instruction message showed on contributors UI.
 	InstructionMessage string `pulumi:"instructionMessage"`
@@ -1067,7 +1067,7 @@ type GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseInput interface {
 
 // Config for image bounding poly (and bounding box) human labeling task.
 type GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseArgs struct {
-	// Required. Annotation spec set resource name.
+	// Annotation spec set resource name.
 	AnnotationSpecSet pulumi.StringInput `pulumi:"annotationSpecSet"`
 	// Optional. Instruction message showed on contributors UI.
 	InstructionMessage pulumi.StringInput `pulumi:"instructionMessage"`
@@ -1151,7 +1151,7 @@ func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput) ToGoogle
 	}).(GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput)
 }
 
-// Required. Annotation spec set resource name.
+// Annotation spec set resource name.
 func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput) AnnotationSpecSet() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse) string { return v.AnnotationSpecSet }).(pulumi.StringOutput)
 }
@@ -1181,7 +1181,7 @@ func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput) Elem(
 	}).(GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput)
 }
 
-// Required. Annotation spec set resource name.
+// Annotation spec set resource name.
 func (o GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput) AnnotationSpecSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse) *string {
 		if v == nil {
@@ -1751,10 +1751,10 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput) Boundin
 
 // Provides details for how an evaluation job sends email alerts based on the results of a run.
 type GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig struct {
-	// Required. An email address to send alerts to.
-	Email *string `pulumi:"email"`
-	// Required. A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
-	MinAcceptableMeanAveragePrecision *float64 `pulumi:"minAcceptableMeanAveragePrecision"`
+	// An email address to send alerts to.
+	Email string `pulumi:"email"`
+	// A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
+	MinAcceptableMeanAveragePrecision float64 `pulumi:"minAcceptableMeanAveragePrecision"`
 }
 
 // GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigInput is an input type that accepts GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs and GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigOutput values.
@@ -1770,10 +1770,10 @@ type GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigInput interface {
 
 // Provides details for how an evaluation job sends email alerts based on the results of a run.
 type GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs struct {
-	// Required. An email address to send alerts to.
-	Email pulumi.StringPtrInput `pulumi:"email"`
-	// Required. A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
-	MinAcceptableMeanAveragePrecision pulumi.Float64PtrInput `pulumi:"minAcceptableMeanAveragePrecision"`
+	// An email address to send alerts to.
+	Email pulumi.StringInput `pulumi:"email"`
+	// A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
+	MinAcceptableMeanAveragePrecision pulumi.Float64Input `pulumi:"minAcceptableMeanAveragePrecision"`
 }
 
 func (GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs) ElementType() reflect.Type {
@@ -1854,16 +1854,16 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigOutput) ToGoogleCl
 	}).(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput)
 }
 
-// Required. An email address to send alerts to.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigOutput) Email() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig) *string { return v.Email }).(pulumi.StringPtrOutput)
+// An email address to send alerts to.
+func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigOutput) Email() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig) string { return v.Email }).(pulumi.StringOutput)
 }
 
-// Required. A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigOutput) MinAcceptableMeanAveragePrecision() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig) *float64 {
+// A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
+func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigOutput) MinAcceptableMeanAveragePrecision() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig) float64 {
 		return v.MinAcceptableMeanAveragePrecision
-	}).(pulumi.Float64PtrOutput)
+	}).(pulumi.Float64Output)
 }
 
 type GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput struct{ *pulumi.OutputState }
@@ -1886,31 +1886,31 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput) Elem() 
 	}).(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigOutput)
 }
 
-// Required. An email address to send alerts to.
+// An email address to send alerts to.
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Email
+		return &v.Email
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
+// A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput) MinAcceptableMeanAveragePrecision() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig) *float64 {
 		if v == nil {
 			return nil
 		}
-		return v.MinAcceptableMeanAveragePrecision
+		return &v.MinAcceptableMeanAveragePrecision
 	}).(pulumi.Float64PtrOutput)
 }
 
 // Provides details for how an evaluation job sends email alerts based on the results of a run.
 type GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse struct {
-	// Required. An email address to send alerts to.
+	// An email address to send alerts to.
 	Email string `pulumi:"email"`
-	// Required. A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
+	// A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
 	MinAcceptableMeanAveragePrecision float64 `pulumi:"minAcceptableMeanAveragePrecision"`
 }
 
@@ -1927,9 +1927,9 @@ type GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseInput interfa
 
 // Provides details for how an evaluation job sends email alerts based on the results of a run.
 type GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseArgs struct {
-	// Required. An email address to send alerts to.
+	// An email address to send alerts to.
 	Email pulumi.StringInput `pulumi:"email"`
-	// Required. A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
+	// A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
 	MinAcceptableMeanAveragePrecision pulumi.Float64Input `pulumi:"minAcceptableMeanAveragePrecision"`
 }
 
@@ -2011,12 +2011,12 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput) To
 	}).(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput)
 }
 
-// Required. An email address to send alerts to.
+// An email address to send alerts to.
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse) string { return v.Email }).(pulumi.StringOutput)
 }
 
-// Required. A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
+// A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput) MinAcceptableMeanAveragePrecision() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse) float64 {
 		return v.MinAcceptableMeanAveragePrecision
@@ -2043,7 +2043,7 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput)
 	}).(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput)
 }
 
-// Required. An email address to send alerts to.
+// An email address to send alerts to.
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse) *string {
 		if v == nil {
@@ -2053,7 +2053,7 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
+// A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput) MinAcceptableMeanAveragePrecision() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse) *float64 {
 		if v == nil {
@@ -2065,18 +2065,18 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput)
 
 // Configures specific details of how a continuous evaluation job works. Provide this configuration when you create an EvaluationJob.
 type GoogleCloudDatalabelingV1beta1EvaluationJobConfig struct {
-	// Required. Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
+	// Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
 	BigqueryImportKeys map[string]string `pulumi:"bigqueryImportKeys"`
 	// Specify this field if your model version performs image object detection (bounding box detection). `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet.
 	BoundingPolyConfig *GoogleCloudDatalabelingV1beta1BoundingPolyConfig `pulumi:"boundingPolyConfig"`
-	// Required. Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
-	EvaluationConfig *GoogleCloudDatalabelingV1beta1EvaluationConfig `pulumi:"evaluationConfig"`
+	// Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
+	EvaluationConfig GoogleCloudDatalabelingV1beta1EvaluationConfig `pulumi:"evaluationConfig"`
 	// Optional. Configuration details for evaluation job alerts. Specify this field if you want to receive email alerts if the evaluation job finds that your predictions have low mean average precision during a run.
 	EvaluationJobAlertConfig *GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig `pulumi:"evaluationJobAlertConfig"`
-	// Required. The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
-	ExampleCount *int `pulumi:"exampleCount"`
-	// Required. Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
-	ExampleSamplePercentage *float64 `pulumi:"exampleSamplePercentage"`
+	// The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
+	ExampleCount int `pulumi:"exampleCount"`
+	// Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
+	ExampleSamplePercentage float64 `pulumi:"exampleSamplePercentage"`
 	// Optional. Details for human annotation of your data. If you set labelMissingGroundTruth to `true` for this evaluation job, then you must specify this field. If you plan to provide your own ground truth labels, then omit this field. Note that you must create an Instruction resource before you can specify this field. Provide the name of the instruction resource in the `instruction` field within this configuration.
 	HumanAnnotationConfig *GoogleCloudDatalabelingV1beta1HumanAnnotationConfig `pulumi:"humanAnnotationConfig"`
 	// Specify this field if your model version performs image classification or general classification. `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet. `allowMultiLabel` in this configuration must match `classificationMetadata.isMultiLabel` in input_config.
@@ -2100,18 +2100,18 @@ type GoogleCloudDatalabelingV1beta1EvaluationJobConfigInput interface {
 
 // Configures specific details of how a continuous evaluation job works. Provide this configuration when you create an EvaluationJob.
 type GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs struct {
-	// Required. Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
+	// Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
 	BigqueryImportKeys pulumi.StringMapInput `pulumi:"bigqueryImportKeys"`
 	// Specify this field if your model version performs image object detection (bounding box detection). `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet.
 	BoundingPolyConfig GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrInput `pulumi:"boundingPolyConfig"`
-	// Required. Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
-	EvaluationConfig GoogleCloudDatalabelingV1beta1EvaluationConfigPtrInput `pulumi:"evaluationConfig"`
+	// Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
+	EvaluationConfig GoogleCloudDatalabelingV1beta1EvaluationConfigInput `pulumi:"evaluationConfig"`
 	// Optional. Configuration details for evaluation job alerts. Specify this field if you want to receive email alerts if the evaluation job finds that your predictions have low mean average precision during a run.
 	EvaluationJobAlertConfig GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrInput `pulumi:"evaluationJobAlertConfig"`
-	// Required. The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
-	ExampleCount pulumi.IntPtrInput `pulumi:"exampleCount"`
-	// Required. Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
-	ExampleSamplePercentage pulumi.Float64PtrInput `pulumi:"exampleSamplePercentage"`
+	// The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
+	ExampleCount pulumi.IntInput `pulumi:"exampleCount"`
+	// Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
+	ExampleSamplePercentage pulumi.Float64Input `pulumi:"exampleSamplePercentage"`
 	// Optional. Details for human annotation of your data. If you set labelMissingGroundTruth to `true` for this evaluation job, then you must specify this field. If you plan to provide your own ground truth labels, then omit this field. Note that you must create an Instruction resource before you can specify this field. Provide the name of the instruction resource in the `instruction` field within this configuration.
 	HumanAnnotationConfig GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrInput `pulumi:"humanAnnotationConfig"`
 	// Specify this field if your model version performs image classification or general classification. `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet. `allowMultiLabel` in this configuration must match `classificationMetadata.isMultiLabel` in input_config.
@@ -2200,7 +2200,7 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput) ToGoogleCloudDa
 	}).(GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput)
 }
 
-// Required. Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
+// Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput) BigqueryImportKeys() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobConfig) map[string]string {
 		return v.BigqueryImportKeys
@@ -2214,11 +2214,11 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput) BoundingPolyCon
 	}).(GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput)
 }
 
-// Required. Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput) EvaluationConfig() GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobConfig) *GoogleCloudDatalabelingV1beta1EvaluationConfig {
+// Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
+func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput) EvaluationConfig() GoogleCloudDatalabelingV1beta1EvaluationConfigOutput {
+	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobConfig) GoogleCloudDatalabelingV1beta1EvaluationConfig {
 		return v.EvaluationConfig
-	}).(GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput)
+	}).(GoogleCloudDatalabelingV1beta1EvaluationConfigOutput)
 }
 
 // Optional. Configuration details for evaluation job alerts. Specify this field if you want to receive email alerts if the evaluation job finds that your predictions have low mean average precision during a run.
@@ -2228,14 +2228,14 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput) EvaluationJobAl
 	}).(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput)
 }
 
-// Required. The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput) ExampleCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobConfig) *int { return v.ExampleCount }).(pulumi.IntPtrOutput)
+// The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
+func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput) ExampleCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobConfig) int { return v.ExampleCount }).(pulumi.IntOutput)
 }
 
-// Required. Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
-func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput) ExampleSamplePercentage() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobConfig) *float64 { return v.ExampleSamplePercentage }).(pulumi.Float64PtrOutput)
+// Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
+func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput) ExampleSamplePercentage() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobConfig) float64 { return v.ExampleSamplePercentage }).(pulumi.Float64Output)
 }
 
 // Optional. Details for human annotation of your data. If you set labelMissingGroundTruth to `true` for this evaluation job, then you must specify this field. If you plan to provide your own ground truth labels, then omit this field. Note that you must create an Instruction resource before you can specify this field. Provide the name of the instruction resource in the `instruction` field within this configuration.
@@ -2286,7 +2286,7 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) Elem() Googl
 	}).(GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput)
 }
 
-// Required. Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
+// Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) BigqueryImportKeys() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfig) map[string]string {
 		if v == nil {
@@ -2306,13 +2306,13 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) BoundingPoly
 	}).(GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput)
 }
 
-// Required. Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
+// Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) EvaluationConfig() GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfig) *GoogleCloudDatalabelingV1beta1EvaluationConfig {
 		if v == nil {
 			return nil
 		}
-		return v.EvaluationConfig
+		return &v.EvaluationConfig
 	}).(GoogleCloudDatalabelingV1beta1EvaluationConfigPtrOutput)
 }
 
@@ -2326,23 +2326,23 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) EvaluationJo
 	}).(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput)
 }
 
-// Required. The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
+// The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) ExampleCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfig) *int {
 		if v == nil {
 			return nil
 		}
-		return v.ExampleCount
+		return &v.ExampleCount
 	}).(pulumi.IntPtrOutput)
 }
 
-// Required. Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
+// Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) ExampleSamplePercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfig) *float64 {
 		if v == nil {
 			return nil
 		}
-		return v.ExampleSamplePercentage
+		return &v.ExampleSamplePercentage
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -2388,17 +2388,17 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrOutput) TextClassifi
 
 // Configures specific details of how a continuous evaluation job works. Provide this configuration when you create an EvaluationJob.
 type GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse struct {
-	// Required. Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
+	// Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
 	BigqueryImportKeys map[string]string `pulumi:"bigqueryImportKeys"`
 	// Specify this field if your model version performs image object detection (bounding box detection). `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet.
 	BoundingPolyConfig GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponse `pulumi:"boundingPolyConfig"`
-	// Required. Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
+	// Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
 	EvaluationConfig GoogleCloudDatalabelingV1beta1EvaluationConfigResponse `pulumi:"evaluationConfig"`
 	// Optional. Configuration details for evaluation job alerts. Specify this field if you want to receive email alerts if the evaluation job finds that your predictions have low mean average precision during a run.
 	EvaluationJobAlertConfig GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse `pulumi:"evaluationJobAlertConfig"`
-	// Required. The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
+	// The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
 	ExampleCount int `pulumi:"exampleCount"`
-	// Required. Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
+	// Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
 	ExampleSamplePercentage float64 `pulumi:"exampleSamplePercentage"`
 	// Optional. Details for human annotation of your data. If you set labelMissingGroundTruth to `true` for this evaluation job, then you must specify this field. If you plan to provide your own ground truth labels, then omit this field. Note that you must create an Instruction resource before you can specify this field. Provide the name of the instruction resource in the `instruction` field within this configuration.
 	HumanAnnotationConfig GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse `pulumi:"humanAnnotationConfig"`
@@ -2423,17 +2423,17 @@ type GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseInput interface {
 
 // Configures specific details of how a continuous evaluation job works. Provide this configuration when you create an EvaluationJob.
 type GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseArgs struct {
-	// Required. Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
+	// Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
 	BigqueryImportKeys pulumi.StringMapInput `pulumi:"bigqueryImportKeys"`
 	// Specify this field if your model version performs image object detection (bounding box detection). `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet.
 	BoundingPolyConfig GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseInput `pulumi:"boundingPolyConfig"`
-	// Required. Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
+	// Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
 	EvaluationConfig GoogleCloudDatalabelingV1beta1EvaluationConfigResponseInput `pulumi:"evaluationConfig"`
 	// Optional. Configuration details for evaluation job alerts. Specify this field if you want to receive email alerts if the evaluation job finds that your predictions have low mean average precision during a run.
 	EvaluationJobAlertConfig GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseInput `pulumi:"evaluationJobAlertConfig"`
-	// Required. The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
+	// The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
 	ExampleCount pulumi.IntInput `pulumi:"exampleCount"`
-	// Required. Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
+	// Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
 	ExampleSamplePercentage pulumi.Float64Input `pulumi:"exampleSamplePercentage"`
 	// Optional. Details for human annotation of your data. If you set labelMissingGroundTruth to `true` for this evaluation job, then you must specify this field. If you plan to provide your own ground truth labels, then omit this field. Note that you must create an Instruction resource before you can specify this field. Provide the name of the instruction resource in the `instruction` field within this configuration.
 	HumanAnnotationConfig GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseInput `pulumi:"humanAnnotationConfig"`
@@ -2523,7 +2523,7 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput) ToGoogl
 	}).(GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput)
 }
 
-// Required. Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
+// Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput) BigqueryImportKeys() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) map[string]string {
 		return v.BigqueryImportKeys
@@ -2537,7 +2537,7 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput) Boundin
 	}).(GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponseOutput)
 }
 
-// Required. Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
+// Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput) EvaluationConfig() GoogleCloudDatalabelingV1beta1EvaluationConfigResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) GoogleCloudDatalabelingV1beta1EvaluationConfigResponse {
 		return v.EvaluationConfig
@@ -2551,12 +2551,12 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput) Evaluat
 	}).(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponseOutput)
 }
 
-// Required. The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
+// The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput) ExampleCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) int { return v.ExampleCount }).(pulumi.IntOutput)
 }
 
-// Required. Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
+// Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput) ExampleSamplePercentage() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) float64 {
 		return v.ExampleSamplePercentage
@@ -2611,7 +2611,7 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) Elem
 	}).(GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput)
 }
 
-// Required. Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
+// Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) BigqueryImportKeys() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) map[string]string {
 		if v == nil {
@@ -2631,7 +2631,7 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) Boun
 	}).(GoogleCloudDatalabelingV1beta1BoundingPolyConfigResponsePtrOutput)
 }
 
-// Required. Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
+// Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) EvaluationConfig() GoogleCloudDatalabelingV1beta1EvaluationConfigResponsePtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) *GoogleCloudDatalabelingV1beta1EvaluationConfigResponse {
 		if v == nil {
@@ -2651,7 +2651,7 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) Eval
 	}).(GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponsePtrOutput)
 }
 
-// Required. The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
+// The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) ExampleCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) *int {
 		if v == nil {
@@ -2661,7 +2661,7 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) Exam
 	}).(pulumi.IntPtrOutput)
 }
 
-// Required. Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
+// Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
 func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) ExampleSamplePercentage() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse) *float64 {
 		if v == nil {
@@ -2713,10 +2713,10 @@ func (o GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrOutput) Text
 
 // Source of the Cloud Storage file to be imported.
 type GoogleCloudDatalabelingV1beta1GcsSource struct {
-	// Required. The input URI of source file. This must be a Cloud Storage path (`gs://...`).
-	InputUri *string `pulumi:"inputUri"`
-	// Required. The format of the source file. Only "text/csv" is supported.
-	MimeType *string `pulumi:"mimeType"`
+	// The input URI of source file. This must be a Cloud Storage path (`gs://...`).
+	InputUri string `pulumi:"inputUri"`
+	// The format of the source file. Only "text/csv" is supported.
+	MimeType string `pulumi:"mimeType"`
 }
 
 // GoogleCloudDatalabelingV1beta1GcsSourceInput is an input type that accepts GoogleCloudDatalabelingV1beta1GcsSourceArgs and GoogleCloudDatalabelingV1beta1GcsSourceOutput values.
@@ -2732,10 +2732,10 @@ type GoogleCloudDatalabelingV1beta1GcsSourceInput interface {
 
 // Source of the Cloud Storage file to be imported.
 type GoogleCloudDatalabelingV1beta1GcsSourceArgs struct {
-	// Required. The input URI of source file. This must be a Cloud Storage path (`gs://...`).
-	InputUri pulumi.StringPtrInput `pulumi:"inputUri"`
-	// Required. The format of the source file. Only "text/csv" is supported.
-	MimeType pulumi.StringPtrInput `pulumi:"mimeType"`
+	// The input URI of source file. This must be a Cloud Storage path (`gs://...`).
+	InputUri pulumi.StringInput `pulumi:"inputUri"`
+	// The format of the source file. Only "text/csv" is supported.
+	MimeType pulumi.StringInput `pulumi:"mimeType"`
 }
 
 func (GoogleCloudDatalabelingV1beta1GcsSourceArgs) ElementType() reflect.Type {
@@ -2816,14 +2816,14 @@ func (o GoogleCloudDatalabelingV1beta1GcsSourceOutput) ToGoogleCloudDatalabeling
 	}).(GoogleCloudDatalabelingV1beta1GcsSourcePtrOutput)
 }
 
-// Required. The input URI of source file. This must be a Cloud Storage path (`gs://...`).
-func (o GoogleCloudDatalabelingV1beta1GcsSourceOutput) InputUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1GcsSource) *string { return v.InputUri }).(pulumi.StringPtrOutput)
+// The input URI of source file. This must be a Cloud Storage path (`gs://...`).
+func (o GoogleCloudDatalabelingV1beta1GcsSourceOutput) InputUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1GcsSource) string { return v.InputUri }).(pulumi.StringOutput)
 }
 
-// Required. The format of the source file. Only "text/csv" is supported.
-func (o GoogleCloudDatalabelingV1beta1GcsSourceOutput) MimeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1GcsSource) *string { return v.MimeType }).(pulumi.StringPtrOutput)
+// The format of the source file. Only "text/csv" is supported.
+func (o GoogleCloudDatalabelingV1beta1GcsSourceOutput) MimeType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1GcsSource) string { return v.MimeType }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDatalabelingV1beta1GcsSourcePtrOutput struct{ *pulumi.OutputState }
@@ -2844,31 +2844,31 @@ func (o GoogleCloudDatalabelingV1beta1GcsSourcePtrOutput) Elem() GoogleCloudData
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1GcsSource) GoogleCloudDatalabelingV1beta1GcsSource { return *v }).(GoogleCloudDatalabelingV1beta1GcsSourceOutput)
 }
 
-// Required. The input URI of source file. This must be a Cloud Storage path (`gs://...`).
+// The input URI of source file. This must be a Cloud Storage path (`gs://...`).
 func (o GoogleCloudDatalabelingV1beta1GcsSourcePtrOutput) InputUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1GcsSource) *string {
 		if v == nil {
 			return nil
 		}
-		return v.InputUri
+		return &v.InputUri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The format of the source file. Only "text/csv" is supported.
+// The format of the source file. Only "text/csv" is supported.
 func (o GoogleCloudDatalabelingV1beta1GcsSourcePtrOutput) MimeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1GcsSource) *string {
 		if v == nil {
 			return nil
 		}
-		return v.MimeType
+		return &v.MimeType
 	}).(pulumi.StringPtrOutput)
 }
 
 // Source of the Cloud Storage file to be imported.
 type GoogleCloudDatalabelingV1beta1GcsSourceResponse struct {
-	// Required. The input URI of source file. This must be a Cloud Storage path (`gs://...`).
+	// The input URI of source file. This must be a Cloud Storage path (`gs://...`).
 	InputUri string `pulumi:"inputUri"`
-	// Required. The format of the source file. Only "text/csv" is supported.
+	// The format of the source file. Only "text/csv" is supported.
 	MimeType string `pulumi:"mimeType"`
 }
 
@@ -2885,9 +2885,9 @@ type GoogleCloudDatalabelingV1beta1GcsSourceResponseInput interface {
 
 // Source of the Cloud Storage file to be imported.
 type GoogleCloudDatalabelingV1beta1GcsSourceResponseArgs struct {
-	// Required. The input URI of source file. This must be a Cloud Storage path (`gs://...`).
+	// The input URI of source file. This must be a Cloud Storage path (`gs://...`).
 	InputUri pulumi.StringInput `pulumi:"inputUri"`
-	// Required. The format of the source file. Only "text/csv" is supported.
+	// The format of the source file. Only "text/csv" is supported.
 	MimeType pulumi.StringInput `pulumi:"mimeType"`
 }
 
@@ -2969,12 +2969,12 @@ func (o GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput) ToGoogleCloudData
 	}).(GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput)
 }
 
-// Required. The input URI of source file. This must be a Cloud Storage path (`gs://...`).
+// The input URI of source file. This must be a Cloud Storage path (`gs://...`).
 func (o GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput) InputUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1GcsSourceResponse) string { return v.InputUri }).(pulumi.StringOutput)
 }
 
-// Required. The format of the source file. Only "text/csv" is supported.
+// The format of the source file. Only "text/csv" is supported.
 func (o GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput) MimeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1GcsSourceResponse) string { return v.MimeType }).(pulumi.StringOutput)
 }
@@ -2999,7 +2999,7 @@ func (o GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput) Elem() GoogleC
 	}).(GoogleCloudDatalabelingV1beta1GcsSourceResponseOutput)
 }
 
-// Required. The input URI of source file. This must be a Cloud Storage path (`gs://...`).
+// The input URI of source file. This must be a Cloud Storage path (`gs://...`).
 func (o GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput) InputUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1GcsSourceResponse) *string {
 		if v == nil {
@@ -3009,7 +3009,7 @@ func (o GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput) InputUri() pul
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The format of the source file. Only "text/csv" is supported.
+// The format of the source file. Only "text/csv" is supported.
 func (o GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput) MimeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1GcsSourceResponse) *string {
 		if v == nil {
@@ -3023,12 +3023,12 @@ func (o GoogleCloudDatalabelingV1beta1GcsSourceResponsePtrOutput) MimeType() pul
 type GoogleCloudDatalabelingV1beta1HumanAnnotationConfig struct {
 	// Optional. A human-readable description for AnnotatedDataset. The description can be up to 10000 characters long.
 	AnnotatedDatasetDescription *string `pulumi:"annotatedDatasetDescription"`
-	// Required. A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
-	AnnotatedDatasetDisplayName *string `pulumi:"annotatedDatasetDisplayName"`
+	// A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
+	AnnotatedDatasetDisplayName string `pulumi:"annotatedDatasetDisplayName"`
 	// Optional. If you want your own labeling contributors to manage and work on this labeling request, you can set these contributors here. We will give them access to the question types in crowdcompute. Note that these emails must be registered in crowdcompute worker UI: https://crowd-compute.appspot.com/
 	ContributorEmails []string `pulumi:"contributorEmails"`
-	// Required. Instruction resource name.
-	Instruction *string `pulumi:"instruction"`
+	// Instruction resource name.
+	Instruction string `pulumi:"instruction"`
 	// Optional. A human-readable label used to logically group labeling tasks. This string must match the regular expression `[a-zA-Z\\d_-]{0,128}`.
 	LabelGroup *string `pulumi:"labelGroup"`
 	// Optional. The Language of this question, as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Default value is en-US. Only need to set this when task is language related. For example, French text classification.
@@ -3056,12 +3056,12 @@ type GoogleCloudDatalabelingV1beta1HumanAnnotationConfigInput interface {
 type GoogleCloudDatalabelingV1beta1HumanAnnotationConfigArgs struct {
 	// Optional. A human-readable description for AnnotatedDataset. The description can be up to 10000 characters long.
 	AnnotatedDatasetDescription pulumi.StringPtrInput `pulumi:"annotatedDatasetDescription"`
-	// Required. A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
-	AnnotatedDatasetDisplayName pulumi.StringPtrInput `pulumi:"annotatedDatasetDisplayName"`
+	// A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
+	AnnotatedDatasetDisplayName pulumi.StringInput `pulumi:"annotatedDatasetDisplayName"`
 	// Optional. If you want your own labeling contributors to manage and work on this labeling request, you can set these contributors here. We will give them access to the question types in crowdcompute. Note that these emails must be registered in crowdcompute worker UI: https://crowd-compute.appspot.com/
 	ContributorEmails pulumi.StringArrayInput `pulumi:"contributorEmails"`
-	// Required. Instruction resource name.
-	Instruction pulumi.StringPtrInput `pulumi:"instruction"`
+	// Instruction resource name.
+	Instruction pulumi.StringInput `pulumi:"instruction"`
 	// Optional. A human-readable label used to logically group labeling tasks. This string must match the regular expression `[a-zA-Z\\d_-]{0,128}`.
 	LabelGroup pulumi.StringPtrInput `pulumi:"labelGroup"`
 	// Optional. The Language of this question, as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Default value is en-US. Only need to set this when task is language related. For example, French text classification.
@@ -3159,11 +3159,11 @@ func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigOutput) AnnotatedData
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
-func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigOutput) AnnotatedDatasetDisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1HumanAnnotationConfig) *string {
+// A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
+func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigOutput) AnnotatedDatasetDisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1HumanAnnotationConfig) string {
 		return v.AnnotatedDatasetDisplayName
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.StringOutput)
 }
 
 // Optional. If you want your own labeling contributors to manage and work on this labeling request, you can set these contributors here. We will give them access to the question types in crowdcompute. Note that these emails must be registered in crowdcompute worker UI: https://crowd-compute.appspot.com/
@@ -3171,9 +3171,9 @@ func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigOutput) ContributorEm
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1HumanAnnotationConfig) []string { return v.ContributorEmails }).(pulumi.StringArrayOutput)
 }
 
-// Required. Instruction resource name.
-func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigOutput) Instruction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1HumanAnnotationConfig) *string { return v.Instruction }).(pulumi.StringPtrOutput)
+// Instruction resource name.
+func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigOutput) Instruction() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1HumanAnnotationConfig) string { return v.Instruction }).(pulumi.StringOutput)
 }
 
 // Optional. A human-readable label used to logically group labeling tasks. This string must match the regular expression `[a-zA-Z\\d_-]{0,128}`.
@@ -3231,13 +3231,13 @@ func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutput) AnnotatedD
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
+// A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
 func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutput) AnnotatedDatasetDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1HumanAnnotationConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.AnnotatedDatasetDisplayName
+		return &v.AnnotatedDatasetDisplayName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3251,13 +3251,13 @@ func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutput) Contributo
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. Instruction resource name.
+// Instruction resource name.
 func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutput) Instruction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1HumanAnnotationConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Instruction
+		return &v.Instruction
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3315,11 +3315,11 @@ func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutput) UserEmailA
 type GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse struct {
 	// Optional. A human-readable description for AnnotatedDataset. The description can be up to 10000 characters long.
 	AnnotatedDatasetDescription string `pulumi:"annotatedDatasetDescription"`
-	// Required. A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
+	// A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
 	AnnotatedDatasetDisplayName string `pulumi:"annotatedDatasetDisplayName"`
 	// Optional. If you want your own labeling contributors to manage and work on this labeling request, you can set these contributors here. We will give them access to the question types in crowdcompute. Note that these emails must be registered in crowdcompute worker UI: https://crowd-compute.appspot.com/
 	ContributorEmails []string `pulumi:"contributorEmails"`
-	// Required. Instruction resource name.
+	// Instruction resource name.
 	Instruction string `pulumi:"instruction"`
 	// Optional. A human-readable label used to logically group labeling tasks. This string must match the regular expression `[a-zA-Z\\d_-]{0,128}`.
 	LabelGroup string `pulumi:"labelGroup"`
@@ -3348,11 +3348,11 @@ type GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseInput interface 
 type GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseArgs struct {
 	// Optional. A human-readable description for AnnotatedDataset. The description can be up to 10000 characters long.
 	AnnotatedDatasetDescription pulumi.StringInput `pulumi:"annotatedDatasetDescription"`
-	// Required. A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
+	// A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
 	AnnotatedDatasetDisplayName pulumi.StringInput `pulumi:"annotatedDatasetDisplayName"`
 	// Optional. If you want your own labeling contributors to manage and work on this labeling request, you can set these contributors here. We will give them access to the question types in crowdcompute. Note that these emails must be registered in crowdcompute worker UI: https://crowd-compute.appspot.com/
 	ContributorEmails pulumi.StringArrayInput `pulumi:"contributorEmails"`
-	// Required. Instruction resource name.
+	// Instruction resource name.
 	Instruction pulumi.StringInput `pulumi:"instruction"`
 	// Optional. A human-readable label used to logically group labeling tasks. This string must match the regular expression `[a-zA-Z\\d_-]{0,128}`.
 	LabelGroup pulumi.StringInput `pulumi:"labelGroup"`
@@ -3451,7 +3451,7 @@ func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput) Annot
 	}).(pulumi.StringOutput)
 }
 
-// Required. A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
+// A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
 func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput) AnnotatedDatasetDisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse) string {
 		return v.AnnotatedDatasetDisplayName
@@ -3465,7 +3465,7 @@ func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput) Contr
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. Instruction resource name.
+// Instruction resource name.
 func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponseOutput) Instruction() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse) string { return v.Instruction }).(pulumi.StringOutput)
 }
@@ -3525,7 +3525,7 @@ func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput) An
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
+// A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
 func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput) AnnotatedDatasetDisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse) *string {
 		if v == nil {
@@ -3545,7 +3545,7 @@ func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput) Co
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. Instruction resource name.
+// Instruction resource name.
 func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput) Instruction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponse) *string {
 		if v == nil {
@@ -3609,8 +3609,8 @@ func (o GoogleCloudDatalabelingV1beta1HumanAnnotationConfigResponsePtrOutput) Us
 type GoogleCloudDatalabelingV1beta1ImageClassificationConfig struct {
 	// Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one image.
 	AllowMultiLabel *bool `pulumi:"allowMultiLabel"`
-	// Required. Annotation spec set resource name.
-	AnnotationSpecSet *string `pulumi:"annotationSpecSet"`
+	// Annotation spec set resource name.
+	AnnotationSpecSet string `pulumi:"annotationSpecSet"`
 	// Optional. The type of how to aggregate answers.
 	AnswerAggregationType *string `pulumi:"answerAggregationType"`
 }
@@ -3630,8 +3630,8 @@ type GoogleCloudDatalabelingV1beta1ImageClassificationConfigInput interface {
 type GoogleCloudDatalabelingV1beta1ImageClassificationConfigArgs struct {
 	// Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one image.
 	AllowMultiLabel pulumi.BoolPtrInput `pulumi:"allowMultiLabel"`
-	// Required. Annotation spec set resource name.
-	AnnotationSpecSet pulumi.StringPtrInput `pulumi:"annotationSpecSet"`
+	// Annotation spec set resource name.
+	AnnotationSpecSet pulumi.StringInput `pulumi:"annotationSpecSet"`
 	// Optional. The type of how to aggregate answers.
 	AnswerAggregationType *GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType `pulumi:"answerAggregationType"`
 }
@@ -3719,9 +3719,9 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigOutput) AllowMult
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1ImageClassificationConfig) *bool { return v.AllowMultiLabel }).(pulumi.BoolPtrOutput)
 }
 
-// Required. Annotation spec set resource name.
-func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigOutput) AnnotationSpecSet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1ImageClassificationConfig) *string { return v.AnnotationSpecSet }).(pulumi.StringPtrOutput)
+// Annotation spec set resource name.
+func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigOutput) AnnotationSpecSet() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1ImageClassificationConfig) string { return v.AnnotationSpecSet }).(pulumi.StringOutput)
 }
 
 // Optional. The type of how to aggregate answers.
@@ -3761,13 +3761,13 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput) AllowM
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. Annotation spec set resource name.
+// Annotation spec set resource name.
 func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput) AnnotationSpecSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1ImageClassificationConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.AnnotationSpecSet
+		return &v.AnnotationSpecSet
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3785,7 +3785,7 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput) Answer
 type GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse struct {
 	// Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one image.
 	AllowMultiLabel bool `pulumi:"allowMultiLabel"`
-	// Required. Annotation spec set resource name.
+	// Annotation spec set resource name.
 	AnnotationSpecSet string `pulumi:"annotationSpecSet"`
 	// Optional. The type of how to aggregate answers.
 	AnswerAggregationType string `pulumi:"answerAggregationType"`
@@ -3806,7 +3806,7 @@ type GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseInput interf
 type GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseArgs struct {
 	// Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one image.
 	AllowMultiLabel pulumi.BoolInput `pulumi:"allowMultiLabel"`
-	// Required. Annotation spec set resource name.
+	// Annotation spec set resource name.
 	AnnotationSpecSet pulumi.StringInput `pulumi:"annotationSpecSet"`
 	// Optional. The type of how to aggregate answers.
 	AnswerAggregationType pulumi.StringInput `pulumi:"answerAggregationType"`
@@ -3895,7 +3895,7 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput) A
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse) bool { return v.AllowMultiLabel }).(pulumi.BoolOutput)
 }
 
-// Required. Annotation spec set resource name.
+// Annotation spec set resource name.
 func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponseOutput) AnnotationSpecSet() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse) string {
 		return v.AnnotationSpecSet
@@ -3939,7 +3939,7 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. Annotation spec set resource name.
+// Annotation spec set resource name.
 func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput) AnnotationSpecSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponse) *string {
 		if v == nil {
@@ -3967,8 +3967,8 @@ type GoogleCloudDatalabelingV1beta1InputConfig struct {
 	BigquerySource *GoogleCloudDatalabelingV1beta1BigQuerySource `pulumi:"bigquerySource"`
 	// Optional. Metadata about annotations for the input. You must specify this field if you are using this InputConfig in an EvaluationJob for a model version that performs classification.
 	ClassificationMetadata *GoogleCloudDatalabelingV1beta1ClassificationMetadata `pulumi:"classificationMetadata"`
-	// Required. Data type must be specifed when user tries to import data.
-	DataType *string `pulumi:"dataType"`
+	// Data type must be specifed when user tries to import data.
+	DataType string `pulumi:"dataType"`
 	// Source located in Cloud Storage.
 	GcsSource *GoogleCloudDatalabelingV1beta1GcsSource `pulumi:"gcsSource"`
 	// Required for text import, as language code must be specified.
@@ -3994,8 +3994,8 @@ type GoogleCloudDatalabelingV1beta1InputConfigArgs struct {
 	BigquerySource GoogleCloudDatalabelingV1beta1BigQuerySourcePtrInput `pulumi:"bigquerySource"`
 	// Optional. Metadata about annotations for the input. You must specify this field if you are using this InputConfig in an EvaluationJob for a model version that performs classification.
 	ClassificationMetadata GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrInput `pulumi:"classificationMetadata"`
-	// Required. Data type must be specifed when user tries to import data.
-	DataType *GoogleCloudDatalabelingV1beta1InputConfigDataType `pulumi:"dataType"`
+	// Data type must be specifed when user tries to import data.
+	DataType GoogleCloudDatalabelingV1beta1InputConfigDataType `pulumi:"dataType"`
 	// Source located in Cloud Storage.
 	GcsSource GoogleCloudDatalabelingV1beta1GcsSourcePtrInput `pulumi:"gcsSource"`
 	// Required for text import, as language code must be specified.
@@ -4099,9 +4099,9 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigOutput) ClassificationMetadata(
 	}).(GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrOutput)
 }
 
-// Required. Data type must be specifed when user tries to import data.
-func (o GoogleCloudDatalabelingV1beta1InputConfigOutput) DataType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1InputConfig) *string { return v.DataType }).(pulumi.StringPtrOutput)
+// Data type must be specifed when user tries to import data.
+func (o GoogleCloudDatalabelingV1beta1InputConfigOutput) DataType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1InputConfig) string { return v.DataType }).(pulumi.StringOutput)
 }
 
 // Source located in Cloud Storage.
@@ -4168,13 +4168,13 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigPtrOutput) ClassificationMetada
 	}).(GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrOutput)
 }
 
-// Required. Data type must be specifed when user tries to import data.
+// Data type must be specifed when user tries to import data.
 func (o GoogleCloudDatalabelingV1beta1InputConfigPtrOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1InputConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.DataType
+		return &v.DataType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4206,7 +4206,7 @@ type GoogleCloudDatalabelingV1beta1InputConfigResponse struct {
 	BigquerySource GoogleCloudDatalabelingV1beta1BigQuerySourceResponse `pulumi:"bigquerySource"`
 	// Optional. Metadata about annotations for the input. You must specify this field if you are using this InputConfig in an EvaluationJob for a model version that performs classification.
 	ClassificationMetadata GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse `pulumi:"classificationMetadata"`
-	// Required. Data type must be specifed when user tries to import data.
+	// Data type must be specifed when user tries to import data.
 	DataType string `pulumi:"dataType"`
 	// Source located in Cloud Storage.
 	GcsSource GoogleCloudDatalabelingV1beta1GcsSourceResponse `pulumi:"gcsSource"`
@@ -4233,7 +4233,7 @@ type GoogleCloudDatalabelingV1beta1InputConfigResponseArgs struct {
 	BigquerySource GoogleCloudDatalabelingV1beta1BigQuerySourceResponseInput `pulumi:"bigquerySource"`
 	// Optional. Metadata about annotations for the input. You must specify this field if you are using this InputConfig in an EvaluationJob for a model version that performs classification.
 	ClassificationMetadata GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseInput `pulumi:"classificationMetadata"`
-	// Required. Data type must be specifed when user tries to import data.
+	// Data type must be specifed when user tries to import data.
 	DataType pulumi.StringInput `pulumi:"dataType"`
 	// Source located in Cloud Storage.
 	GcsSource GoogleCloudDatalabelingV1beta1GcsSourceResponseInput `pulumi:"gcsSource"`
@@ -4363,7 +4363,7 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigResponseOutput) ClassificationM
 	}).(GoogleCloudDatalabelingV1beta1ClassificationMetadataResponseOutput)
 }
 
-// Required. Data type must be specifed when user tries to import data.
+// Data type must be specifed when user tries to import data.
 func (o GoogleCloudDatalabelingV1beta1InputConfigResponseOutput) DataType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1InputConfigResponse) string { return v.DataType }).(pulumi.StringOutput)
 }
@@ -4432,7 +4432,7 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput) Classificati
 	}).(GoogleCloudDatalabelingV1beta1ClassificationMetadataResponsePtrOutput)
 }
 
-// Required. Data type must be specifed when user tries to import data.
+// Data type must be specifed when user tries to import data.
 func (o GoogleCloudDatalabelingV1beta1InputConfigResponsePtrOutput) DataType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1InputConfigResponse) *string {
 		if v == nil {
@@ -5500,8 +5500,8 @@ func (o GoogleCloudDatalabelingV1beta1SentimentConfigResponsePtrOutput) EnableLa
 type GoogleCloudDatalabelingV1beta1TextClassificationConfig struct {
 	// Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one text segment.
 	AllowMultiLabel *bool `pulumi:"allowMultiLabel"`
-	// Required. Annotation spec set resource name.
-	AnnotationSpecSet *string `pulumi:"annotationSpecSet"`
+	// Annotation spec set resource name.
+	AnnotationSpecSet string `pulumi:"annotationSpecSet"`
 	// Optional. Configs for sentiment selection. We deprecate sentiment analysis in data labeling side as it is incompatible with uCAIP.
 	SentimentConfig *GoogleCloudDatalabelingV1beta1SentimentConfig `pulumi:"sentimentConfig"`
 }
@@ -5521,8 +5521,8 @@ type GoogleCloudDatalabelingV1beta1TextClassificationConfigInput interface {
 type GoogleCloudDatalabelingV1beta1TextClassificationConfigArgs struct {
 	// Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one text segment.
 	AllowMultiLabel pulumi.BoolPtrInput `pulumi:"allowMultiLabel"`
-	// Required. Annotation spec set resource name.
-	AnnotationSpecSet pulumi.StringPtrInput `pulumi:"annotationSpecSet"`
+	// Annotation spec set resource name.
+	AnnotationSpecSet pulumi.StringInput `pulumi:"annotationSpecSet"`
 	// Optional. Configs for sentiment selection. We deprecate sentiment analysis in data labeling side as it is incompatible with uCAIP.
 	SentimentConfig GoogleCloudDatalabelingV1beta1SentimentConfigPtrInput `pulumi:"sentimentConfig"`
 }
@@ -5610,9 +5610,9 @@ func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigOutput) AllowMulti
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1TextClassificationConfig) *bool { return v.AllowMultiLabel }).(pulumi.BoolPtrOutput)
 }
 
-// Required. Annotation spec set resource name.
-func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigOutput) AnnotationSpecSet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1TextClassificationConfig) *string { return v.AnnotationSpecSet }).(pulumi.StringPtrOutput)
+// Annotation spec set resource name.
+func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigOutput) AnnotationSpecSet() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1TextClassificationConfig) string { return v.AnnotationSpecSet }).(pulumi.StringOutput)
 }
 
 // Optional. Configs for sentiment selection. We deprecate sentiment analysis in data labeling side as it is incompatible with uCAIP.
@@ -5652,13 +5652,13 @@ func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutput) AllowMu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. Annotation spec set resource name.
+// Annotation spec set resource name.
 func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutput) AnnotationSpecSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1TextClassificationConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.AnnotationSpecSet
+		return &v.AnnotationSpecSet
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5676,7 +5676,7 @@ func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutput) Sentime
 type GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse struct {
 	// Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one text segment.
 	AllowMultiLabel bool `pulumi:"allowMultiLabel"`
-	// Required. Annotation spec set resource name.
+	// Annotation spec set resource name.
 	AnnotationSpecSet string `pulumi:"annotationSpecSet"`
 	// Optional. Configs for sentiment selection. We deprecate sentiment analysis in data labeling side as it is incompatible with uCAIP.
 	SentimentConfig GoogleCloudDatalabelingV1beta1SentimentConfigResponse `pulumi:"sentimentConfig"`
@@ -5697,7 +5697,7 @@ type GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseInput interfa
 type GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseArgs struct {
 	// Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one text segment.
 	AllowMultiLabel pulumi.BoolInput `pulumi:"allowMultiLabel"`
-	// Required. Annotation spec set resource name.
+	// Annotation spec set resource name.
 	AnnotationSpecSet pulumi.StringInput `pulumi:"annotationSpecSet"`
 	// Optional. Configs for sentiment selection. We deprecate sentiment analysis in data labeling side as it is incompatible with uCAIP.
 	SentimentConfig GoogleCloudDatalabelingV1beta1SentimentConfigResponseInput `pulumi:"sentimentConfig"`
@@ -5786,7 +5786,7 @@ func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput) Al
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse) bool { return v.AllowMultiLabel }).(pulumi.BoolOutput)
 }
 
-// Required. Annotation spec set resource name.
+// Annotation spec set resource name.
 func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigResponseOutput) AnnotationSpecSet() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse) string {
 		return v.AnnotationSpecSet
@@ -5830,7 +5830,7 @@ func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput)
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. Annotation spec set resource name.
+// Annotation spec set resource name.
 func (o GoogleCloudDatalabelingV1beta1TextClassificationConfigResponsePtrOutput) AnnotationSpecSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1TextClassificationConfigResponse) *string {
 		if v == nil {

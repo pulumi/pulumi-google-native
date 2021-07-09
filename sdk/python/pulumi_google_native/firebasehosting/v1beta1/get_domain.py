@@ -41,7 +41,7 @@ class GetDomainResult:
     @pulumi.getter(name="domainName")
     def domain_name(self) -> str:
         """
-        Required. The domain name of the association.
+        The domain name of the association.
         """
         return pulumi.get(self, "domain_name")
 
@@ -65,7 +65,7 @@ class GetDomainResult:
     @pulumi.getter
     def site(self) -> str:
         """
-        Required. The site name of the association.
+        The site name of the association.
         """
         return pulumi.get(self, "site")
 

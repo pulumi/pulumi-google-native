@@ -166,21 +166,22 @@ class AppEngineRoutingArgs:
 @pulumi.input_type
 class HttpTargetArgs:
     def __init__(__self__, *,
+                 uri: pulumi.Input[str],
                  body: Optional[pulumi.Input[str]] = None,
                  headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  http_method: Optional[pulumi.Input['HttpTargetHttpMethod']] = None,
                  oauth_token: Optional[pulumi.Input['OAuthTokenArgs']] = None,
-                 oidc_token: Optional[pulumi.Input['OidcTokenArgs']] = None,
-                 uri: Optional[pulumi.Input[str]] = None):
+                 oidc_token: Optional[pulumi.Input['OidcTokenArgs']] = None):
         """
         Http target. The job will be pushed to the job handler by means of an HTTP request via an http_method such as HTTP POST, HTTP GET, etc. The job is acknowledged by means of an HTTP response code in the range [200 - 299]. A failure to receive a response constitutes a failed execution. For a redirected request, the response returned by the redirected request is considered.
+        :param pulumi.Input[str] uri: The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
         :param pulumi.Input[str] body: HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a job with an incompatible HttpMethod.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: The user can specify HTTP request headers to send with the job's HTTP request. This map contains the header field names and values. Repeated headers are not supported, but a header value can contain commas. These headers represent a subset of the headers that will accompany the job's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is below: - Host: This will be computed by Cloud Scheduler and derived from uri. * `Content-Length`: This will be computed by Cloud Scheduler. * `User-Agent`: This will be set to `"Google-Cloud-Scheduler"`. * `X-Google-*`: Google internal use only. * `X-AppEngine-*`: Google internal use only. The total size of headers must be less than 80KB.
         :param pulumi.Input['HttpTargetHttpMethod'] http_method: Which HTTP method to use for the request.
         :param pulumi.Input['OAuthTokenArgs'] oauth_token: If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
         :param pulumi.Input['OidcTokenArgs'] oidc_token: If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
-        :param pulumi.Input[str] uri: Required. The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
         """
+        pulumi.set(__self__, "uri", uri)
         if body is not None:
             pulumi.set(__self__, "body", body)
         if headers is not None:
@@ -191,8 +192,18 @@ class HttpTargetArgs:
             pulumi.set(__self__, "oauth_token", oauth_token)
         if oidc_token is not None:
             pulumi.set(__self__, "oidc_token", oidc_token)
-        if uri is not None:
-            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
 
     @property
     @pulumi.getter
@@ -253,18 +264,6 @@ class HttpTargetArgs:
     @oidc_token.setter
     def oidc_token(self, value: Optional[pulumi.Input['OidcTokenArgs']]):
         pulumi.set(self, "oidc_token", value)
-
-    @property
-    @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
-        """
-        return pulumi.get(self, "uri")
-
-    @uri.setter
-    def uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "uri", value)
 
 
 @pulumi.input_type
@@ -350,21 +349,32 @@ class OidcTokenArgs:
 @pulumi.input_type
 class PubsubTargetArgs:
     def __init__(__self__, *,
+                 topic_name: pulumi.Input[str],
                  attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 data: Optional[pulumi.Input[str]] = None,
-                 topic_name: Optional[pulumi.Input[str]] = None):
+                 data: Optional[pulumi.Input[str]] = None):
         """
         Pub/Sub target. The job will be delivered by publishing a message to the given Pub/Sub topic.
+        :param pulumi.Input[str] topic_name: The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] attributes: Attributes for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
         :param pulumi.Input[str] data: The message payload for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
-        :param pulumi.Input[str] topic_name: Required. The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
         """
+        pulumi.set(__self__, "topic_name", topic_name)
         if attributes is not None:
             pulumi.set(__self__, "attributes", attributes)
         if data is not None:
             pulumi.set(__self__, "data", data)
-        if topic_name is not None:
-            pulumi.set(__self__, "topic_name", topic_name)
+
+    @property
+    @pulumi.getter(name="topicName")
+    def topic_name(self) -> pulumi.Input[str]:
+        """
+        The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
+        """
+        return pulumi.get(self, "topic_name")
+
+    @topic_name.setter
+    def topic_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "topic_name", value)
 
     @property
     @pulumi.getter
@@ -389,18 +399,6 @@ class PubsubTargetArgs:
     @data.setter
     def data(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "data", value)
-
-    @property
-    @pulumi.getter(name="topicName")
-    def topic_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
-        """
-        return pulumi.get(self, "topic_name")
-
-    @topic_name.setter
-    def topic_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "topic_name", value)
 
 
 @pulumi.input_type

@@ -16,25 +16,35 @@ __all__ = ['DomainArgs', 'Domain']
 @pulumi.input_type
 class DomainArgs:
     def __init__(__self__, *,
+                 domain_name: pulumi.Input[str],
                  project: pulumi.Input[str],
+                 site: pulumi.Input[str],
                  site_id: pulumi.Input[str],
-                 domain_name: Optional[pulumi.Input[str]] = None,
-                 domain_redirect: Optional[pulumi.Input['DomainRedirectArgs']] = None,
-                 site: Optional[pulumi.Input[str]] = None):
+                 domain_redirect: Optional[pulumi.Input['DomainRedirectArgs']] = None):
         """
         The set of arguments for constructing a Domain resource.
-        :param pulumi.Input[str] domain_name: Required. The domain name of the association.
+        :param pulumi.Input[str] domain_name: The domain name of the association.
+        :param pulumi.Input[str] site: The site name of the association.
         :param pulumi.Input['DomainRedirectArgs'] domain_redirect: If set, the domain should redirect with the provided parameters.
-        :param pulumi.Input[str] site: Required. The site name of the association.
         """
+        pulumi.set(__self__, "domain_name", domain_name)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "site", site)
         pulumi.set(__self__, "site_id", site_id)
-        if domain_name is not None:
-            pulumi.set(__self__, "domain_name", domain_name)
         if domain_redirect is not None:
             pulumi.set(__self__, "domain_redirect", domain_redirect)
-        if site is not None:
-            pulumi.set(__self__, "site", site)
+
+    @property
+    @pulumi.getter(name="domainName")
+    def domain_name(self) -> pulumi.Input[str]:
+        """
+        The domain name of the association.
+        """
+        return pulumi.get(self, "domain_name")
+
+    @domain_name.setter
+    def domain_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain_name", value)
 
     @property
     @pulumi.getter
@@ -46,6 +56,18 @@ class DomainArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter
+    def site(self) -> pulumi.Input[str]:
+        """
+        The site name of the association.
+        """
+        return pulumi.get(self, "site")
+
+    @site.setter
+    def site(self, value: pulumi.Input[str]):
+        pulumi.set(self, "site", value)
+
+    @property
     @pulumi.getter(name="siteId")
     def site_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "site_id")
@@ -53,18 +75,6 @@ class DomainArgs:
     @site_id.setter
     def site_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "site_id", value)
-
-    @property
-    @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The domain name of the association.
-        """
-        return pulumi.get(self, "domain_name")
-
-    @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "domain_name", value)
 
     @property
     @pulumi.getter(name="domainRedirect")
@@ -77,18 +87,6 @@ class DomainArgs:
     @domain_redirect.setter
     def domain_redirect(self, value: Optional[pulumi.Input['DomainRedirectArgs']]):
         pulumi.set(self, "domain_redirect", value)
-
-    @property
-    @pulumi.getter
-    def site(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The site name of the association.
-        """
-        return pulumi.get(self, "site")
-
-    @site.setter
-    def site(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "site", value)
 
 
 class Domain(pulumi.CustomResource):
@@ -107,9 +105,9 @@ class Domain(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] domain_name: Required. The domain name of the association.
+        :param pulumi.Input[str] domain_name: The domain name of the association.
         :param pulumi.Input[pulumi.InputType['DomainRedirectArgs']] domain_redirect: If set, the domain should redirect with the provided parameters.
-        :param pulumi.Input[str] site: Required. The site name of the association.
+        :param pulumi.Input[str] site: The site name of the association.
         """
         ...
     @overload
@@ -152,11 +150,15 @@ class Domain(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = DomainArgs.__new__(DomainArgs)
 
+            if domain_name is None and not opts.urn:
+                raise TypeError("Missing required property 'domain_name'")
             __props__.__dict__["domain_name"] = domain_name
             __props__.__dict__["domain_redirect"] = domain_redirect
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            if site is None and not opts.urn:
+                raise TypeError("Missing required property 'site'")
             __props__.__dict__["site"] = site
             if site_id is None and not opts.urn:
                 raise TypeError("Missing required property 'site_id'")
@@ -198,7 +200,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter(name="domainName")
     def domain_name(self) -> pulumi.Output[str]:
         """
-        Required. The domain name of the association.
+        The domain name of the association.
         """
         return pulumi.get(self, "domain_name")
 
@@ -222,7 +224,7 @@ class Domain(pulumi.CustomResource):
     @pulumi.getter
     def site(self) -> pulumi.Output[str]:
         """
-        Required. The site name of the association.
+        The site name of the association.
         """
         return pulumi.get(self, "site")
 

@@ -68,7 +68,7 @@ export class Job extends pulumi.CustomResource {
      */
     public readonly pigJob!: pulumi.Output<outputs.dataproc.v1beta2.PigJobResponse>;
     /**
-     * Required. Job information, including how, when, and where to run the job.
+     * Job information, including how, when, and where to run the job.
      */
     public readonly placement!: pulumi.Output<outputs.dataproc.v1beta2.JobPlacementResponse>;
     /**
@@ -127,6 +127,9 @@ export class Job extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.placement === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'placement'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -206,9 +209,9 @@ export interface JobArgs {
      */
     pigJob?: pulumi.Input<inputs.dataproc.v1beta2.PigJobArgs>;
     /**
-     * Required. Job information, including how, when, and where to run the job.
+     * Job information, including how, when, and where to run the job.
      */
-    placement?: pulumi.Input<inputs.dataproc.v1beta2.JobPlacementArgs>;
+    placement: pulumi.Input<inputs.dataproc.v1beta2.JobPlacementArgs>;
     /**
      * Optional. Job is a Presto job.
      */

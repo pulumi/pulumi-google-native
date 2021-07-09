@@ -1183,8 +1183,8 @@ type DataSet struct {
 	MinAlignmentPeriod *string `pulumi:"minAlignmentPeriod"`
 	// How this data should be plotted on the chart.
 	PlotType *string `pulumi:"plotType"`
-	// Required. Fields for querying time series data from the Stackdriver metrics API.
-	TimeSeriesQuery *TimeSeriesQuery `pulumi:"timeSeriesQuery"`
+	// Fields for querying time series data from the Stackdriver metrics API.
+	TimeSeriesQuery TimeSeriesQuery `pulumi:"timeSeriesQuery"`
 }
 
 // DataSetInput is an input type that accepts DataSetArgs and DataSetOutput values.
@@ -1206,8 +1206,8 @@ type DataSetArgs struct {
 	MinAlignmentPeriod pulumi.StringPtrInput `pulumi:"minAlignmentPeriod"`
 	// How this data should be plotted on the chart.
 	PlotType *DataSetPlotType `pulumi:"plotType"`
-	// Required. Fields for querying time series data from the Stackdriver metrics API.
-	TimeSeriesQuery TimeSeriesQueryPtrInput `pulumi:"timeSeriesQuery"`
+	// Fields for querying time series data from the Stackdriver metrics API.
+	TimeSeriesQuery TimeSeriesQueryInput `pulumi:"timeSeriesQuery"`
 }
 
 func (DataSetArgs) ElementType() reflect.Type {
@@ -1277,9 +1277,9 @@ func (o DataSetOutput) PlotType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DataSet) *string { return v.PlotType }).(pulumi.StringPtrOutput)
 }
 
-// Required. Fields for querying time series data from the Stackdriver metrics API.
-func (o DataSetOutput) TimeSeriesQuery() TimeSeriesQueryPtrOutput {
-	return o.ApplyT(func(v DataSet) *TimeSeriesQuery { return v.TimeSeriesQuery }).(TimeSeriesQueryPtrOutput)
+// Fields for querying time series data from the Stackdriver metrics API.
+func (o DataSetOutput) TimeSeriesQuery() TimeSeriesQueryOutput {
+	return o.ApplyT(func(v DataSet) TimeSeriesQuery { return v.TimeSeriesQuery }).(TimeSeriesQueryOutput)
 }
 
 type DataSetArrayOutput struct{ *pulumi.OutputState }
@@ -1310,7 +1310,7 @@ type DataSetResponse struct {
 	MinAlignmentPeriod string `pulumi:"minAlignmentPeriod"`
 	// How this data should be plotted on the chart.
 	PlotType string `pulumi:"plotType"`
-	// Required. Fields for querying time series data from the Stackdriver metrics API.
+	// Fields for querying time series data from the Stackdriver metrics API.
 	TimeSeriesQuery TimeSeriesQueryResponse `pulumi:"timeSeriesQuery"`
 }
 
@@ -1333,7 +1333,7 @@ type DataSetResponseArgs struct {
 	MinAlignmentPeriod pulumi.StringInput `pulumi:"minAlignmentPeriod"`
 	// How this data should be plotted on the chart.
 	PlotType pulumi.StringInput `pulumi:"plotType"`
-	// Required. Fields for querying time series data from the Stackdriver metrics API.
+	// Fields for querying time series data from the Stackdriver metrics API.
 	TimeSeriesQuery TimeSeriesQueryResponseInput `pulumi:"timeSeriesQuery"`
 }
 
@@ -1404,7 +1404,7 @@ func (o DataSetResponseOutput) PlotType() pulumi.StringOutput {
 	return o.ApplyT(func(v DataSetResponse) string { return v.PlotType }).(pulumi.StringOutput)
 }
 
-// Required. Fields for querying time series data from the Stackdriver metrics API.
+// Fields for querying time series data from the Stackdriver metrics API.
 func (o DataSetResponseOutput) TimeSeriesQuery() TimeSeriesQueryResponseOutput {
 	return o.ApplyT(func(v DataSetResponse) TimeSeriesQueryResponse { return v.TimeSeriesQuery }).(TimeSeriesQueryResponseOutput)
 }
@@ -2668,8 +2668,8 @@ func (o PickTimeSeriesFilterResponseOutput) RankingMethod() pulumi.StringOutput 
 type RatioPart struct {
 	// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
 	Aggregation *Aggregation `pulumi:"aggregation"`
-	// Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
-	Filter *string `pulumi:"filter"`
+	// The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+	Filter string `pulumi:"filter"`
 }
 
 // RatioPartInput is an input type that accepts RatioPartArgs and RatioPartOutput values.
@@ -2687,8 +2687,8 @@ type RatioPartInput interface {
 type RatioPartArgs struct {
 	// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
 	Aggregation AggregationPtrInput `pulumi:"aggregation"`
-	// Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
-	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+	Filter pulumi.StringInput `pulumi:"filter"`
 }
 
 func (RatioPartArgs) ElementType() reflect.Type {
@@ -2774,9 +2774,9 @@ func (o RatioPartOutput) Aggregation() AggregationPtrOutput {
 	return o.ApplyT(func(v RatioPart) *Aggregation { return v.Aggregation }).(AggregationPtrOutput)
 }
 
-// Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
-func (o RatioPartOutput) Filter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RatioPart) *string { return v.Filter }).(pulumi.StringPtrOutput)
+// The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+func (o RatioPartOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v RatioPart) string { return v.Filter }).(pulumi.StringOutput)
 }
 
 type RatioPartPtrOutput struct{ *pulumi.OutputState }
@@ -2807,13 +2807,13 @@ func (o RatioPartPtrOutput) Aggregation() AggregationPtrOutput {
 	}).(AggregationPtrOutput)
 }
 
-// Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+// The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
 func (o RatioPartPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RatioPart) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Filter
+		return &v.Filter
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2821,7 +2821,7 @@ func (o RatioPartPtrOutput) Filter() pulumi.StringPtrOutput {
 type RatioPartResponse struct {
 	// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
 	Aggregation AggregationResponse `pulumi:"aggregation"`
-	// Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+	// The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
 	Filter string `pulumi:"filter"`
 }
 
@@ -2840,7 +2840,7 @@ type RatioPartResponseInput interface {
 type RatioPartResponseArgs struct {
 	// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
 	Aggregation AggregationResponseInput `pulumi:"aggregation"`
-	// Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+	// The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
 	Filter pulumi.StringInput `pulumi:"filter"`
 }
 
@@ -2876,7 +2876,7 @@ func (o RatioPartResponseOutput) Aggregation() AggregationResponseOutput {
 	return o.ApplyT(func(v RatioPartResponse) AggregationResponse { return v.Aggregation }).(AggregationResponseOutput)
 }
 
-// Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+// The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
 func (o RatioPartResponseOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v RatioPartResponse) string { return v.Filter }).(pulumi.StringOutput)
 }
@@ -3375,8 +3375,8 @@ type Scorecard struct {
 	SparkChartView *SparkChartView `pulumi:"sparkChartView"`
 	// The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', }Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
 	Thresholds []Threshold `pulumi:"thresholds"`
-	// Required. Fields for querying time series data from the Stackdriver metrics API.
-	TimeSeriesQuery *TimeSeriesQuery `pulumi:"timeSeriesQuery"`
+	// Fields for querying time series data from the Stackdriver metrics API.
+	TimeSeriesQuery TimeSeriesQuery `pulumi:"timeSeriesQuery"`
 }
 
 // ScorecardInput is an input type that accepts ScorecardArgs and ScorecardOutput values.
@@ -3398,8 +3398,8 @@ type ScorecardArgs struct {
 	SparkChartView SparkChartViewPtrInput `pulumi:"sparkChartView"`
 	// The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', }Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
 	Thresholds ThresholdArrayInput `pulumi:"thresholds"`
-	// Required. Fields for querying time series data from the Stackdriver metrics API.
-	TimeSeriesQuery TimeSeriesQueryPtrInput `pulumi:"timeSeriesQuery"`
+	// Fields for querying time series data from the Stackdriver metrics API.
+	TimeSeriesQuery TimeSeriesQueryInput `pulumi:"timeSeriesQuery"`
 }
 
 func (ScorecardArgs) ElementType() reflect.Type {
@@ -3495,9 +3495,9 @@ func (o ScorecardOutput) Thresholds() ThresholdArrayOutput {
 	return o.ApplyT(func(v Scorecard) []Threshold { return v.Thresholds }).(ThresholdArrayOutput)
 }
 
-// Required. Fields for querying time series data from the Stackdriver metrics API.
-func (o ScorecardOutput) TimeSeriesQuery() TimeSeriesQueryPtrOutput {
-	return o.ApplyT(func(v Scorecard) *TimeSeriesQuery { return v.TimeSeriesQuery }).(TimeSeriesQueryPtrOutput)
+// Fields for querying time series data from the Stackdriver metrics API.
+func (o ScorecardOutput) TimeSeriesQuery() TimeSeriesQueryOutput {
+	return o.ApplyT(func(v Scorecard) TimeSeriesQuery { return v.TimeSeriesQuery }).(TimeSeriesQueryOutput)
 }
 
 type ScorecardPtrOutput struct{ *pulumi.OutputState }
@@ -3548,13 +3548,13 @@ func (o ScorecardPtrOutput) Thresholds() ThresholdArrayOutput {
 	}).(ThresholdArrayOutput)
 }
 
-// Required. Fields for querying time series data from the Stackdriver metrics API.
+// Fields for querying time series data from the Stackdriver metrics API.
 func (o ScorecardPtrOutput) TimeSeriesQuery() TimeSeriesQueryPtrOutput {
 	return o.ApplyT(func(v *Scorecard) *TimeSeriesQuery {
 		if v == nil {
 			return nil
 		}
-		return v.TimeSeriesQuery
+		return &v.TimeSeriesQuery
 	}).(TimeSeriesQueryPtrOutput)
 }
 
@@ -3566,7 +3566,7 @@ type ScorecardResponse struct {
 	SparkChartView SparkChartViewResponse `pulumi:"sparkChartView"`
 	// The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', }Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
 	Thresholds []ThresholdResponse `pulumi:"thresholds"`
-	// Required. Fields for querying time series data from the Stackdriver metrics API.
+	// Fields for querying time series data from the Stackdriver metrics API.
 	TimeSeriesQuery TimeSeriesQueryResponse `pulumi:"timeSeriesQuery"`
 }
 
@@ -3589,7 +3589,7 @@ type ScorecardResponseArgs struct {
 	SparkChartView SparkChartViewResponseInput `pulumi:"sparkChartView"`
 	// The thresholds used to determine the state of the scorecard given the time series' current value. For an actual value x, the scorecard is in a danger state if x is less than or equal to a danger threshold that triggers below, or greater than or equal to a danger threshold that triggers above. Similarly, if x is above/below a warning threshold that triggers above/below, then the scorecard is in a warning state - unless x also puts it in a danger state. (Danger trumps warning.)As an example, consider a scorecard with the following four thresholds: { value: 90, category: 'DANGER', trigger: 'ABOVE', }, { value: 70, category: 'WARNING', trigger: 'ABOVE', }, { value: 10, category: 'DANGER', trigger: 'BELOW', }, { value: 20, category: 'WARNING', trigger: 'BELOW', }Then: values less than or equal to 10 would put the scorecard in a DANGER state, values greater than 10 but less than or equal to 20 a WARNING state, values strictly between 20 and 70 an OK state, values greater than or equal to 70 but less than 90 a WARNING state, and values greater than or equal to 90 a DANGER state.
 	Thresholds ThresholdResponseArrayInput `pulumi:"thresholds"`
-	// Required. Fields for querying time series data from the Stackdriver metrics API.
+	// Fields for querying time series data from the Stackdriver metrics API.
 	TimeSeriesQuery TimeSeriesQueryResponseInput `pulumi:"timeSeriesQuery"`
 }
 
@@ -3635,7 +3635,7 @@ func (o ScorecardResponseOutput) Thresholds() ThresholdResponseArrayOutput {
 	return o.ApplyT(func(v ScorecardResponse) []ThresholdResponse { return v.Thresholds }).(ThresholdResponseArrayOutput)
 }
 
-// Required. Fields for querying time series data from the Stackdriver metrics API.
+// Fields for querying time series data from the Stackdriver metrics API.
 func (o ScorecardResponseOutput) TimeSeriesQuery() TimeSeriesQueryResponseOutput {
 	return o.ApplyT(func(v ScorecardResponse) TimeSeriesQueryResponse { return v.TimeSeriesQuery }).(TimeSeriesQueryResponseOutput)
 }
@@ -3644,8 +3644,8 @@ func (o ScorecardResponseOutput) TimeSeriesQuery() TimeSeriesQueryResponseOutput
 type SparkChartView struct {
 	// The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.
 	MinAlignmentPeriod *string `pulumi:"minAlignmentPeriod"`
-	// Required. The type of sparkchart to show in this chartView.
-	SparkChartType *string `pulumi:"sparkChartType"`
+	// The type of sparkchart to show in this chartView.
+	SparkChartType string `pulumi:"sparkChartType"`
 }
 
 // SparkChartViewInput is an input type that accepts SparkChartViewArgs and SparkChartViewOutput values.
@@ -3663,8 +3663,8 @@ type SparkChartViewInput interface {
 type SparkChartViewArgs struct {
 	// The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.
 	MinAlignmentPeriod pulumi.StringPtrInput `pulumi:"minAlignmentPeriod"`
-	// Required. The type of sparkchart to show in this chartView.
-	SparkChartType *SparkChartViewSparkChartType `pulumi:"sparkChartType"`
+	// The type of sparkchart to show in this chartView.
+	SparkChartType SparkChartViewSparkChartType `pulumi:"sparkChartType"`
 }
 
 func (SparkChartViewArgs) ElementType() reflect.Type {
@@ -3750,9 +3750,9 @@ func (o SparkChartViewOutput) MinAlignmentPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SparkChartView) *string { return v.MinAlignmentPeriod }).(pulumi.StringPtrOutput)
 }
 
-// Required. The type of sparkchart to show in this chartView.
-func (o SparkChartViewOutput) SparkChartType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SparkChartView) *string { return v.SparkChartType }).(pulumi.StringPtrOutput)
+// The type of sparkchart to show in this chartView.
+func (o SparkChartViewOutput) SparkChartType() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkChartView) string { return v.SparkChartType }).(pulumi.StringOutput)
 }
 
 type SparkChartViewPtrOutput struct{ *pulumi.OutputState }
@@ -3783,13 +3783,13 @@ func (o SparkChartViewPtrOutput) MinAlignmentPeriod() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The type of sparkchart to show in this chartView.
+// The type of sparkchart to show in this chartView.
 func (o SparkChartViewPtrOutput) SparkChartType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SparkChartView) *string {
 		if v == nil {
 			return nil
 		}
-		return v.SparkChartType
+		return &v.SparkChartType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3797,7 +3797,7 @@ func (o SparkChartViewPtrOutput) SparkChartType() pulumi.StringPtrOutput {
 type SparkChartViewResponse struct {
 	// The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.
 	MinAlignmentPeriod string `pulumi:"minAlignmentPeriod"`
-	// Required. The type of sparkchart to show in this chartView.
+	// The type of sparkchart to show in this chartView.
 	SparkChartType string `pulumi:"sparkChartType"`
 }
 
@@ -3816,7 +3816,7 @@ type SparkChartViewResponseInput interface {
 type SparkChartViewResponseArgs struct {
 	// The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.
 	MinAlignmentPeriod pulumi.StringInput `pulumi:"minAlignmentPeriod"`
-	// Required. The type of sparkchart to show in this chartView.
+	// The type of sparkchart to show in this chartView.
 	SparkChartType pulumi.StringInput `pulumi:"sparkChartType"`
 }
 
@@ -3852,7 +3852,7 @@ func (o SparkChartViewResponseOutput) MinAlignmentPeriod() pulumi.StringOutput {
 	return o.ApplyT(func(v SparkChartViewResponse) string { return v.MinAlignmentPeriod }).(pulumi.StringOutput)
 }
 
-// Required. The type of sparkchart to show in this chartView.
+// The type of sparkchart to show in this chartView.
 func (o SparkChartViewResponseOutput) SparkChartType() pulumi.StringOutput {
 	return o.ApplyT(func(v SparkChartViewResponse) string { return v.SparkChartType }).(pulumi.StringOutput)
 }
@@ -4604,8 +4604,8 @@ func (o TileResponseArrayOutput) Index(i pulumi.IntInput) TileResponseOutput {
 type TimeSeriesFilter struct {
 	// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
 	Aggregation *Aggregation `pulumi:"aggregation"`
-	// Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
-	Filter *string `pulumi:"filter"`
+	// The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+	Filter string `pulumi:"filter"`
 	// Ranking based time series filter.
 	PickTimeSeriesFilter *PickTimeSeriesFilter `pulumi:"pickTimeSeriesFilter"`
 	// Apply a second aggregation after aggregation is applied.
@@ -4627,8 +4627,8 @@ type TimeSeriesFilterInput interface {
 type TimeSeriesFilterArgs struct {
 	// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
 	Aggregation AggregationPtrInput `pulumi:"aggregation"`
-	// Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
-	Filter pulumi.StringPtrInput `pulumi:"filter"`
+	// The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+	Filter pulumi.StringInput `pulumi:"filter"`
 	// Ranking based time series filter.
 	PickTimeSeriesFilter PickTimeSeriesFilterPtrInput `pulumi:"pickTimeSeriesFilter"`
 	// Apply a second aggregation after aggregation is applied.
@@ -4718,9 +4718,9 @@ func (o TimeSeriesFilterOutput) Aggregation() AggregationPtrOutput {
 	return o.ApplyT(func(v TimeSeriesFilter) *Aggregation { return v.Aggregation }).(AggregationPtrOutput)
 }
 
-// Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
-func (o TimeSeriesFilterOutput) Filter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TimeSeriesFilter) *string { return v.Filter }).(pulumi.StringPtrOutput)
+// The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+func (o TimeSeriesFilterOutput) Filter() pulumi.StringOutput {
+	return o.ApplyT(func(v TimeSeriesFilter) string { return v.Filter }).(pulumi.StringOutput)
 }
 
 // Ranking based time series filter.
@@ -4761,13 +4761,13 @@ func (o TimeSeriesFilterPtrOutput) Aggregation() AggregationPtrOutput {
 	}).(AggregationPtrOutput)
 }
 
-// Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+// The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
 func (o TimeSeriesFilterPtrOutput) Filter() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TimeSeriesFilter) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Filter
+		return &v.Filter
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5068,7 +5068,7 @@ func (o TimeSeriesFilterRatioResponseOutput) SecondaryAggregation() AggregationR
 type TimeSeriesFilterResponse struct {
 	// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
 	Aggregation AggregationResponse `pulumi:"aggregation"`
-	// Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+	// The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
 	Filter string `pulumi:"filter"`
 	// Ranking based time series filter.
 	PickTimeSeriesFilter PickTimeSeriesFilterResponse `pulumi:"pickTimeSeriesFilter"`
@@ -5091,7 +5091,7 @@ type TimeSeriesFilterResponseInput interface {
 type TimeSeriesFilterResponseArgs struct {
 	// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
 	Aggregation AggregationResponseInput `pulumi:"aggregation"`
-	// Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+	// The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
 	Filter pulumi.StringInput `pulumi:"filter"`
 	// Ranking based time series filter.
 	PickTimeSeriesFilter PickTimeSeriesFilterResponseInput `pulumi:"pickTimeSeriesFilter"`
@@ -5131,7 +5131,7 @@ func (o TimeSeriesFilterResponseOutput) Aggregation() AggregationResponseOutput 
 	return o.ApplyT(func(v TimeSeriesFilterResponse) AggregationResponse { return v.Aggregation }).(AggregationResponseOutput)
 }
 
-// Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+// The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
 func (o TimeSeriesFilterResponseOutput) Filter() pulumi.StringOutput {
 	return o.ApplyT(func(v TimeSeriesFilterResponse) string { return v.Filter }).(pulumi.StringOutput)
 }
@@ -5814,7 +5814,7 @@ func (o WidgetResponseArrayOutput) Index(i pulumi.IntInput) WidgetResponseOutput
 type XyChart struct {
 	// Display options for the chart.
 	ChartOptions *ChartOptions `pulumi:"chartOptions"`
-	// Required. The data displayed in this chart.
+	// The data displayed in this chart.
 	DataSets []DataSet `pulumi:"dataSets"`
 	// Threshold lines drawn horizontally across the chart.
 	Thresholds []Threshold `pulumi:"thresholds"`
@@ -5841,7 +5841,7 @@ type XyChartInput interface {
 type XyChartArgs struct {
 	// Display options for the chart.
 	ChartOptions ChartOptionsPtrInput `pulumi:"chartOptions"`
-	// Required. The data displayed in this chart.
+	// The data displayed in this chart.
 	DataSets DataSetArrayInput `pulumi:"dataSets"`
 	// Threshold lines drawn horizontally across the chart.
 	Thresholds ThresholdArrayInput `pulumi:"thresholds"`
@@ -5936,7 +5936,7 @@ func (o XyChartOutput) ChartOptions() ChartOptionsPtrOutput {
 	return o.ApplyT(func(v XyChart) *ChartOptions { return v.ChartOptions }).(ChartOptionsPtrOutput)
 }
 
-// Required. The data displayed in this chart.
+// The data displayed in this chart.
 func (o XyChartOutput) DataSets() DataSetArrayOutput {
 	return o.ApplyT(func(v XyChart) []DataSet { return v.DataSets }).(DataSetArrayOutput)
 }
@@ -5989,7 +5989,7 @@ func (o XyChartPtrOutput) ChartOptions() ChartOptionsPtrOutput {
 	}).(ChartOptionsPtrOutput)
 }
 
-// Required. The data displayed in this chart.
+// The data displayed in this chart.
 func (o XyChartPtrOutput) DataSets() DataSetArrayOutput {
 	return o.ApplyT(func(v *XyChart) []DataSet {
 		if v == nil {
@@ -6043,7 +6043,7 @@ func (o XyChartPtrOutput) YAxis() AxisPtrOutput {
 type XyChartResponse struct {
 	// Display options for the chart.
 	ChartOptions ChartOptionsResponse `pulumi:"chartOptions"`
-	// Required. The data displayed in this chart.
+	// The data displayed in this chart.
 	DataSets []DataSetResponse `pulumi:"dataSets"`
 	// Threshold lines drawn horizontally across the chart.
 	Thresholds []ThresholdResponse `pulumi:"thresholds"`
@@ -6070,7 +6070,7 @@ type XyChartResponseInput interface {
 type XyChartResponseArgs struct {
 	// Display options for the chart.
 	ChartOptions ChartOptionsResponseInput `pulumi:"chartOptions"`
-	// Required. The data displayed in this chart.
+	// The data displayed in this chart.
 	DataSets DataSetResponseArrayInput `pulumi:"dataSets"`
 	// Threshold lines drawn horizontally across the chart.
 	Thresholds ThresholdResponseArrayInput `pulumi:"thresholds"`
@@ -6114,7 +6114,7 @@ func (o XyChartResponseOutput) ChartOptions() ChartOptionsResponseOutput {
 	return o.ApplyT(func(v XyChartResponse) ChartOptionsResponse { return v.ChartOptions }).(ChartOptionsResponseOutput)
 }
 
-// Required. The data displayed in this chart.
+// The data displayed in this chart.
 func (o XyChartResponseOutput) DataSets() DataSetResponseArrayOutput {
 	return o.ApplyT(func(v XyChartResponse) []DataSetResponse { return v.DataSets }).(DataSetResponseArrayOutput)
 }

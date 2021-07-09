@@ -14,19 +14,19 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
     public sealed class AndroidDeviceResponse
     {
         /// <summary>
-        /// Required. The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        /// The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
         /// </summary>
         public readonly string AndroidModelId;
         /// <summary>
-        /// Required. The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+        /// The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
         /// </summary>
         public readonly string AndroidVersionId;
         /// <summary>
-        /// Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+        /// The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
         /// </summary>
         public readonly string Locale;
         /// <summary>
-        /// Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+        /// How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
         /// </summary>
         public readonly string Orientation;
 

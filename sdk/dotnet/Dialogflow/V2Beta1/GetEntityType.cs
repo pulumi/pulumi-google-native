@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// </summary>
         public readonly string AutoExpansionMode;
         /// <summary>
-        /// Required. The name of the entity type.
+        /// The name of the entity type.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
@@ -59,7 +59,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDialogflowV2beta1EntityTypeEntityResponse> Entities;
         /// <summary>
-        /// Required. Indicates the kind of entity type.
+        /// Indicates the kind of entity type.
         /// </summary>
         public readonly string Kind;
         /// <summary>

@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// </summary>
     public sealed class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardArgs : Pulumi.ResourceArgs
     {
-        [Input("cardContents")]
+        [Input("cardContents", required: true)]
         private InputList<Inputs.GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs>? _cardContents;
 
         /// <summary>
-        /// Required. The cards in the carousel. A carousel must have at least 2 cards and at most 10.
+        /// The cards in the carousel. A carousel must have at least 2 cards and at most 10.
         /// </summary>
         public InputList<Inputs.GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs> CardContents
         {
@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         }
 
         /// <summary>
-        /// Required. The width of the cards in the carousel.
+        /// The width of the cards in the carousel.
         /// </summary>
-        [Input("cardWidth")]
-        public Input<Pulumi.GoogleNative.Dialogflow.V2Beta1.GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth>? CardWidth { get; set; }
+        [Input("cardWidth", required: true)]
+        public Input<Pulumi.GoogleNative.Dialogflow.V2Beta1.GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth> CardWidth { get; set; } = null!;
 
         public GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardArgs()
         {

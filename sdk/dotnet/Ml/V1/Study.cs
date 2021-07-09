@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Configuration of the study.
+        /// Configuration of the study.
         /// </summary>
         [Output("studyConfig")]
         public Output<Outputs.GoogleCloudMlV1__StudyConfigResponse> StudyConfig { get; private set; } = null!;
@@ -97,10 +97,10 @@ namespace Pulumi.GoogleNative.Ml.V1
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Required. Configuration of the study.
+        /// Configuration of the study.
         /// </summary>
-        [Input("studyConfig")]
-        public Input<Inputs.GoogleCloudMlV1__StudyConfigArgs>? StudyConfig { get; set; }
+        [Input("studyConfig", required: true)]
+        public Input<Inputs.GoogleCloudMlV1__StudyConfigArgs> StudyConfig { get; set; } = null!;
 
         [Input("studyId", required: true)]
         public Input<string> StudyId { get; set; } = null!;

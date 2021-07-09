@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Jobs.V3
         public Output<ImmutableArray<string>> Addresses { get; private set; } = null!;
 
         /// <summary>
-        /// Required. At least one field within ApplicationInfo must be specified. Job application information.
+        /// At least one field within ApplicationInfo must be specified. Job application information.
         /// </summary>
         [Output("applicationInfo")]
         public Output<Outputs.ApplicationInfoResponse> ApplicationInfo { get; private set; } = null!;
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Jobs.V3
         public Output<string> CompanyDisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
+        /// The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
         /// </summary>
         [Output("companyName")]
         public Output<string> CompanyName { get; private set; } = null!;
@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Jobs.V3
         public Output<Outputs.JobDerivedInfoResponse> DerivedInfo { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
+        /// The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
@@ -172,7 +172,7 @@ namespace Pulumi.GoogleNative.Jobs.V3
         public Output<string> Qualifications { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job is not allowed to be created if there is another job with the same [company_name], language_code and requisition_id. The maximum number of allowed characters is 255.
+        /// The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job is not allowed to be created if there is another job with the same [company_name], language_code and requisition_id. The maximum number of allowed characters is 255.
         /// </summary>
         [Output("requisitionId")]
         public Output<string> RequisitionId { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.GoogleNative.Jobs.V3
         public Output<string> Responsibilities { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
+        /// The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
         /// </summary>
         [Output("title")]
         public Output<string> Title { get; private set; } = null!;
@@ -247,16 +247,16 @@ namespace Pulumi.GoogleNative.Jobs.V3
         }
 
         /// <summary>
-        /// Required. At least one field within ApplicationInfo must be specified. Job application information.
+        /// At least one field within ApplicationInfo must be specified. Job application information.
         /// </summary>
-        [Input("applicationInfo")]
-        public Input<Inputs.ApplicationInfoArgs>? ApplicationInfo { get; set; }
+        [Input("applicationInfo", required: true)]
+        public Input<Inputs.ApplicationInfoArgs> ApplicationInfo { get; set; } = null!;
 
         /// <summary>
-        /// Required. The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
+        /// The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
         /// </summary>
-        [Input("companyName")]
-        public Input<string>? CompanyName { get; set; }
+        [Input("companyName", required: true)]
+        public Input<string> CompanyName { get; set; } = null!;
 
         /// <summary>
         /// Optional. Job compensation information.
@@ -295,10 +295,10 @@ namespace Pulumi.GoogleNative.Jobs.V3
         public Input<string>? Department { get; set; }
 
         /// <summary>
-        /// Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
+        /// The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
         /// </summary>
-        [Input("description")]
-        public Input<string>? Description { get; set; }
+        [Input("description", required: true)]
+        public Input<string> Description { get; set; } = null!;
 
         [Input("employmentTypes")]
         private InputList<Pulumi.GoogleNative.Jobs.V3.JobEmploymentTypesItem>? _employmentTypes;
@@ -400,10 +400,10 @@ namespace Pulumi.GoogleNative.Jobs.V3
         public Input<string>? Qualifications { get; set; }
 
         /// <summary>
-        /// Required. The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job is not allowed to be created if there is another job with the same [company_name], language_code and requisition_id. The maximum number of allowed characters is 255.
+        /// The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job is not allowed to be created if there is another job with the same [company_name], language_code and requisition_id. The maximum number of allowed characters is 255.
         /// </summary>
-        [Input("requisitionId")]
-        public Input<string>? RequisitionId { get; set; }
+        [Input("requisitionId", required: true)]
+        public Input<string> RequisitionId { get; set; } = null!;
 
         /// <summary>
         /// Optional. A description of job responsibilities. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
@@ -412,10 +412,10 @@ namespace Pulumi.GoogleNative.Jobs.V3
         public Input<string>? Responsibilities { get; set; }
 
         /// <summary>
-        /// Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
+        /// The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
         /// </summary>
-        [Input("title")]
-        public Input<string>? Title { get; set; }
+        [Input("title", required: true)]
+        public Input<string> Title { get; set; } = null!;
 
         public JobArgs()
         {

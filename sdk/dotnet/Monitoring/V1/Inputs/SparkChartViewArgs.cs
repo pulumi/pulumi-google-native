@@ -22,10 +22,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public Input<string>? MinAlignmentPeriod { get; set; }
 
         /// <summary>
-        /// Required. The type of sparkchart to show in this chartView.
+        /// The type of sparkchart to show in this chartView.
         /// </summary>
-        [Input("sparkChartType")]
-        public Input<Pulumi.GoogleNative.Monitoring.V1.SparkChartViewSparkChartType>? SparkChartType { get; set; }
+        [Input("sparkChartType", required: true)]
+        public Input<Pulumi.GoogleNative.Monitoring.V1.SparkChartViewSparkChartType> SparkChartType { get; set; } = null!;
 
         public SparkChartViewArgs()
         {

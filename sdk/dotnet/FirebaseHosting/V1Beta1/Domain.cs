@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
     public partial class Domain : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. The domain name of the association.
+        /// The domain name of the association.
         /// </summary>
         [Output("domainName")]
         public Output<string> DomainName { get; private set; } = null!;
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         public Output<Outputs.DomainProvisioningResponse> Provisioning { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The site name of the association.
+        /// The site name of the association.
         /// </summary>
         [Output("site")]
         public Output<string> Site { get; private set; } = null!;
@@ -97,10 +97,10 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
     public sealed class DomainArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The domain name of the association.
+        /// The domain name of the association.
         /// </summary>
-        [Input("domainName")]
-        public Input<string>? DomainName { get; set; }
+        [Input("domainName", required: true)]
+        public Input<string> DomainName { get; set; } = null!;
 
         /// <summary>
         /// If set, the domain should redirect with the provided parameters.
@@ -112,10 +112,10 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Required. The site name of the association.
+        /// The site name of the association.
         /// </summary>
-        [Input("site")]
-        public Input<string>? Site { get; set; }
+        [Input("site", required: true)]
+        public Input<string> Site { get; set; } = null!;
 
         [Input("siteId", required: true)]
         public Input<string> SiteId { get; set; } = null!;

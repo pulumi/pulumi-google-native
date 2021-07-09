@@ -22,16 +22,16 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1.Inputs
         public Input<string>? Vm { get; set; }
 
         /// <summary>
-        /// Required. The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+        /// The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
         /// </summary>
-        [Input("vmIp")]
-        public Input<string>? VmIp { get; set; }
+        [Input("vmIp", required: true)]
+        public Input<string> VmIp { get; set; } = null!;
 
         /// <summary>
-        /// Required. The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+        /// The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
         /// </summary>
-        [Input("vmPort")]
-        public Input<int>? VmPort { get; set; }
+        [Input("vmPort", required: true)]
+        public Input<int> VmPort { get; set; } = null!;
 
         /// <summary>
         /// The name of the VPC to peer with the Cloud SQL private network.

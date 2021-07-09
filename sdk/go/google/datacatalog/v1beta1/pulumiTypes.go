@@ -1149,16 +1149,16 @@ func (o GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponsePtrOutput) ViewSpe
 
 // Representation of a column within a schema. Columns could be nested inside other columns.
 type GoogleCloudDatacatalogV1beta1ColumnSchema struct {
-	// Required. Name of the column.
-	Column *string `pulumi:"column"`
+	// Name of the column.
+	Column string `pulumi:"column"`
 	// Optional. Description of the column. Default value is an empty string.
 	Description *string `pulumi:"description"`
 	// Optional. A column's mode indicates whether the values in this column are required, nullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are supported. Default mode is `NULLABLE`.
 	Mode *string `pulumi:"mode"`
 	// Optional. Schema of sub-columns. A column can have zero or more sub-columns.
 	Subcolumns []GoogleCloudDatacatalogV1beta1ColumnSchema `pulumi:"subcolumns"`
-	// Required. Type of the column.
-	Type *string `pulumi:"type"`
+	// Type of the column.
+	Type string `pulumi:"type"`
 }
 
 // GoogleCloudDatacatalogV1beta1ColumnSchemaInput is an input type that accepts GoogleCloudDatacatalogV1beta1ColumnSchemaArgs and GoogleCloudDatacatalogV1beta1ColumnSchemaOutput values.
@@ -1174,16 +1174,16 @@ type GoogleCloudDatacatalogV1beta1ColumnSchemaInput interface {
 
 // Representation of a column within a schema. Columns could be nested inside other columns.
 type GoogleCloudDatacatalogV1beta1ColumnSchemaArgs struct {
-	// Required. Name of the column.
-	Column pulumi.StringPtrInput `pulumi:"column"`
+	// Name of the column.
+	Column pulumi.StringInput `pulumi:"column"`
 	// Optional. Description of the column. Default value is an empty string.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Optional. A column's mode indicates whether the values in this column are required, nullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are supported. Default mode is `NULLABLE`.
 	Mode pulumi.StringPtrInput `pulumi:"mode"`
 	// Optional. Schema of sub-columns. A column can have zero or more sub-columns.
 	Subcolumns GoogleCloudDatacatalogV1beta1ColumnSchemaArrayInput `pulumi:"subcolumns"`
-	// Required. Type of the column.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Type of the column.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (GoogleCloudDatacatalogV1beta1ColumnSchemaArgs) ElementType() reflect.Type {
@@ -1238,9 +1238,9 @@ func (o GoogleCloudDatacatalogV1beta1ColumnSchemaOutput) ToGoogleCloudDatacatalo
 	return o
 }
 
-// Required. Name of the column.
-func (o GoogleCloudDatacatalogV1beta1ColumnSchemaOutput) Column() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1ColumnSchema) *string { return v.Column }).(pulumi.StringPtrOutput)
+// Name of the column.
+func (o GoogleCloudDatacatalogV1beta1ColumnSchemaOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1ColumnSchema) string { return v.Column }).(pulumi.StringOutput)
 }
 
 // Optional. Description of the column. Default value is an empty string.
@@ -1260,9 +1260,9 @@ func (o GoogleCloudDatacatalogV1beta1ColumnSchemaOutput) Subcolumns() GoogleClou
 	}).(GoogleCloudDatacatalogV1beta1ColumnSchemaArrayOutput)
 }
 
-// Required. Type of the column.
-func (o GoogleCloudDatacatalogV1beta1ColumnSchemaOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1ColumnSchema) *string { return v.Type }).(pulumi.StringPtrOutput)
+// Type of the column.
+func (o GoogleCloudDatacatalogV1beta1ColumnSchemaOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1ColumnSchema) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDatacatalogV1beta1ColumnSchemaArrayOutput struct{ *pulumi.OutputState }
@@ -1287,7 +1287,7 @@ func (o GoogleCloudDatacatalogV1beta1ColumnSchemaArrayOutput) Index(i pulumi.Int
 
 // Representation of a column within a schema. Columns could be nested inside other columns.
 type GoogleCloudDatacatalogV1beta1ColumnSchemaResponse struct {
-	// Required. Name of the column.
+	// Name of the column.
 	Column string `pulumi:"column"`
 	// Optional. Description of the column. Default value is an empty string.
 	Description string `pulumi:"description"`
@@ -1295,7 +1295,7 @@ type GoogleCloudDatacatalogV1beta1ColumnSchemaResponse struct {
 	Mode string `pulumi:"mode"`
 	// Optional. Schema of sub-columns. A column can have zero or more sub-columns.
 	Subcolumns []GoogleCloudDatacatalogV1beta1ColumnSchemaResponse `pulumi:"subcolumns"`
-	// Required. Type of the column.
+	// Type of the column.
 	Type string `pulumi:"type"`
 }
 
@@ -1312,7 +1312,7 @@ type GoogleCloudDatacatalogV1beta1ColumnSchemaResponseInput interface {
 
 // Representation of a column within a schema. Columns could be nested inside other columns.
 type GoogleCloudDatacatalogV1beta1ColumnSchemaResponseArgs struct {
-	// Required. Name of the column.
+	// Name of the column.
 	Column pulumi.StringInput `pulumi:"column"`
 	// Optional. Description of the column. Default value is an empty string.
 	Description pulumi.StringInput `pulumi:"description"`
@@ -1320,7 +1320,7 @@ type GoogleCloudDatacatalogV1beta1ColumnSchemaResponseArgs struct {
 	Mode pulumi.StringInput `pulumi:"mode"`
 	// Optional. Schema of sub-columns. A column can have zero or more sub-columns.
 	Subcolumns GoogleCloudDatacatalogV1beta1ColumnSchemaResponseArrayInput `pulumi:"subcolumns"`
-	// Required. Type of the column.
+	// Type of the column.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -1376,7 +1376,7 @@ func (o GoogleCloudDatacatalogV1beta1ColumnSchemaResponseOutput) ToGoogleCloudDa
 	return o
 }
 
-// Required. Name of the column.
+// Name of the column.
 func (o GoogleCloudDatacatalogV1beta1ColumnSchemaResponseOutput) Column() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1ColumnSchemaResponse) string { return v.Column }).(pulumi.StringOutput)
 }
@@ -1398,7 +1398,7 @@ func (o GoogleCloudDatacatalogV1beta1ColumnSchemaResponseOutput) Subcolumns() Go
 	}).(GoogleCloudDatacatalogV1beta1ColumnSchemaResponseArrayOutput)
 }
 
-// Required. Type of the column.
+// Type of the column.
 func (o GoogleCloudDatacatalogV1beta1ColumnSchemaResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1ColumnSchemaResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1425,7 +1425,7 @@ func (o GoogleCloudDatacatalogV1beta1ColumnSchemaResponseArrayOutput) Index(i pu
 
 // Specifications of a single file in Cloud Storage.
 type GoogleCloudDatacatalogV1beta1GcsFileSpecResponse struct {
-	// Required. The full file path. Example: `gs://bucket_name/a/b.txt`.
+	// The full file path. Example: `gs://bucket_name/a/b.txt`.
 	FilePath string `pulumi:"filePath"`
 	// Timestamps about the Cloud Storage file.
 	GcsTimestamps GoogleCloudDatacatalogV1beta1SystemTimestampsResponse `pulumi:"gcsTimestamps"`
@@ -1446,7 +1446,7 @@ type GoogleCloudDatacatalogV1beta1GcsFileSpecResponseInput interface {
 
 // Specifications of a single file in Cloud Storage.
 type GoogleCloudDatacatalogV1beta1GcsFileSpecResponseArgs struct {
-	// Required. The full file path. Example: `gs://bucket_name/a/b.txt`.
+	// The full file path. Example: `gs://bucket_name/a/b.txt`.
 	FilePath pulumi.StringInput `pulumi:"filePath"`
 	// Timestamps about the Cloud Storage file.
 	GcsTimestamps GoogleCloudDatacatalogV1beta1SystemTimestampsResponseInput `pulumi:"gcsTimestamps"`
@@ -1506,7 +1506,7 @@ func (o GoogleCloudDatacatalogV1beta1GcsFileSpecResponseOutput) ToGoogleCloudDat
 	return o
 }
 
-// Required. The full file path. Example: `gs://bucket_name/a/b.txt`.
+// The full file path. Example: `gs://bucket_name/a/b.txt`.
 func (o GoogleCloudDatacatalogV1beta1GcsFileSpecResponseOutput) FilePath() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1GcsFileSpecResponse) string { return v.FilePath }).(pulumi.StringOutput)
 }
@@ -1545,7 +1545,7 @@ func (o GoogleCloudDatacatalogV1beta1GcsFileSpecResponseArrayOutput) Index(i pul
 
 // Describes a Cloud Storage fileset entry.
 type GoogleCloudDatacatalogV1beta1GcsFilesetSpec struct {
-	// Required. Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
+	// Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
 	FilePatterns []string `pulumi:"filePatterns"`
 }
 
@@ -1562,7 +1562,7 @@ type GoogleCloudDatacatalogV1beta1GcsFilesetSpecInput interface {
 
 // Describes a Cloud Storage fileset entry.
 type GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs struct {
-	// Required. Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
+	// Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
 	FilePatterns pulumi.StringArrayInput `pulumi:"filePatterns"`
 }
 
@@ -1644,7 +1644,7 @@ func (o GoogleCloudDatacatalogV1beta1GcsFilesetSpecOutput) ToGoogleCloudDatacata
 	}).(GoogleCloudDatacatalogV1beta1GcsFilesetSpecPtrOutput)
 }
 
-// Required. Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
+// Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
 func (o GoogleCloudDatacatalogV1beta1GcsFilesetSpecOutput) FilePatterns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1GcsFilesetSpec) []string { return v.FilePatterns }).(pulumi.StringArrayOutput)
 }
@@ -1669,7 +1669,7 @@ func (o GoogleCloudDatacatalogV1beta1GcsFilesetSpecPtrOutput) Elem() GoogleCloud
 	}).(GoogleCloudDatacatalogV1beta1GcsFilesetSpecOutput)
 }
 
-// Required. Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
+// Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
 func (o GoogleCloudDatacatalogV1beta1GcsFilesetSpecPtrOutput) FilePatterns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1GcsFilesetSpec) []string {
 		if v == nil {
@@ -1681,7 +1681,7 @@ func (o GoogleCloudDatacatalogV1beta1GcsFilesetSpecPtrOutput) FilePatterns() pul
 
 // Describes a Cloud Storage fileset entry.
 type GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse struct {
-	// Required. Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
+	// Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
 	FilePatterns []string `pulumi:"filePatterns"`
 	// Sample files contained in this fileset, not all files contained in this fileset are represented here.
 	SampleGcsFileSpecs []GoogleCloudDatacatalogV1beta1GcsFileSpecResponse `pulumi:"sampleGcsFileSpecs"`
@@ -1700,7 +1700,7 @@ type GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponseInput interface {
 
 // Describes a Cloud Storage fileset entry.
 type GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponseArgs struct {
-	// Required. Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
+	// Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
 	FilePatterns pulumi.StringArrayInput `pulumi:"filePatterns"`
 	// Sample files contained in this fileset, not all files contained in this fileset are represented here.
 	SampleGcsFileSpecs GoogleCloudDatacatalogV1beta1GcsFileSpecResponseArrayInput `pulumi:"sampleGcsFileSpecs"`
@@ -1784,7 +1784,7 @@ func (o GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponseOutput) ToGoogleCloud
 	}).(GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponsePtrOutput)
 }
 
-// Required. Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
+// Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
 func (o GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponseOutput) FilePatterns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse) []string { return v.FilePatterns }).(pulumi.StringArrayOutput)
 }
@@ -1816,7 +1816,7 @@ func (o GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponsePtrOutput) Elem() Goo
 	}).(GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponseOutput)
 }
 
-// Required. Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
+// Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
 func (o GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponsePtrOutput) FilePatterns() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponse) []string {
 		if v == nil {
@@ -1838,7 +1838,7 @@ func (o GoogleCloudDatacatalogV1beta1GcsFilesetSpecResponsePtrOutput) SampleGcsF
 
 // Represents a schema (e.g. BigQuery, GoogleSQL, Avro schema).
 type GoogleCloudDatacatalogV1beta1Schema struct {
-	// Required. Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
+	// Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
 	Columns []GoogleCloudDatacatalogV1beta1ColumnSchema `pulumi:"columns"`
 }
 
@@ -1855,7 +1855,7 @@ type GoogleCloudDatacatalogV1beta1SchemaInput interface {
 
 // Represents a schema (e.g. BigQuery, GoogleSQL, Avro schema).
 type GoogleCloudDatacatalogV1beta1SchemaArgs struct {
-	// Required. Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
+	// Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
 	Columns GoogleCloudDatacatalogV1beta1ColumnSchemaArrayInput `pulumi:"columns"`
 }
 
@@ -1937,7 +1937,7 @@ func (o GoogleCloudDatacatalogV1beta1SchemaOutput) ToGoogleCloudDatacatalogV1bet
 	}).(GoogleCloudDatacatalogV1beta1SchemaPtrOutput)
 }
 
-// Required. Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
+// Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
 func (o GoogleCloudDatacatalogV1beta1SchemaOutput) Columns() GoogleCloudDatacatalogV1beta1ColumnSchemaArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1Schema) []GoogleCloudDatacatalogV1beta1ColumnSchema {
 		return v.Columns
@@ -1962,7 +1962,7 @@ func (o GoogleCloudDatacatalogV1beta1SchemaPtrOutput) Elem() GoogleCloudDatacata
 	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1Schema) GoogleCloudDatacatalogV1beta1Schema { return *v }).(GoogleCloudDatacatalogV1beta1SchemaOutput)
 }
 
-// Required. Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
+// Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
 func (o GoogleCloudDatacatalogV1beta1SchemaPtrOutput) Columns() GoogleCloudDatacatalogV1beta1ColumnSchemaArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1Schema) []GoogleCloudDatacatalogV1beta1ColumnSchema {
 		if v == nil {
@@ -1974,7 +1974,7 @@ func (o GoogleCloudDatacatalogV1beta1SchemaPtrOutput) Columns() GoogleCloudDatac
 
 // Represents a schema (e.g. BigQuery, GoogleSQL, Avro schema).
 type GoogleCloudDatacatalogV1beta1SchemaResponse struct {
-	// Required. Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
+	// Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
 	Columns []GoogleCloudDatacatalogV1beta1ColumnSchemaResponse `pulumi:"columns"`
 }
 
@@ -1991,7 +1991,7 @@ type GoogleCloudDatacatalogV1beta1SchemaResponseInput interface {
 
 // Represents a schema (e.g. BigQuery, GoogleSQL, Avro schema).
 type GoogleCloudDatacatalogV1beta1SchemaResponseArgs struct {
-	// Required. Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
+	// Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
 	Columns GoogleCloudDatacatalogV1beta1ColumnSchemaResponseArrayInput `pulumi:"columns"`
 }
 
@@ -2073,7 +2073,7 @@ func (o GoogleCloudDatacatalogV1beta1SchemaResponseOutput) ToGoogleCloudDatacata
 	}).(GoogleCloudDatacatalogV1beta1SchemaResponsePtrOutput)
 }
 
-// Required. Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
+// Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
 func (o GoogleCloudDatacatalogV1beta1SchemaResponseOutput) Columns() GoogleCloudDatacatalogV1beta1ColumnSchemaResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1SchemaResponse) []GoogleCloudDatacatalogV1beta1ColumnSchemaResponse {
 		return v.Columns
@@ -2100,7 +2100,7 @@ func (o GoogleCloudDatacatalogV1beta1SchemaResponsePtrOutput) Elem() GoogleCloud
 	}).(GoogleCloudDatacatalogV1beta1SchemaResponseOutput)
 }
 
-// Required. Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
+// Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
 func (o GoogleCloudDatacatalogV1beta1SchemaResponsePtrOutput) Columns() GoogleCloudDatacatalogV1beta1ColumnSchemaResponseArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1SchemaResponse) []GoogleCloudDatacatalogV1beta1ColumnSchemaResponse {
 		if v == nil {

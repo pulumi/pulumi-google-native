@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudMlV1__ManualScalingResponse ManualScaling;
         /// <summary>
-        /// Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
+        /// The name specified for the version when it was created. The version name must be unique within the model it is created in.
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
         /// </summary>
         public readonly string PredictionClass;
         /// <summary>
-        /// Required. The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
+        /// The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
         /// </summary>
         public readonly string PythonVersion;
         /// <summary>
@@ -106,7 +106,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudMlV1__RouteMapResponse Routes;
         /// <summary>
-        /// Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
+        /// The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
         /// </summary>
         public readonly string RuntimeVersion;
         /// <summary>

@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1
         /// </summary>
         public readonly Outputs.GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse AllUpdatesRule;
         /// <summary>
-        /// Required. Budgeted amount.
+        /// Budgeted amount.
         /// </summary>
         public readonly Outputs.GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse Amount;
         /// <summary>

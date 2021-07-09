@@ -44,7 +44,7 @@ class GetConversationResult:
     @pulumi.getter(name="conversationProfile")
     def conversation_profile(self) -> str:
         """
-        Required. The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
+        The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
         """
         return pulumi.get(self, "conversation_profile")
 

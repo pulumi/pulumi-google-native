@@ -40,6 +40,9 @@ func NewTable(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	if args.TableId == nil {
+		return nil, errors.New("invalid value for required argument 'TableId'")
+	}
 	var resource Table
 	err := ctx.RegisterResource("google-native:bigtableadmin/v2:Table", name, args, &resource, opts...)
 	if err != nil {
@@ -102,8 +105,8 @@ type tableArgs struct {
 	// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
-	// Required. The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
-	TableId *string `pulumi:"tableId"`
+	// The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
+	TableId string `pulumi:"tableId"`
 }
 
 // The set of arguments for constructing a Table resource.
@@ -118,8 +121,8 @@ type TableArgs struct {
 	// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
-	// Required. The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
-	TableId pulumi.StringPtrInput
+	// The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
+	TableId pulumi.StringInput
 }
 
 func (TableArgs) ElementType() reflect.Type {

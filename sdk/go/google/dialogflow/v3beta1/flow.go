@@ -17,7 +17,7 @@ type Flow struct {
 
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Required. The human-readable name of the flow.
+	// The human-readable name of the flow.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	EventHandlers GoogleCloudDialogflowCxV3beta1EventHandlerResponseArrayOutput `pulumi:"eventHandlers"`
@@ -40,6 +40,9 @@ func NewFlow(ctx *pulumi.Context,
 
 	if args.AgentId == nil {
 		return nil, errors.New("invalid value for required argument 'AgentId'")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
@@ -71,7 +74,7 @@ func GetFlow(ctx *pulumi.Context,
 type flowState struct {
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
-	// Required. The human-readable name of the flow.
+	// The human-readable name of the flow.
 	DisplayName *string `pulumi:"displayName"`
 	// A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	EventHandlers []GoogleCloudDialogflowCxV3beta1EventHandlerResponse `pulumi:"eventHandlers"`
@@ -88,7 +91,7 @@ type flowState struct {
 type FlowState struct {
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrInput
-	// Required. The human-readable name of the flow.
+	// The human-readable name of the flow.
 	DisplayName pulumi.StringPtrInput
 	// A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	EventHandlers GoogleCloudDialogflowCxV3beta1EventHandlerResponseArrayInput
@@ -110,8 +113,8 @@ type flowArgs struct {
 	AgentId string `pulumi:"agentId"`
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
-	// Required. The human-readable name of the flow.
-	DisplayName *string `pulumi:"displayName"`
+	// The human-readable name of the flow.
+	DisplayName string `pulumi:"displayName"`
 	// A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	EventHandlers []GoogleCloudDialogflowCxV3beta1EventHandler `pulumi:"eventHandlers"`
 	LanguageCode  *string                                      `pulumi:"languageCode"`
@@ -132,8 +135,8 @@ type FlowArgs struct {
 	AgentId pulumi.StringInput
 	// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrInput
-	// Required. The human-readable name of the flow.
-	DisplayName pulumi.StringPtrInput
+	// The human-readable name of the flow.
+	DisplayName pulumi.StringInput
 	// A flow's event handlers serve two purposes: * They are responsible for handling events (e.g. no match, webhook errors) in the flow. * They are inherited by every page's event handlers, which can be used to handle common events regardless of the current page. Event handlers defined in the page have higher priority than those defined in the flow. Unlike transition_routes, these handlers are evaluated on a first-match basis. The first one that matches the event get executed, with the rest being ignored.
 	EventHandlers GoogleCloudDialogflowCxV3beta1EventHandlerArrayInput
 	LanguageCode  pulumi.StringPtrInput

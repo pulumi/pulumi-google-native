@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Inputs
     public sealed class AudioChannelInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The zero-based index of the channel in the input file.
+        /// The zero-based index of the channel in the input file.
         /// </summary>
-        [Input("channel")]
-        public Input<int>? Channel { get; set; }
+        [Input("channel", required: true)]
+        public Input<int> Channel { get; set; } = null!;
 
         /// <summary>
         /// Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
@@ -28,16 +28,16 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Inputs
         public Input<double>? GainDb { get; set; }
 
         /// <summary>
-        /// Required. The `Input.key` that identifies the input file.
+        /// The `Input.key` that identifies the input file.
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        [Input("key", required: true)]
+        public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// Required. The zero-based index of the track in the input file.
+        /// The zero-based index of the track in the input file.
         /// </summary>
-        [Input("track")]
-        public Input<int>? Track { get; set; }
+        [Input("track", required: true)]
+        public Input<int> Track { get; set; } = null!;
 
         public AudioChannelInputArgs()
         {

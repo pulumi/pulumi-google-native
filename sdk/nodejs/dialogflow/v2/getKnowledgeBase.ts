@@ -31,7 +31,7 @@ export interface GetKnowledgeBaseArgs {
 
 export interface GetKnowledgeBaseResult {
     /**
-     * Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
+     * The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
      */
     readonly displayName: string;
     /**

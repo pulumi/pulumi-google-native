@@ -22,10 +22,10 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Inputs
         public Input<string>? EndTimeOffset { get; set; }
 
         /// <summary>
-        /// Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
+        /// Type of fade animation: `FADE_IN` or `FADE_OUT`.
         /// </summary>
-        [Input("fadeType")]
-        public Input<Pulumi.GoogleNative.Transcoder.V1Beta1.AnimationFadeFadeType>? FadeType { get; set; }
+        [Input("fadeType", required: true)]
+        public Input<Pulumi.GoogleNative.Transcoder.V1Beta1.AnimationFadeFadeType> FadeType { get; set; } = null!;
 
         /// <summary>
         /// The time to start the fade animation, in seconds. Default: 0

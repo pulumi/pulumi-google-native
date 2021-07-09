@@ -63,17 +63,28 @@ class GoogleCloudBillingBudgetsV1BudgetAmountArgs:
 @pulumi.input_type
 class GoogleCloudBillingBudgetsV1CustomPeriodArgs:
     def __init__(__self__, *,
-                 end_date: Optional[pulumi.Input['GoogleTypeDateArgs']] = None,
-                 start_date: Optional[pulumi.Input['GoogleTypeDateArgs']] = None):
+                 start_date: pulumi.Input['GoogleTypeDateArgs'],
+                 end_date: Optional[pulumi.Input['GoogleTypeDateArgs']] = None):
         """
         All date times begin at 12 AM US and Canadian Pacific Time (UTC-8).
+        :param pulumi.Input['GoogleTypeDateArgs'] start_date: The start date must be after January 1, 2017.
         :param pulumi.Input['GoogleTypeDateArgs'] end_date: Optional. The end date of the time period. Budgets with elapsed end date won't be processed. If unset, specifies to track all usage incurred since the start_date.
-        :param pulumi.Input['GoogleTypeDateArgs'] start_date: Required. The start date must be after January 1, 2017.
         """
+        pulumi.set(__self__, "start_date", start_date)
         if end_date is not None:
             pulumi.set(__self__, "end_date", end_date)
-        if start_date is not None:
-            pulumi.set(__self__, "start_date", start_date)
+
+    @property
+    @pulumi.getter(name="startDate")
+    def start_date(self) -> pulumi.Input['GoogleTypeDateArgs']:
+        """
+        The start date must be after January 1, 2017.
+        """
+        return pulumi.get(self, "start_date")
+
+    @start_date.setter
+    def start_date(self, value: pulumi.Input['GoogleTypeDateArgs']):
+        pulumi.set(self, "start_date", value)
 
     @property
     @pulumi.getter(name="endDate")
@@ -86,18 +97,6 @@ class GoogleCloudBillingBudgetsV1CustomPeriodArgs:
     @end_date.setter
     def end_date(self, value: Optional[pulumi.Input['GoogleTypeDateArgs']]):
         pulumi.set(self, "end_date", value)
-
-    @property
-    @pulumi.getter(name="startDate")
-    def start_date(self) -> Optional[pulumi.Input['GoogleTypeDateArgs']]:
-        """
-        Required. The start date must be after January 1, 2017.
-        """
-        return pulumi.get(self, "start_date")
-
-    @start_date.setter
-    def start_date(self, value: Optional[pulumi.Input['GoogleTypeDateArgs']]):
-        pulumi.set(self, "start_date", value)
 
 
 @pulumi.input_type
@@ -320,17 +319,28 @@ class GoogleCloudBillingBudgetsV1NotificationsRuleArgs:
 @pulumi.input_type
 class GoogleCloudBillingBudgetsV1ThresholdRuleArgs:
     def __init__(__self__, *,
-                 spend_basis: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis']] = None,
-                 threshold_percent: Optional[pulumi.Input[float]] = None):
+                 threshold_percent: pulumi.Input[float],
+                 spend_basis: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis']] = None):
         """
         ThresholdRule contains a definition of a threshold which triggers an alert (a notification of a threshold being crossed) to be sent when spend goes above the specified amount. Alerts are automatically e-mailed to users with the Billing Account Administrator role or the Billing Account User role. The thresholds here have no effect on notifications sent to anything configured under `Budget.all_updates_rule`.
+        :param pulumi.Input[float] threshold_percent: Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
         :param pulumi.Input['GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis'] spend_basis: Optional. The type of basis used to determine if spend has passed the threshold. Behavior defaults to CURRENT_SPEND if not set.
-        :param pulumi.Input[float] threshold_percent: Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
         """
+        pulumi.set(__self__, "threshold_percent", threshold_percent)
         if spend_basis is not None:
             pulumi.set(__self__, "spend_basis", spend_basis)
-        if threshold_percent is not None:
-            pulumi.set(__self__, "threshold_percent", threshold_percent)
+
+    @property
+    @pulumi.getter(name="thresholdPercent")
+    def threshold_percent(self) -> pulumi.Input[float]:
+        """
+        Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
+        """
+        return pulumi.get(self, "threshold_percent")
+
+    @threshold_percent.setter
+    def threshold_percent(self, value: pulumi.Input[float]):
+        pulumi.set(self, "threshold_percent", value)
 
     @property
     @pulumi.getter(name="spendBasis")
@@ -343,18 +353,6 @@ class GoogleCloudBillingBudgetsV1ThresholdRuleArgs:
     @spend_basis.setter
     def spend_basis(self, value: Optional[pulumi.Input['GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis']]):
         pulumi.set(self, "spend_basis", value)
-
-    @property
-    @pulumi.getter(name="thresholdPercent")
-    def threshold_percent(self) -> Optional[pulumi.Input[float]]:
-        """
-        Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
-        """
-        return pulumi.get(self, "threshold_percent")
-
-    @threshold_percent.setter
-    def threshold_percent(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "threshold_percent", value)
 
 
 @pulumi.input_type

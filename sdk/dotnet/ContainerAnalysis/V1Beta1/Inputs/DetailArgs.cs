@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     public sealed class DetailArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+        /// The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
         /// </summary>
-        [Input("cpeUri")]
-        public Input<string>? CpeUri { get; set; }
+        [Input("cpeUri", required: true)]
+        public Input<string> CpeUri { get; set; } = null!;
 
         /// <summary>
         /// A vendor-specific description of this note.
@@ -52,10 +52,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public Input<Inputs.VersionArgs>? MinAffectedVersion { get; set; }
 
         /// <summary>
-        /// Required. The name of the package where the vulnerability was found.
+        /// The name of the package where the vulnerability was found.
         /// </summary>
-        [Input("package")]
-        public Input<string>? Package { get; set; }
+        [Input("package", required: true)]
+        public Input<string> Package { get; set; } = null!;
 
         /// <summary>
         /// The type of package; whether native or non native(ruby gems, node.js packages etc).

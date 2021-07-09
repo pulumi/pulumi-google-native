@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     public sealed class GetSecuritySettingResult
     {
         /// <summary>
-        /// Required. The human-readable name of the security settings, unique within the location.
+        /// The human-readable name of the security settings, unique within the location.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
@@ -48,7 +48,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         public readonly string InspectTemplate;
         /// <summary>
-        /// Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
+        /// Resource name of the settings. Format: `projects//locations//securitySettings/`.
         /// </summary>
         public readonly string Name;
         /// <summary>

@@ -25,11 +25,11 @@ type ImportJob struct {
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// The time this ImportJob's key material was generated.
 	GenerateTime pulumi.StringOutput `pulumi:"generateTime"`
-	// Required. Immutable. The wrapping method to be used for incoming key material.
+	// Immutable. The wrapping method to be used for incoming key material.
 	ImportMethod pulumi.StringOutput `pulumi:"importMethod"`
 	// The resource name for this ImportJob in the format `projects/*/locations/*/keyRings/*/importJobs/*`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
+	// Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
 	ProtectionLevel pulumi.StringOutput `pulumi:"protectionLevel"`
 	// The public key with which to wrap key material prior to import. Only returned if state is ACTIVE.
 	PublicKey WrappingPublicKeyResponseOutput `pulumi:"publicKey"`
@@ -88,11 +88,11 @@ type importJobState struct {
 	ExpireTime *string `pulumi:"expireTime"`
 	// The time this ImportJob's key material was generated.
 	GenerateTime *string `pulumi:"generateTime"`
-	// Required. Immutable. The wrapping method to be used for incoming key material.
+	// Immutable. The wrapping method to be used for incoming key material.
 	ImportMethod *string `pulumi:"importMethod"`
 	// The resource name for this ImportJob in the format `projects/*/locations/*/keyRings/*/importJobs/*`.
 	Name *string `pulumi:"name"`
-	// Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
+	// Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
 	// The public key with which to wrap key material prior to import. Only returned if state is ACTIVE.
 	PublicKey *WrappingPublicKeyResponse `pulumi:"publicKey"`
@@ -111,11 +111,11 @@ type ImportJobState struct {
 	ExpireTime pulumi.StringPtrInput
 	// The time this ImportJob's key material was generated.
 	GenerateTime pulumi.StringPtrInput
-	// Required. Immutable. The wrapping method to be used for incoming key material.
+	// Immutable. The wrapping method to be used for incoming key material.
 	ImportMethod pulumi.StringPtrInput
 	// The resource name for this ImportJob in the format `projects/*/locations/*/keyRings/*/importJobs/*`.
 	Name pulumi.StringPtrInput
-	// Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
+	// Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
 	ProtectionLevel pulumi.StringPtrInput
 	// The public key with which to wrap key material prior to import. Only returned if state is ACTIVE.
 	PublicKey WrappingPublicKeyResponsePtrInput
@@ -129,25 +129,25 @@ func (ImportJobState) ElementType() reflect.Type {
 
 type importJobArgs struct {
 	ImportJobId string `pulumi:"importJobId"`
-	// Required. Immutable. The wrapping method to be used for incoming key material.
-	ImportMethod *string `pulumi:"importMethod"`
-	KeyRingId    string  `pulumi:"keyRingId"`
-	Location     string  `pulumi:"location"`
-	Project      string  `pulumi:"project"`
-	// Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
-	ProtectionLevel *string `pulumi:"protectionLevel"`
+	// Immutable. The wrapping method to be used for incoming key material.
+	ImportMethod string `pulumi:"importMethod"`
+	KeyRingId    string `pulumi:"keyRingId"`
+	Location     string `pulumi:"location"`
+	Project      string `pulumi:"project"`
+	// Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
+	ProtectionLevel string `pulumi:"protectionLevel"`
 }
 
 // The set of arguments for constructing a ImportJob resource.
 type ImportJobArgs struct {
 	ImportJobId pulumi.StringInput
-	// Required. Immutable. The wrapping method to be used for incoming key material.
-	ImportMethod *ImportJobImportMethod
+	// Immutable. The wrapping method to be used for incoming key material.
+	ImportMethod ImportJobImportMethod
 	KeyRingId    pulumi.StringInput
 	Location     pulumi.StringInput
 	Project      pulumi.StringInput
-	// Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
-	ProtectionLevel *ImportJobProtectionLevel
+	// Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
+	ProtectionLevel ImportJobProtectionLevel
 }
 
 func (ImportJobArgs) ElementType() reflect.Type {

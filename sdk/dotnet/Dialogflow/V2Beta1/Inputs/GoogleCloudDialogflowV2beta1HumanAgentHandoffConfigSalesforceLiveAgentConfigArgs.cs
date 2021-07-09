@@ -16,28 +16,28 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     public sealed class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Live Agent chat button ID.
+        /// Live Agent chat button ID.
         /// </summary>
-        [Input("buttonId")]
-        public Input<string>? ButtonId { get; set; }
+        [Input("buttonId", required: true)]
+        public Input<string> ButtonId { get; set; } = null!;
 
         /// <summary>
-        /// Required. Live Agent deployment ID.
+        /// Live Agent deployment ID.
         /// </summary>
-        [Input("deploymentId")]
-        public Input<string>? DeploymentId { get; set; }
+        [Input("deploymentId", required: true)]
+        public Input<string> DeploymentId { get; set; } = null!;
 
         /// <summary>
-        /// Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
+        /// Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
         /// </summary>
-        [Input("endpointDomain")]
-        public Input<string>? EndpointDomain { get; set; }
+        [Input("endpointDomain", required: true)]
+        public Input<string> EndpointDomain { get; set; } = null!;
 
         /// <summary>
-        /// Required. The organization ID of the Salesforce account.
+        /// The organization ID of the Salesforce account.
         /// </summary>
-        [Input("organizationId")]
-        public Input<string>? OrganizationId { get; set; }
+        [Input("organizationId", required: true)]
+        public Input<string> OrganizationId { get; set; } = null!;
 
         public GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs()
         {

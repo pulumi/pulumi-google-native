@@ -22,10 +22,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public Input<string>? Audio { get; set; }
 
         /// <summary>
-        /// Required. Instructs the speech recognizer how to process the speech audio.
+        /// Instructs the speech recognizer how to process the speech audio.
         /// </summary>
-        [Input("config")]
-        public Input<Inputs.GoogleCloudDialogflowCxV3InputAudioConfigArgs>? Config { get; set; }
+        [Input("config", required: true)]
+        public Input<Inputs.GoogleCloudDialogflowCxV3InputAudioConfigArgs> Config { get; set; } = null!;
 
         public GoogleCloudDialogflowCxV3AudioInputArgs()
         {

@@ -38,7 +38,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly Outputs.GoogleCloudApigeeV1AddonsConfigResponse AddonsConfig;
         /// <summary>
-        /// Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        /// Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         /// </summary>
         public readonly string AnalyticsRegion;
         /// <summary>
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string RuntimeDatabaseEncryptionKeyName;
         /// <summary>
-        /// Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
+        /// Runtime type of the Apigee organization based on the Apigee subscription purchased.
         /// </summary>
         public readonly string RuntimeType;
         /// <summary>

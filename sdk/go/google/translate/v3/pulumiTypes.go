@@ -12,8 +12,8 @@ import (
 
 // The Google Cloud Storage location for the input content.
 type GcsSource struct {
-	// Required. Source data URI. For example, `gs://my_bucket/my_object`.
-	InputUri *string `pulumi:"inputUri"`
+	// Source data URI. For example, `gs://my_bucket/my_object`.
+	InputUri string `pulumi:"inputUri"`
 }
 
 // GcsSourceInput is an input type that accepts GcsSourceArgs and GcsSourceOutput values.
@@ -29,8 +29,8 @@ type GcsSourceInput interface {
 
 // The Google Cloud Storage location for the input content.
 type GcsSourceArgs struct {
-	// Required. Source data URI. For example, `gs://my_bucket/my_object`.
-	InputUri pulumi.StringPtrInput `pulumi:"inputUri"`
+	// Source data URI. For example, `gs://my_bucket/my_object`.
+	InputUri pulumi.StringInput `pulumi:"inputUri"`
 }
 
 func (GcsSourceArgs) ElementType() reflect.Type {
@@ -111,9 +111,9 @@ func (o GcsSourceOutput) ToGcsSourcePtrOutputWithContext(ctx context.Context) Gc
 	}).(GcsSourcePtrOutput)
 }
 
-// Required. Source data URI. For example, `gs://my_bucket/my_object`.
-func (o GcsSourceOutput) InputUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GcsSource) *string { return v.InputUri }).(pulumi.StringPtrOutput)
+// Source data URI. For example, `gs://my_bucket/my_object`.
+func (o GcsSourceOutput) InputUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GcsSource) string { return v.InputUri }).(pulumi.StringOutput)
 }
 
 type GcsSourcePtrOutput struct{ *pulumi.OutputState }
@@ -134,19 +134,19 @@ func (o GcsSourcePtrOutput) Elem() GcsSourceOutput {
 	return o.ApplyT(func(v *GcsSource) GcsSource { return *v }).(GcsSourceOutput)
 }
 
-// Required. Source data URI. For example, `gs://my_bucket/my_object`.
+// Source data URI. For example, `gs://my_bucket/my_object`.
 func (o GcsSourcePtrOutput) InputUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GcsSource) *string {
 		if v == nil {
 			return nil
 		}
-		return v.InputUri
+		return &v.InputUri
 	}).(pulumi.StringPtrOutput)
 }
 
 // The Google Cloud Storage location for the input content.
 type GcsSourceResponse struct {
-	// Required. Source data URI. For example, `gs://my_bucket/my_object`.
+	// Source data URI. For example, `gs://my_bucket/my_object`.
 	InputUri string `pulumi:"inputUri"`
 }
 
@@ -163,7 +163,7 @@ type GcsSourceResponseInput interface {
 
 // The Google Cloud Storage location for the input content.
 type GcsSourceResponseArgs struct {
-	// Required. Source data URI. For example, `gs://my_bucket/my_object`.
+	// Source data URI. For example, `gs://my_bucket/my_object`.
 	InputUri pulumi.StringInput `pulumi:"inputUri"`
 }
 
@@ -245,7 +245,7 @@ func (o GcsSourceResponseOutput) ToGcsSourceResponsePtrOutputWithContext(ctx con
 	}).(GcsSourceResponsePtrOutput)
 }
 
-// Required. Source data URI. For example, `gs://my_bucket/my_object`.
+// Source data URI. For example, `gs://my_bucket/my_object`.
 func (o GcsSourceResponseOutput) InputUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GcsSourceResponse) string { return v.InputUri }).(pulumi.StringOutput)
 }
@@ -268,7 +268,7 @@ func (o GcsSourceResponsePtrOutput) Elem() GcsSourceResponseOutput {
 	return o.ApplyT(func(v *GcsSourceResponse) GcsSourceResponse { return *v }).(GcsSourceResponseOutput)
 }
 
-// Required. Source data URI. For example, `gs://my_bucket/my_object`.
+// Source data URI. For example, `gs://my_bucket/my_object`.
 func (o GcsSourceResponsePtrOutput) InputUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GcsSourceResponse) *string {
 		if v == nil {
@@ -280,8 +280,8 @@ func (o GcsSourceResponsePtrOutput) InputUri() pulumi.StringPtrOutput {
 
 // Input configuration for glossaries.
 type GlossaryInputConfig struct {
-	// Required. Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
-	GcsSource *GcsSource `pulumi:"gcsSource"`
+	// Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
+	GcsSource GcsSource `pulumi:"gcsSource"`
 }
 
 // GlossaryInputConfigInput is an input type that accepts GlossaryInputConfigArgs and GlossaryInputConfigOutput values.
@@ -297,8 +297,8 @@ type GlossaryInputConfigInput interface {
 
 // Input configuration for glossaries.
 type GlossaryInputConfigArgs struct {
-	// Required. Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
-	GcsSource GcsSourcePtrInput `pulumi:"gcsSource"`
+	// Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
+	GcsSource GcsSourceInput `pulumi:"gcsSource"`
 }
 
 func (GlossaryInputConfigArgs) ElementType() reflect.Type {
@@ -379,9 +379,9 @@ func (o GlossaryInputConfigOutput) ToGlossaryInputConfigPtrOutputWithContext(ctx
 	}).(GlossaryInputConfigPtrOutput)
 }
 
-// Required. Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
-func (o GlossaryInputConfigOutput) GcsSource() GcsSourcePtrOutput {
-	return o.ApplyT(func(v GlossaryInputConfig) *GcsSource { return v.GcsSource }).(GcsSourcePtrOutput)
+// Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
+func (o GlossaryInputConfigOutput) GcsSource() GcsSourceOutput {
+	return o.ApplyT(func(v GlossaryInputConfig) GcsSource { return v.GcsSource }).(GcsSourceOutput)
 }
 
 type GlossaryInputConfigPtrOutput struct{ *pulumi.OutputState }
@@ -402,19 +402,19 @@ func (o GlossaryInputConfigPtrOutput) Elem() GlossaryInputConfigOutput {
 	return o.ApplyT(func(v *GlossaryInputConfig) GlossaryInputConfig { return *v }).(GlossaryInputConfigOutput)
 }
 
-// Required. Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
+// Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
 func (o GlossaryInputConfigPtrOutput) GcsSource() GcsSourcePtrOutput {
 	return o.ApplyT(func(v *GlossaryInputConfig) *GcsSource {
 		if v == nil {
 			return nil
 		}
-		return v.GcsSource
+		return &v.GcsSource
 	}).(GcsSourcePtrOutput)
 }
 
 // Input configuration for glossaries.
 type GlossaryInputConfigResponse struct {
-	// Required. Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
+	// Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
 	GcsSource GcsSourceResponse `pulumi:"gcsSource"`
 }
 
@@ -431,7 +431,7 @@ type GlossaryInputConfigResponseInput interface {
 
 // Input configuration for glossaries.
 type GlossaryInputConfigResponseArgs struct {
-	// Required. Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
+	// Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
 	GcsSource GcsSourceResponseInput `pulumi:"gcsSource"`
 }
 
@@ -513,7 +513,7 @@ func (o GlossaryInputConfigResponseOutput) ToGlossaryInputConfigResponsePtrOutpu
 	}).(GlossaryInputConfigResponsePtrOutput)
 }
 
-// Required. Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
+// Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
 func (o GlossaryInputConfigResponseOutput) GcsSource() GcsSourceResponseOutput {
 	return o.ApplyT(func(v GlossaryInputConfigResponse) GcsSourceResponse { return v.GcsSource }).(GcsSourceResponseOutput)
 }
@@ -536,7 +536,7 @@ func (o GlossaryInputConfigResponsePtrOutput) Elem() GlossaryInputConfigResponse
 	return o.ApplyT(func(v *GlossaryInputConfigResponse) GlossaryInputConfigResponse { return *v }).(GlossaryInputConfigResponseOutput)
 }
 
-// Required. Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
+// Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
 func (o GlossaryInputConfigResponsePtrOutput) GcsSource() GcsSourceResponsePtrOutput {
 	return o.ApplyT(func(v *GlossaryInputConfigResponse) *GcsSourceResponse {
 		if v == nil {
@@ -548,10 +548,10 @@ func (o GlossaryInputConfigResponsePtrOutput) GcsSource() GcsSourceResponsePtrOu
 
 // Used with unidirectional glossaries.
 type LanguageCodePair struct {
-	// Required. The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
-	SourceLanguageCode *string `pulumi:"sourceLanguageCode"`
-	// Required. The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
-	TargetLanguageCode *string `pulumi:"targetLanguageCode"`
+	// The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+	SourceLanguageCode string `pulumi:"sourceLanguageCode"`
+	// The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+	TargetLanguageCode string `pulumi:"targetLanguageCode"`
 }
 
 // LanguageCodePairInput is an input type that accepts LanguageCodePairArgs and LanguageCodePairOutput values.
@@ -567,10 +567,10 @@ type LanguageCodePairInput interface {
 
 // Used with unidirectional glossaries.
 type LanguageCodePairArgs struct {
-	// Required. The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
-	SourceLanguageCode pulumi.StringPtrInput `pulumi:"sourceLanguageCode"`
-	// Required. The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
-	TargetLanguageCode pulumi.StringPtrInput `pulumi:"targetLanguageCode"`
+	// The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+	SourceLanguageCode pulumi.StringInput `pulumi:"sourceLanguageCode"`
+	// The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+	TargetLanguageCode pulumi.StringInput `pulumi:"targetLanguageCode"`
 }
 
 func (LanguageCodePairArgs) ElementType() reflect.Type {
@@ -651,14 +651,14 @@ func (o LanguageCodePairOutput) ToLanguageCodePairPtrOutputWithContext(ctx conte
 	}).(LanguageCodePairPtrOutput)
 }
 
-// Required. The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
-func (o LanguageCodePairOutput) SourceLanguageCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LanguageCodePair) *string { return v.SourceLanguageCode }).(pulumi.StringPtrOutput)
+// The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+func (o LanguageCodePairOutput) SourceLanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v LanguageCodePair) string { return v.SourceLanguageCode }).(pulumi.StringOutput)
 }
 
-// Required. The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
-func (o LanguageCodePairOutput) TargetLanguageCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LanguageCodePair) *string { return v.TargetLanguageCode }).(pulumi.StringPtrOutput)
+// The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+func (o LanguageCodePairOutput) TargetLanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v LanguageCodePair) string { return v.TargetLanguageCode }).(pulumi.StringOutput)
 }
 
 type LanguageCodePairPtrOutput struct{ *pulumi.OutputState }
@@ -679,31 +679,31 @@ func (o LanguageCodePairPtrOutput) Elem() LanguageCodePairOutput {
 	return o.ApplyT(func(v *LanguageCodePair) LanguageCodePair { return *v }).(LanguageCodePairOutput)
 }
 
-// Required. The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+// The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
 func (o LanguageCodePairPtrOutput) SourceLanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LanguageCodePair) *string {
 		if v == nil {
 			return nil
 		}
-		return v.SourceLanguageCode
+		return &v.SourceLanguageCode
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+// The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
 func (o LanguageCodePairPtrOutput) TargetLanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LanguageCodePair) *string {
 		if v == nil {
 			return nil
 		}
-		return v.TargetLanguageCode
+		return &v.TargetLanguageCode
 	}).(pulumi.StringPtrOutput)
 }
 
 // Used with unidirectional glossaries.
 type LanguageCodePairResponse struct {
-	// Required. The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+	// The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
 	SourceLanguageCode string `pulumi:"sourceLanguageCode"`
-	// Required. The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+	// The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
 	TargetLanguageCode string `pulumi:"targetLanguageCode"`
 }
 
@@ -720,9 +720,9 @@ type LanguageCodePairResponseInput interface {
 
 // Used with unidirectional glossaries.
 type LanguageCodePairResponseArgs struct {
-	// Required. The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+	// The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
 	SourceLanguageCode pulumi.StringInput `pulumi:"sourceLanguageCode"`
-	// Required. The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+	// The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
 	TargetLanguageCode pulumi.StringInput `pulumi:"targetLanguageCode"`
 }
 
@@ -804,12 +804,12 @@ func (o LanguageCodePairResponseOutput) ToLanguageCodePairResponsePtrOutputWithC
 	}).(LanguageCodePairResponsePtrOutput)
 }
 
-// Required. The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+// The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
 func (o LanguageCodePairResponseOutput) SourceLanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LanguageCodePairResponse) string { return v.SourceLanguageCode }).(pulumi.StringOutput)
 }
 
-// Required. The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+// The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
 func (o LanguageCodePairResponseOutput) TargetLanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LanguageCodePairResponse) string { return v.TargetLanguageCode }).(pulumi.StringOutput)
 }
@@ -832,7 +832,7 @@ func (o LanguageCodePairResponsePtrOutput) Elem() LanguageCodePairResponseOutput
 	return o.ApplyT(func(v *LanguageCodePairResponse) LanguageCodePairResponse { return *v }).(LanguageCodePairResponseOutput)
 }
 
-// Required. The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+// The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
 func (o LanguageCodePairResponsePtrOutput) SourceLanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LanguageCodePairResponse) *string {
 		if v == nil {
@@ -842,7 +842,7 @@ func (o LanguageCodePairResponsePtrOutput) SourceLanguageCode() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+// The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
 func (o LanguageCodePairResponsePtrOutput) TargetLanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LanguageCodePairResponse) *string {
 		if v == nil {

@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// </summary>
     public sealed class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs : Pulumi.ResourceArgs
     {
-        [Input("documents")]
+        [Input("documents", required: true)]
         private InputList<string>? _documents;
 
         /// <summary>
-        /// Required. Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
+        /// Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
         /// </summary>
         public InputList<string> Documents
         {

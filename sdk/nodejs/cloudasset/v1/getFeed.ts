@@ -47,11 +47,11 @@ export interface GetFeedResult {
      */
     readonly contentType: string;
     /**
-     * Required. Feed output configuration defining where the asset updates are published to.
+     * Feed output configuration defining where the asset updates are published to.
      */
     readonly feedOutputConfig: outputs.cloudasset.v1.FeedOutputConfigResponse;
     /**
-     * Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
+     * The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
      */
     readonly name: string;
 }

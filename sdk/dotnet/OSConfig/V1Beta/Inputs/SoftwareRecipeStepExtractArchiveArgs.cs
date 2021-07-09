@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     public sealed class SoftwareRecipeStepExtractArchiveArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The id of the relevant artifact in the recipe.
+        /// The id of the relevant artifact in the recipe.
         /// </summary>
-        [Input("artifactId")]
-        public Input<string>? ArtifactId { get; set; }
+        [Input("artifactId", required: true)]
+        public Input<string> ArtifactId { get; set; } = null!;
 
         /// <summary>
         /// Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows.
@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public Input<string>? Destination { get; set; }
 
         /// <summary>
-        /// Required. The type of the archive to extract.
+        /// The type of the archive to extract.
         /// </summary>
-        [Input("type")]
-        public Input<Pulumi.GoogleNative.OSConfig.V1Beta.SoftwareRecipeStepExtractArchiveType>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<Pulumi.GoogleNative.OSConfig.V1Beta.SoftwareRecipeStepExtractArchiveType> Type { get; set; } = null!;
 
         public SoftwareRecipeStepExtractArchiveArgs()
         {

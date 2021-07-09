@@ -19,7 +19,7 @@ type Intent struct {
 	Action pulumi.StringOutput `pulumi:"action"`
 	// Optional. The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
 	DefaultResponsePlatforms pulumi.StringArrayOutput `pulumi:"defaultResponsePlatforms"`
-	// Required. The name of this intent.
+	// The name of this intent.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
 	EndInteraction pulumi.BoolOutput `pulumi:"endInteraction"`
@@ -64,6 +64,9 @@ func NewIntent(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -96,7 +99,7 @@ type intentState struct {
 	Action *string `pulumi:"action"`
 	// Optional. The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
 	DefaultResponsePlatforms []string `pulumi:"defaultResponsePlatforms"`
-	// Required. The name of this intent.
+	// The name of this intent.
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
 	EndInteraction *bool `pulumi:"endInteraction"`
@@ -139,7 +142,7 @@ type IntentState struct {
 	Action pulumi.StringPtrInput
 	// Optional. The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
 	DefaultResponsePlatforms pulumi.StringArrayInput
-	// Required. The name of this intent.
+	// The name of this intent.
 	DisplayName pulumi.StringPtrInput
 	// Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
 	EndInteraction pulumi.BoolPtrInput
@@ -186,8 +189,8 @@ type intentArgs struct {
 	Action *string `pulumi:"action"`
 	// Optional. The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
 	DefaultResponsePlatforms []string `pulumi:"defaultResponsePlatforms"`
-	// Required. The name of this intent.
-	DisplayName *string `pulumi:"displayName"`
+	// The name of this intent.
+	DisplayName string `pulumi:"displayName"`
 	// Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
 	EndInteraction *bool `pulumi:"endInteraction"`
 	// Optional. The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the contexts must be present in the active user session for an event to trigger this intent. Event names are limited to 150 characters.
@@ -234,8 +237,8 @@ type IntentArgs struct {
 	Action pulumi.StringPtrInput
 	// Optional. The list of platforms for which the first responses will be copied from the messages in PLATFORM_UNSPECIFIED (i.e. default platform).
 	DefaultResponsePlatforms IntentDefaultResponsePlatformsItemArrayInput
-	// Required. The name of this intent.
-	DisplayName pulumi.StringPtrInput
+	// The name of this intent.
+	DisplayName pulumi.StringInput
 	// Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.
 	EndInteraction pulumi.BoolPtrInput
 	// Optional. The collection of event names that trigger the intent. If the collection of input contexts is not empty, all of the contexts must be present in the active user session for an event to trigger this intent. Event names are limited to 150 characters.

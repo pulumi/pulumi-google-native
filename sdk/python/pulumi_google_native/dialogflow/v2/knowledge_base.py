@@ -13,25 +13,36 @@ __all__ = ['KnowledgeBaseArgs', 'KnowledgeBase']
 @pulumi.input_type
 class KnowledgeBaseArgs:
     def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 display_name: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a KnowledgeBase resource.
-        :param pulumi.Input[str] display_name: Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
+        :param pulumi.Input[str] display_name: The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
         :param pulumi.Input[str] language_code: Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.
         :param pulumi.Input[str] name: The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
         """
+        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if language_code is not None:
             pulumi.set(__self__, "language_code", language_code)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter
@@ -50,18 +61,6 @@ class KnowledgeBaseArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="languageCode")
@@ -104,7 +103,7 @@ class KnowledgeBase(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] display_name: Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
+        :param pulumi.Input[str] display_name: The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
         :param pulumi.Input[str] language_code: Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.
         :param pulumi.Input[str] name: The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
         """
@@ -149,6 +148,8 @@ class KnowledgeBase(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = KnowledgeBaseArgs.__new__(KnowledgeBaseArgs)
 
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["language_code"] = language_code
             if location is None and not opts.urn:
@@ -189,7 +190,7 @@ class KnowledgeBase(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
+        The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
         """
         return pulumi.get(self, "display_name")
 

@@ -31,11 +31,11 @@ export interface GetAccessPolicyResult {
      */
     readonly name: string;
     /**
-     * Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+     * The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
      */
     readonly parent: string;
     /**
-     * Required. Human readable title. Does not affect behavior.
+     * Human readable title. Does not affect behavior.
      */
     readonly title: string;
 }

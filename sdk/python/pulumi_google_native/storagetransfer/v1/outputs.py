@@ -55,8 +55,8 @@ class AwsAccessKeyResponse(dict):
                  secret_access_key: str):
         """
         AWS access key (see [AWS Security Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)). For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
-        :param str access_key_id: Required. AWS access key ID.
-        :param str secret_access_key: Required. AWS secret access key. This field is not returned in RPC responses.
+        :param str access_key_id: AWS access key ID.
+        :param str secret_access_key: AWS secret access key. This field is not returned in RPC responses.
         """
         pulumi.set(__self__, "access_key_id", access_key_id)
         pulumi.set(__self__, "secret_access_key", secret_access_key)
@@ -65,7 +65,7 @@ class AwsAccessKeyResponse(dict):
     @pulumi.getter(name="accessKeyId")
     def access_key_id(self) -> str:
         """
-        Required. AWS access key ID.
+        AWS access key ID.
         """
         return pulumi.get(self, "access_key_id")
 
@@ -73,7 +73,7 @@ class AwsAccessKeyResponse(dict):
     @pulumi.getter(name="secretAccessKey")
     def secret_access_key(self) -> str:
         """
-        Required. AWS secret access key. This field is not returned in RPC responses.
+        AWS secret access key. This field is not returned in RPC responses.
         """
         return pulumi.get(self, "secret_access_key")
 
@@ -108,8 +108,8 @@ class AwsS3DataResponse(dict):
                  path: str):
         """
         An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's name is the S3 object's key name.
-        :param 'AwsAccessKeyResponse' aws_access_key: Required. Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
-        :param str bucket_name: Required. S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
+        :param 'AwsAccessKeyResponse' aws_access_key: Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+        :param str bucket_name: S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
         :param str path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         """
         pulumi.set(__self__, "aws_access_key", aws_access_key)
@@ -120,7 +120,7 @@ class AwsS3DataResponse(dict):
     @pulumi.getter(name="awsAccessKey")
     def aws_access_key(self) -> 'outputs.AwsAccessKeyResponse':
         """
-        Required. Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+        Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
         """
         return pulumi.get(self, "aws_access_key")
 
@@ -128,7 +128,7 @@ class AwsS3DataResponse(dict):
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> str:
         """
-        Required. S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
+        S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
         """
         return pulumi.get(self, "bucket_name")
 
@@ -172,10 +172,10 @@ class AzureBlobStorageDataResponse(dict):
                  storage_account: str):
         """
         An AzureBlobStorageData resource can be a data source, but not a data sink. An AzureBlobStorageData resource represents one Azure container. The storage account determines the [Azure endpoint](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account#storage-account-endpoints). In an AzureBlobStorageData resource, a blobs's name is the [Azure Blob Storage blob's key name](https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#blob-names).
-        :param 'AzureCredentialsResponse' azure_credentials: Required. Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
-        :param str container: Required. The container to transfer from the Azure Storage account.
+        :param 'AzureCredentialsResponse' azure_credentials: Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+        :param str container: The container to transfer from the Azure Storage account.
         :param str path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
-        :param str storage_account: Required. The name of the Azure Storage account.
+        :param str storage_account: The name of the Azure Storage account.
         """
         pulumi.set(__self__, "azure_credentials", azure_credentials)
         pulumi.set(__self__, "container", container)
@@ -186,7 +186,7 @@ class AzureBlobStorageDataResponse(dict):
     @pulumi.getter(name="azureCredentials")
     def azure_credentials(self) -> 'outputs.AzureCredentialsResponse':
         """
-        Required. Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+        Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
         """
         return pulumi.get(self, "azure_credentials")
 
@@ -194,7 +194,7 @@ class AzureBlobStorageDataResponse(dict):
     @pulumi.getter
     def container(self) -> str:
         """
-        Required. The container to transfer from the Azure Storage account.
+        The container to transfer from the Azure Storage account.
         """
         return pulumi.get(self, "container")
 
@@ -210,7 +210,7 @@ class AzureBlobStorageDataResponse(dict):
     @pulumi.getter(name="storageAccount")
     def storage_account(self) -> str:
         """
-        Required. The name of the Azure Storage account.
+        The name of the Azure Storage account.
         """
         return pulumi.get(self, "storage_account")
 
@@ -241,7 +241,7 @@ class AzureCredentialsResponse(dict):
                  sas_token: str):
         """
         Azure credentials For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
-        :param str sas_token: Required. Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+        :param str sas_token: Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
         """
         pulumi.set(__self__, "sas_token", sas_token)
 
@@ -249,7 +249,7 @@ class AzureCredentialsResponse(dict):
     @pulumi.getter(name="sasToken")
     def sas_token(self) -> str:
         """
-        Required. Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+        Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
         """
         return pulumi.get(self, "sas_token")
 
@@ -325,7 +325,7 @@ class GcsDataResponse(dict):
                  path: str):
         """
         In a GcsData resource, an object's name is the Cloud Storage object's name and its "last modification time" refers to the object's `updated` property of Cloud Storage objects, which changes when the content or the metadata of the object is updated.
-        :param str bucket_name: Required. Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
+        :param str bucket_name: Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
         :param str path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. (must meet Object Name Requirements](https://cloud.google.com/storage/docs/naming#objectnames)).
         """
         pulumi.set(__self__, "bucket_name", bucket_name)
@@ -335,7 +335,7 @@ class GcsDataResponse(dict):
     @pulumi.getter(name="bucketName")
     def bucket_name(self) -> str:
         """
-        Required. Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
+        Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
         """
         return pulumi.get(self, "bucket_name")
 
@@ -374,7 +374,7 @@ class HttpDataResponse(dict):
                  list_url: str):
         """
         An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object will not be transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer will fail. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer.
-        :param str list_url: Required. The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
+        :param str list_url: The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
         """
         pulumi.set(__self__, "list_url", list_url)
 
@@ -382,7 +382,7 @@ class HttpDataResponse(dict):
     @pulumi.getter(name="listUrl")
     def list_url(self) -> str:
         """
-        Required. The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
+        The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
         """
         return pulumi.get(self, "list_url")
 
@@ -420,8 +420,8 @@ class NotificationConfigResponse(dict):
         """
         Specification to configure notifications published to Cloud Pub/Sub. Notifications will be published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` will contain a TransferOperation resource formatted according to the specified `PayloadFormat`.
         :param Sequence[str] event_types: Event types for which a notification is desired. If empty, send notifications for all event types.
-        :param str payload_format: Required. The desired format of the notification message payloads.
-        :param str pubsub_topic: Required. The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
+        :param str payload_format: The desired format of the notification message payloads.
+        :param str pubsub_topic: The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
         """
         pulumi.set(__self__, "event_types", event_types)
         pulumi.set(__self__, "payload_format", payload_format)
@@ -439,7 +439,7 @@ class NotificationConfigResponse(dict):
     @pulumi.getter(name="payloadFormat")
     def payload_format(self) -> str:
         """
-        Required. The desired format of the notification message payloads.
+        The desired format of the notification message payloads.
         """
         return pulumi.get(self, "payload_format")
 
@@ -447,7 +447,7 @@ class NotificationConfigResponse(dict):
     @pulumi.getter(name="pubsubTopic")
     def pubsub_topic(self) -> str:
         """
-        Required. The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
+        The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
         """
         return pulumi.get(self, "pubsub_topic")
 
@@ -597,7 +597,7 @@ class ScheduleResponse(dict):
         :param 'TimeOfDayResponse' end_time_of_day: The time in UTC that no further transfer operations are scheduled. Combined with schedule_end_date, `end_time_of_day` specifies the end date and time for starting new transfer operations. This field must be greater than or equal to the timestamp corresponding to the combintation of schedule_start_date and start_time_of_day, and is subject to the following: * If `end_time_of_day` is not set and `schedule_end_date` is set, then a default value of `23:59:59` is used for `end_time_of_day`. * If `end_time_of_day` is set and `schedule_end_date` is not set, then INVALID_ARGUMENT is returned.
         :param str repeat_interval: Interval between the start of each scheduled TransferOperation. If unspecified, the default value is 24 hours. This value may not be less than 1 hour.
         :param 'DateResponse' schedule_end_date: The last day a transfer runs. Date boundaries are determined relative to UTC time. A job will run once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job will run each day at start_time_of_day through `schedule_end_date`.
-        :param 'DateResponse' schedule_start_date: Required. The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
+        :param 'DateResponse' schedule_start_date: The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
         :param 'TimeOfDayResponse' start_time_of_day: The time in UTC that a transfer job is scheduled to run. Transfers may start later than this time. If `start_time_of_day` is not specified: * One-time transfers run immediately. * Recurring transfers run immediately, and each day at midnight UTC, through schedule_end_date. If `start_time_of_day` is specified: * One-time transfers run at the specified time. * Recurring transfers run at the specified time each day, through `schedule_end_date`.
         """
         pulumi.set(__self__, "end_time_of_day", end_time_of_day)
@@ -634,7 +634,7 @@ class ScheduleResponse(dict):
     @pulumi.getter(name="scheduleStartDate")
     def schedule_start_date(self) -> 'outputs.DateResponse':
         """
-        Required. The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
+        The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
         """
         return pulumi.get(self, "schedule_start_date")
 

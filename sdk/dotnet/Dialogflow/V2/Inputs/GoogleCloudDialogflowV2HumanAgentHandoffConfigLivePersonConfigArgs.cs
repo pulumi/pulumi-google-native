@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     public sealed class GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Account number of the LivePerson account to connect. This is the account number you input at the login page.
+        /// Account number of the LivePerson account to connect. This is the account number you input at the login page.
         /// </summary>
-        [Input("accountNumber")]
-        public Input<string>? AccountNumber { get; set; }
+        [Input("accountNumber", required: true)]
+        public Input<string> AccountNumber { get; set; } = null!;
 
         public GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs()
         {

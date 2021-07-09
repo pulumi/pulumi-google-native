@@ -16,28 +16,27 @@ __all__ = ['WebhookArgs', 'Webhook']
 class WebhookArgs:
     def __init__(__self__, *,
                  agent_id: pulumi.Input[str],
+                 display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  disabled: Optional[pulumi.Input[bool]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
                  generic_web_service: Optional[pulumi.Input['GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  timeout: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Webhook resource.
+        :param pulumi.Input[str] display_name: The human-readable name of the webhook, unique within the agent.
         :param pulumi.Input[bool] disabled: Indicates whether the webhook is disabled.
-        :param pulumi.Input[str] display_name: Required. The human-readable name of the webhook, unique within the agent.
         :param pulumi.Input['GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs'] generic_web_service: Configuration for a generic web service.
         :param pulumi.Input[str] name: The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
         :param pulumi.Input[str] timeout: Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
         """
         pulumi.set(__self__, "agent_id", agent_id)
+        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if generic_web_service is not None:
             pulumi.set(__self__, "generic_web_service", generic_web_service)
         if name is not None:
@@ -53,6 +52,18 @@ class WebhookArgs:
     @agent_id.setter
     def agent_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "agent_id", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The human-readable name of the webhook, unique within the agent.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter
@@ -83,18 +94,6 @@ class WebhookArgs:
     @disabled.setter
     def disabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disabled", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The human-readable name of the webhook, unique within the agent.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="genericWebService")
@@ -153,7 +152,7 @@ class Webhook(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] disabled: Indicates whether the webhook is disabled.
-        :param pulumi.Input[str] display_name: Required. The human-readable name of the webhook, unique within the agent.
+        :param pulumi.Input[str] display_name: The human-readable name of the webhook, unique within the agent.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs']] generic_web_service: Configuration for a generic web service.
         :param pulumi.Input[str] name: The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
         :param pulumi.Input[str] timeout: Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
@@ -206,6 +205,8 @@ class Webhook(pulumi.CustomResource):
                 raise TypeError("Missing required property 'agent_id'")
             __props__.__dict__["agent_id"] = agent_id
             __props__.__dict__["disabled"] = disabled
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["generic_web_service"] = generic_web_service
             if location is None and not opts.urn:
@@ -257,7 +258,7 @@ class Webhook(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Required. The human-readable name of the webhook, unique within the agent.
+        The human-readable name of the webhook, unique within the agent.
         """
         return pulumi.get(self, "display_name")
 

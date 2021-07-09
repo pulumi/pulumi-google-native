@@ -12,11 +12,11 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
 
     public sealed class AllowedConfigListArgs : Pulumi.ResourceArgs
     {
-        [Input("allowedConfigValues")]
+        [Input("allowedConfigValues", required: true)]
         private InputList<Inputs.ReusableConfigWrapperArgs>? _allowedConfigValues;
 
         /// <summary>
-        /// Required. All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
+        /// All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
         /// </summary>
         public InputList<Inputs.ReusableConfigWrapperArgs> AllowedConfigValues
         {

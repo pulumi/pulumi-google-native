@@ -79,7 +79,7 @@ class GetSecretResult:
     @pulumi.getter
     def replication(self) -> 'outputs.ReplicationResponse':
         """
-        Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
+        Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
         """
         return pulumi.get(self, "replication")
 

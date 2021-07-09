@@ -36,7 +36,7 @@ export class OrganizationContact extends pulumi.CustomResource {
     }
 
     /**
-     * Required. The email address to send notifications to. This does not need to be a Google account.
+     * The email address to send notifications to. This does not need to be a Google account.
      */
     public readonly email!: pulumi.Output<string>;
     /**
@@ -71,6 +71,9 @@ export class OrganizationContact extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.email === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'email'");
+            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
@@ -101,9 +104,9 @@ export class OrganizationContact extends pulumi.CustomResource {
  */
 export interface OrganizationContactArgs {
     /**
-     * Required. The email address to send notifications to. This does not need to be a Google account.
+     * The email address to send notifications to. This does not need to be a Google account.
      */
-    email?: pulumi.Input<string>;
+    email: pulumi.Input<string>;
     /**
      * The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
      */

@@ -60,7 +60,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+        /// Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
         /// </summary>
         public readonly string Domain;
         /// <summary>
@@ -72,11 +72,11 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. Name of the organization that the customer entity represents.
+        /// Name of the organization that the customer entity represents.
         /// </summary>
         public readonly string OrgDisplayName;
         /// <summary>
-        /// Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+        /// Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
         /// </summary>
         public readonly Outputs.GoogleTypePostalAddressResponse OrgPostalAddress;
         /// <summary>

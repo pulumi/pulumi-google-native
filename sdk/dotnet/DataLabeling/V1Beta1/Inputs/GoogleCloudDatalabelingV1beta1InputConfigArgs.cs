@@ -34,10 +34,10 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         public Input<Inputs.GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs>? ClassificationMetadata { get; set; }
 
         /// <summary>
-        /// Required. Data type must be specifed when user tries to import data.
+        /// Data type must be specifed when user tries to import data.
         /// </summary>
-        [Input("dataType")]
-        public Input<Pulumi.GoogleNative.DataLabeling.V1Beta1.GoogleCloudDatalabelingV1beta1InputConfigDataType>? DataType { get; set; }
+        [Input("dataType", required: true)]
+        public Input<Pulumi.GoogleNative.DataLabeling.V1Beta1.GoogleCloudDatalabelingV1beta1InputConfigDataType> DataType { get; set; } = null!;
 
         /// <summary>
         /// Source located in Cloud Storage.

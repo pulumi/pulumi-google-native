@@ -31,11 +31,11 @@ export interface GetWorkloadArgs {
 
 export interface GetWorkloadResult {
     /**
-     * Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+     * Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
      */
     readonly billingAccount: string;
     /**
-     * Required. Immutable. Compliance Regime associated with this workload.
+     * Immutable. Compliance Regime associated with this workload.
      */
     readonly complianceRegime: string;
     /**
@@ -43,7 +43,7 @@ export interface GetWorkloadResult {
      */
     readonly createTime: string;
     /**
-     * Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+     * The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
      */
     readonly displayName: string;
     /**

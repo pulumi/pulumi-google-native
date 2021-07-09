@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Outputs
     public sealed class IssuanceModesResponse
     {
         /// <summary>
-        /// Required. When true, allows callers to create Certificates by specifying a CertificateConfig.
+        /// When true, allows callers to create Certificates by specifying a CertificateConfig.
         /// </summary>
         public readonly bool AllowConfigBasedIssuance;
         /// <summary>
-        /// Required. When true, allows callers to create Certificates by specifying a CSR.
+        /// When true, allows callers to create Certificates by specifying a CSR.
         /// </summary>
         public readonly bool AllowCsrBasedIssuance;
 

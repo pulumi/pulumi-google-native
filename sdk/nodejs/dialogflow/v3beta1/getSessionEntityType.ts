@@ -37,15 +37,15 @@ export interface GetSessionEntityTypeArgs {
 
 export interface GetSessionEntityTypeResult {
     /**
-     * Required. The collection of entities to override or supplement the custom entity type.
+     * The collection of entities to override or supplement the custom entity type.
      */
     readonly entities: outputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponse[];
     /**
-     * Required. Indicates whether the additional data should override or supplement the custom entity type definition.
+     * Indicates whether the additional data should override or supplement the custom entity type definition.
      */
     readonly entityOverrideMode: string;
     /**
-     * Required. The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
+     * The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
      */
     readonly name: string;
 }

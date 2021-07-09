@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Inputs
     public sealed class Aes128EncryptionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
+        /// URI of the key delivery service. This URI is inserted into the M3U8 header.
         /// </summary>
-        [Input("keyUri")]
-        public Input<string>? KeyUri { get; set; }
+        [Input("keyUri", required: true)]
+        public Input<string> KeyUri { get; set; } = null!;
 
         public Aes128EncryptionArgs()
         {

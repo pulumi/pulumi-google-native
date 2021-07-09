@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The human-readable name of the agent, unique within the location.
+        /// The human-readable name of the agent, unique within the location.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public Output<string> StartFlow { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+        /// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
         /// </summary>
         [Output("timeZone")]
         public Output<string> TimeZone { get; private set; } = null!;
@@ -145,10 +145,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Required. The human-readable name of the agent, unique within the location.
+        /// The human-readable name of the agent, unique within the location.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
         /// Indicates if automatic spell correction is enabled in detect intent requests.
@@ -193,10 +193,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public Input<string>? StartFlow { get; set; }
 
         /// <summary>
-        /// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+        /// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
         /// </summary>
-        [Input("timeZone")]
-        public Input<string>? TimeZone { get; set; }
+        [Input("timeZone", required: true)]
+        public Input<string> TimeZone { get; set; } = null!;
 
         public AgentArgs()
         {

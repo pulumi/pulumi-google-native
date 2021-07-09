@@ -18,11 +18,11 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
         /// </summary>
         public readonly string CloudSqlId;
         /// <summary>
-        /// Required. The IP or hostname of the source PostgreSQL database.
+        /// The IP or hostname of the source PostgreSQL database.
         /// </summary>
         public readonly string Host;
         /// <summary>
-        /// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+        /// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
         /// </summary>
         public readonly string Password;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
         /// </summary>
         public readonly bool PasswordSet;
         /// <summary>
-        /// Required. The network port of the source PostgreSQL database.
+        /// The network port of the source PostgreSQL database.
         /// </summary>
         public readonly int Port;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
         /// </summary>
         public readonly Outputs.SslConfigResponse Ssl;
         /// <summary>
-        /// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+        /// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
         /// </summary>
         public readonly string Username;
 

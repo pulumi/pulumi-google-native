@@ -15,24 +15,35 @@ __all__ = ['ConversationArgs', 'Conversation']
 @pulumi.input_type
 class ConversationArgs:
     def __init__(__self__, *,
+                 conversation_profile: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  conversation_id: Optional[pulumi.Input[str]] = None,
-                 conversation_profile: Optional[pulumi.Input[str]] = None,
                  conversation_stage: Optional[pulumi.Input['ConversationConversationStage']] = None):
         """
         The set of arguments for constructing a Conversation resource.
-        :param pulumi.Input[str] conversation_profile: Required. The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
+        :param pulumi.Input[str] conversation_profile: The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
         :param pulumi.Input['ConversationConversationStage'] conversation_stage: The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
         """
+        pulumi.set(__self__, "conversation_profile", conversation_profile)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if conversation_id is not None:
             pulumi.set(__self__, "conversation_id", conversation_id)
-        if conversation_profile is not None:
-            pulumi.set(__self__, "conversation_profile", conversation_profile)
         if conversation_stage is not None:
             pulumi.set(__self__, "conversation_stage", conversation_stage)
+
+    @property
+    @pulumi.getter(name="conversationProfile")
+    def conversation_profile(self) -> pulumi.Input[str]:
+        """
+        The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
+        """
+        return pulumi.get(self, "conversation_profile")
+
+    @conversation_profile.setter
+    def conversation_profile(self, value: pulumi.Input[str]):
+        pulumi.set(self, "conversation_profile", value)
 
     @property
     @pulumi.getter
@@ -60,18 +71,6 @@ class ConversationArgs:
     @conversation_id.setter
     def conversation_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "conversation_id", value)
-
-    @property
-    @pulumi.getter(name="conversationProfile")
-    def conversation_profile(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
-        """
-        return pulumi.get(self, "conversation_profile")
-
-    @conversation_profile.setter
-    def conversation_profile(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "conversation_profile", value)
 
     @property
     @pulumi.getter(name="conversationStage")
@@ -102,7 +101,7 @@ class Conversation(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] conversation_profile: Required. The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
+        :param pulumi.Input[str] conversation_profile: The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
         :param pulumi.Input['ConversationConversationStage'] conversation_stage: The stage of a conversation. It indicates whether the virtual agent or a human agent is handling the conversation. If the conversation is created with the conversation profile that has Dialogflow config set, defaults to ConversationStage.VIRTUAL_AGENT_STAGE; Otherwise, defaults to ConversationStage.HUMAN_ASSIST_STAGE. If the conversation is created with the conversation profile that has Dialogflow config set but explicitly sets conversation_stage to ConversationStage.HUMAN_ASSIST_STAGE, it skips ConversationStage.VIRTUAL_AGENT_STAGE stage and directly goes to ConversationStage.HUMAN_ASSIST_STAGE.
         """
         ...
@@ -147,6 +146,8 @@ class Conversation(pulumi.CustomResource):
             __props__ = ConversationArgs.__new__(ConversationArgs)
 
             __props__.__dict__["conversation_id"] = conversation_id
+            if conversation_profile is None and not opts.urn:
+                raise TypeError("Missing required property 'conversation_profile'")
             __props__.__dict__["conversation_profile"] = conversation_profile
             __props__.__dict__["conversation_stage"] = conversation_stage
             if location is None and not opts.urn:
@@ -195,7 +196,7 @@ class Conversation(pulumi.CustomResource):
     @pulumi.getter(name="conversationProfile")
     def conversation_profile(self) -> pulumi.Output[str]:
         """
-        Required. The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
+        The Conversation Profile to be used to configure this Conversation. This field cannot be updated. Format: `projects//locations//conversationProfiles/`.
         """
         return pulumi.get(self, "conversation_profile")
 

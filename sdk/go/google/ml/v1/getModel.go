@@ -31,7 +31,7 @@ type LookupModelResult struct {
 	Etag string `pulumi:"etag"`
 	// Optional. One or more labels that you can add, to organize your models. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. The name specified for the model when it was created. The model name must be unique within the project it is created in.
+	// The name specified for the model when it was created. The model name must be unique within the project it is created in.
 	Name string `pulumi:"name"`
 	// Optional. If true, online prediction nodes send `stderr` and `stdout` streams to Cloud Logging. These can be more verbose than the standard access logs (see `onlinePredictionLogging`) and can incur higher cost. However, they are helpful for debugging. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high QPS. Estimate your costs before enabling this option. Default is false.
 	OnlinePredictionConsoleLogging bool `pulumi:"onlinePredictionConsoleLogging"`

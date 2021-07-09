@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
     public sealed class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse
     {
         /// <summary>
-        /// Required. URL
+        /// URL
         /// </summary>
         public readonly string Url;
         /// <summary>

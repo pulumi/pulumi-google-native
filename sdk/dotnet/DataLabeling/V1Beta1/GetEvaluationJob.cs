@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
     public sealed class GetEvaluationJobResult
     {
         /// <summary>
-        /// Required. Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
+        /// Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
         /// </summary>
         public readonly string AnnotationSpecSet;
         /// <summary>
@@ -49,19 +49,19 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Required. Description of the job. The description can be up to 25,000 characters long.
+        /// Description of the job. The description can be up to 25,000 characters long.
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Required. Configuration details for the evaluation job.
+        /// Configuration details for the evaluation job.
         /// </summary>
         public readonly Outputs.GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse EvaluationJobConfig;
         /// <summary>
-        /// Required. Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
+        /// Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
         /// </summary>
         public readonly bool LabelMissingGroundTruth;
         /// <summary>
-        /// Required. The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
+        /// The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
         /// </summary>
         public readonly string ModelVersion;
         /// <summary>
@@ -69,7 +69,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
+        /// Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
         /// </summary>
         public readonly string Schedule;
         /// <summary>

@@ -41,7 +41,7 @@ export interface GetWorkflowTemplateResult {
      */
     readonly dagTimeout: string;
     /**
-     * Required. The Directed Acyclic Graph of Jobs to submit.
+     * The Directed Acyclic Graph of Jobs to submit.
      */
     readonly jobs: outputs.dataproc.v1.OrderedJobResponse[];
     /**
@@ -57,7 +57,7 @@ export interface GetWorkflowTemplateResult {
      */
     readonly parameters: outputs.dataproc.v1.TemplateParameterResponse[];
     /**
-     * Required. WorkflowTemplate scheduling information.
+     * WorkflowTemplate scheduling information.
      */
     readonly placement: outputs.dataproc.v1.WorkflowTemplatePlacementResponse;
     /**

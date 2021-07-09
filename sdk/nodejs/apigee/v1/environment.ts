@@ -52,7 +52,7 @@ export class Environment extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastModifiedAt!: pulumi.Output<string>;
     /**
-     * Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+     * Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -75,6 +75,9 @@ export class Environment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
@@ -115,9 +118,9 @@ export interface EnvironmentArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+     * Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
     /**
      * Optional. Key-value pairs that may be used for customizing the environment.

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
     public sealed class GoogleCloudDialogflowV2IntentMessageMediaContentResponse
     {
         /// <summary>
-        /// Required. List of media objects.
+        /// List of media objects.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponse> MediaObjects;
         /// <summary>

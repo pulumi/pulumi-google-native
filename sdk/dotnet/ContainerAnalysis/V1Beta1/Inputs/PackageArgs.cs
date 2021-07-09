@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         }
 
         /// <summary>
-        /// Required. Immutable. The name of the package.
+        /// Immutable. The name of the package.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public PackageArgs()
         {

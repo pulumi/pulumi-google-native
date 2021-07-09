@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Vision.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
+        /// The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
         /// </summary>
         [Output("uri")]
         public Output<string> Uri { get; private set; } = null!;
@@ -109,10 +109,10 @@ namespace Pulumi.GoogleNative.Vision.V1
         public Input<string>? ReferenceImageId { get; set; }
 
         /// <summary>
-        /// Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
+        /// The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
         /// </summary>
-        [Input("uri")]
-        public Input<string>? Uri { get; set; }
+        [Input("uri", required: true)]
+        public Input<string> Uri { get; set; } = null!;
 
         public ReferenceImageArgs()
         {

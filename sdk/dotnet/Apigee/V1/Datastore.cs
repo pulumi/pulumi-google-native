@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<Outputs.GoogleCloudApigeeV1DatastoreConfigResponse> DatastoreConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Display name in UI
+        /// Display name in UI
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -109,10 +109,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<Inputs.GoogleCloudApigeeV1DatastoreConfigArgs>? DatastoreConfig { get; set; }
 
         /// <summary>
-        /// Required. Display name in UI
+        /// Display name in UI
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;

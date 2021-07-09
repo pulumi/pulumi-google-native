@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         /// </summary>
         public readonly string AppBundleId;
         /// <summary>
-        /// Required. The .ipa of the application to test.
+        /// The .ipa of the application to test.
         /// </summary>
         public readonly Outputs.FileReferenceResponse AppIpa;
         /// <summary>

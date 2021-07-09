@@ -17,7 +17,7 @@ type Schema struct {
 
 	// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
 	Definition pulumi.StringOutput `pulumi:"definition"`
-	// Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+	// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The type of the schema definition.
 	Type pulumi.StringOutput `pulumi:"type"`
@@ -30,6 +30,9 @@ func NewSchema(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -57,7 +60,7 @@ func GetSchema(ctx *pulumi.Context,
 type schemaState struct {
 	// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
 	Definition *string `pulumi:"definition"`
-	// Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+	// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
 	Name *string `pulumi:"name"`
 	// The type of the schema definition.
 	Type *string `pulumi:"type"`
@@ -66,7 +69,7 @@ type schemaState struct {
 type SchemaState struct {
 	// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
 	Definition pulumi.StringPtrInput
-	// Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+	// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
 	Name pulumi.StringPtrInput
 	// The type of the schema definition.
 	Type pulumi.StringPtrInput
@@ -79,8 +82,8 @@ func (SchemaState) ElementType() reflect.Type {
 type schemaArgs struct {
 	// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
 	Definition *string `pulumi:"definition"`
-	// Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
-	Name     *string `pulumi:"name"`
+	// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+	Name     string  `pulumi:"name"`
 	Project  string  `pulumi:"project"`
 	SchemaId *string `pulumi:"schemaId"`
 	// The type of the schema definition.
@@ -91,8 +94,8 @@ type schemaArgs struct {
 type SchemaArgs struct {
 	// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
 	Definition pulumi.StringPtrInput
-	// Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
-	Name     pulumi.StringPtrInput
+	// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+	Name     pulumi.StringInput
 	Project  pulumi.StringInput
 	SchemaId pulumi.StringPtrInput
 	// The type of the schema definition.

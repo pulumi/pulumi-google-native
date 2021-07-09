@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     public sealed class RoboDirectiveArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The type of action that Robo should perform on the specified element.
+        /// The type of action that Robo should perform on the specified element.
         /// </summary>
-        [Input("actionType")]
-        public Input<Pulumi.GoogleNative.Testing.V1.RoboDirectiveActionType>? ActionType { get; set; }
+        [Input("actionType", required: true)]
+        public Input<Pulumi.GoogleNative.Testing.V1.RoboDirectiveActionType> ActionType { get; set; } = null!;
 
         /// <summary>
         /// The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name.
@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public Input<string>? InputText { get; set; }
 
         /// <summary>
-        /// Required. The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
+        /// The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
         /// </summary>
-        [Input("resourceName")]
-        public Input<string>? ResourceName { get; set; }
+        [Input("resourceName", required: true)]
+        public Input<string> ResourceName { get; set; } = null!;
 
         public RoboDirectiveArgs()
         {

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     public partial class SecuritySetting : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. The human-readable name of the security settings, unique within the location.
+        /// The human-readable name of the security settings, unique within the location.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Output<string> InspectTemplate { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
+        /// Resource name of the settings. Format: `projects//locations//securitySettings/`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -103,10 +103,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     public sealed class SecuritySettingArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The human-readable name of the security settings, unique within the location.
+        /// The human-readable name of the security settings, unique within the location.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
         /// DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
@@ -118,10 +118,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
+        /// Resource name of the settings. Format: `projects//locations//securitySettings/`.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

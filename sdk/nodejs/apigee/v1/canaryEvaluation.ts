@@ -36,7 +36,7 @@ export class CanaryEvaluation extends pulumi.CustomResource {
     }
 
     /**
-     * Required. The stable version that is serving requests.
+     * The stable version that is serving requests.
      */
     public readonly control!: pulumi.Output<string>;
     /**
@@ -44,11 +44,11 @@ export class CanaryEvaluation extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Required. End time for the evaluation's analysis.
+     * End time for the evaluation's analysis.
      */
     public readonly endTime!: pulumi.Output<string>;
     /**
-     * Required. Labels used to filter the metrics used for a canary evaluation.
+     * Labels used to filter the metrics used for a canary evaluation.
      */
     public readonly metricLabels!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse>;
     /**
@@ -56,7 +56,7 @@ export class CanaryEvaluation extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Required. Start time for the canary evaluation's analysis.
+     * Start time for the canary evaluation's analysis.
      */
     public readonly startTime!: pulumi.Output<string>;
     /**
@@ -64,7 +64,7 @@ export class CanaryEvaluation extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * Required. The newer version that is serving requests.
+     * The newer version that is serving requests.
      */
     public readonly treatment!: pulumi.Output<string>;
     /**
@@ -83,11 +83,26 @@ export class CanaryEvaluation extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.control === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'control'");
+            }
+            if ((!args || args.endTime === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'endTime'");
+            }
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
+            if ((!args || args.metricLabels === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'metricLabels'");
+            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
+            }
+            if ((!args || args.startTime === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'startTime'");
+            }
+            if ((!args || args.treatment === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'treatment'");
             }
             inputs["control"] = args ? args.control : undefined;
             inputs["endTime"] = args ? args.endTime : undefined;
@@ -123,25 +138,25 @@ export class CanaryEvaluation extends pulumi.CustomResource {
  */
 export interface CanaryEvaluationArgs {
     /**
-     * Required. The stable version that is serving requests.
+     * The stable version that is serving requests.
      */
-    control?: pulumi.Input<string>;
+    control: pulumi.Input<string>;
     /**
-     * Required. End time for the evaluation's analysis.
+     * End time for the evaluation's analysis.
      */
-    endTime?: pulumi.Input<string>;
+    endTime: pulumi.Input<string>;
     instanceId: pulumi.Input<string>;
     /**
-     * Required. Labels used to filter the metrics used for a canary evaluation.
+     * Labels used to filter the metrics used for a canary evaluation.
      */
-    metricLabels?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs>;
+    metricLabels: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs>;
     organizationId: pulumi.Input<string>;
     /**
-     * Required. Start time for the canary evaluation's analysis.
+     * Start time for the canary evaluation's analysis.
      */
-    startTime?: pulumi.Input<string>;
+    startTime: pulumi.Input<string>;
     /**
-     * Required. The newer version that is serving requests.
+     * The newer version that is serving requests.
      */
-    treatment?: pulumi.Input<string>;
+    treatment: pulumi.Input<string>;
 }

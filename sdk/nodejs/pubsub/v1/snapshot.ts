@@ -68,6 +68,9 @@ export class Snapshot extends pulumi.CustomResource {
             if ((!args || args.snapshotId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'snapshotId'");
             }
+            if ((!args || args.subscription === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'subscription'");
+            }
             inputs["labels"] = args ? args.labels : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["snapshotId"] = args ? args.snapshotId : undefined;
@@ -99,7 +102,7 @@ export interface SnapshotArgs {
     project: pulumi.Input<string>;
     snapshotId: pulumi.Input<string>;
     /**
-     * Required. The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.
+     * The subscription whose backlog the snapshot retains. Specifically, the created snapshot is guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the messages in the subscription's backlog that are unacknowledged upon the successful completion of the `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the successful completion of the CreateSnapshot request. Format is `projects/{project}/subscriptions/{sub}`.
      */
-    subscription?: pulumi.Input<string>;
+    subscription: pulumi.Input<string>;
 }

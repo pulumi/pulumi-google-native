@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     public sealed class SoftwareRecipeStepCopyFileArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The id of the relevant artifact in the recipe.
+        /// The id of the relevant artifact in the recipe.
         /// </summary>
-        [Input("artifactId")]
-        public Input<string>? ArtifactId { get; set; }
+        [Input("artifactId", required: true)]
+        public Input<string> ArtifactId { get; set; } = null!;
 
         /// <summary>
-        /// Required. The absolute path on the instance to put the file.
+        /// The absolute path on the instance to put the file.
         /// </summary>
-        [Input("destination")]
-        public Input<string>? Destination { get; set; }
+        [Input("destination", required: true)]
+        public Input<string> Destination { get; set; } = null!;
 
         /// <summary>
         /// Whether to allow this step to overwrite existing files. If this is false and the file already exists the file is not overwritten and the step is considered a success. Defaults to false.

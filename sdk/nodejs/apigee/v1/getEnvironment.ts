@@ -45,7 +45,7 @@ export interface GetEnvironmentResult {
      */
     readonly lastModifiedAt: string;
     /**
-     * Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+     * Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
      */
     readonly name: string;
     /**

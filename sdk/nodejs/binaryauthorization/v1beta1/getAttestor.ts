@@ -33,7 +33,7 @@ export interface GetAttestorResult {
      */
     readonly description: string;
     /**
-     * Required. The resource name, in the format: `projects/*&#47;attestors/*`. This field may not be updated.
+     * The resource name, in the format: `projects/*&#47;attestors/*`. This field may not be updated.
      */
     readonly name: string;
     /**

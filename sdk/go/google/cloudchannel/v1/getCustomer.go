@@ -34,15 +34,15 @@ type LookupCustomerResult struct {
 	CloudIdentityInfo GoogleCloudChannelV1CloudIdentityInfoResponse `pulumi:"cloudIdentityInfo"`
 	// The time at which the customer is created.
 	CreateTime string `pulumi:"createTime"`
-	// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+	// Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
 	Domain string `pulumi:"domain"`
 	// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
 	LanguageCode string `pulumi:"languageCode"`
 	// Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id}
 	Name string `pulumi:"name"`
-	// Required. Name of the organization that the customer entity represents.
+	// Name of the organization that the customer entity represents.
 	OrgDisplayName string `pulumi:"orgDisplayName"`
-	// Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+	// Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
 	OrgPostalAddress GoogleTypePostalAddressResponse `pulumi:"orgPostalAddress"`
 	// Primary contact info.
 	PrimaryContactInfo GoogleCloudChannelV1ContactInfoResponse `pulumi:"primaryContactInfo"`

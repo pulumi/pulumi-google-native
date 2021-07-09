@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     public sealed class GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
+        /// The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
         /// </summary>
-        [Input("initialPromptFulfillment")]
-        public Input<Inputs.GoogleCloudDialogflowCxV3beta1FulfillmentArgs>? InitialPromptFulfillment { get; set; }
+        [Input("initialPromptFulfillment", required: true)]
+        public Input<Inputs.GoogleCloudDialogflowCxV3beta1FulfillmentArgs> InitialPromptFulfillment { get; set; } = null!;
 
         [Input("repromptEventHandlers")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3beta1EventHandlerArgs>? _repromptEventHandlers;

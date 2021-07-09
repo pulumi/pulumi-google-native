@@ -51,7 +51,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         /// </summary>
         public readonly string DagTimeout;
         /// <summary>
-        /// Required. The Directed Acyclic Graph of Jobs to submit.
+        /// The Directed Acyclic Graph of Jobs to submit.
         /// </summary>
         public readonly ImmutableArray<Outputs.OrderedJobResponse> Jobs;
         /// <summary>
@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         /// </summary>
         public readonly ImmutableArray<Outputs.TemplateParameterResponse> Parameters;
         /// <summary>
-        /// Required. WorkflowTemplate scheduling information.
+        /// WorkflowTemplate scheduling information.
         /// </summary>
         public readonly Outputs.WorkflowTemplatePlacementResponse Placement;
         /// <summary>

@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     public sealed class GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+        /// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
         /// </summary>
-        [Input("audioUri")]
-        public Input<string>? AudioUri { get; set; }
+        [Input("audioUri", required: true)]
+        public Input<string> AudioUri { get; set; } = null!;
 
         public GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs()
         {

@@ -41,7 +41,7 @@ export interface GetMembershipResult {
      */
     readonly name: string;
     /**
-     * Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+     * Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
      */
     readonly preferredMemberKey: outputs.cloudidentity.v1beta1.EntityKeyResponse;
     /**

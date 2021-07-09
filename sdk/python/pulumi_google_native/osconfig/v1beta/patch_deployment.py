@@ -16,45 +16,66 @@ __all__ = ['PatchDeploymentArgs', 'PatchDeployment']
 @pulumi.input_type
 class PatchDeploymentArgs:
     def __init__(__self__, *,
+                 instance_filter: pulumi.Input['PatchInstanceFilterArgs'],
+                 one_time_schedule: pulumi.Input['OneTimeScheduleArgs'],
                  patch_deployment_id: pulumi.Input[str],
                  project: pulumi.Input[str],
+                 recurring_schedule: pulumi.Input['RecurringScheduleArgs'],
                  description: Optional[pulumi.Input[str]] = None,
                  duration: Optional[pulumi.Input[str]] = None,
-                 instance_filter: Optional[pulumi.Input['PatchInstanceFilterArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 one_time_schedule: Optional[pulumi.Input['OneTimeScheduleArgs']] = None,
                  patch_config: Optional[pulumi.Input['PatchConfigArgs']] = None,
-                 recurring_schedule: Optional[pulumi.Input['RecurringScheduleArgs']] = None,
                  rollout: Optional[pulumi.Input['PatchRolloutArgs']] = None):
         """
         The set of arguments for constructing a PatchDeployment resource.
+        :param pulumi.Input['PatchInstanceFilterArgs'] instance_filter: VM instances to patch.
+        :param pulumi.Input['OneTimeScheduleArgs'] one_time_schedule: Schedule a one-time execution.
+        :param pulumi.Input['RecurringScheduleArgs'] recurring_schedule: Schedule recurring executions.
         :param pulumi.Input[str] description: Optional. Description of the patch deployment. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] duration: Optional. Duration of the patch. After the duration ends, the patch times out.
-        :param pulumi.Input['PatchInstanceFilterArgs'] instance_filter: Required. VM instances to patch.
         :param pulumi.Input[str] name: Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
-        :param pulumi.Input['OneTimeScheduleArgs'] one_time_schedule: Required. Schedule a one-time execution.
         :param pulumi.Input['PatchConfigArgs'] patch_config: Optional. Patch configuration that is applied.
-        :param pulumi.Input['RecurringScheduleArgs'] recurring_schedule: Required. Schedule recurring executions.
         :param pulumi.Input['PatchRolloutArgs'] rollout: Optional. Rollout strategy of the patch job.
         """
+        pulumi.set(__self__, "instance_filter", instance_filter)
+        pulumi.set(__self__, "one_time_schedule", one_time_schedule)
         pulumi.set(__self__, "patch_deployment_id", patch_deployment_id)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "recurring_schedule", recurring_schedule)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
-        if instance_filter is not None:
-            pulumi.set(__self__, "instance_filter", instance_filter)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if one_time_schedule is not None:
-            pulumi.set(__self__, "one_time_schedule", one_time_schedule)
         if patch_config is not None:
             pulumi.set(__self__, "patch_config", patch_config)
-        if recurring_schedule is not None:
-            pulumi.set(__self__, "recurring_schedule", recurring_schedule)
         if rollout is not None:
             pulumi.set(__self__, "rollout", rollout)
+
+    @property
+    @pulumi.getter(name="instanceFilter")
+    def instance_filter(self) -> pulumi.Input['PatchInstanceFilterArgs']:
+        """
+        VM instances to patch.
+        """
+        return pulumi.get(self, "instance_filter")
+
+    @instance_filter.setter
+    def instance_filter(self, value: pulumi.Input['PatchInstanceFilterArgs']):
+        pulumi.set(self, "instance_filter", value)
+
+    @property
+    @pulumi.getter(name="oneTimeSchedule")
+    def one_time_schedule(self) -> pulumi.Input['OneTimeScheduleArgs']:
+        """
+        Schedule a one-time execution.
+        """
+        return pulumi.get(self, "one_time_schedule")
+
+    @one_time_schedule.setter
+    def one_time_schedule(self, value: pulumi.Input['OneTimeScheduleArgs']):
+        pulumi.set(self, "one_time_schedule", value)
 
     @property
     @pulumi.getter(name="patchDeploymentId")
@@ -73,6 +94,18 @@ class PatchDeploymentArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="recurringSchedule")
+    def recurring_schedule(self) -> pulumi.Input['RecurringScheduleArgs']:
+        """
+        Schedule recurring executions.
+        """
+        return pulumi.get(self, "recurring_schedule")
+
+    @recurring_schedule.setter
+    def recurring_schedule(self, value: pulumi.Input['RecurringScheduleArgs']):
+        pulumi.set(self, "recurring_schedule", value)
 
     @property
     @pulumi.getter
@@ -99,18 +132,6 @@ class PatchDeploymentArgs:
         pulumi.set(self, "duration", value)
 
     @property
-    @pulumi.getter(name="instanceFilter")
-    def instance_filter(self) -> Optional[pulumi.Input['PatchInstanceFilterArgs']]:
-        """
-        Required. VM instances to patch.
-        """
-        return pulumi.get(self, "instance_filter")
-
-    @instance_filter.setter
-    def instance_filter(self, value: Optional[pulumi.Input['PatchInstanceFilterArgs']]):
-        pulumi.set(self, "instance_filter", value)
-
-    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -123,18 +144,6 @@ class PatchDeploymentArgs:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="oneTimeSchedule")
-    def one_time_schedule(self) -> Optional[pulumi.Input['OneTimeScheduleArgs']]:
-        """
-        Required. Schedule a one-time execution.
-        """
-        return pulumi.get(self, "one_time_schedule")
-
-    @one_time_schedule.setter
-    def one_time_schedule(self, value: Optional[pulumi.Input['OneTimeScheduleArgs']]):
-        pulumi.set(self, "one_time_schedule", value)
-
-    @property
     @pulumi.getter(name="patchConfig")
     def patch_config(self) -> Optional[pulumi.Input['PatchConfigArgs']]:
         """
@@ -145,18 +154,6 @@ class PatchDeploymentArgs:
     @patch_config.setter
     def patch_config(self, value: Optional[pulumi.Input['PatchConfigArgs']]):
         pulumi.set(self, "patch_config", value)
-
-    @property
-    @pulumi.getter(name="recurringSchedule")
-    def recurring_schedule(self) -> Optional[pulumi.Input['RecurringScheduleArgs']]:
-        """
-        Required. Schedule recurring executions.
-        """
-        return pulumi.get(self, "recurring_schedule")
-
-    @recurring_schedule.setter
-    def recurring_schedule(self, value: Optional[pulumi.Input['RecurringScheduleArgs']]):
-        pulumi.set(self, "recurring_schedule", value)
 
     @property
     @pulumi.getter
@@ -194,11 +191,11 @@ class PatchDeployment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. Description of the patch deployment. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] duration: Optional. Duration of the patch. After the duration ends, the patch times out.
-        :param pulumi.Input[pulumi.InputType['PatchInstanceFilterArgs']] instance_filter: Required. VM instances to patch.
+        :param pulumi.Input[pulumi.InputType['PatchInstanceFilterArgs']] instance_filter: VM instances to patch.
         :param pulumi.Input[str] name: Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
-        :param pulumi.Input[pulumi.InputType['OneTimeScheduleArgs']] one_time_schedule: Required. Schedule a one-time execution.
+        :param pulumi.Input[pulumi.InputType['OneTimeScheduleArgs']] one_time_schedule: Schedule a one-time execution.
         :param pulumi.Input[pulumi.InputType['PatchConfigArgs']] patch_config: Optional. Patch configuration that is applied.
-        :param pulumi.Input[pulumi.InputType['RecurringScheduleArgs']] recurring_schedule: Required. Schedule recurring executions.
+        :param pulumi.Input[pulumi.InputType['RecurringScheduleArgs']] recurring_schedule: Schedule recurring executions.
         :param pulumi.Input[pulumi.InputType['PatchRolloutArgs']] rollout: Optional. Rollout strategy of the patch job.
         """
         ...
@@ -249,8 +246,12 @@ class PatchDeployment(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["duration"] = duration
+            if instance_filter is None and not opts.urn:
+                raise TypeError("Missing required property 'instance_filter'")
             __props__.__dict__["instance_filter"] = instance_filter
             __props__.__dict__["name"] = name
+            if one_time_schedule is None and not opts.urn:
+                raise TypeError("Missing required property 'one_time_schedule'")
             __props__.__dict__["one_time_schedule"] = one_time_schedule
             __props__.__dict__["patch_config"] = patch_config
             if patch_deployment_id is None and not opts.urn:
@@ -259,6 +260,8 @@ class PatchDeployment(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            if recurring_schedule is None and not opts.urn:
+                raise TypeError("Missing required property 'recurring_schedule'")
             __props__.__dict__["recurring_schedule"] = recurring_schedule
             __props__.__dict__["rollout"] = rollout
             __props__.__dict__["create_time"] = None
@@ -327,7 +330,7 @@ class PatchDeployment(pulumi.CustomResource):
     @pulumi.getter(name="instanceFilter")
     def instance_filter(self) -> pulumi.Output['outputs.PatchInstanceFilterResponse']:
         """
-        Required. VM instances to patch.
+        VM instances to patch.
         """
         return pulumi.get(self, "instance_filter")
 
@@ -351,7 +354,7 @@ class PatchDeployment(pulumi.CustomResource):
     @pulumi.getter(name="oneTimeSchedule")
     def one_time_schedule(self) -> pulumi.Output['outputs.OneTimeScheduleResponse']:
         """
-        Required. Schedule a one-time execution.
+        Schedule a one-time execution.
         """
         return pulumi.get(self, "one_time_schedule")
 
@@ -367,7 +370,7 @@ class PatchDeployment(pulumi.CustomResource):
     @pulumi.getter(name="recurringSchedule")
     def recurring_schedule(self) -> pulumi.Output['outputs.RecurringScheduleResponse']:
         """
-        Required. Schedule recurring executions.
+        Schedule recurring executions.
         """
         return pulumi.get(self, "recurring_schedule")
 

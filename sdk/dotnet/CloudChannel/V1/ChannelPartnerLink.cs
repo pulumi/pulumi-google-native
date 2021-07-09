@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public Output<string> InviteLinkUri { get; private set; } = null!;
 
         /// <summary>
-        /// Required. State of the channel partner link.
+        /// State of the channel partner link.
         /// </summary>
         [Output("linkState")]
         public Output<string> LinkState { get; private set; } = null!;
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public Output<string> PublicId { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Cloud Identity ID of the linked reseller.
+        /// Cloud Identity ID of the linked reseller.
         /// </summary>
         [Output("resellerCloudIdentityId")]
         public Output<string> ResellerCloudIdentityId { get; private set; } = null!;
@@ -112,16 +112,16 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
-        /// Required. State of the channel partner link.
+        /// State of the channel partner link.
         /// </summary>
-        [Input("linkState")]
-        public Input<Pulumi.GoogleNative.CloudChannel.V1.ChannelPartnerLinkLinkState>? LinkState { get; set; }
+        [Input("linkState", required: true)]
+        public Input<Pulumi.GoogleNative.CloudChannel.V1.ChannelPartnerLinkLinkState> LinkState { get; set; } = null!;
 
         /// <summary>
-        /// Required. Cloud Identity ID of the linked reseller.
+        /// Cloud Identity ID of the linked reseller.
         /// </summary>
-        [Input("resellerCloudIdentityId")]
-        public Input<string>? ResellerCloudIdentityId { get; set; }
+        [Input("resellerCloudIdentityId", required: true)]
+        public Input<string> ResellerCloudIdentityId { get; set; } = null!;
 
         public ChannelPartnerLinkArgs()
         {

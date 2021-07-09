@@ -22,16 +22,16 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public Input<string>? BatchSize { get; set; }
 
         /// <summary>
-        /// Required. The format of the input data files.
+        /// The format of the input data files.
         /// </summary>
-        [Input("dataFormat")]
-        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1__PredictionInputDataFormat>? DataFormat { get; set; }
+        [Input("dataFormat", required: true)]
+        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1__PredictionInputDataFormat> DataFormat { get; set; } = null!;
 
-        [Input("inputPaths")]
+        [Input("inputPaths", required: true)]
         private InputList<string>? _inputPaths;
 
         /// <summary>
-        /// Required. The Cloud Storage location of the input data files. May contain wildcards.
+        /// The Cloud Storage location of the input data files. May contain wildcards.
         /// </summary>
         public InputList<string> InputPaths
         {
@@ -58,16 +58,16 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1__PredictionInputOutputDataFormat>? OutputDataFormat { get; set; }
 
         /// <summary>
-        /// Required. The output Google Cloud Storage location.
+        /// The output Google Cloud Storage location.
         /// </summary>
-        [Input("outputPath")]
-        public Input<string>? OutputPath { get; set; }
+        [Input("outputPath", required: true)]
+        public Input<string> OutputPath { get; set; } = null!;
 
         /// <summary>
-        /// Required. The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
+        /// The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
         /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
 
         /// <summary>
         /// Optional. The AI Platform runtime version to use for this batch prediction. If not set, AI Platform will pick the runtime version used during the CreateVersion request for this model version, or choose the latest stable version when model version information is not available such as when the model is specified by uri.

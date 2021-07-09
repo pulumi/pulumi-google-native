@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     public sealed class GoogleCloudApigeeV1OperationConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. API proxy or remote service name with which the resources, methods, and quota are associated.
+        /// API proxy or remote service name with which the resources, methods, and quota are associated.
         /// </summary>
-        [Input("apiSource")]
-        public Input<string>? ApiSource { get; set; }
+        [Input("apiSource", required: true)]
+        public Input<string> ApiSource { get; set; } = null!;
 
         [Input("attributes")]
         private InputList<Inputs.GoogleCloudApigeeV1AttributeArgs>? _attributes;

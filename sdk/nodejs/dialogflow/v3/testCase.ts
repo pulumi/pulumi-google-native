@@ -40,7 +40,7 @@ export class TestCase extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
     /**
-     * Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+     * The human-readable name of the test case, unique within the agent. Limit of 200 characters.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -82,6 +82,9 @@ export class TestCase extends pulumi.CustomResource {
             if ((!args || args.agentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
             }
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -122,9 +125,9 @@ export class TestCase extends pulumi.CustomResource {
 export interface TestCaseArgs {
     agentId: pulumi.Input<string>;
     /**
-     * Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+     * The human-readable name of the test case, unique within the agent. Limit of 200 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * The latest test result.
      */

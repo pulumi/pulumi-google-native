@@ -13,23 +13,45 @@ __all__ = ['GcpUserAccessBindingArgs', 'GcpUserAccessBinding']
 @pulumi.input_type
 class GcpUserAccessBindingArgs:
     def __init__(__self__, *,
+                 access_levels: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 group_key: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
-                 access_levels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 group_key: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a GcpUserAccessBinding resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] access_levels: Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
-        :param pulumi.Input[str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the [G Suite Directory API's Groups resource] (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource). If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] access_levels: Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        :param pulumi.Input[str] group_key: Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the [G Suite Directory API's Groups resource] (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource). If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
         :param pulumi.Input[str] name: Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
         """
+        pulumi.set(__self__, "access_levels", access_levels)
+        pulumi.set(__self__, "group_key", group_key)
         pulumi.set(__self__, "organization_id", organization_id)
-        if access_levels is not None:
-            pulumi.set(__self__, "access_levels", access_levels)
-        if group_key is not None:
-            pulumi.set(__self__, "group_key", group_key)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="accessLevels")
+    def access_levels(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        """
+        return pulumi.get(self, "access_levels")
+
+    @access_levels.setter
+    def access_levels(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "access_levels", value)
+
+    @property
+    @pulumi.getter(name="groupKey")
+    def group_key(self) -> pulumi.Input[str]:
+        """
+        Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the [G Suite Directory API's Groups resource] (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource). If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
+        """
+        return pulumi.get(self, "group_key")
+
+    @group_key.setter
+    def group_key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "group_key", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -39,30 +61,6 @@ class GcpUserAccessBindingArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
-
-    @property
-    @pulumi.getter(name="accessLevels")
-    def access_levels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
-        """
-        return pulumi.get(self, "access_levels")
-
-    @access_levels.setter
-    def access_levels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "access_levels", value)
-
-    @property
-    @pulumi.getter(name="groupKey")
-    def group_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the [G Suite Directory API's Groups resource] (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource). If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
-        """
-        return pulumi.get(self, "group_key")
-
-    @group_key.setter
-    def group_key(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "group_key", value)
 
     @property
     @pulumi.getter
@@ -92,8 +90,8 @@ class GcpUserAccessBinding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] access_levels: Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
-        :param pulumi.Input[str] group_key: Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the [G Suite Directory API's Groups resource] (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource). If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] access_levels: Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        :param pulumi.Input[str] group_key: Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the [G Suite Directory API's Groups resource] (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource). If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
         :param pulumi.Input[str] name: Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N"
         """
         ...
@@ -136,7 +134,11 @@ class GcpUserAccessBinding(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GcpUserAccessBindingArgs.__new__(GcpUserAccessBindingArgs)
 
+            if access_levels is None and not opts.urn:
+                raise TypeError("Missing required property 'access_levels'")
             __props__.__dict__["access_levels"] = access_levels
+            if group_key is None and not opts.urn:
+                raise TypeError("Missing required property 'group_key'")
             __props__.__dict__["group_key"] = group_key
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:
@@ -173,7 +175,7 @@ class GcpUserAccessBinding(pulumi.CustomResource):
     @pulumi.getter(name="accessLevels")
     def access_levels(self) -> pulumi.Output[Sequence[str]]:
         """
-        Required. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
+        Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
         """
         return pulumi.get(self, "access_levels")
 
@@ -181,7 +183,7 @@ class GcpUserAccessBinding(pulumi.CustomResource):
     @pulumi.getter(name="groupKey")
     def group_key(self) -> pulumi.Output[str]:
         """
-        Required. Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the [G Suite Directory API's Groups resource] (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource). If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
+        Immutable. Google Group id whose members are subject to this binding's restrictions. See "id" in the [G Suite Directory API's Groups resource] (https://developers.google.com/admin-sdk/directory/v1/reference/groups#resource). If a group's email address/alias is changed, this resource will continue to point at the changed group. This field does not accept group email addresses or aliases. Example: "01d520gv4vjcrht"
         """
         return pulumi.get(self, "group_key")
 

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
     public partial class Consent : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+        /// The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
         /// </summary>
         [Output("consentArtifact")]
         public Output<string> ConsentArtifact { get; private set; } = null!;
@@ -58,7 +58,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public Output<string> RevisionId { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Indicates the current state of this Consent.
+        /// Indicates the current state of this Consent.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public Output<string> Ttl { get; private set; } = null!;
 
         /// <summary>
-        /// Required. User's UUID provided by the client.
+        /// User's UUID provided by the client.
         /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
@@ -121,10 +121,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1
     public sealed class ConsentArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+        /// The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
         /// </summary>
-        [Input("consentArtifact")]
-        public Input<string>? ConsentArtifact { get; set; }
+        [Input("consentArtifact", required: true)]
+        public Input<string> ConsentArtifact { get; set; } = null!;
 
         [Input("consentStoreId", required: true)]
         public Input<string> ConsentStoreId { get; set; } = null!;
@@ -175,10 +175,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Required. Indicates the current state of this Consent.
+        /// Indicates the current state of this Consent.
         /// </summary>
-        [Input("state")]
-        public Input<Pulumi.GoogleNative.Healthcare.V1.ConsentState>? State { get; set; }
+        [Input("state", required: true)]
+        public Input<Pulumi.GoogleNative.Healthcare.V1.ConsentState> State { get; set; } = null!;
 
         /// <summary>
         /// Input only. The time to live for this Consent from when it is created.
@@ -187,10 +187,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public Input<string>? Ttl { get; set; }
 
         /// <summary>
-        /// Required. User's UUID provided by the client.
+        /// User's UUID provided by the client.
         /// </summary>
-        [Input("userId")]
-        public Input<string>? UserId { get; set; }
+        [Input("userId", required: true)]
+        public Input<string> UserId { get; set; } = null!;
 
         public ConsentArgs()
         {

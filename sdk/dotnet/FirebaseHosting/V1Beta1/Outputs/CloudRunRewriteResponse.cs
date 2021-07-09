@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Outputs
         /// </summary>
         public readonly string Region;
         /// <summary>
-        /// Required. User-defined ID of the Cloud Run service.
+        /// User-defined ID of the Cloud Run service.
         /// </summary>
         public readonly string ServiceId;
 

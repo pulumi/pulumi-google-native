@@ -118,7 +118,7 @@ class Aes128EncryptionResponse(dict):
                  key_uri: str):
         """
         Configuration for AES-128 encryption.
-        :param str key_uri: Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
+        :param str key_uri: URI of the key delivery service. This URI is inserted into the M3U8 header.
         """
         pulumi.set(__self__, "key_uri", key_uri)
 
@@ -126,7 +126,7 @@ class Aes128EncryptionResponse(dict):
     @pulumi.getter(name="keyUri")
     def key_uri(self) -> str:
         """
-        Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
+        URI of the key delivery service. This URI is inserted into the M3U8 header.
         """
         return pulumi.get(self, "key_uri")
 
@@ -204,7 +204,7 @@ class AnimationFadeResponse(dict):
         """
         Display overlay object with fade animation.
         :param str end_time_offset: The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s
-        :param str fade_type: Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
+        :param str fade_type: Type of fade animation: `FADE_IN` or `FADE_OUT`.
         :param str start_time_offset: The time to start the fade animation, in seconds. Default: 0
         :param 'NormalizedCoordinateResponse' xy: Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
         """
@@ -225,7 +225,7 @@ class AnimationFadeResponse(dict):
     @pulumi.getter(name="fadeType")
     def fade_type(self) -> str:
         """
-        Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
+        Type of fade animation: `FADE_IN` or `FADE_OUT`.
         """
         return pulumi.get(self, "fade_type")
 
@@ -372,7 +372,7 @@ class AudioAtomResponse(dict):
         """
         The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.
         :param Sequence['AudioChannelResponse'] channels: List of `Channel`s for this audio stream. for in-depth explanation.
-        :param str key: Required. The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+        :param str key: The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
         """
         pulumi.set(__self__, "channels", channels)
         pulumi.set(__self__, "key", key)
@@ -389,7 +389,7 @@ class AudioAtomResponse(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Required. The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+        The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
         """
         return pulumi.get(self, "key")
 
@@ -423,10 +423,10 @@ class AudioChannelInputResponse(dict):
                  track: int):
         """
         Identifies which input file, track, and channel should be used.
-        :param int channel: Required. The zero-based index of the channel in the input file.
+        :param int channel: The zero-based index of the channel in the input file.
         :param float gain_db: Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
-        :param str key: Required. The `Input.key` that identifies the input file.
-        :param int track: Required. The zero-based index of the track in the input file.
+        :param str key: The `Input.key` that identifies the input file.
+        :param int track: The zero-based index of the track in the input file.
         """
         pulumi.set(__self__, "channel", channel)
         pulumi.set(__self__, "gain_db", gain_db)
@@ -437,7 +437,7 @@ class AudioChannelInputResponse(dict):
     @pulumi.getter
     def channel(self) -> int:
         """
-        Required. The zero-based index of the channel in the input file.
+        The zero-based index of the channel in the input file.
         """
         return pulumi.get(self, "channel")
 
@@ -453,7 +453,7 @@ class AudioChannelInputResponse(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Required. The `Input.key` that identifies the input file.
+        The `Input.key` that identifies the input file.
         """
         return pulumi.get(self, "key")
 
@@ -461,7 +461,7 @@ class AudioChannelInputResponse(dict):
     @pulumi.getter
     def track(self) -> int:
         """
-        Required. The zero-based index of the track in the input file.
+        The zero-based index of the track in the input file.
         """
         return pulumi.get(self, "track")
 
@@ -588,7 +588,7 @@ class AudioStreamResponse(dict):
                  sample_rate_hertz: int):
         """
         Audio stream resource.
-        :param int bitrate_bps: Required. Audio bitrate in bits per second. Must be between 1 and 10,000,000.
+        :param int bitrate_bps: Audio bitrate in bits per second. Must be between 1 and 10,000,000.
         :param int channel_count: Number of audio channels. Must be between 1 and 6. The default is 2.
         :param Sequence[str] channel_layout: A list of channel names specifying layout of the audio channels. This only affects the metadata embedded in the container headers, if supported by the specified format. The default is `["fl", "fr"]`. Supported channel names: - 'fl' - Front left channel - 'fr' - Front right channel - 'sl' - Side left channel - 'sr' - Side right channel - 'fc' - Front center channel - 'lfe' - Low frequency
         :param str codec: The codec for this audio stream. The default is `"aac"`. Supported audio codecs: - 'aac' - 'aac-he' - 'aac-he-v2' - 'mp3' - 'ac3' - 'eac3'
@@ -606,7 +606,7 @@ class AudioStreamResponse(dict):
     @pulumi.getter(name="bitrateBps")
     def bitrate_bps(self) -> int:
         """
-        Required. Audio bitrate in bits per second. Must be between 1 and 10,000,000.
+        Audio bitrate in bits per second. Must be between 1 and 10,000,000.
         """
         return pulumi.get(self, "bitrate_bps")
 
@@ -1022,8 +1022,8 @@ class EncryptionResponse(dict):
         """
         Encryption settings.
         :param 'Aes128EncryptionResponse' aes128: Configuration for AES-128 encryption.
-        :param str iv: Required. 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
-        :param str key: Required. 128 bit encryption key represented as lowercase hexadecimal digits.
+        :param str iv: 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
+        :param str key: 128 bit encryption key represented as lowercase hexadecimal digits.
         :param 'MpegCommonEncryptionResponse' mpeg_cenc: Configuration for MPEG Common Encryption (MPEG-CENC).
         :param 'SampleAesEncryptionResponse' sample_aes: Configuration for SAMPLE-AES encryption.
         """
@@ -1045,7 +1045,7 @@ class EncryptionResponse(dict):
     @pulumi.getter
     def iv(self) -> str:
         """
-        Required. 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
+        128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
         """
         return pulumi.get(self, "iv")
 
@@ -1053,7 +1053,7 @@ class EncryptionResponse(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Required. 128 bit encryption key represented as lowercase hexadecimal digits.
+        128 bit encryption key represented as lowercase hexadecimal digits.
         """
         return pulumi.get(self, "key")
 
@@ -1109,7 +1109,7 @@ class ImageResponse(dict):
         Overlaid jpeg image.
         :param float alpha: Target image opacity. Valid values: `1.0` (solid, default) to `0.0` (transparent).
         :param 'NormalizedCoordinateResponse' resolution: Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
-        :param str uri: Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+        :param str uri: URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
         """
         pulumi.set(__self__, "alpha", alpha)
         pulumi.set(__self__, "resolution", resolution)
@@ -1135,7 +1135,7 @@ class ImageResponse(dict):
     @pulumi.getter
     def uri(self) -> str:
         """
-        Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+        URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
         """
         return pulumi.get(self, "uri")
 
@@ -1380,8 +1380,8 @@ class ManifestResponse(dict):
         """
         Manifest configuration.
         :param str file_name: The name of the generated file. The default is `"manifest"` with the extension suffix corresponding to the `Manifest.type`.
-        :param Sequence[str] mux_streams: Required. List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
-        :param str type: Required. Type of the manifest, can be "HLS" or "DASH".
+        :param Sequence[str] mux_streams: List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+        :param str type: Type of the manifest, can be "HLS" or "DASH".
         """
         pulumi.set(__self__, "file_name", file_name)
         pulumi.set(__self__, "mux_streams", mux_streams)
@@ -1399,7 +1399,7 @@ class ManifestResponse(dict):
     @pulumi.getter(name="muxStreams")
     def mux_streams(self) -> Sequence[str]:
         """
-        Required. List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+        List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
         """
         return pulumi.get(self, "mux_streams")
 
@@ -1407,7 +1407,7 @@ class ManifestResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Required. Type of the manifest, can be "HLS" or "DASH".
+        Type of the manifest, can be "HLS" or "DASH".
         """
         return pulumi.get(self, "type")
 
@@ -1439,8 +1439,8 @@ class MpegCommonEncryptionResponse(dict):
                  scheme: str):
         """
         Configuration for MPEG Common Encryption (MPEG-CENC).
-        :param str key_id: Required. 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
-        :param str scheme: Required. Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
+        :param str key_id: 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
+        :param str scheme: Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
         """
         pulumi.set(__self__, "key_id", key_id)
         pulumi.set(__self__, "scheme", scheme)
@@ -1449,7 +1449,7 @@ class MpegCommonEncryptionResponse(dict):
     @pulumi.getter(name="keyId")
     def key_id(self) -> str:
         """
-        Required. 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
+        128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
         """
         return pulumi.get(self, "key_id")
 
@@ -1457,7 +1457,7 @@ class MpegCommonEncryptionResponse(dict):
     @pulumi.getter
     def scheme(self) -> str:
         """
-        Required. Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
+        Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
         """
         return pulumi.get(self, "scheme")
 
@@ -1939,7 +1939,7 @@ class SampleAesEncryptionResponse(dict):
                  key_uri: str):
         """
         Configuration for SAMPLE-AES encryption.
-        :param str key_uri: Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
+        :param str key_uri: URI of the key delivery service. This URI is inserted into the M3U8 header.
         """
         pulumi.set(__self__, "key_uri", key_uri)
 
@@ -1947,7 +1947,7 @@ class SampleAesEncryptionResponse(dict):
     @pulumi.getter(name="keyUri")
     def key_uri(self) -> str:
         """
-        Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
+        URI of the key delivery service. This URI is inserted into the M3U8 header.
         """
         return pulumi.get(self, "key_uri")
 
@@ -1981,7 +1981,7 @@ class SegmentSettingsResponse(dict):
                  segment_duration: str):
         """
         Segment settings for `"ts"`, `"fmp4"` and `"vtt"`.
-        :param bool individual_segments: Required. Create an individual segment file. The default is `false`.
+        :param bool individual_segments: Create an individual segment file. The default is `false`.
         :param str segment_duration: Duration of the segments in seconds. The default is `"6.0s"`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).
         """
         pulumi.set(__self__, "individual_segments", individual_segments)
@@ -1991,7 +1991,7 @@ class SegmentSettingsResponse(dict):
     @pulumi.getter(name="individualSegments")
     def individual_segments(self) -> bool:
         """
-        Required. Create an individual segment file. The default is `false`.
+        Create an individual segment file. The default is `false`.
         """
         return pulumi.get(self, "individual_segments")
 
@@ -2056,13 +2056,13 @@ class SpriteSheetResponse(dict):
         Sprite sheet configuration.
         :param int column_count: The maximum number of sprites per row in a sprite sheet. The default is 0, which indicates no maximum limit.
         :param str end_time_offset: End time in seconds, relative to the output file timeline. When `end_time_offset` is not specified, the sprites are generated until the end of the output file.
-        :param str file_prefix: Required. File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
+        :param str file_prefix: File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
         :param str format: Format type. The default is `"jpeg"`. Supported formats: - 'jpeg'
         :param str interval: Starting from `0s`, create sprites at regular intervals. Specify the interval value in seconds.
         :param int quality: The quality of the generated sprite sheet. Enter a value between 1 and 100, where 1 is the lowest quality and 100 is the highest quality. The default is 100. A high quality value corresponds to a low image data compression ratio.
         :param int row_count: The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created. The default is 0, which indicates no maximum limit.
-        :param int sprite_height_pixels: Required. The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
-        :param int sprite_width_pixels: Required. The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
+        :param int sprite_height_pixels: The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
+        :param int sprite_width_pixels: The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
         :param str start_time_offset: Start time in seconds, relative to the output file timeline. Determines the first sprite to pick. The default is `0s`.
         :param int total_count: Total number of sprites. Create the specified number of sprites distributed evenly across the timeline of the output media. The default is 100.
         """
@@ -2098,7 +2098,7 @@ class SpriteSheetResponse(dict):
     @pulumi.getter(name="filePrefix")
     def file_prefix(self) -> str:
         """
-        Required. File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
+        File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
         """
         return pulumi.get(self, "file_prefix")
 
@@ -2138,7 +2138,7 @@ class SpriteSheetResponse(dict):
     @pulumi.getter(name="spriteHeightPixels")
     def sprite_height_pixels(self) -> int:
         """
-        Required. The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
+        The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
         """
         return pulumi.get(self, "sprite_height_pixels")
 
@@ -2146,7 +2146,7 @@ class SpriteSheetResponse(dict):
     @pulumi.getter(name="spriteWidthPixels")
     def sprite_width_pixels(self) -> int:
         """
-        Required. The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
+        The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
         """
         return pulumi.get(self, "sprite_width_pixels")
 
@@ -2178,7 +2178,7 @@ class TextAtomResponse(dict):
         """
         The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
         :param Sequence['TextInputResponse'] inputs: List of `Job.inputs` that should be embedded in this atom. Only one input is supported.
-        :param str key: Required. The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
+        :param str key: The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
         """
         pulumi.set(__self__, "inputs", inputs)
         pulumi.set(__self__, "key", key)
@@ -2195,7 +2195,7 @@ class TextAtomResponse(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Required. The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
+        The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
         """
         return pulumi.get(self, "key")
 
@@ -2210,8 +2210,8 @@ class TextInputResponse(dict):
                  track: int):
         """
         Identifies which input file and track should be used.
-        :param str key: Required. The `Input.key` that identifies the input file.
-        :param int track: Required. The zero-based index of the track in the input file.
+        :param str key: The `Input.key` that identifies the input file.
+        :param int track: The zero-based index of the track in the input file.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "track", track)
@@ -2220,7 +2220,7 @@ class TextInputResponse(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Required. The `Input.key` that identifies the input file.
+        The `Input.key` that identifies the input file.
         """
         return pulumi.get(self, "key")
 
@@ -2228,7 +2228,7 @@ class TextInputResponse(dict):
     @pulumi.getter
     def track(self) -> int:
         """
-        Required. The zero-based index of the track in the input file.
+        The zero-based index of the track in the input file.
         """
         return pulumi.get(self, "track")
 
@@ -2262,7 +2262,7 @@ class TextStreamResponse(dict):
         """
         Encoding of a text stream. For example, closed captions or subtitles.
         :param str codec: The codec for this text stream. The default is `"webvtt"`. Supported text codecs: - 'srt' - 'ttml' - 'cea608' - 'cea708' - 'webvtt'
-        :param str language_code: Required. The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        :param str language_code: The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         :param Sequence['TextAtomResponse'] mapping: The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
         """
         pulumi.set(__self__, "codec", codec)
@@ -2281,7 +2281,7 @@ class TextStreamResponse(dict):
     @pulumi.getter(name="languageCode")
     def language_code(self) -> str:
         """
-        Required. The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         """
         return pulumi.get(self, "language_code")
 
@@ -2376,12 +2376,12 @@ class VideoStreamResponse(dict):
         :param float aq_strength: Specify the intensity of the adaptive quantizer (AQ). Must be between 0 and 1, where 0 disables the quantizer and 1 maximizes the quantizer. A higher value equals a lower bitrate but smoother image. The default is 0.
         :param int b_frame_count: The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than `VideoStream.gop_frame_count` if set. The default is 0.
         :param bool b_pyramid: Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
-        :param int bitrate_bps: Required. The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+        :param int bitrate_bps: The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
         :param str codec: Codec type. The following codecs are supported: * `h264` (default) * `h265` * `vp9`
         :param int crf_level: Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
         :param bool enable_two_pass: Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be `"vbr"`. The default is `false`.
         :param str entropy_coder: The entropy coder to use. The default is `"cabac"`. Supported entropy coders: - 'cavlc' - 'cabac'
-        :param float frame_rate: Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+        :param float frame_rate: The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
         :param str gop_duration: Select the GOP size based on the specified duration. The default is `"3s"`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
         :param int gop_frame_count: Select the GOP size based on the specified frame count. Must be greater than zero.
         :param int height_pixels: The height of the video in pixels. Must be an even integer. When not specified, the height is adjusted to match the specified width and input aspect ratio. If both are omitted, the input height is used.
@@ -2452,7 +2452,7 @@ class VideoStreamResponse(dict):
     @pulumi.getter(name="bitrateBps")
     def bitrate_bps(self) -> int:
         """
-        Required. The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+        The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
         """
         return pulumi.get(self, "bitrate_bps")
 
@@ -2492,7 +2492,7 @@ class VideoStreamResponse(dict):
     @pulumi.getter(name="frameRate")
     def frame_rate(self) -> float:
         """
-        Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+        The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
         """
         return pulumi.get(self, "frame_rate")
 

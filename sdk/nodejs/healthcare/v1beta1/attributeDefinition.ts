@@ -36,11 +36,11 @@ export class AttributeDefinition extends pulumi.CustomResource {
     }
 
     /**
-     * Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+     * Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
      */
     public readonly allowedValues!: pulumi.Output<string[]>;
     /**
-     * Required. The category of the attribute. The value of this field cannot be changed after creation.
+     * The category of the attribute. The value of this field cannot be changed after creation.
      */
     public readonly category!: pulumi.Output<string>;
     /**
@@ -71,8 +71,14 @@ export class AttributeDefinition extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.allowedValues === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'allowedValues'");
+            }
             if ((!args || args.attributeDefinitionId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'attributeDefinitionId'");
+            }
+            if ((!args || args.category === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'category'");
             }
             if ((!args || args.consentStoreId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'consentStoreId'");
@@ -117,14 +123,14 @@ export class AttributeDefinition extends pulumi.CustomResource {
  */
 export interface AttributeDefinitionArgs {
     /**
-     * Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+     * Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
      */
-    allowedValues?: pulumi.Input<pulumi.Input<string>[]>;
+    allowedValues: pulumi.Input<pulumi.Input<string>[]>;
     attributeDefinitionId: pulumi.Input<string>;
     /**
-     * Required. The category of the attribute. The value of this field cannot be changed after creation.
+     * The category of the attribute. The value of this field cannot be changed after creation.
      */
-    category?: pulumi.Input<enums.healthcare.v1beta1.AttributeDefinitionCategory>;
+    category: pulumi.Input<enums.healthcare.v1beta1.AttributeDefinitionCategory>;
     /**
      * Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
      */

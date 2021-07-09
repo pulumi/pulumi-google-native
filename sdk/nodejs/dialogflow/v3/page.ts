@@ -36,7 +36,7 @@ export class Page extends pulumi.CustomResource {
     }
 
     /**
-     * Required. The human-readable name of the page, unique within the agent.
+     * The human-readable name of the page, unique within the agent.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -77,6 +77,9 @@ export class Page extends pulumi.CustomResource {
         if (!opts.id) {
             if ((!args || args.agentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
+            }
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
             }
             if ((!args || args.flowId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'flowId'");
@@ -121,9 +124,9 @@ export class Page extends pulumi.CustomResource {
 export interface PageArgs {
     agentId: pulumi.Input<string>;
     /**
-     * Required. The human-readable name of the page, unique within the agent.
+     * The human-readable name of the page, unique within the agent.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * The fulfillment to call when the session is entering the page.
      */

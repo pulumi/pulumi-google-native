@@ -32,8 +32,8 @@ type LookupFeedResult struct {
 	Condition ExprResponse `pulumi:"condition"`
 	// Asset content type. If not specified, no content but the asset name and type will be returned.
 	ContentType string `pulumi:"contentType"`
-	// Required. Feed output configuration defining where the asset updates are published to.
+	// Feed output configuration defining where the asset updates are published to.
 	FeedOutputConfig FeedOutputConfigResponse `pulumi:"feedOutputConfig"`
-	// Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
+	// The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization.
 	Name string `pulumi:"name"`
 }

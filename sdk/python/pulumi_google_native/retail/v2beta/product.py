@@ -21,6 +21,7 @@ class ProductArgs:
                  location: pulumi.Input[str],
                  product_id: pulumi.Input[str],
                  project: pulumi.Input[str],
+                 title: pulumi.Input[str],
                  attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  availability: Optional[pulumi.Input['ProductAvailability']] = None,
                  available_quantity: Optional[pulumi.Input[int]] = None,
@@ -33,11 +34,11 @@ class ProductArgs:
                  price_info: Optional[pulumi.Input['GoogleCloudRetailV2betaPriceInfoArgs']] = None,
                  primary_product_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 title: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['ProductType']] = None,
                  uri: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Product resource.
+        :param pulumi.Input[str] title: Product title. This field must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [title](https://support.google.com/merchants/answer/6324415). Schema.org property [Product.name](https://schema.org/name).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] attributes: Highly encouraged. Extra product attributes to be included. For example, for products, this could include the store name, vendor, style, color, etc. These are very strong signals for recommendation model, thus we highly recommend providing the attributes here. Features that can take on one of a limited number of possible values. Two types of features can be set are: Textual features. some examples would be the brand/maker of a product, or country of a customer. Numerical features. Some examples would be the height/weight of a product, or age of a customer. For example: `{ "vendor": {"text": ["vendor123", "vendor456"]}, "lengths_cm": {"numbers":[2.3, 15.4]}, "heights_cm": {"numbers":[8.1, 6.4]} }`. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * Max entries count: 150 by default; 100 for Type.VARIANT. * The key must be a UTF-8 encoded string with a length limit of 128 characters.
         :param pulumi.Input['ProductAvailability'] availability: The online availability of the Product. Default to Availability.IN_STOCK. Google Merchant Center Property [availability](https://support.google.com/merchants/answer/6324448). Schema.org Property [Offer.availability](https://schema.org/availability).
         :param pulumi.Input[int] available_quantity: The available quantity of the item.
@@ -50,7 +51,6 @@ class ProductArgs:
         :param pulumi.Input['GoogleCloudRetailV2betaPriceInfoArgs'] price_info: Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
         :param pulumi.Input[str] primary_product_id: Variant group identifier. Must be an id, with the same parent branch with this product. Otherwise, an error is thrown. For Type.PRIMARY Products, this field can only be empty or set to the same value as id. For VARIANT Products, this field cannot be empty. A maximum of 2,000 products are allowed to share the same Type.PRIMARY Product. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center Property [item_group_id](https://support.google.com/merchants/answer/6324507). Schema.org Property [Product.inProductGroupWithID](https://schema.org/inProductGroupWithID). This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Custom tags associated with the product. At most 250 values are allowed per Product. This value must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. This tag can be used for filtering recommendation results by passing the tag as part of the PredictRequest.filter. Google Merchant Center property [custom_label_0–4](https://support.google.com/merchants/answer/6324473).
-        :param pulumi.Input[str] title: Required. Product title. This field must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [title](https://support.google.com/merchants/answer/6324415). Schema.org property [Product.name](https://schema.org/name).
         :param pulumi.Input['ProductType'] type: Immutable. The type of the product. This field is output-only. Default to Catalog.product_level_config.ingestion_product_type if unset.
         :param pulumi.Input[str] uri: Canonical URL directly linking to the product detail page. It is strongly recommended to provide a valid uri for the product, otherwise the service performance could be significantly degraded. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [link](https://support.google.com/merchants/answer/6324416). Schema.org property [Offer.url](https://schema.org/url).
         """
@@ -59,6 +59,7 @@ class ProductArgs:
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "product_id", product_id)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "title", title)
         if attributes is not None:
             pulumi.set(__self__, "attributes", attributes)
         if availability is not None:
@@ -83,8 +84,6 @@ class ProductArgs:
             pulumi.set(__self__, "primary_product_id", primary_product_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
-        if title is not None:
-            pulumi.set(__self__, "title", title)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if uri is not None:
@@ -134,6 +133,18 @@ class ProductArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        Product title. This field must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [title](https://support.google.com/merchants/answer/6324415). Schema.org property [Product.name](https://schema.org/name).
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
 
     @property
     @pulumi.getter
@@ -281,18 +292,6 @@ class ProductArgs:
 
     @property
     @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Product title. This field must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [title](https://support.google.com/merchants/answer/6324415). Schema.org property [Product.name](https://schema.org/name).
-        """
-        return pulumi.get(self, "title")
-
-    @title.setter
-    def title(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "title", value)
-
-    @property
-    @pulumi.getter
     def type(self) -> Optional[pulumi.Input['ProductType']]:
         """
         Immutable. The type of the product. This field is output-only. Default to Catalog.product_level_config.ingestion_product_type if unset.
@@ -359,7 +358,7 @@ class Product(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudRetailV2betaPriceInfoArgs']] price_info: Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
         :param pulumi.Input[str] primary_product_id: Variant group identifier. Must be an id, with the same parent branch with this product. Otherwise, an error is thrown. For Type.PRIMARY Products, this field can only be empty or set to the same value as id. For VARIANT Products, this field cannot be empty. A maximum of 2,000 products are allowed to share the same Type.PRIMARY Product. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center Property [item_group_id](https://support.google.com/merchants/answer/6324507). Schema.org Property [Product.inProductGroupWithID](https://schema.org/inProductGroupWithID). This field must be enabled before it can be used. [Learn more](/recommendations-ai/docs/catalog#item-group-id).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Custom tags associated with the product. At most 250 values are allowed per Product. This value must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. This tag can be used for filtering recommendation results by passing the tag as part of the PredictRequest.filter. Google Merchant Center property [custom_label_0–4](https://support.google.com/merchants/answer/6324473).
-        :param pulumi.Input[str] title: Required. Product title. This field must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [title](https://support.google.com/merchants/answer/6324415). Schema.org property [Product.name](https://schema.org/name).
+        :param pulumi.Input[str] title: Product title. This field must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [title](https://support.google.com/merchants/answer/6324415). Schema.org property [Product.name](https://schema.org/name).
         :param pulumi.Input['ProductType'] type: Immutable. The type of the product. This field is output-only. Default to Catalog.product_level_config.ingestion_product_type if unset.
         :param pulumi.Input[str] uri: Canonical URL directly linking to the product detail page. It is strongly recommended to provide a valid uri for the product, otherwise the service performance could be significantly degraded. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [link](https://support.google.com/merchants/answer/6324416). Schema.org property [Offer.url](https://schema.org/url).
         """
@@ -446,6 +445,8 @@ class Product(pulumi.CustomResource):
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
             __props__.__dict__["tags"] = tags
+            if title is None and not opts.urn:
+                raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
             __props__.__dict__["type"] = type
             __props__.__dict__["uri"] = uri
@@ -579,7 +580,7 @@ class Product(pulumi.CustomResource):
     @pulumi.getter
     def title(self) -> pulumi.Output[str]:
         """
-        Required. Product title. This field must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [title](https://support.google.com/merchants/answer/6324415). Schema.org property [Product.name](https://schema.org/name).
+        Product title. This field must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [title](https://support.google.com/merchants/answer/6324415). Schema.org property [Product.name](https://schema.org/name).
         """
         return pulumi.get(self, "title")
 

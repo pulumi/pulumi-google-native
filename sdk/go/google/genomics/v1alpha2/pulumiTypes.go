@@ -14,16 +14,16 @@ import (
 type Disk struct {
 	// Required at create time and cannot be overridden at run time. Specifies the path in the docker container where files on this disk should be located. For example, if `mountPoint` is `/mnt/disk`, and the parameter has `localPath` `inputs/file.txt`, the docker container can access the data at `/mnt/disk/inputs/file.txt`.
 	MountPoint *string `pulumi:"mountPoint"`
-	// Required. The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
-	Name *string `pulumi:"name"`
+	// The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
+	Name string `pulumi:"name"`
 	// Specifies how a sourced-base persistent disk will be mounted. See https://cloud.google.com/compute/docs/disks/persistent-disks#use_multi_instances for more details. Can only be set at create time.
 	ReadOnly *bool `pulumi:"readOnly"`
 	// The size of the disk. Defaults to 500 (GB). This field is not applicable for local SSD.
 	SizeGb *int `pulumi:"sizeGb"`
 	// The full or partial URL of the persistent disk to attach. See https://cloud.google.com/compute/docs/reference/latest/instances#resource and https://cloud.google.com/compute/docs/disks/persistent-disks#snapshots for more details.
 	Source *string `pulumi:"source"`
-	// Required. The type of the disk to create.
-	Type *string `pulumi:"type"`
+	// The type of the disk to create.
+	Type string `pulumi:"type"`
 }
 
 // DiskInput is an input type that accepts DiskArgs and DiskOutput values.
@@ -41,16 +41,16 @@ type DiskInput interface {
 type DiskArgs struct {
 	// Required at create time and cannot be overridden at run time. Specifies the path in the docker container where files on this disk should be located. For example, if `mountPoint` is `/mnt/disk`, and the parameter has `localPath` `inputs/file.txt`, the docker container can access the data at `/mnt/disk/inputs/file.txt`.
 	MountPoint pulumi.StringPtrInput `pulumi:"mountPoint"`
-	// Required. The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
+	Name pulumi.StringInput `pulumi:"name"`
 	// Specifies how a sourced-base persistent disk will be mounted. See https://cloud.google.com/compute/docs/disks/persistent-disks#use_multi_instances for more details. Can only be set at create time.
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
 	// The size of the disk. Defaults to 500 (GB). This field is not applicable for local SSD.
 	SizeGb pulumi.IntPtrInput `pulumi:"sizeGb"`
 	// The full or partial URL of the persistent disk to attach. See https://cloud.google.com/compute/docs/reference/latest/instances#resource and https://cloud.google.com/compute/docs/disks/persistent-disks#snapshots for more details.
 	Source pulumi.StringPtrInput `pulumi:"source"`
-	// Required. The type of the disk to create.
-	Type *DiskType `pulumi:"type"`
+	// The type of the disk to create.
+	Type DiskType `pulumi:"type"`
 }
 
 func (DiskArgs) ElementType() reflect.Type {
@@ -110,9 +110,9 @@ func (o DiskOutput) MountPoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Disk) *string { return v.MountPoint }).(pulumi.StringPtrOutput)
 }
 
-// Required. The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
-func (o DiskOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Disk) *string { return v.Name }).(pulumi.StringPtrOutput)
+// The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
+func (o DiskOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v Disk) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Specifies how a sourced-base persistent disk will be mounted. See https://cloud.google.com/compute/docs/disks/persistent-disks#use_multi_instances for more details. Can only be set at create time.
@@ -130,9 +130,9 @@ func (o DiskOutput) Source() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Disk) *string { return v.Source }).(pulumi.StringPtrOutput)
 }
 
-// Required. The type of the disk to create.
-func (o DiskOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Disk) *string { return v.Type }).(pulumi.StringPtrOutput)
+// The type of the disk to create.
+func (o DiskOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v Disk) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type DiskArrayOutput struct{ *pulumi.OutputState }
@@ -159,7 +159,7 @@ func (o DiskArrayOutput) Index(i pulumi.IntInput) DiskOutput {
 type DiskResponse struct {
 	// Required at create time and cannot be overridden at run time. Specifies the path in the docker container where files on this disk should be located. For example, if `mountPoint` is `/mnt/disk`, and the parameter has `localPath` `inputs/file.txt`, the docker container can access the data at `/mnt/disk/inputs/file.txt`.
 	MountPoint string `pulumi:"mountPoint"`
-	// Required. The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
+	// The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
 	Name string `pulumi:"name"`
 	// Specifies how a sourced-base persistent disk will be mounted. See https://cloud.google.com/compute/docs/disks/persistent-disks#use_multi_instances for more details. Can only be set at create time.
 	ReadOnly bool `pulumi:"readOnly"`
@@ -167,7 +167,7 @@ type DiskResponse struct {
 	SizeGb int `pulumi:"sizeGb"`
 	// The full or partial URL of the persistent disk to attach. See https://cloud.google.com/compute/docs/reference/latest/instances#resource and https://cloud.google.com/compute/docs/disks/persistent-disks#snapshots for more details.
 	Source string `pulumi:"source"`
-	// Required. The type of the disk to create.
+	// The type of the disk to create.
 	Type string `pulumi:"type"`
 }
 
@@ -186,7 +186,7 @@ type DiskResponseInput interface {
 type DiskResponseArgs struct {
 	// Required at create time and cannot be overridden at run time. Specifies the path in the docker container where files on this disk should be located. For example, if `mountPoint` is `/mnt/disk`, and the parameter has `localPath` `inputs/file.txt`, the docker container can access the data at `/mnt/disk/inputs/file.txt`.
 	MountPoint pulumi.StringInput `pulumi:"mountPoint"`
-	// Required. The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
+	// The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Specifies how a sourced-base persistent disk will be mounted. See https://cloud.google.com/compute/docs/disks/persistent-disks#use_multi_instances for more details. Can only be set at create time.
 	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
@@ -194,7 +194,7 @@ type DiskResponseArgs struct {
 	SizeGb pulumi.IntInput `pulumi:"sizeGb"`
 	// The full or partial URL of the persistent disk to attach. See https://cloud.google.com/compute/docs/reference/latest/instances#resource and https://cloud.google.com/compute/docs/disks/persistent-disks#snapshots for more details.
 	Source pulumi.StringInput `pulumi:"source"`
-	// Required. The type of the disk to create.
+	// The type of the disk to create.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -255,7 +255,7 @@ func (o DiskResponseOutput) MountPoint() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.MountPoint }).(pulumi.StringOutput)
 }
 
-// Required. The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
+// The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
 func (o DiskResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -275,7 +275,7 @@ func (o DiskResponseOutput) Source() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.Source }).(pulumi.StringOutput)
 }
 
-// Required. The type of the disk to create.
+// The type of the disk to create.
 func (o DiskResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v DiskResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -302,10 +302,10 @@ func (o DiskResponseArrayOutput) Index(i pulumi.IntInput) DiskResponseOutput {
 
 // The Docker execuctor specification.
 type DockerExecutor struct {
-	// Required. The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
-	Cmd *string `pulumi:"cmd"`
-	// Required. Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
-	ImageName *string `pulumi:"imageName"`
+	// The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
+	Cmd string `pulumi:"cmd"`
+	// Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
+	ImageName string `pulumi:"imageName"`
 }
 
 // DockerExecutorInput is an input type that accepts DockerExecutorArgs and DockerExecutorOutput values.
@@ -321,10 +321,10 @@ type DockerExecutorInput interface {
 
 // The Docker execuctor specification.
 type DockerExecutorArgs struct {
-	// Required. The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
-	Cmd pulumi.StringPtrInput `pulumi:"cmd"`
-	// Required. Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
-	ImageName pulumi.StringPtrInput `pulumi:"imageName"`
+	// The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
+	Cmd pulumi.StringInput `pulumi:"cmd"`
+	// Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
+	ImageName pulumi.StringInput `pulumi:"imageName"`
 }
 
 func (DockerExecutorArgs) ElementType() reflect.Type {
@@ -405,14 +405,14 @@ func (o DockerExecutorOutput) ToDockerExecutorPtrOutputWithContext(ctx context.C
 	}).(DockerExecutorPtrOutput)
 }
 
-// Required. The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
-func (o DockerExecutorOutput) Cmd() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DockerExecutor) *string { return v.Cmd }).(pulumi.StringPtrOutput)
+// The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
+func (o DockerExecutorOutput) Cmd() pulumi.StringOutput {
+	return o.ApplyT(func(v DockerExecutor) string { return v.Cmd }).(pulumi.StringOutput)
 }
 
-// Required. Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
-func (o DockerExecutorOutput) ImageName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DockerExecutor) *string { return v.ImageName }).(pulumi.StringPtrOutput)
+// Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
+func (o DockerExecutorOutput) ImageName() pulumi.StringOutput {
+	return o.ApplyT(func(v DockerExecutor) string { return v.ImageName }).(pulumi.StringOutput)
 }
 
 type DockerExecutorPtrOutput struct{ *pulumi.OutputState }
@@ -433,31 +433,31 @@ func (o DockerExecutorPtrOutput) Elem() DockerExecutorOutput {
 	return o.ApplyT(func(v *DockerExecutor) DockerExecutor { return *v }).(DockerExecutorOutput)
 }
 
-// Required. The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
+// The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
 func (o DockerExecutorPtrOutput) Cmd() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DockerExecutor) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Cmd
+		return &v.Cmd
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
+// Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
 func (o DockerExecutorPtrOutput) ImageName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DockerExecutor) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ImageName
+		return &v.ImageName
 	}).(pulumi.StringPtrOutput)
 }
 
 // The Docker execuctor specification.
 type DockerExecutorResponse struct {
-	// Required. The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
+	// The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
 	Cmd string `pulumi:"cmd"`
-	// Required. Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
+	// Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
 	ImageName string `pulumi:"imageName"`
 }
 
@@ -474,9 +474,9 @@ type DockerExecutorResponseInput interface {
 
 // The Docker execuctor specification.
 type DockerExecutorResponseArgs struct {
-	// Required. The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
+	// The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
 	Cmd pulumi.StringInput `pulumi:"cmd"`
-	// Required. Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
+	// Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
 	ImageName pulumi.StringInput `pulumi:"imageName"`
 }
 
@@ -558,12 +558,12 @@ func (o DockerExecutorResponseOutput) ToDockerExecutorResponsePtrOutputWithConte
 	}).(DockerExecutorResponsePtrOutput)
 }
 
-// Required. The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
+// The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
 func (o DockerExecutorResponseOutput) Cmd() pulumi.StringOutput {
 	return o.ApplyT(func(v DockerExecutorResponse) string { return v.Cmd }).(pulumi.StringOutput)
 }
 
-// Required. Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
+// Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
 func (o DockerExecutorResponseOutput) ImageName() pulumi.StringOutput {
 	return o.ApplyT(func(v DockerExecutorResponse) string { return v.ImageName }).(pulumi.StringOutput)
 }
@@ -586,7 +586,7 @@ func (o DockerExecutorResponsePtrOutput) Elem() DockerExecutorResponseOutput {
 	return o.ApplyT(func(v *DockerExecutorResponse) DockerExecutorResponse { return *v }).(DockerExecutorResponseOutput)
 }
 
-// Required. The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
+// The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
 func (o DockerExecutorResponsePtrOutput) Cmd() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DockerExecutorResponse) *string {
 		if v == nil {
@@ -596,7 +596,7 @@ func (o DockerExecutorResponsePtrOutput) Cmd() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
+// Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
 func (o DockerExecutorResponsePtrOutput) ImageName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DockerExecutorResponse) *string {
 		if v == nil {
@@ -608,10 +608,10 @@ func (o DockerExecutorResponsePtrOutput) ImageName() pulumi.StringPtrOutput {
 
 // LocalCopy defines how a remote file should be copied to and from the VM.
 type LocalCopy struct {
-	// Required. The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
-	Disk *string `pulumi:"disk"`
-	// Required. The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
-	Path *string `pulumi:"path"`
+	// The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
+	Disk string `pulumi:"disk"`
+	// The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
+	Path string `pulumi:"path"`
 }
 
 // LocalCopyInput is an input type that accepts LocalCopyArgs and LocalCopyOutput values.
@@ -627,10 +627,10 @@ type LocalCopyInput interface {
 
 // LocalCopy defines how a remote file should be copied to and from the VM.
 type LocalCopyArgs struct {
-	// Required. The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
-	Disk pulumi.StringPtrInput `pulumi:"disk"`
-	// Required. The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
-	Path pulumi.StringPtrInput `pulumi:"path"`
+	// The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
+	Disk pulumi.StringInput `pulumi:"disk"`
+	// The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
+	Path pulumi.StringInput `pulumi:"path"`
 }
 
 func (LocalCopyArgs) ElementType() reflect.Type {
@@ -711,14 +711,14 @@ func (o LocalCopyOutput) ToLocalCopyPtrOutputWithContext(ctx context.Context) Lo
 	}).(LocalCopyPtrOutput)
 }
 
-// Required. The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
-func (o LocalCopyOutput) Disk() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LocalCopy) *string { return v.Disk }).(pulumi.StringPtrOutput)
+// The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
+func (o LocalCopyOutput) Disk() pulumi.StringOutput {
+	return o.ApplyT(func(v LocalCopy) string { return v.Disk }).(pulumi.StringOutput)
 }
 
-// Required. The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
-func (o LocalCopyOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LocalCopy) *string { return v.Path }).(pulumi.StringPtrOutput)
+// The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
+func (o LocalCopyOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v LocalCopy) string { return v.Path }).(pulumi.StringOutput)
 }
 
 type LocalCopyPtrOutput struct{ *pulumi.OutputState }
@@ -739,31 +739,31 @@ func (o LocalCopyPtrOutput) Elem() LocalCopyOutput {
 	return o.ApplyT(func(v *LocalCopy) LocalCopy { return *v }).(LocalCopyOutput)
 }
 
-// Required. The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
+// The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
 func (o LocalCopyPtrOutput) Disk() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocalCopy) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Disk
+		return &v.Disk
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
+// The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
 func (o LocalCopyPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LocalCopy) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Path
+		return &v.Path
 	}).(pulumi.StringPtrOutput)
 }
 
 // LocalCopy defines how a remote file should be copied to and from the VM.
 type LocalCopyResponse struct {
-	// Required. The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
+	// The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
 	Disk string `pulumi:"disk"`
-	// Required. The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
+	// The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
 	Path string `pulumi:"path"`
 }
 
@@ -780,9 +780,9 @@ type LocalCopyResponseInput interface {
 
 // LocalCopy defines how a remote file should be copied to and from the VM.
 type LocalCopyResponseArgs struct {
-	// Required. The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
+	// The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
 	Disk pulumi.StringInput `pulumi:"disk"`
-	// Required. The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
+	// The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
 	Path pulumi.StringInput `pulumi:"path"`
 }
 
@@ -813,12 +813,12 @@ func (o LocalCopyResponseOutput) ToLocalCopyResponseOutputWithContext(ctx contex
 	return o
 }
 
-// Required. The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
+// The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
 func (o LocalCopyResponseOutput) Disk() pulumi.StringOutput {
 	return o.ApplyT(func(v LocalCopyResponse) string { return v.Disk }).(pulumi.StringOutput)
 }
 
-// Required. The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
+// The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
 func (o LocalCopyResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v LocalCopyResponse) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -831,8 +831,8 @@ type PipelineParameter struct {
 	Description *string `pulumi:"description"`
 	// If present, this parameter is marked for copying to and from the VM. `LocalCopy` indicates where on the VM the file should be. The value given to this parameter (either at runtime or using `defaultValue`) must be the remote path where the file should be.
 	LocalCopy *LocalCopy `pulumi:"localCopy"`
-	// Required. Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
-	Name *string `pulumi:"name"`
+	// Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
+	Name string `pulumi:"name"`
 }
 
 // PipelineParameterInput is an input type that accepts PipelineParameterArgs and PipelineParameterOutput values.
@@ -854,8 +854,8 @@ type PipelineParameterArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// If present, this parameter is marked for copying to and from the VM. `LocalCopy` indicates where on the VM the file should be. The value given to this parameter (either at runtime or using `defaultValue`) must be the remote path where the file should be.
 	LocalCopy LocalCopyPtrInput `pulumi:"localCopy"`
-	// Required. Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (PipelineParameterArgs) ElementType() reflect.Type {
@@ -925,9 +925,9 @@ func (o PipelineParameterOutput) LocalCopy() LocalCopyPtrOutput {
 	return o.ApplyT(func(v PipelineParameter) *LocalCopy { return v.LocalCopy }).(LocalCopyPtrOutput)
 }
 
-// Required. Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
-func (o PipelineParameterOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PipelineParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
+// Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
+func (o PipelineParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
 type PipelineParameterArrayOutput struct{ *pulumi.OutputState }
@@ -958,7 +958,7 @@ type PipelineParameterResponse struct {
 	Description string `pulumi:"description"`
 	// If present, this parameter is marked for copying to and from the VM. `LocalCopy` indicates where on the VM the file should be. The value given to this parameter (either at runtime or using `defaultValue`) must be the remote path where the file should be.
 	LocalCopy LocalCopyResponse `pulumi:"localCopy"`
-	// Required. Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
+	// Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
 	Name string `pulumi:"name"`
 }
 
@@ -981,7 +981,7 @@ type PipelineParameterResponseArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// If present, this parameter is marked for copying to and from the VM. `LocalCopy` indicates where on the VM the file should be. The value given to this parameter (either at runtime or using `defaultValue`) must be the remote path where the file should be.
 	LocalCopy LocalCopyResponseInput `pulumi:"localCopy"`
-	// Required. Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
+	// Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -1052,7 +1052,7 @@ func (o PipelineParameterResponseOutput) LocalCopy() LocalCopyResponseOutput {
 	return o.ApplyT(func(v PipelineParameterResponse) LocalCopyResponse { return v.LocalCopy }).(LocalCopyResponseOutput)
 }
 
-// Required. Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
+// Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
 func (o PipelineParameterResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PipelineParameterResponse) string { return v.Name }).(pulumi.StringOutput)
 }

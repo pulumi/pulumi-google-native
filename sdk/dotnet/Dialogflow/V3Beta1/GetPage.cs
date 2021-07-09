@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     public sealed class GetPageResult
     {
         /// <summary>
-        /// Required. The human-readable name of the page, unique within the agent.
+        /// The human-readable name of the page, unique within the agent.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Outputs
     public sealed class DomainRedirectResponse
     {
         /// <summary>
-        /// Required. The domain name to redirect to.
+        /// The domain name to redirect to.
         /// </summary>
         public readonly string DomainName;
         /// <summary>
-        /// Required. The redirect status code.
+        /// The redirect status code.
         /// </summary>
         public readonly string Type;
 

@@ -91,7 +91,7 @@ class GetJobResult:
     @pulumi.getter(name="jobId")
     def job_id(self) -> str:
         """
-        Required. The user-specified id of the job.
+        The user-specified id of the job.
         """
         return pulumi.get(self, "job_id")
 

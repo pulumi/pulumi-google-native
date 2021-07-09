@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Outputs
     public sealed class GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigResponse
     {
         /// <summary>
-        /// Required. An email address to send alerts to.
+        /// An email address to send alerts to.
         /// </summary>
         public readonly string Email;
         /// <summary>
-        /// Required. A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
+        /// A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
         /// </summary>
         public readonly double MinAcceptableMeanAveragePrecision;
 

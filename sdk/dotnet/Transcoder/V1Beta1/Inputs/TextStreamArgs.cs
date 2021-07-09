@@ -22,10 +22,10 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Inputs
         public Input<string>? Codec { get; set; }
 
         /// <summary>
-        /// Required. The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        /// The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         /// </summary>
-        [Input("languageCode")]
-        public Input<string>? LanguageCode { get; set; }
+        [Input("languageCode", required: true)]
+        public Input<string> LanguageCode { get; set; } = null!;
 
         [Input("mapping")]
         private InputList<Inputs.TextAtomArgs>? _mapping;

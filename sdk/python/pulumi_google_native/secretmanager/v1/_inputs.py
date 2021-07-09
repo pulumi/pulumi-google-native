@@ -186,24 +186,23 @@ class BindingArgs:
 @pulumi.input_type
 class CustomerManagedEncryptionArgs:
     def __init__(__self__, *,
-                 kms_key_name: Optional[pulumi.Input[str]] = None):
+                 kms_key_name: pulumi.Input[str]):
         """
         Configuration for encrypting secret payloads using customer-managed encryption keys (CMEK).
-        :param pulumi.Input[str] kms_key_name: Required. The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads. For secrets using the UserManaged replication policy type, Cloud KMS CryptoKeys must reside in the same location as the replica location. For secrets using the Automatic replication policy type, Cloud KMS CryptoKeys must reside in `global`. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        :param pulumi.Input[str] kms_key_name: The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads. For secrets using the UserManaged replication policy type, Cloud KMS CryptoKeys must reside in the same location as the replica location. For secrets using the Automatic replication policy type, Cloud KMS CryptoKeys must reside in `global`. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         """
-        if kms_key_name is not None:
-            pulumi.set(__self__, "kms_key_name", kms_key_name)
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
 
     @property
     @pulumi.getter(name="kmsKeyName")
-    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+    def kms_key_name(self) -> pulumi.Input[str]:
         """
-        Required. The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads. For secrets using the UserManaged replication policy type, Cloud KMS CryptoKeys must reside in the same location as the replica location. For secrets using the Automatic replication policy type, Cloud KMS CryptoKeys must reside in `global`. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads. For secrets using the UserManaged replication policy type, Cloud KMS CryptoKeys must reside in the same location as the replica location. For secrets using the Automatic replication policy type, Cloud KMS CryptoKeys must reside in `global`. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         """
         return pulumi.get(self, "kms_key_name")
 
     @kms_key_name.setter
-    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+    def kms_key_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key_name", value)
 
 
@@ -402,48 +401,46 @@ class RotationArgs:
 @pulumi.input_type
 class TopicArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: pulumi.Input[str]):
         """
         A Pub/Sub topic which Secret Manager will publish to when control plane events occur on this secret.
-        :param pulumi.Input[str] name: Required. The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
+        :param pulumi.Input[str] name: The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
         """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def name(self) -> pulumi.Input[str]:
         """
-        Required. The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
+        The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
 class UserManagedArgs:
     def __init__(__self__, *,
-                 replicas: Optional[pulumi.Input[Sequence[pulumi.Input['ReplicaArgs']]]] = None):
+                 replicas: pulumi.Input[Sequence[pulumi.Input['ReplicaArgs']]]):
         """
         A replication policy that replicates the Secret payload into the locations specified in Secret.replication.user_managed.replicas
-        :param pulumi.Input[Sequence[pulumi.Input['ReplicaArgs']]] replicas: Required. The list of Replicas for this Secret. Cannot be empty.
+        :param pulumi.Input[Sequence[pulumi.Input['ReplicaArgs']]] replicas: The list of Replicas for this Secret. Cannot be empty.
         """
-        if replicas is not None:
-            pulumi.set(__self__, "replicas", replicas)
+        pulumi.set(__self__, "replicas", replicas)
 
     @property
     @pulumi.getter
-    def replicas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ReplicaArgs']]]]:
+    def replicas(self) -> pulumi.Input[Sequence[pulumi.Input['ReplicaArgs']]]:
         """
-        Required. The list of Replicas for this Secret. Cannot be empty.
+        The list of Replicas for this Secret. Cannot be empty.
         """
         return pulumi.get(self, "replicas")
 
     @replicas.setter
-    def replicas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ReplicaArgs']]]]):
+    def replicas(self, value: pulumi.Input[Sequence[pulumi.Input['ReplicaArgs']]]):
         pulumi.set(self, "replicas", value)
 
 

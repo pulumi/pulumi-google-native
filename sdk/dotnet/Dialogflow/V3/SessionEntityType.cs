@@ -16,19 +16,19 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
     public partial class SessionEntityType : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. The collection of entities to override or supplement the custom entity type.
+        /// The collection of entities to override or supplement the custom entity type.
         /// </summary>
         [Output("entities")]
         public Output<ImmutableArray<Outputs.GoogleCloudDialogflowCxV3EntityTypeEntityResponse>> Entities { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Indicates whether the additional data should override or supplement the custom entity type definition.
+        /// Indicates whether the additional data should override or supplement the custom entity type definition.
         /// </summary>
         [Output("entityOverrideMode")]
         public Output<string> EntityOverrideMode { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
+        /// The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -81,11 +81,11 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
 
-        [Input("entities")]
+        [Input("entities", required: true)]
         private InputList<Inputs.GoogleCloudDialogflowCxV3EntityTypeEntityArgs>? _entities;
 
         /// <summary>
-        /// Required. The collection of entities to override or supplement the custom entity type.
+        /// The collection of entities to override or supplement the custom entity type.
         /// </summary>
         public InputList<Inputs.GoogleCloudDialogflowCxV3EntityTypeEntityArgs> Entities
         {
@@ -94,10 +94,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         }
 
         /// <summary>
-        /// Required. Indicates whether the additional data should override or supplement the custom entity type definition.
+        /// Indicates whether the additional data should override or supplement the custom entity type definition.
         /// </summary>
-        [Input("entityOverrideMode")]
-        public Input<Pulumi.GoogleNative.Dialogflow.V3.SessionEntityTypeEntityOverrideMode>? EntityOverrideMode { get; set; }
+        [Input("entityOverrideMode", required: true)]
+        public Input<Pulumi.GoogleNative.Dialogflow.V3.SessionEntityTypeEntityOverrideMode> EntityOverrideMode { get; set; } = null!;
 
         [Input("environmentId", required: true)]
         public Input<string> EnvironmentId { get; set; } = null!;
@@ -106,10 +106,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Required. The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
+        /// The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

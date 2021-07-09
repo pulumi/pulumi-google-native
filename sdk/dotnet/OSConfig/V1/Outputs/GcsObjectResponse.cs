@@ -14,15 +14,15 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Outputs
     public sealed class GcsObjectResponse
     {
         /// <summary>
-        /// Required. Bucket of the Cloud Storage object.
+        /// Bucket of the Cloud Storage object.
         /// </summary>
         public readonly string Bucket;
         /// <summary>
-        /// Required. Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+        /// Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
         /// </summary>
         public readonly string GenerationNumber;
         /// <summary>
-        /// Required. Name of the Cloud Storage object.
+        /// Name of the Cloud Storage object.
         /// </summary>
         public readonly string Object;
 

@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     public sealed class AzureCredentialsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+        /// Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
         /// </summary>
-        [Input("sasToken")]
-        public Input<string>? SasToken { get; set; }
+        [Input("sasToken", required: true)]
+        public Input<string> SasToken { get; set; } = null!;
 
         public AzureCredentialsArgs()
         {

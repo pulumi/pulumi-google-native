@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1
     public sealed class GetFolderReplayResult
     {
         /// <summary>
-        /// Required. The configuration used for the `Replay`.
+        /// The configuration used for the `Replay`.
         /// </summary>
         public readonly Outputs.GoogleCloudPolicysimulatorV1ReplayConfigResponse Config;
         /// <summary>

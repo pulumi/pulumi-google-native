@@ -983,8 +983,8 @@ func (o PkixPublicKeyResponseOutput) SignatureAlgorithm() pulumi.StringOutput {
 
 // An user owned Grafeas note references a Grafeas Attestation.Authority Note created by the user.
 type UserOwnedGrafeasNote struct {
-	// Required. The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
-	NoteReference *string `pulumi:"noteReference"`
+	// The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
+	NoteReference string `pulumi:"noteReference"`
 	// Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist.
 	PublicKeys []AttestorPublicKey `pulumi:"publicKeys"`
 }
@@ -1002,8 +1002,8 @@ type UserOwnedGrafeasNoteInput interface {
 
 // An user owned Grafeas note references a Grafeas Attestation.Authority Note created by the user.
 type UserOwnedGrafeasNoteArgs struct {
-	// Required. The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
-	NoteReference pulumi.StringPtrInput `pulumi:"noteReference"`
+	// The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
+	NoteReference pulumi.StringInput `pulumi:"noteReference"`
 	// Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist.
 	PublicKeys AttestorPublicKeyArrayInput `pulumi:"publicKeys"`
 }
@@ -1086,9 +1086,9 @@ func (o UserOwnedGrafeasNoteOutput) ToUserOwnedGrafeasNotePtrOutputWithContext(c
 	}).(UserOwnedGrafeasNotePtrOutput)
 }
 
-// Required. The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
-func (o UserOwnedGrafeasNoteOutput) NoteReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UserOwnedGrafeasNote) *string { return v.NoteReference }).(pulumi.StringPtrOutput)
+// The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
+func (o UserOwnedGrafeasNoteOutput) NoteReference() pulumi.StringOutput {
+	return o.ApplyT(func(v UserOwnedGrafeasNote) string { return v.NoteReference }).(pulumi.StringOutput)
 }
 
 // Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist.
@@ -1114,13 +1114,13 @@ func (o UserOwnedGrafeasNotePtrOutput) Elem() UserOwnedGrafeasNoteOutput {
 	return o.ApplyT(func(v *UserOwnedGrafeasNote) UserOwnedGrafeasNote { return *v }).(UserOwnedGrafeasNoteOutput)
 }
 
-// Required. The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
+// The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
 func (o UserOwnedGrafeasNotePtrOutput) NoteReference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserOwnedGrafeasNote) *string {
 		if v == nil {
 			return nil
 		}
-		return v.NoteReference
+		return &v.NoteReference
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1138,7 +1138,7 @@ func (o UserOwnedGrafeasNotePtrOutput) PublicKeys() AttestorPublicKeyArrayOutput
 type UserOwnedGrafeasNoteResponse struct {
 	// This field will contain the service account email address that this Attestor will use as the principal when querying Container Analysis. Attestor administrators must grant this service account the IAM role needed to read attestations from the note_reference in Container Analysis (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the Attestor, but callers should not make any other assumptions about the service account email; future versions may use an email based on a different naming pattern.
 	DelegationServiceAccountEmail string `pulumi:"delegationServiceAccountEmail"`
-	// Required. The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
+	// The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
 	NoteReference string `pulumi:"noteReference"`
 	// Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist.
 	PublicKeys []AttestorPublicKeyResponse `pulumi:"publicKeys"`
@@ -1159,7 +1159,7 @@ type UserOwnedGrafeasNoteResponseInput interface {
 type UserOwnedGrafeasNoteResponseArgs struct {
 	// This field will contain the service account email address that this Attestor will use as the principal when querying Container Analysis. Attestor administrators must grant this service account the IAM role needed to read attestations from the note_reference in Container Analysis (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the Attestor, but callers should not make any other assumptions about the service account email; future versions may use an email based on a different naming pattern.
 	DelegationServiceAccountEmail pulumi.StringInput `pulumi:"delegationServiceAccountEmail"`
-	// Required. The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
+	// The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
 	NoteReference pulumi.StringInput `pulumi:"noteReference"`
 	// Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist.
 	PublicKeys AttestorPublicKeyResponseArrayInput `pulumi:"publicKeys"`
@@ -1248,7 +1248,7 @@ func (o UserOwnedGrafeasNoteResponseOutput) DelegationServiceAccountEmail() pulu
 	return o.ApplyT(func(v UserOwnedGrafeasNoteResponse) string { return v.DelegationServiceAccountEmail }).(pulumi.StringOutput)
 }
 
-// Required. The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
+// The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
 func (o UserOwnedGrafeasNoteResponseOutput) NoteReference() pulumi.StringOutput {
 	return o.ApplyT(func(v UserOwnedGrafeasNoteResponse) string { return v.NoteReference }).(pulumi.StringOutput)
 }
@@ -1286,7 +1286,7 @@ func (o UserOwnedGrafeasNoteResponsePtrOutput) DelegationServiceAccountEmail() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
+// The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
 func (o UserOwnedGrafeasNoteResponsePtrOutput) NoteReference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserOwnedGrafeasNoteResponse) *string {
 		if v == nil {

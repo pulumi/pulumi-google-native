@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     public sealed class GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Audio encoding of the audio content to process.
+        /// Audio encoding of the audio content to process.
         /// </summary>
-        [Input("audioEncoding")]
-        public Input<Pulumi.GoogleNative.Dialogflow.V3Beta1.GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding>? AudioEncoding { get; set; }
+        [Input("audioEncoding", required: true)]
+        public Input<Pulumi.GoogleNative.Dialogflow.V3Beta1.GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding> AudioEncoding { get; set; } = null!;
 
         /// <summary>
         /// Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.

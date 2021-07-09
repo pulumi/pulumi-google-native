@@ -40,7 +40,7 @@ export class Dashboard extends pulumi.CustomResource {
      */
     public readonly columnLayout!: pulumi.Output<outputs.monitoring.v1.ColumnLayoutResponse>;
     /**
-     * Required. The mutable, human-readable name.
+     * The mutable, human-readable name.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -75,6 +75,9 @@ export class Dashboard extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -111,9 +114,9 @@ export interface DashboardArgs {
      */
     columnLayout?: pulumi.Input<inputs.monitoring.v1.ColumnLayoutArgs>;
     /**
-     * Required. The mutable, human-readable name.
+     * The mutable, human-readable name.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are expected to put that etag in the request to UpdateDashboard to ensure that their change will be applied to the same version of the Dashboard configuration. The field should not be passed during dashboard creation.
      */

@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public Input<string>? Function { get; set; }
 
         /// <summary>
-        /// Required. Metric name.
+        /// Metric name.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
         /// One of `+`, `-`, `/`, `%`, `*`.

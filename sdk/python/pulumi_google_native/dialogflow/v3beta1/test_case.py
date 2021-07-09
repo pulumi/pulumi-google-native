@@ -17,9 +17,9 @@ __all__ = ['TestCaseArgs', 'TestCase']
 class TestCaseArgs:
     def __init__(__self__, *,
                  agent_id: pulumi.Input[str],
+                 display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 display_name: Optional[pulumi.Input[str]] = None,
                  last_test_result: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1TestCaseResultArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notes: Optional[pulumi.Input[str]] = None,
@@ -28,7 +28,7 @@ class TestCaseArgs:
                  test_config: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1TestConfigArgs']] = None):
         """
         The set of arguments for constructing a TestCase resource.
-        :param pulumi.Input[str] display_name: Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+        :param pulumi.Input[str] display_name: The human-readable name of the test case, unique within the agent. Limit of 200 characters.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1TestCaseResultArgs'] last_test_result: The latest test result.
         :param pulumi.Input[str] name: The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
         :param pulumi.Input[str] notes: Additional freeform notes about the test case. Limit of 400 characters.
@@ -37,10 +37,9 @@ class TestCaseArgs:
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1TestConfigArgs'] test_config: Config for the test case.
         """
         pulumi.set(__self__, "agent_id", agent_id)
+        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if last_test_result is not None:
             pulumi.set(__self__, "last_test_result", last_test_result)
         if name is not None:
@@ -64,6 +63,18 @@ class TestCaseArgs:
         pulumi.set(self, "agent_id", value)
 
     @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
+
+    @property
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
         return pulumi.get(self, "location")
@@ -80,18 +91,6 @@ class TestCaseArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="lastTestResult")
@@ -187,7 +186,7 @@ class TestCase(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] display_name: Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+        :param pulumi.Input[str] display_name: The human-readable name of the test case, unique within the agent. Limit of 200 characters.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1TestCaseResultArgs']] last_test_result: The latest test result.
         :param pulumi.Input[str] name: The unique identifier of the test case. TestCases.CreateTestCase will populate the name automatically. Otherwise use format: `projects//locations//agents/ /testCases/`.
         :param pulumi.Input[str] notes: Additional freeform notes about the test case. Limit of 400 characters.
@@ -244,6 +243,8 @@ class TestCase(pulumi.CustomResource):
             if agent_id is None and not opts.urn:
                 raise TypeError("Missing required property 'agent_id'")
             __props__.__dict__["agent_id"] = agent_id
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["last_test_result"] = last_test_result
             if location is None and not opts.urn:
@@ -302,7 +303,7 @@ class TestCase(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+        The human-readable name of the test case, unique within the agent. Limit of 200 characters.
         """
         return pulumi.get(self, "display_name")
 

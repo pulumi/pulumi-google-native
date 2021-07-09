@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Outputs
     public sealed class GoogleCloudHealthcareV1ConsentPolicyResponse
     {
         /// <summary>
-        /// Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&amp;&amp;`), `OR` (`||`).
+        /// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&amp;&amp;`), `OR` (`||`).
         /// </summary>
         public readonly Outputs.ExprResponse AuthorizationRule;
         /// <summary>

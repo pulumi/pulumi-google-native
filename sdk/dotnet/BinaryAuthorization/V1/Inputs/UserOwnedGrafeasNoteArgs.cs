@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1.Inputs
     public sealed class UserOwnedGrafeasNoteArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
+        /// The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
         /// </summary>
-        [Input("noteReference")]
-        public Input<string>? NoteReference { get; set; }
+        [Input("noteReference", required: true)]
+        public Input<string> NoteReference { get; set; } = null!;
 
         [Input("publicKeys")]
         private InputList<Inputs.AttestorPublicKeyArgs>? _publicKeys;

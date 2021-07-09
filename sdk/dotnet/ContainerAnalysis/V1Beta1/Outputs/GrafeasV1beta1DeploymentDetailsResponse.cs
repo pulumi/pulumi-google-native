@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
     public sealed class GrafeasV1beta1DeploymentDetailsResponse
     {
         /// <summary>
-        /// Required. Deployment history for the resource.
+        /// Deployment history for the resource.
         /// </summary>
         public readonly Outputs.DeploymentResponse Deployment;
 

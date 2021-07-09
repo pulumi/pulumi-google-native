@@ -2321,8 +2321,8 @@ func (o RetryPolicyResponsePtrOutput) MinimumBackoff() pulumi.StringPtrOutput {
 type SchemaSettings struct {
 	// The encoding of messages validated against `schema`.
 	Encoding *string `pulumi:"encoding"`
-	// Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
-	Schema *string `pulumi:"schema"`
+	// The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
+	Schema string `pulumi:"schema"`
 }
 
 // SchemaSettingsInput is an input type that accepts SchemaSettingsArgs and SchemaSettingsOutput values.
@@ -2340,8 +2340,8 @@ type SchemaSettingsInput interface {
 type SchemaSettingsArgs struct {
 	// The encoding of messages validated against `schema`.
 	Encoding *SchemaSettingsEncoding `pulumi:"encoding"`
-	// Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
-	Schema pulumi.StringPtrInput `pulumi:"schema"`
+	// The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
+	Schema pulumi.StringInput `pulumi:"schema"`
 }
 
 func (SchemaSettingsArgs) ElementType() reflect.Type {
@@ -2427,9 +2427,9 @@ func (o SchemaSettingsOutput) Encoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SchemaSettings) *string { return v.Encoding }).(pulumi.StringPtrOutput)
 }
 
-// Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
-func (o SchemaSettingsOutput) Schema() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SchemaSettings) *string { return v.Schema }).(pulumi.StringPtrOutput)
+// The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
+func (o SchemaSettingsOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v SchemaSettings) string { return v.Schema }).(pulumi.StringOutput)
 }
 
 type SchemaSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -2460,13 +2460,13 @@ func (o SchemaSettingsPtrOutput) Encoding() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
+// The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
 func (o SchemaSettingsPtrOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SchemaSettings) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Schema
+		return &v.Schema
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2474,7 +2474,7 @@ func (o SchemaSettingsPtrOutput) Schema() pulumi.StringPtrOutput {
 type SchemaSettingsResponse struct {
 	// The encoding of messages validated against `schema`.
 	Encoding string `pulumi:"encoding"`
-	// Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
+	// The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
 	Schema string `pulumi:"schema"`
 }
 
@@ -2493,7 +2493,7 @@ type SchemaSettingsResponseInput interface {
 type SchemaSettingsResponseArgs struct {
 	// The encoding of messages validated against `schema`.
 	Encoding pulumi.StringInput `pulumi:"encoding"`
-	// Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
+	// The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
 	Schema pulumi.StringInput `pulumi:"schema"`
 }
 
@@ -2580,7 +2580,7 @@ func (o SchemaSettingsResponseOutput) Encoding() pulumi.StringOutput {
 	return o.ApplyT(func(v SchemaSettingsResponse) string { return v.Encoding }).(pulumi.StringOutput)
 }
 
-// Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
+// The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
 func (o SchemaSettingsResponseOutput) Schema() pulumi.StringOutput {
 	return o.ApplyT(func(v SchemaSettingsResponse) string { return v.Schema }).(pulumi.StringOutput)
 }
@@ -2613,7 +2613,7 @@ func (o SchemaSettingsResponsePtrOutput) Encoding() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
+// The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
 func (o SchemaSettingsResponsePtrOutput) Schema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SchemaSettingsResponse) *string {
 		if v == nil {

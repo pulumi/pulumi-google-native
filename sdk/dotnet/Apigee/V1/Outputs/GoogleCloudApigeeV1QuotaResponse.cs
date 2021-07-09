@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
     public sealed class GoogleCloudApigeeV1QuotaResponse
     {
         /// <summary>
-        /// Required. Time interval over which the number of request messages is calculated.
+        /// Time interval over which the number of request messages is calculated.
         /// </summary>
         public readonly string Interval;
         /// <summary>
-        /// Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+        /// Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
         /// </summary>
         public readonly string Limit;
         /// <summary>

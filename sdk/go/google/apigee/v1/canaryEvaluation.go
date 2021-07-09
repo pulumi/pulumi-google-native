@@ -15,21 +15,21 @@ import (
 type CanaryEvaluation struct {
 	pulumi.CustomResourceState
 
-	// Required. The stable version that is serving requests.
+	// The stable version that is serving requests.
 	Control pulumi.StringOutput `pulumi:"control"`
 	// Create time of the canary evaluation.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Required. End time for the evaluation's analysis.
+	// End time for the evaluation's analysis.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
-	// Required. Labels used to filter the metrics used for a canary evaluation.
+	// Labels used to filter the metrics used for a canary evaluation.
 	MetricLabels GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput `pulumi:"metricLabels"`
 	// Name of the canary evalution.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. Start time for the canary evaluation's analysis.
+	// Start time for the canary evaluation's analysis.
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
 	// The current state of the canary evaluation.
 	State pulumi.StringOutput `pulumi:"state"`
-	// Required. The newer version that is serving requests.
+	// The newer version that is serving requests.
 	Treatment pulumi.StringOutput `pulumi:"treatment"`
 	// The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
 	Verdict pulumi.StringOutput `pulumi:"verdict"`
@@ -42,11 +42,26 @@ func NewCanaryEvaluation(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Control == nil {
+		return nil, errors.New("invalid value for required argument 'Control'")
+	}
+	if args.EndTime == nil {
+		return nil, errors.New("invalid value for required argument 'EndTime'")
+	}
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
+	if args.MetricLabels == nil {
+		return nil, errors.New("invalid value for required argument 'MetricLabels'")
+	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
+	}
+	if args.StartTime == nil {
+		return nil, errors.New("invalid value for required argument 'StartTime'")
+	}
+	if args.Treatment == nil {
+		return nil, errors.New("invalid value for required argument 'Treatment'")
 	}
 	var resource CanaryEvaluation
 	err := ctx.RegisterResource("google-native:apigee/v1:CanaryEvaluation", name, args, &resource, opts...)
@@ -70,42 +85,42 @@ func GetCanaryEvaluation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CanaryEvaluation resources.
 type canaryEvaluationState struct {
-	// Required. The stable version that is serving requests.
+	// The stable version that is serving requests.
 	Control *string `pulumi:"control"`
 	// Create time of the canary evaluation.
 	CreateTime *string `pulumi:"createTime"`
-	// Required. End time for the evaluation's analysis.
+	// End time for the evaluation's analysis.
 	EndTime *string `pulumi:"endTime"`
-	// Required. Labels used to filter the metrics used for a canary evaluation.
+	// Labels used to filter the metrics used for a canary evaluation.
 	MetricLabels *GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse `pulumi:"metricLabels"`
 	// Name of the canary evalution.
 	Name *string `pulumi:"name"`
-	// Required. Start time for the canary evaluation's analysis.
+	// Start time for the canary evaluation's analysis.
 	StartTime *string `pulumi:"startTime"`
 	// The current state of the canary evaluation.
 	State *string `pulumi:"state"`
-	// Required. The newer version that is serving requests.
+	// The newer version that is serving requests.
 	Treatment *string `pulumi:"treatment"`
 	// The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
 	Verdict *string `pulumi:"verdict"`
 }
 
 type CanaryEvaluationState struct {
-	// Required. The stable version that is serving requests.
+	// The stable version that is serving requests.
 	Control pulumi.StringPtrInput
 	// Create time of the canary evaluation.
 	CreateTime pulumi.StringPtrInput
-	// Required. End time for the evaluation's analysis.
+	// End time for the evaluation's analysis.
 	EndTime pulumi.StringPtrInput
-	// Required. Labels used to filter the metrics used for a canary evaluation.
+	// Labels used to filter the metrics used for a canary evaluation.
 	MetricLabels GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrInput
 	// Name of the canary evalution.
 	Name pulumi.StringPtrInput
-	// Required. Start time for the canary evaluation's analysis.
+	// Start time for the canary evaluation's analysis.
 	StartTime pulumi.StringPtrInput
 	// The current state of the canary evaluation.
 	State pulumi.StringPtrInput
-	// Required. The newer version that is serving requests.
+	// The newer version that is serving requests.
 	Treatment pulumi.StringPtrInput
 	// The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
 	Verdict pulumi.StringPtrInput
@@ -116,34 +131,34 @@ func (CanaryEvaluationState) ElementType() reflect.Type {
 }
 
 type canaryEvaluationArgs struct {
-	// Required. The stable version that is serving requests.
-	Control *string `pulumi:"control"`
-	// Required. End time for the evaluation's analysis.
-	EndTime    *string `pulumi:"endTime"`
-	InstanceId string  `pulumi:"instanceId"`
-	// Required. Labels used to filter the metrics used for a canary evaluation.
-	MetricLabels   *GoogleCloudApigeeV1CanaryEvaluationMetricLabels `pulumi:"metricLabels"`
-	OrganizationId string                                           `pulumi:"organizationId"`
-	// Required. Start time for the canary evaluation's analysis.
-	StartTime *string `pulumi:"startTime"`
-	// Required. The newer version that is serving requests.
-	Treatment *string `pulumi:"treatment"`
+	// The stable version that is serving requests.
+	Control string `pulumi:"control"`
+	// End time for the evaluation's analysis.
+	EndTime    string `pulumi:"endTime"`
+	InstanceId string `pulumi:"instanceId"`
+	// Labels used to filter the metrics used for a canary evaluation.
+	MetricLabels   GoogleCloudApigeeV1CanaryEvaluationMetricLabels `pulumi:"metricLabels"`
+	OrganizationId string                                          `pulumi:"organizationId"`
+	// Start time for the canary evaluation's analysis.
+	StartTime string `pulumi:"startTime"`
+	// The newer version that is serving requests.
+	Treatment string `pulumi:"treatment"`
 }
 
 // The set of arguments for constructing a CanaryEvaluation resource.
 type CanaryEvaluationArgs struct {
-	// Required. The stable version that is serving requests.
-	Control pulumi.StringPtrInput
-	// Required. End time for the evaluation's analysis.
-	EndTime    pulumi.StringPtrInput
+	// The stable version that is serving requests.
+	Control pulumi.StringInput
+	// End time for the evaluation's analysis.
+	EndTime    pulumi.StringInput
 	InstanceId pulumi.StringInput
-	// Required. Labels used to filter the metrics used for a canary evaluation.
-	MetricLabels   GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrInput
+	// Labels used to filter the metrics used for a canary evaluation.
+	MetricLabels   GoogleCloudApigeeV1CanaryEvaluationMetricLabelsInput
 	OrganizationId pulumi.StringInput
-	// Required. Start time for the canary evaluation's analysis.
-	StartTime pulumi.StringPtrInput
-	// Required. The newer version that is serving requests.
-	Treatment pulumi.StringPtrInput
+	// Start time for the canary evaluation's analysis.
+	StartTime pulumi.StringInput
+	// The newer version that is serving requests.
+	Treatment pulumi.StringInput
 }
 
 func (CanaryEvaluationArgs) ElementType() reflect.Type {

@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public Input<string>? EntityType { get; set; }
 
         /// <summary>
-        /// Required. The text for this part.
+        /// The text for this part.
         /// </summary>
-        [Input("text")]
-        public Input<string>? Text { get; set; }
+        [Input("text", required: true)]
+        public Input<string> Text { get; set; } = null!;
 
         /// <summary>
         /// Optional. Indicates whether the text was manually annotated. This field is set to true when the Dialogflow Console is used to manually annotate the part. When creating an annotated part with the API, you must set this to true.

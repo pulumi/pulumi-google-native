@@ -280,14 +280,14 @@ func (o AccountResponsePtrOutput) GoogleAuto() GoogleAutoResponsePtrOutput {
 
 // A single Android device.
 type AndroidDevice struct {
-	// Required. The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-	AndroidModelId *string `pulumi:"androidModelId"`
-	// Required. The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-	AndroidVersionId *string `pulumi:"androidVersionId"`
-	// Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
-	Locale *string `pulumi:"locale"`
-	// Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
-	Orientation *string `pulumi:"orientation"`
+	// The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	AndroidModelId string `pulumi:"androidModelId"`
+	// The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	AndroidVersionId string `pulumi:"androidVersionId"`
+	// The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+	Locale string `pulumi:"locale"`
+	// How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+	Orientation string `pulumi:"orientation"`
 }
 
 // AndroidDeviceInput is an input type that accepts AndroidDeviceArgs and AndroidDeviceOutput values.
@@ -303,14 +303,14 @@ type AndroidDeviceInput interface {
 
 // A single Android device.
 type AndroidDeviceArgs struct {
-	// Required. The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-	AndroidModelId pulumi.StringPtrInput `pulumi:"androidModelId"`
-	// Required. The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-	AndroidVersionId pulumi.StringPtrInput `pulumi:"androidVersionId"`
-	// Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
-	Locale pulumi.StringPtrInput `pulumi:"locale"`
-	// Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
-	Orientation pulumi.StringPtrInput `pulumi:"orientation"`
+	// The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	AndroidModelId pulumi.StringInput `pulumi:"androidModelId"`
+	// The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	AndroidVersionId pulumi.StringInput `pulumi:"androidVersionId"`
+	// The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+	Locale pulumi.StringInput `pulumi:"locale"`
+	// How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+	Orientation pulumi.StringInput `pulumi:"orientation"`
 }
 
 func (AndroidDeviceArgs) ElementType() reflect.Type {
@@ -365,24 +365,24 @@ func (o AndroidDeviceOutput) ToAndroidDeviceOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Required. The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-func (o AndroidDeviceOutput) AndroidModelId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AndroidDevice) *string { return v.AndroidModelId }).(pulumi.StringPtrOutput)
+// The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+func (o AndroidDeviceOutput) AndroidModelId() pulumi.StringOutput {
+	return o.ApplyT(func(v AndroidDevice) string { return v.AndroidModelId }).(pulumi.StringOutput)
 }
 
-// Required. The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-func (o AndroidDeviceOutput) AndroidVersionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AndroidDevice) *string { return v.AndroidVersionId }).(pulumi.StringPtrOutput)
+// The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+func (o AndroidDeviceOutput) AndroidVersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v AndroidDevice) string { return v.AndroidVersionId }).(pulumi.StringOutput)
 }
 
-// Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
-func (o AndroidDeviceOutput) Locale() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AndroidDevice) *string { return v.Locale }).(pulumi.StringPtrOutput)
+// The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+func (o AndroidDeviceOutput) Locale() pulumi.StringOutput {
+	return o.ApplyT(func(v AndroidDevice) string { return v.Locale }).(pulumi.StringOutput)
 }
 
-// Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
-func (o AndroidDeviceOutput) Orientation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AndroidDevice) *string { return v.Orientation }).(pulumi.StringPtrOutput)
+// How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+func (o AndroidDeviceOutput) Orientation() pulumi.StringOutput {
+	return o.ApplyT(func(v AndroidDevice) string { return v.Orientation }).(pulumi.StringOutput)
 }
 
 type AndroidDeviceArrayOutput struct{ *pulumi.OutputState }
@@ -407,7 +407,7 @@ func (o AndroidDeviceArrayOutput) Index(i pulumi.IntInput) AndroidDeviceOutput {
 
 // A list of Android device configurations in which the test is to be executed.
 type AndroidDeviceList struct {
-	// Required. A list of Android devices.
+	// A list of Android devices.
 	AndroidDevices []AndroidDevice `pulumi:"androidDevices"`
 }
 
@@ -424,7 +424,7 @@ type AndroidDeviceListInput interface {
 
 // A list of Android device configurations in which the test is to be executed.
 type AndroidDeviceListArgs struct {
-	// Required. A list of Android devices.
+	// A list of Android devices.
 	AndroidDevices AndroidDeviceArrayInput `pulumi:"androidDevices"`
 }
 
@@ -506,7 +506,7 @@ func (o AndroidDeviceListOutput) ToAndroidDeviceListPtrOutputWithContext(ctx con
 	}).(AndroidDeviceListPtrOutput)
 }
 
-// Required. A list of Android devices.
+// A list of Android devices.
 func (o AndroidDeviceListOutput) AndroidDevices() AndroidDeviceArrayOutput {
 	return o.ApplyT(func(v AndroidDeviceList) []AndroidDevice { return v.AndroidDevices }).(AndroidDeviceArrayOutput)
 }
@@ -529,7 +529,7 @@ func (o AndroidDeviceListPtrOutput) Elem() AndroidDeviceListOutput {
 	return o.ApplyT(func(v *AndroidDeviceList) AndroidDeviceList { return *v }).(AndroidDeviceListOutput)
 }
 
-// Required. A list of Android devices.
+// A list of Android devices.
 func (o AndroidDeviceListPtrOutput) AndroidDevices() AndroidDeviceArrayOutput {
 	return o.ApplyT(func(v *AndroidDeviceList) []AndroidDevice {
 		if v == nil {
@@ -541,7 +541,7 @@ func (o AndroidDeviceListPtrOutput) AndroidDevices() AndroidDeviceArrayOutput {
 
 // A list of Android device configurations in which the test is to be executed.
 type AndroidDeviceListResponse struct {
-	// Required. A list of Android devices.
+	// A list of Android devices.
 	AndroidDevices []AndroidDeviceResponse `pulumi:"androidDevices"`
 }
 
@@ -558,7 +558,7 @@ type AndroidDeviceListResponseInput interface {
 
 // A list of Android device configurations in which the test is to be executed.
 type AndroidDeviceListResponseArgs struct {
-	// Required. A list of Android devices.
+	// A list of Android devices.
 	AndroidDevices AndroidDeviceResponseArrayInput `pulumi:"androidDevices"`
 }
 
@@ -640,7 +640,7 @@ func (o AndroidDeviceListResponseOutput) ToAndroidDeviceListResponsePtrOutputWit
 	}).(AndroidDeviceListResponsePtrOutput)
 }
 
-// Required. A list of Android devices.
+// A list of Android devices.
 func (o AndroidDeviceListResponseOutput) AndroidDevices() AndroidDeviceResponseArrayOutput {
 	return o.ApplyT(func(v AndroidDeviceListResponse) []AndroidDeviceResponse { return v.AndroidDevices }).(AndroidDeviceResponseArrayOutput)
 }
@@ -663,7 +663,7 @@ func (o AndroidDeviceListResponsePtrOutput) Elem() AndroidDeviceListResponseOutp
 	return o.ApplyT(func(v *AndroidDeviceListResponse) AndroidDeviceListResponse { return *v }).(AndroidDeviceListResponseOutput)
 }
 
-// Required. A list of Android devices.
+// A list of Android devices.
 func (o AndroidDeviceListResponsePtrOutput) AndroidDevices() AndroidDeviceResponseArrayOutput {
 	return o.ApplyT(func(v *AndroidDeviceListResponse) []AndroidDeviceResponse {
 		if v == nil {
@@ -675,13 +675,13 @@ func (o AndroidDeviceListResponsePtrOutput) AndroidDevices() AndroidDeviceRespon
 
 // A single Android device.
 type AndroidDeviceResponse struct {
-	// Required. The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 	AndroidModelId string `pulumi:"androidModelId"`
-	// Required. The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 	AndroidVersionId string `pulumi:"androidVersionId"`
-	// Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
 	Locale string `pulumi:"locale"`
-	// Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+	// How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
 	Orientation string `pulumi:"orientation"`
 }
 
@@ -698,13 +698,13 @@ type AndroidDeviceResponseInput interface {
 
 // A single Android device.
 type AndroidDeviceResponseArgs struct {
-	// Required. The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 	AndroidModelId pulumi.StringInput `pulumi:"androidModelId"`
-	// Required. The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 	AndroidVersionId pulumi.StringInput `pulumi:"androidVersionId"`
-	// Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
 	Locale pulumi.StringInput `pulumi:"locale"`
-	// Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+	// How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
 	Orientation pulumi.StringInput `pulumi:"orientation"`
 }
 
@@ -760,22 +760,22 @@ func (o AndroidDeviceResponseOutput) ToAndroidDeviceResponseOutputWithContext(ct
 	return o
 }
 
-// Required. The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+// The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o AndroidDeviceResponseOutput) AndroidModelId() pulumi.StringOutput {
 	return o.ApplyT(func(v AndroidDeviceResponse) string { return v.AndroidModelId }).(pulumi.StringOutput)
 }
 
-// Required. The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+// The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o AndroidDeviceResponseOutput) AndroidVersionId() pulumi.StringOutput {
 	return o.ApplyT(func(v AndroidDeviceResponse) string { return v.AndroidVersionId }).(pulumi.StringOutput)
 }
 
-// Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+// The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o AndroidDeviceResponseOutput) Locale() pulumi.StringOutput {
 	return o.ApplyT(func(v AndroidDeviceResponse) string { return v.Locale }).(pulumi.StringOutput)
 }
 
-// Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+// How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o AndroidDeviceResponseOutput) Orientation() pulumi.StringOutput {
 	return o.ApplyT(func(v AndroidDeviceResponse) string { return v.Orientation }).(pulumi.StringOutput)
 }
@@ -812,8 +812,8 @@ type AndroidInstrumentationTest struct {
 	OrchestratorOption *string `pulumi:"orchestratorOption"`
 	// The option to run tests in multiple shards in parallel.
 	ShardingOption *ShardingOption `pulumi:"shardingOption"`
-	// Required. The APK containing the test code to be executed.
-	TestApk *FileReference `pulumi:"testApk"`
+	// The APK containing the test code to be executed.
+	TestApk FileReference `pulumi:"testApk"`
 	// The java package for the test to be executed. The default value is determined by examining the application's manifest.
 	TestPackageId *string `pulumi:"testPackageId"`
 	// The InstrumentationTestRunner class. The default value is determined by examining the application's manifest.
@@ -845,8 +845,8 @@ type AndroidInstrumentationTestArgs struct {
 	OrchestratorOption *AndroidInstrumentationTestOrchestratorOption `pulumi:"orchestratorOption"`
 	// The option to run tests in multiple shards in parallel.
 	ShardingOption ShardingOptionPtrInput `pulumi:"shardingOption"`
-	// Required. The APK containing the test code to be executed.
-	TestApk FileReferencePtrInput `pulumi:"testApk"`
+	// The APK containing the test code to be executed.
+	TestApk FileReferenceInput `pulumi:"testApk"`
 	// The java package for the test to be executed. The default value is determined by examining the application's manifest.
 	TestPackageId pulumi.StringPtrInput `pulumi:"testPackageId"`
 	// The InstrumentationTestRunner class. The default value is determined by examining the application's manifest.
@@ -958,9 +958,9 @@ func (o AndroidInstrumentationTestOutput) ShardingOption() ShardingOptionPtrOutp
 	return o.ApplyT(func(v AndroidInstrumentationTest) *ShardingOption { return v.ShardingOption }).(ShardingOptionPtrOutput)
 }
 
-// Required. The APK containing the test code to be executed.
-func (o AndroidInstrumentationTestOutput) TestApk() FileReferencePtrOutput {
-	return o.ApplyT(func(v AndroidInstrumentationTest) *FileReference { return v.TestApk }).(FileReferencePtrOutput)
+// The APK containing the test code to be executed.
+func (o AndroidInstrumentationTestOutput) TestApk() FileReferenceOutput {
+	return o.ApplyT(func(v AndroidInstrumentationTest) FileReference { return v.TestApk }).(FileReferenceOutput)
 }
 
 // The java package for the test to be executed. The default value is determined by examining the application's manifest.
@@ -1046,13 +1046,13 @@ func (o AndroidInstrumentationTestPtrOutput) ShardingOption() ShardingOptionPtrO
 	}).(ShardingOptionPtrOutput)
 }
 
-// Required. The APK containing the test code to be executed.
+// The APK containing the test code to be executed.
 func (o AndroidInstrumentationTestPtrOutput) TestApk() FileReferencePtrOutput {
 	return o.ApplyT(func(v *AndroidInstrumentationTest) *FileReference {
 		if v == nil {
 			return nil
 		}
-		return v.TestApk
+		return &v.TestApk
 	}).(FileReferencePtrOutput)
 }
 
@@ -1098,7 +1098,7 @@ type AndroidInstrumentationTestResponse struct {
 	OrchestratorOption string `pulumi:"orchestratorOption"`
 	// The option to run tests in multiple shards in parallel.
 	ShardingOption ShardingOptionResponse `pulumi:"shardingOption"`
-	// Required. The APK containing the test code to be executed.
+	// The APK containing the test code to be executed.
 	TestApk FileReferenceResponse `pulumi:"testApk"`
 	// The java package for the test to be executed. The default value is determined by examining the application's manifest.
 	TestPackageId string `pulumi:"testPackageId"`
@@ -1131,7 +1131,7 @@ type AndroidInstrumentationTestResponseArgs struct {
 	OrchestratorOption pulumi.StringInput `pulumi:"orchestratorOption"`
 	// The option to run tests in multiple shards in parallel.
 	ShardingOption ShardingOptionResponseInput `pulumi:"shardingOption"`
-	// Required. The APK containing the test code to be executed.
+	// The APK containing the test code to be executed.
 	TestApk FileReferenceResponseInput `pulumi:"testApk"`
 	// The java package for the test to be executed. The default value is determined by examining the application's manifest.
 	TestPackageId pulumi.StringInput `pulumi:"testPackageId"`
@@ -1244,7 +1244,7 @@ func (o AndroidInstrumentationTestResponseOutput) ShardingOption() ShardingOptio
 	return o.ApplyT(func(v AndroidInstrumentationTestResponse) ShardingOptionResponse { return v.ShardingOption }).(ShardingOptionResponseOutput)
 }
 
-// Required. The APK containing the test code to be executed.
+// The APK containing the test code to be executed.
 func (o AndroidInstrumentationTestResponseOutput) TestApk() FileReferenceResponseOutput {
 	return o.ApplyT(func(v AndroidInstrumentationTestResponse) FileReferenceResponse { return v.TestApk }).(FileReferenceResponseOutput)
 }
@@ -1332,7 +1332,7 @@ func (o AndroidInstrumentationTestResponsePtrOutput) ShardingOption() ShardingOp
 	}).(ShardingOptionResponsePtrOutput)
 }
 
-// Required. The APK containing the test code to be executed.
+// The APK containing the test code to be executed.
 func (o AndroidInstrumentationTestResponsePtrOutput) TestApk() FileReferenceResponsePtrOutput {
 	return o.ApplyT(func(v *AndroidInstrumentationTestResponse) *FileReferenceResponse {
 		if v == nil {
@@ -1374,13 +1374,13 @@ func (o AndroidInstrumentationTestResponsePtrOutput) TestTargets() pulumi.String
 
 // A set of Android device configuration permutations is defined by the the cross-product of the given axes. Internally, the given AndroidMatrix will be expanded into a set of AndroidDevices. Only supported permutations will be instantiated. Invalid permutations (e.g., incompatible models/versions) are ignored.
 type AndroidMatrix struct {
-	// Required. The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 	AndroidModelIds []string `pulumi:"androidModelIds"`
-	// Required. The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 	AndroidVersionIds []string `pulumi:"androidVersionIds"`
-	// Required. The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
 	Locales []string `pulumi:"locales"`
-	// Required. The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
 	Orientations []string `pulumi:"orientations"`
 }
 
@@ -1397,13 +1397,13 @@ type AndroidMatrixInput interface {
 
 // A set of Android device configuration permutations is defined by the the cross-product of the given axes. Internally, the given AndroidMatrix will be expanded into a set of AndroidDevices. Only supported permutations will be instantiated. Invalid permutations (e.g., incompatible models/versions) are ignored.
 type AndroidMatrixArgs struct {
-	// Required. The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 	AndroidModelIds pulumi.StringArrayInput `pulumi:"androidModelIds"`
-	// Required. The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 	AndroidVersionIds pulumi.StringArrayInput `pulumi:"androidVersionIds"`
-	// Required. The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
 	Locales pulumi.StringArrayInput `pulumi:"locales"`
-	// Required. The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
 	Orientations pulumi.StringArrayInput `pulumi:"orientations"`
 }
 
@@ -1485,22 +1485,22 @@ func (o AndroidMatrixOutput) ToAndroidMatrixPtrOutputWithContext(ctx context.Con
 	}).(AndroidMatrixPtrOutput)
 }
 
-// Required. The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+// The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o AndroidMatrixOutput) AndroidModelIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AndroidMatrix) []string { return v.AndroidModelIds }).(pulumi.StringArrayOutput)
 }
 
-// Required. The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+// The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o AndroidMatrixOutput) AndroidVersionIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AndroidMatrix) []string { return v.AndroidVersionIds }).(pulumi.StringArrayOutput)
 }
 
-// Required. The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+// The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o AndroidMatrixOutput) Locales() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AndroidMatrix) []string { return v.Locales }).(pulumi.StringArrayOutput)
 }
 
-// Required. The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
+// The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o AndroidMatrixOutput) Orientations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AndroidMatrix) []string { return v.Orientations }).(pulumi.StringArrayOutput)
 }
@@ -1523,7 +1523,7 @@ func (o AndroidMatrixPtrOutput) Elem() AndroidMatrixOutput {
 	return o.ApplyT(func(v *AndroidMatrix) AndroidMatrix { return *v }).(AndroidMatrixOutput)
 }
 
-// Required. The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+// The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o AndroidMatrixPtrOutput) AndroidModelIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AndroidMatrix) []string {
 		if v == nil {
@@ -1533,7 +1533,7 @@ func (o AndroidMatrixPtrOutput) AndroidModelIds() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+// The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o AndroidMatrixPtrOutput) AndroidVersionIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AndroidMatrix) []string {
 		if v == nil {
@@ -1543,7 +1543,7 @@ func (o AndroidMatrixPtrOutput) AndroidVersionIds() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+// The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o AndroidMatrixPtrOutput) Locales() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AndroidMatrix) []string {
 		if v == nil {
@@ -1553,7 +1553,7 @@ func (o AndroidMatrixPtrOutput) Locales() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
+// The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o AndroidMatrixPtrOutput) Orientations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AndroidMatrix) []string {
 		if v == nil {
@@ -1565,13 +1565,13 @@ func (o AndroidMatrixPtrOutput) Orientations() pulumi.StringArrayOutput {
 
 // A set of Android device configuration permutations is defined by the the cross-product of the given axes. Internally, the given AndroidMatrix will be expanded into a set of AndroidDevices. Only supported permutations will be instantiated. Invalid permutations (e.g., incompatible models/versions) are ignored.
 type AndroidMatrixResponse struct {
-	// Required. The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 	AndroidModelIds []string `pulumi:"androidModelIds"`
-	// Required. The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 	AndroidVersionIds []string `pulumi:"androidVersionIds"`
-	// Required. The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
 	Locales []string `pulumi:"locales"`
-	// Required. The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
 	Orientations []string `pulumi:"orientations"`
 }
 
@@ -1588,13 +1588,13 @@ type AndroidMatrixResponseInput interface {
 
 // A set of Android device configuration permutations is defined by the the cross-product of the given axes. Internally, the given AndroidMatrix will be expanded into a set of AndroidDevices. Only supported permutations will be instantiated. Invalid permutations (e.g., incompatible models/versions) are ignored.
 type AndroidMatrixResponseArgs struct {
-	// Required. The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 	AndroidModelIds pulumi.StringArrayInput `pulumi:"androidModelIds"`
-	// Required. The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 	AndroidVersionIds pulumi.StringArrayInput `pulumi:"androidVersionIds"`
-	// Required. The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
 	Locales pulumi.StringArrayInput `pulumi:"locales"`
-	// Required. The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
 	Orientations pulumi.StringArrayInput `pulumi:"orientations"`
 }
 
@@ -1676,22 +1676,22 @@ func (o AndroidMatrixResponseOutput) ToAndroidMatrixResponsePtrOutputWithContext
 	}).(AndroidMatrixResponsePtrOutput)
 }
 
-// Required. The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+// The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o AndroidMatrixResponseOutput) AndroidModelIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AndroidMatrixResponse) []string { return v.AndroidModelIds }).(pulumi.StringArrayOutput)
 }
 
-// Required. The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+// The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o AndroidMatrixResponseOutput) AndroidVersionIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AndroidMatrixResponse) []string { return v.AndroidVersionIds }).(pulumi.StringArrayOutput)
 }
 
-// Required. The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+// The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o AndroidMatrixResponseOutput) Locales() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AndroidMatrixResponse) []string { return v.Locales }).(pulumi.StringArrayOutput)
 }
 
-// Required. The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
+// The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o AndroidMatrixResponseOutput) Orientations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AndroidMatrixResponse) []string { return v.Orientations }).(pulumi.StringArrayOutput)
 }
@@ -1714,7 +1714,7 @@ func (o AndroidMatrixResponsePtrOutput) Elem() AndroidMatrixResponseOutput {
 	return o.ApplyT(func(v *AndroidMatrixResponse) AndroidMatrixResponse { return *v }).(AndroidMatrixResponseOutput)
 }
 
-// Required. The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+// The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o AndroidMatrixResponsePtrOutput) AndroidModelIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AndroidMatrixResponse) []string {
 		if v == nil {
@@ -1724,7 +1724,7 @@ func (o AndroidMatrixResponsePtrOutput) AndroidModelIds() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+// The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o AndroidMatrixResponsePtrOutput) AndroidVersionIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AndroidMatrixResponse) []string {
 		if v == nil {
@@ -1734,7 +1734,7 @@ func (o AndroidMatrixResponsePtrOutput) AndroidVersionIds() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+// The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o AndroidMatrixResponsePtrOutput) Locales() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AndroidMatrixResponse) []string {
 		if v == nil {
@@ -1744,7 +1744,7 @@ func (o AndroidMatrixResponsePtrOutput) Locales() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
+// The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o AndroidMatrixResponsePtrOutput) Orientations() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AndroidMatrixResponse) []string {
 		if v == nil {
@@ -3236,8 +3236,8 @@ func (o AppBundleResponsePtrOutput) BundleLocation() FileReferenceResponsePtrOut
 type ClientInfo struct {
 	// The list of detailed information about client.
 	ClientInfoDetails []ClientInfoDetail `pulumi:"clientInfoDetails"`
-	// Required. Client name, such as gcloud.
-	Name *string `pulumi:"name"`
+	// Client name, such as gcloud.
+	Name string `pulumi:"name"`
 }
 
 // ClientInfoInput is an input type that accepts ClientInfoArgs and ClientInfoOutput values.
@@ -3255,8 +3255,8 @@ type ClientInfoInput interface {
 type ClientInfoArgs struct {
 	// The list of detailed information about client.
 	ClientInfoDetails ClientInfoDetailArrayInput `pulumi:"clientInfoDetails"`
-	// Required. Client name, such as gcloud.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Client name, such as gcloud.
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (ClientInfoArgs) ElementType() reflect.Type {
@@ -3342,9 +3342,9 @@ func (o ClientInfoOutput) ClientInfoDetails() ClientInfoDetailArrayOutput {
 	return o.ApplyT(func(v ClientInfo) []ClientInfoDetail { return v.ClientInfoDetails }).(ClientInfoDetailArrayOutput)
 }
 
-// Required. Client name, such as gcloud.
-func (o ClientInfoOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+// Client name, such as gcloud.
+func (o ClientInfoOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientInfo) string { return v.Name }).(pulumi.StringOutput)
 }
 
 type ClientInfoPtrOutput struct{ *pulumi.OutputState }
@@ -3375,22 +3375,22 @@ func (o ClientInfoPtrOutput) ClientInfoDetails() ClientInfoDetailArrayOutput {
 	}).(ClientInfoDetailArrayOutput)
 }
 
-// Required. Client name, such as gcloud.
+// Client name, such as gcloud.
 func (o ClientInfoPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientInfo) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Name
+		return &v.Name
 	}).(pulumi.StringPtrOutput)
 }
 
 // Key-value pair of detailed information about the client which invoked the test. Examples: {'Version', '1.0'}, {'Release Track', 'BETA'}.
 type ClientInfoDetail struct {
-	// Required. The key of detailed client information.
-	Key *string `pulumi:"key"`
-	// Required. The value of detailed client information.
-	Value *string `pulumi:"value"`
+	// The key of detailed client information.
+	Key string `pulumi:"key"`
+	// The value of detailed client information.
+	Value string `pulumi:"value"`
 }
 
 // ClientInfoDetailInput is an input type that accepts ClientInfoDetailArgs and ClientInfoDetailOutput values.
@@ -3406,10 +3406,10 @@ type ClientInfoDetailInput interface {
 
 // Key-value pair of detailed information about the client which invoked the test. Examples: {'Version', '1.0'}, {'Release Track', 'BETA'}.
 type ClientInfoDetailArgs struct {
-	// Required. The key of detailed client information.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Required. The value of detailed client information.
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	// The key of detailed client information.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The value of detailed client information.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (ClientInfoDetailArgs) ElementType() reflect.Type {
@@ -3464,14 +3464,14 @@ func (o ClientInfoDetailOutput) ToClientInfoDetailOutputWithContext(ctx context.
 	return o
 }
 
-// Required. The key of detailed client information.
-func (o ClientInfoDetailOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientInfoDetail) *string { return v.Key }).(pulumi.StringPtrOutput)
+// The key of detailed client information.
+func (o ClientInfoDetailOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientInfoDetail) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Required. The value of detailed client information.
-func (o ClientInfoDetailOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClientInfoDetail) *string { return v.Value }).(pulumi.StringPtrOutput)
+// The value of detailed client information.
+func (o ClientInfoDetailOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ClientInfoDetail) string { return v.Value }).(pulumi.StringOutput)
 }
 
 type ClientInfoDetailArrayOutput struct{ *pulumi.OutputState }
@@ -3496,9 +3496,9 @@ func (o ClientInfoDetailArrayOutput) Index(i pulumi.IntInput) ClientInfoDetailOu
 
 // Key-value pair of detailed information about the client which invoked the test. Examples: {'Version', '1.0'}, {'Release Track', 'BETA'}.
 type ClientInfoDetailResponse struct {
-	// Required. The key of detailed client information.
+	// The key of detailed client information.
 	Key string `pulumi:"key"`
-	// Required. The value of detailed client information.
+	// The value of detailed client information.
 	Value string `pulumi:"value"`
 }
 
@@ -3515,9 +3515,9 @@ type ClientInfoDetailResponseInput interface {
 
 // Key-value pair of detailed information about the client which invoked the test. Examples: {'Version', '1.0'}, {'Release Track', 'BETA'}.
 type ClientInfoDetailResponseArgs struct {
-	// Required. The key of detailed client information.
+	// The key of detailed client information.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Required. The value of detailed client information.
+	// The value of detailed client information.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -3573,12 +3573,12 @@ func (o ClientInfoDetailResponseOutput) ToClientInfoDetailResponseOutputWithCont
 	return o
 }
 
-// Required. The key of detailed client information.
+// The key of detailed client information.
 func (o ClientInfoDetailResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ClientInfoDetailResponse) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Required. The value of detailed client information.
+// The value of detailed client information.
 func (o ClientInfoDetailResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v ClientInfoDetailResponse) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -3607,7 +3607,7 @@ func (o ClientInfoDetailResponseArrayOutput) Index(i pulumi.IntInput) ClientInfo
 type ClientInfoResponse struct {
 	// The list of detailed information about client.
 	ClientInfoDetails []ClientInfoDetailResponse `pulumi:"clientInfoDetails"`
-	// Required. Client name, such as gcloud.
+	// Client name, such as gcloud.
 	Name string `pulumi:"name"`
 }
 
@@ -3626,7 +3626,7 @@ type ClientInfoResponseInput interface {
 type ClientInfoResponseArgs struct {
 	// The list of detailed information about client.
 	ClientInfoDetails ClientInfoDetailResponseArrayInput `pulumi:"clientInfoDetails"`
-	// Required. Client name, such as gcloud.
+	// Client name, such as gcloud.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -3713,7 +3713,7 @@ func (o ClientInfoResponseOutput) ClientInfoDetails() ClientInfoDetailResponseAr
 	return o.ApplyT(func(v ClientInfoResponse) []ClientInfoDetailResponse { return v.ClientInfoDetails }).(ClientInfoDetailResponseArrayOutput)
 }
 
-// Required. Client name, such as gcloud.
+// Client name, such as gcloud.
 func (o ClientInfoResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ClientInfoResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -3746,7 +3746,7 @@ func (o ClientInfoResponsePtrOutput) ClientInfoDetails() ClientInfoDetailRespons
 	}).(ClientInfoDetailResponseArrayOutput)
 }
 
-// Required. Client name, such as gcloud.
+// Client name, such as gcloud.
 func (o ClientInfoResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClientInfoResponse) *string {
 		if v == nil {
@@ -5190,8 +5190,8 @@ func (o GoogleAutoResponsePtrOutput) Elem() GoogleAutoResponseOutput {
 
 // A storage location within Google cloud storage (GCS).
 type GoogleCloudStorage struct {
-	// Required. The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
-	GcsPath *string `pulumi:"gcsPath"`
+	// The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
+	GcsPath string `pulumi:"gcsPath"`
 }
 
 // GoogleCloudStorageInput is an input type that accepts GoogleCloudStorageArgs and GoogleCloudStorageOutput values.
@@ -5207,8 +5207,8 @@ type GoogleCloudStorageInput interface {
 
 // A storage location within Google cloud storage (GCS).
 type GoogleCloudStorageArgs struct {
-	// Required. The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
-	GcsPath pulumi.StringPtrInput `pulumi:"gcsPath"`
+	// The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
+	GcsPath pulumi.StringInput `pulumi:"gcsPath"`
 }
 
 func (GoogleCloudStorageArgs) ElementType() reflect.Type {
@@ -5289,9 +5289,9 @@ func (o GoogleCloudStorageOutput) ToGoogleCloudStoragePtrOutputWithContext(ctx c
 	}).(GoogleCloudStoragePtrOutput)
 }
 
-// Required. The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
-func (o GoogleCloudStorageOutput) GcsPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudStorage) *string { return v.GcsPath }).(pulumi.StringPtrOutput)
+// The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
+func (o GoogleCloudStorageOutput) GcsPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudStorage) string { return v.GcsPath }).(pulumi.StringOutput)
 }
 
 type GoogleCloudStoragePtrOutput struct{ *pulumi.OutputState }
@@ -5312,19 +5312,19 @@ func (o GoogleCloudStoragePtrOutput) Elem() GoogleCloudStorageOutput {
 	return o.ApplyT(func(v *GoogleCloudStorage) GoogleCloudStorage { return *v }).(GoogleCloudStorageOutput)
 }
 
-// Required. The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
+// The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
 func (o GoogleCloudStoragePtrOutput) GcsPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudStorage) *string {
 		if v == nil {
 			return nil
 		}
-		return v.GcsPath
+		return &v.GcsPath
 	}).(pulumi.StringPtrOutput)
 }
 
 // A storage location within Google cloud storage (GCS).
 type GoogleCloudStorageResponse struct {
-	// Required. The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
+	// The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
 	GcsPath string `pulumi:"gcsPath"`
 }
 
@@ -5341,7 +5341,7 @@ type GoogleCloudStorageResponseInput interface {
 
 // A storage location within Google cloud storage (GCS).
 type GoogleCloudStorageResponseArgs struct {
-	// Required. The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
+	// The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
 	GcsPath pulumi.StringInput `pulumi:"gcsPath"`
 }
 
@@ -5423,7 +5423,7 @@ func (o GoogleCloudStorageResponseOutput) ToGoogleCloudStorageResponsePtrOutputW
 	}).(GoogleCloudStorageResponsePtrOutput)
 }
 
-// Required. The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
+// The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
 func (o GoogleCloudStorageResponseOutput) GcsPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudStorageResponse) string { return v.GcsPath }).(pulumi.StringOutput)
 }
@@ -5446,7 +5446,7 @@ func (o GoogleCloudStorageResponsePtrOutput) Elem() GoogleCloudStorageResponseOu
 	return o.ApplyT(func(v *GoogleCloudStorageResponse) GoogleCloudStorageResponse { return *v }).(GoogleCloudStorageResponseOutput)
 }
 
-// Required. The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
+// The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
 func (o GoogleCloudStorageResponsePtrOutput) GcsPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudStorageResponse) *string {
 		if v == nil {
@@ -5458,14 +5458,14 @@ func (o GoogleCloudStorageResponsePtrOutput) GcsPath() pulumi.StringPtrOutput {
 
 // A single iOS device.
 type IosDevice struct {
-	// Required. The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-	IosModelId *string `pulumi:"iosModelId"`
-	// Required. The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-	IosVersionId *string `pulumi:"iosVersionId"`
-	// Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
-	Locale *string `pulumi:"locale"`
-	// Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
-	Orientation *string `pulumi:"orientation"`
+	// The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	IosModelId string `pulumi:"iosModelId"`
+	// The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	IosVersionId string `pulumi:"iosVersionId"`
+	// The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+	Locale string `pulumi:"locale"`
+	// How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+	Orientation string `pulumi:"orientation"`
 }
 
 // IosDeviceInput is an input type that accepts IosDeviceArgs and IosDeviceOutput values.
@@ -5481,14 +5481,14 @@ type IosDeviceInput interface {
 
 // A single iOS device.
 type IosDeviceArgs struct {
-	// Required. The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-	IosModelId pulumi.StringPtrInput `pulumi:"iosModelId"`
-	// Required. The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-	IosVersionId pulumi.StringPtrInput `pulumi:"iosVersionId"`
-	// Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
-	Locale pulumi.StringPtrInput `pulumi:"locale"`
-	// Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
-	Orientation pulumi.StringPtrInput `pulumi:"orientation"`
+	// The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	IosModelId pulumi.StringInput `pulumi:"iosModelId"`
+	// The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	IosVersionId pulumi.StringInput `pulumi:"iosVersionId"`
+	// The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+	Locale pulumi.StringInput `pulumi:"locale"`
+	// How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+	Orientation pulumi.StringInput `pulumi:"orientation"`
 }
 
 func (IosDeviceArgs) ElementType() reflect.Type {
@@ -5543,24 +5543,24 @@ func (o IosDeviceOutput) ToIosDeviceOutputWithContext(ctx context.Context) IosDe
 	return o
 }
 
-// Required. The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-func (o IosDeviceOutput) IosModelId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IosDevice) *string { return v.IosModelId }).(pulumi.StringPtrOutput)
+// The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+func (o IosDeviceOutput) IosModelId() pulumi.StringOutput {
+	return o.ApplyT(func(v IosDevice) string { return v.IosModelId }).(pulumi.StringOutput)
 }
 
-// Required. The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
-func (o IosDeviceOutput) IosVersionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IosDevice) *string { return v.IosVersionId }).(pulumi.StringPtrOutput)
+// The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+func (o IosDeviceOutput) IosVersionId() pulumi.StringOutput {
+	return o.ApplyT(func(v IosDevice) string { return v.IosVersionId }).(pulumi.StringOutput)
 }
 
-// Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
-func (o IosDeviceOutput) Locale() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IosDevice) *string { return v.Locale }).(pulumi.StringPtrOutput)
+// The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+func (o IosDeviceOutput) Locale() pulumi.StringOutput {
+	return o.ApplyT(func(v IosDevice) string { return v.Locale }).(pulumi.StringOutput)
 }
 
-// Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
-func (o IosDeviceOutput) Orientation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IosDevice) *string { return v.Orientation }).(pulumi.StringPtrOutput)
+// How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+func (o IosDeviceOutput) Orientation() pulumi.StringOutput {
+	return o.ApplyT(func(v IosDevice) string { return v.Orientation }).(pulumi.StringOutput)
 }
 
 type IosDeviceArrayOutput struct{ *pulumi.OutputState }
@@ -5821,7 +5821,7 @@ func (o IosDeviceFileResponseArrayOutput) Index(i pulumi.IntInput) IosDeviceFile
 
 // A list of iOS device configurations in which the test is to be executed.
 type IosDeviceList struct {
-	// Required. A list of iOS devices.
+	// A list of iOS devices.
 	IosDevices []IosDevice `pulumi:"iosDevices"`
 }
 
@@ -5838,7 +5838,7 @@ type IosDeviceListInput interface {
 
 // A list of iOS device configurations in which the test is to be executed.
 type IosDeviceListArgs struct {
-	// Required. A list of iOS devices.
+	// A list of iOS devices.
 	IosDevices IosDeviceArrayInput `pulumi:"iosDevices"`
 }
 
@@ -5920,7 +5920,7 @@ func (o IosDeviceListOutput) ToIosDeviceListPtrOutputWithContext(ctx context.Con
 	}).(IosDeviceListPtrOutput)
 }
 
-// Required. A list of iOS devices.
+// A list of iOS devices.
 func (o IosDeviceListOutput) IosDevices() IosDeviceArrayOutput {
 	return o.ApplyT(func(v IosDeviceList) []IosDevice { return v.IosDevices }).(IosDeviceArrayOutput)
 }
@@ -5943,7 +5943,7 @@ func (o IosDeviceListPtrOutput) Elem() IosDeviceListOutput {
 	return o.ApplyT(func(v *IosDeviceList) IosDeviceList { return *v }).(IosDeviceListOutput)
 }
 
-// Required. A list of iOS devices.
+// A list of iOS devices.
 func (o IosDeviceListPtrOutput) IosDevices() IosDeviceArrayOutput {
 	return o.ApplyT(func(v *IosDeviceList) []IosDevice {
 		if v == nil {
@@ -5955,7 +5955,7 @@ func (o IosDeviceListPtrOutput) IosDevices() IosDeviceArrayOutput {
 
 // A list of iOS device configurations in which the test is to be executed.
 type IosDeviceListResponse struct {
-	// Required. A list of iOS devices.
+	// A list of iOS devices.
 	IosDevices []IosDeviceResponse `pulumi:"iosDevices"`
 }
 
@@ -5972,7 +5972,7 @@ type IosDeviceListResponseInput interface {
 
 // A list of iOS device configurations in which the test is to be executed.
 type IosDeviceListResponseArgs struct {
-	// Required. A list of iOS devices.
+	// A list of iOS devices.
 	IosDevices IosDeviceResponseArrayInput `pulumi:"iosDevices"`
 }
 
@@ -6054,7 +6054,7 @@ func (o IosDeviceListResponseOutput) ToIosDeviceListResponsePtrOutputWithContext
 	}).(IosDeviceListResponsePtrOutput)
 }
 
-// Required. A list of iOS devices.
+// A list of iOS devices.
 func (o IosDeviceListResponseOutput) IosDevices() IosDeviceResponseArrayOutput {
 	return o.ApplyT(func(v IosDeviceListResponse) []IosDeviceResponse { return v.IosDevices }).(IosDeviceResponseArrayOutput)
 }
@@ -6077,7 +6077,7 @@ func (o IosDeviceListResponsePtrOutput) Elem() IosDeviceListResponseOutput {
 	return o.ApplyT(func(v *IosDeviceListResponse) IosDeviceListResponse { return *v }).(IosDeviceListResponseOutput)
 }
 
-// Required. A list of iOS devices.
+// A list of iOS devices.
 func (o IosDeviceListResponsePtrOutput) IosDevices() IosDeviceResponseArrayOutput {
 	return o.ApplyT(func(v *IosDeviceListResponse) []IosDeviceResponse {
 		if v == nil {
@@ -6089,13 +6089,13 @@ func (o IosDeviceListResponsePtrOutput) IosDevices() IosDeviceResponseArrayOutpu
 
 // A single iOS device.
 type IosDeviceResponse struct {
-	// Required. The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 	IosModelId string `pulumi:"iosModelId"`
-	// Required. The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 	IosVersionId string `pulumi:"iosVersionId"`
-	// Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
 	Locale string `pulumi:"locale"`
-	// Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+	// How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
 	Orientation string `pulumi:"orientation"`
 }
 
@@ -6112,13 +6112,13 @@ type IosDeviceResponseInput interface {
 
 // A single iOS device.
 type IosDeviceResponseArgs struct {
-	// Required. The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 	IosModelId pulumi.StringInput `pulumi:"iosModelId"`
-	// Required. The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 	IosVersionId pulumi.StringInput `pulumi:"iosVersionId"`
-	// Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+	// The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
 	Locale pulumi.StringInput `pulumi:"locale"`
-	// Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+	// How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
 	Orientation pulumi.StringInput `pulumi:"orientation"`
 }
 
@@ -6174,22 +6174,22 @@ func (o IosDeviceResponseOutput) ToIosDeviceResponseOutputWithContext(ctx contex
 	return o
 }
 
-// Required. The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+// The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o IosDeviceResponseOutput) IosModelId() pulumi.StringOutput {
 	return o.ApplyT(func(v IosDeviceResponse) string { return v.IosModelId }).(pulumi.StringOutput)
 }
 
-// Required. The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+// The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o IosDeviceResponseOutput) IosVersionId() pulumi.StringOutput {
 	return o.ApplyT(func(v IosDeviceResponse) string { return v.IosVersionId }).(pulumi.StringOutput)
 }
 
-// Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+// The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o IosDeviceResponseOutput) Locale() pulumi.StringOutput {
 	return o.ApplyT(func(v IosDeviceResponse) string { return v.Locale }).(pulumi.StringOutput)
 }
 
-// Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+// How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
 func (o IosDeviceResponseOutput) Orientation() pulumi.StringOutput {
 	return o.ApplyT(func(v IosDeviceResponse) string { return v.Orientation }).(pulumi.StringOutput)
 }
@@ -6216,8 +6216,8 @@ func (o IosDeviceResponseArrayOutput) Index(i pulumi.IntInput) IosDeviceResponse
 
 // A test of an iOS application that implements one or more game loop scenarios. This test type accepts an archived application (.ipa file) and a list of integer scenarios that will be executed on the app sequentially.
 type IosTestLoop struct {
-	// Required. The .ipa of the application to test.
-	AppIpa *FileReference `pulumi:"appIpa"`
+	// The .ipa of the application to test.
+	AppIpa FileReference `pulumi:"appIpa"`
 	// The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified.
 	Scenarios []int `pulumi:"scenarios"`
 }
@@ -6235,8 +6235,8 @@ type IosTestLoopInput interface {
 
 // A test of an iOS application that implements one or more game loop scenarios. This test type accepts an archived application (.ipa file) and a list of integer scenarios that will be executed on the app sequentially.
 type IosTestLoopArgs struct {
-	// Required. The .ipa of the application to test.
-	AppIpa FileReferencePtrInput `pulumi:"appIpa"`
+	// The .ipa of the application to test.
+	AppIpa FileReferenceInput `pulumi:"appIpa"`
 	// The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified.
 	Scenarios pulumi.IntArrayInput `pulumi:"scenarios"`
 }
@@ -6319,9 +6319,9 @@ func (o IosTestLoopOutput) ToIosTestLoopPtrOutputWithContext(ctx context.Context
 	}).(IosTestLoopPtrOutput)
 }
 
-// Required. The .ipa of the application to test.
-func (o IosTestLoopOutput) AppIpa() FileReferencePtrOutput {
-	return o.ApplyT(func(v IosTestLoop) *FileReference { return v.AppIpa }).(FileReferencePtrOutput)
+// The .ipa of the application to test.
+func (o IosTestLoopOutput) AppIpa() FileReferenceOutput {
+	return o.ApplyT(func(v IosTestLoop) FileReference { return v.AppIpa }).(FileReferenceOutput)
 }
 
 // The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified.
@@ -6347,13 +6347,13 @@ func (o IosTestLoopPtrOutput) Elem() IosTestLoopOutput {
 	return o.ApplyT(func(v *IosTestLoop) IosTestLoop { return *v }).(IosTestLoopOutput)
 }
 
-// Required. The .ipa of the application to test.
+// The .ipa of the application to test.
 func (o IosTestLoopPtrOutput) AppIpa() FileReferencePtrOutput {
 	return o.ApplyT(func(v *IosTestLoop) *FileReference {
 		if v == nil {
 			return nil
 		}
-		return v.AppIpa
+		return &v.AppIpa
 	}).(FileReferencePtrOutput)
 }
 
@@ -6371,7 +6371,7 @@ func (o IosTestLoopPtrOutput) Scenarios() pulumi.IntArrayOutput {
 type IosTestLoopResponse struct {
 	// The bundle id for the application under test.
 	AppBundleId string `pulumi:"appBundleId"`
-	// Required. The .ipa of the application to test.
+	// The .ipa of the application to test.
 	AppIpa FileReferenceResponse `pulumi:"appIpa"`
 	// The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified.
 	Scenarios []int `pulumi:"scenarios"`
@@ -6392,7 +6392,7 @@ type IosTestLoopResponseInput interface {
 type IosTestLoopResponseArgs struct {
 	// The bundle id for the application under test.
 	AppBundleId pulumi.StringInput `pulumi:"appBundleId"`
-	// Required. The .ipa of the application to test.
+	// The .ipa of the application to test.
 	AppIpa FileReferenceResponseInput `pulumi:"appIpa"`
 	// The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified.
 	Scenarios pulumi.IntArrayInput `pulumi:"scenarios"`
@@ -6481,7 +6481,7 @@ func (o IosTestLoopResponseOutput) AppBundleId() pulumi.StringOutput {
 	return o.ApplyT(func(v IosTestLoopResponse) string { return v.AppBundleId }).(pulumi.StringOutput)
 }
 
-// Required. The .ipa of the application to test.
+// The .ipa of the application to test.
 func (o IosTestLoopResponseOutput) AppIpa() FileReferenceResponseOutput {
 	return o.ApplyT(func(v IosTestLoopResponse) FileReferenceResponse { return v.AppIpa }).(FileReferenceResponseOutput)
 }
@@ -6519,7 +6519,7 @@ func (o IosTestLoopResponsePtrOutput) AppBundleId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The .ipa of the application to test.
+// The .ipa of the application to test.
 func (o IosTestLoopResponsePtrOutput) AppIpa() FileReferenceResponsePtrOutput {
 	return o.ApplyT(func(v *IosTestLoopResponse) *FileReferenceResponse {
 		if v == nil {
@@ -6925,8 +6925,8 @@ func (o IosTestSetupResponsePtrOutput) PushFiles() IosDeviceFileResponseArrayOut
 type IosXcTest struct {
 	// The option to test special app entitlements. Setting this would re-sign the app having special entitlements with an explicit application-identifier. Currently supports testing aps-environment entitlement.
 	TestSpecialEntitlements *bool `pulumi:"testSpecialEntitlements"`
-	// Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
-	TestsZip *FileReference `pulumi:"testsZip"`
+	// The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
+	TestsZip FileReference `pulumi:"testsZip"`
 	// The Xcode version that should be used for the test. Use the TestEnvironmentDiscoveryService to get supported options. Defaults to the latest Xcode version Firebase Test Lab supports.
 	XcodeVersion *string `pulumi:"xcodeVersion"`
 	// An .xctestrun file that will override the .xctestrun file in the tests zip. Because the .xctestrun file contains environment variables along with test methods to run and/or ignore, this can be useful for sharding tests. Default is taken from the tests zip.
@@ -6948,8 +6948,8 @@ type IosXcTestInput interface {
 type IosXcTestArgs struct {
 	// The option to test special app entitlements. Setting this would re-sign the app having special entitlements with an explicit application-identifier. Currently supports testing aps-environment entitlement.
 	TestSpecialEntitlements pulumi.BoolPtrInput `pulumi:"testSpecialEntitlements"`
-	// Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
-	TestsZip FileReferencePtrInput `pulumi:"testsZip"`
+	// The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
+	TestsZip FileReferenceInput `pulumi:"testsZip"`
 	// The Xcode version that should be used for the test. Use the TestEnvironmentDiscoveryService to get supported options. Defaults to the latest Xcode version Firebase Test Lab supports.
 	XcodeVersion pulumi.StringPtrInput `pulumi:"xcodeVersion"`
 	// An .xctestrun file that will override the .xctestrun file in the tests zip. Because the .xctestrun file contains environment variables along with test methods to run and/or ignore, this can be useful for sharding tests. Default is taken from the tests zip.
@@ -7039,9 +7039,9 @@ func (o IosXcTestOutput) TestSpecialEntitlements() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v IosXcTest) *bool { return v.TestSpecialEntitlements }).(pulumi.BoolPtrOutput)
 }
 
-// Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
-func (o IosXcTestOutput) TestsZip() FileReferencePtrOutput {
-	return o.ApplyT(func(v IosXcTest) *FileReference { return v.TestsZip }).(FileReferencePtrOutput)
+// The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
+func (o IosXcTestOutput) TestsZip() FileReferenceOutput {
+	return o.ApplyT(func(v IosXcTest) FileReference { return v.TestsZip }).(FileReferenceOutput)
 }
 
 // The Xcode version that should be used for the test. Use the TestEnvironmentDiscoveryService to get supported options. Defaults to the latest Xcode version Firebase Test Lab supports.
@@ -7082,13 +7082,13 @@ func (o IosXcTestPtrOutput) TestSpecialEntitlements() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
+// The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
 func (o IosXcTestPtrOutput) TestsZip() FileReferencePtrOutput {
 	return o.ApplyT(func(v *IosXcTest) *FileReference {
 		if v == nil {
 			return nil
 		}
-		return v.TestsZip
+		return &v.TestsZip
 	}).(FileReferencePtrOutput)
 }
 
@@ -7118,7 +7118,7 @@ type IosXcTestResponse struct {
 	AppBundleId string `pulumi:"appBundleId"`
 	// The option to test special app entitlements. Setting this would re-sign the app having special entitlements with an explicit application-identifier. Currently supports testing aps-environment entitlement.
 	TestSpecialEntitlements bool `pulumi:"testSpecialEntitlements"`
-	// Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
+	// The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
 	TestsZip FileReferenceResponse `pulumi:"testsZip"`
 	// The Xcode version that should be used for the test. Use the TestEnvironmentDiscoveryService to get supported options. Defaults to the latest Xcode version Firebase Test Lab supports.
 	XcodeVersion string `pulumi:"xcodeVersion"`
@@ -7143,7 +7143,7 @@ type IosXcTestResponseArgs struct {
 	AppBundleId pulumi.StringInput `pulumi:"appBundleId"`
 	// The option to test special app entitlements. Setting this would re-sign the app having special entitlements with an explicit application-identifier. Currently supports testing aps-environment entitlement.
 	TestSpecialEntitlements pulumi.BoolInput `pulumi:"testSpecialEntitlements"`
-	// Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
+	// The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
 	TestsZip FileReferenceResponseInput `pulumi:"testsZip"`
 	// The Xcode version that should be used for the test. Use the TestEnvironmentDiscoveryService to get supported options. Defaults to the latest Xcode version Firebase Test Lab supports.
 	XcodeVersion pulumi.StringInput `pulumi:"xcodeVersion"`
@@ -7239,7 +7239,7 @@ func (o IosXcTestResponseOutput) TestSpecialEntitlements() pulumi.BoolOutput {
 	return o.ApplyT(func(v IosXcTestResponse) bool { return v.TestSpecialEntitlements }).(pulumi.BoolOutput)
 }
 
-// Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
+// The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
 func (o IosXcTestResponseOutput) TestsZip() FileReferenceResponseOutput {
 	return o.ApplyT(func(v IosXcTestResponse) FileReferenceResponse { return v.TestsZip }).(FileReferenceResponseOutput)
 }
@@ -7292,7 +7292,7 @@ func (o IosXcTestResponsePtrOutput) TestSpecialEntitlements() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
+// The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
 func (o IosXcTestResponsePtrOutput) TestsZip() FileReferenceResponsePtrOutput {
 	return o.ApplyT(func(v *IosXcTestResponse) *FileReferenceResponse {
 		if v == nil {
@@ -7485,7 +7485,7 @@ func (o LauncherActivityIntentResponseOutput) ToLauncherActivityIntentResponseOu
 
 // Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.
 type ManualSharding struct {
-	// Required. Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+	// Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
 	TestTargetsForShard []TestTargetsForShard `pulumi:"testTargetsForShard"`
 }
 
@@ -7502,7 +7502,7 @@ type ManualShardingInput interface {
 
 // Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.
 type ManualShardingArgs struct {
-	// Required. Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+	// Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
 	TestTargetsForShard TestTargetsForShardArrayInput `pulumi:"testTargetsForShard"`
 }
 
@@ -7584,7 +7584,7 @@ func (o ManualShardingOutput) ToManualShardingPtrOutputWithContext(ctx context.C
 	}).(ManualShardingPtrOutput)
 }
 
-// Required. Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+// Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
 func (o ManualShardingOutput) TestTargetsForShard() TestTargetsForShardArrayOutput {
 	return o.ApplyT(func(v ManualSharding) []TestTargetsForShard { return v.TestTargetsForShard }).(TestTargetsForShardArrayOutput)
 }
@@ -7607,7 +7607,7 @@ func (o ManualShardingPtrOutput) Elem() ManualShardingOutput {
 	return o.ApplyT(func(v *ManualSharding) ManualSharding { return *v }).(ManualShardingOutput)
 }
 
-// Required. Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+// Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
 func (o ManualShardingPtrOutput) TestTargetsForShard() TestTargetsForShardArrayOutput {
 	return o.ApplyT(func(v *ManualSharding) []TestTargetsForShard {
 		if v == nil {
@@ -7619,7 +7619,7 @@ func (o ManualShardingPtrOutput) TestTargetsForShard() TestTargetsForShardArrayO
 
 // Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.
 type ManualShardingResponse struct {
-	// Required. Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+	// Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
 	TestTargetsForShard []TestTargetsForShardResponse `pulumi:"testTargetsForShard"`
 }
 
@@ -7636,7 +7636,7 @@ type ManualShardingResponseInput interface {
 
 // Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.
 type ManualShardingResponseArgs struct {
-	// Required. Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+	// Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
 	TestTargetsForShard TestTargetsForShardResponseArrayInput `pulumi:"testTargetsForShard"`
 }
 
@@ -7718,7 +7718,7 @@ func (o ManualShardingResponseOutput) ToManualShardingResponsePtrOutputWithConte
 	}).(ManualShardingResponsePtrOutput)
 }
 
-// Required. Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+// Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
 func (o ManualShardingResponseOutput) TestTargetsForShard() TestTargetsForShardResponseArrayOutput {
 	return o.ApplyT(func(v ManualShardingResponse) []TestTargetsForShardResponse { return v.TestTargetsForShard }).(TestTargetsForShardResponseArrayOutput)
 }
@@ -7741,7 +7741,7 @@ func (o ManualShardingResponsePtrOutput) Elem() ManualShardingResponseOutput {
 	return o.ApplyT(func(v *ManualShardingResponse) ManualShardingResponse { return *v }).(ManualShardingResponseOutput)
 }
 
-// Required. Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+// Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
 func (o ManualShardingResponsePtrOutput) TestTargetsForShard() TestTargetsForShardResponseArrayOutput {
 	return o.ApplyT(func(v *ManualShardingResponse) []TestTargetsForShardResponse {
 		if v == nil {
@@ -7753,10 +7753,10 @@ func (o ManualShardingResponsePtrOutput) TestTargetsForShard() TestTargetsForSha
 
 // An opaque binary blob file to install on the device before the test starts.
 type ObbFile struct {
-	// Required. Opaque Binary Blob (OBB) file(s) to install on the device.
-	Obb *FileReference `pulumi:"obb"`
-	// Required. OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
-	ObbFileName *string `pulumi:"obbFileName"`
+	// Opaque Binary Blob (OBB) file(s) to install on the device.
+	Obb FileReference `pulumi:"obb"`
+	// OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
+	ObbFileName string `pulumi:"obbFileName"`
 }
 
 // ObbFileInput is an input type that accepts ObbFileArgs and ObbFileOutput values.
@@ -7772,10 +7772,10 @@ type ObbFileInput interface {
 
 // An opaque binary blob file to install on the device before the test starts.
 type ObbFileArgs struct {
-	// Required. Opaque Binary Blob (OBB) file(s) to install on the device.
-	Obb FileReferencePtrInput `pulumi:"obb"`
-	// Required. OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
-	ObbFileName pulumi.StringPtrInput `pulumi:"obbFileName"`
+	// Opaque Binary Blob (OBB) file(s) to install on the device.
+	Obb FileReferenceInput `pulumi:"obb"`
+	// OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
+	ObbFileName pulumi.StringInput `pulumi:"obbFileName"`
 }
 
 func (ObbFileArgs) ElementType() reflect.Type {
@@ -7856,14 +7856,14 @@ func (o ObbFileOutput) ToObbFilePtrOutputWithContext(ctx context.Context) ObbFil
 	}).(ObbFilePtrOutput)
 }
 
-// Required. Opaque Binary Blob (OBB) file(s) to install on the device.
-func (o ObbFileOutput) Obb() FileReferencePtrOutput {
-	return o.ApplyT(func(v ObbFile) *FileReference { return v.Obb }).(FileReferencePtrOutput)
+// Opaque Binary Blob (OBB) file(s) to install on the device.
+func (o ObbFileOutput) Obb() FileReferenceOutput {
+	return o.ApplyT(func(v ObbFile) FileReference { return v.Obb }).(FileReferenceOutput)
 }
 
-// Required. OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
-func (o ObbFileOutput) ObbFileName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ObbFile) *string { return v.ObbFileName }).(pulumi.StringPtrOutput)
+// OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
+func (o ObbFileOutput) ObbFileName() pulumi.StringOutput {
+	return o.ApplyT(func(v ObbFile) string { return v.ObbFileName }).(pulumi.StringOutput)
 }
 
 type ObbFilePtrOutput struct{ *pulumi.OutputState }
@@ -7884,31 +7884,31 @@ func (o ObbFilePtrOutput) Elem() ObbFileOutput {
 	return o.ApplyT(func(v *ObbFile) ObbFile { return *v }).(ObbFileOutput)
 }
 
-// Required. Opaque Binary Blob (OBB) file(s) to install on the device.
+// Opaque Binary Blob (OBB) file(s) to install on the device.
 func (o ObbFilePtrOutput) Obb() FileReferencePtrOutput {
 	return o.ApplyT(func(v *ObbFile) *FileReference {
 		if v == nil {
 			return nil
 		}
-		return v.Obb
+		return &v.Obb
 	}).(FileReferencePtrOutput)
 }
 
-// Required. OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
+// OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
 func (o ObbFilePtrOutput) ObbFileName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObbFile) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ObbFileName
+		return &v.ObbFileName
 	}).(pulumi.StringPtrOutput)
 }
 
 // An opaque binary blob file to install on the device before the test starts.
 type ObbFileResponse struct {
-	// Required. Opaque Binary Blob (OBB) file(s) to install on the device.
+	// Opaque Binary Blob (OBB) file(s) to install on the device.
 	Obb FileReferenceResponse `pulumi:"obb"`
-	// Required. OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
+	// OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
 	ObbFileName string `pulumi:"obbFileName"`
 }
 
@@ -7925,9 +7925,9 @@ type ObbFileResponseInput interface {
 
 // An opaque binary blob file to install on the device before the test starts.
 type ObbFileResponseArgs struct {
-	// Required. Opaque Binary Blob (OBB) file(s) to install on the device.
+	// Opaque Binary Blob (OBB) file(s) to install on the device.
 	Obb FileReferenceResponseInput `pulumi:"obb"`
-	// Required. OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
+	// OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
 	ObbFileName pulumi.StringInput `pulumi:"obbFileName"`
 }
 
@@ -7958,22 +7958,22 @@ func (o ObbFileResponseOutput) ToObbFileResponseOutputWithContext(ctx context.Co
 	return o
 }
 
-// Required. Opaque Binary Blob (OBB) file(s) to install on the device.
+// Opaque Binary Blob (OBB) file(s) to install on the device.
 func (o ObbFileResponseOutput) Obb() FileReferenceResponseOutput {
 	return o.ApplyT(func(v ObbFileResponse) FileReferenceResponse { return v.Obb }).(FileReferenceResponseOutput)
 }
 
-// Required. OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
+// OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
 func (o ObbFileResponseOutput) ObbFileName() pulumi.StringOutput {
 	return o.ApplyT(func(v ObbFileResponse) string { return v.ObbFileName }).(pulumi.StringOutput)
 }
 
 // A file or directory to install on the device before the test starts.
 type RegularFile struct {
-	// Required. The source file.
-	Content *FileReference `pulumi:"content"`
-	// Required. Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
-	DevicePath *string `pulumi:"devicePath"`
+	// The source file.
+	Content FileReference `pulumi:"content"`
+	// Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
+	DevicePath string `pulumi:"devicePath"`
 }
 
 // RegularFileInput is an input type that accepts RegularFileArgs and RegularFileOutput values.
@@ -7989,10 +7989,10 @@ type RegularFileInput interface {
 
 // A file or directory to install on the device before the test starts.
 type RegularFileArgs struct {
-	// Required. The source file.
-	Content FileReferencePtrInput `pulumi:"content"`
-	// Required. Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
-	DevicePath pulumi.StringPtrInput `pulumi:"devicePath"`
+	// The source file.
+	Content FileReferenceInput `pulumi:"content"`
+	// Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
+	DevicePath pulumi.StringInput `pulumi:"devicePath"`
 }
 
 func (RegularFileArgs) ElementType() reflect.Type {
@@ -8073,14 +8073,14 @@ func (o RegularFileOutput) ToRegularFilePtrOutputWithContext(ctx context.Context
 	}).(RegularFilePtrOutput)
 }
 
-// Required. The source file.
-func (o RegularFileOutput) Content() FileReferencePtrOutput {
-	return o.ApplyT(func(v RegularFile) *FileReference { return v.Content }).(FileReferencePtrOutput)
+// The source file.
+func (o RegularFileOutput) Content() FileReferenceOutput {
+	return o.ApplyT(func(v RegularFile) FileReference { return v.Content }).(FileReferenceOutput)
 }
 
-// Required. Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
-func (o RegularFileOutput) DevicePath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RegularFile) *string { return v.DevicePath }).(pulumi.StringPtrOutput)
+// Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
+func (o RegularFileOutput) DevicePath() pulumi.StringOutput {
+	return o.ApplyT(func(v RegularFile) string { return v.DevicePath }).(pulumi.StringOutput)
 }
 
 type RegularFilePtrOutput struct{ *pulumi.OutputState }
@@ -8101,31 +8101,31 @@ func (o RegularFilePtrOutput) Elem() RegularFileOutput {
 	return o.ApplyT(func(v *RegularFile) RegularFile { return *v }).(RegularFileOutput)
 }
 
-// Required. The source file.
+// The source file.
 func (o RegularFilePtrOutput) Content() FileReferencePtrOutput {
 	return o.ApplyT(func(v *RegularFile) *FileReference {
 		if v == nil {
 			return nil
 		}
-		return v.Content
+		return &v.Content
 	}).(FileReferencePtrOutput)
 }
 
-// Required. Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
+// Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
 func (o RegularFilePtrOutput) DevicePath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegularFile) *string {
 		if v == nil {
 			return nil
 		}
-		return v.DevicePath
+		return &v.DevicePath
 	}).(pulumi.StringPtrOutput)
 }
 
 // A file or directory to install on the device before the test starts.
 type RegularFileResponse struct {
-	// Required. The source file.
+	// The source file.
 	Content FileReferenceResponse `pulumi:"content"`
-	// Required. Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
+	// Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
 	DevicePath string `pulumi:"devicePath"`
 }
 
@@ -8142,9 +8142,9 @@ type RegularFileResponseInput interface {
 
 // A file or directory to install on the device before the test starts.
 type RegularFileResponseArgs struct {
-	// Required. The source file.
+	// The source file.
 	Content FileReferenceResponseInput `pulumi:"content"`
-	// Required. Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
+	// Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
 	DevicePath pulumi.StringInput `pulumi:"devicePath"`
 }
 
@@ -8175,12 +8175,12 @@ func (o RegularFileResponseOutput) ToRegularFileResponseOutputWithContext(ctx co
 	return o
 }
 
-// Required. The source file.
+// The source file.
 func (o RegularFileResponseOutput) Content() FileReferenceResponseOutput {
 	return o.ApplyT(func(v RegularFileResponse) FileReferenceResponse { return v.Content }).(FileReferenceResponseOutput)
 }
 
-// Required. Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
+// Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
 func (o RegularFileResponseOutput) DevicePath() pulumi.StringOutput {
 	return o.ApplyT(func(v RegularFileResponse) string { return v.DevicePath }).(pulumi.StringOutput)
 }
@@ -8188,7 +8188,7 @@ func (o RegularFileResponseOutput) DevicePath() pulumi.StringOutput {
 // Locations where the results of running the test are stored.
 type ResultStorage struct {
 	// Required.
-	GoogleCloudStorage *GoogleCloudStorage `pulumi:"googleCloudStorage"`
+	GoogleCloudStorage GoogleCloudStorage `pulumi:"googleCloudStorage"`
 	// The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.
 	ToolResultsHistory *ToolResultsHistory `pulumi:"toolResultsHistory"`
 }
@@ -8207,7 +8207,7 @@ type ResultStorageInput interface {
 // Locations where the results of running the test are stored.
 type ResultStorageArgs struct {
 	// Required.
-	GoogleCloudStorage GoogleCloudStoragePtrInput `pulumi:"googleCloudStorage"`
+	GoogleCloudStorage GoogleCloudStorageInput `pulumi:"googleCloudStorage"`
 	// The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.
 	ToolResultsHistory ToolResultsHistoryPtrInput `pulumi:"toolResultsHistory"`
 }
@@ -8291,8 +8291,8 @@ func (o ResultStorageOutput) ToResultStoragePtrOutputWithContext(ctx context.Con
 }
 
 // Required.
-func (o ResultStorageOutput) GoogleCloudStorage() GoogleCloudStoragePtrOutput {
-	return o.ApplyT(func(v ResultStorage) *GoogleCloudStorage { return v.GoogleCloudStorage }).(GoogleCloudStoragePtrOutput)
+func (o ResultStorageOutput) GoogleCloudStorage() GoogleCloudStorageOutput {
+	return o.ApplyT(func(v ResultStorage) GoogleCloudStorage { return v.GoogleCloudStorage }).(GoogleCloudStorageOutput)
 }
 
 // The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.
@@ -8324,7 +8324,7 @@ func (o ResultStoragePtrOutput) GoogleCloudStorage() GoogleCloudStoragePtrOutput
 		if v == nil {
 			return nil
 		}
-		return v.GoogleCloudStorage
+		return &v.GoogleCloudStorage
 	}).(GoogleCloudStoragePtrOutput)
 }
 
@@ -8531,12 +8531,12 @@ func (o ResultStorageResponsePtrOutput) ToolResultsHistory() ToolResultsHistoryR
 
 // Directs Robo to interact with a specific UI element if it is encountered during the crawl. Currently, Robo can perform text entry or element click.
 type RoboDirective struct {
-	// Required. The type of action that Robo should perform on the specified element.
-	ActionType *string `pulumi:"actionType"`
+	// The type of action that Robo should perform on the specified element.
+	ActionType string `pulumi:"actionType"`
 	// The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name.
 	InputText *string `pulumi:"inputText"`
-	// Required. The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
-	ResourceName *string `pulumi:"resourceName"`
+	// The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
+	ResourceName string `pulumi:"resourceName"`
 }
 
 // RoboDirectiveInput is an input type that accepts RoboDirectiveArgs and RoboDirectiveOutput values.
@@ -8552,12 +8552,12 @@ type RoboDirectiveInput interface {
 
 // Directs Robo to interact with a specific UI element if it is encountered during the crawl. Currently, Robo can perform text entry or element click.
 type RoboDirectiveArgs struct {
-	// Required. The type of action that Robo should perform on the specified element.
-	ActionType *RoboDirectiveActionType `pulumi:"actionType"`
+	// The type of action that Robo should perform on the specified element.
+	ActionType RoboDirectiveActionType `pulumi:"actionType"`
 	// The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name.
 	InputText pulumi.StringPtrInput `pulumi:"inputText"`
-	// Required. The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
-	ResourceName pulumi.StringPtrInput `pulumi:"resourceName"`
+	// The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
+	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
 func (RoboDirectiveArgs) ElementType() reflect.Type {
@@ -8612,9 +8612,9 @@ func (o RoboDirectiveOutput) ToRoboDirectiveOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Required. The type of action that Robo should perform on the specified element.
-func (o RoboDirectiveOutput) ActionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RoboDirective) *string { return v.ActionType }).(pulumi.StringPtrOutput)
+// The type of action that Robo should perform on the specified element.
+func (o RoboDirectiveOutput) ActionType() pulumi.StringOutput {
+	return o.ApplyT(func(v RoboDirective) string { return v.ActionType }).(pulumi.StringOutput)
 }
 
 // The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name.
@@ -8622,9 +8622,9 @@ func (o RoboDirectiveOutput) InputText() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RoboDirective) *string { return v.InputText }).(pulumi.StringPtrOutput)
 }
 
-// Required. The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
-func (o RoboDirectiveOutput) ResourceName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RoboDirective) *string { return v.ResourceName }).(pulumi.StringPtrOutput)
+// The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
+func (o RoboDirectiveOutput) ResourceName() pulumi.StringOutput {
+	return o.ApplyT(func(v RoboDirective) string { return v.ResourceName }).(pulumi.StringOutput)
 }
 
 type RoboDirectiveArrayOutput struct{ *pulumi.OutputState }
@@ -8649,11 +8649,11 @@ func (o RoboDirectiveArrayOutput) Index(i pulumi.IntInput) RoboDirectiveOutput {
 
 // Directs Robo to interact with a specific UI element if it is encountered during the crawl. Currently, Robo can perform text entry or element click.
 type RoboDirectiveResponse struct {
-	// Required. The type of action that Robo should perform on the specified element.
+	// The type of action that Robo should perform on the specified element.
 	ActionType string `pulumi:"actionType"`
 	// The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name.
 	InputText string `pulumi:"inputText"`
-	// Required. The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
+	// The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
 	ResourceName string `pulumi:"resourceName"`
 }
 
@@ -8670,11 +8670,11 @@ type RoboDirectiveResponseInput interface {
 
 // Directs Robo to interact with a specific UI element if it is encountered during the crawl. Currently, Robo can perform text entry or element click.
 type RoboDirectiveResponseArgs struct {
-	// Required. The type of action that Robo should perform on the specified element.
+	// The type of action that Robo should perform on the specified element.
 	ActionType pulumi.StringInput `pulumi:"actionType"`
 	// The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name.
 	InputText pulumi.StringInput `pulumi:"inputText"`
-	// Required. The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
+	// The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
 	ResourceName pulumi.StringInput `pulumi:"resourceName"`
 }
 
@@ -8730,7 +8730,7 @@ func (o RoboDirectiveResponseOutput) ToRoboDirectiveResponseOutputWithContext(ct
 	return o
 }
 
-// Required. The type of action that Robo should perform on the specified element.
+// The type of action that Robo should perform on the specified element.
 func (o RoboDirectiveResponseOutput) ActionType() pulumi.StringOutput {
 	return o.ApplyT(func(v RoboDirectiveResponse) string { return v.ActionType }).(pulumi.StringOutput)
 }
@@ -8740,7 +8740,7 @@ func (o RoboDirectiveResponseOutput) InputText() pulumi.StringOutput {
 	return o.ApplyT(func(v RoboDirectiveResponse) string { return v.InputText }).(pulumi.StringOutput)
 }
 
-// Required. The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
+// The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
 func (o RoboDirectiveResponseOutput) ResourceName() pulumi.StringOutput {
 	return o.ApplyT(func(v RoboDirectiveResponse) string { return v.ResourceName }).(pulumi.StringOutput)
 }
@@ -11643,10 +11643,10 @@ func (o ToolResultsExecutionResponsePtrOutput) Project() pulumi.StringPtrOutput 
 
 // Represents a tool results history resource.
 type ToolResultsHistory struct {
-	// Required. A tool results history ID.
-	HistoryId *string `pulumi:"historyId"`
-	// Required. The cloud project that owns the tool results history.
-	Project *string `pulumi:"project"`
+	// A tool results history ID.
+	HistoryId string `pulumi:"historyId"`
+	// The cloud project that owns the tool results history.
+	Project string `pulumi:"project"`
 }
 
 // ToolResultsHistoryInput is an input type that accepts ToolResultsHistoryArgs and ToolResultsHistoryOutput values.
@@ -11662,10 +11662,10 @@ type ToolResultsHistoryInput interface {
 
 // Represents a tool results history resource.
 type ToolResultsHistoryArgs struct {
-	// Required. A tool results history ID.
-	HistoryId pulumi.StringPtrInput `pulumi:"historyId"`
-	// Required. The cloud project that owns the tool results history.
-	Project pulumi.StringPtrInput `pulumi:"project"`
+	// A tool results history ID.
+	HistoryId pulumi.StringInput `pulumi:"historyId"`
+	// The cloud project that owns the tool results history.
+	Project pulumi.StringInput `pulumi:"project"`
 }
 
 func (ToolResultsHistoryArgs) ElementType() reflect.Type {
@@ -11746,14 +11746,14 @@ func (o ToolResultsHistoryOutput) ToToolResultsHistoryPtrOutputWithContext(ctx c
 	}).(ToolResultsHistoryPtrOutput)
 }
 
-// Required. A tool results history ID.
-func (o ToolResultsHistoryOutput) HistoryId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ToolResultsHistory) *string { return v.HistoryId }).(pulumi.StringPtrOutput)
+// A tool results history ID.
+func (o ToolResultsHistoryOutput) HistoryId() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolResultsHistory) string { return v.HistoryId }).(pulumi.StringOutput)
 }
 
-// Required. The cloud project that owns the tool results history.
-func (o ToolResultsHistoryOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ToolResultsHistory) *string { return v.Project }).(pulumi.StringPtrOutput)
+// The cloud project that owns the tool results history.
+func (o ToolResultsHistoryOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v ToolResultsHistory) string { return v.Project }).(pulumi.StringOutput)
 }
 
 type ToolResultsHistoryPtrOutput struct{ *pulumi.OutputState }
@@ -11774,31 +11774,31 @@ func (o ToolResultsHistoryPtrOutput) Elem() ToolResultsHistoryOutput {
 	return o.ApplyT(func(v *ToolResultsHistory) ToolResultsHistory { return *v }).(ToolResultsHistoryOutput)
 }
 
-// Required. A tool results history ID.
+// A tool results history ID.
 func (o ToolResultsHistoryPtrOutput) HistoryId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ToolResultsHistory) *string {
 		if v == nil {
 			return nil
 		}
-		return v.HistoryId
+		return &v.HistoryId
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The cloud project that owns the tool results history.
+// The cloud project that owns the tool results history.
 func (o ToolResultsHistoryPtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ToolResultsHistory) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Project
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a tool results history resource.
 type ToolResultsHistoryResponse struct {
-	// Required. A tool results history ID.
+	// A tool results history ID.
 	HistoryId string `pulumi:"historyId"`
-	// Required. The cloud project that owns the tool results history.
+	// The cloud project that owns the tool results history.
 	Project string `pulumi:"project"`
 }
 
@@ -11815,9 +11815,9 @@ type ToolResultsHistoryResponseInput interface {
 
 // Represents a tool results history resource.
 type ToolResultsHistoryResponseArgs struct {
-	// Required. A tool results history ID.
+	// A tool results history ID.
 	HistoryId pulumi.StringInput `pulumi:"historyId"`
-	// Required. The cloud project that owns the tool results history.
+	// The cloud project that owns the tool results history.
 	Project pulumi.StringInput `pulumi:"project"`
 }
 
@@ -11899,12 +11899,12 @@ func (o ToolResultsHistoryResponseOutput) ToToolResultsHistoryResponsePtrOutputW
 	}).(ToolResultsHistoryResponsePtrOutput)
 }
 
-// Required. A tool results history ID.
+// A tool results history ID.
 func (o ToolResultsHistoryResponseOutput) HistoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v ToolResultsHistoryResponse) string { return v.HistoryId }).(pulumi.StringOutput)
 }
 
-// Required. The cloud project that owns the tool results history.
+// The cloud project that owns the tool results history.
 func (o ToolResultsHistoryResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v ToolResultsHistoryResponse) string { return v.Project }).(pulumi.StringOutput)
 }
@@ -11927,7 +11927,7 @@ func (o ToolResultsHistoryResponsePtrOutput) Elem() ToolResultsHistoryResponseOu
 	return o.ApplyT(func(v *ToolResultsHistoryResponse) ToolResultsHistoryResponse { return *v }).(ToolResultsHistoryResponseOutput)
 }
 
-// Required. A tool results history ID.
+// A tool results history ID.
 func (o ToolResultsHistoryResponsePtrOutput) HistoryId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ToolResultsHistoryResponse) *string {
 		if v == nil {
@@ -11937,7 +11937,7 @@ func (o ToolResultsHistoryResponsePtrOutput) HistoryId() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The cloud project that owns the tool results history.
+// The cloud project that owns the tool results history.
 func (o ToolResultsHistoryResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ToolResultsHistoryResponse) *string {
 		if v == nil {
@@ -12031,8 +12031,8 @@ func (o ToolResultsStepResponseOutput) StepId() pulumi.StringOutput {
 
 // Uniformly shards test cases given a total number of shards. For Instrumentation test, it will be translated to "-e numShard" "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying these sharding arguments via environment_variables is invalid.
 type UniformSharding struct {
-	// Required. Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
-	NumShards *int `pulumi:"numShards"`
+	// Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+	NumShards int `pulumi:"numShards"`
 }
 
 // UniformShardingInput is an input type that accepts UniformShardingArgs and UniformShardingOutput values.
@@ -12048,8 +12048,8 @@ type UniformShardingInput interface {
 
 // Uniformly shards test cases given a total number of shards. For Instrumentation test, it will be translated to "-e numShard" "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying these sharding arguments via environment_variables is invalid.
 type UniformShardingArgs struct {
-	// Required. Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
-	NumShards pulumi.IntPtrInput `pulumi:"numShards"`
+	// Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+	NumShards pulumi.IntInput `pulumi:"numShards"`
 }
 
 func (UniformShardingArgs) ElementType() reflect.Type {
@@ -12130,9 +12130,9 @@ func (o UniformShardingOutput) ToUniformShardingPtrOutputWithContext(ctx context
 	}).(UniformShardingPtrOutput)
 }
 
-// Required. Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
-func (o UniformShardingOutput) NumShards() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v UniformSharding) *int { return v.NumShards }).(pulumi.IntPtrOutput)
+// Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+func (o UniformShardingOutput) NumShards() pulumi.IntOutput {
+	return o.ApplyT(func(v UniformSharding) int { return v.NumShards }).(pulumi.IntOutput)
 }
 
 type UniformShardingPtrOutput struct{ *pulumi.OutputState }
@@ -12153,19 +12153,19 @@ func (o UniformShardingPtrOutput) Elem() UniformShardingOutput {
 	return o.ApplyT(func(v *UniformSharding) UniformSharding { return *v }).(UniformShardingOutput)
 }
 
-// Required. Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+// Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
 func (o UniformShardingPtrOutput) NumShards() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *UniformSharding) *int {
 		if v == nil {
 			return nil
 		}
-		return v.NumShards
+		return &v.NumShards
 	}).(pulumi.IntPtrOutput)
 }
 
 // Uniformly shards test cases given a total number of shards. For Instrumentation test, it will be translated to "-e numShard" "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying these sharding arguments via environment_variables is invalid.
 type UniformShardingResponse struct {
-	// Required. Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+	// Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
 	NumShards int `pulumi:"numShards"`
 }
 
@@ -12182,7 +12182,7 @@ type UniformShardingResponseInput interface {
 
 // Uniformly shards test cases given a total number of shards. For Instrumentation test, it will be translated to "-e numShard" "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying these sharding arguments via environment_variables is invalid.
 type UniformShardingResponseArgs struct {
-	// Required. Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+	// Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
 	NumShards pulumi.IntInput `pulumi:"numShards"`
 }
 
@@ -12264,7 +12264,7 @@ func (o UniformShardingResponseOutput) ToUniformShardingResponsePtrOutputWithCon
 	}).(UniformShardingResponsePtrOutput)
 }
 
-// Required. Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+// Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
 func (o UniformShardingResponseOutput) NumShards() pulumi.IntOutput {
 	return o.ApplyT(func(v UniformShardingResponse) int { return v.NumShards }).(pulumi.IntOutput)
 }
@@ -12287,7 +12287,7 @@ func (o UniformShardingResponsePtrOutput) Elem() UniformShardingResponseOutput {
 	return o.ApplyT(func(v *UniformShardingResponse) UniformShardingResponse { return *v }).(UniformShardingResponseOutput)
 }
 
-// Required. Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+// Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
 func (o UniformShardingResponsePtrOutput) NumShards() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *UniformShardingResponse) *int {
 		if v == nil {

@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public Input<Inputs.GooglePrivacyDlpV2FieldIdArgs>? Context { get; set; }
 
         /// <summary>
-        /// Required. The key used by the encryption algorithm.
+        /// The key used by the encryption algorithm.
         /// </summary>
-        [Input("cryptoKey")]
-        public Input<Inputs.GooglePrivacyDlpV2CryptoKeyArgs>? CryptoKey { get; set; }
+        [Input("cryptoKey", required: true)]
+        public Input<Inputs.GooglePrivacyDlpV2CryptoKeyArgs> CryptoKey { get; set; } = null!;
 
         /// <summary>
         /// This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range [2, 95]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is: 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&amp;*()_-+={[}]|\:;"'&lt;,&gt;.?/

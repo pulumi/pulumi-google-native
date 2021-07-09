@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public Input<Pulumi.GoogleNative.OSConfig.V1Beta.PackageManager>? Manager { get; set; }
 
         /// <summary>
-        /// Required. The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
+        /// The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public PackageArgs()
         {

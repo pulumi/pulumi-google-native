@@ -318,12 +318,12 @@ func (o AuthenticationResponsePtrOutput) GoogleAccount() GoogleAccountResponsePt
 
 // Describes authentication configuration that uses a custom account.
 type CustomAccount struct {
-	// Required. The login form URL of the website.
-	LoginUrl *string `pulumi:"loginUrl"`
-	// Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
-	Password *string `pulumi:"password"`
-	// Required. The user name of the custom account.
-	Username *string `pulumi:"username"`
+	// The login form URL of the website.
+	LoginUrl string `pulumi:"loginUrl"`
+	// Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+	Password string `pulumi:"password"`
+	// The user name of the custom account.
+	Username string `pulumi:"username"`
 }
 
 // CustomAccountInput is an input type that accepts CustomAccountArgs and CustomAccountOutput values.
@@ -339,12 +339,12 @@ type CustomAccountInput interface {
 
 // Describes authentication configuration that uses a custom account.
 type CustomAccountArgs struct {
-	// Required. The login form URL of the website.
-	LoginUrl pulumi.StringPtrInput `pulumi:"loginUrl"`
-	// Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
-	Password pulumi.StringPtrInput `pulumi:"password"`
-	// Required. The user name of the custom account.
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	// The login form URL of the website.
+	LoginUrl pulumi.StringInput `pulumi:"loginUrl"`
+	// Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The user name of the custom account.
+	Username pulumi.StringInput `pulumi:"username"`
 }
 
 func (CustomAccountArgs) ElementType() reflect.Type {
@@ -425,19 +425,19 @@ func (o CustomAccountOutput) ToCustomAccountPtrOutputWithContext(ctx context.Con
 	}).(CustomAccountPtrOutput)
 }
 
-// Required. The login form URL of the website.
-func (o CustomAccountOutput) LoginUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CustomAccount) *string { return v.LoginUrl }).(pulumi.StringPtrOutput)
+// The login form URL of the website.
+func (o CustomAccountOutput) LoginUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomAccount) string { return v.LoginUrl }).(pulumi.StringOutput)
 }
 
-// Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
-func (o CustomAccountOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CustomAccount) *string { return v.Password }).(pulumi.StringPtrOutput)
+// Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+func (o CustomAccountOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomAccount) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// Required. The user name of the custom account.
-func (o CustomAccountOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CustomAccount) *string { return v.Username }).(pulumi.StringPtrOutput)
+// The user name of the custom account.
+func (o CustomAccountOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v CustomAccount) string { return v.Username }).(pulumi.StringOutput)
 }
 
 type CustomAccountPtrOutput struct{ *pulumi.OutputState }
@@ -458,43 +458,43 @@ func (o CustomAccountPtrOutput) Elem() CustomAccountOutput {
 	return o.ApplyT(func(v *CustomAccount) CustomAccount { return *v }).(CustomAccountOutput)
 }
 
-// Required. The login form URL of the website.
+// The login form URL of the website.
 func (o CustomAccountPtrOutput) LoginUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomAccount) *string {
 		if v == nil {
 			return nil
 		}
-		return v.LoginUrl
+		return &v.LoginUrl
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+// Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
 func (o CustomAccountPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomAccount) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Password
+		return &v.Password
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The user name of the custom account.
+// The user name of the custom account.
 func (o CustomAccountPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomAccount) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Username
+		return &v.Username
 	}).(pulumi.StringPtrOutput)
 }
 
 // Describes authentication configuration that uses a custom account.
 type CustomAccountResponse struct {
-	// Required. The login form URL of the website.
+	// The login form URL of the website.
 	LoginUrl string `pulumi:"loginUrl"`
-	// Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+	// Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
 	Password string `pulumi:"password"`
-	// Required. The user name of the custom account.
+	// The user name of the custom account.
 	Username string `pulumi:"username"`
 }
 
@@ -511,11 +511,11 @@ type CustomAccountResponseInput interface {
 
 // Describes authentication configuration that uses a custom account.
 type CustomAccountResponseArgs struct {
-	// Required. The login form URL of the website.
+	// The login form URL of the website.
 	LoginUrl pulumi.StringInput `pulumi:"loginUrl"`
-	// Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+	// Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
 	Password pulumi.StringInput `pulumi:"password"`
-	// Required. The user name of the custom account.
+	// The user name of the custom account.
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -597,17 +597,17 @@ func (o CustomAccountResponseOutput) ToCustomAccountResponsePtrOutputWithContext
 	}).(CustomAccountResponsePtrOutput)
 }
 
-// Required. The login form URL of the website.
+// The login form URL of the website.
 func (o CustomAccountResponseOutput) LoginUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomAccountResponse) string { return v.LoginUrl }).(pulumi.StringOutput)
 }
 
-// Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+// Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
 func (o CustomAccountResponseOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomAccountResponse) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// Required. The user name of the custom account.
+// The user name of the custom account.
 func (o CustomAccountResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v CustomAccountResponse) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -630,7 +630,7 @@ func (o CustomAccountResponsePtrOutput) Elem() CustomAccountResponseOutput {
 	return o.ApplyT(func(v *CustomAccountResponse) CustomAccountResponse { return *v }).(CustomAccountResponseOutput)
 }
 
-// Required. The login form URL of the website.
+// The login form URL of the website.
 func (o CustomAccountResponsePtrOutput) LoginUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomAccountResponse) *string {
 		if v == nil {
@@ -640,7 +640,7 @@ func (o CustomAccountResponsePtrOutput) LoginUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+// Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
 func (o CustomAccountResponsePtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomAccountResponse) *string {
 		if v == nil {
@@ -650,7 +650,7 @@ func (o CustomAccountResponsePtrOutput) Password() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The user name of the custom account.
+// The user name of the custom account.
 func (o CustomAccountResponsePtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomAccountResponse) *string {
 		if v == nil {
@@ -662,10 +662,10 @@ func (o CustomAccountResponsePtrOutput) Username() pulumi.StringPtrOutput {
 
 // Describes authentication configuration that uses a Google account.
 type GoogleAccount struct {
-	// Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
-	Password *string `pulumi:"password"`
-	// Required. The user name of the Google account.
-	Username *string `pulumi:"username"`
+	// Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+	Password string `pulumi:"password"`
+	// The user name of the Google account.
+	Username string `pulumi:"username"`
 }
 
 // GoogleAccountInput is an input type that accepts GoogleAccountArgs and GoogleAccountOutput values.
@@ -681,10 +681,10 @@ type GoogleAccountInput interface {
 
 // Describes authentication configuration that uses a Google account.
 type GoogleAccountArgs struct {
-	// Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
-	Password pulumi.StringPtrInput `pulumi:"password"`
-	// Required. The user name of the Google account.
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	// Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The user name of the Google account.
+	Username pulumi.StringInput `pulumi:"username"`
 }
 
 func (GoogleAccountArgs) ElementType() reflect.Type {
@@ -765,14 +765,14 @@ func (o GoogleAccountOutput) ToGoogleAccountPtrOutputWithContext(ctx context.Con
 	}).(GoogleAccountPtrOutput)
 }
 
-// Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
-func (o GoogleAccountOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleAccount) *string { return v.Password }).(pulumi.StringPtrOutput)
+// Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+func (o GoogleAccountOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleAccount) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// Required. The user name of the Google account.
-func (o GoogleAccountOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleAccount) *string { return v.Username }).(pulumi.StringPtrOutput)
+// The user name of the Google account.
+func (o GoogleAccountOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleAccount) string { return v.Username }).(pulumi.StringOutput)
 }
 
 type GoogleAccountPtrOutput struct{ *pulumi.OutputState }
@@ -793,31 +793,31 @@ func (o GoogleAccountPtrOutput) Elem() GoogleAccountOutput {
 	return o.ApplyT(func(v *GoogleAccount) GoogleAccount { return *v }).(GoogleAccountOutput)
 }
 
-// Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+// Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
 func (o GoogleAccountPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleAccount) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Password
+		return &v.Password
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The user name of the Google account.
+// The user name of the Google account.
 func (o GoogleAccountPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleAccount) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Username
+		return &v.Username
 	}).(pulumi.StringPtrOutput)
 }
 
 // Describes authentication configuration that uses a Google account.
 type GoogleAccountResponse struct {
-	// Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+	// Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
 	Password string `pulumi:"password"`
-	// Required. The user name of the Google account.
+	// The user name of the Google account.
 	Username string `pulumi:"username"`
 }
 
@@ -834,9 +834,9 @@ type GoogleAccountResponseInput interface {
 
 // Describes authentication configuration that uses a Google account.
 type GoogleAccountResponseArgs struct {
-	// Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+	// Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
 	Password pulumi.StringInput `pulumi:"password"`
-	// Required. The user name of the Google account.
+	// The user name of the Google account.
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -918,12 +918,12 @@ func (o GoogleAccountResponseOutput) ToGoogleAccountResponsePtrOutputWithContext
 	}).(GoogleAccountResponsePtrOutput)
 }
 
-// Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+// Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
 func (o GoogleAccountResponseOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleAccountResponse) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// Required. The user name of the Google account.
+// The user name of the Google account.
 func (o GoogleAccountResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleAccountResponse) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -946,7 +946,7 @@ func (o GoogleAccountResponsePtrOutput) Elem() GoogleAccountResponseOutput {
 	return o.ApplyT(func(v *GoogleAccountResponse) GoogleAccountResponse { return *v }).(GoogleAccountResponseOutput)
 }
 
-// Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+// Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
 func (o GoogleAccountResponsePtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleAccountResponse) *string {
 		if v == nil {
@@ -956,7 +956,7 @@ func (o GoogleAccountResponsePtrOutput) Password() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The user name of the Google account.
+// The user name of the Google account.
 func (o GoogleAccountResponsePtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleAccountResponse) *string {
 		if v == nil {
@@ -1540,8 +1540,8 @@ func (o ScanRunResponsePtrOutput) UrlsTestedCount() pulumi.StringPtrOutput {
 
 // Scan schedule configuration.
 type Schedule struct {
-	// Required. The duration of time between executions in days.
-	IntervalDurationDays *int `pulumi:"intervalDurationDays"`
+	// The duration of time between executions in days.
+	IntervalDurationDays int `pulumi:"intervalDurationDays"`
 	// A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
 	ScheduleTime *string `pulumi:"scheduleTime"`
 }
@@ -1559,8 +1559,8 @@ type ScheduleInput interface {
 
 // Scan schedule configuration.
 type ScheduleArgs struct {
-	// Required. The duration of time between executions in days.
-	IntervalDurationDays pulumi.IntPtrInput `pulumi:"intervalDurationDays"`
+	// The duration of time between executions in days.
+	IntervalDurationDays pulumi.IntInput `pulumi:"intervalDurationDays"`
 	// A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
 	ScheduleTime pulumi.StringPtrInput `pulumi:"scheduleTime"`
 }
@@ -1643,9 +1643,9 @@ func (o ScheduleOutput) ToSchedulePtrOutputWithContext(ctx context.Context) Sche
 	}).(SchedulePtrOutput)
 }
 
-// Required. The duration of time between executions in days.
-func (o ScheduleOutput) IntervalDurationDays() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v Schedule) *int { return v.IntervalDurationDays }).(pulumi.IntPtrOutput)
+// The duration of time between executions in days.
+func (o ScheduleOutput) IntervalDurationDays() pulumi.IntOutput {
+	return o.ApplyT(func(v Schedule) int { return v.IntervalDurationDays }).(pulumi.IntOutput)
 }
 
 // A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
@@ -1671,13 +1671,13 @@ func (o SchedulePtrOutput) Elem() ScheduleOutput {
 	return o.ApplyT(func(v *Schedule) Schedule { return *v }).(ScheduleOutput)
 }
 
-// Required. The duration of time between executions in days.
+// The duration of time between executions in days.
 func (o SchedulePtrOutput) IntervalDurationDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Schedule) *int {
 		if v == nil {
 			return nil
 		}
-		return v.IntervalDurationDays
+		return &v.IntervalDurationDays
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -1693,7 +1693,7 @@ func (o SchedulePtrOutput) ScheduleTime() pulumi.StringPtrOutput {
 
 // Scan schedule configuration.
 type ScheduleResponse struct {
-	// Required. The duration of time between executions in days.
+	// The duration of time between executions in days.
 	IntervalDurationDays int `pulumi:"intervalDurationDays"`
 	// A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
 	ScheduleTime string `pulumi:"scheduleTime"`
@@ -1712,7 +1712,7 @@ type ScheduleResponseInput interface {
 
 // Scan schedule configuration.
 type ScheduleResponseArgs struct {
-	// Required. The duration of time between executions in days.
+	// The duration of time between executions in days.
 	IntervalDurationDays pulumi.IntInput `pulumi:"intervalDurationDays"`
 	// A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
 	ScheduleTime pulumi.StringInput `pulumi:"scheduleTime"`
@@ -1796,7 +1796,7 @@ func (o ScheduleResponseOutput) ToScheduleResponsePtrOutputWithContext(ctx conte
 	}).(ScheduleResponsePtrOutput)
 }
 
-// Required. The duration of time between executions in days.
+// The duration of time between executions in days.
 func (o ScheduleResponseOutput) IntervalDurationDays() pulumi.IntOutput {
 	return o.ApplyT(func(v ScheduleResponse) int { return v.IntervalDurationDays }).(pulumi.IntOutput)
 }
@@ -1824,7 +1824,7 @@ func (o ScheduleResponsePtrOutput) Elem() ScheduleResponseOutput {
 	return o.ApplyT(func(v *ScheduleResponse) ScheduleResponse { return *v }).(ScheduleResponseOutput)
 }
 
-// Required. The duration of time between executions in days.
+// The duration of time between executions in days.
 func (o ScheduleResponsePtrOutput) IntervalDurationDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ScheduleResponse) *int {
 		if v == nil {

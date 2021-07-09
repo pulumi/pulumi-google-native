@@ -99,7 +99,7 @@ class GetCustomerResult:
     @pulumi.getter
     def domain(self) -> str:
         """
-        Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+        Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
         """
         return pulumi.get(self, "domain")
 
@@ -123,7 +123,7 @@ class GetCustomerResult:
     @pulumi.getter(name="orgDisplayName")
     def org_display_name(self) -> str:
         """
-        Required. Name of the organization that the customer entity represents.
+        Name of the organization that the customer entity represents.
         """
         return pulumi.get(self, "org_display_name")
 
@@ -131,7 +131,7 @@ class GetCustomerResult:
     @pulumi.getter(name="orgPostalAddress")
     def org_postal_address(self) -> 'outputs.GoogleTypePostalAddressResponse':
         """
-        Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+        Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
         """
         return pulumi.get(self, "org_postal_address")
 

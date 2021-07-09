@@ -44,7 +44,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Required. The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
+        /// The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
         /// </summary>
         public readonly string Host;
         /// <summary>
@@ -52,11 +52,11 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly bool IsEnabled;
         /// <summary>
-        /// Required. The resource id of this target server. Values must match the regular expression 
+        /// The resource id of this target server. Values must match the regular expression 
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
+        /// The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
         /// </summary>
         public readonly int Port;
         /// <summary>

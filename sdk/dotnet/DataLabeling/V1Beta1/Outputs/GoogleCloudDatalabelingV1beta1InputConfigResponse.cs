@@ -26,7 +26,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudDatalabelingV1beta1ClassificationMetadataResponse ClassificationMetadata;
         /// <summary>
-        /// Required. Data type must be specifed when user tries to import data.
+        /// Data type must be specifed when user tries to import data.
         /// </summary>
         public readonly string DataType;
         /// <summary>

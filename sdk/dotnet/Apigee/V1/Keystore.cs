@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<ImmutableArray<string>> Aliases { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+        /// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -76,10 +76,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<string> EnvironmentId { get; set; } = null!;
 
         /// <summary>
-        /// Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+        /// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;

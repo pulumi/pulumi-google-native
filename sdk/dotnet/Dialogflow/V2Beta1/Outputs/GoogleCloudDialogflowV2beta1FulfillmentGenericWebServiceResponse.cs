@@ -26,7 +26,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> RequestHeaders;
         /// <summary>
-        /// Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+        /// The fulfillment URI for receiving POST requests. It must use https protocol.
         /// </summary>
         public readonly string Uri;
         /// <summary>

@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.SecretManager.V1.Inputs
     public sealed class TopicArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
+        /// The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public TopicArgs()
         {

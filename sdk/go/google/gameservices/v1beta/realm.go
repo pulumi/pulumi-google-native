@@ -25,7 +25,7 @@ type Realm struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+	// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
 	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 	// The last-modified time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -46,6 +46,9 @@ func NewRealm(ctx *pulumi.Context,
 	}
 	if args.RealmId == nil {
 		return nil, errors.New("invalid value for required argument 'RealmId'")
+	}
+	if args.TimeZone == nil {
+		return nil, errors.New("invalid value for required argument 'TimeZone'")
 	}
 	var resource Realm
 	err := ctx.RegisterResource("google-native:gameservices/v1beta:Realm", name, args, &resource, opts...)
@@ -79,7 +82,7 @@ type realmState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
 	Name *string `pulumi:"name"`
-	// Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+	// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
 	TimeZone *string `pulumi:"timeZone"`
 	// The last-modified time.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -96,7 +99,7 @@ type RealmState struct {
 	Labels pulumi.StringMapInput
 	// The resource name of the realm, in the following form: `projects/{project}/locations/{location}/realms/{realm}`. For example, `projects/my-project/locations/{location}/realms/my-realm`.
 	Name pulumi.StringPtrInput
-	// Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+	// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
 	TimeZone pulumi.StringPtrInput
 	// The last-modified time.
 	UpdateTime pulumi.StringPtrInput
@@ -118,8 +121,8 @@ type realmArgs struct {
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
 	RealmId string  `pulumi:"realmId"`
-	// Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
-	TimeZone *string `pulumi:"timeZone"`
+	// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+	TimeZone string `pulumi:"timeZone"`
 }
 
 // The set of arguments for constructing a Realm resource.
@@ -135,8 +138,8 @@ type RealmArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	RealmId pulumi.StringInput
-	// Required. Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
-	TimeZone pulumi.StringPtrInput
+	// Time zone where all policies targeting this realm are evaluated. The value of this field must be from the IANA time zone database: https://www.iana.org/time-zones.
+	TimeZone pulumi.StringInput
 }
 
 func (RealmArgs) ElementType() reflect.Type {

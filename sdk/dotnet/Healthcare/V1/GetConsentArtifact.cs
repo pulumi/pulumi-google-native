@@ -66,7 +66,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. User's UUID provided by the client.
+        /// User's UUID provided by the client.
         /// </summary>
         public readonly string UserId;
         /// <summary>

@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     public sealed class GrafeasV1beta1DeploymentDetailsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Deployment history for the resource.
+        /// Deployment history for the resource.
         /// </summary>
-        [Input("deployment")]
-        public Input<Inputs.DeploymentArgs>? Deployment { get; set; }
+        [Input("deployment", required: true)]
+        public Input<Inputs.DeploymentArgs> Deployment { get; set; } = null!;
 
         public GrafeasV1beta1DeploymentDetailsArgs()
         {

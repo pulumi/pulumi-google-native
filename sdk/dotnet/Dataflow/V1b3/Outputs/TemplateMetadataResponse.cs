@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Required. The name of the template.
+        /// The name of the template.
         /// </summary>
         public readonly string Name;
         /// <summary>

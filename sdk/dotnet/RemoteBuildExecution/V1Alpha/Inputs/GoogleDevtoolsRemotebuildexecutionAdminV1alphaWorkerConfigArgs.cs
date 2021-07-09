@@ -22,16 +22,16 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.Inputs
         public Input<Inputs.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs>? Accelerator { get; set; }
 
         /// <summary>
-        /// Required. Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
+        /// Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
         /// </summary>
-        [Input("diskSizeGb")]
-        public Input<string>? DiskSizeGb { get; set; }
+        [Input("diskSizeGb", required: true)]
+        public Input<string> DiskSizeGb { get; set; } = null!;
 
         /// <summary>
-        /// Required. Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
+        /// Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
         /// </summary>
-        [Input("diskType")]
-        public Input<string>? DiskType { get; set; }
+        [Input("diskType", required: true)]
+        public Input<string> DiskType { get; set; } = null!;
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -46,10 +46,10 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.Inputs
         }
 
         /// <summary>
-        /// Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
+        /// Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
         /// </summary>
-        [Input("machineType")]
-        public Input<string>? MachineType { get; set; }
+        [Input("machineType", required: true)]
+        public Input<string> MachineType { get; set; } = null!;
 
         /// <summary>
         /// The maximum number of actions a worker can execute concurrently.

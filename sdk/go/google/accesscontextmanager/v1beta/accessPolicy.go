@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,9 +17,9 @@ type AccessPolicy struct {
 
 	// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+	// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
 	Parent pulumi.StringOutput `pulumi:"parent"`
-	// Required. Human readable title. Does not affect behavior.
+	// Human readable title. Does not affect behavior.
 	Title pulumi.StringOutput `pulumi:"title"`
 }
 
@@ -26,9 +27,15 @@ type AccessPolicy struct {
 func NewAccessPolicy(ctx *pulumi.Context,
 	name string, args *AccessPolicyArgs, opts ...pulumi.ResourceOption) (*AccessPolicy, error) {
 	if args == nil {
-		args = &AccessPolicyArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Parent == nil {
+		return nil, errors.New("invalid value for required argument 'Parent'")
+	}
+	if args.Title == nil {
+		return nil, errors.New("invalid value for required argument 'Title'")
+	}
 	var resource AccessPolicy
 	err := ctx.RegisterResource("google-native:accesscontextmanager/v1beta:AccessPolicy", name, args, &resource, opts...)
 	if err != nil {
@@ -53,18 +60,18 @@ func GetAccessPolicy(ctx *pulumi.Context,
 type accessPolicyState struct {
 	// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
 	Name *string `pulumi:"name"`
-	// Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+	// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
 	Parent *string `pulumi:"parent"`
-	// Required. Human readable title. Does not affect behavior.
+	// Human readable title. Does not affect behavior.
 	Title *string `pulumi:"title"`
 }
 
 type AccessPolicyState struct {
 	// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
 	Name pulumi.StringPtrInput
-	// Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+	// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
 	Parent pulumi.StringPtrInput
-	// Required. Human readable title. Does not affect behavior.
+	// Human readable title. Does not affect behavior.
 	Title pulumi.StringPtrInput
 }
 
@@ -73,18 +80,18 @@ func (AccessPolicyState) ElementType() reflect.Type {
 }
 
 type accessPolicyArgs struct {
-	// Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
-	Parent *string `pulumi:"parent"`
-	// Required. Human readable title. Does not affect behavior.
-	Title *string `pulumi:"title"`
+	// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+	Parent string `pulumi:"parent"`
+	// Human readable title. Does not affect behavior.
+	Title string `pulumi:"title"`
 }
 
 // The set of arguments for constructing a AccessPolicy resource.
 type AccessPolicyArgs struct {
-	// Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
-	Parent pulumi.StringPtrInput
-	// Required. Human readable title. Does not affect behavior.
-	Title pulumi.StringPtrInput
+	// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+	Parent pulumi.StringInput
+	// Human readable title. Does not affect behavior.
+	Title pulumi.StringInput
 }
 
 func (AccessPolicyArgs) ElementType() reflect.Type {

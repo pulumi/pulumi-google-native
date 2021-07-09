@@ -34,10 +34,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public Input<Pulumi.GoogleNative.OSConfig.V1Beta.SoftwareRecipeStepRunScriptInterpreter>? Interpreter { get; set; }
 
         /// <summary>
-        /// Required. The shell script to be executed.
+        /// The shell script to be executed.
         /// </summary>
-        [Input("script")]
-        public Input<string>? Script { get; set; }
+        [Input("script", required: true)]
+        public Input<string> Script { get; set; } = null!;
 
         public SoftwareRecipeStepRunScriptArgs()
         {

@@ -91,7 +91,7 @@ class GetEntitlementResult:
     @pulumi.getter
     def offer(self) -> str:
         """
-        Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+        The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
         """
         return pulumi.get(self, "offer")
 

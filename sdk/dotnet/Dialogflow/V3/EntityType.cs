@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public Output<string> AutoExpansionMode { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The human-readable name of the entity type, unique within the agent.
+        /// The human-readable name of the entity type, unique within the agent.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public Output<ImmutableArray<Outputs.GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse>> ExcludedPhrases { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Indicates the kind of entity type.
+        /// Indicates the kind of entity type.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -118,10 +118,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public Input<Pulumi.GoogleNative.Dialogflow.V3.EntityTypeAutoExpansionMode>? AutoExpansionMode { get; set; }
 
         /// <summary>
-        /// Required. The human-readable name of the entity type, unique within the agent.
+        /// The human-readable name of the entity type, unique within the agent.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
         /// Enables fuzzy entity extraction during classification.
@@ -154,10 +154,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         }
 
         /// <summary>
-        /// Required. Indicates the kind of entity type.
+        /// Indicates the kind of entity type.
         /// </summary>
-        [Input("kind")]
-        public Input<Pulumi.GoogleNative.Dialogflow.V3.EntityTypeKind>? Kind { get; set; }
+        [Input("kind", required: true)]
+        public Input<Pulumi.GoogleNative.Dialogflow.V3.EntityTypeKind> Kind { get; set; } = null!;
 
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }

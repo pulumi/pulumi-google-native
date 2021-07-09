@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Inputs
         }
 
         /// <summary>
-        /// Required. The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+        /// The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        [Input("key", required: true)]
+        public Input<string> Key { get; set; } = null!;
 
         public AudioAtomArgs()
         {

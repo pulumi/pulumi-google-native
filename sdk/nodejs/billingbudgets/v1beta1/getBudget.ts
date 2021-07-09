@@ -33,7 +33,7 @@ export interface GetBudgetResult {
      */
     readonly allUpdatesRule: outputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse;
     /**
-     * Required. Budgeted amount.
+     * Budgeted amount.
      */
     readonly amount: outputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse;
     /**

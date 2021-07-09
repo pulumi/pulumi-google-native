@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     public sealed class GrafeasV1beta1PackageDetailsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Where the package was installed.
+        /// Where the package was installed.
         /// </summary>
-        [Input("installation")]
-        public Input<Inputs.InstallationArgs>? Installation { get; set; }
+        [Input("installation", required: true)]
+        public Input<Inputs.InstallationArgs> Installation { get; set; } = null!;
 
         public GrafeasV1beta1PackageDetailsArgs()
         {

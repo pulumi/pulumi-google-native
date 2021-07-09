@@ -78,7 +78,7 @@ class GetRoutineResult:
     @pulumi.getter(name="definitionBody")
     def definition_body(self) -> str:
         """
-        Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
+        The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
         """
         return pulumi.get(self, "definition_body")
 
@@ -150,7 +150,7 @@ class GetRoutineResult:
     @pulumi.getter(name="routineReference")
     def routine_reference(self) -> 'outputs.RoutineReferenceResponse':
         """
-        Required. Reference describing the ID of this routine.
+        Reference describing the ID of this routine.
         """
         return pulumi.get(self, "routine_reference")
 
@@ -158,7 +158,7 @@ class GetRoutineResult:
     @pulumi.getter(name="routineType")
     def routine_type(self) -> str:
         """
-        Required. The type of routine.
+        The type of routine.
         """
         return pulumi.get(self, "routine_type")
 

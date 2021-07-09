@@ -17,9 +17,9 @@ type Reference struct {
 
 	// Optional. A human-readable description of this reference.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+	// The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
+	// The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
 	Refers pulumi.StringOutput `pulumi:"refers"`
 	// The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
@@ -35,8 +35,14 @@ func NewReference(ctx *pulumi.Context,
 	if args.EnvironmentId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
+	}
+	if args.Refers == nil {
+		return nil, errors.New("invalid value for required argument 'Refers'")
 	}
 	var resource Reference
 	err := ctx.RegisterResource("google-native:apigee/v1:Reference", name, args, &resource, opts...)
@@ -62,9 +68,9 @@ func GetReference(ctx *pulumi.Context,
 type referenceState struct {
 	// Optional. A human-readable description of this reference.
 	Description *string `pulumi:"description"`
-	// Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+	// The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
 	Name *string `pulumi:"name"`
-	// Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
+	// The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
 	Refers *string `pulumi:"refers"`
 	// The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
 	ResourceType *string `pulumi:"resourceType"`
@@ -73,9 +79,9 @@ type referenceState struct {
 type ReferenceState struct {
 	// Optional. A human-readable description of this reference.
 	Description pulumi.StringPtrInput
-	// Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+	// The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
 	Name pulumi.StringPtrInput
-	// Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
+	// The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
 	Refers pulumi.StringPtrInput
 	// The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
 	ResourceType pulumi.StringPtrInput
@@ -89,11 +95,11 @@ type referenceArgs struct {
 	// Optional. A human-readable description of this reference.
 	Description   *string `pulumi:"description"`
 	EnvironmentId string  `pulumi:"environmentId"`
-	// Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
-	Name           *string `pulumi:"name"`
-	OrganizationId string  `pulumi:"organizationId"`
-	// Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
-	Refers *string `pulumi:"refers"`
+	// The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+	Name           string `pulumi:"name"`
+	OrganizationId string `pulumi:"organizationId"`
+	// The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
+	Refers string `pulumi:"refers"`
 	// The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
 	ResourceType *string `pulumi:"resourceType"`
 }
@@ -103,11 +109,11 @@ type ReferenceArgs struct {
 	// Optional. A human-readable description of this reference.
 	Description   pulumi.StringPtrInput
 	EnvironmentId pulumi.StringInput
-	// Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
-	Name           pulumi.StringPtrInput
+	// The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+	Name           pulumi.StringInput
 	OrganizationId pulumi.StringInput
-	// Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
-	Refers pulumi.StringPtrInput
+	// The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
+	Refers pulumi.StringInput
 	// The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
 	ResourceType pulumi.StringPtrInput
 }

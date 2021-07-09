@@ -58,13 +58,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> DeveloperId { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
+        /// Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
         /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
 
         /// <summary>
-        /// Required. First name of the developer.
+        /// First name of the developer.
         /// </summary>
         [Output("firstName")]
         public Output<string> FirstName { get; private set; } = null!;
@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> LastModifiedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Last name of the developer.
+        /// Last name of the developer.
         /// </summary>
         [Output("lastName")]
         public Output<string> LastName { get; private set; } = null!;
@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Required. User name of the developer. Not used by Apigee hybrid.
+        /// User name of the developer. Not used by Apigee hybrid.
         /// </summary>
         [Output("userName")]
         public Output<string> UserName { get; private set; } = null!;
@@ -199,31 +199,31 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<string>? DeveloperId { get; set; }
 
         /// <summary>
-        /// Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
+        /// Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
         /// </summary>
-        [Input("email")]
-        public Input<string>? Email { get; set; }
+        [Input("email", required: true)]
+        public Input<string> Email { get; set; } = null!;
 
         /// <summary>
-        /// Required. First name of the developer.
+        /// First name of the developer.
         /// </summary>
-        [Input("firstName")]
-        public Input<string>? FirstName { get; set; }
+        [Input("firstName", required: true)]
+        public Input<string> FirstName { get; set; } = null!;
 
         /// <summary>
-        /// Required. Last name of the developer.
+        /// Last name of the developer.
         /// </summary>
-        [Input("lastName")]
-        public Input<string>? LastName { get; set; }
+        [Input("lastName", required: true)]
+        public Input<string> LastName { get; set; } = null!;
 
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
 
         /// <summary>
-        /// Required. User name of the developer. Not used by Apigee hybrid.
+        /// User name of the developer. Not used by Apigee hybrid.
         /// </summary>
-        [Input("userName")]
-        public Input<string>? UserName { get; set; }
+        [Input("userName", required: true)]
+        public Input<string> UserName { get; set; } = null!;
 
         public DeveloperArgs()
         {

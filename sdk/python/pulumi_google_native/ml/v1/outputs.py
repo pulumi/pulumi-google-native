@@ -196,8 +196,8 @@ class GoogleCloudMlV1_Measurement_MetricResponse(dict):
                  value: float):
         """
         A message representing a metric in the measurement.
-        :param str metric: Required. Metric name.
-        :param float value: Required. The value for this metric.
+        :param str metric: Metric name.
+        :param float value: The value for this metric.
         """
         pulumi.set(__self__, "metric", metric)
         pulumi.set(__self__, "value", value)
@@ -206,7 +206,7 @@ class GoogleCloudMlV1_Measurement_MetricResponse(dict):
     @pulumi.getter
     def metric(self) -> str:
         """
-        Required. Metric name.
+        Metric name.
         """
         return pulumi.get(self, "metric")
 
@@ -214,7 +214,7 @@ class GoogleCloudMlV1_Measurement_MetricResponse(dict):
     @pulumi.getter
     def value(self) -> float:
         """
-        Required. The value for this metric.
+        The value for this metric.
         """
         return pulumi.get(self, "value")
 
@@ -427,8 +427,8 @@ class GoogleCloudMlV1_StudyConfig_MetricSpecResponse(dict):
                  metric: str):
         """
         Represents a metric to optimize.
-        :param str goal: Required. The optimization goal of the metric.
-        :param str metric: Required. The name of the metric.
+        :param str goal: The optimization goal of the metric.
+        :param str metric: The name of the metric.
         """
         pulumi.set(__self__, "goal", goal)
         pulumi.set(__self__, "metric", metric)
@@ -437,7 +437,7 @@ class GoogleCloudMlV1_StudyConfig_MetricSpecResponse(dict):
     @pulumi.getter
     def goal(self) -> str:
         """
-        Required. The optimization goal of the metric.
+        The optimization goal of the metric.
         """
         return pulumi.get(self, "goal")
 
@@ -445,7 +445,7 @@ class GoogleCloudMlV1_StudyConfig_MetricSpecResponse(dict):
     @pulumi.getter
     def metric(self) -> str:
         """
-        Required. The name of the metric.
+        The name of the metric.
         """
         return pulumi.get(self, "metric")
 
@@ -507,9 +507,9 @@ class GoogleCloudMlV1_StudyConfig_ParameterSpecResponse(dict):
         :param 'GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecResponse' discrete_value_spec: The value spec for a 'DISCRETE' parameter.
         :param 'GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecResponse' double_value_spec: The value spec for a 'DOUBLE' parameter.
         :param 'GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecResponse' integer_value_spec: The value spec for an 'INTEGER' parameter.
-        :param str parameter: Required. The parameter name must be unique amongst all ParameterSpecs.
+        :param str parameter: The parameter name must be unique amongst all ParameterSpecs.
         :param str scale_type: How the parameter should be scaled. Leave unset for categorical parameters.
-        :param str type: Required. The type of the parameter.
+        :param str type: The type of the parameter.
         """
         pulumi.set(__self__, "categorical_value_spec", categorical_value_spec)
         pulumi.set(__self__, "child_parameter_specs", child_parameter_specs)
@@ -567,7 +567,7 @@ class GoogleCloudMlV1_StudyConfig_ParameterSpecResponse(dict):
     @pulumi.getter
     def parameter(self) -> str:
         """
-        Required. The parameter name must be unique amongst all ParameterSpecs.
+        The parameter name must be unique amongst all ParameterSpecs.
         """
         return pulumi.get(self, "parameter")
 
@@ -598,7 +598,7 @@ class GoogleCloudMlV1_StudyConfig_ParameterSpecResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Required. The type of the parameter.
+        The type of the parameter.
         """
         return pulumi.get(self, "type")
 
@@ -1374,12 +1374,12 @@ class GoogleCloudMlV1__HyperparameterSpecResponse(dict):
         Represents a set of hyperparameters to optimize.
         :param str algorithm: Optional. The search algorithm specified for the hyperparameter tuning job. Uses the default AI Platform hyperparameter tuning algorithm if unspecified.
         :param bool enable_trial_early_stopping: Optional. Indicates if the hyperparameter tuning job enables auto trial early stopping.
-        :param str goal: Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
+        :param str goal: The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
         :param str hyperparameter_metric_tag: Optional. The TensorFlow summary tag name to use for optimizing trials. For current versions of TensorFlow, this tag name should exactly match what is shown in TensorBoard, including all scopes. For versions of TensorFlow prior to 0.12, this should be only the tag passed to tf.Summary. By default, "training/hptuning/metric" will be used.
         :param int max_failed_trials: Optional. The number of failed trials that need to be seen before failing the hyperparameter tuning job. You can specify this field to override the default failing criteria for AI Platform hyperparameter tuning jobs. Defaults to zero, which means the service decides when a hyperparameter job should fail.
         :param int max_parallel_trials: Optional. The number of training trials to run concurrently. You can reduce the time it takes to perform hyperparameter tuning by adding trials in parallel. However, each trail only benefits from the information gained in completed trials. That means that a trial does not get access to the results of trials running at the same time, which could reduce the quality of the overall optimization. Each trial will use the same scale tier and machine types. Defaults to one.
         :param int max_trials: Optional. How many training trials should be attempted to optimize the specified hyperparameters. Defaults to one.
-        :param Sequence['GoogleCloudMlV1__ParameterSpecResponse'] params: Required. The set of parameters to tune.
+        :param Sequence['GoogleCloudMlV1__ParameterSpecResponse'] params: The set of parameters to tune.
         :param str resume_previous_job_id: Optional. The prior hyperparameter tuning job id that users hope to continue with. The job id will be used to find the corresponding vizier study guid and resume the study.
         """
         pulumi.set(__self__, "algorithm", algorithm)
@@ -1412,7 +1412,7 @@ class GoogleCloudMlV1__HyperparameterSpecResponse(dict):
     @pulumi.getter
     def goal(self) -> str:
         """
-        Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
+        The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
         """
         return pulumi.get(self, "goal")
 
@@ -1452,7 +1452,7 @@ class GoogleCloudMlV1__HyperparameterSpecResponse(dict):
     @pulumi.getter
     def params(self) -> Sequence['outputs.GoogleCloudMlV1__ParameterSpecResponse']:
         """
-        Required. The set of parameters to tune.
+        The set of parameters to tune.
         """
         return pulumi.get(self, "params")
 
@@ -1668,9 +1668,9 @@ class GoogleCloudMlV1__ParameterSpecResponse(dict):
         :param Sequence[float] discrete_values: Required if type is `DISCRETE`. A list of feasible points. The list should be in strictly increasing order. For instance, this parameter might have possible settings of 1.5, 2.5, and 4.0. This list should not contain more than 1,000 values.
         :param float max_value: Required if type is `DOUBLE` or `INTEGER`. This field should be unset if type is `CATEGORICAL`. This value should be integers if type is `INTEGER`.
         :param float min_value: Required if type is `DOUBLE` or `INTEGER`. This field should be unset if type is `CATEGORICAL`. This value should be integers if type is INTEGER.
-        :param str parameter_name: Required. The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
+        :param str parameter_name: The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
         :param str scale_type: Optional. How the parameter should be scaled to the hypercube. Leave unset for categorical parameters. Some kind of scaling is strongly recommended for real or integral parameters (e.g., `UNIT_LINEAR_SCALE`).
-        :param str type: Required. The type of the parameter.
+        :param str type: The type of the parameter.
         """
         pulumi.set(__self__, "categorical_values", categorical_values)
         pulumi.set(__self__, "discrete_values", discrete_values)
@@ -1716,7 +1716,7 @@ class GoogleCloudMlV1__ParameterSpecResponse(dict):
     @pulumi.getter(name="parameterName")
     def parameter_name(self) -> str:
         """
-        Required. The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
+        The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
         """
         return pulumi.get(self, "parameter_name")
 
@@ -1732,7 +1732,7 @@ class GoogleCloudMlV1__ParameterSpecResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Required. The type of the parameter.
+        The type of the parameter.
         """
         return pulumi.get(self, "type")
 
@@ -1793,13 +1793,13 @@ class GoogleCloudMlV1__PredictionInputResponse(dict):
         """
         Represents input parameters for a prediction job.
         :param str batch_size: Optional. Number of records per batch, defaults to 64. The service will buffer batch_size number of records in memory before invoking one Tensorflow prediction call internally. So take the record size and memory available into consideration when setting this parameter.
-        :param str data_format: Required. The format of the input data files.
-        :param Sequence[str] input_paths: Required. The Cloud Storage location of the input data files. May contain wildcards.
+        :param str data_format: The format of the input data files.
+        :param Sequence[str] input_paths: The Cloud Storage location of the input data files. May contain wildcards.
         :param str max_worker_count: Optional. The maximum number of workers to be used for parallel processing. Defaults to 10 if not specified.
         :param str model_name: Use this field if you want to use the default version for the specified model. The string must use the following format: `"projects/YOUR_PROJECT/models/YOUR_MODEL"`
         :param str output_data_format: Optional. Format of the output data files, defaults to JSON.
-        :param str output_path: Required. The output Google Cloud Storage location.
-        :param str region: Required. The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
+        :param str output_path: The output Google Cloud Storage location.
+        :param str region: The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
         :param str runtime_version: Optional. The AI Platform runtime version to use for this batch prediction. If not set, AI Platform will pick the runtime version used during the CreateVersion request for this model version, or choose the latest stable version when model version information is not available such as when the model is specified by uri.
         :param str signature_name: Optional. The name of the signature defined in the SavedModel to use for this job. Please refer to [SavedModel](https://tensorflow.github.io/serving/serving_basic.html) for information about how to use signatures. Defaults to [DEFAULT_SERVING_SIGNATURE_DEF_KEY](https://www.tensorflow.org/api_docs/python/tf/saved_model/signature_constants) , which is "serving_default".
         :param str uri: Use this field if you want to specify a Google Cloud Storage path for the model to use.
@@ -1830,7 +1830,7 @@ class GoogleCloudMlV1__PredictionInputResponse(dict):
     @pulumi.getter(name="dataFormat")
     def data_format(self) -> str:
         """
-        Required. The format of the input data files.
+        The format of the input data files.
         """
         return pulumi.get(self, "data_format")
 
@@ -1838,7 +1838,7 @@ class GoogleCloudMlV1__PredictionInputResponse(dict):
     @pulumi.getter(name="inputPaths")
     def input_paths(self) -> Sequence[str]:
         """
-        Required. The Cloud Storage location of the input data files. May contain wildcards.
+        The Cloud Storage location of the input data files. May contain wildcards.
         """
         return pulumi.get(self, "input_paths")
 
@@ -1870,7 +1870,7 @@ class GoogleCloudMlV1__PredictionInputResponse(dict):
     @pulumi.getter(name="outputPath")
     def output_path(self) -> str:
         """
-        Required. The output Google Cloud Storage location.
+        The output Google Cloud Storage location.
         """
         return pulumi.get(self, "output_path")
 
@@ -1878,7 +1878,7 @@ class GoogleCloudMlV1__PredictionInputResponse(dict):
     @pulumi.getter
     def region(self) -> str:
         """
-        Required. The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
+        The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
         """
         return pulumi.get(self, "region")
 
@@ -2126,7 +2126,7 @@ class GoogleCloudMlV1__RequestLoggingConfigResponse(dict):
                  sampling_percentage: float):
         """
         Configuration for logging request-response pairs to a BigQuery table. Online prediction requests to a model version and the responses to these requests are converted to raw strings and saved to the specified BigQuery table. Logging is constrained by [BigQuery quotas and limits](/bigquery/quotas). If your project exceeds BigQuery quotas or limits, AI Platform Prediction does not log request-response pairs, but it continues to serve predictions. If you are using [continuous evaluation](/ml-engine/docs/continuous-evaluation/), you do not need to specify this configuration manually. Setting up continuous evaluation automatically enables logging of request-response pairs.
-        :param str bigquery_table_name: Required. Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE 
+        :param str bigquery_table_name: Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE 
         :param float sampling_percentage: Percentage of requests to be logged, expressed as a fraction from 0 to 1. For example, if you want to log 10% of requests, enter `0.1`. The sampling window is the lifetime of the model version. Defaults to 0.
         """
         pulumi.set(__self__, "bigquery_table_name", bigquery_table_name)
@@ -2136,7 +2136,7 @@ class GoogleCloudMlV1__RequestLoggingConfigResponse(dict):
     @pulumi.getter(name="bigqueryTableName")
     def bigquery_table_name(self) -> str:
         """
-        Required. Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE 
+        Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE 
         """
         return pulumi.get(self, "bigquery_table_name")
 
@@ -2305,7 +2305,7 @@ class GoogleCloudMlV1__StudyConfigResponse(dict):
         :param str algorithm: The search algorithm specified for the study.
         :param 'GoogleCloudMlV1__AutomatedStoppingConfigResponse' automated_stopping_config: Configuration for automated stopping of unpromising Trials.
         :param Sequence['GoogleCloudMlV1_StudyConfig_MetricSpecResponse'] metrics: Metric specs for the study.
-        :param Sequence['GoogleCloudMlV1_StudyConfig_ParameterSpecResponse'] parameters: Required. The set of parameters to tune.
+        :param Sequence['GoogleCloudMlV1_StudyConfig_ParameterSpecResponse'] parameters: The set of parameters to tune.
         """
         pulumi.set(__self__, "algorithm", algorithm)
         pulumi.set(__self__, "automated_stopping_config", automated_stopping_config)
@@ -2340,7 +2340,7 @@ class GoogleCloudMlV1__StudyConfigResponse(dict):
     @pulumi.getter
     def parameters(self) -> Sequence['outputs.GoogleCloudMlV1_StudyConfig_ParameterSpecResponse']:
         """
-        Required. The set of parameters to tune.
+        The set of parameters to tune.
         """
         return pulumi.get(self, "parameters")
 
@@ -2443,15 +2443,15 @@ class GoogleCloudMlV1__TrainingInputResponse(dict):
         :param 'GoogleCloudMlV1__ReplicaConfigResponse' master_config: Optional. The configuration for your master worker. You should only set `masterConfig.acceleratorConfig` if `masterType` is set to a Compute Engine machine type. Learn about [restrictions on accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu) Set `masterConfig.imageUri` only if you build a custom image. Only one of `masterConfig.imageUri` and `runtimeVersion` should be set. Learn more about [configuring custom containers](/ai-platform/training/docs/distributed-training-containers).
         :param str master_type: Optional. Specifies the type of virtual machine to use for your training job's master worker. You must specify this field when `scaleTier` is set to `CUSTOM`. You can use certain Compute Engine machine types directly in this field. See the [list of compatible Compute Engine machine types](/ai-platform/training/docs/machine-types#compute-engine-machine-types). Alternatively, you can use the certain legacy machine types in this field. See the [list of legacy machine types](/ai-platform/training/docs/machine-types#legacy-machine-types). Finally, if you want to use a TPU for training, specify `cloud_tpu` in this field. Learn more about the [special configuration options for training with TPUs](/ai-platform/training/docs/using-tpus#configuring_a_custom_tpu_machine).
         :param str network: Optional. The full name of the [Compute Engine network](/vpc/docs/vpc) to which the Job is peered. For example, `projects/12345/global/networks/myVPC`. The format of this field is `projects/{project}/global/networks/{network}`, where {project} is a project number (like `12345`) and {network} is network name. Private services access must already be configured for the network. If left unspecified, the Job is not peered with any network. [Learn about using VPC Network Peering.](/ai-platform/training/docs/vpc-peering).
-        :param Sequence[str] package_uris: Required. The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
+        :param Sequence[str] package_uris: The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
         :param 'GoogleCloudMlV1__ReplicaConfigResponse' parameter_server_config: Optional. The configuration for parameter servers. You should only set `parameterServerConfig.acceleratorConfig` if `parameterServerType` is set to a Compute Engine machine type. [Learn about restrictions on accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu) Set `parameterServerConfig.imageUri` only if you build a custom image for your parameter server. If `parameterServerConfig.imageUri` has not been set, AI Platform uses the value of `masterConfig.imageUri`. Learn more about [configuring custom containers](/ai-platform/training/docs/distributed-training-containers).
         :param str parameter_server_count: Optional. The number of parameter server replicas to use for the training job. Each replica in the cluster will be of the type specified in `parameter_server_type`. This value can only be used when `scale_tier` is set to `CUSTOM`. If you set this value, you must also set `parameter_server_type`. The default value is zero.
         :param str parameter_server_type: Optional. Specifies the type of virtual machine to use for your training job's parameter server. The supported values are the same as those described in the entry for `master_type`. This value must be consistent with the category of machine type that `masterType` uses. In other words, both must be Compute Engine machine types or both must be legacy machine types. This value must be present when `scaleTier` is set to `CUSTOM` and `parameter_server_count` is greater than zero.
-        :param str python_module: Required. The Python module name to run after installing the packages.
+        :param str python_module: The Python module name to run after installing the packages.
         :param str python_version: Optional. The version of Python used in training. You must either specify this field or specify `masterConfig.imageUri`. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
-        :param str region: Required. The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
+        :param str region: The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
         :param str runtime_version: Optional. The AI Platform runtime version to use for training. You must either specify this field or specify `masterConfig.imageUri`. For more information, see the [runtime version list](/ai-platform/training/docs/runtime-version-list) and learn [how to manage runtime versions](/ai-platform/training/docs/versioning).
-        :param str scale_tier: Required. Specifies the machine types, the number of replicas for workers and parameter servers.
+        :param str scale_tier: Specifies the machine types, the number of replicas for workers and parameter servers.
         :param 'GoogleCloudMlV1__SchedulingResponse' scheduling: Optional. Scheduling options for a training job.
         :param str service_account: Optional. The email address of a service account to use when running the training appplication. You must have the `iam.serviceAccounts.actAs` permission for the specified service account. In addition, the AI Platform Training Google-managed service account must have the `roles/iam.serviceAccountAdmin` role for the specified service account. [Learn more about configuring a service account.](/ai-platform/training/docs/custom-service-account) If not specified, the AI Platform Training Google-managed service account is used by default.
         :param bool use_chief_in_tf_config: Optional. Use `chief` instead of `master` in the `TF_CONFIG` environment variable when training with a custom container. Defaults to `false`. [Learn more about this field.](/ai-platform/training/docs/distributed-training-details#chief-versus-master) This field has no effect for training jobs that don't use a custom container.
@@ -2569,7 +2569,7 @@ class GoogleCloudMlV1__TrainingInputResponse(dict):
     @pulumi.getter(name="packageUris")
     def package_uris(self) -> Sequence[str]:
         """
-        Required. The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
+        The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
         """
         return pulumi.get(self, "package_uris")
 
@@ -2601,7 +2601,7 @@ class GoogleCloudMlV1__TrainingInputResponse(dict):
     @pulumi.getter(name="pythonModule")
     def python_module(self) -> str:
         """
-        Required. The Python module name to run after installing the packages.
+        The Python module name to run after installing the packages.
         """
         return pulumi.get(self, "python_module")
 
@@ -2617,7 +2617,7 @@ class GoogleCloudMlV1__TrainingInputResponse(dict):
     @pulumi.getter
     def region(self) -> str:
         """
-        Required. The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
+        The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
         """
         return pulumi.get(self, "region")
 
@@ -2633,7 +2633,7 @@ class GoogleCloudMlV1__TrainingInputResponse(dict):
     @pulumi.getter(name="scaleTier")
     def scale_tier(self) -> str:
         """
-        Required. Specifies the machine types, the number of replicas for workers and parameter servers.
+        Specifies the machine types, the number of replicas for workers and parameter servers.
         """
         return pulumi.get(self, "scale_tier")
 
@@ -2903,13 +2903,13 @@ class GoogleCloudMlV1__VersionResponse(dict):
         :param str last_use_time: The time the version was last used for prediction.
         :param str machine_type: Optional. The type of machine on which to serve the model. Currently only applies to online prediction service. To learn about valid values for this field, read [Choosing a machine type for online prediction](/ai-platform/prediction/docs/machine-types-online-prediction). If this field is not specified and you are using a [regional endpoint](/ai-platform/prediction/docs/regional-endpoints), then the machine type defaults to `n1-standard-2`. If this field is not specified and you are using the global endpoint (`ml.googleapis.com`), then the machine type defaults to `mls1-c1-m2`.
         :param 'GoogleCloudMlV1__ManualScalingResponse' manual_scaling: Manually select the number of nodes to use for serving the model. You should generally use `auto_scaling` with an appropriate `min_nodes` instead, but this option is available if you want more predictable billing. Beware that latency and error rates will increase if the traffic exceeds that capability of the system to serve it based on the selected number of nodes.
-        :param str name: Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
+        :param str name: The name specified for the version when it was created. The version name must be unique within the model it is created in.
         :param Sequence[str] package_uris: Optional. Cloud Storage paths (`gs://…`) of packages for [custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines) or [scikit-learn pipelines with custom code](/ml-engine/docs/scikit/exporting-for-prediction#custom-pipeline-code). For a custom prediction routine, one of these packages must contain your Predictor class (see [`predictionClass`](#Version.FIELDS.prediction_class)). Additionally, include any dependencies used by your Predictor or scikit-learn pipeline uses that are not already included in your selected [runtime version](/ml-engine/docs/tensorflow/runtime-version-list). If you specify this field, you must also set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.
         :param str prediction_class: Optional. The fully qualified name (module_name.class_name) of a class that implements the Predictor interface described in this reference field. The module containing this class should be included in a package provided to the [`packageUris` field](#Version.FIELDS.package_uris). Specify this field if and only if you are deploying a [custom prediction routine (beta)](/ml-engine/docs/tensorflow/custom-prediction-routines). If you specify this field, you must set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater and you must set `machineType` to a [legacy (MLS1) machine type](/ml-engine/docs/machine-types-online-prediction). The following code sample provides the Predictor interface: class Predictor(object): \"\"\"Interface for constructing custom predictors.\"\"\" def predict(self, instances, **kwargs): \"\"\"Performs custom prediction. Instances are the decoded values from the request. They have already been deserialized from JSON. Args: instances: A list of prediction input instances. **kwargs: A dictionary of keyword args provided as additional fields on the predict request body. Returns: A list of outputs containing the prediction results. This list must be JSON serializable. \"\"\" raise NotImplementedError() @classmethod def from_path(cls, model_dir): \"\"\"Creates an instance of Predictor using the given path. Loading of the predictor should be done in this method. Args: model_dir: The local directory that contains the exported model file along with any additional files uploaded when creating the version resource. Returns: An instance implementing this Predictor class. \"\"\" raise NotImplementedError() Learn more about [the Predictor interface and custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines).
-        :param str python_version: Required. The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
+        :param str python_version: The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
         :param 'GoogleCloudMlV1__RequestLoggingConfigResponse' request_logging_config: Optional. *Only* specify this field in a projects.models.versions.patch request. Specifying it in a projects.models.versions.create request has no effect. Configures the request-response pair logging on predictions from this Version.
         :param 'GoogleCloudMlV1__RouteMapResponse' routes: Optional. Specifies paths on a custom container's HTTP server where AI Platform Prediction sends certain requests. If you specify this field, then you must also specify the `container` field. If you specify the `container` field and do not specify this field, it defaults to the following: ```json { "predict": "/v1/models/MODEL/versions/VERSION:predict", "health": "/v1/models/MODEL/versions/VERSION" } ``` See RouteMap for more details about these default values.
-        :param str runtime_version: Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
+        :param str runtime_version: The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
         :param str service_account: Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).
         :param str state: The state of a version.
         """
@@ -3080,7 +3080,7 @@ class GoogleCloudMlV1__VersionResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
+        The name specified for the version when it was created. The version name must be unique within the model it is created in.
         """
         return pulumi.get(self, "name")
 
@@ -3104,7 +3104,7 @@ class GoogleCloudMlV1__VersionResponse(dict):
     @pulumi.getter(name="pythonVersion")
     def python_version(self) -> str:
         """
-        Required. The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
+        The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
         """
         return pulumi.get(self, "python_version")
 
@@ -3128,7 +3128,7 @@ class GoogleCloudMlV1__VersionResponse(dict):
     @pulumi.getter(name="runtimeVersion")
     def runtime_version(self) -> str:
         """
-        Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
+        The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
         """
         return pulumi.get(self, "runtime_version")
 

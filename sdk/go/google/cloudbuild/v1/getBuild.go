@@ -66,7 +66,7 @@ type LookupBuildResult struct {
 	Status string `pulumi:"status"`
 	// Customer-readable message about the current status.
 	StatusDetail string `pulumi:"statusDetail"`
-	// Required. The operations to be performed on the workspace.
+	// The operations to be performed on the workspace.
 	Steps []BuildStepResponse `pulumi:"steps"`
 	// Substitutions data for `Build` resource.
 	Substitutions map[string]string `pulumi:"substitutions"`

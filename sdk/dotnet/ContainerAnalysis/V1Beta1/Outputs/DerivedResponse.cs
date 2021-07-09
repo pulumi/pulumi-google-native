@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
         /// </summary>
         public readonly int Distance;
         /// <summary>
-        /// Required. The fingerprint of the derived image.
+        /// The fingerprint of the derived image.
         /// </summary>
         public readonly Outputs.FingerprintResponse Fingerprint;
         /// <summary>

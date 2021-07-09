@@ -31,7 +31,7 @@ export interface GetCanaryEvaluationArgs {
 
 export interface GetCanaryEvaluationResult {
     /**
-     * Required. The stable version that is serving requests.
+     * The stable version that is serving requests.
      */
     readonly control: string;
     /**
@@ -39,11 +39,11 @@ export interface GetCanaryEvaluationResult {
      */
     readonly createTime: string;
     /**
-     * Required. End time for the evaluation's analysis.
+     * End time for the evaluation's analysis.
      */
     readonly endTime: string;
     /**
-     * Required. Labels used to filter the metrics used for a canary evaluation.
+     * Labels used to filter the metrics used for a canary evaluation.
      */
     readonly metricLabels: outputs.apigee.v1.GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse;
     /**
@@ -51,7 +51,7 @@ export interface GetCanaryEvaluationResult {
      */
     readonly name: string;
     /**
-     * Required. Start time for the canary evaluation's analysis.
+     * Start time for the canary evaluation's analysis.
      */
     readonly startTime: string;
     /**
@@ -59,7 +59,7 @@ export interface GetCanaryEvaluationResult {
      */
     readonly state: string;
     /**
-     * Required. The newer version that is serving requests.
+     * The newer version that is serving requests.
      */
     readonly treatment: string;
     /**

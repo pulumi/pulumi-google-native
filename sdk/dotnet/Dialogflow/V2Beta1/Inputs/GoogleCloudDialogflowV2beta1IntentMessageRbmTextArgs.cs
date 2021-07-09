@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         }
 
         /// <summary>
-        /// Required. Text sent and displayed to the user.
+        /// Text sent and displayed to the user.
         /// </summary>
-        [Input("text")]
-        public Input<string>? Text { get; set; }
+        [Input("text", required: true)]
+        public Input<string> Text { get; set; } = null!;
 
         public GoogleCloudDialogflowV2beta1IntentMessageRbmTextArgs()
         {

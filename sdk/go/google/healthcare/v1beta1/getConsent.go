@@ -26,7 +26,7 @@ type LookupConsentArgs struct {
 }
 
 type LookupConsentResult struct {
-	// Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+	// The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
 	ConsentArtifact string `pulumi:"consentArtifact"`
 	// Timestamp in UTC of when this Consent is considered expired.
 	ExpireTime string `pulumi:"expireTime"`
@@ -40,10 +40,10 @@ type LookupConsentResult struct {
 	RevisionCreateTime string `pulumi:"revisionCreateTime"`
 	// The revision ID of the Consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
 	RevisionId string `pulumi:"revisionId"`
-	// Required. Indicates the current state of this Consent.
+	// Indicates the current state of this Consent.
 	State string `pulumi:"state"`
 	// Input only. The time to live for this Consent from when it is created.
 	Ttl string `pulumi:"ttl"`
-	// Required. User's UUID provided by the client.
+	// User's UUID provided by the client.
 	UserId string `pulumi:"userId"`
 }

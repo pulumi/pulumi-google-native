@@ -16,24 +16,23 @@ __all__ = [
 @pulumi.input_type
 class NetworkConfigArgs:
     def __init__(__self__, *,
-                 peered_network: Optional[pulumi.Input[str]] = None):
+                 peered_network: pulumi.Input[str]):
         """
         Network describes the network configuration for a `WorkerPool`.
-        :param pulumi.Input[str] peered_network: Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+        :param pulumi.Input[str] peered_network: Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
         """
-        if peered_network is not None:
-            pulumi.set(__self__, "peered_network", peered_network)
+        pulumi.set(__self__, "peered_network", peered_network)
 
     @property
     @pulumi.getter(name="peeredNetwork")
-    def peered_network(self) -> Optional[pulumi.Input[str]]:
+    def peered_network(self) -> pulumi.Input[str]:
         """
-        Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+        Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
         """
         return pulumi.get(self, "peered_network")
 
     @peered_network.setter
-    def peered_network(self, value: Optional[pulumi.Input[str]]):
+    def peered_network(self, value: pulumi.Input[str]):
         pulumi.set(self, "peered_network", value)
 
 

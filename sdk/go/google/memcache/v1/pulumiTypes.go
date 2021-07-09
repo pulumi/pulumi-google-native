@@ -492,10 +492,10 @@ func (o MemcacheParametersResponsePtrOutput) Params() pulumi.StringMapOutput {
 
 // Configuration for a Memcached Node.
 type NodeConfig struct {
-	// Required. Number of cpus per Memcached node.
-	CpuCount *int `pulumi:"cpuCount"`
-	// Required. Memory size in MiB for each Memcached node.
-	MemorySizeMb *int `pulumi:"memorySizeMb"`
+	// Number of cpus per Memcached node.
+	CpuCount int `pulumi:"cpuCount"`
+	// Memory size in MiB for each Memcached node.
+	MemorySizeMb int `pulumi:"memorySizeMb"`
 }
 
 // NodeConfigInput is an input type that accepts NodeConfigArgs and NodeConfigOutput values.
@@ -511,10 +511,10 @@ type NodeConfigInput interface {
 
 // Configuration for a Memcached Node.
 type NodeConfigArgs struct {
-	// Required. Number of cpus per Memcached node.
-	CpuCount pulumi.IntPtrInput `pulumi:"cpuCount"`
-	// Required. Memory size in MiB for each Memcached node.
-	MemorySizeMb pulumi.IntPtrInput `pulumi:"memorySizeMb"`
+	// Number of cpus per Memcached node.
+	CpuCount pulumi.IntInput `pulumi:"cpuCount"`
+	// Memory size in MiB for each Memcached node.
+	MemorySizeMb pulumi.IntInput `pulumi:"memorySizeMb"`
 }
 
 func (NodeConfigArgs) ElementType() reflect.Type {
@@ -595,14 +595,14 @@ func (o NodeConfigOutput) ToNodeConfigPtrOutputWithContext(ctx context.Context) 
 	}).(NodeConfigPtrOutput)
 }
 
-// Required. Number of cpus per Memcached node.
-func (o NodeConfigOutput) CpuCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NodeConfig) *int { return v.CpuCount }).(pulumi.IntPtrOutput)
+// Number of cpus per Memcached node.
+func (o NodeConfigOutput) CpuCount() pulumi.IntOutput {
+	return o.ApplyT(func(v NodeConfig) int { return v.CpuCount }).(pulumi.IntOutput)
 }
 
-// Required. Memory size in MiB for each Memcached node.
-func (o NodeConfigOutput) MemorySizeMb() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v NodeConfig) *int { return v.MemorySizeMb }).(pulumi.IntPtrOutput)
+// Memory size in MiB for each Memcached node.
+func (o NodeConfigOutput) MemorySizeMb() pulumi.IntOutput {
+	return o.ApplyT(func(v NodeConfig) int { return v.MemorySizeMb }).(pulumi.IntOutput)
 }
 
 type NodeConfigPtrOutput struct{ *pulumi.OutputState }
@@ -623,31 +623,31 @@ func (o NodeConfigPtrOutput) Elem() NodeConfigOutput {
 	return o.ApplyT(func(v *NodeConfig) NodeConfig { return *v }).(NodeConfigOutput)
 }
 
-// Required. Number of cpus per Memcached node.
+// Number of cpus per Memcached node.
 func (o NodeConfigPtrOutput) CpuCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodeConfig) *int {
 		if v == nil {
 			return nil
 		}
-		return v.CpuCount
+		return &v.CpuCount
 	}).(pulumi.IntPtrOutput)
 }
 
-// Required. Memory size in MiB for each Memcached node.
+// Memory size in MiB for each Memcached node.
 func (o NodeConfigPtrOutput) MemorySizeMb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodeConfig) *int {
 		if v == nil {
 			return nil
 		}
-		return v.MemorySizeMb
+		return &v.MemorySizeMb
 	}).(pulumi.IntPtrOutput)
 }
 
 // Configuration for a Memcached Node.
 type NodeConfigResponse struct {
-	// Required. Number of cpus per Memcached node.
+	// Number of cpus per Memcached node.
 	CpuCount int `pulumi:"cpuCount"`
-	// Required. Memory size in MiB for each Memcached node.
+	// Memory size in MiB for each Memcached node.
 	MemorySizeMb int `pulumi:"memorySizeMb"`
 }
 
@@ -664,9 +664,9 @@ type NodeConfigResponseInput interface {
 
 // Configuration for a Memcached Node.
 type NodeConfigResponseArgs struct {
-	// Required. Number of cpus per Memcached node.
+	// Number of cpus per Memcached node.
 	CpuCount pulumi.IntInput `pulumi:"cpuCount"`
-	// Required. Memory size in MiB for each Memcached node.
+	// Memory size in MiB for each Memcached node.
 	MemorySizeMb pulumi.IntInput `pulumi:"memorySizeMb"`
 }
 
@@ -748,12 +748,12 @@ func (o NodeConfigResponseOutput) ToNodeConfigResponsePtrOutputWithContext(ctx c
 	}).(NodeConfigResponsePtrOutput)
 }
 
-// Required. Number of cpus per Memcached node.
+// Number of cpus per Memcached node.
 func (o NodeConfigResponseOutput) CpuCount() pulumi.IntOutput {
 	return o.ApplyT(func(v NodeConfigResponse) int { return v.CpuCount }).(pulumi.IntOutput)
 }
 
-// Required. Memory size in MiB for each Memcached node.
+// Memory size in MiB for each Memcached node.
 func (o NodeConfigResponseOutput) MemorySizeMb() pulumi.IntOutput {
 	return o.ApplyT(func(v NodeConfigResponse) int { return v.MemorySizeMb }).(pulumi.IntOutput)
 }
@@ -776,7 +776,7 @@ func (o NodeConfigResponsePtrOutput) Elem() NodeConfigResponseOutput {
 	return o.ApplyT(func(v *NodeConfigResponse) NodeConfigResponse { return *v }).(NodeConfigResponseOutput)
 }
 
-// Required. Number of cpus per Memcached node.
+// Number of cpus per Memcached node.
 func (o NodeConfigResponsePtrOutput) CpuCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodeConfigResponse) *int {
 		if v == nil {
@@ -786,7 +786,7 @@ func (o NodeConfigResponsePtrOutput) CpuCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Required. Memory size in MiB for each Memcached node.
+// Memory size in MiB for each Memcached node.
 func (o NodeConfigResponsePtrOutput) MemorySizeMb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *NodeConfigResponse) *int {
 		if v == nil {

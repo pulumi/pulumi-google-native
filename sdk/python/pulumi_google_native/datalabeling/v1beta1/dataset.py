@@ -14,23 +14,34 @@ __all__ = ['DatasetArgs', 'Dataset']
 @pulumi.input_type
 class DatasetArgs:
     def __init__(__self__, *,
+                 display_name: pulumi.Input[str],
                  project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
                  last_migrate_time: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Dataset resource.
+        :param pulumi.Input[str] display_name: The display name of the dataset. Maximum of 64 characters.
         :param pulumi.Input[str] description: Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
-        :param pulumi.Input[str] display_name: Required. The display name of the dataset. Maximum of 64 characters.
         :param pulumi.Input[str] last_migrate_time: Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
         """
+        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if last_migrate_time is not None:
             pulumi.set(__self__, "last_migrate_time", last_migrate_time)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The display name of the dataset. Maximum of 64 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter
@@ -52,18 +63,6 @@ class DatasetArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The display name of the dataset. Maximum of 64 characters.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="lastMigrateTime")
@@ -94,7 +93,7 @@ class Dataset(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
-        :param pulumi.Input[str] display_name: Required. The display name of the dataset. Maximum of 64 characters.
+        :param pulumi.Input[str] display_name: The display name of the dataset. Maximum of 64 characters.
         :param pulumi.Input[str] last_migrate_time: Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
         """
         ...
@@ -138,6 +137,8 @@ class Dataset(pulumi.CustomResource):
             __props__ = DatasetArgs.__new__(DatasetArgs)
 
             __props__.__dict__["description"] = description
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["last_migrate_time"] = last_migrate_time
             if project is None and not opts.urn:
@@ -216,7 +217,7 @@ class Dataset(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Required. The display name of the dataset. Maximum of 64 characters.
+        The display name of the dataset. Maximum of 64 characters.
         """
         return pulumi.get(self, "display_name")
 

@@ -37,7 +37,7 @@ export interface GetWebhookResult {
      */
     readonly disabled: boolean;
     /**
-     * Required. The human-readable name of the webhook, unique within the agent.
+     * The human-readable name of the webhook, unique within the agent.
      */
     readonly displayName: string;
     /**

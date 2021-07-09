@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
         /// </summary>
         public readonly bool TestSpecialEntitlements;
         /// <summary>
-        /// Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
+        /// The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
         /// </summary>
         public readonly Outputs.FileReferenceResponse TestsZip;
         /// <summary>

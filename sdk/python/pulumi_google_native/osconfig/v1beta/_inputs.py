@@ -56,29 +56,62 @@ __all__ = [
 @pulumi.input_type
 class AptRepositoryArgs:
     def __init__(__self__, *,
+                 components: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 distribution: pulumi.Input[str],
+                 uri: pulumi.Input[str],
                  archive_type: Optional[pulumi.Input['AptRepositoryArchiveType']] = None,
-                 components: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 distribution: Optional[pulumi.Input[str]] = None,
-                 gpg_key: Optional[pulumi.Input[str]] = None,
-                 uri: Optional[pulumi.Input[str]] = None):
+                 gpg_key: Optional[pulumi.Input[str]] = None):
         """
         Represents a single Apt package repository. This repository is added to a repo file that is stored at `/etc/apt/sources.list.d/google_osconfig.list`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] components: List of components for this repository. Must contain at least one item.
+        :param pulumi.Input[str] distribution: Distribution of this repository.
+        :param pulumi.Input[str] uri: URI for this repository.
         :param pulumi.Input['AptRepositoryArchiveType'] archive_type: Type of archive files in this repository. The default behavior is DEB.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] components: Required. List of components for this repository. Must contain at least one item.
-        :param pulumi.Input[str] distribution: Required. Distribution of this repository.
         :param pulumi.Input[str] gpg_key: URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg` containing all the keys in any applied guest policy.
-        :param pulumi.Input[str] uri: Required. URI for this repository.
         """
+        pulumi.set(__self__, "components", components)
+        pulumi.set(__self__, "distribution", distribution)
+        pulumi.set(__self__, "uri", uri)
         if archive_type is not None:
             pulumi.set(__self__, "archive_type", archive_type)
-        if components is not None:
-            pulumi.set(__self__, "components", components)
-        if distribution is not None:
-            pulumi.set(__self__, "distribution", distribution)
         if gpg_key is not None:
             pulumi.set(__self__, "gpg_key", gpg_key)
-        if uri is not None:
-            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def components(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        List of components for this repository. Must contain at least one item.
+        """
+        return pulumi.get(self, "components")
+
+    @components.setter
+    def components(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "components", value)
+
+    @property
+    @pulumi.getter
+    def distribution(self) -> pulumi.Input[str]:
+        """
+        Distribution of this repository.
+        """
+        return pulumi.get(self, "distribution")
+
+    @distribution.setter
+    def distribution(self, value: pulumi.Input[str]):
+        pulumi.set(self, "distribution", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        URI for this repository.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
 
     @property
     @pulumi.getter(name="archiveType")
@@ -93,30 +126,6 @@ class AptRepositoryArgs:
         pulumi.set(self, "archive_type", value)
 
     @property
-    @pulumi.getter
-    def components(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Required. List of components for this repository. Must contain at least one item.
-        """
-        return pulumi.get(self, "components")
-
-    @components.setter
-    def components(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "components", value)
-
-    @property
-    @pulumi.getter
-    def distribution(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Distribution of this repository.
-        """
-        return pulumi.get(self, "distribution")
-
-    @distribution.setter
-    def distribution(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "distribution", value)
-
-    @property
     @pulumi.getter(name="gpgKey")
     def gpg_key(self) -> Optional[pulumi.Input[str]]:
         """
@@ -127,18 +136,6 @@ class AptRepositoryArgs:
     @gpg_key.setter
     def gpg_key(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "gpg_key", value)
-
-    @property
-    @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. URI for this repository.
-        """
-        return pulumi.get(self, "uri")
-
-    @uri.setter
-    def uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "uri", value)
 
 
 @pulumi.input_type
@@ -520,96 +517,91 @@ class FixedOrPercentArgs:
 @pulumi.input_type
 class GcsObjectArgs:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[str]] = None,
-                 generation_number: Optional[pulumi.Input[str]] = None,
-                 object: Optional[pulumi.Input[str]] = None):
+                 bucket: pulumi.Input[str],
+                 generation_number: pulumi.Input[str],
+                 object: pulumi.Input[str]):
         """
         Google Cloud Storage object representation.
-        :param pulumi.Input[str] bucket: Required. Bucket of the Google Cloud Storage object.
-        :param pulumi.Input[str] generation_number: Required. Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-        :param pulumi.Input[str] object: Required. Name of the Google Cloud Storage object.
+        :param pulumi.Input[str] bucket: Bucket of the Google Cloud Storage object.
+        :param pulumi.Input[str] generation_number: Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+        :param pulumi.Input[str] object: Name of the Google Cloud Storage object.
         """
-        if bucket is not None:
-            pulumi.set(__self__, "bucket", bucket)
-        if generation_number is not None:
-            pulumi.set(__self__, "generation_number", generation_number)
-        if object is not None:
-            pulumi.set(__self__, "object", object)
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "generation_number", generation_number)
+        pulumi.set(__self__, "object", object)
 
     @property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[str]]:
+    def bucket(self) -> pulumi.Input[str]:
         """
-        Required. Bucket of the Google Cloud Storage object.
+        Bucket of the Google Cloud Storage object.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[str]]):
+    def bucket(self, value: pulumi.Input[str]):
         pulumi.set(self, "bucket", value)
 
     @property
     @pulumi.getter(name="generationNumber")
-    def generation_number(self) -> Optional[pulumi.Input[str]]:
+    def generation_number(self) -> pulumi.Input[str]:
         """
-        Required. Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+        Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
         """
         return pulumi.get(self, "generation_number")
 
     @generation_number.setter
-    def generation_number(self, value: Optional[pulumi.Input[str]]):
+    def generation_number(self, value: pulumi.Input[str]):
         pulumi.set(self, "generation_number", value)
 
     @property
     @pulumi.getter
-    def object(self) -> Optional[pulumi.Input[str]]:
+    def object(self) -> pulumi.Input[str]:
         """
-        Required. Name of the Google Cloud Storage object.
+        Name of the Google Cloud Storage object.
         """
         return pulumi.get(self, "object")
 
     @object.setter
-    def object(self, value: Optional[pulumi.Input[str]]):
+    def object(self, value: pulumi.Input[str]):
         pulumi.set(self, "object", value)
 
 
 @pulumi.input_type
 class GooRepositoryArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None,
-                 url: Optional[pulumi.Input[str]] = None):
+                 name: pulumi.Input[str],
+                 url: pulumi.Input[str]):
         """
         Represents a Goo package repository. These is added to a repo file that is stored at C:/ProgramData/GooGet/repos/google_osconfig.repo.
-        :param pulumi.Input[str] name: Required. The name of the repository.
-        :param pulumi.Input[str] url: Required. The url of the repository.
+        :param pulumi.Input[str] name: The name of the repository.
+        :param pulumi.Input[str] url: The url of the repository.
         """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if url is not None:
-            pulumi.set(__self__, "url", url)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "url", url)
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def name(self) -> pulumi.Input[str]:
         """
-        Required. The name of the repository.
+        The name of the repository.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[str]]:
+    def url(self) -> pulumi.Input[str]:
         """
-        Required. The url of the repository.
+        The url of the repository.
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[str]]):
+    def url(self, value: pulumi.Input[str]):
         pulumi.set(self, "url", value)
 
 
@@ -625,85 +617,93 @@ class GooSettingsArgs:
 @pulumi.input_type
 class MonthlyScheduleArgs:
     def __init__(__self__, *,
-                 month_day: Optional[pulumi.Input[int]] = None,
-                 week_day_of_month: Optional[pulumi.Input['WeekDayOfMonthArgs']] = None):
+                 month_day: pulumi.Input[int],
+                 week_day_of_month: pulumi.Input['WeekDayOfMonthArgs']):
         """
         Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or "on the 15th of the month".
-        :param pulumi.Input[int] month_day: Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
-        :param pulumi.Input['WeekDayOfMonthArgs'] week_day_of_month: Required. Week day in a month.
+        :param pulumi.Input[int] month_day: One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+        :param pulumi.Input['WeekDayOfMonthArgs'] week_day_of_month: Week day in a month.
         """
-        if month_day is not None:
-            pulumi.set(__self__, "month_day", month_day)
-        if week_day_of_month is not None:
-            pulumi.set(__self__, "week_day_of_month", week_day_of_month)
+        pulumi.set(__self__, "month_day", month_day)
+        pulumi.set(__self__, "week_day_of_month", week_day_of_month)
 
     @property
     @pulumi.getter(name="monthDay")
-    def month_day(self) -> Optional[pulumi.Input[int]]:
+    def month_day(self) -> pulumi.Input[int]:
         """
-        Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+        One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
         """
         return pulumi.get(self, "month_day")
 
     @month_day.setter
-    def month_day(self, value: Optional[pulumi.Input[int]]):
+    def month_day(self, value: pulumi.Input[int]):
         pulumi.set(self, "month_day", value)
 
     @property
     @pulumi.getter(name="weekDayOfMonth")
-    def week_day_of_month(self) -> Optional[pulumi.Input['WeekDayOfMonthArgs']]:
+    def week_day_of_month(self) -> pulumi.Input['WeekDayOfMonthArgs']:
         """
-        Required. Week day in a month.
+        Week day in a month.
         """
         return pulumi.get(self, "week_day_of_month")
 
     @week_day_of_month.setter
-    def week_day_of_month(self, value: Optional[pulumi.Input['WeekDayOfMonthArgs']]):
+    def week_day_of_month(self, value: pulumi.Input['WeekDayOfMonthArgs']):
         pulumi.set(self, "week_day_of_month", value)
 
 
 @pulumi.input_type
 class OneTimeScheduleArgs:
     def __init__(__self__, *,
-                 execute_time: Optional[pulumi.Input[str]] = None):
+                 execute_time: pulumi.Input[str]):
         """
         Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
-        :param pulumi.Input[str] execute_time: Required. The desired patch job execution time.
+        :param pulumi.Input[str] execute_time: The desired patch job execution time.
         """
-        if execute_time is not None:
-            pulumi.set(__self__, "execute_time", execute_time)
+        pulumi.set(__self__, "execute_time", execute_time)
 
     @property
     @pulumi.getter(name="executeTime")
-    def execute_time(self) -> Optional[pulumi.Input[str]]:
+    def execute_time(self) -> pulumi.Input[str]:
         """
-        Required. The desired patch job execution time.
+        The desired patch job execution time.
         """
         return pulumi.get(self, "execute_time")
 
     @execute_time.setter
-    def execute_time(self, value: Optional[pulumi.Input[str]]):
+    def execute_time(self, value: pulumi.Input[str]):
         pulumi.set(self, "execute_time", value)
 
 
 @pulumi.input_type
 class PackageArgs:
     def __init__(__self__, *,
+                 name: pulumi.Input[str],
                  desired_state: Optional[pulumi.Input['PackageDesiredState']] = None,
-                 manager: Optional[pulumi.Input['PackageManager']] = None,
-                 name: Optional[pulumi.Input[str]] = None):
+                 manager: Optional[pulumi.Input['PackageManager']] = None):
         """
         Package is a reference to the software package to be installed or removed. The agent on the VM instance uses the system package manager to apply the config. These are the commands that the agent uses to install or remove packages. Apt install: `apt-get update && apt-get -y install package1 package2 package3` remove: `apt-get -y remove package1 package2 package3` Yum install: `yum -y install package1 package2 package3` remove: `yum -y remove package1 package2 package3` Zypper install: `zypper install package1 package2 package3` remove: `zypper rm package1 package2` Googet install: `googet -noconfirm install package1 package2 package3` remove: `googet -noconfirm remove package1 package2 package3`
+        :param pulumi.Input[str] name: The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
         :param pulumi.Input['PackageDesiredState'] desired_state: The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
         :param pulumi.Input['PackageManager'] manager: Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
-        :param pulumi.Input[str] name: Required. The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
         """
+        pulumi.set(__self__, "name", name)
         if desired_state is not None:
             pulumi.set(__self__, "desired_state", desired_state)
         if manager is not None:
             pulumi.set(__self__, "manager", manager)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="desiredState")
@@ -728,18 +728,6 @@ class PackageArgs:
     @manager.setter
     def manager(self, value: Optional[pulumi.Input['PackageManager']]):
         pulumi.set(self, "manager", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
@@ -1105,37 +1093,92 @@ class PatchRolloutArgs:
 @pulumi.input_type
 class RecurringScheduleArgs:
     def __init__(__self__, *,
+                 frequency: pulumi.Input['RecurringScheduleFrequency'],
+                 monthly: pulumi.Input['MonthlyScheduleArgs'],
+                 time_of_day: pulumi.Input['TimeOfDayArgs'],
+                 time_zone: pulumi.Input['TimeZoneArgs'],
+                 weekly: pulumi.Input['WeeklyScheduleArgs'],
                  end_time: Optional[pulumi.Input[str]] = None,
-                 frequency: Optional[pulumi.Input['RecurringScheduleFrequency']] = None,
-                 monthly: Optional[pulumi.Input['MonthlyScheduleArgs']] = None,
-                 start_time: Optional[pulumi.Input[str]] = None,
-                 time_of_day: Optional[pulumi.Input['TimeOfDayArgs']] = None,
-                 time_zone: Optional[pulumi.Input['TimeZoneArgs']] = None,
-                 weekly: Optional[pulumi.Input['WeeklyScheduleArgs']] = None):
+                 start_time: Optional[pulumi.Input[str]] = None):
         """
         Sets the time for recurring patch deployments.
+        :param pulumi.Input['RecurringScheduleFrequency'] frequency: The frequency unit of this recurring schedule.
+        :param pulumi.Input['MonthlyScheduleArgs'] monthly: Schedule with monthly executions.
+        :param pulumi.Input['TimeOfDayArgs'] time_of_day: Time of the day to run a recurring deployment.
+        :param pulumi.Input['TimeZoneArgs'] time_zone: Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+        :param pulumi.Input['WeeklyScheduleArgs'] weekly: Schedule with weekly executions.
         :param pulumi.Input[str] end_time: Optional. The end time at which a recurring patch deployment schedule is no longer active.
-        :param pulumi.Input['RecurringScheduleFrequency'] frequency: Required. The frequency unit of this recurring schedule.
-        :param pulumi.Input['MonthlyScheduleArgs'] monthly: Required. Schedule with monthly executions.
         :param pulumi.Input[str] start_time: Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
-        :param pulumi.Input['TimeOfDayArgs'] time_of_day: Required. Time of the day to run a recurring deployment.
-        :param pulumi.Input['TimeZoneArgs'] time_zone: Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
-        :param pulumi.Input['WeeklyScheduleArgs'] weekly: Required. Schedule with weekly executions.
         """
+        pulumi.set(__self__, "frequency", frequency)
+        pulumi.set(__self__, "monthly", monthly)
+        pulumi.set(__self__, "time_of_day", time_of_day)
+        pulumi.set(__self__, "time_zone", time_zone)
+        pulumi.set(__self__, "weekly", weekly)
         if end_time is not None:
             pulumi.set(__self__, "end_time", end_time)
-        if frequency is not None:
-            pulumi.set(__self__, "frequency", frequency)
-        if monthly is not None:
-            pulumi.set(__self__, "monthly", monthly)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
-        if time_of_day is not None:
-            pulumi.set(__self__, "time_of_day", time_of_day)
-        if time_zone is not None:
-            pulumi.set(__self__, "time_zone", time_zone)
-        if weekly is not None:
-            pulumi.set(__self__, "weekly", weekly)
+
+    @property
+    @pulumi.getter
+    def frequency(self) -> pulumi.Input['RecurringScheduleFrequency']:
+        """
+        The frequency unit of this recurring schedule.
+        """
+        return pulumi.get(self, "frequency")
+
+    @frequency.setter
+    def frequency(self, value: pulumi.Input['RecurringScheduleFrequency']):
+        pulumi.set(self, "frequency", value)
+
+    @property
+    @pulumi.getter
+    def monthly(self) -> pulumi.Input['MonthlyScheduleArgs']:
+        """
+        Schedule with monthly executions.
+        """
+        return pulumi.get(self, "monthly")
+
+    @monthly.setter
+    def monthly(self, value: pulumi.Input['MonthlyScheduleArgs']):
+        pulumi.set(self, "monthly", value)
+
+    @property
+    @pulumi.getter(name="timeOfDay")
+    def time_of_day(self) -> pulumi.Input['TimeOfDayArgs']:
+        """
+        Time of the day to run a recurring deployment.
+        """
+        return pulumi.get(self, "time_of_day")
+
+    @time_of_day.setter
+    def time_of_day(self, value: pulumi.Input['TimeOfDayArgs']):
+        pulumi.set(self, "time_of_day", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> pulumi.Input['TimeZoneArgs']:
+        """
+        Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: pulumi.Input['TimeZoneArgs']):
+        pulumi.set(self, "time_zone", value)
+
+    @property
+    @pulumi.getter
+    def weekly(self) -> pulumi.Input['WeeklyScheduleArgs']:
+        """
+        Schedule with weekly executions.
+        """
+        return pulumi.get(self, "weekly")
+
+    @weekly.setter
+    def weekly(self, value: pulumi.Input['WeeklyScheduleArgs']):
+        pulumi.set(self, "weekly", value)
 
     @property
     @pulumi.getter(name="endTime")
@@ -1150,30 +1193,6 @@ class RecurringScheduleArgs:
         pulumi.set(self, "end_time", value)
 
     @property
-    @pulumi.getter
-    def frequency(self) -> Optional[pulumi.Input['RecurringScheduleFrequency']]:
-        """
-        Required. The frequency unit of this recurring schedule.
-        """
-        return pulumi.get(self, "frequency")
-
-    @frequency.setter
-    def frequency(self, value: Optional[pulumi.Input['RecurringScheduleFrequency']]):
-        pulumi.set(self, "frequency", value)
-
-    @property
-    @pulumi.getter
-    def monthly(self) -> Optional[pulumi.Input['MonthlyScheduleArgs']]:
-        """
-        Required. Schedule with monthly executions.
-        """
-        return pulumi.get(self, "monthly")
-
-    @monthly.setter
-    def monthly(self, value: Optional[pulumi.Input['MonthlyScheduleArgs']]):
-        pulumi.set(self, "monthly", value)
-
-    @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1185,73 +1204,48 @@ class RecurringScheduleArgs:
     def start_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start_time", value)
 
-    @property
-    @pulumi.getter(name="timeOfDay")
-    def time_of_day(self) -> Optional[pulumi.Input['TimeOfDayArgs']]:
-        """
-        Required. Time of the day to run a recurring deployment.
-        """
-        return pulumi.get(self, "time_of_day")
-
-    @time_of_day.setter
-    def time_of_day(self, value: Optional[pulumi.Input['TimeOfDayArgs']]):
-        pulumi.set(self, "time_of_day", value)
-
-    @property
-    @pulumi.getter(name="timeZone")
-    def time_zone(self) -> Optional[pulumi.Input['TimeZoneArgs']]:
-        """
-        Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
-        """
-        return pulumi.get(self, "time_zone")
-
-    @time_zone.setter
-    def time_zone(self, value: Optional[pulumi.Input['TimeZoneArgs']]):
-        pulumi.set(self, "time_zone", value)
-
-    @property
-    @pulumi.getter
-    def weekly(self) -> Optional[pulumi.Input['WeeklyScheduleArgs']]:
-        """
-        Required. Schedule with weekly executions.
-        """
-        return pulumi.get(self, "weekly")
-
-    @weekly.setter
-    def weekly(self, value: Optional[pulumi.Input['WeeklyScheduleArgs']]):
-        pulumi.set(self, "weekly", value)
-
 
 @pulumi.input_type
 class SoftwareRecipeArgs:
     def __init__(__self__, *,
+                 name: pulumi.Input[str],
                  artifacts: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeArtifactArgs']]]] = None,
                  desired_state: Optional[pulumi.Input['SoftwareRecipeDesiredState']] = None,
                  install_steps: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  update_steps: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
         A software recipe is a set of instructions for installing and configuring a piece of software. It consists of a set of artifacts that are downloaded, and a set of steps that install, configure, and/or update the software. Recipes support installing and updating software from artifacts in the following formats: Zip archive, Tar archive, Windows MSI, Debian package, and RPM package. Additionally, recipes support executing a script (either defined in a file or directly in this api) in bash, sh, cmd, and powershell. Updating a software recipe If a recipe is assigned to an instance and there is a recipe with the same name but a lower version already installed and the assigned state of the recipe is `UPDATED`, then the recipe is updated to the new version. Script Working Directories Each script or execution step is run in its own temporary directory which is deleted after completing the step.
+        :param pulumi.Input[str] name: Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
         :param pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeArtifactArgs']]] artifacts: Resources available to be used in the steps in the recipe.
         :param pulumi.Input['SoftwareRecipeDesiredState'] desired_state: Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
         :param pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]] install_steps: Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back.
-        :param pulumi.Input[str] name: Required. Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
         :param pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]] update_steps: Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe. Any steps taken (including partially completed steps) are not rolled back.
         :param pulumi.Input[str] version: The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
         """
+        pulumi.set(__self__, "name", name)
         if artifacts is not None:
             pulumi.set(__self__, "artifacts", artifacts)
         if desired_state is not None:
             pulumi.set(__self__, "desired_state", desired_state)
         if install_steps is not None:
             pulumi.set(__self__, "install_steps", install_steps)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if update_steps is not None:
             pulumi.set(__self__, "update_steps", update_steps)
         if version is not None:
             pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -1290,18 +1284,6 @@ class SoftwareRecipeArgs:
         pulumi.set(self, "install_steps", value)
 
     @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
     @pulumi.getter(name="updateSteps")
     def update_steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]]]:
         """
@@ -1329,25 +1311,36 @@ class SoftwareRecipeArgs:
 @pulumi.input_type
 class SoftwareRecipeArtifactArgs:
     def __init__(__self__, *,
+                 id: pulumi.Input[str],
                  allow_insecure: Optional[pulumi.Input[bool]] = None,
                  gcs: Optional[pulumi.Input['SoftwareRecipeArtifactGcsArgs']] = None,
-                 id: Optional[pulumi.Input[str]] = None,
                  remote: Optional[pulumi.Input['SoftwareRecipeArtifactRemoteArgs']] = None):
         """
         Specifies a resource to be used in the recipe.
+        :param pulumi.Input[str] id: Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
         :param pulumi.Input[bool] allow_insecure: Defaults to false. When false, recipes are subject to validations based on the artifact type: Remote: A checksum must be specified, and only protocols with transport-layer security are permitted. GCS: An object generation number must be specified.
         :param pulumi.Input['SoftwareRecipeArtifactGcsArgs'] gcs: A Google Cloud Storage artifact.
-        :param pulumi.Input[str] id: Required. Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
         :param pulumi.Input['SoftwareRecipeArtifactRemoteArgs'] remote: A generic remote artifact.
         """
+        pulumi.set(__self__, "id", id)
         if allow_insecure is not None:
             pulumi.set(__self__, "allow_insecure", allow_insecure)
         if gcs is not None:
             pulumi.set(__self__, "gcs", gcs)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
         if remote is not None:
             pulumi.set(__self__, "remote", remote)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter(name="allowInsecure")
@@ -1372,18 +1365,6 @@ class SoftwareRecipeArtifactArgs:
     @gcs.setter
     def gcs(self, value: Optional[pulumi.Input['SoftwareRecipeArtifactGcsArgs']]):
         pulumi.set(self, "gcs", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter
@@ -1617,21 +1598,19 @@ class SoftwareRecipeStepArgs:
 @pulumi.input_type
 class SoftwareRecipeStepCopyFileArgs:
     def __init__(__self__, *,
-                 artifact_id: Optional[pulumi.Input[str]] = None,
-                 destination: Optional[pulumi.Input[str]] = None,
+                 artifact_id: pulumi.Input[str],
+                 destination: pulumi.Input[str],
                  overwrite: Optional[pulumi.Input[bool]] = None,
                  permissions: Optional[pulumi.Input[str]] = None):
         """
         Copies the artifact to the specified path on the instance.
-        :param pulumi.Input[str] artifact_id: Required. The id of the relevant artifact in the recipe.
-        :param pulumi.Input[str] destination: Required. The absolute path on the instance to put the file.
+        :param pulumi.Input[str] artifact_id: The id of the relevant artifact in the recipe.
+        :param pulumi.Input[str] destination: The absolute path on the instance to put the file.
         :param pulumi.Input[bool] overwrite: Whether to allow this step to overwrite existing files. If this is false and the file already exists the file is not overwritten and the step is considered a success. Defaults to false.
         :param pulumi.Input[str] permissions: Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
         """
-        if artifact_id is not None:
-            pulumi.set(__self__, "artifact_id", artifact_id)
-        if destination is not None:
-            pulumi.set(__self__, "destination", destination)
+        pulumi.set(__self__, "artifact_id", artifact_id)
+        pulumi.set(__self__, "destination", destination)
         if overwrite is not None:
             pulumi.set(__self__, "overwrite", overwrite)
         if permissions is not None:
@@ -1639,26 +1618,26 @@ class SoftwareRecipeStepCopyFileArgs:
 
     @property
     @pulumi.getter(name="artifactId")
-    def artifact_id(self) -> Optional[pulumi.Input[str]]:
+    def artifact_id(self) -> pulumi.Input[str]:
         """
-        Required. The id of the relevant artifact in the recipe.
+        The id of the relevant artifact in the recipe.
         """
         return pulumi.get(self, "artifact_id")
 
     @artifact_id.setter
-    def artifact_id(self, value: Optional[pulumi.Input[str]]):
+    def artifact_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "artifact_id", value)
 
     @property
     @pulumi.getter
-    def destination(self) -> Optional[pulumi.Input[str]]:
+    def destination(self) -> pulumi.Input[str]:
         """
-        Required. The absolute path on the instance to put the file.
+        The absolute path on the instance to put the file.
         """
         return pulumi.get(self, "destination")
 
     @destination.setter
-    def destination(self, value: Optional[pulumi.Input[str]]):
+    def destination(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination", value)
 
     @property
@@ -1761,33 +1740,43 @@ class SoftwareRecipeStepExecFileArgs:
 @pulumi.input_type
 class SoftwareRecipeStepExtractArchiveArgs:
     def __init__(__self__, *,
-                 artifact_id: Optional[pulumi.Input[str]] = None,
-                 destination: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input['SoftwareRecipeStepExtractArchiveType']] = None):
+                 artifact_id: pulumi.Input[str],
+                 type: pulumi.Input['SoftwareRecipeStepExtractArchiveType'],
+                 destination: Optional[pulumi.Input[str]] = None):
         """
         Extracts an archive of the type specified in the specified directory.
-        :param pulumi.Input[str] artifact_id: Required. The id of the relevant artifact in the recipe.
+        :param pulumi.Input[str] artifact_id: The id of the relevant artifact in the recipe.
+        :param pulumi.Input['SoftwareRecipeStepExtractArchiveType'] type: The type of the archive to extract.
         :param pulumi.Input[str] destination: Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows.
-        :param pulumi.Input['SoftwareRecipeStepExtractArchiveType'] type: Required. The type of the archive to extract.
         """
-        if artifact_id is not None:
-            pulumi.set(__self__, "artifact_id", artifact_id)
+        pulumi.set(__self__, "artifact_id", artifact_id)
+        pulumi.set(__self__, "type", type)
         if destination is not None:
             pulumi.set(__self__, "destination", destination)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="artifactId")
-    def artifact_id(self) -> Optional[pulumi.Input[str]]:
+    def artifact_id(self) -> pulumi.Input[str]:
         """
-        Required. The id of the relevant artifact in the recipe.
+        The id of the relevant artifact in the recipe.
         """
         return pulumi.get(self, "artifact_id")
 
     @artifact_id.setter
-    def artifact_id(self, value: Optional[pulumi.Input[str]]):
+    def artifact_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "artifact_id", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input['SoftwareRecipeStepExtractArchiveType']:
+        """
+        The type of the archive to extract.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input['SoftwareRecipeStepExtractArchiveType']):
+        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter
@@ -1801,61 +1790,59 @@ class SoftwareRecipeStepExtractArchiveArgs:
     def destination(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "destination", value)
 
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input['SoftwareRecipeStepExtractArchiveType']]:
-        """
-        Required. The type of the archive to extract.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input['SoftwareRecipeStepExtractArchiveType']]):
-        pulumi.set(self, "type", value)
-
 
 @pulumi.input_type
 class SoftwareRecipeStepInstallDpkgArgs:
     def __init__(__self__, *,
-                 artifact_id: Optional[pulumi.Input[str]] = None):
+                 artifact_id: pulumi.Input[str]):
         """
         Installs a deb via dpkg.
-        :param pulumi.Input[str] artifact_id: Required. The id of the relevant artifact in the recipe.
+        :param pulumi.Input[str] artifact_id: The id of the relevant artifact in the recipe.
         """
-        if artifact_id is not None:
-            pulumi.set(__self__, "artifact_id", artifact_id)
+        pulumi.set(__self__, "artifact_id", artifact_id)
 
     @property
     @pulumi.getter(name="artifactId")
-    def artifact_id(self) -> Optional[pulumi.Input[str]]:
+    def artifact_id(self) -> pulumi.Input[str]:
         """
-        Required. The id of the relevant artifact in the recipe.
+        The id of the relevant artifact in the recipe.
         """
         return pulumi.get(self, "artifact_id")
 
     @artifact_id.setter
-    def artifact_id(self, value: Optional[pulumi.Input[str]]):
+    def artifact_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "artifact_id", value)
 
 
 @pulumi.input_type
 class SoftwareRecipeStepInstallMsiArgs:
     def __init__(__self__, *,
+                 artifact_id: pulumi.Input[str],
                  allowed_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-                 artifact_id: Optional[pulumi.Input[str]] = None,
                  flags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Installs an MSI file.
+        :param pulumi.Input[str] artifact_id: The id of the relevant artifact in the recipe.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
-        :param pulumi.Input[str] artifact_id: Required. The id of the relevant artifact in the recipe.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] flags: The flags to use when installing the MSI defaults to ["/i"] (i.e. the install flag).
         """
+        pulumi.set(__self__, "artifact_id", artifact_id)
         if allowed_exit_codes is not None:
             pulumi.set(__self__, "allowed_exit_codes", allowed_exit_codes)
-        if artifact_id is not None:
-            pulumi.set(__self__, "artifact_id", artifact_id)
         if flags is not None:
             pulumi.set(__self__, "flags", flags)
+
+    @property
+    @pulumi.getter(name="artifactId")
+    def artifact_id(self) -> pulumi.Input[str]:
+        """
+        The id of the relevant artifact in the recipe.
+        """
+        return pulumi.get(self, "artifact_id")
+
+    @artifact_id.setter
+    def artifact_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "artifact_id", value)
 
     @property
     @pulumi.getter(name="allowedExitCodes")
@@ -1868,18 +1855,6 @@ class SoftwareRecipeStepInstallMsiArgs:
     @allowed_exit_codes.setter
     def allowed_exit_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "allowed_exit_codes", value)
-
-    @property
-    @pulumi.getter(name="artifactId")
-    def artifact_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The id of the relevant artifact in the recipe.
-        """
-        return pulumi.get(self, "artifact_id")
-
-    @artifact_id.setter
-    def artifact_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "artifact_id", value)
 
     @property
     @pulumi.getter
@@ -1897,45 +1872,55 @@ class SoftwareRecipeStepInstallMsiArgs:
 @pulumi.input_type
 class SoftwareRecipeStepInstallRpmArgs:
     def __init__(__self__, *,
-                 artifact_id: Optional[pulumi.Input[str]] = None):
+                 artifact_id: pulumi.Input[str]):
         """
         Installs an rpm file via the rpm utility.
-        :param pulumi.Input[str] artifact_id: Required. The id of the relevant artifact in the recipe.
+        :param pulumi.Input[str] artifact_id: The id of the relevant artifact in the recipe.
         """
-        if artifact_id is not None:
-            pulumi.set(__self__, "artifact_id", artifact_id)
+        pulumi.set(__self__, "artifact_id", artifact_id)
 
     @property
     @pulumi.getter(name="artifactId")
-    def artifact_id(self) -> Optional[pulumi.Input[str]]:
+    def artifact_id(self) -> pulumi.Input[str]:
         """
-        Required. The id of the relevant artifact in the recipe.
+        The id of the relevant artifact in the recipe.
         """
         return pulumi.get(self, "artifact_id")
 
     @artifact_id.setter
-    def artifact_id(self, value: Optional[pulumi.Input[str]]):
+    def artifact_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "artifact_id", value)
 
 
 @pulumi.input_type
 class SoftwareRecipeStepRunScriptArgs:
     def __init__(__self__, *,
+                 script: pulumi.Input[str],
                  allowed_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
-                 interpreter: Optional[pulumi.Input['SoftwareRecipeStepRunScriptInterpreter']] = None,
-                 script: Optional[pulumi.Input[str]] = None):
+                 interpreter: Optional[pulumi.Input['SoftwareRecipeStepRunScriptInterpreter']] = None):
         """
         Runs a script through an interpreter.
+        :param pulumi.Input[str] script: The shell script to be executed.
         :param pulumi.Input[Sequence[pulumi.Input[int]]] allowed_exit_codes: Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
         :param pulumi.Input['SoftwareRecipeStepRunScriptInterpreter'] interpreter: The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
-        :param pulumi.Input[str] script: Required. The shell script to be executed.
         """
+        pulumi.set(__self__, "script", script)
         if allowed_exit_codes is not None:
             pulumi.set(__self__, "allowed_exit_codes", allowed_exit_codes)
         if interpreter is not None:
             pulumi.set(__self__, "interpreter", interpreter)
-        if script is not None:
-            pulumi.set(__self__, "script", script)
+
+    @property
+    @pulumi.getter
+    def script(self) -> pulumi.Input[str]:
+        """
+        The shell script to be executed.
+        """
+        return pulumi.get(self, "script")
+
+    @script.setter
+    def script(self, value: pulumi.Input[str]):
+        pulumi.set(self, "script", value)
 
     @property
     @pulumi.getter(name="allowedExitCodes")
@@ -1960,18 +1945,6 @@ class SoftwareRecipeStepRunScriptArgs:
     @interpreter.setter
     def interpreter(self, value: Optional[pulumi.Input['SoftwareRecipeStepRunScriptInterpreter']]):
         pulumi.set(self, "interpreter", value)
-
-    @property
-    @pulumi.getter
-    def script(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The shell script to be executed.
-        """
-        return pulumi.get(self, "script")
-
-    @script.setter
-    def script(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "script", value)
 
 
 @pulumi.input_type
@@ -2089,64 +2062,61 @@ class TimeZoneArgs:
 @pulumi.input_type
 class WeekDayOfMonthArgs:
     def __init__(__self__, *,
-                 day_of_week: Optional[pulumi.Input['WeekDayOfMonthDayOfWeek']] = None,
-                 week_ordinal: Optional[pulumi.Input[int]] = None):
+                 day_of_week: pulumi.Input['WeekDayOfMonthDayOfWeek'],
+                 week_ordinal: pulumi.Input[int]):
         """
         Represents one week day in a month. An example is "the 4th Sunday".
-        :param pulumi.Input['WeekDayOfMonthDayOfWeek'] day_of_week: Required. A day of the week.
-        :param pulumi.Input[int] week_ordinal: Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+        :param pulumi.Input['WeekDayOfMonthDayOfWeek'] day_of_week: A day of the week.
+        :param pulumi.Input[int] week_ordinal: Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
         """
-        if day_of_week is not None:
-            pulumi.set(__self__, "day_of_week", day_of_week)
-        if week_ordinal is not None:
-            pulumi.set(__self__, "week_ordinal", week_ordinal)
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "week_ordinal", week_ordinal)
 
     @property
     @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> Optional[pulumi.Input['WeekDayOfMonthDayOfWeek']]:
+    def day_of_week(self) -> pulumi.Input['WeekDayOfMonthDayOfWeek']:
         """
-        Required. A day of the week.
+        A day of the week.
         """
         return pulumi.get(self, "day_of_week")
 
     @day_of_week.setter
-    def day_of_week(self, value: Optional[pulumi.Input['WeekDayOfMonthDayOfWeek']]):
+    def day_of_week(self, value: pulumi.Input['WeekDayOfMonthDayOfWeek']):
         pulumi.set(self, "day_of_week", value)
 
     @property
     @pulumi.getter(name="weekOrdinal")
-    def week_ordinal(self) -> Optional[pulumi.Input[int]]:
+    def week_ordinal(self) -> pulumi.Input[int]:
         """
-        Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+        Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
         """
         return pulumi.get(self, "week_ordinal")
 
     @week_ordinal.setter
-    def week_ordinal(self, value: Optional[pulumi.Input[int]]):
+    def week_ordinal(self, value: pulumi.Input[int]):
         pulumi.set(self, "week_ordinal", value)
 
 
 @pulumi.input_type
 class WeeklyScheduleArgs:
     def __init__(__self__, *,
-                 day_of_week: Optional[pulumi.Input['WeeklyScheduleDayOfWeek']] = None):
+                 day_of_week: pulumi.Input['WeeklyScheduleDayOfWeek']):
         """
         Represents a weekly schedule.
-        :param pulumi.Input['WeeklyScheduleDayOfWeek'] day_of_week: Required. Day of the week.
+        :param pulumi.Input['WeeklyScheduleDayOfWeek'] day_of_week: Day of the week.
         """
-        if day_of_week is not None:
-            pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "day_of_week", day_of_week)
 
     @property
     @pulumi.getter(name="dayOfWeek")
-    def day_of_week(self) -> Optional[pulumi.Input['WeeklyScheduleDayOfWeek']]:
+    def day_of_week(self) -> pulumi.Input['WeeklyScheduleDayOfWeek']:
         """
-        Required. Day of the week.
+        Day of the week.
         """
         return pulumi.get(self, "day_of_week")
 
     @day_of_week.setter
-    def day_of_week(self, value: Optional[pulumi.Input['WeeklyScheduleDayOfWeek']]):
+    def day_of_week(self, value: pulumi.Input['WeeklyScheduleDayOfWeek']):
         pulumi.set(self, "day_of_week", value)
 
 
@@ -2209,37 +2179,47 @@ class WindowsUpdateSettingsArgs:
 @pulumi.input_type
 class YumRepositoryArgs:
     def __init__(__self__, *,
-                 base_url: Optional[pulumi.Input[str]] = None,
+                 base_url: pulumi.Input[str],
+                 id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
-                 gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 id: Optional[pulumi.Input[str]] = None):
+                 gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Represents a single Yum package repository. This repository is added to a repo file that is stored at `/etc/yum.repos.d/google_osconfig.repo`.
-        :param pulumi.Input[str] base_url: Required. The location of the repository directory.
+        :param pulumi.Input[str] base_url: The location of the repository directory.
+        :param pulumi.Input[str] id: A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
         :param pulumi.Input[str] display_name: The display name of the repository.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gpg_keys: URIs of GPG keys.
-        :param pulumi.Input[str] id: Required. A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
         """
-        if base_url is not None:
-            pulumi.set(__self__, "base_url", base_url)
+        pulumi.set(__self__, "base_url", base_url)
+        pulumi.set(__self__, "id", id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if gpg_keys is not None:
             pulumi.set(__self__, "gpg_keys", gpg_keys)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter(name="baseUrl")
-    def base_url(self) -> Optional[pulumi.Input[str]]:
+    def base_url(self) -> pulumi.Input[str]:
         """
-        Required. The location of the repository directory.
+        The location of the repository directory.
         """
         return pulumi.get(self, "base_url")
 
     @base_url.setter
-    def base_url(self, value: Optional[pulumi.Input[str]]):
+    def base_url(self, value: pulumi.Input[str]):
         pulumi.set(self, "base_url", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -2264,18 +2244,6 @@ class YumRepositoryArgs:
     @gpg_keys.setter
     def gpg_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "gpg_keys", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
 
 @pulumi.input_type
@@ -2353,37 +2321,47 @@ class YumSettingsArgs:
 @pulumi.input_type
 class ZypperRepositoryArgs:
     def __init__(__self__, *,
-                 base_url: Optional[pulumi.Input[str]] = None,
+                 base_url: pulumi.Input[str],
+                 id: pulumi.Input[str],
                  display_name: Optional[pulumi.Input[str]] = None,
-                 gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 id: Optional[pulumi.Input[str]] = None):
+                 gpg_keys: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Represents a single Zypper package repository. This repository is added to a repo file that is stored at `/etc/zypp/repos.d/google_osconfig.repo`.
-        :param pulumi.Input[str] base_url: Required. The location of the repository directory.
+        :param pulumi.Input[str] base_url: The location of the repository directory.
+        :param pulumi.Input[str] id: A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
         :param pulumi.Input[str] display_name: The display name of the repository.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] gpg_keys: URIs of GPG keys.
-        :param pulumi.Input[str] id: Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
         """
-        if base_url is not None:
-            pulumi.set(__self__, "base_url", base_url)
+        pulumi.set(__self__, "base_url", base_url)
+        pulumi.set(__self__, "id", id)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if gpg_keys is not None:
             pulumi.set(__self__, "gpg_keys", gpg_keys)
-        if id is not None:
-            pulumi.set(__self__, "id", id)
 
     @property
     @pulumi.getter(name="baseUrl")
-    def base_url(self) -> Optional[pulumi.Input[str]]:
+    def base_url(self) -> pulumi.Input[str]:
         """
-        Required. The location of the repository directory.
+        The location of the repository directory.
         """
         return pulumi.get(self, "base_url")
 
     @base_url.setter
-    def base_url(self, value: Optional[pulumi.Input[str]]):
+    def base_url(self, value: pulumi.Input[str]):
         pulumi.set(self, "base_url", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -2408,18 +2386,6 @@ class ZypperRepositoryArgs:
     @gpg_keys.setter
     def gpg_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "gpg_keys", value)
-
-    @property
-    @pulumi.getter
-    def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "id", value)
 
 
 @pulumi.input_type

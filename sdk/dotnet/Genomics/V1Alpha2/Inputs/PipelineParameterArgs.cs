@@ -34,10 +34,10 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Inputs
         public Input<Inputs.LocalCopyArgs>? LocalCopy { get; set; }
 
         /// <summary>
-        /// Required. Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
+        /// Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         public PipelineParameterArgs()
         {

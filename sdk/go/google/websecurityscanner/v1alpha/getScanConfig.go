@@ -27,7 +27,7 @@ type LookupScanConfigResult struct {
 	Authentication AuthenticationResponse `pulumi:"authentication"`
 	// The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls
 	BlacklistPatterns []string `pulumi:"blacklistPatterns"`
-	// Required. The user provided display name of the ScanConfig.
+	// The user provided display name of the ScanConfig.
 	DisplayName string `pulumi:"displayName"`
 	// Latest ScanRun if available.
 	LatestRun ScanRunResponse `pulumi:"latestRun"`
@@ -37,7 +37,7 @@ type LookupScanConfigResult struct {
 	Name string `pulumi:"name"`
 	// The schedule of the ScanConfig.
 	Schedule ScheduleResponse `pulumi:"schedule"`
-	// Required. The starting URLs from which the scanner finds site pages.
+	// The starting URLs from which the scanner finds site pages.
 	StartingUrls []string `pulumi:"startingUrls"`
 	// Set of Google Cloud platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
 	TargetPlatforms []string `pulumi:"targetPlatforms"`

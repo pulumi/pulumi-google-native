@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionResponse> RbmSuggestion;
         /// <summary>
-        /// Required. Text sent and displayed to the user.
+        /// Text sent and displayed to the user.
         /// </summary>
         public readonly string Text;
 

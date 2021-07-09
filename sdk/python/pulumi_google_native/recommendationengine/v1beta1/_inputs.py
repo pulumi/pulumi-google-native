@@ -21,24 +21,23 @@ __all__ = [
 @pulumi.input_type
 class GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs:
     def __init__(__self__, *,
-                 categories: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 categories: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         Category represents catalog item category hierarchy.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: Required. Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] categories: Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
         """
-        if categories is not None:
-            pulumi.set(__self__, "categories", categories)
+        pulumi.set(__self__, "categories", categories)
 
     @property
     @pulumi.getter
-    def categories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def categories(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Required. Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
+        Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
         """
         return pulumi.get(self, "categories")
 
     @categories.setter
-    def categories(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def categories(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "categories", value)
 
 
@@ -85,21 +84,32 @@ class GoogleCloudRecommendationengineV1beta1FeatureMapArgs:
 @pulumi.input_type
 class GoogleCloudRecommendationengineV1beta1ImageArgs:
     def __init__(__self__, *,
+                 uri: pulumi.Input[str],
                  height: Optional[pulumi.Input[int]] = None,
-                 uri: Optional[pulumi.Input[str]] = None,
                  width: Optional[pulumi.Input[int]] = None):
         """
         Catalog item thumbnail/detail image.
+        :param pulumi.Input[str] uri: URL of the image with a length limit of 5 KiB.
         :param pulumi.Input[int] height: Optional. Height of the image in number of pixels.
-        :param pulumi.Input[str] uri: Required. URL of the image with a length limit of 5 KiB.
         :param pulumi.Input[int] width: Optional. Width of the image in number of pixels.
         """
+        pulumi.set(__self__, "uri", uri)
         if height is not None:
             pulumi.set(__self__, "height", height)
-        if uri is not None:
-            pulumi.set(__self__, "uri", uri)
         if width is not None:
             pulumi.set(__self__, "width", width)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        URL of the image with a length limit of 5 KiB.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
 
     @property
     @pulumi.getter
@@ -112,18 +122,6 @@ class GoogleCloudRecommendationengineV1beta1ImageArgs:
     @height.setter
     def height(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "height", value)
-
-    @property
-    @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. URL of the image with a length limit of 5 KiB.
-        """
-        return pulumi.get(self, "uri")
-
-    @uri.setter
-    def uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "uri", value)
 
     @property
     @pulumi.getter
@@ -317,40 +315,38 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceArgs:
 @pulumi.input_type
 class GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs:
     def __init__(__self__, *,
-                 max: Optional[pulumi.Input[float]] = None,
-                 min: Optional[pulumi.Input[float]] = None):
+                 max: pulumi.Input[float],
+                 min: pulumi.Input[float]):
         """
         Product price range when there are a range of prices for different variations of the same product.
-        :param pulumi.Input[float] max: Required. The maximum product price.
-        :param pulumi.Input[float] min: Required. The minimum product price.
+        :param pulumi.Input[float] max: The maximum product price.
+        :param pulumi.Input[float] min: The minimum product price.
         """
-        if max is not None:
-            pulumi.set(__self__, "max", max)
-        if min is not None:
-            pulumi.set(__self__, "min", min)
+        pulumi.set(__self__, "max", max)
+        pulumi.set(__self__, "min", min)
 
     @property
     @pulumi.getter
-    def max(self) -> Optional[pulumi.Input[float]]:
+    def max(self) -> pulumi.Input[float]:
         """
-        Required. The maximum product price.
+        The maximum product price.
         """
         return pulumi.get(self, "max")
 
     @max.setter
-    def max(self, value: Optional[pulumi.Input[float]]):
+    def max(self, value: pulumi.Input[float]):
         pulumi.set(self, "max", value)
 
     @property
     @pulumi.getter
-    def min(self) -> Optional[pulumi.Input[float]]:
+    def min(self) -> pulumi.Input[float]:
         """
-        Required. The minimum product price.
+        The minimum product price.
         """
         return pulumi.get(self, "min")
 
     @min.setter
-    def min(self, value: Optional[pulumi.Input[float]]):
+    def min(self, value: pulumi.Input[float]):
         pulumi.set(self, "min", value)
 
 

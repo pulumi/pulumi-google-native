@@ -24,21 +24,21 @@ type LookupCanaryEvaluationArgs struct {
 }
 
 type LookupCanaryEvaluationResult struct {
-	// Required. The stable version that is serving requests.
+	// The stable version that is serving requests.
 	Control string `pulumi:"control"`
 	// Create time of the canary evaluation.
 	CreateTime string `pulumi:"createTime"`
-	// Required. End time for the evaluation's analysis.
+	// End time for the evaluation's analysis.
 	EndTime string `pulumi:"endTime"`
-	// Required. Labels used to filter the metrics used for a canary evaluation.
+	// Labels used to filter the metrics used for a canary evaluation.
 	MetricLabels GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse `pulumi:"metricLabels"`
 	// Name of the canary evalution.
 	Name string `pulumi:"name"`
-	// Required. Start time for the canary evaluation's analysis.
+	// Start time for the canary evaluation's analysis.
 	StartTime string `pulumi:"startTime"`
 	// The current state of the canary evaluation.
 	State string `pulumi:"state"`
-	// Required. The newer version that is serving requests.
+	// The newer version that is serving requests.
 	Treatment string `pulumi:"treatment"`
 	// The resulting verdict of the canary evaluations: NONE, PASS, or FAIL.
 	Verdict string `pulumi:"verdict"`

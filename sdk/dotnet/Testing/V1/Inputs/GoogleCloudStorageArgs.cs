@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     public sealed class GoogleCloudStorageArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
+        /// The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
         /// </summary>
-        [Input("gcsPath")]
-        public Input<string>? GcsPath { get; set; }
+        [Input("gcsPath", required: true)]
+        public Input<string> GcsPath { get; set; } = null!;
 
         public GoogleCloudStorageArgs()
         {

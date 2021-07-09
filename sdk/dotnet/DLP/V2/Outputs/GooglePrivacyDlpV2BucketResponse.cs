@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2ValueResponse Min;
         /// <summary>
-        /// Required. Replacement value for this bucket.
+        /// Replacement value for this bucket.
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2ValueResponse ReplacementValue;
 

@@ -19,7 +19,7 @@ type ScanConfig struct {
 	Authentication AuthenticationResponseOutput `pulumi:"authentication"`
 	// The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls
 	BlacklistPatterns pulumi.StringArrayOutput `pulumi:"blacklistPatterns"`
-	// Required. The user provided display name of the ScanConfig.
+	// The user provided display name of the ScanConfig.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Controls export of scan configurations and results to Security Command Center.
 	ExportToSecurityCommandCenter pulumi.StringOutput `pulumi:"exportToSecurityCommandCenter"`
@@ -37,7 +37,7 @@ type ScanConfig struct {
 	RiskLevel pulumi.StringOutput `pulumi:"riskLevel"`
 	// The schedule of the ScanConfig.
 	Schedule ScheduleResponseOutput `pulumi:"schedule"`
-	// Required. The starting URLs from which the scanner finds site pages.
+	// The starting URLs from which the scanner finds site pages.
 	StartingUrls pulumi.StringArrayOutput `pulumi:"startingUrls"`
 	// Whether the scan configuration has enabled static IP address scan feature. If enabled, the scanner will access applications from static IP addresses.
 	StaticIpScan pulumi.BoolOutput `pulumi:"staticIpScan"`
@@ -54,8 +54,14 @@ func NewScanConfig(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.StartingUrls == nil {
+		return nil, errors.New("invalid value for required argument 'StartingUrls'")
 	}
 	var resource ScanConfig
 	err := ctx.RegisterResource("google-native:websecurityscanner/v1beta:ScanConfig", name, args, &resource, opts...)
@@ -83,7 +89,7 @@ type scanConfigState struct {
 	Authentication *AuthenticationResponse `pulumi:"authentication"`
 	// The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls
 	BlacklistPatterns []string `pulumi:"blacklistPatterns"`
-	// Required. The user provided display name of the ScanConfig.
+	// The user provided display name of the ScanConfig.
 	DisplayName *string `pulumi:"displayName"`
 	// Controls export of scan configurations and results to Security Command Center.
 	ExportToSecurityCommandCenter *string `pulumi:"exportToSecurityCommandCenter"`
@@ -101,7 +107,7 @@ type scanConfigState struct {
 	RiskLevel *string `pulumi:"riskLevel"`
 	// The schedule of the ScanConfig.
 	Schedule *ScheduleResponse `pulumi:"schedule"`
-	// Required. The starting URLs from which the scanner finds site pages.
+	// The starting URLs from which the scanner finds site pages.
 	StartingUrls []string `pulumi:"startingUrls"`
 	// Whether the scan configuration has enabled static IP address scan feature. If enabled, the scanner will access applications from static IP addresses.
 	StaticIpScan *bool `pulumi:"staticIpScan"`
@@ -116,7 +122,7 @@ type ScanConfigState struct {
 	Authentication AuthenticationResponsePtrInput
 	// The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls
 	BlacklistPatterns pulumi.StringArrayInput
-	// Required. The user provided display name of the ScanConfig.
+	// The user provided display name of the ScanConfig.
 	DisplayName pulumi.StringPtrInput
 	// Controls export of scan configurations and results to Security Command Center.
 	ExportToSecurityCommandCenter pulumi.StringPtrInput
@@ -134,7 +140,7 @@ type ScanConfigState struct {
 	RiskLevel pulumi.StringPtrInput
 	// The schedule of the ScanConfig.
 	Schedule ScheduleResponsePtrInput
-	// Required. The starting URLs from which the scanner finds site pages.
+	// The starting URLs from which the scanner finds site pages.
 	StartingUrls pulumi.StringArrayInput
 	// Whether the scan configuration has enabled static IP address scan feature. If enabled, the scanner will access applications from static IP addresses.
 	StaticIpScan pulumi.BoolPtrInput
@@ -153,8 +159,8 @@ type scanConfigArgs struct {
 	Authentication *Authentication `pulumi:"authentication"`
 	// The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls
 	BlacklistPatterns []string `pulumi:"blacklistPatterns"`
-	// Required. The user provided display name of the ScanConfig.
-	DisplayName *string `pulumi:"displayName"`
+	// The user provided display name of the ScanConfig.
+	DisplayName string `pulumi:"displayName"`
 	// Controls export of scan configurations and results to Security Command Center.
 	ExportToSecurityCommandCenter *string `pulumi:"exportToSecurityCommandCenter"`
 	// Whether to keep scanning even if most requests return HTTP error codes.
@@ -172,7 +178,7 @@ type scanConfigArgs struct {
 	RiskLevel *string `pulumi:"riskLevel"`
 	// The schedule of the ScanConfig.
 	Schedule *Schedule `pulumi:"schedule"`
-	// Required. The starting URLs from which the scanner finds site pages.
+	// The starting URLs from which the scanner finds site pages.
 	StartingUrls []string `pulumi:"startingUrls"`
 	// Whether the scan configuration has enabled static IP address scan feature. If enabled, the scanner will access applications from static IP addresses.
 	StaticIpScan *bool `pulumi:"staticIpScan"`
@@ -188,8 +194,8 @@ type ScanConfigArgs struct {
 	Authentication AuthenticationPtrInput
 	// The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls
 	BlacklistPatterns pulumi.StringArrayInput
-	// Required. The user provided display name of the ScanConfig.
-	DisplayName pulumi.StringPtrInput
+	// The user provided display name of the ScanConfig.
+	DisplayName pulumi.StringInput
 	// Controls export of scan configurations and results to Security Command Center.
 	ExportToSecurityCommandCenter *ScanConfigExportToSecurityCommandCenter
 	// Whether to keep scanning even if most requests return HTTP error codes.
@@ -207,7 +213,7 @@ type ScanConfigArgs struct {
 	RiskLevel *ScanConfigRiskLevel
 	// The schedule of the ScanConfig.
 	Schedule SchedulePtrInput
-	// Required. The starting URLs from which the scanner finds site pages.
+	// The starting URLs from which the scanner finds site pages.
 	StartingUrls pulumi.StringArrayInput
 	// Whether the scan configuration has enabled static IP address scan feature. If enabled, the scanner will access applications from static IP addresses.
 	StaticIpScan pulumi.BoolPtrInput

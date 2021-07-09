@@ -17,11 +17,11 @@ type Job struct {
 
 	// Optional but strongly recommended for the best service experience. Location(s) where the employer is looking to hire for this job posting. Specifying the full street address(es) of the hiring location enables better API results, especially job searches by commute time. At most 50 locations are allowed for best search performance. If a job has more locations, it is suggested to split it into multiple jobs with unique requisition_ids (e.g. 'ReqA' becomes 'ReqA-1', 'ReqA-2', etc.) as multiple jobs with the same company_name, language_code and requisition_id are not allowed. If the original requisition_id must be preserved, a custom field should be used for storage. It is also suggested to group the locations that close to each other in the same job for better search experience. Jobs with multiple addresses must have their addresses with the same LocationType to allow location filtering to work properly. (For example, a Job with addresses "1600 Amphitheatre Parkway, Mountain View, CA, USA" and "London, UK" may not have location filters applied correctly at search time since the first is a LocationType.STREET_ADDRESS and the second is a LocationType.LOCALITY.) If a job needs to have multiple addresses, it is suggested to split it into multiple jobs with same LocationTypes. The maximum number of allowed characters is 500.
 	Addresses pulumi.StringArrayOutput `pulumi:"addresses"`
-	// Required. At least one field within ApplicationInfo must be specified. Job application information.
+	// At least one field within ApplicationInfo must be specified. Job application information.
 	ApplicationInfo ApplicationInfoResponseOutput `pulumi:"applicationInfo"`
 	// Display name of the company listing the job.
 	CompanyDisplayName pulumi.StringOutput `pulumi:"companyDisplayName"`
-	// Required. The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
+	// The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
 	CompanyName pulumi.StringOutput `pulumi:"companyName"`
 	// Optional. Job compensation information.
 	CompensationInfo CompensationInfoResponseOutput `pulumi:"compensationInfo"`
@@ -33,7 +33,7 @@ type Job struct {
 	Department pulumi.StringOutput `pulumi:"department"`
 	// Derived details about the job posting.
 	DerivedInfo JobDerivedInfoResponseOutput `pulumi:"derivedInfo"`
-	// Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
+	// The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Optional. The employment type(s) of a job, for example, full time or part time.
 	EmploymentTypes pulumi.StringArrayOutput `pulumi:"employmentTypes"`
@@ -67,11 +67,11 @@ type Job struct {
 	PromotionValue pulumi.IntOutput `pulumi:"promotionValue"`
 	// Optional. A description of the qualifications required to perform the job. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
 	Qualifications pulumi.StringOutput `pulumi:"qualifications"`
-	// Required. The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job is not allowed to be created if there is another job with the same [company_name], language_code and requisition_id. The maximum number of allowed characters is 255.
+	// The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job is not allowed to be created if there is another job with the same [company_name], language_code and requisition_id. The maximum number of allowed characters is 255.
 	RequisitionId pulumi.StringOutput `pulumi:"requisitionId"`
 	// Optional. A description of job responsibilities. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
 	Responsibilities pulumi.StringOutput `pulumi:"responsibilities"`
-	// Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
+	// The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
 	Title pulumi.StringOutput `pulumi:"title"`
 }
 
@@ -82,8 +82,23 @@ func NewJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ApplicationInfo == nil {
+		return nil, errors.New("invalid value for required argument 'ApplicationInfo'")
+	}
+	if args.CompanyName == nil {
+		return nil, errors.New("invalid value for required argument 'CompanyName'")
+	}
+	if args.Description == nil {
+		return nil, errors.New("invalid value for required argument 'Description'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.RequisitionId == nil {
+		return nil, errors.New("invalid value for required argument 'RequisitionId'")
+	}
+	if args.Title == nil {
+		return nil, errors.New("invalid value for required argument 'Title'")
 	}
 	var resource Job
 	err := ctx.RegisterResource("google-native:jobs/v3:Job", name, args, &resource, opts...)
@@ -109,11 +124,11 @@ func GetJob(ctx *pulumi.Context,
 type jobState struct {
 	// Optional but strongly recommended for the best service experience. Location(s) where the employer is looking to hire for this job posting. Specifying the full street address(es) of the hiring location enables better API results, especially job searches by commute time. At most 50 locations are allowed for best search performance. If a job has more locations, it is suggested to split it into multiple jobs with unique requisition_ids (e.g. 'ReqA' becomes 'ReqA-1', 'ReqA-2', etc.) as multiple jobs with the same company_name, language_code and requisition_id are not allowed. If the original requisition_id must be preserved, a custom field should be used for storage. It is also suggested to group the locations that close to each other in the same job for better search experience. Jobs with multiple addresses must have their addresses with the same LocationType to allow location filtering to work properly. (For example, a Job with addresses "1600 Amphitheatre Parkway, Mountain View, CA, USA" and "London, UK" may not have location filters applied correctly at search time since the first is a LocationType.STREET_ADDRESS and the second is a LocationType.LOCALITY.) If a job needs to have multiple addresses, it is suggested to split it into multiple jobs with same LocationTypes. The maximum number of allowed characters is 500.
 	Addresses []string `pulumi:"addresses"`
-	// Required. At least one field within ApplicationInfo must be specified. Job application information.
+	// At least one field within ApplicationInfo must be specified. Job application information.
 	ApplicationInfo *ApplicationInfoResponse `pulumi:"applicationInfo"`
 	// Display name of the company listing the job.
 	CompanyDisplayName *string `pulumi:"companyDisplayName"`
-	// Required. The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
+	// The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
 	CompanyName *string `pulumi:"companyName"`
 	// Optional. Job compensation information.
 	CompensationInfo *CompensationInfoResponse `pulumi:"compensationInfo"`
@@ -125,7 +140,7 @@ type jobState struct {
 	Department *string `pulumi:"department"`
 	// Derived details about the job posting.
 	DerivedInfo *JobDerivedInfoResponse `pulumi:"derivedInfo"`
-	// Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
+	// The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
 	Description *string `pulumi:"description"`
 	// Optional. The employment type(s) of a job, for example, full time or part time.
 	EmploymentTypes []string `pulumi:"employmentTypes"`
@@ -159,22 +174,22 @@ type jobState struct {
 	PromotionValue *int `pulumi:"promotionValue"`
 	// Optional. A description of the qualifications required to perform the job. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
 	Qualifications *string `pulumi:"qualifications"`
-	// Required. The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job is not allowed to be created if there is another job with the same [company_name], language_code and requisition_id. The maximum number of allowed characters is 255.
+	// The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job is not allowed to be created if there is another job with the same [company_name], language_code and requisition_id. The maximum number of allowed characters is 255.
 	RequisitionId *string `pulumi:"requisitionId"`
 	// Optional. A description of job responsibilities. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
 	Responsibilities *string `pulumi:"responsibilities"`
-	// Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
+	// The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
 	Title *string `pulumi:"title"`
 }
 
 type JobState struct {
 	// Optional but strongly recommended for the best service experience. Location(s) where the employer is looking to hire for this job posting. Specifying the full street address(es) of the hiring location enables better API results, especially job searches by commute time. At most 50 locations are allowed for best search performance. If a job has more locations, it is suggested to split it into multiple jobs with unique requisition_ids (e.g. 'ReqA' becomes 'ReqA-1', 'ReqA-2', etc.) as multiple jobs with the same company_name, language_code and requisition_id are not allowed. If the original requisition_id must be preserved, a custom field should be used for storage. It is also suggested to group the locations that close to each other in the same job for better search experience. Jobs with multiple addresses must have their addresses with the same LocationType to allow location filtering to work properly. (For example, a Job with addresses "1600 Amphitheatre Parkway, Mountain View, CA, USA" and "London, UK" may not have location filters applied correctly at search time since the first is a LocationType.STREET_ADDRESS and the second is a LocationType.LOCALITY.) If a job needs to have multiple addresses, it is suggested to split it into multiple jobs with same LocationTypes. The maximum number of allowed characters is 500.
 	Addresses pulumi.StringArrayInput
-	// Required. At least one field within ApplicationInfo must be specified. Job application information.
+	// At least one field within ApplicationInfo must be specified. Job application information.
 	ApplicationInfo ApplicationInfoResponsePtrInput
 	// Display name of the company listing the job.
 	CompanyDisplayName pulumi.StringPtrInput
-	// Required. The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
+	// The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
 	CompanyName pulumi.StringPtrInput
 	// Optional. Job compensation information.
 	CompensationInfo CompensationInfoResponsePtrInput
@@ -186,7 +201,7 @@ type JobState struct {
 	Department pulumi.StringPtrInput
 	// Derived details about the job posting.
 	DerivedInfo JobDerivedInfoResponsePtrInput
-	// Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
+	// The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
 	Description pulumi.StringPtrInput
 	// Optional. The employment type(s) of a job, for example, full time or part time.
 	EmploymentTypes pulumi.StringArrayInput
@@ -220,11 +235,11 @@ type JobState struct {
 	PromotionValue pulumi.IntPtrInput
 	// Optional. A description of the qualifications required to perform the job. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
 	Qualifications pulumi.StringPtrInput
-	// Required. The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job is not allowed to be created if there is another job with the same [company_name], language_code and requisition_id. The maximum number of allowed characters is 255.
+	// The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job is not allowed to be created if there is another job with the same [company_name], language_code and requisition_id. The maximum number of allowed characters is 255.
 	RequisitionId pulumi.StringPtrInput
 	// Optional. A description of job responsibilities. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
 	Responsibilities pulumi.StringPtrInput
-	// Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
+	// The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
 	Title pulumi.StringPtrInput
 }
 
@@ -235,10 +250,10 @@ func (JobState) ElementType() reflect.Type {
 type jobArgs struct {
 	// Optional but strongly recommended for the best service experience. Location(s) where the employer is looking to hire for this job posting. Specifying the full street address(es) of the hiring location enables better API results, especially job searches by commute time. At most 50 locations are allowed for best search performance. If a job has more locations, it is suggested to split it into multiple jobs with unique requisition_ids (e.g. 'ReqA' becomes 'ReqA-1', 'ReqA-2', etc.) as multiple jobs with the same company_name, language_code and requisition_id are not allowed. If the original requisition_id must be preserved, a custom field should be used for storage. It is also suggested to group the locations that close to each other in the same job for better search experience. Jobs with multiple addresses must have their addresses with the same LocationType to allow location filtering to work properly. (For example, a Job with addresses "1600 Amphitheatre Parkway, Mountain View, CA, USA" and "London, UK" may not have location filters applied correctly at search time since the first is a LocationType.STREET_ADDRESS and the second is a LocationType.LOCALITY.) If a job needs to have multiple addresses, it is suggested to split it into multiple jobs with same LocationTypes. The maximum number of allowed characters is 500.
 	Addresses []string `pulumi:"addresses"`
-	// Required. At least one field within ApplicationInfo must be specified. Job application information.
-	ApplicationInfo *ApplicationInfo `pulumi:"applicationInfo"`
-	// Required. The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
-	CompanyName *string `pulumi:"companyName"`
+	// At least one field within ApplicationInfo must be specified. Job application information.
+	ApplicationInfo ApplicationInfo `pulumi:"applicationInfo"`
+	// The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
+	CompanyName string `pulumi:"companyName"`
 	// Optional. Job compensation information.
 	CompensationInfo *CompensationInfo `pulumi:"compensationInfo"`
 	// Optional. A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
@@ -247,8 +262,8 @@ type jobArgs struct {
 	DegreeTypes []string `pulumi:"degreeTypes"`
 	// Optional. The department or functional area within the company with the open position. The maximum number of allowed characters is 255.
 	Department *string `pulumi:"department"`
-	// Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
-	Description *string `pulumi:"description"`
+	// The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
+	Description string `pulumi:"description"`
 	// Optional. The employment type(s) of a job, for example, full time or part time.
 	EmploymentTypes []string `pulumi:"employmentTypes"`
 	// Optional. A description of bonus, commission, and other compensation incentives associated with the job not including salary or pay. The maximum number of allowed characters is 10,000.
@@ -278,22 +293,22 @@ type jobArgs struct {
 	PromotionValue *int `pulumi:"promotionValue"`
 	// Optional. A description of the qualifications required to perform the job. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
 	Qualifications *string `pulumi:"qualifications"`
-	// Required. The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job is not allowed to be created if there is another job with the same [company_name], language_code and requisition_id. The maximum number of allowed characters is 255.
-	RequisitionId *string `pulumi:"requisitionId"`
+	// The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job is not allowed to be created if there is another job with the same [company_name], language_code and requisition_id. The maximum number of allowed characters is 255.
+	RequisitionId string `pulumi:"requisitionId"`
 	// Optional. A description of job responsibilities. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
 	Responsibilities *string `pulumi:"responsibilities"`
-	// Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
-	Title *string `pulumi:"title"`
+	// The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
+	Title string `pulumi:"title"`
 }
 
 // The set of arguments for constructing a Job resource.
 type JobArgs struct {
 	// Optional but strongly recommended for the best service experience. Location(s) where the employer is looking to hire for this job posting. Specifying the full street address(es) of the hiring location enables better API results, especially job searches by commute time. At most 50 locations are allowed for best search performance. If a job has more locations, it is suggested to split it into multiple jobs with unique requisition_ids (e.g. 'ReqA' becomes 'ReqA-1', 'ReqA-2', etc.) as multiple jobs with the same company_name, language_code and requisition_id are not allowed. If the original requisition_id must be preserved, a custom field should be used for storage. It is also suggested to group the locations that close to each other in the same job for better search experience. Jobs with multiple addresses must have their addresses with the same LocationType to allow location filtering to work properly. (For example, a Job with addresses "1600 Amphitheatre Parkway, Mountain View, CA, USA" and "London, UK" may not have location filters applied correctly at search time since the first is a LocationType.STREET_ADDRESS and the second is a LocationType.LOCALITY.) If a job needs to have multiple addresses, it is suggested to split it into multiple jobs with same LocationTypes. The maximum number of allowed characters is 500.
 	Addresses pulumi.StringArrayInput
-	// Required. At least one field within ApplicationInfo must be specified. Job application information.
-	ApplicationInfo ApplicationInfoPtrInput
-	// Required. The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
-	CompanyName pulumi.StringPtrInput
+	// At least one field within ApplicationInfo must be specified. Job application information.
+	ApplicationInfo ApplicationInfoInput
+	// The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
+	CompanyName pulumi.StringInput
 	// Optional. Job compensation information.
 	CompensationInfo CompensationInfoPtrInput
 	// Optional. A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
@@ -302,8 +317,8 @@ type JobArgs struct {
 	DegreeTypes JobDegreeTypesItemArrayInput
 	// Optional. The department or functional area within the company with the open position. The maximum number of allowed characters is 255.
 	Department pulumi.StringPtrInput
-	// Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
-	Description pulumi.StringPtrInput
+	// The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
+	Description pulumi.StringInput
 	// Optional. The employment type(s) of a job, for example, full time or part time.
 	EmploymentTypes JobEmploymentTypesItemArrayInput
 	// Optional. A description of bonus, commission, and other compensation incentives associated with the job not including salary or pay. The maximum number of allowed characters is 10,000.
@@ -333,12 +348,12 @@ type JobArgs struct {
 	PromotionValue pulumi.IntPtrInput
 	// Optional. A description of the qualifications required to perform the job. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
 	Qualifications pulumi.StringPtrInput
-	// Required. The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job is not allowed to be created if there is another job with the same [company_name], language_code and requisition_id. The maximum number of allowed characters is 255.
-	RequisitionId pulumi.StringPtrInput
+	// The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job is not allowed to be created if there is another job with the same [company_name], language_code and requisition_id. The maximum number of allowed characters is 255.
+	RequisitionId pulumi.StringInput
 	// Optional. A description of job responsibilities. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
 	Responsibilities pulumi.StringPtrInput
-	// Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
-	Title pulumi.StringPtrInput
+	// The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
+	Title pulumi.StringInput
 }
 
 func (JobArgs) ElementType() reflect.Type {

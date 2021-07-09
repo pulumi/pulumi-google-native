@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
     public sealed class GoogleCloudMlV1_Measurement_MetricResponse
     {
         /// <summary>
-        /// Required. Metric name.
+        /// Metric name.
         /// </summary>
         public readonly string Metric;
         /// <summary>
-        /// Required. The value for this metric.
+        /// The value for this metric.
         /// </summary>
         public readonly double Value;
 

@@ -52,7 +52,7 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+     * The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
      */
     public readonly serveNodes!: pulumi.Output<number>;
     /**
@@ -79,6 +79,9 @@ export class Cluster extends pulumi.CustomResource {
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.serveNodes === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'serveNodes'");
             }
             inputs["clusterId"] = args ? args.clusterId : undefined;
             inputs["defaultStorageType"] = args ? args.defaultStorageType : undefined;
@@ -128,7 +131,7 @@ export interface ClusterArgs {
     name?: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
-     * Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+     * The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
      */
-    serveNodes?: pulumi.Input<number>;
+    serveNodes: pulumi.Input<number>;
 }

@@ -40,7 +40,7 @@ export class Schema extends pulumi.CustomResource {
      */
     public readonly definition!: pulumi.Output<string>;
     /**
-     * Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+     * Name of the schema. Format is `projects/{project}/schemas/{schema}`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -59,6 +59,9 @@ export class Schema extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -88,9 +91,9 @@ export interface SchemaArgs {
      */
     definition?: pulumi.Input<string>;
     /**
-     * Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+     * Name of the schema. Format is `projects/{project}/schemas/{schema}`.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     project: pulumi.Input<string>;
     schemaId?: pulumi.Input<string>;
     /**

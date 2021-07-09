@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     public sealed class GooRepositoryArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The name of the repository.
+        /// The name of the repository.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Required. The url of the repository.
+        /// The url of the repository.
         /// </summary>
-        [Input("url")]
-        public Input<string>? Url { get; set; }
+        [Input("url", required: true)]
+        public Input<string> Url { get; set; } = null!;
 
         public GooRepositoryArgs()
         {

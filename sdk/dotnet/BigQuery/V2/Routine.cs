@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<string> CreationTime { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
+        /// The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
         /// </summary>
         [Output("definitionBody")]
         public Output<string> DefinitionBody { get; private set; } = null!;
@@ -82,13 +82,13 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<Outputs.StandardSqlDataTypeResponse> ReturnType { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Reference describing the ID of this routine.
+        /// Reference describing the ID of this routine.
         /// </summary>
         [Output("routineReference")]
         public Output<Outputs.RoutineReferenceResponse> RoutineReference { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The type of routine.
+        /// The type of routine.
         /// </summary>
         [Output("routineType")]
         public Output<string> RoutineType { get; private set; } = null!;
@@ -154,10 +154,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Input<string> DatasetId { get; set; } = null!;
 
         /// <summary>
-        /// Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
+        /// The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
         /// </summary>
-        [Input("definitionBody")]
-        public Input<string>? DefinitionBody { get; set; }
+        [Input("definitionBody", required: true)]
+        public Input<string> DefinitionBody { get; set; } = null!;
 
         /// <summary>
         /// Optional. [Experimental] The description of the routine if defined.
@@ -205,16 +205,16 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Input<Inputs.StandardSqlDataTypeArgs>? ReturnType { get; set; }
 
         /// <summary>
-        /// Required. Reference describing the ID of this routine.
+        /// Reference describing the ID of this routine.
         /// </summary>
-        [Input("routineReference")]
-        public Input<Inputs.RoutineReferenceArgs>? RoutineReference { get; set; }
+        [Input("routineReference", required: true)]
+        public Input<Inputs.RoutineReferenceArgs> RoutineReference { get; set; } = null!;
 
         /// <summary>
-        /// Required. The type of routine.
+        /// The type of routine.
         /// </summary>
-        [Input("routineType")]
-        public Input<Pulumi.GoogleNative.BigQuery.V2.RoutineRoutineType>? RoutineType { get; set; }
+        [Input("routineType", required: true)]
+        public Input<Pulumi.GoogleNative.BigQuery.V2.RoutineRoutineType> RoutineType { get; set; } = null!;
 
         public RoutineArgs()
         {

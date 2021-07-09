@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         /// </summary>
         public readonly Outputs.ColumnLayoutResponse ColumnLayout;
         /// <summary>
-        /// Required. The mutable, human-readable name.
+        /// The mutable, human-readable name.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

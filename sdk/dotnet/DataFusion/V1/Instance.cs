@@ -142,7 +142,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1
         public Output<string> TenantProjectId { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Instance type.
+        /// Instance type.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -316,10 +316,10 @@ namespace Pulumi.GoogleNative.DataFusion.V1
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Required. Instance type.
+        /// Instance type.
         /// </summary>
-        [Input("type")]
-        public Input<Pulumi.GoogleNative.DataFusion.V1.InstanceType>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<Pulumi.GoogleNative.DataFusion.V1.InstanceType> Type { get; set; } = null!;
 
         /// <summary>
         /// Current version of the Data Fusion. Only specifiable in Update.

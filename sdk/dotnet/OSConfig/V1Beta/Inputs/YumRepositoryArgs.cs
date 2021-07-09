@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     public sealed class YumRepositoryArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The location of the repository directory.
+        /// The location of the repository directory.
         /// </summary>
-        [Input("baseUrl")]
-        public Input<string>? BaseUrl { get; set; }
+        [Input("baseUrl", required: true)]
+        public Input<string> BaseUrl { get; set; } = null!;
 
         /// <summary>
         /// The display name of the repository.
@@ -40,10 +40,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         }
 
         /// <summary>
-        /// Required. A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+        /// A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
         /// </summary>
-        [Input("id")]
-        public Input<string>? Id { get; set; }
+        [Input("id", required: true)]
+        public Input<string> Id { get; set; } = null!;
 
         public YumRepositoryArgs()
         {

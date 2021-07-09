@@ -44,7 +44,7 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly endTime!: pulumi.Output<string>;
     /**
-     * Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
+     * The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
      */
     public readonly expireTime!: pulumi.Output<string>;
     /**
@@ -56,7 +56,7 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly sizeBytes!: pulumi.Output<string>;
     /**
-     * Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
+     * Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
      */
     public readonly sourceTable!: pulumi.Output<string>;
     /**
@@ -85,11 +85,17 @@ export class Backup extends pulumi.CustomResource {
             if ((!args || args.clusterId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
+            if ((!args || args.expireTime === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'expireTime'");
+            }
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.sourceTable === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'sourceTable'");
             }
             inputs["backupId"] = args ? args.backupId : undefined;
             inputs["clusterId"] = args ? args.clusterId : undefined;
@@ -127,9 +133,9 @@ export interface BackupArgs {
     backupId: pulumi.Input<string>;
     clusterId: pulumi.Input<string>;
     /**
-     * Required. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
+     * The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 30 days from the time the request is received. Once the `expire_time` has passed, Cloud Bigtable will delete the backup and free the resources used by the backup.
      */
-    expireTime?: pulumi.Input<string>;
+    expireTime: pulumi.Input<string>;
     instanceId: pulumi.Input<string>;
     /**
      * A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`.
@@ -137,7 +143,7 @@ export interface BackupArgs {
     name?: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
-     * Required. Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
+     * Immutable. Name of the table from which this backup was created. This needs to be in the same instance as the backup. Values are of the form `projects/{project}/instances/{instance}/tables/{source_table}`.
      */
-    sourceTable?: pulumi.Input<string>;
+    sourceTable: pulumi.Input<string>;
 }

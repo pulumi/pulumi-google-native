@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+        /// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
         /// </summary>
         [Output("serveNodes")]
         public Output<int> ServeNodes { get; private set; } = null!;
@@ -130,10 +130,10 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+        /// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
         /// </summary>
-        [Input("serveNodes")]
-        public Input<int>? ServeNodes { get; set; }
+        [Input("serveNodes", required: true)]
+        public Input<int> ServeNodes { get; set; } = null!;
 
         public ClusterArgs()
         {

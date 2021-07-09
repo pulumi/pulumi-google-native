@@ -18,11 +18,11 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
         /// </summary>
         public readonly string FileName;
         /// <summary>
-        /// Required. List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+        /// List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
         /// </summary>
         public readonly ImmutableArray<string> MuxStreams;
         /// <summary>
-        /// Required. Type of the manifest, can be "HLS" or "DASH".
+        /// Type of the manifest, can be "HLS" or "DASH".
         /// </summary>
         public readonly string Type;
 

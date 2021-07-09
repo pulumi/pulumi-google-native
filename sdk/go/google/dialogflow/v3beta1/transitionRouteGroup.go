@@ -15,7 +15,7 @@ import (
 type TransitionRouteGroup struct {
 	pulumi.CustomResourceState
 
-	// Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+	// The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -32,6 +32,9 @@ func NewTransitionRouteGroup(ctx *pulumi.Context,
 
 	if args.AgentId == nil {
 		return nil, errors.New("invalid value for required argument 'AgentId'")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
 	if args.FlowId == nil {
 		return nil, errors.New("invalid value for required argument 'FlowId'")
@@ -64,7 +67,7 @@ func GetTransitionRouteGroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TransitionRouteGroup resources.
 type transitionRouteGroupState struct {
-	// Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+	// The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
 	Name *string `pulumi:"name"`
@@ -73,7 +76,7 @@ type transitionRouteGroupState struct {
 }
 
 type TransitionRouteGroupState struct {
-	// Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+	// The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
 	DisplayName pulumi.StringPtrInput
 	// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
 	Name pulumi.StringPtrInput
@@ -87,8 +90,8 @@ func (TransitionRouteGroupState) ElementType() reflect.Type {
 
 type transitionRouteGroupArgs struct {
 	AgentId string `pulumi:"agentId"`
-	// Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
-	DisplayName  *string `pulumi:"displayName"`
+	// The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+	DisplayName  string  `pulumi:"displayName"`
 	FlowId       string  `pulumi:"flowId"`
 	LanguageCode *string `pulumi:"languageCode"`
 	Location     string  `pulumi:"location"`
@@ -102,8 +105,8 @@ type transitionRouteGroupArgs struct {
 // The set of arguments for constructing a TransitionRouteGroup resource.
 type TransitionRouteGroupArgs struct {
 	AgentId pulumi.StringInput
-	// Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
-	DisplayName  pulumi.StringPtrInput
+	// The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+	DisplayName  pulumi.StringInput
 	FlowId       pulumi.StringInput
 	LanguageCode pulumi.StringPtrInput
 	Location     pulumi.StringInput

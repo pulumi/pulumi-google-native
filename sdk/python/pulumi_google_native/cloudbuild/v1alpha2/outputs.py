@@ -39,7 +39,7 @@ class NetworkConfigResponse(dict):
                  peered_network: str):
         """
         Network describes the network configuration for a `WorkerPool`.
-        :param str peered_network: Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
+        :param str peered_network: Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
         """
         pulumi.set(__self__, "peered_network", peered_network)
 
@@ -47,7 +47,7 @@ class NetworkConfigResponse(dict):
     @pulumi.getter(name="peeredNetwork")
     def peered_network(self) -> str:
         """
-        Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
+        Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
         """
         return pulumi.get(self, "peered_network")
 

@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1.Inputs
     public sealed class IapTestServiceAccountInfoArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
+        /// Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
         /// </summary>
-        [Input("targetAudienceClientId")]
-        public Input<string>? TargetAudienceClientId { get; set; }
+        [Input("targetAudienceClientId", required: true)]
+        public Input<string> TargetAudienceClientId { get; set; } = null!;
 
         public IapTestServiceAccountInfoArgs()
         {

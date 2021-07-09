@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     public sealed class GoogleCloudDialogflowCxV3beta1IntentInputArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
+        /// The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
         /// </summary>
-        [Input("intent")]
-        public Input<string>? Intent { get; set; }
+        [Input("intent", required: true)]
+        public Input<string> Intent { get; set; } = null!;
 
         public GoogleCloudDialogflowCxV3beta1IntentInputArgs()
         {

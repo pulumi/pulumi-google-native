@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Outputs
         /// </summary>
         public readonly string EndTime;
         /// <summary>
-        /// Required. The frequency unit of this recurring schedule.
+        /// The frequency unit of this recurring schedule.
         /// </summary>
         public readonly string Frequency;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Outputs
         /// </summary>
         public readonly string LastExecuteTime;
         /// <summary>
-        /// Required. Schedule with monthly executions.
+        /// Schedule with monthly executions.
         /// </summary>
         public readonly Outputs.MonthlyScheduleResponse Monthly;
         /// <summary>
@@ -38,15 +38,15 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Outputs
         /// </summary>
         public readonly string StartTime;
         /// <summary>
-        /// Required. Time of the day to run a recurring deployment.
+        /// Time of the day to run a recurring deployment.
         /// </summary>
         public readonly Outputs.TimeOfDayResponse TimeOfDay;
         /// <summary>
-        /// Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+        /// Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
         /// </summary>
         public readonly Outputs.TimeZoneResponse TimeZone;
         /// <summary>
-        /// Required. Schedule with weekly executions.
+        /// Schedule with weekly executions.
         /// </summary>
         public readonly Outputs.WeeklyScheduleResponse Weekly;
 

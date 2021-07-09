@@ -22,16 +22,16 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1.Inputs
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// Required. The region the Cloud Run service is deployed in.
+        /// The region the Cloud Run service is deployed in.
         /// </summary>
-        [Input("region")]
-        public Input<string>? Region { get; set; }
+        [Input("region", required: true)]
+        public Input<string> Region { get; set; } = null!;
 
         /// <summary>
-        /// Required. The name of the Cloud run service being addressed (see https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services). Only services located in the same project of the trigger object can be addressed.
+        /// The name of the Cloud run service being addressed (see https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services). Only services located in the same project of the trigger object can be addressed.
         /// </summary>
-        [Input("service")]
-        public Input<string>? Service { get; set; }
+        [Input("service", required: true)]
+        public Input<string> Service { get; set; } = null!;
 
         public CloudRunServiceArgs()
         {

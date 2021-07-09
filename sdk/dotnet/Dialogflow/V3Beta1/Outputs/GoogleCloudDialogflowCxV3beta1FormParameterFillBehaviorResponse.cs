@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
     public sealed class GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorResponse
     {
         /// <summary>
-        /// Required. The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
+        /// The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowCxV3beta1FulfillmentResponse InitialPromptFulfillment;
         /// <summary>

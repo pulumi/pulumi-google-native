@@ -40,7 +40,7 @@ export class EntityType extends pulumi.CustomResource {
      */
     public readonly autoExpansionMode!: pulumi.Output<string>;
     /**
-     * Required. The name of the entity type.
+     * The name of the entity type.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -52,7 +52,7 @@ export class EntityType extends pulumi.CustomResource {
      */
     public readonly entities!: pulumi.Output<outputs.dialogflow.v2.GoogleCloudDialogflowV2EntityTypeEntityResponse[]>;
     /**
-     * Required. Indicates the kind of entity type.
+     * Indicates the kind of entity type.
      */
     public readonly kind!: pulumi.Output<string>;
     /**
@@ -71,6 +71,12 @@ export class EntityType extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
+            if ((!args || args.kind === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'kind'");
+            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
@@ -110,9 +116,9 @@ export interface EntityTypeArgs {
      */
     autoExpansionMode?: pulumi.Input<enums.dialogflow.v2.EntityTypeAutoExpansionMode>;
     /**
-     * Required. The name of the entity type.
+     * The name of the entity type.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * Optional. Enables fuzzy entity extraction during classification.
      */
@@ -122,9 +128,9 @@ export interface EntityTypeArgs {
      */
     entities?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2EntityTypeEntityArgs>[]>;
     /**
-     * Required. Indicates the kind of entity type.
+     * Indicates the kind of entity type.
      */
-    kind?: pulumi.Input<enums.dialogflow.v2.EntityTypeKind>;
+    kind: pulumi.Input<enums.dialogflow.v2.EntityTypeKind>;
     languageCode?: pulumi.Input<string>;
     location: pulumi.Input<string>;
     /**

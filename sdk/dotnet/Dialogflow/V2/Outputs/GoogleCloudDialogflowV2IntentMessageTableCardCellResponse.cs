@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
     public sealed class GoogleCloudDialogflowV2IntentMessageTableCardCellResponse
     {
         /// <summary>
-        /// Required. Text in this cell.
+        /// Text in this cell.
         /// </summary>
         public readonly string Text;
 

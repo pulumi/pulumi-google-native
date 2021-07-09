@@ -35,11 +35,11 @@ type LookupDomainResult struct {
 	Fqdn string `pulumi:"fqdn"`
 	// Optional. Resource labels that can contain user-provided metadata.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+	// Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
 	Locations []string `pulumi:"locations"`
 	// The unique name of the domain using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
 	Name string `pulumi:"name"`
-	// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+	// The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
 	ReservedIpRange string `pulumi:"reservedIpRange"`
 	// The current state of this domain.
 	State string `pulumi:"state"`

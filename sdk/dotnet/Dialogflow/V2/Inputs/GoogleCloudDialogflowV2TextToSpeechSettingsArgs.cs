@@ -22,10 +22,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public Input<bool>? EnableTextToSpeech { get; set; }
 
         /// <summary>
-        /// Required. Audio encoding of the synthesized audio content.
+        /// Audio encoding of the synthesized audio content.
         /// </summary>
-        [Input("outputAudioEncoding")]
-        public Input<Pulumi.GoogleNative.Dialogflow.V2.GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding>? OutputAudioEncoding { get; set; }
+        [Input("outputAudioEncoding", required: true)]
+        public Input<Pulumi.GoogleNative.Dialogflow.V2.GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding> OutputAudioEncoding { get; set; } = null!;
 
         /// <summary>
         /// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).

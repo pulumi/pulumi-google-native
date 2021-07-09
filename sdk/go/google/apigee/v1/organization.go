@@ -17,7 +17,7 @@ type Organization struct {
 
 	// Addon configurations of the Apigee organization.
 	AddonsConfig GoogleCloudApigeeV1AddonsConfigResponseOutput `pulumi:"addonsConfig"`
-	// Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	// Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion pulumi.StringOutput `pulumi:"analyticsRegion"`
 	// Not used by Apigee.
 	Attributes pulumi.StringArrayOutput `pulumi:"attributes"`
@@ -48,7 +48,7 @@ type Organization struct {
 	Properties GoogleCloudApigeeV1PropertiesResponseOutput `pulumi:"properties"`
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
 	RuntimeDatabaseEncryptionKeyName pulumi.StringOutput `pulumi:"runtimeDatabaseEncryptionKeyName"`
-	// Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
+	// Runtime type of the Apigee organization based on the Apigee subscription purchased.
 	RuntimeType pulumi.StringOutput `pulumi:"runtimeType"`
 	// State of the organization. Values other than ACTIVE means the resource is not ready to use.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -63,6 +63,9 @@ func NewOrganization(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AnalyticsRegion == nil {
+		return nil, errors.New("invalid value for required argument 'AnalyticsRegion'")
+	}
 	if args.Parent == nil {
 		return nil, errors.New("invalid value for required argument 'Parent'")
 	}
@@ -90,7 +93,7 @@ func GetOrganization(ctx *pulumi.Context,
 type organizationState struct {
 	// Addon configurations of the Apigee organization.
 	AddonsConfig *GoogleCloudApigeeV1AddonsConfigResponse `pulumi:"addonsConfig"`
-	// Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	// Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion *string `pulumi:"analyticsRegion"`
 	// Not used by Apigee.
 	Attributes []string `pulumi:"attributes"`
@@ -121,7 +124,7 @@ type organizationState struct {
 	Properties *GoogleCloudApigeeV1PropertiesResponse `pulumi:"properties"`
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
 	RuntimeDatabaseEncryptionKeyName *string `pulumi:"runtimeDatabaseEncryptionKeyName"`
-	// Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
+	// Runtime type of the Apigee organization based on the Apigee subscription purchased.
 	RuntimeType *string `pulumi:"runtimeType"`
 	// State of the organization. Values other than ACTIVE means the resource is not ready to use.
 	State *string `pulumi:"state"`
@@ -132,7 +135,7 @@ type organizationState struct {
 type OrganizationState struct {
 	// Addon configurations of the Apigee organization.
 	AddonsConfig GoogleCloudApigeeV1AddonsConfigResponsePtrInput
-	// Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	// Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
 	AnalyticsRegion pulumi.StringPtrInput
 	// Not used by Apigee.
 	Attributes pulumi.StringArrayInput
@@ -163,7 +166,7 @@ type OrganizationState struct {
 	Properties GoogleCloudApigeeV1PropertiesResponsePtrInput
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
 	RuntimeDatabaseEncryptionKeyName pulumi.StringPtrInput
-	// Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
+	// Runtime type of the Apigee organization based on the Apigee subscription purchased.
 	RuntimeType pulumi.StringPtrInput
 	// State of the organization. Values other than ACTIVE means the resource is not ready to use.
 	State pulumi.StringPtrInput
@@ -178,8 +181,8 @@ func (OrganizationState) ElementType() reflect.Type {
 type organizationArgs struct {
 	// Addon configurations of the Apigee organization.
 	AddonsConfig *GoogleCloudApigeeV1AddonsConfig `pulumi:"addonsConfig"`
-	// Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
-	AnalyticsRegion *string `pulumi:"analyticsRegion"`
+	// Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	AnalyticsRegion string `pulumi:"analyticsRegion"`
 	// Not used by Apigee.
 	Attributes []string `pulumi:"attributes"`
 	// Compute Engine network used for Service Networking to be peered with Apigee runtime instances. See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started). Valid only when [RuntimeType](#RuntimeType) is set to `CLOUD`. The value must be set before the creation of a runtime instance and can be updated only when there are no runtime instances. For example: `default`. Apigee also supports shared VPC (that is, the host network project is not the same as the one that is peering with Apigee). See [Shared VPC overview](https://cloud.google.com/vpc/docs/shared-vpc). To use a shared VPC network, use the following format: `projects/{host-project-id}/{region}/networks/{network-name}`. For example: `projects/my-sharedvpc-host/global/networks/mynetwork` **Note:** Not supported for Apigee hybrid.
@@ -196,8 +199,8 @@ type organizationArgs struct {
 	Properties *GoogleCloudApigeeV1Properties `pulumi:"properties"`
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
 	RuntimeDatabaseEncryptionKeyName *string `pulumi:"runtimeDatabaseEncryptionKeyName"`
-	// Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
-	RuntimeType *string `pulumi:"runtimeType"`
+	// Runtime type of the Apigee organization based on the Apigee subscription purchased.
+	RuntimeType string `pulumi:"runtimeType"`
 	// Not used by Apigee.
 	Type *string `pulumi:"type"`
 }
@@ -206,8 +209,8 @@ type organizationArgs struct {
 type OrganizationArgs struct {
 	// Addon configurations of the Apigee organization.
 	AddonsConfig GoogleCloudApigeeV1AddonsConfigPtrInput
-	// Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
-	AnalyticsRegion pulumi.StringPtrInput
+	// Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+	AnalyticsRegion pulumi.StringInput
 	// Not used by Apigee.
 	Attributes pulumi.StringArrayInput
 	// Compute Engine network used for Service Networking to be peered with Apigee runtime instances. See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started). Valid only when [RuntimeType](#RuntimeType) is set to `CLOUD`. The value must be set before the creation of a runtime instance and can be updated only when there are no runtime instances. For example: `default`. Apigee also supports shared VPC (that is, the host network project is not the same as the one that is peering with Apigee). See [Shared VPC overview](https://cloud.google.com/vpc/docs/shared-vpc). To use a shared VPC network, use the following format: `projects/{host-project-id}/{region}/networks/{network-name}`. For example: `projects/my-sharedvpc-host/global/networks/mynetwork` **Note:** Not supported for Apigee hybrid.
@@ -224,8 +227,8 @@ type OrganizationArgs struct {
 	Properties GoogleCloudApigeeV1PropertiesPtrInput
 	// Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
 	RuntimeDatabaseEncryptionKeyName pulumi.StringPtrInput
-	// Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
-	RuntimeType *OrganizationRuntimeType
+	// Runtime type of the Apigee organization based on the Apigee subscription purchased.
+	RuntimeType OrganizationRuntimeType
 	// Not used by Apigee.
 	Type *OrganizationType
 }

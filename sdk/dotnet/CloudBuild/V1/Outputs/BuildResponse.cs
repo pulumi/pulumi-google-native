@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// </summary>
         public readonly string StatusDetail;
         /// <summary>
-        /// Required. The operations to be performed on the workspace.
+        /// The operations to be performed on the workspace.
         /// </summary>
         public readonly ImmutableArray<Outputs.BuildStepResponse> Steps;
         /// <summary>

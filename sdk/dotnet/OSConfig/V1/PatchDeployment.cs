@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1
         public Output<string> Duration { get; private set; } = null!;
 
         /// <summary>
-        /// Required. VM instances to patch.
+        /// VM instances to patch.
         /// </summary>
         [Output("instanceFilter")]
         public Output<Outputs.PatchInstanceFilterResponse> InstanceFilter { get; private set; } = null!;
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Schedule a one-time execution.
+        /// Schedule a one-time execution.
         /// </summary>
         [Output("oneTimeSchedule")]
         public Output<Outputs.OneTimeScheduleResponse> OneTimeSchedule { get; private set; } = null!;
@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1
         public Output<Outputs.PatchConfigResponse> PatchConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Schedule recurring executions.
+        /// Schedule recurring executions.
         /// </summary>
         [Output("recurringSchedule")]
         public Output<Outputs.RecurringScheduleResponse> RecurringSchedule { get; private set; } = null!;
@@ -139,10 +139,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1
         public Input<string>? Duration { get; set; }
 
         /// <summary>
-        /// Required. VM instances to patch.
+        /// VM instances to patch.
         /// </summary>
-        [Input("instanceFilter")]
-        public Input<Inputs.PatchInstanceFilterArgs>? InstanceFilter { get; set; }
+        [Input("instanceFilter", required: true)]
+        public Input<Inputs.PatchInstanceFilterArgs> InstanceFilter { get; set; } = null!;
 
         /// <summary>
         /// Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
@@ -151,10 +151,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Required. Schedule a one-time execution.
+        /// Schedule a one-time execution.
         /// </summary>
-        [Input("oneTimeSchedule")]
-        public Input<Inputs.OneTimeScheduleArgs>? OneTimeSchedule { get; set; }
+        [Input("oneTimeSchedule", required: true)]
+        public Input<Inputs.OneTimeScheduleArgs> OneTimeSchedule { get; set; } = null!;
 
         /// <summary>
         /// Optional. Patch configuration that is applied.
@@ -169,10 +169,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1
         public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Required. Schedule recurring executions.
+        /// Schedule recurring executions.
         /// </summary>
-        [Input("recurringSchedule")]
-        public Input<Inputs.RecurringScheduleArgs>? RecurringSchedule { get; set; }
+        [Input("recurringSchedule", required: true)]
+        public Input<Inputs.RecurringScheduleArgs> RecurringSchedule { get; set; } = null!;
 
         /// <summary>
         /// Optional. Rollout strategy of the patch job.

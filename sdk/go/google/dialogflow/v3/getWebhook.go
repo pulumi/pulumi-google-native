@@ -27,7 +27,7 @@ type LookupWebhookArgs struct {
 type LookupWebhookResult struct {
 	// Indicates whether the webhook is disabled.
 	Disabled bool `pulumi:"disabled"`
-	// Required. The human-readable name of the webhook, unique within the agent.
+	// The human-readable name of the webhook, unique within the agent.
 	DisplayName string `pulumi:"displayName"`
 	// Configuration for a generic web service.
 	GenericWebService GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse `pulumi:"genericWebService"`

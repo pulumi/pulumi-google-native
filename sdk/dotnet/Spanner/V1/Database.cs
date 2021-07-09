@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public Output<ImmutableArray<Outputs.EncryptionInfoResponse>> EncryptionInfo { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
+        /// The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -109,10 +109,10 @@ namespace Pulumi.GoogleNative.Spanner.V1
     public sealed class DatabaseArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. A `CREATE DATABASE` statement, which specifies the ID of the new database. The database ID must conform to the regular expression `a-z*[a-z0-9]` and be between 2 and 30 characters in length. If the database ID is a reserved word or if it contains a hyphen, the database ID must be enclosed in backticks (`` ` ``).
+        /// A `CREATE DATABASE` statement, which specifies the ID of the new database. The database ID must conform to the regular expression `a-z*[a-z0-9]` and be between 2 and 30 characters in length. If the database ID is a reserved word or if it contains a hyphen, the database ID must be enclosed in backticks (`` ` ``).
         /// </summary>
-        [Input("createStatement")]
-        public Input<string>? CreateStatement { get; set; }
+        [Input("createStatement", required: true)]
+        public Input<string> CreateStatement { get; set; } = null!;
 
         /// <summary>
         /// Optional. The encryption configuration for the database. If this field is not specified, Cloud Spanner will encrypt/decrypt all data at rest using Google default encryption.

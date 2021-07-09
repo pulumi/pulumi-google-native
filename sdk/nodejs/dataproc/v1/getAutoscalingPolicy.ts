@@ -40,7 +40,7 @@ export interface GetAutoscalingPolicyResult {
      */
     readonly secondaryWorkerConfig: outputs.dataproc.v1.InstanceGroupAutoscalingPolicyConfigResponse;
     /**
-     * Required. Describes how the autoscaler will operate for primary workers.
+     * Describes how the autoscaler will operate for primary workers.
      */
     readonly workerConfig: outputs.dataproc.v1.InstanceGroupAutoscalingPolicyConfigResponse;
 }

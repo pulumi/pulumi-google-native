@@ -52,7 +52,7 @@ export class Entitlement extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+     * The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
      */
     public readonly offer!: pulumi.Output<string>;
     /**
@@ -100,6 +100,9 @@ export class Entitlement extends pulumi.CustomResource {
             }
             if ((!args || args.customerId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'customerId'");
+            }
+            if ((!args || args.offer === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'offer'");
             }
             inputs["accountId"] = args ? args.accountId : undefined;
             inputs["associationInfo"] = args ? args.associationInfo : undefined;
@@ -152,9 +155,9 @@ export interface EntitlementArgs {
     commitmentSettings?: pulumi.Input<inputs.cloudchannel.v1.GoogleCloudChannelV1CommitmentSettingsArgs>;
     customerId: pulumi.Input<string>;
     /**
-     * Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+     * The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
      */
-    offer?: pulumi.Input<string>;
+    offer: pulumi.Input<string>;
     /**
      * Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
      */

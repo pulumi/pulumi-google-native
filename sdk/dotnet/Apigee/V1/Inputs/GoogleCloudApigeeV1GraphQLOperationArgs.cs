@@ -21,11 +21,11 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         [Input("operation")]
         public Input<string>? Operation { get; set; }
 
-        [Input("operationTypes")]
+        [Input("operationTypes", required: true)]
         private InputList<string>? _operationTypes;
 
         /// <summary>
-        /// Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+        /// `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
         /// </summary>
         public InputList<string> OperationTypes
         {

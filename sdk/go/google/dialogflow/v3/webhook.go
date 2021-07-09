@@ -17,7 +17,7 @@ type Webhook struct {
 
 	// Indicates whether the webhook is disabled.
 	Disabled pulumi.BoolOutput `pulumi:"disabled"`
-	// Required. The human-readable name of the webhook, unique within the agent.
+	// The human-readable name of the webhook, unique within the agent.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Configuration for a generic web service.
 	GenericWebService GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponseOutput `pulumi:"genericWebService"`
@@ -36,6 +36,9 @@ func NewWebhook(ctx *pulumi.Context,
 
 	if args.AgentId == nil {
 		return nil, errors.New("invalid value for required argument 'AgentId'")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
@@ -67,7 +70,7 @@ func GetWebhook(ctx *pulumi.Context,
 type webhookState struct {
 	// Indicates whether the webhook is disabled.
 	Disabled *bool `pulumi:"disabled"`
-	// Required. The human-readable name of the webhook, unique within the agent.
+	// The human-readable name of the webhook, unique within the agent.
 	DisplayName *string `pulumi:"displayName"`
 	// Configuration for a generic web service.
 	GenericWebService *GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponse `pulumi:"genericWebService"`
@@ -80,7 +83,7 @@ type webhookState struct {
 type WebhookState struct {
 	// Indicates whether the webhook is disabled.
 	Disabled pulumi.BoolPtrInput
-	// Required. The human-readable name of the webhook, unique within the agent.
+	// The human-readable name of the webhook, unique within the agent.
 	DisplayName pulumi.StringPtrInput
 	// Configuration for a generic web service.
 	GenericWebService GoogleCloudDialogflowCxV3WebhookGenericWebServiceResponsePtrInput
@@ -98,8 +101,8 @@ type webhookArgs struct {
 	AgentId string `pulumi:"agentId"`
 	// Indicates whether the webhook is disabled.
 	Disabled *bool `pulumi:"disabled"`
-	// Required. The human-readable name of the webhook, unique within the agent.
-	DisplayName *string `pulumi:"displayName"`
+	// The human-readable name of the webhook, unique within the agent.
+	DisplayName string `pulumi:"displayName"`
 	// Configuration for a generic web service.
 	GenericWebService *GoogleCloudDialogflowCxV3WebhookGenericWebService `pulumi:"genericWebService"`
 	Location          string                                             `pulumi:"location"`
@@ -115,8 +118,8 @@ type WebhookArgs struct {
 	AgentId pulumi.StringInput
 	// Indicates whether the webhook is disabled.
 	Disabled pulumi.BoolPtrInput
-	// Required. The human-readable name of the webhook, unique within the agent.
-	DisplayName pulumi.StringPtrInput
+	// The human-readable name of the webhook, unique within the agent.
+	DisplayName pulumi.StringInput
 	// Configuration for a generic web service.
 	GenericWebService GoogleCloudDialogflowCxV3WebhookGenericWebServicePtrInput
 	Location          pulumi.StringInput

@@ -17,7 +17,7 @@ type NatAddress struct {
 
 	// The static IPV4 address.
 	IpAddress pulumi.StringOutput `pulumi:"ipAddress"`
-	// Required. Resource ID of the NAT address.
+	// Resource ID of the NAT address.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// State of the nat address.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -32,6 +32,9 @@ func NewNatAddress(ctx *pulumi.Context,
 
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
@@ -60,7 +63,7 @@ func GetNatAddress(ctx *pulumi.Context,
 type natAddressState struct {
 	// The static IPV4 address.
 	IpAddress *string `pulumi:"ipAddress"`
-	// Required. Resource ID of the NAT address.
+	// Resource ID of the NAT address.
 	Name *string `pulumi:"name"`
 	// State of the nat address.
 	State *string `pulumi:"state"`
@@ -69,7 +72,7 @@ type natAddressState struct {
 type NatAddressState struct {
 	// The static IPV4 address.
 	IpAddress pulumi.StringPtrInput
-	// Required. Resource ID of the NAT address.
+	// Resource ID of the NAT address.
 	Name pulumi.StringPtrInput
 	// State of the nat address.
 	State pulumi.StringPtrInput
@@ -81,16 +84,16 @@ func (NatAddressState) ElementType() reflect.Type {
 
 type natAddressArgs struct {
 	InstanceId string `pulumi:"instanceId"`
-	// Required. Resource ID of the NAT address.
-	Name           *string `pulumi:"name"`
-	OrganizationId string  `pulumi:"organizationId"`
+	// Resource ID of the NAT address.
+	Name           string `pulumi:"name"`
+	OrganizationId string `pulumi:"organizationId"`
 }
 
 // The set of arguments for constructing a NatAddress resource.
 type NatAddressArgs struct {
 	InstanceId pulumi.StringInput
-	// Required. Resource ID of the NAT address.
-	Name           pulumi.StringPtrInput
+	// Resource ID of the NAT address.
+	Name           pulumi.StringInput
 	OrganizationId pulumi.StringInput
 }
 

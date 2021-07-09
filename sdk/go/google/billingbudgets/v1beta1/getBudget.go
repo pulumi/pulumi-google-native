@@ -25,7 +25,7 @@ type LookupBudgetArgs struct {
 type LookupBudgetResult struct {
 	// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
 	AllUpdatesRule GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse `pulumi:"allUpdatesRule"`
-	// Required. Budgeted amount.
+	// Budgeted amount.
 	Amount GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse `pulumi:"amount"`
 	// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
 	BudgetFilter GoogleCloudBillingBudgetsV1beta1FilterResponse `pulumi:"budgetFilter"`

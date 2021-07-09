@@ -93,7 +93,7 @@ class GetImportJobResult:
     @pulumi.getter(name="importMethod")
     def import_method(self) -> str:
         """
-        Required. Immutable. The wrapping method to be used for incoming key material.
+        Immutable. The wrapping method to be used for incoming key material.
         """
         return pulumi.get(self, "import_method")
 
@@ -109,7 +109,7 @@ class GetImportJobResult:
     @pulumi.getter(name="protectionLevel")
     def protection_level(self) -> str:
         """
-        Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
+        Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
         """
         return pulumi.get(self, "protection_level")
 

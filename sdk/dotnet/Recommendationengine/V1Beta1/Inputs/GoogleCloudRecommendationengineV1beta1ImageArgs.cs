@@ -22,10 +22,10 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Inputs
         public Input<int>? Height { get; set; }
 
         /// <summary>
-        /// Required. URL of the image with a length limit of 5 KiB.
+        /// URL of the image with a length limit of 5 KiB.
         /// </summary>
-        [Input("uri")]
-        public Input<string>? Uri { get; set; }
+        [Input("uri", required: true)]
+        public Input<string> Uri { get; set; } = null!;
 
         /// <summary>
         /// Optional. Width of the image in number of pixels.

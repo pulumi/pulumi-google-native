@@ -29,6 +29,6 @@ type LookupAutoscalingPolicyResult struct {
 	Name string `pulumi:"name"`
 	// Optional. Describes how the autoscaler will operate for secondary workers.
 	SecondaryWorkerConfig InstanceGroupAutoscalingPolicyConfigResponse `pulumi:"secondaryWorkerConfig"`
-	// Required. Describes how the autoscaler will operate for primary workers.
+	// Describes how the autoscaler will operate for primary workers.
 	WorkerConfig InstanceGroupAutoscalingPolicyConfigResponse `pulumi:"workerConfig"`
 }

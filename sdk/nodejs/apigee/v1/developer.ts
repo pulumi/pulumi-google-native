@@ -64,11 +64,11 @@ export class Developer extends pulumi.CustomResource {
      */
     public readonly developerId!: pulumi.Output<string>;
     /**
-     * Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
+     * Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
      */
     public readonly email!: pulumi.Output<string>;
     /**
-     * Required. First name of the developer.
+     * First name of the developer.
      */
     public readonly firstName!: pulumi.Output<string>;
     /**
@@ -76,7 +76,7 @@ export class Developer extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastModifiedAt!: pulumi.Output<string>;
     /**
-     * Required. Last name of the developer.
+     * Last name of the developer.
      */
     public readonly lastName!: pulumi.Output<string>;
     /**
@@ -88,7 +88,7 @@ export class Developer extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * Required. User name of the developer. Not used by Apigee hybrid.
+     * User name of the developer. Not used by Apigee hybrid.
      */
     public readonly userName!: pulumi.Output<string>;
 
@@ -103,8 +103,20 @@ export class Developer extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.email === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'email'");
+            }
+            if ((!args || args.firstName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'firstName'");
+            }
+            if ((!args || args.lastName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'lastName'");
+            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
+            }
+            if ((!args || args.userName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'userName'");
             }
             inputs["accessType"] = args ? args.accessType : undefined;
             inputs["appFamily"] = args ? args.appFamily : undefined;
@@ -173,20 +185,20 @@ export interface DeveloperArgs {
      */
     developerId?: pulumi.Input<string>;
     /**
-     * Required. Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
+     * Email address of the developer. This value is used to uniquely identify the developer in Apigee hybrid. Note that the email address has to be in lowercase only.
      */
-    email?: pulumi.Input<string>;
+    email: pulumi.Input<string>;
     /**
-     * Required. First name of the developer.
+     * First name of the developer.
      */
-    firstName?: pulumi.Input<string>;
+    firstName: pulumi.Input<string>;
     /**
-     * Required. Last name of the developer.
+     * Last name of the developer.
      */
-    lastName?: pulumi.Input<string>;
+    lastName: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
     /**
-     * Required. User name of the developer. Not used by Apigee hybrid.
+     * User name of the developer. Not used by Apigee hybrid.
      */
-    userName?: pulumi.Input<string>;
+    userName: pulumi.Input<string>;
 }

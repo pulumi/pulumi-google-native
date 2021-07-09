@@ -22,10 +22,10 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         public Input<string>? AnnotatedDatasetDescription { get; set; }
 
         /// <summary>
-        /// Required. A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
+        /// A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
         /// </summary>
-        [Input("annotatedDatasetDisplayName")]
-        public Input<string>? AnnotatedDatasetDisplayName { get; set; }
+        [Input("annotatedDatasetDisplayName", required: true)]
+        public Input<string> AnnotatedDatasetDisplayName { get; set; } = null!;
 
         [Input("contributorEmails")]
         private InputList<string>? _contributorEmails;
@@ -40,10 +40,10 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         }
 
         /// <summary>
-        /// Required. Instruction resource name.
+        /// Instruction resource name.
         /// </summary>
-        [Input("instruction")]
-        public Input<string>? Instruction { get; set; }
+        [Input("instruction", required: true)]
+        public Input<string> Instruction { get; set; } = null!;
 
         /// <summary>
         /// Optional. A human-readable label used to logically group labeling tasks. This string must match the regular expression `[a-zA-Z\\d_-]{0,128}`.

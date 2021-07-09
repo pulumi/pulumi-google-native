@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     public sealed class BuildArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Immutable. Version of the builder which produced this build.
+        /// Immutable. Version of the builder which produced this build.
         /// </summary>
-        [Input("builderVersion")]
-        public Input<string>? BuilderVersion { get; set; }
+        [Input("builderVersion", required: true)]
+        public Input<string> BuilderVersion { get; set; } = null!;
 
         /// <summary>
         /// Signature of the build in occurrences pointing to this build note containing build details.

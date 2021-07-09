@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowCxV3beta1PageResponse CurrentPage;
         /// <summary>
-        /// Required. Input only. The diagnostic info output for the turn.
+        /// Input only. The diagnostic info output for the turn.
         /// </summary>
         public readonly ImmutableDictionary<string, string> DiagnosticInfo;
         /// <summary>

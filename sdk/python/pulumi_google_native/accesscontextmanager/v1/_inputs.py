@@ -72,17 +72,28 @@ class ApiOperationArgs:
 @pulumi.input_type
 class BasicLevelArgs:
     def __init__(__self__, *,
-                 combining_function: Optional[pulumi.Input['BasicLevelCombiningFunction']] = None,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]] = None):
+                 conditions: pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]],
+                 combining_function: Optional[pulumi.Input['BasicLevelCombiningFunction']] = None):
         """
         `BasicLevel` is an `AccessLevel` using a set of recommended features.
+        :param pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]] conditions: A list of requirements for the `AccessLevel` to be granted.
         :param pulumi.Input['BasicLevelCombiningFunction'] combining_function: How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
-        :param pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]] conditions: Required. A list of requirements for the `AccessLevel` to be granted.
         """
+        pulumi.set(__self__, "conditions", conditions)
         if combining_function is not None:
             pulumi.set(__self__, "combining_function", combining_function)
-        if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]:
+        """
+        A list of requirements for the `AccessLevel` to be granted.
+        """
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]):
+        pulumi.set(self, "conditions", value)
 
     @property
     @pulumi.getter(name="combiningFunction")
@@ -95,18 +106,6 @@ class BasicLevelArgs:
     @combining_function.setter
     def combining_function(self, value: Optional[pulumi.Input['BasicLevelCombiningFunction']]):
         pulumi.set(self, "combining_function", value)
-
-    @property
-    @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]]:
-        """
-        Required. A list of requirements for the `AccessLevel` to be granted.
-        """
-        return pulumi.get(self, "conditions")
-
-    @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]]):
-        pulumi.set(self, "conditions", value)
 
 
 @pulumi.input_type
@@ -216,24 +215,23 @@ class ConditionArgs:
 @pulumi.input_type
 class CustomLevelArgs:
     def __init__(__self__, *,
-                 expr: Optional[pulumi.Input['ExprArgs']] = None):
+                 expr: pulumi.Input['ExprArgs']):
         """
         `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request. See CEL spec at: https://github.com/google/cel-spec
-        :param pulumi.Input['ExprArgs'] expr: Required. A Cloud CEL expression evaluating to a boolean.
+        :param pulumi.Input['ExprArgs'] expr: A Cloud CEL expression evaluating to a boolean.
         """
-        if expr is not None:
-            pulumi.set(__self__, "expr", expr)
+        pulumi.set(__self__, "expr", expr)
 
     @property
     @pulumi.getter
-    def expr(self) -> Optional[pulumi.Input['ExprArgs']]:
+    def expr(self) -> pulumi.Input['ExprArgs']:
         """
-        Required. A Cloud CEL expression evaluating to a boolean.
+        A Cloud CEL expression evaluating to a boolean.
         """
         return pulumi.get(self, "expr")
 
     @expr.setter
-    def expr(self, value: Optional[pulumi.Input['ExprArgs']]):
+    def expr(self, value: pulumi.Input['ExprArgs']):
         pulumi.set(self, "expr", value)
 
 
@@ -752,21 +750,32 @@ class MethodSelectorArgs:
 @pulumi.input_type
 class OsConstraintArgs:
     def __init__(__self__, *,
+                 os_type: pulumi.Input['OsConstraintOsType'],
                  minimum_version: Optional[pulumi.Input[str]] = None,
-                 os_type: Optional[pulumi.Input['OsConstraintOsType']] = None,
                  require_verified_chrome_os: Optional[pulumi.Input[bool]] = None):
         """
         A restriction on the OS type and version of devices making requests.
+        :param pulumi.Input['OsConstraintOsType'] os_type: The allowed OS type.
         :param pulumi.Input[str] minimum_version: The minimum allowed OS version. If not set, any version of this OS satisfies the constraint. Format: `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
-        :param pulumi.Input['OsConstraintOsType'] os_type: Required. The allowed OS type.
         :param pulumi.Input[bool] require_verified_chrome_os: Only allows requests from devices with a verified Chrome OS. Verifications includes requirements that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call the API targeted by the request.
         """
+        pulumi.set(__self__, "os_type", os_type)
         if minimum_version is not None:
             pulumi.set(__self__, "minimum_version", minimum_version)
-        if os_type is not None:
-            pulumi.set(__self__, "os_type", os_type)
         if require_verified_chrome_os is not None:
             pulumi.set(__self__, "require_verified_chrome_os", require_verified_chrome_os)
+
+    @property
+    @pulumi.getter(name="osType")
+    def os_type(self) -> pulumi.Input['OsConstraintOsType']:
+        """
+        The allowed OS type.
+        """
+        return pulumi.get(self, "os_type")
+
+    @os_type.setter
+    def os_type(self, value: pulumi.Input['OsConstraintOsType']):
+        pulumi.set(self, "os_type", value)
 
     @property
     @pulumi.getter(name="minimumVersion")
@@ -779,18 +788,6 @@ class OsConstraintArgs:
     @minimum_version.setter
     def minimum_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "minimum_version", value)
-
-    @property
-    @pulumi.getter(name="osType")
-    def os_type(self) -> Optional[pulumi.Input['OsConstraintOsType']]:
-        """
-        Required. The allowed OS type.
-        """
-        return pulumi.get(self, "os_type")
-
-    @os_type.setter
-    def os_type(self, value: Optional[pulumi.Input['OsConstraintOsType']]):
-        pulumi.set(self, "os_type", value)
 
     @property
     @pulumi.getter(name="requireVerifiedChromeOs")

@@ -16,30 +16,52 @@ __all__ = ['TemplateArgs', 'Template']
 @pulumi.input_type
 class TemplateArgs:
     def __init__(__self__, *,
+                 gcs_path: pulumi.Input[str],
+                 job_name: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  environment: Optional[pulumi.Input['RuntimeEnvironmentArgs']] = None,
-                 gcs_path: Optional[pulumi.Input[str]] = None,
-                 job_name: Optional[pulumi.Input[str]] = None,
                  parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Template resource.
+        :param pulumi.Input[str] gcs_path: A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.
+        :param pulumi.Input[str] job_name: The job name to use for the created job.
         :param pulumi.Input[str] location: The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
         :param pulumi.Input['RuntimeEnvironmentArgs'] environment: The runtime environment for the job.
-        :param pulumi.Input[str] gcs_path: Required. A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.
-        :param pulumi.Input[str] job_name: Required. The job name to use for the created job.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: The runtime parameters to pass to the job.
         """
+        pulumi.set(__self__, "gcs_path", gcs_path)
+        pulumi.set(__self__, "job_name", job_name)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if environment is not None:
             pulumi.set(__self__, "environment", environment)
-        if gcs_path is not None:
-            pulumi.set(__self__, "gcs_path", gcs_path)
-        if job_name is not None:
-            pulumi.set(__self__, "job_name", job_name)
         if parameters is not None:
             pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter(name="gcsPath")
+    def gcs_path(self) -> pulumi.Input[str]:
+        """
+        A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.
+        """
+        return pulumi.get(self, "gcs_path")
+
+    @gcs_path.setter
+    def gcs_path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "gcs_path", value)
+
+    @property
+    @pulumi.getter(name="jobName")
+    def job_name(self) -> pulumi.Input[str]:
+        """
+        The job name to use for the created job.
+        """
+        return pulumi.get(self, "job_name")
+
+    @job_name.setter
+    def job_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "job_name", value)
 
     @property
     @pulumi.getter
@@ -75,30 +97,6 @@ class TemplateArgs:
         pulumi.set(self, "environment", value)
 
     @property
-    @pulumi.getter(name="gcsPath")
-    def gcs_path(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.
-        """
-        return pulumi.get(self, "gcs_path")
-
-    @gcs_path.setter
-    def gcs_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "gcs_path", value)
-
-    @property
-    @pulumi.getter(name="jobName")
-    def job_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The job name to use for the created job.
-        """
-        return pulumi.get(self, "job_name")
-
-    @job_name.setter
-    def job_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "job_name", value)
-
-    @property
     @pulumi.getter
     def parameters(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -129,8 +127,8 @@ class Template(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['RuntimeEnvironmentArgs']] environment: The runtime environment for the job.
-        :param pulumi.Input[str] gcs_path: Required. A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.
-        :param pulumi.Input[str] job_name: Required. The job name to use for the created job.
+        :param pulumi.Input[str] gcs_path: A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.
+        :param pulumi.Input[str] job_name: The job name to use for the created job.
         :param pulumi.Input[str] location: The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] parameters: The runtime parameters to pass to the job.
         """
@@ -177,7 +175,11 @@ class Template(pulumi.CustomResource):
             __props__ = TemplateArgs.__new__(TemplateArgs)
 
             __props__.__dict__["environment"] = environment
+            if gcs_path is None and not opts.urn:
+                raise TypeError("Missing required property 'gcs_path'")
             __props__.__dict__["gcs_path"] = gcs_path
+            if job_name is None and not opts.urn:
+                raise TypeError("Missing required property 'job_name'")
             __props__.__dict__["job_name"] = job_name
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")

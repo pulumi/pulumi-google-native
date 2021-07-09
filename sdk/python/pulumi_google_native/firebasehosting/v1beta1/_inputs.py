@@ -16,40 +16,38 @@ __all__ = [
 @pulumi.input_type
 class DomainRedirectArgs:
     def __init__(__self__, *,
-                 domain_name: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input['DomainRedirectType']] = None):
+                 domain_name: pulumi.Input[str],
+                 type: pulumi.Input['DomainRedirectType']):
         """
         Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration.
-        :param pulumi.Input[str] domain_name: Required. The domain name to redirect to.
-        :param pulumi.Input['DomainRedirectType'] type: Required. The redirect status code.
+        :param pulumi.Input[str] domain_name: The domain name to redirect to.
+        :param pulumi.Input['DomainRedirectType'] type: The redirect status code.
         """
-        if domain_name is not None:
-            pulumi.set(__self__, "domain_name", domain_name)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "domain_name", domain_name)
+        pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter(name="domainName")
-    def domain_name(self) -> Optional[pulumi.Input[str]]:
+    def domain_name(self) -> pulumi.Input[str]:
         """
-        Required. The domain name to redirect to.
+        The domain name to redirect to.
         """
         return pulumi.get(self, "domain_name")
 
     @domain_name.setter
-    def domain_name(self, value: Optional[pulumi.Input[str]]):
+    def domain_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "domain_name", value)
 
     @property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input['DomainRedirectType']]:
+    def type(self) -> pulumi.Input['DomainRedirectType']:
         """
-        Required. The redirect status code.
+        The redirect status code.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input['DomainRedirectType']]):
+    def type(self, value: pulumi.Input['DomainRedirectType']):
         pulumi.set(self, "type", value)
 
 

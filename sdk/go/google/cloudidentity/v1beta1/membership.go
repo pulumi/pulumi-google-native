@@ -21,7 +21,7 @@ type Membership struct {
 	MemberKey EntityKeyResponseOutput `pulumi:"memberKey"`
 	// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+	// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
 	PreferredMemberKey EntityKeyResponseOutput `pulumi:"preferredMemberKey"`
 	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
 	Roles MembershipRoleResponseArrayOutput `pulumi:"roles"`
@@ -40,6 +40,9 @@ func NewMembership(ctx *pulumi.Context,
 
 	if args.GroupId == nil {
 		return nil, errors.New("invalid value for required argument 'GroupId'")
+	}
+	if args.PreferredMemberKey == nil {
+		return nil, errors.New("invalid value for required argument 'PreferredMemberKey'")
 	}
 	var resource Membership
 	err := ctx.RegisterResource("google-native:cloudidentity/v1beta1:Membership", name, args, &resource, opts...)
@@ -69,7 +72,7 @@ type membershipState struct {
 	MemberKey *EntityKeyResponse `pulumi:"memberKey"`
 	// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
 	Name *string `pulumi:"name"`
-	// Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+	// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
 	PreferredMemberKey *EntityKeyResponse `pulumi:"preferredMemberKey"`
 	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
 	Roles []MembershipRoleResponse `pulumi:"roles"`
@@ -86,7 +89,7 @@ type MembershipState struct {
 	MemberKey EntityKeyResponsePtrInput
 	// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
 	Name pulumi.StringPtrInput
-	// Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+	// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
 	PreferredMemberKey EntityKeyResponsePtrInput
 	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
 	Roles MembershipRoleResponseArrayInput
@@ -104,8 +107,8 @@ type membershipArgs struct {
 	GroupId string `pulumi:"groupId"`
 	// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
 	MemberKey *EntityKey `pulumi:"memberKey"`
-	// Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
-	PreferredMemberKey *EntityKey `pulumi:"preferredMemberKey"`
+	// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+	PreferredMemberKey EntityKey `pulumi:"preferredMemberKey"`
 	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
 	Roles []MembershipRole `pulumi:"roles"`
 }
@@ -115,8 +118,8 @@ type MembershipArgs struct {
 	GroupId pulumi.StringInput
 	// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
 	MemberKey EntityKeyPtrInput
-	// Required. Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
-	PreferredMemberKey EntityKeyPtrInput
+	// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
+	PreferredMemberKey EntityKeyInput
 	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
 	Roles MembershipRoleArrayInput
 }

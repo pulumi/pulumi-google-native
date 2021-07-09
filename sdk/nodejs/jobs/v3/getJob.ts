@@ -33,7 +33,7 @@ export interface GetJobResult {
      */
     readonly addresses: string[];
     /**
-     * Required. At least one field within ApplicationInfo must be specified. Job application information.
+     * At least one field within ApplicationInfo must be specified. Job application information.
      */
     readonly applicationInfo: outputs.jobs.v3.ApplicationInfoResponse;
     /**
@@ -41,7 +41,7 @@ export interface GetJobResult {
      */
     readonly companyDisplayName: string;
     /**
-     * Required. The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
+     * The resource name of the company listing the job, such as "projects/api-test-project/companies/foo".
      */
     readonly companyName: string;
     /**
@@ -65,7 +65,7 @@ export interface GetJobResult {
      */
     readonly derivedInfo: outputs.jobs.v3.JobDerivedInfoResponse;
     /**
-     * Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
+     * The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
      */
     readonly description: string;
     /**
@@ -133,7 +133,7 @@ export interface GetJobResult {
      */
     readonly qualifications: string;
     /**
-     * Required. The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job is not allowed to be created if there is another job with the same [company_name], language_code and requisition_id. The maximum number of allowed characters is 255.
+     * The requisition ID, also referred to as the posting ID, assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job is not allowed to be created if there is another job with the same [company_name], language_code and requisition_id. The maximum number of allowed characters is 255.
      */
     readonly requisitionId: string;
     /**
@@ -141,7 +141,7 @@ export interface GetJobResult {
      */
     readonly responsibilities: string;
     /**
-     * Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
+     * The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
      */
     readonly title: string;
 }

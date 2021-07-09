@@ -35,7 +35,7 @@ export interface GetTriggerResult {
      */
     readonly createTime: string;
     /**
-     * Required. Destination specifies where the events should be sent to.
+     * Destination specifies where the events should be sent to.
      */
     readonly destination: outputs.eventarc.v1beta1.DestinationResponse;
     /**
@@ -47,11 +47,11 @@ export interface GetTriggerResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+     * null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
      */
     readonly matchingCriteria: outputs.eventarc.v1beta1.MatchingCriteriaResponse[];
     /**
-     * Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+     * The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
      */
     readonly name: string;
     /**

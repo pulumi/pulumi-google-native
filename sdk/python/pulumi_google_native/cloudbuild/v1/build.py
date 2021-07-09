@@ -19,6 +19,7 @@ class BuildArgs:
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  project_id: pulumi.Input[str],
+                 steps: pulumi.Input[Sequence[pulumi.Input['BuildStepArgs']]],
                  artifacts: Optional[pulumi.Input['ArtifactsArgs']] = None,
                  available_secrets: Optional[pulumi.Input['SecretsArgs']] = None,
                  images: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -28,12 +29,12 @@ class BuildArgs:
                  secrets: Optional[pulumi.Input[Sequence[pulumi.Input['SecretArgs']]]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input['SourceArgs']] = None,
-                 steps: Optional[pulumi.Input[Sequence[pulumi.Input['BuildStepArgs']]]] = None,
                  substitutions: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  timeout: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Build resource.
+        :param pulumi.Input[Sequence[pulumi.Input['BuildStepArgs']]] steps: The operations to be performed on the workspace.
         :param pulumi.Input['ArtifactsArgs'] artifacts: Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
         :param pulumi.Input['SecretsArgs'] available_secrets: Secrets and secret environment variables.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] images: A list of images to be pushed upon the successful completion of all build steps. The images are pushed using the builder service account's credentials. The digests of the pushed images will be stored in the `Build` resource's results field. If any of the images fail to be pushed, the build status is marked `FAILURE`.
@@ -43,7 +44,6 @@ class BuildArgs:
         :param pulumi.Input[Sequence[pulumi.Input['SecretArgs']]] secrets: Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
         :param pulumi.Input[str] service_account: IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. 
         :param pulumi.Input['SourceArgs'] source: The location of the source files to build.
-        :param pulumi.Input[Sequence[pulumi.Input['BuildStepArgs']]] steps: Required. The operations to be performed on the workspace.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions data for `Build` resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a `Build`. These are not docker tags.
         :param pulumi.Input[str] timeout: Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
@@ -51,6 +51,7 @@ class BuildArgs:
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "steps", steps)
         if artifacts is not None:
             pulumi.set(__self__, "artifacts", artifacts)
         if available_secrets is not None:
@@ -69,8 +70,6 @@ class BuildArgs:
             pulumi.set(__self__, "service_account", service_account)
         if source is not None:
             pulumi.set(__self__, "source", source)
-        if steps is not None:
-            pulumi.set(__self__, "steps", steps)
         if substitutions is not None:
             pulumi.set(__self__, "substitutions", substitutions)
         if tags is not None:
@@ -104,6 +103,18 @@ class BuildArgs:
     @project_id.setter
     def project_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter
+    def steps(self) -> pulumi.Input[Sequence[pulumi.Input['BuildStepArgs']]]:
+        """
+        The operations to be performed on the workspace.
+        """
+        return pulumi.get(self, "steps")
+
+    @steps.setter
+    def steps(self, value: pulumi.Input[Sequence[pulumi.Input['BuildStepArgs']]]):
+        pulumi.set(self, "steps", value)
 
     @property
     @pulumi.getter
@@ -215,18 +226,6 @@ class BuildArgs:
 
     @property
     @pulumi.getter
-    def steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BuildStepArgs']]]]:
-        """
-        Required. The operations to be performed on the workspace.
-        """
-        return pulumi.get(self, "steps")
-
-    @steps.setter
-    def steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BuildStepArgs']]]]):
-        pulumi.set(self, "steps", value)
-
-    @property
-    @pulumi.getter
     def substitutions(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Substitutions data for `Build` resource.
@@ -298,7 +297,7 @@ class Build(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SecretArgs']]]] secrets: Secrets to decrypt using Cloud Key Management Service. Note: Secret Manager is the recommended technique for managing sensitive data with Cloud Build. Use `available_secrets` to configure builds to access secrets from Secret Manager. For instructions, see: https://cloud.google.com/cloud-build/docs/securing-builds/use-secrets
         :param pulumi.Input[str] service_account: IAM service account whose credentials will be used at build runtime. Must be of the format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}`. ACCOUNT can be email address or uniqueId of the service account. 
         :param pulumi.Input[pulumi.InputType['SourceArgs']] source: The location of the source files to build.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BuildStepArgs']]]] steps: Required. The operations to be performed on the workspace.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BuildStepArgs']]]] steps: The operations to be performed on the workspace.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] substitutions: Substitutions data for `Build` resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags for annotation of a `Build`. These are not docker tags.
         :param pulumi.Input[str] timeout: Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is ten minutes.
@@ -373,6 +372,8 @@ class Build(pulumi.CustomResource):
             __props__.__dict__["secrets"] = secrets
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["source"] = source
+            if steps is None and not opts.urn:
+                raise TypeError("Missing required property 'steps'")
             __props__.__dict__["steps"] = steps
             __props__.__dict__["substitutions"] = substitutions
             __props__.__dict__["tags"] = tags
@@ -601,7 +602,7 @@ class Build(pulumi.CustomResource):
     @pulumi.getter
     def steps(self) -> pulumi.Output[Sequence['outputs.BuildStepResponse']]:
         """
-        Required. The operations to be performed on the workspace.
+        The operations to be performed on the workspace.
         """
         return pulumi.get(self, "steps")
 

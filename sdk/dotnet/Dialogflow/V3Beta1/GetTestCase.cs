@@ -47,7 +47,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         /// </summary>
         public readonly string CreationTime;
         /// <summary>
-        /// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
+        /// The human-readable name of the test case, unique within the agent. Limit of 200 characters.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

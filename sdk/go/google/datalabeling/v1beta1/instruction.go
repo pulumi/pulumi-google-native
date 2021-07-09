@@ -19,11 +19,11 @@ type Instruction struct {
 	BlockingResources pulumi.StringArrayOutput `pulumi:"blockingResources"`
 	// Creation time of instruction.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Required. The data type of this instruction.
+	// The data type of this instruction.
 	DataType pulumi.StringOutput `pulumi:"dataType"`
 	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Required. The display name of the instruction. Maximum of 64 characters.
+	// The display name of the instruction. Maximum of 64 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -40,6 +40,9 @@ func NewInstruction(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -69,11 +72,11 @@ type instructionState struct {
 	BlockingResources []string `pulumi:"blockingResources"`
 	// Creation time of instruction.
 	CreateTime *string `pulumi:"createTime"`
-	// Required. The data type of this instruction.
+	// The data type of this instruction.
 	DataType *string `pulumi:"dataType"`
 	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
 	Description *string `pulumi:"description"`
-	// Required. The display name of the instruction. Maximum of 64 characters.
+	// The display name of the instruction. Maximum of 64 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
 	Name *string `pulumi:"name"`
@@ -88,11 +91,11 @@ type InstructionState struct {
 	BlockingResources pulumi.StringArrayInput
 	// Creation time of instruction.
 	CreateTime pulumi.StringPtrInput
-	// Required. The data type of this instruction.
+	// The data type of this instruction.
 	DataType pulumi.StringPtrInput
 	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
 	Description pulumi.StringPtrInput
-	// Required. The display name of the instruction. Maximum of 64 characters.
+	// The display name of the instruction. Maximum of 64 characters.
 	DisplayName pulumi.StringPtrInput
 	// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
 	Name pulumi.StringPtrInput
@@ -107,12 +110,12 @@ func (InstructionState) ElementType() reflect.Type {
 }
 
 type instructionArgs struct {
-	// Required. The data type of this instruction.
-	DataType *string `pulumi:"dataType"`
+	// The data type of this instruction.
+	DataType string `pulumi:"dataType"`
 	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
 	Description *string `pulumi:"description"`
-	// Required. The display name of the instruction. Maximum of 64 characters.
-	DisplayName *string `pulumi:"displayName"`
+	// The display name of the instruction. Maximum of 64 characters.
+	DisplayName string `pulumi:"displayName"`
 	// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
 	PdfInstruction *GoogleCloudDatalabelingV1beta1PdfInstruction `pulumi:"pdfInstruction"`
 	Project        string                                        `pulumi:"project"`
@@ -120,12 +123,12 @@ type instructionArgs struct {
 
 // The set of arguments for constructing a Instruction resource.
 type InstructionArgs struct {
-	// Required. The data type of this instruction.
-	DataType *InstructionDataType
+	// The data type of this instruction.
+	DataType InstructionDataType
 	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
 	Description pulumi.StringPtrInput
-	// Required. The display name of the instruction. Maximum of 64 characters.
-	DisplayName pulumi.StringPtrInput
+	// The display name of the instruction. Maximum of 64 characters.
+	DisplayName pulumi.StringInput
 	// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
 	PdfInstruction GoogleCloudDatalabelingV1beta1PdfInstructionPtrInput
 	Project        pulumi.StringInput

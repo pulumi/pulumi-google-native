@@ -52,7 +52,7 @@ export class Model extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Required. The name specified for the model when it was created. The model name must be unique within the project it is created in.
+     * The name specified for the model when it was created. The model name must be unique within the project it is created in.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -79,6 +79,9 @@ export class Model extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -125,9 +128,9 @@ export interface ModelArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. The name specified for the model when it was created. The model name must be unique within the project it is created in.
+     * The name specified for the model when it was created. The model name must be unique within the project it is created in.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * Optional. If true, online prediction nodes send `stderr` and `stdout` streams to Cloud Logging. These can be more verbose than the standard access logs (see `onlinePredictionLogging`) and can incur higher cost. However, they are helpful for debugging. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high QPS. Estimate your costs before enabling this option. Default is false.
      */

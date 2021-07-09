@@ -14,8 +14,8 @@ __all__ = ['OrganizationContactArgs', 'OrganizationContact']
 @pulumi.input_type
 class OrganizationContactArgs:
     def __init__(__self__, *,
+                 email: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
-                 email: Optional[pulumi.Input[str]] = None,
                  language_tag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_category_subscriptions: Optional[pulumi.Input[Sequence[pulumi.Input['OrganizationContactNotificationCategorySubscriptionsItem']]]] = None,
@@ -23,16 +23,15 @@ class OrganizationContactArgs:
                  validation_state: Optional[pulumi.Input['OrganizationContactValidationState']] = None):
         """
         The set of arguments for constructing a OrganizationContact resource.
-        :param pulumi.Input[str] email: Required. The email address to send notifications to. This does not need to be a Google account.
+        :param pulumi.Input[str] email: The email address to send notifications to. This does not need to be a Google account.
         :param pulumi.Input[str] language_tag: The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
         :param pulumi.Input[str] name: The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationContactNotificationCategorySubscriptionsItem']]] notification_category_subscriptions: The categories of notifications that the contact will receive communications for.
         :param pulumi.Input[str] validate_time: The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
         :param pulumi.Input['OrganizationContactValidationState'] validation_state: The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
         """
+        pulumi.set(__self__, "email", email)
         pulumi.set(__self__, "organization_id", organization_id)
-        if email is not None:
-            pulumi.set(__self__, "email", email)
         if language_tag is not None:
             pulumi.set(__self__, "language_tag", language_tag)
         if name is not None:
@@ -45,6 +44,18 @@ class OrganizationContactArgs:
             pulumi.set(__self__, "validation_state", validation_state)
 
     @property
+    @pulumi.getter
+    def email(self) -> pulumi.Input[str]:
+        """
+        The email address to send notifications to. This does not need to be a Google account.
+        """
+        return pulumi.get(self, "email")
+
+    @email.setter
+    def email(self, value: pulumi.Input[str]):
+        pulumi.set(self, "email", value)
+
+    @property
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "organization_id")
@@ -52,18 +63,6 @@ class OrganizationContactArgs:
     @organization_id.setter
     def organization_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "organization_id", value)
-
-    @property
-    @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The email address to send notifications to. This does not need to be a Google account.
-        """
-        return pulumi.get(self, "email")
-
-    @email.setter
-    def email(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "email", value)
 
     @property
     @pulumi.getter(name="languageTag")
@@ -144,7 +143,7 @@ class OrganizationContact(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] email: Required. The email address to send notifications to. This does not need to be a Google account.
+        :param pulumi.Input[str] email: The email address to send notifications to. This does not need to be a Google account.
         :param pulumi.Input[str] language_tag: The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
         :param pulumi.Input[str] name: The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
         :param pulumi.Input[Sequence[pulumi.Input['OrganizationContactNotificationCategorySubscriptionsItem']]] notification_category_subscriptions: The categories of notifications that the contact will receive communications for.
@@ -194,6 +193,8 @@ class OrganizationContact(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = OrganizationContactArgs.__new__(OrganizationContactArgs)
 
+            if email is None and not opts.urn:
+                raise TypeError("Missing required property 'email'")
             __props__.__dict__["email"] = email
             __props__.__dict__["language_tag"] = language_tag
             __props__.__dict__["name"] = name
@@ -237,7 +238,7 @@ class OrganizationContact(pulumi.CustomResource):
     @pulumi.getter
     def email(self) -> pulumi.Output[str]:
         """
-        Required. The email address to send notifications to. This does not need to be a Google account.
+        The email address to send notifications to. This does not need to be a Google account.
         """
         return pulumi.get(self, "email")
 

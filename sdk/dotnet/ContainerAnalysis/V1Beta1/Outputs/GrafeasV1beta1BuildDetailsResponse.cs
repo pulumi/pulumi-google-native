@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
     public sealed class GrafeasV1beta1BuildDetailsResponse
     {
         /// <summary>
-        /// Required. The actual provenance for the build.
+        /// The actual provenance for the build.
         /// </summary>
         public readonly Outputs.BuildProvenanceResponse Provenance;
         /// <summary>

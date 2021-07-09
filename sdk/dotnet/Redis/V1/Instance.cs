@@ -76,13 +76,13 @@ namespace Pulumi.GoogleNative.Redis.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Redis memory size in GiB.
+        /// Redis memory size in GiB.
         /// </summary>
         [Output("memorySizeGb")]
         public Output<int> MemorySizeGb { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
+        /// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.GoogleNative.Redis.V1
         public Output<string> StatusMessage { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The service tier of the instance.
+        /// The service tier of the instance.
         /// </summary>
         [Output("tier")]
         public Output<string> Tier { get; private set; } = null!;
@@ -244,16 +244,16 @@ namespace Pulumi.GoogleNative.Redis.V1
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// Required. Redis memory size in GiB.
+        /// Redis memory size in GiB.
         /// </summary>
-        [Input("memorySizeGb")]
-        public Input<int>? MemorySizeGb { get; set; }
+        [Input("memorySizeGb", required: true)]
+        public Input<int> MemorySizeGb { get; set; } = null!;
 
         /// <summary>
-        /// Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
+        /// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
@@ -283,10 +283,10 @@ namespace Pulumi.GoogleNative.Redis.V1
         public Input<string>? ReservedIpRange { get; set; }
 
         /// <summary>
-        /// Required. The service tier of the instance.
+        /// The service tier of the instance.
         /// </summary>
-        [Input("tier")]
-        public Input<Pulumi.GoogleNative.Redis.V1.InstanceTier>? Tier { get; set; }
+        [Input("tier", required: true)]
+        public Input<Pulumi.GoogleNative.Redis.V1.InstanceTier> Tier { get; set; } = null!;
 
         /// <summary>
         /// Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.

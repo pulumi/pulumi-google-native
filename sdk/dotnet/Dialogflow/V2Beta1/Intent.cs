@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public Output<ImmutableArray<string>> DefaultResponsePlatforms { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The name of this intent.
+        /// The name of this intent.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -199,10 +199,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         }
 
         /// <summary>
-        /// Required. The name of this intent.
+        /// The name of this intent.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
         /// Optional. Indicates that this intent ends an interaction. Some integrations (e.g., Actions on Google or Dialogflow phone gateway) use this information to close interaction with an end user. Default is false.

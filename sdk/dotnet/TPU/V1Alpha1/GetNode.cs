@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.TPU.V1Alpha1
     public sealed class GetNodeResult
     {
         /// <summary>
-        /// Required. The type of hardware accelerators associated with this node.
+        /// The type of hardware accelerators associated with this node.
         /// </summary>
         public readonly string AcceleratorType;
         /// <summary>
@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.TPU.V1Alpha1
         /// </summary>
         public readonly ImmutableArray<Outputs.SymptomResponse> Symptoms;
         /// <summary>
-        /// Required. The version of Tensorflow running in the Node.
+        /// The version of Tensorflow running in the Node.
         /// </summary>
         public readonly string TensorflowVersion;
         /// <summary>

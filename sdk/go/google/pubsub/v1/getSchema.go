@@ -26,7 +26,7 @@ type LookupSchemaArgs struct {
 type LookupSchemaResult struct {
 	// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
 	Definition string `pulumi:"definition"`
-	// Required. Name of the schema. Format is `projects/{project}/schemas/{schema}`.
+	// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
 	Name string `pulumi:"name"`
 	// The type of the schema definition.
 	Type string `pulumi:"type"`

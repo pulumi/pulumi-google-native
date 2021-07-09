@@ -165,37 +165,58 @@ class BindingArgs:
 @pulumi.input_type
 class ContactArgs:
     def __init__(__self__, *,
-                 email: Optional[pulumi.Input[str]] = None,
-                 fax_number: Optional[pulumi.Input[str]] = None,
-                 phone_number: Optional[pulumi.Input[str]] = None,
-                 postal_address: Optional[pulumi.Input['PostalAddressArgs']] = None):
+                 email: pulumi.Input[str],
+                 phone_number: pulumi.Input[str],
+                 postal_address: pulumi.Input['PostalAddressArgs'],
+                 fax_number: Optional[pulumi.Input[str]] = None):
         """
         Details required for a contact associated with a `Registration`.
-        :param pulumi.Input[str] email: Required. Email address of the contact.
+        :param pulumi.Input[str] email: Email address of the contact.
+        :param pulumi.Input[str] phone_number: Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+        :param pulumi.Input['PostalAddressArgs'] postal_address: Postal address of the contact.
         :param pulumi.Input[str] fax_number: Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
-        :param pulumi.Input[str] phone_number: Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
-        :param pulumi.Input['PostalAddressArgs'] postal_address: Required. Postal address of the contact.
         """
-        if email is not None:
-            pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "email", email)
+        pulumi.set(__self__, "phone_number", phone_number)
+        pulumi.set(__self__, "postal_address", postal_address)
         if fax_number is not None:
             pulumi.set(__self__, "fax_number", fax_number)
-        if phone_number is not None:
-            pulumi.set(__self__, "phone_number", phone_number)
-        if postal_address is not None:
-            pulumi.set(__self__, "postal_address", postal_address)
 
     @property
     @pulumi.getter
-    def email(self) -> Optional[pulumi.Input[str]]:
+    def email(self) -> pulumi.Input[str]:
         """
-        Required. Email address of the contact.
+        Email address of the contact.
         """
         return pulumi.get(self, "email")
 
     @email.setter
-    def email(self, value: Optional[pulumi.Input[str]]):
+    def email(self, value: pulumi.Input[str]):
         pulumi.set(self, "email", value)
+
+    @property
+    @pulumi.getter(name="phoneNumber")
+    def phone_number(self) -> pulumi.Input[str]:
+        """
+        Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+        """
+        return pulumi.get(self, "phone_number")
+
+    @phone_number.setter
+    def phone_number(self, value: pulumi.Input[str]):
+        pulumi.set(self, "phone_number", value)
+
+    @property
+    @pulumi.getter(name="postalAddress")
+    def postal_address(self) -> pulumi.Input['PostalAddressArgs']:
+        """
+        Postal address of the contact.
+        """
+        return pulumi.get(self, "postal_address")
+
+    @postal_address.setter
+    def postal_address(self, value: pulumi.Input['PostalAddressArgs']):
+        pulumi.set(self, "postal_address", value)
 
     @property
     @pulumi.getter(name="faxNumber")
@@ -209,117 +230,100 @@ class ContactArgs:
     def fax_number(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "fax_number", value)
 
-    @property
-    @pulumi.getter(name="phoneNumber")
-    def phone_number(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
-        """
-        return pulumi.get(self, "phone_number")
-
-    @phone_number.setter
-    def phone_number(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "phone_number", value)
-
-    @property
-    @pulumi.getter(name="postalAddress")
-    def postal_address(self) -> Optional[pulumi.Input['PostalAddressArgs']]:
-        """
-        Required. Postal address of the contact.
-        """
-        return pulumi.get(self, "postal_address")
-
-    @postal_address.setter
-    def postal_address(self, value: Optional[pulumi.Input['PostalAddressArgs']]):
-        pulumi.set(self, "postal_address", value)
-
 
 @pulumi.input_type
 class ContactSettingsArgs:
     def __init__(__self__, *,
-                 admin_contact: Optional[pulumi.Input['ContactArgs']] = None,
-                 privacy: Optional[pulumi.Input['ContactSettingsPrivacy']] = None,
-                 registrant_contact: Optional[pulumi.Input['ContactArgs']] = None,
-                 technical_contact: Optional[pulumi.Input['ContactArgs']] = None):
+                 admin_contact: pulumi.Input['ContactArgs'],
+                 privacy: pulumi.Input['ContactSettingsPrivacy'],
+                 registrant_contact: pulumi.Input['ContactArgs'],
+                 technical_contact: pulumi.Input['ContactArgs']):
         """
         Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
-        :param pulumi.Input['ContactArgs'] admin_contact: Required. The administrative contact for the `Registration`.
-        :param pulumi.Input['ContactSettingsPrivacy'] privacy: Required. Privacy setting for the contacts associated with the `Registration`.
-        :param pulumi.Input['ContactArgs'] registrant_contact: Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
-        :param pulumi.Input['ContactArgs'] technical_contact: Required. The technical contact for the `Registration`.
+        :param pulumi.Input['ContactArgs'] admin_contact: The administrative contact for the `Registration`.
+        :param pulumi.Input['ContactSettingsPrivacy'] privacy: Privacy setting for the contacts associated with the `Registration`.
+        :param pulumi.Input['ContactArgs'] registrant_contact: The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+        :param pulumi.Input['ContactArgs'] technical_contact: The technical contact for the `Registration`.
         """
-        if admin_contact is not None:
-            pulumi.set(__self__, "admin_contact", admin_contact)
-        if privacy is not None:
-            pulumi.set(__self__, "privacy", privacy)
-        if registrant_contact is not None:
-            pulumi.set(__self__, "registrant_contact", registrant_contact)
-        if technical_contact is not None:
-            pulumi.set(__self__, "technical_contact", technical_contact)
+        pulumi.set(__self__, "admin_contact", admin_contact)
+        pulumi.set(__self__, "privacy", privacy)
+        pulumi.set(__self__, "registrant_contact", registrant_contact)
+        pulumi.set(__self__, "technical_contact", technical_contact)
 
     @property
     @pulumi.getter(name="adminContact")
-    def admin_contact(self) -> Optional[pulumi.Input['ContactArgs']]:
+    def admin_contact(self) -> pulumi.Input['ContactArgs']:
         """
-        Required. The administrative contact for the `Registration`.
+        The administrative contact for the `Registration`.
         """
         return pulumi.get(self, "admin_contact")
 
     @admin_contact.setter
-    def admin_contact(self, value: Optional[pulumi.Input['ContactArgs']]):
+    def admin_contact(self, value: pulumi.Input['ContactArgs']):
         pulumi.set(self, "admin_contact", value)
 
     @property
     @pulumi.getter
-    def privacy(self) -> Optional[pulumi.Input['ContactSettingsPrivacy']]:
+    def privacy(self) -> pulumi.Input['ContactSettingsPrivacy']:
         """
-        Required. Privacy setting for the contacts associated with the `Registration`.
+        Privacy setting for the contacts associated with the `Registration`.
         """
         return pulumi.get(self, "privacy")
 
     @privacy.setter
-    def privacy(self, value: Optional[pulumi.Input['ContactSettingsPrivacy']]):
+    def privacy(self, value: pulumi.Input['ContactSettingsPrivacy']):
         pulumi.set(self, "privacy", value)
 
     @property
     @pulumi.getter(name="registrantContact")
-    def registrant_contact(self) -> Optional[pulumi.Input['ContactArgs']]:
+    def registrant_contact(self) -> pulumi.Input['ContactArgs']:
         """
-        Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+        The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
         """
         return pulumi.get(self, "registrant_contact")
 
     @registrant_contact.setter
-    def registrant_contact(self, value: Optional[pulumi.Input['ContactArgs']]):
+    def registrant_contact(self, value: pulumi.Input['ContactArgs']):
         pulumi.set(self, "registrant_contact", value)
 
     @property
     @pulumi.getter(name="technicalContact")
-    def technical_contact(self) -> Optional[pulumi.Input['ContactArgs']]:
+    def technical_contact(self) -> pulumi.Input['ContactArgs']:
         """
-        Required. The technical contact for the `Registration`.
+        The technical contact for the `Registration`.
         """
         return pulumi.get(self, "technical_contact")
 
     @technical_contact.setter
-    def technical_contact(self, value: Optional[pulumi.Input['ContactArgs']]):
+    def technical_contact(self, value: pulumi.Input['ContactArgs']):
         pulumi.set(self, "technical_contact", value)
 
 
 @pulumi.input_type
 class CustomDnsArgs:
     def __init__(__self__, *,
-                 ds_records: Optional[pulumi.Input[Sequence[pulumi.Input['DsRecordArgs']]]] = None,
-                 name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 name_servers: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 ds_records: Optional[pulumi.Input[Sequence[pulumi.Input['DsRecordArgs']]]] = None):
         """
         Configuration for an arbitrary DNS provider.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
         :param pulumi.Input[Sequence[pulumi.Input['DsRecordArgs']]] ds_records: The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] name_servers: Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
         """
+        pulumi.set(__self__, "name_servers", name_servers)
         if ds_records is not None:
             pulumi.set(__self__, "ds_records", ds_records)
-        if name_servers is not None:
-            pulumi.set(__self__, "name_servers", name_servers)
+
+    @property
+    @pulumi.getter(name="nameServers")
+    def name_servers(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+        """
+        return pulumi.get(self, "name_servers")
+
+    @name_servers.setter
+    def name_servers(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "name_servers", value)
 
     @property
     @pulumi.getter(name="dsRecords")
@@ -332,18 +336,6 @@ class CustomDnsArgs:
     @ds_records.setter
     def ds_records(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DsRecordArgs']]]]):
         pulumi.set(self, "ds_records", value)
-
-    @property
-    @pulumi.getter(name="nameServers")
-    def name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
-        """
-        return pulumi.get(self, "name_servers")
-
-    @name_servers.setter
-    def name_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "name_servers", value)
 
 
 @pulumi.input_type
@@ -549,17 +541,16 @@ class ExprArgs:
 @pulumi.input_type
 class GlueRecordArgs:
     def __init__(__self__, *,
-                 host_name: Optional[pulumi.Input[str]] = None,
+                 host_name: pulumi.Input[str],
                  ipv4_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Defines a host on your domain that is a DNS name server for your domain and/or other domains. Glue records are a way of making the IP address of a name server known, even when it serves DNS queries for its parent domain. For example, when `ns.example.com` is a name server for `example.com`, the host `ns.example.com` must have a glue record to break the circular DNS reference.
-        :param pulumi.Input[str] host_name: Required. Domain name of the host in Punycode format.
+        :param pulumi.Input[str] host_name: Domain name of the host in Punycode format.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4_addresses: List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: List of IPv6 addresses corresponding to this host in the standard hexadecimal format (e.g. `2001:db8::`). At least one of `ipv4_address` and `ipv6_address` must be set.
         """
-        if host_name is not None:
-            pulumi.set(__self__, "host_name", host_name)
+        pulumi.set(__self__, "host_name", host_name)
         if ipv4_addresses is not None:
             pulumi.set(__self__, "ipv4_addresses", ipv4_addresses)
         if ipv6_addresses is not None:
@@ -567,14 +558,14 @@ class GlueRecordArgs:
 
     @property
     @pulumi.getter(name="hostName")
-    def host_name(self) -> Optional[pulumi.Input[str]]:
+    def host_name(self) -> pulumi.Input[str]:
         """
-        Required. Domain name of the host in Punycode format.
+        Domain name of the host in Punycode format.
         """
         return pulumi.get(self, "host_name")
 
     @host_name.setter
-    def host_name(self, value: Optional[pulumi.Input[str]]):
+    def host_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "host_name", value)
 
     @property
@@ -605,24 +596,23 @@ class GlueRecordArgs:
 @pulumi.input_type
 class GoogleDomainsDnsArgs:
     def __init__(__self__, *,
-                 ds_state: Optional[pulumi.Input['GoogleDomainsDnsDsState']] = None):
+                 ds_state: pulumi.Input['GoogleDomainsDnsDsState']):
         """
         Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
-        :param pulumi.Input['GoogleDomainsDnsDsState'] ds_state: Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+        :param pulumi.Input['GoogleDomainsDnsDsState'] ds_state: The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
         """
-        if ds_state is not None:
-            pulumi.set(__self__, "ds_state", ds_state)
+        pulumi.set(__self__, "ds_state", ds_state)
 
     @property
     @pulumi.getter(name="dsState")
-    def ds_state(self) -> Optional[pulumi.Input['GoogleDomainsDnsDsState']]:
+    def ds_state(self) -> pulumi.Input['GoogleDomainsDnsDsState']:
         """
-        Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+        The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
         """
         return pulumi.get(self, "ds_state")
 
     @ds_state.setter
-    def ds_state(self, value: Optional[pulumi.Input['GoogleDomainsDnsDsState']]):
+    def ds_state(self, value: pulumi.Input['GoogleDomainsDnsDsState']):
         pulumi.set(self, "ds_state", value)
 
 
@@ -709,6 +699,7 @@ class MoneyArgs:
 @pulumi.input_type
 class PostalAddressArgs:
     def __init__(__self__, *,
+                 region_code: pulumi.Input[str],
                  address_lines: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  administrative_area: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
@@ -716,12 +707,12 @@ class PostalAddressArgs:
                  organization: Optional[pulumi.Input[str]] = None,
                  postal_code: Optional[pulumi.Input[str]] = None,
                  recipients: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 region_code: Optional[pulumi.Input[str]] = None,
                  revision: Optional[pulumi.Input[int]] = None,
                  sorting_code: Optional[pulumi.Input[str]] = None,
                  sublocality: Optional[pulumi.Input[str]] = None):
         """
         Represents a postal address, e.g. for postal delivery or payments addresses. Given a postal address, a postal service can deliver items to a premise, P.O. Box or similar. It is not intended to model geographical locations (roads, towns, mountains). In typical usage an address would be created via user input or from importing existing data, depending on the type of process. Advice on address input / editing: - Use an i18n-ready address widget such as https://github.com/google/libaddressinput) - Users should not be presented with UI elements for input or editing of fields outside countries where that field is used. For more guidance on how to use this schema, please see: https://support.google.com/business/answer/6397478
+        :param pulumi.Input[str] region_code: CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] address_lines: Unstructured address lines describing the lower levels of an address. Because values in address_lines do not have type information and may sometimes contain multiple values in a single field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), address_language is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a region_code with all remaining information placed in the address_lines. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a region_code and address_lines, and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas).
         :param pulumi.Input[str] administrative_area: Optional. Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state, a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland this should be left unpopulated.
         :param pulumi.Input[str] language_code: Optional. BCP-47 language code of the contents of this address (if known). This is often the UI language of the input form or is expected to match one of the languages used in the address' country/region, or their transliterated equivalents. This can affect formatting in certain countries, but is not critical to the correctness of the data and will never affect any validation or other non-formatting related operations. If this value is not known, it should be omitted (rather than specifying a possibly incorrect default). Examples: "zh-Hant", "ja", "ja-Latn", "en".
@@ -729,11 +720,11 @@ class PostalAddressArgs:
         :param pulumi.Input[str] organization: Optional. The name of the organization at the address.
         :param pulumi.Input[str] postal_code: Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] recipients: Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
-        :param pulumi.Input[str] region_code: Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
         :param pulumi.Input[int] revision: The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
         :param pulumi.Input[str] sorting_code: Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
         :param pulumi.Input[str] sublocality: Optional. Sublocality of the address. For example, this can be neighborhoods, boroughs, districts.
         """
+        pulumi.set(__self__, "region_code", region_code)
         if address_lines is not None:
             pulumi.set(__self__, "address_lines", address_lines)
         if administrative_area is not None:
@@ -748,14 +739,24 @@ class PostalAddressArgs:
             pulumi.set(__self__, "postal_code", postal_code)
         if recipients is not None:
             pulumi.set(__self__, "recipients", recipients)
-        if region_code is not None:
-            pulumi.set(__self__, "region_code", region_code)
         if revision is not None:
             pulumi.set(__self__, "revision", revision)
         if sorting_code is not None:
             pulumi.set(__self__, "sorting_code", sorting_code)
         if sublocality is not None:
             pulumi.set(__self__, "sublocality", sublocality)
+
+    @property
+    @pulumi.getter(name="regionCode")
+    def region_code(self) -> pulumi.Input[str]:
+        """
+        CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+        """
+        return pulumi.get(self, "region_code")
+
+    @region_code.setter
+    def region_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "region_code", value)
 
     @property
     @pulumi.getter(name="addressLines")
@@ -840,18 +841,6 @@ class PostalAddressArgs:
     @recipients.setter
     def recipients(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "recipients", value)
-
-    @property
-    @pulumi.getter(name="regionCode")
-    def region_code(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
-        """
-        return pulumi.get(self, "region_code")
-
-    @region_code.setter
-    def region_code(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "region_code", value)
 
     @property
     @pulumi.getter

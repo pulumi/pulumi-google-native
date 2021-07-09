@@ -22,10 +22,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public Input<string>? DefaultValue { get; set; }
 
         /// <summary>
-        /// Required. The name of the parameter.
+        /// The name of the parameter.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
         /// Optional. The name of the entity type, prefixed with `@`, that describes values of the parameter. If the parameter is required, this must be provided.

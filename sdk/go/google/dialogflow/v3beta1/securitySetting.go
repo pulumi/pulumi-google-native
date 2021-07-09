@@ -15,11 +15,11 @@ import (
 type SecuritySetting struct {
 	pulumi.CustomResourceState
 
-	// Required. The human-readable name of the security settings, unique within the location.
+	// The human-readable name of the security settings, unique within the location.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
 	InspectTemplate pulumi.StringOutput `pulumi:"inspectTemplate"`
-	// Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
+	// Resource name of the settings. Format: `projects//locations//securitySettings/`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// List of types of data to remove when retention settings triggers purge.
 	PurgeDataTypes pulumi.StringArrayOutput `pulumi:"purgeDataTypes"`
@@ -38,8 +38,14 @@ func NewSecuritySetting(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
@@ -66,11 +72,11 @@ func GetSecuritySetting(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecuritySetting resources.
 type securitySettingState struct {
-	// Required. The human-readable name of the security settings, unique within the location.
+	// The human-readable name of the security settings, unique within the location.
 	DisplayName *string `pulumi:"displayName"`
 	// DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
 	InspectTemplate *string `pulumi:"inspectTemplate"`
-	// Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
+	// Resource name of the settings. Format: `projects//locations//securitySettings/`.
 	Name *string `pulumi:"name"`
 	// List of types of data to remove when retention settings triggers purge.
 	PurgeDataTypes []string `pulumi:"purgeDataTypes"`
@@ -83,11 +89,11 @@ type securitySettingState struct {
 }
 
 type SecuritySettingState struct {
-	// Required. The human-readable name of the security settings, unique within the location.
+	// The human-readable name of the security settings, unique within the location.
 	DisplayName pulumi.StringPtrInput
 	// DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
 	InspectTemplate pulumi.StringPtrInput
-	// Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
+	// Resource name of the settings. Format: `projects//locations//securitySettings/`.
 	Name pulumi.StringPtrInput
 	// List of types of data to remove when retention settings triggers purge.
 	PurgeDataTypes pulumi.StringArrayInput
@@ -104,14 +110,14 @@ func (SecuritySettingState) ElementType() reflect.Type {
 }
 
 type securitySettingArgs struct {
-	// Required. The human-readable name of the security settings, unique within the location.
-	DisplayName *string `pulumi:"displayName"`
+	// The human-readable name of the security settings, unique within the location.
+	DisplayName string `pulumi:"displayName"`
 	// DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
 	InspectTemplate *string `pulumi:"inspectTemplate"`
 	Location        string  `pulumi:"location"`
-	// Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
-	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	// Resource name of the settings. Format: `projects//locations//securitySettings/`.
+	Name    string `pulumi:"name"`
+	Project string `pulumi:"project"`
 	// List of types of data to remove when retention settings triggers purge.
 	PurgeDataTypes []string `pulumi:"purgeDataTypes"`
 	// Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
@@ -124,13 +130,13 @@ type securitySettingArgs struct {
 
 // The set of arguments for constructing a SecuritySetting resource.
 type SecuritySettingArgs struct {
-	// Required. The human-readable name of the security settings, unique within the location.
-	DisplayName pulumi.StringPtrInput
+	// The human-readable name of the security settings, unique within the location.
+	DisplayName pulumi.StringInput
 	// DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
 	InspectTemplate pulumi.StringPtrInput
 	Location        pulumi.StringInput
-	// Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
-	Name    pulumi.StringPtrInput
+	// Resource name of the settings. Format: `projects//locations//securitySettings/`.
+	Name    pulumi.StringInput
 	Project pulumi.StringInput
 	// List of types of data to remove when retention settings triggers purge.
 	PurgeDataTypes SecuritySettingPurgeDataTypesItemArrayInput

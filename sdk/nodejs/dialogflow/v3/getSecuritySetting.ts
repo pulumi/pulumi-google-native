@@ -31,7 +31,7 @@ export interface GetSecuritySettingArgs {
 
 export interface GetSecuritySettingResult {
     /**
-     * Required. The human-readable name of the security settings, unique within the location.
+     * The human-readable name of the security settings, unique within the location.
      */
     readonly displayName: string;
     /**
@@ -39,7 +39,7 @@ export interface GetSecuritySettingResult {
      */
     readonly inspectTemplate: string;
     /**
-     * Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
+     * Resource name of the settings. Format: `projects//locations//securitySettings/`.
      */
     readonly name: string;
     /**

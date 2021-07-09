@@ -30,6 +30,6 @@ type LookupFolderResult struct {
 	LifecycleState string `pulumi:"lifecycleState"`
 	// The resource name of the Folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
 	Name string `pulumi:"name"`
-	// Required. The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
+	// The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
 	Parent string `pulumi:"parent"`
 }

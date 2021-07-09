@@ -12,10 +12,10 @@ import (
 
 // Settings specific to the Key Management Service.
 type GoogleCloudAssuredworkloadsV1WorkloadKMSSettings struct {
-	// Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
-	NextRotationTime *string `pulumi:"nextRotationTime"`
-	// Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
-	RotationPeriod *string `pulumi:"rotationPeriod"`
+	// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+	NextRotationTime string `pulumi:"nextRotationTime"`
+	// Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+	RotationPeriod string `pulumi:"rotationPeriod"`
 }
 
 // GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsInput is an input type that accepts GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs and GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput values.
@@ -31,10 +31,10 @@ type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsInput interface {
 
 // Settings specific to the Key Management Service.
 type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs struct {
-	// Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
-	NextRotationTime pulumi.StringPtrInput `pulumi:"nextRotationTime"`
-	// Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
-	RotationPeriod pulumi.StringPtrInput `pulumi:"rotationPeriod"`
+	// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+	NextRotationTime pulumi.StringInput `pulumi:"nextRotationTime"`
+	// Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+	RotationPeriod pulumi.StringInput `pulumi:"rotationPeriod"`
 }
 
 func (GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs) ElementType() reflect.Type {
@@ -115,14 +115,14 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput) ToGoogleCloudAss
 	}).(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput)
 }
 
-// Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
-func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput) NextRotationTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadKMSSettings) *string { return v.NextRotationTime }).(pulumi.StringPtrOutput)
+// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput) NextRotationTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadKMSSettings) string { return v.NextRotationTime }).(pulumi.StringOutput)
 }
 
-// Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
-func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput) RotationPeriod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadKMSSettings) *string { return v.RotationPeriod }).(pulumi.StringPtrOutput)
+// Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput) RotationPeriod() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadKMSSettings) string { return v.RotationPeriod }).(pulumi.StringOutput)
 }
 
 type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -145,31 +145,31 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput) Elem() Google
 	}).(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput)
 }
 
-// Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
 func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput) NextRotationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1WorkloadKMSSettings) *string {
 		if v == nil {
 			return nil
 		}
-		return v.NextRotationTime
+		return &v.NextRotationTime
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+// Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
 func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput) RotationPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1WorkloadKMSSettings) *string {
 		if v == nil {
 			return nil
 		}
-		return v.RotationPeriod
+		return &v.RotationPeriod
 	}).(pulumi.StringPtrOutput)
 }
 
 // Settings specific to the Key Management Service.
 type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse struct {
-	// Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+	// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
 	NextRotationTime string `pulumi:"nextRotationTime"`
-	// Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+	// Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
 	RotationPeriod string `pulumi:"rotationPeriod"`
 }
 
@@ -186,9 +186,9 @@ type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseInput interface {
 
 // Settings specific to the Key Management Service.
 type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseArgs struct {
-	// Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+	// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
 	NextRotationTime pulumi.StringInput `pulumi:"nextRotationTime"`
-	// Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+	// Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
 	RotationPeriod pulumi.StringInput `pulumi:"rotationPeriod"`
 }
 
@@ -270,12 +270,12 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput) ToGoogle
 	}).(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponsePtrOutput)
 }
 
-// Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
 func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput) NextRotationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse) string { return v.NextRotationTime }).(pulumi.StringOutput)
 }
 
-// Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+// Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
 func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput) RotationPeriod() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse) string { return v.RotationPeriod }).(pulumi.StringOutput)
 }
@@ -300,7 +300,7 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponsePtrOutput) Elem(
 	}).(GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponseOutput)
 }
 
-// Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
 func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponsePtrOutput) NextRotationTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse) *string {
 		if v == nil {
@@ -310,7 +310,7 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponsePtrOutput) NextR
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+// Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
 func (o GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponsePtrOutput) RotationPeriod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsResponse) *string {
 		if v == nil {

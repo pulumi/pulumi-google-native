@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// </summary>
     public sealed class IosDeviceListArgs : Pulumi.ResourceArgs
     {
-        [Input("iosDevices")]
+        [Input("iosDevices", required: true)]
         private InputList<Inputs.IosDeviceArgs>? _iosDevices;
 
         /// <summary>
-        /// Required. A list of iOS devices.
+        /// A list of iOS devices.
         /// </summary>
         public InputList<Inputs.IosDeviceArgs> IosDevices
         {

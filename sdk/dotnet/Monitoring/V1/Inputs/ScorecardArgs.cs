@@ -40,10 +40,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         }
 
         /// <summary>
-        /// Required. Fields for querying time series data from the Stackdriver metrics API.
+        /// Fields for querying time series data from the Stackdriver metrics API.
         /// </summary>
-        [Input("timeSeriesQuery")]
-        public Input<Inputs.TimeSeriesQueryArgs>? TimeSeriesQuery { get; set; }
+        [Input("timeSeriesQuery", required: true)]
+        public Input<Inputs.TimeSeriesQueryArgs> TimeSeriesQuery { get; set; } = null!;
 
         public ScorecardArgs()
         {

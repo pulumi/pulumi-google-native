@@ -28,11 +28,11 @@ type LookupCompanyResult struct {
 	CareerSiteUri string `pulumi:"careerSiteUri"`
 	// Derived details about the company.
 	DerivedInfo CompanyDerivedInfoResponse `pulumi:"derivedInfo"`
-	// Required. The display name of the company, for example, "Google LLC".
+	// The display name of the company, for example, "Google LLC".
 	DisplayName string `pulumi:"displayName"`
 	// Equal Employment Opportunity legal disclaimer text to be associated with all jobs, and typically to be displayed in all roles. The maximum number of allowed characters is 500.
 	EeoText string `pulumi:"eeoText"`
-	// Required. Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
+	// Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
 	ExternalId string `pulumi:"externalId"`
 	// The street address of the company's main headquarters, which may be different from the job location. The service attempts to geolocate the provided address, and populates a more specific location wherever possible in DerivedInfo.headquarters_location.
 	HeadquartersAddress string `pulumi:"headquartersAddress"`

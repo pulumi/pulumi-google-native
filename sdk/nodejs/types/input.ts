@@ -29,9 +29,9 @@ export namespace accesscontextmanager {
              */
             combiningFunction?: pulumi.Input<enums.accesscontextmanager.v1.BasicLevelCombiningFunction>;
             /**
-             * Required. A list of requirements for the `AccessLevel` to be granted.
+             * A list of requirements for the `AccessLevel` to be granted.
              */
-            conditions?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.v1.ConditionArgs>[]>;
+            conditions: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.v1.ConditionArgs>[]>;
         }
 
         /**
@@ -69,9 +69,9 @@ export namespace accesscontextmanager {
          */
         export interface CustomLevelArgs {
             /**
-             * Required. A Cloud CEL expression evaluating to a boolean.
+             * A Cloud CEL expression evaluating to a boolean.
              */
-            expr?: pulumi.Input<inputs.accesscontextmanager.v1.ExprArgs>;
+            expr: pulumi.Input<inputs.accesscontextmanager.v1.ExprArgs>;
         }
 
         /**
@@ -251,9 +251,9 @@ export namespace accesscontextmanager {
              */
             minimumVersion?: pulumi.Input<string>;
             /**
-             * Required. The allowed OS type.
+             * The allowed OS type.
              */
-            osType?: pulumi.Input<enums.accesscontextmanager.v1.OsConstraintOsType>;
+            osType: pulumi.Input<enums.accesscontextmanager.v1.OsConstraintOsType>;
             /**
              * Only allows requests from devices with a verified Chrome OS. Verifications includes requirements that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call the API targeted by the request.
              */
@@ -316,9 +316,9 @@ export namespace accesscontextmanager {
              */
             combiningFunction?: pulumi.Input<enums.accesscontextmanager.v1beta.BasicLevelCombiningFunction>;
             /**
-             * Required. A list of requirements for the `AccessLevel` to be granted.
+             * A list of requirements for the `AccessLevel` to be granted.
              */
-            conditions?: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.v1beta.ConditionArgs>[]>;
+            conditions: pulumi.Input<pulumi.Input<inputs.accesscontextmanager.v1beta.ConditionArgs>[]>;
         }
 
         /**
@@ -356,9 +356,9 @@ export namespace accesscontextmanager {
          */
         export interface CustomLevelArgs {
             /**
-             * Required. A Cloud CEL expression evaluating to a boolean.
+             * A Cloud CEL expression evaluating to a boolean.
              */
-            expr?: pulumi.Input<inputs.accesscontextmanager.v1beta.ExprArgs>;
+            expr: pulumi.Input<inputs.accesscontextmanager.v1beta.ExprArgs>;
         }
 
         /**
@@ -422,9 +422,9 @@ export namespace accesscontextmanager {
              */
             minimumVersion?: pulumi.Input<string>;
             /**
-             * Required. The allowed OS type.
+             * The allowed OS type.
              */
-            osType?: pulumi.Input<enums.accesscontextmanager.v1beta.OsConstraintOsType>;
+            osType: pulumi.Input<enums.accesscontextmanager.v1beta.OsConstraintOsType>;
             /**
              * Only allows requests from devices with a verified Chrome OS. Verifications includes requirements that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call the API targeted by the request.
              */
@@ -702,9 +702,9 @@ export namespace apigateway {
          */
         export interface ApigatewayGatewayConfigArgs {
             /**
-             * Required. Backend settings that are applied to all backends of the Gateway.
+             * Backend settings that are applied to all backends of the Gateway.
              */
-            backendConfig?: pulumi.Input<inputs.apigateway.v1beta.ApigatewayBackendConfigArgs>;
+            backendConfig: pulumi.Input<inputs.apigateway.v1beta.ApigatewayBackendConfigArgs>;
         }
 
     }
@@ -763,13 +763,13 @@ export namespace apigee {
              */
             env?: pulumi.Input<string>;
             /**
-             * Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
+             * The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
              */
-            instanceId?: pulumi.Input<string>;
+            instanceId: pulumi.Input<string>;
             /**
-             * Required. The location associated with the metrics.
+             * The location associated with the metrics.
              */
-            location?: pulumi.Input<string>;
+            location: pulumi.Input<string>;
         }
 
         /**
@@ -803,9 +803,9 @@ export namespace apigee {
              */
             path?: pulumi.Input<string>;
             /**
-             * Required. GCP project in which the datastore exists
+             * GCP project in which the datastore exists
              */
-            project?: pulumi.Input<string>;
+            project: pulumi.Input<string>;
             /**
              * Prefix of BigQuery table Required for `bigquery` target_type.
              */
@@ -817,13 +817,13 @@ export namespace apigee {
          */
         export interface GoogleCloudApigeeV1DateRangeArgs {
             /**
-             * Required. End date (exclusive) of the data to export in the format `yyyy-mm-dd`. The date range ends at 00:00:00 UTC on the end date- which will not be in the output.
+             * End date (exclusive) of the data to export in the format `yyyy-mm-dd`. The date range ends at 00:00:00 UTC on the end date- which will not be in the output.
              */
-            end?: pulumi.Input<string>;
+            end: pulumi.Input<string>;
             /**
-             * Required. Start date of the data to export in the format `yyyy-mm-dd`. The date range begins at 00:00:00 UTC on the start date.
+             * Start date of the data to export in the format `yyyy-mm-dd`. The date range begins at 00:00:00 UTC on the start date.
              */
-            start?: pulumi.Input<string>;
+            start: pulumi.Input<string>;
         }
 
         /**
@@ -835,9 +835,9 @@ export namespace apigee {
              */
             operation?: pulumi.Input<string>;
             /**
-             * Required. `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
+             * `query`, `mutation` and `subscription` are the three operation types offered by graphQL. Currently we support only `query` and `mutation`.
              */
-            operationTypes?: pulumi.Input<pulumi.Input<string>[]>;
+            operationTypes: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -845,17 +845,17 @@ export namespace apigee {
          */
         export interface GoogleCloudApigeeV1GraphQLOperationConfigArgs {
             /**
-             * Required. API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+             * API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
              */
-            apiSource?: pulumi.Input<string>;
+            apiSource: pulumi.Input<string>;
             /**
              * Custom attributes associated with the operation.
              */
             attributes?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1AttributeArgs>[]>;
             /**
-             * Required. List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
+             * List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
              */
-            operations?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1GraphQLOperationArgs>[]>;
+            operations: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1GraphQLOperationArgs>[]>;
             /**
              * Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
              */
@@ -871,9 +871,9 @@ export namespace apigee {
              */
             operationConfigType?: pulumi.Input<string>;
             /**
-             * Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+             * List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
              */
-            operationConfigs?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1GraphQLOperationConfigArgs>[]>;
+            operationConfigs: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1GraphQLOperationConfigArgs>[]>;
         }
 
         /**
@@ -905,9 +905,9 @@ export namespace apigee {
              */
             methods?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Required. resource represents REST resource path associated with the proxy/remote service.
+             * resource represents REST resource path associated with the proxy/remote service.
              */
-            resource?: pulumi.Input<string>;
+            resource: pulumi.Input<string>;
         }
 
         /**
@@ -915,9 +915,9 @@ export namespace apigee {
          */
         export interface GoogleCloudApigeeV1OperationConfigArgs {
             /**
-             * Required. API proxy or remote service name with which the resources, methods, and quota are associated.
+             * API proxy or remote service name with which the resources, methods, and quota are associated.
              */
-            apiSource?: pulumi.Input<string>;
+            apiSource: pulumi.Input<string>;
             /**
              * Custom attributes associated with the operation.
              */
@@ -941,9 +941,9 @@ export namespace apigee {
              */
             operationConfigType?: pulumi.Input<string>;
             /**
-             * Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
+             * List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
              */
-            operationConfigs?: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1OperationConfigArgs>[]>;
+            operationConfigs: pulumi.Input<pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1OperationConfigArgs>[]>;
         }
 
         /**
@@ -983,9 +983,9 @@ export namespace apigee {
              */
             function?: pulumi.Input<string>;
             /**
-             * Required. Metric name.
+             * Metric name.
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
             /**
              * One of `+`, `-`, `/`, `%`, `*`.
              */
@@ -1001,13 +1001,13 @@ export namespace apigee {
          */
         export interface GoogleCloudApigeeV1QuotaArgs {
             /**
-             * Required. Time interval over which the number of request messages is calculated.
+             * Time interval over which the number of request messages is calculated.
              */
-            interval?: pulumi.Input<string>;
+            interval: pulumi.Input<string>;
             /**
-             * Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
+             * Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected.
              */
-            limit?: pulumi.Input<string>;
+            limit: pulumi.Input<string>;
             /**
              * Time unit defined for the `interval`. Valid values include `minute`, `hour`, `day`, or `month`. If `limit` and `interval` are valid, the default value is `hour`; otherwise, the default is null.
              */
@@ -1078,9 +1078,9 @@ export namespace apigee {
              */
             commonName?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1TlsInfoCommonNameArgs>;
             /**
-             * Required. Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
+             * Enables TLS. If false, neither one-way nor two-way TLS will be enabled.
              */
-            enabled?: pulumi.Input<boolean>;
+            enabled: pulumi.Input<boolean>;
             /**
              * If true, Edge ignores TLS certificate errors. Valid when configuring TLS for target servers and target endpoints, and when configuring virtual hosts that use 2-way TLS. When used with a target endpoint/target server, if the backend system uses SNI and returns a cert with a subject Distinguished Name (DN) that does not match the hostname, there is no way to ignore the error and the connection fails.
              */
@@ -2846,13 +2846,13 @@ export namespace assuredworkloads {
          */
         export interface GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs {
             /**
-             * Required. Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
+             * Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
              */
-            nextRotationTime?: pulumi.Input<string>;
+            nextRotationTime: pulumi.Input<string>;
             /**
-             * Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
+             * Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key Management Service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours.
              */
-            rotationPeriod?: pulumi.Input<string>;
+            rotationPeriod: pulumi.Input<string>;
         }
 
         /**
@@ -3804,9 +3804,9 @@ export namespace bigquery {
              */
             structType?: pulumi.Input<inputs.bigquery.v2.StandardSqlStructTypeArgs>;
             /**
-             * Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+             * The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
              */
-            typeKind?: pulumi.Input<enums.bigquery.v2.StandardSqlDataTypeTypeKind>;
+            typeKind: pulumi.Input<enums.bigquery.v2.StandardSqlDataTypeTypeKind>;
         }
 
         /**
@@ -4252,9 +4252,9 @@ export namespace billingbudgets {
              */
             endDate?: pulumi.Input<inputs.billingbudgets.v1.GoogleTypeDateArgs>;
             /**
-             * Required. The start date must be after January 1, 2017.
+             * The start date must be after January 1, 2017.
              */
-            startDate?: pulumi.Input<inputs.billingbudgets.v1.GoogleTypeDateArgs>;
+            startDate: pulumi.Input<inputs.billingbudgets.v1.GoogleTypeDateArgs>;
         }
 
         /**
@@ -4332,9 +4332,9 @@ export namespace billingbudgets {
              */
             spendBasis?: pulumi.Input<enums.billingbudgets.v1.GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasis>;
             /**
-             * Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
+             * Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
              */
-            thresholdPercent?: pulumi.Input<number>;
+            thresholdPercent: pulumi.Input<number>;
         }
 
         /**
@@ -4421,9 +4421,9 @@ export namespace billingbudgets {
              */
             endDate?: pulumi.Input<inputs.billingbudgets.v1beta1.GoogleTypeDateArgs>;
             /**
-             * Required. The start date must be after January 1, 2017.
+             * The start date must be after January 1, 2017.
              */
-            startDate?: pulumi.Input<inputs.billingbudgets.v1beta1.GoogleTypeDateArgs>;
+            startDate: pulumi.Input<inputs.billingbudgets.v1beta1.GoogleTypeDateArgs>;
         }
 
         /**
@@ -4479,9 +4479,9 @@ export namespace billingbudgets {
              */
             spendBasis?: pulumi.Input<enums.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis>;
             /**
-             * Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
+             * Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
              */
-            thresholdPercent?: pulumi.Input<number>;
+            thresholdPercent: pulumi.Input<number>;
         }
 
         /**
@@ -4606,9 +4606,9 @@ export namespace binaryauthorization {
          */
         export interface UserOwnedGrafeasNoteArgs {
             /**
-             * Required. The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*&#47;notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
+             * The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*&#47;notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
              */
-            noteReference?: pulumi.Input<string>;
+            noteReference: pulumi.Input<string>;
             /**
              * Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist.
              */
@@ -4699,9 +4699,9 @@ export namespace binaryauthorization {
          */
         export interface UserOwnedDrydockNoteArgs {
             /**
-             * Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*&#47;notes/*` (or the legacy `providers/*&#47;notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
+             * The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*&#47;notes/*` (or the legacy `providers/*&#47;notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
              */
-            noteReference?: pulumi.Input<string>;
+            noteReference: pulumi.Input<string>;
             /**
              * Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist.
              */
@@ -4902,9 +4902,9 @@ export namespace cloudbuild {
              */
             source?: pulumi.Input<inputs.cloudbuild.v1.SourceArgs>;
             /**
-             * Required. The operations to be performed on the workspace.
+             * The operations to be performed on the workspace.
              */
-            steps?: pulumi.Input<pulumi.Input<inputs.cloudbuild.v1.BuildStepArgs>[]>;
+            steps: pulumi.Input<pulumi.Input<inputs.cloudbuild.v1.BuildStepArgs>[]>;
             /**
              * Substitutions data for `Build` resource.
              */
@@ -4998,9 +4998,9 @@ export namespace cloudbuild {
              */
             id?: pulumi.Input<string>;
             /**
-             * Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
+             * The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
             /**
              * A list of environment variables which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`.
              */
@@ -5312,9 +5312,9 @@ export namespace cloudbuild {
          */
         export interface NetworkConfigArgs {
             /**
-             * Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
+             * Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
              */
-            peeredNetwork?: pulumi.Input<string>;
+            peeredNetwork: pulumi.Input<string>;
         }
 
         /**
@@ -5339,9 +5339,9 @@ export namespace cloudbuild {
          */
         export interface NetworkConfigArgs {
             /**
-             * Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+             * Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
              */
-            peeredNetwork?: pulumi.Input<string>;
+            peeredNetwork: pulumi.Input<string>;
         }
 
         /**
@@ -5522,9 +5522,9 @@ export namespace cloudchannel {
              */
             recipients?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+             * CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
              */
-            regionCode?: pulumi.Input<string>;
+            regionCode: pulumi.Input<string>;
             /**
              * The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
              */
@@ -5595,17 +5595,17 @@ export namespace cloudfunctions {
          */
         export interface EventTriggerArgs {
             /**
-             * Required. The type of event to observe. For example: `providers/cloud.storage/eventTypes/object.change` and `providers/cloud.pubsub/eventTypes/topic.publish`. Event types match pattern `providers/*&#47;eventTypes/*.*`. The pattern contains: 1. namespace: For example, `cloud.storage` and `google.firebase.analytics`. 2. resource type: The type of resource on which event occurs. For example, the Google Cloud Storage API includes the type `object`. 3. action: The action that generates the event. For example, action for a Google Cloud Storage Object is 'change'. These parts are lower case.
+             * The type of event to observe. For example: `providers/cloud.storage/eventTypes/object.change` and `providers/cloud.pubsub/eventTypes/topic.publish`. Event types match pattern `providers/*&#47;eventTypes/*.*`. The pattern contains: 1. namespace: For example, `cloud.storage` and `google.firebase.analytics`. 2. resource type: The type of resource on which event occurs. For example, the Google Cloud Storage API includes the type `object`. 3. action: The action that generates the event. For example, action for a Google Cloud Storage Object is 'change'. These parts are lower case.
              */
-            eventType?: pulumi.Input<string>;
+            eventType: pulumi.Input<string>;
             /**
              * Specifies policy for failed executions.
              */
             failurePolicy?: pulumi.Input<inputs.cloudfunctions.v1.FailurePolicyArgs>;
             /**
-             * Required. The resource(s) from which to observe events, for example, `projects/_/buckets/myBucket`. Not all syntactically correct values are accepted by all services. For example: 1. The authorization model must support it. Google Cloud Functions only allows EventTriggers to be deployed that observe resources in the same project as the `CloudFunction`. 2. The resource type must match the pattern expected for an `event_type`. For example, an `EventTrigger` that has an `event_type` of "google.pubsub.topic.publish" should have a resource that matches Google Cloud Pub/Sub topics. Additionally, some services may support short names when creating an `EventTrigger`. These will always be returned in the normalized "long" format. See each *service's* documentation for supported formats.
+             * The resource(s) from which to observe events, for example, `projects/_/buckets/myBucket`. Not all syntactically correct values are accepted by all services. For example: 1. The authorization model must support it. Google Cloud Functions only allows EventTriggers to be deployed that observe resources in the same project as the `CloudFunction`. 2. The resource type must match the pattern expected for an `event_type`. For example, an `EventTrigger` that has an `event_type` of "google.pubsub.topic.publish" should have a resource that matches Google Cloud Pub/Sub topics. Additionally, some services may support short names when creating an `EventTrigger`. These will always be returned in the normalized "long" format. See each *service's* documentation for supported formats.
              */
-            resource?: pulumi.Input<string>;
+            resource: pulumi.Input<string>;
             /**
              * The hostname of the service that should be observed. If no string is provided, the default service implementing the API will be used. For example, `storage.googleapis.com` is the default for all event types in the `google.storage` namespace.
              */
@@ -6020,9 +6020,9 @@ export namespace cloudkms {
          */
         export interface CryptoKeyVersionTemplateArgs {
             /**
-             * Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
+             * Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
              */
-            algorithm?: pulumi.Input<enums.cloudkms.v1.CryptoKeyVersionTemplateAlgorithm>;
+            algorithm: pulumi.Input<enums.cloudkms.v1.CryptoKeyVersionTemplateAlgorithm>;
             /**
              * ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
              */
@@ -6520,9 +6520,9 @@ export namespace cloudscheduler {
              */
             oidcToken?: pulumi.Input<inputs.cloudscheduler.v1.OidcTokenArgs>;
             /**
-             * Required. The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
+             * The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
              */
-            uri?: pulumi.Input<string>;
+            uri: pulumi.Input<string>;
         }
 
         /**
@@ -6566,9 +6566,9 @@ export namespace cloudscheduler {
              */
             data?: pulumi.Input<string>;
             /**
-             * Required. The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
+             * The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
              */
-            topicName?: pulumi.Input<string>;
+            topicName: pulumi.Input<string>;
         }
 
         /**
@@ -6669,9 +6669,9 @@ export namespace cloudscheduler {
              */
             oidcToken?: pulumi.Input<inputs.cloudscheduler.v1beta1.OidcTokenArgs>;
             /**
-             * Required. The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
+             * The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
              */
-            uri?: pulumi.Input<string>;
+            uri: pulumi.Input<string>;
         }
 
         /**
@@ -6715,9 +6715,9 @@ export namespace cloudscheduler {
              */
             data?: pulumi.Input<string>;
             /**
-             * Required. The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
+             * The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
              */
-            topicName?: pulumi.Input<string>;
+            topicName: pulumi.Input<string>;
         }
 
         /**
@@ -7071,9 +7071,9 @@ export namespace cloudtasks {
              */
             oidcToken?: pulumi.Input<inputs.cloudtasks.v2.OidcTokenArgs>;
             /**
-             * Required. The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
+             * The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
              */
-            url?: pulumi.Input<string>;
+            url: pulumi.Input<string>;
         }
 
         /**
@@ -7441,9 +7441,9 @@ export namespace cloudtasks {
              */
             oidcToken?: pulumi.Input<inputs.cloudtasks.v2beta3.OidcTokenArgs>;
             /**
-             * Required. The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
+             * The full url path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Tasks will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding. The `Location` header response from a redirect response [`300` - `399`] may be followed. The redirect is not counted as a separate attempt.
              */
-            url?: pulumi.Input<string>;
+            url: pulumi.Input<string>;
         }
 
         /**
@@ -7894,17 +7894,17 @@ export namespace composer {
          */
         export interface MaintenanceWindowArgs {
             /**
-             * Required. Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
+             * Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
              */
-            endTime?: pulumi.Input<string>;
+            endTime: pulumi.Input<string>;
             /**
-             * Required. Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+             * Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
              */
-            recurrence?: pulumi.Input<string>;
+            recurrence: pulumi.Input<string>;
             /**
-             * Required. Start time of the first recurrence of the maintenance window.
+             * Start time of the first recurrence of the maintenance window.
              */
-            startTime?: pulumi.Input<string>;
+            startTime: pulumi.Input<string>;
         }
 
         /**
@@ -22631,9 +22631,9 @@ export namespace containeranalysis {
          */
         export interface GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextArgs {
             /**
-             * Required. Git commit hash.
+             * Git commit hash.
              */
-            revisionId?: pulumi.Input<string>;
+            revisionId: pulumi.Input<string>;
             /**
              * Git repository URL.
              */
@@ -23130,13 +23130,13 @@ export namespace containeranalysis {
          */
         export interface BasisArgs {
             /**
-             * Required. Immutable. The fingerprint of the base image.
+             * Immutable. The fingerprint of the base image.
              */
-            fingerprint?: pulumi.Input<inputs.containeranalysis.v1beta1.FingerprintArgs>;
+            fingerprint: pulumi.Input<inputs.containeranalysis.v1beta1.FingerprintArgs>;
             /**
-             * Required. Immutable. The resource_url for the resource representing the basis of associated occurrence images.
+             * Immutable. The resource_url for the resource representing the basis of associated occurrence images.
              */
-            resourceUrl?: pulumi.Input<string>;
+            resourceUrl: pulumi.Input<string>;
         }
 
         /**
@@ -23162,9 +23162,9 @@ export namespace containeranalysis {
          */
         export interface BuildArgs {
             /**
-             * Required. Immutable. Version of the builder which produced this build.
+             * Immutable. Version of the builder which produced this build.
              */
-            builderVersion?: pulumi.Input<string>;
+            builderVersion: pulumi.Input<string>;
             /**
              * Signature of the build in occurrences pointing to this build note containing build details.
              */
@@ -23204,9 +23204,9 @@ export namespace containeranalysis {
              */
             endTime?: pulumi.Input<string>;
             /**
-             * Required. Unique identifier of the build.
+             * Unique identifier of the build.
              */
-            id?: pulumi.Input<string>;
+            id: pulumi.Input<string>;
             /**
              * URI where any logs for this provenance were written.
              */
@@ -23246,9 +23246,9 @@ export namespace containeranalysis {
              */
             publicKey?: pulumi.Input<string>;
             /**
-             * Required. Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
+             * Signature of the related `BuildProvenance`. In JSON, this is base-64 encoded.
              */
-            signature?: pulumi.Input<string>;
+            signature: pulumi.Input<string>;
         }
 
         /**
@@ -23320,9 +23320,9 @@ export namespace containeranalysis {
              */
             id?: pulumi.Input<string>;
             /**
-             * Required. Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
+             * Name of the command, as presented on the command line, or if the command is packaged as a Docker container, as presented to `docker pull`.
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
             /**
              * The ID(s) of the command(s) that this command depends on.
              */
@@ -23334,9 +23334,9 @@ export namespace containeranalysis {
          */
         export interface DeployableArgs {
             /**
-             * Required. Resource URI for the artifact being deployed.
+             * Resource URI for the artifact being deployed.
              */
-            resourceUri?: pulumi.Input<pulumi.Input<string>[]>;
+            resourceUri: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -23352,9 +23352,9 @@ export namespace containeranalysis {
              */
             config?: pulumi.Input<string>;
             /**
-             * Required. Beginning of the lifetime of this deployment.
+             * Beginning of the lifetime of this deployment.
              */
-            deployTime?: pulumi.Input<string>;
+            deployTime: pulumi.Input<string>;
             /**
              * Platform hosting this deployment.
              */
@@ -23374,9 +23374,9 @@ export namespace containeranalysis {
          */
         export interface DerivedArgs {
             /**
-             * Required. The fingerprint of the derived image.
+             * The fingerprint of the derived image.
              */
-            fingerprint?: pulumi.Input<inputs.containeranalysis.v1beta1.FingerprintArgs>;
+            fingerprint: pulumi.Input<inputs.containeranalysis.v1beta1.FingerprintArgs>;
             /**
              * This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
              */
@@ -23388,9 +23388,9 @@ export namespace containeranalysis {
          */
         export interface DetailArgs {
             /**
-             * Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+             * The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
              */
-            cpeUri?: pulumi.Input<string>;
+            cpeUri: pulumi.Input<string>;
             /**
              * A vendor-specific description of this note.
              */
@@ -23412,9 +23412,9 @@ export namespace containeranalysis {
              */
             minAffectedVersion?: pulumi.Input<inputs.containeranalysis.v1beta1.VersionArgs>;
             /**
-             * Required. The name of the package where the vulnerability was found.
+             * The name of the package where the vulnerability was found.
              */
-            package?: pulumi.Input<string>;
+            package: pulumi.Input<string>;
             /**
              * The type of package; whether native or non native(ruby gems, node.js packages etc).
              */
@@ -23442,9 +23442,9 @@ export namespace containeranalysis {
          */
         export interface DetailsArgs {
             /**
-             * Required. Attestation for the resource.
+             * Attestation for the resource.
              */
-            attestation?: pulumi.Input<inputs.containeranalysis.v1beta1.AttestationArgs>;
+            attestation: pulumi.Input<inputs.containeranalysis.v1beta1.AttestationArgs>;
         }
 
         /**
@@ -23470,9 +23470,9 @@ export namespace containeranalysis {
          */
         export interface DiscoveryArgs {
             /**
-             * Required. Immutable. The kind of analysis that is handled by this discovery.
+             * Immutable. The kind of analysis that is handled by this discovery.
              */
-            analysisKind?: pulumi.Input<enums.containeranalysis.v1beta1.DiscoveryAnalysisKind>;
+            analysisKind: pulumi.Input<enums.containeranalysis.v1beta1.DiscoveryAnalysisKind>;
         }
 
         /**
@@ -23484,9 +23484,9 @@ export namespace containeranalysis {
              */
             architecture?: pulumi.Input<enums.containeranalysis.v1beta1.DistributionArchitecture>;
             /**
-             * Required. The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+             * The cpe_uri in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
              */
-            cpeUri?: pulumi.Input<string>;
+            cpeUri: pulumi.Input<string>;
             /**
              * The distribution channel-specific description of this package.
              */
@@ -23539,13 +23539,13 @@ export namespace containeranalysis {
          */
         export interface FingerprintArgs {
             /**
-             * Required. The layer ID of the final layer in the Docker image's v1 representation.
+             * The layer ID of the final layer in the Docker image's v1 representation.
              */
-            v1Name?: pulumi.Input<string>;
+            v1Name: pulumi.Input<string>;
             /**
-             * Required. The ordered list of v2 blobs that represent a given image.
+             * The ordered list of v2 blobs that represent a given image.
              */
-            v2Blob?: pulumi.Input<pulumi.Input<string>[]>;
+            v2Blob: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -23607,9 +23607,9 @@ export namespace containeranalysis {
          */
         export interface GrafeasV1beta1BuildDetailsArgs {
             /**
-             * Required. The actual provenance for the build.
+             * The actual provenance for the build.
              */
-            provenance?: pulumi.Input<inputs.containeranalysis.v1beta1.BuildProvenanceArgs>;
+            provenance: pulumi.Input<inputs.containeranalysis.v1beta1.BuildProvenanceArgs>;
             /**
              * Serialized JSON representation of the provenance, used in generating the build signature in the corresponding build note. After verifying the signature, `provenance_bytes` can be unmarshalled and compared to the provenance to confirm that it is unchanged. A base64-encoded string representation of the provenance bytes is used for the signature in order to interoperate with openssl which expects this format for signature verification. The serialized form is captured both to avoid ambiguity in how the provenance is marshalled to json as well to prevent incompatibilities with future changes.
              */
@@ -23621,9 +23621,9 @@ export namespace containeranalysis {
          */
         export interface GrafeasV1beta1DeploymentDetailsArgs {
             /**
-             * Required. Deployment history for the resource.
+             * Deployment history for the resource.
              */
-            deployment?: pulumi.Input<inputs.containeranalysis.v1beta1.DeploymentArgs>;
+            deployment: pulumi.Input<inputs.containeranalysis.v1beta1.DeploymentArgs>;
         }
 
         /**
@@ -23631,9 +23631,9 @@ export namespace containeranalysis {
          */
         export interface GrafeasV1beta1DiscoveryDetailsArgs {
             /**
-             * Required. Analysis status for the discovered resource.
+             * Analysis status for the discovered resource.
              */
-            discovered?: pulumi.Input<inputs.containeranalysis.v1beta1.DiscoveredArgs>;
+            discovered: pulumi.Input<inputs.containeranalysis.v1beta1.DiscoveredArgs>;
         }
 
         /**
@@ -23641,9 +23641,9 @@ export namespace containeranalysis {
          */
         export interface GrafeasV1beta1ImageDetailsArgs {
             /**
-             * Required. Immutable. The child image derived from the base image.
+             * Immutable. The child image derived from the base image.
              */
-            derivedImage?: pulumi.Input<inputs.containeranalysis.v1beta1.DerivedArgs>;
+            derivedImage: pulumi.Input<inputs.containeranalysis.v1beta1.DerivedArgs>;
         }
 
         export interface GrafeasV1beta1IntotoArtifactArgs {
@@ -23672,9 +23672,9 @@ export namespace containeranalysis {
          */
         export interface GrafeasV1beta1PackageDetailsArgs {
             /**
-             * Required. Where the package was installed.
+             * Where the package was installed.
              */
-            installation?: pulumi.Input<inputs.containeranalysis.v1beta1.InstallationArgs>;
+            installation: pulumi.Input<inputs.containeranalysis.v1beta1.InstallationArgs>;
         }
 
         /**
@@ -23686,9 +23686,9 @@ export namespace containeranalysis {
              */
             effectiveSeverity?: pulumi.Input<enums.containeranalysis.v1beta1.GrafeasV1beta1VulnerabilityDetailsEffectiveSeverity>;
             /**
-             * Required. The set of affected locations and their fixes (if available) within the associated resource.
+             * The set of affected locations and their fixes (if available) within the associated resource.
              */
-            packageIssue?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1beta1.PackageIssueArgs>[]>;
+            packageIssue: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1beta1.PackageIssueArgs>[]>;
             /**
              * The type of package; whether native or non native(ruby gems, node.js packages etc)
              */
@@ -23700,9 +23700,9 @@ export namespace containeranalysis {
          */
         export interface HintArgs {
             /**
-             * Required. The human readable name of this attestation authority, for example "qa".
+             * The human readable name of this attestation authority, for example "qa".
              */
-            humanReadableName?: pulumi.Input<string>;
+            humanReadableName: pulumi.Input<string>;
         }
 
         /**
@@ -23737,9 +23737,9 @@ export namespace containeranalysis {
          */
         export interface InstallationArgs {
             /**
-             * Required. All of the places within the filesystem versions of this package have been found.
+             * All of the places within the filesystem versions of this package have been found.
              */
-            location?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1beta1.LocationArgs>[]>;
+            location: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1beta1.LocationArgs>[]>;
         }
 
         export interface KnowledgeBaseArgs {
@@ -23762,9 +23762,9 @@ export namespace containeranalysis {
              */
             arguments?: pulumi.Input<string>;
             /**
-             * Required. The recovered Dockerfile directive used to construct this layer.
+             * The recovered Dockerfile directive used to construct this layer.
              */
-            directive?: pulumi.Input<enums.containeranalysis.v1beta1.LayerDirective>;
+            directive: pulumi.Input<enums.containeranalysis.v1beta1.LayerDirective>;
         }
 
         /**
@@ -23798,9 +23798,9 @@ export namespace containeranalysis {
          */
         export interface LocationArgs {
             /**
-             * Required. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
+             * The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
              */
-            cpeUri?: pulumi.Input<string>;
+            cpeUri: pulumi.Input<string>;
             /**
              * The path from which we gathered that this package/version is installed.
              */
@@ -23820,9 +23820,9 @@ export namespace containeranalysis {
              */
             distribution?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1beta1.DistributionArgs>[]>;
             /**
-             * Required. Immutable. The name of the package.
+             * Immutable. The name of the package.
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
         }
 
         /**
@@ -23830,9 +23830,9 @@ export namespace containeranalysis {
          */
         export interface PackageIssueArgs {
             /**
-             * Required. The location of the vulnerability.
+             * The location of the vulnerability.
              */
-            affectedLocation?: pulumi.Input<inputs.containeranalysis.v1beta1.VulnerabilityLocationArgs>;
+            affectedLocation: pulumi.Input<inputs.containeranalysis.v1beta1.VulnerabilityLocationArgs>;
             /**
              * The location of the available fix for vulnerability.
              */
@@ -23852,9 +23852,9 @@ export namespace containeranalysis {
              */
             pgpKeyId?: pulumi.Input<string>;
             /**
-             * Required. The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
+             * The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
              */
-            signature?: pulumi.Input<string>;
+            signature: pulumi.Input<string>;
         }
 
         /**
@@ -23904,9 +23904,9 @@ export namespace containeranalysis {
          */
         export interface ResourceArgs {
             /**
-             * Required. The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
+             * The unique URI of the resource. For example, `https://gcr.io/project/image@sha256:foo` for a Docker image.
              */
-            uri?: pulumi.Input<string>;
+            uri: pulumi.Input<string>;
         }
 
         /**
@@ -24020,9 +24020,9 @@ export namespace containeranalysis {
              */
             inclusive?: pulumi.Input<boolean>;
             /**
-             * Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
+             * Distinguishes between sentinel MIN/MAX versions and normal versions.
              */
-            kind?: pulumi.Input<enums.containeranalysis.v1beta1.VersionKind>;
+            kind: pulumi.Input<enums.containeranalysis.v1beta1.VersionKind>;
             /**
              * Required only when version kind is NORMAL. The main part of the version name.
              */
@@ -24068,36 +24068,36 @@ export namespace containeranalysis {
          */
         export interface VulnerabilityLocationArgs {
             /**
-             * Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
+             * The CPE URI in [cpe format](https://cpe.mitre.org/specification/) format. Examples include distro or storage location for vulnerable jar.
              */
-            cpeUri?: pulumi.Input<string>;
+            cpeUri: pulumi.Input<string>;
             /**
-             * Required. The package being described.
+             * The package being described.
              */
-            package?: pulumi.Input<string>;
+            package: pulumi.Input<string>;
             /**
-             * Required. The version of the package being described.
+             * The version of the package being described.
              */
-            version?: pulumi.Input<inputs.containeranalysis.v1beta1.VersionArgs>;
+            version: pulumi.Input<inputs.containeranalysis.v1beta1.VersionArgs>;
         }
 
         export interface WindowsDetailArgs {
             /**
-             * Required. The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
+             * The CPE URI in [cpe format](https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar.
              */
-            cpeUri?: pulumi.Input<string>;
+            cpeUri: pulumi.Input<string>;
             /**
              * The description of the vulnerability.
              */
             description?: pulumi.Input<string>;
             /**
-             * Required. The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
+             * The names of the KBs which have hotfixes to mitigate this vulnerability. Note that there may be multiple hotfixes (and thus multiple KBs) that mitigate a given vulnerability. Currently any listed kb's presence is considered a fix.
              */
-            fixingKbs?: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1beta1.KnowledgeBaseArgs>[]>;
+            fixingKbs: pulumi.Input<pulumi.Input<inputs.containeranalysis.v1beta1.KnowledgeBaseArgs>[]>;
             /**
-             * Required. The name of the vulnerability.
+             * The name of the vulnerability.
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
         }
 
     }
@@ -24170,9 +24170,9 @@ export namespace datacatalog {
          */
         export interface GoogleCloudDatacatalogV1beta1ColumnSchemaArgs {
             /**
-             * Required. Name of the column.
+             * Name of the column.
              */
-            column?: pulumi.Input<string>;
+            column: pulumi.Input<string>;
             /**
              * Optional. Description of the column. Default value is an empty string.
              */
@@ -24186,9 +24186,9 @@ export namespace datacatalog {
              */
             subcolumns?: pulumi.Input<pulumi.Input<inputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1ColumnSchemaArgs>[]>;
             /**
-             * Required. Type of the column.
+             * Type of the column.
              */
-            type?: pulumi.Input<string>;
+            type: pulumi.Input<string>;
         }
 
         /**
@@ -24196,9 +24196,9 @@ export namespace datacatalog {
          */
         export interface GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs {
             /**
-             * Required. Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*&#47;b`: matches all files in `bucket_name` that match `a/*&#47;b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
+             * Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*&#47;b`: matches all files in `bucket_name` that match `a/*&#47;b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
              */
-            filePatterns?: pulumi.Input<pulumi.Input<string>[]>;
+            filePatterns: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -24206,9 +24206,9 @@ export namespace datacatalog {
          */
         export interface GoogleCloudDatacatalogV1beta1SchemaArgs {
             /**
-             * Required. Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
+             * Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
              */
-            columns?: pulumi.Input<pulumi.Input<inputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1ColumnSchemaArgs>[]>;
+            columns: pulumi.Input<pulumi.Input<inputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1ColumnSchemaArgs>[]>;
         }
 
         /**
@@ -25272,9 +25272,9 @@ export namespace datalabeling {
              */
             description?: pulumi.Input<string>;
             /**
-             * Required. The display name of the AnnotationSpec. Maximum of 64 characters.
+             * The display name of the AnnotationSpec. Maximum of 64 characters.
              */
-            displayName?: pulumi.Input<string>;
+            displayName: pulumi.Input<string>;
         }
 
         /**
@@ -25282,9 +25282,9 @@ export namespace datalabeling {
          */
         export interface GoogleCloudDatalabelingV1beta1BigQuerySourceArgs {
             /**
-             * Required. BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
+             * BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
              */
-            inputUri?: pulumi.Input<string>;
+            inputUri: pulumi.Input<string>;
         }
 
         /**
@@ -25302,9 +25302,9 @@ export namespace datalabeling {
          */
         export interface GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs {
             /**
-             * Required. Annotation spec set resource name.
+             * Annotation spec set resource name.
              */
-            annotationSpecSet?: pulumi.Input<string>;
+            annotationSpecSet: pulumi.Input<string>;
             /**
              * Optional. Instruction message showed on contributors UI.
              */
@@ -25336,13 +25336,13 @@ export namespace datalabeling {
          */
         export interface GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs {
             /**
-             * Required. An email address to send alerts to.
+             * An email address to send alerts to.
              */
-            email?: pulumi.Input<string>;
+            email: pulumi.Input<string>;
             /**
-             * Required. A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
+             * A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
              */
-            minAcceptableMeanAveragePrecision?: pulumi.Input<number>;
+            minAcceptableMeanAveragePrecision: pulumi.Input<number>;
         }
 
         /**
@@ -25350,29 +25350,29 @@ export namespace datalabeling {
          */
         export interface GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs {
             /**
-             * Required. Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
+             * Prediction keys that tell Data Labeling Service where to find the data for evaluation in your BigQuery table. When the service samples prediction input and output from your model version and saves it to BigQuery, the data gets stored as JSON strings in the BigQuery table. These keys tell Data Labeling Service how to parse the JSON. You can provide the following entries in this field: * `data_json_key`: the data key for prediction input. You must provide either this key or `reference_json_key`. * `reference_json_key`: the data reference key for prediction input. You must provide either this key or `data_json_key`. * `label_json_key`: the label key for prediction output. Required. * `label_score_json_key`: the score key for prediction output. Required. * `bounding_box_json_key`: the bounding box key for prediction output. Required if your model version perform image object detection. Learn [how to configure prediction keys](/ml-engine/docs/continuous-evaluation/create-job#prediction-keys).
              */
-            bigqueryImportKeys?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            bigqueryImportKeys: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
              * Specify this field if your model version performs image object detection (bounding box detection). `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet.
              */
             boundingPolyConfig?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs>;
             /**
-             * Required. Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
+             * Details for calculating evaluation metrics and creating Evaulations. If your model version performs image object detection, you must specify the `boundingBoxEvaluationOptions` field within this configuration. Otherwise, provide an empty object for this configuration.
              */
-            evaluationConfig?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1EvaluationConfigArgs>;
+            evaluationConfig: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1EvaluationConfigArgs>;
             /**
              * Optional. Configuration details for evaluation job alerts. Specify this field if you want to receive email alerts if the evaluation job finds that your predictions have low mean average precision during a run.
              */
             evaluationJobAlertConfig?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs>;
             /**
-             * Required. The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
+             * The maximum number of predictions to sample and save to BigQuery during each evaluation interval. This limit overrides `example_sample_percentage`: even if the service has not sampled enough predictions to fulfill `example_sample_perecentage` during an interval, it stops sampling predictions when it meets this limit.
              */
-            exampleCount?: pulumi.Input<number>;
+            exampleCount: pulumi.Input<number>;
             /**
-             * Required. Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
+             * Fraction of predictions to sample and save to BigQuery during each evaluation interval. For example, 0.1 means 10% of predictions served by your model version get saved to BigQuery.
              */
-            exampleSamplePercentage?: pulumi.Input<number>;
+            exampleSamplePercentage: pulumi.Input<number>;
             /**
              * Optional. Details for human annotation of your data. If you set labelMissingGroundTruth to `true` for this evaluation job, then you must specify this field. If you plan to provide your own ground truth labels, then omit this field. Note that you must create an Instruction resource before you can specify this field. Provide the name of the instruction resource in the `instruction` field within this configuration.
              */
@@ -25396,13 +25396,13 @@ export namespace datalabeling {
          */
         export interface GoogleCloudDatalabelingV1beta1GcsSourceArgs {
             /**
-             * Required. The input URI of source file. This must be a Cloud Storage path (`gs://...`).
+             * The input URI of source file. This must be a Cloud Storage path (`gs://...`).
              */
-            inputUri?: pulumi.Input<string>;
+            inputUri: pulumi.Input<string>;
             /**
-             * Required. The format of the source file. Only "text/csv" is supported.
+             * The format of the source file. Only "text/csv" is supported.
              */
-            mimeType?: pulumi.Input<string>;
+            mimeType: pulumi.Input<string>;
         }
 
         /**
@@ -25414,17 +25414,17 @@ export namespace datalabeling {
              */
             annotatedDatasetDescription?: pulumi.Input<string>;
             /**
-             * Required. A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
+             * A human-readable name for AnnotatedDataset defined by users. Maximum of 64 characters .
              */
-            annotatedDatasetDisplayName?: pulumi.Input<string>;
+            annotatedDatasetDisplayName: pulumi.Input<string>;
             /**
              * Optional. If you want your own labeling contributors to manage and work on this labeling request, you can set these contributors here. We will give them access to the question types in crowdcompute. Note that these emails must be registered in crowdcompute worker UI: https://crowd-compute.appspot.com/
              */
             contributorEmails?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Required. Instruction resource name.
+             * Instruction resource name.
              */
-            instruction?: pulumi.Input<string>;
+            instruction: pulumi.Input<string>;
             /**
              * Optional. A human-readable label used to logically group labeling tasks. This string must match the regular expression `[a-zA-Z\\d_-]{0,128}`.
              */
@@ -25456,9 +25456,9 @@ export namespace datalabeling {
              */
             allowMultiLabel?: pulumi.Input<boolean>;
             /**
-             * Required. Annotation spec set resource name.
+             * Annotation spec set resource name.
              */
-            annotationSpecSet?: pulumi.Input<string>;
+            annotationSpecSet: pulumi.Input<string>;
             /**
              * Optional. The type of how to aggregate answers.
              */
@@ -25482,9 +25482,9 @@ export namespace datalabeling {
              */
             classificationMetadata?: pulumi.Input<inputs.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs>;
             /**
-             * Required. Data type must be specifed when user tries to import data.
+             * Data type must be specifed when user tries to import data.
              */
-            dataType?: pulumi.Input<enums.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1InputConfigDataType>;
+            dataType: pulumi.Input<enums.datalabeling.v1beta1.GoogleCloudDatalabelingV1beta1InputConfigDataType>;
             /**
              * Source located in Cloud Storage.
              */
@@ -25536,9 +25536,9 @@ export namespace datalabeling {
              */
             allowMultiLabel?: pulumi.Input<boolean>;
             /**
-             * Required. Annotation spec set resource name.
+             * Annotation spec set resource name.
              */
-            annotationSpecSet?: pulumi.Input<string>;
+            annotationSpecSet: pulumi.Input<string>;
             /**
              * Optional. Configs for sentiment selection. We deprecate sentiment analysis in data labeling side as it is incompatible with uCAIP.
              */
@@ -25723,25 +25723,25 @@ export namespace datamigration {
              */
             cloudSqlId?: pulumi.Input<string>;
             /**
-             * Required. The IP or hostname of the source MySQL database.
+             * The IP or hostname of the source MySQL database.
              */
-            host?: pulumi.Input<string>;
+            host: pulumi.Input<string>;
             /**
-             * Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+             * Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
              */
-            password?: pulumi.Input<string>;
+            password: pulumi.Input<string>;
             /**
-             * Required. The network port of the source MySQL database.
+             * The network port of the source MySQL database.
              */
-            port?: pulumi.Input<number>;
+            port: pulumi.Input<number>;
             /**
              * SSL configuration for the destination to connect to the source database.
              */
             ssl?: pulumi.Input<inputs.datamigration.v1.SslConfigArgs>;
             /**
-             * Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+             * The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
              */
-            username?: pulumi.Input<string>;
+            username: pulumi.Input<string>;
         }
 
         /**
@@ -25753,25 +25753,25 @@ export namespace datamigration {
              */
             cloudSqlId?: pulumi.Input<string>;
             /**
-             * Required. The IP or hostname of the source PostgreSQL database.
+             * The IP or hostname of the source PostgreSQL database.
              */
-            host?: pulumi.Input<string>;
+            host: pulumi.Input<string>;
             /**
-             * Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+             * Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
              */
-            password?: pulumi.Input<string>;
+            password: pulumi.Input<string>;
             /**
-             * Required. The network port of the source PostgreSQL database.
+             * The network port of the source PostgreSQL database.
              */
-            port?: pulumi.Input<number>;
+            port: pulumi.Input<number>;
             /**
              * SSL configuration for the destination to connect to the source database.
              */
             ssl?: pulumi.Input<inputs.datamigration.v1.SslConfigArgs>;
             /**
-             * Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+             * The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
              */
-            username?: pulumi.Input<string>;
+            username: pulumi.Input<string>;
         }
 
         /**
@@ -25783,13 +25783,13 @@ export namespace datamigration {
              */
             vm?: pulumi.Input<string>;
             /**
-             * Required. The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+             * The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
              */
-            vmIp?: pulumi.Input<string>;
+            vmIp: pulumi.Input<string>;
             /**
-             * Required. The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+             * The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
              */
-            vmPort?: pulumi.Input<number>;
+            vmPort: pulumi.Input<number>;
             /**
              * The name of the VPC to peer with the Cloud SQL private network.
              */
@@ -25845,9 +25845,9 @@ export namespace datamigration {
          */
         export interface SslConfigArgs {
             /**
-             * Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
+             * Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
              */
-            caCertificate?: pulumi.Input<string>;
+            caCertificate: pulumi.Input<string>;
             /**
              * Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.If this field is used then the 'client_key' field is mandatory.
              */
@@ -26036,25 +26036,25 @@ export namespace datamigration {
              */
             cloudSqlId?: pulumi.Input<string>;
             /**
-             * Required. The IP or hostname of the source MySQL database.
+             * The IP or hostname of the source MySQL database.
              */
-            host?: pulumi.Input<string>;
+            host: pulumi.Input<string>;
             /**
-             * Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+             * Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
              */
-            password?: pulumi.Input<string>;
+            password: pulumi.Input<string>;
             /**
-             * Required. The network port of the source MySQL database.
+             * The network port of the source MySQL database.
              */
-            port?: pulumi.Input<number>;
+            port: pulumi.Input<number>;
             /**
              * SSL configuration for the destination to connect to the source database.
              */
             ssl?: pulumi.Input<inputs.datamigration.v1beta1.SslConfigArgs>;
             /**
-             * Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+             * The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
              */
-            username?: pulumi.Input<string>;
+            username: pulumi.Input<string>;
         }
 
         /**
@@ -26066,13 +26066,13 @@ export namespace datamigration {
              */
             vm?: pulumi.Input<string>;
             /**
-             * Required. The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+             * The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
              */
-            vmIp?: pulumi.Input<string>;
+            vmIp: pulumi.Input<string>;
             /**
-             * Required. The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+             * The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
              */
-            vmPort?: pulumi.Input<number>;
+            vmPort: pulumi.Input<number>;
             /**
              * The name of the VPC to peer with the Cloud SQL private network.
              */
@@ -26128,9 +26128,9 @@ export namespace datamigration {
          */
         export interface SslConfigArgs {
             /**
-             * Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
+             * Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
              */
-            caCertificate?: pulumi.Input<string>;
+            caCertificate: pulumi.Input<string>;
             /**
              * Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.If this field is used then the 'client_key' field is mandatory.
              */
@@ -26195,9 +26195,9 @@ export namespace dataproc {
              */
             cooldownPeriod?: pulumi.Input<string>;
             /**
-             * Required. YARN autoscaling configuration.
+             * YARN autoscaling configuration.
              */
-            yarnConfig?: pulumi.Input<inputs.dataproc.v1.BasicYarnAutoscalingConfigArgs>;
+            yarnConfig: pulumi.Input<inputs.dataproc.v1.BasicYarnAutoscalingConfigArgs>;
         }
 
         /**
@@ -26205,21 +26205,21 @@ export namespace dataproc {
          */
         export interface BasicYarnAutoscalingConfigArgs {
             /**
-             * Required. Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
+             * Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
              */
-            gracefulDecommissionTimeout?: pulumi.Input<string>;
+            gracefulDecommissionTimeout: pulumi.Input<string>;
             /**
-             * Required. Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
+             * Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
              */
-            scaleDownFactor?: pulumi.Input<number>;
+            scaleDownFactor: pulumi.Input<number>;
             /**
              * Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
              */
             scaleDownMinWorkerFraction?: pulumi.Input<number>;
             /**
-             * Required. Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
+             * Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
              */
-            scaleUpFactor?: pulumi.Input<number>;
+            scaleUpFactor: pulumi.Input<number>;
             /**
              * Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
              */
@@ -26315,9 +26315,9 @@ export namespace dataproc {
          */
         export interface ClusterSelectorArgs {
             /**
-             * Required. The cluster labels. Cluster must have all labels to match.
+             * The cluster labels. Cluster must have all labels to match.
              */
-            clusterLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            clusterLabels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
              * Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster.If unspecified, the zone of the first cluster matching the selector is used.
              */
@@ -26535,9 +26535,9 @@ export namespace dataproc {
          */
         export interface IdentityConfigArgs {
             /**
-             * Required. Map of user to service account.
+             * Map of user to service account.
              */
-            userServiceAccountMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            userServiceAccountMapping: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         }
 
         /**
@@ -26545,9 +26545,9 @@ export namespace dataproc {
          */
         export interface InstanceGroupAutoscalingPolicyConfigArgs {
             /**
-             * Required. Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
+             * Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
              */
-            maxInstances?: pulumi.Input<number>;
+            maxInstances: pulumi.Input<number>;
             /**
              * Optional. Minimum number of instances for this group.Primary workers - Bounds: 2, max_instances. Default: 2. Secondary workers - Bounds: 0, max_instances. Default: 0.
              */
@@ -26601,9 +26601,9 @@ export namespace dataproc {
              */
             clusterLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
-             * Required. The name of the cluster where the job will be submitted.
+             * The name of the cluster where the job will be submitted.
              */
-            clusterName?: pulumi.Input<string>;
+            clusterName: pulumi.Input<string>;
         }
 
         /**
@@ -26733,13 +26733,13 @@ export namespace dataproc {
          */
         export interface ManagedClusterArgs {
             /**
-             * Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+             * The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
              */
-            clusterName?: pulumi.Input<string>;
+            clusterName: pulumi.Input<string>;
             /**
-             * Required. The cluster configuration.
+             * The cluster configuration.
              */
-            config?: pulumi.Input<inputs.dataproc.v1.ClusterConfigArgs>;
+            config: pulumi.Input<inputs.dataproc.v1.ClusterConfigArgs>;
             /**
              * Optional. The labels to associate with this cluster.Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given cluster.
              */
@@ -26751,9 +26751,9 @@ export namespace dataproc {
          */
         export interface MetastoreConfigArgs {
             /**
-             * Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+             * Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
              */
-            dataprocMetastoreService?: pulumi.Input<string>;
+            dataprocMetastoreService: pulumi.Input<string>;
         }
 
         /**
@@ -26775,9 +26775,9 @@ export namespace dataproc {
          */
         export interface NodeGroupAffinityArgs {
             /**
-             * Required. The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
+             * The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
              */
-            nodeGroupUri?: pulumi.Input<string>;
+            nodeGroupUri: pulumi.Input<string>;
         }
 
         /**
@@ -26785,9 +26785,9 @@ export namespace dataproc {
          */
         export interface NodeInitializationActionArgs {
             /**
-             * Required. Cloud Storage URI of executable file.
+             * Cloud Storage URI of executable file.
              */
-            executableFile?: pulumi.Input<string>;
+            executableFile: pulumi.Input<string>;
             /**
              * Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
              */
@@ -26843,9 +26843,9 @@ export namespace dataproc {
              */
             sparkSqlJob?: pulumi.Input<inputs.dataproc.v1.SparkSqlJobArgs>;
             /**
-             * Required. The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+             * The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
              */
-            stepId?: pulumi.Input<string>;
+            stepId: pulumi.Input<string>;
         }
 
         /**
@@ -26955,9 +26955,9 @@ export namespace dataproc {
              */
             loggingConfig?: pulumi.Input<inputs.dataproc.v1.LoggingConfigArgs>;
             /**
-             * Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+             * The HCFS URI of the main Python file to use as the driver. Must be a .py file.
              */
-            mainPythonFileUri?: pulumi.Input<string>;
+            mainPythonFileUri: pulumi.Input<string>;
             /**
              * Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
              */
@@ -26973,9 +26973,9 @@ export namespace dataproc {
          */
         export interface QueryListArgs {
             /**
-             * Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } } 
+             * The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } } 
              */
-            queries?: pulumi.Input<pulumi.Input<string>[]>;
+            queries: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -26983,9 +26983,9 @@ export namespace dataproc {
          */
         export interface RegexValidationArgs {
             /**
-             * Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
+             * RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
              */
-            regexes?: pulumi.Input<pulumi.Input<string>[]>;
+            regexes: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -27115,9 +27115,9 @@ export namespace dataproc {
              */
             loggingConfig?: pulumi.Input<inputs.dataproc.v1.LoggingConfigArgs>;
             /**
-             * Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
+             * The HCFS URI of the main R file to use as the driver. Must be a .R file.
              */
-            mainRFileUri?: pulumi.Input<string>;
+            mainRFileUri: pulumi.Input<string>;
             /**
              * Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
              */
@@ -27163,13 +27163,13 @@ export namespace dataproc {
              */
             description?: pulumi.Input<string>;
             /**
-             * Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
+             * Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
              */
-            fields?: pulumi.Input<pulumi.Input<string>[]>;
+            fields: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+             * Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
             /**
              * Optional. Validation rules to be applied to this parameter's value.
              */
@@ -27181,9 +27181,9 @@ export namespace dataproc {
          */
         export interface ValueValidationArgs {
             /**
-             * Required. List of allowed values for the parameter.
+             * List of allowed values for the parameter.
              */
-            values?: pulumi.Input<pulumi.Input<string>[]>;
+            values: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -27236,9 +27236,9 @@ export namespace dataproc {
              */
             cooldownPeriod?: pulumi.Input<string>;
             /**
-             * Required. YARN autoscaling configuration.
+             * YARN autoscaling configuration.
              */
-            yarnConfig?: pulumi.Input<inputs.dataproc.v1beta2.BasicYarnAutoscalingConfigArgs>;
+            yarnConfig: pulumi.Input<inputs.dataproc.v1beta2.BasicYarnAutoscalingConfigArgs>;
         }
 
         /**
@@ -27246,21 +27246,21 @@ export namespace dataproc {
          */
         export interface BasicYarnAutoscalingConfigArgs {
             /**
-             * Required. Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
+             * Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
              */
-            gracefulDecommissionTimeout?: pulumi.Input<string>;
+            gracefulDecommissionTimeout: pulumi.Input<string>;
             /**
-             * Required. Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works for more information.Bounds: 0.0, 1.0.
+             * Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works for more information.Bounds: 0.0, 1.0.
              */
-            scaleDownFactor?: pulumi.Input<number>;
+            scaleDownFactor: pulumi.Input<number>;
             /**
              * Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
              */
             scaleDownMinWorkerFraction?: pulumi.Input<number>;
             /**
-             * Required. Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works for more information.Bounds: 0.0, 1.0.
+             * Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works for more information.Bounds: 0.0, 1.0.
              */
-            scaleUpFactor?: pulumi.Input<number>;
+            scaleUpFactor: pulumi.Input<number>;
             /**
              * Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
              */
@@ -27356,9 +27356,9 @@ export namespace dataproc {
          */
         export interface ClusterSelectorArgs {
             /**
-             * Required. The cluster labels. Cluster must have all labels to match.
+             * The cluster labels. Cluster must have all labels to match.
              */
-            clusterLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            clusterLabels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
              * Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster.If unspecified, the zone of the first cluster matching the selector is used.
              */
@@ -27618,9 +27618,9 @@ export namespace dataproc {
              */
             clusterLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
-             * Required. The name of the cluster where the job will be submitted.
+             * The name of the cluster where the job will be submitted.
              */
-            clusterName?: pulumi.Input<string>;
+            clusterName: pulumi.Input<string>;
         }
 
         /**
@@ -27750,13 +27750,13 @@ export namespace dataproc {
          */
         export interface ManagedClusterArgs {
             /**
-             * Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+             * The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
              */
-            clusterName?: pulumi.Input<string>;
+            clusterName: pulumi.Input<string>;
             /**
-             * Required. The cluster configuration.
+             * The cluster configuration.
              */
-            config?: pulumi.Input<inputs.dataproc.v1beta2.ClusterConfigArgs>;
+            config: pulumi.Input<inputs.dataproc.v1beta2.ClusterConfigArgs>;
             /**
              * Optional. The labels to associate with this cluster.Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given cluster.
              */
@@ -27768,9 +27768,9 @@ export namespace dataproc {
          */
         export interface MetastoreConfigArgs {
             /**
-             * Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+             * Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
              */
-            dataprocMetastoreService?: pulumi.Input<string>;
+            dataprocMetastoreService: pulumi.Input<string>;
         }
 
         /**
@@ -27792,9 +27792,9 @@ export namespace dataproc {
          */
         export interface NodeGroupAffinityArgs {
             /**
-             * Required. The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
+             * The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
              */
-            nodeGroupUri?: pulumi.Input<string>;
+            nodeGroupUri: pulumi.Input<string>;
         }
 
         /**
@@ -27802,9 +27802,9 @@ export namespace dataproc {
          */
         export interface NodeInitializationActionArgs {
             /**
-             * Required. Cloud Storage URI of executable file.
+             * Cloud Storage URI of executable file.
              */
-            executableFile?: pulumi.Input<string>;
+            executableFile: pulumi.Input<string>;
             /**
              * Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
              */
@@ -27860,9 +27860,9 @@ export namespace dataproc {
              */
             sparkSqlJob?: pulumi.Input<inputs.dataproc.v1beta2.SparkSqlJobArgs>;
             /**
-             * Required. The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+             * The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
              */
-            stepId?: pulumi.Input<string>;
+            stepId: pulumi.Input<string>;
         }
 
         /**
@@ -27972,9 +27972,9 @@ export namespace dataproc {
              */
             loggingConfig?: pulumi.Input<inputs.dataproc.v1beta2.LoggingConfigArgs>;
             /**
-             * Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+             * The HCFS URI of the main Python file to use as the driver. Must be a .py file.
              */
-            mainPythonFileUri?: pulumi.Input<string>;
+            mainPythonFileUri: pulumi.Input<string>;
             /**
              * Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
              */
@@ -27990,9 +27990,9 @@ export namespace dataproc {
          */
         export interface QueryListArgs {
             /**
-             * Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } } 
+             * The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } } 
              */
-            queries?: pulumi.Input<pulumi.Input<string>[]>;
+            queries: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -28000,9 +28000,9 @@ export namespace dataproc {
          */
         export interface RegexValidationArgs {
             /**
-             * Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
+             * RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
              */
-            regexes?: pulumi.Input<pulumi.Input<string>[]>;
+            regexes: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -28128,9 +28128,9 @@ export namespace dataproc {
              */
             loggingConfig?: pulumi.Input<inputs.dataproc.v1beta2.LoggingConfigArgs>;
             /**
-             * Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
+             * The HCFS URI of the main R file to use as the driver. Must be a .R file.
              */
-            mainRFileUri?: pulumi.Input<string>;
+            mainRFileUri: pulumi.Input<string>;
             /**
              * Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
              */
@@ -28176,13 +28176,13 @@ export namespace dataproc {
              */
             description?: pulumi.Input<string>;
             /**
-             * Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
+             * Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
              */
-            fields?: pulumi.Input<pulumi.Input<string>[]>;
+            fields: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+             * Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
             /**
              * Optional. Validation rules to be applied to this parameter's value.
              */
@@ -28194,9 +28194,9 @@ export namespace dataproc {
          */
         export interface ValueValidationArgs {
             /**
-             * Required. List of allowed values for the parameter.
+             * List of allowed values for the parameter.
              */
-            values?: pulumi.Input<pulumi.Input<string>[]>;
+            values: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -28223,13 +28223,13 @@ export namespace datastore {
          */
         export interface GoogleDatastoreAdminV1IndexedPropertyArgs {
             /**
-             * Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
+             * The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
              */
-            direction?: pulumi.Input<enums.datastore.v1.GoogleDatastoreAdminV1IndexedPropertyDirection>;
+            direction: pulumi.Input<enums.datastore.v1.GoogleDatastoreAdminV1IndexedPropertyDirection>;
             /**
-             * Required. The property name to index.
+             * The property name to index.
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
         }
 
     }
@@ -29036,9 +29036,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2AutomatedAgentConfigArgs {
             /**
-             * Required. ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
+             * ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
              */
-            agent?: pulumi.Input<string>;
+            agent: pulumi.Input<string>;
         }
 
         /**
@@ -29050,9 +29050,9 @@ export namespace dialogflow {
              */
             lifespanCount?: pulumi.Input<number>;
             /**
-             * Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
+             * The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
             /**
              * Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
              */
@@ -29064,13 +29064,13 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2EntityTypeEntityArgs {
             /**
-             * Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+             * A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
              */
-            synonyms?: pulumi.Input<pulumi.Input<string>[]>;
+            synonyms: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+             * The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
              */
-            value?: pulumi.Input<string>;
+            value: pulumi.Input<string>;
         }
 
         /**
@@ -29094,9 +29094,9 @@ export namespace dialogflow {
              */
             genericWebService?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs>;
             /**
-             * Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+             * The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
         }
 
         /**
@@ -29126,9 +29126,9 @@ export namespace dialogflow {
              */
             requestHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
-             * Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+             * The fulfillment URI for receiving POST requests. It must use https protocol.
              */
-            uri?: pulumi.Input<string>;
+            uri: pulumi.Input<string>;
             /**
              * Optional. The user name for HTTP Basic authentication.
              */
@@ -29162,9 +29162,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs {
             /**
-             * Required. Conversation model resource name. Format: `projects//conversationModels/`.
+             * Conversation model resource name. Format: `projects//conversationModels/`.
              */
-            model?: pulumi.Input<string>;
+            model: pulumi.Input<string>;
         }
 
         /**
@@ -29274,9 +29274,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs {
             /**
-             * Required. The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
+             * The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
              */
-            agent?: pulumi.Input<string>;
+            agent: pulumi.Input<string>;
         }
 
         /**
@@ -29284,9 +29284,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs {
             /**
-             * Required. Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
+             * Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
              */
-            documents?: pulumi.Input<pulumi.Input<string>[]>;
+            documents: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -29294,9 +29294,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs {
             /**
-             * Required. Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
+             * Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
              */
-            knowledgeBases?: pulumi.Input<pulumi.Input<string>[]>;
+            knowledgeBases: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -29332,9 +29332,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs {
             /**
-             * Required. Account number of the LivePerson account to connect. This is the account number you input at the login page.
+             * Account number of the LivePerson account to connect. This is the account number you input at the login page.
              */
-            accountNumber?: pulumi.Input<string>;
+            accountNumber: pulumi.Input<string>;
         }
 
         /**
@@ -29342,21 +29342,21 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs {
             /**
-             * Required. Live Agent chat button ID.
+             * Live Agent chat button ID.
              */
-            buttonId?: pulumi.Input<string>;
+            buttonId: pulumi.Input<string>;
             /**
-             * Required. Live Agent deployment ID.
+             * Live Agent deployment ID.
              */
-            deploymentId?: pulumi.Input<string>;
+            deploymentId: pulumi.Input<string>;
             /**
-             * Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
+             * Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
              */
-            endpointDomain?: pulumi.Input<string>;
+            endpointDomain: pulumi.Input<string>;
             /**
-             * Required. The organization ID of the Salesforce account.
+             * The organization ID of the Salesforce account.
              */
-            organizationId?: pulumi.Input<string>;
+            organizationId: pulumi.Input<string>;
         }
 
         /**
@@ -29470,13 +29470,13 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs {
             /**
-             * Required. Action to take when a user taps on the button.
+             * Action to take when a user taps on the button.
              */
-            openUriAction?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs>;
+            openUriAction: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs>;
             /**
-             * Required. The title of the button.
+             * The title of the button.
              */
-            title?: pulumi.Input<string>;
+            title: pulumi.Input<string>;
         }
 
         /**
@@ -29484,9 +29484,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs {
             /**
-             * Required. The HTTP or HTTPS scheme URI.
+             * The HTTP or HTTPS scheme URI.
              */
-            uri?: pulumi.Input<string>;
+            uri: pulumi.Input<string>;
         }
 
         /**
@@ -29498,9 +29498,9 @@ export namespace dialogflow {
              */
             imageDisplayOptions?: pulumi.Input<enums.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions>;
             /**
-             * Required. List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
+             * List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
              */
-            items?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs>[]>;
+            items: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs>[]>;
         }
 
         /**
@@ -29520,13 +29520,13 @@ export namespace dialogflow {
              */
             image?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageImageArgs>;
             /**
-             * Required. Action to present to the user.
+             * Action to present to the user.
              */
-            openUriAction?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs>;
+            openUriAction: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs>;
             /**
-             * Required. Title of the carousel item. Maximum of two lines of text.
+             * Title of the carousel item. Maximum of two lines of text.
              */
-            title?: pulumi.Input<string>;
+            title: pulumi.Input<string>;
         }
 
         /**
@@ -29534,9 +29534,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs {
             /**
-             * Required. URL
+             * URL
              */
-            url?: pulumi.Input<string>;
+            url: pulumi.Input<string>;
             /**
              * Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
              */
@@ -29584,9 +29584,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageCarouselSelectArgs {
             /**
-             * Required. Carousel items.
+             * Carousel items.
              */
-            items?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArgs>[]>;
+            items: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArgs>[]>;
         }
 
         /**
@@ -29602,13 +29602,13 @@ export namespace dialogflow {
              */
             image?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageImageArgs>;
             /**
-             * Required. Additional info about the option item.
+             * Additional info about the option item.
              */
-            info?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs>;
+            info: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs>;
             /**
-             * Required. Title of the carousel item.
+             * Title of the carousel item.
              */
-            title?: pulumi.Input<string>;
+            title: pulumi.Input<string>;
         }
 
         /**
@@ -29616,9 +29616,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageColumnPropertiesArgs {
             /**
-             * Required. Column heading.
+             * Column heading.
              */
-            header?: pulumi.Input<string>;
+            header: pulumi.Input<string>;
             /**
              * Optional. Defines text alignment for all cells in this column.
              */
@@ -29644,13 +29644,13 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionArgs {
             /**
-             * Required. The name of the app or site this chip is linking to.
+             * The name of the app or site this chip is linking to.
              */
-            destinationName?: pulumi.Input<string>;
+            destinationName: pulumi.Input<string>;
             /**
-             * Required. The URI of the app or site to open when the user taps the suggestion chip.
+             * The URI of the app or site to open when the user taps the suggestion chip.
              */
-            uri?: pulumi.Input<string>;
+            uri: pulumi.Input<string>;
         }
 
         /**
@@ -29658,9 +29658,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageListSelectArgs {
             /**
-             * Required. List items.
+             * List items.
              */
-            items?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageListSelectItemArgs>[]>;
+            items: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageListSelectItemArgs>[]>;
             /**
              * Optional. Subtitle of the list.
              */
@@ -29684,13 +29684,13 @@ export namespace dialogflow {
              */
             image?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageImageArgs>;
             /**
-             * Required. Additional information about this option.
+             * Additional information about this option.
              */
-            info?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs>;
+            info: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs>;
             /**
-             * Required. The title of the list item.
+             * The title of the list item.
              */
-            title?: pulumi.Input<string>;
+            title: pulumi.Input<string>;
         }
 
         /**
@@ -29698,9 +29698,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageMediaContentArgs {
             /**
-             * Required. List of media objects.
+             * List of media objects.
              */
-            mediaObjects?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArgs>[]>;
+            mediaObjects: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArgs>[]>;
             /**
              * Optional. What type of media is the content (ie "audio").
              */
@@ -29712,9 +29712,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArgs {
             /**
-             * Required. Url where the media is stored.
+             * Url where the media is stored.
              */
-            contentUrl?: pulumi.Input<string>;
+            contentUrl: pulumi.Input<string>;
             /**
              * Optional. Description of media card.
              */
@@ -29728,9 +29728,9 @@ export namespace dialogflow {
              */
             largeImage?: pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageImageArgs>;
             /**
-             * Required. Name of media card.
+             * Name of media card.
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
         }
 
         /**
@@ -29752,9 +29752,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs {
             /**
-             * Required. A unique key that will be sent back to the agent if this response is given.
+             * A unique key that will be sent back to the agent if this response is given.
              */
-            key?: pulumi.Input<string>;
+            key: pulumi.Input<string>;
             /**
              * Optional. A list of synonyms that can also be used to trigger this item in dialog.
              */
@@ -29784,9 +29784,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageSimpleResponsesArgs {
             /**
-             * Required. The list of simple responses.
+             * The list of simple responses.
              */
-            simpleResponses?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageSimpleResponseArgs>[]>;
+            simpleResponses: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageSimpleResponseArgs>[]>;
         }
 
         /**
@@ -29794,9 +29794,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageSuggestionArgs {
             /**
-             * Required. The text shown the in the suggestion chip.
+             * The text shown the in the suggestion chip.
              */
-            title?: pulumi.Input<string>;
+            title: pulumi.Input<string>;
         }
 
         /**
@@ -29804,9 +29804,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageSuggestionsArgs {
             /**
-             * Required. The list of suggested replies.
+             * The list of suggested replies.
              */
-            suggestions?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageSuggestionArgs>[]>;
+            suggestions: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentMessageSuggestionArgs>[]>;
         }
 
         /**
@@ -29834,9 +29834,9 @@ export namespace dialogflow {
              */
             subtitle?: pulumi.Input<string>;
             /**
-             * Required. Title of the card.
+             * Title of the card.
              */
-            title?: pulumi.Input<string>;
+            title: pulumi.Input<string>;
         }
 
         /**
@@ -29844,9 +29844,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentMessageTableCardCellArgs {
             /**
-             * Required. Text in this cell.
+             * Text in this cell.
              */
-            text?: pulumi.Input<string>;
+            text: pulumi.Input<string>;
         }
 
         /**
@@ -29882,9 +29882,9 @@ export namespace dialogflow {
              */
             defaultValue?: pulumi.Input<string>;
             /**
-             * Required. The name of the parameter.
+             * The name of the parameter.
              */
-            displayName?: pulumi.Input<string>;
+            displayName: pulumi.Input<string>;
             /**
              * Optional. The name of the entity type, prefixed with `@`, that describes values of the parameter. If the parameter is required, this must be provided.
              */
@@ -29916,17 +29916,17 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2IntentTrainingPhraseArgs {
             /**
-             * Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
+             * The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
              */
-            parts?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentTrainingPhrasePartArgs>[]>;
+            parts: pulumi.Input<pulumi.Input<inputs.dialogflow.v2.GoogleCloudDialogflowV2IntentTrainingPhrasePartArgs>[]>;
             /**
              * Optional. Indicates how many times this example was added to the intent. Each time a developer adds an existing sample by editing an intent or training, this counter is increased.
              */
             timesAddedCount?: pulumi.Input<number>;
             /**
-             * Required. The type of the training phrase.
+             * The type of the training phrase.
              */
-            type?: pulumi.Input<enums.dialogflow.v2.GoogleCloudDialogflowV2IntentTrainingPhraseType>;
+            type: pulumi.Input<enums.dialogflow.v2.GoogleCloudDialogflowV2IntentTrainingPhraseType>;
         }
 
         /**
@@ -29942,9 +29942,9 @@ export namespace dialogflow {
              */
             entityType?: pulumi.Input<string>;
             /**
-             * Required. The text for this part.
+             * The text for this part.
              */
-            text?: pulumi.Input<string>;
+            text: pulumi.Input<string>;
             /**
              * Optional. Indicates whether the text was manually annotated. This field is set to true when the Dialogflow Console is used to manually annotate the part. When creating an annotated part with the API, you must set this to true.
              */
@@ -30004,9 +30004,9 @@ export namespace dialogflow {
              */
             enableTextToSpeech?: pulumi.Input<boolean>;
             /**
-             * Required. Audio encoding of the synthesized audio content.
+             * Audio encoding of the synthesized audio content.
              */
-            outputAudioEncoding?: pulumi.Input<enums.dialogflow.v2.GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding>;
+            outputAudioEncoding: pulumi.Input<enums.dialogflow.v2.GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding>;
             /**
              * Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
              */
@@ -30025,9 +30025,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs {
             /**
-             * Required. ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2beta1#google.cloud.dialogflow.v2beta1.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.
+             * ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. - For ES agents, use format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2beta1#google.cloud.dialogflow.v2beta1.DetectIntentRequest) for more details. - For CX agents, use format `projects//locations//agents//environments/`. If environment is not specified, the default `draft` environment is used.
              */
-            agent?: pulumi.Input<string>;
+            agent: pulumi.Input<string>;
         }
 
         /**
@@ -30039,9 +30039,9 @@ export namespace dialogflow {
              */
             lifespanCount?: pulumi.Input<number>;
             /**
-             * Required. The unique identifier of the context. Supported formats: - `projects//agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, - `projects//agent/environments//users//sessions//contexts/`, - `projects//locations//agent/environments//users//sessions//contexts/`, The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
+             * The unique identifier of the context. Supported formats: - `projects//agent/sessions//contexts/`, - `projects//locations//agent/sessions//contexts/`, - `projects//agent/environments//users//sessions//contexts/`, - `projects//locations//agent/environments//users//sessions//contexts/`, The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
             /**
              * Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
              */
@@ -30053,13 +30053,13 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1EntityTypeEntityArgs {
             /**
-             * Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+             * A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
              */
-            synonyms?: pulumi.Input<pulumi.Input<string>[]>;
+            synonyms: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+             * The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
              */
-            value?: pulumi.Input<string>;
+            value: pulumi.Input<string>;
         }
 
         /**
@@ -30083,9 +30083,9 @@ export namespace dialogflow {
              */
             genericWebService?: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs>;
             /**
-             * Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+             * The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
         }
 
         /**
@@ -30115,9 +30115,9 @@ export namespace dialogflow {
              */
             requestHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
-             * Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+             * The fulfillment URI for receiving POST requests. It must use https protocol.
              */
-            uri?: pulumi.Input<string>;
+            uri: pulumi.Input<string>;
             /**
              * The user name for HTTP Basic authentication.
              */
@@ -30151,9 +30151,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs {
             /**
-             * Required. Conversation model resource name. Format: `projects//conversationModels/`.
+             * Conversation model resource name. Format: `projects//conversationModels/`.
              */
-            model?: pulumi.Input<string>;
+            model: pulumi.Input<string>;
         }
 
         /**
@@ -30263,9 +30263,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs {
             /**
-             * Required. The name of a dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
+             * The name of a dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
              */
-            agent?: pulumi.Input<string>;
+            agent: pulumi.Input<string>;
         }
 
         /**
@@ -30273,9 +30273,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs {
             /**
-             * Required. Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, only one document is supported.
+             * Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, only one document is supported.
              */
-            documents?: pulumi.Input<pulumi.Input<string>[]>;
+            documents: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -30283,9 +30283,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs {
             /**
-             * Required. Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, only one knowledge base is supported.
+             * Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, only one knowledge base is supported.
              */
-            knowledgeBases?: pulumi.Input<pulumi.Input<string>[]>;
+            knowledgeBases: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -30321,9 +30321,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigArgs {
             /**
-             * Required. Account number of the LivePerson account to connect. This is the account number you input at the login page.
+             * Account number of the LivePerson account to connect. This is the account number you input at the login page.
              */
-            accountNumber?: pulumi.Input<string>;
+            accountNumber: pulumi.Input<string>;
         }
 
         /**
@@ -30331,21 +30331,21 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs {
             /**
-             * Required. Live Agent chat button ID.
+             * Live Agent chat button ID.
              */
-            buttonId?: pulumi.Input<string>;
+            buttonId: pulumi.Input<string>;
             /**
-             * Required. Live Agent deployment ID.
+             * Live Agent deployment ID.
              */
-            deploymentId?: pulumi.Input<string>;
+            deploymentId: pulumi.Input<string>;
             /**
-             * Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
+             * Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
              */
-            endpointDomain?: pulumi.Input<string>;
+            endpointDomain: pulumi.Input<string>;
             /**
-             * Required. The organization ID of the Salesforce account.
+             * The organization ID of the Salesforce account.
              */
-            organizationId?: pulumi.Input<string>;
+            organizationId: pulumi.Input<string>;
         }
 
         /**
@@ -30469,13 +30469,13 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonArgs {
             /**
-             * Required. Action to take when a user taps on the button.
+             * Action to take when a user taps on the button.
              */
-            openUriAction?: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionArgs>;
+            openUriAction: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionArgs>;
             /**
-             * Required. The title of the button.
+             * The title of the button.
              */
-            title?: pulumi.Input<string>;
+            title: pulumi.Input<string>;
         }
 
         /**
@@ -30483,9 +30483,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionArgs {
             /**
-             * Required. The HTTP or HTTPS scheme URI.
+             * The HTTP or HTTPS scheme URI.
              */
-            uri?: pulumi.Input<string>;
+            uri: pulumi.Input<string>;
         }
 
         /**
@@ -30497,9 +30497,9 @@ export namespace dialogflow {
              */
             imageDisplayOptions?: pulumi.Input<enums.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptions>;
             /**
-             * Required. List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
+             * List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
              */
-            items?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs>[]>;
+            items: pulumi.Input<pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs>[]>;
         }
 
         /**
@@ -30519,13 +30519,13 @@ export namespace dialogflow {
              */
             image?: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageImageArgs>;
             /**
-             * Required. Action to present to the user.
+             * Action to present to the user.
              */
-            openUriAction?: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs>;
+            openUriAction: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs>;
             /**
-             * Required. Title of the carousel item. Maximum of two lines of text.
+             * Title of the carousel item. Maximum of two lines of text.
              */
-            title?: pulumi.Input<string>;
+            title: pulumi.Input<string>;
         }
 
         /**
@@ -30533,9 +30533,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs {
             /**
-             * Required. URL
+             * URL
              */
-            url?: pulumi.Input<string>;
+            url: pulumi.Input<string>;
             /**
              * Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
              */
@@ -30583,9 +30583,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectArgs {
             /**
-             * Required. Carousel items.
+             * Carousel items.
              */
-            items?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemArgs>[]>;
+            items: pulumi.Input<pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemArgs>[]>;
         }
 
         /**
@@ -30601,13 +30601,13 @@ export namespace dialogflow {
              */
             image?: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageImageArgs>;
             /**
-             * Required. Additional info about the option item.
+             * Additional info about the option item.
              */
-            info?: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoArgs>;
+            info: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoArgs>;
             /**
-             * Required. Title of the carousel item.
+             * Title of the carousel item.
              */
-            title?: pulumi.Input<string>;
+            title: pulumi.Input<string>;
         }
 
         /**
@@ -30615,9 +30615,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArgs {
             /**
-             * Required. Column heading.
+             * Column heading.
              */
-            header?: pulumi.Input<string>;
+            header: pulumi.Input<string>;
             /**
              * Optional. Defines text alignment for all cells in this column.
              */
@@ -30643,13 +30643,13 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionArgs {
             /**
-             * Required. The name of the app or site this chip is linking to.
+             * The name of the app or site this chip is linking to.
              */
-            destinationName?: pulumi.Input<string>;
+            destinationName: pulumi.Input<string>;
             /**
-             * Required. The URI of the app or site to open when the user taps the suggestion chip.
+             * The URI of the app or site to open when the user taps the suggestion chip.
              */
-            uri?: pulumi.Input<string>;
+            uri: pulumi.Input<string>;
         }
 
         /**
@@ -30657,9 +30657,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageListSelectArgs {
             /**
-             * Required. List items.
+             * List items.
              */
-            items?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageListSelectItemArgs>[]>;
+            items: pulumi.Input<pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageListSelectItemArgs>[]>;
             /**
              * Optional. Subtitle of the list.
              */
@@ -30683,13 +30683,13 @@ export namespace dialogflow {
              */
             image?: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageImageArgs>;
             /**
-             * Required. Additional information about this option.
+             * Additional information about this option.
              */
-            info?: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoArgs>;
+            info: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoArgs>;
             /**
-             * Required. The title of the list item.
+             * The title of the list item.
              */
-            title?: pulumi.Input<string>;
+            title: pulumi.Input<string>;
         }
 
         /**
@@ -30697,9 +30697,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageMediaContentArgs {
             /**
-             * Required. List of media objects.
+             * List of media objects.
              */
-            mediaObjects?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArgs>[]>;
+            mediaObjects: pulumi.Input<pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArgs>[]>;
             /**
              * Optional. What type of media is the content (ie "audio").
              */
@@ -30711,9 +30711,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArgs {
             /**
-             * Required. Url where the media is stored.
+             * Url where the media is stored.
              */
-            contentUrl?: pulumi.Input<string>;
+            contentUrl: pulumi.Input<string>;
             /**
              * Optional. Description of media card.
              */
@@ -30727,9 +30727,9 @@ export namespace dialogflow {
              */
             largeImage?: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageImageArgs>;
             /**
-             * Required. Name of media card.
+             * Name of media card.
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
         }
 
         /**
@@ -30773,9 +30773,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaArgs {
             /**
-             * Required. Publicly reachable URI of the file. The RBM platform determines the MIME type of the file from the content-type field in the HTTP headers when the platform fetches the file. The content-type field must be present and accurate in the HTTP response from the URL.
+             * Publicly reachable URI of the file. The RBM platform determines the MIME type of the file from the content-type field in the HTTP headers when the platform fetches the file. The content-type field must be present and accurate in the HTTP response from the URL.
              */
-            fileUri?: pulumi.Input<string>;
+            fileUri: pulumi.Input<string>;
             /**
              * Required for cards with vertical orientation. The height of the media within a rich card with a vertical layout. For a standalone card with horizontal layout, height is not customizable, and this field is ignored.
              */
@@ -30791,13 +30791,13 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardArgs {
             /**
-             * Required. The cards in the carousel. A carousel must have at least 2 cards and at most 10.
+             * The cards in the carousel. A carousel must have at least 2 cards and at most 10.
              */
-            cardContents?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs>[]>;
+            cardContents: pulumi.Input<pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs>[]>;
             /**
-             * Required. The width of the cards in the carousel.
+             * The width of the cards in the carousel.
              */
-            cardWidth?: pulumi.Input<enums.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth>;
+            cardWidth: pulumi.Input<enums.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidth>;
         }
 
         /**
@@ -30805,13 +30805,13 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardArgs {
             /**
-             * Required. Card content.
+             * Card content.
              */
-            cardContent?: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs>;
+            cardContent: pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs>;
             /**
-             * Required. Orientation of the card.
+             * Orientation of the card.
              */
-            cardOrientation?: pulumi.Input<enums.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation>;
+            cardOrientation: pulumi.Input<enums.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientation>;
             /**
              * Required if orientation is horizontal. Image preview alignment for standalone cards with horizontal layout.
              */
@@ -30849,9 +30849,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialArgs {
             /**
-             * Required. The phone number to fill in the default dialer app. This field should be in [E.164](https://en.wikipedia.org/wiki/E.164) format. An example of a correctly formatted phone number: +15556767888.
+             * The phone number to fill in the default dialer app. This field should be in [E.164](https://en.wikipedia.org/wiki/E.164) format. An example of a correctly formatted phone number: +15556767888.
              */
-            phoneNumber?: pulumi.Input<string>;
+            phoneNumber: pulumi.Input<string>;
         }
 
         /**
@@ -30859,9 +30859,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriArgs {
             /**
-             * Required. The uri to open on the user device
+             * The uri to open on the user device
              */
-            uri?: pulumi.Input<string>;
+            uri: pulumi.Input<string>;
         }
 
         /**
@@ -30907,9 +30907,9 @@ export namespace dialogflow {
              */
             rbmSuggestion?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionArgs>[]>;
             /**
-             * Required. Text sent and displayed to the user.
+             * Text sent and displayed to the user.
              */
-            text?: pulumi.Input<string>;
+            text: pulumi.Input<string>;
         }
 
         /**
@@ -30917,9 +30917,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoArgs {
             /**
-             * Required. A unique key that will be sent back to the agent if this response is given.
+             * A unique key that will be sent back to the agent if this response is given.
              */
-            key?: pulumi.Input<string>;
+            key: pulumi.Input<string>;
             /**
              * Optional. A list of synonyms that can also be used to trigger this item in dialog.
              */
@@ -30949,9 +30949,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesArgs {
             /**
-             * Required. The list of simple responses.
+             * The list of simple responses.
              */
-            simpleResponses?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseArgs>[]>;
+            simpleResponses: pulumi.Input<pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseArgs>[]>;
         }
 
         /**
@@ -30959,9 +30959,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageSuggestionArgs {
             /**
-             * Required. The text shown the in the suggestion chip.
+             * The text shown the in the suggestion chip.
              */
-            title?: pulumi.Input<string>;
+            title: pulumi.Input<string>;
         }
 
         /**
@@ -30969,9 +30969,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageSuggestionsArgs {
             /**
-             * Required. The list of suggested replies.
+             * The list of suggested replies.
              */
-            suggestions?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageSuggestionArgs>[]>;
+            suggestions: pulumi.Input<pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentMessageSuggestionArgs>[]>;
         }
 
         /**
@@ -30999,9 +30999,9 @@ export namespace dialogflow {
              */
             subtitle?: pulumi.Input<string>;
             /**
-             * Required. Title of the card.
+             * Title of the card.
              */
-            title?: pulumi.Input<string>;
+            title: pulumi.Input<string>;
         }
 
         /**
@@ -31009,9 +31009,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageTableCardCellArgs {
             /**
-             * Required. Text in this cell.
+             * Text in this cell.
              */
-            text?: pulumi.Input<string>;
+            text: pulumi.Input<string>;
         }
 
         /**
@@ -31033,9 +31033,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioArgs {
             /**
-             * Required. URI to a Google Cloud Storage object containing the audio to play, e.g., "gs://bucket/object". The object must contain a single channel (mono) of linear PCM audio (2 bytes / sample) at 8kHz. This object must be readable by the `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` service account where is the number of the Telephony Gateway project (usually the same as the Dialogflow agent project). If the Google Cloud Storage bucket is in the Telephony Gateway project, this permission is added by default when enabling the Dialogflow V2 API. For audio from other sources, consider using the `TelephonySynthesizeSpeech` message with SSML.
+             * URI to a Google Cloud Storage object containing the audio to play, e.g., "gs://bucket/object". The object must contain a single channel (mono) of linear PCM audio (2 bytes / sample) at 8kHz. This object must be readable by the `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` service account where is the number of the Telephony Gateway project (usually the same as the Dialogflow agent project). If the Google Cloud Storage bucket is in the Telephony Gateway project, this permission is added by default when enabling the Dialogflow V2 API. For audio from other sources, consider using the `TelephonySynthesizeSpeech` message with SSML.
              */
-            audioUri?: pulumi.Input<string>;
+            audioUri: pulumi.Input<string>;
         }
 
         /**
@@ -31057,9 +31057,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallArgs {
             /**
-             * Required. The phone number to transfer the call to in [E.164 format](https://en.wikipedia.org/wiki/E.164). We currently only allow transferring to US numbers (+1xxxyyyzzzz).
+             * The phone number to transfer the call to in [E.164 format](https://en.wikipedia.org/wiki/E.164). We currently only allow transferring to US numbers (+1xxxyyyzzzz).
              */
-            phoneNumber?: pulumi.Input<string>;
+            phoneNumber: pulumi.Input<string>;
         }
 
         /**
@@ -31081,9 +31081,9 @@ export namespace dialogflow {
              */
             defaultValue?: pulumi.Input<string>;
             /**
-             * Required. The name of the parameter.
+             * The name of the parameter.
              */
-            displayName?: pulumi.Input<string>;
+            displayName: pulumi.Input<string>;
             /**
              * Optional. The name of the entity type, prefixed with `@`, that describes values of the parameter. If the parameter is required, this must be provided.
              */
@@ -31115,17 +31115,17 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs {
             /**
-             * Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
+             * The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
              */
-            parts?: pulumi.Input<pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArgs>[]>;
+            parts: pulumi.Input<pulumi.Input<inputs.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArgs>[]>;
             /**
              * Optional. Indicates how many times this example was added to the intent. Each time a developer adds an existing sample by editing an intent or training, this counter is increased.
              */
             timesAddedCount?: pulumi.Input<number>;
             /**
-             * Required. The type of the training phrase.
+             * The type of the training phrase.
              */
-            type?: pulumi.Input<enums.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentTrainingPhraseType>;
+            type: pulumi.Input<enums.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1IntentTrainingPhraseType>;
         }
 
         /**
@@ -31141,9 +31141,9 @@ export namespace dialogflow {
              */
             entityType?: pulumi.Input<string>;
             /**
-             * Required. The text for this part.
+             * The text for this part.
              */
-            text?: pulumi.Input<string>;
+            text: pulumi.Input<string>;
             /**
              * Optional. Indicates whether the text was manually annotated. This field is set to true when the Dialogflow Console is used to manually annotate the part. When creating an annotated part with the API, you must set this to true.
              */
@@ -31203,9 +31203,9 @@ export namespace dialogflow {
              */
             enableTextToSpeech?: pulumi.Input<boolean>;
             /**
-             * Required. Audio encoding of the synthesized audio content.
+             * Audio encoding of the synthesized audio content.
              */
-            outputAudioEncoding?: pulumi.Input<enums.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding>;
+            outputAudioEncoding: pulumi.Input<enums.dialogflow.v2beta1.GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding>;
             /**
              * Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
              */
@@ -31228,9 +31228,9 @@ export namespace dialogflow {
              */
             audio?: pulumi.Input<string>;
             /**
-             * Required. Instructs the speech recognizer how to process the speech audio.
+             * Instructs the speech recognizer how to process the speech audio.
              */
-            config?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3InputAudioConfigArgs>;
+            config: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3InputAudioConfigArgs>;
         }
 
         /**
@@ -31274,9 +31274,9 @@ export namespace dialogflow {
              */
             currentPage?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3PageArgs>;
             /**
-             * Required. Input only. The diagnostic info output for the turn.
+             * Input only. The diagnostic info output for the turn.
              */
-            diagnosticInfo?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            diagnosticInfo: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
              * The session parameters available to the bot at this point.
              */
@@ -31314,13 +31314,13 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3EntityTypeEntityArgs {
             /**
-             * Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+             * A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
              */
-            synonyms?: pulumi.Input<pulumi.Input<string>[]>;
+            synonyms: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+             * The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
              */
-            value?: pulumi.Input<string>;
+            value: pulumi.Input<string>;
         }
 
         /**
@@ -31328,9 +31328,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs {
             /**
-             * Required. The word or phrase to be excluded.
+             * The word or phrase to be excluded.
              */
-            value?: pulumi.Input<string>;
+            value: pulumi.Input<string>;
         }
 
         /**
@@ -31338,9 +31338,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs {
             /**
-             * Required. Format: projects//locations//agents//flows//versions/.
+             * Format: projects//locations//agents//flows//versions/.
              */
-            version?: pulumi.Input<string>;
+            version: pulumi.Input<string>;
         }
 
         /**
@@ -31348,9 +31348,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3EventHandlerArgs {
             /**
-             * Required. The name of the event to handle.
+             * The name of the event to handle.
              */
-            event?: pulumi.Input<string>;
+            event: pulumi.Input<string>;
             /**
              * The target flow to transition to. Format: `projects//locations//agents//flows/`.
              */
@@ -31488,17 +31488,17 @@ export namespace dialogflow {
              */
             defaultValue?: any;
             /**
-             * Required. The human-readable name of the parameter, unique within the form.
+             * The human-readable name of the parameter, unique within the form.
              */
-            displayName?: pulumi.Input<string>;
+            displayName: pulumi.Input<string>;
             /**
-             * Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+             * The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
              */
-            entityType?: pulumi.Input<string>;
+            entityType: pulumi.Input<string>;
             /**
-             * Required. Defines fill behavior for the parameter.
+             * Defines fill behavior for the parameter.
              */
-            fillBehavior?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3FormParameterFillBehaviorArgs>;
+            fillBehavior: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3FormParameterFillBehaviorArgs>;
             /**
              * Indicates whether the parameter represents a list of values.
              */
@@ -31518,9 +31518,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3FormParameterFillBehaviorArgs {
             /**
-             * Required. The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
+             * The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
              */
-            initialPromptFulfillment?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3FulfillmentArgs>;
+            initialPromptFulfillment: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3FulfillmentArgs>;
             /**
              * The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are: * `sys.no-match-`, where N can be from 1 to 6 * `sys.no-match-default` * `sys.no-input-`, where N can be from 1 to 6 * `sys.no-input-default` * `sys.invalid-parameter` `initial_prompt_fulfillment` provides the first prompt for the parameter. If the user's response does not fill the parameter, a no-match/no-input event will be triggered, and the fulfillment associated with the `sys.no-match-1`/`sys.no-input-1` handler (if defined) will be called to provide a prompt. The `sys.no-match-2`/`sys.no-input-2` handler (if defined) will respond to the next no-match/no-input event, and so on. A `sys.no-match-default` or `sys.no-input-default` handler will be used to handle all following no-match/no-input events after all numbered no-match/no-input handlers for the parameter are consumed. A `sys.invalid-parameter` handler can be defined to handle the case where the parameter values have been `invalidated` by webhook. For example, if the user's response fill the parameter, however the parameter was invalidated by webhook, the fulfillment associated with the `sys.invalid-parameter` handler (if defined) will be called to provide a prompt. If the event handler for the corresponding event can't be found on the parameter, `initial_prompt_fulfillment` will be re-prompted.
              */
@@ -31610,9 +31610,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3InputAudioConfigArgs {
             /**
-             * Required. Audio encoding of the audio content to process.
+             * Audio encoding of the audio content to process.
              */
-            audioEncoding?: pulumi.Input<enums.dialogflow.v3.GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding>;
+            audioEncoding: pulumi.Input<enums.dialogflow.v3.GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding>;
             /**
              * Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
              */
@@ -31648,9 +31648,9 @@ export namespace dialogflow {
              */
             description?: pulumi.Input<string>;
             /**
-             * Required. The human-readable name of the intent, unique within the agent.
+             * The human-readable name of the intent, unique within the agent.
              */
-            displayName?: pulumi.Input<string>;
+            displayName: pulumi.Input<string>;
             /**
              * Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
              */
@@ -31682,9 +31682,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3IntentInputArgs {
             /**
-             * Required. The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
+             * The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
              */
-            intent?: pulumi.Input<string>;
+            intent: pulumi.Input<string>;
         }
 
         /**
@@ -31692,13 +31692,13 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3IntentParameterArgs {
             /**
-             * Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+             * The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
              */
-            entityType?: pulumi.Input<string>;
+            entityType: pulumi.Input<string>;
             /**
-             * Required. The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+             * The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
              */
-            id?: pulumi.Input<string>;
+            id: pulumi.Input<string>;
             /**
              * Indicates whether the parameter represents a list of values.
              */
@@ -31714,9 +31714,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3IntentTrainingPhraseArgs {
             /**
-             * Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
+             * The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
              */
-            parts?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3IntentTrainingPhrasePartArgs>[]>;
+            parts: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3IntentTrainingPhrasePartArgs>[]>;
             /**
              * Indicates how many times this example was added to the intent.
              */
@@ -31732,9 +31732,9 @@ export namespace dialogflow {
              */
             parameterId?: pulumi.Input<string>;
             /**
-             * Required. The text for this part.
+             * The text for this part.
              */
-            text?: pulumi.Input<string>;
+            text: pulumi.Input<string>;
         }
 
         /**
@@ -31760,9 +31760,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3PageArgs {
             /**
-             * Required. The human-readable name of the page, unique within the agent.
+             * The human-readable name of the page, unique within the agent.
              */
-            displayName?: pulumi.Input<string>;
+            displayName: pulumi.Input<string>;
             /**
              * The fulfillment to call when the session is entering the page.
              */
@@ -31810,9 +31810,9 @@ export namespace dialogflow {
              */
             intent?: pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3IntentInputArgs>;
             /**
-             * Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
+             * The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
              */
-            languageCode?: pulumi.Input<string>;
+            languageCode: pulumi.Input<string>;
             /**
              * The natural language text to be processed.
              */
@@ -31888,9 +31888,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs {
             /**
-             * Required. URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+             * URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
              */
-            audioUri?: pulumi.Input<string>;
+            audioUri: pulumi.Input<string>;
         }
 
         /**
@@ -31898,9 +31898,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3ResponseMessageTextArgs {
             /**
-             * Required. A collection of text responses.
+             * A collection of text responses.
              */
-            text?: pulumi.Input<pulumi.Input<string>[]>;
+            text: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -31958,9 +31958,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3TextInputArgs {
             /**
-             * Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
+             * The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
              */
-            text?: pulumi.Input<string>;
+            text: pulumi.Input<string>;
         }
 
         /**
@@ -32044,9 +32044,9 @@ export namespace dialogflow {
              */
             requestHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
-             * Required. The webhook URI for receiving POST requests. It must use https protocol.
+             * The webhook URI for receiving POST requests. It must use https protocol.
              */
-            uri?: pulumi.Input<string>;
+            uri: pulumi.Input<string>;
             /**
              * The user name for HTTP Basic authentication.
              */
@@ -32083,9 +32083,9 @@ export namespace dialogflow {
              */
             audio?: pulumi.Input<string>;
             /**
-             * Required. Instructs the speech recognizer how to process the speech audio.
+             * Instructs the speech recognizer how to process the speech audio.
              */
-            config?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs>;
+            config: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs>;
         }
 
         /**
@@ -32129,9 +32129,9 @@ export namespace dialogflow {
              */
             currentPage?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1PageArgs>;
             /**
-             * Required. Input only. The diagnostic info output for the turn.
+             * Input only. The diagnostic info output for the turn.
              */
-            diagnosticInfo?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            diagnosticInfo: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
              * The session parameters available to the bot at this point.
              */
@@ -32169,13 +32169,13 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs {
             /**
-             * Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+             * A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
              */
-            synonyms?: pulumi.Input<pulumi.Input<string>[]>;
+            synonyms: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+             * The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
              */
-            value?: pulumi.Input<string>;
+            value: pulumi.Input<string>;
         }
 
         /**
@@ -32183,9 +32183,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseArgs {
             /**
-             * Required. The word or phrase to be excluded.
+             * The word or phrase to be excluded.
              */
-            value?: pulumi.Input<string>;
+            value: pulumi.Input<string>;
         }
 
         /**
@@ -32193,9 +32193,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs {
             /**
-             * Required. Format: projects//locations//agents//flows//versions/.
+             * Format: projects//locations//agents//flows//versions/.
              */
-            version?: pulumi.Input<string>;
+            version: pulumi.Input<string>;
         }
 
         /**
@@ -32203,9 +32203,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1EventHandlerArgs {
             /**
-             * Required. The name of the event to handle.
+             * The name of the event to handle.
              */
-            event?: pulumi.Input<string>;
+            event: pulumi.Input<string>;
             /**
              * The target flow to transition to. Format: `projects//locations//agents//flows/`.
              */
@@ -32343,17 +32343,17 @@ export namespace dialogflow {
              */
             defaultValue?: any;
             /**
-             * Required. The human-readable name of the parameter, unique within the form.
+             * The human-readable name of the parameter, unique within the form.
              */
-            displayName?: pulumi.Input<string>;
+            displayName: pulumi.Input<string>;
             /**
-             * Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+             * The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
              */
-            entityType?: pulumi.Input<string>;
+            entityType: pulumi.Input<string>;
             /**
-             * Required. Defines fill behavior for the parameter.
+             * Defines fill behavior for the parameter.
              */
-            fillBehavior?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs>;
+            fillBehavior: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs>;
             /**
              * Indicates whether the parameter represents a list of values.
              */
@@ -32373,9 +32373,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs {
             /**
-             * Required. The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
+             * The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
              */
-            initialPromptFulfillment?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1FulfillmentArgs>;
+            initialPromptFulfillment: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1FulfillmentArgs>;
             /**
              * The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are: * `sys.no-match-`, where N can be from 1 to 6 * `sys.no-match-default` * `sys.no-input-`, where N can be from 1 to 6 * `sys.no-input-default` * `sys.invalid-parameter` `initial_prompt_fulfillment` provides the first prompt for the parameter. If the user's response does not fill the parameter, a no-match/no-input event will be triggered, and the fulfillment associated with the `sys.no-match-1`/`sys.no-input-1` handler (if defined) will be called to provide a prompt. The `sys.no-match-2`/`sys.no-input-2` handler (if defined) will respond to the next no-match/no-input event, and so on. A `sys.no-match-default` or `sys.no-input-default` handler will be used to handle all following no-match/no-input events after all numbered no-match/no-input handlers for the parameter are consumed. A `sys.invalid-parameter` handler can be defined to handle the case where the parameter values have been `invalidated` by webhook. For example, if the user's response fill the parameter, however the parameter was invalidated by webhook, the fulfillment associated with the `sys.invalid-parameter` handler (if defined) will be called to provide a prompt. If the event handler for the corresponding event can't be found on the parameter, `initial_prompt_fulfillment` will be re-prompted.
              */
@@ -32465,9 +32465,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs {
             /**
-             * Required. Audio encoding of the audio content to process.
+             * Audio encoding of the audio content to process.
              */
-            audioEncoding?: pulumi.Input<enums.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding>;
+            audioEncoding: pulumi.Input<enums.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding>;
             /**
              * Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
              */
@@ -32503,9 +32503,9 @@ export namespace dialogflow {
              */
             description?: pulumi.Input<string>;
             /**
-             * Required. The human-readable name of the intent, unique within the agent.
+             * The human-readable name of the intent, unique within the agent.
              */
-            displayName?: pulumi.Input<string>;
+            displayName: pulumi.Input<string>;
             /**
              * Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
              */
@@ -32537,9 +32537,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1IntentInputArgs {
             /**
-             * Required. The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
+             * The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
              */
-            intent?: pulumi.Input<string>;
+            intent: pulumi.Input<string>;
         }
 
         /**
@@ -32547,13 +32547,13 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1IntentParameterArgs {
             /**
-             * Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+             * The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
              */
-            entityType?: pulumi.Input<string>;
+            entityType: pulumi.Input<string>;
             /**
-             * Required. The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+             * The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
              */
-            id?: pulumi.Input<string>;
+            id: pulumi.Input<string>;
             /**
              * Indicates whether the parameter represents a list of values.
              */
@@ -32569,9 +32569,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseArgs {
             /**
-             * Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
+             * The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
              */
-            parts?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs>[]>;
+            parts: pulumi.Input<pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs>[]>;
             /**
              * Indicates how many times this example was added to the intent.
              */
@@ -32587,9 +32587,9 @@ export namespace dialogflow {
              */
             parameterId?: pulumi.Input<string>;
             /**
-             * Required. The text for this part.
+             * The text for this part.
              */
-            text?: pulumi.Input<string>;
+            text: pulumi.Input<string>;
         }
 
         /**
@@ -32615,9 +32615,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1PageArgs {
             /**
-             * Required. The human-readable name of the page, unique within the agent.
+             * The human-readable name of the page, unique within the agent.
              */
-            displayName?: pulumi.Input<string>;
+            displayName: pulumi.Input<string>;
             /**
              * The fulfillment to call when the session is entering the page.
              */
@@ -32665,9 +32665,9 @@ export namespace dialogflow {
              */
             intent?: pulumi.Input<inputs.dialogflow.v3beta1.GoogleCloudDialogflowCxV3beta1IntentInputArgs>;
             /**
-             * Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
+             * The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
              */
-            languageCode?: pulumi.Input<string>;
+            languageCode: pulumi.Input<string>;
             /**
              * The natural language text to be processed.
              */
@@ -32743,9 +32743,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioArgs {
             /**
-             * Required. URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+             * URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
              */
-            audioUri?: pulumi.Input<string>;
+            audioUri: pulumi.Input<string>;
         }
 
         /**
@@ -32753,9 +32753,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1ResponseMessageTextArgs {
             /**
-             * Required. A collection of text responses.
+             * A collection of text responses.
              */
-            text?: pulumi.Input<pulumi.Input<string>[]>;
+            text: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -32813,9 +32813,9 @@ export namespace dialogflow {
          */
         export interface GoogleCloudDialogflowCxV3beta1TextInputArgs {
             /**
-             * Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
+             * The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
              */
-            text?: pulumi.Input<string>;
+            text: pulumi.Input<string>;
         }
 
         /**
@@ -32899,9 +32899,9 @@ export namespace dialogflow {
              */
             requestHeaders?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
-             * Required. The webhook URI for receiving POST requests. It must use https protocol.
+             * The webhook URI for receiving POST requests. It must use https protocol.
              */
-            uri?: pulumi.Input<string>;
+            uri: pulumi.Input<string>;
             /**
              * The user name for HTTP Basic authentication.
              */
@@ -32966,17 +32966,17 @@ export namespace dlp {
          */
         export interface GooglePrivacyDlpV2AuxiliaryTableArgs {
             /**
-             * Required. Quasi-identifier columns.
+             * Quasi-identifier columns.
              */
-            quasiIds?: pulumi.Input<pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2QuasiIdFieldArgs>[]>;
+            quasiIds: pulumi.Input<pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2QuasiIdFieldArgs>[]>;
             /**
-             * Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+             * The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
              */
-            relativeFrequency?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2FieldIdArgs>;
+            relativeFrequency: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2FieldIdArgs>;
             /**
-             * Required. Auxiliary table location.
+             * Auxiliary table location.
              */
-            table?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2BigQueryTableArgs>;
+            table: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2BigQueryTableArgs>;
         }
 
         /**
@@ -33051,9 +33051,9 @@ export namespace dlp {
              */
             min?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2ValueArgs>;
             /**
-             * Required. Replacement value for this bucket.
+             * Replacement value for this bucket.
              */
-            replacementValue?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2ValueArgs>;
+            replacementValue: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2ValueArgs>;
         }
 
         /**
@@ -33182,13 +33182,13 @@ export namespace dlp {
          */
         export interface GooglePrivacyDlpV2ConditionArgs {
             /**
-             * Required. Field within the record this condition is evaluated against.
+             * Field within the record this condition is evaluated against.
              */
-            field?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2FieldIdArgs>;
+            field: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2FieldIdArgs>;
             /**
-             * Required. Operator used to compare the field or infoType to the value.
+             * Operator used to compare the field or infoType to the value.
              */
-            operator?: pulumi.Input<enums.dlp.v2.GooglePrivacyDlpV2ConditionOperator>;
+            operator: pulumi.Input<enums.dlp.v2.GooglePrivacyDlpV2ConditionOperator>;
             /**
              * Value to compare against. [Mandatory, except for `EXISTS` tests.]
              */
@@ -33264,9 +33264,9 @@ export namespace dlp {
              */
             context?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2FieldIdArgs>;
             /**
-             * Required. The key used by the encryption algorithm.
+             * The key used by the encryption algorithm.
              */
-            cryptoKey?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2CryptoKeyArgs>;
+            cryptoKey: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2CryptoKeyArgs>;
             /**
              * This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range [2, 95]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is: 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|\:;"'<,>.?/
              */
@@ -33346,13 +33346,13 @@ export namespace dlp {
              */
             cryptoKey?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2CryptoKeyArgs>;
             /**
-             * Required. For example, -5 means shift date to at most 5 days back in the past.
+             * For example, -5 means shift date to at most 5 days back in the past.
              */
-            lowerBoundDays?: pulumi.Input<number>;
+            lowerBoundDays: pulumi.Input<number>;
             /**
-             * Required. Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
+             * Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
              */
-            upperBoundDays?: pulumi.Input<number>;
+            upperBoundDays: pulumi.Input<number>;
         }
 
         /**
@@ -33382,9 +33382,9 @@ export namespace dlp {
              */
             auxiliaryTables?: pulumi.Input<pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2StatisticalTableArgs>[]>;
             /**
-             * Required. Fields considered to be quasi-identifiers. No two fields can have the same tag.
+             * Fields considered to be quasi-identifiers. No two fields can have the same tag.
              */
-            quasiIds?: pulumi.Input<pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2QuasiIdArgs>[]>;
+            quasiIds: pulumi.Input<pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2QuasiIdArgs>[]>;
             /**
              * ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code.
              */
@@ -33490,9 +33490,9 @@ export namespace dlp {
              */
             condition?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2RecordConditionArgs>;
             /**
-             * Required. Input field(s) to apply the transformation to.
+             * Input field(s) to apply the transformation to.
              */
-            fields?: pulumi.Input<pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2FieldIdArgs>[]>;
+            fields: pulumi.Input<pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2FieldIdArgs>[]>;
             /**
              * Treat the contents of the field as free text, and selectively transform content that matches an `InfoType`.
              */
@@ -33540,17 +33540,17 @@ export namespace dlp {
          */
         export interface GooglePrivacyDlpV2FixedSizeBucketingConfigArgs {
             /**
-             * Required. Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
+             * Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
              */
-            bucketSize?: pulumi.Input<number>;
+            bucketSize: pulumi.Input<number>;
             /**
-             * Required. Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
+             * Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
              */
-            lowerBound?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2ValueArgs>;
+            lowerBound: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2ValueArgs>;
             /**
-             * Required. Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
+             * Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
              */
-            upperBound?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2ValueArgs>;
+            upperBound: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2ValueArgs>;
         }
 
         /**
@@ -33626,9 +33626,9 @@ export namespace dlp {
              */
             infoTypes?: pulumi.Input<pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InfoTypeArgs>[]>;
             /**
-             * Required. Primitive transformation to apply to the infoType.
+             * Primitive transformation to apply to the infoType.
              */
-            primitiveTransformation?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2PrimitiveTransformationArgs>;
+            primitiveTransformation: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2PrimitiveTransformationArgs>;
         }
 
         /**
@@ -33636,9 +33636,9 @@ export namespace dlp {
          */
         export interface GooglePrivacyDlpV2InfoTypeTransformationsArgs {
             /**
-             * Required. Transformation for each infoType. Cannot specify more than one for a given infoType.
+             * Transformation for each infoType. Cannot specify more than one for a given infoType.
              */
-            transformations?: pulumi.Input<pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InfoTypeTransformationArgs>[]>;
+            transformations: pulumi.Input<pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2InfoTypeTransformationArgs>[]>;
         }
 
         /**
@@ -33758,9 +33758,9 @@ export namespace dlp {
              */
             auxiliaryTables?: pulumi.Input<pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2AuxiliaryTableArgs>[]>;
             /**
-             * Required. Fields considered to be quasi-identifiers. No two columns can have the same tag.
+             * Fields considered to be quasi-identifiers. No two columns can have the same tag.
              */
-            quasiIds?: pulumi.Input<pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2TaggedFieldArgs>[]>;
+            quasiIds: pulumi.Input<pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2TaggedFieldArgs>[]>;
             /**
              * ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code.
              */
@@ -33782,13 +33782,13 @@ export namespace dlp {
          */
         export interface GooglePrivacyDlpV2KmsWrappedCryptoKeyArgs {
             /**
-             * Required. The resource name of the KMS CryptoKey to use for unwrapping.
+             * The resource name of the KMS CryptoKey to use for unwrapping.
              */
-            cryptoKeyName?: pulumi.Input<string>;
+            cryptoKeyName: pulumi.Input<string>;
             /**
-             * Required. The wrapped data crypto key.
+             * The wrapped data crypto key.
              */
-            wrappedKey?: pulumi.Input<string>;
+            wrappedKey: pulumi.Input<string>;
         }
 
         /**
@@ -34018,9 +34018,9 @@ export namespace dlp {
              */
             customTag?: pulumi.Input<string>;
             /**
-             * Required. Identifies the column.
+             * Identifies the column.
              */
-            field?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2FieldIdArgs>;
+            field: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2FieldIdArgs>;
             /**
              * If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data
              */
@@ -34172,17 +34172,17 @@ export namespace dlp {
          */
         export interface GooglePrivacyDlpV2StatisticalTableArgs {
             /**
-             * Required. Quasi-identifier columns.
+             * Quasi-identifier columns.
              */
-            quasiIds?: pulumi.Input<pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2QuasiIdentifierFieldArgs>[]>;
+            quasiIds: pulumi.Input<pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2QuasiIdentifierFieldArgs>[]>;
             /**
-             * Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+             * The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
              */
-            relativeFrequency?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2FieldIdArgs>;
+            relativeFrequency: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2FieldIdArgs>;
             /**
-             * Required. Auxiliary table location.
+             * Auxiliary table location.
              */
-            table?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2BigQueryTableArgs>;
+            table: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2BigQueryTableArgs>;
         }
 
         /**
@@ -34273,9 +34273,9 @@ export namespace dlp {
              */
             customTag?: pulumi.Input<string>;
             /**
-             * Required. Identifies the column.
+             * Identifies the column.
              */
-            field?: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2FieldIdArgs>;
+            field: pulumi.Input<inputs.dlp.v2.GooglePrivacyDlpV2FieldIdArgs>;
             /**
              * If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data
              */
@@ -34343,9 +34343,9 @@ export namespace dlp {
          */
         export interface GooglePrivacyDlpV2TransientCryptoKeyArgs {
             /**
-             * Required. Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+             * Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
         }
 
         /**
@@ -34367,9 +34367,9 @@ export namespace dlp {
          */
         export interface GooglePrivacyDlpV2UnwrappedCryptoKeyArgs {
             /**
-             * Required. A 128/192/256 bit key.
+             * A 128/192/256 bit key.
              */
-            key?: pulumi.Input<string>;
+            key: pulumi.Input<string>;
         }
 
         /**
@@ -34919,21 +34919,21 @@ export namespace domains {
          */
         export interface ContactArgs {
             /**
-             * Required. Email address of the contact.
+             * Email address of the contact.
              */
-            email?: pulumi.Input<string>;
+            email: pulumi.Input<string>;
             /**
              * Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
              */
             faxNumber?: pulumi.Input<string>;
             /**
-             * Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+             * Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
              */
-            phoneNumber?: pulumi.Input<string>;
+            phoneNumber: pulumi.Input<string>;
             /**
-             * Required. Postal address of the contact.
+             * Postal address of the contact.
              */
-            postalAddress?: pulumi.Input<inputs.domains.v1alpha2.PostalAddressArgs>;
+            postalAddress: pulumi.Input<inputs.domains.v1alpha2.PostalAddressArgs>;
         }
 
         /**
@@ -34941,21 +34941,21 @@ export namespace domains {
          */
         export interface ContactSettingsArgs {
             /**
-             * Required. The administrative contact for the `Registration`.
+             * The administrative contact for the `Registration`.
              */
-            adminContact?: pulumi.Input<inputs.domains.v1alpha2.ContactArgs>;
+            adminContact: pulumi.Input<inputs.domains.v1alpha2.ContactArgs>;
             /**
-             * Required. Privacy setting for the contacts associated with the `Registration`.
+             * Privacy setting for the contacts associated with the `Registration`.
              */
-            privacy?: pulumi.Input<enums.domains.v1alpha2.ContactSettingsPrivacy>;
+            privacy: pulumi.Input<enums.domains.v1alpha2.ContactSettingsPrivacy>;
             /**
-             * Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+             * The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
              */
-            registrantContact?: pulumi.Input<inputs.domains.v1alpha2.ContactArgs>;
+            registrantContact: pulumi.Input<inputs.domains.v1alpha2.ContactArgs>;
             /**
-             * Required. The technical contact for the `Registration`.
+             * The technical contact for the `Registration`.
              */
-            technicalContact?: pulumi.Input<inputs.domains.v1alpha2.ContactArgs>;
+            technicalContact: pulumi.Input<inputs.domains.v1alpha2.ContactArgs>;
         }
 
         /**
@@ -34967,9 +34967,9 @@ export namespace domains {
              */
             dsRecords?: pulumi.Input<pulumi.Input<inputs.domains.v1alpha2.DsRecordArgs>[]>;
             /**
-             * Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+             * A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
              */
-            nameServers?: pulumi.Input<pulumi.Input<string>[]>;
+            nameServers: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -35039,9 +35039,9 @@ export namespace domains {
          */
         export interface GlueRecordArgs {
             /**
-             * Required. Domain name of the host in Punycode format.
+             * Domain name of the host in Punycode format.
              */
-            hostName?: pulumi.Input<string>;
+            hostName: pulumi.Input<string>;
             /**
              * List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set.
              */
@@ -35057,9 +35057,9 @@ export namespace domains {
          */
         export interface GoogleDomainsDnsArgs {
             /**
-             * Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+             * The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
              */
-            dsState?: pulumi.Input<enums.domains.v1alpha2.GoogleDomainsDnsDsState>;
+            dsState: pulumi.Input<enums.domains.v1alpha2.GoogleDomainsDnsDsState>;
         }
 
         /**
@@ -35123,9 +35123,9 @@ export namespace domains {
              */
             recipients?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+             * CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
              */
-            regionCode?: pulumi.Input<string>;
+            regionCode: pulumi.Input<string>;
             /**
              * The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
              */
@@ -35194,21 +35194,21 @@ export namespace domains {
          */
         export interface ContactArgs {
             /**
-             * Required. Email address of the contact.
+             * Email address of the contact.
              */
-            email?: pulumi.Input<string>;
+            email: pulumi.Input<string>;
             /**
              * Fax number of the contact in international format. For example, `"+1-800-555-0123"`.
              */
             faxNumber?: pulumi.Input<string>;
             /**
-             * Required. Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
+             * Phone number of the contact in international format. For example, `"+1-800-555-0123"`.
              */
-            phoneNumber?: pulumi.Input<string>;
+            phoneNumber: pulumi.Input<string>;
             /**
-             * Required. Postal address of the contact.
+             * Postal address of the contact.
              */
-            postalAddress?: pulumi.Input<inputs.domains.v1beta1.PostalAddressArgs>;
+            postalAddress: pulumi.Input<inputs.domains.v1beta1.PostalAddressArgs>;
         }
 
         /**
@@ -35216,21 +35216,21 @@ export namespace domains {
          */
         export interface ContactSettingsArgs {
             /**
-             * Required. The administrative contact for the `Registration`.
+             * The administrative contact for the `Registration`.
              */
-            adminContact?: pulumi.Input<inputs.domains.v1beta1.ContactArgs>;
+            adminContact: pulumi.Input<inputs.domains.v1beta1.ContactArgs>;
             /**
-             * Required. Privacy setting for the contacts associated with the `Registration`.
+             * Privacy setting for the contacts associated with the `Registration`.
              */
-            privacy?: pulumi.Input<enums.domains.v1beta1.ContactSettingsPrivacy>;
+            privacy: pulumi.Input<enums.domains.v1beta1.ContactSettingsPrivacy>;
             /**
-             * Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+             * The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
              */
-            registrantContact?: pulumi.Input<inputs.domains.v1beta1.ContactArgs>;
+            registrantContact: pulumi.Input<inputs.domains.v1beta1.ContactArgs>;
             /**
-             * Required. The technical contact for the `Registration`.
+             * The technical contact for the `Registration`.
              */
-            technicalContact?: pulumi.Input<inputs.domains.v1beta1.ContactArgs>;
+            technicalContact: pulumi.Input<inputs.domains.v1beta1.ContactArgs>;
         }
 
         /**
@@ -35242,9 +35242,9 @@ export namespace domains {
              */
             dsRecords?: pulumi.Input<pulumi.Input<inputs.domains.v1beta1.DsRecordArgs>[]>;
             /**
-             * Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
+             * A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
              */
-            nameServers?: pulumi.Input<pulumi.Input<string>[]>;
+            nameServers: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -35314,9 +35314,9 @@ export namespace domains {
          */
         export interface GlueRecordArgs {
             /**
-             * Required. Domain name of the host in Punycode format.
+             * Domain name of the host in Punycode format.
              */
-            hostName?: pulumi.Input<string>;
+            hostName: pulumi.Input<string>;
             /**
              * List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. `198.51.100.1`). At least one of `ipv4_address` and `ipv6_address` must be set.
              */
@@ -35332,9 +35332,9 @@ export namespace domains {
          */
         export interface GoogleDomainsDnsArgs {
             /**
-             * Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+             * The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
              */
-            dsState?: pulumi.Input<enums.domains.v1beta1.GoogleDomainsDnsDsState>;
+            dsState: pulumi.Input<enums.domains.v1beta1.GoogleDomainsDnsDsState>;
         }
 
         /**
@@ -35398,9 +35398,9 @@ export namespace domains {
              */
             recipients?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+             * CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
              */
-            regionCode?: pulumi.Input<string>;
+            regionCode: pulumi.Input<string>;
             /**
              * The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
              */
@@ -35475,13 +35475,13 @@ export namespace eventarc {
              */
             path?: pulumi.Input<string>;
             /**
-             * Required. The region the Cloud Run service is deployed in.
+             * The region the Cloud Run service is deployed in.
              */
-            region?: pulumi.Input<string>;
+            region: pulumi.Input<string>;
             /**
-             * Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+             * The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
              */
-            service?: pulumi.Input<string>;
+            service: pulumi.Input<string>;
         }
 
         /**
@@ -35499,13 +35499,13 @@ export namespace eventarc {
          */
         export interface EventFilterArgs {
             /**
-             * Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+             * The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
              */
-            attribute?: pulumi.Input<string>;
+            attribute: pulumi.Input<string>;
             /**
-             * Required. The value for the attribute.
+             * The value for the attribute.
              */
-            value?: pulumi.Input<string>;
+            value: pulumi.Input<string>;
         }
 
         /**
@@ -35608,13 +35608,13 @@ export namespace eventarc {
              */
             path?: pulumi.Input<string>;
             /**
-             * Required. The region the Cloud Run service is deployed in.
+             * The region the Cloud Run service is deployed in.
              */
-            region?: pulumi.Input<string>;
+            region: pulumi.Input<string>;
             /**
-             * Required. The name of the Cloud run service being addressed (see https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services). Only services located in the same project of the trigger object can be addressed.
+             * The name of the Cloud run service being addressed (see https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services). Only services located in the same project of the trigger object can be addressed.
              */
-            service?: pulumi.Input<string>;
+            service: pulumi.Input<string>;
         }
 
         /**
@@ -35654,13 +35654,13 @@ export namespace eventarc {
          */
         export interface MatchingCriteriaArgs {
             /**
-             * Required. The name of a CloudEvents attribute. Currently, only a subset of attributes can be specified. All triggers MUST provide a matching criteria for the 'type' attribute.
+             * The name of a CloudEvents attribute. Currently, only a subset of attributes can be specified. All triggers MUST provide a matching criteria for the 'type' attribute.
              */
-            attribute?: pulumi.Input<string>;
+            attribute: pulumi.Input<string>;
             /**
-             * Required. The value for the attribute.
+             * The value for the attribute.
              */
-            value?: pulumi.Input<string>;
+            value: pulumi.Input<string>;
         }
 
     }
@@ -35813,13 +35813,13 @@ export namespace firebasehosting {
          */
         export interface DomainRedirectArgs {
             /**
-             * Required. The domain name to redirect to.
+             * The domain name to redirect to.
              */
-            domainName?: pulumi.Input<string>;
+            domainName: pulumi.Input<string>;
             /**
-             * Required. The redirect status code.
+             * The redirect status code.
              */
-            type?: pulumi.Input<enums.firebasehosting.v1beta1.DomainRedirectType>;
+            type: pulumi.Input<enums.firebasehosting.v1beta1.DomainRedirectType>;
         }
 
     }
@@ -36225,13 +36225,13 @@ export namespace gameservices {
          */
         export interface ScalingConfigArgs {
             /**
-             * Required. Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+             * Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
              */
-            fleetAutoscalerSpec?: pulumi.Input<string>;
+            fleetAutoscalerSpec: pulumi.Input<string>;
             /**
-             * Required. The name of the Scaling Config
+             * The name of the Scaling Config
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
             /**
              * The schedules to which this Scaling Config applies.
              */
@@ -36546,13 +36546,13 @@ export namespace gameservices {
          */
         export interface ScalingConfigArgs {
             /**
-             * Required. Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+             * Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
              */
-            fleetAutoscalerSpec?: pulumi.Input<string>;
+            fleetAutoscalerSpec: pulumi.Input<string>;
             /**
-             * Required. The name of the Scaling Config
+             * The name of the Scaling Config
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
             /**
              * The schedules to which this Scaling Config applies.
              */
@@ -36599,9 +36599,9 @@ export namespace genomics {
              */
             mountPoint?: pulumi.Input<string>;
             /**
-             * Required. The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
+             * The name of the disk that can be used in the pipeline parameters. Must be 1 - 63 characters. The name "boot" is reserved for system use.
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
             /**
              * Specifies how a sourced-base persistent disk will be mounted. See https://cloud.google.com/compute/docs/disks/persistent-disks#use_multi_instances for more details. Can only be set at create time.
              */
@@ -36615,9 +36615,9 @@ export namespace genomics {
              */
             source?: pulumi.Input<string>;
             /**
-             * Required. The type of the disk to create.
+             * The type of the disk to create.
              */
-            type?: pulumi.Input<enums.genomics.v1alpha2.DiskType>;
+            type: pulumi.Input<enums.genomics.v1alpha2.DiskType>;
         }
 
         /**
@@ -36625,13 +36625,13 @@ export namespace genomics {
          */
         export interface DockerExecutorArgs {
             /**
-             * Required. The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
+             * The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
              */
-            cmd?: pulumi.Input<string>;
+            cmd: pulumi.Input<string>;
             /**
-             * Required. Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
+             * Image name from either Docker Hub or Google Container Registry. Users that run pipelines must have READ access to the image.
              */
-            imageName?: pulumi.Input<string>;
+            imageName: pulumi.Input<string>;
         }
 
         /**
@@ -36639,13 +36639,13 @@ export namespace genomics {
          */
         export interface LocalCopyArgs {
             /**
-             * Required. The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
+             * The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
              */
-            disk?: pulumi.Input<string>;
+            disk: pulumi.Input<string>;
             /**
-             * Required. The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
+             * The path within the user's docker container where this input should be localized to and from, relative to the specified disk's mount point. For example: file.txt,
              */
-            path?: pulumi.Input<string>;
+            path: pulumi.Input<string>;
         }
 
         /**
@@ -36665,9 +36665,9 @@ export namespace genomics {
              */
             localCopy?: pulumi.Input<inputs.genomics.v1alpha2.LocalCopyArgs>;
             /**
-             * Required. Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
+             * Name of the parameter - the pipeline runner uses this string as the key to the input and output maps in RunPipeline.
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
         }
 
         /**
@@ -37299,9 +37299,9 @@ export namespace healthcare {
              */
             attributeDefinitionId?: pulumi.Input<string>;
             /**
-             * Required. The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
+             * The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
              */
-            values?: pulumi.Input<pulumi.Input<string>[]>;
+            values: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -37403,9 +37403,9 @@ export namespace healthcare {
          */
         export interface GoogleCloudHealthcareV1ConsentPolicyArgs {
             /**
-             * Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+             * The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
              */
-            authorizationRule?: pulumi.Input<inputs.healthcare.v1.ExprArgs>;
+            authorizationRule: pulumi.Input<inputs.healthcare.v1.ExprArgs>;
             /**
              * The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
              */
@@ -37599,9 +37599,9 @@ export namespace healthcare {
              */
             signatureTime?: pulumi.Input<string>;
             /**
-             * Required. User's UUID provided by the client.
+             * User's UUID provided by the client.
              */
-            userId?: pulumi.Input<string>;
+            userId: pulumi.Input<string>;
         }
 
         /**
@@ -37800,9 +37800,9 @@ export namespace healthcare {
          */
         export interface GoogleCloudHealthcareV1beta1ConsentPolicyArgs {
             /**
-             * Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+             * The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
              */
-            authorizationRule?: pulumi.Input<inputs.healthcare.v1beta1.ExprArgs>;
+            authorizationRule: pulumi.Input<inputs.healthcare.v1beta1.ExprArgs>;
             /**
              * The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
              */
@@ -38066,9 +38066,9 @@ export namespace healthcare {
              */
             signatureTime?: pulumi.Input<string>;
             /**
-             * Required. User's UUID provided by the client.
+             * User's UUID provided by the client.
              */
-            userId?: pulumi.Input<string>;
+            userId: pulumi.Input<string>;
         }
 
         /**
@@ -38183,9 +38183,9 @@ export namespace iam {
          */
         export interface AwsArgs {
             /**
-             * Required. The AWS account ID.
+             * The AWS account ID.
              */
-            accountId?: pulumi.Input<string>;
+            accountId: pulumi.Input<string>;
         }
 
         /**
@@ -38237,9 +38237,9 @@ export namespace iam {
              */
             allowedAudiences?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Required. The OIDC issuer URL.
+             * The OIDC issuer URL.
              */
-            issuerUri?: pulumi.Input<string>;
+            issuerUri: pulumi.Input<string>;
         }
 
     }
@@ -38574,13 +38574,13 @@ export namespace logging {
              */
             disabled?: pulumi.Input<boolean>;
             /**
-             * Required. An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
+             * An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
              */
-            filter?: pulumi.Input<string>;
+            filter: pulumi.Input<string>;
             /**
-             * Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+             * A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
         }
 
     }
@@ -38745,13 +38745,13 @@ export namespace memcache {
          */
         export interface NodeConfigArgs {
             /**
-             * Required. Number of cpus per Memcached node.
+             * Number of cpus per Memcached node.
              */
-            cpuCount?: pulumi.Input<number>;
+            cpuCount: pulumi.Input<number>;
             /**
-             * Required. Memory size in MiB for each Memcached node.
+             * Memory size in MiB for each Memcached node.
              */
-            memorySizeMb?: pulumi.Input<number>;
+            memorySizeMb: pulumi.Input<number>;
         }
 
     }
@@ -38783,13 +38783,13 @@ export namespace memcache {
          */
         export interface NodeConfigArgs {
             /**
-             * Required. Number of cpus per Memcached node.
+             * Number of cpus per Memcached node.
              */
-            cpuCount?: pulumi.Input<number>;
+            cpuCount: pulumi.Input<number>;
             /**
-             * Required. Memory size in MiB for each Memcached node.
+             * Memory size in MiB for each Memcached node.
              */
-            memorySizeMb?: pulumi.Input<number>;
+            memorySizeMb: pulumi.Input<number>;
         }
 
     }
@@ -39181,13 +39181,13 @@ export namespace ml {
          */
         export interface GoogleCloudMlV1_Measurement_MetricArgs {
             /**
-             * Required. Metric name.
+             * Metric name.
              */
-            metric?: pulumi.Input<string>;
+            metric: pulumi.Input<string>;
             /**
-             * Required. The value for this metric.
+             * The value for this metric.
              */
-            value?: pulumi.Input<number>;
+            value: pulumi.Input<number>;
         }
 
         export interface GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecArgs {
@@ -39261,13 +39261,13 @@ export namespace ml {
          */
         export interface GoogleCloudMlV1_StudyConfig_MetricSpecArgs {
             /**
-             * Required. The optimization goal of the metric.
+             * The optimization goal of the metric.
              */
-            goal?: pulumi.Input<enums.ml.v1.GoogleCloudMlV1_StudyConfig_MetricSpecGoal>;
+            goal: pulumi.Input<enums.ml.v1.GoogleCloudMlV1_StudyConfig_MetricSpecGoal>;
             /**
-             * Required. The name of the metric.
+             * The name of the metric.
              */
-            metric?: pulumi.Input<string>;
+            metric: pulumi.Input<string>;
         }
 
         /**
@@ -39295,9 +39295,9 @@ export namespace ml {
              */
             integerValueSpec?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecArgs>;
             /**
-             * Required. The parameter name must be unique amongst all ParameterSpecs.
+             * The parameter name must be unique amongst all ParameterSpecs.
              */
-            parameter?: pulumi.Input<string>;
+            parameter: pulumi.Input<string>;
             parentCategoricalValues?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecArgs>;
             parentDiscreteValues?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecArgs>;
             parentIntValues?: pulumi.Input<inputs.ml.v1.GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecArgs>;
@@ -39306,9 +39306,9 @@ export namespace ml {
              */
             scaleType?: pulumi.Input<enums.ml.v1.GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType>;
             /**
-             * Required. The type of the parameter.
+             * The type of the parameter.
              */
-            type?: pulumi.Input<enums.ml.v1.GoogleCloudMlV1_StudyConfig_ParameterSpecType>;
+            type: pulumi.Input<enums.ml.v1.GoogleCloudMlV1_StudyConfig_ParameterSpecType>;
         }
 
         /**
@@ -39530,9 +39530,9 @@ export namespace ml {
              */
             enableTrialEarlyStopping?: pulumi.Input<boolean>;
             /**
-             * Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
+             * The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
              */
-            goal?: pulumi.Input<enums.ml.v1.GoogleCloudMlV1__HyperparameterSpecGoal>;
+            goal: pulumi.Input<enums.ml.v1.GoogleCloudMlV1__HyperparameterSpecGoal>;
             /**
              * Optional. The TensorFlow summary tag name to use for optimizing trials. For current versions of TensorFlow, this tag name should exactly match what is shown in TensorBoard, including all scopes. For versions of TensorFlow prior to 0.12, this should be only the tag passed to tf.Summary. By default, "training/hptuning/metric" will be used.
              */
@@ -39550,9 +39550,9 @@ export namespace ml {
              */
             maxTrials?: pulumi.Input<number>;
             /**
-             * Required. The set of parameters to tune.
+             * The set of parameters to tune.
              */
-            params?: pulumi.Input<pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__ParameterSpecArgs>[]>;
+            params: pulumi.Input<pulumi.Input<inputs.ml.v1.GoogleCloudMlV1__ParameterSpecArgs>[]>;
             /**
              * Optional. The prior hyperparameter tuning job id that users hope to continue with. The job id will be used to find the corresponding vizier study guid and resume the study.
              */
@@ -39628,17 +39628,17 @@ export namespace ml {
              */
             minValue?: pulumi.Input<number>;
             /**
-             * Required. The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
+             * The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
              */
-            parameterName?: pulumi.Input<string>;
+            parameterName: pulumi.Input<string>;
             /**
              * Optional. How the parameter should be scaled to the hypercube. Leave unset for categorical parameters. Some kind of scaling is strongly recommended for real or integral parameters (e.g., `UNIT_LINEAR_SCALE`).
              */
             scaleType?: pulumi.Input<enums.ml.v1.GoogleCloudMlV1__ParameterSpecScaleType>;
             /**
-             * Required. The type of the parameter.
+             * The type of the parameter.
              */
-            type?: pulumi.Input<enums.ml.v1.GoogleCloudMlV1__ParameterSpecType>;
+            type: pulumi.Input<enums.ml.v1.GoogleCloudMlV1__ParameterSpecType>;
         }
 
         /**
@@ -39650,13 +39650,13 @@ export namespace ml {
              */
             batchSize?: pulumi.Input<string>;
             /**
-             * Required. The format of the input data files.
+             * The format of the input data files.
              */
-            dataFormat?: pulumi.Input<enums.ml.v1.GoogleCloudMlV1__PredictionInputDataFormat>;
+            dataFormat: pulumi.Input<enums.ml.v1.GoogleCloudMlV1__PredictionInputDataFormat>;
             /**
-             * Required. The Cloud Storage location of the input data files. May contain wildcards.
+             * The Cloud Storage location of the input data files. May contain wildcards.
              */
-            inputPaths?: pulumi.Input<pulumi.Input<string>[]>;
+            inputPaths: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Optional. The maximum number of workers to be used for parallel processing. Defaults to 10 if not specified.
              */
@@ -39670,13 +39670,13 @@ export namespace ml {
              */
             outputDataFormat?: pulumi.Input<enums.ml.v1.GoogleCloudMlV1__PredictionInputOutputDataFormat>;
             /**
-             * Required. The output Google Cloud Storage location.
+             * The output Google Cloud Storage location.
              */
-            outputPath?: pulumi.Input<string>;
+            outputPath: pulumi.Input<string>;
             /**
-             * Required. The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
+             * The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
              */
-            region?: pulumi.Input<string>;
+            region: pulumi.Input<string>;
             /**
              * Optional. The AI Platform runtime version to use for this batch prediction. If not set, AI Platform will pick the runtime version used during the CreateVersion request for this model version, or choose the latest stable version when model version information is not available such as when the model is specified by uri.
              */
@@ -39752,9 +39752,9 @@ export namespace ml {
          */
         export interface GoogleCloudMlV1__RequestLoggingConfigArgs {
             /**
-             * Required. Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE 
+             * Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE 
              */
-            bigqueryTableName?: pulumi.Input<string>;
+            bigqueryTableName: pulumi.Input<string>;
             /**
              * Percentage of requests to be logged, expressed as a fraction from 0 to 1. For example, if you want to log 10% of requests, enter `0.1`. The sampling window is the lifetime of the model version. Defaults to 0.
              */
@@ -39816,9 +39816,9 @@ export namespace ml {
              */
             metrics?: pulumi.Input<pulumi.Input<inputs.ml.v1.GoogleCloudMlV1_StudyConfig_MetricSpecArgs>[]>;
             /**
-             * Required. The set of parameters to tune.
+             * The set of parameters to tune.
              */
-            parameters?: pulumi.Input<pulumi.Input<inputs.ml.v1.GoogleCloudMlV1_StudyConfig_ParameterSpecArgs>[]>;
+            parameters: pulumi.Input<pulumi.Input<inputs.ml.v1.GoogleCloudMlV1_StudyConfig_ParameterSpecArgs>[]>;
         }
 
         /**
@@ -39866,9 +39866,9 @@ export namespace ml {
              */
             network?: pulumi.Input<string>;
             /**
-             * Required. The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
+             * The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
              */
-            packageUris?: pulumi.Input<pulumi.Input<string>[]>;
+            packageUris: pulumi.Input<pulumi.Input<string>[]>;
             /**
              * Optional. The configuration for parameter servers. You should only set `parameterServerConfig.acceleratorConfig` if `parameterServerType` is set to a Compute Engine machine type. [Learn about restrictions on accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu) Set `parameterServerConfig.imageUri` only if you build a custom image for your parameter server. If `parameterServerConfig.imageUri` has not been set, AI Platform uses the value of `masterConfig.imageUri`. Learn more about [configuring custom containers](/ai-platform/training/docs/distributed-training-containers).
              */
@@ -39882,25 +39882,25 @@ export namespace ml {
              */
             parameterServerType?: pulumi.Input<string>;
             /**
-             * Required. The Python module name to run after installing the packages.
+             * The Python module name to run after installing the packages.
              */
-            pythonModule?: pulumi.Input<string>;
+            pythonModule: pulumi.Input<string>;
             /**
              * Optional. The version of Python used in training. You must either specify this field or specify `masterConfig.imageUri`. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
              */
             pythonVersion?: pulumi.Input<string>;
             /**
-             * Required. The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
+             * The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
              */
-            region?: pulumi.Input<string>;
+            region: pulumi.Input<string>;
             /**
              * Optional. The AI Platform runtime version to use for training. You must either specify this field or specify `masterConfig.imageUri`. For more information, see the [runtime version list](/ai-platform/training/docs/runtime-version-list) and learn [how to manage runtime versions](/ai-platform/training/docs/versioning).
              */
             runtimeVersion?: pulumi.Input<string>;
             /**
-             * Required. Specifies the machine types, the number of replicas for workers and parameter servers.
+             * Specifies the machine types, the number of replicas for workers and parameter servers.
              */
-            scaleTier?: pulumi.Input<enums.ml.v1.GoogleCloudMlV1__TrainingInputScaleTier>;
+            scaleTier: pulumi.Input<enums.ml.v1.GoogleCloudMlV1__TrainingInputScaleTier>;
             /**
              * Optional. Scheduling options for a training job.
              */
@@ -40131,9 +40131,9 @@ export namespace monitoring {
              */
             plotType?: pulumi.Input<enums.monitoring.v1.DataSetPlotType>;
             /**
-             * Required. Fields for querying time series data from the Stackdriver metrics API.
+             * Fields for querying time series data from the Stackdriver metrics API.
              */
-            timeSeriesQuery?: pulumi.Input<inputs.monitoring.v1.TimeSeriesQueryArgs>;
+            timeSeriesQuery: pulumi.Input<inputs.monitoring.v1.TimeSeriesQueryArgs>;
         }
 
         /**
@@ -40211,9 +40211,9 @@ export namespace monitoring {
              */
             aggregation?: pulumi.Input<inputs.monitoring.v1.AggregationArgs>;
             /**
-             * Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+             * The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
              */
-            filter?: pulumi.Input<string>;
+            filter: pulumi.Input<string>;
         }
 
         /**
@@ -40257,9 +40257,9 @@ export namespace monitoring {
              */
             thresholds?: pulumi.Input<pulumi.Input<inputs.monitoring.v1.ThresholdArgs>[]>;
             /**
-             * Required. Fields for querying time series data from the Stackdriver metrics API.
+             * Fields for querying time series data from the Stackdriver metrics API.
              */
-            timeSeriesQuery?: pulumi.Input<inputs.monitoring.v1.TimeSeriesQueryArgs>;
+            timeSeriesQuery: pulumi.Input<inputs.monitoring.v1.TimeSeriesQueryArgs>;
         }
 
         /**
@@ -40271,9 +40271,9 @@ export namespace monitoring {
              */
             minAlignmentPeriod?: pulumi.Input<string>;
             /**
-             * Required. The type of sparkchart to show in this chartView.
+             * The type of sparkchart to show in this chartView.
              */
-            sparkChartType?: pulumi.Input<enums.monitoring.v1.SparkChartViewSparkChartType>;
+            sparkChartType: pulumi.Input<enums.monitoring.v1.SparkChartViewSparkChartType>;
         }
 
         /**
@@ -40347,9 +40347,9 @@ export namespace monitoring {
              */
             aggregation?: pulumi.Input<inputs.monitoring.v1.AggregationArgs>;
             /**
-             * Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
+             * The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query.
              */
-            filter?: pulumi.Input<string>;
+            filter: pulumi.Input<string>;
             /**
              * Ranking based time series filter.
              */
@@ -40439,9 +40439,9 @@ export namespace monitoring {
              */
             chartOptions?: pulumi.Input<inputs.monitoring.v1.ChartOptionsArgs>;
             /**
-             * Required. The data displayed in this chart.
+             * The data displayed in this chart.
              */
-            dataSets?: pulumi.Input<pulumi.Input<inputs.monitoring.v1.DataSetArgs>[]>;
+            dataSets: pulumi.Input<pulumi.Input<inputs.monitoring.v1.DataSetArgs>[]>;
             /**
              * Threshold lines drawn horizontally across the chart.
              */
@@ -40814,9 +40814,9 @@ export namespace monitoring {
              */
             duration?: pulumi.Input<string>;
             /**
-             * Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+             * A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
              */
-            filter?: pulumi.Input<string>;
+            filter: pulumi.Input<string>;
             /**
              * The number/percent of time series for which the comparison must hold in order for the condition to trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time series that have been identified by filter and aggregations.
              */
@@ -40876,9 +40876,9 @@ export namespace monitoring {
              */
             duration?: pulumi.Input<string>;
             /**
-             * Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
+             * A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length.
              */
-            filter?: pulumi.Input<string>;
+            filter: pulumi.Input<string>;
             /**
              * A value against which to compare the time series.
              */
@@ -40894,13 +40894,13 @@ export namespace monitoring {
          */
         export interface MonitoredResourceArgs {
             /**
-             * Required. Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
+             * Values for all of the labels listed in the associated monitored resource descriptor. For example, Compute Engine VM instances use the labels "project_id", "instance_id", and "zone".
              */
-            labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+            labels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
-             * Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
+             * The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types and Logging resource types.
              */
-            type?: pulumi.Input<string>;
+            type: pulumi.Input<string>;
         }
 
         /**
@@ -41437,9 +41437,9 @@ export namespace notebooks {
          */
         export interface ContainerImageArgs {
             /**
-             * Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+             * The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
              */
-            repository?: pulumi.Input<string>;
+            repository: pulumi.Input<string>;
             /**
              * The tag of the container image. If not specified, this defaults to the latest tag.
              */
@@ -41493,9 +41493,9 @@ export namespace notebooks {
              */
             paramsYamlFile?: pulumi.Input<string>;
             /**
-             * Required. Scale tier of the hardware used for notebook execution.
+             * Scale tier of the hardware used for notebook execution.
              */
-            scaleTier?: pulumi.Input<enums.notebooks.v1.ExecutionTemplateScaleTier>;
+            scaleTier: pulumi.Input<enums.notebooks.v1.ExecutionTemplateScaleTier>;
             /**
              * The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
              */
@@ -41757,9 +41757,9 @@ export namespace notebooks {
              */
             containerImages?: pulumi.Input<pulumi.Input<inputs.notebooks.v1.ContainerImageArgs>[]>;
             /**
-             * Required. Data disk option configuration settings.
+             * Data disk option configuration settings.
              */
-            dataDisk?: pulumi.Input<inputs.notebooks.v1.LocalDiskArgs>;
+            dataDisk: pulumi.Input<inputs.notebooks.v1.LocalDiskArgs>;
             /**
              * Optional. Encryption settings for virtual machine data disk.
              */
@@ -41773,9 +41773,9 @@ export namespace notebooks {
              */
             labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
-             * Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
+             * The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
              */
-            machineType?: pulumi.Input<string>;
+            machineType: pulumi.Input<string>;
             /**
              * Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
              */
@@ -41815,9 +41815,9 @@ export namespace notebooks {
              */
             imageName?: pulumi.Input<string>;
             /**
-             * Required. The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+             * The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
              */
-            project?: pulumi.Input<string>;
+            project: pulumi.Input<string>;
         }
 
     }
@@ -41987,17 +41987,17 @@ export namespace osconfig {
          */
         export interface GcsObjectArgs {
             /**
-             * Required. Bucket of the Cloud Storage object.
+             * Bucket of the Cloud Storage object.
              */
-            bucket?: pulumi.Input<string>;
+            bucket: pulumi.Input<string>;
             /**
-             * Required. Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+             * Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
              */
-            generationNumber?: pulumi.Input<string>;
+            generationNumber: pulumi.Input<string>;
             /**
-             * Required. Name of the Cloud Storage object.
+             * Name of the Cloud Storage object.
              */
-            object?: pulumi.Input<string>;
+            object: pulumi.Input<string>;
         }
 
         /**
@@ -42011,13 +42011,13 @@ export namespace osconfig {
          */
         export interface MonthlyScheduleArgs {
             /**
-             * Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+             * One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
              */
-            monthDay?: pulumi.Input<number>;
+            monthDay: pulumi.Input<number>;
             /**
-             * Required. Week day in a month.
+             * Week day in a month.
              */
-            weekDayOfMonth?: pulumi.Input<inputs.osconfig.v1.WeekDayOfMonthArgs>;
+            weekDayOfMonth: pulumi.Input<inputs.osconfig.v1.WeekDayOfMonthArgs>;
         }
 
         /**
@@ -42025,9 +42025,9 @@ export namespace osconfig {
          */
         export interface OneTimeScheduleArgs {
             /**
-             * Required. The desired patch job execution time.
+             * The desired patch job execution time.
              */
-            executeTime?: pulumi.Input<string>;
+            executeTime: pulumi.Input<string>;
         }
 
         /**
@@ -42127,29 +42127,29 @@ export namespace osconfig {
              */
             endTime?: pulumi.Input<string>;
             /**
-             * Required. The frequency unit of this recurring schedule.
+             * The frequency unit of this recurring schedule.
              */
-            frequency?: pulumi.Input<enums.osconfig.v1.RecurringScheduleFrequency>;
+            frequency: pulumi.Input<enums.osconfig.v1.RecurringScheduleFrequency>;
             /**
-             * Required. Schedule with monthly executions.
+             * Schedule with monthly executions.
              */
-            monthly?: pulumi.Input<inputs.osconfig.v1.MonthlyScheduleArgs>;
+            monthly: pulumi.Input<inputs.osconfig.v1.MonthlyScheduleArgs>;
             /**
              * Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
              */
             startTime?: pulumi.Input<string>;
             /**
-             * Required. Time of the day to run a recurring deployment.
+             * Time of the day to run a recurring deployment.
              */
-            timeOfDay?: pulumi.Input<inputs.osconfig.v1.TimeOfDayArgs>;
+            timeOfDay: pulumi.Input<inputs.osconfig.v1.TimeOfDayArgs>;
             /**
-             * Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+             * Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
              */
-            timeZone?: pulumi.Input<inputs.osconfig.v1.TimeZoneArgs>;
+            timeZone: pulumi.Input<inputs.osconfig.v1.TimeZoneArgs>;
             /**
-             * Required. Schedule with weekly executions.
+             * Schedule with weekly executions.
              */
-            weekly?: pulumi.Input<inputs.osconfig.v1.WeeklyScheduleArgs>;
+            weekly: pulumi.Input<inputs.osconfig.v1.WeeklyScheduleArgs>;
         }
 
         /**
@@ -42193,13 +42193,13 @@ export namespace osconfig {
          */
         export interface WeekDayOfMonthArgs {
             /**
-             * Required. A day of the week.
+             * A day of the week.
              */
-            dayOfWeek?: pulumi.Input<enums.osconfig.v1.WeekDayOfMonthDayOfWeek>;
+            dayOfWeek: pulumi.Input<enums.osconfig.v1.WeekDayOfMonthDayOfWeek>;
             /**
-             * Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+             * Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
              */
-            weekOrdinal?: pulumi.Input<number>;
+            weekOrdinal: pulumi.Input<number>;
         }
 
         /**
@@ -42207,9 +42207,9 @@ export namespace osconfig {
          */
         export interface WeeklyScheduleArgs {
             /**
-             * Required. Day of the week.
+             * Day of the week.
              */
-            dayOfWeek?: pulumi.Input<enums.osconfig.v1.WeeklyScheduleDayOfWeek>;
+            dayOfWeek: pulumi.Input<enums.osconfig.v1.WeeklyScheduleDayOfWeek>;
         }
 
         /**
@@ -42294,21 +42294,21 @@ export namespace osconfig {
              */
             archiveType?: pulumi.Input<enums.osconfig.v1beta.AptRepositoryArchiveType>;
             /**
-             * Required. List of components for this repository. Must contain at least one item.
+             * List of components for this repository. Must contain at least one item.
              */
-            components?: pulumi.Input<pulumi.Input<string>[]>;
+            components: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Required. Distribution of this repository.
+             * Distribution of this repository.
              */
-            distribution?: pulumi.Input<string>;
+            distribution: pulumi.Input<string>;
             /**
              * URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg` containing all the keys in any applied guest policy.
              */
             gpgKey?: pulumi.Input<string>;
             /**
-             * Required. URI for this repository.
+             * URI for this repository.
              */
-            uri?: pulumi.Input<string>;
+            uri: pulumi.Input<string>;
         }
 
         /**
@@ -42438,17 +42438,17 @@ export namespace osconfig {
          */
         export interface GcsObjectArgs {
             /**
-             * Required. Bucket of the Google Cloud Storage object.
+             * Bucket of the Google Cloud Storage object.
              */
-            bucket?: pulumi.Input<string>;
+            bucket: pulumi.Input<string>;
             /**
-             * Required. Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+             * Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
              */
-            generationNumber?: pulumi.Input<string>;
+            generationNumber: pulumi.Input<string>;
             /**
-             * Required. Name of the Google Cloud Storage object.
+             * Name of the Google Cloud Storage object.
              */
-            object?: pulumi.Input<string>;
+            object: pulumi.Input<string>;
         }
 
         /**
@@ -42456,13 +42456,13 @@ export namespace osconfig {
          */
         export interface GooRepositoryArgs {
             /**
-             * Required. The name of the repository.
+             * The name of the repository.
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
             /**
-             * Required. The url of the repository.
+             * The url of the repository.
              */
-            url?: pulumi.Input<string>;
+            url: pulumi.Input<string>;
         }
 
         /**
@@ -42476,13 +42476,13 @@ export namespace osconfig {
          */
         export interface MonthlyScheduleArgs {
             /**
-             * Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+             * One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
              */
-            monthDay?: pulumi.Input<number>;
+            monthDay: pulumi.Input<number>;
             /**
-             * Required. Week day in a month.
+             * Week day in a month.
              */
-            weekDayOfMonth?: pulumi.Input<inputs.osconfig.v1beta.WeekDayOfMonthArgs>;
+            weekDayOfMonth: pulumi.Input<inputs.osconfig.v1beta.WeekDayOfMonthArgs>;
         }
 
         /**
@@ -42490,9 +42490,9 @@ export namespace osconfig {
          */
         export interface OneTimeScheduleArgs {
             /**
-             * Required. The desired patch job execution time.
+             * The desired patch job execution time.
              */
-            executeTime?: pulumi.Input<string>;
+            executeTime: pulumi.Input<string>;
         }
 
         /**
@@ -42508,9 +42508,9 @@ export namespace osconfig {
              */
             manager?: pulumi.Input<enums.osconfig.v1beta.PackageManager>;
             /**
-             * Required. The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
+             * The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
         }
 
         /**
@@ -42632,29 +42632,29 @@ export namespace osconfig {
              */
             endTime?: pulumi.Input<string>;
             /**
-             * Required. The frequency unit of this recurring schedule.
+             * The frequency unit of this recurring schedule.
              */
-            frequency?: pulumi.Input<enums.osconfig.v1beta.RecurringScheduleFrequency>;
+            frequency: pulumi.Input<enums.osconfig.v1beta.RecurringScheduleFrequency>;
             /**
-             * Required. Schedule with monthly executions.
+             * Schedule with monthly executions.
              */
-            monthly?: pulumi.Input<inputs.osconfig.v1beta.MonthlyScheduleArgs>;
+            monthly: pulumi.Input<inputs.osconfig.v1beta.MonthlyScheduleArgs>;
             /**
              * Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
              */
             startTime?: pulumi.Input<string>;
             /**
-             * Required. Time of the day to run a recurring deployment.
+             * Time of the day to run a recurring deployment.
              */
-            timeOfDay?: pulumi.Input<inputs.osconfig.v1beta.TimeOfDayArgs>;
+            timeOfDay: pulumi.Input<inputs.osconfig.v1beta.TimeOfDayArgs>;
             /**
-             * Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+             * Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
              */
-            timeZone?: pulumi.Input<inputs.osconfig.v1beta.TimeZoneArgs>;
+            timeZone: pulumi.Input<inputs.osconfig.v1beta.TimeZoneArgs>;
             /**
-             * Required. Schedule with weekly executions.
+             * Schedule with weekly executions.
              */
-            weekly?: pulumi.Input<inputs.osconfig.v1beta.WeeklyScheduleArgs>;
+            weekly: pulumi.Input<inputs.osconfig.v1beta.WeeklyScheduleArgs>;
         }
 
         /**
@@ -42674,9 +42674,9 @@ export namespace osconfig {
              */
             installSteps?: pulumi.Input<pulumi.Input<inputs.osconfig.v1beta.SoftwareRecipeStepArgs>[]>;
             /**
-             * Required. Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
+             * Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
             /**
              * Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe. Any steps taken (including partially completed steps) are not rolled back.
              */
@@ -42700,9 +42700,9 @@ export namespace osconfig {
              */
             gcs?: pulumi.Input<inputs.osconfig.v1beta.SoftwareRecipeArtifactGcsArgs>;
             /**
-             * Required. Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
+             * Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
              */
-            id?: pulumi.Input<string>;
+            id: pulumi.Input<string>;
             /**
              * A generic remote artifact.
              */
@@ -42780,13 +42780,13 @@ export namespace osconfig {
          */
         export interface SoftwareRecipeStepCopyFileArgs {
             /**
-             * Required. The id of the relevant artifact in the recipe.
+             * The id of the relevant artifact in the recipe.
              */
-            artifactId?: pulumi.Input<string>;
+            artifactId: pulumi.Input<string>;
             /**
-             * Required. The absolute path on the instance to put the file.
+             * The absolute path on the instance to put the file.
              */
-            destination?: pulumi.Input<string>;
+            destination: pulumi.Input<string>;
             /**
              * Whether to allow this step to overwrite existing files. If this is false and the file already exists the file is not overwritten and the step is considered a success. Defaults to false.
              */
@@ -42824,17 +42824,17 @@ export namespace osconfig {
          */
         export interface SoftwareRecipeStepExtractArchiveArgs {
             /**
-             * Required. The id of the relevant artifact in the recipe.
+             * The id of the relevant artifact in the recipe.
              */
-            artifactId?: pulumi.Input<string>;
+            artifactId: pulumi.Input<string>;
             /**
              * Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows.
              */
             destination?: pulumi.Input<string>;
             /**
-             * Required. The type of the archive to extract.
+             * The type of the archive to extract.
              */
-            type?: pulumi.Input<enums.osconfig.v1beta.SoftwareRecipeStepExtractArchiveType>;
+            type: pulumi.Input<enums.osconfig.v1beta.SoftwareRecipeStepExtractArchiveType>;
         }
 
         /**
@@ -42842,9 +42842,9 @@ export namespace osconfig {
          */
         export interface SoftwareRecipeStepInstallDpkgArgs {
             /**
-             * Required. The id of the relevant artifact in the recipe.
+             * The id of the relevant artifact in the recipe.
              */
-            artifactId?: pulumi.Input<string>;
+            artifactId: pulumi.Input<string>;
         }
 
         /**
@@ -42856,9 +42856,9 @@ export namespace osconfig {
              */
             allowedExitCodes?: pulumi.Input<pulumi.Input<number>[]>;
             /**
-             * Required. The id of the relevant artifact in the recipe.
+             * The id of the relevant artifact in the recipe.
              */
-            artifactId?: pulumi.Input<string>;
+            artifactId: pulumi.Input<string>;
             /**
              * The flags to use when installing the MSI defaults to ["/i"] (i.e. the install flag).
              */
@@ -42870,9 +42870,9 @@ export namespace osconfig {
          */
         export interface SoftwareRecipeStepInstallRpmArgs {
             /**
-             * Required. The id of the relevant artifact in the recipe.
+             * The id of the relevant artifact in the recipe.
              */
-            artifactId?: pulumi.Input<string>;
+            artifactId: pulumi.Input<string>;
         }
 
         /**
@@ -42888,9 +42888,9 @@ export namespace osconfig {
              */
             interpreter?: pulumi.Input<enums.osconfig.v1beta.SoftwareRecipeStepRunScriptInterpreter>;
             /**
-             * Required. The shell script to be executed.
+             * The shell script to be executed.
              */
-            script?: pulumi.Input<string>;
+            script: pulumi.Input<string>;
         }
 
         /**
@@ -42934,13 +42934,13 @@ export namespace osconfig {
          */
         export interface WeekDayOfMonthArgs {
             /**
-             * Required. A day of the week.
+             * A day of the week.
              */
-            dayOfWeek?: pulumi.Input<enums.osconfig.v1beta.WeekDayOfMonthDayOfWeek>;
+            dayOfWeek: pulumi.Input<enums.osconfig.v1beta.WeekDayOfMonthDayOfWeek>;
             /**
-             * Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+             * Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
              */
-            weekOrdinal?: pulumi.Input<number>;
+            weekOrdinal: pulumi.Input<number>;
         }
 
         /**
@@ -42948,9 +42948,9 @@ export namespace osconfig {
          */
         export interface WeeklyScheduleArgs {
             /**
-             * Required. Day of the week.
+             * Day of the week.
              */
-            dayOfWeek?: pulumi.Input<enums.osconfig.v1beta.WeeklyScheduleDayOfWeek>;
+            dayOfWeek: pulumi.Input<enums.osconfig.v1beta.WeeklyScheduleDayOfWeek>;
         }
 
         /**
@@ -42976,9 +42976,9 @@ export namespace osconfig {
          */
         export interface YumRepositoryArgs {
             /**
-             * Required. The location of the repository directory.
+             * The location of the repository directory.
              */
-            baseUrl?: pulumi.Input<string>;
+            baseUrl: pulumi.Input<string>;
             /**
              * The display name of the repository.
              */
@@ -42988,9 +42988,9 @@ export namespace osconfig {
              */
             gpgKeys?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Required. A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+             * A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
              */
-            id?: pulumi.Input<string>;
+            id: pulumi.Input<string>;
         }
 
         /**
@@ -43020,9 +43020,9 @@ export namespace osconfig {
          */
         export interface ZypperRepositoryArgs {
             /**
-             * Required. The location of the repository directory.
+             * The location of the repository directory.
              */
-            baseUrl?: pulumi.Input<string>;
+            baseUrl: pulumi.Input<string>;
             /**
              * The display name of the repository.
              */
@@ -43032,9 +43032,9 @@ export namespace osconfig {
              */
             gpgKeys?: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+             * A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
              */
-            id?: pulumi.Input<string>;
+            id: pulumi.Input<string>;
         }
 
         /**
@@ -43110,9 +43110,9 @@ export namespace privateca {
     export namespace v1beta1 {
         export interface AllowedConfigListArgs {
             /**
-             * Required. All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
+             * All Certificates issued by the CertificateAuthority must match at least one listed ReusableConfigWrapper. If a ReusableConfigWrapper has an empty field, any value will be allowed for that field.
              */
-            allowedConfigValues?: pulumi.Input<pulumi.Input<inputs.privateca.v1beta1.ReusableConfigWrapperArgs>[]>;
+            allowedConfigValues: pulumi.Input<pulumi.Input<inputs.privateca.v1beta1.ReusableConfigWrapperArgs>[]>;
         }
 
         /**
@@ -43248,13 +43248,13 @@ export namespace privateca {
              */
             publicKey?: pulumi.Input<inputs.privateca.v1beta1.PublicKeyArgs>;
             /**
-             * Required. Describes how some of the technical fields in a certificate should be populated.
+             * Describes how some of the technical fields in a certificate should be populated.
              */
-            reusableConfig?: pulumi.Input<inputs.privateca.v1beta1.ReusableConfigWrapperArgs>;
+            reusableConfig: pulumi.Input<inputs.privateca.v1beta1.ReusableConfigWrapperArgs>;
             /**
-             * Required. Specifies some of the values in a certificate that are related to the subject.
+             * Specifies some of the values in a certificate that are related to the subject.
              */
-            subjectConfig?: pulumi.Input<inputs.privateca.v1beta1.SubjectConfigArgs>;
+            subjectConfig: pulumi.Input<inputs.privateca.v1beta1.SubjectConfigArgs>;
         }
 
         /**
@@ -43314,13 +43314,13 @@ export namespace privateca {
          */
         export interface IssuanceModesArgs {
             /**
-             * Required. When true, allows callers to create Certificates by specifying a CertificateConfig.
+             * When true, allows callers to create Certificates by specifying a CertificateConfig.
              */
-            allowConfigBasedIssuance?: pulumi.Input<boolean>;
+            allowConfigBasedIssuance: pulumi.Input<boolean>;
             /**
-             * Required. When true, allows callers to create Certificates by specifying a CSR.
+             * When true, allows callers to create Certificates by specifying a CSR.
              */
-            allowCsrBasedIssuance?: pulumi.Input<boolean>;
+            allowCsrBasedIssuance: pulumi.Input<boolean>;
         }
 
         /**
@@ -43328,13 +43328,13 @@ export namespace privateca {
          */
         export interface IssuingOptionsArgs {
             /**
-             * Required. When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
+             * When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
              */
-            includeCaCertUrl?: pulumi.Input<boolean>;
+            includeCaCertUrl: pulumi.Input<boolean>;
             /**
-             * Required. When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
+             * When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
              */
-            includeCrlAccessUrl?: pulumi.Input<boolean>;
+            includeCrlAccessUrl: pulumi.Input<boolean>;
         }
 
         /**
@@ -43402,13 +43402,13 @@ export namespace privateca {
          */
         export interface KeyVersionSpecArgs {
             /**
-             * Required. The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
+             * The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
              */
-            algorithm?: pulumi.Input<enums.privateca.v1beta1.KeyVersionSpecAlgorithm>;
+            algorithm: pulumi.Input<enums.privateca.v1beta1.KeyVersionSpecAlgorithm>;
             /**
-             * Required. The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*&#47;cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
+             * The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*&#47;cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
              */
-            cloudKmsKeyVersion?: pulumi.Input<string>;
+            cloudKmsKeyVersion: pulumi.Input<string>;
         }
 
         /**
@@ -43416,9 +43416,9 @@ export namespace privateca {
          */
         export interface ObjectIdArgs {
             /**
-             * Required. The parts of an OID path. The most significant parts of the path come first.
+             * The parts of an OID path. The most significant parts of the path come first.
              */
-            objectIdPath?: pulumi.Input<pulumi.Input<number>[]>;
+            objectIdPath: pulumi.Input<pulumi.Input<number>[]>;
         }
 
         /**
@@ -43426,9 +43426,9 @@ export namespace privateca {
          */
         export interface PublicKeyArgs {
             /**
-             * Required. A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
+             * A public key. When this is specified in a request, the padding and encoding can be any of the options described by the respective 'KeyType' value. When this is generated by the service, it will always be an RFC 5280 [SubjectPublicKeyInfo](https://tools.ietf.org/html/rfc5280#section-4.1) structure containing an algorithm identifier and a key.
              */
-            key?: pulumi.Input<string>;
+            key: pulumi.Input<string>;
             /**
              * Optional. The type of public key. If specified, it must match the public key used for the`key` field.
              */
@@ -43466,13 +43466,13 @@ export namespace privateca {
          */
         export interface ReusableConfigWrapperArgs {
             /**
-             * Required. A resource path to a ReusableConfig in the format `projects/*&#47;locations/*&#47;reusableConfigs/*`.
+             * A resource path to a ReusableConfig in the format `projects/*&#47;locations/*&#47;reusableConfigs/*`.
              */
-            reusableConfig?: pulumi.Input<string>;
+            reusableConfig: pulumi.Input<string>;
             /**
-             * Required. A user-specified inline ReusableConfigValues.
+             * A user-specified inline ReusableConfigValues.
              */
-            reusableConfigValues?: pulumi.Input<inputs.privateca.v1beta1.ReusableConfigValuesArgs>;
+            reusableConfigValues: pulumi.Input<inputs.privateca.v1beta1.ReusableConfigValuesArgs>;
         }
 
         /**
@@ -43544,9 +43544,9 @@ export namespace privateca {
              */
             commonName?: pulumi.Input<string>;
             /**
-             * Required. Contains distinguished name fields such as the location and organization.
+             * Contains distinguished name fields such as the location and organization.
              */
-            subject?: pulumi.Input<inputs.privateca.v1beta1.SubjectArgs>;
+            subject: pulumi.Input<inputs.privateca.v1beta1.SubjectArgs>;
             /**
              * Optional. The subject alternative name fields.
              */
@@ -43558,13 +43558,13 @@ export namespace privateca {
          */
         export interface SubordinateConfigArgs {
             /**
-             * Required. This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*&#47;locations/*&#47;certificateAuthorities/*`.
+             * This can refer to a CertificateAuthority in the same project that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*&#47;locations/*&#47;certificateAuthorities/*`.
              */
-            certificateAuthority?: pulumi.Input<string>;
+            certificateAuthority: pulumi.Input<string>;
             /**
-             * Required. Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
+             * Contains the PEM certificate chain for the issuers of this CertificateAuthority, but not pem certificate for this CA itself.
              */
-            pemIssuerChain?: pulumi.Input<inputs.privateca.v1beta1.SubordinateConfigChainArgs>;
+            pemIssuerChain: pulumi.Input<inputs.privateca.v1beta1.SubordinateConfigChainArgs>;
         }
 
         /**
@@ -43572,9 +43572,9 @@ export namespace privateca {
          */
         export interface SubordinateConfigChainArgs {
             /**
-             * Required. Expected to be in leaf-to-root order according to RFC 5246.
+             * Expected to be in leaf-to-root order according to RFC 5246.
              */
-            pemCertificates?: pulumi.Input<pulumi.Input<string>[]>;
+            pemCertificates: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -43582,17 +43582,17 @@ export namespace privateca {
          */
         export interface X509ExtensionArgs {
             /**
-             * Required. Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
+             * Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
              */
-            critical?: pulumi.Input<boolean>;
+            critical: pulumi.Input<boolean>;
             /**
-             * Required. The OID for this X.509 extension.
+             * The OID for this X.509 extension.
              */
-            objectId?: pulumi.Input<inputs.privateca.v1beta1.ObjectIdArgs>;
+            objectId: pulumi.Input<inputs.privateca.v1beta1.ObjectIdArgs>;
             /**
-             * Required. The value of this X.509 extension.
+             * The value of this X.509 extension.
              */
-            value?: pulumi.Input<string>;
+            value: pulumi.Input<string>;
         }
 
     }
@@ -43729,9 +43729,9 @@ export namespace pubsub {
              */
             encoding?: pulumi.Input<enums.pubsub.v1.SchemaSettingsEncoding>;
             /**
-             * Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
+             * The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
              */
-            schema?: pulumi.Input<string>;
+            schema: pulumi.Input<string>;
         }
 
     }
@@ -43889,9 +43889,9 @@ export namespace recommendationengine {
          */
         export interface GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs {
             /**
-             * Required. Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
+             * Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
              */
-            categories?: pulumi.Input<pulumi.Input<string>[]>;
+            categories: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -43917,9 +43917,9 @@ export namespace recommendationengine {
              */
             height?: pulumi.Input<number>;
             /**
-             * Required. URL of the image with a length limit of 5 KiB.
+             * URL of the image with a length limit of 5 KiB.
              */
-            uri?: pulumi.Input<string>;
+            uri: pulumi.Input<string>;
             /**
              * Optional. Width of the image in number of pixels.
              */
@@ -43983,13 +43983,13 @@ export namespace recommendationengine {
          */
         export interface GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs {
             /**
-             * Required. The maximum product price.
+             * The maximum product price.
              */
-            max?: pulumi.Input<number>;
+            max: pulumi.Input<number>;
             /**
-             * Required. The minimum product price.
+             * The minimum product price.
              */
-            min?: pulumi.Input<number>;
+            min: pulumi.Input<number>;
         }
 
     }
@@ -44098,21 +44098,21 @@ export namespace remotebuildexecution {
              */
             accelerator?: pulumi.Input<inputs.remotebuildexecution.v1alpha.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs>;
             /**
-             * Required. Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
+             * Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
              */
-            diskSizeGb?: pulumi.Input<string>;
+            diskSizeGb: pulumi.Input<string>;
             /**
-             * Required. Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
+             * Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
              */
-            diskType?: pulumi.Input<string>;
+            diskType: pulumi.Input<string>;
             /**
              * Labels associated with the workers. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International letters are permitted. Label keys must start with a letter. Label values are optional. There can not be more than 64 labels per resource.
              */
             labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
             /**
-             * Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
+             * Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
              */
-            machineType?: pulumi.Input<string>;
+            machineType: pulumi.Input<string>;
             /**
              * The maximum number of actions a worker can execute concurrently.
              */
@@ -44153,9 +44153,9 @@ export namespace retail {
              */
             height?: pulumi.Input<number>;
             /**
-             * Required. URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+             * URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
              */
-            uri?: pulumi.Input<string>;
+            uri: pulumi.Input<string>;
             /**
              * Width of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
              */
@@ -44196,9 +44196,9 @@ export namespace retail {
              */
             height?: pulumi.Input<number>;
             /**
-             * Required. URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+             * URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
              */
-            uri?: pulumi.Input<string>;
+            uri: pulumi.Input<string>;
             /**
              * Width of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
              */
@@ -44239,9 +44239,9 @@ export namespace retail {
              */
             height?: pulumi.Input<number>;
             /**
-             * Required. URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
+             * URI of the image. This field must be a valid UTF-8 encoded URI with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
              */
-            uri?: pulumi.Input<string>;
+            uri: pulumi.Input<string>;
             /**
              * Width of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
              */
@@ -45458,9 +45458,9 @@ export namespace run {
              */
             failed?: pulumi.Input<number>;
             /**
-             * Required. Index of the instance, unique per Job, and beginning at 0.
+             * Index of the instance, unique per Job, and beginning at 0.
              */
-            index?: pulumi.Input<number>;
+            index: pulumi.Input<number>;
             /**
              * Optional. Last exit code seen for this instance. +optional
              */
@@ -45528,13 +45528,13 @@ export namespace run {
              */
             severity?: pulumi.Input<string>;
             /**
-             * Required. Status of the condition, one of True, False, Unknown.
+             * Status of the condition, one of True, False, Unknown.
              */
-            status?: pulumi.Input<string>;
+            status: pulumi.Input<string>;
             /**
-             * Required. Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+             * Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
              */
-            type?: pulumi.Input<string>;
+            type: pulumi.Input<string>;
         }
 
         /**
@@ -46114,9 +46114,9 @@ export namespace secretmanager {
          */
         export interface CustomerManagedEncryptionArgs {
             /**
-             * Required. The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads. For secrets using the UserManaged replication policy type, Cloud KMS CryptoKeys must reside in the same location as the replica location. For secrets using the Automatic replication policy type, Cloud KMS CryptoKeys must reside in `global`. The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+             * The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads. For secrets using the UserManaged replication policy type, Cloud KMS CryptoKeys must reside in the same location as the replica location. For secrets using the Automatic replication policy type, Cloud KMS CryptoKeys must reside in `global`. The expected format is `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
              */
-            kmsKeyName?: pulumi.Input<string>;
+            kmsKeyName: pulumi.Input<string>;
         }
 
         /**
@@ -46188,9 +46188,9 @@ export namespace secretmanager {
          */
         export interface TopicArgs {
             /**
-             * Required. The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*&#47;topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
+             * The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*&#47;topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
         }
 
         /**
@@ -46198,9 +46198,9 @@ export namespace secretmanager {
          */
         export interface UserManagedArgs {
             /**
-             * Required. The list of Replicas for this Secret. Cannot be empty.
+             * The list of Replicas for this Secret. Cannot be empty.
              */
-            replicas?: pulumi.Input<pulumi.Input<inputs.secretmanager.v1.ReplicaArgs>[]>;
+            replicas: pulumi.Input<pulumi.Input<inputs.secretmanager.v1.ReplicaArgs>[]>;
         }
 
     }
@@ -46309,9 +46309,9 @@ export namespace secretmanager {
          */
         export interface UserManagedArgs {
             /**
-             * Required. The list of Replicas for this Secret. Cannot be empty.
+             * The list of Replicas for this Secret. Cannot be empty.
              */
-            replicas?: pulumi.Input<pulumi.Input<inputs.secretmanager.v1beta1.ReplicaArgs>[]>;
+            replicas: pulumi.Input<pulumi.Input<inputs.secretmanager.v1beta1.ReplicaArgs>[]>;
         }
 
     }
@@ -47351,9 +47351,9 @@ export namespace servicemanagement {
              */
             displayName?: pulumi.Input<string>;
             /**
-             * Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
+             * A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
              */
-            labels?: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.LabelDescriptorArgs>[]>;
+            labels: pulumi.Input<pulumi.Input<inputs.servicemanagement.v1.LabelDescriptorArgs>[]>;
             /**
              * Optional. The launch stage of the monitored resource definition.
              */
@@ -47363,9 +47363,9 @@ export namespace servicemanagement {
              */
             name?: pulumi.Input<string>;
             /**
-             * Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+             * The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
              */
-            type?: pulumi.Input<string>;
+            type: pulumi.Input<string>;
         }
 
         /**
@@ -48893,13 +48893,13 @@ export namespace storagetransfer {
          */
         export interface AwsAccessKeyArgs {
             /**
-             * Required. AWS access key ID.
+             * AWS access key ID.
              */
-            accessKeyId?: pulumi.Input<string>;
+            accessKeyId: pulumi.Input<string>;
             /**
-             * Required. AWS secret access key. This field is not returned in RPC responses.
+             * AWS secret access key. This field is not returned in RPC responses.
              */
-            secretAccessKey?: pulumi.Input<string>;
+            secretAccessKey: pulumi.Input<string>;
         }
 
         /**
@@ -48907,13 +48907,13 @@ export namespace storagetransfer {
          */
         export interface AwsS3DataArgs {
             /**
-             * Required. Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+             * Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
              */
-            awsAccessKey?: pulumi.Input<inputs.storagetransfer.v1.AwsAccessKeyArgs>;
+            awsAccessKey: pulumi.Input<inputs.storagetransfer.v1.AwsAccessKeyArgs>;
             /**
-             * Required. S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
+             * S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
              */
-            bucketName?: pulumi.Input<string>;
+            bucketName: pulumi.Input<string>;
             /**
              * Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
              */
@@ -48925,21 +48925,21 @@ export namespace storagetransfer {
          */
         export interface AzureBlobStorageDataArgs {
             /**
-             * Required. Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+             * Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
              */
-            azureCredentials?: pulumi.Input<inputs.storagetransfer.v1.AzureCredentialsArgs>;
+            azureCredentials: pulumi.Input<inputs.storagetransfer.v1.AzureCredentialsArgs>;
             /**
-             * Required. The container to transfer from the Azure Storage account.
+             * The container to transfer from the Azure Storage account.
              */
-            container?: pulumi.Input<string>;
+            container: pulumi.Input<string>;
             /**
              * Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
              */
             path?: pulumi.Input<string>;
             /**
-             * Required. The name of the Azure Storage account.
+             * The name of the Azure Storage account.
              */
-            storageAccount?: pulumi.Input<string>;
+            storageAccount: pulumi.Input<string>;
         }
 
         /**
@@ -48947,9 +48947,9 @@ export namespace storagetransfer {
          */
         export interface AzureCredentialsArgs {
             /**
-             * Required. Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+             * Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
              */
-            sasToken?: pulumi.Input<string>;
+            sasToken: pulumi.Input<string>;
         }
 
         /**
@@ -48975,9 +48975,9 @@ export namespace storagetransfer {
          */
         export interface GcsDataArgs {
             /**
-             * Required. Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
+             * Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
              */
-            bucketName?: pulumi.Input<string>;
+            bucketName: pulumi.Input<string>;
             /**
              * Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. (must meet Object Name Requirements](https://cloud.google.com/storage/docs/naming#objectnames)).
              */
@@ -48989,9 +48989,9 @@ export namespace storagetransfer {
          */
         export interface HttpDataArgs {
             /**
-             * Required. The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
+             * The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
              */
-            listUrl?: pulumi.Input<string>;
+            listUrl: pulumi.Input<string>;
         }
 
         /**
@@ -49003,13 +49003,13 @@ export namespace storagetransfer {
              */
             eventTypes?: pulumi.Input<pulumi.Input<enums.storagetransfer.v1.NotificationConfigEventTypesItem>[]>;
             /**
-             * Required. The desired format of the notification message payloads.
+             * The desired format of the notification message payloads.
              */
-            payloadFormat?: pulumi.Input<enums.storagetransfer.v1.NotificationConfigPayloadFormat>;
+            payloadFormat: pulumi.Input<enums.storagetransfer.v1.NotificationConfigPayloadFormat>;
             /**
-             * Required. The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
+             * The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
              */
-            pubsubTopic?: pulumi.Input<string>;
+            pubsubTopic: pulumi.Input<string>;
         }
 
         /**
@@ -49059,9 +49059,9 @@ export namespace storagetransfer {
              */
             scheduleEndDate?: pulumi.Input<inputs.storagetransfer.v1.DateArgs>;
             /**
-             * Required. The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
+             * The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
              */
-            scheduleStartDate?: pulumi.Input<inputs.storagetransfer.v1.DateArgs>;
+            scheduleStartDate: pulumi.Input<inputs.storagetransfer.v1.DateArgs>;
             /**
              * The time in UTC that a transfer job is scheduled to run. Transfers may start later than this time. If `start_time_of_day` is not specified: * One-time transfers run immediately. * Recurring transfers run immediately, and each day at midnight UTC, through schedule_end_date. If `start_time_of_day` is specified: * One-time transfers run at the specified time. * Recurring transfers run at the specified time each day, through `schedule_end_date`.
              */
@@ -49162,21 +49162,21 @@ export namespace testing {
          */
         export interface AndroidDeviceArgs {
             /**
-             * Required. The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+             * The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
              */
-            androidModelId?: pulumi.Input<string>;
+            androidModelId: pulumi.Input<string>;
             /**
-             * Required. The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+             * The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
              */
-            androidVersionId?: pulumi.Input<string>;
+            androidVersionId: pulumi.Input<string>;
             /**
-             * Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+             * The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
              */
-            locale?: pulumi.Input<string>;
+            locale: pulumi.Input<string>;
             /**
-             * Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+             * How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
              */
-            orientation?: pulumi.Input<string>;
+            orientation: pulumi.Input<string>;
         }
 
         /**
@@ -49184,9 +49184,9 @@ export namespace testing {
          */
         export interface AndroidDeviceListArgs {
             /**
-             * Required. A list of Android devices.
+             * A list of Android devices.
              */
-            androidDevices?: pulumi.Input<pulumi.Input<inputs.testing.v1.AndroidDeviceArgs>[]>;
+            androidDevices: pulumi.Input<pulumi.Input<inputs.testing.v1.AndroidDeviceArgs>[]>;
         }
 
         /**
@@ -49214,9 +49214,9 @@ export namespace testing {
              */
             shardingOption?: pulumi.Input<inputs.testing.v1.ShardingOptionArgs>;
             /**
-             * Required. The APK containing the test code to be executed.
+             * The APK containing the test code to be executed.
              */
-            testApk?: pulumi.Input<inputs.testing.v1.FileReferenceArgs>;
+            testApk: pulumi.Input<inputs.testing.v1.FileReferenceArgs>;
             /**
              * The java package for the test to be executed. The default value is determined by examining the application's manifest.
              */
@@ -49236,21 +49236,21 @@ export namespace testing {
          */
         export interface AndroidMatrixArgs {
             /**
-             * Required. The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+             * The ids of the set of Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
              */
-            androidModelIds?: pulumi.Input<pulumi.Input<string>[]>;
+            androidModelIds: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Required. The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+             * The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
              */
-            androidVersionIds?: pulumi.Input<pulumi.Input<string>[]>;
+            androidVersionIds: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Required. The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+             * The set of locales the test device will enable for testing. Use the TestEnvironmentDiscoveryService to get supported options.
              */
-            locales?: pulumi.Input<pulumi.Input<string>[]>;
+            locales: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Required. The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
+             * The set of orientations to test with. Use the TestEnvironmentDiscoveryService to get supported options.
              */
-            orientations?: pulumi.Input<pulumi.Input<string>[]>;
+            orientations: pulumi.Input<pulumi.Input<string>[]>;
         }
 
         /**
@@ -49354,9 +49354,9 @@ export namespace testing {
              */
             clientInfoDetails?: pulumi.Input<pulumi.Input<inputs.testing.v1.ClientInfoDetailArgs>[]>;
             /**
-             * Required. Client name, such as gcloud.
+             * Client name, such as gcloud.
              */
-            name?: pulumi.Input<string>;
+            name: pulumi.Input<string>;
         }
 
         /**
@@ -49364,13 +49364,13 @@ export namespace testing {
          */
         export interface ClientInfoDetailArgs {
             /**
-             * Required. The key of detailed client information.
+             * The key of detailed client information.
              */
-            key?: pulumi.Input<string>;
+            key: pulumi.Input<string>;
             /**
-             * Required. The value of detailed client information.
+             * The value of detailed client information.
              */
-            value?: pulumi.Input<string>;
+            value: pulumi.Input<string>;
         }
 
         /**
@@ -49440,9 +49440,9 @@ export namespace testing {
          */
         export interface GoogleCloudStorageArgs {
             /**
-             * Required. The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
+             * The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
              */
-            gcsPath?: pulumi.Input<string>;
+            gcsPath: pulumi.Input<string>;
         }
 
         /**
@@ -49450,21 +49450,21 @@ export namespace testing {
          */
         export interface IosDeviceArgs {
             /**
-             * Required. The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+             * The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
              */
-            iosModelId?: pulumi.Input<string>;
+            iosModelId: pulumi.Input<string>;
             /**
-             * Required. The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
+             * The id of the iOS major software version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
              */
-            iosVersionId?: pulumi.Input<string>;
+            iosVersionId: pulumi.Input<string>;
             /**
-             * Required. The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
+             * The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
              */
-            locale?: pulumi.Input<string>;
+            locale: pulumi.Input<string>;
             /**
-             * Required. How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
+             * How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
              */
-            orientation?: pulumi.Input<string>;
+            orientation: pulumi.Input<string>;
         }
 
         /**
@@ -49490,9 +49490,9 @@ export namespace testing {
          */
         export interface IosDeviceListArgs {
             /**
-             * Required. A list of iOS devices.
+             * A list of iOS devices.
              */
-            iosDevices?: pulumi.Input<pulumi.Input<inputs.testing.v1.IosDeviceArgs>[]>;
+            iosDevices: pulumi.Input<pulumi.Input<inputs.testing.v1.IosDeviceArgs>[]>;
         }
 
         /**
@@ -49500,9 +49500,9 @@ export namespace testing {
          */
         export interface IosTestLoopArgs {
             /**
-             * Required. The .ipa of the application to test.
+             * The .ipa of the application to test.
              */
-            appIpa?: pulumi.Input<inputs.testing.v1.FileReferenceArgs>;
+            appIpa: pulumi.Input<inputs.testing.v1.FileReferenceArgs>;
             /**
              * The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified.
              */
@@ -49540,9 +49540,9 @@ export namespace testing {
              */
             testSpecialEntitlements?: pulumi.Input<boolean>;
             /**
-             * Required. The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
+             * The .zip containing the .xctestrun file and the contents of the DerivedData/Build/Products directory. The .xctestrun file in this zip is ignored if the xctestrun field is specified.
              */
-            testsZip?: pulumi.Input<inputs.testing.v1.FileReferenceArgs>;
+            testsZip: pulumi.Input<inputs.testing.v1.FileReferenceArgs>;
             /**
              * The Xcode version that should be used for the test. Use the TestEnvironmentDiscoveryService to get supported options. Defaults to the latest Xcode version Firebase Test Lab supports.
              */
@@ -49564,9 +49564,9 @@ export namespace testing {
          */
         export interface ManualShardingArgs {
             /**
-             * Required. Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+             * Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
              */
-            testTargetsForShard?: pulumi.Input<pulumi.Input<inputs.testing.v1.TestTargetsForShardArgs>[]>;
+            testTargetsForShard: pulumi.Input<pulumi.Input<inputs.testing.v1.TestTargetsForShardArgs>[]>;
         }
 
         /**
@@ -49574,13 +49574,13 @@ export namespace testing {
          */
         export interface ObbFileArgs {
             /**
-             * Required. Opaque Binary Blob (OBB) file(s) to install on the device.
+             * Opaque Binary Blob (OBB) file(s) to install on the device.
              */
-            obb?: pulumi.Input<inputs.testing.v1.FileReferenceArgs>;
+            obb: pulumi.Input<inputs.testing.v1.FileReferenceArgs>;
             /**
-             * Required. OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
+             * OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device.
              */
-            obbFileName?: pulumi.Input<string>;
+            obbFileName: pulumi.Input<string>;
         }
 
         /**
@@ -49588,13 +49588,13 @@ export namespace testing {
          */
         export interface RegularFileArgs {
             /**
-             * Required. The source file.
+             * The source file.
              */
-            content?: pulumi.Input<inputs.testing.v1.FileReferenceArgs>;
+            content: pulumi.Input<inputs.testing.v1.FileReferenceArgs>;
             /**
-             * Required. Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
+             * Where to put the content on the device. Must be an absolute, allowlisted path. If the file exists, it will be replaced. The following device-side directories and any of their subdirectories are allowlisted: ${EXTERNAL_STORAGE}, /sdcard, or /storage ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of these directory trees is invalid. The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if /sdcard on a particular device does not map to external storage, the system will replace it with the external storage path prefix for that device and copy the file there. It is strongly advised to use the Environment API in app and test code to access files on the device in a portable way.
              */
-            devicePath?: pulumi.Input<string>;
+            devicePath: pulumi.Input<string>;
         }
 
         /**
@@ -49604,7 +49604,7 @@ export namespace testing {
             /**
              * Required.
              */
-            googleCloudStorage?: pulumi.Input<inputs.testing.v1.GoogleCloudStorageArgs>;
+            googleCloudStorage: pulumi.Input<inputs.testing.v1.GoogleCloudStorageArgs>;
             /**
              * The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.
              */
@@ -49616,17 +49616,17 @@ export namespace testing {
          */
         export interface RoboDirectiveArgs {
             /**
-             * Required. The type of action that Robo should perform on the specified element.
+             * The type of action that Robo should perform on the specified element.
              */
-            actionType?: pulumi.Input<enums.testing.v1.RoboDirectiveActionType>;
+            actionType: pulumi.Input<enums.testing.v1.RoboDirectiveActionType>;
             /**
              * The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name.
              */
             inputText?: pulumi.Input<string>;
             /**
-             * Required. The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
+             * The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
              */
-            resourceName?: pulumi.Input<string>;
+            resourceName: pulumi.Input<string>;
         }
 
         /**
@@ -49785,13 +49785,13 @@ export namespace testing {
          */
         export interface ToolResultsHistoryArgs {
             /**
-             * Required. A tool results history ID.
+             * A tool results history ID.
              */
-            historyId?: pulumi.Input<string>;
+            historyId: pulumi.Input<string>;
             /**
-             * Required. The cloud project that owns the tool results history.
+             * The cloud project that owns the tool results history.
              */
-            project?: pulumi.Input<string>;
+            project: pulumi.Input<string>;
         }
 
         /**
@@ -49799,9 +49799,9 @@ export namespace testing {
          */
         export interface UniformShardingArgs {
             /**
-             * Required. Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+             * Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
              */
-            numShards?: pulumi.Input<number>;
+            numShards: pulumi.Input<number>;
         }
 
     }
@@ -50452,9 +50452,9 @@ export namespace transcoder {
          */
         export interface Aes128EncryptionArgs {
             /**
-             * Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
+             * URI of the key delivery service. This URI is inserted into the M3U8 header.
              */
-            keyUri?: pulumi.Input<string>;
+            keyUri: pulumi.Input<string>;
         }
 
         /**
@@ -50494,9 +50494,9 @@ export namespace transcoder {
              */
             endTimeOffset?: pulumi.Input<string>;
             /**
-             * Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
+             * Type of fade animation: `FADE_IN` or `FADE_OUT`.
              */
-            fadeType?: pulumi.Input<enums.transcoder.v1beta1.AnimationFadeFadeType>;
+            fadeType: pulumi.Input<enums.transcoder.v1beta1.AnimationFadeFadeType>;
             /**
              * The time to start the fade animation, in seconds. Default: 0
              */
@@ -50548,9 +50548,9 @@ export namespace transcoder {
              */
             channels?: pulumi.Input<pulumi.Input<inputs.transcoder.v1beta1.AudioChannelArgs>[]>;
             /**
-             * Required. The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+             * The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
              */
-            key?: pulumi.Input<string>;
+            key: pulumi.Input<string>;
         }
 
         /**
@@ -50568,21 +50568,21 @@ export namespace transcoder {
          */
         export interface AudioChannelInputArgs {
             /**
-             * Required. The zero-based index of the channel in the input file.
+             * The zero-based index of the channel in the input file.
              */
-            channel?: pulumi.Input<number>;
+            channel: pulumi.Input<number>;
             /**
              * Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
              */
             gainDb?: pulumi.Input<number>;
             /**
-             * Required. The `Input.key` that identifies the input file.
+             * The `Input.key` that identifies the input file.
              */
-            key?: pulumi.Input<string>;
+            key: pulumi.Input<string>;
             /**
-             * Required. The zero-based index of the track in the input file.
+             * The zero-based index of the track in the input file.
              */
-            track?: pulumi.Input<number>;
+            track: pulumi.Input<number>;
         }
 
         /**
@@ -50590,9 +50590,9 @@ export namespace transcoder {
          */
         export interface AudioStreamArgs {
             /**
-             * Required. Audio bitrate in bits per second. Must be between 1 and 10,000,000.
+             * Audio bitrate in bits per second. Must be between 1 and 10,000,000.
              */
-            bitrateBps?: pulumi.Input<number>;
+            bitrateBps: pulumi.Input<number>;
             /**
              * Number of audio channels. Must be between 1 and 6. The default is 2.
              */
@@ -50736,13 +50736,13 @@ export namespace transcoder {
              */
             aes128?: pulumi.Input<inputs.transcoder.v1beta1.Aes128EncryptionArgs>;
             /**
-             * Required. 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
+             * 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
              */
-            iv?: pulumi.Input<string>;
+            iv: pulumi.Input<string>;
             /**
-             * Required. 128 bit encryption key represented as lowercase hexadecimal digits.
+             * 128 bit encryption key represented as lowercase hexadecimal digits.
              */
-            key?: pulumi.Input<string>;
+            key: pulumi.Input<string>;
             /**
              * Configuration for MPEG Common Encryption (MPEG-CENC).
              */
@@ -50766,9 +50766,9 @@ export namespace transcoder {
              */
             resolution?: pulumi.Input<inputs.transcoder.v1beta1.NormalizedCoordinateArgs>;
             /**
-             * Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+             * URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
              */
-            uri?: pulumi.Input<string>;
+            uri: pulumi.Input<string>;
         }
 
         /**
@@ -50844,13 +50844,13 @@ export namespace transcoder {
              */
             fileName?: pulumi.Input<string>;
             /**
-             * Required. List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+             * List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
              */
-            muxStreams?: pulumi.Input<pulumi.Input<string>[]>;
+            muxStreams: pulumi.Input<pulumi.Input<string>[]>;
             /**
-             * Required. Type of the manifest, can be "HLS" or "DASH".
+             * Type of the manifest, can be "HLS" or "DASH".
              */
-            type?: pulumi.Input<enums.transcoder.v1beta1.ManifestType>;
+            type: pulumi.Input<enums.transcoder.v1beta1.ManifestType>;
         }
 
         /**
@@ -50858,13 +50858,13 @@ export namespace transcoder {
          */
         export interface MpegCommonEncryptionArgs {
             /**
-             * Required. 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
+             * 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
              */
-            keyId?: pulumi.Input<string>;
+            keyId: pulumi.Input<string>;
             /**
-             * Required. Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
+             * Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
              */
-            scheme?: pulumi.Input<string>;
+            scheme: pulumi.Input<string>;
         }
 
         /**
@@ -51002,9 +51002,9 @@ export namespace transcoder {
          */
         export interface SampleAesEncryptionArgs {
             /**
-             * Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
+             * URI of the key delivery service. This URI is inserted into the M3U8 header.
              */
-            keyUri?: pulumi.Input<string>;
+            keyUri: pulumi.Input<string>;
         }
 
         /**
@@ -51012,9 +51012,9 @@ export namespace transcoder {
          */
         export interface SegmentSettingsArgs {
             /**
-             * Required. Create an individual segment file. The default is `false`.
+             * Create an individual segment file. The default is `false`.
              */
-            individualSegments?: pulumi.Input<boolean>;
+            individualSegments: pulumi.Input<boolean>;
             /**
              * Duration of the segments in seconds. The default is `"6.0s"`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).
              */
@@ -51034,9 +51034,9 @@ export namespace transcoder {
              */
             endTimeOffset?: pulumi.Input<string>;
             /**
-             * Required. File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
+             * File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
              */
-            filePrefix?: pulumi.Input<string>;
+            filePrefix: pulumi.Input<string>;
             /**
              * Format type. The default is `"jpeg"`. Supported formats: - 'jpeg'
              */
@@ -51054,13 +51054,13 @@ export namespace transcoder {
              */
             rowCount?: pulumi.Input<number>;
             /**
-             * Required. The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
+             * The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
              */
-            spriteHeightPixels?: pulumi.Input<number>;
+            spriteHeightPixels: pulumi.Input<number>;
             /**
-             * Required. The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
+             * The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
              */
-            spriteWidthPixels?: pulumi.Input<number>;
+            spriteWidthPixels: pulumi.Input<number>;
             /**
              * Start time in seconds, relative to the output file timeline. Determines the first sprite to pick. The default is `0s`.
              */
@@ -51080,9 +51080,9 @@ export namespace transcoder {
              */
             inputs?: pulumi.Input<pulumi.Input<inputs.transcoder.v1beta1.TextInputArgs>[]>;
             /**
-             * Required. The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
+             * The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
              */
-            key?: pulumi.Input<string>;
+            key: pulumi.Input<string>;
         }
 
         /**
@@ -51090,13 +51090,13 @@ export namespace transcoder {
          */
         export interface TextInputArgs {
             /**
-             * Required. The `Input.key` that identifies the input file.
+             * The `Input.key` that identifies the input file.
              */
-            key?: pulumi.Input<string>;
+            key: pulumi.Input<string>;
             /**
-             * Required. The zero-based index of the track in the input file.
+             * The zero-based index of the track in the input file.
              */
-            track?: pulumi.Input<number>;
+            track: pulumi.Input<number>;
         }
 
         /**
@@ -51108,9 +51108,9 @@ export namespace transcoder {
              */
             codec?: pulumi.Input<string>;
             /**
-             * Required. The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+             * The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
              */
-            languageCode?: pulumi.Input<string>;
+            languageCode: pulumi.Input<string>;
             /**
              * The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
              */
@@ -51138,9 +51138,9 @@ export namespace transcoder {
              */
             bPyramid?: pulumi.Input<boolean>;
             /**
-             * Required. The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+             * The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
              */
-            bitrateBps?: pulumi.Input<number>;
+            bitrateBps: pulumi.Input<number>;
             /**
              * Codec type. The following codecs are supported: * `h264` (default) * `h265` * `vp9`
              */
@@ -51158,9 +51158,9 @@ export namespace transcoder {
              */
             entropyCoder?: pulumi.Input<string>;
             /**
-             * Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+             * The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
              */
-            frameRate?: pulumi.Input<number>;
+            frameRate: pulumi.Input<number>;
             /**
              * Select the GOP size based on the specified duration. The default is `"3s"`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
              */
@@ -51217,9 +51217,9 @@ export namespace translate {
          */
         export interface GcsSourceArgs {
             /**
-             * Required. Source data URI. For example, `gs://my_bucket/my_object`.
+             * Source data URI. For example, `gs://my_bucket/my_object`.
              */
-            inputUri?: pulumi.Input<string>;
+            inputUri: pulumi.Input<string>;
         }
 
         /**
@@ -51227,9 +51227,9 @@ export namespace translate {
          */
         export interface GlossaryInputConfigArgs {
             /**
-             * Required. Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
+             * Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
              */
-            gcsSource?: pulumi.Input<inputs.translate.v3.GcsSourceArgs>;
+            gcsSource: pulumi.Input<inputs.translate.v3.GcsSourceArgs>;
         }
 
         /**
@@ -51237,13 +51237,13 @@ export namespace translate {
          */
         export interface LanguageCodePairArgs {
             /**
-             * Required. The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+             * The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
              */
-            sourceLanguageCode?: pulumi.Input<string>;
+            sourceLanguageCode: pulumi.Input<string>;
             /**
-             * Required. The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+             * The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
              */
-            targetLanguageCode?: pulumi.Input<string>;
+            targetLanguageCode: pulumi.Input<string>;
         }
 
         /**
@@ -51264,9 +51264,9 @@ export namespace translate {
          */
         export interface GcsSourceArgs {
             /**
-             * Required. Source data URI. For example, `gs://my_bucket/my_object`.
+             * Source data URI. For example, `gs://my_bucket/my_object`.
              */
-            inputUri?: pulumi.Input<string>;
+            inputUri: pulumi.Input<string>;
         }
 
         /**
@@ -51274,9 +51274,9 @@ export namespace translate {
          */
         export interface GlossaryInputConfigArgs {
             /**
-             * Required. Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. The format is defined for Google Translation Toolkit and documented in [Use a glossary](https://support.google.com/translatortoolkit/answer/6306379?hl=en).
+             * Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. The format is defined for Google Translation Toolkit and documented in [Use a glossary](https://support.google.com/translatortoolkit/answer/6306379?hl=en).
              */
-            gcsSource?: pulumi.Input<inputs.translate.v3beta1.GcsSourceArgs>;
+            gcsSource: pulumi.Input<inputs.translate.v3beta1.GcsSourceArgs>;
         }
 
         /**
@@ -51284,13 +51284,13 @@ export namespace translate {
          */
         export interface LanguageCodePairArgs {
             /**
-             * Required. The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+             * The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
              */
-            sourceLanguageCode?: pulumi.Input<string>;
+            sourceLanguageCode: pulumi.Input<string>;
             /**
-             * Required. The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+             * The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
              */
-            targetLanguageCode?: pulumi.Input<string>;
+            targetLanguageCode: pulumi.Input<string>;
         }
 
         /**
@@ -51411,17 +51411,17 @@ export namespace websecurityscanner {
          */
         export interface CustomAccountArgs {
             /**
-             * Required. The login form URL of the website.
+             * The login form URL of the website.
              */
-            loginUrl?: pulumi.Input<string>;
+            loginUrl: pulumi.Input<string>;
             /**
-             * Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+             * Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
              */
-            password?: pulumi.Input<string>;
+            password: pulumi.Input<string>;
             /**
-             * Required. The user name of the custom account.
+             * The user name of the custom account.
              */
-            username?: pulumi.Input<string>;
+            username: pulumi.Input<string>;
         }
 
         /**
@@ -51429,13 +51429,13 @@ export namespace websecurityscanner {
          */
         export interface GoogleAccountArgs {
             /**
-             * Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+             * Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
              */
-            password?: pulumi.Input<string>;
+            password: pulumi.Input<string>;
             /**
-             * Required. The user name of the Google account.
+             * The user name of the Google account.
              */
-            username?: pulumi.Input<string>;
+            username: pulumi.Input<string>;
         }
 
         /**
@@ -51453,9 +51453,9 @@ export namespace websecurityscanner {
          */
         export interface IapTestServiceAccountInfoArgs {
             /**
-             * Required. Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
+             * Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
              */
-            targetAudienceClientId?: pulumi.Input<string>;
+            targetAudienceClientId: pulumi.Input<string>;
         }
 
         /**
@@ -51463,9 +51463,9 @@ export namespace websecurityscanner {
          */
         export interface ScheduleArgs {
             /**
-             * Required. The duration of time between executions in days.
+             * The duration of time between executions in days.
              */
-            intervalDurationDays?: pulumi.Input<number>;
+            intervalDurationDays: pulumi.Input<number>;
             /**
              * A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
              */
@@ -51494,17 +51494,17 @@ export namespace websecurityscanner {
          */
         export interface CustomAccountArgs {
             /**
-             * Required. The login form URL of the website.
+             * The login form URL of the website.
              */
-            loginUrl?: pulumi.Input<string>;
+            loginUrl: pulumi.Input<string>;
             /**
-             * Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+             * Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
              */
-            password?: pulumi.Input<string>;
+            password: pulumi.Input<string>;
             /**
-             * Required. The user name of the custom account.
+             * The user name of the custom account.
              */
-            username?: pulumi.Input<string>;
+            username: pulumi.Input<string>;
         }
 
         /**
@@ -51512,13 +51512,13 @@ export namespace websecurityscanner {
          */
         export interface GoogleAccountArgs {
             /**
-             * Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+             * Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
              */
-            password?: pulumi.Input<string>;
+            password: pulumi.Input<string>;
             /**
-             * Required. The user name of the Google account.
+             * The user name of the Google account.
              */
-            username?: pulumi.Input<string>;
+            username: pulumi.Input<string>;
         }
 
         /**
@@ -51568,9 +51568,9 @@ export namespace websecurityscanner {
          */
         export interface ScheduleArgs {
             /**
-             * Required. The duration of time between executions in days.
+             * The duration of time between executions in days.
              */
-            intervalDurationDays?: pulumi.Input<number>;
+            intervalDurationDays: pulumi.Input<number>;
             /**
              * A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
              */
@@ -51603,17 +51603,17 @@ export namespace websecurityscanner {
          */
         export interface CustomAccountArgs {
             /**
-             * Required. The login form URL of the website.
+             * The login form URL of the website.
              */
-            loginUrl?: pulumi.Input<string>;
+            loginUrl: pulumi.Input<string>;
             /**
-             * Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+             * Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
              */
-            password?: pulumi.Input<string>;
+            password: pulumi.Input<string>;
             /**
-             * Required. The user name of the custom account.
+             * The user name of the custom account.
              */
-            username?: pulumi.Input<string>;
+            username: pulumi.Input<string>;
         }
 
         /**
@@ -51621,13 +51621,13 @@ export namespace websecurityscanner {
          */
         export interface GoogleAccountArgs {
             /**
-             * Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+             * Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
              */
-            password?: pulumi.Input<string>;
+            password: pulumi.Input<string>;
             /**
-             * Required. The user name of the Google account.
+             * The user name of the Google account.
              */
-            username?: pulumi.Input<string>;
+            username: pulumi.Input<string>;
         }
 
         /**
@@ -51645,9 +51645,9 @@ export namespace websecurityscanner {
          */
         export interface IapTestServiceAccountInfoArgs {
             /**
-             * Required. Describes OAuth2 Client ID of resources protected by Identity-Aware-Proxy(IAP).
+             * Describes OAuth2 Client ID of resources protected by Identity-Aware-Proxy(IAP).
              */
-            targetAudienceClientId?: pulumi.Input<string>;
+            targetAudienceClientId: pulumi.Input<string>;
         }
 
         /**
@@ -51747,9 +51747,9 @@ export namespace websecurityscanner {
          */
         export interface ScheduleArgs {
             /**
-             * Required. The duration of time between executions in days.
+             * The duration of time between executions in days.
              */
-            intervalDurationDays?: pulumi.Input<number>;
+            intervalDurationDays: pulumi.Input<number>;
             /**
              * A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
              */

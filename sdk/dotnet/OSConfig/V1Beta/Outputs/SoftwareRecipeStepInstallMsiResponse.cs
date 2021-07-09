@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
         /// </summary>
         public readonly ImmutableArray<int> AllowedExitCodes;
         /// <summary>
-        /// Required. The id of the relevant artifact in the recipe.
+        /// The id of the relevant artifact in the recipe.
         /// </summary>
         public readonly string ArtifactId;
         /// <summary>

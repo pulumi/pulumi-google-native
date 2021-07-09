@@ -46,7 +46,7 @@ class GetEnvironmentResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+        The human-readable name of the environment (unique in an agent). Limit of 64 characters.
         """
         return pulumi.get(self, "display_name")
 
@@ -70,7 +70,7 @@ class GetEnvironmentResult:
     @pulumi.getter(name="versionConfigs")
     def version_configs(self) -> Sequence['outputs.GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponse']:
         """
-        Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+        A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
         """
         return pulumi.get(self, "version_configs")
 

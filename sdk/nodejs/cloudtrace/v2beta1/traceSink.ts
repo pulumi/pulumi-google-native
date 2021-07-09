@@ -36,11 +36,11 @@ export class TraceSink extends pulumi.CustomResource {
     }
 
     /**
-     * Required. The canonical sink resource name, unique within the project. Must be of the form: project/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.
+     * The canonical sink resource name, unique within the project. Must be of the form: project/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Required. The export destination.
+     * The export destination.
      */
     public readonly outputConfig!: pulumi.Output<outputs.cloudtrace.v2beta1.OutputConfigResponse>;
     /**
@@ -59,6 +59,12 @@ export class TraceSink extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
+            }
+            if ((!args || args.outputConfig === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'outputConfig'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -83,12 +89,12 @@ export class TraceSink extends pulumi.CustomResource {
  */
 export interface TraceSinkArgs {
     /**
-     * Required. The canonical sink resource name, unique within the project. Must be of the form: project/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.
+     * The canonical sink resource name, unique within the project. Must be of the form: project/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
-     * Required. The export destination.
+     * The export destination.
      */
-    outputConfig?: pulumi.Input<inputs.cloudtrace.v2beta1.OutputConfigArgs>;
+    outputConfig: pulumi.Input<inputs.cloudtrace.v2beta1.OutputConfigArgs>;
     project: pulumi.Input<string>;
 }

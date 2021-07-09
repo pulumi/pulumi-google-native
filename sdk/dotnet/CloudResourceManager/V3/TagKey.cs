@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         public Output<string> Parent { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
         /// </summary>
         [Output("shortName")]
         public Output<string> ShortName { get; private set; } = null!;
@@ -71,7 +71,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public TagKey(string name, TagKeyArgs? args = null, CustomResourceOptions? options = null)
+        public TagKey(string name, TagKeyArgs args, CustomResourceOptions? options = null)
             : base("google-native:cloudresourcemanager/v3:TagKey", name, args ?? new TagKeyArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -133,10 +133,10 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         public Input<string>? Parent { get; set; }
 
         /// <summary>
-        /// Required. Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
+        /// Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
         /// </summary>
-        [Input("shortName")]
-        public Input<string>? ShortName { get; set; }
+        [Input("shortName", required: true)]
+        public Input<string> ShortName { get; set; } = null!;
 
         [Input("validateOnly")]
         public Input<string>? ValidateOnly { get; set; }

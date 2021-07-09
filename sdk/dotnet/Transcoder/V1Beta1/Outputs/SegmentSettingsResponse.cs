@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
     public sealed class SegmentSettingsResponse
     {
         /// <summary>
-        /// Required. Create an individual segment file. The default is `false`.
+        /// Create an individual segment file. The default is `false`.
         /// </summary>
         public readonly bool IndividualSegments;
         /// <summary>

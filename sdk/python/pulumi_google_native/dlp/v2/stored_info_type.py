@@ -15,21 +15,32 @@ __all__ = ['StoredInfoTypeArgs', 'StoredInfoType']
 @pulumi.input_type
 class StoredInfoTypeArgs:
     def __init__(__self__, *,
+                 config: pulumi.Input['GooglePrivacyDlpV2StoredInfoTypeConfigArgs'],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 config: Optional[pulumi.Input['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']] = None,
                  stored_info_type_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a StoredInfoType resource.
-        :param pulumi.Input['GooglePrivacyDlpV2StoredInfoTypeConfigArgs'] config: Required. Configuration of the storedInfoType to create.
+        :param pulumi.Input['GooglePrivacyDlpV2StoredInfoTypeConfigArgs'] config: Configuration of the storedInfoType to create.
         :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
+        pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        if config is not None:
-            pulumi.set(__self__, "config", config)
         if stored_info_type_id is not None:
             pulumi.set(__self__, "stored_info_type_id", stored_info_type_id)
+
+    @property
+    @pulumi.getter
+    def config(self) -> pulumi.Input['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']:
+        """
+        Configuration of the storedInfoType to create.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: pulumi.Input['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']):
+        pulumi.set(self, "config", value)
 
     @property
     @pulumi.getter
@@ -48,18 +59,6 @@ class StoredInfoTypeArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
-    def config(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']]:
-        """
-        Required. Configuration of the storedInfoType to create.
-        """
-        return pulumi.get(self, "config")
-
-    @config.setter
-    def config(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']]):
-        pulumi.set(self, "config", value)
 
     @property
     @pulumi.getter(name="storedInfoTypeId")
@@ -89,7 +88,7 @@ class StoredInfoType(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']] config: Required. Configuration of the storedInfoType to create.
+        :param pulumi.Input[pulumi.InputType['GooglePrivacyDlpV2StoredInfoTypeConfigArgs']] config: Configuration of the storedInfoType to create.
         :param pulumi.Input[str] stored_info_type_id: The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
         """
         ...
@@ -132,6 +131,8 @@ class StoredInfoType(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = StoredInfoTypeArgs.__new__(StoredInfoTypeArgs)
 
+            if config is None and not opts.urn:
+                raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")

@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
+        /// A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
         /// </summary>
         public readonly ImmutableArray<Outputs.LabelDescriptorResponse> Labels;
         /// <summary>
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+        /// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
         /// </summary>
         public readonly string Type;
 

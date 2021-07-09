@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// </summary>
         public readonly Outputs.LoggingConfigResponse LoggingConfig;
         /// <summary>
-        /// Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+        /// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
         /// </summary>
         public readonly string MainPythonFileUri;
         /// <summary>

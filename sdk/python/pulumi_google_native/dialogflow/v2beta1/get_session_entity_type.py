@@ -32,7 +32,7 @@ class GetSessionEntityTypeResult:
     @pulumi.getter
     def entities(self) -> Sequence['outputs.GoogleCloudDialogflowV2beta1EntityTypeEntityResponse']:
         """
-        Required. The collection of entities associated with this session entity type.
+        The collection of entities associated with this session entity type.
         """
         return pulumi.get(self, "entities")
 
@@ -40,7 +40,7 @@ class GetSessionEntityTypeResult:
     @pulumi.getter(name="entityOverrideMode")
     def entity_override_mode(self) -> str:
         """
-        Required. Indicates whether the additional data should override or supplement the custom entity type definition.
+        Indicates whether the additional data should override or supplement the custom entity type definition.
         """
         return pulumi.get(self, "entity_override_mode")
 
@@ -48,7 +48,7 @@ class GetSessionEntityTypeResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. The unique identifier of this session entity type. Supported formats: - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions//entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/` - `projects//locations//agent/environments/ /users//sessions//entityTypes/` If `Location ID` is not specified we assume default 'us' location. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
+        The unique identifier of this session entity type. Supported formats: - `projects//agent/sessions//entityTypes/` - `projects//locations//agent/sessions//entityTypes/` - `projects//agent/environments//users//sessions//entityTypes/` - `projects//locations//agent/environments/ /users//sessions//entityTypes/` If `Location ID` is not specified we assume default 'us' location. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented.
         """
         return pulumi.get(self, "name")
 

@@ -1817,12 +1817,12 @@ func (o IPAllocationPolicyResponsePtrOutput) UseIpAliases() pulumi.BoolPtrOutput
 
 // The configuration settings for Cloud Composer maintenance window. The following example: { "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
 type MaintenanceWindow struct {
-	// Required. Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
-	EndTime *string `pulumi:"endTime"`
-	// Required. Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
-	Recurrence *string `pulumi:"recurrence"`
-	// Required. Start time of the first recurrence of the maintenance window.
-	StartTime *string `pulumi:"startTime"`
+	// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
+	EndTime string `pulumi:"endTime"`
+	// Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+	Recurrence string `pulumi:"recurrence"`
+	// Start time of the first recurrence of the maintenance window.
+	StartTime string `pulumi:"startTime"`
 }
 
 // MaintenanceWindowInput is an input type that accepts MaintenanceWindowArgs and MaintenanceWindowOutput values.
@@ -1838,12 +1838,12 @@ type MaintenanceWindowInput interface {
 
 // The configuration settings for Cloud Composer maintenance window. The following example: { "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
 type MaintenanceWindowArgs struct {
-	// Required. Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
-	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	// Required. Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
-	Recurrence pulumi.StringPtrInput `pulumi:"recurrence"`
-	// Required. Start time of the first recurrence of the maintenance window.
-	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+	// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+	Recurrence pulumi.StringInput `pulumi:"recurrence"`
+	// Start time of the first recurrence of the maintenance window.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
 }
 
 func (MaintenanceWindowArgs) ElementType() reflect.Type {
@@ -1924,19 +1924,19 @@ func (o MaintenanceWindowOutput) ToMaintenanceWindowPtrOutputWithContext(ctx con
 	}).(MaintenanceWindowPtrOutput)
 }
 
-// Required. Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
-func (o MaintenanceWindowOutput) EndTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MaintenanceWindow) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
+func (o MaintenanceWindowOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenanceWindow) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// Required. Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
-func (o MaintenanceWindowOutput) Recurrence() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MaintenanceWindow) *string { return v.Recurrence }).(pulumi.StringPtrOutput)
+// Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+func (o MaintenanceWindowOutput) Recurrence() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenanceWindow) string { return v.Recurrence }).(pulumi.StringOutput)
 }
 
-// Required. Start time of the first recurrence of the maintenance window.
-func (o MaintenanceWindowOutput) StartTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MaintenanceWindow) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+// Start time of the first recurrence of the maintenance window.
+func (o MaintenanceWindowOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenanceWindow) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
 type MaintenanceWindowPtrOutput struct{ *pulumi.OutputState }
@@ -1957,43 +1957,43 @@ func (o MaintenanceWindowPtrOutput) Elem() MaintenanceWindowOutput {
 	return o.ApplyT(func(v *MaintenanceWindow) MaintenanceWindow { return *v }).(MaintenanceWindowOutput)
 }
 
-// Required. Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
+// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
 func (o MaintenanceWindowPtrOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MaintenanceWindow) *string {
 		if v == nil {
 			return nil
 		}
-		return v.EndTime
+		return &v.EndTime
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+// Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
 func (o MaintenanceWindowPtrOutput) Recurrence() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MaintenanceWindow) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Recurrence
+		return &v.Recurrence
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Start time of the first recurrence of the maintenance window.
+// Start time of the first recurrence of the maintenance window.
 func (o MaintenanceWindowPtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MaintenanceWindow) *string {
 		if v == nil {
 			return nil
 		}
-		return v.StartTime
+		return &v.StartTime
 	}).(pulumi.StringPtrOutput)
 }
 
 // The configuration settings for Cloud Composer maintenance window. The following example: { "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
 type MaintenanceWindowResponse struct {
-	// Required. Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
+	// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
 	EndTime string `pulumi:"endTime"`
-	// Required. Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+	// Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
 	Recurrence string `pulumi:"recurrence"`
-	// Required. Start time of the first recurrence of the maintenance window.
+	// Start time of the first recurrence of the maintenance window.
 	StartTime string `pulumi:"startTime"`
 }
 
@@ -2010,11 +2010,11 @@ type MaintenanceWindowResponseInput interface {
 
 // The configuration settings for Cloud Composer maintenance window. The following example: { "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
 type MaintenanceWindowResponseArgs struct {
-	// Required. Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
+	// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
 	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// Required. Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+	// Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
 	Recurrence pulumi.StringInput `pulumi:"recurrence"`
-	// Required. Start time of the first recurrence of the maintenance window.
+	// Start time of the first recurrence of the maintenance window.
 	StartTime pulumi.StringInput `pulumi:"startTime"`
 }
 
@@ -2096,17 +2096,17 @@ func (o MaintenanceWindowResponseOutput) ToMaintenanceWindowResponsePtrOutputWit
 	}).(MaintenanceWindowResponsePtrOutput)
 }
 
-// Required. Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
+// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
 func (o MaintenanceWindowResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v MaintenanceWindowResponse) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// Required. Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+// Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
 func (o MaintenanceWindowResponseOutput) Recurrence() pulumi.StringOutput {
 	return o.ApplyT(func(v MaintenanceWindowResponse) string { return v.Recurrence }).(pulumi.StringOutput)
 }
 
-// Required. Start time of the first recurrence of the maintenance window.
+// Start time of the first recurrence of the maintenance window.
 func (o MaintenanceWindowResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v MaintenanceWindowResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -2129,7 +2129,7 @@ func (o MaintenanceWindowResponsePtrOutput) Elem() MaintenanceWindowResponseOutp
 	return o.ApplyT(func(v *MaintenanceWindowResponse) MaintenanceWindowResponse { return *v }).(MaintenanceWindowResponseOutput)
 }
 
-// Required. Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
+// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end_time must be in the future, relative to `start_time`.
 func (o MaintenanceWindowResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MaintenanceWindowResponse) *string {
 		if v == nil {
@@ -2139,7 +2139,7 @@ func (o MaintenanceWindowResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
+// Maintenance window recurrence. Format is a subset of [RFC-5545](https://tools.ietf.org/html/rfc5545) `RRULE`. The only allowed values for `FREQ` field are `FREQ=DAILY` and `FREQ=WEEKLY;BYDAY=...` Example values: `FREQ=WEEKLY;BYDAY=TU,WE`, `FREQ=DAILY`.
 func (o MaintenanceWindowResponsePtrOutput) Recurrence() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MaintenanceWindowResponse) *string {
 		if v == nil {
@@ -2149,7 +2149,7 @@ func (o MaintenanceWindowResponsePtrOutput) Recurrence() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Start time of the first recurrence of the maintenance window.
+// Start time of the first recurrence of the maintenance window.
 func (o MaintenanceWindowResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MaintenanceWindowResponse) *string {
 		if v == nil {

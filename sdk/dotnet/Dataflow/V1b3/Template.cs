@@ -91,16 +91,16 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         public Input<Inputs.RuntimeEnvironmentArgs>? Environment { get; set; }
 
         /// <summary>
-        /// Required. A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.
+        /// A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.
         /// </summary>
-        [Input("gcsPath")]
-        public Input<string>? GcsPath { get; set; }
+        [Input("gcsPath", required: true)]
+        public Input<string> GcsPath { get; set; } = null!;
 
         /// <summary>
-        /// Required. The job name to use for the created job.
+        /// The job name to use for the created job.
         /// </summary>
-        [Input("jobName")]
-        public Input<string>? JobName { get; set; }
+        [Input("jobName", required: true)]
+        public Input<string> JobName { get; set; } = null!;
 
         /// <summary>
         /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.

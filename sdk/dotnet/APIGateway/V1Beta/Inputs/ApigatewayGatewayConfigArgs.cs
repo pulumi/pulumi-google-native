@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta.Inputs
     public sealed class ApigatewayGatewayConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Backend settings that are applied to all backends of the Gateway.
+        /// Backend settings that are applied to all backends of the Gateway.
         /// </summary>
-        [Input("backendConfig")]
-        public Input<Inputs.ApigatewayBackendConfigArgs>? BackendConfig { get; set; }
+        [Input("backendConfig", required: true)]
+        public Input<Inputs.ApigatewayBackendConfigArgs> BackendConfig { get; set; } = null!;
 
         public ApigatewayGatewayConfigArgs()
         {

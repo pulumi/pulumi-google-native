@@ -44,7 +44,7 @@ export class UserDataMapping extends pulumi.CustomResource {
      */
     public /*out*/ readonly archived!: pulumi.Output<boolean>;
     /**
-     * Required. A unique identifier for the mapped resource.
+     * A unique identifier for the mapped resource.
      */
     public readonly dataId!: pulumi.Output<string>;
     /**
@@ -56,7 +56,7 @@ export class UserDataMapping extends pulumi.CustomResource {
      */
     public readonly resourceAttributes!: pulumi.Output<outputs.healthcare.v1beta1.AttributeResponse[]>;
     /**
-     * Required. User's UUID provided by the client.
+     * User's UUID provided by the client.
      */
     public readonly userId!: pulumi.Output<string>;
 
@@ -74,6 +74,9 @@ export class UserDataMapping extends pulumi.CustomResource {
             if ((!args || args.consentStoreId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'consentStoreId'");
             }
+            if ((!args || args.dataId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'dataId'");
+            }
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
@@ -82,6 +85,9 @@ export class UserDataMapping extends pulumi.CustomResource {
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.userId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'userId'");
             }
             inputs["consentStoreId"] = args ? args.consentStoreId : undefined;
             inputs["dataId"] = args ? args.dataId : undefined;
@@ -114,9 +120,9 @@ export class UserDataMapping extends pulumi.CustomResource {
 export interface UserDataMappingArgs {
     consentStoreId: pulumi.Input<string>;
     /**
-     * Required. A unique identifier for the mapped resource.
+     * A unique identifier for the mapped resource.
      */
-    dataId?: pulumi.Input<string>;
+    dataId: pulumi.Input<string>;
     datasetId: pulumi.Input<string>;
     location: pulumi.Input<string>;
     /**
@@ -129,7 +135,7 @@ export interface UserDataMappingArgs {
      */
     resourceAttributes?: pulumi.Input<pulumi.Input<inputs.healthcare.v1beta1.AttributeArgs>[]>;
     /**
-     * Required. User's UUID provided by the client.
+     * User's UUID provided by the client.
      */
-    userId?: pulumi.Input<string>;
+    userId: pulumi.Input<string>;
 }

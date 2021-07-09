@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public Input<Inputs.GooglePrivacyDlpV2ValueArgs>? Min { get; set; }
 
         /// <summary>
-        /// Required. Replacement value for this bucket.
+        /// Replacement value for this bucket.
         /// </summary>
-        [Input("replacementValue")]
-        public Input<Inputs.GooglePrivacyDlpV2ValueArgs>? ReplacementValue { get; set; }
+        [Input("replacementValue", required: true)]
+        public Input<Inputs.GooglePrivacyDlpV2ValueArgs> ReplacementValue { get; set; } = null!;
 
         public GooglePrivacyDlpV2BucketArgs()
         {

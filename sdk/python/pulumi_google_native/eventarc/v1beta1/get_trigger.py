@@ -58,7 +58,7 @@ class GetTriggerResult:
     @pulumi.getter
     def destination(self) -> 'outputs.DestinationResponse':
         """
-        Required. Destination specifies where the events should be sent to.
+        Destination specifies where the events should be sent to.
         """
         return pulumi.get(self, "destination")
 
@@ -82,7 +82,7 @@ class GetTriggerResult:
     @pulumi.getter(name="matchingCriteria")
     def matching_criteria(self) -> Sequence['outputs.MatchingCriteriaResponse']:
         """
-        Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+        null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
         """
         return pulumi.get(self, "matching_criteria")
 
@@ -90,7 +90,7 @@ class GetTriggerResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+        The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
         """
         return pulumi.get(self, "name")
 

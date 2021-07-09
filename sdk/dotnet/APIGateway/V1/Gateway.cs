@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.APIGateway.V1
     public partial class Gateway : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+        /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
         /// </summary>
         [Output("apiConfig")]
         public Output<string> ApiConfig { get; private set; } = null!;
@@ -109,10 +109,10 @@ namespace Pulumi.GoogleNative.APIGateway.V1
     public sealed class GatewayArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+        /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
         /// </summary>
-        [Input("apiConfig")]
-        public Input<string>? ApiConfig { get; set; }
+        [Input("apiConfig", required: true)]
+        public Input<string> ApiConfig { get; set; } = null!;
 
         /// <summary>
         /// Optional. Display name.

@@ -217,56 +217,53 @@ class GooglePrivacyDlpV2ActionArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2AuxiliaryTableArgs:
     def __init__(__self__, *,
-                 quasi_ids: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdFieldArgs']]]] = None,
-                 relative_frequency: Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']] = None,
-                 table: Optional[pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs']] = None):
+                 quasi_ids: pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdFieldArgs']]],
+                 relative_frequency: pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'],
+                 table: pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs']):
         """
         An auxiliary table contains statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).
-        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdFieldArgs']]] quasi_ids: Required. Quasi-identifier columns.
-        :param pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'] relative_frequency: Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
-        :param pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs'] table: Required. Auxiliary table location.
+        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdFieldArgs']]] quasi_ids: Quasi-identifier columns.
+        :param pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'] relative_frequency: The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+        :param pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs'] table: Auxiliary table location.
         """
-        if quasi_ids is not None:
-            pulumi.set(__self__, "quasi_ids", quasi_ids)
-        if relative_frequency is not None:
-            pulumi.set(__self__, "relative_frequency", relative_frequency)
-        if table is not None:
-            pulumi.set(__self__, "table", table)
+        pulumi.set(__self__, "quasi_ids", quasi_ids)
+        pulumi.set(__self__, "relative_frequency", relative_frequency)
+        pulumi.set(__self__, "table", table)
 
     @property
     @pulumi.getter(name="quasiIds")
-    def quasi_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdFieldArgs']]]]:
+    def quasi_ids(self) -> pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdFieldArgs']]]:
         """
-        Required. Quasi-identifier columns.
+        Quasi-identifier columns.
         """
         return pulumi.get(self, "quasi_ids")
 
     @quasi_ids.setter
-    def quasi_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdFieldArgs']]]]):
+    def quasi_ids(self, value: pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdFieldArgs']]]):
         pulumi.set(self, "quasi_ids", value)
 
     @property
     @pulumi.getter(name="relativeFrequency")
-    def relative_frequency(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]:
+    def relative_frequency(self) -> pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']:
         """
-        Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+        The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
         """
         return pulumi.get(self, "relative_frequency")
 
     @relative_frequency.setter
-    def relative_frequency(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]):
+    def relative_frequency(self, value: pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']):
         pulumi.set(self, "relative_frequency", value)
 
     @property
     @pulumi.getter
-    def table(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs']]:
+    def table(self) -> pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs']:
         """
-        Required. Auxiliary table location.
+        Auxiliary table location.
         """
         return pulumi.get(self, "table")
 
     @table.setter
-    def table(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs']]):
+    def table(self, value: pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs']):
         pulumi.set(self, "table", value)
 
 
@@ -469,21 +466,32 @@ class GooglePrivacyDlpV2BigQueryTableArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2BucketArgs:
     def __init__(__self__, *,
+                 replacement_value: pulumi.Input['GooglePrivacyDlpV2ValueArgs'],
                  max: Optional[pulumi.Input['GooglePrivacyDlpV2ValueArgs']] = None,
-                 min: Optional[pulumi.Input['GooglePrivacyDlpV2ValueArgs']] = None,
-                 replacement_value: Optional[pulumi.Input['GooglePrivacyDlpV2ValueArgs']] = None):
+                 min: Optional[pulumi.Input['GooglePrivacyDlpV2ValueArgs']] = None):
         """
         Bucket is represented as a range, along with replacement values.
+        :param pulumi.Input['GooglePrivacyDlpV2ValueArgs'] replacement_value: Replacement value for this bucket.
         :param pulumi.Input['GooglePrivacyDlpV2ValueArgs'] max: Upper bound of the range, exclusive; type must match min.
         :param pulumi.Input['GooglePrivacyDlpV2ValueArgs'] min: Lower bound of the range, inclusive. Type should be the same as max if used.
-        :param pulumi.Input['GooglePrivacyDlpV2ValueArgs'] replacement_value: Required. Replacement value for this bucket.
         """
+        pulumi.set(__self__, "replacement_value", replacement_value)
         if max is not None:
             pulumi.set(__self__, "max", max)
         if min is not None:
             pulumi.set(__self__, "min", min)
-        if replacement_value is not None:
-            pulumi.set(__self__, "replacement_value", replacement_value)
+
+    @property
+    @pulumi.getter(name="replacementValue")
+    def replacement_value(self) -> pulumi.Input['GooglePrivacyDlpV2ValueArgs']:
+        """
+        Replacement value for this bucket.
+        """
+        return pulumi.get(self, "replacement_value")
+
+    @replacement_value.setter
+    def replacement_value(self, value: pulumi.Input['GooglePrivacyDlpV2ValueArgs']):
+        pulumi.set(self, "replacement_value", value)
 
     @property
     @pulumi.getter
@@ -508,18 +516,6 @@ class GooglePrivacyDlpV2BucketArgs:
     @min.setter
     def min(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2ValueArgs']]):
         pulumi.set(self, "min", value)
-
-    @property
-    @pulumi.getter(name="replacementValue")
-    def replacement_value(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2ValueArgs']]:
-        """
-        Required. Replacement value for this bucket.
-        """
-        return pulumi.get(self, "replacement_value")
-
-    @replacement_value.setter
-    def replacement_value(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2ValueArgs']]):
-        pulumi.set(self, "replacement_value", value)
 
 
 @pulumi.input_type
@@ -889,44 +885,42 @@ class GooglePrivacyDlpV2CloudStorageRegexFileSetArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2ConditionArgs:
     def __init__(__self__, *,
-                 field: Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']] = None,
-                 operator: Optional[pulumi.Input['GooglePrivacyDlpV2ConditionOperator']] = None,
+                 field: pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'],
+                 operator: pulumi.Input['GooglePrivacyDlpV2ConditionOperator'],
                  value: Optional[pulumi.Input['GooglePrivacyDlpV2ValueArgs']] = None):
         """
         The field type of `value` and `field` do not need to match to be considered equal, but not all comparisons are possible. EQUAL_TO and NOT_EQUAL_TO attempt to compare even with incompatible types, but all other comparisons are invalid with incompatible types. A `value` of type: - `string` can be compared against all other types - `boolean` can only be compared against other booleans - `integer` can be compared against doubles or a string if the string value can be parsed as an integer. - `double` can be compared against integers or a string if the string can be parsed as a double. - `Timestamp` can be compared against strings in RFC 3339 date string format. - `TimeOfDay` can be compared against timestamps and strings in the format of 'HH:mm:ss'. If we fail to compare do to type mismatch, a warning will be given and the condition will evaluate to false.
-        :param pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'] field: Required. Field within the record this condition is evaluated against.
-        :param pulumi.Input['GooglePrivacyDlpV2ConditionOperator'] operator: Required. Operator used to compare the field or infoType to the value.
+        :param pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'] field: Field within the record this condition is evaluated against.
+        :param pulumi.Input['GooglePrivacyDlpV2ConditionOperator'] operator: Operator used to compare the field or infoType to the value.
         :param pulumi.Input['GooglePrivacyDlpV2ValueArgs'] value: Value to compare against. [Mandatory, except for `EXISTS` tests.]
         """
-        if field is not None:
-            pulumi.set(__self__, "field", field)
-        if operator is not None:
-            pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "field", field)
+        pulumi.set(__self__, "operator", operator)
         if value is not None:
             pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
-    def field(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]:
+    def field(self) -> pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']:
         """
-        Required. Field within the record this condition is evaluated against.
+        Field within the record this condition is evaluated against.
         """
         return pulumi.get(self, "field")
 
     @field.setter
-    def field(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]):
+    def field(self, value: pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']):
         pulumi.set(self, "field", value)
 
     @property
     @pulumi.getter
-    def operator(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2ConditionOperator']]:
+    def operator(self) -> pulumi.Input['GooglePrivacyDlpV2ConditionOperator']:
         """
-        Required. Operator used to compare the field or infoType to the value.
+        Operator used to compare the field or infoType to the value.
         """
         return pulumi.get(self, "operator")
 
     @operator.setter
-    def operator(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2ConditionOperator']]):
+    def operator(self, value: pulumi.Input['GooglePrivacyDlpV2ConditionOperator']):
         pulumi.set(self, "operator", value)
 
     @property
@@ -1105,33 +1099,44 @@ class GooglePrivacyDlpV2CryptoKeyArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigArgs:
     def __init__(__self__, *,
+                 crypto_key: pulumi.Input['GooglePrivacyDlpV2CryptoKeyArgs'],
                  common_alphabet: Optional[pulumi.Input['GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet']] = None,
                  context: Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']] = None,
-                 crypto_key: Optional[pulumi.Input['GooglePrivacyDlpV2CryptoKeyArgs']] = None,
                  custom_alphabet: Optional[pulumi.Input[str]] = None,
                  radix: Optional[pulumi.Input[int]] = None,
                  surrogate_info_type: Optional[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']] = None):
         """
         Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `ReidentifyContent` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See https://cloud.google.com/dlp/docs/pseudonymization to learn more. Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
+        :param pulumi.Input['GooglePrivacyDlpV2CryptoKeyArgs'] crypto_key: The key used by the encryption algorithm.
         :param pulumi.Input['GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet'] common_alphabet: Common alphabets.
         :param pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'] context: The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
-        :param pulumi.Input['GooglePrivacyDlpV2CryptoKeyArgs'] crypto_key: Required. The key used by the encryption algorithm.
         :param pulumi.Input[str] custom_alphabet: This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range [2, 95]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is: 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|\:;"'<,>.?/
         :param pulumi.Input[int] radix: The native way to select the alphabet. Must be in the range [2, 95].
         :param pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs'] surrogate_info_type: The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE
         """
+        pulumi.set(__self__, "crypto_key", crypto_key)
         if common_alphabet is not None:
             pulumi.set(__self__, "common_alphabet", common_alphabet)
         if context is not None:
             pulumi.set(__self__, "context", context)
-        if crypto_key is not None:
-            pulumi.set(__self__, "crypto_key", crypto_key)
         if custom_alphabet is not None:
             pulumi.set(__self__, "custom_alphabet", custom_alphabet)
         if radix is not None:
             pulumi.set(__self__, "radix", radix)
         if surrogate_info_type is not None:
             pulumi.set(__self__, "surrogate_info_type", surrogate_info_type)
+
+    @property
+    @pulumi.getter(name="cryptoKey")
+    def crypto_key(self) -> pulumi.Input['GooglePrivacyDlpV2CryptoKeyArgs']:
+        """
+        The key used by the encryption algorithm.
+        """
+        return pulumi.get(self, "crypto_key")
+
+    @crypto_key.setter
+    def crypto_key(self, value: pulumi.Input['GooglePrivacyDlpV2CryptoKeyArgs']):
+        pulumi.set(self, "crypto_key", value)
 
     @property
     @pulumi.getter(name="commonAlphabet")
@@ -1156,18 +1161,6 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigArgs:
     @context.setter
     def context(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]):
         pulumi.set(self, "context", value)
-
-    @property
-    @pulumi.getter(name="cryptoKey")
-    def crypto_key(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2CryptoKeyArgs']]:
-        """
-        Required. The key used by the encryption algorithm.
-        """
-        return pulumi.get(self, "crypto_key")
-
-    @crypto_key.setter
-    def crypto_key(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2CryptoKeyArgs']]):
-        pulumi.set(self, "crypto_key", value)
 
     @property
     @pulumi.getter(name="customAlphabet")
@@ -1385,25 +1378,47 @@ class GooglePrivacyDlpV2DatastoreOptionsArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2DateShiftConfigArgs:
     def __init__(__self__, *,
+                 lower_bound_days: pulumi.Input[int],
+                 upper_bound_days: pulumi.Input[int],
                  context: Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']] = None,
-                 crypto_key: Optional[pulumi.Input['GooglePrivacyDlpV2CryptoKeyArgs']] = None,
-                 lower_bound_days: Optional[pulumi.Input[int]] = None,
-                 upper_bound_days: Optional[pulumi.Input[int]] = None):
+                 crypto_key: Optional[pulumi.Input['GooglePrivacyDlpV2CryptoKeyArgs']] = None):
         """
         Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
+        :param pulumi.Input[int] lower_bound_days: For example, -5 means shift date to at most 5 days back in the past.
+        :param pulumi.Input[int] upper_bound_days: Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
         :param pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'] context: Points to the field that contains the context, for example, an entity id. If set, must also set cryptoKey. If set, shift will be consistent for the given context.
         :param pulumi.Input['GooglePrivacyDlpV2CryptoKeyArgs'] crypto_key: Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and crypto_key. If set, must also set context. Can only be applied to table items.
-        :param pulumi.Input[int] lower_bound_days: Required. For example, -5 means shift date to at most 5 days back in the past.
-        :param pulumi.Input[int] upper_bound_days: Required. Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
         """
+        pulumi.set(__self__, "lower_bound_days", lower_bound_days)
+        pulumi.set(__self__, "upper_bound_days", upper_bound_days)
         if context is not None:
             pulumi.set(__self__, "context", context)
         if crypto_key is not None:
             pulumi.set(__self__, "crypto_key", crypto_key)
-        if lower_bound_days is not None:
-            pulumi.set(__self__, "lower_bound_days", lower_bound_days)
-        if upper_bound_days is not None:
-            pulumi.set(__self__, "upper_bound_days", upper_bound_days)
+
+    @property
+    @pulumi.getter(name="lowerBoundDays")
+    def lower_bound_days(self) -> pulumi.Input[int]:
+        """
+        For example, -5 means shift date to at most 5 days back in the past.
+        """
+        return pulumi.get(self, "lower_bound_days")
+
+    @lower_bound_days.setter
+    def lower_bound_days(self, value: pulumi.Input[int]):
+        pulumi.set(self, "lower_bound_days", value)
+
+    @property
+    @pulumi.getter(name="upperBoundDays")
+    def upper_bound_days(self) -> pulumi.Input[int]:
+        """
+        Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
+        """
+        return pulumi.get(self, "upper_bound_days")
+
+    @upper_bound_days.setter
+    def upper_bound_days(self, value: pulumi.Input[int]):
+        pulumi.set(self, "upper_bound_days", value)
 
     @property
     @pulumi.getter
@@ -1428,30 +1443,6 @@ class GooglePrivacyDlpV2DateShiftConfigArgs:
     @crypto_key.setter
     def crypto_key(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2CryptoKeyArgs']]):
         pulumi.set(self, "crypto_key", value)
-
-    @property
-    @pulumi.getter(name="lowerBoundDays")
-    def lower_bound_days(self) -> Optional[pulumi.Input[int]]:
-        """
-        Required. For example, -5 means shift date to at most 5 days back in the past.
-        """
-        return pulumi.get(self, "lower_bound_days")
-
-    @lower_bound_days.setter
-    def lower_bound_days(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "lower_bound_days", value)
-
-    @property
-    @pulumi.getter(name="upperBoundDays")
-    def upper_bound_days(self) -> Optional[pulumi.Input[int]]:
-        """
-        Required. Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
-        """
-        return pulumi.get(self, "upper_bound_days")
-
-    @upper_bound_days.setter
-    def upper_bound_days(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "upper_bound_days", value)
 
 
 @pulumi.input_type
@@ -1513,21 +1504,32 @@ class GooglePrivacyDlpV2DeidentifyConfigArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2DeltaPresenceEstimationConfigArgs:
     def __init__(__self__, *,
+                 quasi_ids: pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdArgs']]],
                  auxiliary_tables: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2StatisticalTableArgs']]]] = None,
-                 quasi_ids: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdArgs']]]] = None,
                  region_code: Optional[pulumi.Input[str]] = None):
         """
         δ-presence metric, used to estimate how likely it is for an attacker to figure out that one given individual appears in a de-identified dataset. Similarly to the k-map metric, we cannot compute δ-presence exactly without knowing the attack dataset, so we use a statistical model instead.
+        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdArgs']]] quasi_ids: Fields considered to be quasi-identifiers. No two fields can have the same tag.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2StatisticalTableArgs']]] auxiliary_tables: Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers field must appear in exactly one field of one auxiliary table.
-        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdArgs']]] quasi_ids: Required. Fields considered to be quasi-identifiers. No two fields can have the same tag.
         :param pulumi.Input[str] region_code: ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code.
         """
+        pulumi.set(__self__, "quasi_ids", quasi_ids)
         if auxiliary_tables is not None:
             pulumi.set(__self__, "auxiliary_tables", auxiliary_tables)
-        if quasi_ids is not None:
-            pulumi.set(__self__, "quasi_ids", quasi_ids)
         if region_code is not None:
             pulumi.set(__self__, "region_code", region_code)
+
+    @property
+    @pulumi.getter(name="quasiIds")
+    def quasi_ids(self) -> pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdArgs']]]:
+        """
+        Fields considered to be quasi-identifiers. No two fields can have the same tag.
+        """
+        return pulumi.get(self, "quasi_ids")
+
+    @quasi_ids.setter
+    def quasi_ids(self, value: pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdArgs']]]):
+        pulumi.set(self, "quasi_ids", value)
 
     @property
     @pulumi.getter(name="auxiliaryTables")
@@ -1540,18 +1542,6 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationConfigArgs:
     @auxiliary_tables.setter
     def auxiliary_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2StatisticalTableArgs']]]]):
         pulumi.set(self, "auxiliary_tables", value)
-
-    @property
-    @pulumi.getter(name="quasiIds")
-    def quasi_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdArgs']]]]:
-        """
-        Required. Fields considered to be quasi-identifiers. No two fields can have the same tag.
-        """
-        return pulumi.get(self, "quasi_ids")
-
-    @quasi_ids.setter
-    def quasi_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdArgs']]]]):
-        pulumi.set(self, "quasi_ids", value)
 
     @property
     @pulumi.getter(name="regionCode")
@@ -1817,25 +1807,36 @@ class GooglePrivacyDlpV2FieldIdArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2FieldTransformationArgs:
     def __init__(__self__, *,
+                 fields: pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]],
                  condition: Optional[pulumi.Input['GooglePrivacyDlpV2RecordConditionArgs']] = None,
-                 fields: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]]] = None,
                  info_type_transformations: Optional[pulumi.Input['GooglePrivacyDlpV2InfoTypeTransformationsArgs']] = None,
                  primitive_transformation: Optional[pulumi.Input['GooglePrivacyDlpV2PrimitiveTransformationArgs']] = None):
         """
         The transformation to apply to the field.
+        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]] fields: Input field(s) to apply the transformation to.
         :param pulumi.Input['GooglePrivacyDlpV2RecordConditionArgs'] condition: Only apply the transformation if the condition evaluates to true for the given `RecordCondition`. The conditions are allowed to reference fields that are not used in the actual transformation. Example Use Cases: - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range. - Redact a field if the date of birth field is greater than 85.
-        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]] fields: Required. Input field(s) to apply the transformation to.
         :param pulumi.Input['GooglePrivacyDlpV2InfoTypeTransformationsArgs'] info_type_transformations: Treat the contents of the field as free text, and selectively transform content that matches an `InfoType`.
         :param pulumi.Input['GooglePrivacyDlpV2PrimitiveTransformationArgs'] primitive_transformation: Apply the transformation to the entire field.
         """
+        pulumi.set(__self__, "fields", fields)
         if condition is not None:
             pulumi.set(__self__, "condition", condition)
-        if fields is not None:
-            pulumi.set(__self__, "fields", fields)
         if info_type_transformations is not None:
             pulumi.set(__self__, "info_type_transformations", info_type_transformations)
         if primitive_transformation is not None:
             pulumi.set(__self__, "primitive_transformation", primitive_transformation)
+
+    @property
+    @pulumi.getter
+    def fields(self) -> pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]]:
+        """
+        Input field(s) to apply the transformation to.
+        """
+        return pulumi.get(self, "fields")
+
+    @fields.setter
+    def fields(self, value: pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]]):
+        pulumi.set(self, "fields", value)
 
     @property
     @pulumi.getter
@@ -1848,18 +1849,6 @@ class GooglePrivacyDlpV2FieldTransformationArgs:
     @condition.setter
     def condition(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2RecordConditionArgs']]):
         pulumi.set(self, "condition", value)
-
-    @property
-    @pulumi.getter
-    def fields(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]]]:
-        """
-        Required. Input field(s) to apply the transformation to.
-        """
-        return pulumi.get(self, "fields")
-
-    @fields.setter
-    def fields(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]]]):
-        pulumi.set(self, "fields", value)
 
     @property
     @pulumi.getter(name="infoTypeTransformations")
@@ -1985,56 +1974,53 @@ class GooglePrivacyDlpV2FindingLimitsArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2FixedSizeBucketingConfigArgs:
     def __init__(__self__, *,
-                 bucket_size: Optional[pulumi.Input[float]] = None,
-                 lower_bound: Optional[pulumi.Input['GooglePrivacyDlpV2ValueArgs']] = None,
-                 upper_bound: Optional[pulumi.Input['GooglePrivacyDlpV2ValueArgs']] = None):
+                 bucket_size: pulumi.Input[float],
+                 lower_bound: pulumi.Input['GooglePrivacyDlpV2ValueArgs'],
+                 upper_bound: pulumi.Input['GooglePrivacyDlpV2ValueArgs']):
         """
         Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}, i.e if lower_bound = 10 and upper_bound = 20 all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
-        :param pulumi.Input[float] bucket_size: Required. Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
-        :param pulumi.Input['GooglePrivacyDlpV2ValueArgs'] lower_bound: Required. Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
-        :param pulumi.Input['GooglePrivacyDlpV2ValueArgs'] upper_bound: Required. Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
+        :param pulumi.Input[float] bucket_size: Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
+        :param pulumi.Input['GooglePrivacyDlpV2ValueArgs'] lower_bound: Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
+        :param pulumi.Input['GooglePrivacyDlpV2ValueArgs'] upper_bound: Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
         """
-        if bucket_size is not None:
-            pulumi.set(__self__, "bucket_size", bucket_size)
-        if lower_bound is not None:
-            pulumi.set(__self__, "lower_bound", lower_bound)
-        if upper_bound is not None:
-            pulumi.set(__self__, "upper_bound", upper_bound)
+        pulumi.set(__self__, "bucket_size", bucket_size)
+        pulumi.set(__self__, "lower_bound", lower_bound)
+        pulumi.set(__self__, "upper_bound", upper_bound)
 
     @property
     @pulumi.getter(name="bucketSize")
-    def bucket_size(self) -> Optional[pulumi.Input[float]]:
+    def bucket_size(self) -> pulumi.Input[float]:
         """
-        Required. Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
+        Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
         """
         return pulumi.get(self, "bucket_size")
 
     @bucket_size.setter
-    def bucket_size(self, value: Optional[pulumi.Input[float]]):
+    def bucket_size(self, value: pulumi.Input[float]):
         pulumi.set(self, "bucket_size", value)
 
     @property
     @pulumi.getter(name="lowerBound")
-    def lower_bound(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2ValueArgs']]:
+    def lower_bound(self) -> pulumi.Input['GooglePrivacyDlpV2ValueArgs']:
         """
-        Required. Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
+        Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
         """
         return pulumi.get(self, "lower_bound")
 
     @lower_bound.setter
-    def lower_bound(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2ValueArgs']]):
+    def lower_bound(self, value: pulumi.Input['GooglePrivacyDlpV2ValueArgs']):
         pulumi.set(self, "lower_bound", value)
 
     @property
     @pulumi.getter(name="upperBound")
-    def upper_bound(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2ValueArgs']]:
+    def upper_bound(self) -> pulumi.Input['GooglePrivacyDlpV2ValueArgs']:
         """
-        Required. Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
+        Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
         """
         return pulumi.get(self, "upper_bound")
 
     @upper_bound.setter
-    def upper_bound(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2ValueArgs']]):
+    def upper_bound(self, value: pulumi.Input['GooglePrivacyDlpV2ValueArgs']):
         pulumi.set(self, "upper_bound", value)
 
 
@@ -2233,17 +2219,28 @@ class GooglePrivacyDlpV2InfoTypeLimitArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2InfoTypeTransformationArgs:
     def __init__(__self__, *,
-                 info_types: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']]]] = None,
-                 primitive_transformation: Optional[pulumi.Input['GooglePrivacyDlpV2PrimitiveTransformationArgs']] = None):
+                 primitive_transformation: pulumi.Input['GooglePrivacyDlpV2PrimitiveTransformationArgs'],
+                 info_types: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']]]] = None):
         """
         A transformation to apply to text that is identified as a specific info_type.
+        :param pulumi.Input['GooglePrivacyDlpV2PrimitiveTransformationArgs'] primitive_transformation: Primitive transformation to apply to the infoType.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']]] info_types: InfoTypes to apply the transformation to. An empty list will cause this transformation to apply to all findings that correspond to infoTypes that were requested in `InspectConfig`.
-        :param pulumi.Input['GooglePrivacyDlpV2PrimitiveTransformationArgs'] primitive_transformation: Required. Primitive transformation to apply to the infoType.
         """
+        pulumi.set(__self__, "primitive_transformation", primitive_transformation)
         if info_types is not None:
             pulumi.set(__self__, "info_types", info_types)
-        if primitive_transformation is not None:
-            pulumi.set(__self__, "primitive_transformation", primitive_transformation)
+
+    @property
+    @pulumi.getter(name="primitiveTransformation")
+    def primitive_transformation(self) -> pulumi.Input['GooglePrivacyDlpV2PrimitiveTransformationArgs']:
+        """
+        Primitive transformation to apply to the infoType.
+        """
+        return pulumi.get(self, "primitive_transformation")
+
+    @primitive_transformation.setter
+    def primitive_transformation(self, value: pulumi.Input['GooglePrivacyDlpV2PrimitiveTransformationArgs']):
+        pulumi.set(self, "primitive_transformation", value)
 
     @property
     @pulumi.getter(name="infoTypes")
@@ -2257,40 +2254,27 @@ class GooglePrivacyDlpV2InfoTypeTransformationArgs:
     def info_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']]]]):
         pulumi.set(self, "info_types", value)
 
-    @property
-    @pulumi.getter(name="primitiveTransformation")
-    def primitive_transformation(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2PrimitiveTransformationArgs']]:
-        """
-        Required. Primitive transformation to apply to the infoType.
-        """
-        return pulumi.get(self, "primitive_transformation")
-
-    @primitive_transformation.setter
-    def primitive_transformation(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2PrimitiveTransformationArgs']]):
-        pulumi.set(self, "primitive_transformation", value)
-
 
 @pulumi.input_type
 class GooglePrivacyDlpV2InfoTypeTransformationsArgs:
     def __init__(__self__, *,
-                 transformations: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeTransformationArgs']]]] = None):
+                 transformations: pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeTransformationArgs']]]):
         """
         A type of transformation that will scan unstructured text and apply various `PrimitiveTransformation`s to each finding, where the transformation is applied to only values that were identified as a specific info_type.
-        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeTransformationArgs']]] transformations: Required. Transformation for each infoType. Cannot specify more than one for a given infoType.
+        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeTransformationArgs']]] transformations: Transformation for each infoType. Cannot specify more than one for a given infoType.
         """
-        if transformations is not None:
-            pulumi.set(__self__, "transformations", transformations)
+        pulumi.set(__self__, "transformations", transformations)
 
     @property
     @pulumi.getter
-    def transformations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeTransformationArgs']]]]:
+    def transformations(self) -> pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeTransformationArgs']]]:
         """
-        Required. Transformation for each infoType. Cannot specify more than one for a given infoType.
+        Transformation for each infoType. Cannot specify more than one for a given infoType.
         """
         return pulumi.get(self, "transformations")
 
     @transformations.setter
-    def transformations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeTransformationArgs']]]]):
+    def transformations(self, value: pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeTransformationArgs']]]):
         pulumi.set(self, "transformations", value)
 
 
@@ -2634,21 +2618,32 @@ class GooglePrivacyDlpV2KAnonymityConfigArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2KMapEstimationConfigArgs:
     def __init__(__self__, *,
+                 quasi_ids: pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TaggedFieldArgs']]],
                  auxiliary_tables: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2AuxiliaryTableArgs']]]] = None,
-                 quasi_ids: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TaggedFieldArgs']]]] = None,
                  region_code: Optional[pulumi.Input[str]] = None):
         """
         Reidentifiability metric. This corresponds to a risk model similar to what is called "journalist risk" in the literature, except the attack dataset is statistically modeled instead of being perfectly known. This can be done using publicly available data (like the US Census), or using a custom statistical model (indicated as one or several BigQuery tables), or by extrapolating from the distribution of values in the input dataset.
+        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TaggedFieldArgs']]] quasi_ids: Fields considered to be quasi-identifiers. No two columns can have the same tag.
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2AuxiliaryTableArgs']]] auxiliary_tables: Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers column must appear in exactly one column of one auxiliary table.
-        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TaggedFieldArgs']]] quasi_ids: Required. Fields considered to be quasi-identifiers. No two columns can have the same tag.
         :param pulumi.Input[str] region_code: ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code.
         """
+        pulumi.set(__self__, "quasi_ids", quasi_ids)
         if auxiliary_tables is not None:
             pulumi.set(__self__, "auxiliary_tables", auxiliary_tables)
-        if quasi_ids is not None:
-            pulumi.set(__self__, "quasi_ids", quasi_ids)
         if region_code is not None:
             pulumi.set(__self__, "region_code", region_code)
+
+    @property
+    @pulumi.getter(name="quasiIds")
+    def quasi_ids(self) -> pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TaggedFieldArgs']]]:
+        """
+        Fields considered to be quasi-identifiers. No two columns can have the same tag.
+        """
+        return pulumi.get(self, "quasi_ids")
+
+    @quasi_ids.setter
+    def quasi_ids(self, value: pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TaggedFieldArgs']]]):
+        pulumi.set(self, "quasi_ids", value)
 
     @property
     @pulumi.getter(name="auxiliaryTables")
@@ -2661,18 +2656,6 @@ class GooglePrivacyDlpV2KMapEstimationConfigArgs:
     @auxiliary_tables.setter
     def auxiliary_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2AuxiliaryTableArgs']]]]):
         pulumi.set(self, "auxiliary_tables", value)
-
-    @property
-    @pulumi.getter(name="quasiIds")
-    def quasi_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TaggedFieldArgs']]]]:
-        """
-        Required. Fields considered to be quasi-identifiers. No two columns can have the same tag.
-        """
-        return pulumi.get(self, "quasi_ids")
-
-    @quasi_ids.setter
-    def quasi_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2TaggedFieldArgs']]]]):
-        pulumi.set(self, "quasi_ids", value)
 
     @property
     @pulumi.getter(name="regionCode")
@@ -2714,40 +2697,38 @@ class GooglePrivacyDlpV2KindExpressionArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2KmsWrappedCryptoKeyArgs:
     def __init__(__self__, *,
-                 crypto_key_name: Optional[pulumi.Input[str]] = None,
-                 wrapped_key: Optional[pulumi.Input[str]] = None):
+                 crypto_key_name: pulumi.Input[str],
+                 wrapped_key: pulumi.Input[str]):
         """
         Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128/192/256 bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a kms-wrapped crypto key: dlp.kms.encrypt
-        :param pulumi.Input[str] crypto_key_name: Required. The resource name of the KMS CryptoKey to use for unwrapping.
-        :param pulumi.Input[str] wrapped_key: Required. The wrapped data crypto key.
+        :param pulumi.Input[str] crypto_key_name: The resource name of the KMS CryptoKey to use for unwrapping.
+        :param pulumi.Input[str] wrapped_key: The wrapped data crypto key.
         """
-        if crypto_key_name is not None:
-            pulumi.set(__self__, "crypto_key_name", crypto_key_name)
-        if wrapped_key is not None:
-            pulumi.set(__self__, "wrapped_key", wrapped_key)
+        pulumi.set(__self__, "crypto_key_name", crypto_key_name)
+        pulumi.set(__self__, "wrapped_key", wrapped_key)
 
     @property
     @pulumi.getter(name="cryptoKeyName")
-    def crypto_key_name(self) -> Optional[pulumi.Input[str]]:
+    def crypto_key_name(self) -> pulumi.Input[str]:
         """
-        Required. The resource name of the KMS CryptoKey to use for unwrapping.
+        The resource name of the KMS CryptoKey to use for unwrapping.
         """
         return pulumi.get(self, "crypto_key_name")
 
     @crypto_key_name.setter
-    def crypto_key_name(self, value: Optional[pulumi.Input[str]]):
+    def crypto_key_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "crypto_key_name", value)
 
     @property
     @pulumi.getter(name="wrappedKey")
-    def wrapped_key(self) -> Optional[pulumi.Input[str]]:
+    def wrapped_key(self) -> pulumi.Input[str]:
         """
-        Required. The wrapped data crypto key.
+        The wrapped data crypto key.
         """
         return pulumi.get(self, "wrapped_key")
 
     @wrapped_key.setter
-    def wrapped_key(self, value: Optional[pulumi.Input[str]]):
+    def wrapped_key(self, value: pulumi.Input[str]):
         pulumi.set(self, "wrapped_key", value)
 
 
@@ -3391,25 +3372,36 @@ class GooglePrivacyDlpV2PublishToStackdriverArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2QuasiIdArgs:
     def __init__(__self__, *,
+                 field: pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'],
                  custom_tag: Optional[pulumi.Input[str]] = None,
-                 field: Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']] = None,
                  inferred: Optional[pulumi.Input['GoogleProtobufEmptyArgs']] = None,
                  info_type: Optional[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']] = None):
         """
         A column with a semantic tag attached.
+        :param pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'] field: Identifies the column.
         :param pulumi.Input[str] custom_tag: A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
-        :param pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'] field: Required. Identifies the column.
         :param pulumi.Input['GoogleProtobufEmptyArgs'] inferred: If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data
         :param pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs'] info_type: A column can be tagged with a InfoType to use the relevant public dataset as a statistical model of population, if available. We currently support US ZIP codes, region codes, ages and genders. To programmatically obtain the list of supported InfoTypes, use ListInfoTypes with the supported_by=RISK_ANALYSIS filter.
         """
+        pulumi.set(__self__, "field", field)
         if custom_tag is not None:
             pulumi.set(__self__, "custom_tag", custom_tag)
-        if field is not None:
-            pulumi.set(__self__, "field", field)
         if inferred is not None:
             pulumi.set(__self__, "inferred", inferred)
         if info_type is not None:
             pulumi.set(__self__, "info_type", info_type)
+
+    @property
+    @pulumi.getter
+    def field(self) -> pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']:
+        """
+        Identifies the column.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']):
+        pulumi.set(self, "field", value)
 
     @property
     @pulumi.getter(name="customTag")
@@ -3422,18 +3414,6 @@ class GooglePrivacyDlpV2QuasiIdArgs:
     @custom_tag.setter
     def custom_tag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_tag", value)
-
-    @property
-    @pulumi.getter
-    def field(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]:
-        """
-        Required. Identifies the column.
-        """
-        return pulumi.get(self, "field")
-
-    @field.setter
-    def field(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]):
-        pulumi.set(self, "field", value)
 
     @property
     @pulumi.getter
@@ -3817,56 +3797,53 @@ class GooglePrivacyDlpV2ScheduleArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2StatisticalTableArgs:
     def __init__(__self__, *,
-                 quasi_ids: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdentifierFieldArgs']]]] = None,
-                 relative_frequency: Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']] = None,
-                 table: Optional[pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs']] = None):
+                 quasi_ids: pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdentifierFieldArgs']]],
+                 relative_frequency: pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'],
+                 table: pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs']):
         """
         An auxiliary table containing statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).
-        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdentifierFieldArgs']]] quasi_ids: Required. Quasi-identifier columns.
-        :param pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'] relative_frequency: Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
-        :param pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs'] table: Required. Auxiliary table location.
+        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdentifierFieldArgs']]] quasi_ids: Quasi-identifier columns.
+        :param pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'] relative_frequency: The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+        :param pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs'] table: Auxiliary table location.
         """
-        if quasi_ids is not None:
-            pulumi.set(__self__, "quasi_ids", quasi_ids)
-        if relative_frequency is not None:
-            pulumi.set(__self__, "relative_frequency", relative_frequency)
-        if table is not None:
-            pulumi.set(__self__, "table", table)
+        pulumi.set(__self__, "quasi_ids", quasi_ids)
+        pulumi.set(__self__, "relative_frequency", relative_frequency)
+        pulumi.set(__self__, "table", table)
 
     @property
     @pulumi.getter(name="quasiIds")
-    def quasi_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdentifierFieldArgs']]]]:
+    def quasi_ids(self) -> pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdentifierFieldArgs']]]:
         """
-        Required. Quasi-identifier columns.
+        Quasi-identifier columns.
         """
         return pulumi.get(self, "quasi_ids")
 
     @quasi_ids.setter
-    def quasi_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdentifierFieldArgs']]]]):
+    def quasi_ids(self, value: pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2QuasiIdentifierFieldArgs']]]):
         pulumi.set(self, "quasi_ids", value)
 
     @property
     @pulumi.getter(name="relativeFrequency")
-    def relative_frequency(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]:
+    def relative_frequency(self) -> pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']:
         """
-        Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+        The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
         """
         return pulumi.get(self, "relative_frequency")
 
     @relative_frequency.setter
-    def relative_frequency(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]):
+    def relative_frequency(self, value: pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']):
         pulumi.set(self, "relative_frequency", value)
 
     @property
     @pulumi.getter
-    def table(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs']]:
+    def table(self) -> pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs']:
         """
-        Required. Auxiliary table location.
+        Auxiliary table location.
         """
         return pulumi.get(self, "table")
 
     @table.setter
-    def table(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs']]):
+    def table(self, value: pulumi.Input['GooglePrivacyDlpV2BigQueryTableArgs']):
         pulumi.set(self, "table", value)
 
 
@@ -4118,25 +4095,36 @@ class GooglePrivacyDlpV2TableOptionsArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2TaggedFieldArgs:
     def __init__(__self__, *,
+                 field: pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'],
                  custom_tag: Optional[pulumi.Input[str]] = None,
-                 field: Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']] = None,
                  inferred: Optional[pulumi.Input['GoogleProtobufEmptyArgs']] = None,
                  info_type: Optional[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']] = None):
         """
         A column with a semantic tag attached.
+        :param pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'] field: Identifies the column.
         :param pulumi.Input[str] custom_tag: A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
-        :param pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'] field: Required. Identifies the column.
         :param pulumi.Input['GoogleProtobufEmptyArgs'] inferred: If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data
         :param pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs'] info_type: A column can be tagged with a InfoType to use the relevant public dataset as a statistical model of population, if available. We currently support US ZIP codes, region codes, ages and genders. To programmatically obtain the list of supported InfoTypes, use ListInfoTypes with the supported_by=RISK_ANALYSIS filter.
         """
+        pulumi.set(__self__, "field", field)
         if custom_tag is not None:
             pulumi.set(__self__, "custom_tag", custom_tag)
-        if field is not None:
-            pulumi.set(__self__, "field", field)
         if inferred is not None:
             pulumi.set(__self__, "inferred", inferred)
         if info_type is not None:
             pulumi.set(__self__, "info_type", info_type)
+
+    @property
+    @pulumi.getter
+    def field(self) -> pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']:
+        """
+        Identifies the column.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']):
+        pulumi.set(self, "field", value)
 
     @property
     @pulumi.getter(name="customTag")
@@ -4149,18 +4137,6 @@ class GooglePrivacyDlpV2TaggedFieldArgs:
     @custom_tag.setter
     def custom_tag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "custom_tag", value)
-
-    @property
-    @pulumi.getter
-    def field(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]:
-        """
-        Required. Identifies the column.
-        """
-        return pulumi.get(self, "field")
-
-    @field.setter
-    def field(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]):
-        pulumi.set(self, "field", value)
 
     @property
     @pulumi.getter
@@ -4335,24 +4311,23 @@ class GooglePrivacyDlpV2TransformationErrorHandlingArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2TransientCryptoKeyArgs:
     def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None):
+                 name: pulumi.Input[str]):
         """
         Use this to have a random data crypto key generated. It will be discarded after the request finishes.
-        :param pulumi.Input[str] name: Required. Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+        :param pulumi.Input[str] name: Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
         """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
+    def name(self) -> pulumi.Input[str]:
         """
-        Required. Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+        Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
+    def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
 
 
@@ -4399,24 +4374,23 @@ class GooglePrivacyDlpV2TriggerArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2UnwrappedCryptoKeyArgs:
     def __init__(__self__, *,
-                 key: Optional[pulumi.Input[str]] = None):
+                 key: pulumi.Input[str]):
         """
         Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible.
-        :param pulumi.Input[str] key: Required. A 128/192/256 bit key.
+        :param pulumi.Input[str] key: A 128/192/256 bit key.
         """
-        if key is not None:
-            pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "key", key)
 
     @property
     @pulumi.getter
-    def key(self) -> Optional[pulumi.Input[str]]:
+    def key(self) -> pulumi.Input[str]:
         """
-        Required. A 128/192/256 bit key.
+        A 128/192/256 bit key.
         """
         return pulumi.get(self, "key")
 
     @key.setter
-    def key(self, value: Optional[pulumi.Input[str]]):
+    def key(self, value: pulumi.Input[str]):
         pulumi.set(self, "key", value)
 
 

@@ -42,7 +42,7 @@ class GcsSourceResponse(dict):
                  input_uri: str):
         """
         The Google Cloud Storage location for the input content.
-        :param str input_uri: Required. Source data URI. For example, `gs://my_bucket/my_object`.
+        :param str input_uri: Source data URI. For example, `gs://my_bucket/my_object`.
         """
         pulumi.set(__self__, "input_uri", input_uri)
 
@@ -50,7 +50,7 @@ class GcsSourceResponse(dict):
     @pulumi.getter(name="inputUri")
     def input_uri(self) -> str:
         """
-        Required. Source data URI. For example, `gs://my_bucket/my_object`.
+        Source data URI. For example, `gs://my_bucket/my_object`.
         """
         return pulumi.get(self, "input_uri")
 
@@ -81,7 +81,7 @@ class GlossaryInputConfigResponse(dict):
                  gcs_source: 'outputs.GcsSourceResponse'):
         """
         Input configuration for glossaries.
-        :param 'GcsSourceResponse' gcs_source: Required. Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. The format is defined for Google Translation Toolkit and documented in [Use a glossary](https://support.google.com/translatortoolkit/answer/6306379?hl=en).
+        :param 'GcsSourceResponse' gcs_source: Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. The format is defined for Google Translation Toolkit and documented in [Use a glossary](https://support.google.com/translatortoolkit/answer/6306379?hl=en).
         """
         pulumi.set(__self__, "gcs_source", gcs_source)
 
@@ -89,7 +89,7 @@ class GlossaryInputConfigResponse(dict):
     @pulumi.getter(name="gcsSource")
     def gcs_source(self) -> 'outputs.GcsSourceResponse':
         """
-        Required. Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. The format is defined for Google Translation Toolkit and documented in [Use a glossary](https://support.google.com/translatortoolkit/answer/6306379?hl=en).
+        Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. The format is defined for Google Translation Toolkit and documented in [Use a glossary](https://support.google.com/translatortoolkit/answer/6306379?hl=en).
         """
         return pulumi.get(self, "gcs_source")
 
@@ -123,8 +123,8 @@ class LanguageCodePairResponse(dict):
                  target_language_code: str):
         """
         Used with unidirectional glossaries.
-        :param str source_language_code: Required. The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
-        :param str target_language_code: Required. The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+        :param str source_language_code: The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+        :param str target_language_code: The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
         """
         pulumi.set(__self__, "source_language_code", source_language_code)
         pulumi.set(__self__, "target_language_code", target_language_code)
@@ -133,7 +133,7 @@ class LanguageCodePairResponse(dict):
     @pulumi.getter(name="sourceLanguageCode")
     def source_language_code(self) -> str:
         """
-        Required. The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
+        The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
         """
         return pulumi.get(self, "source_language_code")
 
@@ -141,7 +141,7 @@ class LanguageCodePairResponse(dict):
     @pulumi.getter(name="targetLanguageCode")
     def target_language_code(self) -> str:
         """
-        Required. The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
+        The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
         """
         return pulumi.get(self, "target_language_code")
 

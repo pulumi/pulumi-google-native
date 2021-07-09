@@ -1954,8 +1954,8 @@ func (o ApigatewayExprResponseOutput) Title() pulumi.StringOutput {
 
 // Configuration settings for Gateways.
 type ApigatewayGatewayConfig struct {
-	// Required. Backend settings that are applied to all backends of the Gateway.
-	BackendConfig *ApigatewayBackendConfig `pulumi:"backendConfig"`
+	// Backend settings that are applied to all backends of the Gateway.
+	BackendConfig ApigatewayBackendConfig `pulumi:"backendConfig"`
 }
 
 // ApigatewayGatewayConfigInput is an input type that accepts ApigatewayGatewayConfigArgs and ApigatewayGatewayConfigOutput values.
@@ -1971,8 +1971,8 @@ type ApigatewayGatewayConfigInput interface {
 
 // Configuration settings for Gateways.
 type ApigatewayGatewayConfigArgs struct {
-	// Required. Backend settings that are applied to all backends of the Gateway.
-	BackendConfig ApigatewayBackendConfigPtrInput `pulumi:"backendConfig"`
+	// Backend settings that are applied to all backends of the Gateway.
+	BackendConfig ApigatewayBackendConfigInput `pulumi:"backendConfig"`
 }
 
 func (ApigatewayGatewayConfigArgs) ElementType() reflect.Type {
@@ -2053,9 +2053,9 @@ func (o ApigatewayGatewayConfigOutput) ToApigatewayGatewayConfigPtrOutputWithCon
 	}).(ApigatewayGatewayConfigPtrOutput)
 }
 
-// Required. Backend settings that are applied to all backends of the Gateway.
-func (o ApigatewayGatewayConfigOutput) BackendConfig() ApigatewayBackendConfigPtrOutput {
-	return o.ApplyT(func(v ApigatewayGatewayConfig) *ApigatewayBackendConfig { return v.BackendConfig }).(ApigatewayBackendConfigPtrOutput)
+// Backend settings that are applied to all backends of the Gateway.
+func (o ApigatewayGatewayConfigOutput) BackendConfig() ApigatewayBackendConfigOutput {
+	return o.ApplyT(func(v ApigatewayGatewayConfig) ApigatewayBackendConfig { return v.BackendConfig }).(ApigatewayBackendConfigOutput)
 }
 
 type ApigatewayGatewayConfigPtrOutput struct{ *pulumi.OutputState }
@@ -2076,19 +2076,19 @@ func (o ApigatewayGatewayConfigPtrOutput) Elem() ApigatewayGatewayConfigOutput {
 	return o.ApplyT(func(v *ApigatewayGatewayConfig) ApigatewayGatewayConfig { return *v }).(ApigatewayGatewayConfigOutput)
 }
 
-// Required. Backend settings that are applied to all backends of the Gateway.
+// Backend settings that are applied to all backends of the Gateway.
 func (o ApigatewayGatewayConfigPtrOutput) BackendConfig() ApigatewayBackendConfigPtrOutput {
 	return o.ApplyT(func(v *ApigatewayGatewayConfig) *ApigatewayBackendConfig {
 		if v == nil {
 			return nil
 		}
-		return v.BackendConfig
+		return &v.BackendConfig
 	}).(ApigatewayBackendConfigPtrOutput)
 }
 
 // Configuration settings for Gateways.
 type ApigatewayGatewayConfigResponse struct {
-	// Required. Backend settings that are applied to all backends of the Gateway.
+	// Backend settings that are applied to all backends of the Gateway.
 	BackendConfig ApigatewayBackendConfigResponse `pulumi:"backendConfig"`
 }
 
@@ -2105,7 +2105,7 @@ type ApigatewayGatewayConfigResponseInput interface {
 
 // Configuration settings for Gateways.
 type ApigatewayGatewayConfigResponseArgs struct {
-	// Required. Backend settings that are applied to all backends of the Gateway.
+	// Backend settings that are applied to all backends of the Gateway.
 	BackendConfig ApigatewayBackendConfigResponseInput `pulumi:"backendConfig"`
 }
 
@@ -2187,7 +2187,7 @@ func (o ApigatewayGatewayConfigResponseOutput) ToApigatewayGatewayConfigResponse
 	}).(ApigatewayGatewayConfigResponsePtrOutput)
 }
 
-// Required. Backend settings that are applied to all backends of the Gateway.
+// Backend settings that are applied to all backends of the Gateway.
 func (o ApigatewayGatewayConfigResponseOutput) BackendConfig() ApigatewayBackendConfigResponseOutput {
 	return o.ApplyT(func(v ApigatewayGatewayConfigResponse) ApigatewayBackendConfigResponse { return v.BackendConfig }).(ApigatewayBackendConfigResponseOutput)
 }
@@ -2210,7 +2210,7 @@ func (o ApigatewayGatewayConfigResponsePtrOutput) Elem() ApigatewayGatewayConfig
 	return o.ApplyT(func(v *ApigatewayGatewayConfigResponse) ApigatewayGatewayConfigResponse { return *v }).(ApigatewayGatewayConfigResponseOutput)
 }
 
-// Required. Backend settings that are applied to all backends of the Gateway.
+// Backend settings that are applied to all backends of the Gateway.
 func (o ApigatewayGatewayConfigResponsePtrOutput) BackendConfig() ApigatewayBackendConfigResponsePtrOutput {
 	return o.ApplyT(func(v *ApigatewayGatewayConfigResponse) *ApigatewayBackendConfigResponse {
 		if v == nil {

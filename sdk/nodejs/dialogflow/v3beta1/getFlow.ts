@@ -39,7 +39,7 @@ export interface GetFlowResult {
      */
     readonly description: string;
     /**
-     * Required. The human-readable name of the flow.
+     * The human-readable name of the flow.
      */
     readonly displayName: string;
     /**

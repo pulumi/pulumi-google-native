@@ -44,7 +44,7 @@ export class Membership extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Required. Immutable. The `EntityKey` of the member.
+     * Immutable. The `EntityKey` of the member.
      */
     public readonly preferredMemberKey!: pulumi.Output<outputs.cloudidentity.v1.EntityKeyResponse>;
     /**
@@ -74,6 +74,9 @@ export class Membership extends pulumi.CustomResource {
             if ((!args || args.groupId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'groupId'");
             }
+            if ((!args || args.preferredMemberKey === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'preferredMemberKey'");
+            }
             inputs["groupId"] = args ? args.groupId : undefined;
             inputs["preferredMemberKey"] = args ? args.preferredMemberKey : undefined;
             inputs["roles"] = args ? args.roles : undefined;
@@ -102,9 +105,9 @@ export class Membership extends pulumi.CustomResource {
 export interface MembershipArgs {
     groupId: pulumi.Input<string>;
     /**
-     * Required. Immutable. The `EntityKey` of the member.
+     * Immutable. The `EntityKey` of the member.
      */
-    preferredMemberKey?: pulumi.Input<inputs.cloudidentity.v1.EntityKeyArgs>;
+    preferredMemberKey: pulumi.Input<inputs.cloudidentity.v1.EntityKeyArgs>;
     /**
      * The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
      */

@@ -32,7 +32,7 @@ type LookupFolderResult struct {
 	Etag string `pulumi:"etag"`
 	// The resource name of the folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
 	Name string `pulumi:"name"`
-	// Required. The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
+	// The folder's parent's resource name. Updates to the folder's parent must be performed using MoveFolder.
 	Parent string `pulumi:"parent"`
 	// The lifecycle state of the folder. Updates to the state must be performed using DeleteFolder and UndeleteFolder.
 	State string `pulumi:"state"`

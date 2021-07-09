@@ -23,7 +23,7 @@ type Cluster struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+	// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
 	ServeNodes pulumi.IntOutput `pulumi:"serveNodes"`
 	// The current state of the cluster.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -44,6 +44,9 @@ func NewCluster(ctx *pulumi.Context,
 	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.ServeNodes == nil {
+		return nil, errors.New("invalid value for required argument 'ServeNodes'")
 	}
 	var resource Cluster
 	err := ctx.RegisterResource("google-native:bigtableadmin/v2:Cluster", name, args, &resource, opts...)
@@ -75,7 +78,7 @@ type clusterState struct {
 	Location *string `pulumi:"location"`
 	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
 	Name *string `pulumi:"name"`
-	// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+	// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
 	ServeNodes *int `pulumi:"serveNodes"`
 	// The current state of the cluster.
 	State *string `pulumi:"state"`
@@ -90,7 +93,7 @@ type ClusterState struct {
 	Location pulumi.StringPtrInput
 	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
 	Name pulumi.StringPtrInput
-	// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+	// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
 	ServeNodes pulumi.IntPtrInput
 	// The current state of the cluster.
 	State pulumi.StringPtrInput
@@ -112,8 +115,8 @@ type clusterArgs struct {
 	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
-	// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
-	ServeNodes *int `pulumi:"serveNodes"`
+	// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+	ServeNodes int `pulumi:"serveNodes"`
 }
 
 // The set of arguments for constructing a Cluster resource.
@@ -129,8 +132,8 @@ type ClusterArgs struct {
 	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
-	// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
-	ServeNodes pulumi.IntPtrInput
+	// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+	ServeNodes pulumi.IntInput
 }
 
 func (ClusterArgs) ElementType() reflect.Type {

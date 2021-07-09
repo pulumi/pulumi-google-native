@@ -35,7 +35,7 @@ export interface GetTargetServerResult {
      */
     readonly description: string;
     /**
-     * Required. The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
+     * The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
      */
     readonly host: string;
     /**
@@ -43,11 +43,11 @@ export interface GetTargetServerResult {
      */
     readonly isEnabled: boolean;
     /**
-     * Required. The resource id of this target server. Values must match the regular expression 
+     * The resource id of this target server. Values must match the regular expression 
      */
     readonly name: string;
     /**
-     * Required. The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
+     * The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
      */
     readonly port: number;
     /**

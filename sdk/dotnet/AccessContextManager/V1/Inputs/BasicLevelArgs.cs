@@ -21,11 +21,11 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
         [Input("combiningFunction")]
         public Input<Pulumi.GoogleNative.AccessContextManager.V1.BasicLevelCombiningFunction>? CombiningFunction { get; set; }
 
-        [Input("conditions")]
+        [Input("conditions", required: true)]
         private InputList<Inputs.ConditionArgs>? _conditions;
 
         /// <summary>
-        /// Required. A list of requirements for the `AccessLevel` to be granted.
+        /// A list of requirements for the `AccessLevel` to be granted.
         /// </summary>
         public InputList<Inputs.ConditionArgs> Conditions
         {

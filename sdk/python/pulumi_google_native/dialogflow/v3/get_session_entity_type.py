@@ -32,7 +32,7 @@ class GetSessionEntityTypeResult:
     @pulumi.getter
     def entities(self) -> Sequence['outputs.GoogleCloudDialogflowCxV3EntityTypeEntityResponse']:
         """
-        Required. The collection of entities to override or supplement the custom entity type.
+        The collection of entities to override or supplement the custom entity type.
         """
         return pulumi.get(self, "entities")
 
@@ -40,7 +40,7 @@ class GetSessionEntityTypeResult:
     @pulumi.getter(name="entityOverrideMode")
     def entity_override_mode(self) -> str:
         """
-        Required. Indicates whether the additional data should override or supplement the custom entity type definition.
+        Indicates whether the additional data should override or supplement the custom entity type definition.
         """
         return pulumi.get(self, "entity_override_mode")
 
@@ -48,7 +48,7 @@ class GetSessionEntityTypeResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
+        The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
         """
         return pulumi.get(self, "name")
 

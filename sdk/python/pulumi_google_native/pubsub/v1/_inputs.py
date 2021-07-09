@@ -376,17 +376,28 @@ class RetryPolicyArgs:
 @pulumi.input_type
 class SchemaSettingsArgs:
     def __init__(__self__, *,
-                 encoding: Optional[pulumi.Input['SchemaSettingsEncoding']] = None,
-                 schema: Optional[pulumi.Input[str]] = None):
+                 schema: pulumi.Input[str],
+                 encoding: Optional[pulumi.Input['SchemaSettingsEncoding']] = None):
         """
         Settings for validating messages published against a schema.
+        :param pulumi.Input[str] schema: The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
         :param pulumi.Input['SchemaSettingsEncoding'] encoding: The encoding of messages validated against `schema`.
-        :param pulumi.Input[str] schema: Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
         """
+        pulumi.set(__self__, "schema", schema)
         if encoding is not None:
             pulumi.set(__self__, "encoding", encoding)
-        if schema is not None:
-            pulumi.set(__self__, "schema", schema)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> pulumi.Input[str]:
+        """
+        The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: pulumi.Input[str]):
+        pulumi.set(self, "schema", value)
 
     @property
     @pulumi.getter
@@ -399,17 +410,5 @@ class SchemaSettingsArgs:
     @encoding.setter
     def encoding(self, value: Optional[pulumi.Input['SchemaSettingsEncoding']]):
         pulumi.set(self, "encoding", value)
-
-    @property
-    @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The name of the schema that messages published should be validated against. Format is `projects/{project}/schemas/{schema}`. The value of this field will be `_deleted-schema_` if the schema has been deleted.
-        """
-        return pulumi.get(self, "schema")
-
-    @schema.setter
-    def schema(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "schema", value)
 
 

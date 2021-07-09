@@ -16,27 +16,49 @@ __all__ = ['InstructionArgs', 'Instruction']
 @pulumi.input_type
 class InstructionArgs:
     def __init__(__self__, *,
+                 data_type: pulumi.Input['InstructionDataType'],
+                 display_name: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 data_type: Optional[pulumi.Input['InstructionDataType']] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 display_name: Optional[pulumi.Input[str]] = None,
                  pdf_instruction: Optional[pulumi.Input['GoogleCloudDatalabelingV1beta1PdfInstructionArgs']] = None):
         """
         The set of arguments for constructing a Instruction resource.
-        :param pulumi.Input['InstructionDataType'] data_type: Required. The data type of this instruction.
+        :param pulumi.Input['InstructionDataType'] data_type: The data type of this instruction.
+        :param pulumi.Input[str] display_name: The display name of the instruction. Maximum of 64 characters.
         :param pulumi.Input[str] description: Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
-        :param pulumi.Input[str] display_name: Required. The display name of the instruction. Maximum of 64 characters.
         :param pulumi.Input['GoogleCloudDatalabelingV1beta1PdfInstructionArgs'] pdf_instruction: Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
         """
+        pulumi.set(__self__, "data_type", data_type)
+        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "project", project)
-        if data_type is not None:
-            pulumi.set(__self__, "data_type", data_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if pdf_instruction is not None:
             pulumi.set(__self__, "pdf_instruction", pdf_instruction)
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> pulumi.Input['InstructionDataType']:
+        """
+        The data type of this instruction.
+        """
+        return pulumi.get(self, "data_type")
+
+    @data_type.setter
+    def data_type(self, value: pulumi.Input['InstructionDataType']):
+        pulumi.set(self, "data_type", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The display name of the instruction. Maximum of 64 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter
@@ -46,18 +68,6 @@ class InstructionArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="dataType")
-    def data_type(self) -> Optional[pulumi.Input['InstructionDataType']]:
-        """
-        Required. The data type of this instruction.
-        """
-        return pulumi.get(self, "data_type")
-
-    @data_type.setter
-    def data_type(self, value: Optional[pulumi.Input['InstructionDataType']]):
-        pulumi.set(self, "data_type", value)
 
     @property
     @pulumi.getter
@@ -70,18 +80,6 @@ class InstructionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The display name of the instruction. Maximum of 64 characters.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="pdfInstruction")
@@ -112,9 +110,9 @@ class Instruction(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input['InstructionDataType'] data_type: Required. The data type of this instruction.
+        :param pulumi.Input['InstructionDataType'] data_type: The data type of this instruction.
         :param pulumi.Input[str] description: Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
-        :param pulumi.Input[str] display_name: Required. The display name of the instruction. Maximum of 64 characters.
+        :param pulumi.Input[str] display_name: The display name of the instruction. Maximum of 64 characters.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatalabelingV1beta1PdfInstructionArgs']] pdf_instruction: Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
         """
         ...
@@ -158,8 +156,12 @@ class Instruction(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = InstructionArgs.__new__(InstructionArgs)
 
+            if data_type is None and not opts.urn:
+                raise TypeError("Missing required property 'data_type'")
             __props__.__dict__["data_type"] = data_type
             __props__.__dict__["description"] = description
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["pdf_instruction"] = pdf_instruction
             if project is None and not opts.urn:
@@ -221,7 +223,7 @@ class Instruction(pulumi.CustomResource):
     @pulumi.getter(name="dataType")
     def data_type(self) -> pulumi.Output[str]:
         """
-        Required. The data type of this instruction.
+        The data type of this instruction.
         """
         return pulumi.get(self, "data_type")
 
@@ -237,7 +239,7 @@ class Instruction(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Required. The display name of the instruction. Maximum of 64 characters.
+        The display name of the instruction. Maximum of 64 characters.
         """
         return pulumi.get(self, "display_name")
 

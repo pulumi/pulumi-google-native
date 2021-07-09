@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
     public sealed class AudioStreamResponse
     {
         /// <summary>
-        /// Required. Audio bitrate in bits per second. Must be between 1 and 10,000,000.
+        /// Audio bitrate in bits per second. Must be between 1 and 10,000,000.
         /// </summary>
         public readonly int BitrateBps;
         /// <summary>

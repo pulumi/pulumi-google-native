@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1Beta1
     public sealed class GetOrganizationReplayResult
     {
         /// <summary>
-        /// Required. The configuration used for the `Replay`.
+        /// The configuration used for the `Replay`.
         /// </summary>
         public readonly Outputs.GoogleCloudPolicysimulatorV1beta1ReplayConfigResponse Config;
         /// <summary>

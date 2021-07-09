@@ -19,11 +19,11 @@ type Company struct {
 	CareerSiteUri pulumi.StringOutput `pulumi:"careerSiteUri"`
 	// Derived details about the company.
 	DerivedInfo CompanyDerivedInfoResponseOutput `pulumi:"derivedInfo"`
-	// Required. The display name of the company, for example, "Google LLC".
+	// The display name of the company, for example, "Google LLC".
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Optional. Equal Employment Opportunity legal disclaimer text to be associated with all jobs, and typically to be displayed in all roles. The maximum number of allowed characters is 500.
 	EeoText pulumi.StringOutput `pulumi:"eeoText"`
-	// Required. Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
+	// Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
 	ExternalId pulumi.StringOutput `pulumi:"externalId"`
 	// Optional. The street address of the company's main headquarters, which may be different from the job location. The service attempts to geolocate the provided address, and populates a more specific location wherever possible in DerivedInfo.headquarters_location.
 	HeadquartersAddress pulumi.StringOutput `pulumi:"headquartersAddress"`
@@ -50,6 +50,12 @@ func NewCompany(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
+	if args.ExternalId == nil {
+		return nil, errors.New("invalid value for required argument 'ExternalId'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -79,11 +85,11 @@ type companyState struct {
 	CareerSiteUri *string `pulumi:"careerSiteUri"`
 	// Derived details about the company.
 	DerivedInfo *CompanyDerivedInfoResponse `pulumi:"derivedInfo"`
-	// Required. The display name of the company, for example, "Google LLC".
+	// The display name of the company, for example, "Google LLC".
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. Equal Employment Opportunity legal disclaimer text to be associated with all jobs, and typically to be displayed in all roles. The maximum number of allowed characters is 500.
 	EeoText *string `pulumi:"eeoText"`
-	// Required. Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
+	// Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
 	ExternalId *string `pulumi:"externalId"`
 	// Optional. The street address of the company's main headquarters, which may be different from the job location. The service attempts to geolocate the provided address, and populates a more specific location wherever possible in DerivedInfo.headquarters_location.
 	HeadquartersAddress *string `pulumi:"headquartersAddress"`
@@ -108,11 +114,11 @@ type CompanyState struct {
 	CareerSiteUri pulumi.StringPtrInput
 	// Derived details about the company.
 	DerivedInfo CompanyDerivedInfoResponsePtrInput
-	// Required. The display name of the company, for example, "Google LLC".
+	// The display name of the company, for example, "Google LLC".
 	DisplayName pulumi.StringPtrInput
 	// Optional. Equal Employment Opportunity legal disclaimer text to be associated with all jobs, and typically to be displayed in all roles. The maximum number of allowed characters is 500.
 	EeoText pulumi.StringPtrInput
-	// Required. Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
+	// Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
 	ExternalId pulumi.StringPtrInput
 	// Optional. The street address of the company's main headquarters, which may be different from the job location. The service attempts to geolocate the provided address, and populates a more specific location wherever possible in DerivedInfo.headquarters_location.
 	HeadquartersAddress pulumi.StringPtrInput
@@ -139,12 +145,12 @@ func (CompanyState) ElementType() reflect.Type {
 type companyArgs struct {
 	// Optional. The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com".
 	CareerSiteUri *string `pulumi:"careerSiteUri"`
-	// Required. The display name of the company, for example, "Google LLC".
-	DisplayName *string `pulumi:"displayName"`
+	// The display name of the company, for example, "Google LLC".
+	DisplayName string `pulumi:"displayName"`
 	// Optional. Equal Employment Opportunity legal disclaimer text to be associated with all jobs, and typically to be displayed in all roles. The maximum number of allowed characters is 500.
 	EeoText *string `pulumi:"eeoText"`
-	// Required. Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
-	ExternalId *string `pulumi:"externalId"`
+	// Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
+	ExternalId string `pulumi:"externalId"`
 	// Optional. The street address of the company's main headquarters, which may be different from the job location. The service attempts to geolocate the provided address, and populates a more specific location wherever possible in DerivedInfo.headquarters_location.
 	HeadquartersAddress *string `pulumi:"headquartersAddress"`
 	// Optional. Set to true if it is the hiring agency that post jobs for other employers. Defaults to false if not provided.
@@ -166,12 +172,12 @@ type companyArgs struct {
 type CompanyArgs struct {
 	// Optional. The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com".
 	CareerSiteUri pulumi.StringPtrInput
-	// Required. The display name of the company, for example, "Google LLC".
-	DisplayName pulumi.StringPtrInput
+	// The display name of the company, for example, "Google LLC".
+	DisplayName pulumi.StringInput
 	// Optional. Equal Employment Opportunity legal disclaimer text to be associated with all jobs, and typically to be displayed in all roles. The maximum number of allowed characters is 500.
 	EeoText pulumi.StringPtrInput
-	// Required. Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
-	ExternalId pulumi.StringPtrInput
+	// Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
+	ExternalId pulumi.StringInput
 	// Optional. The street address of the company's main headquarters, which may be different from the job location. The service attempts to geolocate the provided address, and populates a more specific location wherever possible in DerivedInfo.headquarters_location.
 	HeadquartersAddress pulumi.StringPtrInput
 	// Optional. Set to true if it is the hiring agency that post jobs for other employers. Defaults to false if not provided.

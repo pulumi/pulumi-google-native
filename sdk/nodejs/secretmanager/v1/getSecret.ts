@@ -45,7 +45,7 @@ export interface GetSecretResult {
      */
     readonly name: string;
     /**
-     * Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
+     * Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
      */
     readonly replication: outputs.secretmanager.v1.ReplicationResponse;
     /**

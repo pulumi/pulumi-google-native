@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
     public sealed class OneTimeScheduleResponse
     {
         /// <summary>
-        /// Required. The desired patch job execution time.
+        /// The desired patch job execution time.
         /// </summary>
         public readonly string ExecuteTime;
 

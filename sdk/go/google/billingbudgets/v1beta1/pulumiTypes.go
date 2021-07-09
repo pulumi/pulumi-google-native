@@ -722,8 +722,8 @@ func (o GoogleCloudBillingBudgetsV1beta1BudgetAmountResponsePtrOutput) Specified
 type GoogleCloudBillingBudgetsV1beta1CustomPeriod struct {
 	// Optional. The end date of the time period. Budgets with elapsed end date won't be processed. If unset, specifies to track all usage incurred since the start_date.
 	EndDate *GoogleTypeDate `pulumi:"endDate"`
-	// Required. The start date must be after January 1, 2017.
-	StartDate *GoogleTypeDate `pulumi:"startDate"`
+	// The start date must be after January 1, 2017.
+	StartDate GoogleTypeDate `pulumi:"startDate"`
 }
 
 // GoogleCloudBillingBudgetsV1beta1CustomPeriodInput is an input type that accepts GoogleCloudBillingBudgetsV1beta1CustomPeriodArgs and GoogleCloudBillingBudgetsV1beta1CustomPeriodOutput values.
@@ -741,8 +741,8 @@ type GoogleCloudBillingBudgetsV1beta1CustomPeriodInput interface {
 type GoogleCloudBillingBudgetsV1beta1CustomPeriodArgs struct {
 	// Optional. The end date of the time period. Budgets with elapsed end date won't be processed. If unset, specifies to track all usage incurred since the start_date.
 	EndDate GoogleTypeDatePtrInput `pulumi:"endDate"`
-	// Required. The start date must be after January 1, 2017.
-	StartDate GoogleTypeDatePtrInput `pulumi:"startDate"`
+	// The start date must be after January 1, 2017.
+	StartDate GoogleTypeDateInput `pulumi:"startDate"`
 }
 
 func (GoogleCloudBillingBudgetsV1beta1CustomPeriodArgs) ElementType() reflect.Type {
@@ -828,9 +828,9 @@ func (o GoogleCloudBillingBudgetsV1beta1CustomPeriodOutput) EndDate() GoogleType
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1CustomPeriod) *GoogleTypeDate { return v.EndDate }).(GoogleTypeDatePtrOutput)
 }
 
-// Required. The start date must be after January 1, 2017.
-func (o GoogleCloudBillingBudgetsV1beta1CustomPeriodOutput) StartDate() GoogleTypeDatePtrOutput {
-	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1CustomPeriod) *GoogleTypeDate { return v.StartDate }).(GoogleTypeDatePtrOutput)
+// The start date must be after January 1, 2017.
+func (o GoogleCloudBillingBudgetsV1beta1CustomPeriodOutput) StartDate() GoogleTypeDateOutput {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1CustomPeriod) GoogleTypeDate { return v.StartDate }).(GoogleTypeDateOutput)
 }
 
 type GoogleCloudBillingBudgetsV1beta1CustomPeriodPtrOutput struct{ *pulumi.OutputState }
@@ -863,13 +863,13 @@ func (o GoogleCloudBillingBudgetsV1beta1CustomPeriodPtrOutput) EndDate() GoogleT
 	}).(GoogleTypeDatePtrOutput)
 }
 
-// Required. The start date must be after January 1, 2017.
+// The start date must be after January 1, 2017.
 func (o GoogleCloudBillingBudgetsV1beta1CustomPeriodPtrOutput) StartDate() GoogleTypeDatePtrOutput {
 	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1CustomPeriod) *GoogleTypeDate {
 		if v == nil {
 			return nil
 		}
-		return v.StartDate
+		return &v.StartDate
 	}).(GoogleTypeDatePtrOutput)
 }
 
@@ -877,7 +877,7 @@ func (o GoogleCloudBillingBudgetsV1beta1CustomPeriodPtrOutput) StartDate() Googl
 type GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse struct {
 	// Optional. The end date of the time period. Budgets with elapsed end date won't be processed. If unset, specifies to track all usage incurred since the start_date.
 	EndDate GoogleTypeDateResponse `pulumi:"endDate"`
-	// Required. The start date must be after January 1, 2017.
+	// The start date must be after January 1, 2017.
 	StartDate GoogleTypeDateResponse `pulumi:"startDate"`
 }
 
@@ -896,7 +896,7 @@ type GoogleCloudBillingBudgetsV1beta1CustomPeriodResponseInput interface {
 type GoogleCloudBillingBudgetsV1beta1CustomPeriodResponseArgs struct {
 	// Optional. The end date of the time period. Budgets with elapsed end date won't be processed. If unset, specifies to track all usage incurred since the start_date.
 	EndDate GoogleTypeDateResponseInput `pulumi:"endDate"`
-	// Required. The start date must be after January 1, 2017.
+	// The start date must be after January 1, 2017.
 	StartDate GoogleTypeDateResponseInput `pulumi:"startDate"`
 }
 
@@ -983,7 +983,7 @@ func (o GoogleCloudBillingBudgetsV1beta1CustomPeriodResponseOutput) EndDate() Go
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse) GoogleTypeDateResponse { return v.EndDate }).(GoogleTypeDateResponseOutput)
 }
 
-// Required. The start date must be after January 1, 2017.
+// The start date must be after January 1, 2017.
 func (o GoogleCloudBillingBudgetsV1beta1CustomPeriodResponseOutput) StartDate() GoogleTypeDateResponseOutput {
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse) GoogleTypeDateResponse {
 		return v.StartDate
@@ -1020,7 +1020,7 @@ func (o GoogleCloudBillingBudgetsV1beta1CustomPeriodResponsePtrOutput) EndDate()
 	}).(GoogleTypeDateResponsePtrOutput)
 }
 
-// Required. The start date must be after January 1, 2017.
+// The start date must be after January 1, 2017.
 func (o GoogleCloudBillingBudgetsV1beta1CustomPeriodResponsePtrOutput) StartDate() GoogleTypeDateResponsePtrOutput {
 	return o.ApplyT(func(v *GoogleCloudBillingBudgetsV1beta1CustomPeriodResponse) *GoogleTypeDateResponse {
 		if v == nil {
@@ -1808,8 +1808,8 @@ func (o GoogleCloudBillingBudgetsV1beta1LastPeriodAmountResponsePtrOutput) Elem(
 type GoogleCloudBillingBudgetsV1beta1ThresholdRule struct {
 	// Optional. The type of basis used to determine if spend has passed the threshold. Behavior defaults to CURRENT_SPEND if not set.
 	SpendBasis *string `pulumi:"spendBasis"`
-	// Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
-	ThresholdPercent *float64 `pulumi:"thresholdPercent"`
+	// Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
+	ThresholdPercent float64 `pulumi:"thresholdPercent"`
 }
 
 // GoogleCloudBillingBudgetsV1beta1ThresholdRuleInput is an input type that accepts GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs and GoogleCloudBillingBudgetsV1beta1ThresholdRuleOutput values.
@@ -1827,8 +1827,8 @@ type GoogleCloudBillingBudgetsV1beta1ThresholdRuleInput interface {
 type GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs struct {
 	// Optional. The type of basis used to determine if spend has passed the threshold. Behavior defaults to CURRENT_SPEND if not set.
 	SpendBasis *GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasis `pulumi:"spendBasis"`
-	// Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
-	ThresholdPercent pulumi.Float64PtrInput `pulumi:"thresholdPercent"`
+	// Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
+	ThresholdPercent pulumi.Float64Input `pulumi:"thresholdPercent"`
 }
 
 func (GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs) ElementType() reflect.Type {
@@ -1888,9 +1888,9 @@ func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleOutput) SpendBasis() pulumi
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1ThresholdRule) *string { return v.SpendBasis }).(pulumi.StringPtrOutput)
 }
 
-// Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
-func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleOutput) ThresholdPercent() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1ThresholdRule) *float64 { return v.ThresholdPercent }).(pulumi.Float64PtrOutput)
+// Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
+func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleOutput) ThresholdPercent() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1ThresholdRule) float64 { return v.ThresholdPercent }).(pulumi.Float64Output)
 }
 
 type GoogleCloudBillingBudgetsV1beta1ThresholdRuleArrayOutput struct{ *pulumi.OutputState }
@@ -1917,7 +1917,7 @@ func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleArrayOutput) Index(i pulumi
 type GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse struct {
 	// Optional. The type of basis used to determine if spend has passed the threshold. Behavior defaults to CURRENT_SPEND if not set.
 	SpendBasis string `pulumi:"spendBasis"`
-	// Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
+	// Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
 	ThresholdPercent float64 `pulumi:"thresholdPercent"`
 }
 
@@ -1936,7 +1936,7 @@ type GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponseInput interface {
 type GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponseArgs struct {
 	// Optional. The type of basis used to determine if spend has passed the threshold. Behavior defaults to CURRENT_SPEND if not set.
 	SpendBasis pulumi.StringInput `pulumi:"spendBasis"`
-	// Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
+	// Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
 	ThresholdPercent pulumi.Float64Input `pulumi:"thresholdPercent"`
 }
 
@@ -1997,7 +1997,7 @@ func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponseOutput) SpendBasis(
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse) string { return v.SpendBasis }).(pulumi.StringOutput)
 }
 
-// Required. Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
+// Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
 func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponseOutput) ThresholdPercent() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse) float64 { return v.ThresholdPercent }).(pulumi.Float64Output)
 }

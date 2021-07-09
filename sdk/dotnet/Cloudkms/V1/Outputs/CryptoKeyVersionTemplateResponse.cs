@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1.Outputs
     public sealed class CryptoKeyVersionTemplateResponse
     {
         /// <summary>
-        /// Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
+        /// Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
         /// </summary>
         public readonly string Algorithm;
         /// <summary>

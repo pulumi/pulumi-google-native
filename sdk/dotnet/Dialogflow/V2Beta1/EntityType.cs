@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public Output<string> AutoExpansionMode { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The name of the entity type.
+        /// The name of the entity type.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public Output<ImmutableArray<Outputs.GoogleCloudDialogflowV2beta1EntityTypeEntityResponse>> Entities { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Indicates the kind of entity type.
+        /// Indicates the kind of entity type.
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -103,10 +103,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public Input<Pulumi.GoogleNative.Dialogflow.V2Beta1.EntityTypeAutoExpansionMode>? AutoExpansionMode { get; set; }
 
         /// <summary>
-        /// Required. The name of the entity type.
+        /// The name of the entity type.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
         /// Optional. Enables fuzzy entity extraction during classification.
@@ -127,10 +127,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         }
 
         /// <summary>
-        /// Required. Indicates the kind of entity type.
+        /// Indicates the kind of entity type.
         /// </summary>
-        [Input("kind")]
-        public Input<Pulumi.GoogleNative.Dialogflow.V2Beta1.EntityTypeKind>? Kind { get; set; }
+        [Input("kind", required: true)]
+        public Input<Pulumi.GoogleNative.Dialogflow.V2Beta1.EntityTypeKind> Kind { get; set; } = null!;
 
         [Input("languageCode")]
         public Input<string>? LanguageCode { get; set; }

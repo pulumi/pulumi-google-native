@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Testing.V1.Outputs
     public sealed class ClientInfoDetailResponse
     {
         /// <summary>
-        /// Required. The key of detailed client information.
+        /// The key of detailed client information.
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// Required. The value of detailed client information.
+        /// The value of detailed client information.
         /// </summary>
         public readonly string Value;
 

@@ -27,9 +27,9 @@ type Instance struct {
 	Host pulumi.StringOutput `pulumi:"host"`
 	// Time the instance was last modified in milliseconds since epoch.
 	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
-	// Required. Compute Engine location where the instance resides.
+	// Compute Engine location where the instance resides.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+	// Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
 	PeeringCidrRange pulumi.StringOutput `pulumi:"peeringCidrRange"`
@@ -46,6 +46,12 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -83,9 +89,9 @@ type instanceState struct {
 	Host *string `pulumi:"host"`
 	// Time the instance was last modified in milliseconds since epoch.
 	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// Required. Compute Engine location where the instance resides.
+	// Compute Engine location where the instance resides.
 	Location *string `pulumi:"location"`
-	// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+	// Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
 	Name *string `pulumi:"name"`
 	// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
 	PeeringCidrRange *string `pulumi:"peeringCidrRange"`
@@ -108,9 +114,9 @@ type InstanceState struct {
 	Host pulumi.StringPtrInput
 	// Time the instance was last modified in milliseconds since epoch.
 	LastModifiedAt pulumi.StringPtrInput
-	// Required. Compute Engine location where the instance resides.
+	// Compute Engine location where the instance resides.
 	Location pulumi.StringPtrInput
-	// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+	// Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
 	Name pulumi.StringPtrInput
 	// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
 	PeeringCidrRange pulumi.StringPtrInput
@@ -132,11 +138,11 @@ type instanceArgs struct {
 	// Optional. Display name for the instance.
 	DisplayName  *string `pulumi:"displayName"`
 	Environments *string `pulumi:"environments"`
-	// Required. Compute Engine location where the instance resides.
-	Location *string `pulumi:"location"`
-	// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
-	Name           *string `pulumi:"name"`
-	OrganizationId string  `pulumi:"organizationId"`
+	// Compute Engine location where the instance resides.
+	Location string `pulumi:"location"`
+	// Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+	Name           string `pulumi:"name"`
+	OrganizationId string `pulumi:"organizationId"`
 	// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
 	PeeringCidrRange *string `pulumi:"peeringCidrRange"`
 }
@@ -150,10 +156,10 @@ type InstanceArgs struct {
 	// Optional. Display name for the instance.
 	DisplayName  pulumi.StringPtrInput
 	Environments pulumi.StringPtrInput
-	// Required. Compute Engine location where the instance resides.
-	Location pulumi.StringPtrInput
-	// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
-	Name           pulumi.StringPtrInput
+	// Compute Engine location where the instance resides.
+	Location pulumi.StringInput
+	// Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+	Name           pulumi.StringInput
 	OrganizationId pulumi.StringInput
 	// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
 	PeeringCidrRange *InstancePeeringCidrRange

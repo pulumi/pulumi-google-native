@@ -15,13 +15,13 @@ import (
 type Registration struct {
 	pulumi.CustomResourceState
 
-	// Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
+	// Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
 	ContactSettings ContactSettingsResponseOutput `pulumi:"contactSettings"`
 	// The creation timestamp of the `Registration` resource.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
 	DnsSettings DnsSettingsResponseOutput `pulumi:"dnsSettings"`
-	// Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
+	// Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
 	// The expiration timestamp of the `Registration`.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
@@ -48,11 +48,20 @@ func NewRegistration(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ContactSettings == nil {
+		return nil, errors.New("invalid value for required argument 'ContactSettings'")
+	}
+	if args.DomainName == nil {
+		return nil, errors.New("invalid value for required argument 'DomainName'")
+	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.YearlyPrice == nil {
+		return nil, errors.New("invalid value for required argument 'YearlyPrice'")
 	}
 	var resource Registration
 	err := ctx.RegisterResource("google-native:domains/v1beta1:Registration", name, args, &resource, opts...)
@@ -76,13 +85,13 @@ func GetRegistration(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Registration resources.
 type registrationState struct {
-	// Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
+	// Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
 	ContactSettings *ContactSettingsResponse `pulumi:"contactSettings"`
 	// The creation timestamp of the `Registration` resource.
 	CreateTime *string `pulumi:"createTime"`
 	// Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
 	DnsSettings *DnsSettingsResponse `pulumi:"dnsSettings"`
-	// Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
+	// Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
 	DomainName *string `pulumi:"domainName"`
 	// The expiration timestamp of the `Registration`.
 	ExpireTime *string `pulumi:"expireTime"`
@@ -103,13 +112,13 @@ type registrationState struct {
 }
 
 type RegistrationState struct {
-	// Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
+	// Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
 	ContactSettings ContactSettingsResponsePtrInput
 	// The creation timestamp of the `Registration` resource.
 	CreateTime pulumi.StringPtrInput
 	// Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
 	DnsSettings DnsSettingsResponsePtrInput
-	// Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
+	// Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
 	DomainName pulumi.StringPtrInput
 	// The expiration timestamp of the `Registration`.
 	ExpireTime pulumi.StringPtrInput
@@ -136,12 +145,12 @@ func (RegistrationState) ElementType() reflect.Type {
 type registrationArgs struct {
 	// The list of contact notices that the caller acknowledges. The notices needed here depend on the values specified in `registration.contact_settings`.
 	ContactNotices []string `pulumi:"contactNotices"`
-	// Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
-	ContactSettings *ContactSettings `pulumi:"contactSettings"`
+	// Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
+	ContactSettings ContactSettings `pulumi:"contactSettings"`
 	// Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
 	DnsSettings *DnsSettings `pulumi:"dnsSettings"`
-	// Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
-	DomainName *string `pulumi:"domainName"`
+	// Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
+	DomainName string `pulumi:"domainName"`
 	// The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement.
 	DomainNotices []string `pulumi:"domainNotices"`
 	// Set of labels associated with the `Registration`.
@@ -152,20 +161,20 @@ type registrationArgs struct {
 	Project            string              `pulumi:"project"`
 	// When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
 	ValidateOnly *bool `pulumi:"validateOnly"`
-	// Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
-	YearlyPrice *Money `pulumi:"yearlyPrice"`
+	// Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
+	YearlyPrice Money `pulumi:"yearlyPrice"`
 }
 
 // The set of arguments for constructing a Registration resource.
 type RegistrationArgs struct {
 	// The list of contact notices that the caller acknowledges. The notices needed here depend on the values specified in `registration.contact_settings`.
 	ContactNotices RegistrationContactNoticesItemArrayInput
-	// Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
-	ContactSettings ContactSettingsPtrInput
+	// Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
+	ContactSettings ContactSettingsInput
 	// Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
 	DnsSettings DnsSettingsPtrInput
-	// Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
-	DomainName pulumi.StringPtrInput
+	// Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
+	DomainName pulumi.StringInput
 	// The list of domain notices that you acknowledge. Call `RetrieveRegisterParameters` to see the notices that need acknowledgement.
 	DomainNotices RegistrationDomainNoticesItemArrayInput
 	// Set of labels associated with the `Registration`.
@@ -176,8 +185,8 @@ type RegistrationArgs struct {
 	Project            pulumi.StringInput
 	// When true, only validation will be performed, without actually registering the domain. Follows: https://cloud.google.com/apis/design/design_patterns#request_validation
 	ValidateOnly pulumi.BoolPtrInput
-	// Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
-	YearlyPrice MoneyPtrInput
+	// Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls.
+	YearlyPrice MoneyInput
 }
 
 func (RegistrationArgs) ElementType() reflect.Type {

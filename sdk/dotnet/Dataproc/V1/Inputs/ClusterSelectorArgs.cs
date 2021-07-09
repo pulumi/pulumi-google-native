@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// </summary>
     public sealed class ClusterSelectorArgs : Pulumi.ResourceArgs
     {
-        [Input("clusterLabels")]
+        [Input("clusterLabels", required: true)]
         private InputMap<string>? _clusterLabels;
 
         /// <summary>
-        /// Required. The cluster labels. Cluster must have all labels to match.
+        /// The cluster labels. Cluster must have all labels to match.
         /// </summary>
         public InputMap<string> ClusterLabels
         {

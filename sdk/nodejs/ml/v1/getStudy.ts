@@ -47,7 +47,7 @@ export interface GetStudyResult {
      */
     readonly state: string;
     /**
-     * Required. Configuration of the study.
+     * Configuration of the study.
      */
     readonly studyConfig: outputs.ml.v1.GoogleCloudMlV1__StudyConfigResponse;
 }

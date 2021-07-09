@@ -41,7 +41,7 @@ export interface GetRoutineResult {
      */
     readonly creationTime: string;
     /**
-     * Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
+     * The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
      */
     readonly definitionBody: string;
     /**
@@ -77,11 +77,11 @@ export interface GetRoutineResult {
      */
     readonly returnType: outputs.bigquery.v2.StandardSqlDataTypeResponse;
     /**
-     * Required. Reference describing the ID of this routine.
+     * Reference describing the ID of this routine.
      */
     readonly routineReference: outputs.bigquery.v2.RoutineReferenceResponse;
     /**
-     * Required. The type of routine.
+     * The type of routine.
      */
     readonly routineType: string;
 }

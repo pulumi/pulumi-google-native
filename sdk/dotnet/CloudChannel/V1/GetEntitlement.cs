@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+        /// The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
         /// </summary>
         public readonly string Offer;
         /// <summary>

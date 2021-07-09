@@ -16,16 +16,18 @@ __all__ = ['JobArgs', 'Job']
 @pulumi.input_type
 class JobArgs:
     def __init__(__self__, *,
+                 company: pulumi.Input[str],
+                 description: pulumi.Input[str],
                  project: pulumi.Input[str],
+                 requisition_id: pulumi.Input[str],
                  tenant_id: pulumi.Input[str],
+                 title: pulumi.Input[str],
                  addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  application_info: Optional[pulumi.Input['ApplicationInfoArgs']] = None,
-                 company: Optional[pulumi.Input[str]] = None,
                  compensation_info: Optional[pulumi.Input['CompensationInfoArgs']] = None,
                  custom_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  degree_types: Optional[pulumi.Input[Sequence[pulumi.Input['JobDegreeTypesItem']]]] = None,
                  department: Optional[pulumi.Input[str]] = None,
-                 description: Optional[pulumi.Input[str]] = None,
                  employment_types: Optional[pulumi.Input[Sequence[pulumi.Input['JobEmploymentTypesItem']]]] = None,
                  incentives: Optional[pulumi.Input[str]] = None,
                  job_benefits: Optional[pulumi.Input[Sequence[pulumi.Input['JobJobBenefitsItem']]]] = None,
@@ -40,19 +42,19 @@ class JobArgs:
                  processing_options: Optional[pulumi.Input['ProcessingOptionsArgs']] = None,
                  promotion_value: Optional[pulumi.Input[int]] = None,
                  qualifications: Optional[pulumi.Input[str]] = None,
-                 requisition_id: Optional[pulumi.Input[str]] = None,
-                 responsibilities: Optional[pulumi.Input[str]] = None,
-                 title: Optional[pulumi.Input[str]] = None):
+                 responsibilities: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Job resource.
+        :param pulumi.Input[str] company: The resource name of the company listing the job. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}". For example, "projects/foo/tenants/bar/companies/baz".
+        :param pulumi.Input[str] description: The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
+        :param pulumi.Input[str] requisition_id: The requisition ID, also referred to as the posting ID, is assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job isn't allowed to be created if there is another job with the same company, language_code and requisition_id. The maximum number of allowed characters is 255.
+        :param pulumi.Input[str] title: The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: Strongly recommended for the best service experience. Location(s) where the employer is looking to hire for this job posting. Specifying the full street address(es) of the hiring location enables better API results, especially job searches by commute time. At most 50 locations are allowed for best search performance. If a job has more locations, it is suggested to split it into multiple jobs with unique requisition_ids (e.g. 'ReqA' becomes 'ReqA-1', 'ReqA-2', and so on.) as multiple jobs with the same company, language_code and requisition_id are not allowed. If the original requisition_id must be preserved, a custom field should be used for storage. It is also suggested to group the locations that close to each other in the same job for better search experience. Jobs with multiple addresses must have their addresses with the same LocationType to allow location filtering to work properly. (For example, a Job with addresses "1600 Amphitheatre Parkway, Mountain View, CA, USA" and "London, UK" may not have location filters applied correctly at search time since the first is a LocationType.STREET_ADDRESS and the second is a LocationType.LOCALITY.) If a job needs to have multiple addresses, it is suggested to split it into multiple jobs with same LocationTypes. The maximum number of allowed characters is 500.
         :param pulumi.Input['ApplicationInfoArgs'] application_info: Job application information.
-        :param pulumi.Input[str] company: Required. The resource name of the company listing the job. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}". For example, "projects/foo/tenants/bar/companies/baz".
         :param pulumi.Input['CompensationInfoArgs'] compensation_info: Job compensation information (a.k.a. "pay rate") i.e., the compensation that will paid to the employee.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
         :param pulumi.Input[Sequence[pulumi.Input['JobDegreeTypesItem']]] degree_types: The desired education degrees for the job, such as Bachelors, Masters.
         :param pulumi.Input[str] department: The department or functional area within the company with the open position. The maximum number of allowed characters is 255.
-        :param pulumi.Input[str] description: Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
         :param pulumi.Input[Sequence[pulumi.Input['JobEmploymentTypesItem']]] employment_types: The employment type(s) of a job, for example, full time or part time.
         :param pulumi.Input[str] incentives: A description of bonus, commission, and other compensation incentives associated with the job not including salary or pay. The maximum number of allowed characters is 10,000.
         :param pulumi.Input[Sequence[pulumi.Input['JobJobBenefitsItem']]] job_benefits: The benefits included with the job.
@@ -67,18 +69,18 @@ class JobArgs:
         :param pulumi.Input['ProcessingOptionsArgs'] processing_options: Options for job processing.
         :param pulumi.Input[int] promotion_value: A promotion value of the job, as determined by the client. The value determines the sort order of the jobs returned when searching for jobs using the featured jobs search call, with higher promotional values being returned first and ties being resolved by relevance sort. Only the jobs with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated as 0.
         :param pulumi.Input[str] qualifications: A description of the qualifications required to perform the job. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
-        :param pulumi.Input[str] requisition_id: Required. The requisition ID, also referred to as the posting ID, is assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job isn't allowed to be created if there is another job with the same company, language_code and requisition_id. The maximum number of allowed characters is 255.
         :param pulumi.Input[str] responsibilities: A description of job responsibilities. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
-        :param pulumi.Input[str] title: Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
         """
+        pulumi.set(__self__, "company", company)
+        pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "requisition_id", requisition_id)
         pulumi.set(__self__, "tenant_id", tenant_id)
+        pulumi.set(__self__, "title", title)
         if addresses is not None:
             pulumi.set(__self__, "addresses", addresses)
         if application_info is not None:
             pulumi.set(__self__, "application_info", application_info)
-        if company is not None:
-            pulumi.set(__self__, "company", company)
         if compensation_info is not None:
             pulumi.set(__self__, "compensation_info", compensation_info)
         if custom_attributes is not None:
@@ -87,8 +89,6 @@ class JobArgs:
             pulumi.set(__self__, "degree_types", degree_types)
         if department is not None:
             pulumi.set(__self__, "department", department)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
         if employment_types is not None:
             pulumi.set(__self__, "employment_types", employment_types)
         if incentives is not None:
@@ -117,12 +117,32 @@ class JobArgs:
             pulumi.set(__self__, "promotion_value", promotion_value)
         if qualifications is not None:
             pulumi.set(__self__, "qualifications", qualifications)
-        if requisition_id is not None:
-            pulumi.set(__self__, "requisition_id", requisition_id)
         if responsibilities is not None:
             pulumi.set(__self__, "responsibilities", responsibilities)
-        if title is not None:
-            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def company(self) -> pulumi.Input[str]:
+        """
+        The resource name of the company listing the job. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}". For example, "projects/foo/tenants/bar/companies/baz".
+        """
+        return pulumi.get(self, "company")
+
+    @company.setter
+    def company(self, value: pulumi.Input[str]):
+        pulumi.set(self, "company", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> pulumi.Input[str]:
+        """
+        The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: pulumi.Input[str]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter
@@ -134,6 +154,18 @@ class JobArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="requisitionId")
+    def requisition_id(self) -> pulumi.Input[str]:
+        """
+        The requisition ID, also referred to as the posting ID, is assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job isn't allowed to be created if there is another job with the same company, language_code and requisition_id. The maximum number of allowed characters is 255.
+        """
+        return pulumi.get(self, "requisition_id")
+
+    @requisition_id.setter
+    def requisition_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "requisition_id", value)
+
+    @property
     @pulumi.getter(name="tenantId")
     def tenant_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "tenant_id")
@@ -141,6 +173,18 @@ class JobArgs:
     @tenant_id.setter
     def tenant_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "tenant_id", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
 
     @property
     @pulumi.getter
@@ -165,18 +209,6 @@ class JobArgs:
     @application_info.setter
     def application_info(self, value: Optional[pulumi.Input['ApplicationInfoArgs']]):
         pulumi.set(self, "application_info", value)
-
-    @property
-    @pulumi.getter
-    def company(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The resource name of the company listing the job. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}". For example, "projects/foo/tenants/bar/companies/baz".
-        """
-        return pulumi.get(self, "company")
-
-    @company.setter
-    def company(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "company", value)
 
     @property
     @pulumi.getter(name="compensationInfo")
@@ -225,18 +257,6 @@ class JobArgs:
     @department.setter
     def department(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "department", value)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter(name="employmentTypes")
@@ -407,18 +427,6 @@ class JobArgs:
         pulumi.set(self, "qualifications", value)
 
     @property
-    @pulumi.getter(name="requisitionId")
-    def requisition_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The requisition ID, also referred to as the posting ID, is assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job isn't allowed to be created if there is another job with the same company, language_code and requisition_id. The maximum number of allowed characters is 255.
-        """
-        return pulumi.get(self, "requisition_id")
-
-    @requisition_id.setter
-    def requisition_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "requisition_id", value)
-
-    @property
     @pulumi.getter
     def responsibilities(self) -> Optional[pulumi.Input[str]]:
         """
@@ -429,18 +437,6 @@ class JobArgs:
     @responsibilities.setter
     def responsibilities(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "responsibilities", value)
-
-    @property
-    @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
-        """
-        return pulumi.get(self, "title")
-
-    @title.setter
-    def title(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "title", value)
 
 
 class Job(pulumi.CustomResource):
@@ -483,12 +479,12 @@ class Job(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] addresses: Strongly recommended for the best service experience. Location(s) where the employer is looking to hire for this job posting. Specifying the full street address(es) of the hiring location enables better API results, especially job searches by commute time. At most 50 locations are allowed for best search performance. If a job has more locations, it is suggested to split it into multiple jobs with unique requisition_ids (e.g. 'ReqA' becomes 'ReqA-1', 'ReqA-2', and so on.) as multiple jobs with the same company, language_code and requisition_id are not allowed. If the original requisition_id must be preserved, a custom field should be used for storage. It is also suggested to group the locations that close to each other in the same job for better search experience. Jobs with multiple addresses must have their addresses with the same LocationType to allow location filtering to work properly. (For example, a Job with addresses "1600 Amphitheatre Parkway, Mountain View, CA, USA" and "London, UK" may not have location filters applied correctly at search time since the first is a LocationType.STREET_ADDRESS and the second is a LocationType.LOCALITY.) If a job needs to have multiple addresses, it is suggested to split it into multiple jobs with same LocationTypes. The maximum number of allowed characters is 500.
         :param pulumi.Input[pulumi.InputType['ApplicationInfoArgs']] application_info: Job application information.
-        :param pulumi.Input[str] company: Required. The resource name of the company listing the job. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}". For example, "projects/foo/tenants/bar/companies/baz".
+        :param pulumi.Input[str] company: The resource name of the company listing the job. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}". For example, "projects/foo/tenants/bar/companies/baz".
         :param pulumi.Input[pulumi.InputType['CompensationInfoArgs']] compensation_info: Job compensation information (a.k.a. "pay rate") i.e., the compensation that will paid to the employee.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] custom_attributes: A map of fields to hold both filterable and non-filterable custom job attributes that are not covered by the provided structured fields. The keys of the map are strings up to 64 bytes and must match the pattern: a-zA-Z*. For example, key0LikeThis or KEY_1_LIKE_THIS. At most 100 filterable and at most 100 unfilterable keys are supported. For filterable `string_values`, across all keys at most 200 values are allowed, with each string no more than 255 characters. For unfilterable `string_values`, the maximum total size of `string_values` across all keys is 50KB.
         :param pulumi.Input[Sequence[pulumi.Input['JobDegreeTypesItem']]] degree_types: The desired education degrees for the job, such as Bachelors, Masters.
         :param pulumi.Input[str] department: The department or functional area within the company with the open position. The maximum number of allowed characters is 255.
-        :param pulumi.Input[str] description: Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
+        :param pulumi.Input[str] description: The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
         :param pulumi.Input[Sequence[pulumi.Input['JobEmploymentTypesItem']]] employment_types: The employment type(s) of a job, for example, full time or part time.
         :param pulumi.Input[str] incentives: A description of bonus, commission, and other compensation incentives associated with the job not including salary or pay. The maximum number of allowed characters is 10,000.
         :param pulumi.Input[Sequence[pulumi.Input['JobJobBenefitsItem']]] job_benefits: The benefits included with the job.
@@ -503,9 +499,9 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ProcessingOptionsArgs']] processing_options: Options for job processing.
         :param pulumi.Input[int] promotion_value: A promotion value of the job, as determined by the client. The value determines the sort order of the jobs returned when searching for jobs using the featured jobs search call, with higher promotional values being returned first and ties being resolved by relevance sort. Only the jobs with a promotionValue >0 are returned in a FEATURED_JOB_SEARCH. Default value is 0, and negative values are treated as 0.
         :param pulumi.Input[str] qualifications: A description of the qualifications required to perform the job. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
-        :param pulumi.Input[str] requisition_id: Required. The requisition ID, also referred to as the posting ID, is assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job isn't allowed to be created if there is another job with the same company, language_code and requisition_id. The maximum number of allowed characters is 255.
+        :param pulumi.Input[str] requisition_id: The requisition ID, also referred to as the posting ID, is assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job isn't allowed to be created if there is another job with the same company, language_code and requisition_id. The maximum number of allowed characters is 255.
         :param pulumi.Input[str] responsibilities: A description of job responsibilities. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
-        :param pulumi.Input[str] title: Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
+        :param pulumi.Input[str] title: The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
         """
         ...
     @overload
@@ -572,11 +568,15 @@ class Job(pulumi.CustomResource):
 
             __props__.__dict__["addresses"] = addresses
             __props__.__dict__["application_info"] = application_info
+            if company is None and not opts.urn:
+                raise TypeError("Missing required property 'company'")
             __props__.__dict__["company"] = company
             __props__.__dict__["compensation_info"] = compensation_info
             __props__.__dict__["custom_attributes"] = custom_attributes
             __props__.__dict__["degree_types"] = degree_types
             __props__.__dict__["department"] = department
+            if description is None and not opts.urn:
+                raise TypeError("Missing required property 'description'")
             __props__.__dict__["description"] = description
             __props__.__dict__["employment_types"] = employment_types
             __props__.__dict__["incentives"] = incentives
@@ -595,11 +595,15 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["promotion_value"] = promotion_value
             __props__.__dict__["qualifications"] = qualifications
+            if requisition_id is None and not opts.urn:
+                raise TypeError("Missing required property 'requisition_id'")
             __props__.__dict__["requisition_id"] = requisition_id
             __props__.__dict__["responsibilities"] = responsibilities
             if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
             __props__.__dict__["tenant_id"] = tenant_id
+            if title is None and not opts.urn:
+                raise TypeError("Missing required property 'title'")
             __props__.__dict__["title"] = title
             __props__.__dict__["company_display_name"] = None
             __props__.__dict__["derived_info"] = None
@@ -678,7 +682,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def company(self) -> pulumi.Output[str]:
         """
-        Required. The resource name of the company listing the job. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}". For example, "projects/foo/tenants/bar/companies/baz".
+        The resource name of the company listing the job. The format is "projects/{project_id}/tenants/{tenant_id}/companies/{company_id}". For example, "projects/foo/tenants/bar/companies/baz".
         """
         return pulumi.get(self, "company")
 
@@ -734,7 +738,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[str]:
         """
-        Required. The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
+        The description of the job, which typically includes a multi-paragraph description of the company and related information. Separate fields are provided on the job object for responsibilities, qualifications, and other job characteristics. Use of these separate job fields is recommended. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 100,000.
         """
         return pulumi.get(self, "description")
 
@@ -870,7 +874,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="requisitionId")
     def requisition_id(self) -> pulumi.Output[str]:
         """
-        Required. The requisition ID, also referred to as the posting ID, is assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job isn't allowed to be created if there is another job with the same company, language_code and requisition_id. The maximum number of allowed characters is 255.
+        The requisition ID, also referred to as the posting ID, is assigned by the client to identify a job. This field is intended to be used by clients for client identification and tracking of postings. A job isn't allowed to be created if there is another job with the same company, language_code and requisition_id. The maximum number of allowed characters is 255.
         """
         return pulumi.get(self, "requisition_id")
 
@@ -886,7 +890,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter
     def title(self) -> pulumi.Output[str]:
         """
-        Required. The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
+        The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
         """
         return pulumi.get(self, "title")
 

@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The data type of this instruction.
+        /// The data type of this instruction.
         /// </summary>
         [Output("dataType")]
         public Output<string> DataType { get; private set; } = null!;
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The display name of the instruction. Maximum of 64 characters.
+        /// The display name of the instruction. Maximum of 64 characters.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -109,10 +109,10 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
     public sealed class InstructionArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The data type of this instruction.
+        /// The data type of this instruction.
         /// </summary>
-        [Input("dataType")]
-        public Input<Pulumi.GoogleNative.DataLabeling.V1Beta1.InstructionDataType>? DataType { get; set; }
+        [Input("dataType", required: true)]
+        public Input<Pulumi.GoogleNative.DataLabeling.V1Beta1.InstructionDataType> DataType { get; set; } = null!;
 
         /// <summary>
         /// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
@@ -121,10 +121,10 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Required. The display name of the instruction. Maximum of 64 characters.
+        /// The display name of the instruction. Maximum of 64 characters.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
         /// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.

@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<Outputs.GoogleCloudApigeeV1AddonsConfigResponse> AddonsConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        /// Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         /// </summary>
         [Output("analyticsRegion")]
         public Output<string> AnalyticsRegion { get; private set; } = null!;
@@ -115,7 +115,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> RuntimeDatabaseEncryptionKeyName { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
+        /// Runtime type of the Apigee organization based on the Apigee subscription purchased.
         /// </summary>
         [Output("runtimeType")]
         public Output<string> RuntimeType { get; private set; } = null!;
@@ -184,10 +184,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<Inputs.GoogleCloudApigeeV1AddonsConfigArgs>? AddonsConfig { get; set; }
 
         /// <summary>
-        /// Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        /// Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         /// </summary>
-        [Input("analyticsRegion")]
-        public Input<string>? AnalyticsRegion { get; set; }
+        [Input("analyticsRegion", required: true)]
+        public Input<string> AnalyticsRegion { get; set; } = null!;
 
         [Input("attributes")]
         private InputList<string>? _attributes;
@@ -244,10 +244,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<string>? RuntimeDatabaseEncryptionKeyName { get; set; }
 
         /// <summary>
-        /// Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
+        /// Runtime type of the Apigee organization based on the Apigee subscription purchased.
         /// </summary>
-        [Input("runtimeType")]
-        public Input<Pulumi.GoogleNative.Apigee.V1.OrganizationRuntimeType>? RuntimeType { get; set; }
+        [Input("runtimeType", required: true)]
+        public Input<Pulumi.GoogleNative.Apigee.V1.OrganizationRuntimeType> RuntimeType { get; set; } = null!;
 
         /// <summary>
         /// Not used by Apigee.

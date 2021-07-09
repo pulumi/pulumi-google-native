@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// </summary>
     public sealed class GooglePrivacyDlpV2InfoTypeTransformationsArgs : Pulumi.ResourceArgs
     {
-        [Input("transformations")]
+        [Input("transformations", required: true)]
         private InputList<Inputs.GooglePrivacyDlpV2InfoTypeTransformationArgs>? _transformations;
 
         /// <summary>
-        /// Required. Transformation for each infoType. Cannot specify more than one for a given infoType.
+        /// Transformation for each infoType. Cannot specify more than one for a given infoType.
         /// </summary>
         public InputList<Inputs.GooglePrivacyDlpV2InfoTypeTransformationArgs> Transformations
         {

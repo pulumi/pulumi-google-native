@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public Input<bool>? Inclusive { get; set; }
 
         /// <summary>
-        /// Required. Distinguishes between sentinel MIN/MAX versions and normal versions.
+        /// Distinguishes between sentinel MIN/MAX versions and normal versions.
         /// </summary>
-        [Input("kind")]
-        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.VersionKind>? Kind { get; set; }
+        [Input("kind", required: true)]
+        public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.VersionKind> Kind { get; set; } = null!;
 
         /// <summary>
         /// Required only when version kind is NORMAL. The main part of the version name.

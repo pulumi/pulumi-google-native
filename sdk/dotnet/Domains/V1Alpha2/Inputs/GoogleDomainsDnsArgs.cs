@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2.Inputs
     public sealed class GoogleDomainsDnsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
+        /// The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
         /// </summary>
-        [Input("dsState")]
-        public Input<Pulumi.GoogleNative.Domains.V1Alpha2.GoogleDomainsDnsDsState>? DsState { get; set; }
+        [Input("dsState", required: true)]
+        public Input<Pulumi.GoogleNative.Domains.V1Alpha2.GoogleDomainsDnsDsState> DsState { get; set; } = null!;
 
         public GoogleDomainsDnsArgs()
         {

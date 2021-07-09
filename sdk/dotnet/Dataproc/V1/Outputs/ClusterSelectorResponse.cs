@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
     public sealed class ClusterSelectorResponse
     {
         /// <summary>
-        /// Required. The cluster labels. Cluster must have all labels to match.
+        /// The cluster labels. Cluster must have all labels to match.
         /// </summary>
         public readonly ImmutableDictionary<string, string> ClusterLabels;
         /// <summary>

@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
     public sealed class IssuanceModesArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. When true, allows callers to create Certificates by specifying a CertificateConfig.
+        /// When true, allows callers to create Certificates by specifying a CertificateConfig.
         /// </summary>
-        [Input("allowConfigBasedIssuance")]
-        public Input<bool>? AllowConfigBasedIssuance { get; set; }
+        [Input("allowConfigBasedIssuance", required: true)]
+        public Input<bool> AllowConfigBasedIssuance { get; set; } = null!;
 
         /// <summary>
-        /// Required. When true, allows callers to create Certificates by specifying a CSR.
+        /// When true, allows callers to create Certificates by specifying a CSR.
         /// </summary>
-        [Input("allowCsrBasedIssuance")]
-        public Input<bool>? AllowCsrBasedIssuance { get; set; }
+        [Input("allowCsrBasedIssuance", required: true)]
+        public Input<bool> AllowCsrBasedIssuance { get; set; } = null!;
 
         public IssuanceModesArgs()
         {

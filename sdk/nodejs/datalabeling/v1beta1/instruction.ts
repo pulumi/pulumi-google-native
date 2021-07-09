@@ -44,7 +44,7 @@ export class Instruction extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Required. The data type of this instruction.
+     * The data type of this instruction.
      */
     public readonly dataType!: pulumi.Output<string>;
     /**
@@ -52,7 +52,7 @@ export class Instruction extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Required. The display name of the instruction. Maximum of 64 characters.
+     * The display name of the instruction. Maximum of 64 characters.
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
@@ -79,6 +79,12 @@ export class Instruction extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.dataType === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'dataType'");
+            }
+            if ((!args || args.displayName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'displayName'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -113,17 +119,17 @@ export class Instruction extends pulumi.CustomResource {
  */
 export interface InstructionArgs {
     /**
-     * Required. The data type of this instruction.
+     * The data type of this instruction.
      */
-    dataType?: pulumi.Input<enums.datalabeling.v1beta1.InstructionDataType>;
+    dataType: pulumi.Input<enums.datalabeling.v1beta1.InstructionDataType>;
     /**
      * Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
      */
     description?: pulumi.Input<string>;
     /**
-     * Required. The display name of the instruction. Maximum of 64 characters.
+     * The display name of the instruction. Maximum of 64 characters.
      */
-    displayName?: pulumi.Input<string>;
+    displayName: pulumi.Input<string>;
     /**
      * Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
      */

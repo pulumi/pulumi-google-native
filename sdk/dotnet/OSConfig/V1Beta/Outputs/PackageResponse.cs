@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
         /// </summary>
         public readonly string Manager;
         /// <summary>
-        /// Required. The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
+        /// The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
         /// </summary>
         public readonly string Name;
 

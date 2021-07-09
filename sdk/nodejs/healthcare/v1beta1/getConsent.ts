@@ -35,7 +35,7 @@ export interface GetConsentArgs {
 
 export interface GetConsentResult {
     /**
-     * Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+     * The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
      */
     readonly consentArtifact: string;
     /**
@@ -63,7 +63,7 @@ export interface GetConsentResult {
      */
     readonly revisionId: string;
     /**
-     * Required. Indicates the current state of this Consent.
+     * Indicates the current state of this Consent.
      */
     readonly state: string;
     /**
@@ -71,7 +71,7 @@ export interface GetConsentResult {
      */
     readonly ttl: string;
     /**
-     * Required. User's UUID provided by the client.
+     * User's UUID provided by the client.
      */
     readonly userId: string;
 }

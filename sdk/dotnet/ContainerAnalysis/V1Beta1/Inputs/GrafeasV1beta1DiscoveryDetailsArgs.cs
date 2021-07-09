@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     public sealed class GrafeasV1beta1DiscoveryDetailsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Analysis status for the discovered resource.
+        /// Analysis status for the discovered resource.
         /// </summary>
-        [Input("discovered")]
-        public Input<Inputs.DiscoveredArgs>? Discovered { get; set; }
+        [Input("discovered", required: true)]
+        public Input<Inputs.DiscoveredArgs> Discovered { get; set; } = null!;
 
         public GrafeasV1beta1DiscoveryDetailsArgs()
         {

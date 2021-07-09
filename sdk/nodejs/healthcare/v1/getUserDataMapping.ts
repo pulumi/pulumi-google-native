@@ -43,7 +43,7 @@ export interface GetUserDataMappingResult {
      */
     readonly archived: boolean;
     /**
-     * Required. A unique identifier for the mapped resource.
+     * A unique identifier for the mapped resource.
      */
     readonly dataId: string;
     /**
@@ -55,7 +55,7 @@ export interface GetUserDataMappingResult {
      */
     readonly resourceAttributes: outputs.healthcare.v1.AttributeResponse[];
     /**
-     * Required. User's UUID provided by the client.
+     * User's UUID provided by the client.
      */
     readonly userId: string;
 }

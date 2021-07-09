@@ -16,22 +16,22 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Alpha.Inputs
     public sealed class CustomAccountArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The login form URL of the website.
+        /// The login form URL of the website.
         /// </summary>
-        [Input("loginUrl")]
-        public Input<string>? LoginUrl { get; set; }
+        [Input("loginUrl", required: true)]
+        public Input<string> LoginUrl { get; set; } = null!;
 
         /// <summary>
-        /// Required. Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+        /// Input only. The password of the custom account. The credential is stored encrypted and not returned in any response nor included in audit logs.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        [Input("password", required: true)]
+        public Input<string> Password { get; set; } = null!;
 
         /// <summary>
-        /// Required. The user name of the custom account.
+        /// The user name of the custom account.
         /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
+        [Input("username", required: true)]
+        public Input<string> Username { get; set; } = null!;
 
         public CustomAccountArgs()
         {

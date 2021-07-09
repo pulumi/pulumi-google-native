@@ -44,7 +44,7 @@ export class Routine extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTime!: pulumi.Output<string>;
     /**
-     * Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
+     * The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
      */
     public readonly definitionBody!: pulumi.Output<string>;
     /**
@@ -80,11 +80,11 @@ export class Routine extends pulumi.CustomResource {
      */
     public readonly returnType!: pulumi.Output<outputs.bigquery.v2.StandardSqlDataTypeResponse>;
     /**
-     * Required. Reference describing the ID of this routine.
+     * Reference describing the ID of this routine.
      */
     public readonly routineReference!: pulumi.Output<outputs.bigquery.v2.RoutineReferenceResponse>;
     /**
-     * Required. The type of routine.
+     * The type of routine.
      */
     public readonly routineType!: pulumi.Output<string>;
 
@@ -102,8 +102,17 @@ export class Routine extends pulumi.CustomResource {
             if ((!args || args.datasetId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'datasetId'");
             }
+            if ((!args || args.definitionBody === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'definitionBody'");
+            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.routineReference === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'routineReference'");
+            }
+            if ((!args || args.routineType === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'routineType'");
             }
             inputs["arguments"] = args ? args.arguments : undefined;
             inputs["datasetId"] = args ? args.datasetId : undefined;
@@ -152,9 +161,9 @@ export interface RoutineArgs {
     arguments?: pulumi.Input<pulumi.Input<inputs.bigquery.v2.ArgumentArgs>[]>;
     datasetId: pulumi.Input<string>;
     /**
-     * Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
+     * The body of the routine. For functions, this is the expression in the AS clause. If language=SQL, it is the substring inside (but excluding) the parentheses. For example, for the function created with the following statement: `CREATE FUNCTION JoinLines(x string, y string) as (concat(x, "\n", y))` The definition_body is `concat(x, "\n", y)` (\n is not replaced with linebreak). If language=JAVASCRIPT, it is the evaluated string in the AS clause. For example, for the function created with the following statement: `CREATE FUNCTION f() RETURNS STRING LANGUAGE js AS 'return "\n";\n'` The definition_body is `return "\n";\n` Note that both \n are replaced with linebreaks.
      */
-    definitionBody?: pulumi.Input<string>;
+    definitionBody: pulumi.Input<string>;
     /**
      * Optional. [Experimental] The description of the routine if defined.
      */
@@ -181,11 +190,11 @@ export interface RoutineArgs {
      */
     returnType?: pulumi.Input<inputs.bigquery.v2.StandardSqlDataTypeArgs>;
     /**
-     * Required. Reference describing the ID of this routine.
+     * Reference describing the ID of this routine.
      */
-    routineReference?: pulumi.Input<inputs.bigquery.v2.RoutineReferenceArgs>;
+    routineReference: pulumi.Input<inputs.bigquery.v2.RoutineReferenceArgs>;
     /**
-     * Required. The type of routine.
+     * The type of routine.
      */
-    routineType?: pulumi.Input<enums.bigquery.v2.RoutineRoutineType>;
+    routineType: pulumi.Input<enums.bigquery.v2.RoutineRoutineType>;
 }

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
     public sealed class ParameterMetadataResponse
     {
         /// <summary>
-        /// Required. The help text to display for the parameter.
+        /// The help text to display for the parameter.
         /// </summary>
         public readonly string HelpText;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// </summary>
         public readonly bool IsOptional;
         /// <summary>
-        /// Required. The label to display for the parameter.
+        /// The label to display for the parameter.
         /// </summary>
         public readonly string Label;
         /// <summary>
-        /// Required. The name of the parameter.
+        /// The name of the parameter.
         /// </summary>
         public readonly string Name;
         /// <summary>

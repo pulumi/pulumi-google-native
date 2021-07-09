@@ -16,25 +16,24 @@ __all__ = ['TransitionRouteGroupArgs', 'TransitionRouteGroup']
 class TransitionRouteGroupArgs:
     def __init__(__self__, *,
                  agent_id: pulumi.Input[str],
+                 display_name: pulumi.Input[str],
                  flow_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 display_name: Optional[pulumi.Input[str]] = None,
                  language_code: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  transition_routes: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3TransitionRouteArgs']]]] = None):
         """
         The set of arguments for constructing a TransitionRouteGroup resource.
-        :param pulumi.Input[str] display_name: Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+        :param pulumi.Input[str] display_name: The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
         :param pulumi.Input[str] name: The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3TransitionRouteArgs']]] transition_routes: Transition routes associated with the TransitionRouteGroup.
         """
         pulumi.set(__self__, "agent_id", agent_id)
+        pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "flow_id", flow_id)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
         if language_code is not None:
             pulumi.set(__self__, "language_code", language_code)
         if name is not None:
@@ -50,6 +49,18 @@ class TransitionRouteGroupArgs:
     @agent_id.setter
     def agent_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "agent_id", value)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> pulumi.Input[str]:
+        """
+        The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="flowId")
@@ -77,18 +88,6 @@ class TransitionRouteGroupArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
 
     @property
     @pulumi.getter(name="languageCode")
@@ -143,7 +142,7 @@ class TransitionRouteGroup(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] display_name: Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+        :param pulumi.Input[str] display_name: The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
         :param pulumi.Input[str] name: The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3TransitionRouteArgs']]]] transition_routes: Transition routes associated with the TransitionRouteGroup.
         """
@@ -194,6 +193,8 @@ class TransitionRouteGroup(pulumi.CustomResource):
             if agent_id is None and not opts.urn:
                 raise TypeError("Missing required property 'agent_id'")
             __props__.__dict__["agent_id"] = agent_id
+            if display_name is None and not opts.urn:
+                raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
             if flow_id is None and not opts.urn:
                 raise TypeError("Missing required property 'flow_id'")
@@ -238,7 +239,7 @@ class TransitionRouteGroup(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+        The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
         """
         return pulumi.get(self, "display_name")
 

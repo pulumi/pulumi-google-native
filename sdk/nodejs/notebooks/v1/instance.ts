@@ -92,7 +92,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+     * The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
      */
     public readonly machineType!: pulumi.Output<string>;
     /**
@@ -184,6 +184,9 @@ export class Instance extends pulumi.CustomResource {
             }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
+            }
+            if ((!args || args.machineType === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'machineType'");
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
@@ -321,9 +324,9 @@ export interface InstanceArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location: pulumi.Input<string>;
     /**
-     * Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+     * The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
      */
-    machineType?: pulumi.Input<string>;
+    machineType: pulumi.Input<string>;
     /**
      * Custom metadata to apply to this instance.
      */

@@ -201,41 +201,51 @@ class GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs:
 @pulumi.input_type
 class GoogleCloudDatacatalogV1beta1ColumnSchemaArgs:
     def __init__(__self__, *,
-                 column: Optional[pulumi.Input[str]] = None,
+                 column: pulumi.Input[str],
+                 type: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
-                 subcolumns: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1beta1ColumnSchemaArgs']]]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
+                 subcolumns: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1beta1ColumnSchemaArgs']]]] = None):
         """
         Representation of a column within a schema. Columns could be nested inside other columns.
-        :param pulumi.Input[str] column: Required. Name of the column.
+        :param pulumi.Input[str] column: Name of the column.
+        :param pulumi.Input[str] type: Type of the column.
         :param pulumi.Input[str] description: Optional. Description of the column. Default value is an empty string.
         :param pulumi.Input[str] mode: Optional. A column's mode indicates whether the values in this column are required, nullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are supported. Default mode is `NULLABLE`.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1beta1ColumnSchemaArgs']]] subcolumns: Optional. Schema of sub-columns. A column can have zero or more sub-columns.
-        :param pulumi.Input[str] type: Required. Type of the column.
         """
-        if column is not None:
-            pulumi.set(__self__, "column", column)
+        pulumi.set(__self__, "column", column)
+        pulumi.set(__self__, "type", type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if mode is not None:
             pulumi.set(__self__, "mode", mode)
         if subcolumns is not None:
             pulumi.set(__self__, "subcolumns", subcolumns)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
-    def column(self) -> Optional[pulumi.Input[str]]:
+    def column(self) -> pulumi.Input[str]:
         """
-        Required. Name of the column.
+        Name of the column.
         """
         return pulumi.get(self, "column")
 
     @column.setter
-    def column(self, value: Optional[pulumi.Input[str]]):
+    def column(self, value: pulumi.Input[str]):
         pulumi.set(self, "column", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        Type of the column.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
 
     @property
     @pulumi.getter
@@ -273,64 +283,50 @@ class GoogleCloudDatacatalogV1beta1ColumnSchemaArgs:
     def subcolumns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1beta1ColumnSchemaArgs']]]]):
         pulumi.set(self, "subcolumns", value)
 
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Type of the column.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
-
 
 @pulumi.input_type
 class GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs:
     def __init__(__self__, *,
-                 file_patterns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 file_patterns: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
         Describes a Cloud Storage fileset entry.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] file_patterns: Required. Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] file_patterns: Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
         """
-        if file_patterns is not None:
-            pulumi.set(__self__, "file_patterns", file_patterns)
+        pulumi.set(__self__, "file_patterns", file_patterns)
 
     @property
     @pulumi.getter(name="filePatterns")
-    def file_patterns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    def file_patterns(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Required. Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
+        Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/*/b`: matches all files in `bucket_name` that match `a/*/b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g`
         """
         return pulumi.get(self, "file_patterns")
 
     @file_patterns.setter
-    def file_patterns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+    def file_patterns(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "file_patterns", value)
 
 
 @pulumi.input_type
 class GoogleCloudDatacatalogV1beta1SchemaArgs:
     def __init__(__self__, *,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1beta1ColumnSchemaArgs']]]] = None):
+                 columns: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1beta1ColumnSchemaArgs']]]):
         """
         Represents a schema (e.g. BigQuery, GoogleSQL, Avro schema).
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1beta1ColumnSchemaArgs']]] columns: Required. Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1beta1ColumnSchemaArgs']]] columns: Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
         """
-        if columns is not None:
-            pulumi.set(__self__, "columns", columns)
+        pulumi.set(__self__, "columns", columns)
 
     @property
     @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1beta1ColumnSchemaArgs']]]]:
+    def columns(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1beta1ColumnSchemaArgs']]]:
         """
-        Required. Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
+        Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
         """
         return pulumi.get(self, "columns")
 
     @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1beta1ColumnSchemaArgs']]]]):
+    def columns(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDatacatalogV1beta1ColumnSchemaArgs']]]):
         pulumi.set(self, "columns", value)
 
 

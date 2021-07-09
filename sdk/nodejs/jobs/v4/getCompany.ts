@@ -39,7 +39,7 @@ export interface GetCompanyResult {
      */
     readonly derivedInfo: outputs.jobs.v4.CompanyDerivedInfoResponse;
     /**
-     * Required. The display name of the company, for example, "Google LLC".
+     * The display name of the company, for example, "Google LLC".
      */
     readonly displayName: string;
     /**
@@ -47,7 +47,7 @@ export interface GetCompanyResult {
      */
     readonly eeoText: string;
     /**
-     * Required. Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
+     * Client side company identifier, used to uniquely identify the company. The maximum number of allowed characters is 255.
      */
     readonly externalId: string;
     /**

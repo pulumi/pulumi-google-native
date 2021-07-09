@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2
         public Output<ImmutableArray<Outputs.PipelineParameterResponse>> InputParameters { get; private set; } = null!;
 
         /// <summary>
-        /// Required. A user specified pipeline name that does not have to be unique. This name can be used for filtering Pipelines in ListPipelines.
+        /// A user specified pipeline name that does not have to be unique. This name can be used for filtering Pipelines in ListPipelines.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -52,13 +52,13 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2
         public Output<string> PipelineId { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The project in which to create the pipeline. The caller must have WRITE access.
+        /// The project in which to create the pipeline. The caller must have WRITE access.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Specifies resource requirements for the pipeline run. Required fields: * minimumCpuCores * minimumRamGb
+        /// Specifies resource requirements for the pipeline run. Required fields: * minimumCpuCores * minimumRamGb
         /// </summary>
         [Output("resources")]
         public Output<Outputs.PipelineResourcesResponse> Resources { get; private set; } = null!;
@@ -71,7 +71,7 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Pipeline(string name, PipelineArgs? args = null, CustomResourceOptions? options = null)
+        public Pipeline(string name, PipelineArgs args, CustomResourceOptions? options = null)
             : base("google-native:genomics/v1alpha2:Pipeline", name, args ?? new PipelineArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -133,10 +133,10 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2
         }
 
         /// <summary>
-        /// Required. A user specified pipeline name that does not have to be unique. This name can be used for filtering Pipelines in ListPipelines.
+        /// A user specified pipeline name that does not have to be unique. This name can be used for filtering Pipelines in ListPipelines.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         [Input("outputParameters")]
         private InputList<Inputs.PipelineParameterArgs>? _outputParameters;
@@ -157,16 +157,16 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2
         public Input<string>? PipelineId { get; set; }
 
         /// <summary>
-        /// Required. The project in which to create the pipeline. The caller must have WRITE access.
+        /// The project in which to create the pipeline. The caller must have WRITE access.
         /// </summary>
-        [Input("project")]
-        public Input<string>? Project { get; set; }
+        [Input("project", required: true)]
+        public Input<string> Project { get; set; } = null!;
 
         /// <summary>
-        /// Required. Specifies resource requirements for the pipeline run. Required fields: * minimumCpuCores * minimumRamGb
+        /// Specifies resource requirements for the pipeline run. Required fields: * minimumCpuCores * minimumRamGb
         /// </summary>
-        [Input("resources")]
-        public Input<Inputs.PipelineResourcesArgs>? Resources { get; set; }
+        [Input("resources", required: true)]
+        public Input<Inputs.PipelineResourcesArgs> Resources { get; set; } = null!;
 
         public PipelineArgs()
         {

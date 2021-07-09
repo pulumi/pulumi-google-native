@@ -871,10 +871,10 @@ func (o GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricResponseArrayOu
 
 // A message representing a metric in the measurement.
 type GoogleCloudMlV1_Measurement_Metric struct {
-	// Required. Metric name.
-	Metric *string `pulumi:"metric"`
-	// Required. The value for this metric.
-	Value *float64 `pulumi:"value"`
+	// Metric name.
+	Metric string `pulumi:"metric"`
+	// The value for this metric.
+	Value float64 `pulumi:"value"`
 }
 
 // GoogleCloudMlV1_Measurement_MetricInput is an input type that accepts GoogleCloudMlV1_Measurement_MetricArgs and GoogleCloudMlV1_Measurement_MetricOutput values.
@@ -890,10 +890,10 @@ type GoogleCloudMlV1_Measurement_MetricInput interface {
 
 // A message representing a metric in the measurement.
 type GoogleCloudMlV1_Measurement_MetricArgs struct {
-	// Required. Metric name.
-	Metric pulumi.StringPtrInput `pulumi:"metric"`
-	// Required. The value for this metric.
-	Value pulumi.Float64PtrInput `pulumi:"value"`
+	// Metric name.
+	Metric pulumi.StringInput `pulumi:"metric"`
+	// The value for this metric.
+	Value pulumi.Float64Input `pulumi:"value"`
 }
 
 func (GoogleCloudMlV1_Measurement_MetricArgs) ElementType() reflect.Type {
@@ -948,14 +948,14 @@ func (o GoogleCloudMlV1_Measurement_MetricOutput) ToGoogleCloudMlV1_Measurement_
 	return o
 }
 
-// Required. Metric name.
-func (o GoogleCloudMlV1_Measurement_MetricOutput) Metric() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1_Measurement_Metric) *string { return v.Metric }).(pulumi.StringPtrOutput)
+// Metric name.
+func (o GoogleCloudMlV1_Measurement_MetricOutput) Metric() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1_Measurement_Metric) string { return v.Metric }).(pulumi.StringOutput)
 }
 
-// Required. The value for this metric.
-func (o GoogleCloudMlV1_Measurement_MetricOutput) Value() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1_Measurement_Metric) *float64 { return v.Value }).(pulumi.Float64PtrOutput)
+// The value for this metric.
+func (o GoogleCloudMlV1_Measurement_MetricOutput) Value() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudMlV1_Measurement_Metric) float64 { return v.Value }).(pulumi.Float64Output)
 }
 
 type GoogleCloudMlV1_Measurement_MetricArrayOutput struct{ *pulumi.OutputState }
@@ -980,9 +980,9 @@ func (o GoogleCloudMlV1_Measurement_MetricArrayOutput) Index(i pulumi.IntInput) 
 
 // A message representing a metric in the measurement.
 type GoogleCloudMlV1_Measurement_MetricResponse struct {
-	// Required. Metric name.
+	// Metric name.
 	Metric string `pulumi:"metric"`
-	// Required. The value for this metric.
+	// The value for this metric.
 	Value float64 `pulumi:"value"`
 }
 
@@ -999,9 +999,9 @@ type GoogleCloudMlV1_Measurement_MetricResponseInput interface {
 
 // A message representing a metric in the measurement.
 type GoogleCloudMlV1_Measurement_MetricResponseArgs struct {
-	// Required. Metric name.
+	// Metric name.
 	Metric pulumi.StringInput `pulumi:"metric"`
-	// Required. The value for this metric.
+	// The value for this metric.
 	Value pulumi.Float64Input `pulumi:"value"`
 }
 
@@ -1057,12 +1057,12 @@ func (o GoogleCloudMlV1_Measurement_MetricResponseOutput) ToGoogleCloudMlV1_Meas
 	return o
 }
 
-// Required. Metric name.
+// Metric name.
 func (o GoogleCloudMlV1_Measurement_MetricResponseOutput) Metric() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1_Measurement_MetricResponse) string { return v.Metric }).(pulumi.StringOutput)
 }
 
-// Required. The value for this metric.
+// The value for this metric.
 func (o GoogleCloudMlV1_Measurement_MetricResponseOutput) Value() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudMlV1_Measurement_MetricResponse) float64 { return v.Value }).(pulumi.Float64Output)
 }
@@ -2470,10 +2470,10 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecRespo
 
 // Represents a metric to optimize.
 type GoogleCloudMlV1_StudyConfig_MetricSpec struct {
-	// Required. The optimization goal of the metric.
-	Goal *string `pulumi:"goal"`
-	// Required. The name of the metric.
-	Metric *string `pulumi:"metric"`
+	// The optimization goal of the metric.
+	Goal string `pulumi:"goal"`
+	// The name of the metric.
+	Metric string `pulumi:"metric"`
 }
 
 // GoogleCloudMlV1_StudyConfig_MetricSpecInput is an input type that accepts GoogleCloudMlV1_StudyConfig_MetricSpecArgs and GoogleCloudMlV1_StudyConfig_MetricSpecOutput values.
@@ -2489,10 +2489,10 @@ type GoogleCloudMlV1_StudyConfig_MetricSpecInput interface {
 
 // Represents a metric to optimize.
 type GoogleCloudMlV1_StudyConfig_MetricSpecArgs struct {
-	// Required. The optimization goal of the metric.
-	Goal *GoogleCloudMlV1_StudyConfig_MetricSpecGoal `pulumi:"goal"`
-	// Required. The name of the metric.
-	Metric pulumi.StringPtrInput `pulumi:"metric"`
+	// The optimization goal of the metric.
+	Goal GoogleCloudMlV1_StudyConfig_MetricSpecGoal `pulumi:"goal"`
+	// The name of the metric.
+	Metric pulumi.StringInput `pulumi:"metric"`
 }
 
 func (GoogleCloudMlV1_StudyConfig_MetricSpecArgs) ElementType() reflect.Type {
@@ -2547,14 +2547,14 @@ func (o GoogleCloudMlV1_StudyConfig_MetricSpecOutput) ToGoogleCloudMlV1_StudyCon
 	return o
 }
 
-// Required. The optimization goal of the metric.
-func (o GoogleCloudMlV1_StudyConfig_MetricSpecOutput) Goal() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfig_MetricSpec) *string { return v.Goal }).(pulumi.StringPtrOutput)
+// The optimization goal of the metric.
+func (o GoogleCloudMlV1_StudyConfig_MetricSpecOutput) Goal() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfig_MetricSpec) string { return v.Goal }).(pulumi.StringOutput)
 }
 
-// Required. The name of the metric.
-func (o GoogleCloudMlV1_StudyConfig_MetricSpecOutput) Metric() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfig_MetricSpec) *string { return v.Metric }).(pulumi.StringPtrOutput)
+// The name of the metric.
+func (o GoogleCloudMlV1_StudyConfig_MetricSpecOutput) Metric() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfig_MetricSpec) string { return v.Metric }).(pulumi.StringOutput)
 }
 
 type GoogleCloudMlV1_StudyConfig_MetricSpecArrayOutput struct{ *pulumi.OutputState }
@@ -2579,9 +2579,9 @@ func (o GoogleCloudMlV1_StudyConfig_MetricSpecArrayOutput) Index(i pulumi.IntInp
 
 // Represents a metric to optimize.
 type GoogleCloudMlV1_StudyConfig_MetricSpecResponse struct {
-	// Required. The optimization goal of the metric.
+	// The optimization goal of the metric.
 	Goal string `pulumi:"goal"`
-	// Required. The name of the metric.
+	// The name of the metric.
 	Metric string `pulumi:"metric"`
 }
 
@@ -2598,9 +2598,9 @@ type GoogleCloudMlV1_StudyConfig_MetricSpecResponseInput interface {
 
 // Represents a metric to optimize.
 type GoogleCloudMlV1_StudyConfig_MetricSpecResponseArgs struct {
-	// Required. The optimization goal of the metric.
+	// The optimization goal of the metric.
 	Goal pulumi.StringInput `pulumi:"goal"`
-	// Required. The name of the metric.
+	// The name of the metric.
 	Metric pulumi.StringInput `pulumi:"metric"`
 }
 
@@ -2656,12 +2656,12 @@ func (o GoogleCloudMlV1_StudyConfig_MetricSpecResponseOutput) ToGoogleCloudMlV1_
 	return o
 }
 
-// Required. The optimization goal of the metric.
+// The optimization goal of the metric.
 func (o GoogleCloudMlV1_StudyConfig_MetricSpecResponseOutput) Goal() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfig_MetricSpecResponse) string { return v.Goal }).(pulumi.StringOutput)
 }
 
-// Required. The name of the metric.
+// The name of the metric.
 func (o GoogleCloudMlV1_StudyConfig_MetricSpecResponseOutput) Metric() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfig_MetricSpecResponse) string { return v.Metric }).(pulumi.StringOutput)
 }
@@ -2698,15 +2698,15 @@ type GoogleCloudMlV1_StudyConfig_ParameterSpec struct {
 	DoubleValueSpec *GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec `pulumi:"doubleValueSpec"`
 	// The value spec for an 'INTEGER' parameter.
 	IntegerValueSpec *GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec `pulumi:"integerValueSpec"`
-	// Required. The parameter name must be unique amongst all ParameterSpecs.
-	Parameter               *string                                                                      `pulumi:"parameter"`
+	// The parameter name must be unique amongst all ParameterSpecs.
+	Parameter               string                                                                       `pulumi:"parameter"`
 	ParentCategoricalValues *GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec `pulumi:"parentCategoricalValues"`
 	ParentDiscreteValues    *GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec    `pulumi:"parentDiscreteValues"`
 	ParentIntValues         *GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec         `pulumi:"parentIntValues"`
 	// How the parameter should be scaled. Leave unset for categorical parameters.
 	ScaleType *string `pulumi:"scaleType"`
-	// Required. The type of the parameter.
-	Type *string `pulumi:"type"`
+	// The type of the parameter.
+	Type string `pulumi:"type"`
 }
 
 // GoogleCloudMlV1_StudyConfig_ParameterSpecInput is an input type that accepts GoogleCloudMlV1_StudyConfig_ParameterSpecArgs and GoogleCloudMlV1_StudyConfig_ParameterSpecOutput values.
@@ -2732,15 +2732,15 @@ type GoogleCloudMlV1_StudyConfig_ParameterSpecArgs struct {
 	DoubleValueSpec GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrInput `pulumi:"doubleValueSpec"`
 	// The value spec for an 'INTEGER' parameter.
 	IntegerValueSpec GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrInput `pulumi:"integerValueSpec"`
-	// Required. The parameter name must be unique amongst all ParameterSpecs.
-	Parameter               pulumi.StringPtrInput                                                               `pulumi:"parameter"`
+	// The parameter name must be unique amongst all ParameterSpecs.
+	Parameter               pulumi.StringInput                                                                  `pulumi:"parameter"`
 	ParentCategoricalValues GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtrInput `pulumi:"parentCategoricalValues"`
 	ParentDiscreteValues    GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrInput    `pulumi:"parentDiscreteValues"`
 	ParentIntValues         GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrInput         `pulumi:"parentIntValues"`
 	// How the parameter should be scaled. Leave unset for categorical parameters.
 	ScaleType *GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType `pulumi:"scaleType"`
-	// Required. The type of the parameter.
-	Type *GoogleCloudMlV1_StudyConfig_ParameterSpecType `pulumi:"type"`
+	// The type of the parameter.
+	Type GoogleCloudMlV1_StudyConfig_ParameterSpecType `pulumi:"type"`
 }
 
 func (GoogleCloudMlV1_StudyConfig_ParameterSpecArgs) ElementType() reflect.Type {
@@ -2830,9 +2830,9 @@ func (o GoogleCloudMlV1_StudyConfig_ParameterSpecOutput) IntegerValueSpec() Goog
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrOutput)
 }
 
-// Required. The parameter name must be unique amongst all ParameterSpecs.
-func (o GoogleCloudMlV1_StudyConfig_ParameterSpecOutput) Parameter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfig_ParameterSpec) *string { return v.Parameter }).(pulumi.StringPtrOutput)
+// The parameter name must be unique amongst all ParameterSpecs.
+func (o GoogleCloudMlV1_StudyConfig_ParameterSpecOutput) Parameter() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfig_ParameterSpec) string { return v.Parameter }).(pulumi.StringOutput)
 }
 
 func (o GoogleCloudMlV1_StudyConfig_ParameterSpecOutput) ParentCategoricalValues() GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtrOutput {
@@ -2858,9 +2858,9 @@ func (o GoogleCloudMlV1_StudyConfig_ParameterSpecOutput) ScaleType() pulumi.Stri
 	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfig_ParameterSpec) *string { return v.ScaleType }).(pulumi.StringPtrOutput)
 }
 
-// Required. The type of the parameter.
-func (o GoogleCloudMlV1_StudyConfig_ParameterSpecOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfig_ParameterSpec) *string { return v.Type }).(pulumi.StringPtrOutput)
+// The type of the parameter.
+func (o GoogleCloudMlV1_StudyConfig_ParameterSpecOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfig_ParameterSpec) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type GoogleCloudMlV1_StudyConfig_ParameterSpecArrayOutput struct{ *pulumi.OutputState }
@@ -2895,14 +2895,14 @@ type GoogleCloudMlV1_StudyConfig_ParameterSpecResponse struct {
 	DoubleValueSpec GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecResponse `pulumi:"doubleValueSpec"`
 	// The value spec for an 'INTEGER' parameter.
 	IntegerValueSpec GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecResponse `pulumi:"integerValueSpec"`
-	// Required. The parameter name must be unique amongst all ParameterSpecs.
+	// The parameter name must be unique amongst all ParameterSpecs.
 	Parameter               string                                                                              `pulumi:"parameter"`
 	ParentCategoricalValues GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecResponse `pulumi:"parentCategoricalValues"`
 	ParentDiscreteValues    GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecResponse    `pulumi:"parentDiscreteValues"`
 	ParentIntValues         GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecResponse         `pulumi:"parentIntValues"`
 	// How the parameter should be scaled. Leave unset for categorical parameters.
 	ScaleType string `pulumi:"scaleType"`
-	// Required. The type of the parameter.
+	// The type of the parameter.
 	Type string `pulumi:"type"`
 }
 
@@ -2929,14 +2929,14 @@ type GoogleCloudMlV1_StudyConfig_ParameterSpecResponseArgs struct {
 	DoubleValueSpec GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecResponseInput `pulumi:"doubleValueSpec"`
 	// The value spec for an 'INTEGER' parameter.
 	IntegerValueSpec GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecResponseInput `pulumi:"integerValueSpec"`
-	// Required. The parameter name must be unique amongst all ParameterSpecs.
+	// The parameter name must be unique amongst all ParameterSpecs.
 	Parameter               pulumi.StringInput                                                                       `pulumi:"parameter"`
 	ParentCategoricalValues GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecResponseInput `pulumi:"parentCategoricalValues"`
 	ParentDiscreteValues    GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecResponseInput    `pulumi:"parentDiscreteValues"`
 	ParentIntValues         GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecResponseInput         `pulumi:"parentIntValues"`
 	// How the parameter should be scaled. Leave unset for categorical parameters.
 	ScaleType pulumi.StringInput `pulumi:"scaleType"`
-	// Required. The type of the parameter.
+	// The type of the parameter.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -3027,7 +3027,7 @@ func (o GoogleCloudMlV1_StudyConfig_ParameterSpecResponseOutput) IntegerValueSpe
 	}).(GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecResponseOutput)
 }
 
-// Required. The parameter name must be unique amongst all ParameterSpecs.
+// The parameter name must be unique amongst all ParameterSpecs.
 func (o GoogleCloudMlV1_StudyConfig_ParameterSpecResponseOutput) Parameter() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfig_ParameterSpecResponse) string { return v.Parameter }).(pulumi.StringOutput)
 }
@@ -3055,7 +3055,7 @@ func (o GoogleCloudMlV1_StudyConfig_ParameterSpecResponseOutput) ScaleType() pul
 	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfig_ParameterSpecResponse) string { return v.ScaleType }).(pulumi.StringOutput)
 }
 
-// Required. The type of the parameter.
+// The type of the parameter.
 func (o GoogleCloudMlV1_StudyConfig_ParameterSpecResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfig_ParameterSpecResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -6775,8 +6775,8 @@ type GoogleCloudMlV1__HyperparameterSpec struct {
 	Algorithm *string `pulumi:"algorithm"`
 	// Optional. Indicates if the hyperparameter tuning job enables auto trial early stopping.
 	EnableTrialEarlyStopping *bool `pulumi:"enableTrialEarlyStopping"`
-	// Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
-	Goal *string `pulumi:"goal"`
+	// The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
+	Goal string `pulumi:"goal"`
 	// Optional. The TensorFlow summary tag name to use for optimizing trials. For current versions of TensorFlow, this tag name should exactly match what is shown in TensorBoard, including all scopes. For versions of TensorFlow prior to 0.12, this should be only the tag passed to tf.Summary. By default, "training/hptuning/metric" will be used.
 	HyperparameterMetricTag *string `pulumi:"hyperparameterMetricTag"`
 	// Optional. The number of failed trials that need to be seen before failing the hyperparameter tuning job. You can specify this field to override the default failing criteria for AI Platform hyperparameter tuning jobs. Defaults to zero, which means the service decides when a hyperparameter job should fail.
@@ -6785,7 +6785,7 @@ type GoogleCloudMlV1__HyperparameterSpec struct {
 	MaxParallelTrials *int `pulumi:"maxParallelTrials"`
 	// Optional. How many training trials should be attempted to optimize the specified hyperparameters. Defaults to one.
 	MaxTrials *int `pulumi:"maxTrials"`
-	// Required. The set of parameters to tune.
+	// The set of parameters to tune.
 	Params []GoogleCloudMlV1__ParameterSpec `pulumi:"params"`
 	// Optional. The prior hyperparameter tuning job id that users hope to continue with. The job id will be used to find the corresponding vizier study guid and resume the study.
 	ResumePreviousJobId *string `pulumi:"resumePreviousJobId"`
@@ -6808,8 +6808,8 @@ type GoogleCloudMlV1__HyperparameterSpecArgs struct {
 	Algorithm *GoogleCloudMlV1__HyperparameterSpecAlgorithm `pulumi:"algorithm"`
 	// Optional. Indicates if the hyperparameter tuning job enables auto trial early stopping.
 	EnableTrialEarlyStopping pulumi.BoolPtrInput `pulumi:"enableTrialEarlyStopping"`
-	// Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
-	Goal *GoogleCloudMlV1__HyperparameterSpecGoal `pulumi:"goal"`
+	// The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
+	Goal GoogleCloudMlV1__HyperparameterSpecGoal `pulumi:"goal"`
 	// Optional. The TensorFlow summary tag name to use for optimizing trials. For current versions of TensorFlow, this tag name should exactly match what is shown in TensorBoard, including all scopes. For versions of TensorFlow prior to 0.12, this should be only the tag passed to tf.Summary. By default, "training/hptuning/metric" will be used.
 	HyperparameterMetricTag pulumi.StringPtrInput `pulumi:"hyperparameterMetricTag"`
 	// Optional. The number of failed trials that need to be seen before failing the hyperparameter tuning job. You can specify this field to override the default failing criteria for AI Platform hyperparameter tuning jobs. Defaults to zero, which means the service decides when a hyperparameter job should fail.
@@ -6818,7 +6818,7 @@ type GoogleCloudMlV1__HyperparameterSpecArgs struct {
 	MaxParallelTrials pulumi.IntPtrInput `pulumi:"maxParallelTrials"`
 	// Optional. How many training trials should be attempted to optimize the specified hyperparameters. Defaults to one.
 	MaxTrials pulumi.IntPtrInput `pulumi:"maxTrials"`
-	// Required. The set of parameters to tune.
+	// The set of parameters to tune.
 	Params GoogleCloudMlV1__ParameterSpecArrayInput `pulumi:"params"`
 	// Optional. The prior hyperparameter tuning job id that users hope to continue with. The job id will be used to find the corresponding vizier study guid and resume the study.
 	ResumePreviousJobId pulumi.StringPtrInput `pulumi:"resumePreviousJobId"`
@@ -6912,9 +6912,9 @@ func (o GoogleCloudMlV1__HyperparameterSpecOutput) EnableTrialEarlyStopping() pu
 	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterSpec) *bool { return v.EnableTrialEarlyStopping }).(pulumi.BoolPtrOutput)
 }
 
-// Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
-func (o GoogleCloudMlV1__HyperparameterSpecOutput) Goal() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterSpec) *string { return v.Goal }).(pulumi.StringPtrOutput)
+// The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
+func (o GoogleCloudMlV1__HyperparameterSpecOutput) Goal() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterSpec) string { return v.Goal }).(pulumi.StringOutput)
 }
 
 // Optional. The TensorFlow summary tag name to use for optimizing trials. For current versions of TensorFlow, this tag name should exactly match what is shown in TensorBoard, including all scopes. For versions of TensorFlow prior to 0.12, this should be only the tag passed to tf.Summary. By default, "training/hptuning/metric" will be used.
@@ -6937,7 +6937,7 @@ func (o GoogleCloudMlV1__HyperparameterSpecOutput) MaxTrials() pulumi.IntPtrOutp
 	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterSpec) *int { return v.MaxTrials }).(pulumi.IntPtrOutput)
 }
 
-// Required. The set of parameters to tune.
+// The set of parameters to tune.
 func (o GoogleCloudMlV1__HyperparameterSpecOutput) Params() GoogleCloudMlV1__ParameterSpecArrayOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterSpec) []GoogleCloudMlV1__ParameterSpec { return v.Params }).(GoogleCloudMlV1__ParameterSpecArrayOutput)
 }
@@ -6985,13 +6985,13 @@ func (o GoogleCloudMlV1__HyperparameterSpecPtrOutput) EnableTrialEarlyStopping()
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
+// The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
 func (o GoogleCloudMlV1__HyperparameterSpecPtrOutput) Goal() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__HyperparameterSpec) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Goal
+		return &v.Goal
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7035,7 +7035,7 @@ func (o GoogleCloudMlV1__HyperparameterSpecPtrOutput) MaxTrials() pulumi.IntPtrO
 	}).(pulumi.IntPtrOutput)
 }
 
-// Required. The set of parameters to tune.
+// The set of parameters to tune.
 func (o GoogleCloudMlV1__HyperparameterSpecPtrOutput) Params() GoogleCloudMlV1__ParameterSpecArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__HyperparameterSpec) []GoogleCloudMlV1__ParameterSpec {
 		if v == nil {
@@ -7061,7 +7061,7 @@ type GoogleCloudMlV1__HyperparameterSpecResponse struct {
 	Algorithm string `pulumi:"algorithm"`
 	// Optional. Indicates if the hyperparameter tuning job enables auto trial early stopping.
 	EnableTrialEarlyStopping bool `pulumi:"enableTrialEarlyStopping"`
-	// Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
+	// The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
 	Goal string `pulumi:"goal"`
 	// Optional. The TensorFlow summary tag name to use for optimizing trials. For current versions of TensorFlow, this tag name should exactly match what is shown in TensorBoard, including all scopes. For versions of TensorFlow prior to 0.12, this should be only the tag passed to tf.Summary. By default, "training/hptuning/metric" will be used.
 	HyperparameterMetricTag string `pulumi:"hyperparameterMetricTag"`
@@ -7071,7 +7071,7 @@ type GoogleCloudMlV1__HyperparameterSpecResponse struct {
 	MaxParallelTrials int `pulumi:"maxParallelTrials"`
 	// Optional. How many training trials should be attempted to optimize the specified hyperparameters. Defaults to one.
 	MaxTrials int `pulumi:"maxTrials"`
-	// Required. The set of parameters to tune.
+	// The set of parameters to tune.
 	Params []GoogleCloudMlV1__ParameterSpecResponse `pulumi:"params"`
 	// Optional. The prior hyperparameter tuning job id that users hope to continue with. The job id will be used to find the corresponding vizier study guid and resume the study.
 	ResumePreviousJobId string `pulumi:"resumePreviousJobId"`
@@ -7094,7 +7094,7 @@ type GoogleCloudMlV1__HyperparameterSpecResponseArgs struct {
 	Algorithm pulumi.StringInput `pulumi:"algorithm"`
 	// Optional. Indicates if the hyperparameter tuning job enables auto trial early stopping.
 	EnableTrialEarlyStopping pulumi.BoolInput `pulumi:"enableTrialEarlyStopping"`
-	// Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
+	// The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
 	Goal pulumi.StringInput `pulumi:"goal"`
 	// Optional. The TensorFlow summary tag name to use for optimizing trials. For current versions of TensorFlow, this tag name should exactly match what is shown in TensorBoard, including all scopes. For versions of TensorFlow prior to 0.12, this should be only the tag passed to tf.Summary. By default, "training/hptuning/metric" will be used.
 	HyperparameterMetricTag pulumi.StringInput `pulumi:"hyperparameterMetricTag"`
@@ -7104,7 +7104,7 @@ type GoogleCloudMlV1__HyperparameterSpecResponseArgs struct {
 	MaxParallelTrials pulumi.IntInput `pulumi:"maxParallelTrials"`
 	// Optional. How many training trials should be attempted to optimize the specified hyperparameters. Defaults to one.
 	MaxTrials pulumi.IntInput `pulumi:"maxTrials"`
-	// Required. The set of parameters to tune.
+	// The set of parameters to tune.
 	Params GoogleCloudMlV1__ParameterSpecResponseArrayInput `pulumi:"params"`
 	// Optional. The prior hyperparameter tuning job id that users hope to continue with. The job id will be used to find the corresponding vizier study guid and resume the study.
 	ResumePreviousJobId pulumi.StringInput `pulumi:"resumePreviousJobId"`
@@ -7198,7 +7198,7 @@ func (o GoogleCloudMlV1__HyperparameterSpecResponseOutput) EnableTrialEarlyStopp
 	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterSpecResponse) bool { return v.EnableTrialEarlyStopping }).(pulumi.BoolOutput)
 }
 
-// Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
+// The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
 func (o GoogleCloudMlV1__HyperparameterSpecResponseOutput) Goal() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterSpecResponse) string { return v.Goal }).(pulumi.StringOutput)
 }
@@ -7223,7 +7223,7 @@ func (o GoogleCloudMlV1__HyperparameterSpecResponseOutput) MaxTrials() pulumi.In
 	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterSpecResponse) int { return v.MaxTrials }).(pulumi.IntOutput)
 }
 
-// Required. The set of parameters to tune.
+// The set of parameters to tune.
 func (o GoogleCloudMlV1__HyperparameterSpecResponseOutput) Params() GoogleCloudMlV1__ParameterSpecResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterSpecResponse) []GoogleCloudMlV1__ParameterSpecResponse {
 		return v.Params
@@ -7275,7 +7275,7 @@ func (o GoogleCloudMlV1__HyperparameterSpecResponsePtrOutput) EnableTrialEarlySt
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
+// The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
 func (o GoogleCloudMlV1__HyperparameterSpecResponsePtrOutput) Goal() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__HyperparameterSpecResponse) *string {
 		if v == nil {
@@ -7325,7 +7325,7 @@ func (o GoogleCloudMlV1__HyperparameterSpecResponsePtrOutput) MaxTrials() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
-// Required. The set of parameters to tune.
+// The set of parameters to tune.
 func (o GoogleCloudMlV1__HyperparameterSpecResponsePtrOutput) Params() GoogleCloudMlV1__ParameterSpecResponseArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__HyperparameterSpecResponse) []GoogleCloudMlV1__ParameterSpecResponse {
 		if v == nil {
@@ -8530,12 +8530,12 @@ type GoogleCloudMlV1__ParameterSpec struct {
 	MaxValue *float64 `pulumi:"maxValue"`
 	// Required if type is `DOUBLE` or `INTEGER`. This field should be unset if type is `CATEGORICAL`. This value should be integers if type is INTEGER.
 	MinValue *float64 `pulumi:"minValue"`
-	// Required. The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
-	ParameterName *string `pulumi:"parameterName"`
+	// The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
+	ParameterName string `pulumi:"parameterName"`
 	// Optional. How the parameter should be scaled to the hypercube. Leave unset for categorical parameters. Some kind of scaling is strongly recommended for real or integral parameters (e.g., `UNIT_LINEAR_SCALE`).
 	ScaleType *string `pulumi:"scaleType"`
-	// Required. The type of the parameter.
-	Type *string `pulumi:"type"`
+	// The type of the parameter.
+	Type string `pulumi:"type"`
 }
 
 // GoogleCloudMlV1__ParameterSpecInput is an input type that accepts GoogleCloudMlV1__ParameterSpecArgs and GoogleCloudMlV1__ParameterSpecOutput values.
@@ -8559,12 +8559,12 @@ type GoogleCloudMlV1__ParameterSpecArgs struct {
 	MaxValue pulumi.Float64PtrInput `pulumi:"maxValue"`
 	// Required if type is `DOUBLE` or `INTEGER`. This field should be unset if type is `CATEGORICAL`. This value should be integers if type is INTEGER.
 	MinValue pulumi.Float64PtrInput `pulumi:"minValue"`
-	// Required. The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
-	ParameterName pulumi.StringPtrInput `pulumi:"parameterName"`
+	// The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
+	ParameterName pulumi.StringInput `pulumi:"parameterName"`
 	// Optional. How the parameter should be scaled to the hypercube. Leave unset for categorical parameters. Some kind of scaling is strongly recommended for real or integral parameters (e.g., `UNIT_LINEAR_SCALE`).
 	ScaleType *GoogleCloudMlV1__ParameterSpecScaleType `pulumi:"scaleType"`
-	// Required. The type of the parameter.
-	Type *GoogleCloudMlV1__ParameterSpecType `pulumi:"type"`
+	// The type of the parameter.
+	Type GoogleCloudMlV1__ParameterSpecType `pulumi:"type"`
 }
 
 func (GoogleCloudMlV1__ParameterSpecArgs) ElementType() reflect.Type {
@@ -8639,9 +8639,9 @@ func (o GoogleCloudMlV1__ParameterSpecOutput) MinValue() pulumi.Float64PtrOutput
 	return o.ApplyT(func(v GoogleCloudMlV1__ParameterSpec) *float64 { return v.MinValue }).(pulumi.Float64PtrOutput)
 }
 
-// Required. The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
-func (o GoogleCloudMlV1__ParameterSpecOutput) ParameterName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__ParameterSpec) *string { return v.ParameterName }).(pulumi.StringPtrOutput)
+// The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
+func (o GoogleCloudMlV1__ParameterSpecOutput) ParameterName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__ParameterSpec) string { return v.ParameterName }).(pulumi.StringOutput)
 }
 
 // Optional. How the parameter should be scaled to the hypercube. Leave unset for categorical parameters. Some kind of scaling is strongly recommended for real or integral parameters (e.g., `UNIT_LINEAR_SCALE`).
@@ -8649,9 +8649,9 @@ func (o GoogleCloudMlV1__ParameterSpecOutput) ScaleType() pulumi.StringPtrOutput
 	return o.ApplyT(func(v GoogleCloudMlV1__ParameterSpec) *string { return v.ScaleType }).(pulumi.StringPtrOutput)
 }
 
-// Required. The type of the parameter.
-func (o GoogleCloudMlV1__ParameterSpecOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__ParameterSpec) *string { return v.Type }).(pulumi.StringPtrOutput)
+// The type of the parameter.
+func (o GoogleCloudMlV1__ParameterSpecOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__ParameterSpec) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type GoogleCloudMlV1__ParameterSpecArrayOutput struct{ *pulumi.OutputState }
@@ -8684,11 +8684,11 @@ type GoogleCloudMlV1__ParameterSpecResponse struct {
 	MaxValue float64 `pulumi:"maxValue"`
 	// Required if type is `DOUBLE` or `INTEGER`. This field should be unset if type is `CATEGORICAL`. This value should be integers if type is INTEGER.
 	MinValue float64 `pulumi:"minValue"`
-	// Required. The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
+	// The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
 	ParameterName string `pulumi:"parameterName"`
 	// Optional. How the parameter should be scaled to the hypercube. Leave unset for categorical parameters. Some kind of scaling is strongly recommended for real or integral parameters (e.g., `UNIT_LINEAR_SCALE`).
 	ScaleType string `pulumi:"scaleType"`
-	// Required. The type of the parameter.
+	// The type of the parameter.
 	Type string `pulumi:"type"`
 }
 
@@ -8713,11 +8713,11 @@ type GoogleCloudMlV1__ParameterSpecResponseArgs struct {
 	MaxValue pulumi.Float64Input `pulumi:"maxValue"`
 	// Required if type is `DOUBLE` or `INTEGER`. This field should be unset if type is `CATEGORICAL`. This value should be integers if type is INTEGER.
 	MinValue pulumi.Float64Input `pulumi:"minValue"`
-	// Required. The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
+	// The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
 	ParameterName pulumi.StringInput `pulumi:"parameterName"`
 	// Optional. How the parameter should be scaled to the hypercube. Leave unset for categorical parameters. Some kind of scaling is strongly recommended for real or integral parameters (e.g., `UNIT_LINEAR_SCALE`).
 	ScaleType pulumi.StringInput `pulumi:"scaleType"`
-	// Required. The type of the parameter.
+	// The type of the parameter.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -8793,7 +8793,7 @@ func (o GoogleCloudMlV1__ParameterSpecResponseOutput) MinValue() pulumi.Float64O
 	return o.ApplyT(func(v GoogleCloudMlV1__ParameterSpecResponse) float64 { return v.MinValue }).(pulumi.Float64Output)
 }
 
-// Required. The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
+// The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
 func (o GoogleCloudMlV1__ParameterSpecResponseOutput) ParameterName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__ParameterSpecResponse) string { return v.ParameterName }).(pulumi.StringOutput)
 }
@@ -8803,7 +8803,7 @@ func (o GoogleCloudMlV1__ParameterSpecResponseOutput) ScaleType() pulumi.StringO
 	return o.ApplyT(func(v GoogleCloudMlV1__ParameterSpecResponse) string { return v.ScaleType }).(pulumi.StringOutput)
 }
 
-// Required. The type of the parameter.
+// The type of the parameter.
 func (o GoogleCloudMlV1__ParameterSpecResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__ParameterSpecResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -8832,9 +8832,9 @@ func (o GoogleCloudMlV1__ParameterSpecResponseArrayOutput) Index(i pulumi.IntInp
 type GoogleCloudMlV1__PredictionInput struct {
 	// Optional. Number of records per batch, defaults to 64. The service will buffer batch_size number of records in memory before invoking one Tensorflow prediction call internally. So take the record size and memory available into consideration when setting this parameter.
 	BatchSize *string `pulumi:"batchSize"`
-	// Required. The format of the input data files.
-	DataFormat *string `pulumi:"dataFormat"`
-	// Required. The Cloud Storage location of the input data files. May contain wildcards.
+	// The format of the input data files.
+	DataFormat string `pulumi:"dataFormat"`
+	// The Cloud Storage location of the input data files. May contain wildcards.
 	InputPaths []string `pulumi:"inputPaths"`
 	// Optional. The maximum number of workers to be used for parallel processing. Defaults to 10 if not specified.
 	MaxWorkerCount *string `pulumi:"maxWorkerCount"`
@@ -8842,10 +8842,10 @@ type GoogleCloudMlV1__PredictionInput struct {
 	ModelName *string `pulumi:"modelName"`
 	// Optional. Format of the output data files, defaults to JSON.
 	OutputDataFormat *string `pulumi:"outputDataFormat"`
-	// Required. The output Google Cloud Storage location.
-	OutputPath *string `pulumi:"outputPath"`
-	// Required. The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
-	Region *string `pulumi:"region"`
+	// The output Google Cloud Storage location.
+	OutputPath string `pulumi:"outputPath"`
+	// The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
+	Region string `pulumi:"region"`
 	// Optional. The AI Platform runtime version to use for this batch prediction. If not set, AI Platform will pick the runtime version used during the CreateVersion request for this model version, or choose the latest stable version when model version information is not available such as when the model is specified by uri.
 	RuntimeVersion *string `pulumi:"runtimeVersion"`
 	// Optional. The name of the signature defined in the SavedModel to use for this job. Please refer to [SavedModel](https://tensorflow.github.io/serving/serving_basic.html) for information about how to use signatures. Defaults to [DEFAULT_SERVING_SIGNATURE_DEF_KEY](https://www.tensorflow.org/api_docs/python/tf/saved_model/signature_constants) , which is "serving_default".
@@ -8871,9 +8871,9 @@ type GoogleCloudMlV1__PredictionInputInput interface {
 type GoogleCloudMlV1__PredictionInputArgs struct {
 	// Optional. Number of records per batch, defaults to 64. The service will buffer batch_size number of records in memory before invoking one Tensorflow prediction call internally. So take the record size and memory available into consideration when setting this parameter.
 	BatchSize pulumi.StringPtrInput `pulumi:"batchSize"`
-	// Required. The format of the input data files.
-	DataFormat *GoogleCloudMlV1__PredictionInputDataFormat `pulumi:"dataFormat"`
-	// Required. The Cloud Storage location of the input data files. May contain wildcards.
+	// The format of the input data files.
+	DataFormat GoogleCloudMlV1__PredictionInputDataFormat `pulumi:"dataFormat"`
+	// The Cloud Storage location of the input data files. May contain wildcards.
 	InputPaths pulumi.StringArrayInput `pulumi:"inputPaths"`
 	// Optional. The maximum number of workers to be used for parallel processing. Defaults to 10 if not specified.
 	MaxWorkerCount pulumi.StringPtrInput `pulumi:"maxWorkerCount"`
@@ -8881,10 +8881,10 @@ type GoogleCloudMlV1__PredictionInputArgs struct {
 	ModelName pulumi.StringPtrInput `pulumi:"modelName"`
 	// Optional. Format of the output data files, defaults to JSON.
 	OutputDataFormat *GoogleCloudMlV1__PredictionInputOutputDataFormat `pulumi:"outputDataFormat"`
-	// Required. The output Google Cloud Storage location.
-	OutputPath pulumi.StringPtrInput `pulumi:"outputPath"`
-	// Required. The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The output Google Cloud Storage location.
+	OutputPath pulumi.StringInput `pulumi:"outputPath"`
+	// The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
+	Region pulumi.StringInput `pulumi:"region"`
 	// Optional. The AI Platform runtime version to use for this batch prediction. If not set, AI Platform will pick the runtime version used during the CreateVersion request for this model version, or choose the latest stable version when model version information is not available such as when the model is specified by uri.
 	RuntimeVersion pulumi.StringPtrInput `pulumi:"runtimeVersion"`
 	// Optional. The name of the signature defined in the SavedModel to use for this job. Please refer to [SavedModel](https://tensorflow.github.io/serving/serving_basic.html) for information about how to use signatures. Defaults to [DEFAULT_SERVING_SIGNATURE_DEF_KEY](https://www.tensorflow.org/api_docs/python/tf/saved_model/signature_constants) , which is "serving_default".
@@ -8978,12 +8978,12 @@ func (o GoogleCloudMlV1__PredictionInputOutput) BatchSize() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GoogleCloudMlV1__PredictionInput) *string { return v.BatchSize }).(pulumi.StringPtrOutput)
 }
 
-// Required. The format of the input data files.
-func (o GoogleCloudMlV1__PredictionInputOutput) DataFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__PredictionInput) *string { return v.DataFormat }).(pulumi.StringPtrOutput)
+// The format of the input data files.
+func (o GoogleCloudMlV1__PredictionInputOutput) DataFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__PredictionInput) string { return v.DataFormat }).(pulumi.StringOutput)
 }
 
-// Required. The Cloud Storage location of the input data files. May contain wildcards.
+// The Cloud Storage location of the input data files. May contain wildcards.
 func (o GoogleCloudMlV1__PredictionInputOutput) InputPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__PredictionInput) []string { return v.InputPaths }).(pulumi.StringArrayOutput)
 }
@@ -9003,14 +9003,14 @@ func (o GoogleCloudMlV1__PredictionInputOutput) OutputDataFormat() pulumi.String
 	return o.ApplyT(func(v GoogleCloudMlV1__PredictionInput) *string { return v.OutputDataFormat }).(pulumi.StringPtrOutput)
 }
 
-// Required. The output Google Cloud Storage location.
-func (o GoogleCloudMlV1__PredictionInputOutput) OutputPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__PredictionInput) *string { return v.OutputPath }).(pulumi.StringPtrOutput)
+// The output Google Cloud Storage location.
+func (o GoogleCloudMlV1__PredictionInputOutput) OutputPath() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__PredictionInput) string { return v.OutputPath }).(pulumi.StringOutput)
 }
 
-// Required. The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
-func (o GoogleCloudMlV1__PredictionInputOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__PredictionInput) *string { return v.Region }).(pulumi.StringPtrOutput)
+// The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
+func (o GoogleCloudMlV1__PredictionInputOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__PredictionInput) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // Optional. The AI Platform runtime version to use for this batch prediction. If not set, AI Platform will pick the runtime version used during the CreateVersion request for this model version, or choose the latest stable version when model version information is not available such as when the model is specified by uri.
@@ -9061,17 +9061,17 @@ func (o GoogleCloudMlV1__PredictionInputPtrOutput) BatchSize() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The format of the input data files.
+// The format of the input data files.
 func (o GoogleCloudMlV1__PredictionInputPtrOutput) DataFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionInput) *string {
 		if v == nil {
 			return nil
 		}
-		return v.DataFormat
+		return &v.DataFormat
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The Cloud Storage location of the input data files. May contain wildcards.
+// The Cloud Storage location of the input data files. May contain wildcards.
 func (o GoogleCloudMlV1__PredictionInputPtrOutput) InputPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionInput) []string {
 		if v == nil {
@@ -9111,23 +9111,23 @@ func (o GoogleCloudMlV1__PredictionInputPtrOutput) OutputDataFormat() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The output Google Cloud Storage location.
+// The output Google Cloud Storage location.
 func (o GoogleCloudMlV1__PredictionInputPtrOutput) OutputPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionInput) *string {
 		if v == nil {
 			return nil
 		}
-		return v.OutputPath
+		return &v.OutputPath
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
+// The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
 func (o GoogleCloudMlV1__PredictionInputPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionInput) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Region
+		return &v.Region
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -9175,9 +9175,9 @@ func (o GoogleCloudMlV1__PredictionInputPtrOutput) VersionName() pulumi.StringPt
 type GoogleCloudMlV1__PredictionInputResponse struct {
 	// Optional. Number of records per batch, defaults to 64. The service will buffer batch_size number of records in memory before invoking one Tensorflow prediction call internally. So take the record size and memory available into consideration when setting this parameter.
 	BatchSize string `pulumi:"batchSize"`
-	// Required. The format of the input data files.
+	// The format of the input data files.
 	DataFormat string `pulumi:"dataFormat"`
-	// Required. The Cloud Storage location of the input data files. May contain wildcards.
+	// The Cloud Storage location of the input data files. May contain wildcards.
 	InputPaths []string `pulumi:"inputPaths"`
 	// Optional. The maximum number of workers to be used for parallel processing. Defaults to 10 if not specified.
 	MaxWorkerCount string `pulumi:"maxWorkerCount"`
@@ -9185,9 +9185,9 @@ type GoogleCloudMlV1__PredictionInputResponse struct {
 	ModelName string `pulumi:"modelName"`
 	// Optional. Format of the output data files, defaults to JSON.
 	OutputDataFormat string `pulumi:"outputDataFormat"`
-	// Required. The output Google Cloud Storage location.
+	// The output Google Cloud Storage location.
 	OutputPath string `pulumi:"outputPath"`
-	// Required. The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
+	// The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
 	Region string `pulumi:"region"`
 	// Optional. The AI Platform runtime version to use for this batch prediction. If not set, AI Platform will pick the runtime version used during the CreateVersion request for this model version, or choose the latest stable version when model version information is not available such as when the model is specified by uri.
 	RuntimeVersion string `pulumi:"runtimeVersion"`
@@ -9214,9 +9214,9 @@ type GoogleCloudMlV1__PredictionInputResponseInput interface {
 type GoogleCloudMlV1__PredictionInputResponseArgs struct {
 	// Optional. Number of records per batch, defaults to 64. The service will buffer batch_size number of records in memory before invoking one Tensorflow prediction call internally. So take the record size and memory available into consideration when setting this parameter.
 	BatchSize pulumi.StringInput `pulumi:"batchSize"`
-	// Required. The format of the input data files.
+	// The format of the input data files.
 	DataFormat pulumi.StringInput `pulumi:"dataFormat"`
-	// Required. The Cloud Storage location of the input data files. May contain wildcards.
+	// The Cloud Storage location of the input data files. May contain wildcards.
 	InputPaths pulumi.StringArrayInput `pulumi:"inputPaths"`
 	// Optional. The maximum number of workers to be used for parallel processing. Defaults to 10 if not specified.
 	MaxWorkerCount pulumi.StringInput `pulumi:"maxWorkerCount"`
@@ -9224,9 +9224,9 @@ type GoogleCloudMlV1__PredictionInputResponseArgs struct {
 	ModelName pulumi.StringInput `pulumi:"modelName"`
 	// Optional. Format of the output data files, defaults to JSON.
 	OutputDataFormat pulumi.StringInput `pulumi:"outputDataFormat"`
-	// Required. The output Google Cloud Storage location.
+	// The output Google Cloud Storage location.
 	OutputPath pulumi.StringInput `pulumi:"outputPath"`
-	// Required. The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
+	// The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
 	Region pulumi.StringInput `pulumi:"region"`
 	// Optional. The AI Platform runtime version to use for this batch prediction. If not set, AI Platform will pick the runtime version used during the CreateVersion request for this model version, or choose the latest stable version when model version information is not available such as when the model is specified by uri.
 	RuntimeVersion pulumi.StringInput `pulumi:"runtimeVersion"`
@@ -9321,12 +9321,12 @@ func (o GoogleCloudMlV1__PredictionInputResponseOutput) BatchSize() pulumi.Strin
 	return o.ApplyT(func(v GoogleCloudMlV1__PredictionInputResponse) string { return v.BatchSize }).(pulumi.StringOutput)
 }
 
-// Required. The format of the input data files.
+// The format of the input data files.
 func (o GoogleCloudMlV1__PredictionInputResponseOutput) DataFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__PredictionInputResponse) string { return v.DataFormat }).(pulumi.StringOutput)
 }
 
-// Required. The Cloud Storage location of the input data files. May contain wildcards.
+// The Cloud Storage location of the input data files. May contain wildcards.
 func (o GoogleCloudMlV1__PredictionInputResponseOutput) InputPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__PredictionInputResponse) []string { return v.InputPaths }).(pulumi.StringArrayOutput)
 }
@@ -9346,12 +9346,12 @@ func (o GoogleCloudMlV1__PredictionInputResponseOutput) OutputDataFormat() pulum
 	return o.ApplyT(func(v GoogleCloudMlV1__PredictionInputResponse) string { return v.OutputDataFormat }).(pulumi.StringOutput)
 }
 
-// Required. The output Google Cloud Storage location.
+// The output Google Cloud Storage location.
 func (o GoogleCloudMlV1__PredictionInputResponseOutput) OutputPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__PredictionInputResponse) string { return v.OutputPath }).(pulumi.StringOutput)
 }
 
-// Required. The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
+// The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
 func (o GoogleCloudMlV1__PredictionInputResponseOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__PredictionInputResponse) string { return v.Region }).(pulumi.StringOutput)
 }
@@ -9404,7 +9404,7 @@ func (o GoogleCloudMlV1__PredictionInputResponsePtrOutput) BatchSize() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The format of the input data files.
+// The format of the input data files.
 func (o GoogleCloudMlV1__PredictionInputResponsePtrOutput) DataFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionInputResponse) *string {
 		if v == nil {
@@ -9414,7 +9414,7 @@ func (o GoogleCloudMlV1__PredictionInputResponsePtrOutput) DataFormat() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The Cloud Storage location of the input data files. May contain wildcards.
+// The Cloud Storage location of the input data files. May contain wildcards.
 func (o GoogleCloudMlV1__PredictionInputResponsePtrOutput) InputPaths() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionInputResponse) []string {
 		if v == nil {
@@ -9454,7 +9454,7 @@ func (o GoogleCloudMlV1__PredictionInputResponsePtrOutput) OutputDataFormat() pu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The output Google Cloud Storage location.
+// The output Google Cloud Storage location.
 func (o GoogleCloudMlV1__PredictionInputResponsePtrOutput) OutputPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionInputResponse) *string {
 		if v == nil {
@@ -9464,7 +9464,7 @@ func (o GoogleCloudMlV1__PredictionInputResponsePtrOutput) OutputPath() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
+// The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
 func (o GoogleCloudMlV1__PredictionInputResponsePtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionInputResponse) *string {
 		if v == nil {
@@ -10362,8 +10362,8 @@ func (o GoogleCloudMlV1__ReplicaConfigResponsePtrOutput) TpuTfVersion() pulumi.S
 
 // Configuration for logging request-response pairs to a BigQuery table. Online prediction requests to a model version and the responses to these requests are converted to raw strings and saved to the specified BigQuery table. Logging is constrained by [BigQuery quotas and limits](/bigquery/quotas). If your project exceeds BigQuery quotas or limits, AI Platform Prediction does not log request-response pairs, but it continues to serve predictions. If you are using [continuous evaluation](/ml-engine/docs/continuous-evaluation/), you do not need to specify this configuration manually. Setting up continuous evaluation automatically enables logging of request-response pairs.
 type GoogleCloudMlV1__RequestLoggingConfig struct {
-	// Required. Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE
-	BigqueryTableName *string `pulumi:"bigqueryTableName"`
+	// Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE
+	BigqueryTableName string `pulumi:"bigqueryTableName"`
 	// Percentage of requests to be logged, expressed as a fraction from 0 to 1. For example, if you want to log 10% of requests, enter `0.1`. The sampling window is the lifetime of the model version. Defaults to 0.
 	SamplingPercentage *float64 `pulumi:"samplingPercentage"`
 }
@@ -10381,8 +10381,8 @@ type GoogleCloudMlV1__RequestLoggingConfigInput interface {
 
 // Configuration for logging request-response pairs to a BigQuery table. Online prediction requests to a model version and the responses to these requests are converted to raw strings and saved to the specified BigQuery table. Logging is constrained by [BigQuery quotas and limits](/bigquery/quotas). If your project exceeds BigQuery quotas or limits, AI Platform Prediction does not log request-response pairs, but it continues to serve predictions. If you are using [continuous evaluation](/ml-engine/docs/continuous-evaluation/), you do not need to specify this configuration manually. Setting up continuous evaluation automatically enables logging of request-response pairs.
 type GoogleCloudMlV1__RequestLoggingConfigArgs struct {
-	// Required. Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE
-	BigqueryTableName pulumi.StringPtrInput `pulumi:"bigqueryTableName"`
+	// Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE
+	BigqueryTableName pulumi.StringInput `pulumi:"bigqueryTableName"`
 	// Percentage of requests to be logged, expressed as a fraction from 0 to 1. For example, if you want to log 10% of requests, enter `0.1`. The sampling window is the lifetime of the model version. Defaults to 0.
 	SamplingPercentage pulumi.Float64PtrInput `pulumi:"samplingPercentage"`
 }
@@ -10465,9 +10465,9 @@ func (o GoogleCloudMlV1__RequestLoggingConfigOutput) ToGoogleCloudMlV1__RequestL
 	}).(GoogleCloudMlV1__RequestLoggingConfigPtrOutput)
 }
 
-// Required. Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE
-func (o GoogleCloudMlV1__RequestLoggingConfigOutput) BigqueryTableName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__RequestLoggingConfig) *string { return v.BigqueryTableName }).(pulumi.StringPtrOutput)
+// Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE
+func (o GoogleCloudMlV1__RequestLoggingConfigOutput) BigqueryTableName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__RequestLoggingConfig) string { return v.BigqueryTableName }).(pulumi.StringOutput)
 }
 
 // Percentage of requests to be logged, expressed as a fraction from 0 to 1. For example, if you want to log 10% of requests, enter `0.1`. The sampling window is the lifetime of the model version. Defaults to 0.
@@ -10493,13 +10493,13 @@ func (o GoogleCloudMlV1__RequestLoggingConfigPtrOutput) Elem() GoogleCloudMlV1__
 	return o.ApplyT(func(v *GoogleCloudMlV1__RequestLoggingConfig) GoogleCloudMlV1__RequestLoggingConfig { return *v }).(GoogleCloudMlV1__RequestLoggingConfigOutput)
 }
 
-// Required. Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE
+// Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE
 func (o GoogleCloudMlV1__RequestLoggingConfigPtrOutput) BigqueryTableName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__RequestLoggingConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.BigqueryTableName
+		return &v.BigqueryTableName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -10515,7 +10515,7 @@ func (o GoogleCloudMlV1__RequestLoggingConfigPtrOutput) SamplingPercentage() pul
 
 // Configuration for logging request-response pairs to a BigQuery table. Online prediction requests to a model version and the responses to these requests are converted to raw strings and saved to the specified BigQuery table. Logging is constrained by [BigQuery quotas and limits](/bigquery/quotas). If your project exceeds BigQuery quotas or limits, AI Platform Prediction does not log request-response pairs, but it continues to serve predictions. If you are using [continuous evaluation](/ml-engine/docs/continuous-evaluation/), you do not need to specify this configuration manually. Setting up continuous evaluation automatically enables logging of request-response pairs.
 type GoogleCloudMlV1__RequestLoggingConfigResponse struct {
-	// Required. Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE
+	// Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE
 	BigqueryTableName string `pulumi:"bigqueryTableName"`
 	// Percentage of requests to be logged, expressed as a fraction from 0 to 1. For example, if you want to log 10% of requests, enter `0.1`. The sampling window is the lifetime of the model version. Defaults to 0.
 	SamplingPercentage float64 `pulumi:"samplingPercentage"`
@@ -10534,7 +10534,7 @@ type GoogleCloudMlV1__RequestLoggingConfigResponseInput interface {
 
 // Configuration for logging request-response pairs to a BigQuery table. Online prediction requests to a model version and the responses to these requests are converted to raw strings and saved to the specified BigQuery table. Logging is constrained by [BigQuery quotas and limits](/bigquery/quotas). If your project exceeds BigQuery quotas or limits, AI Platform Prediction does not log request-response pairs, but it continues to serve predictions. If you are using [continuous evaluation](/ml-engine/docs/continuous-evaluation/), you do not need to specify this configuration manually. Setting up continuous evaluation automatically enables logging of request-response pairs.
 type GoogleCloudMlV1__RequestLoggingConfigResponseArgs struct {
-	// Required. Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE
+	// Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE
 	BigqueryTableName pulumi.StringInput `pulumi:"bigqueryTableName"`
 	// Percentage of requests to be logged, expressed as a fraction from 0 to 1. For example, if you want to log 10% of requests, enter `0.1`. The sampling window is the lifetime of the model version. Defaults to 0.
 	SamplingPercentage pulumi.Float64Input `pulumi:"samplingPercentage"`
@@ -10618,7 +10618,7 @@ func (o GoogleCloudMlV1__RequestLoggingConfigResponseOutput) ToGoogleCloudMlV1__
 	}).(GoogleCloudMlV1__RequestLoggingConfigResponsePtrOutput)
 }
 
-// Required. Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE
+// Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE
 func (o GoogleCloudMlV1__RequestLoggingConfigResponseOutput) BigqueryTableName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__RequestLoggingConfigResponse) string { return v.BigqueryTableName }).(pulumi.StringOutput)
 }
@@ -10648,7 +10648,7 @@ func (o GoogleCloudMlV1__RequestLoggingConfigResponsePtrOutput) Elem() GoogleClo
 	}).(GoogleCloudMlV1__RequestLoggingConfigResponseOutput)
 }
 
-// Required. Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE
+// Fully qualified BigQuery table name in the following format: " project_id.dataset_name.table_name" The specified table must already exist, and the "Cloud ML Service Agent" for your project must have permission to write to it. The table must have the following [schema](/bigquery/docs/schemas): Field nameType Mode model STRING REQUIRED model_version STRING REQUIRED time TIMESTAMP REQUIRED raw_data STRING REQUIRED raw_prediction STRING NULLABLE groundtruth STRING NULLABLE
 func (o GoogleCloudMlV1__RequestLoggingConfigResponsePtrOutput) BigqueryTableName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__RequestLoggingConfigResponse) *string {
 		if v == nil {
@@ -11560,7 +11560,7 @@ type GoogleCloudMlV1__StudyConfig struct {
 	AutomatedStoppingConfig *GoogleCloudMlV1__AutomatedStoppingConfig `pulumi:"automatedStoppingConfig"`
 	// Metric specs for the study.
 	Metrics []GoogleCloudMlV1_StudyConfig_MetricSpec `pulumi:"metrics"`
-	// Required. The set of parameters to tune.
+	// The set of parameters to tune.
 	Parameters []GoogleCloudMlV1_StudyConfig_ParameterSpec `pulumi:"parameters"`
 }
 
@@ -11583,7 +11583,7 @@ type GoogleCloudMlV1__StudyConfigArgs struct {
 	AutomatedStoppingConfig GoogleCloudMlV1__AutomatedStoppingConfigPtrInput `pulumi:"automatedStoppingConfig"`
 	// Metric specs for the study.
 	Metrics GoogleCloudMlV1_StudyConfig_MetricSpecArrayInput `pulumi:"metrics"`
-	// Required. The set of parameters to tune.
+	// The set of parameters to tune.
 	Parameters GoogleCloudMlV1_StudyConfig_ParameterSpecArrayInput `pulumi:"parameters"`
 }
 
@@ -11682,7 +11682,7 @@ func (o GoogleCloudMlV1__StudyConfigOutput) Metrics() GoogleCloudMlV1_StudyConfi
 	return o.ApplyT(func(v GoogleCloudMlV1__StudyConfig) []GoogleCloudMlV1_StudyConfig_MetricSpec { return v.Metrics }).(GoogleCloudMlV1_StudyConfig_MetricSpecArrayOutput)
 }
 
-// Required. The set of parameters to tune.
+// The set of parameters to tune.
 func (o GoogleCloudMlV1__StudyConfigOutput) Parameters() GoogleCloudMlV1_StudyConfig_ParameterSpecArrayOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__StudyConfig) []GoogleCloudMlV1_StudyConfig_ParameterSpec { return v.Parameters }).(GoogleCloudMlV1_StudyConfig_ParameterSpecArrayOutput)
 }
@@ -11735,7 +11735,7 @@ func (o GoogleCloudMlV1__StudyConfigPtrOutput) Metrics() GoogleCloudMlV1_StudyCo
 	}).(GoogleCloudMlV1_StudyConfig_MetricSpecArrayOutput)
 }
 
-// Required. The set of parameters to tune.
+// The set of parameters to tune.
 func (o GoogleCloudMlV1__StudyConfigPtrOutput) Parameters() GoogleCloudMlV1_StudyConfig_ParameterSpecArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__StudyConfig) []GoogleCloudMlV1_StudyConfig_ParameterSpec {
 		if v == nil {
@@ -11753,7 +11753,7 @@ type GoogleCloudMlV1__StudyConfigResponse struct {
 	AutomatedStoppingConfig GoogleCloudMlV1__AutomatedStoppingConfigResponse `pulumi:"automatedStoppingConfig"`
 	// Metric specs for the study.
 	Metrics []GoogleCloudMlV1_StudyConfig_MetricSpecResponse `pulumi:"metrics"`
-	// Required. The set of parameters to tune.
+	// The set of parameters to tune.
 	Parameters []GoogleCloudMlV1_StudyConfig_ParameterSpecResponse `pulumi:"parameters"`
 }
 
@@ -11776,7 +11776,7 @@ type GoogleCloudMlV1__StudyConfigResponseArgs struct {
 	AutomatedStoppingConfig GoogleCloudMlV1__AutomatedStoppingConfigResponseInput `pulumi:"automatedStoppingConfig"`
 	// Metric specs for the study.
 	Metrics GoogleCloudMlV1_StudyConfig_MetricSpecResponseArrayInput `pulumi:"metrics"`
-	// Required. The set of parameters to tune.
+	// The set of parameters to tune.
 	Parameters GoogleCloudMlV1_StudyConfig_ParameterSpecResponseArrayInput `pulumi:"parameters"`
 }
 
@@ -11877,7 +11877,7 @@ func (o GoogleCloudMlV1__StudyConfigResponseOutput) Metrics() GoogleCloudMlV1_St
 	}).(GoogleCloudMlV1_StudyConfig_MetricSpecResponseArrayOutput)
 }
 
-// Required. The set of parameters to tune.
+// The set of parameters to tune.
 func (o GoogleCloudMlV1__StudyConfigResponseOutput) Parameters() GoogleCloudMlV1_StudyConfig_ParameterSpecResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__StudyConfigResponse) []GoogleCloudMlV1_StudyConfig_ParameterSpecResponse {
 		return v.Parameters
@@ -11932,7 +11932,7 @@ func (o GoogleCloudMlV1__StudyConfigResponsePtrOutput) Metrics() GoogleCloudMlV1
 	}).(GoogleCloudMlV1_StudyConfig_MetricSpecResponseArrayOutput)
 }
 
-// Required. The set of parameters to tune.
+// The set of parameters to tune.
 func (o GoogleCloudMlV1__StudyConfigResponsePtrOutput) Parameters() GoogleCloudMlV1_StudyConfig_ParameterSpecResponseArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__StudyConfigResponse) []GoogleCloudMlV1_StudyConfig_ParameterSpecResponse {
 		if v == nil {
@@ -11964,7 +11964,7 @@ type GoogleCloudMlV1__TrainingInput struct {
 	MasterType *string `pulumi:"masterType"`
 	// Optional. The full name of the [Compute Engine network](/vpc/docs/vpc) to which the Job is peered. For example, `projects/12345/global/networks/myVPC`. The format of this field is `projects/{project}/global/networks/{network}`, where {project} is a project number (like `12345`) and {network} is network name. Private services access must already be configured for the network. If left unspecified, the Job is not peered with any network. [Learn about using VPC Network Peering.](/ai-platform/training/docs/vpc-peering).
 	Network *string `pulumi:"network"`
-	// Required. The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
+	// The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
 	PackageUris []string `pulumi:"packageUris"`
 	// Optional. The configuration for parameter servers. You should only set `parameterServerConfig.acceleratorConfig` if `parameterServerType` is set to a Compute Engine machine type. [Learn about restrictions on accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu) Set `parameterServerConfig.imageUri` only if you build a custom image for your parameter server. If `parameterServerConfig.imageUri` has not been set, AI Platform uses the value of `masterConfig.imageUri`. Learn more about [configuring custom containers](/ai-platform/training/docs/distributed-training-containers).
 	ParameterServerConfig *GoogleCloudMlV1__ReplicaConfig `pulumi:"parameterServerConfig"`
@@ -11972,16 +11972,16 @@ type GoogleCloudMlV1__TrainingInput struct {
 	ParameterServerCount *string `pulumi:"parameterServerCount"`
 	// Optional. Specifies the type of virtual machine to use for your training job's parameter server. The supported values are the same as those described in the entry for `master_type`. This value must be consistent with the category of machine type that `masterType` uses. In other words, both must be Compute Engine machine types or both must be legacy machine types. This value must be present when `scaleTier` is set to `CUSTOM` and `parameter_server_count` is greater than zero.
 	ParameterServerType *string `pulumi:"parameterServerType"`
-	// Required. The Python module name to run after installing the packages.
-	PythonModule *string `pulumi:"pythonModule"`
+	// The Python module name to run after installing the packages.
+	PythonModule string `pulumi:"pythonModule"`
 	// Optional. The version of Python used in training. You must either specify this field or specify `masterConfig.imageUri`. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
 	PythonVersion *string `pulumi:"pythonVersion"`
-	// Required. The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
-	Region *string `pulumi:"region"`
+	// The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
+	Region string `pulumi:"region"`
 	// Optional. The AI Platform runtime version to use for training. You must either specify this field or specify `masterConfig.imageUri`. For more information, see the [runtime version list](/ai-platform/training/docs/runtime-version-list) and learn [how to manage runtime versions](/ai-platform/training/docs/versioning).
 	RuntimeVersion *string `pulumi:"runtimeVersion"`
-	// Required. Specifies the machine types, the number of replicas for workers and parameter servers.
-	ScaleTier *string `pulumi:"scaleTier"`
+	// Specifies the machine types, the number of replicas for workers and parameter servers.
+	ScaleTier string `pulumi:"scaleTier"`
 	// Optional. Scheduling options for a training job.
 	Scheduling *GoogleCloudMlV1__Scheduling `pulumi:"scheduling"`
 	// Optional. The email address of a service account to use when running the training appplication. You must have the `iam.serviceAccounts.actAs` permission for the specified service account. In addition, the AI Platform Training Google-managed service account must have the `roles/iam.serviceAccountAdmin` role for the specified service account. [Learn more about configuring a service account.](/ai-platform/training/docs/custom-service-account) If not specified, the AI Platform Training Google-managed service account is used by default.
@@ -12029,7 +12029,7 @@ type GoogleCloudMlV1__TrainingInputArgs struct {
 	MasterType pulumi.StringPtrInput `pulumi:"masterType"`
 	// Optional. The full name of the [Compute Engine network](/vpc/docs/vpc) to which the Job is peered. For example, `projects/12345/global/networks/myVPC`. The format of this field is `projects/{project}/global/networks/{network}`, where {project} is a project number (like `12345`) and {network} is network name. Private services access must already be configured for the network. If left unspecified, the Job is not peered with any network. [Learn about using VPC Network Peering.](/ai-platform/training/docs/vpc-peering).
 	Network pulumi.StringPtrInput `pulumi:"network"`
-	// Required. The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
+	// The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
 	PackageUris pulumi.StringArrayInput `pulumi:"packageUris"`
 	// Optional. The configuration for parameter servers. You should only set `parameterServerConfig.acceleratorConfig` if `parameterServerType` is set to a Compute Engine machine type. [Learn about restrictions on accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu) Set `parameterServerConfig.imageUri` only if you build a custom image for your parameter server. If `parameterServerConfig.imageUri` has not been set, AI Platform uses the value of `masterConfig.imageUri`. Learn more about [configuring custom containers](/ai-platform/training/docs/distributed-training-containers).
 	ParameterServerConfig GoogleCloudMlV1__ReplicaConfigPtrInput `pulumi:"parameterServerConfig"`
@@ -12037,16 +12037,16 @@ type GoogleCloudMlV1__TrainingInputArgs struct {
 	ParameterServerCount pulumi.StringPtrInput `pulumi:"parameterServerCount"`
 	// Optional. Specifies the type of virtual machine to use for your training job's parameter server. The supported values are the same as those described in the entry for `master_type`. This value must be consistent with the category of machine type that `masterType` uses. In other words, both must be Compute Engine machine types or both must be legacy machine types. This value must be present when `scaleTier` is set to `CUSTOM` and `parameter_server_count` is greater than zero.
 	ParameterServerType pulumi.StringPtrInput `pulumi:"parameterServerType"`
-	// Required. The Python module name to run after installing the packages.
-	PythonModule pulumi.StringPtrInput `pulumi:"pythonModule"`
+	// The Python module name to run after installing the packages.
+	PythonModule pulumi.StringInput `pulumi:"pythonModule"`
 	// Optional. The version of Python used in training. You must either specify this field or specify `masterConfig.imageUri`. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
 	PythonVersion pulumi.StringPtrInput `pulumi:"pythonVersion"`
-	// Required. The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
-	Region pulumi.StringPtrInput `pulumi:"region"`
+	// The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
+	Region pulumi.StringInput `pulumi:"region"`
 	// Optional. The AI Platform runtime version to use for training. You must either specify this field or specify `masterConfig.imageUri`. For more information, see the [runtime version list](/ai-platform/training/docs/runtime-version-list) and learn [how to manage runtime versions](/ai-platform/training/docs/versioning).
 	RuntimeVersion pulumi.StringPtrInput `pulumi:"runtimeVersion"`
-	// Required. Specifies the machine types, the number of replicas for workers and parameter servers.
-	ScaleTier *GoogleCloudMlV1__TrainingInputScaleTier `pulumi:"scaleTier"`
+	// Specifies the machine types, the number of replicas for workers and parameter servers.
+	ScaleTier GoogleCloudMlV1__TrainingInputScaleTier `pulumi:"scaleTier"`
 	// Optional. Scheduling options for a training job.
 	Scheduling GoogleCloudMlV1__SchedulingPtrInput `pulumi:"scheduling"`
 	// Optional. The email address of a service account to use when running the training appplication. You must have the `iam.serviceAccounts.actAs` permission for the specified service account. In addition, the AI Platform Training Google-managed service account must have the `roles/iam.serviceAccountAdmin` role for the specified service account. [Learn more about configuring a service account.](/ai-platform/training/docs/custom-service-account) If not specified, the AI Platform Training Google-managed service account is used by default.
@@ -12189,7 +12189,7 @@ func (o GoogleCloudMlV1__TrainingInputOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInput) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// Required. The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
+// The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
 func (o GoogleCloudMlV1__TrainingInputOutput) PackageUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInput) []string { return v.PackageUris }).(pulumi.StringArrayOutput)
 }
@@ -12209,9 +12209,9 @@ func (o GoogleCloudMlV1__TrainingInputOutput) ParameterServerType() pulumi.Strin
 	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInput) *string { return v.ParameterServerType }).(pulumi.StringPtrOutput)
 }
 
-// Required. The Python module name to run after installing the packages.
-func (o GoogleCloudMlV1__TrainingInputOutput) PythonModule() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInput) *string { return v.PythonModule }).(pulumi.StringPtrOutput)
+// The Python module name to run after installing the packages.
+func (o GoogleCloudMlV1__TrainingInputOutput) PythonModule() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInput) string { return v.PythonModule }).(pulumi.StringOutput)
 }
 
 // Optional. The version of Python used in training. You must either specify this field or specify `masterConfig.imageUri`. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
@@ -12219,9 +12219,9 @@ func (o GoogleCloudMlV1__TrainingInputOutput) PythonVersion() pulumi.StringPtrOu
 	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInput) *string { return v.PythonVersion }).(pulumi.StringPtrOutput)
 }
 
-// Required. The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
-func (o GoogleCloudMlV1__TrainingInputOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInput) *string { return v.Region }).(pulumi.StringPtrOutput)
+// The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
+func (o GoogleCloudMlV1__TrainingInputOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInput) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // Optional. The AI Platform runtime version to use for training. You must either specify this field or specify `masterConfig.imageUri`. For more information, see the [runtime version list](/ai-platform/training/docs/runtime-version-list) and learn [how to manage runtime versions](/ai-platform/training/docs/versioning).
@@ -12229,9 +12229,9 @@ func (o GoogleCloudMlV1__TrainingInputOutput) RuntimeVersion() pulumi.StringPtrO
 	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInput) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
 }
 
-// Required. Specifies the machine types, the number of replicas for workers and parameter servers.
-func (o GoogleCloudMlV1__TrainingInputOutput) ScaleTier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInput) *string { return v.ScaleTier }).(pulumi.StringPtrOutput)
+// Specifies the machine types, the number of replicas for workers and parameter servers.
+func (o GoogleCloudMlV1__TrainingInputOutput) ScaleTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInput) string { return v.ScaleTier }).(pulumi.StringOutput)
 }
 
 // Optional. Scheduling options for a training job.
@@ -12382,7 +12382,7 @@ func (o GoogleCloudMlV1__TrainingInputPtrOutput) Network() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
+// The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
 func (o GoogleCloudMlV1__TrainingInputPtrOutput) PackageUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingInput) []string {
 		if v == nil {
@@ -12422,13 +12422,13 @@ func (o GoogleCloudMlV1__TrainingInputPtrOutput) ParameterServerType() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The Python module name to run after installing the packages.
+// The Python module name to run after installing the packages.
 func (o GoogleCloudMlV1__TrainingInputPtrOutput) PythonModule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingInput) *string {
 		if v == nil {
 			return nil
 		}
-		return v.PythonModule
+		return &v.PythonModule
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12442,13 +12442,13 @@ func (o GoogleCloudMlV1__TrainingInputPtrOutput) PythonVersion() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
+// The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
 func (o GoogleCloudMlV1__TrainingInputPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingInput) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Region
+		return &v.Region
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12462,13 +12462,13 @@ func (o GoogleCloudMlV1__TrainingInputPtrOutput) RuntimeVersion() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Specifies the machine types, the number of replicas for workers and parameter servers.
+// Specifies the machine types, the number of replicas for workers and parameter servers.
 func (o GoogleCloudMlV1__TrainingInputPtrOutput) ScaleTier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingInput) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ScaleTier
+		return &v.ScaleTier
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -12554,7 +12554,7 @@ type GoogleCloudMlV1__TrainingInputResponse struct {
 	MasterType string `pulumi:"masterType"`
 	// Optional. The full name of the [Compute Engine network](/vpc/docs/vpc) to which the Job is peered. For example, `projects/12345/global/networks/myVPC`. The format of this field is `projects/{project}/global/networks/{network}`, where {project} is a project number (like `12345`) and {network} is network name. Private services access must already be configured for the network. If left unspecified, the Job is not peered with any network. [Learn about using VPC Network Peering.](/ai-platform/training/docs/vpc-peering).
 	Network string `pulumi:"network"`
-	// Required. The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
+	// The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
 	PackageUris []string `pulumi:"packageUris"`
 	// Optional. The configuration for parameter servers. You should only set `parameterServerConfig.acceleratorConfig` if `parameterServerType` is set to a Compute Engine machine type. [Learn about restrictions on accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu) Set `parameterServerConfig.imageUri` only if you build a custom image for your parameter server. If `parameterServerConfig.imageUri` has not been set, AI Platform uses the value of `masterConfig.imageUri`. Learn more about [configuring custom containers](/ai-platform/training/docs/distributed-training-containers).
 	ParameterServerConfig GoogleCloudMlV1__ReplicaConfigResponse `pulumi:"parameterServerConfig"`
@@ -12562,15 +12562,15 @@ type GoogleCloudMlV1__TrainingInputResponse struct {
 	ParameterServerCount string `pulumi:"parameterServerCount"`
 	// Optional. Specifies the type of virtual machine to use for your training job's parameter server. The supported values are the same as those described in the entry for `master_type`. This value must be consistent with the category of machine type that `masterType` uses. In other words, both must be Compute Engine machine types or both must be legacy machine types. This value must be present when `scaleTier` is set to `CUSTOM` and `parameter_server_count` is greater than zero.
 	ParameterServerType string `pulumi:"parameterServerType"`
-	// Required. The Python module name to run after installing the packages.
+	// The Python module name to run after installing the packages.
 	PythonModule string `pulumi:"pythonModule"`
 	// Optional. The version of Python used in training. You must either specify this field or specify `masterConfig.imageUri`. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
 	PythonVersion string `pulumi:"pythonVersion"`
-	// Required. The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
+	// The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
 	Region string `pulumi:"region"`
 	// Optional. The AI Platform runtime version to use for training. You must either specify this field or specify `masterConfig.imageUri`. For more information, see the [runtime version list](/ai-platform/training/docs/runtime-version-list) and learn [how to manage runtime versions](/ai-platform/training/docs/versioning).
 	RuntimeVersion string `pulumi:"runtimeVersion"`
-	// Required. Specifies the machine types, the number of replicas for workers and parameter servers.
+	// Specifies the machine types, the number of replicas for workers and parameter servers.
 	ScaleTier string `pulumi:"scaleTier"`
 	// Optional. Scheduling options for a training job.
 	Scheduling GoogleCloudMlV1__SchedulingResponse `pulumi:"scheduling"`
@@ -12619,7 +12619,7 @@ type GoogleCloudMlV1__TrainingInputResponseArgs struct {
 	MasterType pulumi.StringInput `pulumi:"masterType"`
 	// Optional. The full name of the [Compute Engine network](/vpc/docs/vpc) to which the Job is peered. For example, `projects/12345/global/networks/myVPC`. The format of this field is `projects/{project}/global/networks/{network}`, where {project} is a project number (like `12345`) and {network} is network name. Private services access must already be configured for the network. If left unspecified, the Job is not peered with any network. [Learn about using VPC Network Peering.](/ai-platform/training/docs/vpc-peering).
 	Network pulumi.StringInput `pulumi:"network"`
-	// Required. The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
+	// The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
 	PackageUris pulumi.StringArrayInput `pulumi:"packageUris"`
 	// Optional. The configuration for parameter servers. You should only set `parameterServerConfig.acceleratorConfig` if `parameterServerType` is set to a Compute Engine machine type. [Learn about restrictions on accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu) Set `parameterServerConfig.imageUri` only if you build a custom image for your parameter server. If `parameterServerConfig.imageUri` has not been set, AI Platform uses the value of `masterConfig.imageUri`. Learn more about [configuring custom containers](/ai-platform/training/docs/distributed-training-containers).
 	ParameterServerConfig GoogleCloudMlV1__ReplicaConfigResponseInput `pulumi:"parameterServerConfig"`
@@ -12627,15 +12627,15 @@ type GoogleCloudMlV1__TrainingInputResponseArgs struct {
 	ParameterServerCount pulumi.StringInput `pulumi:"parameterServerCount"`
 	// Optional. Specifies the type of virtual machine to use for your training job's parameter server. The supported values are the same as those described in the entry for `master_type`. This value must be consistent with the category of machine type that `masterType` uses. In other words, both must be Compute Engine machine types or both must be legacy machine types. This value must be present when `scaleTier` is set to `CUSTOM` and `parameter_server_count` is greater than zero.
 	ParameterServerType pulumi.StringInput `pulumi:"parameterServerType"`
-	// Required. The Python module name to run after installing the packages.
+	// The Python module name to run after installing the packages.
 	PythonModule pulumi.StringInput `pulumi:"pythonModule"`
 	// Optional. The version of Python used in training. You must either specify this field or specify `masterConfig.imageUri`. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
 	PythonVersion pulumi.StringInput `pulumi:"pythonVersion"`
-	// Required. The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
+	// The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
 	Region pulumi.StringInput `pulumi:"region"`
 	// Optional. The AI Platform runtime version to use for training. You must either specify this field or specify `masterConfig.imageUri`. For more information, see the [runtime version list](/ai-platform/training/docs/runtime-version-list) and learn [how to manage runtime versions](/ai-platform/training/docs/versioning).
 	RuntimeVersion pulumi.StringInput `pulumi:"runtimeVersion"`
-	// Required. Specifies the machine types, the number of replicas for workers and parameter servers.
+	// Specifies the machine types, the number of replicas for workers and parameter servers.
 	ScaleTier pulumi.StringInput `pulumi:"scaleTier"`
 	// Optional. Scheduling options for a training job.
 	Scheduling GoogleCloudMlV1__SchedulingResponseInput `pulumi:"scheduling"`
@@ -12787,7 +12787,7 @@ func (o GoogleCloudMlV1__TrainingInputResponseOutput) Network() pulumi.StringOut
 	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInputResponse) string { return v.Network }).(pulumi.StringOutput)
 }
 
-// Required. The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
+// The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
 func (o GoogleCloudMlV1__TrainingInputResponseOutput) PackageUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInputResponse) []string { return v.PackageUris }).(pulumi.StringArrayOutput)
 }
@@ -12809,7 +12809,7 @@ func (o GoogleCloudMlV1__TrainingInputResponseOutput) ParameterServerType() pulu
 	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInputResponse) string { return v.ParameterServerType }).(pulumi.StringOutput)
 }
 
-// Required. The Python module name to run after installing the packages.
+// The Python module name to run after installing the packages.
 func (o GoogleCloudMlV1__TrainingInputResponseOutput) PythonModule() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInputResponse) string { return v.PythonModule }).(pulumi.StringOutput)
 }
@@ -12819,7 +12819,7 @@ func (o GoogleCloudMlV1__TrainingInputResponseOutput) PythonVersion() pulumi.Str
 	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInputResponse) string { return v.PythonVersion }).(pulumi.StringOutput)
 }
 
-// Required. The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
+// The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
 func (o GoogleCloudMlV1__TrainingInputResponseOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInputResponse) string { return v.Region }).(pulumi.StringOutput)
 }
@@ -12829,7 +12829,7 @@ func (o GoogleCloudMlV1__TrainingInputResponseOutput) RuntimeVersion() pulumi.St
 	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInputResponse) string { return v.RuntimeVersion }).(pulumi.StringOutput)
 }
 
-// Required. Specifies the machine types, the number of replicas for workers and parameter servers.
+// Specifies the machine types, the number of replicas for workers and parameter servers.
 func (o GoogleCloudMlV1__TrainingInputResponseOutput) ScaleTier() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInputResponse) string { return v.ScaleTier }).(pulumi.StringOutput)
 }
@@ -12986,7 +12986,7 @@ func (o GoogleCloudMlV1__TrainingInputResponsePtrOutput) Network() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
+// The Google Cloud Storage location of the packages with the training program and any additional dependencies. The maximum number of package URIs is 100.
 func (o GoogleCloudMlV1__TrainingInputResponsePtrOutput) PackageUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingInputResponse) []string {
 		if v == nil {
@@ -13026,7 +13026,7 @@ func (o GoogleCloudMlV1__TrainingInputResponsePtrOutput) ParameterServerType() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The Python module name to run after installing the packages.
+// The Python module name to run after installing the packages.
 func (o GoogleCloudMlV1__TrainingInputResponsePtrOutput) PythonModule() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingInputResponse) *string {
 		if v == nil {
@@ -13046,7 +13046,7 @@ func (o GoogleCloudMlV1__TrainingInputResponsePtrOutput) PythonVersion() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
+// The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
 func (o GoogleCloudMlV1__TrainingInputResponsePtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingInputResponse) *string {
 		if v == nil {
@@ -13066,7 +13066,7 @@ func (o GoogleCloudMlV1__TrainingInputResponsePtrOutput) RuntimeVersion() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Specifies the machine types, the number of replicas for workers and parameter servers.
+// Specifies the machine types, the number of replicas for workers and parameter servers.
 func (o GoogleCloudMlV1__TrainingInputResponsePtrOutput) ScaleTier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingInputResponse) *string {
 		if v == nil {
@@ -13674,19 +13674,19 @@ type GoogleCloudMlV1__VersionResponse struct {
 	MachineType string `pulumi:"machineType"`
 	// Manually select the number of nodes to use for serving the model. You should generally use `auto_scaling` with an appropriate `min_nodes` instead, but this option is available if you want more predictable billing. Beware that latency and error rates will increase if the traffic exceeds that capability of the system to serve it based on the selected number of nodes.
 	ManualScaling GoogleCloudMlV1__ManualScalingResponse `pulumi:"manualScaling"`
-	// Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
+	// The name specified for the version when it was created. The version name must be unique within the model it is created in.
 	Name string `pulumi:"name"`
 	// Optional. Cloud Storage paths (`gs://…`) of packages for [custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines) or [scikit-learn pipelines with custom code](/ml-engine/docs/scikit/exporting-for-prediction#custom-pipeline-code). For a custom prediction routine, one of these packages must contain your Predictor class (see [`predictionClass`](#Version.FIELDS.prediction_class)). Additionally, include any dependencies used by your Predictor or scikit-learn pipeline uses that are not already included in your selected [runtime version](/ml-engine/docs/tensorflow/runtime-version-list). If you specify this field, you must also set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.
 	PackageUris []string `pulumi:"packageUris"`
 	// Optional. The fully qualified name (module_name.class_name) of a class that implements the Predictor interface described in this reference field. The module containing this class should be included in a package provided to the [`packageUris` field](#Version.FIELDS.package_uris). Specify this field if and only if you are deploying a [custom prediction routine (beta)](/ml-engine/docs/tensorflow/custom-prediction-routines). If you specify this field, you must set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater and you must set `machineType` to a [legacy (MLS1) machine type](/ml-engine/docs/machine-types-online-prediction). The following code sample provides the Predictor interface: class Predictor(object): """Interface for constructing custom predictors.""" def predict(self, instances, **kwargs): """Performs custom prediction. Instances are the decoded values from the request. They have already been deserialized from JSON. Args: instances: A list of prediction input instances. **kwargs: A dictionary of keyword args provided as additional fields on the predict request body. Returns: A list of outputs containing the prediction results. This list must be JSON serializable. """ raise NotImplementedError() @classmethod def from_path(cls, model_dir): """Creates an instance of Predictor using the given path. Loading of the predictor should be done in this method. Args: model_dir: The local directory that contains the exported model file along with any additional files uploaded when creating the version resource. Returns: An instance implementing this Predictor class. """ raise NotImplementedError() Learn more about [the Predictor interface and custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines).
 	PredictionClass string `pulumi:"predictionClass"`
-	// Required. The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
+	// The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
 	PythonVersion string `pulumi:"pythonVersion"`
 	// Optional. *Only* specify this field in a projects.models.versions.patch request. Specifying it in a projects.models.versions.create request has no effect. Configures the request-response pair logging on predictions from this Version.
 	RequestLoggingConfig GoogleCloudMlV1__RequestLoggingConfigResponse `pulumi:"requestLoggingConfig"`
 	// Optional. Specifies paths on a custom container's HTTP server where AI Platform Prediction sends certain requests. If you specify this field, then you must also specify the `container` field. If you specify the `container` field and do not specify this field, it defaults to the following: ``` json { "predict": "/v1/models/MODEL/versions/VERSION:predict", "health": "/v1/models/MODEL/versions/VERSION" }  ``` See RouteMap for more details about these default values.
 	Routes GoogleCloudMlV1__RouteMapResponse `pulumi:"routes"`
-	// Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
+	// The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
 	RuntimeVersion string `pulumi:"runtimeVersion"`
 	// Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).
 	ServiceAccount string `pulumi:"serviceAccount"`
@@ -13741,19 +13741,19 @@ type GoogleCloudMlV1__VersionResponseArgs struct {
 	MachineType pulumi.StringInput `pulumi:"machineType"`
 	// Manually select the number of nodes to use for serving the model. You should generally use `auto_scaling` with an appropriate `min_nodes` instead, but this option is available if you want more predictable billing. Beware that latency and error rates will increase if the traffic exceeds that capability of the system to serve it based on the selected number of nodes.
 	ManualScaling GoogleCloudMlV1__ManualScalingResponseInput `pulumi:"manualScaling"`
-	// Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
+	// The name specified for the version when it was created. The version name must be unique within the model it is created in.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Optional. Cloud Storage paths (`gs://…`) of packages for [custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines) or [scikit-learn pipelines with custom code](/ml-engine/docs/scikit/exporting-for-prediction#custom-pipeline-code). For a custom prediction routine, one of these packages must contain your Predictor class (see [`predictionClass`](#Version.FIELDS.prediction_class)). Additionally, include any dependencies used by your Predictor or scikit-learn pipeline uses that are not already included in your selected [runtime version](/ml-engine/docs/tensorflow/runtime-version-list). If you specify this field, you must also set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater.
 	PackageUris pulumi.StringArrayInput `pulumi:"packageUris"`
 	// Optional. The fully qualified name (module_name.class_name) of a class that implements the Predictor interface described in this reference field. The module containing this class should be included in a package provided to the [`packageUris` field](#Version.FIELDS.package_uris). Specify this field if and only if you are deploying a [custom prediction routine (beta)](/ml-engine/docs/tensorflow/custom-prediction-routines). If you specify this field, you must set [`runtimeVersion`](#Version.FIELDS.runtime_version) to 1.4 or greater and you must set `machineType` to a [legacy (MLS1) machine type](/ml-engine/docs/machine-types-online-prediction). The following code sample provides the Predictor interface: class Predictor(object): """Interface for constructing custom predictors.""" def predict(self, instances, **kwargs): """Performs custom prediction. Instances are the decoded values from the request. They have already been deserialized from JSON. Args: instances: A list of prediction input instances. **kwargs: A dictionary of keyword args provided as additional fields on the predict request body. Returns: A list of outputs containing the prediction results. This list must be JSON serializable. """ raise NotImplementedError() @classmethod def from_path(cls, model_dir): """Creates an instance of Predictor using the given path. Loading of the predictor should be done in this method. Args: model_dir: The local directory that contains the exported model file along with any additional files uploaded when creating the version resource. Returns: An instance implementing this Predictor class. """ raise NotImplementedError() Learn more about [the Predictor interface and custom prediction routines](/ml-engine/docs/tensorflow/custom-prediction-routines).
 	PredictionClass pulumi.StringInput `pulumi:"predictionClass"`
-	// Required. The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
+	// The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
 	PythonVersion pulumi.StringInput `pulumi:"pythonVersion"`
 	// Optional. *Only* specify this field in a projects.models.versions.patch request. Specifying it in a projects.models.versions.create request has no effect. Configures the request-response pair logging on predictions from this Version.
 	RequestLoggingConfig GoogleCloudMlV1__RequestLoggingConfigResponseInput `pulumi:"requestLoggingConfig"`
 	// Optional. Specifies paths on a custom container's HTTP server where AI Platform Prediction sends certain requests. If you specify this field, then you must also specify the `container` field. If you specify the `container` field and do not specify this field, it defaults to the following: ``` json { "predict": "/v1/models/MODEL/versions/VERSION:predict", "health": "/v1/models/MODEL/versions/VERSION" }  ``` See RouteMap for more details about these default values.
 	Routes GoogleCloudMlV1__RouteMapResponseInput `pulumi:"routes"`
-	// Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
+	// The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
 	RuntimeVersion pulumi.StringInput `pulumi:"runtimeVersion"`
 	// Optional. Specifies the service account for resource access control. If you specify this field, then you must also specify either the `containerSpec` or the `predictionClass` field. Learn more about [using a custom service account](/ai-platform/prediction/docs/custom-service-account).
 	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
@@ -13930,7 +13930,7 @@ func (o GoogleCloudMlV1__VersionResponseOutput) ManualScaling() GoogleCloudMlV1_
 	}).(GoogleCloudMlV1__ManualScalingResponseOutput)
 }
 
-// Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
+// The name specified for the version when it was created. The version name must be unique within the model it is created in.
 func (o GoogleCloudMlV1__VersionResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__VersionResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -13945,7 +13945,7 @@ func (o GoogleCloudMlV1__VersionResponseOutput) PredictionClass() pulumi.StringO
 	return o.ApplyT(func(v GoogleCloudMlV1__VersionResponse) string { return v.PredictionClass }).(pulumi.StringOutput)
 }
 
-// Required. The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
+// The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
 func (o GoogleCloudMlV1__VersionResponseOutput) PythonVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__VersionResponse) string { return v.PythonVersion }).(pulumi.StringOutput)
 }
@@ -13962,7 +13962,7 @@ func (o GoogleCloudMlV1__VersionResponseOutput) Routes() GoogleCloudMlV1__RouteM
 	return o.ApplyT(func(v GoogleCloudMlV1__VersionResponse) GoogleCloudMlV1__RouteMapResponse { return v.Routes }).(GoogleCloudMlV1__RouteMapResponseOutput)
 }
 
-// Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
+// The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
 func (o GoogleCloudMlV1__VersionResponseOutput) RuntimeVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudMlV1__VersionResponse) string { return v.RuntimeVersion }).(pulumi.StringOutput)
 }
@@ -14165,7 +14165,7 @@ func (o GoogleCloudMlV1__VersionResponsePtrOutput) ManualScaling() GoogleCloudMl
 	}).(GoogleCloudMlV1__ManualScalingResponsePtrOutput)
 }
 
-// Required. The name specified for the version when it was created. The version name must be unique within the model it is created in.
+// The name specified for the version when it was created. The version name must be unique within the model it is created in.
 func (o GoogleCloudMlV1__VersionResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__VersionResponse) *string {
 		if v == nil {
@@ -14195,7 +14195,7 @@ func (o GoogleCloudMlV1__VersionResponsePtrOutput) PredictionClass() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
+// The version of Python used in prediction. The following Python versions are available: * Python '3.7' is available when `runtime_version` is set to '1.15' or later. * Python '3.5' is available when `runtime_version` is set to a version from '1.4' to '1.14'. * Python '2.7' is available when `runtime_version` is set to '1.15' or earlier. Read more about the Python versions available for [each runtime version](/ml-engine/docs/runtime-version-list).
 func (o GoogleCloudMlV1__VersionResponsePtrOutput) PythonVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__VersionResponse) *string {
 		if v == nil {
@@ -14225,7 +14225,7 @@ func (o GoogleCloudMlV1__VersionResponsePtrOutput) Routes() GoogleCloudMlV1__Rou
 	}).(GoogleCloudMlV1__RouteMapResponsePtrOutput)
 }
 
-// Required. The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
+// The AI Platform runtime version to use for this deployment. For more information, see the [runtime version list](/ml-engine/docs/runtime-version-list) and [how to manage runtime versions](/ml-engine/docs/versioning).
 func (o GoogleCloudMlV1__VersionResponsePtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudMlV1__VersionResponse) *string {
 		if v == nil {

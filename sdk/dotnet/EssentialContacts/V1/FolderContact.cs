@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
     public partial class FolderContact : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. The email address to send notifications to. This does not need to be a Google account.
+        /// The email address to send notifications to. This does not need to be a Google account.
         /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
@@ -97,10 +97,10 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
     public sealed class FolderContactArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The email address to send notifications to. This does not need to be a Google account.
+        /// The email address to send notifications to. This does not need to be a Google account.
         /// </summary>
-        [Input("email")]
-        public Input<string>? Email { get; set; }
+        [Input("email", required: true)]
+        public Input<string> Email { get; set; } = null!;
 
         [Input("folderId", required: true)]
         public Input<string> FolderId { get; set; } = null!;

@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Outputs
         /// </summary>
         public readonly string CooldownPeriod;
         /// <summary>
-        /// Required. YARN autoscaling configuration.
+        /// YARN autoscaling configuration.
         /// </summary>
         public readonly Outputs.BasicYarnAutoscalingConfigResponse YarnConfig;
 

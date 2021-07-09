@@ -35,11 +35,11 @@ export interface GetReferenceResult {
      */
     readonly description: string;
     /**
-     * Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+     * The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
      */
     readonly name: string;
     /**
-     * Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
+     * The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
      */
     readonly refers: string;
     /**

@@ -49,15 +49,15 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     public sealed class GetSessionEntityTypeResult
     {
         /// <summary>
-        /// Required. The collection of entities to override or supplement the custom entity type.
+        /// The collection of entities to override or supplement the custom entity type.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponse> Entities;
         /// <summary>
-        /// Required. Indicates whether the additional data should override or supplement the custom entity type definition.
+        /// Indicates whether the additional data should override or supplement the custom entity type definition.
         /// </summary>
         public readonly string EntityOverrideMode;
         /// <summary>
-        /// Required. The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
+        /// The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
         /// </summary>
         public readonly string Name;
 

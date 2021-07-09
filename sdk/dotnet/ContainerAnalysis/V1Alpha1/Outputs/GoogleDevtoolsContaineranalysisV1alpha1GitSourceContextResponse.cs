@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
     public sealed class GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse
     {
         /// <summary>
-        /// Required. Git commit hash.
+        /// Git commit hash.
         /// </summary>
         public readonly string RevisionId;
         /// <summary>

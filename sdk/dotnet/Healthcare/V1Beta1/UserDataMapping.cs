@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Output<bool> Archived { get; private set; } = null!;
 
         /// <summary>
-        /// Required. A unique identifier for the mapped resource.
+        /// A unique identifier for the mapped resource.
         /// </summary>
         [Output("dataId")]
         public Output<string> DataId { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Output<ImmutableArray<Outputs.AttributeResponse>> ResourceAttributes { get; private set; } = null!;
 
         /// <summary>
-        /// Required. User's UUID provided by the client.
+        /// User's UUID provided by the client.
         /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
@@ -100,10 +100,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Input<string> ConsentStoreId { get; set; } = null!;
 
         /// <summary>
-        /// Required. A unique identifier for the mapped resource.
+        /// A unique identifier for the mapped resource.
         /// </summary>
-        [Input("dataId")]
-        public Input<string>? DataId { get; set; }
+        [Input("dataId", required: true)]
+        public Input<string> DataId { get; set; } = null!;
 
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
@@ -133,10 +133,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         }
 
         /// <summary>
-        /// Required. User's UUID provided by the client.
+        /// User's UUID provided by the client.
         /// </summary>
-        [Input("userId")]
-        public Input<string>? UserId { get; set; }
+        [Input("userId", required: true)]
+        public Input<string> UserId { get; set; } = null!;
 
         public UserDataMappingArgs()
         {

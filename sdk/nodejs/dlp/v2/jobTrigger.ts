@@ -64,7 +64,7 @@ export class JobTrigger extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Required. A status for this trigger.
+     * A status for this trigger.
      */
     public readonly status!: pulumi.Output<string>;
     /**
@@ -92,6 +92,9 @@ export class JobTrigger extends pulumi.CustomResource {
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.status === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'status'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -148,9 +151,9 @@ export interface JobTriggerArgs {
     name?: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
-     * Required. A status for this trigger.
+     * A status for this trigger.
      */
-    status?: pulumi.Input<enums.dlp.v2.JobTriggerStatus>;
+    status: pulumi.Input<enums.dlp.v2.JobTriggerStatus>;
     /**
      * The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
      */

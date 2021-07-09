@@ -28,10 +28,10 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Inputs
         public Input<string>? EndTimeOffset { get; set; }
 
         /// <summary>
-        /// Required. File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
+        /// File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
         /// </summary>
-        [Input("filePrefix")]
-        public Input<string>? FilePrefix { get; set; }
+        [Input("filePrefix", required: true)]
+        public Input<string> FilePrefix { get; set; } = null!;
 
         /// <summary>
         /// Format type. The default is `"jpeg"`. Supported formats: - 'jpeg'
@@ -58,16 +58,16 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Inputs
         public Input<int>? RowCount { get; set; }
 
         /// <summary>
-        /// Required. The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
+        /// The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
         /// </summary>
-        [Input("spriteHeightPixels")]
-        public Input<int>? SpriteHeightPixels { get; set; }
+        [Input("spriteHeightPixels", required: true)]
+        public Input<int> SpriteHeightPixels { get; set; } = null!;
 
         /// <summary>
-        /// Required. The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
+        /// The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
         /// </summary>
-        [Input("spriteWidthPixels")]
-        public Input<int>? SpriteWidthPixels { get; set; }
+        [Input("spriteWidthPixels", required: true)]
+        public Input<int> SpriteWidthPixels { get; set; } = null!;
 
         /// <summary>
         /// Start time in seconds, relative to the output file timeline. Determines the first sprite to pick. The default is `0s`.

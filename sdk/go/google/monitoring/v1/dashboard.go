@@ -17,7 +17,7 @@ type Dashboard struct {
 
 	// The content is divided into equally spaced columns and the widgets are arranged vertically.
 	ColumnLayout ColumnLayoutResponseOutput `pulumi:"columnLayout"`
-	// Required. The mutable, human-readable name.
+	// The mutable, human-readable name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are expected to put that etag in the request to UpdateDashboard to ensure that their change will be applied to the same version of the Dashboard configuration. The field should not be passed during dashboard creation.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -38,6 +38,9 @@ func NewDashboard(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -65,7 +68,7 @@ func GetDashboard(ctx *pulumi.Context,
 type dashboardState struct {
 	// The content is divided into equally spaced columns and the widgets are arranged vertically.
 	ColumnLayout *ColumnLayoutResponse `pulumi:"columnLayout"`
-	// Required. The mutable, human-readable name.
+	// The mutable, human-readable name.
 	DisplayName *string `pulumi:"displayName"`
 	// etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are expected to put that etag in the request to UpdateDashboard to ensure that their change will be applied to the same version of the Dashboard configuration. The field should not be passed during dashboard creation.
 	Etag *string `pulumi:"etag"`
@@ -82,7 +85,7 @@ type dashboardState struct {
 type DashboardState struct {
 	// The content is divided into equally spaced columns and the widgets are arranged vertically.
 	ColumnLayout ColumnLayoutResponsePtrInput
-	// Required. The mutable, human-readable name.
+	// The mutable, human-readable name.
 	DisplayName pulumi.StringPtrInput
 	// etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are expected to put that etag in the request to UpdateDashboard to ensure that their change will be applied to the same version of the Dashboard configuration. The field should not be passed during dashboard creation.
 	Etag pulumi.StringPtrInput
@@ -103,8 +106,8 @@ func (DashboardState) ElementType() reflect.Type {
 type dashboardArgs struct {
 	// The content is divided into equally spaced columns and the widgets are arranged vertically.
 	ColumnLayout *ColumnLayout `pulumi:"columnLayout"`
-	// Required. The mutable, human-readable name.
-	DisplayName *string `pulumi:"displayName"`
+	// The mutable, human-readable name.
+	DisplayName string `pulumi:"displayName"`
 	// etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are expected to put that etag in the request to UpdateDashboard to ensure that their change will be applied to the same version of the Dashboard configuration. The field should not be passed during dashboard creation.
 	Etag *string `pulumi:"etag"`
 	// Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.
@@ -122,8 +125,8 @@ type dashboardArgs struct {
 type DashboardArgs struct {
 	// The content is divided into equally spaced columns and the widgets are arranged vertically.
 	ColumnLayout ColumnLayoutPtrInput
-	// Required. The mutable, human-readable name.
-	DisplayName pulumi.StringPtrInput
+	// The mutable, human-readable name.
+	DisplayName pulumi.StringInput
 	// etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are expected to put that etag in the request to UpdateDashboard to ensure that their change will be applied to the same version of the Dashboard configuration. The field should not be passed during dashboard creation.
 	Etag pulumi.StringPtrInput
 	// Content is arranged with a basic layout that re-flows a simple list of informational elements like widgets or tiles.

@@ -55,7 +55,7 @@ type Build struct {
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Customer-readable message about the current status.
 	StatusDetail pulumi.StringOutput `pulumi:"statusDetail"`
-	// Required. The operations to be performed on the workspace.
+	// The operations to be performed on the workspace.
 	Steps BuildStepResponseArrayOutput `pulumi:"steps"`
 	// Substitutions data for `Build` resource.
 	Substitutions pulumi.StringMapOutput `pulumi:"substitutions"`
@@ -82,6 +82,9 @@ func NewBuild(ctx *pulumi.Context,
 	}
 	if args.ProjectId == nil {
 		return nil, errors.New("invalid value for required argument 'ProjectId'")
+	}
+	if args.Steps == nil {
+		return nil, errors.New("invalid value for required argument 'Steps'")
 	}
 	var resource Build
 	err := ctx.RegisterResource("google-native:cloudbuild/v1:Build", name, args, &resource, opts...)
@@ -145,7 +148,7 @@ type buildState struct {
 	Status *string `pulumi:"status"`
 	// Customer-readable message about the current status.
 	StatusDetail *string `pulumi:"statusDetail"`
-	// Required. The operations to be performed on the workspace.
+	// The operations to be performed on the workspace.
 	Steps []BuildStepResponse `pulumi:"steps"`
 	// Substitutions data for `Build` resource.
 	Substitutions map[string]string `pulumi:"substitutions"`
@@ -198,7 +201,7 @@ type BuildState struct {
 	Status pulumi.StringPtrInput
 	// Customer-readable message about the current status.
 	StatusDetail pulumi.StringPtrInput
-	// Required. The operations to be performed on the workspace.
+	// The operations to be performed on the workspace.
 	Steps BuildStepResponseArrayInput
 	// Substitutions data for `Build` resource.
 	Substitutions pulumi.StringMapInput
@@ -236,7 +239,7 @@ type buildArgs struct {
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	// The location of the source files to build.
 	Source *Source `pulumi:"source"`
-	// Required. The operations to be performed on the workspace.
+	// The operations to be performed on the workspace.
 	Steps []BuildStep `pulumi:"steps"`
 	// Substitutions data for `Build` resource.
 	Substitutions map[string]string `pulumi:"substitutions"`
@@ -269,7 +272,7 @@ type BuildArgs struct {
 	ServiceAccount pulumi.StringPtrInput
 	// The location of the source files to build.
 	Source SourcePtrInput
-	// Required. The operations to be performed on the workspace.
+	// The operations to be performed on the workspace.
 	Steps BuildStepArrayInput
 	// Substitutions data for `Build` resource.
 	Substitutions pulumi.StringMapInput

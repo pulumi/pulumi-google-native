@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// </summary>
     public sealed class RegexValidationArgs : Pulumi.ResourceArgs
     {
-        [Input("regexes")]
+        [Input("regexes", required: true)]
         private InputList<string>? _regexes;
 
         /// <summary>
-        /// Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
+        /// RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
         /// </summary>
         public InputList<string> Regexes
         {

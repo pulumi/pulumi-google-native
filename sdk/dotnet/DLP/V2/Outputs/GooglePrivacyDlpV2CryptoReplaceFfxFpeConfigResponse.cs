@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2FieldIdResponse Context;
         /// <summary>
-        /// Required. The key used by the encryption algorithm.
+        /// The key used by the encryption algorithm.
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2CryptoKeyResponse CryptoKey;
         /// <summary>

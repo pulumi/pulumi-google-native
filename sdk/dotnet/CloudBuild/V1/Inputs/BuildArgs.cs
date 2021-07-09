@@ -81,11 +81,11 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         [Input("source")]
         public Input<Inputs.SourceArgs>? Source { get; set; }
 
-        [Input("steps")]
+        [Input("steps", required: true)]
         private InputList<Inputs.BuildStepArgs>? _steps;
 
         /// <summary>
-        /// Required. The operations to be performed on the workspace.
+        /// The operations to be performed on the workspace.
         /// </summary>
         public InputList<Inputs.BuildStepArgs> Steps
         {

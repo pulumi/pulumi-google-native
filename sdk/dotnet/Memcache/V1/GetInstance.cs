@@ -76,15 +76,15 @@ namespace Pulumi.GoogleNative.Memcache.V1
         /// </summary>
         public readonly string MemcacheVersion;
         /// <summary>
-        /// Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
+        /// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. Configuration for Memcached nodes.
+        /// Configuration for Memcached nodes.
         /// </summary>
         public readonly Outputs.NodeConfigResponse NodeConfig;
         /// <summary>
-        /// Required. Number of nodes in the Memcached instance.
+        /// Number of nodes in the Memcached instance.
         /// </summary>
         public readonly int NodeCount;
         /// <summary>

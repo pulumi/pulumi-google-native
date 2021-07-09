@@ -115,7 +115,7 @@ export interface GetInstanceResult {
      */
     readonly tenantProjectId: string;
     /**
-     * Required. Instance type.
+     * Instance type.
      */
     readonly type: string;
     /**

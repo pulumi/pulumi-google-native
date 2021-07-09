@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Outputs
         /// </summary>
         public readonly string Interpreter;
         /// <summary>
-        /// Required. The shell script to be executed.
+        /// The shell script to be executed.
         /// </summary>
         public readonly string Script;
 

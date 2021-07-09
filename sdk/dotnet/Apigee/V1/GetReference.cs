@@ -44,11 +44,11 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
+        /// The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Required. The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
+        /// The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
         /// </summary>
         public readonly string Refers;
         /// <summary>

@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Outputs
         /// </summary>
         public readonly string Subtitle;
         /// <summary>
-        /// Required. Title of the card.
+        /// Title of the card.
         /// </summary>
         public readonly string Title;
 

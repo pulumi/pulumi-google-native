@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta.Inputs
     public sealed class GoogleAccountArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
+        /// Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        [Input("password", required: true)]
+        public Input<string> Password { get; set; } = null!;
 
         /// <summary>
-        /// Required. The user name of the Google account.
+        /// The user name of the Google account.
         /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
+        [Input("username", required: true)]
+        public Input<string> Username { get; set; } = null!;
 
         public GoogleAccountArgs()
         {

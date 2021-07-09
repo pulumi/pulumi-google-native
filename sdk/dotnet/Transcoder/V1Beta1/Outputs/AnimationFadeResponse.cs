@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Outputs
         /// </summary>
         public readonly string EndTimeOffset;
         /// <summary>
-        /// Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
+        /// Type of fade animation: `FADE_IN` or `FADE_OUT`.
         /// </summary>
         public readonly string FadeType;
         /// <summary>

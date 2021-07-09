@@ -157,28 +157,27 @@ class BindingArgs:
 @pulumi.input_type
 class CryptoKeyVersionTemplateArgs:
     def __init__(__self__, *,
-                 algorithm: Optional[pulumi.Input['CryptoKeyVersionTemplateAlgorithm']] = None,
+                 algorithm: pulumi.Input['CryptoKeyVersionTemplateAlgorithm'],
                  protection_level: Optional[pulumi.Input['CryptoKeyVersionTemplateProtectionLevel']] = None):
         """
         A CryptoKeyVersionTemplate specifies the properties to use when creating a new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or automatically as a result of auto-rotation.
-        :param pulumi.Input['CryptoKeyVersionTemplateAlgorithm'] algorithm: Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
+        :param pulumi.Input['CryptoKeyVersionTemplateAlgorithm'] algorithm: Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
         :param pulumi.Input['CryptoKeyVersionTemplateProtectionLevel'] protection_level: ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
         """
-        if algorithm is not None:
-            pulumi.set(__self__, "algorithm", algorithm)
+        pulumi.set(__self__, "algorithm", algorithm)
         if protection_level is not None:
             pulumi.set(__self__, "protection_level", protection_level)
 
     @property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input['CryptoKeyVersionTemplateAlgorithm']]:
+    def algorithm(self) -> pulumi.Input['CryptoKeyVersionTemplateAlgorithm']:
         """
-        Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
+        Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
         """
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input['CryptoKeyVersionTemplateAlgorithm']]):
+    def algorithm(self, value: pulumi.Input['CryptoKeyVersionTemplateAlgorithm']):
         pulumi.set(self, "algorithm", value)
 
     @property

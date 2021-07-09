@@ -19,17 +19,17 @@ type Document struct {
 	Content pulumi.StringOutput `pulumi:"content"`
 	// The URI where the file content is located. For documents stored in Google Cloud Storage, these URIs must have the form `gs:///`. NOTE: External URLs must correspond to public webpages, i.e., they must be indexed by Google Search. In particular, URLs for showing documents in Google Cloud Storage (i.e. the URL in your browser) are not supported. Instead use the `gs://` format URI described above.
 	ContentUri pulumi.StringOutput `pulumi:"contentUri"`
-	// Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
+	// The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
 	EnableAutoReload pulumi.BoolOutput `pulumi:"enableAutoReload"`
-	// Required. The knowledge type of document content.
+	// The knowledge type of document content.
 	KnowledgeTypes pulumi.StringArrayOutput `pulumi:"knowledgeTypes"`
 	// The time and status of the latest reload. This reload may have been triggered automatically or manually and may not have succeeded.
 	LatestReloadStatus GoogleCloudDialogflowV2beta1DocumentReloadStatusResponseOutput `pulumi:"latestReloadStatus"`
 	// Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
-	// Required. The MIME type of this document.
+	// The MIME type of this document.
 	MimeType pulumi.StringOutput `pulumi:"mimeType"`
 	// Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -44,11 +44,20 @@ func NewDocument(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
 	if args.KnowledgeBaseId == nil {
 		return nil, errors.New("invalid value for required argument 'KnowledgeBaseId'")
 	}
+	if args.KnowledgeTypes == nil {
+		return nil, errors.New("invalid value for required argument 'KnowledgeTypes'")
+	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
+	}
+	if args.MimeType == nil {
+		return nil, errors.New("invalid value for required argument 'MimeType'")
 	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
@@ -79,17 +88,17 @@ type documentState struct {
 	Content *string `pulumi:"content"`
 	// The URI where the file content is located. For documents stored in Google Cloud Storage, these URIs must have the form `gs:///`. NOTE: External URLs must correspond to public webpages, i.e., they must be indexed by Google Search. In particular, URLs for showing documents in Google Cloud Storage (i.e. the URL in your browser) are not supported. Instead use the `gs://` format URI described above.
 	ContentUri *string `pulumi:"contentUri"`
-	// Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
+	// The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
 	EnableAutoReload *bool `pulumi:"enableAutoReload"`
-	// Required. The knowledge type of document content.
+	// The knowledge type of document content.
 	KnowledgeTypes []string `pulumi:"knowledgeTypes"`
 	// The time and status of the latest reload. This reload may have been triggered automatically or manually and may not have succeeded.
 	LatestReloadStatus *GoogleCloudDialogflowV2beta1DocumentReloadStatusResponse `pulumi:"latestReloadStatus"`
 	// Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Required. The MIME type of this document.
+	// The MIME type of this document.
 	MimeType *string `pulumi:"mimeType"`
 	// Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
 	Name *string `pulumi:"name"`
@@ -102,17 +111,17 @@ type DocumentState struct {
 	Content pulumi.StringPtrInput
 	// The URI where the file content is located. For documents stored in Google Cloud Storage, these URIs must have the form `gs:///`. NOTE: External URLs must correspond to public webpages, i.e., they must be indexed by Google Search. In particular, URLs for showing documents in Google Cloud Storage (i.e. the URL in your browser) are not supported. Instead use the `gs://` format URI described above.
 	ContentUri pulumi.StringPtrInput
-	// Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
+	// The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
 	DisplayName pulumi.StringPtrInput
 	// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
 	EnableAutoReload pulumi.BoolPtrInput
-	// Required. The knowledge type of document content.
+	// The knowledge type of document content.
 	KnowledgeTypes pulumi.StringArrayInput
 	// The time and status of the latest reload. This reload may have been triggered automatically or manually and may not have succeeded.
 	LatestReloadStatus GoogleCloudDialogflowV2beta1DocumentReloadStatusResponsePtrInput
 	// Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
 	Metadata pulumi.StringMapInput
-	// Required. The MIME type of this document.
+	// The MIME type of this document.
 	MimeType pulumi.StringPtrInput
 	// Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
 	Name pulumi.StringPtrInput
@@ -129,19 +138,19 @@ type documentArgs struct {
 	Content *string `pulumi:"content"`
 	// The URI where the file content is located. For documents stored in Google Cloud Storage, these URIs must have the form `gs:///`. NOTE: External URLs must correspond to public webpages, i.e., they must be indexed by Google Search. In particular, URLs for showing documents in Google Cloud Storage (i.e. the URL in your browser) are not supported. Instead use the `gs://` format URI described above.
 	ContentUri *string `pulumi:"contentUri"`
-	// Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
-	DisplayName *string `pulumi:"displayName"`
+	// The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
+	DisplayName string `pulumi:"displayName"`
 	// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
 	EnableAutoReload        *bool   `pulumi:"enableAutoReload"`
 	ImportGcsCustomMetadata *string `pulumi:"importGcsCustomMetadata"`
 	KnowledgeBaseId         string  `pulumi:"knowledgeBaseId"`
-	// Required. The knowledge type of document content.
+	// The knowledge type of document content.
 	KnowledgeTypes []string `pulumi:"knowledgeTypes"`
 	Location       string   `pulumi:"location"`
 	// Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
 	Metadata map[string]string `pulumi:"metadata"`
-	// Required. The MIME type of this document.
-	MimeType *string `pulumi:"mimeType"`
+	// The MIME type of this document.
+	MimeType string `pulumi:"mimeType"`
 	// Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
@@ -155,19 +164,19 @@ type DocumentArgs struct {
 	Content pulumi.StringPtrInput
 	// The URI where the file content is located. For documents stored in Google Cloud Storage, these URIs must have the form `gs:///`. NOTE: External URLs must correspond to public webpages, i.e., they must be indexed by Google Search. In particular, URLs for showing documents in Google Cloud Storage (i.e. the URL in your browser) are not supported. Instead use the `gs://` format URI described above.
 	ContentUri pulumi.StringPtrInput
-	// Required. The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
-	DisplayName pulumi.StringPtrInput
+	// The display name of the document. The name must be 1024 bytes or less; otherwise, the creation request fails.
+	DisplayName pulumi.StringInput
 	// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
 	EnableAutoReload        pulumi.BoolPtrInput
 	ImportGcsCustomMetadata pulumi.StringPtrInput
 	KnowledgeBaseId         pulumi.StringInput
-	// Required. The knowledge type of document content.
+	// The knowledge type of document content.
 	KnowledgeTypes DocumentKnowledgeTypesItemArrayInput
 	Location       pulumi.StringInput
 	// Optional. Metadata for the document. The metadata supports arbitrary key-value pairs. Suggested use cases include storing a document's title, an external URL distinct from the document's content_uri, etc. The max size of a `key` or a `value` of the metadata is 1024 bytes.
 	Metadata pulumi.StringMapInput
-	// Required. The MIME type of this document.
-	MimeType pulumi.StringPtrInput
+	// The MIME type of this document.
+	MimeType pulumi.StringInput
 	// Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput

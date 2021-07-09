@@ -34,10 +34,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         }
 
         /// <summary>
-        /// Required. The webhook URI for receiving POST requests. It must use https protocol.
+        /// The webhook URI for receiving POST requests. It must use https protocol.
         /// </summary>
-        [Input("uri")]
-        public Input<string>? Uri { get; set; }
+        [Input("uri", required: true)]
+        public Input<string> Uri { get; set; } = null!;
 
         /// <summary>
         /// The user name for HTTP Basic authentication.

@@ -80,7 +80,7 @@ class GetPatchDeploymentResult:
     @pulumi.getter(name="instanceFilter")
     def instance_filter(self) -> 'outputs.PatchInstanceFilterResponse':
         """
-        Required. VM instances to patch.
+        VM instances to patch.
         """
         return pulumi.get(self, "instance_filter")
 
@@ -104,7 +104,7 @@ class GetPatchDeploymentResult:
     @pulumi.getter(name="oneTimeSchedule")
     def one_time_schedule(self) -> 'outputs.OneTimeScheduleResponse':
         """
-        Required. Schedule a one-time execution.
+        Schedule a one-time execution.
         """
         return pulumi.get(self, "one_time_schedule")
 
@@ -120,7 +120,7 @@ class GetPatchDeploymentResult:
     @pulumi.getter(name="recurringSchedule")
     def recurring_schedule(self) -> 'outputs.RecurringScheduleResponse':
         """
-        Required. Schedule recurring executions.
+        Schedule recurring executions.
         """
         return pulumi.get(self, "recurring_schedule")
 

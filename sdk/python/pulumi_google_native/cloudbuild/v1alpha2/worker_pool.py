@@ -16,22 +16,21 @@ __all__ = ['WorkerPoolArgs', 'WorkerPool']
 class WorkerPoolArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
+                 region: pulumi.Input[str],
                  worker_pool_id: pulumi.Input[str],
                  network_config: Optional[pulumi.Input['NetworkConfigArgs']] = None,
-                 region: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input['WorkerConfigArgs']] = None):
         """
         The set of arguments for constructing a WorkerPool resource.
+        :param pulumi.Input[str] region: Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
         :param pulumi.Input['NetworkConfigArgs'] network_config: Network configuration for the `WorkerPool`.
-        :param pulumi.Input[str] region: Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
         :param pulumi.Input['WorkerConfigArgs'] worker_config: Worker configuration for the `WorkerPool`.
         """
         pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "worker_pool_id", worker_pool_id)
         if network_config is not None:
             pulumi.set(__self__, "network_config", network_config)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
         if worker_config is not None:
             pulumi.set(__self__, "worker_config", worker_config)
 
@@ -43,6 +42,18 @@ class WorkerPoolArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[str]:
+        """
+        Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter(name="workerPoolId")
@@ -64,18 +75,6 @@ class WorkerPoolArgs:
     @network_config.setter
     def network_config(self, value: Optional[pulumi.Input['NetworkConfigArgs']]):
         pulumi.set(self, "network_config", value)
-
-    @property
-    @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "region", value)
 
     @property
     @pulumi.getter(name="workerConfig")
@@ -107,7 +106,7 @@ class WorkerPool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: Network configuration for the `WorkerPool`.
-        :param pulumi.Input[str] region: Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+        :param pulumi.Input[str] region: Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
         :param pulumi.Input[pulumi.InputType['WorkerConfigArgs']] worker_config: Worker configuration for the `WorkerPool`.
         """
         ...
@@ -155,6 +154,8 @@ class WorkerPool(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            if region is None and not opts.urn:
+                raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
             __props__.__dict__["worker_config"] = worker_config
             if worker_pool_id is None and not opts.urn:
@@ -233,7 +234,7 @@ class WorkerPool(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+        Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
         """
         return pulumi.get(self, "region")
 

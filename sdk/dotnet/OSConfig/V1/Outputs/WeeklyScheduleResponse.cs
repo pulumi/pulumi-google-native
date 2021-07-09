@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Outputs
     public sealed class WeeklyScheduleResponse
     {
         /// <summary>
-        /// Required. Day of the week.
+        /// Day of the week.
         /// </summary>
         public readonly string DayOfWeek;
 

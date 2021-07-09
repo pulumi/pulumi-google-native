@@ -15,11 +15,11 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
     /// </summary>
     public sealed class SubordinateConfigChainArgs : Pulumi.ResourceArgs
     {
-        [Input("pemCertificates")]
+        [Input("pemCertificates", required: true)]
         private InputList<string>? _pemCertificates;
 
         /// <summary>
-        /// Required. Expected to be in leaf-to-root order according to RFC 5246.
+        /// Expected to be in leaf-to-root order according to RFC 5246.
         /// </summary>
         public InputList<string> PemCertificates
         {

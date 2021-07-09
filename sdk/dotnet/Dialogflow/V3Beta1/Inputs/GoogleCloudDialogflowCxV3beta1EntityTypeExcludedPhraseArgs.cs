@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     public sealed class GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The word or phrase to be excluded.
+        /// The word or phrase to be excluded.
         /// </summary>
-        [Input("value")]
-        public Input<string>? Value { get; set; }
+        [Input("value", required: true)]
+        public Input<string> Value { get; set; } = null!;
 
         public GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseArgs()
         {

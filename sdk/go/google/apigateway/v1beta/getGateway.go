@@ -24,7 +24,7 @@ type LookupGatewayArgs struct {
 }
 
 type LookupGatewayResult struct {
-	// Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+	// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
 	ApiConfig string `pulumi:"apiConfig"`
 	// Created time.
 	CreateTime string `pulumi:"createTime"`

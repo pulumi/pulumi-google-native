@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
     public sealed class DeployableResponse
     {
         /// <summary>
-        /// Required. Resource URI for the artifact being deployed.
+        /// Resource URI for the artifact being deployed.
         /// </summary>
         public readonly ImmutableArray<string> ResourceUri;
 

@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Outputs
         /// </summary>
         public readonly int Height;
         /// <summary>
-        /// Required. URL of the image with a length limit of 5 KiB.
+        /// URL of the image with a length limit of 5 KiB.
         /// </summary>
         public readonly string Uri;
         /// <summary>

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1.Outputs
     public sealed class GoogleCloudDatacatalogV1beta1SchemaResponse
     {
         /// <summary>
-        /// Required. Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
+        /// Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDatacatalogV1beta1ColumnSchemaResponse> Columns;
 

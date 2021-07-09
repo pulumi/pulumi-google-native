@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1
     public partial class Budget : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. Budgeted amount.
+        /// Budgeted amount.
         /// </summary>
         [Output("amount")]
         public Output<Outputs.GoogleCloudBillingBudgetsV1BudgetAmountResponse> Amount { get; private set; } = null!;
@@ -103,10 +103,10 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1
     public sealed class BudgetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Budgeted amount.
+        /// Budgeted amount.
         /// </summary>
-        [Input("amount")]
-        public Input<Inputs.GoogleCloudBillingBudgetsV1BudgetAmountArgs>? Amount { get; set; }
+        [Input("amount", required: true)]
+        public Input<Inputs.GoogleCloudBillingBudgetsV1BudgetAmountArgs> Amount { get; set; } = null!;
 
         [Input("billingAccountId", required: true)]
         public Input<string> BillingAccountId { get; set; } = null!;

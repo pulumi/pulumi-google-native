@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
     public sealed class IssuingOptionsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
+        /// When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
         /// </summary>
-        [Input("includeCaCertUrl")]
-        public Input<bool>? IncludeCaCertUrl { get; set; }
+        [Input("includeCaCertUrl", required: true)]
+        public Input<bool> IncludeCaCertUrl { get; set; } = null!;
 
         /// <summary>
-        /// Required. When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
+        /// When true, includes a URL to the CRL corresponding to certificates issued from a CertificateAuthority. CRLs will expire 7 days from their creation. However, we will rebuild daily. CRLs are also rebuilt shortly after a certificate is revoked.
         /// </summary>
-        [Input("includeCrlAccessUrl")]
-        public Input<bool>? IncludeCrlAccessUrl { get; set; }
+        [Input("includeCrlAccessUrl", required: true)]
+        public Input<bool> IncludeCrlAccessUrl { get; set; } = null!;
 
         public IssuingOptionsArgs()
         {

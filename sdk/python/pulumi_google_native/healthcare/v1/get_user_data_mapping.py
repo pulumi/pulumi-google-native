@@ -57,7 +57,7 @@ class GetUserDataMappingResult:
     @pulumi.getter(name="dataId")
     def data_id(self) -> str:
         """
-        Required. A unique identifier for the mapped resource.
+        A unique identifier for the mapped resource.
         """
         return pulumi.get(self, "data_id")
 
@@ -81,7 +81,7 @@ class GetUserDataMappingResult:
     @pulumi.getter(name="userId")
     def user_id(self) -> str:
         """
-        Required. User's UUID provided by the client.
+        User's UUID provided by the client.
         """
         return pulumi.get(self, "user_id")
 

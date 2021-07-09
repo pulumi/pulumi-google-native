@@ -71,7 +71,7 @@ class GetPipelineResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Required. A user specified pipeline name that does not have to be unique. This name can be used for filtering Pipelines in ListPipelines.
+        A user specified pipeline name that does not have to be unique. This name can be used for filtering Pipelines in ListPipelines.
         """
         return pulumi.get(self, "name")
 
@@ -95,7 +95,7 @@ class GetPipelineResult:
     @pulumi.getter
     def project(self) -> str:
         """
-        Required. The project in which to create the pipeline. The caller must have WRITE access.
+        The project in which to create the pipeline. The caller must have WRITE access.
         """
         return pulumi.get(self, "project")
 
@@ -103,7 +103,7 @@ class GetPipelineResult:
     @pulumi.getter
     def resources(self) -> 'outputs.PipelineResourcesResponse':
         """
-        Required. Specifies resource requirements for the pipeline run. Required fields: * minimumCpuCores * minimumRamGb
+        Specifies resource requirements for the pipeline run. Required fields: * minimumCpuCores * minimumRamGb
         """
         return pulumi.get(self, "resources")
 

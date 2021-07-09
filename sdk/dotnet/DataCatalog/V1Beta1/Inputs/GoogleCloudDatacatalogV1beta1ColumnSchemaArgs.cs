@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1.Inputs
     public sealed class GoogleCloudDatacatalogV1beta1ColumnSchemaArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Name of the column.
+        /// Name of the column.
         /// </summary>
-        [Input("column")]
-        public Input<string>? Column { get; set; }
+        [Input("column", required: true)]
+        public Input<string> Column { get; set; } = null!;
 
         /// <summary>
         /// Optional. Description of the column. Default value is an empty string.
@@ -46,10 +46,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1.Inputs
         }
 
         /// <summary>
-        /// Required. Type of the column.
+        /// Type of the column.
         /// </summary>
-        [Input("type")]
-        public Input<string>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<string> Type { get; set; } = null!;
 
         public GoogleCloudDatacatalogV1beta1ColumnSchemaArgs()
         {

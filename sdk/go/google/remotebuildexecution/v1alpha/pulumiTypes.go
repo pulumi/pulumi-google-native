@@ -1568,14 +1568,14 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyResponsePtrOu
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig struct {
 	// The accelerator card attached to each VM.
 	Accelerator *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig `pulumi:"accelerator"`
-	// Required. Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
-	DiskSizeGb *string `pulumi:"diskSizeGb"`
-	// Required. Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
-	DiskType *string `pulumi:"diskType"`
+	// Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
+	DiskSizeGb string `pulumi:"diskSizeGb"`
+	// Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
+	DiskType string `pulumi:"diskType"`
 	// Labels associated with the workers. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International letters are permitted. Label keys must start with a letter. Label values are optional. There can not be more than 64 labels per resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
-	MachineType *string `pulumi:"machineType"`
+	// Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
+	MachineType string `pulumi:"machineType"`
 	// The maximum number of actions a worker can execute concurrently.
 	MaxConcurrentActions *string `pulumi:"maxConcurrentActions"`
 	// Minimum CPU platform to use when creating the worker. See [CPU Platforms](https://cloud.google.com/compute/docs/cpu-platforms).
@@ -1605,14 +1605,14 @@ type GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigInput interface {
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs struct {
 	// The accelerator card attached to each VM.
 	Accelerator GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrInput `pulumi:"accelerator"`
-	// Required. Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
-	DiskSizeGb pulumi.StringPtrInput `pulumi:"diskSizeGb"`
-	// Required. Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
-	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
+	DiskSizeGb pulumi.StringInput `pulumi:"diskSizeGb"`
+	// Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
+	DiskType pulumi.StringInput `pulumi:"diskType"`
 	// Labels associated with the workers. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International letters are permitted. Label keys must start with a letter. Label values are optional. There can not be more than 64 labels per resource.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
-	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
+	MachineType pulumi.StringInput `pulumi:"machineType"`
 	// The maximum number of actions a worker can execute concurrently.
 	MaxConcurrentActions pulumi.StringPtrInput `pulumi:"maxConcurrentActions"`
 	// Minimum CPU platform to use when creating the worker. See [CPU Platforms](https://cloud.google.com/compute/docs/cpu-platforms).
@@ -1712,14 +1712,14 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutput) Accele
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrOutput)
 }
 
-// Required. Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutput) DiskSizeGb() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig) *string { return v.DiskSizeGb }).(pulumi.StringPtrOutput)
+// Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutput) DiskSizeGb() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig) string { return v.DiskSizeGb }).(pulumi.StringOutput)
 }
 
-// Required. Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutput) DiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+// Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutput) DiskType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig) string { return v.DiskType }).(pulumi.StringOutput)
 }
 
 // Labels associated with the workers. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International letters are permitted. Label keys must start with a letter. Label values are optional. There can not be more than 64 labels per resource.
@@ -1727,9 +1727,9 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutput) Labels
 	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+// Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig) string { return v.MachineType }).(pulumi.StringOutput)
 }
 
 // The maximum number of actions a worker can execute concurrently.
@@ -1796,23 +1796,23 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput) Acc
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrOutput)
 }
 
-// Required. Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
+// Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput) DiskSizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.DiskSizeGb
+		return &v.DiskSizeGb
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
+// Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.DiskType
+		return &v.DiskType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1826,13 +1826,13 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput) Lab
 	}).(pulumi.StringMapOutput)
 }
 
-// Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
+// Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.MachineType
+		return &v.MachineType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1900,13 +1900,13 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput) VmI
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse struct {
 	// The accelerator card attached to each VM.
 	Accelerator GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse `pulumi:"accelerator"`
-	// Required. Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
+	// Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
 	DiskSizeGb string `pulumi:"diskSizeGb"`
-	// Required. Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
+	// Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
 	DiskType string `pulumi:"diskType"`
 	// Labels associated with the workers. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International letters are permitted. Label keys must start with a letter. Label values are optional. There can not be more than 64 labels per resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
+	// Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
 	MachineType string `pulumi:"machineType"`
 	// The maximum number of actions a worker can execute concurrently.
 	MaxConcurrentActions string `pulumi:"maxConcurrentActions"`
@@ -1937,13 +1937,13 @@ type GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseInput int
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseArgs struct {
 	// The accelerator card attached to each VM.
 	Accelerator GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseInput `pulumi:"accelerator"`
-	// Required. Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
+	// Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
 	DiskSizeGb pulumi.StringInput `pulumi:"diskSizeGb"`
-	// Required. Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
+	// Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
 	DiskType pulumi.StringInput `pulumi:"diskType"`
 	// Labels associated with the workers. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International letters are permitted. Label keys must start with a letter. Label values are optional. There can not be more than 64 labels per resource.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
+	// Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
 	MachineType pulumi.StringInput `pulumi:"machineType"`
 	// The maximum number of actions a worker can execute concurrently.
 	MaxConcurrentActions pulumi.StringInput `pulumi:"maxConcurrentActions"`
@@ -2044,12 +2044,12 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponseOutput)
 }
 
-// Required. Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
+// Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput) DiskSizeGb() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) string { return v.DiskSizeGb }).(pulumi.StringOutput)
 }
 
-// Required. Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
+// Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) string { return v.DiskType }).(pulumi.StringOutput)
 }
@@ -2061,7 +2061,7 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput
 	}).(pulumi.StringMapOutput)
 }
 
-// Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
+// Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponseOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) string {
 		return v.MachineType
@@ -2136,7 +2136,7 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOut
 	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponsePtrOutput)
 }
 
-// Required. Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
+// Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput) DiskSizeGb() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) *string {
 		if v == nil {
@@ -2146,7 +2146,7 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
+// Disk Type to use for the worker. See [Storage options](https://cloud.google.com/compute/docs/disks/#introduction). Currently only `pd-standard` and `pd-ssd` are supported.
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) *string {
 		if v == nil {
@@ -2166,7 +2166,7 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOut
 	}).(pulumi.StringMapOutput)
 }
 
-// Required. Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
+// Machine type of the worker, such as `e2-standard-2`. See https://cloud.google.com/compute/docs/machine-types for a list of supported machine types. Note that `f1-micro` and `g1-small` are not yet supported.
 func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse) *string {
 		if v == nil {

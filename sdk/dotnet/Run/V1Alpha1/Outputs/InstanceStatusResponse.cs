@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Outputs
         /// </summary>
         public readonly int Failed;
         /// <summary>
-        /// Required. Index of the instance, unique per Job, and beginning at 0.
+        /// Index of the instance, unique per Job, and beginning at 0.
         /// </summary>
         public readonly int Index;
         /// <summary>

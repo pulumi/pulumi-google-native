@@ -269,7 +269,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 
 	for _, name := range codegen.SortedKeys(dd.createMethod.Parameters) {
 		param := dd.createMethod.Parameters[name]
-		required := param.Required || strings.HasPrefix(param.Description, "Required.")
+		required := param.Required || isRequired(param.Description)
 		if param.Location != "query" || isDeprecated(param.Description) {
 			continue
 		}
@@ -465,7 +465,7 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 
 	for _, name := range codegen.SortedKeys(dd.getMethod.Parameters) {
 		param := dd.getMethod.Parameters[name]
-		required := param.Required || strings.HasPrefix(param.Description, "Required.")
+		required := param.Required || isRequired(param.Description)
 		if param.Location != "query" || isDeprecated(param.Description) {
 			continue
 		}
@@ -698,7 +698,7 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 
 		copyFromOutput := g.shouldCopyFromOutput(name) && !isOutput
 		if !copyFromOutput {
-			if prop.Required || isOutput {
+			if prop.Required || isRequired(prop.Description) || isOutput {
 				result.requiredSpecs.Add(sdkName)
 			}
 
@@ -922,6 +922,12 @@ func isDeprecated(description string) bool {
 		strings.Contains(description, "This field is deprecated")
 }
 
+// isRequired returns true if the description of a property or a parameter signals that it is
+// a required property.
+func isRequired(description string) bool {
+	return strings.HasPrefix(description, "Required.")
+}
+
 // isReadOnly returns true if the description of a property or a parameter signals that it is
 // an output-only property.
 func isReadOnly(description string) bool {
@@ -934,6 +940,8 @@ func isReadOnly(description string) bool {
 
 // clearDescription removes annotations like "output only" from description text.
 func clearDescription(description string) string {
+	description = strings.TrimPrefix(description, "Required. ")
+	description = strings.TrimPrefix(description, "Output only. ")
 	description = strings.TrimPrefix(description, "[Output Only] ")
 	description = strings.TrimPrefix(description, "[Output-only] ")
 	description = strings.TrimPrefix(description, "Output only. ")

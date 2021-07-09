@@ -52,7 +52,7 @@ class GetDashboardResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The mutable, human-readable name.
+        The mutable, human-readable name.
         """
         return pulumi.get(self, "display_name")
 

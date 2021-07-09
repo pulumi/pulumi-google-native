@@ -16,16 +16,16 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     public sealed class GoogleCloudMlV1_StudyConfig_MetricSpecArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. The optimization goal of the metric.
+        /// The optimization goal of the metric.
         /// </summary>
-        [Input("goal")]
-        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1_StudyConfig_MetricSpecGoal>? Goal { get; set; }
+        [Input("goal", required: true)]
+        public Input<Pulumi.GoogleNative.Ml.V1.GoogleCloudMlV1_StudyConfig_MetricSpecGoal> Goal { get; set; } = null!;
 
         /// <summary>
-        /// Required. The name of the metric.
+        /// The name of the metric.
         /// </summary>
-        [Input("metric")]
-        public Input<string>? Metric { get; set; }
+        [Input("metric", required: true)]
+        public Input<string> Metric { get; set; } = null!;
 
         public GoogleCloudMlV1_StudyConfig_MetricSpecArgs()
         {

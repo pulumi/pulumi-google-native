@@ -16,41 +16,51 @@ __all__ = ['GuestPolicyArgs', 'GuestPolicy']
 @pulumi.input_type
 class GuestPolicyArgs:
     def __init__(__self__, *,
+                 assignment: pulumi.Input['AssignmentArgs'],
                  guest_policy_id: pulumi.Input[str],
+                 name: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 assignment: Optional[pulumi.Input['AssignmentArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
                  package_repositories: Optional[pulumi.Input[Sequence[pulumi.Input['PackageRepositoryArgs']]]] = None,
                  packages: Optional[pulumi.Input[Sequence[pulumi.Input['PackageArgs']]]] = None,
                  recipes: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeArgs']]]] = None):
         """
         The set of arguments for constructing a GuestPolicy resource.
-        :param pulumi.Input['AssignmentArgs'] assignment: Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+        :param pulumi.Input['AssignmentArgs'] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+        :param pulumi.Input[str] name: Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
         :param pulumi.Input[str] description: Description of the guest policy. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] etag: The etag for this guest policy. If this is provided on update, it must match the server's etag.
-        :param pulumi.Input[str] name: Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
         :param pulumi.Input[Sequence[pulumi.Input['PackageRepositoryArgs']]] package_repositories: A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
         :param pulumi.Input[Sequence[pulumi.Input['PackageArgs']]] packages: The software packages to be managed by this policy.
         :param pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeArgs']]] recipes: A list of Recipes to install on the VM instance.
         """
+        pulumi.set(__self__, "assignment", assignment)
         pulumi.set(__self__, "guest_policy_id", guest_policy_id)
+        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "project", project)
-        if assignment is not None:
-            pulumi.set(__self__, "assignment", assignment)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
         if package_repositories is not None:
             pulumi.set(__self__, "package_repositories", package_repositories)
         if packages is not None:
             pulumi.set(__self__, "packages", packages)
         if recipes is not None:
             pulumi.set(__self__, "recipes", recipes)
+
+    @property
+    @pulumi.getter
+    def assignment(self) -> pulumi.Input['AssignmentArgs']:
+        """
+        Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+        """
+        return pulumi.get(self, "assignment")
+
+    @assignment.setter
+    def assignment(self, value: pulumi.Input['AssignmentArgs']):
+        pulumi.set(self, "assignment", value)
 
     @property
     @pulumi.getter(name="guestPolicyId")
@@ -63,24 +73,24 @@ class GuestPolicyArgs:
 
     @property
     @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         return pulumi.get(self, "project")
 
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
-
-    @property
-    @pulumi.getter
-    def assignment(self) -> Optional[pulumi.Input['AssignmentArgs']]:
-        """
-        Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
-        """
-        return pulumi.get(self, "assignment")
-
-    @assignment.setter
-    def assignment(self, value: Optional[pulumi.Input['AssignmentArgs']]):
-        pulumi.set(self, "assignment", value)
 
     @property
     @pulumi.getter
@@ -105,18 +115,6 @@ class GuestPolicyArgs:
     @etag.setter
     def etag(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "etag", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="packageRepositories")
@@ -175,10 +173,10 @@ class GuestPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['AssignmentArgs']] assignment: Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+        :param pulumi.Input[pulumi.InputType['AssignmentArgs']] assignment: Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
         :param pulumi.Input[str] description: Description of the guest policy. Length of the description is limited to 1024 characters.
         :param pulumi.Input[str] etag: The etag for this guest policy. If this is provided on update, it must match the server's etag.
-        :param pulumi.Input[str] name: Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
+        :param pulumi.Input[str] name: Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PackageRepositoryArgs']]]] package_repositories: A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PackageArgs']]]] packages: The software packages to be managed by this policy.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['SoftwareRecipeArgs']]]] recipes: A list of Recipes to install on the VM instance.
@@ -228,12 +226,16 @@ class GuestPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GuestPolicyArgs.__new__(GuestPolicyArgs)
 
+            if assignment is None and not opts.urn:
+                raise TypeError("Missing required property 'assignment'")
             __props__.__dict__["assignment"] = assignment
             __props__.__dict__["description"] = description
             __props__.__dict__["etag"] = etag
             if guest_policy_id is None and not opts.urn:
                 raise TypeError("Missing required property 'guest_policy_id'")
             __props__.__dict__["guest_policy_id"] = guest_policy_id
+            if name is None and not opts.urn:
+                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["package_repositories"] = package_repositories
             __props__.__dict__["packages"] = packages
@@ -280,7 +282,7 @@ class GuestPolicy(pulumi.CustomResource):
     @pulumi.getter
     def assignment(self) -> pulumi.Output['outputs.AssignmentResponse']:
         """
-        Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+        Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
         """
         return pulumi.get(self, "assignment")
 
@@ -312,7 +314,7 @@ class GuestPolicy(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
+        Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
         """
         return pulumi.get(self, "name")
 

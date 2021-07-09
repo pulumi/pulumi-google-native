@@ -35,7 +35,7 @@ export interface GetMigrationJobResult {
      */
     readonly createTime: string;
     /**
-     * Required. The resource name (URI) of the destination connection profile.
+     * The resource name (URI) of the destination connection profile.
      */
     readonly destination: string;
     /**
@@ -79,7 +79,7 @@ export interface GetMigrationJobResult {
      */
     readonly reverseSshConnectivity: outputs.datamigration.v1.ReverseSshConnectivityResponse;
     /**
-     * Required. The resource name (URI) of the source connection profile.
+     * The resource name (URI) of the source connection profile.
      */
     readonly source: string;
     /**
@@ -95,7 +95,7 @@ export interface GetMigrationJobResult {
      */
     readonly staticIpConnectivity: outputs.datamigration.v1.StaticIpConnectivityResponse;
     /**
-     * Required. The migration job type.
+     * The migration job type.
      */
     readonly type: string;
     /**

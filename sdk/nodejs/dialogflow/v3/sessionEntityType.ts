@@ -36,15 +36,15 @@ export class SessionEntityType extends pulumi.CustomResource {
     }
 
     /**
-     * Required. The collection of entities to override or supplement the custom entity type.
+     * The collection of entities to override or supplement the custom entity type.
      */
     public readonly entities!: pulumi.Output<outputs.dialogflow.v3.GoogleCloudDialogflowCxV3EntityTypeEntityResponse[]>;
     /**
-     * Required. Indicates whether the additional data should override or supplement the custom entity type definition.
+     * Indicates whether the additional data should override or supplement the custom entity type definition.
      */
     public readonly entityOverrideMode!: pulumi.Output<string>;
     /**
-     * Required. The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
+     * The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
      */
     public readonly name!: pulumi.Output<string>;
 
@@ -62,11 +62,20 @@ export class SessionEntityType extends pulumi.CustomResource {
             if ((!args || args.agentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
             }
+            if ((!args || args.entities === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'entities'");
+            }
+            if ((!args || args.entityOverrideMode === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'entityOverrideMode'");
+            }
             if ((!args || args.environmentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
@@ -100,19 +109,19 @@ export class SessionEntityType extends pulumi.CustomResource {
 export interface SessionEntityTypeArgs {
     agentId: pulumi.Input<string>;
     /**
-     * Required. The collection of entities to override or supplement the custom entity type.
+     * The collection of entities to override or supplement the custom entity type.
      */
-    entities?: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EntityTypeEntityArgs>[]>;
+    entities: pulumi.Input<pulumi.Input<inputs.dialogflow.v3.GoogleCloudDialogflowCxV3EntityTypeEntityArgs>[]>;
     /**
-     * Required. Indicates whether the additional data should override or supplement the custom entity type definition.
+     * Indicates whether the additional data should override or supplement the custom entity type definition.
      */
-    entityOverrideMode?: pulumi.Input<enums.dialogflow.v3.SessionEntityTypeEntityOverrideMode>;
+    entityOverrideMode: pulumi.Input<enums.dialogflow.v3.SessionEntityTypeEntityOverrideMode>;
     environmentId: pulumi.Input<string>;
     location: pulumi.Input<string>;
     /**
-     * Required. The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
+     * The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     project: pulumi.Input<string>;
     sessionId: pulumi.Input<string>;
 }

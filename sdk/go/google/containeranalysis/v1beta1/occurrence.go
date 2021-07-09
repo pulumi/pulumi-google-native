@@ -35,11 +35,11 @@ type Occurrence struct {
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
+	// Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
 	NoteName pulumi.StringOutput `pulumi:"noteName"`
 	// A description of actions that can be taken to remedy the note.
 	Remediation pulumi.StringOutput `pulumi:"remediation"`
-	// Required. Immutable. The resource for which the occurrence applies.
+	// Immutable. The resource for which the occurrence applies.
 	Resource ResourceResponseOutput `pulumi:"resource"`
 	// The time this occurrence was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -54,8 +54,14 @@ func NewOccurrence(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.NoteName == nil {
+		return nil, errors.New("invalid value for required argument 'NoteName'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.Resource == nil {
+		return nil, errors.New("invalid value for required argument 'Resource'")
 	}
 	var resource Occurrence
 	err := ctx.RegisterResource("google-native:containeranalysis/v1beta1:Occurrence", name, args, &resource, opts...)
@@ -99,11 +105,11 @@ type occurrenceState struct {
 	Kind *string `pulumi:"kind"`
 	// The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
 	Name *string `pulumi:"name"`
-	// Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
+	// Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
 	NoteName *string `pulumi:"noteName"`
 	// A description of actions that can be taken to remedy the note.
 	Remediation *string `pulumi:"remediation"`
-	// Required. Immutable. The resource for which the occurrence applies.
+	// Immutable. The resource for which the occurrence applies.
 	Resource *ResourceResponse `pulumi:"resource"`
 	// The time this occurrence was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -132,11 +138,11 @@ type OccurrenceState struct {
 	Kind pulumi.StringPtrInput
 	// The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
 	Name pulumi.StringPtrInput
-	// Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
+	// Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
 	NoteName pulumi.StringPtrInput
 	// A description of actions that can be taken to remedy the note.
 	Remediation pulumi.StringPtrInput
-	// Required. Immutable. The resource for which the occurrence applies.
+	// Immutable. The resource for which the occurrence applies.
 	Resource ResourceResponsePtrInput
 	// The time this occurrence was last updated.
 	UpdateTime pulumi.StringPtrInput
@@ -163,13 +169,13 @@ type occurrenceArgs struct {
 	Installation *GrafeasV1beta1PackageDetails `pulumi:"installation"`
 	// Describes a specific in-toto link.
 	Intoto *GrafeasV1beta1IntotoDetails `pulumi:"intoto"`
-	// Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
-	NoteName *string `pulumi:"noteName"`
-	Project  string  `pulumi:"project"`
+	// Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
+	NoteName string `pulumi:"noteName"`
+	Project  string `pulumi:"project"`
 	// A description of actions that can be taken to remedy the note.
 	Remediation *string `pulumi:"remediation"`
-	// Required. Immutable. The resource for which the occurrence applies.
-	Resource *Resource `pulumi:"resource"`
+	// Immutable. The resource for which the occurrence applies.
+	Resource Resource `pulumi:"resource"`
 	// Describes a security vulnerability.
 	Vulnerability *GrafeasV1beta1VulnerabilityDetails `pulumi:"vulnerability"`
 }
@@ -190,13 +196,13 @@ type OccurrenceArgs struct {
 	Installation GrafeasV1beta1PackageDetailsPtrInput
 	// Describes a specific in-toto link.
 	Intoto GrafeasV1beta1IntotoDetailsPtrInput
-	// Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
-	NoteName pulumi.StringPtrInput
+	// Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
+	NoteName pulumi.StringInput
 	Project  pulumi.StringInput
 	// A description of actions that can be taken to remedy the note.
 	Remediation pulumi.StringPtrInput
-	// Required. Immutable. The resource for which the occurrence applies.
-	Resource ResourcePtrInput
+	// Immutable. The resource for which the occurrence applies.
+	Resource ResourceInput
 	// Describes a security vulnerability.
 	Vulnerability GrafeasV1beta1VulnerabilityDetailsPtrInput
 }

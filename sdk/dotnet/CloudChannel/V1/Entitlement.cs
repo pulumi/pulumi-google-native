@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+        /// The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
         /// </summary>
         [Output("offer")]
         public Output<string> Offer { get; private set; } = null!;
@@ -151,10 +151,10 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public Input<string> CustomerId { get; set; } = null!;
 
         /// <summary>
-        /// Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+        /// The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
         /// </summary>
-        [Input("offer")]
-        public Input<string>? Offer { get; set; }
+        [Input("offer", required: true)]
+        public Input<string> Offer { get; set; } = null!;
 
         [Input("parameters")]
         private InputList<Inputs.GoogleCloudChannelV1ParameterArgs>? _parameters;

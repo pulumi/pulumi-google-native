@@ -15,13 +15,13 @@ import (
 type Domain struct {
 	pulumi.CustomResourceState
 
-	// Required. The domain name of the association.
+	// The domain name of the association.
 	DomainName pulumi.StringOutput `pulumi:"domainName"`
 	// If set, the domain should redirect with the provided parameters.
 	DomainRedirect DomainRedirectResponseOutput `pulumi:"domainRedirect"`
 	// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
 	Provisioning DomainProvisioningResponseOutput `pulumi:"provisioning"`
-	// Required. The site name of the association.
+	// The site name of the association.
 	Site pulumi.StringOutput `pulumi:"site"`
 	// Additional status of the domain association.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -36,8 +36,14 @@ func NewDomain(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DomainName == nil {
+		return nil, errors.New("invalid value for required argument 'DomainName'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.Site == nil {
+		return nil, errors.New("invalid value for required argument 'Site'")
 	}
 	if args.SiteId == nil {
 		return nil, errors.New("invalid value for required argument 'SiteId'")
@@ -64,13 +70,13 @@ func GetDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Domain resources.
 type domainState struct {
-	// Required. The domain name of the association.
+	// The domain name of the association.
 	DomainName *string `pulumi:"domainName"`
 	// If set, the domain should redirect with the provided parameters.
 	DomainRedirect *DomainRedirectResponse `pulumi:"domainRedirect"`
 	// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
 	Provisioning *DomainProvisioningResponse `pulumi:"provisioning"`
-	// Required. The site name of the association.
+	// The site name of the association.
 	Site *string `pulumi:"site"`
 	// Additional status of the domain association.
 	Status *string `pulumi:"status"`
@@ -79,13 +85,13 @@ type domainState struct {
 }
 
 type DomainState struct {
-	// Required. The domain name of the association.
+	// The domain name of the association.
 	DomainName pulumi.StringPtrInput
 	// If set, the domain should redirect with the provided parameters.
 	DomainRedirect DomainRedirectResponsePtrInput
 	// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
 	Provisioning DomainProvisioningResponsePtrInput
-	// Required. The site name of the association.
+	// The site name of the association.
 	Site pulumi.StringPtrInput
 	// Additional status of the domain association.
 	Status pulumi.StringPtrInput
@@ -98,25 +104,25 @@ func (DomainState) ElementType() reflect.Type {
 }
 
 type domainArgs struct {
-	// Required. The domain name of the association.
-	DomainName *string `pulumi:"domainName"`
+	// The domain name of the association.
+	DomainName string `pulumi:"domainName"`
 	// If set, the domain should redirect with the provided parameters.
 	DomainRedirect *DomainRedirect `pulumi:"domainRedirect"`
 	Project        string          `pulumi:"project"`
-	// Required. The site name of the association.
-	Site   *string `pulumi:"site"`
-	SiteId string  `pulumi:"siteId"`
+	// The site name of the association.
+	Site   string `pulumi:"site"`
+	SiteId string `pulumi:"siteId"`
 }
 
 // The set of arguments for constructing a Domain resource.
 type DomainArgs struct {
-	// Required. The domain name of the association.
-	DomainName pulumi.StringPtrInput
+	// The domain name of the association.
+	DomainName pulumi.StringInput
 	// If set, the domain should redirect with the provided parameters.
 	DomainRedirect DomainRedirectPtrInput
 	Project        pulumi.StringInput
-	// Required. The site name of the association.
-	Site   pulumi.StringPtrInput
+	// The site name of the association.
+	Site   pulumi.StringInput
 	SiteId pulumi.StringInput
 }
 

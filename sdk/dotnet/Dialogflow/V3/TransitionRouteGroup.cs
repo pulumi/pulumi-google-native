@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
     public partial class TransitionRouteGroup : Pulumi.CustomResource
     {
         /// <summary>
-        /// Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+        /// The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
@@ -82,10 +82,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
-        /// Required. The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
+        /// The human-readable name of the transition route group, unique within the Agent. The display name can be no longer than 30 characters.
         /// </summary>
-        [Input("displayName")]
-        public Input<string>? DisplayName { get; set; }
+        [Input("displayName", required: true)]
+        public Input<string> DisplayName { get; set; } = null!;
 
         [Input("flowId", required: true)]
         public Input<string> FlowId { get; set; } = null!;

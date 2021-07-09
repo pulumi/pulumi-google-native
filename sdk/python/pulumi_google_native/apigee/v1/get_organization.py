@@ -91,7 +91,7 @@ class GetOrganizationResult:
     @pulumi.getter(name="analyticsRegion")
     def analytics_region(self) -> str:
         """
-        Required. Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+        Primary GCP region for analytics data storage. For valid values, see [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
         """
         return pulumi.get(self, "analytics_region")
 
@@ -216,7 +216,7 @@ class GetOrganizationResult:
     @pulumi.getter(name="runtimeType")
     def runtime_type(self) -> str:
         """
-        Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
+        Runtime type of the Apigee organization based on the Apigee subscription purchased.
         """
         return pulumi.get(self, "runtime_type")
 

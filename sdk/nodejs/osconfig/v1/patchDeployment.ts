@@ -48,7 +48,7 @@ export class PatchDeployment extends pulumi.CustomResource {
      */
     public readonly duration!: pulumi.Output<string>;
     /**
-     * Required. VM instances to patch.
+     * VM instances to patch.
      */
     public readonly instanceFilter!: pulumi.Output<outputs.osconfig.v1.PatchInstanceFilterResponse>;
     /**
@@ -60,7 +60,7 @@ export class PatchDeployment extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Required. Schedule a one-time execution.
+     * Schedule a one-time execution.
      */
     public readonly oneTimeSchedule!: pulumi.Output<outputs.osconfig.v1.OneTimeScheduleResponse>;
     /**
@@ -68,7 +68,7 @@ export class PatchDeployment extends pulumi.CustomResource {
      */
     public readonly patchConfig!: pulumi.Output<outputs.osconfig.v1.PatchConfigResponse>;
     /**
-     * Required. Schedule recurring executions.
+     * Schedule recurring executions.
      */
     public readonly recurringSchedule!: pulumi.Output<outputs.osconfig.v1.RecurringScheduleResponse>;
     /**
@@ -91,11 +91,20 @@ export class PatchDeployment extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.instanceFilter === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'instanceFilter'");
+            }
+            if ((!args || args.oneTimeSchedule === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'oneTimeSchedule'");
+            }
             if ((!args || args.patchDeploymentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'patchDeploymentId'");
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
+            }
+            if ((!args || args.recurringSchedule === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'recurringSchedule'");
             }
             inputs["description"] = args ? args.description : undefined;
             inputs["duration"] = args ? args.duration : undefined;
@@ -143,17 +152,17 @@ export interface PatchDeploymentArgs {
      */
     duration?: pulumi.Input<string>;
     /**
-     * Required. VM instances to patch.
+     * VM instances to patch.
      */
-    instanceFilter?: pulumi.Input<inputs.osconfig.v1.PatchInstanceFilterArgs>;
+    instanceFilter: pulumi.Input<inputs.osconfig.v1.PatchInstanceFilterArgs>;
     /**
      * Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
      */
     name?: pulumi.Input<string>;
     /**
-     * Required. Schedule a one-time execution.
+     * Schedule a one-time execution.
      */
-    oneTimeSchedule?: pulumi.Input<inputs.osconfig.v1.OneTimeScheduleArgs>;
+    oneTimeSchedule: pulumi.Input<inputs.osconfig.v1.OneTimeScheduleArgs>;
     /**
      * Optional. Patch configuration that is applied.
      */
@@ -161,9 +170,9 @@ export interface PatchDeploymentArgs {
     patchDeploymentId: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
-     * Required. Schedule recurring executions.
+     * Schedule recurring executions.
      */
-    recurringSchedule?: pulumi.Input<inputs.osconfig.v1.RecurringScheduleArgs>;
+    recurringSchedule: pulumi.Input<inputs.osconfig.v1.RecurringScheduleArgs>;
     /**
      * Optional. Rollout strategy of the patch job.
      */

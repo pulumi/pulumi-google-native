@@ -44,7 +44,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string CreatedAt;
         /// <summary>
-        /// Required. ID of the attached environment.
+        /// ID of the attached environment.
         /// </summary>
         public readonly string Environment;
         /// <summary>

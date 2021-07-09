@@ -44,7 +44,7 @@ export class Glossary extends pulumi.CustomResource {
      */
     public /*out*/ readonly entryCount!: pulumi.Output<number>;
     /**
-     * Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
+     * Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
      */
     public readonly inputConfig!: pulumi.Output<outputs.translate.v3beta1.GlossaryInputConfigResponse>;
     /**
@@ -56,7 +56,7 @@ export class Glossary extends pulumi.CustomResource {
      */
     public readonly languagePair!: pulumi.Output<outputs.translate.v3beta1.LanguageCodePairResponse>;
     /**
-     * Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
+     * The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -75,8 +75,14 @@ export class Glossary extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.inputConfig === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'inputConfig'");
+            }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
+            }
+            if ((!args || args.name === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'name'");
             }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
@@ -111,9 +117,9 @@ export class Glossary extends pulumi.CustomResource {
  */
 export interface GlossaryArgs {
     /**
-     * Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
+     * Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
      */
-    inputConfig?: pulumi.Input<inputs.translate.v3beta1.GlossaryInputConfigArgs>;
+    inputConfig: pulumi.Input<inputs.translate.v3beta1.GlossaryInputConfigArgs>;
     /**
      * Used with equivalent term set glossaries.
      */
@@ -124,8 +130,8 @@ export interface GlossaryArgs {
     languagePair?: pulumi.Input<inputs.translate.v3beta1.LanguageCodePairArgs>;
     location: pulumi.Input<string>;
     /**
-     * Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
+     * The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
      */
-    name?: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     project: pulumi.Input<string>;
 }

@@ -69,7 +69,7 @@ class GetScanConfigResult:
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Required. The user provided display name of the ScanConfig.
+        The user provided display name of the ScanConfig.
         """
         return pulumi.get(self, "display_name")
 
@@ -109,7 +109,7 @@ class GetScanConfigResult:
     @pulumi.getter(name="startingUrls")
     def starting_urls(self) -> Sequence[str]:
         """
-        Required. The starting URLs from which the scanner finds site pages.
+        The starting URLs from which the scanner finds site pages.
         """
         return pulumi.get(self, "starting_urls")
 

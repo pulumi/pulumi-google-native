@@ -16,10 +16,10 @@ namespace Pulumi.GoogleNative.Transcoder.V1Beta1.Inputs
     public sealed class AudioStreamArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. Audio bitrate in bits per second. Must be between 1 and 10,000,000.
+        /// Audio bitrate in bits per second. Must be between 1 and 10,000,000.
         /// </summary>
-        [Input("bitrateBps")]
-        public Input<int>? BitrateBps { get; set; }
+        [Input("bitrateBps", required: true)]
+        public Input<int> BitrateBps { get; set; } = null!;
 
         /// <summary>
         /// Number of audio channels. Must be between 1 and 6. The default is 2.

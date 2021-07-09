@@ -315,7 +315,7 @@ class UserManagedResponse(dict):
                  replicas: Sequence['outputs.ReplicaResponse']):
         """
         A replication policy that replicates the Secret payload into the locations specified in Secret.replication.user_managed.replicas
-        :param Sequence['ReplicaResponse'] replicas: Required. The list of Replicas for this Secret. Cannot be empty.
+        :param Sequence['ReplicaResponse'] replicas: The list of Replicas for this Secret. Cannot be empty.
         """
         pulumi.set(__self__, "replicas", replicas)
 
@@ -323,7 +323,7 @@ class UserManagedResponse(dict):
     @pulumi.getter
     def replicas(self) -> Sequence['outputs.ReplicaResponse']:
         """
-        Required. The list of Replicas for this Secret. Cannot be empty.
+        The list of Replicas for this Secret. Cannot be empty.
         """
         return pulumi.get(self, "replicas")
 

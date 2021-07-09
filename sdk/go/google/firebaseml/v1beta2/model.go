@@ -19,7 +19,7 @@ type Model struct {
 	ActiveOperations OperationResponseArrayOutput `pulumi:"activeOperations"`
 	// Timestamp when this model was created in Firebase ML.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
+	// The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -44,6 +44,9 @@ func NewModel(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -73,7 +76,7 @@ type modelState struct {
 	ActiveOperations []OperationResponse `pulumi:"activeOperations"`
 	// Timestamp when this model was created in Firebase ML.
 	CreateTime *string `pulumi:"createTime"`
-	// Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
+	// The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
 	DisplayName *string `pulumi:"displayName"`
 	// See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3
 	Etag *string `pulumi:"etag"`
@@ -96,7 +99,7 @@ type ModelState struct {
 	ActiveOperations OperationResponseArrayInput
 	// Timestamp when this model was created in Firebase ML.
 	CreateTime pulumi.StringPtrInput
-	// Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
+	// The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
 	DisplayName pulumi.StringPtrInput
 	// See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3
 	Etag pulumi.StringPtrInput
@@ -119,8 +122,8 @@ func (ModelState) ElementType() reflect.Type {
 }
 
 type modelArgs struct {
-	// Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
-	DisplayName *string `pulumi:"displayName"`
+	// The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
+	DisplayName string `pulumi:"displayName"`
 	// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
@@ -134,8 +137,8 @@ type modelArgs struct {
 
 // The set of arguments for constructing a Model resource.
 type ModelArgs struct {
-	// Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
-	DisplayName pulumi.StringPtrInput
+	// The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
+	DisplayName pulumi.StringInput
 	// The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput

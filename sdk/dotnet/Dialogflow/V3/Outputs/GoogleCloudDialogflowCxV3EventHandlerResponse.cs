@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
     public sealed class GoogleCloudDialogflowCxV3EventHandlerResponse
     {
         /// <summary>
-        /// Required. The name of the event to handle.
+        /// The name of the event to handle.
         /// </summary>
         public readonly string Event;
         /// <summary>

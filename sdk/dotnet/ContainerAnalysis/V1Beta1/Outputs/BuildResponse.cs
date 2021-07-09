@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Outputs
     public sealed class BuildResponse
     {
         /// <summary>
-        /// Required. Immutable. Version of the builder which produced this build.
+        /// Immutable. Version of the builder which produced this build.
         /// </summary>
         public readonly string BuilderVersion;
         /// <summary>

@@ -61,11 +61,11 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string LastModifiedAt;
         /// <summary>
-        /// Required. Compute Engine location where the instance resides.
+        /// Compute Engine location where the instance resides.
         /// </summary>
         public readonly string Location;
         /// <summary>
-        /// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+        /// Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
         /// </summary>
         public readonly string Name;
         /// <summary>

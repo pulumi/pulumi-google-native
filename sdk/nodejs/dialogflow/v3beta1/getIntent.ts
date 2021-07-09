@@ -39,7 +39,7 @@ export interface GetIntentResult {
      */
     readonly description: string;
     /**
-     * Required. The human-readable name of the intent, unique within the agent.
+     * The human-readable name of the intent, unique within the agent.
      */
     readonly displayName: string;
     /**

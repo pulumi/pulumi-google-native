@@ -29,7 +29,7 @@ export interface GetBudgetArgs {
 
 export interface GetBudgetResult {
     /**
-     * Required. Budgeted amount.
+     * Budgeted amount.
      */
     readonly amount: outputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1BudgetAmountResponse;
     /**

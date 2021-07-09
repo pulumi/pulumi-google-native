@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Outputs
         /// </summary>
         public readonly string DefaultValue;
         /// <summary>
-        /// Required. The name of the parameter.
+        /// The name of the parameter.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
