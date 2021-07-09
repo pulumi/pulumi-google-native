@@ -103,7 +103,6 @@ export class Instance extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["diskEncryptionKeyName"] = args ? args.diskEncryptionKeyName : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
-            inputs["environments"] = args ? args.environments : undefined;
             inputs["location"] = args ? args.location : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
@@ -149,7 +148,6 @@ export interface InstanceArgs {
      * Optional. Display name for the instance.
      */
     displayName?: pulumi.Input<string>;
-    environments?: pulumi.Input<string>;
     /**
      * Compute Engine location where the instance resides.
      */

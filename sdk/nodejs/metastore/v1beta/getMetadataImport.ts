@@ -33,7 +33,7 @@ export interface GetMetadataImportArgs {
 
 export interface GetMetadataImportResult {
     /**
-     * The time when the metadata import was created.
+     * The time when the metadata import was started.
      */
     readonly createTime: string;
     /**
@@ -44,6 +44,10 @@ export interface GetMetadataImportResult {
      * The description of the metadata import.
      */
     readonly description: string;
+    /**
+     * The time when the metadata import finished.
+     */
+    readonly endTime: string;
     /**
      * Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
      */

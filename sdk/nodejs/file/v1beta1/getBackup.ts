@@ -55,6 +55,10 @@ export interface GetBackupResult {
      */
     readonly name: string;
     /**
+     * Reserved for future use.
+     */
+    readonly satisfiesPzs: boolean;
+    /**
      * Name of the file share in the source Cloud Filestore instance that the backup is created from.
      */
     readonly sourceFileShare: string;

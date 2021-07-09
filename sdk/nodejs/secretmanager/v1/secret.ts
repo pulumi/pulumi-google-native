@@ -40,6 +40,10 @@ export class Secret extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Optional. Etag of the currently stored Secret.
+     */
+    public readonly etag!: pulumi.Output<string>;
+    /**
      * Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
      */
     public readonly expireTime!: pulumi.Output<string>;
@@ -88,6 +92,7 @@ export class Secret extends pulumi.CustomResource {
             if ((!args || args.secretId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secretId'");
             }
+            inputs["etag"] = args ? args.etag : undefined;
             inputs["expireTime"] = args ? args.expireTime : undefined;
             inputs["labels"] = args ? args.labels : undefined;
             inputs["project"] = args ? args.project : undefined;
@@ -100,6 +105,7 @@ export class Secret extends pulumi.CustomResource {
             inputs["name"] = undefined /*out*/;
         } else {
             inputs["createTime"] = undefined /*out*/;
+            inputs["etag"] = undefined /*out*/;
             inputs["expireTime"] = undefined /*out*/;
             inputs["labels"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -119,6 +125,10 @@ export class Secret extends pulumi.CustomResource {
  * The set of arguments for constructing a Secret resource.
  */
 export interface SecretArgs {
+    /**
+     * Optional. Etag of the currently stored Secret.
+     */
+    etag?: pulumi.Input<string>;
     /**
      * Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
      */

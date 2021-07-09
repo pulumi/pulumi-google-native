@@ -37,6 +37,10 @@ export interface GetOccurrenceResult {
      */
     readonly buildDetails: outputs.containeranalysis.v1alpha1.BuildDetailsResponse;
     /**
+     * Describes whether or not a resource passes compliance checks.
+     */
+    readonly compliance: outputs.containeranalysis.v1alpha1.ComplianceOccurrenceResponse;
+    /**
      * The time this `Occurrence` was created.
      */
     readonly createTime: string;

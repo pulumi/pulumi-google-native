@@ -52,7 +52,7 @@ export interface GetNodeGroupResult {
      */
     readonly locationHint: string;
     /**
-     * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+     * Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
      */
     readonly maintenancePolicy: string;
     readonly maintenanceWindow: outputs.compute.alpha.NodeGroupMaintenanceWindowResponse;
@@ -72,6 +72,10 @@ export interface GetNodeGroupResult {
      * Server-defined URL for this resource with the resource id.
      */
     readonly selfLinkWithId: string;
+    /**
+     * Share-settings for the node group
+     */
+    readonly shareSettings: outputs.compute.alpha.ShareSettingsResponse;
     /**
      * The total number of nodes in the node group.
      */

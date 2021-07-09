@@ -44,6 +44,10 @@ export class BackendBucket extends pulumi.CustomResource {
      */
     public readonly cdnPolicy!: pulumi.Output<outputs.compute.beta.BackendBucketCdnPolicyResponse>;
     /**
+     * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+     */
+    public readonly compressionMode!: pulumi.Output<string>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -55,6 +59,10 @@ export class BackendBucket extends pulumi.CustomResource {
      * An optional textual description of the resource; provided by the client when the resource is created.
      */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * The resource URL for the edge security policy associated with this backend bucket.
+     */
+    public /*out*/ readonly edgeSecurityPolicy!: pulumi.Output<string>;
     /**
      * If true, enable Cloud CDN for this BackendBucket.
      */
@@ -88,6 +96,7 @@ export class BackendBucket extends pulumi.CustomResource {
             }
             inputs["bucketName"] = args ? args.bucketName : undefined;
             inputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
+            inputs["compressionMode"] = args ? args.compressionMode : undefined;
             inputs["customResponseHeaders"] = args ? args.customResponseHeaders : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableCdn"] = args ? args.enableCdn : undefined;
@@ -96,13 +105,16 @@ export class BackendBucket extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["edgeSecurityPolicy"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         } else {
             inputs["bucketName"] = undefined /*out*/;
             inputs["cdnPolicy"] = undefined /*out*/;
+            inputs["compressionMode"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["customResponseHeaders"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
+            inputs["edgeSecurityPolicy"] = undefined /*out*/;
             inputs["enableCdn"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
@@ -127,6 +139,10 @@ export interface BackendBucketArgs {
      * Cloud CDN configuration for this BackendBucket.
      */
     cdnPolicy?: pulumi.Input<inputs.compute.beta.BackendBucketCdnPolicyArgs>;
+    /**
+     * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+     */
+    compressionMode?: pulumi.Input<enums.compute.beta.BackendBucketCompressionMode>;
     /**
      * Headers that the HTTP/S load balancer should add to proxied responses.
      */

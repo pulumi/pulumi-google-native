@@ -52,6 +52,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+     */
+    public readonly cryptoKeyConfig!: pulumi.Output<outputs.datafusion.v1beta1.CryptoKeyConfigResponse>;
+    /**
      * User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
      */
     public readonly dataprocServiceAccount!: pulumi.Output<string>;
@@ -158,6 +162,7 @@ export class Instance extends pulumi.CustomResource {
             }
             inputs["accelerators"] = args ? args.accelerators : undefined;
             inputs["availableVersion"] = args ? args.availableVersion : undefined;
+            inputs["cryptoKeyConfig"] = args ? args.cryptoKeyConfig : undefined;
             inputs["dataprocServiceAccount"] = args ? args.dataprocServiceAccount : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["displayName"] = args ? args.displayName : undefined;
@@ -189,6 +194,7 @@ export class Instance extends pulumi.CustomResource {
             inputs["apiEndpoint"] = undefined /*out*/;
             inputs["availableVersion"] = undefined /*out*/;
             inputs["createTime"] = undefined /*out*/;
+            inputs["cryptoKeyConfig"] = undefined /*out*/;
             inputs["dataprocServiceAccount"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
@@ -230,6 +236,10 @@ export interface InstanceArgs {
      * Available versions that the instance can be upgraded to using UpdateInstanceRequest.
      */
     availableVersion?: pulumi.Input<pulumi.Input<inputs.datafusion.v1beta1.VersionArgs>[]>;
+    /**
+     * The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+     */
+    cryptoKeyConfig?: pulumi.Input<inputs.datafusion.v1beta1.CryptoKeyConfigArgs>;
     /**
      * User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
      */

@@ -6,9 +6,7 @@ import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Returns the specified zonal instance group. Get a list of available zonal instance groups by making a list() request.
- *
- * For managed instance groups, use the instanceGroupManagers or regionInstanceGroupManagers methods instead.
+ * Returns the specified zonal instance group. Get a list of available zonal instance groups by making a list() request. For managed instance groups, use the instanceGroupManagers or regionInstanceGroupManagers methods instead.
  */
 export function getInstanceGroup(args: GetInstanceGroupArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceGroupResult> {
     if (!opts) {
@@ -53,11 +51,7 @@ export interface GetInstanceGroupResult {
      */
     readonly name: string;
     /**
-     * Assigns a name to a port number. For example: {name: "http", port: 80}
-     *
-     * This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}] 
-     *
-     * Named ports apply to all instances in this instance group.
+     *  Assigns a name to a port number. For example: {name: "http", port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}] Named ports apply to all instances in this instance group. 
      */
     readonly namedPorts: outputs.compute.alpha.NamedPortResponse[];
     /**

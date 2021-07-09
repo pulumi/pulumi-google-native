@@ -47,6 +47,10 @@ export interface GetInstanceResult {
      */
     readonly createTime: string;
     /**
+     * The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+     */
+    readonly cryptoKeyConfig: outputs.datafusion.v1beta1.CryptoKeyConfigResponse;
+    /**
      * User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
      */
     readonly dataprocServiceAccount: string;

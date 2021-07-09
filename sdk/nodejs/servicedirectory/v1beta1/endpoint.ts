@@ -39,6 +39,10 @@ export class Endpoint extends pulumi.CustomResource {
      */
     public readonly address!: pulumi.Output<string>;
     /**
+     * The timestamp when the endpoint was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
      * Optional. Metadata for the endpoint. This data can be consumed by service clients. Restrictions: * The entire metadata dictionary may contain up to 512 characters, spread accoss all key-value pairs. Metadata that goes beyond this limit are rejected * Valid metadata keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Metadata that fails to meet these requirements are rejected * The `(*.)google.com/` and `(*.)googleapis.com/` prefixes are reserved for system metadata managed by Service Directory. If the user tries to write to these keyspaces, those entries are silently ignored by the system Note: This field is equivalent to the `annotations` field in the v1 API. They have the same syntax and read/write to the same location in Service Directory.
      */
     public readonly metadata!: pulumi.Output<{[key: string]: string}>;
@@ -47,9 +51,17 @@ export class Endpoint extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, but no other validation is performed on this field (ex. network or project existence, reachability, or permissions).
+     */
+    public readonly network!: pulumi.Output<string>;
+    /**
      * Optional. Service Directory rejects values outside of `[0, 65535]`.
      */
     public readonly port!: pulumi.Output<number>;
+    /**
+     * The timestamp when the endpoint was last updated.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Endpoint resource with the given unique name, arguments, and options.
@@ -83,14 +95,20 @@ export class Endpoint extends pulumi.CustomResource {
             inputs["metadata"] = args ? args.metadata : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["namespaceId"] = args ? args.namespaceId : undefined;
+            inputs["network"] = args ? args.network : undefined;
             inputs["port"] = args ? args.port : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["serviceId"] = args ? args.serviceId : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
             inputs["address"] = undefined /*out*/;
+            inputs["createTime"] = undefined /*out*/;
             inputs["metadata"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
+            inputs["network"] = undefined /*out*/;
             inputs["port"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -118,6 +136,10 @@ export interface EndpointArgs {
      */
     name?: pulumi.Input<string>;
     namespaceId: pulumi.Input<string>;
+    /**
+     * Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, but no other validation is performed on this field (ex. network or project existence, reachability, or permissions).
+     */
+    network?: pulumi.Input<string>;
     /**
      * Optional. Service Directory rejects values outside of `[0, 65535]`.
      */

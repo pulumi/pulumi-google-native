@@ -41,6 +41,10 @@ export interface GetNoteResult {
      */
     readonly buildType: outputs.containeranalysis.v1alpha1.BuildTypeResponse;
     /**
+     * A note describing a compliance check.
+     */
+    readonly compliance: outputs.containeranalysis.v1alpha1.ComplianceNoteResponse;
+    /**
      * The time this note was created. This field can be used as a filter in list requests.
      */
     readonly createTime: string;

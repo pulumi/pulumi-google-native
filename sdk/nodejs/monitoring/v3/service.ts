@@ -71,6 +71,10 @@ export class Service extends pulumi.CustomResource {
      * Configuration for how to query telemetry on a Service.
      */
     public readonly telemetry!: pulumi.Output<outputs.monitoring.v3.TelemetryResponse>;
+    /**
+     * Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+     */
+    public readonly userLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -99,6 +103,7 @@ export class Service extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["serviceId"] = args ? args.serviceId : undefined;
             inputs["telemetry"] = args ? args.telemetry : undefined;
+            inputs["userLabels"] = args ? args.userLabels : undefined;
             inputs["v3Id"] = args ? args.v3Id : undefined;
             inputs["v3Id1"] = args ? args.v3Id1 : undefined;
         } else {
@@ -111,6 +116,7 @@ export class Service extends pulumi.CustomResource {
             inputs["meshIstio"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["telemetry"] = undefined /*out*/;
+            inputs["userLabels"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
@@ -160,6 +166,10 @@ export interface ServiceArgs {
      * Configuration for how to query telemetry on a Service.
      */
     telemetry?: pulumi.Input<inputs.monitoring.v3.TelemetryArgs>;
+    /**
+     * Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+     */
+    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     v3Id: pulumi.Input<string>;
     v3Id1: pulumi.Input<string>;
 }

@@ -31,6 +31,10 @@ export interface GetNamespaceArgs {
 
 export interface GetNamespaceResult {
     /**
+     * The timestamp when the namespace was created.
+     */
+    readonly createTime: string;
+    /**
      * Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
      */
     readonly labels: {[key: string]: string};
@@ -38,4 +42,8 @@ export interface GetNamespaceResult {
      * Immutable. The resource name for the namespace in the format `projects/*&#47;locations/*&#47;namespaces/*`.
      */
     readonly name: string;
+    /**
+     * The timestamp when the namespace was last updated.
+     */
+    readonly updateTime: string;
 }

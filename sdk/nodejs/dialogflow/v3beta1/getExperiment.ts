@@ -55,7 +55,7 @@ export interface GetExperimentResult {
      */
     readonly endTime: string;
     /**
-     * Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
+     * LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
      */
     readonly experimentLength: string;
     /**
@@ -75,7 +75,7 @@ export interface GetExperimentResult {
      */
     readonly startTime: string;
     /**
-     * The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
+     * The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
      */
     readonly state: string;
     /**

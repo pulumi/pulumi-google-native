@@ -18,12 +18,14 @@ export function getFeature(args: GetFeatureArgs, opts?: pulumi.InvokeOptions): P
     }
     return pulumi.runtime.invoke("google-native:gkehub/v1beta:getFeature", {
         "featureId": args.featureId,
+        "location": args.location,
         "project": args.project,
     }, opts);
 }
 
 export interface GetFeatureArgs {
     featureId: string;
+    location: string;
     project: string;
 }
 
@@ -49,7 +51,7 @@ export interface GetFeatureResult {
      */
     readonly membershipStates: {[key: string]: string};
     /**
-     * The full, unique name of this Feature resource in the format `projects/*&#47;locations/global/features/*`.
+     * The full, unique name of this Feature resource in the format `projects/*&#47;locations/*&#47;features/*`.
      */
     readonly name: string;
     /**

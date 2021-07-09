@@ -36,13 +36,7 @@ export class Subnetwork extends pulumi.CustomResource {
     }
 
     /**
-     * Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length.
-     *
-     * Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature.
-     *
-     * The default value is false and applies to all existing subnetworks and automatically created subnetworks.
-     *
-     * This field cannot be set to true at resource creation time.
+     * Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length. Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature. The default value is false and applies to all existing subnetworks and automatically created subnetworks. This field cannot be set to true at resource creation time.
      */
     public readonly allowSubnetCidrRoutesOverlap!: pulumi.Output<boolean>;
     /**
@@ -58,9 +52,11 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly enableFlowLogs!: pulumi.Output<boolean>;
     /**
-     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-     *
-     * To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
+     * The range of external IPv6 addresses that are owned by this subnetwork.
+     */
+    public /*out*/ readonly externalIpv6Prefix!: pulumi.Output<string>;
+    /**
+     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
@@ -71,6 +67,10 @@ export class Subnetwork extends pulumi.CustomResource {
      * The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
      */
     public readonly ipCidrRange!: pulumi.Output<string>;
+    /**
+     * The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+     */
+    public readonly ipv6AccessType!: pulumi.Output<string>;
     /**
      * The range of internal IPv6 addresses that are owned by this subnetwork.
      */
@@ -96,9 +96,7 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public readonly privateIpGoogleAccess!: pulumi.Output<boolean>;
     /**
-     * The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
-     *
-     * This field can be both set at resource creation time and updated using patch.
+     * The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
      */
     public readonly privateIpv6GoogleAccess!: pulumi.Output<string>;
     /**
@@ -122,7 +120,11 @@ export class Subnetwork extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+     * The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+     */
+    public readonly stackType!: pulumi.Output<string>;
+    /**
+     * The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
 
@@ -147,6 +149,7 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["description"] = args ? args.description : undefined;
             inputs["enableFlowLogs"] = args ? args.enableFlowLogs : undefined;
             inputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
+            inputs["ipv6AccessType"] = args ? args.ipv6AccessType : undefined;
             inputs["logConfig"] = args ? args.logConfig : undefined;
             inputs["name"] = args ? args.name : undefined;
             inputs["network"] = args ? args.network : undefined;
@@ -158,7 +161,9 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["role"] = args ? args.role : undefined;
             inputs["secondaryIpRanges"] = args ? args.secondaryIpRanges : undefined;
+            inputs["stackType"] = args ? args.stackType : undefined;
             inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["externalIpv6Prefix"] = undefined /*out*/;
             inputs["fingerprint"] = undefined /*out*/;
             inputs["gatewayAddress"] = undefined /*out*/;
             inputs["ipv6CidrRange"] = undefined /*out*/;
@@ -170,9 +175,11 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
             inputs["enableFlowLogs"] = undefined /*out*/;
+            inputs["externalIpv6Prefix"] = undefined /*out*/;
             inputs["fingerprint"] = undefined /*out*/;
             inputs["gatewayAddress"] = undefined /*out*/;
             inputs["ipCidrRange"] = undefined /*out*/;
+            inputs["ipv6AccessType"] = undefined /*out*/;
             inputs["ipv6CidrRange"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["logConfig"] = undefined /*out*/;
@@ -185,6 +192,7 @@ export class Subnetwork extends pulumi.CustomResource {
             inputs["role"] = undefined /*out*/;
             inputs["secondaryIpRanges"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
+            inputs["stackType"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -199,13 +207,7 @@ export class Subnetwork extends pulumi.CustomResource {
  */
 export interface SubnetworkArgs {
     /**
-     * Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length.
-     *
-     * Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature.
-     *
-     * The default value is false and applies to all existing subnetworks and automatically created subnetworks.
-     *
-     * This field cannot be set to true at resource creation time.
+     * Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length. Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature. The default value is false and applies to all existing subnetworks and automatically created subnetworks. This field cannot be set to true at resource creation time.
      */
     allowSubnetCidrRoutesOverlap?: pulumi.Input<boolean>;
     /**
@@ -220,6 +222,10 @@ export interface SubnetworkArgs {
      * The range of internal addresses that are owned by this subnetwork. Provide this property when you create the subnetwork. For example, 10.0.0.0/8 or 100.64.0.0/10. Ranges must be unique and non-overlapping within a network. Only IPv4 is supported. This field is set at resource creation time. The range can be any range listed in the Valid ranges list. The range can be expanded after creation using expandIpCidrRange.
      */
     ipCidrRange?: pulumi.Input<string>;
+    /**
+     * The access type of IPv6 address this subnet holds. It's immutable and can only be specified during creation or the first time the subnet is updated into IPV4_IPV6 dual stack. If the ipv6_type is EXTERNAL then this subnet cannot enable direct path.
+     */
+    ipv6AccessType?: pulumi.Input<enums.compute.beta.SubnetworkIpv6AccessType>;
     /**
      * This field denotes the VPC flow logging options for this subnetwork. If logging is enabled, logs are exported to Cloud Logging.
      */
@@ -237,9 +243,7 @@ export interface SubnetworkArgs {
      */
     privateIpGoogleAccess?: pulumi.Input<boolean>;
     /**
-     * The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
-     *
-     * This field can be both set at resource creation time and updated using patch.
+     * The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
      */
     privateIpv6GoogleAccess?: pulumi.Input<enums.compute.beta.SubnetworkPrivateIpv6GoogleAccess>;
     project: pulumi.Input<string>;
@@ -260,4 +264,8 @@ export interface SubnetworkArgs {
      * An array of configurations for secondary IP ranges for VM instances contained in this subnetwork. The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong to either primary or secondary ranges. This field can be updated with a patch request.
      */
     secondaryIpRanges?: pulumi.Input<pulumi.Input<inputs.compute.beta.SubnetworkSecondaryRangeArgs>[]>;
+    /**
+     * The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
+     */
+    stackType?: pulumi.Input<enums.compute.beta.SubnetworkStackType>;
 }

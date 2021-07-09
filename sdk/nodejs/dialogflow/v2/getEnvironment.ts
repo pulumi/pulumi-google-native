@@ -43,7 +43,7 @@ export interface GetEnvironmentResult {
      */
     readonly fulfillment: outputs.dialogflow.v2.GoogleCloudDialogflowV2FulfillmentResponse;
     /**
-     * The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/`
+     * The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.
      */
     readonly name: string;
     /**

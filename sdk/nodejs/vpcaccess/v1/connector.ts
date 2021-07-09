@@ -52,7 +52,7 @@ export class Connector extends pulumi.CustomResource {
      */
     public readonly maxInstances!: pulumi.Output<number>;
     /**
-     * Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
+     * Maximum throughput of the connector in Mbps. Default is 300, max is 1000.
      */
     public readonly maxThroughput!: pulumi.Output<number>;
     /**
@@ -153,7 +153,7 @@ export interface ConnectorArgs {
      */
     maxInstances?: pulumi.Input<number>;
     /**
-     * Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
+     * Maximum throughput of the connector in Mbps. Default is 300, max is 1000.
      */
     maxThroughput?: pulumi.Input<number>;
     /**

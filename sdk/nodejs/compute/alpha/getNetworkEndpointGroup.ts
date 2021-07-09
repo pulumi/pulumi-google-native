@@ -91,7 +91,7 @@ export interface GetNetworkEndpointGroupResult {
      */
     readonly selfLinkWithId: string;
     /**
-     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
+     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
      */
     readonly serverlessDeployment: outputs.compute.alpha.NetworkEndpointGroupServerlessDeploymentResponse;
     /**

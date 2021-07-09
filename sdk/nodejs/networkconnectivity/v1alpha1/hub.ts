@@ -51,10 +51,6 @@ export class Hub extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * A list of the URIs of all attached spokes
-     */
-    public /*out*/ readonly spokes!: pulumi.Output<string[]>;
-    /**
      * The current lifecycle state of this Hub.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -89,7 +85,6 @@ export class Hub extends pulumi.CustomResource {
             inputs["project"] = args ? args.project : undefined;
             inputs["requestId"] = args ? args.requestId : undefined;
             inputs["updateTime"] = args ? args.updateTime : undefined;
-            inputs["spokes"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
             inputs["uniqueId"] = undefined /*out*/;
         } else {
@@ -97,7 +92,6 @@ export class Hub extends pulumi.CustomResource {
             inputs["description"] = undefined /*out*/;
             inputs["labels"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
-            inputs["spokes"] = undefined /*out*/;
             inputs["state"] = undefined /*out*/;
             inputs["uniqueId"] = undefined /*out*/;
             inputs["updateTime"] = undefined /*out*/;

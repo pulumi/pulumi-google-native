@@ -44,9 +44,17 @@ export class ServiceAttachment extends pulumi.CustomResource {
      */
     public readonly connectionPreference!: pulumi.Output<string>;
     /**
+     * Projects that are allowed to connect to this service attachment.
+     */
+    public readonly consumerAcceptLists!: pulumi.Output<outputs.compute.beta.ServiceAttachmentConsumerProjectLimitResponse[]>;
+    /**
      * An array of forwarding rules for all the consumers connected to this service attachment.
      */
     public /*out*/ readonly consumerForwardingRules!: pulumi.Output<outputs.compute.beta.ServiceAttachmentConsumerForwardingRuleResponse[]>;
+    /**
+     * Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
+     */
+    public readonly consumerRejectLists!: pulumi.Output<string[]>;
     /**
      * Creation timestamp in RFC3339 text format.
      */
@@ -59,6 +67,10 @@ export class ServiceAttachment extends pulumi.CustomResource {
      * If true, enable the proxy protocol which is for supplying client TCP/IP address data in TCP connections that traverse proxies on their way to destination servers.
      */
     public readonly enableProxyProtocol!: pulumi.Output<boolean>;
+    /**
+     * Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment.
+     */
+    public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
      * Type of the resource. Always compute#serviceAttachment for service attachments.
      */
@@ -110,6 +122,8 @@ export class ServiceAttachment extends pulumi.CustomResource {
                 throw new Error("Missing required property 'region'");
             }
             inputs["connectionPreference"] = args ? args.connectionPreference : undefined;
+            inputs["consumerAcceptLists"] = args ? args.consumerAcceptLists : undefined;
+            inputs["consumerRejectLists"] = args ? args.consumerRejectLists : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["enableProxyProtocol"] = args ? args.enableProxyProtocol : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -122,16 +136,20 @@ export class ServiceAttachment extends pulumi.CustomResource {
             inputs["connectedEndpoints"] = undefined /*out*/;
             inputs["consumerForwardingRules"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
+            inputs["fingerprint"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["pscServiceAttachmentId"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
         } else {
             inputs["connectedEndpoints"] = undefined /*out*/;
             inputs["connectionPreference"] = undefined /*out*/;
+            inputs["consumerAcceptLists"] = undefined /*out*/;
             inputs["consumerForwardingRules"] = undefined /*out*/;
+            inputs["consumerRejectLists"] = undefined /*out*/;
             inputs["creationTimestamp"] = undefined /*out*/;
             inputs["description"] = undefined /*out*/;
             inputs["enableProxyProtocol"] = undefined /*out*/;
+            inputs["fingerprint"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["natSubnets"] = undefined /*out*/;
@@ -156,6 +174,14 @@ export interface ServiceAttachmentArgs {
      * The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
      */
     connectionPreference?: pulumi.Input<enums.compute.beta.ServiceAttachmentConnectionPreference>;
+    /**
+     * Projects that are allowed to connect to this service attachment.
+     */
+    consumerAcceptLists?: pulumi.Input<pulumi.Input<inputs.compute.beta.ServiceAttachmentConsumerProjectLimitArgs>[]>;
+    /**
+     * Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
+     */
+    consumerRejectLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * An optional description of this resource. Provide this property when you create the resource.
      */

@@ -71,6 +71,10 @@ export interface GetAgentResult {
      */
     readonly startFlow: string;
     /**
+     * The list of all languages supported by the agent (except for the `default_language_code`).
+     */
+    readonly supportedLanguageCodes: string[];
+    /**
      * The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
      */
     readonly timeZone: string;

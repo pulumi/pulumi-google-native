@@ -285,3 +285,23 @@ export const RatePlanState = {
  * Current state of the rate plan (draft or published).
  */
 export type RatePlanState = (typeof RatePlanState)[keyof typeof RatePlanState];
+
+export const TargetServerProtocol = {
+    /**
+     * UNSPECIFIED defaults to HTTP for backwards compatibility.
+     */
+    ProtocolUnspecified: "PROTOCOL_UNSPECIFIED",
+    /**
+     * The TargetServer uses HTTP.
+     */
+    Http: "HTTP",
+    /**
+     * The TargetServer uses GRPC.
+     */
+    Grpc: "GRPC",
+} as const;
+
+/**
+ * Immutable. The protocol used by this TargetServer.
+ */
+export type TargetServerProtocol = (typeof TargetServerProtocol)[keyof typeof TargetServerProtocol];

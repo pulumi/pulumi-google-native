@@ -21,6 +21,7 @@ export function getGameServerCluster(args: GetGameServerClusterArgs, opts?: pulu
         "location": args.location,
         "project": args.project,
         "realmId": args.realmId,
+        "view": args.view,
     }, opts);
 }
 
@@ -29,6 +30,7 @@ export interface GetGameServerClusterArgs {
     location: string;
     project: string;
     realmId: string;
+    view?: string;
 }
 
 export interface GetGameServerClusterResult {
@@ -36,6 +38,10 @@ export interface GetGameServerClusterResult {
      * Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
      */
     readonly allocationPriority: string;
+    /**
+     * The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
+     */
+    readonly clusterState: outputs.gameservices.v1beta.KubernetesClusterStateResponse;
     /**
      * The game server cluster connection information. This information is used to manage game server clusters.
      */

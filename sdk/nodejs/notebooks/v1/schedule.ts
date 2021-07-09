@@ -48,7 +48,7 @@ export class Schedule extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens ‘-’, and underscores ‘_’.
+     * Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens '-', and underscores '_'.
      */
     public /*out*/ readonly displayName!: pulumi.Output<string>;
     /**

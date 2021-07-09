@@ -6,7 +6,7 @@ import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Returns a requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer resource doesn't exist. Usually the result of an invalid name parameter. Return value: The Customer resource.
+ * Returns the requested Customer resource. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the API request. * INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer resource doesn't exist. Usually the result of an invalid name parameter. Return value: The Customer resource.
  */
 export function getCustomer(args: GetCustomerArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomerResult> {
     if (!opts) {
@@ -31,7 +31,7 @@ export interface GetCustomerArgs {
 
 export interface GetCustomerResult {
     /**
-     * Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
+     * Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses. Alternate emails are optional when you create Team customers.
      */
     readonly alternateEmail: string;
     /**
@@ -39,7 +39,7 @@ export interface GetCustomerResult {
      */
     readonly channelPartnerId: string;
     /**
-     * Customer's cloud_identity_id. Populated only if a Cloud Identity resource exists for this customer.
+     * The customer's Cloud Identity ID if the customer has a Cloud Identity resource.
      */
     readonly cloudIdentityId: string;
     /**
@@ -47,11 +47,11 @@ export interface GetCustomerResult {
      */
     readonly cloudIdentityInfo: outputs.cloudchannel.v1.GoogleCloudChannelV1CloudIdentityInfoResponse;
     /**
-     * The time at which the customer is created.
+     * Time when the customer was created.
      */
     readonly createTime: string;
     /**
-     * Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+     * The customer's primary domain. Must match the primary contact email's domain.
      */
     readonly domain: string;
     /**
@@ -67,7 +67,7 @@ export interface GetCustomerResult {
      */
     readonly orgDisplayName: string;
     /**
-     * Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+     * The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
      */
     readonly orgPostalAddress: outputs.cloudchannel.v1.GoogleTypePostalAddressResponse;
     /**
@@ -75,7 +75,7 @@ export interface GetCustomerResult {
      */
     readonly primaryContactInfo: outputs.cloudchannel.v1.GoogleCloudChannelV1ContactInfoResponse;
     /**
-     * The time at which the customer is updated.
+     * Time when the customer was updated.
      */
     readonly updateTime: string;
 }

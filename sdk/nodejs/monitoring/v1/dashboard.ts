@@ -89,6 +89,7 @@ export class Dashboard extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["rowLayout"] = args ? args.rowLayout : undefined;
+            inputs["validateOnly"] = args ? args.validateOnly : undefined;
         } else {
             inputs["columnLayout"] = undefined /*out*/;
             inputs["displayName"] = undefined /*out*/;
@@ -138,4 +139,5 @@ export interface DashboardArgs {
      * The content is divided into equally spaced rows and the widgets are arranged horizontally.
      */
     rowLayout?: pulumi.Input<inputs.monitoring.v1.RowLayoutArgs>;
+    validateOnly?: pulumi.Input<string>;
 }

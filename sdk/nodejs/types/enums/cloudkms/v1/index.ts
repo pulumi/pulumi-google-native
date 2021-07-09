@@ -156,6 +156,10 @@ export const CryptoKeyVersionTemplateAlgorithm = {
      */
     EcSignP384Sha384: "EC_SIGN_P384_SHA384",
     /**
+     * ECDSA on the non-NIST secp256k1 curve. This curve is only supported for HSM protection level.
+     */
+    EcSignSecp256k1Sha256: "EC_SIGN_SECP256K1_SHA256",
+    /**
      * Algorithm representing symmetric encryption by an external key manager.
      */
     ExternalSymmetricEncryption: "EXTERNAL_SYMMETRIC_ENCRYPTION",

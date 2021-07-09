@@ -45,6 +45,10 @@ export interface GetRouteResult {
      */
     readonly destRange: string;
     /**
+     * ILB route behavior when ILB is deemed unhealthy based on user specified threshold on the Backend Service of the internal load balancing.
+     */
+    readonly ilbRouteBehaviorOnUnhealthy: string;
+    /**
      * Type of this resource. Always compute#routes for Route resources.
      */
     readonly kind: string;
@@ -57,19 +61,15 @@ export interface GetRouteResult {
      */
     readonly network: string;
     /**
-     * The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL:  projects/project/global/gateways/default-internet-gateway
+     * The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
      */
     readonly nextHopGateway: string;
     /**
-     * The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs:  
-     * - 10.128.0.56 
-     * - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule 
-     * - regions/region/forwardingRules/forwardingRule
+     * The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule 
      */
     readonly nextHopIlb: string;
     /**
-     * The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example:
-     * https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+     * The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
      */
     readonly nextHopInstance: string;
     /**

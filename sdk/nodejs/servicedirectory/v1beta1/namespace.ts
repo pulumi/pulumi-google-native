@@ -35,6 +35,10 @@ export class Namespace extends pulumi.CustomResource {
     }
 
     /**
+     * The timestamp when the namespace was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
      * Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
@@ -42,6 +46,10 @@ export class Namespace extends pulumi.CustomResource {
      * Immutable. The resource name for the namespace in the format `projects/*&#47;locations/*&#47;namespaces/*`.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The timestamp when the namespace was last updated.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Namespace resource with the given unique name, arguments, and options.
@@ -68,9 +76,13 @@ export class Namespace extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["namespaceId"] = args ? args.namespaceId : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["createTime"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
             inputs["labels"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

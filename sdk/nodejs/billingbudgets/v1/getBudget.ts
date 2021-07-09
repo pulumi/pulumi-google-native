@@ -53,7 +53,7 @@ export interface GetBudgetResult {
      */
     readonly notificationsRule: outputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1NotificationsRuleResponse;
     /**
-     * Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
+     * Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
      */
     readonly thresholdRules: outputs.billingbudgets.v1.GoogleCloudBillingBudgetsV1ThresholdRuleResponse[];
 }

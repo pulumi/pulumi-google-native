@@ -9,9 +9,11 @@ export * from "./backup";
 export * from "./getBackup";
 export * from "./getMetadataImport";
 export * from "./getService";
+export * from "./getServiceBackupIamPolicy";
 export * from "./getServiceIamPolicy";
 export * from "./metadataImport";
 export * from "./service";
+export * from "./serviceBackupIamPolicy";
 export * from "./serviceIamPolicy";
 
 // Export enums:
@@ -21,6 +23,7 @@ export * from "../../types/enums/metastore/v1alpha";
 import { Backup } from "./backup";
 import { MetadataImport } from "./metadataImport";
 import { Service } from "./service";
+import { ServiceBackupIamPolicy } from "./serviceBackupIamPolicy";
 import { ServiceIamPolicy } from "./serviceIamPolicy";
 
 const _module = {
@@ -33,6 +36,8 @@ const _module = {
                 return new MetadataImport(name, <any>undefined, { urn })
             case "google-native:metastore/v1alpha:Service":
                 return new Service(name, <any>undefined, { urn })
+            case "google-native:metastore/v1alpha:ServiceBackupIamPolicy":
+                return new ServiceBackupIamPolicy(name, <any>undefined, { urn })
             case "google-native:metastore/v1alpha:ServiceIamPolicy":
                 return new ServiceIamPolicy(name, <any>undefined, { urn })
             default:

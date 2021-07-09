@@ -56,6 +56,10 @@ export class TargetServer extends pulumi.CustomResource {
      */
     public readonly port!: pulumi.Output<number>;
     /**
+     * Immutable. The protocol used by this TargetServer.
+     */
+    public readonly protocol!: pulumi.Output<string>;
+    /**
      * Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
      */
     public readonly sSLInfo!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1TlsInfoResponse>;
@@ -93,6 +97,7 @@ export class TargetServer extends pulumi.CustomResource {
             inputs["name"] = args ? args.name : undefined;
             inputs["organizationId"] = args ? args.organizationId : undefined;
             inputs["port"] = args ? args.port : undefined;
+            inputs["protocol"] = args ? args.protocol : undefined;
             inputs["sSLInfo"] = args ? args.sSLInfo : undefined;
         } else {
             inputs["description"] = undefined /*out*/;
@@ -100,6 +105,7 @@ export class TargetServer extends pulumi.CustomResource {
             inputs["isEnabled"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["port"] = undefined /*out*/;
+            inputs["protocol"] = undefined /*out*/;
             inputs["sSLInfo"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -135,6 +141,10 @@ export interface TargetServerArgs {
      * The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
      */
     port: pulumi.Input<number>;
+    /**
+     * Immutable. The protocol used by this TargetServer.
+     */
+    protocol?: pulumi.Input<enums.apigee.v1.TargetServerProtocol>;
     /**
      * Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
      */
