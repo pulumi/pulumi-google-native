@@ -38,9 +38,7 @@ type LookupRegionInstanceGroupManagerResult struct {
 	DistributionPolicy DistributionPolicyResponse `pulumi:"distributionPolicy"`
 	// The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
 	FailoverAction string `pulumi:"failoverAction"`
-	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
+	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
 	Fingerprint string `pulumi:"fingerprint"`
 	// The URL of the Instance Group resource.
 	InstanceGroup string `pulumi:"instanceGroup"`
@@ -68,9 +66,7 @@ type LookupRegionInstanceGroupManagerResult struct {
 	TargetSize int `pulumi:"targetSize"`
 	// The update policy for this managed instance group.
 	UpdatePolicy InstanceGroupManagerUpdatePolicyResponse `pulumi:"updatePolicy"`
-	// Specifies the instance templates used by this managed instance group to create instances.
-	//
-	// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+	// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions []InstanceGroupManagerVersionResponse `pulumi:"versions"`
 	// The URL of a zone where the managed instance group is located (for zonal resources).
 	Zone string `pulumi:"zone"`

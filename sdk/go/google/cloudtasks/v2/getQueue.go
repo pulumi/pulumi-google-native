@@ -36,6 +36,6 @@ type LookupQueueResult struct {
 	RetryConfig RetryConfigResponse `pulumi:"retryConfig"`
 	// Configuration options for writing logs to [Stackdriver Logging](https://cloud.google.com/logging/docs/). If this field is unset, then no logs are written.
 	StackdriverLoggingConfig StackdriverLoggingConfigResponse `pulumi:"stackdriverLoggingConfig"`
-	// The state of the queue. `state` can only be changed by called PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
+	// The state of the queue. `state` can only be changed by calling PauseQueue, ResumeQueue, or uploading [queue.yaml/xml](https://cloud.google.com/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change `state`.
 	State string `pulumi:"state"`
 }

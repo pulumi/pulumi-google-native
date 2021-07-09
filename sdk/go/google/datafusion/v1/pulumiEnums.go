@@ -20,6 +20,8 @@ const (
 	AcceleratorAcceleratorTypeCdc = AcceleratorAcceleratorType("CDC")
 	// Cloud Healthcare accelerator for CDF. This accelerator is to enable Cloud Healthcare specific CDF plugins developed by Healthcare team.
 	AcceleratorAcceleratorTypeHealthcare = AcceleratorAcceleratorType("HEALTHCARE")
+	// Contact Center AI Insights This accelerator is used to enable import and export pipelines custom built to streamline CCAI Insights processing.
+	AcceleratorAcceleratorTypeCcaiInsights = AcceleratorAcceleratorType("CCAI_INSIGHTS")
 )
 
 func (AcceleratorAcceleratorType) ElementType() reflect.Type {

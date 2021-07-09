@@ -857,7 +857,7 @@ func (o DynamicGroupStatusResponsePtrOutput) StatusTime() pulumi.StringPtrOutput
 type EntityKey struct {
 	// The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
 	Id *string `pulumi:"id"`
-	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}.
+	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
 	Namespace *string `pulumi:"namespace"`
 }
 
@@ -876,7 +876,7 @@ type EntityKeyInput interface {
 type EntityKeyArgs struct {
 	// The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
 	Id pulumi.StringPtrInput `pulumi:"id"`
-	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}.
+	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 }
 
@@ -988,7 +988,7 @@ func (o EntityKeyOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntityKey) *string { return v.Id }).(pulumi.StringPtrOutput)
 }
 
-// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}.
+// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
 func (o EntityKeyOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EntityKey) *string { return v.Namespace }).(pulumi.StringPtrOutput)
 }
@@ -1021,7 +1021,7 @@ func (o EntityKeyPtrOutput) Id() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}.
+// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
 func (o EntityKeyPtrOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EntityKey) *string {
 		if v == nil {
@@ -1053,7 +1053,7 @@ func (o EntityKeyArrayOutput) Index(i pulumi.IntInput) EntityKeyOutput {
 
 // A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
 type EntityKeyResponse struct {
-	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}.
+	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
 	Namespace string `pulumi:"namespace"`
 }
 
@@ -1070,7 +1070,7 @@ type EntityKeyResponseInput interface {
 
 // A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
 type EntityKeyResponseArgs struct {
-	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}.
+	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
 	Namespace pulumi.StringInput `pulumi:"namespace"`
 }
 
@@ -1177,7 +1177,7 @@ func (o EntityKeyResponseOutput) ToEntityKeyResponsePtrOutputWithContext(ctx con
 	}).(EntityKeyResponsePtrOutput)
 }
 
-// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}.
+// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
 func (o EntityKeyResponseOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v EntityKeyResponse) string { return v.Namespace }).(pulumi.StringOutput)
 }
@@ -1200,7 +1200,7 @@ func (o EntityKeyResponsePtrOutput) Elem() EntityKeyResponseOutput {
 	return o.ApplyT(func(v *EntityKeyResponse) EntityKeyResponse { return *v }).(EntityKeyResponseOutput)
 }
 
-// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}.
+// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
 func (o EntityKeyResponsePtrOutput) Namespace() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EntityKeyResponse) *string {
 		if v == nil {
@@ -1637,6 +1637,242 @@ func (o MembershipRoleResponseArrayOutput) Index(i pulumi.IntInput) MembershipRo
 	}).(MembershipRoleResponseOutput)
 }
 
+// POSIX Group definition to represent a group in a POSIX compliant system.
+type PosixGroup struct {
+	// GID of the POSIX group.
+	Gid *string `pulumi:"gid"`
+	// Name of the POSIX group.
+	Name *string `pulumi:"name"`
+	// System identifier for which group name and gid apply to. If not specified it will default to empty value.
+	SystemId *string `pulumi:"systemId"`
+}
+
+// PosixGroupInput is an input type that accepts PosixGroupArgs and PosixGroupOutput values.
+// You can construct a concrete instance of `PosixGroupInput` via:
+//
+//          PosixGroupArgs{...}
+type PosixGroupInput interface {
+	pulumi.Input
+
+	ToPosixGroupOutput() PosixGroupOutput
+	ToPosixGroupOutputWithContext(context.Context) PosixGroupOutput
+}
+
+// POSIX Group definition to represent a group in a POSIX compliant system.
+type PosixGroupArgs struct {
+	// GID of the POSIX group.
+	Gid pulumi.StringPtrInput `pulumi:"gid"`
+	// Name of the POSIX group.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// System identifier for which group name and gid apply to. If not specified it will default to empty value.
+	SystemId pulumi.StringPtrInput `pulumi:"systemId"`
+}
+
+func (PosixGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PosixGroup)(nil)).Elem()
+}
+
+func (i PosixGroupArgs) ToPosixGroupOutput() PosixGroupOutput {
+	return i.ToPosixGroupOutputWithContext(context.Background())
+}
+
+func (i PosixGroupArgs) ToPosixGroupOutputWithContext(ctx context.Context) PosixGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PosixGroupOutput)
+}
+
+// PosixGroupArrayInput is an input type that accepts PosixGroupArray and PosixGroupArrayOutput values.
+// You can construct a concrete instance of `PosixGroupArrayInput` via:
+//
+//          PosixGroupArray{ PosixGroupArgs{...} }
+type PosixGroupArrayInput interface {
+	pulumi.Input
+
+	ToPosixGroupArrayOutput() PosixGroupArrayOutput
+	ToPosixGroupArrayOutputWithContext(context.Context) PosixGroupArrayOutput
+}
+
+type PosixGroupArray []PosixGroupInput
+
+func (PosixGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PosixGroup)(nil)).Elem()
+}
+
+func (i PosixGroupArray) ToPosixGroupArrayOutput() PosixGroupArrayOutput {
+	return i.ToPosixGroupArrayOutputWithContext(context.Background())
+}
+
+func (i PosixGroupArray) ToPosixGroupArrayOutputWithContext(ctx context.Context) PosixGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PosixGroupArrayOutput)
+}
+
+// POSIX Group definition to represent a group in a POSIX compliant system.
+type PosixGroupOutput struct{ *pulumi.OutputState }
+
+func (PosixGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PosixGroup)(nil)).Elem()
+}
+
+func (o PosixGroupOutput) ToPosixGroupOutput() PosixGroupOutput {
+	return o
+}
+
+func (o PosixGroupOutput) ToPosixGroupOutputWithContext(ctx context.Context) PosixGroupOutput {
+	return o
+}
+
+// GID of the POSIX group.
+func (o PosixGroupOutput) Gid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PosixGroup) *string { return v.Gid }).(pulumi.StringPtrOutput)
+}
+
+// Name of the POSIX group.
+func (o PosixGroupOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PosixGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// System identifier for which group name and gid apply to. If not specified it will default to empty value.
+func (o PosixGroupOutput) SystemId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PosixGroup) *string { return v.SystemId }).(pulumi.StringPtrOutput)
+}
+
+type PosixGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (PosixGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PosixGroup)(nil)).Elem()
+}
+
+func (o PosixGroupArrayOutput) ToPosixGroupArrayOutput() PosixGroupArrayOutput {
+	return o
+}
+
+func (o PosixGroupArrayOutput) ToPosixGroupArrayOutputWithContext(ctx context.Context) PosixGroupArrayOutput {
+	return o
+}
+
+func (o PosixGroupArrayOutput) Index(i pulumi.IntInput) PosixGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PosixGroup {
+		return vs[0].([]PosixGroup)[vs[1].(int)]
+	}).(PosixGroupOutput)
+}
+
+// POSIX Group definition to represent a group in a POSIX compliant system.
+type PosixGroupResponse struct {
+	// GID of the POSIX group.
+	Gid string `pulumi:"gid"`
+	// Name of the POSIX group.
+	Name string `pulumi:"name"`
+	// System identifier for which group name and gid apply to. If not specified it will default to empty value.
+	SystemId string `pulumi:"systemId"`
+}
+
+// PosixGroupResponseInput is an input type that accepts PosixGroupResponseArgs and PosixGroupResponseOutput values.
+// You can construct a concrete instance of `PosixGroupResponseInput` via:
+//
+//          PosixGroupResponseArgs{...}
+type PosixGroupResponseInput interface {
+	pulumi.Input
+
+	ToPosixGroupResponseOutput() PosixGroupResponseOutput
+	ToPosixGroupResponseOutputWithContext(context.Context) PosixGroupResponseOutput
+}
+
+// POSIX Group definition to represent a group in a POSIX compliant system.
+type PosixGroupResponseArgs struct {
+	// GID of the POSIX group.
+	Gid pulumi.StringInput `pulumi:"gid"`
+	// Name of the POSIX group.
+	Name pulumi.StringInput `pulumi:"name"`
+	// System identifier for which group name and gid apply to. If not specified it will default to empty value.
+	SystemId pulumi.StringInput `pulumi:"systemId"`
+}
+
+func (PosixGroupResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PosixGroupResponse)(nil)).Elem()
+}
+
+func (i PosixGroupResponseArgs) ToPosixGroupResponseOutput() PosixGroupResponseOutput {
+	return i.ToPosixGroupResponseOutputWithContext(context.Background())
+}
+
+func (i PosixGroupResponseArgs) ToPosixGroupResponseOutputWithContext(ctx context.Context) PosixGroupResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PosixGroupResponseOutput)
+}
+
+// PosixGroupResponseArrayInput is an input type that accepts PosixGroupResponseArray and PosixGroupResponseArrayOutput values.
+// You can construct a concrete instance of `PosixGroupResponseArrayInput` via:
+//
+//          PosixGroupResponseArray{ PosixGroupResponseArgs{...} }
+type PosixGroupResponseArrayInput interface {
+	pulumi.Input
+
+	ToPosixGroupResponseArrayOutput() PosixGroupResponseArrayOutput
+	ToPosixGroupResponseArrayOutputWithContext(context.Context) PosixGroupResponseArrayOutput
+}
+
+type PosixGroupResponseArray []PosixGroupResponseInput
+
+func (PosixGroupResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PosixGroupResponse)(nil)).Elem()
+}
+
+func (i PosixGroupResponseArray) ToPosixGroupResponseArrayOutput() PosixGroupResponseArrayOutput {
+	return i.ToPosixGroupResponseArrayOutputWithContext(context.Background())
+}
+
+func (i PosixGroupResponseArray) ToPosixGroupResponseArrayOutputWithContext(ctx context.Context) PosixGroupResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PosixGroupResponseArrayOutput)
+}
+
+// POSIX Group definition to represent a group in a POSIX compliant system.
+type PosixGroupResponseOutput struct{ *pulumi.OutputState }
+
+func (PosixGroupResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PosixGroupResponse)(nil)).Elem()
+}
+
+func (o PosixGroupResponseOutput) ToPosixGroupResponseOutput() PosixGroupResponseOutput {
+	return o
+}
+
+func (o PosixGroupResponseOutput) ToPosixGroupResponseOutputWithContext(ctx context.Context) PosixGroupResponseOutput {
+	return o
+}
+
+// GID of the POSIX group.
+func (o PosixGroupResponseOutput) Gid() pulumi.StringOutput {
+	return o.ApplyT(func(v PosixGroupResponse) string { return v.Gid }).(pulumi.StringOutput)
+}
+
+// Name of the POSIX group.
+func (o PosixGroupResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v PosixGroupResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// System identifier for which group name and gid apply to. If not specified it will default to empty value.
+func (o PosixGroupResponseOutput) SystemId() pulumi.StringOutput {
+	return o.ApplyT(func(v PosixGroupResponse) string { return v.SystemId }).(pulumi.StringOutput)
+}
+
+type PosixGroupResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PosixGroupResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PosixGroupResponse)(nil)).Elem()
+}
+
+func (o PosixGroupResponseArrayOutput) ToPosixGroupResponseArrayOutput() PosixGroupResponseArrayOutput {
+	return o
+}
+
+func (o PosixGroupResponseArrayOutput) ToPosixGroupResponseArrayOutputWithContext(ctx context.Context) PosixGroupResponseArrayOutput {
+	return o
+}
+
+func (o PosixGroupResponseArrayOutput) Index(i pulumi.IntInput) PosixGroupResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PosixGroupResponse {
+		return vs[0].([]PosixGroupResponse)[vs[1].(int)]
+	}).(PosixGroupResponseOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AndroidAttributesResponseOutput{})
 	pulumi.RegisterOutputType(AndroidAttributesResponsePtrOutput{})
@@ -1663,4 +1899,8 @@ func init() {
 	pulumi.RegisterOutputType(MembershipRoleArrayOutput{})
 	pulumi.RegisterOutputType(MembershipRoleResponseOutput{})
 	pulumi.RegisterOutputType(MembershipRoleResponseArrayOutput{})
+	pulumi.RegisterOutputType(PosixGroupOutput{})
+	pulumi.RegisterOutputType(PosixGroupArrayOutput{})
+	pulumi.RegisterOutputType(PosixGroupResponseOutput{})
+	pulumi.RegisterOutputType(PosixGroupResponseArrayOutput{})
 }

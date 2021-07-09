@@ -31,7 +31,7 @@ type TargetSslProxy struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// URL to the BackendService resource.
 	Service pulumi.StringOutput `pulumi:"service"`
-	// URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+	// URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
 	SslCertificates pulumi.StringArrayOutput `pulumi:"sslCertificates"`
 	// URL of SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the TargetSslProxy resource will not have any SSL policy configured.
 	SslPolicy pulumi.StringOutput `pulumi:"sslPolicy"`
@@ -85,7 +85,7 @@ type targetSslProxyState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// URL to the BackendService resource.
 	Service *string `pulumi:"service"`
-	// URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+	// URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
 	SslCertificates []string `pulumi:"sslCertificates"`
 	// URL of SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the TargetSslProxy resource will not have any SSL policy configured.
 	SslPolicy *string `pulumi:"sslPolicy"`
@@ -108,7 +108,7 @@ type TargetSslProxyState struct {
 	SelfLink pulumi.StringPtrInput
 	// URL to the BackendService resource.
 	Service pulumi.StringPtrInput
-	// URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+	// URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
 	SslCertificates pulumi.StringArrayInput
 	// URL of SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the TargetSslProxy resource will not have any SSL policy configured.
 	SslPolicy pulumi.StringPtrInput
@@ -131,7 +131,7 @@ type targetSslProxyArgs struct {
 	RequestId   *string `pulumi:"requestId"`
 	// URL to the BackendService resource.
 	Service *string `pulumi:"service"`
-	// URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+	// URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
 	SslCertificates []string `pulumi:"sslCertificates"`
 	// URL of SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the TargetSslProxy resource will not have any SSL policy configured.
 	SslPolicy *string `pulumi:"sslPolicy"`
@@ -151,7 +151,7 @@ type TargetSslProxyArgs struct {
 	RequestId   pulumi.StringPtrInput
 	// URL to the BackendService resource.
 	Service pulumi.StringPtrInput
-	// URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+	// URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
 	SslCertificates pulumi.StringArrayInput
 	// URL of SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the TargetSslProxy resource will not have any SSL policy configured.
 	SslPolicy pulumi.StringPtrInput

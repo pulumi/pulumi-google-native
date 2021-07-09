@@ -1708,6 +1708,8 @@ type AutoprovisioningNodePoolDefaults struct {
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
 	DiskType *string `pulumi:"diskType"`
+	// The image type to use for NAP created node.
+	ImageType *string `pulumi:"imageType"`
 	// NodeManagement configuration for this NodePool.
 	Management *NodeManagement `pulumi:"management"`
 	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
@@ -1741,6 +1743,8 @@ type AutoprovisioningNodePoolDefaultsArgs struct {
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
+	// The image type to use for NAP created node.
+	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
 	// NodeManagement configuration for this NodePool.
 	Management NodeManagementPtrInput `pulumi:"management"`
 	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
@@ -1848,6 +1852,11 @@ func (o AutoprovisioningNodePoolDefaultsOutput) DiskType() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
 
+// The image type to use for NAP created node.
+func (o AutoprovisioningNodePoolDefaultsOutput) ImageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) *string { return v.ImageType }).(pulumi.StringPtrOutput)
+}
+
 // NodeManagement configuration for this NodePool.
 func (o AutoprovisioningNodePoolDefaultsOutput) Management() NodeManagementPtrOutput {
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaults) *NodeManagement { return v.Management }).(NodeManagementPtrOutput)
@@ -1926,6 +1935,16 @@ func (o AutoprovisioningNodePoolDefaultsPtrOutput) DiskType() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+// The image type to use for NAP created node.
+func (o AutoprovisioningNodePoolDefaultsPtrOutput) ImageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoprovisioningNodePoolDefaults) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageType
+	}).(pulumi.StringPtrOutput)
+}
+
 // NodeManagement configuration for this NodePool.
 func (o AutoprovisioningNodePoolDefaultsPtrOutput) Management() NodeManagementPtrOutput {
 	return o.ApplyT(func(v *AutoprovisioningNodePoolDefaults) *NodeManagement {
@@ -1994,6 +2013,8 @@ type AutoprovisioningNodePoolDefaultsResponse struct {
 	DiskSizeGb int `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
 	DiskType string `pulumi:"diskType"`
+	// The image type to use for NAP created node.
+	ImageType string `pulumi:"imageType"`
 	// NodeManagement configuration for this NodePool.
 	Management NodeManagementResponse `pulumi:"management"`
 	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
@@ -2027,6 +2048,8 @@ type AutoprovisioningNodePoolDefaultsResponseArgs struct {
 	DiskSizeGb pulumi.IntInput `pulumi:"diskSizeGb"`
 	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
 	DiskType pulumi.StringInput `pulumi:"diskType"`
+	// The image type to use for NAP created node.
+	ImageType pulumi.StringInput `pulumi:"imageType"`
 	// NodeManagement configuration for this NodePool.
 	Management NodeManagementResponseInput `pulumi:"management"`
 	// Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) To unset the min cpu platform field pass "automatic" as field value.
@@ -2134,6 +2157,11 @@ func (o AutoprovisioningNodePoolDefaultsResponseOutput) DiskType() pulumi.String
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaultsResponse) string { return v.DiskType }).(pulumi.StringOutput)
 }
 
+// The image type to use for NAP created node.
+func (o AutoprovisioningNodePoolDefaultsResponseOutput) ImageType() pulumi.StringOutput {
+	return o.ApplyT(func(v AutoprovisioningNodePoolDefaultsResponse) string { return v.ImageType }).(pulumi.StringOutput)
+}
+
 // NodeManagement configuration for this NodePool.
 func (o AutoprovisioningNodePoolDefaultsResponseOutput) Management() NodeManagementResponseOutput {
 	return o.ApplyT(func(v AutoprovisioningNodePoolDefaultsResponse) NodeManagementResponse { return v.Management }).(NodeManagementResponseOutput)
@@ -2211,6 +2239,16 @@ func (o AutoprovisioningNodePoolDefaultsResponsePtrOutput) DiskType() pulumi.Str
 			return nil
 		}
 		return &v.DiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The image type to use for NAP created node.
+func (o AutoprovisioningNodePoolDefaultsResponsePtrOutput) ImageType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutoprovisioningNodePoolDefaultsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ImageType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4298,6 +4336,8 @@ func (o ClusterTelemetryResponsePtrOutput) Type() pulumi.StringPtrOutput {
 type ClusterUpdate struct {
 	// Configurations for the various addons available to run in the cluster.
 	DesiredAddonsConfig *AddonsConfig `pulumi:"desiredAddonsConfig"`
+	// AuthenticatorGroupsConfig specifies the config for the cluster security groups settings.
+	DesiredAuthenticatorGroupsConfig *AuthenticatorGroupsConfig `pulumi:"desiredAuthenticatorGroupsConfig"`
 	// The desired Autopilot configuration for the cluster.
 	DesiredAutopilot *Autopilot `pulumi:"desiredAutopilot"`
 	// The desired configuration options for the Binary Authorization feature.
@@ -4312,6 +4352,8 @@ type ClusterUpdate struct {
 	DesiredDatapathProvider *string `pulumi:"desiredDatapathProvider"`
 	// The desired status of whether to disable default sNAT for this cluster.
 	DesiredDefaultSnatStatus *DefaultSnatStatus `pulumi:"desiredDefaultSnatStatus"`
+	// DNSConfig contains clusterDNS config for this cluster.
+	DesiredDnsConfig *DNSConfig `pulumi:"desiredDnsConfig"`
 	// The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
 	DesiredImageType *string `pulumi:"desiredImageType"`
 	// The desired config of Intra-node visibility.
@@ -4348,6 +4390,8 @@ type ClusterUpdate struct {
 	DesiredReleaseChannel *ReleaseChannel `pulumi:"desiredReleaseChannel"`
 	// The desired configuration for exporting resource usage.
 	DesiredResourceUsageExportConfig *ResourceUsageExportConfig `pulumi:"desiredResourceUsageExportConfig"`
+	// ServiceExternalIPsConfig specifies the config for the use of Services with ExternalIPs field.
+	DesiredServiceExternalIpsConfig *ServiceExternalIPsConfig `pulumi:"desiredServiceExternalIpsConfig"`
 	// Configuration for Shielded Nodes.
 	DesiredShieldedNodes *ShieldedNodes `pulumi:"desiredShieldedNodes"`
 	// The desired Cloud TPU configuration.
@@ -4375,6 +4419,8 @@ type ClusterUpdateInput interface {
 type ClusterUpdateArgs struct {
 	// Configurations for the various addons available to run in the cluster.
 	DesiredAddonsConfig AddonsConfigPtrInput `pulumi:"desiredAddonsConfig"`
+	// AuthenticatorGroupsConfig specifies the config for the cluster security groups settings.
+	DesiredAuthenticatorGroupsConfig AuthenticatorGroupsConfigPtrInput `pulumi:"desiredAuthenticatorGroupsConfig"`
 	// The desired Autopilot configuration for the cluster.
 	DesiredAutopilot AutopilotPtrInput `pulumi:"desiredAutopilot"`
 	// The desired configuration options for the Binary Authorization feature.
@@ -4389,6 +4435,8 @@ type ClusterUpdateArgs struct {
 	DesiredDatapathProvider *ClusterUpdateDesiredDatapathProvider `pulumi:"desiredDatapathProvider"`
 	// The desired status of whether to disable default sNAT for this cluster.
 	DesiredDefaultSnatStatus DefaultSnatStatusPtrInput `pulumi:"desiredDefaultSnatStatus"`
+	// DNSConfig contains clusterDNS config for this cluster.
+	DesiredDnsConfig DNSConfigPtrInput `pulumi:"desiredDnsConfig"`
 	// The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
 	DesiredImageType pulumi.StringPtrInput `pulumi:"desiredImageType"`
 	// The desired config of Intra-node visibility.
@@ -4425,6 +4473,8 @@ type ClusterUpdateArgs struct {
 	DesiredReleaseChannel ReleaseChannelPtrInput `pulumi:"desiredReleaseChannel"`
 	// The desired configuration for exporting resource usage.
 	DesiredResourceUsageExportConfig ResourceUsageExportConfigPtrInput `pulumi:"desiredResourceUsageExportConfig"`
+	// ServiceExternalIPsConfig specifies the config for the use of Services with ExternalIPs field.
+	DesiredServiceExternalIpsConfig ServiceExternalIPsConfigPtrInput `pulumi:"desiredServiceExternalIpsConfig"`
 	// Configuration for Shielded Nodes.
 	DesiredShieldedNodes ShieldedNodesPtrInput `pulumi:"desiredShieldedNodes"`
 	// The desired Cloud TPU configuration.
@@ -4469,6 +4519,11 @@ func (o ClusterUpdateOutput) DesiredAddonsConfig() AddonsConfigPtrOutput {
 	return o.ApplyT(func(v ClusterUpdate) *AddonsConfig { return v.DesiredAddonsConfig }).(AddonsConfigPtrOutput)
 }
 
+// AuthenticatorGroupsConfig specifies the config for the cluster security groups settings.
+func (o ClusterUpdateOutput) DesiredAuthenticatorGroupsConfig() AuthenticatorGroupsConfigPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *AuthenticatorGroupsConfig { return v.DesiredAuthenticatorGroupsConfig }).(AuthenticatorGroupsConfigPtrOutput)
+}
+
 // The desired Autopilot configuration for the cluster.
 func (o ClusterUpdateOutput) DesiredAutopilot() AutopilotPtrOutput {
 	return o.ApplyT(func(v ClusterUpdate) *Autopilot { return v.DesiredAutopilot }).(AutopilotPtrOutput)
@@ -4502,6 +4557,11 @@ func (o ClusterUpdateOutput) DesiredDatapathProvider() pulumi.StringPtrOutput {
 // The desired status of whether to disable default sNAT for this cluster.
 func (o ClusterUpdateOutput) DesiredDefaultSnatStatus() DefaultSnatStatusPtrOutput {
 	return o.ApplyT(func(v ClusterUpdate) *DefaultSnatStatus { return v.DesiredDefaultSnatStatus }).(DefaultSnatStatusPtrOutput)
+}
+
+// DNSConfig contains clusterDNS config for this cluster.
+func (o ClusterUpdateOutput) DesiredDnsConfig() DNSConfigPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *DNSConfig { return v.DesiredDnsConfig }).(DNSConfigPtrOutput)
 }
 
 // The desired image type for the node pool. NOTE: Set the "desired_node_pool" field as well.
@@ -4592,6 +4652,11 @@ func (o ClusterUpdateOutput) DesiredReleaseChannel() ReleaseChannelPtrOutput {
 // The desired configuration for exporting resource usage.
 func (o ClusterUpdateOutput) DesiredResourceUsageExportConfig() ResourceUsageExportConfigPtrOutput {
 	return o.ApplyT(func(v ClusterUpdate) *ResourceUsageExportConfig { return v.DesiredResourceUsageExportConfig }).(ResourceUsageExportConfigPtrOutput)
+}
+
+// ServiceExternalIPsConfig specifies the config for the use of Services with ExternalIPs field.
+func (o ClusterUpdateOutput) DesiredServiceExternalIpsConfig() ServiceExternalIPsConfigPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *ServiceExternalIPsConfig { return v.DesiredServiceExternalIpsConfig }).(ServiceExternalIPsConfigPtrOutput)
 }
 
 // Configuration for Shielded Nodes.
@@ -5421,6 +5486,350 @@ func (o ConsumptionMeteringConfigResponsePtrOutput) Enabled() pulumi.BoolPtrOutp
 		}
 		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+// DNSConfig contains the desired set of options for configuring clusterDNS.
+type DNSConfig struct {
+	// cluster_dns indicates which in-cluster DNS provider should be used.
+	ClusterDns *string `pulumi:"clusterDns"`
+	// cluster_dns_domain is the suffix used for all cluster service records.
+	ClusterDnsDomain *string `pulumi:"clusterDnsDomain"`
+	// cluster_dns_scope indicates the scope of access to cluster DNS records.
+	ClusterDnsScope *string `pulumi:"clusterDnsScope"`
+}
+
+// DNSConfigInput is an input type that accepts DNSConfigArgs and DNSConfigOutput values.
+// You can construct a concrete instance of `DNSConfigInput` via:
+//
+//          DNSConfigArgs{...}
+type DNSConfigInput interface {
+	pulumi.Input
+
+	ToDNSConfigOutput() DNSConfigOutput
+	ToDNSConfigOutputWithContext(context.Context) DNSConfigOutput
+}
+
+// DNSConfig contains the desired set of options for configuring clusterDNS.
+type DNSConfigArgs struct {
+	// cluster_dns indicates which in-cluster DNS provider should be used.
+	ClusterDns *DNSConfigClusterDns `pulumi:"clusterDns"`
+	// cluster_dns_domain is the suffix used for all cluster service records.
+	ClusterDnsDomain pulumi.StringPtrInput `pulumi:"clusterDnsDomain"`
+	// cluster_dns_scope indicates the scope of access to cluster DNS records.
+	ClusterDnsScope *DNSConfigClusterDnsScope `pulumi:"clusterDnsScope"`
+}
+
+func (DNSConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DNSConfig)(nil)).Elem()
+}
+
+func (i DNSConfigArgs) ToDNSConfigOutput() DNSConfigOutput {
+	return i.ToDNSConfigOutputWithContext(context.Background())
+}
+
+func (i DNSConfigArgs) ToDNSConfigOutputWithContext(ctx context.Context) DNSConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DNSConfigOutput)
+}
+
+func (i DNSConfigArgs) ToDNSConfigPtrOutput() DNSConfigPtrOutput {
+	return i.ToDNSConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DNSConfigArgs) ToDNSConfigPtrOutputWithContext(ctx context.Context) DNSConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DNSConfigOutput).ToDNSConfigPtrOutputWithContext(ctx)
+}
+
+// DNSConfigPtrInput is an input type that accepts DNSConfigArgs, DNSConfigPtr and DNSConfigPtrOutput values.
+// You can construct a concrete instance of `DNSConfigPtrInput` via:
+//
+//          DNSConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type DNSConfigPtrInput interface {
+	pulumi.Input
+
+	ToDNSConfigPtrOutput() DNSConfigPtrOutput
+	ToDNSConfigPtrOutputWithContext(context.Context) DNSConfigPtrOutput
+}
+
+type dnsconfigPtrType DNSConfigArgs
+
+func DNSConfigPtr(v *DNSConfigArgs) DNSConfigPtrInput {
+	return (*dnsconfigPtrType)(v)
+}
+
+func (*dnsconfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DNSConfig)(nil)).Elem()
+}
+
+func (i *dnsconfigPtrType) ToDNSConfigPtrOutput() DNSConfigPtrOutput {
+	return i.ToDNSConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dnsconfigPtrType) ToDNSConfigPtrOutputWithContext(ctx context.Context) DNSConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DNSConfigPtrOutput)
+}
+
+// DNSConfig contains the desired set of options for configuring clusterDNS.
+type DNSConfigOutput struct{ *pulumi.OutputState }
+
+func (DNSConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DNSConfig)(nil)).Elem()
+}
+
+func (o DNSConfigOutput) ToDNSConfigOutput() DNSConfigOutput {
+	return o
+}
+
+func (o DNSConfigOutput) ToDNSConfigOutputWithContext(ctx context.Context) DNSConfigOutput {
+	return o
+}
+
+func (o DNSConfigOutput) ToDNSConfigPtrOutput() DNSConfigPtrOutput {
+	return o.ToDNSConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DNSConfigOutput) ToDNSConfigPtrOutputWithContext(ctx context.Context) DNSConfigPtrOutput {
+	return o.ApplyT(func(v DNSConfig) *DNSConfig {
+		return &v
+	}).(DNSConfigPtrOutput)
+}
+
+// cluster_dns indicates which in-cluster DNS provider should be used.
+func (o DNSConfigOutput) ClusterDns() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DNSConfig) *string { return v.ClusterDns }).(pulumi.StringPtrOutput)
+}
+
+// cluster_dns_domain is the suffix used for all cluster service records.
+func (o DNSConfigOutput) ClusterDnsDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DNSConfig) *string { return v.ClusterDnsDomain }).(pulumi.StringPtrOutput)
+}
+
+// cluster_dns_scope indicates the scope of access to cluster DNS records.
+func (o DNSConfigOutput) ClusterDnsScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DNSConfig) *string { return v.ClusterDnsScope }).(pulumi.StringPtrOutput)
+}
+
+type DNSConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DNSConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DNSConfig)(nil)).Elem()
+}
+
+func (o DNSConfigPtrOutput) ToDNSConfigPtrOutput() DNSConfigPtrOutput {
+	return o
+}
+
+func (o DNSConfigPtrOutput) ToDNSConfigPtrOutputWithContext(ctx context.Context) DNSConfigPtrOutput {
+	return o
+}
+
+func (o DNSConfigPtrOutput) Elem() DNSConfigOutput {
+	return o.ApplyT(func(v *DNSConfig) DNSConfig { return *v }).(DNSConfigOutput)
+}
+
+// cluster_dns indicates which in-cluster DNS provider should be used.
+func (o DNSConfigPtrOutput) ClusterDns() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DNSConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterDns
+	}).(pulumi.StringPtrOutput)
+}
+
+// cluster_dns_domain is the suffix used for all cluster service records.
+func (o DNSConfigPtrOutput) ClusterDnsDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DNSConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterDnsDomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// cluster_dns_scope indicates the scope of access to cluster DNS records.
+func (o DNSConfigPtrOutput) ClusterDnsScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DNSConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterDnsScope
+	}).(pulumi.StringPtrOutput)
+}
+
+// DNSConfig contains the desired set of options for configuring clusterDNS.
+type DNSConfigResponse struct {
+	// cluster_dns indicates which in-cluster DNS provider should be used.
+	ClusterDns string `pulumi:"clusterDns"`
+	// cluster_dns_domain is the suffix used for all cluster service records.
+	ClusterDnsDomain string `pulumi:"clusterDnsDomain"`
+	// cluster_dns_scope indicates the scope of access to cluster DNS records.
+	ClusterDnsScope string `pulumi:"clusterDnsScope"`
+}
+
+// DNSConfigResponseInput is an input type that accepts DNSConfigResponseArgs and DNSConfigResponseOutput values.
+// You can construct a concrete instance of `DNSConfigResponseInput` via:
+//
+//          DNSConfigResponseArgs{...}
+type DNSConfigResponseInput interface {
+	pulumi.Input
+
+	ToDNSConfigResponseOutput() DNSConfigResponseOutput
+	ToDNSConfigResponseOutputWithContext(context.Context) DNSConfigResponseOutput
+}
+
+// DNSConfig contains the desired set of options for configuring clusterDNS.
+type DNSConfigResponseArgs struct {
+	// cluster_dns indicates which in-cluster DNS provider should be used.
+	ClusterDns pulumi.StringInput `pulumi:"clusterDns"`
+	// cluster_dns_domain is the suffix used for all cluster service records.
+	ClusterDnsDomain pulumi.StringInput `pulumi:"clusterDnsDomain"`
+	// cluster_dns_scope indicates the scope of access to cluster DNS records.
+	ClusterDnsScope pulumi.StringInput `pulumi:"clusterDnsScope"`
+}
+
+func (DNSConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DNSConfigResponse)(nil)).Elem()
+}
+
+func (i DNSConfigResponseArgs) ToDNSConfigResponseOutput() DNSConfigResponseOutput {
+	return i.ToDNSConfigResponseOutputWithContext(context.Background())
+}
+
+func (i DNSConfigResponseArgs) ToDNSConfigResponseOutputWithContext(ctx context.Context) DNSConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DNSConfigResponseOutput)
+}
+
+func (i DNSConfigResponseArgs) ToDNSConfigResponsePtrOutput() DNSConfigResponsePtrOutput {
+	return i.ToDNSConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i DNSConfigResponseArgs) ToDNSConfigResponsePtrOutputWithContext(ctx context.Context) DNSConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DNSConfigResponseOutput).ToDNSConfigResponsePtrOutputWithContext(ctx)
+}
+
+// DNSConfigResponsePtrInput is an input type that accepts DNSConfigResponseArgs, DNSConfigResponsePtr and DNSConfigResponsePtrOutput values.
+// You can construct a concrete instance of `DNSConfigResponsePtrInput` via:
+//
+//          DNSConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type DNSConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToDNSConfigResponsePtrOutput() DNSConfigResponsePtrOutput
+	ToDNSConfigResponsePtrOutputWithContext(context.Context) DNSConfigResponsePtrOutput
+}
+
+type dnsconfigResponsePtrType DNSConfigResponseArgs
+
+func DNSConfigResponsePtr(v *DNSConfigResponseArgs) DNSConfigResponsePtrInput {
+	return (*dnsconfigResponsePtrType)(v)
+}
+
+func (*dnsconfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DNSConfigResponse)(nil)).Elem()
+}
+
+func (i *dnsconfigResponsePtrType) ToDNSConfigResponsePtrOutput() DNSConfigResponsePtrOutput {
+	return i.ToDNSConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *dnsconfigResponsePtrType) ToDNSConfigResponsePtrOutputWithContext(ctx context.Context) DNSConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DNSConfigResponsePtrOutput)
+}
+
+// DNSConfig contains the desired set of options for configuring clusterDNS.
+type DNSConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DNSConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DNSConfigResponse)(nil)).Elem()
+}
+
+func (o DNSConfigResponseOutput) ToDNSConfigResponseOutput() DNSConfigResponseOutput {
+	return o
+}
+
+func (o DNSConfigResponseOutput) ToDNSConfigResponseOutputWithContext(ctx context.Context) DNSConfigResponseOutput {
+	return o
+}
+
+func (o DNSConfigResponseOutput) ToDNSConfigResponsePtrOutput() DNSConfigResponsePtrOutput {
+	return o.ToDNSConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o DNSConfigResponseOutput) ToDNSConfigResponsePtrOutputWithContext(ctx context.Context) DNSConfigResponsePtrOutput {
+	return o.ApplyT(func(v DNSConfigResponse) *DNSConfigResponse {
+		return &v
+	}).(DNSConfigResponsePtrOutput)
+}
+
+// cluster_dns indicates which in-cluster DNS provider should be used.
+func (o DNSConfigResponseOutput) ClusterDns() pulumi.StringOutput {
+	return o.ApplyT(func(v DNSConfigResponse) string { return v.ClusterDns }).(pulumi.StringOutput)
+}
+
+// cluster_dns_domain is the suffix used for all cluster service records.
+func (o DNSConfigResponseOutput) ClusterDnsDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v DNSConfigResponse) string { return v.ClusterDnsDomain }).(pulumi.StringOutput)
+}
+
+// cluster_dns_scope indicates the scope of access to cluster DNS records.
+func (o DNSConfigResponseOutput) ClusterDnsScope() pulumi.StringOutput {
+	return o.ApplyT(func(v DNSConfigResponse) string { return v.ClusterDnsScope }).(pulumi.StringOutput)
+}
+
+type DNSConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (DNSConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DNSConfigResponse)(nil)).Elem()
+}
+
+func (o DNSConfigResponsePtrOutput) ToDNSConfigResponsePtrOutput() DNSConfigResponsePtrOutput {
+	return o
+}
+
+func (o DNSConfigResponsePtrOutput) ToDNSConfigResponsePtrOutputWithContext(ctx context.Context) DNSConfigResponsePtrOutput {
+	return o
+}
+
+func (o DNSConfigResponsePtrOutput) Elem() DNSConfigResponseOutput {
+	return o.ApplyT(func(v *DNSConfigResponse) DNSConfigResponse { return *v }).(DNSConfigResponseOutput)
+}
+
+// cluster_dns indicates which in-cluster DNS provider should be used.
+func (o DNSConfigResponsePtrOutput) ClusterDns() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DNSConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterDns
+	}).(pulumi.StringPtrOutput)
+}
+
+// cluster_dns_domain is the suffix used for all cluster service records.
+func (o DNSConfigResponsePtrOutput) ClusterDnsDomain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DNSConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterDnsDomain
+	}).(pulumi.StringPtrOutput)
+}
+
+// cluster_dns_scope indicates the scope of access to cluster DNS records.
+func (o DNSConfigResponsePtrOutput) ClusterDnsScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DNSConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterDnsScope
+	}).(pulumi.StringPtrOutput)
 }
 
 // Time window specified for daily maintenance operations.
@@ -11752,12 +12161,16 @@ type NetworkConfig struct {
 	DatapathProvider *string `pulumi:"datapathProvider"`
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
 	DefaultSnatStatus *DefaultSnatStatus `pulumi:"defaultSnatStatus"`
+	// DNSConfig contains clusterDNS config for this cluster.
+	DnsConfig *DNSConfig `pulumi:"dnsConfig"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntraNodeVisibility *bool `pulumi:"enableIntraNodeVisibility"`
 	// Whether L4ILB Subsetting is enabled for this cluster.
 	EnableL4ilbSubsetting *bool `pulumi:"enableL4ilbSubsetting"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
 	PrivateIpv6GoogleAccess *string `pulumi:"privateIpv6GoogleAccess"`
+	// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
+	ServiceExternalIpsConfig *ServiceExternalIPsConfig `pulumi:"serviceExternalIpsConfig"`
 }
 
 // NetworkConfigInput is an input type that accepts NetworkConfigArgs and NetworkConfigOutput values.
@@ -11777,12 +12190,16 @@ type NetworkConfigArgs struct {
 	DatapathProvider *NetworkConfigDatapathProvider `pulumi:"datapathProvider"`
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
 	DefaultSnatStatus DefaultSnatStatusPtrInput `pulumi:"defaultSnatStatus"`
+	// DNSConfig contains clusterDNS config for this cluster.
+	DnsConfig DNSConfigPtrInput `pulumi:"dnsConfig"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntraNodeVisibility pulumi.BoolPtrInput `pulumi:"enableIntraNodeVisibility"`
 	// Whether L4ILB Subsetting is enabled for this cluster.
 	EnableL4ilbSubsetting pulumi.BoolPtrInput `pulumi:"enableL4ilbSubsetting"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
 	PrivateIpv6GoogleAccess *NetworkConfigPrivateIpv6GoogleAccess `pulumi:"privateIpv6GoogleAccess"`
+	// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
+	ServiceExternalIpsConfig ServiceExternalIPsConfigPtrInput `pulumi:"serviceExternalIpsConfig"`
 }
 
 func (NetworkConfigArgs) ElementType() reflect.Type {
@@ -11873,6 +12290,11 @@ func (o NetworkConfigOutput) DefaultSnatStatus() DefaultSnatStatusPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *DefaultSnatStatus { return v.DefaultSnatStatus }).(DefaultSnatStatusPtrOutput)
 }
 
+// DNSConfig contains clusterDNS config for this cluster.
+func (o NetworkConfigOutput) DnsConfig() DNSConfigPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *DNSConfig { return v.DnsConfig }).(DNSConfigPtrOutput)
+}
+
 // Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 func (o NetworkConfigOutput) EnableIntraNodeVisibility() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *bool { return v.EnableIntraNodeVisibility }).(pulumi.BoolPtrOutput)
@@ -11886,6 +12308,11 @@ func (o NetworkConfigOutput) EnableL4ilbSubsetting() pulumi.BoolPtrOutput {
 // The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
 func (o NetworkConfigOutput) PrivateIpv6GoogleAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkConfig) *string { return v.PrivateIpv6GoogleAccess }).(pulumi.StringPtrOutput)
+}
+
+// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
+func (o NetworkConfigOutput) ServiceExternalIpsConfig() ServiceExternalIPsConfigPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *ServiceExternalIPsConfig { return v.ServiceExternalIpsConfig }).(ServiceExternalIPsConfigPtrOutput)
 }
 
 type NetworkConfigPtrOutput struct{ *pulumi.OutputState }
@@ -11926,6 +12353,16 @@ func (o NetworkConfigPtrOutput) DefaultSnatStatus() DefaultSnatStatusPtrOutput {
 	}).(DefaultSnatStatusPtrOutput)
 }
 
+// DNSConfig contains clusterDNS config for this cluster.
+func (o NetworkConfigPtrOutput) DnsConfig() DNSConfigPtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *DNSConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DnsConfig
+	}).(DNSConfigPtrOutput)
+}
+
 // Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 func (o NetworkConfigPtrOutput) EnableIntraNodeVisibility() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NetworkConfig) *bool {
@@ -11956,12 +12393,24 @@ func (o NetworkConfigPtrOutput) PrivateIpv6GoogleAccess() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
+func (o NetworkConfigPtrOutput) ServiceExternalIpsConfig() ServiceExternalIPsConfigPtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *ServiceExternalIPsConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceExternalIpsConfig
+	}).(ServiceExternalIPsConfigPtrOutput)
+}
+
 // NetworkConfig reports the relative names of network & subnetwork.
 type NetworkConfigResponse struct {
 	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
 	DatapathProvider string `pulumi:"datapathProvider"`
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
 	DefaultSnatStatus DefaultSnatStatusResponse `pulumi:"defaultSnatStatus"`
+	// DNSConfig contains clusterDNS config for this cluster.
+	DnsConfig DNSConfigResponse `pulumi:"dnsConfig"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntraNodeVisibility bool `pulumi:"enableIntraNodeVisibility"`
 	// Whether L4ILB Subsetting is enabled for this cluster.
@@ -11970,6 +12419,8 @@ type NetworkConfigResponse struct {
 	Network string `pulumi:"network"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
 	PrivateIpv6GoogleAccess string `pulumi:"privateIpv6GoogleAccess"`
+	// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
+	ServiceExternalIpsConfig ServiceExternalIPsConfigResponse `pulumi:"serviceExternalIpsConfig"`
 	// The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
 	Subnetwork string `pulumi:"subnetwork"`
 }
@@ -11991,6 +12442,8 @@ type NetworkConfigResponseArgs struct {
 	DatapathProvider pulumi.StringInput `pulumi:"datapathProvider"`
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
 	DefaultSnatStatus DefaultSnatStatusResponseInput `pulumi:"defaultSnatStatus"`
+	// DNSConfig contains clusterDNS config for this cluster.
+	DnsConfig DNSConfigResponseInput `pulumi:"dnsConfig"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 	EnableIntraNodeVisibility pulumi.BoolInput `pulumi:"enableIntraNodeVisibility"`
 	// Whether L4ILB Subsetting is enabled for this cluster.
@@ -11999,6 +12452,8 @@ type NetworkConfigResponseArgs struct {
 	Network pulumi.StringInput `pulumi:"network"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
 	PrivateIpv6GoogleAccess pulumi.StringInput `pulumi:"privateIpv6GoogleAccess"`
+	// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
+	ServiceExternalIpsConfig ServiceExternalIPsConfigResponseInput `pulumi:"serviceExternalIpsConfig"`
 	// The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
 	Subnetwork pulumi.StringInput `pulumi:"subnetwork"`
 }
@@ -12091,6 +12546,11 @@ func (o NetworkConfigResponseOutput) DefaultSnatStatus() DefaultSnatStatusRespon
 	return o.ApplyT(func(v NetworkConfigResponse) DefaultSnatStatusResponse { return v.DefaultSnatStatus }).(DefaultSnatStatusResponseOutput)
 }
 
+// DNSConfig contains clusterDNS config for this cluster.
+func (o NetworkConfigResponseOutput) DnsConfig() DNSConfigResponseOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) DNSConfigResponse { return v.DnsConfig }).(DNSConfigResponseOutput)
+}
+
 // Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 func (o NetworkConfigResponseOutput) EnableIntraNodeVisibility() pulumi.BoolOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) bool { return v.EnableIntraNodeVisibility }).(pulumi.BoolOutput)
@@ -12109,6 +12569,11 @@ func (o NetworkConfigResponseOutput) Network() pulumi.StringOutput {
 // The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
 func (o NetworkConfigResponseOutput) PrivateIpv6GoogleAccess() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.PrivateIpv6GoogleAccess }).(pulumi.StringOutput)
+}
+
+// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
+func (o NetworkConfigResponseOutput) ServiceExternalIpsConfig() ServiceExternalIPsConfigResponseOutput {
+	return o.ApplyT(func(v NetworkConfigResponse) ServiceExternalIPsConfigResponse { return v.ServiceExternalIpsConfig }).(ServiceExternalIPsConfigResponseOutput)
 }
 
 // The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
@@ -12154,6 +12619,16 @@ func (o NetworkConfigResponsePtrOutput) DefaultSnatStatus() DefaultSnatStatusRes
 	}).(DefaultSnatStatusResponsePtrOutput)
 }
 
+// DNSConfig contains clusterDNS config for this cluster.
+func (o NetworkConfigResponsePtrOutput) DnsConfig() DNSConfigResponsePtrOutput {
+	return o.ApplyT(func(v *NetworkConfigResponse) *DNSConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.DnsConfig
+	}).(DNSConfigResponsePtrOutput)
+}
+
 // Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
 func (o NetworkConfigResponsePtrOutput) EnableIntraNodeVisibility() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *NetworkConfigResponse) *bool {
@@ -12192,6 +12667,16 @@ func (o NetworkConfigResponsePtrOutput) PrivateIpv6GoogleAccess() pulumi.StringP
 		}
 		return &v.PrivateIpv6GoogleAccess
 	}).(pulumi.StringPtrOutput)
+}
+
+// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
+func (o NetworkConfigResponsePtrOutput) ServiceExternalIpsConfig() ServiceExternalIPsConfigResponsePtrOutput {
+	return o.ApplyT(func(v *NetworkConfigResponse) *ServiceExternalIPsConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceExternalIpsConfig
+	}).(ServiceExternalIPsConfigResponsePtrOutput)
 }
 
 // The relative name of the Google Compute Engine [subnetwork](https://cloud.google.com/compute/docs/vpc) to which the cluster is connected. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet
@@ -13383,6 +13868,236 @@ func (o NodeConfigPtrOutput) WorkloadMetadataConfig() WorkloadMetadataConfigPtrO
 		}
 		return v.WorkloadMetadataConfig
 	}).(WorkloadMetadataConfigPtrOutput)
+}
+
+// Subset of NodeConfig message that has defaults.
+type NodeConfigDefaults struct {
+}
+
+// NodeConfigDefaultsInput is an input type that accepts NodeConfigDefaultsArgs and NodeConfigDefaultsOutput values.
+// You can construct a concrete instance of `NodeConfigDefaultsInput` via:
+//
+//          NodeConfigDefaultsArgs{...}
+type NodeConfigDefaultsInput interface {
+	pulumi.Input
+
+	ToNodeConfigDefaultsOutput() NodeConfigDefaultsOutput
+	ToNodeConfigDefaultsOutputWithContext(context.Context) NodeConfigDefaultsOutput
+}
+
+// Subset of NodeConfig message that has defaults.
+type NodeConfigDefaultsArgs struct {
+}
+
+func (NodeConfigDefaultsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeConfigDefaults)(nil)).Elem()
+}
+
+func (i NodeConfigDefaultsArgs) ToNodeConfigDefaultsOutput() NodeConfigDefaultsOutput {
+	return i.ToNodeConfigDefaultsOutputWithContext(context.Background())
+}
+
+func (i NodeConfigDefaultsArgs) ToNodeConfigDefaultsOutputWithContext(ctx context.Context) NodeConfigDefaultsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigDefaultsOutput)
+}
+
+func (i NodeConfigDefaultsArgs) ToNodeConfigDefaultsPtrOutput() NodeConfigDefaultsPtrOutput {
+	return i.ToNodeConfigDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i NodeConfigDefaultsArgs) ToNodeConfigDefaultsPtrOutputWithContext(ctx context.Context) NodeConfigDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigDefaultsOutput).ToNodeConfigDefaultsPtrOutputWithContext(ctx)
+}
+
+// NodeConfigDefaultsPtrInput is an input type that accepts NodeConfigDefaultsArgs, NodeConfigDefaultsPtr and NodeConfigDefaultsPtrOutput values.
+// You can construct a concrete instance of `NodeConfigDefaultsPtrInput` via:
+//
+//          NodeConfigDefaultsArgs{...}
+//
+//  or:
+//
+//          nil
+type NodeConfigDefaultsPtrInput interface {
+	pulumi.Input
+
+	ToNodeConfigDefaultsPtrOutput() NodeConfigDefaultsPtrOutput
+	ToNodeConfigDefaultsPtrOutputWithContext(context.Context) NodeConfigDefaultsPtrOutput
+}
+
+type nodeConfigDefaultsPtrType NodeConfigDefaultsArgs
+
+func NodeConfigDefaultsPtr(v *NodeConfigDefaultsArgs) NodeConfigDefaultsPtrInput {
+	return (*nodeConfigDefaultsPtrType)(v)
+}
+
+func (*nodeConfigDefaultsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeConfigDefaults)(nil)).Elem()
+}
+
+func (i *nodeConfigDefaultsPtrType) ToNodeConfigDefaultsPtrOutput() NodeConfigDefaultsPtrOutput {
+	return i.ToNodeConfigDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i *nodeConfigDefaultsPtrType) ToNodeConfigDefaultsPtrOutputWithContext(ctx context.Context) NodeConfigDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigDefaultsPtrOutput)
+}
+
+// Subset of NodeConfig message that has defaults.
+type NodeConfigDefaultsOutput struct{ *pulumi.OutputState }
+
+func (NodeConfigDefaultsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeConfigDefaults)(nil)).Elem()
+}
+
+func (o NodeConfigDefaultsOutput) ToNodeConfigDefaultsOutput() NodeConfigDefaultsOutput {
+	return o
+}
+
+func (o NodeConfigDefaultsOutput) ToNodeConfigDefaultsOutputWithContext(ctx context.Context) NodeConfigDefaultsOutput {
+	return o
+}
+
+func (o NodeConfigDefaultsOutput) ToNodeConfigDefaultsPtrOutput() NodeConfigDefaultsPtrOutput {
+	return o.ToNodeConfigDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (o NodeConfigDefaultsOutput) ToNodeConfigDefaultsPtrOutputWithContext(ctx context.Context) NodeConfigDefaultsPtrOutput {
+	return o.ApplyT(func(v NodeConfigDefaults) *NodeConfigDefaults {
+		return &v
+	}).(NodeConfigDefaultsPtrOutput)
+}
+
+type NodeConfigDefaultsPtrOutput struct{ *pulumi.OutputState }
+
+func (NodeConfigDefaultsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeConfigDefaults)(nil)).Elem()
+}
+
+func (o NodeConfigDefaultsPtrOutput) ToNodeConfigDefaultsPtrOutput() NodeConfigDefaultsPtrOutput {
+	return o
+}
+
+func (o NodeConfigDefaultsPtrOutput) ToNodeConfigDefaultsPtrOutputWithContext(ctx context.Context) NodeConfigDefaultsPtrOutput {
+	return o
+}
+
+func (o NodeConfigDefaultsPtrOutput) Elem() NodeConfigDefaultsOutput {
+	return o.ApplyT(func(v *NodeConfigDefaults) NodeConfigDefaults { return *v }).(NodeConfigDefaultsOutput)
+}
+
+// Subset of NodeConfig message that has defaults.
+type NodeConfigDefaultsResponse struct {
+}
+
+// NodeConfigDefaultsResponseInput is an input type that accepts NodeConfigDefaultsResponseArgs and NodeConfigDefaultsResponseOutput values.
+// You can construct a concrete instance of `NodeConfigDefaultsResponseInput` via:
+//
+//          NodeConfigDefaultsResponseArgs{...}
+type NodeConfigDefaultsResponseInput interface {
+	pulumi.Input
+
+	ToNodeConfigDefaultsResponseOutput() NodeConfigDefaultsResponseOutput
+	ToNodeConfigDefaultsResponseOutputWithContext(context.Context) NodeConfigDefaultsResponseOutput
+}
+
+// Subset of NodeConfig message that has defaults.
+type NodeConfigDefaultsResponseArgs struct {
+}
+
+func (NodeConfigDefaultsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeConfigDefaultsResponse)(nil)).Elem()
+}
+
+func (i NodeConfigDefaultsResponseArgs) ToNodeConfigDefaultsResponseOutput() NodeConfigDefaultsResponseOutput {
+	return i.ToNodeConfigDefaultsResponseOutputWithContext(context.Background())
+}
+
+func (i NodeConfigDefaultsResponseArgs) ToNodeConfigDefaultsResponseOutputWithContext(ctx context.Context) NodeConfigDefaultsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigDefaultsResponseOutput)
+}
+
+func (i NodeConfigDefaultsResponseArgs) ToNodeConfigDefaultsResponsePtrOutput() NodeConfigDefaultsResponsePtrOutput {
+	return i.ToNodeConfigDefaultsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i NodeConfigDefaultsResponseArgs) ToNodeConfigDefaultsResponsePtrOutputWithContext(ctx context.Context) NodeConfigDefaultsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigDefaultsResponseOutput).ToNodeConfigDefaultsResponsePtrOutputWithContext(ctx)
+}
+
+// NodeConfigDefaultsResponsePtrInput is an input type that accepts NodeConfigDefaultsResponseArgs, NodeConfigDefaultsResponsePtr and NodeConfigDefaultsResponsePtrOutput values.
+// You can construct a concrete instance of `NodeConfigDefaultsResponsePtrInput` via:
+//
+//          NodeConfigDefaultsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type NodeConfigDefaultsResponsePtrInput interface {
+	pulumi.Input
+
+	ToNodeConfigDefaultsResponsePtrOutput() NodeConfigDefaultsResponsePtrOutput
+	ToNodeConfigDefaultsResponsePtrOutputWithContext(context.Context) NodeConfigDefaultsResponsePtrOutput
+}
+
+type nodeConfigDefaultsResponsePtrType NodeConfigDefaultsResponseArgs
+
+func NodeConfigDefaultsResponsePtr(v *NodeConfigDefaultsResponseArgs) NodeConfigDefaultsResponsePtrInput {
+	return (*nodeConfigDefaultsResponsePtrType)(v)
+}
+
+func (*nodeConfigDefaultsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeConfigDefaultsResponse)(nil)).Elem()
+}
+
+func (i *nodeConfigDefaultsResponsePtrType) ToNodeConfigDefaultsResponsePtrOutput() NodeConfigDefaultsResponsePtrOutput {
+	return i.ToNodeConfigDefaultsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *nodeConfigDefaultsResponsePtrType) ToNodeConfigDefaultsResponsePtrOutputWithContext(ctx context.Context) NodeConfigDefaultsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigDefaultsResponsePtrOutput)
+}
+
+// Subset of NodeConfig message that has defaults.
+type NodeConfigDefaultsResponseOutput struct{ *pulumi.OutputState }
+
+func (NodeConfigDefaultsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeConfigDefaultsResponse)(nil)).Elem()
+}
+
+func (o NodeConfigDefaultsResponseOutput) ToNodeConfigDefaultsResponseOutput() NodeConfigDefaultsResponseOutput {
+	return o
+}
+
+func (o NodeConfigDefaultsResponseOutput) ToNodeConfigDefaultsResponseOutputWithContext(ctx context.Context) NodeConfigDefaultsResponseOutput {
+	return o
+}
+
+func (o NodeConfigDefaultsResponseOutput) ToNodeConfigDefaultsResponsePtrOutput() NodeConfigDefaultsResponsePtrOutput {
+	return o.ToNodeConfigDefaultsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o NodeConfigDefaultsResponseOutput) ToNodeConfigDefaultsResponsePtrOutputWithContext(ctx context.Context) NodeConfigDefaultsResponsePtrOutput {
+	return o.ApplyT(func(v NodeConfigDefaultsResponse) *NodeConfigDefaultsResponse {
+		return &v
+	}).(NodeConfigDefaultsResponsePtrOutput)
+}
+
+type NodeConfigDefaultsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NodeConfigDefaultsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeConfigDefaultsResponse)(nil)).Elem()
+}
+
+func (o NodeConfigDefaultsResponsePtrOutput) ToNodeConfigDefaultsResponsePtrOutput() NodeConfigDefaultsResponsePtrOutput {
+	return o
+}
+
+func (o NodeConfigDefaultsResponsePtrOutput) ToNodeConfigDefaultsResponsePtrOutputWithContext(ctx context.Context) NodeConfigDefaultsResponsePtrOutput {
+	return o
+}
+
+func (o NodeConfigDefaultsResponsePtrOutput) Elem() NodeConfigDefaultsResponseOutput {
+	return o.ApplyT(func(v *NodeConfigDefaultsResponse) NodeConfigDefaultsResponse { return *v }).(NodeConfigDefaultsResponseOutput)
 }
 
 // Parameters that describe the nodes in a cluster.
@@ -15024,7 +15739,7 @@ func (o NodeNetworkConfigResponsePtrOutput) PodRange() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload.
+// NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload. These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
 type NodePoolType struct {
 	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
 	Autoscaling *NodePoolAutoscaling `pulumi:"autoscaling"`
@@ -15061,7 +15776,7 @@ type NodePoolTypeInput interface {
 	ToNodePoolTypeOutputWithContext(context.Context) NodePoolTypeOutput
 }
 
-// NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload.
+// NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload. These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
 type NodePoolTypeArgs struct {
 	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
 	Autoscaling NodePoolAutoscalingPtrInput `pulumi:"autoscaling"`
@@ -15124,7 +15839,7 @@ func (i NodePoolTypeArray) ToNodePoolTypeArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(NodePoolTypeArrayOutput)
 }
 
-// NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload.
+// NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload. These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
 type NodePoolTypeOutput struct{ *pulumi.OutputState }
 
 func (NodePoolTypeOutput) ElementType() reflect.Type {
@@ -15596,7 +16311,275 @@ func (o NodePoolAutoscalingResponsePtrOutput) MinNodeCount() pulumi.IntPtrOutput
 	}).(pulumi.IntPtrOutput)
 }
 
-// NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload.
+// Subset of Nodepool message that has defaults.
+type NodePoolDefaults struct {
+	// Subset of NodeConfig message that has defaults.
+	NodeConfigDefaults *NodeConfigDefaults `pulumi:"nodeConfigDefaults"`
+}
+
+// NodePoolDefaultsInput is an input type that accepts NodePoolDefaultsArgs and NodePoolDefaultsOutput values.
+// You can construct a concrete instance of `NodePoolDefaultsInput` via:
+//
+//          NodePoolDefaultsArgs{...}
+type NodePoolDefaultsInput interface {
+	pulumi.Input
+
+	ToNodePoolDefaultsOutput() NodePoolDefaultsOutput
+	ToNodePoolDefaultsOutputWithContext(context.Context) NodePoolDefaultsOutput
+}
+
+// Subset of Nodepool message that has defaults.
+type NodePoolDefaultsArgs struct {
+	// Subset of NodeConfig message that has defaults.
+	NodeConfigDefaults NodeConfigDefaultsPtrInput `pulumi:"nodeConfigDefaults"`
+}
+
+func (NodePoolDefaultsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolDefaults)(nil)).Elem()
+}
+
+func (i NodePoolDefaultsArgs) ToNodePoolDefaultsOutput() NodePoolDefaultsOutput {
+	return i.ToNodePoolDefaultsOutputWithContext(context.Background())
+}
+
+func (i NodePoolDefaultsArgs) ToNodePoolDefaultsOutputWithContext(ctx context.Context) NodePoolDefaultsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolDefaultsOutput)
+}
+
+func (i NodePoolDefaultsArgs) ToNodePoolDefaultsPtrOutput() NodePoolDefaultsPtrOutput {
+	return i.ToNodePoolDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolDefaultsArgs) ToNodePoolDefaultsPtrOutputWithContext(ctx context.Context) NodePoolDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolDefaultsOutput).ToNodePoolDefaultsPtrOutputWithContext(ctx)
+}
+
+// NodePoolDefaultsPtrInput is an input type that accepts NodePoolDefaultsArgs, NodePoolDefaultsPtr and NodePoolDefaultsPtrOutput values.
+// You can construct a concrete instance of `NodePoolDefaultsPtrInput` via:
+//
+//          NodePoolDefaultsArgs{...}
+//
+//  or:
+//
+//          nil
+type NodePoolDefaultsPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolDefaultsPtrOutput() NodePoolDefaultsPtrOutput
+	ToNodePoolDefaultsPtrOutputWithContext(context.Context) NodePoolDefaultsPtrOutput
+}
+
+type nodePoolDefaultsPtrType NodePoolDefaultsArgs
+
+func NodePoolDefaultsPtr(v *NodePoolDefaultsArgs) NodePoolDefaultsPtrInput {
+	return (*nodePoolDefaultsPtrType)(v)
+}
+
+func (*nodePoolDefaultsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolDefaults)(nil)).Elem()
+}
+
+func (i *nodePoolDefaultsPtrType) ToNodePoolDefaultsPtrOutput() NodePoolDefaultsPtrOutput {
+	return i.ToNodePoolDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolDefaultsPtrType) ToNodePoolDefaultsPtrOutputWithContext(ctx context.Context) NodePoolDefaultsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolDefaultsPtrOutput)
+}
+
+// Subset of Nodepool message that has defaults.
+type NodePoolDefaultsOutput struct{ *pulumi.OutputState }
+
+func (NodePoolDefaultsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolDefaults)(nil)).Elem()
+}
+
+func (o NodePoolDefaultsOutput) ToNodePoolDefaultsOutput() NodePoolDefaultsOutput {
+	return o
+}
+
+func (o NodePoolDefaultsOutput) ToNodePoolDefaultsOutputWithContext(ctx context.Context) NodePoolDefaultsOutput {
+	return o
+}
+
+func (o NodePoolDefaultsOutput) ToNodePoolDefaultsPtrOutput() NodePoolDefaultsPtrOutput {
+	return o.ToNodePoolDefaultsPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolDefaultsOutput) ToNodePoolDefaultsPtrOutputWithContext(ctx context.Context) NodePoolDefaultsPtrOutput {
+	return o.ApplyT(func(v NodePoolDefaults) *NodePoolDefaults {
+		return &v
+	}).(NodePoolDefaultsPtrOutput)
+}
+
+// Subset of NodeConfig message that has defaults.
+func (o NodePoolDefaultsOutput) NodeConfigDefaults() NodeConfigDefaultsPtrOutput {
+	return o.ApplyT(func(v NodePoolDefaults) *NodeConfigDefaults { return v.NodeConfigDefaults }).(NodeConfigDefaultsPtrOutput)
+}
+
+type NodePoolDefaultsPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolDefaultsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolDefaults)(nil)).Elem()
+}
+
+func (o NodePoolDefaultsPtrOutput) ToNodePoolDefaultsPtrOutput() NodePoolDefaultsPtrOutput {
+	return o
+}
+
+func (o NodePoolDefaultsPtrOutput) ToNodePoolDefaultsPtrOutputWithContext(ctx context.Context) NodePoolDefaultsPtrOutput {
+	return o
+}
+
+func (o NodePoolDefaultsPtrOutput) Elem() NodePoolDefaultsOutput {
+	return o.ApplyT(func(v *NodePoolDefaults) NodePoolDefaults { return *v }).(NodePoolDefaultsOutput)
+}
+
+// Subset of NodeConfig message that has defaults.
+func (o NodePoolDefaultsPtrOutput) NodeConfigDefaults() NodeConfigDefaultsPtrOutput {
+	return o.ApplyT(func(v *NodePoolDefaults) *NodeConfigDefaults {
+		if v == nil {
+			return nil
+		}
+		return v.NodeConfigDefaults
+	}).(NodeConfigDefaultsPtrOutput)
+}
+
+// Subset of Nodepool message that has defaults.
+type NodePoolDefaultsResponse struct {
+	// Subset of NodeConfig message that has defaults.
+	NodeConfigDefaults NodeConfigDefaultsResponse `pulumi:"nodeConfigDefaults"`
+}
+
+// NodePoolDefaultsResponseInput is an input type that accepts NodePoolDefaultsResponseArgs and NodePoolDefaultsResponseOutput values.
+// You can construct a concrete instance of `NodePoolDefaultsResponseInput` via:
+//
+//          NodePoolDefaultsResponseArgs{...}
+type NodePoolDefaultsResponseInput interface {
+	pulumi.Input
+
+	ToNodePoolDefaultsResponseOutput() NodePoolDefaultsResponseOutput
+	ToNodePoolDefaultsResponseOutputWithContext(context.Context) NodePoolDefaultsResponseOutput
+}
+
+// Subset of Nodepool message that has defaults.
+type NodePoolDefaultsResponseArgs struct {
+	// Subset of NodeConfig message that has defaults.
+	NodeConfigDefaults NodeConfigDefaultsResponseInput `pulumi:"nodeConfigDefaults"`
+}
+
+func (NodePoolDefaultsResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolDefaultsResponse)(nil)).Elem()
+}
+
+func (i NodePoolDefaultsResponseArgs) ToNodePoolDefaultsResponseOutput() NodePoolDefaultsResponseOutput {
+	return i.ToNodePoolDefaultsResponseOutputWithContext(context.Background())
+}
+
+func (i NodePoolDefaultsResponseArgs) ToNodePoolDefaultsResponseOutputWithContext(ctx context.Context) NodePoolDefaultsResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolDefaultsResponseOutput)
+}
+
+func (i NodePoolDefaultsResponseArgs) ToNodePoolDefaultsResponsePtrOutput() NodePoolDefaultsResponsePtrOutput {
+	return i.ToNodePoolDefaultsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolDefaultsResponseArgs) ToNodePoolDefaultsResponsePtrOutputWithContext(ctx context.Context) NodePoolDefaultsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolDefaultsResponseOutput).ToNodePoolDefaultsResponsePtrOutputWithContext(ctx)
+}
+
+// NodePoolDefaultsResponsePtrInput is an input type that accepts NodePoolDefaultsResponseArgs, NodePoolDefaultsResponsePtr and NodePoolDefaultsResponsePtrOutput values.
+// You can construct a concrete instance of `NodePoolDefaultsResponsePtrInput` via:
+//
+//          NodePoolDefaultsResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type NodePoolDefaultsResponsePtrInput interface {
+	pulumi.Input
+
+	ToNodePoolDefaultsResponsePtrOutput() NodePoolDefaultsResponsePtrOutput
+	ToNodePoolDefaultsResponsePtrOutputWithContext(context.Context) NodePoolDefaultsResponsePtrOutput
+}
+
+type nodePoolDefaultsResponsePtrType NodePoolDefaultsResponseArgs
+
+func NodePoolDefaultsResponsePtr(v *NodePoolDefaultsResponseArgs) NodePoolDefaultsResponsePtrInput {
+	return (*nodePoolDefaultsResponsePtrType)(v)
+}
+
+func (*nodePoolDefaultsResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolDefaultsResponse)(nil)).Elem()
+}
+
+func (i *nodePoolDefaultsResponsePtrType) ToNodePoolDefaultsResponsePtrOutput() NodePoolDefaultsResponsePtrOutput {
+	return i.ToNodePoolDefaultsResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolDefaultsResponsePtrType) ToNodePoolDefaultsResponsePtrOutputWithContext(ctx context.Context) NodePoolDefaultsResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolDefaultsResponsePtrOutput)
+}
+
+// Subset of Nodepool message that has defaults.
+type NodePoolDefaultsResponseOutput struct{ *pulumi.OutputState }
+
+func (NodePoolDefaultsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolDefaultsResponse)(nil)).Elem()
+}
+
+func (o NodePoolDefaultsResponseOutput) ToNodePoolDefaultsResponseOutput() NodePoolDefaultsResponseOutput {
+	return o
+}
+
+func (o NodePoolDefaultsResponseOutput) ToNodePoolDefaultsResponseOutputWithContext(ctx context.Context) NodePoolDefaultsResponseOutput {
+	return o
+}
+
+func (o NodePoolDefaultsResponseOutput) ToNodePoolDefaultsResponsePtrOutput() NodePoolDefaultsResponsePtrOutput {
+	return o.ToNodePoolDefaultsResponsePtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolDefaultsResponseOutput) ToNodePoolDefaultsResponsePtrOutputWithContext(ctx context.Context) NodePoolDefaultsResponsePtrOutput {
+	return o.ApplyT(func(v NodePoolDefaultsResponse) *NodePoolDefaultsResponse {
+		return &v
+	}).(NodePoolDefaultsResponsePtrOutput)
+}
+
+// Subset of NodeConfig message that has defaults.
+func (o NodePoolDefaultsResponseOutput) NodeConfigDefaults() NodeConfigDefaultsResponseOutput {
+	return o.ApplyT(func(v NodePoolDefaultsResponse) NodeConfigDefaultsResponse { return v.NodeConfigDefaults }).(NodeConfigDefaultsResponseOutput)
+}
+
+type NodePoolDefaultsResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolDefaultsResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolDefaultsResponse)(nil)).Elem()
+}
+
+func (o NodePoolDefaultsResponsePtrOutput) ToNodePoolDefaultsResponsePtrOutput() NodePoolDefaultsResponsePtrOutput {
+	return o
+}
+
+func (o NodePoolDefaultsResponsePtrOutput) ToNodePoolDefaultsResponsePtrOutputWithContext(ctx context.Context) NodePoolDefaultsResponsePtrOutput {
+	return o
+}
+
+func (o NodePoolDefaultsResponsePtrOutput) Elem() NodePoolDefaultsResponseOutput {
+	return o.ApplyT(func(v *NodePoolDefaultsResponse) NodePoolDefaultsResponse { return *v }).(NodePoolDefaultsResponseOutput)
+}
+
+// Subset of NodeConfig message that has defaults.
+func (o NodePoolDefaultsResponsePtrOutput) NodeConfigDefaults() NodeConfigDefaultsResponsePtrOutput {
+	return o.ApplyT(func(v *NodePoolDefaultsResponse) *NodeConfigDefaultsResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.NodeConfigDefaults
+	}).(NodeConfigDefaultsResponsePtrOutput)
+}
+
+// NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload. These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
 type NodePoolResponse struct {
 	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
 	Autoscaling NodePoolAutoscalingResponse `pulumi:"autoscaling"`
@@ -15641,7 +16624,7 @@ type NodePoolResponseInput interface {
 	ToNodePoolResponseOutputWithContext(context.Context) NodePoolResponseOutput
 }
 
-// NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload.
+// NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload. These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
 type NodePoolResponseArgs struct {
 	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
 	Autoscaling NodePoolAutoscalingResponseInput `pulumi:"autoscaling"`
@@ -15712,7 +16695,7 @@ func (i NodePoolResponseArray) ToNodePoolResponseArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(NodePoolResponseArrayOutput)
 }
 
-// NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload.
+// NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload. These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
 type NodePoolResponseOutput struct{ *pulumi.OutputState }
 
 func (NodePoolResponseOutput) ElementType() reflect.Type {
@@ -19474,6 +20457,274 @@ func (o SandboxConfigResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Config to block services with externalIPs field.
+type ServiceExternalIPsConfig struct {
+	// Whether Services with ExternalIPs field are allowed or not.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// ServiceExternalIPsConfigInput is an input type that accepts ServiceExternalIPsConfigArgs and ServiceExternalIPsConfigOutput values.
+// You can construct a concrete instance of `ServiceExternalIPsConfigInput` via:
+//
+//          ServiceExternalIPsConfigArgs{...}
+type ServiceExternalIPsConfigInput interface {
+	pulumi.Input
+
+	ToServiceExternalIPsConfigOutput() ServiceExternalIPsConfigOutput
+	ToServiceExternalIPsConfigOutputWithContext(context.Context) ServiceExternalIPsConfigOutput
+}
+
+// Config to block services with externalIPs field.
+type ServiceExternalIPsConfigArgs struct {
+	// Whether Services with ExternalIPs field are allowed or not.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (ServiceExternalIPsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceExternalIPsConfig)(nil)).Elem()
+}
+
+func (i ServiceExternalIPsConfigArgs) ToServiceExternalIPsConfigOutput() ServiceExternalIPsConfigOutput {
+	return i.ToServiceExternalIPsConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceExternalIPsConfigArgs) ToServiceExternalIPsConfigOutputWithContext(ctx context.Context) ServiceExternalIPsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceExternalIPsConfigOutput)
+}
+
+func (i ServiceExternalIPsConfigArgs) ToServiceExternalIPsConfigPtrOutput() ServiceExternalIPsConfigPtrOutput {
+	return i.ToServiceExternalIPsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceExternalIPsConfigArgs) ToServiceExternalIPsConfigPtrOutputWithContext(ctx context.Context) ServiceExternalIPsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceExternalIPsConfigOutput).ToServiceExternalIPsConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceExternalIPsConfigPtrInput is an input type that accepts ServiceExternalIPsConfigArgs, ServiceExternalIPsConfigPtr and ServiceExternalIPsConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceExternalIPsConfigPtrInput` via:
+//
+//          ServiceExternalIPsConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceExternalIPsConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceExternalIPsConfigPtrOutput() ServiceExternalIPsConfigPtrOutput
+	ToServiceExternalIPsConfigPtrOutputWithContext(context.Context) ServiceExternalIPsConfigPtrOutput
+}
+
+type serviceExternalIPsConfigPtrType ServiceExternalIPsConfigArgs
+
+func ServiceExternalIPsConfigPtr(v *ServiceExternalIPsConfigArgs) ServiceExternalIPsConfigPtrInput {
+	return (*serviceExternalIPsConfigPtrType)(v)
+}
+
+func (*serviceExternalIPsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceExternalIPsConfig)(nil)).Elem()
+}
+
+func (i *serviceExternalIPsConfigPtrType) ToServiceExternalIPsConfigPtrOutput() ServiceExternalIPsConfigPtrOutput {
+	return i.ToServiceExternalIPsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceExternalIPsConfigPtrType) ToServiceExternalIPsConfigPtrOutputWithContext(ctx context.Context) ServiceExternalIPsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceExternalIPsConfigPtrOutput)
+}
+
+// Config to block services with externalIPs field.
+type ServiceExternalIPsConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceExternalIPsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceExternalIPsConfig)(nil)).Elem()
+}
+
+func (o ServiceExternalIPsConfigOutput) ToServiceExternalIPsConfigOutput() ServiceExternalIPsConfigOutput {
+	return o
+}
+
+func (o ServiceExternalIPsConfigOutput) ToServiceExternalIPsConfigOutputWithContext(ctx context.Context) ServiceExternalIPsConfigOutput {
+	return o
+}
+
+func (o ServiceExternalIPsConfigOutput) ToServiceExternalIPsConfigPtrOutput() ServiceExternalIPsConfigPtrOutput {
+	return o.ToServiceExternalIPsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceExternalIPsConfigOutput) ToServiceExternalIPsConfigPtrOutputWithContext(ctx context.Context) ServiceExternalIPsConfigPtrOutput {
+	return o.ApplyT(func(v ServiceExternalIPsConfig) *ServiceExternalIPsConfig {
+		return &v
+	}).(ServiceExternalIPsConfigPtrOutput)
+}
+
+// Whether Services with ExternalIPs field are allowed or not.
+func (o ServiceExternalIPsConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceExternalIPsConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type ServiceExternalIPsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceExternalIPsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceExternalIPsConfig)(nil)).Elem()
+}
+
+func (o ServiceExternalIPsConfigPtrOutput) ToServiceExternalIPsConfigPtrOutput() ServiceExternalIPsConfigPtrOutput {
+	return o
+}
+
+func (o ServiceExternalIPsConfigPtrOutput) ToServiceExternalIPsConfigPtrOutputWithContext(ctx context.Context) ServiceExternalIPsConfigPtrOutput {
+	return o
+}
+
+func (o ServiceExternalIPsConfigPtrOutput) Elem() ServiceExternalIPsConfigOutput {
+	return o.ApplyT(func(v *ServiceExternalIPsConfig) ServiceExternalIPsConfig { return *v }).(ServiceExternalIPsConfigOutput)
+}
+
+// Whether Services with ExternalIPs field are allowed or not.
+func (o ServiceExternalIPsConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceExternalIPsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Config to block services with externalIPs field.
+type ServiceExternalIPsConfigResponse struct {
+	// Whether Services with ExternalIPs field are allowed or not.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ServiceExternalIPsConfigResponseInput is an input type that accepts ServiceExternalIPsConfigResponseArgs and ServiceExternalIPsConfigResponseOutput values.
+// You can construct a concrete instance of `ServiceExternalIPsConfigResponseInput` via:
+//
+//          ServiceExternalIPsConfigResponseArgs{...}
+type ServiceExternalIPsConfigResponseInput interface {
+	pulumi.Input
+
+	ToServiceExternalIPsConfigResponseOutput() ServiceExternalIPsConfigResponseOutput
+	ToServiceExternalIPsConfigResponseOutputWithContext(context.Context) ServiceExternalIPsConfigResponseOutput
+}
+
+// Config to block services with externalIPs field.
+type ServiceExternalIPsConfigResponseArgs struct {
+	// Whether Services with ExternalIPs field are allowed or not.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ServiceExternalIPsConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceExternalIPsConfigResponse)(nil)).Elem()
+}
+
+func (i ServiceExternalIPsConfigResponseArgs) ToServiceExternalIPsConfigResponseOutput() ServiceExternalIPsConfigResponseOutput {
+	return i.ToServiceExternalIPsConfigResponseOutputWithContext(context.Background())
+}
+
+func (i ServiceExternalIPsConfigResponseArgs) ToServiceExternalIPsConfigResponseOutputWithContext(ctx context.Context) ServiceExternalIPsConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceExternalIPsConfigResponseOutput)
+}
+
+func (i ServiceExternalIPsConfigResponseArgs) ToServiceExternalIPsConfigResponsePtrOutput() ServiceExternalIPsConfigResponsePtrOutput {
+	return i.ToServiceExternalIPsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ServiceExternalIPsConfigResponseArgs) ToServiceExternalIPsConfigResponsePtrOutputWithContext(ctx context.Context) ServiceExternalIPsConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceExternalIPsConfigResponseOutput).ToServiceExternalIPsConfigResponsePtrOutputWithContext(ctx)
+}
+
+// ServiceExternalIPsConfigResponsePtrInput is an input type that accepts ServiceExternalIPsConfigResponseArgs, ServiceExternalIPsConfigResponsePtr and ServiceExternalIPsConfigResponsePtrOutput values.
+// You can construct a concrete instance of `ServiceExternalIPsConfigResponsePtrInput` via:
+//
+//          ServiceExternalIPsConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ServiceExternalIPsConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToServiceExternalIPsConfigResponsePtrOutput() ServiceExternalIPsConfigResponsePtrOutput
+	ToServiceExternalIPsConfigResponsePtrOutputWithContext(context.Context) ServiceExternalIPsConfigResponsePtrOutput
+}
+
+type serviceExternalIPsConfigResponsePtrType ServiceExternalIPsConfigResponseArgs
+
+func ServiceExternalIPsConfigResponsePtr(v *ServiceExternalIPsConfigResponseArgs) ServiceExternalIPsConfigResponsePtrInput {
+	return (*serviceExternalIPsConfigResponsePtrType)(v)
+}
+
+func (*serviceExternalIPsConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceExternalIPsConfigResponse)(nil)).Elem()
+}
+
+func (i *serviceExternalIPsConfigResponsePtrType) ToServiceExternalIPsConfigResponsePtrOutput() ServiceExternalIPsConfigResponsePtrOutput {
+	return i.ToServiceExternalIPsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *serviceExternalIPsConfigResponsePtrType) ToServiceExternalIPsConfigResponsePtrOutputWithContext(ctx context.Context) ServiceExternalIPsConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceExternalIPsConfigResponsePtrOutput)
+}
+
+// Config to block services with externalIPs field.
+type ServiceExternalIPsConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ServiceExternalIPsConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceExternalIPsConfigResponse)(nil)).Elem()
+}
+
+func (o ServiceExternalIPsConfigResponseOutput) ToServiceExternalIPsConfigResponseOutput() ServiceExternalIPsConfigResponseOutput {
+	return o
+}
+
+func (o ServiceExternalIPsConfigResponseOutput) ToServiceExternalIPsConfigResponseOutputWithContext(ctx context.Context) ServiceExternalIPsConfigResponseOutput {
+	return o
+}
+
+func (o ServiceExternalIPsConfigResponseOutput) ToServiceExternalIPsConfigResponsePtrOutput() ServiceExternalIPsConfigResponsePtrOutput {
+	return o.ToServiceExternalIPsConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ServiceExternalIPsConfigResponseOutput) ToServiceExternalIPsConfigResponsePtrOutputWithContext(ctx context.Context) ServiceExternalIPsConfigResponsePtrOutput {
+	return o.ApplyT(func(v ServiceExternalIPsConfigResponse) *ServiceExternalIPsConfigResponse {
+		return &v
+	}).(ServiceExternalIPsConfigResponsePtrOutput)
+}
+
+// Whether Services with ExternalIPs field are allowed or not.
+func (o ServiceExternalIPsConfigResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ServiceExternalIPsConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ServiceExternalIPsConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceExternalIPsConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceExternalIPsConfigResponse)(nil)).Elem()
+}
+
+func (o ServiceExternalIPsConfigResponsePtrOutput) ToServiceExternalIPsConfigResponsePtrOutput() ServiceExternalIPsConfigResponsePtrOutput {
+	return o
+}
+
+func (o ServiceExternalIPsConfigResponsePtrOutput) ToServiceExternalIPsConfigResponsePtrOutputWithContext(ctx context.Context) ServiceExternalIPsConfigResponsePtrOutput {
+	return o
+}
+
+func (o ServiceExternalIPsConfigResponsePtrOutput) Elem() ServiceExternalIPsConfigResponseOutput {
+	return o.ApplyT(func(v *ServiceExternalIPsConfigResponse) ServiceExternalIPsConfigResponse { return *v }).(ServiceExternalIPsConfigResponseOutput)
+}
+
+// Whether Services with ExternalIPs field are allowed or not.
+func (o ServiceExternalIPsConfigResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceExternalIPsConfigResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // A set of Shielded Instance options.
 type ShieldedInstanceConfig struct {
 	// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created.
@@ -20916,7 +22167,6 @@ func (o TpuConfigResponsePtrOutput) UseServiceNetworking() pulumi.BoolPtrOutput 
 	}).(pulumi.BoolPtrOutput)
 }
 
-// These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
 type UpgradeSettings struct {
 	// The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
 	MaxSurge *int `pulumi:"maxSurge"`
@@ -20935,7 +22185,6 @@ type UpgradeSettingsInput interface {
 	ToUpgradeSettingsOutputWithContext(context.Context) UpgradeSettingsOutput
 }
 
-// These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
 type UpgradeSettingsArgs struct {
 	// The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
 	MaxSurge pulumi.IntPtrInput `pulumi:"maxSurge"`
@@ -20996,7 +22245,6 @@ func (i *upgradeSettingsPtrType) ToUpgradeSettingsPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(UpgradeSettingsPtrOutput)
 }
 
-// These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
 type UpgradeSettingsOutput struct{ *pulumi.OutputState }
 
 func (UpgradeSettingsOutput) ElementType() reflect.Type {
@@ -21069,7 +22317,6 @@ func (o UpgradeSettingsPtrOutput) MaxUnavailable() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
 type UpgradeSettingsResponse struct {
 	// The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
 	MaxSurge int `pulumi:"maxSurge"`
@@ -21088,7 +22335,6 @@ type UpgradeSettingsResponseInput interface {
 	ToUpgradeSettingsResponseOutputWithContext(context.Context) UpgradeSettingsResponseOutput
 }
 
-// These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
 type UpgradeSettingsResponseArgs struct {
 	// The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
 	MaxSurge pulumi.IntInput `pulumi:"maxSurge"`
@@ -21149,7 +22395,6 @@ func (i *upgradeSettingsResponsePtrType) ToUpgradeSettingsResponsePtrOutputWithC
 	return pulumi.ToOutputWithContext(ctx, i).(UpgradeSettingsResponsePtrOutput)
 }
 
-// These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
 type UpgradeSettingsResponseOutput struct{ *pulumi.OutputState }
 
 func (UpgradeSettingsResponseOutput) ElementType() reflect.Type {
@@ -22474,6 +23719,10 @@ func init() {
 	pulumi.RegisterOutputType(ConsumptionMeteringConfigPtrOutput{})
 	pulumi.RegisterOutputType(ConsumptionMeteringConfigResponseOutput{})
 	pulumi.RegisterOutputType(ConsumptionMeteringConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(DNSConfigOutput{})
+	pulumi.RegisterOutputType(DNSConfigPtrOutput{})
+	pulumi.RegisterOutputType(DNSConfigResponseOutput{})
+	pulumi.RegisterOutputType(DNSConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(DailyMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(DailyMaintenanceWindowPtrOutput{})
 	pulumi.RegisterOutputType(DailyMaintenanceWindowResponseOutput{})
@@ -22573,6 +23822,10 @@ func init() {
 	pulumi.RegisterOutputType(NetworkTagsOutput{})
 	pulumi.RegisterOutputType(NodeConfigOutput{})
 	pulumi.RegisterOutputType(NodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodeConfigDefaultsOutput{})
+	pulumi.RegisterOutputType(NodeConfigDefaultsPtrOutput{})
+	pulumi.RegisterOutputType(NodeConfigDefaultsResponseOutput{})
+	pulumi.RegisterOutputType(NodeConfigDefaultsResponsePtrOutput{})
 	pulumi.RegisterOutputType(NodeConfigResponseOutput{})
 	pulumi.RegisterOutputType(NodeConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(NodeKubeletConfigOutput{})
@@ -22594,6 +23847,10 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolAutoscalingResponseOutput{})
 	pulumi.RegisterOutputType(NodePoolAutoscalingResponsePtrOutput{})
+	pulumi.RegisterOutputType(NodePoolDefaultsOutput{})
+	pulumi.RegisterOutputType(NodePoolDefaultsPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolDefaultsResponseOutput{})
+	pulumi.RegisterOutputType(NodePoolDefaultsResponsePtrOutput{})
 	pulumi.RegisterOutputType(NodePoolResponseOutput{})
 	pulumi.RegisterOutputType(NodePoolResponseArrayOutput{})
 	pulumi.RegisterOutputType(NodeTaintOutput{})
@@ -22645,6 +23902,10 @@ func init() {
 	pulumi.RegisterOutputType(SandboxConfigPtrOutput{})
 	pulumi.RegisterOutputType(SandboxConfigResponseOutput{})
 	pulumi.RegisterOutputType(SandboxConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(ServiceExternalIPsConfigOutput{})
+	pulumi.RegisterOutputType(ServiceExternalIPsConfigPtrOutput{})
+	pulumi.RegisterOutputType(ServiceExternalIPsConfigResponseOutput{})
+	pulumi.RegisterOutputType(ServiceExternalIPsConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(ShieldedInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ShieldedInstanceConfigResponseOutput{})

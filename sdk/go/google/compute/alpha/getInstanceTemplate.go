@@ -37,9 +37,7 @@ type LookupInstanceTemplateResult struct {
 	SelfLink string `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId string `pulumi:"selfLinkWithId"`
-	// The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
-	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
-	// - projects/project/zones/zone/instances/instance
+	// The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
 	SourceInstance string `pulumi:"sourceInstance"`
 	// The source instance params to use to create this instance template.
 	SourceInstanceParams SourceInstanceParamsResponse `pulumi:"sourceInstanceParams"`

@@ -15,6 +15,8 @@ import (
 type RegionCommitment struct {
 	pulumi.CustomResourceState
 
+	// Specifies whether to enable automatic renewal for the commitment. The default value is false if not specified. The field can be updated until the day of the commitment expiration at 12:00am PST. If the field is set to true, the commitment will be automatically renewed for either one or three years according to the terms of the existing commitment.
+	AutoRenew pulumi.BoolOutput `pulumi:"autoRenew"`
 	// The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
 	Category pulumi.StringOutput `pulumi:"category"`
 	// Creation timestamp in RFC3339 text format.
@@ -86,6 +88,8 @@ func GetRegionCommitment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionCommitment resources.
 type regionCommitmentState struct {
+	// Specifies whether to enable automatic renewal for the commitment. The default value is false if not specified. The field can be updated until the day of the commitment expiration at 12:00am PST. If the field is set to true, the commitment will be automatically renewed for either one or three years according to the terms of the existing commitment.
+	AutoRenew *bool `pulumi:"autoRenew"`
 	// The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
 	Category *string `pulumi:"category"`
 	// Creation timestamp in RFC3339 text format.
@@ -123,6 +127,8 @@ type regionCommitmentState struct {
 }
 
 type RegionCommitmentState struct {
+	// Specifies whether to enable automatic renewal for the commitment. The default value is false if not specified. The field can be updated until the day of the commitment expiration at 12:00am PST. If the field is set to true, the commitment will be automatically renewed for either one or three years according to the terms of the existing commitment.
+	AutoRenew pulumi.BoolPtrInput
 	// The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
 	Category pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
@@ -164,6 +170,8 @@ func (RegionCommitmentState) ElementType() reflect.Type {
 }
 
 type regionCommitmentArgs struct {
+	// Specifies whether to enable automatic renewal for the commitment. The default value is false if not specified. The field can be updated until the day of the commitment expiration at 12:00am PST. If the field is set to true, the commitment will be automatically renewed for either one or three years according to the terms of the existing commitment.
+	AutoRenew *bool `pulumi:"autoRenew"`
 	// The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
 	Category *string `pulumi:"category"`
 	// An optional description of this resource. Provide this property when you create the resource.
@@ -187,6 +195,8 @@ type regionCommitmentArgs struct {
 
 // The set of arguments for constructing a RegionCommitment resource.
 type RegionCommitmentArgs struct {
+	// Specifies whether to enable automatic renewal for the commitment. The default value is false if not specified. The field can be updated until the day of the commitment expiration at 12:00am PST. If the field is set to true, the commitment will be automatically renewed for either one or three years according to the terms of the existing commitment.
+	AutoRenew pulumi.BoolPtrInput
 	// The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
 	Category *RegionCommitmentCategory
 	// An optional description of this resource. Provide this property when you create the resource.

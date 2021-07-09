@@ -348,7 +348,7 @@ const (
 	SdkVersionSdkSupportStatusSupported = SdkVersionSdkSupportStatus("SUPPORTED")
 	// A newer version of the SDK family exists, and an update is recommended.
 	SdkVersionSdkSupportStatusStale = SdkVersionSdkSupportStatus("STALE")
-	// This version of the SDK is deprecated and will eventually be no longer supported.
+	// This version of the SDK is deprecated and will eventually be unsupported.
 	SdkVersionSdkSupportStatusDeprecated = SdkVersionSdkSupportStatus("DEPRECATED")
 	// Support for this SDK version has ended and it should no longer be used.
 	SdkVersionSdkSupportStatusUnsupported = SdkVersionSdkSupportStatus("UNSUPPORTED")
@@ -428,7 +428,7 @@ const (
 	WorkerPoolDefaultPackageSetDefaultPackageSetNone = WorkerPoolDefaultPackageSet("DEFAULT_PACKAGE_SET_NONE")
 	// Stage packages typically useful to workers written in Java.
 	WorkerPoolDefaultPackageSetDefaultPackageSetJava = WorkerPoolDefaultPackageSet("DEFAULT_PACKAGE_SET_JAVA")
-	// Stage pacakges typically useful to workers written in Python.
+	// Stage packages typically useful to workers written in Python.
 	WorkerPoolDefaultPackageSetDefaultPackageSetPython = WorkerPoolDefaultPackageSet("DEFAULT_PACKAGE_SET_PYTHON")
 )
 

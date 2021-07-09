@@ -2293,7 +2293,7 @@ func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput) Notifica
 // Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig struct {
 	// Conversation model resource name. Format: `projects//conversationModels/`.
-	Model string `pulumi:"model"`
+	Model *string `pulumi:"model"`
 }
 
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput values.
@@ -2310,7 +2310,7 @@ type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfi
 // Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs struct {
 	// Conversation model resource name. Format: `projects//conversationModels/`.
-	Model pulumi.StringInput `pulumi:"model"`
+	Model pulumi.StringPtrInput `pulumi:"model"`
 }
 
 func (GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs) ElementType() reflect.Type {
@@ -2392,10 +2392,10 @@ func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelCo
 }
 
 // Conversation model resource name. Format: `projects//conversationModels/`.
-func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput) Model() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig) string {
+func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput) Model() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig) *string {
 		return v.Model
-	}).(pulumi.StringOutput)
+	}).(pulumi.StringPtrOutput)
 }
 
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput struct{ *pulumi.OutputState }
@@ -2424,7 +2424,7 @@ func (o GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelCo
 		if v == nil {
 			return nil
 		}
-		return &v.Model
+		return v.Model
 	}).(pulumi.StringPtrOutput)
 }
 

@@ -27,6 +27,8 @@ type Backup struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name of the backup, in the format projects/{project_id}/locations/{location_id}/backups/{backup_id}.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Reserved for future use.
+	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
 	SourceFileShare pulumi.StringOutput `pulumi:"sourceFileShare"`
 	// The resource name of the source Cloud Filestore instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}, used to create this backup.
@@ -89,6 +91,8 @@ type backupState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the backup, in the format projects/{project_id}/locations/{location_id}/backups/{backup_id}.
 	Name *string `pulumi:"name"`
+	// Reserved for future use.
+	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
 	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
 	SourceFileShare *string `pulumi:"sourceFileShare"`
 	// The resource name of the source Cloud Filestore instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}, used to create this backup.
@@ -114,6 +118,8 @@ type BackupState struct {
 	Labels pulumi.StringMapInput
 	// The resource name of the backup, in the format projects/{project_id}/locations/{location_id}/backups/{backup_id}.
 	Name pulumi.StringPtrInput
+	// Reserved for future use.
+	SatisfiesPzs pulumi.BoolPtrInput
 	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
 	SourceFileShare pulumi.StringPtrInput
 	// The resource name of the source Cloud Filestore instance, in the format projects/{project_id}/locations/{location_id}/instances/{instance_id}, used to create this backup.

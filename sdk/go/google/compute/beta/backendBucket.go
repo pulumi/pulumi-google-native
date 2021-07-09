@@ -19,12 +19,16 @@ type BackendBucket struct {
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
 	// Cloud CDN configuration for this BackendBucket.
 	CdnPolicy BackendBucketCdnPolicyResponseOutput `pulumi:"cdnPolicy"`
+	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+	CompressionMode pulumi.StringOutput `pulumi:"compressionMode"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// Headers that the HTTP/S load balancer should add to proxied responses.
 	CustomResponseHeaders pulumi.StringArrayOutput `pulumi:"customResponseHeaders"`
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// The resource URL for the edge security policy associated with this backend bucket.
+	EdgeSecurityPolicy pulumi.StringOutput `pulumi:"edgeSecurityPolicy"`
 	// If true, enable Cloud CDN for this BackendBucket.
 	EnableCdn pulumi.BoolOutput `pulumi:"enableCdn"`
 	// Type of the resource.
@@ -71,12 +75,16 @@ type backendBucketState struct {
 	BucketName *string `pulumi:"bucketName"`
 	// Cloud CDN configuration for this BackendBucket.
 	CdnPolicy *BackendBucketCdnPolicyResponse `pulumi:"cdnPolicy"`
+	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+	CompressionMode *string `pulumi:"compressionMode"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// Headers that the HTTP/S load balancer should add to proxied responses.
 	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description *string `pulumi:"description"`
+	// The resource URL for the edge security policy associated with this backend bucket.
+	EdgeSecurityPolicy *string `pulumi:"edgeSecurityPolicy"`
 	// If true, enable Cloud CDN for this BackendBucket.
 	EnableCdn *bool `pulumi:"enableCdn"`
 	// Type of the resource.
@@ -92,12 +100,16 @@ type BackendBucketState struct {
 	BucketName pulumi.StringPtrInput
 	// Cloud CDN configuration for this BackendBucket.
 	CdnPolicy BackendBucketCdnPolicyResponsePtrInput
+	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+	CompressionMode pulumi.StringPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
 	// Headers that the HTTP/S load balancer should add to proxied responses.
 	CustomResponseHeaders pulumi.StringArrayInput
 	// An optional textual description of the resource; provided by the client when the resource is created.
 	Description pulumi.StringPtrInput
+	// The resource URL for the edge security policy associated with this backend bucket.
+	EdgeSecurityPolicy pulumi.StringPtrInput
 	// If true, enable Cloud CDN for this BackendBucket.
 	EnableCdn pulumi.BoolPtrInput
 	// Type of the resource.
@@ -117,6 +129,8 @@ type backendBucketArgs struct {
 	BucketName *string `pulumi:"bucketName"`
 	// Cloud CDN configuration for this BackendBucket.
 	CdnPolicy *BackendBucketCdnPolicy `pulumi:"cdnPolicy"`
+	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+	CompressionMode *string `pulumi:"compressionMode"`
 	// Headers that the HTTP/S load balancer should add to proxied responses.
 	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
 	// An optional textual description of the resource; provided by the client when the resource is created.
@@ -137,6 +151,8 @@ type BackendBucketArgs struct {
 	BucketName pulumi.StringPtrInput
 	// Cloud CDN configuration for this BackendBucket.
 	CdnPolicy BackendBucketCdnPolicyPtrInput
+	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+	CompressionMode *BackendBucketCompressionMode
 	// Headers that the HTTP/S load balancer should add to proxied responses.
 	CustomResponseHeaders pulumi.StringArrayInput
 	// An optional textual description of the resource; provided by the client when the resource is created.

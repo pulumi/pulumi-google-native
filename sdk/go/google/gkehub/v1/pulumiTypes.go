@@ -450,6 +450,8 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 type Authority struct {
 	// Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with length <2000 characters. If set, then Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate tokens from the issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload Identity).
 	Issuer *string `pulumi:"issuer"`
+	// Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field.
+	OidcJwks *string `pulumi:"oidcJwks"`
 }
 
 // AuthorityInput is an input type that accepts AuthorityArgs and AuthorityOutput values.
@@ -467,6 +469,8 @@ type AuthorityInput interface {
 type AuthorityArgs struct {
 	// Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with length <2000 characters. If set, then Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate tokens from the issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload Identity).
 	Issuer pulumi.StringPtrInput `pulumi:"issuer"`
+	// Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field.
+	OidcJwks pulumi.StringPtrInput `pulumi:"oidcJwks"`
 }
 
 func (AuthorityArgs) ElementType() reflect.Type {
@@ -552,6 +556,11 @@ func (o AuthorityOutput) Issuer() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Authority) *string { return v.Issuer }).(pulumi.StringPtrOutput)
 }
 
+// Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field.
+func (o AuthorityOutput) OidcJwks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Authority) *string { return v.OidcJwks }).(pulumi.StringPtrOutput)
+}
+
 type AuthorityPtrOutput struct{ *pulumi.OutputState }
 
 func (AuthorityPtrOutput) ElementType() reflect.Type {
@@ -580,12 +589,24 @@ func (o AuthorityPtrOutput) Issuer() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field.
+func (o AuthorityPtrOutput) OidcJwks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Authority) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OidcJwks
+	}).(pulumi.StringPtrOutput)
+}
+
 // Authority encodes how Google will recognize identities from this Membership. See the workload identity documentation for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 type AuthorityResponse struct {
 	// An identity provider that reflects the `issuer` in the workload identity pool.
 	IdentityProvider string `pulumi:"identityProvider"`
 	// Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with length <2000 characters. If set, then Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate tokens from the issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload Identity).
 	Issuer string `pulumi:"issuer"`
+	// Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field.
+	OidcJwks string `pulumi:"oidcJwks"`
 	// The name of the workload identity pool in which `issuer` will be recognized. There is a single Workload Identity Pool per Hub that is shared between all Memberships that belong to that Hub. For a Hub hosted in {PROJECT_ID}, the workload pool format is `{PROJECT_ID}.hub.id.goog`, although this is subject to change in newer versions of this API.
 	WorkloadIdentityPool string `pulumi:"workloadIdentityPool"`
 }
@@ -607,6 +628,8 @@ type AuthorityResponseArgs struct {
 	IdentityProvider pulumi.StringInput `pulumi:"identityProvider"`
 	// Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with length <2000 characters. If set, then Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate tokens from the issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload Identity).
 	Issuer pulumi.StringInput `pulumi:"issuer"`
+	// Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field.
+	OidcJwks pulumi.StringInput `pulumi:"oidcJwks"`
 	// The name of the workload identity pool in which `issuer` will be recognized. There is a single Workload Identity Pool per Hub that is shared between all Memberships that belong to that Hub. For a Hub hosted in {PROJECT_ID}, the workload pool format is `{PROJECT_ID}.hub.id.goog`, although this is subject to change in newer versions of this API.
 	WorkloadIdentityPool pulumi.StringInput `pulumi:"workloadIdentityPool"`
 }
@@ -699,6 +722,11 @@ func (o AuthorityResponseOutput) Issuer() pulumi.StringOutput {
 	return o.ApplyT(func(v AuthorityResponse) string { return v.Issuer }).(pulumi.StringOutput)
 }
 
+// Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field.
+func (o AuthorityResponseOutput) OidcJwks() pulumi.StringOutput {
+	return o.ApplyT(func(v AuthorityResponse) string { return v.OidcJwks }).(pulumi.StringOutput)
+}
+
 // The name of the workload identity pool in which `issuer` will be recognized. There is a single Workload Identity Pool per Hub that is shared between all Memberships that belong to that Hub. For a Hub hosted in {PROJECT_ID}, the workload pool format is `{PROJECT_ID}.hub.id.goog`, although this is subject to change in newer versions of this API.
 func (o AuthorityResponseOutput) WorkloadIdentityPool() pulumi.StringOutput {
 	return o.ApplyT(func(v AuthorityResponse) string { return v.WorkloadIdentityPool }).(pulumi.StringOutput)
@@ -739,6 +767,16 @@ func (o AuthorityResponsePtrOutput) Issuer() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Issuer
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field.
+func (o AuthorityResponsePtrOutput) OidcJwks() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AuthorityResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.OidcJwks
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -986,6 +1024,408 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BindingResponse {
 		return vs[0].([]BindingResponse)[vs[1].(int)]
 	}).(BindingResponseOutput)
+}
+
+// CommonFeatureSpec contains Hub-wide configuration information
+type CommonFeatureSpec struct {
+	// Multicluster Ingress-specific spec.
+	Multiclusteringress *MultiClusterIngressFeatureSpec `pulumi:"multiclusteringress"`
+}
+
+// CommonFeatureSpecInput is an input type that accepts CommonFeatureSpecArgs and CommonFeatureSpecOutput values.
+// You can construct a concrete instance of `CommonFeatureSpecInput` via:
+//
+//          CommonFeatureSpecArgs{...}
+type CommonFeatureSpecInput interface {
+	pulumi.Input
+
+	ToCommonFeatureSpecOutput() CommonFeatureSpecOutput
+	ToCommonFeatureSpecOutputWithContext(context.Context) CommonFeatureSpecOutput
+}
+
+// CommonFeatureSpec contains Hub-wide configuration information
+type CommonFeatureSpecArgs struct {
+	// Multicluster Ingress-specific spec.
+	Multiclusteringress MultiClusterIngressFeatureSpecPtrInput `pulumi:"multiclusteringress"`
+}
+
+func (CommonFeatureSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonFeatureSpec)(nil)).Elem()
+}
+
+func (i CommonFeatureSpecArgs) ToCommonFeatureSpecOutput() CommonFeatureSpecOutput {
+	return i.ToCommonFeatureSpecOutputWithContext(context.Background())
+}
+
+func (i CommonFeatureSpecArgs) ToCommonFeatureSpecOutputWithContext(ctx context.Context) CommonFeatureSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureSpecOutput)
+}
+
+func (i CommonFeatureSpecArgs) ToCommonFeatureSpecPtrOutput() CommonFeatureSpecPtrOutput {
+	return i.ToCommonFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i CommonFeatureSpecArgs) ToCommonFeatureSpecPtrOutputWithContext(ctx context.Context) CommonFeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureSpecOutput).ToCommonFeatureSpecPtrOutputWithContext(ctx)
+}
+
+// CommonFeatureSpecPtrInput is an input type that accepts CommonFeatureSpecArgs, CommonFeatureSpecPtr and CommonFeatureSpecPtrOutput values.
+// You can construct a concrete instance of `CommonFeatureSpecPtrInput` via:
+//
+//          CommonFeatureSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type CommonFeatureSpecPtrInput interface {
+	pulumi.Input
+
+	ToCommonFeatureSpecPtrOutput() CommonFeatureSpecPtrOutput
+	ToCommonFeatureSpecPtrOutputWithContext(context.Context) CommonFeatureSpecPtrOutput
+}
+
+type commonFeatureSpecPtrType CommonFeatureSpecArgs
+
+func CommonFeatureSpecPtr(v *CommonFeatureSpecArgs) CommonFeatureSpecPtrInput {
+	return (*commonFeatureSpecPtrType)(v)
+}
+
+func (*commonFeatureSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonFeatureSpec)(nil)).Elem()
+}
+
+func (i *commonFeatureSpecPtrType) ToCommonFeatureSpecPtrOutput() CommonFeatureSpecPtrOutput {
+	return i.ToCommonFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *commonFeatureSpecPtrType) ToCommonFeatureSpecPtrOutputWithContext(ctx context.Context) CommonFeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureSpecPtrOutput)
+}
+
+// CommonFeatureSpec contains Hub-wide configuration information
+type CommonFeatureSpecOutput struct{ *pulumi.OutputState }
+
+func (CommonFeatureSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonFeatureSpec)(nil)).Elem()
+}
+
+func (o CommonFeatureSpecOutput) ToCommonFeatureSpecOutput() CommonFeatureSpecOutput {
+	return o
+}
+
+func (o CommonFeatureSpecOutput) ToCommonFeatureSpecOutputWithContext(ctx context.Context) CommonFeatureSpecOutput {
+	return o
+}
+
+func (o CommonFeatureSpecOutput) ToCommonFeatureSpecPtrOutput() CommonFeatureSpecPtrOutput {
+	return o.ToCommonFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (o CommonFeatureSpecOutput) ToCommonFeatureSpecPtrOutputWithContext(ctx context.Context) CommonFeatureSpecPtrOutput {
+	return o.ApplyT(func(v CommonFeatureSpec) *CommonFeatureSpec {
+		return &v
+	}).(CommonFeatureSpecPtrOutput)
+}
+
+// Multicluster Ingress-specific spec.
+func (o CommonFeatureSpecOutput) Multiclusteringress() MultiClusterIngressFeatureSpecPtrOutput {
+	return o.ApplyT(func(v CommonFeatureSpec) *MultiClusterIngressFeatureSpec { return v.Multiclusteringress }).(MultiClusterIngressFeatureSpecPtrOutput)
+}
+
+type CommonFeatureSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (CommonFeatureSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonFeatureSpec)(nil)).Elem()
+}
+
+func (o CommonFeatureSpecPtrOutput) ToCommonFeatureSpecPtrOutput() CommonFeatureSpecPtrOutput {
+	return o
+}
+
+func (o CommonFeatureSpecPtrOutput) ToCommonFeatureSpecPtrOutputWithContext(ctx context.Context) CommonFeatureSpecPtrOutput {
+	return o
+}
+
+func (o CommonFeatureSpecPtrOutput) Elem() CommonFeatureSpecOutput {
+	return o.ApplyT(func(v *CommonFeatureSpec) CommonFeatureSpec { return *v }).(CommonFeatureSpecOutput)
+}
+
+// Multicluster Ingress-specific spec.
+func (o CommonFeatureSpecPtrOutput) Multiclusteringress() MultiClusterIngressFeatureSpecPtrOutput {
+	return o.ApplyT(func(v *CommonFeatureSpec) *MultiClusterIngressFeatureSpec {
+		if v == nil {
+			return nil
+		}
+		return v.Multiclusteringress
+	}).(MultiClusterIngressFeatureSpecPtrOutput)
+}
+
+// CommonFeatureSpec contains Hub-wide configuration information
+type CommonFeatureSpecResponse struct {
+	// Multicluster Ingress-specific spec.
+	Multiclusteringress MultiClusterIngressFeatureSpecResponse `pulumi:"multiclusteringress"`
+}
+
+// CommonFeatureSpecResponseInput is an input type that accepts CommonFeatureSpecResponseArgs and CommonFeatureSpecResponseOutput values.
+// You can construct a concrete instance of `CommonFeatureSpecResponseInput` via:
+//
+//          CommonFeatureSpecResponseArgs{...}
+type CommonFeatureSpecResponseInput interface {
+	pulumi.Input
+
+	ToCommonFeatureSpecResponseOutput() CommonFeatureSpecResponseOutput
+	ToCommonFeatureSpecResponseOutputWithContext(context.Context) CommonFeatureSpecResponseOutput
+}
+
+// CommonFeatureSpec contains Hub-wide configuration information
+type CommonFeatureSpecResponseArgs struct {
+	// Multicluster Ingress-specific spec.
+	Multiclusteringress MultiClusterIngressFeatureSpecResponseInput `pulumi:"multiclusteringress"`
+}
+
+func (CommonFeatureSpecResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonFeatureSpecResponse)(nil)).Elem()
+}
+
+func (i CommonFeatureSpecResponseArgs) ToCommonFeatureSpecResponseOutput() CommonFeatureSpecResponseOutput {
+	return i.ToCommonFeatureSpecResponseOutputWithContext(context.Background())
+}
+
+func (i CommonFeatureSpecResponseArgs) ToCommonFeatureSpecResponseOutputWithContext(ctx context.Context) CommonFeatureSpecResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureSpecResponseOutput)
+}
+
+func (i CommonFeatureSpecResponseArgs) ToCommonFeatureSpecResponsePtrOutput() CommonFeatureSpecResponsePtrOutput {
+	return i.ToCommonFeatureSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CommonFeatureSpecResponseArgs) ToCommonFeatureSpecResponsePtrOutputWithContext(ctx context.Context) CommonFeatureSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureSpecResponseOutput).ToCommonFeatureSpecResponsePtrOutputWithContext(ctx)
+}
+
+// CommonFeatureSpecResponsePtrInput is an input type that accepts CommonFeatureSpecResponseArgs, CommonFeatureSpecResponsePtr and CommonFeatureSpecResponsePtrOutput values.
+// You can construct a concrete instance of `CommonFeatureSpecResponsePtrInput` via:
+//
+//          CommonFeatureSpecResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CommonFeatureSpecResponsePtrInput interface {
+	pulumi.Input
+
+	ToCommonFeatureSpecResponsePtrOutput() CommonFeatureSpecResponsePtrOutput
+	ToCommonFeatureSpecResponsePtrOutputWithContext(context.Context) CommonFeatureSpecResponsePtrOutput
+}
+
+type commonFeatureSpecResponsePtrType CommonFeatureSpecResponseArgs
+
+func CommonFeatureSpecResponsePtr(v *CommonFeatureSpecResponseArgs) CommonFeatureSpecResponsePtrInput {
+	return (*commonFeatureSpecResponsePtrType)(v)
+}
+
+func (*commonFeatureSpecResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonFeatureSpecResponse)(nil)).Elem()
+}
+
+func (i *commonFeatureSpecResponsePtrType) ToCommonFeatureSpecResponsePtrOutput() CommonFeatureSpecResponsePtrOutput {
+	return i.ToCommonFeatureSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *commonFeatureSpecResponsePtrType) ToCommonFeatureSpecResponsePtrOutputWithContext(ctx context.Context) CommonFeatureSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureSpecResponsePtrOutput)
+}
+
+// CommonFeatureSpec contains Hub-wide configuration information
+type CommonFeatureSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (CommonFeatureSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonFeatureSpecResponse)(nil)).Elem()
+}
+
+func (o CommonFeatureSpecResponseOutput) ToCommonFeatureSpecResponseOutput() CommonFeatureSpecResponseOutput {
+	return o
+}
+
+func (o CommonFeatureSpecResponseOutput) ToCommonFeatureSpecResponseOutputWithContext(ctx context.Context) CommonFeatureSpecResponseOutput {
+	return o
+}
+
+func (o CommonFeatureSpecResponseOutput) ToCommonFeatureSpecResponsePtrOutput() CommonFeatureSpecResponsePtrOutput {
+	return o.ToCommonFeatureSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CommonFeatureSpecResponseOutput) ToCommonFeatureSpecResponsePtrOutputWithContext(ctx context.Context) CommonFeatureSpecResponsePtrOutput {
+	return o.ApplyT(func(v CommonFeatureSpecResponse) *CommonFeatureSpecResponse {
+		return &v
+	}).(CommonFeatureSpecResponsePtrOutput)
+}
+
+// Multicluster Ingress-specific spec.
+func (o CommonFeatureSpecResponseOutput) Multiclusteringress() MultiClusterIngressFeatureSpecResponseOutput {
+	return o.ApplyT(func(v CommonFeatureSpecResponse) MultiClusterIngressFeatureSpecResponse { return v.Multiclusteringress }).(MultiClusterIngressFeatureSpecResponseOutput)
+}
+
+type CommonFeatureSpecResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CommonFeatureSpecResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonFeatureSpecResponse)(nil)).Elem()
+}
+
+func (o CommonFeatureSpecResponsePtrOutput) ToCommonFeatureSpecResponsePtrOutput() CommonFeatureSpecResponsePtrOutput {
+	return o
+}
+
+func (o CommonFeatureSpecResponsePtrOutput) ToCommonFeatureSpecResponsePtrOutputWithContext(ctx context.Context) CommonFeatureSpecResponsePtrOutput {
+	return o
+}
+
+func (o CommonFeatureSpecResponsePtrOutput) Elem() CommonFeatureSpecResponseOutput {
+	return o.ApplyT(func(v *CommonFeatureSpecResponse) CommonFeatureSpecResponse { return *v }).(CommonFeatureSpecResponseOutput)
+}
+
+// Multicluster Ingress-specific spec.
+func (o CommonFeatureSpecResponsePtrOutput) Multiclusteringress() MultiClusterIngressFeatureSpecResponsePtrOutput {
+	return o.ApplyT(func(v *CommonFeatureSpecResponse) *MultiClusterIngressFeatureSpecResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.Multiclusteringress
+	}).(MultiClusterIngressFeatureSpecResponsePtrOutput)
+}
+
+// CommonFeatureState contains Hub-wide Feature status information.
+type CommonFeatureStateResponse struct {
+	// The "running state" of the Feature in this Hub.
+	State FeatureStateResponse `pulumi:"state"`
+}
+
+// CommonFeatureStateResponseInput is an input type that accepts CommonFeatureStateResponseArgs and CommonFeatureStateResponseOutput values.
+// You can construct a concrete instance of `CommonFeatureStateResponseInput` via:
+//
+//          CommonFeatureStateResponseArgs{...}
+type CommonFeatureStateResponseInput interface {
+	pulumi.Input
+
+	ToCommonFeatureStateResponseOutput() CommonFeatureStateResponseOutput
+	ToCommonFeatureStateResponseOutputWithContext(context.Context) CommonFeatureStateResponseOutput
+}
+
+// CommonFeatureState contains Hub-wide Feature status information.
+type CommonFeatureStateResponseArgs struct {
+	// The "running state" of the Feature in this Hub.
+	State FeatureStateResponseInput `pulumi:"state"`
+}
+
+func (CommonFeatureStateResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonFeatureStateResponse)(nil)).Elem()
+}
+
+func (i CommonFeatureStateResponseArgs) ToCommonFeatureStateResponseOutput() CommonFeatureStateResponseOutput {
+	return i.ToCommonFeatureStateResponseOutputWithContext(context.Background())
+}
+
+func (i CommonFeatureStateResponseArgs) ToCommonFeatureStateResponseOutputWithContext(ctx context.Context) CommonFeatureStateResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureStateResponseOutput)
+}
+
+func (i CommonFeatureStateResponseArgs) ToCommonFeatureStateResponsePtrOutput() CommonFeatureStateResponsePtrOutput {
+	return i.ToCommonFeatureStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CommonFeatureStateResponseArgs) ToCommonFeatureStateResponsePtrOutputWithContext(ctx context.Context) CommonFeatureStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureStateResponseOutput).ToCommonFeatureStateResponsePtrOutputWithContext(ctx)
+}
+
+// CommonFeatureStateResponsePtrInput is an input type that accepts CommonFeatureStateResponseArgs, CommonFeatureStateResponsePtr and CommonFeatureStateResponsePtrOutput values.
+// You can construct a concrete instance of `CommonFeatureStateResponsePtrInput` via:
+//
+//          CommonFeatureStateResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CommonFeatureStateResponsePtrInput interface {
+	pulumi.Input
+
+	ToCommonFeatureStateResponsePtrOutput() CommonFeatureStateResponsePtrOutput
+	ToCommonFeatureStateResponsePtrOutputWithContext(context.Context) CommonFeatureStateResponsePtrOutput
+}
+
+type commonFeatureStateResponsePtrType CommonFeatureStateResponseArgs
+
+func CommonFeatureStateResponsePtr(v *CommonFeatureStateResponseArgs) CommonFeatureStateResponsePtrInput {
+	return (*commonFeatureStateResponsePtrType)(v)
+}
+
+func (*commonFeatureStateResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonFeatureStateResponse)(nil)).Elem()
+}
+
+func (i *commonFeatureStateResponsePtrType) ToCommonFeatureStateResponsePtrOutput() CommonFeatureStateResponsePtrOutput {
+	return i.ToCommonFeatureStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *commonFeatureStateResponsePtrType) ToCommonFeatureStateResponsePtrOutputWithContext(ctx context.Context) CommonFeatureStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CommonFeatureStateResponsePtrOutput)
+}
+
+// CommonFeatureState contains Hub-wide Feature status information.
+type CommonFeatureStateResponseOutput struct{ *pulumi.OutputState }
+
+func (CommonFeatureStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CommonFeatureStateResponse)(nil)).Elem()
+}
+
+func (o CommonFeatureStateResponseOutput) ToCommonFeatureStateResponseOutput() CommonFeatureStateResponseOutput {
+	return o
+}
+
+func (o CommonFeatureStateResponseOutput) ToCommonFeatureStateResponseOutputWithContext(ctx context.Context) CommonFeatureStateResponseOutput {
+	return o
+}
+
+func (o CommonFeatureStateResponseOutput) ToCommonFeatureStateResponsePtrOutput() CommonFeatureStateResponsePtrOutput {
+	return o.ToCommonFeatureStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CommonFeatureStateResponseOutput) ToCommonFeatureStateResponsePtrOutputWithContext(ctx context.Context) CommonFeatureStateResponsePtrOutput {
+	return o.ApplyT(func(v CommonFeatureStateResponse) *CommonFeatureStateResponse {
+		return &v
+	}).(CommonFeatureStateResponsePtrOutput)
+}
+
+// The "running state" of the Feature in this Hub.
+func (o CommonFeatureStateResponseOutput) State() FeatureStateResponseOutput {
+	return o.ApplyT(func(v CommonFeatureStateResponse) FeatureStateResponse { return v.State }).(FeatureStateResponseOutput)
+}
+
+type CommonFeatureStateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CommonFeatureStateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CommonFeatureStateResponse)(nil)).Elem()
+}
+
+func (o CommonFeatureStateResponsePtrOutput) ToCommonFeatureStateResponsePtrOutput() CommonFeatureStateResponsePtrOutput {
+	return o
+}
+
+func (o CommonFeatureStateResponsePtrOutput) ToCommonFeatureStateResponsePtrOutputWithContext(ctx context.Context) CommonFeatureStateResponsePtrOutput {
+	return o
+}
+
+func (o CommonFeatureStateResponsePtrOutput) Elem() CommonFeatureStateResponseOutput {
+	return o.ApplyT(func(v *CommonFeatureStateResponse) CommonFeatureStateResponse { return *v }).(CommonFeatureStateResponseOutput)
+}
+
+// The "running state" of the Feature in this Hub.
+func (o CommonFeatureStateResponsePtrOutput) State() FeatureStateResponsePtrOutput {
+	return o.ApplyT(func(v *CommonFeatureStateResponse) *FeatureStateResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.State
+	}).(FeatureStateResponsePtrOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -1259,6 +1699,312 @@ func (o ExprResponseOutput) Location() pulumi.StringOutput {
 // Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
 func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// FeatureResourceState describes the state of a Feature *resource* in the GkeHub API. See `FeatureState` for the "running state" of the Feature in the Hub and across Memberships.
+type FeatureResourceStateResponse struct {
+	// The current state of the Feature resource in the Hub API.
+	State string `pulumi:"state"`
+}
+
+// FeatureResourceStateResponseInput is an input type that accepts FeatureResourceStateResponseArgs and FeatureResourceStateResponseOutput values.
+// You can construct a concrete instance of `FeatureResourceStateResponseInput` via:
+//
+//          FeatureResourceStateResponseArgs{...}
+type FeatureResourceStateResponseInput interface {
+	pulumi.Input
+
+	ToFeatureResourceStateResponseOutput() FeatureResourceStateResponseOutput
+	ToFeatureResourceStateResponseOutputWithContext(context.Context) FeatureResourceStateResponseOutput
+}
+
+// FeatureResourceState describes the state of a Feature *resource* in the GkeHub API. See `FeatureState` for the "running state" of the Feature in the Hub and across Memberships.
+type FeatureResourceStateResponseArgs struct {
+	// The current state of the Feature resource in the Hub API.
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (FeatureResourceStateResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureResourceStateResponse)(nil)).Elem()
+}
+
+func (i FeatureResourceStateResponseArgs) ToFeatureResourceStateResponseOutput() FeatureResourceStateResponseOutput {
+	return i.ToFeatureResourceStateResponseOutputWithContext(context.Background())
+}
+
+func (i FeatureResourceStateResponseArgs) ToFeatureResourceStateResponseOutputWithContext(ctx context.Context) FeatureResourceStateResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureResourceStateResponseOutput)
+}
+
+func (i FeatureResourceStateResponseArgs) ToFeatureResourceStateResponsePtrOutput() FeatureResourceStateResponsePtrOutput {
+	return i.ToFeatureResourceStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i FeatureResourceStateResponseArgs) ToFeatureResourceStateResponsePtrOutputWithContext(ctx context.Context) FeatureResourceStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureResourceStateResponseOutput).ToFeatureResourceStateResponsePtrOutputWithContext(ctx)
+}
+
+// FeatureResourceStateResponsePtrInput is an input type that accepts FeatureResourceStateResponseArgs, FeatureResourceStateResponsePtr and FeatureResourceStateResponsePtrOutput values.
+// You can construct a concrete instance of `FeatureResourceStateResponsePtrInput` via:
+//
+//          FeatureResourceStateResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type FeatureResourceStateResponsePtrInput interface {
+	pulumi.Input
+
+	ToFeatureResourceStateResponsePtrOutput() FeatureResourceStateResponsePtrOutput
+	ToFeatureResourceStateResponsePtrOutputWithContext(context.Context) FeatureResourceStateResponsePtrOutput
+}
+
+type featureResourceStateResponsePtrType FeatureResourceStateResponseArgs
+
+func FeatureResourceStateResponsePtr(v *FeatureResourceStateResponseArgs) FeatureResourceStateResponsePtrInput {
+	return (*featureResourceStateResponsePtrType)(v)
+}
+
+func (*featureResourceStateResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureResourceStateResponse)(nil)).Elem()
+}
+
+func (i *featureResourceStateResponsePtrType) ToFeatureResourceStateResponsePtrOutput() FeatureResourceStateResponsePtrOutput {
+	return i.ToFeatureResourceStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *featureResourceStateResponsePtrType) ToFeatureResourceStateResponsePtrOutputWithContext(ctx context.Context) FeatureResourceStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureResourceStateResponsePtrOutput)
+}
+
+// FeatureResourceState describes the state of a Feature *resource* in the GkeHub API. See `FeatureState` for the "running state" of the Feature in the Hub and across Memberships.
+type FeatureResourceStateResponseOutput struct{ *pulumi.OutputState }
+
+func (FeatureResourceStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureResourceStateResponse)(nil)).Elem()
+}
+
+func (o FeatureResourceStateResponseOutput) ToFeatureResourceStateResponseOutput() FeatureResourceStateResponseOutput {
+	return o
+}
+
+func (o FeatureResourceStateResponseOutput) ToFeatureResourceStateResponseOutputWithContext(ctx context.Context) FeatureResourceStateResponseOutput {
+	return o
+}
+
+func (o FeatureResourceStateResponseOutput) ToFeatureResourceStateResponsePtrOutput() FeatureResourceStateResponsePtrOutput {
+	return o.ToFeatureResourceStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (o FeatureResourceStateResponseOutput) ToFeatureResourceStateResponsePtrOutputWithContext(ctx context.Context) FeatureResourceStateResponsePtrOutput {
+	return o.ApplyT(func(v FeatureResourceStateResponse) *FeatureResourceStateResponse {
+		return &v
+	}).(FeatureResourceStateResponsePtrOutput)
+}
+
+// The current state of the Feature resource in the Hub API.
+func (o FeatureResourceStateResponseOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureResourceStateResponse) string { return v.State }).(pulumi.StringOutput)
+}
+
+type FeatureResourceStateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureResourceStateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureResourceStateResponse)(nil)).Elem()
+}
+
+func (o FeatureResourceStateResponsePtrOutput) ToFeatureResourceStateResponsePtrOutput() FeatureResourceStateResponsePtrOutput {
+	return o
+}
+
+func (o FeatureResourceStateResponsePtrOutput) ToFeatureResourceStateResponsePtrOutputWithContext(ctx context.Context) FeatureResourceStateResponsePtrOutput {
+	return o
+}
+
+func (o FeatureResourceStateResponsePtrOutput) Elem() FeatureResourceStateResponseOutput {
+	return o.ApplyT(func(v *FeatureResourceStateResponse) FeatureResourceStateResponse { return *v }).(FeatureResourceStateResponseOutput)
+}
+
+// The current state of the Feature resource in the Hub API.
+func (o FeatureResourceStateResponsePtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureResourceStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+// FeatureState describes the high-level state of a Feature. It may be used to describe a Feature's state at the environ-level, or per-membershop, depending on the context.
+type FeatureStateResponse struct {
+	// The high-level, machine-readable status of this Feature.
+	Code string `pulumi:"code"`
+	// A human-readable description of the current status.
+	Description string `pulumi:"description"`
+	// The time this status and any related Feature-specific details were updated.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// FeatureStateResponseInput is an input type that accepts FeatureStateResponseArgs and FeatureStateResponseOutput values.
+// You can construct a concrete instance of `FeatureStateResponseInput` via:
+//
+//          FeatureStateResponseArgs{...}
+type FeatureStateResponseInput interface {
+	pulumi.Input
+
+	ToFeatureStateResponseOutput() FeatureStateResponseOutput
+	ToFeatureStateResponseOutputWithContext(context.Context) FeatureStateResponseOutput
+}
+
+// FeatureState describes the high-level state of a Feature. It may be used to describe a Feature's state at the environ-level, or per-membershop, depending on the context.
+type FeatureStateResponseArgs struct {
+	// The high-level, machine-readable status of this Feature.
+	Code pulumi.StringInput `pulumi:"code"`
+	// A human-readable description of the current status.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The time this status and any related Feature-specific details were updated.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (FeatureStateResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureStateResponse)(nil)).Elem()
+}
+
+func (i FeatureStateResponseArgs) ToFeatureStateResponseOutput() FeatureStateResponseOutput {
+	return i.ToFeatureStateResponseOutputWithContext(context.Background())
+}
+
+func (i FeatureStateResponseArgs) ToFeatureStateResponseOutputWithContext(ctx context.Context) FeatureStateResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateResponseOutput)
+}
+
+func (i FeatureStateResponseArgs) ToFeatureStateResponsePtrOutput() FeatureStateResponsePtrOutput {
+	return i.ToFeatureStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i FeatureStateResponseArgs) ToFeatureStateResponsePtrOutputWithContext(ctx context.Context) FeatureStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateResponseOutput).ToFeatureStateResponsePtrOutputWithContext(ctx)
+}
+
+// FeatureStateResponsePtrInput is an input type that accepts FeatureStateResponseArgs, FeatureStateResponsePtr and FeatureStateResponsePtrOutput values.
+// You can construct a concrete instance of `FeatureStateResponsePtrInput` via:
+//
+//          FeatureStateResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type FeatureStateResponsePtrInput interface {
+	pulumi.Input
+
+	ToFeatureStateResponsePtrOutput() FeatureStateResponsePtrOutput
+	ToFeatureStateResponsePtrOutputWithContext(context.Context) FeatureStateResponsePtrOutput
+}
+
+type featureStateResponsePtrType FeatureStateResponseArgs
+
+func FeatureStateResponsePtr(v *FeatureStateResponseArgs) FeatureStateResponsePtrInput {
+	return (*featureStateResponsePtrType)(v)
+}
+
+func (*featureStateResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureStateResponse)(nil)).Elem()
+}
+
+func (i *featureStateResponsePtrType) ToFeatureStateResponsePtrOutput() FeatureStateResponsePtrOutput {
+	return i.ToFeatureStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *featureStateResponsePtrType) ToFeatureStateResponsePtrOutputWithContext(ctx context.Context) FeatureStateResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureStateResponsePtrOutput)
+}
+
+// FeatureState describes the high-level state of a Feature. It may be used to describe a Feature's state at the environ-level, or per-membershop, depending on the context.
+type FeatureStateResponseOutput struct{ *pulumi.OutputState }
+
+func (FeatureStateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureStateResponse)(nil)).Elem()
+}
+
+func (o FeatureStateResponseOutput) ToFeatureStateResponseOutput() FeatureStateResponseOutput {
+	return o
+}
+
+func (o FeatureStateResponseOutput) ToFeatureStateResponseOutputWithContext(ctx context.Context) FeatureStateResponseOutput {
+	return o
+}
+
+func (o FeatureStateResponseOutput) ToFeatureStateResponsePtrOutput() FeatureStateResponsePtrOutput {
+	return o.ToFeatureStateResponsePtrOutputWithContext(context.Background())
+}
+
+func (o FeatureStateResponseOutput) ToFeatureStateResponsePtrOutputWithContext(ctx context.Context) FeatureStateResponsePtrOutput {
+	return o.ApplyT(func(v FeatureStateResponse) *FeatureStateResponse {
+		return &v
+	}).(FeatureStateResponsePtrOutput)
+}
+
+// The high-level, machine-readable status of this Feature.
+func (o FeatureStateResponseOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureStateResponse) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// A human-readable description of the current status.
+func (o FeatureStateResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureStateResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The time this status and any related Feature-specific details were updated.
+func (o FeatureStateResponseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureStateResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type FeatureStateResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureStateResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureStateResponse)(nil)).Elem()
+}
+
+func (o FeatureStateResponsePtrOutput) ToFeatureStateResponsePtrOutput() FeatureStateResponsePtrOutput {
+	return o
+}
+
+func (o FeatureStateResponsePtrOutput) ToFeatureStateResponsePtrOutputWithContext(ctx context.Context) FeatureStateResponsePtrOutput {
+	return o
+}
+
+func (o FeatureStateResponsePtrOutput) Elem() FeatureStateResponseOutput {
+	return o.ApplyT(func(v *FeatureStateResponse) FeatureStateResponse { return *v }).(FeatureStateResponseOutput)
+}
+
+// The high-level, machine-readable status of this Feature.
+func (o FeatureStateResponsePtrOutput) Code() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Code
+	}).(pulumi.StringPtrOutput)
+}
+
+// A human-readable description of the current status.
+func (o FeatureStateResponsePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time this status and any related Feature-specific details were updated.
+func (o FeatureStateResponsePtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureStateResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UpdateTime
+	}).(pulumi.StringPtrOutput)
 }
 
 // GkeCluster contains information specific to GKE clusters.
@@ -2179,6 +2925,274 @@ func (o MembershipStateResponsePtrOutput) Code() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
+type MultiClusterIngressFeatureSpec struct {
+	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+	ConfigMembership *string `pulumi:"configMembership"`
+}
+
+// MultiClusterIngressFeatureSpecInput is an input type that accepts MultiClusterIngressFeatureSpecArgs and MultiClusterIngressFeatureSpecOutput values.
+// You can construct a concrete instance of `MultiClusterIngressFeatureSpecInput` via:
+//
+//          MultiClusterIngressFeatureSpecArgs{...}
+type MultiClusterIngressFeatureSpecInput interface {
+	pulumi.Input
+
+	ToMultiClusterIngressFeatureSpecOutput() MultiClusterIngressFeatureSpecOutput
+	ToMultiClusterIngressFeatureSpecOutputWithContext(context.Context) MultiClusterIngressFeatureSpecOutput
+}
+
+// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
+type MultiClusterIngressFeatureSpecArgs struct {
+	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+	ConfigMembership pulumi.StringPtrInput `pulumi:"configMembership"`
+}
+
+func (MultiClusterIngressFeatureSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiClusterIngressFeatureSpec)(nil)).Elem()
+}
+
+func (i MultiClusterIngressFeatureSpecArgs) ToMultiClusterIngressFeatureSpecOutput() MultiClusterIngressFeatureSpecOutput {
+	return i.ToMultiClusterIngressFeatureSpecOutputWithContext(context.Background())
+}
+
+func (i MultiClusterIngressFeatureSpecArgs) ToMultiClusterIngressFeatureSpecOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterIngressFeatureSpecOutput)
+}
+
+func (i MultiClusterIngressFeatureSpecArgs) ToMultiClusterIngressFeatureSpecPtrOutput() MultiClusterIngressFeatureSpecPtrOutput {
+	return i.ToMultiClusterIngressFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i MultiClusterIngressFeatureSpecArgs) ToMultiClusterIngressFeatureSpecPtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterIngressFeatureSpecOutput).ToMultiClusterIngressFeatureSpecPtrOutputWithContext(ctx)
+}
+
+// MultiClusterIngressFeatureSpecPtrInput is an input type that accepts MultiClusterIngressFeatureSpecArgs, MultiClusterIngressFeatureSpecPtr and MultiClusterIngressFeatureSpecPtrOutput values.
+// You can construct a concrete instance of `MultiClusterIngressFeatureSpecPtrInput` via:
+//
+//          MultiClusterIngressFeatureSpecArgs{...}
+//
+//  or:
+//
+//          nil
+type MultiClusterIngressFeatureSpecPtrInput interface {
+	pulumi.Input
+
+	ToMultiClusterIngressFeatureSpecPtrOutput() MultiClusterIngressFeatureSpecPtrOutput
+	ToMultiClusterIngressFeatureSpecPtrOutputWithContext(context.Context) MultiClusterIngressFeatureSpecPtrOutput
+}
+
+type multiClusterIngressFeatureSpecPtrType MultiClusterIngressFeatureSpecArgs
+
+func MultiClusterIngressFeatureSpecPtr(v *MultiClusterIngressFeatureSpecArgs) MultiClusterIngressFeatureSpecPtrInput {
+	return (*multiClusterIngressFeatureSpecPtrType)(v)
+}
+
+func (*multiClusterIngressFeatureSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiClusterIngressFeatureSpec)(nil)).Elem()
+}
+
+func (i *multiClusterIngressFeatureSpecPtrType) ToMultiClusterIngressFeatureSpecPtrOutput() MultiClusterIngressFeatureSpecPtrOutput {
+	return i.ToMultiClusterIngressFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *multiClusterIngressFeatureSpecPtrType) ToMultiClusterIngressFeatureSpecPtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterIngressFeatureSpecPtrOutput)
+}
+
+// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
+type MultiClusterIngressFeatureSpecOutput struct{ *pulumi.OutputState }
+
+func (MultiClusterIngressFeatureSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiClusterIngressFeatureSpec)(nil)).Elem()
+}
+
+func (o MultiClusterIngressFeatureSpecOutput) ToMultiClusterIngressFeatureSpecOutput() MultiClusterIngressFeatureSpecOutput {
+	return o
+}
+
+func (o MultiClusterIngressFeatureSpecOutput) ToMultiClusterIngressFeatureSpecOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecOutput {
+	return o
+}
+
+func (o MultiClusterIngressFeatureSpecOutput) ToMultiClusterIngressFeatureSpecPtrOutput() MultiClusterIngressFeatureSpecPtrOutput {
+	return o.ToMultiClusterIngressFeatureSpecPtrOutputWithContext(context.Background())
+}
+
+func (o MultiClusterIngressFeatureSpecOutput) ToMultiClusterIngressFeatureSpecPtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecPtrOutput {
+	return o.ApplyT(func(v MultiClusterIngressFeatureSpec) *MultiClusterIngressFeatureSpec {
+		return &v
+	}).(MultiClusterIngressFeatureSpecPtrOutput)
+}
+
+// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+func (o MultiClusterIngressFeatureSpecOutput) ConfigMembership() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MultiClusterIngressFeatureSpec) *string { return v.ConfigMembership }).(pulumi.StringPtrOutput)
+}
+
+type MultiClusterIngressFeatureSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (MultiClusterIngressFeatureSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiClusterIngressFeatureSpec)(nil)).Elem()
+}
+
+func (o MultiClusterIngressFeatureSpecPtrOutput) ToMultiClusterIngressFeatureSpecPtrOutput() MultiClusterIngressFeatureSpecPtrOutput {
+	return o
+}
+
+func (o MultiClusterIngressFeatureSpecPtrOutput) ToMultiClusterIngressFeatureSpecPtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecPtrOutput {
+	return o
+}
+
+func (o MultiClusterIngressFeatureSpecPtrOutput) Elem() MultiClusterIngressFeatureSpecOutput {
+	return o.ApplyT(func(v *MultiClusterIngressFeatureSpec) MultiClusterIngressFeatureSpec { return *v }).(MultiClusterIngressFeatureSpecOutput)
+}
+
+// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+func (o MultiClusterIngressFeatureSpecPtrOutput) ConfigMembership() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultiClusterIngressFeatureSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConfigMembership
+	}).(pulumi.StringPtrOutput)
+}
+
+// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
+type MultiClusterIngressFeatureSpecResponse struct {
+	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+	ConfigMembership string `pulumi:"configMembership"`
+}
+
+// MultiClusterIngressFeatureSpecResponseInput is an input type that accepts MultiClusterIngressFeatureSpecResponseArgs and MultiClusterIngressFeatureSpecResponseOutput values.
+// You can construct a concrete instance of `MultiClusterIngressFeatureSpecResponseInput` via:
+//
+//          MultiClusterIngressFeatureSpecResponseArgs{...}
+type MultiClusterIngressFeatureSpecResponseInput interface {
+	pulumi.Input
+
+	ToMultiClusterIngressFeatureSpecResponseOutput() MultiClusterIngressFeatureSpecResponseOutput
+	ToMultiClusterIngressFeatureSpecResponseOutputWithContext(context.Context) MultiClusterIngressFeatureSpecResponseOutput
+}
+
+// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
+type MultiClusterIngressFeatureSpecResponseArgs struct {
+	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+	ConfigMembership pulumi.StringInput `pulumi:"configMembership"`
+}
+
+func (MultiClusterIngressFeatureSpecResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiClusterIngressFeatureSpecResponse)(nil)).Elem()
+}
+
+func (i MultiClusterIngressFeatureSpecResponseArgs) ToMultiClusterIngressFeatureSpecResponseOutput() MultiClusterIngressFeatureSpecResponseOutput {
+	return i.ToMultiClusterIngressFeatureSpecResponseOutputWithContext(context.Background())
+}
+
+func (i MultiClusterIngressFeatureSpecResponseArgs) ToMultiClusterIngressFeatureSpecResponseOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterIngressFeatureSpecResponseOutput)
+}
+
+func (i MultiClusterIngressFeatureSpecResponseArgs) ToMultiClusterIngressFeatureSpecResponsePtrOutput() MultiClusterIngressFeatureSpecResponsePtrOutput {
+	return i.ToMultiClusterIngressFeatureSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MultiClusterIngressFeatureSpecResponseArgs) ToMultiClusterIngressFeatureSpecResponsePtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterIngressFeatureSpecResponseOutput).ToMultiClusterIngressFeatureSpecResponsePtrOutputWithContext(ctx)
+}
+
+// MultiClusterIngressFeatureSpecResponsePtrInput is an input type that accepts MultiClusterIngressFeatureSpecResponseArgs, MultiClusterIngressFeatureSpecResponsePtr and MultiClusterIngressFeatureSpecResponsePtrOutput values.
+// You can construct a concrete instance of `MultiClusterIngressFeatureSpecResponsePtrInput` via:
+//
+//          MultiClusterIngressFeatureSpecResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MultiClusterIngressFeatureSpecResponsePtrInput interface {
+	pulumi.Input
+
+	ToMultiClusterIngressFeatureSpecResponsePtrOutput() MultiClusterIngressFeatureSpecResponsePtrOutput
+	ToMultiClusterIngressFeatureSpecResponsePtrOutputWithContext(context.Context) MultiClusterIngressFeatureSpecResponsePtrOutput
+}
+
+type multiClusterIngressFeatureSpecResponsePtrType MultiClusterIngressFeatureSpecResponseArgs
+
+func MultiClusterIngressFeatureSpecResponsePtr(v *MultiClusterIngressFeatureSpecResponseArgs) MultiClusterIngressFeatureSpecResponsePtrInput {
+	return (*multiClusterIngressFeatureSpecResponsePtrType)(v)
+}
+
+func (*multiClusterIngressFeatureSpecResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiClusterIngressFeatureSpecResponse)(nil)).Elem()
+}
+
+func (i *multiClusterIngressFeatureSpecResponsePtrType) ToMultiClusterIngressFeatureSpecResponsePtrOutput() MultiClusterIngressFeatureSpecResponsePtrOutput {
+	return i.ToMultiClusterIngressFeatureSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *multiClusterIngressFeatureSpecResponsePtrType) ToMultiClusterIngressFeatureSpecResponsePtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterIngressFeatureSpecResponsePtrOutput)
+}
+
+// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
+type MultiClusterIngressFeatureSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (MultiClusterIngressFeatureSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MultiClusterIngressFeatureSpecResponse)(nil)).Elem()
+}
+
+func (o MultiClusterIngressFeatureSpecResponseOutput) ToMultiClusterIngressFeatureSpecResponseOutput() MultiClusterIngressFeatureSpecResponseOutput {
+	return o
+}
+
+func (o MultiClusterIngressFeatureSpecResponseOutput) ToMultiClusterIngressFeatureSpecResponseOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecResponseOutput {
+	return o
+}
+
+func (o MultiClusterIngressFeatureSpecResponseOutput) ToMultiClusterIngressFeatureSpecResponsePtrOutput() MultiClusterIngressFeatureSpecResponsePtrOutput {
+	return o.ToMultiClusterIngressFeatureSpecResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MultiClusterIngressFeatureSpecResponseOutput) ToMultiClusterIngressFeatureSpecResponsePtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecResponsePtrOutput {
+	return o.ApplyT(func(v MultiClusterIngressFeatureSpecResponse) *MultiClusterIngressFeatureSpecResponse {
+		return &v
+	}).(MultiClusterIngressFeatureSpecResponsePtrOutput)
+}
+
+// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+func (o MultiClusterIngressFeatureSpecResponseOutput) ConfigMembership() pulumi.StringOutput {
+	return o.ApplyT(func(v MultiClusterIngressFeatureSpecResponse) string { return v.ConfigMembership }).(pulumi.StringOutput)
+}
+
+type MultiClusterIngressFeatureSpecResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MultiClusterIngressFeatureSpecResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MultiClusterIngressFeatureSpecResponse)(nil)).Elem()
+}
+
+func (o MultiClusterIngressFeatureSpecResponsePtrOutput) ToMultiClusterIngressFeatureSpecResponsePtrOutput() MultiClusterIngressFeatureSpecResponsePtrOutput {
+	return o
+}
+
+func (o MultiClusterIngressFeatureSpecResponsePtrOutput) ToMultiClusterIngressFeatureSpecResponsePtrOutputWithContext(ctx context.Context) MultiClusterIngressFeatureSpecResponsePtrOutput {
+	return o
+}
+
+func (o MultiClusterIngressFeatureSpecResponsePtrOutput) Elem() MultiClusterIngressFeatureSpecResponseOutput {
+	return o.ApplyT(func(v *MultiClusterIngressFeatureSpecResponse) MultiClusterIngressFeatureSpecResponse { return *v }).(MultiClusterIngressFeatureSpecResponseOutput)
+}
+
+// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+func (o MultiClusterIngressFeatureSpecResponsePtrOutput) ConfigMembership() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultiClusterIngressFeatureSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ConfigMembership
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
@@ -2196,9 +3210,19 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(CommonFeatureSpecOutput{})
+	pulumi.RegisterOutputType(CommonFeatureSpecPtrOutput{})
+	pulumi.RegisterOutputType(CommonFeatureSpecResponseOutput{})
+	pulumi.RegisterOutputType(CommonFeatureSpecResponsePtrOutput{})
+	pulumi.RegisterOutputType(CommonFeatureStateResponseOutput{})
+	pulumi.RegisterOutputType(CommonFeatureStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(FeatureResourceStateResponseOutput{})
+	pulumi.RegisterOutputType(FeatureResourceStateResponsePtrOutput{})
+	pulumi.RegisterOutputType(FeatureStateResponseOutput{})
+	pulumi.RegisterOutputType(FeatureStateResponsePtrOutput{})
 	pulumi.RegisterOutputType(GkeClusterOutput{})
 	pulumi.RegisterOutputType(GkeClusterPtrOutput{})
 	pulumi.RegisterOutputType(GkeClusterResponseOutput{})
@@ -2211,4 +3235,8 @@ func init() {
 	pulumi.RegisterOutputType(MembershipEndpointResponsePtrOutput{})
 	pulumi.RegisterOutputType(MembershipStateResponseOutput{})
 	pulumi.RegisterOutputType(MembershipStateResponsePtrOutput{})
+	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecOutput{})
+	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecPtrOutput{})
+	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecResponseOutput{})
+	pulumi.RegisterOutputType(MultiClusterIngressFeatureSpecResponsePtrOutput{})
 }

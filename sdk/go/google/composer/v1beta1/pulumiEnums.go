@@ -10,6 +10,40 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+type EnvironmentConfigEnvironmentSize pulumi.String
+
+const (
+	// The size of the environment is unspecified.
+	EnvironmentConfigEnvironmentSizeEnvironmentSizeUnspecified = EnvironmentConfigEnvironmentSize("ENVIRONMENT_SIZE_UNSPECIFIED")
+	// The environment size is small.
+	EnvironmentConfigEnvironmentSizeEnvironmentSizeSmall = EnvironmentConfigEnvironmentSize("ENVIRONMENT_SIZE_SMALL")
+	// The environment size is medium.
+	EnvironmentConfigEnvironmentSizeEnvironmentSizeMedium = EnvironmentConfigEnvironmentSize("ENVIRONMENT_SIZE_MEDIUM")
+	// The environment size is large.
+	EnvironmentConfigEnvironmentSizeEnvironmentSizeLarge = EnvironmentConfigEnvironmentSize("ENVIRONMENT_SIZE_LARGE")
+)
+
+func (EnvironmentConfigEnvironmentSize) ElementType() reflect.Type {
+	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+}
+
+func (e EnvironmentConfigEnvironmentSize) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EnvironmentConfigEnvironmentSize) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e EnvironmentConfigEnvironmentSize) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e EnvironmentConfigEnvironmentSize) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
 // The current state of the environment.
 type EnvironmentStateEnum pulumi.String
 

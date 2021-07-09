@@ -2091,8 +2091,6 @@ type BackendRule struct {
 	DisableAuth *bool `pulumi:"disableAuth"`
 	// The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
 	JwtAudience *string `pulumi:"jwtAudience"`
-	// Minimum deadline in seconds needed for this method. Calls having deadline value lower than this will be rejected.
-	MinDeadline *float64 `pulumi:"minDeadline"`
 	// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
 	OperationDeadline *float64 `pulumi:"operationDeadline"`
 	PathTranslation   *string  `pulumi:"pathTranslation"`
@@ -2123,8 +2121,6 @@ type BackendRuleArgs struct {
 	DisableAuth pulumi.BoolPtrInput `pulumi:"disableAuth"`
 	// The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
 	JwtAudience pulumi.StringPtrInput `pulumi:"jwtAudience"`
-	// Minimum deadline in seconds needed for this method. Calls having deadline value lower than this will be rejected.
-	MinDeadline pulumi.Float64PtrInput `pulumi:"minDeadline"`
 	// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
 	OperationDeadline pulumi.Float64PtrInput      `pulumi:"operationDeadline"`
 	PathTranslation   *BackendRulePathTranslation `pulumi:"pathTranslation"`
@@ -2206,11 +2202,6 @@ func (o BackendRuleOutput) JwtAudience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BackendRule) *string { return v.JwtAudience }).(pulumi.StringPtrOutput)
 }
 
-// Minimum deadline in seconds needed for this method. Calls having deadline value lower than this will be rejected.
-func (o BackendRuleOutput) MinDeadline() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v BackendRule) *float64 { return v.MinDeadline }).(pulumi.Float64PtrOutput)
-}
-
 // The number of seconds to wait for the completion of a long running operation. The default is no deadline.
 func (o BackendRuleOutput) OperationDeadline() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v BackendRule) *float64 { return v.OperationDeadline }).(pulumi.Float64PtrOutput)
@@ -2260,8 +2251,6 @@ type BackendRuleResponse struct {
 	DisableAuth bool `pulumi:"disableAuth"`
 	// The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
 	JwtAudience string `pulumi:"jwtAudience"`
-	// Minimum deadline in seconds needed for this method. Calls having deadline value lower than this will be rejected.
-	MinDeadline float64 `pulumi:"minDeadline"`
 	// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
 	OperationDeadline float64 `pulumi:"operationDeadline"`
 	PathTranslation   string  `pulumi:"pathTranslation"`
@@ -2292,8 +2281,6 @@ type BackendRuleResponseArgs struct {
 	DisableAuth pulumi.BoolInput `pulumi:"disableAuth"`
 	// The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
 	JwtAudience pulumi.StringInput `pulumi:"jwtAudience"`
-	// Minimum deadline in seconds needed for this method. Calls having deadline value lower than this will be rejected.
-	MinDeadline pulumi.Float64Input `pulumi:"minDeadline"`
 	// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
 	OperationDeadline pulumi.Float64Input `pulumi:"operationDeadline"`
 	PathTranslation   pulumi.StringInput  `pulumi:"pathTranslation"`
@@ -2373,11 +2360,6 @@ func (o BackendRuleResponseOutput) DisableAuth() pulumi.BoolOutput {
 // The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
 func (o BackendRuleResponseOutput) JwtAudience() pulumi.StringOutput {
 	return o.ApplyT(func(v BackendRuleResponse) string { return v.JwtAudience }).(pulumi.StringOutput)
-}
-
-// Minimum deadline in seconds needed for this method. Calls having deadline value lower than this will be rejected.
-func (o BackendRuleResponseOutput) MinDeadline() pulumi.Float64Output {
-	return o.ApplyT(func(v BackendRuleResponse) float64 { return v.MinDeadline }).(pulumi.Float64Output)
 }
 
 // The number of seconds to wait for the completion of a long running operation. The default is no deadline.
@@ -5614,7 +5596,7 @@ func (o DocumentationRuleResponseArrayOutput) Index(i pulumi.IntInput) Documenta
 	}).(DocumentationRuleResponseOutput)
 }
 
-// `Endpoint` describes a network endpoint of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example service configuration: name: library-example.googleapis.com endpoints: # Below entry makes 'google.example.library.v1.Library' # API be served from endpoint address library-example.googleapis.com. # It also allows HTTP OPTIONS calls to be passed to the backend, for # it to decide whether the subsequent cross-origin request is # allowed to proceed. - name: library-example.googleapis.com allow_cors: true
+// `Endpoint` describes a network address of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example: type: google.api.Service name: library-example.googleapis.com endpoints: # Declares network address `https://library-example.googleapis.com` # for service `library-example.googleapis.com`. The `https` scheme # is implicit for all service endpoints. Other schemes may be # supported in the future. - name: library-example.googleapis.com allow_cors: false - name: content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls to be passed to the API frontend, for it # to decide whether the subsequent cross-origin request is allowed # to proceed. allow_cors: true
 type Endpoint struct {
 	// Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed.
 	AllowCors *bool `pulumi:"allowCors"`
@@ -5635,7 +5617,7 @@ type EndpointInput interface {
 	ToEndpointOutputWithContext(context.Context) EndpointOutput
 }
 
-// `Endpoint` describes a network endpoint of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example service configuration: name: library-example.googleapis.com endpoints: # Below entry makes 'google.example.library.v1.Library' # API be served from endpoint address library-example.googleapis.com. # It also allows HTTP OPTIONS calls to be passed to the backend, for # it to decide whether the subsequent cross-origin request is # allowed to proceed. - name: library-example.googleapis.com allow_cors: true
+// `Endpoint` describes a network address of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example: type: google.api.Service name: library-example.googleapis.com endpoints: # Declares network address `https://library-example.googleapis.com` # for service `library-example.googleapis.com`. The `https` scheme # is implicit for all service endpoints. Other schemes may be # supported in the future. - name: library-example.googleapis.com allow_cors: false - name: content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls to be passed to the API frontend, for it # to decide whether the subsequent cross-origin request is allowed # to proceed. allow_cors: true
 type EndpointArgs struct {
 	// Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed.
 	AllowCors pulumi.BoolPtrInput `pulumi:"allowCors"`
@@ -5682,7 +5664,7 @@ func (i EndpointArray) ToEndpointArrayOutputWithContext(ctx context.Context) End
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointArrayOutput)
 }
 
-// `Endpoint` describes a network endpoint of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example service configuration: name: library-example.googleapis.com endpoints: # Below entry makes 'google.example.library.v1.Library' # API be served from endpoint address library-example.googleapis.com. # It also allows HTTP OPTIONS calls to be passed to the backend, for # it to decide whether the subsequent cross-origin request is # allowed to proceed. - name: library-example.googleapis.com allow_cors: true
+// `Endpoint` describes a network address of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example: type: google.api.Service name: library-example.googleapis.com endpoints: # Declares network address `https://library-example.googleapis.com` # for service `library-example.googleapis.com`. The `https` scheme # is implicit for all service endpoints. Other schemes may be # supported in the future. - name: library-example.googleapis.com allow_cors: false - name: content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls to be passed to the API frontend, for it # to decide whether the subsequent cross-origin request is allowed # to proceed. allow_cors: true
 type EndpointOutput struct{ *pulumi.OutputState }
 
 func (EndpointOutput) ElementType() reflect.Type {
@@ -5732,7 +5714,7 @@ func (o EndpointArrayOutput) Index(i pulumi.IntInput) EndpointOutput {
 	}).(EndpointOutput)
 }
 
-// `Endpoint` describes a network endpoint of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example service configuration: name: library-example.googleapis.com endpoints: # Below entry makes 'google.example.library.v1.Library' # API be served from endpoint address library-example.googleapis.com. # It also allows HTTP OPTIONS calls to be passed to the backend, for # it to decide whether the subsequent cross-origin request is # allowed to proceed. - name: library-example.googleapis.com allow_cors: true
+// `Endpoint` describes a network address of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example: type: google.api.Service name: library-example.googleapis.com endpoints: # Declares network address `https://library-example.googleapis.com` # for service `library-example.googleapis.com`. The `https` scheme # is implicit for all service endpoints. Other schemes may be # supported in the future. - name: library-example.googleapis.com allow_cors: false - name: content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls to be passed to the API frontend, for it # to decide whether the subsequent cross-origin request is allowed # to proceed. allow_cors: true
 type EndpointResponse struct {
 	// Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed.
 	AllowCors bool `pulumi:"allowCors"`
@@ -5753,7 +5735,7 @@ type EndpointResponseInput interface {
 	ToEndpointResponseOutputWithContext(context.Context) EndpointResponseOutput
 }
 
-// `Endpoint` describes a network endpoint of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example service configuration: name: library-example.googleapis.com endpoints: # Below entry makes 'google.example.library.v1.Library' # API be served from endpoint address library-example.googleapis.com. # It also allows HTTP OPTIONS calls to be passed to the backend, for # it to decide whether the subsequent cross-origin request is # allowed to proceed. - name: library-example.googleapis.com allow_cors: true
+// `Endpoint` describes a network address of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example: type: google.api.Service name: library-example.googleapis.com endpoints: # Declares network address `https://library-example.googleapis.com` # for service `library-example.googleapis.com`. The `https` scheme # is implicit for all service endpoints. Other schemes may be # supported in the future. - name: library-example.googleapis.com allow_cors: false - name: content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls to be passed to the API frontend, for it # to decide whether the subsequent cross-origin request is allowed # to proceed. allow_cors: true
 type EndpointResponseArgs struct {
 	// Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed.
 	AllowCors pulumi.BoolInput `pulumi:"allowCors"`
@@ -5800,7 +5782,7 @@ func (i EndpointResponseArray) ToEndpointResponseArrayOutputWithContext(ctx cont
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointResponseArrayOutput)
 }
 
-// `Endpoint` describes a network endpoint of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example service configuration: name: library-example.googleapis.com endpoints: # Below entry makes 'google.example.library.v1.Library' # API be served from endpoint address library-example.googleapis.com. # It also allows HTTP OPTIONS calls to be passed to the backend, for # it to decide whether the subsequent cross-origin request is # allowed to proceed. - name: library-example.googleapis.com allow_cors: true
+// `Endpoint` describes a network address of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example: type: google.api.Service name: library-example.googleapis.com endpoints: # Declares network address `https://library-example.googleapis.com` # for service `library-example.googleapis.com`. The `https` scheme # is implicit for all service endpoints. Other schemes may be # supported in the future. - name: library-example.googleapis.com allow_cors: false - name: content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls to be passed to the API frontend, for it # to decide whether the subsequent cross-origin request is allowed # to proceed. allow_cors: true
 type EndpointResponseOutput struct{ *pulumi.OutputState }
 
 func (EndpointResponseOutput) ElementType() reflect.Type {

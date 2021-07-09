@@ -42,6 +42,44 @@ func (e BuildSignatureKeyType) ToStringPtrOutputWithContext(ctx context.Context)
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+// The severity level of this CIS benchmark check.
+type CisBenchmarkSeverity pulumi.String
+
+const (
+	// Unknown Impact
+	CisBenchmarkSeveritySeverityUnspecified = CisBenchmarkSeverity("SEVERITY_UNSPECIFIED")
+	// Minimal Impact
+	CisBenchmarkSeverityMinimal = CisBenchmarkSeverity("MINIMAL")
+	// Low Impact
+	CisBenchmarkSeverityLow = CisBenchmarkSeverity("LOW")
+	// Medium Impact
+	CisBenchmarkSeverityMedium = CisBenchmarkSeverity("MEDIUM")
+	// High Impact
+	CisBenchmarkSeverityHigh = CisBenchmarkSeverity("HIGH")
+	// Critical Impact
+	CisBenchmarkSeverityCritical = CisBenchmarkSeverity("CRITICAL")
+)
+
+func (CisBenchmarkSeverity) ElementType() reflect.Type {
+	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+}
+
+func (e CisBenchmarkSeverity) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CisBenchmarkSeverity) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e CisBenchmarkSeverity) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e CisBenchmarkSeverity) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
 // Platform hosting this deployment.
 type DeploymentPlatform pulumi.String
 
@@ -168,6 +206,8 @@ const (
 	DiscoveryAnalysisKindAttestationAuthority = DiscoveryAnalysisKind("ATTESTATION_AUTHORITY")
 	// This represents an available software upgrade.
 	DiscoveryAnalysisKindUpgrade = DiscoveryAnalysisKind("UPGRADE")
+	// This represents a compliance check that can be applied to a resource.
+	DiscoveryAnalysisKindCompliance = DiscoveryAnalysisKind("COMPLIANCE")
 )
 
 func (DiscoveryAnalysisKind) ElementType() reflect.Type {

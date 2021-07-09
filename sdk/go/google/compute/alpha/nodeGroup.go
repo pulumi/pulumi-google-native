@@ -26,7 +26,7 @@ type NodeGroup struct {
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
 	LocationHint pulumi.StringOutput `pulumi:"locationHint"`
-	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
 	MaintenancePolicy pulumi.StringOutput                      `pulumi:"maintenancePolicy"`
 	MaintenanceWindow NodeGroupMaintenanceWindowResponseOutput `pulumi:"maintenanceWindow"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -37,6 +37,8 @@ type NodeGroup struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
+	// Share-settings for the node group
+	ShareSettings ShareSettingsResponseOutput `pulumi:"shareSettings"`
 	// The total number of nodes in the node group.
 	Size   pulumi.IntOutput    `pulumi:"size"`
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -93,7 +95,7 @@ type nodeGroupState struct {
 	Kind *string `pulumi:"kind"`
 	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
 	LocationHint *string `pulumi:"locationHint"`
-	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
 	MaintenancePolicy *string                             `pulumi:"maintenancePolicy"`
 	MaintenanceWindow *NodeGroupMaintenanceWindowResponse `pulumi:"maintenanceWindow"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -104,6 +106,8 @@ type nodeGroupState struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
+	// Share-settings for the node group
+	ShareSettings *ShareSettingsResponse `pulumi:"shareSettings"`
 	// The total number of nodes in the node group.
 	Size   *int    `pulumi:"size"`
 	Status *string `pulumi:"status"`
@@ -123,7 +127,7 @@ type NodeGroupState struct {
 	Kind pulumi.StringPtrInput
 	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
 	LocationHint pulumi.StringPtrInput
-	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
 	MaintenancePolicy pulumi.StringPtrInput
 	MaintenanceWindow NodeGroupMaintenanceWindowResponsePtrInput
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -134,6 +138,8 @@ type NodeGroupState struct {
 	SelfLink pulumi.StringPtrInput
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringPtrInput
+	// Share-settings for the node group
+	ShareSettings ShareSettingsResponsePtrInput
 	// The total number of nodes in the node group.
 	Size   pulumi.IntPtrInput
 	Status pulumi.StringPtrInput
@@ -153,7 +159,7 @@ type nodeGroupArgs struct {
 	InitialNodeCount string  `pulumi:"initialNodeCount"`
 	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
 	LocationHint *string `pulumi:"locationHint"`
-	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
 	MaintenancePolicy *string                     `pulumi:"maintenancePolicy"`
 	MaintenanceWindow *NodeGroupMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -162,8 +168,10 @@ type nodeGroupArgs struct {
 	NodeTemplate *string `pulumi:"nodeTemplate"`
 	Project      string  `pulumi:"project"`
 	RequestId    *string `pulumi:"requestId"`
-	Status       *string `pulumi:"status"`
-	Zone         string  `pulumi:"zone"`
+	// Share-settings for the node group
+	ShareSettings *ShareSettings `pulumi:"shareSettings"`
+	Status        *string        `pulumi:"status"`
+	Zone          string         `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a NodeGroup resource.
@@ -175,7 +183,7 @@ type NodeGroupArgs struct {
 	InitialNodeCount pulumi.StringInput
 	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
 	LocationHint pulumi.StringPtrInput
-	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
 	MaintenancePolicy *NodeGroupMaintenancePolicy
 	MaintenanceWindow NodeGroupMaintenanceWindowPtrInput
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -184,8 +192,10 @@ type NodeGroupArgs struct {
 	NodeTemplate pulumi.StringPtrInput
 	Project      pulumi.StringInput
 	RequestId    pulumi.StringPtrInput
-	Status       *NodeGroupStatus
-	Zone         pulumi.StringInput
+	// Share-settings for the node group
+	ShareSettings ShareSettingsPtrInput
+	Status        *NodeGroupStatus
+	Zone          pulumi.StringInput
 }
 
 func (NodeGroupArgs) ElementType() reflect.Type {

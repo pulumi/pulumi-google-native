@@ -27,6 +27,8 @@ type LookupOccurrenceResult struct {
 	Attestation AttestationResponse `pulumi:"attestation"`
 	// Build details for a verifiable build.
 	BuildDetails BuildDetailsResponse `pulumi:"buildDetails"`
+	// Describes whether or not a resource passes compliance checks.
+	Compliance ComplianceOccurrenceResponse `pulumi:"compliance"`
 	// The time this `Occurrence` was created.
 	CreateTime string `pulumi:"createTime"`
 	// Describes the deployment of an artifact on a runtime.

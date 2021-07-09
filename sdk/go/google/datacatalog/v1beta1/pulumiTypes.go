@@ -2535,6 +2535,163 @@ func (o GoogleCloudDatacatalogV1beta1TableSpecResponsePtrOutput) GroupedEntry() 
 	}).(pulumi.StringPtrOutput)
 }
 
+// The set of all usage signals that we store in Data Catalog.
+type GoogleCloudDatacatalogV1beta1UsageSignalResponse struct {
+	// The timestamp of the end of the usage statistics duration.
+	UpdateTime string `pulumi:"updateTime"`
+	// Usage statistics over each of the pre-defined time ranges, supported strings for time ranges are {"24H", "7D", "30D"}.
+	UsageWithinTimeRange map[string]string `pulumi:"usageWithinTimeRange"`
+}
+
+// GoogleCloudDatacatalogV1beta1UsageSignalResponseInput is an input type that accepts GoogleCloudDatacatalogV1beta1UsageSignalResponseArgs and GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1beta1UsageSignalResponseInput` via:
+//
+//          GoogleCloudDatacatalogV1beta1UsageSignalResponseArgs{...}
+type GoogleCloudDatacatalogV1beta1UsageSignalResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1beta1UsageSignalResponseOutput() GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput
+	ToGoogleCloudDatacatalogV1beta1UsageSignalResponseOutputWithContext(context.Context) GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput
+}
+
+// The set of all usage signals that we store in Data Catalog.
+type GoogleCloudDatacatalogV1beta1UsageSignalResponseArgs struct {
+	// The timestamp of the end of the usage statistics duration.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+	// Usage statistics over each of the pre-defined time ranges, supported strings for time ranges are {"24H", "7D", "30D"}.
+	UsageWithinTimeRange pulumi.StringMapInput `pulumi:"usageWithinTimeRange"`
+}
+
+func (GoogleCloudDatacatalogV1beta1UsageSignalResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1beta1UsageSignalResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudDatacatalogV1beta1UsageSignalResponseArgs) ToGoogleCloudDatacatalogV1beta1UsageSignalResponseOutput() GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput {
+	return i.ToGoogleCloudDatacatalogV1beta1UsageSignalResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1beta1UsageSignalResponseArgs) ToGoogleCloudDatacatalogV1beta1UsageSignalResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput)
+}
+
+func (i GoogleCloudDatacatalogV1beta1UsageSignalResponseArgs) ToGoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput() GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput {
+	return i.ToGoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDatacatalogV1beta1UsageSignalResponseArgs) ToGoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput).ToGoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrInput is an input type that accepts GoogleCloudDatacatalogV1beta1UsageSignalResponseArgs, GoogleCloudDatacatalogV1beta1UsageSignalResponsePtr and GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrInput` via:
+//
+//          GoogleCloudDatacatalogV1beta1UsageSignalResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput() GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput
+	ToGoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput
+}
+
+type googleCloudDatacatalogV1beta1UsageSignalResponsePtrType GoogleCloudDatacatalogV1beta1UsageSignalResponseArgs
+
+func GoogleCloudDatacatalogV1beta1UsageSignalResponsePtr(v *GoogleCloudDatacatalogV1beta1UsageSignalResponseArgs) GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrInput {
+	return (*googleCloudDatacatalogV1beta1UsageSignalResponsePtrType)(v)
+}
+
+func (*googleCloudDatacatalogV1beta1UsageSignalResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1beta1UsageSignalResponse)(nil)).Elem()
+}
+
+func (i *googleCloudDatacatalogV1beta1UsageSignalResponsePtrType) ToGoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput() GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput {
+	return i.ToGoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDatacatalogV1beta1UsageSignalResponsePtrType) ToGoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput)
+}
+
+// The set of all usage signals that we store in Data Catalog.
+type GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1beta1UsageSignalResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput) ToGoogleCloudDatacatalogV1beta1UsageSignalResponseOutput() GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput) ToGoogleCloudDatacatalogV1beta1UsageSignalResponseOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput) ToGoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput() GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput {
+	return o.ToGoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput) ToGoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1UsageSignalResponse) *GoogleCloudDatacatalogV1beta1UsageSignalResponse {
+		return &v
+	}).(GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput)
+}
+
+// The timestamp of the end of the usage statistics duration.
+func (o GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1UsageSignalResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Usage statistics over each of the pre-defined time ranges, supported strings for time ranges are {"24H", "7D", "30D"}.
+func (o GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput) UsageWithinTimeRange() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1beta1UsageSignalResponse) map[string]string {
+		return v.UsageWithinTimeRange
+	}).(pulumi.StringMapOutput)
+}
+
+type GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDatacatalogV1beta1UsageSignalResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput) ToGoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput() GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput) ToGoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput) Elem() GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1UsageSignalResponse) GoogleCloudDatacatalogV1beta1UsageSignalResponse {
+		return *v
+	}).(GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput)
+}
+
+// The timestamp of the end of the usage statistics duration.
+func (o GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1UsageSignalResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Usage statistics over each of the pre-defined time ranges, supported strings for time ranges are {"24H", "7D", "30D"}.
+func (o GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput) UsageWithinTimeRange() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1beta1UsageSignalResponse) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.UsageWithinTimeRange
+	}).(pulumi.StringMapOutput)
+}
+
 // Table view specification.
 type GoogleCloudDatacatalogV1beta1ViewSpec struct {
 }
@@ -2822,6 +2979,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1TableSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1TableSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1TableSpecResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1UsageSignalResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1UsageSignalResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1ViewSpecOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1ViewSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1beta1ViewSpecResponseOutput{})

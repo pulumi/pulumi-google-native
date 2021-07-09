@@ -32,7 +32,7 @@ type LookupConnectorResult struct {
 	MachineType string `pulumi:"machineType"`
 	// Maximum value of instances in autoscaling group underlying the connector.
 	MaxInstances int `pulumi:"maxInstances"`
-	// Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
+	// Maximum throughput of the connector in Mbps. Default is 300, max is 1000.
 	MaxThroughput int `pulumi:"maxThroughput"`
 	// Minimum value of instances in autoscaling group underlying the connector.
 	MinInstances int `pulumi:"minInstances"`

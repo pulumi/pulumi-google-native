@@ -3446,7 +3446,7 @@ func (o SqlAclEntryResponseArrayOutput) Index(i pulumi.IntInput) SqlAclEntryResp
 type SqlIpConfig struct {
 	// The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).
 	AuthorizedNetworks []SqlAclEntry `pulumi:"authorizedNetworks"`
-	// Whether the instance should be assigned an IPv4 address or not.
+	// Whether the instance is assigned a public IP address or not.
 	EnableIpv4 *bool `pulumi:"enableIpv4"`
 	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
 	PrivateNetwork *string `pulumi:"privateNetwork"`
@@ -3469,7 +3469,7 @@ type SqlIpConfigInput interface {
 type SqlIpConfigArgs struct {
 	// The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).
 	AuthorizedNetworks SqlAclEntryArrayInput `pulumi:"authorizedNetworks"`
-	// Whether the instance should be assigned an IPv4 address or not.
+	// Whether the instance is assigned a public IP address or not.
 	EnableIpv4 pulumi.BoolPtrInput `pulumi:"enableIpv4"`
 	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
 	PrivateNetwork pulumi.StringPtrInput `pulumi:"privateNetwork"`
@@ -3560,7 +3560,7 @@ func (o SqlIpConfigOutput) AuthorizedNetworks() SqlAclEntryArrayOutput {
 	return o.ApplyT(func(v SqlIpConfig) []SqlAclEntry { return v.AuthorizedNetworks }).(SqlAclEntryArrayOutput)
 }
 
-// Whether the instance should be assigned an IPv4 address or not.
+// Whether the instance is assigned a public IP address or not.
 func (o SqlIpConfigOutput) EnableIpv4() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SqlIpConfig) *bool { return v.EnableIpv4 }).(pulumi.BoolPtrOutput)
 }
@@ -3603,7 +3603,7 @@ func (o SqlIpConfigPtrOutput) AuthorizedNetworks() SqlAclEntryArrayOutput {
 	}).(SqlAclEntryArrayOutput)
 }
 
-// Whether the instance should be assigned an IPv4 address or not.
+// Whether the instance is assigned a public IP address or not.
 func (o SqlIpConfigPtrOutput) EnableIpv4() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SqlIpConfig) *bool {
 		if v == nil {
@@ -3637,7 +3637,7 @@ func (o SqlIpConfigPtrOutput) RequireSsl() pulumi.BoolPtrOutput {
 type SqlIpConfigResponse struct {
 	// The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).
 	AuthorizedNetworks []SqlAclEntryResponse `pulumi:"authorizedNetworks"`
-	// Whether the instance should be assigned an IPv4 address or not.
+	// Whether the instance is assigned a public IP address or not.
 	EnableIpv4 bool `pulumi:"enableIpv4"`
 	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
 	PrivateNetwork string `pulumi:"privateNetwork"`
@@ -3660,7 +3660,7 @@ type SqlIpConfigResponseInput interface {
 type SqlIpConfigResponseArgs struct {
 	// The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).
 	AuthorizedNetworks SqlAclEntryResponseArrayInput `pulumi:"authorizedNetworks"`
-	// Whether the instance should be assigned an IPv4 address or not.
+	// Whether the instance is assigned a public IP address or not.
 	EnableIpv4 pulumi.BoolInput `pulumi:"enableIpv4"`
 	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
 	PrivateNetwork pulumi.StringInput `pulumi:"privateNetwork"`
@@ -3751,7 +3751,7 @@ func (o SqlIpConfigResponseOutput) AuthorizedNetworks() SqlAclEntryResponseArray
 	return o.ApplyT(func(v SqlIpConfigResponse) []SqlAclEntryResponse { return v.AuthorizedNetworks }).(SqlAclEntryResponseArrayOutput)
 }
 
-// Whether the instance should be assigned an IPv4 address or not.
+// Whether the instance is assigned a public IP address or not.
 func (o SqlIpConfigResponseOutput) EnableIpv4() pulumi.BoolOutput {
 	return o.ApplyT(func(v SqlIpConfigResponse) bool { return v.EnableIpv4 }).(pulumi.BoolOutput)
 }
@@ -3794,7 +3794,7 @@ func (o SqlIpConfigResponsePtrOutput) AuthorizedNetworks() SqlAclEntryResponseAr
 	}).(SqlAclEntryResponseArrayOutput)
 }
 
-// Whether the instance should be assigned an IPv4 address or not.
+// Whether the instance is assigned a public IP address or not.
 func (o SqlIpConfigResponsePtrOutput) EnableIpv4() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SqlIpConfigResponse) *bool {
 		if v == nil {

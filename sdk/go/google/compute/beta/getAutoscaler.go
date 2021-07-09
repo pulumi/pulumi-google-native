@@ -24,9 +24,7 @@ type LookupAutoscalerArgs struct {
 }
 
 type LookupAutoscalerResult struct {
-	// The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
-	//
-	// If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+	// The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
 	AutoscalingPolicy AutoscalingPolicyResponse `pulumi:"autoscalingPolicy"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
@@ -44,11 +42,7 @@ type LookupAutoscalerResult struct {
 	ScalingScheduleStatus map[string]string `pulumi:"scalingScheduleStatus"`
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
-	// The status of the autoscaler configuration. Current set of possible values:
-	// - PENDING: Autoscaler backend hasn't read new/updated configuration.
-	// - DELETING: Configuration is being deleted.
-	// - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field.
-	// - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
+	// The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future.
 	Status string `pulumi:"status"`
 	// Human-readable details about the current state of the autoscaler. Read the documentation for Commonly returned status messages for examples of status messages you might encounter.
 	StatusDetails []AutoscalerStatusDetailsResponse `pulumi:"statusDetails"`

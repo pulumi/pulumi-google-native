@@ -252,6 +252,38 @@ func (e BuildOptionsSubstitutionOption) ToStringPtrOutputWithContext(ctx context
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+// Option to configure network egress for the workers.
+type NetworkConfigEgressOption pulumi.String
+
+const (
+	// If set, defaults to PUBLIC_EGRESS.
+	NetworkConfigEgressOptionEgressOptionUnspecified = NetworkConfigEgressOption("EGRESS_OPTION_UNSPECIFIED")
+	// If set, workers are created without any public address, which prevents network egress to public IPs unless a network proxy is configured.
+	NetworkConfigEgressOptionNoPublicEgress = NetworkConfigEgressOption("NO_PUBLIC_EGRESS")
+	// If set, workers are created with a public address which allows for public internet egress.
+	NetworkConfigEgressOptionPublicEgress = NetworkConfigEgressOption("PUBLIC_EGRESS")
+)
+
+func (NetworkConfigEgressOption) ElementType() reflect.Type {
+	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+}
+
+func (e NetworkConfigEgressOption) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkConfigEgressOption) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkConfigEgressOption) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkConfigEgressOption) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
 // Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
 type PubsubConfigState pulumi.String
 
@@ -317,5 +349,37 @@ func (e PullRequestFilterCommentControl) ToStringPtrOutput() pulumi.StringPtrOut
 }
 
 func (e PullRequestFilterCommentControl) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+type WebhookConfigState pulumi.String
+
+const (
+	// The webhook auth configuration not been checked.
+	WebhookConfigStateStateUnspecified = WebhookConfigState("STATE_UNSPECIFIED")
+	// The auth configuration is properly setup.
+	WebhookConfigStateOk = WebhookConfigState("OK")
+	// The secret provided in auth_method has been deleted.
+	WebhookConfigStateSecretDeleted = WebhookConfigState("SECRET_DELETED")
+)
+
+func (WebhookConfigState) ElementType() reflect.Type {
+	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+}
+
+func (e WebhookConfigState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WebhookConfigState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e WebhookConfigState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e WebhookConfigState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }

@@ -318,12 +318,14 @@ func (o AwsAccessKeyResponsePtrOutput) SecretAccessKey() pulumi.StringPtrOutput 
 
 // An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's name is the S3 object's key name.
 type AwsS3Data struct {
-	// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
-	AwsAccessKey AwsAccessKey `pulumi:"awsAccessKey"`
+	// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. This field is required. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+	AwsAccessKey *AwsAccessKey `pulumi:"awsAccessKey"`
 	// S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
 	BucketName string `pulumi:"bucketName"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path *string `pulumi:"path"`
+	// Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+	RoleArn *string `pulumi:"roleArn"`
 }
 
 // AwsS3DataInput is an input type that accepts AwsS3DataArgs and AwsS3DataOutput values.
@@ -339,12 +341,14 @@ type AwsS3DataInput interface {
 
 // An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's name is the S3 object's key name.
 type AwsS3DataArgs struct {
-	// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
-	AwsAccessKey AwsAccessKeyInput `pulumi:"awsAccessKey"`
+	// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. This field is required. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+	AwsAccessKey AwsAccessKeyPtrInput `pulumi:"awsAccessKey"`
 	// S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+	RoleArn pulumi.StringPtrInput `pulumi:"roleArn"`
 }
 
 func (AwsS3DataArgs) ElementType() reflect.Type {
@@ -425,9 +429,9 @@ func (o AwsS3DataOutput) ToAwsS3DataPtrOutputWithContext(ctx context.Context) Aw
 	}).(AwsS3DataPtrOutput)
 }
 
-// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
-func (o AwsS3DataOutput) AwsAccessKey() AwsAccessKeyOutput {
-	return o.ApplyT(func(v AwsS3Data) AwsAccessKey { return v.AwsAccessKey }).(AwsAccessKeyOutput)
+// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. This field is required. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+func (o AwsS3DataOutput) AwsAccessKey() AwsAccessKeyPtrOutput {
+	return o.ApplyT(func(v AwsS3Data) *AwsAccessKey { return v.AwsAccessKey }).(AwsAccessKeyPtrOutput)
 }
 
 // S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
@@ -438,6 +442,11 @@ func (o AwsS3DataOutput) BucketName() pulumi.StringOutput {
 // Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 func (o AwsS3DataOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsS3Data) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+func (o AwsS3DataOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AwsS3Data) *string { return v.RoleArn }).(pulumi.StringPtrOutput)
 }
 
 type AwsS3DataPtrOutput struct{ *pulumi.OutputState }
@@ -458,13 +467,13 @@ func (o AwsS3DataPtrOutput) Elem() AwsS3DataOutput {
 	return o.ApplyT(func(v *AwsS3Data) AwsS3Data { return *v }).(AwsS3DataOutput)
 }
 
-// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. This field is required. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 func (o AwsS3DataPtrOutput) AwsAccessKey() AwsAccessKeyPtrOutput {
 	return o.ApplyT(func(v *AwsS3Data) *AwsAccessKey {
 		if v == nil {
 			return nil
 		}
-		return &v.AwsAccessKey
+		return v.AwsAccessKey
 	}).(AwsAccessKeyPtrOutput)
 }
 
@@ -488,14 +497,26 @@ func (o AwsS3DataPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+func (o AwsS3DataPtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsS3Data) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RoleArn
+	}).(pulumi.StringPtrOutput)
+}
+
 // An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's name is the S3 object's key name.
 type AwsS3DataResponse struct {
-	// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+	// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. This field is required. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 	AwsAccessKey AwsAccessKeyResponse `pulumi:"awsAccessKey"`
 	// S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
 	BucketName string `pulumi:"bucketName"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path string `pulumi:"path"`
+	// Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+	RoleArn string `pulumi:"roleArn"`
 }
 
 // AwsS3DataResponseInput is an input type that accepts AwsS3DataResponseArgs and AwsS3DataResponseOutput values.
@@ -511,12 +532,14 @@ type AwsS3DataResponseInput interface {
 
 // An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's name is the S3 object's key name.
 type AwsS3DataResponseArgs struct {
-	// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+	// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. This field is required. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 	AwsAccessKey AwsAccessKeyResponseInput `pulumi:"awsAccessKey"`
 	// S3 Bucket name (see [Creating a bucket](https://docs.aws.amazon.com/AmazonS3/latest/dev/create-bucket-get-location-example.html)).
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
 	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 	Path pulumi.StringInput `pulumi:"path"`
+	// Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+	RoleArn pulumi.StringInput `pulumi:"roleArn"`
 }
 
 func (AwsS3DataResponseArgs) ElementType() reflect.Type {
@@ -597,7 +620,7 @@ func (o AwsS3DataResponseOutput) ToAwsS3DataResponsePtrOutputWithContext(ctx con
 	}).(AwsS3DataResponsePtrOutput)
 }
 
-// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. This field is required. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 func (o AwsS3DataResponseOutput) AwsAccessKey() AwsAccessKeyResponseOutput {
 	return o.ApplyT(func(v AwsS3DataResponse) AwsAccessKeyResponse { return v.AwsAccessKey }).(AwsAccessKeyResponseOutput)
 }
@@ -610,6 +633,11 @@ func (o AwsS3DataResponseOutput) BucketName() pulumi.StringOutput {
 // Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
 func (o AwsS3DataResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsS3DataResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+func (o AwsS3DataResponseOutput) RoleArn() pulumi.StringOutput {
+	return o.ApplyT(func(v AwsS3DataResponse) string { return v.RoleArn }).(pulumi.StringOutput)
 }
 
 type AwsS3DataResponsePtrOutput struct{ *pulumi.OutputState }
@@ -630,7 +658,7 @@ func (o AwsS3DataResponsePtrOutput) Elem() AwsS3DataResponseOutput {
 	return o.ApplyT(func(v *AwsS3DataResponse) AwsS3DataResponse { return *v }).(AwsS3DataResponseOutput)
 }
 
-// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. This field is required. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 func (o AwsS3DataResponsePtrOutput) AwsAccessKey() AwsAccessKeyResponsePtrOutput {
 	return o.ApplyT(func(v *AwsS3DataResponse) *AwsAccessKeyResponse {
 		if v == nil {
@@ -657,6 +685,16 @@ func (o AwsS3DataResponsePtrOutput) Path() pulumi.StringPtrOutput {
 			return nil
 		}
 		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+func (o AwsS3DataResponsePtrOutput) RoleArn() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AwsS3DataResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.RoleArn
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1044,7 +1082,7 @@ func (o AzureBlobStorageDataResponsePtrOutput) StorageAccount() pulumi.StringPtr
 
 // Azure credentials For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 type AzureCredentials struct {
-	// Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+	// Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2, you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
 	SasToken string `pulumi:"sasToken"`
 }
 
@@ -1061,7 +1099,7 @@ type AzureCredentialsInput interface {
 
 // Azure credentials For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 type AzureCredentialsArgs struct {
-	// Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+	// Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2, you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
 	SasToken pulumi.StringInput `pulumi:"sasToken"`
 }
 
@@ -1143,7 +1181,7 @@ func (o AzureCredentialsOutput) ToAzureCredentialsPtrOutputWithContext(ctx conte
 	}).(AzureCredentialsPtrOutput)
 }
 
-// Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+// Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2, you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
 func (o AzureCredentialsOutput) SasToken() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureCredentials) string { return v.SasToken }).(pulumi.StringOutput)
 }
@@ -1166,7 +1204,7 @@ func (o AzureCredentialsPtrOutput) Elem() AzureCredentialsOutput {
 	return o.ApplyT(func(v *AzureCredentials) AzureCredentials { return *v }).(AzureCredentialsOutput)
 }
 
-// Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+// Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2, you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
 func (o AzureCredentialsPtrOutput) SasToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureCredentials) *string {
 		if v == nil {
@@ -1178,7 +1216,7 @@ func (o AzureCredentialsPtrOutput) SasToken() pulumi.StringPtrOutput {
 
 // Azure credentials For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 type AzureCredentialsResponse struct {
-	// Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+	// Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2, you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
 	SasToken string `pulumi:"sasToken"`
 }
 
@@ -1195,7 +1233,7 @@ type AzureCredentialsResponseInput interface {
 
 // Azure credentials For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
 type AzureCredentialsResponseArgs struct {
-	// Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+	// Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2, you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
 	SasToken pulumi.StringInput `pulumi:"sasToken"`
 }
 
@@ -1277,7 +1315,7 @@ func (o AzureCredentialsResponseOutput) ToAzureCredentialsResponsePtrOutputWithC
 	}).(AzureCredentialsResponsePtrOutput)
 }
 
-// Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+// Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2, you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
 func (o AzureCredentialsResponseOutput) SasToken() pulumi.StringOutput {
 	return o.ApplyT(func(v AzureCredentialsResponse) string { return v.SasToken }).(pulumi.StringOutput)
 }
@@ -1300,7 +1338,7 @@ func (o AzureCredentialsResponsePtrOutput) Elem() AzureCredentialsResponseOutput
 	return o.ApplyT(func(v *AzureCredentialsResponse) AzureCredentialsResponse { return *v }).(AzureCredentialsResponseOutput)
 }
 
-// Azure shared access signature. (see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview)).
+// Azure shared access signature (SAS). *Note:*Copying data from Azure Data Lake Storage (ADLS) Gen 2 is in [Preview](/products/#product-launch-stages). During Preview, if you are copying data from ADLS Gen 2, you must use an account SAS. For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
 func (o AzureCredentialsResponsePtrOutput) SasToken() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureCredentialsResponse) *string {
 		if v == nil {
@@ -1656,9 +1694,9 @@ func (o DateResponsePtrOutput) Year() pulumi.IntPtrOutput {
 
 // In a GcsData resource, an object's name is the Cloud Storage object's name and its "last modification time" refers to the object's `updated` property of Cloud Storage objects, which changes when the content or the metadata of the object is updated.
 type GcsData struct {
-	// Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
+	// Cloud Storage bucket name. Must meet [Bucket Name Requirements](/storage/docs/naming#requirements).
 	BucketName string `pulumi:"bucketName"`
-	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. (must meet Object Name Requirements](https://cloud.google.com/storage/docs/naming#objectnames)).
+	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. The root path value must meet [Object Name Requirements](/storage/docs/naming#objectnames).
 	Path *string `pulumi:"path"`
 }
 
@@ -1675,9 +1713,9 @@ type GcsDataInput interface {
 
 // In a GcsData resource, an object's name is the Cloud Storage object's name and its "last modification time" refers to the object's `updated` property of Cloud Storage objects, which changes when the content or the metadata of the object is updated.
 type GcsDataArgs struct {
-	// Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
+	// Cloud Storage bucket name. Must meet [Bucket Name Requirements](/storage/docs/naming#requirements).
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
-	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. (must meet Object Name Requirements](https://cloud.google.com/storage/docs/naming#objectnames)).
+	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. The root path value must meet [Object Name Requirements](/storage/docs/naming#objectnames).
 	Path pulumi.StringPtrInput `pulumi:"path"`
 }
 
@@ -1759,12 +1797,12 @@ func (o GcsDataOutput) ToGcsDataPtrOutputWithContext(ctx context.Context) GcsDat
 	}).(GcsDataPtrOutput)
 }
 
-// Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
+// Cloud Storage bucket name. Must meet [Bucket Name Requirements](/storage/docs/naming#requirements).
 func (o GcsDataOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v GcsData) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
-// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. (must meet Object Name Requirements](https://cloud.google.com/storage/docs/naming#objectnames)).
+// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. The root path value must meet [Object Name Requirements](/storage/docs/naming#objectnames).
 func (o GcsDataOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GcsData) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -1787,7 +1825,7 @@ func (o GcsDataPtrOutput) Elem() GcsDataOutput {
 	return o.ApplyT(func(v *GcsData) GcsData { return *v }).(GcsDataOutput)
 }
 
-// Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
+// Cloud Storage bucket name. Must meet [Bucket Name Requirements](/storage/docs/naming#requirements).
 func (o GcsDataPtrOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GcsData) *string {
 		if v == nil {
@@ -1797,7 +1835,7 @@ func (o GcsDataPtrOutput) BucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. (must meet Object Name Requirements](https://cloud.google.com/storage/docs/naming#objectnames)).
+// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. The root path value must meet [Object Name Requirements](/storage/docs/naming#objectnames).
 func (o GcsDataPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GcsData) *string {
 		if v == nil {
@@ -1809,9 +1847,9 @@ func (o GcsDataPtrOutput) Path() pulumi.StringPtrOutput {
 
 // In a GcsData resource, an object's name is the Cloud Storage object's name and its "last modification time" refers to the object's `updated` property of Cloud Storage objects, which changes when the content or the metadata of the object is updated.
 type GcsDataResponse struct {
-	// Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
+	// Cloud Storage bucket name. Must meet [Bucket Name Requirements](/storage/docs/naming#requirements).
 	BucketName string `pulumi:"bucketName"`
-	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. (must meet Object Name Requirements](https://cloud.google.com/storage/docs/naming#objectnames)).
+	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. The root path value must meet [Object Name Requirements](/storage/docs/naming#objectnames).
 	Path string `pulumi:"path"`
 }
 
@@ -1828,9 +1866,9 @@ type GcsDataResponseInput interface {
 
 // In a GcsData resource, an object's name is the Cloud Storage object's name and its "last modification time" refers to the object's `updated` property of Cloud Storage objects, which changes when the content or the metadata of the object is updated.
 type GcsDataResponseArgs struct {
-	// Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
+	// Cloud Storage bucket name. Must meet [Bucket Name Requirements](/storage/docs/naming#requirements).
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
-	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. (must meet Object Name Requirements](https://cloud.google.com/storage/docs/naming#objectnames)).
+	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. The root path value must meet [Object Name Requirements](/storage/docs/naming#objectnames).
 	Path pulumi.StringInput `pulumi:"path"`
 }
 
@@ -1912,12 +1950,12 @@ func (o GcsDataResponseOutput) ToGcsDataResponsePtrOutputWithContext(ctx context
 	}).(GcsDataResponsePtrOutput)
 }
 
-// Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
+// Cloud Storage bucket name. Must meet [Bucket Name Requirements](/storage/docs/naming#requirements).
 func (o GcsDataResponseOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v GcsDataResponse) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
-// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. (must meet Object Name Requirements](https://cloud.google.com/storage/docs/naming#objectnames)).
+// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. The root path value must meet [Object Name Requirements](/storage/docs/naming#objectnames).
 func (o GcsDataResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GcsDataResponse) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -1940,7 +1978,7 @@ func (o GcsDataResponsePtrOutput) Elem() GcsDataResponseOutput {
 	return o.ApplyT(func(v *GcsDataResponse) GcsDataResponse { return *v }).(GcsDataResponseOutput)
 }
 
-// Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
+// Cloud Storage bucket name. Must meet [Bucket Name Requirements](/storage/docs/naming#requirements).
 func (o GcsDataResponsePtrOutput) BucketName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GcsDataResponse) *string {
 		if v == nil {
@@ -1950,7 +1988,7 @@ func (o GcsDataResponsePtrOutput) BucketName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. (must meet Object Name Requirements](https://cloud.google.com/storage/docs/naming#objectnames)).
+// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. The root path value must meet [Object Name Requirements](/storage/docs/naming#objectnames).
 func (o GcsDataResponsePtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GcsDataResponse) *string {
 		if v == nil {
@@ -1960,7 +1998,7 @@ func (o GcsDataResponsePtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object will not be transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer will fail. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer.
+// An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object is not transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer fails. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer.
 type HttpData struct {
 	// The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
 	ListUrl string `pulumi:"listUrl"`
@@ -1977,7 +2015,7 @@ type HttpDataInput interface {
 	ToHttpDataOutputWithContext(context.Context) HttpDataOutput
 }
 
-// An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object will not be transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer will fail. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer.
+// An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object is not transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer fails. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer.
 type HttpDataArgs struct {
 	// The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
 	ListUrl pulumi.StringInput `pulumi:"listUrl"`
@@ -2036,7 +2074,7 @@ func (i *httpDataPtrType) ToHttpDataPtrOutputWithContext(ctx context.Context) Ht
 	return pulumi.ToOutputWithContext(ctx, i).(HttpDataPtrOutput)
 }
 
-// An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object will not be transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer will fail. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer.
+// An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object is not transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer fails. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer.
 type HttpDataOutput struct{ *pulumi.OutputState }
 
 func (HttpDataOutput) ElementType() reflect.Type {
@@ -2094,7 +2132,7 @@ func (o HttpDataPtrOutput) ListUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object will not be transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer will fail. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer.
+// An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object is not transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer fails. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer.
 type HttpDataResponse struct {
 	// The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
 	ListUrl string `pulumi:"listUrl"`
@@ -2111,7 +2149,7 @@ type HttpDataResponseInput interface {
 	ToHttpDataResponseOutputWithContext(context.Context) HttpDataResponseOutput
 }
 
-// An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object will not be transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer will fail. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer.
+// An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object is not transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer fails. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer.
 type HttpDataResponseArgs struct {
 	// The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
 	ListUrl pulumi.StringInput `pulumi:"listUrl"`
@@ -2170,7 +2208,7 @@ func (i *httpDataResponsePtrType) ToHttpDataResponsePtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(HttpDataResponsePtrOutput)
 }
 
-// An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object will not be transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer will fail. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (https://cloud.google.com/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer.
+// An HttpData resource specifies a list of objects on the web to be transferred over HTTP. The information of the objects to be transferred is contained in a file referenced by a URL. The first line in the file must be `"TsvHttpData-1.0"`, which specifies the format of the file. Subsequent lines specify the information of the list of objects, one object per list entry. Each entry has the following tab-delimited fields: * **HTTP URL** — The location of the object. * **Length** — The size of the object in bytes. * **MD5** — The base64-encoded MD5 hash of the object. For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage-transfer/docs/create-url-list). When transferring data based on a URL list, keep the following in mind: * When an object located at `http(s)://hostname:port/` is transferred to a data sink, the name of the object at the data sink is `/`. * If the specified size of an object does not match the actual size of the object fetched, the object is not transferred. * If the specified MD5 does not match the MD5 computed from the transferred bytes, the object transfer fails. * Ensure that each URL you specify is publicly accessible. For example, in Cloud Storage you can [share an object publicly] (/storage/docs/cloud-console#_sharingdata) and get a link to it. * Storage Transfer Service obeys `robots.txt` rules and requires the source HTTP server to support `Range` requests and to return a `Content-Length` header in each response. * ObjectConditions have no effect when filtering objects to transfer.
 type HttpDataResponseOutput struct{ *pulumi.OutputState }
 
 func (HttpDataResponseOutput) ElementType() reflect.Type {
@@ -2228,13 +2266,13 @@ func (o HttpDataResponsePtrOutput) ListUrl() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specification to configure notifications published to Cloud Pub/Sub. Notifications will be published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` will contain a TransferOperation resource formatted according to the specified `PayloadFormat`.
+// Specification to configure notifications published to Pub/Sub. Notifications are published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` contains a TransferOperation resource formatted according to the specified `PayloadFormat`.
 type NotificationConfig struct {
 	// Event types for which a notification is desired. If empty, send notifications for all event types.
 	EventTypes []string `pulumi:"eventTypes"`
 	// The desired format of the notification message payloads.
 	PayloadFormat string `pulumi:"payloadFormat"`
-	// The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
+	// The `Topic.name` of the Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format results in an INVALID_ARGUMENT error.
 	PubsubTopic string `pulumi:"pubsubTopic"`
 }
 
@@ -2249,13 +2287,13 @@ type NotificationConfigInput interface {
 	ToNotificationConfigOutputWithContext(context.Context) NotificationConfigOutput
 }
 
-// Specification to configure notifications published to Cloud Pub/Sub. Notifications will be published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` will contain a TransferOperation resource formatted according to the specified `PayloadFormat`.
+// Specification to configure notifications published to Pub/Sub. Notifications are published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` contains a TransferOperation resource formatted according to the specified `PayloadFormat`.
 type NotificationConfigArgs struct {
 	// Event types for which a notification is desired. If empty, send notifications for all event types.
 	EventTypes NotificationConfigEventTypesItemArrayInput `pulumi:"eventTypes"`
 	// The desired format of the notification message payloads.
 	PayloadFormat NotificationConfigPayloadFormat `pulumi:"payloadFormat"`
-	// The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
+	// The `Topic.name` of the Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format results in an INVALID_ARGUMENT error.
 	PubsubTopic pulumi.StringInput `pulumi:"pubsubTopic"`
 }
 
@@ -2312,7 +2350,7 @@ func (i *notificationConfigPtrType) ToNotificationConfigPtrOutputWithContext(ctx
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigPtrOutput)
 }
 
-// Specification to configure notifications published to Cloud Pub/Sub. Notifications will be published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` will contain a TransferOperation resource formatted according to the specified `PayloadFormat`.
+// Specification to configure notifications published to Pub/Sub. Notifications are published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` contains a TransferOperation resource formatted according to the specified `PayloadFormat`.
 type NotificationConfigOutput struct{ *pulumi.OutputState }
 
 func (NotificationConfigOutput) ElementType() reflect.Type {
@@ -2347,7 +2385,7 @@ func (o NotificationConfigOutput) PayloadFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v NotificationConfig) string { return v.PayloadFormat }).(pulumi.StringOutput)
 }
 
-// The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
+// The `Topic.name` of the Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format results in an INVALID_ARGUMENT error.
 func (o NotificationConfigOutput) PubsubTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v NotificationConfig) string { return v.PubsubTopic }).(pulumi.StringOutput)
 }
@@ -2390,7 +2428,7 @@ func (o NotificationConfigPtrOutput) PayloadFormat() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
+// The `Topic.name` of the Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format results in an INVALID_ARGUMENT error.
 func (o NotificationConfigPtrOutput) PubsubTopic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NotificationConfig) *string {
 		if v == nil {
@@ -2400,13 +2438,13 @@ func (o NotificationConfigPtrOutput) PubsubTopic() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specification to configure notifications published to Cloud Pub/Sub. Notifications will be published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` will contain a TransferOperation resource formatted according to the specified `PayloadFormat`.
+// Specification to configure notifications published to Pub/Sub. Notifications are published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` contains a TransferOperation resource formatted according to the specified `PayloadFormat`.
 type NotificationConfigResponse struct {
 	// Event types for which a notification is desired. If empty, send notifications for all event types.
 	EventTypes []string `pulumi:"eventTypes"`
 	// The desired format of the notification message payloads.
 	PayloadFormat string `pulumi:"payloadFormat"`
-	// The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
+	// The `Topic.name` of the Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format results in an INVALID_ARGUMENT error.
 	PubsubTopic string `pulumi:"pubsubTopic"`
 }
 
@@ -2421,13 +2459,13 @@ type NotificationConfigResponseInput interface {
 	ToNotificationConfigResponseOutputWithContext(context.Context) NotificationConfigResponseOutput
 }
 
-// Specification to configure notifications published to Cloud Pub/Sub. Notifications will be published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` will contain a TransferOperation resource formatted according to the specified `PayloadFormat`.
+// Specification to configure notifications published to Pub/Sub. Notifications are published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` contains a TransferOperation resource formatted according to the specified `PayloadFormat`.
 type NotificationConfigResponseArgs struct {
 	// Event types for which a notification is desired. If empty, send notifications for all event types.
 	EventTypes pulumi.StringArrayInput `pulumi:"eventTypes"`
 	// The desired format of the notification message payloads.
 	PayloadFormat pulumi.StringInput `pulumi:"payloadFormat"`
-	// The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
+	// The `Topic.name` of the Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format results in an INVALID_ARGUMENT error.
 	PubsubTopic pulumi.StringInput `pulumi:"pubsubTopic"`
 }
 
@@ -2484,7 +2522,7 @@ func (i *notificationConfigResponsePtrType) ToNotificationConfigResponsePtrOutpu
 	return pulumi.ToOutputWithContext(ctx, i).(NotificationConfigResponsePtrOutput)
 }
 
-// Specification to configure notifications published to Cloud Pub/Sub. Notifications will be published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` will contain a TransferOperation resource formatted according to the specified `PayloadFormat`.
+// Specification to configure notifications published to Pub/Sub. Notifications are published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` contains a TransferOperation resource formatted according to the specified `PayloadFormat`.
 type NotificationConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (NotificationConfigResponseOutput) ElementType() reflect.Type {
@@ -2519,7 +2557,7 @@ func (o NotificationConfigResponseOutput) PayloadFormat() pulumi.StringOutput {
 	return o.ApplyT(func(v NotificationConfigResponse) string { return v.PayloadFormat }).(pulumi.StringOutput)
 }
 
-// The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
+// The `Topic.name` of the Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format results in an INVALID_ARGUMENT error.
 func (o NotificationConfigResponseOutput) PubsubTopic() pulumi.StringOutput {
 	return o.ApplyT(func(v NotificationConfigResponse) string { return v.PubsubTopic }).(pulumi.StringOutput)
 }
@@ -2562,7 +2600,7 @@ func (o NotificationConfigResponsePtrOutput) PayloadFormat() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// The `Topic.name` of the Cloud Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format will result in an INVALID_ARGUMENT error.
+// The `Topic.name` of the Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format results in an INVALID_ARGUMENT error.
 func (o NotificationConfigResponsePtrOutput) PubsubTopic() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NotificationConfigResponse) *string {
 		if v == nil {
@@ -2572,13 +2610,13 @@ func (o NotificationConfigResponsePtrOutput) PubsubTopic() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Conditions that determine which objects will be transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs.
+// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs.
 type ObjectConditions struct {
 	// If you specify `exclude_prefixes`, Storage Transfer Service uses the items in the `exclude_prefixes` array to determine which objects to exclude from a transfer. Objects must not start with one of the matching `exclude_prefixes` for inclusion in a transfer. The following are requirements of `exclude_prefixes`: * Each exclude-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each exclude-prefix must omit the leading slash. For example, to exclude the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix values can be empty, if specified. * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If include_prefixes is specified, then each exclude-prefix must start with the value of a path explicitly included by `include_prefixes`. The max size of `exclude_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
 	ExcludePrefixes []string `pulumi:"excludePrefixes"`
 	// If you specify `include_prefixes`, Storage Transfer Service uses the items in the `include_prefixes` array to determine which objects to include in a transfer. Objects must start with one of the matching `include_prefixes` for inclusion in the transfer. If exclude_prefixes is specified, objects must not start with any of the `exclude_prefixes` specified for inclusion in the transfer. The following are requirements of `include_prefixes`: * Each include-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each include-prefix must omit the leading slash. For example, to include the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include-prefix as `logs/y=2015/requests.gz`. * None of the include-prefix values can be empty, if specified. * Each include-prefix must include a distinct portion of the object namespace. No include-prefix may be a prefix of another include-prefix. The max size of `include_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
 	IncludePrefixes []string `pulumi:"includePrefixes"`
-	// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" will be transferred.
+	// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred.
 	LastModifiedBefore *string `pulumi:"lastModifiedBefore"`
 	// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. The `last_modified_since` and `last_modified_before` fields can be used together for chunked data processing. For example, consider a script that processes each day's worth of data at a time. For that you'd set each of the fields as follows: * `last_modified_since` to the start of the day * `last_modified_before` to the end of the day
 	LastModifiedSince *string `pulumi:"lastModifiedSince"`
@@ -2599,13 +2637,13 @@ type ObjectConditionsInput interface {
 	ToObjectConditionsOutputWithContext(context.Context) ObjectConditionsOutput
 }
 
-// Conditions that determine which objects will be transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs.
+// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs.
 type ObjectConditionsArgs struct {
 	// If you specify `exclude_prefixes`, Storage Transfer Service uses the items in the `exclude_prefixes` array to determine which objects to exclude from a transfer. Objects must not start with one of the matching `exclude_prefixes` for inclusion in a transfer. The following are requirements of `exclude_prefixes`: * Each exclude-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each exclude-prefix must omit the leading slash. For example, to exclude the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix values can be empty, if specified. * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If include_prefixes is specified, then each exclude-prefix must start with the value of a path explicitly included by `include_prefixes`. The max size of `exclude_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
 	ExcludePrefixes pulumi.StringArrayInput `pulumi:"excludePrefixes"`
 	// If you specify `include_prefixes`, Storage Transfer Service uses the items in the `include_prefixes` array to determine which objects to include in a transfer. Objects must start with one of the matching `include_prefixes` for inclusion in the transfer. If exclude_prefixes is specified, objects must not start with any of the `exclude_prefixes` specified for inclusion in the transfer. The following are requirements of `include_prefixes`: * Each include-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each include-prefix must omit the leading slash. For example, to include the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include-prefix as `logs/y=2015/requests.gz`. * None of the include-prefix values can be empty, if specified. * Each include-prefix must include a distinct portion of the object namespace. No include-prefix may be a prefix of another include-prefix. The max size of `include_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
 	IncludePrefixes pulumi.StringArrayInput `pulumi:"includePrefixes"`
-	// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" will be transferred.
+	// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred.
 	LastModifiedBefore pulumi.StringPtrInput `pulumi:"lastModifiedBefore"`
 	// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. The `last_modified_since` and `last_modified_before` fields can be used together for chunked data processing. For example, consider a script that processes each day's worth of data at a time. For that you'd set each of the fields as follows: * `last_modified_since` to the start of the day * `last_modified_before` to the end of the day
 	LastModifiedSince pulumi.StringPtrInput `pulumi:"lastModifiedSince"`
@@ -2668,7 +2706,7 @@ func (i *objectConditionsPtrType) ToObjectConditionsPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectConditionsPtrOutput)
 }
 
-// Conditions that determine which objects will be transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs.
+// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs.
 type ObjectConditionsOutput struct{ *pulumi.OutputState }
 
 func (ObjectConditionsOutput) ElementType() reflect.Type {
@@ -2703,7 +2741,7 @@ func (o ObjectConditionsOutput) IncludePrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ObjectConditions) []string { return v.IncludePrefixes }).(pulumi.StringArrayOutput)
 }
 
-// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" will be transferred.
+// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred.
 func (o ObjectConditionsOutput) LastModifiedBefore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectConditions) *string { return v.LastModifiedBefore }).(pulumi.StringPtrOutput)
 }
@@ -2761,7 +2799,7 @@ func (o ObjectConditionsPtrOutput) IncludePrefixes() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" will be transferred.
+// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred.
 func (o ObjectConditionsPtrOutput) LastModifiedBefore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectConditions) *string {
 		if v == nil {
@@ -2801,13 +2839,13 @@ func (o ObjectConditionsPtrOutput) MinTimeElapsedSinceLastModification() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// Conditions that determine which objects will be transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs.
+// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs.
 type ObjectConditionsResponse struct {
 	// If you specify `exclude_prefixes`, Storage Transfer Service uses the items in the `exclude_prefixes` array to determine which objects to exclude from a transfer. Objects must not start with one of the matching `exclude_prefixes` for inclusion in a transfer. The following are requirements of `exclude_prefixes`: * Each exclude-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each exclude-prefix must omit the leading slash. For example, to exclude the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix values can be empty, if specified. * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If include_prefixes is specified, then each exclude-prefix must start with the value of a path explicitly included by `include_prefixes`. The max size of `exclude_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
 	ExcludePrefixes []string `pulumi:"excludePrefixes"`
 	// If you specify `include_prefixes`, Storage Transfer Service uses the items in the `include_prefixes` array to determine which objects to include in a transfer. Objects must start with one of the matching `include_prefixes` for inclusion in the transfer. If exclude_prefixes is specified, objects must not start with any of the `exclude_prefixes` specified for inclusion in the transfer. The following are requirements of `include_prefixes`: * Each include-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each include-prefix must omit the leading slash. For example, to include the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include-prefix as `logs/y=2015/requests.gz`. * None of the include-prefix values can be empty, if specified. * Each include-prefix must include a distinct portion of the object namespace. No include-prefix may be a prefix of another include-prefix. The max size of `include_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
 	IncludePrefixes []string `pulumi:"includePrefixes"`
-	// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" will be transferred.
+	// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred.
 	LastModifiedBefore string `pulumi:"lastModifiedBefore"`
 	// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. The `last_modified_since` and `last_modified_before` fields can be used together for chunked data processing. For example, consider a script that processes each day's worth of data at a time. For that you'd set each of the fields as follows: * `last_modified_since` to the start of the day * `last_modified_before` to the end of the day
 	LastModifiedSince string `pulumi:"lastModifiedSince"`
@@ -2828,13 +2866,13 @@ type ObjectConditionsResponseInput interface {
 	ToObjectConditionsResponseOutputWithContext(context.Context) ObjectConditionsResponseOutput
 }
 
-// Conditions that determine which objects will be transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs.
+// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs.
 type ObjectConditionsResponseArgs struct {
 	// If you specify `exclude_prefixes`, Storage Transfer Service uses the items in the `exclude_prefixes` array to determine which objects to exclude from a transfer. Objects must not start with one of the matching `exclude_prefixes` for inclusion in a transfer. The following are requirements of `exclude_prefixes`: * Each exclude-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each exclude-prefix must omit the leading slash. For example, to exclude the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the exclude-prefix as `logs/y=2015/requests.gz`. * None of the exclude-prefix values can be empty, if specified. * Each exclude-prefix must exclude a distinct portion of the object namespace. No exclude-prefix may be a prefix of another exclude-prefix. * If include_prefixes is specified, then each exclude-prefix must start with the value of a path explicitly included by `include_prefixes`. The max size of `exclude_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
 	ExcludePrefixes pulumi.StringArrayInput `pulumi:"excludePrefixes"`
 	// If you specify `include_prefixes`, Storage Transfer Service uses the items in the `include_prefixes` array to determine which objects to include in a transfer. Objects must start with one of the matching `include_prefixes` for inclusion in the transfer. If exclude_prefixes is specified, objects must not start with any of the `exclude_prefixes` specified for inclusion in the transfer. The following are requirements of `include_prefixes`: * Each include-prefix can contain any sequence of Unicode characters, to a max length of 1024 bytes when UTF8-encoded, and must not contain Carriage Return or Line Feed characters. Wildcard matching and regular expression matching are not supported. * Each include-prefix must omit the leading slash. For example, to include the object `s3://my-aws-bucket/logs/y=2015/requests.gz`, specify the include-prefix as `logs/y=2015/requests.gz`. * None of the include-prefix values can be empty, if specified. * Each include-prefix must include a distinct portion of the object namespace. No include-prefix may be a prefix of another include-prefix. The max size of `include_prefixes` is 1000. For more information, see [Filtering objects from transfers](/storage-transfer/docs/filtering-objects-from-transfers).
 	IncludePrefixes pulumi.StringArrayInput `pulumi:"includePrefixes"`
-	// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" will be transferred.
+	// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred.
 	LastModifiedBefore pulumi.StringInput `pulumi:"lastModifiedBefore"`
 	// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. The `last_modified_since` and `last_modified_before` fields can be used together for chunked data processing. For example, consider a script that processes each day's worth of data at a time. For that you'd set each of the fields as follows: * `last_modified_since` to the start of the day * `last_modified_before` to the end of the day
 	LastModifiedSince pulumi.StringInput `pulumi:"lastModifiedSince"`
@@ -2897,7 +2935,7 @@ func (i *objectConditionsResponsePtrType) ToObjectConditionsResponsePtrOutputWit
 	return pulumi.ToOutputWithContext(ctx, i).(ObjectConditionsResponsePtrOutput)
 }
 
-// Conditions that determine which objects will be transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs.
+// Conditions that determine which objects are transferred. Applies only to Cloud Data Sources such as S3, Azure, and Cloud Storage. The "last modification time" refers to the time of the last change to the object's content or metadata — specifically, this is the `updated` property of Cloud Storage objects, the `LastModified` field of S3 objects, and the `Last-Modified` header of Azure blobs.
 type ObjectConditionsResponseOutput struct{ *pulumi.OutputState }
 
 func (ObjectConditionsResponseOutput) ElementType() reflect.Type {
@@ -2932,7 +2970,7 @@ func (o ObjectConditionsResponseOutput) IncludePrefixes() pulumi.StringArrayOutp
 	return o.ApplyT(func(v ObjectConditionsResponse) []string { return v.IncludePrefixes }).(pulumi.StringArrayOutput)
 }
 
-// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" will be transferred.
+// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred.
 func (o ObjectConditionsResponseOutput) LastModifiedBefore() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectConditionsResponse) string { return v.LastModifiedBefore }).(pulumi.StringOutput)
 }
@@ -2990,7 +3028,7 @@ func (o ObjectConditionsResponsePtrOutput) IncludePrefixes() pulumi.StringArrayO
 	}).(pulumi.StringArrayOutput)
 }
 
-// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" will be transferred.
+// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred.
 func (o ObjectConditionsResponsePtrOutput) LastModifiedBefore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectConditionsResponse) *string {
 		if v == nil {
@@ -3036,9 +3074,9 @@ type Schedule struct {
 	EndTimeOfDay *TimeOfDay `pulumi:"endTimeOfDay"`
 	// Interval between the start of each scheduled TransferOperation. If unspecified, the default value is 24 hours. This value may not be less than 1 hour.
 	RepeatInterval *string `pulumi:"repeatInterval"`
-	// The last day a transfer runs. Date boundaries are determined relative to UTC time. A job will run once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job will run each day at start_time_of_day through `schedule_end_date`.
+	// The last day a transfer runs. Date boundaries are determined relative to UTC time. A job runs once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job runs each day at start_time_of_day through `schedule_end_date`.
 	ScheduleEndDate *Date `pulumi:"scheduleEndDate"`
-	// The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
+	// The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job starts later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it creates a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation takes place on June 3 at midnight UTC.
 	ScheduleStartDate Date `pulumi:"scheduleStartDate"`
 	// The time in UTC that a transfer job is scheduled to run. Transfers may start later than this time. If `start_time_of_day` is not specified: * One-time transfers run immediately. * Recurring transfers run immediately, and each day at midnight UTC, through schedule_end_date. If `start_time_of_day` is specified: * One-time transfers run at the specified time. * Recurring transfers run at the specified time each day, through `schedule_end_date`.
 	StartTimeOfDay *TimeOfDay `pulumi:"startTimeOfDay"`
@@ -3061,9 +3099,9 @@ type ScheduleArgs struct {
 	EndTimeOfDay TimeOfDayPtrInput `pulumi:"endTimeOfDay"`
 	// Interval between the start of each scheduled TransferOperation. If unspecified, the default value is 24 hours. This value may not be less than 1 hour.
 	RepeatInterval pulumi.StringPtrInput `pulumi:"repeatInterval"`
-	// The last day a transfer runs. Date boundaries are determined relative to UTC time. A job will run once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job will run each day at start_time_of_day through `schedule_end_date`.
+	// The last day a transfer runs. Date boundaries are determined relative to UTC time. A job runs once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job runs each day at start_time_of_day through `schedule_end_date`.
 	ScheduleEndDate DatePtrInput `pulumi:"scheduleEndDate"`
-	// The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
+	// The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job starts later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it creates a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation takes place on June 3 at midnight UTC.
 	ScheduleStartDate DateInput `pulumi:"scheduleStartDate"`
 	// The time in UTC that a transfer job is scheduled to run. Transfers may start later than this time. If `start_time_of_day` is not specified: * One-time transfers run immediately. * Recurring transfers run immediately, and each day at midnight UTC, through schedule_end_date. If `start_time_of_day` is specified: * One-time transfers run at the specified time. * Recurring transfers run at the specified time each day, through `schedule_end_date`.
 	StartTimeOfDay TimeOfDayPtrInput `pulumi:"startTimeOfDay"`
@@ -3157,12 +3195,12 @@ func (o ScheduleOutput) RepeatInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Schedule) *string { return v.RepeatInterval }).(pulumi.StringPtrOutput)
 }
 
-// The last day a transfer runs. Date boundaries are determined relative to UTC time. A job will run once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job will run each day at start_time_of_day through `schedule_end_date`.
+// The last day a transfer runs. Date boundaries are determined relative to UTC time. A job runs once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job runs each day at start_time_of_day through `schedule_end_date`.
 func (o ScheduleOutput) ScheduleEndDate() DatePtrOutput {
 	return o.ApplyT(func(v Schedule) *Date { return v.ScheduleEndDate }).(DatePtrOutput)
 }
 
-// The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
+// The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job starts later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it creates a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation takes place on June 3 at midnight UTC.
 func (o ScheduleOutput) ScheduleStartDate() DateOutput {
 	return o.ApplyT(func(v Schedule) Date { return v.ScheduleStartDate }).(DateOutput)
 }
@@ -3210,7 +3248,7 @@ func (o SchedulePtrOutput) RepeatInterval() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The last day a transfer runs. Date boundaries are determined relative to UTC time. A job will run once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job will run each day at start_time_of_day through `schedule_end_date`.
+// The last day a transfer runs. Date boundaries are determined relative to UTC time. A job runs once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job runs each day at start_time_of_day through `schedule_end_date`.
 func (o SchedulePtrOutput) ScheduleEndDate() DatePtrOutput {
 	return o.ApplyT(func(v *Schedule) *Date {
 		if v == nil {
@@ -3220,7 +3258,7 @@ func (o SchedulePtrOutput) ScheduleEndDate() DatePtrOutput {
 	}).(DatePtrOutput)
 }
 
-// The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
+// The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job starts later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it creates a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation takes place on June 3 at midnight UTC.
 func (o SchedulePtrOutput) ScheduleStartDate() DatePtrOutput {
 	return o.ApplyT(func(v *Schedule) *Date {
 		if v == nil {
@@ -3246,9 +3284,9 @@ type ScheduleResponse struct {
 	EndTimeOfDay TimeOfDayResponse `pulumi:"endTimeOfDay"`
 	// Interval between the start of each scheduled TransferOperation. If unspecified, the default value is 24 hours. This value may not be less than 1 hour.
 	RepeatInterval string `pulumi:"repeatInterval"`
-	// The last day a transfer runs. Date boundaries are determined relative to UTC time. A job will run once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job will run each day at start_time_of_day through `schedule_end_date`.
+	// The last day a transfer runs. Date boundaries are determined relative to UTC time. A job runs once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job runs each day at start_time_of_day through `schedule_end_date`.
 	ScheduleEndDate DateResponse `pulumi:"scheduleEndDate"`
-	// The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
+	// The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job starts later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it creates a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation takes place on June 3 at midnight UTC.
 	ScheduleStartDate DateResponse `pulumi:"scheduleStartDate"`
 	// The time in UTC that a transfer job is scheduled to run. Transfers may start later than this time. If `start_time_of_day` is not specified: * One-time transfers run immediately. * Recurring transfers run immediately, and each day at midnight UTC, through schedule_end_date. If `start_time_of_day` is specified: * One-time transfers run at the specified time. * Recurring transfers run at the specified time each day, through `schedule_end_date`.
 	StartTimeOfDay TimeOfDayResponse `pulumi:"startTimeOfDay"`
@@ -3271,9 +3309,9 @@ type ScheduleResponseArgs struct {
 	EndTimeOfDay TimeOfDayResponseInput `pulumi:"endTimeOfDay"`
 	// Interval between the start of each scheduled TransferOperation. If unspecified, the default value is 24 hours. This value may not be less than 1 hour.
 	RepeatInterval pulumi.StringInput `pulumi:"repeatInterval"`
-	// The last day a transfer runs. Date boundaries are determined relative to UTC time. A job will run once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job will run each day at start_time_of_day through `schedule_end_date`.
+	// The last day a transfer runs. Date boundaries are determined relative to UTC time. A job runs once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job runs each day at start_time_of_day through `schedule_end_date`.
 	ScheduleEndDate DateResponseInput `pulumi:"scheduleEndDate"`
-	// The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
+	// The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job starts later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it creates a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation takes place on June 3 at midnight UTC.
 	ScheduleStartDate DateResponseInput `pulumi:"scheduleStartDate"`
 	// The time in UTC that a transfer job is scheduled to run. Transfers may start later than this time. If `start_time_of_day` is not specified: * One-time transfers run immediately. * Recurring transfers run immediately, and each day at midnight UTC, through schedule_end_date. If `start_time_of_day` is specified: * One-time transfers run at the specified time. * Recurring transfers run at the specified time each day, through `schedule_end_date`.
 	StartTimeOfDay TimeOfDayResponseInput `pulumi:"startTimeOfDay"`
@@ -3367,12 +3405,12 @@ func (o ScheduleResponseOutput) RepeatInterval() pulumi.StringOutput {
 	return o.ApplyT(func(v ScheduleResponse) string { return v.RepeatInterval }).(pulumi.StringOutput)
 }
 
-// The last day a transfer runs. Date boundaries are determined relative to UTC time. A job will run once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job will run each day at start_time_of_day through `schedule_end_date`.
+// The last day a transfer runs. Date boundaries are determined relative to UTC time. A job runs once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job runs each day at start_time_of_day through `schedule_end_date`.
 func (o ScheduleResponseOutput) ScheduleEndDate() DateResponseOutput {
 	return o.ApplyT(func(v ScheduleResponse) DateResponse { return v.ScheduleEndDate }).(DateResponseOutput)
 }
 
-// The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
+// The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job starts later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it creates a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation takes place on June 3 at midnight UTC.
 func (o ScheduleResponseOutput) ScheduleStartDate() DateResponseOutput {
 	return o.ApplyT(func(v ScheduleResponse) DateResponse { return v.ScheduleStartDate }).(DateResponseOutput)
 }
@@ -3420,7 +3458,7 @@ func (o ScheduleResponsePtrOutput) RepeatInterval() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The last day a transfer runs. Date boundaries are determined relative to UTC time. A job will run once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job will run each day at start_time_of_day through `schedule_end_date`.
+// The last day a transfer runs. Date boundaries are determined relative to UTC time. A job runs once per 24 hours within the following guidelines: * If `schedule_end_date` and schedule_start_date are the same and in the future relative to UTC, the transfer is executed only one time. * If `schedule_end_date` is later than `schedule_start_date` and `schedule_end_date` is in the future relative to UTC, the job runs each day at start_time_of_day through `schedule_end_date`.
 func (o ScheduleResponsePtrOutput) ScheduleEndDate() DateResponsePtrOutput {
 	return o.ApplyT(func(v *ScheduleResponse) *DateResponse {
 		if v == nil {
@@ -3430,7 +3468,7 @@ func (o ScheduleResponsePtrOutput) ScheduleEndDate() DateResponsePtrOutput {
 	}).(DateResponsePtrOutput)
 }
 
-// The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job will start later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it will create a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation will take place on June 3 at midnight UTC.
+// The start date of a transfer. Date boundaries are determined relative to UTC time. If `schedule_start_date` and start_time_of_day are in the past relative to the job's creation time, the transfer starts the day after you schedule the transfer request. **Note:** When starting jobs at or near midnight UTC it is possible that a job starts later than expected. For example, if you send an outbound request on June 1 one millisecond prior to midnight UTC and the Storage Transfer Service server receives the request on June 2, then it creates a TransferJob with `schedule_start_date` set to June 2 and a `start_time_of_day` set to midnight UTC. The first scheduled TransferOperation takes place on June 3 at midnight UTC.
 func (o ScheduleResponsePtrOutput) ScheduleStartDate() DateResponsePtrOutput {
 	return o.ApplyT(func(v *ScheduleResponse) *DateResponse {
 		if v == nil {
@@ -3838,7 +3876,7 @@ type TransferOptions struct {
 	DeleteObjectsFromSourceAfterTransfer *bool `pulumi:"deleteObjectsFromSourceAfterTransfer"`
 	// Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
 	DeleteObjectsUniqueInSink *bool `pulumi:"deleteObjectsUniqueInSink"`
-	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source will be overwritten with the source object.
+	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 	OverwriteObjectsAlreadyExistingInSink *bool `pulumi:"overwriteObjectsAlreadyExistingInSink"`
 }
 
@@ -3859,7 +3897,7 @@ type TransferOptionsArgs struct {
 	DeleteObjectsFromSourceAfterTransfer pulumi.BoolPtrInput `pulumi:"deleteObjectsFromSourceAfterTransfer"`
 	// Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
 	DeleteObjectsUniqueInSink pulumi.BoolPtrInput `pulumi:"deleteObjectsUniqueInSink"`
-	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source will be overwritten with the source object.
+	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 	OverwriteObjectsAlreadyExistingInSink pulumi.BoolPtrInput `pulumi:"overwriteObjectsAlreadyExistingInSink"`
 }
 
@@ -3951,7 +3989,7 @@ func (o TransferOptionsOutput) DeleteObjectsUniqueInSink() pulumi.BoolPtrOutput 
 	return o.ApplyT(func(v TransferOptions) *bool { return v.DeleteObjectsUniqueInSink }).(pulumi.BoolPtrOutput)
 }
 
-// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source will be overwritten with the source object.
+// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 func (o TransferOptionsOutput) OverwriteObjectsAlreadyExistingInSink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v TransferOptions) *bool { return v.OverwriteObjectsAlreadyExistingInSink }).(pulumi.BoolPtrOutput)
 }
@@ -3994,7 +4032,7 @@ func (o TransferOptionsPtrOutput) DeleteObjectsUniqueInSink() pulumi.BoolPtrOutp
 	}).(pulumi.BoolPtrOutput)
 }
 
-// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source will be overwritten with the source object.
+// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 func (o TransferOptionsPtrOutput) OverwriteObjectsAlreadyExistingInSink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TransferOptions) *bool {
 		if v == nil {
@@ -4010,7 +4048,7 @@ type TransferOptionsResponse struct {
 	DeleteObjectsFromSourceAfterTransfer bool `pulumi:"deleteObjectsFromSourceAfterTransfer"`
 	// Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
 	DeleteObjectsUniqueInSink bool `pulumi:"deleteObjectsUniqueInSink"`
-	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source will be overwritten with the source object.
+	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 	OverwriteObjectsAlreadyExistingInSink bool `pulumi:"overwriteObjectsAlreadyExistingInSink"`
 }
 
@@ -4031,7 +4069,7 @@ type TransferOptionsResponseArgs struct {
 	DeleteObjectsFromSourceAfterTransfer pulumi.BoolInput `pulumi:"deleteObjectsFromSourceAfterTransfer"`
 	// Whether objects that exist only in the sink should be deleted. **Note:** This option and delete_objects_from_source_after_transfer are mutually exclusive.
 	DeleteObjectsUniqueInSink pulumi.BoolInput `pulumi:"deleteObjectsUniqueInSink"`
-	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source will be overwritten with the source object.
+	// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 	OverwriteObjectsAlreadyExistingInSink pulumi.BoolInput `pulumi:"overwriteObjectsAlreadyExistingInSink"`
 }
 
@@ -4123,7 +4161,7 @@ func (o TransferOptionsResponseOutput) DeleteObjectsUniqueInSink() pulumi.BoolOu
 	return o.ApplyT(func(v TransferOptionsResponse) bool { return v.DeleteObjectsUniqueInSink }).(pulumi.BoolOutput)
 }
 
-// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source will be overwritten with the source object.
+// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 func (o TransferOptionsResponseOutput) OverwriteObjectsAlreadyExistingInSink() pulumi.BoolOutput {
 	return o.ApplyT(func(v TransferOptionsResponse) bool { return v.OverwriteObjectsAlreadyExistingInSink }).(pulumi.BoolOutput)
 }
@@ -4166,7 +4204,7 @@ func (o TransferOptionsResponsePtrOutput) DeleteObjectsUniqueInSink() pulumi.Boo
 	}).(pulumi.BoolPtrOutput)
 }
 
-// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source will be overwritten with the source object.
+// When to overwrite objects that already exist in the sink. The default is that only objects that are different from the source are ovewritten. If true, all objects in the sink whose name matches an object in the source are overwritten with the source object.
 func (o TransferOptionsResponsePtrOutput) OverwriteObjectsAlreadyExistingInSink() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *TransferOptionsResponse) *bool {
 		if v == nil {

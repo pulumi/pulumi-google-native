@@ -15,13 +15,7 @@ import (
 type Network struct {
 	pulumi.CustomResourceState
 
-	// Must be set to create a VPC network. If not set, a legacy network is created.
-	//
-	// When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.
-	//
-	// An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges.
-	//
-	// For custom mode VPC networks, you can add subnets using the subnetworks insert method.
+	// Must be set to create a VPC network. If not set, a legacy network is created. When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode. An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges. For custom mode VPC networks, you can add subnets using the subnetworks insert method.
 	AutoCreateSubnetworks pulumi.BoolOutput `pulumi:"autoCreateSubnetworks"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
@@ -77,13 +71,7 @@ func GetNetwork(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Network resources.
 type networkState struct {
-	// Must be set to create a VPC network. If not set, a legacy network is created.
-	//
-	// When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.
-	//
-	// An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges.
-	//
-	// For custom mode VPC networks, you can add subnets using the subnetworks insert method.
+	// Must be set to create a VPC network. If not set, a legacy network is created. When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode. An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges. For custom mode VPC networks, you can add subnets using the subnetworks insert method.
 	AutoCreateSubnetworks *bool `pulumi:"autoCreateSubnetworks"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
@@ -108,13 +96,7 @@ type networkState struct {
 }
 
 type NetworkState struct {
-	// Must be set to create a VPC network. If not set, a legacy network is created.
-	//
-	// When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.
-	//
-	// An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges.
-	//
-	// For custom mode VPC networks, you can add subnets using the subnetworks insert method.
+	// Must be set to create a VPC network. If not set, a legacy network is created. When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode. An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges. For custom mode VPC networks, you can add subnets using the subnetworks insert method.
 	AutoCreateSubnetworks pulumi.BoolPtrInput
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringPtrInput
@@ -143,13 +125,7 @@ func (NetworkState) ElementType() reflect.Type {
 }
 
 type networkArgs struct {
-	// Must be set to create a VPC network. If not set, a legacy network is created.
-	//
-	// When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.
-	//
-	// An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges.
-	//
-	// For custom mode VPC networks, you can add subnets using the subnetworks insert method.
+	// Must be set to create a VPC network. If not set, a legacy network is created. When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode. An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges. For custom mode VPC networks, you can add subnets using the subnetworks insert method.
 	AutoCreateSubnetworks *bool `pulumi:"autoCreateSubnetworks"`
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description *string `pulumi:"description"`
@@ -165,13 +141,7 @@ type networkArgs struct {
 
 // The set of arguments for constructing a Network resource.
 type NetworkArgs struct {
-	// Must be set to create a VPC network. If not set, a legacy network is created.
-	//
-	// When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.
-	//
-	// An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges.
-	//
-	// For custom mode VPC networks, you can add subnets using the subnetworks insert method.
+	// Must be set to create a VPC network. If not set, a legacy network is created. When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode. An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges. For custom mode VPC networks, you can add subnets using the subnetworks insert method.
 	AutoCreateSubnetworks pulumi.BoolPtrInput
 	// An optional description of this resource. Provide this field when you create the resource.
 	Description pulumi.StringPtrInput

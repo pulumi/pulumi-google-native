@@ -15,6 +15,8 @@ import (
 type AlertPolicy struct {
 	pulumi.CustomResourceState
 
+	// Control over how this alert policy's notification channels are notified.
+	AlertStrategy AlertStrategyResponseOutput `pulumi:"alertStrategy"`
 	// How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
 	Combiner pulumi.StringOutput `pulumi:"combiner"`
 	// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition.
@@ -71,6 +73,8 @@ func GetAlertPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AlertPolicy resources.
 type alertPolicyState struct {
+	// Control over how this alert policy's notification channels are notified.
+	AlertStrategy *AlertStrategyResponse `pulumi:"alertStrategy"`
 	// How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
 	Combiner *string `pulumi:"combiner"`
 	// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition.
@@ -96,6 +100,8 @@ type alertPolicyState struct {
 }
 
 type AlertPolicyState struct {
+	// Control over how this alert policy's notification channels are notified.
+	AlertStrategy AlertStrategyResponsePtrInput
 	// How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
 	Combiner pulumi.StringPtrInput
 	// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition.
@@ -125,6 +131,8 @@ func (AlertPolicyState) ElementType() reflect.Type {
 }
 
 type alertPolicyArgs struct {
+	// Control over how this alert policy's notification channels are notified.
+	AlertStrategy *AlertStrategy `pulumi:"alertStrategy"`
 	// How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
 	Combiner *string `pulumi:"combiner"`
 	// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition.
@@ -152,6 +160,8 @@ type alertPolicyArgs struct {
 
 // The set of arguments for constructing a AlertPolicy resource.
 type AlertPolicyArgs struct {
+	// Control over how this alert policy's notification channels are notified.
+	AlertStrategy AlertStrategyPtrInput
 	// How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
 	Combiner *AlertPolicyCombiner
 	// A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition.

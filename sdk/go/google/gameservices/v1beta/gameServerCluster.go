@@ -17,6 +17,8 @@ type GameServerCluster struct {
 
 	// Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
 	AllocationPriority pulumi.StringOutput `pulumi:"allocationPriority"`
+	// The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
+	ClusterState KubernetesClusterStateResponseOutput `pulumi:"clusterState"`
 	// The game server cluster connection information. This information is used to manage game server clusters.
 	ConnectionInfo GameServerClusterConnectionInfoResponseOutput `pulumi:"connectionInfo"`
 	// The creation time.
@@ -79,6 +81,8 @@ func GetGameServerCluster(ctx *pulumi.Context,
 type gameServerClusterState struct {
 	// Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
 	AllocationPriority *string `pulumi:"allocationPriority"`
+	// The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
+	ClusterState *KubernetesClusterStateResponse `pulumi:"clusterState"`
 	// The game server cluster connection information. This information is used to manage game server clusters.
 	ConnectionInfo *GameServerClusterConnectionInfoResponse `pulumi:"connectionInfo"`
 	// The creation time.
@@ -98,6 +102,8 @@ type gameServerClusterState struct {
 type GameServerClusterState struct {
 	// Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
 	AllocationPriority pulumi.StringPtrInput
+	// The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
+	ClusterState KubernetesClusterStateResponsePtrInput
 	// The game server cluster connection information. This information is used to manage game server clusters.
 	ConnectionInfo GameServerClusterConnectionInfoResponsePtrInput
 	// The creation time.

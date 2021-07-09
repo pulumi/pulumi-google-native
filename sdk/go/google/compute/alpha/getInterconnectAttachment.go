@@ -26,52 +26,41 @@ type LookupInterconnectAttachmentArgs struct {
 type LookupInterconnectAttachmentResult struct {
 	// Determines whether this Attachment will carry packets. Not present for PARTNER_PROVIDER.
 	AdminEnabled bool `pulumi:"adminEnabled"`
-	// Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values:
-	// - BPS_50M: 50 Mbit/s
-	// - BPS_100M: 100 Mbit/s
-	// - BPS_200M: 200 Mbit/s
-	// - BPS_300M: 300 Mbit/s
-	// - BPS_400M: 400 Mbit/s
-	// - BPS_500M: 500 Mbit/s
-	// - BPS_1G: 1 Gbit/s
-	// - BPS_2G: 2 Gbit/s
-	// - BPS_5G: 5 Gbit/s
-	// - BPS_10G: 10 Gbit/s
-	// - BPS_20G: 20 Gbit/s
-	// - BPS_50G: 50 Gbit/s
+	// Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: - BPS_50M: 50 Mbit/s - BPS_100M: 100 Mbit/s - BPS_200M: 200 Mbit/s - BPS_300M: 300 Mbit/s - BPS_400M: 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G: 2 Gbit/s - BPS_5G: 5 Gbit/s - BPS_10G: 10 Gbit/s - BPS_20G: 20 Gbit/s - BPS_50G: 50 Gbit/s
 	Bandwidth string `pulumi:"bandwidth"`
+	// Up to 16 candidate prefixes that control the allocation of cloudRouterIpv6Address and customerRouterIpv6Address for this attachment. Each prefix must be in the Global Unique Address (GUA) space. It is highly recommended that it be in a range owned by the requestor. A GUA in a range owned by Google will cause the request to fail. Google will select an available prefix from the supplied candidates or fail the request. If not supplied, a /125 from a Google-owned GUA block will be selected.
+	CandidateIpv6Subnets []string `pulumi:"candidateIpv6Subnets"`
 	// Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will randomly select an unused /29 from all of link-local space.
 	CandidateSubnets []string `pulumi:"candidateSubnets"`
 	// IPv4 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
 	CloudRouterIpAddress string `pulumi:"cloudRouterIpAddress"`
+	// IPv6 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+	CloudRouterIpv6Address string `pulumi:"cloudRouterIpv6Address"`
+	// If supplied, the interface id (index within the subnet) to be used for the cloud router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+	CloudRouterIpv6InterfaceId string `pulumi:"cloudRouterIpv6InterfaceId"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
 	CustomerRouterIpAddress string `pulumi:"customerRouterIpAddress"`
+	// IPv6 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+	CustomerRouterIpv6Address string `pulumi:"customerRouterIpv6Address"`
+	// If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+	CustomerRouterIpv6InterfaceId string `pulumi:"customerRouterIpv6InterfaceId"`
 	// Dataplane version for this InterconnectAttachment.
 	DataplaneVersion int `pulumi:"dataplaneVersion"`
 	// An optional description of this resource.
 	Description string `pulumi:"description"`
-	// Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values:
-	// - AVAILABILITY_DOMAIN_ANY
-	// - AVAILABILITY_DOMAIN_1
-	// - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+	// Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: - AVAILABILITY_DOMAIN_ANY - AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
 	EdgeAvailabilityDomain string `pulumi:"edgeAvailabilityDomain"`
-	// Indicates the user-supplied encryption option of this interconnect attachment:
-	// - NONE is the default value, which means that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of attachment.
-	// - IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud Interconnect, create the attachment using this option.
-	//   Not currently available in all Interconnect locations.
+	// Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *IPsec-encrypted Cloud Interconnect*, the VLAN attachment must be created with this option. Not currently available publicly.
 	Encryption string `pulumi:"encryption"`
 	// URL of the underlying Interconnect object that this attachment's traffic will traverse through.
 	Interconnect string `pulumi:"interconnect"`
-	// URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from the IP address range specified here. For example, if the HA VPN gateway?s interface 0 is paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this interconnect attachment. If this field is not specified for interconnect attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's IP address will be allocated from regional external IP address pool.
-	// Not currently available in all Interconnect locations.
+	// List of URL of addresses that have been reserved for the VLAN attachment. Used only for the VLAN attachment that has the encryption option as IPSEC. The addresses must be regional internal IP address ranges. When creating an HA VPN gateway over the VLAN attachment, if the attachment is configured to use a regional internal IP address, then the VPN gateway's IP address is allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is paired to this VLAN attachment, then a regional internal IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this VLAN attachment. If this field is not specified when creating the VLAN attachment, then later on when creating an HA VPN gateway on this VLAN attachment, the HA VPN gateway's IP address is allocated from the regional external IP address pool. Not currently available publicly.
 	IpsecInternalAddresses []string `pulumi:"ipsecInternalAddresses"`
 	// Type of the resource. Always compute#interconnectAttachment for interconnect attachments.
 	Kind string `pulumi:"kind"`
-	// A fingerprint for the labels being applied to this InterconnectAttachment, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve an InterconnectAttachment.
+	// A fingerprint for the labels being applied to this InterconnectAttachment, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InterconnectAttachment.
 	LabelFingerprint string `pulumi:"labelFingerprint"`
 	// Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
 	Labels map[string]string `pulumi:"labels"`
@@ -79,9 +68,7 @@ type LookupInterconnectAttachmentResult struct {
 	Mtu int `pulumi:"mtu"`
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
-	// The current status of whether or not this interconnect attachment is functional, which can take one of the following values:
-	// - OS_ACTIVE: The attachment has been turned up and is ready to use.
-	// - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
+	// The current status of whether or not this interconnect attachment is functional, which can take one of the following values: - OS_ACTIVE: The attachment has been turned up and is ready to use. - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
 	OperationalStatus string `pulumi:"operationalStatus"`
 	// [Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the form "XXXXX/region/domain"
 	PairingKey string `pulumi:"pairingKey"`
@@ -95,22 +82,17 @@ type LookupInterconnectAttachmentResult struct {
 	Region string `pulumi:"region"`
 	// URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
 	Router string `pulumi:"router"`
+	// Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId string `pulumi:"selfLinkWithId"`
-	// The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values:
-	// - ACTIVE: The attachment has been turned up and is ready to use.
-	// - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
-	// - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side.
-	// - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it.
-	// - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it.
-	// - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted.
+	// The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
+	StackType string `pulumi:"stackType"`
+	// The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: - ACTIVE: The attachment has been turned up and is ready to use. - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it. - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted.
 	State string `pulumi:"state"`
-	// The type of interconnect attachment this is, which can take one of the following values:
-	// - DEDICATED: an attachment to a Dedicated Interconnect.
-	// - PARTNER: an attachment to a Partner Interconnect, created by the customer.
-	// - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
+	// The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
 	Type string `pulumi:"type"`
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
 	VlanTag8021q int `pulumi:"vlanTag8021q"`

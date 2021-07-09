@@ -27,6 +27,8 @@ type LookupBackendBucketResult struct {
 	BucketName string `pulumi:"bucketName"`
 	// Cloud CDN configuration for this BackendBucket.
 	CdnPolicy BackendBucketCdnPolicyResponse `pulumi:"cdnPolicy"`
+	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+	CompressionMode string `pulumi:"compressionMode"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// Headers that the HTTP/S load balancer should add to proxied responses.

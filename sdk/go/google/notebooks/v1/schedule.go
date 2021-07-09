@@ -21,7 +21,7 @@ type Schedule struct {
 	CronSchedule pulumi.StringOutput `pulumi:"cronSchedule"`
 	// A brief description of this environment.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens ‘-’, and underscores ‘_’.
+	// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens '-', and underscores '_'.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Notebook Execution Template corresponding to this schedule.
 	ExecutionTemplate ExecutionTemplateResponseOutput `pulumi:"executionTemplate"`
@@ -80,7 +80,7 @@ type scheduleState struct {
 	CronSchedule *string `pulumi:"cronSchedule"`
 	// A brief description of this environment.
 	Description *string `pulumi:"description"`
-	// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens ‘-’, and underscores ‘_’.
+	// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens '-', and underscores '_'.
 	DisplayName *string `pulumi:"displayName"`
 	// Notebook Execution Template corresponding to this schedule.
 	ExecutionTemplate *ExecutionTemplateResponse `pulumi:"executionTemplate"`
@@ -102,7 +102,7 @@ type ScheduleState struct {
 	CronSchedule pulumi.StringPtrInput
 	// A brief description of this environment.
 	Description pulumi.StringPtrInput
-	// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens ‘-’, and underscores ‘_’.
+	// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens '-', and underscores '_'.
 	DisplayName pulumi.StringPtrInput
 	// Notebook Execution Template corresponding to this schedule.
 	ExecutionTemplate ExecutionTemplateResponsePtrInput

@@ -568,3 +568,34 @@ func (e VersionServingStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
 func (e VersionServingStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
+
+// The egress setting for the connector, controlling what traffic is diverted through it.
+type VpcAccessConnectorEgressSetting pulumi.String
+
+const (
+	VpcAccessConnectorEgressSettingEgressSettingUnspecified = VpcAccessConnectorEgressSetting("EGRESS_SETTING_UNSPECIFIED")
+	// Force the use of VPC Access for all egress traffic from the function.
+	VpcAccessConnectorEgressSettingAllTraffic = VpcAccessConnectorEgressSetting("ALL_TRAFFIC")
+	// Use the VPC Access Connector for private IP space from RFC1918.
+	VpcAccessConnectorEgressSettingPrivateIpRanges = VpcAccessConnectorEgressSetting("PRIVATE_IP_RANGES")
+)
+
+func (VpcAccessConnectorEgressSetting) ElementType() reflect.Type {
+	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+}
+
+func (e VpcAccessConnectorEgressSetting) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VpcAccessConnectorEgressSetting) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VpcAccessConnectorEgressSetting) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e VpcAccessConnectorEgressSetting) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}

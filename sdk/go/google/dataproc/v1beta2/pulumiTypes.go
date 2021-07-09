@@ -500,8 +500,8 @@ func (o AutoscalingConfigResponsePtrOutput) PolicyUri() pulumi.StringPtrOutput {
 type BasicAutoscalingAlgorithm struct {
 	// Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
 	CooldownPeriod *string `pulumi:"cooldownPeriod"`
-	// YARN autoscaling configuration.
-	YarnConfig BasicYarnAutoscalingConfig `pulumi:"yarnConfig"`
+	// Optional. YARN autoscaling configuration.
+	YarnConfig *BasicYarnAutoscalingConfig `pulumi:"yarnConfig"`
 }
 
 // BasicAutoscalingAlgorithmInput is an input type that accepts BasicAutoscalingAlgorithmArgs and BasicAutoscalingAlgorithmOutput values.
@@ -519,8 +519,8 @@ type BasicAutoscalingAlgorithmInput interface {
 type BasicAutoscalingAlgorithmArgs struct {
 	// Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
 	CooldownPeriod pulumi.StringPtrInput `pulumi:"cooldownPeriod"`
-	// YARN autoscaling configuration.
-	YarnConfig BasicYarnAutoscalingConfigInput `pulumi:"yarnConfig"`
+	// Optional. YARN autoscaling configuration.
+	YarnConfig BasicYarnAutoscalingConfigPtrInput `pulumi:"yarnConfig"`
 }
 
 func (BasicAutoscalingAlgorithmArgs) ElementType() reflect.Type {
@@ -606,9 +606,9 @@ func (o BasicAutoscalingAlgorithmOutput) CooldownPeriod() pulumi.StringPtrOutput
 	return o.ApplyT(func(v BasicAutoscalingAlgorithm) *string { return v.CooldownPeriod }).(pulumi.StringPtrOutput)
 }
 
-// YARN autoscaling configuration.
-func (o BasicAutoscalingAlgorithmOutput) YarnConfig() BasicYarnAutoscalingConfigOutput {
-	return o.ApplyT(func(v BasicAutoscalingAlgorithm) BasicYarnAutoscalingConfig { return v.YarnConfig }).(BasicYarnAutoscalingConfigOutput)
+// Optional. YARN autoscaling configuration.
+func (o BasicAutoscalingAlgorithmOutput) YarnConfig() BasicYarnAutoscalingConfigPtrOutput {
+	return o.ApplyT(func(v BasicAutoscalingAlgorithm) *BasicYarnAutoscalingConfig { return v.YarnConfig }).(BasicYarnAutoscalingConfigPtrOutput)
 }
 
 type BasicAutoscalingAlgorithmPtrOutput struct{ *pulumi.OutputState }
@@ -639,13 +639,13 @@ func (o BasicAutoscalingAlgorithmPtrOutput) CooldownPeriod() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// YARN autoscaling configuration.
+// Optional. YARN autoscaling configuration.
 func (o BasicAutoscalingAlgorithmPtrOutput) YarnConfig() BasicYarnAutoscalingConfigPtrOutput {
 	return o.ApplyT(func(v *BasicAutoscalingAlgorithm) *BasicYarnAutoscalingConfig {
 		if v == nil {
 			return nil
 		}
-		return &v.YarnConfig
+		return v.YarnConfig
 	}).(BasicYarnAutoscalingConfigPtrOutput)
 }
 
@@ -653,7 +653,7 @@ func (o BasicAutoscalingAlgorithmPtrOutput) YarnConfig() BasicYarnAutoscalingCon
 type BasicAutoscalingAlgorithmResponse struct {
 	// Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
 	CooldownPeriod string `pulumi:"cooldownPeriod"`
-	// YARN autoscaling configuration.
+	// Optional. YARN autoscaling configuration.
 	YarnConfig BasicYarnAutoscalingConfigResponse `pulumi:"yarnConfig"`
 }
 
@@ -672,7 +672,7 @@ type BasicAutoscalingAlgorithmResponseInput interface {
 type BasicAutoscalingAlgorithmResponseArgs struct {
 	// Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
 	CooldownPeriod pulumi.StringInput `pulumi:"cooldownPeriod"`
-	// YARN autoscaling configuration.
+	// Optional. YARN autoscaling configuration.
 	YarnConfig BasicYarnAutoscalingConfigResponseInput `pulumi:"yarnConfig"`
 }
 
@@ -759,7 +759,7 @@ func (o BasicAutoscalingAlgorithmResponseOutput) CooldownPeriod() pulumi.StringO
 	return o.ApplyT(func(v BasicAutoscalingAlgorithmResponse) string { return v.CooldownPeriod }).(pulumi.StringOutput)
 }
 
-// YARN autoscaling configuration.
+// Optional. YARN autoscaling configuration.
 func (o BasicAutoscalingAlgorithmResponseOutput) YarnConfig() BasicYarnAutoscalingConfigResponseOutput {
 	return o.ApplyT(func(v BasicAutoscalingAlgorithmResponse) BasicYarnAutoscalingConfigResponse { return v.YarnConfig }).(BasicYarnAutoscalingConfigResponseOutput)
 }
@@ -792,7 +792,7 @@ func (o BasicAutoscalingAlgorithmResponsePtrOutput) CooldownPeriod() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// YARN autoscaling configuration.
+// Optional. YARN autoscaling configuration.
 func (o BasicAutoscalingAlgorithmResponsePtrOutput) YarnConfig() BasicYarnAutoscalingConfigResponsePtrOutput {
 	return o.ApplyT(func(v *BasicAutoscalingAlgorithmResponse) *BasicYarnAutoscalingConfigResponse {
 		if v == nil {

@@ -19,6 +19,7 @@ func LookupFeature(ctx *pulumi.Context, args *LookupFeatureArgs, opts ...pulumi.
 
 type LookupFeatureArgs struct {
 	FeatureId string `pulumi:"featureId"`
+	Location  string `pulumi:"location"`
 	Project   string `pulumi:"project"`
 }
 
@@ -33,7 +34,7 @@ type LookupFeatureResult struct {
 	MembershipSpecs map[string]string `pulumi:"membershipSpecs"`
 	// Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
 	MembershipStates map[string]string `pulumi:"membershipStates"`
-	// The full, unique name of this Feature resource in the format `projects/*/locations/global/features/*`.
+	// The full, unique name of this Feature resource in the format `projects/*/locations/*/features/*`.
 	Name string `pulumi:"name"`
 	// State of the Feature resource itself.
 	ResourceState FeatureResourceStateResponse `pulumi:"resourceState"`

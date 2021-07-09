@@ -6711,6 +6711,492 @@ func (o SchematizedDataResponsePtrOutput) Error() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Contains the configuration for FHIR search.
+type SearchConfig struct {
+	// A list of search parameters in this FHIR store that are used to configure this FHIR store.
+	SearchParameters []SearchParameter `pulumi:"searchParameters"`
+}
+
+// SearchConfigInput is an input type that accepts SearchConfigArgs and SearchConfigOutput values.
+// You can construct a concrete instance of `SearchConfigInput` via:
+//
+//          SearchConfigArgs{...}
+type SearchConfigInput interface {
+	pulumi.Input
+
+	ToSearchConfigOutput() SearchConfigOutput
+	ToSearchConfigOutputWithContext(context.Context) SearchConfigOutput
+}
+
+// Contains the configuration for FHIR search.
+type SearchConfigArgs struct {
+	// A list of search parameters in this FHIR store that are used to configure this FHIR store.
+	SearchParameters SearchParameterArrayInput `pulumi:"searchParameters"`
+}
+
+func (SearchConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchConfig)(nil)).Elem()
+}
+
+func (i SearchConfigArgs) ToSearchConfigOutput() SearchConfigOutput {
+	return i.ToSearchConfigOutputWithContext(context.Background())
+}
+
+func (i SearchConfigArgs) ToSearchConfigOutputWithContext(ctx context.Context) SearchConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchConfigOutput)
+}
+
+func (i SearchConfigArgs) ToSearchConfigPtrOutput() SearchConfigPtrOutput {
+	return i.ToSearchConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SearchConfigArgs) ToSearchConfigPtrOutputWithContext(ctx context.Context) SearchConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchConfigOutput).ToSearchConfigPtrOutputWithContext(ctx)
+}
+
+// SearchConfigPtrInput is an input type that accepts SearchConfigArgs, SearchConfigPtr and SearchConfigPtrOutput values.
+// You can construct a concrete instance of `SearchConfigPtrInput` via:
+//
+//          SearchConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type SearchConfigPtrInput interface {
+	pulumi.Input
+
+	ToSearchConfigPtrOutput() SearchConfigPtrOutput
+	ToSearchConfigPtrOutputWithContext(context.Context) SearchConfigPtrOutput
+}
+
+type searchConfigPtrType SearchConfigArgs
+
+func SearchConfigPtr(v *SearchConfigArgs) SearchConfigPtrInput {
+	return (*searchConfigPtrType)(v)
+}
+
+func (*searchConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SearchConfig)(nil)).Elem()
+}
+
+func (i *searchConfigPtrType) ToSearchConfigPtrOutput() SearchConfigPtrOutput {
+	return i.ToSearchConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *searchConfigPtrType) ToSearchConfigPtrOutputWithContext(ctx context.Context) SearchConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchConfigPtrOutput)
+}
+
+// Contains the configuration for FHIR search.
+type SearchConfigOutput struct{ *pulumi.OutputState }
+
+func (SearchConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchConfig)(nil)).Elem()
+}
+
+func (o SearchConfigOutput) ToSearchConfigOutput() SearchConfigOutput {
+	return o
+}
+
+func (o SearchConfigOutput) ToSearchConfigOutputWithContext(ctx context.Context) SearchConfigOutput {
+	return o
+}
+
+func (o SearchConfigOutput) ToSearchConfigPtrOutput() SearchConfigPtrOutput {
+	return o.ToSearchConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SearchConfigOutput) ToSearchConfigPtrOutputWithContext(ctx context.Context) SearchConfigPtrOutput {
+	return o.ApplyT(func(v SearchConfig) *SearchConfig {
+		return &v
+	}).(SearchConfigPtrOutput)
+}
+
+// A list of search parameters in this FHIR store that are used to configure this FHIR store.
+func (o SearchConfigOutput) SearchParameters() SearchParameterArrayOutput {
+	return o.ApplyT(func(v SearchConfig) []SearchParameter { return v.SearchParameters }).(SearchParameterArrayOutput)
+}
+
+type SearchConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SearchConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SearchConfig)(nil)).Elem()
+}
+
+func (o SearchConfigPtrOutput) ToSearchConfigPtrOutput() SearchConfigPtrOutput {
+	return o
+}
+
+func (o SearchConfigPtrOutput) ToSearchConfigPtrOutputWithContext(ctx context.Context) SearchConfigPtrOutput {
+	return o
+}
+
+func (o SearchConfigPtrOutput) Elem() SearchConfigOutput {
+	return o.ApplyT(func(v *SearchConfig) SearchConfig { return *v }).(SearchConfigOutput)
+}
+
+// A list of search parameters in this FHIR store that are used to configure this FHIR store.
+func (o SearchConfigPtrOutput) SearchParameters() SearchParameterArrayOutput {
+	return o.ApplyT(func(v *SearchConfig) []SearchParameter {
+		if v == nil {
+			return nil
+		}
+		return v.SearchParameters
+	}).(SearchParameterArrayOutput)
+}
+
+// Contains the configuration for FHIR search.
+type SearchConfigResponse struct {
+	// A list of search parameters in this FHIR store that are used to configure this FHIR store.
+	SearchParameters []SearchParameterResponse `pulumi:"searchParameters"`
+}
+
+// SearchConfigResponseInput is an input type that accepts SearchConfigResponseArgs and SearchConfigResponseOutput values.
+// You can construct a concrete instance of `SearchConfigResponseInput` via:
+//
+//          SearchConfigResponseArgs{...}
+type SearchConfigResponseInput interface {
+	pulumi.Input
+
+	ToSearchConfigResponseOutput() SearchConfigResponseOutput
+	ToSearchConfigResponseOutputWithContext(context.Context) SearchConfigResponseOutput
+}
+
+// Contains the configuration for FHIR search.
+type SearchConfigResponseArgs struct {
+	// A list of search parameters in this FHIR store that are used to configure this FHIR store.
+	SearchParameters SearchParameterResponseArrayInput `pulumi:"searchParameters"`
+}
+
+func (SearchConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchConfigResponse)(nil)).Elem()
+}
+
+func (i SearchConfigResponseArgs) ToSearchConfigResponseOutput() SearchConfigResponseOutput {
+	return i.ToSearchConfigResponseOutputWithContext(context.Background())
+}
+
+func (i SearchConfigResponseArgs) ToSearchConfigResponseOutputWithContext(ctx context.Context) SearchConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchConfigResponseOutput)
+}
+
+func (i SearchConfigResponseArgs) ToSearchConfigResponsePtrOutput() SearchConfigResponsePtrOutput {
+	return i.ToSearchConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i SearchConfigResponseArgs) ToSearchConfigResponsePtrOutputWithContext(ctx context.Context) SearchConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchConfigResponseOutput).ToSearchConfigResponsePtrOutputWithContext(ctx)
+}
+
+// SearchConfigResponsePtrInput is an input type that accepts SearchConfigResponseArgs, SearchConfigResponsePtr and SearchConfigResponsePtrOutput values.
+// You can construct a concrete instance of `SearchConfigResponsePtrInput` via:
+//
+//          SearchConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type SearchConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToSearchConfigResponsePtrOutput() SearchConfigResponsePtrOutput
+	ToSearchConfigResponsePtrOutputWithContext(context.Context) SearchConfigResponsePtrOutput
+}
+
+type searchConfigResponsePtrType SearchConfigResponseArgs
+
+func SearchConfigResponsePtr(v *SearchConfigResponseArgs) SearchConfigResponsePtrInput {
+	return (*searchConfigResponsePtrType)(v)
+}
+
+func (*searchConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SearchConfigResponse)(nil)).Elem()
+}
+
+func (i *searchConfigResponsePtrType) ToSearchConfigResponsePtrOutput() SearchConfigResponsePtrOutput {
+	return i.ToSearchConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *searchConfigResponsePtrType) ToSearchConfigResponsePtrOutputWithContext(ctx context.Context) SearchConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchConfigResponsePtrOutput)
+}
+
+// Contains the configuration for FHIR search.
+type SearchConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SearchConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchConfigResponse)(nil)).Elem()
+}
+
+func (o SearchConfigResponseOutput) ToSearchConfigResponseOutput() SearchConfigResponseOutput {
+	return o
+}
+
+func (o SearchConfigResponseOutput) ToSearchConfigResponseOutputWithContext(ctx context.Context) SearchConfigResponseOutput {
+	return o
+}
+
+func (o SearchConfigResponseOutput) ToSearchConfigResponsePtrOutput() SearchConfigResponsePtrOutput {
+	return o.ToSearchConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o SearchConfigResponseOutput) ToSearchConfigResponsePtrOutputWithContext(ctx context.Context) SearchConfigResponsePtrOutput {
+	return o.ApplyT(func(v SearchConfigResponse) *SearchConfigResponse {
+		return &v
+	}).(SearchConfigResponsePtrOutput)
+}
+
+// A list of search parameters in this FHIR store that are used to configure this FHIR store.
+func (o SearchConfigResponseOutput) SearchParameters() SearchParameterResponseArrayOutput {
+	return o.ApplyT(func(v SearchConfigResponse) []SearchParameterResponse { return v.SearchParameters }).(SearchParameterResponseArrayOutput)
+}
+
+type SearchConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (SearchConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SearchConfigResponse)(nil)).Elem()
+}
+
+func (o SearchConfigResponsePtrOutput) ToSearchConfigResponsePtrOutput() SearchConfigResponsePtrOutput {
+	return o
+}
+
+func (o SearchConfigResponsePtrOutput) ToSearchConfigResponsePtrOutputWithContext(ctx context.Context) SearchConfigResponsePtrOutput {
+	return o
+}
+
+func (o SearchConfigResponsePtrOutput) Elem() SearchConfigResponseOutput {
+	return o.ApplyT(func(v *SearchConfigResponse) SearchConfigResponse { return *v }).(SearchConfigResponseOutput)
+}
+
+// A list of search parameters in this FHIR store that are used to configure this FHIR store.
+func (o SearchConfigResponsePtrOutput) SearchParameters() SearchParameterResponseArrayOutput {
+	return o.ApplyT(func(v *SearchConfigResponse) []SearchParameterResponse {
+		if v == nil {
+			return nil
+		}
+		return v.SearchParameters
+	}).(SearchParameterResponseArrayOutput)
+}
+
+// Contains the versioned name and the URL for one SearchParameter.
+type SearchParameter struct {
+	// The canonical url of the search parameter resource.
+	CanonicalUrl *string `pulumi:"canonicalUrl"`
+	// The versioned name of the search parameter resource. The format is projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/_history/{version-id} For fhir stores with disable_resource_versioning=true, the format is projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/
+	Parameter *string `pulumi:"parameter"`
+}
+
+// SearchParameterInput is an input type that accepts SearchParameterArgs and SearchParameterOutput values.
+// You can construct a concrete instance of `SearchParameterInput` via:
+//
+//          SearchParameterArgs{...}
+type SearchParameterInput interface {
+	pulumi.Input
+
+	ToSearchParameterOutput() SearchParameterOutput
+	ToSearchParameterOutputWithContext(context.Context) SearchParameterOutput
+}
+
+// Contains the versioned name and the URL for one SearchParameter.
+type SearchParameterArgs struct {
+	// The canonical url of the search parameter resource.
+	CanonicalUrl pulumi.StringPtrInput `pulumi:"canonicalUrl"`
+	// The versioned name of the search parameter resource. The format is projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/_history/{version-id} For fhir stores with disable_resource_versioning=true, the format is projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/
+	Parameter pulumi.StringPtrInput `pulumi:"parameter"`
+}
+
+func (SearchParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchParameter)(nil)).Elem()
+}
+
+func (i SearchParameterArgs) ToSearchParameterOutput() SearchParameterOutput {
+	return i.ToSearchParameterOutputWithContext(context.Background())
+}
+
+func (i SearchParameterArgs) ToSearchParameterOutputWithContext(ctx context.Context) SearchParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchParameterOutput)
+}
+
+// SearchParameterArrayInput is an input type that accepts SearchParameterArray and SearchParameterArrayOutput values.
+// You can construct a concrete instance of `SearchParameterArrayInput` via:
+//
+//          SearchParameterArray{ SearchParameterArgs{...} }
+type SearchParameterArrayInput interface {
+	pulumi.Input
+
+	ToSearchParameterArrayOutput() SearchParameterArrayOutput
+	ToSearchParameterArrayOutputWithContext(context.Context) SearchParameterArrayOutput
+}
+
+type SearchParameterArray []SearchParameterInput
+
+func (SearchParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SearchParameter)(nil)).Elem()
+}
+
+func (i SearchParameterArray) ToSearchParameterArrayOutput() SearchParameterArrayOutput {
+	return i.ToSearchParameterArrayOutputWithContext(context.Background())
+}
+
+func (i SearchParameterArray) ToSearchParameterArrayOutputWithContext(ctx context.Context) SearchParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchParameterArrayOutput)
+}
+
+// Contains the versioned name and the URL for one SearchParameter.
+type SearchParameterOutput struct{ *pulumi.OutputState }
+
+func (SearchParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchParameter)(nil)).Elem()
+}
+
+func (o SearchParameterOutput) ToSearchParameterOutput() SearchParameterOutput {
+	return o
+}
+
+func (o SearchParameterOutput) ToSearchParameterOutputWithContext(ctx context.Context) SearchParameterOutput {
+	return o
+}
+
+// The canonical url of the search parameter resource.
+func (o SearchParameterOutput) CanonicalUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SearchParameter) *string { return v.CanonicalUrl }).(pulumi.StringPtrOutput)
+}
+
+// The versioned name of the search parameter resource. The format is projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/_history/{version-id} For fhir stores with disable_resource_versioning=true, the format is projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/
+func (o SearchParameterOutput) Parameter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SearchParameter) *string { return v.Parameter }).(pulumi.StringPtrOutput)
+}
+
+type SearchParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (SearchParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SearchParameter)(nil)).Elem()
+}
+
+func (o SearchParameterArrayOutput) ToSearchParameterArrayOutput() SearchParameterArrayOutput {
+	return o
+}
+
+func (o SearchParameterArrayOutput) ToSearchParameterArrayOutputWithContext(ctx context.Context) SearchParameterArrayOutput {
+	return o
+}
+
+func (o SearchParameterArrayOutput) Index(i pulumi.IntInput) SearchParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SearchParameter {
+		return vs[0].([]SearchParameter)[vs[1].(int)]
+	}).(SearchParameterOutput)
+}
+
+// Contains the versioned name and the URL for one SearchParameter.
+type SearchParameterResponse struct {
+	// The canonical url of the search parameter resource.
+	CanonicalUrl string `pulumi:"canonicalUrl"`
+	// The versioned name of the search parameter resource. The format is projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/_history/{version-id} For fhir stores with disable_resource_versioning=true, the format is projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/
+	Parameter string `pulumi:"parameter"`
+}
+
+// SearchParameterResponseInput is an input type that accepts SearchParameterResponseArgs and SearchParameterResponseOutput values.
+// You can construct a concrete instance of `SearchParameterResponseInput` via:
+//
+//          SearchParameterResponseArgs{...}
+type SearchParameterResponseInput interface {
+	pulumi.Input
+
+	ToSearchParameterResponseOutput() SearchParameterResponseOutput
+	ToSearchParameterResponseOutputWithContext(context.Context) SearchParameterResponseOutput
+}
+
+// Contains the versioned name and the URL for one SearchParameter.
+type SearchParameterResponseArgs struct {
+	// The canonical url of the search parameter resource.
+	CanonicalUrl pulumi.StringInput `pulumi:"canonicalUrl"`
+	// The versioned name of the search parameter resource. The format is projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/_history/{version-id} For fhir stores with disable_resource_versioning=true, the format is projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/
+	Parameter pulumi.StringInput `pulumi:"parameter"`
+}
+
+func (SearchParameterResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchParameterResponse)(nil)).Elem()
+}
+
+func (i SearchParameterResponseArgs) ToSearchParameterResponseOutput() SearchParameterResponseOutput {
+	return i.ToSearchParameterResponseOutputWithContext(context.Background())
+}
+
+func (i SearchParameterResponseArgs) ToSearchParameterResponseOutputWithContext(ctx context.Context) SearchParameterResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchParameterResponseOutput)
+}
+
+// SearchParameterResponseArrayInput is an input type that accepts SearchParameterResponseArray and SearchParameterResponseArrayOutput values.
+// You can construct a concrete instance of `SearchParameterResponseArrayInput` via:
+//
+//          SearchParameterResponseArray{ SearchParameterResponseArgs{...} }
+type SearchParameterResponseArrayInput interface {
+	pulumi.Input
+
+	ToSearchParameterResponseArrayOutput() SearchParameterResponseArrayOutput
+	ToSearchParameterResponseArrayOutputWithContext(context.Context) SearchParameterResponseArrayOutput
+}
+
+type SearchParameterResponseArray []SearchParameterResponseInput
+
+func (SearchParameterResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SearchParameterResponse)(nil)).Elem()
+}
+
+func (i SearchParameterResponseArray) ToSearchParameterResponseArrayOutput() SearchParameterResponseArrayOutput {
+	return i.ToSearchParameterResponseArrayOutputWithContext(context.Background())
+}
+
+func (i SearchParameterResponseArray) ToSearchParameterResponseArrayOutputWithContext(ctx context.Context) SearchParameterResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SearchParameterResponseArrayOutput)
+}
+
+// Contains the versioned name and the URL for one SearchParameter.
+type SearchParameterResponseOutput struct{ *pulumi.OutputState }
+
+func (SearchParameterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SearchParameterResponse)(nil)).Elem()
+}
+
+func (o SearchParameterResponseOutput) ToSearchParameterResponseOutput() SearchParameterResponseOutput {
+	return o
+}
+
+func (o SearchParameterResponseOutput) ToSearchParameterResponseOutputWithContext(ctx context.Context) SearchParameterResponseOutput {
+	return o
+}
+
+// The canonical url of the search parameter resource.
+func (o SearchParameterResponseOutput) CanonicalUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v SearchParameterResponse) string { return v.CanonicalUrl }).(pulumi.StringOutput)
+}
+
+// The versioned name of the search parameter resource. The format is projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/_history/{version-id} For fhir stores with disable_resource_versioning=true, the format is projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/
+func (o SearchParameterResponseOutput) Parameter() pulumi.StringOutput {
+	return o.ApplyT(func(v SearchParameterResponse) string { return v.Parameter }).(pulumi.StringOutput)
+}
+
+type SearchParameterResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SearchParameterResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SearchParameterResponse)(nil)).Elem()
+}
+
+func (o SearchParameterResponseArrayOutput) ToSearchParameterResponseArrayOutput() SearchParameterResponseArrayOutput {
+	return o
+}
+
+func (o SearchParameterResponseArrayOutput) ToSearchParameterResponseArrayOutputWithContext(ctx context.Context) SearchParameterResponseArrayOutput {
+	return o
+}
+
+func (o SearchParameterResponseArrayOutput) Index(i pulumi.IntInput) SearchParameterResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SearchParameterResponse {
+		return vs[0].([]SearchParameterResponse)[vs[1].(int)]
+	}).(SearchParameterResponseOutput)
+}
+
 // A segment in a structured format.
 type SegmentResponse struct {
 	// A mapping from the positional location to the value. The key string uses zero-based indexes separated by dots to identify Fields, components and sub-components. A bracket notation is also used to identify different instances of a repeated field. Regex for key: (\d+)(\[\d+\])?(.\d+)?(.\d+)? Examples of (key, value) pairs: * (0.1, "hemoglobin") denotes that the first component of Field 0 has the value "hemoglobin". * (1.1.2, "CBC") denotes that the second sub-component of the first component of Field 1 has the value "CBC". * (1[0].1, "HbA1c") denotes that the first component of the first Instance of Field 1, which is repeated, has the value "HbA1c".
@@ -8780,6 +9266,14 @@ func init() {
 	pulumi.RegisterOutputType(SchematizedDataPtrOutput{})
 	pulumi.RegisterOutputType(SchematizedDataResponseOutput{})
 	pulumi.RegisterOutputType(SchematizedDataResponsePtrOutput{})
+	pulumi.RegisterOutputType(SearchConfigOutput{})
+	pulumi.RegisterOutputType(SearchConfigPtrOutput{})
+	pulumi.RegisterOutputType(SearchConfigResponseOutput{})
+	pulumi.RegisterOutputType(SearchConfigResponsePtrOutput{})
+	pulumi.RegisterOutputType(SearchParameterOutput{})
+	pulumi.RegisterOutputType(SearchParameterArrayOutput{})
+	pulumi.RegisterOutputType(SearchParameterResponseOutput{})
+	pulumi.RegisterOutputType(SearchParameterResponseArrayOutput{})
 	pulumi.RegisterOutputType(SegmentResponseOutput{})
 	pulumi.RegisterOutputType(SegmentResponseArrayOutput{})
 	pulumi.RegisterOutputType(SensitiveTextAnnotationOutput{})
