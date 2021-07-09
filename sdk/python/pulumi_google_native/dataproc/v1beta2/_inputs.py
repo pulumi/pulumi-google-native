@@ -124,28 +124,17 @@ class AutoscalingConfigArgs:
 @pulumi.input_type
 class BasicAutoscalingAlgorithmArgs:
     def __init__(__self__, *,
-                 yarn_config: pulumi.Input['BasicYarnAutoscalingConfigArgs'],
-                 cooldown_period: Optional[pulumi.Input[str]] = None):
+                 cooldown_period: Optional[pulumi.Input[str]] = None,
+                 yarn_config: Optional[pulumi.Input['BasicYarnAutoscalingConfigArgs']] = None):
         """
         Basic algorithm for autoscaling.
-        :param pulumi.Input['BasicYarnAutoscalingConfigArgs'] yarn_config: YARN autoscaling configuration.
         :param pulumi.Input[str] cooldown_period: Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
+        :param pulumi.Input['BasicYarnAutoscalingConfigArgs'] yarn_config: Optional. YARN autoscaling configuration.
         """
-        pulumi.set(__self__, "yarn_config", yarn_config)
         if cooldown_period is not None:
             pulumi.set(__self__, "cooldown_period", cooldown_period)
-
-    @property
-    @pulumi.getter(name="yarnConfig")
-    def yarn_config(self) -> pulumi.Input['BasicYarnAutoscalingConfigArgs']:
-        """
-        YARN autoscaling configuration.
-        """
-        return pulumi.get(self, "yarn_config")
-
-    @yarn_config.setter
-    def yarn_config(self, value: pulumi.Input['BasicYarnAutoscalingConfigArgs']):
-        pulumi.set(self, "yarn_config", value)
+        if yarn_config is not None:
+            pulumi.set(__self__, "yarn_config", yarn_config)
 
     @property
     @pulumi.getter(name="cooldownPeriod")
@@ -158,6 +147,18 @@ class BasicAutoscalingAlgorithmArgs:
     @cooldown_period.setter
     def cooldown_period(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cooldown_period", value)
+
+    @property
+    @pulumi.getter(name="yarnConfig")
+    def yarn_config(self) -> Optional[pulumi.Input['BasicYarnAutoscalingConfigArgs']]:
+        """
+        Optional. YARN autoscaling configuration.
+        """
+        return pulumi.get(self, "yarn_config")
+
+    @yarn_config.setter
+    def yarn_config(self, value: Optional[pulumi.Input['BasicYarnAutoscalingConfigArgs']]):
+        pulumi.set(self, "yarn_config", value)
 
 
 @pulumi.input_type

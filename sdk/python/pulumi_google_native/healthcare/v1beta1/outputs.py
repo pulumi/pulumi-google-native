@@ -37,6 +37,8 @@ __all__ = [
     'SchemaConfigResponse',
     'SchemaPackageResponse',
     'SchematizedDataResponse',
+    'SearchConfigResponse',
+    'SearchParameterResponse',
     'SegmentResponse',
     'SensitiveTextAnnotationResponse',
     'SignatureResponse',
@@ -1300,6 +1302,95 @@ class SchematizedDataResponse(dict):
         The error output of the parser.
         """
         return pulumi.get(self, "error")
+
+
+@pulumi.output_type
+class SearchConfigResponse(dict):
+    """
+    Contains the configuration for FHIR search.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "searchParameters":
+            suggest = "search_parameters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SearchConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SearchConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SearchConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 search_parameters: Sequence['outputs.SearchParameterResponse']):
+        """
+        Contains the configuration for FHIR search.
+        :param Sequence['SearchParameterResponse'] search_parameters: A list of search parameters in this FHIR store that are used to configure this FHIR store.
+        """
+        pulumi.set(__self__, "search_parameters", search_parameters)
+
+    @property
+    @pulumi.getter(name="searchParameters")
+    def search_parameters(self) -> Sequence['outputs.SearchParameterResponse']:
+        """
+        A list of search parameters in this FHIR store that are used to configure this FHIR store.
+        """
+        return pulumi.get(self, "search_parameters")
+
+
+@pulumi.output_type
+class SearchParameterResponse(dict):
+    """
+    Contains the versioned name and the URL for one SearchParameter.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "canonicalUrl":
+            suggest = "canonical_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SearchParameterResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SearchParameterResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SearchParameterResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 canonical_url: str,
+                 parameter: str):
+        """
+        Contains the versioned name and the URL for one SearchParameter.
+        :param str canonical_url: The canonical url of the search parameter resource.
+        :param str parameter: The versioned name of the search parameter resource. The format is projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/_history/{version-id} For fhir stores with disable_resource_versioning=true, the format is projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/
+        """
+        pulumi.set(__self__, "canonical_url", canonical_url)
+        pulumi.set(__self__, "parameter", parameter)
+
+    @property
+    @pulumi.getter(name="canonicalUrl")
+    def canonical_url(self) -> str:
+        """
+        The canonical url of the search parameter resource.
+        """
+        return pulumi.get(self, "canonical_url")
+
+    @property
+    @pulumi.getter
+    def parameter(self) -> str:
+        """
+        The versioned name of the search parameter resource. The format is projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/_history/{version-id} For fhir stores with disable_resource_versioning=true, the format is projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/
+        """
+        return pulumi.get(self, "parameter")
 
 
 @pulumi.output_type

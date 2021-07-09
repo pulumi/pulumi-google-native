@@ -8,6 +8,7 @@ __all__ = [
     'InstanceConnectMode',
     'InstanceTier',
     'InstanceTransitEncryptionMode',
+    'WeeklyMaintenanceWindowDay',
 ]
 
 
@@ -36,3 +37,17 @@ class InstanceTransitEncryptionMode(str, Enum):
     TRANSIT_ENCRYPTION_MODE_UNSPECIFIED = "TRANSIT_ENCRYPTION_MODE_UNSPECIFIED"
     SERVER_AUTHENTICATION = "SERVER_AUTHENTICATION"
     DISABLED = "DISABLED"
+
+
+class WeeklyMaintenanceWindowDay(str, Enum):
+    """
+    Required. The day of week that maintenance updates occur.
+    """
+    DAY_OF_WEEK_UNSPECIFIED = "DAY_OF_WEEK_UNSPECIFIED"
+    MONDAY = "MONDAY"
+    TUESDAY = "TUESDAY"
+    WEDNESDAY = "WEDNESDAY"
+    THURSDAY = "THURSDAY"
+    FRIDAY = "FRIDAY"
+    SATURDAY = "SATURDAY"
+    SUNDAY = "SUNDAY"

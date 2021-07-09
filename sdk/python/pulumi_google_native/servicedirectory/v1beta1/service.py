@@ -171,7 +171,9 @@ class Service(pulumi.CustomResource):
             if service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_id'")
             __props__.__dict__["service_id"] = service_id
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["endpoints"] = None
+            __props__.__dict__["update_time"] = None
         super(Service, __self__).__init__(
             'google-native:servicedirectory/v1beta1:Service',
             resource_name,
@@ -194,10 +196,20 @@ class Service(pulumi.CustomResource):
 
         __props__ = ServiceArgs.__new__(ServiceArgs)
 
+        __props__.__dict__["create_time"] = None
         __props__.__dict__["endpoints"] = None
         __props__.__dict__["metadata"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["update_time"] = None
         return Service(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The timestamp when the service was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
@@ -222,4 +234,12 @@ class Service(pulumi.CustomResource):
         Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The timestamp when the service was last updated. Note: endpoints being created/deleted/updated within the service are not considered service updates for the purpose of this timestamp.
+        """
+        return pulumi.get(self, "update_time")
 

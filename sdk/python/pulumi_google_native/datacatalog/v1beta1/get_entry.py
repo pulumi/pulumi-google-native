@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetEntryResult:
-    def __init__(__self__, bigquery_date_sharded_spec=None, bigquery_table_spec=None, description=None, display_name=None, gcs_fileset_spec=None, integrated_system=None, linked_resource=None, name=None, schema=None, source_system_timestamps=None, type=None, user_specified_system=None, user_specified_type=None):
+    def __init__(__self__, bigquery_date_sharded_spec=None, bigquery_table_spec=None, description=None, display_name=None, gcs_fileset_spec=None, integrated_system=None, linked_resource=None, name=None, schema=None, source_system_timestamps=None, type=None, usage_signal=None, user_specified_system=None, user_specified_type=None):
         if bigquery_date_sharded_spec and not isinstance(bigquery_date_sharded_spec, dict):
             raise TypeError("Expected argument 'bigquery_date_sharded_spec' to be a dict")
         pulumi.set(__self__, "bigquery_date_sharded_spec", bigquery_date_sharded_spec)
@@ -51,6 +51,9 @@ class GetEntryResult:
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
+        if usage_signal and not isinstance(usage_signal, dict):
+            raise TypeError("Expected argument 'usage_signal' to be a dict")
+        pulumi.set(__self__, "usage_signal", usage_signal)
         if user_specified_system and not isinstance(user_specified_system, str):
             raise TypeError("Expected argument 'user_specified_system' to be a str")
         pulumi.set(__self__, "user_specified_system", user_specified_system)
@@ -147,6 +150,14 @@ class GetEntryResult:
         return pulumi.get(self, "type")
 
     @property
+    @pulumi.getter(name="usageSignal")
+    def usage_signal(self) -> 'outputs.GoogleCloudDatacatalogV1beta1UsageSignalResponse':
+        """
+        Statistics on the usage level of the resource.
+        """
+        return pulumi.get(self, "usage_signal")
+
+    @property
     @pulumi.getter(name="userSpecifiedSystem")
     def user_specified_system(self) -> str:
         """
@@ -180,6 +191,7 @@ class AwaitableGetEntryResult(GetEntryResult):
             schema=self.schema,
             source_system_timestamps=self.source_system_timestamps,
             type=self.type,
+            usage_signal=self.usage_signal,
             user_specified_system=self.user_specified_system,
             user_specified_type=self.user_specified_type)
 
@@ -215,5 +227,6 @@ def get_entry(entry_group_id: Optional[str] = None,
         schema=__ret__.schema,
         source_system_timestamps=__ret__.source_system_timestamps,
         type=__ret__.type,
+        usage_signal=__ret__.usage_signal,
         user_specified_system=__ret__.user_specified_system,
         user_specified_type=__ret__.user_specified_type)

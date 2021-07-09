@@ -21,7 +21,11 @@ __all__ = [
     'BuildProvenanceResponse',
     'BuildSignatureResponse',
     'BuildTypeResponse',
+    'CisBenchmarkResponse',
     'CommandResponse',
+    'ComplianceNoteResponse',
+    'ComplianceOccurrenceResponse',
+    'ComplianceVersionResponse',
     'DeployableResponse',
     'DeploymentResponse',
     'DerivedResponse',
@@ -42,6 +46,7 @@ __all__ = [
     'InstallationResponse',
     'LayerResponse',
     'LocationResponse',
+    'NonCompliantFileResponse',
     'PackageIssueResponse',
     'PackageResponse',
     'PgpSignedAttestationResponse',
@@ -632,6 +637,56 @@ class BuildTypeResponse(dict):
 
 
 @pulumi.output_type
+class CisBenchmarkResponse(dict):
+    """
+    A compliance check that is a CIS benchmark.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "profileLevel":
+            suggest = "profile_level"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CisBenchmarkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CisBenchmarkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CisBenchmarkResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 profile_level: int,
+                 severity: str):
+        """
+        A compliance check that is a CIS benchmark.
+        :param int profile_level: The profile level of this CIS benchmark check.
+        :param str severity: The severity level of this CIS benchmark check.
+        """
+        pulumi.set(__self__, "profile_level", profile_level)
+        pulumi.set(__self__, "severity", severity)
+
+    @property
+    @pulumi.getter(name="profileLevel")
+    def profile_level(self) -> int:
+        """
+        The profile level of this CIS benchmark check.
+        """
+        return pulumi.get(self, "profile_level")
+
+    @property
+    @pulumi.getter
+    def severity(self) -> str:
+        """
+        The severity level of this CIS benchmark check.
+        """
+        return pulumi.get(self, "severity")
+
+
+@pulumi.output_type
 class CommandResponse(dict):
     """
     Command describes a step performed as part of the build pipeline.
@@ -712,6 +767,215 @@ class CommandResponse(dict):
         The ID(s) of the Command(s) that this Command depends on.
         """
         return pulumi.get(self, "wait_for")
+
+
+@pulumi.output_type
+class ComplianceNoteResponse(dict):
+    """
+    ComplianceNote encapsulates all information about a specific compliance check.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cisBenchmark":
+            suggest = "cis_benchmark"
+        elif key == "scanInstructions":
+            suggest = "scan_instructions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ComplianceNoteResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ComplianceNoteResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ComplianceNoteResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cis_benchmark: 'outputs.CisBenchmarkResponse',
+                 description: str,
+                 rationale: str,
+                 remediation: str,
+                 scan_instructions: str,
+                 title: str,
+                 version: Sequence['outputs.ComplianceVersionResponse']):
+        """
+        ComplianceNote encapsulates all information about a specific compliance check.
+        :param 'CisBenchmarkResponse' cis_benchmark: Right now we only have one compliance type, but we may add additional types in the future.
+        :param str description: A description about this compliance check.
+        :param str rationale: A rationale for the existence of this compliance check.
+        :param str remediation: A description of remediation steps if the compliance check fails.
+        :param str scan_instructions: Serialized scan instructions with a predefined format.
+        :param str title: The title that identifies this compliance check.
+        :param Sequence['ComplianceVersionResponse'] version: The OS and config versions the benchmark applies to.
+        """
+        pulumi.set(__self__, "cis_benchmark", cis_benchmark)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "rationale", rationale)
+        pulumi.set(__self__, "remediation", remediation)
+        pulumi.set(__self__, "scan_instructions", scan_instructions)
+        pulumi.set(__self__, "title", title)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="cisBenchmark")
+    def cis_benchmark(self) -> 'outputs.CisBenchmarkResponse':
+        """
+        Right now we only have one compliance type, but we may add additional types in the future.
+        """
+        return pulumi.get(self, "cis_benchmark")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        A description about this compliance check.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def rationale(self) -> str:
+        """
+        A rationale for the existence of this compliance check.
+        """
+        return pulumi.get(self, "rationale")
+
+    @property
+    @pulumi.getter
+    def remediation(self) -> str:
+        """
+        A description of remediation steps if the compliance check fails.
+        """
+        return pulumi.get(self, "remediation")
+
+    @property
+    @pulumi.getter(name="scanInstructions")
+    def scan_instructions(self) -> str:
+        """
+        Serialized scan instructions with a predefined format.
+        """
+        return pulumi.get(self, "scan_instructions")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        The title that identifies this compliance check.
+        """
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Sequence['outputs.ComplianceVersionResponse']:
+        """
+        The OS and config versions the benchmark applies to.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class ComplianceOccurrenceResponse(dict):
+    """
+    An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular resources or a specified reason.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nonComplianceReason":
+            suggest = "non_compliance_reason"
+        elif key == "nonCompliantFiles":
+            suggest = "non_compliant_files"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ComplianceOccurrenceResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ComplianceOccurrenceResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ComplianceOccurrenceResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 non_compliance_reason: str,
+                 non_compliant_files: Sequence['outputs.NonCompliantFileResponse']):
+        """
+        An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular resources or a specified reason.
+        :param str non_compliance_reason: The reason for non compliance of these files.
+        :param Sequence['NonCompliantFileResponse'] non_compliant_files: A list of files which are violating compliance checks.
+        """
+        pulumi.set(__self__, "non_compliance_reason", non_compliance_reason)
+        pulumi.set(__self__, "non_compliant_files", non_compliant_files)
+
+    @property
+    @pulumi.getter(name="nonComplianceReason")
+    def non_compliance_reason(self) -> str:
+        """
+        The reason for non compliance of these files.
+        """
+        return pulumi.get(self, "non_compliance_reason")
+
+    @property
+    @pulumi.getter(name="nonCompliantFiles")
+    def non_compliant_files(self) -> Sequence['outputs.NonCompliantFileResponse']:
+        """
+        A list of files which are violating compliance checks.
+        """
+        return pulumi.get(self, "non_compliant_files")
+
+
+@pulumi.output_type
+class ComplianceVersionResponse(dict):
+    """
+    Describes the CIS benchmark version that is applicable to a given OS and os version.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpeUri":
+            suggest = "cpe_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ComplianceVersionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ComplianceVersionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ComplianceVersionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cpe_uri: str,
+                 version: str):
+        """
+        Describes the CIS benchmark version that is applicable to a given OS and os version.
+        :param str cpe_uri: The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.
+        :param str version: The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is defined in.
+        """
+        pulumi.set(__self__, "cpe_uri", cpe_uri)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="cpeUri")
+    def cpe_uri(self) -> str:
+        """
+        The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.
+        """
+        return pulumi.get(self, "cpe_uri")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is defined in.
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -1986,6 +2250,67 @@ class LocationResponse(dict):
         The version installed at this location.
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class NonCompliantFileResponse(dict):
+    """
+    Details about files that caused a compliance check to fail.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayCommand":
+            suggest = "display_command"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NonCompliantFileResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NonCompliantFileResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NonCompliantFileResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_command: str,
+                 path: str,
+                 reason: str):
+        """
+        Details about files that caused a compliance check to fail.
+        :param str display_command: Command to display the non-compliant files.
+        :param str path: display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
+        :param str reason: Explains why a file is non compliant for a CIS check.
+        """
+        pulumi.set(__self__, "display_command", display_command)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "reason", reason)
+
+    @property
+    @pulumi.getter(name="displayCommand")
+    def display_command(self) -> str:
+        """
+        Command to display the non-compliant files.
+        """
+        return pulumi.get(self, "display_command")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def reason(self) -> str:
+        """
+        Explains why a file is non compliant for a CIS check.
+        """
+        return pulumi.get(self, "reason")
 
 
 @pulumi.output_type

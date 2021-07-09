@@ -16,7 +16,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBackupResult:
-    def __init__(__self__, capacity_gb=None, create_time=None, description=None, download_bytes=None, labels=None, name=None, source_file_share=None, source_instance=None, source_instance_tier=None, state=None, storage_bytes=None):
+    def __init__(__self__, capacity_gb=None, create_time=None, description=None, download_bytes=None, labels=None, name=None, satisfies_pzs=None, source_file_share=None, source_instance=None, source_instance_tier=None, state=None, storage_bytes=None):
         if capacity_gb and not isinstance(capacity_gb, str):
             raise TypeError("Expected argument 'capacity_gb' to be a str")
         pulumi.set(__self__, "capacity_gb", capacity_gb)
@@ -35,6 +35,9 @@ class GetBackupResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if satisfies_pzs and not isinstance(satisfies_pzs, bool):
+            raise TypeError("Expected argument 'satisfies_pzs' to be a bool")
+        pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         if source_file_share and not isinstance(source_file_share, str):
             raise TypeError("Expected argument 'source_file_share' to be a str")
         pulumi.set(__self__, "source_file_share", source_file_share)
@@ -100,6 +103,14 @@ class GetBackupResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> bool:
+        """
+        Reserved for future use.
+        """
+        return pulumi.get(self, "satisfies_pzs")
+
+    @property
     @pulumi.getter(name="sourceFileShare")
     def source_file_share(self) -> str:
         """
@@ -152,6 +163,7 @@ class AwaitableGetBackupResult(GetBackupResult):
             download_bytes=self.download_bytes,
             labels=self.labels,
             name=self.name,
+            satisfies_pzs=self.satisfies_pzs,
             source_file_share=self.source_file_share,
             source_instance=self.source_instance,
             source_instance_tier=self.source_instance_tier,
@@ -183,6 +195,7 @@ def get_backup(backup_id: Optional[str] = None,
         download_bytes=__ret__.download_bytes,
         labels=__ret__.labels,
         name=__ret__.name,
+        satisfies_pzs=__ret__.satisfies_pzs,
         source_file_share=__ret__.source_file_share,
         source_instance=__ret__.source_instance,
         source_instance_tier=__ret__.source_instance_tier,

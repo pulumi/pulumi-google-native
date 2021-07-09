@@ -8,4 +8,5 @@ import typing
 from ._enums import *
 from .get_instance import *
 from .instance import *
+from ._inputs import *
 from . import outputs

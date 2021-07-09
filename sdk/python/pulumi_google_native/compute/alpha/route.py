@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 
 __all__ = ['RouteArgs', 'Route']
 
@@ -18,6 +19,7 @@ class RouteArgs:
                  allow_conflicting_subnetworks: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dest_range: Optional[pulumi.Input[str]] = None,
+                 ilb_route_behavior_on_unhealthy: Optional[pulumi.Input['RouteIlbRouteBehaviorOnUnhealthy']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  next_hop_gateway: Optional[pulumi.Input[str]] = None,
@@ -34,15 +36,12 @@ class RouteArgs:
         :param pulumi.Input[bool] allow_conflicting_subnetworks: Whether this route can conflict with existing subnetworks. Setting this to true allows this route to conflict with subnetworks that have already been configured on the corresponding network.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
         :param pulumi.Input[str] dest_range: The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported.
+        :param pulumi.Input['RouteIlbRouteBehaviorOnUnhealthy'] ilb_route_behavior_on_unhealthy: ILB route behavior when ILB is deemed unhealthy based on user specified threshold on the Backend Service of the internal load balancing.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
         :param pulumi.Input[str] network: Fully-qualified URL of the network that this route applies to.
-        :param pulumi.Input[str] next_hop_gateway: The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL:  projects/project/global/gateways/default-internet-gateway
-        :param pulumi.Input[str] next_hop_ilb: The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs:  
-               - 10.128.0.56 
-               - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule 
-               - regions/region/forwardingRules/forwardingRule
-        :param pulumi.Input[str] next_hop_instance: The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example:
-               https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+        :param pulumi.Input[str] next_hop_gateway: The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
+        :param pulumi.Input[str] next_hop_ilb: The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule 
+        :param pulumi.Input[str] next_hop_instance: The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
         :param pulumi.Input[str] next_hop_ip: The network IP address of an instance that should handle matching packets. Only IPv4 is supported.
         :param pulumi.Input[str] next_hop_network: The URL of the local network if it should handle matching packets.
         :param pulumi.Input[str] next_hop_vpn_tunnel: The URL to a VpnTunnel that should handle matching packets.
@@ -56,6 +55,8 @@ class RouteArgs:
             pulumi.set(__self__, "description", description)
         if dest_range is not None:
             pulumi.set(__self__, "dest_range", dest_range)
+        if ilb_route_behavior_on_unhealthy is not None:
+            pulumi.set(__self__, "ilb_route_behavior_on_unhealthy", ilb_route_behavior_on_unhealthy)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if network is not None:
@@ -125,6 +126,18 @@ class RouteArgs:
         pulumi.set(self, "dest_range", value)
 
     @property
+    @pulumi.getter(name="ilbRouteBehaviorOnUnhealthy")
+    def ilb_route_behavior_on_unhealthy(self) -> Optional[pulumi.Input['RouteIlbRouteBehaviorOnUnhealthy']]:
+        """
+        ILB route behavior when ILB is deemed unhealthy based on user specified threshold on the Backend Service of the internal load balancing.
+        """
+        return pulumi.get(self, "ilb_route_behavior_on_unhealthy")
+
+    @ilb_route_behavior_on_unhealthy.setter
+    def ilb_route_behavior_on_unhealthy(self, value: Optional[pulumi.Input['RouteIlbRouteBehaviorOnUnhealthy']]):
+        pulumi.set(self, "ilb_route_behavior_on_unhealthy", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -152,7 +165,7 @@ class RouteArgs:
     @pulumi.getter(name="nextHopGateway")
     def next_hop_gateway(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL:  projects/project/global/gateways/default-internet-gateway
+        The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
         """
         return pulumi.get(self, "next_hop_gateway")
 
@@ -164,10 +177,7 @@ class RouteArgs:
     @pulumi.getter(name="nextHopIlb")
     def next_hop_ilb(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs:  
-        - 10.128.0.56 
-        - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule 
-        - regions/region/forwardingRules/forwardingRule
+        The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule 
         """
         return pulumi.get(self, "next_hop_ilb")
 
@@ -179,8 +189,7 @@ class RouteArgs:
     @pulumi.getter(name="nextHopInstance")
     def next_hop_instance(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example:
-        https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+        The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
         """
         return pulumi.get(self, "next_hop_instance")
 
@@ -266,6 +275,7 @@ class Route(pulumi.CustomResource):
                  allow_conflicting_subnetworks: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dest_range: Optional[pulumi.Input[str]] = None,
+                 ilb_route_behavior_on_unhealthy: Optional[pulumi.Input['RouteIlbRouteBehaviorOnUnhealthy']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  next_hop_gateway: Optional[pulumi.Input[str]] = None,
@@ -287,15 +297,12 @@ class Route(pulumi.CustomResource):
         :param pulumi.Input[bool] allow_conflicting_subnetworks: Whether this route can conflict with existing subnetworks. Setting this to true allows this route to conflict with subnetworks that have already been configured on the corresponding network.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
         :param pulumi.Input[str] dest_range: The destination range of outgoing packets that this route applies to. Both IPv4 and IPv6 are supported.
+        :param pulumi.Input['RouteIlbRouteBehaviorOnUnhealthy'] ilb_route_behavior_on_unhealthy: ILB route behavior when ILB is deemed unhealthy based on user specified threshold on the Backend Service of the internal load balancing.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?`. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
         :param pulumi.Input[str] network: Fully-qualified URL of the network that this route applies to.
-        :param pulumi.Input[str] next_hop_gateway: The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL:  projects/project/global/gateways/default-internet-gateway
-        :param pulumi.Input[str] next_hop_ilb: The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs:  
-               - 10.128.0.56 
-               - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule 
-               - regions/region/forwardingRules/forwardingRule
-        :param pulumi.Input[str] next_hop_instance: The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example:
-               https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+        :param pulumi.Input[str] next_hop_gateway: The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
+        :param pulumi.Input[str] next_hop_ilb: The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule 
+        :param pulumi.Input[str] next_hop_instance: The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
         :param pulumi.Input[str] next_hop_ip: The network IP address of an instance that should handle matching packets. Only IPv4 is supported.
         :param pulumi.Input[str] next_hop_network: The URL of the local network if it should handle matching packets.
         :param pulumi.Input[str] next_hop_vpn_tunnel: The URL to a VpnTunnel that should handle matching packets.
@@ -329,6 +336,7 @@ class Route(pulumi.CustomResource):
                  allow_conflicting_subnetworks: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  dest_range: Optional[pulumi.Input[str]] = None,
+                 ilb_route_behavior_on_unhealthy: Optional[pulumi.Input['RouteIlbRouteBehaviorOnUnhealthy']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  next_hop_gateway: Optional[pulumi.Input[str]] = None,
@@ -356,6 +364,7 @@ class Route(pulumi.CustomResource):
             __props__.__dict__["allow_conflicting_subnetworks"] = allow_conflicting_subnetworks
             __props__.__dict__["description"] = description
             __props__.__dict__["dest_range"] = dest_range
+            __props__.__dict__["ilb_route_behavior_on_unhealthy"] = ilb_route_behavior_on_unhealthy
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
             __props__.__dict__["next_hop_gateway"] = next_hop_gateway
@@ -403,6 +412,7 @@ class Route(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["dest_range"] = None
+        __props__.__dict__["ilb_route_behavior_on_unhealthy"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network"] = None
@@ -454,6 +464,14 @@ class Route(pulumi.CustomResource):
         return pulumi.get(self, "dest_range")
 
     @property
+    @pulumi.getter(name="ilbRouteBehaviorOnUnhealthy")
+    def ilb_route_behavior_on_unhealthy(self) -> pulumi.Output[str]:
+        """
+        ILB route behavior when ILB is deemed unhealthy based on user specified threshold on the Backend Service of the internal load balancing.
+        """
+        return pulumi.get(self, "ilb_route_behavior_on_unhealthy")
+
+    @property
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
@@ -481,7 +499,7 @@ class Route(pulumi.CustomResource):
     @pulumi.getter(name="nextHopGateway")
     def next_hop_gateway(self) -> pulumi.Output[str]:
         """
-        The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL:  projects/project/global/gateways/default-internet-gateway
+        The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway
         """
         return pulumi.get(self, "next_hop_gateway")
 
@@ -489,10 +507,7 @@ class Route(pulumi.CustomResource):
     @pulumi.getter(name="nextHopIlb")
     def next_hop_ilb(self) -> pulumi.Output[str]:
         """
-        The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs:  
-        - 10.128.0.56 
-        - https://www.googleapis.com/compute/v1/projects/project/regions/region/forwardingRules/forwardingRule 
-        - regions/region/forwardingRules/forwardingRule
+        The URL to a forwarding rule of type loadBalancingScheme=INTERNAL that should handle matching packets or the IP address of the forwarding Rule. For example, the following are all valid URLs: - 10.128.0.56 - https://www.googleapis.com/compute/v1/projects/project/regions/region /forwardingRules/forwardingRule - regions/region/forwardingRules/forwardingRule 
         """
         return pulumi.get(self, "next_hop_ilb")
 
@@ -500,8 +515,7 @@ class Route(pulumi.CustomResource):
     @pulumi.getter(name="nextHopInstance")
     def next_hop_instance(self) -> pulumi.Output[str]:
         """
-        The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example:
-        https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
+        The URL to an instance that should handle matching packets. You can specify this as a full or partial URL. For example: https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/
         """
         return pulumi.get(self, "next_hop_instance")
 

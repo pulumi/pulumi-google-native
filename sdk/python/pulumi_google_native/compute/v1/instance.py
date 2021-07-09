@@ -33,7 +33,6 @@ class InstanceArgs:
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]]] = None,
-                 post_key_revocation_action_type: Optional[pulumi.Input['InstancePostKeyRevocationActionType']] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input['ReservationAffinityArgs']] = None,
@@ -47,7 +46,7 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input['AdvancedMachineFeaturesArgs'] advanced_machine_features: Controls for advanced machine-related behavior features.
-        :param pulumi.Input[bool] can_ip_forward: Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding.
+        :param pulumi.Input[bool] can_ip_forward: Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
         :param pulumi.Input[bool] deletion_protection: Whether the resource should be protected against deletion.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]] disks: Array of disks associated with this instance. Persistent disks must be created before you can assign them.
@@ -55,29 +54,16 @@ class InstanceArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]] guest_accelerators: A list of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
-        :param pulumi.Input[str] machine_type: Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type:
-               zones/us-central1-f/machineTypes/n1-standard-1
-               
-               
-               To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB):
-               zones/zone/machineTypes/custom-CPUS-MEMORY
-               
-               
-               For example: zones/us-central1-f/machineTypes/custom-4-5120 
-               
-               For a full list of restrictions, read the Specifications for custom machine types.
+        :param pulumi.Input[str] machine_type: Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
         :param pulumi.Input['MetadataArgs'] metadata: The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]] network_interfaces: An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
-        :param pulumi.Input['InstancePostKeyRevocationActionType'] post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
-        :param pulumi.Input['InstancePrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
+        :param pulumi.Input['InstancePrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
         :param pulumi.Input['ReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this instance.
         :param pulumi.Input['SchedulingArgs'] scheduling: Sets the scheduling options for this instance.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]] service_accounts: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported.
-               
-               Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]] service_accounts: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
         :param pulumi.Input['TagsArgs'] tags: Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
         """
         pulumi.set(__self__, "project", project)
@@ -112,8 +98,6 @@ class InstanceArgs:
             pulumi.set(__self__, "name", name)
         if network_interfaces is not None:
             pulumi.set(__self__, "network_interfaces", network_interfaces)
-        if post_key_revocation_action_type is not None:
-            pulumi.set(__self__, "post_key_revocation_action_type", post_key_revocation_action_type)
         if private_ipv6_google_access is not None:
             pulumi.set(__self__, "private_ipv6_google_access", private_ipv6_google_access)
         if request_id is not None:
@@ -169,7 +153,7 @@ class InstanceArgs:
     @pulumi.getter(name="canIpForward")
     def can_ip_forward(self) -> Optional[pulumi.Input[bool]]:
         """
-        Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding.
+        Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
         """
         return pulumi.get(self, "can_ip_forward")
 
@@ -274,17 +258,7 @@ class InstanceArgs:
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type:
-        zones/us-central1-f/machineTypes/n1-standard-1
-
-
-        To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB):
-        zones/zone/machineTypes/custom-CPUS-MEMORY
-
-
-        For example: zones/us-central1-f/machineTypes/custom-4-5120 
-
-        For a full list of restrictions, read the Specifications for custom machine types.
+        Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
         """
         return pulumi.get(self, "machine_type")
 
@@ -341,22 +315,10 @@ class InstanceArgs:
         pulumi.set(self, "network_interfaces", value)
 
     @property
-    @pulumi.getter(name="postKeyRevocationActionType")
-    def post_key_revocation_action_type(self) -> Optional[pulumi.Input['InstancePostKeyRevocationActionType']]:
-        """
-        PostKeyRevocationActionType of the instance.
-        """
-        return pulumi.get(self, "post_key_revocation_action_type")
-
-    @post_key_revocation_action_type.setter
-    def post_key_revocation_action_type(self, value: Optional[pulumi.Input['InstancePostKeyRevocationActionType']]):
-        pulumi.set(self, "post_key_revocation_action_type", value)
-
-    @property
     @pulumi.getter(name="privateIpv6GoogleAccess")
     def private_ipv6_google_access(self) -> Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']]:
         """
-        The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
+        The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
         """
         return pulumi.get(self, "private_ipv6_google_access")
 
@@ -413,9 +375,7 @@ class InstanceArgs:
     @pulumi.getter(name="serviceAccounts")
     def service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]]]:
         """
-        A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported.
-
-        Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+        A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
         """
         return pulumi.get(self, "service_accounts")
 
@@ -483,7 +443,6 @@ class Instance(pulumi.CustomResource):
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkInterfaceArgs']]]]] = None,
-                 post_key_revocation_action_type: Optional[pulumi.Input['InstancePostKeyRevocationActionType']] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -503,7 +462,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AdvancedMachineFeaturesArgs']] advanced_machine_features: Controls for advanced machine-related behavior features.
-        :param pulumi.Input[bool] can_ip_forward: Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding.
+        :param pulumi.Input[bool] can_ip_forward: Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
         :param pulumi.Input[bool] deletion_protection: Whether the resource should be protected against deletion.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedDiskArgs']]]] disks: Array of disks associated with this instance. Persistent disks must be created before you can assign them.
@@ -511,29 +470,16 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]] guest_accelerators: A list of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
-        :param pulumi.Input[str] machine_type: Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type:
-               zones/us-central1-f/machineTypes/n1-standard-1
-               
-               
-               To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB):
-               zones/zone/machineTypes/custom-CPUS-MEMORY
-               
-               
-               For example: zones/us-central1-f/machineTypes/custom-4-5120 
-               
-               For a full list of restrictions, read the Specifications for custom machine types.
+        :param pulumi.Input[str] machine_type: Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
         :param pulumi.Input[pulumi.InputType['MetadataArgs']] metadata: The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkInterfaceArgs']]]] network_interfaces: An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
-        :param pulumi.Input['InstancePostKeyRevocationActionType'] post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
-        :param pulumi.Input['InstancePrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
+        :param pulumi.Input['InstancePrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
         :param pulumi.Input[pulumi.InputType['ReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this instance.
         :param pulumi.Input[pulumi.InputType['SchedulingArgs']] scheduling: Sets the scheduling options for this instance.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]]] service_accounts: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported.
-               
-               Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]]] service_accounts: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
         :param pulumi.Input[pulumi.InputType['TagsArgs']] tags: Tags to apply to this instance. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during instance creation. The tags can be later modified by the setTags method. Each tag within the list must comply with RFC1035. Multiple tags can be specified via the 'tags.items' field.
         """
         ...
@@ -575,7 +521,6 @@ class Instance(pulumi.CustomResource):
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interfaces: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkInterfaceArgs']]]]] = None,
-                 post_key_revocation_action_type: Optional[pulumi.Input['InstancePostKeyRevocationActionType']] = None,
                  private_ipv6_google_access: Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -615,7 +560,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["min_cpu_platform"] = min_cpu_platform
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interfaces"] = network_interfaces
-            __props__.__dict__["post_key_revocation_action_type"] = post_key_revocation_action_type
             __props__.__dict__["private_ipv6_google_access"] = private_ipv6_google_access
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
@@ -690,7 +634,6 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["min_cpu_platform"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["network_interfaces"] = None
-        __props__.__dict__["post_key_revocation_action_type"] = None
         __props__.__dict__["private_ipv6_google_access"] = None
         __props__.__dict__["reservation_affinity"] = None
         __props__.__dict__["resource_policies"] = None
@@ -719,7 +662,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="canIpForward")
     def can_ip_forward(self) -> pulumi.Output[bool]:
         """
-        Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding.
+        Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
         """
         return pulumi.get(self, "can_ip_forward")
 
@@ -780,9 +723,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def fingerprint(self) -> pulumi.Output[str]:
         """
-        Specifies a fingerprint for this resource, which is essentially a hash of the instance's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update the instance. You must always provide an up-to-date fingerprint hash in order to update the instance.
-
-        To see the latest fingerprint, make get() request to the instance.
+        Specifies a fingerprint for this resource, which is essentially a hash of the instance's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update the instance. You must always provide an up-to-date fingerprint hash in order to update the instance. To see the latest fingerprint, make get() request to the instance.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -814,9 +755,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> pulumi.Output[str]:
         """
-        A fingerprint for this request, which is essentially a hash of the label's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels.
-
-        To see the latest fingerprint, make get() request to the instance.
+        A fingerprint for this request, which is essentially a hash of the label's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels. To see the latest fingerprint, make get() request to the instance.
         """
         return pulumi.get(self, "label_fingerprint")
 
@@ -856,17 +795,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="machineType")
     def machine_type(self) -> pulumi.Output[str]:
         """
-        Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type:
-        zones/us-central1-f/machineTypes/n1-standard-1
-
-
-        To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB):
-        zones/zone/machineTypes/custom-CPUS-MEMORY
-
-
-        For example: zones/us-central1-f/machineTypes/custom-4-5120 
-
-        For a full list of restrictions, read the Specifications for custom machine types.
+        Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
         """
         return pulumi.get(self, "machine_type")
 
@@ -903,18 +832,10 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "network_interfaces")
 
     @property
-    @pulumi.getter(name="postKeyRevocationActionType")
-    def post_key_revocation_action_type(self) -> pulumi.Output[str]:
-        """
-        PostKeyRevocationActionType of the instance.
-        """
-        return pulumi.get(self, "post_key_revocation_action_type")
-
-    @property
     @pulumi.getter(name="privateIpv6GoogleAccess")
     def private_ipv6_google_access(self) -> pulumi.Output[str]:
         """
-        The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
+        The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
         """
         return pulumi.get(self, "private_ipv6_google_access")
 
@@ -962,9 +883,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="serviceAccounts")
     def service_accounts(self) -> pulumi.Output[Sequence['outputs.ServiceAccountResponse']]:
         """
-        A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported.
-
-        Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+        A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
         """
         return pulumi.get(self, "service_accounts")
 
@@ -990,7 +909,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
+        The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see Instance life cycle.
         """
         return pulumi.get(self, "status")
 

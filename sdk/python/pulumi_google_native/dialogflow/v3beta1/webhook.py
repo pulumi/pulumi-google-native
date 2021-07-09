@@ -22,6 +22,7 @@ class WebhookArgs:
                  disabled: Optional[pulumi.Input[bool]] = None,
                  generic_web_service: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 service_directory: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigArgs']] = None,
                  timeout: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Webhook resource.
@@ -29,6 +30,7 @@ class WebhookArgs:
         :param pulumi.Input[bool] disabled: Indicates whether the webhook is disabled.
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceArgs'] generic_web_service: Configuration for a generic web service.
         :param pulumi.Input[str] name: The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
+        :param pulumi.Input['GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigArgs'] service_directory: Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
         :param pulumi.Input[str] timeout: Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
         """
         pulumi.set(__self__, "agent_id", agent_id)
@@ -41,6 +43,8 @@ class WebhookArgs:
             pulumi.set(__self__, "generic_web_service", generic_web_service)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if service_directory is not None:
+            pulumi.set(__self__, "service_directory", service_directory)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
 
@@ -120,6 +124,18 @@ class WebhookArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="serviceDirectory")
+    def service_directory(self) -> Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigArgs']]:
+        """
+        Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+        """
+        return pulumi.get(self, "service_directory")
+
+    @service_directory.setter
+    def service_directory(self, value: Optional[pulumi.Input['GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigArgs']]):
+        pulumi.set(self, "service_directory", value)
+
+    @property
     @pulumi.getter
     def timeout(self) -> Optional[pulumi.Input[str]]:
         """
@@ -144,6 +160,7 @@ class Webhook(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 service_directory: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigArgs']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -155,6 +172,7 @@ class Webhook(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The human-readable name of the webhook, unique within the agent.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceArgs']] generic_web_service: Configuration for a generic web service.
         :param pulumi.Input[str] name: The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigArgs']] service_directory: Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
         :param pulumi.Input[str] timeout: Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
         """
         ...
@@ -188,6 +206,7 @@ class Webhook(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 service_directory: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigArgs']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -216,6 +235,7 @@ class Webhook(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["service_directory"] = service_directory
             __props__.__dict__["timeout"] = timeout
         super(Webhook, __self__).__init__(
             'google-native:dialogflow/v3beta1:Webhook',
@@ -243,6 +263,7 @@ class Webhook(pulumi.CustomResource):
         __props__.__dict__["display_name"] = None
         __props__.__dict__["generic_web_service"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["service_directory"] = None
         __props__.__dict__["timeout"] = None
         return Webhook(resource_name, opts=opts, __props__=__props__)
 
@@ -277,6 +298,14 @@ class Webhook(pulumi.CustomResource):
         The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="serviceDirectory")
+    def service_directory(self) -> pulumi.Output['outputs.GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse']:
+        """
+        Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+        """
+        return pulumi.get(self, "service_directory")
 
     @property
     @pulumi.getter

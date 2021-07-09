@@ -30,7 +30,7 @@ class BudgetArgs:
         :param pulumi.Input[str] display_name: User data for display name in UI. The name must be less than or equal to 60 characters.
         :param pulumi.Input[str] etag: Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
         :param pulumi.Input['GoogleCloudBillingBudgetsV1NotificationsRuleArgs'] notifications_rule: Optional. Rules to apply to notifications sent based on budget spend and thresholds.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudBillingBudgetsV1ThresholdRuleArgs']]] threshold_rules: Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudBillingBudgetsV1ThresholdRuleArgs']]] threshold_rules: Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
         """
         pulumi.set(__self__, "amount", amount)
         pulumi.set(__self__, "billing_account_id", billing_account_id)
@@ -118,7 +118,7 @@ class BudgetArgs:
     @pulumi.getter(name="thresholdRules")
     def threshold_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudBillingBudgetsV1ThresholdRuleArgs']]]]:
         """
-        Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
+        Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
         """
         return pulumi.get(self, "threshold_rules")
 
@@ -150,7 +150,7 @@ class Budget(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: User data for display name in UI. The name must be less than or equal to 60 characters.
         :param pulumi.Input[str] etag: Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
         :param pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1NotificationsRuleArgs']] notifications_rule: Optional. Rules to apply to notifications sent based on budget spend and thresholds.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1ThresholdRuleArgs']]]] threshold_rules: Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudBillingBudgetsV1ThresholdRuleArgs']]]] threshold_rules: Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
         """
         ...
     @overload
@@ -290,7 +290,7 @@ class Budget(pulumi.CustomResource):
     @pulumi.getter(name="thresholdRules")
     def threshold_rules(self) -> pulumi.Output[Sequence['outputs.GoogleCloudBillingBudgetsV1ThresholdRuleResponse']]:
         """
-        Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
+        Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
         """
         return pulumi.get(self, "threshold_rules")
 

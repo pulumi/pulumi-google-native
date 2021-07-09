@@ -16,7 +16,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetHubResult:
-    def __init__(__self__, create_time=None, description=None, labels=None, name=None, spokes=None, state=None, unique_id=None, update_time=None):
+    def __init__(__self__, create_time=None, description=None, labels=None, name=None, state=None, unique_id=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -29,9 +29,6 @@ class GetHubResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
-        if spokes and not isinstance(spokes, list):
-            raise TypeError("Expected argument 'spokes' to be a list")
-        pulumi.set(__self__, "spokes", spokes)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -76,14 +73,6 @@ class GetHubResult:
 
     @property
     @pulumi.getter
-    def spokes(self) -> Sequence[str]:
-        """
-        A list of the URIs of all attached spokes
-        """
-        return pulumi.get(self, "spokes")
-
-    @property
-    @pulumi.getter
     def state(self) -> str:
         """
         The current lifecycle state of this Hub.
@@ -117,7 +106,6 @@ class AwaitableGetHubResult(GetHubResult):
             description=self.description,
             labels=self.labels,
             name=self.name,
-            spokes=self.spokes,
             state=self.state,
             unique_id=self.unique_id,
             update_time=self.update_time)
@@ -143,7 +131,6 @@ def get_hub(hub_id: Optional[str] = None,
         description=__ret__.description,
         labels=__ret__.labels,
         name=__ret__.name,
-        spokes=__ret__.spokes,
         state=__ret__.state,
         unique_id=__ret__.unique_id,
         update_time=__ret__.update_time)

@@ -45,6 +45,7 @@ class ClusterArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['NetworkConfigArgs']] = None,
                  network_policy: Optional[pulumi.Input['NetworkPolicyArgs']] = None,
+                 node_pool_defaults: Optional[pulumi.Input['NodePoolDefaultsArgs']] = None,
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolArgs']]]] = None,
                  notification_config: Optional[pulumi.Input['NotificationConfigArgs']] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -88,6 +89,7 @@ class ClusterArgs:
         :param pulumi.Input[str] network: The name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. If left unspecified, the `default` network will be used. On output this shows the network ID instead of the name.
         :param pulumi.Input['NetworkConfigArgs'] network_config: Configuration for cluster networking.
         :param pulumi.Input['NetworkPolicyArgs'] network_policy: Configuration options for the NetworkPolicy feature.
+        :param pulumi.Input['NodePoolDefaultsArgs'] node_pool_defaults: Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
         :param pulumi.Input[Sequence[pulumi.Input['NodePoolArgs']]] node_pools: The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
         :param pulumi.Input['NotificationConfigArgs'] notification_config: Notification configuration of the cluster.
         :param pulumi.Input[str] parent: The parent (project and location) where the cluster will be created. Specified in the format `projects/*/locations/*`.
@@ -159,6 +161,8 @@ class ClusterArgs:
             pulumi.set(__self__, "network_config", network_config)
         if network_policy is not None:
             pulumi.set(__self__, "network_policy", network_policy)
+        if node_pool_defaults is not None:
+            pulumi.set(__self__, "node_pool_defaults", node_pool_defaults)
         if node_pools is not None:
             pulumi.set(__self__, "node_pools", node_pools)
         if notification_config is not None:
@@ -531,6 +535,18 @@ class ClusterArgs:
         pulumi.set(self, "network_policy", value)
 
     @property
+    @pulumi.getter(name="nodePoolDefaults")
+    def node_pool_defaults(self) -> Optional[pulumi.Input['NodePoolDefaultsArgs']]:
+        """
+        Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
+        """
+        return pulumi.get(self, "node_pool_defaults")
+
+    @node_pool_defaults.setter
+    def node_pool_defaults(self, value: Optional[pulumi.Input['NodePoolDefaultsArgs']]):
+        pulumi.set(self, "node_pool_defaults", value)
+
+    @property
     @pulumi.getter(name="nodePools")
     def node_pools(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodePoolArgs']]]]:
         """
@@ -732,6 +748,7 @@ class Cluster(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
                  network_policy: Optional[pulumi.Input[pulumi.InputType['NetworkPolicyArgs']]] = None,
+                 node_pool_defaults: Optional[pulumi.Input[pulumi.InputType['NodePoolDefaultsArgs']]] = None,
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolArgs']]]]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -780,6 +797,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] network: The name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. If left unspecified, the `default` network will be used. On output this shows the network ID instead of the name.
         :param pulumi.Input[pulumi.InputType['NetworkConfigArgs']] network_config: Configuration for cluster networking.
         :param pulumi.Input[pulumi.InputType['NetworkPolicyArgs']] network_policy: Configuration options for the NetworkPolicy feature.
+        :param pulumi.Input[pulumi.InputType['NodePoolDefaultsArgs']] node_pool_defaults: Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolArgs']]]] node_pools: The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
         :param pulumi.Input[pulumi.InputType['NotificationConfigArgs']] notification_config: Notification configuration of the cluster.
         :param pulumi.Input[str] parent: The parent (project and location) where the cluster will be created. Specified in the format `projects/*/locations/*`.
@@ -847,6 +865,7 @@ class Cluster(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['NetworkConfigArgs']]] = None,
                  network_policy: Optional[pulumi.Input[pulumi.InputType['NetworkPolicyArgs']]] = None,
+                 node_pool_defaults: Optional[pulumi.Input[pulumi.InputType['NodePoolDefaultsArgs']]] = None,
                  node_pools: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NodePoolArgs']]]]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
@@ -904,6 +923,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["network"] = network
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["network_policy"] = network_policy
+            __props__.__dict__["node_pool_defaults"] = node_pool_defaults
             __props__.__dict__["node_pools"] = node_pools
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["parent"] = parent
@@ -989,6 +1009,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["network_config"] = None
         __props__.__dict__["network_policy"] = None
         __props__.__dict__["node_ipv4_cidr_size"] = None
+        __props__.__dict__["node_pool_defaults"] = None
         __props__.__dict__["node_pools"] = None
         __props__.__dict__["notification_config"] = None
         __props__.__dict__["pod_security_policy_config"] = None
@@ -1287,6 +1308,14 @@ class Cluster(pulumi.CustomResource):
         [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
         """
         return pulumi.get(self, "node_ipv4_cidr_size")
+
+    @property
+    @pulumi.getter(name="nodePoolDefaults")
+    def node_pool_defaults(self) -> pulumi.Output['outputs.NodePoolDefaultsResponse']:
+        """
+        Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
+        """
+        return pulumi.get(self, "node_pool_defaults")
 
     @property
     @pulumi.getter(name="nodePools")

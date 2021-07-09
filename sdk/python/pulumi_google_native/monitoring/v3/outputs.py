@@ -12,6 +12,7 @@ from ._enums import *
 
 __all__ = [
     'AggregationResponse',
+    'AlertStrategyResponse',
     'AppEngineResponse',
     'AvailabilityCriteriaResponse',
     'BasicAuthenticationResponse',
@@ -29,6 +30,7 @@ __all__ = [
     'IstioCanonicalServiceResponse',
     'LabelDescriptorResponse',
     'LatencyCriteriaResponse',
+    'LogMatchResponse',
     'MeshIstioResponse',
     'MetricAbsenceResponse',
     'MetricDescriptorMetadataResponse',
@@ -37,6 +39,7 @@ __all__ = [
     'MonitoredResourceResponse',
     'MonitoringQueryLanguageConditionResponse',
     'MutationRecordResponse',
+    'NotificationRateLimitResponse',
     'PerformanceThresholdResponse',
     'RequestBasedSliResponse',
     'ResourceGroupResponse',
@@ -125,6 +128,45 @@ class AggregationResponse(dict):
         An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
         """
         return pulumi.get(self, "per_series_aligner")
+
+
+@pulumi.output_type
+class AlertStrategyResponse(dict):
+    """
+    Control over how the notification channels in notification_channels are notified when this alert fires.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "notificationRateLimit":
+            suggest = "notification_rate_limit"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlertStrategyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlertStrategyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlertStrategyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 notification_rate_limit: 'outputs.NotificationRateLimitResponse'):
+        """
+        Control over how the notification channels in notification_channels are notified when this alert fires.
+        :param 'NotificationRateLimitResponse' notification_rate_limit: Required for alert policies with a LogMatch condition.Providing this for alert policies that are not log-based is unimplemented.
+        """
+        pulumi.set(__self__, "notification_rate_limit", notification_rate_limit)
+
+    @property
+    @pulumi.getter(name="notificationRateLimit")
+    def notification_rate_limit(self) -> 'outputs.NotificationRateLimitResponse':
+        """
+        Required for alert policies with a LogMatch condition.Providing this for alert policies that are not log-based is unimplemented.
+        """
+        return pulumi.get(self, "notification_rate_limit")
 
 
 @pulumi.output_type
@@ -385,6 +427,8 @@ class ConditionResponse(dict):
         suggest = None
         if key == "conditionAbsent":
             suggest = "condition_absent"
+        elif key == "conditionMatchedLog":
+            suggest = "condition_matched_log"
         elif key == "conditionMonitoringQueryLanguage":
             suggest = "condition_monitoring_query_language"
         elif key == "conditionThreshold":
@@ -405,6 +449,7 @@ class ConditionResponse(dict):
 
     def __init__(__self__, *,
                  condition_absent: 'outputs.MetricAbsenceResponse',
+                 condition_matched_log: 'outputs.LogMatchResponse',
                  condition_monitoring_query_language: 'outputs.MonitoringQueryLanguageConditionResponse',
                  condition_threshold: 'outputs.MetricThresholdResponse',
                  display_name: str,
@@ -412,12 +457,14 @@ class ConditionResponse(dict):
         """
         A condition is a true/false test that determines when an alerting policy should open an incident. If a condition evaluates to true, it signifies that something is wrong.
         :param 'MetricAbsenceResponse' condition_absent: A condition that checks that a time series continues to receive new data points.
+        :param 'LogMatchResponse' condition_matched_log: A condition that checks for log messages matching given constraints. If set, no other conditions can be present.
         :param 'MonitoringQueryLanguageConditionResponse' condition_monitoring_query_language: A condition that uses the Monitoring Query Language to define alerts.
         :param 'MetricThresholdResponse' condition_threshold: A condition that compares a time series against a threshold.
         :param str display_name: A short name or phrase used to identify the condition in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple conditions in the same policy.
         :param str name: Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Stackdriver Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Stackdriver Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted.
         """
         pulumi.set(__self__, "condition_absent", condition_absent)
+        pulumi.set(__self__, "condition_matched_log", condition_matched_log)
         pulumi.set(__self__, "condition_monitoring_query_language", condition_monitoring_query_language)
         pulumi.set(__self__, "condition_threshold", condition_threshold)
         pulumi.set(__self__, "display_name", display_name)
@@ -430,6 +477,14 @@ class ConditionResponse(dict):
         A condition that checks that a time series continues to receive new data points.
         """
         return pulumi.get(self, "condition_absent")
+
+    @property
+    @pulumi.getter(name="conditionMatchedLog")
+    def condition_matched_log(self) -> 'outputs.LogMatchResponse':
+        """
+        A condition that checks for log messages matching given constraints. If set, no other conditions can be present.
+        """
+        return pulumi.get(self, "condition_matched_log")
 
     @property
     @pulumi.getter(name="conditionMonitoringQueryLanguage")
@@ -1037,6 +1092,56 @@ class LatencyCriteriaResponse(dict):
 
 
 @pulumi.output_type
+class LogMatchResponse(dict):
+    """
+    A condition type that checks whether a log message from any project monitored by the alert policy’s workspace satisfies the given filter.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "labelExtractors":
+            suggest = "label_extractors"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LogMatchResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LogMatchResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LogMatchResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 filter: str,
+                 label_extractors: Mapping[str, str]):
+        """
+        A condition type that checks whether a log message from any project monitored by the alert policy’s workspace satisfies the given filter.
+        :param str filter: A logs-based filter. See Advanced Logs Queries for how this filter should be constructed.
+        :param Mapping[str, str] label_extractors: Optional. A map from a label key to an extractor expression, which is used to extract the value for this label key. Each entry in this map is a specification for how data should be extracted from log entries that match filter. Each combination of extracted values is treated as a separate rule for the purposes of triggering notifications. Label keys and corresponding values can be used in notifications generated by this condition.Please see the documentation on logs-based metric valueExtractors for syntax and examples.
+        """
+        pulumi.set(__self__, "filter", filter)
+        pulumi.set(__self__, "label_extractors", label_extractors)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> str:
+        """
+        A logs-based filter. See Advanced Logs Queries for how this filter should be constructed.
+        """
+        return pulumi.get(self, "filter")
+
+    @property
+    @pulumi.getter(name="labelExtractors")
+    def label_extractors(self) -> Mapping[str, str]:
+        """
+        Optional. A map from a label key to an extractor expression, which is used to extract the value for this label key. Each entry in this map is a specification for how data should be extracted from log entries that match filter. Each combination of extracted values is treated as a separate rule for the purposes of triggering notifications. Label keys and corresponding values can be used in notifications generated by this condition.Please see the documentation on logs-based metric valueExtractors for syntax and examples.
+        """
+        return pulumi.get(self, "label_extractors")
+
+
+@pulumi.output_type
 class MeshIstioResponse(dict):
     """
     Istio service scoped to an Istio mesh. Anthos clusters running ASM < 1.6.8 will have their services ingested as this type.
@@ -1505,6 +1610,28 @@ class MutationRecordResponse(dict):
         The email address of the user making the change.
         """
         return pulumi.get(self, "mutated_by")
+
+
+@pulumi.output_type
+class NotificationRateLimitResponse(dict):
+    """
+    Control over the rate of notifications sent to this alert policy's notification channels.
+    """
+    def __init__(__self__, *,
+                 period: str):
+        """
+        Control over the rate of notifications sent to this alert policy's notification channels.
+        :param str period: Not more than one notification per period.
+        """
+        pulumi.set(__self__, "period", period)
+
+    @property
+    @pulumi.getter
+    def period(self) -> str:
+        """
+        Not more than one notification per period.
+        """
+        return pulumi.get(self, "period")
 
 
 @pulumi.output_type

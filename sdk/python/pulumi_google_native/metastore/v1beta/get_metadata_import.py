@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetMetadataImportResult:
-    def __init__(__self__, create_time=None, database_dump=None, description=None, name=None, state=None, update_time=None):
+    def __init__(__self__, create_time=None, database_dump=None, description=None, end_time=None, name=None, state=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -27,6 +27,9 @@ class GetMetadataImportResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if end_time and not isinstance(end_time, str):
+            raise TypeError("Expected argument 'end_time' to be a str")
+        pulumi.set(__self__, "end_time", end_time)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -41,7 +44,7 @@ class GetMetadataImportResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        The time when the metadata import was created.
+        The time when the metadata import was started.
         """
         return pulumi.get(self, "create_time")
 
@@ -60,6 +63,14 @@ class GetMetadataImportResult:
         The description of the metadata import.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        The time when the metadata import finished.
+        """
+        return pulumi.get(self, "end_time")
 
     @property
     @pulumi.getter
@@ -95,6 +106,7 @@ class AwaitableGetMetadataImportResult(GetMetadataImportResult):
             create_time=self.create_time,
             database_dump=self.database_dump,
             description=self.description,
+            end_time=self.end_time,
             name=self.name,
             state=self.state,
             update_time=self.update_time)
@@ -123,6 +135,7 @@ def get_metadata_import(location: Optional[str] = None,
         create_time=__ret__.create_time,
         database_dump=__ret__.database_dump,
         description=__ret__.description,
+        end_time=__ret__.end_time,
         name=__ret__.name,
         state=__ret__.state,
         update_time=__ret__.update_time)

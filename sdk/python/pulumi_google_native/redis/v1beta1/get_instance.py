@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, alternative_location_id=None, auth_enabled=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, display_name=None, host=None, labels=None, location=None, memory_size_gb=None, name=None, persistence_iam_identity=None, port=None, redis_configs=None, redis_version=None, reserved_ip_range=None, server_ca_certs=None, state=None, status_message=None, tier=None, transit_encryption_mode=None):
+    def __init__(__self__, alternative_location_id=None, auth_enabled=None, authorized_network=None, connect_mode=None, create_time=None, current_location_id=None, display_name=None, host=None, labels=None, location=None, maintenance_policy=None, maintenance_schedule=None, memory_size_gb=None, name=None, persistence_iam_identity=None, port=None, redis_configs=None, redis_version=None, reserved_ip_range=None, server_ca_certs=None, state=None, status_message=None, tier=None, transit_encryption_mode=None):
         if alternative_location_id and not isinstance(alternative_location_id, str):
             raise TypeError("Expected argument 'alternative_location_id' to be a str")
         pulumi.set(__self__, "alternative_location_id", alternative_location_id)
@@ -48,6 +48,12 @@ class GetInstanceResult:
         if location and not isinstance(location, str):
             raise TypeError("Expected argument 'location' to be a str")
         pulumi.set(__self__, "location", location)
+        if maintenance_policy and not isinstance(maintenance_policy, dict):
+            raise TypeError("Expected argument 'maintenance_policy' to be a dict")
+        pulumi.set(__self__, "maintenance_policy", maintenance_policy)
+        if maintenance_schedule and not isinstance(maintenance_schedule, dict):
+            raise TypeError("Expected argument 'maintenance_schedule' to be a dict")
+        pulumi.set(__self__, "maintenance_schedule", maintenance_schedule)
         if memory_size_gb and not isinstance(memory_size_gb, int):
             raise TypeError("Expected argument 'memory_size_gb' to be a int")
         pulumi.set(__self__, "memory_size_gb", memory_size_gb)
@@ -166,6 +172,22 @@ class GetInstanceResult:
         return pulumi.get(self, "location")
 
     @property
+    @pulumi.getter(name="maintenancePolicy")
+    def maintenance_policy(self) -> 'outputs.MaintenancePolicyResponse':
+        """
+        Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
+        """
+        return pulumi.get(self, "maintenance_policy")
+
+    @property
+    @pulumi.getter(name="maintenanceSchedule")
+    def maintenance_schedule(self) -> 'outputs.MaintenanceScheduleResponse':
+        """
+        Date and time of upcoming maintenance events which have been scheduled.
+        """
+        return pulumi.get(self, "maintenance_schedule")
+
+    @property
     @pulumi.getter(name="memorySizeGb")
     def memory_size_gb(self) -> int:
         """
@@ -209,7 +231,7 @@ class GetInstanceResult:
     @pulumi.getter(name="redisVersion")
     def redis_version(self) -> str:
         """
-        Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility
+        Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility
         """
         return pulumi.get(self, "redis_version")
 
@@ -278,6 +300,8 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             host=self.host,
             labels=self.labels,
             location=self.location,
+            maintenance_policy=self.maintenance_policy,
+            maintenance_schedule=self.maintenance_schedule,
             memory_size_gb=self.memory_size_gb,
             name=self.name,
             persistence_iam_identity=self.persistence_iam_identity,
@@ -320,6 +344,8 @@ def get_instance(instance_id: Optional[str] = None,
         host=__ret__.host,
         labels=__ret__.labels,
         location=__ret__.location,
+        maintenance_policy=__ret__.maintenance_policy,
+        maintenance_schedule=__ret__.maintenance_schedule,
         memory_size_gb=__ret__.memory_size_gb,
         name=__ret__.name,
         persistence_iam_identity=__ret__.persistence_iam_identity,

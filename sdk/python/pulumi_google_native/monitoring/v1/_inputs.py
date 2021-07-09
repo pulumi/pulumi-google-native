@@ -11,6 +11,7 @@ from ._enums import *
 
 __all__ = [
     'AggregationArgs',
+    'AlertChartArgs',
     'AxisArgs',
     'ChartOptionsArgs',
     'ColumnArgs',
@@ -106,6 +107,29 @@ class AggregationArgs:
     @per_series_aligner.setter
     def per_series_aligner(self, value: Optional[pulumi.Input['AggregationPerSeriesAligner']]):
         pulumi.set(self, "per_series_aligner", value)
+
+
+@pulumi.input_type
+class AlertChartArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str]):
+        """
+        A chart that displays alert policy data.
+        :param pulumi.Input[str] name: The resource name of the alert policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] 
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The resource name of the alert policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] 
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
@@ -1123,6 +1147,7 @@ class TimeSeriesQueryArgs:
 @pulumi.input_type
 class WidgetArgs:
     def __init__(__self__, *,
+                 alert_chart: Optional[pulumi.Input['AlertChartArgs']] = None,
                  blank: Optional[pulumi.Input['EmptyArgs']] = None,
                  scorecard: Optional[pulumi.Input['ScorecardArgs']] = None,
                  text: Optional[pulumi.Input['TextArgs']] = None,
@@ -1130,12 +1155,15 @@ class WidgetArgs:
                  xy_chart: Optional[pulumi.Input['XyChartArgs']] = None):
         """
         Widget contains a single dashboard component and configuration of how to present the component in the dashboard.
+        :param pulumi.Input['AlertChartArgs'] alert_chart: A chart of alert policy data.
         :param pulumi.Input['EmptyArgs'] blank: A blank space.
         :param pulumi.Input['ScorecardArgs'] scorecard: A scorecard summarizing time series data.
         :param pulumi.Input['TextArgs'] text: A raw string or markdown displaying textual content.
         :param pulumi.Input[str] title: Optional. The title of the widget.
         :param pulumi.Input['XyChartArgs'] xy_chart: A chart of time series data.
         """
+        if alert_chart is not None:
+            pulumi.set(__self__, "alert_chart", alert_chart)
         if blank is not None:
             pulumi.set(__self__, "blank", blank)
         if scorecard is not None:
@@ -1146,6 +1174,18 @@ class WidgetArgs:
             pulumi.set(__self__, "title", title)
         if xy_chart is not None:
             pulumi.set(__self__, "xy_chart", xy_chart)
+
+    @property
+    @pulumi.getter(name="alertChart")
+    def alert_chart(self) -> Optional[pulumi.Input['AlertChartArgs']]:
+        """
+        A chart of alert policy data.
+        """
+        return pulumi.get(self, "alert_chart")
+
+    @alert_chart.setter
+    def alert_chart(self, value: Optional[pulumi.Input['AlertChartArgs']]):
+        pulumi.set(self, "alert_chart", value)
 
     @property
     @pulumi.getter

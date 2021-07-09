@@ -110,7 +110,7 @@ class GetNodeGroupResult:
     @pulumi.getter(name="maintenancePolicy")
     def maintenance_policy(self) -> str:
         """
-        Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+        Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
         """
         return pulumi.get(self, "maintenance_policy")
 

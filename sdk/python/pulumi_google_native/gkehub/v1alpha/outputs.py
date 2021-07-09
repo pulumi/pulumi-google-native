@@ -176,7 +176,7 @@ class BindingResponse(dict):
 @pulumi.output_type
 class CloudAuditLoggingFeatureSpecResponse(dict):
     """
-    Spec for Audit Logging Allowlisting.
+    **Cloud Audit Logging**: Spec for Audit Logging Allowlisting.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -198,7 +198,7 @@ class CloudAuditLoggingFeatureSpecResponse(dict):
     def __init__(__self__, *,
                  allowlisted_service_accounts: Sequence[str]):
         """
-        Spec for Audit Logging Allowlisting.
+        **Cloud Audit Logging**: Spec for Audit Logging Allowlisting.
         :param Sequence[str] allowlisted_service_accounts: Service account that should be allowlisted to send the audit logs; eg cloudauditlogging@gcp-project.iam.gserviceaccount.com. These accounts must already exist, but do not need to have any permissions granted to them. The customer's entitlements will be checked prior to allowlisting (i.e. the customer must be an Anthos customer.)
         """
         pulumi.set(__self__, "allowlisted_service_accounts", allowlisted_service_accounts)
@@ -419,7 +419,7 @@ class FeatureStateResponse(dict):
 @pulumi.output_type
 class MultiClusterIngressFeatureSpecResponse(dict):
     """
-    FeatureSpec contains the input for the MultiClusterIngress feature.
+    **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -439,12 +439,23 @@ class MultiClusterIngressFeatureSpecResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 billing: str,
                  config_membership: str):
         """
-        FeatureSpec contains the input for the MultiClusterIngress feature.
+        **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
+        :param str billing: Customer's billing structure
         :param str config_membership: Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
         """
+        pulumi.set(__self__, "billing", billing)
         pulumi.set(__self__, "config_membership", config_membership)
+
+    @property
+    @pulumi.getter
+    def billing(self) -> str:
+        """
+        Customer's billing structure
+        """
+        return pulumi.get(self, "billing")
 
     @property
     @pulumi.getter(name="configMembership")
@@ -593,7 +604,7 @@ class ServiceMeshAnalysisMessageResponse(dict):
 @pulumi.output_type
 class ServiceMeshFeatureStateResponse(dict):
     """
-    FeatureState describes the state of the Service Mesh Hub Feature as analyzed by the Service Mesh Hub Controller, for the whole Hub.
+    **Service Mesh**: State for the whole Hub, as analyzed by the Service Mesh Hub Controller.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -615,7 +626,7 @@ class ServiceMeshFeatureStateResponse(dict):
     def __init__(__self__, *,
                  analysis_messages: Sequence['outputs.ServiceMeshAnalysisMessageResponse']):
         """
-        FeatureState describes the state of the Service Mesh Hub Feature as analyzed by the Service Mesh Hub Controller, for the whole Hub.
+        **Service Mesh**: State for the whole Hub, as analyzed by the Service Mesh Hub Controller.
         :param Sequence['ServiceMeshAnalysisMessageResponse'] analysis_messages: Results of running Service Mesh analyzers.
         """
         pulumi.set(__self__, "analysis_messages", analysis_messages)

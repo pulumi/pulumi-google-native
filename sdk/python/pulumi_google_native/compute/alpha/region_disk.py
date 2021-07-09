@@ -48,15 +48,9 @@ class RegionDiskArgs:
         """
         The set of arguments for constructing a RegionDisk resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input['CustomerEncryptionKeyArgs'] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
-               
-               After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine).
-               
-               Customer-supplied encryption keys do not protect access to metadata of the disk.
-               
-               If you do not provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
+        :param pulumi.Input['CustomerEncryptionKeyArgs'] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
         :param pulumi.Input[bool] erase_windows_vss_signature: Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
-        :param pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
+        :param pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         :param pulumi.Input['RegionDiskInterface'] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk. These can be later modified by the setLabels method.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] license_codes: Integer license codes indicating which licenses are attached to this disk.
@@ -66,49 +60,19 @@ class RegionDiskArgs:
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] options: Internal use only.
         :param pulumi.Input[str] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.
-        :param pulumi.Input[str] provisioned_iops: Indicates how many IOPS must be provisioned for the disk.
+        :param pulumi.Input[str] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
-        :param pulumi.Input[str] size_gb: Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk.
-               
-               If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
-        :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-               - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk  
-               - https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/disk  
-               - projects/project/zones/zone/disks/disk  
-               - projects/project/regions/region/disks/disk  
-               - zones/zone/disks/disk  
-               - regions/region/disks/disk
-        :param pulumi.Input[str] source_image: The source image used to create this disk. If the source image is deleted, this field will not be set.
-               
-               To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image:
-               projects/debian-cloud/global/images/family/debian-9
-               
-               
-               Alternatively, use a specific version of a public operating system image:
-               projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD
-               
-               
-               To create a disk with a custom image that you created, specify the image name in the following format:
-               global/images/my-custom-image
-               
-               
-               You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name:
-               global/images/family/my-image-family
+        :param pulumi.Input[str] size_gb: Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+        :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk 
+        :param pulumi.Input[str] source_image: The source image used to create this disk. If the source image is deleted, this field will not be set. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family 
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
-        :param pulumi.Input[str] source_instant_snapshot: The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-               - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot 
-               - projects/project/zones/zone/instantSnapshots/instantSnapshot 
-               - zones/zone/instantSnapshots/instantSnapshot
-        :param pulumi.Input[str] source_snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-               - https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot 
-               - projects/project/global/snapshots/snapshot 
-               - global/snapshots/snapshot
+        :param pulumi.Input[str] source_instant_snapshot: The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        :param pulumi.Input[str] source_snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot 
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
         :param pulumi.Input[str] source_storage_object: The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
-        :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_licenses: A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license:
-               https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch
+        :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_licenses: A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
@@ -201,13 +165,7 @@ class RegionDiskArgs:
     @pulumi.getter(name="diskEncryptionKey")
     def disk_encryption_key(self) -> Optional[pulumi.Input['CustomerEncryptionKeyArgs']]:
         """
-        Encrypts the disk using a customer-supplied encryption key.
-
-        After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine).
-
-        Customer-supplied encryption keys do not protect access to metadata of the disk.
-
-        If you do not provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
+        Encrypts the disk using a customer-supplied encryption key. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
         """
         return pulumi.get(self, "disk_encryption_key")
 
@@ -231,7 +189,7 @@ class RegionDiskArgs:
     @pulumi.getter(name="guestOsFeatures")
     def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]]]:
         """
-        A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
+        A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         """
         return pulumi.get(self, "guest_os_features")
 
@@ -351,7 +309,7 @@ class RegionDiskArgs:
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates how many IOPS must be provisioned for the disk.
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
         """
         return pulumi.get(self, "provisioned_iops")
 
@@ -396,9 +354,7 @@ class RegionDiskArgs:
     @pulumi.getter(name="sizeGb")
     def size_gb(self) -> Optional[pulumi.Input[str]]:
         """
-        Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk.
-
-        If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+        Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
         """
         return pulumi.get(self, "size_gb")
 
@@ -410,13 +366,7 @@ class RegionDiskArgs:
     @pulumi.getter(name="sourceDisk")
     def source_disk(self) -> Optional[pulumi.Input[str]]:
         """
-        The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-        - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk  
-        - https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/disk  
-        - projects/project/zones/zone/disks/disk  
-        - projects/project/regions/region/disks/disk  
-        - zones/zone/disks/disk  
-        - regions/region/disks/disk
+        The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk 
         """
         return pulumi.get(self, "source_disk")
 
@@ -428,22 +378,7 @@ class RegionDiskArgs:
     @pulumi.getter(name="sourceImage")
     def source_image(self) -> Optional[pulumi.Input[str]]:
         """
-        The source image used to create this disk. If the source image is deleted, this field will not be set.
-
-        To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image:
-        projects/debian-cloud/global/images/family/debian-9
-
-
-        Alternatively, use a specific version of a public operating system image:
-        projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD
-
-
-        To create a disk with a custom image that you created, specify the image name in the following format:
-        global/images/my-custom-image
-
-
-        You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name:
-        global/images/family/my-image-family
+        The source image used to create this disk. If the source image is deleted, this field will not be set. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family 
         """
         return pulumi.get(self, "source_image")
 
@@ -467,10 +402,7 @@ class RegionDiskArgs:
     @pulumi.getter(name="sourceInstantSnapshot")
     def source_instant_snapshot(self) -> Optional[pulumi.Input[str]]:
         """
-        The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-        - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot 
-        - projects/project/zones/zone/instantSnapshots/instantSnapshot 
-        - zones/zone/instantSnapshots/instantSnapshot
+        The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
         """
         return pulumi.get(self, "source_instant_snapshot")
 
@@ -482,10 +414,7 @@ class RegionDiskArgs:
     @pulumi.getter(name="sourceSnapshot")
     def source_snapshot(self) -> Optional[pulumi.Input[str]]:
         """
-        The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-        - https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot 
-        - projects/project/global/snapshots/snapshot 
-        - global/snapshots/snapshot
+        The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot 
         """
         return pulumi.get(self, "source_snapshot")
 
@@ -521,7 +450,7 @@ class RegionDiskArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
+        URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
         """
         return pulumi.get(self, "type")
 
@@ -533,8 +462,7 @@ class RegionDiskArgs:
     @pulumi.getter(name="userLicenses")
     def user_licenses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license:
-        https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch
+        A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
         """
         return pulumi.get(self, "user_licenses")
 
@@ -584,15 +512,9 @@ class RegionDisk(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key.
-               
-               After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine).
-               
-               Customer-supplied encryption keys do not protect access to metadata of the disk.
-               
-               If you do not provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
+        :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] disk_encryption_key: Encrypts the disk using a customer-supplied encryption key. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
         :param pulumi.Input[bool] erase_windows_vss_signature: Specifies whether the disk restored from a source snapshot should erase Windows specific VSS signature.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         :param pulumi.Input['RegionDiskInterface'] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this disk. These can be later modified by the setLabels method.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] license_codes: Integer license codes indicating which licenses are attached to this disk.
@@ -602,49 +524,19 @@ class RegionDisk(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] options: Internal use only.
         :param pulumi.Input[str] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.
-        :param pulumi.Input[str] provisioned_iops: Indicates how many IOPS must be provisioned for the disk.
+        :param pulumi.Input[str] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations.
-        :param pulumi.Input[str] size_gb: Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk.
-               
-               If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
-        :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-               - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk  
-               - https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/disk  
-               - projects/project/zones/zone/disks/disk  
-               - projects/project/regions/region/disks/disk  
-               - zones/zone/disks/disk  
-               - regions/region/disks/disk
-        :param pulumi.Input[str] source_image: The source image used to create this disk. If the source image is deleted, this field will not be set.
-               
-               To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image:
-               projects/debian-cloud/global/images/family/debian-9
-               
-               
-               Alternatively, use a specific version of a public operating system image:
-               projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD
-               
-               
-               To create a disk with a custom image that you created, specify the image name in the following format:
-               global/images/my-custom-image
-               
-               
-               You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name:
-               global/images/family/my-image-family
+        :param pulumi.Input[str] size_gb: Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+        :param pulumi.Input[str] source_disk: The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk 
+        :param pulumi.Input[str] source_image: The source image used to create this disk. If the source image is deleted, this field will not be set. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family 
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
-        :param pulumi.Input[str] source_instant_snapshot: The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-               - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot 
-               - projects/project/zones/zone/instantSnapshots/instantSnapshot 
-               - zones/zone/instantSnapshots/instantSnapshot
-        :param pulumi.Input[str] source_snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-               - https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot 
-               - projects/project/global/snapshots/snapshot 
-               - global/snapshots/snapshot
+        :param pulumi.Input[str] source_instant_snapshot: The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
+        :param pulumi.Input[str] source_snapshot: The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot 
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
         :param pulumi.Input[str] source_storage_object: The full Google Cloud Storage URI where the disk image is stored. This file must be a gzip-compressed tarball whose name ends in .tar.gz or virtual machine disk whose name ends in vmdk. Valid URIs may start with gs:// or https://storage.googleapis.com/. This flag is not optimized for creating multiple disks from a source storage object. To create many disks from a source storage object, use gcloud compute images import instead.
-        :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_licenses: A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license:
-               https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch
+        :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_licenses: A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
         """
         ...
     @overload
@@ -845,13 +737,7 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter(name="diskEncryptionKey")
     def disk_encryption_key(self) -> pulumi.Output['outputs.CustomerEncryptionKeyResponse']:
         """
-        Encrypts the disk using a customer-supplied encryption key.
-
-        After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine).
-
-        Customer-supplied encryption keys do not protect access to metadata of the disk.
-
-        If you do not provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
+        Encrypts the disk using a customer-supplied encryption key. After you encrypt a disk with a customer-supplied key, you must provide the same key if you use the disk later (e.g. to create a disk snapshot, to create a disk image, to create a machine image, or to attach the disk to a virtual machine). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the disk, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the disk later.
         """
         return pulumi.get(self, "disk_encryption_key")
 
@@ -867,7 +753,7 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter(name="guestOsFeatures")
     def guest_os_features(self) -> pulumi.Output[Sequence['outputs.GuestOsFeatureResponse']]:
         """
-        A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
+        A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         """
         return pulumi.get(self, "guest_os_features")
 
@@ -891,9 +777,7 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> pulumi.Output[str]:
         """
-        A fingerprint for the labels being applied to this disk, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve a disk.
+        A fingerprint for the labels being applied to this disk, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a disk.
         """
         return pulumi.get(self, "label_fingerprint")
 
@@ -981,7 +865,7 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter(name="provisionedIops")
     def provisioned_iops(self) -> pulumi.Output[str]:
         """
-        Indicates how many IOPS must be provisioned for the disk.
+        Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
         """
         return pulumi.get(self, "provisioned_iops")
 
@@ -1037,9 +921,7 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter(name="sizeGb")
     def size_gb(self) -> pulumi.Output[str]:
         """
-        Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk.
-
-        If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
+        Size, in GB, of the persistent disk. You can specify this field when creating a persistent disk using the sourceImage, sourceSnapshot, or sourceDisk parameter, or specify it alone to create an empty persistent disk. If you specify this field along with a source, the value of sizeGb must not be less than the size of the source. Acceptable values are 1 to 65536, inclusive.
         """
         return pulumi.get(self, "size_gb")
 
@@ -1047,13 +929,7 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter(name="sourceDisk")
     def source_disk(self) -> pulumi.Output[str]:
         """
-        The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-        - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk  
-        - https://www.googleapis.com/compute/v1/projects/project/regions/region/disks/disk  
-        - projects/project/zones/zone/disks/disk  
-        - projects/project/regions/region/disks/disk  
-        - zones/zone/disks/disk  
-        - regions/region/disks/disk
+        The source disk used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk 
         """
         return pulumi.get(self, "source_disk")
 
@@ -1069,22 +945,7 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter(name="sourceImage")
     def source_image(self) -> pulumi.Output[str]:
         """
-        The source image used to create this disk. If the source image is deleted, this field will not be set.
-
-        To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image:
-        projects/debian-cloud/global/images/family/debian-9
-
-
-        Alternatively, use a specific version of a public operating system image:
-        projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD
-
-
-        To create a disk with a custom image that you created, specify the image name in the following format:
-        global/images/my-custom-image
-
-
-        You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name:
-        global/images/family/my-image-family
+        The source image used to create this disk. If the source image is deleted, this field will not be set. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family 
         """
         return pulumi.get(self, "source_image")
 
@@ -1108,10 +969,7 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter(name="sourceInstantSnapshot")
     def source_instant_snapshot(self) -> pulumi.Output[str]:
         """
-        The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-        - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instantSnapshots/instantSnapshot 
-        - projects/project/zones/zone/instantSnapshots/instantSnapshot 
-        - zones/zone/instantSnapshots/instantSnapshot
+        The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot 
         """
         return pulumi.get(self, "source_instant_snapshot")
 
@@ -1127,10 +985,7 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter(name="sourceSnapshot")
     def source_snapshot(self) -> pulumi.Output[str]:
         """
-        The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values:  
-        - https://www.googleapis.com/compute/v1/projects/project/global/snapshots/snapshot 
-        - projects/project/global/snapshots/snapshot 
-        - global/snapshots/snapshot
+        The source snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project /global/snapshots/snapshot - projects/project/global/snapshots/snapshot - global/snapshots/snapshot 
         """
         return pulumi.get(self, "source_snapshot")
 
@@ -1162,12 +1017,7 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of disk creation.  
-        - CREATING: Disk is provisioning. 
-        - RESTORING: Source data is being copied into the disk. 
-        - FAILED: Disk creation failed. 
-        - READY: Disk is ready for use. 
-        - DELETING: Disk is deleting.
+        The status of disk creation. - CREATING: Disk is provisioning. - RESTORING: Source data is being copied into the disk. - FAILED: Disk creation failed. - READY: Disk is ready for use. - DELETING: Disk is deleting. 
         """
         return pulumi.get(self, "status")
 
@@ -1175,7 +1025,7 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project/zones/zone/diskTypes/pd-standard  or pd-ssd
+        URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: projects/project /zones/zone/diskTypes/pd-ssd . See Persistent disk types.
         """
         return pulumi.get(self, "type")
 
@@ -1183,8 +1033,7 @@ class RegionDisk(pulumi.CustomResource):
     @pulumi.getter(name="userLicenses")
     def user_licenses(self) -> pulumi.Output[Sequence[str]]:
         """
-        A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license:
-        https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch
+        A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch 
         """
         return pulumi.get(self, "user_licenses")
 

@@ -18,6 +18,7 @@ __all__ = [
     'EntityKeyResponse',
     'ExpiryDetailResponse',
     'MembershipRoleResponse',
+    'PosixGroupResponse',
 ]
 
 @pulumi.output_type
@@ -236,7 +237,7 @@ class EntityKeyResponse(dict):
                  namespace: str):
         """
         A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
-        :param str namespace: The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}.
+        :param str namespace: The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
         """
         pulumi.set(__self__, "namespace", namespace)
 
@@ -244,7 +245,7 @@ class EntityKeyResponse(dict):
     @pulumi.getter
     def namespace(self) -> str:
         """
-        The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}.
+        The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
         """
         return pulumi.get(self, "namespace")
 
@@ -336,5 +337,66 @@ class MembershipRoleResponse(dict):
         The name of the `MembershipRole`. Must be one of `OWNER`, `MANAGER`, `MEMBER`.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class PosixGroupResponse(dict):
+    """
+    POSIX Group definition to represent a group in a POSIX compliant system.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "systemId":
+            suggest = "system_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PosixGroupResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PosixGroupResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PosixGroupResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gid: str,
+                 name: str,
+                 system_id: str):
+        """
+        POSIX Group definition to represent a group in a POSIX compliant system.
+        :param str gid: GID of the POSIX group.
+        :param str name: Name of the POSIX group.
+        :param str system_id: System identifier for which group name and gid apply to. If not specified it will default to empty value.
+        """
+        pulumi.set(__self__, "gid", gid)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "system_id", system_id)
+
+    @property
+    @pulumi.getter
+    def gid(self) -> str:
+        """
+        GID of the POSIX group.
+        """
+        return pulumi.get(self, "gid")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the POSIX group.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="systemId")
+    def system_id(self) -> str:
+        """
+        System identifier for which group name and gid apply to. If not specified it will default to empty value.
+        """
+        return pulumi.get(self, "system_id")
 
 

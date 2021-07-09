@@ -256,7 +256,7 @@ class OidcArgs:
                  allowed_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Represents an OpenId Connect 1.0 identity provider.
-        :param pulumi.Input[str] issuer_uri: The OIDC issuer URL.
+        :param pulumi.Input[str] issuer_uri: The OIDC issuer URL. Must be an HTTPS endpoint.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_audiences: Acceptable values for the `aud` field (audience) in the OIDC token. Token exchange requests are rejected if the token audience does not match one of the configured values. Each audience may be at most 256 characters. A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For example: ``` //iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ ```
         """
         pulumi.set(__self__, "issuer_uri", issuer_uri)
@@ -267,7 +267,7 @@ class OidcArgs:
     @pulumi.getter(name="issuerUri")
     def issuer_uri(self) -> pulumi.Input[str]:
         """
-        The OIDC issuer URL.
+        The OIDC issuer URL. Must be an HTTPS endpoint.
         """
         return pulumi.get(self, "issuer_uri")
 

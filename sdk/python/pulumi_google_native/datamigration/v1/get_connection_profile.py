@@ -104,7 +104,7 @@ class GetConnectionProfileResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
+        The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{instance}.
         """
         return pulumi.get(self, "name")
 

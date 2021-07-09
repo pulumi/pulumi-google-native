@@ -64,22 +64,50 @@ class EndpointResponse(dict):
     """
     An individual endpoint that provides a service. The service must already exist to create an endpoint.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "createTime":
+            suggest = "create_time"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EndpointResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EndpointResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EndpointResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  address: str,
+                 create_time: str,
                  metadata: Mapping[str, str],
                  name: str,
-                 port: int):
+                 network: str,
+                 port: int,
+                 update_time: str):
         """
         An individual endpoint that provides a service. The service must already exist to create an endpoint.
         :param str address: Optional. An IPv4 or IPv6 address. Service Directory rejects bad addresses like: * `8.8.8` * `8.8.8.8:53` * `test:bad:address` * `[::1]` * `[::1]:8080` Limited to 45 characters.
+        :param str create_time: The timestamp when the endpoint was created.
         :param Mapping[str, str] metadata: Optional. Metadata for the endpoint. This data can be consumed by service clients. Restrictions: * The entire metadata dictionary may contain up to 512 characters, spread accoss all key-value pairs. Metadata that goes beyond this limit are rejected * Valid metadata keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Metadata that fails to meet these requirements are rejected * The `(*.)google.com/` and `(*.)googleapis.com/` prefixes are reserved for system metadata managed by Service Directory. If the user tries to write to these keyspaces, those entries are silently ignored by the system Note: This field is equivalent to the `annotations` field in the v1 API. They have the same syntax and read/write to the same location in Service Directory.
         :param str name: Immutable. The resource name for the endpoint in the format `projects/*/locations/*/namespaces/*/services/*/endpoints/*`.
+        :param str network: Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, but no other validation is performed on this field (ex. network or project existence, reachability, or permissions).
         :param int port: Optional. Service Directory rejects values outside of `[0, 65535]`.
+        :param str update_time: The timestamp when the endpoint was last updated.
         """
         pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "metadata", metadata)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter
@@ -88,6 +116,14 @@ class EndpointResponse(dict):
         Optional. An IPv4 or IPv6 address. Service Directory rejects bad addresses like: * `8.8.8` * `8.8.8.8:53` * `test:bad:address` * `[::1]` * `[::1]:8080` Limited to 45 characters.
         """
         return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The timestamp when the endpoint was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
@@ -107,11 +143,27 @@ class EndpointResponse(dict):
 
     @property
     @pulumi.getter
+    def network(self) -> str:
+        """
+        Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, but no other validation is performed on this field (ex. network or project existence, reachability, or permissions).
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
     def port(self) -> int:
         """
         Optional. Service Directory rejects values outside of `[0, 65535]`.
         """
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The timestamp when the endpoint was last updated.
+        """
+        return pulumi.get(self, "update_time")
 
 
 @pulumi.output_type

@@ -26,7 +26,8 @@ class ServiceArgs:
                  mesh_istio: Optional[pulumi.Input['MeshIstioArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
-                 telemetry: Optional[pulumi.Input['TelemetryArgs']] = None):
+                 telemetry: Optional[pulumi.Input['TelemetryArgs']] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Service resource.
         :param pulumi.Input['AppEngineArgs'] app_engine: Type used for App Engine services.
@@ -38,6 +39,7 @@ class ServiceArgs:
         :param pulumi.Input['MeshIstioArgs'] mesh_istio: Type used for Istio services scoped to an Istio mesh.
         :param pulumi.Input[str] name: Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
         :param pulumi.Input['TelemetryArgs'] telemetry: Configuration for how to query telemetry on a Service.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
         """
         pulumi.set(__self__, "v3_id", v3_id)
         pulumi.set(__self__, "v3_id1", v3_id1)
@@ -61,6 +63,8 @@ class ServiceArgs:
             pulumi.set(__self__, "service_id", service_id)
         if telemetry is not None:
             pulumi.set(__self__, "telemetry", telemetry)
+        if user_labels is not None:
+            pulumi.set(__self__, "user_labels", user_labels)
 
     @property
     @pulumi.getter(name="v3Id")
@@ -197,6 +201,18 @@ class ServiceArgs:
     def telemetry(self, value: Optional[pulumi.Input['TelemetryArgs']]):
         pulumi.set(self, "telemetry", value)
 
+    @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+        """
+        return pulumi.get(self, "user_labels")
+
+    @user_labels.setter
+    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "user_labels", value)
+
 
 class Service(pulumi.CustomResource):
     @overload
@@ -213,6 +229,7 @@ class Service(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  telemetry: Optional[pulumi.Input[pulumi.InputType['TelemetryArgs']]] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  v3_id: Optional[pulumi.Input[str]] = None,
                  v3_id1: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -230,6 +247,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['MeshIstioArgs']] mesh_istio: Type used for Istio services scoped to an Istio mesh.
         :param pulumi.Input[str] name: Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] 
         :param pulumi.Input[pulumi.InputType['TelemetryArgs']] telemetry: Configuration for how to query telemetry on a Service.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
         """
         ...
     @overload
@@ -265,6 +283,7 @@ class Service(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  telemetry: Optional[pulumi.Input[pulumi.InputType['TelemetryArgs']]] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  v3_id: Optional[pulumi.Input[str]] = None,
                  v3_id1: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -289,6 +308,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["service_id"] = service_id
             __props__.__dict__["telemetry"] = telemetry
+            __props__.__dict__["user_labels"] = user_labels
             if v3_id is None and not opts.urn:
                 raise TypeError("Missing required property 'v3_id'")
             __props__.__dict__["v3_id"] = v3_id
@@ -326,6 +346,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["mesh_istio"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["telemetry"] = None
+        __props__.__dict__["user_labels"] = None
         return Service(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -399,4 +420,12 @@ class Service(pulumi.CustomResource):
         Configuration for how to query telemetry on a Service.
         """
         return pulumi.get(self, "telemetry")
+
+    @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+        """
+        return pulumi.get(self, "user_labels")
 

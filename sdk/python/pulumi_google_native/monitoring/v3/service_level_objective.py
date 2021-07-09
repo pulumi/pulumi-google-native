@@ -25,7 +25,8 @@ class ServiceLevelObjectiveArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  rolling_period: Optional[pulumi.Input[str]] = None,
                  service_level_indicator: Optional[pulumi.Input['ServiceLevelIndicatorArgs']] = None,
-                 service_level_objective_id: Optional[pulumi.Input[str]] = None):
+                 service_level_objective_id: Optional[pulumi.Input[str]] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a ServiceLevelObjective resource.
         :param pulumi.Input['ServiceLevelObjectiveCalendarPeriod'] calendar_period: A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
@@ -34,6 +35,7 @@ class ServiceLevelObjectiveArgs:
         :param pulumi.Input[str] name: Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
         :param pulumi.Input[str] rolling_period: A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days.
         :param pulumi.Input['ServiceLevelIndicatorArgs'] service_level_indicator: The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: Labels which have been used to annotate the service-level objective. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
         """
         pulumi.set(__self__, "service_id", service_id)
         pulumi.set(__self__, "v3_id", v3_id)
@@ -52,6 +54,8 @@ class ServiceLevelObjectiveArgs:
             pulumi.set(__self__, "service_level_indicator", service_level_indicator)
         if service_level_objective_id is not None:
             pulumi.set(__self__, "service_level_objective_id", service_level_objective_id)
+        if user_labels is not None:
+            pulumi.set(__self__, "user_labels", user_labels)
 
     @property
     @pulumi.getter(name="serviceId")
@@ -161,6 +165,18 @@ class ServiceLevelObjectiveArgs:
     def service_level_objective_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_level_objective_id", value)
 
+    @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels which have been used to annotate the service-level objective. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+        """
+        return pulumi.get(self, "user_labels")
+
+    @user_labels.setter
+    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "user_labels", value)
+
 
 class ServiceLevelObjective(pulumi.CustomResource):
     @overload
@@ -175,6 +191,7 @@ class ServiceLevelObjective(pulumi.CustomResource):
                  service_id: Optional[pulumi.Input[str]] = None,
                  service_level_indicator: Optional[pulumi.Input[pulumi.InputType['ServiceLevelIndicatorArgs']]] = None,
                  service_level_objective_id: Optional[pulumi.Input[str]] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  v3_id: Optional[pulumi.Input[str]] = None,
                  v3_id1: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -189,6 +206,7 @@ class ServiceLevelObjective(pulumi.CustomResource):
         :param pulumi.Input[str] name: Resource name for this ServiceLevelObjective. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]/serviceLevelObjectives/[SLO_NAME] 
         :param pulumi.Input[str] rolling_period: A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days.
         :param pulumi.Input[pulumi.InputType['ServiceLevelIndicatorArgs']] service_level_indicator: The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: Labels which have been used to annotate the service-level objective. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
         """
         ...
     @overload
@@ -222,6 +240,7 @@ class ServiceLevelObjective(pulumi.CustomResource):
                  service_id: Optional[pulumi.Input[str]] = None,
                  service_level_indicator: Optional[pulumi.Input[pulumi.InputType['ServiceLevelIndicatorArgs']]] = None,
                  service_level_objective_id: Optional[pulumi.Input[str]] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  v3_id: Optional[pulumi.Input[str]] = None,
                  v3_id1: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -246,6 +265,7 @@ class ServiceLevelObjective(pulumi.CustomResource):
             __props__.__dict__["service_id"] = service_id
             __props__.__dict__["service_level_indicator"] = service_level_indicator
             __props__.__dict__["service_level_objective_id"] = service_level_objective_id
+            __props__.__dict__["user_labels"] = user_labels
             if v3_id is None and not opts.urn:
                 raise TypeError("Missing required property 'v3_id'")
             __props__.__dict__["v3_id"] = v3_id
@@ -280,6 +300,7 @@ class ServiceLevelObjective(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["rolling_period"] = None
         __props__.__dict__["service_level_indicator"] = None
+        __props__.__dict__["user_labels"] = None
         return ServiceLevelObjective(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -329,4 +350,12 @@ class ServiceLevelObjective(pulumi.CustomResource):
         The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
         """
         return pulumi.get(self, "service_level_indicator")
+
+    @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        Labels which have been used to annotate the service-level objective. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+        """
+        return pulumi.get(self, "user_labels")
 

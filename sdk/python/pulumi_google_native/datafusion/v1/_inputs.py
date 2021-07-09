@@ -14,6 +14,7 @@ __all__ = [
     'AuditConfigArgs',
     'AuditLogConfigArgs',
     'BindingArgs',
+    'CryptoKeyConfigArgs',
     'ExprArgs',
     'NetworkConfigArgs',
     'VersionArgs',
@@ -193,6 +194,30 @@ class BindingArgs:
     @role.setter
     def role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role", value)
+
+
+@pulumi.input_type
+class CryptoKeyConfigArgs:
+    def __init__(__self__, *,
+                 key_reference: Optional[pulumi.Input[str]] = None):
+        """
+        The crypto key configuration. This field is used by the Customer-managed encryption keys (CMEK) feature.
+        :param pulumi.Input[str] key_reference: The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        """
+        if key_reference is not None:
+            pulumi.set(__self__, "key_reference", key_reference)
+
+    @property
+    @pulumi.getter(name="keyReference")
+    def key_reference(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        """
+        return pulumi.get(self, "key_reference")
+
+    @key_reference.setter
+    def key_reference(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_reference", value)
 
 
 @pulumi.input_type

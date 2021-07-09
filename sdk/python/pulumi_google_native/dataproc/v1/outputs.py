@@ -187,7 +187,7 @@ class BasicAutoscalingAlgorithmResponse(dict):
         """
         Basic algorithm for autoscaling.
         :param str cooldown_period: Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
-        :param 'BasicYarnAutoscalingConfigResponse' yarn_config: YARN autoscaling configuration.
+        :param 'BasicYarnAutoscalingConfigResponse' yarn_config: Optional. YARN autoscaling configuration.
         """
         pulumi.set(__self__, "cooldown_period", cooldown_period)
         pulumi.set(__self__, "yarn_config", yarn_config)
@@ -204,7 +204,7 @@ class BasicAutoscalingAlgorithmResponse(dict):
     @pulumi.getter(name="yarnConfig")
     def yarn_config(self) -> 'outputs.BasicYarnAutoscalingConfigResponse':
         """
-        YARN autoscaling configuration.
+        Optional. YARN autoscaling configuration.
         """
         return pulumi.get(self, "yarn_config")
 
@@ -742,7 +742,7 @@ class ClusterStatusResponse(dict):
 @pulumi.output_type
 class ConfidentialInstanceConfigResponse(dict):
     """
-    Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs) NEXT ID: 2
+    Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
     """
     @staticmethod
     def __key_warning(key: str):
@@ -764,7 +764,7 @@ class ConfidentialInstanceConfigResponse(dict):
     def __init__(__self__, *,
                  enable_confidential_compute: bool):
         """
-        Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs) NEXT ID: 2
+        Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
         :param bool enable_confidential_compute: Optional. Defines whether the instance should have confidential compute enabled.
         """
         pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
@@ -1047,7 +1047,7 @@ class GceClusterConfigResponse(dict):
                  zone_uri: str):
         """
         Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.
-        :param 'ConfidentialInstanceConfigResponse' confidential_instance_config: Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
+        :param 'ConfidentialInstanceConfigResponse' confidential_instance_config: Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs).
         :param bool internal_ip_only: Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
         :param Mapping[str, str] metadata: The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
         :param str network_uri: Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default projects/[project_id]/regions/global/default default
@@ -1079,7 +1079,7 @@ class GceClusterConfigResponse(dict):
     @pulumi.getter(name="confidentialInstanceConfig")
     def confidential_instance_config(self) -> 'outputs.ConfidentialInstanceConfigResponse':
         """
-        Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
+        Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs).
         """
         return pulumi.get(self, "confidential_instance_config")
 
@@ -1726,6 +1726,8 @@ class InstanceReferenceResponse(dict):
             suggest = "instance_id"
         elif key == "instanceName":
             suggest = "instance_name"
+        elif key == "publicEciesKey":
+            suggest = "public_ecies_key"
         elif key == "publicKey":
             suggest = "public_key"
 
@@ -1743,15 +1745,18 @@ class InstanceReferenceResponse(dict):
     def __init__(__self__, *,
                  instance_id: str,
                  instance_name: str,
+                 public_ecies_key: str,
                  public_key: str):
         """
         A reference to a Compute Engine instance.
         :param str instance_id: The unique identifier of the Compute Engine instance.
         :param str instance_name: The user-friendly name of the Compute Engine instance.
-        :param str public_key: The public key used for sharing data with this instance.
+        :param str public_ecies_key: The public ECIES key used for sharing data with this instance.
+        :param str public_key: The public RSA key used for sharing data with this instance.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "instance_name", instance_name)
+        pulumi.set(__self__, "public_ecies_key", public_ecies_key)
         pulumi.set(__self__, "public_key", public_key)
 
     @property
@@ -1771,10 +1776,18 @@ class InstanceReferenceResponse(dict):
         return pulumi.get(self, "instance_name")
 
     @property
+    @pulumi.getter(name="publicEciesKey")
+    def public_ecies_key(self) -> str:
+        """
+        The public ECIES key used for sharing data with this instance.
+        """
+        return pulumi.get(self, "public_ecies_key")
+
+    @property
     @pulumi.getter(name="publicKey")
     def public_key(self) -> str:
         """
-        The public key used for sharing data with this instance.
+        The public RSA key used for sharing data with this instance.
         """
         return pulumi.get(self, "public_key")
 

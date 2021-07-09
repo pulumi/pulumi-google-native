@@ -154,6 +154,8 @@ class Namespace(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["create_time"] = None
+            __props__.__dict__["update_time"] = None
         super(Namespace, __self__).__init__(
             'google-native:servicedirectory/v1beta1:Namespace',
             resource_name,
@@ -176,9 +178,19 @@ class Namespace(pulumi.CustomResource):
 
         __props__ = NamespaceArgs.__new__(NamespaceArgs)
 
+        __props__.__dict__["create_time"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["update_time"] = None
         return Namespace(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The timestamp when the namespace was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
@@ -195,4 +207,12 @@ class Namespace(pulumi.CustomResource):
         Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> pulumi.Output[str]:
+        """
+        The timestamp when the namespace was last updated.
+        """
+        return pulumi.get(self, "update_time")
 

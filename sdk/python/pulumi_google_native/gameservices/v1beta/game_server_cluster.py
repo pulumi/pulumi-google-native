@@ -254,6 +254,7 @@ class GameServerCluster(pulumi.CustomResource):
             if realm_id is None and not opts.urn:
                 raise TypeError("Missing required property 'realm_id'")
             __props__.__dict__["realm_id"] = realm_id
+            __props__.__dict__["cluster_state"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None
         super(GameServerCluster, __self__).__init__(
@@ -279,6 +280,7 @@ class GameServerCluster(pulumi.CustomResource):
         __props__ = GameServerClusterArgs.__new__(GameServerClusterArgs)
 
         __props__.__dict__["allocation_priority"] = None
+        __props__.__dict__["cluster_state"] = None
         __props__.__dict__["connection_info"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
@@ -295,6 +297,14 @@ class GameServerCluster(pulumi.CustomResource):
         Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
         """
         return pulumi.get(self, "allocation_priority")
+
+    @property
+    @pulumi.getter(name="clusterState")
+    def cluster_state(self) -> pulumi.Output['outputs.KubernetesClusterStateResponse']:
+        """
+        The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
+        """
+        return pulumi.get(self, "cluster_state")
 
     @property
     @pulumi.getter(name="connectionInfo")

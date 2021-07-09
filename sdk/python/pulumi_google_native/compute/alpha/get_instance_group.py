@@ -102,11 +102,7 @@ class GetInstanceGroupResult:
     @pulumi.getter(name="namedPorts")
     def named_ports(self) -> Sequence['outputs.NamedPortResponse']:
         """
-        Assigns a name to a port number. For example: {name: "http", port: 80}
-
-        This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}] 
-
-        Named ports apply to all instances in this instance group.
+         Assigns a name to a port number. For example: {name: "http", port: 80} This allows the system to reference ports by the assigned name instead of a port number. Named ports can also contain multiple ports. For example: [{name: "http", port: 80},{name: "http", port: 8080}] Named ports apply to all instances in this instance group. 
         """
         return pulumi.get(self, "named_ports")
 
@@ -193,9 +189,7 @@ def get_instance_group(instance_group: Optional[str] = None,
                        zone: Optional[str] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceGroupResult:
     """
-    Returns the specified zonal instance group. Get a list of available zonal instance groups by making a list() request.
-
-    For managed instance groups, use the instanceGroupManagers or regionInstanceGroupManagers methods instead.
+    Returns the specified zonal instance group. Get a list of available zonal instance groups by making a list() request. For managed instance groups, use the instanceGroupManagers or regionInstanceGroupManagers methods instead.
     """
     __args__ = dict()
     __args__['instanceGroup'] = instance_group

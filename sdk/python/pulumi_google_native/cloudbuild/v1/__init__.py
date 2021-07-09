@@ -9,6 +9,8 @@ from ._enums import *
 from .build import *
 from .get_build import *
 from .get_trigger import *
+from .get_worker_pool import *
 from .trigger import *
+from .worker_pool import *
 from ._inputs import *
 from . import outputs

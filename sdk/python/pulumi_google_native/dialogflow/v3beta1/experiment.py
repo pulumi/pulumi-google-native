@@ -39,12 +39,12 @@ class ExperimentArgs:
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs'] definition: The definition of the experiment.
         :param pulumi.Input[str] description: The human-readable description of the experiment.
         :param pulumi.Input[str] end_time: End time of this experiment.
-        :param pulumi.Input[str] experiment_length: Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
+        :param pulumi.Input[str] experiment_length: LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
         :param pulumi.Input[str] last_update_time: Last update time of this experiment.
         :param pulumi.Input[str] name: The name of the experiment. Format: projects//locations//agents//environments//experiments/..
         :param pulumi.Input['GoogleCloudDialogflowCxV3beta1ExperimentResultArgs'] result: Inference result of the experiment.
         :param pulumi.Input[str] start_time: Start time of this experiment.
-        :param pulumi.Input['ExperimentState'] state: The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
+        :param pulumi.Input['ExperimentState'] state: The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs']]] variants_history: The history of updates to the experiment variants.
         """
         pulumi.set(__self__, "agent_id", agent_id)
@@ -175,7 +175,7 @@ class ExperimentArgs:
     @pulumi.getter(name="experimentLength")
     def experiment_length(self) -> Optional[pulumi.Input[str]]:
         """
-        Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
+        LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
         """
         return pulumi.get(self, "experiment_length")
 
@@ -235,7 +235,7 @@ class ExperimentArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input['ExperimentState']]:
         """
-        The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
+        The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
         """
         return pulumi.get(self, "state")
 
@@ -288,12 +288,12 @@ class Experiment(pulumi.CustomResource):
         :param pulumi.Input[str] description: The human-readable description of the experiment.
         :param pulumi.Input[str] display_name: The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
         :param pulumi.Input[str] end_time: End time of this experiment.
-        :param pulumi.Input[str] experiment_length: Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
+        :param pulumi.Input[str] experiment_length: LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
         :param pulumi.Input[str] last_update_time: Last update time of this experiment.
         :param pulumi.Input[str] name: The name of the experiment. Format: projects//locations//agents//environments//experiments/..
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1ExperimentResultArgs']] result: Inference result of the experiment.
         :param pulumi.Input[str] start_time: Start time of this experiment.
-        :param pulumi.Input['ExperimentState'] state: The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
+        :param pulumi.Input['ExperimentState'] state: The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3beta1VariantsHistoryArgs']]]] variants_history: The history of updates to the experiment variants.
         """
         ...
@@ -454,7 +454,7 @@ class Experiment(pulumi.CustomResource):
     @pulumi.getter(name="experimentLength")
     def experiment_length(self) -> pulumi.Output[str]:
         """
-        Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
+        LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
         """
         return pulumi.get(self, "experiment_length")
 
@@ -494,7 +494,7 @@ class Experiment(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
+        The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
         """
         return pulumi.get(self, "state")
 

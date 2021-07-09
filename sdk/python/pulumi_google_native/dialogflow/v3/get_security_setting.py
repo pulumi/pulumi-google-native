@@ -51,7 +51,7 @@ class GetSecuritySettingResult:
     @pulumi.getter(name="inspectTemplate")
     def inspect_template(self) -> str:
         """
-        DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
+        [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR `organizations//inspectTemplates/`
         """
         return pulumi.get(self, "inspect_template")
 
@@ -75,7 +75,7 @@ class GetSecuritySettingResult:
     @pulumi.getter(name="redactionScope")
     def redaction_scope(self) -> str:
         """
-        Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
+        Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
         """
         return pulumi.get(self, "redaction_scope")
 
@@ -91,7 +91,7 @@ class GetSecuritySettingResult:
     @pulumi.getter(name="retentionWindowDays")
     def retention_window_days(self) -> int:
         """
-        Retains the data for the specified number of days. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL.
+        Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
         """
         return pulumi.get(self, "retention_window_days")
 

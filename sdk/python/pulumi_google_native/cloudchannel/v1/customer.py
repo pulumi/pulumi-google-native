@@ -26,10 +26,10 @@ class CustomerArgs:
                  primary_contact_info: Optional[pulumi.Input['GoogleCloudChannelV1ContactInfoArgs']] = None):
         """
         The set of arguments for constructing a Customer resource.
-        :param pulumi.Input[str] domain: Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+        :param pulumi.Input[str] domain: The customer's primary domain. Must match the primary contact email's domain.
         :param pulumi.Input[str] org_display_name: Name of the organization that the customer entity represents.
-        :param pulumi.Input['GoogleTypePostalAddressArgs'] org_postal_address: Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
-        :param pulumi.Input[str] alternate_email: Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
+        :param pulumi.Input['GoogleTypePostalAddressArgs'] org_postal_address: The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
+        :param pulumi.Input[str] alternate_email: Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses. Alternate emails are optional when you create Team customers.
         :param pulumi.Input[str] channel_partner_id: Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
         :param pulumi.Input[str] language_code: Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         :param pulumi.Input['GoogleCloudChannelV1ContactInfoArgs'] primary_contact_info: Primary contact info.
@@ -70,7 +70,7 @@ class CustomerArgs:
     @pulumi.getter
     def domain(self) -> pulumi.Input[str]:
         """
-        Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+        The customer's primary domain. Must match the primary contact email's domain.
         """
         return pulumi.get(self, "domain")
 
@@ -94,7 +94,7 @@ class CustomerArgs:
     @pulumi.getter(name="orgPostalAddress")
     def org_postal_address(self) -> pulumi.Input['GoogleTypePostalAddressArgs']:
         """
-        Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+        The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
         """
         return pulumi.get(self, "org_postal_address")
 
@@ -106,7 +106,7 @@ class CustomerArgs:
     @pulumi.getter(name="alternateEmail")
     def alternate_email(self) -> Optional[pulumi.Input[str]]:
         """
-        Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
+        Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses. Alternate emails are optional when you create Team customers.
         """
         return pulumi.get(self, "alternate_email")
 
@@ -171,12 +171,12 @@ class Customer(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] alternate_email: Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
+        :param pulumi.Input[str] alternate_email: Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses. Alternate emails are optional when you create Team customers.
         :param pulumi.Input[str] channel_partner_id: Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
-        :param pulumi.Input[str] domain: Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+        :param pulumi.Input[str] domain: The customer's primary domain. Must match the primary contact email's domain.
         :param pulumi.Input[str] language_code: Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
         :param pulumi.Input[str] org_display_name: Name of the organization that the customer entity represents.
-        :param pulumi.Input[pulumi.InputType['GoogleTypePostalAddressArgs']] org_postal_address: Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+        :param pulumi.Input[pulumi.InputType['GoogleTypePostalAddressArgs']] org_postal_address: The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
         :param pulumi.Input[pulumi.InputType['GoogleCloudChannelV1ContactInfoArgs']] primary_contact_info: Primary contact info.
         """
         ...
@@ -288,7 +288,7 @@ class Customer(pulumi.CustomResource):
     @pulumi.getter(name="alternateEmail")
     def alternate_email(self) -> pulumi.Output[str]:
         """
-        Secondary contact email. Alternate email and primary contact email are required to have different domains if primary contact email is present. When creating admin.google.com accounts, users get notified credentials at this email. This email address is also used as a recovery email.
+        Secondary contact email. You need to provide an alternate email to create different domains if a primary contact email already exists. Users will receive a notification with credentials when you create an admin.google.com account. Secondary emails are also recovery email addresses. Alternate emails are optional when you create Team customers.
         """
         return pulumi.get(self, "alternate_email")
 
@@ -304,7 +304,7 @@ class Customer(pulumi.CustomResource):
     @pulumi.getter(name="cloudIdentityId")
     def cloud_identity_id(self) -> pulumi.Output[str]:
         """
-        Customer's cloud_identity_id. Populated only if a Cloud Identity resource exists for this customer.
+        The customer's Cloud Identity ID if the customer has a Cloud Identity resource.
         """
         return pulumi.get(self, "cloud_identity_id")
 
@@ -320,7 +320,7 @@ class Customer(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        The time at which the customer is created.
+        Time when the customer was created.
         """
         return pulumi.get(self, "create_time")
 
@@ -328,7 +328,7 @@ class Customer(pulumi.CustomResource):
     @pulumi.getter
     def domain(self) -> pulumi.Output[str]:
         """
-        Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+        The customer's primary domain. Must match the primary contact email's domain.
         """
         return pulumi.get(self, "domain")
 
@@ -360,7 +360,7 @@ class Customer(pulumi.CustomResource):
     @pulumi.getter(name="orgPostalAddress")
     def org_postal_address(self) -> pulumi.Output['outputs.GoogleTypePostalAddressResponse']:
         """
-        Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+        The organization address for the customer. To enforce US laws and embargoes, we require a region and zip code. You must provide valid addresses for every customer. To set the customer's language, use the Customer-level language code.
         """
         return pulumi.get(self, "org_postal_address")
 
@@ -376,7 +376,7 @@ class Customer(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        The time at which the customer is updated.
+        Time when the customer was updated.
         """
         return pulumi.get(self, "update_time")
 

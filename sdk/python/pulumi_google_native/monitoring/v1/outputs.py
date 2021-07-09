@@ -12,6 +12,7 @@ from ._enums import *
 
 __all__ = [
     'AggregationResponse',
+    'AlertChartResponse',
     'AxisResponse',
     'ChartOptionsResponse',
     'ColumnLayoutResponse',
@@ -113,6 +114,28 @@ class AggregationResponse(dict):
         An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
         """
         return pulumi.get(self, "per_series_aligner")
+
+
+@pulumi.output_type
+class AlertChartResponse(dict):
+    """
+    A chart that displays alert policy data.
+    """
+    def __init__(__self__, *,
+                 name: str):
+        """
+        A chart that displays alert policy data.
+        :param str name: The resource name of the alert policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] 
+        """
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name of the alert policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] 
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
@@ -1119,7 +1142,9 @@ class WidgetResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "xyChart":
+        if key == "alertChart":
+            suggest = "alert_chart"
+        elif key == "xyChart":
             suggest = "xy_chart"
 
         if suggest:
@@ -1134,6 +1159,7 @@ class WidgetResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 alert_chart: 'outputs.AlertChartResponse',
                  blank: 'outputs.EmptyResponse',
                  scorecard: 'outputs.ScorecardResponse',
                  text: 'outputs.TextResponse',
@@ -1141,17 +1167,27 @@ class WidgetResponse(dict):
                  xy_chart: 'outputs.XyChartResponse'):
         """
         Widget contains a single dashboard component and configuration of how to present the component in the dashboard.
+        :param 'AlertChartResponse' alert_chart: A chart of alert policy data.
         :param 'EmptyResponse' blank: A blank space.
         :param 'ScorecardResponse' scorecard: A scorecard summarizing time series data.
         :param 'TextResponse' text: A raw string or markdown displaying textual content.
         :param str title: Optional. The title of the widget.
         :param 'XyChartResponse' xy_chart: A chart of time series data.
         """
+        pulumi.set(__self__, "alert_chart", alert_chart)
         pulumi.set(__self__, "blank", blank)
         pulumi.set(__self__, "scorecard", scorecard)
         pulumi.set(__self__, "text", text)
         pulumi.set(__self__, "title", title)
         pulumi.set(__self__, "xy_chart", xy_chart)
+
+    @property
+    @pulumi.getter(name="alertChart")
+    def alert_chart(self) -> 'outputs.AlertChartResponse':
+        """
+        A chart of alert policy data.
+        """
+        return pulumi.get(self, "alert_chart")
 
     @property
     @pulumi.getter

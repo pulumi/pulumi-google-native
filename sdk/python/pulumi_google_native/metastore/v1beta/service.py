@@ -19,6 +19,7 @@ class ServiceArgs:
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  service_id: pulumi.Input[str],
+                 encryption_config: Optional[pulumi.Input['EncryptionConfigArgs']] = None,
                  hive_metastore_config: Optional[pulumi.Input['HiveMetastoreConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  maintenance_window: Optional[pulumi.Input['MaintenanceWindowArgs']] = None,
@@ -31,6 +32,7 @@ class ServiceArgs:
                  tier: Optional[pulumi.Input['ServiceTier']] = None):
         """
         The set of arguments for constructing a Service resource.
+        :param pulumi.Input['EncryptionConfigArgs'] encryption_config: Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
         :param pulumi.Input['HiveMetastoreConfigArgs'] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
         :param pulumi.Input['MaintenanceWindowArgs'] maintenance_window: The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
@@ -44,6 +46,8 @@ class ServiceArgs:
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "service_id", service_id)
+        if encryption_config is not None:
+            pulumi.set(__self__, "encryption_config", encryption_config)
         if hive_metastore_config is not None:
             pulumi.set(__self__, "hive_metastore_config", hive_metastore_config)
         if labels is not None:
@@ -91,6 +95,18 @@ class ServiceArgs:
     @service_id.setter
     def service_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "service_id", value)
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> Optional[pulumi.Input['EncryptionConfigArgs']]:
+        """
+        Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
+        """
+        return pulumi.get(self, "encryption_config")
+
+    @encryption_config.setter
+    def encryption_config(self, value: Optional[pulumi.Input['EncryptionConfigArgs']]):
+        pulumi.set(self, "encryption_config", value)
 
     @property
     @pulumi.getter(name="hiveMetastoreConfig")
@@ -215,6 +231,7 @@ class Service(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
                  hive_metastore_config: Optional[pulumi.Input[pulumi.InputType['HiveMetastoreConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -234,6 +251,7 @@ class Service(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['EncryptionConfigArgs']] encryption_config: Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
         :param pulumi.Input[pulumi.InputType['HiveMetastoreConfigArgs']] hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-defined labels for the metastore service.
         :param pulumi.Input[pulumi.InputType['MaintenanceWindowArgs']] maintenance_window: The one hour maintenance window of the metastore service. This specifies when the service can be restarted for maintenance purposes in UTC time.
@@ -268,6 +286,7 @@ class Service(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 encryption_config: Optional[pulumi.Input[pulumi.InputType['EncryptionConfigArgs']]] = None,
                  hive_metastore_config: Optional[pulumi.Input[pulumi.InputType['HiveMetastoreConfigArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -293,6 +312,7 @@ class Service(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ServiceArgs.__new__(ServiceArgs)
 
+            __props__.__dict__["encryption_config"] = encryption_config
             __props__.__dict__["hive_metastore_config"] = hive_metastore_config
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
@@ -344,6 +364,7 @@ class Service(pulumi.CustomResource):
 
         __props__.__dict__["artifact_gcs_uri"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["encryption_config"] = None
         __props__.__dict__["endpoint_uri"] = None
         __props__.__dict__["hive_metastore_config"] = None
         __props__.__dict__["labels"] = None
@@ -376,6 +397,14 @@ class Service(pulumi.CustomResource):
         The time when the metastore service was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> pulumi.Output['outputs.EncryptionConfigResponse']:
+        """
+        Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
+        """
+        return pulumi.get(self, "encryption_config")
 
     @property
     @pulumi.getter(name="endpointUri")

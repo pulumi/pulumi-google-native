@@ -68,7 +68,7 @@ class GetEnvironmentResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/`
+        The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.
         """
         return pulumi.get(self, "name")
 

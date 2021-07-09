@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceLevelObjectiveResult:
-    def __init__(__self__, calendar_period=None, display_name=None, goal=None, name=None, rolling_period=None, service_level_indicator=None):
+    def __init__(__self__, calendar_period=None, display_name=None, goal=None, name=None, rolling_period=None, service_level_indicator=None, user_labels=None):
         if calendar_period and not isinstance(calendar_period, str):
             raise TypeError("Expected argument 'calendar_period' to be a str")
         pulumi.set(__self__, "calendar_period", calendar_period)
@@ -36,6 +36,9 @@ class GetServiceLevelObjectiveResult:
         if service_level_indicator and not isinstance(service_level_indicator, dict):
             raise TypeError("Expected argument 'service_level_indicator' to be a dict")
         pulumi.set(__self__, "service_level_indicator", service_level_indicator)
+        if user_labels and not isinstance(user_labels, dict):
+            raise TypeError("Expected argument 'user_labels' to be a dict")
+        pulumi.set(__self__, "user_labels", user_labels)
 
     @property
     @pulumi.getter(name="calendarPeriod")
@@ -85,6 +88,14 @@ class GetServiceLevelObjectiveResult:
         """
         return pulumi.get(self, "service_level_indicator")
 
+    @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> Mapping[str, str]:
+        """
+        Labels which have been used to annotate the service-level objective. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+        """
+        return pulumi.get(self, "user_labels")
+
 
 class AwaitableGetServiceLevelObjectiveResult(GetServiceLevelObjectiveResult):
     # pylint: disable=using-constant-test
@@ -97,7 +108,8 @@ class AwaitableGetServiceLevelObjectiveResult(GetServiceLevelObjectiveResult):
             goal=self.goal,
             name=self.name,
             rolling_period=self.rolling_period,
-            service_level_indicator=self.service_level_indicator)
+            service_level_indicator=self.service_level_indicator,
+            user_labels=self.user_labels)
 
 
 def get_service_level_objective(service_id: Optional[str] = None,
@@ -127,4 +139,5 @@ def get_service_level_objective(service_id: Optional[str] = None,
         goal=__ret__.goal,
         name=__ret__.name,
         rolling_period=__ret__.rolling_period,
-        service_level_indicator=__ret__.service_level_indicator)
+        service_level_indicator=__ret__.service_level_indicator,
+        user_labels=__ret__.user_labels)

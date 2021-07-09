@@ -51,16 +51,10 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input['StatefulPolicyArgs'] stateful_policy: Stateful configuration for this Instanced Group Manager
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
-        :param pulumi.Input[int] target_stopped_size: The target number of stopped instances for this managed instance group. This number changes when you:  
-               - Stop instance using the stopInstances method or start instances using the startInstances method. 
-               - Manually change the targetStoppedSize using the update method.
-        :param pulumi.Input[int] target_suspended_size: The target number of suspended instances for this managed instance group. This number changes when you:  
-               - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. 
-               - Manually change the targetSuspendedSize using the update method.
+        :param pulumi.Input[int] target_stopped_size: The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. 
+        :param pulumi.Input[int] target_suspended_size: The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method. 
         :param pulumi.Input['InstanceGroupManagerUpdatePolicyArgs'] update_policy: The update policy for this managed instance group.
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]] versions: Specifies the instance templates used by this managed instance group to create instances.
-               
-               Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]] versions: Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
@@ -288,9 +282,7 @@ class RegionInstanceGroupManagerArgs:
     @pulumi.getter(name="targetStoppedSize")
     def target_stopped_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The target number of stopped instances for this managed instance group. This number changes when you:  
-        - Stop instance using the stopInstances method or start instances using the startInstances method. 
-        - Manually change the targetStoppedSize using the update method.
+        The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. 
         """
         return pulumi.get(self, "target_stopped_size")
 
@@ -302,9 +294,7 @@ class RegionInstanceGroupManagerArgs:
     @pulumi.getter(name="targetSuspendedSize")
     def target_suspended_size(self) -> Optional[pulumi.Input[int]]:
         """
-        The target number of suspended instances for this managed instance group. This number changes when you:  
-        - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. 
-        - Manually change the targetSuspendedSize using the update method.
+        The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method. 
         """
         return pulumi.get(self, "target_suspended_size")
 
@@ -328,9 +318,7 @@ class RegionInstanceGroupManagerArgs:
     @pulumi.getter
     def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]]]:
         """
-        Specifies the instance templates used by this managed instance group to create instances.
-
-        Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+        Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
         """
         return pulumi.get(self, "versions")
 
@@ -366,9 +354,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  versions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]]] = None,
                  __props__=None):
         """
-        Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method.
-
-        A regional managed instance group can contain up to 2000 instances.
+        Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method. A regional managed instance group can contain up to 2000 instances.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -385,16 +371,10 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['StatefulPolicyArgs']] stateful_policy: Stateful configuration for this Instanced Group Manager
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_pools: The URLs for all TargetPool resources to which instances in the instanceGroup field are added. The target pools automatically apply to all of the instances in the managed instance group.
         :param pulumi.Input[int] target_size: The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
-        :param pulumi.Input[int] target_stopped_size: The target number of stopped instances for this managed instance group. This number changes when you:  
-               - Stop instance using the stopInstances method or start instances using the startInstances method. 
-               - Manually change the targetStoppedSize using the update method.
-        :param pulumi.Input[int] target_suspended_size: The target number of suspended instances for this managed instance group. This number changes when you:  
-               - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. 
-               - Manually change the targetSuspendedSize using the update method.
+        :param pulumi.Input[int] target_stopped_size: The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. 
+        :param pulumi.Input[int] target_suspended_size: The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method. 
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerUpdatePolicyArgs']] update_policy: The update policy for this managed instance group.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]] versions: Specifies the instance templates used by this managed instance group to create instances.
-               
-               Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceGroupManagerVersionArgs']]]] versions: Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
         """
         ...
     @overload
@@ -403,9 +383,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
                  args: RegionInstanceGroupManagerArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method.
-
-        A regional managed instance group can contain up to 2000 instances.
+        Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method. A regional managed instance group can contain up to 2000 instances.
 
         :param str resource_name: The name of the resource.
         :param RegionInstanceGroupManagerArgs args: The arguments to use to populate this resource's properties.
@@ -598,9 +576,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter
     def fingerprint(self) -> pulumi.Output[str]:
         """
-        Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
+        Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -720,9 +696,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter(name="targetStoppedSize")
     def target_stopped_size(self) -> pulumi.Output[int]:
         """
-        The target number of stopped instances for this managed instance group. This number changes when you:  
-        - Stop instance using the stopInstances method or start instances using the startInstances method. 
-        - Manually change the targetStoppedSize using the update method.
+        The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method. 
         """
         return pulumi.get(self, "target_stopped_size")
 
@@ -730,9 +704,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter(name="targetSuspendedSize")
     def target_suspended_size(self) -> pulumi.Output[int]:
         """
-        The target number of suspended instances for this managed instance group. This number changes when you:  
-        - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. 
-        - Manually change the targetSuspendedSize using the update method.
+        The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method. 
         """
         return pulumi.get(self, "target_suspended_size")
 
@@ -748,9 +720,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter
     def versions(self) -> pulumi.Output[Sequence['outputs.InstanceGroupManagerVersionResponse']]:
         """
-        Specifies the instance templates used by this managed instance group to create instances.
-
-        Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+        Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
         """
         return pulumi.get(self, "versions")
 

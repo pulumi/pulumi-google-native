@@ -1025,7 +1025,7 @@ class ImageArgs:
         """
         Overlaid jpeg image.
         :param pulumi.Input[str] uri: URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
-        :param pulumi.Input[float] alpha: Target image opacity. Valid values: `1.0` (solid, default) to `0.0` (transparent).
+        :param pulumi.Input[float] alpha: Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
         :param pulumi.Input['NormalizedCoordinateArgs'] resolution: Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
         """
         pulumi.set(__self__, "uri", uri)
@@ -1050,7 +1050,7 @@ class ImageArgs:
     @pulumi.getter
     def alpha(self) -> Optional[pulumi.Input[float]]:
         """
-        Target image opacity. Valid values: `1.0` (solid, default) to `0.0` (transparent).
+        Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
         """
         return pulumi.get(self, "alpha")
 

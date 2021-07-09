@@ -43,7 +43,6 @@ class InstanceArgs:
                  reservation_affinity: Optional[pulumi.Input['ReservationAffinityArgs']] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scheduling: Optional[pulumi.Input['SchedulingArgs']] = None,
-                 secure_labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]]] = None,
                  shielded_instance_config: Optional[pulumi.Input['ShieldedInstanceConfigArgs']] = None,
@@ -57,7 +56,7 @@ class InstanceArgs:
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input['AdvancedMachineFeaturesArgs'] advanced_machine_features: Controls for advanced machine-related behavior features.
-        :param pulumi.Input[bool] can_ip_forward: Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding.
+        :param pulumi.Input[bool] can_ip_forward: Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
         :param pulumi.Input[bool] deletion_protection: Whether the resource should be protected against deletion.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input['AttachedDiskArgs']]] disks: Array of disks associated with this instance. Persistent disks must be created before you can assign them.
@@ -65,42 +64,21 @@ class InstanceArgs:
         :param pulumi.Input[bool] erase_windows_vss_signature: Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input['AcceleratorConfigArgs']]] guest_accelerators: A list of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
-        :param pulumi.Input['CustomerEncryptionKeyArgs'] instance_encryption_key: Encrypts or decrypts data for an instance with a customer-supplied encryption key.
-               
-               If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide.
-               
-               If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance.
-               
-               If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later.
-               
-               Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+        :param pulumi.Input['CustomerEncryptionKeyArgs'] instance_encryption_key: Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
-        :param pulumi.Input[str] machine_type: Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type:
-               zones/us-central1-f/machineTypes/n1-standard-1
-               
-               
-               To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB):
-               zones/zone/machineTypes/custom-CPUS-MEMORY
-               
-               
-               For example: zones/us-central1-f/machineTypes/custom-4-5120 
-               
-               For a full list of restrictions, read the Specifications for custom machine types.
+        :param pulumi.Input[str] machine_type: Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
         :param pulumi.Input['MetadataArgs'] metadata: The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkInterfaceArgs']]] network_interfaces: An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
         :param pulumi.Input['InstancePostKeyRevocationActionType'] post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
         :param pulumi.Input[str] preserved_state_size_gb: Total amount of preserved state for SUSPENDED instances. Read-only in the api.
-        :param pulumi.Input['InstancePrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
+        :param pulumi.Input['InstancePrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
         :param pulumi.Input['ReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this instance.
         :param pulumi.Input['SchedulingArgs'] scheduling: Sets the scheduling options for this instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] secure_labels: Secure labels to apply to this instance. These can be later modified by the update method. Maximum number of secure labels allowed is 300.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] secure_tags: Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 300.
-        :param pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]] service_accounts: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported.
-               
-               Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] secure_tags: [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
+        :param pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]] service_accounts: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
         :param pulumi.Input['ShieldedVmConfigArgs'] shielded_vm_config: Deprecating, please use shielded_instance_config.
         :param pulumi.Input['ShieldedVmIntegrityPolicyArgs'] shielded_vm_integrity_policy: Deprecating, please use shielded_instance_integrity_policy.
         :param pulumi.Input[str] source_machine_image: Source machine image
@@ -159,8 +137,6 @@ class InstanceArgs:
             pulumi.set(__self__, "resource_policies", resource_policies)
         if scheduling is not None:
             pulumi.set(__self__, "scheduling", scheduling)
-        if secure_labels is not None:
-            pulumi.set(__self__, "secure_labels", secure_labels)
         if secure_tags is not None:
             pulumi.set(__self__, "secure_tags", secure_tags)
         if service_accounts is not None:
@@ -216,7 +192,7 @@ class InstanceArgs:
     @pulumi.getter(name="canIpForward")
     def can_ip_forward(self) -> Optional[pulumi.Input[bool]]:
         """
-        Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding.
+        Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
         """
         return pulumi.get(self, "can_ip_forward")
 
@@ -321,15 +297,7 @@ class InstanceArgs:
     @pulumi.getter(name="instanceEncryptionKey")
     def instance_encryption_key(self) -> Optional[pulumi.Input['CustomerEncryptionKeyArgs']]:
         """
-        Encrypts or decrypts data for an instance with a customer-supplied encryption key.
-
-        If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide.
-
-        If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance.
-
-        If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later.
-
-        Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+        Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
         """
         return pulumi.get(self, "instance_encryption_key")
 
@@ -353,17 +321,7 @@ class InstanceArgs:
     @pulumi.getter(name="machineType")
     def machine_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type:
-        zones/us-central1-f/machineTypes/n1-standard-1
-
-
-        To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB):
-        zones/zone/machineTypes/custom-CPUS-MEMORY
-
-
-        For example: zones/us-central1-f/machineTypes/custom-4-5120 
-
-        For a full list of restrictions, read the Specifications for custom machine types.
+        Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
         """
         return pulumi.get(self, "machine_type")
 
@@ -456,7 +414,7 @@ class InstanceArgs:
     @pulumi.getter(name="privateIpv6GoogleAccess")
     def private_ipv6_google_access(self) -> Optional[pulumi.Input['InstancePrivateIpv6GoogleAccess']]:
         """
-        The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
+        The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
         """
         return pulumi.get(self, "private_ipv6_google_access")
 
@@ -510,22 +468,10 @@ class InstanceArgs:
         pulumi.set(self, "scheduling", value)
 
     @property
-    @pulumi.getter(name="secureLabels")
-    def secure_labels(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Secure labels to apply to this instance. These can be later modified by the update method. Maximum number of secure labels allowed is 300.
-        """
-        return pulumi.get(self, "secure_labels")
-
-    @secure_labels.setter
-    def secure_labels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "secure_labels", value)
-
-    @property
     @pulumi.getter(name="secureTags")
     def secure_tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 300.
+        [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
         """
         return pulumi.get(self, "secure_tags")
 
@@ -537,9 +483,7 @@ class InstanceArgs:
     @pulumi.getter(name="serviceAccounts")
     def service_accounts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ServiceAccountArgs']]]]:
         """
-        A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported.
-
-        Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+        A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
         """
         return pulumi.get(self, "service_accounts")
 
@@ -666,7 +610,6 @@ class Instance(pulumi.CustomResource):
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['ReservationAffinityArgs']]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scheduling: Optional[pulumi.Input[pulumi.InputType['SchedulingArgs']]] = None,
-                 secure_labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]]]] = None,
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']]] = None,
@@ -685,7 +628,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['AdvancedMachineFeaturesArgs']] advanced_machine_features: Controls for advanced machine-related behavior features.
-        :param pulumi.Input[bool] can_ip_forward: Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding.
+        :param pulumi.Input[bool] can_ip_forward: Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
         :param pulumi.Input[bool] deletion_protection: Whether the resource should be protected against deletion.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AttachedDiskArgs']]]] disks: Array of disks associated with this instance. Persistent disks must be created before you can assign them.
@@ -693,42 +636,21 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] erase_windows_vss_signature: Specifies whether the disks restored from source snapshots or source machine image should erase Windows specific VSS signature.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorConfigArgs']]]] guest_accelerators: A list of the type and count of accelerator cards attached to the instance.
         :param pulumi.Input[str] hostname: Specifies the hostname of the instance. The specified hostname must be RFC1035 compliant. If hostname is not specified, the default hostname is [INSTANCE_NAME].c.[PROJECT_ID].internal when using the global DNS, and [INSTANCE_NAME].[ZONE].c.[PROJECT_ID].internal when using zonal DNS.
-        :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] instance_encryption_key: Encrypts or decrypts data for an instance with a customer-supplied encryption key.
-               
-               If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide.
-               
-               If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance.
-               
-               If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later.
-               
-               Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+        :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] instance_encryption_key: Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this instance. These can be later modified by the setLabels method.
-        :param pulumi.Input[str] machine_type: Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type:
-               zones/us-central1-f/machineTypes/n1-standard-1
-               
-               
-               To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB):
-               zones/zone/machineTypes/custom-CPUS-MEMORY
-               
-               
-               For example: zones/us-central1-f/machineTypes/custom-4-5120 
-               
-               For a full list of restrictions, read the Specifications for custom machine types.
+        :param pulumi.Input[str] machine_type: Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
         :param pulumi.Input[pulumi.InputType['MetadataArgs']] metadata: The metadata key/value pairs assigned to this instance. This includes custom metadata and predefined keys.
         :param pulumi.Input[str] min_cpu_platform: Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkInterfaceArgs']]]] network_interfaces: An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
         :param pulumi.Input['InstancePostKeyRevocationActionType'] post_key_revocation_action_type: PostKeyRevocationActionType of the instance.
         :param pulumi.Input[str] preserved_state_size_gb: Total amount of preserved state for SUSPENDED instances. Read-only in the api.
-        :param pulumi.Input['InstancePrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
+        :param pulumi.Input['InstancePrivateIpv6GoogleAccess'] private_ipv6_google_access: The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
         :param pulumi.Input[pulumi.InputType['ReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this instance.
         :param pulumi.Input[pulumi.InputType['SchedulingArgs']] scheduling: Sets the scheduling options for this instance.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] secure_labels: Secure labels to apply to this instance. These can be later modified by the update method. Maximum number of secure labels allowed is 300.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] secure_tags: Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 300.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]]] service_accounts: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported.
-               
-               Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] secure_tags: [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]]] service_accounts: A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
         :param pulumi.Input[pulumi.InputType['ShieldedVmConfigArgs']] shielded_vm_config: Deprecating, please use shielded_instance_config.
         :param pulumi.Input[pulumi.InputType['ShieldedVmIntegrityPolicyArgs']] shielded_vm_integrity_policy: Deprecating, please use shielded_instance_integrity_policy.
         :param pulumi.Input[str] source_machine_image: Source machine image
@@ -785,7 +707,6 @@ class Instance(pulumi.CustomResource):
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['ReservationAffinityArgs']]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  scheduling: Optional[pulumi.Input[pulumi.InputType['SchedulingArgs']]] = None,
-                 secure_labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_accounts: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]]]] = None,
                  shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']]] = None,
@@ -837,7 +758,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["reservation_affinity"] = reservation_affinity
             __props__.__dict__["resource_policies"] = resource_policies
             __props__.__dict__["scheduling"] = scheduling
-            __props__.__dict__["secure_labels"] = secure_labels
             __props__.__dict__["secure_tags"] = secure_tags
             __props__.__dict__["service_accounts"] = service_accounts
             __props__.__dict__["shielded_instance_config"] = shielded_instance_config
@@ -923,7 +843,6 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["resource_status"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["scheduling"] = None
-        __props__.__dict__["secure_labels"] = None
         __props__.__dict__["secure_tags"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
@@ -954,7 +873,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="canIpForward")
     def can_ip_forward(self) -> pulumi.Output[bool]:
         """
-        Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding.
+        Allows this instance to send and receive packets with non-matching destination or source IPs. This is required if you plan to use this instance to forward routes. For more information, see Enabling IP Forwarding .
         """
         return pulumi.get(self, "can_ip_forward")
 
@@ -1023,9 +942,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def fingerprint(self) -> pulumi.Output[str]:
         """
-        Specifies a fingerprint for this resource, which is essentially a hash of the instance's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update the instance. You must always provide an up-to-date fingerprint hash in order to update the instance.
-
-        To see the latest fingerprint, make get() request to the instance.
+        Specifies a fingerprint for this resource, which is essentially a hash of the instance's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update the instance. You must always provide an up-to-date fingerprint hash in order to update the instance. To see the latest fingerprint, make get() request to the instance.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -1049,15 +966,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceEncryptionKey")
     def instance_encryption_key(self) -> pulumi.Output['outputs.CustomerEncryptionKeyResponse']:
         """
-        Encrypts or decrypts data for an instance with a customer-supplied encryption key.
-
-        If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide.
-
-        If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance.
-
-        If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later.
-
-        Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
+        Encrypts or decrypts data for an instance with a customer-supplied encryption key. If you are creating a new instance, this field encrypts the local SSD and in-memory contents of the instance using a key that you provide. If you are restarting an instance protected with a customer-supplied encryption key, you must provide the correct key in order to successfully restart the instance. If you do not provide an encryption key when creating the instance, then the local SSD and in-memory contents will be encrypted using an automatically generated key and you do not need to provide a key to start the instance later. Instance templates do not store customer-supplied encryption keys, so you cannot use your own keys to encrypt local SSDs and in-memory content in a managed instance group.
         """
         return pulumi.get(self, "instance_encryption_key")
 
@@ -1073,9 +982,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> pulumi.Output[str]:
         """
-        A fingerprint for this request, which is essentially a hash of the label's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels.
-
-        To see the latest fingerprint, make get() request to the instance.
+        A fingerprint for this request, which is essentially a hash of the label's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels. To see the latest fingerprint, make get() request to the instance.
         """
         return pulumi.get(self, "label_fingerprint")
 
@@ -1115,17 +1022,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="machineType")
     def machine_type(self) -> pulumi.Output[str]:
         """
-        Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type:
-        zones/us-central1-f/machineTypes/n1-standard-1
-
-
-        To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB):
-        zones/zone/machineTypes/custom-CPUS-MEMORY
-
-
-        For example: zones/us-central1-f/machineTypes/custom-4-5120 
-
-        For a full list of restrictions, read the Specifications for custom machine types.
+        Full or partial URL of the machine type resource to use for this instance, in the format: zones/zone/machineTypes/machine-type. This is provided by the client when the instance is created. For example, the following is a valid partial url to a predefined machine type: zones/us-central1-f/machineTypes/n1-standard-1 To create a custom machine type, provide a URL to a machine type in the following format, where CPUS is 1 or an even number up to 32 (2, 4, 6, ... 24, etc), and MEMORY is the total memory for this instance. Memory must be a multiple of 256 MB and must be supplied in MB (e.g. 5 GB of memory is 5120 MB): zones/zone/machineTypes/custom-CPUS-MEMORY For example: zones/us-central1-f/machineTypes/custom-4-5120 For a full list of restrictions, read the Specifications for custom machine types.
         """
         return pulumi.get(self, "machine_type")
 
@@ -1186,7 +1083,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="privateIpv6GoogleAccess")
     def private_ipv6_google_access(self) -> pulumi.Output[str]:
         """
-        The private IPv6 google access type for the VM. If not specified, use  INHERIT_FROM_SUBNETWORK as default.
+        The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
         """
         return pulumi.get(self, "private_ipv6_google_access")
 
@@ -1231,18 +1128,10 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "scheduling")
 
     @property
-    @pulumi.getter(name="secureLabels")
-    def secure_labels(self) -> pulumi.Output[Sequence[str]]:
-        """
-        Secure labels to apply to this instance. These can be later modified by the update method. Maximum number of secure labels allowed is 300.
-        """
-        return pulumi.get(self, "secure_labels")
-
-    @property
     @pulumi.getter(name="secureTags")
     def secure_tags(self) -> pulumi.Output[Sequence[str]]:
         """
-        Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 300.
+        [Input Only] Secure tags to apply to this instance. These can be later modified by the update method. Maximum number of secure tags allowed is 50.
         """
         return pulumi.get(self, "secure_tags")
 
@@ -1266,9 +1155,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="serviceAccounts")
     def service_accounts(self) -> pulumi.Output[Sequence['outputs.ServiceAccountResponse']]:
         """
-        A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported.
-
-        Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
+        A list of service accounts, with their specified scopes, authorized for this instance. Only one service account per VM instance is supported. Service accounts generate access tokens that can be accessed through the metadata server and used to authenticate applications on the instance. See Service Accounts for more information.
         """
         return pulumi.get(self, "service_accounts")
 
@@ -1326,7 +1213,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see  Instance life cycle.
+        The status of the instance. One of the following values: PROVISIONING, STAGING, RUNNING, STOPPING, SUSPENDING, SUSPENDED, REPAIRING, and TERMINATED. For more information about the status of the instance, see Instance life cycle.
         """
         return pulumi.get(self, "status")
 

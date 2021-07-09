@@ -17,6 +17,8 @@ __all__ = ['SecurityPolicyArgs', 'SecurityPolicy']
 class SecurityPolicyArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
+                 adaptive_protection_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']] = None,
+                 advanced_options_config: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -28,6 +30,10 @@ class SecurityPolicyArgs:
         :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleArgs']]] rules: A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
         """
         pulumi.set(__self__, "project", project)
+        if adaptive_protection_config is not None:
+            pulumi.set(__self__, "adaptive_protection_config", adaptive_protection_config)
+        if advanced_options_config is not None:
+            pulumi.set(__self__, "advanced_options_config", advanced_options_config)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
@@ -45,6 +51,24 @@ class SecurityPolicyArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="adaptiveProtectionConfig")
+    def adaptive_protection_config(self) -> Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']]:
+        return pulumi.get(self, "adaptive_protection_config")
+
+    @adaptive_protection_config.setter
+    def adaptive_protection_config(self, value: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigArgs']]):
+        pulumi.set(self, "adaptive_protection_config", value)
+
+    @property
+    @pulumi.getter(name="advancedOptionsConfig")
+    def advanced_options_config(self) -> Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs']]:
+        return pulumi.get(self, "advanced_options_config")
+
+    @advanced_options_config.setter
+    def advanced_options_config(self, value: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigArgs']]):
+        pulumi.set(self, "advanced_options_config", value)
 
     @property
     @pulumi.getter
@@ -97,6 +121,8 @@ class SecurityPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 adaptive_protection_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']]] = None,
+                 advanced_options_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdvancedOptionsConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -136,6 +162,8 @@ class SecurityPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 adaptive_protection_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdaptiveProtectionConfigArgs']]] = None,
+                 advanced_options_config: Optional[pulumi.Input[pulumi.InputType['SecurityPolicyAdvancedOptionsConfigArgs']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -153,6 +181,8 @@ class SecurityPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecurityPolicyArgs.__new__(SecurityPolicyArgs)
 
+            __props__.__dict__["adaptive_protection_config"] = adaptive_protection_config
+            __props__.__dict__["advanced_options_config"] = advanced_options_config
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
@@ -186,6 +216,8 @@ class SecurityPolicy(pulumi.CustomResource):
 
         __props__ = SecurityPolicyArgs.__new__(SecurityPolicyArgs)
 
+        __props__.__dict__["adaptive_protection_config"] = None
+        __props__.__dict__["advanced_options_config"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["fingerprint"] = None
@@ -194,6 +226,16 @@ class SecurityPolicy(pulumi.CustomResource):
         __props__.__dict__["rules"] = None
         __props__.__dict__["self_link"] = None
         return SecurityPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="adaptiveProtectionConfig")
+    def adaptive_protection_config(self) -> pulumi.Output['outputs.SecurityPolicyAdaptiveProtectionConfigResponse']:
+        return pulumi.get(self, "adaptive_protection_config")
+
+    @property
+    @pulumi.getter(name="advancedOptionsConfig")
+    def advanced_options_config(self) -> pulumi.Output['outputs.SecurityPolicyAdvancedOptionsConfigResponse']:
+        return pulumi.get(self, "advanced_options_config")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -215,9 +257,7 @@ class SecurityPolicy(pulumi.CustomResource):
     @pulumi.getter
     def fingerprint(self) -> pulumi.Output[str]:
         """
-        Specifies a fingerprint for this resource, which is essentially a hash of the metadata's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update metadata. You must always provide an up-to-date fingerprint hash in order to update or change metadata, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make get() request to the security policy.
+        Specifies a fingerprint for this resource, which is essentially a hash of the metadata's contents and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update metadata. You must always provide an up-to-date fingerprint hash in order to update or change metadata, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make get() request to the security policy.
         """
         return pulumi.get(self, "fingerprint")
 

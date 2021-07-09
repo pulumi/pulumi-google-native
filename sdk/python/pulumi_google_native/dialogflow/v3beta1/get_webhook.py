@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetWebhookResult:
-    def __init__(__self__, disabled=None, display_name=None, generic_web_service=None, name=None, timeout=None):
+    def __init__(__self__, disabled=None, display_name=None, generic_web_service=None, name=None, service_directory=None, timeout=None):
         if disabled and not isinstance(disabled, bool):
             raise TypeError("Expected argument 'disabled' to be a bool")
         pulumi.set(__self__, "disabled", disabled)
@@ -30,6 +30,9 @@ class GetWebhookResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if service_directory and not isinstance(service_directory, dict):
+            raise TypeError("Expected argument 'service_directory' to be a dict")
+        pulumi.set(__self__, "service_directory", service_directory)
         if timeout and not isinstance(timeout, str):
             raise TypeError("Expected argument 'timeout' to be a str")
         pulumi.set(__self__, "timeout", timeout)
@@ -67,6 +70,14 @@ class GetWebhookResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="serviceDirectory")
+    def service_directory(self) -> 'outputs.GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse':
+        """
+        Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+        """
+        return pulumi.get(self, "service_directory")
+
+    @property
     @pulumi.getter
     def timeout(self) -> str:
         """
@@ -85,6 +96,7 @@ class AwaitableGetWebhookResult(GetWebhookResult):
             display_name=self.display_name,
             generic_web_service=self.generic_web_service,
             name=self.name,
+            service_directory=self.service_directory,
             timeout=self.timeout)
 
 
@@ -112,4 +124,5 @@ def get_webhook(agent_id: Optional[str] = None,
         display_name=__ret__.display_name,
         generic_web_service=__ret__.generic_web_service,
         name=__ret__.name,
+        service_directory=__ret__.service_directory,
         timeout=__ret__.timeout)

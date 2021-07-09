@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['FeatureArgs', 'Feature']
@@ -15,6 +16,7 @@ __all__ = ['FeatureArgs', 'Feature']
 @pulumi.input_type
 class FeatureArgs:
     def __init__(__self__, *,
+                 location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  feature_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -27,6 +29,7 @@ class FeatureArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] membership_specs: Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Membership is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
         :param pulumi.Input['CommonFeatureSpecArgs'] spec: Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
         """
+        pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         if feature_id is not None:
             pulumi.set(__self__, "feature_id", feature_id)
@@ -38,6 +41,15 @@ class FeatureArgs:
             pulumi.set(__self__, "request_id", request_id)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
 
     @property
     @pulumi.getter
@@ -110,6 +122,7 @@ class Feature(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  feature_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  membership_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -150,6 +163,7 @@ class Feature(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  feature_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
                  membership_specs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -168,6 +182,9 @@ class Feature(pulumi.CustomResource):
 
             __props__.__dict__["feature_id"] = feature_id
             __props__.__dict__["labels"] = labels
+            if location is None and not opts.urn:
+                raise TypeError("Missing required property 'location'")
+            __props__.__dict__["location"] = location
             __props__.__dict__["membership_specs"] = membership_specs
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
@@ -259,7 +276,7 @@ class Feature(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The full, unique name of this Feature resource in the format `projects/*/locations/global/features/*`.
+        The full, unique name of this Feature resource in the format `projects/*/locations/*/features/*`.
         """
         return pulumi.get(self, "name")
 

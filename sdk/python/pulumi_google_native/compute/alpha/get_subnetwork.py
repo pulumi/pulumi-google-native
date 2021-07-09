@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSubnetworkResult:
-    def __init__(__self__, aggregation_interval=None, allow_subnet_cidr_routes_overlap=None, creation_timestamp=None, description=None, enable_flow_logs=None, enable_l2=None, external_ipv6_prefix=None, fingerprint=None, flow_sampling=None, gateway_address=None, ip_cidr_range=None, ipv6_access_type=None, ipv6_cidr_range=None, kind=None, log_config=None, metadata=None, name=None, network=None, private_ip_google_access=None, private_ipv6_google_access=None, purpose=None, region=None, role=None, secondary_ip_ranges=None, self_link=None, self_link_with_id=None, stack_type=None, state=None, vlans=None):
+    def __init__(__self__, aggregation_interval=None, allow_subnet_cidr_routes_overlap=None, creation_timestamp=None, description=None, enable_flow_logs=None, enable_l2=None, external_ipv6_prefix=None, fingerprint=None, flow_sampling=None, gateway_address=None, ip_cidr_range=None, ipv6_access_type=None, ipv6_cidr_range=None, kind=None, log_config=None, metadata=None, name=None, network=None, private_ip_google_access=None, private_ipv6_google_access=None, purpose=None, region=None, reserved_internal_range=None, role=None, secondary_ip_ranges=None, self_link=None, self_link_with_id=None, stack_type=None, state=None, vlans=None):
         if aggregation_interval and not isinstance(aggregation_interval, str):
             raise TypeError("Expected argument 'aggregation_interval' to be a str")
         pulumi.set(__self__, "aggregation_interval", aggregation_interval)
@@ -84,6 +84,9 @@ class GetSubnetworkResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if reserved_internal_range and not isinstance(reserved_internal_range, str):
+            raise TypeError("Expected argument 'reserved_internal_range' to be a str")
+        pulumi.set(__self__, "reserved_internal_range", reserved_internal_range)
         if role and not isinstance(role, str):
             raise TypeError("Expected argument 'role' to be a str")
         pulumi.set(__self__, "role", role)
@@ -118,13 +121,7 @@ class GetSubnetworkResult:
     @pulumi.getter(name="allowSubnetCidrRoutesOverlap")
     def allow_subnet_cidr_routes_overlap(self) -> bool:
         """
-        Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length.
-
-        Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature.
-
-        The default value is false and applies to all existing subnetworks and automatically created subnetworks.
-
-        This field cannot be set to true at resource creation time.
+        Whether this subnetwork can conflict with static routes. Setting this to true allows this subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the corresponding network. Static routes will take precedence over the subnetwork route if the route prefix length is at least as large as the subnetwork prefix length. Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from leaving the virtual network. Setting this field to true will disable this feature. The default value is false and applies to all existing subnetworks and automatically created subnetworks. This field cannot be set to true at resource creation time.
         """
         return pulumi.get(self, "allow_subnet_cidr_routes_overlap")
 
@@ -172,9 +169,7 @@ class GetSubnetworkResult:
     @pulumi.getter
     def fingerprint(self) -> str:
         """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must be provided in order to update the Subnetwork, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a Subnetwork.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -270,9 +265,7 @@ class GetSubnetworkResult:
     @pulumi.getter(name="privateIpv6GoogleAccess")
     def private_ipv6_google_access(self) -> str:
         """
-        The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority.
-
-        This field can be both set at resource creation time and updated using patch.
+        The private IPv6 google access type for the VMs in this subnet. This is an expanded field of enablePrivateV6Access. If both fields are set, privateIpv6GoogleAccess will take priority. This field can be both set at resource creation time and updated using patch.
         """
         return pulumi.get(self, "private_ipv6_google_access")
 
@@ -291,6 +284,14 @@ class GetSubnetworkResult:
         URL of the region where the Subnetwork resides. This field can be set only at resource creation time.
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="reservedInternalRange")
+    def reserved_internal_range(self) -> str:
+        """
+        The URL of the reserved internal range.
+        """
+        return pulumi.get(self, "reserved_internal_range")
 
     @property
     @pulumi.getter
@@ -328,9 +329,7 @@ class GetSubnetworkResult:
     @pulumi.getter(name="stackType")
     def stack_type(self) -> str:
         """
-        The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used.
-
-        This field can be both set at resource creation time and updated using patch.
+        The stack type for this subnet to identify whether the IPv6 feature is enabled or not. If not specified IPV4_ONLY will be used. This field can be both set at resource creation time and updated using patch.
         """
         return pulumi.get(self, "stack_type")
 
@@ -338,7 +337,7 @@ class GetSubnetworkResult:
     @pulumi.getter
     def state(self) -> str:
         """
-        The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY CREATING: Subnetwork is provisioning DELETING: Subnetwork is being deleted UPDATING: Subnetwork is being updated
+        The state of the subnetwork, which can be one of the following values: READY: Subnetwork is created and ready to use DRAINING: only applicable to subnetworks that have the purpose set to INTERNAL_HTTPS_LOAD_BALANCER and indicates that connections to the load balancer are being drained. A subnetwork that is draining cannot be used or modified until it reaches a status of READY
         """
         return pulumi.get(self, "state")
 
@@ -379,6 +378,7 @@ class AwaitableGetSubnetworkResult(GetSubnetworkResult):
             private_ipv6_google_access=self.private_ipv6_google_access,
             purpose=self.purpose,
             region=self.region,
+            reserved_internal_range=self.reserved_internal_range,
             role=self.role,
             secondary_ip_ranges=self.secondary_ip_ranges,
             self_link=self.self_link,
@@ -428,6 +428,7 @@ def get_subnetwork(project: Optional[str] = None,
         private_ipv6_google_access=__ret__.private_ipv6_google_access,
         purpose=__ret__.purpose,
         region=__ret__.region,
+        reserved_internal_range=__ret__.reserved_internal_range,
         role=__ret__.role,
         secondary_ip_ranges=__ret__.secondary_ip_ranges,
         self_link=__ret__.self_link,

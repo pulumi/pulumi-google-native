@@ -126,28 +126,17 @@ class AutoscalingConfigArgs:
 @pulumi.input_type
 class BasicAutoscalingAlgorithmArgs:
     def __init__(__self__, *,
-                 yarn_config: pulumi.Input['BasicYarnAutoscalingConfigArgs'],
-                 cooldown_period: Optional[pulumi.Input[str]] = None):
+                 cooldown_period: Optional[pulumi.Input[str]] = None,
+                 yarn_config: Optional[pulumi.Input['BasicYarnAutoscalingConfigArgs']] = None):
         """
         Basic algorithm for autoscaling.
-        :param pulumi.Input['BasicYarnAutoscalingConfigArgs'] yarn_config: YARN autoscaling configuration.
         :param pulumi.Input[str] cooldown_period: Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
+        :param pulumi.Input['BasicYarnAutoscalingConfigArgs'] yarn_config: Optional. YARN autoscaling configuration.
         """
-        pulumi.set(__self__, "yarn_config", yarn_config)
         if cooldown_period is not None:
             pulumi.set(__self__, "cooldown_period", cooldown_period)
-
-    @property
-    @pulumi.getter(name="yarnConfig")
-    def yarn_config(self) -> pulumi.Input['BasicYarnAutoscalingConfigArgs']:
-        """
-        YARN autoscaling configuration.
-        """
-        return pulumi.get(self, "yarn_config")
-
-    @yarn_config.setter
-    def yarn_config(self, value: pulumi.Input['BasicYarnAutoscalingConfigArgs']):
-        pulumi.set(self, "yarn_config", value)
+        if yarn_config is not None:
+            pulumi.set(__self__, "yarn_config", yarn_config)
 
     @property
     @pulumi.getter(name="cooldownPeriod")
@@ -160,6 +149,18 @@ class BasicAutoscalingAlgorithmArgs:
     @cooldown_period.setter
     def cooldown_period(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cooldown_period", value)
+
+    @property
+    @pulumi.getter(name="yarnConfig")
+    def yarn_config(self) -> Optional[pulumi.Input['BasicYarnAutoscalingConfigArgs']]:
+        """
+        Optional. YARN autoscaling configuration.
+        """
+        return pulumi.get(self, "yarn_config")
+
+    @yarn_config.setter
+    def yarn_config(self, value: Optional[pulumi.Input['BasicYarnAutoscalingConfigArgs']]):
+        pulumi.set(self, "yarn_config", value)
 
 
 @pulumi.input_type
@@ -595,7 +596,7 @@ class ConfidentialInstanceConfigArgs:
     def __init__(__self__, *,
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None):
         """
-        Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs) NEXT ID: 2
+        Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
         :param pulumi.Input[bool] enable_confidential_compute: Optional. Defines whether the instance should have confidential compute enabled.
         """
         if enable_confidential_compute is not None:
@@ -808,7 +809,7 @@ class GceClusterConfigArgs:
                  zone_uri: Optional[pulumi.Input[str]] = None):
         """
         Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.
-        :param pulumi.Input['ConfidentialInstanceConfigArgs'] confidential_instance_config: Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
+        :param pulumi.Input['ConfidentialInstanceConfigArgs'] confidential_instance_config: Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs).
         :param pulumi.Input[bool] internal_ip_only: Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The Compute Engine metadata entries to add to all instances (see Project and instance metadata (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
         :param pulumi.Input[str] network_uri: Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks (https://cloud.google.com/compute/docs/subnetworks) for more information).A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default projects/[project_id]/regions/global/default default
@@ -853,7 +854,7 @@ class GceClusterConfigArgs:
     @pulumi.getter(name="confidentialInstanceConfig")
     def confidential_instance_config(self) -> Optional[pulumi.Input['ConfidentialInstanceConfigArgs']]:
         """
-        Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
+        Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs).
         """
         return pulumi.get(self, "confidential_instance_config")
 

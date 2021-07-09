@@ -2168,13 +2168,29 @@ class VolumeArgs:
 @pulumi.input_type
 class VpcAccessConnectorArgs:
     def __init__(__self__, *,
+                 egress_setting: Optional[pulumi.Input['VpcAccessConnectorEgressSetting']] = None,
                  name: Optional[pulumi.Input[str]] = None):
         """
         VPC access connector specification.
+        :param pulumi.Input['VpcAccessConnectorEgressSetting'] egress_setting: The egress setting for the connector, controlling what traffic is diverted through it.
         :param pulumi.Input[str] name: Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
         """
+        if egress_setting is not None:
+            pulumi.set(__self__, "egress_setting", egress_setting)
         if name is not None:
             pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="egressSetting")
+    def egress_setting(self) -> Optional[pulumi.Input['VpcAccessConnectorEgressSetting']]:
+        """
+        The egress setting for the connector, controlling what traffic is diverted through it.
+        """
+        return pulumi.get(self, "egress_setting")
+
+    @egress_setting.setter
+    def egress_setting(self, value: Optional[pulumi.Input['VpcAccessConnectorEgressSetting']]):
+        pulumi.set(self, "egress_setting", value)
 
     @property
     @pulumi.getter

@@ -417,7 +417,7 @@ class Intent(pulumi.CustomResource):
                  webhook_state: Optional[pulumi.Input['IntentWebhookState']] = None,
                  __props__=None):
         """
-        Creates an intent in the specified agent.
+        Creates an intent in the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -449,7 +449,7 @@ class Intent(pulumi.CustomResource):
                  args: IntentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates an intent in the specified agent.
+        Creates an intent in the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
 
         :param str resource_name: The name of the resource.
         :param IntentArgs args: The arguments to use to populate this resource's properties.

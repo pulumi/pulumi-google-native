@@ -27,10 +27,7 @@ class ZoneInPlaceSnapshotArgs:
         :param pulumi.Input[bool] guest_flush: Specifies to create an application consistent in-place snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this InPlaceSnapshot. These can be later modified by the setLabels method. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] source_disk: URL of the source disk used to create this in-place snapshot. Note that the source disk must be in the same zone/region as the in-place snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values:  
-               - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk 
-               - projects/project/zones/zone/disks/disk 
-               - zones/zone/disks/disk
+        :param pulumi.Input[str] source_disk: URL of the source disk used to create this in-place snapshot. Note that the source disk must be in the same zone/region as the in-place snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk 
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "zone", zone)
@@ -126,10 +123,7 @@ class ZoneInPlaceSnapshotArgs:
     @pulumi.getter(name="sourceDisk")
     def source_disk(self) -> Optional[pulumi.Input[str]]:
         """
-        URL of the source disk used to create this in-place snapshot. Note that the source disk must be in the same zone/region as the in-place snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values:  
-        - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk 
-        - projects/project/zones/zone/disks/disk 
-        - zones/zone/disks/disk
+        URL of the source disk used to create this in-place snapshot. Note that the source disk must be in the same zone/region as the in-place snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk 
         """
         return pulumi.get(self, "source_disk")
 
@@ -161,10 +155,7 @@ class ZoneInPlaceSnapshot(pulumi.CustomResource):
         :param pulumi.Input[bool] guest_flush: Specifies to create an application consistent in-place snapshot by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this InPlaceSnapshot. These can be later modified by the setLabels method. Label values may be empty.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[str] source_disk: URL of the source disk used to create this in-place snapshot. Note that the source disk must be in the same zone/region as the in-place snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values:  
-               - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk 
-               - projects/project/zones/zone/disks/disk 
-               - zones/zone/disks/disk
+        :param pulumi.Input[str] source_disk: URL of the source disk used to create this in-place snapshot. Note that the source disk must be in the same zone/region as the in-place snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk 
         """
         ...
     @overload
@@ -314,9 +305,7 @@ class ZoneInPlaceSnapshot(pulumi.CustomResource):
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> pulumi.Output[str]:
         """
-        A fingerprint for the labels being applied to this InPlaceSnapshot, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve a InPlaceSnapshot.
+        A fingerprint for the labels being applied to this InPlaceSnapshot, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a InPlaceSnapshot.
         """
         return pulumi.get(self, "label_fingerprint")
 
@@ -364,10 +353,7 @@ class ZoneInPlaceSnapshot(pulumi.CustomResource):
     @pulumi.getter(name="sourceDisk")
     def source_disk(self) -> pulumi.Output[str]:
         """
-        URL of the source disk used to create this in-place snapshot. Note that the source disk must be in the same zone/region as the in-place snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values:  
-        - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk 
-        - projects/project/zones/zone/disks/disk 
-        - zones/zone/disks/disk
+        URL of the source disk used to create this in-place snapshot. Note that the source disk must be in the same zone/region as the in-place snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk 
         """
         return pulumi.get(self, "source_disk")
 

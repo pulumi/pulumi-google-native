@@ -20,6 +20,7 @@ __all__ = [
     'UrlMapSecurityLevel',
     'VersionInboundServicesItem',
     'VersionServingStatus',
+    'VpcAccessConnectorEgressSetting',
 ]
 
 
@@ -171,3 +172,12 @@ class VersionServingStatus(str, Enum):
     SERVING_STATUS_UNSPECIFIED = "SERVING_STATUS_UNSPECIFIED"
     SERVING = "SERVING"
     STOPPED = "STOPPED"
+
+
+class VpcAccessConnectorEgressSetting(str, Enum):
+    """
+    The egress setting for the connector, controlling what traffic is diverted through it.
+    """
+    EGRESS_SETTING_UNSPECIFIED = "EGRESS_SETTING_UNSPECIFIED"
+    ALL_TRAFFIC = "ALL_TRAFFIC"
+    PRIVATE_IP_RANGES = "PRIVATE_IP_RANGES"

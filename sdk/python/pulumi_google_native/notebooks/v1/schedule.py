@@ -279,7 +279,7 @@ class Schedule(pulumi.CustomResource):
     @pulumi.getter(name="displayName")
     def display_name(self) -> pulumi.Output[str]:
         """
-        Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens ‘-’, and underscores ‘_’.
+        Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens '-', and underscores '_'.
         """
         return pulumi.get(self, "display_name")
 

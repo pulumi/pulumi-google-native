@@ -663,13 +663,13 @@ class EnvironmentArgs:
         :param pulumi.Input[str] cluster_manager_api_service: The type of cluster manager API to use. If unknown or unspecified, the service will attempt to choose a reasonable default. This should be in the form of the API service name, e.g. "compute.googleapis.com".
         :param pulumi.Input[str] dataset: The dataset for the current project where various workflow related tables are stored. The supported resource type is: Google BigQuery: bigquery.googleapis.com/{dataset}
         :param pulumi.Input['DebugOptionsArgs'] debug_options: Any debugging options to be supplied to the job.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] experiments: The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options. For more details see the rationale at go/user-specified-service-options.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] experiments: The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options.
         :param pulumi.Input['EnvironmentFlexResourceSchedulingGoal'] flex_resource_scheduling_goal: Which Flexible Resource Scheduling mode to run in.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] internal_experiments: Experimental settings.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] sdk_pipeline_options: The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
         :param pulumi.Input[str] service_account_email: Identity to run virtual machines as. Defaults to the default account.
         :param pulumi.Input[str] service_kms_key_name: If set, contains the Cloud KMS key identifier used to encrypt data at rest, AKA a Customer Managed Encryption Key (CMEK). Format: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_options: The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on). For more details see the rationale at go/user-specified-service-options.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_options: The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).
         :param pulumi.Input[str] temp_storage_prefix: The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_agent: A description of the process that generated the request.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] version: A structure describing which components and their versions of the service are required in order to run the job.
@@ -750,7 +750,7 @@ class EnvironmentArgs:
     @pulumi.getter
     def experiments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options. For more details see the rationale at go/user-specified-service-options.
+        The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options.
         """
         return pulumi.get(self, "experiments")
 
@@ -822,7 +822,7 @@ class EnvironmentArgs:
     @pulumi.getter(name="serviceOptions")
     def service_options(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on). For more details see the rationale at go/user-specified-service-options.
+        The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).
         """
         return pulumi.get(self, "service_options")
 

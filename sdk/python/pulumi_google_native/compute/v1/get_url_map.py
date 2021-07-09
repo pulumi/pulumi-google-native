@@ -73,10 +73,7 @@ class GetUrlMapResult:
     @pulumi.getter(name="defaultRouteAction")
     def default_route_action(self) -> 'outputs.HttpRouteActionResponse':
         """
-        defaultRouteAction takes effect when none of the  hostRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any  weightedBackendServices.
-        Only one of defaultRouteAction or defaultUrlRedirect must be set.
-        UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within defaultRouteAction.
-        defaultRouteAction has no effect when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within defaultRouteAction. defaultRouteAction has no effect when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "default_route_action")
 
@@ -84,9 +81,7 @@ class GetUrlMapResult:
     @pulumi.getter(name="defaultService")
     def default_service(self) -> str:
         """
-        The full or partial URL of the defaultService resource to which traffic is directed if none of the hostRules match. If defaultRouteAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified.
-        Only one of defaultService, defaultUrlRedirect  or defaultRouteAction.weightedBackendService must be set.
-        defaultService has no effect when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        The full or partial URL of the defaultService resource to which traffic is directed if none of the hostRules match. If defaultRouteAction is additionally specified, advanced routing actions like URL Rewrites, etc. take effect prior to sending the request to the backend. However, if defaultService is specified, defaultRouteAction cannot contain any weightedBackendServices. Conversely, if routeAction specifies any weightedBackendServices, service must not be specified. Only one of defaultService, defaultUrlRedirect or defaultRouteAction.weightedBackendService must be set. defaultService has no effect when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "default_service")
 
@@ -94,9 +89,7 @@ class GetUrlMapResult:
     @pulumi.getter(name="defaultUrlRedirect")
     def default_url_redirect(self) -> 'outputs.HttpRedirectActionResponse':
         """
-        When none of the specified hostRules match, the request is redirected to a URL specified by defaultUrlRedirect.
-        If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set.
-        Not supported when the URL map is bound to target gRPC proxy.
+        When none of the specified hostRules match, the request is redirected to a URL specified by defaultUrlRedirect. If defaultUrlRedirect is specified, defaultService or defaultRouteAction must not be set. Not supported when the URL map is bound to target gRPC proxy.
         """
         return pulumi.get(self, "default_url_redirect")
 
@@ -112,9 +105,7 @@ class GetUrlMapResult:
     @pulumi.getter
     def fingerprint(self) -> str:
         """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a UrlMap. An up-to-date fingerprint must be provided in order to update the UrlMap, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve a UrlMap.
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a UrlMap. An up-to-date fingerprint must be provided in order to update the UrlMap, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a UrlMap.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -122,10 +113,7 @@ class GetUrlMapResult:
     @pulumi.getter(name="headerAction")
     def header_action(self) -> 'outputs.HttpHeaderActionResponse':
         """
-        Specifies changes to request and response headers that need to take effect for the selected backendService.
-        The headerAction specified here take effect after headerAction specified under pathMatcher.
-        Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL.
-        Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Specifies changes to request and response headers that need to take effect for the selected backendService. The headerAction specified here take effect after headerAction specified under pathMatcher. Note that headerAction is not supported for Loadbalancers that have their loadBalancingScheme set to EXTERNAL. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "header_action")
 
@@ -181,8 +169,7 @@ class GetUrlMapResult:
     @pulumi.getter
     def tests(self) -> Sequence['outputs.UrlMapTestResponse']:
         """
-        The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap.
-        Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
+        The list of expected URL mapping tests. Request to update this UrlMap will succeed only if all of the test cases pass. You can specify a maximum of 100 tests per UrlMap. Not supported when the URL map is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "tests")
 

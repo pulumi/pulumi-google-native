@@ -21,6 +21,7 @@ class BackendServiceArgs:
                  backends: Optional[pulumi.Input[Sequence[pulumi.Input['BackendArgs']]]] = None,
                  cdn_policy: Optional[pulumi.Input['BackendServiceCdnPolicyArgs']] = None,
                  circuit_breakers: Optional[pulumi.Input['CircuitBreakersArgs']] = None,
+                 compression_mode: Optional[pulumi.Input['BackendServiceCompressionMode']] = None,
                  connection_draining: Optional[pulumi.Input['ConnectionDrainingArgs']] = None,
                  connection_tracking_policy: Optional[pulumi.Input['BackendServiceConnectionTrackingPolicyArgs']] = None,
                  consistent_hash: Optional[pulumi.Input['ConsistentHashLoadBalancerSettingsArgs']] = None,
@@ -47,86 +48,30 @@ class BackendServiceArgs:
                  timeout_sec: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a BackendService resource.
-        :param pulumi.Input[int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds. Only applicable if the loadBalancingScheme is EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, the protocol is HTTP or HTTPS, and the sessionAffinity is GENERATED_COOKIE, or HTTP_COOKIE.
-               
-               If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400).
-               
-               Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input[Sequence[pulumi.Input['BackendArgs']]] backends: The list of backends that serve this BackendService.
-        :param pulumi.Input['BackendServiceCdnPolicyArgs'] cdn_policy: Cloud CDN configuration for this BackendService. Only available for  external HTTP(S) Load Balancing.
-        :param pulumi.Input['CircuitBreakersArgs'] circuit_breakers: Settings controlling the volume of connections to a backend service. If not set, this feature is considered disabled.
-               
-               This field is applicable to either:  
-               - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-               - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-               
-               Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param pulumi.Input['ConsistentHashLoadBalancerSettingsArgs'] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH.
-               
-               This field is applicable to either:  
-               - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-               - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-               
-               Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_request_headers: Headers that the HTTP/S load balancer should add to proxied requests.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
+        :param pulumi.Input['BackendServiceCdnPolicyArgs'] cdn_policy: Cloud CDN configuration for this BackendService. Only available for specified load balancer types.
+        :param pulumi.Input['BackendServiceCompressionMode'] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        :param pulumi.Input['ConsistentHashLoadBalancerSettingsArgs'] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_request_headers: Headers that the load balancer adds to proxied requests. See [Creating custom headers](https://cloud.google.com/load-balancing/docs/custom-headers).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the load balancer adds to proxied responses. See [Creating custom headers](https://cloud.google.com/load-balancing/docs/custom-headers).
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[bool] enable_cdn: If true, enables Cloud CDN for the backend service. Only applicable if the loadBalancingScheme is EXTERNAL and the protocol is HTTP or HTTPS.
-        :param pulumi.Input['BackendServiceFailoverPolicyArgs'] failover_policy: Applicable only to Failover for Internal TCP/UDP Load Balancing and Network Load Balancing. Requires at least one backend instance group to be defined as a backup (failover) backend.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_checks: The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See  Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check. Backend services with internet or serverless NEG backends must not have a health check.
+        :param pulumi.Input[bool] enable_cdn: If true, enables Cloud CDN for the backend service of an external HTTP(S) load balancer.
+        :param pulumi.Input['BackendServiceFailoverPolicyArgs'] failover_policy: Requires at least one backend instance group to be defined as a backup (failover) backend. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_checks: The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check. Backend services with internet or serverless NEG backends must not have a health check.
         :param pulumi.Input['BackendServiceIAPArgs'] iap: The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
-        :param pulumi.Input['BackendServiceLoadBalancingScheme'] load_balancing_scheme: Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
-        :param pulumi.Input['BackendServiceLocalityLbPolicy'] locality_lb_policy: The load balancing algorithm used within the scope of the locality. The possible values are:  
-               - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. 
-               - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. 
-               - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. 
-               - RANDOM: The load balancer selects a random healthy host. 
-               - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. 
-               - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 
-               
-               This field is applicable to either:  
-               - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-               - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-               
-               If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect.
-               
-               Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input['BackendServiceLoadBalancingScheme'] load_balancing_scheme: Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
+        :param pulumi.Input['BackendServiceLocalityLbPolicy'] locality_lb_policy: The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input['BackendServiceLogConfigArgs'] log_config: This field denotes the logging options for the load balancer traffic served by this backend service. If logging is enabled, logs will be exported to Stackdriver.
-        :param pulumi.Input['DurationArgs'] max_stream_duration: Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed.
-               If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
-               This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+        :param pulumi.Input['DurationArgs'] max_stream_duration: Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, there will be no timeout limit, i.e. the maximum duration is infinite. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs. This field can only be specified when the load balancing scheme is set to INTERNAL.
-        :param pulumi.Input['OutlierDetectionArgs'] outlier_detection: Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled.
-               
-               This field is applicable to either:  
-               - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-               - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-               
-               Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for communication to the backend VMs in that group. Required when the loadBalancingScheme is EXTERNAL (except Network Load Balancing), INTERNAL_MANAGED, or  INTERNAL_SELF_MANAGED and the backends are instance groups. The named port must be defined on each backend instance group. This parameter has no meaning if the backends are NEGs.
-               
-               
-               
-               Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port_name.
-        :param pulumi.Input['BackendServiceProtocol'] protocol: The protocol this BackendService uses to communicate with backends.
-               
-               Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more information.
-               
-               Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
-        :param pulumi.Input['SecuritySettingsArgs'] security_settings: This field specifies the security policy that applies to this backend service. This field is applicable to either:  
-               - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-               - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
-        :param pulumi.Input['BackendServiceSessionAffinity'] session_affinity: Type of session affinity to use. The default is NONE.
-               
-               When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO. * For all other load balancers that use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
-               
-               When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
-               
-               When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, possible values are NONE, CLIENT_IP, GENERATED_COOKIE, HEADER_FIELD, or HTTP_COOKIE.
-               
-               Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer. For more information see,  Backend service settings The default is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647 seconds.
+        :param pulumi.Input['OutlierDetectionArgs'] outlier_detection: Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port_name.
+        :param pulumi.Input['BackendServiceProtocol'] protocol: The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
+        :param pulumi.Input['SecuritySettingsArgs'] security_settings: This field specifies the security policy that applies to this backend service. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. 
+        :param pulumi.Input['BackendServiceSessionAffinity'] session_affinity: Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[int] timeout_sec: Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
         """
         pulumi.set(__self__, "project", project)
         if affinity_cookie_ttl_sec is not None:
@@ -137,6 +82,8 @@ class BackendServiceArgs:
             pulumi.set(__self__, "cdn_policy", cdn_policy)
         if circuit_breakers is not None:
             pulumi.set(__self__, "circuit_breakers", circuit_breakers)
+        if compression_mode is not None:
+            pulumi.set(__self__, "compression_mode", compression_mode)
         if connection_draining is not None:
             pulumi.set(__self__, "connection_draining", connection_draining)
         if connection_tracking_policy is not None:
@@ -199,11 +146,7 @@ class BackendServiceArgs:
     @pulumi.getter(name="affinityCookieTtlSec")
     def affinity_cookie_ttl_sec(self) -> Optional[pulumi.Input[int]]:
         """
-        Lifetime of cookies in seconds. Only applicable if the loadBalancingScheme is EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, the protocol is HTTP or HTTPS, and the sessionAffinity is GENERATED_COOKIE, or HTTP_COOKIE.
-
-        If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400).
-
-        Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "affinity_cookie_ttl_sec")
 
@@ -227,7 +170,7 @@ class BackendServiceArgs:
     @pulumi.getter(name="cdnPolicy")
     def cdn_policy(self) -> Optional[pulumi.Input['BackendServiceCdnPolicyArgs']]:
         """
-        Cloud CDN configuration for this BackendService. Only available for  external HTTP(S) Load Balancing.
+        Cloud CDN configuration for this BackendService. Only available for specified load balancer types.
         """
         return pulumi.get(self, "cdn_policy")
 
@@ -238,20 +181,23 @@ class BackendServiceArgs:
     @property
     @pulumi.getter(name="circuitBreakers")
     def circuit_breakers(self) -> Optional[pulumi.Input['CircuitBreakersArgs']]:
-        """
-        Settings controlling the volume of connections to a backend service. If not set, this feature is considered disabled.
-
-        This field is applicable to either:  
-        - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-        - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-
-        Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-        """
         return pulumi.get(self, "circuit_breakers")
 
     @circuit_breakers.setter
     def circuit_breakers(self, value: Optional[pulumi.Input['CircuitBreakersArgs']]):
         pulumi.set(self, "circuit_breakers", value)
+
+    @property
+    @pulumi.getter(name="compressionMode")
+    def compression_mode(self) -> Optional[pulumi.Input['BackendServiceCompressionMode']]:
+        """
+        Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        """
+        return pulumi.get(self, "compression_mode")
+
+    @compression_mode.setter
+    def compression_mode(self, value: Optional[pulumi.Input['BackendServiceCompressionMode']]):
+        pulumi.set(self, "compression_mode", value)
 
     @property
     @pulumi.getter(name="connectionDraining")
@@ -275,13 +221,7 @@ class BackendServiceArgs:
     @pulumi.getter(name="consistentHash")
     def consistent_hash(self) -> Optional[pulumi.Input['ConsistentHashLoadBalancerSettingsArgs']]:
         """
-        Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH.
-
-        This field is applicable to either:  
-        - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-        - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-
-        Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "consistent_hash")
 
@@ -293,7 +233,7 @@ class BackendServiceArgs:
     @pulumi.getter(name="customRequestHeaders")
     def custom_request_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Headers that the HTTP/S load balancer should add to proxied requests.
+        Headers that the load balancer adds to proxied requests. See [Creating custom headers](https://cloud.google.com/load-balancing/docs/custom-headers).
         """
         return pulumi.get(self, "custom_request_headers")
 
@@ -305,7 +245,7 @@ class BackendServiceArgs:
     @pulumi.getter(name="customResponseHeaders")
     def custom_response_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Headers that the HTTP/S load balancer should add to proxied responses.
+        Headers that the load balancer adds to proxied responses. See [Creating custom headers](https://cloud.google.com/load-balancing/docs/custom-headers).
         """
         return pulumi.get(self, "custom_response_headers")
 
@@ -329,7 +269,7 @@ class BackendServiceArgs:
     @pulumi.getter(name="enableCDN")
     def enable_cdn(self) -> Optional[pulumi.Input[bool]]:
         """
-        If true, enables Cloud CDN for the backend service. Only applicable if the loadBalancingScheme is EXTERNAL and the protocol is HTTP or HTTPS.
+        If true, enables Cloud CDN for the backend service of an external HTTP(S) load balancer.
         """
         return pulumi.get(self, "enable_cdn")
 
@@ -341,7 +281,7 @@ class BackendServiceArgs:
     @pulumi.getter(name="failoverPolicy")
     def failover_policy(self) -> Optional[pulumi.Input['BackendServiceFailoverPolicyArgs']]:
         """
-        Applicable only to Failover for Internal TCP/UDP Load Balancing and Network Load Balancing. Requires at least one backend instance group to be defined as a backup (failover) backend.
+        Requires at least one backend instance group to be defined as a backup (failover) backend. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview).
         """
         return pulumi.get(self, "failover_policy")
 
@@ -353,7 +293,7 @@ class BackendServiceArgs:
     @pulumi.getter(name="healthChecks")
     def health_checks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See  Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check. Backend services with internet or serverless NEG backends must not have a health check.
+        The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check. Backend services with internet or serverless NEG backends must not have a health check.
         """
         return pulumi.get(self, "health_checks")
 
@@ -377,7 +317,7 @@ class BackendServiceArgs:
     @pulumi.getter(name="loadBalancingScheme")
     def load_balancing_scheme(self) -> Optional[pulumi.Input['BackendServiceLoadBalancingScheme']]:
         """
-        Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
+        Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -389,21 +329,7 @@ class BackendServiceArgs:
     @pulumi.getter(name="localityLbPolicy")
     def locality_lb_policy(self) -> Optional[pulumi.Input['BackendServiceLocalityLbPolicy']]:
         """
-        The load balancing algorithm used within the scope of the locality. The possible values are:  
-        - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. 
-        - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. 
-        - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. 
-        - RANDOM: The load balancer selects a random healthy host. 
-        - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. 
-        - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 
-
-        This field is applicable to either:  
-        - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-        - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-
-        If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect.
-
-        Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "locality_lb_policy")
 
@@ -427,9 +353,7 @@ class BackendServiceArgs:
     @pulumi.getter(name="maxStreamDuration")
     def max_stream_duration(self) -> Optional[pulumi.Input['DurationArgs']]:
         """
-        Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed.
-        If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
-        This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+        Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, there will be no timeout limit, i.e. the maximum duration is infinite. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
         """
         return pulumi.get(self, "max_stream_duration")
 
@@ -465,13 +389,7 @@ class BackendServiceArgs:
     @pulumi.getter(name="outlierDetection")
     def outlier_detection(self) -> Optional[pulumi.Input['OutlierDetectionArgs']]:
         """
-        Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled.
-
-        This field is applicable to either:  
-        - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-        - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-
-        Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "outlier_detection")
 
@@ -483,11 +401,7 @@ class BackendServiceArgs:
     @pulumi.getter(name="portName")
     def port_name(self) -> Optional[pulumi.Input[str]]:
         """
-        A named port on a backend instance group representing the port for communication to the backend VMs in that group. Required when the loadBalancingScheme is EXTERNAL (except Network Load Balancing), INTERNAL_MANAGED, or  INTERNAL_SELF_MANAGED and the backends are instance groups. The named port must be defined on each backend instance group. This parameter has no meaning if the backends are NEGs.
-
-
-
-        Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port_name.
+        A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port_name.
         """
         return pulumi.get(self, "port_name")
 
@@ -499,11 +413,7 @@ class BackendServiceArgs:
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input['BackendServiceProtocol']]:
         """
-        The protocol this BackendService uses to communicate with backends.
-
-        Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more information.
-
-        Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
+        The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
         """
         return pulumi.get(self, "protocol")
 
@@ -524,9 +434,7 @@ class BackendServiceArgs:
     @pulumi.getter(name="securitySettings")
     def security_settings(self) -> Optional[pulumi.Input['SecuritySettingsArgs']]:
         """
-        This field specifies the security policy that applies to this backend service. This field is applicable to either:  
-        - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-        - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        This field specifies the security policy that applies to this backend service. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. 
         """
         return pulumi.get(self, "security_settings")
 
@@ -538,15 +446,7 @@ class BackendServiceArgs:
     @pulumi.getter(name="sessionAffinity")
     def session_affinity(self) -> Optional[pulumi.Input['BackendServiceSessionAffinity']]:
         """
-        Type of session affinity to use. The default is NONE.
-
-        When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO. * For all other load balancers that use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
-
-        When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
-
-        When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, possible values are NONE, CLIENT_IP, GENERATED_COOKIE, HEADER_FIELD, or HTTP_COOKIE.
-
-        Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "session_affinity")
 
@@ -567,7 +467,7 @@ class BackendServiceArgs:
     @pulumi.getter(name="timeoutSec")
     def timeout_sec(self) -> Optional[pulumi.Input[int]]:
         """
-        The backend service timeout has a different meaning depending on the type of load balancer. For more information see,  Backend service settings The default is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647 seconds.
+        Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
         """
         return pulumi.get(self, "timeout_sec")
 
@@ -585,6 +485,7 @@ class BackendService(pulumi.CustomResource):
                  backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendArgs']]]]] = None,
                  cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArgs']]] = None,
                  circuit_breakers: Optional[pulumi.Input[pulumi.InputType['CircuitBreakersArgs']]] = None,
+                 compression_mode: Optional[pulumi.Input['BackendServiceCompressionMode']] = None,
                  connection_draining: Optional[pulumi.Input[pulumi.InputType['ConnectionDrainingArgs']]] = None,
                  connection_tracking_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceConnectionTrackingPolicyArgs']]] = None,
                  consistent_hash: Optional[pulumi.Input[pulumi.InputType['ConsistentHashLoadBalancerSettingsArgs']]] = None,
@@ -612,90 +513,34 @@ class BackendService(pulumi.CustomResource):
                  timeout_sec: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Creates a BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.
+        Creates a BackendService resource in the specified project using the data included in the request. For more information, see Backend services overview .
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds. Only applicable if the loadBalancingScheme is EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, the protocol is HTTP or HTTPS, and the sessionAffinity is GENERATED_COOKIE, or HTTP_COOKIE.
-               
-               If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400).
-               
-               Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendArgs']]]] backends: The list of backends that serve this BackendService.
-        :param pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this BackendService. Only available for  external HTTP(S) Load Balancing.
-        :param pulumi.Input[pulumi.InputType['CircuitBreakersArgs']] circuit_breakers: Settings controlling the volume of connections to a backend service. If not set, this feature is considered disabled.
-               
-               This field is applicable to either:  
-               - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-               - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-               
-               Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param pulumi.Input[pulumi.InputType['ConsistentHashLoadBalancerSettingsArgs']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH.
-               
-               This field is applicable to either:  
-               - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-               - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-               
-               Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_request_headers: Headers that the HTTP/S load balancer should add to proxied requests.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
+        :param pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this BackendService. Only available for specified load balancer types.
+        :param pulumi.Input['BackendServiceCompressionMode'] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        :param pulumi.Input[pulumi.InputType['ConsistentHashLoadBalancerSettingsArgs']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_request_headers: Headers that the load balancer adds to proxied requests. See [Creating custom headers](https://cloud.google.com/load-balancing/docs/custom-headers).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the load balancer adds to proxied responses. See [Creating custom headers](https://cloud.google.com/load-balancing/docs/custom-headers).
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input[bool] enable_cdn: If true, enables Cloud CDN for the backend service. Only applicable if the loadBalancingScheme is EXTERNAL and the protocol is HTTP or HTTPS.
-        :param pulumi.Input[pulumi.InputType['BackendServiceFailoverPolicyArgs']] failover_policy: Applicable only to Failover for Internal TCP/UDP Load Balancing and Network Load Balancing. Requires at least one backend instance group to be defined as a backup (failover) backend.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_checks: The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See  Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check. Backend services with internet or serverless NEG backends must not have a health check.
+        :param pulumi.Input[bool] enable_cdn: If true, enables Cloud CDN for the backend service of an external HTTP(S) load balancer.
+        :param pulumi.Input[pulumi.InputType['BackendServiceFailoverPolicyArgs']] failover_policy: Requires at least one backend instance group to be defined as a backup (failover) backend. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] health_checks: The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check. Backend services with internet or serverless NEG backends must not have a health check.
         :param pulumi.Input[pulumi.InputType['BackendServiceIAPArgs']] iap: The configurations for Identity-Aware Proxy on this resource. Not available for Internal TCP/UDP Load Balancing and Network Load Balancing.
-        :param pulumi.Input['BackendServiceLoadBalancingScheme'] load_balancing_scheme: Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
-        :param pulumi.Input['BackendServiceLocalityLbPolicy'] locality_lb_policy: The load balancing algorithm used within the scope of the locality. The possible values are:  
-               - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. 
-               - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. 
-               - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. 
-               - RANDOM: The load balancer selects a random healthy host. 
-               - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. 
-               - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 
-               
-               This field is applicable to either:  
-               - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-               - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-               
-               If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect.
-               
-               Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input['BackendServiceLoadBalancingScheme'] load_balancing_scheme: Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
+        :param pulumi.Input['BackendServiceLocalityLbPolicy'] locality_lb_policy: The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input[pulumi.InputType['BackendServiceLogConfigArgs']] log_config: This field denotes the logging options for the load balancer traffic served by this backend service. If logging is enabled, logs will be exported to Stackdriver.
-        :param pulumi.Input[pulumi.InputType['DurationArgs']] max_stream_duration: Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed.
-               If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
-               This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+        :param pulumi.Input[pulumi.InputType['DurationArgs']] max_stream_duration: Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, there will be no timeout limit, i.e. the maximum duration is infinite. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] network: The URL of the network to which this backend service belongs. This field can only be specified when the load balancing scheme is set to INTERNAL.
-        :param pulumi.Input[pulumi.InputType['OutlierDetectionArgs']] outlier_detection: Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled.
-               
-               This field is applicable to either:  
-               - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-               - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-               
-               Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for communication to the backend VMs in that group. Required when the loadBalancingScheme is EXTERNAL (except Network Load Balancing), INTERNAL_MANAGED, or  INTERNAL_SELF_MANAGED and the backends are instance groups. The named port must be defined on each backend instance group. This parameter has no meaning if the backends are NEGs.
-               
-               
-               
-               Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port_name.
-        :param pulumi.Input['BackendServiceProtocol'] protocol: The protocol this BackendService uses to communicate with backends.
-               
-               Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more information.
-               
-               Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
-        :param pulumi.Input[pulumi.InputType['SecuritySettingsArgs']] security_settings: This field specifies the security policy that applies to this backend service. This field is applicable to either:  
-               - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-               - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
-        :param pulumi.Input['BackendServiceSessionAffinity'] session_affinity: Type of session affinity to use. The default is NONE.
-               
-               When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO. * For all other load balancers that use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
-               
-               When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
-               
-               When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, possible values are NONE, CLIENT_IP, GENERATED_COOKIE, HEADER_FIELD, or HTTP_COOKIE.
-               
-               Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-        :param pulumi.Input[int] timeout_sec: The backend service timeout has a different meaning depending on the type of load balancer. For more information see,  Backend service settings The default is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647 seconds.
+        :param pulumi.Input[pulumi.InputType['OutlierDetectionArgs']] outlier_detection: Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[str] port_name: A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port_name.
+        :param pulumi.Input['BackendServiceProtocol'] protocol: The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
+        :param pulumi.Input[pulumi.InputType['SecuritySettingsArgs']] security_settings: This field specifies the security policy that applies to this backend service. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. 
+        :param pulumi.Input['BackendServiceSessionAffinity'] session_affinity: Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        :param pulumi.Input[int] timeout_sec: Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
         """
         ...
     @overload
@@ -704,7 +549,7 @@ class BackendService(pulumi.CustomResource):
                  args: BackendServiceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a BackendService resource in the specified project using the data included in the request. For more information, see  Backend services overview.
+        Creates a BackendService resource in the specified project using the data included in the request. For more information, see Backend services overview .
 
         :param str resource_name: The name of the resource.
         :param BackendServiceArgs args: The arguments to use to populate this resource's properties.
@@ -725,6 +570,7 @@ class BackendService(pulumi.CustomResource):
                  backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendArgs']]]]] = None,
                  cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArgs']]] = None,
                  circuit_breakers: Optional[pulumi.Input[pulumi.InputType['CircuitBreakersArgs']]] = None,
+                 compression_mode: Optional[pulumi.Input['BackendServiceCompressionMode']] = None,
                  connection_draining: Optional[pulumi.Input[pulumi.InputType['ConnectionDrainingArgs']]] = None,
                  connection_tracking_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceConnectionTrackingPolicyArgs']]] = None,
                  consistent_hash: Optional[pulumi.Input[pulumi.InputType['ConsistentHashLoadBalancerSettingsArgs']]] = None,
@@ -766,6 +612,7 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["backends"] = backends
             __props__.__dict__["cdn_policy"] = cdn_policy
             __props__.__dict__["circuit_breakers"] = circuit_breakers
+            __props__.__dict__["compression_mode"] = compression_mode
             __props__.__dict__["connection_draining"] = connection_draining
             __props__.__dict__["connection_tracking_policy"] = connection_tracking_policy
             __props__.__dict__["consistent_hash"] = consistent_hash
@@ -794,6 +641,7 @@ class BackendService(pulumi.CustomResource):
             __props__.__dict__["subsetting"] = subsetting
             __props__.__dict__["timeout_sec"] = timeout_sec
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["edge_security_policy"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["region"] = None
@@ -825,6 +673,7 @@ class BackendService(pulumi.CustomResource):
         __props__.__dict__["backends"] = None
         __props__.__dict__["cdn_policy"] = None
         __props__.__dict__["circuit_breakers"] = None
+        __props__.__dict__["compression_mode"] = None
         __props__.__dict__["connection_draining"] = None
         __props__.__dict__["connection_tracking_policy"] = None
         __props__.__dict__["consistent_hash"] = None
@@ -832,6 +681,7 @@ class BackendService(pulumi.CustomResource):
         __props__.__dict__["custom_request_headers"] = None
         __props__.__dict__["custom_response_headers"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["edge_security_policy"] = None
         __props__.__dict__["enable_cdn"] = None
         __props__.__dict__["failover_policy"] = None
         __props__.__dict__["fingerprint"] = None
@@ -860,11 +710,7 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter(name="affinityCookieTtlSec")
     def affinity_cookie_ttl_sec(self) -> pulumi.Output[int]:
         """
-        Lifetime of cookies in seconds. Only applicable if the loadBalancingScheme is EXTERNAL, INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, the protocol is HTTP or HTTPS, and the sessionAffinity is GENERATED_COOKIE, or HTTP_COOKIE.
-
-        If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400).
-
-        Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is one day (86,400). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "affinity_cookie_ttl_sec")
 
@@ -880,23 +726,22 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter(name="cdnPolicy")
     def cdn_policy(self) -> pulumi.Output['outputs.BackendServiceCdnPolicyResponse']:
         """
-        Cloud CDN configuration for this BackendService. Only available for  external HTTP(S) Load Balancing.
+        Cloud CDN configuration for this BackendService. Only available for specified load balancer types.
         """
         return pulumi.get(self, "cdn_policy")
 
     @property
     @pulumi.getter(name="circuitBreakers")
     def circuit_breakers(self) -> pulumi.Output['outputs.CircuitBreakersResponse']:
-        """
-        Settings controlling the volume of connections to a backend service. If not set, this feature is considered disabled.
-
-        This field is applicable to either:  
-        - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-        - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-
-        Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-        """
         return pulumi.get(self, "circuit_breakers")
+
+    @property
+    @pulumi.getter(name="compressionMode")
+    def compression_mode(self) -> pulumi.Output[str]:
+        """
+        Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        """
+        return pulumi.get(self, "compression_mode")
 
     @property
     @pulumi.getter(name="connectionDraining")
@@ -912,13 +757,7 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter(name="consistentHash")
     def consistent_hash(self) -> pulumi.Output['outputs.ConsistentHashLoadBalancerSettingsResponse']:
         """
-        Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH.
-
-        This field is applicable to either:  
-        - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-        - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-
-        Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "consistent_hash")
 
@@ -934,7 +773,7 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter(name="customRequestHeaders")
     def custom_request_headers(self) -> pulumi.Output[Sequence[str]]:
         """
-        Headers that the HTTP/S load balancer should add to proxied requests.
+        Headers that the load balancer adds to proxied requests. See [Creating custom headers](https://cloud.google.com/load-balancing/docs/custom-headers).
         """
         return pulumi.get(self, "custom_request_headers")
 
@@ -942,7 +781,7 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter(name="customResponseHeaders")
     def custom_response_headers(self) -> pulumi.Output[Sequence[str]]:
         """
-        Headers that the HTTP/S load balancer should add to proxied responses.
+        Headers that the load balancer adds to proxied responses. See [Creating custom headers](https://cloud.google.com/load-balancing/docs/custom-headers).
         """
         return pulumi.get(self, "custom_response_headers")
 
@@ -955,10 +794,18 @@ class BackendService(pulumi.CustomResource):
         return pulumi.get(self, "description")
 
     @property
+    @pulumi.getter(name="edgeSecurityPolicy")
+    def edge_security_policy(self) -> pulumi.Output[str]:
+        """
+        The resource URL for the edge security policy associated with this backend service.
+        """
+        return pulumi.get(self, "edge_security_policy")
+
+    @property
     @pulumi.getter(name="enableCDN")
     def enable_cdn(self) -> pulumi.Output[bool]:
         """
-        If true, enables Cloud CDN for the backend service. Only applicable if the loadBalancingScheme is EXTERNAL and the protocol is HTTP or HTTPS.
+        If true, enables Cloud CDN for the backend service of an external HTTP(S) load balancer.
         """
         return pulumi.get(self, "enable_cdn")
 
@@ -966,7 +813,7 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter(name="failoverPolicy")
     def failover_policy(self) -> pulumi.Output['outputs.BackendServiceFailoverPolicyResponse']:
         """
-        Applicable only to Failover for Internal TCP/UDP Load Balancing and Network Load Balancing. Requires at least one backend instance group to be defined as a backup (failover) backend.
+        Requires at least one backend instance group to be defined as a backup (failover) backend. For load balancers that have configurable failover: [Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal/failover-overview) and [external TCP/UDP Load Balancing](/network/networklb-failover-overview).
         """
         return pulumi.get(self, "failover_policy")
 
@@ -974,9 +821,7 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter
     def fingerprint(self) -> pulumi.Output[str]:
         """
-        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a BackendService. An up-to-date fingerprint must be provided in order to update the BackendService, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve a BackendService.
+        Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a BackendService. An up-to-date fingerprint must be provided in order to update the BackendService, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a BackendService.
         """
         return pulumi.get(self, "fingerprint")
 
@@ -984,7 +829,7 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter(name="healthChecks")
     def health_checks(self) -> pulumi.Output[Sequence[str]]:
         """
-        The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See  Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check. Backend services with internet or serverless NEG backends must not have a health check.
+        The list of URLs to the healthChecks, httpHealthChecks (legacy), or httpsHealthChecks (legacy) resource for health checking this backend service. Not all backend services support legacy health checks. See Load balancer guide. Currently, at most one health check can be specified for each backend service. Backend services with instance group or zonal NEG backends must have a health check. Backend services with internet or serverless NEG backends must not have a health check.
         """
         return pulumi.get(self, "health_checks")
 
@@ -1008,7 +853,7 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter(name="loadBalancingScheme")
     def load_balancing_scheme(self) -> pulumi.Output[str]:
         """
-        Specifies the load balancer type. Choose EXTERNAL for external HTTP(S), SSL Proxy, TCP Proxy and Network Load Balancing. Choose  INTERNAL for Internal TCP/UDP Load Balancing. Choose  INTERNAL_MANAGED for Internal HTTP(S) Load Balancing.  INTERNAL_SELF_MANAGED for Traffic Director. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
+        Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
         """
         return pulumi.get(self, "load_balancing_scheme")
 
@@ -1016,21 +861,7 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter(name="localityLbPolicy")
     def locality_lb_policy(self) -> pulumi.Output[str]:
         """
-        The load balancing algorithm used within the scope of the locality. The possible values are:  
-        - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. 
-        - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. 
-        - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. 
-        - RANDOM: The load balancer selects a random healthy host. 
-        - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. 
-        - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 
-
-        This field is applicable to either:  
-        - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-        - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-
-        If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect.
-
-        Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only the default ROUND_ROBIN policy is supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "locality_lb_policy")
 
@@ -1046,9 +877,7 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter(name="maxStreamDuration")
     def max_stream_duration(self) -> pulumi.Output['outputs.DurationResponse']:
         """
-        Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed.
-        If not specified, there will be no timeout limit, i.e. the maximum duration is infinite.
-        This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
+        Specifies the default maximum duration (timeout) for streams to this service. Duration is computed from the beginning of the stream until the response has been completely processed, including all retries. A stream that does not complete in this duration is closed. If not specified, there will be no timeout limit, i.e. the maximum duration is infinite. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. This field is only allowed when the loadBalancingScheme of the backend service is INTERNAL_SELF_MANAGED.
         """
         return pulumi.get(self, "max_stream_duration")
 
@@ -1072,13 +901,7 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter(name="outlierDetection")
     def outlier_detection(self) -> pulumi.Output['outputs.OutlierDetectionResponse']:
         """
-        Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled.
-
-        This field is applicable to either:  
-        - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-        - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.  
-
-        Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service. If not set, this feature is considered disabled. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "outlier_detection")
 
@@ -1086,11 +909,7 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter(name="portName")
     def port_name(self) -> pulumi.Output[str]:
         """
-        A named port on a backend instance group representing the port for communication to the backend VMs in that group. Required when the loadBalancingScheme is EXTERNAL (except Network Load Balancing), INTERNAL_MANAGED, or  INTERNAL_SELF_MANAGED and the backends are instance groups. The named port must be defined on each backend instance group. This parameter has no meaning if the backends are NEGs.
-
-
-
-        Backend services for Internal TCP/UDP Load Balancing and Network Load Balancing require you omit port_name.
+        A named port on a backend instance group representing the port for communication to the backend VMs in that group. The named port must be [defined on each backend instance group](https://cloud.google.com/load-balancing/docs/backend-service#named_ports). This parameter has no meaning if the backends are NEGs. For Internal TCP/UDP Load Balancing and Network Load Balancing, omit port_name.
         """
         return pulumi.get(self, "port_name")
 
@@ -1098,11 +917,7 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter
     def protocol(self) -> pulumi.Output[str]:
         """
-        The protocol this BackendService uses to communicate with backends.
-
-        Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancer or for Traffic Director for more information.
-
-        Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
+        The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
         """
         return pulumi.get(self, "protocol")
 
@@ -1126,9 +941,7 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter(name="securitySettings")
     def security_settings(self) -> pulumi.Output['outputs.SecuritySettingsResponse']:
         """
-        This field specifies the security policy that applies to this backend service. This field is applicable to either:  
-        - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. 
-        - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
+        This field specifies the security policy that applies to this backend service. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. 
         """
         return pulumi.get(self, "security_settings")
 
@@ -1144,15 +957,7 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter(name="sessionAffinity")
     def session_affinity(self) -> pulumi.Output[str]:
         """
-        Type of session affinity to use. The default is NONE.
-
-        When the loadBalancingScheme is EXTERNAL: * For Network Load Balancing, the possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or  CLIENT_IP_PORT_PROTO. * For all other load balancers that use loadBalancingScheme=EXTERNAL, the possible values are NONE, CLIENT_IP, or GENERATED_COOKIE. * You can use GENERATED_COOKIE if the protocol is HTTP, HTTP2, or HTTPS.
-
-        When the loadBalancingScheme is INTERNAL, possible values are NONE, CLIENT_IP, CLIENT_IP_PROTO, or CLIENT_IP_PORT_PROTO.
-
-        When the loadBalancingScheme is INTERNAL_SELF_MANAGED, or INTERNAL_MANAGED, possible values are NONE, CLIENT_IP, GENERATED_COOKIE, HEADER_FIELD, or HTTP_COOKIE.
-
-        Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
+        Type of session affinity to use. The default is NONE. For a detailed description of session affinity options, see: [Session affinity](https://cloud.google.com/load-balancing/docs/backend-service#session_affinity). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         """
         return pulumi.get(self, "session_affinity")
 
@@ -1165,7 +970,7 @@ class BackendService(pulumi.CustomResource):
     @pulumi.getter(name="timeoutSec")
     def timeout_sec(self) -> pulumi.Output[int]:
         """
-        The backend service timeout has a different meaning depending on the type of load balancer. For more information see,  Backend service settings The default is 30 seconds. The full range of timeout values allowed is 1 - 2,147,483,647 seconds.
+        Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.
         """
         return pulumi.get(self, "timeout_sec")
 

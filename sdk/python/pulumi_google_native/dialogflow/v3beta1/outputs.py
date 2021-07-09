@@ -62,6 +62,7 @@ __all__ = [
     'GoogleCloudDialogflowCxV3beta1VersionVariantsResponse',
     'GoogleCloudDialogflowCxV3beta1VersionVariantsVariantResponse',
     'GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse',
+    'GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse',
     'GoogleRpcStatusResponse',
 ]
 
@@ -158,7 +159,9 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "injectedParameters":
+        if key == "enableSentimentAnalysis":
+            suggest = "enable_sentiment_analysis"
+        elif key == "injectedParameters":
             suggest = "injected_parameters"
         elif key == "isWebhookEnabled":
             suggest = "is_webhook_enabled"
@@ -175,18 +178,29 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 enable_sentiment_analysis: bool,
                  injected_parameters: Mapping[str, str],
                  input: 'outputs.GoogleCloudDialogflowCxV3beta1QueryInputResponse',
                  is_webhook_enabled: bool):
         """
         The input from the human user.
+        :param bool enable_sentiment_analysis: Whether sentiment analysis is enabled.
         :param Mapping[str, str] injected_parameters: Parameters that need to be injected into the conversation during intent detection.
         :param 'GoogleCloudDialogflowCxV3beta1QueryInputResponse' input: Supports text input, event input, dtmf input in the test case.
         :param bool is_webhook_enabled: If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
         """
+        pulumi.set(__self__, "enable_sentiment_analysis", enable_sentiment_analysis)
         pulumi.set(__self__, "injected_parameters", injected_parameters)
         pulumi.set(__self__, "input", input)
         pulumi.set(__self__, "is_webhook_enabled", is_webhook_enabled)
+
+    @property
+    @pulumi.getter(name="enableSentimentAnalysis")
+    def enable_sentiment_analysis(self) -> bool:
+        """
+        Whether sentiment analysis is enabled.
+        """
+        return pulumi.get(self, "enable_sentiment_analysis")
 
     @property
     @pulumi.getter(name="injectedParameters")
@@ -1205,6 +1219,8 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentResponse(dict):
         suggest = None
         if key == "conditionalCases":
             suggest = "conditional_cases"
+        elif key == "returnPartialResponses":
+            suggest = "return_partial_responses"
         elif key == "setParameterActions":
             suggest = "set_parameter_actions"
 
@@ -1222,6 +1238,7 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentResponse(dict):
     def __init__(__self__, *,
                  conditional_cases: Sequence['outputs.GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse'],
                  messages: Sequence['outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageResponse'],
+                 return_partial_responses: bool,
                  set_parameter_actions: Sequence['outputs.GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionResponse'],
                  tag: str,
                  webhook: str):
@@ -1229,12 +1246,14 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentResponse(dict):
         A fulfillment can do one or more of the following actions at the same time: * Generate rich message responses. * Set parameter values. * Call the webhook. Fulfillments can be called at various stages in the Page or Form lifecycle. For example, when a DetectIntentRequest drives a session to enter a new page, the page's entry fulfillment can add a static response to the QueryResult in the returning DetectIntentResponse, call the webhook (for example, to load user data from a database), or both.
         :param Sequence['GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse'] conditional_cases: Conditional cases for this fulfillment.
         :param Sequence['GoogleCloudDialogflowCxV3beta1ResponseMessageResponse'] messages: The list of rich message responses to present to the user.
+        :param bool return_partial_responses: Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
         :param Sequence['GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionResponse'] set_parameter_actions: Set parameter values before executing the webhook.
         :param str tag: The tag used by the webhook to identify which fulfillment is being called. This field is required if `webhook` is specified.
         :param str webhook: The webhook to call. Format: `projects//locations//agents//webhooks/`.
         """
         pulumi.set(__self__, "conditional_cases", conditional_cases)
         pulumi.set(__self__, "messages", messages)
+        pulumi.set(__self__, "return_partial_responses", return_partial_responses)
         pulumi.set(__self__, "set_parameter_actions", set_parameter_actions)
         pulumi.set(__self__, "tag", tag)
         pulumi.set(__self__, "webhook", webhook)
@@ -1254,6 +1273,14 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentResponse(dict):
         The list of rich message responses to present to the user.
         """
         return pulumi.get(self, "messages")
+
+    @property
+    @pulumi.getter(name="returnPartialResponses")
+    def return_partial_responses(self) -> bool:
+        """
+        Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        """
+        return pulumi.get(self, "return_partial_responses")
 
     @property
     @pulumi.getter(name="setParameterActions")
@@ -2969,6 +2996,56 @@ class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse(dict):
         The user name for HTTP Basic authentication.
         """
         return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse(dict):
+    """
+    Represents configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "genericWebService":
+            suggest = "generic_web_service"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 generic_web_service: 'outputs.GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse',
+                 service: str):
+        """
+        Represents configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+        :param 'GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse' generic_web_service: Generic Service configuration of this webhook.
+        :param str service: The name of [Service Directory](https://cloud.google.com/service-directory) service. Format: `projects//locations//namespaces//services/`. `Location ID` of the service directory must be the same as the location of the agent.
+        """
+        pulumi.set(__self__, "generic_web_service", generic_web_service)
+        pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter(name="genericWebService")
+    def generic_web_service(self) -> 'outputs.GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse':
+        """
+        Generic Service configuration of this webhook.
+        """
+        return pulumi.get(self, "generic_web_service")
+
+    @property
+    @pulumi.getter
+    def service(self) -> str:
+        """
+        The name of [Service Directory](https://cloud.google.com/service-directory) service. Format: `projects//locations//namespaces//services/`. `Location ID` of the service directory must be the same as the location of the agent.
+        """
+        return pulumi.get(self, "service")
 
 
 @pulumi.output_type

@@ -67,10 +67,7 @@ class GetRegionTargetHttpsProxyResult:
     @pulumi.getter(name="authorizationPolicy")
     def authorization_policy(self) -> str:
         """
-        Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy.
-        Refer to the AuthorizationPolicy resource for additional details.
-        authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
-        Note: This field currently has no impact.
+        Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy. Refer to the AuthorizationPolicy resource for additional details. authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. Note: This field currently has no impact.
         """
         return pulumi.get(self, "authorization_policy")
 
@@ -102,8 +99,7 @@ class GetRegionTargetHttpsProxyResult:
     @pulumi.getter(name="httpFilters")
     def http_filters(self) -> Sequence[str]:
         """
-        URLs to networkservices.HttpFilter resources enabled for xDS clients using this configuration. For example, https://networkservices.googleapis.com/beta/projects/project/locations/locationhttpFilters/httpFilter Only filters that handle outbound connection and stream events may be specified. These filters work in conjunction with a default set of HTTP filters that may already be configured by Traffic Director. Traffic Director will determine the final location of these filters within xDS configuration based on the name of the HTTP filter. If Traffic Director positions multiple filters at the same location, those filters will be in the same order as specified in this list.
-        httpFilters only applies for loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details.
+        URLs to networkservices.HttpFilter resources enabled for xDS clients using this configuration. For example, https://networkservices.googleapis.com/beta/projects/project/locations/ locationhttpFilters/httpFilter Only filters that handle outbound connection and stream events may be specified. These filters work in conjunction with a default set of HTTP filters that may already be configured by Traffic Director. Traffic Director will determine the final location of these filters within xDS configuration based on the name of the HTTP filter. If Traffic Director positions multiple filters at the same location, those filters will be in the same order as specified in this list. httpFilters only applies for loadbalancers with loadBalancingScheme set to INTERNAL_SELF_MANAGED. See ForwardingRule for more details.
         """
         return pulumi.get(self, "http_filters")
 
@@ -127,11 +123,7 @@ class GetRegionTargetHttpsProxyResult:
     @pulumi.getter(name="proxyBind")
     def proxy_bind(self) -> bool:
         """
-        This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED.
-
-        When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them.
-
-        The default is false.
+        This field only applies when the forwarding rule that references this target proxy has a loadBalancingScheme set to INTERNAL_SELF_MANAGED. When this field is set to true, Envoy proxies set up inbound traffic interception and bind to the IP address and port specified in the forwarding rule. This is generally useful when using Traffic Director to configure Envoy as a gateway or middle proxy (in other words, not a sidecar proxy). The Envoy proxy listens for inbound requests and handles requests when it receives them. The default is false.
         """
         return pulumi.get(self, "proxy_bind")
 
@@ -139,11 +131,7 @@ class GetRegionTargetHttpsProxyResult:
     @pulumi.getter(name="quicOverride")
     def quic_override(self) -> str:
         """
-        Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE.  
-        - When quic-override is set to NONE, Google manages whether QUIC is used. 
-        - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. 
-        - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. 
-        - If the quic-override flag is not specified, NONE is implied.
+        Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE. - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. - If the quic-override flag is not specified, NONE is implied. 
         """
         return pulumi.get(self, "quic_override")
 
@@ -167,10 +155,7 @@ class GetRegionTargetHttpsProxyResult:
     @pulumi.getter(name="serverTlsPolicy")
     def server_tls_policy(self) -> str:
         """
-        Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic.
-        serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
-        If left blank, communications are not encrypted.
-        Note: This field currently has no impact.
+        Optional. A URL referring to a networksecurity.ServerTlsPolicy resource that describes how the proxy should authenticate inbound traffic. serverTlsPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
         """
         return pulumi.get(self, "server_tls_policy")
 
@@ -178,7 +163,7 @@ class GetRegionTargetHttpsProxyResult:
     @pulumi.getter(name="sslCertificates")
     def ssl_certificates(self) -> Sequence[str]:
         """
-        URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates.
+        URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
         """
         return pulumi.get(self, "ssl_certificates")
 
@@ -194,10 +179,7 @@ class GetRegionTargetHttpsProxyResult:
     @pulumi.getter(name="urlMap")
     def url_map(self) -> str:
         """
-        A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map:  
-        - https://www.googleapis.compute/v1/projects/project/global/urlMaps/url-map 
-        - projects/project/global/urlMaps/url-map 
-        - global/urlMaps/url-map
+        A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map: - https://www.googleapis.compute/v1/projects/project/global/urlMaps/ url-map - projects/project/global/urlMaps/url-map - global/urlMaps/url-map 
         """
         return pulumi.get(self, "url_map")
 

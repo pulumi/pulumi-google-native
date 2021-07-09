@@ -62,9 +62,7 @@ class GetAutoscalerResult:
     @pulumi.getter(name="autoscalingPolicy")
     def autoscaling_policy(self) -> 'outputs.AutoscalingPolicyResponse':
         """
-        The configuration parameters for the autoscaling algorithm. You can define one or more of the policies for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization.
-
-        If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
+        The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
         """
         return pulumi.get(self, "autoscaling_policy")
 
@@ -136,11 +134,7 @@ class GetAutoscalerResult:
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the autoscaler configuration. Current set of possible values:  
-        - PENDING: Autoscaler backend hasn't read new/updated configuration. 
-        - DELETING: Configuration is being deleted. 
-        - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. 
-        - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field.  New values might be added in the future.
+        The status of the autoscaler configuration. Current set of possible values: - PENDING: Autoscaler backend hasn't read new/updated configuration. - DELETING: Configuration is being deleted. - ACTIVE: Configuration is acknowledged to be effective. Some warnings might be present in the statusDetails field. - ERROR: Configuration has errors. Actionable for users. Details are present in the statusDetails field. New values might be added in the future.
         """
         return pulumi.get(self, "status")
 

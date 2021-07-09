@@ -389,6 +389,7 @@ class Build(pulumi.CustomResource):
             __props__.__dict__["status"] = None
             __props__.__dict__["status_detail"] = None
             __props__.__dict__["timing"] = None
+            __props__.__dict__["warnings"] = None
         super(Build, __self__).__init__(
             'google-native:cloudbuild/v1:Build',
             resource_name,
@@ -436,6 +437,7 @@ class Build(pulumi.CustomResource):
         __props__.__dict__["tags"] = None
         __props__.__dict__["timeout"] = None
         __props__.__dict__["timing"] = None
+        __props__.__dict__["warnings"] = None
         return Build(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -637,4 +639,12 @@ class Build(pulumi.CustomResource):
         Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
         """
         return pulumi.get(self, "timing")
+
+    @property
+    @pulumi.getter
+    def warnings(self) -> pulumi.Output[Sequence['outputs.WarningResponse']]:
+        """
+        Non-fatal problems encountered during the execution of the build.
+        """
+        return pulumi.get(self, "warnings")
 

@@ -17,13 +17,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceResult:
-    def __init__(__self__, artifact_gcs_uri=None, create_time=None, endpoint_uri=None, hive_metastore_config=None, labels=None, maintenance_window=None, metadata_integration=None, metadata_management_activity=None, name=None, network=None, port=None, release_channel=None, state=None, state_message=None, tier=None, uid=None, update_time=None):
+    def __init__(__self__, artifact_gcs_uri=None, create_time=None, encryption_config=None, endpoint_uri=None, hive_metastore_config=None, labels=None, maintenance_window=None, metadata_integration=None, metadata_management_activity=None, name=None, network=None, port=None, release_channel=None, state=None, state_message=None, tier=None, uid=None, update_time=None):
         if artifact_gcs_uri and not isinstance(artifact_gcs_uri, str):
             raise TypeError("Expected argument 'artifact_gcs_uri' to be a str")
         pulumi.set(__self__, "artifact_gcs_uri", artifact_gcs_uri)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if encryption_config and not isinstance(encryption_config, dict):
+            raise TypeError("Expected argument 'encryption_config' to be a dict")
+        pulumi.set(__self__, "encryption_config", encryption_config)
         if endpoint_uri and not isinstance(endpoint_uri, str):
             raise TypeError("Expected argument 'endpoint_uri' to be a str")
         pulumi.set(__self__, "endpoint_uri", endpoint_uri)
@@ -85,6 +88,14 @@ class GetServiceResult:
         The time when the metastore service was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> 'outputs.EncryptionConfigResponse':
+        """
+        Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
+        """
+        return pulumi.get(self, "encryption_config")
 
     @property
     @pulumi.getter(name="endpointUri")
@@ -215,6 +226,7 @@ class AwaitableGetServiceResult(GetServiceResult):
         return GetServiceResult(
             artifact_gcs_uri=self.artifact_gcs_uri,
             create_time=self.create_time,
+            encryption_config=self.encryption_config,
             endpoint_uri=self.endpoint_uri,
             hive_metastore_config=self.hive_metastore_config,
             labels=self.labels,
@@ -252,6 +264,7 @@ def get_service(location: Optional[str] = None,
     return AwaitableGetServiceResult(
         artifact_gcs_uri=__ret__.artifact_gcs_uri,
         create_time=__ret__.create_time,
+        encryption_config=__ret__.encryption_config,
         endpoint_uri=__ret__.endpoint_uri,
         hive_metastore_config=__ret__.hive_metastore_config,
         labels=__ret__.labels,

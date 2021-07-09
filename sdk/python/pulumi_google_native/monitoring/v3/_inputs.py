@@ -11,6 +11,7 @@ from ._enums import *
 
 __all__ = [
     'AggregationArgs',
+    'AlertStrategyArgs',
     'AppEngineArgs',
     'AvailabilityCriteriaArgs',
     'BasicAuthenticationArgs',
@@ -28,6 +29,7 @@ __all__ = [
     'IstioCanonicalServiceArgs',
     'LabelDescriptorArgs',
     'LatencyCriteriaArgs',
+    'LogMatchArgs',
     'MeshIstioArgs',
     'MetricAbsenceArgs',
     'MetricDescriptorMetadataArgs',
@@ -36,6 +38,7 @@ __all__ = [
     'MonitoredResourceArgs',
     'MonitoringQueryLanguageConditionArgs',
     'MutationRecordArgs',
+    'NotificationRateLimitArgs',
     'PerformanceThresholdArgs',
     'RequestBasedSliArgs',
     'ResourceGroupArgs',
@@ -118,6 +121,30 @@ class AggregationArgs:
     @per_series_aligner.setter
     def per_series_aligner(self, value: Optional[pulumi.Input['AggregationPerSeriesAligner']]):
         pulumi.set(self, "per_series_aligner", value)
+
+
+@pulumi.input_type
+class AlertStrategyArgs:
+    def __init__(__self__, *,
+                 notification_rate_limit: Optional[pulumi.Input['NotificationRateLimitArgs']] = None):
+        """
+        Control over how the notification channels in notification_channels are notified when this alert fires.
+        :param pulumi.Input['NotificationRateLimitArgs'] notification_rate_limit: Required for alert policies with a LogMatch condition.Providing this for alert policies that are not log-based is unimplemented.
+        """
+        if notification_rate_limit is not None:
+            pulumi.set(__self__, "notification_rate_limit", notification_rate_limit)
+
+    @property
+    @pulumi.getter(name="notificationRateLimit")
+    def notification_rate_limit(self) -> Optional[pulumi.Input['NotificationRateLimitArgs']]:
+        """
+        Required for alert policies with a LogMatch condition.Providing this for alert policies that are not log-based is unimplemented.
+        """
+        return pulumi.get(self, "notification_rate_limit")
+
+    @notification_rate_limit.setter
+    def notification_rate_limit(self, value: Optional[pulumi.Input['NotificationRateLimitArgs']]):
+        pulumi.set(self, "notification_rate_limit", value)
 
 
 @pulumi.input_type
@@ -381,6 +408,7 @@ class ClusterIstioArgs:
 class ConditionArgs:
     def __init__(__self__, *,
                  condition_absent: Optional[pulumi.Input['MetricAbsenceArgs']] = None,
+                 condition_matched_log: Optional[pulumi.Input['LogMatchArgs']] = None,
                  condition_monitoring_query_language: Optional[pulumi.Input['MonitoringQueryLanguageConditionArgs']] = None,
                  condition_threshold: Optional[pulumi.Input['MetricThresholdArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -388,6 +416,7 @@ class ConditionArgs:
         """
         A condition is a true/false test that determines when an alerting policy should open an incident. If a condition evaluates to true, it signifies that something is wrong.
         :param pulumi.Input['MetricAbsenceArgs'] condition_absent: A condition that checks that a time series continues to receive new data points.
+        :param pulumi.Input['LogMatchArgs'] condition_matched_log: A condition that checks for log messages matching given constraints. If set, no other conditions can be present.
         :param pulumi.Input['MonitoringQueryLanguageConditionArgs'] condition_monitoring_query_language: A condition that uses the Monitoring Query Language to define alerts.
         :param pulumi.Input['MetricThresholdArgs'] condition_threshold: A condition that compares a time series against a threshold.
         :param pulumi.Input[str] display_name: A short name or phrase used to identify the condition in dashboards, notifications, and incidents. To avoid confusion, don't use the same display name for multiple conditions in the same policy.
@@ -395,6 +424,8 @@ class ConditionArgs:
         """
         if condition_absent is not None:
             pulumi.set(__self__, "condition_absent", condition_absent)
+        if condition_matched_log is not None:
+            pulumi.set(__self__, "condition_matched_log", condition_matched_log)
         if condition_monitoring_query_language is not None:
             pulumi.set(__self__, "condition_monitoring_query_language", condition_monitoring_query_language)
         if condition_threshold is not None:
@@ -415,6 +446,18 @@ class ConditionArgs:
     @condition_absent.setter
     def condition_absent(self, value: Optional[pulumi.Input['MetricAbsenceArgs']]):
         pulumi.set(self, "condition_absent", value)
+
+    @property
+    @pulumi.getter(name="conditionMatchedLog")
+    def condition_matched_log(self) -> Optional[pulumi.Input['LogMatchArgs']]:
+        """
+        A condition that checks for log messages matching given constraints. If set, no other conditions can be present.
+        """
+        return pulumi.get(self, "condition_matched_log")
+
+    @condition_matched_log.setter
+    def condition_matched_log(self, value: Optional[pulumi.Input['LogMatchArgs']]):
+        pulumi.set(self, "condition_matched_log", value)
 
     @property
     @pulumi.getter(name="conditionMonitoringQueryLanguage")
@@ -1043,6 +1086,45 @@ class LatencyCriteriaArgs:
 
 
 @pulumi.input_type
+class LogMatchArgs:
+    def __init__(__self__, *,
+                 filter: pulumi.Input[str],
+                 label_extractors: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        A condition type that checks whether a log message from any project monitored by the alert policy’s workspace satisfies the given filter.
+        :param pulumi.Input[str] filter: A logs-based filter. See Advanced Logs Queries for how this filter should be constructed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] label_extractors: Optional. A map from a label key to an extractor expression, which is used to extract the value for this label key. Each entry in this map is a specification for how data should be extracted from log entries that match filter. Each combination of extracted values is treated as a separate rule for the purposes of triggering notifications. Label keys and corresponding values can be used in notifications generated by this condition.Please see the documentation on logs-based metric valueExtractors for syntax and examples.
+        """
+        pulumi.set(__self__, "filter", filter)
+        if label_extractors is not None:
+            pulumi.set(__self__, "label_extractors", label_extractors)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> pulumi.Input[str]:
+        """
+        A logs-based filter. See Advanced Logs Queries for how this filter should be constructed.
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: pulumi.Input[str]):
+        pulumi.set(self, "filter", value)
+
+    @property
+    @pulumi.getter(name="labelExtractors")
+    def label_extractors(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Optional. A map from a label key to an extractor expression, which is used to extract the value for this label key. Each entry in this map is a specification for how data should be extracted from log entries that match filter. Each combination of extracted values is treated as a separate rule for the purposes of triggering notifications. Label keys and corresponding values can be used in notifications generated by this condition.Please see the documentation on logs-based metric valueExtractors for syntax and examples.
+        """
+        return pulumi.get(self, "label_extractors")
+
+    @label_extractors.setter
+    def label_extractors(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "label_extractors", value)
+
+
+@pulumi.input_type
 class MeshIstioArgs:
     def __init__(__self__, *,
                  mesh_uid: Optional[pulumi.Input[str]] = None,
@@ -1516,6 +1598,30 @@ class MutationRecordArgs:
     @mutated_by.setter
     def mutated_by(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "mutated_by", value)
+
+
+@pulumi.input_type
+class NotificationRateLimitArgs:
+    def __init__(__self__, *,
+                 period: Optional[pulumi.Input[str]] = None):
+        """
+        Control over the rate of notifications sent to this alert policy's notification channels.
+        :param pulumi.Input[str] period: Not more than one notification per period.
+        """
+        if period is not None:
+            pulumi.set(__self__, "period", period)
+
+    @property
+    @pulumi.getter
+    def period(self) -> Optional[pulumi.Input[str]]:
+        """
+        Not more than one notification per period.
+        """
+        return pulumi.get(self, "period")
+
+    @period.setter
+    def period(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "period", value)
 
 
 @pulumi.input_type

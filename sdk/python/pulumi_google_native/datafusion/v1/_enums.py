@@ -19,6 +19,7 @@ class AcceleratorAcceleratorType(str, Enum):
     ACCELERATOR_TYPE_UNSPECIFIED = "ACCELERATOR_TYPE_UNSPECIFIED"
     CDC = "CDC"
     HEALTHCARE = "HEALTHCARE"
+    CCAI_INSIGHTS = "CCAI_INSIGHTS"
 
 
 class AcceleratorState(str, Enum):

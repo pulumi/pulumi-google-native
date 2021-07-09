@@ -21,7 +21,7 @@ class ReservationArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 share_settings: Optional[pulumi.Input['AllocationShareSettingsArgs']] = None,
+                 share_settings: Optional[pulumi.Input['ShareSettingsArgs']] = None,
                  specific_reservation: Optional[pulumi.Input['AllocationSpecificSKUReservationArgs']] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None):
         """
@@ -29,7 +29,7 @@ class ReservationArgs:
         :param pulumi.Input[str] zone: Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input['AllocationShareSettingsArgs'] share_settings: Share-settings for shared-reservation
+        :param pulumi.Input['ShareSettingsArgs'] share_settings: Share-settings for shared-reservation
         :param pulumi.Input['AllocationSpecificSKUReservationArgs'] specific_reservation: Reservation for instances with specific machine shapes.
         :param pulumi.Input[bool] specific_reservation_required: Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
         """
@@ -104,14 +104,14 @@ class ReservationArgs:
 
     @property
     @pulumi.getter(name="shareSettings")
-    def share_settings(self) -> Optional[pulumi.Input['AllocationShareSettingsArgs']]:
+    def share_settings(self) -> Optional[pulumi.Input['ShareSettingsArgs']]:
         """
         Share-settings for shared-reservation
         """
         return pulumi.get(self, "share_settings")
 
     @share_settings.setter
-    def share_settings(self, value: Optional[pulumi.Input['AllocationShareSettingsArgs']]):
+    def share_settings(self, value: Optional[pulumi.Input['ShareSettingsArgs']]):
         pulumi.set(self, "share_settings", value)
 
     @property
@@ -148,7 +148,7 @@ class Reservation(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 share_settings: Optional[pulumi.Input[pulumi.InputType['AllocationShareSettingsArgs']]] = None,
+                 share_settings: Optional[pulumi.Input[pulumi.InputType['ShareSettingsArgs']]] = None,
                  specific_reservation: Optional[pulumi.Input[pulumi.InputType['AllocationSpecificSKUReservationArgs']]] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -160,7 +160,7 @@ class Reservation(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-        :param pulumi.Input[pulumi.InputType['AllocationShareSettingsArgs']] share_settings: Share-settings for shared-reservation
+        :param pulumi.Input[pulumi.InputType['ShareSettingsArgs']] share_settings: Share-settings for shared-reservation
         :param pulumi.Input[pulumi.InputType['AllocationSpecificSKUReservationArgs']] specific_reservation: Reservation for instances with specific machine shapes.
         :param pulumi.Input[bool] specific_reservation_required: Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
         :param pulumi.Input[str] zone: Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
@@ -193,7 +193,7 @@ class Reservation(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 share_settings: Optional[pulumi.Input[pulumi.InputType['AllocationShareSettingsArgs']]] = None,
+                 share_settings: Optional[pulumi.Input[pulumi.InputType['ShareSettingsArgs']]] = None,
                  specific_reservation: Optional[pulumi.Input[pulumi.InputType['AllocationSpecificSKUReservationArgs']]] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
@@ -331,7 +331,7 @@ class Reservation(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="shareSettings")
-    def share_settings(self) -> pulumi.Output['outputs.AllocationShareSettingsResponse']:
+    def share_settings(self) -> pulumi.Output['outputs.ShareSettingsResponse']:
         """
         Share-settings for shared-reservation
         """
