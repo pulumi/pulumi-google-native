@@ -17,7 +17,7 @@ type EntityType struct {
 
 	// Indicates whether the entity type can be automatically expanded.
 	AutoExpansionMode pulumi.StringOutput `pulumi:"autoExpansionMode"`
-	// Required. The human-readable name of the entity type, unique within the agent.
+	// The human-readable name of the entity type, unique within the agent.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Enables fuzzy entity extraction during classification.
 	EnableFuzzyExtraction pulumi.BoolOutput `pulumi:"enableFuzzyExtraction"`
@@ -25,7 +25,7 @@ type EntityType struct {
 	Entities GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponseArrayOutput `pulumi:"entities"`
 	// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
 	ExcludedPhrases GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponseArrayOutput `pulumi:"excludedPhrases"`
-	// Required. Indicates the kind of entity type.
+	// Indicates the kind of entity type.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -42,6 +42,9 @@ func NewEntityType(ctx *pulumi.Context,
 
 	if args.AgentId == nil {
 		return nil, errors.New("invalid value for required argument 'AgentId'")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
@@ -73,7 +76,7 @@ func GetEntityType(ctx *pulumi.Context,
 type entityTypeState struct {
 	// Indicates whether the entity type can be automatically expanded.
 	AutoExpansionMode *string `pulumi:"autoExpansionMode"`
-	// Required. The human-readable name of the entity type, unique within the agent.
+	// The human-readable name of the entity type, unique within the agent.
 	DisplayName *string `pulumi:"displayName"`
 	// Enables fuzzy entity extraction during classification.
 	EnableFuzzyExtraction *bool `pulumi:"enableFuzzyExtraction"`
@@ -81,7 +84,7 @@ type entityTypeState struct {
 	Entities []GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponse `pulumi:"entities"`
 	// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
 	ExcludedPhrases []GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponse `pulumi:"excludedPhrases"`
-	// Required. Indicates the kind of entity type.
+	// Indicates the kind of entity type.
 	Kind *string `pulumi:"kind"`
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
 	Name *string `pulumi:"name"`
@@ -92,7 +95,7 @@ type entityTypeState struct {
 type EntityTypeState struct {
 	// Indicates whether the entity type can be automatically expanded.
 	AutoExpansionMode pulumi.StringPtrInput
-	// Required. The human-readable name of the entity type, unique within the agent.
+	// The human-readable name of the entity type, unique within the agent.
 	DisplayName pulumi.StringPtrInput
 	// Enables fuzzy entity extraction during classification.
 	EnableFuzzyExtraction pulumi.BoolPtrInput
@@ -100,7 +103,7 @@ type EntityTypeState struct {
 	Entities GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponseArrayInput
 	// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
 	ExcludedPhrases GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponseArrayInput
-	// Required. Indicates the kind of entity type.
+	// Indicates the kind of entity type.
 	Kind pulumi.StringPtrInput
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
 	Name pulumi.StringPtrInput
@@ -116,16 +119,16 @@ type entityTypeArgs struct {
 	AgentId string `pulumi:"agentId"`
 	// Indicates whether the entity type can be automatically expanded.
 	AutoExpansionMode *string `pulumi:"autoExpansionMode"`
-	// Required. The human-readable name of the entity type, unique within the agent.
-	DisplayName *string `pulumi:"displayName"`
+	// The human-readable name of the entity type, unique within the agent.
+	DisplayName string `pulumi:"displayName"`
 	// Enables fuzzy entity extraction during classification.
 	EnableFuzzyExtraction *bool `pulumi:"enableFuzzyExtraction"`
 	// The collection of entity entries associated with the entity type.
 	Entities []GoogleCloudDialogflowCxV3beta1EntityTypeEntity `pulumi:"entities"`
 	// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
 	ExcludedPhrases []GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase `pulumi:"excludedPhrases"`
-	// Required. Indicates the kind of entity type.
-	Kind         *string `pulumi:"kind"`
+	// Indicates the kind of entity type.
+	Kind         string  `pulumi:"kind"`
 	LanguageCode *string `pulumi:"languageCode"`
 	Location     string  `pulumi:"location"`
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.
@@ -140,16 +143,16 @@ type EntityTypeArgs struct {
 	AgentId pulumi.StringInput
 	// Indicates whether the entity type can be automatically expanded.
 	AutoExpansionMode *EntityTypeAutoExpansionMode
-	// Required. The human-readable name of the entity type, unique within the agent.
-	DisplayName pulumi.StringPtrInput
+	// The human-readable name of the entity type, unique within the agent.
+	DisplayName pulumi.StringInput
 	// Enables fuzzy entity extraction during classification.
 	EnableFuzzyExtraction pulumi.BoolPtrInput
 	// The collection of entity entries associated with the entity type.
 	Entities GoogleCloudDialogflowCxV3beta1EntityTypeEntityArrayInput
 	// Collection of exceptional words and phrases that shouldn't be matched. For example, if you have a size entity type with entry `giant`(an adjective), you might consider adding `giants`(a noun) as an exclusion. If the kind of entity type is `KIND_MAP`, then the phrases specified by entities and excluded phrases should be mutually exclusive.
 	ExcludedPhrases GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseArrayInput
-	// Required. Indicates the kind of entity type.
-	Kind         *EntityTypeKind
+	// Indicates the kind of entity type.
+	Kind         EntityTypeKind
 	LanguageCode pulumi.StringPtrInput
 	Location     pulumi.StringInput
 	// The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType. Format: `projects//locations//agents//entityTypes/`.

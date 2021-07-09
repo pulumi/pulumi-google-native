@@ -10258,14 +10258,14 @@ type MonitoredResourceDescriptor struct {
 	Description *string `pulumi:"description"`
 	// Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, `"Google Cloud SQL Database"`.
 	DisplayName *string `pulumi:"displayName"`
-	// Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
+	// A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
 	Labels []LabelDescriptor `pulumi:"labels"`
 	// Optional. The launch stage of the monitored resource definition.
 	LaunchStage *string `pulumi:"launchStage"`
 	// Optional. The resource name of the monitored resource descriptor: `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format `"monitoredResourceDescriptors/{type}"`.
 	Name *string `pulumi:"name"`
-	// Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
-	Type *string `pulumi:"type"`
+	// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+	Type string `pulumi:"type"`
 }
 
 // MonitoredResourceDescriptorInput is an input type that accepts MonitoredResourceDescriptorArgs and MonitoredResourceDescriptorOutput values.
@@ -10285,14 +10285,14 @@ type MonitoredResourceDescriptorArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, `"Google Cloud SQL Database"`.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
+	// A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
 	Labels LabelDescriptorArrayInput `pulumi:"labels"`
 	// Optional. The launch stage of the monitored resource definition.
 	LaunchStage *MonitoredResourceDescriptorLaunchStage `pulumi:"launchStage"`
 	// Optional. The resource name of the monitored resource descriptor: `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format `"monitoredResourceDescriptors/{type}"`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (MonitoredResourceDescriptorArgs) ElementType() reflect.Type {
@@ -10357,7 +10357,7 @@ func (o MonitoredResourceDescriptorOutput) DisplayName() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v MonitoredResourceDescriptor) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
 }
 
-// Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
+// A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
 func (o MonitoredResourceDescriptorOutput) Labels() LabelDescriptorArrayOutput {
 	return o.ApplyT(func(v MonitoredResourceDescriptor) []LabelDescriptor { return v.Labels }).(LabelDescriptorArrayOutput)
 }
@@ -10372,9 +10372,9 @@ func (o MonitoredResourceDescriptorOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MonitoredResourceDescriptor) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
-func (o MonitoredResourceDescriptorOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MonitoredResourceDescriptor) *string { return v.Type }).(pulumi.StringPtrOutput)
+// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+func (o MonitoredResourceDescriptorOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v MonitoredResourceDescriptor) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type MonitoredResourceDescriptorArrayOutput struct{ *pulumi.OutputState }
@@ -10403,13 +10403,13 @@ type MonitoredResourceDescriptorResponse struct {
 	Description string `pulumi:"description"`
 	// Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, `"Google Cloud SQL Database"`.
 	DisplayName string `pulumi:"displayName"`
-	// Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
+	// A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
 	Labels []LabelDescriptorResponse `pulumi:"labels"`
 	// Optional. The launch stage of the monitored resource definition.
 	LaunchStage string `pulumi:"launchStage"`
 	// Optional. The resource name of the monitored resource descriptor: `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format `"monitoredResourceDescriptors/{type}"`.
 	Name string `pulumi:"name"`
-	// Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+	// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
 	Type string `pulumi:"type"`
 }
 
@@ -10430,13 +10430,13 @@ type MonitoredResourceDescriptorResponseArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// Optional. A concise name for the monitored resource type that might be displayed in user interfaces. It should be a Title Cased Noun Phrase, without any article or other determiners. For example, `"Google Cloud SQL Database"`.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
+	// A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
 	Labels LabelDescriptorResponseArrayInput `pulumi:"labels"`
 	// Optional. The launch stage of the monitored resource definition.
 	LaunchStage pulumi.StringInput `pulumi:"launchStage"`
 	// Optional. The resource name of the monitored resource descriptor: `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format `"monitoredResourceDescriptors/{type}"`.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+	// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -10502,7 +10502,7 @@ func (o MonitoredResourceDescriptorResponseOutput) DisplayName() pulumi.StringOu
 	return o.ApplyT(func(v MonitoredResourceDescriptorResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Required. A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
+// A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
 func (o MonitoredResourceDescriptorResponseOutput) Labels() LabelDescriptorResponseArrayOutput {
 	return o.ApplyT(func(v MonitoredResourceDescriptorResponse) []LabelDescriptorResponse { return v.Labels }).(LabelDescriptorResponseArrayOutput)
 }
@@ -10517,7 +10517,7 @@ func (o MonitoredResourceDescriptorResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoredResourceDescriptorResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Required. The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
+// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
 func (o MonitoredResourceDescriptorResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v MonitoredResourceDescriptorResponse) string { return v.Type }).(pulumi.StringOutput)
 }

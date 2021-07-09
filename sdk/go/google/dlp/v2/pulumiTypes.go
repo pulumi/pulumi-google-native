@@ -624,12 +624,12 @@ func (o GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponsePtrOutput) Request
 
 // An auxiliary table contains statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).
 type GooglePrivacyDlpV2AuxiliaryTable struct {
-	// Required. Quasi-identifier columns.
+	// Quasi-identifier columns.
 	QuasiIds []GooglePrivacyDlpV2QuasiIdField `pulumi:"quasiIds"`
-	// Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
-	RelativeFrequency *GooglePrivacyDlpV2FieldId `pulumi:"relativeFrequency"`
-	// Required. Auxiliary table location.
-	Table *GooglePrivacyDlpV2BigQueryTable `pulumi:"table"`
+	// The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+	RelativeFrequency GooglePrivacyDlpV2FieldId `pulumi:"relativeFrequency"`
+	// Auxiliary table location.
+	Table GooglePrivacyDlpV2BigQueryTable `pulumi:"table"`
 }
 
 // GooglePrivacyDlpV2AuxiliaryTableInput is an input type that accepts GooglePrivacyDlpV2AuxiliaryTableArgs and GooglePrivacyDlpV2AuxiliaryTableOutput values.
@@ -645,12 +645,12 @@ type GooglePrivacyDlpV2AuxiliaryTableInput interface {
 
 // An auxiliary table contains statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).
 type GooglePrivacyDlpV2AuxiliaryTableArgs struct {
-	// Required. Quasi-identifier columns.
+	// Quasi-identifier columns.
 	QuasiIds GooglePrivacyDlpV2QuasiIdFieldArrayInput `pulumi:"quasiIds"`
-	// Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
-	RelativeFrequency GooglePrivacyDlpV2FieldIdPtrInput `pulumi:"relativeFrequency"`
-	// Required. Auxiliary table location.
-	Table GooglePrivacyDlpV2BigQueryTablePtrInput `pulumi:"table"`
+	// The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+	RelativeFrequency GooglePrivacyDlpV2FieldIdInput `pulumi:"relativeFrequency"`
+	// Auxiliary table location.
+	Table GooglePrivacyDlpV2BigQueryTableInput `pulumi:"table"`
 }
 
 func (GooglePrivacyDlpV2AuxiliaryTableArgs) ElementType() reflect.Type {
@@ -705,19 +705,19 @@ func (o GooglePrivacyDlpV2AuxiliaryTableOutput) ToGooglePrivacyDlpV2AuxiliaryTab
 	return o
 }
 
-// Required. Quasi-identifier columns.
+// Quasi-identifier columns.
 func (o GooglePrivacyDlpV2AuxiliaryTableOutput) QuasiIds() GooglePrivacyDlpV2QuasiIdFieldArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2AuxiliaryTable) []GooglePrivacyDlpV2QuasiIdField { return v.QuasiIds }).(GooglePrivacyDlpV2QuasiIdFieldArrayOutput)
 }
 
-// Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
-func (o GooglePrivacyDlpV2AuxiliaryTableOutput) RelativeFrequency() GooglePrivacyDlpV2FieldIdPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2AuxiliaryTable) *GooglePrivacyDlpV2FieldId { return v.RelativeFrequency }).(GooglePrivacyDlpV2FieldIdPtrOutput)
+// The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+func (o GooglePrivacyDlpV2AuxiliaryTableOutput) RelativeFrequency() GooglePrivacyDlpV2FieldIdOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2AuxiliaryTable) GooglePrivacyDlpV2FieldId { return v.RelativeFrequency }).(GooglePrivacyDlpV2FieldIdOutput)
 }
 
-// Required. Auxiliary table location.
-func (o GooglePrivacyDlpV2AuxiliaryTableOutput) Table() GooglePrivacyDlpV2BigQueryTablePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2AuxiliaryTable) *GooglePrivacyDlpV2BigQueryTable { return v.Table }).(GooglePrivacyDlpV2BigQueryTablePtrOutput)
+// Auxiliary table location.
+func (o GooglePrivacyDlpV2AuxiliaryTableOutput) Table() GooglePrivacyDlpV2BigQueryTableOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2AuxiliaryTable) GooglePrivacyDlpV2BigQueryTable { return v.Table }).(GooglePrivacyDlpV2BigQueryTableOutput)
 }
 
 type GooglePrivacyDlpV2AuxiliaryTableArrayOutput struct{ *pulumi.OutputState }
@@ -742,11 +742,11 @@ func (o GooglePrivacyDlpV2AuxiliaryTableArrayOutput) Index(i pulumi.IntInput) Go
 
 // An auxiliary table contains statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).
 type GooglePrivacyDlpV2AuxiliaryTableResponse struct {
-	// Required. Quasi-identifier columns.
+	// Quasi-identifier columns.
 	QuasiIds []GooglePrivacyDlpV2QuasiIdFieldResponse `pulumi:"quasiIds"`
-	// Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+	// The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
 	RelativeFrequency GooglePrivacyDlpV2FieldIdResponse `pulumi:"relativeFrequency"`
-	// Required. Auxiliary table location.
+	// Auxiliary table location.
 	Table GooglePrivacyDlpV2BigQueryTableResponse `pulumi:"table"`
 }
 
@@ -763,11 +763,11 @@ type GooglePrivacyDlpV2AuxiliaryTableResponseInput interface {
 
 // An auxiliary table contains statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).
 type GooglePrivacyDlpV2AuxiliaryTableResponseArgs struct {
-	// Required. Quasi-identifier columns.
+	// Quasi-identifier columns.
 	QuasiIds GooglePrivacyDlpV2QuasiIdFieldResponseArrayInput `pulumi:"quasiIds"`
-	// Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+	// The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
 	RelativeFrequency GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"relativeFrequency"`
-	// Required. Auxiliary table location.
+	// Auxiliary table location.
 	Table GooglePrivacyDlpV2BigQueryTableResponseInput `pulumi:"table"`
 }
 
@@ -823,21 +823,21 @@ func (o GooglePrivacyDlpV2AuxiliaryTableResponseOutput) ToGooglePrivacyDlpV2Auxi
 	return o
 }
 
-// Required. Quasi-identifier columns.
+// Quasi-identifier columns.
 func (o GooglePrivacyDlpV2AuxiliaryTableResponseOutput) QuasiIds() GooglePrivacyDlpV2QuasiIdFieldResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2AuxiliaryTableResponse) []GooglePrivacyDlpV2QuasiIdFieldResponse {
 		return v.QuasiIds
 	}).(GooglePrivacyDlpV2QuasiIdFieldResponseArrayOutput)
 }
 
-// Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+// The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
 func (o GooglePrivacyDlpV2AuxiliaryTableResponseOutput) RelativeFrequency() GooglePrivacyDlpV2FieldIdResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2AuxiliaryTableResponse) GooglePrivacyDlpV2FieldIdResponse {
 		return v.RelativeFrequency
 	}).(GooglePrivacyDlpV2FieldIdResponseOutput)
 }
 
-// Required. Auxiliary table location.
+// Auxiliary table location.
 func (o GooglePrivacyDlpV2AuxiliaryTableResponseOutput) Table() GooglePrivacyDlpV2BigQueryTableResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2AuxiliaryTableResponse) GooglePrivacyDlpV2BigQueryTableResponse {
 		return v.Table
@@ -1980,8 +1980,8 @@ type GooglePrivacyDlpV2Bucket struct {
 	Max *GooglePrivacyDlpV2Value `pulumi:"max"`
 	// Lower bound of the range, inclusive. Type should be the same as max if used.
 	Min *GooglePrivacyDlpV2Value `pulumi:"min"`
-	// Required. Replacement value for this bucket.
-	ReplacementValue *GooglePrivacyDlpV2Value `pulumi:"replacementValue"`
+	// Replacement value for this bucket.
+	ReplacementValue GooglePrivacyDlpV2Value `pulumi:"replacementValue"`
 }
 
 // GooglePrivacyDlpV2BucketInput is an input type that accepts GooglePrivacyDlpV2BucketArgs and GooglePrivacyDlpV2BucketOutput values.
@@ -2001,8 +2001,8 @@ type GooglePrivacyDlpV2BucketArgs struct {
 	Max GooglePrivacyDlpV2ValuePtrInput `pulumi:"max"`
 	// Lower bound of the range, inclusive. Type should be the same as max if used.
 	Min GooglePrivacyDlpV2ValuePtrInput `pulumi:"min"`
-	// Required. Replacement value for this bucket.
-	ReplacementValue GooglePrivacyDlpV2ValuePtrInput `pulumi:"replacementValue"`
+	// Replacement value for this bucket.
+	ReplacementValue GooglePrivacyDlpV2ValueInput `pulumi:"replacementValue"`
 }
 
 func (GooglePrivacyDlpV2BucketArgs) ElementType() reflect.Type {
@@ -2067,9 +2067,9 @@ func (o GooglePrivacyDlpV2BucketOutput) Min() GooglePrivacyDlpV2ValuePtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2Bucket) *GooglePrivacyDlpV2Value { return v.Min }).(GooglePrivacyDlpV2ValuePtrOutput)
 }
 
-// Required. Replacement value for this bucket.
-func (o GooglePrivacyDlpV2BucketOutput) ReplacementValue() GooglePrivacyDlpV2ValuePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2Bucket) *GooglePrivacyDlpV2Value { return v.ReplacementValue }).(GooglePrivacyDlpV2ValuePtrOutput)
+// Replacement value for this bucket.
+func (o GooglePrivacyDlpV2BucketOutput) ReplacementValue() GooglePrivacyDlpV2ValueOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2Bucket) GooglePrivacyDlpV2Value { return v.ReplacementValue }).(GooglePrivacyDlpV2ValueOutput)
 }
 
 type GooglePrivacyDlpV2BucketArrayOutput struct{ *pulumi.OutputState }
@@ -2098,7 +2098,7 @@ type GooglePrivacyDlpV2BucketResponse struct {
 	Max GooglePrivacyDlpV2ValueResponse `pulumi:"max"`
 	// Lower bound of the range, inclusive. Type should be the same as max if used.
 	Min GooglePrivacyDlpV2ValueResponse `pulumi:"min"`
-	// Required. Replacement value for this bucket.
+	// Replacement value for this bucket.
 	ReplacementValue GooglePrivacyDlpV2ValueResponse `pulumi:"replacementValue"`
 }
 
@@ -2119,7 +2119,7 @@ type GooglePrivacyDlpV2BucketResponseArgs struct {
 	Max GooglePrivacyDlpV2ValueResponseInput `pulumi:"max"`
 	// Lower bound of the range, inclusive. Type should be the same as max if used.
 	Min GooglePrivacyDlpV2ValueResponseInput `pulumi:"min"`
-	// Required. Replacement value for this bucket.
+	// Replacement value for this bucket.
 	ReplacementValue GooglePrivacyDlpV2ValueResponseInput `pulumi:"replacementValue"`
 }
 
@@ -2185,7 +2185,7 @@ func (o GooglePrivacyDlpV2BucketResponseOutput) Min() GooglePrivacyDlpV2ValueRes
 	return o.ApplyT(func(v GooglePrivacyDlpV2BucketResponse) GooglePrivacyDlpV2ValueResponse { return v.Min }).(GooglePrivacyDlpV2ValueResponseOutput)
 }
 
-// Required. Replacement value for this bucket.
+// Replacement value for this bucket.
 func (o GooglePrivacyDlpV2BucketResponseOutput) ReplacementValue() GooglePrivacyDlpV2ValueResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2BucketResponse) GooglePrivacyDlpV2ValueResponse { return v.ReplacementValue }).(GooglePrivacyDlpV2ValueResponseOutput)
 }
@@ -4790,10 +4790,10 @@ func (o GooglePrivacyDlpV2CloudStorageRegexFileSetResponsePtrOutput) IncludeRege
 
 // The field type of `value` and `field` do not need to match to be considered equal, but not all comparisons are possible. EQUAL_TO and NOT_EQUAL_TO attempt to compare even with incompatible types, but all other comparisons are invalid with incompatible types. A `value` of type: - `string` can be compared against all other types - `boolean` can only be compared against other booleans - `integer` can be compared against doubles or a string if the string value can be parsed as an integer. - `double` can be compared against integers or a string if the string can be parsed as a double. - `Timestamp` can be compared against strings in RFC 3339 date string format. - `TimeOfDay` can be compared against timestamps and strings in the format of 'HH:mm:ss'. If we fail to compare do to type mismatch, a warning will be given and the condition will evaluate to false.
 type GooglePrivacyDlpV2Condition struct {
-	// Required. Field within the record this condition is evaluated against.
-	Field *GooglePrivacyDlpV2FieldId `pulumi:"field"`
-	// Required. Operator used to compare the field or infoType to the value.
-	Operator *string `pulumi:"operator"`
+	// Field within the record this condition is evaluated against.
+	Field GooglePrivacyDlpV2FieldId `pulumi:"field"`
+	// Operator used to compare the field or infoType to the value.
+	Operator string `pulumi:"operator"`
 	// Value to compare against. [Mandatory, except for `EXISTS` tests.]
 	Value *GooglePrivacyDlpV2Value `pulumi:"value"`
 }
@@ -4811,10 +4811,10 @@ type GooglePrivacyDlpV2ConditionInput interface {
 
 // The field type of `value` and `field` do not need to match to be considered equal, but not all comparisons are possible. EQUAL_TO and NOT_EQUAL_TO attempt to compare even with incompatible types, but all other comparisons are invalid with incompatible types. A `value` of type: - `string` can be compared against all other types - `boolean` can only be compared against other booleans - `integer` can be compared against doubles or a string if the string value can be parsed as an integer. - `double` can be compared against integers or a string if the string can be parsed as a double. - `Timestamp` can be compared against strings in RFC 3339 date string format. - `TimeOfDay` can be compared against timestamps and strings in the format of 'HH:mm:ss'. If we fail to compare do to type mismatch, a warning will be given and the condition will evaluate to false.
 type GooglePrivacyDlpV2ConditionArgs struct {
-	// Required. Field within the record this condition is evaluated against.
-	Field GooglePrivacyDlpV2FieldIdPtrInput `pulumi:"field"`
-	// Required. Operator used to compare the field or infoType to the value.
-	Operator *GooglePrivacyDlpV2ConditionOperator `pulumi:"operator"`
+	// Field within the record this condition is evaluated against.
+	Field GooglePrivacyDlpV2FieldIdInput `pulumi:"field"`
+	// Operator used to compare the field or infoType to the value.
+	Operator GooglePrivacyDlpV2ConditionOperator `pulumi:"operator"`
 	// Value to compare against. [Mandatory, except for `EXISTS` tests.]
 	Value GooglePrivacyDlpV2ValuePtrInput `pulumi:"value"`
 }
@@ -4871,14 +4871,14 @@ func (o GooglePrivacyDlpV2ConditionOutput) ToGooglePrivacyDlpV2ConditionOutputWi
 	return o
 }
 
-// Required. Field within the record this condition is evaluated against.
-func (o GooglePrivacyDlpV2ConditionOutput) Field() GooglePrivacyDlpV2FieldIdPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2Condition) *GooglePrivacyDlpV2FieldId { return v.Field }).(GooglePrivacyDlpV2FieldIdPtrOutput)
+// Field within the record this condition is evaluated against.
+func (o GooglePrivacyDlpV2ConditionOutput) Field() GooglePrivacyDlpV2FieldIdOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2Condition) GooglePrivacyDlpV2FieldId { return v.Field }).(GooglePrivacyDlpV2FieldIdOutput)
 }
 
-// Required. Operator used to compare the field or infoType to the value.
-func (o GooglePrivacyDlpV2ConditionOutput) Operator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2Condition) *string { return v.Operator }).(pulumi.StringPtrOutput)
+// Operator used to compare the field or infoType to the value.
+func (o GooglePrivacyDlpV2ConditionOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2Condition) string { return v.Operator }).(pulumi.StringOutput)
 }
 
 // Value to compare against. [Mandatory, except for `EXISTS` tests.]
@@ -4908,9 +4908,9 @@ func (o GooglePrivacyDlpV2ConditionArrayOutput) Index(i pulumi.IntInput) GoogleP
 
 // The field type of `value` and `field` do not need to match to be considered equal, but not all comparisons are possible. EQUAL_TO and NOT_EQUAL_TO attempt to compare even with incompatible types, but all other comparisons are invalid with incompatible types. A `value` of type: - `string` can be compared against all other types - `boolean` can only be compared against other booleans - `integer` can be compared against doubles or a string if the string value can be parsed as an integer. - `double` can be compared against integers or a string if the string can be parsed as a double. - `Timestamp` can be compared against strings in RFC 3339 date string format. - `TimeOfDay` can be compared against timestamps and strings in the format of 'HH:mm:ss'. If we fail to compare do to type mismatch, a warning will be given and the condition will evaluate to false.
 type GooglePrivacyDlpV2ConditionResponse struct {
-	// Required. Field within the record this condition is evaluated against.
+	// Field within the record this condition is evaluated against.
 	Field GooglePrivacyDlpV2FieldIdResponse `pulumi:"field"`
-	// Required. Operator used to compare the field or infoType to the value.
+	// Operator used to compare the field or infoType to the value.
 	Operator string `pulumi:"operator"`
 	// Value to compare against. [Mandatory, except for `EXISTS` tests.]
 	Value GooglePrivacyDlpV2ValueResponse `pulumi:"value"`
@@ -4929,9 +4929,9 @@ type GooglePrivacyDlpV2ConditionResponseInput interface {
 
 // The field type of `value` and `field` do not need to match to be considered equal, but not all comparisons are possible. EQUAL_TO and NOT_EQUAL_TO attempt to compare even with incompatible types, but all other comparisons are invalid with incompatible types. A `value` of type: - `string` can be compared against all other types - `boolean` can only be compared against other booleans - `integer` can be compared against doubles or a string if the string value can be parsed as an integer. - `double` can be compared against integers or a string if the string can be parsed as a double. - `Timestamp` can be compared against strings in RFC 3339 date string format. - `TimeOfDay` can be compared against timestamps and strings in the format of 'HH:mm:ss'. If we fail to compare do to type mismatch, a warning will be given and the condition will evaluate to false.
 type GooglePrivacyDlpV2ConditionResponseArgs struct {
-	// Required. Field within the record this condition is evaluated against.
+	// Field within the record this condition is evaluated against.
 	Field GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"field"`
-	// Required. Operator used to compare the field or infoType to the value.
+	// Operator used to compare the field or infoType to the value.
 	Operator pulumi.StringInput `pulumi:"operator"`
 	// Value to compare against. [Mandatory, except for `EXISTS` tests.]
 	Value GooglePrivacyDlpV2ValueResponseInput `pulumi:"value"`
@@ -4989,12 +4989,12 @@ func (o GooglePrivacyDlpV2ConditionResponseOutput) ToGooglePrivacyDlpV2Condition
 	return o
 }
 
-// Required. Field within the record this condition is evaluated against.
+// Field within the record this condition is evaluated against.
 func (o GooglePrivacyDlpV2ConditionResponseOutput) Field() GooglePrivacyDlpV2FieldIdResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2ConditionResponse) GooglePrivacyDlpV2FieldIdResponse { return v.Field }).(GooglePrivacyDlpV2FieldIdResponseOutput)
 }
 
-// Required. Operator used to compare the field or infoType to the value.
+// Operator used to compare the field or infoType to the value.
 func (o GooglePrivacyDlpV2ConditionResponseOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2ConditionResponse) string { return v.Operator }).(pulumi.StringOutput)
 }
@@ -5918,8 +5918,8 @@ type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig struct {
 	CommonAlphabet *string `pulumi:"commonAlphabet"`
 	// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
 	Context *GooglePrivacyDlpV2FieldId `pulumi:"context"`
-	// Required. The key used by the encryption algorithm.
-	CryptoKey *GooglePrivacyDlpV2CryptoKey `pulumi:"cryptoKey"`
+	// The key used by the encryption algorithm.
+	CryptoKey GooglePrivacyDlpV2CryptoKey `pulumi:"cryptoKey"`
 	// This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range [2, 95]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is: 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|\:;"'<,>.?/
 	CustomAlphabet *string `pulumi:"customAlphabet"`
 	// The native way to select the alphabet. Must be in the range [2, 95].
@@ -5945,8 +5945,8 @@ type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigArgs struct {
 	CommonAlphabet *GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet `pulumi:"commonAlphabet"`
 	// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
 	Context GooglePrivacyDlpV2FieldIdPtrInput `pulumi:"context"`
-	// Required. The key used by the encryption algorithm.
-	CryptoKey GooglePrivacyDlpV2CryptoKeyPtrInput `pulumi:"cryptoKey"`
+	// The key used by the encryption algorithm.
+	CryptoKey GooglePrivacyDlpV2CryptoKeyInput `pulumi:"cryptoKey"`
 	// This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range [2, 95]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is: 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|\:;"'<,>.?/
 	CustomAlphabet pulumi.StringPtrInput `pulumi:"customAlphabet"`
 	// The native way to select the alphabet. Must be in the range [2, 95].
@@ -6043,9 +6043,9 @@ func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigOutput) Context() GooglePriva
 	return o.ApplyT(func(v GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig) *GooglePrivacyDlpV2FieldId { return v.Context }).(GooglePrivacyDlpV2FieldIdPtrOutput)
 }
 
-// Required. The key used by the encryption algorithm.
-func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigOutput) CryptoKey() GooglePrivacyDlpV2CryptoKeyPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig) *GooglePrivacyDlpV2CryptoKey { return v.CryptoKey }).(GooglePrivacyDlpV2CryptoKeyPtrOutput)
+// The key used by the encryption algorithm.
+func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigOutput) CryptoKey() GooglePrivacyDlpV2CryptoKeyOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig) GooglePrivacyDlpV2CryptoKey { return v.CryptoKey }).(GooglePrivacyDlpV2CryptoKeyOutput)
 }
 
 // This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range [2, 95]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is: 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|\:;"'<,>.?/
@@ -6105,13 +6105,13 @@ func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigPtrOutput) Context() GooglePr
 	}).(GooglePrivacyDlpV2FieldIdPtrOutput)
 }
 
-// Required. The key used by the encryption algorithm.
+// The key used by the encryption algorithm.
 func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigPtrOutput) CryptoKey() GooglePrivacyDlpV2CryptoKeyPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig) *GooglePrivacyDlpV2CryptoKey {
 		if v == nil {
 			return nil
 		}
-		return v.CryptoKey
+		return &v.CryptoKey
 	}).(GooglePrivacyDlpV2CryptoKeyPtrOutput)
 }
 
@@ -6151,7 +6151,7 @@ type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse struct {
 	CommonAlphabet string `pulumi:"commonAlphabet"`
 	// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
 	Context GooglePrivacyDlpV2FieldIdResponse `pulumi:"context"`
-	// Required. The key used by the encryption algorithm.
+	// The key used by the encryption algorithm.
 	CryptoKey GooglePrivacyDlpV2CryptoKeyResponse `pulumi:"cryptoKey"`
 	// This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range [2, 95]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is: 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|\:;"'<,>.?/
 	CustomAlphabet string `pulumi:"customAlphabet"`
@@ -6178,7 +6178,7 @@ type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseArgs struct {
 	CommonAlphabet pulumi.StringInput `pulumi:"commonAlphabet"`
 	// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
 	Context GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"context"`
-	// Required. The key used by the encryption algorithm.
+	// The key used by the encryption algorithm.
 	CryptoKey GooglePrivacyDlpV2CryptoKeyResponseInput `pulumi:"cryptoKey"`
 	// This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range [2, 95]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is: 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|\:;"'<,>.?/
 	CustomAlphabet pulumi.StringInput `pulumi:"customAlphabet"`
@@ -6227,7 +6227,7 @@ func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseOutput) Context() Goo
 	}).(GooglePrivacyDlpV2FieldIdResponseOutput)
 }
 
-// Required. The key used by the encryption algorithm.
+// The key used by the encryption algorithm.
 func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseOutput) CryptoKey() GooglePrivacyDlpV2CryptoKeyResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse) GooglePrivacyDlpV2CryptoKeyResponse {
 		return v.CryptoKey
@@ -6903,10 +6903,10 @@ type GooglePrivacyDlpV2DateShiftConfig struct {
 	Context *GooglePrivacyDlpV2FieldId `pulumi:"context"`
 	// Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and crypto_key. If set, must also set context. Can only be applied to table items.
 	CryptoKey *GooglePrivacyDlpV2CryptoKey `pulumi:"cryptoKey"`
-	// Required. For example, -5 means shift date to at most 5 days back in the past.
-	LowerBoundDays *int `pulumi:"lowerBoundDays"`
-	// Required. Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
-	UpperBoundDays *int `pulumi:"upperBoundDays"`
+	// For example, -5 means shift date to at most 5 days back in the past.
+	LowerBoundDays int `pulumi:"lowerBoundDays"`
+	// Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
+	UpperBoundDays int `pulumi:"upperBoundDays"`
 }
 
 // GooglePrivacyDlpV2DateShiftConfigInput is an input type that accepts GooglePrivacyDlpV2DateShiftConfigArgs and GooglePrivacyDlpV2DateShiftConfigOutput values.
@@ -6926,10 +6926,10 @@ type GooglePrivacyDlpV2DateShiftConfigArgs struct {
 	Context GooglePrivacyDlpV2FieldIdPtrInput `pulumi:"context"`
 	// Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and crypto_key. If set, must also set context. Can only be applied to table items.
 	CryptoKey GooglePrivacyDlpV2CryptoKeyPtrInput `pulumi:"cryptoKey"`
-	// Required. For example, -5 means shift date to at most 5 days back in the past.
-	LowerBoundDays pulumi.IntPtrInput `pulumi:"lowerBoundDays"`
-	// Required. Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
-	UpperBoundDays pulumi.IntPtrInput `pulumi:"upperBoundDays"`
+	// For example, -5 means shift date to at most 5 days back in the past.
+	LowerBoundDays pulumi.IntInput `pulumi:"lowerBoundDays"`
+	// Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
+	UpperBoundDays pulumi.IntInput `pulumi:"upperBoundDays"`
 }
 
 func (GooglePrivacyDlpV2DateShiftConfigArgs) ElementType() reflect.Type {
@@ -7020,14 +7020,14 @@ func (o GooglePrivacyDlpV2DateShiftConfigOutput) CryptoKey() GooglePrivacyDlpV2C
 	return o.ApplyT(func(v GooglePrivacyDlpV2DateShiftConfig) *GooglePrivacyDlpV2CryptoKey { return v.CryptoKey }).(GooglePrivacyDlpV2CryptoKeyPtrOutput)
 }
 
-// Required. For example, -5 means shift date to at most 5 days back in the past.
-func (o GooglePrivacyDlpV2DateShiftConfigOutput) LowerBoundDays() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2DateShiftConfig) *int { return v.LowerBoundDays }).(pulumi.IntPtrOutput)
+// For example, -5 means shift date to at most 5 days back in the past.
+func (o GooglePrivacyDlpV2DateShiftConfigOutput) LowerBoundDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DateShiftConfig) int { return v.LowerBoundDays }).(pulumi.IntOutput)
 }
 
-// Required. Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
-func (o GooglePrivacyDlpV2DateShiftConfigOutput) UpperBoundDays() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2DateShiftConfig) *int { return v.UpperBoundDays }).(pulumi.IntPtrOutput)
+// Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
+func (o GooglePrivacyDlpV2DateShiftConfigOutput) UpperBoundDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DateShiftConfig) int { return v.UpperBoundDays }).(pulumi.IntOutput)
 }
 
 type GooglePrivacyDlpV2DateShiftConfigPtrOutput struct{ *pulumi.OutputState }
@@ -7068,23 +7068,23 @@ func (o GooglePrivacyDlpV2DateShiftConfigPtrOutput) CryptoKey() GooglePrivacyDlp
 	}).(GooglePrivacyDlpV2CryptoKeyPtrOutput)
 }
 
-// Required. For example, -5 means shift date to at most 5 days back in the past.
+// For example, -5 means shift date to at most 5 days back in the past.
 func (o GooglePrivacyDlpV2DateShiftConfigPtrOutput) LowerBoundDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2DateShiftConfig) *int {
 		if v == nil {
 			return nil
 		}
-		return v.LowerBoundDays
+		return &v.LowerBoundDays
 	}).(pulumi.IntPtrOutput)
 }
 
-// Required. Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
+// Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
 func (o GooglePrivacyDlpV2DateShiftConfigPtrOutput) UpperBoundDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2DateShiftConfig) *int {
 		if v == nil {
 			return nil
 		}
-		return v.UpperBoundDays
+		return &v.UpperBoundDays
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -7094,9 +7094,9 @@ type GooglePrivacyDlpV2DateShiftConfigResponse struct {
 	Context GooglePrivacyDlpV2FieldIdResponse `pulumi:"context"`
 	// Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and crypto_key. If set, must also set context. Can only be applied to table items.
 	CryptoKey GooglePrivacyDlpV2CryptoKeyResponse `pulumi:"cryptoKey"`
-	// Required. For example, -5 means shift date to at most 5 days back in the past.
+	// For example, -5 means shift date to at most 5 days back in the past.
 	LowerBoundDays int `pulumi:"lowerBoundDays"`
-	// Required. Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
+	// Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
 	UpperBoundDays int `pulumi:"upperBoundDays"`
 }
 
@@ -7117,9 +7117,9 @@ type GooglePrivacyDlpV2DateShiftConfigResponseArgs struct {
 	Context GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"context"`
 	// Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and crypto_key. If set, must also set context. Can only be applied to table items.
 	CryptoKey GooglePrivacyDlpV2CryptoKeyResponseInput `pulumi:"cryptoKey"`
-	// Required. For example, -5 means shift date to at most 5 days back in the past.
+	// For example, -5 means shift date to at most 5 days back in the past.
 	LowerBoundDays pulumi.IntInput `pulumi:"lowerBoundDays"`
-	// Required. Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
+	// Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
 	UpperBoundDays pulumi.IntInput `pulumi:"upperBoundDays"`
 }
 
@@ -7162,12 +7162,12 @@ func (o GooglePrivacyDlpV2DateShiftConfigResponseOutput) CryptoKey() GooglePriva
 	}).(GooglePrivacyDlpV2CryptoKeyResponseOutput)
 }
 
-// Required. For example, -5 means shift date to at most 5 days back in the past.
+// For example, -5 means shift date to at most 5 days back in the past.
 func (o GooglePrivacyDlpV2DateShiftConfigResponseOutput) LowerBoundDays() pulumi.IntOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2DateShiftConfigResponse) int { return v.LowerBoundDays }).(pulumi.IntOutput)
 }
 
-// Required. Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
+// Range of shift in days. Actual shift will be selected at random within this range (inclusive ends). Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction. For example, 3 means shift date to at most 3 days into the future.
 func (o GooglePrivacyDlpV2DateShiftConfigResponseOutput) UpperBoundDays() pulumi.IntOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2DateShiftConfigResponse) int { return v.UpperBoundDays }).(pulumi.IntOutput)
 }
@@ -7534,7 +7534,7 @@ func (o GooglePrivacyDlpV2DeidentifyConfigResponsePtrOutput) TransformationError
 type GooglePrivacyDlpV2DeltaPresenceEstimationConfig struct {
 	// Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers field must appear in exactly one field of one auxiliary table.
 	AuxiliaryTables []GooglePrivacyDlpV2StatisticalTable `pulumi:"auxiliaryTables"`
-	// Required. Fields considered to be quasi-identifiers. No two fields can have the same tag.
+	// Fields considered to be quasi-identifiers. No two fields can have the same tag.
 	QuasiIds []GooglePrivacyDlpV2QuasiId `pulumi:"quasiIds"`
 	// ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code.
 	RegionCode *string `pulumi:"regionCode"`
@@ -7555,7 +7555,7 @@ type GooglePrivacyDlpV2DeltaPresenceEstimationConfigInput interface {
 type GooglePrivacyDlpV2DeltaPresenceEstimationConfigArgs struct {
 	// Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers field must appear in exactly one field of one auxiliary table.
 	AuxiliaryTables GooglePrivacyDlpV2StatisticalTableArrayInput `pulumi:"auxiliaryTables"`
-	// Required. Fields considered to be quasi-identifiers. No two fields can have the same tag.
+	// Fields considered to be quasi-identifiers. No two fields can have the same tag.
 	QuasiIds GooglePrivacyDlpV2QuasiIdArrayInput `pulumi:"quasiIds"`
 	// ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code.
 	RegionCode pulumi.StringPtrInput `pulumi:"regionCode"`
@@ -7646,7 +7646,7 @@ func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigOutput) AuxiliaryTables()
 	}).(GooglePrivacyDlpV2StatisticalTableArrayOutput)
 }
 
-// Required. Fields considered to be quasi-identifiers. No two fields can have the same tag.
+// Fields considered to be quasi-identifiers. No two fields can have the same tag.
 func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigOutput) QuasiIds() GooglePrivacyDlpV2QuasiIdArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2DeltaPresenceEstimationConfig) []GooglePrivacyDlpV2QuasiId { return v.QuasiIds }).(GooglePrivacyDlpV2QuasiIdArrayOutput)
 }
@@ -7686,7 +7686,7 @@ func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigPtrOutput) AuxiliaryTable
 	}).(GooglePrivacyDlpV2StatisticalTableArrayOutput)
 }
 
-// Required. Fields considered to be quasi-identifiers. No two fields can have the same tag.
+// Fields considered to be quasi-identifiers. No two fields can have the same tag.
 func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigPtrOutput) QuasiIds() GooglePrivacyDlpV2QuasiIdArrayOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2DeltaPresenceEstimationConfig) []GooglePrivacyDlpV2QuasiId {
 		if v == nil {
@@ -7710,7 +7710,7 @@ func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigPtrOutput) RegionCode() p
 type GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse struct {
 	// Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers field must appear in exactly one field of one auxiliary table.
 	AuxiliaryTables []GooglePrivacyDlpV2StatisticalTableResponse `pulumi:"auxiliaryTables"`
-	// Required. Fields considered to be quasi-identifiers. No two fields can have the same tag.
+	// Fields considered to be quasi-identifiers. No two fields can have the same tag.
 	QuasiIds []GooglePrivacyDlpV2QuasiIdResponse `pulumi:"quasiIds"`
 	// ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code.
 	RegionCode string `pulumi:"regionCode"`
@@ -7731,7 +7731,7 @@ type GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseInput interface {
 type GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseArgs struct {
 	// Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers field must appear in exactly one field of one auxiliary table.
 	AuxiliaryTables GooglePrivacyDlpV2StatisticalTableResponseArrayInput `pulumi:"auxiliaryTables"`
-	// Required. Fields considered to be quasi-identifiers. No two fields can have the same tag.
+	// Fields considered to be quasi-identifiers. No two fields can have the same tag.
 	QuasiIds GooglePrivacyDlpV2QuasiIdResponseArrayInput `pulumi:"quasiIds"`
 	// ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code.
 	RegionCode pulumi.StringInput `pulumi:"regionCode"`
@@ -7822,7 +7822,7 @@ func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput) Auxiliary
 	}).(GooglePrivacyDlpV2StatisticalTableResponseArrayOutput)
 }
 
-// Required. Fields considered to be quasi-identifiers. No two fields can have the same tag.
+// Fields considered to be quasi-identifiers. No two fields can have the same tag.
 func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput) QuasiIds() GooglePrivacyDlpV2QuasiIdResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse) []GooglePrivacyDlpV2QuasiIdResponse {
 		return v.QuasiIds
@@ -7864,7 +7864,7 @@ func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput) Auxili
 	}).(GooglePrivacyDlpV2StatisticalTableResponseArrayOutput)
 }
 
-// Required. Fields considered to be quasi-identifiers. No two fields can have the same tag.
+// Fields considered to be quasi-identifiers. No two fields can have the same tag.
 func (o GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponsePtrOutput) QuasiIds() GooglePrivacyDlpV2QuasiIdResponseArrayOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse) []GooglePrivacyDlpV2QuasiIdResponse {
 		if v == nil {
@@ -10215,7 +10215,7 @@ func (o GooglePrivacyDlpV2FieldIdResponseArrayOutput) Index(i pulumi.IntInput) G
 type GooglePrivacyDlpV2FieldTransformation struct {
 	// Only apply the transformation if the condition evaluates to true for the given `RecordCondition`. The conditions are allowed to reference fields that are not used in the actual transformation. Example Use Cases: - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range. - Redact a field if the date of birth field is greater than 85.
 	Condition *GooglePrivacyDlpV2RecordCondition `pulumi:"condition"`
-	// Required. Input field(s) to apply the transformation to.
+	// Input field(s) to apply the transformation to.
 	Fields []GooglePrivacyDlpV2FieldId `pulumi:"fields"`
 	// Treat the contents of the field as free text, and selectively transform content that matches an `InfoType`.
 	InfoTypeTransformations *GooglePrivacyDlpV2InfoTypeTransformations `pulumi:"infoTypeTransformations"`
@@ -10238,7 +10238,7 @@ type GooglePrivacyDlpV2FieldTransformationInput interface {
 type GooglePrivacyDlpV2FieldTransformationArgs struct {
 	// Only apply the transformation if the condition evaluates to true for the given `RecordCondition`. The conditions are allowed to reference fields that are not used in the actual transformation. Example Use Cases: - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range. - Redact a field if the date of birth field is greater than 85.
 	Condition GooglePrivacyDlpV2RecordConditionPtrInput `pulumi:"condition"`
-	// Required. Input field(s) to apply the transformation to.
+	// Input field(s) to apply the transformation to.
 	Fields GooglePrivacyDlpV2FieldIdArrayInput `pulumi:"fields"`
 	// Treat the contents of the field as free text, and selectively transform content that matches an `InfoType`.
 	InfoTypeTransformations GooglePrivacyDlpV2InfoTypeTransformationsPtrInput `pulumi:"infoTypeTransformations"`
@@ -10303,7 +10303,7 @@ func (o GooglePrivacyDlpV2FieldTransformationOutput) Condition() GooglePrivacyDl
 	return o.ApplyT(func(v GooglePrivacyDlpV2FieldTransformation) *GooglePrivacyDlpV2RecordCondition { return v.Condition }).(GooglePrivacyDlpV2RecordConditionPtrOutput)
 }
 
-// Required. Input field(s) to apply the transformation to.
+// Input field(s) to apply the transformation to.
 func (o GooglePrivacyDlpV2FieldTransformationOutput) Fields() GooglePrivacyDlpV2FieldIdArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2FieldTransformation) []GooglePrivacyDlpV2FieldId { return v.Fields }).(GooglePrivacyDlpV2FieldIdArrayOutput)
 }
@@ -10346,7 +10346,7 @@ func (o GooglePrivacyDlpV2FieldTransformationArrayOutput) Index(i pulumi.IntInpu
 type GooglePrivacyDlpV2FieldTransformationResponse struct {
 	// Only apply the transformation if the condition evaluates to true for the given `RecordCondition`. The conditions are allowed to reference fields that are not used in the actual transformation. Example Use Cases: - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range. - Redact a field if the date of birth field is greater than 85.
 	Condition GooglePrivacyDlpV2RecordConditionResponse `pulumi:"condition"`
-	// Required. Input field(s) to apply the transformation to.
+	// Input field(s) to apply the transformation to.
 	Fields []GooglePrivacyDlpV2FieldIdResponse `pulumi:"fields"`
 	// Treat the contents of the field as free text, and selectively transform content that matches an `InfoType`.
 	InfoTypeTransformations GooglePrivacyDlpV2InfoTypeTransformationsResponse `pulumi:"infoTypeTransformations"`
@@ -10369,7 +10369,7 @@ type GooglePrivacyDlpV2FieldTransformationResponseInput interface {
 type GooglePrivacyDlpV2FieldTransformationResponseArgs struct {
 	// Only apply the transformation if the condition evaluates to true for the given `RecordCondition`. The conditions are allowed to reference fields that are not used in the actual transformation. Example Use Cases: - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range. - Redact a field if the date of birth field is greater than 85.
 	Condition GooglePrivacyDlpV2RecordConditionResponseInput `pulumi:"condition"`
-	// Required. Input field(s) to apply the transformation to.
+	// Input field(s) to apply the transformation to.
 	Fields GooglePrivacyDlpV2FieldIdResponseArrayInput `pulumi:"fields"`
 	// Treat the contents of the field as free text, and selectively transform content that matches an `InfoType`.
 	InfoTypeTransformations GooglePrivacyDlpV2InfoTypeTransformationsResponseInput `pulumi:"infoTypeTransformations"`
@@ -10436,7 +10436,7 @@ func (o GooglePrivacyDlpV2FieldTransformationResponseOutput) Condition() GoogleP
 	}).(GooglePrivacyDlpV2RecordConditionResponseOutput)
 }
 
-// Required. Input field(s) to apply the transformation to.
+// Input field(s) to apply the transformation to.
 func (o GooglePrivacyDlpV2FieldTransformationResponseOutput) Fields() GooglePrivacyDlpV2FieldIdResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2FieldTransformationResponse) []GooglePrivacyDlpV2FieldIdResponse {
 		return v.Fields
@@ -11135,12 +11135,12 @@ func (o GooglePrivacyDlpV2FindingLimitsResponsePtrOutput) MaxFindingsPerRequest(
 
 // Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}, i.e if lower_bound = 10 and upper_bound = 20 all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
 type GooglePrivacyDlpV2FixedSizeBucketingConfig struct {
-	// Required. Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
-	BucketSize *float64 `pulumi:"bucketSize"`
-	// Required. Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
-	LowerBound *GooglePrivacyDlpV2Value `pulumi:"lowerBound"`
-	// Required. Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
-	UpperBound *GooglePrivacyDlpV2Value `pulumi:"upperBound"`
+	// Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
+	BucketSize float64 `pulumi:"bucketSize"`
+	// Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
+	LowerBound GooglePrivacyDlpV2Value `pulumi:"lowerBound"`
+	// Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
+	UpperBound GooglePrivacyDlpV2Value `pulumi:"upperBound"`
 }
 
 // GooglePrivacyDlpV2FixedSizeBucketingConfigInput is an input type that accepts GooglePrivacyDlpV2FixedSizeBucketingConfigArgs and GooglePrivacyDlpV2FixedSizeBucketingConfigOutput values.
@@ -11156,12 +11156,12 @@ type GooglePrivacyDlpV2FixedSizeBucketingConfigInput interface {
 
 // Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}, i.e if lower_bound = 10 and upper_bound = 20 all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
 type GooglePrivacyDlpV2FixedSizeBucketingConfigArgs struct {
-	// Required. Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
-	BucketSize pulumi.Float64PtrInput `pulumi:"bucketSize"`
-	// Required. Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
-	LowerBound GooglePrivacyDlpV2ValuePtrInput `pulumi:"lowerBound"`
-	// Required. Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
-	UpperBound GooglePrivacyDlpV2ValuePtrInput `pulumi:"upperBound"`
+	// Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
+	BucketSize pulumi.Float64Input `pulumi:"bucketSize"`
+	// Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
+	LowerBound GooglePrivacyDlpV2ValueInput `pulumi:"lowerBound"`
+	// Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
+	UpperBound GooglePrivacyDlpV2ValueInput `pulumi:"upperBound"`
 }
 
 func (GooglePrivacyDlpV2FixedSizeBucketingConfigArgs) ElementType() reflect.Type {
@@ -11242,19 +11242,19 @@ func (o GooglePrivacyDlpV2FixedSizeBucketingConfigOutput) ToGooglePrivacyDlpV2Fi
 	}).(GooglePrivacyDlpV2FixedSizeBucketingConfigPtrOutput)
 }
 
-// Required. Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
-func (o GooglePrivacyDlpV2FixedSizeBucketingConfigOutput) BucketSize() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2FixedSizeBucketingConfig) *float64 { return v.BucketSize }).(pulumi.Float64PtrOutput)
+// Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
+func (o GooglePrivacyDlpV2FixedSizeBucketingConfigOutput) BucketSize() pulumi.Float64Output {
+	return o.ApplyT(func(v GooglePrivacyDlpV2FixedSizeBucketingConfig) float64 { return v.BucketSize }).(pulumi.Float64Output)
 }
 
-// Required. Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
-func (o GooglePrivacyDlpV2FixedSizeBucketingConfigOutput) LowerBound() GooglePrivacyDlpV2ValuePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2FixedSizeBucketingConfig) *GooglePrivacyDlpV2Value { return v.LowerBound }).(GooglePrivacyDlpV2ValuePtrOutput)
+// Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
+func (o GooglePrivacyDlpV2FixedSizeBucketingConfigOutput) LowerBound() GooglePrivacyDlpV2ValueOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2FixedSizeBucketingConfig) GooglePrivacyDlpV2Value { return v.LowerBound }).(GooglePrivacyDlpV2ValueOutput)
 }
 
-// Required. Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
-func (o GooglePrivacyDlpV2FixedSizeBucketingConfigOutput) UpperBound() GooglePrivacyDlpV2ValuePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2FixedSizeBucketingConfig) *GooglePrivacyDlpV2Value { return v.UpperBound }).(GooglePrivacyDlpV2ValuePtrOutput)
+// Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
+func (o GooglePrivacyDlpV2FixedSizeBucketingConfigOutput) UpperBound() GooglePrivacyDlpV2ValueOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2FixedSizeBucketingConfig) GooglePrivacyDlpV2Value { return v.UpperBound }).(GooglePrivacyDlpV2ValueOutput)
 }
 
 type GooglePrivacyDlpV2FixedSizeBucketingConfigPtrOutput struct{ *pulumi.OutputState }
@@ -11277,43 +11277,43 @@ func (o GooglePrivacyDlpV2FixedSizeBucketingConfigPtrOutput) Elem() GooglePrivac
 	}).(GooglePrivacyDlpV2FixedSizeBucketingConfigOutput)
 }
 
-// Required. Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
+// Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
 func (o GooglePrivacyDlpV2FixedSizeBucketingConfigPtrOutput) BucketSize() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2FixedSizeBucketingConfig) *float64 {
 		if v == nil {
 			return nil
 		}
-		return v.BucketSize
+		return &v.BucketSize
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Required. Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
+// Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
 func (o GooglePrivacyDlpV2FixedSizeBucketingConfigPtrOutput) LowerBound() GooglePrivacyDlpV2ValuePtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2FixedSizeBucketingConfig) *GooglePrivacyDlpV2Value {
 		if v == nil {
 			return nil
 		}
-		return v.LowerBound
+		return &v.LowerBound
 	}).(GooglePrivacyDlpV2ValuePtrOutput)
 }
 
-// Required. Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
+// Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
 func (o GooglePrivacyDlpV2FixedSizeBucketingConfigPtrOutput) UpperBound() GooglePrivacyDlpV2ValuePtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2FixedSizeBucketingConfig) *GooglePrivacyDlpV2Value {
 		if v == nil {
 			return nil
 		}
-		return v.UpperBound
+		return &v.UpperBound
 	}).(GooglePrivacyDlpV2ValuePtrOutput)
 }
 
 // Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}, i.e if lower_bound = 10 and upper_bound = 20 all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
 type GooglePrivacyDlpV2FixedSizeBucketingConfigResponse struct {
-	// Required. Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
+	// Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
 	BucketSize float64 `pulumi:"bucketSize"`
-	// Required. Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
+	// Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
 	LowerBound GooglePrivacyDlpV2ValueResponse `pulumi:"lowerBound"`
-	// Required. Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
+	// Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
 	UpperBound GooglePrivacyDlpV2ValueResponse `pulumi:"upperBound"`
 }
 
@@ -11330,11 +11330,11 @@ type GooglePrivacyDlpV2FixedSizeBucketingConfigResponseInput interface {
 
 // Buckets values based on fixed size ranges. The Bucketing transformation can provide all of this functionality, but requires more configuration. This message is provided as a convenience to the user for simple bucketing strategies. The transformed value will be a hyphenated string of {lower_bound}-{upper_bound}, i.e if lower_bound = 10 and upper_bound = 20 all values that are within this bucket will be replaced with "10-20". This can be used on data of type: double, long. If the bound Value type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
 type GooglePrivacyDlpV2FixedSizeBucketingConfigResponseArgs struct {
-	// Required. Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
+	// Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
 	BucketSize pulumi.Float64Input `pulumi:"bucketSize"`
-	// Required. Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
+	// Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
 	LowerBound GooglePrivacyDlpV2ValueResponseInput `pulumi:"lowerBound"`
-	// Required. Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
+	// Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
 	UpperBound GooglePrivacyDlpV2ValueResponseInput `pulumi:"upperBound"`
 }
 
@@ -11365,19 +11365,19 @@ func (o GooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutput) ToGooglePrivac
 	return o
 }
 
-// Required. Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
+// Size of each bucket (except for minimum and maximum buckets). So if `lower_bound` = 10, `upper_bound` = 89, and `bucket_size` = 10, then the following buckets would be used: -10, 10-20, 20-30, 30-40, 40-50, 50-60, 60-70, 70-80, 80-89, 89+. Precision up to 2 decimals works.
 func (o GooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutput) BucketSize() pulumi.Float64Output {
 	return o.ApplyT(func(v GooglePrivacyDlpV2FixedSizeBucketingConfigResponse) float64 { return v.BucketSize }).(pulumi.Float64Output)
 }
 
-// Required. Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
+// Lower bound value of buckets. All values less than `lower_bound` are grouped together into a single bucket; for example if `lower_bound` = 10, then all values less than 10 are replaced with the value "-10".
 func (o GooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutput) LowerBound() GooglePrivacyDlpV2ValueResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2FixedSizeBucketingConfigResponse) GooglePrivacyDlpV2ValueResponse {
 		return v.LowerBound
 	}).(GooglePrivacyDlpV2ValueResponseOutput)
 }
 
-// Required. Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
+// Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+".
 func (o GooglePrivacyDlpV2FixedSizeBucketingConfigResponseOutput) UpperBound() GooglePrivacyDlpV2ValueResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2FixedSizeBucketingConfigResponse) GooglePrivacyDlpV2ValueResponse {
 		return v.UpperBound
@@ -12801,8 +12801,8 @@ func (o GooglePrivacyDlpV2InfoTypeStatsResponseArrayOutput) Index(i pulumi.IntIn
 type GooglePrivacyDlpV2InfoTypeTransformation struct {
 	// InfoTypes to apply the transformation to. An empty list will cause this transformation to apply to all findings that correspond to infoTypes that were requested in `InspectConfig`.
 	InfoTypes []GooglePrivacyDlpV2InfoType `pulumi:"infoTypes"`
-	// Required. Primitive transformation to apply to the infoType.
-	PrimitiveTransformation *GooglePrivacyDlpV2PrimitiveTransformation `pulumi:"primitiveTransformation"`
+	// Primitive transformation to apply to the infoType.
+	PrimitiveTransformation GooglePrivacyDlpV2PrimitiveTransformation `pulumi:"primitiveTransformation"`
 }
 
 // GooglePrivacyDlpV2InfoTypeTransformationInput is an input type that accepts GooglePrivacyDlpV2InfoTypeTransformationArgs and GooglePrivacyDlpV2InfoTypeTransformationOutput values.
@@ -12820,8 +12820,8 @@ type GooglePrivacyDlpV2InfoTypeTransformationInput interface {
 type GooglePrivacyDlpV2InfoTypeTransformationArgs struct {
 	// InfoTypes to apply the transformation to. An empty list will cause this transformation to apply to all findings that correspond to infoTypes that were requested in `InspectConfig`.
 	InfoTypes GooglePrivacyDlpV2InfoTypeArrayInput `pulumi:"infoTypes"`
-	// Required. Primitive transformation to apply to the infoType.
-	PrimitiveTransformation GooglePrivacyDlpV2PrimitiveTransformationPtrInput `pulumi:"primitiveTransformation"`
+	// Primitive transformation to apply to the infoType.
+	PrimitiveTransformation GooglePrivacyDlpV2PrimitiveTransformationInput `pulumi:"primitiveTransformation"`
 }
 
 func (GooglePrivacyDlpV2InfoTypeTransformationArgs) ElementType() reflect.Type {
@@ -12881,11 +12881,11 @@ func (o GooglePrivacyDlpV2InfoTypeTransformationOutput) InfoTypes() GooglePrivac
 	return o.ApplyT(func(v GooglePrivacyDlpV2InfoTypeTransformation) []GooglePrivacyDlpV2InfoType { return v.InfoTypes }).(GooglePrivacyDlpV2InfoTypeArrayOutput)
 }
 
-// Required. Primitive transformation to apply to the infoType.
-func (o GooglePrivacyDlpV2InfoTypeTransformationOutput) PrimitiveTransformation() GooglePrivacyDlpV2PrimitiveTransformationPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2InfoTypeTransformation) *GooglePrivacyDlpV2PrimitiveTransformation {
+// Primitive transformation to apply to the infoType.
+func (o GooglePrivacyDlpV2InfoTypeTransformationOutput) PrimitiveTransformation() GooglePrivacyDlpV2PrimitiveTransformationOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2InfoTypeTransformation) GooglePrivacyDlpV2PrimitiveTransformation {
 		return v.PrimitiveTransformation
-	}).(GooglePrivacyDlpV2PrimitiveTransformationPtrOutput)
+	}).(GooglePrivacyDlpV2PrimitiveTransformationOutput)
 }
 
 type GooglePrivacyDlpV2InfoTypeTransformationArrayOutput struct{ *pulumi.OutputState }
@@ -12912,7 +12912,7 @@ func (o GooglePrivacyDlpV2InfoTypeTransformationArrayOutput) Index(i pulumi.IntI
 type GooglePrivacyDlpV2InfoTypeTransformationResponse struct {
 	// InfoTypes to apply the transformation to. An empty list will cause this transformation to apply to all findings that correspond to infoTypes that were requested in `InspectConfig`.
 	InfoTypes []GooglePrivacyDlpV2InfoTypeResponse `pulumi:"infoTypes"`
-	// Required. Primitive transformation to apply to the infoType.
+	// Primitive transformation to apply to the infoType.
 	PrimitiveTransformation GooglePrivacyDlpV2PrimitiveTransformationResponse `pulumi:"primitiveTransformation"`
 }
 
@@ -12931,7 +12931,7 @@ type GooglePrivacyDlpV2InfoTypeTransformationResponseInput interface {
 type GooglePrivacyDlpV2InfoTypeTransformationResponseArgs struct {
 	// InfoTypes to apply the transformation to. An empty list will cause this transformation to apply to all findings that correspond to infoTypes that were requested in `InspectConfig`.
 	InfoTypes GooglePrivacyDlpV2InfoTypeResponseArrayInput `pulumi:"infoTypes"`
-	// Required. Primitive transformation to apply to the infoType.
+	// Primitive transformation to apply to the infoType.
 	PrimitiveTransformation GooglePrivacyDlpV2PrimitiveTransformationResponseInput `pulumi:"primitiveTransformation"`
 }
 
@@ -12994,7 +12994,7 @@ func (o GooglePrivacyDlpV2InfoTypeTransformationResponseOutput) InfoTypes() Goog
 	}).(GooglePrivacyDlpV2InfoTypeResponseArrayOutput)
 }
 
-// Required. Primitive transformation to apply to the infoType.
+// Primitive transformation to apply to the infoType.
 func (o GooglePrivacyDlpV2InfoTypeTransformationResponseOutput) PrimitiveTransformation() GooglePrivacyDlpV2PrimitiveTransformationResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InfoTypeTransformationResponse) GooglePrivacyDlpV2PrimitiveTransformationResponse {
 		return v.PrimitiveTransformation
@@ -13023,7 +13023,7 @@ func (o GooglePrivacyDlpV2InfoTypeTransformationResponseArrayOutput) Index(i pul
 
 // A type of transformation that will scan unstructured text and apply various `PrimitiveTransformation`s to each finding, where the transformation is applied to only values that were identified as a specific info_type.
 type GooglePrivacyDlpV2InfoTypeTransformations struct {
-	// Required. Transformation for each infoType. Cannot specify more than one for a given infoType.
+	// Transformation for each infoType. Cannot specify more than one for a given infoType.
 	Transformations []GooglePrivacyDlpV2InfoTypeTransformation `pulumi:"transformations"`
 }
 
@@ -13040,7 +13040,7 @@ type GooglePrivacyDlpV2InfoTypeTransformationsInput interface {
 
 // A type of transformation that will scan unstructured text and apply various `PrimitiveTransformation`s to each finding, where the transformation is applied to only values that were identified as a specific info_type.
 type GooglePrivacyDlpV2InfoTypeTransformationsArgs struct {
-	// Required. Transformation for each infoType. Cannot specify more than one for a given infoType.
+	// Transformation for each infoType. Cannot specify more than one for a given infoType.
 	Transformations GooglePrivacyDlpV2InfoTypeTransformationArrayInput `pulumi:"transformations"`
 }
 
@@ -13122,7 +13122,7 @@ func (o GooglePrivacyDlpV2InfoTypeTransformationsOutput) ToGooglePrivacyDlpV2Inf
 	}).(GooglePrivacyDlpV2InfoTypeTransformationsPtrOutput)
 }
 
-// Required. Transformation for each infoType. Cannot specify more than one for a given infoType.
+// Transformation for each infoType. Cannot specify more than one for a given infoType.
 func (o GooglePrivacyDlpV2InfoTypeTransformationsOutput) Transformations() GooglePrivacyDlpV2InfoTypeTransformationArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InfoTypeTransformations) []GooglePrivacyDlpV2InfoTypeTransformation {
 		return v.Transformations
@@ -13149,7 +13149,7 @@ func (o GooglePrivacyDlpV2InfoTypeTransformationsPtrOutput) Elem() GooglePrivacy
 	}).(GooglePrivacyDlpV2InfoTypeTransformationsOutput)
 }
 
-// Required. Transformation for each infoType. Cannot specify more than one for a given infoType.
+// Transformation for each infoType. Cannot specify more than one for a given infoType.
 func (o GooglePrivacyDlpV2InfoTypeTransformationsPtrOutput) Transformations() GooglePrivacyDlpV2InfoTypeTransformationArrayOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2InfoTypeTransformations) []GooglePrivacyDlpV2InfoTypeTransformation {
 		if v == nil {
@@ -13161,7 +13161,7 @@ func (o GooglePrivacyDlpV2InfoTypeTransformationsPtrOutput) Transformations() Go
 
 // A type of transformation that will scan unstructured text and apply various `PrimitiveTransformation`s to each finding, where the transformation is applied to only values that were identified as a specific info_type.
 type GooglePrivacyDlpV2InfoTypeTransformationsResponse struct {
-	// Required. Transformation for each infoType. Cannot specify more than one for a given infoType.
+	// Transformation for each infoType. Cannot specify more than one for a given infoType.
 	Transformations []GooglePrivacyDlpV2InfoTypeTransformationResponse `pulumi:"transformations"`
 }
 
@@ -13178,7 +13178,7 @@ type GooglePrivacyDlpV2InfoTypeTransformationsResponseInput interface {
 
 // A type of transformation that will scan unstructured text and apply various `PrimitiveTransformation`s to each finding, where the transformation is applied to only values that were identified as a specific info_type.
 type GooglePrivacyDlpV2InfoTypeTransformationsResponseArgs struct {
-	// Required. Transformation for each infoType. Cannot specify more than one for a given infoType.
+	// Transformation for each infoType. Cannot specify more than one for a given infoType.
 	Transformations GooglePrivacyDlpV2InfoTypeTransformationResponseArrayInput `pulumi:"transformations"`
 }
 
@@ -13260,7 +13260,7 @@ func (o GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput) ToGooglePrivacy
 	}).(GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput)
 }
 
-// Required. Transformation for each infoType. Cannot specify more than one for a given infoType.
+// Transformation for each infoType. Cannot specify more than one for a given infoType.
 func (o GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput) Transformations() GooglePrivacyDlpV2InfoTypeTransformationResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InfoTypeTransformationsResponse) []GooglePrivacyDlpV2InfoTypeTransformationResponse {
 		return v.Transformations
@@ -13287,7 +13287,7 @@ func (o GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput) Elem() Googl
 	}).(GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput)
 }
 
-// Required. Transformation for each infoType. Cannot specify more than one for a given infoType.
+// Transformation for each infoType. Cannot specify more than one for a given infoType.
 func (o GooglePrivacyDlpV2InfoTypeTransformationsResponsePtrOutput) Transformations() GooglePrivacyDlpV2InfoTypeTransformationResponseArrayOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2InfoTypeTransformationsResponse) []GooglePrivacyDlpV2InfoTypeTransformationResponse {
 		if v == nil {
@@ -15933,7 +15933,7 @@ func (o GooglePrivacyDlpV2KAnonymityResultResponsePtrOutput) EquivalenceClassHis
 type GooglePrivacyDlpV2KMapEstimationConfig struct {
 	// Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers column must appear in exactly one column of one auxiliary table.
 	AuxiliaryTables []GooglePrivacyDlpV2AuxiliaryTable `pulumi:"auxiliaryTables"`
-	// Required. Fields considered to be quasi-identifiers. No two columns can have the same tag.
+	// Fields considered to be quasi-identifiers. No two columns can have the same tag.
 	QuasiIds []GooglePrivacyDlpV2TaggedField `pulumi:"quasiIds"`
 	// ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code.
 	RegionCode *string `pulumi:"regionCode"`
@@ -15954,7 +15954,7 @@ type GooglePrivacyDlpV2KMapEstimationConfigInput interface {
 type GooglePrivacyDlpV2KMapEstimationConfigArgs struct {
 	// Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers column must appear in exactly one column of one auxiliary table.
 	AuxiliaryTables GooglePrivacyDlpV2AuxiliaryTableArrayInput `pulumi:"auxiliaryTables"`
-	// Required. Fields considered to be quasi-identifiers. No two columns can have the same tag.
+	// Fields considered to be quasi-identifiers. No two columns can have the same tag.
 	QuasiIds GooglePrivacyDlpV2TaggedFieldArrayInput `pulumi:"quasiIds"`
 	// ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code.
 	RegionCode pulumi.StringPtrInput `pulumi:"regionCode"`
@@ -16045,7 +16045,7 @@ func (o GooglePrivacyDlpV2KMapEstimationConfigOutput) AuxiliaryTables() GooglePr
 	}).(GooglePrivacyDlpV2AuxiliaryTableArrayOutput)
 }
 
-// Required. Fields considered to be quasi-identifiers. No two columns can have the same tag.
+// Fields considered to be quasi-identifiers. No two columns can have the same tag.
 func (o GooglePrivacyDlpV2KMapEstimationConfigOutput) QuasiIds() GooglePrivacyDlpV2TaggedFieldArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2KMapEstimationConfig) []GooglePrivacyDlpV2TaggedField { return v.QuasiIds }).(GooglePrivacyDlpV2TaggedFieldArrayOutput)
 }
@@ -16083,7 +16083,7 @@ func (o GooglePrivacyDlpV2KMapEstimationConfigPtrOutput) AuxiliaryTables() Googl
 	}).(GooglePrivacyDlpV2AuxiliaryTableArrayOutput)
 }
 
-// Required. Fields considered to be quasi-identifiers. No two columns can have the same tag.
+// Fields considered to be quasi-identifiers. No two columns can have the same tag.
 func (o GooglePrivacyDlpV2KMapEstimationConfigPtrOutput) QuasiIds() GooglePrivacyDlpV2TaggedFieldArrayOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2KMapEstimationConfig) []GooglePrivacyDlpV2TaggedField {
 		if v == nil {
@@ -16107,7 +16107,7 @@ func (o GooglePrivacyDlpV2KMapEstimationConfigPtrOutput) RegionCode() pulumi.Str
 type GooglePrivacyDlpV2KMapEstimationConfigResponse struct {
 	// Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers column must appear in exactly one column of one auxiliary table.
 	AuxiliaryTables []GooglePrivacyDlpV2AuxiliaryTableResponse `pulumi:"auxiliaryTables"`
-	// Required. Fields considered to be quasi-identifiers. No two columns can have the same tag.
+	// Fields considered to be quasi-identifiers. No two columns can have the same tag.
 	QuasiIds []GooglePrivacyDlpV2TaggedFieldResponse `pulumi:"quasiIds"`
 	// ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code.
 	RegionCode string `pulumi:"regionCode"`
@@ -16128,7 +16128,7 @@ type GooglePrivacyDlpV2KMapEstimationConfigResponseInput interface {
 type GooglePrivacyDlpV2KMapEstimationConfigResponseArgs struct {
 	// Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers column must appear in exactly one column of one auxiliary table.
 	AuxiliaryTables GooglePrivacyDlpV2AuxiliaryTableResponseArrayInput `pulumi:"auxiliaryTables"`
-	// Required. Fields considered to be quasi-identifiers. No two columns can have the same tag.
+	// Fields considered to be quasi-identifiers. No two columns can have the same tag.
 	QuasiIds GooglePrivacyDlpV2TaggedFieldResponseArrayInput `pulumi:"quasiIds"`
 	// ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code.
 	RegionCode pulumi.StringInput `pulumi:"regionCode"`
@@ -16219,7 +16219,7 @@ func (o GooglePrivacyDlpV2KMapEstimationConfigResponseOutput) AuxiliaryTables() 
 	}).(GooglePrivacyDlpV2AuxiliaryTableResponseArrayOutput)
 }
 
-// Required. Fields considered to be quasi-identifiers. No two columns can have the same tag.
+// Fields considered to be quasi-identifiers. No two columns can have the same tag.
 func (o GooglePrivacyDlpV2KMapEstimationConfigResponseOutput) QuasiIds() GooglePrivacyDlpV2TaggedFieldResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2KMapEstimationConfigResponse) []GooglePrivacyDlpV2TaggedFieldResponse {
 		return v.QuasiIds
@@ -16261,7 +16261,7 @@ func (o GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput) AuxiliaryTables
 	}).(GooglePrivacyDlpV2AuxiliaryTableResponseArrayOutput)
 }
 
-// Required. Fields considered to be quasi-identifiers. No two columns can have the same tag.
+// Fields considered to be quasi-identifiers. No two columns can have the same tag.
 func (o GooglePrivacyDlpV2KMapEstimationConfigResponsePtrOutput) QuasiIds() GooglePrivacyDlpV2TaggedFieldResponseArrayOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2KMapEstimationConfigResponse) []GooglePrivacyDlpV2TaggedFieldResponse {
 		if v == nil {
@@ -16938,10 +16938,10 @@ func (o GooglePrivacyDlpV2KindExpressionResponsePtrOutput) Name() pulumi.StringP
 
 // Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128/192/256 bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a kms-wrapped crypto key: dlp.kms.encrypt
 type GooglePrivacyDlpV2KmsWrappedCryptoKey struct {
-	// Required. The resource name of the KMS CryptoKey to use for unwrapping.
-	CryptoKeyName *string `pulumi:"cryptoKeyName"`
-	// Required. The wrapped data crypto key.
-	WrappedKey *string `pulumi:"wrappedKey"`
+	// The resource name of the KMS CryptoKey to use for unwrapping.
+	CryptoKeyName string `pulumi:"cryptoKeyName"`
+	// The wrapped data crypto key.
+	WrappedKey string `pulumi:"wrappedKey"`
 }
 
 // GooglePrivacyDlpV2KmsWrappedCryptoKeyInput is an input type that accepts GooglePrivacyDlpV2KmsWrappedCryptoKeyArgs and GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput values.
@@ -16957,10 +16957,10 @@ type GooglePrivacyDlpV2KmsWrappedCryptoKeyInput interface {
 
 // Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128/192/256 bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a kms-wrapped crypto key: dlp.kms.encrypt
 type GooglePrivacyDlpV2KmsWrappedCryptoKeyArgs struct {
-	// Required. The resource name of the KMS CryptoKey to use for unwrapping.
-	CryptoKeyName pulumi.StringPtrInput `pulumi:"cryptoKeyName"`
-	// Required. The wrapped data crypto key.
-	WrappedKey pulumi.StringPtrInput `pulumi:"wrappedKey"`
+	// The resource name of the KMS CryptoKey to use for unwrapping.
+	CryptoKeyName pulumi.StringInput `pulumi:"cryptoKeyName"`
+	// The wrapped data crypto key.
+	WrappedKey pulumi.StringInput `pulumi:"wrappedKey"`
 }
 
 func (GooglePrivacyDlpV2KmsWrappedCryptoKeyArgs) ElementType() reflect.Type {
@@ -17041,14 +17041,14 @@ func (o GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput) ToGooglePrivacyDlpV2KmsWrap
 	}).(GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrOutput)
 }
 
-// Required. The resource name of the KMS CryptoKey to use for unwrapping.
-func (o GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput) CryptoKeyName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2KmsWrappedCryptoKey) *string { return v.CryptoKeyName }).(pulumi.StringPtrOutput)
+// The resource name of the KMS CryptoKey to use for unwrapping.
+func (o GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput) CryptoKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2KmsWrappedCryptoKey) string { return v.CryptoKeyName }).(pulumi.StringOutput)
 }
 
-// Required. The wrapped data crypto key.
-func (o GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput) WrappedKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2KmsWrappedCryptoKey) *string { return v.WrappedKey }).(pulumi.StringPtrOutput)
+// The wrapped data crypto key.
+func (o GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput) WrappedKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2KmsWrappedCryptoKey) string { return v.WrappedKey }).(pulumi.StringOutput)
 }
 
 type GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrOutput struct{ *pulumi.OutputState }
@@ -17069,31 +17069,31 @@ func (o GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrOutput) Elem() GooglePrivacyDlpV
 	return o.ApplyT(func(v *GooglePrivacyDlpV2KmsWrappedCryptoKey) GooglePrivacyDlpV2KmsWrappedCryptoKey { return *v }).(GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput)
 }
 
-// Required. The resource name of the KMS CryptoKey to use for unwrapping.
+// The resource name of the KMS CryptoKey to use for unwrapping.
 func (o GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrOutput) CryptoKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2KmsWrappedCryptoKey) *string {
 		if v == nil {
 			return nil
 		}
-		return v.CryptoKeyName
+		return &v.CryptoKeyName
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The wrapped data crypto key.
+// The wrapped data crypto key.
 func (o GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrOutput) WrappedKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2KmsWrappedCryptoKey) *string {
 		if v == nil {
 			return nil
 		}
-		return v.WrappedKey
+		return &v.WrappedKey
 	}).(pulumi.StringPtrOutput)
 }
 
 // Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128/192/256 bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a kms-wrapped crypto key: dlp.kms.encrypt
 type GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse struct {
-	// Required. The resource name of the KMS CryptoKey to use for unwrapping.
+	// The resource name of the KMS CryptoKey to use for unwrapping.
 	CryptoKeyName string `pulumi:"cryptoKeyName"`
-	// Required. The wrapped data crypto key.
+	// The wrapped data crypto key.
 	WrappedKey string `pulumi:"wrappedKey"`
 }
 
@@ -17110,9 +17110,9 @@ type GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseInput interface {
 
 // Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128/192/256 bit key. Authorization requires the following IAM permissions when sending a request to perform a crypto transformation using a kms-wrapped crypto key: dlp.kms.encrypt
 type GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseArgs struct {
-	// Required. The resource name of the KMS CryptoKey to use for unwrapping.
+	// The resource name of the KMS CryptoKey to use for unwrapping.
 	CryptoKeyName pulumi.StringInput `pulumi:"cryptoKeyName"`
-	// Required. The wrapped data crypto key.
+	// The wrapped data crypto key.
 	WrappedKey pulumi.StringInput `pulumi:"wrappedKey"`
 }
 
@@ -17143,12 +17143,12 @@ func (o GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput) ToGooglePrivacyDlpV
 	return o
 }
 
-// Required. The resource name of the KMS CryptoKey to use for unwrapping.
+// The resource name of the KMS CryptoKey to use for unwrapping.
 func (o GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput) CryptoKeyName() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse) string { return v.CryptoKeyName }).(pulumi.StringOutput)
 }
 
-// Required. The wrapped data crypto key.
+// The wrapped data crypto key.
 func (o GooglePrivacyDlpV2KmsWrappedCryptoKeyResponseOutput) WrappedKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2KmsWrappedCryptoKeyResponse) string { return v.WrappedKey }).(pulumi.StringOutput)
 }
@@ -21849,8 +21849,8 @@ func (o GooglePrivacyDlpV2PublishToStackdriverResponseOutput) ToGooglePrivacyDlp
 type GooglePrivacyDlpV2QuasiId struct {
 	// A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
 	CustomTag *string `pulumi:"customTag"`
-	// Required. Identifies the column.
-	Field *GooglePrivacyDlpV2FieldId `pulumi:"field"`
+	// Identifies the column.
+	Field GooglePrivacyDlpV2FieldId `pulumi:"field"`
 	// If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data
 	Inferred *GoogleProtobufEmpty `pulumi:"inferred"`
 	// A column can be tagged with a InfoType to use the relevant public dataset as a statistical model of population, if available. We currently support US ZIP codes, region codes, ages and genders. To programmatically obtain the list of supported InfoTypes, use ListInfoTypes with the supported_by=RISK_ANALYSIS filter.
@@ -21872,8 +21872,8 @@ type GooglePrivacyDlpV2QuasiIdInput interface {
 type GooglePrivacyDlpV2QuasiIdArgs struct {
 	// A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
 	CustomTag pulumi.StringPtrInput `pulumi:"customTag"`
-	// Required. Identifies the column.
-	Field GooglePrivacyDlpV2FieldIdPtrInput `pulumi:"field"`
+	// Identifies the column.
+	Field GooglePrivacyDlpV2FieldIdInput `pulumi:"field"`
 	// If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data
 	Inferred GoogleProtobufEmptyPtrInput `pulumi:"inferred"`
 	// A column can be tagged with a InfoType to use the relevant public dataset as a statistical model of population, if available. We currently support US ZIP codes, region codes, ages and genders. To programmatically obtain the list of supported InfoTypes, use ListInfoTypes with the supported_by=RISK_ANALYSIS filter.
@@ -21937,9 +21937,9 @@ func (o GooglePrivacyDlpV2QuasiIdOutput) CustomTag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2QuasiId) *string { return v.CustomTag }).(pulumi.StringPtrOutput)
 }
 
-// Required. Identifies the column.
-func (o GooglePrivacyDlpV2QuasiIdOutput) Field() GooglePrivacyDlpV2FieldIdPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2QuasiId) *GooglePrivacyDlpV2FieldId { return v.Field }).(GooglePrivacyDlpV2FieldIdPtrOutput)
+// Identifies the column.
+func (o GooglePrivacyDlpV2QuasiIdOutput) Field() GooglePrivacyDlpV2FieldIdOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2QuasiId) GooglePrivacyDlpV2FieldId { return v.Field }).(GooglePrivacyDlpV2FieldIdOutput)
 }
 
 // If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data
@@ -22194,7 +22194,7 @@ func (o GooglePrivacyDlpV2QuasiIdFieldResponseArrayOutput) Index(i pulumi.IntInp
 type GooglePrivacyDlpV2QuasiIdResponse struct {
 	// A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
 	CustomTag string `pulumi:"customTag"`
-	// Required. Identifies the column.
+	// Identifies the column.
 	Field GooglePrivacyDlpV2FieldIdResponse `pulumi:"field"`
 	// If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data
 	Inferred GoogleProtobufEmptyResponse `pulumi:"inferred"`
@@ -22217,7 +22217,7 @@ type GooglePrivacyDlpV2QuasiIdResponseInput interface {
 type GooglePrivacyDlpV2QuasiIdResponseArgs struct {
 	// A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
 	CustomTag pulumi.StringInput `pulumi:"customTag"`
-	// Required. Identifies the column.
+	// Identifies the column.
 	Field GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"field"`
 	// If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data
 	Inferred GoogleProtobufEmptyResponseInput `pulumi:"inferred"`
@@ -22282,7 +22282,7 @@ func (o GooglePrivacyDlpV2QuasiIdResponseOutput) CustomTag() pulumi.StringOutput
 	return o.ApplyT(func(v GooglePrivacyDlpV2QuasiIdResponse) string { return v.CustomTag }).(pulumi.StringOutput)
 }
 
-// Required. Identifies the column.
+// Identifies the column.
 func (o GooglePrivacyDlpV2QuasiIdResponseOutput) Field() GooglePrivacyDlpV2FieldIdResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2QuasiIdResponse) GooglePrivacyDlpV2FieldIdResponse { return v.Field }).(GooglePrivacyDlpV2FieldIdResponseOutput)
 }
@@ -25295,12 +25295,12 @@ func (o GooglePrivacyDlpV2ScheduleResponseOutput) RecurrencePeriodDuration() pul
 
 // An auxiliary table containing statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).
 type GooglePrivacyDlpV2StatisticalTable struct {
-	// Required. Quasi-identifier columns.
+	// Quasi-identifier columns.
 	QuasiIds []GooglePrivacyDlpV2QuasiIdentifierField `pulumi:"quasiIds"`
-	// Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
-	RelativeFrequency *GooglePrivacyDlpV2FieldId `pulumi:"relativeFrequency"`
-	// Required. Auxiliary table location.
-	Table *GooglePrivacyDlpV2BigQueryTable `pulumi:"table"`
+	// The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+	RelativeFrequency GooglePrivacyDlpV2FieldId `pulumi:"relativeFrequency"`
+	// Auxiliary table location.
+	Table GooglePrivacyDlpV2BigQueryTable `pulumi:"table"`
 }
 
 // GooglePrivacyDlpV2StatisticalTableInput is an input type that accepts GooglePrivacyDlpV2StatisticalTableArgs and GooglePrivacyDlpV2StatisticalTableOutput values.
@@ -25316,12 +25316,12 @@ type GooglePrivacyDlpV2StatisticalTableInput interface {
 
 // An auxiliary table containing statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).
 type GooglePrivacyDlpV2StatisticalTableArgs struct {
-	// Required. Quasi-identifier columns.
+	// Quasi-identifier columns.
 	QuasiIds GooglePrivacyDlpV2QuasiIdentifierFieldArrayInput `pulumi:"quasiIds"`
-	// Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
-	RelativeFrequency GooglePrivacyDlpV2FieldIdPtrInput `pulumi:"relativeFrequency"`
-	// Required. Auxiliary table location.
-	Table GooglePrivacyDlpV2BigQueryTablePtrInput `pulumi:"table"`
+	// The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+	RelativeFrequency GooglePrivacyDlpV2FieldIdInput `pulumi:"relativeFrequency"`
+	// Auxiliary table location.
+	Table GooglePrivacyDlpV2BigQueryTableInput `pulumi:"table"`
 }
 
 func (GooglePrivacyDlpV2StatisticalTableArgs) ElementType() reflect.Type {
@@ -25376,19 +25376,19 @@ func (o GooglePrivacyDlpV2StatisticalTableOutput) ToGooglePrivacyDlpV2Statistica
 	return o
 }
 
-// Required. Quasi-identifier columns.
+// Quasi-identifier columns.
 func (o GooglePrivacyDlpV2StatisticalTableOutput) QuasiIds() GooglePrivacyDlpV2QuasiIdentifierFieldArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2StatisticalTable) []GooglePrivacyDlpV2QuasiIdentifierField { return v.QuasiIds }).(GooglePrivacyDlpV2QuasiIdentifierFieldArrayOutput)
 }
 
-// Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
-func (o GooglePrivacyDlpV2StatisticalTableOutput) RelativeFrequency() GooglePrivacyDlpV2FieldIdPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2StatisticalTable) *GooglePrivacyDlpV2FieldId { return v.RelativeFrequency }).(GooglePrivacyDlpV2FieldIdPtrOutput)
+// The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+func (o GooglePrivacyDlpV2StatisticalTableOutput) RelativeFrequency() GooglePrivacyDlpV2FieldIdOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2StatisticalTable) GooglePrivacyDlpV2FieldId { return v.RelativeFrequency }).(GooglePrivacyDlpV2FieldIdOutput)
 }
 
-// Required. Auxiliary table location.
-func (o GooglePrivacyDlpV2StatisticalTableOutput) Table() GooglePrivacyDlpV2BigQueryTablePtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2StatisticalTable) *GooglePrivacyDlpV2BigQueryTable { return v.Table }).(GooglePrivacyDlpV2BigQueryTablePtrOutput)
+// Auxiliary table location.
+func (o GooglePrivacyDlpV2StatisticalTableOutput) Table() GooglePrivacyDlpV2BigQueryTableOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2StatisticalTable) GooglePrivacyDlpV2BigQueryTable { return v.Table }).(GooglePrivacyDlpV2BigQueryTableOutput)
 }
 
 type GooglePrivacyDlpV2StatisticalTableArrayOutput struct{ *pulumi.OutputState }
@@ -25413,11 +25413,11 @@ func (o GooglePrivacyDlpV2StatisticalTableArrayOutput) Index(i pulumi.IntInput) 
 
 // An auxiliary table containing statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).
 type GooglePrivacyDlpV2StatisticalTableResponse struct {
-	// Required. Quasi-identifier columns.
+	// Quasi-identifier columns.
 	QuasiIds []GooglePrivacyDlpV2QuasiIdentifierFieldResponse `pulumi:"quasiIds"`
-	// Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+	// The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
 	RelativeFrequency GooglePrivacyDlpV2FieldIdResponse `pulumi:"relativeFrequency"`
-	// Required. Auxiliary table location.
+	// Auxiliary table location.
 	Table GooglePrivacyDlpV2BigQueryTableResponse `pulumi:"table"`
 }
 
@@ -25434,11 +25434,11 @@ type GooglePrivacyDlpV2StatisticalTableResponseInput interface {
 
 // An auxiliary table containing statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).
 type GooglePrivacyDlpV2StatisticalTableResponseArgs struct {
-	// Required. Quasi-identifier columns.
+	// Quasi-identifier columns.
 	QuasiIds GooglePrivacyDlpV2QuasiIdentifierFieldResponseArrayInput `pulumi:"quasiIds"`
-	// Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+	// The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
 	RelativeFrequency GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"relativeFrequency"`
-	// Required. Auxiliary table location.
+	// Auxiliary table location.
 	Table GooglePrivacyDlpV2BigQueryTableResponseInput `pulumi:"table"`
 }
 
@@ -25494,21 +25494,21 @@ func (o GooglePrivacyDlpV2StatisticalTableResponseOutput) ToGooglePrivacyDlpV2St
 	return o
 }
 
-// Required. Quasi-identifier columns.
+// Quasi-identifier columns.
 func (o GooglePrivacyDlpV2StatisticalTableResponseOutput) QuasiIds() GooglePrivacyDlpV2QuasiIdentifierFieldResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2StatisticalTableResponse) []GooglePrivacyDlpV2QuasiIdentifierFieldResponse {
 		return v.QuasiIds
 	}).(GooglePrivacyDlpV2QuasiIdentifierFieldResponseArrayOutput)
 }
 
-// Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
+// The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero.
 func (o GooglePrivacyDlpV2StatisticalTableResponseOutput) RelativeFrequency() GooglePrivacyDlpV2FieldIdResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2StatisticalTableResponse) GooglePrivacyDlpV2FieldIdResponse {
 		return v.RelativeFrequency
 	}).(GooglePrivacyDlpV2FieldIdResponseOutput)
 }
 
-// Required. Auxiliary table location.
+// Auxiliary table location.
 func (o GooglePrivacyDlpV2StatisticalTableResponseOutput) Table() GooglePrivacyDlpV2BigQueryTableResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2StatisticalTableResponse) GooglePrivacyDlpV2BigQueryTableResponse {
 		return v.Table
@@ -27440,8 +27440,8 @@ func (o GooglePrivacyDlpV2TableOptionsResponsePtrOutput) IdentifyingFields() Goo
 type GooglePrivacyDlpV2TaggedField struct {
 	// A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
 	CustomTag *string `pulumi:"customTag"`
-	// Required. Identifies the column.
-	Field *GooglePrivacyDlpV2FieldId `pulumi:"field"`
+	// Identifies the column.
+	Field GooglePrivacyDlpV2FieldId `pulumi:"field"`
 	// If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data
 	Inferred *GoogleProtobufEmpty `pulumi:"inferred"`
 	// A column can be tagged with a InfoType to use the relevant public dataset as a statistical model of population, if available. We currently support US ZIP codes, region codes, ages and genders. To programmatically obtain the list of supported InfoTypes, use ListInfoTypes with the supported_by=RISK_ANALYSIS filter.
@@ -27463,8 +27463,8 @@ type GooglePrivacyDlpV2TaggedFieldInput interface {
 type GooglePrivacyDlpV2TaggedFieldArgs struct {
 	// A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
 	CustomTag pulumi.StringPtrInput `pulumi:"customTag"`
-	// Required. Identifies the column.
-	Field GooglePrivacyDlpV2FieldIdPtrInput `pulumi:"field"`
+	// Identifies the column.
+	Field GooglePrivacyDlpV2FieldIdInput `pulumi:"field"`
 	// If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data
 	Inferred GoogleProtobufEmptyPtrInput `pulumi:"inferred"`
 	// A column can be tagged with a InfoType to use the relevant public dataset as a statistical model of population, if available. We currently support US ZIP codes, region codes, ages and genders. To programmatically obtain the list of supported InfoTypes, use ListInfoTypes with the supported_by=RISK_ANALYSIS filter.
@@ -27528,9 +27528,9 @@ func (o GooglePrivacyDlpV2TaggedFieldOutput) CustomTag() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v GooglePrivacyDlpV2TaggedField) *string { return v.CustomTag }).(pulumi.StringPtrOutput)
 }
 
-// Required. Identifies the column.
-func (o GooglePrivacyDlpV2TaggedFieldOutput) Field() GooglePrivacyDlpV2FieldIdPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2TaggedField) *GooglePrivacyDlpV2FieldId { return v.Field }).(GooglePrivacyDlpV2FieldIdPtrOutput)
+// Identifies the column.
+func (o GooglePrivacyDlpV2TaggedFieldOutput) Field() GooglePrivacyDlpV2FieldIdOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2TaggedField) GooglePrivacyDlpV2FieldId { return v.Field }).(GooglePrivacyDlpV2FieldIdOutput)
 }
 
 // If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data
@@ -27567,7 +27567,7 @@ func (o GooglePrivacyDlpV2TaggedFieldArrayOutput) Index(i pulumi.IntInput) Googl
 type GooglePrivacyDlpV2TaggedFieldResponse struct {
 	// A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
 	CustomTag string `pulumi:"customTag"`
-	// Required. Identifies the column.
+	// Identifies the column.
 	Field GooglePrivacyDlpV2FieldIdResponse `pulumi:"field"`
 	// If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data
 	Inferred GoogleProtobufEmptyResponse `pulumi:"inferred"`
@@ -27590,7 +27590,7 @@ type GooglePrivacyDlpV2TaggedFieldResponseInput interface {
 type GooglePrivacyDlpV2TaggedFieldResponseArgs struct {
 	// A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
 	CustomTag pulumi.StringInput `pulumi:"customTag"`
-	// Required. Identifies the column.
+	// Identifies the column.
 	Field GooglePrivacyDlpV2FieldIdResponseInput `pulumi:"field"`
 	// If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data
 	Inferred GoogleProtobufEmptyResponseInput `pulumi:"inferred"`
@@ -27655,7 +27655,7 @@ func (o GooglePrivacyDlpV2TaggedFieldResponseOutput) CustomTag() pulumi.StringOu
 	return o.ApplyT(func(v GooglePrivacyDlpV2TaggedFieldResponse) string { return v.CustomTag }).(pulumi.StringOutput)
 }
 
-// Required. Identifies the column.
+// Identifies the column.
 func (o GooglePrivacyDlpV2TaggedFieldResponseOutput) Field() GooglePrivacyDlpV2FieldIdResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2TaggedFieldResponse) GooglePrivacyDlpV2FieldIdResponse { return v.Field }).(GooglePrivacyDlpV2FieldIdResponseOutput)
 }
@@ -28813,8 +28813,8 @@ func (o GooglePrivacyDlpV2TransformationErrorHandlingResponsePtrOutput) ThrowErr
 
 // Use this to have a random data crypto key generated. It will be discarded after the request finishes.
 type GooglePrivacyDlpV2TransientCryptoKey struct {
-	// Required. Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
-	Name *string `pulumi:"name"`
+	// Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+	Name string `pulumi:"name"`
 }
 
 // GooglePrivacyDlpV2TransientCryptoKeyInput is an input type that accepts GooglePrivacyDlpV2TransientCryptoKeyArgs and GooglePrivacyDlpV2TransientCryptoKeyOutput values.
@@ -28830,8 +28830,8 @@ type GooglePrivacyDlpV2TransientCryptoKeyInput interface {
 
 // Use this to have a random data crypto key generated. It will be discarded after the request finishes.
 type GooglePrivacyDlpV2TransientCryptoKeyArgs struct {
-	// Required. Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (GooglePrivacyDlpV2TransientCryptoKeyArgs) ElementType() reflect.Type {
@@ -28912,9 +28912,9 @@ func (o GooglePrivacyDlpV2TransientCryptoKeyOutput) ToGooglePrivacyDlpV2Transien
 	}).(GooglePrivacyDlpV2TransientCryptoKeyPtrOutput)
 }
 
-// Required. Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
-func (o GooglePrivacyDlpV2TransientCryptoKeyOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2TransientCryptoKey) *string { return v.Name }).(pulumi.StringPtrOutput)
+// Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+func (o GooglePrivacyDlpV2TransientCryptoKeyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2TransientCryptoKey) string { return v.Name }).(pulumi.StringOutput)
 }
 
 type GooglePrivacyDlpV2TransientCryptoKeyPtrOutput struct{ *pulumi.OutputState }
@@ -28935,19 +28935,19 @@ func (o GooglePrivacyDlpV2TransientCryptoKeyPtrOutput) Elem() GooglePrivacyDlpV2
 	return o.ApplyT(func(v *GooglePrivacyDlpV2TransientCryptoKey) GooglePrivacyDlpV2TransientCryptoKey { return *v }).(GooglePrivacyDlpV2TransientCryptoKeyOutput)
 }
 
-// Required. Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+// Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
 func (o GooglePrivacyDlpV2TransientCryptoKeyPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2TransientCryptoKey) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Name
+		return &v.Name
 	}).(pulumi.StringPtrOutput)
 }
 
 // Use this to have a random data crypto key generated. It will be discarded after the request finishes.
 type GooglePrivacyDlpV2TransientCryptoKeyResponse struct {
-	// Required. Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+	// Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
 	Name string `pulumi:"name"`
 }
 
@@ -28964,7 +28964,7 @@ type GooglePrivacyDlpV2TransientCryptoKeyResponseInput interface {
 
 // Use this to have a random data crypto key generated. It will be discarded after the request finishes.
 type GooglePrivacyDlpV2TransientCryptoKeyResponseArgs struct {
-	// Required. Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+	// Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -28995,7 +28995,7 @@ func (o GooglePrivacyDlpV2TransientCryptoKeyResponseOutput) ToGooglePrivacyDlpV2
 	return o
 }
 
-// Required. Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
+// Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
 func (o GooglePrivacyDlpV2TransientCryptoKeyResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2TransientCryptoKeyResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -29220,8 +29220,8 @@ func (o GooglePrivacyDlpV2TriggerResponseArrayOutput) Index(i pulumi.IntInput) G
 
 // Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible.
 type GooglePrivacyDlpV2UnwrappedCryptoKey struct {
-	// Required. A 128/192/256 bit key.
-	Key *string `pulumi:"key"`
+	// A 128/192/256 bit key.
+	Key string `pulumi:"key"`
 }
 
 // GooglePrivacyDlpV2UnwrappedCryptoKeyInput is an input type that accepts GooglePrivacyDlpV2UnwrappedCryptoKeyArgs and GooglePrivacyDlpV2UnwrappedCryptoKeyOutput values.
@@ -29237,8 +29237,8 @@ type GooglePrivacyDlpV2UnwrappedCryptoKeyInput interface {
 
 // Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible.
 type GooglePrivacyDlpV2UnwrappedCryptoKeyArgs struct {
-	// Required. A 128/192/256 bit key.
-	Key pulumi.StringPtrInput `pulumi:"key"`
+	// A 128/192/256 bit key.
+	Key pulumi.StringInput `pulumi:"key"`
 }
 
 func (GooglePrivacyDlpV2UnwrappedCryptoKeyArgs) ElementType() reflect.Type {
@@ -29319,9 +29319,9 @@ func (o GooglePrivacyDlpV2UnwrappedCryptoKeyOutput) ToGooglePrivacyDlpV2Unwrappe
 	}).(GooglePrivacyDlpV2UnwrappedCryptoKeyPtrOutput)
 }
 
-// Required. A 128/192/256 bit key.
-func (o GooglePrivacyDlpV2UnwrappedCryptoKeyOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooglePrivacyDlpV2UnwrappedCryptoKey) *string { return v.Key }).(pulumi.StringPtrOutput)
+// A 128/192/256 bit key.
+func (o GooglePrivacyDlpV2UnwrappedCryptoKeyOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2UnwrappedCryptoKey) string { return v.Key }).(pulumi.StringOutput)
 }
 
 type GooglePrivacyDlpV2UnwrappedCryptoKeyPtrOutput struct{ *pulumi.OutputState }
@@ -29342,19 +29342,19 @@ func (o GooglePrivacyDlpV2UnwrappedCryptoKeyPtrOutput) Elem() GooglePrivacyDlpV2
 	return o.ApplyT(func(v *GooglePrivacyDlpV2UnwrappedCryptoKey) GooglePrivacyDlpV2UnwrappedCryptoKey { return *v }).(GooglePrivacyDlpV2UnwrappedCryptoKeyOutput)
 }
 
-// Required. A 128/192/256 bit key.
+// A 128/192/256 bit key.
 func (o GooglePrivacyDlpV2UnwrappedCryptoKeyPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2UnwrappedCryptoKey) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Key
+		return &v.Key
 	}).(pulumi.StringPtrOutput)
 }
 
 // Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible.
 type GooglePrivacyDlpV2UnwrappedCryptoKeyResponse struct {
-	// Required. A 128/192/256 bit key.
+	// A 128/192/256 bit key.
 	Key string `pulumi:"key"`
 }
 
@@ -29371,7 +29371,7 @@ type GooglePrivacyDlpV2UnwrappedCryptoKeyResponseInput interface {
 
 // Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible.
 type GooglePrivacyDlpV2UnwrappedCryptoKeyResponseArgs struct {
-	// Required. A 128/192/256 bit key.
+	// A 128/192/256 bit key.
 	Key pulumi.StringInput `pulumi:"key"`
 }
 
@@ -29402,7 +29402,7 @@ func (o GooglePrivacyDlpV2UnwrappedCryptoKeyResponseOutput) ToGooglePrivacyDlpV2
 	return o
 }
 
-// Required. A 128/192/256 bit key.
+// A 128/192/256 bit key.
 func (o GooglePrivacyDlpV2UnwrappedCryptoKeyResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2UnwrappedCryptoKeyResponse) string { return v.Key }).(pulumi.StringOutput)
 }

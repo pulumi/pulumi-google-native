@@ -30,7 +30,7 @@ type LookupAgentResult struct {
 	DefaultLanguageCode string `pulumi:"defaultLanguageCode"`
 	// The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description string `pulumi:"description"`
-	// Required. The human-readable name of the agent, unique within the location.
+	// The human-readable name of the agent, unique within the location.
 	DisplayName string `pulumi:"displayName"`
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection bool `pulumi:"enableSpellCorrection"`
@@ -44,6 +44,6 @@ type LookupAgentResult struct {
 	SpeechToTextSettings GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse `pulumi:"speechToTextSettings"`
 	// Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
 	StartFlow string `pulumi:"startFlow"`
-	// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+	// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
 	TimeZone string `pulumi:"timeZone"`
 }

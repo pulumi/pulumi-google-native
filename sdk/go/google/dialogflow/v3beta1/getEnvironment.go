@@ -27,12 +27,12 @@ type LookupEnvironmentArgs struct {
 type LookupEnvironmentResult struct {
 	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description string `pulumi:"description"`
-	// Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+	// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
 	DisplayName string `pulumi:"displayName"`
 	// The name of the environment. Format: `projects//locations//agents//environments/`.
 	Name string `pulumi:"name"`
 	// Update time of this environment.
 	UpdateTime string `pulumi:"updateTime"`
-	// Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
 	VersionConfigs []GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse `pulumi:"versionConfigs"`
 }

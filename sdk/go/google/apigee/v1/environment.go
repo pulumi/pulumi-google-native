@@ -23,7 +23,7 @@ type Environment struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Last modification time of this environment as milliseconds since epoch.
 	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
-	// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+	// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. Key-value pairs that may be used for customizing the environment.
 	Properties GoogleCloudApigeeV1PropertiesResponseOutput `pulumi:"properties"`
@@ -38,6 +38,9 @@ func NewEnvironment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -71,7 +74,7 @@ type environmentState struct {
 	DisplayName *string `pulumi:"displayName"`
 	// Last modification time of this environment as milliseconds since epoch.
 	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+	// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
 	Name *string `pulumi:"name"`
 	// Optional. Key-value pairs that may be used for customizing the environment.
 	Properties *GoogleCloudApigeeV1PropertiesResponse `pulumi:"properties"`
@@ -88,7 +91,7 @@ type EnvironmentState struct {
 	DisplayName pulumi.StringPtrInput
 	// Last modification time of this environment as milliseconds since epoch.
 	LastModifiedAt pulumi.StringPtrInput
-	// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+	// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
 	Name pulumi.StringPtrInput
 	// Optional. Key-value pairs that may be used for customizing the environment.
 	Properties GoogleCloudApigeeV1PropertiesResponsePtrInput
@@ -105,9 +108,9 @@ type environmentArgs struct {
 	Description *string `pulumi:"description"`
 	// Optional. Display name for this environment.
 	DisplayName *string `pulumi:"displayName"`
-	// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
-	Name           *string `pulumi:"name"`
-	OrganizationId string  `pulumi:"organizationId"`
+	// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+	Name           string `pulumi:"name"`
+	OrganizationId string `pulumi:"organizationId"`
 	// Optional. Key-value pairs that may be used for customizing the environment.
 	Properties *GoogleCloudApigeeV1Properties `pulumi:"properties"`
 }
@@ -118,8 +121,8 @@ type EnvironmentArgs struct {
 	Description pulumi.StringPtrInput
 	// Optional. Display name for this environment.
 	DisplayName pulumi.StringPtrInput
-	// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
-	Name           pulumi.StringPtrInput
+	// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+	Name           pulumi.StringInput
 	OrganizationId pulumi.StringInput
 	// Optional. Key-value pairs that may be used for customizing the environment.
 	Properties GoogleCloudApigeeV1PropertiesPtrInput

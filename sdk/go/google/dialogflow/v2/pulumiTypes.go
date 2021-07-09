@@ -12,8 +12,8 @@ import (
 
 // Defines the Automated Agent to connect to a conversation.
 type GoogleCloudDialogflowV2AutomatedAgentConfig struct {
-	// Required. ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
-	Agent *string `pulumi:"agent"`
+	// ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
+	Agent string `pulumi:"agent"`
 }
 
 // GoogleCloudDialogflowV2AutomatedAgentConfigInput is an input type that accepts GoogleCloudDialogflowV2AutomatedAgentConfigArgs and GoogleCloudDialogflowV2AutomatedAgentConfigOutput values.
@@ -29,8 +29,8 @@ type GoogleCloudDialogflowV2AutomatedAgentConfigInput interface {
 
 // Defines the Automated Agent to connect to a conversation.
 type GoogleCloudDialogflowV2AutomatedAgentConfigArgs struct {
-	// Required. ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
-	Agent pulumi.StringPtrInput `pulumi:"agent"`
+	// ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
+	Agent pulumi.StringInput `pulumi:"agent"`
 }
 
 func (GoogleCloudDialogflowV2AutomatedAgentConfigArgs) ElementType() reflect.Type {
@@ -111,9 +111,9 @@ func (o GoogleCloudDialogflowV2AutomatedAgentConfigOutput) ToGoogleCloudDialogfl
 	}).(GoogleCloudDialogflowV2AutomatedAgentConfigPtrOutput)
 }
 
-// Required. ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
-func (o GoogleCloudDialogflowV2AutomatedAgentConfigOutput) Agent() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2AutomatedAgentConfig) *string { return v.Agent }).(pulumi.StringPtrOutput)
+// ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
+func (o GoogleCloudDialogflowV2AutomatedAgentConfigOutput) Agent() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2AutomatedAgentConfig) string { return v.Agent }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowV2AutomatedAgentConfigPtrOutput struct{ *pulumi.OutputState }
@@ -136,19 +136,19 @@ func (o GoogleCloudDialogflowV2AutomatedAgentConfigPtrOutput) Elem() GoogleCloud
 	}).(GoogleCloudDialogflowV2AutomatedAgentConfigOutput)
 }
 
-// Required. ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
+// ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
 func (o GoogleCloudDialogflowV2AutomatedAgentConfigPtrOutput) Agent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2AutomatedAgentConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Agent
+		return &v.Agent
 	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the Automated Agent to connect to a conversation.
 type GoogleCloudDialogflowV2AutomatedAgentConfigResponse struct {
-	// Required. ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
+	// ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
 	Agent string `pulumi:"agent"`
 }
 
@@ -165,7 +165,7 @@ type GoogleCloudDialogflowV2AutomatedAgentConfigResponseInput interface {
 
 // Defines the Automated Agent to connect to a conversation.
 type GoogleCloudDialogflowV2AutomatedAgentConfigResponseArgs struct {
-	// Required. ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
+	// ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
 	Agent pulumi.StringInput `pulumi:"agent"`
 }
 
@@ -247,7 +247,7 @@ func (o GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput) ToGoogleCloud
 	}).(GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput)
 }
 
-// Required. ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
+// ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
 func (o GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput) Agent() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2AutomatedAgentConfigResponse) string { return v.Agent }).(pulumi.StringOutput)
 }
@@ -272,7 +272,7 @@ func (o GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput) Elem() Goo
 	}).(GoogleCloudDialogflowV2AutomatedAgentConfigResponseOutput)
 }
 
-// Required. ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
+// ID of the Dialogflow agent environment to use. This project needs to either be the same project as the conversation or you need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow API Service Agent` role in this project. Format: `projects//locations//agent/environments/`. If environment is not specified, the default `draft` environment is used. Refer to [DetectIntentRequest](/dialogflow/docs/reference/rpc/google.cloud.dialogflow.v2#google.cloud.dialogflow.v2.DetectIntentRequest) for more details.
 func (o GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput) Agent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2AutomatedAgentConfigResponse) *string {
 		if v == nil {
@@ -286,8 +286,8 @@ func (o GoogleCloudDialogflowV2AutomatedAgentConfigResponsePtrOutput) Agent() pu
 type GoogleCloudDialogflowV2Context struct {
 	// Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
 	LifespanCount *int `pulumi:"lifespanCount"`
-	// Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
-	Name *string `pulumi:"name"`
+	// The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
+	Name string `pulumi:"name"`
 	// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
 	Parameters map[string]string `pulumi:"parameters"`
 }
@@ -307,8 +307,8 @@ type GoogleCloudDialogflowV2ContextInput interface {
 type GoogleCloudDialogflowV2ContextArgs struct {
 	// Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
 	LifespanCount pulumi.IntPtrInput `pulumi:"lifespanCount"`
-	// Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
+	Name pulumi.StringInput `pulumi:"name"`
 	// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
 	Parameters pulumi.StringMapInput `pulumi:"parameters"`
 }
@@ -370,9 +370,9 @@ func (o GoogleCloudDialogflowV2ContextOutput) LifespanCount() pulumi.IntPtrOutpu
 	return o.ApplyT(func(v GoogleCloudDialogflowV2Context) *int { return v.LifespanCount }).(pulumi.IntPtrOutput)
 }
 
-// Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
-func (o GoogleCloudDialogflowV2ContextOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2Context) *string { return v.Name }).(pulumi.StringPtrOutput)
+// The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
+func (o GoogleCloudDialogflowV2ContextOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2Context) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
@@ -404,7 +404,7 @@ func (o GoogleCloudDialogflowV2ContextArrayOutput) Index(i pulumi.IntInput) Goog
 type GoogleCloudDialogflowV2ContextResponse struct {
 	// Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
 	LifespanCount int `pulumi:"lifespanCount"`
-	// Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
+	// The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
 	Name string `pulumi:"name"`
 	// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
 	Parameters map[string]string `pulumi:"parameters"`
@@ -425,7 +425,7 @@ type GoogleCloudDialogflowV2ContextResponseInput interface {
 type GoogleCloudDialogflowV2ContextResponseArgs struct {
 	// Optional. The number of conversational query requests after which the context expires. The default is `0`. If set to `0`, the context expires immediately. Contexts expire automatically after 20 minutes if there are no matching queries.
 	LifespanCount pulumi.IntInput `pulumi:"lifespanCount"`
-	// Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
+	// The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
 	Name pulumi.StringInput `pulumi:"name"`
 	// Optional. The collection of parameters associated with this context. Depending on your protocol or client library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type, could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map from composite entity property names to property values - Else: parameter value
 	Parameters pulumi.StringMapInput `pulumi:"parameters"`
@@ -488,7 +488,7 @@ func (o GoogleCloudDialogflowV2ContextResponseOutput) LifespanCount() pulumi.Int
 	return o.ApplyT(func(v GoogleCloudDialogflowV2ContextResponse) int { return v.LifespanCount }).(pulumi.IntOutput)
 }
 
-// Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
+// The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size`
 func (o GoogleCloudDialogflowV2ContextResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2ContextResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -811,10 +811,10 @@ func (o GoogleCloudDialogflowV2DocumentReloadStatusResponsePtrOutput) Time() pul
 
 // An **entity entry** for an associated entity type.
 type GoogleCloudDialogflowV2EntityTypeEntity struct {
-	// Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+	// A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
 	Synonyms []string `pulumi:"synonyms"`
-	// Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
-	Value *string `pulumi:"value"`
+	// The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+	Value string `pulumi:"value"`
 }
 
 // GoogleCloudDialogflowV2EntityTypeEntityInput is an input type that accepts GoogleCloudDialogflowV2EntityTypeEntityArgs and GoogleCloudDialogflowV2EntityTypeEntityOutput values.
@@ -830,10 +830,10 @@ type GoogleCloudDialogflowV2EntityTypeEntityInput interface {
 
 // An **entity entry** for an associated entity type.
 type GoogleCloudDialogflowV2EntityTypeEntityArgs struct {
-	// Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+	// A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
 	Synonyms pulumi.StringArrayInput `pulumi:"synonyms"`
-	// Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	// The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (GoogleCloudDialogflowV2EntityTypeEntityArgs) ElementType() reflect.Type {
@@ -888,14 +888,14 @@ func (o GoogleCloudDialogflowV2EntityTypeEntityOutput) ToGoogleCloudDialogflowV2
 	return o
 }
 
-// Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+// A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
 func (o GoogleCloudDialogflowV2EntityTypeEntityOutput) Synonyms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2EntityTypeEntity) []string { return v.Synonyms }).(pulumi.StringArrayOutput)
 }
 
-// Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
-func (o GoogleCloudDialogflowV2EntityTypeEntityOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2EntityTypeEntity) *string { return v.Value }).(pulumi.StringPtrOutput)
+// The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+func (o GoogleCloudDialogflowV2EntityTypeEntityOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2EntityTypeEntity) string { return v.Value }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowV2EntityTypeEntityArrayOutput struct{ *pulumi.OutputState }
@@ -920,9 +920,9 @@ func (o GoogleCloudDialogflowV2EntityTypeEntityArrayOutput) Index(i pulumi.IntIn
 
 // An **entity entry** for an associated entity type.
 type GoogleCloudDialogflowV2EntityTypeEntityResponse struct {
-	// Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+	// A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
 	Synonyms []string `pulumi:"synonyms"`
-	// Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+	// The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
 	Value string `pulumi:"value"`
 }
 
@@ -939,9 +939,9 @@ type GoogleCloudDialogflowV2EntityTypeEntityResponseInput interface {
 
 // An **entity entry** for an associated entity type.
 type GoogleCloudDialogflowV2EntityTypeEntityResponseArgs struct {
-	// Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+	// A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
 	Synonyms pulumi.StringArrayInput `pulumi:"synonyms"`
-	// Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+	// The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -997,12 +997,12 @@ func (o GoogleCloudDialogflowV2EntityTypeEntityResponseOutput) ToGoogleCloudDial
 	return o
 }
 
-// Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+// A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
 func (o GoogleCloudDialogflowV2EntityTypeEntityResponseOutput) Synonyms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2EntityTypeEntityResponse) []string { return v.Synonyms }).(pulumi.StringArrayOutput)
 }
 
-// Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+// The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A reference value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
 func (o GoogleCloudDialogflowV2EntityTypeEntityResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2EntityTypeEntityResponse) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1037,8 +1037,8 @@ type GoogleCloudDialogflowV2Fulfillment struct {
 	Features []GoogleCloudDialogflowV2FulfillmentFeature `pulumi:"features"`
 	// Configuration for a generic web service.
 	GenericWebService *GoogleCloudDialogflowV2FulfillmentGenericWebService `pulumi:"genericWebService"`
-	// Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
-	Name *string `pulumi:"name"`
+	// The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+	Name string `pulumi:"name"`
 }
 
 // GoogleCloudDialogflowV2FulfillmentInput is an input type that accepts GoogleCloudDialogflowV2FulfillmentArgs and GoogleCloudDialogflowV2FulfillmentOutput values.
@@ -1062,8 +1062,8 @@ type GoogleCloudDialogflowV2FulfillmentArgs struct {
 	Features GoogleCloudDialogflowV2FulfillmentFeatureArrayInput `pulumi:"features"`
 	// Configuration for a generic web service.
 	GenericWebService GoogleCloudDialogflowV2FulfillmentGenericWebServicePtrInput `pulumi:"genericWebService"`
-	// Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (GoogleCloudDialogflowV2FulfillmentArgs) ElementType() reflect.Type {
@@ -1168,9 +1168,9 @@ func (o GoogleCloudDialogflowV2FulfillmentOutput) GenericWebService() GoogleClou
 	}).(GoogleCloudDialogflowV2FulfillmentGenericWebServicePtrOutput)
 }
 
-// Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
-func (o GoogleCloudDialogflowV2FulfillmentOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2Fulfillment) *string { return v.Name }).(pulumi.StringPtrOutput)
+// The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+func (o GoogleCloudDialogflowV2FulfillmentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2Fulfillment) string { return v.Name }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowV2FulfillmentPtrOutput struct{ *pulumi.OutputState }
@@ -1231,13 +1231,13 @@ func (o GoogleCloudDialogflowV2FulfillmentPtrOutput) GenericWebService() GoogleC
 	}).(GoogleCloudDialogflowV2FulfillmentGenericWebServicePtrOutput)
 }
 
-// Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+// The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
 func (o GoogleCloudDialogflowV2FulfillmentPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2Fulfillment) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Name
+		return &v.Name
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1449,8 +1449,8 @@ type GoogleCloudDialogflowV2FulfillmentGenericWebService struct {
 	Password *string `pulumi:"password"`
 	// Optional. The HTTP request headers to send together with fulfillment requests.
 	RequestHeaders map[string]string `pulumi:"requestHeaders"`
-	// Required. The fulfillment URI for receiving POST requests. It must use https protocol.
-	Uri *string `pulumi:"uri"`
+	// The fulfillment URI for receiving POST requests. It must use https protocol.
+	Uri string `pulumi:"uri"`
 	// Optional. The user name for HTTP Basic authentication.
 	Username *string `pulumi:"username"`
 }
@@ -1474,8 +1474,8 @@ type GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs struct {
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// Optional. The HTTP request headers to send together with fulfillment requests.
 	RequestHeaders pulumi.StringMapInput `pulumi:"requestHeaders"`
-	// Required. The fulfillment URI for receiving POST requests. It must use https protocol.
-	Uri pulumi.StringPtrInput `pulumi:"uri"`
+	// The fulfillment URI for receiving POST requests. It must use https protocol.
+	Uri pulumi.StringInput `pulumi:"uri"`
 	// Optional. The user name for HTTP Basic authentication.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
@@ -1573,9 +1573,9 @@ func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceOutput) RequestHeader
 	return o.ApplyT(func(v GoogleCloudDialogflowV2FulfillmentGenericWebService) map[string]string { return v.RequestHeaders }).(pulumi.StringMapOutput)
 }
 
-// Required. The fulfillment URI for receiving POST requests. It must use https protocol.
-func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2FulfillmentGenericWebService) *string { return v.Uri }).(pulumi.StringPtrOutput)
+// The fulfillment URI for receiving POST requests. It must use https protocol.
+func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2FulfillmentGenericWebService) string { return v.Uri }).(pulumi.StringOutput)
 }
 
 // Optional. The user name for HTTP Basic authentication.
@@ -1633,13 +1633,13 @@ func (o GoogleCloudDialogflowV2FulfillmentGenericWebServicePtrOutput) RequestHea
 	}).(pulumi.StringMapOutput)
 }
 
-// Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+// The fulfillment URI for receiving POST requests. It must use https protocol.
 func (o GoogleCloudDialogflowV2FulfillmentGenericWebServicePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2FulfillmentGenericWebService) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Uri
+		return &v.Uri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1661,7 +1661,7 @@ type GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse struct {
 	Password string `pulumi:"password"`
 	// Optional. The HTTP request headers to send together with fulfillment requests.
 	RequestHeaders map[string]string `pulumi:"requestHeaders"`
-	// Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+	// The fulfillment URI for receiving POST requests. It must use https protocol.
 	Uri string `pulumi:"uri"`
 	// Optional. The user name for HTTP Basic authentication.
 	Username string `pulumi:"username"`
@@ -1686,7 +1686,7 @@ type GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseArgs struct {
 	Password pulumi.StringInput `pulumi:"password"`
 	// Optional. The HTTP request headers to send together with fulfillment requests.
 	RequestHeaders pulumi.StringMapInput `pulumi:"requestHeaders"`
-	// Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+	// The fulfillment URI for receiving POST requests. It must use https protocol.
 	Uri pulumi.StringInput `pulumi:"uri"`
 	// Optional. The user name for HTTP Basic authentication.
 	Username pulumi.StringInput `pulumi:"username"`
@@ -1787,7 +1787,7 @@ func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput) Reque
 	}).(pulumi.StringMapOutput)
 }
 
-// Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+// The fulfillment URI for receiving POST requests. It must use https protocol.
 func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -1847,7 +1847,7 @@ func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput) Re
 	}).(pulumi.StringMapOutput)
 }
 
-// Required. The fulfillment URI for receiving POST requests. It must use https protocol.
+// The fulfillment URI for receiving POST requests. It must use https protocol.
 func (o GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse) *string {
 		if v == nil {
@@ -1877,7 +1877,7 @@ type GoogleCloudDialogflowV2FulfillmentResponse struct {
 	Features []GoogleCloudDialogflowV2FulfillmentFeatureResponse `pulumi:"features"`
 	// Configuration for a generic web service.
 	GenericWebService GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponse `pulumi:"genericWebService"`
-	// Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+	// The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
 	Name string `pulumi:"name"`
 }
 
@@ -1902,7 +1902,7 @@ type GoogleCloudDialogflowV2FulfillmentResponseArgs struct {
 	Features GoogleCloudDialogflowV2FulfillmentFeatureResponseArrayInput `pulumi:"features"`
 	// Configuration for a generic web service.
 	GenericWebService GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseInput `pulumi:"genericWebService"`
-	// Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+	// The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -2008,7 +2008,7 @@ func (o GoogleCloudDialogflowV2FulfillmentResponseOutput) GenericWebService() Go
 	}).(GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponseOutput)
 }
 
-// Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+// The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
 func (o GoogleCloudDialogflowV2FulfillmentResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2FulfillmentResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2073,7 +2073,7 @@ func (o GoogleCloudDialogflowV2FulfillmentResponsePtrOutput) GenericWebService()
 	}).(GoogleCloudDialogflowV2FulfillmentGenericWebServiceResponsePtrOutput)
 }
 
-// Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+// The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
 func (o GoogleCloudDialogflowV2FulfillmentResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2FulfillmentResponse) *string {
 		if v == nil {
@@ -2286,8 +2286,8 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigPtrOutput) NotificationC
 
 // Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig struct {
-	// Required. Conversation model resource name. Format: `projects//conversationModels/`.
-	Model *string `pulumi:"model"`
+	// Conversation model resource name. Format: `projects//conversationModels/`.
+	Model string `pulumi:"model"`
 }
 
 // GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs and GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigOutput values.
@@ -2303,8 +2303,8 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigInpu
 
 // Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs struct {
-	// Required. Conversation model resource name. Format: `projects//conversationModels/`.
-	Model pulumi.StringPtrInput `pulumi:"model"`
+	// Conversation model resource name. Format: `projects//conversationModels/`.
+	Model pulumi.StringInput `pulumi:"model"`
 }
 
 func (GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs) ElementType() reflect.Type {
@@ -2385,11 +2385,9 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigO
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigPtrOutput)
 }
 
-// Required. Conversation model resource name. Format: `projects//conversationModels/`.
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigOutput) Model() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig) *string {
-		return v.Model
-	}).(pulumi.StringPtrOutput)
+// Conversation model resource name. Format: `projects//conversationModels/`.
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigOutput) Model() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig) string { return v.Model }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigPtrOutput struct{ *pulumi.OutputState }
@@ -2412,19 +2410,19 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigP
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigOutput)
 }
 
-// Required. Conversation model resource name. Format: `projects//conversationModels/`.
+// Conversation model resource name. Format: `projects//conversationModels/`.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigPtrOutput) Model() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Model
+		return &v.Model
 	}).(pulumi.StringPtrOutput)
 }
 
 // Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse struct {
-	// Required. Conversation model resource name. Format: `projects//conversationModels/`.
+	// Conversation model resource name. Format: `projects//conversationModels/`.
 	Model string `pulumi:"model"`
 }
 
@@ -2441,7 +2439,7 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResp
 
 // Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseArgs struct {
-	// Required. Conversation model resource name. Format: `projects//conversationModels/`.
+	// Conversation model resource name. Format: `projects//conversationModels/`.
 	Model pulumi.StringInput `pulumi:"model"`
 }
 
@@ -2472,7 +2470,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigR
 	return o
 }
 
-// Required. Conversation model resource name. Format: `projects//conversationModels/`.
+// Conversation model resource name. Format: `projects//conversationModels/`.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponseOutput) Model() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse) string {
 		return v.Model
@@ -4112,8 +4110,8 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigCon
 
 // Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource struct {
-	// Required. The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
-	Agent *string `pulumi:"agent"`
+	// The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
+	Agent string `pulumi:"agent"`
 }
 
 // GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs and GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput values.
@@ -4129,8 +4127,8 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialog
 
 // Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs struct {
-	// Required. The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
-	Agent pulumi.StringPtrInput `pulumi:"agent"`
+	// The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
+	Agent pulumi.StringInput `pulumi:"agent"`
 }
 
 func (GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs) ElementType() reflect.Type {
@@ -4211,11 +4209,11 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDia
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput)
 }
 
-// Required. The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
-func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput) Agent() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource) *string {
+// The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
+func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput) Agent() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource) string {
 		return v.Agent
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput struct{ *pulumi.OutputState }
@@ -4238,19 +4236,19 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDia
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput)
 }
 
-// Required. The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
+// The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput) Agent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Agent
+		return &v.Agent
 	}).(pulumi.StringPtrOutput)
 }
 
 // Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponse struct {
-	// Required. The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
+	// The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
 	Agent string `pulumi:"agent"`
 }
 
@@ -4267,7 +4265,7 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialog
 
 // Dialogflow source setting. Supported feature: DIALOGFLOW_ASSIST.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseArgs struct {
-	// Required. The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
+	// The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
 	Agent pulumi.StringInput `pulumi:"agent"`
 }
 
@@ -4298,7 +4296,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDia
 	return o
 }
 
-// Required. The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
+// The name of a Dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponseOutput) Agent() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceResponse) string {
 		return v.Agent
@@ -4307,7 +4305,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDia
 
 // Document source settings. Supported features: SMART_REPLY, SMART_COMPOSE.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource struct {
-	// Required. Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
+	// Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
 	Documents []string `pulumi:"documents"`
 }
 
@@ -4324,7 +4322,7 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocume
 
 // Document source settings. Supported features: SMART_REPLY, SMART_COMPOSE.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs struct {
-	// Required. Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
+	// Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
 	Documents pulumi.StringArrayInput `pulumi:"documents"`
 }
 
@@ -4406,7 +4404,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDoc
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput)
 }
 
-// Required. Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
+// Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput) Documents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource) []string {
 		return v.Documents
@@ -4433,7 +4431,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDoc
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput)
 }
 
-// Required. Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
+// Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput) Documents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource) []string {
 		if v == nil {
@@ -4445,7 +4443,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDoc
 
 // Document source settings. Supported features: SMART_REPLY, SMART_COMPOSE.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponse struct {
-	// Required. Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
+	// Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
 	Documents []string `pulumi:"documents"`
 }
 
@@ -4462,7 +4460,7 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocume
 
 // Document source settings. Supported features: SMART_REPLY, SMART_COMPOSE.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseArgs struct {
-	// Required. Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
+	// Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
 	Documents pulumi.StringArrayInput `pulumi:"documents"`
 }
 
@@ -4493,7 +4491,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDoc
 	return o
 }
 
-// Required. Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
+// Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, at most 5 documents are supported.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponseOutput) Documents() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceResponse) []string {
 		return v.Documents
@@ -4502,7 +4500,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDoc
 
 // Knowledge base source settings. Supported features: ARTICLE_SUGGESTION, FAQ.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource struct {
-	// Required. Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
+	// Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
 	KnowledgeBases []string `pulumi:"knowledgeBases"`
 }
 
@@ -4519,7 +4517,7 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowle
 
 // Knowledge base source settings. Supported features: ARTICLE_SUGGESTION, FAQ.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs struct {
-	// Required. Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
+	// Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
 	KnowledgeBases pulumi.StringArrayInput `pulumi:"knowledgeBases"`
 }
 
@@ -4601,7 +4599,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKno
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput)
 }
 
-// Required. Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
+// Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput) KnowledgeBases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource) []string {
 		return v.KnowledgeBases
@@ -4628,7 +4626,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKno
 	}).(GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput)
 }
 
-// Required. Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
+// Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput) KnowledgeBases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySource) []string {
 		if v == nil {
@@ -4640,7 +4638,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKno
 
 // Knowledge base source settings. Supported features: ARTICLE_SUGGESTION, FAQ.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponse struct {
-	// Required. Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
+	// Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
 	KnowledgeBases []string `pulumi:"knowledgeBases"`
 }
 
@@ -4657,7 +4655,7 @@ type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowle
 
 // Knowledge base source settings. Supported features: ARTICLE_SUGGESTION, FAQ.
 type GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseArgs struct {
-	// Required. Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
+	// Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
 	KnowledgeBases pulumi.StringArrayInput `pulumi:"knowledgeBases"`
 }
 
@@ -4688,7 +4686,7 @@ func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKno
 	return o
 }
 
-// Required. Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
+// Knowledge bases to query. Format: `projects//locations//knowledgeBases/`. Currently, at most 5 knowledge bases are supported.
 func (o GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponseOutput) KnowledgeBases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceResponse) []string {
 		return v.KnowledgeBases
@@ -5195,8 +5193,8 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigPtrOutput) SalesforceLiveA
 
 // Configuration specific to LivePerson (https://www.liveperson.com).
 type GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig struct {
-	// Required. Account number of the LivePerson account to connect. This is the account number you input at the login page.
-	AccountNumber *string `pulumi:"accountNumber"`
+	// Account number of the LivePerson account to connect. This is the account number you input at the login page.
+	AccountNumber string `pulumi:"accountNumber"`
 }
 
 // GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs and GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput values.
@@ -5212,8 +5210,8 @@ type GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigInput interfa
 
 // Configuration specific to LivePerson (https://www.liveperson.com).
 type GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs struct {
-	// Required. Account number of the LivePerson account to connect. This is the account number you input at the login page.
-	AccountNumber pulumi.StringPtrInput `pulumi:"accountNumber"`
+	// Account number of the LivePerson account to connect. This is the account number you input at the login page.
+	AccountNumber pulumi.StringInput `pulumi:"accountNumber"`
 }
 
 func (GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs) ElementType() reflect.Type {
@@ -5294,9 +5292,9 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput) To
 	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput)
 }
 
-// Required. Account number of the LivePerson account to connect. This is the account number you input at the login page.
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput) AccountNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig) *string { return v.AccountNumber }).(pulumi.StringPtrOutput)
+// Account number of the LivePerson account to connect. This is the account number you input at the login page.
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput) AccountNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig) string { return v.AccountNumber }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput struct{ *pulumi.OutputState }
@@ -5319,19 +5317,19 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput)
 	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigOutput)
 }
 
-// Required. Account number of the LivePerson account to connect. This is the account number you input at the login page.
+// Account number of the LivePerson account to connect. This is the account number you input at the login page.
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigPtrOutput) AccountNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.AccountNumber
+		return &v.AccountNumber
 	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration specific to LivePerson (https://www.liveperson.com).
 type GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse struct {
-	// Required. Account number of the LivePerson account to connect. This is the account number you input at the login page.
+	// Account number of the LivePerson account to connect. This is the account number you input at the login page.
 	AccountNumber string `pulumi:"accountNumber"`
 }
 
@@ -5348,7 +5346,7 @@ type GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseInput
 
 // Configuration specific to LivePerson (https://www.liveperson.com).
 type GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseArgs struct {
-	// Required. Account number of the LivePerson account to connect. This is the account number you input at the login page.
+	// Account number of the LivePerson account to connect. This is the account number you input at the login page.
 	AccountNumber pulumi.StringInput `pulumi:"accountNumber"`
 }
 
@@ -5430,7 +5428,7 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOu
 	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput)
 }
 
-// Required. Account number of the LivePerson account to connect. This is the account number you input at the login page.
+// Account number of the LivePerson account to connect. This is the account number you input at the login page.
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutput) AccountNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse) string {
 		return v.AccountNumber
@@ -5457,7 +5455,7 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePt
 	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponseOutput)
 }
 
-// Required. Account number of the LivePerson account to connect. This is the account number you input at the login page.
+// Account number of the LivePerson account to connect. This is the account number you input at the login page.
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponsePtrOutput) AccountNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse) *string {
 		if v == nil {
@@ -5628,14 +5626,14 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigResponsePtrOutput) Salesfo
 
 // Configuration specific to Salesforce Live Agent.
 type GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig struct {
-	// Required. Live Agent chat button ID.
-	ButtonId *string `pulumi:"buttonId"`
-	// Required. Live Agent deployment ID.
-	DeploymentId *string `pulumi:"deploymentId"`
-	// Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
-	EndpointDomain *string `pulumi:"endpointDomain"`
-	// Required. The organization ID of the Salesforce account.
-	OrganizationId *string `pulumi:"organizationId"`
+	// Live Agent chat button ID.
+	ButtonId string `pulumi:"buttonId"`
+	// Live Agent deployment ID.
+	DeploymentId string `pulumi:"deploymentId"`
+	// Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
+	EndpointDomain string `pulumi:"endpointDomain"`
+	// The organization ID of the Salesforce account.
+	OrganizationId string `pulumi:"organizationId"`
 }
 
 // GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigInput is an input type that accepts GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs and GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput values.
@@ -5651,14 +5649,14 @@ type GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigInpu
 
 // Configuration specific to Salesforce Live Agent.
 type GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs struct {
-	// Required. Live Agent chat button ID.
-	ButtonId pulumi.StringPtrInput `pulumi:"buttonId"`
-	// Required. Live Agent deployment ID.
-	DeploymentId pulumi.StringPtrInput `pulumi:"deploymentId"`
-	// Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
-	EndpointDomain pulumi.StringPtrInput `pulumi:"endpointDomain"`
-	// Required. The organization ID of the Salesforce account.
-	OrganizationId pulumi.StringPtrInput `pulumi:"organizationId"`
+	// Live Agent chat button ID.
+	ButtonId pulumi.StringInput `pulumi:"buttonId"`
+	// Live Agent deployment ID.
+	DeploymentId pulumi.StringInput `pulumi:"deploymentId"`
+	// Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
+	EndpointDomain pulumi.StringInput `pulumi:"endpointDomain"`
+	// The organization ID of the Salesforce account.
+	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
 }
 
 func (GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs) ElementType() reflect.Type {
@@ -5739,32 +5737,32 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigO
 	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput)
 }
 
-// Required. Live Agent chat button ID.
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput) ButtonId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) *string {
+// Live Agent chat button ID.
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput) ButtonId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) string {
 		return v.ButtonId
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.StringOutput)
 }
 
-// Required. Live Agent deployment ID.
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput) DeploymentId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) *string {
+// Live Agent deployment ID.
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput) DeploymentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) string {
 		return v.DeploymentId
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.StringOutput)
 }
 
-// Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput) EndpointDomain() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) *string {
+// Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput) EndpointDomain() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) string {
 		return v.EndpointDomain
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.StringOutput)
 }
 
-// Required. The organization ID of the Salesforce account.
-func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput) OrganizationId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) *string {
+// The organization ID of the Salesforce account.
+func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput) OrganizationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) string {
 		return v.OrganizationId
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput struct{ *pulumi.OutputState }
@@ -5787,55 +5785,55 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigP
 	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput)
 }
 
-// Required. Live Agent chat button ID.
+// Live Agent chat button ID.
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput) ButtonId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ButtonId
+		return &v.ButtonId
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Live Agent deployment ID.
+// Live Agent deployment ID.
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput) DeploymentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.DeploymentId
+		return &v.DeploymentId
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
+// Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput) EndpointDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.EndpointDomain
+		return &v.EndpointDomain
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The organization ID of the Salesforce account.
+// The organization ID of the Salesforce account.
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput) OrganizationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.OrganizationId
+		return &v.OrganizationId
 	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration specific to Salesforce Live Agent.
 type GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse struct {
-	// Required. Live Agent chat button ID.
+	// Live Agent chat button ID.
 	ButtonId string `pulumi:"buttonId"`
-	// Required. Live Agent deployment ID.
+	// Live Agent deployment ID.
 	DeploymentId string `pulumi:"deploymentId"`
-	// Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
+	// Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
 	EndpointDomain string `pulumi:"endpointDomain"`
-	// Required. The organization ID of the Salesforce account.
+	// The organization ID of the Salesforce account.
 	OrganizationId string `pulumi:"organizationId"`
 }
 
@@ -5852,13 +5850,13 @@ type GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResp
 
 // Configuration specific to Salesforce Live Agent.
 type GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseArgs struct {
-	// Required. Live Agent chat button ID.
+	// Live Agent chat button ID.
 	ButtonId pulumi.StringInput `pulumi:"buttonId"`
-	// Required. Live Agent deployment ID.
+	// Live Agent deployment ID.
 	DeploymentId pulumi.StringInput `pulumi:"deploymentId"`
-	// Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
+	// Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
 	EndpointDomain pulumi.StringInput `pulumi:"endpointDomain"`
-	// Required. The organization ID of the Salesforce account.
+	// The organization ID of the Salesforce account.
 	OrganizationId pulumi.StringInput `pulumi:"organizationId"`
 }
 
@@ -5940,28 +5938,28 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigR
 	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput)
 }
 
-// Required. Live Agent chat button ID.
+// Live Agent chat button ID.
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput) ButtonId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse) string {
 		return v.ButtonId
 	}).(pulumi.StringOutput)
 }
 
-// Required. Live Agent deployment ID.
+// Live Agent deployment ID.
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput) DeploymentId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse) string {
 		return v.DeploymentId
 	}).(pulumi.StringOutput)
 }
 
-// Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
+// Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput) EndpointDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse) string {
 		return v.EndpointDomain
 	}).(pulumi.StringOutput)
 }
 
-// Required. The organization ID of the Salesforce account.
+// The organization ID of the Salesforce account.
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput) OrganizationId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse) string {
 		return v.OrganizationId
@@ -5988,7 +5986,7 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigR
 	}).(GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponseOutput)
 }
 
-// Required. Live Agent chat button ID.
+// Live Agent chat button ID.
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput) ButtonId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse) *string {
 		if v == nil {
@@ -5998,7 +5996,7 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigR
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Live Agent deployment ID.
+// Live Agent deployment ID.
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput) DeploymentId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse) *string {
 		if v == nil {
@@ -6008,7 +6006,7 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigR
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
+// Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput) EndpointDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse) *string {
 		if v == nil {
@@ -6018,7 +6016,7 @@ func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigR
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The organization ID of the Salesforce account.
+// The organization ID of the Salesforce account.
 func (o GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponsePtrOutput) OrganizationId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse) *string {
 		if v == nil {
@@ -6714,10 +6712,10 @@ func (o GoogleCloudDialogflowV2IntentMessageBasicCardPtrOutput) Title() pulumi.S
 
 // The button object that appears at the bottom of a card.
 type GoogleCloudDialogflowV2IntentMessageBasicCardButton struct {
-	// Required. Action to take when a user taps on the button.
-	OpenUriAction *GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction `pulumi:"openUriAction"`
-	// Required. The title of the button.
-	Title *string `pulumi:"title"`
+	// Action to take when a user taps on the button.
+	OpenUriAction GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction `pulumi:"openUriAction"`
+	// The title of the button.
+	Title string `pulumi:"title"`
 }
 
 // GoogleCloudDialogflowV2IntentMessageBasicCardButtonInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs and GoogleCloudDialogflowV2IntentMessageBasicCardButtonOutput values.
@@ -6733,10 +6731,10 @@ type GoogleCloudDialogflowV2IntentMessageBasicCardButtonInput interface {
 
 // The button object that appears at the bottom of a card.
 type GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs struct {
-	// Required. Action to take when a user taps on the button.
-	OpenUriAction GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrInput `pulumi:"openUriAction"`
-	// Required. The title of the button.
-	Title pulumi.StringPtrInput `pulumi:"title"`
+	// Action to take when a user taps on the button.
+	OpenUriAction GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionInput `pulumi:"openUriAction"`
+	// The title of the button.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs) ElementType() reflect.Type {
@@ -6791,16 +6789,16 @@ func (o GoogleCloudDialogflowV2IntentMessageBasicCardButtonOutput) ToGoogleCloud
 	return o
 }
 
-// Required. Action to take when a user taps on the button.
-func (o GoogleCloudDialogflowV2IntentMessageBasicCardButtonOutput) OpenUriAction() GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBasicCardButton) *GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction {
+// Action to take when a user taps on the button.
+func (o GoogleCloudDialogflowV2IntentMessageBasicCardButtonOutput) OpenUriAction() GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBasicCardButton) GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction {
 		return v.OpenUriAction
-	}).(GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput)
+	}).(GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionOutput)
 }
 
-// Required. The title of the button.
-func (o GoogleCloudDialogflowV2IntentMessageBasicCardButtonOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBasicCardButton) *string { return v.Title }).(pulumi.StringPtrOutput)
+// The title of the button.
+func (o GoogleCloudDialogflowV2IntentMessageBasicCardButtonOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBasicCardButton) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowV2IntentMessageBasicCardButtonArrayOutput struct{ *pulumi.OutputState }
@@ -6825,8 +6823,8 @@ func (o GoogleCloudDialogflowV2IntentMessageBasicCardButtonArrayOutput) Index(i 
 
 // Opens the given URI.
 type GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction struct {
-	// Required. The HTTP or HTTPS scheme URI.
-	Uri *string `pulumi:"uri"`
+	// The HTTP or HTTPS scheme URI.
+	Uri string `pulumi:"uri"`
 }
 
 // GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs and GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionOutput values.
@@ -6842,8 +6840,8 @@ type GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionInput inter
 
 // Opens the given URI.
 type GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs struct {
-	// Required. The HTTP or HTTPS scheme URI.
-	Uri pulumi.StringPtrInput `pulumi:"uri"`
+	// The HTTP or HTTPS scheme URI.
+	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
 func (GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs) ElementType() reflect.Type {
@@ -6856,47 +6854,6 @@ func (i GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs) To
 
 func (i GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs) ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionOutput)
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs) ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput() GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs) ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionOutput).ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs, GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtr and GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput() GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput
-	ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput
-}
-
-type googleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrType GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs
-
-func GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtr(v *GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs) GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrInput {
-	return (*googleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrType)(v)
-}
-
-func (*googleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction)(nil)).Elem()
-}
-
-func (i *googleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrType) ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput() GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrType) ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput)
 }
 
 // Opens the given URI.
@@ -6914,54 +6871,14 @@ func (o GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionOutput) 
 	return o
 }
 
-func (o GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionOutput) ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput() GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput {
-	return o.ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionOutput) ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction) *GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction {
-		return &v
-	}).(GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput)
-}
-
-// Required. The HTTP or HTTPS scheme URI.
-func (o GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction) *string { return v.Uri }).(pulumi.StringPtrOutput)
-}
-
-type GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction)(nil)).Elem()
-}
-
-func (o GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput) ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput() GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput) ToGoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput) Elem() GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction) GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction {
-		return *v
-	}).(GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionOutput)
-}
-
-// Required. The HTTP or HTTPS scheme URI.
-func (o GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Uri
-	}).(pulumi.StringPtrOutput)
+// The HTTP or HTTPS scheme URI.
+func (o GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction) string { return v.Uri }).(pulumi.StringOutput)
 }
 
 // Opens the given URI.
 type GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse struct {
-	// Required. The HTTP or HTTPS scheme URI.
+	// The HTTP or HTTPS scheme URI.
 	Uri string `pulumi:"uri"`
 }
 
@@ -6978,7 +6895,7 @@ type GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseInp
 
 // Opens the given URI.
 type GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseArgs struct {
-	// Required. The HTTP or HTTPS scheme URI.
+	// The HTTP or HTTPS scheme URI.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -7009,16 +6926,16 @@ func (o GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse
 	return o
 }
 
-// Required. The HTTP or HTTPS scheme URI.
+// The HTTP or HTTPS scheme URI.
 func (o GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
 
 // The button object that appears at the bottom of a card.
 type GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponse struct {
-	// Required. Action to take when a user taps on the button.
+	// Action to take when a user taps on the button.
 	OpenUriAction GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse `pulumi:"openUriAction"`
-	// Required. The title of the button.
+	// The title of the button.
 	Title string `pulumi:"title"`
 }
 
@@ -7035,9 +6952,9 @@ type GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseInput interface 
 
 // The button object that appears at the bottom of a card.
 type GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArgs struct {
-	// Required. Action to take when a user taps on the button.
+	// Action to take when a user taps on the button.
 	OpenUriAction GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseInput `pulumi:"openUriAction"`
-	// Required. The title of the button.
+	// The title of the button.
 	Title pulumi.StringInput `pulumi:"title"`
 }
 
@@ -7093,14 +7010,14 @@ func (o GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseOutput) ToGoo
 	return o
 }
 
-// Required. Action to take when a user taps on the button.
+// Action to take when a user taps on the button.
 func (o GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseOutput) OpenUriAction() GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponse) GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponse {
 		return v.OpenUriAction
 	}).(GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseOutput)
 }
 
-// Required. The title of the button.
+// The title of the button.
 func (o GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponse) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -7224,7 +7141,7 @@ func (o GoogleCloudDialogflowV2IntentMessageBasicCardResponseOutput) Title() pul
 type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard struct {
 	// Optional. Settings for displaying the image. Applies to every image in items.
 	ImageDisplayOptions *string `pulumi:"imageDisplayOptions"`
-	// Required. List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
+	// List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
 	Items []GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem `pulumi:"items"`
 }
 
@@ -7243,7 +7160,7 @@ type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardInput interface {
 type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardArgs struct {
 	// Optional. Settings for displaying the image. Applies to every image in items.
 	ImageDisplayOptions *GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions `pulumi:"imageDisplayOptions"`
-	// Required. List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
+	// List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
 	Items GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArrayInput `pulumi:"items"`
 }
 
@@ -7330,7 +7247,7 @@ func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardOutput) ImageDispl
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard) *string { return v.ImageDisplayOptions }).(pulumi.StringPtrOutput)
 }
 
-// Required. List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
+// List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
 func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardOutput) Items() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard) []GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem {
 		return v.Items
@@ -7367,7 +7284,7 @@ func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardPtrOutput) ImageDi
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
+// List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
 func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardPtrOutput) Items() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard) []GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem {
 		if v == nil {
@@ -7385,10 +7302,10 @@ type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIte
 	Footer *string `pulumi:"footer"`
 	// Optional. Hero image for the carousel item.
 	Image *GoogleCloudDialogflowV2IntentMessageImage `pulumi:"image"`
-	// Required. Action to present to the user.
-	OpenUriAction *GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction `pulumi:"openUriAction"`
-	// Required. Title of the carousel item. Maximum of two lines of text.
-	Title *string `pulumi:"title"`
+	// Action to present to the user.
+	OpenUriAction GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction `pulumi:"openUriAction"`
+	// Title of the carousel item. Maximum of two lines of text.
+	Title string `pulumi:"title"`
 }
 
 // GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs and GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOutput values.
@@ -7410,10 +7327,10 @@ type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIte
 	Footer pulumi.StringPtrInput `pulumi:"footer"`
 	// Optional. Hero image for the carousel item.
 	Image GoogleCloudDialogflowV2IntentMessageImagePtrInput `pulumi:"image"`
-	// Required. Action to present to the user.
-	OpenUriAction GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrInput `pulumi:"openUriAction"`
-	// Required. Title of the carousel item. Maximum of two lines of text.
-	Title pulumi.StringPtrInput `pulumi:"title"`
+	// Action to present to the user.
+	OpenUriAction GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionInput `pulumi:"openUriAction"`
+	// Title of the carousel item. Maximum of two lines of text.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs) ElementType() reflect.Type {
@@ -7489,18 +7406,18 @@ func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCard
 	}).(GoogleCloudDialogflowV2IntentMessageImagePtrOutput)
 }
 
-// Required. Action to present to the user.
-func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOutput) OpenUriAction() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem) *GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction {
+// Action to present to the user.
+func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOutput) OpenUriAction() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem) GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction {
 		return v.OpenUriAction
-	}).(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput)
+	}).(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionOutput)
 }
 
-// Required. Title of the carousel item. Maximum of two lines of text.
-func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem) *string {
+// Title of the carousel item. Maximum of two lines of text.
+func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem) string {
 		return v.Title
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArrayOutput struct{ *pulumi.OutputState }
@@ -7525,8 +7442,8 @@ func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCard
 
 // Actions on Google action to open a given url.
 type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction struct {
-	// Required. URL
-	Url *string `pulumi:"url"`
+	// URL
+	Url string `pulumi:"url"`
 	// Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
 	UrlTypeHint *string `pulumi:"urlTypeHint"`
 }
@@ -7544,8 +7461,8 @@ type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIte
 
 // Actions on Google action to open a given url.
 type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs struct {
-	// Required. URL
-	Url pulumi.StringPtrInput `pulumi:"url"`
+	// URL
+	Url pulumi.StringInput `pulumi:"url"`
 	// Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
 	UrlTypeHint *GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint `pulumi:"urlTypeHint"`
 }
@@ -7560,47 +7477,6 @@ func (i GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCard
 
 func (i GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs) ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionOutput)
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs) ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs) ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionOutput).ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs, GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtr and GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput
-	ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput
-}
-
-type googleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrType GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs
-
-func GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtr(v *GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs) GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrInput {
-	return (*googleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrType)(v)
-}
-
-func (*googleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction)(nil)).Elem()
-}
-
-func (i *googleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrType) ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrType) ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput)
 }
 
 // Actions on Google action to open a given url.
@@ -7618,21 +7494,11 @@ func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCard
 	return o
 }
 
-func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionOutput) ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput {
-	return o.ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionOutput) ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction) *GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction {
-		return &v
-	}).(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput)
-}
-
-// Required. URL
-func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction) *string {
+// URL
+func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction) string {
 		return v.Url
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.StringOutput)
 }
 
 // Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
@@ -7642,49 +7508,9 @@ func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCard
 	}).(pulumi.StringPtrOutput)
 }
 
-type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction)(nil)).Elem()
-}
-
-func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput) ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput) ToGoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput) Elem() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction) GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction {
-		return *v
-	}).(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionOutput)
-}
-
-// Required. URL
-func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Url
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
-func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput) UrlTypeHint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction) *string {
-		if v == nil {
-			return nil
-		}
-		return v.UrlTypeHint
-	}).(pulumi.StringPtrOutput)
-}
-
 // Actions on Google action to open a given url.
 type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse struct {
-	// Required. URL
+	// URL
 	Url string `pulumi:"url"`
 	// Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
 	UrlTypeHint string `pulumi:"urlTypeHint"`
@@ -7703,7 +7529,7 @@ type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIte
 
 // Actions on Google action to open a given url.
 type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseArgs struct {
-	// Required. URL
+	// URL
 	Url pulumi.StringInput `pulumi:"url"`
 	// Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
 	UrlTypeHint pulumi.StringInput `pulumi:"urlTypeHint"`
@@ -7736,7 +7562,7 @@ func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCard
 	return o
 }
 
-// Required. URL
+// URL
 func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse) string {
 		return v.Url
@@ -7758,9 +7584,9 @@ type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIte
 	Footer string `pulumi:"footer"`
 	// Optional. Hero image for the carousel item.
 	Image GoogleCloudDialogflowV2IntentMessageImageResponse `pulumi:"image"`
-	// Required. Action to present to the user.
+	// Action to present to the user.
 	OpenUriAction GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse `pulumi:"openUriAction"`
-	// Required. Title of the carousel item. Maximum of two lines of text.
+	// Title of the carousel item. Maximum of two lines of text.
 	Title string `pulumi:"title"`
 }
 
@@ -7783,9 +7609,9 @@ type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIte
 	Footer pulumi.StringInput `pulumi:"footer"`
 	// Optional. Hero image for the carousel item.
 	Image GoogleCloudDialogflowV2IntentMessageImageResponseInput `pulumi:"image"`
-	// Required. Action to present to the user.
+	// Action to present to the user.
 	OpenUriAction GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseInput `pulumi:"openUriAction"`
-	// Required. Title of the carousel item. Maximum of two lines of text.
+	// Title of the carousel item. Maximum of two lines of text.
 	Title pulumi.StringInput `pulumi:"title"`
 }
 
@@ -7862,14 +7688,14 @@ func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCard
 	}).(GoogleCloudDialogflowV2IntentMessageImageResponseOutput)
 }
 
-// Required. Action to present to the user.
+// Action to present to the user.
 func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseOutput) OpenUriAction() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse) GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponse {
 		return v.OpenUriAction
 	}).(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseOutput)
 }
 
-// Required. Title of the carousel item. Maximum of two lines of text.
+// Title of the carousel item. Maximum of two lines of text.
 func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse) string {
 		return v.Title
@@ -7900,7 +7726,7 @@ func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCard
 type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponse struct {
 	// Optional. Settings for displaying the image. Applies to every image in items.
 	ImageDisplayOptions string `pulumi:"imageDisplayOptions"`
-	// Required. List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
+	// List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
 	Items []GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse `pulumi:"items"`
 }
 
@@ -7919,7 +7745,7 @@ type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseInput interfa
 type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseArgs struct {
 	// Optional. Settings for displaying the image. Applies to every image in items.
 	ImageDisplayOptions pulumi.StringInput `pulumi:"imageDisplayOptions"`
-	// Required. List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
+	// List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
 	Items GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArrayInput `pulumi:"items"`
 }
 
@@ -7957,7 +7783,7 @@ func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseOutput) Im
 	}).(pulumi.StringOutput)
 }
 
-// Required. List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
+// List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
 func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponseOutput) Items() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardResponse) []GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponse {
 		return v.Items
@@ -8461,7 +8287,7 @@ func (o GoogleCloudDialogflowV2IntentMessageCardResponseOutput) Title() pulumi.S
 
 // The card for presenting a carousel of options to select from.
 type GoogleCloudDialogflowV2IntentMessageCarouselSelect struct {
-	// Required. Carousel items.
+	// Carousel items.
 	Items []GoogleCloudDialogflowV2IntentMessageCarouselSelectItem `pulumi:"items"`
 }
 
@@ -8478,7 +8304,7 @@ type GoogleCloudDialogflowV2IntentMessageCarouselSelectInput interface {
 
 // The card for presenting a carousel of options to select from.
 type GoogleCloudDialogflowV2IntentMessageCarouselSelectArgs struct {
-	// Required. Carousel items.
+	// Carousel items.
 	Items GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArrayInput `pulumi:"items"`
 }
 
@@ -8560,7 +8386,7 @@ func (o GoogleCloudDialogflowV2IntentMessageCarouselSelectOutput) ToGoogleCloudD
 	}).(GoogleCloudDialogflowV2IntentMessageCarouselSelectPtrOutput)
 }
 
-// Required. Carousel items.
+// Carousel items.
 func (o GoogleCloudDialogflowV2IntentMessageCarouselSelectOutput) Items() GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageCarouselSelect) []GoogleCloudDialogflowV2IntentMessageCarouselSelectItem {
 		return v.Items
@@ -8587,7 +8413,7 @@ func (o GoogleCloudDialogflowV2IntentMessageCarouselSelectPtrOutput) Elem() Goog
 	}).(GoogleCloudDialogflowV2IntentMessageCarouselSelectOutput)
 }
 
-// Required. Carousel items.
+// Carousel items.
 func (o GoogleCloudDialogflowV2IntentMessageCarouselSelectPtrOutput) Items() GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageCarouselSelect) []GoogleCloudDialogflowV2IntentMessageCarouselSelectItem {
 		if v == nil {
@@ -8603,10 +8429,10 @@ type GoogleCloudDialogflowV2IntentMessageCarouselSelectItem struct {
 	Description *string `pulumi:"description"`
 	// Optional. The image to display.
 	Image *GoogleCloudDialogflowV2IntentMessageImage `pulumi:"image"`
-	// Required. Additional info about the option item.
-	Info *GoogleCloudDialogflowV2IntentMessageSelectItemInfo `pulumi:"info"`
-	// Required. Title of the carousel item.
-	Title *string `pulumi:"title"`
+	// Additional info about the option item.
+	Info GoogleCloudDialogflowV2IntentMessageSelectItemInfo `pulumi:"info"`
+	// Title of the carousel item.
+	Title string `pulumi:"title"`
 }
 
 // GoogleCloudDialogflowV2IntentMessageCarouselSelectItemInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArgs and GoogleCloudDialogflowV2IntentMessageCarouselSelectItemOutput values.
@@ -8626,10 +8452,10 @@ type GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Optional. The image to display.
 	Image GoogleCloudDialogflowV2IntentMessageImagePtrInput `pulumi:"image"`
-	// Required. Additional info about the option item.
-	Info GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrInput `pulumi:"info"`
-	// Required. Title of the carousel item.
-	Title pulumi.StringPtrInput `pulumi:"title"`
+	// Additional info about the option item.
+	Info GoogleCloudDialogflowV2IntentMessageSelectItemInfoInput `pulumi:"info"`
+	// Title of the carousel item.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArgs) ElementType() reflect.Type {
@@ -8696,16 +8522,16 @@ func (o GoogleCloudDialogflowV2IntentMessageCarouselSelectItemOutput) Image() Go
 	}).(GoogleCloudDialogflowV2IntentMessageImagePtrOutput)
 }
 
-// Required. Additional info about the option item.
-func (o GoogleCloudDialogflowV2IntentMessageCarouselSelectItemOutput) Info() GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageCarouselSelectItem) *GoogleCloudDialogflowV2IntentMessageSelectItemInfo {
+// Additional info about the option item.
+func (o GoogleCloudDialogflowV2IntentMessageCarouselSelectItemOutput) Info() GoogleCloudDialogflowV2IntentMessageSelectItemInfoOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageCarouselSelectItem) GoogleCloudDialogflowV2IntentMessageSelectItemInfo {
 		return v.Info
-	}).(GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput)
+	}).(GoogleCloudDialogflowV2IntentMessageSelectItemInfoOutput)
 }
 
-// Required. Title of the carousel item.
-func (o GoogleCloudDialogflowV2IntentMessageCarouselSelectItemOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageCarouselSelectItem) *string { return v.Title }).(pulumi.StringPtrOutput)
+// Title of the carousel item.
+func (o GoogleCloudDialogflowV2IntentMessageCarouselSelectItemOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageCarouselSelectItem) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArrayOutput struct{ *pulumi.OutputState }
@@ -8734,9 +8560,9 @@ type GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse struct {
 	Description string `pulumi:"description"`
 	// Optional. The image to display.
 	Image GoogleCloudDialogflowV2IntentMessageImageResponse `pulumi:"image"`
-	// Required. Additional info about the option item.
+	// Additional info about the option item.
 	Info GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse `pulumi:"info"`
-	// Required. Title of the carousel item.
+	// Title of the carousel item.
 	Title string `pulumi:"title"`
 }
 
@@ -8757,9 +8583,9 @@ type GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// Optional. The image to display.
 	Image GoogleCloudDialogflowV2IntentMessageImageResponseInput `pulumi:"image"`
-	// Required. Additional info about the option item.
+	// Additional info about the option item.
 	Info GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseInput `pulumi:"info"`
-	// Required. Title of the carousel item.
+	// Title of the carousel item.
 	Title pulumi.StringInput `pulumi:"title"`
 }
 
@@ -8827,14 +8653,14 @@ func (o GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseOutput) Im
 	}).(GoogleCloudDialogflowV2IntentMessageImageResponseOutput)
 }
 
-// Required. Additional info about the option item.
+// Additional info about the option item.
 func (o GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseOutput) Info() GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse) GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse {
 		return v.Info
 	}).(GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseOutput)
 }
 
-// Required. Title of the carousel item.
+// Title of the carousel item.
 func (o GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -8861,7 +8687,7 @@ func (o GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArrayOutpu
 
 // The card for presenting a carousel of options to select from.
 type GoogleCloudDialogflowV2IntentMessageCarouselSelectResponse struct {
-	// Required. Carousel items.
+	// Carousel items.
 	Items []GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse `pulumi:"items"`
 }
 
@@ -8878,7 +8704,7 @@ type GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseInput interface {
 
 // The card for presenting a carousel of options to select from.
 type GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseArgs struct {
-	// Required. Carousel items.
+	// Carousel items.
 	Items GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArrayInput `pulumi:"items"`
 }
 
@@ -8909,7 +8735,7 @@ func (o GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseOutput) ToGoog
 	return o
 }
 
-// Required. Carousel items.
+// Carousel items.
 func (o GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseOutput) Items() GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageCarouselSelectResponse) []GoogleCloudDialogflowV2IntentMessageCarouselSelectItemResponse {
 		return v.Items
@@ -8918,8 +8744,8 @@ func (o GoogleCloudDialogflowV2IntentMessageCarouselSelectResponseOutput) Items(
 
 // Column properties for TableCard.
 type GoogleCloudDialogflowV2IntentMessageColumnProperties struct {
-	// Required. Column heading.
-	Header *string `pulumi:"header"`
+	// Column heading.
+	Header string `pulumi:"header"`
 	// Optional. Defines text alignment for all cells in this column.
 	HorizontalAlignment *string `pulumi:"horizontalAlignment"`
 }
@@ -8937,8 +8763,8 @@ type GoogleCloudDialogflowV2IntentMessageColumnPropertiesInput interface {
 
 // Column properties for TableCard.
 type GoogleCloudDialogflowV2IntentMessageColumnPropertiesArgs struct {
-	// Required. Column heading.
-	Header pulumi.StringPtrInput `pulumi:"header"`
+	// Column heading.
+	Header pulumi.StringInput `pulumi:"header"`
 	// Optional. Defines text alignment for all cells in this column.
 	HorizontalAlignment *GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment `pulumi:"horizontalAlignment"`
 }
@@ -8995,9 +8821,9 @@ func (o GoogleCloudDialogflowV2IntentMessageColumnPropertiesOutput) ToGoogleClou
 	return o
 }
 
-// Required. Column heading.
-func (o GoogleCloudDialogflowV2IntentMessageColumnPropertiesOutput) Header() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageColumnProperties) *string { return v.Header }).(pulumi.StringPtrOutput)
+// Column heading.
+func (o GoogleCloudDialogflowV2IntentMessageColumnPropertiesOutput) Header() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageColumnProperties) string { return v.Header }).(pulumi.StringOutput)
 }
 
 // Optional. Defines text alignment for all cells in this column.
@@ -9027,7 +8853,7 @@ func (o GoogleCloudDialogflowV2IntentMessageColumnPropertiesArrayOutput) Index(i
 
 // Column properties for TableCard.
 type GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponse struct {
-	// Required. Column heading.
+	// Column heading.
 	Header string `pulumi:"header"`
 	// Optional. Defines text alignment for all cells in this column.
 	HorizontalAlignment string `pulumi:"horizontalAlignment"`
@@ -9046,7 +8872,7 @@ type GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseInput interface
 
 // Column properties for TableCard.
 type GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseArgs struct {
-	// Required. Column heading.
+	// Column heading.
 	Header pulumi.StringInput `pulumi:"header"`
 	// Optional. Defines text alignment for all cells in this column.
 	HorizontalAlignment pulumi.StringInput `pulumi:"horizontalAlignment"`
@@ -9104,7 +8930,7 @@ func (o GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseOutput) ToGo
 	return o
 }
 
-// Required. Column heading.
+// Column heading.
 func (o GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponseOutput) Header() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageColumnPropertiesResponse) string { return v.Header }).(pulumi.StringOutput)
 }
@@ -9357,10 +9183,10 @@ func (o GoogleCloudDialogflowV2IntentMessageImageResponseOutput) ImageUri() pulu
 
 // The suggestion chip message that allows the user to jump out to the app or website associated with this agent.
 type GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion struct {
-	// Required. The name of the app or site this chip is linking to.
-	DestinationName *string `pulumi:"destinationName"`
-	// Required. The URI of the app or site to open when the user taps the suggestion chip.
-	Uri *string `pulumi:"uri"`
+	// The name of the app or site this chip is linking to.
+	DestinationName string `pulumi:"destinationName"`
+	// The URI of the app or site to open when the user taps the suggestion chip.
+	Uri string `pulumi:"uri"`
 }
 
 // GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionArgs and GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionOutput values.
@@ -9376,10 +9202,10 @@ type GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionInput interface {
 
 // The suggestion chip message that allows the user to jump out to the app or website associated with this agent.
 type GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionArgs struct {
-	// Required. The name of the app or site this chip is linking to.
-	DestinationName pulumi.StringPtrInput `pulumi:"destinationName"`
-	// Required. The URI of the app or site to open when the user taps the suggestion chip.
-	Uri pulumi.StringPtrInput `pulumi:"uri"`
+	// The name of the app or site this chip is linking to.
+	DestinationName pulumi.StringInput `pulumi:"destinationName"`
+	// The URI of the app or site to open when the user taps the suggestion chip.
+	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
 func (GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionArgs) ElementType() reflect.Type {
@@ -9460,14 +9286,14 @@ func (o GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionOutput) ToGoogleClo
 	}).(GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionPtrOutput)
 }
 
-// Required. The name of the app or site this chip is linking to.
-func (o GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionOutput) DestinationName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion) *string { return v.DestinationName }).(pulumi.StringPtrOutput)
+// The name of the app or site this chip is linking to.
+func (o GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionOutput) DestinationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion) string { return v.DestinationName }).(pulumi.StringOutput)
 }
 
-// Required. The URI of the app or site to open when the user taps the suggestion chip.
-func (o GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion) *string { return v.Uri }).(pulumi.StringPtrOutput)
+// The URI of the app or site to open when the user taps the suggestion chip.
+func (o GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion) string { return v.Uri }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionPtrOutput struct{ *pulumi.OutputState }
@@ -9490,31 +9316,31 @@ func (o GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionPtrOutput) Elem() G
 	}).(GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionOutput)
 }
 
-// Required. The name of the app or site this chip is linking to.
+// The name of the app or site this chip is linking to.
 func (o GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionPtrOutput) DestinationName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion) *string {
 		if v == nil {
 			return nil
 		}
-		return v.DestinationName
+		return &v.DestinationName
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The URI of the app or site to open when the user taps the suggestion chip.
+// The URI of the app or site to open when the user taps the suggestion chip.
 func (o GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Uri
+		return &v.Uri
 	}).(pulumi.StringPtrOutput)
 }
 
 // The suggestion chip message that allows the user to jump out to the app or website associated with this agent.
 type GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse struct {
-	// Required. The name of the app or site this chip is linking to.
+	// The name of the app or site this chip is linking to.
 	DestinationName string `pulumi:"destinationName"`
-	// Required. The URI of the app or site to open when the user taps the suggestion chip.
+	// The URI of the app or site to open when the user taps the suggestion chip.
 	Uri string `pulumi:"uri"`
 }
 
@@ -9531,9 +9357,9 @@ type GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseInput interfac
 
 // The suggestion chip message that allows the user to jump out to the app or website associated with this agent.
 type GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseArgs struct {
-	// Required. The name of the app or site this chip is linking to.
+	// The name of the app or site this chip is linking to.
 	DestinationName pulumi.StringInput `pulumi:"destinationName"`
-	// Required. The URI of the app or site to open when the user taps the suggestion chip.
+	// The URI of the app or site to open when the user taps the suggestion chip.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -9564,19 +9390,19 @@ func (o GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseOutput) ToG
 	return o
 }
 
-// Required. The name of the app or site this chip is linking to.
+// The name of the app or site this chip is linking to.
 func (o GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseOutput) DestinationName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse) string { return v.DestinationName }).(pulumi.StringOutput)
 }
 
-// Required. The URI of the app or site to open when the user taps the suggestion chip.
+// The URI of the app or site to open when the user taps the suggestion chip.
 func (o GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
 
 // The card for presenting a list of options to select from.
 type GoogleCloudDialogflowV2IntentMessageListSelect struct {
-	// Required. List items.
+	// List items.
 	Items []GoogleCloudDialogflowV2IntentMessageListSelectItem `pulumi:"items"`
 	// Optional. Subtitle of the list.
 	Subtitle *string `pulumi:"subtitle"`
@@ -9597,7 +9423,7 @@ type GoogleCloudDialogflowV2IntentMessageListSelectInput interface {
 
 // The card for presenting a list of options to select from.
 type GoogleCloudDialogflowV2IntentMessageListSelectArgs struct {
-	// Required. List items.
+	// List items.
 	Items GoogleCloudDialogflowV2IntentMessageListSelectItemArrayInput `pulumi:"items"`
 	// Optional. Subtitle of the list.
 	Subtitle pulumi.StringPtrInput `pulumi:"subtitle"`
@@ -9683,7 +9509,7 @@ func (o GoogleCloudDialogflowV2IntentMessageListSelectOutput) ToGoogleCloudDialo
 	}).(GoogleCloudDialogflowV2IntentMessageListSelectPtrOutput)
 }
 
-// Required. List items.
+// List items.
 func (o GoogleCloudDialogflowV2IntentMessageListSelectOutput) Items() GoogleCloudDialogflowV2IntentMessageListSelectItemArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageListSelect) []GoogleCloudDialogflowV2IntentMessageListSelectItem {
 		return v.Items
@@ -9720,7 +9546,7 @@ func (o GoogleCloudDialogflowV2IntentMessageListSelectPtrOutput) Elem() GoogleCl
 	}).(GoogleCloudDialogflowV2IntentMessageListSelectOutput)
 }
 
-// Required. List items.
+// List items.
 func (o GoogleCloudDialogflowV2IntentMessageListSelectPtrOutput) Items() GoogleCloudDialogflowV2IntentMessageListSelectItemArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageListSelect) []GoogleCloudDialogflowV2IntentMessageListSelectItem {
 		if v == nil {
@@ -9756,10 +9582,10 @@ type GoogleCloudDialogflowV2IntentMessageListSelectItem struct {
 	Description *string `pulumi:"description"`
 	// Optional. The image to display.
 	Image *GoogleCloudDialogflowV2IntentMessageImage `pulumi:"image"`
-	// Required. Additional information about this option.
-	Info *GoogleCloudDialogflowV2IntentMessageSelectItemInfo `pulumi:"info"`
-	// Required. The title of the list item.
-	Title *string `pulumi:"title"`
+	// Additional information about this option.
+	Info GoogleCloudDialogflowV2IntentMessageSelectItemInfo `pulumi:"info"`
+	// The title of the list item.
+	Title string `pulumi:"title"`
 }
 
 // GoogleCloudDialogflowV2IntentMessageListSelectItemInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageListSelectItemArgs and GoogleCloudDialogflowV2IntentMessageListSelectItemOutput values.
@@ -9779,10 +9605,10 @@ type GoogleCloudDialogflowV2IntentMessageListSelectItemArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Optional. The image to display.
 	Image GoogleCloudDialogflowV2IntentMessageImagePtrInput `pulumi:"image"`
-	// Required. Additional information about this option.
-	Info GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrInput `pulumi:"info"`
-	// Required. The title of the list item.
-	Title pulumi.StringPtrInput `pulumi:"title"`
+	// Additional information about this option.
+	Info GoogleCloudDialogflowV2IntentMessageSelectItemInfoInput `pulumi:"info"`
+	// The title of the list item.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (GoogleCloudDialogflowV2IntentMessageListSelectItemArgs) ElementType() reflect.Type {
@@ -9849,16 +9675,16 @@ func (o GoogleCloudDialogflowV2IntentMessageListSelectItemOutput) Image() Google
 	}).(GoogleCloudDialogflowV2IntentMessageImagePtrOutput)
 }
 
-// Required. Additional information about this option.
-func (o GoogleCloudDialogflowV2IntentMessageListSelectItemOutput) Info() GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageListSelectItem) *GoogleCloudDialogflowV2IntentMessageSelectItemInfo {
+// Additional information about this option.
+func (o GoogleCloudDialogflowV2IntentMessageListSelectItemOutput) Info() GoogleCloudDialogflowV2IntentMessageSelectItemInfoOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageListSelectItem) GoogleCloudDialogflowV2IntentMessageSelectItemInfo {
 		return v.Info
-	}).(GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput)
+	}).(GoogleCloudDialogflowV2IntentMessageSelectItemInfoOutput)
 }
 
-// Required. The title of the list item.
-func (o GoogleCloudDialogflowV2IntentMessageListSelectItemOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageListSelectItem) *string { return v.Title }).(pulumi.StringPtrOutput)
+// The title of the list item.
+func (o GoogleCloudDialogflowV2IntentMessageListSelectItemOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageListSelectItem) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowV2IntentMessageListSelectItemArrayOutput struct{ *pulumi.OutputState }
@@ -9887,9 +9713,9 @@ type GoogleCloudDialogflowV2IntentMessageListSelectItemResponse struct {
 	Description string `pulumi:"description"`
 	// Optional. The image to display.
 	Image GoogleCloudDialogflowV2IntentMessageImageResponse `pulumi:"image"`
-	// Required. Additional information about this option.
+	// Additional information about this option.
 	Info GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse `pulumi:"info"`
-	// Required. The title of the list item.
+	// The title of the list item.
 	Title string `pulumi:"title"`
 }
 
@@ -9910,9 +9736,9 @@ type GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArgs struct {
 	Description pulumi.StringInput `pulumi:"description"`
 	// Optional. The image to display.
 	Image GoogleCloudDialogflowV2IntentMessageImageResponseInput `pulumi:"image"`
-	// Required. Additional information about this option.
+	// Additional information about this option.
 	Info GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseInput `pulumi:"info"`
-	// Required. The title of the list item.
+	// The title of the list item.
 	Title pulumi.StringInput `pulumi:"title"`
 }
 
@@ -9980,14 +9806,14 @@ func (o GoogleCloudDialogflowV2IntentMessageListSelectItemResponseOutput) Image(
 	}).(GoogleCloudDialogflowV2IntentMessageImageResponseOutput)
 }
 
-// Required. Additional information about this option.
+// Additional information about this option.
 func (o GoogleCloudDialogflowV2IntentMessageListSelectItemResponseOutput) Info() GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageListSelectItemResponse) GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse {
 		return v.Info
 	}).(GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseOutput)
 }
 
-// Required. The title of the list item.
+// The title of the list item.
 func (o GoogleCloudDialogflowV2IntentMessageListSelectItemResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageListSelectItemResponse) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -10014,7 +9840,7 @@ func (o GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArrayOutput) I
 
 // The card for presenting a list of options to select from.
 type GoogleCloudDialogflowV2IntentMessageListSelectResponse struct {
-	// Required. List items.
+	// List items.
 	Items []GoogleCloudDialogflowV2IntentMessageListSelectItemResponse `pulumi:"items"`
 	// Optional. Subtitle of the list.
 	Subtitle string `pulumi:"subtitle"`
@@ -10035,7 +9861,7 @@ type GoogleCloudDialogflowV2IntentMessageListSelectResponseInput interface {
 
 // The card for presenting a list of options to select from.
 type GoogleCloudDialogflowV2IntentMessageListSelectResponseArgs struct {
-	// Required. List items.
+	// List items.
 	Items GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArrayInput `pulumi:"items"`
 	// Optional. Subtitle of the list.
 	Subtitle pulumi.StringInput `pulumi:"subtitle"`
@@ -10070,7 +9896,7 @@ func (o GoogleCloudDialogflowV2IntentMessageListSelectResponseOutput) ToGoogleCl
 	return o
 }
 
-// Required. List items.
+// List items.
 func (o GoogleCloudDialogflowV2IntentMessageListSelectResponseOutput) Items() GoogleCloudDialogflowV2IntentMessageListSelectItemResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageListSelectResponse) []GoogleCloudDialogflowV2IntentMessageListSelectItemResponse {
 		return v.Items
@@ -10089,7 +9915,7 @@ func (o GoogleCloudDialogflowV2IntentMessageListSelectResponseOutput) Title() pu
 
 // The media content card for Actions on Google.
 type GoogleCloudDialogflowV2IntentMessageMediaContent struct {
-	// Required. List of media objects.
+	// List of media objects.
 	MediaObjects []GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject `pulumi:"mediaObjects"`
 	// Optional. What type of media is the content (ie "audio").
 	MediaType *string `pulumi:"mediaType"`
@@ -10108,7 +9934,7 @@ type GoogleCloudDialogflowV2IntentMessageMediaContentInput interface {
 
 // The media content card for Actions on Google.
 type GoogleCloudDialogflowV2IntentMessageMediaContentArgs struct {
-	// Required. List of media objects.
+	// List of media objects.
 	MediaObjects GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArrayInput `pulumi:"mediaObjects"`
 	// Optional. What type of media is the content (ie "audio").
 	MediaType *GoogleCloudDialogflowV2IntentMessageMediaContentMediaType `pulumi:"mediaType"`
@@ -10192,7 +10018,7 @@ func (o GoogleCloudDialogflowV2IntentMessageMediaContentOutput) ToGoogleCloudDia
 	}).(GoogleCloudDialogflowV2IntentMessageMediaContentPtrOutput)
 }
 
-// Required. List of media objects.
+// List of media objects.
 func (o GoogleCloudDialogflowV2IntentMessageMediaContentOutput) MediaObjects() GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageMediaContent) []GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject {
 		return v.MediaObjects
@@ -10224,7 +10050,7 @@ func (o GoogleCloudDialogflowV2IntentMessageMediaContentPtrOutput) Elem() Google
 	}).(GoogleCloudDialogflowV2IntentMessageMediaContentOutput)
 }
 
-// Required. List of media objects.
+// List of media objects.
 func (o GoogleCloudDialogflowV2IntentMessageMediaContentPtrOutput) MediaObjects() GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageMediaContent) []GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject {
 		if v == nil {
@@ -10246,7 +10072,7 @@ func (o GoogleCloudDialogflowV2IntentMessageMediaContentPtrOutput) MediaType() p
 
 // The media content card for Actions on Google.
 type GoogleCloudDialogflowV2IntentMessageMediaContentResponse struct {
-	// Required. List of media objects.
+	// List of media objects.
 	MediaObjects []GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponse `pulumi:"mediaObjects"`
 	// Optional. What type of media is the content (ie "audio").
 	MediaType string `pulumi:"mediaType"`
@@ -10265,7 +10091,7 @@ type GoogleCloudDialogflowV2IntentMessageMediaContentResponseInput interface {
 
 // The media content card for Actions on Google.
 type GoogleCloudDialogflowV2IntentMessageMediaContentResponseArgs struct {
-	// Required. List of media objects.
+	// List of media objects.
 	MediaObjects GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArrayInput `pulumi:"mediaObjects"`
 	// Optional. What type of media is the content (ie "audio").
 	MediaType pulumi.StringInput `pulumi:"mediaType"`
@@ -10298,7 +10124,7 @@ func (o GoogleCloudDialogflowV2IntentMessageMediaContentResponseOutput) ToGoogle
 	return o
 }
 
-// Required. List of media objects.
+// List of media objects.
 func (o GoogleCloudDialogflowV2IntentMessageMediaContentResponseOutput) MediaObjects() GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageMediaContentResponse) []GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponse {
 		return v.MediaObjects
@@ -10312,16 +10138,16 @@ func (o GoogleCloudDialogflowV2IntentMessageMediaContentResponseOutput) MediaTyp
 
 // Response media object for media content card.
 type GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject struct {
-	// Required. Url where the media is stored.
-	ContentUrl *string `pulumi:"contentUrl"`
+	// Url where the media is stored.
+	ContentUrl string `pulumi:"contentUrl"`
 	// Optional. Description of media card.
 	Description *string `pulumi:"description"`
 	// Optional. Icon to display above media content.
 	Icon *GoogleCloudDialogflowV2IntentMessageImage `pulumi:"icon"`
 	// Optional. Image to display above media content.
 	LargeImage *GoogleCloudDialogflowV2IntentMessageImage `pulumi:"largeImage"`
-	// Required. Name of media card.
-	Name *string `pulumi:"name"`
+	// Name of media card.
+	Name string `pulumi:"name"`
 }
 
 // GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArgs and GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectOutput values.
@@ -10337,16 +10163,16 @@ type GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectInput in
 
 // Response media object for media content card.
 type GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArgs struct {
-	// Required. Url where the media is stored.
-	ContentUrl pulumi.StringPtrInput `pulumi:"contentUrl"`
+	// Url where the media is stored.
+	ContentUrl pulumi.StringInput `pulumi:"contentUrl"`
 	// Optional. Description of media card.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// Optional. Icon to display above media content.
 	Icon GoogleCloudDialogflowV2IntentMessageImagePtrInput `pulumi:"icon"`
 	// Optional. Image to display above media content.
 	LargeImage GoogleCloudDialogflowV2IntentMessageImagePtrInput `pulumi:"largeImage"`
-	// Required. Name of media card.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Name of media card.
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArgs) ElementType() reflect.Type {
@@ -10401,11 +10227,11 @@ func (o GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectOutpu
 	return o
 }
 
-// Required. Url where the media is stored.
-func (o GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectOutput) ContentUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject) *string {
+// Url where the media is stored.
+func (o GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectOutput) ContentUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject) string {
 		return v.ContentUrl
-	}).(pulumi.StringPtrOutput)
+	}).(pulumi.StringOutput)
 }
 
 // Optional. Description of media card.
@@ -10429,9 +10255,9 @@ func (o GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectOutpu
 	}).(GoogleCloudDialogflowV2IntentMessageImagePtrOutput)
 }
 
-// Required. Name of media card.
-func (o GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject) *string { return v.Name }).(pulumi.StringPtrOutput)
+// Name of media card.
+func (o GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject) string { return v.Name }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArrayOutput struct{ *pulumi.OutputState }
@@ -10456,7 +10282,7 @@ func (o GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArray
 
 // Response media object for media content card.
 type GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponse struct {
-	// Required. Url where the media is stored.
+	// Url where the media is stored.
 	ContentUrl string `pulumi:"contentUrl"`
 	// Optional. Description of media card.
 	Description string `pulumi:"description"`
@@ -10464,7 +10290,7 @@ type GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponse
 	Icon GoogleCloudDialogflowV2IntentMessageImageResponse `pulumi:"icon"`
 	// Optional. Image to display above media content.
 	LargeImage GoogleCloudDialogflowV2IntentMessageImageResponse `pulumi:"largeImage"`
-	// Required. Name of media card.
+	// Name of media card.
 	Name string `pulumi:"name"`
 }
 
@@ -10481,7 +10307,7 @@ type GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponse
 
 // Response media object for media content card.
 type GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseArgs struct {
-	// Required. Url where the media is stored.
+	// Url where the media is stored.
 	ContentUrl pulumi.StringInput `pulumi:"contentUrl"`
 	// Optional. Description of media card.
 	Description pulumi.StringInput `pulumi:"description"`
@@ -10489,7 +10315,7 @@ type GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponse
 	Icon GoogleCloudDialogflowV2IntentMessageImageResponseInput `pulumi:"icon"`
 	// Optional. Image to display above media content.
 	LargeImage GoogleCloudDialogflowV2IntentMessageImageResponseInput `pulumi:"largeImage"`
-	// Required. Name of media card.
+	// Name of media card.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -10545,7 +10371,7 @@ func (o GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectRespo
 	return o
 }
 
-// Required. Url where the media is stored.
+// Url where the media is stored.
 func (o GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseOutput) ContentUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponse) string {
 		return v.ContentUrl
@@ -10573,7 +10399,7 @@ func (o GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectRespo
 	}).(GoogleCloudDialogflowV2IntentMessageImageResponseOutput)
 }
 
-// Required. Name of media card.
+// Name of media card.
 func (o GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectResponse) string {
 		return v.Name
@@ -11073,8 +10899,8 @@ func (o GoogleCloudDialogflowV2IntentMessageResponseArrayOutput) Index(i pulumi.
 
 // Additional info about the select item for when it is triggered in a dialog.
 type GoogleCloudDialogflowV2IntentMessageSelectItemInfo struct {
-	// Required. A unique key that will be sent back to the agent if this response is given.
-	Key *string `pulumi:"key"`
+	// A unique key that will be sent back to the agent if this response is given.
+	Key string `pulumi:"key"`
 	// Optional. A list of synonyms that can also be used to trigger this item in dialog.
 	Synonyms []string `pulumi:"synonyms"`
 }
@@ -11092,8 +10918,8 @@ type GoogleCloudDialogflowV2IntentMessageSelectItemInfoInput interface {
 
 // Additional info about the select item for when it is triggered in a dialog.
 type GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs struct {
-	// Required. A unique key that will be sent back to the agent if this response is given.
-	Key pulumi.StringPtrInput `pulumi:"key"`
+	// A unique key that will be sent back to the agent if this response is given.
+	Key pulumi.StringInput `pulumi:"key"`
 	// Optional. A list of synonyms that can also be used to trigger this item in dialog.
 	Synonyms pulumi.StringArrayInput `pulumi:"synonyms"`
 }
@@ -11108,47 +10934,6 @@ func (i GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs) ToGoogleCloudDia
 
 func (i GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs) ToGoogleCloudDialogflowV2IntentMessageSelectItemInfoOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageSelectItemInfoOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageSelectItemInfoOutput)
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs) ToGoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput() GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs) ToGoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageSelectItemInfoOutput).ToGoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs, GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtr and GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrInput` via:
-//
-//          GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput() GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput
-	ToGoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutputWithContext(context.Context) GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput
-}
-
-type googleCloudDialogflowV2IntentMessageSelectItemInfoPtrType GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs
-
-func GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtr(v *GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs) GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrInput {
-	return (*googleCloudDialogflowV2IntentMessageSelectItemInfoPtrType)(v)
-}
-
-func (*googleCloudDialogflowV2IntentMessageSelectItemInfoPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2IntentMessageSelectItemInfo)(nil)).Elem()
-}
-
-func (i *googleCloudDialogflowV2IntentMessageSelectItemInfoPtrType) ToGoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput() GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput {
-	return i.ToGoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDialogflowV2IntentMessageSelectItemInfoPtrType) ToGoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput)
 }
 
 // Additional info about the select item for when it is triggered in a dialog.
@@ -11166,19 +10951,9 @@ func (o GoogleCloudDialogflowV2IntentMessageSelectItemInfoOutput) ToGoogleCloudD
 	return o
 }
 
-func (o GoogleCloudDialogflowV2IntentMessageSelectItemInfoOutput) ToGoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput() GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput {
-	return o.ToGoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDialogflowV2IntentMessageSelectItemInfoOutput) ToGoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageSelectItemInfo) *GoogleCloudDialogflowV2IntentMessageSelectItemInfo {
-		return &v
-	}).(GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput)
-}
-
-// Required. A unique key that will be sent back to the agent if this response is given.
-func (o GoogleCloudDialogflowV2IntentMessageSelectItemInfoOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageSelectItemInfo) *string { return v.Key }).(pulumi.StringPtrOutput)
+// A unique key that will be sent back to the agent if this response is given.
+func (o GoogleCloudDialogflowV2IntentMessageSelectItemInfoOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageSelectItemInfo) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // Optional. A list of synonyms that can also be used to trigger this item in dialog.
@@ -11186,49 +10961,9 @@ func (o GoogleCloudDialogflowV2IntentMessageSelectItemInfoOutput) Synonyms() pul
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageSelectItemInfo) []string { return v.Synonyms }).(pulumi.StringArrayOutput)
 }
 
-type GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowV2IntentMessageSelectItemInfo)(nil)).Elem()
-}
-
-func (o GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput) ToGoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput() GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput) ToGoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput) Elem() GoogleCloudDialogflowV2IntentMessageSelectItemInfoOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageSelectItemInfo) GoogleCloudDialogflowV2IntentMessageSelectItemInfo {
-		return *v
-	}).(GoogleCloudDialogflowV2IntentMessageSelectItemInfoOutput)
-}
-
-// Required. A unique key that will be sent back to the agent if this response is given.
-func (o GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageSelectItemInfo) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Key
-	}).(pulumi.StringPtrOutput)
-}
-
-// Optional. A list of synonyms that can also be used to trigger this item in dialog.
-func (o GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput) Synonyms() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageSelectItemInfo) []string {
-		if v == nil {
-			return nil
-		}
-		return v.Synonyms
-	}).(pulumi.StringArrayOutput)
-}
-
 // Additional info about the select item for when it is triggered in a dialog.
 type GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse struct {
-	// Required. A unique key that will be sent back to the agent if this response is given.
+	// A unique key that will be sent back to the agent if this response is given.
 	Key string `pulumi:"key"`
 	// Optional. A list of synonyms that can also be used to trigger this item in dialog.
 	Synonyms []string `pulumi:"synonyms"`
@@ -11247,7 +10982,7 @@ type GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseInput interface {
 
 // Additional info about the select item for when it is triggered in a dialog.
 type GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseArgs struct {
-	// Required. A unique key that will be sent back to the agent if this response is given.
+	// A unique key that will be sent back to the agent if this response is given.
 	Key pulumi.StringInput `pulumi:"key"`
 	// Optional. A list of synonyms that can also be used to trigger this item in dialog.
 	Synonyms pulumi.StringArrayInput `pulumi:"synonyms"`
@@ -11280,7 +11015,7 @@ func (o GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseOutput) ToGoog
 	return o
 }
 
-// Required. A unique key that will be sent back to the agent if this response is given.
+// A unique key that will be sent back to the agent if this response is given.
 func (o GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponse) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -11528,7 +11263,7 @@ func (o GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArrayOutput) I
 
 // The collection of simple response candidates. This message in `QueryResult.fulfillment_messages` and `WebhookResponse.fulfillment_messages` should contain only one `SimpleResponse`.
 type GoogleCloudDialogflowV2IntentMessageSimpleResponses struct {
-	// Required. The list of simple responses.
+	// The list of simple responses.
 	SimpleResponses []GoogleCloudDialogflowV2IntentMessageSimpleResponse `pulumi:"simpleResponses"`
 }
 
@@ -11545,7 +11280,7 @@ type GoogleCloudDialogflowV2IntentMessageSimpleResponsesInput interface {
 
 // The collection of simple response candidates. This message in `QueryResult.fulfillment_messages` and `WebhookResponse.fulfillment_messages` should contain only one `SimpleResponse`.
 type GoogleCloudDialogflowV2IntentMessageSimpleResponsesArgs struct {
-	// Required. The list of simple responses.
+	// The list of simple responses.
 	SimpleResponses GoogleCloudDialogflowV2IntentMessageSimpleResponseArrayInput `pulumi:"simpleResponses"`
 }
 
@@ -11627,7 +11362,7 @@ func (o GoogleCloudDialogflowV2IntentMessageSimpleResponsesOutput) ToGoogleCloud
 	}).(GoogleCloudDialogflowV2IntentMessageSimpleResponsesPtrOutput)
 }
 
-// Required. The list of simple responses.
+// The list of simple responses.
 func (o GoogleCloudDialogflowV2IntentMessageSimpleResponsesOutput) SimpleResponses() GoogleCloudDialogflowV2IntentMessageSimpleResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageSimpleResponses) []GoogleCloudDialogflowV2IntentMessageSimpleResponse {
 		return v.SimpleResponses
@@ -11654,7 +11389,7 @@ func (o GoogleCloudDialogflowV2IntentMessageSimpleResponsesPtrOutput) Elem() Goo
 	}).(GoogleCloudDialogflowV2IntentMessageSimpleResponsesOutput)
 }
 
-// Required. The list of simple responses.
+// The list of simple responses.
 func (o GoogleCloudDialogflowV2IntentMessageSimpleResponsesPtrOutput) SimpleResponses() GoogleCloudDialogflowV2IntentMessageSimpleResponseArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageSimpleResponses) []GoogleCloudDialogflowV2IntentMessageSimpleResponse {
 		if v == nil {
@@ -11666,7 +11401,7 @@ func (o GoogleCloudDialogflowV2IntentMessageSimpleResponsesPtrOutput) SimpleResp
 
 // The collection of simple response candidates. This message in `QueryResult.fulfillment_messages` and `WebhookResponse.fulfillment_messages` should contain only one `SimpleResponse`.
 type GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponse struct {
-	// Required. The list of simple responses.
+	// The list of simple responses.
 	SimpleResponses []GoogleCloudDialogflowV2IntentMessageSimpleResponseResponse `pulumi:"simpleResponses"`
 }
 
@@ -11683,7 +11418,7 @@ type GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseInput interface 
 
 // The collection of simple response candidates. This message in `QueryResult.fulfillment_messages` and `WebhookResponse.fulfillment_messages` should contain only one `SimpleResponse`.
 type GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseArgs struct {
-	// Required. The list of simple responses.
+	// The list of simple responses.
 	SimpleResponses GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArrayInput `pulumi:"simpleResponses"`
 }
 
@@ -11714,7 +11449,7 @@ func (o GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseOutput) ToGoo
 	return o
 }
 
-// Required. The list of simple responses.
+// The list of simple responses.
 func (o GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseOutput) SimpleResponses() GoogleCloudDialogflowV2IntentMessageSimpleResponseResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponse) []GoogleCloudDialogflowV2IntentMessageSimpleResponseResponse {
 		return v.SimpleResponses
@@ -11723,8 +11458,8 @@ func (o GoogleCloudDialogflowV2IntentMessageSimpleResponsesResponseOutput) Simpl
 
 // The suggestion chip message that the user can tap to quickly post a reply to the conversation.
 type GoogleCloudDialogflowV2IntentMessageSuggestion struct {
-	// Required. The text shown the in the suggestion chip.
-	Title *string `pulumi:"title"`
+	// The text shown the in the suggestion chip.
+	Title string `pulumi:"title"`
 }
 
 // GoogleCloudDialogflowV2IntentMessageSuggestionInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageSuggestionArgs and GoogleCloudDialogflowV2IntentMessageSuggestionOutput values.
@@ -11740,8 +11475,8 @@ type GoogleCloudDialogflowV2IntentMessageSuggestionInput interface {
 
 // The suggestion chip message that the user can tap to quickly post a reply to the conversation.
 type GoogleCloudDialogflowV2IntentMessageSuggestionArgs struct {
-	// Required. The text shown the in the suggestion chip.
-	Title pulumi.StringPtrInput `pulumi:"title"`
+	// The text shown the in the suggestion chip.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (GoogleCloudDialogflowV2IntentMessageSuggestionArgs) ElementType() reflect.Type {
@@ -11796,9 +11531,9 @@ func (o GoogleCloudDialogflowV2IntentMessageSuggestionOutput) ToGoogleCloudDialo
 	return o
 }
 
-// Required. The text shown the in the suggestion chip.
-func (o GoogleCloudDialogflowV2IntentMessageSuggestionOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageSuggestion) *string { return v.Title }).(pulumi.StringPtrOutput)
+// The text shown the in the suggestion chip.
+func (o GoogleCloudDialogflowV2IntentMessageSuggestionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageSuggestion) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowV2IntentMessageSuggestionArrayOutput struct{ *pulumi.OutputState }
@@ -11823,7 +11558,7 @@ func (o GoogleCloudDialogflowV2IntentMessageSuggestionArrayOutput) Index(i pulum
 
 // The suggestion chip message that the user can tap to quickly post a reply to the conversation.
 type GoogleCloudDialogflowV2IntentMessageSuggestionResponse struct {
-	// Required. The text shown the in the suggestion chip.
+	// The text shown the in the suggestion chip.
 	Title string `pulumi:"title"`
 }
 
@@ -11840,7 +11575,7 @@ type GoogleCloudDialogflowV2IntentMessageSuggestionResponseInput interface {
 
 // The suggestion chip message that the user can tap to quickly post a reply to the conversation.
 type GoogleCloudDialogflowV2IntentMessageSuggestionResponseArgs struct {
-	// Required. The text shown the in the suggestion chip.
+	// The text shown the in the suggestion chip.
 	Title pulumi.StringInput `pulumi:"title"`
 }
 
@@ -11896,7 +11631,7 @@ func (o GoogleCloudDialogflowV2IntentMessageSuggestionResponseOutput) ToGoogleCl
 	return o
 }
 
-// Required. The text shown the in the suggestion chip.
+// The text shown the in the suggestion chip.
 func (o GoogleCloudDialogflowV2IntentMessageSuggestionResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageSuggestionResponse) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -11923,7 +11658,7 @@ func (o GoogleCloudDialogflowV2IntentMessageSuggestionResponseArrayOutput) Index
 
 // The collection of suggestions.
 type GoogleCloudDialogflowV2IntentMessageSuggestions struct {
-	// Required. The list of suggested replies.
+	// The list of suggested replies.
 	Suggestions []GoogleCloudDialogflowV2IntentMessageSuggestion `pulumi:"suggestions"`
 }
 
@@ -11940,7 +11675,7 @@ type GoogleCloudDialogflowV2IntentMessageSuggestionsInput interface {
 
 // The collection of suggestions.
 type GoogleCloudDialogflowV2IntentMessageSuggestionsArgs struct {
-	// Required. The list of suggested replies.
+	// The list of suggested replies.
 	Suggestions GoogleCloudDialogflowV2IntentMessageSuggestionArrayInput `pulumi:"suggestions"`
 }
 
@@ -12022,7 +11757,7 @@ func (o GoogleCloudDialogflowV2IntentMessageSuggestionsOutput) ToGoogleCloudDial
 	}).(GoogleCloudDialogflowV2IntentMessageSuggestionsPtrOutput)
 }
 
-// Required. The list of suggested replies.
+// The list of suggested replies.
 func (o GoogleCloudDialogflowV2IntentMessageSuggestionsOutput) Suggestions() GoogleCloudDialogflowV2IntentMessageSuggestionArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageSuggestions) []GoogleCloudDialogflowV2IntentMessageSuggestion {
 		return v.Suggestions
@@ -12049,7 +11784,7 @@ func (o GoogleCloudDialogflowV2IntentMessageSuggestionsPtrOutput) Elem() GoogleC
 	}).(GoogleCloudDialogflowV2IntentMessageSuggestionsOutput)
 }
 
-// Required. The list of suggested replies.
+// The list of suggested replies.
 func (o GoogleCloudDialogflowV2IntentMessageSuggestionsPtrOutput) Suggestions() GoogleCloudDialogflowV2IntentMessageSuggestionArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageSuggestions) []GoogleCloudDialogflowV2IntentMessageSuggestion {
 		if v == nil {
@@ -12061,7 +11796,7 @@ func (o GoogleCloudDialogflowV2IntentMessageSuggestionsPtrOutput) Suggestions() 
 
 // The collection of suggestions.
 type GoogleCloudDialogflowV2IntentMessageSuggestionsResponse struct {
-	// Required. The list of suggested replies.
+	// The list of suggested replies.
 	Suggestions []GoogleCloudDialogflowV2IntentMessageSuggestionResponse `pulumi:"suggestions"`
 }
 
@@ -12078,7 +11813,7 @@ type GoogleCloudDialogflowV2IntentMessageSuggestionsResponseInput interface {
 
 // The collection of suggestions.
 type GoogleCloudDialogflowV2IntentMessageSuggestionsResponseArgs struct {
-	// Required. The list of suggested replies.
+	// The list of suggested replies.
 	Suggestions GoogleCloudDialogflowV2IntentMessageSuggestionResponseArrayInput `pulumi:"suggestions"`
 }
 
@@ -12109,7 +11844,7 @@ func (o GoogleCloudDialogflowV2IntentMessageSuggestionsResponseOutput) ToGoogleC
 	return o
 }
 
-// Required. The list of suggested replies.
+// The list of suggested replies.
 func (o GoogleCloudDialogflowV2IntentMessageSuggestionsResponseOutput) Suggestions() GoogleCloudDialogflowV2IntentMessageSuggestionResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageSuggestionsResponse) []GoogleCloudDialogflowV2IntentMessageSuggestionResponse {
 		return v.Suggestions
@@ -12128,8 +11863,8 @@ type GoogleCloudDialogflowV2IntentMessageTableCard struct {
 	Rows []GoogleCloudDialogflowV2IntentMessageTableCardRow `pulumi:"rows"`
 	// Optional. Subtitle to the title.
 	Subtitle *string `pulumi:"subtitle"`
-	// Required. Title of the card.
-	Title *string `pulumi:"title"`
+	// Title of the card.
+	Title string `pulumi:"title"`
 }
 
 // GoogleCloudDialogflowV2IntentMessageTableCardInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageTableCardArgs and GoogleCloudDialogflowV2IntentMessageTableCardOutput values.
@@ -12155,8 +11890,8 @@ type GoogleCloudDialogflowV2IntentMessageTableCardArgs struct {
 	Rows GoogleCloudDialogflowV2IntentMessageTableCardRowArrayInput `pulumi:"rows"`
 	// Optional. Subtitle to the title.
 	Subtitle pulumi.StringPtrInput `pulumi:"subtitle"`
-	// Required. Title of the card.
-	Title pulumi.StringPtrInput `pulumi:"title"`
+	// Title of the card.
+	Title pulumi.StringInput `pulumi:"title"`
 }
 
 func (GoogleCloudDialogflowV2IntentMessageTableCardArgs) ElementType() reflect.Type {
@@ -12270,9 +12005,9 @@ func (o GoogleCloudDialogflowV2IntentMessageTableCardOutput) Subtitle() pulumi.S
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageTableCard) *string { return v.Subtitle }).(pulumi.StringPtrOutput)
 }
 
-// Required. Title of the card.
-func (o GoogleCloudDialogflowV2IntentMessageTableCardOutput) Title() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageTableCard) *string { return v.Title }).(pulumi.StringPtrOutput)
+// Title of the card.
+func (o GoogleCloudDialogflowV2IntentMessageTableCardOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageTableCard) string { return v.Title }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowV2IntentMessageTableCardPtrOutput struct{ *pulumi.OutputState }
@@ -12345,20 +12080,20 @@ func (o GoogleCloudDialogflowV2IntentMessageTableCardPtrOutput) Subtitle() pulum
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Title of the card.
+// Title of the card.
 func (o GoogleCloudDialogflowV2IntentMessageTableCardPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageTableCard) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Title
+		return &v.Title
 	}).(pulumi.StringPtrOutput)
 }
 
 // Cell of TableCardRow.
 type GoogleCloudDialogflowV2IntentMessageTableCardCell struct {
-	// Required. Text in this cell.
-	Text *string `pulumi:"text"`
+	// Text in this cell.
+	Text string `pulumi:"text"`
 }
 
 // GoogleCloudDialogflowV2IntentMessageTableCardCellInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageTableCardCellArgs and GoogleCloudDialogflowV2IntentMessageTableCardCellOutput values.
@@ -12374,8 +12109,8 @@ type GoogleCloudDialogflowV2IntentMessageTableCardCellInput interface {
 
 // Cell of TableCardRow.
 type GoogleCloudDialogflowV2IntentMessageTableCardCellArgs struct {
-	// Required. Text in this cell.
-	Text pulumi.StringPtrInput `pulumi:"text"`
+	// Text in this cell.
+	Text pulumi.StringInput `pulumi:"text"`
 }
 
 func (GoogleCloudDialogflowV2IntentMessageTableCardCellArgs) ElementType() reflect.Type {
@@ -12430,9 +12165,9 @@ func (o GoogleCloudDialogflowV2IntentMessageTableCardCellOutput) ToGoogleCloudDi
 	return o
 }
 
-// Required. Text in this cell.
-func (o GoogleCloudDialogflowV2IntentMessageTableCardCellOutput) Text() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageTableCardCell) *string { return v.Text }).(pulumi.StringPtrOutput)
+// Text in this cell.
+func (o GoogleCloudDialogflowV2IntentMessageTableCardCellOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageTableCardCell) string { return v.Text }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowV2IntentMessageTableCardCellArrayOutput struct{ *pulumi.OutputState }
@@ -12457,7 +12192,7 @@ func (o GoogleCloudDialogflowV2IntentMessageTableCardCellArrayOutput) Index(i pu
 
 // Cell of TableCardRow.
 type GoogleCloudDialogflowV2IntentMessageTableCardCellResponse struct {
-	// Required. Text in this cell.
+	// Text in this cell.
 	Text string `pulumi:"text"`
 }
 
@@ -12474,7 +12209,7 @@ type GoogleCloudDialogflowV2IntentMessageTableCardCellResponseInput interface {
 
 // Cell of TableCardRow.
 type GoogleCloudDialogflowV2IntentMessageTableCardCellResponseArgs struct {
-	// Required. Text in this cell.
+	// Text in this cell.
 	Text pulumi.StringInput `pulumi:"text"`
 }
 
@@ -12530,7 +12265,7 @@ func (o GoogleCloudDialogflowV2IntentMessageTableCardCellResponseOutput) ToGoogl
 	return o
 }
 
-// Required. Text in this cell.
+// Text in this cell.
 func (o GoogleCloudDialogflowV2IntentMessageTableCardCellResponseOutput) Text() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageTableCardCellResponse) string { return v.Text }).(pulumi.StringOutput)
 }
@@ -12567,7 +12302,7 @@ type GoogleCloudDialogflowV2IntentMessageTableCardResponse struct {
 	Rows []GoogleCloudDialogflowV2IntentMessageTableCardRowResponse `pulumi:"rows"`
 	// Optional. Subtitle to the title.
 	Subtitle string `pulumi:"subtitle"`
-	// Required. Title of the card.
+	// Title of the card.
 	Title string `pulumi:"title"`
 }
 
@@ -12594,7 +12329,7 @@ type GoogleCloudDialogflowV2IntentMessageTableCardResponseArgs struct {
 	Rows GoogleCloudDialogflowV2IntentMessageTableCardRowResponseArrayInput `pulumi:"rows"`
 	// Optional. Subtitle to the title.
 	Subtitle pulumi.StringInput `pulumi:"subtitle"`
-	// Required. Title of the card.
+	// Title of the card.
 	Title pulumi.StringInput `pulumi:"title"`
 }
 
@@ -12658,7 +12393,7 @@ func (o GoogleCloudDialogflowV2IntentMessageTableCardResponseOutput) Subtitle() 
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageTableCardResponse) string { return v.Subtitle }).(pulumi.StringOutput)
 }
 
-// Required. Title of the card.
+// Title of the card.
 func (o GoogleCloudDialogflowV2IntentMessageTableCardResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageTableCardResponse) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -13078,8 +12813,8 @@ func (o GoogleCloudDialogflowV2IntentMessageTextResponseOutput) Text() pulumi.St
 type GoogleCloudDialogflowV2IntentParameter struct {
 	// Optional. The default value to use when the `value` yields an empty result. Default values can be extracted from contexts by using the following syntax: `#context_name.parameter_name`.
 	DefaultValue *string `pulumi:"defaultValue"`
-	// Required. The name of the parameter.
-	DisplayName *string `pulumi:"displayName"`
+	// The name of the parameter.
+	DisplayName string `pulumi:"displayName"`
 	// Optional. The name of the entity type, prefixed with `@`, that describes values of the parameter. If the parameter is required, this must be provided.
 	EntityTypeDisplayName *string `pulumi:"entityTypeDisplayName"`
 	// Optional. Indicates whether the parameter represents a list of values.
@@ -13109,8 +12844,8 @@ type GoogleCloudDialogflowV2IntentParameterInput interface {
 type GoogleCloudDialogflowV2IntentParameterArgs struct {
 	// Optional. The default value to use when the `value` yields an empty result. Default values can be extracted from contexts by using the following syntax: `#context_name.parameter_name`.
 	DefaultValue pulumi.StringPtrInput `pulumi:"defaultValue"`
-	// Required. The name of the parameter.
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The name of the parameter.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// Optional. The name of the entity type, prefixed with `@`, that describes values of the parameter. If the parameter is required, this must be provided.
 	EntityTypeDisplayName pulumi.StringPtrInput `pulumi:"entityTypeDisplayName"`
 	// Optional. Indicates whether the parameter represents a list of values.
@@ -13182,9 +12917,9 @@ func (o GoogleCloudDialogflowV2IntentParameterOutput) DefaultValue() pulumi.Stri
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentParameter) *string { return v.DefaultValue }).(pulumi.StringPtrOutput)
 }
 
-// Required. The name of the parameter.
-func (o GoogleCloudDialogflowV2IntentParameterOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentParameter) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+// The name of the parameter.
+func (o GoogleCloudDialogflowV2IntentParameterOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentParameter) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // Optional. The name of the entity type, prefixed with `@`, that describes values of the parameter. If the parameter is required, this must be provided.
@@ -13241,7 +12976,7 @@ func (o GoogleCloudDialogflowV2IntentParameterArrayOutput) Index(i pulumi.IntInp
 type GoogleCloudDialogflowV2IntentParameterResponse struct {
 	// Optional. The default value to use when the `value` yields an empty result. Default values can be extracted from contexts by using the following syntax: `#context_name.parameter_name`.
 	DefaultValue string `pulumi:"defaultValue"`
-	// Required. The name of the parameter.
+	// The name of the parameter.
 	DisplayName string `pulumi:"displayName"`
 	// Optional. The name of the entity type, prefixed with `@`, that describes values of the parameter. If the parameter is required, this must be provided.
 	EntityTypeDisplayName string `pulumi:"entityTypeDisplayName"`
@@ -13272,7 +13007,7 @@ type GoogleCloudDialogflowV2IntentParameterResponseInput interface {
 type GoogleCloudDialogflowV2IntentParameterResponseArgs struct {
 	// Optional. The default value to use when the `value` yields an empty result. Default values can be extracted from contexts by using the following syntax: `#context_name.parameter_name`.
 	DefaultValue pulumi.StringInput `pulumi:"defaultValue"`
-	// Required. The name of the parameter.
+	// The name of the parameter.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// Optional. The name of the entity type, prefixed with `@`, that describes values of the parameter. If the parameter is required, this must be provided.
 	EntityTypeDisplayName pulumi.StringInput `pulumi:"entityTypeDisplayName"`
@@ -13345,7 +13080,7 @@ func (o GoogleCloudDialogflowV2IntentParameterResponseOutput) DefaultValue() pul
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentParameterResponse) string { return v.DefaultValue }).(pulumi.StringOutput)
 }
 
-// Required. The name of the parameter.
+// The name of the parameter.
 func (o GoogleCloudDialogflowV2IntentParameterResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentParameterResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -13402,12 +13137,12 @@ func (o GoogleCloudDialogflowV2IntentParameterResponseArrayOutput) Index(i pulum
 
 // Represents an example that the agent is trained on.
 type GoogleCloudDialogflowV2IntentTrainingPhrase struct {
-	// Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
+	// The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
 	Parts []GoogleCloudDialogflowV2IntentTrainingPhrasePart `pulumi:"parts"`
 	// Optional. Indicates how many times this example was added to the intent. Each time a developer adds an existing sample by editing an intent or training, this counter is increased.
 	TimesAddedCount *int `pulumi:"timesAddedCount"`
-	// Required. The type of the training phrase.
-	Type *string `pulumi:"type"`
+	// The type of the training phrase.
+	Type string `pulumi:"type"`
 }
 
 // GoogleCloudDialogflowV2IntentTrainingPhraseInput is an input type that accepts GoogleCloudDialogflowV2IntentTrainingPhraseArgs and GoogleCloudDialogflowV2IntentTrainingPhraseOutput values.
@@ -13423,12 +13158,12 @@ type GoogleCloudDialogflowV2IntentTrainingPhraseInput interface {
 
 // Represents an example that the agent is trained on.
 type GoogleCloudDialogflowV2IntentTrainingPhraseArgs struct {
-	// Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
+	// The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
 	Parts GoogleCloudDialogflowV2IntentTrainingPhrasePartArrayInput `pulumi:"parts"`
 	// Optional. Indicates how many times this example was added to the intent. Each time a developer adds an existing sample by editing an intent or training, this counter is increased.
 	TimesAddedCount pulumi.IntPtrInput `pulumi:"timesAddedCount"`
-	// Required. The type of the training phrase.
-	Type *GoogleCloudDialogflowV2IntentTrainingPhraseType `pulumi:"type"`
+	// The type of the training phrase.
+	Type GoogleCloudDialogflowV2IntentTrainingPhraseType `pulumi:"type"`
 }
 
 func (GoogleCloudDialogflowV2IntentTrainingPhraseArgs) ElementType() reflect.Type {
@@ -13483,7 +13218,7 @@ func (o GoogleCloudDialogflowV2IntentTrainingPhraseOutput) ToGoogleCloudDialogfl
 	return o
 }
 
-// Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
+// The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
 func (o GoogleCloudDialogflowV2IntentTrainingPhraseOutput) Parts() GoogleCloudDialogflowV2IntentTrainingPhrasePartArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentTrainingPhrase) []GoogleCloudDialogflowV2IntentTrainingPhrasePart {
 		return v.Parts
@@ -13495,9 +13230,9 @@ func (o GoogleCloudDialogflowV2IntentTrainingPhraseOutput) TimesAddedCount() pul
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentTrainingPhrase) *int { return v.TimesAddedCount }).(pulumi.IntPtrOutput)
 }
 
-// Required. The type of the training phrase.
-func (o GoogleCloudDialogflowV2IntentTrainingPhraseOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentTrainingPhrase) *string { return v.Type }).(pulumi.StringPtrOutput)
+// The type of the training phrase.
+func (o GoogleCloudDialogflowV2IntentTrainingPhraseOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentTrainingPhrase) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowV2IntentTrainingPhraseArrayOutput struct{ *pulumi.OutputState }
@@ -13526,8 +13261,8 @@ type GoogleCloudDialogflowV2IntentTrainingPhrasePart struct {
 	Alias *string `pulumi:"alias"`
 	// Optional. The entity type name prefixed with `@`. This field is required for annotated parts of the training phrase.
 	EntityType *string `pulumi:"entityType"`
-	// Required. The text for this part.
-	Text *string `pulumi:"text"`
+	// The text for this part.
+	Text string `pulumi:"text"`
 	// Optional. Indicates whether the text was manually annotated. This field is set to true when the Dialogflow Console is used to manually annotate the part. When creating an annotated part with the API, you must set this to true.
 	UserDefined *bool `pulumi:"userDefined"`
 }
@@ -13549,8 +13284,8 @@ type GoogleCloudDialogflowV2IntentTrainingPhrasePartArgs struct {
 	Alias pulumi.StringPtrInput `pulumi:"alias"`
 	// Optional. The entity type name prefixed with `@`. This field is required for annotated parts of the training phrase.
 	EntityType pulumi.StringPtrInput `pulumi:"entityType"`
-	// Required. The text for this part.
-	Text pulumi.StringPtrInput `pulumi:"text"`
+	// The text for this part.
+	Text pulumi.StringInput `pulumi:"text"`
 	// Optional. Indicates whether the text was manually annotated. This field is set to true when the Dialogflow Console is used to manually annotate the part. When creating an annotated part with the API, you must set this to true.
 	UserDefined pulumi.BoolPtrInput `pulumi:"userDefined"`
 }
@@ -13617,9 +13352,9 @@ func (o GoogleCloudDialogflowV2IntentTrainingPhrasePartOutput) EntityType() pulu
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentTrainingPhrasePart) *string { return v.EntityType }).(pulumi.StringPtrOutput)
 }
 
-// Required. The text for this part.
-func (o GoogleCloudDialogflowV2IntentTrainingPhrasePartOutput) Text() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentTrainingPhrasePart) *string { return v.Text }).(pulumi.StringPtrOutput)
+// The text for this part.
+func (o GoogleCloudDialogflowV2IntentTrainingPhrasePartOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentTrainingPhrasePart) string { return v.Text }).(pulumi.StringOutput)
 }
 
 // Optional. Indicates whether the text was manually annotated. This field is set to true when the Dialogflow Console is used to manually annotate the part. When creating an annotated part with the API, you must set this to true.
@@ -13653,7 +13388,7 @@ type GoogleCloudDialogflowV2IntentTrainingPhrasePartResponse struct {
 	Alias string `pulumi:"alias"`
 	// Optional. The entity type name prefixed with `@`. This field is required for annotated parts of the training phrase.
 	EntityType string `pulumi:"entityType"`
-	// Required. The text for this part.
+	// The text for this part.
 	Text string `pulumi:"text"`
 	// Optional. Indicates whether the text was manually annotated. This field is set to true when the Dialogflow Console is used to manually annotate the part. When creating an annotated part with the API, you must set this to true.
 	UserDefined bool `pulumi:"userDefined"`
@@ -13676,7 +13411,7 @@ type GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArgs struct {
 	Alias pulumi.StringInput `pulumi:"alias"`
 	// Optional. The entity type name prefixed with `@`. This field is required for annotated parts of the training phrase.
 	EntityType pulumi.StringInput `pulumi:"entityType"`
-	// Required. The text for this part.
+	// The text for this part.
 	Text pulumi.StringInput `pulumi:"text"`
 	// Optional. Indicates whether the text was manually annotated. This field is set to true when the Dialogflow Console is used to manually annotate the part. When creating an annotated part with the API, you must set this to true.
 	UserDefined pulumi.BoolInput `pulumi:"userDefined"`
@@ -13744,7 +13479,7 @@ func (o GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseOutput) EntityTyp
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentTrainingPhrasePartResponse) string { return v.EntityType }).(pulumi.StringOutput)
 }
 
-// Required. The text for this part.
+// The text for this part.
 func (o GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseOutput) Text() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentTrainingPhrasePartResponse) string { return v.Text }).(pulumi.StringOutput)
 }
@@ -13778,11 +13513,11 @@ func (o GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArrayOutput) Inde
 type GoogleCloudDialogflowV2IntentTrainingPhraseResponse struct {
 	// The unique identifier of this training phrase.
 	Name string `pulumi:"name"`
-	// Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
+	// The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
 	Parts []GoogleCloudDialogflowV2IntentTrainingPhrasePartResponse `pulumi:"parts"`
 	// Optional. Indicates how many times this example was added to the intent. Each time a developer adds an existing sample by editing an intent or training, this counter is increased.
 	TimesAddedCount int `pulumi:"timesAddedCount"`
-	// Required. The type of the training phrase.
+	// The type of the training phrase.
 	Type string `pulumi:"type"`
 }
 
@@ -13801,11 +13536,11 @@ type GoogleCloudDialogflowV2IntentTrainingPhraseResponseInput interface {
 type GoogleCloudDialogflowV2IntentTrainingPhraseResponseArgs struct {
 	// The unique identifier of this training phrase.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
+	// The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
 	Parts GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArrayInput `pulumi:"parts"`
 	// Optional. Indicates how many times this example was added to the intent. Each time a developer adds an existing sample by editing an intent or training, this counter is increased.
 	TimesAddedCount pulumi.IntInput `pulumi:"timesAddedCount"`
-	// Required. The type of the training phrase.
+	// The type of the training phrase.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -13866,7 +13601,7 @@ func (o GoogleCloudDialogflowV2IntentTrainingPhraseResponseOutput) Name() pulumi
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentTrainingPhraseResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
+// The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
 func (o GoogleCloudDialogflowV2IntentTrainingPhraseResponseOutput) Parts() GoogleCloudDialogflowV2IntentTrainingPhrasePartResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentTrainingPhraseResponse) []GoogleCloudDialogflowV2IntentTrainingPhrasePartResponse {
 		return v.Parts
@@ -13878,7 +13613,7 @@ func (o GoogleCloudDialogflowV2IntentTrainingPhraseResponseOutput) TimesAddedCou
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentTrainingPhraseResponse) int { return v.TimesAddedCount }).(pulumi.IntOutput)
 }
 
-// Required. The type of the training phrase.
+// The type of the training phrase.
 func (o GoogleCloudDialogflowV2IntentTrainingPhraseResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentTrainingPhraseResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -14948,8 +14683,8 @@ func (o GoogleCloudDialogflowV2SuggestionFeatureResponseOutput) Type() pulumi.St
 type GoogleCloudDialogflowV2TextToSpeechSettings struct {
 	// Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
 	EnableTextToSpeech *bool `pulumi:"enableTextToSpeech"`
-	// Required. Audio encoding of the synthesized audio content.
-	OutputAudioEncoding *string `pulumi:"outputAudioEncoding"`
+	// Audio encoding of the synthesized audio content.
+	OutputAudioEncoding string `pulumi:"outputAudioEncoding"`
 	// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
 	SampleRateHertz *int `pulumi:"sampleRateHertz"`
 	// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
@@ -14971,8 +14706,8 @@ type GoogleCloudDialogflowV2TextToSpeechSettingsInput interface {
 type GoogleCloudDialogflowV2TextToSpeechSettingsArgs struct {
 	// Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
 	EnableTextToSpeech pulumi.BoolPtrInput `pulumi:"enableTextToSpeech"`
-	// Required. Audio encoding of the synthesized audio content.
-	OutputAudioEncoding *GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding `pulumi:"outputAudioEncoding"`
+	// Audio encoding of the synthesized audio content.
+	OutputAudioEncoding GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding `pulumi:"outputAudioEncoding"`
 	// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
 	SampleRateHertz pulumi.IntPtrInput `pulumi:"sampleRateHertz"`
 	// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
@@ -15062,9 +14797,9 @@ func (o GoogleCloudDialogflowV2TextToSpeechSettingsOutput) EnableTextToSpeech() 
 	return o.ApplyT(func(v GoogleCloudDialogflowV2TextToSpeechSettings) *bool { return v.EnableTextToSpeech }).(pulumi.BoolPtrOutput)
 }
 
-// Required. Audio encoding of the synthesized audio content.
-func (o GoogleCloudDialogflowV2TextToSpeechSettingsOutput) OutputAudioEncoding() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2TextToSpeechSettings) *string { return v.OutputAudioEncoding }).(pulumi.StringPtrOutput)
+// Audio encoding of the synthesized audio content.
+func (o GoogleCloudDialogflowV2TextToSpeechSettingsOutput) OutputAudioEncoding() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2TextToSpeechSettings) string { return v.OutputAudioEncoding }).(pulumi.StringOutput)
 }
 
 // Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
@@ -15109,13 +14844,13 @@ func (o GoogleCloudDialogflowV2TextToSpeechSettingsPtrOutput) EnableTextToSpeech
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. Audio encoding of the synthesized audio content.
+// Audio encoding of the synthesized audio content.
 func (o GoogleCloudDialogflowV2TextToSpeechSettingsPtrOutput) OutputAudioEncoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2TextToSpeechSettings) *string {
 		if v == nil {
 			return nil
 		}
-		return v.OutputAudioEncoding
+		return &v.OutputAudioEncoding
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -15143,7 +14878,7 @@ func (o GoogleCloudDialogflowV2TextToSpeechSettingsPtrOutput) SynthesizeSpeechCo
 type GoogleCloudDialogflowV2TextToSpeechSettingsResponse struct {
 	// Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
 	EnableTextToSpeech bool `pulumi:"enableTextToSpeech"`
-	// Required. Audio encoding of the synthesized audio content.
+	// Audio encoding of the synthesized audio content.
 	OutputAudioEncoding string `pulumi:"outputAudioEncoding"`
 	// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
 	SampleRateHertz int `pulumi:"sampleRateHertz"`
@@ -15166,7 +14901,7 @@ type GoogleCloudDialogflowV2TextToSpeechSettingsResponseInput interface {
 type GoogleCloudDialogflowV2TextToSpeechSettingsResponseArgs struct {
 	// Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
 	EnableTextToSpeech pulumi.BoolInput `pulumi:"enableTextToSpeech"`
-	// Required. Audio encoding of the synthesized audio content.
+	// Audio encoding of the synthesized audio content.
 	OutputAudioEncoding pulumi.StringInput `pulumi:"outputAudioEncoding"`
 	// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
 	SampleRateHertz pulumi.IntInput `pulumi:"sampleRateHertz"`
@@ -15257,7 +14992,7 @@ func (o GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput) EnableTextToS
 	return o.ApplyT(func(v GoogleCloudDialogflowV2TextToSpeechSettingsResponse) bool { return v.EnableTextToSpeech }).(pulumi.BoolOutput)
 }
 
-// Required. Audio encoding of the synthesized audio content.
+// Audio encoding of the synthesized audio content.
 func (o GoogleCloudDialogflowV2TextToSpeechSettingsResponseOutput) OutputAudioEncoding() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowV2TextToSpeechSettingsResponse) string { return v.OutputAudioEncoding }).(pulumi.StringOutput)
 }
@@ -15304,7 +15039,7 @@ func (o GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput) EnableText
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. Audio encoding of the synthesized audio content.
+// Audio encoding of the synthesized audio content.
 func (o GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrOutput) OutputAudioEncoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowV2TextToSpeechSettingsResponse) *string {
 		if v == nil {
@@ -15595,7 +15330,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageBasicCardButtonOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageBasicCardButtonArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageBasicCardButtonResponseArrayOutput{})
@@ -15605,7 +15339,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemResponseArrayOutput{})
@@ -15654,7 +15387,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageSelectItemInfoOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageSelectItemInfoPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageSelectItemInfoResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageSimpleResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowV2IntentMessageSimpleResponseArrayOutput{})

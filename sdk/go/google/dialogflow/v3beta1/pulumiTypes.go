@@ -14,8 +14,8 @@ import (
 type GoogleCloudDialogflowCxV3beta1AudioInput struct {
 	// The natural language speech audio to be processed. A single request can contain up to 1 minute of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.
 	Audio *string `pulumi:"audio"`
-	// Required. Instructs the speech recognizer how to process the speech audio.
-	Config *GoogleCloudDialogflowCxV3beta1InputAudioConfig `pulumi:"config"`
+	// Instructs the speech recognizer how to process the speech audio.
+	Config GoogleCloudDialogflowCxV3beta1InputAudioConfig `pulumi:"config"`
 }
 
 // GoogleCloudDialogflowCxV3beta1AudioInputInput is an input type that accepts GoogleCloudDialogflowCxV3beta1AudioInputArgs and GoogleCloudDialogflowCxV3beta1AudioInputOutput values.
@@ -33,8 +33,8 @@ type GoogleCloudDialogflowCxV3beta1AudioInputInput interface {
 type GoogleCloudDialogflowCxV3beta1AudioInputArgs struct {
 	// The natural language speech audio to be processed. A single request can contain up to 1 minute of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.
 	Audio pulumi.StringPtrInput `pulumi:"audio"`
-	// Required. Instructs the speech recognizer how to process the speech audio.
-	Config GoogleCloudDialogflowCxV3beta1InputAudioConfigPtrInput `pulumi:"config"`
+	// Instructs the speech recognizer how to process the speech audio.
+	Config GoogleCloudDialogflowCxV3beta1InputAudioConfigInput `pulumi:"config"`
 }
 
 func (GoogleCloudDialogflowCxV3beta1AudioInputArgs) ElementType() reflect.Type {
@@ -120,11 +120,11 @@ func (o GoogleCloudDialogflowCxV3beta1AudioInputOutput) Audio() pulumi.StringPtr
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1AudioInput) *string { return v.Audio }).(pulumi.StringPtrOutput)
 }
 
-// Required. Instructs the speech recognizer how to process the speech audio.
-func (o GoogleCloudDialogflowCxV3beta1AudioInputOutput) Config() GoogleCloudDialogflowCxV3beta1InputAudioConfigPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1AudioInput) *GoogleCloudDialogflowCxV3beta1InputAudioConfig {
+// Instructs the speech recognizer how to process the speech audio.
+func (o GoogleCloudDialogflowCxV3beta1AudioInputOutput) Config() GoogleCloudDialogflowCxV3beta1InputAudioConfigOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1AudioInput) GoogleCloudDialogflowCxV3beta1InputAudioConfig {
 		return v.Config
-	}).(GoogleCloudDialogflowCxV3beta1InputAudioConfigPtrOutput)
+	}).(GoogleCloudDialogflowCxV3beta1InputAudioConfigOutput)
 }
 
 type GoogleCloudDialogflowCxV3beta1AudioInputPtrOutput struct{ *pulumi.OutputState }
@@ -155,13 +155,13 @@ func (o GoogleCloudDialogflowCxV3beta1AudioInputPtrOutput) Audio() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Instructs the speech recognizer how to process the speech audio.
+// Instructs the speech recognizer how to process the speech audio.
 func (o GoogleCloudDialogflowCxV3beta1AudioInputPtrOutput) Config() GoogleCloudDialogflowCxV3beta1InputAudioConfigPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1AudioInput) *GoogleCloudDialogflowCxV3beta1InputAudioConfig {
 		if v == nil {
 			return nil
 		}
-		return v.Config
+		return &v.Config
 	}).(GoogleCloudDialogflowCxV3beta1InputAudioConfigPtrOutput)
 }
 
@@ -169,7 +169,7 @@ func (o GoogleCloudDialogflowCxV3beta1AudioInputPtrOutput) Config() GoogleCloudD
 type GoogleCloudDialogflowCxV3beta1AudioInputResponse struct {
 	// The natural language speech audio to be processed. A single request can contain up to 1 minute of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.
 	Audio string `pulumi:"audio"`
-	// Required. Instructs the speech recognizer how to process the speech audio.
+	// Instructs the speech recognizer how to process the speech audio.
 	Config GoogleCloudDialogflowCxV3beta1InputAudioConfigResponse `pulumi:"config"`
 }
 
@@ -188,7 +188,7 @@ type GoogleCloudDialogflowCxV3beta1AudioInputResponseInput interface {
 type GoogleCloudDialogflowCxV3beta1AudioInputResponseArgs struct {
 	// The natural language speech audio to be processed. A single request can contain up to 1 minute of speech audio data. The transcribed text cannot contain more than 256 bytes. For non-streaming audio detect intent, both `config` and `audio` must be provided. For streaming audio detect intent, `config` must be provided in the first request and `audio` must be provided in all following requests.
 	Audio pulumi.StringInput `pulumi:"audio"`
-	// Required. Instructs the speech recognizer how to process the speech audio.
+	// Instructs the speech recognizer how to process the speech audio.
 	Config GoogleCloudDialogflowCxV3beta1InputAudioConfigResponseInput `pulumi:"config"`
 }
 
@@ -224,7 +224,7 @@ func (o GoogleCloudDialogflowCxV3beta1AudioInputResponseOutput) Audio() pulumi.S
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1AudioInputResponse) string { return v.Audio }).(pulumi.StringOutput)
 }
 
-// Required. Instructs the speech recognizer how to process the speech audio.
+// Instructs the speech recognizer how to process the speech audio.
 func (o GoogleCloudDialogflowCxV3beta1AudioInputResponseOutput) Config() GoogleCloudDialogflowCxV3beta1InputAudioConfigResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1AudioInputResponse) GoogleCloudDialogflowCxV3beta1InputAudioConfigResponse {
 		return v.Config
@@ -718,7 +718,7 @@ func (o GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponseOutput) I
 type GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput struct {
 	// The Page on which the utterance was spoken. Only name and displayName will be set.
 	CurrentPage *GoogleCloudDialogflowCxV3beta1Page `pulumi:"currentPage"`
-	// Required. Input only. The diagnostic info output for the turn.
+	// Input only. The diagnostic info output for the turn.
 	DiagnosticInfo map[string]string `pulumi:"diagnosticInfo"`
 	// The session parameters available to the bot at this point.
 	SessionParameters map[string]string `pulumi:"sessionParameters"`
@@ -745,7 +745,7 @@ type GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputInput inter
 type GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputArgs struct {
 	// The Page on which the utterance was spoken. Only name and displayName will be set.
 	CurrentPage GoogleCloudDialogflowCxV3beta1PagePtrInput `pulumi:"currentPage"`
-	// Required. Input only. The diagnostic info output for the turn.
+	// Input only. The diagnostic info output for the turn.
 	DiagnosticInfo pulumi.StringMapInput `pulumi:"diagnosticInfo"`
 	// The session parameters available to the bot at this point.
 	SessionParameters pulumi.StringMapInput `pulumi:"sessionParameters"`
@@ -842,7 +842,7 @@ func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputOutput) 
 	}).(GoogleCloudDialogflowCxV3beta1PagePtrOutput)
 }
 
-// Required. Input only. The diagnostic info output for the turn.
+// Input only. The diagnostic info output for the turn.
 func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputOutput) DiagnosticInfo() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput) map[string]string {
 		return v.DiagnosticInfo
@@ -907,7 +907,7 @@ func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputPtrOutpu
 	}).(GoogleCloudDialogflowCxV3beta1PagePtrOutput)
 }
 
-// Required. Input only. The diagnostic info output for the turn.
+// Input only. The diagnostic info output for the turn.
 func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputPtrOutput) DiagnosticInfo() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput) map[string]string {
 		if v == nil {
@@ -961,7 +961,7 @@ func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputPtrOutpu
 type GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse struct {
 	// The Page on which the utterance was spoken. Only name and displayName will be set.
 	CurrentPage GoogleCloudDialogflowCxV3beta1PageResponse `pulumi:"currentPage"`
-	// Required. Input only. The diagnostic info output for the turn.
+	// Input only. The diagnostic info output for the turn.
 	DiagnosticInfo map[string]string `pulumi:"diagnosticInfo"`
 	// If this is part of a result conversation turn, the list of differences between the original run and the replay for this output, if any.
 	Differences []GoogleCloudDialogflowCxV3beta1TestRunDifferenceResponse `pulumi:"differences"`
@@ -990,7 +990,7 @@ type GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponseInp
 type GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponseArgs struct {
 	// The Page on which the utterance was spoken. Only name and displayName will be set.
 	CurrentPage GoogleCloudDialogflowCxV3beta1PageResponseInput `pulumi:"currentPage"`
-	// Required. Input only. The diagnostic info output for the turn.
+	// Input only. The diagnostic info output for the turn.
 	DiagnosticInfo pulumi.StringMapInput `pulumi:"diagnosticInfo"`
 	// If this is part of a result conversation turn, the list of differences between the original run and the replay for this output, if any.
 	Differences GoogleCloudDialogflowCxV3beta1TestRunDifferenceResponseArrayInput `pulumi:"differences"`
@@ -1038,7 +1038,7 @@ func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse
 	}).(GoogleCloudDialogflowCxV3beta1PageResponseOutput)
 }
 
-// Required. Input only. The diagnostic info output for the turn.
+// Input only. The diagnostic info output for the turn.
 func (o GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponseOutput) DiagnosticInfo() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse) map[string]string {
 		return v.DiagnosticInfo
@@ -1299,10 +1299,10 @@ func (o GoogleCloudDialogflowCxV3beta1DtmfInputResponseOutput) FinishDigit() pul
 
 // An **entity entry** for an associated entity type.
 type GoogleCloudDialogflowCxV3beta1EntityTypeEntity struct {
-	// Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+	// A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
 	Synonyms []string `pulumi:"synonyms"`
-	// Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
-	Value *string `pulumi:"value"`
+	// The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+	Value string `pulumi:"value"`
 }
 
 // GoogleCloudDialogflowCxV3beta1EntityTypeEntityInput is an input type that accepts GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs and GoogleCloudDialogflowCxV3beta1EntityTypeEntityOutput values.
@@ -1318,10 +1318,10 @@ type GoogleCloudDialogflowCxV3beta1EntityTypeEntityInput interface {
 
 // An **entity entry** for an associated entity type.
 type GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs struct {
-	// Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+	// A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
 	Synonyms pulumi.StringArrayInput `pulumi:"synonyms"`
-	// Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	// The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs) ElementType() reflect.Type {
@@ -1376,14 +1376,14 @@ func (o GoogleCloudDialogflowCxV3beta1EntityTypeEntityOutput) ToGoogleCloudDialo
 	return o
 }
 
-// Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+// A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
 func (o GoogleCloudDialogflowCxV3beta1EntityTypeEntityOutput) Synonyms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1EntityTypeEntity) []string { return v.Synonyms }).(pulumi.StringArrayOutput)
 }
 
-// Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
-func (o GoogleCloudDialogflowCxV3beta1EntityTypeEntityOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1EntityTypeEntity) *string { return v.Value }).(pulumi.StringPtrOutput)
+// The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+func (o GoogleCloudDialogflowCxV3beta1EntityTypeEntityOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1EntityTypeEntity) string { return v.Value }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowCxV3beta1EntityTypeEntityArrayOutput struct{ *pulumi.OutputState }
@@ -1408,9 +1408,9 @@ func (o GoogleCloudDialogflowCxV3beta1EntityTypeEntityArrayOutput) Index(i pulum
 
 // An **entity entry** for an associated entity type.
 type GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponse struct {
-	// Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+	// A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
 	Synonyms []string `pulumi:"synonyms"`
-	// Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+	// The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
 	Value string `pulumi:"value"`
 }
 
@@ -1427,9 +1427,9 @@ type GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponseInput interface {
 
 // An **entity entry** for an associated entity type.
 type GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponseArgs struct {
-	// Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+	// A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
 	Synonyms pulumi.StringArrayInput `pulumi:"synonyms"`
-	// Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+	// The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1485,12 +1485,12 @@ func (o GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponseOutput) ToGoogleCl
 	return o
 }
 
-// Required. A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
+// A collection of value synonyms. For example, if the entity type is *vegetable*, and `value` is *scallions*, a synonym could be *green onions*. For `KIND_LIST` entity types: * This collection must contain exactly one synonym equal to `value`.
 func (o GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponseOutput) Synonyms() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponse) []string { return v.Synonyms }).(pulumi.StringArrayOutput)
 }
 
-// Required. The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
+// The primary value associated with this entity entry. For example, if the entity type is *vegetable*, the value could be *scallions*. For `KIND_MAP` entity types: * A canonical value to be used in place of synonyms. For `KIND_LIST` entity types: * A string that can contain references to other entity types (with or without aliases).
 func (o GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponse) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1517,8 +1517,8 @@ func (o GoogleCloudDialogflowCxV3beta1EntityTypeEntityResponseArrayOutput) Index
 
 // An excluded entity phrase that should not be matched.
 type GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase struct {
-	// Required. The word or phrase to be excluded.
-	Value *string `pulumi:"value"`
+	// The word or phrase to be excluded.
+	Value string `pulumi:"value"`
 }
 
 // GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseInput is an input type that accepts GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseArgs and GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseOutput values.
@@ -1534,8 +1534,8 @@ type GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseInput interface {
 
 // An excluded entity phrase that should not be matched.
 type GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseArgs struct {
-	// Required. The word or phrase to be excluded.
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	// The word or phrase to be excluded.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseArgs) ElementType() reflect.Type {
@@ -1590,9 +1590,9 @@ func (o GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseOutput) ToGoogleCl
 	return o
 }
 
-// Required. The word or phrase to be excluded.
-func (o GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase) *string { return v.Value }).(pulumi.StringPtrOutput)
+// The word or phrase to be excluded.
+func (o GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhrase) string { return v.Value }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseArrayOutput struct{ *pulumi.OutputState }
@@ -1617,7 +1617,7 @@ func (o GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseArrayOutput) Index
 
 // An excluded entity phrase that should not be matched.
 type GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponse struct {
-	// Required. The word or phrase to be excluded.
+	// The word or phrase to be excluded.
 	Value string `pulumi:"value"`
 }
 
@@ -1634,7 +1634,7 @@ type GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponseInput interfa
 
 // An excluded entity phrase that should not be matched.
 type GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponseArgs struct {
-	// Required. The word or phrase to be excluded.
+	// The word or phrase to be excluded.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1690,7 +1690,7 @@ func (o GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponseOutput) To
 	return o
 }
 
-// Required. The word or phrase to be excluded.
+// The word or phrase to be excluded.
 func (o GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponse) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1717,8 +1717,8 @@ func (o GoogleCloudDialogflowCxV3beta1EntityTypeExcludedPhraseResponseArrayOutpu
 
 // Configuration for the version.
 type GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig struct {
-	// Required. Format: projects//locations//agents//flows//versions/.
-	Version *string `pulumi:"version"`
+	// Format: projects//locations//agents//flows//versions/.
+	Version string `pulumi:"version"`
 }
 
 // GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigInput is an input type that accepts GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs and GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigOutput values.
@@ -1734,8 +1734,8 @@ type GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigInput interface {
 
 // Configuration for the version.
 type GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs struct {
-	// Required. Format: projects//locations//agents//flows//versions/.
-	Version pulumi.StringPtrInput `pulumi:"version"`
+	// Format: projects//locations//agents//flows//versions/.
+	Version pulumi.StringInput `pulumi:"version"`
 }
 
 func (GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArgs) ElementType() reflect.Type {
@@ -1790,9 +1790,9 @@ func (o GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigOutput) ToGoogleCl
 	return o
 }
 
-// Required. Format: projects//locations//agents//flows//versions/.
-func (o GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigOutput) Version() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig) *string { return v.Version }).(pulumi.StringPtrOutput)
+// Format: projects//locations//agents//flows//versions/.
+func (o GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig) string { return v.Version }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutput struct{ *pulumi.OutputState }
@@ -1817,7 +1817,7 @@ func (o GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayOutput) Index
 
 // Configuration for the version.
 type GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse struct {
-	// Required. Format: projects//locations//agents//flows//versions/.
+	// Format: projects//locations//agents//flows//versions/.
 	Version string `pulumi:"version"`
 }
 
@@ -1834,7 +1834,7 @@ type GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponseInput interfa
 
 // Configuration for the version.
 type GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponseArgs struct {
-	// Required. Format: projects//locations//agents//flows//versions/.
+	// Format: projects//locations//agents//flows//versions/.
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -1890,7 +1890,7 @@ func (o GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponseOutput) To
 	return o
 }
 
-// Required. Format: projects//locations//agents//flows//versions/.
+// Format: projects//locations//agents//flows//versions/.
 func (o GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponseOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -1917,8 +1917,8 @@ func (o GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponseArrayOutpu
 
 // An event handler specifies an event that can be handled during a session. When the specified event happens, the following actions are taken in order: * If there is a `trigger_fulfillment` associated with the event, it will be called. * If there is a `target_page` associated with the event, the session will transition into the specified page. * If there is a `target_flow` associated with the event, the session will transition into the specified flow.
 type GoogleCloudDialogflowCxV3beta1EventHandler struct {
-	// Required. The name of the event to handle.
-	Event *string `pulumi:"event"`
+	// The name of the event to handle.
+	Event string `pulumi:"event"`
 	// The target flow to transition to. Format: `projects//locations//agents//flows/`.
 	TargetFlow *string `pulumi:"targetFlow"`
 	// The target page to transition to. Format: `projects//locations//agents//flows//pages/`.
@@ -1940,8 +1940,8 @@ type GoogleCloudDialogflowCxV3beta1EventHandlerInput interface {
 
 // An event handler specifies an event that can be handled during a session. When the specified event happens, the following actions are taken in order: * If there is a `trigger_fulfillment` associated with the event, it will be called. * If there is a `target_page` associated with the event, the session will transition into the specified page. * If there is a `target_flow` associated with the event, the session will transition into the specified flow.
 type GoogleCloudDialogflowCxV3beta1EventHandlerArgs struct {
-	// Required. The name of the event to handle.
-	Event pulumi.StringPtrInput `pulumi:"event"`
+	// The name of the event to handle.
+	Event pulumi.StringInput `pulumi:"event"`
 	// The target flow to transition to. Format: `projects//locations//agents//flows/`.
 	TargetFlow pulumi.StringPtrInput `pulumi:"targetFlow"`
 	// The target page to transition to. Format: `projects//locations//agents//flows//pages/`.
@@ -2002,9 +2002,9 @@ func (o GoogleCloudDialogflowCxV3beta1EventHandlerOutput) ToGoogleCloudDialogflo
 	return o
 }
 
-// Required. The name of the event to handle.
-func (o GoogleCloudDialogflowCxV3beta1EventHandlerOutput) Event() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1EventHandler) *string { return v.Event }).(pulumi.StringPtrOutput)
+// The name of the event to handle.
+func (o GoogleCloudDialogflowCxV3beta1EventHandlerOutput) Event() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1EventHandler) string { return v.Event }).(pulumi.StringOutput)
 }
 
 // The target flow to transition to. Format: `projects//locations//agents//flows/`.
@@ -2046,7 +2046,7 @@ func (o GoogleCloudDialogflowCxV3beta1EventHandlerArrayOutput) Index(i pulumi.In
 
 // An event handler specifies an event that can be handled during a session. When the specified event happens, the following actions are taken in order: * If there is a `trigger_fulfillment` associated with the event, it will be called. * If there is a `target_page` associated with the event, the session will transition into the specified page. * If there is a `target_flow` associated with the event, the session will transition into the specified flow.
 type GoogleCloudDialogflowCxV3beta1EventHandlerResponse struct {
-	// Required. The name of the event to handle.
+	// The name of the event to handle.
 	Event string `pulumi:"event"`
 	// The unique identifier of this event handler.
 	Name string `pulumi:"name"`
@@ -2071,7 +2071,7 @@ type GoogleCloudDialogflowCxV3beta1EventHandlerResponseInput interface {
 
 // An event handler specifies an event that can be handled during a session. When the specified event happens, the following actions are taken in order: * If there is a `trigger_fulfillment` associated with the event, it will be called. * If there is a `target_page` associated with the event, the session will transition into the specified page. * If there is a `target_flow` associated with the event, the session will transition into the specified flow.
 type GoogleCloudDialogflowCxV3beta1EventHandlerResponseArgs struct {
-	// Required. The name of the event to handle.
+	// The name of the event to handle.
 	Event pulumi.StringInput `pulumi:"event"`
 	// The unique identifier of this event handler.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -2135,7 +2135,7 @@ func (o GoogleCloudDialogflowCxV3beta1EventHandlerResponseOutput) ToGoogleCloudD
 	return o
 }
 
-// Required. The name of the event to handle.
+// The name of the event to handle.
 func (o GoogleCloudDialogflowCxV3beta1EventHandlerResponseOutput) Event() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1EventHandlerResponse) string { return v.Event }).(pulumi.StringOutput)
 }
@@ -3942,12 +3942,12 @@ func (o GoogleCloudDialogflowCxV3beta1FormPtrOutput) Parameters() GoogleCloudDia
 type GoogleCloudDialogflowCxV3beta1FormParameter struct {
 	// The default value of an optional parameter. If the parameter is required, the default value will be ignored.
 	DefaultValue interface{} `pulumi:"defaultValue"`
-	// Required. The human-readable name of the parameter, unique within the form.
-	DisplayName *string `pulumi:"displayName"`
-	// Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
-	EntityType *string `pulumi:"entityType"`
-	// Required. Defines fill behavior for the parameter.
-	FillBehavior *GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior `pulumi:"fillBehavior"`
+	// The human-readable name of the parameter, unique within the form.
+	DisplayName string `pulumi:"displayName"`
+	// The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+	EntityType string `pulumi:"entityType"`
+	// Defines fill behavior for the parameter.
+	FillBehavior GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior `pulumi:"fillBehavior"`
 	// Indicates whether the parameter represents a list of values.
 	IsList *bool `pulumi:"isList"`
 	// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
@@ -3971,12 +3971,12 @@ type GoogleCloudDialogflowCxV3beta1FormParameterInput interface {
 type GoogleCloudDialogflowCxV3beta1FormParameterArgs struct {
 	// The default value of an optional parameter. If the parameter is required, the default value will be ignored.
 	DefaultValue pulumi.Input `pulumi:"defaultValue"`
-	// Required. The human-readable name of the parameter, unique within the form.
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
-	// Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
-	EntityType pulumi.StringPtrInput `pulumi:"entityType"`
-	// Required. Defines fill behavior for the parameter.
-	FillBehavior GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrInput `pulumi:"fillBehavior"`
+	// The human-readable name of the parameter, unique within the form.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+	EntityType pulumi.StringInput `pulumi:"entityType"`
+	// Defines fill behavior for the parameter.
+	FillBehavior GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorInput `pulumi:"fillBehavior"`
 	// Indicates whether the parameter represents a list of values.
 	IsList pulumi.BoolPtrInput `pulumi:"isList"`
 	// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
@@ -4042,21 +4042,21 @@ func (o GoogleCloudDialogflowCxV3beta1FormParameterOutput) DefaultValue() pulumi
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1FormParameter) interface{} { return v.DefaultValue }).(pulumi.AnyOutput)
 }
 
-// Required. The human-readable name of the parameter, unique within the form.
-func (o GoogleCloudDialogflowCxV3beta1FormParameterOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1FormParameter) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+// The human-readable name of the parameter, unique within the form.
+func (o GoogleCloudDialogflowCxV3beta1FormParameterOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1FormParameter) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
-func (o GoogleCloudDialogflowCxV3beta1FormParameterOutput) EntityType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1FormParameter) *string { return v.EntityType }).(pulumi.StringPtrOutput)
+// The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+func (o GoogleCloudDialogflowCxV3beta1FormParameterOutput) EntityType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1FormParameter) string { return v.EntityType }).(pulumi.StringOutput)
 }
 
-// Required. Defines fill behavior for the parameter.
-func (o GoogleCloudDialogflowCxV3beta1FormParameterOutput) FillBehavior() GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1FormParameter) *GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior {
+// Defines fill behavior for the parameter.
+func (o GoogleCloudDialogflowCxV3beta1FormParameterOutput) FillBehavior() GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1FormParameter) GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior {
 		return v.FillBehavior
-	}).(GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput)
+	}).(GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorOutput)
 }
 
 // Indicates whether the parameter represents a list of values.
@@ -4096,8 +4096,8 @@ func (o GoogleCloudDialogflowCxV3beta1FormParameterArrayOutput) Index(i pulumi.I
 
 // Configuration for how the filling of a parameter should be handled.
 type GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior struct {
-	// Required. The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
-	InitialPromptFulfillment *GoogleCloudDialogflowCxV3beta1Fulfillment `pulumi:"initialPromptFulfillment"`
+	// The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
+	InitialPromptFulfillment GoogleCloudDialogflowCxV3beta1Fulfillment `pulumi:"initialPromptFulfillment"`
 	// The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are: * `sys.no-match-`, where N can be from 1 to 6 * `sys.no-match-default` * `sys.no-input-`, where N can be from 1 to 6 * `sys.no-input-default` * `sys.invalid-parameter` `initial_prompt_fulfillment` provides the first prompt for the parameter. If the user's response does not fill the parameter, a no-match/no-input event will be triggered, and the fulfillment associated with the `sys.no-match-1`/`sys.no-input-1` handler (if defined) will be called to provide a prompt. The `sys.no-match-2`/`sys.no-input-2` handler (if defined) will respond to the next no-match/no-input event, and so on. A `sys.no-match-default` or `sys.no-input-default` handler will be used to handle all following no-match/no-input events after all numbered no-match/no-input handlers for the parameter are consumed. A `sys.invalid-parameter` handler can be defined to handle the case where the parameter values have been `invalidated` by webhook. For example, if the user's response fill the parameter, however the parameter was invalidated by webhook, the fulfillment associated with the `sys.invalid-parameter` handler (if defined) will be called to provide a prompt. If the event handler for the corresponding event can't be found on the parameter, `initial_prompt_fulfillment` will be re-prompted.
 	RepromptEventHandlers []GoogleCloudDialogflowCxV3beta1EventHandler `pulumi:"repromptEventHandlers"`
 }
@@ -4115,8 +4115,8 @@ type GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorInput interface {
 
 // Configuration for how the filling of a parameter should be handled.
 type GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs struct {
-	// Required. The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
-	InitialPromptFulfillment GoogleCloudDialogflowCxV3beta1FulfillmentPtrInput `pulumi:"initialPromptFulfillment"`
+	// The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
+	InitialPromptFulfillment GoogleCloudDialogflowCxV3beta1FulfillmentInput `pulumi:"initialPromptFulfillment"`
 	// The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are: * `sys.no-match-`, where N can be from 1 to 6 * `sys.no-match-default` * `sys.no-input-`, where N can be from 1 to 6 * `sys.no-input-default` * `sys.invalid-parameter` `initial_prompt_fulfillment` provides the first prompt for the parameter. If the user's response does not fill the parameter, a no-match/no-input event will be triggered, and the fulfillment associated with the `sys.no-match-1`/`sys.no-input-1` handler (if defined) will be called to provide a prompt. The `sys.no-match-2`/`sys.no-input-2` handler (if defined) will respond to the next no-match/no-input event, and so on. A `sys.no-match-default` or `sys.no-input-default` handler will be used to handle all following no-match/no-input events after all numbered no-match/no-input handlers for the parameter are consumed. A `sys.invalid-parameter` handler can be defined to handle the case where the parameter values have been `invalidated` by webhook. For example, if the user's response fill the parameter, however the parameter was invalidated by webhook, the fulfillment associated with the `sys.invalid-parameter` handler (if defined) will be called to provide a prompt. If the event handler for the corresponding event can't be found on the parameter, `initial_prompt_fulfillment` will be re-prompted.
 	RepromptEventHandlers GoogleCloudDialogflowCxV3beta1EventHandlerArrayInput `pulumi:"repromptEventHandlers"`
 }
@@ -4131,47 +4131,6 @@ func (i GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs) ToGoogleClo
 
 func (i GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs) ToGoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorOutput)
-}
-
-func (i GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs) ToGoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput() GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput {
-	return i.ToGoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs) ToGoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorOutput).ToGoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrInput is an input type that accepts GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs, GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtr and GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrInput` via:
-//
-//          GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs{...}
-//
-//  or:
-//
-//          nil
-type GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput() GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput
-	ToGoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput
-}
-
-type googleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrType GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs
-
-func GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtr(v *GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorArgs) GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrInput {
-	return (*googleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrType)(v)
-}
-
-func (*googleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior)(nil)).Elem()
-}
-
-func (i *googleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrType) ToGoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput() GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput {
-	return i.ToGoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrType) ToGoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput)
 }
 
 // Configuration for how the filling of a parameter should be handled.
@@ -4189,21 +4148,11 @@ func (o GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorOutput) ToGoogleC
 	return o
 }
 
-func (o GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorOutput) ToGoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput() GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput {
-	return o.ToGoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorOutput) ToGoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior) *GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior {
-		return &v
-	}).(GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput)
-}
-
-// Required. The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
-func (o GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorOutput) InitialPromptFulfillment() GoogleCloudDialogflowCxV3beta1FulfillmentPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior) *GoogleCloudDialogflowCxV3beta1Fulfillment {
+// The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
+func (o GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorOutput) InitialPromptFulfillment() GoogleCloudDialogflowCxV3beta1FulfillmentOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior) GoogleCloudDialogflowCxV3beta1Fulfillment {
 		return v.InitialPromptFulfillment
-	}).(GoogleCloudDialogflowCxV3beta1FulfillmentPtrOutput)
+	}).(GoogleCloudDialogflowCxV3beta1FulfillmentOutput)
 }
 
 // The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are: * `sys.no-match-`, where N can be from 1 to 6 * `sys.no-match-default` * `sys.no-input-`, where N can be from 1 to 6 * `sys.no-input-default` * `sys.invalid-parameter` `initial_prompt_fulfillment` provides the first prompt for the parameter. If the user's response does not fill the parameter, a no-match/no-input event will be triggered, and the fulfillment associated with the `sys.no-match-1`/`sys.no-input-1` handler (if defined) will be called to provide a prompt. The `sys.no-match-2`/`sys.no-input-2` handler (if defined) will respond to the next no-match/no-input event, and so on. A `sys.no-match-default` or `sys.no-input-default` handler will be used to handle all following no-match/no-input events after all numbered no-match/no-input handlers for the parameter are consumed. A `sys.invalid-parameter` handler can be defined to handle the case where the parameter values have been `invalidated` by webhook. For example, if the user's response fill the parameter, however the parameter was invalidated by webhook, the fulfillment associated with the `sys.invalid-parameter` handler (if defined) will be called to provide a prompt. If the event handler for the corresponding event can't be found on the parameter, `initial_prompt_fulfillment` will be re-prompted.
@@ -4213,49 +4162,9 @@ func (o GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorOutput) RepromptE
 	}).(GoogleCloudDialogflowCxV3beta1EventHandlerArrayOutput)
 }
 
-type GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior)(nil)).Elem()
-}
-
-func (o GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput) ToGoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput() GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput) ToGoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput) Elem() GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior) GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior {
-		return *v
-	}).(GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorOutput)
-}
-
-// Required. The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
-func (o GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput) InitialPromptFulfillment() GoogleCloudDialogflowCxV3beta1FulfillmentPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior) *GoogleCloudDialogflowCxV3beta1Fulfillment {
-		if v == nil {
-			return nil
-		}
-		return v.InitialPromptFulfillment
-	}).(GoogleCloudDialogflowCxV3beta1FulfillmentPtrOutput)
-}
-
-// The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are: * `sys.no-match-`, where N can be from 1 to 6 * `sys.no-match-default` * `sys.no-input-`, where N can be from 1 to 6 * `sys.no-input-default` * `sys.invalid-parameter` `initial_prompt_fulfillment` provides the first prompt for the parameter. If the user's response does not fill the parameter, a no-match/no-input event will be triggered, and the fulfillment associated with the `sys.no-match-1`/`sys.no-input-1` handler (if defined) will be called to provide a prompt. The `sys.no-match-2`/`sys.no-input-2` handler (if defined) will respond to the next no-match/no-input event, and so on. A `sys.no-match-default` or `sys.no-input-default` handler will be used to handle all following no-match/no-input events after all numbered no-match/no-input handlers for the parameter are consumed. A `sys.invalid-parameter` handler can be defined to handle the case where the parameter values have been `invalidated` by webhook. For example, if the user's response fill the parameter, however the parameter was invalidated by webhook, the fulfillment associated with the `sys.invalid-parameter` handler (if defined) will be called to provide a prompt. If the event handler for the corresponding event can't be found on the parameter, `initial_prompt_fulfillment` will be re-prompted.
-func (o GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput) RepromptEventHandlers() GoogleCloudDialogflowCxV3beta1EventHandlerArrayOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior) []GoogleCloudDialogflowCxV3beta1EventHandler {
-		if v == nil {
-			return nil
-		}
-		return v.RepromptEventHandlers
-	}).(GoogleCloudDialogflowCxV3beta1EventHandlerArrayOutput)
-}
-
 // Configuration for how the filling of a parameter should be handled.
 type GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorResponse struct {
-	// Required. The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
+	// The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
 	InitialPromptFulfillment GoogleCloudDialogflowCxV3beta1FulfillmentResponse `pulumi:"initialPromptFulfillment"`
 	// The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are: * `sys.no-match-`, where N can be from 1 to 6 * `sys.no-match-default` * `sys.no-input-`, where N can be from 1 to 6 * `sys.no-input-default` * `sys.invalid-parameter` `initial_prompt_fulfillment` provides the first prompt for the parameter. If the user's response does not fill the parameter, a no-match/no-input event will be triggered, and the fulfillment associated with the `sys.no-match-1`/`sys.no-input-1` handler (if defined) will be called to provide a prompt. The `sys.no-match-2`/`sys.no-input-2` handler (if defined) will respond to the next no-match/no-input event, and so on. A `sys.no-match-default` or `sys.no-input-default` handler will be used to handle all following no-match/no-input events after all numbered no-match/no-input handlers for the parameter are consumed. A `sys.invalid-parameter` handler can be defined to handle the case where the parameter values have been `invalidated` by webhook. For example, if the user's response fill the parameter, however the parameter was invalidated by webhook, the fulfillment associated with the `sys.invalid-parameter` handler (if defined) will be called to provide a prompt. If the event handler for the corresponding event can't be found on the parameter, `initial_prompt_fulfillment` will be re-prompted.
 	RepromptEventHandlers []GoogleCloudDialogflowCxV3beta1EventHandlerResponse `pulumi:"repromptEventHandlers"`
@@ -4274,7 +4183,7 @@ type GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorResponseInput interf
 
 // Configuration for how the filling of a parameter should be handled.
 type GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorResponseArgs struct {
-	// Required. The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
+	// The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
 	InitialPromptFulfillment GoogleCloudDialogflowCxV3beta1FulfillmentResponseInput `pulumi:"initialPromptFulfillment"`
 	// The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are: * `sys.no-match-`, where N can be from 1 to 6 * `sys.no-match-default` * `sys.no-input-`, where N can be from 1 to 6 * `sys.no-input-default` * `sys.invalid-parameter` `initial_prompt_fulfillment` provides the first prompt for the parameter. If the user's response does not fill the parameter, a no-match/no-input event will be triggered, and the fulfillment associated with the `sys.no-match-1`/`sys.no-input-1` handler (if defined) will be called to provide a prompt. The `sys.no-match-2`/`sys.no-input-2` handler (if defined) will respond to the next no-match/no-input event, and so on. A `sys.no-match-default` or `sys.no-input-default` handler will be used to handle all following no-match/no-input events after all numbered no-match/no-input handlers for the parameter are consumed. A `sys.invalid-parameter` handler can be defined to handle the case where the parameter values have been `invalidated` by webhook. For example, if the user's response fill the parameter, however the parameter was invalidated by webhook, the fulfillment associated with the `sys.invalid-parameter` handler (if defined) will be called to provide a prompt. If the event handler for the corresponding event can't be found on the parameter, `initial_prompt_fulfillment` will be re-prompted.
 	RepromptEventHandlers GoogleCloudDialogflowCxV3beta1EventHandlerResponseArrayInput `pulumi:"repromptEventHandlers"`
@@ -4307,7 +4216,7 @@ func (o GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorResponseOutput) T
 	return o
 }
 
-// Required. The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
+// The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
 func (o GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorResponseOutput) InitialPromptFulfillment() GoogleCloudDialogflowCxV3beta1FulfillmentResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorResponse) GoogleCloudDialogflowCxV3beta1FulfillmentResponse {
 		return v.InitialPromptFulfillment
@@ -4325,11 +4234,11 @@ func (o GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorResponseOutput) R
 type GoogleCloudDialogflowCxV3beta1FormParameterResponse struct {
 	// The default value of an optional parameter. If the parameter is required, the default value will be ignored.
 	DefaultValue interface{} `pulumi:"defaultValue"`
-	// Required. The human-readable name of the parameter, unique within the form.
+	// The human-readable name of the parameter, unique within the form.
 	DisplayName string `pulumi:"displayName"`
-	// Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+	// The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
 	EntityType string `pulumi:"entityType"`
-	// Required. Defines fill behavior for the parameter.
+	// Defines fill behavior for the parameter.
 	FillBehavior GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorResponse `pulumi:"fillBehavior"`
 	// Indicates whether the parameter represents a list of values.
 	IsList bool `pulumi:"isList"`
@@ -4354,11 +4263,11 @@ type GoogleCloudDialogflowCxV3beta1FormParameterResponseInput interface {
 type GoogleCloudDialogflowCxV3beta1FormParameterResponseArgs struct {
 	// The default value of an optional parameter. If the parameter is required, the default value will be ignored.
 	DefaultValue pulumi.Input `pulumi:"defaultValue"`
-	// Required. The human-readable name of the parameter, unique within the form.
+	// The human-readable name of the parameter, unique within the form.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+	// The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
 	EntityType pulumi.StringInput `pulumi:"entityType"`
-	// Required. Defines fill behavior for the parameter.
+	// Defines fill behavior for the parameter.
 	FillBehavior GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorResponseInput `pulumi:"fillBehavior"`
 	// Indicates whether the parameter represents a list of values.
 	IsList pulumi.BoolInput `pulumi:"isList"`
@@ -4425,17 +4334,17 @@ func (o GoogleCloudDialogflowCxV3beta1FormParameterResponseOutput) DefaultValue(
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1FormParameterResponse) interface{} { return v.DefaultValue }).(pulumi.AnyOutput)
 }
 
-// Required. The human-readable name of the parameter, unique within the form.
+// The human-readable name of the parameter, unique within the form.
 func (o GoogleCloudDialogflowCxV3beta1FormParameterResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1FormParameterResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+// The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
 func (o GoogleCloudDialogflowCxV3beta1FormParameterResponseOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1FormParameterResponse) string { return v.EntityType }).(pulumi.StringOutput)
 }
 
-// Required. Defines fill behavior for the parameter.
+// Defines fill behavior for the parameter.
 func (o GoogleCloudDialogflowCxV3beta1FormParameterResponseOutput) FillBehavior() GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorResponseOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1FormParameterResponse) GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorResponse {
 		return v.FillBehavior
@@ -6008,8 +5917,8 @@ func (o GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionResponseArray
 
 // Instructs the speech recognizer on how to process the audio content.
 type GoogleCloudDialogflowCxV3beta1InputAudioConfig struct {
-	// Required. Audio encoding of the audio content to process.
-	AudioEncoding *string `pulumi:"audioEncoding"`
+	// Audio encoding of the audio content to process.
+	AudioEncoding string `pulumi:"audioEncoding"`
 	// Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
 	EnableWordInfo *bool `pulumi:"enableWordInfo"`
 	// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
@@ -6037,8 +5946,8 @@ type GoogleCloudDialogflowCxV3beta1InputAudioConfigInput interface {
 
 // Instructs the speech recognizer on how to process the audio content.
 type GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs struct {
-	// Required. Audio encoding of the audio content to process.
-	AudioEncoding *GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding `pulumi:"audioEncoding"`
+	// Audio encoding of the audio content to process.
+	AudioEncoding GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding `pulumi:"audioEncoding"`
 	// Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
 	EnableWordInfo pulumi.BoolPtrInput `pulumi:"enableWordInfo"`
 	// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
@@ -6131,9 +6040,9 @@ func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigOutput) ToGoogleCloudDialo
 	}).(GoogleCloudDialogflowCxV3beta1InputAudioConfigPtrOutput)
 }
 
-// Required. Audio encoding of the audio content to process.
-func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigOutput) AudioEncoding() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1InputAudioConfig) *string { return v.AudioEncoding }).(pulumi.StringPtrOutput)
+// Audio encoding of the audio content to process.
+func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigOutput) AudioEncoding() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1InputAudioConfig) string { return v.AudioEncoding }).(pulumi.StringOutput)
 }
 
 // Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
@@ -6186,13 +6095,13 @@ func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigPtrOutput) Elem() GoogleCl
 	}).(GoogleCloudDialogflowCxV3beta1InputAudioConfigOutput)
 }
 
-// Required. Audio encoding of the audio content to process.
+// Audio encoding of the audio content to process.
 func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigPtrOutput) AudioEncoding() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1InputAudioConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.AudioEncoding
+		return &v.AudioEncoding
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6258,7 +6167,7 @@ func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigPtrOutput) SingleUtterance
 
 // Instructs the speech recognizer on how to process the audio content.
 type GoogleCloudDialogflowCxV3beta1InputAudioConfigResponse struct {
-	// Required. Audio encoding of the audio content to process.
+	// Audio encoding of the audio content to process.
 	AudioEncoding string `pulumi:"audioEncoding"`
 	// Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
 	EnableWordInfo bool `pulumi:"enableWordInfo"`
@@ -6287,7 +6196,7 @@ type GoogleCloudDialogflowCxV3beta1InputAudioConfigResponseInput interface {
 
 // Instructs the speech recognizer on how to process the audio content.
 type GoogleCloudDialogflowCxV3beta1InputAudioConfigResponseArgs struct {
-	// Required. Audio encoding of the audio content to process.
+	// Audio encoding of the audio content to process.
 	AudioEncoding pulumi.StringInput `pulumi:"audioEncoding"`
 	// Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
 	EnableWordInfo pulumi.BoolInput `pulumi:"enableWordInfo"`
@@ -6330,7 +6239,7 @@ func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigResponseOutput) ToGoogleCl
 	return o
 }
 
-// Required. Audio encoding of the audio content to process.
+// Audio encoding of the audio content to process.
 func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigResponseOutput) AudioEncoding() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1InputAudioConfigResponse) string { return v.AudioEncoding }).(pulumi.StringOutput)
 }
@@ -6369,8 +6278,8 @@ func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigResponseOutput) SingleUtte
 type GoogleCloudDialogflowCxV3beta1Intent struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description *string `pulumi:"description"`
-	// Required. The human-readable name of the intent, unique within the agent.
-	DisplayName *string `pulumi:"displayName"`
+	// The human-readable name of the intent, unique within the agent.
+	DisplayName string `pulumi:"displayName"`
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
 	IsFallback *bool `pulumi:"isFallback"`
 	// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
@@ -6400,8 +6309,8 @@ type GoogleCloudDialogflowCxV3beta1IntentInput interface {
 type GoogleCloudDialogflowCxV3beta1IntentArgs struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Required. The human-readable name of the intent, unique within the agent.
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The human-readable name of the intent, unique within the agent.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
 	IsFallback pulumi.BoolPtrInput `pulumi:"isFallback"`
 	// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
@@ -6499,9 +6408,9 @@ func (o GoogleCloudDialogflowCxV3beta1IntentOutput) Description() pulumi.StringP
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1Intent) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Required. The human-readable name of the intent, unique within the agent.
-func (o GoogleCloudDialogflowCxV3beta1IntentOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1Intent) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+// The human-readable name of the intent, unique within the agent.
+func (o GoogleCloudDialogflowCxV3beta1IntentOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1Intent) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
@@ -6566,13 +6475,13 @@ func (o GoogleCloudDialogflowCxV3beta1IntentPtrOutput) Description() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The human-readable name of the intent, unique within the agent.
+// The human-readable name of the intent, unique within the agent.
 func (o GoogleCloudDialogflowCxV3beta1IntentPtrOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1Intent) *string {
 		if v == nil {
 			return nil
 		}
-		return v.DisplayName
+		return &v.DisplayName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6638,8 +6547,8 @@ func (o GoogleCloudDialogflowCxV3beta1IntentPtrOutput) TrainingPhrases() GoogleC
 
 // Represents the intent to trigger programmatically rather than as a result of natural language processing.
 type GoogleCloudDialogflowCxV3beta1IntentInput struct {
-	// Required. The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
-	Intent *string `pulumi:"intent"`
+	// The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
+	Intent string `pulumi:"intent"`
 }
 
 // GoogleCloudDialogflowCxV3beta1IntentInputInput is an input type that accepts GoogleCloudDialogflowCxV3beta1IntentInputArgs and GoogleCloudDialogflowCxV3beta1IntentInputOutput values.
@@ -6655,8 +6564,8 @@ type GoogleCloudDialogflowCxV3beta1IntentInputInput interface {
 
 // Represents the intent to trigger programmatically rather than as a result of natural language processing.
 type GoogleCloudDialogflowCxV3beta1IntentInputArgs struct {
-	// Required. The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
-	Intent pulumi.StringPtrInput `pulumi:"intent"`
+	// The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
+	Intent pulumi.StringInput `pulumi:"intent"`
 }
 
 func (GoogleCloudDialogflowCxV3beta1IntentInputArgs) ElementType() reflect.Type {
@@ -6737,9 +6646,9 @@ func (o GoogleCloudDialogflowCxV3beta1IntentInputOutput) ToGoogleCloudDialogflow
 	}).(GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput)
 }
 
-// Required. The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
-func (o GoogleCloudDialogflowCxV3beta1IntentInputOutput) Intent() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentInput) *string { return v.Intent }).(pulumi.StringPtrOutput)
+// The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
+func (o GoogleCloudDialogflowCxV3beta1IntentInputOutput) Intent() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentInput) string { return v.Intent }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput struct{ *pulumi.OutputState }
@@ -6762,19 +6671,19 @@ func (o GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput) Elem() GoogleCloudDi
 	}).(GoogleCloudDialogflowCxV3beta1IntentInputOutput)
 }
 
-// Required. The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
+// The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
 func (o GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput) Intent() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1IntentInput) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Intent
+		return &v.Intent
 	}).(pulumi.StringPtrOutput)
 }
 
 // Represents the intent to trigger programmatically rather than as a result of natural language processing.
 type GoogleCloudDialogflowCxV3beta1IntentInputResponse struct {
-	// Required. The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
+	// The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
 	Intent string `pulumi:"intent"`
 }
 
@@ -6791,7 +6700,7 @@ type GoogleCloudDialogflowCxV3beta1IntentInputResponseInput interface {
 
 // Represents the intent to trigger programmatically rather than as a result of natural language processing.
 type GoogleCloudDialogflowCxV3beta1IntentInputResponseArgs struct {
-	// Required. The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
+	// The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
 	Intent pulumi.StringInput `pulumi:"intent"`
 }
 
@@ -6822,17 +6731,17 @@ func (o GoogleCloudDialogflowCxV3beta1IntentInputResponseOutput) ToGoogleCloudDi
 	return o
 }
 
-// Required. The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
+// The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
 func (o GoogleCloudDialogflowCxV3beta1IntentInputResponseOutput) Intent() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentInputResponse) string { return v.Intent }).(pulumi.StringOutput)
 }
 
 // Represents an intent parameter.
 type GoogleCloudDialogflowCxV3beta1IntentParameter struct {
-	// Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
-	EntityType *string `pulumi:"entityType"`
-	// Required. The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
-	Id *string `pulumi:"id"`
+	// The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+	EntityType string `pulumi:"entityType"`
+	// The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+	Id string `pulumi:"id"`
 	// Indicates whether the parameter represents a list of values.
 	IsList *bool `pulumi:"isList"`
 	// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
@@ -6852,10 +6761,10 @@ type GoogleCloudDialogflowCxV3beta1IntentParameterInput interface {
 
 // Represents an intent parameter.
 type GoogleCloudDialogflowCxV3beta1IntentParameterArgs struct {
-	// Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
-	EntityType pulumi.StringPtrInput `pulumi:"entityType"`
-	// Required. The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	// The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+	EntityType pulumi.StringInput `pulumi:"entityType"`
+	// The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+	Id pulumi.StringInput `pulumi:"id"`
 	// Indicates whether the parameter represents a list of values.
 	IsList pulumi.BoolPtrInput `pulumi:"isList"`
 	// Indicates whether the parameter content should be redacted in log. If redaction is enabled, the parameter content will be replaced by parameter name during logging. Note: the parameter content is subject to redaction if either parameter level redaction or entity type level redaction is enabled.
@@ -6914,14 +6823,14 @@ func (o GoogleCloudDialogflowCxV3beta1IntentParameterOutput) ToGoogleCloudDialog
 	return o
 }
 
-// Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
-func (o GoogleCloudDialogflowCxV3beta1IntentParameterOutput) EntityType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentParameter) *string { return v.EntityType }).(pulumi.StringPtrOutput)
+// The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+func (o GoogleCloudDialogflowCxV3beta1IntentParameterOutput) EntityType() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentParameter) string { return v.EntityType }).(pulumi.StringOutput)
 }
 
-// Required. The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
-func (o GoogleCloudDialogflowCxV3beta1IntentParameterOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentParameter) *string { return v.Id }).(pulumi.StringPtrOutput)
+// The unique identifier of the parameter. This field is used by training phrases to annotate their parts.
+func (o GoogleCloudDialogflowCxV3beta1IntentParameterOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentParameter) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // Indicates whether the parameter represents a list of values.
@@ -6956,7 +6865,7 @@ func (o GoogleCloudDialogflowCxV3beta1IntentParameterArrayOutput) Index(i pulumi
 
 // Represents an intent parameter.
 type GoogleCloudDialogflowCxV3beta1IntentParameterResponse struct {
-	// Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+	// The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
 	EntityType string `pulumi:"entityType"`
 	// Indicates whether the parameter represents a list of values.
 	IsList bool `pulumi:"isList"`
@@ -6977,7 +6886,7 @@ type GoogleCloudDialogflowCxV3beta1IntentParameterResponseInput interface {
 
 // Represents an intent parameter.
 type GoogleCloudDialogflowCxV3beta1IntentParameterResponseArgs struct {
-	// Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+	// The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
 	EntityType pulumi.StringInput `pulumi:"entityType"`
 	// Indicates whether the parameter represents a list of values.
 	IsList pulumi.BoolInput `pulumi:"isList"`
@@ -7037,7 +6946,7 @@ func (o GoogleCloudDialogflowCxV3beta1IntentParameterResponseOutput) ToGoogleClo
 	return o
 }
 
-// Required. The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
+// The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
 func (o GoogleCloudDialogflowCxV3beta1IntentParameterResponseOutput) EntityType() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentParameterResponse) string { return v.EntityType }).(pulumi.StringOutput)
 }
@@ -7076,7 +6985,7 @@ func (o GoogleCloudDialogflowCxV3beta1IntentParameterResponseArrayOutput) Index(
 type GoogleCloudDialogflowCxV3beta1IntentResponse struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description string `pulumi:"description"`
-	// Required. The human-readable name of the intent, unique within the agent.
+	// The human-readable name of the intent, unique within the agent.
 	DisplayName string `pulumi:"displayName"`
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
 	IsFallback bool `pulumi:"isFallback"`
@@ -7107,7 +7016,7 @@ type GoogleCloudDialogflowCxV3beta1IntentResponseInput interface {
 type GoogleCloudDialogflowCxV3beta1IntentResponseArgs struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Required. The human-readable name of the intent, unique within the agent.
+	// The human-readable name of the intent, unique within the agent.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
 	IsFallback pulumi.BoolInput `pulumi:"isFallback"`
@@ -7155,7 +7064,7 @@ func (o GoogleCloudDialogflowCxV3beta1IntentResponseOutput) Description() pulumi
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Required. The human-readable name of the intent, unique within the agent.
+// The human-readable name of the intent, unique within the agent.
 func (o GoogleCloudDialogflowCxV3beta1IntentResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -7196,7 +7105,7 @@ func (o GoogleCloudDialogflowCxV3beta1IntentResponseOutput) TrainingPhrases() Go
 
 // Represents an example that the agent is trained on to identify the intent.
 type GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase struct {
-	// Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
+	// The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
 	Parts []GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart `pulumi:"parts"`
 	// Indicates how many times this example was added to the intent.
 	RepeatCount *int `pulumi:"repeatCount"`
@@ -7215,7 +7124,7 @@ type GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseInput interface {
 
 // Represents an example that the agent is trained on to identify the intent.
 type GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseArgs struct {
-	// Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
+	// The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
 	Parts GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArrayInput `pulumi:"parts"`
 	// Indicates how many times this example was added to the intent.
 	RepeatCount pulumi.IntPtrInput `pulumi:"repeatCount"`
@@ -7273,7 +7182,7 @@ func (o GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseOutput) ToGoogleCloudD
 	return o
 }
 
-// Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
+// The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
 func (o GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseOutput) Parts() GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase) []GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart {
 		return v.Parts
@@ -7309,8 +7218,8 @@ func (o GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseArrayOutput) Index(i p
 type GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart struct {
 	// The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
 	ParameterId *string `pulumi:"parameterId"`
-	// Required. The text for this part.
-	Text *string `pulumi:"text"`
+	// The text for this part.
+	Text string `pulumi:"text"`
 }
 
 // GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartInput is an input type that accepts GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs and GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartOutput values.
@@ -7328,8 +7237,8 @@ type GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartInput interface {
 type GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs struct {
 	// The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
 	ParameterId pulumi.StringPtrInput `pulumi:"parameterId"`
-	// Required. The text for this part.
-	Text pulumi.StringPtrInput `pulumi:"text"`
+	// The text for this part.
+	Text pulumi.StringInput `pulumi:"text"`
 }
 
 func (GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs) ElementType() reflect.Type {
@@ -7389,9 +7298,9 @@ func (o GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartOutput) ParameterI
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart) *string { return v.ParameterId }).(pulumi.StringPtrOutput)
 }
 
-// Required. The text for this part.
-func (o GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartOutput) Text() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart) *string { return v.Text }).(pulumi.StringPtrOutput)
+// The text for this part.
+func (o GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart) string { return v.Text }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArrayOutput struct{ *pulumi.OutputState }
@@ -7418,7 +7327,7 @@ func (o GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArrayOutput) Index
 type GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponse struct {
 	// The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
 	ParameterId string `pulumi:"parameterId"`
-	// Required. The text for this part.
+	// The text for this part.
 	Text string `pulumi:"text"`
 }
 
@@ -7437,7 +7346,7 @@ type GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponseInput interfa
 type GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponseArgs struct {
 	// The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
 	ParameterId pulumi.StringInput `pulumi:"parameterId"`
-	// Required. The text for this part.
+	// The text for this part.
 	Text pulumi.StringInput `pulumi:"text"`
 }
 
@@ -7498,7 +7407,7 @@ func (o GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponseOutput) Pa
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponse) string { return v.ParameterId }).(pulumi.StringOutput)
 }
 
-// Required. The text for this part.
+// The text for this part.
 func (o GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponseOutput) Text() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponse) string { return v.Text }).(pulumi.StringOutput)
 }
@@ -7525,7 +7434,7 @@ func (o GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponseArrayOutpu
 
 // Represents an example that the agent is trained on to identify the intent.
 type GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponse struct {
-	// Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
+	// The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
 	Parts []GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponse `pulumi:"parts"`
 	// Indicates how many times this example was added to the intent.
 	RepeatCount int `pulumi:"repeatCount"`
@@ -7544,7 +7453,7 @@ type GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponseInput interface {
 
 // Represents an example that the agent is trained on to identify the intent.
 type GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponseArgs struct {
-	// Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
+	// The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
 	Parts GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponseArrayInput `pulumi:"parts"`
 	// Indicates how many times this example was added to the intent.
 	RepeatCount pulumi.IntInput `pulumi:"repeatCount"`
@@ -7602,7 +7511,7 @@ func (o GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponseOutput) ToGoog
 	return o
 }
 
-// Required. The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
+// The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `parameter_id` field is set.
 func (o GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponseOutput) Parts() GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1IntentTrainingPhraseResponse) []GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartResponse {
 		return v.Parts
@@ -7984,8 +7893,8 @@ func (o GoogleCloudDialogflowCxV3beta1NluSettingsResponsePtrOutput) ModelType() 
 
 // A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states of a CX session are represented by pages. For each flow, you define many pages, where your combined pages can handle a complete conversation on the topics the flow is designed for. At any given moment, exactly one page is the current page, the current page is considered active, and the flow associated with that page is considered active. Every flow has a special start page. When a flow initially becomes active, the start page page becomes the current page. For each conversational turn, the current page will either stay the same or transition to another page. You configure each page to collect information from the end-user that is relevant for the conversational state represented by the page. For more information, see the [Page guide](https://cloud.google.com/dialogflow/cx/docs/concept/page).
 type GoogleCloudDialogflowCxV3beta1Page struct {
-	// Required. The human-readable name of the page, unique within the agent.
-	DisplayName *string `pulumi:"displayName"`
+	// The human-readable name of the page, unique within the agent.
+	DisplayName string `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
 	EntryFulfillment *GoogleCloudDialogflowCxV3beta1Fulfillment `pulumi:"entryFulfillment"`
 	// Handlers associated with the page to handle events such as webhook errors, no match or no input.
@@ -8013,8 +7922,8 @@ type GoogleCloudDialogflowCxV3beta1PageInput interface {
 
 // A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states of a CX session are represented by pages. For each flow, you define many pages, where your combined pages can handle a complete conversation on the topics the flow is designed for. At any given moment, exactly one page is the current page, the current page is considered active, and the flow associated with that page is considered active. Every flow has a special start page. When a flow initially becomes active, the start page page becomes the current page. For each conversational turn, the current page will either stay the same or transition to another page. You configure each page to collect information from the end-user that is relevant for the conversational state represented by the page. For more information, see the [Page guide](https://cloud.google.com/dialogflow/cx/docs/concept/page).
 type GoogleCloudDialogflowCxV3beta1PageArgs struct {
-	// Required. The human-readable name of the page, unique within the agent.
-	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// The human-readable name of the page, unique within the agent.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
 	EntryFulfillment GoogleCloudDialogflowCxV3beta1FulfillmentPtrInput `pulumi:"entryFulfillment"`
 	// Handlers associated with the page to handle events such as webhook errors, no match or no input.
@@ -8107,9 +8016,9 @@ func (o GoogleCloudDialogflowCxV3beta1PageOutput) ToGoogleCloudDialogflowCxV3bet
 	}).(GoogleCloudDialogflowCxV3beta1PagePtrOutput)
 }
 
-// Required. The human-readable name of the page, unique within the agent.
-func (o GoogleCloudDialogflowCxV3beta1PageOutput) DisplayName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1Page) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+// The human-readable name of the page, unique within the agent.
+func (o GoogleCloudDialogflowCxV3beta1PageOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1Page) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // The fulfillment to call when the session is entering the page.
@@ -8166,13 +8075,13 @@ func (o GoogleCloudDialogflowCxV3beta1PagePtrOutput) Elem() GoogleCloudDialogflo
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1Page) GoogleCloudDialogflowCxV3beta1Page { return *v }).(GoogleCloudDialogflowCxV3beta1PageOutput)
 }
 
-// Required. The human-readable name of the page, unique within the agent.
+// The human-readable name of the page, unique within the agent.
 func (o GoogleCloudDialogflowCxV3beta1PagePtrOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1Page) *string {
 		if v == nil {
 			return nil
 		}
-		return v.DisplayName
+		return &v.DisplayName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8238,7 +8147,7 @@ func (o GoogleCloudDialogflowCxV3beta1PagePtrOutput) TransitionRoutes() GoogleCl
 
 // A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states of a CX session are represented by pages. For each flow, you define many pages, where your combined pages can handle a complete conversation on the topics the flow is designed for. At any given moment, exactly one page is the current page, the current page is considered active, and the flow associated with that page is considered active. Every flow has a special start page. When a flow initially becomes active, the start page page becomes the current page. For each conversational turn, the current page will either stay the same or transition to another page. You configure each page to collect information from the end-user that is relevant for the conversational state represented by the page. For more information, see the [Page guide](https://cloud.google.com/dialogflow/cx/docs/concept/page).
 type GoogleCloudDialogflowCxV3beta1PageResponse struct {
-	// Required. The human-readable name of the page, unique within the agent.
+	// The human-readable name of the page, unique within the agent.
 	DisplayName string `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
 	EntryFulfillment GoogleCloudDialogflowCxV3beta1FulfillmentResponse `pulumi:"entryFulfillment"`
@@ -8267,7 +8176,7 @@ type GoogleCloudDialogflowCxV3beta1PageResponseInput interface {
 
 // A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states of a CX session are represented by pages. For each flow, you define many pages, where your combined pages can handle a complete conversation on the topics the flow is designed for. At any given moment, exactly one page is the current page, the current page is considered active, and the flow associated with that page is considered active. Every flow has a special start page. When a flow initially becomes active, the start page page becomes the current page. For each conversational turn, the current page will either stay the same or transition to another page. You configure each page to collect information from the end-user that is relevant for the conversational state represented by the page. For more information, see the [Page guide](https://cloud.google.com/dialogflow/cx/docs/concept/page).
 type GoogleCloudDialogflowCxV3beta1PageResponseArgs struct {
-	// Required. The human-readable name of the page, unique within the agent.
+	// The human-readable name of the page, unique within the agent.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
 	EntryFulfillment GoogleCloudDialogflowCxV3beta1FulfillmentResponseInput `pulumi:"entryFulfillment"`
@@ -8310,7 +8219,7 @@ func (o GoogleCloudDialogflowCxV3beta1PageResponseOutput) ToGoogleCloudDialogflo
 	return o
 }
 
-// Required. The human-readable name of the page, unique within the agent.
+// The human-readable name of the page, unique within the agent.
 func (o GoogleCloudDialogflowCxV3beta1PageResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1PageResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -8363,8 +8272,8 @@ type GoogleCloudDialogflowCxV3beta1QueryInput struct {
 	Event *GoogleCloudDialogflowCxV3beta1EventInput `pulumi:"event"`
 	// The intent to be triggered.
 	Intent *GoogleCloudDialogflowCxV3beta1IntentInput `pulumi:"intent"`
-	// Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
-	LanguageCode *string `pulumi:"languageCode"`
+	// The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
+	LanguageCode string `pulumi:"languageCode"`
 	// The natural language text to be processed.
 	Text *GoogleCloudDialogflowCxV3beta1TextInput `pulumi:"text"`
 }
@@ -8390,8 +8299,8 @@ type GoogleCloudDialogflowCxV3beta1QueryInputArgs struct {
 	Event GoogleCloudDialogflowCxV3beta1EventInputPtrInput `pulumi:"event"`
 	// The intent to be triggered.
 	Intent GoogleCloudDialogflowCxV3beta1IntentInputPtrInput `pulumi:"intent"`
-	// Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
-	LanguageCode pulumi.StringPtrInput `pulumi:"languageCode"`
+	// The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
+	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
 	// The natural language text to be processed.
 	Text GoogleCloudDialogflowCxV3beta1TextInputPtrInput `pulumi:"text"`
 }
@@ -8502,9 +8411,9 @@ func (o GoogleCloudDialogflowCxV3beta1QueryInputOutput) Intent() GoogleCloudDial
 	}).(GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput)
 }
 
-// Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
-func (o GoogleCloudDialogflowCxV3beta1QueryInputOutput) LanguageCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1QueryInput) *string { return v.LanguageCode }).(pulumi.StringPtrOutput)
+// The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
+func (o GoogleCloudDialogflowCxV3beta1QueryInputOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1QueryInput) string { return v.LanguageCode }).(pulumi.StringOutput)
 }
 
 // The natural language text to be processed.
@@ -8572,13 +8481,13 @@ func (o GoogleCloudDialogflowCxV3beta1QueryInputPtrOutput) Intent() GoogleCloudD
 	}).(GoogleCloudDialogflowCxV3beta1IntentInputPtrOutput)
 }
 
-// Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
+// The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
 func (o GoogleCloudDialogflowCxV3beta1QueryInputPtrOutput) LanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1QueryInput) *string {
 		if v == nil {
 			return nil
 		}
-		return v.LanguageCode
+		return &v.LanguageCode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8602,7 +8511,7 @@ type GoogleCloudDialogflowCxV3beta1QueryInputResponse struct {
 	Event GoogleCloudDialogflowCxV3beta1EventInputResponse `pulumi:"event"`
 	// The intent to be triggered.
 	Intent GoogleCloudDialogflowCxV3beta1IntentInputResponse `pulumi:"intent"`
-	// Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
+	// The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
 	LanguageCode string `pulumi:"languageCode"`
 	// The natural language text to be processed.
 	Text GoogleCloudDialogflowCxV3beta1TextInputResponse `pulumi:"text"`
@@ -8629,7 +8538,7 @@ type GoogleCloudDialogflowCxV3beta1QueryInputResponseArgs struct {
 	Event GoogleCloudDialogflowCxV3beta1EventInputResponseInput `pulumi:"event"`
 	// The intent to be triggered.
 	Intent GoogleCloudDialogflowCxV3beta1IntentInputResponseInput `pulumi:"intent"`
-	// Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
+	// The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
 	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
 	// The natural language text to be processed.
 	Text GoogleCloudDialogflowCxV3beta1TextInputResponseInput `pulumi:"text"`
@@ -8690,7 +8599,7 @@ func (o GoogleCloudDialogflowCxV3beta1QueryInputResponseOutput) Intent() GoogleC
 	}).(GoogleCloudDialogflowCxV3beta1IntentInputResponseOutput)
 }
 
-// Required. The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
+// The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
 func (o GoogleCloudDialogflowCxV3beta1QueryInputResponseOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1QueryInputResponse) string { return v.LanguageCode }).(pulumi.StringOutput)
 }
@@ -9833,8 +9742,8 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioTextResponseOutp
 
 // Specifies an audio clip to be played by the client as part of the response.
 type GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio struct {
-	// Required. URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
-	AudioUri *string `pulumi:"audioUri"`
+	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+	AudioUri string `pulumi:"audioUri"`
 }
 
 // GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioInput is an input type that accepts GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioArgs and GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioOutput values.
@@ -9850,8 +9759,8 @@ type GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioInput interface {
 
 // Specifies an audio clip to be played by the client as part of the response.
 type GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioArgs struct {
-	// Required. URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
-	AudioUri pulumi.StringPtrInput `pulumi:"audioUri"`
+	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+	AudioUri pulumi.StringInput `pulumi:"audioUri"`
 }
 
 func (GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioArgs) ElementType() reflect.Type {
@@ -9932,9 +9841,9 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioOutput) ToGoogleCl
 	}).(GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioPtrOutput)
 }
 
-// Required. URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
-func (o GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioOutput) AudioUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio) *string { return v.AudioUri }).(pulumi.StringPtrOutput)
+// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+func (o GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioOutput) AudioUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio) string { return v.AudioUri }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioPtrOutput struct{ *pulumi.OutputState }
@@ -9957,13 +9866,13 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioPtrOutput) Elem() 
 	}).(GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioOutput)
 }
 
-// Required. URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 func (o GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioPtrOutput) AudioUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio) *string {
 		if v == nil {
 			return nil
 		}
-		return v.AudioUri
+		return &v.AudioUri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -9971,7 +9880,7 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioPtrOutput) AudioUr
 type GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse struct {
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption bool `pulumi:"allowPlaybackInterruption"`
-	// Required. URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri string `pulumi:"audioUri"`
 }
 
@@ -9990,7 +9899,7 @@ type GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponseInput interfa
 type GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponseArgs struct {
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption pulumi.BoolInput `pulumi:"allowPlaybackInterruption"`
-	// Required. URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+	// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 	AudioUri pulumi.StringInput `pulumi:"audioUri"`
 }
 
@@ -10028,7 +9937,7 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponseOutput) Al
 	}).(pulumi.BoolOutput)
 }
 
-// Required. URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
+// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
 func (o GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponseOutput) AudioUri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse) string { return v.AudioUri }).(pulumi.StringOutput)
 }
@@ -10212,7 +10121,7 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessageResponseArrayOutput) Index(
 
 // The text response message.
 type GoogleCloudDialogflowCxV3beta1ResponseMessageText struct {
-	// Required. A collection of text responses.
+	// A collection of text responses.
 	Text []string `pulumi:"text"`
 }
 
@@ -10229,7 +10138,7 @@ type GoogleCloudDialogflowCxV3beta1ResponseMessageTextInput interface {
 
 // The text response message.
 type GoogleCloudDialogflowCxV3beta1ResponseMessageTextArgs struct {
-	// Required. A collection of text responses.
+	// A collection of text responses.
 	Text pulumi.StringArrayInput `pulumi:"text"`
 }
 
@@ -10336,7 +10245,7 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessageTextOutput) ToGoogleCloudDi
 	}).(GoogleCloudDialogflowCxV3beta1ResponseMessageTextPtrOutput)
 }
 
-// Required. A collection of text responses.
+// A collection of text responses.
 func (o GoogleCloudDialogflowCxV3beta1ResponseMessageTextOutput) Text() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ResponseMessageText) []string { return v.Text }).(pulumi.StringArrayOutput)
 }
@@ -10361,7 +10270,7 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessageTextPtrOutput) Elem() Googl
 	}).(GoogleCloudDialogflowCxV3beta1ResponseMessageTextOutput)
 }
 
-// Required. A collection of text responses.
+// A collection of text responses.
 func (o GoogleCloudDialogflowCxV3beta1ResponseMessageTextPtrOutput) Text() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ResponseMessageText) []string {
 		if v == nil {
@@ -10395,7 +10304,7 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessageTextArrayOutput) Index(i pu
 type GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse struct {
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption bool `pulumi:"allowPlaybackInterruption"`
-	// Required. A collection of text responses.
+	// A collection of text responses.
 	Text []string `pulumi:"text"`
 }
 
@@ -10414,7 +10323,7 @@ type GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponseInput interface {
 type GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponseArgs struct {
 	// Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
 	AllowPlaybackInterruption pulumi.BoolInput `pulumi:"allowPlaybackInterruption"`
-	// Required. A collection of text responses.
+	// A collection of text responses.
 	Text pulumi.StringArrayInput `pulumi:"text"`
 }
 
@@ -10477,7 +10386,7 @@ func (o GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponseOutput) AllowPl
 	}).(pulumi.BoolOutput)
 }
 
-// Required. A collection of text responses.
+// A collection of text responses.
 func (o GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponseOutput) Text() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ResponseMessageTextResponse) []string { return v.Text }).(pulumi.StringArrayOutput)
 }
@@ -11623,8 +11532,8 @@ func (o GoogleCloudDialogflowCxV3beta1TestRunDifferenceResponseArrayOutput) Inde
 
 // Represents the natural language text to be processed.
 type GoogleCloudDialogflowCxV3beta1TextInput struct {
-	// Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
-	Text *string `pulumi:"text"`
+	// The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
+	Text string `pulumi:"text"`
 }
 
 // GoogleCloudDialogflowCxV3beta1TextInputInput is an input type that accepts GoogleCloudDialogflowCxV3beta1TextInputArgs and GoogleCloudDialogflowCxV3beta1TextInputOutput values.
@@ -11640,8 +11549,8 @@ type GoogleCloudDialogflowCxV3beta1TextInputInput interface {
 
 // Represents the natural language text to be processed.
 type GoogleCloudDialogflowCxV3beta1TextInputArgs struct {
-	// Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
-	Text pulumi.StringPtrInput `pulumi:"text"`
+	// The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
+	Text pulumi.StringInput `pulumi:"text"`
 }
 
 func (GoogleCloudDialogflowCxV3beta1TextInputArgs) ElementType() reflect.Type {
@@ -11722,9 +11631,9 @@ func (o GoogleCloudDialogflowCxV3beta1TextInputOutput) ToGoogleCloudDialogflowCx
 	}).(GoogleCloudDialogflowCxV3beta1TextInputPtrOutput)
 }
 
-// Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
-func (o GoogleCloudDialogflowCxV3beta1TextInputOutput) Text() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1TextInput) *string { return v.Text }).(pulumi.StringPtrOutput)
+// The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
+func (o GoogleCloudDialogflowCxV3beta1TextInputOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1TextInput) string { return v.Text }).(pulumi.StringOutput)
 }
 
 type GoogleCloudDialogflowCxV3beta1TextInputPtrOutput struct{ *pulumi.OutputState }
@@ -11745,19 +11654,19 @@ func (o GoogleCloudDialogflowCxV3beta1TextInputPtrOutput) Elem() GoogleCloudDial
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1TextInput) GoogleCloudDialogflowCxV3beta1TextInput { return *v }).(GoogleCloudDialogflowCxV3beta1TextInputOutput)
 }
 
-// Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
+// The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
 func (o GoogleCloudDialogflowCxV3beta1TextInputPtrOutput) Text() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1TextInput) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Text
+		return &v.Text
 	}).(pulumi.StringPtrOutput)
 }
 
 // Represents the natural language text to be processed.
 type GoogleCloudDialogflowCxV3beta1TextInputResponse struct {
-	// Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
+	// The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
 	Text string `pulumi:"text"`
 }
 
@@ -11774,7 +11683,7 @@ type GoogleCloudDialogflowCxV3beta1TextInputResponseInput interface {
 
 // Represents the natural language text to be processed.
 type GoogleCloudDialogflowCxV3beta1TextInputResponseArgs struct {
-	// Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
+	// The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
 	Text pulumi.StringInput `pulumi:"text"`
 }
 
@@ -11805,7 +11714,7 @@ func (o GoogleCloudDialogflowCxV3beta1TextInputResponseOutput) ToGoogleCloudDial
 	return o
 }
 
-// Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
+// The UTF-8 encoded natural language text to be processed. Text length must not exceed 256 characters.
 func (o GoogleCloudDialogflowCxV3beta1TextInputResponseOutput) Text() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1TextInputResponse) string { return v.Text }).(pulumi.StringOutput)
 }
@@ -12837,8 +12746,8 @@ type GoogleCloudDialogflowCxV3beta1WebhookGenericWebService struct {
 	Password *string `pulumi:"password"`
 	// The HTTP request headers to send together with webhook requests.
 	RequestHeaders map[string]string `pulumi:"requestHeaders"`
-	// Required. The webhook URI for receiving POST requests. It must use https protocol.
-	Uri *string `pulumi:"uri"`
+	// The webhook URI for receiving POST requests. It must use https protocol.
+	Uri string `pulumi:"uri"`
 	// The user name for HTTP Basic authentication.
 	Username *string `pulumi:"username"`
 }
@@ -12860,8 +12769,8 @@ type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceArgs struct {
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// The HTTP request headers to send together with webhook requests.
 	RequestHeaders pulumi.StringMapInput `pulumi:"requestHeaders"`
-	// Required. The webhook URI for receiving POST requests. It must use https protocol.
-	Uri pulumi.StringPtrInput `pulumi:"uri"`
+	// The webhook URI for receiving POST requests. It must use https protocol.
+	Uri pulumi.StringInput `pulumi:"uri"`
 	// The user name for HTTP Basic authentication.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
@@ -12956,9 +12865,9 @@ func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOutput) RequestHea
 	}).(pulumi.StringMapOutput)
 }
 
-// Required. The webhook URI for receiving POST requests. It must use https protocol.
-func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1WebhookGenericWebService) *string { return v.Uri }).(pulumi.StringPtrOutput)
+// The webhook URI for receiving POST requests. It must use https protocol.
+func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1WebhookGenericWebService) string { return v.Uri }).(pulumi.StringOutput)
 }
 
 // The user name for HTTP Basic authentication.
@@ -13006,13 +12915,13 @@ func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServicePtrOutput) Request
 	}).(pulumi.StringMapOutput)
 }
 
-// Required. The webhook URI for receiving POST requests. It must use https protocol.
+// The webhook URI for receiving POST requests. It must use https protocol.
 func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServicePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1WebhookGenericWebService) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Uri
+		return &v.Uri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13032,7 +12941,7 @@ type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse struct {
 	Password string `pulumi:"password"`
 	// The HTTP request headers to send together with webhook requests.
 	RequestHeaders map[string]string `pulumi:"requestHeaders"`
-	// Required. The webhook URI for receiving POST requests. It must use https protocol.
+	// The webhook URI for receiving POST requests. It must use https protocol.
 	Uri string `pulumi:"uri"`
 	// The user name for HTTP Basic authentication.
 	Username string `pulumi:"username"`
@@ -13055,7 +12964,7 @@ type GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponseArgs struct {
 	Password pulumi.StringInput `pulumi:"password"`
 	// The HTTP request headers to send together with webhook requests.
 	RequestHeaders pulumi.StringMapInput `pulumi:"requestHeaders"`
-	// Required. The webhook URI for receiving POST requests. It must use https protocol.
+	// The webhook URI for receiving POST requests. It must use https protocol.
 	Uri pulumi.StringInput `pulumi:"uri"`
 	// The user name for HTTP Basic authentication.
 	Username pulumi.StringInput `pulumi:"username"`
@@ -13151,7 +13060,7 @@ func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponseOutput) Re
 	}).(pulumi.StringMapOutput)
 }
 
-// Required. The webhook URI for receiving POST requests. It must use https protocol.
+// The webhook URI for receiving POST requests. It must use https protocol.
 func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -13201,7 +13110,7 @@ func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponsePtrOutput)
 	}).(pulumi.StringMapOutput)
 }
 
-// Required. The webhook URI for receiving POST requests. It must use https protocol.
+// The webhook URI for receiving POST requests. It must use https protocol.
 func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponsePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse) *string {
 		if v == nil {
@@ -13526,7 +13435,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1FormParameterOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1FormParameterArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1FormParameterFillBehaviorResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1FormParameterResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1FormParameterResponseArrayOutput{})

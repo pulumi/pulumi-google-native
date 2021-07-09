@@ -28,7 +28,7 @@ type LookupConversationProfileResult struct {
 	AutomatedAgentConfig GoogleCloudDialogflowV2beta1AutomatedAgentConfigResponse `pulumi:"automatedAgentConfig"`
 	// Create time of the conversation profile.
 	CreateTime string `pulumi:"createTime"`
-	// Required. Human readable name for this profile. Max length 1024 bytes.
+	// Human readable name for this profile. Max length 1024 bytes.
 	DisplayName string `pulumi:"displayName"`
 	// Configuration for agent assistance to use with this profile.
 	HumanAgentAssistantConfig GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigResponse `pulumi:"humanAgentAssistantConfig"`

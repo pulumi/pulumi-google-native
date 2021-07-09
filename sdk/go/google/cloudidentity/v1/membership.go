@@ -19,7 +19,7 @@ type Membership struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. Immutable. The `EntityKey` of the member.
+	// Immutable. The `EntityKey` of the member.
 	PreferredMemberKey EntityKeyResponseOutput `pulumi:"preferredMemberKey"`
 	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
 	Roles MembershipRoleResponseArrayOutput `pulumi:"roles"`
@@ -38,6 +38,9 @@ func NewMembership(ctx *pulumi.Context,
 
 	if args.GroupId == nil {
 		return nil, errors.New("invalid value for required argument 'GroupId'")
+	}
+	if args.PreferredMemberKey == nil {
+		return nil, errors.New("invalid value for required argument 'PreferredMemberKey'")
 	}
 	var resource Membership
 	err := ctx.RegisterResource("google-native:cloudidentity/v1:Membership", name, args, &resource, opts...)
@@ -65,7 +68,7 @@ type membershipState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
 	Name *string `pulumi:"name"`
-	// Required. Immutable. The `EntityKey` of the member.
+	// Immutable. The `EntityKey` of the member.
 	PreferredMemberKey *EntityKeyResponse `pulumi:"preferredMemberKey"`
 	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
 	Roles []MembershipRoleResponse `pulumi:"roles"`
@@ -80,7 +83,7 @@ type MembershipState struct {
 	CreateTime pulumi.StringPtrInput
 	// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
 	Name pulumi.StringPtrInput
-	// Required. Immutable. The `EntityKey` of the member.
+	// Immutable. The `EntityKey` of the member.
 	PreferredMemberKey EntityKeyResponsePtrInput
 	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
 	Roles MembershipRoleResponseArrayInput
@@ -96,8 +99,8 @@ func (MembershipState) ElementType() reflect.Type {
 
 type membershipArgs struct {
 	GroupId string `pulumi:"groupId"`
-	// Required. Immutable. The `EntityKey` of the member.
-	PreferredMemberKey *EntityKey `pulumi:"preferredMemberKey"`
+	// Immutable. The `EntityKey` of the member.
+	PreferredMemberKey EntityKey `pulumi:"preferredMemberKey"`
 	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
 	Roles []MembershipRole `pulumi:"roles"`
 }
@@ -105,8 +108,8 @@ type membershipArgs struct {
 // The set of arguments for constructing a Membership resource.
 type MembershipArgs struct {
 	GroupId pulumi.StringInput
-	// Required. Immutable. The `EntityKey` of the member.
-	PreferredMemberKey EntityKeyPtrInput
+	// Immutable. The `EntityKey` of the member.
+	PreferredMemberKey EntityKeyInput
 	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
 	Roles MembershipRoleArrayInput
 }

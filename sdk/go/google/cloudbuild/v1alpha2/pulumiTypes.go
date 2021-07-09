@@ -12,8 +12,8 @@ import (
 
 // Network describes the network configuration for a `WorkerPool`.
 type NetworkConfig struct {
-	// Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
-	PeeredNetwork *string `pulumi:"peeredNetwork"`
+	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
+	PeeredNetwork string `pulumi:"peeredNetwork"`
 }
 
 // NetworkConfigInput is an input type that accepts NetworkConfigArgs and NetworkConfigOutput values.
@@ -29,8 +29,8 @@ type NetworkConfigInput interface {
 
 // Network describes the network configuration for a `WorkerPool`.
 type NetworkConfigArgs struct {
-	// Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
-	PeeredNetwork pulumi.StringPtrInput `pulumi:"peeredNetwork"`
+	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
+	PeeredNetwork pulumi.StringInput `pulumi:"peeredNetwork"`
 }
 
 func (NetworkConfigArgs) ElementType() reflect.Type {
@@ -111,9 +111,9 @@ func (o NetworkConfigOutput) ToNetworkConfigPtrOutputWithContext(ctx context.Con
 	}).(NetworkConfigPtrOutput)
 }
 
-// Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
-func (o NetworkConfigOutput) PeeredNetwork() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkConfig) *string { return v.PeeredNetwork }).(pulumi.StringPtrOutput)
+// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
+func (o NetworkConfigOutput) PeeredNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkConfig) string { return v.PeeredNetwork }).(pulumi.StringOutput)
 }
 
 type NetworkConfigPtrOutput struct{ *pulumi.OutputState }
@@ -134,19 +134,19 @@ func (o NetworkConfigPtrOutput) Elem() NetworkConfigOutput {
 	return o.ApplyT(func(v *NetworkConfig) NetworkConfig { return *v }).(NetworkConfigOutput)
 }
 
-// Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
+// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
 func (o NetworkConfigPtrOutput) PeeredNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.PeeredNetwork
+		return &v.PeeredNetwork
 	}).(pulumi.StringPtrOutput)
 }
 
 // Network describes the network configuration for a `WorkerPool`.
 type NetworkConfigResponse struct {
-	// Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
+	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
 	PeeredNetwork string `pulumi:"peeredNetwork"`
 }
 
@@ -163,7 +163,7 @@ type NetworkConfigResponseInput interface {
 
 // Network describes the network configuration for a `WorkerPool`.
 type NetworkConfigResponseArgs struct {
-	// Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
+	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
 	PeeredNetwork pulumi.StringInput `pulumi:"peeredNetwork"`
 }
 
@@ -245,7 +245,7 @@ func (o NetworkConfigResponseOutput) ToNetworkConfigResponsePtrOutputWithContext
 	}).(NetworkConfigResponsePtrOutput)
 }
 
-// Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
+// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
 func (o NetworkConfigResponseOutput) PeeredNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkConfigResponse) string { return v.PeeredNetwork }).(pulumi.StringOutput)
 }
@@ -268,7 +268,7 @@ func (o NetworkConfigResponsePtrOutput) Elem() NetworkConfigResponseOutput {
 	return o.ApplyT(func(v *NetworkConfigResponse) NetworkConfigResponse { return *v }).(NetworkConfigResponseOutput)
 }
 
-// Required. Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
+// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to WorkerPool.project_id on the default network. Must be in the format `projects/{project}/global/networks/{network}`, where {project} is a project number, such as `12345`, and {network} is the name of a VPC network in the project.
 func (o NetworkConfigResponsePtrOutput) PeeredNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkConfigResponse) *string {
 		if v == nil {

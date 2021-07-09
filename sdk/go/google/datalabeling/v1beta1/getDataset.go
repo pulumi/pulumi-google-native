@@ -31,7 +31,7 @@ type LookupDatasetResult struct {
 	DataItemCount string `pulumi:"dataItemCount"`
 	// Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
 	Description string `pulumi:"description"`
-	// Required. The display name of the dataset. Maximum of 64 characters.
+	// The display name of the dataset. Maximum of 64 characters.
 	DisplayName string `pulumi:"displayName"`
 	// This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
 	InputConfigs []GoogleCloudDatalabelingV1beta1InputConfigResponse `pulumi:"inputConfigs"`

@@ -3039,8 +3039,8 @@ type GoogleTypePostalAddress struct {
 	PostalCode *string `pulumi:"postalCode"`
 	// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
 	Recipients []string `pulumi:"recipients"`
-	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
-	RegionCode *string `pulumi:"regionCode"`
+	// CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+	RegionCode string `pulumi:"regionCode"`
 	// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
 	Revision *int `pulumi:"revision"`
 	// Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
@@ -3076,8 +3076,8 @@ type GoogleTypePostalAddressArgs struct {
 	PostalCode pulumi.StringPtrInput `pulumi:"postalCode"`
 	// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
 	Recipients pulumi.StringArrayInput `pulumi:"recipients"`
-	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
-	RegionCode pulumi.StringPtrInput `pulumi:"regionCode"`
+	// CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+	RegionCode pulumi.StringInput `pulumi:"regionCode"`
 	// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
 	Revision pulumi.IntPtrInput `pulumi:"revision"`
 	// Optional. Additional, country-specific, sorting code. This is not used in most regions. Where it is used, the value is either a string like "CEDEX", optionally followed by a number (e.g. "CEDEX 7"), or just a number alone, representing the "sector code" (Jamaica), "delivery area indicator" (Malawi) or "post office indicator" (e.g. Côte d'Ivoire).
@@ -3199,9 +3199,9 @@ func (o GoogleTypePostalAddressOutput) Recipients() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleTypePostalAddress) []string { return v.Recipients }).(pulumi.StringArrayOutput)
 }
 
-// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
-func (o GoogleTypePostalAddressOutput) RegionCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleTypePostalAddress) *string { return v.RegionCode }).(pulumi.StringPtrOutput)
+// CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+func (o GoogleTypePostalAddressOutput) RegionCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleTypePostalAddress) string { return v.RegionCode }).(pulumi.StringOutput)
 }
 
 // The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
@@ -3307,13 +3307,13 @@ func (o GoogleTypePostalAddressPtrOutput) Recipients() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+// CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
 func (o GoogleTypePostalAddressPtrOutput) RegionCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleTypePostalAddress) *string {
 		if v == nil {
 			return nil
 		}
-		return v.RegionCode
+		return &v.RegionCode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3363,7 +3363,7 @@ type GoogleTypePostalAddressResponse struct {
 	PostalCode string `pulumi:"postalCode"`
 	// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
 	Recipients []string `pulumi:"recipients"`
-	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+	// CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
 	RegionCode string `pulumi:"regionCode"`
 	// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
 	Revision int `pulumi:"revision"`
@@ -3400,7 +3400,7 @@ type GoogleTypePostalAddressResponseArgs struct {
 	PostalCode pulumi.StringInput `pulumi:"postalCode"`
 	// Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information.
 	Recipients pulumi.StringArrayInput `pulumi:"recipients"`
-	// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+	// CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
 	RegionCode pulumi.StringInput `pulumi:"regionCode"`
 	// The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions.
 	Revision pulumi.IntInput `pulumi:"revision"`
@@ -3523,7 +3523,7 @@ func (o GoogleTypePostalAddressResponseOutput) Recipients() pulumi.StringArrayOu
 	return o.ApplyT(func(v GoogleTypePostalAddressResponse) []string { return v.Recipients }).(pulumi.StringArrayOutput)
 }
 
-// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+// CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
 func (o GoogleTypePostalAddressResponseOutput) RegionCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleTypePostalAddressResponse) string { return v.RegionCode }).(pulumi.StringOutput)
 }
@@ -3631,7 +3631,7 @@ func (o GoogleTypePostalAddressResponsePtrOutput) Recipients() pulumi.StringArra
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+// CLDR region code of the country/region of the address. This is never inferred and it is up to the user to ensure the value is correct. See http://cldr.unicode.org/ and http://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
 func (o GoogleTypePostalAddressResponsePtrOutput) RegionCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleTypePostalAddressResponse) *string {
 		if v == nil {

@@ -24,13 +24,13 @@ type LookupWorkloadArgs struct {
 }
 
 type LookupWorkloadResult struct {
-	// Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+	// Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
 	BillingAccount string `pulumi:"billingAccount"`
-	// Required. Immutable. Compliance Regime associated with this workload.
+	// Immutable. Compliance Regime associated with this workload.
 	ComplianceRegime string `pulumi:"complianceRegime"`
 	// Immutable. The Workload creation timestamp.
 	CreateTime string `pulumi:"createTime"`
-	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+	// The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName string `pulumi:"displayName"`
 	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
 	Etag string `pulumi:"etag"`

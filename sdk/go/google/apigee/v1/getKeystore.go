@@ -26,6 +26,6 @@ type LookupKeystoreArgs struct {
 type LookupKeystoreResult struct {
 	// Aliases in this keystore.
 	Aliases []string `pulumi:"aliases"`
-	// Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+	// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
 	Name string `pulumi:"name"`
 }

@@ -28,13 +28,13 @@ type LookupGlossaryResult struct {
 	EndTime string `pulumi:"endTime"`
 	// The number of entries defined in the glossary.
 	EntryCount int `pulumi:"entryCount"`
-	// Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
+	// Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
 	InputConfig GlossaryInputConfigResponse `pulumi:"inputConfig"`
 	// Used with equivalent term set glossaries.
 	LanguageCodesSet LanguageCodesSetResponse `pulumi:"languageCodesSet"`
 	// Used with unidirectional glossaries.
 	LanguagePair LanguageCodePairResponse `pulumi:"languagePair"`
-	// Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
+	// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
 	Name string `pulumi:"name"`
 	// When CreateGlossary was called.
 	SubmitTime string `pulumi:"submitTime"`

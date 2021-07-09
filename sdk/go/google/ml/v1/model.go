@@ -23,7 +23,7 @@ type Model struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Optional. One or more labels that you can add, to organize your models. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Required. The name specified for the model when it was created. The model name must be unique within the project it is created in.
+	// The name specified for the model when it was created. The model name must be unique within the project it is created in.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. If true, online prediction nodes send `stderr` and `stdout` streams to Cloud Logging. These can be more verbose than the standard access logs (see `onlinePredictionLogging`) and can incur higher cost. However, they are helpful for debugging. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high QPS. Estimate your costs before enabling this option. Default is false.
 	OnlinePredictionConsoleLogging pulumi.BoolOutput `pulumi:"onlinePredictionConsoleLogging"`
@@ -40,6 +40,9 @@ func NewModel(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -73,7 +76,7 @@ type modelState struct {
 	Etag *string `pulumi:"etag"`
 	// Optional. One or more labels that you can add, to organize your models. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. The name specified for the model when it was created. The model name must be unique within the project it is created in.
+	// The name specified for the model when it was created. The model name must be unique within the project it is created in.
 	Name *string `pulumi:"name"`
 	// Optional. If true, online prediction nodes send `stderr` and `stdout` streams to Cloud Logging. These can be more verbose than the standard access logs (see `onlinePredictionLogging`) and can incur higher cost. However, they are helpful for debugging. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high QPS. Estimate your costs before enabling this option. Default is false.
 	OnlinePredictionConsoleLogging *bool `pulumi:"onlinePredictionConsoleLogging"`
@@ -92,7 +95,7 @@ type ModelState struct {
 	Etag pulumi.StringPtrInput
 	// Optional. One or more labels that you can add, to organize your models. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
 	Labels pulumi.StringMapInput
-	// Required. The name specified for the model when it was created. The model name must be unique within the project it is created in.
+	// The name specified for the model when it was created. The model name must be unique within the project it is created in.
 	Name pulumi.StringPtrInput
 	// Optional. If true, online prediction nodes send `stderr` and `stdout` streams to Cloud Logging. These can be more verbose than the standard access logs (see `onlinePredictionLogging`) and can incur higher cost. However, they are helpful for debugging. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high QPS. Estimate your costs before enabling this option. Default is false.
 	OnlinePredictionConsoleLogging pulumi.BoolPtrInput
@@ -113,8 +116,8 @@ type modelArgs struct {
 	Etag *string `pulumi:"etag"`
 	// Optional. One or more labels that you can add, to organize your models. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. The name specified for the model when it was created. The model name must be unique within the project it is created in.
-	Name *string `pulumi:"name"`
+	// The name specified for the model when it was created. The model name must be unique within the project it is created in.
+	Name string `pulumi:"name"`
 	// Optional. If true, online prediction nodes send `stderr` and `stdout` streams to Cloud Logging. These can be more verbose than the standard access logs (see `onlinePredictionLogging`) and can incur higher cost. However, they are helpful for debugging. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high QPS. Estimate your costs before enabling this option. Default is false.
 	OnlinePredictionConsoleLogging *bool `pulumi:"onlinePredictionConsoleLogging"`
 	// Optional. If true, online prediction access logs are sent to Cloud Logging. These logs are like standard server access logs, containing information like timestamp and latency for each request. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option. Default is false.
@@ -132,8 +135,8 @@ type ModelArgs struct {
 	Etag pulumi.StringPtrInput
 	// Optional. One or more labels that you can add, to organize your models. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
 	Labels pulumi.StringMapInput
-	// Required. The name specified for the model when it was created. The model name must be unique within the project it is created in.
-	Name pulumi.StringPtrInput
+	// The name specified for the model when it was created. The model name must be unique within the project it is created in.
+	Name pulumi.StringInput
 	// Optional. If true, online prediction nodes send `stderr` and `stdout` streams to Cloud Logging. These can be more verbose than the standard access logs (see `onlinePredictionLogging`) and can incur higher cost. However, they are helpful for debugging. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high QPS. Estimate your costs before enabling this option. Default is false.
 	OnlinePredictionConsoleLogging pulumi.BoolPtrInput
 	// Optional. If true, online prediction access logs are sent to Cloud Logging. These logs are like standard server access logs, containing information like timestamp and latency for each request. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option. Default is false.

@@ -983,8 +983,8 @@ func (o PkixPublicKeyResponseOutput) SignatureAlgorithm() pulumi.StringOutput {
 
 // An user owned drydock note references a Drydock ATTESTATION_AUTHORITY Note created by the user.
 type UserOwnedDrydockNote struct {
-	// Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
-	NoteReference *string `pulumi:"noteReference"`
+	// The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
+	NoteReference string `pulumi:"noteReference"`
 	// Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist.
 	PublicKeys []AttestorPublicKey `pulumi:"publicKeys"`
 }
@@ -1002,8 +1002,8 @@ type UserOwnedDrydockNoteInput interface {
 
 // An user owned drydock note references a Drydock ATTESTATION_AUTHORITY Note created by the user.
 type UserOwnedDrydockNoteArgs struct {
-	// Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
-	NoteReference pulumi.StringPtrInput `pulumi:"noteReference"`
+	// The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
+	NoteReference pulumi.StringInput `pulumi:"noteReference"`
 	// Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist.
 	PublicKeys AttestorPublicKeyArrayInput `pulumi:"publicKeys"`
 }
@@ -1086,9 +1086,9 @@ func (o UserOwnedDrydockNoteOutput) ToUserOwnedDrydockNotePtrOutputWithContext(c
 	}).(UserOwnedDrydockNotePtrOutput)
 }
 
-// Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
-func (o UserOwnedDrydockNoteOutput) NoteReference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UserOwnedDrydockNote) *string { return v.NoteReference }).(pulumi.StringPtrOutput)
+// The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
+func (o UserOwnedDrydockNoteOutput) NoteReference() pulumi.StringOutput {
+	return o.ApplyT(func(v UserOwnedDrydockNote) string { return v.NoteReference }).(pulumi.StringOutput)
 }
 
 // Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist.
@@ -1114,13 +1114,13 @@ func (o UserOwnedDrydockNotePtrOutput) Elem() UserOwnedDrydockNoteOutput {
 	return o.ApplyT(func(v *UserOwnedDrydockNote) UserOwnedDrydockNote { return *v }).(UserOwnedDrydockNoteOutput)
 }
 
-// Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
+// The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
 func (o UserOwnedDrydockNotePtrOutput) NoteReference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserOwnedDrydockNote) *string {
 		if v == nil {
 			return nil
 		}
-		return v.NoteReference
+		return &v.NoteReference
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1138,7 +1138,7 @@ func (o UserOwnedDrydockNotePtrOutput) PublicKeys() AttestorPublicKeyArrayOutput
 type UserOwnedDrydockNoteResponse struct {
 	// This field will contain the service account email address that this Attestor will use as the principal when querying Container Analysis. Attestor administrators must grant this service account the IAM role needed to read attestations from the note_reference in Container Analysis (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the Attestor, but callers should not make any other assumptions about the service account email; future versions may use an email based on a different naming pattern.
 	DelegationServiceAccountEmail string `pulumi:"delegationServiceAccountEmail"`
-	// Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
+	// The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
 	NoteReference string `pulumi:"noteReference"`
 	// Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist.
 	PublicKeys []AttestorPublicKeyResponse `pulumi:"publicKeys"`
@@ -1159,7 +1159,7 @@ type UserOwnedDrydockNoteResponseInput interface {
 type UserOwnedDrydockNoteResponseArgs struct {
 	// This field will contain the service account email address that this Attestor will use as the principal when querying Container Analysis. Attestor administrators must grant this service account the IAM role needed to read attestations from the note_reference in Container Analysis (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the Attestor, but callers should not make any other assumptions about the service account email; future versions may use an email based on a different naming pattern.
 	DelegationServiceAccountEmail pulumi.StringInput `pulumi:"delegationServiceAccountEmail"`
-	// Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
+	// The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
 	NoteReference pulumi.StringInput `pulumi:"noteReference"`
 	// Optional. Public keys that verify attestations signed by this attestor. This field may be updated. If this field is non-empty, one of the specified public keys must verify that an attestation was signed by this attestor for the image specified in the admission request. If this field is empty, this attestor always returns that no valid attestations exist.
 	PublicKeys AttestorPublicKeyResponseArrayInput `pulumi:"publicKeys"`
@@ -1248,7 +1248,7 @@ func (o UserOwnedDrydockNoteResponseOutput) DelegationServiceAccountEmail() pulu
 	return o.ApplyT(func(v UserOwnedDrydockNoteResponse) string { return v.DelegationServiceAccountEmail }).(pulumi.StringOutput)
 }
 
-// Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
+// The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
 func (o UserOwnedDrydockNoteResponseOutput) NoteReference() pulumi.StringOutput {
 	return o.ApplyT(func(v UserOwnedDrydockNoteResponse) string { return v.NoteReference }).(pulumi.StringOutput)
 }
@@ -1286,7 +1286,7 @@ func (o UserOwnedDrydockNoteResponsePtrOutput) DelegationServiceAccountEmail() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
+// The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
 func (o UserOwnedDrydockNoteResponsePtrOutput) NoteReference() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *UserOwnedDrydockNoteResponse) *string {
 		if v == nil {

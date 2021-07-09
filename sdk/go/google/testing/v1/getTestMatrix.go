@@ -25,7 +25,7 @@ type LookupTestMatrixArgs struct {
 type LookupTestMatrixResult struct {
 	// Information about the client which invoked the test.
 	ClientInfo ClientInfoResponse `pulumi:"clientInfo"`
-	// Required. The devices the tests are being executed on.
+	// The devices the tests are being executed on.
 	EnvironmentMatrix EnvironmentMatrixResponse `pulumi:"environmentMatrix"`
 	// If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
 	FailFast bool `pulumi:"failFast"`
@@ -37,7 +37,7 @@ type LookupTestMatrixResult struct {
 	OutcomeSummary string `pulumi:"outcomeSummary"`
 	// The cloud project that owns the test matrix.
 	Project string `pulumi:"project"`
-	// Required. Where the results for the matrix are written.
+	// Where the results for the matrix are written.
 	ResultStorage ResultStorageResponse `pulumi:"resultStorage"`
 	// Indicates the current progress of the test matrix.
 	State string `pulumi:"state"`
@@ -45,7 +45,7 @@ type LookupTestMatrixResult struct {
 	TestExecutions []TestExecutionResponse `pulumi:"testExecutions"`
 	// Unique id set by the service.
 	TestMatrixId string `pulumi:"testMatrixId"`
-	// Required. How to run the test.
+	// How to run the test.
 	TestSpecification TestSpecificationResponse `pulumi:"testSpecification"`
 	// The time this test matrix was initially created.
 	Timestamp string `pulumi:"timestamp"`

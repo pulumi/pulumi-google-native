@@ -18491,8 +18491,8 @@ type StandardSqlDataType struct {
 	ArrayElementType *StandardSqlDataType `pulumi:"arrayElementType"`
 	// The fields of this struct, in order, if type_kind = "STRUCT".
 	StructType *StandardSqlStructType `pulumi:"structType"`
-	// Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
-	TypeKind *string `pulumi:"typeKind"`
+	// The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+	TypeKind string `pulumi:"typeKind"`
 }
 
 // StandardSqlDataTypeInput is an input type that accepts StandardSqlDataTypeArgs and StandardSqlDataTypeOutput values.
@@ -18512,8 +18512,8 @@ type StandardSqlDataTypeArgs struct {
 	ArrayElementType StandardSqlDataTypePtrInput `pulumi:"arrayElementType"`
 	// The fields of this struct, in order, if type_kind = "STRUCT".
 	StructType StandardSqlStructTypePtrInput `pulumi:"structType"`
-	// Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
-	TypeKind *StandardSqlDataTypeTypeKind `pulumi:"typeKind"`
+	// The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+	TypeKind StandardSqlDataTypeTypeKind `pulumi:"typeKind"`
 }
 
 func (StandardSqlDataTypeArgs) ElementType() reflect.Type {
@@ -18604,9 +18604,9 @@ func (o StandardSqlDataTypeOutput) StructType() StandardSqlStructTypePtrOutput {
 	return o.ApplyT(func(v StandardSqlDataType) *StandardSqlStructType { return v.StructType }).(StandardSqlStructTypePtrOutput)
 }
 
-// Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
-func (o StandardSqlDataTypeOutput) TypeKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StandardSqlDataType) *string { return v.TypeKind }).(pulumi.StringPtrOutput)
+// The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+func (o StandardSqlDataTypeOutput) TypeKind() pulumi.StringOutput {
+	return o.ApplyT(func(v StandardSqlDataType) string { return v.TypeKind }).(pulumi.StringOutput)
 }
 
 type StandardSqlDataTypePtrOutput struct{ *pulumi.OutputState }
@@ -18647,13 +18647,13 @@ func (o StandardSqlDataTypePtrOutput) StructType() StandardSqlStructTypePtrOutpu
 	}).(StandardSqlStructTypePtrOutput)
 }
 
-// Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+// The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
 func (o StandardSqlDataTypePtrOutput) TypeKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StandardSqlDataType) *string {
 		if v == nil {
 			return nil
 		}
-		return v.TypeKind
+		return &v.TypeKind
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -18663,7 +18663,7 @@ type StandardSqlDataTypeResponse struct {
 	ArrayElementType StandardSqlDataTypeResponse `pulumi:"arrayElementType"`
 	// The fields of this struct, in order, if type_kind = "STRUCT".
 	StructType StandardSqlStructTypeResponse `pulumi:"structType"`
-	// Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+	// The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
 	TypeKind string `pulumi:"typeKind"`
 }
 
@@ -18684,7 +18684,7 @@ type StandardSqlDataTypeResponseArgs struct {
 	ArrayElementType StandardSqlDataTypeResponseInput `pulumi:"arrayElementType"`
 	// The fields of this struct, in order, if type_kind = "STRUCT".
 	StructType StandardSqlStructTypeResponseInput `pulumi:"structType"`
-	// Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+	// The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
 	TypeKind pulumi.StringInput `pulumi:"typeKind"`
 }
 
@@ -18776,7 +18776,7 @@ func (o StandardSqlDataTypeResponseOutput) StructType() StandardSqlStructTypeRes
 	return o.ApplyT(func(v StandardSqlDataTypeResponse) StandardSqlStructTypeResponse { return v.StructType }).(StandardSqlStructTypeResponseOutput)
 }
 
-// Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+// The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
 func (o StandardSqlDataTypeResponseOutput) TypeKind() pulumi.StringOutput {
 	return o.ApplyT(func(v StandardSqlDataTypeResponse) string { return v.TypeKind }).(pulumi.StringOutput)
 }
@@ -18819,7 +18819,7 @@ func (o StandardSqlDataTypeResponsePtrOutput) StructType() StandardSqlStructType
 	}).(StandardSqlStructTypeResponsePtrOutput)
 }
 
-// Required. The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
+// The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
 func (o StandardSqlDataTypeResponsePtrOutput) TypeKind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StandardSqlDataTypeResponse) *string {
 		if v == nil {

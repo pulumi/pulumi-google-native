@@ -19,7 +19,7 @@ type WorkflowTemplate struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
 	DagTimeout pulumi.StringOutput `pulumi:"dagTimeout"`
-	// Required. The Directed Acyclic Graph of Jobs to submit.
+	// The Directed Acyclic Graph of Jobs to submit.
 	Jobs OrderedJobResponseArrayOutput `pulumi:"jobs"`
 	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
@@ -27,7 +27,7 @@ type WorkflowTemplate struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
 	Parameters TemplateParameterResponseArrayOutput `pulumi:"parameters"`
-	// Required. WorkflowTemplate scheduling information.
+	// WorkflowTemplate scheduling information.
 	Placement WorkflowTemplatePlacementResponseOutput `pulumi:"placement"`
 	// The time template was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -42,8 +42,14 @@ func NewWorkflowTemplate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Jobs == nil {
+		return nil, errors.New("invalid value for required argument 'Jobs'")
+	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
+	}
+	if args.Placement == nil {
+		return nil, errors.New("invalid value for required argument 'Placement'")
 	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
@@ -74,7 +80,7 @@ type workflowTemplateState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
 	DagTimeout *string `pulumi:"dagTimeout"`
-	// Required. The Directed Acyclic Graph of Jobs to submit.
+	// The Directed Acyclic Graph of Jobs to submit.
 	Jobs []OrderedJobResponse `pulumi:"jobs"`
 	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
 	Labels map[string]string `pulumi:"labels"`
@@ -82,7 +88,7 @@ type workflowTemplateState struct {
 	Name *string `pulumi:"name"`
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
 	Parameters []TemplateParameterResponse `pulumi:"parameters"`
-	// Required. WorkflowTemplate scheduling information.
+	// WorkflowTemplate scheduling information.
 	Placement *WorkflowTemplatePlacementResponse `pulumi:"placement"`
 	// The time template was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -95,7 +101,7 @@ type WorkflowTemplateState struct {
 	CreateTime pulumi.StringPtrInput
 	// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
 	DagTimeout pulumi.StringPtrInput
-	// Required. The Directed Acyclic Graph of Jobs to submit.
+	// The Directed Acyclic Graph of Jobs to submit.
 	Jobs OrderedJobResponseArrayInput
 	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
 	Labels pulumi.StringMapInput
@@ -103,7 +109,7 @@ type WorkflowTemplateState struct {
 	Name pulumi.StringPtrInput
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
 	Parameters TemplateParameterResponseArrayInput
-	// Required. WorkflowTemplate scheduling information.
+	// WorkflowTemplate scheduling information.
 	Placement WorkflowTemplatePlacementResponsePtrInput
 	// The time template was last updated.
 	UpdateTime pulumi.StringPtrInput
@@ -119,16 +125,16 @@ type workflowTemplateArgs struct {
 	// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
 	DagTimeout *string `pulumi:"dagTimeout"`
 	Id         *string `pulumi:"id"`
-	// Required. The Directed Acyclic Graph of Jobs to submit.
+	// The Directed Acyclic Graph of Jobs to submit.
 	Jobs []OrderedJob `pulumi:"jobs"`
 	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
 	Labels   map[string]string `pulumi:"labels"`
 	Location string            `pulumi:"location"`
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
 	Parameters []TemplateParameter `pulumi:"parameters"`
-	// Required. WorkflowTemplate scheduling information.
-	Placement *WorkflowTemplatePlacement `pulumi:"placement"`
-	Project   string                     `pulumi:"project"`
+	// WorkflowTemplate scheduling information.
+	Placement WorkflowTemplatePlacement `pulumi:"placement"`
+	Project   string                    `pulumi:"project"`
 	// Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
 	Version *int `pulumi:"version"`
 }
@@ -138,15 +144,15 @@ type WorkflowTemplateArgs struct {
 	// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
 	DagTimeout pulumi.StringPtrInput
 	Id         pulumi.StringPtrInput
-	// Required. The Directed Acyclic Graph of Jobs to submit.
+	// The Directed Acyclic Graph of Jobs to submit.
 	Jobs OrderedJobArrayInput
 	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringInput
 	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
 	Parameters TemplateParameterArrayInput
-	// Required. WorkflowTemplate scheduling information.
-	Placement WorkflowTemplatePlacementPtrInput
+	// WorkflowTemplate scheduling information.
+	Placement WorkflowTemplatePlacementInput
 	Project   pulumi.StringInput
 	// Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
 	Version pulumi.IntPtrInput

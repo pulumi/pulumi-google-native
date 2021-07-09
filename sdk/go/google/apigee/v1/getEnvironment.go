@@ -31,7 +31,7 @@ type LookupEnvironmentResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// Last modification time of this environment as milliseconds since epoch.
 	LastModifiedAt string `pulumi:"lastModifiedAt"`
-	// Required. Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+	// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
 	Name string `pulumi:"name"`
 	// Optional. Key-value pairs that may be used for customizing the environment.
 	Properties GoogleCloudApigeeV1PropertiesResponse `pulumi:"properties"`

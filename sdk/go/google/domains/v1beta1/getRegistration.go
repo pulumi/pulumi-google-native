@@ -24,13 +24,13 @@ type LookupRegistrationArgs struct {
 }
 
 type LookupRegistrationResult struct {
-	// Required. Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
+	// Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
 	ContactSettings ContactSettingsResponse `pulumi:"contactSettings"`
 	// The creation timestamp of the `Registration` resource.
 	CreateTime string `pulumi:"createTime"`
 	// Settings controlling the DNS configuration of the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureDnsSettings` method.
 	DnsSettings DnsSettingsResponse `pulumi:"dnsSettings"`
-	// Required. Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
+	// Immutable. The domain name. Unicode domain names must be expressed in Punycode format.
 	DomainName string `pulumi:"domainName"`
 	// The expiration timestamp of the `Registration`.
 	ExpireTime string `pulumi:"expireTime"`

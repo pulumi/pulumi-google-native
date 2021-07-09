@@ -17,7 +17,7 @@ type MigrationJob struct {
 
 	// The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Required. The resource name (URI) of the destination connection profile.
+	// The resource name (URI) of the destination connection profile.
 	Destination pulumi.StringOutput `pulumi:"destination"`
 	// The database engine type and provider of the destination.
 	DestinationDatabase DatabaseTypeResponseOutput `pulumi:"destinationDatabase"`
@@ -39,7 +39,7 @@ type MigrationJob struct {
 	Phase pulumi.StringOutput `pulumi:"phase"`
 	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
 	ReverseSshConnectivity ReverseSshConnectivityResponseOutput `pulumi:"reverseSshConnectivity"`
-	// Required. The resource name (URI) of the source connection profile.
+	// The resource name (URI) of the source connection profile.
 	Source pulumi.StringOutput `pulumi:"source"`
 	// The database engine type and provider of the source.
 	SourceDatabase DatabaseTypeResponseOutput `pulumi:"sourceDatabase"`
@@ -47,7 +47,7 @@ type MigrationJob struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// static ip connectivity data (default, no additional details needed).
 	StaticIpConnectivity StaticIpConnectivityResponseOutput `pulumi:"staticIpConnectivity"`
-	// Required. The migration job type.
+	// The migration job type.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The timestamp when the migration job resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -62,6 +62,9 @@ func NewMigrationJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Destination == nil {
+		return nil, errors.New("invalid value for required argument 'Destination'")
+	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -70,6 +73,9 @@ func NewMigrationJob(ctx *pulumi.Context,
 	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.Source == nil {
+		return nil, errors.New("invalid value for required argument 'Source'")
 	}
 	var resource MigrationJob
 	err := ctx.RegisterResource("google-native:datamigration/v1beta1:MigrationJob", name, args, &resource, opts...)
@@ -95,7 +101,7 @@ func GetMigrationJob(ctx *pulumi.Context,
 type migrationJobState struct {
 	// The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
-	// Required. The resource name (URI) of the destination connection profile.
+	// The resource name (URI) of the destination connection profile.
 	Destination *string `pulumi:"destination"`
 	// The database engine type and provider of the destination.
 	DestinationDatabase *DatabaseTypeResponse `pulumi:"destinationDatabase"`
@@ -117,7 +123,7 @@ type migrationJobState struct {
 	Phase *string `pulumi:"phase"`
 	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
 	ReverseSshConnectivity *ReverseSshConnectivityResponse `pulumi:"reverseSshConnectivity"`
-	// Required. The resource name (URI) of the source connection profile.
+	// The resource name (URI) of the source connection profile.
 	Source *string `pulumi:"source"`
 	// The database engine type and provider of the source.
 	SourceDatabase *DatabaseTypeResponse `pulumi:"sourceDatabase"`
@@ -125,7 +131,7 @@ type migrationJobState struct {
 	State *string `pulumi:"state"`
 	// static ip connectivity data (default, no additional details needed).
 	StaticIpConnectivity *StaticIpConnectivityResponse `pulumi:"staticIpConnectivity"`
-	// Required. The migration job type.
+	// The migration job type.
 	Type *string `pulumi:"type"`
 	// The timestamp when the migration job resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	UpdateTime *string `pulumi:"updateTime"`
@@ -136,7 +142,7 @@ type migrationJobState struct {
 type MigrationJobState struct {
 	// The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
-	// Required. The resource name (URI) of the destination connection profile.
+	// The resource name (URI) of the destination connection profile.
 	Destination pulumi.StringPtrInput
 	// The database engine type and provider of the destination.
 	DestinationDatabase DatabaseTypeResponsePtrInput
@@ -158,7 +164,7 @@ type MigrationJobState struct {
 	Phase pulumi.StringPtrInput
 	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
 	ReverseSshConnectivity ReverseSshConnectivityResponsePtrInput
-	// Required. The resource name (URI) of the source connection profile.
+	// The resource name (URI) of the source connection profile.
 	Source pulumi.StringPtrInput
 	// The database engine type and provider of the source.
 	SourceDatabase DatabaseTypeResponsePtrInput
@@ -166,7 +172,7 @@ type MigrationJobState struct {
 	State pulumi.StringPtrInput
 	// static ip connectivity data (default, no additional details needed).
 	StaticIpConnectivity StaticIpConnectivityResponsePtrInput
-	// Required. The migration job type.
+	// The migration job type.
 	Type pulumi.StringPtrInput
 	// The timestamp when the migration job resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	UpdateTime pulumi.StringPtrInput
@@ -179,8 +185,8 @@ func (MigrationJobState) ElementType() reflect.Type {
 }
 
 type migrationJobArgs struct {
-	// Required. The resource name (URI) of the destination connection profile.
-	Destination *string `pulumi:"destination"`
+	// The resource name (URI) of the destination connection profile.
+	Destination string `pulumi:"destination"`
 	// The database engine type and provider of the destination.
 	DestinationDatabase *DatabaseType `pulumi:"destinationDatabase"`
 	// The migration job display name.
@@ -197,24 +203,24 @@ type migrationJobArgs struct {
 	RequestId *string `pulumi:"requestId"`
 	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
 	ReverseSshConnectivity *ReverseSshConnectivity `pulumi:"reverseSshConnectivity"`
-	// Required. The resource name (URI) of the source connection profile.
-	Source *string `pulumi:"source"`
+	// The resource name (URI) of the source connection profile.
+	Source string `pulumi:"source"`
 	// The database engine type and provider of the source.
 	SourceDatabase *DatabaseType `pulumi:"sourceDatabase"`
 	// The current migration job state.
 	State *string `pulumi:"state"`
 	// static ip connectivity data (default, no additional details needed).
 	StaticIpConnectivity *StaticIpConnectivity `pulumi:"staticIpConnectivity"`
-	// Required. The migration job type.
-	Type *string `pulumi:"type"`
+	// The migration job type.
+	Type string `pulumi:"type"`
 	// The details of the VPC network that the source database is located in.
 	VpcPeeringConnectivity *VpcPeeringConnectivity `pulumi:"vpcPeeringConnectivity"`
 }
 
 // The set of arguments for constructing a MigrationJob resource.
 type MigrationJobArgs struct {
-	// Required. The resource name (URI) of the destination connection profile.
-	Destination pulumi.StringPtrInput
+	// The resource name (URI) of the destination connection profile.
+	Destination pulumi.StringInput
 	// The database engine type and provider of the destination.
 	DestinationDatabase DatabaseTypePtrInput
 	// The migration job display name.
@@ -231,16 +237,16 @@ type MigrationJobArgs struct {
 	RequestId pulumi.StringPtrInput
 	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
 	ReverseSshConnectivity ReverseSshConnectivityPtrInput
-	// Required. The resource name (URI) of the source connection profile.
-	Source pulumi.StringPtrInput
+	// The resource name (URI) of the source connection profile.
+	Source pulumi.StringInput
 	// The database engine type and provider of the source.
 	SourceDatabase DatabaseTypePtrInput
 	// The current migration job state.
 	State *MigrationJobStateEnum
 	// static ip connectivity data (default, no additional details needed).
 	StaticIpConnectivity StaticIpConnectivityPtrInput
-	// Required. The migration job type.
-	Type *MigrationJobType
+	// The migration job type.
+	Type MigrationJobType
 	// The details of the VPC network that the source database is located in.
 	VpcPeeringConnectivity VpcPeeringConnectivityPtrInput
 }

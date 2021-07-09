@@ -3956,8 +3956,8 @@ type InstanceStatus struct {
 	CompletionTime *string `pulumi:"completionTime"`
 	// Optional. The number of times this instance exited with code > 0; +optional
 	Failed *int `pulumi:"failed"`
-	// Required. Index of the instance, unique per Job, and beginning at 0.
-	Index *int `pulumi:"index"`
+	// Index of the instance, unique per Job, and beginning at 0.
+	Index int `pulumi:"index"`
 	// Optional. Last exit code seen for this instance. +optional
 	LastExitCode *int `pulumi:"lastExitCode"`
 	// Optional. The number of times this instance was restarted. Instances are restarted according the restartPolicy configured in the Job template. +optional
@@ -3985,8 +3985,8 @@ type InstanceStatusArgs struct {
 	CompletionTime pulumi.StringPtrInput `pulumi:"completionTime"`
 	// Optional. The number of times this instance exited with code > 0; +optional
 	Failed pulumi.IntPtrInput `pulumi:"failed"`
-	// Required. Index of the instance, unique per Job, and beginning at 0.
-	Index pulumi.IntPtrInput `pulumi:"index"`
+	// Index of the instance, unique per Job, and beginning at 0.
+	Index pulumi.IntInput `pulumi:"index"`
 	// Optional. Last exit code seen for this instance. +optional
 	LastExitCode pulumi.IntPtrInput `pulumi:"lastExitCode"`
 	// Optional. The number of times this instance was restarted. Instances are restarted according the restartPolicy configured in the Job template. +optional
@@ -4059,9 +4059,9 @@ func (o InstanceStatusOutput) Failed() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v InstanceStatus) *int { return v.Failed }).(pulumi.IntPtrOutput)
 }
 
-// Required. Index of the instance, unique per Job, and beginning at 0.
-func (o InstanceStatusOutput) Index() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceStatus) *int { return v.Index }).(pulumi.IntPtrOutput)
+// Index of the instance, unique per Job, and beginning at 0.
+func (o InstanceStatusOutput) Index() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceStatus) int { return v.Index }).(pulumi.IntOutput)
 }
 
 // Optional. Last exit code seen for this instance. +optional
@@ -4110,7 +4110,7 @@ type InstanceStatusResponse struct {
 	CompletionTime string `pulumi:"completionTime"`
 	// Optional. The number of times this instance exited with code > 0; +optional
 	Failed int `pulumi:"failed"`
-	// Required. Index of the instance, unique per Job, and beginning at 0.
+	// Index of the instance, unique per Job, and beginning at 0.
 	Index int `pulumi:"index"`
 	// Optional. Last exit code seen for this instance. +optional
 	LastExitCode int `pulumi:"lastExitCode"`
@@ -4139,7 +4139,7 @@ type InstanceStatusResponseArgs struct {
 	CompletionTime pulumi.StringInput `pulumi:"completionTime"`
 	// Optional. The number of times this instance exited with code > 0; +optional
 	Failed pulumi.IntInput `pulumi:"failed"`
-	// Required. Index of the instance, unique per Job, and beginning at 0.
+	// Index of the instance, unique per Job, and beginning at 0.
 	Index pulumi.IntInput `pulumi:"index"`
 	// Optional. Last exit code seen for this instance. +optional
 	LastExitCode pulumi.IntInput `pulumi:"lastExitCode"`
@@ -4213,7 +4213,7 @@ func (o InstanceStatusResponseOutput) Failed() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceStatusResponse) int { return v.Failed }).(pulumi.IntOutput)
 }
 
-// Required. Index of the instance, unique per Job, and beginning at 0.
+// Index of the instance, unique per Job, and beginning at 0.
 func (o InstanceStatusResponseOutput) Index() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceStatusResponse) int { return v.Index }).(pulumi.IntOutput)
 }
@@ -4781,10 +4781,10 @@ type JobCondition struct {
 	Reason *string `pulumi:"reason"`
 	// Optional. How to interpret failures of this condition, one of Error, Warning, Info
 	Severity *string `pulumi:"severity"`
-	// Required. Status of the condition, one of True, False, Unknown.
-	Status *string `pulumi:"status"`
-	// Required. Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
-	Type *string `pulumi:"type"`
+	// Status of the condition, one of True, False, Unknown.
+	Status string `pulumi:"status"`
+	// Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+	Type string `pulumi:"type"`
 }
 
 // JobConditionInput is an input type that accepts JobConditionArgs and JobConditionOutput values.
@@ -4808,10 +4808,10 @@ type JobConditionArgs struct {
 	Reason pulumi.StringPtrInput `pulumi:"reason"`
 	// Optional. How to interpret failures of this condition, one of Error, Warning, Info
 	Severity pulumi.StringPtrInput `pulumi:"severity"`
-	// Required. Status of the condition, one of True, False, Unknown.
-	Status pulumi.StringPtrInput `pulumi:"status"`
-	// Required. Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
-	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Status of the condition, one of True, False, Unknown.
+	Status pulumi.StringInput `pulumi:"status"`
+	// Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+	Type pulumi.StringInput `pulumi:"type"`
 }
 
 func (JobConditionArgs) ElementType() reflect.Type {
@@ -4886,14 +4886,14 @@ func (o JobConditionOutput) Severity() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v JobCondition) *string { return v.Severity }).(pulumi.StringPtrOutput)
 }
 
-// Required. Status of the condition, one of True, False, Unknown.
-func (o JobConditionOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobCondition) *string { return v.Status }).(pulumi.StringPtrOutput)
+// Status of the condition, one of True, False, Unknown.
+func (o JobConditionOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v JobCondition) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Required. Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
-func (o JobConditionOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
+// Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+func (o JobConditionOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v JobCondition) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type JobConditionArrayOutput struct{ *pulumi.OutputState }
@@ -4926,9 +4926,9 @@ type JobConditionResponse struct {
 	Reason string `pulumi:"reason"`
 	// Optional. How to interpret failures of this condition, one of Error, Warning, Info
 	Severity string `pulumi:"severity"`
-	// Required. Status of the condition, one of True, False, Unknown.
+	// Status of the condition, one of True, False, Unknown.
 	Status string `pulumi:"status"`
-	// Required. Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+	// Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
 	Type string `pulumi:"type"`
 }
 
@@ -4953,9 +4953,9 @@ type JobConditionResponseArgs struct {
 	Reason pulumi.StringInput `pulumi:"reason"`
 	// Optional. How to interpret failures of this condition, one of Error, Warning, Info
 	Severity pulumi.StringInput `pulumi:"severity"`
-	// Required. Status of the condition, one of True, False, Unknown.
+	// Status of the condition, one of True, False, Unknown.
 	Status pulumi.StringInput `pulumi:"status"`
-	// Required. Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+	// Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -5031,12 +5031,12 @@ func (o JobConditionResponseOutput) Severity() pulumi.StringOutput {
 	return o.ApplyT(func(v JobConditionResponse) string { return v.Severity }).(pulumi.StringOutput)
 }
 
-// Required. Status of the condition, one of True, False, Unknown.
+// Status of the condition, one of True, False, Unknown.
 func (o JobConditionResponseOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v JobConditionResponse) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Required. Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
+// Type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/master/docs/spec/errors.md#error-conditions-and-reporting Types include: * "Completed": True when the Job has successfully completed. * "Started": True when the Job has successfully started running. * "ResourcesAvailable": True when underlying resources have been provisioned.
 func (o JobConditionResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v JobConditionResponse) string { return v.Type }).(pulumi.StringOutput)
 }

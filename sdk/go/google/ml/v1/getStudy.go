@@ -32,6 +32,6 @@ type LookupStudyResult struct {
 	Name string `pulumi:"name"`
 	// The detailed state of a study.
 	State string `pulumi:"state"`
-	// Required. Configuration of the study.
+	// Configuration of the study.
 	StudyConfig GoogleCloudMlV1__StudyConfigResponse `pulumi:"studyConfig"`
 }

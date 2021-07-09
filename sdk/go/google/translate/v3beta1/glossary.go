@@ -19,13 +19,13 @@ type Glossary struct {
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
 	// The number of entries defined in the glossary.
 	EntryCount pulumi.IntOutput `pulumi:"entryCount"`
-	// Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
+	// Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
 	InputConfig GlossaryInputConfigResponseOutput `pulumi:"inputConfig"`
 	// Used with equivalent term set glossaries.
 	LanguageCodesSet LanguageCodesSetResponseOutput `pulumi:"languageCodesSet"`
 	// Used with unidirectional glossaries.
 	LanguagePair LanguageCodePairResponseOutput `pulumi:"languagePair"`
-	// Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
+	// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// When CreateGlossary was called.
 	SubmitTime pulumi.StringOutput `pulumi:"submitTime"`
@@ -38,8 +38,14 @@ func NewGlossary(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.InputConfig == nil {
+		return nil, errors.New("invalid value for required argument 'InputConfig'")
+	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
@@ -70,13 +76,13 @@ type glossaryState struct {
 	EndTime *string `pulumi:"endTime"`
 	// The number of entries defined in the glossary.
 	EntryCount *int `pulumi:"entryCount"`
-	// Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
+	// Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
 	InputConfig *GlossaryInputConfigResponse `pulumi:"inputConfig"`
 	// Used with equivalent term set glossaries.
 	LanguageCodesSet *LanguageCodesSetResponse `pulumi:"languageCodesSet"`
 	// Used with unidirectional glossaries.
 	LanguagePair *LanguageCodePairResponse `pulumi:"languagePair"`
-	// Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
+	// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
 	Name *string `pulumi:"name"`
 	// When CreateGlossary was called.
 	SubmitTime *string `pulumi:"submitTime"`
@@ -87,13 +93,13 @@ type GlossaryState struct {
 	EndTime pulumi.StringPtrInput
 	// The number of entries defined in the glossary.
 	EntryCount pulumi.IntPtrInput
-	// Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
+	// Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
 	InputConfig GlossaryInputConfigResponsePtrInput
 	// Used with equivalent term set glossaries.
 	LanguageCodesSet LanguageCodesSetResponsePtrInput
 	// Used with unidirectional glossaries.
 	LanguagePair LanguageCodePairResponsePtrInput
-	// Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
+	// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
 	Name pulumi.StringPtrInput
 	// When CreateGlossary was called.
 	SubmitTime pulumi.StringPtrInput
@@ -104,29 +110,29 @@ func (GlossaryState) ElementType() reflect.Type {
 }
 
 type glossaryArgs struct {
-	// Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
-	InputConfig *GlossaryInputConfig `pulumi:"inputConfig"`
+	// Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
+	InputConfig GlossaryInputConfig `pulumi:"inputConfig"`
 	// Used with equivalent term set glossaries.
 	LanguageCodesSet *LanguageCodesSet `pulumi:"languageCodesSet"`
 	// Used with unidirectional glossaries.
 	LanguagePair *LanguageCodePair `pulumi:"languagePair"`
 	Location     string            `pulumi:"location"`
-	// Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
-	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
+	Name    string `pulumi:"name"`
+	Project string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Glossary resource.
 type GlossaryArgs struct {
-	// Required. Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
-	InputConfig GlossaryInputConfigPtrInput
+	// Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
+	InputConfig GlossaryInputConfigInput
 	// Used with equivalent term set glossaries.
 	LanguageCodesSet LanguageCodesSetPtrInput
 	// Used with unidirectional glossaries.
 	LanguagePair LanguageCodePairPtrInput
 	Location     pulumi.StringInput
-	// Required. The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
-	Name    pulumi.StringPtrInput
+	// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
+	Name    pulumi.StringInput
 	Project pulumi.StringInput
 }
 

@@ -24,7 +24,7 @@ type LookupKnowledgeBaseArgs struct {
 }
 
 type LookupKnowledgeBaseResult struct {
-	// Required. The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
+	// The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
 	DisplayName string `pulumi:"displayName"`
 	// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.
 	LanguageCode string `pulumi:"languageCode"`

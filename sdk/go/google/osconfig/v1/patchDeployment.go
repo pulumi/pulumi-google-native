@@ -21,17 +21,17 @@ type PatchDeployment struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Optional. Duration of the patch. After the duration ends, the patch times out.
 	Duration pulumi.StringOutput `pulumi:"duration"`
-	// Required. VM instances to patch.
+	// VM instances to patch.
 	InstanceFilter PatchInstanceFilterResponseOutput `pulumi:"instanceFilter"`
 	// The last time a patch job was started by this deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	LastExecuteTime pulumi.StringOutput `pulumi:"lastExecuteTime"`
 	// Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. Schedule a one-time execution.
+	// Schedule a one-time execution.
 	OneTimeSchedule OneTimeScheduleResponseOutput `pulumi:"oneTimeSchedule"`
 	// Optional. Patch configuration that is applied.
 	PatchConfig PatchConfigResponseOutput `pulumi:"patchConfig"`
-	// Required. Schedule recurring executions.
+	// Schedule recurring executions.
 	RecurringSchedule RecurringScheduleResponseOutput `pulumi:"recurringSchedule"`
 	// Optional. Rollout strategy of the patch job.
 	Rollout PatchRolloutResponseOutput `pulumi:"rollout"`
@@ -46,11 +46,20 @@ func NewPatchDeployment(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.InstanceFilter == nil {
+		return nil, errors.New("invalid value for required argument 'InstanceFilter'")
+	}
+	if args.OneTimeSchedule == nil {
+		return nil, errors.New("invalid value for required argument 'OneTimeSchedule'")
+	}
 	if args.PatchDeploymentId == nil {
 		return nil, errors.New("invalid value for required argument 'PatchDeploymentId'")
 	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.RecurringSchedule == nil {
+		return nil, errors.New("invalid value for required argument 'RecurringSchedule'")
 	}
 	var resource PatchDeployment
 	err := ctx.RegisterResource("google-native:osconfig/v1:PatchDeployment", name, args, &resource, opts...)
@@ -80,17 +89,17 @@ type patchDeploymentState struct {
 	Description *string `pulumi:"description"`
 	// Optional. Duration of the patch. After the duration ends, the patch times out.
 	Duration *string `pulumi:"duration"`
-	// Required. VM instances to patch.
+	// VM instances to patch.
 	InstanceFilter *PatchInstanceFilterResponse `pulumi:"instanceFilter"`
 	// The last time a patch job was started by this deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	LastExecuteTime *string `pulumi:"lastExecuteTime"`
 	// Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
 	Name *string `pulumi:"name"`
-	// Required. Schedule a one-time execution.
+	// Schedule a one-time execution.
 	OneTimeSchedule *OneTimeScheduleResponse `pulumi:"oneTimeSchedule"`
 	// Optional. Patch configuration that is applied.
 	PatchConfig *PatchConfigResponse `pulumi:"patchConfig"`
-	// Required. Schedule recurring executions.
+	// Schedule recurring executions.
 	RecurringSchedule *RecurringScheduleResponse `pulumi:"recurringSchedule"`
 	// Optional. Rollout strategy of the patch job.
 	Rollout *PatchRolloutResponse `pulumi:"rollout"`
@@ -105,17 +114,17 @@ type PatchDeploymentState struct {
 	Description pulumi.StringPtrInput
 	// Optional. Duration of the patch. After the duration ends, the patch times out.
 	Duration pulumi.StringPtrInput
-	// Required. VM instances to patch.
+	// VM instances to patch.
 	InstanceFilter PatchInstanceFilterResponsePtrInput
 	// The last time a patch job was started by this deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	LastExecuteTime pulumi.StringPtrInput
 	// Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
 	Name pulumi.StringPtrInput
-	// Required. Schedule a one-time execution.
+	// Schedule a one-time execution.
 	OneTimeSchedule OneTimeScheduleResponsePtrInput
 	// Optional. Patch configuration that is applied.
 	PatchConfig PatchConfigResponsePtrInput
-	// Required. Schedule recurring executions.
+	// Schedule recurring executions.
 	RecurringSchedule RecurringScheduleResponsePtrInput
 	// Optional. Rollout strategy of the patch job.
 	Rollout PatchRolloutResponsePtrInput
@@ -132,18 +141,18 @@ type patchDeploymentArgs struct {
 	Description *string `pulumi:"description"`
 	// Optional. Duration of the patch. After the duration ends, the patch times out.
 	Duration *string `pulumi:"duration"`
-	// Required. VM instances to patch.
-	InstanceFilter *PatchInstanceFilter `pulumi:"instanceFilter"`
+	// VM instances to patch.
+	InstanceFilter PatchInstanceFilter `pulumi:"instanceFilter"`
 	// Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
 	Name *string `pulumi:"name"`
-	// Required. Schedule a one-time execution.
-	OneTimeSchedule *OneTimeSchedule `pulumi:"oneTimeSchedule"`
+	// Schedule a one-time execution.
+	OneTimeSchedule OneTimeSchedule `pulumi:"oneTimeSchedule"`
 	// Optional. Patch configuration that is applied.
 	PatchConfig       *PatchConfig `pulumi:"patchConfig"`
 	PatchDeploymentId string       `pulumi:"patchDeploymentId"`
 	Project           string       `pulumi:"project"`
-	// Required. Schedule recurring executions.
-	RecurringSchedule *RecurringSchedule `pulumi:"recurringSchedule"`
+	// Schedule recurring executions.
+	RecurringSchedule RecurringSchedule `pulumi:"recurringSchedule"`
 	// Optional. Rollout strategy of the patch job.
 	Rollout *PatchRollout `pulumi:"rollout"`
 }
@@ -154,18 +163,18 @@ type PatchDeploymentArgs struct {
 	Description pulumi.StringPtrInput
 	// Optional. Duration of the patch. After the duration ends, the patch times out.
 	Duration pulumi.StringPtrInput
-	// Required. VM instances to patch.
-	InstanceFilter PatchInstanceFilterPtrInput
+	// VM instances to patch.
+	InstanceFilter PatchInstanceFilterInput
 	// Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
 	Name pulumi.StringPtrInput
-	// Required. Schedule a one-time execution.
-	OneTimeSchedule OneTimeSchedulePtrInput
+	// Schedule a one-time execution.
+	OneTimeSchedule OneTimeScheduleInput
 	// Optional. Patch configuration that is applied.
 	PatchConfig       PatchConfigPtrInput
 	PatchDeploymentId pulumi.StringInput
 	Project           pulumi.StringInput
-	// Required. Schedule recurring executions.
-	RecurringSchedule RecurringSchedulePtrInput
+	// Schedule recurring executions.
+	RecurringSchedule RecurringScheduleInput
 	// Optional. Rollout strategy of the patch job.
 	Rollout PatchRolloutPtrInput
 }

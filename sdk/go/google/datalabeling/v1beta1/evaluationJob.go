@@ -15,23 +15,23 @@ import (
 type EvaluationJob struct {
 	pulumi.CustomResourceState
 
-	// Required. Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
+	// Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
 	AnnotationSpecSet pulumi.StringOutput `pulumi:"annotationSpecSet"`
 	// Every time the evaluation job runs and an error occurs, the failed attempt is appended to this array.
 	Attempts GoogleCloudDatalabelingV1beta1AttemptResponseArrayOutput `pulumi:"attempts"`
 	// Timestamp of when this evaluation job was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Required. Description of the job. The description can be up to 25,000 characters long.
+	// Description of the job. The description can be up to 25,000 characters long.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Required. Configuration details for the evaluation job.
+	// Configuration details for the evaluation job.
 	EvaluationJobConfig GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponseOutput `pulumi:"evaluationJobConfig"`
-	// Required. Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
+	// Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
 	LabelMissingGroundTruth pulumi.BoolOutput `pulumi:"labelMissingGroundTruth"`
-	// Required. The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
+	// The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
 	ModelVersion pulumi.StringOutput `pulumi:"modelVersion"`
 	// After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
+	// Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
 	Schedule pulumi.StringOutput `pulumi:"schedule"`
 	// Describes the current state of the job.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -44,8 +44,26 @@ func NewEvaluationJob(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AnnotationSpecSet == nil {
+		return nil, errors.New("invalid value for required argument 'AnnotationSpecSet'")
+	}
+	if args.Description == nil {
+		return nil, errors.New("invalid value for required argument 'Description'")
+	}
+	if args.EvaluationJobConfig == nil {
+		return nil, errors.New("invalid value for required argument 'EvaluationJobConfig'")
+	}
+	if args.LabelMissingGroundTruth == nil {
+		return nil, errors.New("invalid value for required argument 'LabelMissingGroundTruth'")
+	}
+	if args.ModelVersion == nil {
+		return nil, errors.New("invalid value for required argument 'ModelVersion'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.Schedule == nil {
+		return nil, errors.New("invalid value for required argument 'Schedule'")
 	}
 	var resource EvaluationJob
 	err := ctx.RegisterResource("google-native:datalabeling/v1beta1:EvaluationJob", name, args, &resource, opts...)
@@ -69,46 +87,46 @@ func GetEvaluationJob(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EvaluationJob resources.
 type evaluationJobState struct {
-	// Required. Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
+	// Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
 	AnnotationSpecSet *string `pulumi:"annotationSpecSet"`
 	// Every time the evaluation job runs and an error occurs, the failed attempt is appended to this array.
 	Attempts []GoogleCloudDatalabelingV1beta1AttemptResponse `pulumi:"attempts"`
 	// Timestamp of when this evaluation job was created.
 	CreateTime *string `pulumi:"createTime"`
-	// Required. Description of the job. The description can be up to 25,000 characters long.
+	// Description of the job. The description can be up to 25,000 characters long.
 	Description *string `pulumi:"description"`
-	// Required. Configuration details for the evaluation job.
+	// Configuration details for the evaluation job.
 	EvaluationJobConfig *GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse `pulumi:"evaluationJobConfig"`
-	// Required. Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
+	// Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
 	LabelMissingGroundTruth *bool `pulumi:"labelMissingGroundTruth"`
-	// Required. The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
+	// The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
 	ModelVersion *string `pulumi:"modelVersion"`
 	// After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
 	Name *string `pulumi:"name"`
-	// Required. Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
+	// Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
 	Schedule *string `pulumi:"schedule"`
 	// Describes the current state of the job.
 	State *string `pulumi:"state"`
 }
 
 type EvaluationJobState struct {
-	// Required. Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
+	// Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
 	AnnotationSpecSet pulumi.StringPtrInput
 	// Every time the evaluation job runs and an error occurs, the failed attempt is appended to this array.
 	Attempts GoogleCloudDatalabelingV1beta1AttemptResponseArrayInput
 	// Timestamp of when this evaluation job was created.
 	CreateTime pulumi.StringPtrInput
-	// Required. Description of the job. The description can be up to 25,000 characters long.
+	// Description of the job. The description can be up to 25,000 characters long.
 	Description pulumi.StringPtrInput
-	// Required. Configuration details for the evaluation job.
+	// Configuration details for the evaluation job.
 	EvaluationJobConfig GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponsePtrInput
-	// Required. Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
+	// Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
 	LabelMissingGroundTruth pulumi.BoolPtrInput
-	// Required. The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
+	// The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
 	ModelVersion pulumi.StringPtrInput
 	// After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}"
 	Name pulumi.StringPtrInput
-	// Required. Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
+	// Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
 	Schedule pulumi.StringPtrInput
 	// Describes the current state of the job.
 	State pulumi.StringPtrInput
@@ -119,36 +137,36 @@ func (EvaluationJobState) ElementType() reflect.Type {
 }
 
 type evaluationJobArgs struct {
-	// Required. Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
-	AnnotationSpecSet *string `pulumi:"annotationSpecSet"`
-	// Required. Description of the job. The description can be up to 25,000 characters long.
-	Description *string `pulumi:"description"`
-	// Required. Configuration details for the evaluation job.
-	EvaluationJobConfig *GoogleCloudDatalabelingV1beta1EvaluationJobConfig `pulumi:"evaluationJobConfig"`
-	// Required. Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
-	LabelMissingGroundTruth *bool `pulumi:"labelMissingGroundTruth"`
-	// Required. The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
-	ModelVersion *string `pulumi:"modelVersion"`
-	Project      string  `pulumi:"project"`
-	// Required. Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
-	Schedule *string `pulumi:"schedule"`
+	// Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
+	AnnotationSpecSet string `pulumi:"annotationSpecSet"`
+	// Description of the job. The description can be up to 25,000 characters long.
+	Description string `pulumi:"description"`
+	// Configuration details for the evaluation job.
+	EvaluationJobConfig GoogleCloudDatalabelingV1beta1EvaluationJobConfig `pulumi:"evaluationJobConfig"`
+	// Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
+	LabelMissingGroundTruth bool `pulumi:"labelMissingGroundTruth"`
+	// The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
+	ModelVersion string `pulumi:"modelVersion"`
+	Project      string `pulumi:"project"`
+	// Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
+	Schedule string `pulumi:"schedule"`
 }
 
 // The set of arguments for constructing a EvaluationJob resource.
 type EvaluationJobArgs struct {
-	// Required. Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
-	AnnotationSpecSet pulumi.StringPtrInput
-	// Required. Description of the job. The description can be up to 25,000 characters long.
-	Description pulumi.StringPtrInput
-	// Required. Configuration details for the evaluation job.
-	EvaluationJobConfig GoogleCloudDatalabelingV1beta1EvaluationJobConfigPtrInput
-	// Required. Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
-	LabelMissingGroundTruth pulumi.BoolPtrInput
-	// Required. The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
-	ModelVersion pulumi.StringPtrInput
+	// Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
+	AnnotationSpecSet pulumi.StringInput
+	// Description of the job. The description can be up to 25,000 characters long.
+	Description pulumi.StringInput
+	// Configuration details for the evaluation job.
+	EvaluationJobConfig GoogleCloudDatalabelingV1beta1EvaluationJobConfigInput
+	// Whether you want Data Labeling Service to provide ground truth labels for prediction input. If you want the service to assign human labelers to annotate your data, set this to `true`. If you want to provide your own ground truth labels in the evaluation job's BigQuery table, set this to `false`.
+	LabelMissingGroundTruth pulumi.BoolInput
+	// The [AI Platform Prediction model version](/ml-engine/docs/prediction-overview) to be evaluated. Prediction input and output is sampled from this model version. When creating an evaluation job, specify the model version in the following format: "projects/{project_id}/models/{model_name}/versions/{version_name}" There can only be one evaluation job per model version.
+	ModelVersion pulumi.StringInput
 	Project      pulumi.StringInput
-	// Required. Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
-	Schedule pulumi.StringPtrInput
+	// Describes the interval at which the job runs. This interval must be at least 1 day, and it is rounded to the nearest day. For example, if you specify a 50-hour interval, the job runs every 2 days. You can provide the schedule in [crontab format](/scheduler/docs/configuring/cron-job-schedules) or in an [English-like format](/appengine/docs/standard/python/config/cronref#schedule_format). Regardless of what you specify, the job will run at 10:00 AM UTC. Only the interval from this schedule is used, not the specific time of day.
+	Schedule pulumi.StringInput
 }
 
 func (EvaluationJobArgs) ElementType() reflect.Type {

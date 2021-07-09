@@ -25,7 +25,7 @@ type ConsentArtifact struct {
 	Metadata pulumi.StringMapOutput `pulumi:"metadata"`
 	// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. User's UUID provided by the client.
+	// User's UUID provided by the client.
 	UserId pulumi.StringOutput `pulumi:"userId"`
 	// Optional. User's signature.
 	UserSignature SignatureResponseOutput `pulumi:"userSignature"`
@@ -51,6 +51,9 @@ func NewConsentArtifact(ctx *pulumi.Context,
 	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.UserId == nil {
+		return nil, errors.New("invalid value for required argument 'UserId'")
 	}
 	var resource ConsentArtifact
 	err := ctx.RegisterResource("google-native:healthcare/v1:ConsentArtifact", name, args, &resource, opts...)
@@ -84,7 +87,7 @@ type consentArtifactState struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
 	Name *string `pulumi:"name"`
-	// Required. User's UUID provided by the client.
+	// User's UUID provided by the client.
 	UserId *string `pulumi:"userId"`
 	// Optional. User's signature.
 	UserSignature *SignatureResponse `pulumi:"userSignature"`
@@ -103,7 +106,7 @@ type ConsentArtifactState struct {
 	Metadata pulumi.StringMapInput
 	// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
 	Name pulumi.StringPtrInput
-	// Required. User's UUID provided by the client.
+	// User's UUID provided by the client.
 	UserId pulumi.StringPtrInput
 	// Optional. User's signature.
 	UserSignature SignatureResponsePtrInput
@@ -130,8 +133,8 @@ type consentArtifactArgs struct {
 	// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
-	// Required. User's UUID provided by the client.
-	UserId *string `pulumi:"userId"`
+	// User's UUID provided by the client.
+	UserId string `pulumi:"userId"`
 	// Optional. User's signature.
 	UserSignature *Signature `pulumi:"userSignature"`
 	// Optional. A signature from a witness.
@@ -154,8 +157,8 @@ type ConsentArtifactArgs struct {
 	// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
-	// Required. User's UUID provided by the client.
-	UserId pulumi.StringPtrInput
+	// User's UUID provided by the client.
+	UserId pulumi.StringInput
 	// Optional. User's signature.
 	UserSignature SignaturePtrInput
 	// Optional. A signature from a witness.

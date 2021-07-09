@@ -25,15 +25,15 @@ type Customer struct {
 	CloudIdentityInfo GoogleCloudChannelV1CloudIdentityInfoResponseOutput `pulumi:"cloudIdentityInfo"`
 	// The time at which the customer is created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+	// Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 	// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
 	LanguageCode pulumi.StringOutput `pulumi:"languageCode"`
 	// Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id}
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. Name of the organization that the customer entity represents.
+	// Name of the organization that the customer entity represents.
 	OrgDisplayName pulumi.StringOutput `pulumi:"orgDisplayName"`
-	// Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+	// Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
 	OrgPostalAddress GoogleTypePostalAddressResponseOutput `pulumi:"orgPostalAddress"`
 	// Primary contact info.
 	PrimaryContactInfo GoogleCloudChannelV1ContactInfoResponseOutput `pulumi:"primaryContactInfo"`
@@ -53,6 +53,15 @@ func NewCustomer(ctx *pulumi.Context,
 	}
 	if args.ChannelPartnerLinkId == nil {
 		return nil, errors.New("invalid value for required argument 'ChannelPartnerLinkId'")
+	}
+	if args.Domain == nil {
+		return nil, errors.New("invalid value for required argument 'Domain'")
+	}
+	if args.OrgDisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'OrgDisplayName'")
+	}
+	if args.OrgPostalAddress == nil {
+		return nil, errors.New("invalid value for required argument 'OrgPostalAddress'")
 	}
 	var resource Customer
 	err := ctx.RegisterResource("google-native:cloudchannel/v1:Customer", name, args, &resource, opts...)
@@ -86,15 +95,15 @@ type customerState struct {
 	CloudIdentityInfo *GoogleCloudChannelV1CloudIdentityInfoResponse `pulumi:"cloudIdentityInfo"`
 	// The time at which the customer is created.
 	CreateTime *string `pulumi:"createTime"`
-	// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+	// Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
 	Domain *string `pulumi:"domain"`
 	// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
 	LanguageCode *string `pulumi:"languageCode"`
 	// Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id}
 	Name *string `pulumi:"name"`
-	// Required. Name of the organization that the customer entity represents.
+	// Name of the organization that the customer entity represents.
 	OrgDisplayName *string `pulumi:"orgDisplayName"`
-	// Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+	// Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
 	OrgPostalAddress *GoogleTypePostalAddressResponse `pulumi:"orgPostalAddress"`
 	// Primary contact info.
 	PrimaryContactInfo *GoogleCloudChannelV1ContactInfoResponse `pulumi:"primaryContactInfo"`
@@ -113,15 +122,15 @@ type CustomerState struct {
 	CloudIdentityInfo GoogleCloudChannelV1CloudIdentityInfoResponsePtrInput
 	// The time at which the customer is created.
 	CreateTime pulumi.StringPtrInput
-	// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+	// Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
 	Domain pulumi.StringPtrInput
 	// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
 	LanguageCode pulumi.StringPtrInput
 	// Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id}
 	Name pulumi.StringPtrInput
-	// Required. Name of the organization that the customer entity represents.
+	// Name of the organization that the customer entity represents.
 	OrgDisplayName pulumi.StringPtrInput
-	// Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+	// Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
 	OrgPostalAddress GoogleTypePostalAddressResponsePtrInput
 	// Primary contact info.
 	PrimaryContactInfo GoogleCloudChannelV1ContactInfoResponsePtrInput
@@ -140,14 +149,14 @@ type customerArgs struct {
 	// Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
 	ChannelPartnerId     *string `pulumi:"channelPartnerId"`
 	ChannelPartnerLinkId string  `pulumi:"channelPartnerLinkId"`
-	// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
-	Domain *string `pulumi:"domain"`
+	// Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+	Domain string `pulumi:"domain"`
 	// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
 	LanguageCode *string `pulumi:"languageCode"`
-	// Required. Name of the organization that the customer entity represents.
-	OrgDisplayName *string `pulumi:"orgDisplayName"`
-	// Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
-	OrgPostalAddress *GoogleTypePostalAddress `pulumi:"orgPostalAddress"`
+	// Name of the organization that the customer entity represents.
+	OrgDisplayName string `pulumi:"orgDisplayName"`
+	// Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+	OrgPostalAddress GoogleTypePostalAddress `pulumi:"orgPostalAddress"`
 	// Primary contact info.
 	PrimaryContactInfo *GoogleCloudChannelV1ContactInfo `pulumi:"primaryContactInfo"`
 }
@@ -160,14 +169,14 @@ type CustomerArgs struct {
 	// Cloud Identity ID of the customer's channel partner. Populated only if a channel partner exists for this customer.
 	ChannelPartnerId     pulumi.StringPtrInput
 	ChannelPartnerLinkId pulumi.StringInput
-	// Required. Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
-	Domain pulumi.StringPtrInput
+	// Primary domain used by the customer. Domain of primary contact email is required to be same as the provided domain.
+	Domain pulumi.StringInput
 	// Optional. The BCP-47 language code, such as "en-US" or "sr-Latn". For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
 	LanguageCode pulumi.StringPtrInput
-	// Required. Name of the organization that the customer entity represents.
-	OrgDisplayName pulumi.StringPtrInput
-	// Required. Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
-	OrgPostalAddress GoogleTypePostalAddressPtrInput
+	// Name of the organization that the customer entity represents.
+	OrgDisplayName pulumi.StringInput
+	// Address of the organization of the customer entity. Region and zip codes are required to enforce US laws and embargoes. Valid address lines are required for all customers. Language code is discarded. Use the Customer-level language code to set the customer's language.
+	OrgPostalAddress GoogleTypePostalAddressInput
 	// Primary contact info.
 	PrimaryContactInfo GoogleCloudChannelV1ContactInfoPtrInput
 }

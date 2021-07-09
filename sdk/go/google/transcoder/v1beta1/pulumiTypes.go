@@ -212,8 +212,8 @@ func (o AdBreakResponseArrayOutput) Index(i pulumi.IntInput) AdBreakResponseOutp
 
 // Configuration for AES-128 encryption.
 type Aes128Encryption struct {
-	// Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
-	KeyUri *string `pulumi:"keyUri"`
+	// URI of the key delivery service. This URI is inserted into the M3U8 header.
+	KeyUri string `pulumi:"keyUri"`
 }
 
 // Aes128EncryptionInput is an input type that accepts Aes128EncryptionArgs and Aes128EncryptionOutput values.
@@ -229,8 +229,8 @@ type Aes128EncryptionInput interface {
 
 // Configuration for AES-128 encryption.
 type Aes128EncryptionArgs struct {
-	// Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
-	KeyUri pulumi.StringPtrInput `pulumi:"keyUri"`
+	// URI of the key delivery service. This URI is inserted into the M3U8 header.
+	KeyUri pulumi.StringInput `pulumi:"keyUri"`
 }
 
 func (Aes128EncryptionArgs) ElementType() reflect.Type {
@@ -311,9 +311,9 @@ func (o Aes128EncryptionOutput) ToAes128EncryptionPtrOutputWithContext(ctx conte
 	}).(Aes128EncryptionPtrOutput)
 }
 
-// Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
-func (o Aes128EncryptionOutput) KeyUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Aes128Encryption) *string { return v.KeyUri }).(pulumi.StringPtrOutput)
+// URI of the key delivery service. This URI is inserted into the M3U8 header.
+func (o Aes128EncryptionOutput) KeyUri() pulumi.StringOutput {
+	return o.ApplyT(func(v Aes128Encryption) string { return v.KeyUri }).(pulumi.StringOutput)
 }
 
 type Aes128EncryptionPtrOutput struct{ *pulumi.OutputState }
@@ -334,19 +334,19 @@ func (o Aes128EncryptionPtrOutput) Elem() Aes128EncryptionOutput {
 	return o.ApplyT(func(v *Aes128Encryption) Aes128Encryption { return *v }).(Aes128EncryptionOutput)
 }
 
-// Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
+// URI of the key delivery service. This URI is inserted into the M3U8 header.
 func (o Aes128EncryptionPtrOutput) KeyUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Aes128Encryption) *string {
 		if v == nil {
 			return nil
 		}
-		return v.KeyUri
+		return &v.KeyUri
 	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration for AES-128 encryption.
 type Aes128EncryptionResponse struct {
-	// Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
+	// URI of the key delivery service. This URI is inserted into the M3U8 header.
 	KeyUri string `pulumi:"keyUri"`
 }
 
@@ -363,7 +363,7 @@ type Aes128EncryptionResponseInput interface {
 
 // Configuration for AES-128 encryption.
 type Aes128EncryptionResponseArgs struct {
-	// Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
+	// URI of the key delivery service. This URI is inserted into the M3U8 header.
 	KeyUri pulumi.StringInput `pulumi:"keyUri"`
 }
 
@@ -394,7 +394,7 @@ func (o Aes128EncryptionResponseOutput) ToAes128EncryptionResponseOutputWithCont
 	return o
 }
 
-// Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
+// URI of the key delivery service. This URI is inserted into the M3U8 header.
 func (o Aes128EncryptionResponseOutput) KeyUri() pulumi.StringOutput {
 	return o.ApplyT(func(v Aes128EncryptionResponse) string { return v.KeyUri }).(pulumi.StringOutput)
 }
@@ -710,8 +710,8 @@ func (o AnimationEndResponseOutput) StartTimeOffset() pulumi.StringOutput {
 type AnimationFade struct {
 	// The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s
 	EndTimeOffset *string `pulumi:"endTimeOffset"`
-	// Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
-	FadeType *string `pulumi:"fadeType"`
+	// Type of fade animation: `FADE_IN` or `FADE_OUT`.
+	FadeType string `pulumi:"fadeType"`
 	// The time to start the fade animation, in seconds. Default: 0
 	StartTimeOffset *string `pulumi:"startTimeOffset"`
 	// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
@@ -733,8 +733,8 @@ type AnimationFadeInput interface {
 type AnimationFadeArgs struct {
 	// The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s
 	EndTimeOffset pulumi.StringPtrInput `pulumi:"endTimeOffset"`
-	// Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
-	FadeType *AnimationFadeFadeType `pulumi:"fadeType"`
+	// Type of fade animation: `FADE_IN` or `FADE_OUT`.
+	FadeType AnimationFadeFadeType `pulumi:"fadeType"`
 	// The time to start the fade animation, in seconds. Default: 0
 	StartTimeOffset pulumi.StringPtrInput `pulumi:"startTimeOffset"`
 	// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
@@ -824,9 +824,9 @@ func (o AnimationFadeOutput) EndTimeOffset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AnimationFade) *string { return v.EndTimeOffset }).(pulumi.StringPtrOutput)
 }
 
-// Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
-func (o AnimationFadeOutput) FadeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AnimationFade) *string { return v.FadeType }).(pulumi.StringPtrOutput)
+// Type of fade animation: `FADE_IN` or `FADE_OUT`.
+func (o AnimationFadeOutput) FadeType() pulumi.StringOutput {
+	return o.ApplyT(func(v AnimationFade) string { return v.FadeType }).(pulumi.StringOutput)
 }
 
 // The time to start the fade animation, in seconds. Default: 0
@@ -867,13 +867,13 @@ func (o AnimationFadePtrOutput) EndTimeOffset() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
+// Type of fade animation: `FADE_IN` or `FADE_OUT`.
 func (o AnimationFadePtrOutput) FadeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AnimationFade) *string {
 		if v == nil {
 			return nil
 		}
-		return v.FadeType
+		return &v.FadeType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -901,7 +901,7 @@ func (o AnimationFadePtrOutput) Xy() NormalizedCoordinatePtrOutput {
 type AnimationFadeResponse struct {
 	// The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s
 	EndTimeOffset string `pulumi:"endTimeOffset"`
-	// Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
+	// Type of fade animation: `FADE_IN` or `FADE_OUT`.
 	FadeType string `pulumi:"fadeType"`
 	// The time to start the fade animation, in seconds. Default: 0
 	StartTimeOffset string `pulumi:"startTimeOffset"`
@@ -924,7 +924,7 @@ type AnimationFadeResponseInput interface {
 type AnimationFadeResponseArgs struct {
 	// The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s
 	EndTimeOffset pulumi.StringInput `pulumi:"endTimeOffset"`
-	// Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
+	// Type of fade animation: `FADE_IN` or `FADE_OUT`.
 	FadeType pulumi.StringInput `pulumi:"fadeType"`
 	// The time to start the fade animation, in seconds. Default: 0
 	StartTimeOffset pulumi.StringInput `pulumi:"startTimeOffset"`
@@ -964,7 +964,7 @@ func (o AnimationFadeResponseOutput) EndTimeOffset() pulumi.StringOutput {
 	return o.ApplyT(func(v AnimationFadeResponse) string { return v.EndTimeOffset }).(pulumi.StringOutput)
 }
 
-// Required. Type of fade animation: `FADE_IN` or `FADE_OUT`.
+// Type of fade animation: `FADE_IN` or `FADE_OUT`.
 func (o AnimationFadeResponseOutput) FadeType() pulumi.StringOutput {
 	return o.ApplyT(func(v AnimationFadeResponse) string { return v.FadeType }).(pulumi.StringOutput)
 }
@@ -1490,8 +1490,8 @@ func (o AudioPtrOutput) Lufs() pulumi.Float64PtrOutput {
 type AudioAtom struct {
 	// List of `Channel`s for this audio stream. for in-depth explanation.
 	Channels []AudioChannel `pulumi:"channels"`
-	// Required. The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
-	Key *string `pulumi:"key"`
+	// The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+	Key string `pulumi:"key"`
 }
 
 // AudioAtomInput is an input type that accepts AudioAtomArgs and AudioAtomOutput values.
@@ -1509,8 +1509,8 @@ type AudioAtomInput interface {
 type AudioAtomArgs struct {
 	// List of `Channel`s for this audio stream. for in-depth explanation.
 	Channels AudioChannelArrayInput `pulumi:"channels"`
-	// Required. The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
-	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+	Key pulumi.StringInput `pulumi:"key"`
 }
 
 func (AudioAtomArgs) ElementType() reflect.Type {
@@ -1570,9 +1570,9 @@ func (o AudioAtomOutput) Channels() AudioChannelArrayOutput {
 	return o.ApplyT(func(v AudioAtom) []AudioChannel { return v.Channels }).(AudioChannelArrayOutput)
 }
 
-// Required. The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
-func (o AudioAtomOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AudioAtom) *string { return v.Key }).(pulumi.StringPtrOutput)
+// The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+func (o AudioAtomOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v AudioAtom) string { return v.Key }).(pulumi.StringOutput)
 }
 
 type AudioAtomArrayOutput struct{ *pulumi.OutputState }
@@ -1599,7 +1599,7 @@ func (o AudioAtomArrayOutput) Index(i pulumi.IntInput) AudioAtomOutput {
 type AudioAtomResponse struct {
 	// List of `Channel`s for this audio stream. for in-depth explanation.
 	Channels []AudioChannelResponse `pulumi:"channels"`
-	// Required. The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+	// The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
 	Key string `pulumi:"key"`
 }
 
@@ -1618,7 +1618,7 @@ type AudioAtomResponseInput interface {
 type AudioAtomResponseArgs struct {
 	// List of `Channel`s for this audio stream. for in-depth explanation.
 	Channels AudioChannelResponseArrayInput `pulumi:"channels"`
-	// Required. The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+	// The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
 	Key pulumi.StringInput `pulumi:"key"`
 }
 
@@ -1679,7 +1679,7 @@ func (o AudioAtomResponseOutput) Channels() AudioChannelResponseArrayOutput {
 	return o.ApplyT(func(v AudioAtomResponse) []AudioChannelResponse { return v.Channels }).(AudioChannelResponseArrayOutput)
 }
 
-// Required. The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+// The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
 func (o AudioAtomResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v AudioAtomResponse) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -1806,14 +1806,14 @@ func (o AudioChannelArrayOutput) Index(i pulumi.IntInput) AudioChannelOutput {
 
 // Identifies which input file, track, and channel should be used.
 type AudioChannelInput struct {
-	// Required. The zero-based index of the channel in the input file.
-	Channel *int `pulumi:"channel"`
+	// The zero-based index of the channel in the input file.
+	Channel int `pulumi:"channel"`
 	// Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
 	GainDb *float64 `pulumi:"gainDb"`
-	// Required. The `Input.key` that identifies the input file.
-	Key *string `pulumi:"key"`
-	// Required. The zero-based index of the track in the input file.
-	Track *int `pulumi:"track"`
+	// The `Input.key` that identifies the input file.
+	Key string `pulumi:"key"`
+	// The zero-based index of the track in the input file.
+	Track int `pulumi:"track"`
 }
 
 // AudioChannelInputInput is an input type that accepts AudioChannelInputArgs and AudioChannelInputOutput values.
@@ -1829,14 +1829,14 @@ type AudioChannelInputInput interface {
 
 // Identifies which input file, track, and channel should be used.
 type AudioChannelInputArgs struct {
-	// Required. The zero-based index of the channel in the input file.
-	Channel pulumi.IntPtrInput `pulumi:"channel"`
+	// The zero-based index of the channel in the input file.
+	Channel pulumi.IntInput `pulumi:"channel"`
 	// Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
 	GainDb pulumi.Float64PtrInput `pulumi:"gainDb"`
-	// Required. The `Input.key` that identifies the input file.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Required. The zero-based index of the track in the input file.
-	Track pulumi.IntPtrInput `pulumi:"track"`
+	// The `Input.key` that identifies the input file.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The zero-based index of the track in the input file.
+	Track pulumi.IntInput `pulumi:"track"`
 }
 
 func (AudioChannelInputArgs) ElementType() reflect.Type {
@@ -1891,9 +1891,9 @@ func (o AudioChannelInputOutput) ToAudioChannelInputOutputWithContext(ctx contex
 	return o
 }
 
-// Required. The zero-based index of the channel in the input file.
-func (o AudioChannelInputOutput) Channel() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AudioChannelInput) *int { return v.Channel }).(pulumi.IntPtrOutput)
+// The zero-based index of the channel in the input file.
+func (o AudioChannelInputOutput) Channel() pulumi.IntOutput {
+	return o.ApplyT(func(v AudioChannelInput) int { return v.Channel }).(pulumi.IntOutput)
 }
 
 // Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
@@ -1901,14 +1901,14 @@ func (o AudioChannelInputOutput) GainDb() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v AudioChannelInput) *float64 { return v.GainDb }).(pulumi.Float64PtrOutput)
 }
 
-// Required. The `Input.key` that identifies the input file.
-func (o AudioChannelInputOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AudioChannelInput) *string { return v.Key }).(pulumi.StringPtrOutput)
+// The `Input.key` that identifies the input file.
+func (o AudioChannelInputOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v AudioChannelInput) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Required. The zero-based index of the track in the input file.
-func (o AudioChannelInputOutput) Track() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AudioChannelInput) *int { return v.Track }).(pulumi.IntPtrOutput)
+// The zero-based index of the track in the input file.
+func (o AudioChannelInputOutput) Track() pulumi.IntOutput {
+	return o.ApplyT(func(v AudioChannelInput) int { return v.Track }).(pulumi.IntOutput)
 }
 
 type AudioChannelInputArrayOutput struct{ *pulumi.OutputState }
@@ -1933,13 +1933,13 @@ func (o AudioChannelInputArrayOutput) Index(i pulumi.IntInput) AudioChannelInput
 
 // Identifies which input file, track, and channel should be used.
 type AudioChannelInputResponse struct {
-	// Required. The zero-based index of the channel in the input file.
+	// The zero-based index of the channel in the input file.
 	Channel int `pulumi:"channel"`
 	// Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
 	GainDb float64 `pulumi:"gainDb"`
-	// Required. The `Input.key` that identifies the input file.
+	// The `Input.key` that identifies the input file.
 	Key string `pulumi:"key"`
-	// Required. The zero-based index of the track in the input file.
+	// The zero-based index of the track in the input file.
 	Track int `pulumi:"track"`
 }
 
@@ -1956,13 +1956,13 @@ type AudioChannelInputResponseInput interface {
 
 // Identifies which input file, track, and channel should be used.
 type AudioChannelInputResponseArgs struct {
-	// Required. The zero-based index of the channel in the input file.
+	// The zero-based index of the channel in the input file.
 	Channel pulumi.IntInput `pulumi:"channel"`
 	// Audio volume control in dB. Negative values decrease volume, positive values increase. The default is 0.
 	GainDb pulumi.Float64Input `pulumi:"gainDb"`
-	// Required. The `Input.key` that identifies the input file.
+	// The `Input.key` that identifies the input file.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Required. The zero-based index of the track in the input file.
+	// The zero-based index of the track in the input file.
 	Track pulumi.IntInput `pulumi:"track"`
 }
 
@@ -2018,7 +2018,7 @@ func (o AudioChannelInputResponseOutput) ToAudioChannelInputResponseOutputWithCo
 	return o
 }
 
-// Required. The zero-based index of the channel in the input file.
+// The zero-based index of the channel in the input file.
 func (o AudioChannelInputResponseOutput) Channel() pulumi.IntOutput {
 	return o.ApplyT(func(v AudioChannelInputResponse) int { return v.Channel }).(pulumi.IntOutput)
 }
@@ -2028,12 +2028,12 @@ func (o AudioChannelInputResponseOutput) GainDb() pulumi.Float64Output {
 	return o.ApplyT(func(v AudioChannelInputResponse) float64 { return v.GainDb }).(pulumi.Float64Output)
 }
 
-// Required. The `Input.key` that identifies the input file.
+// The `Input.key` that identifies the input file.
 func (o AudioChannelInputResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v AudioChannelInputResponse) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Required. The zero-based index of the track in the input file.
+// The zero-based index of the track in the input file.
 func (o AudioChannelInputResponseOutput) Track() pulumi.IntOutput {
 	return o.ApplyT(func(v AudioChannelInputResponse) int { return v.Track }).(pulumi.IntOutput)
 }
@@ -2233,8 +2233,8 @@ func (o AudioResponseOutput) Lufs() pulumi.Float64Output {
 
 // Audio stream resource.
 type AudioStream struct {
-	// Required. Audio bitrate in bits per second. Must be between 1 and 10,000,000.
-	BitrateBps *int `pulumi:"bitrateBps"`
+	// Audio bitrate in bits per second. Must be between 1 and 10,000,000.
+	BitrateBps int `pulumi:"bitrateBps"`
 	// Number of audio channels. Must be between 1 and 6. The default is 2.
 	ChannelCount *int `pulumi:"channelCount"`
 	// A list of channel names specifying layout of the audio channels. This only affects the metadata embedded in the container headers, if supported by the specified format. The default is `["fl", "fr"]`. Supported channel names: - 'fl' - Front left channel - 'fr' - Front right channel - 'sl' - Side left channel - 'sr' - Side right channel - 'fc' - Front center channel - 'lfe' - Low frequency
@@ -2260,8 +2260,8 @@ type AudioStreamInput interface {
 
 // Audio stream resource.
 type AudioStreamArgs struct {
-	// Required. Audio bitrate in bits per second. Must be between 1 and 10,000,000.
-	BitrateBps pulumi.IntPtrInput `pulumi:"bitrateBps"`
+	// Audio bitrate in bits per second. Must be between 1 and 10,000,000.
+	BitrateBps pulumi.IntInput `pulumi:"bitrateBps"`
 	// Number of audio channels. Must be between 1 and 6. The default is 2.
 	ChannelCount pulumi.IntPtrInput `pulumi:"channelCount"`
 	// A list of channel names specifying layout of the audio channels. This only affects the metadata embedded in the container headers, if supported by the specified format. The default is `["fl", "fr"]`. Supported channel names: - 'fl' - Front left channel - 'fr' - Front right channel - 'sl' - Side left channel - 'sr' - Side right channel - 'fc' - Front center channel - 'lfe' - Low frequency
@@ -2352,9 +2352,9 @@ func (o AudioStreamOutput) ToAudioStreamPtrOutputWithContext(ctx context.Context
 	}).(AudioStreamPtrOutput)
 }
 
-// Required. Audio bitrate in bits per second. Must be between 1 and 10,000,000.
-func (o AudioStreamOutput) BitrateBps() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v AudioStream) *int { return v.BitrateBps }).(pulumi.IntPtrOutput)
+// Audio bitrate in bits per second. Must be between 1 and 10,000,000.
+func (o AudioStreamOutput) BitrateBps() pulumi.IntOutput {
+	return o.ApplyT(func(v AudioStream) int { return v.BitrateBps }).(pulumi.IntOutput)
 }
 
 // Number of audio channels. Must be between 1 and 6. The default is 2.
@@ -2400,13 +2400,13 @@ func (o AudioStreamPtrOutput) Elem() AudioStreamOutput {
 	return o.ApplyT(func(v *AudioStream) AudioStream { return *v }).(AudioStreamOutput)
 }
 
-// Required. Audio bitrate in bits per second. Must be between 1 and 10,000,000.
+// Audio bitrate in bits per second. Must be between 1 and 10,000,000.
 func (o AudioStreamPtrOutput) BitrateBps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AudioStream) *int {
 		if v == nil {
 			return nil
 		}
-		return v.BitrateBps
+		return &v.BitrateBps
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -2462,7 +2462,7 @@ func (o AudioStreamPtrOutput) SampleRateHertz() pulumi.IntPtrOutput {
 
 // Audio stream resource.
 type AudioStreamResponse struct {
-	// Required. Audio bitrate in bits per second. Must be between 1 and 10,000,000.
+	// Audio bitrate in bits per second. Must be between 1 and 10,000,000.
 	BitrateBps int `pulumi:"bitrateBps"`
 	// Number of audio channels. Must be between 1 and 6. The default is 2.
 	ChannelCount int `pulumi:"channelCount"`
@@ -2489,7 +2489,7 @@ type AudioStreamResponseInput interface {
 
 // Audio stream resource.
 type AudioStreamResponseArgs struct {
-	// Required. Audio bitrate in bits per second. Must be between 1 and 10,000,000.
+	// Audio bitrate in bits per second. Must be between 1 and 10,000,000.
 	BitrateBps pulumi.IntInput `pulumi:"bitrateBps"`
 	// Number of audio channels. Must be between 1 and 6. The default is 2.
 	ChannelCount pulumi.IntInput `pulumi:"channelCount"`
@@ -2530,7 +2530,7 @@ func (o AudioStreamResponseOutput) ToAudioStreamResponseOutputWithContext(ctx co
 	return o
 }
 
-// Required. Audio bitrate in bits per second. Must be between 1 and 10,000,000.
+// Audio bitrate in bits per second. Must be between 1 and 10,000,000.
 func (o AudioStreamResponseOutput) BitrateBps() pulumi.IntOutput {
 	return o.ApplyT(func(v AudioStreamResponse) int { return v.BitrateBps }).(pulumi.IntOutput)
 }
@@ -4024,10 +4024,10 @@ func (o ElementaryStreamResponseArrayOutput) Index(i pulumi.IntInput) Elementary
 type Encryption struct {
 	// Configuration for AES-128 encryption.
 	Aes128 *Aes128Encryption `pulumi:"aes128"`
-	// Required. 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
-	Iv *string `pulumi:"iv"`
-	// Required. 128 bit encryption key represented as lowercase hexadecimal digits.
-	Key *string `pulumi:"key"`
+	// 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
+	Iv string `pulumi:"iv"`
+	// 128 bit encryption key represented as lowercase hexadecimal digits.
+	Key string `pulumi:"key"`
 	// Configuration for MPEG Common Encryption (MPEG-CENC).
 	MpegCenc *MpegCommonEncryption `pulumi:"mpegCenc"`
 	// Configuration for SAMPLE-AES encryption.
@@ -4049,10 +4049,10 @@ type EncryptionInput interface {
 type EncryptionArgs struct {
 	// Configuration for AES-128 encryption.
 	Aes128 Aes128EncryptionPtrInput `pulumi:"aes128"`
-	// Required. 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
-	Iv pulumi.StringPtrInput `pulumi:"iv"`
-	// Required. 128 bit encryption key represented as lowercase hexadecimal digits.
-	Key pulumi.StringPtrInput `pulumi:"key"`
+	// 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
+	Iv pulumi.StringInput `pulumi:"iv"`
+	// 128 bit encryption key represented as lowercase hexadecimal digits.
+	Key pulumi.StringInput `pulumi:"key"`
 	// Configuration for MPEG Common Encryption (MPEG-CENC).
 	MpegCenc MpegCommonEncryptionPtrInput `pulumi:"mpegCenc"`
 	// Configuration for SAMPLE-AES encryption.
@@ -4142,14 +4142,14 @@ func (o EncryptionOutput) Aes128() Aes128EncryptionPtrOutput {
 	return o.ApplyT(func(v Encryption) *Aes128Encryption { return v.Aes128 }).(Aes128EncryptionPtrOutput)
 }
 
-// Required. 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
-func (o EncryptionOutput) Iv() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Encryption) *string { return v.Iv }).(pulumi.StringPtrOutput)
+// 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
+func (o EncryptionOutput) Iv() pulumi.StringOutput {
+	return o.ApplyT(func(v Encryption) string { return v.Iv }).(pulumi.StringOutput)
 }
 
-// Required. 128 bit encryption key represented as lowercase hexadecimal digits.
-func (o EncryptionOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Encryption) *string { return v.Key }).(pulumi.StringPtrOutput)
+// 128 bit encryption key represented as lowercase hexadecimal digits.
+func (o EncryptionOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v Encryption) string { return v.Key }).(pulumi.StringOutput)
 }
 
 // Configuration for MPEG Common Encryption (MPEG-CENC).
@@ -4190,23 +4190,23 @@ func (o EncryptionPtrOutput) Aes128() Aes128EncryptionPtrOutput {
 	}).(Aes128EncryptionPtrOutput)
 }
 
-// Required. 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
+// 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
 func (o EncryptionPtrOutput) Iv() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Encryption) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Iv
+		return &v.Iv
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. 128 bit encryption key represented as lowercase hexadecimal digits.
+// 128 bit encryption key represented as lowercase hexadecimal digits.
 func (o EncryptionPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Encryption) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Key
+		return &v.Key
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4234,9 +4234,9 @@ func (o EncryptionPtrOutput) SampleAes() SampleAesEncryptionPtrOutput {
 type EncryptionResponse struct {
 	// Configuration for AES-128 encryption.
 	Aes128 Aes128EncryptionResponse `pulumi:"aes128"`
-	// Required. 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
+	// 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
 	Iv string `pulumi:"iv"`
-	// Required. 128 bit encryption key represented as lowercase hexadecimal digits.
+	// 128 bit encryption key represented as lowercase hexadecimal digits.
 	Key string `pulumi:"key"`
 	// Configuration for MPEG Common Encryption (MPEG-CENC).
 	MpegCenc MpegCommonEncryptionResponse `pulumi:"mpegCenc"`
@@ -4259,9 +4259,9 @@ type EncryptionResponseInput interface {
 type EncryptionResponseArgs struct {
 	// Configuration for AES-128 encryption.
 	Aes128 Aes128EncryptionResponseInput `pulumi:"aes128"`
-	// Required. 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
+	// 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
 	Iv pulumi.StringInput `pulumi:"iv"`
-	// Required. 128 bit encryption key represented as lowercase hexadecimal digits.
+	// 128 bit encryption key represented as lowercase hexadecimal digits.
 	Key pulumi.StringInput `pulumi:"key"`
 	// Configuration for MPEG Common Encryption (MPEG-CENC).
 	MpegCenc MpegCommonEncryptionResponseInput `pulumi:"mpegCenc"`
@@ -4301,12 +4301,12 @@ func (o EncryptionResponseOutput) Aes128() Aes128EncryptionResponseOutput {
 	return o.ApplyT(func(v EncryptionResponse) Aes128EncryptionResponse { return v.Aes128 }).(Aes128EncryptionResponseOutput)
 }
 
-// Required. 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
+// 128 bit Initialization Vector (IV) represented as lowercase hexadecimal digits.
 func (o EncryptionResponseOutput) Iv() pulumi.StringOutput {
 	return o.ApplyT(func(v EncryptionResponse) string { return v.Iv }).(pulumi.StringOutput)
 }
 
-// Required. 128 bit encryption key represented as lowercase hexadecimal digits.
+// 128 bit encryption key represented as lowercase hexadecimal digits.
 func (o EncryptionResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v EncryptionResponse) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -4427,8 +4427,8 @@ type Image struct {
 	Alpha *float64 `pulumi:"alpha"`
 	// Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
 	Resolution *NormalizedCoordinate `pulumi:"resolution"`
-	// Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
-	Uri *string `pulumi:"uri"`
+	// URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+	Uri string `pulumi:"uri"`
 }
 
 // ImageInput is an input type that accepts ImageArgs and ImageOutput values.
@@ -4448,8 +4448,8 @@ type ImageArgs struct {
 	Alpha pulumi.Float64PtrInput `pulumi:"alpha"`
 	// Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
 	Resolution NormalizedCoordinatePtrInput `pulumi:"resolution"`
-	// Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
-	Uri pulumi.StringPtrInput `pulumi:"uri"`
+	// URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
 func (ImageArgs) ElementType() reflect.Type {
@@ -4540,9 +4540,9 @@ func (o ImageOutput) Resolution() NormalizedCoordinatePtrOutput {
 	return o.ApplyT(func(v Image) *NormalizedCoordinate { return v.Resolution }).(NormalizedCoordinatePtrOutput)
 }
 
-// Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
-func (o ImageOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Image) *string { return v.Uri }).(pulumi.StringPtrOutput)
+// URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+func (o ImageOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v Image) string { return v.Uri }).(pulumi.StringOutput)
 }
 
 type ImagePtrOutput struct{ *pulumi.OutputState }
@@ -4583,13 +4583,13 @@ func (o ImagePtrOutput) Resolution() NormalizedCoordinatePtrOutput {
 	}).(NormalizedCoordinatePtrOutput)
 }
 
-// Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+// URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
 func (o ImagePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Uri
+		return &v.Uri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4599,7 +4599,7 @@ type ImageResponse struct {
 	Alpha float64 `pulumi:"alpha"`
 	// Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
 	Resolution NormalizedCoordinateResponse `pulumi:"resolution"`
-	// Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+	// URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
 	Uri string `pulumi:"uri"`
 }
 
@@ -4620,7 +4620,7 @@ type ImageResponseArgs struct {
 	Alpha pulumi.Float64Input `pulumi:"alpha"`
 	// Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
 	Resolution NormalizedCoordinateResponseInput `pulumi:"resolution"`
-	// Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+	// URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -4661,7 +4661,7 @@ func (o ImageResponseOutput) Resolution() NormalizedCoordinateResponseOutput {
 	return o.ApplyT(func(v ImageResponse) NormalizedCoordinateResponse { return v.Resolution }).(NormalizedCoordinateResponseOutput)
 }
 
-// Required. URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
+// URI of the JPEG image in Cloud Storage. For example, `gs://bucket/inputs/image.jpeg`. JPEG is the only supported image type.
 func (o ImageResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v ImageResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -5516,10 +5516,10 @@ func (o JobConfigResponsePtrOutput) SpriteSheets() SpriteSheetResponseArrayOutpu
 type Manifest struct {
 	// The name of the generated file. The default is `"manifest"` with the extension suffix corresponding to the `Manifest.type`.
 	FileName *string `pulumi:"fileName"`
-	// Required. List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+	// List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
 	MuxStreams []string `pulumi:"muxStreams"`
-	// Required. Type of the manifest, can be "HLS" or "DASH".
-	Type *string `pulumi:"type"`
+	// Type of the manifest, can be "HLS" or "DASH".
+	Type string `pulumi:"type"`
 }
 
 // ManifestInput is an input type that accepts ManifestArgs and ManifestOutput values.
@@ -5537,10 +5537,10 @@ type ManifestInput interface {
 type ManifestArgs struct {
 	// The name of the generated file. The default is `"manifest"` with the extension suffix corresponding to the `Manifest.type`.
 	FileName pulumi.StringPtrInput `pulumi:"fileName"`
-	// Required. List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+	// List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
 	MuxStreams pulumi.StringArrayInput `pulumi:"muxStreams"`
-	// Required. Type of the manifest, can be "HLS" or "DASH".
-	Type *ManifestType `pulumi:"type"`
+	// Type of the manifest, can be "HLS" or "DASH".
+	Type ManifestType `pulumi:"type"`
 }
 
 func (ManifestArgs) ElementType() reflect.Type {
@@ -5600,14 +5600,14 @@ func (o ManifestOutput) FileName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Manifest) *string { return v.FileName }).(pulumi.StringPtrOutput)
 }
 
-// Required. List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+// List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
 func (o ManifestOutput) MuxStreams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Manifest) []string { return v.MuxStreams }).(pulumi.StringArrayOutput)
 }
 
-// Required. Type of the manifest, can be "HLS" or "DASH".
-func (o ManifestOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Manifest) *string { return v.Type }).(pulumi.StringPtrOutput)
+// Type of the manifest, can be "HLS" or "DASH".
+func (o ManifestOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v Manifest) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type ManifestArrayOutput struct{ *pulumi.OutputState }
@@ -5634,9 +5634,9 @@ func (o ManifestArrayOutput) Index(i pulumi.IntInput) ManifestOutput {
 type ManifestResponse struct {
 	// The name of the generated file. The default is `"manifest"` with the extension suffix corresponding to the `Manifest.type`.
 	FileName string `pulumi:"fileName"`
-	// Required. List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+	// List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
 	MuxStreams []string `pulumi:"muxStreams"`
-	// Required. Type of the manifest, can be "HLS" or "DASH".
+	// Type of the manifest, can be "HLS" or "DASH".
 	Type string `pulumi:"type"`
 }
 
@@ -5655,9 +5655,9 @@ type ManifestResponseInput interface {
 type ManifestResponseArgs struct {
 	// The name of the generated file. The default is `"manifest"` with the extension suffix corresponding to the `Manifest.type`.
 	FileName pulumi.StringInput `pulumi:"fileName"`
-	// Required. List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+	// List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
 	MuxStreams pulumi.StringArrayInput `pulumi:"muxStreams"`
-	// Required. Type of the manifest, can be "HLS" or "DASH".
+	// Type of the manifest, can be "HLS" or "DASH".
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -5718,12 +5718,12 @@ func (o ManifestResponseOutput) FileName() pulumi.StringOutput {
 	return o.ApplyT(func(v ManifestResponse) string { return v.FileName }).(pulumi.StringOutput)
 }
 
-// Required. List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
+// List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
 func (o ManifestResponseOutput) MuxStreams() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ManifestResponse) []string { return v.MuxStreams }).(pulumi.StringArrayOutput)
 }
 
-// Required. Type of the manifest, can be "HLS" or "DASH".
+// Type of the manifest, can be "HLS" or "DASH".
 func (o ManifestResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v ManifestResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -5750,10 +5750,10 @@ func (o ManifestResponseArrayOutput) Index(i pulumi.IntInput) ManifestResponseOu
 
 // Configuration for MPEG Common Encryption (MPEG-CENC).
 type MpegCommonEncryption struct {
-	// Required. 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
-	KeyId *string `pulumi:"keyId"`
-	// Required. Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
-	Scheme *string `pulumi:"scheme"`
+	// 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
+	KeyId string `pulumi:"keyId"`
+	// Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
+	Scheme string `pulumi:"scheme"`
 }
 
 // MpegCommonEncryptionInput is an input type that accepts MpegCommonEncryptionArgs and MpegCommonEncryptionOutput values.
@@ -5769,10 +5769,10 @@ type MpegCommonEncryptionInput interface {
 
 // Configuration for MPEG Common Encryption (MPEG-CENC).
 type MpegCommonEncryptionArgs struct {
-	// Required. 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
-	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
-	// Required. Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
-	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
+	// 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
+	KeyId pulumi.StringInput `pulumi:"keyId"`
+	// Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
+	Scheme pulumi.StringInput `pulumi:"scheme"`
 }
 
 func (MpegCommonEncryptionArgs) ElementType() reflect.Type {
@@ -5853,14 +5853,14 @@ func (o MpegCommonEncryptionOutput) ToMpegCommonEncryptionPtrOutputWithContext(c
 	}).(MpegCommonEncryptionPtrOutput)
 }
 
-// Required. 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
-func (o MpegCommonEncryptionOutput) KeyId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MpegCommonEncryption) *string { return v.KeyId }).(pulumi.StringPtrOutput)
+// 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
+func (o MpegCommonEncryptionOutput) KeyId() pulumi.StringOutput {
+	return o.ApplyT(func(v MpegCommonEncryption) string { return v.KeyId }).(pulumi.StringOutput)
 }
 
-// Required. Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
-func (o MpegCommonEncryptionOutput) Scheme() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MpegCommonEncryption) *string { return v.Scheme }).(pulumi.StringPtrOutput)
+// Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
+func (o MpegCommonEncryptionOutput) Scheme() pulumi.StringOutput {
+	return o.ApplyT(func(v MpegCommonEncryption) string { return v.Scheme }).(pulumi.StringOutput)
 }
 
 type MpegCommonEncryptionPtrOutput struct{ *pulumi.OutputState }
@@ -5881,31 +5881,31 @@ func (o MpegCommonEncryptionPtrOutput) Elem() MpegCommonEncryptionOutput {
 	return o.ApplyT(func(v *MpegCommonEncryption) MpegCommonEncryption { return *v }).(MpegCommonEncryptionOutput)
 }
 
-// Required. 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
+// 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
 func (o MpegCommonEncryptionPtrOutput) KeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MpegCommonEncryption) *string {
 		if v == nil {
 			return nil
 		}
-		return v.KeyId
+		return &v.KeyId
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
+// Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
 func (o MpegCommonEncryptionPtrOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MpegCommonEncryption) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Scheme
+		return &v.Scheme
 	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration for MPEG Common Encryption (MPEG-CENC).
 type MpegCommonEncryptionResponse struct {
-	// Required. 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
+	// 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
 	KeyId string `pulumi:"keyId"`
-	// Required. Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
+	// Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
 	Scheme string `pulumi:"scheme"`
 }
 
@@ -5922,9 +5922,9 @@ type MpegCommonEncryptionResponseInput interface {
 
 // Configuration for MPEG Common Encryption (MPEG-CENC).
 type MpegCommonEncryptionResponseArgs struct {
-	// Required. 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
+	// 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
 	KeyId pulumi.StringInput `pulumi:"keyId"`
-	// Required. Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
+	// Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
 	Scheme pulumi.StringInput `pulumi:"scheme"`
 }
 
@@ -5955,12 +5955,12 @@ func (o MpegCommonEncryptionResponseOutput) ToMpegCommonEncryptionResponseOutput
 	return o
 }
 
-// Required. 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
+// 128 bit Key ID represented as lowercase hexadecimal digits for use with common encryption.
 func (o MpegCommonEncryptionResponseOutput) KeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v MpegCommonEncryptionResponse) string { return v.KeyId }).(pulumi.StringOutput)
 }
 
-// Required. Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
+// Specify the encryption scheme. Supported encryption schemes: - 'cenc' - 'cbcs'
 func (o MpegCommonEncryptionResponseOutput) Scheme() pulumi.StringOutput {
 	return o.ApplyT(func(v MpegCommonEncryptionResponse) string { return v.Scheme }).(pulumi.StringOutput)
 }
@@ -8174,8 +8174,8 @@ func (o PubsubDestinationResponsePtrOutput) Topic() pulumi.StringPtrOutput {
 
 // Configuration for SAMPLE-AES encryption.
 type SampleAesEncryption struct {
-	// Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
-	KeyUri *string `pulumi:"keyUri"`
+	// URI of the key delivery service. This URI is inserted into the M3U8 header.
+	KeyUri string `pulumi:"keyUri"`
 }
 
 // SampleAesEncryptionInput is an input type that accepts SampleAesEncryptionArgs and SampleAesEncryptionOutput values.
@@ -8191,8 +8191,8 @@ type SampleAesEncryptionInput interface {
 
 // Configuration for SAMPLE-AES encryption.
 type SampleAesEncryptionArgs struct {
-	// Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
-	KeyUri pulumi.StringPtrInput `pulumi:"keyUri"`
+	// URI of the key delivery service. This URI is inserted into the M3U8 header.
+	KeyUri pulumi.StringInput `pulumi:"keyUri"`
 }
 
 func (SampleAesEncryptionArgs) ElementType() reflect.Type {
@@ -8273,9 +8273,9 @@ func (o SampleAesEncryptionOutput) ToSampleAesEncryptionPtrOutputWithContext(ctx
 	}).(SampleAesEncryptionPtrOutput)
 }
 
-// Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
-func (o SampleAesEncryptionOutput) KeyUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SampleAesEncryption) *string { return v.KeyUri }).(pulumi.StringPtrOutput)
+// URI of the key delivery service. This URI is inserted into the M3U8 header.
+func (o SampleAesEncryptionOutput) KeyUri() pulumi.StringOutput {
+	return o.ApplyT(func(v SampleAesEncryption) string { return v.KeyUri }).(pulumi.StringOutput)
 }
 
 type SampleAesEncryptionPtrOutput struct{ *pulumi.OutputState }
@@ -8296,19 +8296,19 @@ func (o SampleAesEncryptionPtrOutput) Elem() SampleAesEncryptionOutput {
 	return o.ApplyT(func(v *SampleAesEncryption) SampleAesEncryption { return *v }).(SampleAesEncryptionOutput)
 }
 
-// Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
+// URI of the key delivery service. This URI is inserted into the M3U8 header.
 func (o SampleAesEncryptionPtrOutput) KeyUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SampleAesEncryption) *string {
 		if v == nil {
 			return nil
 		}
-		return v.KeyUri
+		return &v.KeyUri
 	}).(pulumi.StringPtrOutput)
 }
 
 // Configuration for SAMPLE-AES encryption.
 type SampleAesEncryptionResponse struct {
-	// Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
+	// URI of the key delivery service. This URI is inserted into the M3U8 header.
 	KeyUri string `pulumi:"keyUri"`
 }
 
@@ -8325,7 +8325,7 @@ type SampleAesEncryptionResponseInput interface {
 
 // Configuration for SAMPLE-AES encryption.
 type SampleAesEncryptionResponseArgs struct {
-	// Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
+	// URI of the key delivery service. This URI is inserted into the M3U8 header.
 	KeyUri pulumi.StringInput `pulumi:"keyUri"`
 }
 
@@ -8356,15 +8356,15 @@ func (o SampleAesEncryptionResponseOutput) ToSampleAesEncryptionResponseOutputWi
 	return o
 }
 
-// Required. URI of the key delivery service. This URI is inserted into the M3U8 header.
+// URI of the key delivery service. This URI is inserted into the M3U8 header.
 func (o SampleAesEncryptionResponseOutput) KeyUri() pulumi.StringOutput {
 	return o.ApplyT(func(v SampleAesEncryptionResponse) string { return v.KeyUri }).(pulumi.StringOutput)
 }
 
 // Segment settings for `"ts"`, `"fmp4"` and `"vtt"`.
 type SegmentSettings struct {
-	// Required. Create an individual segment file. The default is `false`.
-	IndividualSegments *bool `pulumi:"individualSegments"`
+	// Create an individual segment file. The default is `false`.
+	IndividualSegments bool `pulumi:"individualSegments"`
 	// Duration of the segments in seconds. The default is `"6.0s"`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).
 	SegmentDuration *string `pulumi:"segmentDuration"`
 }
@@ -8382,8 +8382,8 @@ type SegmentSettingsInput interface {
 
 // Segment settings for `"ts"`, `"fmp4"` and `"vtt"`.
 type SegmentSettingsArgs struct {
-	// Required. Create an individual segment file. The default is `false`.
-	IndividualSegments pulumi.BoolPtrInput `pulumi:"individualSegments"`
+	// Create an individual segment file. The default is `false`.
+	IndividualSegments pulumi.BoolInput `pulumi:"individualSegments"`
 	// Duration of the segments in seconds. The default is `"6.0s"`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).
 	SegmentDuration pulumi.StringPtrInput `pulumi:"segmentDuration"`
 }
@@ -8466,9 +8466,9 @@ func (o SegmentSettingsOutput) ToSegmentSettingsPtrOutputWithContext(ctx context
 	}).(SegmentSettingsPtrOutput)
 }
 
-// Required. Create an individual segment file. The default is `false`.
-func (o SegmentSettingsOutput) IndividualSegments() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v SegmentSettings) *bool { return v.IndividualSegments }).(pulumi.BoolPtrOutput)
+// Create an individual segment file. The default is `false`.
+func (o SegmentSettingsOutput) IndividualSegments() pulumi.BoolOutput {
+	return o.ApplyT(func(v SegmentSettings) bool { return v.IndividualSegments }).(pulumi.BoolOutput)
 }
 
 // Duration of the segments in seconds. The default is `"6.0s"`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).
@@ -8494,13 +8494,13 @@ func (o SegmentSettingsPtrOutput) Elem() SegmentSettingsOutput {
 	return o.ApplyT(func(v *SegmentSettings) SegmentSettings { return *v }).(SegmentSettingsOutput)
 }
 
-// Required. Create an individual segment file. The default is `false`.
+// Create an individual segment file. The default is `false`.
 func (o SegmentSettingsPtrOutput) IndividualSegments() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SegmentSettings) *bool {
 		if v == nil {
 			return nil
 		}
-		return v.IndividualSegments
+		return &v.IndividualSegments
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -8516,7 +8516,7 @@ func (o SegmentSettingsPtrOutput) SegmentDuration() pulumi.StringPtrOutput {
 
 // Segment settings for `"ts"`, `"fmp4"` and `"vtt"`.
 type SegmentSettingsResponse struct {
-	// Required. Create an individual segment file. The default is `false`.
+	// Create an individual segment file. The default is `false`.
 	IndividualSegments bool `pulumi:"individualSegments"`
 	// Duration of the segments in seconds. The default is `"6.0s"`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).
 	SegmentDuration string `pulumi:"segmentDuration"`
@@ -8535,7 +8535,7 @@ type SegmentSettingsResponseInput interface {
 
 // Segment settings for `"ts"`, `"fmp4"` and `"vtt"`.
 type SegmentSettingsResponseArgs struct {
-	// Required. Create an individual segment file. The default is `false`.
+	// Create an individual segment file. The default is `false`.
 	IndividualSegments pulumi.BoolInput `pulumi:"individualSegments"`
 	// Duration of the segments in seconds. The default is `"6.0s"`. Note that `segmentDuration` must be greater than or equal to [`gopDuration`](#videostream), and `segmentDuration` must be divisible by [`gopDuration`](#videostream).
 	SegmentDuration pulumi.StringInput `pulumi:"segmentDuration"`
@@ -8568,7 +8568,7 @@ func (o SegmentSettingsResponseOutput) ToSegmentSettingsResponseOutputWithContex
 	return o
 }
 
-// Required. Create an individual segment file. The default is `false`.
+// Create an individual segment file. The default is `false`.
 func (o SegmentSettingsResponseOutput) IndividualSegments() pulumi.BoolOutput {
 	return o.ApplyT(func(v SegmentSettingsResponse) bool { return v.IndividualSegments }).(pulumi.BoolOutput)
 }
@@ -8584,8 +8584,8 @@ type SpriteSheet struct {
 	ColumnCount *int `pulumi:"columnCount"`
 	// End time in seconds, relative to the output file timeline. When `end_time_offset` is not specified, the sprites are generated until the end of the output file.
 	EndTimeOffset *string `pulumi:"endTimeOffset"`
-	// Required. File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
-	FilePrefix *string `pulumi:"filePrefix"`
+	// File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
+	FilePrefix string `pulumi:"filePrefix"`
 	// Format type. The default is `"jpeg"`. Supported formats: - 'jpeg'
 	Format *string `pulumi:"format"`
 	// Starting from `0s`, create sprites at regular intervals. Specify the interval value in seconds.
@@ -8594,10 +8594,10 @@ type SpriteSheet struct {
 	Quality *int `pulumi:"quality"`
 	// The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created. The default is 0, which indicates no maximum limit.
 	RowCount *int `pulumi:"rowCount"`
-	// Required. The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
-	SpriteHeightPixels *int `pulumi:"spriteHeightPixels"`
-	// Required. The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
-	SpriteWidthPixels *int `pulumi:"spriteWidthPixels"`
+	// The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
+	SpriteHeightPixels int `pulumi:"spriteHeightPixels"`
+	// The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
+	SpriteWidthPixels int `pulumi:"spriteWidthPixels"`
 	// Start time in seconds, relative to the output file timeline. Determines the first sprite to pick. The default is `0s`.
 	StartTimeOffset *string `pulumi:"startTimeOffset"`
 	// Total number of sprites. Create the specified number of sprites distributed evenly across the timeline of the output media. The default is 100.
@@ -8621,8 +8621,8 @@ type SpriteSheetArgs struct {
 	ColumnCount pulumi.IntPtrInput `pulumi:"columnCount"`
 	// End time in seconds, relative to the output file timeline. When `end_time_offset` is not specified, the sprites are generated until the end of the output file.
 	EndTimeOffset pulumi.StringPtrInput `pulumi:"endTimeOffset"`
-	// Required. File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
-	FilePrefix pulumi.StringPtrInput `pulumi:"filePrefix"`
+	// File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
+	FilePrefix pulumi.StringInput `pulumi:"filePrefix"`
 	// Format type. The default is `"jpeg"`. Supported formats: - 'jpeg'
 	Format pulumi.StringPtrInput `pulumi:"format"`
 	// Starting from `0s`, create sprites at regular intervals. Specify the interval value in seconds.
@@ -8631,10 +8631,10 @@ type SpriteSheetArgs struct {
 	Quality pulumi.IntPtrInput `pulumi:"quality"`
 	// The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created. The default is 0, which indicates no maximum limit.
 	RowCount pulumi.IntPtrInput `pulumi:"rowCount"`
-	// Required. The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
-	SpriteHeightPixels pulumi.IntPtrInput `pulumi:"spriteHeightPixels"`
-	// Required. The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
-	SpriteWidthPixels pulumi.IntPtrInput `pulumi:"spriteWidthPixels"`
+	// The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
+	SpriteHeightPixels pulumi.IntInput `pulumi:"spriteHeightPixels"`
+	// The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
+	SpriteWidthPixels pulumi.IntInput `pulumi:"spriteWidthPixels"`
 	// Start time in seconds, relative to the output file timeline. Determines the first sprite to pick. The default is `0s`.
 	StartTimeOffset pulumi.StringPtrInput `pulumi:"startTimeOffset"`
 	// Total number of sprites. Create the specified number of sprites distributed evenly across the timeline of the output media. The default is 100.
@@ -8703,9 +8703,9 @@ func (o SpriteSheetOutput) EndTimeOffset() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SpriteSheet) *string { return v.EndTimeOffset }).(pulumi.StringPtrOutput)
 }
 
-// Required. File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
-func (o SpriteSheetOutput) FilePrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SpriteSheet) *string { return v.FilePrefix }).(pulumi.StringPtrOutput)
+// File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
+func (o SpriteSheetOutput) FilePrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v SpriteSheet) string { return v.FilePrefix }).(pulumi.StringOutput)
 }
 
 // Format type. The default is `"jpeg"`. Supported formats: - 'jpeg'
@@ -8728,14 +8728,14 @@ func (o SpriteSheetOutput) RowCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v SpriteSheet) *int { return v.RowCount }).(pulumi.IntPtrOutput)
 }
 
-// Required. The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
-func (o SpriteSheetOutput) SpriteHeightPixels() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SpriteSheet) *int { return v.SpriteHeightPixels }).(pulumi.IntPtrOutput)
+// The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
+func (o SpriteSheetOutput) SpriteHeightPixels() pulumi.IntOutput {
+	return o.ApplyT(func(v SpriteSheet) int { return v.SpriteHeightPixels }).(pulumi.IntOutput)
 }
 
-// Required. The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
-func (o SpriteSheetOutput) SpriteWidthPixels() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v SpriteSheet) *int { return v.SpriteWidthPixels }).(pulumi.IntPtrOutput)
+// The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
+func (o SpriteSheetOutput) SpriteWidthPixels() pulumi.IntOutput {
+	return o.ApplyT(func(v SpriteSheet) int { return v.SpriteWidthPixels }).(pulumi.IntOutput)
 }
 
 // Start time in seconds, relative to the output file timeline. Determines the first sprite to pick. The default is `0s`.
@@ -8774,7 +8774,7 @@ type SpriteSheetResponse struct {
 	ColumnCount int `pulumi:"columnCount"`
 	// End time in seconds, relative to the output file timeline. When `end_time_offset` is not specified, the sprites are generated until the end of the output file.
 	EndTimeOffset string `pulumi:"endTimeOffset"`
-	// Required. File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
+	// File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
 	FilePrefix string `pulumi:"filePrefix"`
 	// Format type. The default is `"jpeg"`. Supported formats: - 'jpeg'
 	Format string `pulumi:"format"`
@@ -8784,9 +8784,9 @@ type SpriteSheetResponse struct {
 	Quality int `pulumi:"quality"`
 	// The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created. The default is 0, which indicates no maximum limit.
 	RowCount int `pulumi:"rowCount"`
-	// Required. The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
+	// The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
 	SpriteHeightPixels int `pulumi:"spriteHeightPixels"`
-	// Required. The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
+	// The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
 	SpriteWidthPixels int `pulumi:"spriteWidthPixels"`
 	// Start time in seconds, relative to the output file timeline. Determines the first sprite to pick. The default is `0s`.
 	StartTimeOffset string `pulumi:"startTimeOffset"`
@@ -8811,7 +8811,7 @@ type SpriteSheetResponseArgs struct {
 	ColumnCount pulumi.IntInput `pulumi:"columnCount"`
 	// End time in seconds, relative to the output file timeline. When `end_time_offset` is not specified, the sprites are generated until the end of the output file.
 	EndTimeOffset pulumi.StringInput `pulumi:"endTimeOffset"`
-	// Required. File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
+	// File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
 	FilePrefix pulumi.StringInput `pulumi:"filePrefix"`
 	// Format type. The default is `"jpeg"`. Supported formats: - 'jpeg'
 	Format pulumi.StringInput `pulumi:"format"`
@@ -8821,9 +8821,9 @@ type SpriteSheetResponseArgs struct {
 	Quality pulumi.IntInput `pulumi:"quality"`
 	// The maximum number of rows per sprite sheet. When the sprite sheet is full, a new sprite sheet is created. The default is 0, which indicates no maximum limit.
 	RowCount pulumi.IntInput `pulumi:"rowCount"`
-	// Required. The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
+	// The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
 	SpriteHeightPixels pulumi.IntInput `pulumi:"spriteHeightPixels"`
-	// Required. The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
+	// The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
 	SpriteWidthPixels pulumi.IntInput `pulumi:"spriteWidthPixels"`
 	// Start time in seconds, relative to the output file timeline. Determines the first sprite to pick. The default is `0s`.
 	StartTimeOffset pulumi.StringInput `pulumi:"startTimeOffset"`
@@ -8893,7 +8893,7 @@ func (o SpriteSheetResponseOutput) EndTimeOffset() pulumi.StringOutput {
 	return o.ApplyT(func(v SpriteSheetResponse) string { return v.EndTimeOffset }).(pulumi.StringOutput)
 }
 
-// Required. File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
+// File name prefix for the generated sprite sheets. Each sprite sheet has an incremental 10-digit zero-padded suffix starting from 0 before the extension, such as `"sprite_sheet0000000123.jpeg"`.
 func (o SpriteSheetResponseOutput) FilePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v SpriteSheetResponse) string { return v.FilePrefix }).(pulumi.StringOutput)
 }
@@ -8918,12 +8918,12 @@ func (o SpriteSheetResponseOutput) RowCount() pulumi.IntOutput {
 	return o.ApplyT(func(v SpriteSheetResponse) int { return v.RowCount }).(pulumi.IntOutput)
 }
 
-// Required. The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
+// The height of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_height_pixels field or the SpriteSheet.sprite_width_pixels field, but not both (the API will automatically calculate the missing field).
 func (o SpriteSheetResponseOutput) SpriteHeightPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v SpriteSheetResponse) int { return v.SpriteHeightPixels }).(pulumi.IntOutput)
 }
 
-// Required. The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
+// The width of sprite in pixels. Must be an even integer. To preserve the source aspect ratio, set the SpriteSheet.sprite_width_pixels field or the SpriteSheet.sprite_height_pixels field, but not both (the API will automatically calculate the missing field).
 func (o SpriteSheetResponseOutput) SpriteWidthPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v SpriteSheetResponse) int { return v.SpriteWidthPixels }).(pulumi.IntOutput)
 }
@@ -8962,8 +8962,8 @@ func (o SpriteSheetResponseArrayOutput) Index(i pulumi.IntInput) SpriteSheetResp
 type TextAtom struct {
 	// List of `Job.inputs` that should be embedded in this atom. Only one input is supported.
 	Inputs []TextInput `pulumi:"inputs"`
-	// Required. The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
-	Key *string `pulumi:"key"`
+	// The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
+	Key string `pulumi:"key"`
 }
 
 // TextAtomInput is an input type that accepts TextAtomArgs and TextAtomOutput values.
@@ -8981,8 +8981,8 @@ type TextAtomInput interface {
 type TextAtomArgs struct {
 	// List of `Job.inputs` that should be embedded in this atom. Only one input is supported.
 	Inputs TextInputArrayInput `pulumi:"inputs"`
-	// Required. The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
-	Key pulumi.StringPtrInput `pulumi:"key"`
+	// The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
+	Key pulumi.StringInput `pulumi:"key"`
 }
 
 func (TextAtomArgs) ElementType() reflect.Type {
@@ -9042,9 +9042,9 @@ func (o TextAtomOutput) Inputs() TextInputArrayOutput {
 	return o.ApplyT(func(v TextAtom) []TextInput { return v.Inputs }).(TextInputArrayOutput)
 }
 
-// Required. The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
-func (o TextAtomOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TextAtom) *string { return v.Key }).(pulumi.StringPtrOutput)
+// The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
+func (o TextAtomOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v TextAtom) string { return v.Key }).(pulumi.StringOutput)
 }
 
 type TextAtomArrayOutput struct{ *pulumi.OutputState }
@@ -9071,7 +9071,7 @@ func (o TextAtomArrayOutput) Index(i pulumi.IntInput) TextAtomOutput {
 type TextAtomResponse struct {
 	// List of `Job.inputs` that should be embedded in this atom. Only one input is supported.
 	Inputs []TextInputResponse `pulumi:"inputs"`
-	// Required. The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
+	// The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
 	Key string `pulumi:"key"`
 }
 
@@ -9090,7 +9090,7 @@ type TextAtomResponseInput interface {
 type TextAtomResponseArgs struct {
 	// List of `Job.inputs` that should be embedded in this atom. Only one input is supported.
 	Inputs TextInputResponseArrayInput `pulumi:"inputs"`
-	// Required. The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
+	// The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
 	Key pulumi.StringInput `pulumi:"key"`
 }
 
@@ -9151,7 +9151,7 @@ func (o TextAtomResponseOutput) Inputs() TextInputResponseArrayOutput {
 	return o.ApplyT(func(v TextAtomResponse) []TextInputResponse { return v.Inputs }).(TextInputResponseArrayOutput)
 }
 
-// Required. The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
+// The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
 func (o TextAtomResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v TextAtomResponse) string { return v.Key }).(pulumi.StringOutput)
 }
@@ -9178,10 +9178,10 @@ func (o TextAtomResponseArrayOutput) Index(i pulumi.IntInput) TextAtomResponseOu
 
 // Identifies which input file and track should be used.
 type TextInput struct {
-	// Required. The `Input.key` that identifies the input file.
-	Key *string `pulumi:"key"`
-	// Required. The zero-based index of the track in the input file.
-	Track *int `pulumi:"track"`
+	// The `Input.key` that identifies the input file.
+	Key string `pulumi:"key"`
+	// The zero-based index of the track in the input file.
+	Track int `pulumi:"track"`
 }
 
 // TextInputInput is an input type that accepts TextInputArgs and TextInputOutput values.
@@ -9197,10 +9197,10 @@ type TextInputInput interface {
 
 // Identifies which input file and track should be used.
 type TextInputArgs struct {
-	// Required. The `Input.key` that identifies the input file.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Required. The zero-based index of the track in the input file.
-	Track pulumi.IntPtrInput `pulumi:"track"`
+	// The `Input.key` that identifies the input file.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The zero-based index of the track in the input file.
+	Track pulumi.IntInput `pulumi:"track"`
 }
 
 func (TextInputArgs) ElementType() reflect.Type {
@@ -9255,14 +9255,14 @@ func (o TextInputOutput) ToTextInputOutputWithContext(ctx context.Context) TextI
 	return o
 }
 
-// Required. The `Input.key` that identifies the input file.
-func (o TextInputOutput) Key() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TextInput) *string { return v.Key }).(pulumi.StringPtrOutput)
+// The `Input.key` that identifies the input file.
+func (o TextInputOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v TextInput) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Required. The zero-based index of the track in the input file.
-func (o TextInputOutput) Track() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v TextInput) *int { return v.Track }).(pulumi.IntPtrOutput)
+// The zero-based index of the track in the input file.
+func (o TextInputOutput) Track() pulumi.IntOutput {
+	return o.ApplyT(func(v TextInput) int { return v.Track }).(pulumi.IntOutput)
 }
 
 type TextInputArrayOutput struct{ *pulumi.OutputState }
@@ -9287,9 +9287,9 @@ func (o TextInputArrayOutput) Index(i pulumi.IntInput) TextInputOutput {
 
 // Identifies which input file and track should be used.
 type TextInputResponse struct {
-	// Required. The `Input.key` that identifies the input file.
+	// The `Input.key` that identifies the input file.
 	Key string `pulumi:"key"`
-	// Required. The zero-based index of the track in the input file.
+	// The zero-based index of the track in the input file.
 	Track int `pulumi:"track"`
 }
 
@@ -9306,9 +9306,9 @@ type TextInputResponseInput interface {
 
 // Identifies which input file and track should be used.
 type TextInputResponseArgs struct {
-	// Required. The `Input.key` that identifies the input file.
+	// The `Input.key` that identifies the input file.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Required. The zero-based index of the track in the input file.
+	// The zero-based index of the track in the input file.
 	Track pulumi.IntInput `pulumi:"track"`
 }
 
@@ -9364,12 +9364,12 @@ func (o TextInputResponseOutput) ToTextInputResponseOutputWithContext(ctx contex
 	return o
 }
 
-// Required. The `Input.key` that identifies the input file.
+// The `Input.key` that identifies the input file.
 func (o TextInputResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v TextInputResponse) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Required. The zero-based index of the track in the input file.
+// The zero-based index of the track in the input file.
 func (o TextInputResponseOutput) Track() pulumi.IntOutput {
 	return o.ApplyT(func(v TextInputResponse) int { return v.Track }).(pulumi.IntOutput)
 }
@@ -9398,8 +9398,8 @@ func (o TextInputResponseArrayOutput) Index(i pulumi.IntInput) TextInputResponse
 type TextStream struct {
 	// The codec for this text stream. The default is `"webvtt"`. Supported text codecs: - 'srt' - 'ttml' - 'cea608' - 'cea708' - 'webvtt'
 	Codec *string `pulumi:"codec"`
-	// Required. The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-	LanguageCode *string `pulumi:"languageCode"`
+	// The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+	LanguageCode string `pulumi:"languageCode"`
 	// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
 	Mapping []TextAtom `pulumi:"mapping"`
 }
@@ -9419,8 +9419,8 @@ type TextStreamInput interface {
 type TextStreamArgs struct {
 	// The codec for this text stream. The default is `"webvtt"`. Supported text codecs: - 'srt' - 'ttml' - 'cea608' - 'cea708' - 'webvtt'
 	Codec pulumi.StringPtrInput `pulumi:"codec"`
-	// Required. The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-	LanguageCode pulumi.StringPtrInput `pulumi:"languageCode"`
+	// The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
 	// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
 	Mapping TextAtomArrayInput `pulumi:"mapping"`
 }
@@ -9508,9 +9508,9 @@ func (o TextStreamOutput) Codec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TextStream) *string { return v.Codec }).(pulumi.StringPtrOutput)
 }
 
-// Required. The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
-func (o TextStreamOutput) LanguageCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TextStream) *string { return v.LanguageCode }).(pulumi.StringPtrOutput)
+// The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+func (o TextStreamOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v TextStream) string { return v.LanguageCode }).(pulumi.StringOutput)
 }
 
 // The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
@@ -9546,13 +9546,13 @@ func (o TextStreamPtrOutput) Codec() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+// The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
 func (o TextStreamPtrOutput) LanguageCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TextStream) *string {
 		if v == nil {
 			return nil
 		}
-		return v.LanguageCode
+		return &v.LanguageCode
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -9570,7 +9570,7 @@ func (o TextStreamPtrOutput) Mapping() TextAtomArrayOutput {
 type TextStreamResponse struct {
 	// The codec for this text stream. The default is `"webvtt"`. Supported text codecs: - 'srt' - 'ttml' - 'cea608' - 'cea708' - 'webvtt'
 	Codec string `pulumi:"codec"`
-	// Required. The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+	// The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
 	LanguageCode string `pulumi:"languageCode"`
 	// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
 	Mapping []TextAtomResponse `pulumi:"mapping"`
@@ -9591,7 +9591,7 @@ type TextStreamResponseInput interface {
 type TextStreamResponseArgs struct {
 	// The codec for this text stream. The default is `"webvtt"`. Supported text codecs: - 'srt' - 'ttml' - 'cea608' - 'cea708' - 'webvtt'
 	Codec pulumi.StringInput `pulumi:"codec"`
-	// Required. The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+	// The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
 	LanguageCode pulumi.StringInput `pulumi:"languageCode"`
 	// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
 	Mapping TextAtomResponseArrayInput `pulumi:"mapping"`
@@ -9629,7 +9629,7 @@ func (o TextStreamResponseOutput) Codec() pulumi.StringOutput {
 	return o.ApplyT(func(v TextStreamResponse) string { return v.Codec }).(pulumi.StringOutput)
 }
 
-// Required. The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+// The BCP-47 language code, such as `"en-US"` or `"sr-Latn"`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
 func (o TextStreamResponseOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v TextStreamResponse) string { return v.LanguageCode }).(pulumi.StringOutput)
 }
@@ -9649,8 +9649,8 @@ type VideoStream struct {
 	BFrameCount *int `pulumi:"bFrameCount"`
 	// Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
 	BPyramid *bool `pulumi:"bPyramid"`
-	// Required. The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
-	BitrateBps *int `pulumi:"bitrateBps"`
+	// The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+	BitrateBps int `pulumi:"bitrateBps"`
 	// Codec type. The following codecs are supported: * `h264` (default) * `h265` * `vp9`
 	Codec *string `pulumi:"codec"`
 	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
@@ -9659,8 +9659,8 @@ type VideoStream struct {
 	EnableTwoPass *bool `pulumi:"enableTwoPass"`
 	// The entropy coder to use. The default is `"cabac"`. Supported entropy coders: - 'cavlc' - 'cabac'
 	EntropyCoder *string `pulumi:"entropyCoder"`
-	// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
-	FrameRate *float64 `pulumi:"frameRate"`
+	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+	FrameRate float64 `pulumi:"frameRate"`
 	// Select the GOP size based on the specified duration. The default is `"3s"`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
 	GopDuration *string `pulumi:"gopDuration"`
 	// Select the GOP size based on the specified frame count. Must be greater than zero.
@@ -9706,8 +9706,8 @@ type VideoStreamArgs struct {
 	BFrameCount pulumi.IntPtrInput `pulumi:"bFrameCount"`
 	// Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
 	BPyramid pulumi.BoolPtrInput `pulumi:"bPyramid"`
-	// Required. The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
-	BitrateBps pulumi.IntPtrInput `pulumi:"bitrateBps"`
+	// The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+	BitrateBps pulumi.IntInput `pulumi:"bitrateBps"`
 	// Codec type. The following codecs are supported: * `h264` (default) * `h265` * `vp9`
 	Codec pulumi.StringPtrInput `pulumi:"codec"`
 	// Target CRF level. Must be between 10 and 36, where 10 is the highest quality and 36 is the most efficient compression. The default is 21.
@@ -9716,8 +9716,8 @@ type VideoStreamArgs struct {
 	EnableTwoPass pulumi.BoolPtrInput `pulumi:"enableTwoPass"`
 	// The entropy coder to use. The default is `"cabac"`. Supported entropy coders: - 'cavlc' - 'cabac'
 	EntropyCoder pulumi.StringPtrInput `pulumi:"entropyCoder"`
-	// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
-	FrameRate pulumi.Float64PtrInput `pulumi:"frameRate"`
+	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+	FrameRate pulumi.Float64Input `pulumi:"frameRate"`
 	// Select the GOP size based on the specified duration. The default is `"3s"`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
 	GopDuration pulumi.StringPtrInput `pulumi:"gopDuration"`
 	// Select the GOP size based on the specified frame count. Must be greater than zero.
@@ -9840,9 +9840,9 @@ func (o VideoStreamOutput) BPyramid() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v VideoStream) *bool { return v.BPyramid }).(pulumi.BoolPtrOutput)
 }
 
-// Required. The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
-func (o VideoStreamOutput) BitrateBps() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v VideoStream) *int { return v.BitrateBps }).(pulumi.IntPtrOutput)
+// The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+func (o VideoStreamOutput) BitrateBps() pulumi.IntOutput {
+	return o.ApplyT(func(v VideoStream) int { return v.BitrateBps }).(pulumi.IntOutput)
 }
 
 // Codec type. The following codecs are supported: * `h264` (default) * `h265` * `vp9`
@@ -9865,9 +9865,9 @@ func (o VideoStreamOutput) EntropyCoder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VideoStream) *string { return v.EntropyCoder }).(pulumi.StringPtrOutput)
 }
 
-// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
-func (o VideoStreamOutput) FrameRate() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v VideoStream) *float64 { return v.FrameRate }).(pulumi.Float64PtrOutput)
+// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+func (o VideoStreamOutput) FrameRate() pulumi.Float64Output {
+	return o.ApplyT(func(v VideoStream) float64 { return v.FrameRate }).(pulumi.Float64Output)
 }
 
 // Select the GOP size based on the specified duration. The default is `"3s"`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
@@ -9983,13 +9983,13 @@ func (o VideoStreamPtrOutput) BPyramid() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+// The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
 func (o VideoStreamPtrOutput) BitrateBps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VideoStream) *int {
 		if v == nil {
 			return nil
 		}
-		return v.BitrateBps
+		return &v.BitrateBps
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -10033,13 +10033,13 @@ func (o VideoStreamPtrOutput) EntropyCoder() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
 func (o VideoStreamPtrOutput) FrameRate() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *VideoStream) *float64 {
 		if v == nil {
 			return nil
 		}
-		return v.FrameRate
+		return &v.FrameRate
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -10163,7 +10163,7 @@ type VideoStreamResponse struct {
 	BFrameCount int `pulumi:"bFrameCount"`
 	// Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
 	BPyramid bool `pulumi:"bPyramid"`
-	// Required. The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+	// The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
 	BitrateBps int `pulumi:"bitrateBps"`
 	// Codec type. The following codecs are supported: * `h264` (default) * `h265` * `vp9`
 	Codec string `pulumi:"codec"`
@@ -10173,7 +10173,7 @@ type VideoStreamResponse struct {
 	EnableTwoPass bool `pulumi:"enableTwoPass"`
 	// The entropy coder to use. The default is `"cabac"`. Supported entropy coders: - 'cavlc' - 'cabac'
 	EntropyCoder string `pulumi:"entropyCoder"`
-	// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
 	FrameRate float64 `pulumi:"frameRate"`
 	// Select the GOP size based on the specified duration. The default is `"3s"`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
 	GopDuration string `pulumi:"gopDuration"`
@@ -10220,7 +10220,7 @@ type VideoStreamResponseArgs struct {
 	BFrameCount pulumi.IntInput `pulumi:"bFrameCount"`
 	// Allow B-pyramid for reference frame selection. This may not be supported on all decoders. The default is `false`.
 	BPyramid pulumi.BoolInput `pulumi:"bPyramid"`
-	// Required. The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+	// The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
 	BitrateBps pulumi.IntInput `pulumi:"bitrateBps"`
 	// Codec type. The following codecs are supported: * `h264` (default) * `h265` * `vp9`
 	Codec pulumi.StringInput `pulumi:"codec"`
@@ -10230,7 +10230,7 @@ type VideoStreamResponseArgs struct {
 	EnableTwoPass pulumi.BoolInput `pulumi:"enableTwoPass"`
 	// The entropy coder to use. The default is `"cabac"`. Supported entropy coders: - 'cavlc' - 'cabac'
 	EntropyCoder pulumi.StringInput `pulumi:"entropyCoder"`
-	// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+	// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
 	FrameRate pulumi.Float64Input `pulumi:"frameRate"`
 	// Select the GOP size based on the specified duration. The default is `"3s"`. Note that `gopDuration` must be less than or equal to [`segmentDuration`](#SegmentSettings), and [`segmentDuration`](#SegmentSettings) must be divisible by `gopDuration`.
 	GopDuration pulumi.StringInput `pulumi:"gopDuration"`
@@ -10303,7 +10303,7 @@ func (o VideoStreamResponseOutput) BPyramid() pulumi.BoolOutput {
 	return o.ApplyT(func(v VideoStreamResponse) bool { return v.BPyramid }).(pulumi.BoolOutput)
 }
 
-// Required. The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
+// The video bitrate in bits per second. Must be between 1 and 1,000,000,000.
 func (o VideoStreamResponseOutput) BitrateBps() pulumi.IntOutput {
 	return o.ApplyT(func(v VideoStreamResponse) int { return v.BitrateBps }).(pulumi.IntOutput)
 }
@@ -10328,7 +10328,7 @@ func (o VideoStreamResponseOutput) EntropyCoder() pulumi.StringOutput {
 	return o.ApplyT(func(v VideoStreamResponse) string { return v.EntropyCoder }).(pulumi.StringOutput)
 }
 
-// Required. The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
+// The target video frame rate in frames per second (FPS). Must be less than or equal to 120. Will default to the input frame rate if larger than the input frame rate. The API will generate an output FPS that is divisible by the input FPS, and smaller or equal to the target FPS. See [Calculate frame rate](https://cloud.google.com/transcoder/docs/concepts/frame-rate) for more information.
 func (o VideoStreamResponseOutput) FrameRate() pulumi.Float64Output {
 	return o.ApplyT(func(v VideoStreamResponse) float64 { return v.FrameRate }).(pulumi.Float64Output)
 }

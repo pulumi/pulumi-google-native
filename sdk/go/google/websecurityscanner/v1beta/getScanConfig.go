@@ -27,7 +27,7 @@ type LookupScanConfigResult struct {
 	Authentication AuthenticationResponse `pulumi:"authentication"`
 	// The excluded URL patterns as described in https://cloud.google.com/security-command-center/docs/how-to-use-web-security-scanner#excluding_urls
 	BlacklistPatterns []string `pulumi:"blacklistPatterns"`
-	// Required. The user provided display name of the ScanConfig.
+	// The user provided display name of the ScanConfig.
 	DisplayName string `pulumi:"displayName"`
 	// Controls export of scan configurations and results to Security Command Center.
 	ExportToSecurityCommandCenter string `pulumi:"exportToSecurityCommandCenter"`
@@ -45,7 +45,7 @@ type LookupScanConfigResult struct {
 	RiskLevel string `pulumi:"riskLevel"`
 	// The schedule of the ScanConfig.
 	Schedule ScheduleResponse `pulumi:"schedule"`
-	// Required. The starting URLs from which the scanner finds site pages.
+	// The starting URLs from which the scanner finds site pages.
 	StartingUrls []string `pulumi:"startingUrls"`
 	// Whether the scan configuration has enabled static IP address scan feature. If enabled, the scanner will access applications from static IP addresses.
 	StaticIpScan bool `pulumi:"staticIpScan"`

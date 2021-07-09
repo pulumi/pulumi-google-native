@@ -15,9 +15,9 @@ import (
 type AttributeDefinition struct {
 	pulumi.CustomResourceState
 
-	// Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+	// Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
 	AllowedValues pulumi.StringArrayOutput `pulumi:"allowedValues"`
-	// Required. The category of the attribute. The value of this field cannot be changed after creation.
+	// The category of the attribute. The value of this field cannot be changed after creation.
 	Category pulumi.StringOutput `pulumi:"category"`
 	// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
 	ConsentDefaultValues pulumi.StringArrayOutput `pulumi:"consentDefaultValues"`
@@ -36,6 +36,9 @@ func NewAttributeDefinition(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.AllowedValues == nil {
+		return nil, errors.New("invalid value for required argument 'AllowedValues'")
+	}
 	if args.AttributeDefinitionId == nil {
 		return nil, errors.New("invalid value for required argument 'AttributeDefinitionId'")
 	}
@@ -73,9 +76,9 @@ func GetAttributeDefinition(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AttributeDefinition resources.
 type attributeDefinitionState struct {
-	// Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+	// Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
 	AllowedValues []string `pulumi:"allowedValues"`
-	// Required. The category of the attribute. The value of this field cannot be changed after creation.
+	// The category of the attribute. The value of this field cannot be changed after creation.
 	Category *string `pulumi:"category"`
 	// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
 	ConsentDefaultValues []string `pulumi:"consentDefaultValues"`
@@ -88,9 +91,9 @@ type attributeDefinitionState struct {
 }
 
 type AttributeDefinitionState struct {
-	// Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+	// Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
 	AllowedValues pulumi.StringArrayInput
-	// Required. The category of the attribute. The value of this field cannot be changed after creation.
+	// The category of the attribute. The value of this field cannot be changed after creation.
 	Category pulumi.StringPtrInput
 	// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
 	ConsentDefaultValues pulumi.StringArrayInput
@@ -107,11 +110,11 @@ func (AttributeDefinitionState) ElementType() reflect.Type {
 }
 
 type attributeDefinitionArgs struct {
-	// Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+	// Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
 	AllowedValues         []string `pulumi:"allowedValues"`
 	AttributeDefinitionId string   `pulumi:"attributeDefinitionId"`
-	// Required. The category of the attribute. The value of this field cannot be changed after creation.
-	Category *string `pulumi:"category"`
+	// The category of the attribute. The value of this field cannot be changed after creation.
+	Category string `pulumi:"category"`
 	// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
 	ConsentDefaultValues []string `pulumi:"consentDefaultValues"`
 	ConsentStoreId       string   `pulumi:"consentStoreId"`
@@ -128,11 +131,11 @@ type attributeDefinitionArgs struct {
 
 // The set of arguments for constructing a AttributeDefinition resource.
 type AttributeDefinitionArgs struct {
-	// Required. Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
+	// Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
 	AllowedValues         pulumi.StringArrayInput
 	AttributeDefinitionId pulumi.StringInput
-	// Required. The category of the attribute. The value of this field cannot be changed after creation.
-	Category *AttributeDefinitionCategory
+	// The category of the attribute. The value of this field cannot be changed after creation.
+	Category AttributeDefinitionCategory
 	// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
 	ConsentDefaultValues pulumi.StringArrayInput
 	ConsentStoreId       pulumi.StringInput

@@ -32,6 +32,12 @@ func NewTemplate(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.GcsPath == nil {
+		return nil, errors.New("invalid value for required argument 'GcsPath'")
+	}
+	if args.JobName == nil {
+		return nil, errors.New("invalid value for required argument 'JobName'")
+	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -88,10 +94,10 @@ func (TemplateState) ElementType() reflect.Type {
 type templateArgs struct {
 	// The runtime environment for the job.
 	Environment *RuntimeEnvironment `pulumi:"environment"`
-	// Required. A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.
-	GcsPath *string `pulumi:"gcsPath"`
-	// Required. The job name to use for the created job.
-	JobName *string `pulumi:"jobName"`
+	// A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.
+	GcsPath string `pulumi:"gcsPath"`
+	// The job name to use for the created job.
+	JobName string `pulumi:"jobName"`
 	// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
 	Location string `pulumi:"location"`
 	// The runtime parameters to pass to the job.
@@ -103,10 +109,10 @@ type templateArgs struct {
 type TemplateArgs struct {
 	// The runtime environment for the job.
 	Environment RuntimeEnvironmentPtrInput
-	// Required. A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.
-	GcsPath pulumi.StringPtrInput
-	// Required. The job name to use for the created job.
-	JobName pulumi.StringPtrInput
+	// A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with `gs://`.
+	GcsPath pulumi.StringInput
+	// The job name to use for the created job.
+	JobName pulumi.StringInput
 	// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
 	Location pulumi.StringInput
 	// The runtime parameters to pass to the job.

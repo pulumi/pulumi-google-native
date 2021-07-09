@@ -15,7 +15,7 @@ import (
 type Page struct {
 	pulumi.CustomResourceState
 
-	// Required. The human-readable name of the page, unique within the agent.
+	// The human-readable name of the page, unique within the agent.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
 	EntryFulfillment GoogleCloudDialogflowCxV3beta1FulfillmentResponseOutput `pulumi:"entryFulfillment"`
@@ -40,6 +40,9 @@ func NewPage(ctx *pulumi.Context,
 
 	if args.AgentId == nil {
 		return nil, errors.New("invalid value for required argument 'AgentId'")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
 	if args.FlowId == nil {
 		return nil, errors.New("invalid value for required argument 'FlowId'")
@@ -72,7 +75,7 @@ func GetPage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Page resources.
 type pageState struct {
-	// Required. The human-readable name of the page, unique within the agent.
+	// The human-readable name of the page, unique within the agent.
 	DisplayName *string `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
 	EntryFulfillment *GoogleCloudDialogflowCxV3beta1FulfillmentResponse `pulumi:"entryFulfillment"`
@@ -89,7 +92,7 @@ type pageState struct {
 }
 
 type PageState struct {
-	// Required. The human-readable name of the page, unique within the agent.
+	// The human-readable name of the page, unique within the agent.
 	DisplayName pulumi.StringPtrInput
 	// The fulfillment to call when the session is entering the page.
 	EntryFulfillment GoogleCloudDialogflowCxV3beta1FulfillmentResponsePtrInput
@@ -111,8 +114,8 @@ func (PageState) ElementType() reflect.Type {
 
 type pageArgs struct {
 	AgentId string `pulumi:"agentId"`
-	// Required. The human-readable name of the page, unique within the agent.
-	DisplayName *string `pulumi:"displayName"`
+	// The human-readable name of the page, unique within the agent.
+	DisplayName string `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
 	EntryFulfillment *GoogleCloudDialogflowCxV3beta1Fulfillment `pulumi:"entryFulfillment"`
 	// Handlers associated with the page to handle events such as webhook errors, no match or no input.
@@ -134,8 +137,8 @@ type pageArgs struct {
 // The set of arguments for constructing a Page resource.
 type PageArgs struct {
 	AgentId pulumi.StringInput
-	// Required. The human-readable name of the page, unique within the agent.
-	DisplayName pulumi.StringPtrInput
+	// The human-readable name of the page, unique within the agent.
+	DisplayName pulumi.StringInput
 	// The fulfillment to call when the session is entering the page.
 	EntryFulfillment GoogleCloudDialogflowCxV3beta1FulfillmentPtrInput
 	// Handlers associated with the page to handle events such as webhook errors, no match or no input.

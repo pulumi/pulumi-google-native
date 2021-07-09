@@ -35,11 +35,11 @@ type LookupImportJobResult struct {
 	ExpireTime string `pulumi:"expireTime"`
 	// The time this ImportJob's key material was generated.
 	GenerateTime string `pulumi:"generateTime"`
-	// Required. Immutable. The wrapping method to be used for incoming key material.
+	// Immutable. The wrapping method to be used for incoming key material.
 	ImportMethod string `pulumi:"importMethod"`
 	// The resource name for this ImportJob in the format `projects/*/locations/*/keyRings/*/importJobs/*`.
 	Name string `pulumi:"name"`
-	// Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
+	// Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
 	ProtectionLevel string `pulumi:"protectionLevel"`
 	// The public key with which to wrap key material prior to import. Only returned if state is ACTIVE.
 	PublicKey WrappingPublicKeyResponse `pulumi:"publicKey"`

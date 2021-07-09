@@ -17,7 +17,7 @@ type Attestor struct {
 
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
+	// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Time when the attestor was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -34,6 +34,9 @@ func NewAttestor(ctx *pulumi.Context,
 
 	if args.AttestorId == nil {
 		return nil, errors.New("invalid value for required argument 'AttestorId'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
@@ -62,7 +65,7 @@ func GetAttestor(ctx *pulumi.Context,
 type attestorState struct {
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description *string `pulumi:"description"`
-	// Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
+	// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
 	Name *string `pulumi:"name"`
 	// Time when the attestor was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -73,7 +76,7 @@ type attestorState struct {
 type AttestorState struct {
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description pulumi.StringPtrInput
-	// Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
+	// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
 	Name pulumi.StringPtrInput
 	// Time when the attestor was last updated.
 	UpdateTime pulumi.StringPtrInput
@@ -89,9 +92,9 @@ type attestorArgs struct {
 	AttestorId string `pulumi:"attestorId"`
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description *string `pulumi:"description"`
-	// Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
-	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
+	Name    string `pulumi:"name"`
+	Project string `pulumi:"project"`
 	// This specifies how an attestation will be read, and how it will be used during policy enforcement.
 	UserOwnedGrafeasNote *UserOwnedGrafeasNote `pulumi:"userOwnedGrafeasNote"`
 }
@@ -101,8 +104,8 @@ type AttestorArgs struct {
 	AttestorId pulumi.StringInput
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description pulumi.StringPtrInput
-	// Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
-	Name    pulumi.StringPtrInput
+	// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
+	Name    pulumi.StringInput
 	Project pulumi.StringInput
 	// This specifies how an attestation will be read, and how it will be used during policy enforcement.
 	UserOwnedGrafeasNote UserOwnedGrafeasNotePtrInput

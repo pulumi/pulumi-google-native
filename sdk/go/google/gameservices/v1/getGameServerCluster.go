@@ -35,7 +35,7 @@ type LookupGameServerClusterResult struct {
 	Etag string `pulumi:"etag"`
 	// The labels associated with this game server cluster. Each label is a key-value pair.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
+	// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
 	Name string `pulumi:"name"`
 	// The last-modified time.
 	UpdateTime string `pulumi:"updateTime"`

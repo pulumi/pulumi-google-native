@@ -21,13 +21,13 @@ type ChannelPartnerLink struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// URI of the web page where partner accepts the link invitation.
 	InviteLinkUri pulumi.StringOutput `pulumi:"inviteLinkUri"`
-	// Required. State of the channel partner link.
+	// State of the channel partner link.
 	LinkState pulumi.StringOutput `pulumi:"linkState"`
 	// Resource name for the channel partner link, in the format accounts/{account_id}/channelPartnerLinks/{id}.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Public identifier that a customer must use to generate a transfer token to move to this distributor-reseller combination.
 	PublicId pulumi.StringOutput `pulumi:"publicId"`
-	// Required. Cloud Identity ID of the linked reseller.
+	// Cloud Identity ID of the linked reseller.
 	ResellerCloudIdentityId pulumi.StringOutput `pulumi:"resellerCloudIdentityId"`
 	// Timestamp of when the channel partner link is updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -42,6 +42,9 @@ func NewChannelPartnerLink(ctx *pulumi.Context,
 
 	if args.AccountId == nil {
 		return nil, errors.New("invalid value for required argument 'AccountId'")
+	}
+	if args.ResellerCloudIdentityId == nil {
+		return nil, errors.New("invalid value for required argument 'ResellerCloudIdentityId'")
 	}
 	var resource ChannelPartnerLink
 	err := ctx.RegisterResource("google-native:cloudchannel/v1:ChannelPartnerLink", name, args, &resource, opts...)
@@ -71,13 +74,13 @@ type channelPartnerLinkState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// URI of the web page where partner accepts the link invitation.
 	InviteLinkUri *string `pulumi:"inviteLinkUri"`
-	// Required. State of the channel partner link.
+	// State of the channel partner link.
 	LinkState *string `pulumi:"linkState"`
 	// Resource name for the channel partner link, in the format accounts/{account_id}/channelPartnerLinks/{id}.
 	Name *string `pulumi:"name"`
 	// Public identifier that a customer must use to generate a transfer token to move to this distributor-reseller combination.
 	PublicId *string `pulumi:"publicId"`
-	// Required. Cloud Identity ID of the linked reseller.
+	// Cloud Identity ID of the linked reseller.
 	ResellerCloudIdentityId *string `pulumi:"resellerCloudIdentityId"`
 	// Timestamp of when the channel partner link is updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -90,13 +93,13 @@ type ChannelPartnerLinkState struct {
 	CreateTime pulumi.StringPtrInput
 	// URI of the web page where partner accepts the link invitation.
 	InviteLinkUri pulumi.StringPtrInput
-	// Required. State of the channel partner link.
+	// State of the channel partner link.
 	LinkState pulumi.StringPtrInput
 	// Resource name for the channel partner link, in the format accounts/{account_id}/channelPartnerLinks/{id}.
 	Name pulumi.StringPtrInput
 	// Public identifier that a customer must use to generate a transfer token to move to this distributor-reseller combination.
 	PublicId pulumi.StringPtrInput
-	// Required. Cloud Identity ID of the linked reseller.
+	// Cloud Identity ID of the linked reseller.
 	ResellerCloudIdentityId pulumi.StringPtrInput
 	// Timestamp of when the channel partner link is updated.
 	UpdateTime pulumi.StringPtrInput
@@ -108,19 +111,19 @@ func (ChannelPartnerLinkState) ElementType() reflect.Type {
 
 type channelPartnerLinkArgs struct {
 	AccountId string `pulumi:"accountId"`
-	// Required. State of the channel partner link.
-	LinkState *string `pulumi:"linkState"`
-	// Required. Cloud Identity ID of the linked reseller.
-	ResellerCloudIdentityId *string `pulumi:"resellerCloudIdentityId"`
+	// State of the channel partner link.
+	LinkState string `pulumi:"linkState"`
+	// Cloud Identity ID of the linked reseller.
+	ResellerCloudIdentityId string `pulumi:"resellerCloudIdentityId"`
 }
 
 // The set of arguments for constructing a ChannelPartnerLink resource.
 type ChannelPartnerLinkArgs struct {
 	AccountId pulumi.StringInput
-	// Required. State of the channel partner link.
-	LinkState *ChannelPartnerLinkLinkState
-	// Required. Cloud Identity ID of the linked reseller.
-	ResellerCloudIdentityId pulumi.StringPtrInput
+	// State of the channel partner link.
+	LinkState ChannelPartnerLinkLinkState
+	// Cloud Identity ID of the linked reseller.
+	ResellerCloudIdentityId pulumi.StringInput
 }
 
 func (ChannelPartnerLinkArgs) ElementType() reflect.Type {

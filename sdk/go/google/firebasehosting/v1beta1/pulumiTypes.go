@@ -473,7 +473,7 @@ func (o CertHttpChallengeResponsePtrOutput) Token() pulumi.StringPtrOutput {
 type CloudRunRewriteResponse struct {
 	// Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
 	Region string `pulumi:"region"`
-	// Required. User-defined ID of the Cloud Run service.
+	// User-defined ID of the Cloud Run service.
 	ServiceId string `pulumi:"serviceId"`
 }
 
@@ -492,7 +492,7 @@ type CloudRunRewriteResponseInput interface {
 type CloudRunRewriteResponseArgs struct {
 	// Optional. User-provided region where the Cloud Run service is hosted. Defaults to `us-central1` if not supplied.
 	Region pulumi.StringInput `pulumi:"region"`
-	// Required. User-defined ID of the Cloud Run service.
+	// User-defined ID of the Cloud Run service.
 	ServiceId pulumi.StringInput `pulumi:"serviceId"`
 }
 
@@ -528,7 +528,7 @@ func (o CloudRunRewriteResponseOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRunRewriteResponse) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Required. User-defined ID of the Cloud Run service.
+// User-defined ID of the Cloud Run service.
 func (o CloudRunRewriteResponseOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRunRewriteResponse) string { return v.ServiceId }).(pulumi.StringOutput)
 }
@@ -802,10 +802,10 @@ func (o DomainProvisioningResponsePtrOutput) ExpectedIps() pulumi.StringArrayOut
 
 // Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration.
 type DomainRedirect struct {
-	// Required. The domain name to redirect to.
-	DomainName *string `pulumi:"domainName"`
-	// Required. The redirect status code.
-	Type *string `pulumi:"type"`
+	// The domain name to redirect to.
+	DomainName string `pulumi:"domainName"`
+	// The redirect status code.
+	Type string `pulumi:"type"`
 }
 
 // DomainRedirectInput is an input type that accepts DomainRedirectArgs and DomainRedirectOutput values.
@@ -821,10 +821,10 @@ type DomainRedirectInput interface {
 
 // Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration.
 type DomainRedirectArgs struct {
-	// Required. The domain name to redirect to.
-	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
-	// Required. The redirect status code.
-	Type *DomainRedirectType `pulumi:"type"`
+	// The domain name to redirect to.
+	DomainName pulumi.StringInput `pulumi:"domainName"`
+	// The redirect status code.
+	Type DomainRedirectType `pulumi:"type"`
 }
 
 func (DomainRedirectArgs) ElementType() reflect.Type {
@@ -905,14 +905,14 @@ func (o DomainRedirectOutput) ToDomainRedirectPtrOutputWithContext(ctx context.C
 	}).(DomainRedirectPtrOutput)
 }
 
-// Required. The domain name to redirect to.
-func (o DomainRedirectOutput) DomainName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DomainRedirect) *string { return v.DomainName }).(pulumi.StringPtrOutput)
+// The domain name to redirect to.
+func (o DomainRedirectOutput) DomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v DomainRedirect) string { return v.DomainName }).(pulumi.StringOutput)
 }
 
-// Required. The redirect status code.
-func (o DomainRedirectOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DomainRedirect) *string { return v.Type }).(pulumi.StringPtrOutput)
+// The redirect status code.
+func (o DomainRedirectOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v DomainRedirect) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type DomainRedirectPtrOutput struct{ *pulumi.OutputState }
@@ -933,31 +933,31 @@ func (o DomainRedirectPtrOutput) Elem() DomainRedirectOutput {
 	return o.ApplyT(func(v *DomainRedirect) DomainRedirect { return *v }).(DomainRedirectOutput)
 }
 
-// Required. The domain name to redirect to.
+// The domain name to redirect to.
 func (o DomainRedirectPtrOutput) DomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainRedirect) *string {
 		if v == nil {
 			return nil
 		}
-		return v.DomainName
+		return &v.DomainName
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The redirect status code.
+// The redirect status code.
 func (o DomainRedirectPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainRedirect) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Type
+		return &v.Type
 	}).(pulumi.StringPtrOutput)
 }
 
 // Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration.
 type DomainRedirectResponse struct {
-	// Required. The domain name to redirect to.
+	// The domain name to redirect to.
 	DomainName string `pulumi:"domainName"`
-	// Required. The redirect status code.
+	// The redirect status code.
 	Type string `pulumi:"type"`
 }
 
@@ -974,9 +974,9 @@ type DomainRedirectResponseInput interface {
 
 // Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration.
 type DomainRedirectResponseArgs struct {
-	// Required. The domain name to redirect to.
+	// The domain name to redirect to.
 	DomainName pulumi.StringInput `pulumi:"domainName"`
-	// Required. The redirect status code.
+	// The redirect status code.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -1058,12 +1058,12 @@ func (o DomainRedirectResponseOutput) ToDomainRedirectResponsePtrOutputWithConte
 	}).(DomainRedirectResponsePtrOutput)
 }
 
-// Required. The domain name to redirect to.
+// The domain name to redirect to.
 func (o DomainRedirectResponseOutput) DomainName() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainRedirectResponse) string { return v.DomainName }).(pulumi.StringOutput)
 }
 
-// Required. The redirect status code.
+// The redirect status code.
 func (o DomainRedirectResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v DomainRedirectResponse) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1086,7 +1086,7 @@ func (o DomainRedirectResponsePtrOutput) Elem() DomainRedirectResponseOutput {
 	return o.ApplyT(func(v *DomainRedirectResponse) DomainRedirectResponse { return *v }).(DomainRedirectResponseOutput)
 }
 
-// Required. The domain name to redirect to.
+// The domain name to redirect to.
 func (o DomainRedirectResponsePtrOutput) DomainName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainRedirectResponse) *string {
 		if v == nil {
@@ -1096,7 +1096,7 @@ func (o DomainRedirectResponsePtrOutput) DomainName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The redirect status code.
+// The redirect status code.
 func (o DomainRedirectResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainRedirectResponse) *string {
 		if v == nil {
@@ -1110,7 +1110,7 @@ func (o DomainRedirectResponsePtrOutput) Type() pulumi.StringPtrOutput {
 type HeaderResponse struct {
 	// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
 	Glob string `pulumi:"glob"`
-	// Required. The additional headers to add to the response.
+	// The additional headers to add to the response.
 	Headers map[string]string `pulumi:"headers"`
 	// The user-supplied RE2 regular expression to match against the request URL path.
 	Regex string `pulumi:"regex"`
@@ -1131,7 +1131,7 @@ type HeaderResponseInput interface {
 type HeaderResponseArgs struct {
 	// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
 	Glob pulumi.StringInput `pulumi:"glob"`
-	// Required. The additional headers to add to the response.
+	// The additional headers to add to the response.
 	Headers pulumi.StringMapInput `pulumi:"headers"`
 	// The user-supplied RE2 regular expression to match against the request URL path.
 	Regex pulumi.StringInput `pulumi:"regex"`
@@ -1194,7 +1194,7 @@ func (o HeaderResponseOutput) Glob() pulumi.StringOutput {
 	return o.ApplyT(func(v HeaderResponse) string { return v.Glob }).(pulumi.StringOutput)
 }
 
-// Required. The additional headers to add to the response.
+// The additional headers to add to the response.
 func (o HeaderResponseOutput) Headers() pulumi.StringMapOutput {
 	return o.ApplyT(func(v HeaderResponse) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
 }
@@ -1226,7 +1226,7 @@ func (o HeaderResponseArrayOutput) Index(i pulumi.IntInput) HeaderResponseOutput
 
 // If provided, i18n rewrites are enabled.
 type I18nConfigResponse struct {
-	// Required. The user-supplied path where country and language specific content will be looked for within the public directory.
+	// The user-supplied path where country and language specific content will be looked for within the public directory.
 	Root string `pulumi:"root"`
 }
 
@@ -1243,7 +1243,7 @@ type I18nConfigResponseInput interface {
 
 // If provided, i18n rewrites are enabled.
 type I18nConfigResponseArgs struct {
-	// Required. The user-supplied path where country and language specific content will be looked for within the public directory.
+	// The user-supplied path where country and language specific content will be looked for within the public directory.
 	Root pulumi.StringInput `pulumi:"root"`
 }
 
@@ -1325,7 +1325,7 @@ func (o I18nConfigResponseOutput) ToI18nConfigResponsePtrOutputWithContext(ctx c
 	}).(I18nConfigResponsePtrOutput)
 }
 
-// Required. The user-supplied path where country and language specific content will be looked for within the public directory.
+// The user-supplied path where country and language specific content will be looked for within the public directory.
 func (o I18nConfigResponseOutput) Root() pulumi.StringOutput {
 	return o.ApplyT(func(v I18nConfigResponse) string { return v.Root }).(pulumi.StringOutput)
 }
@@ -1348,7 +1348,7 @@ func (o I18nConfigResponsePtrOutput) Elem() I18nConfigResponseOutput {
 	return o.ApplyT(func(v *I18nConfigResponse) I18nConfigResponse { return *v }).(I18nConfigResponseOutput)
 }
 
-// Required. The user-supplied path where country and language specific content will be looked for within the public directory.
+// The user-supplied path where country and language specific content will be looked for within the public directory.
 func (o I18nConfigResponsePtrOutput) Root() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *I18nConfigResponse) *string {
 		if v == nil {
@@ -1362,11 +1362,11 @@ func (o I18nConfigResponsePtrOutput) Root() pulumi.StringPtrOutput {
 type RedirectResponse struct {
 	// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
 	Glob string `pulumi:"glob"`
-	// Required. The value to put in the HTTP location header of the response. The location can contain capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location": "https://example.com/foo/:capture"
+	// The value to put in the HTTP location header of the response. The location can contain capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location": "https://example.com/foo/:capture"
 	Location string `pulumi:"location"`
 	// The user-supplied RE2 regular expression to match against the request URL path.
 	Regex string `pulumi:"regex"`
-	// Required. The status HTTP code to return in the response. It must be a valid 3xx status code.
+	// The status HTTP code to return in the response. It must be a valid 3xx status code.
 	StatusCode int `pulumi:"statusCode"`
 }
 
@@ -1385,11 +1385,11 @@ type RedirectResponseInput interface {
 type RedirectResponseArgs struct {
 	// The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path.
 	Glob pulumi.StringInput `pulumi:"glob"`
-	// Required. The value to put in the HTTP location header of the response. The location can contain capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location": "https://example.com/foo/:capture"
+	// The value to put in the HTTP location header of the response. The location can contain capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location": "https://example.com/foo/:capture"
 	Location pulumi.StringInput `pulumi:"location"`
 	// The user-supplied RE2 regular expression to match against the request URL path.
 	Regex pulumi.StringInput `pulumi:"regex"`
-	// Required. The status HTTP code to return in the response. It must be a valid 3xx status code.
+	// The status HTTP code to return in the response. It must be a valid 3xx status code.
 	StatusCode pulumi.IntInput `pulumi:"statusCode"`
 }
 
@@ -1450,7 +1450,7 @@ func (o RedirectResponseOutput) Glob() pulumi.StringOutput {
 	return o.ApplyT(func(v RedirectResponse) string { return v.Glob }).(pulumi.StringOutput)
 }
 
-// Required. The value to put in the HTTP location header of the response. The location can contain capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location": "https://example.com/foo/:capture"
+// The value to put in the HTTP location header of the response. The location can contain capture group values from the pattern using a `:` prefix to identify the segment and an optional `*` to capture the rest of the URL. For example: "glob": "/:capture*", "statusCode": 301, "location": "https://example.com/foo/:capture"
 func (o RedirectResponseOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v RedirectResponse) string { return v.Location }).(pulumi.StringOutput)
 }
@@ -1460,7 +1460,7 @@ func (o RedirectResponseOutput) Regex() pulumi.StringOutput {
 	return o.ApplyT(func(v RedirectResponse) string { return v.Regex }).(pulumi.StringOutput)
 }
 
-// Required. The status HTTP code to return in the response. It must be a valid 3xx status code.
+// The status HTTP code to return in the response. It must be a valid 3xx status code.
 func (o RedirectResponseOutput) StatusCode() pulumi.IntOutput {
 	return o.ApplyT(func(v RedirectResponse) int { return v.StatusCode }).(pulumi.IntOutput)
 }

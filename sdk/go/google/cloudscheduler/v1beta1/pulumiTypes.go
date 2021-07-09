@@ -805,8 +805,8 @@ type HttpTarget struct {
 	OauthToken *OAuthToken `pulumi:"oauthToken"`
 	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
 	OidcToken *OidcToken `pulumi:"oidcToken"`
-	// Required. The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
-	Uri *string `pulumi:"uri"`
+	// The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
+	Uri string `pulumi:"uri"`
 }
 
 // HttpTargetInput is an input type that accepts HttpTargetArgs and HttpTargetOutput values.
@@ -832,8 +832,8 @@ type HttpTargetArgs struct {
 	OauthToken OAuthTokenPtrInput `pulumi:"oauthToken"`
 	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
 	OidcToken OidcTokenPtrInput `pulumi:"oidcToken"`
-	// Required. The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
-	Uri pulumi.StringPtrInput `pulumi:"uri"`
+	// The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
+	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
 func (HttpTargetArgs) ElementType() reflect.Type {
@@ -939,9 +939,9 @@ func (o HttpTargetOutput) OidcToken() OidcTokenPtrOutput {
 	return o.ApplyT(func(v HttpTarget) *OidcToken { return v.OidcToken }).(OidcTokenPtrOutput)
 }
 
-// Required. The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
-func (o HttpTargetOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HttpTarget) *string { return v.Uri }).(pulumi.StringPtrOutput)
+// The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
+func (o HttpTargetOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v HttpTarget) string { return v.Uri }).(pulumi.StringOutput)
 }
 
 type HttpTargetPtrOutput struct{ *pulumi.OutputState }
@@ -1012,13 +1012,13 @@ func (o HttpTargetPtrOutput) OidcToken() OidcTokenPtrOutput {
 	}).(OidcTokenPtrOutput)
 }
 
-// Required. The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
+// The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
 func (o HttpTargetPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpTarget) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Uri
+		return &v.Uri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1034,7 +1034,7 @@ type HttpTargetResponse struct {
 	OauthToken OAuthTokenResponse `pulumi:"oauthToken"`
 	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
 	OidcToken OidcTokenResponse `pulumi:"oidcToken"`
-	// Required. The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
+	// The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
 	Uri string `pulumi:"uri"`
 }
 
@@ -1061,7 +1061,7 @@ type HttpTargetResponseArgs struct {
 	OauthToken OAuthTokenResponseInput `pulumi:"oauthToken"`
 	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
 	OidcToken OidcTokenResponseInput `pulumi:"oidcToken"`
-	// Required. The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
+	// The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -1168,7 +1168,7 @@ func (o HttpTargetResponseOutput) OidcToken() OidcTokenResponseOutput {
 	return o.ApplyT(func(v HttpTargetResponse) OidcTokenResponse { return v.OidcToken }).(OidcTokenResponseOutput)
 }
 
-// Required. The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
+// The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
 func (o HttpTargetResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpTargetResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -1241,7 +1241,7 @@ func (o HttpTargetResponsePtrOutput) OidcToken() OidcTokenResponsePtrOutput {
 	}).(OidcTokenResponsePtrOutput)
 }
 
-// Required. The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
+// The full URI path that the request will be sent to. This string must begin with either "http://" or "https://". Some examples of valid values for uri are: `http://acme.com` and `https://acme.com/sales:8080`. Cloud Scheduler will encode some characters for safety and compatibility. The maximum allowed URL length is 2083 characters after encoding.
 func (o HttpTargetResponsePtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HttpTargetResponse) *string {
 		if v == nil {
@@ -1869,8 +1869,8 @@ type PubsubTarget struct {
 	Attributes map[string]string `pulumi:"attributes"`
 	// The message payload for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
 	Data *string `pulumi:"data"`
-	// Required. The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
-	TopicName *string `pulumi:"topicName"`
+	// The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
+	TopicName string `pulumi:"topicName"`
 }
 
 // PubsubTargetInput is an input type that accepts PubsubTargetArgs and PubsubTargetOutput values.
@@ -1890,8 +1890,8 @@ type PubsubTargetArgs struct {
 	Attributes pulumi.StringMapInput `pulumi:"attributes"`
 	// The message payload for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
 	Data pulumi.StringPtrInput `pulumi:"data"`
-	// Required. The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
-	TopicName pulumi.StringPtrInput `pulumi:"topicName"`
+	// The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
+	TopicName pulumi.StringInput `pulumi:"topicName"`
 }
 
 func (PubsubTargetArgs) ElementType() reflect.Type {
@@ -1982,9 +1982,9 @@ func (o PubsubTargetOutput) Data() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PubsubTarget) *string { return v.Data }).(pulumi.StringPtrOutput)
 }
 
-// Required. The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
-func (o PubsubTargetOutput) TopicName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PubsubTarget) *string { return v.TopicName }).(pulumi.StringPtrOutput)
+// The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
+func (o PubsubTargetOutput) TopicName() pulumi.StringOutput {
+	return o.ApplyT(func(v PubsubTarget) string { return v.TopicName }).(pulumi.StringOutput)
 }
 
 type PubsubTargetPtrOutput struct{ *pulumi.OutputState }
@@ -2025,13 +2025,13 @@ func (o PubsubTargetPtrOutput) Data() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
+// The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
 func (o PubsubTargetPtrOutput) TopicName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PubsubTarget) *string {
 		if v == nil {
 			return nil
 		}
-		return v.TopicName
+		return &v.TopicName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2041,7 +2041,7 @@ type PubsubTargetResponse struct {
 	Attributes map[string]string `pulumi:"attributes"`
 	// The message payload for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
 	Data string `pulumi:"data"`
-	// Required. The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
+	// The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
 	TopicName string `pulumi:"topicName"`
 }
 
@@ -2062,7 +2062,7 @@ type PubsubTargetResponseArgs struct {
 	Attributes pulumi.StringMapInput `pulumi:"attributes"`
 	// The message payload for PubsubMessage. Pubsub message must contain either non-empty data, or at least one attribute.
 	Data pulumi.StringInput `pulumi:"data"`
-	// Required. The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
+	// The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
 	TopicName pulumi.StringInput `pulumi:"topicName"`
 }
 
@@ -2154,7 +2154,7 @@ func (o PubsubTargetResponseOutput) Data() pulumi.StringOutput {
 	return o.ApplyT(func(v PubsubTargetResponse) string { return v.Data }).(pulumi.StringOutput)
 }
 
-// Required. The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
+// The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
 func (o PubsubTargetResponseOutput) TopicName() pulumi.StringOutput {
 	return o.ApplyT(func(v PubsubTargetResponse) string { return v.TopicName }).(pulumi.StringOutput)
 }
@@ -2197,7 +2197,7 @@ func (o PubsubTargetResponsePtrOutput) Data() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
+// The name of the Cloud Pub/Sub topic to which messages will be published when a job is delivered. The topic name must be in the same format as required by PubSub's [PublishRequest.name](https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#publishrequest), for example `projects/PROJECT_ID/topics/TOPIC_ID`. The topic must be in the same project as the Cloud Scheduler job.
 func (o PubsubTargetResponsePtrOutput) TopicName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PubsubTargetResponse) *string {
 		if v == nil {

@@ -554,8 +554,8 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 
 // Definition of a container image for starting a notebook instance with the environment installed in a container.
 type ContainerImage struct {
-	// Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
-	Repository *string `pulumi:"repository"`
+	// The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+	Repository string `pulumi:"repository"`
 	// The tag of the container image. If not specified, this defaults to the latest tag.
 	Tag *string `pulumi:"tag"`
 }
@@ -573,8 +573,8 @@ type ContainerImageInput interface {
 
 // Definition of a container image for starting a notebook instance with the environment installed in a container.
 type ContainerImageArgs struct {
-	// Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
-	Repository pulumi.StringPtrInput `pulumi:"repository"`
+	// The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+	Repository pulumi.StringInput `pulumi:"repository"`
 	// The tag of the container image. If not specified, this defaults to the latest tag.
 	Tag pulumi.StringPtrInput `pulumi:"tag"`
 }
@@ -682,9 +682,9 @@ func (o ContainerImageOutput) ToContainerImagePtrOutputWithContext(ctx context.C
 	}).(ContainerImagePtrOutput)
 }
 
-// Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
-func (o ContainerImageOutput) Repository() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ContainerImage) *string { return v.Repository }).(pulumi.StringPtrOutput)
+// The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+func (o ContainerImageOutput) Repository() pulumi.StringOutput {
+	return o.ApplyT(func(v ContainerImage) string { return v.Repository }).(pulumi.StringOutput)
 }
 
 // The tag of the container image. If not specified, this defaults to the latest tag.
@@ -710,13 +710,13 @@ func (o ContainerImagePtrOutput) Elem() ContainerImageOutput {
 	return o.ApplyT(func(v *ContainerImage) ContainerImage { return *v }).(ContainerImageOutput)
 }
 
-// Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+// The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
 func (o ContainerImagePtrOutput) Repository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerImage) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Repository
+		return &v.Repository
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -752,7 +752,7 @@ func (o ContainerImageArrayOutput) Index(i pulumi.IntInput) ContainerImageOutput
 
 // Definition of a container image for starting a notebook instance with the environment installed in a container.
 type ContainerImageResponse struct {
-	// Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+	// The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
 	Repository string `pulumi:"repository"`
 	// The tag of the container image. If not specified, this defaults to the latest tag.
 	Tag string `pulumi:"tag"`
@@ -771,7 +771,7 @@ type ContainerImageResponseInput interface {
 
 // Definition of a container image for starting a notebook instance with the environment installed in a container.
 type ContainerImageResponseArgs struct {
-	// Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+	// The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
 	Repository pulumi.StringInput `pulumi:"repository"`
 	// The tag of the container image. If not specified, this defaults to the latest tag.
 	Tag pulumi.StringInput `pulumi:"tag"`
@@ -880,7 +880,7 @@ func (o ContainerImageResponseOutput) ToContainerImageResponsePtrOutputWithConte
 	}).(ContainerImageResponsePtrOutput)
 }
 
-// Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+// The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
 func (o ContainerImageResponseOutput) Repository() pulumi.StringOutput {
 	return o.ApplyT(func(v ContainerImageResponse) string { return v.Repository }).(pulumi.StringOutput)
 }
@@ -908,7 +908,7 @@ func (o ContainerImageResponsePtrOutput) Elem() ContainerImageResponseOutput {
 	return o.ApplyT(func(v *ContainerImageResponse) ContainerImageResponse { return *v }).(ContainerImageResponseOutput)
 }
 
-// Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+// The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
 func (o ContainerImageResponsePtrOutput) Repository() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ContainerImageResponse) *string {
 		if v == nil {
@@ -1596,8 +1596,8 @@ type ExecutionTemplate struct {
 	Parameters *string `pulumi:"parameters"`
 	// Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
 	ParamsYamlFile *string `pulumi:"paramsYamlFile"`
-	// Required. Scale tier of the hardware used for notebook execution.
-	ScaleTier *string `pulumi:"scaleTier"`
+	// Scale tier of the hardware used for notebook execution.
+	ScaleTier string `pulumi:"scaleTier"`
 	// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 }
@@ -1631,8 +1631,8 @@ type ExecutionTemplateArgs struct {
 	Parameters pulumi.StringPtrInput `pulumi:"parameters"`
 	// Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
 	ParamsYamlFile pulumi.StringPtrInput `pulumi:"paramsYamlFile"`
-	// Required. Scale tier of the hardware used for notebook execution.
-	ScaleTier *ExecutionTemplateScaleTier `pulumi:"scaleTier"`
+	// Scale tier of the hardware used for notebook execution.
+	ScaleTier ExecutionTemplateScaleTier `pulumi:"scaleTier"`
 	// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 }
@@ -1755,9 +1755,9 @@ func (o ExecutionTemplateOutput) ParamsYamlFile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExecutionTemplate) *string { return v.ParamsYamlFile }).(pulumi.StringPtrOutput)
 }
 
-// Required. Scale tier of the hardware used for notebook execution.
-func (o ExecutionTemplateOutput) ScaleTier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExecutionTemplate) *string { return v.ScaleTier }).(pulumi.StringPtrOutput)
+// Scale tier of the hardware used for notebook execution.
+func (o ExecutionTemplateOutput) ScaleTier() pulumi.StringOutput {
+	return o.ApplyT(func(v ExecutionTemplate) string { return v.ScaleTier }).(pulumi.StringOutput)
 }
 
 // The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
@@ -1863,13 +1863,13 @@ func (o ExecutionTemplatePtrOutput) ParamsYamlFile() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Scale tier of the hardware used for notebook execution.
+// Scale tier of the hardware used for notebook execution.
 func (o ExecutionTemplatePtrOutput) ScaleTier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExecutionTemplate) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ScaleTier
+		return &v.ScaleTier
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1901,7 +1901,7 @@ type ExecutionTemplateResponse struct {
 	Parameters string `pulumi:"parameters"`
 	// Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
 	ParamsYamlFile string `pulumi:"paramsYamlFile"`
-	// Required. Scale tier of the hardware used for notebook execution.
+	// Scale tier of the hardware used for notebook execution.
 	ScaleTier string `pulumi:"scaleTier"`
 	// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
 	ServiceAccount string `pulumi:"serviceAccount"`
@@ -1936,7 +1936,7 @@ type ExecutionTemplateResponseArgs struct {
 	Parameters pulumi.StringInput `pulumi:"parameters"`
 	// Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
 	ParamsYamlFile pulumi.StringInput `pulumi:"paramsYamlFile"`
-	// Required. Scale tier of the hardware used for notebook execution.
+	// Scale tier of the hardware used for notebook execution.
 	ScaleTier pulumi.StringInput `pulumi:"scaleTier"`
 	// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
 	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
@@ -2060,7 +2060,7 @@ func (o ExecutionTemplateResponseOutput) ParamsYamlFile() pulumi.StringOutput {
 	return o.ApplyT(func(v ExecutionTemplateResponse) string { return v.ParamsYamlFile }).(pulumi.StringOutput)
 }
 
-// Required. Scale tier of the hardware used for notebook execution.
+// Scale tier of the hardware used for notebook execution.
 func (o ExecutionTemplateResponseOutput) ScaleTier() pulumi.StringOutput {
 	return o.ApplyT(func(v ExecutionTemplateResponse) string { return v.ScaleTier }).(pulumi.StringOutput)
 }
@@ -2168,7 +2168,7 @@ func (o ExecutionTemplateResponsePtrOutput) ParamsYamlFile() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Scale tier of the hardware used for notebook execution.
+// Scale tier of the hardware used for notebook execution.
 func (o ExecutionTemplateResponsePtrOutput) ScaleTier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExecutionTemplateResponse) *string {
 		if v == nil {
@@ -3201,7 +3201,7 @@ type LocalDiskResponse struct {
 	DeviceName string `pulumi:"deviceName"`
 	// Indicates a list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
 	GuestOsFeatures []RuntimeGuestOsFeatureResponse `pulumi:"guestOsFeatures"`
-	// [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+	// A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
 	Index int `pulumi:"index"`
 	// Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 	InitializeParams LocalDiskInitializeParamsResponse `pulumi:"initializeParams"`
@@ -3209,7 +3209,7 @@ type LocalDiskResponse struct {
 	Interface string `pulumi:"interface"`
 	// Type of the resource. Always compute#attachedDisk for attached disks.
 	Kind string `pulumi:"kind"`
-	// [Output Only] Any valid publicly visible licenses.
+	// Any valid publicly visible licenses.
 	Licenses []string `pulumi:"licenses"`
 	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
 	Mode string `pulumi:"mode"`
@@ -3240,7 +3240,7 @@ type LocalDiskResponseArgs struct {
 	DeviceName pulumi.StringInput `pulumi:"deviceName"`
 	// Indicates a list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
 	GuestOsFeatures RuntimeGuestOsFeatureResponseArrayInput `pulumi:"guestOsFeatures"`
-	// [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+	// A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
 	Index pulumi.IntInput `pulumi:"index"`
 	// Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
 	InitializeParams LocalDiskInitializeParamsResponseInput `pulumi:"initializeParams"`
@@ -3248,7 +3248,7 @@ type LocalDiskResponseArgs struct {
 	Interface pulumi.StringInput `pulumi:"interface"`
 	// Type of the resource. Always compute#attachedDisk for attached disks.
 	Kind pulumi.StringInput `pulumi:"kind"`
-	// [Output Only] Any valid publicly visible licenses.
+	// Any valid publicly visible licenses.
 	Licenses pulumi.StringArrayInput `pulumi:"licenses"`
 	// The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
 	Mode pulumi.StringInput `pulumi:"mode"`
@@ -3356,7 +3356,7 @@ func (o LocalDiskResponseOutput) GuestOsFeatures() RuntimeGuestOsFeatureResponse
 	return o.ApplyT(func(v LocalDiskResponse) []RuntimeGuestOsFeatureResponse { return v.GuestOsFeatures }).(RuntimeGuestOsFeatureResponseArrayOutput)
 }
 
-// [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+// A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
 func (o LocalDiskResponseOutput) Index() pulumi.IntOutput {
 	return o.ApplyT(func(v LocalDiskResponse) int { return v.Index }).(pulumi.IntOutput)
 }
@@ -3376,7 +3376,7 @@ func (o LocalDiskResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v LocalDiskResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
-// [Output Only] Any valid publicly visible licenses.
+// Any valid publicly visible licenses.
 func (o LocalDiskResponseOutput) Licenses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LocalDiskResponse) []string { return v.Licenses }).(pulumi.StringArrayOutput)
 }
@@ -3454,7 +3454,7 @@ func (o LocalDiskResponsePtrOutput) GuestOsFeatures() RuntimeGuestOsFeatureRespo
 	}).(RuntimeGuestOsFeatureResponseArrayOutput)
 }
 
-// [Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
+// A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number.
 func (o LocalDiskResponsePtrOutput) Index() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *LocalDiskResponse) *int {
 		if v == nil {
@@ -3494,7 +3494,7 @@ func (o LocalDiskResponsePtrOutput) Kind() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// [Output Only] Any valid publicly visible licenses.
+// Any valid publicly visible licenses.
 func (o LocalDiskResponsePtrOutput) Licenses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LocalDiskResponse) []string {
 		if v == nil {
@@ -6391,16 +6391,16 @@ type VirtualMachineConfig struct {
 	AcceleratorConfig *RuntimeAcceleratorConfig `pulumi:"acceleratorConfig"`
 	// Optional. Use a list of container images to start the notebook instance.
 	ContainerImages []ContainerImage `pulumi:"containerImages"`
-	// Required. Data disk option configuration settings.
-	DataDisk *LocalDisk `pulumi:"dataDisk"`
+	// Data disk option configuration settings.
+	DataDisk LocalDisk `pulumi:"dataDisk"`
 	// Optional. Encryption settings for virtual machine data disk.
 	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
 	// Optional. If true, runtime will only have internal IP addresses. By default, runtimes are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each vm. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all dependencies must be configured to be accessible without external IP addresses.
 	InternalIpOnly *bool `pulumi:"internalIpOnly"`
 	// Optional. The labels to associate with this runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
-	MachineType *string `pulumi:"machineType"`
+	// The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
+	MachineType string `pulumi:"machineType"`
 	// Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
 	Metadata map[string]string `pulumi:"metadata"`
 	// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
@@ -6432,16 +6432,16 @@ type VirtualMachineConfigArgs struct {
 	AcceleratorConfig RuntimeAcceleratorConfigPtrInput `pulumi:"acceleratorConfig"`
 	// Optional. Use a list of container images to start the notebook instance.
 	ContainerImages ContainerImageArrayInput `pulumi:"containerImages"`
-	// Required. Data disk option configuration settings.
-	DataDisk LocalDiskPtrInput `pulumi:"dataDisk"`
+	// Data disk option configuration settings.
+	DataDisk LocalDiskInput `pulumi:"dataDisk"`
 	// Optional. Encryption settings for virtual machine data disk.
 	EncryptionConfig EncryptionConfigPtrInput `pulumi:"encryptionConfig"`
 	// Optional. If true, runtime will only have internal IP addresses. By default, runtimes are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each vm. This `internal_ip_only` restriction can only be enabled for subnetwork enabled networks, and all dependencies must be configured to be accessible without external IP addresses.
 	InternalIpOnly pulumi.BoolPtrInput `pulumi:"internalIpOnly"`
 	// Optional. The labels to associate with this runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
-	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
+	MachineType pulumi.StringInput `pulumi:"machineType"`
 	// Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
@@ -6544,9 +6544,9 @@ func (o VirtualMachineConfigOutput) ContainerImages() ContainerImageArrayOutput 
 	return o.ApplyT(func(v VirtualMachineConfig) []ContainerImage { return v.ContainerImages }).(ContainerImageArrayOutput)
 }
 
-// Required. Data disk option configuration settings.
-func (o VirtualMachineConfigOutput) DataDisk() LocalDiskPtrOutput {
-	return o.ApplyT(func(v VirtualMachineConfig) *LocalDisk { return v.DataDisk }).(LocalDiskPtrOutput)
+// Data disk option configuration settings.
+func (o VirtualMachineConfigOutput) DataDisk() LocalDiskOutput {
+	return o.ApplyT(func(v VirtualMachineConfig) LocalDisk { return v.DataDisk }).(LocalDiskOutput)
 }
 
 // Optional. Encryption settings for virtual machine data disk.
@@ -6564,9 +6564,9 @@ func (o VirtualMachineConfigOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v VirtualMachineConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
-func (o VirtualMachineConfigOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+// The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
+func (o VirtualMachineConfigOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v VirtualMachineConfig) string { return v.MachineType }).(pulumi.StringOutput)
 }
 
 // Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
@@ -6637,13 +6637,13 @@ func (o VirtualMachineConfigPtrOutput) ContainerImages() ContainerImageArrayOutp
 	}).(ContainerImageArrayOutput)
 }
 
-// Required. Data disk option configuration settings.
+// Data disk option configuration settings.
 func (o VirtualMachineConfigPtrOutput) DataDisk() LocalDiskPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineConfig) *LocalDisk {
 		if v == nil {
 			return nil
 		}
-		return v.DataDisk
+		return &v.DataDisk
 	}).(LocalDiskPtrOutput)
 }
 
@@ -6677,13 +6677,13 @@ func (o VirtualMachineConfigPtrOutput) Labels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
+// The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
 func (o VirtualMachineConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.MachineType
+		return &v.MachineType
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -6753,7 +6753,7 @@ type VirtualMachineConfigResponse struct {
 	AcceleratorConfig RuntimeAcceleratorConfigResponse `pulumi:"acceleratorConfig"`
 	// Optional. Use a list of container images to start the notebook instance.
 	ContainerImages []ContainerImageResponse `pulumi:"containerImages"`
-	// Required. Data disk option configuration settings.
+	// Data disk option configuration settings.
 	DataDisk LocalDiskResponse `pulumi:"dataDisk"`
 	// Optional. Encryption settings for virtual machine data disk.
 	EncryptionConfig EncryptionConfigResponse `pulumi:"encryptionConfig"`
@@ -6763,7 +6763,7 @@ type VirtualMachineConfigResponse struct {
 	InternalIpOnly bool `pulumi:"internalIpOnly"`
 	// Optional. The labels to associate with this runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
+	// The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
 	MachineType string `pulumi:"machineType"`
 	// Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
 	Metadata map[string]string `pulumi:"metadata"`
@@ -6798,7 +6798,7 @@ type VirtualMachineConfigResponseArgs struct {
 	AcceleratorConfig RuntimeAcceleratorConfigResponseInput `pulumi:"acceleratorConfig"`
 	// Optional. Use a list of container images to start the notebook instance.
 	ContainerImages ContainerImageResponseArrayInput `pulumi:"containerImages"`
-	// Required. Data disk option configuration settings.
+	// Data disk option configuration settings.
 	DataDisk LocalDiskResponseInput `pulumi:"dataDisk"`
 	// Optional. Encryption settings for virtual machine data disk.
 	EncryptionConfig EncryptionConfigResponseInput `pulumi:"encryptionConfig"`
@@ -6808,7 +6808,7 @@ type VirtualMachineConfigResponseArgs struct {
 	InternalIpOnly pulumi.BoolInput `pulumi:"internalIpOnly"`
 	// Optional. The labels to associate with this runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
+	// The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
 	MachineType pulumi.StringInput `pulumi:"machineType"`
 	// Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
@@ -6914,7 +6914,7 @@ func (o VirtualMachineConfigResponseOutput) ContainerImages() ContainerImageResp
 	return o.ApplyT(func(v VirtualMachineConfigResponse) []ContainerImageResponse { return v.ContainerImages }).(ContainerImageResponseArrayOutput)
 }
 
-// Required. Data disk option configuration settings.
+// Data disk option configuration settings.
 func (o VirtualMachineConfigResponseOutput) DataDisk() LocalDiskResponseOutput {
 	return o.ApplyT(func(v VirtualMachineConfigResponse) LocalDiskResponse { return v.DataDisk }).(LocalDiskResponseOutput)
 }
@@ -6939,7 +6939,7 @@ func (o VirtualMachineConfigResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v VirtualMachineConfigResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
+// The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
 func (o VirtualMachineConfigResponseOutput) MachineType() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineConfigResponse) string { return v.MachineType }).(pulumi.StringOutput)
 }
@@ -7019,7 +7019,7 @@ func (o VirtualMachineConfigResponsePtrOutput) ContainerImages() ContainerImageR
 	}).(ContainerImageResponseArrayOutput)
 }
 
-// Required. Data disk option configuration settings.
+// Data disk option configuration settings.
 func (o VirtualMachineConfigResponsePtrOutput) DataDisk() LocalDiskResponsePtrOutput {
 	return o.ApplyT(func(v *VirtualMachineConfigResponse) *LocalDiskResponse {
 		if v == nil {
@@ -7069,7 +7069,7 @@ func (o VirtualMachineConfigResponsePtrOutput) Labels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Required. The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
+// The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
 func (o VirtualMachineConfigResponsePtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineConfigResponse) *string {
 		if v == nil {
@@ -7327,8 +7327,8 @@ type VmImage struct {
 	ImageFamily *string `pulumi:"imageFamily"`
 	// Use VM image name to find the image.
 	ImageName *string `pulumi:"imageName"`
-	// Required. The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
-	Project *string `pulumi:"project"`
+	// The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+	Project string `pulumi:"project"`
 }
 
 // VmImageInput is an input type that accepts VmImageArgs and VmImageOutput values.
@@ -7348,8 +7348,8 @@ type VmImageArgs struct {
 	ImageFamily pulumi.StringPtrInput `pulumi:"imageFamily"`
 	// Use VM image name to find the image.
 	ImageName pulumi.StringPtrInput `pulumi:"imageName"`
-	// Required. The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
-	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+	Project pulumi.StringInput `pulumi:"project"`
 }
 
 func (VmImageArgs) ElementType() reflect.Type {
@@ -7440,9 +7440,9 @@ func (o VmImageOutput) ImageName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmImage) *string { return v.ImageName }).(pulumi.StringPtrOutput)
 }
 
-// Required. The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
-func (o VmImageOutput) Project() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VmImage) *string { return v.Project }).(pulumi.StringPtrOutput)
+// The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+func (o VmImageOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v VmImage) string { return v.Project }).(pulumi.StringOutput)
 }
 
 type VmImagePtrOutput struct{ *pulumi.OutputState }
@@ -7483,13 +7483,13 @@ func (o VmImagePtrOutput) ImageName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+// The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
 func (o VmImagePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VmImage) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Project
+		return &v.Project
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7499,7 +7499,7 @@ type VmImageResponse struct {
 	ImageFamily string `pulumi:"imageFamily"`
 	// Use VM image name to find the image.
 	ImageName string `pulumi:"imageName"`
-	// Required. The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+	// The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
 	Project string `pulumi:"project"`
 }
 
@@ -7520,7 +7520,7 @@ type VmImageResponseArgs struct {
 	ImageFamily pulumi.StringInput `pulumi:"imageFamily"`
 	// Use VM image name to find the image.
 	ImageName pulumi.StringInput `pulumi:"imageName"`
-	// Required. The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+	// The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
 	Project pulumi.StringInput `pulumi:"project"`
 }
 
@@ -7612,7 +7612,7 @@ func (o VmImageResponseOutput) ImageName() pulumi.StringOutput {
 	return o.ApplyT(func(v VmImageResponse) string { return v.ImageName }).(pulumi.StringOutput)
 }
 
-// Required. The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+// The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
 func (o VmImageResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v VmImageResponse) string { return v.Project }).(pulumi.StringOutput)
 }
@@ -7655,7 +7655,7 @@ func (o VmImageResponsePtrOutput) ImageName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
+// The name of the Google Cloud project that this VM image belongs to. Format: `projects/{project_id}`
 func (o VmImageResponsePtrOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VmImageResponse) *string {
 		if v == nil {

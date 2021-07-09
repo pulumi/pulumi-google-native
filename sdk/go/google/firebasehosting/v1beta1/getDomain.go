@@ -24,13 +24,13 @@ type LookupDomainArgs struct {
 }
 
 type LookupDomainResult struct {
-	// Required. The domain name of the association.
+	// The domain name of the association.
 	DomainName string `pulumi:"domainName"`
 	// If set, the domain should redirect with the provided parameters.
 	DomainRedirect DomainRedirectResponse `pulumi:"domainRedirect"`
 	// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
 	Provisioning DomainProvisioningResponse `pulumi:"provisioning"`
-	// Required. The site name of the association.
+	// The site name of the association.
 	Site string `pulumi:"site"`
 	// Additional status of the domain association.
 	Status string `pulumi:"status"`

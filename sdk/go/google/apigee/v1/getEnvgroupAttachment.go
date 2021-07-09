@@ -26,7 +26,7 @@ type LookupEnvgroupAttachmentArgs struct {
 type LookupEnvgroupAttachmentResult struct {
 	// The time at which the environment group attachment was created as milliseconds since epoch.
 	CreatedAt string `pulumi:"createdAt"`
-	// Required. ID of the attached environment.
+	// ID of the attached environment.
 	Environment string `pulumi:"environment"`
 	// ID of the environment group attachment.
 	Name string `pulumi:"name"`

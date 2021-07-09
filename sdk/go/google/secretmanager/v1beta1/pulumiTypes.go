@@ -1693,7 +1693,7 @@ func (o ReplicationResponsePtrOutput) UserManaged() UserManagedResponsePtrOutput
 
 // A replication policy that replicates the Secret payload into the locations specified in Secret.replication.user_managed.replicas
 type UserManaged struct {
-	// Required. The list of Replicas for this Secret. Cannot be empty.
+	// The list of Replicas for this Secret. Cannot be empty.
 	Replicas []Replica `pulumi:"replicas"`
 }
 
@@ -1710,7 +1710,7 @@ type UserManagedInput interface {
 
 // A replication policy that replicates the Secret payload into the locations specified in Secret.replication.user_managed.replicas
 type UserManagedArgs struct {
-	// Required. The list of Replicas for this Secret. Cannot be empty.
+	// The list of Replicas for this Secret. Cannot be empty.
 	Replicas ReplicaArrayInput `pulumi:"replicas"`
 }
 
@@ -1792,7 +1792,7 @@ func (o UserManagedOutput) ToUserManagedPtrOutputWithContext(ctx context.Context
 	}).(UserManagedPtrOutput)
 }
 
-// Required. The list of Replicas for this Secret. Cannot be empty.
+// The list of Replicas for this Secret. Cannot be empty.
 func (o UserManagedOutput) Replicas() ReplicaArrayOutput {
 	return o.ApplyT(func(v UserManaged) []Replica { return v.Replicas }).(ReplicaArrayOutput)
 }
@@ -1815,7 +1815,7 @@ func (o UserManagedPtrOutput) Elem() UserManagedOutput {
 	return o.ApplyT(func(v *UserManaged) UserManaged { return *v }).(UserManagedOutput)
 }
 
-// Required. The list of Replicas for this Secret. Cannot be empty.
+// The list of Replicas for this Secret. Cannot be empty.
 func (o UserManagedPtrOutput) Replicas() ReplicaArrayOutput {
 	return o.ApplyT(func(v *UserManaged) []Replica {
 		if v == nil {
@@ -1827,7 +1827,7 @@ func (o UserManagedPtrOutput) Replicas() ReplicaArrayOutput {
 
 // A replication policy that replicates the Secret payload into the locations specified in Secret.replication.user_managed.replicas
 type UserManagedResponse struct {
-	// Required. The list of Replicas for this Secret. Cannot be empty.
+	// The list of Replicas for this Secret. Cannot be empty.
 	Replicas []ReplicaResponse `pulumi:"replicas"`
 }
 
@@ -1844,7 +1844,7 @@ type UserManagedResponseInput interface {
 
 // A replication policy that replicates the Secret payload into the locations specified in Secret.replication.user_managed.replicas
 type UserManagedResponseArgs struct {
-	// Required. The list of Replicas for this Secret. Cannot be empty.
+	// The list of Replicas for this Secret. Cannot be empty.
 	Replicas ReplicaResponseArrayInput `pulumi:"replicas"`
 }
 
@@ -1926,7 +1926,7 @@ func (o UserManagedResponseOutput) ToUserManagedResponsePtrOutputWithContext(ctx
 	}).(UserManagedResponsePtrOutput)
 }
 
-// Required. The list of Replicas for this Secret. Cannot be empty.
+// The list of Replicas for this Secret. Cannot be empty.
 func (o UserManagedResponseOutput) Replicas() ReplicaResponseArrayOutput {
 	return o.ApplyT(func(v UserManagedResponse) []ReplicaResponse { return v.Replicas }).(ReplicaResponseArrayOutput)
 }
@@ -1949,7 +1949,7 @@ func (o UserManagedResponsePtrOutput) Elem() UserManagedResponseOutput {
 	return o.ApplyT(func(v *UserManagedResponse) UserManagedResponse { return *v }).(UserManagedResponseOutput)
 }
 
-// Required. The list of Replicas for this Secret. Cannot be empty.
+// The list of Replicas for this Secret. Cannot be empty.
 func (o UserManagedResponsePtrOutput) Replicas() ReplicaResponseArrayOutput {
 	return o.ApplyT(func(v *UserManagedResponse) []ReplicaResponse {
 		if v == nil {

@@ -25,7 +25,7 @@ type LookupEnvgroupArgs struct {
 type LookupEnvgroupResult struct {
 	// The time at which the environment group was created as milliseconds since epoch.
 	CreatedAt string `pulumi:"createdAt"`
-	// Required. Host names for this environment group.
+	// Host names for this environment group.
 	Hostnames []string `pulumi:"hostnames"`
 	// The time at which the environment group was last updated as milliseconds since epoch.
 	LastModifiedAt string `pulumi:"lastModifiedAt"`

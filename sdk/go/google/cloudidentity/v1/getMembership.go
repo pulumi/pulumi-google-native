@@ -27,7 +27,7 @@ type LookupMembershipResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
 	Name string `pulumi:"name"`
-	// Required. Immutable. The `EntityKey` of the member.
+	// Immutable. The `EntityKey` of the member.
 	PreferredMemberKey EntityKeyResponse `pulumi:"preferredMemberKey"`
 	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
 	Roles []MembershipRoleResponse `pulumi:"roles"`

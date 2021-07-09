@@ -27,7 +27,7 @@ type LookupDataSourceResult struct {
 	DisableModifications bool `pulumi:"disableModifications"`
 	// Disable serving any search or assist results.
 	DisableServing bool `pulumi:"disableServing"`
-	// Required. Display name of the datasource The maximum length is 300 characters.
+	// Display name of the datasource The maximum length is 300 characters.
 	DisplayName string `pulumi:"displayName"`
 	// List of service accounts that have indexing access.
 	IndexingServiceAccounts []string `pulumi:"indexingServiceAccounts"`

@@ -25,13 +25,13 @@ type Domain struct {
 	Fqdn pulumi.StringOutput `pulumi:"fqdn"`
 	// Optional. Resource labels to represent user provided metadata
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+	// Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
 	Locations pulumi.StringArrayOutput `pulumi:"locations"`
 	// Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
 	ManagedIdentitiesAdminName pulumi.StringOutput `pulumi:"managedIdentitiesAdminName"`
 	// Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+	// The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
 	ReservedIpRange pulumi.StringOutput `pulumi:"reservedIpRange"`
 	// The current state of this domain.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -50,8 +50,14 @@ func NewDomain(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Locations == nil {
+		return nil, errors.New("invalid value for required argument 'Locations'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.ReservedIpRange == nil {
+		return nil, errors.New("invalid value for required argument 'ReservedIpRange'")
 	}
 	var resource Domain
 	err := ctx.RegisterResource("google-native:managedidentities/v1alpha1:Domain", name, args, &resource, opts...)
@@ -85,13 +91,13 @@ type domainState struct {
 	Fqdn *string `pulumi:"fqdn"`
 	// Optional. Resource labels to represent user provided metadata
 	Labels map[string]string `pulumi:"labels"`
-	// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+	// Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
 	Locations []string `pulumi:"locations"`
 	// Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
 	ManagedIdentitiesAdminName *string `pulumi:"managedIdentitiesAdminName"`
 	// Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
 	Name *string `pulumi:"name"`
-	// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+	// The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
 	ReservedIpRange *string `pulumi:"reservedIpRange"`
 	// The current state of this domain.
 	State *string `pulumi:"state"`
@@ -114,13 +120,13 @@ type DomainState struct {
 	Fqdn pulumi.StringPtrInput
 	// Optional. Resource labels to represent user provided metadata
 	Labels pulumi.StringMapInput
-	// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+	// Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
 	Locations pulumi.StringArrayInput
 	// Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
 	ManagedIdentitiesAdminName pulumi.StringPtrInput
 	// Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`.
 	Name pulumi.StringPtrInput
-	// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+	// The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
 	ReservedIpRange pulumi.StringPtrInput
 	// The current state of this domain.
 	State pulumi.StringPtrInput
@@ -144,13 +150,13 @@ type domainArgs struct {
 	DomainName         *string  `pulumi:"domainName"`
 	// Optional. Resource labels to represent user provided metadata
 	Labels map[string]string `pulumi:"labels"`
-	// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+	// Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
 	Locations []string `pulumi:"locations"`
 	// Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
 	ManagedIdentitiesAdminName *string `pulumi:"managedIdentitiesAdminName"`
 	Project                    string  `pulumi:"project"`
-	// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
-	ReservedIpRange *string `pulumi:"reservedIpRange"`
+	// The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+	ReservedIpRange string `pulumi:"reservedIpRange"`
 }
 
 // The set of arguments for constructing a Domain resource.
@@ -162,13 +168,13 @@ type DomainArgs struct {
 	DomainName         pulumi.StringPtrInput
 	// Optional. Resource labels to represent user provided metadata
 	Labels pulumi.StringMapInput
-	// Required. Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
+	// Locations where domain needs to be provisioned. regions e.g. us-west1 or us-east4 Service supports up to 4 locations at once. Each location will use a /26 block.
 	Locations pulumi.StringArrayInput
 	// Optional. Name of customer-visible admin used to perform Active Directory operations. If not specified `setupadmin` would be used.
 	ManagedIdentitiesAdminName pulumi.StringPtrInput
 	Project                    pulumi.StringInput
-	// Required. The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
-	ReservedIpRange pulumi.StringPtrInput
+	// The CIDR range of internal addresses that are reserved for this domain. Reserved networks must be /24 or larger. Ranges must be unique and non-overlapping with existing subnets in [Domain].[authorized_networks].
+	ReservedIpRange pulumi.StringInput
 }
 
 func (DomainArgs) ElementType() reflect.Type {

@@ -44,9 +44,9 @@ type LookupInstanceResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Optional. The zone where the instance will be provisioned. If not provided, the service will choose a zone for the instance. For STANDARD_HA tier, instances will be created across two zones for protection against zonal failures. If alternative_location_id is also provided, it must be different from location_id.
 	Location string `pulumi:"location"`
-	// Required. Redis memory size in GiB.
+	// Redis memory size in GiB.
 	MemorySizeGb int `pulumi:"memorySizeGb"`
-	// Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
+	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
 	Name string `pulumi:"name"`
 	// Cloud IAM identity used by import / export operations to transfer data to/from Cloud Storage. Format is "serviceAccount:". The value may change over time for a given instance so should be checked before each import/export operation.
 	PersistenceIamIdentity string `pulumi:"persistenceIamIdentity"`
@@ -64,7 +64,7 @@ type LookupInstanceResult struct {
 	State string `pulumi:"state"`
 	// Additional information about the current status of this instance, if available.
 	StatusMessage string `pulumi:"statusMessage"`
-	// Required. The service tier of the instance.
+	// The service tier of the instance.
 	Tier string `pulumi:"tier"`
 	// Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
 	TransitEncryptionMode string `pulumi:"transitEncryptionMode"`

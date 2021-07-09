@@ -500,8 +500,8 @@ func (o AutoscalingConfigResponsePtrOutput) PolicyUri() pulumi.StringPtrOutput {
 type BasicAutoscalingAlgorithm struct {
 	// Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
 	CooldownPeriod *string `pulumi:"cooldownPeriod"`
-	// Required. YARN autoscaling configuration.
-	YarnConfig *BasicYarnAutoscalingConfig `pulumi:"yarnConfig"`
+	// YARN autoscaling configuration.
+	YarnConfig BasicYarnAutoscalingConfig `pulumi:"yarnConfig"`
 }
 
 // BasicAutoscalingAlgorithmInput is an input type that accepts BasicAutoscalingAlgorithmArgs and BasicAutoscalingAlgorithmOutput values.
@@ -519,8 +519,8 @@ type BasicAutoscalingAlgorithmInput interface {
 type BasicAutoscalingAlgorithmArgs struct {
 	// Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
 	CooldownPeriod pulumi.StringPtrInput `pulumi:"cooldownPeriod"`
-	// Required. YARN autoscaling configuration.
-	YarnConfig BasicYarnAutoscalingConfigPtrInput `pulumi:"yarnConfig"`
+	// YARN autoscaling configuration.
+	YarnConfig BasicYarnAutoscalingConfigInput `pulumi:"yarnConfig"`
 }
 
 func (BasicAutoscalingAlgorithmArgs) ElementType() reflect.Type {
@@ -606,9 +606,9 @@ func (o BasicAutoscalingAlgorithmOutput) CooldownPeriod() pulumi.StringPtrOutput
 	return o.ApplyT(func(v BasicAutoscalingAlgorithm) *string { return v.CooldownPeriod }).(pulumi.StringPtrOutput)
 }
 
-// Required. YARN autoscaling configuration.
-func (o BasicAutoscalingAlgorithmOutput) YarnConfig() BasicYarnAutoscalingConfigPtrOutput {
-	return o.ApplyT(func(v BasicAutoscalingAlgorithm) *BasicYarnAutoscalingConfig { return v.YarnConfig }).(BasicYarnAutoscalingConfigPtrOutput)
+// YARN autoscaling configuration.
+func (o BasicAutoscalingAlgorithmOutput) YarnConfig() BasicYarnAutoscalingConfigOutput {
+	return o.ApplyT(func(v BasicAutoscalingAlgorithm) BasicYarnAutoscalingConfig { return v.YarnConfig }).(BasicYarnAutoscalingConfigOutput)
 }
 
 type BasicAutoscalingAlgorithmPtrOutput struct{ *pulumi.OutputState }
@@ -639,13 +639,13 @@ func (o BasicAutoscalingAlgorithmPtrOutput) CooldownPeriod() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. YARN autoscaling configuration.
+// YARN autoscaling configuration.
 func (o BasicAutoscalingAlgorithmPtrOutput) YarnConfig() BasicYarnAutoscalingConfigPtrOutput {
 	return o.ApplyT(func(v *BasicAutoscalingAlgorithm) *BasicYarnAutoscalingConfig {
 		if v == nil {
 			return nil
 		}
-		return v.YarnConfig
+		return &v.YarnConfig
 	}).(BasicYarnAutoscalingConfigPtrOutput)
 }
 
@@ -653,7 +653,7 @@ func (o BasicAutoscalingAlgorithmPtrOutput) YarnConfig() BasicYarnAutoscalingCon
 type BasicAutoscalingAlgorithmResponse struct {
 	// Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
 	CooldownPeriod string `pulumi:"cooldownPeriod"`
-	// Required. YARN autoscaling configuration.
+	// YARN autoscaling configuration.
 	YarnConfig BasicYarnAutoscalingConfigResponse `pulumi:"yarnConfig"`
 }
 
@@ -672,7 +672,7 @@ type BasicAutoscalingAlgorithmResponseInput interface {
 type BasicAutoscalingAlgorithmResponseArgs struct {
 	// Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
 	CooldownPeriod pulumi.StringInput `pulumi:"cooldownPeriod"`
-	// Required. YARN autoscaling configuration.
+	// YARN autoscaling configuration.
 	YarnConfig BasicYarnAutoscalingConfigResponseInput `pulumi:"yarnConfig"`
 }
 
@@ -759,7 +759,7 @@ func (o BasicAutoscalingAlgorithmResponseOutput) CooldownPeriod() pulumi.StringO
 	return o.ApplyT(func(v BasicAutoscalingAlgorithmResponse) string { return v.CooldownPeriod }).(pulumi.StringOutput)
 }
 
-// Required. YARN autoscaling configuration.
+// YARN autoscaling configuration.
 func (o BasicAutoscalingAlgorithmResponseOutput) YarnConfig() BasicYarnAutoscalingConfigResponseOutput {
 	return o.ApplyT(func(v BasicAutoscalingAlgorithmResponse) BasicYarnAutoscalingConfigResponse { return v.YarnConfig }).(BasicYarnAutoscalingConfigResponseOutput)
 }
@@ -792,7 +792,7 @@ func (o BasicAutoscalingAlgorithmResponsePtrOutput) CooldownPeriod() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. YARN autoscaling configuration.
+// YARN autoscaling configuration.
 func (o BasicAutoscalingAlgorithmResponsePtrOutput) YarnConfig() BasicYarnAutoscalingConfigResponsePtrOutput {
 	return o.ApplyT(func(v *BasicAutoscalingAlgorithmResponse) *BasicYarnAutoscalingConfigResponse {
 		if v == nil {
@@ -804,14 +804,14 @@ func (o BasicAutoscalingAlgorithmResponsePtrOutput) YarnConfig() BasicYarnAutosc
 
 // Basic autoscaling configurations for YARN.
 type BasicYarnAutoscalingConfig struct {
-	// Required. Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
-	GracefulDecommissionTimeout *string `pulumi:"gracefulDecommissionTimeout"`
-	// Required. Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
-	ScaleDownFactor *float64 `pulumi:"scaleDownFactor"`
+	// Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
+	GracefulDecommissionTimeout string `pulumi:"gracefulDecommissionTimeout"`
+	// Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
+	ScaleDownFactor float64 `pulumi:"scaleDownFactor"`
 	// Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
 	ScaleDownMinWorkerFraction *float64 `pulumi:"scaleDownMinWorkerFraction"`
-	// Required. Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
-	ScaleUpFactor *float64 `pulumi:"scaleUpFactor"`
+	// Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
+	ScaleUpFactor float64 `pulumi:"scaleUpFactor"`
 	// Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
 	ScaleUpMinWorkerFraction *float64 `pulumi:"scaleUpMinWorkerFraction"`
 }
@@ -829,14 +829,14 @@ type BasicYarnAutoscalingConfigInput interface {
 
 // Basic autoscaling configurations for YARN.
 type BasicYarnAutoscalingConfigArgs struct {
-	// Required. Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
-	GracefulDecommissionTimeout pulumi.StringPtrInput `pulumi:"gracefulDecommissionTimeout"`
-	// Required. Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
-	ScaleDownFactor pulumi.Float64PtrInput `pulumi:"scaleDownFactor"`
+	// Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
+	GracefulDecommissionTimeout pulumi.StringInput `pulumi:"gracefulDecommissionTimeout"`
+	// Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
+	ScaleDownFactor pulumi.Float64Input `pulumi:"scaleDownFactor"`
 	// Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
 	ScaleDownMinWorkerFraction pulumi.Float64PtrInput `pulumi:"scaleDownMinWorkerFraction"`
-	// Required. Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
-	ScaleUpFactor pulumi.Float64PtrInput `pulumi:"scaleUpFactor"`
+	// Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
+	ScaleUpFactor pulumi.Float64Input `pulumi:"scaleUpFactor"`
 	// Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
 	ScaleUpMinWorkerFraction pulumi.Float64PtrInput `pulumi:"scaleUpMinWorkerFraction"`
 }
@@ -919,14 +919,14 @@ func (o BasicYarnAutoscalingConfigOutput) ToBasicYarnAutoscalingConfigPtrOutputW
 	}).(BasicYarnAutoscalingConfigPtrOutput)
 }
 
-// Required. Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
-func (o BasicYarnAutoscalingConfigOutput) GracefulDecommissionTimeout() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BasicYarnAutoscalingConfig) *string { return v.GracefulDecommissionTimeout }).(pulumi.StringPtrOutput)
+// Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
+func (o BasicYarnAutoscalingConfigOutput) GracefulDecommissionTimeout() pulumi.StringOutput {
+	return o.ApplyT(func(v BasicYarnAutoscalingConfig) string { return v.GracefulDecommissionTimeout }).(pulumi.StringOutput)
 }
 
-// Required. Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
-func (o BasicYarnAutoscalingConfigOutput) ScaleDownFactor() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v BasicYarnAutoscalingConfig) *float64 { return v.ScaleDownFactor }).(pulumi.Float64PtrOutput)
+// Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
+func (o BasicYarnAutoscalingConfigOutput) ScaleDownFactor() pulumi.Float64Output {
+	return o.ApplyT(func(v BasicYarnAutoscalingConfig) float64 { return v.ScaleDownFactor }).(pulumi.Float64Output)
 }
 
 // Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
@@ -934,9 +934,9 @@ func (o BasicYarnAutoscalingConfigOutput) ScaleDownMinWorkerFraction() pulumi.Fl
 	return o.ApplyT(func(v BasicYarnAutoscalingConfig) *float64 { return v.ScaleDownMinWorkerFraction }).(pulumi.Float64PtrOutput)
 }
 
-// Required. Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
-func (o BasicYarnAutoscalingConfigOutput) ScaleUpFactor() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v BasicYarnAutoscalingConfig) *float64 { return v.ScaleUpFactor }).(pulumi.Float64PtrOutput)
+// Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
+func (o BasicYarnAutoscalingConfigOutput) ScaleUpFactor() pulumi.Float64Output {
+	return o.ApplyT(func(v BasicYarnAutoscalingConfig) float64 { return v.ScaleUpFactor }).(pulumi.Float64Output)
 }
 
 // Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
@@ -962,23 +962,23 @@ func (o BasicYarnAutoscalingConfigPtrOutput) Elem() BasicYarnAutoscalingConfigOu
 	return o.ApplyT(func(v *BasicYarnAutoscalingConfig) BasicYarnAutoscalingConfig { return *v }).(BasicYarnAutoscalingConfigOutput)
 }
 
-// Required. Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
+// Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
 func (o BasicYarnAutoscalingConfigPtrOutput) GracefulDecommissionTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BasicYarnAutoscalingConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.GracefulDecommissionTimeout
+		return &v.GracefulDecommissionTimeout
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
+// Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
 func (o BasicYarnAutoscalingConfigPtrOutput) ScaleDownFactor() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BasicYarnAutoscalingConfig) *float64 {
 		if v == nil {
 			return nil
 		}
-		return v.ScaleDownFactor
+		return &v.ScaleDownFactor
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -992,13 +992,13 @@ func (o BasicYarnAutoscalingConfigPtrOutput) ScaleDownMinWorkerFraction() pulumi
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Required. Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
+// Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
 func (o BasicYarnAutoscalingConfigPtrOutput) ScaleUpFactor() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BasicYarnAutoscalingConfig) *float64 {
 		if v == nil {
 			return nil
 		}
-		return v.ScaleUpFactor
+		return &v.ScaleUpFactor
 	}).(pulumi.Float64PtrOutput)
 }
 
@@ -1014,13 +1014,13 @@ func (o BasicYarnAutoscalingConfigPtrOutput) ScaleUpMinWorkerFraction() pulumi.F
 
 // Basic autoscaling configurations for YARN.
 type BasicYarnAutoscalingConfigResponse struct {
-	// Required. Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
+	// Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
 	GracefulDecommissionTimeout string `pulumi:"gracefulDecommissionTimeout"`
-	// Required. Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
+	// Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
 	ScaleDownFactor float64 `pulumi:"scaleDownFactor"`
 	// Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
 	ScaleDownMinWorkerFraction float64 `pulumi:"scaleDownMinWorkerFraction"`
-	// Required. Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
+	// Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
 	ScaleUpFactor float64 `pulumi:"scaleUpFactor"`
 	// Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
 	ScaleUpMinWorkerFraction float64 `pulumi:"scaleUpMinWorkerFraction"`
@@ -1039,13 +1039,13 @@ type BasicYarnAutoscalingConfigResponseInput interface {
 
 // Basic autoscaling configurations for YARN.
 type BasicYarnAutoscalingConfigResponseArgs struct {
-	// Required. Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
+	// Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
 	GracefulDecommissionTimeout pulumi.StringInput `pulumi:"gracefulDecommissionTimeout"`
-	// Required. Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
+	// Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
 	ScaleDownFactor pulumi.Float64Input `pulumi:"scaleDownFactor"`
 	// Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
 	ScaleDownMinWorkerFraction pulumi.Float64Input `pulumi:"scaleDownMinWorkerFraction"`
-	// Required. Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
+	// Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
 	ScaleUpFactor pulumi.Float64Input `pulumi:"scaleUpFactor"`
 	// Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
 	ScaleUpMinWorkerFraction pulumi.Float64Input `pulumi:"scaleUpMinWorkerFraction"`
@@ -1129,12 +1129,12 @@ func (o BasicYarnAutoscalingConfigResponseOutput) ToBasicYarnAutoscalingConfigRe
 	}).(BasicYarnAutoscalingConfigResponsePtrOutput)
 }
 
-// Required. Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
+// Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
 func (o BasicYarnAutoscalingConfigResponseOutput) GracefulDecommissionTimeout() pulumi.StringOutput {
 	return o.ApplyT(func(v BasicYarnAutoscalingConfigResponse) string { return v.GracefulDecommissionTimeout }).(pulumi.StringOutput)
 }
 
-// Required. Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
+// Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
 func (o BasicYarnAutoscalingConfigResponseOutput) ScaleDownFactor() pulumi.Float64Output {
 	return o.ApplyT(func(v BasicYarnAutoscalingConfigResponse) float64 { return v.ScaleDownFactor }).(pulumi.Float64Output)
 }
@@ -1144,7 +1144,7 @@ func (o BasicYarnAutoscalingConfigResponseOutput) ScaleDownMinWorkerFraction() p
 	return o.ApplyT(func(v BasicYarnAutoscalingConfigResponse) float64 { return v.ScaleDownMinWorkerFraction }).(pulumi.Float64Output)
 }
 
-// Required. Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
+// Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
 func (o BasicYarnAutoscalingConfigResponseOutput) ScaleUpFactor() pulumi.Float64Output {
 	return o.ApplyT(func(v BasicYarnAutoscalingConfigResponse) float64 { return v.ScaleUpFactor }).(pulumi.Float64Output)
 }
@@ -1172,7 +1172,7 @@ func (o BasicYarnAutoscalingConfigResponsePtrOutput) Elem() BasicYarnAutoscaling
 	return o.ApplyT(func(v *BasicYarnAutoscalingConfigResponse) BasicYarnAutoscalingConfigResponse { return *v }).(BasicYarnAutoscalingConfigResponseOutput)
 }
 
-// Required. Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
+// Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
 func (o BasicYarnAutoscalingConfigResponsePtrOutput) GracefulDecommissionTimeout() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BasicYarnAutoscalingConfigResponse) *string {
 		if v == nil {
@@ -1182,7 +1182,7 @@ func (o BasicYarnAutoscalingConfigResponsePtrOutput) GracefulDecommissionTimeout
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
+// Fraction of average YARN pending memory in the last cooldown period for which to remove workers. A scale-down factor of 1 will result in scaling down so that there is no available memory remaining after the update (more aggressive scaling). A scale-down factor of 0 disables removing workers, which can be beneficial for autoscaling a single job. See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
 func (o BasicYarnAutoscalingConfigResponsePtrOutput) ScaleDownFactor() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BasicYarnAutoscalingConfigResponse) *float64 {
 		if v == nil {
@@ -1202,7 +1202,7 @@ func (o BasicYarnAutoscalingConfigResponsePtrOutput) ScaleDownMinWorkerFraction(
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Required. Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
+// Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/autoscaling#how_autoscaling_works) for more information.Bounds: 0.0, 1.0.
 func (o BasicYarnAutoscalingConfigResponsePtrOutput) ScaleUpFactor() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *BasicYarnAutoscalingConfigResponse) *float64 {
 		if v == nil {
@@ -2413,7 +2413,7 @@ func (o ClusterMetricsResponsePtrOutput) YarnMetrics() pulumi.StringMapOutput {
 
 // A selector that chooses target cluster for jobs based on metadata.
 type ClusterSelector struct {
-	// Required. The cluster labels. Cluster must have all labels to match.
+	// The cluster labels. Cluster must have all labels to match.
 	ClusterLabels map[string]string `pulumi:"clusterLabels"`
 	// Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster.If unspecified, the zone of the first cluster matching the selector is used.
 	Zone *string `pulumi:"zone"`
@@ -2432,7 +2432,7 @@ type ClusterSelectorInput interface {
 
 // A selector that chooses target cluster for jobs based on metadata.
 type ClusterSelectorArgs struct {
-	// Required. The cluster labels. Cluster must have all labels to match.
+	// The cluster labels. Cluster must have all labels to match.
 	ClusterLabels pulumi.StringMapInput `pulumi:"clusterLabels"`
 	// Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster.If unspecified, the zone of the first cluster matching the selector is used.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
@@ -2516,7 +2516,7 @@ func (o ClusterSelectorOutput) ToClusterSelectorPtrOutputWithContext(ctx context
 	}).(ClusterSelectorPtrOutput)
 }
 
-// Required. The cluster labels. Cluster must have all labels to match.
+// The cluster labels. Cluster must have all labels to match.
 func (o ClusterSelectorOutput) ClusterLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterSelector) map[string]string { return v.ClusterLabels }).(pulumi.StringMapOutput)
 }
@@ -2544,7 +2544,7 @@ func (o ClusterSelectorPtrOutput) Elem() ClusterSelectorOutput {
 	return o.ApplyT(func(v *ClusterSelector) ClusterSelector { return *v }).(ClusterSelectorOutput)
 }
 
-// Required. The cluster labels. Cluster must have all labels to match.
+// The cluster labels. Cluster must have all labels to match.
 func (o ClusterSelectorPtrOutput) ClusterLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ClusterSelector) map[string]string {
 		if v == nil {
@@ -2566,7 +2566,7 @@ func (o ClusterSelectorPtrOutput) Zone() pulumi.StringPtrOutput {
 
 // A selector that chooses target cluster for jobs based on metadata.
 type ClusterSelectorResponse struct {
-	// Required. The cluster labels. Cluster must have all labels to match.
+	// The cluster labels. Cluster must have all labels to match.
 	ClusterLabels map[string]string `pulumi:"clusterLabels"`
 	// Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster.If unspecified, the zone of the first cluster matching the selector is used.
 	Zone string `pulumi:"zone"`
@@ -2585,7 +2585,7 @@ type ClusterSelectorResponseInput interface {
 
 // A selector that chooses target cluster for jobs based on metadata.
 type ClusterSelectorResponseArgs struct {
-	// Required. The cluster labels. Cluster must have all labels to match.
+	// The cluster labels. Cluster must have all labels to match.
 	ClusterLabels pulumi.StringMapInput `pulumi:"clusterLabels"`
 	// Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster.If unspecified, the zone of the first cluster matching the selector is used.
 	Zone pulumi.StringInput `pulumi:"zone"`
@@ -2669,7 +2669,7 @@ func (o ClusterSelectorResponseOutput) ToClusterSelectorResponsePtrOutputWithCon
 	}).(ClusterSelectorResponsePtrOutput)
 }
 
-// Required. The cluster labels. Cluster must have all labels to match.
+// The cluster labels. Cluster must have all labels to match.
 func (o ClusterSelectorResponseOutput) ClusterLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ClusterSelectorResponse) map[string]string { return v.ClusterLabels }).(pulumi.StringMapOutput)
 }
@@ -2697,7 +2697,7 @@ func (o ClusterSelectorResponsePtrOutput) Elem() ClusterSelectorResponseOutput {
 	return o.ApplyT(func(v *ClusterSelectorResponse) ClusterSelectorResponse { return *v }).(ClusterSelectorResponseOutput)
 }
 
-// Required. The cluster labels. Cluster must have all labels to match.
+// The cluster labels. Cluster must have all labels to match.
 func (o ClusterSelectorResponsePtrOutput) ClusterLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *ClusterSelectorResponse) map[string]string {
 		if v == nil {
@@ -6383,7 +6383,7 @@ func (o HiveJobResponsePtrOutput) ScriptVariables() pulumi.StringMapOutput {
 
 // Identity related configuration, including service account based secure multi-tenancy user mappings.
 type IdentityConfig struct {
-	// Required. Map of user to service account.
+	// Map of user to service account.
 	UserServiceAccountMapping map[string]string `pulumi:"userServiceAccountMapping"`
 }
 
@@ -6400,7 +6400,7 @@ type IdentityConfigInput interface {
 
 // Identity related configuration, including service account based secure multi-tenancy user mappings.
 type IdentityConfigArgs struct {
-	// Required. Map of user to service account.
+	// Map of user to service account.
 	UserServiceAccountMapping pulumi.StringMapInput `pulumi:"userServiceAccountMapping"`
 }
 
@@ -6482,7 +6482,7 @@ func (o IdentityConfigOutput) ToIdentityConfigPtrOutputWithContext(ctx context.C
 	}).(IdentityConfigPtrOutput)
 }
 
-// Required. Map of user to service account.
+// Map of user to service account.
 func (o IdentityConfigOutput) UserServiceAccountMapping() pulumi.StringMapOutput {
 	return o.ApplyT(func(v IdentityConfig) map[string]string { return v.UserServiceAccountMapping }).(pulumi.StringMapOutput)
 }
@@ -6505,7 +6505,7 @@ func (o IdentityConfigPtrOutput) Elem() IdentityConfigOutput {
 	return o.ApplyT(func(v *IdentityConfig) IdentityConfig { return *v }).(IdentityConfigOutput)
 }
 
-// Required. Map of user to service account.
+// Map of user to service account.
 func (o IdentityConfigPtrOutput) UserServiceAccountMapping() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *IdentityConfig) map[string]string {
 		if v == nil {
@@ -6517,7 +6517,7 @@ func (o IdentityConfigPtrOutput) UserServiceAccountMapping() pulumi.StringMapOut
 
 // Identity related configuration, including service account based secure multi-tenancy user mappings.
 type IdentityConfigResponse struct {
-	// Required. Map of user to service account.
+	// Map of user to service account.
 	UserServiceAccountMapping map[string]string `pulumi:"userServiceAccountMapping"`
 }
 
@@ -6534,7 +6534,7 @@ type IdentityConfigResponseInput interface {
 
 // Identity related configuration, including service account based secure multi-tenancy user mappings.
 type IdentityConfigResponseArgs struct {
-	// Required. Map of user to service account.
+	// Map of user to service account.
 	UserServiceAccountMapping pulumi.StringMapInput `pulumi:"userServiceAccountMapping"`
 }
 
@@ -6616,7 +6616,7 @@ func (o IdentityConfigResponseOutput) ToIdentityConfigResponsePtrOutputWithConte
 	}).(IdentityConfigResponsePtrOutput)
 }
 
-// Required. Map of user to service account.
+// Map of user to service account.
 func (o IdentityConfigResponseOutput) UserServiceAccountMapping() pulumi.StringMapOutput {
 	return o.ApplyT(func(v IdentityConfigResponse) map[string]string { return v.UserServiceAccountMapping }).(pulumi.StringMapOutput)
 }
@@ -6639,7 +6639,7 @@ func (o IdentityConfigResponsePtrOutput) Elem() IdentityConfigResponseOutput {
 	return o.ApplyT(func(v *IdentityConfigResponse) IdentityConfigResponse { return *v }).(IdentityConfigResponseOutput)
 }
 
-// Required. Map of user to service account.
+// Map of user to service account.
 func (o IdentityConfigResponsePtrOutput) UserServiceAccountMapping() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *IdentityConfigResponse) map[string]string {
 		if v == nil {
@@ -6651,8 +6651,8 @@ func (o IdentityConfigResponsePtrOutput) UserServiceAccountMapping() pulumi.Stri
 
 // Configuration for the size bounds of an instance group, including its proportional size to other groups.
 type InstanceGroupAutoscalingPolicyConfig struct {
-	// Required. Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
-	MaxInstances *int `pulumi:"maxInstances"`
+	// Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
+	MaxInstances int `pulumi:"maxInstances"`
 	// Optional. Minimum number of instances for this group.Primary workers - Bounds: 2, max_instances. Default: 2. Secondary workers - Bounds: 0, max_instances. Default: 0.
 	MinInstances *int `pulumi:"minInstances"`
 	// Optional. Weight for the instance group, which is used to determine the fraction of total workers in the cluster from this instance group. For example, if primary workers have weight 2, and secondary workers have weight 1, the cluster will have approximately 2 primary workers for each secondary worker.The cluster may not reach the specified balance if constrained by min/max bounds or other autoscaling settings. For example, if max_instances for secondary workers is 0, then only primary workers will be added. The cluster can also be out of balance when created.If weight is not set on any instance group, the cluster will default to equal weight for all groups: the cluster will attempt to maintain an equal number of workers in each group within the configured size bounds for each group. If weight is set for one group only, the cluster will default to zero weight on the unset group. For example if weight is set only on primary workers, the cluster will use primary workers only and no secondary workers.
@@ -6672,8 +6672,8 @@ type InstanceGroupAutoscalingPolicyConfigInput interface {
 
 // Configuration for the size bounds of an instance group, including its proportional size to other groups.
 type InstanceGroupAutoscalingPolicyConfigArgs struct {
-	// Required. Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
-	MaxInstances pulumi.IntPtrInput `pulumi:"maxInstances"`
+	// Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
+	MaxInstances pulumi.IntInput `pulumi:"maxInstances"`
 	// Optional. Minimum number of instances for this group.Primary workers - Bounds: 2, max_instances. Default: 2. Secondary workers - Bounds: 0, max_instances. Default: 0.
 	MinInstances pulumi.IntPtrInput `pulumi:"minInstances"`
 	// Optional. Weight for the instance group, which is used to determine the fraction of total workers in the cluster from this instance group. For example, if primary workers have weight 2, and secondary workers have weight 1, the cluster will have approximately 2 primary workers for each secondary worker.The cluster may not reach the specified balance if constrained by min/max bounds or other autoscaling settings. For example, if max_instances for secondary workers is 0, then only primary workers will be added. The cluster can also be out of balance when created.If weight is not set on any instance group, the cluster will default to equal weight for all groups: the cluster will attempt to maintain an equal number of workers in each group within the configured size bounds for each group. If weight is set for one group only, the cluster will default to zero weight on the unset group. For example if weight is set only on primary workers, the cluster will use primary workers only and no secondary workers.
@@ -6758,9 +6758,9 @@ func (o InstanceGroupAutoscalingPolicyConfigOutput) ToInstanceGroupAutoscalingPo
 	}).(InstanceGroupAutoscalingPolicyConfigPtrOutput)
 }
 
-// Required. Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
-func (o InstanceGroupAutoscalingPolicyConfigOutput) MaxInstances() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v InstanceGroupAutoscalingPolicyConfig) *int { return v.MaxInstances }).(pulumi.IntPtrOutput)
+// Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
+func (o InstanceGroupAutoscalingPolicyConfigOutput) MaxInstances() pulumi.IntOutput {
+	return o.ApplyT(func(v InstanceGroupAutoscalingPolicyConfig) int { return v.MaxInstances }).(pulumi.IntOutput)
 }
 
 // Optional. Minimum number of instances for this group.Primary workers - Bounds: 2, max_instances. Default: 2. Secondary workers - Bounds: 0, max_instances. Default: 0.
@@ -6791,13 +6791,13 @@ func (o InstanceGroupAutoscalingPolicyConfigPtrOutput) Elem() InstanceGroupAutos
 	return o.ApplyT(func(v *InstanceGroupAutoscalingPolicyConfig) InstanceGroupAutoscalingPolicyConfig { return *v }).(InstanceGroupAutoscalingPolicyConfigOutput)
 }
 
-// Required. Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
+// Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
 func (o InstanceGroupAutoscalingPolicyConfigPtrOutput) MaxInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupAutoscalingPolicyConfig) *int {
 		if v == nil {
 			return nil
 		}
-		return v.MaxInstances
+		return &v.MaxInstances
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -6823,7 +6823,7 @@ func (o InstanceGroupAutoscalingPolicyConfigPtrOutput) Weight() pulumi.IntPtrOut
 
 // Configuration for the size bounds of an instance group, including its proportional size to other groups.
 type InstanceGroupAutoscalingPolicyConfigResponse struct {
-	// Required. Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
+	// Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
 	MaxInstances int `pulumi:"maxInstances"`
 	// Optional. Minimum number of instances for this group.Primary workers - Bounds: 2, max_instances. Default: 2. Secondary workers - Bounds: 0, max_instances. Default: 0.
 	MinInstances int `pulumi:"minInstances"`
@@ -6844,7 +6844,7 @@ type InstanceGroupAutoscalingPolicyConfigResponseInput interface {
 
 // Configuration for the size bounds of an instance group, including its proportional size to other groups.
 type InstanceGroupAutoscalingPolicyConfigResponseArgs struct {
-	// Required. Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
+	// Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
 	MaxInstances pulumi.IntInput `pulumi:"maxInstances"`
 	// Optional. Minimum number of instances for this group.Primary workers - Bounds: 2, max_instances. Default: 2. Secondary workers - Bounds: 0, max_instances. Default: 0.
 	MinInstances pulumi.IntInput `pulumi:"minInstances"`
@@ -6930,7 +6930,7 @@ func (o InstanceGroupAutoscalingPolicyConfigResponseOutput) ToInstanceGroupAutos
 	}).(InstanceGroupAutoscalingPolicyConfigResponsePtrOutput)
 }
 
-// Required. Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
+// Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
 func (o InstanceGroupAutoscalingPolicyConfigResponseOutput) MaxInstances() pulumi.IntOutput {
 	return o.ApplyT(func(v InstanceGroupAutoscalingPolicyConfigResponse) int { return v.MaxInstances }).(pulumi.IntOutput)
 }
@@ -6965,7 +6965,7 @@ func (o InstanceGroupAutoscalingPolicyConfigResponsePtrOutput) Elem() InstanceGr
 	}).(InstanceGroupAutoscalingPolicyConfigResponseOutput)
 }
 
-// Required. Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
+// Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Secondary workers - Bounds: [min_instances, ). Default: 0.
 func (o InstanceGroupAutoscalingPolicyConfigResponsePtrOutput) MaxInstances() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *InstanceGroupAutoscalingPolicyConfigResponse) *int {
 		if v == nil {
@@ -7689,8 +7689,8 @@ func (o InstanceReferenceResponseArrayOutput) Index(i pulumi.IntInput) InstanceR
 type JobPlacement struct {
 	// Optional. Cluster labels to identify a cluster where the job will be submitted.
 	ClusterLabels map[string]string `pulumi:"clusterLabels"`
-	// Required. The name of the cluster where the job will be submitted.
-	ClusterName *string `pulumi:"clusterName"`
+	// The name of the cluster where the job will be submitted.
+	ClusterName string `pulumi:"clusterName"`
 }
 
 // JobPlacementInput is an input type that accepts JobPlacementArgs and JobPlacementOutput values.
@@ -7708,8 +7708,8 @@ type JobPlacementInput interface {
 type JobPlacementArgs struct {
 	// Optional. Cluster labels to identify a cluster where the job will be submitted.
 	ClusterLabels pulumi.StringMapInput `pulumi:"clusterLabels"`
-	// Required. The name of the cluster where the job will be submitted.
-	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
+	// The name of the cluster where the job will be submitted.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 }
 
 func (JobPlacementArgs) ElementType() reflect.Type {
@@ -7795,9 +7795,9 @@ func (o JobPlacementOutput) ClusterLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobPlacement) map[string]string { return v.ClusterLabels }).(pulumi.StringMapOutput)
 }
 
-// Required. The name of the cluster where the job will be submitted.
-func (o JobPlacementOutput) ClusterName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v JobPlacement) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+// The name of the cluster where the job will be submitted.
+func (o JobPlacementOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v JobPlacement) string { return v.ClusterName }).(pulumi.StringOutput)
 }
 
 type JobPlacementPtrOutput struct{ *pulumi.OutputState }
@@ -7828,13 +7828,13 @@ func (o JobPlacementPtrOutput) ClusterLabels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Required. The name of the cluster where the job will be submitted.
+// The name of the cluster where the job will be submitted.
 func (o JobPlacementPtrOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobPlacement) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ClusterName
+		return &v.ClusterName
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7842,7 +7842,7 @@ func (o JobPlacementPtrOutput) ClusterName() pulumi.StringPtrOutput {
 type JobPlacementResponse struct {
 	// Optional. Cluster labels to identify a cluster where the job will be submitted.
 	ClusterLabels map[string]string `pulumi:"clusterLabels"`
-	// Required. The name of the cluster where the job will be submitted.
+	// The name of the cluster where the job will be submitted.
 	ClusterName string `pulumi:"clusterName"`
 	// A cluster UUID generated by the Dataproc service when the job is submitted.
 	ClusterUuid string `pulumi:"clusterUuid"`
@@ -7863,7 +7863,7 @@ type JobPlacementResponseInput interface {
 type JobPlacementResponseArgs struct {
 	// Optional. Cluster labels to identify a cluster where the job will be submitted.
 	ClusterLabels pulumi.StringMapInput `pulumi:"clusterLabels"`
-	// Required. The name of the cluster where the job will be submitted.
+	// The name of the cluster where the job will be submitted.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 	// A cluster UUID generated by the Dataproc service when the job is submitted.
 	ClusterUuid pulumi.StringInput `pulumi:"clusterUuid"`
@@ -7952,7 +7952,7 @@ func (o JobPlacementResponseOutput) ClusterLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v JobPlacementResponse) map[string]string { return v.ClusterLabels }).(pulumi.StringMapOutput)
 }
 
-// Required. The name of the cluster where the job will be submitted.
+// The name of the cluster where the job will be submitted.
 func (o JobPlacementResponseOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v JobPlacementResponse) string { return v.ClusterName }).(pulumi.StringOutput)
 }
@@ -7990,7 +7990,7 @@ func (o JobPlacementResponsePtrOutput) ClusterLabels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Required. The name of the cluster where the job will be submitted.
+// The name of the cluster where the job will be submitted.
 func (o JobPlacementResponsePtrOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *JobPlacementResponse) *string {
 		if v == nil {
@@ -10291,10 +10291,10 @@ func (o LoggingConfigResponsePtrOutput) DriverLogLevels() pulumi.StringMapOutput
 
 // Cluster that is managed by the workflow.
 type ManagedCluster struct {
-	// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
-	ClusterName *string `pulumi:"clusterName"`
-	// Required. The cluster configuration.
-	Config *ClusterConfig `pulumi:"config"`
+	// The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+	ClusterName string `pulumi:"clusterName"`
+	// The cluster configuration.
+	Config ClusterConfig `pulumi:"config"`
 	// Optional. The labels to associate with this cluster.Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given cluster.
 	Labels map[string]string `pulumi:"labels"`
 }
@@ -10312,10 +10312,10 @@ type ManagedClusterInput interface {
 
 // Cluster that is managed by the workflow.
 type ManagedClusterArgs struct {
-	// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
-	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
-	// Required. The cluster configuration.
-	Config ClusterConfigPtrInput `pulumi:"config"`
+	// The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+	ClusterName pulumi.StringInput `pulumi:"clusterName"`
+	// The cluster configuration.
+	Config ClusterConfigInput `pulumi:"config"`
 	// Optional. The labels to associate with this cluster.Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given cluster.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 }
@@ -10398,14 +10398,14 @@ func (o ManagedClusterOutput) ToManagedClusterPtrOutputWithContext(ctx context.C
 	}).(ManagedClusterPtrOutput)
 }
 
-// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
-func (o ManagedClusterOutput) ClusterName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagedCluster) *string { return v.ClusterName }).(pulumi.StringPtrOutput)
+// The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+func (o ManagedClusterOutput) ClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedCluster) string { return v.ClusterName }).(pulumi.StringOutput)
 }
 
-// Required. The cluster configuration.
-func (o ManagedClusterOutput) Config() ClusterConfigPtrOutput {
-	return o.ApplyT(func(v ManagedCluster) *ClusterConfig { return v.Config }).(ClusterConfigPtrOutput)
+// The cluster configuration.
+func (o ManagedClusterOutput) Config() ClusterConfigOutput {
+	return o.ApplyT(func(v ManagedCluster) ClusterConfig { return v.Config }).(ClusterConfigOutput)
 }
 
 // Optional. The labels to associate with this cluster.Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given cluster.
@@ -10431,23 +10431,23 @@ func (o ManagedClusterPtrOutput) Elem() ManagedClusterOutput {
 	return o.ApplyT(func(v *ManagedCluster) ManagedCluster { return *v }).(ManagedClusterOutput)
 }
 
-// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+// The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
 func (o ManagedClusterPtrOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedCluster) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ClusterName
+		return &v.ClusterName
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The cluster configuration.
+// The cluster configuration.
 func (o ManagedClusterPtrOutput) Config() ClusterConfigPtrOutput {
 	return o.ApplyT(func(v *ManagedCluster) *ClusterConfig {
 		if v == nil {
 			return nil
 		}
-		return v.Config
+		return &v.Config
 	}).(ClusterConfigPtrOutput)
 }
 
@@ -10463,9 +10463,9 @@ func (o ManagedClusterPtrOutput) Labels() pulumi.StringMapOutput {
 
 // Cluster that is managed by the workflow.
 type ManagedClusterResponse struct {
-	// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+	// The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
 	ClusterName string `pulumi:"clusterName"`
-	// Required. The cluster configuration.
+	// The cluster configuration.
 	Config ClusterConfigResponse `pulumi:"config"`
 	// Optional. The labels to associate with this cluster.Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given cluster.
 	Labels map[string]string `pulumi:"labels"`
@@ -10484,9 +10484,9 @@ type ManagedClusterResponseInput interface {
 
 // Cluster that is managed by the workflow.
 type ManagedClusterResponseArgs struct {
-	// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+	// The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
-	// Required. The cluster configuration.
+	// The cluster configuration.
 	Config ClusterConfigResponseInput `pulumi:"config"`
 	// Optional. The labels to associate with this cluster.Label keys must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and 63 characters long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 32 labels can be associated with a given cluster.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -10570,12 +10570,12 @@ func (o ManagedClusterResponseOutput) ToManagedClusterResponsePtrOutputWithConte
 	}).(ManagedClusterResponsePtrOutput)
 }
 
-// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+// The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
 func (o ManagedClusterResponseOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedClusterResponse) string { return v.ClusterName }).(pulumi.StringOutput)
 }
 
-// Required. The cluster configuration.
+// The cluster configuration.
 func (o ManagedClusterResponseOutput) Config() ClusterConfigResponseOutput {
 	return o.ApplyT(func(v ManagedClusterResponse) ClusterConfigResponse { return v.Config }).(ClusterConfigResponseOutput)
 }
@@ -10603,7 +10603,7 @@ func (o ManagedClusterResponsePtrOutput) Elem() ManagedClusterResponseOutput {
 	return o.ApplyT(func(v *ManagedClusterResponse) ManagedClusterResponse { return *v }).(ManagedClusterResponseOutput)
 }
 
-// Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
+// The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
 func (o ManagedClusterResponsePtrOutput) ClusterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedClusterResponse) *string {
 		if v == nil {
@@ -10613,7 +10613,7 @@ func (o ManagedClusterResponsePtrOutput) ClusterName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The cluster configuration.
+// The cluster configuration.
 func (o ManagedClusterResponsePtrOutput) Config() ClusterConfigResponsePtrOutput {
 	return o.ApplyT(func(v *ManagedClusterResponse) *ClusterConfigResponse {
 		if v == nil {
@@ -10788,8 +10788,8 @@ func (o ManagedGroupConfigResponsePtrOutput) InstanceTemplateName() pulumi.Strin
 
 // Specifies a Metastore configuration.
 type MetastoreConfig struct {
-	// Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
-	DataprocMetastoreService *string `pulumi:"dataprocMetastoreService"`
+	// Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+	DataprocMetastoreService string `pulumi:"dataprocMetastoreService"`
 }
 
 // MetastoreConfigInput is an input type that accepts MetastoreConfigArgs and MetastoreConfigOutput values.
@@ -10805,8 +10805,8 @@ type MetastoreConfigInput interface {
 
 // Specifies a Metastore configuration.
 type MetastoreConfigArgs struct {
-	// Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
-	DataprocMetastoreService pulumi.StringPtrInput `pulumi:"dataprocMetastoreService"`
+	// Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+	DataprocMetastoreService pulumi.StringInput `pulumi:"dataprocMetastoreService"`
 }
 
 func (MetastoreConfigArgs) ElementType() reflect.Type {
@@ -10887,9 +10887,9 @@ func (o MetastoreConfigOutput) ToMetastoreConfigPtrOutputWithContext(ctx context
 	}).(MetastoreConfigPtrOutput)
 }
 
-// Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
-func (o MetastoreConfigOutput) DataprocMetastoreService() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MetastoreConfig) *string { return v.DataprocMetastoreService }).(pulumi.StringPtrOutput)
+// Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+func (o MetastoreConfigOutput) DataprocMetastoreService() pulumi.StringOutput {
+	return o.ApplyT(func(v MetastoreConfig) string { return v.DataprocMetastoreService }).(pulumi.StringOutput)
 }
 
 type MetastoreConfigPtrOutput struct{ *pulumi.OutputState }
@@ -10910,19 +10910,19 @@ func (o MetastoreConfigPtrOutput) Elem() MetastoreConfigOutput {
 	return o.ApplyT(func(v *MetastoreConfig) MetastoreConfig { return *v }).(MetastoreConfigOutput)
 }
 
-// Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+// Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
 func (o MetastoreConfigPtrOutput) DataprocMetastoreService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.DataprocMetastoreService
+		return &v.DataprocMetastoreService
 	}).(pulumi.StringPtrOutput)
 }
 
 // Specifies a Metastore configuration.
 type MetastoreConfigResponse struct {
-	// Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+	// Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
 	DataprocMetastoreService string `pulumi:"dataprocMetastoreService"`
 }
 
@@ -10939,7 +10939,7 @@ type MetastoreConfigResponseInput interface {
 
 // Specifies a Metastore configuration.
 type MetastoreConfigResponseArgs struct {
-	// Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+	// Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
 	DataprocMetastoreService pulumi.StringInput `pulumi:"dataprocMetastoreService"`
 }
 
@@ -11021,7 +11021,7 @@ func (o MetastoreConfigResponseOutput) ToMetastoreConfigResponsePtrOutputWithCon
 	}).(MetastoreConfigResponsePtrOutput)
 }
 
-// Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+// Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
 func (o MetastoreConfigResponseOutput) DataprocMetastoreService() pulumi.StringOutput {
 	return o.ApplyT(func(v MetastoreConfigResponse) string { return v.DataprocMetastoreService }).(pulumi.StringOutput)
 }
@@ -11044,7 +11044,7 @@ func (o MetastoreConfigResponsePtrOutput) Elem() MetastoreConfigResponseOutput {
 	return o.ApplyT(func(v *MetastoreConfigResponse) MetastoreConfigResponse { return *v }).(MetastoreConfigResponseOutput)
 }
 
-// Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
+// Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
 func (o MetastoreConfigResponsePtrOutput) DataprocMetastoreService() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreConfigResponse) *string {
 		if v == nil {
@@ -11362,8 +11362,8 @@ func (o NamespacedGkeDeploymentTargetResponsePtrOutput) TargetGkeCluster() pulum
 
 // Node Group Affinity for clusters using sole-tenant node groups.
 type NodeGroupAffinity struct {
-	// Required. The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
-	NodeGroupUri *string `pulumi:"nodeGroupUri"`
+	// The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
+	NodeGroupUri string `pulumi:"nodeGroupUri"`
 }
 
 // NodeGroupAffinityInput is an input type that accepts NodeGroupAffinityArgs and NodeGroupAffinityOutput values.
@@ -11379,8 +11379,8 @@ type NodeGroupAffinityInput interface {
 
 // Node Group Affinity for clusters using sole-tenant node groups.
 type NodeGroupAffinityArgs struct {
-	// Required. The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
-	NodeGroupUri pulumi.StringPtrInput `pulumi:"nodeGroupUri"`
+	// The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
+	NodeGroupUri pulumi.StringInput `pulumi:"nodeGroupUri"`
 }
 
 func (NodeGroupAffinityArgs) ElementType() reflect.Type {
@@ -11461,9 +11461,9 @@ func (o NodeGroupAffinityOutput) ToNodeGroupAffinityPtrOutputWithContext(ctx con
 	}).(NodeGroupAffinityPtrOutput)
 }
 
-// Required. The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
-func (o NodeGroupAffinityOutput) NodeGroupUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodeGroupAffinity) *string { return v.NodeGroupUri }).(pulumi.StringPtrOutput)
+// The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
+func (o NodeGroupAffinityOutput) NodeGroupUri() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeGroupAffinity) string { return v.NodeGroupUri }).(pulumi.StringOutput)
 }
 
 type NodeGroupAffinityPtrOutput struct{ *pulumi.OutputState }
@@ -11484,19 +11484,19 @@ func (o NodeGroupAffinityPtrOutput) Elem() NodeGroupAffinityOutput {
 	return o.ApplyT(func(v *NodeGroupAffinity) NodeGroupAffinity { return *v }).(NodeGroupAffinityOutput)
 }
 
-// Required. The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
+// The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
 func (o NodeGroupAffinityPtrOutput) NodeGroupUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeGroupAffinity) *string {
 		if v == nil {
 			return nil
 		}
-		return v.NodeGroupUri
+		return &v.NodeGroupUri
 	}).(pulumi.StringPtrOutput)
 }
 
 // Node Group Affinity for clusters using sole-tenant node groups.
 type NodeGroupAffinityResponse struct {
-	// Required. The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
+	// The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
 	NodeGroupUri string `pulumi:"nodeGroupUri"`
 }
 
@@ -11513,7 +11513,7 @@ type NodeGroupAffinityResponseInput interface {
 
 // Node Group Affinity for clusters using sole-tenant node groups.
 type NodeGroupAffinityResponseArgs struct {
-	// Required. The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
+	// The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
 	NodeGroupUri pulumi.StringInput `pulumi:"nodeGroupUri"`
 }
 
@@ -11595,7 +11595,7 @@ func (o NodeGroupAffinityResponseOutput) ToNodeGroupAffinityResponsePtrOutputWit
 	}).(NodeGroupAffinityResponsePtrOutput)
 }
 
-// Required. The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
+// The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
 func (o NodeGroupAffinityResponseOutput) NodeGroupUri() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeGroupAffinityResponse) string { return v.NodeGroupUri }).(pulumi.StringOutput)
 }
@@ -11618,7 +11618,7 @@ func (o NodeGroupAffinityResponsePtrOutput) Elem() NodeGroupAffinityResponseOutp
 	return o.ApplyT(func(v *NodeGroupAffinityResponse) NodeGroupAffinityResponse { return *v }).(NodeGroupAffinityResponseOutput)
 }
 
-// Required. The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
+// The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 projects/[project_id]/zones/us-central1-a/nodeGroups/node-group-1 node-group-1
 func (o NodeGroupAffinityResponsePtrOutput) NodeGroupUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeGroupAffinityResponse) *string {
 		if v == nil {
@@ -11630,8 +11630,8 @@ func (o NodeGroupAffinityResponsePtrOutput) NodeGroupUri() pulumi.StringPtrOutpu
 
 // Specifies an executable to run on a fully configured node and a timeout period for executable completion.
 type NodeInitializationAction struct {
-	// Required. Cloud Storage URI of executable file.
-	ExecutableFile *string `pulumi:"executableFile"`
+	// Cloud Storage URI of executable file.
+	ExecutableFile string `pulumi:"executableFile"`
 	// Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
 	ExecutionTimeout *string `pulumi:"executionTimeout"`
 }
@@ -11649,8 +11649,8 @@ type NodeInitializationActionInput interface {
 
 // Specifies an executable to run on a fully configured node and a timeout period for executable completion.
 type NodeInitializationActionArgs struct {
-	// Required. Cloud Storage URI of executable file.
-	ExecutableFile pulumi.StringPtrInput `pulumi:"executableFile"`
+	// Cloud Storage URI of executable file.
+	ExecutableFile pulumi.StringInput `pulumi:"executableFile"`
 	// Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
 	ExecutionTimeout pulumi.StringPtrInput `pulumi:"executionTimeout"`
 }
@@ -11707,9 +11707,9 @@ func (o NodeInitializationActionOutput) ToNodeInitializationActionOutputWithCont
 	return o
 }
 
-// Required. Cloud Storage URI of executable file.
-func (o NodeInitializationActionOutput) ExecutableFile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodeInitializationAction) *string { return v.ExecutableFile }).(pulumi.StringPtrOutput)
+// Cloud Storage URI of executable file.
+func (o NodeInitializationActionOutput) ExecutableFile() pulumi.StringOutput {
+	return o.ApplyT(func(v NodeInitializationAction) string { return v.ExecutableFile }).(pulumi.StringOutput)
 }
 
 // Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
@@ -11739,7 +11739,7 @@ func (o NodeInitializationActionArrayOutput) Index(i pulumi.IntInput) NodeInitia
 
 // Specifies an executable to run on a fully configured node and a timeout period for executable completion.
 type NodeInitializationActionResponse struct {
-	// Required. Cloud Storage URI of executable file.
+	// Cloud Storage URI of executable file.
 	ExecutableFile string `pulumi:"executableFile"`
 	// Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
 	ExecutionTimeout string `pulumi:"executionTimeout"`
@@ -11758,7 +11758,7 @@ type NodeInitializationActionResponseInput interface {
 
 // Specifies an executable to run on a fully configured node and a timeout period for executable completion.
 type NodeInitializationActionResponseArgs struct {
-	// Required. Cloud Storage URI of executable file.
+	// Cloud Storage URI of executable file.
 	ExecutableFile pulumi.StringInput `pulumi:"executableFile"`
 	// Optional. Amount of time executable has to complete. Default is 10 minutes (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).Cluster creation fails with an explanatory error message (the name of the executable that caused the error and the exceeded timeout period) if the executable is not completed at end of the timeout period.
 	ExecutionTimeout pulumi.StringInput `pulumi:"executionTimeout"`
@@ -11816,7 +11816,7 @@ func (o NodeInitializationActionResponseOutput) ToNodeInitializationActionRespon
 	return o
 }
 
-// Required. Cloud Storage URI of executable file.
+// Cloud Storage URI of executable file.
 func (o NodeInitializationActionResponseOutput) ExecutableFile() pulumi.StringOutput {
 	return o.ApplyT(func(v NodeInitializationActionResponse) string { return v.ExecutableFile }).(pulumi.StringOutput)
 }
@@ -11870,8 +11870,8 @@ type OrderedJob struct {
 	SparkRJob *SparkRJob `pulumi:"sparkRJob"`
 	// Optional. Job is a SparkSql job.
 	SparkSqlJob *SparkSqlJob `pulumi:"sparkSqlJob"`
-	// Required. The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-	StepId *string `pulumi:"stepId"`
+	// The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+	StepId string `pulumi:"stepId"`
 }
 
 // OrderedJobInput is an input type that accepts OrderedJobArgs and OrderedJobOutput values.
@@ -11909,8 +11909,8 @@ type OrderedJobArgs struct {
 	SparkRJob SparkRJobPtrInput `pulumi:"sparkRJob"`
 	// Optional. Job is a SparkSql job.
 	SparkSqlJob SparkSqlJobPtrInput `pulumi:"sparkSqlJob"`
-	// Required. The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-	StepId pulumi.StringPtrInput `pulumi:"stepId"`
+	// The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+	StepId pulumi.StringInput `pulumi:"stepId"`
 }
 
 func (OrderedJobArgs) ElementType() reflect.Type {
@@ -12020,9 +12020,9 @@ func (o OrderedJobOutput) SparkSqlJob() SparkSqlJobPtrOutput {
 	return o.ApplyT(func(v OrderedJob) *SparkSqlJob { return v.SparkSqlJob }).(SparkSqlJobPtrOutput)
 }
 
-// Required. The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
-func (o OrderedJobOutput) StepId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OrderedJob) *string { return v.StepId }).(pulumi.StringPtrOutput)
+// The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+func (o OrderedJobOutput) StepId() pulumi.StringOutput {
+	return o.ApplyT(func(v OrderedJob) string { return v.StepId }).(pulumi.StringOutput)
 }
 
 type OrderedJobArrayOutput struct{ *pulumi.OutputState }
@@ -12069,7 +12069,7 @@ type OrderedJobResponse struct {
 	SparkRJob SparkRJobResponse `pulumi:"sparkRJob"`
 	// Optional. Job is a SparkSql job.
 	SparkSqlJob SparkSqlJobResponse `pulumi:"sparkSqlJob"`
-	// Required. The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+	// The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
 	StepId string `pulumi:"stepId"`
 }
 
@@ -12108,7 +12108,7 @@ type OrderedJobResponseArgs struct {
 	SparkRJob SparkRJobResponseInput `pulumi:"sparkRJob"`
 	// Optional. Job is a SparkSql job.
 	SparkSqlJob SparkSqlJobResponseInput `pulumi:"sparkSqlJob"`
-	// Required. The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+	// The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
 	StepId pulumi.StringInput `pulumi:"stepId"`
 }
 
@@ -12219,7 +12219,7 @@ func (o OrderedJobResponseOutput) SparkSqlJob() SparkSqlJobResponseOutput {
 	return o.ApplyT(func(v OrderedJobResponse) SparkSqlJobResponse { return v.SparkSqlJob }).(SparkSqlJobResponseOutput)
 }
 
-// Required. The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+// The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
 func (o OrderedJobResponseOutput) StepId() pulumi.StringOutput {
 	return o.ApplyT(func(v OrderedJobResponse) string { return v.StepId }).(pulumi.StringOutput)
 }
@@ -13465,8 +13465,8 @@ type PySparkJob struct {
 	JarFileUris []string `pulumi:"jarFileUris"`
 	// Optional. The runtime log config for job execution.
 	LoggingConfig *LoggingConfig `pulumi:"loggingConfig"`
-	// Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
-	MainPythonFileUri *string `pulumi:"mainPythonFileUri"`
+	// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+	MainPythonFileUri string `pulumi:"mainPythonFileUri"`
 	// Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 	Properties map[string]string `pulumi:"properties"`
 	// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
@@ -13496,8 +13496,8 @@ type PySparkJobArgs struct {
 	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
 	// Optional. The runtime log config for job execution.
 	LoggingConfig LoggingConfigPtrInput `pulumi:"loggingConfig"`
-	// Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
-	MainPythonFileUri pulumi.StringPtrInput `pulumi:"mainPythonFileUri"`
+	// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+	MainPythonFileUri pulumi.StringInput `pulumi:"mainPythonFileUri"`
 	// Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 	// Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
@@ -13607,9 +13607,9 @@ func (o PySparkJobOutput) LoggingConfig() LoggingConfigPtrOutput {
 	return o.ApplyT(func(v PySparkJob) *LoggingConfig { return v.LoggingConfig }).(LoggingConfigPtrOutput)
 }
 
-// Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
-func (o PySparkJobOutput) MainPythonFileUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PySparkJob) *string { return v.MainPythonFileUri }).(pulumi.StringPtrOutput)
+// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+func (o PySparkJobOutput) MainPythonFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v PySparkJob) string { return v.MainPythonFileUri }).(pulumi.StringOutput)
 }
 
 // Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
@@ -13690,13 +13690,13 @@ func (o PySparkJobPtrOutput) LoggingConfig() LoggingConfigPtrOutput {
 	}).(LoggingConfigPtrOutput)
 }
 
-// Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
 func (o PySparkJobPtrOutput) MainPythonFileUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PySparkJob) *string {
 		if v == nil {
 			return nil
 		}
-		return v.MainPythonFileUri
+		return &v.MainPythonFileUri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -13732,7 +13732,7 @@ type PySparkJobResponse struct {
 	JarFileUris []string `pulumi:"jarFileUris"`
 	// Optional. The runtime log config for job execution.
 	LoggingConfig LoggingConfigResponse `pulumi:"loggingConfig"`
-	// Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+	// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
 	MainPythonFileUri string `pulumi:"mainPythonFileUri"`
 	// Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 	Properties map[string]string `pulumi:"properties"`
@@ -13763,7 +13763,7 @@ type PySparkJobResponseArgs struct {
 	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
 	// Optional. The runtime log config for job execution.
 	LoggingConfig LoggingConfigResponseInput `pulumi:"loggingConfig"`
-	// Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+	// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
 	MainPythonFileUri pulumi.StringInput `pulumi:"mainPythonFileUri"`
 	// Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
@@ -13874,7 +13874,7 @@ func (o PySparkJobResponseOutput) LoggingConfig() LoggingConfigResponseOutput {
 	return o.ApplyT(func(v PySparkJobResponse) LoggingConfigResponse { return v.LoggingConfig }).(LoggingConfigResponseOutput)
 }
 
-// Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
 func (o PySparkJobResponseOutput) MainPythonFileUri() pulumi.StringOutput {
 	return o.ApplyT(func(v PySparkJobResponse) string { return v.MainPythonFileUri }).(pulumi.StringOutput)
 }
@@ -13957,7 +13957,7 @@ func (o PySparkJobResponsePtrOutput) LoggingConfig() LoggingConfigResponsePtrOut
 	}).(LoggingConfigResponsePtrOutput)
 }
 
-// Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
 func (o PySparkJobResponsePtrOutput) MainPythonFileUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *PySparkJobResponse) *string {
 		if v == nil {
@@ -13989,7 +13989,7 @@ func (o PySparkJobResponsePtrOutput) PythonFileUris() pulumi.StringArrayOutput {
 
 // A list of queries to run on a cluster.
 type QueryList struct {
-	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
+	// The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
 	Queries []string `pulumi:"queries"`
 }
 
@@ -14006,7 +14006,7 @@ type QueryListInput interface {
 
 // A list of queries to run on a cluster.
 type QueryListArgs struct {
-	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
+	// The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
 	Queries pulumi.StringArrayInput `pulumi:"queries"`
 }
 
@@ -14088,7 +14088,7 @@ func (o QueryListOutput) ToQueryListPtrOutputWithContext(ctx context.Context) Qu
 	}).(QueryListPtrOutput)
 }
 
-// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
+// The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
 func (o QueryListOutput) Queries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v QueryList) []string { return v.Queries }).(pulumi.StringArrayOutput)
 }
@@ -14111,7 +14111,7 @@ func (o QueryListPtrOutput) Elem() QueryListOutput {
 	return o.ApplyT(func(v *QueryList) QueryList { return *v }).(QueryListOutput)
 }
 
-// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
+// The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
 func (o QueryListPtrOutput) Queries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *QueryList) []string {
 		if v == nil {
@@ -14123,7 +14123,7 @@ func (o QueryListPtrOutput) Queries() pulumi.StringArrayOutput {
 
 // A list of queries to run on a cluster.
 type QueryListResponse struct {
-	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
+	// The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
 	Queries []string `pulumi:"queries"`
 }
 
@@ -14140,7 +14140,7 @@ type QueryListResponseInput interface {
 
 // A list of queries to run on a cluster.
 type QueryListResponseArgs struct {
-	// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
+	// The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
 	Queries pulumi.StringArrayInput `pulumi:"queries"`
 }
 
@@ -14222,7 +14222,7 @@ func (o QueryListResponseOutput) ToQueryListResponsePtrOutputWithContext(ctx con
 	}).(QueryListResponsePtrOutput)
 }
 
-// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
+// The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
 func (o QueryListResponseOutput) Queries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v QueryListResponse) []string { return v.Queries }).(pulumi.StringArrayOutput)
 }
@@ -14245,7 +14245,7 @@ func (o QueryListResponsePtrOutput) Elem() QueryListResponseOutput {
 	return o.ApplyT(func(v *QueryListResponse) QueryListResponse { return *v }).(QueryListResponseOutput)
 }
 
-// Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
+// The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } }
 func (o QueryListResponsePtrOutput) Queries() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *QueryListResponse) []string {
 		if v == nil {
@@ -14257,7 +14257,7 @@ func (o QueryListResponsePtrOutput) Queries() pulumi.StringArrayOutput {
 
 // Validation based on regular expressions.
 type RegexValidation struct {
-	// Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
+	// RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
 	Regexes []string `pulumi:"regexes"`
 }
 
@@ -14274,7 +14274,7 @@ type RegexValidationInput interface {
 
 // Validation based on regular expressions.
 type RegexValidationArgs struct {
-	// Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
+	// RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
 	Regexes pulumi.StringArrayInput `pulumi:"regexes"`
 }
 
@@ -14356,7 +14356,7 @@ func (o RegexValidationOutput) ToRegexValidationPtrOutputWithContext(ctx context
 	}).(RegexValidationPtrOutput)
 }
 
-// Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
+// RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
 func (o RegexValidationOutput) Regexes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RegexValidation) []string { return v.Regexes }).(pulumi.StringArrayOutput)
 }
@@ -14379,7 +14379,7 @@ func (o RegexValidationPtrOutput) Elem() RegexValidationOutput {
 	return o.ApplyT(func(v *RegexValidation) RegexValidation { return *v }).(RegexValidationOutput)
 }
 
-// Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
+// RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
 func (o RegexValidationPtrOutput) Regexes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RegexValidation) []string {
 		if v == nil {
@@ -14391,7 +14391,7 @@ func (o RegexValidationPtrOutput) Regexes() pulumi.StringArrayOutput {
 
 // Validation based on regular expressions.
 type RegexValidationResponse struct {
-	// Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
+	// RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
 	Regexes []string `pulumi:"regexes"`
 }
 
@@ -14408,7 +14408,7 @@ type RegexValidationResponseInput interface {
 
 // Validation based on regular expressions.
 type RegexValidationResponseArgs struct {
-	// Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
+	// RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
 	Regexes pulumi.StringArrayInput `pulumi:"regexes"`
 }
 
@@ -14439,7 +14439,7 @@ func (o RegexValidationResponseOutput) ToRegexValidationResponseOutputWithContex
 	return o
 }
 
-// Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
+// RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
 func (o RegexValidationResponseOutput) Regexes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RegexValidationResponse) []string { return v.Regexes }).(pulumi.StringArrayOutput)
 }
@@ -16326,8 +16326,8 @@ type SparkRJob struct {
 	FileUris []string `pulumi:"fileUris"`
 	// Optional. The runtime log config for job execution.
 	LoggingConfig *LoggingConfig `pulumi:"loggingConfig"`
-	// Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
-	MainRFileUri *string `pulumi:"mainRFileUri"`
+	// The HCFS URI of the main R file to use as the driver. Must be a .R file.
+	MainRFileUri string `pulumi:"mainRFileUri"`
 	// Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 	Properties map[string]string `pulumi:"properties"`
 }
@@ -16353,8 +16353,8 @@ type SparkRJobArgs struct {
 	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
 	// Optional. The runtime log config for job execution.
 	LoggingConfig LoggingConfigPtrInput `pulumi:"loggingConfig"`
-	// Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
-	MainRFileUri pulumi.StringPtrInput `pulumi:"mainRFileUri"`
+	// The HCFS URI of the main R file to use as the driver. Must be a .R file.
+	MainRFileUri pulumi.StringInput `pulumi:"mainRFileUri"`
 	// Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
 }
@@ -16457,9 +16457,9 @@ func (o SparkRJobOutput) LoggingConfig() LoggingConfigPtrOutput {
 	return o.ApplyT(func(v SparkRJob) *LoggingConfig { return v.LoggingConfig }).(LoggingConfigPtrOutput)
 }
 
-// Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
-func (o SparkRJobOutput) MainRFileUri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SparkRJob) *string { return v.MainRFileUri }).(pulumi.StringPtrOutput)
+// The HCFS URI of the main R file to use as the driver. Must be a .R file.
+func (o SparkRJobOutput) MainRFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkRJob) string { return v.MainRFileUri }).(pulumi.StringOutput)
 }
 
 // Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
@@ -16525,13 +16525,13 @@ func (o SparkRJobPtrOutput) LoggingConfig() LoggingConfigPtrOutput {
 	}).(LoggingConfigPtrOutput)
 }
 
-// Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
+// The HCFS URI of the main R file to use as the driver. Must be a .R file.
 func (o SparkRJobPtrOutput) MainRFileUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SparkRJob) *string {
 		if v == nil {
 			return nil
 		}
-		return v.MainRFileUri
+		return &v.MainRFileUri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -16555,7 +16555,7 @@ type SparkRJobResponse struct {
 	FileUris []string `pulumi:"fileUris"`
 	// Optional. The runtime log config for job execution.
 	LoggingConfig LoggingConfigResponse `pulumi:"loggingConfig"`
-	// Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
+	// The HCFS URI of the main R file to use as the driver. Must be a .R file.
 	MainRFileUri string `pulumi:"mainRFileUri"`
 	// Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 	Properties map[string]string `pulumi:"properties"`
@@ -16582,7 +16582,7 @@ type SparkRJobResponseArgs struct {
 	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
 	// Optional. The runtime log config for job execution.
 	LoggingConfig LoggingConfigResponseInput `pulumi:"loggingConfig"`
-	// Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
+	// The HCFS URI of the main R file to use as the driver. Must be a .R file.
 	MainRFileUri pulumi.StringInput `pulumi:"mainRFileUri"`
 	// Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
 	Properties pulumi.StringMapInput `pulumi:"properties"`
@@ -16686,7 +16686,7 @@ func (o SparkRJobResponseOutput) LoggingConfig() LoggingConfigResponseOutput {
 	return o.ApplyT(func(v SparkRJobResponse) LoggingConfigResponse { return v.LoggingConfig }).(LoggingConfigResponseOutput)
 }
 
-// Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
+// The HCFS URI of the main R file to use as the driver. Must be a .R file.
 func (o SparkRJobResponseOutput) MainRFileUri() pulumi.StringOutput {
 	return o.ApplyT(func(v SparkRJobResponse) string { return v.MainRFileUri }).(pulumi.StringOutput)
 }
@@ -16754,7 +16754,7 @@ func (o SparkRJobResponsePtrOutput) LoggingConfig() LoggingConfigResponsePtrOutp
 	}).(LoggingConfigResponsePtrOutput)
 }
 
-// Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
+// The HCFS URI of the main R file to use as the driver. Must be a .R file.
 func (o SparkRJobResponsePtrOutput) MainRFileUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SparkRJobResponse) *string {
 		if v == nil {
@@ -17236,10 +17236,10 @@ func (o SparkSqlJobResponsePtrOutput) ScriptVariables() pulumi.StringMapOutput {
 type TemplateParameter struct {
 	// Optional. Brief description of the parameter. Must not exceed 1024 characters.
 	Description *string `pulumi:"description"`
-	// Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
+	// Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
 	Fields []string `pulumi:"fields"`
-	// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
-	Name *string `pulumi:"name"`
+	// Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+	Name string `pulumi:"name"`
 	// Optional. Validation rules to be applied to this parameter's value.
 	Validation *ParameterValidation `pulumi:"validation"`
 }
@@ -17259,10 +17259,10 @@ type TemplateParameterInput interface {
 type TemplateParameterArgs struct {
 	// Optional. Brief description of the parameter. Must not exceed 1024 characters.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
+	// Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
 	Fields pulumi.StringArrayInput `pulumi:"fields"`
-	// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+	Name pulumi.StringInput `pulumi:"name"`
 	// Optional. Validation rules to be applied to this parameter's value.
 	Validation ParameterValidationPtrInput `pulumi:"validation"`
 }
@@ -17324,14 +17324,14 @@ func (o TemplateParameterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TemplateParameter) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
+// Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
 func (o TemplateParameterOutput) Fields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TemplateParameter) []string { return v.Fields }).(pulumi.StringArrayOutput)
 }
 
-// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
-func (o TemplateParameterOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TemplateParameter) *string { return v.Name }).(pulumi.StringPtrOutput)
+// Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+func (o TemplateParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v TemplateParameter) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Optional. Validation rules to be applied to this parameter's value.
@@ -17363,9 +17363,9 @@ func (o TemplateParameterArrayOutput) Index(i pulumi.IntInput) TemplateParameter
 type TemplateParameterResponse struct {
 	// Optional. Brief description of the parameter. Must not exceed 1024 characters.
 	Description string `pulumi:"description"`
-	// Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
+	// Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
 	Fields []string `pulumi:"fields"`
-	// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+	// Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
 	Name string `pulumi:"name"`
 	// Optional. Validation rules to be applied to this parameter's value.
 	Validation ParameterValidationResponse `pulumi:"validation"`
@@ -17386,9 +17386,9 @@ type TemplateParameterResponseInput interface {
 type TemplateParameterResponseArgs struct {
 	// Optional. Brief description of the parameter. Must not exceed 1024 characters.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
+	// Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
 	Fields pulumi.StringArrayInput `pulumi:"fields"`
-	// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+	// Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Optional. Validation rules to be applied to this parameter's value.
 	Validation ParameterValidationResponseInput `pulumi:"validation"`
@@ -17451,12 +17451,12 @@ func (o TemplateParameterResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v TemplateParameterResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Required. Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
+// Paths to all fields that the parameter replaces. A field is allowed to appear in at most one parameter's list of field paths.A field path is similar in syntax to a google.protobuf.FieldMask. For example, a field path that references the zone field of a workflow template's cluster selector would be specified as placement.clusterSelector.zone.Also, field paths can reference fields using the following syntax: Values in maps can be referenced by key: labels'key' placement.clusterSelector.clusterLabels'key' placement.managedCluster.labels'key' placement.clusterSelector.clusterLabels'key' jobs'step-id'.labels'key' Jobs in the jobs list can be referenced by step-id: jobs'step-id'.hadoopJob.mainJarFileUri jobs'step-id'.hiveJob.queryFileUri jobs'step-id'.pySparkJob.mainPythonFileUri jobs'step-id'.hadoopJob.jarFileUris0 jobs'step-id'.hadoopJob.archiveUris0 jobs'step-id'.hadoopJob.fileUris0 jobs'step-id'.pySparkJob.pythonFileUris0 Items in repeated fields can be referenced by a zero-based index: jobs'step-id'.sparkJob.args0 Other examples: jobs'step-id'.hadoopJob.properties'key' jobs'step-id'.hadoopJob.args0 jobs'step-id'.hiveJob.scriptVariables'key' jobs'step-id'.hadoopJob.mainJarFileUri placement.clusterSelector.zoneIt may not be possible to parameterize maps and repeated fields in their entirety since only individual map values and individual items in repeated fields can be referenced. For example, the following field paths are invalid: placement.clusterSelector.clusterLabels jobs'step-id'.sparkJob.args
 func (o TemplateParameterResponseOutput) Fields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v TemplateParameterResponse) []string { return v.Fields }).(pulumi.StringArrayOutput)
 }
 
-// Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
+// Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters.
 func (o TemplateParameterResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v TemplateParameterResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -17488,7 +17488,7 @@ func (o TemplateParameterResponseArrayOutput) Index(i pulumi.IntInput) TemplateP
 
 // Validation based on a list of allowed values.
 type ValueValidation struct {
-	// Required. List of allowed values for the parameter.
+	// List of allowed values for the parameter.
 	Values []string `pulumi:"values"`
 }
 
@@ -17505,7 +17505,7 @@ type ValueValidationInput interface {
 
 // Validation based on a list of allowed values.
 type ValueValidationArgs struct {
-	// Required. List of allowed values for the parameter.
+	// List of allowed values for the parameter.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -17587,7 +17587,7 @@ func (o ValueValidationOutput) ToValueValidationPtrOutputWithContext(ctx context
 	}).(ValueValidationPtrOutput)
 }
 
-// Required. List of allowed values for the parameter.
+// List of allowed values for the parameter.
 func (o ValueValidationOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ValueValidation) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -17610,7 +17610,7 @@ func (o ValueValidationPtrOutput) Elem() ValueValidationOutput {
 	return o.ApplyT(func(v *ValueValidation) ValueValidation { return *v }).(ValueValidationOutput)
 }
 
-// Required. List of allowed values for the parameter.
+// List of allowed values for the parameter.
 func (o ValueValidationPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ValueValidation) []string {
 		if v == nil {
@@ -17622,7 +17622,7 @@ func (o ValueValidationPtrOutput) Values() pulumi.StringArrayOutput {
 
 // Validation based on a list of allowed values.
 type ValueValidationResponse struct {
-	// Required. List of allowed values for the parameter.
+	// List of allowed values for the parameter.
 	Values []string `pulumi:"values"`
 }
 
@@ -17639,7 +17639,7 @@ type ValueValidationResponseInput interface {
 
 // Validation based on a list of allowed values.
 type ValueValidationResponseArgs struct {
-	// Required. List of allowed values for the parameter.
+	// List of allowed values for the parameter.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -17670,7 +17670,7 @@ func (o ValueValidationResponseOutput) ToValueValidationResponseOutputWithContex
 	return o
 }
 
-// Required. List of allowed values for the parameter.
+// List of allowed values for the parameter.
 func (o ValueValidationResponseOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ValueValidationResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -17983,11 +17983,11 @@ func (o WorkflowTemplatePlacementResponsePtrOutput) ManagedCluster() ManagedClus
 
 // A YARN application created by a job. Application information is a subset of org.apache.hadoop.yarn.proto.YarnProtos.ApplicationReportProto.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
 type YarnApplicationResponse struct {
-	// Required. The application name.
+	// The application name.
 	Name string `pulumi:"name"`
-	// Required. The numerical progress of the application, from 1 to 100.
+	// The numerical progress of the application, from 1 to 100.
 	Progress float64 `pulumi:"progress"`
-	// Required. The application state.
+	// The application state.
 	State string `pulumi:"state"`
 	// Optional. The HTTP URL of the ApplicationMaster, HistoryServer, or TimelineServer that provides application-specific information. The URL uses the internal hostname, and requires a proxy server for resolution and, possibly, access.
 	TrackingUrl string `pulumi:"trackingUrl"`
@@ -18006,11 +18006,11 @@ type YarnApplicationResponseInput interface {
 
 // A YARN application created by a job. Application information is a subset of org.apache.hadoop.yarn.proto.YarnProtos.ApplicationReportProto.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
 type YarnApplicationResponseArgs struct {
-	// Required. The application name.
+	// The application name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Required. The numerical progress of the application, from 1 to 100.
+	// The numerical progress of the application, from 1 to 100.
 	Progress pulumi.Float64Input `pulumi:"progress"`
-	// Required. The application state.
+	// The application state.
 	State pulumi.StringInput `pulumi:"state"`
 	// Optional. The HTTP URL of the ApplicationMaster, HistoryServer, or TimelineServer that provides application-specific information. The URL uses the internal hostname, and requires a proxy server for resolution and, possibly, access.
 	TrackingUrl pulumi.StringInput `pulumi:"trackingUrl"`
@@ -18068,17 +18068,17 @@ func (o YarnApplicationResponseOutput) ToYarnApplicationResponseOutputWithContex
 	return o
 }
 
-// Required. The application name.
+// The application name.
 func (o YarnApplicationResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v YarnApplicationResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Required. The numerical progress of the application, from 1 to 100.
+// The numerical progress of the application, from 1 to 100.
 func (o YarnApplicationResponseOutput) Progress() pulumi.Float64Output {
 	return o.ApplyT(func(v YarnApplicationResponse) float64 { return v.Progress }).(pulumi.Float64Output)
 }
 
-// Required. The application state.
+// The application state.
 func (o YarnApplicationResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v YarnApplicationResponse) string { return v.State }).(pulumi.StringOutput)
 }

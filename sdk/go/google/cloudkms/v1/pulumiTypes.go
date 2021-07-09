@@ -1220,8 +1220,8 @@ func (o CryptoKeyVersionResponsePtrOutput) State() pulumi.StringPtrOutput {
 
 // A CryptoKeyVersionTemplate specifies the properties to use when creating a new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or automatically as a result of auto-rotation.
 type CryptoKeyVersionTemplate struct {
-	// Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
-	Algorithm *string `pulumi:"algorithm"`
+	// Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
+	Algorithm string `pulumi:"algorithm"`
 	// ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
 	ProtectionLevel *string `pulumi:"protectionLevel"`
 }
@@ -1239,8 +1239,8 @@ type CryptoKeyVersionTemplateInput interface {
 
 // A CryptoKeyVersionTemplate specifies the properties to use when creating a new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or automatically as a result of auto-rotation.
 type CryptoKeyVersionTemplateArgs struct {
-	// Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
-	Algorithm *CryptoKeyVersionTemplateAlgorithm `pulumi:"algorithm"`
+	// Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
+	Algorithm CryptoKeyVersionTemplateAlgorithm `pulumi:"algorithm"`
 	// ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
 	ProtectionLevel *CryptoKeyVersionTemplateProtectionLevel `pulumi:"protectionLevel"`
 }
@@ -1323,9 +1323,9 @@ func (o CryptoKeyVersionTemplateOutput) ToCryptoKeyVersionTemplatePtrOutputWithC
 	}).(CryptoKeyVersionTemplatePtrOutput)
 }
 
-// Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
-func (o CryptoKeyVersionTemplateOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionTemplate) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
+// Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
+func (o CryptoKeyVersionTemplateOutput) Algorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v CryptoKeyVersionTemplate) string { return v.Algorithm }).(pulumi.StringOutput)
 }
 
 // ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
@@ -1351,13 +1351,13 @@ func (o CryptoKeyVersionTemplatePtrOutput) Elem() CryptoKeyVersionTemplateOutput
 	return o.ApplyT(func(v *CryptoKeyVersionTemplate) CryptoKeyVersionTemplate { return *v }).(CryptoKeyVersionTemplateOutput)
 }
 
-// Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
+// Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
 func (o CryptoKeyVersionTemplatePtrOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CryptoKeyVersionTemplate) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Algorithm
+		return &v.Algorithm
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1373,7 +1373,7 @@ func (o CryptoKeyVersionTemplatePtrOutput) ProtectionLevel() pulumi.StringPtrOut
 
 // A CryptoKeyVersionTemplate specifies the properties to use when creating a new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or automatically as a result of auto-rotation.
 type CryptoKeyVersionTemplateResponse struct {
-	// Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
+	// Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
 	Algorithm string `pulumi:"algorithm"`
 	// ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
 	ProtectionLevel string `pulumi:"protectionLevel"`
@@ -1392,7 +1392,7 @@ type CryptoKeyVersionTemplateResponseInput interface {
 
 // A CryptoKeyVersionTemplate specifies the properties to use when creating a new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or automatically as a result of auto-rotation.
 type CryptoKeyVersionTemplateResponseArgs struct {
-	// Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
+	// Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
 	Algorithm pulumi.StringInput `pulumi:"algorithm"`
 	// ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
 	ProtectionLevel pulumi.StringInput `pulumi:"protectionLevel"`
@@ -1476,7 +1476,7 @@ func (o CryptoKeyVersionTemplateResponseOutput) ToCryptoKeyVersionTemplateRespon
 	}).(CryptoKeyVersionTemplateResponsePtrOutput)
 }
 
-// Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
+// Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
 func (o CryptoKeyVersionTemplateResponseOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v CryptoKeyVersionTemplateResponse) string { return v.Algorithm }).(pulumi.StringOutput)
 }
@@ -1504,7 +1504,7 @@ func (o CryptoKeyVersionTemplateResponsePtrOutput) Elem() CryptoKeyVersionTempla
 	return o.ApplyT(func(v *CryptoKeyVersionTemplateResponse) CryptoKeyVersionTemplateResponse { return *v }).(CryptoKeyVersionTemplateResponseOutput)
 }
 
-// Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
+// Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
 func (o CryptoKeyVersionTemplateResponsePtrOutput) Algorithm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CryptoKeyVersionTemplateResponse) *string {
 		if v == nil {

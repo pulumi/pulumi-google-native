@@ -23,7 +23,7 @@ type LookupBudgetArgs struct {
 }
 
 type LookupBudgetResult struct {
-	// Required. Budgeted amount.
+	// Budgeted amount.
 	Amount GoogleCloudBillingBudgetsV1BudgetAmountResponse `pulumi:"amount"`
 	// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
 	BudgetFilter GoogleCloudBillingBudgetsV1FilterResponse `pulumi:"budgetFilter"`

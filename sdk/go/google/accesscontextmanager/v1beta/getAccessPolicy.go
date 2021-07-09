@@ -24,8 +24,8 @@ type LookupAccessPolicyArgs struct {
 type LookupAccessPolicyResult struct {
 	// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
 	Name string `pulumi:"name"`
-	// Required. The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
+	// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
 	Parent string `pulumi:"parent"`
-	// Required. Human readable title. Does not affect behavior.
+	// Human readable title. Does not affect behavior.
 	Title string `pulumi:"title"`
 }

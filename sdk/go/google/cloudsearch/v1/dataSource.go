@@ -7,6 +7,7 @@ import (
 	"context"
 	"reflect"
 
+	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -18,7 +19,7 @@ type DataSource struct {
 	DisableModifications pulumi.BoolOutput `pulumi:"disableModifications"`
 	// Disable serving any search or assist results.
 	DisableServing pulumi.BoolOutput `pulumi:"disableServing"`
-	// Required. Display name of the datasource The maximum length is 300 characters.
+	// Display name of the datasource The maximum length is 300 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// List of service accounts that have indexing access.
 	IndexingServiceAccounts pulumi.StringArrayOutput `pulumi:"indexingServiceAccounts"`
@@ -36,9 +37,12 @@ type DataSource struct {
 func NewDataSource(ctx *pulumi.Context,
 	name string, args *DataSourceArgs, opts ...pulumi.ResourceOption) (*DataSource, error) {
 	if args == nil {
-		args = &DataSourceArgs{}
+		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
 	var resource DataSource
 	err := ctx.RegisterResource("google-native:cloudsearch/v1:DataSource", name, args, &resource, opts...)
 	if err != nil {
@@ -65,7 +69,7 @@ type dataSourceState struct {
 	DisableModifications *bool `pulumi:"disableModifications"`
 	// Disable serving any search or assist results.
 	DisableServing *bool `pulumi:"disableServing"`
-	// Required. Display name of the datasource The maximum length is 300 characters.
+	// Display name of the datasource The maximum length is 300 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// List of service accounts that have indexing access.
 	IndexingServiceAccounts []string `pulumi:"indexingServiceAccounts"`
@@ -84,7 +88,7 @@ type DataSourceState struct {
 	DisableModifications pulumi.BoolPtrInput
 	// Disable serving any search or assist results.
 	DisableServing pulumi.BoolPtrInput
-	// Required. Display name of the datasource The maximum length is 300 characters.
+	// Display name of the datasource The maximum length is 300 characters.
 	DisplayName pulumi.StringPtrInput
 	// List of service accounts that have indexing access.
 	IndexingServiceAccounts pulumi.StringArrayInput
@@ -107,8 +111,8 @@ type dataSourceArgs struct {
 	DisableModifications *bool `pulumi:"disableModifications"`
 	// Disable serving any search or assist results.
 	DisableServing *bool `pulumi:"disableServing"`
-	// Required. Display name of the datasource The maximum length is 300 characters.
-	DisplayName *string `pulumi:"displayName"`
+	// Display name of the datasource The maximum length is 300 characters.
+	DisplayName string `pulumi:"displayName"`
 	// List of service accounts that have indexing access.
 	IndexingServiceAccounts []string `pulumi:"indexingServiceAccounts"`
 	// This field restricts visibility to items at the datasource level. Items within the datasource are restricted to the union of users and groups included in this field. Note that, this does not ensure access to a specific item, as users need to have ACL permissions on the contained items. This ensures a high level access on the entire datasource, and that the individual items are not shared outside this visibility.
@@ -127,8 +131,8 @@ type DataSourceArgs struct {
 	DisableModifications pulumi.BoolPtrInput
 	// Disable serving any search or assist results.
 	DisableServing pulumi.BoolPtrInput
-	// Required. Display name of the datasource The maximum length is 300 characters.
-	DisplayName pulumi.StringPtrInput
+	// Display name of the datasource The maximum length is 300 characters.
+	DisplayName pulumi.StringInput
 	// List of service accounts that have indexing access.
 	IndexingServiceAccounts pulumi.StringArrayInput
 	// This field restricts visibility to items at the datasource level. Items within the datasource are restricted to the union of users and groups included in this field. Note that, this does not ensure access to a specific item, as users need to have ACL permissions on the contained items. This ensures a high level access on the entire datasource, and that the individual items are not shared outside this visibility.

@@ -17,7 +17,7 @@ type Intent struct {
 
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Required. The human-readable name of the intent, unique within the agent.
+	// The human-readable name of the intent, unique within the agent.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
 	IsFallback pulumi.BoolOutput `pulumi:"isFallback"`
@@ -42,6 +42,9 @@ func NewIntent(ctx *pulumi.Context,
 
 	if args.AgentId == nil {
 		return nil, errors.New("invalid value for required argument 'AgentId'")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
@@ -73,7 +76,7 @@ func GetIntent(ctx *pulumi.Context,
 type intentState struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description *string `pulumi:"description"`
-	// Required. The human-readable name of the intent, unique within the agent.
+	// The human-readable name of the intent, unique within the agent.
 	DisplayName *string `pulumi:"displayName"`
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
 	IsFallback *bool `pulumi:"isFallback"`
@@ -92,7 +95,7 @@ type intentState struct {
 type IntentState struct {
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description pulumi.StringPtrInput
-	// Required. The human-readable name of the intent, unique within the agent.
+	// The human-readable name of the intent, unique within the agent.
 	DisplayName pulumi.StringPtrInput
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
 	IsFallback pulumi.BoolPtrInput
@@ -116,8 +119,8 @@ type intentArgs struct {
 	AgentId string `pulumi:"agentId"`
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description *string `pulumi:"description"`
-	// Required. The human-readable name of the intent, unique within the agent.
-	DisplayName *string `pulumi:"displayName"`
+	// The human-readable name of the intent, unique within the agent.
+	DisplayName string `pulumi:"displayName"`
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
 	IsFallback *bool `pulumi:"isFallback"`
 	// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.
@@ -140,8 +143,8 @@ type IntentArgs struct {
 	AgentId pulumi.StringInput
 	// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
 	Description pulumi.StringPtrInput
-	// Required. The human-readable name of the intent, unique within the agent.
-	DisplayName pulumi.StringPtrInput
+	// The human-readable name of the intent, unique within the agent.
+	DisplayName pulumi.StringInput
 	// Indicates whether this is a fallback intent. Currently only default fallback intent is allowed in the agent, which is added upon agent creation. Adding training phrases to fallback intent is useful in the case of requests that are mistakenly matched, since training phrases assigned to fallback intents act as negative examples that triggers no-match event.
 	IsFallback pulumi.BoolPtrInput
 	// The key/value metadata to label an intent. Labels can contain lowercase letters, digits and the symbols '-' and '_'. International characters are allowed, including letters from unicase alphabets. Keys must start with a letter. Keys and values can be no longer than 63 characters and no more than 128 bytes. Prefix "sys-" is reserved for Dialogflow defined labels. Currently allowed Dialogflow defined labels include: * sys-head * sys-contextual The above labels do not require value. "sys-head" means the intent is a head intent. "sys-contextual" means the intent is a contextual intent.

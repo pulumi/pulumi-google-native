@@ -29,6 +29,6 @@ type LookupSecretResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name of the Secret in the format `projects/*/secrets/*`.
 	Name string `pulumi:"name"`
-	// Required. Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
+	// Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
 	Replication ReplicationResponse `pulumi:"replication"`
 }

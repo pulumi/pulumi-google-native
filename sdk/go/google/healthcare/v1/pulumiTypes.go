@@ -14,7 +14,7 @@ import (
 type Attribute struct {
 	// Indicates the name of an attribute defined in the consent store.
 	AttributeDefinitionId *string `pulumi:"attributeDefinitionId"`
-	// Required. The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
+	// The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
 	Values []string `pulumi:"values"`
 }
 
@@ -33,7 +33,7 @@ type AttributeInput interface {
 type AttributeArgs struct {
 	// Indicates the name of an attribute defined in the consent store.
 	AttributeDefinitionId pulumi.StringPtrInput `pulumi:"attributeDefinitionId"`
-	// Required. The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
+	// The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -94,7 +94,7 @@ func (o AttributeOutput) AttributeDefinitionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Attribute) *string { return v.AttributeDefinitionId }).(pulumi.StringPtrOutput)
 }
 
-// Required. The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
+// The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
 func (o AttributeOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Attribute) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -123,7 +123,7 @@ func (o AttributeArrayOutput) Index(i pulumi.IntInput) AttributeOutput {
 type AttributeResponse struct {
 	// Indicates the name of an attribute defined in the consent store.
 	AttributeDefinitionId string `pulumi:"attributeDefinitionId"`
-	// Required. The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
+	// The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
 	Values []string `pulumi:"values"`
 }
 
@@ -142,7 +142,7 @@ type AttributeResponseInput interface {
 type AttributeResponseArgs struct {
 	// Indicates the name of an attribute defined in the consent store.
 	AttributeDefinitionId pulumi.StringInput `pulumi:"attributeDefinitionId"`
-	// Required. The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
+	// The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -203,7 +203,7 @@ func (o AttributeResponseOutput) AttributeDefinitionId() pulumi.StringOutput {
 	return o.ApplyT(func(v AttributeResponse) string { return v.AttributeDefinitionId }).(pulumi.StringOutput)
 }
 
-// Required. The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
+// The value of the attribute. Must be an acceptable value as defined in the consent store. For example, if the consent store defines "data type" with acceptable values "questionnaire" and "step-count", when the attribute name is data type, this field must contain one of those values.
 func (o AttributeResponseOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AttributeResponse) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -1447,8 +1447,8 @@ func (o FieldResponseArrayOutput) Index(i pulumi.IntInput) FieldResponseOutput {
 
 // Represents a user's consent in terms of the resources that can be accessed and under what conditions.
 type GoogleCloudHealthcareV1ConsentPolicy struct {
-	// Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
-	AuthorizationRule *Expr `pulumi:"authorizationRule"`
+	// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+	AuthorizationRule Expr `pulumi:"authorizationRule"`
 	// The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
 	ResourceAttributes []Attribute `pulumi:"resourceAttributes"`
 }
@@ -1466,8 +1466,8 @@ type GoogleCloudHealthcareV1ConsentPolicyInput interface {
 
 // Represents a user's consent in terms of the resources that can be accessed and under what conditions.
 type GoogleCloudHealthcareV1ConsentPolicyArgs struct {
-	// Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
-	AuthorizationRule ExprPtrInput `pulumi:"authorizationRule"`
+	// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+	AuthorizationRule ExprInput `pulumi:"authorizationRule"`
 	// The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
 	ResourceAttributes AttributeArrayInput `pulumi:"resourceAttributes"`
 }
@@ -1524,9 +1524,9 @@ func (o GoogleCloudHealthcareV1ConsentPolicyOutput) ToGoogleCloudHealthcareV1Con
 	return o
 }
 
-// Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
-func (o GoogleCloudHealthcareV1ConsentPolicyOutput) AuthorizationRule() ExprPtrOutput {
-	return o.ApplyT(func(v GoogleCloudHealthcareV1ConsentPolicy) *Expr { return v.AuthorizationRule }).(ExprPtrOutput)
+// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+func (o GoogleCloudHealthcareV1ConsentPolicyOutput) AuthorizationRule() ExprOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1ConsentPolicy) Expr { return v.AuthorizationRule }).(ExprOutput)
 }
 
 // The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
@@ -1556,7 +1556,7 @@ func (o GoogleCloudHealthcareV1ConsentPolicyArrayOutput) Index(i pulumi.IntInput
 
 // Represents a user's consent in terms of the resources that can be accessed and under what conditions.
 type GoogleCloudHealthcareV1ConsentPolicyResponse struct {
-	// Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+	// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
 	AuthorizationRule ExprResponse `pulumi:"authorizationRule"`
 	// The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
 	ResourceAttributes []AttributeResponse `pulumi:"resourceAttributes"`
@@ -1575,7 +1575,7 @@ type GoogleCloudHealthcareV1ConsentPolicyResponseInput interface {
 
 // Represents a user's consent in terms of the resources that can be accessed and under what conditions.
 type GoogleCloudHealthcareV1ConsentPolicyResponseArgs struct {
-	// Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+	// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
 	AuthorizationRule ExprResponseInput `pulumi:"authorizationRule"`
 	// The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user.
 	ResourceAttributes AttributeResponseArrayInput `pulumi:"resourceAttributes"`
@@ -1633,7 +1633,7 @@ func (o GoogleCloudHealthcareV1ConsentPolicyResponseOutput) ToGoogleCloudHealthc
 	return o
 }
 
-// Required. The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
+// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&&`), `OR` (`||`).
 func (o GoogleCloudHealthcareV1ConsentPolicyResponseOutput) AuthorizationRule() ExprResponseOutput {
 	return o.ApplyT(func(v GoogleCloudHealthcareV1ConsentPolicyResponse) ExprResponse { return v.AuthorizationRule }).(ExprResponseOutput)
 }
@@ -4980,8 +4980,8 @@ type Signature struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// Optional. Timestamp of the signature.
 	SignatureTime *string `pulumi:"signatureTime"`
-	// Required. User's UUID provided by the client.
-	UserId *string `pulumi:"userId"`
+	// User's UUID provided by the client.
+	UserId string `pulumi:"userId"`
 }
 
 // SignatureInput is an input type that accepts SignatureArgs and SignatureOutput values.
@@ -5003,8 +5003,8 @@ type SignatureArgs struct {
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// Optional. Timestamp of the signature.
 	SignatureTime pulumi.StringPtrInput `pulumi:"signatureTime"`
-	// Required. User's UUID provided by the client.
-	UserId pulumi.StringPtrInput `pulumi:"userId"`
+	// User's UUID provided by the client.
+	UserId pulumi.StringInput `pulumi:"userId"`
 }
 
 func (SignatureArgs) ElementType() reflect.Type {
@@ -5100,9 +5100,9 @@ func (o SignatureOutput) SignatureTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Signature) *string { return v.SignatureTime }).(pulumi.StringPtrOutput)
 }
 
-// Required. User's UUID provided by the client.
-func (o SignatureOutput) UserId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Signature) *string { return v.UserId }).(pulumi.StringPtrOutput)
+// User's UUID provided by the client.
+func (o SignatureOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v Signature) string { return v.UserId }).(pulumi.StringOutput)
 }
 
 type SignaturePtrOutput struct{ *pulumi.OutputState }
@@ -5153,13 +5153,13 @@ func (o SignaturePtrOutput) SignatureTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. User's UUID provided by the client.
+// User's UUID provided by the client.
 func (o SignaturePtrOutput) UserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Signature) *string {
 		if v == nil {
 			return nil
 		}
-		return v.UserId
+		return &v.UserId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -5171,7 +5171,7 @@ type SignatureResponse struct {
 	Metadata map[string]string `pulumi:"metadata"`
 	// Optional. Timestamp of the signature.
 	SignatureTime string `pulumi:"signatureTime"`
-	// Required. User's UUID provided by the client.
+	// User's UUID provided by the client.
 	UserId string `pulumi:"userId"`
 }
 
@@ -5194,7 +5194,7 @@ type SignatureResponseArgs struct {
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
 	// Optional. Timestamp of the signature.
 	SignatureTime pulumi.StringInput `pulumi:"signatureTime"`
-	// Required. User's UUID provided by the client.
+	// User's UUID provided by the client.
 	UserId pulumi.StringInput `pulumi:"userId"`
 }
 
@@ -5291,7 +5291,7 @@ func (o SignatureResponseOutput) SignatureTime() pulumi.StringOutput {
 	return o.ApplyT(func(v SignatureResponse) string { return v.SignatureTime }).(pulumi.StringOutput)
 }
 
-// Required. User's UUID provided by the client.
+// User's UUID provided by the client.
 func (o SignatureResponseOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v SignatureResponse) string { return v.UserId }).(pulumi.StringOutput)
 }
@@ -5344,7 +5344,7 @@ func (o SignatureResponsePtrOutput) SignatureTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. User's UUID provided by the client.
+// User's UUID provided by the client.
 func (o SignatureResponsePtrOutput) UserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SignatureResponse) *string {
 		if v == nil {

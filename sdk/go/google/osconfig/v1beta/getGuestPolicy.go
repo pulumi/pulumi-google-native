@@ -23,7 +23,7 @@ type LookupGuestPolicyArgs struct {
 }
 
 type LookupGuestPolicyResult struct {
-	// Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+	// Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
 	Assignment AssignmentResponse `pulumi:"assignment"`
 	// Time this guest policy was created.
 	CreateTime string `pulumi:"createTime"`
@@ -31,7 +31,7 @@ type LookupGuestPolicyResult struct {
 	Description string `pulumi:"description"`
 	// The etag for this guest policy. If this is provided on update, it must match the server's etag.
 	Etag string `pulumi:"etag"`
-	// Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
+	// Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
 	Name string `pulumi:"name"`
 	// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
 	PackageRepositories []PackageRepositoryResponse `pulumi:"packageRepositories"`

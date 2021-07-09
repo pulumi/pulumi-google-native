@@ -29,7 +29,7 @@ type JobTrigger struct {
 	LastRunTime pulumi.StringOutput `pulumi:"lastRunTime"`
 	// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. A status for this trigger.
+	// A status for this trigger.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
 	Triggers GooglePrivacyDlpV2TriggerResponseArrayOutput `pulumi:"triggers"`
@@ -86,7 +86,7 @@ type jobTriggerState struct {
 	LastRunTime *string `pulumi:"lastRunTime"`
 	// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
 	Name *string `pulumi:"name"`
-	// Required. A status for this trigger.
+	// A status for this trigger.
 	Status *string `pulumi:"status"`
 	// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
 	Triggers []GooglePrivacyDlpV2TriggerResponse `pulumi:"triggers"`
@@ -109,7 +109,7 @@ type JobTriggerState struct {
 	LastRunTime pulumi.StringPtrInput
 	// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
 	Name pulumi.StringPtrInput
-	// Required. A status for this trigger.
+	// A status for this trigger.
 	Status pulumi.StringPtrInput
 	// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
 	Triggers GooglePrivacyDlpV2TriggerResponseArrayInput
@@ -132,8 +132,8 @@ type jobTriggerArgs struct {
 	// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
-	// Required. A status for this trigger.
-	Status *string `pulumi:"status"`
+	// A status for this trigger.
+	Status string `pulumi:"status"`
 	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TriggerId *string `pulumi:"triggerId"`
 	// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
@@ -152,8 +152,8 @@ type JobTriggerArgs struct {
 	// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
-	// Required. A status for this trigger.
-	Status *JobTriggerStatus
+	// A status for this trigger.
+	Status JobTriggerStatus
 	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TriggerId pulumi.StringPtrInput
 	// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.

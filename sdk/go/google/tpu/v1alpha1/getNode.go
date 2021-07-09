@@ -24,7 +24,7 @@ type LookupNodeArgs struct {
 }
 
 type LookupNodeResult struct {
-	// Required. The type of hardware accelerators associated with this node.
+	// The type of hardware accelerators associated with this node.
 	AcceleratorType string `pulumi:"acceleratorType"`
 	// The API version that created this Node.
 	ApiVersion string `pulumi:"apiVersion"`
@@ -54,7 +54,7 @@ type LookupNodeResult struct {
 	State string `pulumi:"state"`
 	// The Symptoms that have occurred to the TPU Node.
 	Symptoms []SymptomResponse `pulumi:"symptoms"`
-	// Required. The version of Tensorflow running in the Node.
+	// The version of Tensorflow running in the Node.
 	TensorflowVersion string `pulumi:"tensorflowVersion"`
 	// Whether the VPC peering for the node is set up through Service Networking API. The VPC Peering should be set up before provisioning the node. If this field is set, cidr_block field should not be specified. If the network, that you want to peer the TPU Node to, is Shared VPC networks, the node must be created with this this field enabled.
 	UseServiceNetworking bool `pulumi:"useServiceNetworking"`

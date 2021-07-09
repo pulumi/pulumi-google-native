@@ -24,11 +24,11 @@ type LookupSecuritySettingArgs struct {
 }
 
 type LookupSecuritySettingResult struct {
-	// Required. The human-readable name of the security settings, unique within the location.
+	// The human-readable name of the security settings, unique within the location.
 	DisplayName string `pulumi:"displayName"`
 	// DLP inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects/PROJECT_ID/inspectTemplates/TEMPLATE_ID` OR `organizations/ORGANIZATION_ID/inspectTemplates/TEMPLATE_ID`
 	InspectTemplate string `pulumi:"inspectTemplate"`
-	// Required. Resource name of the settings. Format: `projects//locations//securitySettings/`.
+	// Resource name of the settings. Format: `projects//locations//securitySettings/`.
 	Name string `pulumi:"name"`
 	// List of types of data to remove when retention settings triggers purge.
 	PurgeDataTypes []string `pulumi:"purgeDataTypes"`

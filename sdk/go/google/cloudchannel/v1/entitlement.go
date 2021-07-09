@@ -23,7 +23,7 @@ type Entitlement struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+	// The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
 	Offer pulumi.StringOutput `pulumi:"offer"`
 	// Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
 	Parameters GoogleCloudChannelV1ParameterResponseArrayOutput `pulumi:"parameters"`
@@ -53,6 +53,9 @@ func NewEntitlement(ctx *pulumi.Context,
 	}
 	if args.CustomerId == nil {
 		return nil, errors.New("invalid value for required argument 'CustomerId'")
+	}
+	if args.Offer == nil {
+		return nil, errors.New("invalid value for required argument 'Offer'")
 	}
 	var resource Entitlement
 	err := ctx.RegisterResource("google-native:cloudchannel/v1:Entitlement", name, args, &resource, opts...)
@@ -84,7 +87,7 @@ type entitlementState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.
 	Name *string `pulumi:"name"`
-	// Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+	// The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
 	Offer *string `pulumi:"offer"`
 	// Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
 	Parameters []GoogleCloudChannelV1ParameterResponse `pulumi:"parameters"`
@@ -111,7 +114,7 @@ type EntitlementState struct {
 	CreateTime pulumi.StringPtrInput
 	// Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.
 	Name pulumi.StringPtrInput
-	// Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+	// The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
 	Offer pulumi.StringPtrInput
 	// Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
 	Parameters GoogleCloudChannelV1ParameterResponseArrayInput
@@ -140,8 +143,8 @@ type entitlementArgs struct {
 	// Commitment settings for a commitment-based Offer. Required for commitment based offers.
 	CommitmentSettings *GoogleCloudChannelV1CommitmentSettings `pulumi:"commitmentSettings"`
 	CustomerId         string                                  `pulumi:"customerId"`
-	// Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
-	Offer *string `pulumi:"offer"`
+	// The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+	Offer string `pulumi:"offer"`
 	// Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
 	Parameters []GoogleCloudChannelV1Parameter `pulumi:"parameters"`
 	// Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
@@ -158,8 +161,8 @@ type EntitlementArgs struct {
 	// Commitment settings for a commitment-based Offer. Required for commitment based offers.
 	CommitmentSettings GoogleCloudChannelV1CommitmentSettingsPtrInput
 	CustomerId         pulumi.StringInput
-	// Required. The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
-	Offer pulumi.StringPtrInput
+	// The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
+	Offer pulumi.StringInput
 	// Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
 	Parameters GoogleCloudChannelV1ParameterArrayInput
 	// Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.

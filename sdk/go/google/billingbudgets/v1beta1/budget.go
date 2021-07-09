@@ -17,7 +17,7 @@ type Budget struct {
 
 	// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
 	AllUpdatesRule GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponseOutput `pulumi:"allUpdatesRule"`
-	// Required. Budgeted amount.
+	// Budgeted amount.
 	Amount GoogleCloudBillingBudgetsV1beta1BudgetAmountResponseOutput `pulumi:"amount"`
 	// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
 	BudgetFilter GoogleCloudBillingBudgetsV1beta1FilterResponseOutput `pulumi:"budgetFilter"`
@@ -38,6 +38,9 @@ func NewBudget(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Amount == nil {
+		return nil, errors.New("invalid value for required argument 'Amount'")
+	}
 	if args.BillingAccountId == nil {
 		return nil, errors.New("invalid value for required argument 'BillingAccountId'")
 	}
@@ -65,7 +68,7 @@ func GetBudget(ctx *pulumi.Context,
 type budgetState struct {
 	// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
 	AllUpdatesRule *GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse `pulumi:"allUpdatesRule"`
-	// Required. Budgeted amount.
+	// Budgeted amount.
 	Amount *GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse `pulumi:"amount"`
 	// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
 	BudgetFilter *GoogleCloudBillingBudgetsV1beta1FilterResponse `pulumi:"budgetFilter"`
@@ -82,7 +85,7 @@ type budgetState struct {
 type BudgetState struct {
 	// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
 	AllUpdatesRule GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponsePtrInput
-	// Required. Budgeted amount.
+	// Budgeted amount.
 	Amount GoogleCloudBillingBudgetsV1beta1BudgetAmountResponsePtrInput
 	// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
 	BudgetFilter GoogleCloudBillingBudgetsV1beta1FilterResponsePtrInput
@@ -103,9 +106,9 @@ func (BudgetState) ElementType() reflect.Type {
 type budgetArgs struct {
 	// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
 	AllUpdatesRule *GoogleCloudBillingBudgetsV1beta1AllUpdatesRule `pulumi:"allUpdatesRule"`
-	// Required. Budgeted amount.
-	Amount           *GoogleCloudBillingBudgetsV1beta1BudgetAmount `pulumi:"amount"`
-	BillingAccountId string                                        `pulumi:"billingAccountId"`
+	// Budgeted amount.
+	Amount           GoogleCloudBillingBudgetsV1beta1BudgetAmount `pulumi:"amount"`
+	BillingAccountId string                                       `pulumi:"billingAccountId"`
 	// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
 	BudgetFilter *GoogleCloudBillingBudgetsV1beta1Filter `pulumi:"budgetFilter"`
 	// User data for display name in UI. Validation: <= 60 chars.
@@ -120,8 +123,8 @@ type budgetArgs struct {
 type BudgetArgs struct {
 	// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
 	AllUpdatesRule GoogleCloudBillingBudgetsV1beta1AllUpdatesRulePtrInput
-	// Required. Budgeted amount.
-	Amount           GoogleCloudBillingBudgetsV1beta1BudgetAmountPtrInput
+	// Budgeted amount.
+	Amount           GoogleCloudBillingBudgetsV1beta1BudgetAmountInput
 	BillingAccountId pulumi.StringInput
 	// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
 	BudgetFilter GoogleCloudBillingBudgetsV1beta1FilterPtrInput

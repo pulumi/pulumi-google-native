@@ -38,7 +38,7 @@ type LookupJobTriggerResult struct {
 	LastRunTime string `pulumi:"lastRunTime"`
 	// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
 	Name string `pulumi:"name"`
-	// Required. A status for this trigger.
+	// A status for this trigger.
 	Status string `pulumi:"status"`
 	// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
 	Triggers []GooglePrivacyDlpV2TriggerResponse `pulumi:"triggers"`

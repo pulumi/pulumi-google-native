@@ -14,14 +14,14 @@ import (
 type AptRepository struct {
 	// Type of archive files in this repository. The default behavior is DEB.
 	ArchiveType *string `pulumi:"archiveType"`
-	// Required. List of components for this repository. Must contain at least one item.
+	// List of components for this repository. Must contain at least one item.
 	Components []string `pulumi:"components"`
-	// Required. Distribution of this repository.
-	Distribution *string `pulumi:"distribution"`
+	// Distribution of this repository.
+	Distribution string `pulumi:"distribution"`
 	// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg` containing all the keys in any applied guest policy.
 	GpgKey *string `pulumi:"gpgKey"`
-	// Required. URI for this repository.
-	Uri *string `pulumi:"uri"`
+	// URI for this repository.
+	Uri string `pulumi:"uri"`
 }
 
 // AptRepositoryInput is an input type that accepts AptRepositoryArgs and AptRepositoryOutput values.
@@ -39,14 +39,14 @@ type AptRepositoryInput interface {
 type AptRepositoryArgs struct {
 	// Type of archive files in this repository. The default behavior is DEB.
 	ArchiveType *AptRepositoryArchiveType `pulumi:"archiveType"`
-	// Required. List of components for this repository. Must contain at least one item.
+	// List of components for this repository. Must contain at least one item.
 	Components pulumi.StringArrayInput `pulumi:"components"`
-	// Required. Distribution of this repository.
-	Distribution pulumi.StringPtrInput `pulumi:"distribution"`
+	// Distribution of this repository.
+	Distribution pulumi.StringInput `pulumi:"distribution"`
 	// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg` containing all the keys in any applied guest policy.
 	GpgKey pulumi.StringPtrInput `pulumi:"gpgKey"`
-	// Required. URI for this repository.
-	Uri pulumi.StringPtrInput `pulumi:"uri"`
+	// URI for this repository.
+	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
 func (AptRepositoryArgs) ElementType() reflect.Type {
@@ -132,14 +132,14 @@ func (o AptRepositoryOutput) ArchiveType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AptRepository) *string { return v.ArchiveType }).(pulumi.StringPtrOutput)
 }
 
-// Required. List of components for this repository. Must contain at least one item.
+// List of components for this repository. Must contain at least one item.
 func (o AptRepositoryOutput) Components() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AptRepository) []string { return v.Components }).(pulumi.StringArrayOutput)
 }
 
-// Required. Distribution of this repository.
-func (o AptRepositoryOutput) Distribution() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AptRepository) *string { return v.Distribution }).(pulumi.StringPtrOutput)
+// Distribution of this repository.
+func (o AptRepositoryOutput) Distribution() pulumi.StringOutput {
+	return o.ApplyT(func(v AptRepository) string { return v.Distribution }).(pulumi.StringOutput)
 }
 
 // URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg` containing all the keys in any applied guest policy.
@@ -147,9 +147,9 @@ func (o AptRepositoryOutput) GpgKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AptRepository) *string { return v.GpgKey }).(pulumi.StringPtrOutput)
 }
 
-// Required. URI for this repository.
-func (o AptRepositoryOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AptRepository) *string { return v.Uri }).(pulumi.StringPtrOutput)
+// URI for this repository.
+func (o AptRepositoryOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v AptRepository) string { return v.Uri }).(pulumi.StringOutput)
 }
 
 type AptRepositoryPtrOutput struct{ *pulumi.OutputState }
@@ -180,7 +180,7 @@ func (o AptRepositoryPtrOutput) ArchiveType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. List of components for this repository. Must contain at least one item.
+// List of components for this repository. Must contain at least one item.
 func (o AptRepositoryPtrOutput) Components() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AptRepository) []string {
 		if v == nil {
@@ -190,13 +190,13 @@ func (o AptRepositoryPtrOutput) Components() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. Distribution of this repository.
+// Distribution of this repository.
 func (o AptRepositoryPtrOutput) Distribution() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AptRepository) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Distribution
+		return &v.Distribution
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -210,13 +210,13 @@ func (o AptRepositoryPtrOutput) GpgKey() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. URI for this repository.
+// URI for this repository.
 func (o AptRepositoryPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AptRepository) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Uri
+		return &v.Uri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -224,13 +224,13 @@ func (o AptRepositoryPtrOutput) Uri() pulumi.StringPtrOutput {
 type AptRepositoryResponse struct {
 	// Type of archive files in this repository. The default behavior is DEB.
 	ArchiveType string `pulumi:"archiveType"`
-	// Required. List of components for this repository. Must contain at least one item.
+	// List of components for this repository. Must contain at least one item.
 	Components []string `pulumi:"components"`
-	// Required. Distribution of this repository.
+	// Distribution of this repository.
 	Distribution string `pulumi:"distribution"`
 	// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg` containing all the keys in any applied guest policy.
 	GpgKey string `pulumi:"gpgKey"`
-	// Required. URI for this repository.
+	// URI for this repository.
 	Uri string `pulumi:"uri"`
 }
 
@@ -249,13 +249,13 @@ type AptRepositoryResponseInput interface {
 type AptRepositoryResponseArgs struct {
 	// Type of archive files in this repository. The default behavior is DEB.
 	ArchiveType pulumi.StringInput `pulumi:"archiveType"`
-	// Required. List of components for this repository. Must contain at least one item.
+	// List of components for this repository. Must contain at least one item.
 	Components pulumi.StringArrayInput `pulumi:"components"`
-	// Required. Distribution of this repository.
+	// Distribution of this repository.
 	Distribution pulumi.StringInput `pulumi:"distribution"`
 	// URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg` containing all the keys in any applied guest policy.
 	GpgKey pulumi.StringInput `pulumi:"gpgKey"`
-	// Required. URI for this repository.
+	// URI for this repository.
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -291,12 +291,12 @@ func (o AptRepositoryResponseOutput) ArchiveType() pulumi.StringOutput {
 	return o.ApplyT(func(v AptRepositoryResponse) string { return v.ArchiveType }).(pulumi.StringOutput)
 }
 
-// Required. List of components for this repository. Must contain at least one item.
+// List of components for this repository. Must contain at least one item.
 func (o AptRepositoryResponseOutput) Components() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AptRepositoryResponse) []string { return v.Components }).(pulumi.StringArrayOutput)
 }
 
-// Required. Distribution of this repository.
+// Distribution of this repository.
 func (o AptRepositoryResponseOutput) Distribution() pulumi.StringOutput {
 	return o.ApplyT(func(v AptRepositoryResponse) string { return v.Distribution }).(pulumi.StringOutput)
 }
@@ -306,7 +306,7 @@ func (o AptRepositoryResponseOutput) GpgKey() pulumi.StringOutput {
 	return o.ApplyT(func(v AptRepositoryResponse) string { return v.GpgKey }).(pulumi.StringOutput)
 }
 
-// Required. URI for this repository.
+// URI for this repository.
 func (o AptRepositoryResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v AptRepositoryResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -2507,12 +2507,12 @@ func (o FixedOrPercentResponsePtrOutput) Percent() pulumi.IntPtrOutput {
 
 // Google Cloud Storage object representation.
 type GcsObject struct {
-	// Required. Bucket of the Google Cloud Storage object.
-	Bucket *string `pulumi:"bucket"`
-	// Required. Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-	GenerationNumber *string `pulumi:"generationNumber"`
-	// Required. Name of the Google Cloud Storage object.
-	Object *string `pulumi:"object"`
+	// Bucket of the Google Cloud Storage object.
+	Bucket string `pulumi:"bucket"`
+	// Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+	GenerationNumber string `pulumi:"generationNumber"`
+	// Name of the Google Cloud Storage object.
+	Object string `pulumi:"object"`
 }
 
 // GcsObjectInput is an input type that accepts GcsObjectArgs and GcsObjectOutput values.
@@ -2528,12 +2528,12 @@ type GcsObjectInput interface {
 
 // Google Cloud Storage object representation.
 type GcsObjectArgs struct {
-	// Required. Bucket of the Google Cloud Storage object.
-	Bucket pulumi.StringPtrInput `pulumi:"bucket"`
-	// Required. Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-	GenerationNumber pulumi.StringPtrInput `pulumi:"generationNumber"`
-	// Required. Name of the Google Cloud Storage object.
-	Object pulumi.StringPtrInput `pulumi:"object"`
+	// Bucket of the Google Cloud Storage object.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+	GenerationNumber pulumi.StringInput `pulumi:"generationNumber"`
+	// Name of the Google Cloud Storage object.
+	Object pulumi.StringInput `pulumi:"object"`
 }
 
 func (GcsObjectArgs) ElementType() reflect.Type {
@@ -2614,19 +2614,19 @@ func (o GcsObjectOutput) ToGcsObjectPtrOutputWithContext(ctx context.Context) Gc
 	}).(GcsObjectPtrOutput)
 }
 
-// Required. Bucket of the Google Cloud Storage object.
-func (o GcsObjectOutput) Bucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GcsObject) *string { return v.Bucket }).(pulumi.StringPtrOutput)
+// Bucket of the Google Cloud Storage object.
+func (o GcsObjectOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GcsObject) string { return v.Bucket }).(pulumi.StringOutput)
 }
 
-// Required. Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
-func (o GcsObjectOutput) GenerationNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GcsObject) *string { return v.GenerationNumber }).(pulumi.StringPtrOutput)
+// Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+func (o GcsObjectOutput) GenerationNumber() pulumi.StringOutput {
+	return o.ApplyT(func(v GcsObject) string { return v.GenerationNumber }).(pulumi.StringOutput)
 }
 
-// Required. Name of the Google Cloud Storage object.
-func (o GcsObjectOutput) Object() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GcsObject) *string { return v.Object }).(pulumi.StringPtrOutput)
+// Name of the Google Cloud Storage object.
+func (o GcsObjectOutput) Object() pulumi.StringOutput {
+	return o.ApplyT(func(v GcsObject) string { return v.Object }).(pulumi.StringOutput)
 }
 
 type GcsObjectPtrOutput struct{ *pulumi.OutputState }
@@ -2647,43 +2647,43 @@ func (o GcsObjectPtrOutput) Elem() GcsObjectOutput {
 	return o.ApplyT(func(v *GcsObject) GcsObject { return *v }).(GcsObjectOutput)
 }
 
-// Required. Bucket of the Google Cloud Storage object.
+// Bucket of the Google Cloud Storage object.
 func (o GcsObjectPtrOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GcsObject) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Bucket
+		return &v.Bucket
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+// Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
 func (o GcsObjectPtrOutput) GenerationNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GcsObject) *string {
 		if v == nil {
 			return nil
 		}
-		return v.GenerationNumber
+		return &v.GenerationNumber
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Name of the Google Cloud Storage object.
+// Name of the Google Cloud Storage object.
 func (o GcsObjectPtrOutput) Object() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GcsObject) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Object
+		return &v.Object
 	}).(pulumi.StringPtrOutput)
 }
 
 // Google Cloud Storage object representation.
 type GcsObjectResponse struct {
-	// Required. Bucket of the Google Cloud Storage object.
+	// Bucket of the Google Cloud Storage object.
 	Bucket string `pulumi:"bucket"`
-	// Required. Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+	// Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
 	GenerationNumber string `pulumi:"generationNumber"`
-	// Required. Name of the Google Cloud Storage object.
+	// Name of the Google Cloud Storage object.
 	Object string `pulumi:"object"`
 }
 
@@ -2700,11 +2700,11 @@ type GcsObjectResponseInput interface {
 
 // Google Cloud Storage object representation.
 type GcsObjectResponseArgs struct {
-	// Required. Bucket of the Google Cloud Storage object.
+	// Bucket of the Google Cloud Storage object.
 	Bucket pulumi.StringInput `pulumi:"bucket"`
-	// Required. Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+	// Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
 	GenerationNumber pulumi.StringInput `pulumi:"generationNumber"`
-	// Required. Name of the Google Cloud Storage object.
+	// Name of the Google Cloud Storage object.
 	Object pulumi.StringInput `pulumi:"object"`
 }
 
@@ -2786,17 +2786,17 @@ func (o GcsObjectResponseOutput) ToGcsObjectResponsePtrOutputWithContext(ctx con
 	}).(GcsObjectResponsePtrOutput)
 }
 
-// Required. Bucket of the Google Cloud Storage object.
+// Bucket of the Google Cloud Storage object.
 func (o GcsObjectResponseOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v GcsObjectResponse) string { return v.Bucket }).(pulumi.StringOutput)
 }
 
-// Required. Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+// Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
 func (o GcsObjectResponseOutput) GenerationNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v GcsObjectResponse) string { return v.GenerationNumber }).(pulumi.StringOutput)
 }
 
-// Required. Name of the Google Cloud Storage object.
+// Name of the Google Cloud Storage object.
 func (o GcsObjectResponseOutput) Object() pulumi.StringOutput {
 	return o.ApplyT(func(v GcsObjectResponse) string { return v.Object }).(pulumi.StringOutput)
 }
@@ -2819,7 +2819,7 @@ func (o GcsObjectResponsePtrOutput) Elem() GcsObjectResponseOutput {
 	return o.ApplyT(func(v *GcsObjectResponse) GcsObjectResponse { return *v }).(GcsObjectResponseOutput)
 }
 
-// Required. Bucket of the Google Cloud Storage object.
+// Bucket of the Google Cloud Storage object.
 func (o GcsObjectResponsePtrOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GcsObjectResponse) *string {
 		if v == nil {
@@ -2829,7 +2829,7 @@ func (o GcsObjectResponsePtrOutput) Bucket() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
+// Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
 func (o GcsObjectResponsePtrOutput) GenerationNumber() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GcsObjectResponse) *string {
 		if v == nil {
@@ -2839,7 +2839,7 @@ func (o GcsObjectResponsePtrOutput) GenerationNumber() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Name of the Google Cloud Storage object.
+// Name of the Google Cloud Storage object.
 func (o GcsObjectResponsePtrOutput) Object() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GcsObjectResponse) *string {
 		if v == nil {
@@ -2851,10 +2851,10 @@ func (o GcsObjectResponsePtrOutput) Object() pulumi.StringPtrOutput {
 
 // Represents a Goo package repository. These is added to a repo file that is stored at C:/ProgramData/GooGet/repos/google_osconfig.repo.
 type GooRepository struct {
-	// Required. The name of the repository.
-	Name *string `pulumi:"name"`
-	// Required. The url of the repository.
-	Url *string `pulumi:"url"`
+	// The name of the repository.
+	Name string `pulumi:"name"`
+	// The url of the repository.
+	Url string `pulumi:"url"`
 }
 
 // GooRepositoryInput is an input type that accepts GooRepositoryArgs and GooRepositoryOutput values.
@@ -2870,10 +2870,10 @@ type GooRepositoryInput interface {
 
 // Represents a Goo package repository. These is added to a repo file that is stored at C:/ProgramData/GooGet/repos/google_osconfig.repo.
 type GooRepositoryArgs struct {
-	// Required. The name of the repository.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Required. The url of the repository.
-	Url pulumi.StringPtrInput `pulumi:"url"`
+	// The name of the repository.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The url of the repository.
+	Url pulumi.StringInput `pulumi:"url"`
 }
 
 func (GooRepositoryArgs) ElementType() reflect.Type {
@@ -2954,14 +2954,14 @@ func (o GooRepositoryOutput) ToGooRepositoryPtrOutputWithContext(ctx context.Con
 	}).(GooRepositoryPtrOutput)
 }
 
-// Required. The name of the repository.
-func (o GooRepositoryOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooRepository) *string { return v.Name }).(pulumi.StringPtrOutput)
+// The name of the repository.
+func (o GooRepositoryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GooRepository) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Required. The url of the repository.
-func (o GooRepositoryOutput) Url() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GooRepository) *string { return v.Url }).(pulumi.StringPtrOutput)
+// The url of the repository.
+func (o GooRepositoryOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GooRepository) string { return v.Url }).(pulumi.StringOutput)
 }
 
 type GooRepositoryPtrOutput struct{ *pulumi.OutputState }
@@ -2982,31 +2982,31 @@ func (o GooRepositoryPtrOutput) Elem() GooRepositoryOutput {
 	return o.ApplyT(func(v *GooRepository) GooRepository { return *v }).(GooRepositoryOutput)
 }
 
-// Required. The name of the repository.
+// The name of the repository.
 func (o GooRepositoryPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GooRepository) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Name
+		return &v.Name
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The url of the repository.
+// The url of the repository.
 func (o GooRepositoryPtrOutput) Url() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GooRepository) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Url
+		return &v.Url
 	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a Goo package repository. These is added to a repo file that is stored at C:/ProgramData/GooGet/repos/google_osconfig.repo.
 type GooRepositoryResponse struct {
-	// Required. The name of the repository.
+	// The name of the repository.
 	Name string `pulumi:"name"`
-	// Required. The url of the repository.
+	// The url of the repository.
 	Url string `pulumi:"url"`
 }
 
@@ -3023,9 +3023,9 @@ type GooRepositoryResponseInput interface {
 
 // Represents a Goo package repository. These is added to a repo file that is stored at C:/ProgramData/GooGet/repos/google_osconfig.repo.
 type GooRepositoryResponseArgs struct {
-	// Required. The name of the repository.
+	// The name of the repository.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Required. The url of the repository.
+	// The url of the repository.
 	Url pulumi.StringInput `pulumi:"url"`
 }
 
@@ -3056,12 +3056,12 @@ func (o GooRepositoryResponseOutput) ToGooRepositoryResponseOutputWithContext(ct
 	return o
 }
 
-// Required. The name of the repository.
+// The name of the repository.
 func (o GooRepositoryResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GooRepositoryResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Required. The url of the repository.
+// The url of the repository.
 func (o GooRepositoryResponseOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GooRepositoryResponse) string { return v.Url }).(pulumi.StringOutput)
 }
@@ -3298,10 +3298,10 @@ func (o GooSettingsResponsePtrOutput) Elem() GooSettingsResponseOutput {
 
 // Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or "on the 15th of the month".
 type MonthlySchedule struct {
-	// Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
-	MonthDay *int `pulumi:"monthDay"`
-	// Required. Week day in a month.
-	WeekDayOfMonth *WeekDayOfMonth `pulumi:"weekDayOfMonth"`
+	// One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+	MonthDay int `pulumi:"monthDay"`
+	// Week day in a month.
+	WeekDayOfMonth WeekDayOfMonth `pulumi:"weekDayOfMonth"`
 }
 
 // MonthlyScheduleInput is an input type that accepts MonthlyScheduleArgs and MonthlyScheduleOutput values.
@@ -3317,10 +3317,10 @@ type MonthlyScheduleInput interface {
 
 // Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or "on the 15th of the month".
 type MonthlyScheduleArgs struct {
-	// Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
-	MonthDay pulumi.IntPtrInput `pulumi:"monthDay"`
-	// Required. Week day in a month.
-	WeekDayOfMonth WeekDayOfMonthPtrInput `pulumi:"weekDayOfMonth"`
+	// One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+	MonthDay pulumi.IntInput `pulumi:"monthDay"`
+	// Week day in a month.
+	WeekDayOfMonth WeekDayOfMonthInput `pulumi:"weekDayOfMonth"`
 }
 
 func (MonthlyScheduleArgs) ElementType() reflect.Type {
@@ -3401,14 +3401,14 @@ func (o MonthlyScheduleOutput) ToMonthlySchedulePtrOutputWithContext(ctx context
 	}).(MonthlySchedulePtrOutput)
 }
 
-// Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
-func (o MonthlyScheduleOutput) MonthDay() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MonthlySchedule) *int { return v.MonthDay }).(pulumi.IntPtrOutput)
+// One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+func (o MonthlyScheduleOutput) MonthDay() pulumi.IntOutput {
+	return o.ApplyT(func(v MonthlySchedule) int { return v.MonthDay }).(pulumi.IntOutput)
 }
 
-// Required. Week day in a month.
-func (o MonthlyScheduleOutput) WeekDayOfMonth() WeekDayOfMonthPtrOutput {
-	return o.ApplyT(func(v MonthlySchedule) *WeekDayOfMonth { return v.WeekDayOfMonth }).(WeekDayOfMonthPtrOutput)
+// Week day in a month.
+func (o MonthlyScheduleOutput) WeekDayOfMonth() WeekDayOfMonthOutput {
+	return o.ApplyT(func(v MonthlySchedule) WeekDayOfMonth { return v.WeekDayOfMonth }).(WeekDayOfMonthOutput)
 }
 
 type MonthlySchedulePtrOutput struct{ *pulumi.OutputState }
@@ -3429,31 +3429,31 @@ func (o MonthlySchedulePtrOutput) Elem() MonthlyScheduleOutput {
 	return o.ApplyT(func(v *MonthlySchedule) MonthlySchedule { return *v }).(MonthlyScheduleOutput)
 }
 
-// Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+// One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
 func (o MonthlySchedulePtrOutput) MonthDay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MonthlySchedule) *int {
 		if v == nil {
 			return nil
 		}
-		return v.MonthDay
+		return &v.MonthDay
 	}).(pulumi.IntPtrOutput)
 }
 
-// Required. Week day in a month.
+// Week day in a month.
 func (o MonthlySchedulePtrOutput) WeekDayOfMonth() WeekDayOfMonthPtrOutput {
 	return o.ApplyT(func(v *MonthlySchedule) *WeekDayOfMonth {
 		if v == nil {
 			return nil
 		}
-		return v.WeekDayOfMonth
+		return &v.WeekDayOfMonth
 	}).(WeekDayOfMonthPtrOutput)
 }
 
 // Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or "on the 15th of the month".
 type MonthlyScheduleResponse struct {
-	// Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+	// One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
 	MonthDay int `pulumi:"monthDay"`
-	// Required. Week day in a month.
+	// Week day in a month.
 	WeekDayOfMonth WeekDayOfMonthResponse `pulumi:"weekDayOfMonth"`
 }
 
@@ -3470,9 +3470,9 @@ type MonthlyScheduleResponseInput interface {
 
 // Represents a monthly schedule. An example of a valid monthly schedule is "on the third Tuesday of the month" or "on the 15th of the month".
 type MonthlyScheduleResponseArgs struct {
-	// Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+	// One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
 	MonthDay pulumi.IntInput `pulumi:"monthDay"`
-	// Required. Week day in a month.
+	// Week day in a month.
 	WeekDayOfMonth WeekDayOfMonthResponseInput `pulumi:"weekDayOfMonth"`
 }
 
@@ -3554,12 +3554,12 @@ func (o MonthlyScheduleResponseOutput) ToMonthlyScheduleResponsePtrOutputWithCon
 	}).(MonthlyScheduleResponsePtrOutput)
 }
 
-// Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+// One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
 func (o MonthlyScheduleResponseOutput) MonthDay() pulumi.IntOutput {
 	return o.ApplyT(func(v MonthlyScheduleResponse) int { return v.MonthDay }).(pulumi.IntOutput)
 }
 
-// Required. Week day in a month.
+// Week day in a month.
 func (o MonthlyScheduleResponseOutput) WeekDayOfMonth() WeekDayOfMonthResponseOutput {
 	return o.ApplyT(func(v MonthlyScheduleResponse) WeekDayOfMonthResponse { return v.WeekDayOfMonth }).(WeekDayOfMonthResponseOutput)
 }
@@ -3582,7 +3582,7 @@ func (o MonthlyScheduleResponsePtrOutput) Elem() MonthlyScheduleResponseOutput {
 	return o.ApplyT(func(v *MonthlyScheduleResponse) MonthlyScheduleResponse { return *v }).(MonthlyScheduleResponseOutput)
 }
 
-// Required. One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
+// One day of the month. 1-31 indicates the 1st to the 31st day. -1 indicates the last day of the month. Months without the target day will be skipped. For example, a schedule to run "every month on the 31st" will not run in February, April, June, etc.
 func (o MonthlyScheduleResponsePtrOutput) MonthDay() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MonthlyScheduleResponse) *int {
 		if v == nil {
@@ -3592,7 +3592,7 @@ func (o MonthlyScheduleResponsePtrOutput) MonthDay() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Required. Week day in a month.
+// Week day in a month.
 func (o MonthlyScheduleResponsePtrOutput) WeekDayOfMonth() WeekDayOfMonthResponsePtrOutput {
 	return o.ApplyT(func(v *MonthlyScheduleResponse) *WeekDayOfMonthResponse {
 		if v == nil {
@@ -3604,8 +3604,8 @@ func (o MonthlyScheduleResponsePtrOutput) WeekDayOfMonth() WeekDayOfMonthRespons
 
 // Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 type OneTimeSchedule struct {
-	// Required. The desired patch job execution time.
-	ExecuteTime *string `pulumi:"executeTime"`
+	// The desired patch job execution time.
+	ExecuteTime string `pulumi:"executeTime"`
 }
 
 // OneTimeScheduleInput is an input type that accepts OneTimeScheduleArgs and OneTimeScheduleOutput values.
@@ -3621,8 +3621,8 @@ type OneTimeScheduleInput interface {
 
 // Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 type OneTimeScheduleArgs struct {
-	// Required. The desired patch job execution time.
-	ExecuteTime pulumi.StringPtrInput `pulumi:"executeTime"`
+	// The desired patch job execution time.
+	ExecuteTime pulumi.StringInput `pulumi:"executeTime"`
 }
 
 func (OneTimeScheduleArgs) ElementType() reflect.Type {
@@ -3703,9 +3703,9 @@ func (o OneTimeScheduleOutput) ToOneTimeSchedulePtrOutputWithContext(ctx context
 	}).(OneTimeSchedulePtrOutput)
 }
 
-// Required. The desired patch job execution time.
-func (o OneTimeScheduleOutput) ExecuteTime() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OneTimeSchedule) *string { return v.ExecuteTime }).(pulumi.StringPtrOutput)
+// The desired patch job execution time.
+func (o OneTimeScheduleOutput) ExecuteTime() pulumi.StringOutput {
+	return o.ApplyT(func(v OneTimeSchedule) string { return v.ExecuteTime }).(pulumi.StringOutput)
 }
 
 type OneTimeSchedulePtrOutput struct{ *pulumi.OutputState }
@@ -3726,19 +3726,19 @@ func (o OneTimeSchedulePtrOutput) Elem() OneTimeScheduleOutput {
 	return o.ApplyT(func(v *OneTimeSchedule) OneTimeSchedule { return *v }).(OneTimeScheduleOutput)
 }
 
-// Required. The desired patch job execution time.
+// The desired patch job execution time.
 func (o OneTimeSchedulePtrOutput) ExecuteTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OneTimeSchedule) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ExecuteTime
+		return &v.ExecuteTime
 	}).(pulumi.StringPtrOutput)
 }
 
 // Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 type OneTimeScheduleResponse struct {
-	// Required. The desired patch job execution time.
+	// The desired patch job execution time.
 	ExecuteTime string `pulumi:"executeTime"`
 }
 
@@ -3755,7 +3755,7 @@ type OneTimeScheduleResponseInput interface {
 
 // Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 type OneTimeScheduleResponseArgs struct {
-	// Required. The desired patch job execution time.
+	// The desired patch job execution time.
 	ExecuteTime pulumi.StringInput `pulumi:"executeTime"`
 }
 
@@ -3837,7 +3837,7 @@ func (o OneTimeScheduleResponseOutput) ToOneTimeScheduleResponsePtrOutputWithCon
 	}).(OneTimeScheduleResponsePtrOutput)
 }
 
-// Required. The desired patch job execution time.
+// The desired patch job execution time.
 func (o OneTimeScheduleResponseOutput) ExecuteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v OneTimeScheduleResponse) string { return v.ExecuteTime }).(pulumi.StringOutput)
 }
@@ -3860,7 +3860,7 @@ func (o OneTimeScheduleResponsePtrOutput) Elem() OneTimeScheduleResponseOutput {
 	return o.ApplyT(func(v *OneTimeScheduleResponse) OneTimeScheduleResponse { return *v }).(OneTimeScheduleResponseOutput)
 }
 
-// Required. The desired patch job execution time.
+// The desired patch job execution time.
 func (o OneTimeScheduleResponsePtrOutput) ExecuteTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OneTimeScheduleResponse) *string {
 		if v == nil {
@@ -3876,8 +3876,8 @@ type Package struct {
 	DesiredState *string `pulumi:"desiredState"`
 	// Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
 	Manager *string `pulumi:"manager"`
-	// Required. The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
-	Name *string `pulumi:"name"`
+	// The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
+	Name string `pulumi:"name"`
 }
 
 // PackageInput is an input type that accepts PackageArgs and PackageOutput values.
@@ -3897,8 +3897,8 @@ type PackageArgs struct {
 	DesiredState *PackageDesiredState `pulumi:"desiredState"`
 	// Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
 	Manager *PackageManager `pulumi:"manager"`
-	// Required. The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
+	Name pulumi.StringInput `pulumi:"name"`
 }
 
 func (PackageArgs) ElementType() reflect.Type {
@@ -3963,9 +3963,9 @@ func (o PackageOutput) Manager() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Package) *string { return v.Manager }).(pulumi.StringPtrOutput)
 }
 
-// Required. The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
-func (o PackageOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Package) *string { return v.Name }).(pulumi.StringPtrOutput)
+// The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
+func (o PackageOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v Package) string { return v.Name }).(pulumi.StringOutput)
 }
 
 type PackageArrayOutput struct{ *pulumi.OutputState }
@@ -4248,7 +4248,7 @@ type PackageResponse struct {
 	DesiredState string `pulumi:"desiredState"`
 	// Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
 	Manager string `pulumi:"manager"`
-	// Required. The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
+	// The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
 	Name string `pulumi:"name"`
 }
 
@@ -4269,7 +4269,7 @@ type PackageResponseArgs struct {
 	DesiredState pulumi.StringInput `pulumi:"desiredState"`
 	// Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
 	Manager pulumi.StringInput `pulumi:"manager"`
-	// Required. The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
+	// The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -4335,7 +4335,7 @@ func (o PackageResponseOutput) Manager() pulumi.StringOutput {
 	return o.ApplyT(func(v PackageResponse) string { return v.Manager }).(pulumi.StringOutput)
 }
 
-// Required. The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
+// The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
 func (o PackageResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v PackageResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -5824,18 +5824,18 @@ func (o PatchRolloutResponsePtrOutput) Mode() pulumi.StringPtrOutput {
 type RecurringSchedule struct {
 	// Optional. The end time at which a recurring patch deployment schedule is no longer active.
 	EndTime *string `pulumi:"endTime"`
-	// Required. The frequency unit of this recurring schedule.
-	Frequency *string `pulumi:"frequency"`
-	// Required. Schedule with monthly executions.
-	Monthly *MonthlySchedule `pulumi:"monthly"`
+	// The frequency unit of this recurring schedule.
+	Frequency string `pulumi:"frequency"`
+	// Schedule with monthly executions.
+	Monthly MonthlySchedule `pulumi:"monthly"`
 	// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
 	StartTime *string `pulumi:"startTime"`
-	// Required. Time of the day to run a recurring deployment.
-	TimeOfDay *TimeOfDay `pulumi:"timeOfDay"`
-	// Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
-	TimeZone *TimeZone `pulumi:"timeZone"`
-	// Required. Schedule with weekly executions.
-	Weekly *WeeklySchedule `pulumi:"weekly"`
+	// Time of the day to run a recurring deployment.
+	TimeOfDay TimeOfDay `pulumi:"timeOfDay"`
+	// Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+	TimeZone TimeZone `pulumi:"timeZone"`
+	// Schedule with weekly executions.
+	Weekly WeeklySchedule `pulumi:"weekly"`
 }
 
 // RecurringScheduleInput is an input type that accepts RecurringScheduleArgs and RecurringScheduleOutput values.
@@ -5853,18 +5853,18 @@ type RecurringScheduleInput interface {
 type RecurringScheduleArgs struct {
 	// Optional. The end time at which a recurring patch deployment schedule is no longer active.
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
-	// Required. The frequency unit of this recurring schedule.
-	Frequency *RecurringScheduleFrequency `pulumi:"frequency"`
-	// Required. Schedule with monthly executions.
-	Monthly MonthlySchedulePtrInput `pulumi:"monthly"`
+	// The frequency unit of this recurring schedule.
+	Frequency RecurringScheduleFrequency `pulumi:"frequency"`
+	// Schedule with monthly executions.
+	Monthly MonthlyScheduleInput `pulumi:"monthly"`
 	// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// Required. Time of the day to run a recurring deployment.
-	TimeOfDay TimeOfDayPtrInput `pulumi:"timeOfDay"`
-	// Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
-	TimeZone TimeZonePtrInput `pulumi:"timeZone"`
-	// Required. Schedule with weekly executions.
-	Weekly WeeklySchedulePtrInput `pulumi:"weekly"`
+	// Time of the day to run a recurring deployment.
+	TimeOfDay TimeOfDayInput `pulumi:"timeOfDay"`
+	// Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+	TimeZone TimeZoneInput `pulumi:"timeZone"`
+	// Schedule with weekly executions.
+	Weekly WeeklyScheduleInput `pulumi:"weekly"`
 }
 
 func (RecurringScheduleArgs) ElementType() reflect.Type {
@@ -5950,14 +5950,14 @@ func (o RecurringScheduleOutput) EndTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RecurringSchedule) *string { return v.EndTime }).(pulumi.StringPtrOutput)
 }
 
-// Required. The frequency unit of this recurring schedule.
-func (o RecurringScheduleOutput) Frequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RecurringSchedule) *string { return v.Frequency }).(pulumi.StringPtrOutput)
+// The frequency unit of this recurring schedule.
+func (o RecurringScheduleOutput) Frequency() pulumi.StringOutput {
+	return o.ApplyT(func(v RecurringSchedule) string { return v.Frequency }).(pulumi.StringOutput)
 }
 
-// Required. Schedule with monthly executions.
-func (o RecurringScheduleOutput) Monthly() MonthlySchedulePtrOutput {
-	return o.ApplyT(func(v RecurringSchedule) *MonthlySchedule { return v.Monthly }).(MonthlySchedulePtrOutput)
+// Schedule with monthly executions.
+func (o RecurringScheduleOutput) Monthly() MonthlyScheduleOutput {
+	return o.ApplyT(func(v RecurringSchedule) MonthlySchedule { return v.Monthly }).(MonthlyScheduleOutput)
 }
 
 // Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
@@ -5965,19 +5965,19 @@ func (o RecurringScheduleOutput) StartTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RecurringSchedule) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
-// Required. Time of the day to run a recurring deployment.
-func (o RecurringScheduleOutput) TimeOfDay() TimeOfDayPtrOutput {
-	return o.ApplyT(func(v RecurringSchedule) *TimeOfDay { return v.TimeOfDay }).(TimeOfDayPtrOutput)
+// Time of the day to run a recurring deployment.
+func (o RecurringScheduleOutput) TimeOfDay() TimeOfDayOutput {
+	return o.ApplyT(func(v RecurringSchedule) TimeOfDay { return v.TimeOfDay }).(TimeOfDayOutput)
 }
 
-// Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
-func (o RecurringScheduleOutput) TimeZone() TimeZonePtrOutput {
-	return o.ApplyT(func(v RecurringSchedule) *TimeZone { return v.TimeZone }).(TimeZonePtrOutput)
+// Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+func (o RecurringScheduleOutput) TimeZone() TimeZoneOutput {
+	return o.ApplyT(func(v RecurringSchedule) TimeZone { return v.TimeZone }).(TimeZoneOutput)
 }
 
-// Required. Schedule with weekly executions.
-func (o RecurringScheduleOutput) Weekly() WeeklySchedulePtrOutput {
-	return o.ApplyT(func(v RecurringSchedule) *WeeklySchedule { return v.Weekly }).(WeeklySchedulePtrOutput)
+// Schedule with weekly executions.
+func (o RecurringScheduleOutput) Weekly() WeeklyScheduleOutput {
+	return o.ApplyT(func(v RecurringSchedule) WeeklySchedule { return v.Weekly }).(WeeklyScheduleOutput)
 }
 
 type RecurringSchedulePtrOutput struct{ *pulumi.OutputState }
@@ -6008,23 +6008,23 @@ func (o RecurringSchedulePtrOutput) EndTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The frequency unit of this recurring schedule.
+// The frequency unit of this recurring schedule.
 func (o RecurringSchedulePtrOutput) Frequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RecurringSchedule) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Frequency
+		return &v.Frequency
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Schedule with monthly executions.
+// Schedule with monthly executions.
 func (o RecurringSchedulePtrOutput) Monthly() MonthlySchedulePtrOutput {
 	return o.ApplyT(func(v *RecurringSchedule) *MonthlySchedule {
 		if v == nil {
 			return nil
 		}
-		return v.Monthly
+		return &v.Monthly
 	}).(MonthlySchedulePtrOutput)
 }
 
@@ -6038,33 +6038,33 @@ func (o RecurringSchedulePtrOutput) StartTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Time of the day to run a recurring deployment.
+// Time of the day to run a recurring deployment.
 func (o RecurringSchedulePtrOutput) TimeOfDay() TimeOfDayPtrOutput {
 	return o.ApplyT(func(v *RecurringSchedule) *TimeOfDay {
 		if v == nil {
 			return nil
 		}
-		return v.TimeOfDay
+		return &v.TimeOfDay
 	}).(TimeOfDayPtrOutput)
 }
 
-// Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+// Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
 func (o RecurringSchedulePtrOutput) TimeZone() TimeZonePtrOutput {
 	return o.ApplyT(func(v *RecurringSchedule) *TimeZone {
 		if v == nil {
 			return nil
 		}
-		return v.TimeZone
+		return &v.TimeZone
 	}).(TimeZonePtrOutput)
 }
 
-// Required. Schedule with weekly executions.
+// Schedule with weekly executions.
 func (o RecurringSchedulePtrOutput) Weekly() WeeklySchedulePtrOutput {
 	return o.ApplyT(func(v *RecurringSchedule) *WeeklySchedule {
 		if v == nil {
 			return nil
 		}
-		return v.Weekly
+		return &v.Weekly
 	}).(WeeklySchedulePtrOutput)
 }
 
@@ -6072,21 +6072,21 @@ func (o RecurringSchedulePtrOutput) Weekly() WeeklySchedulePtrOutput {
 type RecurringScheduleResponse struct {
 	// Optional. The end time at which a recurring patch deployment schedule is no longer active.
 	EndTime string `pulumi:"endTime"`
-	// Required. The frequency unit of this recurring schedule.
+	// The frequency unit of this recurring schedule.
 	Frequency string `pulumi:"frequency"`
 	// The time the last patch job ran successfully.
 	LastExecuteTime string `pulumi:"lastExecuteTime"`
-	// Required. Schedule with monthly executions.
+	// Schedule with monthly executions.
 	Monthly MonthlyScheduleResponse `pulumi:"monthly"`
 	// The time the next patch job is scheduled to run.
 	NextExecuteTime string `pulumi:"nextExecuteTime"`
 	// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
 	StartTime string `pulumi:"startTime"`
-	// Required. Time of the day to run a recurring deployment.
+	// Time of the day to run a recurring deployment.
 	TimeOfDay TimeOfDayResponse `pulumi:"timeOfDay"`
-	// Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+	// Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
 	TimeZone TimeZoneResponse `pulumi:"timeZone"`
-	// Required. Schedule with weekly executions.
+	// Schedule with weekly executions.
 	Weekly WeeklyScheduleResponse `pulumi:"weekly"`
 }
 
@@ -6105,21 +6105,21 @@ type RecurringScheduleResponseInput interface {
 type RecurringScheduleResponseArgs struct {
 	// Optional. The end time at which a recurring patch deployment schedule is no longer active.
 	EndTime pulumi.StringInput `pulumi:"endTime"`
-	// Required. The frequency unit of this recurring schedule.
+	// The frequency unit of this recurring schedule.
 	Frequency pulumi.StringInput `pulumi:"frequency"`
 	// The time the last patch job ran successfully.
 	LastExecuteTime pulumi.StringInput `pulumi:"lastExecuteTime"`
-	// Required. Schedule with monthly executions.
+	// Schedule with monthly executions.
 	Monthly MonthlyScheduleResponseInput `pulumi:"monthly"`
 	// The time the next patch job is scheduled to run.
 	NextExecuteTime pulumi.StringInput `pulumi:"nextExecuteTime"`
 	// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
 	StartTime pulumi.StringInput `pulumi:"startTime"`
-	// Required. Time of the day to run a recurring deployment.
+	// Time of the day to run a recurring deployment.
 	TimeOfDay TimeOfDayResponseInput `pulumi:"timeOfDay"`
-	// Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+	// Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
 	TimeZone TimeZoneResponseInput `pulumi:"timeZone"`
-	// Required. Schedule with weekly executions.
+	// Schedule with weekly executions.
 	Weekly WeeklyScheduleResponseInput `pulumi:"weekly"`
 }
 
@@ -6206,7 +6206,7 @@ func (o RecurringScheduleResponseOutput) EndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v RecurringScheduleResponse) string { return v.EndTime }).(pulumi.StringOutput)
 }
 
-// Required. The frequency unit of this recurring schedule.
+// The frequency unit of this recurring schedule.
 func (o RecurringScheduleResponseOutput) Frequency() pulumi.StringOutput {
 	return o.ApplyT(func(v RecurringScheduleResponse) string { return v.Frequency }).(pulumi.StringOutput)
 }
@@ -6216,7 +6216,7 @@ func (o RecurringScheduleResponseOutput) LastExecuteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v RecurringScheduleResponse) string { return v.LastExecuteTime }).(pulumi.StringOutput)
 }
 
-// Required. Schedule with monthly executions.
+// Schedule with monthly executions.
 func (o RecurringScheduleResponseOutput) Monthly() MonthlyScheduleResponseOutput {
 	return o.ApplyT(func(v RecurringScheduleResponse) MonthlyScheduleResponse { return v.Monthly }).(MonthlyScheduleResponseOutput)
 }
@@ -6231,17 +6231,17 @@ func (o RecurringScheduleResponseOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v RecurringScheduleResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
-// Required. Time of the day to run a recurring deployment.
+// Time of the day to run a recurring deployment.
 func (o RecurringScheduleResponseOutput) TimeOfDay() TimeOfDayResponseOutput {
 	return o.ApplyT(func(v RecurringScheduleResponse) TimeOfDayResponse { return v.TimeOfDay }).(TimeOfDayResponseOutput)
 }
 
-// Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+// Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
 func (o RecurringScheduleResponseOutput) TimeZone() TimeZoneResponseOutput {
 	return o.ApplyT(func(v RecurringScheduleResponse) TimeZoneResponse { return v.TimeZone }).(TimeZoneResponseOutput)
 }
 
-// Required. Schedule with weekly executions.
+// Schedule with weekly executions.
 func (o RecurringScheduleResponseOutput) Weekly() WeeklyScheduleResponseOutput {
 	return o.ApplyT(func(v RecurringScheduleResponse) WeeklyScheduleResponse { return v.Weekly }).(WeeklyScheduleResponseOutput)
 }
@@ -6274,7 +6274,7 @@ func (o RecurringScheduleResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The frequency unit of this recurring schedule.
+// The frequency unit of this recurring schedule.
 func (o RecurringScheduleResponsePtrOutput) Frequency() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RecurringScheduleResponse) *string {
 		if v == nil {
@@ -6294,7 +6294,7 @@ func (o RecurringScheduleResponsePtrOutput) LastExecuteTime() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Schedule with monthly executions.
+// Schedule with monthly executions.
 func (o RecurringScheduleResponsePtrOutput) Monthly() MonthlyScheduleResponsePtrOutput {
 	return o.ApplyT(func(v *RecurringScheduleResponse) *MonthlyScheduleResponse {
 		if v == nil {
@@ -6324,7 +6324,7 @@ func (o RecurringScheduleResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Time of the day to run a recurring deployment.
+// Time of the day to run a recurring deployment.
 func (o RecurringScheduleResponsePtrOutput) TimeOfDay() TimeOfDayResponsePtrOutput {
 	return o.ApplyT(func(v *RecurringScheduleResponse) *TimeOfDayResponse {
 		if v == nil {
@@ -6334,7 +6334,7 @@ func (o RecurringScheduleResponsePtrOutput) TimeOfDay() TimeOfDayResponsePtrOutp
 	}).(TimeOfDayResponsePtrOutput)
 }
 
-// Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
+// Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone.
 func (o RecurringScheduleResponsePtrOutput) TimeZone() TimeZoneResponsePtrOutput {
 	return o.ApplyT(func(v *RecurringScheduleResponse) *TimeZoneResponse {
 		if v == nil {
@@ -6344,7 +6344,7 @@ func (o RecurringScheduleResponsePtrOutput) TimeZone() TimeZoneResponsePtrOutput
 	}).(TimeZoneResponsePtrOutput)
 }
 
-// Required. Schedule with weekly executions.
+// Schedule with weekly executions.
 func (o RecurringScheduleResponsePtrOutput) Weekly() WeeklyScheduleResponsePtrOutput {
 	return o.ApplyT(func(v *RecurringScheduleResponse) *WeeklyScheduleResponse {
 		if v == nil {
@@ -6362,8 +6362,8 @@ type SoftwareRecipe struct {
 	DesiredState *string `pulumi:"desiredState"`
 	// Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back.
 	InstallSteps []SoftwareRecipeStep `pulumi:"installSteps"`
-	// Required. Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
-	Name *string `pulumi:"name"`
+	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
+	Name string `pulumi:"name"`
 	// Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe. Any steps taken (including partially completed steps) are not rolled back.
 	UpdateSteps []SoftwareRecipeStep `pulumi:"updateSteps"`
 	// The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
@@ -6389,8 +6389,8 @@ type SoftwareRecipeArgs struct {
 	DesiredState *SoftwareRecipeDesiredState `pulumi:"desiredState"`
 	// Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back.
 	InstallSteps SoftwareRecipeStepArrayInput `pulumi:"installSteps"`
-	// Required. Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
+	Name pulumi.StringInput `pulumi:"name"`
 	// Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe. Any steps taken (including partially completed steps) are not rolled back.
 	UpdateSteps SoftwareRecipeStepArrayInput `pulumi:"updateSteps"`
 	// The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
@@ -6464,9 +6464,9 @@ func (o SoftwareRecipeOutput) InstallSteps() SoftwareRecipeStepArrayOutput {
 	return o.ApplyT(func(v SoftwareRecipe) []SoftwareRecipeStep { return v.InstallSteps }).(SoftwareRecipeStepArrayOutput)
 }
 
-// Required. Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
-func (o SoftwareRecipeOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SoftwareRecipe) *string { return v.Name }).(pulumi.StringPtrOutput)
+// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
+func (o SoftwareRecipeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipe) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe. Any steps taken (including partially completed steps) are not rolled back.
@@ -6505,8 +6505,8 @@ type SoftwareRecipeArtifact struct {
 	AllowInsecure *bool `pulumi:"allowInsecure"`
 	// A Google Cloud Storage artifact.
 	Gcs *SoftwareRecipeArtifactGcs `pulumi:"gcs"`
-	// Required. Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
-	Id *string `pulumi:"id"`
+	// Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
+	Id string `pulumi:"id"`
 	// A generic remote artifact.
 	Remote *SoftwareRecipeArtifactRemote `pulumi:"remote"`
 }
@@ -6528,8 +6528,8 @@ type SoftwareRecipeArtifactArgs struct {
 	AllowInsecure pulumi.BoolPtrInput `pulumi:"allowInsecure"`
 	// A Google Cloud Storage artifact.
 	Gcs SoftwareRecipeArtifactGcsPtrInput `pulumi:"gcs"`
-	// Required. Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
+	Id pulumi.StringInput `pulumi:"id"`
 	// A generic remote artifact.
 	Remote SoftwareRecipeArtifactRemotePtrInput `pulumi:"remote"`
 }
@@ -6596,9 +6596,9 @@ func (o SoftwareRecipeArtifactOutput) Gcs() SoftwareRecipeArtifactGcsPtrOutput {
 	return o.ApplyT(func(v SoftwareRecipeArtifact) *SoftwareRecipeArtifactGcs { return v.Gcs }).(SoftwareRecipeArtifactGcsPtrOutput)
 }
 
-// Required. Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
-func (o SoftwareRecipeArtifactOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SoftwareRecipeArtifact) *string { return v.Id }).(pulumi.StringPtrOutput)
+// Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
+func (o SoftwareRecipeArtifactOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeArtifact) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // A generic remote artifact.
@@ -7214,7 +7214,7 @@ type SoftwareRecipeResponse struct {
 	DesiredState string `pulumi:"desiredState"`
 	// Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back.
 	InstallSteps []SoftwareRecipeStepResponse `pulumi:"installSteps"`
-	// Required. Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
+	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
 	Name string `pulumi:"name"`
 	// Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe. Any steps taken (including partially completed steps) are not rolled back.
 	UpdateSteps []SoftwareRecipeStepResponse `pulumi:"updateSteps"`
@@ -7241,7 +7241,7 @@ type SoftwareRecipeResponseArgs struct {
 	DesiredState pulumi.StringInput `pulumi:"desiredState"`
 	// Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back.
 	InstallSteps SoftwareRecipeStepResponseArrayInput `pulumi:"installSteps"`
-	// Required. Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
+	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe. Any steps taken (including partially completed steps) are not rolled back.
 	UpdateSteps SoftwareRecipeStepResponseArrayInput `pulumi:"updateSteps"`
@@ -7316,7 +7316,7 @@ func (o SoftwareRecipeResponseOutput) InstallSteps() SoftwareRecipeStepResponseA
 	return o.ApplyT(func(v SoftwareRecipeResponse) []SoftwareRecipeStepResponse { return v.InstallSteps }).(SoftwareRecipeStepResponseArrayOutput)
 }
 
-// Required. Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
+// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
 func (o SoftwareRecipeResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v SoftwareRecipeResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -7507,10 +7507,10 @@ func (o SoftwareRecipeStepArrayOutput) Index(i pulumi.IntInput) SoftwareRecipeSt
 
 // Copies the artifact to the specified path on the instance.
 type SoftwareRecipeStepCopyFile struct {
-	// Required. The id of the relevant artifact in the recipe.
-	ArtifactId *string `pulumi:"artifactId"`
-	// Required. The absolute path on the instance to put the file.
-	Destination *string `pulumi:"destination"`
+	// The id of the relevant artifact in the recipe.
+	ArtifactId string `pulumi:"artifactId"`
+	// The absolute path on the instance to put the file.
+	Destination string `pulumi:"destination"`
 	// Whether to allow this step to overwrite existing files. If this is false and the file already exists the file is not overwritten and the step is considered a success. Defaults to false.
 	Overwrite *bool `pulumi:"overwrite"`
 	// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
@@ -7530,10 +7530,10 @@ type SoftwareRecipeStepCopyFileInput interface {
 
 // Copies the artifact to the specified path on the instance.
 type SoftwareRecipeStepCopyFileArgs struct {
-	// Required. The id of the relevant artifact in the recipe.
-	ArtifactId pulumi.StringPtrInput `pulumi:"artifactId"`
-	// Required. The absolute path on the instance to put the file.
-	Destination pulumi.StringPtrInput `pulumi:"destination"`
+	// The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
+	// The absolute path on the instance to put the file.
+	Destination pulumi.StringInput `pulumi:"destination"`
 	// Whether to allow this step to overwrite existing files. If this is false and the file already exists the file is not overwritten and the step is considered a success. Defaults to false.
 	Overwrite pulumi.BoolPtrInput `pulumi:"overwrite"`
 	// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
@@ -7618,14 +7618,14 @@ func (o SoftwareRecipeStepCopyFileOutput) ToSoftwareRecipeStepCopyFilePtrOutputW
 	}).(SoftwareRecipeStepCopyFilePtrOutput)
 }
 
-// Required. The id of the relevant artifact in the recipe.
-func (o SoftwareRecipeStepCopyFileOutput) ArtifactId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SoftwareRecipeStepCopyFile) *string { return v.ArtifactId }).(pulumi.StringPtrOutput)
+// The id of the relevant artifact in the recipe.
+func (o SoftwareRecipeStepCopyFileOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepCopyFile) string { return v.ArtifactId }).(pulumi.StringOutput)
 }
 
-// Required. The absolute path on the instance to put the file.
-func (o SoftwareRecipeStepCopyFileOutput) Destination() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SoftwareRecipeStepCopyFile) *string { return v.Destination }).(pulumi.StringPtrOutput)
+// The absolute path on the instance to put the file.
+func (o SoftwareRecipeStepCopyFileOutput) Destination() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepCopyFile) string { return v.Destination }).(pulumi.StringOutput)
 }
 
 // Whether to allow this step to overwrite existing files. If this is false and the file already exists the file is not overwritten and the step is considered a success. Defaults to false.
@@ -7656,23 +7656,23 @@ func (o SoftwareRecipeStepCopyFilePtrOutput) Elem() SoftwareRecipeStepCopyFileOu
 	return o.ApplyT(func(v *SoftwareRecipeStepCopyFile) SoftwareRecipeStepCopyFile { return *v }).(SoftwareRecipeStepCopyFileOutput)
 }
 
-// Required. The id of the relevant artifact in the recipe.
+// The id of the relevant artifact in the recipe.
 func (o SoftwareRecipeStepCopyFilePtrOutput) ArtifactId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SoftwareRecipeStepCopyFile) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ArtifactId
+		return &v.ArtifactId
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The absolute path on the instance to put the file.
+// The absolute path on the instance to put the file.
 func (o SoftwareRecipeStepCopyFilePtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SoftwareRecipeStepCopyFile) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Destination
+		return &v.Destination
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7698,9 +7698,9 @@ func (o SoftwareRecipeStepCopyFilePtrOutput) Permissions() pulumi.StringPtrOutpu
 
 // Copies the artifact to the specified path on the instance.
 type SoftwareRecipeStepCopyFileResponse struct {
-	// Required. The id of the relevant artifact in the recipe.
+	// The id of the relevant artifact in the recipe.
 	ArtifactId string `pulumi:"artifactId"`
-	// Required. The absolute path on the instance to put the file.
+	// The absolute path on the instance to put the file.
 	Destination string `pulumi:"destination"`
 	// Whether to allow this step to overwrite existing files. If this is false and the file already exists the file is not overwritten and the step is considered a success. Defaults to false.
 	Overwrite bool `pulumi:"overwrite"`
@@ -7721,9 +7721,9 @@ type SoftwareRecipeStepCopyFileResponseInput interface {
 
 // Copies the artifact to the specified path on the instance.
 type SoftwareRecipeStepCopyFileResponseArgs struct {
-	// Required. The id of the relevant artifact in the recipe.
+	// The id of the relevant artifact in the recipe.
 	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
-	// Required. The absolute path on the instance to put the file.
+	// The absolute path on the instance to put the file.
 	Destination pulumi.StringInput `pulumi:"destination"`
 	// Whether to allow this step to overwrite existing files. If this is false and the file already exists the file is not overwritten and the step is considered a success. Defaults to false.
 	Overwrite pulumi.BoolInput `pulumi:"overwrite"`
@@ -7758,12 +7758,12 @@ func (o SoftwareRecipeStepCopyFileResponseOutput) ToSoftwareRecipeStepCopyFileRe
 	return o
 }
 
-// Required. The id of the relevant artifact in the recipe.
+// The id of the relevant artifact in the recipe.
 func (o SoftwareRecipeStepCopyFileResponseOutput) ArtifactId() pulumi.StringOutput {
 	return o.ApplyT(func(v SoftwareRecipeStepCopyFileResponse) string { return v.ArtifactId }).(pulumi.StringOutput)
 }
 
-// Required. The absolute path on the instance to put the file.
+// The absolute path on the instance to put the file.
 func (o SoftwareRecipeStepCopyFileResponseOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v SoftwareRecipeStepCopyFileResponse) string { return v.Destination }).(pulumi.StringOutput)
 }
@@ -8053,12 +8053,12 @@ func (o SoftwareRecipeStepExecFileResponseOutput) LocalPath() pulumi.StringOutpu
 
 // Extracts an archive of the type specified in the specified directory.
 type SoftwareRecipeStepExtractArchive struct {
-	// Required. The id of the relevant artifact in the recipe.
-	ArtifactId *string `pulumi:"artifactId"`
+	// The id of the relevant artifact in the recipe.
+	ArtifactId string `pulumi:"artifactId"`
 	// Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows.
 	Destination *string `pulumi:"destination"`
-	// Required. The type of the archive to extract.
-	Type *string `pulumi:"type"`
+	// The type of the archive to extract.
+	Type string `pulumi:"type"`
 }
 
 // SoftwareRecipeStepExtractArchiveInput is an input type that accepts SoftwareRecipeStepExtractArchiveArgs and SoftwareRecipeStepExtractArchiveOutput values.
@@ -8074,12 +8074,12 @@ type SoftwareRecipeStepExtractArchiveInput interface {
 
 // Extracts an archive of the type specified in the specified directory.
 type SoftwareRecipeStepExtractArchiveArgs struct {
-	// Required. The id of the relevant artifact in the recipe.
-	ArtifactId pulumi.StringPtrInput `pulumi:"artifactId"`
+	// The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
 	// Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows.
 	Destination pulumi.StringPtrInput `pulumi:"destination"`
-	// Required. The type of the archive to extract.
-	Type *SoftwareRecipeStepExtractArchiveType `pulumi:"type"`
+	// The type of the archive to extract.
+	Type SoftwareRecipeStepExtractArchiveType `pulumi:"type"`
 }
 
 func (SoftwareRecipeStepExtractArchiveArgs) ElementType() reflect.Type {
@@ -8160,9 +8160,9 @@ func (o SoftwareRecipeStepExtractArchiveOutput) ToSoftwareRecipeStepExtractArchi
 	}).(SoftwareRecipeStepExtractArchivePtrOutput)
 }
 
-// Required. The id of the relevant artifact in the recipe.
-func (o SoftwareRecipeStepExtractArchiveOutput) ArtifactId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SoftwareRecipeStepExtractArchive) *string { return v.ArtifactId }).(pulumi.StringPtrOutput)
+// The id of the relevant artifact in the recipe.
+func (o SoftwareRecipeStepExtractArchiveOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepExtractArchive) string { return v.ArtifactId }).(pulumi.StringOutput)
 }
 
 // Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows.
@@ -8170,9 +8170,9 @@ func (o SoftwareRecipeStepExtractArchiveOutput) Destination() pulumi.StringPtrOu
 	return o.ApplyT(func(v SoftwareRecipeStepExtractArchive) *string { return v.Destination }).(pulumi.StringPtrOutput)
 }
 
-// Required. The type of the archive to extract.
-func (o SoftwareRecipeStepExtractArchiveOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SoftwareRecipeStepExtractArchive) *string { return v.Type }).(pulumi.StringPtrOutput)
+// The type of the archive to extract.
+func (o SoftwareRecipeStepExtractArchiveOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepExtractArchive) string { return v.Type }).(pulumi.StringOutput)
 }
 
 type SoftwareRecipeStepExtractArchivePtrOutput struct{ *pulumi.OutputState }
@@ -8193,13 +8193,13 @@ func (o SoftwareRecipeStepExtractArchivePtrOutput) Elem() SoftwareRecipeStepExtr
 	return o.ApplyT(func(v *SoftwareRecipeStepExtractArchive) SoftwareRecipeStepExtractArchive { return *v }).(SoftwareRecipeStepExtractArchiveOutput)
 }
 
-// Required. The id of the relevant artifact in the recipe.
+// The id of the relevant artifact in the recipe.
 func (o SoftwareRecipeStepExtractArchivePtrOutput) ArtifactId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SoftwareRecipeStepExtractArchive) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ArtifactId
+		return &v.ArtifactId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8213,23 +8213,23 @@ func (o SoftwareRecipeStepExtractArchivePtrOutput) Destination() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The type of the archive to extract.
+// The type of the archive to extract.
 func (o SoftwareRecipeStepExtractArchivePtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SoftwareRecipeStepExtractArchive) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Type
+		return &v.Type
 	}).(pulumi.StringPtrOutput)
 }
 
 // Extracts an archive of the type specified in the specified directory.
 type SoftwareRecipeStepExtractArchiveResponse struct {
-	// Required. The id of the relevant artifact in the recipe.
+	// The id of the relevant artifact in the recipe.
 	ArtifactId string `pulumi:"artifactId"`
 	// Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows.
 	Destination string `pulumi:"destination"`
-	// Required. The type of the archive to extract.
+	// The type of the archive to extract.
 	Type string `pulumi:"type"`
 }
 
@@ -8246,11 +8246,11 @@ type SoftwareRecipeStepExtractArchiveResponseInput interface {
 
 // Extracts an archive of the type specified in the specified directory.
 type SoftwareRecipeStepExtractArchiveResponseArgs struct {
-	// Required. The id of the relevant artifact in the recipe.
+	// The id of the relevant artifact in the recipe.
 	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
 	// Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows.
 	Destination pulumi.StringInput `pulumi:"destination"`
-	// Required. The type of the archive to extract.
+	// The type of the archive to extract.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -8281,7 +8281,7 @@ func (o SoftwareRecipeStepExtractArchiveResponseOutput) ToSoftwareRecipeStepExtr
 	return o
 }
 
-// Required. The id of the relevant artifact in the recipe.
+// The id of the relevant artifact in the recipe.
 func (o SoftwareRecipeStepExtractArchiveResponseOutput) ArtifactId() pulumi.StringOutput {
 	return o.ApplyT(func(v SoftwareRecipeStepExtractArchiveResponse) string { return v.ArtifactId }).(pulumi.StringOutput)
 }
@@ -8291,15 +8291,15 @@ func (o SoftwareRecipeStepExtractArchiveResponseOutput) Destination() pulumi.Str
 	return o.ApplyT(func(v SoftwareRecipeStepExtractArchiveResponse) string { return v.Destination }).(pulumi.StringOutput)
 }
 
-// Required. The type of the archive to extract.
+// The type of the archive to extract.
 func (o SoftwareRecipeStepExtractArchiveResponseOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v SoftwareRecipeStepExtractArchiveResponse) string { return v.Type }).(pulumi.StringOutput)
 }
 
 // Installs a deb via dpkg.
 type SoftwareRecipeStepInstallDpkg struct {
-	// Required. The id of the relevant artifact in the recipe.
-	ArtifactId *string `pulumi:"artifactId"`
+	// The id of the relevant artifact in the recipe.
+	ArtifactId string `pulumi:"artifactId"`
 }
 
 // SoftwareRecipeStepInstallDpkgInput is an input type that accepts SoftwareRecipeStepInstallDpkgArgs and SoftwareRecipeStepInstallDpkgOutput values.
@@ -8315,8 +8315,8 @@ type SoftwareRecipeStepInstallDpkgInput interface {
 
 // Installs a deb via dpkg.
 type SoftwareRecipeStepInstallDpkgArgs struct {
-	// Required. The id of the relevant artifact in the recipe.
-	ArtifactId pulumi.StringPtrInput `pulumi:"artifactId"`
+	// The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
 }
 
 func (SoftwareRecipeStepInstallDpkgArgs) ElementType() reflect.Type {
@@ -8397,9 +8397,9 @@ func (o SoftwareRecipeStepInstallDpkgOutput) ToSoftwareRecipeStepInstallDpkgPtrO
 	}).(SoftwareRecipeStepInstallDpkgPtrOutput)
 }
 
-// Required. The id of the relevant artifact in the recipe.
-func (o SoftwareRecipeStepInstallDpkgOutput) ArtifactId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SoftwareRecipeStepInstallDpkg) *string { return v.ArtifactId }).(pulumi.StringPtrOutput)
+// The id of the relevant artifact in the recipe.
+func (o SoftwareRecipeStepInstallDpkgOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepInstallDpkg) string { return v.ArtifactId }).(pulumi.StringOutput)
 }
 
 type SoftwareRecipeStepInstallDpkgPtrOutput struct{ *pulumi.OutputState }
@@ -8420,19 +8420,19 @@ func (o SoftwareRecipeStepInstallDpkgPtrOutput) Elem() SoftwareRecipeStepInstall
 	return o.ApplyT(func(v *SoftwareRecipeStepInstallDpkg) SoftwareRecipeStepInstallDpkg { return *v }).(SoftwareRecipeStepInstallDpkgOutput)
 }
 
-// Required. The id of the relevant artifact in the recipe.
+// The id of the relevant artifact in the recipe.
 func (o SoftwareRecipeStepInstallDpkgPtrOutput) ArtifactId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SoftwareRecipeStepInstallDpkg) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ArtifactId
+		return &v.ArtifactId
 	}).(pulumi.StringPtrOutput)
 }
 
 // Installs a deb via dpkg.
 type SoftwareRecipeStepInstallDpkgResponse struct {
-	// Required. The id of the relevant artifact in the recipe.
+	// The id of the relevant artifact in the recipe.
 	ArtifactId string `pulumi:"artifactId"`
 }
 
@@ -8449,7 +8449,7 @@ type SoftwareRecipeStepInstallDpkgResponseInput interface {
 
 // Installs a deb via dpkg.
 type SoftwareRecipeStepInstallDpkgResponseArgs struct {
-	// Required. The id of the relevant artifact in the recipe.
+	// The id of the relevant artifact in the recipe.
 	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
 }
 
@@ -8480,7 +8480,7 @@ func (o SoftwareRecipeStepInstallDpkgResponseOutput) ToSoftwareRecipeStepInstall
 	return o
 }
 
-// Required. The id of the relevant artifact in the recipe.
+// The id of the relevant artifact in the recipe.
 func (o SoftwareRecipeStepInstallDpkgResponseOutput) ArtifactId() pulumi.StringOutput {
 	return o.ApplyT(func(v SoftwareRecipeStepInstallDpkgResponse) string { return v.ArtifactId }).(pulumi.StringOutput)
 }
@@ -8489,8 +8489,8 @@ func (o SoftwareRecipeStepInstallDpkgResponseOutput) ArtifactId() pulumi.StringO
 type SoftwareRecipeStepInstallMsi struct {
 	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
 	AllowedExitCodes []int `pulumi:"allowedExitCodes"`
-	// Required. The id of the relevant artifact in the recipe.
-	ArtifactId *string `pulumi:"artifactId"`
+	// The id of the relevant artifact in the recipe.
+	ArtifactId string `pulumi:"artifactId"`
 	// The flags to use when installing the MSI defaults to ["/i"] (i.e. the install flag).
 	Flags []string `pulumi:"flags"`
 }
@@ -8510,8 +8510,8 @@ type SoftwareRecipeStepInstallMsiInput interface {
 type SoftwareRecipeStepInstallMsiArgs struct {
 	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
 	AllowedExitCodes pulumi.IntArrayInput `pulumi:"allowedExitCodes"`
-	// Required. The id of the relevant artifact in the recipe.
-	ArtifactId pulumi.StringPtrInput `pulumi:"artifactId"`
+	// The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
 	// The flags to use when installing the MSI defaults to ["/i"] (i.e. the install flag).
 	Flags pulumi.StringArrayInput `pulumi:"flags"`
 }
@@ -8599,9 +8599,9 @@ func (o SoftwareRecipeStepInstallMsiOutput) AllowedExitCodes() pulumi.IntArrayOu
 	return o.ApplyT(func(v SoftwareRecipeStepInstallMsi) []int { return v.AllowedExitCodes }).(pulumi.IntArrayOutput)
 }
 
-// Required. The id of the relevant artifact in the recipe.
-func (o SoftwareRecipeStepInstallMsiOutput) ArtifactId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SoftwareRecipeStepInstallMsi) *string { return v.ArtifactId }).(pulumi.StringPtrOutput)
+// The id of the relevant artifact in the recipe.
+func (o SoftwareRecipeStepInstallMsiOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepInstallMsi) string { return v.ArtifactId }).(pulumi.StringOutput)
 }
 
 // The flags to use when installing the MSI defaults to ["/i"] (i.e. the install flag).
@@ -8637,13 +8637,13 @@ func (o SoftwareRecipeStepInstallMsiPtrOutput) AllowedExitCodes() pulumi.IntArra
 	}).(pulumi.IntArrayOutput)
 }
 
-// Required. The id of the relevant artifact in the recipe.
+// The id of the relevant artifact in the recipe.
 func (o SoftwareRecipeStepInstallMsiPtrOutput) ArtifactId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SoftwareRecipeStepInstallMsi) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ArtifactId
+		return &v.ArtifactId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -8661,7 +8661,7 @@ func (o SoftwareRecipeStepInstallMsiPtrOutput) Flags() pulumi.StringArrayOutput 
 type SoftwareRecipeStepInstallMsiResponse struct {
 	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
 	AllowedExitCodes []int `pulumi:"allowedExitCodes"`
-	// Required. The id of the relevant artifact in the recipe.
+	// The id of the relevant artifact in the recipe.
 	ArtifactId string `pulumi:"artifactId"`
 	// The flags to use when installing the MSI defaults to ["/i"] (i.e. the install flag).
 	Flags []string `pulumi:"flags"`
@@ -8682,7 +8682,7 @@ type SoftwareRecipeStepInstallMsiResponseInput interface {
 type SoftwareRecipeStepInstallMsiResponseArgs struct {
 	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
 	AllowedExitCodes pulumi.IntArrayInput `pulumi:"allowedExitCodes"`
-	// Required. The id of the relevant artifact in the recipe.
+	// The id of the relevant artifact in the recipe.
 	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
 	// The flags to use when installing the MSI defaults to ["/i"] (i.e. the install flag).
 	Flags pulumi.StringArrayInput `pulumi:"flags"`
@@ -8720,7 +8720,7 @@ func (o SoftwareRecipeStepInstallMsiResponseOutput) AllowedExitCodes() pulumi.In
 	return o.ApplyT(func(v SoftwareRecipeStepInstallMsiResponse) []int { return v.AllowedExitCodes }).(pulumi.IntArrayOutput)
 }
 
-// Required. The id of the relevant artifact in the recipe.
+// The id of the relevant artifact in the recipe.
 func (o SoftwareRecipeStepInstallMsiResponseOutput) ArtifactId() pulumi.StringOutput {
 	return o.ApplyT(func(v SoftwareRecipeStepInstallMsiResponse) string { return v.ArtifactId }).(pulumi.StringOutput)
 }
@@ -8732,8 +8732,8 @@ func (o SoftwareRecipeStepInstallMsiResponseOutput) Flags() pulumi.StringArrayOu
 
 // Installs an rpm file via the rpm utility.
 type SoftwareRecipeStepInstallRpm struct {
-	// Required. The id of the relevant artifact in the recipe.
-	ArtifactId *string `pulumi:"artifactId"`
+	// The id of the relevant artifact in the recipe.
+	ArtifactId string `pulumi:"artifactId"`
 }
 
 // SoftwareRecipeStepInstallRpmInput is an input type that accepts SoftwareRecipeStepInstallRpmArgs and SoftwareRecipeStepInstallRpmOutput values.
@@ -8749,8 +8749,8 @@ type SoftwareRecipeStepInstallRpmInput interface {
 
 // Installs an rpm file via the rpm utility.
 type SoftwareRecipeStepInstallRpmArgs struct {
-	// Required. The id of the relevant artifact in the recipe.
-	ArtifactId pulumi.StringPtrInput `pulumi:"artifactId"`
+	// The id of the relevant artifact in the recipe.
+	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
 }
 
 func (SoftwareRecipeStepInstallRpmArgs) ElementType() reflect.Type {
@@ -8831,9 +8831,9 @@ func (o SoftwareRecipeStepInstallRpmOutput) ToSoftwareRecipeStepInstallRpmPtrOut
 	}).(SoftwareRecipeStepInstallRpmPtrOutput)
 }
 
-// Required. The id of the relevant artifact in the recipe.
-func (o SoftwareRecipeStepInstallRpmOutput) ArtifactId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SoftwareRecipeStepInstallRpm) *string { return v.ArtifactId }).(pulumi.StringPtrOutput)
+// The id of the relevant artifact in the recipe.
+func (o SoftwareRecipeStepInstallRpmOutput) ArtifactId() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepInstallRpm) string { return v.ArtifactId }).(pulumi.StringOutput)
 }
 
 type SoftwareRecipeStepInstallRpmPtrOutput struct{ *pulumi.OutputState }
@@ -8854,19 +8854,19 @@ func (o SoftwareRecipeStepInstallRpmPtrOutput) Elem() SoftwareRecipeStepInstallR
 	return o.ApplyT(func(v *SoftwareRecipeStepInstallRpm) SoftwareRecipeStepInstallRpm { return *v }).(SoftwareRecipeStepInstallRpmOutput)
 }
 
-// Required. The id of the relevant artifact in the recipe.
+// The id of the relevant artifact in the recipe.
 func (o SoftwareRecipeStepInstallRpmPtrOutput) ArtifactId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SoftwareRecipeStepInstallRpm) *string {
 		if v == nil {
 			return nil
 		}
-		return v.ArtifactId
+		return &v.ArtifactId
 	}).(pulumi.StringPtrOutput)
 }
 
 // Installs an rpm file via the rpm utility.
 type SoftwareRecipeStepInstallRpmResponse struct {
-	// Required. The id of the relevant artifact in the recipe.
+	// The id of the relevant artifact in the recipe.
 	ArtifactId string `pulumi:"artifactId"`
 }
 
@@ -8883,7 +8883,7 @@ type SoftwareRecipeStepInstallRpmResponseInput interface {
 
 // Installs an rpm file via the rpm utility.
 type SoftwareRecipeStepInstallRpmResponseArgs struct {
-	// Required. The id of the relevant artifact in the recipe.
+	// The id of the relevant artifact in the recipe.
 	ArtifactId pulumi.StringInput `pulumi:"artifactId"`
 }
 
@@ -8914,7 +8914,7 @@ func (o SoftwareRecipeStepInstallRpmResponseOutput) ToSoftwareRecipeStepInstallR
 	return o
 }
 
-// Required. The id of the relevant artifact in the recipe.
+// The id of the relevant artifact in the recipe.
 func (o SoftwareRecipeStepInstallRpmResponseOutput) ArtifactId() pulumi.StringOutput {
 	return o.ApplyT(func(v SoftwareRecipeStepInstallRpmResponse) string { return v.ArtifactId }).(pulumi.StringOutput)
 }
@@ -9081,8 +9081,8 @@ type SoftwareRecipeStepRunScript struct {
 	AllowedExitCodes []int `pulumi:"allowedExitCodes"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](<https://en.wikipedia.org/wiki/Shebang_\(Unix\)>).
 	Interpreter *string `pulumi:"interpreter"`
-	// Required. The shell script to be executed.
-	Script *string `pulumi:"script"`
+	// The shell script to be executed.
+	Script string `pulumi:"script"`
 }
 
 // SoftwareRecipeStepRunScriptInput is an input type that accepts SoftwareRecipeStepRunScriptArgs and SoftwareRecipeStepRunScriptOutput values.
@@ -9102,8 +9102,8 @@ type SoftwareRecipeStepRunScriptArgs struct {
 	AllowedExitCodes pulumi.IntArrayInput `pulumi:"allowedExitCodes"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](<https://en.wikipedia.org/wiki/Shebang_\(Unix\)>).
 	Interpreter *SoftwareRecipeStepRunScriptInterpreter `pulumi:"interpreter"`
-	// Required. The shell script to be executed.
-	Script pulumi.StringPtrInput `pulumi:"script"`
+	// The shell script to be executed.
+	Script pulumi.StringInput `pulumi:"script"`
 }
 
 func (SoftwareRecipeStepRunScriptArgs) ElementType() reflect.Type {
@@ -9194,9 +9194,9 @@ func (o SoftwareRecipeStepRunScriptOutput) Interpreter() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v SoftwareRecipeStepRunScript) *string { return v.Interpreter }).(pulumi.StringPtrOutput)
 }
 
-// Required. The shell script to be executed.
-func (o SoftwareRecipeStepRunScriptOutput) Script() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SoftwareRecipeStepRunScript) *string { return v.Script }).(pulumi.StringPtrOutput)
+// The shell script to be executed.
+func (o SoftwareRecipeStepRunScriptOutput) Script() pulumi.StringOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepRunScript) string { return v.Script }).(pulumi.StringOutput)
 }
 
 type SoftwareRecipeStepRunScriptPtrOutput struct{ *pulumi.OutputState }
@@ -9237,13 +9237,13 @@ func (o SoftwareRecipeStepRunScriptPtrOutput) Interpreter() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The shell script to be executed.
+// The shell script to be executed.
 func (o SoftwareRecipeStepRunScriptPtrOutput) Script() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SoftwareRecipeStepRunScript) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Script
+		return &v.Script
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -9253,7 +9253,7 @@ type SoftwareRecipeStepRunScriptResponse struct {
 	AllowedExitCodes []int `pulumi:"allowedExitCodes"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](<https://en.wikipedia.org/wiki/Shebang_\(Unix\)>).
 	Interpreter string `pulumi:"interpreter"`
-	// Required. The shell script to be executed.
+	// The shell script to be executed.
 	Script string `pulumi:"script"`
 }
 
@@ -9274,7 +9274,7 @@ type SoftwareRecipeStepRunScriptResponseArgs struct {
 	AllowedExitCodes pulumi.IntArrayInput `pulumi:"allowedExitCodes"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](<https://en.wikipedia.org/wiki/Shebang_\(Unix\)>).
 	Interpreter pulumi.StringInput `pulumi:"interpreter"`
-	// Required. The shell script to be executed.
+	// The shell script to be executed.
 	Script pulumi.StringInput `pulumi:"script"`
 }
 
@@ -9315,7 +9315,7 @@ func (o SoftwareRecipeStepRunScriptResponseOutput) Interpreter() pulumi.StringOu
 	return o.ApplyT(func(v SoftwareRecipeStepRunScriptResponse) string { return v.Interpreter }).(pulumi.StringOutput)
 }
 
-// Required. The shell script to be executed.
+// The shell script to be executed.
 func (o SoftwareRecipeStepRunScriptResponseOutput) Script() pulumi.StringOutput {
 	return o.ApplyT(func(v SoftwareRecipeStepRunScriptResponse) string { return v.Script }).(pulumi.StringOutput)
 }
@@ -9991,10 +9991,10 @@ func (o TimeZoneResponsePtrOutput) Version() pulumi.StringPtrOutput {
 
 // Represents one week day in a month. An example is "the 4th Sunday".
 type WeekDayOfMonth struct {
-	// Required. A day of the week.
-	DayOfWeek *string `pulumi:"dayOfWeek"`
-	// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
-	WeekOrdinal *int `pulumi:"weekOrdinal"`
+	// A day of the week.
+	DayOfWeek string `pulumi:"dayOfWeek"`
+	// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+	WeekOrdinal int `pulumi:"weekOrdinal"`
 }
 
 // WeekDayOfMonthInput is an input type that accepts WeekDayOfMonthArgs and WeekDayOfMonthOutput values.
@@ -10010,10 +10010,10 @@ type WeekDayOfMonthInput interface {
 
 // Represents one week day in a month. An example is "the 4th Sunday".
 type WeekDayOfMonthArgs struct {
-	// Required. A day of the week.
-	DayOfWeek *WeekDayOfMonthDayOfWeek `pulumi:"dayOfWeek"`
-	// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
-	WeekOrdinal pulumi.IntPtrInput `pulumi:"weekOrdinal"`
+	// A day of the week.
+	DayOfWeek WeekDayOfMonthDayOfWeek `pulumi:"dayOfWeek"`
+	// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+	WeekOrdinal pulumi.IntInput `pulumi:"weekOrdinal"`
 }
 
 func (WeekDayOfMonthArgs) ElementType() reflect.Type {
@@ -10094,14 +10094,14 @@ func (o WeekDayOfMonthOutput) ToWeekDayOfMonthPtrOutputWithContext(ctx context.C
 	}).(WeekDayOfMonthPtrOutput)
 }
 
-// Required. A day of the week.
-func (o WeekDayOfMonthOutput) DayOfWeek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WeekDayOfMonth) *string { return v.DayOfWeek }).(pulumi.StringPtrOutput)
+// A day of the week.
+func (o WeekDayOfMonthOutput) DayOfWeek() pulumi.StringOutput {
+	return o.ApplyT(func(v WeekDayOfMonth) string { return v.DayOfWeek }).(pulumi.StringOutput)
 }
 
-// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
-func (o WeekDayOfMonthOutput) WeekOrdinal() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v WeekDayOfMonth) *int { return v.WeekOrdinal }).(pulumi.IntPtrOutput)
+// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+func (o WeekDayOfMonthOutput) WeekOrdinal() pulumi.IntOutput {
+	return o.ApplyT(func(v WeekDayOfMonth) int { return v.WeekOrdinal }).(pulumi.IntOutput)
 }
 
 type WeekDayOfMonthPtrOutput struct{ *pulumi.OutputState }
@@ -10122,31 +10122,31 @@ func (o WeekDayOfMonthPtrOutput) Elem() WeekDayOfMonthOutput {
 	return o.ApplyT(func(v *WeekDayOfMonth) WeekDayOfMonth { return *v }).(WeekDayOfMonthOutput)
 }
 
-// Required. A day of the week.
+// A day of the week.
 func (o WeekDayOfMonthPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WeekDayOfMonth) *string {
 		if v == nil {
 			return nil
 		}
-		return v.DayOfWeek
+		return &v.DayOfWeek
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 func (o WeekDayOfMonthPtrOutput) WeekOrdinal() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WeekDayOfMonth) *int {
 		if v == nil {
 			return nil
 		}
-		return v.WeekOrdinal
+		return &v.WeekOrdinal
 	}).(pulumi.IntPtrOutput)
 }
 
 // Represents one week day in a month. An example is "the 4th Sunday".
 type WeekDayOfMonthResponse struct {
-	// Required. A day of the week.
+	// A day of the week.
 	DayOfWeek string `pulumi:"dayOfWeek"`
-	// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+	// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 	WeekOrdinal int `pulumi:"weekOrdinal"`
 }
 
@@ -10163,9 +10163,9 @@ type WeekDayOfMonthResponseInput interface {
 
 // Represents one week day in a month. An example is "the 4th Sunday".
 type WeekDayOfMonthResponseArgs struct {
-	// Required. A day of the week.
+	// A day of the week.
 	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
-	// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+	// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 	WeekOrdinal pulumi.IntInput `pulumi:"weekOrdinal"`
 }
 
@@ -10247,12 +10247,12 @@ func (o WeekDayOfMonthResponseOutput) ToWeekDayOfMonthResponsePtrOutputWithConte
 	}).(WeekDayOfMonthResponsePtrOutput)
 }
 
-// Required. A day of the week.
+// A day of the week.
 func (o WeekDayOfMonthResponseOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v WeekDayOfMonthResponse) string { return v.DayOfWeek }).(pulumi.StringOutput)
 }
 
-// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 func (o WeekDayOfMonthResponseOutput) WeekOrdinal() pulumi.IntOutput {
 	return o.ApplyT(func(v WeekDayOfMonthResponse) int { return v.WeekOrdinal }).(pulumi.IntOutput)
 }
@@ -10275,7 +10275,7 @@ func (o WeekDayOfMonthResponsePtrOutput) Elem() WeekDayOfMonthResponseOutput {
 	return o.ApplyT(func(v *WeekDayOfMonthResponse) WeekDayOfMonthResponse { return *v }).(WeekDayOfMonthResponseOutput)
 }
 
-// Required. A day of the week.
+// A day of the week.
 func (o WeekDayOfMonthResponsePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WeekDayOfMonthResponse) *string {
 		if v == nil {
@@ -10285,7 +10285,7 @@ func (o WeekDayOfMonthResponsePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
+// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 func (o WeekDayOfMonthResponsePtrOutput) WeekOrdinal() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *WeekDayOfMonthResponse) *int {
 		if v == nil {
@@ -10297,8 +10297,8 @@ func (o WeekDayOfMonthResponsePtrOutput) WeekOrdinal() pulumi.IntPtrOutput {
 
 // Represents a weekly schedule.
 type WeeklySchedule struct {
-	// Required. Day of the week.
-	DayOfWeek *string `pulumi:"dayOfWeek"`
+	// Day of the week.
+	DayOfWeek string `pulumi:"dayOfWeek"`
 }
 
 // WeeklyScheduleInput is an input type that accepts WeeklyScheduleArgs and WeeklyScheduleOutput values.
@@ -10314,8 +10314,8 @@ type WeeklyScheduleInput interface {
 
 // Represents a weekly schedule.
 type WeeklyScheduleArgs struct {
-	// Required. Day of the week.
-	DayOfWeek *WeeklyScheduleDayOfWeek `pulumi:"dayOfWeek"`
+	// Day of the week.
+	DayOfWeek WeeklyScheduleDayOfWeek `pulumi:"dayOfWeek"`
 }
 
 func (WeeklyScheduleArgs) ElementType() reflect.Type {
@@ -10396,9 +10396,9 @@ func (o WeeklyScheduleOutput) ToWeeklySchedulePtrOutputWithContext(ctx context.C
 	}).(WeeklySchedulePtrOutput)
 }
 
-// Required. Day of the week.
-func (o WeeklyScheduleOutput) DayOfWeek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WeeklySchedule) *string { return v.DayOfWeek }).(pulumi.StringPtrOutput)
+// Day of the week.
+func (o WeeklyScheduleOutput) DayOfWeek() pulumi.StringOutput {
+	return o.ApplyT(func(v WeeklySchedule) string { return v.DayOfWeek }).(pulumi.StringOutput)
 }
 
 type WeeklySchedulePtrOutput struct{ *pulumi.OutputState }
@@ -10419,19 +10419,19 @@ func (o WeeklySchedulePtrOutput) Elem() WeeklyScheduleOutput {
 	return o.ApplyT(func(v *WeeklySchedule) WeeklySchedule { return *v }).(WeeklyScheduleOutput)
 }
 
-// Required. Day of the week.
+// Day of the week.
 func (o WeeklySchedulePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WeeklySchedule) *string {
 		if v == nil {
 			return nil
 		}
-		return v.DayOfWeek
+		return &v.DayOfWeek
 	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a weekly schedule.
 type WeeklyScheduleResponse struct {
-	// Required. Day of the week.
+	// Day of the week.
 	DayOfWeek string `pulumi:"dayOfWeek"`
 }
 
@@ -10448,7 +10448,7 @@ type WeeklyScheduleResponseInput interface {
 
 // Represents a weekly schedule.
 type WeeklyScheduleResponseArgs struct {
-	// Required. Day of the week.
+	// Day of the week.
 	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
 }
 
@@ -10530,7 +10530,7 @@ func (o WeeklyScheduleResponseOutput) ToWeeklyScheduleResponsePtrOutputWithConte
 	}).(WeeklyScheduleResponsePtrOutput)
 }
 
-// Required. Day of the week.
+// Day of the week.
 func (o WeeklyScheduleResponseOutput) DayOfWeek() pulumi.StringOutput {
 	return o.ApplyT(func(v WeeklyScheduleResponse) string { return v.DayOfWeek }).(pulumi.StringOutput)
 }
@@ -10553,7 +10553,7 @@ func (o WeeklyScheduleResponsePtrOutput) Elem() WeeklyScheduleResponseOutput {
 	return o.ApplyT(func(v *WeeklyScheduleResponse) WeeklyScheduleResponse { return *v }).(WeeklyScheduleResponseOutput)
 }
 
-// Required. Day of the week.
+// Day of the week.
 func (o WeeklyScheduleResponsePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *WeeklyScheduleResponse) *string {
 		if v == nil {
@@ -10909,14 +10909,14 @@ func (o WindowsUpdateSettingsResponsePtrOutput) ExclusivePatches() pulumi.String
 
 // Represents a single Yum package repository. This repository is added to a repo file that is stored at `/etc/yum.repos.d/google_osconfig.repo`.
 type YumRepository struct {
-	// Required. The location of the repository directory.
-	BaseUrl *string `pulumi:"baseUrl"`
+	// The location of the repository directory.
+	BaseUrl string `pulumi:"baseUrl"`
 	// The display name of the repository.
 	DisplayName *string `pulumi:"displayName"`
 	// URIs of GPG keys.
 	GpgKeys []string `pulumi:"gpgKeys"`
-	// Required. A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
-	Id *string `pulumi:"id"`
+	// A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+	Id string `pulumi:"id"`
 }
 
 // YumRepositoryInput is an input type that accepts YumRepositoryArgs and YumRepositoryOutput values.
@@ -10932,14 +10932,14 @@ type YumRepositoryInput interface {
 
 // Represents a single Yum package repository. This repository is added to a repo file that is stored at `/etc/yum.repos.d/google_osconfig.repo`.
 type YumRepositoryArgs struct {
-	// Required. The location of the repository directory.
-	BaseUrl pulumi.StringPtrInput `pulumi:"baseUrl"`
+	// The location of the repository directory.
+	BaseUrl pulumi.StringInput `pulumi:"baseUrl"`
 	// The display name of the repository.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// URIs of GPG keys.
 	GpgKeys pulumi.StringArrayInput `pulumi:"gpgKeys"`
-	// Required. A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	// A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+	Id pulumi.StringInput `pulumi:"id"`
 }
 
 func (YumRepositoryArgs) ElementType() reflect.Type {
@@ -11020,9 +11020,9 @@ func (o YumRepositoryOutput) ToYumRepositoryPtrOutputWithContext(ctx context.Con
 	}).(YumRepositoryPtrOutput)
 }
 
-// Required. The location of the repository directory.
-func (o YumRepositoryOutput) BaseUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v YumRepository) *string { return v.BaseUrl }).(pulumi.StringPtrOutput)
+// The location of the repository directory.
+func (o YumRepositoryOutput) BaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v YumRepository) string { return v.BaseUrl }).(pulumi.StringOutput)
 }
 
 // The display name of the repository.
@@ -11035,9 +11035,9 @@ func (o YumRepositoryOutput) GpgKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v YumRepository) []string { return v.GpgKeys }).(pulumi.StringArrayOutput)
 }
 
-// Required. A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
-func (o YumRepositoryOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v YumRepository) *string { return v.Id }).(pulumi.StringPtrOutput)
+// A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+func (o YumRepositoryOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v YumRepository) string { return v.Id }).(pulumi.StringOutput)
 }
 
 type YumRepositoryPtrOutput struct{ *pulumi.OutputState }
@@ -11058,13 +11058,13 @@ func (o YumRepositoryPtrOutput) Elem() YumRepositoryOutput {
 	return o.ApplyT(func(v *YumRepository) YumRepository { return *v }).(YumRepositoryOutput)
 }
 
-// Required. The location of the repository directory.
+// The location of the repository directory.
 func (o YumRepositoryPtrOutput) BaseUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *YumRepository) *string {
 		if v == nil {
 			return nil
 		}
-		return v.BaseUrl
+		return &v.BaseUrl
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11088,19 +11088,19 @@ func (o YumRepositoryPtrOutput) GpgKeys() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+// A one word, unique name for this repository. This is the `repo id` in the Yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
 func (o YumRepositoryPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *YumRepository) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Id
+		return &v.Id
 	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a single Yum package repository. This repository is added to a repo file that is stored at `/etc/yum.repos.d/google_osconfig.repo`.
 type YumRepositoryResponse struct {
-	// Required. The location of the repository directory.
+	// The location of the repository directory.
 	BaseUrl string `pulumi:"baseUrl"`
 	// The display name of the repository.
 	DisplayName string `pulumi:"displayName"`
@@ -11121,7 +11121,7 @@ type YumRepositoryResponseInput interface {
 
 // Represents a single Yum package repository. This repository is added to a repo file that is stored at `/etc/yum.repos.d/google_osconfig.repo`.
 type YumRepositoryResponseArgs struct {
-	// Required. The location of the repository directory.
+	// The location of the repository directory.
 	BaseUrl pulumi.StringInput `pulumi:"baseUrl"`
 	// The display name of the repository.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
@@ -11156,7 +11156,7 @@ func (o YumRepositoryResponseOutput) ToYumRepositoryResponseOutputWithContext(ct
 	return o
 }
 
-// Required. The location of the repository directory.
+// The location of the repository directory.
 func (o YumRepositoryResponseOutput) BaseUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v YumRepositoryResponse) string { return v.BaseUrl }).(pulumi.StringOutput)
 }
@@ -11555,14 +11555,14 @@ func (o YumSettingsResponsePtrOutput) Security() pulumi.BoolPtrOutput {
 
 // Represents a single Zypper package repository. This repository is added to a repo file that is stored at `/etc/zypp/repos.d/google_osconfig.repo`.
 type ZypperRepository struct {
-	// Required. The location of the repository directory.
-	BaseUrl *string `pulumi:"baseUrl"`
+	// The location of the repository directory.
+	BaseUrl string `pulumi:"baseUrl"`
 	// The display name of the repository.
 	DisplayName *string `pulumi:"displayName"`
 	// URIs of GPG keys.
 	GpgKeys []string `pulumi:"gpgKeys"`
-	// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
-	Id *string `pulumi:"id"`
+	// A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+	Id string `pulumi:"id"`
 }
 
 // ZypperRepositoryInput is an input type that accepts ZypperRepositoryArgs and ZypperRepositoryOutput values.
@@ -11578,14 +11578,14 @@ type ZypperRepositoryInput interface {
 
 // Represents a single Zypper package repository. This repository is added to a repo file that is stored at `/etc/zypp/repos.d/google_osconfig.repo`.
 type ZypperRepositoryArgs struct {
-	// Required. The location of the repository directory.
-	BaseUrl pulumi.StringPtrInput `pulumi:"baseUrl"`
+	// The location of the repository directory.
+	BaseUrl pulumi.StringInput `pulumi:"baseUrl"`
 	// The display name of the repository.
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// URIs of GPG keys.
 	GpgKeys pulumi.StringArrayInput `pulumi:"gpgKeys"`
-	// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
-	Id pulumi.StringPtrInput `pulumi:"id"`
+	// A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+	Id pulumi.StringInput `pulumi:"id"`
 }
 
 func (ZypperRepositoryArgs) ElementType() reflect.Type {
@@ -11666,9 +11666,9 @@ func (o ZypperRepositoryOutput) ToZypperRepositoryPtrOutputWithContext(ctx conte
 	}).(ZypperRepositoryPtrOutput)
 }
 
-// Required. The location of the repository directory.
-func (o ZypperRepositoryOutput) BaseUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZypperRepository) *string { return v.BaseUrl }).(pulumi.StringPtrOutput)
+// The location of the repository directory.
+func (o ZypperRepositoryOutput) BaseUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v ZypperRepository) string { return v.BaseUrl }).(pulumi.StringOutput)
 }
 
 // The display name of the repository.
@@ -11681,9 +11681,9 @@ func (o ZypperRepositoryOutput) GpgKeys() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ZypperRepository) []string { return v.GpgKeys }).(pulumi.StringArrayOutput)
 }
 
-// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
-func (o ZypperRepositoryOutput) Id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ZypperRepository) *string { return v.Id }).(pulumi.StringPtrOutput)
+// A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+func (o ZypperRepositoryOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v ZypperRepository) string { return v.Id }).(pulumi.StringOutput)
 }
 
 type ZypperRepositoryPtrOutput struct{ *pulumi.OutputState }
@@ -11704,13 +11704,13 @@ func (o ZypperRepositoryPtrOutput) Elem() ZypperRepositoryOutput {
 	return o.ApplyT(func(v *ZypperRepository) ZypperRepository { return *v }).(ZypperRepositoryOutput)
 }
 
-// Required. The location of the repository directory.
+// The location of the repository directory.
 func (o ZypperRepositoryPtrOutput) BaseUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZypperRepository) *string {
 		if v == nil {
 			return nil
 		}
-		return v.BaseUrl
+		return &v.BaseUrl
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11734,19 +11734,19 @@ func (o ZypperRepositoryPtrOutput) GpgKeys() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
+// A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for guest policy conflicts.
 func (o ZypperRepositoryPtrOutput) Id() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ZypperRepository) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Id
+		return &v.Id
 	}).(pulumi.StringPtrOutput)
 }
 
 // Represents a single Zypper package repository. This repository is added to a repo file that is stored at `/etc/zypp/repos.d/google_osconfig.repo`.
 type ZypperRepositoryResponse struct {
-	// Required. The location of the repository directory.
+	// The location of the repository directory.
 	BaseUrl string `pulumi:"baseUrl"`
 	// The display name of the repository.
 	DisplayName string `pulumi:"displayName"`
@@ -11767,7 +11767,7 @@ type ZypperRepositoryResponseInput interface {
 
 // Represents a single Zypper package repository. This repository is added to a repo file that is stored at `/etc/zypp/repos.d/google_osconfig.repo`.
 type ZypperRepositoryResponseArgs struct {
-	// Required. The location of the repository directory.
+	// The location of the repository directory.
 	BaseUrl pulumi.StringInput `pulumi:"baseUrl"`
 	// The display name of the repository.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
@@ -11802,7 +11802,7 @@ func (o ZypperRepositoryResponseOutput) ToZypperRepositoryResponseOutputWithCont
 	return o
 }
 
-// Required. The location of the repository directory.
+// The location of the repository directory.
 func (o ZypperRepositoryResponseOutput) BaseUrl() pulumi.StringOutput {
 	return o.ApplyT(func(v ZypperRepositoryResponse) string { return v.BaseUrl }).(pulumi.StringOutput)
 }

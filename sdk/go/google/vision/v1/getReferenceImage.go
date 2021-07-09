@@ -29,6 +29,6 @@ type LookupReferenceImageResult struct {
 	BoundingPolys []BoundingPolyResponse `pulumi:"boundingPolys"`
 	// The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
 	Name string `pulumi:"name"`
-	// Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
+	// The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
 	Uri string `pulumi:"uri"`
 }

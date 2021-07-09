@@ -14,7 +14,7 @@ import (
 type BasicLevel struct {
 	// How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
 	CombiningFunction *string `pulumi:"combiningFunction"`
-	// Required. A list of requirements for the `AccessLevel` to be granted.
+	// A list of requirements for the `AccessLevel` to be granted.
 	Conditions []Condition `pulumi:"conditions"`
 }
 
@@ -33,7 +33,7 @@ type BasicLevelInput interface {
 type BasicLevelArgs struct {
 	// How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
 	CombiningFunction *BasicLevelCombiningFunction `pulumi:"combiningFunction"`
-	// Required. A list of requirements for the `AccessLevel` to be granted.
+	// A list of requirements for the `AccessLevel` to be granted.
 	Conditions ConditionArrayInput `pulumi:"conditions"`
 }
 
@@ -120,7 +120,7 @@ func (o BasicLevelOutput) CombiningFunction() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BasicLevel) *string { return v.CombiningFunction }).(pulumi.StringPtrOutput)
 }
 
-// Required. A list of requirements for the `AccessLevel` to be granted.
+// A list of requirements for the `AccessLevel` to be granted.
 func (o BasicLevelOutput) Conditions() ConditionArrayOutput {
 	return o.ApplyT(func(v BasicLevel) []Condition { return v.Conditions }).(ConditionArrayOutput)
 }
@@ -153,7 +153,7 @@ func (o BasicLevelPtrOutput) CombiningFunction() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. A list of requirements for the `AccessLevel` to be granted.
+// A list of requirements for the `AccessLevel` to be granted.
 func (o BasicLevelPtrOutput) Conditions() ConditionArrayOutput {
 	return o.ApplyT(func(v *BasicLevel) []Condition {
 		if v == nil {
@@ -167,7 +167,7 @@ func (o BasicLevelPtrOutput) Conditions() ConditionArrayOutput {
 type BasicLevelResponse struct {
 	// How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
 	CombiningFunction string `pulumi:"combiningFunction"`
-	// Required. A list of requirements for the `AccessLevel` to be granted.
+	// A list of requirements for the `AccessLevel` to be granted.
 	Conditions []ConditionResponse `pulumi:"conditions"`
 }
 
@@ -186,7 +186,7 @@ type BasicLevelResponseInput interface {
 type BasicLevelResponseArgs struct {
 	// How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
 	CombiningFunction pulumi.StringInput `pulumi:"combiningFunction"`
-	// Required. A list of requirements for the `AccessLevel` to be granted.
+	// A list of requirements for the `AccessLevel` to be granted.
 	Conditions ConditionResponseArrayInput `pulumi:"conditions"`
 }
 
@@ -273,7 +273,7 @@ func (o BasicLevelResponseOutput) CombiningFunction() pulumi.StringOutput {
 	return o.ApplyT(func(v BasicLevelResponse) string { return v.CombiningFunction }).(pulumi.StringOutput)
 }
 
-// Required. A list of requirements for the `AccessLevel` to be granted.
+// A list of requirements for the `AccessLevel` to be granted.
 func (o BasicLevelResponseOutput) Conditions() ConditionResponseArrayOutput {
 	return o.ApplyT(func(v BasicLevelResponse) []ConditionResponse { return v.Conditions }).(ConditionResponseArrayOutput)
 }
@@ -306,7 +306,7 @@ func (o BasicLevelResponsePtrOutput) CombiningFunction() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. A list of requirements for the `AccessLevel` to be granted.
+// A list of requirements for the `AccessLevel` to be granted.
 func (o BasicLevelResponsePtrOutput) Conditions() ConditionResponseArrayOutput {
 	return o.ApplyT(func(v *BasicLevelResponse) []ConditionResponse {
 		if v == nil {
@@ -608,8 +608,8 @@ func (o ConditionResponseArrayOutput) Index(i pulumi.IntInput) ConditionResponse
 
 // `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request. See CEL spec at: https://github.com/google/cel-spec
 type CustomLevel struct {
-	// Required. A Cloud CEL expression evaluating to a boolean.
-	Expr *Expr `pulumi:"expr"`
+	// A Cloud CEL expression evaluating to a boolean.
+	Expr Expr `pulumi:"expr"`
 }
 
 // CustomLevelInput is an input type that accepts CustomLevelArgs and CustomLevelOutput values.
@@ -625,8 +625,8 @@ type CustomLevelInput interface {
 
 // `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request. See CEL spec at: https://github.com/google/cel-spec
 type CustomLevelArgs struct {
-	// Required. A Cloud CEL expression evaluating to a boolean.
-	Expr ExprPtrInput `pulumi:"expr"`
+	// A Cloud CEL expression evaluating to a boolean.
+	Expr ExprInput `pulumi:"expr"`
 }
 
 func (CustomLevelArgs) ElementType() reflect.Type {
@@ -707,9 +707,9 @@ func (o CustomLevelOutput) ToCustomLevelPtrOutputWithContext(ctx context.Context
 	}).(CustomLevelPtrOutput)
 }
 
-// Required. A Cloud CEL expression evaluating to a boolean.
-func (o CustomLevelOutput) Expr() ExprPtrOutput {
-	return o.ApplyT(func(v CustomLevel) *Expr { return v.Expr }).(ExprPtrOutput)
+// A Cloud CEL expression evaluating to a boolean.
+func (o CustomLevelOutput) Expr() ExprOutput {
+	return o.ApplyT(func(v CustomLevel) Expr { return v.Expr }).(ExprOutput)
 }
 
 type CustomLevelPtrOutput struct{ *pulumi.OutputState }
@@ -730,19 +730,19 @@ func (o CustomLevelPtrOutput) Elem() CustomLevelOutput {
 	return o.ApplyT(func(v *CustomLevel) CustomLevel { return *v }).(CustomLevelOutput)
 }
 
-// Required. A Cloud CEL expression evaluating to a boolean.
+// A Cloud CEL expression evaluating to a boolean.
 func (o CustomLevelPtrOutput) Expr() ExprPtrOutput {
 	return o.ApplyT(func(v *CustomLevel) *Expr {
 		if v == nil {
 			return nil
 		}
-		return v.Expr
+		return &v.Expr
 	}).(ExprPtrOutput)
 }
 
 // `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request. See CEL spec at: https://github.com/google/cel-spec
 type CustomLevelResponse struct {
-	// Required. A Cloud CEL expression evaluating to a boolean.
+	// A Cloud CEL expression evaluating to a boolean.
 	Expr ExprResponse `pulumi:"expr"`
 }
 
@@ -759,7 +759,7 @@ type CustomLevelResponseInput interface {
 
 // `CustomLevel` is an `AccessLevel` using the Cloud Common Expression Language to represent the necessary conditions for the level to apply to a request. See CEL spec at: https://github.com/google/cel-spec
 type CustomLevelResponseArgs struct {
-	// Required. A Cloud CEL expression evaluating to a boolean.
+	// A Cloud CEL expression evaluating to a boolean.
 	Expr ExprResponseInput `pulumi:"expr"`
 }
 
@@ -841,7 +841,7 @@ func (o CustomLevelResponseOutput) ToCustomLevelResponsePtrOutputWithContext(ctx
 	}).(CustomLevelResponsePtrOutput)
 }
 
-// Required. A Cloud CEL expression evaluating to a boolean.
+// A Cloud CEL expression evaluating to a boolean.
 func (o CustomLevelResponseOutput) Expr() ExprResponseOutput {
 	return o.ApplyT(func(v CustomLevelResponse) ExprResponse { return v.Expr }).(ExprResponseOutput)
 }
@@ -864,7 +864,7 @@ func (o CustomLevelResponsePtrOutput) Elem() CustomLevelResponseOutput {
 	return o.ApplyT(func(v *CustomLevelResponse) CustomLevelResponse { return *v }).(CustomLevelResponseOutput)
 }
 
-// Required. A Cloud CEL expression evaluating to a boolean.
+// A Cloud CEL expression evaluating to a boolean.
 func (o CustomLevelResponsePtrOutput) Expr() ExprResponsePtrOutput {
 	return o.ApplyT(func(v *CustomLevelResponse) *ExprResponse {
 		if v == nil {
@@ -1589,8 +1589,8 @@ func (o ExprResponsePtrOutput) Title() pulumi.StringPtrOutput {
 type OsConstraint struct {
 	// The minimum allowed OS version. If not set, any version of this OS satisfies the constraint. Format: `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
 	MinimumVersion *string `pulumi:"minimumVersion"`
-	// Required. The allowed OS type.
-	OsType *string `pulumi:"osType"`
+	// The allowed OS type.
+	OsType string `pulumi:"osType"`
 	// Only allows requests from devices with a verified Chrome OS. Verifications includes requirements that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call the API targeted by the request.
 	RequireVerifiedChromeOs *bool `pulumi:"requireVerifiedChromeOs"`
 }
@@ -1610,8 +1610,8 @@ type OsConstraintInput interface {
 type OsConstraintArgs struct {
 	// The minimum allowed OS version. If not set, any version of this OS satisfies the constraint. Format: `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
 	MinimumVersion pulumi.StringPtrInput `pulumi:"minimumVersion"`
-	// Required. The allowed OS type.
-	OsType *OsConstraintOsType `pulumi:"osType"`
+	// The allowed OS type.
+	OsType OsConstraintOsType `pulumi:"osType"`
 	// Only allows requests from devices with a verified Chrome OS. Verifications includes requirements that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call the API targeted by the request.
 	RequireVerifiedChromeOs pulumi.BoolPtrInput `pulumi:"requireVerifiedChromeOs"`
 }
@@ -1673,9 +1673,9 @@ func (o OsConstraintOutput) MinimumVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OsConstraint) *string { return v.MinimumVersion }).(pulumi.StringPtrOutput)
 }
 
-// Required. The allowed OS type.
-func (o OsConstraintOutput) OsType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v OsConstraint) *string { return v.OsType }).(pulumi.StringPtrOutput)
+// The allowed OS type.
+func (o OsConstraintOutput) OsType() pulumi.StringOutput {
+	return o.ApplyT(func(v OsConstraint) string { return v.OsType }).(pulumi.StringOutput)
 }
 
 // Only allows requests from devices with a verified Chrome OS. Verifications includes requirements that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call the API targeted by the request.
@@ -1707,7 +1707,7 @@ func (o OsConstraintArrayOutput) Index(i pulumi.IntInput) OsConstraintOutput {
 type OsConstraintResponse struct {
 	// The minimum allowed OS version. If not set, any version of this OS satisfies the constraint. Format: `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
 	MinimumVersion string `pulumi:"minimumVersion"`
-	// Required. The allowed OS type.
+	// The allowed OS type.
 	OsType string `pulumi:"osType"`
 	// Only allows requests from devices with a verified Chrome OS. Verifications includes requirements that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call the API targeted by the request.
 	RequireVerifiedChromeOs bool `pulumi:"requireVerifiedChromeOs"`
@@ -1728,7 +1728,7 @@ type OsConstraintResponseInput interface {
 type OsConstraintResponseArgs struct {
 	// The minimum allowed OS version. If not set, any version of this OS satisfies the constraint. Format: `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
 	MinimumVersion pulumi.StringInput `pulumi:"minimumVersion"`
-	// Required. The allowed OS type.
+	// The allowed OS type.
 	OsType pulumi.StringInput `pulumi:"osType"`
 	// Only allows requests from devices with a verified Chrome OS. Verifications includes requirements that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call the API targeted by the request.
 	RequireVerifiedChromeOs pulumi.BoolInput `pulumi:"requireVerifiedChromeOs"`
@@ -1791,7 +1791,7 @@ func (o OsConstraintResponseOutput) MinimumVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v OsConstraintResponse) string { return v.MinimumVersion }).(pulumi.StringOutput)
 }
 
-// Required. The allowed OS type.
+// The allowed OS type.
 func (o OsConstraintResponseOutput) OsType() pulumi.StringOutput {
 	return o.ApplyT(func(v OsConstraintResponse) string { return v.OsType }).(pulumi.StringOutput)
 }

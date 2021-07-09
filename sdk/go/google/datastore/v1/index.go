@@ -15,15 +15,15 @@ import (
 type Index struct {
 	pulumi.CustomResourceState
 
-	// Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+	// The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
 	Ancestor pulumi.StringOutput `pulumi:"ancestor"`
 	// The resource ID of the index.
 	IndexId pulumi.StringOutput `pulumi:"indexId"`
-	// Required. The entity kind to which this index applies.
+	// The entity kind to which this index applies.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// Project ID.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Required. An ordered sequence of property names and their index attributes.
+	// An ordered sequence of property names and their index attributes.
 	Properties GoogleDatastoreAdminV1IndexedPropertyResponseArrayOutput `pulumi:"properties"`
 	// The state of the index.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -36,8 +36,14 @@ func NewIndex(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Kind == nil {
+		return nil, errors.New("invalid value for required argument 'Kind'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.Properties == nil {
+		return nil, errors.New("invalid value for required argument 'Properties'")
 	}
 	var resource Index
 	err := ctx.RegisterResource("google-native:datastore/v1:Index", name, args, &resource, opts...)
@@ -61,30 +67,30 @@ func GetIndex(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Index resources.
 type indexState struct {
-	// Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+	// The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
 	Ancestor *string `pulumi:"ancestor"`
 	// The resource ID of the index.
 	IndexId *string `pulumi:"indexId"`
-	// Required. The entity kind to which this index applies.
+	// The entity kind to which this index applies.
 	Kind *string `pulumi:"kind"`
 	// Project ID.
 	Project *string `pulumi:"project"`
-	// Required. An ordered sequence of property names and their index attributes.
+	// An ordered sequence of property names and their index attributes.
 	Properties []GoogleDatastoreAdminV1IndexedPropertyResponse `pulumi:"properties"`
 	// The state of the index.
 	State *string `pulumi:"state"`
 }
 
 type IndexState struct {
-	// Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+	// The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
 	Ancestor pulumi.StringPtrInput
 	// The resource ID of the index.
 	IndexId pulumi.StringPtrInput
-	// Required. The entity kind to which this index applies.
+	// The entity kind to which this index applies.
 	Kind pulumi.StringPtrInput
 	// Project ID.
 	Project pulumi.StringPtrInput
-	// Required. An ordered sequence of property names and their index attributes.
+	// An ordered sequence of property names and their index attributes.
 	Properties GoogleDatastoreAdminV1IndexedPropertyResponseArrayInput
 	// The state of the index.
 	State pulumi.StringPtrInput
@@ -95,23 +101,23 @@ func (IndexState) ElementType() reflect.Type {
 }
 
 type indexArgs struct {
-	// Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
-	Ancestor *string `pulumi:"ancestor"`
-	// Required. The entity kind to which this index applies.
-	Kind    *string `pulumi:"kind"`
-	Project string  `pulumi:"project"`
-	// Required. An ordered sequence of property names and their index attributes.
+	// The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+	Ancestor string `pulumi:"ancestor"`
+	// The entity kind to which this index applies.
+	Kind    string `pulumi:"kind"`
+	Project string `pulumi:"project"`
+	// An ordered sequence of property names and their index attributes.
 	Properties []GoogleDatastoreAdminV1IndexedProperty `pulumi:"properties"`
 }
 
 // The set of arguments for constructing a Index resource.
 type IndexArgs struct {
-	// Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
-	Ancestor *IndexAncestor
-	// Required. The entity kind to which this index applies.
-	Kind    pulumi.StringPtrInput
+	// The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
+	Ancestor IndexAncestor
+	// The entity kind to which this index applies.
+	Kind    pulumi.StringInput
 	Project pulumi.StringInput
-	// Required. An ordered sequence of property names and their index attributes.
+	// An ordered sequence of property names and their index attributes.
 	Properties GoogleDatastoreAdminV1IndexedPropertyArrayInput
 }
 

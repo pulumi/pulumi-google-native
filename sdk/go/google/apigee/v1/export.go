@@ -42,8 +42,17 @@ func NewExport(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DatastoreName == nil {
+		return nil, errors.New("invalid value for required argument 'DatastoreName'")
+	}
+	if args.DateRange == nil {
+		return nil, errors.New("invalid value for required argument 'DateRange'")
+	}
 	if args.EnvironmentId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
@@ -118,16 +127,16 @@ func (ExportState) ElementType() reflect.Type {
 type exportArgs struct {
 	// Optional. Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to the `,` (comma) character. Supported delimiter characters include comma (`,`), pipe (`|`), and tab (`\t`).
 	CsvDelimiter *string `pulumi:"csvDelimiter"`
-	// Required. Name of the preconfigured datastore.
-	DatastoreName *string `pulumi:"datastoreName"`
-	// Required. Date range of the data to export.
-	DateRange *GoogleCloudApigeeV1DateRange `pulumi:"dateRange"`
+	// Name of the preconfigured datastore.
+	DatastoreName string `pulumi:"datastoreName"`
+	// Date range of the data to export.
+	DateRange GoogleCloudApigeeV1DateRange `pulumi:"dateRange"`
 	// Optional. Description of the export job.
 	Description   *string `pulumi:"description"`
 	EnvironmentId string  `pulumi:"environmentId"`
-	// Required. Display name of the export job.
-	Name           *string `pulumi:"name"`
-	OrganizationId string  `pulumi:"organizationId"`
+	// Display name of the export job.
+	Name           string `pulumi:"name"`
+	OrganizationId string `pulumi:"organizationId"`
 	// Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.
 	OutputFormat *string `pulumi:"outputFormat"`
 }
@@ -136,15 +145,15 @@ type exportArgs struct {
 type ExportArgs struct {
 	// Optional. Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to the `,` (comma) character. Supported delimiter characters include comma (`,`), pipe (`|`), and tab (`\t`).
 	CsvDelimiter pulumi.StringPtrInput
-	// Required. Name of the preconfigured datastore.
-	DatastoreName pulumi.StringPtrInput
-	// Required. Date range of the data to export.
-	DateRange GoogleCloudApigeeV1DateRangePtrInput
+	// Name of the preconfigured datastore.
+	DatastoreName pulumi.StringInput
+	// Date range of the data to export.
+	DateRange GoogleCloudApigeeV1DateRangeInput
 	// Optional. Description of the export job.
 	Description   pulumi.StringPtrInput
 	EnvironmentId pulumi.StringInput
-	// Required. Display name of the export job.
-	Name           pulumi.StringPtrInput
+	// Display name of the export job.
+	Name           pulumi.StringInput
 	OrganizationId pulumi.StringInput
 	// Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.
 	OutputFormat pulumi.StringPtrInput

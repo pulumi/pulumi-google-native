@@ -33,7 +33,7 @@ type LookupCertificateResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// Optional. Labels with user-defined metadata.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
+	// Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
 	Lifetime string `pulumi:"lifetime"`
 	// The resource path for this Certificate in the format `projects/*/locations/*/certificateAuthorities/*/certificates/*`.
 	Name string `pulumi:"name"`

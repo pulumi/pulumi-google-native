@@ -23,7 +23,7 @@ type WorkerPool struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig NetworkConfigResponseOutput `pulumi:"networkConfig"`
-	// Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+	// Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// WorkerPool state.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -42,6 +42,9 @@ func NewWorkerPool(ctx *pulumi.Context,
 
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.Region == nil {
+		return nil, errors.New("invalid value for required argument 'Region'")
 	}
 	if args.WorkerPoolId == nil {
 		return nil, errors.New("invalid value for required argument 'WorkerPoolId'")
@@ -76,7 +79,7 @@ type workerPoolState struct {
 	Name *string `pulumi:"name"`
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig *NetworkConfigResponse `pulumi:"networkConfig"`
-	// Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+	// Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
 	Region *string `pulumi:"region"`
 	// WorkerPool state.
 	State *string `pulumi:"state"`
@@ -95,7 +98,7 @@ type WorkerPoolState struct {
 	Name pulumi.StringPtrInput
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig NetworkConfigResponsePtrInput
-	// Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+	// Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
 	Region pulumi.StringPtrInput
 	// WorkerPool state.
 	State pulumi.StringPtrInput
@@ -113,8 +116,8 @@ type workerPoolArgs struct {
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
 	Project       string         `pulumi:"project"`
-	// Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
-	Region *string `pulumi:"region"`
+	// Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+	Region string `pulumi:"region"`
 	// Worker configuration for the `WorkerPool`.
 	WorkerConfig *WorkerConfig `pulumi:"workerConfig"`
 	WorkerPoolId string        `pulumi:"workerPoolId"`
@@ -125,8 +128,8 @@ type WorkerPoolArgs struct {
 	// Network configuration for the `WorkerPool`.
 	NetworkConfig NetworkConfigPtrInput
 	Project       pulumi.StringInput
-	// Required. Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
-	Region pulumi.StringPtrInput
+	// Immutable. The region where the `WorkerPool` runs. Only "us-central1" is currently supported. Note that `region` cannot be changed once the `WorkerPool` is created.
+	Region pulumi.StringInput
 	// Worker configuration for the `WorkerPool`.
 	WorkerConfig WorkerConfigPtrInput
 	WorkerPoolId pulumi.StringInput

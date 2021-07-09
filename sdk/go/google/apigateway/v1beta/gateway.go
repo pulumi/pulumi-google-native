@@ -15,7 +15,7 @@ import (
 type Gateway struct {
 	pulumi.CustomResourceState
 
-	// Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+	// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
 	ApiConfig pulumi.StringOutput `pulumi:"apiConfig"`
 	// Created time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -40,6 +40,9 @@ func NewGateway(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ApiConfig == nil {
+		return nil, errors.New("invalid value for required argument 'ApiConfig'")
+	}
 	if args.GatewayId == nil {
 		return nil, errors.New("invalid value for required argument 'GatewayId'")
 	}
@@ -71,7 +74,7 @@ func GetGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Gateway resources.
 type gatewayState struct {
-	// Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+	// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
 	ApiConfig *string `pulumi:"apiConfig"`
 	// Created time.
 	CreateTime *string `pulumi:"createTime"`
@@ -90,7 +93,7 @@ type gatewayState struct {
 }
 
 type GatewayState struct {
-	// Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+	// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
 	ApiConfig pulumi.StringPtrInput
 	// Created time.
 	CreateTime pulumi.StringPtrInput
@@ -113,8 +116,8 @@ func (GatewayState) ElementType() reflect.Type {
 }
 
 type gatewayArgs struct {
-	// Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
-	ApiConfig *string `pulumi:"apiConfig"`
+	// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+	ApiConfig string `pulumi:"apiConfig"`
 	// Optional. Display name.
 	DisplayName *string `pulumi:"displayName"`
 	GatewayId   string  `pulumi:"gatewayId"`
@@ -126,8 +129,8 @@ type gatewayArgs struct {
 
 // The set of arguments for constructing a Gateway resource.
 type GatewayArgs struct {
-	// Required. Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
-	ApiConfig pulumi.StringPtrInput
+	// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
+	ApiConfig pulumi.StringInput
 	// Optional. Display name.
 	DisplayName pulumi.StringPtrInput
 	GatewayId   pulumi.StringInput

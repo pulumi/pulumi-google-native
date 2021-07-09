@@ -19,7 +19,7 @@ type ReferenceImage struct {
 	BoundingPolys BoundingPolyResponseArrayOutput `pulumi:"boundingPolys"`
 	// The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
+	// The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
 	Uri pulumi.StringOutput `pulumi:"uri"`
 }
 
@@ -38,6 +38,9 @@ func NewReferenceImage(ctx *pulumi.Context,
 	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.Uri == nil {
+		return nil, errors.New("invalid value for required argument 'Uri'")
 	}
 	var resource ReferenceImage
 	err := ctx.RegisterResource("google-native:vision/v1:ReferenceImage", name, args, &resource, opts...)
@@ -65,7 +68,7 @@ type referenceImageState struct {
 	BoundingPolys []BoundingPolyResponse `pulumi:"boundingPolys"`
 	// The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
 	Name *string `pulumi:"name"`
-	// Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
+	// The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
 	Uri *string `pulumi:"uri"`
 }
 
@@ -74,7 +77,7 @@ type ReferenceImageState struct {
 	BoundingPolys BoundingPolyResponseArrayInput
 	// The resource name of the reference image. Format is: `projects/PROJECT_ID/locations/LOC_ID/products/PRODUCT_ID/referenceImages/IMAGE_ID`. This field is ignored when creating a reference image.
 	Name pulumi.StringPtrInput
-	// Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
+	// The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
 	Uri pulumi.StringPtrInput
 }
 
@@ -91,8 +94,8 @@ type referenceImageArgs struct {
 	ProductId        string  `pulumi:"productId"`
 	Project          string  `pulumi:"project"`
 	ReferenceImageId *string `pulumi:"referenceImageId"`
-	// Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
-	Uri *string `pulumi:"uri"`
+	// The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
+	Uri string `pulumi:"uri"`
 }
 
 // The set of arguments for constructing a ReferenceImage resource.
@@ -105,8 +108,8 @@ type ReferenceImageArgs struct {
 	ProductId        pulumi.StringInput
 	Project          pulumi.StringInput
 	ReferenceImageId pulumi.StringPtrInput
-	// Required. The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
-	Uri pulumi.StringPtrInput
+	// The Google Cloud Storage URI of the reference image. The URI must start with `gs://`.
+	Uri pulumi.StringInput
 }
 
 func (ReferenceImageArgs) ElementType() reflect.Type {

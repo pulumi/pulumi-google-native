@@ -25,7 +25,7 @@ type LookupCatalogItemArgs struct {
 }
 
 type LookupCatalogItemResult struct {
-	// Required. Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
+	// Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ]
 	CategoryHierarchies []GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse `pulumi:"categoryHierarchies"`
 	// Optional. Catalog item description. UTF-8 encoded string with a length limit of 5 KiB.
 	Description string `pulumi:"description"`
@@ -37,6 +37,6 @@ type LookupCatalogItemResult struct {
 	ProductMetadata GoogleCloudRecommendationengineV1beta1ProductCatalogItemResponse `pulumi:"productMetadata"`
 	// Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.
 	Tags []string `pulumi:"tags"`
-	// Required. Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
+	// Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
 	Title string `pulumi:"title"`
 }

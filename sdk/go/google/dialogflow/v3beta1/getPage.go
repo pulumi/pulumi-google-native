@@ -27,7 +27,7 @@ type LookupPageArgs struct {
 }
 
 type LookupPageResult struct {
-	// Required. The human-readable name of the page, unique within the agent.
+	// The human-readable name of the page, unique within the agent.
 	DisplayName string `pulumi:"displayName"`
 	// The fulfillment to call when the session is entering the page.
 	EntryFulfillment GoogleCloudDialogflowCxV3beta1FulfillmentResponse `pulumi:"entryFulfillment"`

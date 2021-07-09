@@ -15,7 +15,7 @@ import (
 type Contact struct {
 	pulumi.CustomResourceState
 
-	// Required. The email address to send notifications to. This does not need to be a Google account.
+	// The email address to send notifications to. This does not need to be a Google account.
 	Email pulumi.StringOutput `pulumi:"email"`
 	// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
 	LanguageTag pulumi.StringOutput `pulumi:"languageTag"`
@@ -36,6 +36,9 @@ func NewContact(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Email == nil {
+		return nil, errors.New("invalid value for required argument 'Email'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -61,7 +64,7 @@ func GetContact(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Contact resources.
 type contactState struct {
-	// Required. The email address to send notifications to. This does not need to be a Google account.
+	// The email address to send notifications to. This does not need to be a Google account.
 	Email *string `pulumi:"email"`
 	// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
 	LanguageTag *string `pulumi:"languageTag"`
@@ -76,7 +79,7 @@ type contactState struct {
 }
 
 type ContactState struct {
-	// Required. The email address to send notifications to. This does not need to be a Google account.
+	// The email address to send notifications to. This does not need to be a Google account.
 	Email pulumi.StringPtrInput
 	// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
 	LanguageTag pulumi.StringPtrInput
@@ -95,8 +98,8 @@ func (ContactState) ElementType() reflect.Type {
 }
 
 type contactArgs struct {
-	// Required. The email address to send notifications to. This does not need to be a Google account.
-	Email *string `pulumi:"email"`
+	// The email address to send notifications to. This does not need to be a Google account.
+	Email string `pulumi:"email"`
 	// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
 	LanguageTag *string `pulumi:"languageTag"`
 	// The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
@@ -112,8 +115,8 @@ type contactArgs struct {
 
 // The set of arguments for constructing a Contact resource.
 type ContactArgs struct {
-	// Required. The email address to send notifications to. This does not need to be a Google account.
-	Email pulumi.StringPtrInput
+	// The email address to send notifications to. This does not need to be a Google account.
+	Email pulumi.StringInput
 	// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
 	LanguageTag pulumi.StringPtrInput
 	// The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}

@@ -45,9 +45,9 @@ type LookupReportResult struct {
 	LastViewedAt string `pulumi:"lastViewedAt"`
 	// Legacy field: not used This field contains the limit for the result retrieved
 	Limit string `pulumi:"limit"`
-	// Required. This contains the list of metrics
+	// This contains the list of metrics
 	Metrics []GoogleCloudApigeeV1CustomReportMetricResponse `pulumi:"metrics"`
-	// Required. Unique identifier for the report T his is a legacy field used to encode custom report unique id
+	// Unique identifier for the report T his is a legacy field used to encode custom report unique id
 	Name string `pulumi:"name"`
 	// Legacy field: not used. This field contains the offset for the data
 	Offset string `pulumi:"offset"`

@@ -15,13 +15,13 @@ import (
 type Workload struct {
 	pulumi.CustomResourceState
 
-	// Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+	// Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
 	BillingAccount pulumi.StringOutput `pulumi:"billingAccount"`
-	// Required. Immutable. Compliance Regime associated with this workload.
+	// Immutable. Compliance Regime associated with this workload.
 	ComplianceRegime pulumi.StringOutput `pulumi:"complianceRegime"`
 	// Immutable. The Workload creation timestamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+	// The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -46,6 +46,12 @@ func NewWorkload(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.BillingAccount == nil {
+		return nil, errors.New("invalid value for required argument 'BillingAccount'")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
@@ -74,13 +80,13 @@ func GetWorkload(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Workload resources.
 type workloadState struct {
-	// Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+	// Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
 	BillingAccount *string `pulumi:"billingAccount"`
-	// Required. Immutable. Compliance Regime associated with this workload.
+	// Immutable. Compliance Regime associated with this workload.
 	ComplianceRegime *string `pulumi:"complianceRegime"`
 	// Immutable. The Workload creation timestamp.
 	CreateTime *string `pulumi:"createTime"`
-	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+	// The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName *string `pulumi:"displayName"`
 	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
 	Etag *string `pulumi:"etag"`
@@ -99,13 +105,13 @@ type workloadState struct {
 }
 
 type WorkloadState struct {
-	// Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+	// Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
 	BillingAccount pulumi.StringPtrInput
-	// Required. Immutable. Compliance Regime associated with this workload.
+	// Immutable. Compliance Regime associated with this workload.
 	ComplianceRegime pulumi.StringPtrInput
 	// Immutable. The Workload creation timestamp.
 	CreateTime pulumi.StringPtrInput
-	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+	// The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
 	DisplayName pulumi.StringPtrInput
 	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
 	Etag pulumi.StringPtrInput
@@ -128,12 +134,12 @@ func (WorkloadState) ElementType() reflect.Type {
 }
 
 type workloadArgs struct {
-	// Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
-	BillingAccount *string `pulumi:"billingAccount"`
-	// Required. Immutable. Compliance Regime associated with this workload.
-	ComplianceRegime *string `pulumi:"complianceRegime"`
-	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
-	DisplayName *string `pulumi:"displayName"`
+	// Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+	BillingAccount string `pulumi:"billingAccount"`
+	// Immutable. Compliance Regime associated with this workload.
+	ComplianceRegime string `pulumi:"complianceRegime"`
+	// The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+	DisplayName string `pulumi:"displayName"`
 	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
 	Etag       *string `pulumi:"etag"`
 	ExternalId *string `pulumi:"externalId"`
@@ -153,12 +159,12 @@ type workloadArgs struct {
 
 // The set of arguments for constructing a Workload resource.
 type WorkloadArgs struct {
-	// Required. Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
-	BillingAccount pulumi.StringPtrInput
-	// Required. Immutable. Compliance Regime associated with this workload.
-	ComplianceRegime *WorkloadComplianceRegime
-	// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
-	DisplayName pulumi.StringPtrInput
+	// Input only. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
+	BillingAccount pulumi.StringInput
+	// Immutable. Compliance Regime associated with this workload.
+	ComplianceRegime WorkloadComplianceRegime
+	// The user-assigned display name of the Workload. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, and spaces. Example: My Workload
+	DisplayName pulumi.StringInput
 	// Optional. ETag of the workload, it is calculated on the basis of the Workload contents. It will be used in Update & Delete operations.
 	Etag       pulumi.StringPtrInput
 	ExternalId pulumi.StringPtrInput

@@ -21,7 +21,7 @@ type Experiment struct {
 	Definition GoogleCloudDialogflowCxV3ExperimentDefinitionResponseOutput `pulumi:"definition"`
 	// The human-readable description of the experiment.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
+	// The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// End time of this experiment.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
@@ -50,6 +50,9 @@ func NewExperiment(ctx *pulumi.Context,
 
 	if args.AgentId == nil {
 		return nil, errors.New("invalid value for required argument 'AgentId'")
+	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
 	if args.EnvironmentId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
@@ -88,7 +91,7 @@ type experimentState struct {
 	Definition *GoogleCloudDialogflowCxV3ExperimentDefinitionResponse `pulumi:"definition"`
 	// The human-readable description of the experiment.
 	Description *string `pulumi:"description"`
-	// Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
+	// The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// End time of this experiment.
 	EndTime *string `pulumi:"endTime"`
@@ -115,7 +118,7 @@ type ExperimentState struct {
 	Definition GoogleCloudDialogflowCxV3ExperimentDefinitionResponsePtrInput
 	// The human-readable description of the experiment.
 	Description pulumi.StringPtrInput
-	// Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
+	// The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
 	DisplayName pulumi.StringPtrInput
 	// End time of this experiment.
 	EndTime pulumi.StringPtrInput
@@ -147,8 +150,8 @@ type experimentArgs struct {
 	Definition *GoogleCloudDialogflowCxV3ExperimentDefinition `pulumi:"definition"`
 	// The human-readable description of the experiment.
 	Description *string `pulumi:"description"`
-	// Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
-	DisplayName *string `pulumi:"displayName"`
+	// The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
+	DisplayName string `pulumi:"displayName"`
 	// End time of this experiment.
 	EndTime       *string `pulumi:"endTime"`
 	EnvironmentId string  `pulumi:"environmentId"`
@@ -179,8 +182,8 @@ type ExperimentArgs struct {
 	Definition GoogleCloudDialogflowCxV3ExperimentDefinitionPtrInput
 	// The human-readable description of the experiment.
 	Description pulumi.StringPtrInput
-	// Required. The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
-	DisplayName pulumi.StringPtrInput
+	// The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
+	DisplayName pulumi.StringInput
 	// End time of this experiment.
 	EndTime       pulumi.StringPtrInput
 	EnvironmentId pulumi.StringInput

@@ -21,7 +21,7 @@ type Agent struct {
 	DefaultLanguageCode pulumi.StringOutput `pulumi:"defaultLanguageCode"`
 	// The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Required. The human-readable name of the agent, unique within the location.
+	// The human-readable name of the agent, unique within the location.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection pulumi.BoolOutput `pulumi:"enableSpellCorrection"`
@@ -35,7 +35,7 @@ type Agent struct {
 	SpeechToTextSettings GoogleCloudDialogflowCxV3SpeechToTextSettingsResponseOutput `pulumi:"speechToTextSettings"`
 	// Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
 	StartFlow pulumi.StringOutput `pulumi:"startFlow"`
-	// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+	// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
 	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 }
 
@@ -46,11 +46,17 @@ func NewAgent(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.TimeZone == nil {
+		return nil, errors.New("invalid value for required argument 'TimeZone'")
 	}
 	var resource Agent
 	err := ctx.RegisterResource("google-native:dialogflow/v3:Agent", name, args, &resource, opts...)
@@ -80,7 +86,7 @@ type agentState struct {
 	DefaultLanguageCode *string `pulumi:"defaultLanguageCode"`
 	// The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
-	// Required. The human-readable name of the agent, unique within the location.
+	// The human-readable name of the agent, unique within the location.
 	DisplayName *string `pulumi:"displayName"`
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection *bool `pulumi:"enableSpellCorrection"`
@@ -94,7 +100,7 @@ type agentState struct {
 	SpeechToTextSettings *GoogleCloudDialogflowCxV3SpeechToTextSettingsResponse `pulumi:"speechToTextSettings"`
 	// Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
 	StartFlow *string `pulumi:"startFlow"`
-	// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+	// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
 	TimeZone *string `pulumi:"timeZone"`
 }
 
@@ -105,7 +111,7 @@ type AgentState struct {
 	DefaultLanguageCode pulumi.StringPtrInput
 	// The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrInput
-	// Required. The human-readable name of the agent, unique within the location.
+	// The human-readable name of the agent, unique within the location.
 	DisplayName pulumi.StringPtrInput
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection pulumi.BoolPtrInput
@@ -119,7 +125,7 @@ type AgentState struct {
 	SpeechToTextSettings GoogleCloudDialogflowCxV3SpeechToTextSettingsResponsePtrInput
 	// Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
 	StartFlow pulumi.StringPtrInput
-	// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+	// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
 	TimeZone pulumi.StringPtrInput
 }
 
@@ -134,8 +140,8 @@ type agentArgs struct {
 	DefaultLanguageCode *string `pulumi:"defaultLanguageCode"`
 	// The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
-	// Required. The human-readable name of the agent, unique within the location.
-	DisplayName *string `pulumi:"displayName"`
+	// The human-readable name of the agent, unique within the location.
+	DisplayName string `pulumi:"displayName"`
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection *bool `pulumi:"enableSpellCorrection"`
 	// Indicates if stackdriver logging is enabled for the agent.
@@ -150,8 +156,8 @@ type agentArgs struct {
 	SpeechToTextSettings *GoogleCloudDialogflowCxV3SpeechToTextSettings `pulumi:"speechToTextSettings"`
 	// Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
 	StartFlow *string `pulumi:"startFlow"`
-	// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
-	TimeZone *string `pulumi:"timeZone"`
+	// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+	TimeZone string `pulumi:"timeZone"`
 }
 
 // The set of arguments for constructing a Agent resource.
@@ -162,8 +168,8 @@ type AgentArgs struct {
 	DefaultLanguageCode pulumi.StringPtrInput
 	// The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrInput
-	// Required. The human-readable name of the agent, unique within the location.
-	DisplayName pulumi.StringPtrInput
+	// The human-readable name of the agent, unique within the location.
+	DisplayName pulumi.StringInput
 	// Indicates if automatic spell correction is enabled in detect intent requests.
 	EnableSpellCorrection pulumi.BoolPtrInput
 	// Indicates if stackdriver logging is enabled for the agent.
@@ -178,8 +184,8 @@ type AgentArgs struct {
 	SpeechToTextSettings GoogleCloudDialogflowCxV3SpeechToTextSettingsPtrInput
 	// Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
 	StartFlow pulumi.StringPtrInput
-	// Required. The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
-	TimeZone pulumi.StringPtrInput
+	// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
+	TimeZone pulumi.StringInput
 }
 
 func (AgentArgs) ElementType() reflect.Type {

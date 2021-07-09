@@ -43,11 +43,11 @@ type LookupOccurrenceResult struct {
 	Kind string `pulumi:"kind"`
 	// The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`.
 	Name string `pulumi:"name"`
-	// Required. Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
+	// Immutable. The analysis note associated with this occurrence, in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. This field can be used as a filter in list requests.
 	NoteName string `pulumi:"noteName"`
 	// A description of actions that can be taken to remedy the note.
 	Remediation string `pulumi:"remediation"`
-	// Required. Immutable. The resource for which the occurrence applies.
+	// Immutable. The resource for which the occurrence applies.
 	Resource ResourceResponse `pulumi:"resource"`
 	// The time this occurrence was last updated.
 	UpdateTime string `pulumi:"updateTime"`

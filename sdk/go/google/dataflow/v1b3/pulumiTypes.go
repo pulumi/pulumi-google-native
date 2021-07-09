@@ -4635,13 +4635,13 @@ func (o PackageResponseArrayOutput) Index(i pulumi.IntInput) PackageResponseOutp
 
 // Metadata for a specific parameter.
 type ParameterMetadataResponse struct {
-	// Required. The help text to display for the parameter.
+	// The help text to display for the parameter.
 	HelpText string `pulumi:"helpText"`
 	// Optional. Whether the parameter is optional. Defaults to false.
 	IsOptional bool `pulumi:"isOptional"`
-	// Required. The label to display for the parameter.
+	// The label to display for the parameter.
 	Label string `pulumi:"label"`
-	// Required. The name of the parameter.
+	// The name of the parameter.
 	Name string `pulumi:"name"`
 	// Optional. The type of the parameter. Used for selecting input picker.
 	ParamType string `pulumi:"paramType"`
@@ -4662,13 +4662,13 @@ type ParameterMetadataResponseInput interface {
 
 // Metadata for a specific parameter.
 type ParameterMetadataResponseArgs struct {
-	// Required. The help text to display for the parameter.
+	// The help text to display for the parameter.
 	HelpText pulumi.StringInput `pulumi:"helpText"`
 	// Optional. Whether the parameter is optional. Defaults to false.
 	IsOptional pulumi.BoolInput `pulumi:"isOptional"`
-	// Required. The label to display for the parameter.
+	// The label to display for the parameter.
 	Label pulumi.StringInput `pulumi:"label"`
-	// Required. The name of the parameter.
+	// The name of the parameter.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Optional. The type of the parameter. Used for selecting input picker.
 	ParamType pulumi.StringInput `pulumi:"paramType"`
@@ -4728,7 +4728,7 @@ func (o ParameterMetadataResponseOutput) ToParameterMetadataResponseOutputWithCo
 	return o
 }
 
-// Required. The help text to display for the parameter.
+// The help text to display for the parameter.
 func (o ParameterMetadataResponseOutput) HelpText() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterMetadataResponse) string { return v.HelpText }).(pulumi.StringOutput)
 }
@@ -4738,12 +4738,12 @@ func (o ParameterMetadataResponseOutput) IsOptional() pulumi.BoolOutput {
 	return o.ApplyT(func(v ParameterMetadataResponse) bool { return v.IsOptional }).(pulumi.BoolOutput)
 }
 
-// Required. The label to display for the parameter.
+// The label to display for the parameter.
 func (o ParameterMetadataResponseOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterMetadataResponse) string { return v.Label }).(pulumi.StringOutput)
 }
 
-// Required. The name of the parameter.
+// The name of the parameter.
 func (o ParameterMetadataResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterMetadataResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -5914,7 +5914,7 @@ func (o RuntimeMetadataResponsePtrOutput) SdkInfo() SDKInfoResponsePtrOutput {
 
 // SDK Information.
 type SDKInfoResponse struct {
-	// Required. The SDK Language.
+	// The SDK Language.
 	Language string `pulumi:"language"`
 	// Optional. The SDK version.
 	Version string `pulumi:"version"`
@@ -5933,7 +5933,7 @@ type SDKInfoResponseInput interface {
 
 // SDK Information.
 type SDKInfoResponseArgs struct {
-	// Required. The SDK Language.
+	// The SDK Language.
 	Language pulumi.StringInput `pulumi:"language"`
 	// Optional. The SDK version.
 	Version pulumi.StringInput `pulumi:"version"`
@@ -6017,7 +6017,7 @@ func (o SDKInfoResponseOutput) ToSDKInfoResponsePtrOutputWithContext(ctx context
 	}).(SDKInfoResponsePtrOutput)
 }
 
-// Required. The SDK Language.
+// The SDK Language.
 func (o SDKInfoResponseOutput) Language() pulumi.StringOutput {
 	return o.ApplyT(func(v SDKInfoResponse) string { return v.Language }).(pulumi.StringOutput)
 }
@@ -6045,7 +6045,7 @@ func (o SDKInfoResponsePtrOutput) Elem() SDKInfoResponseOutput {
 	return o.ApplyT(func(v *SDKInfoResponse) SDKInfoResponse { return *v }).(SDKInfoResponseOutput)
 }
 
-// Required. The SDK Language.
+// The SDK Language.
 func (o SDKInfoResponsePtrOutput) Language() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SDKInfoResponse) *string {
 		if v == nil {
@@ -8240,7 +8240,7 @@ func (o TaskRunnerSettingsResponseOutput) WorkflowFileName() pulumi.StringOutput
 type TemplateMetadataResponse struct {
 	// Optional. A description of the template.
 	Description string `pulumi:"description"`
-	// Required. The name of the template.
+	// The name of the template.
 	Name string `pulumi:"name"`
 	// The parameters for the template.
 	Parameters []ParameterMetadataResponse `pulumi:"parameters"`
@@ -8261,7 +8261,7 @@ type TemplateMetadataResponseInput interface {
 type TemplateMetadataResponseArgs struct {
 	// Optional. A description of the template.
 	Description pulumi.StringInput `pulumi:"description"`
-	// Required. The name of the template.
+	// The name of the template.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The parameters for the template.
 	Parameters ParameterMetadataResponseArrayInput `pulumi:"parameters"`
@@ -8350,7 +8350,7 @@ func (o TemplateMetadataResponseOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v TemplateMetadataResponse) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Required. The name of the template.
+// The name of the template.
 func (o TemplateMetadataResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v TemplateMetadataResponse) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -8388,7 +8388,7 @@ func (o TemplateMetadataResponsePtrOutput) Description() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The name of the template.
+// The name of the template.
 func (o TemplateMetadataResponsePtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TemplateMetadataResponse) *string {
 		if v == nil {

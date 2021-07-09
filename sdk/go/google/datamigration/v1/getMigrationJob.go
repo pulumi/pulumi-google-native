@@ -26,7 +26,7 @@ type LookupMigrationJobArgs struct {
 type LookupMigrationJobResult struct {
 	// The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	CreateTime string `pulumi:"createTime"`
-	// Required. The resource name (URI) of the destination connection profile.
+	// The resource name (URI) of the destination connection profile.
 	Destination string `pulumi:"destination"`
 	// The database engine type and provider of the destination.
 	DestinationDatabase DatabaseTypeResponse `pulumi:"destinationDatabase"`
@@ -48,7 +48,7 @@ type LookupMigrationJobResult struct {
 	Phase string `pulumi:"phase"`
 	// The details needed to communicate to the source over Reverse SSH tunnel connectivity.
 	ReverseSshConnectivity ReverseSshConnectivityResponse `pulumi:"reverseSshConnectivity"`
-	// Required. The resource name (URI) of the source connection profile.
+	// The resource name (URI) of the source connection profile.
 	Source string `pulumi:"source"`
 	// The database engine type and provider of the source.
 	SourceDatabase DatabaseTypeResponse `pulumi:"sourceDatabase"`
@@ -56,7 +56,7 @@ type LookupMigrationJobResult struct {
 	State string `pulumi:"state"`
 	// static ip connectivity data (default, no additional details needed).
 	StaticIpConnectivity StaticIpConnectivityResponse `pulumi:"staticIpConnectivity"`
-	// Required. The migration job type.
+	// The migration job type.
 	Type string `pulumi:"type"`
 	// The timestamp when the migration job resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
 	UpdateTime string `pulumi:"updateTime"`

@@ -17,15 +17,15 @@ type Trigger struct {
 
 	// The creation time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Required. Destination specifies where the events should be sent to.
+	// Destination specifies where the events should be sent to.
 	Destination DestinationResponseOutput `pulumi:"destination"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+	// null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
 	MatchingCriteria MatchingCriteriaResponseArrayOutput `pulumi:"matchingCriteria"`
-	// Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+	// The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
@@ -42,8 +42,17 @@ func NewTrigger(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Destination == nil {
+		return nil, errors.New("invalid value for required argument 'Destination'")
+	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
+	}
+	if args.MatchingCriteria == nil {
+		return nil, errors.New("invalid value for required argument 'MatchingCriteria'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
@@ -78,15 +87,15 @@ func GetTrigger(ctx *pulumi.Context,
 type triggerState struct {
 	// The creation time.
 	CreateTime *string `pulumi:"createTime"`
-	// Required. Destination specifies where the events should be sent to.
+	// Destination specifies where the events should be sent to.
 	Destination *DestinationResponse `pulumi:"destination"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+	// null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
 	MatchingCriteria []MatchingCriteriaResponse `pulumi:"matchingCriteria"`
-	// Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+	// The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
 	Name *string `pulumi:"name"`
 	// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
 	ServiceAccount *string `pulumi:"serviceAccount"`
@@ -99,15 +108,15 @@ type triggerState struct {
 type TriggerState struct {
 	// The creation time.
 	CreateTime pulumi.StringPtrInput
-	// Required. Destination specifies where the events should be sent to.
+	// Destination specifies where the events should be sent to.
 	Destination DestinationResponsePtrInput
 	// This checksum is computed by the server based on the value of other fields, and may be sent only on create requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels pulumi.StringMapInput
-	// Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+	// null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
 	MatchingCriteria MatchingCriteriaResponseArrayInput
-	// Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+	// The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
 	Name pulumi.StringPtrInput
 	// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
 	ServiceAccount pulumi.StringPtrInput
@@ -122,16 +131,16 @@ func (TriggerState) ElementType() reflect.Type {
 }
 
 type triggerArgs struct {
-	// Required. Destination specifies where the events should be sent to.
-	Destination *Destination `pulumi:"destination"`
+	// Destination specifies where the events should be sent to.
+	Destination Destination `pulumi:"destination"`
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels   map[string]string `pulumi:"labels"`
 	Location string            `pulumi:"location"`
-	// Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+	// null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
 	MatchingCriteria []MatchingCriteria `pulumi:"matchingCriteria"`
-	// Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
-	Name    *string `pulumi:"name"`
-	Project string  `pulumi:"project"`
+	// The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+	Name    string `pulumi:"name"`
+	Project string `pulumi:"project"`
 	// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 	TriggerId      string  `pulumi:"triggerId"`
@@ -140,15 +149,15 @@ type triggerArgs struct {
 
 // The set of arguments for constructing a Trigger resource.
 type TriggerArgs struct {
-	// Required. Destination specifies where the events should be sent to.
-	Destination DestinationPtrInput
+	// Destination specifies where the events should be sent to.
+	Destination DestinationInput
 	// Optional. User labels attached to the triggers that can be used to group resources.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringInput
-	// Required. null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
+	// null The criteria by which events are filtered. Only events that match with this criteria will be sent to the destination.
 	MatchingCriteria MatchingCriteriaArrayInput
-	// Required. The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
-	Name    pulumi.StringPtrInput
+	// The resource name of the trigger. Must be unique within the location on the project and must in `projects/{project}/locations/{location}/triggers/{trigger}` format.
+	Name    pulumi.StringInput
 	Project pulumi.StringInput
 	// Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. In order to create Audit Log triggers, the service account should also have 'eventarc.events.receiveAuditLogV1Written' permission.
 	ServiceAccount pulumi.StringPtrInput

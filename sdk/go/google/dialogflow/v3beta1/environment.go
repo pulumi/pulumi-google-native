@@ -17,13 +17,13 @@ type Environment struct {
 
 	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+	// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The name of the environment. Format: `projects//locations//agents//environments/`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Update time of this environment.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
 	VersionConfigs GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponseArrayOutput `pulumi:"versionConfigs"`
 }
 
@@ -37,11 +37,17 @@ func NewEnvironment(ctx *pulumi.Context,
 	if args.AgentId == nil {
 		return nil, errors.New("invalid value for required argument 'AgentId'")
 	}
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.VersionConfigs == nil {
+		return nil, errors.New("invalid value for required argument 'VersionConfigs'")
 	}
 	var resource Environment
 	err := ctx.RegisterResource("google-native:dialogflow/v3beta1:Environment", name, args, &resource, opts...)
@@ -67,26 +73,26 @@ func GetEnvironment(ctx *pulumi.Context,
 type environmentState struct {
 	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
-	// Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+	// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
 	DisplayName *string `pulumi:"displayName"`
 	// The name of the environment. Format: `projects//locations//agents//environments/`.
 	Name *string `pulumi:"name"`
 	// Update time of this environment.
 	UpdateTime *string `pulumi:"updateTime"`
-	// Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
 	VersionConfigs []GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponse `pulumi:"versionConfigs"`
 }
 
 type EnvironmentState struct {
 	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrInput
-	// Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+	// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
 	DisplayName pulumi.StringPtrInput
 	// The name of the environment. Format: `projects//locations//agents//environments/`.
 	Name pulumi.StringPtrInput
 	// Update time of this environment.
 	UpdateTime pulumi.StringPtrInput
-	// Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
 	VersionConfigs GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigResponseArrayInput
 }
 
@@ -98,13 +104,13 @@ type environmentArgs struct {
 	AgentId string `pulumi:"agentId"`
 	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description *string `pulumi:"description"`
-	// Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
-	DisplayName *string `pulumi:"displayName"`
-	Location    string  `pulumi:"location"`
+	// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+	DisplayName string `pulumi:"displayName"`
+	Location    string `pulumi:"location"`
 	// The name of the environment. Format: `projects//locations//agents//environments/`.
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
-	// Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
 	VersionConfigs []GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfig `pulumi:"versionConfigs"`
 }
 
@@ -113,13 +119,13 @@ type EnvironmentArgs struct {
 	AgentId pulumi.StringInput
 	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
 	Description pulumi.StringPtrInput
-	// Required. The human-readable name of the environment (unique in an agent). Limit of 64 characters.
-	DisplayName pulumi.StringPtrInput
+	// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
+	DisplayName pulumi.StringInput
 	Location    pulumi.StringInput
 	// The name of the environment. Format: `projects//locations//agents//environments/`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
-	// Required. A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
+	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
 	VersionConfigs GoogleCloudDialogflowCxV3beta1EnvironmentVersionConfigArrayInput
 }
 

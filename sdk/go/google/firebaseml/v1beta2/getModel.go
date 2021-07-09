@@ -27,7 +27,7 @@ type LookupModelResult struct {
 	ActiveOperations []OperationResponse `pulumi:"activeOperations"`
 	// Timestamp when this model was created in Firebase ML.
 	CreateTime string `pulumi:"createTime"`
-	// Required. The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
+	// The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
 	DisplayName string `pulumi:"displayName"`
 	// See RFC7232 https://tools.ietf.org/html/rfc7232#section-2.3
 	Etag string `pulumi:"etag"`

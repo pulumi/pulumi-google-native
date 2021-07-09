@@ -686,10 +686,10 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 type CloudRun struct {
 	// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 	Path *string `pulumi:"path"`
-	// Required. The region the Cloud Run service is deployed in.
-	Region *string `pulumi:"region"`
-	// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
-	Service *string `pulumi:"service"`
+	// The region the Cloud Run service is deployed in.
+	Region string `pulumi:"region"`
+	// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+	Service string `pulumi:"service"`
 }
 
 // CloudRunInput is an input type that accepts CloudRunArgs and CloudRunOutput values.
@@ -707,10 +707,10 @@ type CloudRunInput interface {
 type CloudRunArgs struct {
 	// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 	Path pulumi.StringPtrInput `pulumi:"path"`
-	// Required. The region the Cloud Run service is deployed in.
-	Region pulumi.StringPtrInput `pulumi:"region"`
-	// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
-	Service pulumi.StringPtrInput `pulumi:"service"`
+	// The region the Cloud Run service is deployed in.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+	Service pulumi.StringInput `pulumi:"service"`
 }
 
 func (CloudRunArgs) ElementType() reflect.Type {
@@ -796,14 +796,14 @@ func (o CloudRunOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CloudRun) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// Required. The region the Cloud Run service is deployed in.
-func (o CloudRunOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudRun) *string { return v.Region }).(pulumi.StringPtrOutput)
+// The region the Cloud Run service is deployed in.
+func (o CloudRunOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudRun) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
-func (o CloudRunOutput) Service() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudRun) *string { return v.Service }).(pulumi.StringPtrOutput)
+// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+func (o CloudRunOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudRun) string { return v.Service }).(pulumi.StringOutput)
 }
 
 type CloudRunPtrOutput struct{ *pulumi.OutputState }
@@ -834,23 +834,23 @@ func (o CloudRunPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The region the Cloud Run service is deployed in.
+// The region the Cloud Run service is deployed in.
 func (o CloudRunPtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudRun) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Region
+		return &v.Region
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
 func (o CloudRunPtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudRun) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Service
+		return &v.Service
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -858,9 +858,9 @@ func (o CloudRunPtrOutput) Service() pulumi.StringPtrOutput {
 type CloudRunResponse struct {
 	// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 	Path string `pulumi:"path"`
-	// Required. The region the Cloud Run service is deployed in.
+	// The region the Cloud Run service is deployed in.
 	Region string `pulumi:"region"`
-	// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+	// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
 	Service string `pulumi:"service"`
 }
 
@@ -879,9 +879,9 @@ type CloudRunResponseInput interface {
 type CloudRunResponseArgs struct {
 	// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
 	Path pulumi.StringInput `pulumi:"path"`
-	// Required. The region the Cloud Run service is deployed in.
+	// The region the Cloud Run service is deployed in.
 	Region pulumi.StringInput `pulumi:"region"`
-	// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+	// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
 	Service pulumi.StringInput `pulumi:"service"`
 }
 
@@ -968,12 +968,12 @@ func (o CloudRunResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRunResponse) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// Required. The region the Cloud Run service is deployed in.
+// The region the Cloud Run service is deployed in.
 func (o CloudRunResponseOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRunResponse) string { return v.Region }).(pulumi.StringOutput)
 }
 
-// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
 func (o CloudRunResponseOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v CloudRunResponse) string { return v.Service }).(pulumi.StringOutput)
 }
@@ -1006,7 +1006,7 @@ func (o CloudRunResponsePtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The region the Cloud Run service is deployed in.
+// The region the Cloud Run service is deployed in.
 func (o CloudRunResponsePtrOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudRunResponse) *string {
 		if v == nil {
@@ -1016,7 +1016,7 @@ func (o CloudRunResponsePtrOutput) Region() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
+// The name of the Cloud Run service being addressed. See https://cloud.google.com/run/docs/reference/rest/v1/namespaces.services. Only services located in the same project of the trigger object can be addressed.
 func (o CloudRunResponsePtrOutput) Service() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CloudRunResponse) *string {
 		if v == nil {
@@ -1296,10 +1296,10 @@ func (o DestinationResponsePtrOutput) CloudRun() CloudRunResponsePtrOutput {
 
 // Filters events based on exact matches on the CloudEvents attributes.
 type EventFilter struct {
-	// Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
-	Attribute *string `pulumi:"attribute"`
-	// Required. The value for the attribute.
-	Value *string `pulumi:"value"`
+	// The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+	Attribute string `pulumi:"attribute"`
+	// The value for the attribute.
+	Value string `pulumi:"value"`
 }
 
 // EventFilterInput is an input type that accepts EventFilterArgs and EventFilterOutput values.
@@ -1315,10 +1315,10 @@ type EventFilterInput interface {
 
 // Filters events based on exact matches on the CloudEvents attributes.
 type EventFilterArgs struct {
-	// Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
-	Attribute pulumi.StringPtrInput `pulumi:"attribute"`
-	// Required. The value for the attribute.
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	// The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+	Attribute pulumi.StringInput `pulumi:"attribute"`
+	// The value for the attribute.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (EventFilterArgs) ElementType() reflect.Type {
@@ -1373,14 +1373,14 @@ func (o EventFilterOutput) ToEventFilterOutputWithContext(ctx context.Context) E
 	return o
 }
 
-// Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
-func (o EventFilterOutput) Attribute() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EventFilter) *string { return v.Attribute }).(pulumi.StringPtrOutput)
+// The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+func (o EventFilterOutput) Attribute() pulumi.StringOutput {
+	return o.ApplyT(func(v EventFilter) string { return v.Attribute }).(pulumi.StringOutput)
 }
 
-// Required. The value for the attribute.
-func (o EventFilterOutput) Value() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EventFilter) *string { return v.Value }).(pulumi.StringPtrOutput)
+// The value for the attribute.
+func (o EventFilterOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v EventFilter) string { return v.Value }).(pulumi.StringOutput)
 }
 
 type EventFilterArrayOutput struct{ *pulumi.OutputState }
@@ -1405,9 +1405,9 @@ func (o EventFilterArrayOutput) Index(i pulumi.IntInput) EventFilterOutput {
 
 // Filters events based on exact matches on the CloudEvents attributes.
 type EventFilterResponse struct {
-	// Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+	// The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
 	Attribute string `pulumi:"attribute"`
-	// Required. The value for the attribute.
+	// The value for the attribute.
 	Value string `pulumi:"value"`
 }
 
@@ -1424,9 +1424,9 @@ type EventFilterResponseInput interface {
 
 // Filters events based on exact matches on the CloudEvents attributes.
 type EventFilterResponseArgs struct {
-	// Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+	// The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
 	Attribute pulumi.StringInput `pulumi:"attribute"`
-	// Required. The value for the attribute.
+	// The value for the attribute.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1482,12 +1482,12 @@ func (o EventFilterResponseOutput) ToEventFilterResponseOutputWithContext(ctx co
 	return o
 }
 
-// Required. The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
+// The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
 func (o EventFilterResponseOutput) Attribute() pulumi.StringOutput {
 	return o.ApplyT(func(v EventFilterResponse) string { return v.Attribute }).(pulumi.StringOutput)
 }
 
-// Required. The value for the attribute.
+// The value for the attribute.
 func (o EventFilterResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v EventFilterResponse) string { return v.Value }).(pulumi.StringOutput)
 }

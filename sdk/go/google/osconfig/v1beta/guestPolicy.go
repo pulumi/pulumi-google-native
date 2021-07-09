@@ -15,7 +15,7 @@ import (
 type GuestPolicy struct {
 	pulumi.CustomResourceState
 
-	// Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+	// Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
 	Assignment AssignmentResponseOutput `pulumi:"assignment"`
 	// Time this guest policy was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -23,7 +23,7 @@ type GuestPolicy struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// The etag for this guest policy. If this is provided on update, it must match the server's etag.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
+	// Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
 	PackageRepositories PackageRepositoryResponseArrayOutput `pulumi:"packageRepositories"`
@@ -42,8 +42,14 @@ func NewGuestPolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Assignment == nil {
+		return nil, errors.New("invalid value for required argument 'Assignment'")
+	}
 	if args.GuestPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'GuestPolicyId'")
+	}
+	if args.Name == nil {
+		return nil, errors.New("invalid value for required argument 'Name'")
 	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
@@ -70,7 +76,7 @@ func GetGuestPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GuestPolicy resources.
 type guestPolicyState struct {
-	// Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+	// Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
 	Assignment *AssignmentResponse `pulumi:"assignment"`
 	// Time this guest policy was created.
 	CreateTime *string `pulumi:"createTime"`
@@ -78,7 +84,7 @@ type guestPolicyState struct {
 	Description *string `pulumi:"description"`
 	// The etag for this guest policy. If this is provided on update, it must match the server's etag.
 	Etag *string `pulumi:"etag"`
-	// Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
+	// Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
 	Name *string `pulumi:"name"`
 	// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
 	PackageRepositories []PackageRepositoryResponse `pulumi:"packageRepositories"`
@@ -91,7 +97,7 @@ type guestPolicyState struct {
 }
 
 type GuestPolicyState struct {
-	// Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+	// Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
 	Assignment AssignmentResponsePtrInput
 	// Time this guest policy was created.
 	CreateTime pulumi.StringPtrInput
@@ -99,7 +105,7 @@ type GuestPolicyState struct {
 	Description pulumi.StringPtrInput
 	// The etag for this guest policy. If this is provided on update, it must match the server's etag.
 	Etag pulumi.StringPtrInput
-	// Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
+	// Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
 	Name pulumi.StringPtrInput
 	// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
 	PackageRepositories PackageRepositoryResponseArrayInput
@@ -116,15 +122,15 @@ func (GuestPolicyState) ElementType() reflect.Type {
 }
 
 type guestPolicyArgs struct {
-	// Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
-	Assignment *Assignment `pulumi:"assignment"`
+	// Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+	Assignment Assignment `pulumi:"assignment"`
 	// Description of the guest policy. Length of the description is limited to 1024 characters.
 	Description *string `pulumi:"description"`
 	// The etag for this guest policy. If this is provided on update, it must match the server's etag.
 	Etag          *string `pulumi:"etag"`
 	GuestPolicyId string  `pulumi:"guestPolicyId"`
-	// Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
-	Name *string `pulumi:"name"`
+	// Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
+	Name string `pulumi:"name"`
 	// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
 	PackageRepositories []PackageRepository `pulumi:"packageRepositories"`
 	// The software packages to be managed by this policy.
@@ -136,15 +142,15 @@ type guestPolicyArgs struct {
 
 // The set of arguments for constructing a GuestPolicy resource.
 type GuestPolicyArgs struct {
-	// Required. Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
-	Assignment AssignmentPtrInput
+	// Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
+	Assignment AssignmentInput
 	// Description of the guest policy. Length of the description is limited to 1024 characters.
 	Description pulumi.StringPtrInput
 	// The etag for this guest policy. If this is provided on update, it must match the server's etag.
 	Etag          pulumi.StringPtrInput
 	GuestPolicyId pulumi.StringInput
-	// Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
-	Name pulumi.StringPtrInput
+	// Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
+	Name pulumi.StringInput
 	// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
 	PackageRepositories PackageRepositoryArrayInput
 	// The software packages to be managed by this policy.

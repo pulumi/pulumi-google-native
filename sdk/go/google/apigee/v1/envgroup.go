@@ -17,7 +17,7 @@ type Envgroup struct {
 
 	// The time at which the environment group was created as milliseconds since epoch.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Required. Host names for this environment group.
+	// Host names for this environment group.
 	Hostnames pulumi.StringArrayOutput `pulumi:"hostnames"`
 	// The time at which the environment group was last updated as milliseconds since epoch.
 	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
@@ -34,6 +34,9 @@ func NewEnvgroup(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Hostnames == nil {
+		return nil, errors.New("invalid value for required argument 'Hostnames'")
+	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -61,7 +64,7 @@ func GetEnvgroup(ctx *pulumi.Context,
 type envgroupState struct {
 	// The time at which the environment group was created as milliseconds since epoch.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Required. Host names for this environment group.
+	// Host names for this environment group.
 	Hostnames []string `pulumi:"hostnames"`
 	// The time at which the environment group was last updated as milliseconds since epoch.
 	LastModifiedAt *string `pulumi:"lastModifiedAt"`
@@ -74,7 +77,7 @@ type envgroupState struct {
 type EnvgroupState struct {
 	// The time at which the environment group was created as milliseconds since epoch.
 	CreatedAt pulumi.StringPtrInput
-	// Required. Host names for this environment group.
+	// Host names for this environment group.
 	Hostnames pulumi.StringArrayInput
 	// The time at which the environment group was last updated as milliseconds since epoch.
 	LastModifiedAt pulumi.StringPtrInput
@@ -89,7 +92,7 @@ func (EnvgroupState) ElementType() reflect.Type {
 }
 
 type envgroupArgs struct {
-	// Required. Host names for this environment group.
+	// Host names for this environment group.
 	Hostnames []string `pulumi:"hostnames"`
 	// ID of the environment group.
 	Name           *string `pulumi:"name"`
@@ -98,7 +101,7 @@ type envgroupArgs struct {
 
 // The set of arguments for constructing a Envgroup resource.
 type EnvgroupArgs struct {
-	// Required. Host names for this environment group.
+	// Host names for this environment group.
 	Hostnames pulumi.StringArrayInput
 	// ID of the environment group.
 	Name           pulumi.StringPtrInput

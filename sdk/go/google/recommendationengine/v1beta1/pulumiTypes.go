@@ -12,7 +12,7 @@ import (
 
 // Category represents catalog item category hierarchy.
 type GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy struct {
-	// Required. Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
+	// Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
 	Categories []string `pulumi:"categories"`
 }
 
@@ -29,7 +29,7 @@ type GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyInput int
 
 // Category represents catalog item category hierarchy.
 type GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs struct {
-	// Required. Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
+	// Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
 	Categories pulumi.StringArrayInput `pulumi:"categories"`
 }
 
@@ -85,7 +85,7 @@ func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyOutput
 	return o
 }
 
-// Required. Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
+// Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
 func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyOutput) Categories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy) []string {
 		return v.Categories
@@ -114,7 +114,7 @@ func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayO
 
 // Category represents catalog item category hierarchy.
 type GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse struct {
-	// Required. Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
+	// Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
 	Categories []string `pulumi:"categories"`
 }
 
@@ -131,7 +131,7 @@ type GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseI
 
 // Category represents catalog item category hierarchy.
 type GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseArgs struct {
-	// Required. Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
+	// Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
 	Categories pulumi.StringArrayInput `pulumi:"categories"`
 }
 
@@ -187,7 +187,7 @@ func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyRespon
 	return o
 }
 
-// Required. Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
+// Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific).
 func (o GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponseOutput) Categories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyResponse) []string {
 		return v.Categories
@@ -534,8 +534,8 @@ func (o GoogleCloudRecommendationengineV1beta1FeatureMapResponsePtrOutput) Numer
 type GoogleCloudRecommendationengineV1beta1Image struct {
 	// Optional. Height of the image in number of pixels.
 	Height *int `pulumi:"height"`
-	// Required. URL of the image with a length limit of 5 KiB.
-	Uri *string `pulumi:"uri"`
+	// URL of the image with a length limit of 5 KiB.
+	Uri string `pulumi:"uri"`
 	// Optional. Width of the image in number of pixels.
 	Width *int `pulumi:"width"`
 }
@@ -555,8 +555,8 @@ type GoogleCloudRecommendationengineV1beta1ImageInput interface {
 type GoogleCloudRecommendationengineV1beta1ImageArgs struct {
 	// Optional. Height of the image in number of pixels.
 	Height pulumi.IntPtrInput `pulumi:"height"`
-	// Required. URL of the image with a length limit of 5 KiB.
-	Uri pulumi.StringPtrInput `pulumi:"uri"`
+	// URL of the image with a length limit of 5 KiB.
+	Uri pulumi.StringInput `pulumi:"uri"`
 	// Optional. Width of the image in number of pixels.
 	Width pulumi.IntPtrInput `pulumi:"width"`
 }
@@ -618,9 +618,9 @@ func (o GoogleCloudRecommendationengineV1beta1ImageOutput) Height() pulumi.IntPt
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1Image) *int { return v.Height }).(pulumi.IntPtrOutput)
 }
 
-// Required. URL of the image with a length limit of 5 KiB.
-func (o GoogleCloudRecommendationengineV1beta1ImageOutput) Uri() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1Image) *string { return v.Uri }).(pulumi.StringPtrOutput)
+// URL of the image with a length limit of 5 KiB.
+func (o GoogleCloudRecommendationengineV1beta1ImageOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1Image) string { return v.Uri }).(pulumi.StringOutput)
 }
 
 // Optional. Width of the image in number of pixels.
@@ -652,7 +652,7 @@ func (o GoogleCloudRecommendationengineV1beta1ImageArrayOutput) Index(i pulumi.I
 type GoogleCloudRecommendationengineV1beta1ImageResponse struct {
 	// Optional. Height of the image in number of pixels.
 	Height int `pulumi:"height"`
-	// Required. URL of the image with a length limit of 5 KiB.
+	// URL of the image with a length limit of 5 KiB.
 	Uri string `pulumi:"uri"`
 	// Optional. Width of the image in number of pixels.
 	Width int `pulumi:"width"`
@@ -673,7 +673,7 @@ type GoogleCloudRecommendationengineV1beta1ImageResponseInput interface {
 type GoogleCloudRecommendationengineV1beta1ImageResponseArgs struct {
 	// Optional. Height of the image in number of pixels.
 	Height pulumi.IntInput `pulumi:"height"`
-	// Required. URL of the image with a length limit of 5 KiB.
+	// URL of the image with a length limit of 5 KiB.
 	Uri pulumi.StringInput `pulumi:"uri"`
 	// Optional. Width of the image in number of pixels.
 	Width pulumi.IntInput `pulumi:"width"`
@@ -736,7 +736,7 @@ func (o GoogleCloudRecommendationengineV1beta1ImageResponseOutput) Height() pulu
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ImageResponse) int { return v.Height }).(pulumi.IntOutput)
 }
 
-// Required. URL of the image with a length limit of 5 KiB.
+// URL of the image with a length limit of 5 KiB.
 func (o GoogleCloudRecommendationengineV1beta1ImageResponseOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ImageResponse) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -1361,10 +1361,10 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceRespon
 
 // Product price range when there are a range of prices for different variations of the same product.
 type GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange struct {
-	// Required. The maximum product price.
-	Max *float64 `pulumi:"max"`
-	// Required. The minimum product price.
-	Min *float64 `pulumi:"min"`
+	// The maximum product price.
+	Max float64 `pulumi:"max"`
+	// The minimum product price.
+	Min float64 `pulumi:"min"`
 }
 
 // GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeInput is an input type that accepts GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs and GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeOutput values.
@@ -1380,10 +1380,10 @@ type GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeInput int
 
 // Product price range when there are a range of prices for different variations of the same product.
 type GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs struct {
-	// Required. The maximum product price.
-	Max pulumi.Float64PtrInput `pulumi:"max"`
-	// Required. The minimum product price.
-	Min pulumi.Float64PtrInput `pulumi:"min"`
+	// The maximum product price.
+	Max pulumi.Float64Input `pulumi:"max"`
+	// The minimum product price.
+	Min pulumi.Float64Input `pulumi:"min"`
 }
 
 func (GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs) ElementType() reflect.Type {
@@ -1464,14 +1464,14 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeOutput
 	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutput)
 }
 
-// Required. The maximum product price.
-func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeOutput) Max() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange) *float64 { return v.Max }).(pulumi.Float64PtrOutput)
+// The maximum product price.
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeOutput) Max() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange) float64 { return v.Max }).(pulumi.Float64Output)
 }
 
-// Required. The minimum product price.
-func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeOutput) Min() pulumi.Float64PtrOutput {
-	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange) *float64 { return v.Min }).(pulumi.Float64PtrOutput)
+// The minimum product price.
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeOutput) Min() pulumi.Float64Output {
+	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange) float64 { return v.Min }).(pulumi.Float64Output)
 }
 
 type GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutput struct{ *pulumi.OutputState }
@@ -1494,31 +1494,31 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOut
 	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeOutput)
 }
 
-// Required. The maximum product price.
+// The maximum product price.
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutput) Max() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange) *float64 {
 		if v == nil {
 			return nil
 		}
-		return v.Max
+		return &v.Max
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Required. The minimum product price.
+// The minimum product price.
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutput) Min() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange) *float64 {
 		if v == nil {
 			return nil
 		}
-		return v.Min
+		return &v.Min
 	}).(pulumi.Float64PtrOutput)
 }
 
 // Product price range when there are a range of prices for different variations of the same product.
 type GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse struct {
-	// Required. The maximum product price.
+	// The maximum product price.
 	Max float64 `pulumi:"max"`
-	// Required. The minimum product price.
+	// The minimum product price.
 	Min float64 `pulumi:"min"`
 }
 
@@ -1535,9 +1535,9 @@ type GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseI
 
 // Product price range when there are a range of prices for different variations of the same product.
 type GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseArgs struct {
-	// Required. The maximum product price.
+	// The maximum product price.
 	Max pulumi.Float64Input `pulumi:"max"`
-	// Required. The minimum product price.
+	// The minimum product price.
 	Min pulumi.Float64Input `pulumi:"min"`
 }
 
@@ -1619,14 +1619,14 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeRespon
 	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput)
 }
 
-// Required. The maximum product price.
+// The maximum product price.
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseOutput) Max() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse) float64 {
 		return v.Max
 	}).(pulumi.Float64Output)
 }
 
-// Required. The minimum product price.
+// The minimum product price.
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseOutput) Min() pulumi.Float64Output {
 	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse) float64 {
 		return v.Min
@@ -1653,7 +1653,7 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeRespon
 	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponseOutput)
 }
 
-// Required. The maximum product price.
+// The maximum product price.
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput) Max() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse) *float64 {
 		if v == nil {
@@ -1663,7 +1663,7 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeRespon
 	}).(pulumi.Float64PtrOutput)
 }
 
-// Required. The minimum product price.
+// The minimum product price.
 func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponsePtrOutput) Min() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeResponse) *float64 {
 		if v == nil {

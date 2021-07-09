@@ -35,9 +35,9 @@ type LookupInstanceResult struct {
 	Host string `pulumi:"host"`
 	// Time the instance was last modified in milliseconds since epoch.
 	LastModifiedAt string `pulumi:"lastModifiedAt"`
-	// Required. Compute Engine location where the instance resides.
+	// Compute Engine location where the instance resides.
 	Location string `pulumi:"location"`
-	// Required. Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
+	// Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
 	Name string `pulumi:"name"`
 	// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
 	PeeringCidrRange string `pulumi:"peeringCidrRange"`

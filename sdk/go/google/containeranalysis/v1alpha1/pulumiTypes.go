@@ -7612,8 +7612,8 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextResponsePtrOut
 
 // A GitSourceContext denotes a particular revision in a third party Git repository (e.g., GitHub).
 type GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext struct {
-	// Required. Git commit hash.
-	RevisionId *string `pulumi:"revisionId"`
+	// Git commit hash.
+	RevisionId string `pulumi:"revisionId"`
 	// Git repository URL.
 	Url *string `pulumi:"url"`
 }
@@ -7631,8 +7631,8 @@ type GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextInput interface {
 
 // A GitSourceContext denotes a particular revision in a third party Git repository (e.g., GitHub).
 type GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextArgs struct {
-	// Required. Git commit hash.
-	RevisionId pulumi.StringPtrInput `pulumi:"revisionId"`
+	// Git commit hash.
+	RevisionId pulumi.StringInput `pulumi:"revisionId"`
 	// Git repository URL.
 	Url pulumi.StringPtrInput `pulumi:"url"`
 }
@@ -7715,9 +7715,9 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextOutput) ToGoogleD
 	}).(GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextPtrOutput)
 }
 
-// Required. Git commit hash.
-func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextOutput) RevisionId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext) *string { return v.RevisionId }).(pulumi.StringPtrOutput)
+// Git commit hash.
+func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextOutput) RevisionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext) string { return v.RevisionId }).(pulumi.StringOutput)
 }
 
 // Git repository URL.
@@ -7745,13 +7745,13 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextPtrOutput) Elem()
 	}).(GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextOutput)
 }
 
-// Required. Git commit hash.
+// Git commit hash.
 func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextPtrOutput) RevisionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext) *string {
 		if v == nil {
 			return nil
 		}
-		return v.RevisionId
+		return &v.RevisionId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7767,7 +7767,7 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextPtrOutput) Url() 
 
 // A GitSourceContext denotes a particular revision in a third party Git repository (e.g., GitHub).
 type GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse struct {
-	// Required. Git commit hash.
+	// Git commit hash.
 	RevisionId string `pulumi:"revisionId"`
 	// Git repository URL.
 	Url string `pulumi:"url"`
@@ -7786,7 +7786,7 @@ type GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseInput interf
 
 // A GitSourceContext denotes a particular revision in a third party Git repository (e.g., GitHub).
 type GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseArgs struct {
-	// Required. Git commit hash.
+	// Git commit hash.
 	RevisionId pulumi.StringInput `pulumi:"revisionId"`
 	// Git repository URL.
 	Url pulumi.StringInput `pulumi:"url"`
@@ -7870,7 +7870,7 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput) T
 	}).(GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput)
 }
 
-// Required. Git commit hash.
+// Git commit hash.
 func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput) RevisionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse) string { return v.RevisionId }).(pulumi.StringOutput)
 }
@@ -7900,7 +7900,7 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput
 	}).(GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponseOutput)
 }
 
-// Required. Git commit hash.
+// Git commit hash.
 func (o GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponsePtrOutput) RevisionId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse) *string {
 		if v == nil {

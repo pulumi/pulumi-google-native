@@ -32,7 +32,7 @@ type LookupClusterResult struct {
 	Location string `pulumi:"location"`
 	// The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
 	Name string `pulumi:"name"`
-	// Required. The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
+	// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent performance.
 	ServeNodes int `pulumi:"serveNodes"`
 	// The current state of the cluster.
 	State string `pulumi:"state"`

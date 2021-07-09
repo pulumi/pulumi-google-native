@@ -19,7 +19,7 @@ type Datastore struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Datastore Configurations.
 	DatastoreConfig GoogleCloudApigeeV1DatastoreConfigResponseOutput `pulumi:"datastoreConfig"`
-	// Required. Display name in UI
+	// Display name in UI
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Datastore last update time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
 	LastUpdateTime pulumi.StringOutput `pulumi:"lastUpdateTime"`
@@ -38,6 +38,9 @@ func NewDatastore(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DisplayName == nil {
+		return nil, errors.New("invalid value for required argument 'DisplayName'")
+	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -67,7 +70,7 @@ type datastoreState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Datastore Configurations.
 	DatastoreConfig *GoogleCloudApigeeV1DatastoreConfigResponse `pulumi:"datastoreConfig"`
-	// Required. Display name in UI
+	// Display name in UI
 	DisplayName *string `pulumi:"displayName"`
 	// Datastore last update time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
 	LastUpdateTime *string `pulumi:"lastUpdateTime"`
@@ -84,7 +87,7 @@ type DatastoreState struct {
 	CreateTime pulumi.StringPtrInput
 	// Datastore Configurations.
 	DatastoreConfig GoogleCloudApigeeV1DatastoreConfigResponsePtrInput
-	// Required. Display name in UI
+	// Display name in UI
 	DisplayName pulumi.StringPtrInput
 	// Datastore last update time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
 	LastUpdateTime pulumi.StringPtrInput
@@ -103,9 +106,9 @@ func (DatastoreState) ElementType() reflect.Type {
 type datastoreArgs struct {
 	// Datastore Configurations.
 	DatastoreConfig *GoogleCloudApigeeV1DatastoreConfig `pulumi:"datastoreConfig"`
-	// Required. Display name in UI
-	DisplayName    *string `pulumi:"displayName"`
-	OrganizationId string  `pulumi:"organizationId"`
+	// Display name in UI
+	DisplayName    string `pulumi:"displayName"`
+	OrganizationId string `pulumi:"organizationId"`
 	// Destination storage type. Supported types `gcs` or `bigquery`.
 	TargetType *string `pulumi:"targetType"`
 }
@@ -114,8 +117,8 @@ type datastoreArgs struct {
 type DatastoreArgs struct {
 	// Datastore Configurations.
 	DatastoreConfig GoogleCloudApigeeV1DatastoreConfigPtrInput
-	// Required. Display name in UI
-	DisplayName    pulumi.StringPtrInput
+	// Display name in UI
+	DisplayName    pulumi.StringInput
 	OrganizationId pulumi.StringInput
 	// Destination storage type. Supported types `gcs` or `bigquery`.
 	TargetType pulumi.StringPtrInput

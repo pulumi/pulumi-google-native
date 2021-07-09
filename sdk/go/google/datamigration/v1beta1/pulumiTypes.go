@@ -2333,16 +2333,16 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 type MySqlConnectionProfile struct {
 	// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
 	CloudSqlId *string `pulumi:"cloudSqlId"`
-	// Required. The IP or hostname of the source MySQL database.
-	Host *string `pulumi:"host"`
-	// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
-	Password *string `pulumi:"password"`
-	// Required. The network port of the source MySQL database.
-	Port *int `pulumi:"port"`
+	// The IP or hostname of the source MySQL database.
+	Host string `pulumi:"host"`
+	// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+	Password string `pulumi:"password"`
+	// The network port of the source MySQL database.
+	Port int `pulumi:"port"`
 	// SSL configuration for the destination to connect to the source database.
 	Ssl *SslConfig `pulumi:"ssl"`
-	// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-	Username *string `pulumi:"username"`
+	// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+	Username string `pulumi:"username"`
 }
 
 // MySqlConnectionProfileInput is an input type that accepts MySqlConnectionProfileArgs and MySqlConnectionProfileOutput values.
@@ -2360,16 +2360,16 @@ type MySqlConnectionProfileInput interface {
 type MySqlConnectionProfileArgs struct {
 	// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
 	CloudSqlId pulumi.StringPtrInput `pulumi:"cloudSqlId"`
-	// Required. The IP or hostname of the source MySQL database.
-	Host pulumi.StringPtrInput `pulumi:"host"`
-	// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
-	Password pulumi.StringPtrInput `pulumi:"password"`
-	// Required. The network port of the source MySQL database.
-	Port pulumi.IntPtrInput `pulumi:"port"`
+	// The IP or hostname of the source MySQL database.
+	Host pulumi.StringInput `pulumi:"host"`
+	// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+	Password pulumi.StringInput `pulumi:"password"`
+	// The network port of the source MySQL database.
+	Port pulumi.IntInput `pulumi:"port"`
 	// SSL configuration for the destination to connect to the source database.
 	Ssl SslConfigPtrInput `pulumi:"ssl"`
-	// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-	Username pulumi.StringPtrInput `pulumi:"username"`
+	// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+	Username pulumi.StringInput `pulumi:"username"`
 }
 
 func (MySqlConnectionProfileArgs) ElementType() reflect.Type {
@@ -2455,19 +2455,19 @@ func (o MySqlConnectionProfileOutput) CloudSqlId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MySqlConnectionProfile) *string { return v.CloudSqlId }).(pulumi.StringPtrOutput)
 }
 
-// Required. The IP or hostname of the source MySQL database.
-func (o MySqlConnectionProfileOutput) Host() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MySqlConnectionProfile) *string { return v.Host }).(pulumi.StringPtrOutput)
+// The IP or hostname of the source MySQL database.
+func (o MySqlConnectionProfileOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v MySqlConnectionProfile) string { return v.Host }).(pulumi.StringOutput)
 }
 
-// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
-func (o MySqlConnectionProfileOutput) Password() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MySqlConnectionProfile) *string { return v.Password }).(pulumi.StringPtrOutput)
+// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+func (o MySqlConnectionProfileOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v MySqlConnectionProfile) string { return v.Password }).(pulumi.StringOutput)
 }
 
-// Required. The network port of the source MySQL database.
-func (o MySqlConnectionProfileOutput) Port() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v MySqlConnectionProfile) *int { return v.Port }).(pulumi.IntPtrOutput)
+// The network port of the source MySQL database.
+func (o MySqlConnectionProfileOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v MySqlConnectionProfile) int { return v.Port }).(pulumi.IntOutput)
 }
 
 // SSL configuration for the destination to connect to the source database.
@@ -2475,9 +2475,9 @@ func (o MySqlConnectionProfileOutput) Ssl() SslConfigPtrOutput {
 	return o.ApplyT(func(v MySqlConnectionProfile) *SslConfig { return v.Ssl }).(SslConfigPtrOutput)
 }
 
-// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-func (o MySqlConnectionProfileOutput) Username() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MySqlConnectionProfile) *string { return v.Username }).(pulumi.StringPtrOutput)
+// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+func (o MySqlConnectionProfileOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v MySqlConnectionProfile) string { return v.Username }).(pulumi.StringOutput)
 }
 
 type MySqlConnectionProfilePtrOutput struct{ *pulumi.OutputState }
@@ -2508,33 +2508,33 @@ func (o MySqlConnectionProfilePtrOutput) CloudSqlId() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The IP or hostname of the source MySQL database.
+// The IP or hostname of the source MySQL database.
 func (o MySqlConnectionProfilePtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlConnectionProfile) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Host
+		return &v.Host
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
 func (o MySqlConnectionProfilePtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlConnectionProfile) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Password
+		return &v.Password
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The network port of the source MySQL database.
+// The network port of the source MySQL database.
 func (o MySqlConnectionProfilePtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MySqlConnectionProfile) *int {
 		if v == nil {
 			return nil
 		}
-		return v.Port
+		return &v.Port
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -2548,13 +2548,13 @@ func (o MySqlConnectionProfilePtrOutput) Ssl() SslConfigPtrOutput {
 	}).(SslConfigPtrOutput)
 }
 
-// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
 func (o MySqlConnectionProfilePtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlConnectionProfile) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Username
+		return &v.Username
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -2562,17 +2562,17 @@ func (o MySqlConnectionProfilePtrOutput) Username() pulumi.StringPtrOutput {
 type MySqlConnectionProfileResponse struct {
 	// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
 	CloudSqlId string `pulumi:"cloudSqlId"`
-	// Required. The IP or hostname of the source MySQL database.
+	// The IP or hostname of the source MySQL database.
 	Host string `pulumi:"host"`
-	// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+	// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
 	Password string `pulumi:"password"`
 	// Indicates If this connection profile password is stored.
 	PasswordSet bool `pulumi:"passwordSet"`
-	// Required. The network port of the source MySQL database.
+	// The network port of the source MySQL database.
 	Port int `pulumi:"port"`
 	// SSL configuration for the destination to connect to the source database.
 	Ssl SslConfigResponse `pulumi:"ssl"`
-	// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+	// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
 	Username string `pulumi:"username"`
 }
 
@@ -2591,17 +2591,17 @@ type MySqlConnectionProfileResponseInput interface {
 type MySqlConnectionProfileResponseArgs struct {
 	// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
 	CloudSqlId pulumi.StringInput `pulumi:"cloudSqlId"`
-	// Required. The IP or hostname of the source MySQL database.
+	// The IP or hostname of the source MySQL database.
 	Host pulumi.StringInput `pulumi:"host"`
-	// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+	// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
 	Password pulumi.StringInput `pulumi:"password"`
 	// Indicates If this connection profile password is stored.
 	PasswordSet pulumi.BoolInput `pulumi:"passwordSet"`
-	// Required. The network port of the source MySQL database.
+	// The network port of the source MySQL database.
 	Port pulumi.IntInput `pulumi:"port"`
 	// SSL configuration for the destination to connect to the source database.
 	Ssl SslConfigResponseInput `pulumi:"ssl"`
-	// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+	// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
 	Username pulumi.StringInput `pulumi:"username"`
 }
 
@@ -2688,12 +2688,12 @@ func (o MySqlConnectionProfileResponseOutput) CloudSqlId() pulumi.StringOutput {
 	return o.ApplyT(func(v MySqlConnectionProfileResponse) string { return v.CloudSqlId }).(pulumi.StringOutput)
 }
 
-// Required. The IP or hostname of the source MySQL database.
+// The IP or hostname of the source MySQL database.
 func (o MySqlConnectionProfileResponseOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v MySqlConnectionProfileResponse) string { return v.Host }).(pulumi.StringOutput)
 }
 
-// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
 func (o MySqlConnectionProfileResponseOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v MySqlConnectionProfileResponse) string { return v.Password }).(pulumi.StringOutput)
 }
@@ -2703,7 +2703,7 @@ func (o MySqlConnectionProfileResponseOutput) PasswordSet() pulumi.BoolOutput {
 	return o.ApplyT(func(v MySqlConnectionProfileResponse) bool { return v.PasswordSet }).(pulumi.BoolOutput)
 }
 
-// Required. The network port of the source MySQL database.
+// The network port of the source MySQL database.
 func (o MySqlConnectionProfileResponseOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v MySqlConnectionProfileResponse) int { return v.Port }).(pulumi.IntOutput)
 }
@@ -2713,7 +2713,7 @@ func (o MySqlConnectionProfileResponseOutput) Ssl() SslConfigResponseOutput {
 	return o.ApplyT(func(v MySqlConnectionProfileResponse) SslConfigResponse { return v.Ssl }).(SslConfigResponseOutput)
 }
 
-// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
 func (o MySqlConnectionProfileResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v MySqlConnectionProfileResponse) string { return v.Username }).(pulumi.StringOutput)
 }
@@ -2746,7 +2746,7 @@ func (o MySqlConnectionProfileResponsePtrOutput) CloudSqlId() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The IP or hostname of the source MySQL database.
+// The IP or hostname of the source MySQL database.
 func (o MySqlConnectionProfileResponsePtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlConnectionProfileResponse) *string {
 		if v == nil {
@@ -2756,7 +2756,7 @@ func (o MySqlConnectionProfileResponsePtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
+// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
 func (o MySqlConnectionProfileResponsePtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlConnectionProfileResponse) *string {
 		if v == nil {
@@ -2776,7 +2776,7 @@ func (o MySqlConnectionProfileResponsePtrOutput) PasswordSet() pulumi.BoolPtrOut
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Required. The network port of the source MySQL database.
+// The network port of the source MySQL database.
 func (o MySqlConnectionProfileResponsePtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *MySqlConnectionProfileResponse) *int {
 		if v == nil {
@@ -2796,7 +2796,7 @@ func (o MySqlConnectionProfileResponsePtrOutput) Ssl() SslConfigResponsePtrOutpu
 	}).(SslConfigResponsePtrOutput)
 }
 
-// Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
+// The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
 func (o MySqlConnectionProfileResponsePtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MySqlConnectionProfileResponse) *string {
 		if v == nil {
@@ -2810,10 +2810,10 @@ func (o MySqlConnectionProfileResponsePtrOutput) Username() pulumi.StringPtrOutp
 type ReverseSshConnectivity struct {
 	// The name of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
 	Vm *string `pulumi:"vm"`
-	// Required. The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
-	VmIp *string `pulumi:"vmIp"`
-	// Required. The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
-	VmPort *int `pulumi:"vmPort"`
+	// The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+	VmIp string `pulumi:"vmIp"`
+	// The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+	VmPort int `pulumi:"vmPort"`
 	// The name of the VPC to peer with the Cloud SQL private network.
 	Vpc *string `pulumi:"vpc"`
 }
@@ -2833,10 +2833,10 @@ type ReverseSshConnectivityInput interface {
 type ReverseSshConnectivityArgs struct {
 	// The name of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
 	Vm pulumi.StringPtrInput `pulumi:"vm"`
-	// Required. The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
-	VmIp pulumi.StringPtrInput `pulumi:"vmIp"`
-	// Required. The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
-	VmPort pulumi.IntPtrInput `pulumi:"vmPort"`
+	// The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+	VmIp pulumi.StringInput `pulumi:"vmIp"`
+	// The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+	VmPort pulumi.IntInput `pulumi:"vmPort"`
 	// The name of the VPC to peer with the Cloud SQL private network.
 	Vpc pulumi.StringPtrInput `pulumi:"vpc"`
 }
@@ -2924,14 +2924,14 @@ func (o ReverseSshConnectivityOutput) Vm() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReverseSshConnectivity) *string { return v.Vm }).(pulumi.StringPtrOutput)
 }
 
-// Required. The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
-func (o ReverseSshConnectivityOutput) VmIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReverseSshConnectivity) *string { return v.VmIp }).(pulumi.StringPtrOutput)
+// The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+func (o ReverseSshConnectivityOutput) VmIp() pulumi.StringOutput {
+	return o.ApplyT(func(v ReverseSshConnectivity) string { return v.VmIp }).(pulumi.StringOutput)
 }
 
-// Required. The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
-func (o ReverseSshConnectivityOutput) VmPort() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v ReverseSshConnectivity) *int { return v.VmPort }).(pulumi.IntPtrOutput)
+// The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+func (o ReverseSshConnectivityOutput) VmPort() pulumi.IntOutput {
+	return o.ApplyT(func(v ReverseSshConnectivity) int { return v.VmPort }).(pulumi.IntOutput)
 }
 
 // The name of the VPC to peer with the Cloud SQL private network.
@@ -2967,23 +2967,23 @@ func (o ReverseSshConnectivityPtrOutput) Vm() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+// The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
 func (o ReverseSshConnectivityPtrOutput) VmIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReverseSshConnectivity) *string {
 		if v == nil {
 			return nil
 		}
-		return v.VmIp
+		return &v.VmIp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+// The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
 func (o ReverseSshConnectivityPtrOutput) VmPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ReverseSshConnectivity) *int {
 		if v == nil {
 			return nil
 		}
-		return v.VmPort
+		return &v.VmPort
 	}).(pulumi.IntPtrOutput)
 }
 
@@ -3001,9 +3001,9 @@ func (o ReverseSshConnectivityPtrOutput) Vpc() pulumi.StringPtrOutput {
 type ReverseSshConnectivityResponse struct {
 	// The name of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
 	Vm string `pulumi:"vm"`
-	// Required. The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+	// The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
 	VmIp string `pulumi:"vmIp"`
-	// Required. The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+	// The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
 	VmPort int `pulumi:"vmPort"`
 	// The name of the VPC to peer with the Cloud SQL private network.
 	Vpc string `pulumi:"vpc"`
@@ -3024,9 +3024,9 @@ type ReverseSshConnectivityResponseInput interface {
 type ReverseSshConnectivityResponseArgs struct {
 	// The name of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
 	Vm pulumi.StringInput `pulumi:"vm"`
-	// Required. The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+	// The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
 	VmIp pulumi.StringInput `pulumi:"vmIp"`
-	// Required. The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+	// The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
 	VmPort pulumi.IntInput `pulumi:"vmPort"`
 	// The name of the VPC to peer with the Cloud SQL private network.
 	Vpc pulumi.StringInput `pulumi:"vpc"`
@@ -3115,12 +3115,12 @@ func (o ReverseSshConnectivityResponseOutput) Vm() pulumi.StringOutput {
 	return o.ApplyT(func(v ReverseSshConnectivityResponse) string { return v.Vm }).(pulumi.StringOutput)
 }
 
-// Required. The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+// The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
 func (o ReverseSshConnectivityResponseOutput) VmIp() pulumi.StringOutput {
 	return o.ApplyT(func(v ReverseSshConnectivityResponse) string { return v.VmIp }).(pulumi.StringOutput)
 }
 
-// Required. The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+// The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
 func (o ReverseSshConnectivityResponseOutput) VmPort() pulumi.IntOutput {
 	return o.ApplyT(func(v ReverseSshConnectivityResponse) int { return v.VmPort }).(pulumi.IntOutput)
 }
@@ -3158,7 +3158,7 @@ func (o ReverseSshConnectivityResponsePtrOutput) Vm() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+// The IP of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
 func (o ReverseSshConnectivityResponsePtrOutput) VmIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ReverseSshConnectivityResponse) *string {
 		if v == nil {
@@ -3168,7 +3168,7 @@ func (o ReverseSshConnectivityResponsePtrOutput) VmIp() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Required. The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
+// The forwarding port of the virtual machine (Compute Engine) used as the bastion server for the SSH tunnel.
 func (o ReverseSshConnectivityResponsePtrOutput) VmPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ReverseSshConnectivityResponse) *int {
 		if v == nil {
@@ -3826,8 +3826,8 @@ func (o SqlIpConfigResponsePtrOutput) RequireSsl() pulumi.BoolPtrOutput {
 
 // SSL configuration information.
 type SslConfig struct {
-	// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
-	CaCertificate *string `pulumi:"caCertificate"`
+	// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
+	CaCertificate string `pulumi:"caCertificate"`
 	// Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.If this field is used then the 'client_key' field is mandatory.
 	ClientCertificate *string `pulumi:"clientCertificate"`
 	// Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' field is mandatory.
@@ -3847,8 +3847,8 @@ type SslConfigInput interface {
 
 // SSL configuration information.
 type SslConfigArgs struct {
-	// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
-	CaCertificate pulumi.StringPtrInput `pulumi:"caCertificate"`
+	// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
+	CaCertificate pulumi.StringInput `pulumi:"caCertificate"`
 	// Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.If this field is used then the 'client_key' field is mandatory.
 	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
 	// Input only. The unencrypted PKCS#1 or PKCS#8 PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' field is mandatory.
@@ -3933,9 +3933,9 @@ func (o SslConfigOutput) ToSslConfigPtrOutputWithContext(ctx context.Context) Ss
 	}).(SslConfigPtrOutput)
 }
 
-// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
-func (o SslConfigOutput) CaCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslConfig) *string { return v.CaCertificate }).(pulumi.StringPtrOutput)
+// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
+func (o SslConfigOutput) CaCertificate() pulumi.StringOutput {
+	return o.ApplyT(func(v SslConfig) string { return v.CaCertificate }).(pulumi.StringOutput)
 }
 
 // Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.If this field is used then the 'client_key' field is mandatory.
@@ -3966,13 +3966,13 @@ func (o SslConfigPtrOutput) Elem() SslConfigOutput {
 	return o.ApplyT(func(v *SslConfig) SslConfig { return *v }).(SslConfigOutput)
 }
 
-// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
+// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
 func (o SslConfigPtrOutput) CaCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SslConfig) *string {
 		if v == nil {
 			return nil
 		}
-		return v.CaCertificate
+		return &v.CaCertificate
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3998,7 +3998,7 @@ func (o SslConfigPtrOutput) ClientKey() pulumi.StringPtrOutput {
 
 // SSL configuration information.
 type SslConfigResponse struct {
-	// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
+	// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
 	CaCertificate string `pulumi:"caCertificate"`
 	// Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.If this field is used then the 'client_key' field is mandatory.
 	ClientCertificate string `pulumi:"clientCertificate"`
@@ -4021,7 +4021,7 @@ type SslConfigResponseInput interface {
 
 // SSL configuration information.
 type SslConfigResponseArgs struct {
-	// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
+	// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
 	CaCertificate pulumi.StringInput `pulumi:"caCertificate"`
 	// Input only. The x509 PEM-encoded certificate that will be used by the replica to authenticate against the source database server.If this field is used then the 'client_key' field is mandatory.
 	ClientCertificate pulumi.StringInput `pulumi:"clientCertificate"`
@@ -4109,7 +4109,7 @@ func (o SslConfigResponseOutput) ToSslConfigResponsePtrOutputWithContext(ctx con
 	}).(SslConfigResponsePtrOutput)
 }
 
-// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
+// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
 func (o SslConfigResponseOutput) CaCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v SslConfigResponse) string { return v.CaCertificate }).(pulumi.StringOutput)
 }
@@ -4147,7 +4147,7 @@ func (o SslConfigResponsePtrOutput) Elem() SslConfigResponseOutput {
 	return o.ApplyT(func(v *SslConfigResponse) SslConfigResponse { return *v }).(SslConfigResponseOutput)
 }
 
-// Required. Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
+// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
 func (o SslConfigResponsePtrOutput) CaCertificate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SslConfigResponse) *string {
 		if v == nil {

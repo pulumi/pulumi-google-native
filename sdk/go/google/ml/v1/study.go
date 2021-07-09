@@ -23,7 +23,7 @@ type Study struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The detailed state of a study.
 	State pulumi.StringOutput `pulumi:"state"`
-	// Required. Configuration of the study.
+	// Configuration of the study.
 	StudyConfig GoogleCloudMlV1__StudyConfigResponseOutput `pulumi:"studyConfig"`
 }
 
@@ -39,6 +39,9 @@ func NewStudy(ctx *pulumi.Context,
 	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.StudyConfig == nil {
+		return nil, errors.New("invalid value for required argument 'StudyConfig'")
 	}
 	if args.StudyId == nil {
 		return nil, errors.New("invalid value for required argument 'StudyId'")
@@ -73,7 +76,7 @@ type studyState struct {
 	Name *string `pulumi:"name"`
 	// The detailed state of a study.
 	State *string `pulumi:"state"`
-	// Required. Configuration of the study.
+	// Configuration of the study.
 	StudyConfig *GoogleCloudMlV1__StudyConfigResponse `pulumi:"studyConfig"`
 }
 
@@ -86,7 +89,7 @@ type StudyState struct {
 	Name pulumi.StringPtrInput
 	// The detailed state of a study.
 	State pulumi.StringPtrInput
-	// Required. Configuration of the study.
+	// Configuration of the study.
 	StudyConfig GoogleCloudMlV1__StudyConfigResponsePtrInput
 }
 
@@ -97,17 +100,17 @@ func (StudyState) ElementType() reflect.Type {
 type studyArgs struct {
 	Location string `pulumi:"location"`
 	Project  string `pulumi:"project"`
-	// Required. Configuration of the study.
-	StudyConfig *GoogleCloudMlV1__StudyConfig `pulumi:"studyConfig"`
-	StudyId     string                        `pulumi:"studyId"`
+	// Configuration of the study.
+	StudyConfig GoogleCloudMlV1__StudyConfig `pulumi:"studyConfig"`
+	StudyId     string                       `pulumi:"studyId"`
 }
 
 // The set of arguments for constructing a Study resource.
 type StudyArgs struct {
 	Location pulumi.StringInput
 	Project  pulumi.StringInput
-	// Required. Configuration of the study.
-	StudyConfig GoogleCloudMlV1__StudyConfigPtrInput
+	// Configuration of the study.
+	StudyConfig GoogleCloudMlV1__StudyConfigInput
 	StudyId     pulumi.StringInput
 }
 

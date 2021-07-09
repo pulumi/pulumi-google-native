@@ -4163,10 +4163,10 @@ func (o RuleResponseArrayOutput) Index(i pulumi.IntInput) RuleResponseOutput {
 
 // Autoscaling config for an Agones fleet.
 type ScalingConfig struct {
-	// Required. Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
-	FleetAutoscalerSpec *string `pulumi:"fleetAutoscalerSpec"`
-	// Required. The name of the Scaling Config
-	Name *string `pulumi:"name"`
+	// Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+	FleetAutoscalerSpec string `pulumi:"fleetAutoscalerSpec"`
+	// The name of the Scaling Config
+	Name string `pulumi:"name"`
 	// The schedules to which this Scaling Config applies.
 	Schedules []Schedule `pulumi:"schedules"`
 	// Labels used to identify the game server clusters to which this Agones scaling config applies. A game server cluster is subject to this Agones scaling config if its labels match any of the selector entries.
@@ -4186,10 +4186,10 @@ type ScalingConfigInput interface {
 
 // Autoscaling config for an Agones fleet.
 type ScalingConfigArgs struct {
-	// Required. Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
-	FleetAutoscalerSpec pulumi.StringPtrInput `pulumi:"fleetAutoscalerSpec"`
-	// Required. The name of the Scaling Config
-	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+	FleetAutoscalerSpec pulumi.StringInput `pulumi:"fleetAutoscalerSpec"`
+	// The name of the Scaling Config
+	Name pulumi.StringInput `pulumi:"name"`
 	// The schedules to which this Scaling Config applies.
 	Schedules ScheduleArrayInput `pulumi:"schedules"`
 	// Labels used to identify the game server clusters to which this Agones scaling config applies. A game server cluster is subject to this Agones scaling config if its labels match any of the selector entries.
@@ -4248,14 +4248,14 @@ func (o ScalingConfigOutput) ToScalingConfigOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Required. Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
-func (o ScalingConfigOutput) FleetAutoscalerSpec() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScalingConfig) *string { return v.FleetAutoscalerSpec }).(pulumi.StringPtrOutput)
+// Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+func (o ScalingConfigOutput) FleetAutoscalerSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v ScalingConfig) string { return v.FleetAutoscalerSpec }).(pulumi.StringOutput)
 }
 
-// Required. The name of the Scaling Config
-func (o ScalingConfigOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ScalingConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
+// The name of the Scaling Config
+func (o ScalingConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v ScalingConfig) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The schedules to which this Scaling Config applies.
@@ -4290,9 +4290,9 @@ func (o ScalingConfigArrayOutput) Index(i pulumi.IntInput) ScalingConfigOutput {
 
 // Autoscaling config for an Agones fleet.
 type ScalingConfigResponse struct {
-	// Required. Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+	// Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
 	FleetAutoscalerSpec string `pulumi:"fleetAutoscalerSpec"`
-	// Required. The name of the Scaling Config
+	// The name of the Scaling Config
 	Name string `pulumi:"name"`
 	// The schedules to which this Scaling Config applies.
 	Schedules []ScheduleResponse `pulumi:"schedules"`
@@ -4313,9 +4313,9 @@ type ScalingConfigResponseInput interface {
 
 // Autoscaling config for an Agones fleet.
 type ScalingConfigResponseArgs struct {
-	// Required. Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+	// Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
 	FleetAutoscalerSpec pulumi.StringInput `pulumi:"fleetAutoscalerSpec"`
-	// Required. The name of the Scaling Config
+	// The name of the Scaling Config
 	Name pulumi.StringInput `pulumi:"name"`
 	// The schedules to which this Scaling Config applies.
 	Schedules ScheduleResponseArrayInput `pulumi:"schedules"`
@@ -4375,12 +4375,12 @@ func (o ScalingConfigResponseOutput) ToScalingConfigResponseOutputWithContext(ct
 	return o
 }
 
-// Required. Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
+// Agones fleet autoscaler spec. Example spec: https://agones.dev/site/docs/reference/fleetautoscaler/
 func (o ScalingConfigResponseOutput) FleetAutoscalerSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v ScalingConfigResponse) string { return v.FleetAutoscalerSpec }).(pulumi.StringOutput)
 }
 
-// Required. The name of the Scaling Config
+// The name of the Scaling Config
 func (o ScalingConfigResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ScalingConfigResponse) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -52,7 +52,7 @@ type LookupInstanceResult struct {
 	KmsKey string `pulumi:"kmsKey"`
 	// Labels to apply to this instance. These can be later modified by the setLabels method.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
+	// The [Compute Engine machine type](/compute/docs/machine-types) of this instance.
 	MachineType string `pulumi:"machineType"`
 	// Custom metadata to apply to this instance.
 	Metadata map[string]string `pulumi:"metadata"`

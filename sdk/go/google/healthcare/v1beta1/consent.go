@@ -15,7 +15,7 @@ import (
 type Consent struct {
 	pulumi.CustomResourceState
 
-	// Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+	// The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
 	ConsentArtifact pulumi.StringOutput `pulumi:"consentArtifact"`
 	// Timestamp in UTC of when this Consent is considered expired.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
@@ -29,11 +29,11 @@ type Consent struct {
 	RevisionCreateTime pulumi.StringOutput `pulumi:"revisionCreateTime"`
 	// The revision ID of the Consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
 	RevisionId pulumi.StringOutput `pulumi:"revisionId"`
-	// Required. Indicates the current state of this Consent.
+	// Indicates the current state of this Consent.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Input only. The time to live for this Consent from when it is created.
 	Ttl pulumi.StringOutput `pulumi:"ttl"`
-	// Required. User's UUID provided by the client.
+	// User's UUID provided by the client.
 	UserId pulumi.StringOutput `pulumi:"userId"`
 }
 
@@ -44,6 +44,9 @@ func NewConsent(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ConsentArtifact == nil {
+		return nil, errors.New("invalid value for required argument 'ConsentArtifact'")
+	}
 	if args.ConsentStoreId == nil {
 		return nil, errors.New("invalid value for required argument 'ConsentStoreId'")
 	}
@@ -55,6 +58,9 @@ func NewConsent(ctx *pulumi.Context,
 	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
+	}
+	if args.UserId == nil {
+		return nil, errors.New("invalid value for required argument 'UserId'")
 	}
 	var resource Consent
 	err := ctx.RegisterResource("google-native:healthcare/v1beta1:Consent", name, args, &resource, opts...)
@@ -78,7 +84,7 @@ func GetConsent(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Consent resources.
 type consentState struct {
-	// Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+	// The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
 	ConsentArtifact *string `pulumi:"consentArtifact"`
 	// Timestamp in UTC of when this Consent is considered expired.
 	ExpireTime *string `pulumi:"expireTime"`
@@ -92,16 +98,16 @@ type consentState struct {
 	RevisionCreateTime *string `pulumi:"revisionCreateTime"`
 	// The revision ID of the Consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
 	RevisionId *string `pulumi:"revisionId"`
-	// Required. Indicates the current state of this Consent.
+	// Indicates the current state of this Consent.
 	State *string `pulumi:"state"`
 	// Input only. The time to live for this Consent from when it is created.
 	Ttl *string `pulumi:"ttl"`
-	// Required. User's UUID provided by the client.
+	// User's UUID provided by the client.
 	UserId *string `pulumi:"userId"`
 }
 
 type ConsentState struct {
-	// Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+	// The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
 	ConsentArtifact pulumi.StringPtrInput
 	// Timestamp in UTC of when this Consent is considered expired.
 	ExpireTime pulumi.StringPtrInput
@@ -115,11 +121,11 @@ type ConsentState struct {
 	RevisionCreateTime pulumi.StringPtrInput
 	// The revision ID of the Consent. The format is an 8-character hexadecimal string. Refer to a specific revision of a Consent by appending `@{revision_id}` to the Consent's resource name.
 	RevisionId pulumi.StringPtrInput
-	// Required. Indicates the current state of this Consent.
+	// Indicates the current state of this Consent.
 	State pulumi.StringPtrInput
 	// Input only. The time to live for this Consent from when it is created.
 	Ttl pulumi.StringPtrInput
-	// Required. User's UUID provided by the client.
+	// User's UUID provided by the client.
 	UserId pulumi.StringPtrInput
 }
 
@@ -128,10 +134,10 @@ func (ConsentState) ElementType() reflect.Type {
 }
 
 type consentArgs struct {
-	// Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
-	ConsentArtifact *string `pulumi:"consentArtifact"`
-	ConsentStoreId  string  `pulumi:"consentStoreId"`
-	DatasetId       string  `pulumi:"datasetId"`
+	// The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+	ConsentArtifact string `pulumi:"consentArtifact"`
+	ConsentStoreId  string `pulumi:"consentStoreId"`
+	DatasetId       string `pulumi:"datasetId"`
 	// Timestamp in UTC of when this Consent is considered expired.
 	ExpireTime *string `pulumi:"expireTime"`
 	Location   string  `pulumi:"location"`
@@ -142,18 +148,18 @@ type consentArgs struct {
 	// Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
 	Policies []GoogleCloudHealthcareV1beta1ConsentPolicy `pulumi:"policies"`
 	Project  string                                      `pulumi:"project"`
-	// Required. Indicates the current state of this Consent.
-	State *string `pulumi:"state"`
+	// Indicates the current state of this Consent.
+	State string `pulumi:"state"`
 	// Input only. The time to live for this Consent from when it is created.
 	Ttl *string `pulumi:"ttl"`
-	// Required. User's UUID provided by the client.
-	UserId *string `pulumi:"userId"`
+	// User's UUID provided by the client.
+	UserId string `pulumi:"userId"`
 }
 
 // The set of arguments for constructing a Consent resource.
 type ConsentArgs struct {
-	// Required. The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
-	ConsentArtifact pulumi.StringPtrInput
+	// The resource name of the Consent artifact that contains proof of the end user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`.
+	ConsentArtifact pulumi.StringInput
 	ConsentStoreId  pulumi.StringInput
 	DatasetId       pulumi.StringInput
 	// Timestamp in UTC of when this Consent is considered expired.
@@ -166,12 +172,12 @@ type ConsentArgs struct {
 	// Optional. Represents a user's consent in terms of the resources that can be accessed and under what conditions.
 	Policies GoogleCloudHealthcareV1beta1ConsentPolicyArrayInput
 	Project  pulumi.StringInput
-	// Required. Indicates the current state of this Consent.
-	State *ConsentStateEnum
+	// Indicates the current state of this Consent.
+	State ConsentStateEnum
 	// Input only. The time to live for this Consent from when it is created.
 	Ttl pulumi.StringPtrInput
-	// Required. User's UUID provided by the client.
-	UserId pulumi.StringPtrInput
+	// User's UUID provided by the client.
+	UserId pulumi.StringInput
 }
 
 func (ConsentArgs) ElementType() reflect.Type {

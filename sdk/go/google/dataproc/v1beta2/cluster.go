@@ -15,17 +15,17 @@ import (
 type Cluster struct {
 	pulumi.CustomResourceState
 
-	// Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+	// The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
 	ClusterName pulumi.StringOutput `pulumi:"clusterName"`
 	// A cluster UUID (Unique Universal Identifier). Dataproc generates this value when it creates the cluster.
 	ClusterUuid pulumi.StringOutput `pulumi:"clusterUuid"`
-	// Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+	// The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
 	Config ClusterConfigResponseOutput `pulumi:"config"`
 	// Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
 	Metrics ClusterMetricsResponseOutput `pulumi:"metrics"`
-	// Required. The Google Cloud Platform project ID that the cluster belongs to.
+	// The Google Cloud Platform project ID that the cluster belongs to.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Cluster status.
 	Status ClusterStatusResponseOutput `pulumi:"status"`
@@ -40,6 +40,12 @@ func NewCluster(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.ClusterName == nil {
+		return nil, errors.New("invalid value for required argument 'ClusterName'")
+	}
+	if args.Config == nil {
+		return nil, errors.New("invalid value for required argument 'Config'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -68,17 +74,17 @@ func GetCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
-	// Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+	// The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
 	ClusterName *string `pulumi:"clusterName"`
 	// A cluster UUID (Unique Universal Identifier). Dataproc generates this value when it creates the cluster.
 	ClusterUuid *string `pulumi:"clusterUuid"`
-	// Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+	// The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
 	Config *ClusterConfigResponse `pulumi:"config"`
 	// Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
 	Labels map[string]string `pulumi:"labels"`
 	// Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
 	Metrics *ClusterMetricsResponse `pulumi:"metrics"`
-	// Required. The Google Cloud Platform project ID that the cluster belongs to.
+	// The Google Cloud Platform project ID that the cluster belongs to.
 	Project *string `pulumi:"project"`
 	// Cluster status.
 	Status *ClusterStatusResponse `pulumi:"status"`
@@ -87,17 +93,17 @@ type clusterState struct {
 }
 
 type ClusterState struct {
-	// Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+	// The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
 	ClusterName pulumi.StringPtrInput
 	// A cluster UUID (Unique Universal Identifier). Dataproc generates this value when it creates the cluster.
 	ClusterUuid pulumi.StringPtrInput
-	// Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+	// The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
 	Config ClusterConfigResponsePtrInput
 	// Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
 	Labels pulumi.StringMapInput
 	// Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
 	Metrics ClusterMetricsResponsePtrInput
-	// Required. The Google Cloud Platform project ID that the cluster belongs to.
+	// The Google Cloud Platform project ID that the cluster belongs to.
 	Project pulumi.StringPtrInput
 	// Cluster status.
 	Status ClusterStatusResponsePtrInput
@@ -110,13 +116,13 @@ func (ClusterState) ElementType() reflect.Type {
 }
 
 type clusterArgs struct {
-	// Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
-	ClusterName *string `pulumi:"clusterName"`
-	// Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
-	Config *ClusterConfig `pulumi:"config"`
+	// The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+	ClusterName string `pulumi:"clusterName"`
+	// The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+	Config ClusterConfig `pulumi:"config"`
 	// Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
 	Labels map[string]string `pulumi:"labels"`
-	// Required. The Google Cloud Platform project ID that the cluster belongs to.
+	// The Google Cloud Platform project ID that the cluster belongs to.
 	Project   string  `pulumi:"project"`
 	Region    string  `pulumi:"region"`
 	RequestId *string `pulumi:"requestId"`
@@ -124,13 +130,13 @@ type clusterArgs struct {
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
-	// Required. The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
-	ClusterName pulumi.StringPtrInput
-	// Required. The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
-	Config ClusterConfigPtrInput
+	// The cluster name. Cluster names within a project must be unique. Names of deleted clusters can be reused.
+	ClusterName pulumi.StringInput
+	// The cluster config. Note that Dataproc may set default values, and values may change when clusters are updated.
+	Config ClusterConfigInput
 	// Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
 	Labels pulumi.StringMapInput
-	// Required. The Google Cloud Platform project ID that the cluster belongs to.
+	// The Google Cloud Platform project ID that the cluster belongs to.
 	Project   pulumi.StringInput
 	Region    pulumi.StringInput
 	RequestId pulumi.StringPtrInput

@@ -29,17 +29,17 @@ type LookupPatchDeploymentResult struct {
 	Description string `pulumi:"description"`
 	// Optional. Duration of the patch. After the duration ends, the patch times out.
 	Duration string `pulumi:"duration"`
-	// Required. VM instances to patch.
+	// VM instances to patch.
 	InstanceFilter PatchInstanceFilterResponse `pulumi:"instanceFilter"`
 	// The last time a patch job was started by this deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
 	LastExecuteTime string `pulumi:"lastExecuteTime"`
 	// Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment.
 	Name string `pulumi:"name"`
-	// Required. Schedule a one-time execution.
+	// Schedule a one-time execution.
 	OneTimeSchedule OneTimeScheduleResponse `pulumi:"oneTimeSchedule"`
 	// Optional. Patch configuration that is applied.
 	PatchConfig PatchConfigResponse `pulumi:"patchConfig"`
-	// Required. Schedule recurring executions.
+	// Schedule recurring executions.
 	RecurringSchedule RecurringScheduleResponse `pulumi:"recurringSchedule"`
 	// Optional. Rollout strategy of the patch job.
 	Rollout PatchRolloutResponse `pulumi:"rollout"`
