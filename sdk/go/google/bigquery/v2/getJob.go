@@ -39,5 +39,5 @@ type LookupJobResult struct {
 	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
 	Status JobStatusResponse `pulumi:"status"`
 	// Email address of the user who ran the job.
-	User_email string `pulumi:"user_email"`
+	UserEmail string `pulumi:"userEmail"`
 }

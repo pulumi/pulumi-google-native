@@ -14,10 +14,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     public sealed class PacketMirroringFilterResponse
     {
         /// <summary>
-        /// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
-        /// </summary>
-        public readonly ImmutableArray<string> IPProtocols;
-        /// <summary>
         /// IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
         /// </summary>
         public readonly ImmutableArray<string> CidrRanges;
@@ -25,18 +21,22 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
         /// </summary>
         public readonly string Direction;
+        /// <summary>
+        /// Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+        /// </summary>
+        public readonly ImmutableArray<string> IpProtocols;
 
         [OutputConstructor]
         private PacketMirroringFilterResponse(
-            ImmutableArray<string> IPProtocols,
-
             ImmutableArray<string> cidrRanges,
 
-            string direction)
+            string direction,
+
+            ImmutableArray<string> ipProtocols)
         {
-            this.IPProtocols = IPProtocols;
             CidrRanges = cidrRanges;
             Direction = direction;
+            IpProtocols = ipProtocols;
         }
     }
 }

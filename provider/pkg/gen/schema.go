@@ -299,7 +299,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		}
 
 		name := names[1]
-		sdkName := apiNameToSdkName(name)
+		sdkName := apiParamNameToSdkName(name)
 		inputProperties[sdkName] = schema.PropertySpec{
 			TypeSpec: schema.TypeSpec{Type: "string"},
 		}
@@ -495,7 +495,7 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 		}
 
 		name := names[1]
-		sdkName := apiNameToSdkName(name)
+		sdkName := apiParamNameToSdkName(name)
 		inputProperties[sdkName] = schema.PropertySpec{
 			TypeSpec: schema.TypeSpec{Type: "string"},
 		}
@@ -560,7 +560,7 @@ func (g *packageGenerator) buildIdParams(typeName string, idPath string, inputPr
 		name := names[1]
 
 		// If the property is already defined in the input args, add its SDK name.
-		sdkName := apiNameToSdkName(name)
+		sdkName := apiParamNameToSdkName(name)
 		if _, has := inputProperties[sdkName]; has {
 			result[name] = sdkName
 			continue
@@ -612,7 +612,7 @@ func (g *packageGenerator) buildIdParams(typeName string, idPath string, inputPr
 		name := names[1]
 
 		// If the property is already defined in the input args, add its SDK name.
-		sdkName := apiNameToSdkName(name)
+		sdkName := apiParamNameToSdkName(name)
 		if _, has := inputProperties[sdkName]; has {
 			result[name] = sdkName
 			continue
@@ -656,7 +656,7 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 	}
 	for _, name := range codegen.SortedKeys(typeSchema.Properties) {
 		value := typeSchema.Properties[name]
-		sdkName := apiNameToSdkName(name)
+		sdkName := apiPropNameToSdkName(name)
 
 		if isDeprecated(value.Description) {
 			continue

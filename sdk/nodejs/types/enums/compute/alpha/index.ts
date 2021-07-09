@@ -574,7 +574,7 @@ export const FirewallPolicyRuleDirection = {
  */
 export type FirewallPolicyRuleDirection = (typeof FirewallPolicyRuleDirection)[keyof typeof FirewallPolicyRuleDirection];
 
-export const ForwardingRuleIPProtocol = {
+export const ForwardingRuleIpProtocol = {
     Ah: "AH",
     All: "ALL",
     Esp: "ESP",
@@ -596,7 +596,7 @@ export const ForwardingRuleIPProtocol = {
  * - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. 
  * - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
  */
-export type ForwardingRuleIPProtocol = (typeof ForwardingRuleIPProtocol)[keyof typeof ForwardingRuleIPProtocol];
+export type ForwardingRuleIpProtocol = (typeof ForwardingRuleIpProtocol)[keyof typeof ForwardingRuleIpProtocol];
 
 export const ForwardingRuleIpVersion = {
     Ipv4: "IPV4",
@@ -741,7 +741,7 @@ export const GlobalAddressPurpose = {
  */
 export type GlobalAddressPurpose = (typeof GlobalAddressPurpose)[keyof typeof GlobalAddressPurpose];
 
-export const GlobalForwardingRuleIPProtocol = {
+export const GlobalForwardingRuleIpProtocol = {
     Ah: "AH",
     All: "ALL",
     Esp: "ESP",
@@ -763,7 +763,7 @@ export const GlobalForwardingRuleIPProtocol = {
  * - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. 
  * - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
  */
-export type GlobalForwardingRuleIPProtocol = (typeof GlobalForwardingRuleIPProtocol)[keyof typeof GlobalForwardingRuleIPProtocol];
+export type GlobalForwardingRuleIpProtocol = (typeof GlobalForwardingRuleIpProtocol)[keyof typeof GlobalForwardingRuleIpProtocol];
 
 export const GlobalForwardingRuleIpVersion = {
     Ipv4: "IPV4",

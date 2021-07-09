@@ -1190,7 +1190,7 @@ type GoogleCloudApigeeV1CanaryEvaluationMetricLabels struct {
 	// The environment ID associated with the metrics.
 	Env *string `pulumi:"env"`
 	// Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
-	Instance_id *string `pulumi:"instance_id"`
+	InstanceId *string `pulumi:"instanceId"`
 	// Required. The location associated with the metrics.
 	Location *string `pulumi:"location"`
 }
@@ -1211,7 +1211,7 @@ type GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs struct {
 	// The environment ID associated with the metrics.
 	Env pulumi.StringPtrInput `pulumi:"env"`
 	// Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
-	Instance_id pulumi.StringPtrInput `pulumi:"instance_id"`
+	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
 	// Required. The location associated with the metrics.
 	Location pulumi.StringPtrInput `pulumi:"location"`
 }
@@ -1300,8 +1300,8 @@ func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput) Env() pulumi.Stri
 }
 
 // Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
-func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput) Instance_id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1CanaryEvaluationMetricLabels) *string { return v.Instance_id }).(pulumi.StringPtrOutput)
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput) InstanceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CanaryEvaluationMetricLabels) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
 }
 
 // Required. The location associated with the metrics.
@@ -1340,12 +1340,12 @@ func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput) Env() pulumi.S
 }
 
 // Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
-func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput) Instance_id() pulumi.StringPtrOutput {
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsPtrOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1CanaryEvaluationMetricLabels) *string {
 		if v == nil {
 			return nil
 		}
-		return v.Instance_id
+		return v.InstanceId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -1364,7 +1364,7 @@ type GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse struct {
 	// The environment ID associated with the metrics.
 	Env string `pulumi:"env"`
 	// Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
-	Instance_id string `pulumi:"instance_id"`
+	InstanceId string `pulumi:"instanceId"`
 	// Required. The location associated with the metrics.
 	Location string `pulumi:"location"`
 }
@@ -1385,7 +1385,7 @@ type GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseArgs struct {
 	// The environment ID associated with the metrics.
 	Env pulumi.StringInput `pulumi:"env"`
 	// Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
-	Instance_id pulumi.StringInput `pulumi:"instance_id"`
+	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// Required. The location associated with the metrics.
 	Location pulumi.StringInput `pulumi:"location"`
 }
@@ -1474,8 +1474,8 @@ func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput) Env() pul
 }
 
 // Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
-func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput) Instance_id() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse) string { return v.Instance_id }).(pulumi.StringOutput)
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponseOutput) InstanceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse) string { return v.InstanceId }).(pulumi.StringOutput)
 }
 
 // Required. The location associated with the metrics.
@@ -1514,12 +1514,12 @@ func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput) Env() 
 }
 
 // Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
-func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput) Instance_id() pulumi.StringPtrOutput {
+func (o GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponsePtrOutput) InstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse) *string {
 		if v == nil {
 			return nil
 		}
-		return &v.Instance_id
+		return &v.InstanceId
 	}).(pulumi.StringPtrOutput)
 }
 

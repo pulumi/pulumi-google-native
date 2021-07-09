@@ -66,7 +66,7 @@ export class Job extends pulumi.CustomResource {
     /**
      * Email address of the user who ran the job.
      */
-    public /*out*/ readonly user_email!: pulumi.Output<string>;
+    public /*out*/ readonly userEmail!: pulumi.Output<string>;
 
     /**
      * Create a Job resource with the given unique name, arguments, and options.
@@ -90,7 +90,7 @@ export class Job extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["statistics"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
-            inputs["user_email"] = undefined /*out*/;
+            inputs["userEmail"] = undefined /*out*/;
         } else {
             inputs["configuration"] = undefined /*out*/;
             inputs["etag"] = undefined /*out*/;
@@ -99,7 +99,7 @@ export class Job extends pulumi.CustomResource {
             inputs["selfLink"] = undefined /*out*/;
             inputs["statistics"] = undefined /*out*/;
             inputs["status"] = undefined /*out*/;
-            inputs["user_email"] = undefined /*out*/;
+            inputs["userEmail"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

@@ -18,8 +18,8 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// <summary>
         /// An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
         /// </summary>
-        [Output("custom_attributes")]
-        public Output<ImmutableDictionary<string, string>> Custom_attributes { get; private set; } = null!;
+        [Output("customAttributes")]
+        public Output<ImmutableDictionary<string, string>> CustomAttributes { get; private set; } = null!;
 
         /// <summary>
         /// HTTP 1.1 Entity tag for this subscription notification.
@@ -30,8 +30,8 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// <summary>
         /// If present, only send notifications about listed event types. If empty, sent notifications for all event types.
         /// </summary>
-        [Output("event_types")]
-        public Output<ImmutableArray<string>> Event_types { get; private set; } = null!;
+        [Output("eventTypes")]
+        public Output<ImmutableArray<string>> EventTypes { get; private set; } = null!;
 
         /// <summary>
         /// The kind of item this is. For notifications, this is always storage#notification.
@@ -42,14 +42,14 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// <summary>
         /// If present, only apply this notification configuration to object names that begin with this prefix.
         /// </summary>
-        [Output("object_name_prefix")]
-        public Output<string> Object_name_prefix { get; private set; } = null!;
+        [Output("objectNamePrefix")]
+        public Output<string> ObjectNamePrefix { get; private set; } = null!;
 
         /// <summary>
         /// The desired content of the Payload.
         /// </summary>
-        [Output("payload_format")]
-        public Output<string> Payload_format { get; private set; } = null!;
+        [Output("payloadFormat")]
+        public Output<string> PayloadFormat { get; private set; } = null!;
 
         /// <summary>
         /// The canonical URL of this notification.
@@ -111,16 +111,16 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
 
-        [Input("custom_attributes")]
-        private InputMap<string>? _custom_attributes;
+        [Input("customAttributes")]
+        private InputMap<string>? _customAttributes;
 
         /// <summary>
         /// An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
         /// </summary>
-        public InputMap<string> Custom_attributes
+        public InputMap<string> CustomAttributes
         {
-            get => _custom_attributes ?? (_custom_attributes = new InputMap<string>());
-            set => _custom_attributes = value;
+            get => _customAttributes ?? (_customAttributes = new InputMap<string>());
+            set => _customAttributes = value;
         }
 
         /// <summary>
@@ -129,16 +129,16 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("etag")]
         public Input<string>? Etag { get; set; }
 
-        [Input("event_types")]
-        private InputList<string>? _event_types;
+        [Input("eventTypes")]
+        private InputList<string>? _eventTypes;
 
         /// <summary>
         /// If present, only send notifications about listed event types. If empty, sent notifications for all event types.
         /// </summary>
-        public InputList<string> Event_types
+        public InputList<string> EventTypes
         {
-            get => _event_types ?? (_event_types = new InputList<string>());
-            set => _event_types = value;
+            get => _eventTypes ?? (_eventTypes = new InputList<string>());
+            set => _eventTypes = value;
         }
 
         /// <summary>
@@ -156,14 +156,14 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// <summary>
         /// If present, only apply this notification configuration to object names that begin with this prefix.
         /// </summary>
-        [Input("object_name_prefix")]
-        public Input<string>? Object_name_prefix { get; set; }
+        [Input("objectNamePrefix")]
+        public Input<string>? ObjectNamePrefix { get; set; }
 
         /// <summary>
         /// The desired content of the Payload.
         /// </summary>
-        [Input("payload_format")]
-        public Input<string>? Payload_format { get; set; }
+        [Input("payloadFormat")]
+        public Input<string>? PayloadFormat { get; set; }
 
         [Input("provisionalUserProject")]
         public Input<string>? ProvisionalUserProject { get; set; }

@@ -24,8 +24,8 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         /// <summary>
         /// Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
         /// </summary>
-        [Input("instance_id")]
-        public Input<string>? Instance_id { get; set; }
+        [Input("instanceId")]
+        public Input<string>? InstanceId { get; set; }
 
         /// <summary>
         /// Required. The location associated with the metrics.

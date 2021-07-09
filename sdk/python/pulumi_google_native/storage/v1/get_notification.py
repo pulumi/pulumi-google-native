@@ -43,7 +43,7 @@ class GetNotificationResult:
         pulumi.set(__self__, "topic", topic)
 
     @property
-    @pulumi.getter
+    @pulumi.getter(name="customAttributes")
     def custom_attributes(self) -> Mapping[str, str]:
         """
         An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
@@ -59,7 +59,7 @@ class GetNotificationResult:
         return pulumi.get(self, "etag")
 
     @property
-    @pulumi.getter
+    @pulumi.getter(name="eventTypes")
     def event_types(self) -> Sequence[str]:
         """
         If present, only send notifications about listed event types. If empty, sent notifications for all event types.
@@ -75,7 +75,7 @@ class GetNotificationResult:
         return pulumi.get(self, "kind")
 
     @property
-    @pulumi.getter
+    @pulumi.getter(name="objectNamePrefix")
     def object_name_prefix(self) -> str:
         """
         If present, only apply this notification configuration to object names that begin with this prefix.
@@ -83,7 +83,7 @@ class GetNotificationResult:
         return pulumi.get(self, "object_name_prefix")
 
     @property
-    @pulumi.getter
+    @pulumi.getter(name="payloadFormat")
     def payload_format(self) -> str:
         """
         The desired content of the Payload.

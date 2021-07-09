@@ -42,7 +42,7 @@ __all__ = [
     'FirewallDirection',
     'FirewallLogConfigMetadata',
     'FirewallPolicyRuleDirection',
-    'ForwardingRuleIPProtocol',
+    'ForwardingRuleIpProtocol',
     'ForwardingRuleIpVersion',
     'ForwardingRuleLoadBalancingScheme',
     'ForwardingRuleNetworkTier',
@@ -51,7 +51,7 @@ __all__ = [
     'GlobalAddressIpVersion',
     'GlobalAddressNetworkTier',
     'GlobalAddressPurpose',
-    'GlobalForwardingRuleIPProtocol',
+    'GlobalForwardingRuleIpProtocol',
     'GlobalForwardingRuleIpVersion',
     'GlobalForwardingRuleLoadBalancingScheme',
     'GlobalForwardingRuleNetworkTier',
@@ -585,7 +585,7 @@ class FirewallPolicyRuleDirection(str, Enum):
     INGRESS = "INGRESS"
 
 
-class ForwardingRuleIPProtocol(str, Enum):
+class ForwardingRuleIpProtocol(str, Enum):
     """
     The IP protocol to which this rule applies.
 
@@ -714,7 +714,7 @@ class GlobalAddressPurpose(str, Enum):
     VPC_PEERING = "VPC_PEERING"
 
 
-class GlobalForwardingRuleIPProtocol(str, Enum):
+class GlobalForwardingRuleIpProtocol(str, Enum):
     """
     The IP protocol to which this rule applies.
 

@@ -276,6 +276,23 @@ class GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse(dict):
     """
     Labels that can be used to filter Apigee metrics.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "instanceId":
+            suggest = "instance_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  env: str,
                  instance_id: str,
@@ -299,7 +316,7 @@ class GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse(dict):
         return pulumi.get(self, "env")
 
     @property
-    @pulumi.getter
+    @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
         """
         Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.

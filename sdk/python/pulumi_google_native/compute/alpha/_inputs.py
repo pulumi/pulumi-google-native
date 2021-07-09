@@ -4322,7 +4322,7 @@ class FirewallAllowedItemArgs:
             pulumi.set(__self__, "ports", ports)
 
     @property
-    @pulumi.getter(name="IPProtocol")
+    @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> Optional[pulumi.Input[str]]:
         """
         The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
@@ -4365,7 +4365,7 @@ class FirewallDeniedItemArgs:
             pulumi.set(__self__, "ports", ports)
 
     @property
-    @pulumi.getter(name="IPProtocol")
+    @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> Optional[pulumi.Input[str]]:
         """
         The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
@@ -9375,32 +9375,20 @@ class OutlierDetectionArgs:
 @pulumi.input_type
 class PacketMirroringFilterArgs:
     def __init__(__self__, *,
-                 ip_protocols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  cidr_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 direction: Optional[pulumi.Input['PacketMirroringFilterDirection']] = None):
+                 direction: Optional[pulumi.Input['PacketMirroringFilterDirection']] = None,
+                 ip_protocols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_protocols: Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] cidr_ranges: IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
         :param pulumi.Input['PacketMirroringFilterDirection'] direction: Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_protocols: Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
         """
-        if ip_protocols is not None:
-            pulumi.set(__self__, "ip_protocols", ip_protocols)
         if cidr_ranges is not None:
             pulumi.set(__self__, "cidr_ranges", cidr_ranges)
         if direction is not None:
             pulumi.set(__self__, "direction", direction)
-
-    @property
-    @pulumi.getter(name="IPProtocols")
-    def ip_protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
-        """
-        return pulumi.get(self, "ip_protocols")
-
-    @ip_protocols.setter
-    def ip_protocols(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "ip_protocols", value)
+        if ip_protocols is not None:
+            pulumi.set(__self__, "ip_protocols", ip_protocols)
 
     @property
     @pulumi.getter(name="cidrRanges")
@@ -9425,6 +9413,18 @@ class PacketMirroringFilterArgs:
     @direction.setter
     def direction(self, value: Optional[pulumi.Input['PacketMirroringFilterDirection']]):
         pulumi.set(self, "direction", value)
+
+    @property
+    @pulumi.getter(name="ipProtocols")
+    def ip_protocols(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+        """
+        return pulumi.get(self, "ip_protocols")
+
+    @ip_protocols.setter
+    def ip_protocols(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_protocols", value)
 
 
 @pulumi.input_type

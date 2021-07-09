@@ -194,7 +194,7 @@ class GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs:
         pulumi.set(self, "env", value)
 
     @property
-    @pulumi.getter
+    @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
         """
         Required. The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.

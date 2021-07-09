@@ -3999,7 +3999,7 @@ class FirewallAllowedItemResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "IPProtocol":
+        if key == "ipProtocol":
             suggest = "ip_protocol"
 
         if suggest:
@@ -4026,7 +4026,7 @@ class FirewallAllowedItemResponse(dict):
         pulumi.set(__self__, "ports", ports)
 
     @property
-    @pulumi.getter(name="IPProtocol")
+    @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> str:
         """
         The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
@@ -4049,7 +4049,7 @@ class FirewallDeniedItemResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "IPProtocol":
+        if key == "ipProtocol":
             suggest = "ip_protocol"
 
         if suggest:
@@ -4076,7 +4076,7 @@ class FirewallDeniedItemResponse(dict):
         pulumi.set(__self__, "ports", ports)
 
     @property
-    @pulumi.getter(name="IPProtocol")
+    @pulumi.getter(name="ipProtocol")
     def ip_protocol(self) -> str:
         """
         The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp) or the IP protocol number.
@@ -9242,10 +9242,10 @@ class PacketMirroringFilterResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "IPProtocols":
-            suggest = "ip_protocols"
-        elif key == "cidrRanges":
+        if key == "cidrRanges":
             suggest = "cidr_ranges"
+        elif key == "ipProtocols":
+            suggest = "ip_protocols"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PacketMirroringFilterResponse. Access the value via the '{suggest}' property getter instead.")
@@ -9259,25 +9259,17 @@ class PacketMirroringFilterResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 ip_protocols: Sequence[str],
                  cidr_ranges: Sequence[str],
-                 direction: str):
+                 direction: str,
+                 ip_protocols: Sequence[str]):
         """
-        :param Sequence[str] ip_protocols: Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
         :param Sequence[str] cidr_ranges: IP CIDR ranges that apply as filter on the source (ingress) or destination (egress) IP in the IP header. Only IPv4 is supported. If no ranges are specified, all traffic that matches the specified IPProtocols is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
         :param str direction: Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
+        :param Sequence[str] ip_protocols: Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
         """
-        pulumi.set(__self__, "ip_protocols", ip_protocols)
         pulumi.set(__self__, "cidr_ranges", cidr_ranges)
         pulumi.set(__self__, "direction", direction)
-
-    @property
-    @pulumi.getter(name="IPProtocols")
-    def ip_protocols(self) -> Sequence[str]:
-        """
-        Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
-        """
-        return pulumi.get(self, "ip_protocols")
+        pulumi.set(__self__, "ip_protocols", ip_protocols)
 
     @property
     @pulumi.getter(name="cidrRanges")
@@ -9294,6 +9286,14 @@ class PacketMirroringFilterResponse(dict):
         Direction of traffic to mirror, either INGRESS, EGRESS, or BOTH. The default is BOTH.
         """
         return pulumi.get(self, "direction")
+
+    @property
+    @pulumi.getter(name="ipProtocols")
+    def ip_protocols(self) -> Sequence[str]:
+        """
+        Protocols that apply as filter on mirrored traffic. If no protocols are specified, all traffic that matches the specified CIDR ranges is mirrored. If neither cidrRanges nor IPProtocols is specified, all traffic is mirrored.
+        """
+        return pulumi.get(self, "ip_protocols")
 
 
 @pulumi.output_type

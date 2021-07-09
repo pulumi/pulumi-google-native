@@ -16,41 +16,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public partial class ForwardingRule : Pulumi.CustomResource
     {
         /// <summary>
-        /// IP address that this forwarding rule serves. When a client sends traffic to this IP address, the forwarding rule directs the traffic to the target that you specify in the forwarding rule.
-        /// 
-        /// If you don't specify a reserved IP address, an ephemeral IP address is assigned. Methods for specifying an IP address:
-        /// 
-        /// * IPv4 dotted decimal, as in `100.1.2.3` * Full URL, as in https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name * Partial URL or by name, as in:  
-        /// - projects/project_id/regions/region/addresses/address-name 
-        /// - regions/region/addresses/address-name 
-        /// - global/addresses/address-name 
-        /// - address-name  
-        /// 
-        /// The loadBalancingScheme and the forwarding rule's target determine the type of IP address that you can use. For detailed information, refer to [IP address specifications](/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-        /// 
-        /// Must be set to `0.0.0.0` when the target is targetGrpcProxy that has validateForProxyless field set to true.
-        /// 
-        /// For Private Service Connect forwarding rules that forward traffic to Google APIs, IP address must be provided.
-        /// </summary>
-        [Output("IPAddress")]
-        public Output<string> IPAddress { get; private set; } = null!;
-
-        /// <summary>
-        /// The IP protocol to which this rule applies.
-        /// 
-        /// For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and ICMP.
-        /// 
-        /// The valid IP protocols are different for different load balancing products:  
-        /// - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or ALL is valid. 
-        /// - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid.  
-        /// - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. 
-        /// - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. 
-        /// - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
-        /// </summary>
-        [Output("IPProtocol")]
-        public Output<string> IPProtocol { get; private set; } = null!;
-
-        /// <summary>
         /// This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. This field cannot be used with port or portRange fields.
         /// 
         /// When the load balancing scheme is INTERNAL and protocol is TCP/UDP, specify this field to allow packets addressed to any ports will be forwarded to the backends configured with this forwarding rule.
@@ -89,6 +54,41 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Output("fingerprint")]
         public Output<string> Fingerprint { get; private set; } = null!;
+
+        /// <summary>
+        /// IP address that this forwarding rule serves. When a client sends traffic to this IP address, the forwarding rule directs the traffic to the target that you specify in the forwarding rule.
+        /// 
+        /// If you don't specify a reserved IP address, an ephemeral IP address is assigned. Methods for specifying an IP address:
+        /// 
+        /// * IPv4 dotted decimal, as in `100.1.2.3` * Full URL, as in https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name * Partial URL or by name, as in:  
+        /// - projects/project_id/regions/region/addresses/address-name 
+        /// - regions/region/addresses/address-name 
+        /// - global/addresses/address-name 
+        /// - address-name  
+        /// 
+        /// The loadBalancingScheme and the forwarding rule's target determine the type of IP address that you can use. For detailed information, refer to [IP address specifications](/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+        /// 
+        /// Must be set to `0.0.0.0` when the target is targetGrpcProxy that has validateForProxyless field set to true.
+        /// 
+        /// For Private Service Connect forwarding rules that forward traffic to Google APIs, IP address must be provided.
+        /// </summary>
+        [Output("ipAddress")]
+        public Output<string> IpAddress { get; private set; } = null!;
+
+        /// <summary>
+        /// The IP protocol to which this rule applies.
+        /// 
+        /// For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and ICMP.
+        /// 
+        /// The valid IP protocols are different for different load balancing products:  
+        /// - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or ALL is valid. 
+        /// - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid.  
+        /// - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. 
+        /// - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. 
+        /// - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
+        /// </summary>
+        [Output("ipProtocol")]
+        public Output<string> IpProtocol { get; private set; } = null!;
 
         /// <summary>
         /// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.
@@ -311,41 +311,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
     public sealed class ForwardingRuleArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// IP address that this forwarding rule serves. When a client sends traffic to this IP address, the forwarding rule directs the traffic to the target that you specify in the forwarding rule.
-        /// 
-        /// If you don't specify a reserved IP address, an ephemeral IP address is assigned. Methods for specifying an IP address:
-        /// 
-        /// * IPv4 dotted decimal, as in `100.1.2.3` * Full URL, as in https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name * Partial URL or by name, as in:  
-        /// - projects/project_id/regions/region/addresses/address-name 
-        /// - regions/region/addresses/address-name 
-        /// - global/addresses/address-name 
-        /// - address-name  
-        /// 
-        /// The loadBalancingScheme and the forwarding rule's target determine the type of IP address that you can use. For detailed information, refer to [IP address specifications](/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-        /// 
-        /// Must be set to `0.0.0.0` when the target is targetGrpcProxy that has validateForProxyless field set to true.
-        /// 
-        /// For Private Service Connect forwarding rules that forward traffic to Google APIs, IP address must be provided.
-        /// </summary>
-        [Input("IPAddress")]
-        public Input<string>? IPAddress { get; set; }
-
-        /// <summary>
-        /// The IP protocol to which this rule applies.
-        /// 
-        /// For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and ICMP.
-        /// 
-        /// The valid IP protocols are different for different load balancing products:  
-        /// - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or ALL is valid. 
-        /// - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid.  
-        /// - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. 
-        /// - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. 
-        /// - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
-        /// </summary>
-        [Input("IPProtocol")]
-        public Input<Pulumi.GoogleNative.Compute.Beta.ForwardingRuleIPProtocol>? IPProtocol { get; set; }
-
-        /// <summary>
         /// This field is used along with the backend_service field for internal load balancing or with the target field for internal TargetInstance. This field cannot be used with port or portRange fields.
         /// 
         /// When the load balancing scheme is INTERNAL and protocol is TCP/UDP, specify this field to allow packets addressed to any ports will be forwarded to the backends configured with this forwarding rule.
@@ -370,6 +335,41 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        /// <summary>
+        /// IP address that this forwarding rule serves. When a client sends traffic to this IP address, the forwarding rule directs the traffic to the target that you specify in the forwarding rule.
+        /// 
+        /// If you don't specify a reserved IP address, an ephemeral IP address is assigned. Methods for specifying an IP address:
+        /// 
+        /// * IPv4 dotted decimal, as in `100.1.2.3` * Full URL, as in https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name * Partial URL or by name, as in:  
+        /// - projects/project_id/regions/region/addresses/address-name 
+        /// - regions/region/addresses/address-name 
+        /// - global/addresses/address-name 
+        /// - address-name  
+        /// 
+        /// The loadBalancingScheme and the forwarding rule's target determine the type of IP address that you can use. For detailed information, refer to [IP address specifications](/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+        /// 
+        /// Must be set to `0.0.0.0` when the target is targetGrpcProxy that has validateForProxyless field set to true.
+        /// 
+        /// For Private Service Connect forwarding rules that forward traffic to Google APIs, IP address must be provided.
+        /// </summary>
+        [Input("ipAddress")]
+        public Input<string>? IpAddress { get; set; }
+
+        /// <summary>
+        /// The IP protocol to which this rule applies.
+        /// 
+        /// For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and ICMP.
+        /// 
+        /// The valid IP protocols are different for different load balancing products:  
+        /// - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or ALL is valid. 
+        /// - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid.  
+        /// - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. 
+        /// - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. 
+        /// - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
+        /// </summary>
+        [Input("ipProtocol")]
+        public Input<Pulumi.GoogleNative.Compute.Beta.ForwardingRuleIpProtocol>? IpProtocol { get; set; }
 
         /// <summary>
         /// The IP Version that will be used by this forwarding rule. Valid options are IPV4 or IPV6. This can only be specified for an external global forwarding rule.

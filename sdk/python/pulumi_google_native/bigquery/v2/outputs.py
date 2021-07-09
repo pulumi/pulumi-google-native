@@ -26,7 +26,7 @@ __all__ = [
     'ConnectionPropertyResponse',
     'CsvOptionsResponse',
     'DatasetAccessEntryResponse',
-    'DatasetAccessEntryTarget_typesItemResponse',
+    'DatasetAccessEntryTargetTypesItemResponse',
     'DatasetAccessItemResponse',
     'DatasetReferenceResponse',
     'DestinationTablePropertiesResponse',
@@ -997,9 +997,26 @@ class CsvOptionsResponse(dict):
 
 @pulumi.output_type
 class DatasetAccessEntryResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "targetTypes":
+            suggest = "target_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatasetAccessEntryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatasetAccessEntryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatasetAccessEntryResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  dataset: 'outputs.DatasetReferenceResponse',
-                 target_types: Sequence['outputs.DatasetAccessEntryTarget_typesItemResponse']):
+                 target_types: Sequence['outputs.DatasetAccessEntryTargetTypesItemResponse']):
         """
         :param 'DatasetReferenceResponse' dataset: [Required] The dataset this entry applies to.
         """
@@ -1015,13 +1032,13 @@ class DatasetAccessEntryResponse(dict):
         return pulumi.get(self, "dataset")
 
     @property
-    @pulumi.getter
-    def target_types(self) -> Sequence['outputs.DatasetAccessEntryTarget_typesItemResponse']:
+    @pulumi.getter(name="targetTypes")
+    def target_types(self) -> Sequence['outputs.DatasetAccessEntryTargetTypesItemResponse']:
         return pulumi.get(self, "target_types")
 
 
 @pulumi.output_type
-class DatasetAccessEntryTarget_typesItemResponse(dict):
+class DatasetAccessEntryTargetTypesItemResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -1029,14 +1046,14 @@ class DatasetAccessEntryTarget_typesItemResponse(dict):
             suggest = "target_type"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in DatasetAccessEntryTarget_typesItemResponse. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in DatasetAccessEntryTargetTypesItemResponse. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        DatasetAccessEntryTarget_typesItemResponse.__key_warning(key)
+        DatasetAccessEntryTargetTypesItemResponse.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        DatasetAccessEntryTarget_typesItemResponse.__key_warning(key)
+        DatasetAccessEntryTargetTypesItemResponse.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -3858,6 +3875,8 @@ class JobStatisticsResponse(dict):
             suggest = "parent_job_id"
         elif key == "quotaDeferments":
             suggest = "quota_deferments"
+        elif key == "reservationId":
+            suggest = "reservation_id"
         elif key == "reservationUsage":
             suggest = "reservation_usage"
         elif key == "rowLevelSecurityStatistics":
@@ -3894,8 +3913,8 @@ class JobStatisticsResponse(dict):
                  parent_job_id: str,
                  query: 'outputs.JobStatistics2Response',
                  quota_deferments: Sequence[str],
-                 reservation_usage: Sequence['outputs.JobStatisticsReservationUsageItemResponse'],
                  reservation_id: str,
+                 reservation_usage: Sequence['outputs.JobStatisticsReservationUsageItemResponse'],
                  row_level_security_statistics: 'outputs.RowLevelSecurityStatisticsResponse',
                  script_statistics: 'outputs.ScriptStatisticsResponse',
                  session_info_template: 'outputs.SessionInfoResponse',
@@ -3912,8 +3931,8 @@ class JobStatisticsResponse(dict):
         :param str parent_job_id: If this is a child job, the id of the parent.
         :param 'JobStatistics2Response' query: Statistics for a query job.
         :param Sequence[str] quota_deferments: Quotas which delayed this job's start time.
-        :param Sequence['JobStatisticsReservationUsageItemResponse'] reservation_usage: Job resource usage breakdown by reservation.
         :param str reservation_id: Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
+        :param Sequence['JobStatisticsReservationUsageItemResponse'] reservation_usage: Job resource usage breakdown by reservation.
         :param 'RowLevelSecurityStatisticsResponse' row_level_security_statistics: [Preview] Statistics for row-level security. Present only for query and extract jobs.
         :param 'ScriptStatisticsResponse' script_statistics: Statistics for a child job of a script.
         :param 'SessionInfoResponse' session_info_template: [Preview] Information of the session if this job is part of one.
@@ -3930,8 +3949,8 @@ class JobStatisticsResponse(dict):
         pulumi.set(__self__, "parent_job_id", parent_job_id)
         pulumi.set(__self__, "query", query)
         pulumi.set(__self__, "quota_deferments", quota_deferments)
-        pulumi.set(__self__, "reservation_usage", reservation_usage)
         pulumi.set(__self__, "reservation_id", reservation_id)
+        pulumi.set(__self__, "reservation_usage", reservation_usage)
         pulumi.set(__self__, "row_level_security_statistics", row_level_security_statistics)
         pulumi.set(__self__, "script_statistics", script_statistics)
         pulumi.set(__self__, "session_info_template", session_info_template)
@@ -4012,20 +4031,20 @@ class JobStatisticsResponse(dict):
         return pulumi.get(self, "quota_deferments")
 
     @property
+    @pulumi.getter(name="reservationId")
+    def reservation_id(self) -> str:
+        """
+        Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
+        """
+        return pulumi.get(self, "reservation_id")
+
+    @property
     @pulumi.getter(name="reservationUsage")
     def reservation_usage(self) -> Sequence['outputs.JobStatisticsReservationUsageItemResponse']:
         """
         Job resource usage breakdown by reservation.
         """
         return pulumi.get(self, "reservation_usage")
-
-    @property
-    @pulumi.getter
-    def reservation_id(self) -> str:
-        """
-        Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
-        """
-        return pulumi.get(self, "reservation_id")
 
     @property
     @pulumi.getter(name="rowLevelSecurityStatistics")

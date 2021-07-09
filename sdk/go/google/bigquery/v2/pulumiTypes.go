@@ -3759,8 +3759,8 @@ func (o CsvOptionsResponsePtrOutput) SkipLeadingRows() pulumi.StringPtrOutput {
 
 type DatasetAccessEntry struct {
 	// [Required] The dataset this entry applies to.
-	Dataset      *DatasetReference                    `pulumi:"dataset"`
-	Target_types []DatasetAccessEntryTarget_typesItem `pulumi:"target_types"`
+	Dataset     *DatasetReference                   `pulumi:"dataset"`
+	TargetTypes []DatasetAccessEntryTargetTypesItem `pulumi:"targetTypes"`
 }
 
 // DatasetAccessEntryInput is an input type that accepts DatasetAccessEntryArgs and DatasetAccessEntryOutput values.
@@ -3776,8 +3776,8 @@ type DatasetAccessEntryInput interface {
 
 type DatasetAccessEntryArgs struct {
 	// [Required] The dataset this entry applies to.
-	Dataset      DatasetReferencePtrInput                     `pulumi:"dataset"`
-	Target_types DatasetAccessEntryTarget_typesItemArrayInput `pulumi:"target_types"`
+	Dataset     DatasetReferencePtrInput                    `pulumi:"dataset"`
+	TargetTypes DatasetAccessEntryTargetTypesItemArrayInput `pulumi:"targetTypes"`
 }
 
 func (DatasetAccessEntryArgs) ElementType() reflect.Type {
@@ -3862,8 +3862,8 @@ func (o DatasetAccessEntryOutput) Dataset() DatasetReferencePtrOutput {
 	return o.ApplyT(func(v DatasetAccessEntry) *DatasetReference { return v.Dataset }).(DatasetReferencePtrOutput)
 }
 
-func (o DatasetAccessEntryOutput) Target_types() DatasetAccessEntryTarget_typesItemArrayOutput {
-	return o.ApplyT(func(v DatasetAccessEntry) []DatasetAccessEntryTarget_typesItem { return v.Target_types }).(DatasetAccessEntryTarget_typesItemArrayOutput)
+func (o DatasetAccessEntryOutput) TargetTypes() DatasetAccessEntryTargetTypesItemArrayOutput {
+	return o.ApplyT(func(v DatasetAccessEntry) []DatasetAccessEntryTargetTypesItem { return v.TargetTypes }).(DatasetAccessEntryTargetTypesItemArrayOutput)
 }
 
 type DatasetAccessEntryPtrOutput struct{ *pulumi.OutputState }
@@ -3894,19 +3894,19 @@ func (o DatasetAccessEntryPtrOutput) Dataset() DatasetReferencePtrOutput {
 	}).(DatasetReferencePtrOutput)
 }
 
-func (o DatasetAccessEntryPtrOutput) Target_types() DatasetAccessEntryTarget_typesItemArrayOutput {
-	return o.ApplyT(func(v *DatasetAccessEntry) []DatasetAccessEntryTarget_typesItem {
+func (o DatasetAccessEntryPtrOutput) TargetTypes() DatasetAccessEntryTargetTypesItemArrayOutput {
+	return o.ApplyT(func(v *DatasetAccessEntry) []DatasetAccessEntryTargetTypesItem {
 		if v == nil {
 			return nil
 		}
-		return v.Target_types
-	}).(DatasetAccessEntryTarget_typesItemArrayOutput)
+		return v.TargetTypes
+	}).(DatasetAccessEntryTargetTypesItemArrayOutput)
 }
 
 type DatasetAccessEntryResponse struct {
 	// [Required] The dataset this entry applies to.
-	Dataset      DatasetReferenceResponse                     `pulumi:"dataset"`
-	Target_types []DatasetAccessEntryTarget_typesItemResponse `pulumi:"target_types"`
+	Dataset     DatasetReferenceResponse                    `pulumi:"dataset"`
+	TargetTypes []DatasetAccessEntryTargetTypesItemResponse `pulumi:"targetTypes"`
 }
 
 // DatasetAccessEntryResponseInput is an input type that accepts DatasetAccessEntryResponseArgs and DatasetAccessEntryResponseOutput values.
@@ -3922,8 +3922,8 @@ type DatasetAccessEntryResponseInput interface {
 
 type DatasetAccessEntryResponseArgs struct {
 	// [Required] The dataset this entry applies to.
-	Dataset      DatasetReferenceResponseInput                        `pulumi:"dataset"`
-	Target_types DatasetAccessEntryTarget_typesItemResponseArrayInput `pulumi:"target_types"`
+	Dataset     DatasetReferenceResponseInput                       `pulumi:"dataset"`
+	TargetTypes DatasetAccessEntryTargetTypesItemResponseArrayInput `pulumi:"targetTypes"`
 }
 
 func (DatasetAccessEntryResponseArgs) ElementType() reflect.Type {
@@ -3957,202 +3957,202 @@ func (o DatasetAccessEntryResponseOutput) Dataset() DatasetReferenceResponseOutp
 	return o.ApplyT(func(v DatasetAccessEntryResponse) DatasetReferenceResponse { return v.Dataset }).(DatasetReferenceResponseOutput)
 }
 
-func (o DatasetAccessEntryResponseOutput) Target_types() DatasetAccessEntryTarget_typesItemResponseArrayOutput {
-	return o.ApplyT(func(v DatasetAccessEntryResponse) []DatasetAccessEntryTarget_typesItemResponse { return v.Target_types }).(DatasetAccessEntryTarget_typesItemResponseArrayOutput)
+func (o DatasetAccessEntryResponseOutput) TargetTypes() DatasetAccessEntryTargetTypesItemResponseArrayOutput {
+	return o.ApplyT(func(v DatasetAccessEntryResponse) []DatasetAccessEntryTargetTypesItemResponse { return v.TargetTypes }).(DatasetAccessEntryTargetTypesItemResponseArrayOutput)
 }
 
-type DatasetAccessEntryTarget_typesItem struct {
+type DatasetAccessEntryTargetTypesItem struct {
 	// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
 	TargetType *string `pulumi:"targetType"`
 }
 
-// DatasetAccessEntryTarget_typesItemInput is an input type that accepts DatasetAccessEntryTarget_typesItemArgs and DatasetAccessEntryTarget_typesItemOutput values.
-// You can construct a concrete instance of `DatasetAccessEntryTarget_typesItemInput` via:
+// DatasetAccessEntryTargetTypesItemInput is an input type that accepts DatasetAccessEntryTargetTypesItemArgs and DatasetAccessEntryTargetTypesItemOutput values.
+// You can construct a concrete instance of `DatasetAccessEntryTargetTypesItemInput` via:
 //
-//          DatasetAccessEntryTarget_typesItemArgs{...}
-type DatasetAccessEntryTarget_typesItemInput interface {
+//          DatasetAccessEntryTargetTypesItemArgs{...}
+type DatasetAccessEntryTargetTypesItemInput interface {
 	pulumi.Input
 
-	ToDatasetAccessEntryTarget_typesItemOutput() DatasetAccessEntryTarget_typesItemOutput
-	ToDatasetAccessEntryTarget_typesItemOutputWithContext(context.Context) DatasetAccessEntryTarget_typesItemOutput
+	ToDatasetAccessEntryTargetTypesItemOutput() DatasetAccessEntryTargetTypesItemOutput
+	ToDatasetAccessEntryTargetTypesItemOutputWithContext(context.Context) DatasetAccessEntryTargetTypesItemOutput
 }
 
-type DatasetAccessEntryTarget_typesItemArgs struct {
+type DatasetAccessEntryTargetTypesItemArgs struct {
 	// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
 	TargetType pulumi.StringPtrInput `pulumi:"targetType"`
 }
 
-func (DatasetAccessEntryTarget_typesItemArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetAccessEntryTarget_typesItem)(nil)).Elem()
+func (DatasetAccessEntryTargetTypesItemArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessEntryTargetTypesItem)(nil)).Elem()
 }
 
-func (i DatasetAccessEntryTarget_typesItemArgs) ToDatasetAccessEntryTarget_typesItemOutput() DatasetAccessEntryTarget_typesItemOutput {
-	return i.ToDatasetAccessEntryTarget_typesItemOutputWithContext(context.Background())
+func (i DatasetAccessEntryTargetTypesItemArgs) ToDatasetAccessEntryTargetTypesItemOutput() DatasetAccessEntryTargetTypesItemOutput {
+	return i.ToDatasetAccessEntryTargetTypesItemOutputWithContext(context.Background())
 }
 
-func (i DatasetAccessEntryTarget_typesItemArgs) ToDatasetAccessEntryTarget_typesItemOutputWithContext(ctx context.Context) DatasetAccessEntryTarget_typesItemOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessEntryTarget_typesItemOutput)
+func (i DatasetAccessEntryTargetTypesItemArgs) ToDatasetAccessEntryTargetTypesItemOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessEntryTargetTypesItemOutput)
 }
 
-// DatasetAccessEntryTarget_typesItemArrayInput is an input type that accepts DatasetAccessEntryTarget_typesItemArray and DatasetAccessEntryTarget_typesItemArrayOutput values.
-// You can construct a concrete instance of `DatasetAccessEntryTarget_typesItemArrayInput` via:
+// DatasetAccessEntryTargetTypesItemArrayInput is an input type that accepts DatasetAccessEntryTargetTypesItemArray and DatasetAccessEntryTargetTypesItemArrayOutput values.
+// You can construct a concrete instance of `DatasetAccessEntryTargetTypesItemArrayInput` via:
 //
-//          DatasetAccessEntryTarget_typesItemArray{ DatasetAccessEntryTarget_typesItemArgs{...} }
-type DatasetAccessEntryTarget_typesItemArrayInput interface {
+//          DatasetAccessEntryTargetTypesItemArray{ DatasetAccessEntryTargetTypesItemArgs{...} }
+type DatasetAccessEntryTargetTypesItemArrayInput interface {
 	pulumi.Input
 
-	ToDatasetAccessEntryTarget_typesItemArrayOutput() DatasetAccessEntryTarget_typesItemArrayOutput
-	ToDatasetAccessEntryTarget_typesItemArrayOutputWithContext(context.Context) DatasetAccessEntryTarget_typesItemArrayOutput
+	ToDatasetAccessEntryTargetTypesItemArrayOutput() DatasetAccessEntryTargetTypesItemArrayOutput
+	ToDatasetAccessEntryTargetTypesItemArrayOutputWithContext(context.Context) DatasetAccessEntryTargetTypesItemArrayOutput
 }
 
-type DatasetAccessEntryTarget_typesItemArray []DatasetAccessEntryTarget_typesItemInput
+type DatasetAccessEntryTargetTypesItemArray []DatasetAccessEntryTargetTypesItemInput
 
-func (DatasetAccessEntryTarget_typesItemArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatasetAccessEntryTarget_typesItem)(nil)).Elem()
+func (DatasetAccessEntryTargetTypesItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatasetAccessEntryTargetTypesItem)(nil)).Elem()
 }
 
-func (i DatasetAccessEntryTarget_typesItemArray) ToDatasetAccessEntryTarget_typesItemArrayOutput() DatasetAccessEntryTarget_typesItemArrayOutput {
-	return i.ToDatasetAccessEntryTarget_typesItemArrayOutputWithContext(context.Background())
+func (i DatasetAccessEntryTargetTypesItemArray) ToDatasetAccessEntryTargetTypesItemArrayOutput() DatasetAccessEntryTargetTypesItemArrayOutput {
+	return i.ToDatasetAccessEntryTargetTypesItemArrayOutputWithContext(context.Background())
 }
 
-func (i DatasetAccessEntryTarget_typesItemArray) ToDatasetAccessEntryTarget_typesItemArrayOutputWithContext(ctx context.Context) DatasetAccessEntryTarget_typesItemArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessEntryTarget_typesItemArrayOutput)
+func (i DatasetAccessEntryTargetTypesItemArray) ToDatasetAccessEntryTargetTypesItemArrayOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessEntryTargetTypesItemArrayOutput)
 }
 
-type DatasetAccessEntryTarget_typesItemOutput struct{ *pulumi.OutputState }
+type DatasetAccessEntryTargetTypesItemOutput struct{ *pulumi.OutputState }
 
-func (DatasetAccessEntryTarget_typesItemOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetAccessEntryTarget_typesItem)(nil)).Elem()
+func (DatasetAccessEntryTargetTypesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessEntryTargetTypesItem)(nil)).Elem()
 }
 
-func (o DatasetAccessEntryTarget_typesItemOutput) ToDatasetAccessEntryTarget_typesItemOutput() DatasetAccessEntryTarget_typesItemOutput {
+func (o DatasetAccessEntryTargetTypesItemOutput) ToDatasetAccessEntryTargetTypesItemOutput() DatasetAccessEntryTargetTypesItemOutput {
 	return o
 }
 
-func (o DatasetAccessEntryTarget_typesItemOutput) ToDatasetAccessEntryTarget_typesItemOutputWithContext(ctx context.Context) DatasetAccessEntryTarget_typesItemOutput {
+func (o DatasetAccessEntryTargetTypesItemOutput) ToDatasetAccessEntryTargetTypesItemOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemOutput {
 	return o
 }
 
 // [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-func (o DatasetAccessEntryTarget_typesItemOutput) TargetType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatasetAccessEntryTarget_typesItem) *string { return v.TargetType }).(pulumi.StringPtrOutput)
+func (o DatasetAccessEntryTargetTypesItemOutput) TargetType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatasetAccessEntryTargetTypesItem) *string { return v.TargetType }).(pulumi.StringPtrOutput)
 }
 
-type DatasetAccessEntryTarget_typesItemArrayOutput struct{ *pulumi.OutputState }
+type DatasetAccessEntryTargetTypesItemArrayOutput struct{ *pulumi.OutputState }
 
-func (DatasetAccessEntryTarget_typesItemArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatasetAccessEntryTarget_typesItem)(nil)).Elem()
+func (DatasetAccessEntryTargetTypesItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatasetAccessEntryTargetTypesItem)(nil)).Elem()
 }
 
-func (o DatasetAccessEntryTarget_typesItemArrayOutput) ToDatasetAccessEntryTarget_typesItemArrayOutput() DatasetAccessEntryTarget_typesItemArrayOutput {
+func (o DatasetAccessEntryTargetTypesItemArrayOutput) ToDatasetAccessEntryTargetTypesItemArrayOutput() DatasetAccessEntryTargetTypesItemArrayOutput {
 	return o
 }
 
-func (o DatasetAccessEntryTarget_typesItemArrayOutput) ToDatasetAccessEntryTarget_typesItemArrayOutputWithContext(ctx context.Context) DatasetAccessEntryTarget_typesItemArrayOutput {
+func (o DatasetAccessEntryTargetTypesItemArrayOutput) ToDatasetAccessEntryTargetTypesItemArrayOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemArrayOutput {
 	return o
 }
 
-func (o DatasetAccessEntryTarget_typesItemArrayOutput) Index(i pulumi.IntInput) DatasetAccessEntryTarget_typesItemOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetAccessEntryTarget_typesItem {
-		return vs[0].([]DatasetAccessEntryTarget_typesItem)[vs[1].(int)]
-	}).(DatasetAccessEntryTarget_typesItemOutput)
+func (o DatasetAccessEntryTargetTypesItemArrayOutput) Index(i pulumi.IntInput) DatasetAccessEntryTargetTypesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetAccessEntryTargetTypesItem {
+		return vs[0].([]DatasetAccessEntryTargetTypesItem)[vs[1].(int)]
+	}).(DatasetAccessEntryTargetTypesItemOutput)
 }
 
-type DatasetAccessEntryTarget_typesItemResponse struct {
+type DatasetAccessEntryTargetTypesItemResponse struct {
 	// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
 	TargetType string `pulumi:"targetType"`
 }
 
-// DatasetAccessEntryTarget_typesItemResponseInput is an input type that accepts DatasetAccessEntryTarget_typesItemResponseArgs and DatasetAccessEntryTarget_typesItemResponseOutput values.
-// You can construct a concrete instance of `DatasetAccessEntryTarget_typesItemResponseInput` via:
+// DatasetAccessEntryTargetTypesItemResponseInput is an input type that accepts DatasetAccessEntryTargetTypesItemResponseArgs and DatasetAccessEntryTargetTypesItemResponseOutput values.
+// You can construct a concrete instance of `DatasetAccessEntryTargetTypesItemResponseInput` via:
 //
-//          DatasetAccessEntryTarget_typesItemResponseArgs{...}
-type DatasetAccessEntryTarget_typesItemResponseInput interface {
+//          DatasetAccessEntryTargetTypesItemResponseArgs{...}
+type DatasetAccessEntryTargetTypesItemResponseInput interface {
 	pulumi.Input
 
-	ToDatasetAccessEntryTarget_typesItemResponseOutput() DatasetAccessEntryTarget_typesItemResponseOutput
-	ToDatasetAccessEntryTarget_typesItemResponseOutputWithContext(context.Context) DatasetAccessEntryTarget_typesItemResponseOutput
+	ToDatasetAccessEntryTargetTypesItemResponseOutput() DatasetAccessEntryTargetTypesItemResponseOutput
+	ToDatasetAccessEntryTargetTypesItemResponseOutputWithContext(context.Context) DatasetAccessEntryTargetTypesItemResponseOutput
 }
 
-type DatasetAccessEntryTarget_typesItemResponseArgs struct {
+type DatasetAccessEntryTargetTypesItemResponseArgs struct {
 	// [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
 	TargetType pulumi.StringInput `pulumi:"targetType"`
 }
 
-func (DatasetAccessEntryTarget_typesItemResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetAccessEntryTarget_typesItemResponse)(nil)).Elem()
+func (DatasetAccessEntryTargetTypesItemResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessEntryTargetTypesItemResponse)(nil)).Elem()
 }
 
-func (i DatasetAccessEntryTarget_typesItemResponseArgs) ToDatasetAccessEntryTarget_typesItemResponseOutput() DatasetAccessEntryTarget_typesItemResponseOutput {
-	return i.ToDatasetAccessEntryTarget_typesItemResponseOutputWithContext(context.Background())
+func (i DatasetAccessEntryTargetTypesItemResponseArgs) ToDatasetAccessEntryTargetTypesItemResponseOutput() DatasetAccessEntryTargetTypesItemResponseOutput {
+	return i.ToDatasetAccessEntryTargetTypesItemResponseOutputWithContext(context.Background())
 }
 
-func (i DatasetAccessEntryTarget_typesItemResponseArgs) ToDatasetAccessEntryTarget_typesItemResponseOutputWithContext(ctx context.Context) DatasetAccessEntryTarget_typesItemResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessEntryTarget_typesItemResponseOutput)
+func (i DatasetAccessEntryTargetTypesItemResponseArgs) ToDatasetAccessEntryTargetTypesItemResponseOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessEntryTargetTypesItemResponseOutput)
 }
 
-// DatasetAccessEntryTarget_typesItemResponseArrayInput is an input type that accepts DatasetAccessEntryTarget_typesItemResponseArray and DatasetAccessEntryTarget_typesItemResponseArrayOutput values.
-// You can construct a concrete instance of `DatasetAccessEntryTarget_typesItemResponseArrayInput` via:
+// DatasetAccessEntryTargetTypesItemResponseArrayInput is an input type that accepts DatasetAccessEntryTargetTypesItemResponseArray and DatasetAccessEntryTargetTypesItemResponseArrayOutput values.
+// You can construct a concrete instance of `DatasetAccessEntryTargetTypesItemResponseArrayInput` via:
 //
-//          DatasetAccessEntryTarget_typesItemResponseArray{ DatasetAccessEntryTarget_typesItemResponseArgs{...} }
-type DatasetAccessEntryTarget_typesItemResponseArrayInput interface {
+//          DatasetAccessEntryTargetTypesItemResponseArray{ DatasetAccessEntryTargetTypesItemResponseArgs{...} }
+type DatasetAccessEntryTargetTypesItemResponseArrayInput interface {
 	pulumi.Input
 
-	ToDatasetAccessEntryTarget_typesItemResponseArrayOutput() DatasetAccessEntryTarget_typesItemResponseArrayOutput
-	ToDatasetAccessEntryTarget_typesItemResponseArrayOutputWithContext(context.Context) DatasetAccessEntryTarget_typesItemResponseArrayOutput
+	ToDatasetAccessEntryTargetTypesItemResponseArrayOutput() DatasetAccessEntryTargetTypesItemResponseArrayOutput
+	ToDatasetAccessEntryTargetTypesItemResponseArrayOutputWithContext(context.Context) DatasetAccessEntryTargetTypesItemResponseArrayOutput
 }
 
-type DatasetAccessEntryTarget_typesItemResponseArray []DatasetAccessEntryTarget_typesItemResponseInput
+type DatasetAccessEntryTargetTypesItemResponseArray []DatasetAccessEntryTargetTypesItemResponseInput
 
-func (DatasetAccessEntryTarget_typesItemResponseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatasetAccessEntryTarget_typesItemResponse)(nil)).Elem()
+func (DatasetAccessEntryTargetTypesItemResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatasetAccessEntryTargetTypesItemResponse)(nil)).Elem()
 }
 
-func (i DatasetAccessEntryTarget_typesItemResponseArray) ToDatasetAccessEntryTarget_typesItemResponseArrayOutput() DatasetAccessEntryTarget_typesItemResponseArrayOutput {
-	return i.ToDatasetAccessEntryTarget_typesItemResponseArrayOutputWithContext(context.Background())
+func (i DatasetAccessEntryTargetTypesItemResponseArray) ToDatasetAccessEntryTargetTypesItemResponseArrayOutput() DatasetAccessEntryTargetTypesItemResponseArrayOutput {
+	return i.ToDatasetAccessEntryTargetTypesItemResponseArrayOutputWithContext(context.Background())
 }
 
-func (i DatasetAccessEntryTarget_typesItemResponseArray) ToDatasetAccessEntryTarget_typesItemResponseArrayOutputWithContext(ctx context.Context) DatasetAccessEntryTarget_typesItemResponseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessEntryTarget_typesItemResponseArrayOutput)
+func (i DatasetAccessEntryTargetTypesItemResponseArray) ToDatasetAccessEntryTargetTypesItemResponseArrayOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessEntryTargetTypesItemResponseArrayOutput)
 }
 
-type DatasetAccessEntryTarget_typesItemResponseOutput struct{ *pulumi.OutputState }
+type DatasetAccessEntryTargetTypesItemResponseOutput struct{ *pulumi.OutputState }
 
-func (DatasetAccessEntryTarget_typesItemResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*DatasetAccessEntryTarget_typesItemResponse)(nil)).Elem()
+func (DatasetAccessEntryTargetTypesItemResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessEntryTargetTypesItemResponse)(nil)).Elem()
 }
 
-func (o DatasetAccessEntryTarget_typesItemResponseOutput) ToDatasetAccessEntryTarget_typesItemResponseOutput() DatasetAccessEntryTarget_typesItemResponseOutput {
+func (o DatasetAccessEntryTargetTypesItemResponseOutput) ToDatasetAccessEntryTargetTypesItemResponseOutput() DatasetAccessEntryTargetTypesItemResponseOutput {
 	return o
 }
 
-func (o DatasetAccessEntryTarget_typesItemResponseOutput) ToDatasetAccessEntryTarget_typesItemResponseOutputWithContext(ctx context.Context) DatasetAccessEntryTarget_typesItemResponseOutput {
+func (o DatasetAccessEntryTargetTypesItemResponseOutput) ToDatasetAccessEntryTargetTypesItemResponseOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemResponseOutput {
 	return o
 }
 
 // [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-func (o DatasetAccessEntryTarget_typesItemResponseOutput) TargetType() pulumi.StringOutput {
-	return o.ApplyT(func(v DatasetAccessEntryTarget_typesItemResponse) string { return v.TargetType }).(pulumi.StringOutput)
+func (o DatasetAccessEntryTargetTypesItemResponseOutput) TargetType() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetAccessEntryTargetTypesItemResponse) string { return v.TargetType }).(pulumi.StringOutput)
 }
 
-type DatasetAccessEntryTarget_typesItemResponseArrayOutput struct{ *pulumi.OutputState }
+type DatasetAccessEntryTargetTypesItemResponseArrayOutput struct{ *pulumi.OutputState }
 
-func (DatasetAccessEntryTarget_typesItemResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]DatasetAccessEntryTarget_typesItemResponse)(nil)).Elem()
+func (DatasetAccessEntryTargetTypesItemResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatasetAccessEntryTargetTypesItemResponse)(nil)).Elem()
 }
 
-func (o DatasetAccessEntryTarget_typesItemResponseArrayOutput) ToDatasetAccessEntryTarget_typesItemResponseArrayOutput() DatasetAccessEntryTarget_typesItemResponseArrayOutput {
+func (o DatasetAccessEntryTargetTypesItemResponseArrayOutput) ToDatasetAccessEntryTargetTypesItemResponseArrayOutput() DatasetAccessEntryTargetTypesItemResponseArrayOutput {
 	return o
 }
 
-func (o DatasetAccessEntryTarget_typesItemResponseArrayOutput) ToDatasetAccessEntryTarget_typesItemResponseArrayOutputWithContext(ctx context.Context) DatasetAccessEntryTarget_typesItemResponseArrayOutput {
+func (o DatasetAccessEntryTargetTypesItemResponseArrayOutput) ToDatasetAccessEntryTargetTypesItemResponseArrayOutputWithContext(ctx context.Context) DatasetAccessEntryTargetTypesItemResponseArrayOutput {
 	return o
 }
 
-func (o DatasetAccessEntryTarget_typesItemResponseArrayOutput) Index(i pulumi.IntInput) DatasetAccessEntryTarget_typesItemResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetAccessEntryTarget_typesItemResponse {
-		return vs[0].([]DatasetAccessEntryTarget_typesItemResponse)[vs[1].(int)]
-	}).(DatasetAccessEntryTarget_typesItemResponseOutput)
+func (o DatasetAccessEntryTargetTypesItemResponseArrayOutput) Index(i pulumi.IntInput) DatasetAccessEntryTargetTypesItemResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatasetAccessEntryTargetTypesItemResponse {
+		return vs[0].([]DatasetAccessEntryTargetTypesItemResponse)[vs[1].(int)]
+	}).(DatasetAccessEntryTargetTypesItemResponseOutput)
 }
 
 type DatasetAccessItem struct {
@@ -13207,10 +13207,10 @@ type JobStatisticsResponse struct {
 	Query JobStatistics2Response `pulumi:"query"`
 	// Quotas which delayed this job's start time.
 	QuotaDeferments []string `pulumi:"quotaDeferments"`
+	// Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
+	ReservationId string `pulumi:"reservationId"`
 	// Job resource usage breakdown by reservation.
 	ReservationUsage []JobStatisticsReservationUsageItemResponse `pulumi:"reservationUsage"`
-	// Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
-	Reservation_id string `pulumi:"reservation_id"`
 	// [Preview] Statistics for row-level security. Present only for query and extract jobs.
 	RowLevelSecurityStatistics RowLevelSecurityStatisticsResponse `pulumi:"rowLevelSecurityStatistics"`
 	// Statistics for a child job of a script.
@@ -13255,10 +13255,10 @@ type JobStatisticsResponseArgs struct {
 	Query JobStatistics2ResponseInput `pulumi:"query"`
 	// Quotas which delayed this job's start time.
 	QuotaDeferments pulumi.StringArrayInput `pulumi:"quotaDeferments"`
+	// Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
+	ReservationId pulumi.StringInput `pulumi:"reservationId"`
 	// Job resource usage breakdown by reservation.
 	ReservationUsage JobStatisticsReservationUsageItemResponseArrayInput `pulumi:"reservationUsage"`
-	// Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
-	Reservation_id pulumi.StringInput `pulumi:"reservation_id"`
 	// [Preview] Statistics for row-level security. Present only for query and extract jobs.
 	RowLevelSecurityStatistics RowLevelSecurityStatisticsResponseInput `pulumi:"rowLevelSecurityStatistics"`
 	// Statistics for a child job of a script.
@@ -13395,14 +13395,14 @@ func (o JobStatisticsResponseOutput) QuotaDeferments() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v JobStatisticsResponse) []string { return v.QuotaDeferments }).(pulumi.StringArrayOutput)
 }
 
+// Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
+func (o JobStatisticsResponseOutput) ReservationId() pulumi.StringOutput {
+	return o.ApplyT(func(v JobStatisticsResponse) string { return v.ReservationId }).(pulumi.StringOutput)
+}
+
 // Job resource usage breakdown by reservation.
 func (o JobStatisticsResponseOutput) ReservationUsage() JobStatisticsReservationUsageItemResponseArrayOutput {
 	return o.ApplyT(func(v JobStatisticsResponse) []JobStatisticsReservationUsageItemResponse { return v.ReservationUsage }).(JobStatisticsReservationUsageItemResponseArrayOutput)
-}
-
-// Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
-func (o JobStatisticsResponseOutput) Reservation_id() pulumi.StringOutput {
-	return o.ApplyT(func(v JobStatisticsResponse) string { return v.Reservation_id }).(pulumi.StringOutput)
 }
 
 // [Preview] Statistics for row-level security. Present only for query and extract jobs.
@@ -13543,6 +13543,16 @@ func (o JobStatisticsResponsePtrOutput) QuotaDeferments() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
+// Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
+func (o JobStatisticsResponsePtrOutput) ReservationId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobStatisticsResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReservationId
+	}).(pulumi.StringPtrOutput)
+}
+
 // Job resource usage breakdown by reservation.
 func (o JobStatisticsResponsePtrOutput) ReservationUsage() JobStatisticsReservationUsageItemResponseArrayOutput {
 	return o.ApplyT(func(v *JobStatisticsResponse) []JobStatisticsReservationUsageItemResponse {
@@ -13551,16 +13561,6 @@ func (o JobStatisticsResponsePtrOutput) ReservationUsage() JobStatisticsReservat
 		}
 		return v.ReservationUsage
 	}).(JobStatisticsReservationUsageItemResponseArrayOutput)
-}
-
-// Name of the primary reservation assigned to this job. Note that this could be different than reservations reported in the reservation usage field if parent reservations were used to execute this job.
-func (o JobStatisticsResponsePtrOutput) Reservation_id() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *JobStatisticsResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Reservation_id
-	}).(pulumi.StringPtrOutput)
 }
 
 // [Preview] Statistics for row-level security. Present only for query and extract jobs.
@@ -22262,10 +22262,10 @@ func init() {
 	pulumi.RegisterOutputType(DatasetAccessEntryOutput{})
 	pulumi.RegisterOutputType(DatasetAccessEntryPtrOutput{})
 	pulumi.RegisterOutputType(DatasetAccessEntryResponseOutput{})
-	pulumi.RegisterOutputType(DatasetAccessEntryTarget_typesItemOutput{})
-	pulumi.RegisterOutputType(DatasetAccessEntryTarget_typesItemArrayOutput{})
-	pulumi.RegisterOutputType(DatasetAccessEntryTarget_typesItemResponseOutput{})
-	pulumi.RegisterOutputType(DatasetAccessEntryTarget_typesItemResponseArrayOutput{})
+	pulumi.RegisterOutputType(DatasetAccessEntryTargetTypesItemOutput{})
+	pulumi.RegisterOutputType(DatasetAccessEntryTargetTypesItemArrayOutput{})
+	pulumi.RegisterOutputType(DatasetAccessEntryTargetTypesItemResponseOutput{})
+	pulumi.RegisterOutputType(DatasetAccessEntryTargetTypesItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(DatasetAccessItemOutput{})
 	pulumi.RegisterOutputType(DatasetAccessItemArrayOutput{})
 	pulumi.RegisterOutputType(DatasetAccessItemResponseOutput{})

@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// <summary>
         /// An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
         /// </summary>
-        public readonly ImmutableDictionary<string, string> Custom_attributes;
+        public readonly ImmutableDictionary<string, string> CustomAttributes;
         /// <summary>
         /// HTTP 1.1 Entity tag for this subscription notification.
         /// </summary>
@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// <summary>
         /// If present, only send notifications about listed event types. If empty, sent notifications for all event types.
         /// </summary>
-        public readonly ImmutableArray<string> Event_types;
+        public readonly ImmutableArray<string> EventTypes;
         /// <summary>
         /// The kind of item this is. For notifications, this is always storage#notification.
         /// </summary>
@@ -61,11 +61,11 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// <summary>
         /// If present, only apply this notification configuration to object names that begin with this prefix.
         /// </summary>
-        public readonly string Object_name_prefix;
+        public readonly string ObjectNamePrefix;
         /// <summary>
         /// The desired content of the Payload.
         /// </summary>
-        public readonly string Payload_format;
+        public readonly string PayloadFormat;
         /// <summary>
         /// The canonical URL of this notification.
         /// </summary>
@@ -77,28 +77,28 @@ namespace Pulumi.GoogleNative.Storage.V1
 
         [OutputConstructor]
         private GetNotificationResult(
-            ImmutableDictionary<string, string> custom_attributes,
+            ImmutableDictionary<string, string> customAttributes,
 
             string etag,
 
-            ImmutableArray<string> event_types,
+            ImmutableArray<string> eventTypes,
 
             string kind,
 
-            string object_name_prefix,
+            string objectNamePrefix,
 
-            string payload_format,
+            string payloadFormat,
 
             string selfLink,
 
             string topic)
         {
-            Custom_attributes = custom_attributes;
+            CustomAttributes = customAttributes;
             Etag = etag;
-            Event_types = event_types;
+            EventTypes = eventTypes;
             Kind = kind;
-            Object_name_prefix = object_name_prefix;
-            Payload_format = payload_format;
+            ObjectNamePrefix = objectNamePrefix;
+            PayloadFormat = payloadFormat;
             SelfLink = selfLink;
             Topic = topic;
         }

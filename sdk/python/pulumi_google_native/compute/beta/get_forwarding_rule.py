@@ -17,13 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetForwardingRuleResult:
-    def __init__(__self__, ip_address=None, ip_protocol=None, all_ports=None, allow_global_access=None, backend_service=None, creation_timestamp=None, description=None, fingerprint=None, ip_version=None, is_mirroring_collector=None, kind=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, network_tier=None, port_range=None, ports=None, psc_connection_id=None, region=None, self_link=None, service_directory_registrations=None, service_label=None, service_name=None, subnetwork=None, target=None):
-        if ip_address and not isinstance(ip_address, str):
-            raise TypeError("Expected argument 'ip_address' to be a str")
-        pulumi.set(__self__, "ip_address", ip_address)
-        if ip_protocol and not isinstance(ip_protocol, str):
-            raise TypeError("Expected argument 'ip_protocol' to be a str")
-        pulumi.set(__self__, "ip_protocol", ip_protocol)
+    def __init__(__self__, all_ports=None, allow_global_access=None, backend_service=None, creation_timestamp=None, description=None, fingerprint=None, ip_address=None, ip_protocol=None, ip_version=None, is_mirroring_collector=None, kind=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, network_tier=None, port_range=None, ports=None, psc_connection_id=None, region=None, self_link=None, service_directory_registrations=None, service_label=None, service_name=None, subnetwork=None, target=None):
         if all_ports and not isinstance(all_ports, bool):
             raise TypeError("Expected argument 'all_ports' to be a bool")
         pulumi.set(__self__, "all_ports", all_ports)
@@ -42,6 +36,12 @@ class GetForwardingRuleResult:
         if fingerprint and not isinstance(fingerprint, str):
             raise TypeError("Expected argument 'fingerprint' to be a str")
         pulumi.set(__self__, "fingerprint", fingerprint)
+        if ip_address and not isinstance(ip_address, str):
+            raise TypeError("Expected argument 'ip_address' to be a str")
+        pulumi.set(__self__, "ip_address", ip_address)
+        if ip_protocol and not isinstance(ip_protocol, str):
+            raise TypeError("Expected argument 'ip_protocol' to be a str")
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
         if ip_version and not isinstance(ip_version, str):
             raise TypeError("Expected argument 'ip_version' to be a str")
         pulumi.set(__self__, "ip_version", ip_version)
@@ -104,45 +104,6 @@ class GetForwardingRuleResult:
         pulumi.set(__self__, "target", target)
 
     @property
-    @pulumi.getter(name="IPAddress")
-    def ip_address(self) -> str:
-        """
-        IP address that this forwarding rule serves. When a client sends traffic to this IP address, the forwarding rule directs the traffic to the target that you specify in the forwarding rule.
-
-        If you don't specify a reserved IP address, an ephemeral IP address is assigned. Methods for specifying an IP address:
-
-        * IPv4 dotted decimal, as in `100.1.2.3` * Full URL, as in https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name * Partial URL or by name, as in:  
-        - projects/project_id/regions/region/addresses/address-name 
-        - regions/region/addresses/address-name 
-        - global/addresses/address-name 
-        - address-name  
-
-        The loadBalancingScheme and the forwarding rule's target determine the type of IP address that you can use. For detailed information, refer to [IP address specifications](/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
-
-        Must be set to `0.0.0.0` when the target is targetGrpcProxy that has validateForProxyless field set to true.
-
-        For Private Service Connect forwarding rules that forward traffic to Google APIs, IP address must be provided.
-        """
-        return pulumi.get(self, "ip_address")
-
-    @property
-    @pulumi.getter(name="IPProtocol")
-    def ip_protocol(self) -> str:
-        """
-        The IP protocol to which this rule applies.
-
-        For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and ICMP.
-
-        The valid IP protocols are different for different load balancing products:  
-        - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or ALL is valid. 
-        - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid.  
-        - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. 
-        - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. 
-        - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
-        """
-        return pulumi.get(self, "ip_protocol")
-
-    @property
     @pulumi.getter(name="allPorts")
     def all_ports(self) -> bool:
         """
@@ -193,6 +154,45 @@ class GetForwardingRuleResult:
         To see the latest fingerprint, make a get() request to retrieve a ForwardingRule.
         """
         return pulumi.get(self, "fingerprint")
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        """
+        IP address that this forwarding rule serves. When a client sends traffic to this IP address, the forwarding rule directs the traffic to the target that you specify in the forwarding rule.
+
+        If you don't specify a reserved IP address, an ephemeral IP address is assigned. Methods for specifying an IP address:
+
+        * IPv4 dotted decimal, as in `100.1.2.3` * Full URL, as in https://www.googleapis.com/compute/v1/projects/project_id/regions/region/addresses/address-name * Partial URL or by name, as in:  
+        - projects/project_id/regions/region/addresses/address-name 
+        - regions/region/addresses/address-name 
+        - global/addresses/address-name 
+        - address-name  
+
+        The loadBalancingScheme and the forwarding rule's target determine the type of IP address that you can use. For detailed information, refer to [IP address specifications](/load-balancing/docs/forwarding-rule-concepts#ip_address_specifications).
+
+        Must be set to `0.0.0.0` when the target is targetGrpcProxy that has validateForProxyless field set to true.
+
+        For Private Service Connect forwarding rules that forward traffic to Google APIs, IP address must be provided.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> str:
+        """
+        The IP protocol to which this rule applies.
+
+        For protocol forwarding, valid options are TCP, UDP, ESP, AH, SCTP and ICMP.
+
+        The valid IP protocols are different for different load balancing products:  
+        - Internal TCP/UDP Load Balancing: The load balancing scheme is INTERNAL, and one of TCP, UDP or ALL is valid. 
+        - Traffic Director: The load balancing scheme is INTERNAL_SELF_MANAGED, and only TCP is valid.  
+        - Internal HTTP(S) Load Balancing: The load balancing scheme is INTERNAL_MANAGED, and only TCP is valid. 
+        - HTTP(S), SSL Proxy, and TCP Proxy Load Balancing: The load balancing scheme is EXTERNAL and only TCP is valid. 
+        - Network Load Balancing: The load balancing scheme is EXTERNAL, and one of TCP or UDP is valid.
+        """
+        return pulumi.get(self, "ip_protocol")
 
     @property
     @pulumi.getter(name="ipVersion")
@@ -416,14 +416,14 @@ class AwaitableGetForwardingRuleResult(GetForwardingRuleResult):
         if False:
             yield self
         return GetForwardingRuleResult(
-            ip_address=self.ip_address,
-            ip_protocol=self.ip_protocol,
             all_ports=self.all_ports,
             allow_global_access=self.allow_global_access,
             backend_service=self.backend_service,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             fingerprint=self.fingerprint,
+            ip_address=self.ip_address,
+            ip_protocol=self.ip_protocol,
             ip_version=self.ip_version,
             is_mirroring_collector=self.is_mirroring_collector,
             kind=self.kind,
@@ -464,14 +464,14 @@ def get_forwarding_rule(forwarding_rule: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:compute/beta:getForwardingRule', __args__, opts=opts, typ=GetForwardingRuleResult).value
 
     return AwaitableGetForwardingRuleResult(
-        ip_address=__ret__.ip_address,
-        ip_protocol=__ret__.ip_protocol,
         all_ports=__ret__.all_ports,
         allow_global_access=__ret__.allow_global_access,
         backend_service=__ret__.backend_service,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         fingerprint=__ret__.fingerprint,
+        ip_address=__ret__.ip_address,
+        ip_protocol=__ret__.ip_protocol,
         ip_version=__ret__.ip_version,
         is_mirroring_collector=__ret__.is_mirroring_collector,
         kind=__ret__.kind,
