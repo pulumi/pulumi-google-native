@@ -126,9 +126,9 @@ type TransferJobStatus pulumi.String
 const (
 	// Zero is an illegal value.
 	TransferJobStatusStatusUnspecified = TransferJobStatus("STATUS_UNSPECIFIED")
-	// New transfers will be performed based on the schedule.
+	// New transfers are performed based on the schedule.
 	TransferJobStatusEnabled = TransferJobStatus("ENABLED")
-	// New transfers will not be scheduled.
+	// New transfers are not scheduled.
 	TransferJobStatusDisabled = TransferJobStatus("DISABLED")
 	// This is a soft delete state. After a transfer job is set to this state, the job and all the transfer executions are subject to garbage collection. Transfer jobs become eligible for garbage collection 30 days after their status is set to `DELETED`.
 	TransferJobStatusDeleted = TransferJobStatus("DELETED")

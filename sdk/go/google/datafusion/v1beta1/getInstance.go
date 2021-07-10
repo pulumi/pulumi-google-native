@@ -32,6 +32,8 @@ type LookupInstanceResult struct {
 	AvailableVersion []VersionResponse `pulumi:"availableVersion"`
 	// The time the instance was created.
 	CreateTime string `pulumi:"createTime"`
+	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+	CryptoKeyConfig CryptoKeyConfigResponse `pulumi:"cryptoKeyConfig"`
 	// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
 	DataprocServiceAccount string `pulumi:"dataprocServiceAccount"`
 	// A description of this instance.

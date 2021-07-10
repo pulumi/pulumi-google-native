@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
     /// <summary>
-    /// The named port. For example: .
+    /// The named port. For example: &lt;"http", 80&gt;.
     /// </summary>
     public sealed class NamedPortArgs : Pulumi.ResourceArgs
     {

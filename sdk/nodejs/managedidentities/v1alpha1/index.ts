@@ -6,15 +6,21 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./domain";
+export * from "./domainBackupIamPolicy";
 export * from "./domainIamPolicy";
 export * from "./getDomain";
+export * from "./getDomainBackupIamPolicy";
 export * from "./getDomainIamPolicy";
+export * from "./getPeering";
 export * from "./getPeeringIamPolicy";
+export * from "./peering";
 export * from "./peeringIamPolicy";
 
 // Import resources to register:
 import { Domain } from "./domain";
+import { DomainBackupIamPolicy } from "./domainBackupIamPolicy";
 import { DomainIamPolicy } from "./domainIamPolicy";
+import { Peering } from "./peering";
 import { PeeringIamPolicy } from "./peeringIamPolicy";
 
 const _module = {
@@ -23,8 +29,12 @@ const _module = {
         switch (type) {
             case "google-native:managedidentities/v1alpha1:Domain":
                 return new Domain(name, <any>undefined, { urn })
+            case "google-native:managedidentities/v1alpha1:DomainBackupIamPolicy":
+                return new DomainBackupIamPolicy(name, <any>undefined, { urn })
             case "google-native:managedidentities/v1alpha1:DomainIamPolicy":
                 return new DomainIamPolicy(name, <any>undefined, { urn })
+            case "google-native:managedidentities/v1alpha1:Peering":
+                return new Peering(name, <any>undefined, { urn })
             case "google-native:managedidentities/v1alpha1:PeeringIamPolicy":
                 return new PeeringIamPolicy(name, <any>undefined, { urn })
             default:

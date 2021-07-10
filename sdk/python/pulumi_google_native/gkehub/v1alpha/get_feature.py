@@ -93,7 +93,7 @@ class GetFeatureResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The full, unique name of this Feature resource in the format `projects/*/locations/global/features/*`.
+        The full, unique name of this Feature resource in the format `projects/*/locations/*/features/*`.
         """
         return pulumi.get(self, "name")
 
@@ -149,6 +149,7 @@ class AwaitableGetFeatureResult(GetFeatureResult):
 
 
 def get_feature(feature_id: Optional[str] = None,
+                location: Optional[str] = None,
                 project: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFeatureResult:
     """
@@ -156,6 +157,7 @@ def get_feature(feature_id: Optional[str] = None,
     """
     __args__ = dict()
     __args__['featureId'] = feature_id
+    __args__['location'] = location
     __args__['project'] = project
     if opts is None:
         opts = pulumi.InvokeOptions()

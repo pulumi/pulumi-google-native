@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// A list of URLs of the IP resources to be drained. These IPs must be valid static external IPs that have been assigned to the NAT. These IPs should be used for updating/patching a NAT only.
         /// </summary>
         public readonly ImmutableArray<string> DrainNatIps;
+        /// <summary>
+        /// Enable Dynamic Port Allocation. If not specified, it is disabled by default. If set to true, - Dynamic Port Allocation will be enabled on this NAT config. - enableEndpointIndependentMapping cannot be set to true. - If minPorts is set, minPortsPerVm must be set to a power of two greater than or equal to 32. If minPortsPerVm is not set, a minimum of 32 ports will be allocated to a VM from this NAT config. 
+        /// </summary>
+        public readonly bool EnableDynamicPortAllocation;
         public readonly bool EnableEndpointIndependentMapping;
         /// <summary>
         /// Timeout (in seconds) for ICMP connections. Defaults to 30s if not set.
@@ -27,6 +31,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly Outputs.RouterNatLogConfigResponse LogConfig;
         /// <summary>
+        /// Maximum number of ports allocated to a VM from this NAT config when Dynamic Port Allocation is enabled. If Dynamic Port Allocation is not enabled, this field has no effect. If Dynamic Port Allocation is enabled, and this field is set, it must be set to a power of two greater than minPortsPerVm, or 64 if minPortsPerVm is not set. If Dynamic Port Allocation is enabled and this field is not set, a maximum of 65536 ports will be allocated to a VM from this NAT config.
+        /// </summary>
+        public readonly int MaxPortsPerVm;
+        /// <summary>
         /// Minimum number of ports allocated to a VM from this NAT config. If not set, a default number of ports is allocated to a VM. This is rounded up to the nearest power of 2. For example, if the value of this field is 50, at least 64 ports are allocated to a VM.
         /// </summary>
         public readonly int MinPortsPerVm;
@@ -35,9 +43,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Specify the NatIpAllocateOption, which can take one of the following values: 
-        /// - MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When there are not enough specified Nat IPs, the Nat service fails for new VMs. 
-        /// - AUTO_ONLY: Nat IPs are allocated by Google Cloud Platform; customers can't specify any Nat IPs. When choosing AUTO_ONLY, then nat_ip should be empty.
+        /// Specify the NatIpAllocateOption, which can take one of the following values: - MANUAL_ONLY: Uses only Nat IP addresses provided by customers. When there are not enough specified Nat IPs, the Nat service fails for new VMs. - AUTO_ONLY: Nat IPs are allocated by Google Cloud Platform; customers can't specify any Nat IPs. When choosing AUTO_ONLY, then nat_ip should be empty. 
         /// </summary>
         public readonly string NatIpAllocateOption;
         /// <summary>
@@ -49,10 +55,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.RouterNatRuleResponse> Rules;
         /// <summary>
-        /// Specify the Nat option, which can take one of the following values: 
-        /// - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. 
-        /// - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. 
-        /// - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
+        /// Specify the Nat option, which can take one of the following values: - ALL_SUBNETWORKS_ALL_IP_RANGES: All of the IP ranges in every Subnetwork are allowed to Nat. - ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES: All of the primary IP ranges in every Subnetwork are allowed to Nat. - LIST_OF_SUBNETWORKS: A list of Subnetworks are allowed to Nat (specified in the field subnetwork below) The default is SUBNETWORK_IP_RANGE_TO_NAT_OPTION_UNSPECIFIED. Note that if this field contains ALL_SUBNETWORKS_ALL_IP_RANGES or ALL_SUBNETWORKS_ALL_PRIMARY_IP_RANGES, then there should not be any other Router.Nat section in any Router for this network in this region.
         /// </summary>
         public readonly string SourceSubnetworkIpRangesToNat;
         /// <summary>
@@ -80,11 +83,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         private RouterNatResponse(
             ImmutableArray<string> drainNatIps,
 
+            bool enableDynamicPortAllocation,
+
             bool enableEndpointIndependentMapping,
 
             int icmpIdleTimeoutSec,
 
             Outputs.RouterNatLogConfigResponse logConfig,
+
+            int maxPortsPerVm,
 
             int minPortsPerVm,
 
@@ -109,9 +116,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             int udpIdleTimeoutSec)
         {
             DrainNatIps = drainNatIps;
+            EnableDynamicPortAllocation = enableDynamicPortAllocation;
             EnableEndpointIndependentMapping = enableEndpointIndependentMapping;
             IcmpIdleTimeoutSec = icmpIdleTimeoutSec;
             LogConfig = logConfig;
+            MaxPortsPerVm = maxPortsPerVm;
             MinPortsPerVm = minPortsPerVm;
             Name = name;
             NatIpAllocateOption = natIpAllocateOption;

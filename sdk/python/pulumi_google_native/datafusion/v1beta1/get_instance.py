@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, accelerators=None, api_endpoint=None, available_version=None, create_time=None, dataproc_service_account=None, description=None, display_name=None, enable_rbac=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, gcs_bucket=None, labels=None, name=None, network_config=None, options=None, p4_service_account=None, private_instance=None, service_endpoint=None, state=None, state_message=None, tenant_project_id=None, type=None, update_time=None, version=None, zone=None):
+    def __init__(__self__, accelerators=None, api_endpoint=None, available_version=None, create_time=None, crypto_key_config=None, dataproc_service_account=None, description=None, display_name=None, enable_rbac=None, enable_stackdriver_logging=None, enable_stackdriver_monitoring=None, gcs_bucket=None, labels=None, name=None, network_config=None, options=None, p4_service_account=None, private_instance=None, service_endpoint=None, state=None, state_message=None, tenant_project_id=None, type=None, update_time=None, version=None, zone=None):
         if accelerators and not isinstance(accelerators, list):
             raise TypeError("Expected argument 'accelerators' to be a list")
         pulumi.set(__self__, "accelerators", accelerators)
@@ -30,6 +30,9 @@ class GetInstanceResult:
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if crypto_key_config and not isinstance(crypto_key_config, dict):
+            raise TypeError("Expected argument 'crypto_key_config' to be a dict")
+        pulumi.set(__self__, "crypto_key_config", crypto_key_config)
         if dataproc_service_account and not isinstance(dataproc_service_account, str):
             raise TypeError("Expected argument 'dataproc_service_account' to be a str")
         pulumi.set(__self__, "dataproc_service_account", dataproc_service_account)
@@ -125,6 +128,14 @@ class GetInstanceResult:
         The time the instance was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="cryptoKeyConfig")
+    def crypto_key_config(self) -> 'outputs.CryptoKeyConfigResponse':
+        """
+        The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+        """
+        return pulumi.get(self, "crypto_key_config")
 
     @property
     @pulumi.getter(name="dataprocServiceAccount")
@@ -305,6 +316,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             api_endpoint=self.api_endpoint,
             available_version=self.available_version,
             create_time=self.create_time,
+            crypto_key_config=self.crypto_key_config,
             dataproc_service_account=self.dataproc_service_account,
             description=self.description,
             display_name=self.display_name,
@@ -350,6 +362,7 @@ def get_instance(instance_id: Optional[str] = None,
         api_endpoint=__ret__.api_endpoint,
         available_version=__ret__.available_version,
         create_time=__ret__.create_time,
+        crypto_key_config=__ret__.crypto_key_config,
         dataproc_service_account=__ret__.dataproc_service_account,
         description=__ret__.description,
         display_name=__ret__.display_name,

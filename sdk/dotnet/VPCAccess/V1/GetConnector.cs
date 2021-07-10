@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.VPCAccess.V1
         /// </summary>
         public readonly int MaxInstances;
         /// <summary>
-        /// Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
+        /// Maximum throughput of the connector in Mbps. Default is 300, max is 1000.
         /// </summary>
         public readonly int MaxThroughput;
         /// <summary>

@@ -14,17 +14,11 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
     public sealed class PacketMirroringMirroredResourceInfoResponse
     {
         /// <summary>
-        /// A set of virtual machine instances that are being mirrored. They must live in zones contained in the same region as this packetMirroring.
-        /// 
-        /// Note that this config will apply only to those network interfaces of the Instances that belong to the network specified in this packetMirroring.
-        /// 
-        /// You may specify a maximum of 50 Instances.
+        /// A set of virtual machine instances that are being mirrored. They must live in zones contained in the same region as this packetMirroring. Note that this config will apply only to those network interfaces of the Instances that belong to the network specified in this packetMirroring. You may specify a maximum of 50 Instances.
         /// </summary>
         public readonly ImmutableArray<Outputs.PacketMirroringMirroredResourceInfoInstanceInfoResponse> Instances;
         /// <summary>
-        /// A set of subnetworks for which traffic from/to all VM instances will be mirrored. They must live in the same region as this packetMirroring.
-        /// 
-        /// You may specify a maximum of 5 subnetworks.
+        /// A set of subnetworks for which traffic from/to all VM instances will be mirrored. They must live in the same region as this packetMirroring. You may specify a maximum of 5 subnetworks.
         /// </summary>
         public readonly ImmutableArray<Outputs.PacketMirroringMirroredResourceInfoSubnetInfoResponse> Subnetworks;
         /// <summary>

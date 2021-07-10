@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
     public sealed class LogConfigCounterOptionsCustomFieldResponse
     {
         /// <summary>
-        /// Name is the field name.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Value is the field value. It is important that in contrast to the CounterOptions.field, the value here is a constant that is not derived from the IAMContext.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly string Value;
 

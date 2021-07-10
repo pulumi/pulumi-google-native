@@ -236,6 +236,10 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// </summary>
         public static CryptoKeyVersionTemplateAlgorithm EcSignP384Sha384 { get; } = new CryptoKeyVersionTemplateAlgorithm("EC_SIGN_P384_SHA384");
         /// <summary>
+        /// ECDSA on the non-NIST secp256k1 curve. This curve is only supported for HSM protection level.
+        /// </summary>
+        public static CryptoKeyVersionTemplateAlgorithm EcSignSecp256k1Sha256 { get; } = new CryptoKeyVersionTemplateAlgorithm("EC_SIGN_SECP256K1_SHA256");
+        /// <summary>
         /// Algorithm representing symmetric encryption by an external key manager.
         /// </summary>
         public static CryptoKeyVersionTemplateAlgorithm ExternalSymmetricEncryption { get; } = new CryptoKeyVersionTemplateAlgorithm("EXTERNAL_SYMMETRIC_ENCRYPTION");

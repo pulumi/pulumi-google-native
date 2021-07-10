@@ -22,8 +22,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> CreationTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// A list of features enabled when the selected profile is CUSTOM. The
-        /// - method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
+        /// A list of features enabled when the selected profile is CUSTOM. The method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
         /// </summary>
         [Output("customFeatures")]
         public Output<ImmutableArray<string>> CustomFeatures { get; private set; } = null!;
@@ -41,9 +40,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<ImmutableArray<string>> EnabledFeatures { get; private set; } = null!;
 
         /// <summary>
-        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet.
-        /// 
-        /// To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
+        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a SslPolicy. An up-to-date fingerprint must be provided in order to update the SslPolicy, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an SslPolicy.
         /// </summary>
         [Output("fingerprint")]
         public Output<string> Fingerprint { get; private set; } = null!;
@@ -133,8 +130,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         private InputList<string>? _customFeatures;
 
         /// <summary>
-        /// A list of features enabled when the selected profile is CUSTOM. The
-        /// - method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
+        /// A list of features enabled when the selected profile is CUSTOM. The method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.
         /// </summary>
         public InputList<string> CustomFeatures
         {

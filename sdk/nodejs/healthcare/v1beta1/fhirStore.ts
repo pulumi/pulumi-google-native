@@ -64,6 +64,10 @@ export class FhirStore extends pulumi.CustomResource {
      */
     public readonly notificationConfig!: pulumi.Output<outputs.healthcare.v1beta1.NotificationConfigResponse>;
     /**
+     * Configuration for how FHIR resource can be searched.
+     */
+    public readonly searchConfig!: pulumi.Output<outputs.healthcare.v1beta1.SearchConfigResponse>;
+    /**
      * A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
      */
     public readonly streamConfigs!: pulumi.Output<outputs.healthcare.v1beta1.StreamConfigResponse[]>;
@@ -106,6 +110,7 @@ export class FhirStore extends pulumi.CustomResource {
             inputs["location"] = args ? args.location : undefined;
             inputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["searchConfig"] = args ? args.searchConfig : undefined;
             inputs["streamConfigs"] = args ? args.streamConfigs : undefined;
             inputs["validationConfig"] = args ? args.validationConfig : undefined;
             inputs["version"] = args ? args.version : undefined;
@@ -118,6 +123,7 @@ export class FhirStore extends pulumi.CustomResource {
             inputs["labels"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
             inputs["notificationConfig"] = undefined /*out*/;
+            inputs["searchConfig"] = undefined /*out*/;
             inputs["streamConfigs"] = undefined /*out*/;
             inputs["validationConfig"] = undefined /*out*/;
             inputs["version"] = undefined /*out*/;
@@ -161,6 +167,10 @@ export interface FhirStoreArgs {
      */
     notificationConfig?: pulumi.Input<inputs.healthcare.v1beta1.NotificationConfigArgs>;
     project: pulumi.Input<string>;
+    /**
+     * Configuration for how FHIR resource can be searched.
+     */
+    searchConfig?: pulumi.Input<inputs.healthcare.v1beta1.SearchConfigArgs>;
     /**
      * A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
      */

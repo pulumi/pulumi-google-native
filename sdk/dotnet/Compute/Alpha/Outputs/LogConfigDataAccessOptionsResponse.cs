@@ -13,6 +13,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     [OutputType]
     public sealed class LogConfigDataAccessOptionsResponse
     {
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         public readonly string LogMode;
 
         [OutputConstructor]

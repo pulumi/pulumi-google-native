@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Protocol for port. Must be "TCP". Defaults to "TCP".
+        /// (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
         /// </summary>
         public readonly string Protocol;
 

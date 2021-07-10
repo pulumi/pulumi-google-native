@@ -25,11 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         private InputMap<string>? _locationRolloutPolicies;
 
         /// <summary>
-        /// Location based rollout policies to apply to the resource.
-        /// 
-        /// Currently only zone names are supported and must be represented as valid URLs, like: zones/us-central1-a.
-        /// 
-        /// The value expects an RFC3339 timestamp on or after which the update is considered rolled out to the specified location.
+        /// Location based rollout policies to apply to the resource. Currently only zone names are supported and must be represented as valid URLs, like: zones/us-central1-a. The value expects an RFC3339 timestamp on or after which the update is considered rolled out to the specified location.
         /// </summary>
         public InputMap<string> LocationRolloutPolicies
         {

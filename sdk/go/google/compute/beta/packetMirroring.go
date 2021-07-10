@@ -21,9 +21,7 @@ type PacketMirroring struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
-	//
-	// The default is TRUE.
+	// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network. The default is TRUE.
 	Enable pulumi.StringOutput `pulumi:"enable"`
 	// Filter for mirrored traffic. If unspecified, all traffic is mirrored.
 	Filter PacketMirroringFilterResponseOutput `pulumi:"filter"`
@@ -35,9 +33,7 @@ type PacketMirroring struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in the given network. All mirrored subnetworks should belong to the given network.
 	Network PacketMirroringNetworkInfoResponseOutput `pulumi:"network"`
-	// The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins.
-	//
-	// Default value is 1000. Valid range is 0 through 65535.
+	// The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
 	Priority pulumi.IntOutput `pulumi:"priority"`
 	// URI of the region where the packetMirroring resides.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -86,9 +82,7 @@ type packetMirroringState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
-	//
-	// The default is TRUE.
+	// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network. The default is TRUE.
 	Enable *string `pulumi:"enable"`
 	// Filter for mirrored traffic. If unspecified, all traffic is mirrored.
 	Filter *PacketMirroringFilterResponse `pulumi:"filter"`
@@ -100,9 +94,7 @@ type packetMirroringState struct {
 	Name *string `pulumi:"name"`
 	// Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in the given network. All mirrored subnetworks should belong to the given network.
 	Network *PacketMirroringNetworkInfoResponse `pulumi:"network"`
-	// The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins.
-	//
-	// Default value is 1000. Valid range is 0 through 65535.
+	// The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
 	Priority *int `pulumi:"priority"`
 	// URI of the region where the packetMirroring resides.
 	Region *string `pulumi:"region"`
@@ -117,9 +109,7 @@ type PacketMirroringState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
-	//
-	// The default is TRUE.
+	// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network. The default is TRUE.
 	Enable pulumi.StringPtrInput
 	// Filter for mirrored traffic. If unspecified, all traffic is mirrored.
 	Filter PacketMirroringFilterResponsePtrInput
@@ -131,9 +121,7 @@ type PacketMirroringState struct {
 	Name pulumi.StringPtrInput
 	// Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in the given network. All mirrored subnetworks should belong to the given network.
 	Network PacketMirroringNetworkInfoResponsePtrInput
-	// The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins.
-	//
-	// Default value is 1000. Valid range is 0 through 65535.
+	// The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
 	Priority pulumi.IntPtrInput
 	// URI of the region where the packetMirroring resides.
 	Region pulumi.StringPtrInput
@@ -150,9 +138,7 @@ type packetMirroringArgs struct {
 	CollectorIlb *PacketMirroringForwardingRuleInfo `pulumi:"collectorIlb"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
-	//
-	// The default is TRUE.
+	// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network. The default is TRUE.
 	Enable *string `pulumi:"enable"`
 	// Filter for mirrored traffic. If unspecified, all traffic is mirrored.
 	Filter *PacketMirroringFilter `pulumi:"filter"`
@@ -162,9 +148,7 @@ type packetMirroringArgs struct {
 	Name *string `pulumi:"name"`
 	// Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in the given network. All mirrored subnetworks should belong to the given network.
 	Network *PacketMirroringNetworkInfo `pulumi:"network"`
-	// The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins.
-	//
-	// Default value is 1000. Valid range is 0 through 65535.
+	// The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
 	Priority  *int    `pulumi:"priority"`
 	Project   string  `pulumi:"project"`
 	Region    string  `pulumi:"region"`
@@ -177,9 +161,7 @@ type PacketMirroringArgs struct {
 	CollectorIlb PacketMirroringForwardingRuleInfoPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
-	//
-	// The default is TRUE.
+	// Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network. The default is TRUE.
 	Enable *PacketMirroringEnable
 	// Filter for mirrored traffic. If unspecified, all traffic is mirrored.
 	Filter PacketMirroringFilterPtrInput
@@ -189,9 +171,7 @@ type PacketMirroringArgs struct {
 	Name pulumi.StringPtrInput
 	// Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in the given network. All mirrored subnetworks should belong to the given network.
 	Network PacketMirroringNetworkInfoPtrInput
-	// The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins.
-	//
-	// Default value is 1000. Valid range is 0 through 65535.
+	// The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
 	Priority  pulumi.IntPtrInput
 	Project   pulumi.StringInput
 	Region    pulumi.StringInput

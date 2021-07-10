@@ -16,6 +16,18 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Inputs
     public sealed class EndpointArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// A [Cloud SQL](https://cloud.google.com/sql) instance URI.
+        /// </summary>
+        [Input("cloudSqlInstance")]
+        public Input<string>? CloudSqlInstance { get; set; }
+
+        /// <summary>
+        /// A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
+        /// </summary>
+        [Input("gkeMasterCluster")]
+        public Input<string>? GkeMasterCluster { get; set; }
+
+        /// <summary>
         /// A Compute Engine instance URI.
         /// </summary>
         [Input("instance")]

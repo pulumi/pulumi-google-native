@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     public sealed class LogConfigCloudAuditOptionsResponse
     {
         /// <summary>
-        /// Information used by the Cloud Audit Logging pipeline.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly Outputs.AuthorizationLoggingOptionsResponse AuthorizationLoggingOptions;
         /// <summary>
-        /// The log_name to populate in the Cloud Audit Record.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly string LogName;
 

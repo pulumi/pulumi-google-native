@@ -6,7 +6,7 @@ import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Returns details for a consumer key for a developer app, including the key and secret value, associated API products, and other information.
+ * Gets details for a consumer key for a developer app, including the key and secret value, associated API products, and other information.
  */
 export function getKey(args: GetKeyArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyResult> {
     if (!opts) {

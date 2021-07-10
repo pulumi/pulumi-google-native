@@ -551,8 +551,6 @@ class BackendRuleResponse(dict):
             suggest = "disable_auth"
         elif key == "jwtAudience":
             suggest = "jwt_audience"
-        elif key == "minDeadline":
-            suggest = "min_deadline"
         elif key == "operationDeadline":
             suggest = "operation_deadline"
         elif key == "pathTranslation":
@@ -574,7 +572,6 @@ class BackendRuleResponse(dict):
                  deadline: float,
                  disable_auth: bool,
                  jwt_audience: str,
-                 min_deadline: float,
                  operation_deadline: float,
                  path_translation: str,
                  protocol: str,
@@ -585,7 +582,6 @@ class BackendRuleResponse(dict):
         :param float deadline: The number of seconds to wait for a response from a request. The default varies based on the request protocol and deployment environment.
         :param bool disable_auth: When disable_auth is true, a JWT ID token won't be generated and the original "Authorization" HTTP header will be preserved. If the header is used to carry the original token and is expected by the backend, this field must be set to true to preserve the header.
         :param str jwt_audience: The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
-        :param float min_deadline: Minimum deadline in seconds needed for this method. Calls having deadline value lower than this will be rejected.
         :param float operation_deadline: The number of seconds to wait for the completion of a long running operation. The default is no deadline.
         :param str protocol: The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
         :param str selector: Selects the methods to which this rule applies. Refer to selector for syntax details.
@@ -594,7 +590,6 @@ class BackendRuleResponse(dict):
         pulumi.set(__self__, "deadline", deadline)
         pulumi.set(__self__, "disable_auth", disable_auth)
         pulumi.set(__self__, "jwt_audience", jwt_audience)
-        pulumi.set(__self__, "min_deadline", min_deadline)
         pulumi.set(__self__, "operation_deadline", operation_deadline)
         pulumi.set(__self__, "path_translation", path_translation)
         pulumi.set(__self__, "protocol", protocol)
@@ -631,14 +626,6 @@ class BackendRuleResponse(dict):
         The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
         """
         return pulumi.get(self, "jwt_audience")
-
-    @property
-    @pulumi.getter(name="minDeadline")
-    def min_deadline(self) -> float:
-        """
-        Minimum deadline in seconds needed for this method. Calls having deadline value lower than this will be rejected.
-        """
-        return pulumi.get(self, "min_deadline")
 
     @property
     @pulumi.getter(name="operationDeadline")
@@ -1220,7 +1207,7 @@ class DocumentationRuleResponse(dict):
 @pulumi.output_type
 class EndpointResponse(dict):
     """
-    `Endpoint` describes a network endpoint of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example service configuration: name: library-example.googleapis.com endpoints: # Below entry makes 'google.example.library.v1.Library' # API be served from endpoint address library-example.googleapis.com. # It also allows HTTP OPTIONS calls to be passed to the backend, for # it to decide whether the subsequent cross-origin request is # allowed to proceed. - name: library-example.googleapis.com allow_cors: true
+    `Endpoint` describes a network address of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example: type: google.api.Service name: library-example.googleapis.com endpoints: # Declares network address `https://library-example.googleapis.com` # for service `library-example.googleapis.com`. The `https` scheme # is implicit for all service endpoints. Other schemes may be # supported in the future. - name: library-example.googleapis.com allow_cors: false - name: content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls to be passed to the API frontend, for it # to decide whether the subsequent cross-origin request is allowed # to proceed. allow_cors: true
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1244,7 +1231,7 @@ class EndpointResponse(dict):
                  name: str,
                  target: str):
         """
-        `Endpoint` describes a network endpoint of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example service configuration: name: library-example.googleapis.com endpoints: # Below entry makes 'google.example.library.v1.Library' # API be served from endpoint address library-example.googleapis.com. # It also allows HTTP OPTIONS calls to be passed to the backend, for # it to decide whether the subsequent cross-origin request is # allowed to proceed. - name: library-example.googleapis.com allow_cors: true
+        `Endpoint` describes a network address of a service that serves a set of APIs. It is commonly known as a service endpoint. A service may expose any number of service endpoints, and all service endpoints share the same service definition, such as quota limits and monitoring metrics. Example: type: google.api.Service name: library-example.googleapis.com endpoints: # Declares network address `https://library-example.googleapis.com` # for service `library-example.googleapis.com`. The `https` scheme # is implicit for all service endpoints. Other schemes may be # supported in the future. - name: library-example.googleapis.com allow_cors: false - name: content-staging-library-example.googleapis.com # Allows HTTP OPTIONS calls to be passed to the API frontend, for it # to decide whether the subsequent cross-origin request is allowed # to proceed. allow_cors: true
         :param bool allow_cors: Allowing [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing), aka cross-domain traffic, would allow the backends served from this endpoint to receive and respond to HTTP OPTIONS requests. The response will be used by the browser to determine whether the subsequent cross-origin request is allowed to proceed.
         :param str name: The canonical name of this endpoint.
         :param str target: The specification of an Internet routable address of API frontend that will handle requests to this [API Endpoint](https://cloud.google.com/apis/design/glossary). It should be either a valid IPv4 address or a fully-qualified domain name. For example, "8.8.8.8" or "myservice.appspot.com".

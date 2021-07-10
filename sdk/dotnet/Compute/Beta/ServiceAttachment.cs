@@ -28,10 +28,22 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> ConnectionPreference { get; private set; } = null!;
 
         /// <summary>
+        /// Projects that are allowed to connect to this service attachment.
+        /// </summary>
+        [Output("consumerAcceptLists")]
+        public Output<ImmutableArray<Outputs.ServiceAttachmentConsumerProjectLimitResponse>> ConsumerAcceptLists { get; private set; } = null!;
+
+        /// <summary>
         /// An array of forwarding rules for all the consumers connected to this service attachment.
         /// </summary>
         [Output("consumerForwardingRules")]
         public Output<ImmutableArray<Outputs.ServiceAttachmentConsumerForwardingRuleResponse>> ConsumerForwardingRules { get; private set; } = null!;
+
+        /// <summary>
+        /// Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
+        /// </summary>
+        [Output("consumerRejectLists")]
+        public Output<ImmutableArray<string>> ConsumerRejectLists { get; private set; } = null!;
 
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -50,6 +62,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Output("enableProxyProtocol")]
         public Output<bool> EnableProxyProtocol { get; private set; } = null!;
+
+        /// <summary>
+        /// Fingerprint of this resource. A hash of the contents stored in this object. This field is used in optimistic locking. This field will be ignored when inserting a ServiceAttachment. An up-to-date fingerprint must be provided in order to patch/update the ServiceAttachment; otherwise, the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve the ServiceAttachment.
+        /// </summary>
+        [Output("fingerprint")]
+        public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
         /// Type of the resource. Always compute#serviceAttachment for service attachments.
@@ -149,6 +167,30 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("connectionPreference")]
         public Input<Pulumi.GoogleNative.Compute.Beta.ServiceAttachmentConnectionPreference>? ConnectionPreference { get; set; }
+
+        [Input("consumerAcceptLists")]
+        private InputList<Inputs.ServiceAttachmentConsumerProjectLimitArgs>? _consumerAcceptLists;
+
+        /// <summary>
+        /// Projects that are allowed to connect to this service attachment.
+        /// </summary>
+        public InputList<Inputs.ServiceAttachmentConsumerProjectLimitArgs> ConsumerAcceptLists
+        {
+            get => _consumerAcceptLists ?? (_consumerAcceptLists = new InputList<Inputs.ServiceAttachmentConsumerProjectLimitArgs>());
+            set => _consumerAcceptLists = value;
+        }
+
+        [Input("consumerRejectLists")]
+        private InputList<string>? _consumerRejectLists;
+
+        /// <summary>
+        /// Projects that are not allowed to connect to this service attachment. The project can be specified using its id or number.
+        /// </summary>
+        public InputList<string> ConsumerRejectLists
+        {
+            get => _consumerRejectLists ?? (_consumerRejectLists = new InputList<string>());
+            set => _consumerRejectLists = value;
+        }
 
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.

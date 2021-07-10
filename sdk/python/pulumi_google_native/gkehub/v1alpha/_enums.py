@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'AuditLogConfigLogType',
+    'MultiClusterIngressFeatureSpecBilling',
 ]
 
 
@@ -17,3 +18,12 @@ class AuditLogConfigLogType(str, Enum):
     ADMIN_READ = "ADMIN_READ"
     DATA_WRITE = "DATA_WRITE"
     DATA_READ = "DATA_READ"
+
+
+class MultiClusterIngressFeatureSpecBilling(str, Enum):
+    """
+    Customer's billing structure
+    """
+    BILLING_UNSPECIFIED = "BILLING_UNSPECIFIED"
+    PAY_AS_YOU_GO = "PAY_AS_YOU_GO"
+    ANTHOS_LICENSE = "ANTHOS_LICENSE"

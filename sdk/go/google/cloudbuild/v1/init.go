@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Build{}
 	case "google-native:cloudbuild/v1:Trigger":
 		r = &Trigger{}
+	case "google-native:cloudbuild/v1:WorkerPool":
+		r = &WorkerPool{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

@@ -7,7 +7,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Returns details for a consumer key for a developer app, including the key and secret value, associated API products, and other information.
+// Gets details for a consumer key for a developer app, including the key and secret value, associated API products, and other information.
 func GetKey(ctx *pulumi.Context, args *GetKeyArgs, opts ...pulumi.InvokeOption) (*GetKeyResult, error) {
 	var rv GetKeyResult
 	err := ctx.Invoke("google-native:apigee/v1:getKey", args, &rv, opts...)

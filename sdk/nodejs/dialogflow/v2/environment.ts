@@ -48,7 +48,7 @@ export class Environment extends pulumi.CustomResource {
      */
     public readonly fulfillment!: pulumi.Output<outputs.dialogflow.v2.GoogleCloudDialogflowV2FulfillmentResponse>;
     /**
-     * The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/`
+     * The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**

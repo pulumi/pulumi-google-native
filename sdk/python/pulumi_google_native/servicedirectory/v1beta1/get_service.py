@@ -17,7 +17,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetServiceResult:
-    def __init__(__self__, endpoints=None, metadata=None, name=None):
+    def __init__(__self__, create_time=None, endpoints=None, metadata=None, name=None, update_time=None):
+        if create_time and not isinstance(create_time, str):
+            raise TypeError("Expected argument 'create_time' to be a str")
+        pulumi.set(__self__, "create_time", create_time)
         if endpoints and not isinstance(endpoints, list):
             raise TypeError("Expected argument 'endpoints' to be a list")
         pulumi.set(__self__, "endpoints", endpoints)
@@ -27,6 +30,17 @@ class GetServiceResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if update_time and not isinstance(update_time, str):
+            raise TypeError("Expected argument 'update_time' to be a str")
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The timestamp when the service was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
@@ -52,6 +66,14 @@ class GetServiceResult:
         """
         return pulumi.get(self, "name")
 
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The timestamp when the service was last updated. Note: endpoints being created/deleted/updated within the service are not considered service updates for the purpose of this timestamp.
+        """
+        return pulumi.get(self, "update_time")
+
 
 class AwaitableGetServiceResult(GetServiceResult):
     # pylint: disable=using-constant-test
@@ -59,9 +81,11 @@ class AwaitableGetServiceResult(GetServiceResult):
         if False:
             yield self
         return GetServiceResult(
+            create_time=self.create_time,
             endpoints=self.endpoints,
             metadata=self.metadata,
-            name=self.name)
+            name=self.name,
+            update_time=self.update_time)
 
 
 def get_service(location: Optional[str] = None,
@@ -84,6 +108,8 @@ def get_service(location: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:servicedirectory/v1beta1:getService', __args__, opts=opts, typ=GetServiceResult).value
 
     return AwaitableGetServiceResult(
+        create_time=__ret__.create_time,
         endpoints=__ret__.endpoints,
         metadata=__ret__.metadata,
-        name=__ret__.name)
+        name=__ret__.name,
+        update_time=__ret__.update_time)

@@ -766,7 +766,7 @@ class SqlIpConfigArgs:
         """
         IP Management configuration.
         :param pulumi.Input[Sequence[pulumi.Input['SqlAclEntryArgs']]] authorized_networks: The list of external networks that are allowed to connect to the instance using the IP. See https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g. `192.168.100.0/24`).
-        :param pulumi.Input[bool] enable_ipv4: Whether the instance should be assigned an IPv4 address or not.
+        :param pulumi.Input[bool] enable_ipv4: Whether the instance is assigned a public IP address or not.
         :param pulumi.Input[str] private_network: The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
         :param pulumi.Input[bool] require_ssl: Whether SSL connections over IP should be enforced or not.
         """
@@ -795,7 +795,7 @@ class SqlIpConfigArgs:
     @pulumi.getter(name="enableIpv4")
     def enable_ipv4(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the instance should be assigned an IPv4 address or not.
+        Whether the instance is assigned a public IP address or not.
         """
         return pulumi.get(self, "enable_ipv4")
 

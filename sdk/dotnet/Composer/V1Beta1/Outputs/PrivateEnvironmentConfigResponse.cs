@@ -14,6 +14,14 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
     public sealed class PrivateEnvironmentConfigResponse
     {
         /// <summary>
+        /// Optional. The CIDR block from which IP range for Cloud Composer Network in tenant project will be reserved. Needs to be disjoint from private_cluster_config.master_ipv4_cidr_block and cloud_sql_ipv4_cidr_block. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        public readonly string CloudComposerNetworkIpv4CidrBlock;
+        /// <summary>
+        /// The IP range reserved for the tenant project's Cloud Composer network. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        public readonly string CloudComposerNetworkIpv4ReservedRange;
+        /// <summary>
         /// Optional. The CIDR block from which IP range in tenant project will be reserved for Cloud SQL. Needs to be disjoint from web_server_ipv4_cidr_block
         /// </summary>
         public readonly string CloudSqlIpv4CidrBlock;
@@ -36,6 +44,10 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 
         [OutputConstructor]
         private PrivateEnvironmentConfigResponse(
+            string cloudComposerNetworkIpv4CidrBlock,
+
+            string cloudComposerNetworkIpv4ReservedRange,
+
             string cloudSqlIpv4CidrBlock,
 
             bool enablePrivateEnvironment,
@@ -46,6 +58,8 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 
             string webServerIpv4ReservedRange)
         {
+            CloudComposerNetworkIpv4CidrBlock = cloudComposerNetworkIpv4CidrBlock;
+            CloudComposerNetworkIpv4ReservedRange = cloudComposerNetworkIpv4ReservedRange;
             CloudSqlIpv4CidrBlock = cloudSqlIpv4CidrBlock;
             EnablePrivateEnvironment = enablePrivateEnvironment;
             PrivateClusterConfig = privateClusterConfig;

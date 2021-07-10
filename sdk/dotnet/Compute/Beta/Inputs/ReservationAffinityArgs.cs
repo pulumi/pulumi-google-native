@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     public sealed class ReservationAffinityArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION (default), SPECIFIC_RESERVATION, or NO_RESERVATION. See  Consuming reserved instances for examples.
+        /// Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION (default), SPECIFIC_RESERVATION, or NO_RESERVATION. See Consuming reserved instances for examples.
         /// </summary>
         [Input("consumeReservationType")]
         public Input<Pulumi.GoogleNative.Compute.Beta.ReservationAffinityConsumeReservationType>? ConsumeReservationType { get; set; }
@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         private InputList<string>? _values;
 
         /// <summary>
-        /// Corresponds to the label values of a reservation resource.
+        /// Corresponds to the label values of a reservation resource. This can be either a name to a reservation in the same project or "projects/different-project/reservations/some-reservation-name" to target a shared reservation in the same zone but in a different project.
         /// </summary>
         public InputList<string> Values
         {

@@ -69,18 +69,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
             set => _targetResources = value;
         }
 
-        [Input("targetSecureLabels")]
-        private InputList<string>? _targetSecureLabels;
-
-        /// <summary>
-        /// A list of secure labels that controls which instances the firewall rule applies to. If targetSecureLabel are specified, then the firewall rule applies only to instances in the VPC network that have one of those secure labels. targetSecureLabel may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureLabel are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label values allowed is 256.
-        /// </summary>
-        public InputList<string> TargetSecureLabels
-        {
-            get => _targetSecureLabels ?? (_targetSecureLabels = new InputList<string>());
-            set => _targetSecureLabels = value;
-        }
-
         [Input("targetSecureTags")]
         private InputList<Inputs.FirewallPolicyRuleSecureTagArgs>? _targetSecureTags;
 

@@ -1139,7 +1139,8 @@ class GoogleCloudMlV1__HyperparameterOutputArgs:
                  final_metric: Optional[pulumi.Input['GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs']] = None,
                  hyperparameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  is_trial_stopped_early: Optional[pulumi.Input[bool]] = None,
-                 trial_id: Optional[pulumi.Input[str]] = None):
+                 trial_id: Optional[pulumi.Input[str]] = None,
+                 web_access_uris: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Represents the result of a single hyperparameter tuning trial from a training job. The TrainingOutput object that is returned on successful completion of a training job with hyperparameter tuning includes a list of HyperparameterOutput objects, one for each successful trial.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs']]] all_metrics: All recorded object metrics for this trial. This field is not currently populated.
@@ -1148,6 +1149,7 @@ class GoogleCloudMlV1__HyperparameterOutputArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] hyperparameters: The hyperparameters given to this trial.
         :param pulumi.Input[bool] is_trial_stopped_early: True if the trial is stopped early.
         :param pulumi.Input[str] trial_id: The trial id for these results.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] web_access_uris: The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
         """
         if all_metrics is not None:
             pulumi.set(__self__, "all_metrics", all_metrics)
@@ -1161,6 +1163,8 @@ class GoogleCloudMlV1__HyperparameterOutputArgs:
             pulumi.set(__self__, "is_trial_stopped_early", is_trial_stopped_early)
         if trial_id is not None:
             pulumi.set(__self__, "trial_id", trial_id)
+        if web_access_uris is not None:
+            pulumi.set(__self__, "web_access_uris", web_access_uris)
 
     @property
     @pulumi.getter(name="allMetrics")
@@ -1233,6 +1237,18 @@ class GoogleCloudMlV1__HyperparameterOutputArgs:
     @trial_id.setter
     def trial_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "trial_id", value)
+
+    @property
+    @pulumi.getter(name="webAccessUris")
+    def web_access_uris(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
+        """
+        return pulumi.get(self, "web_access_uris")
+
+    @web_access_uris.setter
+    def web_access_uris(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "web_access_uris", value)
 
 
 @pulumi.input_type
@@ -2225,6 +2241,7 @@ class GoogleCloudMlV1__TrainingInputArgs:
                  region: pulumi.Input[str],
                  scale_tier: pulumi.Input['GoogleCloudMlV1__TrainingInputScaleTier'],
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 enable_web_access: Optional[pulumi.Input[bool]] = None,
                  encryption_config: Optional[pulumi.Input['GoogleCloudMlV1__EncryptionConfigArgs']] = None,
                  evaluator_config: Optional[pulumi.Input['GoogleCloudMlV1__ReplicaConfigArgs']] = None,
                  evaluator_count: Optional[pulumi.Input[str]] = None,
@@ -2252,6 +2269,7 @@ class GoogleCloudMlV1__TrainingInputArgs:
         :param pulumi.Input[str] region: The region to run the training job in. See the [available regions](/ai-platform/training/docs/regions) for AI Platform Training.
         :param pulumi.Input['GoogleCloudMlV1__TrainingInputScaleTier'] scale_tier: Specifies the machine types, the number of replicas for workers and parameter servers.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Optional. Command-line arguments passed to the training application when it starts. If your job uses a custom container, then the arguments are passed to the container's `ENTRYPOINT` command.
+        :param pulumi.Input[bool] enable_web_access: Optional. Whether to enable web access for the training job.
         :param pulumi.Input['GoogleCloudMlV1__EncryptionConfigArgs'] encryption_config: Optional. Options for using customer-managed encryption keys (CMEK) to protect resources created by a training job, instead of using Google's default encryption. If this is set, then all resources created by the training job will be encrypted with the customer-managed encryption key that you specify. [Learn how and when to use CMEK with AI Platform Training](/ai-platform/training/docs/cmek).
         :param pulumi.Input['GoogleCloudMlV1__ReplicaConfigArgs'] evaluator_config: Optional. The configuration for evaluators. You should only set `evaluatorConfig.acceleratorConfig` if `evaluatorType` is set to a Compute Engine machine type. [Learn about restrictions on accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu) Set `evaluatorConfig.imageUri` only if you build a custom image for your evaluator. If `evaluatorConfig.imageUri` has not been set, AI Platform uses the value of `masterConfig.imageUri`. Learn more about [configuring custom containers](/ai-platform/training/docs/distributed-training-containers).
         :param pulumi.Input[str] evaluator_count: Optional. The number of evaluator replicas to use for the training job. Each replica in the cluster will be of the type specified in `evaluator_type`. This value can only be used when `scale_tier` is set to `CUSTOM`. If you set this value, you must also set `evaluator_type`. The default value is zero.
@@ -2279,6 +2297,8 @@ class GoogleCloudMlV1__TrainingInputArgs:
         pulumi.set(__self__, "scale_tier", scale_tier)
         if args is not None:
             pulumi.set(__self__, "args", args)
+        if enable_web_access is not None:
+            pulumi.set(__self__, "enable_web_access", enable_web_access)
         if encryption_config is not None:
             pulumi.set(__self__, "encryption_config", encryption_config)
         if evaluator_config is not None:
@@ -2379,6 +2399,18 @@ class GoogleCloudMlV1__TrainingInputArgs:
     @args.setter
     def args(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "args", value)
+
+    @property
+    @pulumi.getter(name="enableWebAccess")
+    def enable_web_access(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Whether to enable web access for the training job.
+        """
+        return pulumi.get(self, "enable_web_access")
+
+    @enable_web_access.setter
+    def enable_web_access(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_web_access", value)
 
     @property
     @pulumi.getter(name="encryptionConfig")

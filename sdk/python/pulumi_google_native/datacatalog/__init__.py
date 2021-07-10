@@ -7,7 +7,9 @@ import typing
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
+    import pulumi_google_native.datacatalog.v1 as v1
     import pulumi_google_native.datacatalog.v1beta1 as v1beta1
 else:
+    v1 = _utilities.lazy_import('pulumi_google_native.datacatalog.v1')
     v1beta1 = _utilities.lazy_import('pulumi_google_native.datacatalog.v1beta1')
 

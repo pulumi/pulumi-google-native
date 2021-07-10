@@ -60,6 +60,10 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// </summary>
         public readonly int NodeCount;
         /// <summary>
+        /// The number of processing units allocated to this instance. At most one of processing_units or node_count should be present in the message. This may be zero in API responses for instances that are not yet in state `READY`.
+        /// </summary>
+        public readonly int ProcessingUnits;
+        /// <summary>
         /// The current instance state. For CreateInstance, the state must be either omitted or set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.
         /// </summary>
         public readonly string State;
@@ -76,6 +80,8 @@ namespace Pulumi.GoogleNative.Spanner.V1
 
             int nodeCount,
 
+            int processingUnits,
+
             string state)
         {
             Config = config;
@@ -83,6 +89,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
             Labels = labels;
             Name = name;
             NodeCount = nodeCount;
+            ProcessingUnits = processingUnits;
             State = state;
         }
     }

@@ -22,6 +22,26 @@ export const CloudRunConfigLoadBalancerType = {
  */
 export type CloudRunConfigLoadBalancerType = (typeof CloudRunConfigLoadBalancerType)[keyof typeof CloudRunConfigLoadBalancerType];
 
+export const ClusterUpdateDesiredDatapathProvider = {
+    /**
+     * Default value.
+     */
+    DatapathProviderUnspecified: "DATAPATH_PROVIDER_UNSPECIFIED",
+    /**
+     * Use the IPTables implementation based on kube-proxy.
+     */
+    LegacyDatapath: "LEGACY_DATAPATH",
+    /**
+     * Use the eBPF based GKE Dataplane V2 with additional features. See the [GKE Dataplane V2 documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/dataplane-v2) for more.
+     */
+    AdvancedDatapath: "ADVANCED_DATAPATH",
+} as const;
+
+/**
+ * The desired datapath provider for the cluster.
+ */
+export type ClusterUpdateDesiredDatapathProvider = (typeof ClusterUpdateDesiredDatapathProvider)[keyof typeof ClusterUpdateDesiredDatapathProvider];
+
 export const ClusterUpdateDesiredPrivateIpv6GoogleAccess = {
     /**
      * Default value. Same as DISABLED
@@ -65,6 +85,26 @@ export const DatabaseEncryptionState = {
  * Denotes the state of etcd encryption.
  */
 export type DatabaseEncryptionState = (typeof DatabaseEncryptionState)[keyof typeof DatabaseEncryptionState];
+
+export const NetworkConfigDatapathProvider = {
+    /**
+     * Default value.
+     */
+    DatapathProviderUnspecified: "DATAPATH_PROVIDER_UNSPECIFIED",
+    /**
+     * Use the IPTables implementation based on kube-proxy.
+     */
+    LegacyDatapath: "LEGACY_DATAPATH",
+    /**
+     * Use the eBPF based GKE Dataplane V2 with additional features. See the [GKE Dataplane V2 documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/dataplane-v2) for more.
+     */
+    AdvancedDatapath: "ADVANCED_DATAPATH",
+} as const;
+
+/**
+ * The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+ */
+export type NetworkConfigDatapathProvider = (typeof NetworkConfigDatapathProvider)[keyof typeof NetworkConfigDatapathProvider];
 
 export const NetworkConfigPrivateIpv6GoogleAccess = {
     /**
@@ -236,7 +276,7 @@ export const StatusConditionCanonicalCode = {
      */
     ResourceExhausted: "RESOURCE_EXHAUSTED",
     /**
-     * The operation was rejected because the system is not in a state required for the operation's execution. For example, the directory to be deleted is non-empty, an rmdir operation is applied to a non-directory, etc. Service implementors can use the following guidelines to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a) Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use `ABORTED` if the client should retry at a higher level (e.g., when a client-specified test-and-set fails, indicating the client should restart a read-modify-write sequence). (c) Use `FAILED_PRECONDITION` if the client should not retry until the system state has been explicitly fixed. E.g., if an "rmdir" fails because the directory is non-empty, `FAILED_PRECONDITION` should be returned since the client should not retry unless the files are deleted from the directory. HTTP Mapping: 400 Bad Request
+     * The operation was rejected because the system is not in a state required for the operation's execution. For example, the directory to be deleted is non-empty, an rmdir operation is applied to a non-directory, etc. Service implementors can use the following guidelines to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a) Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use `ABORTED` if the client should retry at a higher level. For example, when a client-specified test-and-set fails, indicating the client should restart a read-modify-write sequence. (c) Use `FAILED_PRECONDITION` if the client should not retry until the system state has been explicitly fixed. For example, if an "rmdir" fails because the directory is non-empty, `FAILED_PRECONDITION` should be returned since the client should not retry unless the files are deleted from the directory. HTTP Mapping: 400 Bad Request
      */
     FailedPrecondition: "FAILED_PRECONDITION",
     /**

@@ -26,7 +26,7 @@ type LookupInstanceArgs struct {
 type LookupInstanceResult struct {
 	// Immutable. The globally unique hostname of the database.
 	DatabaseUrl string `pulumi:"databaseUrl"`
-	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
+	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
 	Name string `pulumi:"name"`
 	// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
 	Project string `pulumi:"project"`

@@ -11,12 +11,12 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
 {
 
     /// <summary>
-    /// GraphQLOperationConfig binds the resources in a proxy or remote service with the graphQL operation and its associated quota enforcement.
+    /// Binds the resources in a proxy or remote service with the GraphQL operation and its associated quota enforcement.
     /// </summary>
     public sealed class GoogleCloudApigeeV1GraphQLOperationConfigArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// API proxy endpoint or remote service name with which the graphQL operation, and quota are associated.
+        /// Name of the API proxy endpoint or remote service with which the GraphQL operation and quota are associated.
         /// </summary>
         [Input("apiSource", required: true)]
         public Input<string> ApiSource { get; set; } = null!;
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         private InputList<Inputs.GoogleCloudApigeeV1GraphQLOperationArgs>? _operations;
 
         /// <summary>
-        /// List of graphQL name/Operation type pairs for the proxy/remote service, upon which quota will applied. If GraphQLOperation operation has only the operation type(s), that would imply that quota will be applied on all graphQL requests irrespective of the graphQL name. **Note**: Currently, we can specify only a single GraphQLOperation. Specifying more than one will result in failure of the operation.
+        /// List of GraphQL name/operation type pairs for the proxy or remote service to which quota will be applied. If only operation types are specified, the quota will be applied to all GraphQL requests irrespective of the GraphQL name. **Note**: Currently, you can specify only a single GraphQLOperation. Specifying more than one will cause the operation to fail.
         /// </summary>
         public InputList<Inputs.GoogleCloudApigeeV1GraphQLOperationArgs> Operations
         {
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         }
 
         /// <summary>
-        /// Quota parameters to be enforced for the resources, methods, api_source combination. If none are specified, quota enforcement will not be done.
+        /// Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
         /// </summary>
         [Input("quota")]
         public Input<Inputs.GoogleCloudApigeeV1QuotaArgs>? Quota { get; set; }

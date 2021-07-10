@@ -35,6 +35,8 @@ __all__ = [
     'SchemaConfigArgs',
     'SchemaPackageArgs',
     'SchematizedDataArgs',
+    'SearchConfigArgs',
+    'SearchParameterArgs',
     'SensitiveTextAnnotationArgs',
     'SignatureArgs',
     'StreamConfigArgs',
@@ -1185,6 +1187,70 @@ class SchematizedDataArgs:
     @error.setter
     def error(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "error", value)
+
+
+@pulumi.input_type
+class SearchConfigArgs:
+    def __init__(__self__, *,
+                 search_parameters: Optional[pulumi.Input[Sequence[pulumi.Input['SearchParameterArgs']]]] = None):
+        """
+        Contains the configuration for FHIR search.
+        :param pulumi.Input[Sequence[pulumi.Input['SearchParameterArgs']]] search_parameters: A list of search parameters in this FHIR store that are used to configure this FHIR store.
+        """
+        if search_parameters is not None:
+            pulumi.set(__self__, "search_parameters", search_parameters)
+
+    @property
+    @pulumi.getter(name="searchParameters")
+    def search_parameters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SearchParameterArgs']]]]:
+        """
+        A list of search parameters in this FHIR store that are used to configure this FHIR store.
+        """
+        return pulumi.get(self, "search_parameters")
+
+    @search_parameters.setter
+    def search_parameters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SearchParameterArgs']]]]):
+        pulumi.set(self, "search_parameters", value)
+
+
+@pulumi.input_type
+class SearchParameterArgs:
+    def __init__(__self__, *,
+                 canonical_url: Optional[pulumi.Input[str]] = None,
+                 parameter: Optional[pulumi.Input[str]] = None):
+        """
+        Contains the versioned name and the URL for one SearchParameter.
+        :param pulumi.Input[str] canonical_url: The canonical url of the search parameter resource.
+        :param pulumi.Input[str] parameter: The versioned name of the search parameter resource. The format is projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/_history/{version-id} For fhir stores with disable_resource_versioning=true, the format is projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/
+        """
+        if canonical_url is not None:
+            pulumi.set(__self__, "canonical_url", canonical_url)
+        if parameter is not None:
+            pulumi.set(__self__, "parameter", parameter)
+
+    @property
+    @pulumi.getter(name="canonicalUrl")
+    def canonical_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        The canonical url of the search parameter resource.
+        """
+        return pulumi.get(self, "canonical_url")
+
+    @canonical_url.setter
+    def canonical_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "canonical_url", value)
+
+    @property
+    @pulumi.getter
+    def parameter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The versioned name of the search parameter resource. The format is projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/_history/{version-id} For fhir stores with disable_resource_versioning=true, the format is projects/{project-id}/locations/{location}/datasets/{dataset-id}/fhirStores/{fhirStore-id}/fhir/SearchParameter/{resource-id}/
+        """
+        return pulumi.get(self, "parameter")
+
+    @parameter.setter
+    def parameter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parameter", value)
 
 
 @pulumi.input_type

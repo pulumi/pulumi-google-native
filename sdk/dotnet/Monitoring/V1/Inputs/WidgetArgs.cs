@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     public sealed class WidgetArgs : Pulumi.ResourceArgs
     {
         /// <summary>
+        /// A chart of alert policy data.
+        /// </summary>
+        [Input("alertChart")]
+        public Input<Inputs.AlertChartArgs>? AlertChart { get; set; }
+
+        /// <summary>
         /// A blank space.
         /// </summary>
         [Input("blank")]

@@ -18,6 +18,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly bool EnableNestedVirtualization;
         /// <summary>
+        /// The number of vNUMA nodes.
+        /// </summary>
+        public readonly int NumaNodeCount;
+        /// <summary>
         /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         /// </summary>
         public readonly int ThreadsPerCore;
@@ -30,11 +34,14 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         private AdvancedMachineFeaturesResponse(
             bool enableNestedVirtualization,
 
+            int numaNodeCount,
+
             int threadsPerCore,
 
             int visibleCoreCount)
         {
             EnableNestedVirtualization = enableNestedVirtualization;
+            NumaNodeCount = numaNodeCount;
             ThreadsPerCore = threadsPerCore;
             VisibleCoreCount = visibleCoreCount;
         }

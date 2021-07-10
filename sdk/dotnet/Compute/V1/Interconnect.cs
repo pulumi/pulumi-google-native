@@ -70,9 +70,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<ImmutableArray<string>> InterconnectAttachments { get; private set; } = null!;
 
         /// <summary>
-        /// Type of interconnect, which can take one of the following values: 
-        /// - PARTNER: A partner-managed interconnection shared between customers though a partner. 
-        /// - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
+        /// Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
         /// </summary>
         [Output("interconnectType")]
         public Output<string> InterconnectType { get; private set; } = null!;
@@ -84,9 +82,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Kind { get; private set; } = null!;
 
         /// <summary>
-        /// Type of link requested, which can take one of the following values: 
-        /// - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics 
-        /// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
+        /// Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
         /// </summary>
         [Output("linkType")]
         public Output<string> LinkType { get; private set; } = null!;
@@ -110,10 +106,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> NocContactEmail { get; private set; } = null!;
 
         /// <summary>
-        /// The current status of this Interconnect's functionality, which can take one of the following values: 
-        /// - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. 
-        /// - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. 
-        /// - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
+        /// The current status of this Interconnect's functionality, which can take one of the following values: - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect. 
         /// </summary>
         [Output("operationalStatus")]
         public Output<string> OperationalStatus { get; private set; } = null!;
@@ -143,10 +136,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// The current state of Interconnect functionality, which can take one of the following values: 
-        /// - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. 
-        /// - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. 
-        /// - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
+        /// The current state of Interconnect functionality, which can take one of the following values: - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect. 
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -215,17 +205,13 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Type of interconnect, which can take one of the following values: 
-        /// - PARTNER: A partner-managed interconnection shared between customers though a partner. 
-        /// - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
+        /// Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
         /// </summary>
         [Input("interconnectType")]
         public Input<Pulumi.GoogleNative.Compute.V1.InterconnectInterconnectType>? InterconnectType { get; set; }
 
         /// <summary>
-        /// Type of link requested, which can take one of the following values: 
-        /// - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics 
-        /// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
+        /// Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
         /// </summary>
         [Input("linkType")]
         public Input<Pulumi.GoogleNative.Compute.V1.InterconnectLinkType>? LinkType { get; set; }

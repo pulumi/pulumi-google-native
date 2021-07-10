@@ -85,6 +85,8 @@ type Cluster struct {
 	NetworkPolicy NetworkPolicyResponseOutput `pulumi:"networkPolicy"`
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize pulumi.IntOutput `pulumi:"nodeIpv4CidrSize"`
+	// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
+	NodePoolDefaults NodePoolDefaultsResponseOutput `pulumi:"nodePoolDefaults"`
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
 	NodePools NodePoolResponseArrayOutput `pulumi:"nodePools"`
 	// Notification configuration of the cluster.
@@ -226,6 +228,8 @@ type clusterState struct {
 	NetworkPolicy *NetworkPolicyResponse `pulumi:"networkPolicy"`
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize *int `pulumi:"nodeIpv4CidrSize"`
+	// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
+	NodePoolDefaults *NodePoolDefaultsResponse `pulumi:"nodePoolDefaults"`
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
 	NodePools []NodePoolResponse `pulumi:"nodePools"`
 	// Notification configuration of the cluster.
@@ -333,6 +337,8 @@ type ClusterState struct {
 	NetworkPolicy NetworkPolicyResponsePtrInput
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize pulumi.IntPtrInput
+	// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
+	NodePoolDefaults NodePoolDefaultsResponsePtrInput
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
 	NodePools NodePoolResponseArrayInput
 	// Notification configuration of the cluster.
@@ -429,6 +435,8 @@ type clusterArgs struct {
 	NetworkConfig *NetworkConfig `pulumi:"networkConfig"`
 	// Configuration options for the NetworkPolicy feature.
 	NetworkPolicy *NetworkPolicy `pulumi:"networkPolicy"`
+	// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
+	NodePoolDefaults *NodePoolDefaults `pulumi:"nodePoolDefaults"`
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
 	NodePools []NodePoolType `pulumi:"nodePools"`
 	// Notification configuration of the cluster.
@@ -517,6 +525,8 @@ type ClusterArgs struct {
 	NetworkConfig NetworkConfigPtrInput
 	// Configuration options for the NetworkPolicy feature.
 	NetworkPolicy NetworkPolicyPtrInput
+	// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
+	NodePoolDefaults NodePoolDefaultsPtrInput
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
 	NodePools NodePoolTypeArrayInput
 	// Notification configuration of the cluster.

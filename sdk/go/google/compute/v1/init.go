@@ -141,6 +141,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Router{}
 	case "google-native:compute/v1:SecurityPolicy":
 		r = &SecurityPolicy{}
+	case "google-native:compute/v1:ServiceAttachment":
+		r = &ServiceAttachment{}
+	case "google-native:compute/v1:ServiceAttachmentIamPolicy":
+		r = &ServiceAttachmentIamPolicy{}
 	case "google-native:compute/v1:SnapshotIamPolicy":
 		r = &SnapshotIamPolicy{}
 	case "google-native:compute/v1:SslCertificate":

@@ -283,6 +283,195 @@ func (o AggregationResponseOutput) PerSeriesAligner() pulumi.StringOutput {
 	return o.ApplyT(func(v AggregationResponse) string { return v.PerSeriesAligner }).(pulumi.StringOutput)
 }
 
+// A chart that displays alert policy data.
+type AlertChart struct {
+	// The resource name of the alert policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
+	Name string `pulumi:"name"`
+}
+
+// AlertChartInput is an input type that accepts AlertChartArgs and AlertChartOutput values.
+// You can construct a concrete instance of `AlertChartInput` via:
+//
+//          AlertChartArgs{...}
+type AlertChartInput interface {
+	pulumi.Input
+
+	ToAlertChartOutput() AlertChartOutput
+	ToAlertChartOutputWithContext(context.Context) AlertChartOutput
+}
+
+// A chart that displays alert policy data.
+type AlertChartArgs struct {
+	// The resource name of the alert policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (AlertChartArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertChart)(nil)).Elem()
+}
+
+func (i AlertChartArgs) ToAlertChartOutput() AlertChartOutput {
+	return i.ToAlertChartOutputWithContext(context.Background())
+}
+
+func (i AlertChartArgs) ToAlertChartOutputWithContext(ctx context.Context) AlertChartOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertChartOutput)
+}
+
+func (i AlertChartArgs) ToAlertChartPtrOutput() AlertChartPtrOutput {
+	return i.ToAlertChartPtrOutputWithContext(context.Background())
+}
+
+func (i AlertChartArgs) ToAlertChartPtrOutputWithContext(ctx context.Context) AlertChartPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertChartOutput).ToAlertChartPtrOutputWithContext(ctx)
+}
+
+// AlertChartPtrInput is an input type that accepts AlertChartArgs, AlertChartPtr and AlertChartPtrOutput values.
+// You can construct a concrete instance of `AlertChartPtrInput` via:
+//
+//          AlertChartArgs{...}
+//
+//  or:
+//
+//          nil
+type AlertChartPtrInput interface {
+	pulumi.Input
+
+	ToAlertChartPtrOutput() AlertChartPtrOutput
+	ToAlertChartPtrOutputWithContext(context.Context) AlertChartPtrOutput
+}
+
+type alertChartPtrType AlertChartArgs
+
+func AlertChartPtr(v *AlertChartArgs) AlertChartPtrInput {
+	return (*alertChartPtrType)(v)
+}
+
+func (*alertChartPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertChart)(nil)).Elem()
+}
+
+func (i *alertChartPtrType) ToAlertChartPtrOutput() AlertChartPtrOutput {
+	return i.ToAlertChartPtrOutputWithContext(context.Background())
+}
+
+func (i *alertChartPtrType) ToAlertChartPtrOutputWithContext(ctx context.Context) AlertChartPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertChartPtrOutput)
+}
+
+// A chart that displays alert policy data.
+type AlertChartOutput struct{ *pulumi.OutputState }
+
+func (AlertChartOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertChart)(nil)).Elem()
+}
+
+func (o AlertChartOutput) ToAlertChartOutput() AlertChartOutput {
+	return o
+}
+
+func (o AlertChartOutput) ToAlertChartOutputWithContext(ctx context.Context) AlertChartOutput {
+	return o
+}
+
+func (o AlertChartOutput) ToAlertChartPtrOutput() AlertChartPtrOutput {
+	return o.ToAlertChartPtrOutputWithContext(context.Background())
+}
+
+func (o AlertChartOutput) ToAlertChartPtrOutputWithContext(ctx context.Context) AlertChartPtrOutput {
+	return o.ApplyT(func(v AlertChart) *AlertChart {
+		return &v
+	}).(AlertChartPtrOutput)
+}
+
+// The resource name of the alert policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
+func (o AlertChartOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertChart) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type AlertChartPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertChartPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlertChart)(nil)).Elem()
+}
+
+func (o AlertChartPtrOutput) ToAlertChartPtrOutput() AlertChartPtrOutput {
+	return o
+}
+
+func (o AlertChartPtrOutput) ToAlertChartPtrOutputWithContext(ctx context.Context) AlertChartPtrOutput {
+	return o
+}
+
+func (o AlertChartPtrOutput) Elem() AlertChartOutput {
+	return o.ApplyT(func(v *AlertChart) AlertChart { return *v }).(AlertChartOutput)
+}
+
+// The resource name of the alert policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
+func (o AlertChartPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertChart) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// A chart that displays alert policy data.
+type AlertChartResponse struct {
+	// The resource name of the alert policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
+	Name string `pulumi:"name"`
+}
+
+// AlertChartResponseInput is an input type that accepts AlertChartResponseArgs and AlertChartResponseOutput values.
+// You can construct a concrete instance of `AlertChartResponseInput` via:
+//
+//          AlertChartResponseArgs{...}
+type AlertChartResponseInput interface {
+	pulumi.Input
+
+	ToAlertChartResponseOutput() AlertChartResponseOutput
+	ToAlertChartResponseOutputWithContext(context.Context) AlertChartResponseOutput
+}
+
+// A chart that displays alert policy data.
+type AlertChartResponseArgs struct {
+	// The resource name of the alert policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (AlertChartResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertChartResponse)(nil)).Elem()
+}
+
+func (i AlertChartResponseArgs) ToAlertChartResponseOutput() AlertChartResponseOutput {
+	return i.ToAlertChartResponseOutputWithContext(context.Background())
+}
+
+func (i AlertChartResponseArgs) ToAlertChartResponseOutputWithContext(ctx context.Context) AlertChartResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlertChartResponseOutput)
+}
+
+// A chart that displays alert policy data.
+type AlertChartResponseOutput struct{ *pulumi.OutputState }
+
+func (AlertChartResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertChartResponse)(nil)).Elem()
+}
+
+func (o AlertChartResponseOutput) ToAlertChartResponseOutput() AlertChartResponseOutput {
+	return o
+}
+
+func (o AlertChartResponseOutput) ToAlertChartResponseOutputWithContext(ctx context.Context) AlertChartResponseOutput {
+	return o
+}
+
+// The resource name of the alert policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
+func (o AlertChartResponseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v AlertChartResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
 // A chart axis.
 type Axis struct {
 	// The label of the axis.
@@ -5421,6 +5610,8 @@ func (o TimeSeriesQueryResponseOutput) UnitOverride() pulumi.StringOutput {
 
 // Widget contains a single dashboard component and configuration of how to present the component in the dashboard.
 type Widget struct {
+	// A chart of alert policy data.
+	AlertChart *AlertChart `pulumi:"alertChart"`
 	// A blank space.
 	Blank *Empty `pulumi:"blank"`
 	// A scorecard summarizing time series data.
@@ -5446,6 +5637,8 @@ type WidgetInput interface {
 
 // Widget contains a single dashboard component and configuration of how to present the component in the dashboard.
 type WidgetArgs struct {
+	// A chart of alert policy data.
+	AlertChart AlertChartPtrInput `pulumi:"alertChart"`
 	// A blank space.
 	Blank EmptyPtrInput `pulumi:"blank"`
 	// A scorecard summarizing time series data.
@@ -5561,6 +5754,11 @@ func (o WidgetOutput) ToWidgetPtrOutputWithContext(ctx context.Context) WidgetPt
 	}).(WidgetPtrOutput)
 }
 
+// A chart of alert policy data.
+func (o WidgetOutput) AlertChart() AlertChartPtrOutput {
+	return o.ApplyT(func(v Widget) *AlertChart { return v.AlertChart }).(AlertChartPtrOutput)
+}
+
 // A blank space.
 func (o WidgetOutput) Blank() EmptyPtrOutput {
 	return o.ApplyT(func(v Widget) *Empty { return v.Blank }).(EmptyPtrOutput)
@@ -5602,6 +5800,16 @@ func (o WidgetPtrOutput) ToWidgetPtrOutputWithContext(ctx context.Context) Widge
 
 func (o WidgetPtrOutput) Elem() WidgetOutput {
 	return o.ApplyT(func(v *Widget) Widget { return *v }).(WidgetOutput)
+}
+
+// A chart of alert policy data.
+func (o WidgetPtrOutput) AlertChart() AlertChartPtrOutput {
+	return o.ApplyT(func(v *Widget) *AlertChart {
+		if v == nil {
+			return nil
+		}
+		return v.AlertChart
+	}).(AlertChartPtrOutput)
 }
 
 // A blank space.
@@ -5676,6 +5884,8 @@ func (o WidgetArrayOutput) Index(i pulumi.IntInput) WidgetOutput {
 
 // Widget contains a single dashboard component and configuration of how to present the component in the dashboard.
 type WidgetResponse struct {
+	// A chart of alert policy data.
+	AlertChart AlertChartResponse `pulumi:"alertChart"`
 	// A blank space.
 	Blank EmptyResponse `pulumi:"blank"`
 	// A scorecard summarizing time series data.
@@ -5701,6 +5911,8 @@ type WidgetResponseInput interface {
 
 // Widget contains a single dashboard component and configuration of how to present the component in the dashboard.
 type WidgetResponseArgs struct {
+	// A chart of alert policy data.
+	AlertChart AlertChartResponseInput `pulumi:"alertChart"`
 	// A blank space.
 	Blank EmptyResponseInput `pulumi:"blank"`
 	// A scorecard summarizing time series data.
@@ -5763,6 +5975,11 @@ func (o WidgetResponseOutput) ToWidgetResponseOutput() WidgetResponseOutput {
 
 func (o WidgetResponseOutput) ToWidgetResponseOutputWithContext(ctx context.Context) WidgetResponseOutput {
 	return o
+}
+
+// A chart of alert policy data.
+func (o WidgetResponseOutput) AlertChart() AlertChartResponseOutput {
+	return o.ApplyT(func(v WidgetResponse) AlertChartResponse { return v.AlertChart }).(AlertChartResponseOutput)
 }
 
 // A blank space.
@@ -6143,6 +6360,9 @@ func init() {
 	pulumi.RegisterOutputType(AggregationOutput{})
 	pulumi.RegisterOutputType(AggregationPtrOutput{})
 	pulumi.RegisterOutputType(AggregationResponseOutput{})
+	pulumi.RegisterOutputType(AlertChartOutput{})
+	pulumi.RegisterOutputType(AlertChartPtrOutput{})
+	pulumi.RegisterOutputType(AlertChartResponseOutput{})
 	pulumi.RegisterOutputType(AxisOutput{})
 	pulumi.RegisterOutputType(AxisPtrOutput{})
 	pulumi.RegisterOutputType(AxisResponseOutput{})

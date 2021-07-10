@@ -16,8 +16,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     public sealed class CorsPolicyArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header.
-        /// Default is false.
+        /// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default is false.
         /// </summary>
         [Input("allowCredentials")]
         public Input<bool>? AllowCredentials { get; set; }
@@ -50,8 +49,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         private InputList<string>? _allowOriginRegexes;
 
         /// <summary>
-        /// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax 
-        /// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        /// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         /// </summary>
         public InputList<string> AllowOriginRegexes
         {
@@ -63,8 +61,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         private InputList<string>? _allowOrigins;
 
         /// <summary>
-        /// Specifies the list of origins that will be allowed to do CORS requests.
-        /// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        /// Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         /// </summary>
         public InputList<string> AllowOrigins
         {

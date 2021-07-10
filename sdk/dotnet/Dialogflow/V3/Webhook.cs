@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+        /// </summary>
+        [Output("serviceDirectory")]
+        public Output<Outputs.GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigResponse> ServiceDirectory { get; private set; } = null!;
+
+        /// <summary>
         /// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
         /// </summary>
         [Output("timeout")]
@@ -122,6 +128,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
+
+        /// <summary>
+        /// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+        /// </summary>
+        [Input("serviceDirectory")]
+        public Input<Inputs.GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs>? ServiceDirectory { get; set; }
 
         /// <summary>
         /// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.

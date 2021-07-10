@@ -43,9 +43,7 @@ export interface GetPacketMirroringResult {
      */
     readonly description: string;
     /**
-     * Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
-     *
-     * The default is TRUE.
+     * Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network. The default is TRUE.
      */
     readonly enable: string;
     /**
@@ -69,9 +67,7 @@ export interface GetPacketMirroringResult {
      */
     readonly network: outputs.compute.v1.PacketMirroringNetworkInfoResponse;
     /**
-     * The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins.
-     *
-     * Default value is 1000. Valid range is 0 through 65535.
+     * The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
      */
     readonly priority: number;
     /**

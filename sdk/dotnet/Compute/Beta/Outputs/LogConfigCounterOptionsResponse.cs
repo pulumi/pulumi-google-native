@@ -14,15 +14,15 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
     public sealed class LogConfigCounterOptionsResponse
     {
         /// <summary>
-        /// Custom fields.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly ImmutableArray<Outputs.LogConfigCounterOptionsCustomFieldResponse> CustomFields;
         /// <summary>
-        /// The field value to attribute.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly string Field;
         /// <summary>
-        /// The metric to update.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly string Metric;
 

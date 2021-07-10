@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNoteResult:
-    def __init__(__self__, attestation_authority=None, base_image=None, build_type=None, create_time=None, deployable=None, discovery=None, expiration_time=None, kind=None, long_description=None, name=None, package=None, related_url=None, short_description=None, update_time=None, upgrade=None, vulnerability_type=None):
+    def __init__(__self__, attestation_authority=None, base_image=None, build_type=None, compliance=None, create_time=None, deployable=None, discovery=None, expiration_time=None, kind=None, long_description=None, name=None, package=None, related_url=None, short_description=None, update_time=None, upgrade=None, vulnerability_type=None):
         if attestation_authority and not isinstance(attestation_authority, dict):
             raise TypeError("Expected argument 'attestation_authority' to be a dict")
         pulumi.set(__self__, "attestation_authority", attestation_authority)
@@ -27,6 +27,9 @@ class GetNoteResult:
         if build_type and not isinstance(build_type, dict):
             raise TypeError("Expected argument 'build_type' to be a dict")
         pulumi.set(__self__, "build_type", build_type)
+        if compliance and not isinstance(compliance, dict):
+            raise TypeError("Expected argument 'compliance' to be a dict")
+        pulumi.set(__self__, "compliance", compliance)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -90,6 +93,14 @@ class GetNoteResult:
         Build provenance type for a verifiable build.
         """
         return pulumi.get(self, "build_type")
+
+    @property
+    @pulumi.getter
+    def compliance(self) -> 'outputs.ComplianceNoteResponse':
+        """
+        A note describing a compliance check.
+        """
+        return pulumi.get(self, "compliance")
 
     @property
     @pulumi.getter(name="createTime")
@@ -205,6 +216,7 @@ class AwaitableGetNoteResult(GetNoteResult):
             attestation_authority=self.attestation_authority,
             base_image=self.base_image,
             build_type=self.build_type,
+            compliance=self.compliance,
             create_time=self.create_time,
             deployable=self.deployable,
             discovery=self.discovery,
@@ -239,6 +251,7 @@ def get_note(note_id: Optional[str] = None,
         attestation_authority=__ret__.attestation_authority,
         base_image=__ret__.base_image,
         build_type=__ret__.build_type,
+        compliance=__ret__.compliance,
         create_time=__ret__.create_time,
         deployable=__ret__.deployable,
         discovery=__ret__.discovery,

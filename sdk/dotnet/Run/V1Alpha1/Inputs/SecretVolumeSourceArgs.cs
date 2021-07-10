@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         private InputList<Inputs.KeyToPathArgs>? _items;
 
         /// <summary>
-        /// If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+        /// Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
         /// </summary>
         public InputList<Inputs.KeyToPathArgs> Items
         {
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public Input<bool>? Optional { get; set; }
 
         /// <summary>
-        /// Name of the secret in the container's namespace to use.
+        /// Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
         /// </summary>
         [Input("secretName")]
         public Input<string>? SecretName { get; set; }

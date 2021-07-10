@@ -49,6 +49,47 @@ namespace Pulumi.GoogleNative.Container.V1
     }
 
     /// <summary>
+    /// The desired datapath provider for the cluster.
+    /// </summary>
+    [EnumType]
+    public readonly struct ClusterUpdateDesiredDatapathProvider : IEquatable<ClusterUpdateDesiredDatapathProvider>
+    {
+        private readonly string _value;
+
+        private ClusterUpdateDesiredDatapathProvider(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        public static ClusterUpdateDesiredDatapathProvider DatapathProviderUnspecified { get; } = new ClusterUpdateDesiredDatapathProvider("DATAPATH_PROVIDER_UNSPECIFIED");
+        /// <summary>
+        /// Use the IPTables implementation based on kube-proxy.
+        /// </summary>
+        public static ClusterUpdateDesiredDatapathProvider LegacyDatapath { get; } = new ClusterUpdateDesiredDatapathProvider("LEGACY_DATAPATH");
+        /// <summary>
+        /// Use the eBPF based GKE Dataplane V2 with additional features. See the [GKE Dataplane V2 documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/dataplane-v2) for more.
+        /// </summary>
+        public static ClusterUpdateDesiredDatapathProvider AdvancedDatapath { get; } = new ClusterUpdateDesiredDatapathProvider("ADVANCED_DATAPATH");
+
+        public static bool operator ==(ClusterUpdateDesiredDatapathProvider left, ClusterUpdateDesiredDatapathProvider right) => left.Equals(right);
+        public static bool operator !=(ClusterUpdateDesiredDatapathProvider left, ClusterUpdateDesiredDatapathProvider right) => !left.Equals(right);
+
+        public static explicit operator string(ClusterUpdateDesiredDatapathProvider value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ClusterUpdateDesiredDatapathProvider other && Equals(other);
+        public bool Equals(ClusterUpdateDesiredDatapathProvider other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The desired state of IPv6 connectivity to Google Services.
     /// </summary>
     [EnumType]
@@ -127,6 +168,47 @@ namespace Pulumi.GoogleNative.Container.V1
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is DatabaseEncryptionState other && Equals(other);
         public bool Equals(DatabaseEncryptionState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+    /// </summary>
+    [EnumType]
+    public readonly struct NetworkConfigDatapathProvider : IEquatable<NetworkConfigDatapathProvider>
+    {
+        private readonly string _value;
+
+        private NetworkConfigDatapathProvider(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        public static NetworkConfigDatapathProvider DatapathProviderUnspecified { get; } = new NetworkConfigDatapathProvider("DATAPATH_PROVIDER_UNSPECIFIED");
+        /// <summary>
+        /// Use the IPTables implementation based on kube-proxy.
+        /// </summary>
+        public static NetworkConfigDatapathProvider LegacyDatapath { get; } = new NetworkConfigDatapathProvider("LEGACY_DATAPATH");
+        /// <summary>
+        /// Use the eBPF based GKE Dataplane V2 with additional features. See the [GKE Dataplane V2 documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/dataplane-v2) for more.
+        /// </summary>
+        public static NetworkConfigDatapathProvider AdvancedDatapath { get; } = new NetworkConfigDatapathProvider("ADVANCED_DATAPATH");
+
+        public static bool operator ==(NetworkConfigDatapathProvider left, NetworkConfigDatapathProvider right) => left.Equals(right);
+        public static bool operator !=(NetworkConfigDatapathProvider left, NetworkConfigDatapathProvider right) => !left.Equals(right);
+
+        public static explicit operator string(NetworkConfigDatapathProvider value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is NetworkConfigDatapathProvider other && Equals(other);
+        public bool Equals(NetworkConfigDatapathProvider other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -442,7 +524,7 @@ namespace Pulumi.GoogleNative.Container.V1
         /// </summary>
         public static StatusConditionCanonicalCode ResourceExhausted { get; } = new StatusConditionCanonicalCode("RESOURCE_EXHAUSTED");
         /// <summary>
-        /// The operation was rejected because the system is not in a state required for the operation's execution. For example, the directory to be deleted is non-empty, an rmdir operation is applied to a non-directory, etc. Service implementors can use the following guidelines to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a) Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use `ABORTED` if the client should retry at a higher level (e.g., when a client-specified test-and-set fails, indicating the client should restart a read-modify-write sequence). (c) Use `FAILED_PRECONDITION` if the client should not retry until the system state has been explicitly fixed. E.g., if an "rmdir" fails because the directory is non-empty, `FAILED_PRECONDITION` should be returned since the client should not retry unless the files are deleted from the directory. HTTP Mapping: 400 Bad Request
+        /// The operation was rejected because the system is not in a state required for the operation's execution. For example, the directory to be deleted is non-empty, an rmdir operation is applied to a non-directory, etc. Service implementors can use the following guidelines to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a) Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use `ABORTED` if the client should retry at a higher level. For example, when a client-specified test-and-set fails, indicating the client should restart a read-modify-write sequence. (c) Use `FAILED_PRECONDITION` if the client should not retry until the system state has been explicitly fixed. For example, if an "rmdir" fails because the directory is non-empty, `FAILED_PRECONDITION` should be returned since the client should not retry unless the files are deleted from the directory. HTTP Mapping: 400 Bad Request
         /// </summary>
         public static StatusConditionCanonicalCode FailedPrecondition { get; } = new StatusConditionCanonicalCode("FAILED_PRECONDITION");
         /// <summary>

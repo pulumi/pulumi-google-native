@@ -36,13 +36,7 @@ export class Network extends pulumi.CustomResource {
     }
 
     /**
-     * Must be set to create a VPC network. If not set, a legacy network is created.
-     *
-     * When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.
-     *
-     * An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges.
-     *
-     * For custom mode VPC networks, you can add subnets using the subnetworks insert method.
+     * Must be set to create a VPC network. If not set, a legacy network is created. When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode. An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges. For custom mode VPC networks, you can add subnets using the subnetworks insert method.
      */
     public readonly autoCreateSubnetworks!: pulumi.Output<boolean>;
     /**
@@ -138,13 +132,7 @@ export class Network extends pulumi.CustomResource {
  */
 export interface NetworkArgs {
     /**
-     * Must be set to create a VPC network. If not set, a legacy network is created.
-     *
-     * When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode.
-     *
-     * An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges.
-     *
-     * For custom mode VPC networks, you can add subnets using the subnetworks insert method.
+     * Must be set to create a VPC network. If not set, a legacy network is created. When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode. An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges. For custom mode VPC networks, you can add subnets using the subnetworks insert method.
      */
     autoCreateSubnetworks?: pulumi.Input<boolean>;
     /**

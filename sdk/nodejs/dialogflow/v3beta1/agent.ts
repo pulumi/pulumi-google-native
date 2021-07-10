@@ -6,7 +6,7 @@ import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Creates an agent in the specified location.
+ * Creates an agent in the specified location. Note: You should always train a flow prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
  */
 export class Agent extends pulumi.CustomResource {
     /**
@@ -76,6 +76,10 @@ export class Agent extends pulumi.CustomResource {
      */
     public readonly startFlow!: pulumi.Output<string>;
     /**
+     * The list of all languages supported by the agent (except for the `default_language_code`).
+     */
+    public readonly supportedLanguageCodes!: pulumi.Output<string[]>;
+    /**
      * The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
      */
     public readonly timeZone!: pulumi.Output<string>;
@@ -91,6 +95,9 @@ export class Agent extends pulumi.CustomResource {
         let inputs: pulumi.Inputs = {};
         opts = opts || {};
         if (!opts.id) {
+            if ((!args || args.defaultLanguageCode === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'defaultLanguageCode'");
+            }
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
@@ -115,6 +122,7 @@ export class Agent extends pulumi.CustomResource {
             inputs["securitySettings"] = args ? args.securitySettings : undefined;
             inputs["speechToTextSettings"] = args ? args.speechToTextSettings : undefined;
             inputs["startFlow"] = args ? args.startFlow : undefined;
+            inputs["supportedLanguageCodes"] = args ? args.supportedLanguageCodes : undefined;
             inputs["timeZone"] = args ? args.timeZone : undefined;
         } else {
             inputs["avatarUri"] = undefined /*out*/;
@@ -127,6 +135,7 @@ export class Agent extends pulumi.CustomResource {
             inputs["securitySettings"] = undefined /*out*/;
             inputs["speechToTextSettings"] = undefined /*out*/;
             inputs["startFlow"] = undefined /*out*/;
+            inputs["supportedLanguageCodes"] = undefined /*out*/;
             inputs["timeZone"] = undefined /*out*/;
         }
         if (!opts.version) {
@@ -147,7 +156,7 @@ export interface AgentArgs {
     /**
      * Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
      */
-    defaultLanguageCode?: pulumi.Input<string>;
+    defaultLanguageCode: pulumi.Input<string>;
     /**
      * The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
      */
@@ -182,6 +191,10 @@ export interface AgentArgs {
      * Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
      */
     startFlow?: pulumi.Input<string>;
+    /**
+     * The list of all languages supported by the agent (except for the `default_language_code`).
+     */
+    supportedLanguageCodes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
      */

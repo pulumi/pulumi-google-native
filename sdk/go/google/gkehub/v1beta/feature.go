@@ -25,7 +25,7 @@ type Feature struct {
 	MembershipSpecs pulumi.StringMapOutput `pulumi:"membershipSpecs"`
 	// Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
 	MembershipStates pulumi.StringMapOutput `pulumi:"membershipStates"`
-	// The full, unique name of this Feature resource in the format `projects/*/locations/global/features/*`.
+	// The full, unique name of this Feature resource in the format `projects/*/locations/*/features/*`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// State of the Feature resource itself.
 	ResourceState FeatureResourceStateResponseOutput `pulumi:"resourceState"`
@@ -44,6 +44,9 @@ func NewFeature(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Location == nil {
+		return nil, errors.New("invalid value for required argument 'Location'")
+	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -79,7 +82,7 @@ type featureState struct {
 	MembershipSpecs map[string]string `pulumi:"membershipSpecs"`
 	// Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
 	MembershipStates map[string]string `pulumi:"membershipStates"`
-	// The full, unique name of this Feature resource in the format `projects/*/locations/global/features/*`.
+	// The full, unique name of this Feature resource in the format `projects/*/locations/*/features/*`.
 	Name *string `pulumi:"name"`
 	// State of the Feature resource itself.
 	ResourceState *FeatureResourceStateResponse `pulumi:"resourceState"`
@@ -102,7 +105,7 @@ type FeatureState struct {
 	MembershipSpecs pulumi.StringMapInput
 	// Membership-specific Feature status. If this Feature does report any per-Membership status, this field may be unused. The keys indicate which Membership the state is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project number, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} MUST match the Feature's project number.
 	MembershipStates pulumi.StringMapInput
-	// The full, unique name of this Feature resource in the format `projects/*/locations/global/features/*`.
+	// The full, unique name of this Feature resource in the format `projects/*/locations/*/features/*`.
 	Name pulumi.StringPtrInput
 	// State of the Feature resource itself.
 	ResourceState FeatureResourceStateResponsePtrInput
@@ -121,7 +124,8 @@ func (FeatureState) ElementType() reflect.Type {
 type featureArgs struct {
 	FeatureId *string `pulumi:"featureId"`
 	// GCP labels for this Feature.
-	Labels map[string]string `pulumi:"labels"`
+	Labels   map[string]string `pulumi:"labels"`
+	Location string            `pulumi:"location"`
 	// Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Membership is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
 	MembershipSpecs map[string]string `pulumi:"membershipSpecs"`
 	Project         string            `pulumi:"project"`
@@ -134,7 +138,8 @@ type featureArgs struct {
 type FeatureArgs struct {
 	FeatureId pulumi.StringPtrInput
 	// GCP labels for this Feature.
-	Labels pulumi.StringMapInput
+	Labels   pulumi.StringMapInput
+	Location pulumi.StringInput
 	// Optional. Membership-specific configuration for this Feature. If this Feature does not support any per-Membership configuration, this field may be unused. The keys indicate which Membership the configuration is for, in the form: projects/{p}/locations/{l}/memberships/{m} Where {p} is the project, {l} is a valid location and {m} is a valid Membership in this project at that location. {p} WILL match the Feature's project. {p} will always be returned as the project number, but the project ID is also accepted during input. If the same Membership is specified in the map twice (using the project ID form, and the project number form), exactly ONE of the entries will be saved, with no guarantees as to which. For this reason, it is recommended the same format be used for all entries when mutating a Feature.
 	MembershipSpecs pulumi.StringMapInput
 	Project         pulumi.StringInput

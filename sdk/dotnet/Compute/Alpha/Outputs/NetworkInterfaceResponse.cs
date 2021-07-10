@@ -34,9 +34,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AccessConfigResponse> Ipv6AccessConfigs;
         /// <summary>
-        /// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
-        /// 
-        /// Valid only if stackType is IPV4_IPV6.
+        /// One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork. Valid only if stackType is IPV4_IPV6.
         /// </summary>
         public readonly string Ipv6AccessType;
         /// <summary>
@@ -52,12 +50,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred.
-        /// 
-        /// If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs:  
-        /// - https://www.googleapis.com/compute/v1/projects/project/global/networks/network 
-        /// - projects/project/global/networks/network 
-        /// - global/networks/default
+        /// URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
         /// </summary>
         public readonly string Network;
         /// <summary>
@@ -73,9 +66,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly int QueueCount;
         /// <summary>
-        /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
-        /// 
-        /// This field can be both set at instance creation and update network interface operations.
+        /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
         /// </summary>
         public readonly string StackType;
         /// <summary>
@@ -83,9 +74,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.NetworkInterfaceSubInterfaceResponse> Subinterfaces;
         /// <summary>
-        /// The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs:  
-        /// - https://www.googleapis.com/compute/v1/projects/project/regions/region/subnetworks/subnetwork 
-        /// - regions/region/subnetworks/subnetwork
+        /// The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork 
         /// </summary>
         public readonly string Subnetwork;
 

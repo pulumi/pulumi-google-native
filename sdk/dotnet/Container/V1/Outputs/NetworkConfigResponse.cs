@@ -14,6 +14,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
     public sealed class NetworkConfigResponse
     {
         /// <summary>
+        /// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
+        /// </summary>
+        public readonly string DatapathProvider;
+        /// <summary>
         /// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
         /// </summary>
         public readonly Outputs.DefaultSnatStatusResponse DefaultSnatStatus;
@@ -21,6 +25,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
         /// </summary>
         public readonly bool EnableIntraNodeVisibility;
+        /// <summary>
+        /// Whether L4ILB Subsetting is enabled for this cluster.
+        /// </summary>
+        public readonly bool EnableL4ilbSubsetting;
         /// <summary>
         /// The relative name of the Google Compute Engine network(https://cloud.google.com/compute/docs/networks-and-firewalls#networks) to which the cluster is connected. Example: projects/my-project/global/networks/my-network
         /// </summary>
@@ -36,9 +44,13 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
         [OutputConstructor]
         private NetworkConfigResponse(
+            string datapathProvider,
+
             Outputs.DefaultSnatStatusResponse defaultSnatStatus,
 
             bool enableIntraNodeVisibility,
+
+            bool enableL4ilbSubsetting,
 
             string network,
 
@@ -46,8 +58,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             string subnetwork)
         {
+            DatapathProvider = datapathProvider;
             DefaultSnatStatus = defaultSnatStatus;
             EnableIntraNodeVisibility = enableIntraNodeVisibility;
+            EnableL4ilbSubsetting = enableL4ilbSubsetting;
             Network = network;
             PrivateIpv6GoogleAccess = privateIpv6GoogleAccess;
             Subnetwork = subnetwork;

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
     public partial class MetadataImport : Pulumi.CustomResource
     {
         /// <summary>
-        /// The time when the metadata import was created.
+        /// The time when the metadata import was started.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -32,6 +32,12 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// The time when the metadata import finished.
+        /// </summary>
+        [Output("endTime")]
+        public Output<string> EndTime { get; private set; } = null!;
 
         /// <summary>
         /// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.

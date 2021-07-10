@@ -15,6 +15,7 @@ __all__ = [
     'AuditConfigResponse',
     'AuditLogConfigResponse',
     'BindingResponse',
+    'CryptoKeyConfigResponse',
     'ExprResponse',
     'NetworkConfigResponse',
     'VersionResponse',
@@ -203,6 +204,45 @@ class BindingResponse(dict):
         Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class CryptoKeyConfigResponse(dict):
+    """
+    The crypto key configuration. This field is used by the Customer-managed encryption keys (CMEK) feature.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "keyReference":
+            suggest = "key_reference"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CryptoKeyConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CryptoKeyConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CryptoKeyConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 key_reference: str):
+        """
+        The crypto key configuration. This field is used by the Customer-managed encryption keys (CMEK) feature.
+        :param str key_reference: The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        """
+        pulumi.set(__self__, "key_reference", key_reference)
+
+    @property
+    @pulumi.getter(name="keyReference")
+    def key_reference(self) -> str:
+        """
+        The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        """
+        return pulumi.get(self, "key_reference")
 
 
 @pulumi.output_type

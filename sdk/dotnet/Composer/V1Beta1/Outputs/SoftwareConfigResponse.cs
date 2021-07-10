@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
         /// Optional. The major version of Python used to run the Apache Airflow scheduler, worker, and webserver processes. Can be set to '2' or '3'. If not specified, the default is '3'. Cannot be updated.
         /// </summary>
         public readonly string PythonVersion;
+        /// <summary>
+        /// Optional. The number of schedulers for Airflow.
+        /// </summary>
+        public readonly int SchedulerCount;
 
         [OutputConstructor]
         private SoftwareConfigResponse(
@@ -44,13 +48,16 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Outputs
 
             ImmutableDictionary<string, string> pypiPackages,
 
-            string pythonVersion)
+            string pythonVersion,
+
+            int schedulerCount)
         {
             AirflowConfigOverrides = airflowConfigOverrides;
             EnvVariables = envVariables;
             ImageVersion = imageVersion;
             PypiPackages = pypiPackages;
             PythonVersion = pythonVersion;
+            SchedulerCount = schedulerCount;
         }
     }
 }

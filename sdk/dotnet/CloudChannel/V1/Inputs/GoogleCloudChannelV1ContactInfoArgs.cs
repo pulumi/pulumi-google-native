@@ -16,31 +16,31 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
     public sealed class GoogleCloudChannelV1ContactInfoArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Email of the contact in the customer account. Email is required for entitlements that need creation of admin.google.com accounts. The email will be the username used in credentials to access the admin.google.com account.
+        /// The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// First name of the contact in the customer account.
+        /// The customer account contact's first name. Optional for Team customers.
         /// </summary>
         [Input("firstName")]
         public Input<string>? FirstName { get; set; }
 
         /// <summary>
-        /// Last name of the contact in the customer account.
+        /// The customer account contact's last name. Optional for Team customers.
         /// </summary>
         [Input("lastName")]
         public Input<string>? LastName { get; set; }
 
         /// <summary>
-        /// Phone number of the contact in the customer account.
+        /// The customer account's contact phone number.
         /// </summary>
         [Input("phone")]
         public Input<string>? Phone { get; set; }
 
         /// <summary>
-        /// Optional. Job title of the contact in the customer account.
+        /// Optional. The customer account contact's job title.
         /// </summary>
         [Input("title")]
         public Input<string>? Title { get; set; }

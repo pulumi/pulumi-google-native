@@ -38,6 +38,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// </summary>
         public readonly string MachineType;
         /// <summary>
+        /// Optional. Specification for execution on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+        /// </summary>
+        public readonly Outputs.PoolOptionResponse Pool;
+        /// <summary>
         /// Requested verifiability options.
         /// </summary>
         public readonly string RequestedVerifyOption;
@@ -58,7 +62,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.VolumeResponse> Volumes;
         /// <summary>
-        /// Option to specify a `WorkerPool` for the build. Format: projects/{project}/locations/{location}/workerPools/{workerPool} This field is in beta and is available only to restricted users.
+        /// This field deprecated; please use `pool.name` instead.
         /// </summary>
         public readonly string WorkerPool;
 
@@ -75,6 +79,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
             string logging,
 
             string machineType,
+
+            Outputs.PoolOptionResponse pool,
 
             string requestedVerifyOption,
 
@@ -94,6 +100,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
             LogStreamingOption = logStreamingOption;
             Logging = logging;
             MachineType = machineType;
+            Pool = pool;
             RequestedVerifyOption = requestedVerifyOption;
             SecretEnv = secretEnv;
             SourceProvenanceHash = sourceProvenanceHash;

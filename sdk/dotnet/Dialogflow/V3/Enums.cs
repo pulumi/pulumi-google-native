@@ -90,7 +90,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
     }
 
     /// <summary>
-    /// The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING-&gt;RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING-&gt;CANCELLED or RUNNING-&gt;CANCELLED.
+    /// The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT-&gt;RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT-&gt;DONE or RUNNING-&gt;DONE.
     /// </summary>
     [EnumType]
     public readonly struct ExperimentState : IEquatable<ExperimentState>
@@ -118,6 +118,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// The experiment is done.
         /// </summary>
         public static ExperimentState Done { get; } = new ExperimentState("DONE");
+        /// <summary>
+        /// The experiment with auto-rollout enabled has failed.
+        /// </summary>
+        public static ExperimentState RolloutFailed { get; } = new ExperimentState("ROLLOUT_FAILED");
 
         public static bool operator ==(ExperimentState left, ExperimentState right) => left.Equals(right);
         public static bool operator !=(ExperimentState left, ExperimentState right) => !left.Equals(right);
@@ -476,7 +480,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         /// </summary>
         public static SecuritySettingPurgeDataTypesItem PurgeDataTypeUnspecified { get; } = new SecuritySettingPurgeDataTypesItem("PURGE_DATA_TYPE_UNSPECIFIED");
         /// <summary>
-        /// Dialogflow history. This does not include Stackdriver log, which is owned by the user not Dialogflow.
+        /// Dialogflow history. This does not include Cloud logging, which is owned by the user - not Dialogflow.
         /// </summary>
         public static SecuritySettingPurgeDataTypesItem DialogflowHistory { get; } = new SecuritySettingPurgeDataTypesItem("DIALOGFLOW_HISTORY");
 
@@ -496,7 +500,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
     }
 
     /// <summary>
-    /// Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
+    /// Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
     /// </summary>
     [EnumType]
     public readonly struct SecuritySettingRedactionScope : IEquatable<SecuritySettingRedactionScope>

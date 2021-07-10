@@ -26,9 +26,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly string Direction;
         /// <summary>
-        /// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules.
-        /// 
-        /// This field may only be specified when the versioned_expr is set to FIREWALL.
+        /// Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules. This field may only be specified when the versioned_expr is set to FIREWALL.
         /// </summary>
         public readonly bool EnableLogging;
         /// <summary>
@@ -56,6 +54,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleRateLimitOptionsResponse RateLimitOptions;
         /// <summary>
+        /// Parameters defining the redirect action. Cannot be specified for any other actions.
+        /// </summary>
+        public readonly Outputs.SecurityPolicyRuleRedirectOptionsResponse RedirectOptions;
+        /// <summary>
         /// This must be specified for redirect actions. Cannot be specified for any other actions.
         /// </summary>
         public readonly string RedirectTarget;
@@ -68,9 +70,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly int RuleTupleCount;
         /// <summary>
-        /// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
-        /// 
-        /// This field may only be specified when versioned_expr is set to FIREWALL.
+        /// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule. This field may only be specified when versioned_expr is set to FIREWALL.
         /// </summary>
         public readonly ImmutableArray<string> TargetResources;
         /// <summary>
@@ -100,6 +100,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             Outputs.SecurityPolicyRuleRateLimitOptionsResponse rateLimitOptions,
 
+            Outputs.SecurityPolicyRuleRedirectOptionsResponse redirectOptions,
+
             string redirectTarget,
 
             string ruleNumber,
@@ -120,6 +122,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             Preview = preview;
             Priority = priority;
             RateLimitOptions = rateLimitOptions;
+            RedirectOptions = redirectOptions;
             RedirectTarget = redirectTarget;
             RuleNumber = ruleNumber;
             RuleTupleCount = ruleTupleCount;

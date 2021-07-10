@@ -18,9 +18,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string AdvertiseMode;
         /// <summary>
-        /// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: 
-        /// - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. 
-        /// - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
+        /// User-specified list of prefix groups to advertise in custom mode, which can take one of the following options: - ALL_SUBNETS: Advertises all available subnets, including peer VPC subnets. - ALL_VPC_SUBNETS: Advertises the router's own VPC subnets. Note that this field can only be populated if advertise_mode is CUSTOM and overrides the list defined for the router (in the "bgp" message). These groups are advertised in addition to any specified prefixes. Leave this field blank to advertise no custom groups.
         /// </summary>
         public readonly ImmutableArray<string> AdvertisedGroups;
         /// <summary>
@@ -32,14 +30,11 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly int AdvertisedRoutePriority;
         /// <summary>
-        /// BFD configuration for the BGP peering.
-        /// Not currently available publicly.
+        /// BFD configuration for the BGP peering. Not currently available publicly.
         /// </summary>
         public readonly Outputs.RouterBgpPeerBfdResponse Bfd;
         /// <summary>
-        /// The status of the BGP peer connection.
-        /// Not currently available publicly.
-        /// If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
+        /// The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.
         /// </summary>
         public readonly string Enable;
         /// <summary>
@@ -51,9 +46,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string IpAddress;
         /// <summary>
-        /// The resource that configures and manages this BGP peer. 
-        /// - MANAGED_BY_USER is the default value and can be managed by you or other users 
-        /// - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted.
+        /// The resource that configures and manages this BGP peer. - MANAGED_BY_USER is the default value and can be managed by you or other users - MANAGED_BY_ATTACHMENT is a BGP peer that is configured and managed by Cloud Interconnect, specifically by an InterconnectAttachment of type PARTNER. Google automatically creates, updates, and deletes this type of BGP peer when the PARTNER InterconnectAttachment is created, updated, or deleted. 
         /// </summary>
         public readonly string ManagementType;
         /// <summary>

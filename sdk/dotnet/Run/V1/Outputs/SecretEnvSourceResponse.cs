@@ -18,11 +18,11 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly Outputs.LocalObjectReferenceResponse LocalObjectReference;
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from.
+        /// The Secret to select from.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the Secret must be defined
+        /// (Optional) Specify whether the Secret must be defined
         /// </summary>
         public readonly bool Optional;
 

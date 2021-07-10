@@ -18,8 +18,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly string Code;
         /// <summary>
-        /// Metadata about this warning in key: value format. For example:
-        /// "data": [ { "key": "scope", "value": "zones/us-east1-d" }
+        /// Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" } 
         /// </summary>
         public readonly ImmutableArray<Outputs.RouteWarningsItemDataItemResponse> Data;
         /// <summary>

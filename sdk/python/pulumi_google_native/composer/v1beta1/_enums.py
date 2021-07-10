@@ -5,8 +5,19 @@
 from enum import Enum
 
 __all__ = [
+    'EnvironmentConfigEnvironmentSize',
     'EnvironmentState',
 ]
+
+
+class EnvironmentConfigEnvironmentSize(str, Enum):
+    """
+    Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+    """
+    ENVIRONMENT_SIZE_UNSPECIFIED = "ENVIRONMENT_SIZE_UNSPECIFIED"
+    ENVIRONMENT_SIZE_SMALL = "ENVIRONMENT_SIZE_SMALL"
+    ENVIRONMENT_SIZE_MEDIUM = "ENVIRONMENT_SIZE_MEDIUM"
+    ENVIRONMENT_SIZE_LARGE = "ENVIRONMENT_SIZE_LARGE"
 
 
 class EnvironmentState(str, Enum):

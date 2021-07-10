@@ -31,16 +31,12 @@ class PacketMirroringArgs:
         The set of arguments for constructing a PacketMirroring resource.
         :param pulumi.Input['PacketMirroringForwardingRuleInfoArgs'] collector_ilb: The Forwarding Rule resource of type loadBalancingScheme=INTERNAL that will be used as collector for mirrored traffic. The specified forwarding rule must have isMirroringCollector set to true.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input['PacketMirroringEnable'] enable: Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
-               
-               The default is TRUE.
+        :param pulumi.Input['PacketMirroringEnable'] enable: Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network. The default is TRUE.
         :param pulumi.Input['PacketMirroringFilterArgs'] filter: Filter for mirrored traffic. If unspecified, all traffic is mirrored.
         :param pulumi.Input['PacketMirroringMirroredResourceInfoArgs'] mirrored_resources: PacketMirroring mirroredResourceInfos. MirroredResourceInfo specifies a set of mirrored VM instances, subnetworks and/or tags for which traffic from/to all VM instances will be mirrored.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['PacketMirroringNetworkInfoArgs'] network: Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in the given network. All mirrored subnetworks should belong to the given network.
-        :param pulumi.Input[int] priority: The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins.
-               
-               Default value is 1000. Valid range is 0 through 65535.
+        :param pulumi.Input[int] priority: The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
@@ -109,9 +105,7 @@ class PacketMirroringArgs:
     @pulumi.getter
     def enable(self) -> Optional[pulumi.Input['PacketMirroringEnable']]:
         """
-        Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
-
-        The default is TRUE.
+        Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network. The default is TRUE.
         """
         return pulumi.get(self, "enable")
 
@@ -171,9 +165,7 @@ class PacketMirroringArgs:
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[int]]:
         """
-        The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins.
-
-        Default value is 1000. Valid range is 0 through 65535.
+        The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
         """
         return pulumi.get(self, "priority")
 
@@ -215,16 +207,12 @@ class PacketMirroring(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['PacketMirroringForwardingRuleInfoArgs']] collector_ilb: The Forwarding Rule resource of type loadBalancingScheme=INTERNAL that will be used as collector for mirrored traffic. The specified forwarding rule must have isMirroringCollector set to true.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
-        :param pulumi.Input['PacketMirroringEnable'] enable: Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
-               
-               The default is TRUE.
+        :param pulumi.Input['PacketMirroringEnable'] enable: Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network. The default is TRUE.
         :param pulumi.Input[pulumi.InputType['PacketMirroringFilterArgs']] filter: Filter for mirrored traffic. If unspecified, all traffic is mirrored.
         :param pulumi.Input[pulumi.InputType['PacketMirroringMirroredResourceInfoArgs']] mirrored_resources: PacketMirroring mirroredResourceInfos. MirroredResourceInfo specifies a set of mirrored VM instances, subnetworks and/or tags for which traffic from/to all VM instances will be mirrored.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[pulumi.InputType['PacketMirroringNetworkInfoArgs']] network: Specifies the mirrored VPC network. Only packets in this network will be mirrored. All mirrored VMs should have a NIC in the given network. All mirrored subnetworks should belong to the given network.
-        :param pulumi.Input[int] priority: The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins.
-               
-               Default value is 1000. Valid range is 0 through 65535.
+        :param pulumi.Input[int] priority: The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
         """
         ...
     @overload
@@ -357,9 +345,7 @@ class PacketMirroring(pulumi.CustomResource):
     @pulumi.getter
     def enable(self) -> pulumi.Output[str]:
         """
-        Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network.
-
-        The default is TRUE.
+        Indicates whether or not this packet mirroring takes effect. If set to FALSE, this packet mirroring policy will not be enforced on the network. The default is TRUE.
         """
         return pulumi.get(self, "enable")
 
@@ -407,9 +393,7 @@ class PacketMirroring(pulumi.CustomResource):
     @pulumi.getter
     def priority(self) -> pulumi.Output[int]:
         """
-        The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins.
-
-        Default value is 1000. Valid range is 0 through 65535.
+        The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
         """
         return pulumi.get(self, "priority")
 

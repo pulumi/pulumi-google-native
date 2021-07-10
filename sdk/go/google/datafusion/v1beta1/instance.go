@@ -23,6 +23,8 @@ type Instance struct {
 	AvailableVersion VersionResponseArrayOutput `pulumi:"availableVersion"`
 	// The time the instance was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+	CryptoKeyConfig CryptoKeyConfigResponseOutput `pulumi:"cryptoKeyConfig"`
 	// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
 	DataprocServiceAccount pulumi.StringOutput `pulumi:"dataprocServiceAccount"`
 	// A description of this instance.
@@ -110,6 +112,8 @@ type instanceState struct {
 	AvailableVersion []VersionResponse `pulumi:"availableVersion"`
 	// The time the instance was created.
 	CreateTime *string `pulumi:"createTime"`
+	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+	CryptoKeyConfig *CryptoKeyConfigResponse `pulumi:"cryptoKeyConfig"`
 	// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
 	DataprocServiceAccount *string `pulumi:"dataprocServiceAccount"`
 	// A description of this instance.
@@ -163,6 +167,8 @@ type InstanceState struct {
 	AvailableVersion VersionResponseArrayInput
 	// The time the instance was created.
 	CreateTime pulumi.StringPtrInput
+	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+	CryptoKeyConfig CryptoKeyConfigResponsePtrInput
 	// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
 	DataprocServiceAccount pulumi.StringPtrInput
 	// A description of this instance.
@@ -216,6 +222,8 @@ type instanceArgs struct {
 	Accelerators []Accelerator `pulumi:"accelerators"`
 	// Available versions that the instance can be upgraded to using UpdateInstanceRequest.
 	AvailableVersion []Version `pulumi:"availableVersion"`
+	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+	CryptoKeyConfig *CryptoKeyConfig `pulumi:"cryptoKeyConfig"`
 	// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
 	DataprocServiceAccount *string `pulumi:"dataprocServiceAccount"`
 	// A description of this instance.
@@ -253,6 +261,8 @@ type InstanceArgs struct {
 	Accelerators AcceleratorArrayInput
 	// Available versions that the instance can be upgraded to using UpdateInstanceRequest.
 	AvailableVersion VersionArrayInput
+	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+	CryptoKeyConfig CryptoKeyConfigPtrInput
 	// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
 	DataprocServiceAccount pulumi.StringPtrInput
 	// A description of this instance.

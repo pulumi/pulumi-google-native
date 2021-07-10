@@ -185,7 +185,7 @@ class BasicAutoscalingAlgorithmResponse(dict):
         """
         Basic algorithm for autoscaling.
         :param str cooldown_period: Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
-        :param 'BasicYarnAutoscalingConfigResponse' yarn_config: YARN autoscaling configuration.
+        :param 'BasicYarnAutoscalingConfigResponse' yarn_config: Optional. YARN autoscaling configuration.
         """
         pulumi.set(__self__, "cooldown_period", cooldown_period)
         pulumi.set(__self__, "yarn_config", yarn_config)
@@ -202,7 +202,7 @@ class BasicAutoscalingAlgorithmResponse(dict):
     @pulumi.getter(name="yarnConfig")
     def yarn_config(self) -> 'outputs.BasicYarnAutoscalingConfigResponse':
         """
-        YARN autoscaling configuration.
+        Optional. YARN autoscaling configuration.
         """
         return pulumi.get(self, "yarn_config")
 

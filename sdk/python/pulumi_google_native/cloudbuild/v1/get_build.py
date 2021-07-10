@@ -17,7 +17,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBuildResult:
-    def __init__(__self__, artifacts=None, available_secrets=None, build_trigger_id=None, create_time=None, finish_time=None, images=None, log_url=None, logs_bucket=None, name=None, options=None, project=None, queue_ttl=None, results=None, secrets=None, service_account=None, source=None, source_provenance=None, start_time=None, status=None, status_detail=None, steps=None, substitutions=None, tags=None, timeout=None, timing=None):
+    def __init__(__self__, artifacts=None, available_secrets=None, build_trigger_id=None, create_time=None, finish_time=None, images=None, log_url=None, logs_bucket=None, name=None, options=None, project=None, queue_ttl=None, results=None, secrets=None, service_account=None, source=None, source_provenance=None, start_time=None, status=None, status_detail=None, steps=None, substitutions=None, tags=None, timeout=None, timing=None, warnings=None):
         if artifacts and not isinstance(artifacts, dict):
             raise TypeError("Expected argument 'artifacts' to be a dict")
         pulumi.set(__self__, "artifacts", artifacts)
@@ -93,6 +93,9 @@ class GetBuildResult:
         if timing and not isinstance(timing, dict):
             raise TypeError("Expected argument 'timing' to be a dict")
         pulumi.set(__self__, "timing", timing)
+        if warnings and not isinstance(warnings, list):
+            raise TypeError("Expected argument 'warnings' to be a list")
+        pulumi.set(__self__, "warnings", warnings)
 
     @property
     @pulumi.getter
@@ -294,6 +297,14 @@ class GetBuildResult:
         """
         return pulumi.get(self, "timing")
 
+    @property
+    @pulumi.getter
+    def warnings(self) -> Sequence['outputs.WarningResponse']:
+        """
+        Non-fatal problems encountered during the execution of the build.
+        """
+        return pulumi.get(self, "warnings")
+
 
 class AwaitableGetBuildResult(GetBuildResult):
     # pylint: disable=using-constant-test
@@ -325,7 +336,8 @@ class AwaitableGetBuildResult(GetBuildResult):
             substitutions=self.substitutions,
             tags=self.tags,
             timeout=self.timeout,
-            timing=self.timing)
+            timing=self.timing,
+            warnings=self.warnings)
 
 
 def get_build(build_id: Optional[str] = None,
@@ -374,4 +386,5 @@ def get_build(build_id: Optional[str] = None,
         substitutions=__ret__.substitutions,
         tags=__ret__.tags,
         timeout=__ret__.timeout,
-        timing=__ret__.timing)
+        timing=__ret__.timing,
+        warnings=__ret__.warnings)

@@ -1332,6 +1332,274 @@ func (o DatabaseDumpResponsePtrOutput) Type() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Encryption settings for the service.
+type EncryptionConfig struct {
+	// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+	KmsKey *string `pulumi:"kmsKey"`
+}
+
+// EncryptionConfigInput is an input type that accepts EncryptionConfigArgs and EncryptionConfigOutput values.
+// You can construct a concrete instance of `EncryptionConfigInput` via:
+//
+//          EncryptionConfigArgs{...}
+type EncryptionConfigInput interface {
+	pulumi.Input
+
+	ToEncryptionConfigOutput() EncryptionConfigOutput
+	ToEncryptionConfigOutputWithContext(context.Context) EncryptionConfigOutput
+}
+
+// Encryption settings for the service.
+type EncryptionConfigArgs struct {
+	// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
+}
+
+func (EncryptionConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionConfig)(nil)).Elem()
+}
+
+func (i EncryptionConfigArgs) ToEncryptionConfigOutput() EncryptionConfigOutput {
+	return i.ToEncryptionConfigOutputWithContext(context.Background())
+}
+
+func (i EncryptionConfigArgs) ToEncryptionConfigOutputWithContext(ctx context.Context) EncryptionConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigOutput)
+}
+
+func (i EncryptionConfigArgs) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
+	return i.ToEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i EncryptionConfigArgs) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigOutput).ToEncryptionConfigPtrOutputWithContext(ctx)
+}
+
+// EncryptionConfigPtrInput is an input type that accepts EncryptionConfigArgs, EncryptionConfigPtr and EncryptionConfigPtrOutput values.
+// You can construct a concrete instance of `EncryptionConfigPtrInput` via:
+//
+//          EncryptionConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type EncryptionConfigPtrInput interface {
+	pulumi.Input
+
+	ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput
+	ToEncryptionConfigPtrOutputWithContext(context.Context) EncryptionConfigPtrOutput
+}
+
+type encryptionConfigPtrType EncryptionConfigArgs
+
+func EncryptionConfigPtr(v *EncryptionConfigArgs) EncryptionConfigPtrInput {
+	return (*encryptionConfigPtrType)(v)
+}
+
+func (*encryptionConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionConfig)(nil)).Elem()
+}
+
+func (i *encryptionConfigPtrType) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
+	return i.ToEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *encryptionConfigPtrType) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigPtrOutput)
+}
+
+// Encryption settings for the service.
+type EncryptionConfigOutput struct{ *pulumi.OutputState }
+
+func (EncryptionConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionConfig)(nil)).Elem()
+}
+
+func (o EncryptionConfigOutput) ToEncryptionConfigOutput() EncryptionConfigOutput {
+	return o
+}
+
+func (o EncryptionConfigOutput) ToEncryptionConfigOutputWithContext(ctx context.Context) EncryptionConfigOutput {
+	return o
+}
+
+func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
+	return o.ToEncryptionConfigPtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionConfigOutput) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
+	return o.ApplyT(func(v EncryptionConfig) *EncryptionConfig {
+		return &v
+	}).(EncryptionConfigPtrOutput)
+}
+
+// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+func (o EncryptionConfigOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EncryptionConfig) *string { return v.KmsKey }).(pulumi.StringPtrOutput)
+}
+
+type EncryptionConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionConfig)(nil)).Elem()
+}
+
+func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutput() EncryptionConfigPtrOutput {
+	return o
+}
+
+func (o EncryptionConfigPtrOutput) ToEncryptionConfigPtrOutputWithContext(ctx context.Context) EncryptionConfigPtrOutput {
+	return o
+}
+
+func (o EncryptionConfigPtrOutput) Elem() EncryptionConfigOutput {
+	return o.ApplyT(func(v *EncryptionConfig) EncryptionConfig { return *v }).(EncryptionConfigOutput)
+}
+
+// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+func (o EncryptionConfigPtrOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Encryption settings for the service.
+type EncryptionConfigResponse struct {
+	// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+	KmsKey string `pulumi:"kmsKey"`
+}
+
+// EncryptionConfigResponseInput is an input type that accepts EncryptionConfigResponseArgs and EncryptionConfigResponseOutput values.
+// You can construct a concrete instance of `EncryptionConfigResponseInput` via:
+//
+//          EncryptionConfigResponseArgs{...}
+type EncryptionConfigResponseInput interface {
+	pulumi.Input
+
+	ToEncryptionConfigResponseOutput() EncryptionConfigResponseOutput
+	ToEncryptionConfigResponseOutputWithContext(context.Context) EncryptionConfigResponseOutput
+}
+
+// Encryption settings for the service.
+type EncryptionConfigResponseArgs struct {
+	// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+	KmsKey pulumi.StringInput `pulumi:"kmsKey"`
+}
+
+func (EncryptionConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionConfigResponse)(nil)).Elem()
+}
+
+func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponseOutput() EncryptionConfigResponseOutput {
+	return i.ToEncryptionConfigResponseOutputWithContext(context.Background())
+}
+
+func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponseOutputWithContext(ctx context.Context) EncryptionConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigResponseOutput)
+}
+
+func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
+	return i.ToEncryptionConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i EncryptionConfigResponseArgs) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigResponseOutput).ToEncryptionConfigResponsePtrOutputWithContext(ctx)
+}
+
+// EncryptionConfigResponsePtrInput is an input type that accepts EncryptionConfigResponseArgs, EncryptionConfigResponsePtr and EncryptionConfigResponsePtrOutput values.
+// You can construct a concrete instance of `EncryptionConfigResponsePtrInput` via:
+//
+//          EncryptionConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type EncryptionConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput
+	ToEncryptionConfigResponsePtrOutputWithContext(context.Context) EncryptionConfigResponsePtrOutput
+}
+
+type encryptionConfigResponsePtrType EncryptionConfigResponseArgs
+
+func EncryptionConfigResponsePtr(v *EncryptionConfigResponseArgs) EncryptionConfigResponsePtrInput {
+	return (*encryptionConfigResponsePtrType)(v)
+}
+
+func (*encryptionConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionConfigResponse)(nil)).Elem()
+}
+
+func (i *encryptionConfigResponsePtrType) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
+	return i.ToEncryptionConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *encryptionConfigResponsePtrType) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EncryptionConfigResponsePtrOutput)
+}
+
+// Encryption settings for the service.
+type EncryptionConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (EncryptionConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EncryptionConfigResponse)(nil)).Elem()
+}
+
+func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponseOutput() EncryptionConfigResponseOutput {
+	return o
+}
+
+func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponseOutputWithContext(ctx context.Context) EncryptionConfigResponseOutput {
+	return o
+}
+
+func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
+	return o.ToEncryptionConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o EncryptionConfigResponseOutput) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
+	return o.ApplyT(func(v EncryptionConfigResponse) *EncryptionConfigResponse {
+		return &v
+	}).(EncryptionConfigResponsePtrOutput)
+}
+
+// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+func (o EncryptionConfigResponseOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v EncryptionConfigResponse) string { return v.KmsKey }).(pulumi.StringOutput)
+}
+
+type EncryptionConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (EncryptionConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EncryptionConfigResponse)(nil)).Elem()
+}
+
+func (o EncryptionConfigResponsePtrOutput) ToEncryptionConfigResponsePtrOutput() EncryptionConfigResponsePtrOutput {
+	return o
+}
+
+func (o EncryptionConfigResponsePtrOutput) ToEncryptionConfigResponsePtrOutputWithContext(ctx context.Context) EncryptionConfigResponsePtrOutput {
+	return o
+}
+
+func (o EncryptionConfigResponsePtrOutput) Elem() EncryptionConfigResponseOutput {
+	return o.ApplyT(func(v *EncryptionConfigResponse) EncryptionConfigResponse { return *v }).(EncryptionConfigResponseOutput)
+}
+
+// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+func (o EncryptionConfigResponsePtrOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EncryptionConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KmsKey
+	}).(pulumi.StringPtrOutput)
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec.Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type Expr struct {
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -3575,6 +3843,8 @@ type ServiceResponse struct {
 	ArtifactGcsUri string `pulumi:"artifactGcsUri"`
 	// The time when the metastore service was created.
 	CreateTime string `pulumi:"createTime"`
+	// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
+	EncryptionConfig EncryptionConfigResponse `pulumi:"encryptionConfig"`
 	// The URI of the endpoint used to access the metastore service.
 	EndpointUri string `pulumi:"endpointUri"`
 	// Configuration information specific to running Hive metastore software as the metastore service.
@@ -3624,6 +3894,8 @@ type ServiceResponseArgs struct {
 	ArtifactGcsUri pulumi.StringInput `pulumi:"artifactGcsUri"`
 	// The time when the metastore service was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
+	EncryptionConfig EncryptionConfigResponseInput `pulumi:"encryptionConfig"`
 	// The URI of the endpoint used to access the metastore service.
 	EndpointUri pulumi.StringInput `pulumi:"endpointUri"`
 	// Configuration information specific to running Hive metastore software as the metastore service.
@@ -3744,6 +4016,11 @@ func (o ServiceResponseOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceResponse) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
+func (o ServiceResponseOutput) EncryptionConfig() EncryptionConfigResponseOutput {
+	return o.ApplyT(func(v ServiceResponse) EncryptionConfigResponse { return v.EncryptionConfig }).(EncryptionConfigResponseOutput)
+}
+
 // The URI of the endpoint used to access the metastore service.
 func (o ServiceResponseOutput) EndpointUri() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceResponse) string { return v.EndpointUri }).(pulumi.StringOutput)
@@ -3855,6 +4132,16 @@ func (o ServiceResponsePtrOutput) CreateTime() pulumi.StringPtrOutput {
 		}
 		return &v.CreateTime
 	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
+func (o ServiceResponsePtrOutput) EncryptionConfig() EncryptionConfigResponsePtrOutput {
+	return o.ApplyT(func(v *ServiceResponse) *EncryptionConfigResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.EncryptionConfig
+	}).(EncryptionConfigResponsePtrOutput)
 }
 
 // The URI of the endpoint used to access the metastore service.
@@ -4028,6 +4315,10 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseDumpPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseDumpResponseOutput{})
 	pulumi.RegisterOutputType(DatabaseDumpResponsePtrOutput{})
+	pulumi.RegisterOutputType(EncryptionConfigOutput{})
+	pulumi.RegisterOutputType(EncryptionConfigPtrOutput{})
+	pulumi.RegisterOutputType(EncryptionConfigResponseOutput{})
+	pulumi.RegisterOutputType(EncryptionConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})

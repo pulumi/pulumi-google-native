@@ -165,6 +165,12 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         [Output("timing")]
         public Output<ImmutableDictionary<string, string>> Timing { get; private set; } = null!;
 
+        /// <summary>
+        /// Non-fatal problems encountered during the execution of the build.
+        /// </summary>
+        [Output("warnings")]
+        public Output<ImmutableArray<Outputs.WarningResponse>> Warnings { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Build resource with the given unique name, arguments, and options.

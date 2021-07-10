@@ -74,7 +74,7 @@ func (e EntityTypeKind) ToStringPtrOutputWithContext(ctx context.Context) pulumi
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
+// The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
 type ExperimentStateEnum pulumi.String
 
 const (
@@ -86,6 +86,8 @@ const (
 	ExperimentStateEnumRunning = ExperimentStateEnum("RUNNING")
 	// The experiment is done.
 	ExperimentStateEnumDone = ExperimentStateEnum("DONE")
+	// The experiment with auto-rollout enabled has failed.
+	ExperimentStateEnumRolloutFailed = ExperimentStateEnum("ROLLOUT_FAILED")
 )
 
 func (ExperimentStateEnum) ElementType() reflect.Type {
@@ -357,7 +359,7 @@ type SecuritySettingPurgeDataTypesItem pulumi.String
 const (
 	// Unspecified. Do not use.
 	SecuritySettingPurgeDataTypesItemPurgeDataTypeUnspecified = SecuritySettingPurgeDataTypesItem("PURGE_DATA_TYPE_UNSPECIFIED")
-	// Dialogflow history. This does not include Stackdriver log, which is owned by the user not Dialogflow.
+	// Dialogflow history. This does not include Cloud logging, which is owned by the user - not Dialogflow.
 	SecuritySettingPurgeDataTypesItemDialogflowHistory = SecuritySettingPurgeDataTypesItem("DIALOGFLOW_HISTORY")
 )
 
@@ -426,7 +428,7 @@ func (o SecuritySettingPurgeDataTypesItemArrayOutput) Index(i pulumi.IntInput) p
 	}).(pulumi.StringOutput)
 }
 
-// Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
+// Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
 type SecuritySettingRedactionScope pulumi.String
 
 const (

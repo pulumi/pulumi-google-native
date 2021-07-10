@@ -131,6 +131,26 @@ export const BuildOptionsSubstitutionOption = {
  */
 export type BuildOptionsSubstitutionOption = (typeof BuildOptionsSubstitutionOption)[keyof typeof BuildOptionsSubstitutionOption];
 
+export const NetworkConfigEgressOption = {
+    /**
+     * If set, defaults to PUBLIC_EGRESS.
+     */
+    EgressOptionUnspecified: "EGRESS_OPTION_UNSPECIFIED",
+    /**
+     * If set, workers are created without any public address, which prevents network egress to public IPs unless a network proxy is configured.
+     */
+    NoPublicEgress: "NO_PUBLIC_EGRESS",
+    /**
+     * If set, workers are created with a public address which allows for public internet egress.
+     */
+    PublicEgress: "PUBLIC_EGRESS",
+} as const;
+
+/**
+ * Option to configure network egress for the workers.
+ */
+export type NetworkConfigEgressOption = (typeof NetworkConfigEgressOption)[keyof typeof NetworkConfigEgressOption];
+
 export const PubsubConfigState = {
     /**
      * The subscription configuration has not been checked.
@@ -178,3 +198,23 @@ export const PullRequestFilterCommentControl = {
  * Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
  */
 export type PullRequestFilterCommentControl = (typeof PullRequestFilterCommentControl)[keyof typeof PullRequestFilterCommentControl];
+
+export const WebhookConfigState = {
+    /**
+     * The webhook auth configuration not been checked.
+     */
+    StateUnspecified: "STATE_UNSPECIFIED",
+    /**
+     * The auth configuration is properly setup.
+     */
+    Ok: "OK",
+    /**
+     * The secret provided in auth_method has been deleted.
+     */
+    SecretDeleted: "SECRET_DELETED",
+} as const;
+
+/**
+ * Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+ */
+export type WebhookConfigState = (typeof WebhookConfigState)[keyof typeof WebhookConfigState];

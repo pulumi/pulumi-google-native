@@ -28,6 +28,22 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         /// Docker package format.
         /// </summary>
         public static RepositoryFormat Docker { get; } = new RepositoryFormat("DOCKER");
+        /// <summary>
+        /// Maven package format.
+        /// </summary>
+        public static RepositoryFormat Maven { get; } = new RepositoryFormat("MAVEN");
+        /// <summary>
+        /// NPM package format.
+        /// </summary>
+        public static RepositoryFormat Npm { get; } = new RepositoryFormat("NPM");
+        /// <summary>
+        /// PyPI package format.
+        /// </summary>
+        public static RepositoryFormat Pypi { get; } = new RepositoryFormat("PYPI");
+        /// <summary>
+        /// Python package format.
+        /// </summary>
+        public static RepositoryFormat Python { get; } = new RepositoryFormat("PYTHON");
 
         public static bool operator ==(RepositoryFormat left, RepositoryFormat right) => left.Equals(right);
         public static bool operator !=(RepositoryFormat left, RepositoryFormat right) => !left.Equals(right);

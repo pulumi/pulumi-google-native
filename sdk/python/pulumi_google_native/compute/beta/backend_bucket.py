@@ -19,6 +19,7 @@ class BackendBucketArgs:
                  project: pulumi.Input[str],
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  cdn_policy: Optional[pulumi.Input['BackendBucketCdnPolicyArgs']] = None,
+                 compression_mode: Optional[pulumi.Input['BackendBucketCompressionMode']] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
@@ -29,6 +30,7 @@ class BackendBucketArgs:
         The set of arguments for constructing a BackendBucket resource.
         :param pulumi.Input[str] bucket_name: Cloud Storage bucket name.
         :param pulumi.Input['BackendBucketCdnPolicyArgs'] cdn_policy: Cloud CDN configuration for this BackendBucket.
+        :param pulumi.Input['BackendBucketCompressionMode'] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the client when the resource is created.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendBucket.
@@ -40,6 +42,8 @@ class BackendBucketArgs:
             pulumi.set(__self__, "bucket_name", bucket_name)
         if cdn_policy is not None:
             pulumi.set(__self__, "cdn_policy", cdn_policy)
+        if compression_mode is not None:
+            pulumi.set(__self__, "compression_mode", compression_mode)
         if custom_response_headers is not None:
             pulumi.set(__self__, "custom_response_headers", custom_response_headers)
         if description is not None:
@@ -85,6 +89,18 @@ class BackendBucketArgs:
     @cdn_policy.setter
     def cdn_policy(self, value: Optional[pulumi.Input['BackendBucketCdnPolicyArgs']]):
         pulumi.set(self, "cdn_policy", value)
+
+    @property
+    @pulumi.getter(name="compressionMode")
+    def compression_mode(self) -> Optional[pulumi.Input['BackendBucketCompressionMode']]:
+        """
+        Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        """
+        return pulumi.get(self, "compression_mode")
+
+    @compression_mode.setter
+    def compression_mode(self, value: Optional[pulumi.Input['BackendBucketCompressionMode']]):
+        pulumi.set(self, "compression_mode", value)
 
     @property
     @pulumi.getter(name="customResponseHeaders")
@@ -163,6 +179,7 @@ class BackendBucket(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']]] = None,
+                 compression_mode: Optional[pulumi.Input['BackendBucketCompressionMode']] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
@@ -178,6 +195,7 @@ class BackendBucket(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket_name: Cloud Storage bucket name.
         :param pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this BackendBucket.
+        :param pulumi.Input['BackendBucketCompressionMode'] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_response_headers: Headers that the HTTP/S load balancer should add to proxied responses.
         :param pulumi.Input[str] description: An optional textual description of the resource; provided by the client when the resource is created.
         :param pulumi.Input[bool] enable_cdn: If true, enable Cloud CDN for this BackendBucket.
@@ -210,6 +228,7 @@ class BackendBucket(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  bucket_name: Optional[pulumi.Input[str]] = None,
                  cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendBucketCdnPolicyArgs']]] = None,
+                 compression_mode: Optional[pulumi.Input['BackendBucketCompressionMode']] = None,
                  custom_response_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_cdn: Optional[pulumi.Input[bool]] = None,
@@ -231,6 +250,7 @@ class BackendBucket(pulumi.CustomResource):
 
             __props__.__dict__["bucket_name"] = bucket_name
             __props__.__dict__["cdn_policy"] = cdn_policy
+            __props__.__dict__["compression_mode"] = compression_mode
             __props__.__dict__["custom_response_headers"] = custom_response_headers
             __props__.__dict__["description"] = description
             __props__.__dict__["enable_cdn"] = enable_cdn
@@ -241,6 +261,7 @@ class BackendBucket(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["edge_security_policy"] = None
             __props__.__dict__["self_link"] = None
         super(BackendBucket, __self__).__init__(
             'google-native:compute/beta:BackendBucket',
@@ -266,9 +287,11 @@ class BackendBucket(pulumi.CustomResource):
 
         __props__.__dict__["bucket_name"] = None
         __props__.__dict__["cdn_policy"] = None
+        __props__.__dict__["compression_mode"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["custom_response_headers"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["edge_security_policy"] = None
         __props__.__dict__["enable_cdn"] = None
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
@@ -290,6 +313,14 @@ class BackendBucket(pulumi.CustomResource):
         Cloud CDN configuration for this BackendBucket.
         """
         return pulumi.get(self, "cdn_policy")
+
+    @property
+    @pulumi.getter(name="compressionMode")
+    def compression_mode(self) -> pulumi.Output[str]:
+        """
+        Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        """
+        return pulumi.get(self, "compression_mode")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -314,6 +345,14 @@ class BackendBucket(pulumi.CustomResource):
         An optional textual description of the resource; provided by the client when the resource is created.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="edgeSecurityPolicy")
+    def edge_security_policy(self) -> pulumi.Output[str]:
+        """
+        The resource URL for the edge security policy associated with this backend bucket.
+        """
+        return pulumi.get(self, "edge_security_policy")
 
     @property
     @pulumi.getter(name="enableCdn")

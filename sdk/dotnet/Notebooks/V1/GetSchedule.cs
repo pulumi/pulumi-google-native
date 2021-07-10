@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens ‘-’, and underscores ‘_’.
+        /// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens '-', and underscores '_'.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>

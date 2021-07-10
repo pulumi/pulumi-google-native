@@ -35,9 +35,7 @@ type LookupInstanceTemplateResult struct {
 	Properties InstancePropertiesResponse `pulumi:"properties"`
 	// The URL for this instance template. The server defines this URL.
 	SelfLink string `pulumi:"selfLink"`
-	// The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values:
-	// - https://www.googleapis.com/compute/v1/projects/project/zones/zone/instances/instance
-	// - projects/project/zones/zone/instances/instance
+	// The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
 	SourceInstance string `pulumi:"sourceInstance"`
 	// The source instance params to use to create this instance template.
 	SourceInstanceParams SourceInstanceParamsResponse `pulumi:"sourceInstanceParams"`

@@ -23,8 +23,7 @@ type Router struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
-	// Not currently available in all Interconnect locations.
+	// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). Not currently available publicly.
 	EncryptedInterconnectRouter pulumi.BoolOutput `pulumi:"encryptedInterconnectRouter"`
 	// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
 	Interfaces RouterInterfaceResponseArrayOutput `pulumi:"interfaces"`
@@ -87,8 +86,7 @@ type routerState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
-	// Not currently available in all Interconnect locations.
+	// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). Not currently available publicly.
 	EncryptedInterconnectRouter *bool `pulumi:"encryptedInterconnectRouter"`
 	// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
 	Interfaces []RouterInterfaceResponse `pulumi:"interfaces"`
@@ -117,8 +115,7 @@ type RouterState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
-	// Not currently available in all Interconnect locations.
+	// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). Not currently available publicly.
 	EncryptedInterconnectRouter pulumi.BoolPtrInput
 	// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
 	Interfaces RouterInterfaceResponseArrayInput
@@ -149,8 +146,7 @@ type routerArgs struct {
 	BgpPeers []RouterBgpPeer `pulumi:"bgpPeers"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
-	// Not currently available in all Interconnect locations.
+	// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). Not currently available publicly.
 	EncryptedInterconnectRouter *bool `pulumi:"encryptedInterconnectRouter"`
 	// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
 	Interfaces []RouterInterface `pulumi:"interfaces"`
@@ -173,8 +169,7 @@ type RouterArgs struct {
 	BgpPeers RouterBgpPeerArrayInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// Field to indicate if a router is dedicated to use with encrypted Interconnect Attachment (IPsec-encrypted Cloud Interconnect feature).
-	// Not currently available in all Interconnect locations.
+	// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). Not currently available publicly.
 	EncryptedInterconnectRouter pulumi.BoolPtrInput
 	// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
 	Interfaces RouterInterfaceArrayInput

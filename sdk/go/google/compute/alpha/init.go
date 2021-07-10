@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BackendBucketIamPolicy{}
 	case "google-native:compute/alpha:BackendService":
 		r = &BackendService{}
+	case "google-native:compute/alpha:BackendServiceIamPolicy":
+		r = &BackendServiceIamPolicy{}
 	case "google-native:compute/alpha:Disk":
 		r = &Disk{}
 	case "google-native:compute/alpha:DiskIamPolicy":
@@ -45,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FirewallPolicyIamPolicy{}
 	case "google-native:compute/alpha:ForwardingRule":
 		r = &ForwardingRule{}
+	case "google-native:compute/alpha:FutureReservation":
+		r = &FutureReservation{}
 	case "google-native:compute/alpha:GlobalAddress":
 		r = &GlobalAddress{}
 	case "google-native:compute/alpha:GlobalForwardingRule":
@@ -95,6 +99,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &MachineImageIamPolicy{}
 	case "google-native:compute/alpha:Network":
 		r = &Network{}
+	case "google-native:compute/alpha:NetworkEdgeSecurityService":
+		r = &NetworkEdgeSecurityService{}
 	case "google-native:compute/alpha:NetworkEndpointGroup":
 		r = &NetworkEndpointGroup{}
 	case "google-native:compute/alpha:NetworkFirewallPolicy":
@@ -121,6 +127,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionAutoscaler{}
 	case "google-native:compute/alpha:RegionBackendService":
 		r = &RegionBackendService{}
+	case "google-native:compute/alpha:RegionBackendServiceIamPolicy":
+		r = &RegionBackendServiceIamPolicy{}
 	case "google-native:compute/alpha:RegionCommitment":
 		r = &RegionCommitment{}
 	case "google-native:compute/alpha:RegionDisk":
@@ -149,6 +157,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionNetworkFirewallPolicyIamPolicy{}
 	case "google-native:compute/alpha:RegionNotificationEndpoint":
 		r = &RegionNotificationEndpoint{}
+	case "google-native:compute/alpha:RegionSecurityPolicy":
+		r = &RegionSecurityPolicy{}
 	case "google-native:compute/alpha:RegionSslCertificate":
 		r = &RegionSslCertificate{}
 	case "google-native:compute/alpha:RegionTargetHttpProxy":

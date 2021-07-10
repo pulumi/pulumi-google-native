@@ -8,7 +8,9 @@ import * as utilities from "../../utilities";
 export * from "./build";
 export * from "./getBuild";
 export * from "./getTrigger";
+export * from "./getWorkerPool";
 export * from "./trigger";
+export * from "./workerPool";
 
 // Export enums:
 export * from "../../types/enums/cloudbuild/v1";
@@ -16,6 +18,7 @@ export * from "../../types/enums/cloudbuild/v1";
 // Import resources to register:
 import { Build } from "./build";
 import { Trigger } from "./trigger";
+import { WorkerPool } from "./workerPool";
 
 const _module = {
     version: utilities.getVersion(),
@@ -25,6 +28,8 @@ const _module = {
                 return new Build(name, <any>undefined, { urn })
             case "google-native:cloudbuild/v1:Trigger":
                 return new Trigger(name, <any>undefined, { urn })
+            case "google-native:cloudbuild/v1:WorkerPool":
+                return new WorkerPool(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

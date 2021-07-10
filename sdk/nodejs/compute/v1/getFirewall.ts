@@ -69,12 +69,7 @@ export interface GetFirewallResult {
      */
     readonly name: string;
     /**
-     * URL of the network resource for this firewall rule. If not specified when creating a firewall rule, the default network is used:
-     * global/networks/default
-     * If you choose to specify this field, you can specify the network as a full or partial URL. For example, the following are all valid URLs:  
-     * - https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network 
-     * - projects/myproject/global/networks/my-network 
-     * - global/networks/default
+     * URL of the network resource for this firewall rule. If not specified when creating a firewall rule, the default network is used: global/networks/default If you choose to specify this field, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network - projects/myproject/global/networks/my-network - global/networks/default 
      */
     readonly network: string;
     /**

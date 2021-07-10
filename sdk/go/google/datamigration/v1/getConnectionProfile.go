@@ -36,7 +36,7 @@ type LookupConnectionProfileResult struct {
 	Labels map[string]string `pulumi:"labels"`
 	// A MySQL database connection profile.
 	Mysql MySqlConnectionProfileResponse `pulumi:"mysql"`
-	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
+	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{instance}.
 	Name string `pulumi:"name"`
 	// A PostgreSQL database connection profile.
 	Postgresql PostgreSqlConnectionProfileResponse `pulumi:"postgresql"`

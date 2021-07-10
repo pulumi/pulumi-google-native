@@ -32,6 +32,10 @@ namespace Pulumi.GoogleNative.DataFusion.V1
         /// Cloud Healthcare accelerator for CDF. This accelerator is to enable Cloud Healthcare specific CDF plugins developed by Healthcare team.
         /// </summary>
         public static AcceleratorAcceleratorType Healthcare { get; } = new AcceleratorAcceleratorType("HEALTHCARE");
+        /// <summary>
+        /// Contact Center AI Insights This accelerator is used to enable import and export pipelines custom built to streamline CCAI Insights processing.
+        /// </summary>
+        public static AcceleratorAcceleratorType CcaiInsights { get; } = new AcceleratorAcceleratorType("CCAI_INSIGHTS");
 
         public static bool operator ==(AcceleratorAcceleratorType left, AcceleratorAcceleratorType right) => left.Equals(right);
         public static bool operator !=(AcceleratorAcceleratorType left, AcceleratorAcceleratorType right) => !left.Equals(right);

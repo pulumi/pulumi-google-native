@@ -26,6 +26,7 @@ class FhirStoreArgs:
                  fhir_store_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  notification_config: Optional[pulumi.Input['NotificationConfigArgs']] = None,
+                 search_config: Optional[pulumi.Input['SearchConfigArgs']] = None,
                  stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input['StreamConfigArgs']]]] = None,
                  validation_config: Optional[pulumi.Input['ValidationConfigArgs']] = None,
                  version: Optional[pulumi.Input['FhirStoreVersion']] = None):
@@ -37,6 +38,7 @@ class FhirStoreArgs:
         :param pulumi.Input[bool] enable_update_create: Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if the client can use an Update operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent resource return errors. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
         :param pulumi.Input['NotificationConfigArgs'] notification_config: If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+        :param pulumi.Input['SearchConfigArgs'] search_config: Configuration for how FHIR resource can be searched.
         :param pulumi.Input[Sequence[pulumi.Input['StreamConfigArgs']]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
         :param pulumi.Input['ValidationConfigArgs'] validation_config: Configuration for how to validate incoming FHIR resources against configured profiles.
         :param pulumi.Input['FhirStoreVersion'] version: Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
@@ -58,6 +60,8 @@ class FhirStoreArgs:
             pulumi.set(__self__, "labels", labels)
         if notification_config is not None:
             pulumi.set(__self__, "notification_config", notification_config)
+        if search_config is not None:
+            pulumi.set(__self__, "search_config", search_config)
         if stream_configs is not None:
             pulumi.set(__self__, "stream_configs", stream_configs)
         if validation_config is not None:
@@ -174,6 +178,18 @@ class FhirStoreArgs:
         pulumi.set(self, "notification_config", value)
 
     @property
+    @pulumi.getter(name="searchConfig")
+    def search_config(self) -> Optional[pulumi.Input['SearchConfigArgs']]:
+        """
+        Configuration for how FHIR resource can be searched.
+        """
+        return pulumi.get(self, "search_config")
+
+    @search_config.setter
+    def search_config(self, value: Optional[pulumi.Input['SearchConfigArgs']]):
+        pulumi.set(self, "search_config", value)
+
+    @property
     @pulumi.getter(name="streamConfigs")
     def stream_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['StreamConfigArgs']]]]:
         """
@@ -225,6 +241,7 @@ class FhirStore(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 search_config: Optional[pulumi.Input[pulumi.InputType['SearchConfigArgs']]] = None,
                  stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StreamConfigArgs']]]]] = None,
                  validation_config: Optional[pulumi.Input[pulumi.InputType['ValidationConfigArgs']]] = None,
                  version: Optional[pulumi.Input['FhirStoreVersion']] = None,
@@ -240,6 +257,7 @@ class FhirStore(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_update_create: Whether this FHIR store has the [updateCreate capability](https://www.hl7.org/fhir/capabilitystatement-definitions.html#CapabilityStatement.rest.resource.updateCreate). This determines if the client can use an Update operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through the Create operation and attempts to update a non-existent resource return errors. It is strongly advised not to include or encode any sensitive data such as patient identifiers in client-specified resource IDs. Those IDs are part of the FHIR resource path recorded in Cloud audit logs and Pub/Sub notifications. Those IDs can also be contained in reference fields within other resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: User-supplied key-value pairs used to organize FHIR stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
         :param pulumi.Input[pulumi.InputType['NotificationConfigArgs']] notification_config: If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
+        :param pulumi.Input[pulumi.InputType['SearchConfigArgs']] search_config: Configuration for how FHIR resource can be searched.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StreamConfigArgs']]]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
         :param pulumi.Input[pulumi.InputType['ValidationConfigArgs']] validation_config: Configuration for how to validate incoming FHIR resources against configured profiles.
         :param pulumi.Input['FhirStoreVersion'] version: Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
@@ -278,6 +296,7 @@ class FhirStore(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[pulumi.InputType['NotificationConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 search_config: Optional[pulumi.Input[pulumi.InputType['SearchConfigArgs']]] = None,
                  stream_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['StreamConfigArgs']]]]] = None,
                  validation_config: Optional[pulumi.Input[pulumi.InputType['ValidationConfigArgs']]] = None,
                  version: Optional[pulumi.Input['FhirStoreVersion']] = None,
@@ -309,6 +328,7 @@ class FhirStore(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["search_config"] = search_config
             __props__.__dict__["stream_configs"] = stream_configs
             __props__.__dict__["validation_config"] = validation_config
             __props__.__dict__["version"] = version
@@ -342,6 +362,7 @@ class FhirStore(pulumi.CustomResource):
         __props__.__dict__["labels"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["notification_config"] = None
+        __props__.__dict__["search_config"] = None
         __props__.__dict__["stream_configs"] = None
         __props__.__dict__["validation_config"] = None
         __props__.__dict__["version"] = None
@@ -402,6 +423,14 @@ class FhirStore(pulumi.CustomResource):
         If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
         """
         return pulumi.get(self, "notification_config")
+
+    @property
+    @pulumi.getter(name="searchConfig")
+    def search_config(self) -> pulumi.Output['outputs.SearchConfigResponse']:
+        """
+        Configuration for how FHIR resource can be searched.
+        """
+        return pulumi.get(self, "search_config")
 
     @property
     @pulumi.getter(name="streamConfigs")

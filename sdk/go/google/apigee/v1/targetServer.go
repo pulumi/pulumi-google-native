@@ -25,6 +25,8 @@ type TargetServer struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
 	Port pulumi.IntOutput `pulumi:"port"`
+	// Immutable. The protocol used by this TargetServer.
+	Protocol pulumi.StringOutput `pulumi:"protocol"`
 	// Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
 	SSLInfo GoogleCloudApigeeV1TlsInfoResponseOutput `pulumi:"sSLInfo"`
 }
@@ -83,6 +85,8 @@ type targetServerState struct {
 	Name *string `pulumi:"name"`
 	// The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
 	Port *int `pulumi:"port"`
+	// Immutable. The protocol used by this TargetServer.
+	Protocol *string `pulumi:"protocol"`
 	// Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
 	SSLInfo *GoogleCloudApigeeV1TlsInfoResponse `pulumi:"sSLInfo"`
 }
@@ -98,6 +102,8 @@ type TargetServerState struct {
 	Name pulumi.StringPtrInput
 	// The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
 	Port pulumi.IntPtrInput
+	// Immutable. The protocol used by this TargetServer.
+	Protocol pulumi.StringPtrInput
 	// Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
 	SSLInfo GoogleCloudApigeeV1TlsInfoResponsePtrInput
 }
@@ -119,6 +125,8 @@ type targetServerArgs struct {
 	OrganizationId string `pulumi:"organizationId"`
 	// The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
 	Port int `pulumi:"port"`
+	// Immutable. The protocol used by this TargetServer.
+	Protocol *string `pulumi:"protocol"`
 	// Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
 	SSLInfo *GoogleCloudApigeeV1TlsInfo `pulumi:"sSLInfo"`
 }
@@ -137,6 +145,8 @@ type TargetServerArgs struct {
 	OrganizationId pulumi.StringInput
 	// The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
 	Port pulumi.IntInput
+	// Immutable. The protocol used by this TargetServer.
+	Protocol *TargetServerProtocol
 	// Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
 	SSLInfo GoogleCloudApigeeV1TlsInfoPtrInput
 }

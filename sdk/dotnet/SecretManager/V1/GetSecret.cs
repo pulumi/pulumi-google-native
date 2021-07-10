@@ -41,6 +41,10 @@ namespace Pulumi.GoogleNative.SecretManager.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
+        /// Optional. Etag of the currently stored Secret.
+        /// </summary>
+        public readonly string Etag;
+        /// <summary>
         /// Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
         /// </summary>
         public readonly string ExpireTime;
@@ -73,6 +77,8 @@ namespace Pulumi.GoogleNative.SecretManager.V1
         private GetSecretResult(
             string createTime,
 
+            string etag,
+
             string expireTime,
 
             ImmutableDictionary<string, string> labels,
@@ -88,6 +94,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1
             string ttl)
         {
             CreateTime = createTime;
+            Etag = etag;
             ExpireTime = expireTime;
             Labels = labels;
             Name = name;

@@ -14,9 +14,11 @@ __all__ = [
     'AuditLogConfigArgs',
     'AuthorityArgs',
     'BindingArgs',
+    'CommonFeatureSpecArgs',
     'ExprArgs',
     'GkeClusterArgs',
     'MembershipEndpointArgs',
+    'MultiClusterIngressFeatureSpecArgs',
 ]
 
 @pulumi.input_type
@@ -102,13 +104,17 @@ class AuditLogConfigArgs:
 @pulumi.input_type
 class AuthorityArgs:
     def __init__(__self__, *,
-                 issuer: Optional[pulumi.Input[str]] = None):
+                 issuer: Optional[pulumi.Input[str]] = None,
+                 oidc_jwks: Optional[pulumi.Input[str]] = None):
         """
         Authority encodes how Google will recognize identities from this Membership. See the workload identity documentation for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
         :param pulumi.Input[str] issuer: Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with length <2000 characters. If set, then Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate tokens from the issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload Identity).
+        :param pulumi.Input[str] oidc_jwks: Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field.
         """
         if issuer is not None:
             pulumi.set(__self__, "issuer", issuer)
+        if oidc_jwks is not None:
+            pulumi.set(__self__, "oidc_jwks", oidc_jwks)
 
     @property
     @pulumi.getter
@@ -121,6 +127,18 @@ class AuthorityArgs:
     @issuer.setter
     def issuer(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "issuer", value)
+
+    @property
+    @pulumi.getter(name="oidcJwks")
+    def oidc_jwks(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field.
+        """
+        return pulumi.get(self, "oidc_jwks")
+
+    @oidc_jwks.setter
+    def oidc_jwks(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "oidc_jwks", value)
 
 
 @pulumi.input_type
@@ -177,6 +195,30 @@ class BindingArgs:
     @role.setter
     def role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role", value)
+
+
+@pulumi.input_type
+class CommonFeatureSpecArgs:
+    def __init__(__self__, *,
+                 multiclusteringress: Optional[pulumi.Input['MultiClusterIngressFeatureSpecArgs']] = None):
+        """
+        CommonFeatureSpec contains Hub-wide configuration information
+        :param pulumi.Input['MultiClusterIngressFeatureSpecArgs'] multiclusteringress: Multicluster Ingress-specific spec.
+        """
+        if multiclusteringress is not None:
+            pulumi.set(__self__, "multiclusteringress", multiclusteringress)
+
+    @property
+    @pulumi.getter
+    def multiclusteringress(self) -> Optional[pulumi.Input['MultiClusterIngressFeatureSpecArgs']]:
+        """
+        Multicluster Ingress-specific spec.
+        """
+        return pulumi.get(self, "multiclusteringress")
+
+    @multiclusteringress.setter
+    def multiclusteringress(self, value: Optional[pulumi.Input['MultiClusterIngressFeatureSpecArgs']]):
+        pulumi.set(self, "multiclusteringress", value)
 
 
 @pulumi.input_type
@@ -297,5 +339,29 @@ class MembershipEndpointArgs:
     @gke_cluster.setter
     def gke_cluster(self, value: Optional[pulumi.Input['GkeClusterArgs']]):
         pulumi.set(self, "gke_cluster", value)
+
+
+@pulumi.input_type
+class MultiClusterIngressFeatureSpecArgs:
+    def __init__(__self__, *,
+                 config_membership: Optional[pulumi.Input[str]] = None):
+        """
+        **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
+        :param pulumi.Input[str] config_membership: Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+        """
+        if config_membership is not None:
+            pulumi.set(__self__, "config_membership", config_membership)
+
+    @property
+    @pulumi.getter(name="configMembership")
+    def config_membership(self) -> Optional[pulumi.Input[str]]:
+        """
+        Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
+        """
+        return pulumi.get(self, "config_membership")
+
+    @config_membership.setter
+    def config_membership(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config_membership", value)
 
 

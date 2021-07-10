@@ -35,14 +35,8 @@ class NodeTemplateArgs:
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_affinity_labels: Labels to use for node affinity, which will be used in instance scheduling.
         :param pulumi.Input[str] node_type: The node type to use for nodes group that are created from this template.
-        :param pulumi.Input['NodeTemplateNodeTypeFlexibilityArgs'] node_type_flexibility: The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
-               
-               This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
-        :param pulumi.Input['ServerBindingArgs'] server_binding: Sets the binding properties for the physical server. Valid values include:  
-               - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server 
-               - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible  
-               
-               See Sole-tenant node options for more information.
+        :param pulumi.Input['NodeTemplateNodeTypeFlexibilityArgs'] node_type_flexibility: The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+        :param pulumi.Input['ServerBindingArgs'] server_binding: Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information.
         """
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "region", region)
@@ -167,9 +161,7 @@ class NodeTemplateArgs:
     @pulumi.getter(name="nodeTypeFlexibility")
     def node_type_flexibility(self) -> Optional[pulumi.Input['NodeTemplateNodeTypeFlexibilityArgs']]:
         """
-        The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
-
-        This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+        The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
         """
         return pulumi.get(self, "node_type_flexibility")
 
@@ -190,11 +182,7 @@ class NodeTemplateArgs:
     @pulumi.getter(name="serverBinding")
     def server_binding(self) -> Optional[pulumi.Input['ServerBindingArgs']]:
         """
-        Sets the binding properties for the physical server. Valid values include:  
-        - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server 
-        - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible  
-
-        See Sole-tenant node options for more information.
+        Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information.
         """
         return pulumi.get(self, "server_binding")
 
@@ -231,14 +219,8 @@ class NodeTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_affinity_labels: Labels to use for node affinity, which will be used in instance scheduling.
         :param pulumi.Input[str] node_type: The node type to use for nodes group that are created from this template.
-        :param pulumi.Input[pulumi.InputType['NodeTemplateNodeTypeFlexibilityArgs']] node_type_flexibility: The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
-               
-               This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
-        :param pulumi.Input[pulumi.InputType['ServerBindingArgs']] server_binding: Sets the binding properties for the physical server. Valid values include:  
-               - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server 
-               - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible  
-               
-               See Sole-tenant node options for more information.
+        :param pulumi.Input[pulumi.InputType['NodeTemplateNodeTypeFlexibilityArgs']] node_type_flexibility: The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+        :param pulumi.Input[pulumi.InputType['ServerBindingArgs']] server_binding: Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information.
         """
         ...
     @overload
@@ -420,9 +402,7 @@ class NodeTemplate(pulumi.CustomResource):
     @pulumi.getter(name="nodeTypeFlexibility")
     def node_type_flexibility(self) -> pulumi.Output['outputs.NodeTemplateNodeTypeFlexibilityResponse']:
         """
-        The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.
-
-        This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
+        The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties. This field is mutually exclusive with the node_type property; you can only define one or the other, but not both.
         """
         return pulumi.get(self, "node_type_flexibility")
 
@@ -454,11 +434,7 @@ class NodeTemplate(pulumi.CustomResource):
     @pulumi.getter(name="serverBinding")
     def server_binding(self) -> pulumi.Output['outputs.ServerBindingResponse']:
         """
-        Sets the binding properties for the physical server. Valid values include:  
-        - [Default] RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server 
-        - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible  
-
-        See Sole-tenant node options for more information.
+        Sets the binding properties for the physical server. Valid values include: - *[Default]* RESTART_NODE_ON_ANY_SERVER: Restarts VMs on any available physical server - RESTART_NODE_ON_MINIMAL_SERVER: Restarts VMs on the same physical server whenever possible See Sole-tenant node options for more information.
         """
         return pulumi.get(self, "server_binding")
 

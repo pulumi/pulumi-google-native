@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<string>? RedundantInterface { get; set; }
 
         /// <summary>
-        /// The URL of the subnetwork resource that this interface belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here.
+        /// The URI of the subnetwork resource that this interface belongs to, which must be in the same region as the Cloud Router. When you establish a BGP session to a VM instance using this interface, the VM instance must belong to the same subnetwork as the subnetwork specified here.
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }

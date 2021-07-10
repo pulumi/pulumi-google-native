@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class SecurityPolicyRuleHttpHeaderActionResponse
     {
         /// <summary>
-        /// The list of request headers to add or overwrite if they?re already present.
+        /// The list of request headers to add or overwrite if they're already present.
         /// </summary>
         public readonly ImmutableArray<Outputs.SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionResponse> RequestHeadersToAdds;
 

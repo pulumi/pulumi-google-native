@@ -682,7 +682,7 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	}).(BindingResponseOutput)
 }
 
-// Spec for Audit Logging Allowlisting.
+// **Cloud Audit Logging**: Spec for Audit Logging Allowlisting.
 type CloudAuditLoggingFeatureSpec struct {
 	// Service account that should be allowlisted to send the audit logs; eg cloudauditlogging@gcp-project.iam.gserviceaccount.com. These accounts must already exist, but do not need to have any permissions granted to them. The customer's entitlements will be checked prior to allowlisting (i.e. the customer must be an Anthos customer.)
 	AllowlistedServiceAccounts []string `pulumi:"allowlistedServiceAccounts"`
@@ -699,7 +699,7 @@ type CloudAuditLoggingFeatureSpecInput interface {
 	ToCloudAuditLoggingFeatureSpecOutputWithContext(context.Context) CloudAuditLoggingFeatureSpecOutput
 }
 
-// Spec for Audit Logging Allowlisting.
+// **Cloud Audit Logging**: Spec for Audit Logging Allowlisting.
 type CloudAuditLoggingFeatureSpecArgs struct {
 	// Service account that should be allowlisted to send the audit logs; eg cloudauditlogging@gcp-project.iam.gserviceaccount.com. These accounts must already exist, but do not need to have any permissions granted to them. The customer's entitlements will be checked prior to allowlisting (i.e. the customer must be an Anthos customer.)
 	AllowlistedServiceAccounts pulumi.StringArrayInput `pulumi:"allowlistedServiceAccounts"`
@@ -758,7 +758,7 @@ func (i *cloudAuditLoggingFeatureSpecPtrType) ToCloudAuditLoggingFeatureSpecPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(CloudAuditLoggingFeatureSpecPtrOutput)
 }
 
-// Spec for Audit Logging Allowlisting.
+// **Cloud Audit Logging**: Spec for Audit Logging Allowlisting.
 type CloudAuditLoggingFeatureSpecOutput struct{ *pulumi.OutputState }
 
 func (CloudAuditLoggingFeatureSpecOutput) ElementType() reflect.Type {
@@ -816,7 +816,7 @@ func (o CloudAuditLoggingFeatureSpecPtrOutput) AllowlistedServiceAccounts() pulu
 	}).(pulumi.StringArrayOutput)
 }
 
-// Spec for Audit Logging Allowlisting.
+// **Cloud Audit Logging**: Spec for Audit Logging Allowlisting.
 type CloudAuditLoggingFeatureSpecResponse struct {
 	// Service account that should be allowlisted to send the audit logs; eg cloudauditlogging@gcp-project.iam.gserviceaccount.com. These accounts must already exist, but do not need to have any permissions granted to them. The customer's entitlements will be checked prior to allowlisting (i.e. the customer must be an Anthos customer.)
 	AllowlistedServiceAccounts []string `pulumi:"allowlistedServiceAccounts"`
@@ -833,7 +833,7 @@ type CloudAuditLoggingFeatureSpecResponseInput interface {
 	ToCloudAuditLoggingFeatureSpecResponseOutputWithContext(context.Context) CloudAuditLoggingFeatureSpecResponseOutput
 }
 
-// Spec for Audit Logging Allowlisting.
+// **Cloud Audit Logging**: Spec for Audit Logging Allowlisting.
 type CloudAuditLoggingFeatureSpecResponseArgs struct {
 	// Service account that should be allowlisted to send the audit logs; eg cloudauditlogging@gcp-project.iam.gserviceaccount.com. These accounts must already exist, but do not need to have any permissions granted to them. The customer's entitlements will be checked prior to allowlisting (i.e. the customer must be an Anthos customer.)
 	AllowlistedServiceAccounts pulumi.StringArrayInput `pulumi:"allowlistedServiceAccounts"`
@@ -892,7 +892,7 @@ func (i *cloudAuditLoggingFeatureSpecResponsePtrType) ToCloudAuditLoggingFeature
 	return pulumi.ToOutputWithContext(ctx, i).(CloudAuditLoggingFeatureSpecResponsePtrOutput)
 }
 
-// Spec for Audit Logging Allowlisting.
+// **Cloud Audit Logging**: Spec for Audit Logging Allowlisting.
 type CloudAuditLoggingFeatureSpecResponseOutput struct{ *pulumi.OutputState }
 
 func (CloudAuditLoggingFeatureSpecResponseOutput) ElementType() reflect.Type {
@@ -1988,8 +1988,10 @@ func (o FeatureStateResponsePtrOutput) UpdateTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// FeatureSpec contains the input for the MultiClusterIngress feature.
+// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
 type MultiClusterIngressFeatureSpec struct {
+	// Customer's billing structure
+	Billing *string `pulumi:"billing"`
 	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
 	ConfigMembership *string `pulumi:"configMembership"`
 }
@@ -2005,8 +2007,10 @@ type MultiClusterIngressFeatureSpecInput interface {
 	ToMultiClusterIngressFeatureSpecOutputWithContext(context.Context) MultiClusterIngressFeatureSpecOutput
 }
 
-// FeatureSpec contains the input for the MultiClusterIngress feature.
+// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
 type MultiClusterIngressFeatureSpecArgs struct {
+	// Customer's billing structure
+	Billing *MultiClusterIngressFeatureSpecBilling `pulumi:"billing"`
 	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
 	ConfigMembership pulumi.StringPtrInput `pulumi:"configMembership"`
 }
@@ -2064,7 +2068,7 @@ func (i *multiClusterIngressFeatureSpecPtrType) ToMultiClusterIngressFeatureSpec
 	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterIngressFeatureSpecPtrOutput)
 }
 
-// FeatureSpec contains the input for the MultiClusterIngress feature.
+// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
 type MultiClusterIngressFeatureSpecOutput struct{ *pulumi.OutputState }
 
 func (MultiClusterIngressFeatureSpecOutput) ElementType() reflect.Type {
@@ -2087,6 +2091,11 @@ func (o MultiClusterIngressFeatureSpecOutput) ToMultiClusterIngressFeatureSpecPt
 	return o.ApplyT(func(v MultiClusterIngressFeatureSpec) *MultiClusterIngressFeatureSpec {
 		return &v
 	}).(MultiClusterIngressFeatureSpecPtrOutput)
+}
+
+// Customer's billing structure
+func (o MultiClusterIngressFeatureSpecOutput) Billing() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MultiClusterIngressFeatureSpec) *string { return v.Billing }).(pulumi.StringPtrOutput)
 }
 
 // Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
@@ -2112,6 +2121,16 @@ func (o MultiClusterIngressFeatureSpecPtrOutput) Elem() MultiClusterIngressFeatu
 	return o.ApplyT(func(v *MultiClusterIngressFeatureSpec) MultiClusterIngressFeatureSpec { return *v }).(MultiClusterIngressFeatureSpecOutput)
 }
 
+// Customer's billing structure
+func (o MultiClusterIngressFeatureSpecPtrOutput) Billing() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultiClusterIngressFeatureSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Billing
+	}).(pulumi.StringPtrOutput)
+}
+
 // Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
 func (o MultiClusterIngressFeatureSpecPtrOutput) ConfigMembership() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MultiClusterIngressFeatureSpec) *string {
@@ -2122,8 +2141,10 @@ func (o MultiClusterIngressFeatureSpecPtrOutput) ConfigMembership() pulumi.Strin
 	}).(pulumi.StringPtrOutput)
 }
 
-// FeatureSpec contains the input for the MultiClusterIngress feature.
+// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
 type MultiClusterIngressFeatureSpecResponse struct {
+	// Customer's billing structure
+	Billing string `pulumi:"billing"`
 	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
 	ConfigMembership string `pulumi:"configMembership"`
 }
@@ -2139,8 +2160,10 @@ type MultiClusterIngressFeatureSpecResponseInput interface {
 	ToMultiClusterIngressFeatureSpecResponseOutputWithContext(context.Context) MultiClusterIngressFeatureSpecResponseOutput
 }
 
-// FeatureSpec contains the input for the MultiClusterIngress feature.
+// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
 type MultiClusterIngressFeatureSpecResponseArgs struct {
+	// Customer's billing structure
+	Billing pulumi.StringInput `pulumi:"billing"`
 	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
 	ConfigMembership pulumi.StringInput `pulumi:"configMembership"`
 }
@@ -2198,7 +2221,7 @@ func (i *multiClusterIngressFeatureSpecResponsePtrType) ToMultiClusterIngressFea
 	return pulumi.ToOutputWithContext(ctx, i).(MultiClusterIngressFeatureSpecResponsePtrOutput)
 }
 
-// FeatureSpec contains the input for the MultiClusterIngress feature.
+// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
 type MultiClusterIngressFeatureSpecResponseOutput struct{ *pulumi.OutputState }
 
 func (MultiClusterIngressFeatureSpecResponseOutput) ElementType() reflect.Type {
@@ -2223,6 +2246,11 @@ func (o MultiClusterIngressFeatureSpecResponseOutput) ToMultiClusterIngressFeatu
 	}).(MultiClusterIngressFeatureSpecResponsePtrOutput)
 }
 
+// Customer's billing structure
+func (o MultiClusterIngressFeatureSpecResponseOutput) Billing() pulumi.StringOutput {
+	return o.ApplyT(func(v MultiClusterIngressFeatureSpecResponse) string { return v.Billing }).(pulumi.StringOutput)
+}
+
 // Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
 func (o MultiClusterIngressFeatureSpecResponseOutput) ConfigMembership() pulumi.StringOutput {
 	return o.ApplyT(func(v MultiClusterIngressFeatureSpecResponse) string { return v.ConfigMembership }).(pulumi.StringOutput)
@@ -2244,6 +2272,16 @@ func (o MultiClusterIngressFeatureSpecResponsePtrOutput) ToMultiClusterIngressFe
 
 func (o MultiClusterIngressFeatureSpecResponsePtrOutput) Elem() MultiClusterIngressFeatureSpecResponseOutput {
 	return o.ApplyT(func(v *MultiClusterIngressFeatureSpecResponse) MultiClusterIngressFeatureSpecResponse { return *v }).(MultiClusterIngressFeatureSpecResponseOutput)
+}
+
+// Customer's billing structure
+func (o MultiClusterIngressFeatureSpecResponsePtrOutput) Billing() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MultiClusterIngressFeatureSpecResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Billing
+	}).(pulumi.StringPtrOutput)
 }
 
 // Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
@@ -2458,7 +2496,7 @@ func (o ServiceMeshAnalysisMessageResponseArrayOutput) Index(i pulumi.IntInput) 
 	}).(ServiceMeshAnalysisMessageResponseOutput)
 }
 
-// FeatureState describes the state of the Service Mesh Hub Feature as analyzed by the Service Mesh Hub Controller, for the whole Hub.
+// **Service Mesh**: State for the whole Hub, as analyzed by the Service Mesh Hub Controller.
 type ServiceMeshFeatureStateResponse struct {
 	// Results of running Service Mesh analyzers.
 	AnalysisMessages []ServiceMeshAnalysisMessageResponse `pulumi:"analysisMessages"`
@@ -2475,7 +2513,7 @@ type ServiceMeshFeatureStateResponseInput interface {
 	ToServiceMeshFeatureStateResponseOutputWithContext(context.Context) ServiceMeshFeatureStateResponseOutput
 }
 
-// FeatureState describes the state of the Service Mesh Hub Feature as analyzed by the Service Mesh Hub Controller, for the whole Hub.
+// **Service Mesh**: State for the whole Hub, as analyzed by the Service Mesh Hub Controller.
 type ServiceMeshFeatureStateResponseArgs struct {
 	// Results of running Service Mesh analyzers.
 	AnalysisMessages ServiceMeshAnalysisMessageResponseArrayInput `pulumi:"analysisMessages"`
@@ -2534,7 +2572,7 @@ func (i *serviceMeshFeatureStateResponsePtrType) ToServiceMeshFeatureStateRespon
 	return pulumi.ToOutputWithContext(ctx, i).(ServiceMeshFeatureStateResponsePtrOutput)
 }
 
-// FeatureState describes the state of the Service Mesh Hub Feature as analyzed by the Service Mesh Hub Controller, for the whole Hub.
+// **Service Mesh**: State for the whole Hub, as analyzed by the Service Mesh Hub Controller.
 type ServiceMeshFeatureStateResponseOutput struct{ *pulumi.OutputState }
 
 func (ServiceMeshFeatureStateResponseOutput) ElementType() reflect.Type {

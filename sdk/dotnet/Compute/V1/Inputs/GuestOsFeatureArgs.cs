@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     public sealed class GuestOsFeatureArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of a supported feature. Read  Enabling guest operating system features to see a list of available options.
+        /// The ID of a supported feature. Read Enabling guest operating system features to see a list of available options.
         /// </summary>
         [Input("type")]
         public Input<Pulumi.GoogleNative.Compute.V1.GuestOsFeatureType>? Type { get; set; }

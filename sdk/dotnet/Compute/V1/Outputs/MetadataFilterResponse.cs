@@ -14,15 +14,11 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     public sealed class MetadataFilterResponse
     {
         /// <summary>
-        /// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria 
-        /// This list must not be empty and can have at the most 64 entries.
+        /// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list must not be empty and can have at the most 64 entries.
         /// </summary>
         public readonly ImmutableArray<Outputs.MetadataFilterLabelMatchResponse> FilterLabels;
         /// <summary>
-        /// Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match.
-        /// Supported values are:  
-        /// - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata. 
-        /// - MATCH_ALL: All filterLabels must have matching labels in the provided metadata.
+        /// Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match. Supported values are: - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: All filterLabels must have matching labels in the provided metadata. 
         /// </summary>
         public readonly string FilterMatchCriteria;
 

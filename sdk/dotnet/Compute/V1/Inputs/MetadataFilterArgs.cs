@@ -11,9 +11,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
 {
 
     /// <summary>
-    /// Opaque filter criteria used by loadbalancers to restrict routing configuration to a limited set of loadbalancing proxies. Proxies and sidecars involved in loadbalancing would typically present metadata to the loadbalancers which need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies.
-    /// For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata.
-    /// An example for using metadataFilters would be: if loadbalancing involves  Envoys, they will only receive routing configuration when values in metadataFilters match values supplied in &lt;a href="https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/core/base.proto#envoy-api-msg-core-node" Node metadata of their XDS requests to loadbalancers.
+    /// Opaque filter criteria used by loadbalancers to restrict routing configuration to a limited set of loadbalancing proxies. Proxies and sidecars involved in loadbalancing would typically present metadata to the loadbalancers which need to match criteria specified here. If a match takes place, the relevant configuration is made available to those proxies. For each metadataFilter in this list, if its filterMatchCriteria is set to MATCH_ANY, at least one of the filterLabels must match the corresponding label provided in the metadata. If its filterMatchCriteria is set to MATCH_ALL, then all of its filterLabels must match with corresponding labels provided in the metadata. An example for using metadataFilters would be: if loadbalancing involves Envoys, they will only receive routing configuration when values in metadataFilters match values supplied in of their XDS requests to loadbalancers.
     /// </summary>
     public sealed class MetadataFilterArgs : Pulumi.ResourceArgs
     {
@@ -21,8 +19,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         private InputList<Inputs.MetadataFilterLabelMatchArgs>? _filterLabels;
 
         /// <summary>
-        /// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria 
-        /// This list must not be empty and can have at the most 64 entries.
+        /// The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria This list must not be empty and can have at the most 64 entries.
         /// </summary>
         public InputList<Inputs.MetadataFilterLabelMatchArgs> FilterLabels
         {
@@ -31,10 +28,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         }
 
         /// <summary>
-        /// Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match.
-        /// Supported values are:  
-        /// - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata. 
-        /// - MATCH_ALL: All filterLabels must have matching labels in the provided metadata.
+        /// Specifies how individual filterLabel matches within the list of filterLabels contribute towards the overall metadataFilter match. Supported values are: - MATCH_ANY: At least one of the filterLabels must have a matching label in the provided metadata. - MATCH_ALL: All filterLabels must have matching labels in the provided metadata. 
         /// </summary>
         [Input("filterMatchCriteria")]
         public Input<Pulumi.GoogleNative.Compute.V1.MetadataFilterFilterMatchCriteria>? FilterMatchCriteria { get; set; }

@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.DataFusion.V1
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+        /// </summary>
+        [Output("cryptoKeyConfig")]
+        public Output<Outputs.CryptoKeyConfigResponse> CryptoKeyConfig { get; private set; } = null!;
+
+        /// <summary>
         /// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
         /// </summary>
         [Output("dataprocServiceAccount")]
@@ -82,7 +88,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1
         public Output<string> GcsBucket { get; private set; } = null!;
 
         /// <summary>
-        /// The resource labels for instance to use to annotate any related underlying resources such as GCE VMs. The character '=' is not allowed to be used within the labels.
+        /// The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -235,6 +241,12 @@ namespace Pulumi.GoogleNative.DataFusion.V1
         }
 
         /// <summary>
+        /// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+        /// </summary>
+        [Input("cryptoKeyConfig")]
+        public Input<Inputs.CryptoKeyConfigArgs>? CryptoKeyConfig { get; set; }
+
+        /// <summary>
         /// User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
         /// </summary>
         [Input("dataprocServiceAccount")]
@@ -277,7 +289,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// The resource labels for instance to use to annotate any related underlying resources such as GCE VMs. The character '=' is not allowed to be used within the labels.
+        /// The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.
         /// </summary>
         public InputMap<string> Labels
         {

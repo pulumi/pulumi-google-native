@@ -720,13 +720,13 @@ class EnvironmentResponse(dict):
         :param str cluster_manager_api_service: The type of cluster manager API to use. If unknown or unspecified, the service will attempt to choose a reasonable default. This should be in the form of the API service name, e.g. "compute.googleapis.com".
         :param str dataset: The dataset for the current project where various workflow related tables are stored. The supported resource type is: Google BigQuery: bigquery.googleapis.com/{dataset}
         :param 'DebugOptionsResponse' debug_options: Any debugging options to be supplied to the job.
-        :param Sequence[str] experiments: The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options. For more details see the rationale at go/user-specified-service-options.
+        :param Sequence[str] experiments: The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options.
         :param str flex_resource_scheduling_goal: Which Flexible Resource Scheduling mode to run in.
         :param Mapping[str, str] internal_experiments: Experimental settings.
         :param Mapping[str, str] sdk_pipeline_options: The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
         :param str service_account_email: Identity to run virtual machines as. Defaults to the default account.
         :param str service_kms_key_name: If set, contains the Cloud KMS key identifier used to encrypt data at rest, AKA a Customer Managed Encryption Key (CMEK). Format: projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY
-        :param Sequence[str] service_options: The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on). For more details see the rationale at go/user-specified-service-options.
+        :param Sequence[str] service_options: The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).
         :param str shuffle_mode: The shuffle mode used for the job.
         :param str temp_storage_prefix: The prefix of the resources the system should use for temporary storage. The system will append the suffix "/temp-{JOBNAME} to this resource prefix, where {JOBNAME} is the value of the job_name field. The resulting bucket and object prefix is used as the prefix of the resources used to store temporary data needed during the job execution. NOTE: This will override the value in taskrunner_settings. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
         :param Mapping[str, str] user_agent: A description of the process that generated the request.
@@ -781,7 +781,7 @@ class EnvironmentResponse(dict):
     @pulumi.getter
     def experiments(self) -> Sequence[str]:
         """
-        The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options. For more details see the rationale at go/user-specified-service-options.
+        The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options.
         """
         return pulumi.get(self, "experiments")
 
@@ -829,7 +829,7 @@ class EnvironmentResponse(dict):
     @pulumi.getter(name="serviceOptions")
     def service_options(self) -> Sequence[str]:
         """
-        The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on). For more details see the rationale at go/user-specified-service-options.
+        The list of service options to enable. This field should be used for service related experiments only. These experiments, when graduating to GA, should be replaced by dedicated fields or become default (i.e. always on).
         """
         return pulumi.get(self, "service_options")
 
@@ -1265,7 +1265,9 @@ class ParameterMetadataResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "helpText":
+        if key == "customMetadata":
+            suggest = "custom_metadata"
+        elif key == "helpText":
             suggest = "help_text"
         elif key == "isOptional":
             suggest = "is_optional"
@@ -1284,6 +1286,7 @@ class ParameterMetadataResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 custom_metadata: Mapping[str, str],
                  help_text: str,
                  is_optional: bool,
                  label: str,
@@ -1292,6 +1295,7 @@ class ParameterMetadataResponse(dict):
                  regexes: Sequence[str]):
         """
         Metadata for a specific parameter.
+        :param Mapping[str, str] custom_metadata: Optional. Additional metadata for describing this parameter.
         :param str help_text: The help text to display for the parameter.
         :param bool is_optional: Optional. Whether the parameter is optional. Defaults to false.
         :param str label: The label to display for the parameter.
@@ -1299,12 +1303,21 @@ class ParameterMetadataResponse(dict):
         :param str param_type: Optional. The type of the parameter. Used for selecting input picker.
         :param Sequence[str] regexes: Optional. Regexes that the parameter must match.
         """
+        pulumi.set(__self__, "custom_metadata", custom_metadata)
         pulumi.set(__self__, "help_text", help_text)
         pulumi.set(__self__, "is_optional", is_optional)
         pulumi.set(__self__, "label", label)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "param_type", param_type)
         pulumi.set(__self__, "regexes", regexes)
+
+    @property
+    @pulumi.getter(name="customMetadata")
+    def custom_metadata(self) -> Mapping[str, str]:
+        """
+        Optional. Additional metadata for describing this parameter.
+        """
+        return pulumi.get(self, "custom_metadata")
 
     @property
     @pulumi.getter(name="helpText")

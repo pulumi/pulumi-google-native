@@ -14,15 +14,15 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
     public sealed class EnvFromSourceResponse
     {
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from
+        /// (Optional) The ConfigMap to select from
         /// </summary>
         public readonly Outputs.ConfigMapEnvSourceResponse ConfigMapRef;
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+        /// (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
         /// </summary>
         public readonly string Prefix;
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from
+        /// (Optional) The Secret to select from
         /// </summary>
         public readonly Outputs.SecretEnvSourceResponse SecretRef;
 

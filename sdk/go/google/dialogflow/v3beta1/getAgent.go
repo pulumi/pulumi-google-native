@@ -44,6 +44,8 @@ type LookupAgentResult struct {
 	SpeechToTextSettings GoogleCloudDialogflowCxV3beta1SpeechToTextSettingsResponse `pulumi:"speechToTextSettings"`
 	// Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
 	StartFlow string `pulumi:"startFlow"`
+	// The list of all languages supported by the agent (except for the `default_language_code`).
+	SupportedLanguageCodes []string `pulumi:"supportedLanguageCodes"`
 	// The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
 	TimeZone string `pulumi:"timeZone"`
 }

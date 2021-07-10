@@ -35,12 +35,7 @@ type Firewall struct {
 	LogConfig FirewallLogConfigResponseOutput `pulumi:"logConfig"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// URL of the network resource for this firewall rule. If not specified when creating a firewall rule, the default network is used:
-	// global/networks/default
-	// If you choose to specify this field, you can specify the network as a full or partial URL. For example, the following are all valid URLs:
-	// - https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network
-	// - projects/myproject/global/networks/my-network
-	// - global/networks/default
+	// URL of the network resource for this firewall rule. If not specified when creating a firewall rule, the default network is used: global/networks/default If you choose to specify this field, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network - projects/myproject/global/networks/my-network - global/networks/default
 	Network pulumi.StringOutput `pulumi:"network"`
 	// Priority for this rule. This is an integer between `0` and `65535`, both inclusive. The default value is `1000`. Relative priorities determine which rule takes effect if multiple rules apply. Lower values indicate higher priority. For example, a rule with priority `0` has higher precedence than a rule with priority `1`. DENY rules take precedence over ALLOW rules if they have equal priority. Note that VPC networks have implied rules with a priority of `65535`. To avoid conflicts with the implied rules, use a priority number less than `65535`.
 	Priority pulumi.IntOutput `pulumi:"priority"`
@@ -112,12 +107,7 @@ type firewallState struct {
 	LogConfig *FirewallLogConfigResponse `pulumi:"logConfig"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
 	Name *string `pulumi:"name"`
-	// URL of the network resource for this firewall rule. If not specified when creating a firewall rule, the default network is used:
-	// global/networks/default
-	// If you choose to specify this field, you can specify the network as a full or partial URL. For example, the following are all valid URLs:
-	// - https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network
-	// - projects/myproject/global/networks/my-network
-	// - global/networks/default
+	// URL of the network resource for this firewall rule. If not specified when creating a firewall rule, the default network is used: global/networks/default If you choose to specify this field, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network - projects/myproject/global/networks/my-network - global/networks/default
 	Network *string `pulumi:"network"`
 	// Priority for this rule. This is an integer between `0` and `65535`, both inclusive. The default value is `1000`. Relative priorities determine which rule takes effect if multiple rules apply. Lower values indicate higher priority. For example, a rule with priority `0` has higher precedence than a rule with priority `1`. DENY rules take precedence over ALLOW rules if they have equal priority. Note that VPC networks have implied rules with a priority of `65535`. To avoid conflicts with the implied rules, use a priority number less than `65535`.
 	Priority *int `pulumi:"priority"`
@@ -158,12 +148,7 @@ type FirewallState struct {
 	LogConfig FirewallLogConfigResponsePtrInput
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
 	Name pulumi.StringPtrInput
-	// URL of the network resource for this firewall rule. If not specified when creating a firewall rule, the default network is used:
-	// global/networks/default
-	// If you choose to specify this field, you can specify the network as a full or partial URL. For example, the following are all valid URLs:
-	// - https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network
-	// - projects/myproject/global/networks/my-network
-	// - global/networks/default
+	// URL of the network resource for this firewall rule. If not specified when creating a firewall rule, the default network is used: global/networks/default If you choose to specify this field, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network - projects/myproject/global/networks/my-network - global/networks/default
 	Network pulumi.StringPtrInput
 	// Priority for this rule. This is an integer between `0` and `65535`, both inclusive. The default value is `1000`. Relative priorities determine which rule takes effect if multiple rules apply. Lower values indicate higher priority. For example, a rule with priority `0` has higher precedence than a rule with priority `1`. DENY rules take precedence over ALLOW rules if they have equal priority. Note that VPC networks have implied rules with a priority of `65535`. To avoid conflicts with the implied rules, use a priority number less than `65535`.
 	Priority pulumi.IntPtrInput
@@ -204,12 +189,7 @@ type firewallArgs struct {
 	LogConfig *FirewallLogConfig `pulumi:"logConfig"`
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
 	Name *string `pulumi:"name"`
-	// URL of the network resource for this firewall rule. If not specified when creating a firewall rule, the default network is used:
-	// global/networks/default
-	// If you choose to specify this field, you can specify the network as a full or partial URL. For example, the following are all valid URLs:
-	// - https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network
-	// - projects/myproject/global/networks/my-network
-	// - global/networks/default
+	// URL of the network resource for this firewall rule. If not specified when creating a firewall rule, the default network is used: global/networks/default If you choose to specify this field, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network - projects/myproject/global/networks/my-network - global/networks/default
 	Network *string `pulumi:"network"`
 	// Priority for this rule. This is an integer between `0` and `65535`, both inclusive. The default value is `1000`. Relative priorities determine which rule takes effect if multiple rules apply. Lower values indicate higher priority. For example, a rule with priority `0` has higher precedence than a rule with priority `1`. DENY rules take precedence over ALLOW rules if they have equal priority. Note that VPC networks have implied rules with a priority of `65535`. To avoid conflicts with the implied rules, use a priority number less than `65535`.
 	Priority  *int    `pulumi:"priority"`
@@ -245,12 +225,7 @@ type FirewallArgs struct {
 	LogConfig FirewallLogConfigPtrInput
 	// Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?. The first character must be a lowercase letter, and all following characters (except for the last character) must be a dash, lowercase letter, or digit. The last character must be a lowercase letter or digit.
 	Name pulumi.StringPtrInput
-	// URL of the network resource for this firewall rule. If not specified when creating a firewall rule, the default network is used:
-	// global/networks/default
-	// If you choose to specify this field, you can specify the network as a full or partial URL. For example, the following are all valid URLs:
-	// - https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network
-	// - projects/myproject/global/networks/my-network
-	// - global/networks/default
+	// URL of the network resource for this firewall rule. If not specified when creating a firewall rule, the default network is used: global/networks/default If you choose to specify this field, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/myproject/global/networks/my-network - projects/myproject/global/networks/my-network - global/networks/default
 	Network pulumi.StringPtrInput
 	// Priority for this rule. This is an integer between `0` and `65535`, both inclusive. The default value is `1000`. Relative priorities determine which rule takes effect if multiple rules apply. Lower values indicate higher priority. For example, a rule with priority `0` has higher precedence than a rule with priority `1`. DENY rules take precedence over ALLOW rules if they have equal priority. Note that VPC networks have implied rules with a priority of `65535`. To avoid conflicts with the implied rules, use a priority number less than `65535`.
 	Priority  pulumi.IntPtrInput

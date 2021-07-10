@@ -39,13 +39,20 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
             set => _aliasIpRanges = value;
         }
 
+        [Input("ipv6AccessConfigs")]
+        private InputList<Inputs.AccessConfigArgs>? _ipv6AccessConfigs;
+
         /// <summary>
-        /// URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred.
-        /// 
-        /// If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs:  
-        /// - https://www.googleapis.com/compute/v1/projects/project/global/networks/network 
-        /// - projects/project/global/networks/network 
-        /// - global/networks/default
+        /// An array of IPv6 access configurations for this interface. Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig specified, then this instance will have no external IPv6 Internet access.
+        /// </summary>
+        public InputList<Inputs.AccessConfigArgs> Ipv6AccessConfigs
+        {
+            get => _ipv6AccessConfigs ?? (_ipv6AccessConfigs = new InputList<Inputs.AccessConfigArgs>());
+            set => _ipv6AccessConfigs = value;
+        }
+
+        /// <summary>
+        /// URL of the network resource for this instance. When creating an instance, if neither the network nor the subnetwork is specified, the default network global/networks/default is used; if the network is not specified but the subnetwork is specified, the network is inferred. If you specify this property, you can specify the network as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/global/networks/ network - projects/project/global/networks/network - global/networks/default 
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
@@ -63,9 +70,13 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public Input<Pulumi.GoogleNative.Compute.V1.NetworkInterfaceNicType>? NicType { get; set; }
 
         /// <summary>
-        /// The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs:  
-        /// - https://www.googleapis.com/compute/v1/projects/project/regions/region/subnetworks/subnetwork 
-        /// - regions/region/subnetworks/subnetwork
+        /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at instance creation and update network interface operations.
+        /// </summary>
+        [Input("stackType")]
+        public Input<Pulumi.GoogleNative.Compute.V1.NetworkInterfaceStackType>? StackType { get; set; }
+
+        /// <summary>
+        /// The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork 
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }

@@ -14,19 +14,19 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
     public sealed class HTTPGetActionResponse
     {
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        /// (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
         /// </summary>
         public readonly string Host;
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Custom headers to set in the request. HTTP allows repeated headers.
+        /// (Optional) Custom headers to set in the request. HTTP allows repeated headers.
         /// </summary>
         public readonly ImmutableArray<Outputs.HTTPHeaderResponse> HttpHeaders;
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path to access on the HTTP server.
+        /// (Optional) Path to access on the HTTP server.
         /// </summary>
         public readonly string Path;
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Scheme to use for connecting to the host. Defaults to HTTP.
+        /// (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
         /// </summary>
         public readonly string Scheme;
 

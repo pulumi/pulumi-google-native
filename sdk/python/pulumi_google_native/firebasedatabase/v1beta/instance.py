@@ -26,7 +26,7 @@ class InstanceArgs:
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] project: The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
         :param pulumi.Input[str] database_url: Immutable. The globally unique hostname of the database.
-        :param pulumi.Input[str] name: The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
+        :param pulumi.Input[str] name: The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
         :param pulumi.Input['InstanceState'] state: The database's lifecycle state. Read-only.
         :param pulumi.Input['InstanceType'] type: The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
         """
@@ -91,7 +91,7 @@ class InstanceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
+        The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
         """
         return pulumi.get(self, "name")
 
@@ -153,7 +153,7 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] database_url: Immutable. The globally unique hostname of the database.
-        :param pulumi.Input[str] name: The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
+        :param pulumi.Input[str] name: The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
         :param pulumi.Input[str] project: The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
         :param pulumi.Input['InstanceState'] state: The database's lifecycle state. Read-only.
         :param pulumi.Input['InstanceType'] type: The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
@@ -255,7 +255,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
+        The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
         """
         return pulumi.get(self, "name")
 

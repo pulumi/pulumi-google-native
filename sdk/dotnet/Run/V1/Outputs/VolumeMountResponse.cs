@@ -14,19 +14,19 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
     public sealed class VolumeMountResponse
     {
         /// <summary>
-        /// Cloud Run fully managed: supported Cloud Run for Anthos: supported Path within the container at which the volume should be mounted. Must not contain ':'.
+        /// Path within the container at which the volume should be mounted. Must not contain ':'.
         /// </summary>
         public readonly string MountPath;
         /// <summary>
-        /// Cloud Run fully managed: supported Cloud Run for Anthos: supported This must match the Name of a Volume.
+        /// This must match the Name of a Volume.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (Optional) Cloud Run fully managed: supported Cloud Run for Anthos: supported Only true is accepted. Defaults to true.
+        /// (Optional) Only true is accepted. Defaults to true.
         /// </summary>
         public readonly bool ReadOnly;
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+        /// (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
         /// </summary>
         public readonly string SubPath;
 

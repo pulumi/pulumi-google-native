@@ -11,10 +11,16 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
 {
 
     /// <summary>
-    /// FeatureSpec contains the input for the MultiClusterIngress feature.
+    /// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
     /// </summary>
     public sealed class MultiClusterIngressFeatureSpecArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Customer's billing structure
+        /// </summary>
+        [Input("billing")]
+        public Input<Pulumi.GoogleNative.GKEHub.V1Alpha.MultiClusterIngressFeatureSpecBilling>? Billing { get; set; }
+
         /// <summary>
         /// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
         /// </summary>

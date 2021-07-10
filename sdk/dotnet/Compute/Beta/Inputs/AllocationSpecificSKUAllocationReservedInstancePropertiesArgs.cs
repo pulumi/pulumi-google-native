@@ -52,6 +52,18 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<string>? MachineType { get; set; }
 
         /// <summary>
+        /// Specifies the number of hours after reservation creation where instances using the reservation won't be scheduled for maintenance.
+        /// </summary>
+        [Input("maintenanceFreezeDurationHours")]
+        public Input<int>? MaintenanceFreezeDurationHours { get; set; }
+
+        /// <summary>
+        /// For more information about maintenance intervals, see Setting maintenance intervals.
+        /// </summary>
+        [Input("maintenanceInterval")]
+        public Input<Pulumi.GoogleNative.Compute.Beta.AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInterval>? MaintenanceInterval { get; set; }
+
+        /// <summary>
         /// Minimum cpu platform the reservation.
         /// </summary>
         [Input("minCpuPlatform")]

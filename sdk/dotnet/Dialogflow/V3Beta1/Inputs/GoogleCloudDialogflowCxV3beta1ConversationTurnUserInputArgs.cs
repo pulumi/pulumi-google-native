@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// </summary>
     public sealed class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Whether sentiment analysis is enabled.
+        /// </summary>
+        [Input("enableSentimentAnalysis")]
+        public Input<bool>? EnableSentimentAnalysis { get; set; }
+
         [Input("injectedParameters")]
         private InputMap<string>? _injectedParameters;
 

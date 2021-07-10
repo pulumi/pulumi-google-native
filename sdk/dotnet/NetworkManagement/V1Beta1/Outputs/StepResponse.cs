@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
     public sealed class StepResponse
     {
         /// <summary>
-        /// Display info of the final state "abort" and reason.
+        /// Display information of the final state "abort" and reason.
         /// </summary>
         public readonly Outputs.AbortInfoResponse Abort;
         /// <summary>
@@ -22,11 +22,11 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
         /// </summary>
         public readonly bool CausesDrop;
         /// <summary>
-        /// Display info of a Cloud SQL instance.
+        /// Display information of a Cloud SQL instance.
         /// </summary>
         public readonly Outputs.CloudSQLInstanceInfoResponse CloudSqlInstance;
         /// <summary>
-        /// Display info of the final state "deliver" and reason.
+        /// Display information of the final state "deliver" and reason.
         /// </summary>
         public readonly Outputs.DeliverInfoResponse Deliver;
         /// <summary>
@@ -34,39 +34,39 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Display info of the final state "drop" and reason.
+        /// Display information of the final state "drop" and reason.
         /// </summary>
         public readonly Outputs.DropInfoResponse Drop;
         /// <summary>
-        /// Display info of the source and destination under analysis. The endpoint info in an intermediate state may differ with the initial input, as it might be modified by state like NAT, or Connection Proxy.
+        /// Display information of the source and destination under analysis. The endpoint information in an intermediate state may differ with the initial input, as it might be modified by state like NAT, or Connection Proxy.
         /// </summary>
         public readonly Outputs.EndpointInfoResponse Endpoint;
         /// <summary>
-        /// Display info of a Compute Engine firewall rule.
+        /// Display information of a Compute Engine firewall rule.
         /// </summary>
         public readonly Outputs.FirewallInfoResponse Firewall;
         /// <summary>
-        /// Display info of the final state "forward" and reason.
+        /// Display information of the final state "forward" and reason.
         /// </summary>
         public readonly Outputs.ForwardInfoResponse Forward;
         /// <summary>
-        /// Display info of a Compute Engine forwarding rule.
+        /// Display information of a Compute Engine forwarding rule.
         /// </summary>
         public readonly Outputs.ForwardingRuleInfoResponse ForwardingRule;
         /// <summary>
-        /// Display info of a Google Kubernetes Engine cluster master.
+        /// Display information of a Google Kubernetes Engine cluster master.
         /// </summary>
         public readonly Outputs.GKEMasterInfoResponse GkeMaster;
         /// <summary>
-        /// Display info of a Compute Engine instance.
+        /// Display information of a Compute Engine instance.
         /// </summary>
         public readonly Outputs.InstanceInfoResponse Instance;
         /// <summary>
-        /// Display info of the load balancers.
+        /// Display information of the load balancers.
         /// </summary>
         public readonly Outputs.LoadBalancerInfoResponse LoadBalancer;
         /// <summary>
-        /// Display info of a GCP network.
+        /// Display information of a Google Cloud network.
         /// </summary>
         public readonly Outputs.NetworkInfoResponse Network;
         /// <summary>
@@ -74,7 +74,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// Display info of a Compute Engine route.
+        /// Display information of a Compute Engine route.
         /// </summary>
         public readonly Outputs.RouteInfoResponse Route;
         /// <summary>
@@ -82,11 +82,11 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
         /// </summary>
         public readonly string State;
         /// <summary>
-        /// Display info of a Compute Engine VPN gateway.
+        /// Display information of a Compute Engine VPN gateway.
         /// </summary>
         public readonly Outputs.VpnGatewayInfoResponse VpnGateway;
         /// <summary>
-        /// Display info of a Compute Engine VPN tunnel.
+        /// Display information of a Compute Engine VPN tunnel.
         /// </summary>
         public readonly Outputs.VpnTunnelInfoResponse VpnTunnel;
 

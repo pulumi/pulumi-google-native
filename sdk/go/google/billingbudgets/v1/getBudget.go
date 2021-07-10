@@ -35,6 +35,6 @@ type LookupBudgetResult struct {
 	Name string `pulumi:"name"`
 	// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
 	NotificationsRule GoogleCloudBillingBudgetsV1NotificationsRuleResponse `pulumi:"notificationsRule"`
-	// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
+	// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
 	ThresholdRules []GoogleCloudBillingBudgetsV1ThresholdRuleResponse `pulumi:"thresholdRules"`
 }

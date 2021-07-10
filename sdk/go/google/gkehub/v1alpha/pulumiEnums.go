@@ -43,3 +43,35 @@ func (e AuditLogConfigLogType) ToStringPtrOutput() pulumi.StringPtrOutput {
 func (e AuditLogConfigLogType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
+
+// Customer's billing structure
+type MultiClusterIngressFeatureSpecBilling pulumi.String
+
+const (
+	// Unknown
+	MultiClusterIngressFeatureSpecBillingBillingUnspecified = MultiClusterIngressFeatureSpecBilling("BILLING_UNSPECIFIED")
+	// User pays a fee per-endpoint.
+	MultiClusterIngressFeatureSpecBillingPayAsYouGo = MultiClusterIngressFeatureSpecBilling("PAY_AS_YOU_GO")
+	// User is paying for Anthos as a whole.
+	MultiClusterIngressFeatureSpecBillingAnthosLicense = MultiClusterIngressFeatureSpecBilling("ANTHOS_LICENSE")
+)
+
+func (MultiClusterIngressFeatureSpecBilling) ElementType() reflect.Type {
+	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+}
+
+func (e MultiClusterIngressFeatureSpecBilling) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MultiClusterIngressFeatureSpecBilling) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e MultiClusterIngressFeatureSpecBilling) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e MultiClusterIngressFeatureSpecBilling) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}

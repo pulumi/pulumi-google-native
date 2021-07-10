@@ -11,11 +11,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
     /// <summary>
-    /// Provides the configuration for logging a type of permissions. Example:
-    /// 
-    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] }
-    /// 
-    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+    /// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
     /// </summary>
     public sealed class AuditLogConfigArgs : Pulumi.ResourceArgs
     {
@@ -23,7 +19,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         private InputList<string>? _exemptedMembers;
 
         /// <summary>
-        /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of [Binding.members][].
+        /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
         /// </summary>
         public InputList<string> ExemptedMembers
         {
@@ -31,6 +27,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
             set => _exemptedMembers = value;
         }
 
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         [Input("ignoreChildExemptions")]
         public Input<bool>? IgnoreChildExemptions { get; set; }
 

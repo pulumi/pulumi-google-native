@@ -59,10 +59,14 @@ export const ExperimentState = {
      * The experiment is done.
      */
     Done: "DONE",
+    /**
+     * The experiment with auto-rollout enabled has failed.
+     */
+    RolloutFailed: "ROLLOUT_FAILED",
 } as const;
 
 /**
- * The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
+ * The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
  */
 export type ExperimentState = (typeof ExperimentState)[keyof typeof ExperimentState];
 
@@ -252,7 +256,7 @@ export const SecuritySettingPurgeDataTypesItem = {
      */
     PurgeDataTypeUnspecified: "PURGE_DATA_TYPE_UNSPECIFIED",
     /**
-     * Dialogflow history. This does not include Stackdriver log, which is owned by the user not Dialogflow.
+     * Dialogflow history. This does not include Cloud logging, which is owned by the user - not Dialogflow.
      */
     DialogflowHistory: "DIALOGFLOW_HISTORY",
 } as const;
@@ -271,7 +275,7 @@ export const SecuritySettingRedactionScope = {
 } as const;
 
 /**
- * Defines on what data we apply redaction. Note that we don't redact data to which we don't have access, e.g., Stackdriver logs.
+ * Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
  */
 export type SecuritySettingRedactionScope = (typeof SecuritySettingRedactionScope)[keyof typeof SecuritySettingRedactionScope];
 

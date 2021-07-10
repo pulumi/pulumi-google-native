@@ -30,7 +30,7 @@ type LookupScheduleResult struct {
 	CronSchedule string `pulumi:"cronSchedule"`
 	// A brief description of this environment.
 	Description string `pulumi:"description"`
-	// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens ‘-’, and underscores ‘_’.
+	// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens '-', and underscores '_'.
 	DisplayName string `pulumi:"displayName"`
 	// Notebook Execution Template corresponding to this schedule.
 	ExecutionTemplate ExecutionTemplateResponse `pulumi:"executionTemplate"`

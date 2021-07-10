@@ -49,6 +49,10 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
         /// The trial id for these results.
         /// </summary>
         public readonly string TrialId;
+        /// <summary>
+        /// The web URIs for the training job. Currently for debug terminal access to the job. Only set for in-progress hyperparameter tuning trials with web access enabled.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> WebAccessUris;
 
         [OutputConstructor]
         private GoogleCloudMlV1__HyperparameterOutputResponse(
@@ -68,7 +72,9 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
 
             string state,
 
-            string trialId)
+            string trialId,
+
+            ImmutableDictionary<string, string> webAccessUris)
         {
             AllMetrics = allMetrics;
             BuiltInAlgorithmOutput = builtInAlgorithmOutput;
@@ -79,6 +85,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
             StartTime = startTime;
             State = state;
             TrialId = trialId;
+            WebAccessUris = webAccessUris;
         }
     }
 }

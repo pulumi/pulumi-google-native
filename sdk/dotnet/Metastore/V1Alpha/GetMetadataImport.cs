@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
     public sealed class GetMetadataImportResult
     {
         /// <summary>
-        /// The time when the metadata import was created.
+        /// The time when the metadata import was started.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
@@ -54,6 +54,10 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         /// The description of the metadata import.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The time when the metadata import finished.
+        /// </summary>
+        public readonly string EndTime;
         /// <summary>
         /// Immutable. The relative resource name of the metadata import, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}/metadataImports/{metadata_import_id}.
         /// </summary>
@@ -75,6 +79,8 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
 
             string description,
 
+            string endTime,
+
             string name,
 
             string state,
@@ -84,6 +90,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
             CreateTime = createTime;
             DatabaseDump = databaseDump;
             Description = description;
+            EndTime = endTime;
             Name = name;
             State = state;
             UpdateTime = updateTime;

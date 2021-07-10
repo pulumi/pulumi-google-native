@@ -11,24 +11,24 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
 {
 
     /// <summary>
-    /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvFromSource represents the source of a set of ConfigMaps
+    /// Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
     /// </summary>
     public sealed class EnvFromSourceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from
+        /// (Optional) The ConfigMap to select from
         /// </summary>
         [Input("configMapRef")]
         public Input<Inputs.ConfigMapEnvSourceArgs>? ConfigMapRef { get; set; }
 
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+        /// (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
         /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported The Secret to select from
+        /// (Optional) The Secret to select from
         /// </summary>
         [Input("secretRef")]
         public Input<Inputs.SecretEnvSourceArgs>? SecretRef { get; set; }

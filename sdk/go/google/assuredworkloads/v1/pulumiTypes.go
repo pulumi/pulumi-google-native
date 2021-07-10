@@ -431,6 +431,8 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceInfoResponseArrayOutput) In
 
 // Represent the custom settings for the resources to be created.
 type GoogleCloudAssuredworkloadsV1WorkloadResourceSettings struct {
+	// User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+	DisplayName *string `pulumi:"displayName"`
 	// Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.
 	ResourceId *string `pulumi:"resourceId"`
 	// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
@@ -450,6 +452,8 @@ type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsInput interface {
 
 // Represent the custom settings for the resources to be created.
 type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs struct {
+	// User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.
 	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
 	// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
@@ -508,6 +512,11 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput) ToGoogleClo
 	return o
 }
 
+// User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadResourceSettings) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
 // Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.
 func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput) ResourceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadResourceSettings) *string { return v.ResourceId }).(pulumi.StringPtrOutput)
@@ -540,6 +549,8 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput) Index(
 
 // Represent the custom settings for the resources to be created.
 type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse struct {
+	// User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+	DisplayName string `pulumi:"displayName"`
 	// Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.
 	ResourceId string `pulumi:"resourceId"`
 	// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
@@ -559,6 +570,8 @@ type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseInput interfac
 
 // Represent the custom settings for the resources to be created.
 type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseArgs struct {
+	// User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
 	// Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.
 	ResourceId pulumi.StringInput `pulumi:"resourceId"`
 	// Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
@@ -615,6 +628,11 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput) ToG
 
 func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput {
 	return o
+}
+
+// User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponseOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // Resource identifier. For a project this represents project_id. If the project is already taken, the workload creation will fail.

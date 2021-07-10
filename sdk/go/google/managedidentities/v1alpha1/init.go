@@ -23,8 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:managedidentities/v1alpha1:Domain":
 		r = &Domain{}
+	case "google-native:managedidentities/v1alpha1:DomainBackupIamPolicy":
+		r = &DomainBackupIamPolicy{}
 	case "google-native:managedidentities/v1alpha1:DomainIamPolicy":
 		r = &DomainIamPolicy{}
+	case "google-native:managedidentities/v1alpha1:Peering":
+		r = &Peering{}
 	case "google-native:managedidentities/v1alpha1:PeeringIamPolicy":
 		r = &PeeringIamPolicy{}
 	default:

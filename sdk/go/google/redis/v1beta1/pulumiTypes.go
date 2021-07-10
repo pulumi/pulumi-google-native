@@ -10,6 +10,705 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Maintenance policy for an instance.
+type MaintenancePolicy struct {
+	// Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
+	Description *string `pulumi:"description"`
+	// Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_window is expected to be one.
+	WeeklyMaintenanceWindow []WeeklyMaintenanceWindow `pulumi:"weeklyMaintenanceWindow"`
+}
+
+// MaintenancePolicyInput is an input type that accepts MaintenancePolicyArgs and MaintenancePolicyOutput values.
+// You can construct a concrete instance of `MaintenancePolicyInput` via:
+//
+//          MaintenancePolicyArgs{...}
+type MaintenancePolicyInput interface {
+	pulumi.Input
+
+	ToMaintenancePolicyOutput() MaintenancePolicyOutput
+	ToMaintenancePolicyOutputWithContext(context.Context) MaintenancePolicyOutput
+}
+
+// Maintenance policy for an instance.
+type MaintenancePolicyArgs struct {
+	// Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_window is expected to be one.
+	WeeklyMaintenanceWindow WeeklyMaintenanceWindowArrayInput `pulumi:"weeklyMaintenanceWindow"`
+}
+
+func (MaintenancePolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenancePolicy)(nil)).Elem()
+}
+
+func (i MaintenancePolicyArgs) ToMaintenancePolicyOutput() MaintenancePolicyOutput {
+	return i.ToMaintenancePolicyOutputWithContext(context.Background())
+}
+
+func (i MaintenancePolicyArgs) ToMaintenancePolicyOutputWithContext(ctx context.Context) MaintenancePolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenancePolicyOutput)
+}
+
+func (i MaintenancePolicyArgs) ToMaintenancePolicyPtrOutput() MaintenancePolicyPtrOutput {
+	return i.ToMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i MaintenancePolicyArgs) ToMaintenancePolicyPtrOutputWithContext(ctx context.Context) MaintenancePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenancePolicyOutput).ToMaintenancePolicyPtrOutputWithContext(ctx)
+}
+
+// MaintenancePolicyPtrInput is an input type that accepts MaintenancePolicyArgs, MaintenancePolicyPtr and MaintenancePolicyPtrOutput values.
+// You can construct a concrete instance of `MaintenancePolicyPtrInput` via:
+//
+//          MaintenancePolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type MaintenancePolicyPtrInput interface {
+	pulumi.Input
+
+	ToMaintenancePolicyPtrOutput() MaintenancePolicyPtrOutput
+	ToMaintenancePolicyPtrOutputWithContext(context.Context) MaintenancePolicyPtrOutput
+}
+
+type maintenancePolicyPtrType MaintenancePolicyArgs
+
+func MaintenancePolicyPtr(v *MaintenancePolicyArgs) MaintenancePolicyPtrInput {
+	return (*maintenancePolicyPtrType)(v)
+}
+
+func (*maintenancePolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenancePolicy)(nil)).Elem()
+}
+
+func (i *maintenancePolicyPtrType) ToMaintenancePolicyPtrOutput() MaintenancePolicyPtrOutput {
+	return i.ToMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *maintenancePolicyPtrType) ToMaintenancePolicyPtrOutputWithContext(ctx context.Context) MaintenancePolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenancePolicyPtrOutput)
+}
+
+// Maintenance policy for an instance.
+type MaintenancePolicyOutput struct{ *pulumi.OutputState }
+
+func (MaintenancePolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenancePolicy)(nil)).Elem()
+}
+
+func (o MaintenancePolicyOutput) ToMaintenancePolicyOutput() MaintenancePolicyOutput {
+	return o
+}
+
+func (o MaintenancePolicyOutput) ToMaintenancePolicyOutputWithContext(ctx context.Context) MaintenancePolicyOutput {
+	return o
+}
+
+func (o MaintenancePolicyOutput) ToMaintenancePolicyPtrOutput() MaintenancePolicyPtrOutput {
+	return o.ToMaintenancePolicyPtrOutputWithContext(context.Background())
+}
+
+func (o MaintenancePolicyOutput) ToMaintenancePolicyPtrOutputWithContext(ctx context.Context) MaintenancePolicyPtrOutput {
+	return o.ApplyT(func(v MaintenancePolicy) *MaintenancePolicy {
+		return &v
+	}).(MaintenancePolicyPtrOutput)
+}
+
+// Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
+func (o MaintenancePolicyOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MaintenancePolicy) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_window is expected to be one.
+func (o MaintenancePolicyOutput) WeeklyMaintenanceWindow() WeeklyMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v MaintenancePolicy) []WeeklyMaintenanceWindow { return v.WeeklyMaintenanceWindow }).(WeeklyMaintenanceWindowArrayOutput)
+}
+
+type MaintenancePolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (MaintenancePolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenancePolicy)(nil)).Elem()
+}
+
+func (o MaintenancePolicyPtrOutput) ToMaintenancePolicyPtrOutput() MaintenancePolicyPtrOutput {
+	return o
+}
+
+func (o MaintenancePolicyPtrOutput) ToMaintenancePolicyPtrOutputWithContext(ctx context.Context) MaintenancePolicyPtrOutput {
+	return o
+}
+
+func (o MaintenancePolicyPtrOutput) Elem() MaintenancePolicyOutput {
+	return o.ApplyT(func(v *MaintenancePolicy) MaintenancePolicy { return *v }).(MaintenancePolicyOutput)
+}
+
+// Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
+func (o MaintenancePolicyPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MaintenancePolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_window is expected to be one.
+func (o MaintenancePolicyPtrOutput) WeeklyMaintenanceWindow() WeeklyMaintenanceWindowArrayOutput {
+	return o.ApplyT(func(v *MaintenancePolicy) []WeeklyMaintenanceWindow {
+		if v == nil {
+			return nil
+		}
+		return v.WeeklyMaintenanceWindow
+	}).(WeeklyMaintenanceWindowArrayOutput)
+}
+
+// Maintenance policy for an instance.
+type MaintenancePolicyResponse struct {
+	// The time when the policy was created.
+	CreateTime string `pulumi:"createTime"`
+	// Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
+	Description string `pulumi:"description"`
+	// The time when the policy was last updated.
+	UpdateTime string `pulumi:"updateTime"`
+	// Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_window is expected to be one.
+	WeeklyMaintenanceWindow []WeeklyMaintenanceWindowResponse `pulumi:"weeklyMaintenanceWindow"`
+}
+
+// MaintenancePolicyResponseInput is an input type that accepts MaintenancePolicyResponseArgs and MaintenancePolicyResponseOutput values.
+// You can construct a concrete instance of `MaintenancePolicyResponseInput` via:
+//
+//          MaintenancePolicyResponseArgs{...}
+type MaintenancePolicyResponseInput interface {
+	pulumi.Input
+
+	ToMaintenancePolicyResponseOutput() MaintenancePolicyResponseOutput
+	ToMaintenancePolicyResponseOutputWithContext(context.Context) MaintenancePolicyResponseOutput
+}
+
+// Maintenance policy for an instance.
+type MaintenancePolicyResponseArgs struct {
+	// The time when the policy was created.
+	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	// Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The time when the policy was last updated.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+	// Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_window is expected to be one.
+	WeeklyMaintenanceWindow WeeklyMaintenanceWindowResponseArrayInput `pulumi:"weeklyMaintenanceWindow"`
+}
+
+func (MaintenancePolicyResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenancePolicyResponse)(nil)).Elem()
+}
+
+func (i MaintenancePolicyResponseArgs) ToMaintenancePolicyResponseOutput() MaintenancePolicyResponseOutput {
+	return i.ToMaintenancePolicyResponseOutputWithContext(context.Background())
+}
+
+func (i MaintenancePolicyResponseArgs) ToMaintenancePolicyResponseOutputWithContext(ctx context.Context) MaintenancePolicyResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenancePolicyResponseOutput)
+}
+
+func (i MaintenancePolicyResponseArgs) ToMaintenancePolicyResponsePtrOutput() MaintenancePolicyResponsePtrOutput {
+	return i.ToMaintenancePolicyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MaintenancePolicyResponseArgs) ToMaintenancePolicyResponsePtrOutputWithContext(ctx context.Context) MaintenancePolicyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenancePolicyResponseOutput).ToMaintenancePolicyResponsePtrOutputWithContext(ctx)
+}
+
+// MaintenancePolicyResponsePtrInput is an input type that accepts MaintenancePolicyResponseArgs, MaintenancePolicyResponsePtr and MaintenancePolicyResponsePtrOutput values.
+// You can construct a concrete instance of `MaintenancePolicyResponsePtrInput` via:
+//
+//          MaintenancePolicyResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MaintenancePolicyResponsePtrInput interface {
+	pulumi.Input
+
+	ToMaintenancePolicyResponsePtrOutput() MaintenancePolicyResponsePtrOutput
+	ToMaintenancePolicyResponsePtrOutputWithContext(context.Context) MaintenancePolicyResponsePtrOutput
+}
+
+type maintenancePolicyResponsePtrType MaintenancePolicyResponseArgs
+
+func MaintenancePolicyResponsePtr(v *MaintenancePolicyResponseArgs) MaintenancePolicyResponsePtrInput {
+	return (*maintenancePolicyResponsePtrType)(v)
+}
+
+func (*maintenancePolicyResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenancePolicyResponse)(nil)).Elem()
+}
+
+func (i *maintenancePolicyResponsePtrType) ToMaintenancePolicyResponsePtrOutput() MaintenancePolicyResponsePtrOutput {
+	return i.ToMaintenancePolicyResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *maintenancePolicyResponsePtrType) ToMaintenancePolicyResponsePtrOutputWithContext(ctx context.Context) MaintenancePolicyResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenancePolicyResponsePtrOutput)
+}
+
+// Maintenance policy for an instance.
+type MaintenancePolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (MaintenancePolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenancePolicyResponse)(nil)).Elem()
+}
+
+func (o MaintenancePolicyResponseOutput) ToMaintenancePolicyResponseOutput() MaintenancePolicyResponseOutput {
+	return o
+}
+
+func (o MaintenancePolicyResponseOutput) ToMaintenancePolicyResponseOutputWithContext(ctx context.Context) MaintenancePolicyResponseOutput {
+	return o
+}
+
+func (o MaintenancePolicyResponseOutput) ToMaintenancePolicyResponsePtrOutput() MaintenancePolicyResponsePtrOutput {
+	return o.ToMaintenancePolicyResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MaintenancePolicyResponseOutput) ToMaintenancePolicyResponsePtrOutputWithContext(ctx context.Context) MaintenancePolicyResponsePtrOutput {
+	return o.ApplyT(func(v MaintenancePolicyResponse) *MaintenancePolicyResponse {
+		return &v
+	}).(MaintenancePolicyResponsePtrOutput)
+}
+
+// The time when the policy was created.
+func (o MaintenancePolicyResponseOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenancePolicyResponse) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
+func (o MaintenancePolicyResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenancePolicyResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The time when the policy was last updated.
+func (o MaintenancePolicyResponseOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenancePolicyResponse) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_window is expected to be one.
+func (o MaintenancePolicyResponseOutput) WeeklyMaintenanceWindow() WeeklyMaintenanceWindowResponseArrayOutput {
+	return o.ApplyT(func(v MaintenancePolicyResponse) []WeeklyMaintenanceWindowResponse { return v.WeeklyMaintenanceWindow }).(WeeklyMaintenanceWindowResponseArrayOutput)
+}
+
+type MaintenancePolicyResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MaintenancePolicyResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenancePolicyResponse)(nil)).Elem()
+}
+
+func (o MaintenancePolicyResponsePtrOutput) ToMaintenancePolicyResponsePtrOutput() MaintenancePolicyResponsePtrOutput {
+	return o
+}
+
+func (o MaintenancePolicyResponsePtrOutput) ToMaintenancePolicyResponsePtrOutputWithContext(ctx context.Context) MaintenancePolicyResponsePtrOutput {
+	return o
+}
+
+func (o MaintenancePolicyResponsePtrOutput) Elem() MaintenancePolicyResponseOutput {
+	return o.ApplyT(func(v *MaintenancePolicyResponse) MaintenancePolicyResponse { return *v }).(MaintenancePolicyResponseOutput)
+}
+
+// The time when the policy was created.
+func (o MaintenancePolicyResponsePtrOutput) CreateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MaintenancePolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CreateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
+func (o MaintenancePolicyResponsePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MaintenancePolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time when the policy was last updated.
+func (o MaintenancePolicyResponsePtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MaintenancePolicyResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_window is expected to be one.
+func (o MaintenancePolicyResponsePtrOutput) WeeklyMaintenanceWindow() WeeklyMaintenanceWindowResponseArrayOutput {
+	return o.ApplyT(func(v *MaintenancePolicyResponse) []WeeklyMaintenanceWindowResponse {
+		if v == nil {
+			return nil
+		}
+		return v.WeeklyMaintenanceWindow
+	}).(WeeklyMaintenanceWindowResponseArrayOutput)
+}
+
+// Upcoming maintenance schedule. If no maintenance is scheduled, fields are not populated.
+type MaintenanceScheduleResponse struct {
+	// If the scheduled maintenance can be rescheduled, default is true.
+	CanReschedule bool `pulumi:"canReschedule"`
+	// The end time of any upcoming scheduled maintenance for this instance.
+	EndTime string `pulumi:"endTime"`
+	// The time deadline any schedule start time cannot go beyond, including reschedule.
+	ScheduleDeadlineTime string `pulumi:"scheduleDeadlineTime"`
+	// The start time of any upcoming scheduled maintenance for this instance.
+	StartTime string `pulumi:"startTime"`
+}
+
+// MaintenanceScheduleResponseInput is an input type that accepts MaintenanceScheduleResponseArgs and MaintenanceScheduleResponseOutput values.
+// You can construct a concrete instance of `MaintenanceScheduleResponseInput` via:
+//
+//          MaintenanceScheduleResponseArgs{...}
+type MaintenanceScheduleResponseInput interface {
+	pulumi.Input
+
+	ToMaintenanceScheduleResponseOutput() MaintenanceScheduleResponseOutput
+	ToMaintenanceScheduleResponseOutputWithContext(context.Context) MaintenanceScheduleResponseOutput
+}
+
+// Upcoming maintenance schedule. If no maintenance is scheduled, fields are not populated.
+type MaintenanceScheduleResponseArgs struct {
+	// If the scheduled maintenance can be rescheduled, default is true.
+	CanReschedule pulumi.BoolInput `pulumi:"canReschedule"`
+	// The end time of any upcoming scheduled maintenance for this instance.
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// The time deadline any schedule start time cannot go beyond, including reschedule.
+	ScheduleDeadlineTime pulumi.StringInput `pulumi:"scheduleDeadlineTime"`
+	// The start time of any upcoming scheduled maintenance for this instance.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (MaintenanceScheduleResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceScheduleResponse)(nil)).Elem()
+}
+
+func (i MaintenanceScheduleResponseArgs) ToMaintenanceScheduleResponseOutput() MaintenanceScheduleResponseOutput {
+	return i.ToMaintenanceScheduleResponseOutputWithContext(context.Background())
+}
+
+func (i MaintenanceScheduleResponseArgs) ToMaintenanceScheduleResponseOutputWithContext(ctx context.Context) MaintenanceScheduleResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceScheduleResponseOutput)
+}
+
+func (i MaintenanceScheduleResponseArgs) ToMaintenanceScheduleResponsePtrOutput() MaintenanceScheduleResponsePtrOutput {
+	return i.ToMaintenanceScheduleResponsePtrOutputWithContext(context.Background())
+}
+
+func (i MaintenanceScheduleResponseArgs) ToMaintenanceScheduleResponsePtrOutputWithContext(ctx context.Context) MaintenanceScheduleResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceScheduleResponseOutput).ToMaintenanceScheduleResponsePtrOutputWithContext(ctx)
+}
+
+// MaintenanceScheduleResponsePtrInput is an input type that accepts MaintenanceScheduleResponseArgs, MaintenanceScheduleResponsePtr and MaintenanceScheduleResponsePtrOutput values.
+// You can construct a concrete instance of `MaintenanceScheduleResponsePtrInput` via:
+//
+//          MaintenanceScheduleResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type MaintenanceScheduleResponsePtrInput interface {
+	pulumi.Input
+
+	ToMaintenanceScheduleResponsePtrOutput() MaintenanceScheduleResponsePtrOutput
+	ToMaintenanceScheduleResponsePtrOutputWithContext(context.Context) MaintenanceScheduleResponsePtrOutput
+}
+
+type maintenanceScheduleResponsePtrType MaintenanceScheduleResponseArgs
+
+func MaintenanceScheduleResponsePtr(v *MaintenanceScheduleResponseArgs) MaintenanceScheduleResponsePtrInput {
+	return (*maintenanceScheduleResponsePtrType)(v)
+}
+
+func (*maintenanceScheduleResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenanceScheduleResponse)(nil)).Elem()
+}
+
+func (i *maintenanceScheduleResponsePtrType) ToMaintenanceScheduleResponsePtrOutput() MaintenanceScheduleResponsePtrOutput {
+	return i.ToMaintenanceScheduleResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *maintenanceScheduleResponsePtrType) ToMaintenanceScheduleResponsePtrOutputWithContext(ctx context.Context) MaintenanceScheduleResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MaintenanceScheduleResponsePtrOutput)
+}
+
+// Upcoming maintenance schedule. If no maintenance is scheduled, fields are not populated.
+type MaintenanceScheduleResponseOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceScheduleResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MaintenanceScheduleResponse)(nil)).Elem()
+}
+
+func (o MaintenanceScheduleResponseOutput) ToMaintenanceScheduleResponseOutput() MaintenanceScheduleResponseOutput {
+	return o
+}
+
+func (o MaintenanceScheduleResponseOutput) ToMaintenanceScheduleResponseOutputWithContext(ctx context.Context) MaintenanceScheduleResponseOutput {
+	return o
+}
+
+func (o MaintenanceScheduleResponseOutput) ToMaintenanceScheduleResponsePtrOutput() MaintenanceScheduleResponsePtrOutput {
+	return o.ToMaintenanceScheduleResponsePtrOutputWithContext(context.Background())
+}
+
+func (o MaintenanceScheduleResponseOutput) ToMaintenanceScheduleResponsePtrOutputWithContext(ctx context.Context) MaintenanceScheduleResponsePtrOutput {
+	return o.ApplyT(func(v MaintenanceScheduleResponse) *MaintenanceScheduleResponse {
+		return &v
+	}).(MaintenanceScheduleResponsePtrOutput)
+}
+
+// If the scheduled maintenance can be rescheduled, default is true.
+func (o MaintenanceScheduleResponseOutput) CanReschedule() pulumi.BoolOutput {
+	return o.ApplyT(func(v MaintenanceScheduleResponse) bool { return v.CanReschedule }).(pulumi.BoolOutput)
+}
+
+// The end time of any upcoming scheduled maintenance for this instance.
+func (o MaintenanceScheduleResponseOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenanceScheduleResponse) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// The time deadline any schedule start time cannot go beyond, including reschedule.
+func (o MaintenanceScheduleResponseOutput) ScheduleDeadlineTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenanceScheduleResponse) string { return v.ScheduleDeadlineTime }).(pulumi.StringOutput)
+}
+
+// The start time of any upcoming scheduled maintenance for this instance.
+func (o MaintenanceScheduleResponseOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v MaintenanceScheduleResponse) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type MaintenanceScheduleResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (MaintenanceScheduleResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MaintenanceScheduleResponse)(nil)).Elem()
+}
+
+func (o MaintenanceScheduleResponsePtrOutput) ToMaintenanceScheduleResponsePtrOutput() MaintenanceScheduleResponsePtrOutput {
+	return o
+}
+
+func (o MaintenanceScheduleResponsePtrOutput) ToMaintenanceScheduleResponsePtrOutputWithContext(ctx context.Context) MaintenanceScheduleResponsePtrOutput {
+	return o
+}
+
+func (o MaintenanceScheduleResponsePtrOutput) Elem() MaintenanceScheduleResponseOutput {
+	return o.ApplyT(func(v *MaintenanceScheduleResponse) MaintenanceScheduleResponse { return *v }).(MaintenanceScheduleResponseOutput)
+}
+
+// If the scheduled maintenance can be rescheduled, default is true.
+func (o MaintenanceScheduleResponsePtrOutput) CanReschedule() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MaintenanceScheduleResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.CanReschedule
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The end time of any upcoming scheduled maintenance for this instance.
+func (o MaintenanceScheduleResponsePtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MaintenanceScheduleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time deadline any schedule start time cannot go beyond, including reschedule.
+func (o MaintenanceScheduleResponsePtrOutput) ScheduleDeadlineTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MaintenanceScheduleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ScheduleDeadlineTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// The start time of any upcoming scheduled maintenance for this instance.
+func (o MaintenanceScheduleResponsePtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *MaintenanceScheduleResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+type TimeOfDay struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours *int `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes *int `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos *int `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds *int `pulumi:"seconds"`
+}
+
+// TimeOfDayInput is an input type that accepts TimeOfDayArgs and TimeOfDayOutput values.
+// You can construct a concrete instance of `TimeOfDayInput` via:
+//
+//          TimeOfDayArgs{...}
+type TimeOfDayInput interface {
+	pulumi.Input
+
+	ToTimeOfDayOutput() TimeOfDayOutput
+	ToTimeOfDayOutputWithContext(context.Context) TimeOfDayOutput
+}
+
+// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+type TimeOfDayArgs struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours pulumi.IntPtrInput `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes pulumi.IntPtrInput `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds pulumi.IntPtrInput `pulumi:"seconds"`
+}
+
+func (TimeOfDayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeOfDay)(nil)).Elem()
+}
+
+func (i TimeOfDayArgs) ToTimeOfDayOutput() TimeOfDayOutput {
+	return i.ToTimeOfDayOutputWithContext(context.Background())
+}
+
+func (i TimeOfDayArgs) ToTimeOfDayOutputWithContext(ctx context.Context) TimeOfDayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayOutput)
+}
+
+// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+type TimeOfDayOutput struct{ *pulumi.OutputState }
+
+func (TimeOfDayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeOfDay)(nil)).Elem()
+}
+
+func (o TimeOfDayOutput) ToTimeOfDayOutput() TimeOfDayOutput {
+	return o
+}
+
+func (o TimeOfDayOutput) ToTimeOfDayOutputWithContext(ctx context.Context) TimeOfDayOutput {
+	return o
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o TimeOfDayOutput) Hours() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TimeOfDay) *int { return v.Hours }).(pulumi.IntPtrOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o TimeOfDayOutput) Minutes() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TimeOfDay) *int { return v.Minutes }).(pulumi.IntPtrOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o TimeOfDayOutput) Nanos() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TimeOfDay) *int { return v.Nanos }).(pulumi.IntPtrOutput)
+}
+
+// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+func (o TimeOfDayOutput) Seconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TimeOfDay) *int { return v.Seconds }).(pulumi.IntPtrOutput)
+}
+
+// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+type TimeOfDayResponse struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours int `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes int `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos int `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds int `pulumi:"seconds"`
+}
+
+// TimeOfDayResponseInput is an input type that accepts TimeOfDayResponseArgs and TimeOfDayResponseOutput values.
+// You can construct a concrete instance of `TimeOfDayResponseInput` via:
+//
+//          TimeOfDayResponseArgs{...}
+type TimeOfDayResponseInput interface {
+	pulumi.Input
+
+	ToTimeOfDayResponseOutput() TimeOfDayResponseOutput
+	ToTimeOfDayResponseOutputWithContext(context.Context) TimeOfDayResponseOutput
+}
+
+// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+type TimeOfDayResponseArgs struct {
+	// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+	Hours pulumi.IntInput `pulumi:"hours"`
+	// Minutes of hour of day. Must be from 0 to 59.
+	Minutes pulumi.IntInput `pulumi:"minutes"`
+	// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+	Nanos pulumi.IntInput `pulumi:"nanos"`
+	// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+	Seconds pulumi.IntInput `pulumi:"seconds"`
+}
+
+func (TimeOfDayResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeOfDayResponse)(nil)).Elem()
+}
+
+func (i TimeOfDayResponseArgs) ToTimeOfDayResponseOutput() TimeOfDayResponseOutput {
+	return i.ToTimeOfDayResponseOutputWithContext(context.Background())
+}
+
+func (i TimeOfDayResponseArgs) ToTimeOfDayResponseOutputWithContext(ctx context.Context) TimeOfDayResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TimeOfDayResponseOutput)
+}
+
+// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
+type TimeOfDayResponseOutput struct{ *pulumi.OutputState }
+
+func (TimeOfDayResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeOfDayResponse)(nil)).Elem()
+}
+
+func (o TimeOfDayResponseOutput) ToTimeOfDayResponseOutput() TimeOfDayResponseOutput {
+	return o
+}
+
+func (o TimeOfDayResponseOutput) ToTimeOfDayResponseOutputWithContext(ctx context.Context) TimeOfDayResponseOutput {
+	return o
+}
+
+// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
+func (o TimeOfDayResponseOutput) Hours() pulumi.IntOutput {
+	return o.ApplyT(func(v TimeOfDayResponse) int { return v.Hours }).(pulumi.IntOutput)
+}
+
+// Minutes of hour of day. Must be from 0 to 59.
+func (o TimeOfDayResponseOutput) Minutes() pulumi.IntOutput {
+	return o.ApplyT(func(v TimeOfDayResponse) int { return v.Minutes }).(pulumi.IntOutput)
+}
+
+// Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
+func (o TimeOfDayResponseOutput) Nanos() pulumi.IntOutput {
+	return o.ApplyT(func(v TimeOfDayResponse) int { return v.Nanos }).(pulumi.IntOutput)
+}
+
+// Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
+func (o TimeOfDayResponseOutput) Seconds() pulumi.IntOutput {
+	return o.ApplyT(func(v TimeOfDayResponse) int { return v.Seconds }).(pulumi.IntOutput)
+}
+
 // TlsCertificate Resource
 type TlsCertificateResponse struct {
 	// PEM representation.
@@ -146,7 +845,246 @@ func (o TlsCertificateResponseArrayOutput) Index(i pulumi.IntInput) TlsCertifica
 	}).(TlsCertificateResponseOutput)
 }
 
+// Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside this window.
+type WeeklyMaintenanceWindow struct {
+	// The day of week that maintenance updates occur.
+	Day string `pulumi:"day"`
+	// Start time of the window in UTC time.
+	StartTime TimeOfDay `pulumi:"startTime"`
+}
+
+// WeeklyMaintenanceWindowInput is an input type that accepts WeeklyMaintenanceWindowArgs and WeeklyMaintenanceWindowOutput values.
+// You can construct a concrete instance of `WeeklyMaintenanceWindowInput` via:
+//
+//          WeeklyMaintenanceWindowArgs{...}
+type WeeklyMaintenanceWindowInput interface {
+	pulumi.Input
+
+	ToWeeklyMaintenanceWindowOutput() WeeklyMaintenanceWindowOutput
+	ToWeeklyMaintenanceWindowOutputWithContext(context.Context) WeeklyMaintenanceWindowOutput
+}
+
+// Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside this window.
+type WeeklyMaintenanceWindowArgs struct {
+	// The day of week that maintenance updates occur.
+	Day WeeklyMaintenanceWindowDay `pulumi:"day"`
+	// Start time of the window in UTC time.
+	StartTime TimeOfDayInput `pulumi:"startTime"`
+}
+
+func (WeeklyMaintenanceWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeeklyMaintenanceWindow)(nil)).Elem()
+}
+
+func (i WeeklyMaintenanceWindowArgs) ToWeeklyMaintenanceWindowOutput() WeeklyMaintenanceWindowOutput {
+	return i.ToWeeklyMaintenanceWindowOutputWithContext(context.Background())
+}
+
+func (i WeeklyMaintenanceWindowArgs) ToWeeklyMaintenanceWindowOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WeeklyMaintenanceWindowOutput)
+}
+
+// WeeklyMaintenanceWindowArrayInput is an input type that accepts WeeklyMaintenanceWindowArray and WeeklyMaintenanceWindowArrayOutput values.
+// You can construct a concrete instance of `WeeklyMaintenanceWindowArrayInput` via:
+//
+//          WeeklyMaintenanceWindowArray{ WeeklyMaintenanceWindowArgs{...} }
+type WeeklyMaintenanceWindowArrayInput interface {
+	pulumi.Input
+
+	ToWeeklyMaintenanceWindowArrayOutput() WeeklyMaintenanceWindowArrayOutput
+	ToWeeklyMaintenanceWindowArrayOutputWithContext(context.Context) WeeklyMaintenanceWindowArrayOutput
+}
+
+type WeeklyMaintenanceWindowArray []WeeklyMaintenanceWindowInput
+
+func (WeeklyMaintenanceWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WeeklyMaintenanceWindow)(nil)).Elem()
+}
+
+func (i WeeklyMaintenanceWindowArray) ToWeeklyMaintenanceWindowArrayOutput() WeeklyMaintenanceWindowArrayOutput {
+	return i.ToWeeklyMaintenanceWindowArrayOutputWithContext(context.Background())
+}
+
+func (i WeeklyMaintenanceWindowArray) ToWeeklyMaintenanceWindowArrayOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WeeklyMaintenanceWindowArrayOutput)
+}
+
+// Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside this window.
+type WeeklyMaintenanceWindowOutput struct{ *pulumi.OutputState }
+
+func (WeeklyMaintenanceWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeeklyMaintenanceWindow)(nil)).Elem()
+}
+
+func (o WeeklyMaintenanceWindowOutput) ToWeeklyMaintenanceWindowOutput() WeeklyMaintenanceWindowOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceWindowOutput) ToWeeklyMaintenanceWindowOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowOutput {
+	return o
+}
+
+// The day of week that maintenance updates occur.
+func (o WeeklyMaintenanceWindowOutput) Day() pulumi.StringOutput {
+	return o.ApplyT(func(v WeeklyMaintenanceWindow) string { return v.Day }).(pulumi.StringOutput)
+}
+
+// Start time of the window in UTC time.
+func (o WeeklyMaintenanceWindowOutput) StartTime() TimeOfDayOutput {
+	return o.ApplyT(func(v WeeklyMaintenanceWindow) TimeOfDay { return v.StartTime }).(TimeOfDayOutput)
+}
+
+type WeeklyMaintenanceWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (WeeklyMaintenanceWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WeeklyMaintenanceWindow)(nil)).Elem()
+}
+
+func (o WeeklyMaintenanceWindowArrayOutput) ToWeeklyMaintenanceWindowArrayOutput() WeeklyMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceWindowArrayOutput) ToWeeklyMaintenanceWindowArrayOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowArrayOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceWindowArrayOutput) Index(i pulumi.IntInput) WeeklyMaintenanceWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WeeklyMaintenanceWindow {
+		return vs[0].([]WeeklyMaintenanceWindow)[vs[1].(int)]
+	}).(WeeklyMaintenanceWindowOutput)
+}
+
+// Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside this window.
+type WeeklyMaintenanceWindowResponse struct {
+	// The day of week that maintenance updates occur.
+	Day string `pulumi:"day"`
+	// Duration of the maintenance window. The current window is fixed at 1 hour.
+	Duration string `pulumi:"duration"`
+	// Start time of the window in UTC time.
+	StartTime TimeOfDayResponse `pulumi:"startTime"`
+}
+
+// WeeklyMaintenanceWindowResponseInput is an input type that accepts WeeklyMaintenanceWindowResponseArgs and WeeklyMaintenanceWindowResponseOutput values.
+// You can construct a concrete instance of `WeeklyMaintenanceWindowResponseInput` via:
+//
+//          WeeklyMaintenanceWindowResponseArgs{...}
+type WeeklyMaintenanceWindowResponseInput interface {
+	pulumi.Input
+
+	ToWeeklyMaintenanceWindowResponseOutput() WeeklyMaintenanceWindowResponseOutput
+	ToWeeklyMaintenanceWindowResponseOutputWithContext(context.Context) WeeklyMaintenanceWindowResponseOutput
+}
+
+// Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside this window.
+type WeeklyMaintenanceWindowResponseArgs struct {
+	// The day of week that maintenance updates occur.
+	Day pulumi.StringInput `pulumi:"day"`
+	// Duration of the maintenance window. The current window is fixed at 1 hour.
+	Duration pulumi.StringInput `pulumi:"duration"`
+	// Start time of the window in UTC time.
+	StartTime TimeOfDayResponseInput `pulumi:"startTime"`
+}
+
+func (WeeklyMaintenanceWindowResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeeklyMaintenanceWindowResponse)(nil)).Elem()
+}
+
+func (i WeeklyMaintenanceWindowResponseArgs) ToWeeklyMaintenanceWindowResponseOutput() WeeklyMaintenanceWindowResponseOutput {
+	return i.ToWeeklyMaintenanceWindowResponseOutputWithContext(context.Background())
+}
+
+func (i WeeklyMaintenanceWindowResponseArgs) ToWeeklyMaintenanceWindowResponseOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WeeklyMaintenanceWindowResponseOutput)
+}
+
+// WeeklyMaintenanceWindowResponseArrayInput is an input type that accepts WeeklyMaintenanceWindowResponseArray and WeeklyMaintenanceWindowResponseArrayOutput values.
+// You can construct a concrete instance of `WeeklyMaintenanceWindowResponseArrayInput` via:
+//
+//          WeeklyMaintenanceWindowResponseArray{ WeeklyMaintenanceWindowResponseArgs{...} }
+type WeeklyMaintenanceWindowResponseArrayInput interface {
+	pulumi.Input
+
+	ToWeeklyMaintenanceWindowResponseArrayOutput() WeeklyMaintenanceWindowResponseArrayOutput
+	ToWeeklyMaintenanceWindowResponseArrayOutputWithContext(context.Context) WeeklyMaintenanceWindowResponseArrayOutput
+}
+
+type WeeklyMaintenanceWindowResponseArray []WeeklyMaintenanceWindowResponseInput
+
+func (WeeklyMaintenanceWindowResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WeeklyMaintenanceWindowResponse)(nil)).Elem()
+}
+
+func (i WeeklyMaintenanceWindowResponseArray) ToWeeklyMaintenanceWindowResponseArrayOutput() WeeklyMaintenanceWindowResponseArrayOutput {
+	return i.ToWeeklyMaintenanceWindowResponseArrayOutputWithContext(context.Background())
+}
+
+func (i WeeklyMaintenanceWindowResponseArray) ToWeeklyMaintenanceWindowResponseArrayOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WeeklyMaintenanceWindowResponseArrayOutput)
+}
+
+// Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside this window.
+type WeeklyMaintenanceWindowResponseOutput struct{ *pulumi.OutputState }
+
+func (WeeklyMaintenanceWindowResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeeklyMaintenanceWindowResponse)(nil)).Elem()
+}
+
+func (o WeeklyMaintenanceWindowResponseOutput) ToWeeklyMaintenanceWindowResponseOutput() WeeklyMaintenanceWindowResponseOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceWindowResponseOutput) ToWeeklyMaintenanceWindowResponseOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowResponseOutput {
+	return o
+}
+
+// The day of week that maintenance updates occur.
+func (o WeeklyMaintenanceWindowResponseOutput) Day() pulumi.StringOutput {
+	return o.ApplyT(func(v WeeklyMaintenanceWindowResponse) string { return v.Day }).(pulumi.StringOutput)
+}
+
+// Duration of the maintenance window. The current window is fixed at 1 hour.
+func (o WeeklyMaintenanceWindowResponseOutput) Duration() pulumi.StringOutput {
+	return o.ApplyT(func(v WeeklyMaintenanceWindowResponse) string { return v.Duration }).(pulumi.StringOutput)
+}
+
+// Start time of the window in UTC time.
+func (o WeeklyMaintenanceWindowResponseOutput) StartTime() TimeOfDayResponseOutput {
+	return o.ApplyT(func(v WeeklyMaintenanceWindowResponse) TimeOfDayResponse { return v.StartTime }).(TimeOfDayResponseOutput)
+}
+
+type WeeklyMaintenanceWindowResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (WeeklyMaintenanceWindowResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WeeklyMaintenanceWindowResponse)(nil)).Elem()
+}
+
+func (o WeeklyMaintenanceWindowResponseArrayOutput) ToWeeklyMaintenanceWindowResponseArrayOutput() WeeklyMaintenanceWindowResponseArrayOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceWindowResponseArrayOutput) ToWeeklyMaintenanceWindowResponseArrayOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowResponseArrayOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceWindowResponseArrayOutput) Index(i pulumi.IntInput) WeeklyMaintenanceWindowResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WeeklyMaintenanceWindowResponse {
+		return vs[0].([]WeeklyMaintenanceWindowResponse)[vs[1].(int)]
+	}).(WeeklyMaintenanceWindowResponseOutput)
+}
+
 func init() {
+	pulumi.RegisterOutputType(MaintenancePolicyOutput{})
+	pulumi.RegisterOutputType(MaintenancePolicyPtrOutput{})
+	pulumi.RegisterOutputType(MaintenancePolicyResponseOutput{})
+	pulumi.RegisterOutputType(MaintenancePolicyResponsePtrOutput{})
+	pulumi.RegisterOutputType(MaintenanceScheduleResponseOutput{})
+	pulumi.RegisterOutputType(MaintenanceScheduleResponsePtrOutput{})
+	pulumi.RegisterOutputType(TimeOfDayOutput{})
+	pulumi.RegisterOutputType(TimeOfDayResponseOutput{})
 	pulumi.RegisterOutputType(TlsCertificateResponseOutput{})
 	pulumi.RegisterOutputType(TlsCertificateResponseArrayOutput{})
+	pulumi.RegisterOutputType(WeeklyMaintenanceWindowOutput{})
+	pulumi.RegisterOutputType(WeeklyMaintenanceWindowArrayOutput{})
+	pulumi.RegisterOutputType(WeeklyMaintenanceWindowResponseOutput{})
+	pulumi.RegisterOutputType(WeeklyMaintenanceWindowResponseArrayOutput{})
 }

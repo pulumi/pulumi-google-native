@@ -4423,7 +4423,7 @@ func (o FailureDetailResponseArrayOutput) Index(i pulumi.IntInput) FailureDetail
 
 // Overlaid jpeg image.
 type Image struct {
-	// Target image opacity. Valid values: `1.0` (solid, default) to `0.0` (transparent).
+	// Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
 	Alpha *float64 `pulumi:"alpha"`
 	// Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
 	Resolution *NormalizedCoordinate `pulumi:"resolution"`
@@ -4444,7 +4444,7 @@ type ImageInput interface {
 
 // Overlaid jpeg image.
 type ImageArgs struct {
-	// Target image opacity. Valid values: `1.0` (solid, default) to `0.0` (transparent).
+	// Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
 	Alpha pulumi.Float64PtrInput `pulumi:"alpha"`
 	// Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
 	Resolution NormalizedCoordinatePtrInput `pulumi:"resolution"`
@@ -4530,7 +4530,7 @@ func (o ImageOutput) ToImagePtrOutputWithContext(ctx context.Context) ImagePtrOu
 	}).(ImagePtrOutput)
 }
 
-// Target image opacity. Valid values: `1.0` (solid, default) to `0.0` (transparent).
+// Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
 func (o ImageOutput) Alpha() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v Image) *float64 { return v.Alpha }).(pulumi.Float64PtrOutput)
 }
@@ -4563,7 +4563,7 @@ func (o ImagePtrOutput) Elem() ImageOutput {
 	return o.ApplyT(func(v *Image) Image { return *v }).(ImageOutput)
 }
 
-// Target image opacity. Valid values: `1.0` (solid, default) to `0.0` (transparent).
+// Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
 func (o ImagePtrOutput) Alpha() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v *Image) *float64 {
 		if v == nil {
@@ -4595,7 +4595,7 @@ func (o ImagePtrOutput) Uri() pulumi.StringPtrOutput {
 
 // Overlaid jpeg image.
 type ImageResponse struct {
-	// Target image opacity. Valid values: `1.0` (solid, default) to `0.0` (transparent).
+	// Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
 	Alpha float64 `pulumi:"alpha"`
 	// Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
 	Resolution NormalizedCoordinateResponse `pulumi:"resolution"`
@@ -4616,7 +4616,7 @@ type ImageResponseInput interface {
 
 // Overlaid jpeg image.
 type ImageResponseArgs struct {
-	// Target image opacity. Valid values: `1.0` (solid, default) to `0.0` (transparent).
+	// Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
 	Alpha pulumi.Float64Input `pulumi:"alpha"`
 	// Normalized image resolution, based on output video resolution. Valid values: `0.0`–`1.0`. To respect the original image aspect ratio, set either `x` or `y` to `0.0`. To use the original image resolution, set both `x` and `y` to `0.0`.
 	Resolution NormalizedCoordinateResponseInput `pulumi:"resolution"`
@@ -4651,7 +4651,7 @@ func (o ImageResponseOutput) ToImageResponseOutputWithContext(ctx context.Contex
 	return o
 }
 
-// Target image opacity. Valid values: `1.0` (solid, default) to `0.0` (transparent).
+// Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
 func (o ImageResponseOutput) Alpha() pulumi.Float64Output {
 	return o.ApplyT(func(v ImageResponse) float64 { return v.Alpha }).(pulumi.Float64Output)
 }

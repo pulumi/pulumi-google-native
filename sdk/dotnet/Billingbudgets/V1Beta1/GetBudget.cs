@@ -61,7 +61,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
+        /// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse> ThresholdRules;
 

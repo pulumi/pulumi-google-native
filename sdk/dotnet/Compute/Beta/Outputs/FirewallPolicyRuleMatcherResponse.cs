@@ -25,10 +25,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
         /// </summary>
         public readonly ImmutableArray<string> SrcIpRanges;
-        /// <summary>
-        /// List of firewall label values, which should be matched at the source of the traffic. Maximum number of source label values allowed is 256.
-        /// </summary>
-        public readonly ImmutableArray<string> SrcSecureLabels;
 
         [OutputConstructor]
         private FirewallPolicyRuleMatcherResponse(
@@ -36,14 +32,11 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             ImmutableArray<Outputs.FirewallPolicyRuleMatcherLayer4ConfigResponse> layer4Configs,
 
-            ImmutableArray<string> srcIpRanges,
-
-            ImmutableArray<string> srcSecureLabels)
+            ImmutableArray<string> srcIpRanges)
         {
             DestIpRanges = destIpRanges;
             Layer4Configs = layer4Configs;
             SrcIpRanges = srcIpRanges;
-            SrcSecureLabels = srcSecureLabels;
         }
     }
 }

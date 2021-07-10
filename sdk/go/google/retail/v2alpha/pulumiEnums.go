@@ -46,7 +46,7 @@ func (e ProductAvailability) ToStringPtrOutputWithContext(ctx context.Context) p
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-// Immutable. The type of the product. This field is output-only. Default to Catalog.product_level_config.ingestion_product_type if unset.
+// Immutable. The type of the product. Default to Catalog.product_level_config.ingestion_product_type if unset.
 type ProductType pulumi.String
 
 const (

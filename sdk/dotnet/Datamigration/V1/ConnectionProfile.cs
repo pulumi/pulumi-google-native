@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Output<Outputs.MySqlConnectionProfileResponse> Mysql { get; private set; } = null!;
 
         /// <summary>
-        /// The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
+        /// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{instance}.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public Input<Inputs.MySqlConnectionProfileArgs>? Mysql { get; set; }
 
         /// <summary>
-        /// The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
+        /// The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{instance}.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

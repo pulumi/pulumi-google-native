@@ -30,6 +30,14 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string MachineType;
         /// <summary>
+        /// Specifies the number of hours after reservation creation where instances using the reservation won't be scheduled for maintenance.
+        /// </summary>
+        public readonly int MaintenanceFreezeDurationHours;
+        /// <summary>
+        /// For more information about maintenance intervals, see Setting maintenance intervals.
+        /// </summary>
+        public readonly string MaintenanceInterval;
+        /// <summary>
         /// Minimum cpu platform the reservation.
         /// </summary>
         public readonly string MinCpuPlatform;
@@ -44,12 +52,18 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             string machineType,
 
+            int maintenanceFreezeDurationHours,
+
+            string maintenanceInterval,
+
             string minCpuPlatform)
         {
             GuestAccelerators = guestAccelerators;
             LocalSsds = localSsds;
             LocationHint = locationHint;
             MachineType = machineType;
+            MaintenanceFreezeDurationHours = maintenanceFreezeDurationHours;
+            MaintenanceInterval = maintenanceInterval;
             MinCpuPlatform = minCpuPlatform;
         }
     }

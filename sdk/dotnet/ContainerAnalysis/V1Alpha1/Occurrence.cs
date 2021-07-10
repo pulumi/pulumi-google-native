@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         public Output<Outputs.BuildDetailsResponse> BuildDetails { get; private set; } = null!;
 
         /// <summary>
+        /// Describes whether or not a resource passes compliance checks.
+        /// </summary>
+        [Output("compliance")]
+        public Output<Outputs.ComplianceOccurrenceResponse> Compliance { get; private set; } = null!;
+
+        /// <summary>
         /// The time this `Occurrence` was created.
         /// </summary>
         [Output("createTime")]
@@ -167,6 +173,12 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// </summary>
         [Input("buildDetails")]
         public Input<Inputs.BuildDetailsArgs>? BuildDetails { get; set; }
+
+        /// <summary>
+        /// Describes whether or not a resource passes compliance checks.
+        /// </summary>
+        [Input("compliance")]
+        public Input<Inputs.ComplianceOccurrenceArgs>? Compliance { get; set; }
 
         /// <summary>
         /// Describes the deployment of an artifact on a runtime.

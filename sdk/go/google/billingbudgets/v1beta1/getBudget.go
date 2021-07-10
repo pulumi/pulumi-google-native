@@ -35,6 +35,6 @@ type LookupBudgetResult struct {
 	Etag string `pulumi:"etag"`
 	// Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
 	Name string `pulumi:"name"`
-	// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
+	// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
 	ThresholdRules []GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse `pulumi:"thresholdRules"`
 }

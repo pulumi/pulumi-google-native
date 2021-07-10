@@ -350,7 +350,7 @@
       }
     }
   },
-  "revision": "20210415",
+  "revision": "20210622",
   "rootUrl": "https://vpcaccess.googleapis.com/",
   "schemas": {
     "Connector": {
@@ -379,7 +379,7 @@
           "type": "integer"
         },
         "maxThroughput": {
-          "description": "Maximum throughput of the connector in Mbps. Default is 200, max is 1000.",
+          "description": "Maximum throughput of the connector in Mbps. Default is 300, max is 1000.",
           "format": "int32",
           "type": "integer"
         },

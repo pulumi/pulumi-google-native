@@ -33,6 +33,10 @@ export interface GetServiceArgs {
 
 export interface GetServiceResult {
     /**
+     * The timestamp when the service was created.
+     */
+    readonly createTime: string;
+    /**
      * Endpoints associated with this service. Returned on LookupService.ResolveService. Control plane clients should use RegistrationService.ListEndpoints.
      */
     readonly endpoints: outputs.servicedirectory.v1beta1.EndpointResponse[];
@@ -44,4 +48,8 @@ export interface GetServiceResult {
      * Immutable. The resource name for the service in the format `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*`.
      */
     readonly name: string;
+    /**
+     * The timestamp when the service was last updated. Note: endpoints being created/deleted/updated within the service are not considered service updates for the purpose of this timestamp.
+     */
+    readonly updateTime: string;
 }

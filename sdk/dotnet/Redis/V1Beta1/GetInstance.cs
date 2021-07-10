@@ -80,6 +80,14 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         /// </summary>
         public readonly string Location;
         /// <summary>
+        /// Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
+        /// </summary>
+        public readonly Outputs.MaintenancePolicyResponse MaintenancePolicy;
+        /// <summary>
+        /// Date and time of upcoming maintenance events which have been scheduled.
+        /// </summary>
+        public readonly Outputs.MaintenanceScheduleResponse MaintenanceSchedule;
+        /// <summary>
         /// Redis memory size in GiB.
         /// </summary>
         public readonly int MemorySizeGb;
@@ -100,7 +108,7 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         /// </summary>
         public readonly ImmutableDictionary<string, string> RedisConfigs;
         /// <summary>
-        /// Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility
+        /// Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility
         /// </summary>
         public readonly string RedisVersion;
         /// <summary>
@@ -150,6 +158,10 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
 
             string location,
 
+            Outputs.MaintenancePolicyResponse maintenancePolicy,
+
+            Outputs.MaintenanceScheduleResponse maintenanceSchedule,
+
             int memorySizeGb,
 
             string name,
@@ -184,6 +196,8 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
             Host = host;
             Labels = labels;
             Location = location;
+            MaintenancePolicy = maintenancePolicy;
+            MaintenanceSchedule = maintenanceSchedule;
             MemorySizeGb = memorySizeGb;
             Name = name;
             PersistenceIamIdentity = persistenceIamIdentity;

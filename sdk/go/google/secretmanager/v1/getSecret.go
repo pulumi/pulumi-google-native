@@ -25,6 +25,8 @@ type LookupSecretArgs struct {
 type LookupSecretResult struct {
 	// The time at which the Secret was created.
 	CreateTime string `pulumi:"createTime"`
+	// Optional. Etag of the currently stored Secret.
+	Etag string `pulumi:"etag"`
 	// Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output, regardless of what was sent on input.
 	ExpireTime string `pulumi:"expireTime"`
 	// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `\p{Ll}\p{Lo}{0,62}` Label values must be between 0 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}` No more than 64 labels can be assigned to a given resource.

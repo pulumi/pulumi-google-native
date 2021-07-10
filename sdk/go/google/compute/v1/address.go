@@ -31,20 +31,13 @@ type Address struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the VPC_PEERING purpose.
 	Network pulumi.StringOutput `pulumi:"network"`
-	// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer.
-	//
-	// If this field is not specified, it is assumed to be PREMIUM.
+	// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer. If this field is not specified, it is assumed to be PREMIUM.
 	NetworkTier pulumi.StringOutput `pulumi:"networkTier"`
 	// The prefix length if the resource represents an IP range.
 	PrefixLength pulumi.IntOutput `pulumi:"prefixLength"`
-	// The purpose of this resource, which can be one of the following values:
-	// - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-	// - `DNS_RESOLVER` for a DNS resolver address in a subnetwork
-	// - `VPC_PEERING` for addresses that are reserved for VPC peer networks.
-	// - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT.
-	// - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an IPsec-encrypted Cloud Interconnect configuration. These addresses are regional resources.
+	// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly.
 	Purpose pulumi.StringOutput `pulumi:"purpose"`
-	// The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. This field is not applicable to global addresses.
+	// The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. *This field is not applicable to global addresses.*
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -107,20 +100,13 @@ type addressState struct {
 	Name *string `pulumi:"name"`
 	// The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the VPC_PEERING purpose.
 	Network *string `pulumi:"network"`
-	// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer.
-	//
-	// If this field is not specified, it is assumed to be PREMIUM.
+	// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer. If this field is not specified, it is assumed to be PREMIUM.
 	NetworkTier *string `pulumi:"networkTier"`
 	// The prefix length if the resource represents an IP range.
 	PrefixLength *int `pulumi:"prefixLength"`
-	// The purpose of this resource, which can be one of the following values:
-	// - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-	// - `DNS_RESOLVER` for a DNS resolver address in a subnetwork
-	// - `VPC_PEERING` for addresses that are reserved for VPC peer networks.
-	// - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT.
-	// - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an IPsec-encrypted Cloud Interconnect configuration. These addresses are regional resources.
+	// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly.
 	Purpose *string `pulumi:"purpose"`
-	// The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. This field is not applicable to global addresses.
+	// The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. *This field is not applicable to global addresses.*
 	Region *string `pulumi:"region"`
 	// Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -149,20 +135,13 @@ type AddressState struct {
 	Name pulumi.StringPtrInput
 	// The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the VPC_PEERING purpose.
 	Network pulumi.StringPtrInput
-	// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer.
-	//
-	// If this field is not specified, it is assumed to be PREMIUM.
+	// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer. If this field is not specified, it is assumed to be PREMIUM.
 	NetworkTier pulumi.StringPtrInput
 	// The prefix length if the resource represents an IP range.
 	PrefixLength pulumi.IntPtrInput
-	// The purpose of this resource, which can be one of the following values:
-	// - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-	// - `DNS_RESOLVER` for a DNS resolver address in a subnetwork
-	// - `VPC_PEERING` for addresses that are reserved for VPC peer networks.
-	// - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT.
-	// - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an IPsec-encrypted Cloud Interconnect configuration. These addresses are regional resources.
+	// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly.
 	Purpose pulumi.StringPtrInput
-	// The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. This field is not applicable to global addresses.
+	// The URL of the region where a regional address resides. For regional addresses, you must specify the region as a path parameter in the HTTP request URL. *This field is not applicable to global addresses.*
 	Region pulumi.StringPtrInput
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
@@ -191,19 +170,12 @@ type addressArgs struct {
 	Name *string `pulumi:"name"`
 	// The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the VPC_PEERING purpose.
 	Network *string `pulumi:"network"`
-	// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer.
-	//
-	// If this field is not specified, it is assumed to be PREMIUM.
+	// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer. If this field is not specified, it is assumed to be PREMIUM.
 	NetworkTier *string `pulumi:"networkTier"`
 	// The prefix length if the resource represents an IP range.
 	PrefixLength *int   `pulumi:"prefixLength"`
 	Project      string `pulumi:"project"`
-	// The purpose of this resource, which can be one of the following values:
-	// - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-	// - `DNS_RESOLVER` for a DNS resolver address in a subnetwork
-	// - `VPC_PEERING` for addresses that are reserved for VPC peer networks.
-	// - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT.
-	// - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an IPsec-encrypted Cloud Interconnect configuration. These addresses are regional resources.
+	// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly.
 	Purpose   *string `pulumi:"purpose"`
 	Region    string  `pulumi:"region"`
 	RequestId *string `pulumi:"requestId"`
@@ -225,19 +197,12 @@ type AddressArgs struct {
 	Name pulumi.StringPtrInput
 	// The URL of the network in which to reserve the address. This field can only be used with INTERNAL type with the VPC_PEERING purpose.
 	Network pulumi.StringPtrInput
-	// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer.
-	//
-	// If this field is not specified, it is assumed to be PREMIUM.
+	// This signifies the networking tier used for configuring this address and can only take the following values: PREMIUM or STANDARD. Global forwarding rules can only be Premium Tier. Regional forwarding rules can be either Premium or Standard Tier. Standard Tier addresses applied to regional forwarding rules can be used with any external load balancer. Regional forwarding rules in Premium Tier can only be used with a network load balancer. If this field is not specified, it is assumed to be PREMIUM.
 	NetworkTier *AddressNetworkTier
 	// The prefix length if the resource represents an IP range.
 	PrefixLength pulumi.IntPtrInput
 	Project      pulumi.StringInput
-	// The purpose of this resource, which can be one of the following values:
-	// - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources.
-	// - `DNS_RESOLVER` for a DNS resolver address in a subnetwork
-	// - `VPC_PEERING` for addresses that are reserved for VPC peer networks.
-	// - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT.
-	// - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an IPsec-encrypted Cloud Interconnect configuration. These addresses are regional resources.
+	// The purpose of this resource, which can be one of the following values: - `GCE_ENDPOINT` for addresses that are used by VM instances, alias IP ranges, internal load balancers, and similar resources. - `DNS_RESOLVER` for a DNS resolver address in a subnetwork - `VPC_PEERING` for addresses that are reserved for VPC peer networks. - `NAT_AUTO` for addresses that are external IP addresses automatically reserved for Cloud NAT. - `IPSEC_INTERCONNECT` for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly.
 	Purpose   *AddressPurpose
 	Region    pulumi.StringInput
 	RequestId pulumi.StringPtrInput

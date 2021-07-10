@@ -33,6 +33,8 @@ type Service struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Configuration for how to query telemetry on a Service.
 	Telemetry TelemetryResponseOutput `pulumi:"telemetry"`
+	// Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+	UserLabels pulumi.StringMapOutput `pulumi:"userLabels"`
 }
 
 // NewService registers a new resource with the given unique name, arguments, and options.
@@ -88,6 +90,8 @@ type serviceState struct {
 	Name *string `pulumi:"name"`
 	// Configuration for how to query telemetry on a Service.
 	Telemetry *TelemetryResponse `pulumi:"telemetry"`
+	// Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+	UserLabels map[string]string `pulumi:"userLabels"`
 }
 
 type ServiceState struct {
@@ -109,6 +113,8 @@ type ServiceState struct {
 	Name pulumi.StringPtrInput
 	// Configuration for how to query telemetry on a Service.
 	Telemetry TelemetryResponsePtrInput
+	// Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+	UserLabels pulumi.StringMapInput
 }
 
 func (ServiceState) ElementType() reflect.Type {
@@ -135,8 +141,10 @@ type serviceArgs struct {
 	ServiceId *string `pulumi:"serviceId"`
 	// Configuration for how to query telemetry on a Service.
 	Telemetry *Telemetry `pulumi:"telemetry"`
-	V3Id      string     `pulumi:"v3Id"`
-	V3Id1     string     `pulumi:"v3Id1"`
+	// Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+	UserLabels map[string]string `pulumi:"userLabels"`
+	V3Id       string            `pulumi:"v3Id"`
+	V3Id1      string            `pulumi:"v3Id1"`
 }
 
 // The set of arguments for constructing a Service resource.
@@ -160,8 +168,10 @@ type ServiceArgs struct {
 	ServiceId pulumi.StringPtrInput
 	// Configuration for how to query telemetry on a Service.
 	Telemetry TelemetryPtrInput
-	V3Id      pulumi.StringInput
-	V3Id1     pulumi.StringInput
+	// Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
+	UserLabels pulumi.StringMapInput
+	V3Id       pulumi.StringInput
+	V3Id1      pulumi.StringInput
 }
 
 func (ServiceArgs) ElementType() reflect.Type {

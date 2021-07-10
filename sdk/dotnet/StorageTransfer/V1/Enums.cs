@@ -108,11 +108,11 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         /// </summary>
         public static TransferJobStatus StatusUnspecified { get; } = new TransferJobStatus("STATUS_UNSPECIFIED");
         /// <summary>
-        /// New transfers will be performed based on the schedule.
+        /// New transfers are performed based on the schedule.
         /// </summary>
         public static TransferJobStatus Enabled { get; } = new TransferJobStatus("ENABLED");
         /// <summary>
-        /// New transfers will not be scheduled.
+        /// New transfers are not scheduled.
         /// </summary>
         public static TransferJobStatus Disabled { get; } = new TransferJobStatus("DISABLED");
         /// <summary>

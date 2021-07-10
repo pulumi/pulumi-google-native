@@ -505,7 +505,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         /// </summary>
         public static SdkVersionSdkSupportStatus Stale { get; } = new SdkVersionSdkSupportStatus("STALE");
         /// <summary>
-        /// This version of the SDK is deprecated and will eventually be no longer supported.
+        /// This version of the SDK is deprecated and will eventually be unsupported.
         /// </summary>
         public static SdkVersionSdkSupportStatus Deprecated { get; } = new SdkVersionSdkSupportStatus("DEPRECATED");
         /// <summary>
@@ -619,7 +619,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         /// </summary>
         public static WorkerPoolDefaultPackageSet DefaultPackageSetJava { get; } = new WorkerPoolDefaultPackageSet("DEFAULT_PACKAGE_SET_JAVA");
         /// <summary>
-        /// Stage pacakges typically useful to workers written in Python.
+        /// Stage packages typically useful to workers written in Python.
         /// </summary>
         public static WorkerPoolDefaultPackageSet DefaultPackageSetPython { get; } = new WorkerPoolDefaultPackageSet("DEFAULT_PACKAGE_SET_PYTHON");
 

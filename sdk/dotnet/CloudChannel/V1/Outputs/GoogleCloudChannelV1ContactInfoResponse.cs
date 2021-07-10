@@ -14,27 +14,27 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Outputs
     public sealed class GoogleCloudChannelV1ContactInfoResponse
     {
         /// <summary>
-        /// Display name of the contact in the customer account. Populated by combining customer first name and last name.
+        /// The customer account contact's display name, formatted as a combination of the customer's first and last name.
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Email of the contact in the customer account. Email is required for entitlements that need creation of admin.google.com accounts. The email will be the username used in credentials to access the admin.google.com account.
+        /// The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.
         /// </summary>
         public readonly string Email;
         /// <summary>
-        /// First name of the contact in the customer account.
+        /// The customer account contact's first name. Optional for Team customers.
         /// </summary>
         public readonly string FirstName;
         /// <summary>
-        /// Last name of the contact in the customer account.
+        /// The customer account contact's last name. Optional for Team customers.
         /// </summary>
         public readonly string LastName;
         /// <summary>
-        /// Phone number of the contact in the customer account.
+        /// The customer account's contact phone number.
         /// </summary>
         public readonly string Phone;
         /// <summary>
-        /// Optional. Job title of the contact in the customer account.
+        /// Optional. The customer account contact's job title.
         /// </summary>
         public readonly string Title;
 

@@ -43,6 +43,10 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
     public sealed class GetServiceResult
     {
         /// <summary>
+        /// The timestamp when the service was created.
+        /// </summary>
+        public readonly string CreateTime;
+        /// <summary>
         /// Endpoints associated with this service. Returned on LookupService.ResolveService. Control plane clients should use RegistrationService.ListEndpoints.
         /// </summary>
         public readonly ImmutableArray<Outputs.EndpointResponse> Endpoints;
@@ -54,18 +58,28 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         /// Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// The timestamp when the service was last updated. Note: endpoints being created/deleted/updated within the service are not considered service updates for the purpose of this timestamp.
+        /// </summary>
+        public readonly string UpdateTime;
 
         [OutputConstructor]
         private GetServiceResult(
+            string createTime,
+
             ImmutableArray<Outputs.EndpointResponse> endpoints,
 
             ImmutableDictionary<string, string> metadata,
 
-            string name)
+            string name,
+
+            string updateTime)
         {
+            CreateTime = createTime;
             Endpoints = endpoints;
             Metadata = metadata;
             Name = name;
+            UpdateTime = updateTime;
         }
     }
 }

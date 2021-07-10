@@ -61,7 +61,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string LocationHint;
         /// <summary>
-        /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+        /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
         /// </summary>
         public readonly string MaintenancePolicy;
         public readonly Outputs.NodeGroupMaintenanceWindowResponse MaintenanceWindow;

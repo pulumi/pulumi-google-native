@@ -13,15 +13,16 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     public sealed class NetworkInterfaceSubInterfaceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An IPv4 internal IP address to assign to the instance for this subinterface.
+        /// An IPv4 internal IP address to assign to the instance for this subinterface. If specified, ip_allocation_mode should be set to ALLOCATE_IP.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
 
+        [Input("ipAllocationMode")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.NetworkInterfaceSubInterfaceIpAllocationMode>? IpAllocationMode { get; set; }
+
         /// <summary>
-        /// If specified, this subnetwork must belong to the same network as that of the network interface. If not specified the subnet of network interface will be used. If you specify this property, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs:  
-        /// - https://www.googleapis.com/compute/v1/projects/project/regions/region/subnetworks/subnetwork 
-        /// - regions/region/subnetworks/subnetwork
+        /// If specified, this subnetwork must belong to the same network as that of the network interface. If not specified the subnet of network interface will be used. If you specify this property, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork 
         /// </summary>
         [Input("subnetwork")]
         public Input<string>? Subnetwork { get; set; }

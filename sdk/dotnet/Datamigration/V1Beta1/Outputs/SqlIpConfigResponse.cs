@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.SqlAclEntryResponse> AuthorizedNetworks;
         /// <summary>
-        /// Whether the instance should be assigned an IPv4 address or not.
+        /// Whether the instance is assigned a public IP address or not.
         /// </summary>
         public readonly bool EnableIpv4;
         /// <summary>

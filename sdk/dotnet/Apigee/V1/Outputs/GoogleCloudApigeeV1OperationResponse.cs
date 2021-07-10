@@ -18,7 +18,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Methods;
         /// <summary>
-        /// resource represents REST resource path associated with the proxy/remote service.
+        /// REST resource path associated with the API proxy or remote service.
         /// </summary>
         public readonly string Resource;
 

@@ -785,7 +785,7 @@ class EnvVarArgs:
         EnvVar represents an environment variable present in a Container.
         :param pulumi.Input[str] name: Name of the environment variable. Must be a C_IDENTIFIER.
         :param pulumi.Input[str] value: Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "". +optional
-        :param pulumi.Input['EnvVarSourceArgs'] value_from: Cloud Run fully managed: not supported Cloud Run on GKE: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
+        :param pulumi.Input['EnvVarSourceArgs'] value_from: Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -822,7 +822,7 @@ class EnvVarArgs:
     @pulumi.getter(name="valueFrom")
     def value_from(self) -> Optional[pulumi.Input['EnvVarSourceArgs']]:
         """
-        Cloud Run fully managed: not supported Cloud Run on GKE: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
+        Cloud Run fully managed: supported Source for the environment variable's value. Only supports secret_key_ref. Cloud Run for Anthos: supported Source for the environment variable's value. Cannot be used if value is not empty. +optional
         """
         return pulumi.get(self, "value_from")
 
@@ -839,7 +839,7 @@ class EnvVarSourceArgs:
         """
         Cloud Run fully managed: not supported Cloud Run on GKE: supported EnvVarSource represents a source for the value of an EnvVar.
         :param pulumi.Input['ConfigMapKeySelectorArgs'] config_map_key_ref: Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a ConfigMap. +optional
-        :param pulumi.Input['SecretKeySelectorArgs'] secret_key_ref: Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a secret in the pod's namespace +optional
+        :param pulumi.Input['SecretKeySelectorArgs'] secret_key_ref: Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace. +optional
         """
         if config_map_key_ref is not None:
             pulumi.set(__self__, "config_map_key_ref", config_map_key_ref)
@@ -862,7 +862,7 @@ class EnvVarSourceArgs:
     @pulumi.getter(name="secretKeyRef")
     def secret_key_ref(self) -> Optional[pulumi.Input['SecretKeySelectorArgs']]:
         """
-        Cloud Run fully managed: not supported Cloud Run on GKE: supported Selects a key of a secret in the pod's namespace +optional
+        Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace. +optional
         """
         return pulumi.get(self, "secret_key_ref")
 
@@ -1495,12 +1495,12 @@ class JobSpecArgs:
                  ttl_seconds_after_finished: Optional[pulumi.Input[int]] = None):
         """
         JobSpec describes how the job execution will look like.
-        :param pulumi.Input[str] active_deadline_seconds: Optional. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
+        :param pulumi.Input[str] active_deadline_seconds: Optional. Not supported. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
         :param pulumi.Input[int] backoff_limit: Optional. Specifies the number of retries per instance, before marking this job failed. If set to zero, instances will never retry on failure. +optional
         :param pulumi.Input[int] completions: Optional. Specifies the desired number of successfully finished instances the job should be run with. Setting to 1 means that parallelism is limited to 1 and the success of that instance signals the success of the job. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
         :param pulumi.Input[int] parallelism: Optional. Specifies the maximum desired number of instances the job should run at any given time. Must be <= completions. The actual number of instances running in steady state will be less than this number when ((.spec.completions - .status.successful) < .spec.parallelism), i.e. when the work left to do is less than max parallelism. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
         :param pulumi.Input['InstanceTemplateSpecArgs'] template: Optional. Describes the instance that will be created when executing a job.
-        :param pulumi.Input[int] ttl_seconds_after_finished: Optional. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
+        :param pulumi.Input[int] ttl_seconds_after_finished: Optional. Not supported. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
         """
         if active_deadline_seconds is not None:
             pulumi.set(__self__, "active_deadline_seconds", active_deadline_seconds)
@@ -1519,7 +1519,7 @@ class JobSpecArgs:
     @pulumi.getter(name="activeDeadlineSeconds")
     def active_deadline_seconds(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
+        Optional. Not supported. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
         """
         return pulumi.get(self, "active_deadline_seconds")
 
@@ -1579,7 +1579,7 @@ class JobSpecArgs:
     @pulumi.getter(name="ttlSecondsAfterFinished")
     def ttl_seconds_after_finished(self) -> Optional[pulumi.Input[int]]:
         """
-        Optional. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
+        Optional. Not supported. ttlSecondsAfterFinished limits the lifetime of a Job that has finished execution (either Complete or Failed). If this field is set, ttlSecondsAfterFinished after the Job finishes, it is eligible to be automatically deleted. When the Job is being deleted, its lifecycle guarantees (e.g. finalizers) will be honored. If this field is set to zero, the Job won't be automatically deleted. +optional
         """
         return pulumi.get(self, "ttl_seconds_after_finished")
 
@@ -1748,9 +1748,9 @@ class KeyToPathArgs:
                  path: Optional[pulumi.Input[str]] = None):
         """
         Maps a string key to a path within a volume.
-        :param pulumi.Input[str] key: The key to project.
+        :param pulumi.Input[str] key: Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
         :param pulumi.Input[int] mode: Mode bits to use on this file, must be a value between 0 and 0777. If not specified, the volume defaultMode will be used. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set. +optional
-        :param pulumi.Input[str] path: The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        :param pulumi.Input[str] path: Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -1763,7 +1763,7 @@ class KeyToPathArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
-        The key to project.
+        Cloud Run fully managed: supported The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. Cloud Run for Anthos: supported The key to project.
         """
         return pulumi.get(self, "key")
 
@@ -1787,7 +1787,7 @@ class KeyToPathArgs:
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
         """
-        The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
+        Cloud Run fully managed: supported Cloud Run for Anthos: supported The relative path of the file to map the key to. May not be an absolute path. May not contain the path element '..'. May not start with the string '..'.
         """
         return pulumi.get(self, "path")
 
@@ -2492,10 +2492,10 @@ class SecretKeySelectorArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  optional: Optional[pulumi.Input[bool]] = None):
         """
-        Cloud Run fully managed: not supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
-        :param pulumi.Input[str] key: Cloud Run fully managed: not supported Cloud Run on GKE: supported The key of the secret to select from. Must be a valid secret key.
+        Cloud Run fully managed: supported Cloud Run on GKE: supported SecretKeySelector selects a key of a Secret.
+        :param pulumi.Input[str] key: Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
         :param pulumi.Input['LocalObjectReferenceArgs'] local_object_reference: This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
-        :param pulumi.Input[str] name: Cloud Run fully managed: not supported Cloud Run on GKE: supported The name of the secret in the pod's namespace to select from.
+        :param pulumi.Input[str] name: Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
         :param pulumi.Input[bool] optional: Cloud Run fully managed: not supported Cloud Run on GKE: supported Specify whether the Secret or its key must be defined +optional
         """
         if key is not None:
@@ -2511,7 +2511,7 @@ class SecretKeySelectorArgs:
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
         """
-        Cloud Run fully managed: not supported Cloud Run on GKE: supported The key of the secret to select from. Must be a valid secret key.
+        Cloud Run fully managed: supported A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. Cloud Run for Anthos: supported The key of the secret to select from. Must be a valid secret key.
         """
         return pulumi.get(self, "key")
 
@@ -2535,7 +2535,7 @@ class SecretKeySelectorArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Cloud Run fully managed: not supported Cloud Run on GKE: supported The name of the secret in the pod's namespace to select from.
+        Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported The name of the secret in the pod's namespace to select from.
         """
         return pulumi.get(self, "name")
 
@@ -2566,9 +2566,9 @@ class SecretVolumeSourceArgs:
         """
         The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
         :param pulumi.Input[int] default_mode: Mode bits to use on created files by default. Must be a value between 0 and 0777. Defaults to 0644. Directories within the path are not affected by this setting. This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
-        :param pulumi.Input[Sequence[pulumi.Input['KeyToPathArgs']]] items: If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+        :param pulumi.Input[Sequence[pulumi.Input['KeyToPathArgs']]] items: Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
         :param pulumi.Input[bool] optional: Specify whether the Secret or its keys must be defined.
-        :param pulumi.Input[str] secret_name: Name of the secret in the container's namespace to use.
+        :param pulumi.Input[str] secret_name: Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
         """
         if default_mode is not None:
             pulumi.set(__self__, "default_mode", default_mode)
@@ -2595,7 +2595,7 @@ class SecretVolumeSourceArgs:
     @pulumi.getter
     def items(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KeyToPathArgs']]]]:
         """
-        If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
+        Cloud Run fully managed: supported If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. Cloud Run for Anthos: supported If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional.
         """
         return pulumi.get(self, "items")
 
@@ -2619,7 +2619,7 @@ class SecretVolumeSourceArgs:
     @pulumi.getter(name="secretName")
     def secret_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the secret in the container's namespace to use.
+        Cloud Run fully managed: supported The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Cloud Run for Anthos: supported Name of the secret in the container's namespace to use.
         """
         return pulumi.get(self, "secret_name")
 

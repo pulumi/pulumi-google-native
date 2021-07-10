@@ -21,7 +21,7 @@ type Environment struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	// Optional. The fulfillment settings to use for this environment.
 	Fulfillment GoogleCloudDialogflowV2FulfillmentResponseOutput `pulumi:"fulfillment"`
-	// The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/`
+	// The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The state of this environment. This field is read-only, i.e., it cannot be set by create and update methods.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -75,7 +75,7 @@ type environmentState struct {
 	Description *string `pulumi:"description"`
 	// Optional. The fulfillment settings to use for this environment.
 	Fulfillment *GoogleCloudDialogflowV2FulfillmentResponse `pulumi:"fulfillment"`
-	// The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/`
+	// The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.
 	Name *string `pulumi:"name"`
 	// The state of this environment. This field is read-only, i.e., it cannot be set by create and update methods.
 	State *string `pulumi:"state"`
@@ -92,7 +92,7 @@ type EnvironmentState struct {
 	Description pulumi.StringPtrInput
 	// Optional. The fulfillment settings to use for this environment.
 	Fulfillment GoogleCloudDialogflowV2FulfillmentResponsePtrInput
-	// The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/`
+	// The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.
 	Name pulumi.StringPtrInput
 	// The state of this environment. This field is read-only, i.e., it cannot be set by create and update methods.
 	State pulumi.StringPtrInput

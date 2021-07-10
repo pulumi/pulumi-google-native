@@ -3262,6 +3262,312 @@ func (o BuildTypeResponsePtrOutput) Signature() BuildSignatureResponsePtrOutput 
 	}).(BuildSignatureResponsePtrOutput)
 }
 
+// A compliance check that is a CIS benchmark.
+type CisBenchmark struct {
+	// The profile level of this CIS benchmark check.
+	ProfileLevel *int `pulumi:"profileLevel"`
+	// The severity level of this CIS benchmark check.
+	Severity *string `pulumi:"severity"`
+}
+
+// CisBenchmarkInput is an input type that accepts CisBenchmarkArgs and CisBenchmarkOutput values.
+// You can construct a concrete instance of `CisBenchmarkInput` via:
+//
+//          CisBenchmarkArgs{...}
+type CisBenchmarkInput interface {
+	pulumi.Input
+
+	ToCisBenchmarkOutput() CisBenchmarkOutput
+	ToCisBenchmarkOutputWithContext(context.Context) CisBenchmarkOutput
+}
+
+// A compliance check that is a CIS benchmark.
+type CisBenchmarkArgs struct {
+	// The profile level of this CIS benchmark check.
+	ProfileLevel pulumi.IntPtrInput `pulumi:"profileLevel"`
+	// The severity level of this CIS benchmark check.
+	Severity *CisBenchmarkSeverity `pulumi:"severity"`
+}
+
+func (CisBenchmarkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CisBenchmark)(nil)).Elem()
+}
+
+func (i CisBenchmarkArgs) ToCisBenchmarkOutput() CisBenchmarkOutput {
+	return i.ToCisBenchmarkOutputWithContext(context.Background())
+}
+
+func (i CisBenchmarkArgs) ToCisBenchmarkOutputWithContext(ctx context.Context) CisBenchmarkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CisBenchmarkOutput)
+}
+
+func (i CisBenchmarkArgs) ToCisBenchmarkPtrOutput() CisBenchmarkPtrOutput {
+	return i.ToCisBenchmarkPtrOutputWithContext(context.Background())
+}
+
+func (i CisBenchmarkArgs) ToCisBenchmarkPtrOutputWithContext(ctx context.Context) CisBenchmarkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CisBenchmarkOutput).ToCisBenchmarkPtrOutputWithContext(ctx)
+}
+
+// CisBenchmarkPtrInput is an input type that accepts CisBenchmarkArgs, CisBenchmarkPtr and CisBenchmarkPtrOutput values.
+// You can construct a concrete instance of `CisBenchmarkPtrInput` via:
+//
+//          CisBenchmarkArgs{...}
+//
+//  or:
+//
+//          nil
+type CisBenchmarkPtrInput interface {
+	pulumi.Input
+
+	ToCisBenchmarkPtrOutput() CisBenchmarkPtrOutput
+	ToCisBenchmarkPtrOutputWithContext(context.Context) CisBenchmarkPtrOutput
+}
+
+type cisBenchmarkPtrType CisBenchmarkArgs
+
+func CisBenchmarkPtr(v *CisBenchmarkArgs) CisBenchmarkPtrInput {
+	return (*cisBenchmarkPtrType)(v)
+}
+
+func (*cisBenchmarkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CisBenchmark)(nil)).Elem()
+}
+
+func (i *cisBenchmarkPtrType) ToCisBenchmarkPtrOutput() CisBenchmarkPtrOutput {
+	return i.ToCisBenchmarkPtrOutputWithContext(context.Background())
+}
+
+func (i *cisBenchmarkPtrType) ToCisBenchmarkPtrOutputWithContext(ctx context.Context) CisBenchmarkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CisBenchmarkPtrOutput)
+}
+
+// A compliance check that is a CIS benchmark.
+type CisBenchmarkOutput struct{ *pulumi.OutputState }
+
+func (CisBenchmarkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CisBenchmark)(nil)).Elem()
+}
+
+func (o CisBenchmarkOutput) ToCisBenchmarkOutput() CisBenchmarkOutput {
+	return o
+}
+
+func (o CisBenchmarkOutput) ToCisBenchmarkOutputWithContext(ctx context.Context) CisBenchmarkOutput {
+	return o
+}
+
+func (o CisBenchmarkOutput) ToCisBenchmarkPtrOutput() CisBenchmarkPtrOutput {
+	return o.ToCisBenchmarkPtrOutputWithContext(context.Background())
+}
+
+func (o CisBenchmarkOutput) ToCisBenchmarkPtrOutputWithContext(ctx context.Context) CisBenchmarkPtrOutput {
+	return o.ApplyT(func(v CisBenchmark) *CisBenchmark {
+		return &v
+	}).(CisBenchmarkPtrOutput)
+}
+
+// The profile level of this CIS benchmark check.
+func (o CisBenchmarkOutput) ProfileLevel() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v CisBenchmark) *int { return v.ProfileLevel }).(pulumi.IntPtrOutput)
+}
+
+// The severity level of this CIS benchmark check.
+func (o CisBenchmarkOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CisBenchmark) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+type CisBenchmarkPtrOutput struct{ *pulumi.OutputState }
+
+func (CisBenchmarkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CisBenchmark)(nil)).Elem()
+}
+
+func (o CisBenchmarkPtrOutput) ToCisBenchmarkPtrOutput() CisBenchmarkPtrOutput {
+	return o
+}
+
+func (o CisBenchmarkPtrOutput) ToCisBenchmarkPtrOutputWithContext(ctx context.Context) CisBenchmarkPtrOutput {
+	return o
+}
+
+func (o CisBenchmarkPtrOutput) Elem() CisBenchmarkOutput {
+	return o.ApplyT(func(v *CisBenchmark) CisBenchmark { return *v }).(CisBenchmarkOutput)
+}
+
+// The profile level of this CIS benchmark check.
+func (o CisBenchmarkPtrOutput) ProfileLevel() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CisBenchmark) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ProfileLevel
+	}).(pulumi.IntPtrOutput)
+}
+
+// The severity level of this CIS benchmark check.
+func (o CisBenchmarkPtrOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CisBenchmark) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Severity
+	}).(pulumi.StringPtrOutput)
+}
+
+// A compliance check that is a CIS benchmark.
+type CisBenchmarkResponse struct {
+	// The profile level of this CIS benchmark check.
+	ProfileLevel int `pulumi:"profileLevel"`
+	// The severity level of this CIS benchmark check.
+	Severity string `pulumi:"severity"`
+}
+
+// CisBenchmarkResponseInput is an input type that accepts CisBenchmarkResponseArgs and CisBenchmarkResponseOutput values.
+// You can construct a concrete instance of `CisBenchmarkResponseInput` via:
+//
+//          CisBenchmarkResponseArgs{...}
+type CisBenchmarkResponseInput interface {
+	pulumi.Input
+
+	ToCisBenchmarkResponseOutput() CisBenchmarkResponseOutput
+	ToCisBenchmarkResponseOutputWithContext(context.Context) CisBenchmarkResponseOutput
+}
+
+// A compliance check that is a CIS benchmark.
+type CisBenchmarkResponseArgs struct {
+	// The profile level of this CIS benchmark check.
+	ProfileLevel pulumi.IntInput `pulumi:"profileLevel"`
+	// The severity level of this CIS benchmark check.
+	Severity pulumi.StringInput `pulumi:"severity"`
+}
+
+func (CisBenchmarkResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CisBenchmarkResponse)(nil)).Elem()
+}
+
+func (i CisBenchmarkResponseArgs) ToCisBenchmarkResponseOutput() CisBenchmarkResponseOutput {
+	return i.ToCisBenchmarkResponseOutputWithContext(context.Background())
+}
+
+func (i CisBenchmarkResponseArgs) ToCisBenchmarkResponseOutputWithContext(ctx context.Context) CisBenchmarkResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CisBenchmarkResponseOutput)
+}
+
+func (i CisBenchmarkResponseArgs) ToCisBenchmarkResponsePtrOutput() CisBenchmarkResponsePtrOutput {
+	return i.ToCisBenchmarkResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CisBenchmarkResponseArgs) ToCisBenchmarkResponsePtrOutputWithContext(ctx context.Context) CisBenchmarkResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CisBenchmarkResponseOutput).ToCisBenchmarkResponsePtrOutputWithContext(ctx)
+}
+
+// CisBenchmarkResponsePtrInput is an input type that accepts CisBenchmarkResponseArgs, CisBenchmarkResponsePtr and CisBenchmarkResponsePtrOutput values.
+// You can construct a concrete instance of `CisBenchmarkResponsePtrInput` via:
+//
+//          CisBenchmarkResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CisBenchmarkResponsePtrInput interface {
+	pulumi.Input
+
+	ToCisBenchmarkResponsePtrOutput() CisBenchmarkResponsePtrOutput
+	ToCisBenchmarkResponsePtrOutputWithContext(context.Context) CisBenchmarkResponsePtrOutput
+}
+
+type cisBenchmarkResponsePtrType CisBenchmarkResponseArgs
+
+func CisBenchmarkResponsePtr(v *CisBenchmarkResponseArgs) CisBenchmarkResponsePtrInput {
+	return (*cisBenchmarkResponsePtrType)(v)
+}
+
+func (*cisBenchmarkResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CisBenchmarkResponse)(nil)).Elem()
+}
+
+func (i *cisBenchmarkResponsePtrType) ToCisBenchmarkResponsePtrOutput() CisBenchmarkResponsePtrOutput {
+	return i.ToCisBenchmarkResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *cisBenchmarkResponsePtrType) ToCisBenchmarkResponsePtrOutputWithContext(ctx context.Context) CisBenchmarkResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CisBenchmarkResponsePtrOutput)
+}
+
+// A compliance check that is a CIS benchmark.
+type CisBenchmarkResponseOutput struct{ *pulumi.OutputState }
+
+func (CisBenchmarkResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CisBenchmarkResponse)(nil)).Elem()
+}
+
+func (o CisBenchmarkResponseOutput) ToCisBenchmarkResponseOutput() CisBenchmarkResponseOutput {
+	return o
+}
+
+func (o CisBenchmarkResponseOutput) ToCisBenchmarkResponseOutputWithContext(ctx context.Context) CisBenchmarkResponseOutput {
+	return o
+}
+
+func (o CisBenchmarkResponseOutput) ToCisBenchmarkResponsePtrOutput() CisBenchmarkResponsePtrOutput {
+	return o.ToCisBenchmarkResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CisBenchmarkResponseOutput) ToCisBenchmarkResponsePtrOutputWithContext(ctx context.Context) CisBenchmarkResponsePtrOutput {
+	return o.ApplyT(func(v CisBenchmarkResponse) *CisBenchmarkResponse {
+		return &v
+	}).(CisBenchmarkResponsePtrOutput)
+}
+
+// The profile level of this CIS benchmark check.
+func (o CisBenchmarkResponseOutput) ProfileLevel() pulumi.IntOutput {
+	return o.ApplyT(func(v CisBenchmarkResponse) int { return v.ProfileLevel }).(pulumi.IntOutput)
+}
+
+// The severity level of this CIS benchmark check.
+func (o CisBenchmarkResponseOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v CisBenchmarkResponse) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+type CisBenchmarkResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CisBenchmarkResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CisBenchmarkResponse)(nil)).Elem()
+}
+
+func (o CisBenchmarkResponsePtrOutput) ToCisBenchmarkResponsePtrOutput() CisBenchmarkResponsePtrOutput {
+	return o
+}
+
+func (o CisBenchmarkResponsePtrOutput) ToCisBenchmarkResponsePtrOutputWithContext(ctx context.Context) CisBenchmarkResponsePtrOutput {
+	return o
+}
+
+func (o CisBenchmarkResponsePtrOutput) Elem() CisBenchmarkResponseOutput {
+	return o.ApplyT(func(v *CisBenchmarkResponse) CisBenchmarkResponse { return *v }).(CisBenchmarkResponseOutput)
+}
+
+// The profile level of this CIS benchmark check.
+func (o CisBenchmarkResponsePtrOutput) ProfileLevel() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *CisBenchmarkResponse) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.ProfileLevel
+	}).(pulumi.IntPtrOutput)
+}
+
+// The severity level of this CIS benchmark check.
+func (o CisBenchmarkResponsePtrOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CisBenchmarkResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Severity
+	}).(pulumi.StringPtrOutput)
+}
+
 // Command describes a step performed as part of the build pipeline.
 type Command struct {
 	// Command-line arguments used when executing this Command.
@@ -3541,6 +3847,1026 @@ func (o CommandResponseArrayOutput) Index(i pulumi.IntInput) CommandResponseOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CommandResponse {
 		return vs[0].([]CommandResponse)[vs[1].(int)]
 	}).(CommandResponseOutput)
+}
+
+// ComplianceNote encapsulates all information about a specific compliance check.
+type ComplianceNote struct {
+	// Right now we only have one compliance type, but we may add additional types in the future.
+	CisBenchmark *CisBenchmark `pulumi:"cisBenchmark"`
+	// A description about this compliance check.
+	Description *string `pulumi:"description"`
+	// A rationale for the existence of this compliance check.
+	Rationale *string `pulumi:"rationale"`
+	// A description of remediation steps if the compliance check fails.
+	Remediation *string `pulumi:"remediation"`
+	// Serialized scan instructions with a predefined format.
+	ScanInstructions *string `pulumi:"scanInstructions"`
+	// The title that identifies this compliance check.
+	Title *string `pulumi:"title"`
+	// The OS and config versions the benchmark applies to.
+	Version []ComplianceVersion `pulumi:"version"`
+}
+
+// ComplianceNoteInput is an input type that accepts ComplianceNoteArgs and ComplianceNoteOutput values.
+// You can construct a concrete instance of `ComplianceNoteInput` via:
+//
+//          ComplianceNoteArgs{...}
+type ComplianceNoteInput interface {
+	pulumi.Input
+
+	ToComplianceNoteOutput() ComplianceNoteOutput
+	ToComplianceNoteOutputWithContext(context.Context) ComplianceNoteOutput
+}
+
+// ComplianceNote encapsulates all information about a specific compliance check.
+type ComplianceNoteArgs struct {
+	// Right now we only have one compliance type, but we may add additional types in the future.
+	CisBenchmark CisBenchmarkPtrInput `pulumi:"cisBenchmark"`
+	// A description about this compliance check.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// A rationale for the existence of this compliance check.
+	Rationale pulumi.StringPtrInput `pulumi:"rationale"`
+	// A description of remediation steps if the compliance check fails.
+	Remediation pulumi.StringPtrInput `pulumi:"remediation"`
+	// Serialized scan instructions with a predefined format.
+	ScanInstructions pulumi.StringPtrInput `pulumi:"scanInstructions"`
+	// The title that identifies this compliance check.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+	// The OS and config versions the benchmark applies to.
+	Version ComplianceVersionArrayInput `pulumi:"version"`
+}
+
+func (ComplianceNoteArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComplianceNote)(nil)).Elem()
+}
+
+func (i ComplianceNoteArgs) ToComplianceNoteOutput() ComplianceNoteOutput {
+	return i.ToComplianceNoteOutputWithContext(context.Background())
+}
+
+func (i ComplianceNoteArgs) ToComplianceNoteOutputWithContext(ctx context.Context) ComplianceNoteOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComplianceNoteOutput)
+}
+
+func (i ComplianceNoteArgs) ToComplianceNotePtrOutput() ComplianceNotePtrOutput {
+	return i.ToComplianceNotePtrOutputWithContext(context.Background())
+}
+
+func (i ComplianceNoteArgs) ToComplianceNotePtrOutputWithContext(ctx context.Context) ComplianceNotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComplianceNoteOutput).ToComplianceNotePtrOutputWithContext(ctx)
+}
+
+// ComplianceNotePtrInput is an input type that accepts ComplianceNoteArgs, ComplianceNotePtr and ComplianceNotePtrOutput values.
+// You can construct a concrete instance of `ComplianceNotePtrInput` via:
+//
+//          ComplianceNoteArgs{...}
+//
+//  or:
+//
+//          nil
+type ComplianceNotePtrInput interface {
+	pulumi.Input
+
+	ToComplianceNotePtrOutput() ComplianceNotePtrOutput
+	ToComplianceNotePtrOutputWithContext(context.Context) ComplianceNotePtrOutput
+}
+
+type complianceNotePtrType ComplianceNoteArgs
+
+func ComplianceNotePtr(v *ComplianceNoteArgs) ComplianceNotePtrInput {
+	return (*complianceNotePtrType)(v)
+}
+
+func (*complianceNotePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComplianceNote)(nil)).Elem()
+}
+
+func (i *complianceNotePtrType) ToComplianceNotePtrOutput() ComplianceNotePtrOutput {
+	return i.ToComplianceNotePtrOutputWithContext(context.Background())
+}
+
+func (i *complianceNotePtrType) ToComplianceNotePtrOutputWithContext(ctx context.Context) ComplianceNotePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComplianceNotePtrOutput)
+}
+
+// ComplianceNote encapsulates all information about a specific compliance check.
+type ComplianceNoteOutput struct{ *pulumi.OutputState }
+
+func (ComplianceNoteOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComplianceNote)(nil)).Elem()
+}
+
+func (o ComplianceNoteOutput) ToComplianceNoteOutput() ComplianceNoteOutput {
+	return o
+}
+
+func (o ComplianceNoteOutput) ToComplianceNoteOutputWithContext(ctx context.Context) ComplianceNoteOutput {
+	return o
+}
+
+func (o ComplianceNoteOutput) ToComplianceNotePtrOutput() ComplianceNotePtrOutput {
+	return o.ToComplianceNotePtrOutputWithContext(context.Background())
+}
+
+func (o ComplianceNoteOutput) ToComplianceNotePtrOutputWithContext(ctx context.Context) ComplianceNotePtrOutput {
+	return o.ApplyT(func(v ComplianceNote) *ComplianceNote {
+		return &v
+	}).(ComplianceNotePtrOutput)
+}
+
+// Right now we only have one compliance type, but we may add additional types in the future.
+func (o ComplianceNoteOutput) CisBenchmark() CisBenchmarkPtrOutput {
+	return o.ApplyT(func(v ComplianceNote) *CisBenchmark { return v.CisBenchmark }).(CisBenchmarkPtrOutput)
+}
+
+// A description about this compliance check.
+func (o ComplianceNoteOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComplianceNote) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// A rationale for the existence of this compliance check.
+func (o ComplianceNoteOutput) Rationale() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComplianceNote) *string { return v.Rationale }).(pulumi.StringPtrOutput)
+}
+
+// A description of remediation steps if the compliance check fails.
+func (o ComplianceNoteOutput) Remediation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComplianceNote) *string { return v.Remediation }).(pulumi.StringPtrOutput)
+}
+
+// Serialized scan instructions with a predefined format.
+func (o ComplianceNoteOutput) ScanInstructions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComplianceNote) *string { return v.ScanInstructions }).(pulumi.StringPtrOutput)
+}
+
+// The title that identifies this compliance check.
+func (o ComplianceNoteOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComplianceNote) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+// The OS and config versions the benchmark applies to.
+func (o ComplianceNoteOutput) Version() ComplianceVersionArrayOutput {
+	return o.ApplyT(func(v ComplianceNote) []ComplianceVersion { return v.Version }).(ComplianceVersionArrayOutput)
+}
+
+type ComplianceNotePtrOutput struct{ *pulumi.OutputState }
+
+func (ComplianceNotePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComplianceNote)(nil)).Elem()
+}
+
+func (o ComplianceNotePtrOutput) ToComplianceNotePtrOutput() ComplianceNotePtrOutput {
+	return o
+}
+
+func (o ComplianceNotePtrOutput) ToComplianceNotePtrOutputWithContext(ctx context.Context) ComplianceNotePtrOutput {
+	return o
+}
+
+func (o ComplianceNotePtrOutput) Elem() ComplianceNoteOutput {
+	return o.ApplyT(func(v *ComplianceNote) ComplianceNote { return *v }).(ComplianceNoteOutput)
+}
+
+// Right now we only have one compliance type, but we may add additional types in the future.
+func (o ComplianceNotePtrOutput) CisBenchmark() CisBenchmarkPtrOutput {
+	return o.ApplyT(func(v *ComplianceNote) *CisBenchmark {
+		if v == nil {
+			return nil
+		}
+		return v.CisBenchmark
+	}).(CisBenchmarkPtrOutput)
+}
+
+// A description about this compliance check.
+func (o ComplianceNotePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComplianceNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// A rationale for the existence of this compliance check.
+func (o ComplianceNotePtrOutput) Rationale() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComplianceNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Rationale
+	}).(pulumi.StringPtrOutput)
+}
+
+// A description of remediation steps if the compliance check fails.
+func (o ComplianceNotePtrOutput) Remediation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComplianceNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Remediation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Serialized scan instructions with a predefined format.
+func (o ComplianceNotePtrOutput) ScanInstructions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComplianceNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ScanInstructions
+	}).(pulumi.StringPtrOutput)
+}
+
+// The title that identifies this compliance check.
+func (o ComplianceNotePtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComplianceNote) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OS and config versions the benchmark applies to.
+func (o ComplianceNotePtrOutput) Version() ComplianceVersionArrayOutput {
+	return o.ApplyT(func(v *ComplianceNote) []ComplianceVersion {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(ComplianceVersionArrayOutput)
+}
+
+// ComplianceNote encapsulates all information about a specific compliance check.
+type ComplianceNoteResponse struct {
+	// Right now we only have one compliance type, but we may add additional types in the future.
+	CisBenchmark CisBenchmarkResponse `pulumi:"cisBenchmark"`
+	// A description about this compliance check.
+	Description string `pulumi:"description"`
+	// A rationale for the existence of this compliance check.
+	Rationale string `pulumi:"rationale"`
+	// A description of remediation steps if the compliance check fails.
+	Remediation string `pulumi:"remediation"`
+	// Serialized scan instructions with a predefined format.
+	ScanInstructions string `pulumi:"scanInstructions"`
+	// The title that identifies this compliance check.
+	Title string `pulumi:"title"`
+	// The OS and config versions the benchmark applies to.
+	Version []ComplianceVersionResponse `pulumi:"version"`
+}
+
+// ComplianceNoteResponseInput is an input type that accepts ComplianceNoteResponseArgs and ComplianceNoteResponseOutput values.
+// You can construct a concrete instance of `ComplianceNoteResponseInput` via:
+//
+//          ComplianceNoteResponseArgs{...}
+type ComplianceNoteResponseInput interface {
+	pulumi.Input
+
+	ToComplianceNoteResponseOutput() ComplianceNoteResponseOutput
+	ToComplianceNoteResponseOutputWithContext(context.Context) ComplianceNoteResponseOutput
+}
+
+// ComplianceNote encapsulates all information about a specific compliance check.
+type ComplianceNoteResponseArgs struct {
+	// Right now we only have one compliance type, but we may add additional types in the future.
+	CisBenchmark CisBenchmarkResponseInput `pulumi:"cisBenchmark"`
+	// A description about this compliance check.
+	Description pulumi.StringInput `pulumi:"description"`
+	// A rationale for the existence of this compliance check.
+	Rationale pulumi.StringInput `pulumi:"rationale"`
+	// A description of remediation steps if the compliance check fails.
+	Remediation pulumi.StringInput `pulumi:"remediation"`
+	// Serialized scan instructions with a predefined format.
+	ScanInstructions pulumi.StringInput `pulumi:"scanInstructions"`
+	// The title that identifies this compliance check.
+	Title pulumi.StringInput `pulumi:"title"`
+	// The OS and config versions the benchmark applies to.
+	Version ComplianceVersionResponseArrayInput `pulumi:"version"`
+}
+
+func (ComplianceNoteResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComplianceNoteResponse)(nil)).Elem()
+}
+
+func (i ComplianceNoteResponseArgs) ToComplianceNoteResponseOutput() ComplianceNoteResponseOutput {
+	return i.ToComplianceNoteResponseOutputWithContext(context.Background())
+}
+
+func (i ComplianceNoteResponseArgs) ToComplianceNoteResponseOutputWithContext(ctx context.Context) ComplianceNoteResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComplianceNoteResponseOutput)
+}
+
+func (i ComplianceNoteResponseArgs) ToComplianceNoteResponsePtrOutput() ComplianceNoteResponsePtrOutput {
+	return i.ToComplianceNoteResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ComplianceNoteResponseArgs) ToComplianceNoteResponsePtrOutputWithContext(ctx context.Context) ComplianceNoteResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComplianceNoteResponseOutput).ToComplianceNoteResponsePtrOutputWithContext(ctx)
+}
+
+// ComplianceNoteResponsePtrInput is an input type that accepts ComplianceNoteResponseArgs, ComplianceNoteResponsePtr and ComplianceNoteResponsePtrOutput values.
+// You can construct a concrete instance of `ComplianceNoteResponsePtrInput` via:
+//
+//          ComplianceNoteResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ComplianceNoteResponsePtrInput interface {
+	pulumi.Input
+
+	ToComplianceNoteResponsePtrOutput() ComplianceNoteResponsePtrOutput
+	ToComplianceNoteResponsePtrOutputWithContext(context.Context) ComplianceNoteResponsePtrOutput
+}
+
+type complianceNoteResponsePtrType ComplianceNoteResponseArgs
+
+func ComplianceNoteResponsePtr(v *ComplianceNoteResponseArgs) ComplianceNoteResponsePtrInput {
+	return (*complianceNoteResponsePtrType)(v)
+}
+
+func (*complianceNoteResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComplianceNoteResponse)(nil)).Elem()
+}
+
+func (i *complianceNoteResponsePtrType) ToComplianceNoteResponsePtrOutput() ComplianceNoteResponsePtrOutput {
+	return i.ToComplianceNoteResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *complianceNoteResponsePtrType) ToComplianceNoteResponsePtrOutputWithContext(ctx context.Context) ComplianceNoteResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComplianceNoteResponsePtrOutput)
+}
+
+// ComplianceNote encapsulates all information about a specific compliance check.
+type ComplianceNoteResponseOutput struct{ *pulumi.OutputState }
+
+func (ComplianceNoteResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComplianceNoteResponse)(nil)).Elem()
+}
+
+func (o ComplianceNoteResponseOutput) ToComplianceNoteResponseOutput() ComplianceNoteResponseOutput {
+	return o
+}
+
+func (o ComplianceNoteResponseOutput) ToComplianceNoteResponseOutputWithContext(ctx context.Context) ComplianceNoteResponseOutput {
+	return o
+}
+
+func (o ComplianceNoteResponseOutput) ToComplianceNoteResponsePtrOutput() ComplianceNoteResponsePtrOutput {
+	return o.ToComplianceNoteResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ComplianceNoteResponseOutput) ToComplianceNoteResponsePtrOutputWithContext(ctx context.Context) ComplianceNoteResponsePtrOutput {
+	return o.ApplyT(func(v ComplianceNoteResponse) *ComplianceNoteResponse {
+		return &v
+	}).(ComplianceNoteResponsePtrOutput)
+}
+
+// Right now we only have one compliance type, but we may add additional types in the future.
+func (o ComplianceNoteResponseOutput) CisBenchmark() CisBenchmarkResponseOutput {
+	return o.ApplyT(func(v ComplianceNoteResponse) CisBenchmarkResponse { return v.CisBenchmark }).(CisBenchmarkResponseOutput)
+}
+
+// A description about this compliance check.
+func (o ComplianceNoteResponseOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v ComplianceNoteResponse) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// A rationale for the existence of this compliance check.
+func (o ComplianceNoteResponseOutput) Rationale() pulumi.StringOutput {
+	return o.ApplyT(func(v ComplianceNoteResponse) string { return v.Rationale }).(pulumi.StringOutput)
+}
+
+// A description of remediation steps if the compliance check fails.
+func (o ComplianceNoteResponseOutput) Remediation() pulumi.StringOutput {
+	return o.ApplyT(func(v ComplianceNoteResponse) string { return v.Remediation }).(pulumi.StringOutput)
+}
+
+// Serialized scan instructions with a predefined format.
+func (o ComplianceNoteResponseOutput) ScanInstructions() pulumi.StringOutput {
+	return o.ApplyT(func(v ComplianceNoteResponse) string { return v.ScanInstructions }).(pulumi.StringOutput)
+}
+
+// The title that identifies this compliance check.
+func (o ComplianceNoteResponseOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v ComplianceNoteResponse) string { return v.Title }).(pulumi.StringOutput)
+}
+
+// The OS and config versions the benchmark applies to.
+func (o ComplianceNoteResponseOutput) Version() ComplianceVersionResponseArrayOutput {
+	return o.ApplyT(func(v ComplianceNoteResponse) []ComplianceVersionResponse { return v.Version }).(ComplianceVersionResponseArrayOutput)
+}
+
+type ComplianceNoteResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ComplianceNoteResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComplianceNoteResponse)(nil)).Elem()
+}
+
+func (o ComplianceNoteResponsePtrOutput) ToComplianceNoteResponsePtrOutput() ComplianceNoteResponsePtrOutput {
+	return o
+}
+
+func (o ComplianceNoteResponsePtrOutput) ToComplianceNoteResponsePtrOutputWithContext(ctx context.Context) ComplianceNoteResponsePtrOutput {
+	return o
+}
+
+func (o ComplianceNoteResponsePtrOutput) Elem() ComplianceNoteResponseOutput {
+	return o.ApplyT(func(v *ComplianceNoteResponse) ComplianceNoteResponse { return *v }).(ComplianceNoteResponseOutput)
+}
+
+// Right now we only have one compliance type, but we may add additional types in the future.
+func (o ComplianceNoteResponsePtrOutput) CisBenchmark() CisBenchmarkResponsePtrOutput {
+	return o.ApplyT(func(v *ComplianceNoteResponse) *CisBenchmarkResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.CisBenchmark
+	}).(CisBenchmarkResponsePtrOutput)
+}
+
+// A description about this compliance check.
+func (o ComplianceNoteResponsePtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComplianceNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// A rationale for the existence of this compliance check.
+func (o ComplianceNoteResponsePtrOutput) Rationale() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComplianceNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Rationale
+	}).(pulumi.StringPtrOutput)
+}
+
+// A description of remediation steps if the compliance check fails.
+func (o ComplianceNoteResponsePtrOutput) Remediation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComplianceNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Remediation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Serialized scan instructions with a predefined format.
+func (o ComplianceNoteResponsePtrOutput) ScanInstructions() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComplianceNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ScanInstructions
+	}).(pulumi.StringPtrOutput)
+}
+
+// The title that identifies this compliance check.
+func (o ComplianceNoteResponsePtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComplianceNoteResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+// The OS and config versions the benchmark applies to.
+func (o ComplianceNoteResponsePtrOutput) Version() ComplianceVersionResponseArrayOutput {
+	return o.ApplyT(func(v *ComplianceNoteResponse) []ComplianceVersionResponse {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(ComplianceVersionResponseArrayOutput)
+}
+
+// An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular resources or a specified reason.
+type ComplianceOccurrence struct {
+	// The reason for non compliance of these files.
+	NonComplianceReason *string `pulumi:"nonComplianceReason"`
+	// A list of files which are violating compliance checks.
+	NonCompliantFiles []NonCompliantFile `pulumi:"nonCompliantFiles"`
+}
+
+// ComplianceOccurrenceInput is an input type that accepts ComplianceOccurrenceArgs and ComplianceOccurrenceOutput values.
+// You can construct a concrete instance of `ComplianceOccurrenceInput` via:
+//
+//          ComplianceOccurrenceArgs{...}
+type ComplianceOccurrenceInput interface {
+	pulumi.Input
+
+	ToComplianceOccurrenceOutput() ComplianceOccurrenceOutput
+	ToComplianceOccurrenceOutputWithContext(context.Context) ComplianceOccurrenceOutput
+}
+
+// An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular resources or a specified reason.
+type ComplianceOccurrenceArgs struct {
+	// The reason for non compliance of these files.
+	NonComplianceReason pulumi.StringPtrInput `pulumi:"nonComplianceReason"`
+	// A list of files which are violating compliance checks.
+	NonCompliantFiles NonCompliantFileArrayInput `pulumi:"nonCompliantFiles"`
+}
+
+func (ComplianceOccurrenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComplianceOccurrence)(nil)).Elem()
+}
+
+func (i ComplianceOccurrenceArgs) ToComplianceOccurrenceOutput() ComplianceOccurrenceOutput {
+	return i.ToComplianceOccurrenceOutputWithContext(context.Background())
+}
+
+func (i ComplianceOccurrenceArgs) ToComplianceOccurrenceOutputWithContext(ctx context.Context) ComplianceOccurrenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComplianceOccurrenceOutput)
+}
+
+func (i ComplianceOccurrenceArgs) ToComplianceOccurrencePtrOutput() ComplianceOccurrencePtrOutput {
+	return i.ToComplianceOccurrencePtrOutputWithContext(context.Background())
+}
+
+func (i ComplianceOccurrenceArgs) ToComplianceOccurrencePtrOutputWithContext(ctx context.Context) ComplianceOccurrencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComplianceOccurrenceOutput).ToComplianceOccurrencePtrOutputWithContext(ctx)
+}
+
+// ComplianceOccurrencePtrInput is an input type that accepts ComplianceOccurrenceArgs, ComplianceOccurrencePtr and ComplianceOccurrencePtrOutput values.
+// You can construct a concrete instance of `ComplianceOccurrencePtrInput` via:
+//
+//          ComplianceOccurrenceArgs{...}
+//
+//  or:
+//
+//          nil
+type ComplianceOccurrencePtrInput interface {
+	pulumi.Input
+
+	ToComplianceOccurrencePtrOutput() ComplianceOccurrencePtrOutput
+	ToComplianceOccurrencePtrOutputWithContext(context.Context) ComplianceOccurrencePtrOutput
+}
+
+type complianceOccurrencePtrType ComplianceOccurrenceArgs
+
+func ComplianceOccurrencePtr(v *ComplianceOccurrenceArgs) ComplianceOccurrencePtrInput {
+	return (*complianceOccurrencePtrType)(v)
+}
+
+func (*complianceOccurrencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComplianceOccurrence)(nil)).Elem()
+}
+
+func (i *complianceOccurrencePtrType) ToComplianceOccurrencePtrOutput() ComplianceOccurrencePtrOutput {
+	return i.ToComplianceOccurrencePtrOutputWithContext(context.Background())
+}
+
+func (i *complianceOccurrencePtrType) ToComplianceOccurrencePtrOutputWithContext(ctx context.Context) ComplianceOccurrencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComplianceOccurrencePtrOutput)
+}
+
+// An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular resources or a specified reason.
+type ComplianceOccurrenceOutput struct{ *pulumi.OutputState }
+
+func (ComplianceOccurrenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComplianceOccurrence)(nil)).Elem()
+}
+
+func (o ComplianceOccurrenceOutput) ToComplianceOccurrenceOutput() ComplianceOccurrenceOutput {
+	return o
+}
+
+func (o ComplianceOccurrenceOutput) ToComplianceOccurrenceOutputWithContext(ctx context.Context) ComplianceOccurrenceOutput {
+	return o
+}
+
+func (o ComplianceOccurrenceOutput) ToComplianceOccurrencePtrOutput() ComplianceOccurrencePtrOutput {
+	return o.ToComplianceOccurrencePtrOutputWithContext(context.Background())
+}
+
+func (o ComplianceOccurrenceOutput) ToComplianceOccurrencePtrOutputWithContext(ctx context.Context) ComplianceOccurrencePtrOutput {
+	return o.ApplyT(func(v ComplianceOccurrence) *ComplianceOccurrence {
+		return &v
+	}).(ComplianceOccurrencePtrOutput)
+}
+
+// The reason for non compliance of these files.
+func (o ComplianceOccurrenceOutput) NonComplianceReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComplianceOccurrence) *string { return v.NonComplianceReason }).(pulumi.StringPtrOutput)
+}
+
+// A list of files which are violating compliance checks.
+func (o ComplianceOccurrenceOutput) NonCompliantFiles() NonCompliantFileArrayOutput {
+	return o.ApplyT(func(v ComplianceOccurrence) []NonCompliantFile { return v.NonCompliantFiles }).(NonCompliantFileArrayOutput)
+}
+
+type ComplianceOccurrencePtrOutput struct{ *pulumi.OutputState }
+
+func (ComplianceOccurrencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComplianceOccurrence)(nil)).Elem()
+}
+
+func (o ComplianceOccurrencePtrOutput) ToComplianceOccurrencePtrOutput() ComplianceOccurrencePtrOutput {
+	return o
+}
+
+func (o ComplianceOccurrencePtrOutput) ToComplianceOccurrencePtrOutputWithContext(ctx context.Context) ComplianceOccurrencePtrOutput {
+	return o
+}
+
+func (o ComplianceOccurrencePtrOutput) Elem() ComplianceOccurrenceOutput {
+	return o.ApplyT(func(v *ComplianceOccurrence) ComplianceOccurrence { return *v }).(ComplianceOccurrenceOutput)
+}
+
+// The reason for non compliance of these files.
+func (o ComplianceOccurrencePtrOutput) NonComplianceReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComplianceOccurrence) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NonComplianceReason
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of files which are violating compliance checks.
+func (o ComplianceOccurrencePtrOutput) NonCompliantFiles() NonCompliantFileArrayOutput {
+	return o.ApplyT(func(v *ComplianceOccurrence) []NonCompliantFile {
+		if v == nil {
+			return nil
+		}
+		return v.NonCompliantFiles
+	}).(NonCompliantFileArrayOutput)
+}
+
+// An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular resources or a specified reason.
+type ComplianceOccurrenceResponse struct {
+	// The reason for non compliance of these files.
+	NonComplianceReason string `pulumi:"nonComplianceReason"`
+	// A list of files which are violating compliance checks.
+	NonCompliantFiles []NonCompliantFileResponse `pulumi:"nonCompliantFiles"`
+}
+
+// ComplianceOccurrenceResponseInput is an input type that accepts ComplianceOccurrenceResponseArgs and ComplianceOccurrenceResponseOutput values.
+// You can construct a concrete instance of `ComplianceOccurrenceResponseInput` via:
+//
+//          ComplianceOccurrenceResponseArgs{...}
+type ComplianceOccurrenceResponseInput interface {
+	pulumi.Input
+
+	ToComplianceOccurrenceResponseOutput() ComplianceOccurrenceResponseOutput
+	ToComplianceOccurrenceResponseOutputWithContext(context.Context) ComplianceOccurrenceResponseOutput
+}
+
+// An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular resources or a specified reason.
+type ComplianceOccurrenceResponseArgs struct {
+	// The reason for non compliance of these files.
+	NonComplianceReason pulumi.StringInput `pulumi:"nonComplianceReason"`
+	// A list of files which are violating compliance checks.
+	NonCompliantFiles NonCompliantFileResponseArrayInput `pulumi:"nonCompliantFiles"`
+}
+
+func (ComplianceOccurrenceResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComplianceOccurrenceResponse)(nil)).Elem()
+}
+
+func (i ComplianceOccurrenceResponseArgs) ToComplianceOccurrenceResponseOutput() ComplianceOccurrenceResponseOutput {
+	return i.ToComplianceOccurrenceResponseOutputWithContext(context.Background())
+}
+
+func (i ComplianceOccurrenceResponseArgs) ToComplianceOccurrenceResponseOutputWithContext(ctx context.Context) ComplianceOccurrenceResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComplianceOccurrenceResponseOutput)
+}
+
+func (i ComplianceOccurrenceResponseArgs) ToComplianceOccurrenceResponsePtrOutput() ComplianceOccurrenceResponsePtrOutput {
+	return i.ToComplianceOccurrenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i ComplianceOccurrenceResponseArgs) ToComplianceOccurrenceResponsePtrOutputWithContext(ctx context.Context) ComplianceOccurrenceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComplianceOccurrenceResponseOutput).ToComplianceOccurrenceResponsePtrOutputWithContext(ctx)
+}
+
+// ComplianceOccurrenceResponsePtrInput is an input type that accepts ComplianceOccurrenceResponseArgs, ComplianceOccurrenceResponsePtr and ComplianceOccurrenceResponsePtrOutput values.
+// You can construct a concrete instance of `ComplianceOccurrenceResponsePtrInput` via:
+//
+//          ComplianceOccurrenceResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type ComplianceOccurrenceResponsePtrInput interface {
+	pulumi.Input
+
+	ToComplianceOccurrenceResponsePtrOutput() ComplianceOccurrenceResponsePtrOutput
+	ToComplianceOccurrenceResponsePtrOutputWithContext(context.Context) ComplianceOccurrenceResponsePtrOutput
+}
+
+type complianceOccurrenceResponsePtrType ComplianceOccurrenceResponseArgs
+
+func ComplianceOccurrenceResponsePtr(v *ComplianceOccurrenceResponseArgs) ComplianceOccurrenceResponsePtrInput {
+	return (*complianceOccurrenceResponsePtrType)(v)
+}
+
+func (*complianceOccurrenceResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComplianceOccurrenceResponse)(nil)).Elem()
+}
+
+func (i *complianceOccurrenceResponsePtrType) ToComplianceOccurrenceResponsePtrOutput() ComplianceOccurrenceResponsePtrOutput {
+	return i.ToComplianceOccurrenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *complianceOccurrenceResponsePtrType) ToComplianceOccurrenceResponsePtrOutputWithContext(ctx context.Context) ComplianceOccurrenceResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComplianceOccurrenceResponsePtrOutput)
+}
+
+// An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular resources or a specified reason.
+type ComplianceOccurrenceResponseOutput struct{ *pulumi.OutputState }
+
+func (ComplianceOccurrenceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComplianceOccurrenceResponse)(nil)).Elem()
+}
+
+func (o ComplianceOccurrenceResponseOutput) ToComplianceOccurrenceResponseOutput() ComplianceOccurrenceResponseOutput {
+	return o
+}
+
+func (o ComplianceOccurrenceResponseOutput) ToComplianceOccurrenceResponseOutputWithContext(ctx context.Context) ComplianceOccurrenceResponseOutput {
+	return o
+}
+
+func (o ComplianceOccurrenceResponseOutput) ToComplianceOccurrenceResponsePtrOutput() ComplianceOccurrenceResponsePtrOutput {
+	return o.ToComplianceOccurrenceResponsePtrOutputWithContext(context.Background())
+}
+
+func (o ComplianceOccurrenceResponseOutput) ToComplianceOccurrenceResponsePtrOutputWithContext(ctx context.Context) ComplianceOccurrenceResponsePtrOutput {
+	return o.ApplyT(func(v ComplianceOccurrenceResponse) *ComplianceOccurrenceResponse {
+		return &v
+	}).(ComplianceOccurrenceResponsePtrOutput)
+}
+
+// The reason for non compliance of these files.
+func (o ComplianceOccurrenceResponseOutput) NonComplianceReason() pulumi.StringOutput {
+	return o.ApplyT(func(v ComplianceOccurrenceResponse) string { return v.NonComplianceReason }).(pulumi.StringOutput)
+}
+
+// A list of files which are violating compliance checks.
+func (o ComplianceOccurrenceResponseOutput) NonCompliantFiles() NonCompliantFileResponseArrayOutput {
+	return o.ApplyT(func(v ComplianceOccurrenceResponse) []NonCompliantFileResponse { return v.NonCompliantFiles }).(NonCompliantFileResponseArrayOutput)
+}
+
+type ComplianceOccurrenceResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (ComplianceOccurrenceResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ComplianceOccurrenceResponse)(nil)).Elem()
+}
+
+func (o ComplianceOccurrenceResponsePtrOutput) ToComplianceOccurrenceResponsePtrOutput() ComplianceOccurrenceResponsePtrOutput {
+	return o
+}
+
+func (o ComplianceOccurrenceResponsePtrOutput) ToComplianceOccurrenceResponsePtrOutputWithContext(ctx context.Context) ComplianceOccurrenceResponsePtrOutput {
+	return o
+}
+
+func (o ComplianceOccurrenceResponsePtrOutput) Elem() ComplianceOccurrenceResponseOutput {
+	return o.ApplyT(func(v *ComplianceOccurrenceResponse) ComplianceOccurrenceResponse { return *v }).(ComplianceOccurrenceResponseOutput)
+}
+
+// The reason for non compliance of these files.
+func (o ComplianceOccurrenceResponsePtrOutput) NonComplianceReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ComplianceOccurrenceResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NonComplianceReason
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of files which are violating compliance checks.
+func (o ComplianceOccurrenceResponsePtrOutput) NonCompliantFiles() NonCompliantFileResponseArrayOutput {
+	return o.ApplyT(func(v *ComplianceOccurrenceResponse) []NonCompliantFileResponse {
+		if v == nil {
+			return nil
+		}
+		return v.NonCompliantFiles
+	}).(NonCompliantFileResponseArrayOutput)
+}
+
+// Describes the CIS benchmark version that is applicable to a given OS and os version.
+type ComplianceVersion struct {
+	// The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.
+	CpeUri *string `pulumi:"cpeUri"`
+	// The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is defined in.
+	Version *string `pulumi:"version"`
+}
+
+// ComplianceVersionInput is an input type that accepts ComplianceVersionArgs and ComplianceVersionOutput values.
+// You can construct a concrete instance of `ComplianceVersionInput` via:
+//
+//          ComplianceVersionArgs{...}
+type ComplianceVersionInput interface {
+	pulumi.Input
+
+	ToComplianceVersionOutput() ComplianceVersionOutput
+	ToComplianceVersionOutputWithContext(context.Context) ComplianceVersionOutput
+}
+
+// Describes the CIS benchmark version that is applicable to a given OS and os version.
+type ComplianceVersionArgs struct {
+	// The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.
+	CpeUri pulumi.StringPtrInput `pulumi:"cpeUri"`
+	// The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is defined in.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (ComplianceVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComplianceVersion)(nil)).Elem()
+}
+
+func (i ComplianceVersionArgs) ToComplianceVersionOutput() ComplianceVersionOutput {
+	return i.ToComplianceVersionOutputWithContext(context.Background())
+}
+
+func (i ComplianceVersionArgs) ToComplianceVersionOutputWithContext(ctx context.Context) ComplianceVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComplianceVersionOutput)
+}
+
+// ComplianceVersionArrayInput is an input type that accepts ComplianceVersionArray and ComplianceVersionArrayOutput values.
+// You can construct a concrete instance of `ComplianceVersionArrayInput` via:
+//
+//          ComplianceVersionArray{ ComplianceVersionArgs{...} }
+type ComplianceVersionArrayInput interface {
+	pulumi.Input
+
+	ToComplianceVersionArrayOutput() ComplianceVersionArrayOutput
+	ToComplianceVersionArrayOutputWithContext(context.Context) ComplianceVersionArrayOutput
+}
+
+type ComplianceVersionArray []ComplianceVersionInput
+
+func (ComplianceVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComplianceVersion)(nil)).Elem()
+}
+
+func (i ComplianceVersionArray) ToComplianceVersionArrayOutput() ComplianceVersionArrayOutput {
+	return i.ToComplianceVersionArrayOutputWithContext(context.Background())
+}
+
+func (i ComplianceVersionArray) ToComplianceVersionArrayOutputWithContext(ctx context.Context) ComplianceVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComplianceVersionArrayOutput)
+}
+
+// Describes the CIS benchmark version that is applicable to a given OS and os version.
+type ComplianceVersionOutput struct{ *pulumi.OutputState }
+
+func (ComplianceVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComplianceVersion)(nil)).Elem()
+}
+
+func (o ComplianceVersionOutput) ToComplianceVersionOutput() ComplianceVersionOutput {
+	return o
+}
+
+func (o ComplianceVersionOutput) ToComplianceVersionOutputWithContext(ctx context.Context) ComplianceVersionOutput {
+	return o
+}
+
+// The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.
+func (o ComplianceVersionOutput) CpeUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComplianceVersion) *string { return v.CpeUri }).(pulumi.StringPtrOutput)
+}
+
+// The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is defined in.
+func (o ComplianceVersionOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ComplianceVersion) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type ComplianceVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (ComplianceVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComplianceVersion)(nil)).Elem()
+}
+
+func (o ComplianceVersionArrayOutput) ToComplianceVersionArrayOutput() ComplianceVersionArrayOutput {
+	return o
+}
+
+func (o ComplianceVersionArrayOutput) ToComplianceVersionArrayOutputWithContext(ctx context.Context) ComplianceVersionArrayOutput {
+	return o
+}
+
+func (o ComplianceVersionArrayOutput) Index(i pulumi.IntInput) ComplianceVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComplianceVersion {
+		return vs[0].([]ComplianceVersion)[vs[1].(int)]
+	}).(ComplianceVersionOutput)
+}
+
+// Describes the CIS benchmark version that is applicable to a given OS and os version.
+type ComplianceVersionResponse struct {
+	// The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.
+	CpeUri string `pulumi:"cpeUri"`
+	// The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is defined in.
+	Version string `pulumi:"version"`
+}
+
+// ComplianceVersionResponseInput is an input type that accepts ComplianceVersionResponseArgs and ComplianceVersionResponseOutput values.
+// You can construct a concrete instance of `ComplianceVersionResponseInput` via:
+//
+//          ComplianceVersionResponseArgs{...}
+type ComplianceVersionResponseInput interface {
+	pulumi.Input
+
+	ToComplianceVersionResponseOutput() ComplianceVersionResponseOutput
+	ToComplianceVersionResponseOutputWithContext(context.Context) ComplianceVersionResponseOutput
+}
+
+// Describes the CIS benchmark version that is applicable to a given OS and os version.
+type ComplianceVersionResponseArgs struct {
+	// The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.
+	CpeUri pulumi.StringInput `pulumi:"cpeUri"`
+	// The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is defined in.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (ComplianceVersionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComplianceVersionResponse)(nil)).Elem()
+}
+
+func (i ComplianceVersionResponseArgs) ToComplianceVersionResponseOutput() ComplianceVersionResponseOutput {
+	return i.ToComplianceVersionResponseOutputWithContext(context.Background())
+}
+
+func (i ComplianceVersionResponseArgs) ToComplianceVersionResponseOutputWithContext(ctx context.Context) ComplianceVersionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComplianceVersionResponseOutput)
+}
+
+// ComplianceVersionResponseArrayInput is an input type that accepts ComplianceVersionResponseArray and ComplianceVersionResponseArrayOutput values.
+// You can construct a concrete instance of `ComplianceVersionResponseArrayInput` via:
+//
+//          ComplianceVersionResponseArray{ ComplianceVersionResponseArgs{...} }
+type ComplianceVersionResponseArrayInput interface {
+	pulumi.Input
+
+	ToComplianceVersionResponseArrayOutput() ComplianceVersionResponseArrayOutput
+	ToComplianceVersionResponseArrayOutputWithContext(context.Context) ComplianceVersionResponseArrayOutput
+}
+
+type ComplianceVersionResponseArray []ComplianceVersionResponseInput
+
+func (ComplianceVersionResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComplianceVersionResponse)(nil)).Elem()
+}
+
+func (i ComplianceVersionResponseArray) ToComplianceVersionResponseArrayOutput() ComplianceVersionResponseArrayOutput {
+	return i.ToComplianceVersionResponseArrayOutputWithContext(context.Background())
+}
+
+func (i ComplianceVersionResponseArray) ToComplianceVersionResponseArrayOutputWithContext(ctx context.Context) ComplianceVersionResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ComplianceVersionResponseArrayOutput)
+}
+
+// Describes the CIS benchmark version that is applicable to a given OS and os version.
+type ComplianceVersionResponseOutput struct{ *pulumi.OutputState }
+
+func (ComplianceVersionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ComplianceVersionResponse)(nil)).Elem()
+}
+
+func (o ComplianceVersionResponseOutput) ToComplianceVersionResponseOutput() ComplianceVersionResponseOutput {
+	return o
+}
+
+func (o ComplianceVersionResponseOutput) ToComplianceVersionResponseOutputWithContext(ctx context.Context) ComplianceVersionResponseOutput {
+	return o
+}
+
+// The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.
+func (o ComplianceVersionResponseOutput) CpeUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ComplianceVersionResponse) string { return v.CpeUri }).(pulumi.StringOutput)
+}
+
+// The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is defined in.
+func (o ComplianceVersionResponseOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v ComplianceVersionResponse) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type ComplianceVersionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ComplianceVersionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ComplianceVersionResponse)(nil)).Elem()
+}
+
+func (o ComplianceVersionResponseArrayOutput) ToComplianceVersionResponseArrayOutput() ComplianceVersionResponseArrayOutput {
+	return o
+}
+
+func (o ComplianceVersionResponseArrayOutput) ToComplianceVersionResponseArrayOutputWithContext(ctx context.Context) ComplianceVersionResponseArrayOutput {
+	return o
+}
+
+func (o ComplianceVersionResponseArrayOutput) Index(i pulumi.IntInput) ComplianceVersionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ComplianceVersionResponse {
+		return vs[0].([]ComplianceVersionResponse)[vs[1].(int)]
+	}).(ComplianceVersionResponseOutput)
 }
 
 // An artifact that can be deployed in some runtime.
@@ -10081,6 +11407,242 @@ func (o LocationResponseArrayOutput) Index(i pulumi.IntInput) LocationResponseOu
 	}).(LocationResponseOutput)
 }
 
+// Details about files that caused a compliance check to fail.
+type NonCompliantFile struct {
+	// Command to display the non-compliant files.
+	DisplayCommand *string `pulumi:"displayCommand"`
+	// display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
+	Path *string `pulumi:"path"`
+	// Explains why a file is non compliant for a CIS check.
+	Reason *string `pulumi:"reason"`
+}
+
+// NonCompliantFileInput is an input type that accepts NonCompliantFileArgs and NonCompliantFileOutput values.
+// You can construct a concrete instance of `NonCompliantFileInput` via:
+//
+//          NonCompliantFileArgs{...}
+type NonCompliantFileInput interface {
+	pulumi.Input
+
+	ToNonCompliantFileOutput() NonCompliantFileOutput
+	ToNonCompliantFileOutputWithContext(context.Context) NonCompliantFileOutput
+}
+
+// Details about files that caused a compliance check to fail.
+type NonCompliantFileArgs struct {
+	// Command to display the non-compliant files.
+	DisplayCommand pulumi.StringPtrInput `pulumi:"displayCommand"`
+	// display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Explains why a file is non compliant for a CIS check.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+}
+
+func (NonCompliantFileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NonCompliantFile)(nil)).Elem()
+}
+
+func (i NonCompliantFileArgs) ToNonCompliantFileOutput() NonCompliantFileOutput {
+	return i.ToNonCompliantFileOutputWithContext(context.Background())
+}
+
+func (i NonCompliantFileArgs) ToNonCompliantFileOutputWithContext(ctx context.Context) NonCompliantFileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NonCompliantFileOutput)
+}
+
+// NonCompliantFileArrayInput is an input type that accepts NonCompliantFileArray and NonCompliantFileArrayOutput values.
+// You can construct a concrete instance of `NonCompliantFileArrayInput` via:
+//
+//          NonCompliantFileArray{ NonCompliantFileArgs{...} }
+type NonCompliantFileArrayInput interface {
+	pulumi.Input
+
+	ToNonCompliantFileArrayOutput() NonCompliantFileArrayOutput
+	ToNonCompliantFileArrayOutputWithContext(context.Context) NonCompliantFileArrayOutput
+}
+
+type NonCompliantFileArray []NonCompliantFileInput
+
+func (NonCompliantFileArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NonCompliantFile)(nil)).Elem()
+}
+
+func (i NonCompliantFileArray) ToNonCompliantFileArrayOutput() NonCompliantFileArrayOutput {
+	return i.ToNonCompliantFileArrayOutputWithContext(context.Background())
+}
+
+func (i NonCompliantFileArray) ToNonCompliantFileArrayOutputWithContext(ctx context.Context) NonCompliantFileArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NonCompliantFileArrayOutput)
+}
+
+// Details about files that caused a compliance check to fail.
+type NonCompliantFileOutput struct{ *pulumi.OutputState }
+
+func (NonCompliantFileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NonCompliantFile)(nil)).Elem()
+}
+
+func (o NonCompliantFileOutput) ToNonCompliantFileOutput() NonCompliantFileOutput {
+	return o
+}
+
+func (o NonCompliantFileOutput) ToNonCompliantFileOutputWithContext(ctx context.Context) NonCompliantFileOutput {
+	return o
+}
+
+// Command to display the non-compliant files.
+func (o NonCompliantFileOutput) DisplayCommand() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NonCompliantFile) *string { return v.DisplayCommand }).(pulumi.StringPtrOutput)
+}
+
+// display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
+func (o NonCompliantFileOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NonCompliantFile) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+// Explains why a file is non compliant for a CIS check.
+func (o NonCompliantFileOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NonCompliantFile) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+type NonCompliantFileArrayOutput struct{ *pulumi.OutputState }
+
+func (NonCompliantFileArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NonCompliantFile)(nil)).Elem()
+}
+
+func (o NonCompliantFileArrayOutput) ToNonCompliantFileArrayOutput() NonCompliantFileArrayOutput {
+	return o
+}
+
+func (o NonCompliantFileArrayOutput) ToNonCompliantFileArrayOutputWithContext(ctx context.Context) NonCompliantFileArrayOutput {
+	return o
+}
+
+func (o NonCompliantFileArrayOutput) Index(i pulumi.IntInput) NonCompliantFileOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NonCompliantFile {
+		return vs[0].([]NonCompliantFile)[vs[1].(int)]
+	}).(NonCompliantFileOutput)
+}
+
+// Details about files that caused a compliance check to fail.
+type NonCompliantFileResponse struct {
+	// Command to display the non-compliant files.
+	DisplayCommand string `pulumi:"displayCommand"`
+	// display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
+	Path string `pulumi:"path"`
+	// Explains why a file is non compliant for a CIS check.
+	Reason string `pulumi:"reason"`
+}
+
+// NonCompliantFileResponseInput is an input type that accepts NonCompliantFileResponseArgs and NonCompliantFileResponseOutput values.
+// You can construct a concrete instance of `NonCompliantFileResponseInput` via:
+//
+//          NonCompliantFileResponseArgs{...}
+type NonCompliantFileResponseInput interface {
+	pulumi.Input
+
+	ToNonCompliantFileResponseOutput() NonCompliantFileResponseOutput
+	ToNonCompliantFileResponseOutputWithContext(context.Context) NonCompliantFileResponseOutput
+}
+
+// Details about files that caused a compliance check to fail.
+type NonCompliantFileResponseArgs struct {
+	// Command to display the non-compliant files.
+	DisplayCommand pulumi.StringInput `pulumi:"displayCommand"`
+	// display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
+	Path pulumi.StringInput `pulumi:"path"`
+	// Explains why a file is non compliant for a CIS check.
+	Reason pulumi.StringInput `pulumi:"reason"`
+}
+
+func (NonCompliantFileResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NonCompliantFileResponse)(nil)).Elem()
+}
+
+func (i NonCompliantFileResponseArgs) ToNonCompliantFileResponseOutput() NonCompliantFileResponseOutput {
+	return i.ToNonCompliantFileResponseOutputWithContext(context.Background())
+}
+
+func (i NonCompliantFileResponseArgs) ToNonCompliantFileResponseOutputWithContext(ctx context.Context) NonCompliantFileResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NonCompliantFileResponseOutput)
+}
+
+// NonCompliantFileResponseArrayInput is an input type that accepts NonCompliantFileResponseArray and NonCompliantFileResponseArrayOutput values.
+// You can construct a concrete instance of `NonCompliantFileResponseArrayInput` via:
+//
+//          NonCompliantFileResponseArray{ NonCompliantFileResponseArgs{...} }
+type NonCompliantFileResponseArrayInput interface {
+	pulumi.Input
+
+	ToNonCompliantFileResponseArrayOutput() NonCompliantFileResponseArrayOutput
+	ToNonCompliantFileResponseArrayOutputWithContext(context.Context) NonCompliantFileResponseArrayOutput
+}
+
+type NonCompliantFileResponseArray []NonCompliantFileResponseInput
+
+func (NonCompliantFileResponseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NonCompliantFileResponse)(nil)).Elem()
+}
+
+func (i NonCompliantFileResponseArray) ToNonCompliantFileResponseArrayOutput() NonCompliantFileResponseArrayOutput {
+	return i.ToNonCompliantFileResponseArrayOutputWithContext(context.Background())
+}
+
+func (i NonCompliantFileResponseArray) ToNonCompliantFileResponseArrayOutputWithContext(ctx context.Context) NonCompliantFileResponseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NonCompliantFileResponseArrayOutput)
+}
+
+// Details about files that caused a compliance check to fail.
+type NonCompliantFileResponseOutput struct{ *pulumi.OutputState }
+
+func (NonCompliantFileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NonCompliantFileResponse)(nil)).Elem()
+}
+
+func (o NonCompliantFileResponseOutput) ToNonCompliantFileResponseOutput() NonCompliantFileResponseOutput {
+	return o
+}
+
+func (o NonCompliantFileResponseOutput) ToNonCompliantFileResponseOutputWithContext(ctx context.Context) NonCompliantFileResponseOutput {
+	return o
+}
+
+// Command to display the non-compliant files.
+func (o NonCompliantFileResponseOutput) DisplayCommand() pulumi.StringOutput {
+	return o.ApplyT(func(v NonCompliantFileResponse) string { return v.DisplayCommand }).(pulumi.StringOutput)
+}
+
+// display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
+func (o NonCompliantFileResponseOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v NonCompliantFileResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Explains why a file is non compliant for a CIS check.
+func (o NonCompliantFileResponseOutput) Reason() pulumi.StringOutput {
+	return o.ApplyT(func(v NonCompliantFileResponse) string { return v.Reason }).(pulumi.StringOutput)
+}
+
+type NonCompliantFileResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NonCompliantFileResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NonCompliantFileResponse)(nil)).Elem()
+}
+
+func (o NonCompliantFileResponseArrayOutput) ToNonCompliantFileResponseArrayOutput() NonCompliantFileResponseArrayOutput {
+	return o
+}
+
+func (o NonCompliantFileResponseArrayOutput) ToNonCompliantFileResponseArrayOutputWithContext(ctx context.Context) NonCompliantFileResponseArrayOutput {
+	return o
+}
+
+func (o NonCompliantFileResponseArrayOutput) Index(i pulumi.IntInput) NonCompliantFileResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NonCompliantFileResponse {
+		return vs[0].([]NonCompliantFileResponse)[vs[1].(int)]
+	}).(NonCompliantFileResponseOutput)
+}
+
 // This represents a particular package that is distributed over various channels. e.g. glibc (aka libc6) is distributed by many, at various versions.
 type Package struct {
 	// The various channels by which a package is distributed.
@@ -15683,10 +17245,26 @@ func init() {
 	pulumi.RegisterOutputType(BuildTypePtrOutput{})
 	pulumi.RegisterOutputType(BuildTypeResponseOutput{})
 	pulumi.RegisterOutputType(BuildTypeResponsePtrOutput{})
+	pulumi.RegisterOutputType(CisBenchmarkOutput{})
+	pulumi.RegisterOutputType(CisBenchmarkPtrOutput{})
+	pulumi.RegisterOutputType(CisBenchmarkResponseOutput{})
+	pulumi.RegisterOutputType(CisBenchmarkResponsePtrOutput{})
 	pulumi.RegisterOutputType(CommandOutput{})
 	pulumi.RegisterOutputType(CommandArrayOutput{})
 	pulumi.RegisterOutputType(CommandResponseOutput{})
 	pulumi.RegisterOutputType(CommandResponseArrayOutput{})
+	pulumi.RegisterOutputType(ComplianceNoteOutput{})
+	pulumi.RegisterOutputType(ComplianceNotePtrOutput{})
+	pulumi.RegisterOutputType(ComplianceNoteResponseOutput{})
+	pulumi.RegisterOutputType(ComplianceNoteResponsePtrOutput{})
+	pulumi.RegisterOutputType(ComplianceOccurrenceOutput{})
+	pulumi.RegisterOutputType(ComplianceOccurrencePtrOutput{})
+	pulumi.RegisterOutputType(ComplianceOccurrenceResponseOutput{})
+	pulumi.RegisterOutputType(ComplianceOccurrenceResponsePtrOutput{})
+	pulumi.RegisterOutputType(ComplianceVersionOutput{})
+	pulumi.RegisterOutputType(ComplianceVersionArrayOutput{})
+	pulumi.RegisterOutputType(ComplianceVersionResponseOutput{})
+	pulumi.RegisterOutputType(ComplianceVersionResponseArrayOutput{})
 	pulumi.RegisterOutputType(DeployableOutput{})
 	pulumi.RegisterOutputType(DeployablePtrOutput{})
 	pulumi.RegisterOutputType(DeployableResponseOutput{})
@@ -15768,6 +17346,10 @@ func init() {
 	pulumi.RegisterOutputType(LocationArrayOutput{})
 	pulumi.RegisterOutputType(LocationResponseOutput{})
 	pulumi.RegisterOutputType(LocationResponseArrayOutput{})
+	pulumi.RegisterOutputType(NonCompliantFileOutput{})
+	pulumi.RegisterOutputType(NonCompliantFileArrayOutput{})
+	pulumi.RegisterOutputType(NonCompliantFileResponseOutput{})
+	pulumi.RegisterOutputType(NonCompliantFileResponseArrayOutput{})
 	pulumi.RegisterOutputType(PackageOutput{})
 	pulumi.RegisterOutputType(PackagePtrOutput{})
 	pulumi.RegisterOutputType(PackageIssueOutput{})

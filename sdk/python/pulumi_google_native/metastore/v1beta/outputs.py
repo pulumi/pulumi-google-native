@@ -16,6 +16,7 @@ __all__ = [
     'BindingResponse',
     'DataCatalogConfigResponse',
     'DatabaseDumpResponse',
+    'EncryptionConfigResponse',
     'ExprResponse',
     'HiveMetastoreConfigResponse',
     'KerberosConfigResponse',
@@ -270,6 +271,45 @@ class DatabaseDumpResponse(dict):
         Optional. The type of the database dump. If unspecified, defaults to MYSQL.
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class EncryptionConfigResponse(dict):
+    """
+    Encryption settings for the service.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "kmsKey":
+            suggest = "kms_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EncryptionConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EncryptionConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EncryptionConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 kms_key: str):
+        """
+        Encryption settings for the service.
+        :param str kms_key: The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+        """
+        pulumi.set(__self__, "kms_key", kms_key)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> str:
+        """
+        The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
+        """
+        return pulumi.get(self, "kms_key")
 
 
 @pulumi.output_type
@@ -828,6 +868,8 @@ class ServiceResponse(dict):
             suggest = "artifact_gcs_uri"
         elif key == "createTime":
             suggest = "create_time"
+        elif key == "encryptionConfig":
+            suggest = "encryption_config"
         elif key == "endpointUri":
             suggest = "endpoint_uri"
         elif key == "hiveMetastoreConfig":
@@ -859,6 +901,7 @@ class ServiceResponse(dict):
     def __init__(__self__, *,
                  artifact_gcs_uri: str,
                  create_time: str,
+                 encryption_config: 'outputs.EncryptionConfigResponse',
                  endpoint_uri: str,
                  hive_metastore_config: 'outputs.HiveMetastoreConfigResponse',
                  labels: Mapping[str, str],
@@ -878,6 +921,7 @@ class ServiceResponse(dict):
         A managed metastore service that serves metadata queries.
         :param str artifact_gcs_uri: A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
         :param str create_time: The time when the metastore service was created.
+        :param 'EncryptionConfigResponse' encryption_config: Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
         :param str endpoint_uri: The URI of the endpoint used to access the metastore service.
         :param 'HiveMetastoreConfigResponse' hive_metastore_config: Configuration information specific to running Hive metastore software as the metastore service.
         :param Mapping[str, str] labels: User-defined labels for the metastore service.
@@ -896,6 +940,7 @@ class ServiceResponse(dict):
         """
         pulumi.set(__self__, "artifact_gcs_uri", artifact_gcs_uri)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "encryption_config", encryption_config)
         pulumi.set(__self__, "endpoint_uri", endpoint_uri)
         pulumi.set(__self__, "hive_metastore_config", hive_metastore_config)
         pulumi.set(__self__, "labels", labels)
@@ -927,6 +972,14 @@ class ServiceResponse(dict):
         The time when the metastore service was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="encryptionConfig")
+    def encryption_config(self) -> 'outputs.EncryptionConfigResponse':
+        """
+        Immutable. Information used to configure the Dataproc Metastore service to encrypt customer data at rest. Cannot be updated.
+        """
+        return pulumi.get(self, "encryption_config")
 
     @property
     @pulumi.getter(name="endpointUri")

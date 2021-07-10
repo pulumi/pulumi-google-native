@@ -14,11 +14,11 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
     public sealed class HTTPHeaderResponse
     {
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field name
+        /// The header field name
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The header field value
+        /// The header field value
         /// </summary>
         public readonly string Value;
 

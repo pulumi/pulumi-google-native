@@ -865,15 +865,15 @@ func (o GoogleCloudChannelV1CommitmentSettingsResponsePtrOutput) StartTime() pul
 
 // Contact information for a customer account.
 type GoogleCloudChannelV1ContactInfo struct {
-	// Email of the contact in the customer account. Email is required for entitlements that need creation of admin.google.com accounts. The email will be the username used in credentials to access the admin.google.com account.
+	// The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.
 	Email *string `pulumi:"email"`
-	// First name of the contact in the customer account.
+	// The customer account contact's first name. Optional for Team customers.
 	FirstName *string `pulumi:"firstName"`
-	// Last name of the contact in the customer account.
+	// The customer account contact's last name. Optional for Team customers.
 	LastName *string `pulumi:"lastName"`
-	// Phone number of the contact in the customer account.
+	// The customer account's contact phone number.
 	Phone *string `pulumi:"phone"`
-	// Optional. Job title of the contact in the customer account.
+	// Optional. The customer account contact's job title.
 	Title *string `pulumi:"title"`
 }
 
@@ -890,15 +890,15 @@ type GoogleCloudChannelV1ContactInfoInput interface {
 
 // Contact information for a customer account.
 type GoogleCloudChannelV1ContactInfoArgs struct {
-	// Email of the contact in the customer account. Email is required for entitlements that need creation of admin.google.com accounts. The email will be the username used in credentials to access the admin.google.com account.
+	// The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.
 	Email pulumi.StringPtrInput `pulumi:"email"`
-	// First name of the contact in the customer account.
+	// The customer account contact's first name. Optional for Team customers.
 	FirstName pulumi.StringPtrInput `pulumi:"firstName"`
-	// Last name of the contact in the customer account.
+	// The customer account contact's last name. Optional for Team customers.
 	LastName pulumi.StringPtrInput `pulumi:"lastName"`
-	// Phone number of the contact in the customer account.
+	// The customer account's contact phone number.
 	Phone pulumi.StringPtrInput `pulumi:"phone"`
-	// Optional. Job title of the contact in the customer account.
+	// Optional. The customer account contact's job title.
 	Title pulumi.StringPtrInput `pulumi:"title"`
 }
 
@@ -980,27 +980,27 @@ func (o GoogleCloudChannelV1ContactInfoOutput) ToGoogleCloudChannelV1ContactInfo
 	}).(GoogleCloudChannelV1ContactInfoPtrOutput)
 }
 
-// Email of the contact in the customer account. Email is required for entitlements that need creation of admin.google.com accounts. The email will be the username used in credentials to access the admin.google.com account.
+// The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.
 func (o GoogleCloudChannelV1ContactInfoOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1ContactInfo) *string { return v.Email }).(pulumi.StringPtrOutput)
 }
 
-// First name of the contact in the customer account.
+// The customer account contact's first name. Optional for Team customers.
 func (o GoogleCloudChannelV1ContactInfoOutput) FirstName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1ContactInfo) *string { return v.FirstName }).(pulumi.StringPtrOutput)
 }
 
-// Last name of the contact in the customer account.
+// The customer account contact's last name. Optional for Team customers.
 func (o GoogleCloudChannelV1ContactInfoOutput) LastName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1ContactInfo) *string { return v.LastName }).(pulumi.StringPtrOutput)
 }
 
-// Phone number of the contact in the customer account.
+// The customer account's contact phone number.
 func (o GoogleCloudChannelV1ContactInfoOutput) Phone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1ContactInfo) *string { return v.Phone }).(pulumi.StringPtrOutput)
 }
 
-// Optional. Job title of the contact in the customer account.
+// Optional. The customer account contact's job title.
 func (o GoogleCloudChannelV1ContactInfoOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1ContactInfo) *string { return v.Title }).(pulumi.StringPtrOutput)
 }
@@ -1023,7 +1023,7 @@ func (o GoogleCloudChannelV1ContactInfoPtrOutput) Elem() GoogleCloudChannelV1Con
 	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfo) GoogleCloudChannelV1ContactInfo { return *v }).(GoogleCloudChannelV1ContactInfoOutput)
 }
 
-// Email of the contact in the customer account. Email is required for entitlements that need creation of admin.google.com accounts. The email will be the username used in credentials to access the admin.google.com account.
+// The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.
 func (o GoogleCloudChannelV1ContactInfoPtrOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfo) *string {
 		if v == nil {
@@ -1033,7 +1033,7 @@ func (o GoogleCloudChannelV1ContactInfoPtrOutput) Email() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// First name of the contact in the customer account.
+// The customer account contact's first name. Optional for Team customers.
 func (o GoogleCloudChannelV1ContactInfoPtrOutput) FirstName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfo) *string {
 		if v == nil {
@@ -1043,7 +1043,7 @@ func (o GoogleCloudChannelV1ContactInfoPtrOutput) FirstName() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Last name of the contact in the customer account.
+// The customer account contact's last name. Optional for Team customers.
 func (o GoogleCloudChannelV1ContactInfoPtrOutput) LastName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfo) *string {
 		if v == nil {
@@ -1053,7 +1053,7 @@ func (o GoogleCloudChannelV1ContactInfoPtrOutput) LastName() pulumi.StringPtrOut
 	}).(pulumi.StringPtrOutput)
 }
 
-// Phone number of the contact in the customer account.
+// The customer account's contact phone number.
 func (o GoogleCloudChannelV1ContactInfoPtrOutput) Phone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfo) *string {
 		if v == nil {
@@ -1063,7 +1063,7 @@ func (o GoogleCloudChannelV1ContactInfoPtrOutput) Phone() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. Job title of the contact in the customer account.
+// Optional. The customer account contact's job title.
 func (o GoogleCloudChannelV1ContactInfoPtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfo) *string {
 		if v == nil {
@@ -1075,17 +1075,17 @@ func (o GoogleCloudChannelV1ContactInfoPtrOutput) Title() pulumi.StringPtrOutput
 
 // Contact information for a customer account.
 type GoogleCloudChannelV1ContactInfoResponse struct {
-	// Display name of the contact in the customer account. Populated by combining customer first name and last name.
+	// The customer account contact's display name, formatted as a combination of the customer's first and last name.
 	DisplayName string `pulumi:"displayName"`
-	// Email of the contact in the customer account. Email is required for entitlements that need creation of admin.google.com accounts. The email will be the username used in credentials to access the admin.google.com account.
+	// The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.
 	Email string `pulumi:"email"`
-	// First name of the contact in the customer account.
+	// The customer account contact's first name. Optional for Team customers.
 	FirstName string `pulumi:"firstName"`
-	// Last name of the contact in the customer account.
+	// The customer account contact's last name. Optional for Team customers.
 	LastName string `pulumi:"lastName"`
-	// Phone number of the contact in the customer account.
+	// The customer account's contact phone number.
 	Phone string `pulumi:"phone"`
-	// Optional. Job title of the contact in the customer account.
+	// Optional. The customer account contact's job title.
 	Title string `pulumi:"title"`
 }
 
@@ -1102,17 +1102,17 @@ type GoogleCloudChannelV1ContactInfoResponseInput interface {
 
 // Contact information for a customer account.
 type GoogleCloudChannelV1ContactInfoResponseArgs struct {
-	// Display name of the contact in the customer account. Populated by combining customer first name and last name.
+	// The customer account contact's display name, formatted as a combination of the customer's first and last name.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// Email of the contact in the customer account. Email is required for entitlements that need creation of admin.google.com accounts. The email will be the username used in credentials to access the admin.google.com account.
+	// The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.
 	Email pulumi.StringInput `pulumi:"email"`
-	// First name of the contact in the customer account.
+	// The customer account contact's first name. Optional for Team customers.
 	FirstName pulumi.StringInput `pulumi:"firstName"`
-	// Last name of the contact in the customer account.
+	// The customer account contact's last name. Optional for Team customers.
 	LastName pulumi.StringInput `pulumi:"lastName"`
-	// Phone number of the contact in the customer account.
+	// The customer account's contact phone number.
 	Phone pulumi.StringInput `pulumi:"phone"`
-	// Optional. Job title of the contact in the customer account.
+	// Optional. The customer account contact's job title.
 	Title pulumi.StringInput `pulumi:"title"`
 }
 
@@ -1194,32 +1194,32 @@ func (o GoogleCloudChannelV1ContactInfoResponseOutput) ToGoogleCloudChannelV1Con
 	}).(GoogleCloudChannelV1ContactInfoResponsePtrOutput)
 }
 
-// Display name of the contact in the customer account. Populated by combining customer first name and last name.
+// The customer account contact's display name, formatted as a combination of the customer's first and last name.
 func (o GoogleCloudChannelV1ContactInfoResponseOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1ContactInfoResponse) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Email of the contact in the customer account. Email is required for entitlements that need creation of admin.google.com accounts. The email will be the username used in credentials to access the admin.google.com account.
+// The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.
 func (o GoogleCloudChannelV1ContactInfoResponseOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1ContactInfoResponse) string { return v.Email }).(pulumi.StringOutput)
 }
 
-// First name of the contact in the customer account.
+// The customer account contact's first name. Optional for Team customers.
 func (o GoogleCloudChannelV1ContactInfoResponseOutput) FirstName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1ContactInfoResponse) string { return v.FirstName }).(pulumi.StringOutput)
 }
 
-// Last name of the contact in the customer account.
+// The customer account contact's last name. Optional for Team customers.
 func (o GoogleCloudChannelV1ContactInfoResponseOutput) LastName() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1ContactInfoResponse) string { return v.LastName }).(pulumi.StringOutput)
 }
 
-// Phone number of the contact in the customer account.
+// The customer account's contact phone number.
 func (o GoogleCloudChannelV1ContactInfoResponseOutput) Phone() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1ContactInfoResponse) string { return v.Phone }).(pulumi.StringOutput)
 }
 
-// Optional. Job title of the contact in the customer account.
+// Optional. The customer account contact's job title.
 func (o GoogleCloudChannelV1ContactInfoResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudChannelV1ContactInfoResponse) string { return v.Title }).(pulumi.StringOutput)
 }
@@ -1242,7 +1242,7 @@ func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) Elem() GoogleCloudChan
 	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfoResponse) GoogleCloudChannelV1ContactInfoResponse { return *v }).(GoogleCloudChannelV1ContactInfoResponseOutput)
 }
 
-// Display name of the contact in the customer account. Populated by combining customer first name and last name.
+// The customer account contact's display name, formatted as a combination of the customer's first and last name.
 func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) DisplayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfoResponse) *string {
 		if v == nil {
@@ -1252,7 +1252,7 @@ func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) DisplayName() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
-// Email of the contact in the customer account. Email is required for entitlements that need creation of admin.google.com accounts. The email will be the username used in credentials to access the admin.google.com account.
+// The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.
 func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfoResponse) *string {
 		if v == nil {
@@ -1262,7 +1262,7 @@ func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) Email() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// First name of the contact in the customer account.
+// The customer account contact's first name. Optional for Team customers.
 func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) FirstName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfoResponse) *string {
 		if v == nil {
@@ -1272,7 +1272,7 @@ func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) FirstName() pulumi.Str
 	}).(pulumi.StringPtrOutput)
 }
 
-// Last name of the contact in the customer account.
+// The customer account contact's last name. Optional for Team customers.
 func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) LastName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfoResponse) *string {
 		if v == nil {
@@ -1282,7 +1282,7 @@ func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) LastName() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
-// Phone number of the contact in the customer account.
+// The customer account's contact phone number.
 func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) Phone() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfoResponse) *string {
 		if v == nil {
@@ -1292,7 +1292,7 @@ func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) Phone() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// Optional. Job title of the contact in the customer account.
+// Optional. The customer account contact's job title.
 func (o GoogleCloudChannelV1ContactInfoResponsePtrOutput) Title() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudChannelV1ContactInfoResponse) *string {
 		if v == nil {

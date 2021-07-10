@@ -51,18 +51,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
             set => _srcIpRanges = value;
         }
 
-        [Input("srcSecureLabels")]
-        private InputList<string>? _srcSecureLabels;
-
-        /// <summary>
-        /// List of firewall label values, which should be matched at the source of the traffic. Maximum number of source label values allowed is 256.
-        /// </summary>
-        public InputList<string> SrcSecureLabels
-        {
-            get => _srcSecureLabels ?? (_srcSecureLabels = new InputList<string>());
-            set => _srcSecureLabels = value;
-        }
-
         public FirewallPolicyRuleMatcherArgs()
         {
         }

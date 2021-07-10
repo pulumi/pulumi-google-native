@@ -459,6 +459,8 @@ func (o GoogleCloudDialogflowCxV3beta1ConversationTurnResponseArrayOutput) Index
 
 // The input from the human user.
 type GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput struct {
+	// Whether sentiment analysis is enabled.
+	EnableSentimentAnalysis *bool `pulumi:"enableSentimentAnalysis"`
 	// Parameters that need to be injected into the conversation during intent detection.
 	InjectedParameters map[string]string `pulumi:"injectedParameters"`
 	// Supports text input, event input, dtmf input in the test case.
@@ -480,6 +482,8 @@ type GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputInput interface {
 
 // The input from the human user.
 type GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputArgs struct {
+	// Whether sentiment analysis is enabled.
+	EnableSentimentAnalysis pulumi.BoolPtrInput `pulumi:"enableSentimentAnalysis"`
 	// Parameters that need to be injected into the conversation during intent detection.
 	InjectedParameters pulumi.StringMapInput `pulumi:"injectedParameters"`
 	// Supports text input, event input, dtmf input in the test case.
@@ -566,6 +570,13 @@ func (o GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputOutput) ToGoogleC
 	}).(GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputPtrOutput)
 }
 
+// Whether sentiment analysis is enabled.
+func (o GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputOutput) EnableSentimentAnalysis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput) *bool {
+		return v.EnableSentimentAnalysis
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Parameters that need to be injected into the conversation during intent detection.
 func (o GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputOutput) InjectedParameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput) map[string]string {
@@ -605,6 +616,16 @@ func (o GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputPtrOutput) Elem()
 	}).(GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputOutput)
 }
 
+// Whether sentiment analysis is enabled.
+func (o GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputPtrOutput) EnableSentimentAnalysis() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSentimentAnalysis
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Parameters that need to be injected into the conversation during intent detection.
 func (o GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputPtrOutput) InjectedParameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput) map[string]string {
@@ -637,6 +658,8 @@ func (o GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputPtrOutput) IsWebh
 
 // The input from the human user.
 type GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse struct {
+	// Whether sentiment analysis is enabled.
+	EnableSentimentAnalysis bool `pulumi:"enableSentimentAnalysis"`
 	// Parameters that need to be injected into the conversation during intent detection.
 	InjectedParameters map[string]string `pulumi:"injectedParameters"`
 	// Supports text input, event input, dtmf input in the test case.
@@ -658,6 +681,8 @@ type GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponseInput interf
 
 // The input from the human user.
 type GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponseArgs struct {
+	// Whether sentiment analysis is enabled.
+	EnableSentimentAnalysis pulumi.BoolInput `pulumi:"enableSentimentAnalysis"`
 	// Parameters that need to be injected into the conversation during intent detection.
 	InjectedParameters pulumi.StringMapInput `pulumi:"injectedParameters"`
 	// Supports text input, event input, dtmf input in the test case.
@@ -691,6 +716,13 @@ func (o GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponseOutput) T
 
 func (o GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponseOutput) ToGoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponseOutput {
 	return o
+}
+
+// Whether sentiment analysis is enabled.
+func (o GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponseOutput) EnableSentimentAnalysis() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ConversationTurnUserInputResponse) bool {
+		return v.EnableSentimentAnalysis
+	}).(pulumi.BoolOutput)
 }
 
 // Parameters that need to be injected into the conversation during intent detection.
@@ -4530,6 +4562,8 @@ type GoogleCloudDialogflowCxV3beta1Fulfillment struct {
 	ConditionalCases []GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases `pulumi:"conditionalCases"`
 	// The list of rich message responses to present to the user.
 	Messages []GoogleCloudDialogflowCxV3beta1ResponseMessage `pulumi:"messages"`
+	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+	ReturnPartialResponses *bool `pulumi:"returnPartialResponses"`
 	// Set parameter values before executing the webhook.
 	SetParameterActions []GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction `pulumi:"setParameterActions"`
 	// The tag used by the webhook to identify which fulfillment is being called. This field is required if `webhook` is specified.
@@ -4555,6 +4589,8 @@ type GoogleCloudDialogflowCxV3beta1FulfillmentArgs struct {
 	ConditionalCases GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesArrayInput `pulumi:"conditionalCases"`
 	// The list of rich message responses to present to the user.
 	Messages GoogleCloudDialogflowCxV3beta1ResponseMessageArrayInput `pulumi:"messages"`
+	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+	ReturnPartialResponses pulumi.BoolPtrInput `pulumi:"returnPartialResponses"`
 	// Set parameter values before executing the webhook.
 	SetParameterActions GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionArrayInput `pulumi:"setParameterActions"`
 	// The tag used by the webhook to identify which fulfillment is being called. This field is required if `webhook` is specified.
@@ -4655,6 +4691,11 @@ func (o GoogleCloudDialogflowCxV3beta1FulfillmentOutput) Messages() GoogleCloudD
 	}).(GoogleCloudDialogflowCxV3beta1ResponseMessageArrayOutput)
 }
 
+// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+func (o GoogleCloudDialogflowCxV3beta1FulfillmentOutput) ReturnPartialResponses() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1Fulfillment) *bool { return v.ReturnPartialResponses }).(pulumi.BoolPtrOutput)
+}
+
 // Set parameter values before executing the webhook.
 func (o GoogleCloudDialogflowCxV3beta1FulfillmentOutput) SetParameterActions() GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1Fulfillment) []GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction {
@@ -4710,6 +4751,16 @@ func (o GoogleCloudDialogflowCxV3beta1FulfillmentPtrOutput) Messages() GoogleClo
 		}
 		return v.Messages
 	}).(GoogleCloudDialogflowCxV3beta1ResponseMessageArrayOutput)
+}
+
+// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+func (o GoogleCloudDialogflowCxV3beta1FulfillmentPtrOutput) ReturnPartialResponses() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1Fulfillment) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReturnPartialResponses
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Set parameter values before executing the webhook.
@@ -5483,6 +5534,8 @@ type GoogleCloudDialogflowCxV3beta1FulfillmentResponse struct {
 	ConditionalCases []GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponse `pulumi:"conditionalCases"`
 	// The list of rich message responses to present to the user.
 	Messages []GoogleCloudDialogflowCxV3beta1ResponseMessageResponse `pulumi:"messages"`
+	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+	ReturnPartialResponses bool `pulumi:"returnPartialResponses"`
 	// Set parameter values before executing the webhook.
 	SetParameterActions []GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionResponse `pulumi:"setParameterActions"`
 	// The tag used by the webhook to identify which fulfillment is being called. This field is required if `webhook` is specified.
@@ -5508,6 +5561,8 @@ type GoogleCloudDialogflowCxV3beta1FulfillmentResponseArgs struct {
 	ConditionalCases GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesResponseArrayInput `pulumi:"conditionalCases"`
 	// The list of rich message responses to present to the user.
 	Messages GoogleCloudDialogflowCxV3beta1ResponseMessageResponseArrayInput `pulumi:"messages"`
+	// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+	ReturnPartialResponses pulumi.BoolInput `pulumi:"returnPartialResponses"`
 	// Set parameter values before executing the webhook.
 	SetParameterActions GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionResponseArrayInput `pulumi:"setParameterActions"`
 	// The tag used by the webhook to identify which fulfillment is being called. This field is required if `webhook` is specified.
@@ -5608,6 +5663,11 @@ func (o GoogleCloudDialogflowCxV3beta1FulfillmentResponseOutput) Messages() Goog
 	}).(GoogleCloudDialogflowCxV3beta1ResponseMessageResponseArrayOutput)
 }
 
+// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+func (o GoogleCloudDialogflowCxV3beta1FulfillmentResponseOutput) ReturnPartialResponses() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1FulfillmentResponse) bool { return v.ReturnPartialResponses }).(pulumi.BoolOutput)
+}
+
 // Set parameter values before executing the webhook.
 func (o GoogleCloudDialogflowCxV3beta1FulfillmentResponseOutput) SetParameterActions() GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionResponseArrayOutput {
 	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1FulfillmentResponse) []GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionResponse {
@@ -5663,6 +5723,16 @@ func (o GoogleCloudDialogflowCxV3beta1FulfillmentResponsePtrOutput) Messages() G
 		}
 		return v.Messages
 	}).(GoogleCloudDialogflowCxV3beta1ResponseMessageResponseArrayOutput)
+}
+
+// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+func (o GoogleCloudDialogflowCxV3beta1FulfillmentResponsePtrOutput) ReturnPartialResponses() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1FulfillmentResponse) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.ReturnPartialResponses
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Set parameter values before executing the webhook.
@@ -13130,6 +13200,320 @@ func (o GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponsePtrOutput)
 	}).(pulumi.StringPtrOutput)
 }
 
+// Represents configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+type GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig struct {
+	// Generic Service configuration of this webhook.
+	GenericWebService *GoogleCloudDialogflowCxV3beta1WebhookGenericWebService `pulumi:"genericWebService"`
+	// The name of [Service Directory](https://cloud.google.com/service-directory) service. Format: `projects//locations//namespaces//services/`. `Location ID` of the service directory must be the same as the location of the agent.
+	Service string `pulumi:"service"`
+}
+
+// GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigInput is an input type that accepts GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigArgs and GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigInput` via:
+//
+//          GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigArgs{...}
+type GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput() GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput
+	ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput
+}
+
+// Represents configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+type GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigArgs struct {
+	// Generic Service configuration of this webhook.
+	GenericWebService GoogleCloudDialogflowCxV3beta1WebhookGenericWebServicePtrInput `pulumi:"genericWebService"`
+	// The name of [Service Directory](https://cloud.google.com/service-directory) service. Format: `projects//locations//namespaces//services/`. `Location ID` of the service directory must be the same as the location of the agent.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigArgs) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput() GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigArgs) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigArgs) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput() GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigArgs) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput).ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrInput is an input type that accepts GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigArgs, GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtr and GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrInput` via:
+//
+//          GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput() GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput
+	ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput
+}
+
+type googleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrType GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigArgs
+
+func GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtr(v *GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigArgs) GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrInput {
+	return (*googleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrType) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput() GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrType) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput)
+}
+
+// Represents configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+type GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput() GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput() GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig) *GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig {
+		return &v
+	}).(GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput)
+}
+
+// Generic Service configuration of this webhook.
+func (o GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput) GenericWebService() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServicePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig) *GoogleCloudDialogflowCxV3beta1WebhookGenericWebService {
+		return v.GenericWebService
+	}).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServicePtrOutput)
+}
+
+// The name of [Service Directory](https://cloud.google.com/service-directory) service. Format: `projects//locations//namespaces//services/`. `Location ID` of the service directory must be the same as the location of the agent.
+func (o GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput() GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput) Elem() GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig) GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig {
+		return *v
+	}).(GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput)
+}
+
+// Generic Service configuration of this webhook.
+func (o GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput) GenericWebService() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServicePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig) *GoogleCloudDialogflowCxV3beta1WebhookGenericWebService {
+		if v == nil {
+			return nil
+		}
+		return v.GenericWebService
+	}).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServicePtrOutput)
+}
+
+// The name of [Service Directory](https://cloud.google.com/service-directory) service. Format: `projects//locations//namespaces//services/`. `Location ID` of the service directory must be the same as the location of the agent.
+func (o GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+type GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse struct {
+	// Generic Service configuration of this webhook.
+	GenericWebService GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse `pulumi:"genericWebService"`
+	// The name of [Service Directory](https://cloud.google.com/service-directory) service. Format: `projects//locations//namespaces//services/`. `Location ID` of the service directory must be the same as the location of the agent.
+	Service string `pulumi:"service"`
+}
+
+// GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseInput is an input type that accepts GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseArgs and GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseInput` via:
+//
+//          GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseArgs{...}
+type GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput() GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput
+	ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput
+}
+
+// Represents configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+type GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseArgs struct {
+	// Generic Service configuration of this webhook.
+	GenericWebService GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponseInput `pulumi:"genericWebService"`
+	// The name of [Service Directory](https://cloud.google.com/service-directory) service. Format: `projects//locations//namespaces//services/`. `Location ID` of the service directory must be the same as the location of the agent.
+	Service pulumi.StringInput `pulumi:"service"`
+}
+
+func (GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse)(nil)).Elem()
+}
+
+func (i GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseArgs) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput() GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseArgs) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput)
+}
+
+func (i GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseArgs) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput() GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseArgs) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput).ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutputWithContext(ctx)
+}
+
+// GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrInput is an input type that accepts GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseArgs, GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtr and GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrInput` via:
+//
+//          GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput() GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput
+	ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput
+}
+
+type googleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrType GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseArgs
+
+func GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtr(v *GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseArgs) GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrInput {
+	return (*googleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrType)(v)
+}
+
+func (*googleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse)(nil)).Elem()
+}
+
+func (i *googleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrType) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput() GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput {
+	return i.ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrType) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput)
+}
+
+// Represents configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
+type GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput() GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput() GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse) *GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse {
+		return &v
+	}).(GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput)
+}
+
+// Generic Service configuration of this webhook.
+func (o GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput) GenericWebService() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponseOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse) GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse {
+		return v.GenericWebService
+	}).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponseOutput)
+}
+
+// The name of [Service Directory](https://cloud.google.com/service-directory) service. Format: `projects//locations//namespaces//services/`. `Location ID` of the service directory must be the same as the location of the agent.
+func (o GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
+type GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput() GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput) ToGoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput) Elem() GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse) GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse {
+		return *v
+	}).(GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput)
+}
+
+// Generic Service configuration of this webhook.
+func (o GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput) GenericWebService() GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponsePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse) *GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse {
+		if v == nil {
+			return nil
+		}
+		return &v.GenericWebService
+	}).(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponsePtrOutput)
+}
+
+// The name of [Service Directory](https://cloud.google.com/service-directory) service. Format: `projects//locations//namespaces//services/`. `Location ID` of the service directory must be the same as the location of the agent.
+func (o GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput) Service() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Service
+	}).(pulumi.StringPtrOutput)
+}
+
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type GoogleRpcStatus struct {
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -13555,6 +13939,10 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServicePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponsePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(GoogleRpcStatusOutput{})
 	pulumi.RegisterOutputType(GoogleRpcStatusPtrOutput{})
 	pulumi.RegisterOutputType(GoogleRpcStatusResponseOutput{})

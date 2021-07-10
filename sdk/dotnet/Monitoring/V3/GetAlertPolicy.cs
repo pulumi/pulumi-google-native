@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.Monitoring.V3
     public sealed class GetAlertPolicyResult
     {
         /// <summary>
+        /// Control over how this alert policy's notification channels are notified.
+        /// </summary>
+        public readonly Outputs.AlertStrategyResponse AlertStrategy;
+        /// <summary>
         /// How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
         /// </summary>
         public readonly string Combiner;
@@ -83,6 +87,8 @@ namespace Pulumi.GoogleNative.Monitoring.V3
 
         [OutputConstructor]
         private GetAlertPolicyResult(
+            Outputs.AlertStrategyResponse alertStrategy,
+
             string combiner,
 
             ImmutableArray<Outputs.ConditionResponse> conditions,
@@ -105,6 +111,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
 
             Outputs.StatusResponse validity)
         {
+            AlertStrategy = alertStrategy;
             Combiner = combiner;
             Conditions = conditions;
             CreationRecord = creationRecord;

@@ -11,23 +11,39 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
     /// <summary>
-    /// Sets the scheduling options for an Instance. NextID: 20
+    /// Sets the scheduling options for an Instance. NextID: 21
     /// </summary>
     public sealed class SchedulingArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted.
-        /// 
-        /// By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
+        /// Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
         /// </summary>
         [Input("automaticRestart")]
         public Input<bool>? AutomaticRestart { get; set; }
+
+        /// <summary>
+        /// Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
+        /// </summary>
+        [Input("hostErrorTimeoutSeconds")]
+        public Input<int>? HostErrorTimeoutSeconds { get; set; }
 
         /// <summary>
         /// An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API.
         /// </summary>
         [Input("locationHint")]
         public Input<string>? LocationHint { get; set; }
+
+        /// <summary>
+        /// Specifies the number of hours after VM instance creation where the VM won't be scheduled for maintenance.
+        /// </summary>
+        [Input("maintenanceFreezeDurationHours")]
+        public Input<int>? MaintenanceFreezeDurationHours { get; set; }
+
+        /// <summary>
+        /// For more information about maintenance intervals, see Setting maintenance intervals.
+        /// </summary>
+        [Input("maintenanceInterval")]
+        public Input<Pulumi.GoogleNative.Compute.Beta.SchedulingMaintenanceInterval>? MaintenanceInterval { get; set; }
 
         /// <summary>
         /// The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.

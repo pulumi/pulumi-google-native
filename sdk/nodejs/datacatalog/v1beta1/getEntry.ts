@@ -77,6 +77,10 @@ export interface GetEntryResult {
      */
     readonly type: string;
     /**
+     * Statistics on the usage level of the resource.
+     */
+    readonly usageSignal: outputs.datacatalog.v1beta1.GoogleCloudDatacatalogV1beta1UsageSignalResponse;
+    /**
      * This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
      */
     readonly userSpecifiedSystem: string;

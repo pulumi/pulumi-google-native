@@ -900,6 +900,274 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	}).(BindingResponseOutput)
 }
 
+// The crypto key configuration. This field is used by the Customer-managed encryption keys (CMEK) feature.
+type CryptoKeyConfig struct {
+	// The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+	KeyReference *string `pulumi:"keyReference"`
+}
+
+// CryptoKeyConfigInput is an input type that accepts CryptoKeyConfigArgs and CryptoKeyConfigOutput values.
+// You can construct a concrete instance of `CryptoKeyConfigInput` via:
+//
+//          CryptoKeyConfigArgs{...}
+type CryptoKeyConfigInput interface {
+	pulumi.Input
+
+	ToCryptoKeyConfigOutput() CryptoKeyConfigOutput
+	ToCryptoKeyConfigOutputWithContext(context.Context) CryptoKeyConfigOutput
+}
+
+// The crypto key configuration. This field is used by the Customer-managed encryption keys (CMEK) feature.
+type CryptoKeyConfigArgs struct {
+	// The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+	KeyReference pulumi.StringPtrInput `pulumi:"keyReference"`
+}
+
+func (CryptoKeyConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyConfig)(nil)).Elem()
+}
+
+func (i CryptoKeyConfigArgs) ToCryptoKeyConfigOutput() CryptoKeyConfigOutput {
+	return i.ToCryptoKeyConfigOutputWithContext(context.Background())
+}
+
+func (i CryptoKeyConfigArgs) ToCryptoKeyConfigOutputWithContext(ctx context.Context) CryptoKeyConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyConfigOutput)
+}
+
+func (i CryptoKeyConfigArgs) ToCryptoKeyConfigPtrOutput() CryptoKeyConfigPtrOutput {
+	return i.ToCryptoKeyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i CryptoKeyConfigArgs) ToCryptoKeyConfigPtrOutputWithContext(ctx context.Context) CryptoKeyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyConfigOutput).ToCryptoKeyConfigPtrOutputWithContext(ctx)
+}
+
+// CryptoKeyConfigPtrInput is an input type that accepts CryptoKeyConfigArgs, CryptoKeyConfigPtr and CryptoKeyConfigPtrOutput values.
+// You can construct a concrete instance of `CryptoKeyConfigPtrInput` via:
+//
+//          CryptoKeyConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type CryptoKeyConfigPtrInput interface {
+	pulumi.Input
+
+	ToCryptoKeyConfigPtrOutput() CryptoKeyConfigPtrOutput
+	ToCryptoKeyConfigPtrOutputWithContext(context.Context) CryptoKeyConfigPtrOutput
+}
+
+type cryptoKeyConfigPtrType CryptoKeyConfigArgs
+
+func CryptoKeyConfigPtr(v *CryptoKeyConfigArgs) CryptoKeyConfigPtrInput {
+	return (*cryptoKeyConfigPtrType)(v)
+}
+
+func (*cryptoKeyConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyConfig)(nil)).Elem()
+}
+
+func (i *cryptoKeyConfigPtrType) ToCryptoKeyConfigPtrOutput() CryptoKeyConfigPtrOutput {
+	return i.ToCryptoKeyConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *cryptoKeyConfigPtrType) ToCryptoKeyConfigPtrOutputWithContext(ctx context.Context) CryptoKeyConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyConfigPtrOutput)
+}
+
+// The crypto key configuration. This field is used by the Customer-managed encryption keys (CMEK) feature.
+type CryptoKeyConfigOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyConfig)(nil)).Elem()
+}
+
+func (o CryptoKeyConfigOutput) ToCryptoKeyConfigOutput() CryptoKeyConfigOutput {
+	return o
+}
+
+func (o CryptoKeyConfigOutput) ToCryptoKeyConfigOutputWithContext(ctx context.Context) CryptoKeyConfigOutput {
+	return o
+}
+
+func (o CryptoKeyConfigOutput) ToCryptoKeyConfigPtrOutput() CryptoKeyConfigPtrOutput {
+	return o.ToCryptoKeyConfigPtrOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyConfigOutput) ToCryptoKeyConfigPtrOutputWithContext(ctx context.Context) CryptoKeyConfigPtrOutput {
+	return o.ApplyT(func(v CryptoKeyConfig) *CryptoKeyConfig {
+		return &v
+	}).(CryptoKeyConfigPtrOutput)
+}
+
+// The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+func (o CryptoKeyConfigOutput) KeyReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyConfig) *string { return v.KeyReference }).(pulumi.StringPtrOutput)
+}
+
+type CryptoKeyConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyConfig)(nil)).Elem()
+}
+
+func (o CryptoKeyConfigPtrOutput) ToCryptoKeyConfigPtrOutput() CryptoKeyConfigPtrOutput {
+	return o
+}
+
+func (o CryptoKeyConfigPtrOutput) ToCryptoKeyConfigPtrOutputWithContext(ctx context.Context) CryptoKeyConfigPtrOutput {
+	return o
+}
+
+func (o CryptoKeyConfigPtrOutput) Elem() CryptoKeyConfigOutput {
+	return o.ApplyT(func(v *CryptoKeyConfig) CryptoKeyConfig { return *v }).(CryptoKeyConfigOutput)
+}
+
+// The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+func (o CryptoKeyConfigPtrOutput) KeyReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeyReference
+	}).(pulumi.StringPtrOutput)
+}
+
+// The crypto key configuration. This field is used by the Customer-managed encryption keys (CMEK) feature.
+type CryptoKeyConfigResponse struct {
+	// The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+	KeyReference string `pulumi:"keyReference"`
+}
+
+// CryptoKeyConfigResponseInput is an input type that accepts CryptoKeyConfigResponseArgs and CryptoKeyConfigResponseOutput values.
+// You can construct a concrete instance of `CryptoKeyConfigResponseInput` via:
+//
+//          CryptoKeyConfigResponseArgs{...}
+type CryptoKeyConfigResponseInput interface {
+	pulumi.Input
+
+	ToCryptoKeyConfigResponseOutput() CryptoKeyConfigResponseOutput
+	ToCryptoKeyConfigResponseOutputWithContext(context.Context) CryptoKeyConfigResponseOutput
+}
+
+// The crypto key configuration. This field is used by the Customer-managed encryption keys (CMEK) feature.
+type CryptoKeyConfigResponseArgs struct {
+	// The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+	KeyReference pulumi.StringInput `pulumi:"keyReference"`
+}
+
+func (CryptoKeyConfigResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyConfigResponse)(nil)).Elem()
+}
+
+func (i CryptoKeyConfigResponseArgs) ToCryptoKeyConfigResponseOutput() CryptoKeyConfigResponseOutput {
+	return i.ToCryptoKeyConfigResponseOutputWithContext(context.Background())
+}
+
+func (i CryptoKeyConfigResponseArgs) ToCryptoKeyConfigResponseOutputWithContext(ctx context.Context) CryptoKeyConfigResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyConfigResponseOutput)
+}
+
+func (i CryptoKeyConfigResponseArgs) ToCryptoKeyConfigResponsePtrOutput() CryptoKeyConfigResponsePtrOutput {
+	return i.ToCryptoKeyConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i CryptoKeyConfigResponseArgs) ToCryptoKeyConfigResponsePtrOutputWithContext(ctx context.Context) CryptoKeyConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyConfigResponseOutput).ToCryptoKeyConfigResponsePtrOutputWithContext(ctx)
+}
+
+// CryptoKeyConfigResponsePtrInput is an input type that accepts CryptoKeyConfigResponseArgs, CryptoKeyConfigResponsePtr and CryptoKeyConfigResponsePtrOutput values.
+// You can construct a concrete instance of `CryptoKeyConfigResponsePtrInput` via:
+//
+//          CryptoKeyConfigResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type CryptoKeyConfigResponsePtrInput interface {
+	pulumi.Input
+
+	ToCryptoKeyConfigResponsePtrOutput() CryptoKeyConfigResponsePtrOutput
+	ToCryptoKeyConfigResponsePtrOutputWithContext(context.Context) CryptoKeyConfigResponsePtrOutput
+}
+
+type cryptoKeyConfigResponsePtrType CryptoKeyConfigResponseArgs
+
+func CryptoKeyConfigResponsePtr(v *CryptoKeyConfigResponseArgs) CryptoKeyConfigResponsePtrInput {
+	return (*cryptoKeyConfigResponsePtrType)(v)
+}
+
+func (*cryptoKeyConfigResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyConfigResponse)(nil)).Elem()
+}
+
+func (i *cryptoKeyConfigResponsePtrType) ToCryptoKeyConfigResponsePtrOutput() CryptoKeyConfigResponsePtrOutput {
+	return i.ToCryptoKeyConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *cryptoKeyConfigResponsePtrType) ToCryptoKeyConfigResponsePtrOutputWithContext(ctx context.Context) CryptoKeyConfigResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyConfigResponsePtrOutput)
+}
+
+// The crypto key configuration. This field is used by the Customer-managed encryption keys (CMEK) feature.
+type CryptoKeyConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyConfigResponse)(nil)).Elem()
+}
+
+func (o CryptoKeyConfigResponseOutput) ToCryptoKeyConfigResponseOutput() CryptoKeyConfigResponseOutput {
+	return o
+}
+
+func (o CryptoKeyConfigResponseOutput) ToCryptoKeyConfigResponseOutputWithContext(ctx context.Context) CryptoKeyConfigResponseOutput {
+	return o
+}
+
+func (o CryptoKeyConfigResponseOutput) ToCryptoKeyConfigResponsePtrOutput() CryptoKeyConfigResponsePtrOutput {
+	return o.ToCryptoKeyConfigResponsePtrOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyConfigResponseOutput) ToCryptoKeyConfigResponsePtrOutputWithContext(ctx context.Context) CryptoKeyConfigResponsePtrOutput {
+	return o.ApplyT(func(v CryptoKeyConfigResponse) *CryptoKeyConfigResponse {
+		return &v
+	}).(CryptoKeyConfigResponsePtrOutput)
+}
+
+// The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+func (o CryptoKeyConfigResponseOutput) KeyReference() pulumi.StringOutput {
+	return o.ApplyT(func(v CryptoKeyConfigResponse) string { return v.KeyReference }).(pulumi.StringOutput)
+}
+
+type CryptoKeyConfigResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyConfigResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CryptoKeyConfigResponse)(nil)).Elem()
+}
+
+func (o CryptoKeyConfigResponsePtrOutput) ToCryptoKeyConfigResponsePtrOutput() CryptoKeyConfigResponsePtrOutput {
+	return o
+}
+
+func (o CryptoKeyConfigResponsePtrOutput) ToCryptoKeyConfigResponsePtrOutputWithContext(ctx context.Context) CryptoKeyConfigResponsePtrOutput {
+	return o
+}
+
+func (o CryptoKeyConfigResponsePtrOutput) Elem() CryptoKeyConfigResponseOutput {
+	return o.ApplyT(func(v *CryptoKeyConfigResponse) CryptoKeyConfigResponse { return *v }).(CryptoKeyConfigResponseOutput)
+}
+
+// The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+func (o CryptoKeyConfigResponsePtrOutput) KeyReference() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyConfigResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeyReference
+	}).(pulumi.StringPtrOutput)
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type Expr struct {
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1732,6 +2000,10 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(CryptoKeyConfigOutput{})
+	pulumi.RegisterOutputType(CryptoKeyConfigPtrOutput{})
+	pulumi.RegisterOutputType(CryptoKeyConfigResponseOutput{})
+	pulumi.RegisterOutputType(CryptoKeyConfigResponsePtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})

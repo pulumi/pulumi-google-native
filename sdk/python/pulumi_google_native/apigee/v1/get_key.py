@@ -142,7 +142,7 @@ def get_key(app_id: Optional[str] = None,
             organization_id: Optional[str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeyResult:
     """
-    Returns details for a consumer key for a developer app, including the key and secret value, associated API products, and other information.
+    Gets details for a consumer key for a developer app, including the key and secret value, associated API products, and other information.
     """
     __args__ = dict()
     __args__['appId'] = app_id

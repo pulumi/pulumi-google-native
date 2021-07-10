@@ -21,6 +21,7 @@ class InstanceArgs:
                  type: pulumi.Input['InstanceType'],
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['AcceleratorArgs']]]] = None,
                  available_version: Optional[pulumi.Input[Sequence[pulumi.Input['VersionArgs']]]] = None,
+                 crypto_key_config: Optional[pulumi.Input['CryptoKeyConfigArgs']] = None,
                  dataproc_service_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -39,6 +40,7 @@ class InstanceArgs:
         :param pulumi.Input['InstanceType'] type: Instance type.
         :param pulumi.Input[Sequence[pulumi.Input['AcceleratorArgs']]] accelerators: List of accelerators enabled for this CDF instance.
         :param pulumi.Input[Sequence[pulumi.Input['VersionArgs']]] available_version: Available versions that the instance can be upgraded to using UpdateInstanceRequest.
+        :param pulumi.Input['CryptoKeyConfigArgs'] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
         :param pulumi.Input[str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
         :param pulumi.Input[str] description: A description of this instance.
         :param pulumi.Input[str] display_name: Display name for an instance.
@@ -59,6 +61,8 @@ class InstanceArgs:
             pulumi.set(__self__, "accelerators", accelerators)
         if available_version is not None:
             pulumi.set(__self__, "available_version", available_version)
+        if crypto_key_config is not None:
+            pulumi.set(__self__, "crypto_key_config", crypto_key_config)
         if dataproc_service_account is not None:
             pulumi.set(__self__, "dataproc_service_account", dataproc_service_account)
         if description is not None:
@@ -139,6 +143,18 @@ class InstanceArgs:
     @available_version.setter
     def available_version(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VersionArgs']]]]):
         pulumi.set(self, "available_version", value)
+
+    @property
+    @pulumi.getter(name="cryptoKeyConfig")
+    def crypto_key_config(self) -> Optional[pulumi.Input['CryptoKeyConfigArgs']]:
+        """
+        The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+        """
+        return pulumi.get(self, "crypto_key_config")
+
+    @crypto_key_config.setter
+    def crypto_key_config(self, value: Optional[pulumi.Input['CryptoKeyConfigArgs']]):
+        pulumi.set(self, "crypto_key_config", value)
 
     @property
     @pulumi.getter(name="dataprocServiceAccount")
@@ -301,6 +317,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorArgs']]]]] = None,
                  available_version: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VersionArgs']]]]] = None,
+                 crypto_key_config: Optional[pulumi.Input[pulumi.InputType['CryptoKeyConfigArgs']]] = None,
                  dataproc_service_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -325,6 +342,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorArgs']]]] accelerators: List of accelerators enabled for this CDF instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VersionArgs']]]] available_version: Available versions that the instance can be upgraded to using UpdateInstanceRequest.
+        :param pulumi.Input[pulumi.InputType['CryptoKeyConfigArgs']] crypto_key_config: The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
         :param pulumi.Input[str] dataproc_service_account: User-managed service account to set on Dataproc when Cloud Data Fusion creates Dataproc to run data processing pipelines. This allows users to have fine-grained access control on Dataproc's accesses to cloud resources.
         :param pulumi.Input[str] description: A description of this instance.
         :param pulumi.Input[str] display_name: Display name for an instance.
@@ -365,6 +383,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AcceleratorArgs']]]]] = None,
                  available_version: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['VersionArgs']]]]] = None,
+                 crypto_key_config: Optional[pulumi.Input[pulumi.InputType['CryptoKeyConfigArgs']]] = None,
                  dataproc_service_account: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -395,6 +414,7 @@ class Instance(pulumi.CustomResource):
 
             __props__.__dict__["accelerators"] = accelerators
             __props__.__dict__["available_version"] = available_version
+            __props__.__dict__["crypto_key_config"] = crypto_key_config
             __props__.__dict__["dataproc_service_account"] = dataproc_service_account
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
@@ -453,6 +473,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["api_endpoint"] = None
         __props__.__dict__["available_version"] = None
         __props__.__dict__["create_time"] = None
+        __props__.__dict__["crypto_key_config"] = None
         __props__.__dict__["dataproc_service_account"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
@@ -507,6 +528,14 @@ class Instance(pulumi.CustomResource):
         The time the instance was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="cryptoKeyConfig")
+    def crypto_key_config(self) -> pulumi.Output['outputs.CryptoKeyConfigResponse']:
+        """
+        The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
+        """
+        return pulumi.get(self, "crypto_key_config")
 
     @property
     @pulumi.getter(name="dataprocServiceAccount")

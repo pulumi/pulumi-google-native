@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
     public sealed class GceClusterConfigResponse
     {
         /// <summary>
-        /// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
+        /// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs).
         /// </summary>
         public readonly Outputs.ConfidentialInstanceConfigResponse ConfidentialInstanceConfig;
         /// <summary>

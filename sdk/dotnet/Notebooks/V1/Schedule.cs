@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens ‘-’, and underscores ‘_’.
+        /// Display name used for UI purposes. Name can only contain alphanumeric characters, hyphens '-', and underscores '_'.
         /// </summary>
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;

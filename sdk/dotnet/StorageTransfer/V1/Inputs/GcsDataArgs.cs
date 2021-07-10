@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     public sealed class GcsDataArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cloud Storage bucket name (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/naming#requirements)).
+        /// Cloud Storage bucket name. Must meet [Bucket Name Requirements](/storage/docs/naming#requirements).
         /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
 
         /// <summary>
-        /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. (must meet Object Name Requirements](https://cloud.google.com/storage/docs/naming#objectnames)).
+        /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. The root path value must meet [Object Name Requirements](/storage/docs/naming#objectnames).
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }

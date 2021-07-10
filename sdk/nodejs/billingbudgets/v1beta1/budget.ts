@@ -60,7 +60,7 @@ export class Budget extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
+     * Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
      */
     public readonly thresholdRules!: pulumi.Output<outputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse[]>;
 
@@ -131,7 +131,7 @@ export interface BudgetArgs {
      */
     etag?: pulumi.Input<string>;
     /**
-     * Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget.
+     * Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
      */
     thresholdRules?: pulumi.Input<pulumi.Input<inputs.billingbudgets.v1beta1.GoogleCloudBillingBudgetsV1beta1ThresholdRuleArgs>[]>;
 }

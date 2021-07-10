@@ -14,8 +14,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     public sealed class CorsPolicyResponse
     {
         /// <summary>
-        /// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header.
-        /// Default is false.
+        /// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default is false.
         /// </summary>
         public readonly bool AllowCredentials;
         /// <summary>
@@ -27,13 +26,11 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowMethods;
         /// <summary>
-        /// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax 
-        /// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        /// Specifies the regualar expression patterns that match allowed origins. For regular expression grammar please see github.com/google/re2/wiki/Syntax An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         /// </summary>
         public readonly ImmutableArray<string> AllowOriginRegexes;
         /// <summary>
-        /// Specifies the list of origins that will be allowed to do CORS requests.
-        /// An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
+        /// Specifies the list of origins that will be allowed to do CORS requests. An origin is allowed if it matches either an item in allowOrigins or an item in allowOriginRegexes.
         /// </summary>
         public readonly ImmutableArray<string> AllowOrigins;
         /// <summary>

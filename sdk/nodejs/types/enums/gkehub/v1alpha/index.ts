@@ -25,3 +25,23 @@ export const AuditLogConfigLogType = {
  * The log type that this config enables.
  */
 export type AuditLogConfigLogType = (typeof AuditLogConfigLogType)[keyof typeof AuditLogConfigLogType];
+
+export const MultiClusterIngressFeatureSpecBilling = {
+    /**
+     * Unknown
+     */
+    BillingUnspecified: "BILLING_UNSPECIFIED",
+    /**
+     * User pays a fee per-endpoint.
+     */
+    PayAsYouGo: "PAY_AS_YOU_GO",
+    /**
+     * User is paying for Anthos as a whole.
+     */
+    AnthosLicense: "ANTHOS_LICENSE",
+} as const;
+
+/**
+ * Customer's billing structure
+ */
+export type MultiClusterIngressFeatureSpecBilling = (typeof MultiClusterIngressFeatureSpecBilling)[keyof typeof MultiClusterIngressFeatureSpecBilling];

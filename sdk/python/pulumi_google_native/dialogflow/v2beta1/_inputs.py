@@ -471,23 +471,24 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs:
 @pulumi.input_type
 class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs:
     def __init__(__self__, *,
-                 model: pulumi.Input[str]):
+                 model: Optional[pulumi.Input[str]] = None):
         """
         Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY.
         :param pulumi.Input[str] model: Conversation model resource name. Format: `projects//conversationModels/`.
         """
-        pulumi.set(__self__, "model", model)
+        if model is not None:
+            pulumi.set(__self__, "model", model)
 
     @property
     @pulumi.getter
-    def model(self) -> pulumi.Input[str]:
+    def model(self) -> Optional[pulumi.Input[str]]:
         """
         Conversation model resource name. Format: `projects//conversationModels/`.
         """
         return pulumi.get(self, "model")
 
     @model.setter
-    def model(self, value: pulumi.Input[str]):
+    def model(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "model", value)
 
 

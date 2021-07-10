@@ -33,15 +33,11 @@ type Interconnect struct {
 	GoogleReferenceId pulumi.StringOutput `pulumi:"googleReferenceId"`
 	// A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
 	InterconnectAttachments pulumi.StringArrayOutput `pulumi:"interconnectAttachments"`
-	// Type of interconnect, which can take one of the following values:
-	// - PARTNER: A partner-managed interconnection shared between customers though a partner.
-	// - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
+	// Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
 	InterconnectType pulumi.StringOutput `pulumi:"interconnectType"`
 	// Type of the resource. Always compute#interconnect for interconnects.
 	Kind pulumi.StringOutput `pulumi:"kind"`
-	// Type of link requested, which can take one of the following values:
-	// - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics
-	// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
+	// Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
 	LinkType pulumi.StringOutput `pulumi:"linkType"`
 	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -49,10 +45,7 @@ type Interconnect struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.
 	NocContactEmail pulumi.StringOutput `pulumi:"nocContactEmail"`
-	// The current status of this Interconnect's functionality, which can take one of the following values:
-	// - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect.
-	// - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect.
-	// - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
+	// The current status of this Interconnect's functionality, which can take one of the following values: - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
 	OperationalStatus pulumi.StringOutput `pulumi:"operationalStatus"`
 	// IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
 	PeerIpAddress pulumi.StringOutput `pulumi:"peerIpAddress"`
@@ -62,10 +55,7 @@ type Interconnect struct {
 	RequestedLinkCount pulumi.IntOutput `pulumi:"requestedLinkCount"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The current state of Interconnect functionality, which can take one of the following values:
-	// - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect.
-	// - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect.
-	// - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
+	// The current state of Interconnect functionality, which can take one of the following values: - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
 	State pulumi.StringOutput `pulumi:"state"`
 }
 
@@ -119,15 +109,11 @@ type interconnectState struct {
 	GoogleReferenceId *string `pulumi:"googleReferenceId"`
 	// A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
 	InterconnectAttachments []string `pulumi:"interconnectAttachments"`
-	// Type of interconnect, which can take one of the following values:
-	// - PARTNER: A partner-managed interconnection shared between customers though a partner.
-	// - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
+	// Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
 	InterconnectType *string `pulumi:"interconnectType"`
 	// Type of the resource. Always compute#interconnect for interconnects.
 	Kind *string `pulumi:"kind"`
-	// Type of link requested, which can take one of the following values:
-	// - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics
-	// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
+	// Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
 	LinkType *string `pulumi:"linkType"`
 	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
 	Location *string `pulumi:"location"`
@@ -135,10 +121,7 @@ type interconnectState struct {
 	Name *string `pulumi:"name"`
 	// Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.
 	NocContactEmail *string `pulumi:"nocContactEmail"`
-	// The current status of this Interconnect's functionality, which can take one of the following values:
-	// - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect.
-	// - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect.
-	// - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
+	// The current status of this Interconnect's functionality, which can take one of the following values: - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
 	OperationalStatus *string `pulumi:"operationalStatus"`
 	// IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
 	PeerIpAddress *string `pulumi:"peerIpAddress"`
@@ -148,10 +131,7 @@ type interconnectState struct {
 	RequestedLinkCount *int `pulumi:"requestedLinkCount"`
 	// Server-defined URL for the resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The current state of Interconnect functionality, which can take one of the following values:
-	// - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect.
-	// - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect.
-	// - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
+	// The current state of Interconnect functionality, which can take one of the following values: - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
 	State *string `pulumi:"state"`
 }
 
@@ -174,15 +154,11 @@ type InterconnectState struct {
 	GoogleReferenceId pulumi.StringPtrInput
 	// A list of the URLs of all InterconnectAttachments configured to use this Interconnect.
 	InterconnectAttachments pulumi.StringArrayInput
-	// Type of interconnect, which can take one of the following values:
-	// - PARTNER: A partner-managed interconnection shared between customers though a partner.
-	// - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
+	// Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
 	InterconnectType pulumi.StringPtrInput
 	// Type of the resource. Always compute#interconnect for interconnects.
 	Kind pulumi.StringPtrInput
-	// Type of link requested, which can take one of the following values:
-	// - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics
-	// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
+	// Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
 	LinkType pulumi.StringPtrInput
 	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
 	Location pulumi.StringPtrInput
@@ -190,10 +166,7 @@ type InterconnectState struct {
 	Name pulumi.StringPtrInput
 	// Email address to contact the customer NOC for operations and maintenance notifications regarding this Interconnect. If specified, this will be used for notifications in addition to all other forms described, such as Stackdriver logs alerting and Cloud Notifications.
 	NocContactEmail pulumi.StringPtrInput
-	// The current status of this Interconnect's functionality, which can take one of the following values:
-	// - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect.
-	// - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect.
-	// - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
+	// The current status of this Interconnect's functionality, which can take one of the following values: - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
 	OperationalStatus pulumi.StringPtrInput
 	// IP address configured on the customer side of the Interconnect link. The customer should configure this IP address during turnup when prompted by Google NOC. This can be used only for ping tests.
 	PeerIpAddress pulumi.StringPtrInput
@@ -203,10 +176,7 @@ type InterconnectState struct {
 	RequestedLinkCount pulumi.IntPtrInput
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringPtrInput
-	// The current state of Interconnect functionality, which can take one of the following values:
-	// - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect.
-	// - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect.
-	// - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
+	// The current state of Interconnect functionality, which can take one of the following values: - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
 	State pulumi.StringPtrInput
 }
 
@@ -221,13 +191,9 @@ type interconnectArgs struct {
 	CustomerName *string `pulumi:"customerName"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// Type of interconnect, which can take one of the following values:
-	// - PARTNER: A partner-managed interconnection shared between customers though a partner.
-	// - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
+	// Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
 	InterconnectType *string `pulumi:"interconnectType"`
-	// Type of link requested, which can take one of the following values:
-	// - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics
-	// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
+	// Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
 	LinkType *string `pulumi:"linkType"`
 	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
 	Location *string `pulumi:"location"`
@@ -249,13 +215,9 @@ type InterconnectArgs struct {
 	CustomerName pulumi.StringPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// Type of interconnect, which can take one of the following values:
-	// - PARTNER: A partner-managed interconnection shared between customers though a partner.
-	// - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
+	// Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
 	InterconnectType *InterconnectInterconnectType
-	// Type of link requested, which can take one of the following values:
-	// - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics
-	// - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
+	// Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
 	LinkType *InterconnectLinkType
 	// URL of the InterconnectLocation object that represents where this connection is to be provisioned.
 	Location pulumi.StringPtrInput

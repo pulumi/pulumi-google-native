@@ -88,7 +88,7 @@ class GetConnectorResult:
     @pulumi.getter(name="maxThroughput")
     def max_throughput(self) -> int:
         """
-        Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
+        Maximum throughput of the connector in Mbps. Default is 300, max is 1000.
         """
         return pulumi.get(self, "max_throughput")
 

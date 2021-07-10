@@ -35,11 +35,11 @@ export class Tag extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
+     * The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
+     * The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package or version ID parts contain slashes, the slashes are escaped.
      */
     public readonly version!: pulumi.Output<string>;
 
@@ -90,7 +90,7 @@ export class Tag extends pulumi.CustomResource {
 export interface TagArgs {
     location: pulumi.Input<string>;
     /**
-     * The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
+     * The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
      */
     name?: pulumi.Input<string>;
     packageId: pulumi.Input<string>;
@@ -98,7 +98,7 @@ export interface TagArgs {
     repositoryId: pulumi.Input<string>;
     tagId?: pulumi.Input<string>;
     /**
-     * The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
+     * The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package or version ID parts contain slashes, the slashes are escaped.
      */
     version?: pulumi.Input<string>;
 }

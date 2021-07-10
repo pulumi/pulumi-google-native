@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public Input<int>? MinNodes { get; set; }
 
         /// <summary>
-        /// The autoscaling mode. Set to one of: ON, OFF, or ONLY_SCALE_OUT. For more information, see  Autoscaler modes.
+        /// The autoscaling mode. Set to one of: ON, OFF, or ONLY_SCALE_OUT. For more information, see Autoscaler modes.
         /// </summary>
         [Input("mode")]
         public Input<Pulumi.GoogleNative.Compute.V1.NodeGroupAutoscalingPolicyMode>? Mode { get; set; }

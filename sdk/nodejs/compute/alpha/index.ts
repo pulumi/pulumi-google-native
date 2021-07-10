@@ -10,6 +10,7 @@ export * from "./autoscaler";
 export * from "./backendBucket";
 export * from "./backendBucketIamPolicy";
 export * from "./backendService";
+export * from "./backendServiceIamPolicy";
 export * from "./disk";
 export * from "./diskIamPolicy";
 export * from "./externalVpnGateway";
@@ -17,11 +18,13 @@ export * from "./firewall";
 export * from "./firewallPolicy";
 export * from "./firewallPolicyIamPolicy";
 export * from "./forwardingRule";
+export * from "./futureReservation";
 export * from "./getAddress";
 export * from "./getAutoscaler";
 export * from "./getBackendBucket";
 export * from "./getBackendBucketIamPolicy";
 export * from "./getBackendService";
+export * from "./getBackendServiceIamPolicy";
 export * from "./getDisk";
 export * from "./getDiskIamPolicy";
 export * from "./getExternalVpnGateway";
@@ -29,6 +32,7 @@ export * from "./getFirewall";
 export * from "./getFirewallPolicy";
 export * from "./getFirewallPolicyIamPolicy";
 export * from "./getForwardingRule";
+export * from "./getFutureReservation";
 export * from "./getGlobalAddress";
 export * from "./getGlobalForwardingRule";
 export * from "./getGlobalNetworkEndpointGroup";
@@ -54,6 +58,7 @@ export * from "./getLicenseIamPolicy";
 export * from "./getMachineImage";
 export * from "./getMachineImageIamPolicy";
 export * from "./getNetwork";
+export * from "./getNetworkEdgeSecurityService";
 export * from "./getNetworkEndpointGroup";
 export * from "./getNetworkFirewallPolicy";
 export * from "./getNetworkFirewallPolicyIamPolicy";
@@ -67,6 +72,7 @@ export * from "./getPublicAdvertisedPrefix";
 export * from "./getPublicDelegatedPrefix";
 export * from "./getRegionAutoscaler";
 export * from "./getRegionBackendService";
+export * from "./getRegionBackendServiceIamPolicy";
 export * from "./getRegionCommitment";
 export * from "./getRegionDisk";
 export * from "./getRegionDiskIamPolicy";
@@ -81,6 +87,7 @@ export * from "./getRegionNetworkEndpointGroup";
 export * from "./getRegionNetworkFirewallPolicy";
 export * from "./getRegionNetworkFirewallPolicyIamPolicy";
 export * from "./getRegionNotificationEndpoint";
+export * from "./getRegionSecurityPolicy";
 export * from "./getRegionSslCertificate";
 export * from "./getRegionTargetHttpProxy";
 export * from "./getRegionTargetHttpsProxy";
@@ -140,6 +147,7 @@ export * from "./licenseIamPolicy";
 export * from "./machineImage";
 export * from "./machineImageIamPolicy";
 export * from "./network";
+export * from "./networkEdgeSecurityService";
 export * from "./networkEndpointGroup";
 export * from "./networkFirewallPolicy";
 export * from "./networkFirewallPolicyIamPolicy";
@@ -153,6 +161,7 @@ export * from "./publicAdvertisedPrefix";
 export * from "./publicDelegatedPrefix";
 export * from "./regionAutoscaler";
 export * from "./regionBackendService";
+export * from "./regionBackendServiceIamPolicy";
 export * from "./regionCommitment";
 export * from "./regionDisk";
 export * from "./regionDiskIamPolicy";
@@ -167,6 +176,7 @@ export * from "./regionNetworkEndpointGroup";
 export * from "./regionNetworkFirewallPolicy";
 export * from "./regionNetworkFirewallPolicyIamPolicy";
 export * from "./regionNotificationEndpoint";
+export * from "./regionSecurityPolicy";
 export * from "./regionSslCertificate";
 export * from "./regionTargetHttpProxy";
 export * from "./regionTargetHttpsProxy";
@@ -211,6 +221,7 @@ import { Autoscaler } from "./autoscaler";
 import { BackendBucket } from "./backendBucket";
 import { BackendBucketIamPolicy } from "./backendBucketIamPolicy";
 import { BackendService } from "./backendService";
+import { BackendServiceIamPolicy } from "./backendServiceIamPolicy";
 import { Disk } from "./disk";
 import { DiskIamPolicy } from "./diskIamPolicy";
 import { ExternalVpnGateway } from "./externalVpnGateway";
@@ -218,6 +229,7 @@ import { Firewall } from "./firewall";
 import { FirewallPolicy } from "./firewallPolicy";
 import { FirewallPolicyIamPolicy } from "./firewallPolicyIamPolicy";
 import { ForwardingRule } from "./forwardingRule";
+import { FutureReservation } from "./futureReservation";
 import { GlobalAddress } from "./globalAddress";
 import { GlobalForwardingRule } from "./globalForwardingRule";
 import { GlobalNetworkEndpointGroup } from "./globalNetworkEndpointGroup";
@@ -243,6 +255,7 @@ import { LicenseIamPolicy } from "./licenseIamPolicy";
 import { MachineImage } from "./machineImage";
 import { MachineImageIamPolicy } from "./machineImageIamPolicy";
 import { Network } from "./network";
+import { NetworkEdgeSecurityService } from "./networkEdgeSecurityService";
 import { NetworkEndpointGroup } from "./networkEndpointGroup";
 import { NetworkFirewallPolicy } from "./networkFirewallPolicy";
 import { NetworkFirewallPolicyIamPolicy } from "./networkFirewallPolicyIamPolicy";
@@ -256,6 +269,7 @@ import { PublicAdvertisedPrefix } from "./publicAdvertisedPrefix";
 import { PublicDelegatedPrefix } from "./publicDelegatedPrefix";
 import { RegionAutoscaler } from "./regionAutoscaler";
 import { RegionBackendService } from "./regionBackendService";
+import { RegionBackendServiceIamPolicy } from "./regionBackendServiceIamPolicy";
 import { RegionCommitment } from "./regionCommitment";
 import { RegionDisk } from "./regionDisk";
 import { RegionDiskIamPolicy } from "./regionDiskIamPolicy";
@@ -270,6 +284,7 @@ import { RegionNetworkEndpointGroup } from "./regionNetworkEndpointGroup";
 import { RegionNetworkFirewallPolicy } from "./regionNetworkFirewallPolicy";
 import { RegionNetworkFirewallPolicyIamPolicy } from "./regionNetworkFirewallPolicyIamPolicy";
 import { RegionNotificationEndpoint } from "./regionNotificationEndpoint";
+import { RegionSecurityPolicy } from "./regionSecurityPolicy";
 import { RegionSslCertificate } from "./regionSslCertificate";
 import { RegionTargetHttpProxy } from "./regionTargetHttpProxy";
 import { RegionTargetHttpsProxy } from "./regionTargetHttpsProxy";
@@ -319,6 +334,8 @@ const _module = {
                 return new BackendBucketIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/alpha:BackendService":
                 return new BackendService(name, <any>undefined, { urn })
+            case "google-native:compute/alpha:BackendServiceIamPolicy":
+                return new BackendServiceIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/alpha:Disk":
                 return new Disk(name, <any>undefined, { urn })
             case "google-native:compute/alpha:DiskIamPolicy":
@@ -333,6 +350,8 @@ const _module = {
                 return new FirewallPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/alpha:ForwardingRule":
                 return new ForwardingRule(name, <any>undefined, { urn })
+            case "google-native:compute/alpha:FutureReservation":
+                return new FutureReservation(name, <any>undefined, { urn })
             case "google-native:compute/alpha:GlobalAddress":
                 return new GlobalAddress(name, <any>undefined, { urn })
             case "google-native:compute/alpha:GlobalForwardingRule":
@@ -383,6 +402,8 @@ const _module = {
                 return new MachineImageIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/alpha:Network":
                 return new Network(name, <any>undefined, { urn })
+            case "google-native:compute/alpha:NetworkEdgeSecurityService":
+                return new NetworkEdgeSecurityService(name, <any>undefined, { urn })
             case "google-native:compute/alpha:NetworkEndpointGroup":
                 return new NetworkEndpointGroup(name, <any>undefined, { urn })
             case "google-native:compute/alpha:NetworkFirewallPolicy":
@@ -409,6 +430,8 @@ const _module = {
                 return new RegionAutoscaler(name, <any>undefined, { urn })
             case "google-native:compute/alpha:RegionBackendService":
                 return new RegionBackendService(name, <any>undefined, { urn })
+            case "google-native:compute/alpha:RegionBackendServiceIamPolicy":
+                return new RegionBackendServiceIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/alpha:RegionCommitment":
                 return new RegionCommitment(name, <any>undefined, { urn })
             case "google-native:compute/alpha:RegionDisk":
@@ -437,6 +460,8 @@ const _module = {
                 return new RegionNetworkFirewallPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/alpha:RegionNotificationEndpoint":
                 return new RegionNotificationEndpoint(name, <any>undefined, { urn })
+            case "google-native:compute/alpha:RegionSecurityPolicy":
+                return new RegionSecurityPolicy(name, <any>undefined, { urn })
             case "google-native:compute/alpha:RegionSslCertificate":
                 return new RegionSslCertificate(name, <any>undefined, { urn })
             case "google-native:compute/alpha:RegionTargetHttpProxy":

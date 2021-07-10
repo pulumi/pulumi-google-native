@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Inputs
 {
 
+    /// <summary>
+    /// Metadata
+    /// </summary>
     public sealed class MetadataItemsItemArgs : Pulumi.ResourceArgs
     {
         /// <summary>

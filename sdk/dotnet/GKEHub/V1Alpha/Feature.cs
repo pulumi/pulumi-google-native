@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         public Output<ImmutableDictionary<string, string>> MembershipStates { get; private set; } = null!;
 
         /// <summary>
-        /// The full, unique name of this Feature resource in the format `projects/*/locations/global/features/*`.
+        /// The full, unique name of this Feature resource in the format `projects/*/locations/*/features/*`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -134,6 +134,9 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
             get => _labels ?? (_labels = new InputMap<string>());
             set => _labels = value;
         }
+
+        [Input("location", required: true)]
+        public Input<string> Location { get; set; } = null!;
 
         [Input("membershipSpecs")]
         private InputMap<string>? _membershipSpecs;

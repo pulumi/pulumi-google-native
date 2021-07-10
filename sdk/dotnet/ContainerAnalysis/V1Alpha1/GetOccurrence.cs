@@ -45,6 +45,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// </summary>
         public readonly Outputs.BuildDetailsResponse BuildDetails;
         /// <summary>
+        /// Describes whether or not a resource passes compliance checks.
+        /// </summary>
+        public readonly Outputs.ComplianceOccurrenceResponse Compliance;
+        /// <summary>
         /// The time this `Occurrence` was created.
         /// </summary>
         public readonly string CreateTime;
@@ -107,6 +111,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
 
             Outputs.BuildDetailsResponse buildDetails,
 
+            Outputs.ComplianceOccurrenceResponse compliance,
+
             string createTime,
 
             Outputs.DeploymentResponse deployment,
@@ -137,6 +143,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         {
             Attestation = attestation;
             BuildDetails = buildDetails;
+            Compliance = compliance;
             CreateTime = createTime;
             Deployment = deployment;
             DerivedImage = derivedImage;

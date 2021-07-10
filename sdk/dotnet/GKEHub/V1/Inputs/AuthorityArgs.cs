@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Inputs
         [Input("issuer")]
         public Input<string>? Issuer { get; set; }
 
+        /// <summary>
+        /// Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field.
+        /// </summary>
+        [Input("oidcJwks")]
+        public Input<string>? OidcJwks { get; set; }
+
         public AuthorityArgs()
         {
         }

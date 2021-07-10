@@ -8,6 +8,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['TargetServerArgs', 'TargetServer']
@@ -22,6 +23,7 @@ class TargetServerArgs:
                  port: pulumi.Input[int],
                  description: Optional[pulumi.Input[str]] = None,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
+                 protocol: Optional[pulumi.Input['TargetServerProtocol']] = None,
                  s_sl_info: Optional[pulumi.Input['GoogleCloudApigeeV1TlsInfoArgs']] = None):
         """
         The set of arguments for constructing a TargetServer resource.
@@ -30,6 +32,7 @@ class TargetServerArgs:
         :param pulumi.Input[int] port: The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
         :param pulumi.Input[str] description: Optional. A human-readable description of this TargetServer.
         :param pulumi.Input[bool] is_enabled: Optional. Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
+        :param pulumi.Input['TargetServerProtocol'] protocol: Immutable. The protocol used by this TargetServer.
         :param pulumi.Input['GoogleCloudApigeeV1TlsInfoArgs'] s_sl_info: Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
         """
         pulumi.set(__self__, "environment_id", environment_id)
@@ -41,6 +44,8 @@ class TargetServerArgs:
             pulumi.set(__self__, "description", description)
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
         if s_sl_info is not None:
             pulumi.set(__self__, "s_sl_info", s_sl_info)
 
@@ -123,6 +128,18 @@ class TargetServerArgs:
         pulumi.set(self, "is_enabled", value)
 
     @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input['TargetServerProtocol']]:
+        """
+        Immutable. The protocol used by this TargetServer.
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input['TargetServerProtocol']]):
+        pulumi.set(self, "protocol", value)
+
+    @property
     @pulumi.getter(name="sSLInfo")
     def s_sl_info(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1TlsInfoArgs']]:
         """
@@ -147,6 +164,7 @@ class TargetServer(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
+                 protocol: Optional[pulumi.Input['TargetServerProtocol']] = None,
                  s_sl_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1TlsInfoArgs']]] = None,
                  __props__=None):
         """
@@ -159,6 +177,7 @@ class TargetServer(pulumi.CustomResource):
         :param pulumi.Input[bool] is_enabled: Optional. Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
         :param pulumi.Input[str] name: The resource id of this target server. Values must match the regular expression 
         :param pulumi.Input[int] port: The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
+        :param pulumi.Input['TargetServerProtocol'] protocol: Immutable. The protocol used by this TargetServer.
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1TlsInfoArgs']] s_sl_info: Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
         """
         ...
@@ -192,6 +211,7 @@ class TargetServer(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  port: Optional[pulumi.Input[int]] = None,
+                 protocol: Optional[pulumi.Input['TargetServerProtocol']] = None,
                  s_sl_info: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1TlsInfoArgs']]] = None,
                  __props__=None):
         if opts is None:
@@ -222,6 +242,7 @@ class TargetServer(pulumi.CustomResource):
             if port is None and not opts.urn:
                 raise TypeError("Missing required property 'port'")
             __props__.__dict__["port"] = port
+            __props__.__dict__["protocol"] = protocol
             __props__.__dict__["s_sl_info"] = s_sl_info
         super(TargetServer, __self__).__init__(
             'google-native:apigee/v1:TargetServer',
@@ -250,6 +271,7 @@ class TargetServer(pulumi.CustomResource):
         __props__.__dict__["is_enabled"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["port"] = None
+        __props__.__dict__["protocol"] = None
         __props__.__dict__["s_sl_info"] = None
         return TargetServer(resource_name, opts=opts, __props__=__props__)
 
@@ -292,6 +314,14 @@ class TargetServer(pulumi.CustomResource):
         The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
         """
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> pulumi.Output[str]:
+        """
+        Immutable. The protocol used by this TargetServer.
+        """
+        return pulumi.get(self, "protocol")
 
     @property
     @pulumi.getter(name="sSLInfo")

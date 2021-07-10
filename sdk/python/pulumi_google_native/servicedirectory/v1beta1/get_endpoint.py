@@ -16,19 +16,28 @@ __all__ = [
 
 @pulumi.output_type
 class GetEndpointResult:
-    def __init__(__self__, address=None, metadata=None, name=None, port=None):
+    def __init__(__self__, address=None, create_time=None, metadata=None, name=None, network=None, port=None, update_time=None):
         if address and not isinstance(address, str):
             raise TypeError("Expected argument 'address' to be a str")
         pulumi.set(__self__, "address", address)
+        if create_time and not isinstance(create_time, str):
+            raise TypeError("Expected argument 'create_time' to be a str")
+        pulumi.set(__self__, "create_time", create_time)
         if metadata and not isinstance(metadata, dict):
             raise TypeError("Expected argument 'metadata' to be a dict")
         pulumi.set(__self__, "metadata", metadata)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if network and not isinstance(network, str):
+            raise TypeError("Expected argument 'network' to be a str")
+        pulumi.set(__self__, "network", network)
         if port and not isinstance(port, int):
             raise TypeError("Expected argument 'port' to be a int")
         pulumi.set(__self__, "port", port)
+        if update_time and not isinstance(update_time, str):
+            raise TypeError("Expected argument 'update_time' to be a str")
+        pulumi.set(__self__, "update_time", update_time)
 
     @property
     @pulumi.getter
@@ -37,6 +46,14 @@ class GetEndpointResult:
         Optional. An IPv4 or IPv6 address. Service Directory rejects bad addresses like: * `8.8.8` * `8.8.8.8:53` * `test:bad:address` * `[::1]` * `[::1]:8080` Limited to 45 characters.
         """
         return pulumi.get(self, "address")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> str:
+        """
+        The timestamp when the endpoint was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
@@ -56,11 +73,27 @@ class GetEndpointResult:
 
     @property
     @pulumi.getter
+    def network(self) -> str:
+        """
+        Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, but no other validation is performed on this field (ex. network or project existence, reachability, or permissions).
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter
     def port(self) -> int:
         """
         Optional. Service Directory rejects values outside of `[0, 65535]`.
         """
         return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The timestamp when the endpoint was last updated.
+        """
+        return pulumi.get(self, "update_time")
 
 
 class AwaitableGetEndpointResult(GetEndpointResult):
@@ -70,9 +103,12 @@ class AwaitableGetEndpointResult(GetEndpointResult):
             yield self
         return GetEndpointResult(
             address=self.address,
+            create_time=self.create_time,
             metadata=self.metadata,
             name=self.name,
-            port=self.port)
+            network=self.network,
+            port=self.port,
+            update_time=self.update_time)
 
 
 def get_endpoint(endpoint_id: Optional[str] = None,
@@ -98,6 +134,9 @@ def get_endpoint(endpoint_id: Optional[str] = None,
 
     return AwaitableGetEndpointResult(
         address=__ret__.address,
+        create_time=__ret__.create_time,
         metadata=__ret__.metadata,
         name=__ret__.name,
-        port=__ret__.port)
+        network=__ret__.network,
+        port=__ret__.port,
+        update_time=__ret__.update_time)

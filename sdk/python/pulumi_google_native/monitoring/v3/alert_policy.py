@@ -17,6 +17,7 @@ __all__ = ['AlertPolicyArgs', 'AlertPolicy']
 class AlertPolicyArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
+                 alert_strategy: Optional[pulumi.Input['AlertStrategyArgs']] = None,
                  combiner: Optional[pulumi.Input['AlertPolicyCombiner']] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]]] = None,
                  creation_record: Optional[pulumi.Input['MutationRecordArgs']] = None,
@@ -30,6 +31,7 @@ class AlertPolicyArgs:
                  validity: Optional[pulumi.Input['StatusArgs']] = None):
         """
         The set of arguments for constructing a AlertPolicy resource.
+        :param pulumi.Input['AlertStrategyArgs'] alert_strategy: Control over how this alert policy's notification channels are notified.
         :param pulumi.Input['AlertPolicyCombiner'] combiner: How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
         :param pulumi.Input[Sequence[pulumi.Input['ConditionArgs']]] conditions: A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition.
         :param pulumi.Input['MutationRecordArgs'] creation_record: A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be ignored.
@@ -43,6 +45,8 @@ class AlertPolicyArgs:
         :param pulumi.Input['StatusArgs'] validity: Read-only description of how the alert policy is invalid. OK if the alert policy is valid. If not OK, the alert policy will not generate incidents.
         """
         pulumi.set(__self__, "project", project)
+        if alert_strategy is not None:
+            pulumi.set(__self__, "alert_strategy", alert_strategy)
         if combiner is not None:
             pulumi.set(__self__, "combiner", combiner)
         if conditions is not None:
@@ -74,6 +78,18 @@ class AlertPolicyArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="alertStrategy")
+    def alert_strategy(self) -> Optional[pulumi.Input['AlertStrategyArgs']]:
+        """
+        Control over how this alert policy's notification channels are notified.
+        """
+        return pulumi.get(self, "alert_strategy")
+
+    @alert_strategy.setter
+    def alert_strategy(self, value: Optional[pulumi.Input['AlertStrategyArgs']]):
+        pulumi.set(self, "alert_strategy", value)
 
     @property
     @pulumi.getter
@@ -213,6 +229,7 @@ class AlertPolicy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 alert_strategy: Optional[pulumi.Input[pulumi.InputType['AlertStrategyArgs']]] = None,
                  combiner: Optional[pulumi.Input['AlertPolicyCombiner']] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConditionArgs']]]]] = None,
                  creation_record: Optional[pulumi.Input[pulumi.InputType['MutationRecordArgs']]] = None,
@@ -231,6 +248,7 @@ class AlertPolicy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['AlertStrategyArgs']] alert_strategy: Control over how this alert policy's notification channels are notified.
         :param pulumi.Input['AlertPolicyCombiner'] combiner: How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConditionArgs']]]] conditions: A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition.
         :param pulumi.Input[pulumi.InputType['MutationRecordArgs']] creation_record: A read-only record of the creation of the alerting policy. If provided in a call to create or update, this field will be ignored.
@@ -267,6 +285,7 @@ class AlertPolicy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 alert_strategy: Optional[pulumi.Input[pulumi.InputType['AlertStrategyArgs']]] = None,
                  combiner: Optional[pulumi.Input['AlertPolicyCombiner']] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConditionArgs']]]]] = None,
                  creation_record: Optional[pulumi.Input[pulumi.InputType['MutationRecordArgs']]] = None,
@@ -291,6 +310,7 @@ class AlertPolicy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AlertPolicyArgs.__new__(AlertPolicyArgs)
 
+            __props__.__dict__["alert_strategy"] = alert_strategy
             __props__.__dict__["combiner"] = combiner
             __props__.__dict__["conditions"] = conditions
             __props__.__dict__["creation_record"] = creation_record
@@ -327,6 +347,7 @@ class AlertPolicy(pulumi.CustomResource):
 
         __props__ = AlertPolicyArgs.__new__(AlertPolicyArgs)
 
+        __props__.__dict__["alert_strategy"] = None
         __props__.__dict__["combiner"] = None
         __props__.__dict__["conditions"] = None
         __props__.__dict__["creation_record"] = None
@@ -339,6 +360,14 @@ class AlertPolicy(pulumi.CustomResource):
         __props__.__dict__["user_labels"] = None
         __props__.__dict__["validity"] = None
         return AlertPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="alertStrategy")
+    def alert_strategy(self) -> pulumi.Output['outputs.AlertStrategyResponse']:
+        """
+        Control over how this alert policy's notification channels are notified.
+        """
+        return pulumi.get(self, "alert_strategy")
 
     @property
     @pulumi.getter

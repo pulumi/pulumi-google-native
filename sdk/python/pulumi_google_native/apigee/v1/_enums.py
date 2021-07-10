@@ -17,6 +17,7 @@ __all__ = [
     'RatePlanPaymentFundingModel',
     'RatePlanRevenueShareType',
     'RatePlanState',
+    'TargetServerProtocol',
 ]
 
 
@@ -137,3 +138,12 @@ class RatePlanState(str, Enum):
     STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
     DRAFT = "DRAFT"
     PUBLISHED = "PUBLISHED"
+
+
+class TargetServerProtocol(str, Enum):
+    """
+    Immutable. The protocol used by this TargetServer.
+    """
+    PROTOCOL_UNSPECIFIED = "PROTOCOL_UNSPECIFIED"
+    HTTP = "HTTP"
+    GRPC = "GRPC"

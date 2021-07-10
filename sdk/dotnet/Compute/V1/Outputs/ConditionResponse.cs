@@ -14,23 +14,23 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     public sealed class ConditionResponse
     {
         /// <summary>
-        /// Trusted attributes supplied by the IAM system.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly string Iam;
         /// <summary>
-        /// An operator to apply the subject with.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly string Op;
         /// <summary>
-        /// Trusted attributes discharged by the service.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly string Svc;
         /// <summary>
-        /// Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly string Sys;
         /// <summary>
-        /// The objects of the condition.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         public readonly ImmutableArray<string> Values;
 

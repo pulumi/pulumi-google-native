@@ -10,7 +10,6 @@ from ... import _utilities
 
 __all__ = [
     'FileArgs',
-    'MetadataArgs',
     'SourceArgs',
 ]
 
@@ -68,30 +67,6 @@ class FileArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
-
-
-@pulumi.input_type
-class MetadataArgs:
-    def __init__(__self__, *,
-                 services: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        Metadata for a Ruleset.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] services: Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
-        """
-        if services is not None:
-            pulumi.set(__self__, "services", services)
-
-    @property
-    @pulumi.getter
-    def services(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Services that this ruleset has declarations for (e.g., "cloud.firestore"). There may be 0+ of these.
-        """
-        return pulumi.get(self, "services")
-
-    @services.setter
-    def services(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "services", value)
 
 
 @pulumi.input_type

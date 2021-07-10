@@ -15,25 +15,26 @@ __all__ = ['AgentArgs', 'Agent']
 @pulumi.input_type
 class AgentArgs:
     def __init__(__self__, *,
+                 default_language_code: pulumi.Input[str],
                  display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
                  time_zone: pulumi.Input[str],
                  avatar_uri: Optional[pulumi.Input[str]] = None,
-                 default_language_code: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  enable_spell_correction: Optional[pulumi.Input[bool]] = None,
                  enable_stackdriver_logging: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  security_settings: Optional[pulumi.Input[str]] = None,
                  speech_to_text_settings: Optional[pulumi.Input['GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs']] = None,
-                 start_flow: Optional[pulumi.Input[str]] = None):
+                 start_flow: Optional[pulumi.Input[str]] = None,
+                 supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Agent resource.
+        :param pulumi.Input[str] default_language_code: Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
         :param pulumi.Input[str] display_name: The human-readable name of the agent, unique within the location.
         :param pulumi.Input[str] time_zone: The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
         :param pulumi.Input[str] avatar_uri: The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in the self-hosted [Web Demo](https://cloud.google.com/dialogflow/docs/integrations/web-demo) integration.
-        :param pulumi.Input[str] default_language_code: Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
         :param pulumi.Input[str] description: The description of the agent. The maximum length is 500 characters. If exceeded, the request is rejected.
         :param pulumi.Input[bool] enable_spell_correction: Indicates if automatic spell correction is enabled in detect intent requests.
         :param pulumi.Input[bool] enable_stackdriver_logging: Indicates if stackdriver logging is enabled for the agent.
@@ -41,15 +42,15 @@ class AgentArgs:
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
         :param pulumi.Input['GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs'] speech_to_text_settings: Speech recognition related settings.
         :param pulumi.Input[str] start_flow: Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by the agent (except for the `default_language_code`).
         """
+        pulumi.set(__self__, "default_language_code", default_language_code)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "time_zone", time_zone)
         if avatar_uri is not None:
             pulumi.set(__self__, "avatar_uri", avatar_uri)
-        if default_language_code is not None:
-            pulumi.set(__self__, "default_language_code", default_language_code)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if enable_spell_correction is not None:
@@ -64,6 +65,20 @@ class AgentArgs:
             pulumi.set(__self__, "speech_to_text_settings", speech_to_text_settings)
         if start_flow is not None:
             pulumi.set(__self__, "start_flow", start_flow)
+        if supported_language_codes is not None:
+            pulumi.set(__self__, "supported_language_codes", supported_language_codes)
+
+    @property
+    @pulumi.getter(name="defaultLanguageCode")
+    def default_language_code(self) -> pulumi.Input[str]:
+        """
+        Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
+        """
+        return pulumi.get(self, "default_language_code")
+
+    @default_language_code.setter
+    def default_language_code(self, value: pulumi.Input[str]):
+        pulumi.set(self, "default_language_code", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -118,18 +133,6 @@ class AgentArgs:
     @avatar_uri.setter
     def avatar_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "avatar_uri", value)
-
-    @property
-    @pulumi.getter(name="defaultLanguageCode")
-    def default_language_code(self) -> Optional[pulumi.Input[str]]:
-        """
-        Immutable. The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. This field cannot be set by the Agents.UpdateAgent method.
-        """
-        return pulumi.get(self, "default_language_code")
-
-    @default_language_code.setter
-    def default_language_code(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "default_language_code", value)
 
     @property
     @pulumi.getter
@@ -215,6 +218,18 @@ class AgentArgs:
     def start_flow(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start_flow", value)
 
+    @property
+    @pulumi.getter(name="supportedLanguageCodes")
+    def supported_language_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of all languages supported by the agent (except for the `default_language_code`).
+        """
+        return pulumi.get(self, "supported_language_codes")
+
+    @supported_language_codes.setter
+    def supported_language_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "supported_language_codes", value)
+
 
 class Agent(pulumi.CustomResource):
     @overload
@@ -233,10 +248,11 @@ class Agent(pulumi.CustomResource):
                  security_settings: Optional[pulumi.Input[str]] = None,
                  speech_to_text_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs']]] = None,
                  start_flow: Optional[pulumi.Input[str]] = None,
+                 supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates an agent in the specified location.
+        Creates an agent in the specified location. Note: You should always train flows prior to sending them queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -250,6 +266,7 @@ class Agent(pulumi.CustomResource):
         :param pulumi.Input[str] security_settings: Name of the SecuritySettings reference for the agent. Format: `projects//locations//securitySettings/`.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs']] speech_to_text_settings: Speech recognition related settings.
         :param pulumi.Input[str] start_flow: Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] supported_language_codes: The list of all languages supported by the agent (except for the `default_language_code`).
         :param pulumi.Input[str] time_zone: The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
         """
         ...
@@ -259,7 +276,7 @@ class Agent(pulumi.CustomResource):
                  args: AgentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates an agent in the specified location.
+        Creates an agent in the specified location. Note: You should always train flows prior to sending them queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
 
         :param str resource_name: The name of the resource.
         :param AgentArgs args: The arguments to use to populate this resource's properties.
@@ -288,6 +305,7 @@ class Agent(pulumi.CustomResource):
                  security_settings: Optional[pulumi.Input[str]] = None,
                  speech_to_text_settings: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs']]] = None,
                  start_flow: Optional[pulumi.Input[str]] = None,
+                 supported_language_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  time_zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -302,6 +320,8 @@ class Agent(pulumi.CustomResource):
             __props__ = AgentArgs.__new__(AgentArgs)
 
             __props__.__dict__["avatar_uri"] = avatar_uri
+            if default_language_code is None and not opts.urn:
+                raise TypeError("Missing required property 'default_language_code'")
             __props__.__dict__["default_language_code"] = default_language_code
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
@@ -319,6 +339,7 @@ class Agent(pulumi.CustomResource):
             __props__.__dict__["security_settings"] = security_settings
             __props__.__dict__["speech_to_text_settings"] = speech_to_text_settings
             __props__.__dict__["start_flow"] = start_flow
+            __props__.__dict__["supported_language_codes"] = supported_language_codes
             if time_zone is None and not opts.urn:
                 raise TypeError("Missing required property 'time_zone'")
             __props__.__dict__["time_zone"] = time_zone
@@ -354,6 +375,7 @@ class Agent(pulumi.CustomResource):
         __props__.__dict__["security_settings"] = None
         __props__.__dict__["speech_to_text_settings"] = None
         __props__.__dict__["start_flow"] = None
+        __props__.__dict__["supported_language_codes"] = None
         __props__.__dict__["time_zone"] = None
         return Agent(resource_name, opts=opts, __props__=__props__)
 
@@ -436,6 +458,14 @@ class Agent(pulumi.CustomResource):
         Immutable. Name of the start flow in this agent. A start flow will be automatically created when the agent is created, and can only be deleted by deleting the agent. Format: `projects//locations//agents//flows/`.
         """
         return pulumi.get(self, "start_flow")
+
+    @property
+    @pulumi.getter(name="supportedLanguageCodes")
+    def supported_language_codes(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The list of all languages supported by the agent (except for the `default_language_code`).
+        """
+        return pulumi.get(self, "supported_language_codes")
 
     @property
     @pulumi.getter(name="timeZone")

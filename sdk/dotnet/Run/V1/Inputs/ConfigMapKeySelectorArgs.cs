@@ -11,12 +11,12 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
 {
 
     /// <summary>
-    /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key from a ConfigMap.
+    /// Not supported by Cloud Run Selects a key from a ConfigMap.
     /// </summary>
     public sealed class ConfigMapKeySelectorArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The key to select.
+        /// The key to select.
         /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
@@ -28,13 +28,13 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public Input<Inputs.LocalObjectReferenceArgs>? LocalObjectReference { get; set; }
 
         /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported The ConfigMap to select from.
+        /// The ConfigMap to select from.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Specify whether the ConfigMap or its key must be defined
+        /// (Optional) Specify whether the ConfigMap or its key must be defined
         /// </summary>
         [Input("optional")]
         public Input<bool>? Optional { get; set; }

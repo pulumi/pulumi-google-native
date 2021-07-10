@@ -22,6 +22,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageResponse> Messages;
         /// <summary>
+        /// Whether Dialogflow should return currently queued fulfillment response messages in streaming APIs. If a webhook is specified, it happens before Dialogflow invokes webhook. Warning: 1) This flag only affects streaming API. Responses are still queued and returned once in non-streaming API. 2) The flag can be enabled in any fulfillment but only the first 3 partial responses will be returned. You may only want to apply it to fulfillments that have slow webhooks.
+        /// </summary>
+        public readonly bool ReturnPartialResponses;
+        /// <summary>
         /// Set parameter values before executing the webhook.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionResponse> SetParameterActions;
@@ -40,6 +44,8 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
 
             ImmutableArray<Outputs.GoogleCloudDialogflowCxV3beta1ResponseMessageResponse> messages,
 
+            bool returnPartialResponses,
+
             ImmutableArray<Outputs.GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionResponse> setParameterActions,
 
             string tag,
@@ -48,6 +54,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Outputs
         {
             ConditionalCases = conditionalCases;
             Messages = messages;
+            ReturnPartialResponses = returnPartialResponses;
             SetParameterActions = setParameterActions;
             Tag = tag;
             Webhook = webhook;

@@ -49,11 +49,11 @@ export const TransferJobStatus = {
      */
     StatusUnspecified: "STATUS_UNSPECIFIED",
     /**
-     * New transfers will be performed based on the schedule.
+     * New transfers are performed based on the schedule.
      */
     Enabled: "ENABLED",
     /**
-     * New transfers will not be scheduled.
+     * New transfers are not scheduled.
      */
     Disabled: "DISABLED",
     /**

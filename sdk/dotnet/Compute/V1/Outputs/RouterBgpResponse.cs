@@ -29,6 +29,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// Local BGP Autonomous System Number (ASN). Must be an RFC6996 private ASN, either 16-bit or 32-bit. The value will be fixed for this router resource. All VPN tunnels that link to this router will have the same local ASN.
         /// </summary>
         public readonly int Asn;
+        /// <summary>
+        /// The interval in seconds between BGP keepalive messages that are sent to the peer. Hold time is three times the interval at which keepalive messages are sent, and the hold time is the maximum number of seconds allowed to elapse between successive keepalive messages that BGP receives from a peer. BGP will use the smaller of either the local hold time value or the peer's hold time value as the hold time for the BGP connection between the two peers. If set, this value must be between 20 and 60. The default is 20.
+        /// </summary>
+        public readonly int KeepaliveInterval;
 
         [OutputConstructor]
         private RouterBgpResponse(
@@ -38,12 +42,15 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             ImmutableArray<Outputs.RouterAdvertisedIpRangeResponse> advertisedIpRanges,
 
-            int asn)
+            int asn,
+
+            int keepaliveInterval)
         {
             AdvertiseMode = advertiseMode;
             AdvertisedGroups = advertisedGroups;
             AdvertisedIpRanges = advertisedIpRanges;
             Asn = asn;
+            KeepaliveInterval = keepaliveInterval;
         }
     }
 }

@@ -34,11 +34,11 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string DiskSizeGb;
         /// <summary>
-        /// URL of the disk type resource. For example: projects/project/zones/zone/diskTypes/pd-standard or pd-ssd
+        /// URL of the disk type resource. For example: projects/project /zones/zone/diskTypes/pd-standard or pd-ssd
         /// </summary>
         public readonly string DiskType;
         /// <summary>
-        /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
+        /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         /// </summary>
         public readonly ImmutableArray<Outputs.GuestOsFeatureResponse> GuestOsFeatures;
         /// <summary>

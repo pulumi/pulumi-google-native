@@ -14,6 +14,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
     public sealed class JobStatistics2Response
     {
         /// <summary>
+        /// BI Engine specific Statistics. [Output-only] BI Engine specific Statistics.
+        /// </summary>
+        public readonly Outputs.BiEngineStatisticsResponse BiEngineStatistics;
+        /// <summary>
         /// Billing tier for the job.
         /// </summary>
         public readonly int BillingTier;
@@ -25,6 +29,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// [Preview] The number of row access policies affected by a DDL statement. Present only for DROP ALL ROW ACCESS POLICIES queries.
         /// </summary>
         public readonly string DdlAffectedRowAccessPolicyCount;
+        /// <summary>
+        /// The DDL destination table. Present only for ALTER TABLE RENAME TO queries. Note that ddl_target_table is used just for its type information.
+        /// </summary>
+        public readonly Outputs.TableReferenceResponse DdlDestinationTable;
         /// <summary>
         /// The DDL operation performed, possibly dependent on the pre-existence of the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP": The query deleted the DDL target.
         /// </summary>
@@ -45,6 +53,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// The DDL target table. Present only for CREATE/DROP TABLE/VIEW and DROP ALL ROW ACCESS POLICIES queries.
         /// </summary>
         public readonly Outputs.TableReferenceResponse DdlTargetTable;
+        /// <summary>
+        /// Detailed statistics for DML statements Present only for DML statements INSERT, UPDATE, DELETE or TRUNCATE.
+        /// </summary>
+        public readonly Outputs.DmlStatisticsResponse DmlStats;
         /// <summary>
         /// The original estimate of bytes processed for the job.
         /// </summary>
@@ -112,11 +124,15 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
         [OutputConstructor]
         private JobStatistics2Response(
+            Outputs.BiEngineStatisticsResponse biEngineStatistics,
+
             int billingTier,
 
             bool cacheHit,
 
             string ddlAffectedRowAccessPolicyCount,
+
+            Outputs.TableReferenceResponse ddlDestinationTable,
 
             string ddlOperationPerformed,
 
@@ -127,6 +143,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             Outputs.RowAccessPolicyReferenceResponse ddlTargetRowAccessPolicy,
 
             Outputs.TableReferenceResponse ddlTargetTable,
+
+            Outputs.DmlStatisticsResponse dmlStats,
 
             string estimatedBytesProcessed,
 
@@ -160,14 +178,17 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             ImmutableArray<Outputs.QueryParameterResponse> undeclaredQueryParameters)
         {
+            BiEngineStatistics = biEngineStatistics;
             BillingTier = billingTier;
             CacheHit = cacheHit;
             DdlAffectedRowAccessPolicyCount = ddlAffectedRowAccessPolicyCount;
+            DdlDestinationTable = ddlDestinationTable;
             DdlOperationPerformed = ddlOperationPerformed;
             DdlTargetDataset = ddlTargetDataset;
             DdlTargetRoutine = ddlTargetRoutine;
             DdlTargetRowAccessPolicy = ddlTargetRowAccessPolicy;
             DdlTargetTable = ddlTargetTable;
+            DmlStats = dmlStats;
             EstimatedBytesProcessed = estimatedBytesProcessed;
             ModelTraining = modelTraining;
             NumDmlAffectedRows = numDmlAffectedRows;

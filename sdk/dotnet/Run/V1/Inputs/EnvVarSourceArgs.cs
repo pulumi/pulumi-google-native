@@ -11,18 +11,18 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
 {
 
     /// <summary>
-    /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported EnvVarSource represents a source for the value of an EnvVar.
+    /// EnvVarSource represents a source for the value of an EnvVar.
     /// </summary>
     public sealed class EnvVarSourceArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Selects a key of a ConfigMap.
+        /// (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
         /// </summary>
         [Input("configMapKeyRef")]
         public Input<Inputs.ConfigMapKeySelectorArgs>? ConfigMapKeyRef { get; set; }
 
         /// <summary>
-        /// (Optional) Cloud Run fully managed: supported. Selects a key (version) of a secret in Secret Manager. Cloud Run for Anthos: supported. Selects a key of a secret in the pod's namespace.
+        /// (Optional) Selects a key (version) of a secret in Secret Manager.
         /// </summary>
         [Input("secretKeyRef")]
         public Input<Inputs.SecretKeySelectorArgs>? SecretKeyRef { get; set; }

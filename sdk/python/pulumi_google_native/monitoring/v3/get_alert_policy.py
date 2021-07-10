@@ -17,7 +17,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetAlertPolicyResult:
-    def __init__(__self__, combiner=None, conditions=None, creation_record=None, display_name=None, documentation=None, enabled=None, mutation_record=None, name=None, notification_channels=None, user_labels=None, validity=None):
+    def __init__(__self__, alert_strategy=None, combiner=None, conditions=None, creation_record=None, display_name=None, documentation=None, enabled=None, mutation_record=None, name=None, notification_channels=None, user_labels=None, validity=None):
+        if alert_strategy and not isinstance(alert_strategy, dict):
+            raise TypeError("Expected argument 'alert_strategy' to be a dict")
+        pulumi.set(__self__, "alert_strategy", alert_strategy)
         if combiner and not isinstance(combiner, str):
             raise TypeError("Expected argument 'combiner' to be a str")
         pulumi.set(__self__, "combiner", combiner)
@@ -51,6 +54,14 @@ class GetAlertPolicyResult:
         if validity and not isinstance(validity, dict):
             raise TypeError("Expected argument 'validity' to be a dict")
         pulumi.set(__self__, "validity", validity)
+
+    @property
+    @pulumi.getter(name="alertStrategy")
+    def alert_strategy(self) -> 'outputs.AlertStrategyResponse':
+        """
+        Control over how this alert policy's notification channels are notified.
+        """
+        return pulumi.get(self, "alert_strategy")
 
     @property
     @pulumi.getter
@@ -147,6 +158,7 @@ class AwaitableGetAlertPolicyResult(GetAlertPolicyResult):
         if False:
             yield self
         return GetAlertPolicyResult(
+            alert_strategy=self.alert_strategy,
             combiner=self.combiner,
             conditions=self.conditions,
             creation_record=self.creation_record,
@@ -176,6 +188,7 @@ def get_alert_policy(alert_policy_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:monitoring/v3:getAlertPolicy', __args__, opts=opts, typ=GetAlertPolicyResult).value
 
     return AwaitableGetAlertPolicyResult(
+        alert_strategy=__ret__.alert_strategy,
         combiner=__ret__.combiner,
         conditions=__ret__.conditions,
         creation_record=__ret__.creation_record,

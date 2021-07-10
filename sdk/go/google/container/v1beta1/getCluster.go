@@ -94,6 +94,8 @@ type LookupClusterResult struct {
 	NetworkPolicy NetworkPolicyResponse `pulumi:"networkPolicy"`
 	// [Output only] The size of the address space on each node for hosting containers. This is provisioned from within the `container_ipv4_cidr` range. This field will only be set when cluster is in route-based network mode.
 	NodeIpv4CidrSize int `pulumi:"nodeIpv4CidrSize"`
+	// Default NodePool settings for the entire cluster. These settings are overridden if specified on the specific NodePool object.
+	NodePoolDefaults NodePoolDefaultsResponse `pulumi:"nodePoolDefaults"`
 	// The node pools associated with this cluster. This field should not be set if "node_config" or "initial_node_count" are specified.
 	NodePools []NodePoolResponse `pulumi:"nodePools"`
 	// Notification configuration of the cluster.

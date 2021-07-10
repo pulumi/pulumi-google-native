@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public Output<Outputs.GoogleCloudDialogflowV2FulfillmentResponse> Fulfillment { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/`
+        /// The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;

@@ -76,6 +76,8 @@ export * from "./getResourcePolicyIamPolicy";
 export * from "./getRoute";
 export * from "./getRouter";
 export * from "./getSecurityPolicy";
+export * from "./getServiceAttachment";
+export * from "./getServiceAttachmentIamPolicy";
 export * from "./getSnapshotIamPolicy";
 export * from "./getSslCertificate";
 export * from "./getSslPolicy";
@@ -141,6 +143,8 @@ export * from "./resourcePolicyIamPolicy";
 export * from "./route";
 export * from "./router";
 export * from "./securityPolicy";
+export * from "./serviceAttachment";
+export * from "./serviceAttachmentIamPolicy";
 export * from "./snapshotIamPolicy";
 export * from "./sslCertificate";
 export * from "./sslPolicy";
@@ -222,6 +226,8 @@ import { ResourcePolicyIamPolicy } from "./resourcePolicyIamPolicy";
 import { Route } from "./route";
 import { Router } from "./router";
 import { SecurityPolicy } from "./securityPolicy";
+import { ServiceAttachment } from "./serviceAttachment";
+import { ServiceAttachmentIamPolicy } from "./serviceAttachmentIamPolicy";
 import { SnapshotIamPolicy } from "./snapshotIamPolicy";
 import { SslCertificate } from "./sslCertificate";
 import { SslPolicy } from "./sslPolicy";
@@ -363,6 +369,10 @@ const _module = {
                 return new Router(name, <any>undefined, { urn })
             case "google-native:compute/v1:SecurityPolicy":
                 return new SecurityPolicy(name, <any>undefined, { urn })
+            case "google-native:compute/v1:ServiceAttachment":
+                return new ServiceAttachment(name, <any>undefined, { urn })
+            case "google-native:compute/v1:ServiceAttachmentIamPolicy":
+                return new ServiceAttachmentIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:SnapshotIamPolicy":
                 return new SnapshotIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:SslCertificate":

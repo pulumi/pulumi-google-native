@@ -29,6 +29,8 @@ type FhirStore struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
 	NotificationConfig NotificationConfigResponseOutput `pulumi:"notificationConfig"`
+	// Configuration for how FHIR resource can be searched.
+	SearchConfig SearchConfigResponseOutput `pulumi:"searchConfig"`
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
 	StreamConfigs StreamConfigResponseArrayOutput `pulumi:"streamConfigs"`
 	// Configuration for how to validate incoming FHIR resources against configured profiles.
@@ -89,6 +91,8 @@ type fhirStoreState struct {
 	Name *string `pulumi:"name"`
 	// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
 	NotificationConfig *NotificationConfigResponse `pulumi:"notificationConfig"`
+	// Configuration for how FHIR resource can be searched.
+	SearchConfig *SearchConfigResponse `pulumi:"searchConfig"`
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
 	StreamConfigs []StreamConfigResponse `pulumi:"streamConfigs"`
 	// Configuration for how to validate incoming FHIR resources against configured profiles.
@@ -112,6 +116,8 @@ type FhirStoreState struct {
 	Name pulumi.StringPtrInput
 	// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
 	NotificationConfig NotificationConfigResponsePtrInput
+	// Configuration for how FHIR resource can be searched.
+	SearchConfig SearchConfigResponsePtrInput
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
 	StreamConfigs StreamConfigResponseArrayInput
 	// Configuration for how to validate incoming FHIR resources against configured profiles.
@@ -141,6 +147,8 @@ type fhirStoreArgs struct {
 	// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
 	NotificationConfig *NotificationConfig `pulumi:"notificationConfig"`
 	Project            string              `pulumi:"project"`
+	// Configuration for how FHIR resource can be searched.
+	SearchConfig *SearchConfig `pulumi:"searchConfig"`
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
 	StreamConfigs []StreamConfig `pulumi:"streamConfigs"`
 	// Configuration for how to validate incoming FHIR resources against configured profiles.
@@ -167,6 +175,8 @@ type FhirStoreArgs struct {
 	// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the action that has triggered the notification. For example, "action":"CreateResource".
 	NotificationConfig NotificationConfigPtrInput
 	Project            pulumi.StringInput
+	// Configuration for how FHIR resource can be searched.
+	SearchConfig SearchConfigPtrInput
 	// A list of streaming configs that configure the destinations of streaming export for every resource mutation in this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next resource mutation is streamed to the new location in addition to the existing ones. When a location is removed from the list, the server stops streaming to that location. Before adding a new config, you must add the required [`bigquery.dataEditor`](https://cloud.google.com/bigquery/docs/access-control#bigquery.dataEditor) role to your project's **Cloud Healthcare Service Agent** [service account](https://cloud.google.com/iam/docs/service-accounts). Some lag (typically on the order of dozens of seconds) is expected before the results show up in the streaming destination.
 	StreamConfigs StreamConfigArrayInput
 	// Configuration for how to validate incoming FHIR resources against configured profiles.

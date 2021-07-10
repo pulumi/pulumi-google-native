@@ -60,12 +60,14 @@ import * as ml from "./ml";
 import * as monitoring from "./monitoring";
 import * as networkconnectivity from "./networkconnectivity";
 import * as networkmanagement from "./networkmanagement";
+import * as networksecurity from "./networksecurity";
 import * as notebooks from "./notebooks";
 import * as osconfig from "./osconfig";
 import * as policysimulator from "./policysimulator";
 import * as privateca from "./privateca";
 import * as pubsub from "./pubsub";
 import * as pubsublite from "./pubsublite";
+import * as recaptchaenterprise from "./recaptchaenterprise";
 import * as recommendationengine from "./recommendationengine";
 import * as redis from "./redis";
 import * as remotebuildexecution from "./remotebuildexecution";
@@ -142,12 +144,14 @@ export {
     monitoring,
     networkconnectivity,
     networkmanagement,
+    networksecurity,
     notebooks,
     osconfig,
     policysimulator,
     privateca,
     pubsub,
     pubsublite,
+    recaptchaenterprise,
     recommendationengine,
     redis,
     remotebuildexecution,

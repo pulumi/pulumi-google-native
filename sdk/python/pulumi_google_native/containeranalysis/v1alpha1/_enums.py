@@ -6,6 +6,7 @@ from enum import Enum
 
 __all__ = [
     'BuildSignatureKeyType',
+    'CisBenchmarkSeverity',
     'DeploymentPlatform',
     'DiscoveredAnalysisStatus',
     'DiscoveredContinuousAnalysis',
@@ -28,6 +29,18 @@ class BuildSignatureKeyType(str, Enum):
     KEY_TYPE_UNSPECIFIED = "KEY_TYPE_UNSPECIFIED"
     PGP_ASCII_ARMORED = "PGP_ASCII_ARMORED"
     PKIX_PEM = "PKIX_PEM"
+
+
+class CisBenchmarkSeverity(str, Enum):
+    """
+    The severity level of this CIS benchmark check.
+    """
+    SEVERITY_UNSPECIFIED = "SEVERITY_UNSPECIFIED"
+    MINIMAL = "MINIMAL"
+    LOW = "LOW"
+    MEDIUM = "MEDIUM"
+    HIGH = "HIGH"
+    CRITICAL = "CRITICAL"
 
 
 class DeploymentPlatform(str, Enum):
@@ -74,6 +87,7 @@ class DiscoveryAnalysisKind(str, Enum):
     DISCOVERY = "DISCOVERY"
     ATTESTATION_AUTHORITY = "ATTESTATION_AUTHORITY"
     UPGRADE = "UPGRADE"
+    COMPLIANCE = "COMPLIANCE"
 
 
 class DistributionArchitecture(str, Enum):

@@ -36,6 +36,10 @@ export class Service extends pulumi.CustomResource {
     }
 
     /**
+     * The timestamp when the service was created.
+     */
+    public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
      * Endpoints associated with this service. Returned on LookupService.ResolveService. Control plane clients should use RegistrationService.ListEndpoints.
      */
     public /*out*/ readonly endpoints!: pulumi.Output<outputs.servicedirectory.v1beta1.EndpointResponse[]>;
@@ -47,6 +51,10 @@ export class Service extends pulumi.CustomResource {
      * Immutable. The resource name for the service in the format `projects/*&#47;locations/*&#47;namespaces/*&#47;services/*`.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The timestamp when the service was last updated. Note: endpoints being created/deleted/updated within the service are not considered service updates for the purpose of this timestamp.
+     */
+    public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -77,11 +85,15 @@ export class Service extends pulumi.CustomResource {
             inputs["namespaceId"] = args ? args.namespaceId : undefined;
             inputs["project"] = args ? args.project : undefined;
             inputs["serviceId"] = args ? args.serviceId : undefined;
+            inputs["createTime"] = undefined /*out*/;
             inputs["endpoints"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         } else {
+            inputs["createTime"] = undefined /*out*/;
             inputs["endpoints"] = undefined /*out*/;
             inputs["metadata"] = undefined /*out*/;
             inputs["name"] = undefined /*out*/;
+            inputs["updateTime"] = undefined /*out*/;
         }
         if (!opts.version) {
             opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});

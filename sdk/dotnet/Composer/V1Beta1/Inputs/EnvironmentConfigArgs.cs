@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
         public Input<Inputs.EncryptionConfigArgs>? EncryptionConfig { get; set; }
 
         /// <summary>
+        /// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Input("environmentSize")]
+        public Input<Pulumi.GoogleNative.Composer.V1Beta1.EnvironmentConfigEnvironmentSize>? EnvironmentSize { get; set; }
+
+        /// <summary>
         /// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
         /// </summary>
         [Input("maintenanceWindow")]
@@ -68,6 +74,12 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
         /// </summary>
         [Input("webServerNetworkAccessControl")]
         public Input<Inputs.WebServerNetworkAccessControlArgs>? WebServerNetworkAccessControl { get; set; }
+
+        /// <summary>
+        /// Optional. The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. The GKE cluster runs Airflow scheduler, web server and workers workloads. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
+        /// </summary>
+        [Input("workloadsConfig")]
+        public Input<Inputs.WorkloadsConfigArgs>? WorkloadsConfig { get; set; }
 
         public EnvironmentConfigArgs()
         {

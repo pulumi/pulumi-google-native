@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dialogflow.V2
 {
     /// <summary>
-    /// Creates an entity type in the specified agent.
+    /// Creates an entity type in the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v2:EntityType")]
     public partial class EntityType : Pulumi.CustomResource

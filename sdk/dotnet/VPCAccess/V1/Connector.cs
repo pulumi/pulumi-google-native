@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.VPCAccess.V1
         public Output<int> MaxInstances { get; private set; } = null!;
 
         /// <summary>
-        /// Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
+        /// Maximum throughput of the connector in Mbps. Default is 300, max is 1000.
         /// </summary>
         [Output("maxThroughput")]
         public Output<int> MaxThroughput { get; private set; } = null!;
@@ -151,7 +151,7 @@ namespace Pulumi.GoogleNative.VPCAccess.V1
         public Input<int>? MaxInstances { get; set; }
 
         /// <summary>
-        /// Maximum throughput of the connector in Mbps. Default is 200, max is 1000.
+        /// Maximum throughput of the connector in Mbps. Default is 300, max is 1000.
         /// </summary>
         [Input("maxThroughput")]
         public Input<int>? MaxThroughput { get; set; }

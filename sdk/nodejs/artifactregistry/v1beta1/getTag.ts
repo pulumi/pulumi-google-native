@@ -35,7 +35,7 @@ export interface GetTagArgs {
 
 export interface GetTagResult {
     /**
-     * The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
+     * The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
      */
     readonly name: string;
     /**

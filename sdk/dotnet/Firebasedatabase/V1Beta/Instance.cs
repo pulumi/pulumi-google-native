@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         public Output<string> DatabaseUrl { get; private set; } = null!;
 
         /// <summary>
-        /// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
+        /// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -103,7 +103,7 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`. Currently the only supported location is 'us-central1'.
+        /// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

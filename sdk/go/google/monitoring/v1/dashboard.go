@@ -118,7 +118,8 @@ type dashboardArgs struct {
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
 	// The content is divided into equally spaced rows and the widgets are arranged horizontally.
-	RowLayout *RowLayout `pulumi:"rowLayout"`
+	RowLayout    *RowLayout `pulumi:"rowLayout"`
+	ValidateOnly *string    `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Dashboard resource.
@@ -137,7 +138,8 @@ type DashboardArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// The content is divided into equally spaced rows and the widgets are arranged horizontally.
-	RowLayout RowLayoutPtrInput
+	RowLayout    RowLayoutPtrInput
+	ValidateOnly pulumi.StringPtrInput
 }
 
 func (DashboardArgs) ElementType() reflect.Type {

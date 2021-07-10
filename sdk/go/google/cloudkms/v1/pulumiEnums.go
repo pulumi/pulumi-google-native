@@ -156,6 +156,8 @@ const (
 	CryptoKeyVersionTemplateAlgorithmEcSignP256Sha256 = CryptoKeyVersionTemplateAlgorithm("EC_SIGN_P256_SHA256")
 	// ECDSA on the NIST P-384 curve with a SHA384 digest.
 	CryptoKeyVersionTemplateAlgorithmEcSignP384Sha384 = CryptoKeyVersionTemplateAlgorithm("EC_SIGN_P384_SHA384")
+	// ECDSA on the non-NIST secp256k1 curve. This curve is only supported for HSM protection level.
+	CryptoKeyVersionTemplateAlgorithmEcSignSecp256k1Sha256 = CryptoKeyVersionTemplateAlgorithm("EC_SIGN_SECP256K1_SHA256")
 	// Algorithm representing symmetric encryption by an external key manager.
 	CryptoKeyVersionTemplateAlgorithmExternalSymmetricEncryption = CryptoKeyVersionTemplateAlgorithm("EXTERNAL_SYMMETRIC_ENCRYPTION")
 )

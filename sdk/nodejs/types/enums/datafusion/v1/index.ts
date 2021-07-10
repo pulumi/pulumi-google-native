@@ -15,6 +15,10 @@ export const AcceleratorAcceleratorType = {
      * Cloud Healthcare accelerator for CDF. This accelerator is to enable Cloud Healthcare specific CDF plugins developed by Healthcare team.
      */
     Healthcare: "HEALTHCARE",
+    /**
+     * Contact Center AI Insights This accelerator is used to enable import and export pipelines custom built to streamline CCAI Insights processing.
+     */
+    CcaiInsights: "CCAI_INSIGHTS",
 } as const;
 
 /**

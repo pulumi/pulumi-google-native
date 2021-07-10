@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
     public sealed class AwsS3DataResponse
     {
         /// <summary>
-        /// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
+        /// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. This field is required. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
         /// </summary>
         public readonly Outputs.AwsAccessKeyResponse AwsAccessKey;
         /// <summary>
@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
         /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
         /// </summary>
         public readonly string Path;
+        /// <summary>
+        /// Input only. The Amazon Resource Name (ARN) of the role to support temporary credentials via `AssumeRoleWithWebIdentity`. For more information about ARNs, see [IAM ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns). When a role ARN is provided, Transfer Service fetches temporary credentials for the session using a `AssumeRoleWithWebIdentity` call for the provided role using the GoogleServiceAccount for this project.
+        /// </summary>
+        public readonly string RoleArn;
 
         [OutputConstructor]
         private AwsS3DataResponse(
@@ -32,11 +36,14 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Outputs
 
             string bucketName,
 
-            string path)
+            string path,
+
+            string roleArn)
         {
             AwsAccessKey = awsAccessKey;
             BucketName = bucketName;
             Path = path;
+            RoleArn = roleArn;
         }
     }
 }

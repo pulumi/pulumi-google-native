@@ -22,7 +22,11 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// </summary>
         public readonly string InstanceName;
         /// <summary>
-        /// The public key used for sharing data with this instance.
+        /// The public ECIES key used for sharing data with this instance.
+        /// </summary>
+        public readonly string PublicEciesKey;
+        /// <summary>
+        /// The public RSA key used for sharing data with this instance.
         /// </summary>
         public readonly string PublicKey;
 
@@ -32,10 +36,13 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 
             string instanceName,
 
+            string publicEciesKey,
+
             string publicKey)
         {
             InstanceId = instanceId;
             InstanceName = instanceName;
+            PublicEciesKey = publicEciesKey;
             PublicKey = publicKey;
         }
     }

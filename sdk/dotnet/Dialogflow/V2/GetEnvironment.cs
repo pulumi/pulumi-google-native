@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// </summary>
         public readonly Outputs.GoogleCloudDialogflowV2FulfillmentResponse Fulfillment;
         /// <summary>
-        /// The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/`
+        /// The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.
         /// </summary>
         public readonly string Name;
         /// <summary>

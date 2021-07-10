@@ -35,7 +35,7 @@ export class Tag extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
+     * The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -90,7 +90,7 @@ export class Tag extends pulumi.CustomResource {
 export interface TagArgs {
     location: pulumi.Input<string>;
     /**
-     * The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1".
+     * The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
      */
     name?: pulumi.Input<string>;
     packageId: pulumi.Input<string>;

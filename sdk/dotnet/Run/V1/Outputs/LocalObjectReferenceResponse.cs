@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
     public sealed class LocalObjectReferenceResponse
     {
         /// <summary>
-        /// (Optional) Cloud Run fully managed: not supported Cloud Run for Anthos: supported Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        /// (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         /// </summary>
         public readonly string Name;
 

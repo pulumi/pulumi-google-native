@@ -415,3 +415,35 @@ func (e RatePlanStateEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
 func (e RatePlanStateEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
+
+// Immutable. The protocol used by this TargetServer.
+type TargetServerProtocol pulumi.String
+
+const (
+	// UNSPECIFIED defaults to HTTP for backwards compatibility.
+	TargetServerProtocolProtocolUnspecified = TargetServerProtocol("PROTOCOL_UNSPECIFIED")
+	// The TargetServer uses HTTP.
+	TargetServerProtocolHttp = TargetServerProtocol("HTTP")
+	// The TargetServer uses GRPC.
+	TargetServerProtocolGrpc = TargetServerProtocol("GRPC")
+)
+
+func (TargetServerProtocol) ElementType() reflect.Type {
+	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+}
+
+func (e TargetServerProtocol) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TargetServerProtocol) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TargetServerProtocol) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TargetServerProtocol) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}

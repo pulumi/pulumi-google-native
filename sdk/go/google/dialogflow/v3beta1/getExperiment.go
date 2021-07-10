@@ -36,7 +36,7 @@ type LookupExperimentResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// End time of this experiment.
 	EndTime string `pulumi:"endTime"`
-	// Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
+	// LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
 	ExperimentLength string `pulumi:"experimentLength"`
 	// Last update time of this experiment.
 	LastUpdateTime string `pulumi:"lastUpdateTime"`
@@ -46,7 +46,7 @@ type LookupExperimentResult struct {
 	Result GoogleCloudDialogflowCxV3beta1ExperimentResultResponse `pulumi:"result"`
 	// Start time of this experiment.
 	StartTime string `pulumi:"startTime"`
-	// The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
+	// The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
 	State string `pulumi:"state"`
 	// The history of updates to the experiment variants.
 	VariantsHistory []GoogleCloudDialogflowCxV3beta1VariantsHistoryResponse `pulumi:"variantsHistory"`

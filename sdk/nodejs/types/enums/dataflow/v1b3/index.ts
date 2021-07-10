@@ -320,7 +320,7 @@ export const SdkVersionSdkSupportStatus = {
      */
     Stale: "STALE",
     /**
-     * This version of the SDK is deprecated and will eventually be no longer supported.
+     * This version of the SDK is deprecated and will eventually be unsupported.
      */
     Deprecated: "DEPRECATED",
     /**
@@ -392,7 +392,7 @@ export const WorkerPoolDefaultPackageSet = {
      */
     DefaultPackageSetJava: "DEFAULT_PACKAGE_SET_JAVA",
     /**
-     * Stage pacakges typically useful to workers written in Python.
+     * Stage packages typically useful to workers written in Python.
      */
     DefaultPackageSetPython: "DEFAULT_PACKAGE_SET_PYTHON",
 } as const;

@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<string> LocationHint { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+        /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
         /// </summary>
         [Output("maintenancePolicy")]
         public Output<string> MaintenancePolicy { get; private set; } = null!;
@@ -80,6 +80,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Output("selfLinkWithId")]
         public Output<string> SelfLinkWithId { get; private set; } = null!;
+
+        /// <summary>
+        /// Share-settings for the node group
+        /// </summary>
+        [Output("shareSettings")]
+        public Output<Outputs.ShareSettingsResponse> ShareSettings { get; private set; } = null!;
 
         /// <summary>
         /// The total number of nodes in the node group.
@@ -163,7 +169,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Input<string>? LocationHint { get; set; }
 
         /// <summary>
-        /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see  Maintenance policies.
+        /// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
         /// </summary>
         [Input("maintenancePolicy")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.NodeGroupMaintenancePolicy>? MaintenancePolicy { get; set; }
@@ -188,6 +194,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
         [Input("requestId")]
         public Input<string>? RequestId { get; set; }
+
+        /// <summary>
+        /// Share-settings for the node group
+        /// </summary>
+        [Input("shareSettings")]
+        public Input<Inputs.ShareSettingsArgs>? ShareSettings { get; set; }
 
         [Input("status")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.NodeGroupStatus>? Status { get; set; }

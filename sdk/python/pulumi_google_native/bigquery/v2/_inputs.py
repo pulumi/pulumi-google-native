@@ -1359,6 +1359,7 @@ class ExternalDataConfigurationArgs:
                  compression: Optional[pulumi.Input[str]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  csv_options: Optional[pulumi.Input['CsvOptionsArgs']] = None,
+                 decimal_target_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  google_sheets_options: Optional[pulumi.Input['GoogleSheetsOptionsArgs']] = None,
                  hive_partitioning_options: Optional[pulumi.Input['HivePartitioningOptionsArgs']] = None,
                  ignore_unknown_values: Optional[pulumi.Input[bool]] = None,
@@ -1373,6 +1374,7 @@ class ExternalDataConfigurationArgs:
         :param pulumi.Input[str] compression: [Optional] The compression type of the data source. Possible values include GZIP and NONE. The default value is NONE. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
         :param pulumi.Input[str] connection_id: [Optional, Trusted Tester] Connection for external data source.
         :param pulumi.Input['CsvOptionsArgs'] csv_options: Additional properties to set if sourceFormat is set to CSV.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] decimal_target_types: [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
         :param pulumi.Input['GoogleSheetsOptionsArgs'] google_sheets_options: [Optional] Additional options if sourceFormat is set to GOOGLE_SHEETS.
         :param pulumi.Input['HivePartitioningOptionsArgs'] hive_partitioning_options: [Optional] Options to configure hive partitioning support.
         :param pulumi.Input[bool] ignore_unknown_values: [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.
@@ -1392,6 +1394,8 @@ class ExternalDataConfigurationArgs:
             pulumi.set(__self__, "connection_id", connection_id)
         if csv_options is not None:
             pulumi.set(__self__, "csv_options", csv_options)
+        if decimal_target_types is not None:
+            pulumi.set(__self__, "decimal_target_types", decimal_target_types)
         if google_sheets_options is not None:
             pulumi.set(__self__, "google_sheets_options", google_sheets_options)
         if hive_partitioning_options is not None:
@@ -1468,6 +1472,18 @@ class ExternalDataConfigurationArgs:
     @csv_options.setter
     def csv_options(self, value: Optional[pulumi.Input['CsvOptionsArgs']]):
         pulumi.set(self, "csv_options", value)
+
+    @property
+    @pulumi.getter(name="decimalTargetTypes")
+    def decimal_target_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+        """
+        return pulumi.get(self, "decimal_target_types")
+
+    @decimal_target_types.setter
+    def decimal_target_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "decimal_target_types", value)
 
     @property
     @pulumi.getter(name="googleSheetsOptions")
@@ -1967,7 +1983,7 @@ class JobConfigurationLoadArgs:
         :param pulumi.Input[bool] autodetect: [Optional] Indicates if we should automatically infer the options and schema for CSV and JSON sources.
         :param pulumi.Input['ClusteringArgs'] clustering: [Beta] Clustering specification for the destination table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
         :param pulumi.Input[str] create_disposition: [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] decimal_target_types: Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC ([Preview](/products/#product-launch-stages)), and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] decimal_target_types: [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
         :param pulumi.Input['EncryptionConfigurationArgs'] destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys).
         :param pulumi.Input['TableReferenceArgs'] destination_table: [Required] The destination table to load the data into.
         :param pulumi.Input['DestinationTablePropertiesArgs'] destination_table_properties: [Beta] [Optional] Properties with which to create the destination table if it is new.
@@ -2112,7 +2128,7 @@ class JobConfigurationLoadArgs:
     @pulumi.getter(name="decimalTargetTypes")
     def decimal_target_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC ([Preview](/products/#product-launch-stages)), and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
+        [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
         """
         return pulumi.get(self, "decimal_target_types")
 
@@ -4087,15 +4103,19 @@ class UserDefinedFunctionResourceArgs:
 class ViewDefinitionArgs:
     def __init__(__self__, *,
                  query: Optional[pulumi.Input[str]] = None,
+                 use_explicit_column_names: Optional[pulumi.Input[bool]] = None,
                  use_legacy_sql: Optional[pulumi.Input[bool]] = None,
                  user_defined_function_resources: Optional[pulumi.Input[Sequence[pulumi.Input['UserDefinedFunctionResourceArgs']]]] = None):
         """
         :param pulumi.Input[str] query: [Required] A query that BigQuery executes when the view is referenced.
+        :param pulumi.Input[bool] use_explicit_column_names: True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
         :param pulumi.Input[bool] use_legacy_sql: Specifies whether to use BigQuery's legacy SQL for this view. The default value is true. If set to false, the view will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ Queries and views that reference this view must use the same flag value.
         :param pulumi.Input[Sequence[pulumi.Input['UserDefinedFunctionResourceArgs']]] user_defined_function_resources: Describes user-defined function resources used in the query.
         """
         if query is not None:
             pulumi.set(__self__, "query", query)
+        if use_explicit_column_names is not None:
+            pulumi.set(__self__, "use_explicit_column_names", use_explicit_column_names)
         if use_legacy_sql is not None:
             pulumi.set(__self__, "use_legacy_sql", use_legacy_sql)
         if user_defined_function_resources is not None:
@@ -4112,6 +4132,18 @@ class ViewDefinitionArgs:
     @query.setter
     def query(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "query", value)
+
+    @property
+    @pulumi.getter(name="useExplicitColumnNames")
+    def use_explicit_column_names(self) -> Optional[pulumi.Input[bool]]:
+        """
+        True if the column names are explicitly specified. For example by using the 'CREATE VIEW v(c1, c2) AS ...' syntax. Can only be set using BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/
+        """
+        return pulumi.get(self, "use_explicit_column_names")
+
+    @use_explicit_column_names.setter
+    def use_explicit_column_names(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "use_explicit_column_names", value)
 
     @property
     @pulumi.getter(name="useLegacySql")

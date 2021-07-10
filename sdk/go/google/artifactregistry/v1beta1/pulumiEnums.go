@@ -18,6 +18,14 @@ const (
 	RepositoryFormatFormatUnspecified = RepositoryFormat("FORMAT_UNSPECIFIED")
 	// Docker package format.
 	RepositoryFormatDocker = RepositoryFormat("DOCKER")
+	// Maven package format.
+	RepositoryFormatMaven = RepositoryFormat("MAVEN")
+	// NPM package format.
+	RepositoryFormatNpm = RepositoryFormat("NPM")
+	// PyPI package format.
+	RepositoryFormatPypi = RepositoryFormat("PYPI")
+	// Python package format.
+	RepositoryFormatPython = RepositoryFormat("PYTHON")
 )
 
 func (RepositoryFormat) ElementType() reflect.Type {

@@ -29,6 +29,10 @@ export interface GetAlertPolicyArgs {
 
 export interface GetAlertPolicyResult {
     /**
+     * Control over how this alert policy's notification channels are notified.
+     */
+    readonly alertStrategy: outputs.monitoring.v3.AlertStrategyResponse;
+    /**
      * How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
      */
     readonly combiner: string;

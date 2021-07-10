@@ -72,9 +72,7 @@ export class Interconnect extends pulumi.CustomResource {
      */
     public /*out*/ readonly interconnectAttachments!: pulumi.Output<string[]>;
     /**
-     * Type of interconnect, which can take one of the following values: 
-     * - PARTNER: A partner-managed interconnection shared between customers though a partner. 
-     * - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
+     * Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
      */
     public readonly interconnectType!: pulumi.Output<string>;
     /**
@@ -82,9 +80,7 @@ export class Interconnect extends pulumi.CustomResource {
      */
     public /*out*/ readonly kind!: pulumi.Output<string>;
     /**
-     * Type of link requested, which can take one of the following values: 
-     * - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics 
-     * - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
+     * Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
      */
     public readonly linkType!: pulumi.Output<string>;
     /**
@@ -100,10 +96,7 @@ export class Interconnect extends pulumi.CustomResource {
      */
     public readonly nocContactEmail!: pulumi.Output<string>;
     /**
-     * The current status of this Interconnect's functionality, which can take one of the following values: 
-     * - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. 
-     * - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. 
-     * - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
+     * The current status of this Interconnect's functionality, which can take one of the following values: - OS_ACTIVE: A valid Interconnect, which is turned up and is ready to use. Attachments may be provisioned on this Interconnect. - OS_UNPROVISIONED: An Interconnect that has not completed turnup. No attachments may be provisioned on this Interconnect. - OS_UNDER_MAINTENANCE: An Interconnect that is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect. 
      */
     public /*out*/ readonly operationalStatus!: pulumi.Output<string>;
     /**
@@ -123,10 +116,7 @@ export class Interconnect extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * The current state of Interconnect functionality, which can take one of the following values: 
-     * - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. 
-     * - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. 
-     * - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
+     * The current state of Interconnect functionality, which can take one of the following values: - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect. 
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
 
@@ -214,15 +204,11 @@ export interface InterconnectArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Type of interconnect, which can take one of the following values: 
-     * - PARTNER: A partner-managed interconnection shared between customers though a partner. 
-     * - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
+     * Type of interconnect, which can take one of the following values: - PARTNER: A partner-managed interconnection shared between customers though a partner. - DEDICATED: A dedicated physical interconnection with the customer. Note that a value IT_PRIVATE has been deprecated in favor of DEDICATED.
      */
     interconnectType?: pulumi.Input<enums.compute.v1.InterconnectInterconnectType>;
     /**
-     * Type of link requested, which can take one of the following values: 
-     * - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics 
-     * - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
+     * Type of link requested, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR: A 10G Ethernet with LR optics - LINK_TYPE_ETHERNET_100G_LR: A 100G Ethernet with LR optics. Note that this field indicates the speed of each of the links in the bundle, not the speed of the entire bundle.
      */
     linkType?: pulumi.Input<enums.compute.v1.InterconnectLinkType>;
     /**

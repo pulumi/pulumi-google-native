@@ -41,6 +41,10 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
         /// Results for individual Hyperparameter trials. Only set for hyperparameter tuning jobs.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudMlV1__HyperparameterOutputResponse> Trials;
+        /// <summary>
+        /// The web URIs for the training job. Currently for debug terminal access to the job.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> WebAccessUris;
 
         [OutputConstructor]
         private GoogleCloudMlV1__TrainingOutputResponse(
@@ -56,7 +60,9 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
 
             bool isHyperparameterTuningJob,
 
-            ImmutableArray<Outputs.GoogleCloudMlV1__HyperparameterOutputResponse> trials)
+            ImmutableArray<Outputs.GoogleCloudMlV1__HyperparameterOutputResponse> trials,
+
+            ImmutableDictionary<string, string> webAccessUris)
         {
             BuiltInAlgorithmOutput = builtInAlgorithmOutput;
             CompletedTrialCount = completedTrialCount;
@@ -65,6 +71,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Outputs
             IsBuiltInAlgorithmJob = isBuiltInAlgorithmJob;
             IsHyperparameterTuningJob = isHyperparameterTuningJob;
             Trials = trials;
+            WebAccessUris = webAccessUris;
         }
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.GKEHub.V1Beta1
 {
     /// <summary>
-    /// Adds a new Membership.
+    /// Creates a new Membership. **This is currently only supported for GKE clusters on Google Cloud**. To register other clusters, follow the instructions at https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster.
     /// </summary>
     [GoogleNativeResourceType("google-native:gkehub/v1beta1:Membership")]
     public partial class Membership : Pulumi.CustomResource

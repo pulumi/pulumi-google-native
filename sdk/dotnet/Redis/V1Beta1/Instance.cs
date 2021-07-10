@@ -76,6 +76,18 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
+        /// </summary>
+        [Output("maintenancePolicy")]
+        public Output<Outputs.MaintenancePolicyResponse> MaintenancePolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Date and time of upcoming maintenance events which have been scheduled.
+        /// </summary>
+        [Output("maintenanceSchedule")]
+        public Output<Outputs.MaintenanceScheduleResponse> MaintenanceSchedule { get; private set; } = null!;
+
+        /// <summary>
         /// Redis memory size in GiB.
         /// </summary>
         [Output("memorySizeGb")]
@@ -106,7 +118,7 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         public Output<ImmutableDictionary<string, string>> RedisConfigs { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility
+        /// Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility
         /// </summary>
         [Output("redisVersion")]
         public Output<string> RedisVersion { get; private set; } = null!;
@@ -244,6 +256,12 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
+        /// Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<Inputs.MaintenancePolicyArgs>? MaintenancePolicy { get; set; }
+
+        /// <summary>
         /// Redis memory size in GiB.
         /// </summary>
         [Input("memorySizeGb", required: true)]
@@ -271,7 +289,7 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1
         }
 
         /// <summary>
-        /// Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility
+        /// Optional. The version of Redis software. If not provided, latest supported version will be used. Currently, the supported values are: * `REDIS_3_2` for Redis 3.2 compatibility * `REDIS_4_0` for Redis 4.0 compatibility (default) * `REDIS_5_0` for Redis 5.0 compatibility * `REDIS_6_X` for Redis 6.x compatibility
         /// </summary>
         [Input("redisVersion")]
         public Input<string>? RedisVersion { get; set; }

@@ -18,15 +18,15 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Outputs
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// External IP address of Cloud SQL instance.
+        /// External IP address of a Cloud SQL instance.
         /// </summary>
         public readonly string ExternalIp;
         /// <summary>
-        /// Internal IP address of Cloud SQL instance.
+        /// Internal IP address of a Cloud SQL instance.
         /// </summary>
         public readonly string InternalIp;
         /// <summary>
-        /// URI of a Cloud SQL instance network or empty string if instance does not have one.
+        /// URI of a Cloud SQL instance network or empty string if the instance does not have one.
         /// </summary>
         public readonly string NetworkUri;
         /// <summary>

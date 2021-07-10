@@ -11,10 +11,13 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
 {
 
     /// <summary>
-    /// Write a Data Access (Gin) log
+    /// This is deprecated and has no effect. Do not use.
     /// </summary>
     public sealed class LogConfigDataAccessOptionsArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// This is deprecated and has no effect. Do not use.
+        /// </summary>
         [Input("logMode")]
         public Input<Pulumi.GoogleNative.Compute.V1.LogConfigDataAccessOptionsLogMode>? LogMode { get; set; }
 

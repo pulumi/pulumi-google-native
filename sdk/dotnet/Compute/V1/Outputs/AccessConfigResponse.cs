@@ -14,6 +14,14 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     public sealed class AccessConfigResponse
     {
         /// <summary>
+        /// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
+        /// </summary>
+        public readonly string ExternalIpv6;
+        /// <summary>
+        /// The prefix length of the external IPv6 range.
+        /// </summary>
+        public readonly int ExternalIpv6PrefixLength;
+        /// <summary>
         /// Type of the resource. Always compute#accessConfig for access configs.
         /// </summary>
         public readonly string Kind;
@@ -26,11 +34,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
         /// </summary>
         public readonly string NatIP;
         /// <summary>
-        /// This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD.
-        /// 
-        /// If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier.
-        /// 
-        /// If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
+        /// This signifies the networking tier used for configuring this access configuration and can only take the following values: PREMIUM, STANDARD. If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with this networkTier. If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier associated with the Address resource owning that IP.
         /// </summary>
         public readonly string NetworkTier;
         /// <summary>
@@ -48,6 +52,10 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
         [OutputConstructor]
         private AccessConfigResponse(
+            string externalIpv6,
+
+            int externalIpv6PrefixLength,
+
             string kind,
 
             string name,
@@ -62,6 +70,8 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
 
             string type)
         {
+            ExternalIpv6 = externalIpv6;
+            ExternalIpv6PrefixLength = externalIpv6PrefixLength;
             Kind = kind;
             Name = name;
             NatIP = natIP;

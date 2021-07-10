@@ -26,6 +26,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
         /// </summary>
         public readonly string DiskType;
         /// <summary>
+        /// The image type to use for NAP created node.
+        /// </summary>
+        public readonly string ImageType;
+        /// <summary>
         /// NodeManagement configuration for this NodePool.
         /// </summary>
         public readonly Outputs.NodeManagementResponse Management;
@@ -58,6 +62,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
 
             string diskType,
 
+            string imageType,
+
             Outputs.NodeManagementResponse management,
 
             string minCpuPlatform,
@@ -73,6 +79,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Outputs
             BootDiskKmsKey = bootDiskKmsKey;
             DiskSizeGb = diskSizeGb;
             DiskType = diskType;
+            ImageType = imageType;
             Management = management;
             MinCpuPlatform = minCpuPlatform;
             OauthScopes = oauthScopes;

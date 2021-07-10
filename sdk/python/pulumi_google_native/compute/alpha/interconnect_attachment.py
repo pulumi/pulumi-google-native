@@ -20,7 +20,10 @@ class InterconnectAttachmentArgs:
                  region: pulumi.Input[str],
                  admin_enabled: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input['InterconnectAttachmentBandwidth']] = None,
+                 candidate_ipv6_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cloud_router_ipv6_interface_id: Optional[pulumi.Input[str]] = None,
+                 customer_router_ipv6_interface_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  edge_availability_domain: Optional[pulumi.Input['InterconnectAttachmentEdgeAvailabilityDomain']] = None,
                  encryption: Optional[pulumi.Input['InterconnectAttachmentEncryption']] = None,
@@ -34,38 +37,23 @@ class InterconnectAttachmentArgs:
                  partner_metadata: Optional[pulumi.Input['InterconnectAttachmentPartnerMetadataArgs']] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input['InterconnectAttachmentStackType']] = None,
                  type: Optional[pulumi.Input['InterconnectAttachmentType']] = None,
                  validate_only: Optional[pulumi.Input[str]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a InterconnectAttachment resource.
         :param pulumi.Input[bool] admin_enabled: Determines whether this Attachment will carry packets. Not present for PARTNER_PROVIDER.
-        :param pulumi.Input['InterconnectAttachmentBandwidth'] bandwidth: Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: 
-               - BPS_50M: 50 Mbit/s 
-               - BPS_100M: 100 Mbit/s 
-               - BPS_200M: 200 Mbit/s 
-               - BPS_300M: 300 Mbit/s 
-               - BPS_400M: 400 Mbit/s 
-               - BPS_500M: 500 Mbit/s 
-               - BPS_1G: 1 Gbit/s 
-               - BPS_2G: 2 Gbit/s 
-               - BPS_5G: 5 Gbit/s 
-               - BPS_10G: 10 Gbit/s 
-               - BPS_20G: 20 Gbit/s 
-               - BPS_50G: 50 Gbit/s
+        :param pulumi.Input['InterconnectAttachmentBandwidth'] bandwidth: Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: - BPS_50M: 50 Mbit/s - BPS_100M: 100 Mbit/s - BPS_200M: 200 Mbit/s - BPS_300M: 300 Mbit/s - BPS_400M: 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G: 2 Gbit/s - BPS_5G: 5 Gbit/s - BPS_10G: 10 Gbit/s - BPS_20G: 20 Gbit/s - BPS_50G: 50 Gbit/s 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] candidate_ipv6_subnets: Up to 16 candidate prefixes that control the allocation of cloudRouterIpv6Address and customerRouterIpv6Address for this attachment. Each prefix must be in the Global Unique Address (GUA) space. It is highly recommended that it be in a range owned by the requestor. A GUA in a range owned by Google will cause the request to fail. Google will select an available prefix from the supplied candidates or fail the request. If not supplied, a /125 from a Google-owned GUA block will be selected.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] candidate_subnets: Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will randomly select an unused /29 from all of link-local space.
+        :param pulumi.Input[str] cloud_router_ipv6_interface_id: If supplied, the interface id (index within the subnet) to be used for the cloud router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+        :param pulumi.Input[str] customer_router_ipv6_interface_id: If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input['InterconnectAttachmentEdgeAvailabilityDomain'] edge_availability_domain: Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: 
-               - AVAILABILITY_DOMAIN_ANY 
-               - AVAILABILITY_DOMAIN_1 
-               - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
-        :param pulumi.Input['InterconnectAttachmentEncryption'] encryption: Indicates the user-supplied encryption option of this interconnect attachment: 
-               - NONE is the default value, which means that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of attachment. 
-               - IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud Interconnect, create the attachment using this option. 
-               Not currently available in all Interconnect locations.
+        :param pulumi.Input['InterconnectAttachmentEdgeAvailabilityDomain'] edge_availability_domain: Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: - AVAILABILITY_DOMAIN_ANY - AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+        :param pulumi.Input['InterconnectAttachmentEncryption'] encryption: Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *IPsec-encrypted Cloud Interconnect*, the VLAN attachment must be created with this option. Not currently available publicly. 
         :param pulumi.Input[str] interconnect: URL of the underlying Interconnect object that this attachment's traffic will traverse through.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipsec_internal_addresses: URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from the IP address range specified here. For example, if the HA VPN gateway?s interface 0 is paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this interconnect attachment. If this field is not specified for interconnect attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's IP address will be allocated from regional external IP address pool.
-               Not currently available in all Interconnect locations.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipsec_internal_addresses: List of URL of addresses that have been reserved for the VLAN attachment. Used only for the VLAN attachment that has the encryption option as IPSEC. The addresses must be regional internal IP address ranges. When creating an HA VPN gateway over the VLAN attachment, if the attachment is configured to use a regional internal IP address, then the VPN gateway's IP address is allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is paired to this VLAN attachment, then a regional internal IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this VLAN attachment. If this field is not specified when creating the VLAN attachment, then later on when creating an HA VPN gateway on this VLAN attachment, the HA VPN gateway's IP address is allocated from the regional external IP address pool. Not currently available publicly. 
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[int] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -73,10 +61,8 @@ class InterconnectAttachmentArgs:
         :param pulumi.Input[str] partner_asn: Optional BGP ASN for the router supplied by a Layer 3 Partner if they configured BGP on behalf of the customer. Output only for PARTNER type, input only for PARTNER_PROVIDER, not available for DEDICATED.
         :param pulumi.Input['InterconnectAttachmentPartnerMetadataArgs'] partner_metadata: Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
         :param pulumi.Input[str] router: URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
-        :param pulumi.Input['InterconnectAttachmentType'] type: The type of interconnect attachment this is, which can take one of the following values: 
-               - DEDICATED: an attachment to a Dedicated Interconnect. 
-               - PARTNER: an attachment to a Partner Interconnect, created by the customer. 
-               - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
+        :param pulumi.Input['InterconnectAttachmentStackType'] stack_type: The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
+        :param pulumi.Input['InterconnectAttachmentType'] type: The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
         :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
         """
         pulumi.set(__self__, "project", project)
@@ -85,8 +71,14 @@ class InterconnectAttachmentArgs:
             pulumi.set(__self__, "admin_enabled", admin_enabled)
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
+        if candidate_ipv6_subnets is not None:
+            pulumi.set(__self__, "candidate_ipv6_subnets", candidate_ipv6_subnets)
         if candidate_subnets is not None:
             pulumi.set(__self__, "candidate_subnets", candidate_subnets)
+        if cloud_router_ipv6_interface_id is not None:
+            pulumi.set(__self__, "cloud_router_ipv6_interface_id", cloud_router_ipv6_interface_id)
+        if customer_router_ipv6_interface_id is not None:
+            pulumi.set(__self__, "customer_router_ipv6_interface_id", customer_router_ipv6_interface_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if edge_availability_domain is not None:
@@ -113,6 +105,8 @@ class InterconnectAttachmentArgs:
             pulumi.set(__self__, "request_id", request_id)
         if router is not None:
             pulumi.set(__self__, "router", router)
+        if stack_type is not None:
+            pulumi.set(__self__, "stack_type", stack_type)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if validate_only is not None:
@@ -154,25 +148,25 @@ class InterconnectAttachmentArgs:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input['InterconnectAttachmentBandwidth']]:
         """
-        Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: 
-        - BPS_50M: 50 Mbit/s 
-        - BPS_100M: 100 Mbit/s 
-        - BPS_200M: 200 Mbit/s 
-        - BPS_300M: 300 Mbit/s 
-        - BPS_400M: 400 Mbit/s 
-        - BPS_500M: 500 Mbit/s 
-        - BPS_1G: 1 Gbit/s 
-        - BPS_2G: 2 Gbit/s 
-        - BPS_5G: 5 Gbit/s 
-        - BPS_10G: 10 Gbit/s 
-        - BPS_20G: 20 Gbit/s 
-        - BPS_50G: 50 Gbit/s
+        Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: - BPS_50M: 50 Mbit/s - BPS_100M: 100 Mbit/s - BPS_200M: 200 Mbit/s - BPS_300M: 300 Mbit/s - BPS_400M: 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G: 2 Gbit/s - BPS_5G: 5 Gbit/s - BPS_10G: 10 Gbit/s - BPS_20G: 20 Gbit/s - BPS_50G: 50 Gbit/s 
         """
         return pulumi.get(self, "bandwidth")
 
     @bandwidth.setter
     def bandwidth(self, value: Optional[pulumi.Input['InterconnectAttachmentBandwidth']]):
         pulumi.set(self, "bandwidth", value)
+
+    @property
+    @pulumi.getter(name="candidateIpv6Subnets")
+    def candidate_ipv6_subnets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Up to 16 candidate prefixes that control the allocation of cloudRouterIpv6Address and customerRouterIpv6Address for this attachment. Each prefix must be in the Global Unique Address (GUA) space. It is highly recommended that it be in a range owned by the requestor. A GUA in a range owned by Google will cause the request to fail. Google will select an available prefix from the supplied candidates or fail the request. If not supplied, a /125 from a Google-owned GUA block will be selected.
+        """
+        return pulumi.get(self, "candidate_ipv6_subnets")
+
+    @candidate_ipv6_subnets.setter
+    def candidate_ipv6_subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "candidate_ipv6_subnets", value)
 
     @property
     @pulumi.getter(name="candidateSubnets")
@@ -185,6 +179,30 @@ class InterconnectAttachmentArgs:
     @candidate_subnets.setter
     def candidate_subnets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "candidate_subnets", value)
+
+    @property
+    @pulumi.getter(name="cloudRouterIpv6InterfaceId")
+    def cloud_router_ipv6_interface_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        If supplied, the interface id (index within the subnet) to be used for the cloud router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+        """
+        return pulumi.get(self, "cloud_router_ipv6_interface_id")
+
+    @cloud_router_ipv6_interface_id.setter
+    def cloud_router_ipv6_interface_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cloud_router_ipv6_interface_id", value)
+
+    @property
+    @pulumi.getter(name="customerRouterIpv6InterfaceId")
+    def customer_router_ipv6_interface_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+        """
+        return pulumi.get(self, "customer_router_ipv6_interface_id")
+
+    @customer_router_ipv6_interface_id.setter
+    def customer_router_ipv6_interface_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "customer_router_ipv6_interface_id", value)
 
     @property
     @pulumi.getter
@@ -202,10 +220,7 @@ class InterconnectAttachmentArgs:
     @pulumi.getter(name="edgeAvailabilityDomain")
     def edge_availability_domain(self) -> Optional[pulumi.Input['InterconnectAttachmentEdgeAvailabilityDomain']]:
         """
-        Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: 
-        - AVAILABILITY_DOMAIN_ANY 
-        - AVAILABILITY_DOMAIN_1 
-        - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+        Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: - AVAILABILITY_DOMAIN_ANY - AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
         """
         return pulumi.get(self, "edge_availability_domain")
 
@@ -217,10 +232,7 @@ class InterconnectAttachmentArgs:
     @pulumi.getter
     def encryption(self) -> Optional[pulumi.Input['InterconnectAttachmentEncryption']]:
         """
-        Indicates the user-supplied encryption option of this interconnect attachment: 
-        - NONE is the default value, which means that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of attachment. 
-        - IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud Interconnect, create the attachment using this option. 
-        Not currently available in all Interconnect locations.
+        Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *IPsec-encrypted Cloud Interconnect*, the VLAN attachment must be created with this option. Not currently available publicly. 
         """
         return pulumi.get(self, "encryption")
 
@@ -244,8 +256,7 @@ class InterconnectAttachmentArgs:
     @pulumi.getter(name="ipsecInternalAddresses")
     def ipsec_internal_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from the IP address range specified here. For example, if the HA VPN gateway?s interface 0 is paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this interconnect attachment. If this field is not specified for interconnect attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's IP address will be allocated from regional external IP address pool.
-        Not currently available in all Interconnect locations.
+        List of URL of addresses that have been reserved for the VLAN attachment. Used only for the VLAN attachment that has the encryption option as IPSEC. The addresses must be regional internal IP address ranges. When creating an HA VPN gateway over the VLAN attachment, if the attachment is configured to use a regional internal IP address, then the VPN gateway's IP address is allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is paired to this VLAN attachment, then a regional internal IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this VLAN attachment. If this field is not specified when creating the VLAN attachment, then later on when creating an HA VPN gateway on this VLAN attachment, the HA VPN gateway's IP address is allocated from the regional external IP address pool. Not currently available publicly. 
         """
         return pulumi.get(self, "ipsec_internal_addresses")
 
@@ -347,13 +358,22 @@ class InterconnectAttachmentArgs:
         pulumi.set(self, "router", value)
 
     @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> Optional[pulumi.Input['InterconnectAttachmentStackType']]:
+        """
+        The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
+        """
+        return pulumi.get(self, "stack_type")
+
+    @stack_type.setter
+    def stack_type(self, value: Optional[pulumi.Input['InterconnectAttachmentStackType']]):
+        pulumi.set(self, "stack_type", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input['InterconnectAttachmentType']]:
         """
-        The type of interconnect attachment this is, which can take one of the following values: 
-        - DEDICATED: an attachment to a Dedicated Interconnect. 
-        - PARTNER: an attachment to a Partner Interconnect, created by the customer. 
-        - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
+        The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
         """
         return pulumi.get(self, "type")
 
@@ -390,7 +410,10 @@ class InterconnectAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_enabled: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input['InterconnectAttachmentBandwidth']] = None,
+                 candidate_ipv6_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cloud_router_ipv6_interface_id: Optional[pulumi.Input[str]] = None,
+                 customer_router_ipv6_interface_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  edge_availability_domain: Optional[pulumi.Input['InterconnectAttachmentEdgeAvailabilityDomain']] = None,
                  encryption: Optional[pulumi.Input['InterconnectAttachmentEncryption']] = None,
@@ -406,6 +429,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input['InterconnectAttachmentStackType']] = None,
                  type: Optional[pulumi.Input['InterconnectAttachmentType']] = None,
                  validate_only: Optional[pulumi.Input[str]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None,
@@ -416,32 +440,16 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] admin_enabled: Determines whether this Attachment will carry packets. Not present for PARTNER_PROVIDER.
-        :param pulumi.Input['InterconnectAttachmentBandwidth'] bandwidth: Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: 
-               - BPS_50M: 50 Mbit/s 
-               - BPS_100M: 100 Mbit/s 
-               - BPS_200M: 200 Mbit/s 
-               - BPS_300M: 300 Mbit/s 
-               - BPS_400M: 400 Mbit/s 
-               - BPS_500M: 500 Mbit/s 
-               - BPS_1G: 1 Gbit/s 
-               - BPS_2G: 2 Gbit/s 
-               - BPS_5G: 5 Gbit/s 
-               - BPS_10G: 10 Gbit/s 
-               - BPS_20G: 20 Gbit/s 
-               - BPS_50G: 50 Gbit/s
+        :param pulumi.Input['InterconnectAttachmentBandwidth'] bandwidth: Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: - BPS_50M: 50 Mbit/s - BPS_100M: 100 Mbit/s - BPS_200M: 200 Mbit/s - BPS_300M: 300 Mbit/s - BPS_400M: 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G: 2 Gbit/s - BPS_5G: 5 Gbit/s - BPS_10G: 10 Gbit/s - BPS_20G: 20 Gbit/s - BPS_50G: 50 Gbit/s 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] candidate_ipv6_subnets: Up to 16 candidate prefixes that control the allocation of cloudRouterIpv6Address and customerRouterIpv6Address for this attachment. Each prefix must be in the Global Unique Address (GUA) space. It is highly recommended that it be in a range owned by the requestor. A GUA in a range owned by Google will cause the request to fail. Google will select an available prefix from the supplied candidates or fail the request. If not supplied, a /125 from a Google-owned GUA block will be selected.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] candidate_subnets: Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and customerRouterIpAddress for this attachment. All prefixes must be within link-local address space (169.254.0.0/16) and must be /29 or shorter (/28, /27, etc). Google will attempt to select an unused /29 from the supplied candidate prefix(es). The request will fail if all possible /29s are in use on Google's edge. If not supplied, Google will randomly select an unused /29 from all of link-local space.
+        :param pulumi.Input[str] cloud_router_ipv6_interface_id: If supplied, the interface id (index within the subnet) to be used for the cloud router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+        :param pulumi.Input[str] customer_router_ipv6_interface_id: If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input['InterconnectAttachmentEdgeAvailabilityDomain'] edge_availability_domain: Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: 
-               - AVAILABILITY_DOMAIN_ANY 
-               - AVAILABILITY_DOMAIN_1 
-               - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
-        :param pulumi.Input['InterconnectAttachmentEncryption'] encryption: Indicates the user-supplied encryption option of this interconnect attachment: 
-               - NONE is the default value, which means that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of attachment. 
-               - IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud Interconnect, create the attachment using this option. 
-               Not currently available in all Interconnect locations.
+        :param pulumi.Input['InterconnectAttachmentEdgeAvailabilityDomain'] edge_availability_domain: Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: - AVAILABILITY_DOMAIN_ANY - AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+        :param pulumi.Input['InterconnectAttachmentEncryption'] encryption: Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *IPsec-encrypted Cloud Interconnect*, the VLAN attachment must be created with this option. Not currently available publicly. 
         :param pulumi.Input[str] interconnect: URL of the underlying Interconnect object that this attachment's traffic will traverse through.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipsec_internal_addresses: URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from the IP address range specified here. For example, if the HA VPN gateway?s interface 0 is paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this interconnect attachment. If this field is not specified for interconnect attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's IP address will be allocated from regional external IP address pool.
-               Not currently available in all Interconnect locations.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ipsec_internal_addresses: List of URL of addresses that have been reserved for the VLAN attachment. Used only for the VLAN attachment that has the encryption option as IPSEC. The addresses must be regional internal IP address ranges. When creating an HA VPN gateway over the VLAN attachment, if the attachment is configured to use a regional internal IP address, then the VPN gateway's IP address is allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is paired to this VLAN attachment, then a regional internal IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this VLAN attachment. If this field is not specified when creating the VLAN attachment, then later on when creating an HA VPN gateway on this VLAN attachment, the HA VPN gateway's IP address is allocated from the regional external IP address pool. Not currently available publicly. 
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels method. Each label key/value pair must comply with RFC1035. Label values may be empty.
         :param pulumi.Input[int] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through this interconnect attachment. Only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
@@ -449,10 +457,8 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] partner_asn: Optional BGP ASN for the router supplied by a Layer 3 Partner if they configured BGP on behalf of the customer. Output only for PARTNER type, input only for PARTNER_PROVIDER, not available for DEDICATED.
         :param pulumi.Input[pulumi.InputType['InterconnectAttachmentPartnerMetadataArgs']] partner_metadata: Informational metadata about Partner attachments from Partners to display to customers. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.
         :param pulumi.Input[str] router: URL of the Cloud Router to be used for dynamic routing. This router must be in the same region as this InterconnectAttachment. The InterconnectAttachment will automatically connect the Interconnect to the network & region within which the Cloud Router is configured.
-        :param pulumi.Input['InterconnectAttachmentType'] type: The type of interconnect attachment this is, which can take one of the following values: 
-               - DEDICATED: an attachment to a Dedicated Interconnect. 
-               - PARTNER: an attachment to a Partner Interconnect, created by the customer. 
-               - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
+        :param pulumi.Input['InterconnectAttachmentStackType'] stack_type: The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
+        :param pulumi.Input['InterconnectAttachmentType'] type: The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
         :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
         """
         ...
@@ -481,7 +487,10 @@ class InterconnectAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  admin_enabled: Optional[pulumi.Input[bool]] = None,
                  bandwidth: Optional[pulumi.Input['InterconnectAttachmentBandwidth']] = None,
+                 candidate_ipv6_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  candidate_subnets: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 cloud_router_ipv6_interface_id: Optional[pulumi.Input[str]] = None,
+                 customer_router_ipv6_interface_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  edge_availability_domain: Optional[pulumi.Input['InterconnectAttachmentEdgeAvailabilityDomain']] = None,
                  encryption: Optional[pulumi.Input['InterconnectAttachmentEncryption']] = None,
@@ -497,6 +506,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
+                 stack_type: Optional[pulumi.Input['InterconnectAttachmentStackType']] = None,
                  type: Optional[pulumi.Input['InterconnectAttachmentType']] = None,
                  validate_only: Optional[pulumi.Input[str]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None,
@@ -514,7 +524,10 @@ class InterconnectAttachment(pulumi.CustomResource):
 
             __props__.__dict__["admin_enabled"] = admin_enabled
             __props__.__dict__["bandwidth"] = bandwidth
+            __props__.__dict__["candidate_ipv6_subnets"] = candidate_ipv6_subnets
             __props__.__dict__["candidate_subnets"] = candidate_subnets
+            __props__.__dict__["cloud_router_ipv6_interface_id"] = cloud_router_ipv6_interface_id
+            __props__.__dict__["customer_router_ipv6_interface_id"] = customer_router_ipv6_interface_id
             __props__.__dict__["description"] = description
             __props__.__dict__["edge_availability_domain"] = edge_availability_domain
             __props__.__dict__["encryption"] = encryption
@@ -534,17 +547,21 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["router"] = router
+            __props__.__dict__["stack_type"] = stack_type
             __props__.__dict__["type"] = type
             __props__.__dict__["validate_only"] = validate_only
             __props__.__dict__["vlan_tag8021q"] = vlan_tag8021q
             __props__.__dict__["cloud_router_ip_address"] = None
+            __props__.__dict__["cloud_router_ipv6_address"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["customer_router_ip_address"] = None
+            __props__.__dict__["customer_router_ipv6_address"] = None
             __props__.__dict__["dataplane_version"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["operational_status"] = None
             __props__.__dict__["private_interconnect_info"] = None
+            __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
             __props__.__dict__["state"] = None
@@ -572,10 +589,15 @@ class InterconnectAttachment(pulumi.CustomResource):
 
         __props__.__dict__["admin_enabled"] = None
         __props__.__dict__["bandwidth"] = None
+        __props__.__dict__["candidate_ipv6_subnets"] = None
         __props__.__dict__["candidate_subnets"] = None
         __props__.__dict__["cloud_router_ip_address"] = None
+        __props__.__dict__["cloud_router_ipv6_address"] = None
+        __props__.__dict__["cloud_router_ipv6_interface_id"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["customer_router_ip_address"] = None
+        __props__.__dict__["customer_router_ipv6_address"] = None
+        __props__.__dict__["customer_router_ipv6_interface_id"] = None
         __props__.__dict__["dataplane_version"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["edge_availability_domain"] = None
@@ -594,8 +616,10 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__.__dict__["private_interconnect_info"] = None
         __props__.__dict__["region"] = None
         __props__.__dict__["router"] = None
+        __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
+        __props__.__dict__["stack_type"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["vlan_tag8021q"] = None
@@ -613,21 +637,17 @@ class InterconnectAttachment(pulumi.CustomResource):
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[str]:
         """
-        Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: 
-        - BPS_50M: 50 Mbit/s 
-        - BPS_100M: 100 Mbit/s 
-        - BPS_200M: 200 Mbit/s 
-        - BPS_300M: 300 Mbit/s 
-        - BPS_400M: 400 Mbit/s 
-        - BPS_500M: 500 Mbit/s 
-        - BPS_1G: 1 Gbit/s 
-        - BPS_2G: 2 Gbit/s 
-        - BPS_5G: 5 Gbit/s 
-        - BPS_10G: 10 Gbit/s 
-        - BPS_20G: 20 Gbit/s 
-        - BPS_50G: 50 Gbit/s
+        Provisioned bandwidth capacity for the interconnect attachment. For attachments of type DEDICATED, the user can set the bandwidth. For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth. Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED, and can take one of the following values: - BPS_50M: 50 Mbit/s - BPS_100M: 100 Mbit/s - BPS_200M: 200 Mbit/s - BPS_300M: 300 Mbit/s - BPS_400M: 400 Mbit/s - BPS_500M: 500 Mbit/s - BPS_1G: 1 Gbit/s - BPS_2G: 2 Gbit/s - BPS_5G: 5 Gbit/s - BPS_10G: 10 Gbit/s - BPS_20G: 20 Gbit/s - BPS_50G: 50 Gbit/s 
         """
         return pulumi.get(self, "bandwidth")
+
+    @property
+    @pulumi.getter(name="candidateIpv6Subnets")
+    def candidate_ipv6_subnets(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Up to 16 candidate prefixes that control the allocation of cloudRouterIpv6Address and customerRouterIpv6Address for this attachment. Each prefix must be in the Global Unique Address (GUA) space. It is highly recommended that it be in a range owned by the requestor. A GUA in a range owned by Google will cause the request to fail. Google will select an available prefix from the supplied candidates or fail the request. If not supplied, a /125 from a Google-owned GUA block will be selected.
+        """
+        return pulumi.get(self, "candidate_ipv6_subnets")
 
     @property
     @pulumi.getter(name="candidateSubnets")
@@ -646,6 +666,22 @@ class InterconnectAttachment(pulumi.CustomResource):
         return pulumi.get(self, "cloud_router_ip_address")
 
     @property
+    @pulumi.getter(name="cloudRouterIpv6Address")
+    def cloud_router_ipv6_address(self) -> pulumi.Output[str]:
+        """
+        IPv6 address + prefix length to be configured on Cloud Router Interface for this interconnect attachment.
+        """
+        return pulumi.get(self, "cloud_router_ipv6_address")
+
+    @property
+    @pulumi.getter(name="cloudRouterIpv6InterfaceId")
+    def cloud_router_ipv6_interface_id(self) -> pulumi.Output[str]:
+        """
+        If supplied, the interface id (index within the subnet) to be used for the cloud router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+        """
+        return pulumi.get(self, "cloud_router_ipv6_interface_id")
+
+    @property
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> pulumi.Output[str]:
         """
@@ -660,6 +696,22 @@ class InterconnectAttachment(pulumi.CustomResource):
         IPv4 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
         """
         return pulumi.get(self, "customer_router_ip_address")
+
+    @property
+    @pulumi.getter(name="customerRouterIpv6Address")
+    def customer_router_ipv6_address(self) -> pulumi.Output[str]:
+        """
+        IPv6 address + prefix length to be configured on the customer router subinterface for this interconnect attachment.
+        """
+        return pulumi.get(self, "customer_router_ipv6_address")
+
+    @property
+    @pulumi.getter(name="customerRouterIpv6InterfaceId")
+    def customer_router_ipv6_interface_id(self) -> pulumi.Output[str]:
+        """
+        If supplied, the interface id (index within the subnet) to be used for the customer router address. The id must be in the range of 1 to 6. If a subnet mask is supplied, it must be /125, and the subnet should either be 0 or match the selected subnet.
+        """
+        return pulumi.get(self, "customer_router_ipv6_interface_id")
 
     @property
     @pulumi.getter(name="dataplaneVersion")
@@ -681,10 +733,7 @@ class InterconnectAttachment(pulumi.CustomResource):
     @pulumi.getter(name="edgeAvailabilityDomain")
     def edge_availability_domain(self) -> pulumi.Output[str]:
         """
-        Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: 
-        - AVAILABILITY_DOMAIN_ANY 
-        - AVAILABILITY_DOMAIN_1 
-        - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+        Desired availability domain for the attachment. Only available for type PARTNER, at creation time, and can take one of the following values: - AVAILABILITY_DOMAIN_ANY - AVAILABILITY_DOMAIN_1 - AVAILABILITY_DOMAIN_2 For improved reliability, customers should configure a pair of attachments, one per availability domain. The selected availability domain will be provided to the Partner via the pairing key, so that the provisioned circuit will lie in the specified domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
         """
         return pulumi.get(self, "edge_availability_domain")
 
@@ -692,10 +741,7 @@ class InterconnectAttachment(pulumi.CustomResource):
     @pulumi.getter
     def encryption(self) -> pulumi.Output[str]:
         """
-        Indicates the user-supplied encryption option of this interconnect attachment: 
-        - NONE is the default value, which means that the attachment carries unencrypted traffic. VMs can send traffic to, or receive traffic from, this type of attachment. 
-        - IPSEC indicates that the attachment carries only traffic encrypted by an IPsec device such as an HA VPN gateway. VMs cannot directly send traffic to, or receive traffic from, such an attachment. To use IPsec-encrypted Cloud Interconnect, create the attachment using this option. 
-        Not currently available in all Interconnect locations.
+        Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *IPsec-encrypted Cloud Interconnect*, the VLAN attachment must be created with this option. Not currently available publicly. 
         """
         return pulumi.get(self, "encryption")
 
@@ -711,8 +757,7 @@ class InterconnectAttachment(pulumi.CustomResource):
     @pulumi.getter(name="ipsecInternalAddresses")
     def ipsec_internal_addresses(self) -> pulumi.Output[Sequence[str]]:
         """
-        URL of addresses that have been reserved for the interconnect attachment, Used only for interconnect attachment that has the encryption option as IPSEC. The addresses must be RFC 1918 IP address ranges. When creating HA VPN gateway over the interconnect attachment, if the attachment is configured to use an RFC 1918 IP address, then the VPN gateway?s IP address will be allocated from the IP address range specified here. For example, if the HA VPN gateway?s interface 0 is paired to this interconnect attachment, then an RFC 1918 IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this interconnect attachment. If this field is not specified for interconnect attachment that has encryption option as IPSEC, later on when creating HA VPN gateway on this interconnect attachment, the HA VPN gateway's IP address will be allocated from regional external IP address pool.
-        Not currently available in all Interconnect locations.
+        List of URL of addresses that have been reserved for the VLAN attachment. Used only for the VLAN attachment that has the encryption option as IPSEC. The addresses must be regional internal IP address ranges. When creating an HA VPN gateway over the VLAN attachment, if the attachment is configured to use a regional internal IP address, then the VPN gateway's IP address is allocated from the IP address range specified here. For example, if the HA VPN gateway's interface 0 is paired to this VLAN attachment, then a regional internal IP address for the VPN gateway interface 0 will be allocated from the IP address specified for this VLAN attachment. If this field is not specified when creating the VLAN attachment, then later on when creating an HA VPN gateway on this VLAN attachment, the HA VPN gateway's IP address is allocated from the regional external IP address pool. Not currently available publicly. 
         """
         return pulumi.get(self, "ipsec_internal_addresses")
 
@@ -728,9 +773,7 @@ class InterconnectAttachment(pulumi.CustomResource):
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> pulumi.Output[str]:
         """
-        A fingerprint for the labels being applied to this InterconnectAttachment, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve an InterconnectAttachment.
+        A fingerprint for the labels being applied to this InterconnectAttachment, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InterconnectAttachment.
         """
         return pulumi.get(self, "label_fingerprint")
 
@@ -762,9 +805,7 @@ class InterconnectAttachment(pulumi.CustomResource):
     @pulumi.getter(name="operationalStatus")
     def operational_status(self) -> pulumi.Output[str]:
         """
-        The current status of whether or not this interconnect attachment is functional, which can take one of the following values: 
-        - OS_ACTIVE: The attachment has been turned up and is ready to use. 
-        - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete.
+        The current status of whether or not this interconnect attachment is functional, which can take one of the following values: - OS_ACTIVE: The attachment has been turned up and is ready to use. - OS_UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. 
         """
         return pulumi.get(self, "operational_status")
 
@@ -817,6 +858,14 @@ class InterconnectAttachment(pulumi.CustomResource):
         return pulumi.get(self, "router")
 
     @property
+    @pulumi.getter(name="satisfiesPzs")
+    def satisfies_pzs(self) -> pulumi.Output[bool]:
+        """
+        Set to true if the resource satisfies the zone separation organization policy constraints and false otherwise. Defaults to false if the field is not present.
+        """
+        return pulumi.get(self, "satisfies_pzs")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> pulumi.Output[str]:
         """
@@ -833,16 +882,18 @@ class InterconnectAttachment(pulumi.CustomResource):
         return pulumi.get(self, "self_link_with_id")
 
     @property
+    @pulumi.getter(name="stackType")
+    def stack_type(self) -> pulumi.Output[str]:
+        """
+        The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
+        """
+        return pulumi.get(self, "stack_type")
+
+    @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: 
-        - ACTIVE: The attachment has been turned up and is ready to use. 
-        - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. 
-        - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. 
-        - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it. 
-        - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. 
-        - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted.
+        The current state of this attachment's functionality. Enum values ACTIVE and UNPROVISIONED are shared by DEDICATED/PRIVATE, PARTNER, and PARTNER_PROVIDER interconnect attachments, while enum values PENDING_PARTNER, PARTNER_REQUEST_RECEIVED, and PENDING_CUSTOMER are used for only PARTNER and PARTNER_PROVIDER interconnect attachments. This state can take one of the following values: - ACTIVE: The attachment has been turned up and is ready to use. - UNPROVISIONED: The attachment is not ready to use yet, because turnup is not complete. - PENDING_PARTNER: A newly-created PARTNER attachment that has not yet been configured on the Partner side. - PARTNER_REQUEST_RECEIVED: A PARTNER attachment is in the process of provisioning after a PARTNER_PROVIDER attachment was created that references it. - PENDING_CUSTOMER: A PARTNER or PARTNER_PROVIDER attachment that is waiting for a customer to activate it. - DEFUNCT: The attachment was deleted externally and is no longer functional. This could be because the associated Interconnect was removed, or because the other side of a Partner attachment was deleted. 
         """
         return pulumi.get(self, "state")
 
@@ -850,10 +901,7 @@ class InterconnectAttachment(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        The type of interconnect attachment this is, which can take one of the following values: 
-        - DEDICATED: an attachment to a Dedicated Interconnect. 
-        - PARTNER: an attachment to a Partner Interconnect, created by the customer. 
-        - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
+        The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
         """
         return pulumi.get(self, "type")
 

@@ -76,6 +76,18 @@ namespace Pulumi.GoogleNative.Redis.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
+        /// </summary>
+        [Output("maintenancePolicy")]
+        public Output<Outputs.MaintenancePolicyResponse> MaintenancePolicy { get; private set; } = null!;
+
+        /// <summary>
+        /// Date and time of upcoming maintenance events which have been scheduled.
+        /// </summary>
+        [Output("maintenanceSchedule")]
+        public Output<Outputs.MaintenanceScheduleResponse> MaintenanceSchedule { get; private set; } = null!;
+
+        /// <summary>
         /// Redis memory size in GiB.
         /// </summary>
         [Output("memorySizeGb")]
@@ -242,6 +254,12 @@ namespace Pulumi.GoogleNative.Redis.V1
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. The maintenance policy for the instance. If not provided, maintenance events can be performed at any time.
+        /// </summary>
+        [Input("maintenancePolicy")]
+        public Input<Inputs.MaintenancePolicyArgs>? MaintenancePolicy { get; set; }
 
         /// <summary>
         /// Redis memory size in GiB.

@@ -49,6 +49,59 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
     }
 
     /// <summary>
+    /// The severity level of this CIS benchmark check.
+    /// </summary>
+    [EnumType]
+    public readonly struct CisBenchmarkSeverity : IEquatable<CisBenchmarkSeverity>
+    {
+        private readonly string _value;
+
+        private CisBenchmarkSeverity(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unknown Impact
+        /// </summary>
+        public static CisBenchmarkSeverity SeverityUnspecified { get; } = new CisBenchmarkSeverity("SEVERITY_UNSPECIFIED");
+        /// <summary>
+        /// Minimal Impact
+        /// </summary>
+        public static CisBenchmarkSeverity Minimal { get; } = new CisBenchmarkSeverity("MINIMAL");
+        /// <summary>
+        /// Low Impact
+        /// </summary>
+        public static CisBenchmarkSeverity Low { get; } = new CisBenchmarkSeverity("LOW");
+        /// <summary>
+        /// Medium Impact
+        /// </summary>
+        public static CisBenchmarkSeverity Medium { get; } = new CisBenchmarkSeverity("MEDIUM");
+        /// <summary>
+        /// High Impact
+        /// </summary>
+        public static CisBenchmarkSeverity High { get; } = new CisBenchmarkSeverity("HIGH");
+        /// <summary>
+        /// Critical Impact
+        /// </summary>
+        public static CisBenchmarkSeverity Critical { get; } = new CisBenchmarkSeverity("CRITICAL");
+
+        public static bool operator ==(CisBenchmarkSeverity left, CisBenchmarkSeverity right) => left.Equals(right);
+        public static bool operator !=(CisBenchmarkSeverity left, CisBenchmarkSeverity right) => !left.Equals(right);
+
+        public static explicit operator string(CisBenchmarkSeverity value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is CisBenchmarkSeverity other && Equals(other);
+        public bool Equals(CisBenchmarkSeverity other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Platform hosting this deployment.
     /// </summary>
     [EnumType]
@@ -236,6 +289,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         /// This represents an available software upgrade.
         /// </summary>
         public static DiscoveryAnalysisKind Upgrade { get; } = new DiscoveryAnalysisKind("UPGRADE");
+        /// <summary>
+        /// This represents a compliance check that can be applied to a resource.
+        /// </summary>
+        public static DiscoveryAnalysisKind Compliance { get; } = new DiscoveryAnalysisKind("COMPLIANCE");
 
         public static bool operator ==(DiscoveryAnalysisKind left, DiscoveryAnalysisKind right) => left.Equals(right);
         public static bool operator !=(DiscoveryAnalysisKind left, DiscoveryAnalysisKind right) => !left.Equals(right);

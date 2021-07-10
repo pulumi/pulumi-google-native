@@ -113,6 +113,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// Stores timing information for phases of the build. Valid keys are: * BUILD: time to execute all build steps * PUSH: time to push all specified images. * FETCHSOURCE: time to fetch source. If the build does not specify source or images, these keys will not be included.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Timing;
+        /// <summary>
+        /// Non-fatal problems encountered during the execution of the build.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.WarningResponse> Warnings;
 
         [OutputConstructor]
         private BuildResponse(
@@ -164,7 +168,9 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 
             string timeout,
 
-            ImmutableDictionary<string, string> timing)
+            ImmutableDictionary<string, string> timing,
+
+            ImmutableArray<Outputs.WarningResponse> warnings)
         {
             Artifacts = artifacts;
             AvailableSecrets = availableSecrets;
@@ -191,6 +197,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
             Tags = tags;
             Timeout = timeout;
             Timing = timing;
+            Warnings = warnings;
         }
     }
 }

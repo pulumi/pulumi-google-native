@@ -203,7 +203,7 @@ class GetRegionNetworkEndpointGroupResult:
     @pulumi.getter(name="serverlessDeployment")
     def serverless_deployment(self) -> 'outputs.NetworkEndpointGroupServerlessDeploymentResponse':
         """
-        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine cloudFunction or serverlessDeployment may be set.
+        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
         """
         return pulumi.get(self, "serverless_deployment")
 

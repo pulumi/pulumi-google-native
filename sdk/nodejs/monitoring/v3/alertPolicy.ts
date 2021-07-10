@@ -36,6 +36,10 @@ export class AlertPolicy extends pulumi.CustomResource {
     }
 
     /**
+     * Control over how this alert policy's notification channels are notified.
+     */
+    public readonly alertStrategy!: pulumi.Output<outputs.monitoring.v3.AlertStrategyResponse>;
+    /**
      * How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
      */
     public readonly combiner!: pulumi.Output<string>;
@@ -94,6 +98,7 @@ export class AlertPolicy extends pulumi.CustomResource {
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
+            inputs["alertStrategy"] = args ? args.alertStrategy : undefined;
             inputs["combiner"] = args ? args.combiner : undefined;
             inputs["conditions"] = args ? args.conditions : undefined;
             inputs["creationRecord"] = args ? args.creationRecord : undefined;
@@ -107,6 +112,7 @@ export class AlertPolicy extends pulumi.CustomResource {
             inputs["userLabels"] = args ? args.userLabels : undefined;
             inputs["validity"] = args ? args.validity : undefined;
         } else {
+            inputs["alertStrategy"] = undefined /*out*/;
             inputs["combiner"] = undefined /*out*/;
             inputs["conditions"] = undefined /*out*/;
             inputs["creationRecord"] = undefined /*out*/;
@@ -130,6 +136,10 @@ export class AlertPolicy extends pulumi.CustomResource {
  * The set of arguments for constructing a AlertPolicy resource.
  */
 export interface AlertPolicyArgs {
+    /**
+     * Control over how this alert policy's notification channels are notified.
+     */
+    alertStrategy?: pulumi.Input<inputs.monitoring.v3.AlertStrategyArgs>;
     /**
      * How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
      */

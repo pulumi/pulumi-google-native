@@ -51,6 +51,10 @@ export interface GetTargetServerResult {
      */
     readonly port: number;
     /**
+     * Immutable. The protocol used by this TargetServer.
+     */
+    readonly protocol: string;
+    /**
      * Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
      */
     readonly sSLInfo: outputs.apigee.v1.GoogleCloudApigeeV1TlsInfoResponse;

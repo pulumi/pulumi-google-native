@@ -11,12 +11,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
     /// <summary>
-    /// Authorization-related information used by Cloud Audit Logging.
+    /// This is deprecated and has no effect. Do not use.
     /// </summary>
     public sealed class AuthorizationLoggingOptionsArgs : Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The type of the permission that was checked.
+        /// This is deprecated and has no effect. Do not use.
         /// </summary>
         [Input("permissionType")]
         public Input<Pulumi.GoogleNative.Compute.Beta.AuthorizationLoggingOptionsPermissionType>? PermissionType { get; set; }

@@ -174,6 +174,70 @@ func (e ClusterUpdateDesiredPrivateIpv6GoogleAccess) ToStringPtrOutputWithContex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+// cluster_dns indicates which in-cluster DNS provider should be used.
+type DNSConfigClusterDns pulumi.String
+
+const (
+	// Default value
+	DNSConfigClusterDnsProviderUnspecified = DNSConfigClusterDns("PROVIDER_UNSPECIFIED")
+	// Use GKE default DNS provider(kube-dns) for DNS resolution.
+	DNSConfigClusterDnsPlatformDefault = DNSConfigClusterDns("PLATFORM_DEFAULT")
+	// Use CloudDNS for DNS resolution.
+	DNSConfigClusterDnsCloudDns = DNSConfigClusterDns("CLOUD_DNS")
+)
+
+func (DNSConfigClusterDns) ElementType() reflect.Type {
+	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+}
+
+func (e DNSConfigClusterDns) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DNSConfigClusterDns) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DNSConfigClusterDns) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DNSConfigClusterDns) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+// cluster_dns_scope indicates the scope of access to cluster DNS records.
+type DNSConfigClusterDnsScope pulumi.String
+
+const (
+	// Default value, will be inferred as cluster scope.
+	DNSConfigClusterDnsScopeDnsScopeUnspecified = DNSConfigClusterDnsScope("DNS_SCOPE_UNSPECIFIED")
+	// DNS records are accessible from within the cluster.
+	DNSConfigClusterDnsScopeClusterScope = DNSConfigClusterDnsScope("CLUSTER_SCOPE")
+	// DNS records are accessible from within the VPC.
+	DNSConfigClusterDnsScopeVpcScope = DNSConfigClusterDnsScope("VPC_SCOPE")
+)
+
+func (DNSConfigClusterDnsScope) ElementType() reflect.Type {
+	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+}
+
+func (e DNSConfigClusterDnsScope) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DNSConfigClusterDnsScope) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e DNSConfigClusterDnsScope) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e DNSConfigClusterDnsScope) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
 // Denotes the state of etcd encryption.
 type DatabaseEncryptionState pulumi.String
 
@@ -488,7 +552,7 @@ const (
 	StatusConditionCanonicalCodeUnauthenticated = StatusConditionCanonicalCode("UNAUTHENTICATED")
 	// Some resource has been exhausted, perhaps a per-user quota, or perhaps the entire file system is out of space. HTTP Mapping: 429 Too Many Requests
 	StatusConditionCanonicalCodeResourceExhausted = StatusConditionCanonicalCode("RESOURCE_EXHAUSTED")
-	// The operation was rejected because the system is not in a state required for the operation's execution. For example, the directory to be deleted is non-empty, an rmdir operation is applied to a non-directory, etc. Service implementors can use the following guidelines to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a) Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use `ABORTED` if the client should retry at a higher level (e.g., when a client-specified test-and-set fails, indicating the client should restart a read-modify-write sequence). (c) Use `FAILED_PRECONDITION` if the client should not retry until the system state has been explicitly fixed. E.g., if an "rmdir" fails because the directory is non-empty, `FAILED_PRECONDITION` should be returned since the client should not retry unless the files are deleted from the directory. HTTP Mapping: 400 Bad Request
+	// The operation was rejected because the system is not in a state required for the operation's execution. For example, the directory to be deleted is non-empty, an rmdir operation is applied to a non-directory, etc. Service implementors can use the following guidelines to decide between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`: (a) Use `UNAVAILABLE` if the client can retry just the failing call. (b) Use `ABORTED` if the client should retry at a higher level. For example, when a client-specified test-and-set fails, indicating the client should restart a read-modify-write sequence. (c) Use `FAILED_PRECONDITION` if the client should not retry until the system state has been explicitly fixed. For example, if an "rmdir" fails because the directory is non-empty, `FAILED_PRECONDITION` should be returned since the client should not retry unless the files are deleted from the directory. HTTP Mapping: 400 Bad Request
 	StatusConditionCanonicalCodeFailedPrecondition = StatusConditionCanonicalCode("FAILED_PRECONDITION")
 	// The operation was aborted, typically due to a concurrency issue such as a sequencer check failure or transaction abort. See the guidelines above for deciding between `FAILED_PRECONDITION`, `ABORTED`, and `UNAVAILABLE`. HTTP Mapping: 409 Conflict
 	StatusConditionCanonicalCodeAborted = StatusConditionCanonicalCode("ABORTED")

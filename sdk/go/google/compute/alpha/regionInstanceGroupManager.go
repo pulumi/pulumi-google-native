@@ -11,9 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method.
-//
-// A regional managed instance group can contain up to 2000 instances.
+// Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method. A regional managed instance group can contain up to 2000 instances.
 type RegionInstanceGroupManager struct {
 	pulumi.CustomResourceState
 
@@ -31,9 +29,7 @@ type RegionInstanceGroupManager struct {
 	DistributionPolicy DistributionPolicyResponseOutput `pulumi:"distributionPolicy"`
 	// The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
 	FailoverAction pulumi.StringOutput `pulumi:"failoverAction"`
-	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
+	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The URL of the Instance Group resource.
 	InstanceGroup pulumi.StringOutput `pulumi:"instanceGroup"`
@@ -63,19 +59,13 @@ type RegionInstanceGroupManager struct {
 	TargetPools pulumi.StringArrayOutput `pulumi:"targetPools"`
 	// The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
 	TargetSize pulumi.IntOutput `pulumi:"targetSize"`
-	// The target number of stopped instances for this managed instance group. This number changes when you:
-	// - Stop instance using the stopInstances method or start instances using the startInstances method.
-	// - Manually change the targetStoppedSize using the update method.
+	// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method.
 	TargetStoppedSize pulumi.IntOutput `pulumi:"targetStoppedSize"`
-	// The target number of suspended instances for this managed instance group. This number changes when you:
-	// - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method.
-	// - Manually change the targetSuspendedSize using the update method.
+	// The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method.
 	TargetSuspendedSize pulumi.IntOutput `pulumi:"targetSuspendedSize"`
 	// The update policy for this managed instance group.
 	UpdatePolicy InstanceGroupManagerUpdatePolicyResponseOutput `pulumi:"updatePolicy"`
-	// Specifies the instance templates used by this managed instance group to create instances.
-	//
-	// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+	// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions InstanceGroupManagerVersionResponseArrayOutput `pulumi:"versions"`
 	// The URL of a zone where the managed instance group is located (for zonal resources).
 	Zone pulumi.StringOutput `pulumi:"zone"`
@@ -130,9 +120,7 @@ type regionInstanceGroupManagerState struct {
 	DistributionPolicy *DistributionPolicyResponse `pulumi:"distributionPolicy"`
 	// The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
 	FailoverAction *string `pulumi:"failoverAction"`
-	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
+	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The URL of the Instance Group resource.
 	InstanceGroup *string `pulumi:"instanceGroup"`
@@ -162,19 +150,13 @@ type regionInstanceGroupManagerState struct {
 	TargetPools []string `pulumi:"targetPools"`
 	// The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
 	TargetSize *int `pulumi:"targetSize"`
-	// The target number of stopped instances for this managed instance group. This number changes when you:
-	// - Stop instance using the stopInstances method or start instances using the startInstances method.
-	// - Manually change the targetStoppedSize using the update method.
+	// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method.
 	TargetStoppedSize *int `pulumi:"targetStoppedSize"`
-	// The target number of suspended instances for this managed instance group. This number changes when you:
-	// - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method.
-	// - Manually change the targetSuspendedSize using the update method.
+	// The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method.
 	TargetSuspendedSize *int `pulumi:"targetSuspendedSize"`
 	// The update policy for this managed instance group.
 	UpdatePolicy *InstanceGroupManagerUpdatePolicyResponse `pulumi:"updatePolicy"`
-	// Specifies the instance templates used by this managed instance group to create instances.
-	//
-	// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+	// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions []InstanceGroupManagerVersionResponse `pulumi:"versions"`
 	// The URL of a zone where the managed instance group is located (for zonal resources).
 	Zone *string `pulumi:"zone"`
@@ -195,9 +177,7 @@ type RegionInstanceGroupManagerState struct {
 	DistributionPolicy DistributionPolicyResponsePtrInput
 	// The action to perform in case of zone failure. Only one value is supported, NO_FAILOVER. The default is NO_FAILOVER.
 	FailoverAction pulumi.StringPtrInput
-	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet.
-	//
-	// To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
+	// Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the InstanceGroupManager, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an InstanceGroupManager.
 	Fingerprint pulumi.StringPtrInput
 	// The URL of the Instance Group resource.
 	InstanceGroup pulumi.StringPtrInput
@@ -227,19 +207,13 @@ type RegionInstanceGroupManagerState struct {
 	TargetPools pulumi.StringArrayInput
 	// The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
 	TargetSize pulumi.IntPtrInput
-	// The target number of stopped instances for this managed instance group. This number changes when you:
-	// - Stop instance using the stopInstances method or start instances using the startInstances method.
-	// - Manually change the targetStoppedSize using the update method.
+	// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method.
 	TargetStoppedSize pulumi.IntPtrInput
-	// The target number of suspended instances for this managed instance group. This number changes when you:
-	// - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method.
-	// - Manually change the targetSuspendedSize using the update method.
+	// The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method.
 	TargetSuspendedSize pulumi.IntPtrInput
 	// The update policy for this managed instance group.
 	UpdatePolicy InstanceGroupManagerUpdatePolicyResponsePtrInput
-	// Specifies the instance templates used by this managed instance group to create instances.
-	//
-	// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+	// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions InstanceGroupManagerVersionResponseArrayInput
 	// The URL of a zone where the managed instance group is located (for zonal resources).
 	Zone pulumi.StringPtrInput
@@ -279,19 +253,13 @@ type regionInstanceGroupManagerArgs struct {
 	TargetPools []string `pulumi:"targetPools"`
 	// The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
 	TargetSize *int `pulumi:"targetSize"`
-	// The target number of stopped instances for this managed instance group. This number changes when you:
-	// - Stop instance using the stopInstances method or start instances using the startInstances method.
-	// - Manually change the targetStoppedSize using the update method.
+	// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method.
 	TargetStoppedSize *int `pulumi:"targetStoppedSize"`
-	// The target number of suspended instances for this managed instance group. This number changes when you:
-	// - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method.
-	// - Manually change the targetSuspendedSize using the update method.
+	// The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method.
 	TargetSuspendedSize *int `pulumi:"targetSuspendedSize"`
 	// The update policy for this managed instance group.
 	UpdatePolicy *InstanceGroupManagerUpdatePolicy `pulumi:"updatePolicy"`
-	// Specifies the instance templates used by this managed instance group to create instances.
-	//
-	// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+	// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions []InstanceGroupManagerVersion `pulumi:"versions"`
 }
 
@@ -326,19 +294,13 @@ type RegionInstanceGroupManagerArgs struct {
 	TargetPools pulumi.StringArrayInput
 	// The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
 	TargetSize pulumi.IntPtrInput
-	// The target number of stopped instances for this managed instance group. This number changes when you:
-	// - Stop instance using the stopInstances method or start instances using the startInstances method.
-	// - Manually change the targetStoppedSize using the update method.
+	// The target number of stopped instances for this managed instance group. This number changes when you: - Stop instance using the stopInstances method or start instances using the startInstances method. - Manually change the targetStoppedSize using the update method.
 	TargetStoppedSize pulumi.IntPtrInput
-	// The target number of suspended instances for this managed instance group. This number changes when you:
-	// - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method.
-	// - Manually change the targetSuspendedSize using the update method.
+	// The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method.
 	TargetSuspendedSize pulumi.IntPtrInput
 	// The update policy for this managed instance group.
 	UpdatePolicy InstanceGroupManagerUpdatePolicyPtrInput
-	// Specifies the instance templates used by this managed instance group to create instances.
-	//
-	// Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
+	// Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
 	Versions InstanceGroupManagerVersionArrayInput
 }
 

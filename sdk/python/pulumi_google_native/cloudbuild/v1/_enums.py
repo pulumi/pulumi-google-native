@@ -11,8 +11,10 @@ __all__ = [
     'BuildOptionsRequestedVerifyOption',
     'BuildOptionsSourceProvenanceHashItem',
     'BuildOptionsSubstitutionOption',
+    'NetworkConfigEgressOption',
     'PubsubConfigState',
     'PullRequestFilterCommentControl',
+    'WebhookConfigState',
 ]
 
 
@@ -70,6 +72,15 @@ class BuildOptionsSubstitutionOption(str, Enum):
     ALLOW_LOOSE = "ALLOW_LOOSE"
 
 
+class NetworkConfigEgressOption(str, Enum):
+    """
+    Option to configure network egress for the workers.
+    """
+    EGRESS_OPTION_UNSPECIFIED = "EGRESS_OPTION_UNSPECIFIED"
+    NO_PUBLIC_EGRESS = "NO_PUBLIC_EGRESS"
+    PUBLIC_EGRESS = "PUBLIC_EGRESS"
+
+
 class PubsubConfigState(str, Enum):
     """
     Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
@@ -88,3 +99,12 @@ class PullRequestFilterCommentControl(str, Enum):
     COMMENTS_DISABLED = "COMMENTS_DISABLED"
     COMMENTS_ENABLED = "COMMENTS_ENABLED"
     COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY = "COMMENTS_ENABLED_FOR_EXTERNAL_CONTRIBUTORS_ONLY"
+
+
+class WebhookConfigState(str, Enum):
+    """
+    Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+    """
+    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    OK = "OK"
+    SECRET_DELETED = "SECRET_DELETED"

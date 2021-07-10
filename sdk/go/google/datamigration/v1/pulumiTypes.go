@@ -3963,7 +3963,7 @@ type SqlIpConfig struct {
 	AuthorizedNetworks []SqlAclEntry `pulumi:"authorizedNetworks"`
 	// Whether the instance should be assigned an IPv4 address or not.
 	EnableIpv4 *bool `pulumi:"enableIpv4"`
-	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
+	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
 	PrivateNetwork *string `pulumi:"privateNetwork"`
 	// Whether SSL connections over IP should be enforced or not.
 	RequireSsl *bool `pulumi:"requireSsl"`
@@ -3986,7 +3986,7 @@ type SqlIpConfigArgs struct {
 	AuthorizedNetworks SqlAclEntryArrayInput `pulumi:"authorizedNetworks"`
 	// Whether the instance should be assigned an IPv4 address or not.
 	EnableIpv4 pulumi.BoolPtrInput `pulumi:"enableIpv4"`
-	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
+	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
 	PrivateNetwork pulumi.StringPtrInput `pulumi:"privateNetwork"`
 	// Whether SSL connections over IP should be enforced or not.
 	RequireSsl pulumi.BoolPtrInput `pulumi:"requireSsl"`
@@ -4080,7 +4080,7 @@ func (o SqlIpConfigOutput) EnableIpv4() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v SqlIpConfig) *bool { return v.EnableIpv4 }).(pulumi.BoolPtrOutput)
 }
 
-// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
+// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
 func (o SqlIpConfigOutput) PrivateNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SqlIpConfig) *string { return v.PrivateNetwork }).(pulumi.StringPtrOutput)
 }
@@ -4128,7 +4128,7 @@ func (o SqlIpConfigPtrOutput) EnableIpv4() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
+// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
 func (o SqlIpConfigPtrOutput) PrivateNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlIpConfig) *string {
 		if v == nil {
@@ -4154,7 +4154,7 @@ type SqlIpConfigResponse struct {
 	AuthorizedNetworks []SqlAclEntryResponse `pulumi:"authorizedNetworks"`
 	// Whether the instance should be assigned an IPv4 address or not.
 	EnableIpv4 bool `pulumi:"enableIpv4"`
-	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
+	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
 	PrivateNetwork string `pulumi:"privateNetwork"`
 	// Whether SSL connections over IP should be enforced or not.
 	RequireSsl bool `pulumi:"requireSsl"`
@@ -4177,7 +4177,7 @@ type SqlIpConfigResponseArgs struct {
 	AuthorizedNetworks SqlAclEntryResponseArrayInput `pulumi:"authorizedNetworks"`
 	// Whether the instance should be assigned an IPv4 address or not.
 	EnableIpv4 pulumi.BoolInput `pulumi:"enableIpv4"`
-	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
+	// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
 	PrivateNetwork pulumi.StringInput `pulumi:"privateNetwork"`
 	// Whether SSL connections over IP should be enforced or not.
 	RequireSsl pulumi.BoolInput `pulumi:"requireSsl"`
@@ -4271,7 +4271,7 @@ func (o SqlIpConfigResponseOutput) EnableIpv4() pulumi.BoolOutput {
 	return o.ApplyT(func(v SqlIpConfigResponse) bool { return v.EnableIpv4 }).(pulumi.BoolOutput)
 }
 
-// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
+// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
 func (o SqlIpConfigResponseOutput) PrivateNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v SqlIpConfigResponse) string { return v.PrivateNetwork }).(pulumi.StringOutput)
 }
@@ -4319,7 +4319,7 @@ func (o SqlIpConfigResponsePtrOutput) EnableIpv4() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `/projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
+// The resource link for the VPC network from which the Cloud SQL instance is accessible for private IP. For example, `projects/myProject/global/networks/default`. This setting can be updated, but it cannot be removed after it is set.
 func (o SqlIpConfigResponsePtrOutput) PrivateNetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SqlIpConfigResponse) *string {
 		if v == nil {

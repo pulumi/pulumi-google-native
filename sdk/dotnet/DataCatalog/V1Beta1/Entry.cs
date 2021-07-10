@@ -82,6 +82,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
+        /// Statistics on the usage level of the resource.
+        /// </summary>
+        [Output("usageSignal")]
+        public Output<Outputs.GoogleCloudDatacatalogV1beta1UsageSignalResponse> UsageSignal { get; private set; } = null!;
+
+        /// <summary>
         /// This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
         /// </summary>
         [Output("userSpecifiedSystem")]

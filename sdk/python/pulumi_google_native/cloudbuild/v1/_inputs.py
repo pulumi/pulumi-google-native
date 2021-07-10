@@ -17,6 +17,9 @@ __all__ = [
     'BuildStepArgs',
     'GitHubEventsConfigArgs',
     'InlineSecretArgs',
+    'NetworkConfigArgs',
+    'PoolOptionArgs',
+    'PrivatePoolV1ConfigArgs',
     'PubsubConfigArgs',
     'PullRequestFilterArgs',
     'PushFilterArgs',
@@ -28,6 +31,8 @@ __all__ = [
     'StorageSourceArgs',
     'StorageSourceManifestArgs',
     'VolumeArgs',
+    'WebhookConfigArgs',
+    'WorkerConfigArgs',
 ]
 
 @pulumi.input_type
@@ -334,6 +339,7 @@ class BuildOptionsArgs:
                  log_streaming_option: Optional[pulumi.Input['BuildOptionsLogStreamingOption']] = None,
                  logging: Optional[pulumi.Input['BuildOptionsLogging']] = None,
                  machine_type: Optional[pulumi.Input['BuildOptionsMachineType']] = None,
+                 pool: Optional[pulumi.Input['PoolOptionArgs']] = None,
                  requested_verify_option: Optional[pulumi.Input['BuildOptionsRequestedVerifyOption']] = None,
                  secret_env: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_provenance_hash: Optional[pulumi.Input[Sequence[pulumi.Input['BuildOptionsSourceProvenanceHashItem']]]] = None,
@@ -348,12 +354,13 @@ class BuildOptionsArgs:
         :param pulumi.Input['BuildOptionsLogStreamingOption'] log_streaming_option: Option to define build log streaming behavior to Google Cloud Storage.
         :param pulumi.Input['BuildOptionsLogging'] logging: Option to specify the logging mode, which determines if and where build logs are stored.
         :param pulumi.Input['BuildOptionsMachineType'] machine_type: Compute Engine machine type on which to run the build.
+        :param pulumi.Input['PoolOptionArgs'] pool: Optional. Specification for execution on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
         :param pulumi.Input['BuildOptionsRequestedVerifyOption'] requested_verify_option: Requested verifiability options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secret_env: A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. These variables will be available to all build steps in this build.
         :param pulumi.Input[Sequence[pulumi.Input['BuildOptionsSourceProvenanceHashItem']]] source_provenance_hash: Requested hash for SourceProvenance.
         :param pulumi.Input['BuildOptionsSubstitutionOption'] substitution_option: Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.
         :param pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]] volumes: Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration.
-        :param pulumi.Input[str] worker_pool: Option to specify a `WorkerPool` for the build. Format: projects/{project}/locations/{location}/workerPools/{workerPool} This field is in beta and is available only to restricted users.
+        :param pulumi.Input[str] worker_pool: This field deprecated; please use `pool.name` instead.
         """
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
@@ -367,6 +374,8 @@ class BuildOptionsArgs:
             pulumi.set(__self__, "logging", logging)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
+        if pool is not None:
+            pulumi.set(__self__, "pool", pool)
         if requested_verify_option is not None:
             pulumi.set(__self__, "requested_verify_option", requested_verify_option)
         if secret_env is not None:
@@ -453,6 +462,18 @@ class BuildOptionsArgs:
         pulumi.set(self, "machine_type", value)
 
     @property
+    @pulumi.getter
+    def pool(self) -> Optional[pulumi.Input['PoolOptionArgs']]:
+        """
+        Optional. Specification for execution on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+        """
+        return pulumi.get(self, "pool")
+
+    @pool.setter
+    def pool(self, value: Optional[pulumi.Input['PoolOptionArgs']]):
+        pulumi.set(self, "pool", value)
+
+    @property
     @pulumi.getter(name="requestedVerifyOption")
     def requested_verify_option(self) -> Optional[pulumi.Input['BuildOptionsRequestedVerifyOption']]:
         """
@@ -516,7 +537,7 @@ class BuildOptionsArgs:
     @pulumi.getter(name="workerPool")
     def worker_pool(self) -> Optional[pulumi.Input[str]]:
         """
-        Option to specify a `WorkerPool` for the build. Format: projects/{project}/locations/{location}/workerPools/{workerPool} This field is in beta and is available only to restricted users.
+        This field deprecated; please use `pool.name` instead.
         """
         return pulumi.get(self, "worker_pool")
 
@@ -818,6 +839,109 @@ class InlineSecretArgs:
     @kms_key_name.setter
     def kms_key_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kms_key_name", value)
+
+
+@pulumi.input_type
+class NetworkConfigArgs:
+    def __init__(__self__, *,
+                 peered_network: pulumi.Input[str],
+                 egress_option: Optional[pulumi.Input['NetworkConfigEgressOption']] = None):
+        """
+        Defines the network configuration for the pool.
+        :param pulumi.Input[str] peered_network: Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+        :param pulumi.Input['NetworkConfigEgressOption'] egress_option: Option to configure network egress for the workers.
+        """
+        pulumi.set(__self__, "peered_network", peered_network)
+        if egress_option is not None:
+            pulumi.set(__self__, "egress_option", egress_option)
+
+    @property
+    @pulumi.getter(name="peeredNetwork")
+    def peered_network(self) -> pulumi.Input[str]:
+        """
+        Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
+        """
+        return pulumi.get(self, "peered_network")
+
+    @peered_network.setter
+    def peered_network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "peered_network", value)
+
+    @property
+    @pulumi.getter(name="egressOption")
+    def egress_option(self) -> Optional[pulumi.Input['NetworkConfigEgressOption']]:
+        """
+        Option to configure network egress for the workers.
+        """
+        return pulumi.get(self, "egress_option")
+
+    @egress_option.setter
+    def egress_option(self, value: Optional[pulumi.Input['NetworkConfigEgressOption']]):
+        pulumi.set(self, "egress_option", value)
+
+
+@pulumi.input_type
+class PoolOptionArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        Details about how a build should be executed on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
+        :param pulumi.Input[str] name: The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+@pulumi.input_type
+class PrivatePoolV1ConfigArgs:
+    def __init__(__self__, *,
+                 network_config: Optional[pulumi.Input['NetworkConfigArgs']] = None,
+                 worker_config: Optional[pulumi.Input['WorkerConfigArgs']] = None):
+        """
+        Configuration for a V1 `PrivatePool`.
+        :param pulumi.Input['NetworkConfigArgs'] network_config: Network configuration for the pool.
+        :param pulumi.Input['WorkerConfigArgs'] worker_config: Machine configuration for the workers in the pool.
+        """
+        if network_config is not None:
+            pulumi.set(__self__, "network_config", network_config)
+        if worker_config is not None:
+            pulumi.set(__self__, "worker_config", worker_config)
+
+    @property
+    @pulumi.getter(name="networkConfig")
+    def network_config(self) -> Optional[pulumi.Input['NetworkConfigArgs']]:
+        """
+        Network configuration for the pool.
+        """
+        return pulumi.get(self, "network_config")
+
+    @network_config.setter
+    def network_config(self, value: Optional[pulumi.Input['NetworkConfigArgs']]):
+        pulumi.set(self, "network_config", value)
+
+    @property
+    @pulumi.getter(name="workerConfig")
+    def worker_config(self) -> Optional[pulumi.Input['WorkerConfigArgs']]:
+        """
+        Machine configuration for the workers in the pool.
+        """
+        return pulumi.get(self, "worker_config")
+
+    @worker_config.setter
+    def worker_config(self, value: Optional[pulumi.Input['WorkerConfigArgs']]):
+        pulumi.set(self, "worker_config", value)
 
 
 @pulumi.input_type
@@ -1254,7 +1378,7 @@ class SourceArgs:
         Location of the source in a supported storage service.
         :param pulumi.Input['RepoSourceArgs'] repo_source: If provided, get the source from this location in a Cloud Source Repository.
         :param pulumi.Input['StorageSourceArgs'] storage_source: If provided, get the source from this location in Google Cloud Storage.
-        :param pulumi.Input['StorageSourceManifestArgs'] storage_source_manifest: If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview.
+        :param pulumi.Input['StorageSourceManifestArgs'] storage_source_manifest: If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
         """
         if repo_source is not None:
             pulumi.set(__self__, "repo_source", repo_source)
@@ -1291,7 +1415,7 @@ class SourceArgs:
     @pulumi.getter(name="storageSourceManifest")
     def storage_source_manifest(self) -> Optional[pulumi.Input['StorageSourceManifestArgs']]:
         """
-        If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview.
+        If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
         """
         return pulumi.get(self, "storage_source_manifest")
 
@@ -1363,7 +1487,7 @@ class StorageSourceManifestArgs:
                  generation: Optional[pulumi.Input[str]] = None,
                  object: Optional[pulumi.Input[str]] = None):
         """
-        Location of the source manifest in Google Cloud Storage. This feature is in Preview.
+        Location of the source manifest in Google Cloud Storage. This feature is in Preview; see description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
         :param pulumi.Input[str] bucket: Google Cloud Storage bucket containing the source manifest (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
         :param pulumi.Input[str] generation: Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
         :param pulumi.Input[str] object: Google Cloud Storage object containing the source manifest. This object must be a JSON file.
@@ -1450,5 +1574,84 @@ class VolumeArgs:
     @path.setter
     def path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path", value)
+
+
+@pulumi.input_type
+class WebhookConfigArgs:
+    def __init__(__self__, *,
+                 secret: pulumi.Input[str],
+                 state: Optional[pulumi.Input['WebhookConfigState']] = None):
+        """
+        WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL.
+        :param pulumi.Input[str] secret: Resource name for the secret required as a URL parameter.
+        :param pulumi.Input['WebhookConfigState'] state: Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+        """
+        pulumi.set(__self__, "secret", secret)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> pulumi.Input[str]:
+        """
+        Resource name for the secret required as a URL parameter.
+        """
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: pulumi.Input[str]):
+        pulumi.set(self, "secret", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input['WebhookConfigState']]:
+        """
+        Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input['WebhookConfigState']]):
+        pulumi.set(self, "state", value)
+
+
+@pulumi.input_type
+class WorkerConfigArgs:
+    def __init__(__self__, *,
+                 disk_size_gb: Optional[pulumi.Input[str]] = None,
+                 machine_type: Optional[pulumi.Input[str]] = None):
+        """
+        Defines the configuration to be used for creating workers in the pool.
+        :param pulumi.Input[str] disk_size_gb: Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+        :param pulumi.Input[str] machine_type: Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use a sensible default.
+        """
+        if disk_size_gb is not None:
+            pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> Optional[pulumi.Input[str]]:
+        """
+        Size of the disk attached to the worker, in GB. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
+        """
+        return pulumi.get(self, "disk_size_gb")
+
+    @disk_size_gb.setter
+    def disk_size_gb(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "disk_size_gb", value)
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Machine type of a worker, such as `e2-medium`. See [Worker pool config file](https://cloud.google.com/cloud-build/docs/custom-workers/worker-pool-config-file). If left blank, Cloud Build will use a sensible default.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @machine_type.setter
+    def machine_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "machine_type", value)
 
 

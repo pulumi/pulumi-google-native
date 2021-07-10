@@ -11,25 +11,19 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
 {
 
     /// <summary>
-    /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported Volume represents a named volume in a container.
+    /// Not supported by Cloud Run Volume represents a named volume in a container.
     /// </summary>
     public sealed class VolumeArgs : Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Cloud Run fully managed: not supported Cloud Run for Anthos: supported
-        /// </summary>
         [Input("configMap")]
         public Input<Inputs.ConfigMapVolumeSourceArgs>? ConfigMap { get; set; }
 
         /// <summary>
-        /// Cloud Run fully managed: supported Cloud Run for Anthos: supported Volume's name.
+        /// Volume's name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Cloud Run fully managed: supported Cloud Run for Anthos: supported
-        /// </summary>
         [Input("secret")]
         public Input<Inputs.SecretVolumeSourceArgs>? Secret { get; set; }
 

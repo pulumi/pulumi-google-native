@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3
     public partial class AlertPolicy : Pulumi.CustomResource
     {
         /// <summary>
+        /// Control over how this alert policy's notification channels are notified.
+        /// </summary>
+        [Output("alertStrategy")]
+        public Output<Outputs.AlertStrategyResponse> AlertStrategy { get; private set; } = null!;
+
+        /// <summary>
         /// How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
         /// </summary>
         [Output("combiner")]
@@ -126,6 +132,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3
 
     public sealed class AlertPolicyArgs : Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Control over how this alert policy's notification channels are notified.
+        /// </summary>
+        [Input("alertStrategy")]
+        public Input<Inputs.AlertStrategyArgs>? AlertStrategy { get; set; }
+
         /// <summary>
         /// How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
         /// </summary>

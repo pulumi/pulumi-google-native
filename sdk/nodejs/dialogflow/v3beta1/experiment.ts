@@ -56,7 +56,7 @@ export class Experiment extends pulumi.CustomResource {
      */
     public readonly endTime!: pulumi.Output<string>;
     /**
-     * Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
+     * LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
      */
     public readonly experimentLength!: pulumi.Output<string>;
     /**
@@ -76,7 +76,7 @@ export class Experiment extends pulumi.CustomResource {
      */
     public readonly startTime!: pulumi.Output<string>;
     /**
-     * The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
+     * The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
      */
     public readonly state!: pulumi.Output<string>;
     /**
@@ -174,7 +174,7 @@ export interface ExperimentArgs {
     endTime?: pulumi.Input<string>;
     environmentId: pulumi.Input<string>;
     /**
-     * Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days.
+     * LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
      */
     experimentLength?: pulumi.Input<string>;
     /**
@@ -196,7 +196,7 @@ export interface ExperimentArgs {
      */
     startTime?: pulumi.Input<string>;
     /**
-     * The current state of the experiment. Transition triggered by Expriments.StartExperiment: PENDING->RUNNING. Transition triggered by Expriments.CancelExperiment: PENDING->CANCELLED or RUNNING->CANCELLED.
+     * The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
      */
     state?: pulumi.Input<enums.dialogflow.v3beta1.ExperimentState>;
     /**

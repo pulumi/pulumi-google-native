@@ -47,41 +47,19 @@ class ImageArgs:
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] disk_size_gb: Size of the image when restored onto a persistent disk (in GB).
         :param pulumi.Input[str] family: The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
-        :param pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
-        :param pulumi.Input['CustomerEncryptionKeyArgs'] image_encryption_key: Encrypts the image using a customer-supplied encryption key.
-               
-               After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image).
-               
-               Customer-supplied encryption keys do not protect access to metadata of the disk.
-               
-               If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
+        :param pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+        :param pulumi.Input['CustomerEncryptionKeyArgs'] image_encryption_key: Encrypts the image using a customer-supplied encryption key. After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this image. These can be later modified by the setLabels method.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] license_codes: Integer license codes indicating which licenses are attached to this image.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input['ImageRawDiskArgs'] raw_disk: The parameters of the raw disk image.
         :param pulumi.Input['InitialStateConfigArgs'] shielded_instance_initial_state: Set the secure boot keys of shielded instance.
-        :param pulumi.Input[str] source_disk: URL of the source disk used to create this image. This can be a full or valid partial URL. You must provide either this property or the rawDisk.source property but not both to create an image. For example, the following are valid values:  
-               - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk 
-               - projects/project/zones/zone/disks/disk 
-               - zones/zone/disks/disk
+        :param pulumi.Input[str] source_disk: URL of the source disk used to create this image. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
-        :param pulumi.Input[str] source_image: URL of the source image used to create this image.
-               
-               In order to create an image, you must provide the full or partial URL of one of the following:  
-               - The selfLink URL  
-               - This property  
-               - The rawDisk.source URL  
-               - The sourceDisk URL
+        :param pulumi.Input[str] source_image: URL of the source image used to create this image. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
-        :param pulumi.Input[str] source_snapshot: URL of the source snapshot used to create this image.
-               
-               In order to create an image, you must provide the full or partial URL of one of the following:  
-               - The selfLink URL  
-               - This property 
-               - The sourceImage URL  
-               - The rawDisk.source URL  
-               - The sourceDisk URL
+        :param pulumi.Input[str] source_snapshot: URL of the source snapshot used to create this image. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
         :param pulumi.Input['ImageSourceType'] source_type: The type of the image used to create this disk. The default and only value is RAW
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image (regional or multi-regional).
@@ -216,7 +194,7 @@ class ImageArgs:
     @pulumi.getter(name="guestOsFeatures")
     def guest_os_features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GuestOsFeatureArgs']]]]:
         """
-        A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
+        A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         """
         return pulumi.get(self, "guest_os_features")
 
@@ -228,13 +206,7 @@ class ImageArgs:
     @pulumi.getter(name="imageEncryptionKey")
     def image_encryption_key(self) -> Optional[pulumi.Input['CustomerEncryptionKeyArgs']]:
         """
-        Encrypts the image using a customer-supplied encryption key.
-
-        After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image).
-
-        Customer-supplied encryption keys do not protect access to metadata of the disk.
-
-        If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
+        Encrypts the image using a customer-supplied encryption key. After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
         """
         return pulumi.get(self, "image_encryption_key")
 
@@ -327,10 +299,7 @@ class ImageArgs:
     @pulumi.getter(name="sourceDisk")
     def source_disk(self) -> Optional[pulumi.Input[str]]:
         """
-        URL of the source disk used to create this image. This can be a full or valid partial URL. You must provide either this property or the rawDisk.source property but not both to create an image. For example, the following are valid values:  
-        - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk 
-        - projects/project/zones/zone/disks/disk 
-        - zones/zone/disks/disk
+        URL of the source disk used to create this image. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         """
         return pulumi.get(self, "source_disk")
 
@@ -354,13 +323,7 @@ class ImageArgs:
     @pulumi.getter(name="sourceImage")
     def source_image(self) -> Optional[pulumi.Input[str]]:
         """
-        URL of the source image used to create this image.
-
-        In order to create an image, you must provide the full or partial URL of one of the following:  
-        - The selfLink URL  
-        - This property  
-        - The rawDisk.source URL  
-        - The sourceDisk URL
+        URL of the source image used to create this image. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         """
         return pulumi.get(self, "source_image")
 
@@ -384,14 +347,7 @@ class ImageArgs:
     @pulumi.getter(name="sourceSnapshot")
     def source_snapshot(self) -> Optional[pulumi.Input[str]]:
         """
-        URL of the source snapshot used to create this image.
-
-        In order to create an image, you must provide the full or partial URL of one of the following:  
-        - The selfLink URL  
-        - This property 
-        - The sourceImage URL  
-        - The rawDisk.source URL  
-        - The sourceDisk URL
+        URL of the source snapshot used to create this image. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         """
         return pulumi.get(self, "source_snapshot")
 
@@ -476,41 +432,19 @@ class Image(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] disk_size_gb: Size of the image when restored onto a persistent disk (in GB).
         :param pulumi.Input[str] family: The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
-        :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] image_encryption_key: Encrypts the image using a customer-supplied encryption key.
-               
-               After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image).
-               
-               Customer-supplied encryption keys do not protect access to metadata of the disk.
-               
-               If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['GuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
+        :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] image_encryption_key: Encrypts the image using a customer-supplied encryption key. After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this image. These can be later modified by the setLabels method.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] license_codes: Integer license codes indicating which licenses are attached to this image.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] licenses: Any applicable license URI.
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[pulumi.InputType['ImageRawDiskArgs']] raw_disk: The parameters of the raw disk image.
         :param pulumi.Input[pulumi.InputType['InitialStateConfigArgs']] shielded_instance_initial_state: Set the secure boot keys of shielded instance.
-        :param pulumi.Input[str] source_disk: URL of the source disk used to create this image. This can be a full or valid partial URL. You must provide either this property or the rawDisk.source property but not both to create an image. For example, the following are valid values:  
-               - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk 
-               - projects/project/zones/zone/disks/disk 
-               - zones/zone/disks/disk
+        :param pulumi.Input[str] source_disk: URL of the source disk used to create this image. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
-        :param pulumi.Input[str] source_image: URL of the source image used to create this image.
-               
-               In order to create an image, you must provide the full or partial URL of one of the following:  
-               - The selfLink URL  
-               - This property  
-               - The rawDisk.source URL  
-               - The sourceDisk URL
+        :param pulumi.Input[str] source_image: URL of the source image used to create this image. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key.
-        :param pulumi.Input[str] source_snapshot: URL of the source snapshot used to create this image.
-               
-               In order to create an image, you must provide the full or partial URL of one of the following:  
-               - The selfLink URL  
-               - This property 
-               - The sourceImage URL  
-               - The rawDisk.source URL  
-               - The sourceDisk URL
+        :param pulumi.Input[str] source_snapshot: URL of the source snapshot used to create this image. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_snapshot_encryption_key: The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
         :param pulumi.Input['ImageSourceType'] source_type: The type of the image used to create this disk. The default and only value is RAW
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the image (regional or multi-regional).
@@ -716,7 +650,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="guestOsFeatures")
     def guest_os_features(self) -> pulumi.Output[Sequence['outputs.GuestOsFeatureResponse']]:
         """
-        A list of features to enable on the guest operating system. Applicable only for bootable images. Read  Enabling guest operating system features to see a list of available options.
+        A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         """
         return pulumi.get(self, "guest_os_features")
 
@@ -724,13 +658,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="imageEncryptionKey")
     def image_encryption_key(self) -> pulumi.Output['outputs.CustomerEncryptionKeyResponse']:
         """
-        Encrypts the image using a customer-supplied encryption key.
-
-        After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image).
-
-        Customer-supplied encryption keys do not protect access to metadata of the disk.
-
-        If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
+        Encrypts the image using a customer-supplied encryption key. After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
         """
         return pulumi.get(self, "image_encryption_key")
 
@@ -746,9 +674,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> pulumi.Output[str]:
         """
-        A fingerprint for the labels being applied to this image, which is essentially a hash of the labels used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error 412 conditionNotMet.
-
-        To see the latest fingerprint, make a get() request to retrieve an image.
+        A fingerprint for the labels being applied to this image, which is essentially a hash of the labels used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve an image.
         """
         return pulumi.get(self, "label_fingerprint")
 
@@ -820,10 +746,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="sourceDisk")
     def source_disk(self) -> pulumi.Output[str]:
         """
-        URL of the source disk used to create this image. This can be a full or valid partial URL. You must provide either this property or the rawDisk.source property but not both to create an image. For example, the following are valid values:  
-        - https://www.googleapis.com/compute/v1/projects/project/zones/zone/disks/disk 
-        - projects/project/zones/zone/disks/disk 
-        - zones/zone/disks/disk
+        URL of the source disk used to create this image. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - projects/project/zones/zone/disks/disk - zones/zone/disks/disk In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         """
         return pulumi.get(self, "source_disk")
 
@@ -847,13 +770,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="sourceImage")
     def source_image(self) -> pulumi.Output[str]:
         """
-        URL of the source image used to create this image.
-
-        In order to create an image, you must provide the full or partial URL of one of the following:  
-        - The selfLink URL  
-        - This property  
-        - The rawDisk.source URL  
-        - The sourceDisk URL
+        URL of the source image used to create this image. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         """
         return pulumi.get(self, "source_image")
 
@@ -877,14 +794,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="sourceSnapshot")
     def source_snapshot(self) -> pulumi.Output[str]:
         """
-        URL of the source snapshot used to create this image.
-
-        In order to create an image, you must provide the full or partial URL of one of the following:  
-        - The selfLink URL  
-        - This property 
-        - The sourceImage URL  
-        - The rawDisk.source URL  
-        - The sourceDisk URL
+        URL of the source snapshot used to create this image. In order to create an image, you must provide the full or partial URL of one of the following: - The rawDisk.source URL - The sourceDisk URL - The sourceImage URL - The sourceSnapshot URL 
         """
         return pulumi.get(self, "source_snapshot")
 
