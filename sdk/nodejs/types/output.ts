@@ -58935,6 +58935,34 @@ export namespace storage {
         }
 
         /**
+         * Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+         */
+        export interface BucketObjectCustomerEncryptionResponse {
+            /**
+             * The encryption algorithm.
+             */
+            encryptionAlgorithm: string;
+            /**
+             * SHA256 hash value of the encryption key.
+             */
+            keySha256: string;
+        }
+
+        /**
+         * The owner of the object. This will always be the uploader of the object.
+         */
+        export interface BucketObjectOwnerResponse {
+            /**
+             * The entity, in the form user-userId.
+             */
+            entity: string;
+            /**
+             * The ID for the entity.
+             */
+            entityId: string;
+        }
+
+        /**
          * The owner of the bucket. This is always the project team's owner group.
          */
         export interface BucketOwnerResponse {
@@ -59105,20 +59133,6 @@ export namespace storage {
             selfLink: string;
         }
 
-        /**
-         * Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
-         */
-        export interface ObjectCustomerEncryptionResponse {
-            /**
-             * The encryption algorithm.
-             */
-            encryptionAlgorithm: string;
-            /**
-             * SHA256 hash value of the encryption key.
-             */
-            keySha256: string;
-        }
-
         export interface ObjectIamPolicyBindingsItemResponse {
             /**
              * The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
@@ -59151,20 +59165,6 @@ export namespace storage {
              * - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
              */
             role: string;
-        }
-
-        /**
-         * The owner of the object. This will always be the uploader of the object.
-         */
-        export interface ObjectOwnerResponse {
-            /**
-             * The entity, in the form user-userId.
-             */
-            entity: string;
-            /**
-             * The ID for the entity.
-             */
-            entityId: string;
         }
     }
 }

@@ -86,6 +86,7 @@ export class Job extends pulumi.CustomResource {
             inputs["configuration"] = args ? args.configuration : undefined;
             inputs["jobReference"] = args ? args.jobReference : undefined;
             inputs["project"] = args ? args.project : undefined;
+            inputs["source"] = args ? args.source : undefined;
             inputs["etag"] = undefined /*out*/;
             inputs["kind"] = undefined /*out*/;
             inputs["selfLink"] = undefined /*out*/;
@@ -122,4 +123,5 @@ export interface JobArgs {
      */
     jobReference?: pulumi.Input<inputs.bigquery.v2.JobReferenceArgs>;
     project: pulumi.Input<string>;
+    source?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive>;
 }
