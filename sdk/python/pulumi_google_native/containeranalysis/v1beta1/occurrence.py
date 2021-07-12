@@ -226,6 +226,7 @@ class Occurrence(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new occurrence.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -249,6 +250,7 @@ class Occurrence(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new occurrence.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param OccurrenceArgs args: The arguments to use to populate this resource's properties.

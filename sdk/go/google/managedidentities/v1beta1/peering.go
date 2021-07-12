@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a Peering for Managed AD instance.
+// Auto-naming is currently not supported for this resource.
 type Peering struct {
 	pulumi.CustomResourceState
 

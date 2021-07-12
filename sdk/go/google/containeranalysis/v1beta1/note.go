@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new note.
+// Auto-naming is currently not supported for this resource.
 type Note struct {
 	pulumi.CustomResourceState
 

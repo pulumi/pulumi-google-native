@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a `WorkerPool` to run the builds, and returns the new worker pool. NOTE: As of now, this method returns an `Operation` that is always complete.
+// Auto-naming is currently not supported for this resource.
 type WorkerPool struct {
 	pulumi.CustomResourceState
 

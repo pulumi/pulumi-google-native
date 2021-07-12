@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a ServiceAccountKey.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Key extends pulumi.CustomResource {
     /**

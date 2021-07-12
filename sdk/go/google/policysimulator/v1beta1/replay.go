@@ -12,6 +12,7 @@ import (
 )
 
 // Creates and starts a Replay using the given ReplayConfig.
+// Auto-naming is currently not supported for this resource.
 type Replay struct {
 	pulumi.CustomResourceState
 

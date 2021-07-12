@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Deploys code and resource files to a new version.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Version extends pulumi.CustomResource {
     /**

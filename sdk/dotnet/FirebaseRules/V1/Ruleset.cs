@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
 {
     /// <summary>
     /// Create a `Ruleset` from `Source`. The `Ruleset` is given a unique generated name which is returned to the caller. `Source` containing syntactic or semantics errors will result in an error response indicating the first error encountered. For a detailed view of `Source` issues, use TestRuleset.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:firebaserules/v1:Ruleset")]
     public partial class Ruleset : Pulumi.CustomResource

@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a `Membership`.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Membership extends pulumi.CustomResource {
     /**

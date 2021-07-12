@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Create a new CertificateAuthority in a given Project and Location.
+ * Auto-naming is currently not supported for this resource.
  */
 export class CertificateAuthority extends pulumi.CustomResource {
     /**

@@ -16,25 +16,24 @@ __all__ = ['ServerTlsPolicyArgs', 'ServerTlsPolicy']
 class ServerTlsPolicyArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
-                 name: pulumi.Input[str],
                  project: pulumi.Input[str],
                  server_tls_policy_id: pulumi.Input[str],
                  allow_open: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mtls_policy: Optional[pulumi.Input['MTLSPolicyArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  server_certificate: Optional[pulumi.Input['GoogleCloudNetworksecurityV1beta1CertificateProviderArgs']] = None):
         """
         The set of arguments for constructing a ServerTlsPolicy resource.
-        :param pulumi.Input[str] name: Name of the ServerTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/serverTlsPolicies/{server_tls_policy}`
         :param pulumi.Input[bool] allow_open: Optional. Determines if server allows plaintext connections. If set to true, server allows plain text connections. By default, it is set to false. This setting is not exclusive of other encryption modes. For example, if allow_open and mtls_policy are set, server allows both plain text and mTLS connections. See documentation of other encryption modes to confirm compatibility.
         :param pulumi.Input[str] description: Optional. Free-text description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the resource.
         :param pulumi.Input['MTLSPolicyArgs'] mtls_policy: Optional. Defines a mechanism to provision peer validation certificates for peer to peer authentication (Mutual TLS - mTLS). If not specified, client certificate will not be requested. The connection is treated as TLS and not mTLS. If allow_open and mtls_policy are set, server allows both plain text and mTLS connections.
+        :param pulumi.Input[str] name: Name of the ServerTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/serverTlsPolicies/{server_tls_policy}`
         :param pulumi.Input['GoogleCloudNetworksecurityV1beta1CertificateProviderArgs'] server_certificate: Optional. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allow_open as a permissive mode that allows both plain text and TLS is not supported.
         """
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "server_tls_policy_id", server_tls_policy_id)
         if allow_open is not None:
@@ -45,6 +44,8 @@ class ServerTlsPolicyArgs:
             pulumi.set(__self__, "labels", labels)
         if mtls_policy is not None:
             pulumi.set(__self__, "mtls_policy", mtls_policy)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if server_certificate is not None:
             pulumi.set(__self__, "server_certificate", server_certificate)
 
@@ -56,18 +57,6 @@ class ServerTlsPolicyArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        Name of the ServerTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/serverTlsPolicies/{server_tls_policy}`
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -134,6 +123,18 @@ class ServerTlsPolicyArgs:
     @mtls_policy.setter
     def mtls_policy(self, value: Optional[pulumi.Input['MTLSPolicyArgs']]):
         pulumi.set(self, "mtls_policy", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the ServerTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/serverTlsPolicies/{server_tls_policy}`
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="serverCertificate")
@@ -227,8 +228,6 @@ class ServerTlsPolicy(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["mtls_policy"] = mtls_policy
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")

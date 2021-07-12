@@ -108,6 +108,7 @@ class ImportJob(pulumi.CustomResource):
                  __props__=None):
         """
         Create a new ImportJob within a KeyRing. ImportJob.import_method is required.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -122,6 +123,7 @@ class ImportJob(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a new ImportJob within a KeyRing. ImportJob.import_method is required.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param ImportJobArgs args: The arguments to use to populate this resource's properties.

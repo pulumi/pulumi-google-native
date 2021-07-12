@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates an Identity Aware Proxy (IAP) OAuth client. The client is owned by IAP. Requires that the brand for the project exists and that it is set for internal-only use.
+ * Auto-naming is currently not supported for this resource.
  */
 export class IdentityAwareProxyClient extends pulumi.CustomResource {
     /**

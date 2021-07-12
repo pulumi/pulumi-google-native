@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new canary evaluation for an organization.
+// Auto-naming is currently not supported for this resource.
 type CanaryEvaluation struct {
 	pulumi.CustomResourceState
 

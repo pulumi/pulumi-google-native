@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
 {
     /// <summary>
     /// Creates a PerfSampleSeries. May return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already exists for the given Step - NOT_FOUND - The containing Step does not exist
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:toolresults/v1beta3:PerfSampleSeries")]
     public partial class PerfSampleSeries : Pulumi.CustomResource

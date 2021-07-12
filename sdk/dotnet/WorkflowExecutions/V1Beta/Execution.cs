@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1Beta
 {
     /// <summary>
     /// Creates a new execution using the latest revision of the given workflow.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:workflowexecutions/v1beta:Execution")]
     public partial class Execution : Pulumi.CustomResource

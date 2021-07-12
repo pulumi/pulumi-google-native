@@ -12,6 +12,7 @@ import (
 )
 
 // Create a ServiceLevelObjective for the given Service.
+// Auto-naming is currently not supported for this resource.
 type ServiceLevelObjective struct {
 	pulumi.CustomResourceState
 

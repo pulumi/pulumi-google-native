@@ -12,6 +12,7 @@ import (
 )
 
 // Atomically updates the ResourceRecordSet collection.
+// Auto-naming is currently not supported for this resource.
 type Change struct {
 	pulumi.CustomResourceState
 

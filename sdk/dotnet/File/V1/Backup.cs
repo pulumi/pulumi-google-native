@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.File.V1
 {
     /// <summary>
     /// Creates a backup.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:file/v1:Backup")]
     public partial class Backup : Pulumi.CustomResource

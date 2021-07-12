@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a `WorkerPool`.
+// Auto-naming is currently not supported for this resource.
 type WorkerPool struct {
 	pulumi.CustomResourceState
 

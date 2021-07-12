@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new attachment of an environment to an instance. **Note:** Not supported for Apigee hybrid.
+// Auto-naming is currently not supported for this resource.
 type InstanceAttachment struct {
 	pulumi.CustomResourceState
 

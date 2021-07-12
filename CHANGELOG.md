@@ -7,6 +7,13 @@ Enhancements:
 
 - Populate fingerprint properties automatically
   [#126](https://github.com/pulumi/pulumi-google-native/issues/126)
+- Auto-naming. Resource names (as seen in Google Cloud) are now automatically
+  generated unless they are specified in user's program. A dash plus a random
+  suffix of length 7 are appended to the logical name of Pulumi resources.
+  Auto-naming is not yet available in some resource types; those resources
+  have a note "Auto-naming is currently not supported for this resource"
+  in their description.
+  [#93](https://github.com/pulumi/pulumi-google-native/issues/93)
 
 - Fix the representation of properties marked as `[Output only]`
   [#134](https://github.com/pulumi/pulumi-google-native/issues/134),

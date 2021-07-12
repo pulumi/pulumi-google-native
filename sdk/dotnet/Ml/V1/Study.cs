@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Ml.V1
 {
     /// <summary>
     /// Creates a study.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:ml/v1:Study")]
     public partial class Study : Pulumi.CustomResource

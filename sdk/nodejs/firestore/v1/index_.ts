@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Index extends pulumi.CustomResource {
     /**

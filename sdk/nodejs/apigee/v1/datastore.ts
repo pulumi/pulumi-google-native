@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Create a Datastore for an org
+ * Auto-naming is currently not supported for this resource.
  */
 export class Datastore extends pulumi.CustomResource {
     /**

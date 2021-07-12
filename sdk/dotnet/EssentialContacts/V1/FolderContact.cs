@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
 {
     /// <summary>
     /// Adds a new contact for a resource.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:essentialcontacts/v1:FolderContact")]
     public partial class FolderContact : Pulumi.CustomResource

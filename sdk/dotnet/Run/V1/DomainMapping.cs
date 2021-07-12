@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Run.V1
 {
     /// <summary>
     /// Create a new domain mapping.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:run/v1:DomainMapping")]
     public partial class DomainMapping : Pulumi.CustomResource

@@ -12,6 +12,7 @@ import (
 )
 
 // Creates dataset. If success return a Dataset resource.
+// Auto-naming is currently not supported for this resource.
 type Dataset struct {
 	pulumi.CustomResourceState
 

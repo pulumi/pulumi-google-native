@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1
 {
     /// <summary>
     /// Creates a new budget. See Quotas and limits for more information on the limits of the number of budgets you can create.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:billingbudgets/v1beta1:Budget")]
     public partial class Budget : Pulumi.CustomResource

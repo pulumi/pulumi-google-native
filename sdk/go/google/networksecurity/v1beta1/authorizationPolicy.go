@@ -44,9 +44,6 @@ func NewAuthorizationPolicy(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -119,8 +116,8 @@ type authorizationPolicyArgs struct {
 	Labels   map[string]string `pulumi:"labels"`
 	Location string            `pulumi:"location"`
 	// Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.
-	Name    string `pulumi:"name"`
-	Project string `pulumi:"project"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// Optional. List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken. A rule is a match if there is a matching source and destination. If left blank, the action specified in the `action` field will be applied on every request.
 	Rules []Rule `pulumi:"rules"`
 }
@@ -136,7 +133,7 @@ type AuthorizationPolicyArgs struct {
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringInput
 	// Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.
-	Name    pulumi.StringInput
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// Optional. List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken. A rule is a match if there is a matching source and destination. If left blank, the action specified in the `action` field will be applied on every request.
 	Rules RuleArrayInput

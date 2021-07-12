@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new backup run on demand. This method is applicable only to Second Generation instances.
+ * Auto-naming is currently not supported for this resource.
  */
 export class BackupRun extends pulumi.CustomResource {
     /**

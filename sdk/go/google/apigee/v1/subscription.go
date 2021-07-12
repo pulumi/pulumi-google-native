@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a subscription to an API product.
+// Auto-naming is currently not supported for this resource.
 type Subscription struct {
 	pulumi.CustomResourceState
 

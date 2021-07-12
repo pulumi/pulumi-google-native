@@ -31,9 +31,6 @@ func NewKeystore(ctx *pulumi.Context,
 	if args.EnvironmentId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -79,15 +76,15 @@ func (KeystoreState) ElementType() reflect.Type {
 type keystoreArgs struct {
 	EnvironmentId string `pulumi:"environmentId"`
 	// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
-	Name           string `pulumi:"name"`
-	OrganizationId string `pulumi:"organizationId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
 }
 
 // The set of arguments for constructing a Keystore resource.
 type KeystoreArgs struct {
 	EnvironmentId pulumi.StringInput
 	// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
-	Name           pulumi.StringInput
+	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
 }
 

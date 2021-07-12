@@ -294,8 +294,8 @@ namespace Pulumi.GoogleNative.Ml.V1
         /// <summary>
         /// The name specified for the version when it was created. The version name must be unique within the model it is created in.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("packageUris")]
         private InputList<string>? _packageUris;

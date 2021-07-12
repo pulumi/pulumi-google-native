@@ -121,9 +121,6 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             if ((!args || args.nodeConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'nodeConfig'");
             }
@@ -208,7 +205,7 @@ export interface InstanceArgs {
     /**
      * Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Configuration for Memcached nodes.
      */

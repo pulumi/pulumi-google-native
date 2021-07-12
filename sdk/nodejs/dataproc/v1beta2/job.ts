@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Submits a job to a cluster.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Job extends pulumi.CustomResource {
     /**

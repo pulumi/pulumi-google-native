@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates an instruction for how data should be labeled.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Instruction extends pulumi.CustomResource {
     /**

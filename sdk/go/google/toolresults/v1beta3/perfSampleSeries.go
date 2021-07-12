@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a PerfSampleSeries. May return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already exists for the given Step - NOT_FOUND - The containing Step does not exist
+// Auto-naming is currently not supported for this resource.
 type PerfSampleSeries struct {
 	pulumi.CustomResourceState
 

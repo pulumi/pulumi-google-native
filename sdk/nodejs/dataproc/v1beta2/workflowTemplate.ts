@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates new workflow template.
+ * Auto-naming is currently not supported for this resource.
  */
 export class WorkflowTemplate extends pulumi.CustomResource {
     /**

@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a context. If the specified context already exists, overrides the context.
+// Auto-naming is currently not supported for this resource.
 type Context struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new instance in the specified region. Returns a long running operation which contains an instance on completion. While the long running operation is in progress, any call to `GetInstance` returns an instance in state `CREATING`.
+// Auto-naming is currently not supported for this resource.
 type Instance struct {
 	pulumi.CustomResourceState
 

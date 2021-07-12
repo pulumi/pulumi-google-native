@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new empty dataset.
+// Auto-naming is currently not supported for this resource.
 type Dataset struct {
 	pulumi.CustomResourceState
 

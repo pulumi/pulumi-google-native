@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
 {
     /// <summary>
     /// Create a new KeyRing in a given Project and Location.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudkms/v1:KeyRing")]
     public partial class KeyRing : Pulumi.CustomResource

@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates an Apigee organization. See [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+ * Auto-naming is currently not supported for this resource.
  */
 export class Organization extends pulumi.CustomResource {
     /**

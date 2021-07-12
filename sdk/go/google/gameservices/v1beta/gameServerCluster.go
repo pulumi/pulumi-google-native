@@ -48,9 +48,6 @@ func NewGameServerCluster(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -138,9 +135,9 @@ type gameServerClusterArgs struct {
 	Labels   map[string]string `pulumi:"labels"`
 	Location string            `pulumi:"location"`
 	// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
-	Name    string `pulumi:"name"`
-	Project string `pulumi:"project"`
-	RealmId string `pulumi:"realmId"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
+	RealmId string  `pulumi:"realmId"`
 }
 
 // The set of arguments for constructing a GameServerCluster resource.
@@ -158,7 +155,7 @@ type GameServerClusterArgs struct {
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringInput
 	// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
-	Name    pulumi.StringInput
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	RealmId pulumi.StringInput
 }

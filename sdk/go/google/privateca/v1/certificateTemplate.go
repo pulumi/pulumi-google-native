@@ -12,6 +12,7 @@ import (
 )
 
 // Create a new CertificateTemplate in a given Project and Location.
+// Auto-naming is currently not supported for this resource.
 type CertificateTemplate struct {
 	pulumi.CustomResourceState
 

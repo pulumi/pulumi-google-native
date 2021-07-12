@@ -15,23 +15,24 @@ class BillingAccountExclusionArgs:
     def __init__(__self__, *,
                  billing_account_id: pulumi.Input[str],
                  filter: pulumi.Input[str],
-                 name: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
-                 disabled: Optional[pulumi.Input[bool]] = None):
+                 disabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a BillingAccountExclusion resource.
         :param pulumi.Input[str] filter: An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
-        :param pulumi.Input[str] name: A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
         :param pulumi.Input[str] description: Optional. A description of this exclusion.
         :param pulumi.Input[bool] disabled: Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries. You can update an exclusion to change the value of this field.
+        :param pulumi.Input[str] name: A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
         """
         pulumi.set(__self__, "billing_account_id", billing_account_id)
         pulumi.set(__self__, "filter", filter)
-        pulumi.set(__self__, "name", name)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="billingAccountId")
@@ -56,18 +57,6 @@ class BillingAccountExclusionArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         Optional. A description of this exclusion.
@@ -89,6 +78,18 @@ class BillingAccountExclusionArgs:
     @disabled.setter
     def disabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "disabled", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class BillingAccountExclusion(pulumi.CustomResource):
@@ -161,8 +162,6 @@ class BillingAccountExclusion(pulumi.CustomResource):
             if filter is None and not opts.urn:
                 raise TypeError("Missing required property 'filter'")
             __props__.__dict__["filter"] = filter
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["create_time"] = None
             __props__.__dict__["update_time"] = None

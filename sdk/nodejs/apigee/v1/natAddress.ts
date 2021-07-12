@@ -61,9 +61,6 @@ export class NatAddress extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
@@ -92,6 +89,6 @@ export interface NatAddressArgs {
     /**
      * Resource ID of the NAT address.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
 }

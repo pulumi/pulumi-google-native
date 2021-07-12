@@ -44,9 +44,6 @@ func NewGlossary(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -118,8 +115,8 @@ type glossaryArgs struct {
 	LanguagePair *LanguageCodePair `pulumi:"languagePair"`
 	Location     string            `pulumi:"location"`
 	// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
-	Name    string `pulumi:"name"`
-	Project string `pulumi:"project"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Glossary resource.
@@ -132,7 +129,7 @@ type GlossaryArgs struct {
 	LanguagePair LanguageCodePairPtrInput
 	Location     pulumi.StringInput
 	// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
-	Name    pulumi.StringInput
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 }
 

@@ -12,6 +12,7 @@ import (
 )
 
 // Submits a job to a cluster.
+// Auto-naming is currently not supported for this resource.
 type Job struct {
 	pulumi.CustomResourceState
 

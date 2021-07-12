@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
 {
     /// <summary>
     /// Creates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Cloud resource.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:orgpolicy/v2:OrganizationPolicy")]
     public partial class OrganizationPolicy : Pulumi.CustomResource

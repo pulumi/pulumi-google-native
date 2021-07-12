@@ -100,6 +100,7 @@ class DomainMapping(pulumi.CustomResource):
                  __props__=None):
         """
         Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -114,6 +115,7 @@ class DomainMapping(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param DomainMappingArgs args: The arguments to use to populate this resource's properties.

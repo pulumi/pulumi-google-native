@@ -102,6 +102,7 @@ class Taxonomy(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a taxonomy in a specified project. The taxonomy is initially empty, that is, it doesn't contain policy tags.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -117,6 +118,7 @@ class Taxonomy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a taxonomy in a specified project. The taxonomy is initially empty, that is, it doesn't contain policy tags.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param TaxonomyArgs args: The arguments to use to populate this resource's properties.

@@ -37,9 +37,6 @@ func NewServicePerimeter(ctx *pulumi.Context,
 	if args.AccessPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'AccessPolicyId'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	var resource ServicePerimeter
 	err := ctx.RegisterResource("google-native:accesscontextmanager/v1beta:ServicePerimeter", name, args, &resource, opts...)
 	if err != nil {
@@ -96,7 +93,7 @@ type servicePerimeterArgs struct {
 	// Description of the `ServicePerimeter` and its use. Does not affect behavior.
 	Description *string `pulumi:"description"`
 	// Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
 	PerimeterType *string `pulumi:"perimeterType"`
 	// Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.
@@ -111,7 +108,7 @@ type ServicePerimeterArgs struct {
 	// Description of the `ServicePerimeter` and its use. Does not affect behavior.
 	Description pulumi.StringPtrInput
 	// Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
-	Name pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
 	PerimeterType *ServicePerimeterPerimeterType
 	// Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.

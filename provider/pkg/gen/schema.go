@@ -433,9 +433,23 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		}
 	}
 
+	description := dd.createMethod.Description
+
+	// Apply auto-naming.
+	autoNameable := !strings.HasSuffix(typeName, "IamPolicy")
+	if autoNameable {
+		namePattern, err := namePropertyPattern(inputProperties)
+		if err == nil {
+			requiredInputProperties.Delete("name")
+			resourceMeta.AutoNamePattern = namePattern
+		} else {
+			description += "\nAuto-naming is currently not supported for this resource."
+		}
+	}
+
 	resourceSpec := schema.ResourceSpec{
 		ObjectTypeSpec: schema.ObjectTypeSpec{
-			Description: dd.createMethod.Description,
+			Description: description,
 			Type:        "object",
 			Properties:  properties,
 			Required:    requiredProperties.SortedValues(),

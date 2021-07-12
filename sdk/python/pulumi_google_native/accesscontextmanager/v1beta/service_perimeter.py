@@ -17,23 +17,24 @@ __all__ = ['ServicePerimeterArgs', 'ServicePerimeter']
 class ServicePerimeterArgs:
     def __init__(__self__, *,
                  access_policy_id: pulumi.Input[str],
-                 name: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  perimeter_type: Optional[pulumi.Input['ServicePerimeterPerimeterType']] = None,
                  status: Optional[pulumi.Input['ServicePerimeterConfigArgs']] = None,
                  title: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServicePerimeter resource.
-        :param pulumi.Input[str] name: Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
         :param pulumi.Input[str] description: Description of the `ServicePerimeter` and its use. Does not affect behavior.
+        :param pulumi.Input[str] name: Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
         :param pulumi.Input['ServicePerimeterPerimeterType'] perimeter_type: Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
         :param pulumi.Input['ServicePerimeterConfigArgs'] status: Current ServicePerimeter configuration. Specifies sets of resources, restricted/unrestricted services and access levels that determine perimeter content and boundaries.
         :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
         """
         pulumi.set(__self__, "access_policy_id", access_policy_id)
-        pulumi.set(__self__, "name", name)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if perimeter_type is not None:
             pulumi.set(__self__, "perimeter_type", perimeter_type)
         if status is not None:
@@ -52,18 +53,6 @@ class ServicePerimeterArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
         Description of the `ServicePerimeter` and its use. Does not affect behavior.
@@ -73,6 +62,18 @@ class ServicePerimeterArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="perimeterType")
@@ -180,8 +181,6 @@ class ServicePerimeter(pulumi.CustomResource):
                 raise TypeError("Missing required property 'access_policy_id'")
             __props__.__dict__["access_policy_id"] = access_policy_id
             __props__.__dict__["description"] = description
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["perimeter_type"] = perimeter_type
             __props__.__dict__["status"] = status

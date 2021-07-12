@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new WorkloadIdentityPool. You cannot reuse the name of a deleted pool until 30 days after deletion.
+ * Auto-naming is currently not supported for this resource.
  */
 export class WorkloadIdentityPool extends pulumi.CustomResource {
     /**

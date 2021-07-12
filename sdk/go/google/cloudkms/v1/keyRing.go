@@ -12,6 +12,7 @@ import (
 )
 
 // Create a new KeyRing in a given Project and Location.
+// Auto-naming is currently not supported for this resource.
 type KeyRing struct {
 	pulumi.CustomResourceState
 

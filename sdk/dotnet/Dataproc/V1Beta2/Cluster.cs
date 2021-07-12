@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
 {
     /// <summary>
     /// Creates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1beta2#clusteroperationmetadata).
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataproc/v1beta2:Cluster")]
     public partial class Cluster : Pulumi.CustomResource

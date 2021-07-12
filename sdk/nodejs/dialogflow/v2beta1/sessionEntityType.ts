@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a session entity type. If the specified session entity type already exists, overrides the session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.
+ * Auto-naming is currently not supported for this resource.
  */
 export class SessionEntityType extends pulumi.CustomResource {
     /**

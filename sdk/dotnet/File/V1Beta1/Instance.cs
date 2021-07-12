@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1
 {
     /// <summary>
     /// Creates an instance. When creating from a backup, the capacity of the new instance needs to be equal to or larger than the capacity of the backup (and also equal to or larger than the minimum capacity of the tier).
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:file/v1beta1:Instance")]
     public partial class Instance : Pulumi.CustomResource

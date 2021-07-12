@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a Microsoft AD Domain in a given project. Operation
+// Auto-naming is currently not supported for this resource.
 type Domain struct {
 	pulumi.CustomResourceState
 

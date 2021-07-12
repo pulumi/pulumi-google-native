@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Create a Datastore for an org
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:Datastore")]
     public partial class Datastore : Pulumi.CustomResource

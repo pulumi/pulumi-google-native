@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
 {
     /// <summary>
     /// Creates a new backup run on demand. This method is applicable only to Second Generation instances.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:sqladmin/v1beta4:BackupRun")]
     public partial class BackupRun : Pulumi.CustomResource

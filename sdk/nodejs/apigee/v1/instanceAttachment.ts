@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new attachment of an environment to an instance. **Note:** Not supported for Apigee hybrid.
+ * Auto-naming is currently not supported for this resource.
  */
 export class InstanceAttachment extends pulumi.CustomResource {
     /**

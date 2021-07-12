@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new budget. See Quotas and limits for more information on the limits of the number of budgets you can create.
+// Auto-naming is currently not supported for this resource.
 type Budget struct {
 	pulumi.CustomResourceState
 

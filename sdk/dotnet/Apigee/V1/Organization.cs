@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
     /// Creates an Apigee organization. See [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:Organization")]
     public partial class Organization : Pulumi.CustomResource

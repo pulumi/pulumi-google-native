@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates an entry. Only entries of 'FILESET' type or user-specified type can be created. Users should enable the Data Catalog API in the project identified by the `parent` parameter (see [Data Catalog Resource Project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project) for more information). A maximum of 100,000 entries may be created per entry group.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Entry extends pulumi.CustomResource {
     /**

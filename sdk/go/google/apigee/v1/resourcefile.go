@@ -33,9 +33,6 @@ func NewResourcefile(ctx *pulumi.Context,
 	if args.EnvironmentId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -93,7 +90,7 @@ type resourcefileArgs struct {
 	EnvironmentId string  `pulumi:"environmentId"`
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
 	Extensions     []map[string]string `pulumi:"extensions"`
-	Name           string              `pulumi:"name"`
+	Name           *string             `pulumi:"name"`
 	OrganizationId string              `pulumi:"organizationId"`
 	Type           string              `pulumi:"type"`
 }
@@ -107,7 +104,7 @@ type ResourcefileArgs struct {
 	EnvironmentId pulumi.StringInput
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
 	Extensions     pulumi.StringMapArrayInput
-	Name           pulumi.StringInput
+	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
 	Type           pulumi.StringInput
 }

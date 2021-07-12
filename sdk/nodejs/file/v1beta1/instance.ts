@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates an instance. When creating from a backup, the capacity of the new instance needs to be equal to or larger than the capacity of the backup (and also equal to or larger than the minimum capacity of the tier).
+ * Auto-naming is currently not supported for this resource.
  */
 export class Instance extends pulumi.CustomResource {
     /**

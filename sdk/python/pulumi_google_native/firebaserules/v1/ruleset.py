@@ -57,6 +57,7 @@ class Ruleset(pulumi.CustomResource):
                  __props__=None):
         """
         Create a `Ruleset` from `Source`. The `Ruleset` is given a unique generated name which is returned to the caller. `Source` containing syntactic or semantics errors will result in an error response indicating the first error encountered. For a detailed view of `Source` issues, use TestRuleset.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -70,6 +71,7 @@ class Ruleset(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a `Ruleset` from `Source`. The `Ruleset` is given a unique generated name which is returned to the caller. `Source` containing syntactic or semantics errors will result in an error response indicating the first error encountered. For a detailed view of `Source` issues, use TestRuleset.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param RulesetArgs args: The arguments to use to populate this resource's properties.

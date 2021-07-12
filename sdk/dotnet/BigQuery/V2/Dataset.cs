@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 {
     /// <summary>
     /// Creates a new empty dataset.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:bigquery/v2:Dataset")]
     public partial class Dataset : Pulumi.CustomResource

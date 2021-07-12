@@ -107,6 +107,7 @@ class Instruction(pulumi.CustomResource):
                  __props__=None):
         """
         Creates an instruction for how data should be labeled.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -123,6 +124,7 @@ class Instruction(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates an instruction for how data should be labeled.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param InstructionArgs args: The arguments to use to populate this resource's properties.

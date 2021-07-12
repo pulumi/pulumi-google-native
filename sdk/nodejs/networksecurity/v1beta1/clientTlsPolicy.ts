@@ -85,9 +85,6 @@ export class ClientTlsPolicy extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -140,7 +137,7 @@ export interface ClientTlsPolicyArgs {
     /**
      * Name of the ClientTlsPolicy resource. It matches the pattern `projects/*&#47;locations/{location}/clientTlsPolicies/{client_tls_policy}`
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
      * Optional. Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.

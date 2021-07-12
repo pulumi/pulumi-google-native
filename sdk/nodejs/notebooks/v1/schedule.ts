@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new Scheduled Notebook in a given project and location.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Schedule extends pulumi.CustomResource {
     /**

@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
 {
     /// <summary>
     /// Creates an SSL certificate and returns it along with the private key and server certificate authority. The new certificate will not be usable until the instance is restarted.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:sqladmin/v1beta4:SslCert")]
     public partial class SslCert : Pulumi.CustomResource

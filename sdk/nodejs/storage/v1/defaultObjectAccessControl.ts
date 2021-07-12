@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new default object ACL entry on the specified bucket.
+ * Auto-naming is currently not supported for this resource.
  */
 export class DefaultObjectAccessControl extends pulumi.CustomResource {
     /**

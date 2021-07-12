@@ -12,6 +12,7 @@ import (
 )
 
 // Creates an InspectTemplate for re-using frequently used configuration for inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+// Auto-naming is currently not supported for this resource.
 type InspectTemplate struct {
 	pulumi.CustomResourceState
 

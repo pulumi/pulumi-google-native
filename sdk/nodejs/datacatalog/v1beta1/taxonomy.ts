@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a taxonomy in the specified project.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Taxonomy extends pulumi.CustomResource {
     /**

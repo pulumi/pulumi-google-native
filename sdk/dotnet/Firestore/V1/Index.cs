@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Firestore.V1
 {
     /// <summary>
     /// Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:firestore/v1:Index")]
     public partial class Index : Pulumi.CustomResource

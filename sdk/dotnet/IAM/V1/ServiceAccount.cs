@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.IAM.V1
 {
     /// <summary>
     /// Creates a ServiceAccount.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:iam/v1:ServiceAccount")]
     public partial class ServiceAccount : Pulumi.CustomResource

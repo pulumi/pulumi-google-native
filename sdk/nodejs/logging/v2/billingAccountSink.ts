@@ -97,9 +97,6 @@ export class BillingAccountSink extends pulumi.CustomResource {
             if ((!args || args.destination === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'destination'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             inputs["bigqueryOptions"] = args ? args.bigqueryOptions : undefined;
             inputs["billingAccountId"] = args ? args.billingAccountId : undefined;
             inputs["description"] = args ? args.description : undefined;
@@ -169,6 +166,6 @@ export interface BillingAccountSinkArgs {
     /**
      * The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     uniqueWriterIdentity?: pulumi.Input<string>;
 }

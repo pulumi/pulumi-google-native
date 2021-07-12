@@ -74,9 +74,6 @@ export class SessionEntityType extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -121,7 +118,7 @@ export interface SessionEntityTypeArgs {
     /**
      * The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     project: pulumi.Input<string>;
     sessionId: pulumi.Input<string>;
 }

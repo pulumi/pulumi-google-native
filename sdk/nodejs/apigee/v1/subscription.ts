@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a subscription to an API product.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Subscription extends pulumi.CustomResource {
     /**

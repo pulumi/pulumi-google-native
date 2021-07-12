@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new capacity commitment resource.
+// Auto-naming is currently not supported for this resource.
 type CapacityCommitment struct {
 	pulumi.CustomResourceState
 

@@ -158,6 +158,7 @@ class Certificate(pulumi.CustomResource):
                  __props__=None):
         """
         Create a new Certificate in a given Project, Location from a particular CertificateAuthority.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -174,6 +175,7 @@ class Certificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a new Certificate in a given Project, Location from a particular CertificateAuthority.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param CertificateArgs args: The arguments to use to populate this resource's properties.

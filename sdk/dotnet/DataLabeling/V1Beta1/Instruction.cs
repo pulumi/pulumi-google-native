@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
 {
     /// <summary>
     /// Creates an instruction for how data should be labeled.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datalabeling/v1beta1:Instruction")]
     public partial class Instruction : Pulumi.CustomResource

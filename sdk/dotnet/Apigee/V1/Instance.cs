@@ -153,8 +153,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// <summary>
         /// Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;

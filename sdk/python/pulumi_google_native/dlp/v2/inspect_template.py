@@ -121,6 +121,7 @@ class InspectTemplate(pulumi.CustomResource):
                  __props__=None):
         """
         Creates an InspectTemplate for re-using frequently used configuration for inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -137,6 +138,7 @@ class InspectTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates an InspectTemplate for re-using frequently used configuration for inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param InspectTemplateArgs args: The arguments to use to populate this resource's properties.

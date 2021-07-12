@@ -12,6 +12,7 @@ import (
 )
 
 // Creates new workflow template.
+// Auto-naming is currently not supported for this resource.
 type WorkflowTemplate struct {
 	pulumi.CustomResourceState
 

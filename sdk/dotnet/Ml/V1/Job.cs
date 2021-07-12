@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Ml.V1
 {
     /// <summary>
     /// Creates a training or a batch prediction job.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:ml/v1:Job")]
     public partial class Job : Pulumi.CustomResource

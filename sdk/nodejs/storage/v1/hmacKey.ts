@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new HMAC key for the specified service account.
+ * Auto-naming is currently not supported for this resource.
  */
 export class HmacKey extends pulumi.CustomResource {
     /**

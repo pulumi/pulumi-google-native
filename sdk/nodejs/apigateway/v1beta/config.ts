@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new ApiConfig in a given project and location.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Config extends pulumi.CustomResource {
     /**

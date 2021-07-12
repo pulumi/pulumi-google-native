@@ -166,6 +166,7 @@ class WorkflowTemplate(pulumi.CustomResource):
                  __props__=None):
         """
         Creates new workflow template.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -184,6 +185,7 @@ class WorkflowTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates new workflow template.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param WorkflowTemplateArgs args: The arguments to use to populate this resource's properties.

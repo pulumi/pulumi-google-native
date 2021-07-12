@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
 {
     /// <summary>
     /// Creates a `Membership`.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudidentity/v1:Membership")]
     public partial class Membership : Pulumi.CustomResource

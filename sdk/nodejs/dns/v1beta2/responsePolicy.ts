@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new Response Policy
+ * Auto-naming is currently not supported for this resource.
  */
 export class ResponsePolicy extends pulumi.CustomResource {
     /**

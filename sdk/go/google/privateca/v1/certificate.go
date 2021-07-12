@@ -12,6 +12,7 @@ import (
 )
 
 // Create a new Certificate in a given Project, Location from a particular CaPool.
+// Auto-naming is currently not supported for this resource.
 type Certificate struct {
 	pulumi.CustomResourceState
 

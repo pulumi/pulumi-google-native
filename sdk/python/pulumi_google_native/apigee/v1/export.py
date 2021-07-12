@@ -17,29 +17,30 @@ class ExportArgs:
                  datastore_name: pulumi.Input[str],
                  date_range: pulumi.Input['GoogleCloudApigeeV1DateRangeArgs'],
                  environment_id: pulumi.Input[str],
-                 name: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  csv_delimiter: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  output_format: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Export resource.
         :param pulumi.Input[str] datastore_name: Name of the preconfigured datastore.
         :param pulumi.Input['GoogleCloudApigeeV1DateRangeArgs'] date_range: Date range of the data to export.
-        :param pulumi.Input[str] name: Display name of the export job.
         :param pulumi.Input[str] csv_delimiter: Optional. Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to the `,` (comma) character. Supported delimiter characters include comma (`,`), pipe (`|`), and tab (`\t`).
         :param pulumi.Input[str] description: Optional. Description of the export job.
+        :param pulumi.Input[str] name: Display name of the export job.
         :param pulumi.Input[str] output_format: Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.
         """
         pulumi.set(__self__, "datastore_name", datastore_name)
         pulumi.set(__self__, "date_range", date_range)
         pulumi.set(__self__, "environment_id", environment_id)
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "organization_id", organization_id)
         if csv_delimiter is not None:
             pulumi.set(__self__, "csv_delimiter", csv_delimiter)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if output_format is not None:
             pulumi.set(__self__, "output_format", output_format)
 
@@ -77,18 +78,6 @@ class ExportArgs:
         pulumi.set(self, "environment_id", value)
 
     @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        Display name of the export job.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
-
-    @property
     @pulumi.getter(name="organizationId")
     def organization_id(self) -> pulumi.Input[str]:
         return pulumi.get(self, "organization_id")
@@ -120,6 +109,18 @@ class ExportArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Display name of the export job.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="outputFormat")
@@ -215,8 +216,6 @@ class Export(pulumi.CustomResource):
             if environment_id is None and not opts.urn:
                 raise TypeError("Missing required property 'environment_id'")
             __props__.__dict__["environment_id"] = environment_id
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")

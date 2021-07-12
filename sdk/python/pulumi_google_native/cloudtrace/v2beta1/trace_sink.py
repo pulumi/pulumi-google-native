@@ -15,29 +15,18 @@ __all__ = ['TraceSinkArgs', 'TraceSink']
 @pulumi.input_type
 class TraceSinkArgs:
     def __init__(__self__, *,
-                 name: pulumi.Input[str],
                  output_config: pulumi.Input['OutputConfigArgs'],
-                 project: pulumi.Input[str]):
+                 project: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a TraceSink resource.
-        :param pulumi.Input[str] name: The canonical sink resource name, unique within the project. Must be of the form: project/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.
         :param pulumi.Input['OutputConfigArgs'] output_config: The export destination.
+        :param pulumi.Input[str] name: The canonical sink resource name, unique within the project. Must be of the form: project/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.
         """
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "output_config", output_config)
         pulumi.set(__self__, "project", project)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        The canonical sink resource name, unique within the project. Must be of the form: project/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="outputConfig")
@@ -59,6 +48,18 @@ class TraceSinkArgs:
     @project.setter
     def project(self, value: pulumi.Input[str]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The canonical sink resource name, unique within the project. Must be of the form: project/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class TraceSink(pulumi.CustomResource):
@@ -117,8 +118,6 @@ class TraceSink(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = TraceSinkArgs.__new__(TraceSinkArgs)
 
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if output_config is None and not opts.urn:
                 raise TypeError("Missing required property 'output_config'")

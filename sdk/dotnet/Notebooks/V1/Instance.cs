@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
 {
     /// <summary>
     /// Creates a new Instance in a given project and location.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:notebooks/v1:Instance")]
     public partial class Instance : Pulumi.CustomResource

@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Testing.V1
 {
     /// <summary>
     /// Creates and runs a matrix of tests according to the given specifications. Unsupported environments will be returned in the state UNSUPPORTED. A test matrix is limited to use at most 2000 devices in parallel. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed or if the matrix tries to use too many simultaneous devices.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:testing/v1:TestMatrix")]
     public partial class TestMatrix : Pulumi.CustomResource

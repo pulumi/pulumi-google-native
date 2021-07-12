@@ -64,9 +64,6 @@ func NewInstance(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.NodeConfig == nil {
 		return nil, errors.New("invalid value for required argument 'NodeConfig'")
 	}
@@ -189,7 +186,7 @@ type instanceArgs struct {
 	// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
 	MemcacheVersion *string `pulumi:"memcacheVersion"`
 	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// Configuration for Memcached nodes.
 	NodeConfig NodeConfig `pulumi:"nodeConfig"`
 	// Number of nodes in the Memcached instance.
@@ -216,7 +213,7 @@ type InstanceArgs struct {
 	// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
 	MemcacheVersion *InstanceMemcacheVersion
 	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
-	Name pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// Configuration for Memcached nodes.
 	NodeConfig NodeConfigInput
 	// Number of nodes in the Memcached instance.

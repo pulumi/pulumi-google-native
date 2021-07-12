@@ -87,8 +87,8 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         /// <summary>
         /// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

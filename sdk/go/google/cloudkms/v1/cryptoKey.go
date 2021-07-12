@@ -12,6 +12,7 @@ import (
 )
 
 // Create a new CryptoKey within a KeyRing. CryptoKey.purpose and CryptoKey.version_template.algorithm are required.
+// Auto-naming is currently not supported for this resource.
 type CryptoKey struct {
 	pulumi.CustomResourceState
 

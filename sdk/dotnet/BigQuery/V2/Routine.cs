@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 {
     /// <summary>
     /// Creates a new routine in the dataset.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:bigquery/v2:Routine")]
     public partial class Routine : Pulumi.CustomResource

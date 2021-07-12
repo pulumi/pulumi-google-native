@@ -12,6 +12,7 @@ import (
 )
 
 // Creates an Identity Aware Proxy (IAP) OAuth client. The client is owned by IAP. Requires that the brand for the project exists and that it is set for internal-only use.
+// Auto-naming is currently not supported for this resource.
 type IdentityAwareProxyClient struct {
 	pulumi.CustomResourceState
 

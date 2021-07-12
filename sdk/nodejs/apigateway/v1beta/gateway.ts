@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new Gateway in a given project and location.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Gateway extends pulumi.CustomResource {
     /**

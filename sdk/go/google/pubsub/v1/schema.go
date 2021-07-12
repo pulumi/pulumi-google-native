@@ -30,9 +30,6 @@ func NewSchema(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -83,7 +80,7 @@ type schemaArgs struct {
 	// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
 	Definition *string `pulumi:"definition"`
 	// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
-	Name     string  `pulumi:"name"`
+	Name     *string `pulumi:"name"`
 	Project  string  `pulumi:"project"`
 	SchemaId *string `pulumi:"schemaId"`
 	// The type of the schema definition.
@@ -95,7 +92,7 @@ type SchemaArgs struct {
 	// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
 	Definition pulumi.StringPtrInput
 	// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
-	Name     pulumi.StringInput
+	Name     pulumi.StringPtrInput
 	Project  pulumi.StringInput
 	SchemaId pulumi.StringPtrInput
 	// The type of the schema definition.

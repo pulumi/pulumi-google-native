@@ -12,6 +12,7 @@ import (
 )
 
 // Creates an evaluation job.
+// Auto-naming is currently not supported for this resource.
 type EvaluationJob struct {
 	pulumi.CustomResourceState
 

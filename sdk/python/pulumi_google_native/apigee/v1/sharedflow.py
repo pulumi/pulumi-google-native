@@ -15,11 +15,11 @@ __all__ = ['SharedflowArgs', 'Sharedflow']
 class SharedflowArgs:
     def __init__(__self__, *,
                  action: pulumi.Input[str],
-                 name: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
-                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None):
+                 extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Sharedflow resource.
         :param pulumi.Input[str] content_type: The HTTP Content-Type header value specifying the content type of the body.
@@ -27,7 +27,6 @@ class SharedflowArgs:
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
         """
         pulumi.set(__self__, "action", action)
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "organization_id", organization_id)
         if content_type is not None:
             pulumi.set(__self__, "content_type", content_type)
@@ -35,6 +34,8 @@ class SharedflowArgs:
             pulumi.set(__self__, "data", data)
         if extensions is not None:
             pulumi.set(__self__, "extensions", extensions)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
@@ -44,15 +45,6 @@ class SharedflowArgs:
     @action.setter
     def action(self, value: pulumi.Input[str]):
         pulumi.set(self, "action", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -98,6 +90,15 @@ class SharedflowArgs:
     @extensions.setter
     def extensions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]]):
         pulumi.set(self, "extensions", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class Sharedflow(pulumi.CustomResource):
@@ -169,8 +170,6 @@ class Sharedflow(pulumi.CustomResource):
             __props__.__dict__["content_type"] = content_type
             __props__.__dict__["data"] = data
             __props__.__dict__["extensions"] = extensions
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")

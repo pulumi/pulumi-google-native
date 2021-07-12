@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates an evaluation job.
+ * Auto-naming is currently not supported for this resource.
  */
 export class EvaluationJob extends pulumi.CustomResource {
     /**

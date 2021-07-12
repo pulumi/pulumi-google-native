@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
 {
     /// <summary>
     /// Creates a new ApiConfig in a given project and location.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigateway/v1beta:Config")]
     public partial class Config : Pulumi.CustomResource

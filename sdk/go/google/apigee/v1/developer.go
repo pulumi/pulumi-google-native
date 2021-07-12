@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a developer. Once created, the developer can register an app and obtain an API key. At creation time, a developer is set as `active`. To change the developer status, use the SetDeveloperStatus API.
+// Auto-naming is currently not supported for this resource.
 type Developer struct {
 	pulumi.CustomResourceState
 

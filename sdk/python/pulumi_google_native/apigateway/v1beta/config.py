@@ -195,6 +195,7 @@ class Config(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new ApiConfig in a given project and location.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -214,6 +215,7 @@ class Config(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new ApiConfig in a given project and location.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param ConfigArgs args: The arguments to use to populate this resource's properties.

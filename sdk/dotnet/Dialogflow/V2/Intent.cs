@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
 {
     /// <summary>
     /// Creates an intent in the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v2:Intent")]
     public partial class Intent : Pulumi.CustomResource

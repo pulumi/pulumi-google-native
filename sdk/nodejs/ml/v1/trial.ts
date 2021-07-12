@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Adds a user provided trial to a study.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Trial extends pulumi.CustomResource {
     /**

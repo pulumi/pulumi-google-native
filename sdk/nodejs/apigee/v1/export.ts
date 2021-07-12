@@ -92,9 +92,6 @@ export class Export extends pulumi.CustomResource {
             if ((!args || args.environmentId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'environmentId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
@@ -154,7 +151,7 @@ export interface ExportArgs {
     /**
      * Display name of the export job.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
     /**
      * Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.

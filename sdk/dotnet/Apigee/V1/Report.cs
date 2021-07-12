@@ -261,8 +261,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// <summary>
         /// Unique identifier for the report T his is a legacy field used to encode custom report unique id
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         /// <summary>
         /// Legacy field: not used. This field contains the offset for the data

@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a Microsoft AD domain.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Domain extends pulumi.CustomResource {
     /**

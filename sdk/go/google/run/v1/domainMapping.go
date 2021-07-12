@@ -12,6 +12,7 @@ import (
 )
 
 // Create a new domain mapping.
+// Auto-naming is currently not supported for this resource.
 type DomainMapping struct {
 	pulumi.CustomResourceState
 

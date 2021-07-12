@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
 {
     /// <summary>
     /// Creates a taxonomy in the specified project.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datacatalog/v1beta1:Taxonomy")]
     public partial class Taxonomy : Pulumi.CustomResource

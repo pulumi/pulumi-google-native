@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Beta1
 {
     /// <summary>
     /// Creates a `WorkerPool` to run the builds, and returns the new worker pool. NOTE: As of now, this method returns an `Operation` that is always complete.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudbuild/v1beta1:WorkerPool")]
     public partial class WorkerPool : Pulumi.CustomResource

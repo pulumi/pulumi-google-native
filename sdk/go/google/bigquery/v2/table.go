@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new, empty table in the dataset.
+// Auto-naming is currently not supported for this resource.
 type Table struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new FHIR store within the parent dataset.
+// Auto-naming is currently not supported for this resource.
 type FhirStore struct {
 	pulumi.CustomResourceState
 

@@ -71,9 +71,6 @@ func NewReport(ctx *pulumi.Context,
 	if args.Metrics == nil {
 		return nil, errors.New("invalid value for required argument 'Metrics'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -214,7 +211,7 @@ type reportArgs struct {
 	// This contains the list of metrics
 	Metrics []GoogleCloudApigeeV1CustomReportMetric `pulumi:"metrics"`
 	// Unique identifier for the report T his is a legacy field used to encode custom report unique id
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// Legacy field: not used. This field contains the offset for the data
 	Offset         *string `pulumi:"offset"`
 	OrganizationId string  `pulumi:"organizationId"`
@@ -253,7 +250,7 @@ type ReportArgs struct {
 	// This contains the list of metrics
 	Metrics GoogleCloudApigeeV1CustomReportMetricArrayInput
 	// Unique identifier for the report T his is a legacy field used to encode custom report unique id
-	Name pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// Legacy field: not used. This field contains the offset for the data
 	Offset         pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput

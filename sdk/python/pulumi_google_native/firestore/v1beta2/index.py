@@ -99,6 +99,7 @@ class Index(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -113,6 +114,7 @@ class Index(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param IndexArgs args: The arguments to use to populate this resource's properties.

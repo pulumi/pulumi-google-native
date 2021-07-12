@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
 {
     /// <summary>
     /// Creates a context. If the specified context already exists, overrides the context.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v2beta1:Context")]
     public partial class Context : Pulumi.CustomResource

@@ -74,6 +74,7 @@ class OrganizationPolicy(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Cloud resource.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -88,6 +89,7 @@ class OrganizationPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a Policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND` if the constraint does not exist. Returns a `google.rpc.Status` with `google.rpc.Code.ALREADY_EXISTS` if the policy already exists on the given Cloud resource.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param OrganizationPolicyArgs args: The arguments to use to populate this resource's properties.

@@ -12,6 +12,7 @@ import (
 )
 
 // Creates an Apigee organization. See [Create an Apigee organization](https://cloud.google.com/apigee/docs/api-platform/get-started/create-org).
+// Auto-naming is currently not supported for this resource.
 type Organization struct {
 	pulumi.CustomResourceState
 

@@ -285,6 +285,7 @@ class Build(pulumi.CustomResource):
                  __props__=None):
         """
         Starts a build with the specified configuration. This method returns a long-running `Operation`, which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`).
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -310,6 +311,7 @@ class Build(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Starts a build with the specified configuration. This method returns a long-running `Operation`, which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`).
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param BuildArgs args: The arguments to use to populate this resource's properties.

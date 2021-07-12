@@ -144,8 +144,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// <summary>
         /// Display name of the export job.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;

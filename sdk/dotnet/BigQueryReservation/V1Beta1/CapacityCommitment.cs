@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
 {
     /// <summary>
     /// Creates a new capacity commitment resource.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:bigqueryreservation/v1beta1:CapacityCommitment")]
     public partial class CapacityCommitment : Pulumi.CustomResource

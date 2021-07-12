@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new WorkloadIdentityPoolProvider in a WorkloadIdentityPool. You cannot reuse the name of a deleted provider until 30 days after deletion.
+// Auto-naming is currently not supported for this resource.
 type Provider struct {
 	pulumi.CustomResourceState
 

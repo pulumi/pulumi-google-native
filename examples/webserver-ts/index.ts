@@ -2,14 +2,6 @@
 
 import * as pulumi from "@pulumi/pulumi";
 import * as google from "@pulumi/google-native";
-import * as random from "@pulumi/random"
-
-const randomString = new random.RandomString("name", {
-    upper: false,
-    number: false,
-    special: false,
-    length: 8,
-});
 
 const config = new pulumi.Config("google-native");
 const project = config.require("project");
@@ -18,12 +10,10 @@ const zone = config.require("zone");
 const computeNetwork = new google.compute.v1.Network("network", {
     autoCreateSubnetworks: true,
     project: project,
-    name: pulumi.interpolate`${randomString.result}-net`,
 });
 
 const computeFirewall = new google.compute.v1.Firewall("firewall", {
     network: computeNetwork.selfLink,
-    name: pulumi.interpolate`${randomString.result}-fw`,
     project: project,
     allowed: [{
         ipProtocol: "tcp",
@@ -37,7 +27,6 @@ echo "Hello, World!" > index.html
 nohup python -m SimpleHTTPServer 80 &`;
 
 const computeInstance = new google.compute.v1.Instance("instance", {
-    name: pulumi.interpolate`${randomString.result}-instance`,
     project: project,
     zone: zone,
     machineType: `projects/${project}/zones/${zone}/machineTypes/f1-micro`,

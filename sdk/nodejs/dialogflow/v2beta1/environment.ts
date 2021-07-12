@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates an agent environment.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Environment extends pulumi.CustomResource {
     /**

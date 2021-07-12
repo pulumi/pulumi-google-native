@@ -2,22 +2,13 @@
 
 import * as pulumi from "@pulumi/pulumi";
 import * as google from "@pulumi/google-native";
-import * as random from "@pulumi/random"
 
 const config = new pulumi.Config("google-native");
 const project = config.require("project");
 const region = config.require("region");
 
-const randomString = new random.RandomString("name", {
-    upper: false,
-    number: false,
-    special: false,
-    length: 8,
-});
-
 const bucket = new google.storage.v1.Bucket("bucket", {
     project,
-    name: pulumi.interpolate`bucket-${randomString.result}`,
 });
 
 const bucketObject = new google.storage.v1.BucketObject("bucketObject", {
@@ -28,11 +19,9 @@ const bucketObject = new google.storage.v1.BucketObject("bucketObject", {
     }),
 });
 
-const functionName = pulumi.interpolate`func-${randomString.result}`;
 const func = new google.cloudfunctions.v1.Function("function-py", {
     project,
     location: region,
-    name: pulumi.interpolate`projects/${project}/locations/${region}/functions/${functionName}`,
     sourceArchiveUrl: pulumi.interpolate`gs://${bucket.name}/${bucketObject.name}`,
     httpsTrigger: {
         securityLevel: google.cloudfunctions.v1.HttpsTriggerSecurityLevel.SecureAlways,
@@ -47,7 +36,7 @@ const func = new google.cloudfunctions.v1.Function("function-py", {
 const invoker = new google.cloudfunctions.v1.FunctionIamPolicy("function-py-iam", {
     project,
     location: region,
-    functionId: functionName, // func.name returns the long `projects/foo/locations/bat/functions/buzz` name which doesn't suit here
+    functionId: func.name.apply(name => name.split("/")[name.split("/").length-1]),
     bindings: [
         {
             members: ["allUsers"],

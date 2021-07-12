@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new default object ACL entry on the specified bucket.
+// Auto-naming is currently not supported for this resource.
 type DefaultObjectAccessControl struct {
 	pulumi.CustomResourceState
 

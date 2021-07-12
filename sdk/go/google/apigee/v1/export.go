@@ -51,9 +51,6 @@ func NewExport(ctx *pulumi.Context,
 	if args.EnvironmentId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -135,8 +132,8 @@ type exportArgs struct {
 	Description   *string `pulumi:"description"`
 	EnvironmentId string  `pulumi:"environmentId"`
 	// Display name of the export job.
-	Name           string `pulumi:"name"`
-	OrganizationId string `pulumi:"organizationId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
 	// Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.
 	OutputFormat *string `pulumi:"outputFormat"`
 }
@@ -153,7 +150,7 @@ type ExportArgs struct {
 	Description   pulumi.StringPtrInput
 	EnvironmentId pulumi.StringInput
 	// Display name of the export job.
-	Name           pulumi.StringInput
+	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
 	// Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.
 	OutputFormat pulumi.StringPtrInput

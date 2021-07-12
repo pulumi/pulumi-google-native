@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new execution using the latest revision of the given workflow.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Execution extends pulumi.CustomResource {
     /**

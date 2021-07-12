@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a catalog item.
+// Auto-naming is currently not supported for this resource.
 type CatalogItem struct {
 	pulumi.CustomResourceState
 

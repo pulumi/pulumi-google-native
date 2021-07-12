@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new empty dataset.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Dataset extends pulumi.CustomResource {
     /**

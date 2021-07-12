@@ -17,25 +17,26 @@ class GlossaryArgs:
     def __init__(__self__, *,
                  input_config: pulumi.Input['GlossaryInputConfigArgs'],
                  location: pulumi.Input[str],
-                 name: pulumi.Input[str],
                  project: pulumi.Input[str],
                  language_codes_set: Optional[pulumi.Input['LanguageCodesSetArgs']] = None,
-                 language_pair: Optional[pulumi.Input['LanguageCodePairArgs']] = None):
+                 language_pair: Optional[pulumi.Input['LanguageCodePairArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Glossary resource.
         :param pulumi.Input['GlossaryInputConfigArgs'] input_config: Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
-        :param pulumi.Input[str] name: The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
         :param pulumi.Input['LanguageCodesSetArgs'] language_codes_set: Used with equivalent term set glossaries.
         :param pulumi.Input['LanguageCodePairArgs'] language_pair: Used with unidirectional glossaries.
+        :param pulumi.Input[str] name: The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
         """
         pulumi.set(__self__, "input_config", input_config)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "project", project)
         if language_codes_set is not None:
             pulumi.set(__self__, "language_codes_set", language_codes_set)
         if language_pair is not None:
             pulumi.set(__self__, "language_pair", language_pair)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="inputConfig")
@@ -57,18 +58,6 @@ class GlossaryArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -102,6 +91,18 @@ class GlossaryArgs:
     @language_pair.setter
     def language_pair(self, value: Optional[pulumi.Input['LanguageCodePairArgs']]):
         pulumi.set(self, "language_pair", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class Glossary(pulumi.CustomResource):
@@ -176,8 +177,6 @@ class Glossary(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")

@@ -15,38 +15,27 @@ __all__ = ['EnvironmentArgs', 'Environment']
 @pulumi.input_type
 class EnvironmentArgs:
     def __init__(__self__, *,
-                 name: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input['GoogleCloudApigeeV1PropertiesArgs']] = None):
         """
         The set of arguments for constructing a Environment resource.
-        :param pulumi.Input[str] name: Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
         :param pulumi.Input[str] description: Optional. Description of the environment.
         :param pulumi.Input[str] display_name: Optional. Display name for this environment.
+        :param pulumi.Input[str] name: Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
         :param pulumi.Input['GoogleCloudApigeeV1PropertiesArgs'] properties: Optional. Key-value pairs that may be used for customizing the environment.
         """
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "organization_id", organization_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -80,6 +69,18 @@ class EnvironmentArgs:
     @display_name.setter
     def display_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -158,8 +159,6 @@ class Environment(pulumi.CustomResource):
 
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")

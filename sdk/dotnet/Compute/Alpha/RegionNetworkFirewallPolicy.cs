@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
     /// Creates a new network firewall policy in the specified project and region.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:RegionNetworkFirewallPolicy")]
     public partial class RegionNetworkFirewallPolicy : Pulumi.CustomResource

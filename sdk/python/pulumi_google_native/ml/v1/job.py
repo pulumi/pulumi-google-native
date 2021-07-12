@@ -159,6 +159,7 @@ class Job(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a training or a batch prediction job.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -178,6 +179,7 @@ class Job(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a training or a batch prediction job.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param JobArgs args: The arguments to use to populate this resource's properties.

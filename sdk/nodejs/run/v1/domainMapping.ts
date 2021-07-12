@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Create a new domain mapping.
+ * Auto-naming is currently not supported for this resource.
  */
 export class DomainMapping extends pulumi.CustomResource {
     /**

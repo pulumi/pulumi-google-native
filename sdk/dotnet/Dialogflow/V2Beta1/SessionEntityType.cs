@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
 {
     /// <summary>
     /// Creates a session entity type. If the specified session entity type already exists, overrides the session entity type. This method doesn't work with Google Assistant integration. Contact Dialogflow support if you need to use session entities with Google Assistant integration.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v2beta1:SessionEntityType")]
     public partial class SessionEntityType : Pulumi.CustomResource

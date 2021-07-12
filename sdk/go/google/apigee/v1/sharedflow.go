@@ -35,9 +35,6 @@ func NewSharedflow(ctx *pulumi.Context,
 	if args.Action == nil {
 		return nil, errors.New("invalid value for required argument 'Action'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -96,7 +93,7 @@ type sharedflowArgs struct {
 	Data *string `pulumi:"data"`
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
 	Extensions     []map[string]string `pulumi:"extensions"`
-	Name           string              `pulumi:"name"`
+	Name           *string             `pulumi:"name"`
 	OrganizationId string              `pulumi:"organizationId"`
 }
 
@@ -109,7 +106,7 @@ type SharedflowArgs struct {
 	Data pulumi.StringPtrInput
 	// Application specific response metadata. Must be set in the first response for streaming APIs.
 	Extensions     pulumi.StringMapArrayInput
-	Name           pulumi.StringInput
+	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
 }
 

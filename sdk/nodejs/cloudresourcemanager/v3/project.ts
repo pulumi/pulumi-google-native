@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Request that a new project be created. The result is an `Operation` which can be used to track the creation process. This process usually takes a few seconds, but can sometimes take much longer. The tracking `Operation` is automatically deleted after a few hours, so there is no need to call `DeleteOperation`.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Project extends pulumi.CustomResource {
     /**

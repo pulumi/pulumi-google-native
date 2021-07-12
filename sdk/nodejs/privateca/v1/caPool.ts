@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Create a CaPool.
+ * Auto-naming is currently not supported for this resource.
  */
 export class CaPool extends pulumi.CustomResource {
     /**

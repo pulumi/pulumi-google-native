@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Ml.V1
 {
     /// <summary>
     /// Adds a user provided trial to a study.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:ml/v1:Trial")]
     public partial class Trial : Pulumi.CustomResource

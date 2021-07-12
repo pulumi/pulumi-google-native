@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a `Group`.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Group extends pulumi.CustomResource {
     /**

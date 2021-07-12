@@ -12,6 +12,7 @@ import (
 )
 
 // Creates an agent version. The new version points to the agent instance in the "default" environment.
+// Auto-naming is currently not supported for this resource.
 type Version struct {
 	pulumi.CustomResourceState
 

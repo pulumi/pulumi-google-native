@@ -35,9 +35,6 @@ func NewReference(ctx *pulumi.Context,
 	if args.EnvironmentId == nil {
 		return nil, errors.New("invalid value for required argument 'EnvironmentId'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -96,8 +93,8 @@ type referenceArgs struct {
 	Description   *string `pulumi:"description"`
 	EnvironmentId string  `pulumi:"environmentId"`
 	// The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
-	Name           string `pulumi:"name"`
-	OrganizationId string `pulumi:"organizationId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
 	// The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
 	Refers string `pulumi:"refers"`
 	// The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
@@ -110,7 +107,7 @@ type ReferenceArgs struct {
 	Description   pulumi.StringPtrInput
 	EnvironmentId pulumi.StringInput
 	// The resource id of this reference. Values must match the regular expression [\w\s\-.]+.
-	Name           pulumi.StringInput
+	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
 	// The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
 	Refers pulumi.StringInput

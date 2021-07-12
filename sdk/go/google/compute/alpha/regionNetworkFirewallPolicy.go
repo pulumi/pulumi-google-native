@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new network firewall policy in the specified project and region.
+// Auto-naming is currently not supported for this resource.
 type RegionNetworkFirewallPolicy struct {
 	pulumi.CustomResourceState
 

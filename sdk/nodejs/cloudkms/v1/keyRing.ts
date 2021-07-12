@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Create a new KeyRing in a given Project and Location.
+ * Auto-naming is currently not supported for this resource.
  */
 export class KeyRing extends pulumi.CustomResource {
     /**

@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
 {
     /// <summary>
     /// Creates a new Response Policy Rule.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dns/v1beta2:ResponsePolicyRule")]
     public partial class ResponsePolicyRule : Pulumi.CustomResource

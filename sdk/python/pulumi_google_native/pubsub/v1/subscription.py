@@ -15,7 +15,6 @@ __all__ = ['SubscriptionArgs', 'Subscription']
 @pulumi.input_type
 class SubscriptionArgs:
     def __init__(__self__, *,
-                 name: pulumi.Input[str],
                  project: pulumi.Input[str],
                  subscription_id: pulumi.Input[str],
                  topic: pulumi.Input[str],
@@ -27,12 +26,12 @@ class SubscriptionArgs:
                  filter: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  message_retention_duration: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  push_config: Optional[pulumi.Input['PushConfigArgs']] = None,
                  retain_acked_messages: Optional[pulumi.Input[bool]] = None,
                  retry_policy: Optional[pulumi.Input['RetryPolicyArgs']] = None):
         """
         The set of arguments for constructing a Subscription resource.
-        :param pulumi.Input[str] name: The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
         :param pulumi.Input[str] topic: The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.
         :param pulumi.Input[int] ack_deadline_seconds: The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge receipt before resending the message. In the interval after the message is delivered and before it is acknowledged, it is considered to be *outstanding*. During that time period, the message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
         :param pulumi.Input['DeadLetterPolicyArgs'] dead_letter_policy: A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
@@ -42,11 +41,11 @@ class SubscriptionArgs:
         :param pulumi.Input[str] filter: An expression written in the Pub/Sub [filter language](https://cloud.google.com/pubsub/docs/filtering). If non-empty, then only `PubsubMessage`s whose `attributes` field matches the filter are delivered on this subscription. If empty, then no messages are filtered out.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: See Creating and managing labels.
         :param pulumi.Input[str] message_retention_duration: How long to retain unacknowledged messages in the subscription's backlog, from the moment a message is published. If `retain_acked_messages` is true, then this also configures the retention of acknowledged messages, and thus configures how far back in time a `Seek` can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10 minutes.
+        :param pulumi.Input[str] name: The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
         :param pulumi.Input['PushConfigArgs'] push_config: If push delivery is used with this subscription, this field is used to configure it. An empty `pushConfig` signifies that the subscriber will pull and ack messages using API methods.
         :param pulumi.Input[bool] retain_acked_messages: Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-acknowledged messages.
         :param pulumi.Input['RetryPolicyArgs'] retry_policy: A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
         """
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "subscription_id", subscription_id)
         pulumi.set(__self__, "topic", topic)
@@ -66,24 +65,14 @@ class SubscriptionArgs:
             pulumi.set(__self__, "labels", labels)
         if message_retention_duration is not None:
             pulumi.set(__self__, "message_retention_duration", message_retention_duration)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if push_config is not None:
             pulumi.set(__self__, "push_config", push_config)
         if retain_acked_messages is not None:
             pulumi.set(__self__, "retain_acked_messages", retain_acked_messages)
         if retry_policy is not None:
             pulumi.set(__self__, "retry_policy", retry_policy)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -210,6 +199,18 @@ class SubscriptionArgs:
     @message_retention_duration.setter
     def message_retention_duration(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "message_retention_duration", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="pushConfig")
@@ -347,8 +348,6 @@ class Subscription(pulumi.CustomResource):
             __props__.__dict__["filter"] = filter
             __props__.__dict__["labels"] = labels
             __props__.__dict__["message_retention_duration"] = message_retention_duration
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")

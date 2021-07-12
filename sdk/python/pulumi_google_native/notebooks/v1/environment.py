@@ -149,6 +149,7 @@ class Environment(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new Environment.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -166,6 +167,7 @@ class Environment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new Environment.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param EnvironmentArgs args: The arguments to use to populate this resource's properties.

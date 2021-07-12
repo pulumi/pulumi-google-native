@@ -16,9 +16,9 @@ class InstanceArgs:
                  config: pulumi.Input[str],
                  display_name: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
-                 name: pulumi.Input[str],
                  project: pulumi.Input[str],
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  node_count: Optional[pulumi.Input[int]] = None,
                  processing_units: Optional[pulumi.Input[int]] = None):
         """
@@ -26,18 +26,19 @@ class InstanceArgs:
         :param pulumi.Input[str] config: The name of the instance's configuration. Values are of the form `projects//instanceConfigs/`. See also InstanceConfig and ListInstanceConfigs.
         :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Must be unique per project and between 4 and 30 characters in length.
         :param pulumi.Input[str] instance_id: The ID of the instance to create. Valid identifiers are of the form `a-z*[a-z0-9]` and must be between 2 and 64 characters in length.
-        :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after the instance is created. Values are of the form `projects//instances/a-z*[a-z0-9]`. The final segment of the name must be between 2 and 64 characters in length.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Cloud Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. Cloud Labels can be used to filter collections of resources. They can be used to control how resource metrics are aggregated. And they can be used as arguments to policy management rules (e.g. route, firewall, load balancing, etc.). * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given resource. See https://goo.gl/xmQnxf for more information on and examples of labels. If you plan to use labels in your own code, please note that additional characters may be allowed in the future. And so you are advised to use an internal label representation, such as JSON, which doesn't rely upon specific characters being disallowed. For example, representing labels as the string: name + "_" + value would prove problematic if we were to allow "_" in a future release.
+        :param pulumi.Input[str] name: A unique identifier for the instance, which cannot be changed after the instance is created. Values are of the form `projects//instances/a-z*[a-z0-9]`. The final segment of the name must be between 2 and 64 characters in length.
         :param pulumi.Input[int] node_count: The number of nodes allocated to this instance. This may be zero in API responses for instances that are not yet in state `READY`. See [the documentation](https://cloud.google.com/spanner/docs/instances#node_count) for more information about nodes.
         :param pulumi.Input[int] processing_units: The number of processing units allocated to this instance. At most one of processing_units or node_count should be present in the message. This may be zero in API responses for instances that are not yet in state `READY`.
         """
         pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "instance_id", instance_id)
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "project", project)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if node_count is not None:
             pulumi.set(__self__, "node_count", node_count)
         if processing_units is not None:
@@ -81,18 +82,6 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        A unique identifier for the instance, which cannot be changed after the instance is created. Values are of the form `projects//instances/a-z*[a-z0-9]`. The final segment of the name must be between 2 and 64 characters in length.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         return pulumi.get(self, "project")
 
@@ -111,6 +100,18 @@ class InstanceArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        A unique identifier for the instance, which cannot be changed after the instance is created. Values are of the form `projects//instances/a-z*[a-z0-9]`. The final segment of the name must be between 2 and 64 characters in length.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="nodeCount")
@@ -218,8 +219,6 @@ class Instance(pulumi.CustomResource):
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
             __props__.__dict__["labels"] = labels
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["node_count"] = node_count
             __props__.__dict__["processing_units"] = processing_units

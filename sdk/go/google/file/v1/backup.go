@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a backup.
+// Auto-naming is currently not supported for this resource.
 type Backup struct {
 	pulumi.CustomResourceState
 
