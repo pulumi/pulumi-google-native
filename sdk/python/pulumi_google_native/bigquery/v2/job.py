@@ -17,7 +17,8 @@ class JobArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  configuration: Optional[pulumi.Input['JobConfigurationArgs']] = None,
-                 job_reference: Optional[pulumi.Input['JobReferenceArgs']] = None):
+                 job_reference: Optional[pulumi.Input['JobReferenceArgs']] = None,
+                 source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None):
         """
         The set of arguments for constructing a Job resource.
         :param pulumi.Input['JobConfigurationArgs'] configuration: [Required] Describes the job configuration.
@@ -28,6 +29,8 @@ class JobArgs:
             pulumi.set(__self__, "configuration", configuration)
         if job_reference is not None:
             pulumi.set(__self__, "job_reference", job_reference)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
 
     @property
     @pulumi.getter
@@ -62,6 +65,15 @@ class JobArgs:
     def job_reference(self, value: Optional[pulumi.Input['JobReferenceArgs']]):
         pulumi.set(self, "job_reference", value)
 
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]]:
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]]):
+        pulumi.set(self, "source", value)
+
 
 class Job(pulumi.CustomResource):
     @overload
@@ -71,6 +83,7 @@ class Job(pulumi.CustomResource):
                  configuration: Optional[pulumi.Input[pulumi.InputType['JobConfigurationArgs']]] = None,
                  job_reference: Optional[pulumi.Input[pulumi.InputType['JobReferenceArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  __props__=None):
         """
         Starts a new asynchronous job. Requires the Can View project role.
@@ -109,6 +122,7 @@ class Job(pulumi.CustomResource):
                  configuration: Optional[pulumi.Input[pulumi.InputType['JobConfigurationArgs']]] = None,
                  job_reference: Optional[pulumi.Input[pulumi.InputType['JobReferenceArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 source: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  __props__=None):
         if opts is None:
             opts = pulumi.ResourceOptions()
@@ -126,6 +140,7 @@ class Job(pulumi.CustomResource):
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")
             __props__.__dict__["project"] = project
+            __props__.__dict__["source"] = source
             __props__.__dict__["etag"] = None
             __props__.__dict__["kind"] = None
             __props__.__dict__["self_link"] = None
