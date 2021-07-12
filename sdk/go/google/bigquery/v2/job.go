@@ -111,8 +111,9 @@ type jobArgs struct {
 	// [Required] Describes the job configuration.
 	Configuration *JobConfiguration `pulumi:"configuration"`
 	// [Optional] Reference describing the unique-per-user name of the job.
-	JobReference *JobReference `pulumi:"jobReference"`
-	Project      string        `pulumi:"project"`
+	JobReference *JobReference         `pulumi:"jobReference"`
+	Project      string                `pulumi:"project"`
+	Source       pulumi.AssetOrArchive `pulumi:"source"`
 }
 
 // The set of arguments for constructing a Job resource.
@@ -122,6 +123,7 @@ type JobArgs struct {
 	// [Optional] Reference describing the unique-per-user name of the job.
 	JobReference JobReferencePtrInput
 	Project      pulumi.StringInput
+	Source       pulumi.AssetOrArchiveInput
 }
 
 func (JobArgs) ElementType() reflect.Type {

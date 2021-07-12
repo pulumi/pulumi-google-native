@@ -24,6 +24,8 @@ __all__ = [
     'BucketLifecycleRuleItemConditionResponse',
     'BucketLifecycleRuleItemResponse',
     'BucketLoggingResponse',
+    'BucketObjectCustomerEncryptionResponse',
+    'BucketObjectOwnerResponse',
     'BucketOwnerResponse',
     'BucketRetentionPolicyResponse',
     'BucketVersioningResponse',
@@ -32,9 +34,7 @@ __all__ = [
     'ExprResponse',
     'ObjectAccessControlProjectTeamResponse',
     'ObjectAccessControlResponse',
-    'ObjectCustomerEncryptionResponse',
     'ObjectIamPolicyBindingsItemResponse',
-    'ObjectOwnerResponse',
 ]
 
 @pulumi.output_type
@@ -950,6 +950,108 @@ class BucketLoggingResponse(dict):
 
 
 @pulumi.output_type
+class BucketObjectCustomerEncryptionResponse(dict):
+    """
+    Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "encryptionAlgorithm":
+            suggest = "encryption_algorithm"
+        elif key == "keySha256":
+            suggest = "key_sha256"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketObjectCustomerEncryptionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketObjectCustomerEncryptionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketObjectCustomerEncryptionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 encryption_algorithm: str,
+                 key_sha256: str):
+        """
+        Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+        :param str encryption_algorithm: The encryption algorithm.
+        :param str key_sha256: SHA256 hash value of the encryption key.
+        """
+        pulumi.set(__self__, "encryption_algorithm", encryption_algorithm)
+        pulumi.set(__self__, "key_sha256", key_sha256)
+
+    @property
+    @pulumi.getter(name="encryptionAlgorithm")
+    def encryption_algorithm(self) -> str:
+        """
+        The encryption algorithm.
+        """
+        return pulumi.get(self, "encryption_algorithm")
+
+    @property
+    @pulumi.getter(name="keySha256")
+    def key_sha256(self) -> str:
+        """
+        SHA256 hash value of the encryption key.
+        """
+        return pulumi.get(self, "key_sha256")
+
+
+@pulumi.output_type
+class BucketObjectOwnerResponse(dict):
+    """
+    The owner of the object. This will always be the uploader of the object.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityId":
+            suggest = "entity_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BucketObjectOwnerResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BucketObjectOwnerResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BucketObjectOwnerResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity: str,
+                 entity_id: str):
+        """
+        The owner of the object. This will always be the uploader of the object.
+        :param str entity: The entity, in the form user-userId.
+        :param str entity_id: The ID for the entity.
+        """
+        pulumi.set(__self__, "entity", entity)
+        pulumi.set(__self__, "entity_id", entity_id)
+
+    @property
+    @pulumi.getter
+    def entity(self) -> str:
+        """
+        The entity, in the form user-userId.
+        """
+        return pulumi.get(self, "entity")
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> str:
+        """
+        The ID for the entity.
+        """
+        return pulumi.get(self, "entity_id")
+
+
+@pulumi.output_type
 class BucketOwnerResponse(dict):
     """
     The owner of the bucket. This is always the project team's owner group.
@@ -1480,58 +1582,6 @@ class ObjectAccessControlResponse(dict):
 
 
 @pulumi.output_type
-class ObjectCustomerEncryptionResponse(dict):
-    """
-    Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "encryptionAlgorithm":
-            suggest = "encryption_algorithm"
-        elif key == "keySha256":
-            suggest = "key_sha256"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ObjectCustomerEncryptionResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ObjectCustomerEncryptionResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ObjectCustomerEncryptionResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 encryption_algorithm: str,
-                 key_sha256: str):
-        """
-        Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
-        :param str encryption_algorithm: The encryption algorithm.
-        :param str key_sha256: SHA256 hash value of the encryption key.
-        """
-        pulumi.set(__self__, "encryption_algorithm", encryption_algorithm)
-        pulumi.set(__self__, "key_sha256", key_sha256)
-
-    @property
-    @pulumi.getter(name="encryptionAlgorithm")
-    def encryption_algorithm(self) -> str:
-        """
-        The encryption algorithm.
-        """
-        return pulumi.get(self, "encryption_algorithm")
-
-    @property
-    @pulumi.getter(name="keySha256")
-    def key_sha256(self) -> str:
-        """
-        SHA256 hash value of the encryption key.
-        """
-        return pulumi.get(self, "key_sha256")
-
-
-@pulumi.output_type
 class ObjectIamPolicyBindingsItemResponse(dict):
     def __init__(__self__, *,
                  condition: 'outputs.ExprResponse',
@@ -1607,55 +1657,5 @@ class ObjectIamPolicyBindingsItemResponse(dict):
         - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
         """
         return pulumi.get(self, "role")
-
-
-@pulumi.output_type
-class ObjectOwnerResponse(dict):
-    """
-    The owner of the object. This will always be the uploader of the object.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "entityId":
-            suggest = "entity_id"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in ObjectOwnerResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        ObjectOwnerResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        ObjectOwnerResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 entity: str,
-                 entity_id: str):
-        """
-        The owner of the object. This will always be the uploader of the object.
-        :param str entity: The entity, in the form user-userId.
-        :param str entity_id: The ID for the entity.
-        """
-        pulumi.set(__self__, "entity", entity)
-        pulumi.set(__self__, "entity_id", entity_id)
-
-    @property
-    @pulumi.getter
-    def entity(self) -> str:
-        """
-        The entity, in the form user-userId.
-        """
-        return pulumi.get(self, "entity")
-
-    @property
-    @pulumi.getter(name="entityId")
-    def entity_id(self) -> str:
-        """
-        The ID for the entity.
-        """
-        return pulumi.get(self, "entity_id")
 
 

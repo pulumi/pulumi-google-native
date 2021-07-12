@@ -9,17 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.GoogleNative.Storage.V1
 {
-    public static class GetObject
+    public static class GetBucketObject
     {
         /// <summary>
         /// Retrieves an object or its metadata.
         /// </summary>
-        public static Task<GetObjectResult> InvokeAsync(GetObjectArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetObjectResult>("google-native:storage/v1:getObject", args ?? new GetObjectArgs(), options.WithVersion());
+        public static Task<GetBucketObjectResult> InvokeAsync(GetBucketObjectArgs args, InvokeOptions? options = null)
+            => Pulumi.Deployment.Instance.InvokeAsync<GetBucketObjectResult>("google-native:storage/v1:getBucketObject", args ?? new GetBucketObjectArgs(), options.WithVersion());
     }
 
 
-    public sealed class GetObjectArgs : Pulumi.InvokeArgs
+    public sealed class GetBucketObjectArgs : Pulumi.InvokeArgs
     {
         [Input("bucket", required: true)]
         public string Bucket { get; set; } = null!;
@@ -51,14 +51,14 @@ namespace Pulumi.GoogleNative.Storage.V1
         [Input("userProject")]
         public string? UserProject { get; set; }
 
-        public GetObjectArgs()
+        public GetBucketObjectArgs()
         {
         }
     }
 
 
     [OutputType]
-    public sealed class GetObjectResult
+    public sealed class GetBucketObjectResult
     {
         /// <summary>
         /// Access controls on the object.
@@ -103,7 +103,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// <summary>
         /// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
         /// </summary>
-        public readonly Outputs.ObjectCustomerEncryptionResponse CustomerEncryption;
+        public readonly Outputs.BucketObjectCustomerEncryptionResponse CustomerEncryption;
         /// <summary>
         /// HTTP 1.1 Entity tag for the object.
         /// </summary>
@@ -147,7 +147,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// <summary>
         /// The owner of the object. This will always be the uploader of the object.
         /// </summary>
-        public readonly Outputs.ObjectOwnerResponse Owner;
+        public readonly Outputs.BucketObjectOwnerResponse Owner;
         /// <summary>
         /// A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
         /// </summary>
@@ -186,7 +186,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         public readonly string Updated;
 
         [OutputConstructor]
-        private GetObjectResult(
+        private GetBucketObjectResult(
             ImmutableArray<Outputs.ObjectAccessControlResponse> acl,
 
             string bucket,
@@ -207,7 +207,7 @@ namespace Pulumi.GoogleNative.Storage.V1
 
             string customTime,
 
-            Outputs.ObjectCustomerEncryptionResponse customerEncryption,
+            Outputs.BucketObjectCustomerEncryptionResponse customerEncryption,
 
             string etag,
 
@@ -229,7 +229,7 @@ namespace Pulumi.GoogleNative.Storage.V1
 
             string name,
 
-            Outputs.ObjectOwnerResponse owner,
+            Outputs.BucketObjectOwnerResponse owner,
 
             string retentionExpirationTime,
 

@@ -79,6 +79,9 @@ var resourceNameByPathOverrides = map[string]string{
 	"v1/organizations/{organizationsId}/locations/{locationsId}/replays":      "OrganizationReplay",
 	"v1beta1/folders/{foldersId}/locations/{locationsId}/replays":             "FolderReplay",
 	"v1beta1/organizations/{organizationsId}/locations/{locationsId}/replays": "OrganizationReplay",
+
+	// Storage.
+	"b/{bucket}/o": "BucketObject",
 }
 
 // resourceNamePropertyOverrides is a list of exceptions populated for the buildIdParams method above.

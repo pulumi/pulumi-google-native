@@ -78,7 +78,7 @@ export class BucketObject extends pulumi.CustomResource {
     /**
      * Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
      */
-    public readonly customerEncryption!: pulumi.Output<outputs.storage.v1.ObjectCustomerEncryptionResponse>;
+    public readonly customerEncryption!: pulumi.Output<outputs.storage.v1.BucketObjectCustomerEncryptionResponse>;
     /**
      * HTTP 1.1 Entity tag for the object.
      */
@@ -122,7 +122,7 @@ export class BucketObject extends pulumi.CustomResource {
     /**
      * The owner of the object. This will always be the uploader of the object.
      */
-    public readonly owner!: pulumi.Output<outputs.storage.v1.ObjectOwnerResponse>;
+    public readonly owner!: pulumi.Output<outputs.storage.v1.BucketObjectOwnerResponse>;
     /**
      * A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
      */
@@ -302,7 +302,7 @@ export interface BucketObjectArgs {
     /**
      * Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
      */
-    customerEncryption?: pulumi.Input<inputs.storage.v1.ObjectCustomerEncryptionArgs>;
+    customerEncryption?: pulumi.Input<inputs.storage.v1.BucketObjectCustomerEncryptionArgs>;
     /**
      * HTTP 1.1 Entity tag for the object.
      */
@@ -354,7 +354,7 @@ export interface BucketObjectArgs {
     /**
      * The owner of the object. This will always be the uploader of the object.
      */
-    owner?: pulumi.Input<inputs.storage.v1.ObjectOwnerArgs>;
+    owner?: pulumi.Input<inputs.storage.v1.BucketObjectOwnerArgs>;
     predefinedAcl?: pulumi.Input<string>;
     projection?: pulumi.Input<string>;
     provisionalUserProject?: pulumi.Input<string>;

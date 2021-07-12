@@ -24,6 +24,7 @@ type CloudAPIResource struct {
 	UpdateVerb       string                      `json:"updateVerb,omitempty"`
 	UpdateProperties map[string]CloudAPIProperty `json:"updateProperties,omitempty"`
 	NoDelete         bool                        `json:"noDelete,omitempty"`
+	AssetUpload      bool                        `json:"assetUpload,omitempty"`
 	// IdProperty contains the name of the output property that represents resource ID (a self link).
 	IdProperty string `json:"idProperty,omitempty"`
 	// IdPath is the template for building resource ID with ID parameter values. It should only

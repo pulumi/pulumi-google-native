@@ -10,13 +10,13 @@ from ... import _utilities
 from . import outputs
 
 __all__ = [
-    'GetObjectResult',
-    'AwaitableGetObjectResult',
-    'get_object',
+    'GetBucketObjectResult',
+    'AwaitableGetBucketObjectResult',
+    'get_bucket_object',
 ]
 
 @pulumi.output_type
-class GetObjectResult:
+class GetBucketObjectResult:
     def __init__(__self__, acl=None, bucket=None, cache_control=None, component_count=None, content_disposition=None, content_encoding=None, content_language=None, content_type=None, crc32c=None, custom_time=None, customer_encryption=None, etag=None, event_based_hold=None, generation=None, kind=None, kms_key_name=None, md5_hash=None, media_link=None, metadata=None, metageneration=None, name=None, owner=None, retention_expiration_time=None, self_link=None, size=None, storage_class=None, temporary_hold=None, time_created=None, time_deleted=None, time_storage_class_updated=None, updated=None):
         if acl and not isinstance(acl, list):
             raise TypeError("Expected argument 'acl' to be a list")
@@ -194,7 +194,7 @@ class GetObjectResult:
 
     @property
     @pulumi.getter(name="customerEncryption")
-    def customer_encryption(self) -> 'outputs.ObjectCustomerEncryptionResponse':
+    def customer_encryption(self) -> 'outputs.BucketObjectCustomerEncryptionResponse':
         """
         Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
         """
@@ -282,7 +282,7 @@ class GetObjectResult:
 
     @property
     @pulumi.getter
-    def owner(self) -> 'outputs.ObjectOwnerResponse':
+    def owner(self) -> 'outputs.BucketObjectOwnerResponse':
         """
         The owner of the object. This will always be the uploader of the object.
         """
@@ -361,12 +361,12 @@ class GetObjectResult:
         return pulumi.get(self, "updated")
 
 
-class AwaitableGetObjectResult(GetObjectResult):
+class AwaitableGetBucketObjectResult(GetBucketObjectResult):
     # pylint: disable=using-constant-test
     def __await__(self):
         if False:
             yield self
-        return GetObjectResult(
+        return GetBucketObjectResult(
             acl=self.acl,
             bucket=self.bucket,
             cache_control=self.cache_control,
@@ -400,17 +400,17 @@ class AwaitableGetObjectResult(GetObjectResult):
             updated=self.updated)
 
 
-def get_object(bucket: Optional[str] = None,
-               generation: Optional[str] = None,
-               if_generation_match: Optional[str] = None,
-               if_generation_not_match: Optional[str] = None,
-               if_metageneration_match: Optional[str] = None,
-               if_metageneration_not_match: Optional[str] = None,
-               object: Optional[str] = None,
-               projection: Optional[str] = None,
-               provisional_user_project: Optional[str] = None,
-               user_project: Optional[str] = None,
-               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetObjectResult:
+def get_bucket_object(bucket: Optional[str] = None,
+                      generation: Optional[str] = None,
+                      if_generation_match: Optional[str] = None,
+                      if_generation_not_match: Optional[str] = None,
+                      if_metageneration_match: Optional[str] = None,
+                      if_metageneration_not_match: Optional[str] = None,
+                      object: Optional[str] = None,
+                      projection: Optional[str] = None,
+                      provisional_user_project: Optional[str] = None,
+                      user_project: Optional[str] = None,
+                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBucketObjectResult:
     """
     Retrieves an object or its metadata.
     """
@@ -429,9 +429,9 @@ def get_object(bucket: Optional[str] = None,
         opts = pulumi.InvokeOptions()
     if opts.version is None:
         opts.version = _utilities.get_version()
-    __ret__ = pulumi.runtime.invoke('google-native:storage/v1:getObject', __args__, opts=opts, typ=GetObjectResult).value
+    __ret__ = pulumi.runtime.invoke('google-native:storage/v1:getBucketObject', __args__, opts=opts, typ=GetBucketObjectResult).value
 
-    return AwaitableGetObjectResult(
+    return AwaitableGetBucketObjectResult(
         acl=__ret__.acl,
         bucket=__ret__.bucket,
         cache_control=__ret__.cache_control,

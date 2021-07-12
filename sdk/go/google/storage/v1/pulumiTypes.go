@@ -4293,6 +4293,618 @@ func (o BucketLoggingResponsePtrOutput) LogObjectPrefix() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
+// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+type BucketObjectCustomerEncryption struct {
+	// The encryption algorithm.
+	EncryptionAlgorithm *string `pulumi:"encryptionAlgorithm"`
+	// SHA256 hash value of the encryption key.
+	KeySha256 *string `pulumi:"keySha256"`
+}
+
+// BucketObjectCustomerEncryptionInput is an input type that accepts BucketObjectCustomerEncryptionArgs and BucketObjectCustomerEncryptionOutput values.
+// You can construct a concrete instance of `BucketObjectCustomerEncryptionInput` via:
+//
+//          BucketObjectCustomerEncryptionArgs{...}
+type BucketObjectCustomerEncryptionInput interface {
+	pulumi.Input
+
+	ToBucketObjectCustomerEncryptionOutput() BucketObjectCustomerEncryptionOutput
+	ToBucketObjectCustomerEncryptionOutputWithContext(context.Context) BucketObjectCustomerEncryptionOutput
+}
+
+// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+type BucketObjectCustomerEncryptionArgs struct {
+	// The encryption algorithm.
+	EncryptionAlgorithm pulumi.StringPtrInput `pulumi:"encryptionAlgorithm"`
+	// SHA256 hash value of the encryption key.
+	KeySha256 pulumi.StringPtrInput `pulumi:"keySha256"`
+}
+
+func (BucketObjectCustomerEncryptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObjectCustomerEncryption)(nil)).Elem()
+}
+
+func (i BucketObjectCustomerEncryptionArgs) ToBucketObjectCustomerEncryptionOutput() BucketObjectCustomerEncryptionOutput {
+	return i.ToBucketObjectCustomerEncryptionOutputWithContext(context.Background())
+}
+
+func (i BucketObjectCustomerEncryptionArgs) ToBucketObjectCustomerEncryptionOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectCustomerEncryptionOutput)
+}
+
+func (i BucketObjectCustomerEncryptionArgs) ToBucketObjectCustomerEncryptionPtrOutput() BucketObjectCustomerEncryptionPtrOutput {
+	return i.ToBucketObjectCustomerEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i BucketObjectCustomerEncryptionArgs) ToBucketObjectCustomerEncryptionPtrOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectCustomerEncryptionOutput).ToBucketObjectCustomerEncryptionPtrOutputWithContext(ctx)
+}
+
+// BucketObjectCustomerEncryptionPtrInput is an input type that accepts BucketObjectCustomerEncryptionArgs, BucketObjectCustomerEncryptionPtr and BucketObjectCustomerEncryptionPtrOutput values.
+// You can construct a concrete instance of `BucketObjectCustomerEncryptionPtrInput` via:
+//
+//          BucketObjectCustomerEncryptionArgs{...}
+//
+//  or:
+//
+//          nil
+type BucketObjectCustomerEncryptionPtrInput interface {
+	pulumi.Input
+
+	ToBucketObjectCustomerEncryptionPtrOutput() BucketObjectCustomerEncryptionPtrOutput
+	ToBucketObjectCustomerEncryptionPtrOutputWithContext(context.Context) BucketObjectCustomerEncryptionPtrOutput
+}
+
+type bucketObjectCustomerEncryptionPtrType BucketObjectCustomerEncryptionArgs
+
+func BucketObjectCustomerEncryptionPtr(v *BucketObjectCustomerEncryptionArgs) BucketObjectCustomerEncryptionPtrInput {
+	return (*bucketObjectCustomerEncryptionPtrType)(v)
+}
+
+func (*bucketObjectCustomerEncryptionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketObjectCustomerEncryption)(nil)).Elem()
+}
+
+func (i *bucketObjectCustomerEncryptionPtrType) ToBucketObjectCustomerEncryptionPtrOutput() BucketObjectCustomerEncryptionPtrOutput {
+	return i.ToBucketObjectCustomerEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketObjectCustomerEncryptionPtrType) ToBucketObjectCustomerEncryptionPtrOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectCustomerEncryptionPtrOutput)
+}
+
+// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+type BucketObjectCustomerEncryptionOutput struct{ *pulumi.OutputState }
+
+func (BucketObjectCustomerEncryptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObjectCustomerEncryption)(nil)).Elem()
+}
+
+func (o BucketObjectCustomerEncryptionOutput) ToBucketObjectCustomerEncryptionOutput() BucketObjectCustomerEncryptionOutput {
+	return o
+}
+
+func (o BucketObjectCustomerEncryptionOutput) ToBucketObjectCustomerEncryptionOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionOutput {
+	return o
+}
+
+func (o BucketObjectCustomerEncryptionOutput) ToBucketObjectCustomerEncryptionPtrOutput() BucketObjectCustomerEncryptionPtrOutput {
+	return o.ToBucketObjectCustomerEncryptionPtrOutputWithContext(context.Background())
+}
+
+func (o BucketObjectCustomerEncryptionOutput) ToBucketObjectCustomerEncryptionPtrOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionPtrOutput {
+	return o.ApplyT(func(v BucketObjectCustomerEncryption) *BucketObjectCustomerEncryption {
+		return &v
+	}).(BucketObjectCustomerEncryptionPtrOutput)
+}
+
+// The encryption algorithm.
+func (o BucketObjectCustomerEncryptionOutput) EncryptionAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketObjectCustomerEncryption) *string { return v.EncryptionAlgorithm }).(pulumi.StringPtrOutput)
+}
+
+// SHA256 hash value of the encryption key.
+func (o BucketObjectCustomerEncryptionOutput) KeySha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketObjectCustomerEncryption) *string { return v.KeySha256 }).(pulumi.StringPtrOutput)
+}
+
+type BucketObjectCustomerEncryptionPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketObjectCustomerEncryptionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketObjectCustomerEncryption)(nil)).Elem()
+}
+
+func (o BucketObjectCustomerEncryptionPtrOutput) ToBucketObjectCustomerEncryptionPtrOutput() BucketObjectCustomerEncryptionPtrOutput {
+	return o
+}
+
+func (o BucketObjectCustomerEncryptionPtrOutput) ToBucketObjectCustomerEncryptionPtrOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionPtrOutput {
+	return o
+}
+
+func (o BucketObjectCustomerEncryptionPtrOutput) Elem() BucketObjectCustomerEncryptionOutput {
+	return o.ApplyT(func(v *BucketObjectCustomerEncryption) BucketObjectCustomerEncryption { return *v }).(BucketObjectCustomerEncryptionOutput)
+}
+
+// The encryption algorithm.
+func (o BucketObjectCustomerEncryptionPtrOutput) EncryptionAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObjectCustomerEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EncryptionAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// SHA256 hash value of the encryption key.
+func (o BucketObjectCustomerEncryptionPtrOutput) KeySha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObjectCustomerEncryption) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KeySha256
+	}).(pulumi.StringPtrOutput)
+}
+
+// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+type BucketObjectCustomerEncryptionResponse struct {
+	// The encryption algorithm.
+	EncryptionAlgorithm string `pulumi:"encryptionAlgorithm"`
+	// SHA256 hash value of the encryption key.
+	KeySha256 string `pulumi:"keySha256"`
+}
+
+// BucketObjectCustomerEncryptionResponseInput is an input type that accepts BucketObjectCustomerEncryptionResponseArgs and BucketObjectCustomerEncryptionResponseOutput values.
+// You can construct a concrete instance of `BucketObjectCustomerEncryptionResponseInput` via:
+//
+//          BucketObjectCustomerEncryptionResponseArgs{...}
+type BucketObjectCustomerEncryptionResponseInput interface {
+	pulumi.Input
+
+	ToBucketObjectCustomerEncryptionResponseOutput() BucketObjectCustomerEncryptionResponseOutput
+	ToBucketObjectCustomerEncryptionResponseOutputWithContext(context.Context) BucketObjectCustomerEncryptionResponseOutput
+}
+
+// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+type BucketObjectCustomerEncryptionResponseArgs struct {
+	// The encryption algorithm.
+	EncryptionAlgorithm pulumi.StringInput `pulumi:"encryptionAlgorithm"`
+	// SHA256 hash value of the encryption key.
+	KeySha256 pulumi.StringInput `pulumi:"keySha256"`
+}
+
+func (BucketObjectCustomerEncryptionResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObjectCustomerEncryptionResponse)(nil)).Elem()
+}
+
+func (i BucketObjectCustomerEncryptionResponseArgs) ToBucketObjectCustomerEncryptionResponseOutput() BucketObjectCustomerEncryptionResponseOutput {
+	return i.ToBucketObjectCustomerEncryptionResponseOutputWithContext(context.Background())
+}
+
+func (i BucketObjectCustomerEncryptionResponseArgs) ToBucketObjectCustomerEncryptionResponseOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectCustomerEncryptionResponseOutput)
+}
+
+func (i BucketObjectCustomerEncryptionResponseArgs) ToBucketObjectCustomerEncryptionResponsePtrOutput() BucketObjectCustomerEncryptionResponsePtrOutput {
+	return i.ToBucketObjectCustomerEncryptionResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BucketObjectCustomerEncryptionResponseArgs) ToBucketObjectCustomerEncryptionResponsePtrOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectCustomerEncryptionResponseOutput).ToBucketObjectCustomerEncryptionResponsePtrOutputWithContext(ctx)
+}
+
+// BucketObjectCustomerEncryptionResponsePtrInput is an input type that accepts BucketObjectCustomerEncryptionResponseArgs, BucketObjectCustomerEncryptionResponsePtr and BucketObjectCustomerEncryptionResponsePtrOutput values.
+// You can construct a concrete instance of `BucketObjectCustomerEncryptionResponsePtrInput` via:
+//
+//          BucketObjectCustomerEncryptionResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BucketObjectCustomerEncryptionResponsePtrInput interface {
+	pulumi.Input
+
+	ToBucketObjectCustomerEncryptionResponsePtrOutput() BucketObjectCustomerEncryptionResponsePtrOutput
+	ToBucketObjectCustomerEncryptionResponsePtrOutputWithContext(context.Context) BucketObjectCustomerEncryptionResponsePtrOutput
+}
+
+type bucketObjectCustomerEncryptionResponsePtrType BucketObjectCustomerEncryptionResponseArgs
+
+func BucketObjectCustomerEncryptionResponsePtr(v *BucketObjectCustomerEncryptionResponseArgs) BucketObjectCustomerEncryptionResponsePtrInput {
+	return (*bucketObjectCustomerEncryptionResponsePtrType)(v)
+}
+
+func (*bucketObjectCustomerEncryptionResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketObjectCustomerEncryptionResponse)(nil)).Elem()
+}
+
+func (i *bucketObjectCustomerEncryptionResponsePtrType) ToBucketObjectCustomerEncryptionResponsePtrOutput() BucketObjectCustomerEncryptionResponsePtrOutput {
+	return i.ToBucketObjectCustomerEncryptionResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *bucketObjectCustomerEncryptionResponsePtrType) ToBucketObjectCustomerEncryptionResponsePtrOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectCustomerEncryptionResponsePtrOutput)
+}
+
+// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+type BucketObjectCustomerEncryptionResponseOutput struct{ *pulumi.OutputState }
+
+func (BucketObjectCustomerEncryptionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObjectCustomerEncryptionResponse)(nil)).Elem()
+}
+
+func (o BucketObjectCustomerEncryptionResponseOutput) ToBucketObjectCustomerEncryptionResponseOutput() BucketObjectCustomerEncryptionResponseOutput {
+	return o
+}
+
+func (o BucketObjectCustomerEncryptionResponseOutput) ToBucketObjectCustomerEncryptionResponseOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionResponseOutput {
+	return o
+}
+
+func (o BucketObjectCustomerEncryptionResponseOutput) ToBucketObjectCustomerEncryptionResponsePtrOutput() BucketObjectCustomerEncryptionResponsePtrOutput {
+	return o.ToBucketObjectCustomerEncryptionResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BucketObjectCustomerEncryptionResponseOutput) ToBucketObjectCustomerEncryptionResponsePtrOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionResponsePtrOutput {
+	return o.ApplyT(func(v BucketObjectCustomerEncryptionResponse) *BucketObjectCustomerEncryptionResponse {
+		return &v
+	}).(BucketObjectCustomerEncryptionResponsePtrOutput)
+}
+
+// The encryption algorithm.
+func (o BucketObjectCustomerEncryptionResponseOutput) EncryptionAlgorithm() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketObjectCustomerEncryptionResponse) string { return v.EncryptionAlgorithm }).(pulumi.StringOutput)
+}
+
+// SHA256 hash value of the encryption key.
+func (o BucketObjectCustomerEncryptionResponseOutput) KeySha256() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketObjectCustomerEncryptionResponse) string { return v.KeySha256 }).(pulumi.StringOutput)
+}
+
+type BucketObjectCustomerEncryptionResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BucketObjectCustomerEncryptionResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketObjectCustomerEncryptionResponse)(nil)).Elem()
+}
+
+func (o BucketObjectCustomerEncryptionResponsePtrOutput) ToBucketObjectCustomerEncryptionResponsePtrOutput() BucketObjectCustomerEncryptionResponsePtrOutput {
+	return o
+}
+
+func (o BucketObjectCustomerEncryptionResponsePtrOutput) ToBucketObjectCustomerEncryptionResponsePtrOutputWithContext(ctx context.Context) BucketObjectCustomerEncryptionResponsePtrOutput {
+	return o
+}
+
+func (o BucketObjectCustomerEncryptionResponsePtrOutput) Elem() BucketObjectCustomerEncryptionResponseOutput {
+	return o.ApplyT(func(v *BucketObjectCustomerEncryptionResponse) BucketObjectCustomerEncryptionResponse { return *v }).(BucketObjectCustomerEncryptionResponseOutput)
+}
+
+// The encryption algorithm.
+func (o BucketObjectCustomerEncryptionResponsePtrOutput) EncryptionAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObjectCustomerEncryptionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EncryptionAlgorithm
+	}).(pulumi.StringPtrOutput)
+}
+
+// SHA256 hash value of the encryption key.
+func (o BucketObjectCustomerEncryptionResponsePtrOutput) KeySha256() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObjectCustomerEncryptionResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KeySha256
+	}).(pulumi.StringPtrOutput)
+}
+
+// The owner of the object. This will always be the uploader of the object.
+type BucketObjectOwner struct {
+	// The entity, in the form user-userId.
+	Entity *string `pulumi:"entity"`
+	// The ID for the entity.
+	EntityId *string `pulumi:"entityId"`
+}
+
+// BucketObjectOwnerInput is an input type that accepts BucketObjectOwnerArgs and BucketObjectOwnerOutput values.
+// You can construct a concrete instance of `BucketObjectOwnerInput` via:
+//
+//          BucketObjectOwnerArgs{...}
+type BucketObjectOwnerInput interface {
+	pulumi.Input
+
+	ToBucketObjectOwnerOutput() BucketObjectOwnerOutput
+	ToBucketObjectOwnerOutputWithContext(context.Context) BucketObjectOwnerOutput
+}
+
+// The owner of the object. This will always be the uploader of the object.
+type BucketObjectOwnerArgs struct {
+	// The entity, in the form user-userId.
+	Entity pulumi.StringPtrInput `pulumi:"entity"`
+	// The ID for the entity.
+	EntityId pulumi.StringPtrInput `pulumi:"entityId"`
+}
+
+func (BucketObjectOwnerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObjectOwner)(nil)).Elem()
+}
+
+func (i BucketObjectOwnerArgs) ToBucketObjectOwnerOutput() BucketObjectOwnerOutput {
+	return i.ToBucketObjectOwnerOutputWithContext(context.Background())
+}
+
+func (i BucketObjectOwnerArgs) ToBucketObjectOwnerOutputWithContext(ctx context.Context) BucketObjectOwnerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectOwnerOutput)
+}
+
+func (i BucketObjectOwnerArgs) ToBucketObjectOwnerPtrOutput() BucketObjectOwnerPtrOutput {
+	return i.ToBucketObjectOwnerPtrOutputWithContext(context.Background())
+}
+
+func (i BucketObjectOwnerArgs) ToBucketObjectOwnerPtrOutputWithContext(ctx context.Context) BucketObjectOwnerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectOwnerOutput).ToBucketObjectOwnerPtrOutputWithContext(ctx)
+}
+
+// BucketObjectOwnerPtrInput is an input type that accepts BucketObjectOwnerArgs, BucketObjectOwnerPtr and BucketObjectOwnerPtrOutput values.
+// You can construct a concrete instance of `BucketObjectOwnerPtrInput` via:
+//
+//          BucketObjectOwnerArgs{...}
+//
+//  or:
+//
+//          nil
+type BucketObjectOwnerPtrInput interface {
+	pulumi.Input
+
+	ToBucketObjectOwnerPtrOutput() BucketObjectOwnerPtrOutput
+	ToBucketObjectOwnerPtrOutputWithContext(context.Context) BucketObjectOwnerPtrOutput
+}
+
+type bucketObjectOwnerPtrType BucketObjectOwnerArgs
+
+func BucketObjectOwnerPtr(v *BucketObjectOwnerArgs) BucketObjectOwnerPtrInput {
+	return (*bucketObjectOwnerPtrType)(v)
+}
+
+func (*bucketObjectOwnerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketObjectOwner)(nil)).Elem()
+}
+
+func (i *bucketObjectOwnerPtrType) ToBucketObjectOwnerPtrOutput() BucketObjectOwnerPtrOutput {
+	return i.ToBucketObjectOwnerPtrOutputWithContext(context.Background())
+}
+
+func (i *bucketObjectOwnerPtrType) ToBucketObjectOwnerPtrOutputWithContext(ctx context.Context) BucketObjectOwnerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectOwnerPtrOutput)
+}
+
+// The owner of the object. This will always be the uploader of the object.
+type BucketObjectOwnerOutput struct{ *pulumi.OutputState }
+
+func (BucketObjectOwnerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObjectOwner)(nil)).Elem()
+}
+
+func (o BucketObjectOwnerOutput) ToBucketObjectOwnerOutput() BucketObjectOwnerOutput {
+	return o
+}
+
+func (o BucketObjectOwnerOutput) ToBucketObjectOwnerOutputWithContext(ctx context.Context) BucketObjectOwnerOutput {
+	return o
+}
+
+func (o BucketObjectOwnerOutput) ToBucketObjectOwnerPtrOutput() BucketObjectOwnerPtrOutput {
+	return o.ToBucketObjectOwnerPtrOutputWithContext(context.Background())
+}
+
+func (o BucketObjectOwnerOutput) ToBucketObjectOwnerPtrOutputWithContext(ctx context.Context) BucketObjectOwnerPtrOutput {
+	return o.ApplyT(func(v BucketObjectOwner) *BucketObjectOwner {
+		return &v
+	}).(BucketObjectOwnerPtrOutput)
+}
+
+// The entity, in the form user-userId.
+func (o BucketObjectOwnerOutput) Entity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketObjectOwner) *string { return v.Entity }).(pulumi.StringPtrOutput)
+}
+
+// The ID for the entity.
+func (o BucketObjectOwnerOutput) EntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketObjectOwner) *string { return v.EntityId }).(pulumi.StringPtrOutput)
+}
+
+type BucketObjectOwnerPtrOutput struct{ *pulumi.OutputState }
+
+func (BucketObjectOwnerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketObjectOwner)(nil)).Elem()
+}
+
+func (o BucketObjectOwnerPtrOutput) ToBucketObjectOwnerPtrOutput() BucketObjectOwnerPtrOutput {
+	return o
+}
+
+func (o BucketObjectOwnerPtrOutput) ToBucketObjectOwnerPtrOutputWithContext(ctx context.Context) BucketObjectOwnerPtrOutput {
+	return o
+}
+
+func (o BucketObjectOwnerPtrOutput) Elem() BucketObjectOwnerOutput {
+	return o.ApplyT(func(v *BucketObjectOwner) BucketObjectOwner { return *v }).(BucketObjectOwnerOutput)
+}
+
+// The entity, in the form user-userId.
+func (o BucketObjectOwnerPtrOutput) Entity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObjectOwner) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Entity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID for the entity.
+func (o BucketObjectOwnerPtrOutput) EntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObjectOwner) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EntityId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The owner of the object. This will always be the uploader of the object.
+type BucketObjectOwnerResponse struct {
+	// The entity, in the form user-userId.
+	Entity string `pulumi:"entity"`
+	// The ID for the entity.
+	EntityId string `pulumi:"entityId"`
+}
+
+// BucketObjectOwnerResponseInput is an input type that accepts BucketObjectOwnerResponseArgs and BucketObjectOwnerResponseOutput values.
+// You can construct a concrete instance of `BucketObjectOwnerResponseInput` via:
+//
+//          BucketObjectOwnerResponseArgs{...}
+type BucketObjectOwnerResponseInput interface {
+	pulumi.Input
+
+	ToBucketObjectOwnerResponseOutput() BucketObjectOwnerResponseOutput
+	ToBucketObjectOwnerResponseOutputWithContext(context.Context) BucketObjectOwnerResponseOutput
+}
+
+// The owner of the object. This will always be the uploader of the object.
+type BucketObjectOwnerResponseArgs struct {
+	// The entity, in the form user-userId.
+	Entity pulumi.StringInput `pulumi:"entity"`
+	// The ID for the entity.
+	EntityId pulumi.StringInput `pulumi:"entityId"`
+}
+
+func (BucketObjectOwnerResponseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObjectOwnerResponse)(nil)).Elem()
+}
+
+func (i BucketObjectOwnerResponseArgs) ToBucketObjectOwnerResponseOutput() BucketObjectOwnerResponseOutput {
+	return i.ToBucketObjectOwnerResponseOutputWithContext(context.Background())
+}
+
+func (i BucketObjectOwnerResponseArgs) ToBucketObjectOwnerResponseOutputWithContext(ctx context.Context) BucketObjectOwnerResponseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectOwnerResponseOutput)
+}
+
+func (i BucketObjectOwnerResponseArgs) ToBucketObjectOwnerResponsePtrOutput() BucketObjectOwnerResponsePtrOutput {
+	return i.ToBucketObjectOwnerResponsePtrOutputWithContext(context.Background())
+}
+
+func (i BucketObjectOwnerResponseArgs) ToBucketObjectOwnerResponsePtrOutputWithContext(ctx context.Context) BucketObjectOwnerResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectOwnerResponseOutput).ToBucketObjectOwnerResponsePtrOutputWithContext(ctx)
+}
+
+// BucketObjectOwnerResponsePtrInput is an input type that accepts BucketObjectOwnerResponseArgs, BucketObjectOwnerResponsePtr and BucketObjectOwnerResponsePtrOutput values.
+// You can construct a concrete instance of `BucketObjectOwnerResponsePtrInput` via:
+//
+//          BucketObjectOwnerResponseArgs{...}
+//
+//  or:
+//
+//          nil
+type BucketObjectOwnerResponsePtrInput interface {
+	pulumi.Input
+
+	ToBucketObjectOwnerResponsePtrOutput() BucketObjectOwnerResponsePtrOutput
+	ToBucketObjectOwnerResponsePtrOutputWithContext(context.Context) BucketObjectOwnerResponsePtrOutput
+}
+
+type bucketObjectOwnerResponsePtrType BucketObjectOwnerResponseArgs
+
+func BucketObjectOwnerResponsePtr(v *BucketObjectOwnerResponseArgs) BucketObjectOwnerResponsePtrInput {
+	return (*bucketObjectOwnerResponsePtrType)(v)
+}
+
+func (*bucketObjectOwnerResponsePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketObjectOwnerResponse)(nil)).Elem()
+}
+
+func (i *bucketObjectOwnerResponsePtrType) ToBucketObjectOwnerResponsePtrOutput() BucketObjectOwnerResponsePtrOutput {
+	return i.ToBucketObjectOwnerResponsePtrOutputWithContext(context.Background())
+}
+
+func (i *bucketObjectOwnerResponsePtrType) ToBucketObjectOwnerResponsePtrOutputWithContext(ctx context.Context) BucketObjectOwnerResponsePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketObjectOwnerResponsePtrOutput)
+}
+
+// The owner of the object. This will always be the uploader of the object.
+type BucketObjectOwnerResponseOutput struct{ *pulumi.OutputState }
+
+func (BucketObjectOwnerResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketObjectOwnerResponse)(nil)).Elem()
+}
+
+func (o BucketObjectOwnerResponseOutput) ToBucketObjectOwnerResponseOutput() BucketObjectOwnerResponseOutput {
+	return o
+}
+
+func (o BucketObjectOwnerResponseOutput) ToBucketObjectOwnerResponseOutputWithContext(ctx context.Context) BucketObjectOwnerResponseOutput {
+	return o
+}
+
+func (o BucketObjectOwnerResponseOutput) ToBucketObjectOwnerResponsePtrOutput() BucketObjectOwnerResponsePtrOutput {
+	return o.ToBucketObjectOwnerResponsePtrOutputWithContext(context.Background())
+}
+
+func (o BucketObjectOwnerResponseOutput) ToBucketObjectOwnerResponsePtrOutputWithContext(ctx context.Context) BucketObjectOwnerResponsePtrOutput {
+	return o.ApplyT(func(v BucketObjectOwnerResponse) *BucketObjectOwnerResponse {
+		return &v
+	}).(BucketObjectOwnerResponsePtrOutput)
+}
+
+// The entity, in the form user-userId.
+func (o BucketObjectOwnerResponseOutput) Entity() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketObjectOwnerResponse) string { return v.Entity }).(pulumi.StringOutput)
+}
+
+// The ID for the entity.
+func (o BucketObjectOwnerResponseOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketObjectOwnerResponse) string { return v.EntityId }).(pulumi.StringOutput)
+}
+
+type BucketObjectOwnerResponsePtrOutput struct{ *pulumi.OutputState }
+
+func (BucketObjectOwnerResponsePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketObjectOwnerResponse)(nil)).Elem()
+}
+
+func (o BucketObjectOwnerResponsePtrOutput) ToBucketObjectOwnerResponsePtrOutput() BucketObjectOwnerResponsePtrOutput {
+	return o
+}
+
+func (o BucketObjectOwnerResponsePtrOutput) ToBucketObjectOwnerResponsePtrOutputWithContext(ctx context.Context) BucketObjectOwnerResponsePtrOutput {
+	return o
+}
+
+func (o BucketObjectOwnerResponsePtrOutput) Elem() BucketObjectOwnerResponseOutput {
+	return o.ApplyT(func(v *BucketObjectOwnerResponse) BucketObjectOwnerResponse { return *v }).(BucketObjectOwnerResponseOutput)
+}
+
+// The entity, in the form user-userId.
+func (o BucketObjectOwnerResponsePtrOutput) Entity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObjectOwnerResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Entity
+	}).(pulumi.StringPtrOutput)
+}
+
+// The ID for the entity.
+func (o BucketObjectOwnerResponsePtrOutput) EntityId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketObjectOwnerResponse) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EntityId
+	}).(pulumi.StringPtrOutput)
+}
+
 // The owner of the bucket. This is always the project team's owner group.
 type BucketOwner struct {
 	// The entity, in the form project-owner-projectId.
@@ -6877,312 +7489,6 @@ func (o ObjectAccessControlResponseArrayOutput) Index(i pulumi.IntInput) ObjectA
 	}).(ObjectAccessControlResponseOutput)
 }
 
-// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
-type ObjectCustomerEncryption struct {
-	// The encryption algorithm.
-	EncryptionAlgorithm *string `pulumi:"encryptionAlgorithm"`
-	// SHA256 hash value of the encryption key.
-	KeySha256 *string `pulumi:"keySha256"`
-}
-
-// ObjectCustomerEncryptionInput is an input type that accepts ObjectCustomerEncryptionArgs and ObjectCustomerEncryptionOutput values.
-// You can construct a concrete instance of `ObjectCustomerEncryptionInput` via:
-//
-//          ObjectCustomerEncryptionArgs{...}
-type ObjectCustomerEncryptionInput interface {
-	pulumi.Input
-
-	ToObjectCustomerEncryptionOutput() ObjectCustomerEncryptionOutput
-	ToObjectCustomerEncryptionOutputWithContext(context.Context) ObjectCustomerEncryptionOutput
-}
-
-// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
-type ObjectCustomerEncryptionArgs struct {
-	// The encryption algorithm.
-	EncryptionAlgorithm pulumi.StringPtrInput `pulumi:"encryptionAlgorithm"`
-	// SHA256 hash value of the encryption key.
-	KeySha256 pulumi.StringPtrInput `pulumi:"keySha256"`
-}
-
-func (ObjectCustomerEncryptionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectCustomerEncryption)(nil)).Elem()
-}
-
-func (i ObjectCustomerEncryptionArgs) ToObjectCustomerEncryptionOutput() ObjectCustomerEncryptionOutput {
-	return i.ToObjectCustomerEncryptionOutputWithContext(context.Background())
-}
-
-func (i ObjectCustomerEncryptionArgs) ToObjectCustomerEncryptionOutputWithContext(ctx context.Context) ObjectCustomerEncryptionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectCustomerEncryptionOutput)
-}
-
-func (i ObjectCustomerEncryptionArgs) ToObjectCustomerEncryptionPtrOutput() ObjectCustomerEncryptionPtrOutput {
-	return i.ToObjectCustomerEncryptionPtrOutputWithContext(context.Background())
-}
-
-func (i ObjectCustomerEncryptionArgs) ToObjectCustomerEncryptionPtrOutputWithContext(ctx context.Context) ObjectCustomerEncryptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectCustomerEncryptionOutput).ToObjectCustomerEncryptionPtrOutputWithContext(ctx)
-}
-
-// ObjectCustomerEncryptionPtrInput is an input type that accepts ObjectCustomerEncryptionArgs, ObjectCustomerEncryptionPtr and ObjectCustomerEncryptionPtrOutput values.
-// You can construct a concrete instance of `ObjectCustomerEncryptionPtrInput` via:
-//
-//          ObjectCustomerEncryptionArgs{...}
-//
-//  or:
-//
-//          nil
-type ObjectCustomerEncryptionPtrInput interface {
-	pulumi.Input
-
-	ToObjectCustomerEncryptionPtrOutput() ObjectCustomerEncryptionPtrOutput
-	ToObjectCustomerEncryptionPtrOutputWithContext(context.Context) ObjectCustomerEncryptionPtrOutput
-}
-
-type objectCustomerEncryptionPtrType ObjectCustomerEncryptionArgs
-
-func ObjectCustomerEncryptionPtr(v *ObjectCustomerEncryptionArgs) ObjectCustomerEncryptionPtrInput {
-	return (*objectCustomerEncryptionPtrType)(v)
-}
-
-func (*objectCustomerEncryptionPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectCustomerEncryption)(nil)).Elem()
-}
-
-func (i *objectCustomerEncryptionPtrType) ToObjectCustomerEncryptionPtrOutput() ObjectCustomerEncryptionPtrOutput {
-	return i.ToObjectCustomerEncryptionPtrOutputWithContext(context.Background())
-}
-
-func (i *objectCustomerEncryptionPtrType) ToObjectCustomerEncryptionPtrOutputWithContext(ctx context.Context) ObjectCustomerEncryptionPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectCustomerEncryptionPtrOutput)
-}
-
-// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
-type ObjectCustomerEncryptionOutput struct{ *pulumi.OutputState }
-
-func (ObjectCustomerEncryptionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectCustomerEncryption)(nil)).Elem()
-}
-
-func (o ObjectCustomerEncryptionOutput) ToObjectCustomerEncryptionOutput() ObjectCustomerEncryptionOutput {
-	return o
-}
-
-func (o ObjectCustomerEncryptionOutput) ToObjectCustomerEncryptionOutputWithContext(ctx context.Context) ObjectCustomerEncryptionOutput {
-	return o
-}
-
-func (o ObjectCustomerEncryptionOutput) ToObjectCustomerEncryptionPtrOutput() ObjectCustomerEncryptionPtrOutput {
-	return o.ToObjectCustomerEncryptionPtrOutputWithContext(context.Background())
-}
-
-func (o ObjectCustomerEncryptionOutput) ToObjectCustomerEncryptionPtrOutputWithContext(ctx context.Context) ObjectCustomerEncryptionPtrOutput {
-	return o.ApplyT(func(v ObjectCustomerEncryption) *ObjectCustomerEncryption {
-		return &v
-	}).(ObjectCustomerEncryptionPtrOutput)
-}
-
-// The encryption algorithm.
-func (o ObjectCustomerEncryptionOutput) EncryptionAlgorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ObjectCustomerEncryption) *string { return v.EncryptionAlgorithm }).(pulumi.StringPtrOutput)
-}
-
-// SHA256 hash value of the encryption key.
-func (o ObjectCustomerEncryptionOutput) KeySha256() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ObjectCustomerEncryption) *string { return v.KeySha256 }).(pulumi.StringPtrOutput)
-}
-
-type ObjectCustomerEncryptionPtrOutput struct{ *pulumi.OutputState }
-
-func (ObjectCustomerEncryptionPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectCustomerEncryption)(nil)).Elem()
-}
-
-func (o ObjectCustomerEncryptionPtrOutput) ToObjectCustomerEncryptionPtrOutput() ObjectCustomerEncryptionPtrOutput {
-	return o
-}
-
-func (o ObjectCustomerEncryptionPtrOutput) ToObjectCustomerEncryptionPtrOutputWithContext(ctx context.Context) ObjectCustomerEncryptionPtrOutput {
-	return o
-}
-
-func (o ObjectCustomerEncryptionPtrOutput) Elem() ObjectCustomerEncryptionOutput {
-	return o.ApplyT(func(v *ObjectCustomerEncryption) ObjectCustomerEncryption { return *v }).(ObjectCustomerEncryptionOutput)
-}
-
-// The encryption algorithm.
-func (o ObjectCustomerEncryptionPtrOutput) EncryptionAlgorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectCustomerEncryption) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EncryptionAlgorithm
-	}).(pulumi.StringPtrOutput)
-}
-
-// SHA256 hash value of the encryption key.
-func (o ObjectCustomerEncryptionPtrOutput) KeySha256() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectCustomerEncryption) *string {
-		if v == nil {
-			return nil
-		}
-		return v.KeySha256
-	}).(pulumi.StringPtrOutput)
-}
-
-// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
-type ObjectCustomerEncryptionResponse struct {
-	// The encryption algorithm.
-	EncryptionAlgorithm string `pulumi:"encryptionAlgorithm"`
-	// SHA256 hash value of the encryption key.
-	KeySha256 string `pulumi:"keySha256"`
-}
-
-// ObjectCustomerEncryptionResponseInput is an input type that accepts ObjectCustomerEncryptionResponseArgs and ObjectCustomerEncryptionResponseOutput values.
-// You can construct a concrete instance of `ObjectCustomerEncryptionResponseInput` via:
-//
-//          ObjectCustomerEncryptionResponseArgs{...}
-type ObjectCustomerEncryptionResponseInput interface {
-	pulumi.Input
-
-	ToObjectCustomerEncryptionResponseOutput() ObjectCustomerEncryptionResponseOutput
-	ToObjectCustomerEncryptionResponseOutputWithContext(context.Context) ObjectCustomerEncryptionResponseOutput
-}
-
-// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
-type ObjectCustomerEncryptionResponseArgs struct {
-	// The encryption algorithm.
-	EncryptionAlgorithm pulumi.StringInput `pulumi:"encryptionAlgorithm"`
-	// SHA256 hash value of the encryption key.
-	KeySha256 pulumi.StringInput `pulumi:"keySha256"`
-}
-
-func (ObjectCustomerEncryptionResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectCustomerEncryptionResponse)(nil)).Elem()
-}
-
-func (i ObjectCustomerEncryptionResponseArgs) ToObjectCustomerEncryptionResponseOutput() ObjectCustomerEncryptionResponseOutput {
-	return i.ToObjectCustomerEncryptionResponseOutputWithContext(context.Background())
-}
-
-func (i ObjectCustomerEncryptionResponseArgs) ToObjectCustomerEncryptionResponseOutputWithContext(ctx context.Context) ObjectCustomerEncryptionResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectCustomerEncryptionResponseOutput)
-}
-
-func (i ObjectCustomerEncryptionResponseArgs) ToObjectCustomerEncryptionResponsePtrOutput() ObjectCustomerEncryptionResponsePtrOutput {
-	return i.ToObjectCustomerEncryptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ObjectCustomerEncryptionResponseArgs) ToObjectCustomerEncryptionResponsePtrOutputWithContext(ctx context.Context) ObjectCustomerEncryptionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectCustomerEncryptionResponseOutput).ToObjectCustomerEncryptionResponsePtrOutputWithContext(ctx)
-}
-
-// ObjectCustomerEncryptionResponsePtrInput is an input type that accepts ObjectCustomerEncryptionResponseArgs, ObjectCustomerEncryptionResponsePtr and ObjectCustomerEncryptionResponsePtrOutput values.
-// You can construct a concrete instance of `ObjectCustomerEncryptionResponsePtrInput` via:
-//
-//          ObjectCustomerEncryptionResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ObjectCustomerEncryptionResponsePtrInput interface {
-	pulumi.Input
-
-	ToObjectCustomerEncryptionResponsePtrOutput() ObjectCustomerEncryptionResponsePtrOutput
-	ToObjectCustomerEncryptionResponsePtrOutputWithContext(context.Context) ObjectCustomerEncryptionResponsePtrOutput
-}
-
-type objectCustomerEncryptionResponsePtrType ObjectCustomerEncryptionResponseArgs
-
-func ObjectCustomerEncryptionResponsePtr(v *ObjectCustomerEncryptionResponseArgs) ObjectCustomerEncryptionResponsePtrInput {
-	return (*objectCustomerEncryptionResponsePtrType)(v)
-}
-
-func (*objectCustomerEncryptionResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectCustomerEncryptionResponse)(nil)).Elem()
-}
-
-func (i *objectCustomerEncryptionResponsePtrType) ToObjectCustomerEncryptionResponsePtrOutput() ObjectCustomerEncryptionResponsePtrOutput {
-	return i.ToObjectCustomerEncryptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *objectCustomerEncryptionResponsePtrType) ToObjectCustomerEncryptionResponsePtrOutputWithContext(ctx context.Context) ObjectCustomerEncryptionResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectCustomerEncryptionResponsePtrOutput)
-}
-
-// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
-type ObjectCustomerEncryptionResponseOutput struct{ *pulumi.OutputState }
-
-func (ObjectCustomerEncryptionResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectCustomerEncryptionResponse)(nil)).Elem()
-}
-
-func (o ObjectCustomerEncryptionResponseOutput) ToObjectCustomerEncryptionResponseOutput() ObjectCustomerEncryptionResponseOutput {
-	return o
-}
-
-func (o ObjectCustomerEncryptionResponseOutput) ToObjectCustomerEncryptionResponseOutputWithContext(ctx context.Context) ObjectCustomerEncryptionResponseOutput {
-	return o
-}
-
-func (o ObjectCustomerEncryptionResponseOutput) ToObjectCustomerEncryptionResponsePtrOutput() ObjectCustomerEncryptionResponsePtrOutput {
-	return o.ToObjectCustomerEncryptionResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ObjectCustomerEncryptionResponseOutput) ToObjectCustomerEncryptionResponsePtrOutputWithContext(ctx context.Context) ObjectCustomerEncryptionResponsePtrOutput {
-	return o.ApplyT(func(v ObjectCustomerEncryptionResponse) *ObjectCustomerEncryptionResponse {
-		return &v
-	}).(ObjectCustomerEncryptionResponsePtrOutput)
-}
-
-// The encryption algorithm.
-func (o ObjectCustomerEncryptionResponseOutput) EncryptionAlgorithm() pulumi.StringOutput {
-	return o.ApplyT(func(v ObjectCustomerEncryptionResponse) string { return v.EncryptionAlgorithm }).(pulumi.StringOutput)
-}
-
-// SHA256 hash value of the encryption key.
-func (o ObjectCustomerEncryptionResponseOutput) KeySha256() pulumi.StringOutput {
-	return o.ApplyT(func(v ObjectCustomerEncryptionResponse) string { return v.KeySha256 }).(pulumi.StringOutput)
-}
-
-type ObjectCustomerEncryptionResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ObjectCustomerEncryptionResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectCustomerEncryptionResponse)(nil)).Elem()
-}
-
-func (o ObjectCustomerEncryptionResponsePtrOutput) ToObjectCustomerEncryptionResponsePtrOutput() ObjectCustomerEncryptionResponsePtrOutput {
-	return o
-}
-
-func (o ObjectCustomerEncryptionResponsePtrOutput) ToObjectCustomerEncryptionResponsePtrOutputWithContext(ctx context.Context) ObjectCustomerEncryptionResponsePtrOutput {
-	return o
-}
-
-func (o ObjectCustomerEncryptionResponsePtrOutput) Elem() ObjectCustomerEncryptionResponseOutput {
-	return o.ApplyT(func(v *ObjectCustomerEncryptionResponse) ObjectCustomerEncryptionResponse { return *v }).(ObjectCustomerEncryptionResponseOutput)
-}
-
-// The encryption algorithm.
-func (o ObjectCustomerEncryptionResponsePtrOutput) EncryptionAlgorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectCustomerEncryptionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EncryptionAlgorithm
-	}).(pulumi.StringPtrOutput)
-}
-
-// SHA256 hash value of the encryption key.
-func (o ObjectCustomerEncryptionResponsePtrOutput) KeySha256() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectCustomerEncryptionResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.KeySha256
-	}).(pulumi.StringPtrOutput)
-}
-
 type ObjectIamPolicyBindingsItem struct {
 	// The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
 	Condition *Expr `pulumi:"condition"`
@@ -7527,312 +7833,6 @@ func (o ObjectIamPolicyBindingsItemResponseArrayOutput) Index(i pulumi.IntInput)
 	}).(ObjectIamPolicyBindingsItemResponseOutput)
 }
 
-// The owner of the object. This will always be the uploader of the object.
-type ObjectOwner struct {
-	// The entity, in the form user-userId.
-	Entity *string `pulumi:"entity"`
-	// The ID for the entity.
-	EntityId *string `pulumi:"entityId"`
-}
-
-// ObjectOwnerInput is an input type that accepts ObjectOwnerArgs and ObjectOwnerOutput values.
-// You can construct a concrete instance of `ObjectOwnerInput` via:
-//
-//          ObjectOwnerArgs{...}
-type ObjectOwnerInput interface {
-	pulumi.Input
-
-	ToObjectOwnerOutput() ObjectOwnerOutput
-	ToObjectOwnerOutputWithContext(context.Context) ObjectOwnerOutput
-}
-
-// The owner of the object. This will always be the uploader of the object.
-type ObjectOwnerArgs struct {
-	// The entity, in the form user-userId.
-	Entity pulumi.StringPtrInput `pulumi:"entity"`
-	// The ID for the entity.
-	EntityId pulumi.StringPtrInput `pulumi:"entityId"`
-}
-
-func (ObjectOwnerArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectOwner)(nil)).Elem()
-}
-
-func (i ObjectOwnerArgs) ToObjectOwnerOutput() ObjectOwnerOutput {
-	return i.ToObjectOwnerOutputWithContext(context.Background())
-}
-
-func (i ObjectOwnerArgs) ToObjectOwnerOutputWithContext(ctx context.Context) ObjectOwnerOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectOwnerOutput)
-}
-
-func (i ObjectOwnerArgs) ToObjectOwnerPtrOutput() ObjectOwnerPtrOutput {
-	return i.ToObjectOwnerPtrOutputWithContext(context.Background())
-}
-
-func (i ObjectOwnerArgs) ToObjectOwnerPtrOutputWithContext(ctx context.Context) ObjectOwnerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectOwnerOutput).ToObjectOwnerPtrOutputWithContext(ctx)
-}
-
-// ObjectOwnerPtrInput is an input type that accepts ObjectOwnerArgs, ObjectOwnerPtr and ObjectOwnerPtrOutput values.
-// You can construct a concrete instance of `ObjectOwnerPtrInput` via:
-//
-//          ObjectOwnerArgs{...}
-//
-//  or:
-//
-//          nil
-type ObjectOwnerPtrInput interface {
-	pulumi.Input
-
-	ToObjectOwnerPtrOutput() ObjectOwnerPtrOutput
-	ToObjectOwnerPtrOutputWithContext(context.Context) ObjectOwnerPtrOutput
-}
-
-type objectOwnerPtrType ObjectOwnerArgs
-
-func ObjectOwnerPtr(v *ObjectOwnerArgs) ObjectOwnerPtrInput {
-	return (*objectOwnerPtrType)(v)
-}
-
-func (*objectOwnerPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectOwner)(nil)).Elem()
-}
-
-func (i *objectOwnerPtrType) ToObjectOwnerPtrOutput() ObjectOwnerPtrOutput {
-	return i.ToObjectOwnerPtrOutputWithContext(context.Background())
-}
-
-func (i *objectOwnerPtrType) ToObjectOwnerPtrOutputWithContext(ctx context.Context) ObjectOwnerPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectOwnerPtrOutput)
-}
-
-// The owner of the object. This will always be the uploader of the object.
-type ObjectOwnerOutput struct{ *pulumi.OutputState }
-
-func (ObjectOwnerOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectOwner)(nil)).Elem()
-}
-
-func (o ObjectOwnerOutput) ToObjectOwnerOutput() ObjectOwnerOutput {
-	return o
-}
-
-func (o ObjectOwnerOutput) ToObjectOwnerOutputWithContext(ctx context.Context) ObjectOwnerOutput {
-	return o
-}
-
-func (o ObjectOwnerOutput) ToObjectOwnerPtrOutput() ObjectOwnerPtrOutput {
-	return o.ToObjectOwnerPtrOutputWithContext(context.Background())
-}
-
-func (o ObjectOwnerOutput) ToObjectOwnerPtrOutputWithContext(ctx context.Context) ObjectOwnerPtrOutput {
-	return o.ApplyT(func(v ObjectOwner) *ObjectOwner {
-		return &v
-	}).(ObjectOwnerPtrOutput)
-}
-
-// The entity, in the form user-userId.
-func (o ObjectOwnerOutput) Entity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ObjectOwner) *string { return v.Entity }).(pulumi.StringPtrOutput)
-}
-
-// The ID for the entity.
-func (o ObjectOwnerOutput) EntityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ObjectOwner) *string { return v.EntityId }).(pulumi.StringPtrOutput)
-}
-
-type ObjectOwnerPtrOutput struct{ *pulumi.OutputState }
-
-func (ObjectOwnerPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectOwner)(nil)).Elem()
-}
-
-func (o ObjectOwnerPtrOutput) ToObjectOwnerPtrOutput() ObjectOwnerPtrOutput {
-	return o
-}
-
-func (o ObjectOwnerPtrOutput) ToObjectOwnerPtrOutputWithContext(ctx context.Context) ObjectOwnerPtrOutput {
-	return o
-}
-
-func (o ObjectOwnerPtrOutput) Elem() ObjectOwnerOutput {
-	return o.ApplyT(func(v *ObjectOwner) ObjectOwner { return *v }).(ObjectOwnerOutput)
-}
-
-// The entity, in the form user-userId.
-func (o ObjectOwnerPtrOutput) Entity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectOwner) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Entity
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ID for the entity.
-func (o ObjectOwnerPtrOutput) EntityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectOwner) *string {
-		if v == nil {
-			return nil
-		}
-		return v.EntityId
-	}).(pulumi.StringPtrOutput)
-}
-
-// The owner of the object. This will always be the uploader of the object.
-type ObjectOwnerResponse struct {
-	// The entity, in the form user-userId.
-	Entity string `pulumi:"entity"`
-	// The ID for the entity.
-	EntityId string `pulumi:"entityId"`
-}
-
-// ObjectOwnerResponseInput is an input type that accepts ObjectOwnerResponseArgs and ObjectOwnerResponseOutput values.
-// You can construct a concrete instance of `ObjectOwnerResponseInput` via:
-//
-//          ObjectOwnerResponseArgs{...}
-type ObjectOwnerResponseInput interface {
-	pulumi.Input
-
-	ToObjectOwnerResponseOutput() ObjectOwnerResponseOutput
-	ToObjectOwnerResponseOutputWithContext(context.Context) ObjectOwnerResponseOutput
-}
-
-// The owner of the object. This will always be the uploader of the object.
-type ObjectOwnerResponseArgs struct {
-	// The entity, in the form user-userId.
-	Entity pulumi.StringInput `pulumi:"entity"`
-	// The ID for the entity.
-	EntityId pulumi.StringInput `pulumi:"entityId"`
-}
-
-func (ObjectOwnerResponseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectOwnerResponse)(nil)).Elem()
-}
-
-func (i ObjectOwnerResponseArgs) ToObjectOwnerResponseOutput() ObjectOwnerResponseOutput {
-	return i.ToObjectOwnerResponseOutputWithContext(context.Background())
-}
-
-func (i ObjectOwnerResponseArgs) ToObjectOwnerResponseOutputWithContext(ctx context.Context) ObjectOwnerResponseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectOwnerResponseOutput)
-}
-
-func (i ObjectOwnerResponseArgs) ToObjectOwnerResponsePtrOutput() ObjectOwnerResponsePtrOutput {
-	return i.ToObjectOwnerResponsePtrOutputWithContext(context.Background())
-}
-
-func (i ObjectOwnerResponseArgs) ToObjectOwnerResponsePtrOutputWithContext(ctx context.Context) ObjectOwnerResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectOwnerResponseOutput).ToObjectOwnerResponsePtrOutputWithContext(ctx)
-}
-
-// ObjectOwnerResponsePtrInput is an input type that accepts ObjectOwnerResponseArgs, ObjectOwnerResponsePtr and ObjectOwnerResponsePtrOutput values.
-// You can construct a concrete instance of `ObjectOwnerResponsePtrInput` via:
-//
-//          ObjectOwnerResponseArgs{...}
-//
-//  or:
-//
-//          nil
-type ObjectOwnerResponsePtrInput interface {
-	pulumi.Input
-
-	ToObjectOwnerResponsePtrOutput() ObjectOwnerResponsePtrOutput
-	ToObjectOwnerResponsePtrOutputWithContext(context.Context) ObjectOwnerResponsePtrOutput
-}
-
-type objectOwnerResponsePtrType ObjectOwnerResponseArgs
-
-func ObjectOwnerResponsePtr(v *ObjectOwnerResponseArgs) ObjectOwnerResponsePtrInput {
-	return (*objectOwnerResponsePtrType)(v)
-}
-
-func (*objectOwnerResponsePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectOwnerResponse)(nil)).Elem()
-}
-
-func (i *objectOwnerResponsePtrType) ToObjectOwnerResponsePtrOutput() ObjectOwnerResponsePtrOutput {
-	return i.ToObjectOwnerResponsePtrOutputWithContext(context.Background())
-}
-
-func (i *objectOwnerResponsePtrType) ToObjectOwnerResponsePtrOutputWithContext(ctx context.Context) ObjectOwnerResponsePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ObjectOwnerResponsePtrOutput)
-}
-
-// The owner of the object. This will always be the uploader of the object.
-type ObjectOwnerResponseOutput struct{ *pulumi.OutputState }
-
-func (ObjectOwnerResponseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ObjectOwnerResponse)(nil)).Elem()
-}
-
-func (o ObjectOwnerResponseOutput) ToObjectOwnerResponseOutput() ObjectOwnerResponseOutput {
-	return o
-}
-
-func (o ObjectOwnerResponseOutput) ToObjectOwnerResponseOutputWithContext(ctx context.Context) ObjectOwnerResponseOutput {
-	return o
-}
-
-func (o ObjectOwnerResponseOutput) ToObjectOwnerResponsePtrOutput() ObjectOwnerResponsePtrOutput {
-	return o.ToObjectOwnerResponsePtrOutputWithContext(context.Background())
-}
-
-func (o ObjectOwnerResponseOutput) ToObjectOwnerResponsePtrOutputWithContext(ctx context.Context) ObjectOwnerResponsePtrOutput {
-	return o.ApplyT(func(v ObjectOwnerResponse) *ObjectOwnerResponse {
-		return &v
-	}).(ObjectOwnerResponsePtrOutput)
-}
-
-// The entity, in the form user-userId.
-func (o ObjectOwnerResponseOutput) Entity() pulumi.StringOutput {
-	return o.ApplyT(func(v ObjectOwnerResponse) string { return v.Entity }).(pulumi.StringOutput)
-}
-
-// The ID for the entity.
-func (o ObjectOwnerResponseOutput) EntityId() pulumi.StringOutput {
-	return o.ApplyT(func(v ObjectOwnerResponse) string { return v.EntityId }).(pulumi.StringOutput)
-}
-
-type ObjectOwnerResponsePtrOutput struct{ *pulumi.OutputState }
-
-func (ObjectOwnerResponsePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ObjectOwnerResponse)(nil)).Elem()
-}
-
-func (o ObjectOwnerResponsePtrOutput) ToObjectOwnerResponsePtrOutput() ObjectOwnerResponsePtrOutput {
-	return o
-}
-
-func (o ObjectOwnerResponsePtrOutput) ToObjectOwnerResponsePtrOutputWithContext(ctx context.Context) ObjectOwnerResponsePtrOutput {
-	return o
-}
-
-func (o ObjectOwnerResponsePtrOutput) Elem() ObjectOwnerResponseOutput {
-	return o.ApplyT(func(v *ObjectOwnerResponse) ObjectOwnerResponse { return *v }).(ObjectOwnerResponseOutput)
-}
-
-// The entity, in the form user-userId.
-func (o ObjectOwnerResponsePtrOutput) Entity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectOwnerResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Entity
-	}).(pulumi.StringPtrOutput)
-}
-
-// The ID for the entity.
-func (o ObjectOwnerResponsePtrOutput) EntityId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ObjectOwnerResponse) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.EntityId
-	}).(pulumi.StringPtrOutput)
-}
-
 func init() {
 	pulumi.RegisterOutputType(BucketAccessControlTypeOutput{})
 	pulumi.RegisterOutputType(BucketAccessControlTypeArrayOutput{})
@@ -7888,6 +7888,14 @@ func init() {
 	pulumi.RegisterOutputType(BucketLoggingPtrOutput{})
 	pulumi.RegisterOutputType(BucketLoggingResponseOutput{})
 	pulumi.RegisterOutputType(BucketLoggingResponsePtrOutput{})
+	pulumi.RegisterOutputType(BucketObjectCustomerEncryptionOutput{})
+	pulumi.RegisterOutputType(BucketObjectCustomerEncryptionPtrOutput{})
+	pulumi.RegisterOutputType(BucketObjectCustomerEncryptionResponseOutput{})
+	pulumi.RegisterOutputType(BucketObjectCustomerEncryptionResponsePtrOutput{})
+	pulumi.RegisterOutputType(BucketObjectOwnerOutput{})
+	pulumi.RegisterOutputType(BucketObjectOwnerPtrOutput{})
+	pulumi.RegisterOutputType(BucketObjectOwnerResponseOutput{})
+	pulumi.RegisterOutputType(BucketObjectOwnerResponsePtrOutput{})
 	pulumi.RegisterOutputType(BucketOwnerOutput{})
 	pulumi.RegisterOutputType(BucketOwnerPtrOutput{})
 	pulumi.RegisterOutputType(BucketOwnerResponseOutput{})
@@ -7919,16 +7927,8 @@ func init() {
 	pulumi.RegisterOutputType(ObjectAccessControlProjectTeamResponsePtrOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlResponseOutput{})
 	pulumi.RegisterOutputType(ObjectAccessControlResponseArrayOutput{})
-	pulumi.RegisterOutputType(ObjectCustomerEncryptionOutput{})
-	pulumi.RegisterOutputType(ObjectCustomerEncryptionPtrOutput{})
-	pulumi.RegisterOutputType(ObjectCustomerEncryptionResponseOutput{})
-	pulumi.RegisterOutputType(ObjectCustomerEncryptionResponsePtrOutput{})
 	pulumi.RegisterOutputType(ObjectIamPolicyBindingsItemOutput{})
 	pulumi.RegisterOutputType(ObjectIamPolicyBindingsItemArrayOutput{})
 	pulumi.RegisterOutputType(ObjectIamPolicyBindingsItemResponseOutput{})
 	pulumi.RegisterOutputType(ObjectIamPolicyBindingsItemResponseArrayOutput{})
-	pulumi.RegisterOutputType(ObjectOwnerOutput{})
-	pulumi.RegisterOutputType(ObjectOwnerPtrOutput{})
-	pulumi.RegisterOutputType(ObjectOwnerResponseOutput{})
-	pulumi.RegisterOutputType(ObjectOwnerResponsePtrOutput{})
 }

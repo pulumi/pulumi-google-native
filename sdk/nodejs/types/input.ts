@@ -49552,6 +49552,34 @@ export namespace storage {
         }
 
         /**
+         * Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+         */
+        export interface BucketObjectCustomerEncryptionArgs {
+            /**
+             * The encryption algorithm.
+             */
+            encryptionAlgorithm?: pulumi.Input<string>;
+            /**
+             * SHA256 hash value of the encryption key.
+             */
+            keySha256?: pulumi.Input<string>;
+        }
+
+        /**
+         * The owner of the object. This will always be the uploader of the object.
+         */
+        export interface BucketObjectOwnerArgs {
+            /**
+             * The entity, in the form user-userId.
+             */
+            entity?: pulumi.Input<string>;
+            /**
+             * The ID for the entity.
+             */
+            entityId?: pulumi.Input<string>;
+        }
+
+        /**
          * The owner of the bucket. This is always the project team's owner group.
          */
         export interface BucketOwnerArgs {
@@ -49726,20 +49754,6 @@ export namespace storage {
             team?: pulumi.Input<string>;
         }
 
-        /**
-         * Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
-         */
-        export interface ObjectCustomerEncryptionArgs {
-            /**
-             * The encryption algorithm.
-             */
-            encryptionAlgorithm?: pulumi.Input<string>;
-            /**
-             * SHA256 hash value of the encryption key.
-             */
-            keySha256?: pulumi.Input<string>;
-        }
-
         export interface ObjectIamPolicyBindingsItemArgs {
             /**
              * The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
@@ -49772,20 +49786,6 @@ export namespace storage {
              * - roles/storage.legacyBucketOwner — Read and write access to existing buckets with object listing/creation/deletion. Equivalent to an ACL entry on a bucket with the OWNER role.
              */
             role?: pulumi.Input<string>;
-        }
-
-        /**
-         * The owner of the object. This will always be the uploader of the object.
-         */
-        export interface ObjectOwnerArgs {
-            /**
-             * The entity, in the form user-userId.
-             */
-            entity?: pulumi.Input<string>;
-            /**
-             * The ID for the entity.
-             */
-            entityId?: pulumi.Input<string>;
         }
 
     }

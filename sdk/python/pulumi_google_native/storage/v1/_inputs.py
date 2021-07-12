@@ -23,6 +23,8 @@ __all__ = [
     'BucketLifecycleRuleItemActionArgs',
     'BucketLifecycleRuleItemConditionArgs',
     'BucketLoggingArgs',
+    'BucketObjectCustomerEncryptionArgs',
+    'BucketObjectOwnerArgs',
     'BucketOwnerArgs',
     'BucketRetentionPolicyArgs',
     'BucketVersioningArgs',
@@ -31,9 +33,7 @@ __all__ = [
     'ExprArgs',
     'ObjectAccessControlArgs',
     'ObjectAccessControlProjectTeamArgs',
-    'ObjectCustomerEncryptionArgs',
     'ObjectIamPolicyBindingsItemArgs',
-    'ObjectOwnerArgs',
 ]
 
 @pulumi.input_type
@@ -942,6 +942,86 @@ class BucketLoggingArgs:
 
 
 @pulumi.input_type
+class BucketObjectCustomerEncryptionArgs:
+    def __init__(__self__, *,
+                 encryption_algorithm: Optional[pulumi.Input[str]] = None,
+                 key_sha256: Optional[pulumi.Input[str]] = None):
+        """
+        Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
+        :param pulumi.Input[str] encryption_algorithm: The encryption algorithm.
+        :param pulumi.Input[str] key_sha256: SHA256 hash value of the encryption key.
+        """
+        if encryption_algorithm is not None:
+            pulumi.set(__self__, "encryption_algorithm", encryption_algorithm)
+        if key_sha256 is not None:
+            pulumi.set(__self__, "key_sha256", key_sha256)
+
+    @property
+    @pulumi.getter(name="encryptionAlgorithm")
+    def encryption_algorithm(self) -> Optional[pulumi.Input[str]]:
+        """
+        The encryption algorithm.
+        """
+        return pulumi.get(self, "encryption_algorithm")
+
+    @encryption_algorithm.setter
+    def encryption_algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encryption_algorithm", value)
+
+    @property
+    @pulumi.getter(name="keySha256")
+    def key_sha256(self) -> Optional[pulumi.Input[str]]:
+        """
+        SHA256 hash value of the encryption key.
+        """
+        return pulumi.get(self, "key_sha256")
+
+    @key_sha256.setter
+    def key_sha256(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "key_sha256", value)
+
+
+@pulumi.input_type
+class BucketObjectOwnerArgs:
+    def __init__(__self__, *,
+                 entity: Optional[pulumi.Input[str]] = None,
+                 entity_id: Optional[pulumi.Input[str]] = None):
+        """
+        The owner of the object. This will always be the uploader of the object.
+        :param pulumi.Input[str] entity: The entity, in the form user-userId.
+        :param pulumi.Input[str] entity_id: The ID for the entity.
+        """
+        if entity is not None:
+            pulumi.set(__self__, "entity", entity)
+        if entity_id is not None:
+            pulumi.set(__self__, "entity_id", entity_id)
+
+    @property
+    @pulumi.getter
+    def entity(self) -> Optional[pulumi.Input[str]]:
+        """
+        The entity, in the form user-userId.
+        """
+        return pulumi.get(self, "entity")
+
+    @entity.setter
+    def entity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity", value)
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID for the entity.
+        """
+        return pulumi.get(self, "entity_id")
+
+    @entity_id.setter
+    def entity_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "entity_id", value)
+
+
+@pulumi.input_type
 class BucketOwnerArgs:
     def __init__(__self__, *,
                  entity: Optional[pulumi.Input[str]] = None,
@@ -1492,46 +1572,6 @@ class ObjectAccessControlProjectTeamArgs:
 
 
 @pulumi.input_type
-class ObjectCustomerEncryptionArgs:
-    def __init__(__self__, *,
-                 encryption_algorithm: Optional[pulumi.Input[str]] = None,
-                 key_sha256: Optional[pulumi.Input[str]] = None):
-        """
-        Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
-        :param pulumi.Input[str] encryption_algorithm: The encryption algorithm.
-        :param pulumi.Input[str] key_sha256: SHA256 hash value of the encryption key.
-        """
-        if encryption_algorithm is not None:
-            pulumi.set(__self__, "encryption_algorithm", encryption_algorithm)
-        if key_sha256 is not None:
-            pulumi.set(__self__, "key_sha256", key_sha256)
-
-    @property
-    @pulumi.getter(name="encryptionAlgorithm")
-    def encryption_algorithm(self) -> Optional[pulumi.Input[str]]:
-        """
-        The encryption algorithm.
-        """
-        return pulumi.get(self, "encryption_algorithm")
-
-    @encryption_algorithm.setter
-    def encryption_algorithm(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "encryption_algorithm", value)
-
-    @property
-    @pulumi.getter(name="keySha256")
-    def key_sha256(self) -> Optional[pulumi.Input[str]]:
-        """
-        SHA256 hash value of the encryption key.
-        """
-        return pulumi.get(self, "key_sha256")
-
-    @key_sha256.setter
-    def key_sha256(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "key_sha256", value)
-
-
-@pulumi.input_type
 class ObjectIamPolicyBindingsItemArgs:
     def __init__(__self__, *,
                  condition: Optional[pulumi.Input['ExprArgs']] = None,
@@ -1622,45 +1662,5 @@ class ObjectIamPolicyBindingsItemArgs:
     @role.setter
     def role(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "role", value)
-
-
-@pulumi.input_type
-class ObjectOwnerArgs:
-    def __init__(__self__, *,
-                 entity: Optional[pulumi.Input[str]] = None,
-                 entity_id: Optional[pulumi.Input[str]] = None):
-        """
-        The owner of the object. This will always be the uploader of the object.
-        :param pulumi.Input[str] entity: The entity, in the form user-userId.
-        :param pulumi.Input[str] entity_id: The ID for the entity.
-        """
-        if entity is not None:
-            pulumi.set(__self__, "entity", entity)
-        if entity_id is not None:
-            pulumi.set(__self__, "entity_id", entity_id)
-
-    @property
-    @pulumi.getter
-    def entity(self) -> Optional[pulumi.Input[str]]:
-        """
-        The entity, in the form user-userId.
-        """
-        return pulumi.get(self, "entity")
-
-    @entity.setter
-    def entity(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "entity", value)
-
-    @property
-    @pulumi.getter(name="entityId")
-    def entity_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID for the entity.
-        """
-        return pulumi.get(self, "entity_id")
-
-    @entity_id.setter
-    def entity_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "entity_id", value)
 
 

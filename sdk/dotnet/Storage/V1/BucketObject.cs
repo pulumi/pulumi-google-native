@@ -79,7 +79,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
         /// </summary>
         [Output("customerEncryption")]
-        public Output<Outputs.ObjectCustomerEncryptionResponse> CustomerEncryption { get; private set; } = null!;
+        public Output<Outputs.BucketObjectCustomerEncryptionResponse> CustomerEncryption { get; private set; } = null!;
 
         /// <summary>
         /// HTTP 1.1 Entity tag for the object.
@@ -145,7 +145,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// The owner of the object. This will always be the uploader of the object.
         /// </summary>
         [Output("owner")]
-        public Output<Outputs.ObjectOwnerResponse> Owner { get; private set; } = null!;
+        public Output<Outputs.BucketObjectOwnerResponse> Owner { get; private set; } = null!;
 
         /// <summary>
         /// A server-determined value that specifies the earliest time that the object's retention period expires. This value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be provided even when temporary hold is set (so that the user can reason about policy without having to first unset the temporary hold).
@@ -316,7 +316,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
         /// </summary>
         [Input("customerEncryption")]
-        public Input<Inputs.ObjectCustomerEncryptionArgs>? CustomerEncryption { get; set; }
+        public Input<Inputs.BucketObjectCustomerEncryptionArgs>? CustomerEncryption { get; set; }
 
         /// <summary>
         /// HTTP 1.1 Entity tag for the object.
@@ -406,7 +406,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         /// The owner of the object. This will always be the uploader of the object.
         /// </summary>
         [Input("owner")]
-        public Input<Inputs.ObjectOwnerArgs>? Owner { get; set; }
+        public Input<Inputs.BucketObjectOwnerArgs>? Owner { get; set; }
 
         [Input("predefinedAcl")]
         public Input<string>? PredefinedAcl { get; set; }
