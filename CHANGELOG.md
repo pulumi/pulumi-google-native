@@ -3,6 +3,12 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
+(None)
+
+---
+
+## 0.5.0 (2021-07-12)
+
 Enhancements:
 
 - Populate fingerprint properties automatically
@@ -31,8 +37,6 @@ Enhancements:
 
 - Respect all metadata when creating `storage/*.BucketObject`
   [#74](https://github.com/pulumi/pulumi-google-native/issues/74)
-
----
 
 ## 0.4.0 (2021-06-16)
 
