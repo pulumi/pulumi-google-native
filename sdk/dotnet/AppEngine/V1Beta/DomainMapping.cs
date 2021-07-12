@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
 {
     /// <summary>
     /// Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:appengine/v1beta:DomainMapping")]
     public partial class DomainMapping : Pulumi.CustomResource

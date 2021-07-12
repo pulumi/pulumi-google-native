@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
 {
     /// <summary>
     /// Creates a catalog item.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:recommendationengine/v1beta1:CatalogItem")]
     public partial class CatalogItem : Pulumi.CustomResource

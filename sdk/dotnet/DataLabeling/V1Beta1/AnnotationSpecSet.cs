@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
 {
     /// <summary>
     /// Creates an annotation spec set by providing a set of labels.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datalabeling/v1beta1:AnnotationSpecSet")]
     public partial class AnnotationSpecSet : Pulumi.CustomResource

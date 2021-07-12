@@ -270,8 +270,8 @@ namespace Pulumi.GoogleNative.Redis.V1
         /// <summary>
         /// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Redis instances are managed and addressed at regional level so location_id here refers to a GCP region; however, users may choose which specific zone (or collection of zones for cross-zone instances) an instance should be provisioned in. Refer to location_id and alternative_location_id fields for more details.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

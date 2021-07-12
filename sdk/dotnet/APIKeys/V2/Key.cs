@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.APIKeys.V2
 {
     /// <summary>
     /// Creates a new API key. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:apikeys/v2:Key")]
     public partial class Key : Pulumi.CustomResource

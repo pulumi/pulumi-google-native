@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
 {
     /// <summary>
     /// Creates an agent environment.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v2:Environment")]
     public partial class Environment : Pulumi.CustomResource

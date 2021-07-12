@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
 {
     /// <summary>
     /// Creates new autoscaling policy.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataproc/v1beta2:AutoscalingPolicy")]
     public partial class AutoscalingPolicy : Pulumi.CustomResource

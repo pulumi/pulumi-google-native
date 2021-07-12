@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Storage.V1
 {
     /// <summary>
     /// Creates a new ACL entry on the specified object.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:storage/v1:ObjectAccessControl")]
     public partial class ObjectAccessControl : Pulumi.CustomResource

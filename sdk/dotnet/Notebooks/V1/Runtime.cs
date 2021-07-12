@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
 {
     /// <summary>
     /// Creates a new Runtime in a given project and location.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:notebooks/v1:Runtime")]
     public partial class Runtime : Pulumi.CustomResource

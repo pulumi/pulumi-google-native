@@ -96,8 +96,8 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
         /// <summary>
         /// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Storage.V1
 {
     /// <summary>
     /// Creates a new HMAC key for the specified service account.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:storage/v1:HmacKey")]
     public partial class HmacKey : Pulumi.CustomResource

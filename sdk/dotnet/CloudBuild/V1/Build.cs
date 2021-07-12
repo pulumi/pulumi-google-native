@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
 {
     /// <summary>
     /// Starts a build with the specified configuration. This method returns a long-running `Operation`, which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`).
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudbuild/v1:Build")]
     public partial class Build : Pulumi.CustomResource

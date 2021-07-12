@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 {
     /// <summary>
     /// Starts a new asynchronous job. Requires the Can View project role.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:bigquery/v2:Job")]
     public partial class Job : Pulumi.CustomResource

@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.TPU.V1
 {
     /// <summary>
     /// Creates a node.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:tpu/v1:Node")]
     public partial class Node : Pulumi.CustomResource

@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
 {
     /// <summary>
     /// Creates dataset. If success return a Dataset resource.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datalabeling/v1beta1:Dataset")]
     public partial class Dataset : Pulumi.CustomResource

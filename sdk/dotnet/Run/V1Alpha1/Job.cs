@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1
 {
     /// <summary>
     /// Create a job.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:run/v1alpha1:Job")]
     public partial class Job : Pulumi.CustomResource

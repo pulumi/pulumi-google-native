@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
 {
     /// <summary>
     /// Creates a new `Occurrence`. Use this method to create `Occurrences` for a resource.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:containeranalysis/v1alpha1:Occurrence")]
     public partial class Occurrence : Pulumi.CustomResource

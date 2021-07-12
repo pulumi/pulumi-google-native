@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
 {
     /// <summary>
     /// Creates a Microsoft AD Domain in a given project. Operation
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:managedidentities/v1alpha1:Domain")]
     public partial class Domain : Pulumi.CustomResource

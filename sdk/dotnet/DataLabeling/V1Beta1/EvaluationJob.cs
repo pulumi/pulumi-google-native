@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
 {
     /// <summary>
     /// Creates an evaluation job.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datalabeling/v1beta1:EvaluationJob")]
     public partial class EvaluationJob : Pulumi.CustomResource

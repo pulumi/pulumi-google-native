@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
 {
     /// <summary>
     /// Create a new CryptoKey within a KeyRing. CryptoKey.purpose and CryptoKey.version_template.algorithm are required.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudkms/v1:CryptoKey")]
     public partial class CryptoKey : Pulumi.CustomResource

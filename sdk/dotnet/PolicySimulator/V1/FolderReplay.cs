@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1
 {
     /// <summary>
     /// Creates and starts a Replay using the given ReplayConfig.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:policysimulator/v1:FolderReplay")]
     public partial class FolderReplay : Pulumi.CustomResource

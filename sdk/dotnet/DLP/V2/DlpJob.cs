@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.DLP.V2
 {
     /// <summary>
     /// Creates a new job to inspect storage or calculate risk metrics. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more. When no InfoTypes or CustomInfoTypes are specified in inspect jobs, the system will automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dlp/v2:DlpJob")]
     public partial class DlpJob : Pulumi.CustomResource

@@ -180,8 +180,8 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// <summary>
         /// The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("uniqueWriterIdentity")]
         public Input<string>? UniqueWriterIdentity { get; set; }

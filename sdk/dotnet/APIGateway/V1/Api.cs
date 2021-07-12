@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.APIGateway.V1
 {
     /// <summary>
     /// Creates a new Api in a given project and location.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigateway/v1:Api")]
     public partial class Api : Pulumi.CustomResource

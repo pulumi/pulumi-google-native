@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
 {
     /// <summary>
     /// Adds a new Feature.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:gkehub/v1alpha:Feature")]
     public partial class Feature : Pulumi.CustomResource

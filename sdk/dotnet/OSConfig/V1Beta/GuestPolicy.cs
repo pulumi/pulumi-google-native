@@ -138,8 +138,8 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         /// <summary>
         /// Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("packageRepositories")]
         private InputList<Inputs.PackageRepositoryArgs>? _packageRepositories;

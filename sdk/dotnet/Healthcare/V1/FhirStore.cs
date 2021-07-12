@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
 {
     /// <summary>
     /// Creates a new FHIR store within the parent dataset.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:healthcare/v1:FhirStore")]
     public partial class FhirStore : Pulumi.CustomResource

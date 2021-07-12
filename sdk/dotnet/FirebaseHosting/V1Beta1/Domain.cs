@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
 {
     /// <summary>
     /// Creates a domain mapping on the specified site.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:firebasehosting/v1beta1:Domain")]
     public partial class Domain : Pulumi.CustomResource

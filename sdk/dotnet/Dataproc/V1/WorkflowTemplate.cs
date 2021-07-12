@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
 {
     /// <summary>
     /// Creates new workflow template.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataproc/v1:WorkflowTemplate")]
     public partial class WorkflowTemplate : Pulumi.CustomResource

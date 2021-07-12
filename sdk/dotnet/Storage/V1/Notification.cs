@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Storage.V1
 {
     /// <summary>
     /// Creates a notification subscription for a given bucket.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:storage/v1:Notification")]
     public partial class Notification : Pulumi.CustomResource

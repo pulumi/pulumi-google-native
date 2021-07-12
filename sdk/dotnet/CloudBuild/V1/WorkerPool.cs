@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
 {
     /// <summary>
     /// Creates a `WorkerPool`.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudbuild/v1:WorkerPool")]
     public partial class WorkerPool : Pulumi.CustomResource

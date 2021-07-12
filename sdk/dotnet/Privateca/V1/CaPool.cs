@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Privateca.V1
 {
     /// <summary>
     /// Create a CaPool.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:privateca/v1:CaPool")]
     public partial class CaPool : Pulumi.CustomResource

@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
 {
     /// <summary>
     /// Creates an agent version. The new version points to the agent instance in the "default" environment.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v2:Version")]
     public partial class Version : Pulumi.CustomResource

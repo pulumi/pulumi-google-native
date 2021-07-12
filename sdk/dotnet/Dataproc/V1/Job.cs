@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
 {
     /// <summary>
     /// Submits a job to a cluster.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataproc/v1:Job")]
     public partial class Job : Pulumi.CustomResource

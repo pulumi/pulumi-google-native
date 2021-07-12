@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.DNS.V1
 {
     /// <summary>
     /// Atomically updates the ResourceRecordSet collection.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dns/v1:Change")]
     public partial class Change : Pulumi.CustomResource

@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
 {
     /// <summary>
     /// Creates a Cloud Dataflow job from a template.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataflow/v1b3:Template")]
     public partial class Template : Pulumi.CustomResource

@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
 {
     /// <summary>
     /// Creates a feed in a parent project/folder/organization to listen to its asset updates.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudasset/v1:Feed")]
     public partial class Feed : Pulumi.CustomResource

@@ -135,8 +135,8 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         /// <summary>
         /// Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

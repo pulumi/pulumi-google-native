@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.IAM.V1
 {
     /// <summary>
     /// Creates a new WorkloadIdentityPoolProvider in a WorkloadIdentityPool. You cannot reuse the name of a deleted provider until 30 days after deletion.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:iam/v1:Provider")]
     public partial class Provider : Pulumi.CustomResource

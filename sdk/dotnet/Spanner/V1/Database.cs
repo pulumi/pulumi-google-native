@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
 {
     /// <summary>
     /// Creates a new Cloud Spanner database and starts to prepare it for serving. The returned long-running operation will have a name of the format `/operations/` and can be used to track preparation of the database. The metadata field type is CreateDatabaseMetadata. The response field type is Database, if successful.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:spanner/v1:Database")]
     public partial class Database : Pulumi.CustomResource

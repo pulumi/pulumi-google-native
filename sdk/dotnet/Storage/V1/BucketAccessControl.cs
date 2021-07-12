@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Storage.V1
 {
     /// <summary>
     /// Creates a new ACL entry on the specified bucket.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:storage/v1:BucketAccessControl")]
     public partial class BucketAccessControl : Pulumi.CustomResource

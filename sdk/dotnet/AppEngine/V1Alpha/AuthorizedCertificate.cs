@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Alpha
 {
     /// <summary>
     /// Uploads the specified SSL certificate.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:appengine/v1alpha:AuthorizedCertificate")]
     public partial class AuthorizedCertificate : Pulumi.CustomResource

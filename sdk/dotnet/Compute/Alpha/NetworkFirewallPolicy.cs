@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 {
     /// <summary>
     /// Creates a new policy in the specified project using the data included in the request.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:NetworkFirewallPolicy")]
     public partial class NetworkFirewallPolicy : Pulumi.CustomResource

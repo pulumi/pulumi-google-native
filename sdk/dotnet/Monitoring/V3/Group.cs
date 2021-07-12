@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
 {
     /// <summary>
     /// Creates a new group.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:monitoring/v3:Group")]
     public partial class Group : Pulumi.CustomResource

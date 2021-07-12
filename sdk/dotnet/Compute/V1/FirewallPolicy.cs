@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Compute.V1
 {
     /// <summary>
     /// Creates a new policy in the specified project using the data included in the request.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/v1:FirewallPolicy")]
     public partial class FirewallPolicy : Pulumi.CustomResource

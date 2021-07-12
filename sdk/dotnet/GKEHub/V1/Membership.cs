@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1
 {
     /// <summary>
     /// Creates a new Membership. **This is currently only supported for GKE clusters on Google Cloud**. To register other clusters, follow the instructions at https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:gkehub/v1:Membership")]
     public partial class Membership : Pulumi.CustomResource

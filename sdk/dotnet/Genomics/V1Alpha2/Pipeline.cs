@@ -135,8 +135,8 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2
         /// <summary>
         /// A user specified pipeline name that does not have to be unique. This name can be used for filtering Pipelines in ListPipelines.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("outputParameters")]
         private InputList<Inputs.PipelineParameterArgs>? _outputParameters;

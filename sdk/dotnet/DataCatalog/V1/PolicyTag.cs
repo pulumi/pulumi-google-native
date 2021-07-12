@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
 {
     /// <summary>
     /// Creates a policy tag in a taxonomy.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datacatalog/v1:PolicyTag")]
     public partial class PolicyTag : Pulumi.CustomResource

@@ -126,8 +126,8 @@ namespace Pulumi.GoogleNative.Translate.V3
         /// <summary>
         /// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

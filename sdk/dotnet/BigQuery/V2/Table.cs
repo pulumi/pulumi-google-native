@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
 {
     /// <summary>
     /// Creates a new, empty table in the dataset.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:bigquery/v2:Table")]
     public partial class Table : Pulumi.CustomResource

@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
 {
     /// <summary>
     /// Creates a new Data Fusion instance in the specified project and location.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datafusion/v1beta1:Instance")]
     public partial class Instance : Pulumi.CustomResource

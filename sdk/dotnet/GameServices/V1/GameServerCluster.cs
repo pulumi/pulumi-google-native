@@ -141,8 +141,8 @@ namespace Pulumi.GoogleNative.GameServices.V1
         /// <summary>
         /// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
         /// </summary>
-        [Input("name", required: true)]
-        public Input<string> Name { get; set; } = null!;
+        [Input("name")]
+        public Input<string>? Name { get; set; }
 
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;

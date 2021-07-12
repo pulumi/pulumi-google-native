@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
 {
     /// <summary>
     /// Creates a new managed service. A managed service is immutable, and is subject to mandatory 30-day data retention. You cannot move a service or recreate it within 30 days after deletion. One producer project can own no more than 500 services. For security and reliability purposes, a production service should be hosted in a dedicated producer project. Operation
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:servicemanagement/v1:Service")]
     public partial class Service : Pulumi.CustomResource

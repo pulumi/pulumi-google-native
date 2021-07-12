@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
 {
     /// <summary>
     /// Creates a firewall rule for the application.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:appengine/v1beta:IngressRule")]
     public partial class IngressRule : Pulumi.CustomResource

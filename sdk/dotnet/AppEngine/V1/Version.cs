@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
 {
     /// <summary>
     /// Deploys code and resource files to a new version.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:appengine/v1:Version")]
     public partial class Version : Pulumi.CustomResource

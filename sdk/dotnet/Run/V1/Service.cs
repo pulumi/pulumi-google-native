@@ -11,6 +11,7 @@ namespace Pulumi.GoogleNative.Run.V1
 {
     /// <summary>
     /// Create a service.
+    /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:run/v1:Service")]
     public partial class Service : Pulumi.CustomResource
