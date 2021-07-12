@@ -17,27 +17,28 @@ __all__ = ['AccessLevelArgs', 'AccessLevel']
 class AccessLevelArgs:
     def __init__(__self__, *,
                  access_policy_id: pulumi.Input[str],
-                 name: pulumi.Input[str],
                  basic: Optional[pulumi.Input['BasicLevelArgs']] = None,
                  custom: Optional[pulumi.Input['CustomLevelArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  title: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AccessLevel resource.
-        :param pulumi.Input[str] name: Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length // of the `short_name` component is 50 characters.
         :param pulumi.Input['BasicLevelArgs'] basic: A `BasicLevel` composed of `Conditions`.
         :param pulumi.Input['CustomLevelArgs'] custom: A `CustomLevel` written in the Common Expression Language.
         :param pulumi.Input[str] description: Description of the `AccessLevel` and its use. Does not affect behavior.
+        :param pulumi.Input[str] name: Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length // of the `short_name` component is 50 characters.
         :param pulumi.Input[str] title: Human readable title. Must be unique within the Policy.
         """
         pulumi.set(__self__, "access_policy_id", access_policy_id)
-        pulumi.set(__self__, "name", name)
         if basic is not None:
             pulumi.set(__self__, "basic", basic)
         if custom is not None:
             pulumi.set(__self__, "custom", custom)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if title is not None:
             pulumi.set(__self__, "title", title)
 
@@ -49,18 +50,6 @@ class AccessLevelArgs:
     @access_policy_id.setter
     def access_policy_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "access_policy_id", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length // of the `short_name` component is 50 characters.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -97,6 +86,18 @@ class AccessLevelArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource name for the Access Level. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/accessLevels/{short_name}`. The maximum length // of the `short_name` component is 50 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -182,8 +183,6 @@ class AccessLevel(pulumi.CustomResource):
             __props__.__dict__["basic"] = basic
             __props__.__dict__["custom"] = custom
             __props__.__dict__["description"] = description
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["title"] = title
         super(AccessLevel, __self__).__init__(

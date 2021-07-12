@@ -14,25 +14,24 @@ __all__ = ['ModelArgs', 'Model']
 @pulumi.input_type
 class ModelArgs:
     def __init__(__self__, *,
-                 name: pulumi.Input[str],
                  project: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  online_prediction_console_logging: Optional[pulumi.Input[bool]] = None,
                  online_prediction_logging: Optional[pulumi.Input[bool]] = None,
                  regions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Model resource.
-        :param pulumi.Input[str] name: The name specified for the model when it was created. The model name must be unique within the project it is created in.
         :param pulumi.Input[str] description: Optional. The description specified for the model when it was created.
         :param pulumi.Input[str] etag: `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform model updates in order to avoid race conditions: An `etag` is returned in the response to `GetModel`, and systems are expected to put that etag in the request to `UpdateModel` to ensure that their change will be applied to the model as intended.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. One or more labels that you can add, to organize your models. Each label is a key-value pair, where both the key and the value are arbitrary strings that you supply. For more information, see the documentation on using labels.
+        :param pulumi.Input[str] name: The name specified for the model when it was created. The model name must be unique within the project it is created in.
         :param pulumi.Input[bool] online_prediction_console_logging: Optional. If true, online prediction nodes send `stderr` and `stdout` streams to Cloud Logging. These can be more verbose than the standard access logs (see `onlinePredictionLogging`) and can incur higher cost. However, they are helpful for debugging. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high QPS. Estimate your costs before enabling this option. Default is false.
         :param pulumi.Input[bool] online_prediction_logging: Optional. If true, online prediction access logs are sent to Cloud Logging. These logs are like standard server access logs, containing information like timestamp and latency for each request. Note that [logs may incur a cost](/stackdriver/pricing), especially if your project receives prediction requests at a high queries per second rate (QPS). Estimate your costs before enabling this option. Default is false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] regions: Optional. The list of regions where the model is going to be deployed. Only one region per model is supported. Defaults to 'us-central1' if nothing is set. See the available regions for AI Platform services. Note: * No matter where a model is deployed, it can always be accessed by users from anywhere, both for online and batch prediction. * The region for a batch prediction job is set by the region field when submitting the batch prediction job and does not take its value from this field.
         """
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "project", project)
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -40,24 +39,14 @@ class ModelArgs:
             pulumi.set(__self__, "etag", etag)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if online_prediction_console_logging is not None:
             pulumi.set(__self__, "online_prediction_console_logging", online_prediction_console_logging)
         if online_prediction_logging is not None:
             pulumi.set(__self__, "online_prediction_logging", online_prediction_logging)
         if regions is not None:
             pulumi.set(__self__, "regions", regions)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        The name specified for the model when it was created. The model name must be unique within the project it is created in.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -103,6 +92,18 @@ class ModelArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name specified for the model when it was created. The model name must be unique within the project it is created in.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="onlinePredictionConsoleLogging")
@@ -215,8 +216,6 @@ class Model(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["etag"] = etag
             __props__.__dict__["labels"] = labels
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["online_prediction_console_logging"] = online_prediction_console_logging
             __props__.__dict__["online_prediction_logging"] = online_prediction_logging

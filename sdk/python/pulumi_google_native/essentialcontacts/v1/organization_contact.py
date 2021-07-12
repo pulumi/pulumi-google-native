@@ -140,6 +140,7 @@ class OrganizationContact(pulumi.CustomResource):
                  __props__=None):
         """
         Adds a new contact for a resource.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -158,6 +159,7 @@ class OrganizationContact(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Adds a new contact for a resource.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param OrganizationContactArgs args: The arguments to use to populate this resource's properties.

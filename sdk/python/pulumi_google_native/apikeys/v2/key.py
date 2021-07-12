@@ -99,6 +99,7 @@ class Key(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new API key. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -113,6 +114,7 @@ class Key(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new API key. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param KeyArgs args: The arguments to use to populate this resource's properties.

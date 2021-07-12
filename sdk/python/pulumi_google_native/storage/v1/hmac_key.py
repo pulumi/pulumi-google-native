@@ -63,6 +63,7 @@ class HmacKey(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new HMAC key for the specified service account.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -75,6 +76,7 @@ class HmacKey(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new HMAC key for the specified service account.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param HmacKeyArgs args: The arguments to use to populate this resource's properties.

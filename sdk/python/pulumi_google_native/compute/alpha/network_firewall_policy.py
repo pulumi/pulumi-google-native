@@ -139,6 +139,7 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new policy in the specified project using the data included in the request.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -156,6 +157,7 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new policy in the specified project using the data included in the request.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param NetworkFirewallPolicyArgs args: The arguments to use to populate this resource's properties.

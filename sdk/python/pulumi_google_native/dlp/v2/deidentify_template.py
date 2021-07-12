@@ -121,6 +121,7 @@ class DeidentifyTemplate(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -137,6 +138,7 @@ class DeidentifyTemplate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates-deid to learn more.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param DeidentifyTemplateArgs args: The arguments to use to populate this resource's properties.

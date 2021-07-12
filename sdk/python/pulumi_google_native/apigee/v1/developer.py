@@ -206,6 +206,7 @@ class Developer(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a developer. Once created, the developer can register an app and obtain an API key. At creation time, a developer is set as `active`. To change the developer status, use the SetDeveloperStatus API.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -228,6 +229,7 @@ class Developer(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a developer. Once created, the developer can register an app and obtain an API key. At creation time, a developer is set as `active`. To change the developer status, use the SetDeveloperStatus API.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param DeveloperArgs args: The arguments to use to populate this resource's properties.

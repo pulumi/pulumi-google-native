@@ -113,6 +113,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new WorkloadIdentityPool. You cannot reuse the name of a deleted pool until 30 days after deletion.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -128,6 +129,7 @@ class WorkloadIdentityPool(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new WorkloadIdentityPool. You cannot reuse the name of a deleted pool until 30 days after deletion.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param WorkloadIdentityPoolArgs args: The arguments to use to populate this resource's properties.

@@ -147,6 +147,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new Response Policy Rule.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -163,6 +164,7 @@ class ResponsePolicyRule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new Response Policy Rule.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param ResponsePolicyRuleArgs args: The arguments to use to populate this resource's properties.

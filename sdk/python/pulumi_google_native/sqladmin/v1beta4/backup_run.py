@@ -312,6 +312,7 @@ class BackupRun(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new backup run on demand. This method is applicable only to Second Generation instances.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -340,6 +341,7 @@ class BackupRun(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new backup run on demand. This method is applicable only to Second Generation instances.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param BackupRunArgs args: The arguments to use to populate this resource's properties.

@@ -16,7 +16,6 @@ __all__ = ['ReportArgs', 'Report']
 class ReportArgs:
     def __init__(__self__, *,
                  metrics: pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1CustomReportMetricArgs']]],
-                 name: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  chart_type: Optional[pulumi.Input[str]] = None,
                  comments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -25,6 +24,7 @@ class ReportArgs:
                  filter: Optional[pulumi.Input[str]] = None,
                  from_time: Optional[pulumi.Input[str]] = None,
                  limit: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  offset: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1ReportPropertyArgs']]]] = None,
                  sort_by_cols: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -36,7 +36,6 @@ class ReportArgs:
         """
         The set of arguments for constructing a Report resource.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1CustomReportMetricArgs']]] metrics: This contains the list of metrics
-        :param pulumi.Input[str] name: Unique identifier for the report T his is a legacy field used to encode custom report unique id
         :param pulumi.Input[str] chart_type: This field contains the chart type for the report
         :param pulumi.Input[Sequence[pulumi.Input[str]]] comments: Legacy field: not used. This field contains a list of comments associated with custom report
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dimensions: This contains the list of dimensions for the report
@@ -44,6 +43,7 @@ class ReportArgs:
         :param pulumi.Input[str] filter: This field contains the filter expression
         :param pulumi.Input[str] from_time: Legacy field: not used. Contains the from time for the report
         :param pulumi.Input[str] limit: Legacy field: not used This field contains the limit for the result retrieved
+        :param pulumi.Input[str] name: Unique identifier for the report T his is a legacy field used to encode custom report unique id
         :param pulumi.Input[str] offset: Legacy field: not used. This field contains the offset for the data
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1ReportPropertyArgs']]] properties: This field contains report properties such as ui metadata etc.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] sort_by_cols: Legacy field: not used much. Contains the list of sort by columns
@@ -54,7 +54,6 @@ class ReportArgs:
         :param pulumi.Input[str] topk: Legacy field: not used. This field contains the top k parameter value for restricting the result
         """
         pulumi.set(__self__, "metrics", metrics)
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "organization_id", organization_id)
         if chart_type is not None:
             pulumi.set(__self__, "chart_type", chart_type)
@@ -70,6 +69,8 @@ class ReportArgs:
             pulumi.set(__self__, "from_time", from_time)
         if limit is not None:
             pulumi.set(__self__, "limit", limit)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if offset is not None:
             pulumi.set(__self__, "offset", offset)
         if properties is not None:
@@ -98,18 +99,6 @@ class ReportArgs:
     @metrics.setter
     def metrics(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudApigeeV1CustomReportMetricArgs']]]):
         pulumi.set(self, "metrics", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        Unique identifier for the report T his is a legacy field used to encode custom report unique id
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -203,6 +192,18 @@ class ReportArgs:
     @limit.setter
     def limit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "limit", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unique identifier for the report T his is a legacy field used to encode custom report unique id
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -412,8 +413,6 @@ class Report(pulumi.CustomResource):
             if metrics is None and not opts.urn:
                 raise TypeError("Missing required property 'metrics'")
             __props__.__dict__["metrics"] = metrics
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             __props__.__dict__["offset"] = offset
             if organization_id is None and not opts.urn:

@@ -94,6 +94,7 @@ class PerfSampleSeries(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a PerfSampleSeries. May return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already exists for the given Step - NOT_FOUND - The containing Step does not exist
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -107,6 +108,7 @@ class PerfSampleSeries(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a PerfSampleSeries. May return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already exists for the given Step - NOT_FOUND - The containing Step does not exist
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param PerfSampleSeriesArgs args: The arguments to use to populate this resource's properties.

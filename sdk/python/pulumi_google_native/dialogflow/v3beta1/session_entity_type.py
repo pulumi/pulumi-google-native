@@ -21,9 +21,9 @@ class SessionEntityTypeArgs:
                  entity_override_mode: pulumi.Input['SessionEntityTypeEntityOverrideMode'],
                  environment_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 name: pulumi.Input[str],
                  project: pulumi.Input[str],
-                 session_id: pulumi.Input[str]):
+                 session_id: pulumi.Input[str],
+                 name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a SessionEntityType resource.
         :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs']]] entities: The collection of entities to override or supplement the custom entity type.
@@ -35,9 +35,10 @@ class SessionEntityTypeArgs:
         pulumi.set(__self__, "entity_override_mode", entity_override_mode)
         pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "session_id", session_id)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter(name="agentId")
@@ -92,18 +93,6 @@ class SessionEntityTypeArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         return pulumi.get(self, "project")
 
@@ -119,6 +108,18 @@ class SessionEntityTypeArgs:
     @session_id.setter
     def session_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "session_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 class SessionEntityType(pulumi.CustomResource):
@@ -203,8 +204,6 @@ class SessionEntityType(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")

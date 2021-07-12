@@ -72,6 +72,7 @@ class Brand(pulumi.CustomResource):
                  __props__=None):
         """
         Constructs a new OAuth brand for the project if one does not exist. The created brand is "internal only", meaning that OAuth clients created under it only accept requests from users who belong to the same G Suite organization as the project. The brand is created in an un-reviewed status. NOTE: The "internal only" status can be manually changed in the Google Cloud console. Requires that a brand does not already exist for the project, and that the specified support email is owned by the caller.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -86,6 +87,7 @@ class Brand(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Constructs a new OAuth brand for the project if one does not exist. The created brand is "internal only", meaning that OAuth clients created under it only accept requests from users who belong to the same G Suite organization as the project. The brand is created in an un-reviewed status. NOTE: The "internal only" status can be manually changed in the Google Cloud console. Requires that a brand does not already exist for the project, and that the specified support email is owned by the caller.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param BrandArgs args: The arguments to use to populate this resource's properties.

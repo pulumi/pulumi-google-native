@@ -17,25 +17,24 @@ class ClientTlsPolicyArgs:
     def __init__(__self__, *,
                  client_tls_policy_id: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 name: pulumi.Input[str],
                  project: pulumi.Input[str],
                  client_certificate: Optional[pulumi.Input['GoogleCloudNetworksecurityV1beta1CertificateProviderArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  server_validation_ca: Optional[pulumi.Input[Sequence[pulumi.Input['ValidationCAArgs']]]] = None,
                  sni: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ClientTlsPolicy resource.
-        :param pulumi.Input[str] name: Name of the ClientTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/clientTlsPolicies/{client_tls_policy}`
         :param pulumi.Input['GoogleCloudNetworksecurityV1beta1CertificateProviderArgs'] client_certificate: Optional. Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
         :param pulumi.Input[str] description: Optional. Free-text description of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the resource.
+        :param pulumi.Input[str] name: Name of the ClientTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/clientTlsPolicies/{client_tls_policy}`
         :param pulumi.Input[Sequence[pulumi.Input['ValidationCAArgs']]] server_validation_ca: Optional. Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
         :param pulumi.Input[str] sni: Optional. Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
         """
         pulumi.set(__self__, "client_tls_policy_id", client_tls_policy_id)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "project", project)
         if client_certificate is not None:
             pulumi.set(__self__, "client_certificate", client_certificate)
@@ -43,6 +42,8 @@ class ClientTlsPolicyArgs:
             pulumi.set(__self__, "description", description)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if server_validation_ca is not None:
             pulumi.set(__self__, "server_validation_ca", server_validation_ca)
         if sni is not None:
@@ -65,18 +66,6 @@ class ClientTlsPolicyArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        Name of the ClientTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/clientTlsPolicies/{client_tls_policy}`
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -122,6 +111,18 @@ class ClientTlsPolicyArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the ClientTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/clientTlsPolicies/{client_tls_policy}`
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="serverValidationCa")
@@ -229,8 +230,6 @@ class ClientTlsPolicy(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")

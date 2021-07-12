@@ -16,9 +16,9 @@ class SecuritySettingArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 name: pulumi.Input[str],
                  project: pulumi.Input[str],
                  inspect_template: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  purge_data_types: Optional[pulumi.Input[Sequence[pulumi.Input['SecuritySettingPurgeDataTypesItem']]]] = None,
                  redaction_scope: Optional[pulumi.Input['SecuritySettingRedactionScope']] = None,
                  redaction_strategy: Optional[pulumi.Input['SecuritySettingRedactionStrategy']] = None,
@@ -26,8 +26,8 @@ class SecuritySettingArgs:
         """
         The set of arguments for constructing a SecuritySetting resource.
         :param pulumi.Input[str] display_name: The human-readable name of the security settings, unique within the location.
-        :param pulumi.Input[str] name: Resource name of the settings. Format: `projects//locations//securitySettings/`.
         :param pulumi.Input[str] inspect_template: [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR `organizations//inspectTemplates/`
+        :param pulumi.Input[str] name: Resource name of the settings. Format: `projects//locations//securitySettings/`.
         :param pulumi.Input[Sequence[pulumi.Input['SecuritySettingPurgeDataTypesItem']]] purge_data_types: List of types of data to remove when retention settings triggers purge.
         :param pulumi.Input['SecuritySettingRedactionScope'] redaction_scope: Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
         :param pulumi.Input['SecuritySettingRedactionStrategy'] redaction_strategy: Strategy that defines how we do redaction.
@@ -35,10 +35,11 @@ class SecuritySettingArgs:
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "project", project)
         if inspect_template is not None:
             pulumi.set(__self__, "inspect_template", inspect_template)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if purge_data_types is not None:
             pulumi.set(__self__, "purge_data_types", purge_data_types)
         if redaction_scope is not None:
@@ -71,18 +72,6 @@ class SecuritySettingArgs:
 
     @property
     @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        Resource name of the settings. Format: `projects//locations//securitySettings/`.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
     def project(self) -> pulumi.Input[str]:
         return pulumi.get(self, "project")
 
@@ -101,6 +90,18 @@ class SecuritySettingArgs:
     @inspect_template.setter
     def inspect_template(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "inspect_template", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource name of the settings. Format: `projects//locations//securitySettings/`.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="purgeDataTypes")
@@ -231,8 +232,6 @@ class SecuritySetting(pulumi.CustomResource):
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if project is None and not opts.urn:
                 raise TypeError("Missing required property 'project'")

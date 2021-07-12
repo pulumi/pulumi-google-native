@@ -18,32 +18,33 @@ class TargetServerArgs:
     def __init__(__self__, *,
                  environment_id: pulumi.Input[str],
                  host: pulumi.Input[str],
-                 name: pulumi.Input[str],
                  organization_id: pulumi.Input[str],
                  port: pulumi.Input[int],
                  description: Optional[pulumi.Input[str]] = None,
                  is_enabled: Optional[pulumi.Input[bool]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input['TargetServerProtocol']] = None,
                  s_sl_info: Optional[pulumi.Input['GoogleCloudApigeeV1TlsInfoArgs']] = None):
         """
         The set of arguments for constructing a TargetServer resource.
         :param pulumi.Input[str] host: The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
-        :param pulumi.Input[str] name: The resource id of this target server. Values must match the regular expression 
         :param pulumi.Input[int] port: The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
         :param pulumi.Input[str] description: Optional. A human-readable description of this TargetServer.
         :param pulumi.Input[bool] is_enabled: Optional. Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
+        :param pulumi.Input[str] name: The resource id of this target server. Values must match the regular expression 
         :param pulumi.Input['TargetServerProtocol'] protocol: Immutable. The protocol used by this TargetServer.
         :param pulumi.Input['GoogleCloudApigeeV1TlsInfoArgs'] s_sl_info: Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
         """
         pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "host", host)
-        pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "organization_id", organization_id)
         pulumi.set(__self__, "port", port)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if is_enabled is not None:
             pulumi.set(__self__, "is_enabled", is_enabled)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
         if protocol is not None:
             pulumi.set(__self__, "protocol", protocol)
         if s_sl_info is not None:
@@ -69,18 +70,6 @@ class TargetServerArgs:
     @host.setter
     def host(self, value: pulumi.Input[str]):
         pulumi.set(self, "host", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        The resource id of this target server. Values must match the regular expression 
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter(name="organizationId")
@@ -126,6 +115,18 @@ class TargetServerArgs:
     @is_enabled.setter
     def is_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "is_enabled", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource id of this target server. Values must match the regular expression 
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
     @pulumi.getter
@@ -233,8 +234,6 @@ class TargetServer(pulumi.CustomResource):
                 raise TypeError("Missing required property 'host'")
             __props__.__dict__["host"] = host
             __props__.__dict__["is_enabled"] = is_enabled
-            if name is None and not opts.urn:
-                raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")

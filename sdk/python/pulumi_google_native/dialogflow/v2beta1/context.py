@@ -136,6 +136,7 @@ class Context(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a context. If the specified context already exists, overrides the context.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -151,6 +152,7 @@ class Context(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a context. If the specified context already exists, overrides the context.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param ContextArgs args: The arguments to use to populate this resource's properties.

@@ -169,6 +169,7 @@ class Feed(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a feed in a parent project/folder/organization to listen to its asset updates.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -188,6 +189,7 @@ class Feed(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a feed in a parent project/folder/organization to listen to its asset updates.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param FeedArgs args: The arguments to use to populate this resource's properties.

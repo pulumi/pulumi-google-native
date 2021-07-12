@@ -337,6 +337,7 @@ class Instance(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new Data Fusion instance in the specified project and location.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -365,6 +366,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new Data Fusion instance in the specified project and location.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param InstanceArgs args: The arguments to use to populate this resource's properties.

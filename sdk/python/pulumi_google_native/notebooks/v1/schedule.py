@@ -146,6 +146,7 @@ class Schedule(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new Scheduled Notebook in a given project and location.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -162,6 +163,7 @@ class Schedule(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new Scheduled Notebook in a given project and location.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param ScheduleArgs args: The arguments to use to populate this resource's properties.

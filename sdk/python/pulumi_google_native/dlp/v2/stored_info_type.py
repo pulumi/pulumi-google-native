@@ -85,6 +85,7 @@ class StoredInfoType(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a pre-built stored infoType to be used for inspection. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -99,6 +100,7 @@ class StoredInfoType(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a pre-built stored infoType to be used for inspection. See https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param StoredInfoTypeArgs args: The arguments to use to populate this resource's properties.

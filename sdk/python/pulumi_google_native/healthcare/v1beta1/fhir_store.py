@@ -248,6 +248,7 @@ class FhirStore(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new FHIR store within the parent dataset.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -270,6 +271,7 @@ class FhirStore(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new FHIR store within the parent dataset.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param FhirStoreArgs args: The arguments to use to populate this resource's properties.

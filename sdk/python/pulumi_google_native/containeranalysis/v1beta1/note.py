@@ -274,6 +274,7 @@ class Note(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new note.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -299,6 +300,7 @@ class Note(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new note.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param NoteArgs args: The arguments to use to populate this resource's properties.

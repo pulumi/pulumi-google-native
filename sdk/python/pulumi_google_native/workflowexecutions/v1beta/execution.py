@@ -80,6 +80,7 @@ class Execution(pulumi.CustomResource):
                  __props__=None):
         """
         Creates a new execution using the latest revision of the given workflow.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -93,6 +94,7 @@ class Execution(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new execution using the latest revision of the given workflow.
+        Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param ExecutionArgs args: The arguments to use to populate this resource's properties.
