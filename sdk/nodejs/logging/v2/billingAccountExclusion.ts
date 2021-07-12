@@ -76,9 +76,6 @@ export class BillingAccountExclusion extends pulumi.CustomResource {
             if ((!args || args.filter === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'filter'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             inputs["billingAccountId"] = args ? args.billingAccountId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["disabled"] = args ? args.disabled : undefined;
@@ -121,5 +118,5 @@ export interface BillingAccountExclusionArgs {
     /**
      * A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
 }

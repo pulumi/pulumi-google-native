@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Create a new ImportJob within a KeyRing. ImportJob.import_method is required.
+ * Auto-naming is currently not supported for this resource.
  */
 export class ImportJob extends pulumi.CustomResource {
     /**

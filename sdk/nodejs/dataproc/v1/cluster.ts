@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a cluster in a project. The returned Operation.metadata will be ClusterOperationMetadata (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#clusteroperationmetadata).
+ * Auto-naming is currently not supported for this resource.
  */
 export class Cluster extends pulumi.CustomResource {
     /**

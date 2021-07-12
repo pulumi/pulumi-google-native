@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Starts a build with the specified configuration. This method returns a long-running `Operation`, which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`).
+ * Auto-naming is currently not supported for this resource.
  */
 export class Build extends pulumi.CustomResource {
     /**

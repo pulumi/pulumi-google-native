@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Uploads the specified SSL certificate.
+ * Auto-naming is currently not supported for this resource.
  */
 export class AuthorizedCertificate extends pulumi.CustomResource {
     /**

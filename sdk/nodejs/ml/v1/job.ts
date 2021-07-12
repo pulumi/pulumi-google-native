@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a training or a batch prediction job.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Job extends pulumi.CustomResource {
     /**

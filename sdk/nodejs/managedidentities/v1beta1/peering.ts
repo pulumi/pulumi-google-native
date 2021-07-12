@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a Peering for Managed AD instance.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Peering extends pulumi.CustomResource {
     /**

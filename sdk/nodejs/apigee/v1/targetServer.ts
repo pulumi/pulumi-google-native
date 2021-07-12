@@ -81,9 +81,6 @@ export class TargetServer extends pulumi.CustomResource {
             if ((!args || args.host === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'host'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
@@ -135,7 +132,7 @@ export interface TargetServerArgs {
     /**
      * The resource id of this target server. Values must match the regular expression 
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
     /**
      * The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.

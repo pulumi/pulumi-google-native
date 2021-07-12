@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new note.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Note extends pulumi.CustomResource {
     /**

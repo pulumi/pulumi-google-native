@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new Api in a given project and location.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Api extends pulumi.CustomResource {
     /**

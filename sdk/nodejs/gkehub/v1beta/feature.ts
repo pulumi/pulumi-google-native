@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Adds a new Feature.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Feature extends pulumi.CustomResource {
     /**

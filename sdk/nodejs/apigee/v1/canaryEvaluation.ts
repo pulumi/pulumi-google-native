@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new canary evaluation for an organization.
+ * Auto-naming is currently not supported for this resource.
  */
 export class CanaryEvaluation extends pulumi.CustomResource {
     /**

@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a Cloud Dataflow job from a template.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Template extends pulumi.CustomResource {
     /**

@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a notification subscription for a given bucket.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Notification extends pulumi.CustomResource {
     /**

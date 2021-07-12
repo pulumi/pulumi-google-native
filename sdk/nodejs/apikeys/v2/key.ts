@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new API key. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Key extends pulumi.CustomResource {
     /**

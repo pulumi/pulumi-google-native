@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new routine in the dataset.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Routine extends pulumi.CustomResource {
     /**

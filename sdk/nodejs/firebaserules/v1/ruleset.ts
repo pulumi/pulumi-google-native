@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Create a `Ruleset` from `Source`. The `Ruleset` is given a unique generated name which is returned to the caller. `Source` containing syntactic or semantics errors will result in an error response indicating the first error encountered. For a detailed view of `Source` issues, use TestRuleset.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Ruleset extends pulumi.CustomResource {
     /**

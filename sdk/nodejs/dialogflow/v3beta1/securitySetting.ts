@@ -81,9 +81,6 @@ export class SecuritySetting extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -128,7 +125,7 @@ export interface SecuritySettingArgs {
     /**
      * Resource name of the settings. Format: `projects//locations//securitySettings/`.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
      * List of types of data to remove when retention settings triggers purge.

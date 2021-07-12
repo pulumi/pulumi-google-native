@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates an agent version. The new version points to the agent instance in the "default" environment.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Version extends pulumi.CustomResource {
     /**

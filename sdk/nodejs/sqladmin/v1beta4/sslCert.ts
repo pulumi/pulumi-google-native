@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates an SSL certificate and returns it along with the private key and server certificate authority. The new certificate will not be usable until the instance is restarted.
+ * Auto-naming is currently not supported for this resource.
  */
 export class SslCert extends pulumi.CustomResource {
     /**

@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new Secret containing no SecretVersions.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Secret extends pulumi.CustomResource {
     /**

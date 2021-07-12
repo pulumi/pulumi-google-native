@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a backup.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Backup extends pulumi.CustomResource {
     /**

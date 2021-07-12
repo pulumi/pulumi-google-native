@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates an annotation spec set by providing a set of labels.
+ * Auto-naming is currently not supported for this resource.
  */
 export class AnnotationSpecSet extends pulumi.CustomResource {
     /**

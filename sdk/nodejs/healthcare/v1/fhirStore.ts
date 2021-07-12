@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new FHIR store within the parent dataset.
+ * Auto-naming is currently not supported for this resource.
  */
 export class FhirStore extends pulumi.CustomResource {
     /**

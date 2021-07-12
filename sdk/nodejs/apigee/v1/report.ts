@@ -138,9 +138,6 @@ export class Report extends pulumi.CustomResource {
             if ((!args || args.metrics === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'metrics'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             if ((!args || args.organizationId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'organizationId'");
             }
@@ -237,7 +234,7 @@ export interface ReportArgs {
     /**
      * Unique identifier for the report T his is a legacy field used to encode custom report unique id
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Legacy field: not used. This field contains the offset for the data
      */

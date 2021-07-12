@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next sequential id. If unset, state will be set to ENABLED.
+ * Auto-naming is currently not supported for this resource.
  */
 export class CryptoKeyVersion extends pulumi.CustomResource {
     /**

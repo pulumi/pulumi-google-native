@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a feed in a parent project/folder/organization to listen to its asset updates.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Feed extends pulumi.CustomResource {
     /**

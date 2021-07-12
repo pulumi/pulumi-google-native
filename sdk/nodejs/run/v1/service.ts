@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Create a service.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Service extends pulumi.CustomResource {
     /**

@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new network firewall policy in the specified project and region.
+ * Auto-naming is currently not supported for this resource.
  */
 export class RegionNetworkFirewallPolicy extends pulumi.CustomResource {
     /**

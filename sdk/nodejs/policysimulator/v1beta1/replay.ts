@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates and starts a Replay using the given ReplayConfig.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Replay extends pulumi.CustomResource {
     /**

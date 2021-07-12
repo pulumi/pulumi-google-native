@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates an entry. You can create entries only with 'FILESET', 'CLUSTER', 'DATA_STREAM', or custom types. Data Catalog automatically creates entries with other types during metadata ingestion from integrated systems. You must enable the Data Catalog API in the project identified by the `parent` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project). An entry group can have a maximum of 100,000 entries.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Entry extends pulumi.CustomResource {
     /**

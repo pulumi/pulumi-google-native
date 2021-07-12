@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Create a ServiceLevelObjective for the given Service.
+ * Auto-naming is currently not supported for this resource.
  */
 export class ServiceLevelObjective extends pulumi.CustomResource {
     /**

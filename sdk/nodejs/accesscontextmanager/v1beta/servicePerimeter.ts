@@ -70,9 +70,6 @@ export class ServicePerimeter extends pulumi.CustomResource {
             if ((!args || args.accessPolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'accessPolicyId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             inputs["accessPolicyId"] = args ? args.accessPolicyId : undefined;
             inputs["description"] = args ? args.description : undefined;
             inputs["name"] = args ? args.name : undefined;
@@ -105,7 +102,7 @@ export interface ServicePerimeterArgs {
     /**
      * Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, restricted/unrestricted service lists as well as access lists must be empty.
      */

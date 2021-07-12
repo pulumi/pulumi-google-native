@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates an Execution. The returned Execution will have the id set. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the containing History does not exist
+ * Auto-naming is currently not supported for this resource.
  */
 export class Execution extends pulumi.CustomResource {
     /**

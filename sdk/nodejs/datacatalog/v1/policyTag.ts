@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a policy tag in a taxonomy.
+ * Auto-naming is currently not supported for this resource.
  */
 export class PolicyTag extends pulumi.CustomResource {
     /**

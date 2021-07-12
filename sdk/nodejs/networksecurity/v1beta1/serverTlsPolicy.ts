@@ -82,9 +82,6 @@ export class ServerTlsPolicy extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -143,7 +140,7 @@ export interface ServerTlsPolicyArgs {
     /**
      * Name of the ServerTlsPolicy resource. It matches the pattern `projects/*&#47;locations/{location}/serverTlsPolicies/{server_tls_policy}`
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     project: pulumi.Input<string>;
     /**
      * Optional. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with allow_open as a permissive mode that allows both plain text and TLS is not supported.

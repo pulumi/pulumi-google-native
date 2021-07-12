@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a `WorkerPool` to run the builds, and returns the new worker pool.
+ * Auto-naming is currently not supported for this resource.
  */
 export class WorkerPool extends pulumi.CustomResource {
     /**

@@ -81,9 +81,6 @@ export class Glossary extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -132,6 +129,6 @@ export interface GlossaryArgs {
     /**
      * The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     project: pulumi.Input<string>;
 }

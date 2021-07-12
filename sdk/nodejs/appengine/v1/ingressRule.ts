@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a firewall rule for the application.
+ * Auto-naming is currently not supported for this resource.
  */
 export class IngressRule extends pulumi.CustomResource {
     /**

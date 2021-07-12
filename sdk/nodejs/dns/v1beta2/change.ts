@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Atomically updates the ResourceRecordSet collection.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Change extends pulumi.CustomResource {
     /**

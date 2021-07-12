@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new ACL entry on the specified object.
+ * Auto-naming is currently not supported for this resource.
  */
 export class ObjectAccessControl extends pulumi.CustomResource {
     /**

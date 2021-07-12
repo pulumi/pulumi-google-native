@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Adds a new contact for a resource.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Contact extends pulumi.CustomResource {
     /**

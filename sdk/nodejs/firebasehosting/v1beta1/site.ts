@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new Hosting Site in the specified parent Firebase project. Note that Hosting sites can take several minutes to propagate through Firebase systems.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Site extends pulumi.CustomResource {
     /**

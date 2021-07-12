@@ -6,6 +6,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a context. If the specified context already exists, overrides the context.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Context extends pulumi.CustomResource {
     /**

@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a PerfSampleSeries. May return any of the following error code(s): - ALREADY_EXISTS - PerfMetricSummary already exists for the given Step - NOT_FOUND - The containing Step does not exist
+ * Auto-naming is currently not supported for this resource.
  */
 export class PerfSampleSeries extends pulumi.CustomResource {
     /**

@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a node.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Node extends pulumi.CustomResource {
     /**

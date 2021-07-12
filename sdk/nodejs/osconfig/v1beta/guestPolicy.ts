@@ -89,9 +89,6 @@ export class GuestPolicy extends pulumi.CustomResource {
             if ((!args || args.guestPolicyId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'guestPolicyId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'name'");
-            }
             if ((!args || args.project === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
@@ -144,7 +141,7 @@ export interface GuestPolicyArgs {
     /**
      * Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
      */
-    name: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
      */

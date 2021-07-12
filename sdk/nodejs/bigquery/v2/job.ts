@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Starts a new asynchronous job. Requires the Can View project role.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Job extends pulumi.CustomResource {
     /**

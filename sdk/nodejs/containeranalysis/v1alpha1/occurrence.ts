@@ -7,6 +7,7 @@ import * as utilities from "../../utilities";
 
 /**
  * Creates a new `Occurrence`. Use this method to create `Occurrences` for a resource.
+ * Auto-naming is currently not supported for this resource.
  */
 export class Occurrence extends pulumi.CustomResource {
     /**
