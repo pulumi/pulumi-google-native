@@ -30,9 +30,6 @@ func NewTraceSink(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.OutputConfig == nil {
 		return nil, errors.New("invalid value for required argument 'OutputConfig'")
 	}
@@ -84,7 +81,7 @@ func (TraceSinkState) ElementType() reflect.Type {
 
 type traceSinkArgs struct {
 	// The canonical sink resource name, unique within the project. Must be of the form: project/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// The export destination.
 	OutputConfig OutputConfig `pulumi:"outputConfig"`
 	Project      string       `pulumi:"project"`
@@ -93,7 +90,7 @@ type traceSinkArgs struct {
 // The set of arguments for constructing a TraceSink resource.
 type TraceSinkArgs struct {
 	// The canonical sink resource name, unique within the project. Must be of the form: project/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.
-	Name pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// The export destination.
 	OutputConfig OutputConfigInput
 	Project      pulumi.StringInput

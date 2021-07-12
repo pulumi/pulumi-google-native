@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a study.
+// Auto-naming is currently not supported for this resource.
 type Study struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new occurrence.
+// Auto-naming is currently not supported for this resource.
 type Occurrence struct {
 	pulumi.CustomResourceState
 

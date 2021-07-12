@@ -48,9 +48,6 @@ func NewGuestPolicy(ctx *pulumi.Context,
 	if args.GuestPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'GuestPolicyId'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -130,7 +127,7 @@ type guestPolicyArgs struct {
 	Etag          *string `pulumi:"etag"`
 	GuestPolicyId string  `pulumi:"guestPolicyId"`
 	// Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
 	PackageRepositories []PackageRepository `pulumi:"packageRepositories"`
 	// The software packages to be managed by this policy.
@@ -150,7 +147,7 @@ type GuestPolicyArgs struct {
 	Etag          pulumi.StringPtrInput
 	GuestPolicyId pulumi.StringInput
 	// Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`.
-	Name pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// A list of package repositories to configure on the VM instance. This is done before any other configs are applied so they can use these repos. Package repositories are only configured if the corresponding package manager(s) are available.
 	PackageRepositories PackageRepositoryArrayInput
 	// The software packages to be managed by this policy.

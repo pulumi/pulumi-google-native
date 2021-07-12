@@ -42,9 +42,6 @@ func NewBillingAccountExclusion(ctx *pulumi.Context,
 	if args.Filter == nil {
 		return nil, errors.New("invalid value for required argument 'Filter'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	var resource BillingAccountExclusion
 	err := ctx.RegisterResource("google-native:logging/v2:BillingAccountExclusion", name, args, &resource, opts...)
 	if err != nil {
@@ -109,7 +106,7 @@ type billingAccountExclusionArgs struct {
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
 	Filter string `pulumi:"filter"`
 	// A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a BillingAccountExclusion resource.
@@ -122,7 +119,7 @@ type BillingAccountExclusionArgs struct {
 	// An advanced logs filter (https://cloud.google.com/logging/docs/view/advanced-queries) that matches the log entries to be excluded. By using the sample function (https://cloud.google.com/logging/docs/view/advanced-queries#sample), you can exclude less than 100% of the matching log entries. For example, the following query matches 99% of low-severity log entries from Google Cloud Storage buckets:"resource.type=gcs_bucket severity<ERROR sample(insertId, 0.99)"
 	Filter pulumi.StringInput
 	// A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods. First character has to be alphanumeric.
-	Name pulumi.StringInput
+	Name pulumi.StringPtrInput
 }
 
 func (BillingAccountExclusionArgs) ElementType() reflect.Type {

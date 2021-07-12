@@ -52,9 +52,6 @@ func NewBillingAccountSink(ctx *pulumi.Context,
 	if args.Destination == nil {
 		return nil, errors.New("invalid value for required argument 'Destination'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	var resource BillingAccountSink
 	err := ctx.RegisterResource("google-native:logging/v2:BillingAccountSink", name, args, &resource, opts...)
 	if err != nil {
@@ -147,7 +144,7 @@ type billingAccountSinkArgs struct {
 	// Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression. For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent. To only export entries from certain child projects, filter on the project part of the log name: logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
 	IncludeChildren *bool `pulumi:"includeChildren"`
 	// The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
-	Name                 string  `pulumi:"name"`
+	Name                 *string `pulumi:"name"`
 	UniqueWriterIdentity *string `pulumi:"uniqueWriterIdentity"`
 }
 
@@ -169,7 +166,7 @@ type BillingAccountSinkArgs struct {
 	// Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then logs from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression. For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent. To only export entries from certain child projects, filter on the project part of the log name: logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
 	IncludeChildren pulumi.BoolPtrInput
 	// The client-assigned sink identifier, unique within the project. Example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
-	Name                 pulumi.StringInput
+	Name                 pulumi.StringPtrInput
 	UniqueWriterIdentity pulumi.StringPtrInput
 }
 

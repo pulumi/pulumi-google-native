@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new Response Policy
+// Auto-naming is currently not supported for this resource.
 type ResponsePolicy struct {
 	pulumi.CustomResourceState
 

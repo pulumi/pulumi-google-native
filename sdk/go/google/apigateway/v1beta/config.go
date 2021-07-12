@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new ApiConfig in a given project and location.
+// Auto-naming is currently not supported for this resource.
 type Config struct {
 	pulumi.CustomResourceState
 

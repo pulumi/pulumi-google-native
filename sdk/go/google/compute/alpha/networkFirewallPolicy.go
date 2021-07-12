@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new policy in the specified project using the data included in the request.
+// Auto-naming is currently not supported for this resource.
 type NetworkFirewallPolicy struct {
 	pulumi.CustomResourceState
 

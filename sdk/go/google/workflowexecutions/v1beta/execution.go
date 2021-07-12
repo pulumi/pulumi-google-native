@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new execution using the latest revision of the given workflow.
+// Auto-naming is currently not supported for this resource.
 type Execution struct {
 	pulumi.CustomResourceState
 

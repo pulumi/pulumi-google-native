@@ -12,6 +12,7 @@ import (
 )
 
 // Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next sequential id. If unset, state will be set to ENABLED.
+// Auto-naming is currently not supported for this resource.
 type CryptoKeyVersion struct {
 	pulumi.CustomResourceState
 

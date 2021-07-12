@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a node.
+// Auto-naming is currently not supported for this resource.
 type Node struct {
 	pulumi.CustomResourceState
 

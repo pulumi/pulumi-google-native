@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new Scheduled Notebook in a given project and location.
+// Auto-naming is currently not supported for this resource.
 type Schedule struct {
 	pulumi.CustomResourceState
 

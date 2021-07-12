@@ -12,6 +12,7 @@ import (
 )
 
 // Create a Datastore for an org
+// Auto-naming is currently not supported for this resource.
 type Datastore struct {
 	pulumi.CustomResourceState
 

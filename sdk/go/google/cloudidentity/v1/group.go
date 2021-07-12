@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a Group.
+// Auto-naming is currently not supported for this resource.
 type Group struct {
 	pulumi.CustomResourceState
 

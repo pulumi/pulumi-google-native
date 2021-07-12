@@ -12,6 +12,7 @@ import (
 )
 
 // Creates an intent in the specified agent. Note: You should always train an agent prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/es/docs/training).
+// Auto-naming is currently not supported for this resource.
 type Intent struct {
 	pulumi.CustomResourceState
 

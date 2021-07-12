@@ -33,9 +33,6 @@ func NewNatAddress(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -85,15 +82,15 @@ func (NatAddressState) ElementType() reflect.Type {
 type natAddressArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// Resource ID of the NAT address.
-	Name           string `pulumi:"name"`
-	OrganizationId string `pulumi:"organizationId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
 }
 
 // The set of arguments for constructing a NatAddress resource.
 type NatAddressArgs struct {
 	InstanceId pulumi.StringInput
 	// Resource ID of the NAT address.
-	Name           pulumi.StringInput
+	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
 }
 

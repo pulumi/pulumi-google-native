@@ -12,6 +12,7 @@ import (
 )
 
 // Create a service.
+// Auto-naming is currently not supported for this resource.
 type Service struct {
 	pulumi.CustomResourceState
 

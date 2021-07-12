@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new Secret containing no SecretVersions.
+// Auto-naming is currently not supported for this resource.
 type Secret struct {
 	pulumi.CustomResourceState
 

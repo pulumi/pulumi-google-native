@@ -12,6 +12,7 @@ import (
 )
 
 // Create a new CertificateAuthority in a given Project and Location.
+// Auto-naming is currently not supported for this resource.
 type CertificateAuthority struct {
 	pulumi.CustomResourceState
 

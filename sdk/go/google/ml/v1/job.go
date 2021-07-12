@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a training or a batch prediction job.
+// Auto-naming is currently not supported for this resource.
 type Job struct {
 	pulumi.CustomResourceState
 

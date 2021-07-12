@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a `Membership`.
+// Auto-naming is currently not supported for this resource.
 type Membership struct {
 	pulumi.CustomResourceState
 

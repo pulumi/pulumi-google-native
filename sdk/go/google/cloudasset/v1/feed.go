@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a feed in a parent project/folder/organization to listen to its asset updates.
+// Auto-naming is currently not supported for this resource.
 type Feed struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new HMAC key for the specified service account.
+// Auto-naming is currently not supported for this resource.
 type HmacKey struct {
 	pulumi.CustomResourceState
 

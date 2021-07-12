@@ -35,9 +35,6 @@ func NewAttestor(ctx *pulumi.Context,
 	if args.AttestorId == nil {
 		return nil, errors.New("invalid value for required argument 'AttestorId'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -93,8 +90,8 @@ type attestorArgs struct {
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description *string `pulumi:"description"`
 	// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
-	Name    string `pulumi:"name"`
-	Project string `pulumi:"project"`
+	Name    *string `pulumi:"name"`
+	Project string  `pulumi:"project"`
 	// This specifies how an attestation will be read, and how it will be used during policy enforcement.
 	UserOwnedGrafeasNote *UserOwnedGrafeasNote `pulumi:"userOwnedGrafeasNote"`
 }
@@ -105,7 +102,7 @@ type AttestorArgs struct {
 	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
 	Description pulumi.StringPtrInput
 	// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
-	Name    pulumi.StringInput
+	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// This specifies how an attestation will be read, and how it will be used during policy enforcement.
 	UserOwnedGrafeasNote UserOwnedGrafeasNotePtrInput

@@ -44,9 +44,6 @@ func NewTargetServer(ctx *pulumi.Context,
 	if args.Host == nil {
 		return nil, errors.New("invalid value for required argument 'Host'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -121,8 +118,8 @@ type targetServerArgs struct {
 	// Optional. Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
 	IsEnabled *bool `pulumi:"isEnabled"`
 	// The resource id of this target server. Values must match the regular expression
-	Name           string `pulumi:"name"`
-	OrganizationId string `pulumi:"organizationId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
 	// The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
 	Port int `pulumi:"port"`
 	// Immutable. The protocol used by this TargetServer.
@@ -141,7 +138,7 @@ type TargetServerArgs struct {
 	// Optional. Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
 	IsEnabled pulumi.BoolPtrInput
 	// The resource id of this target server. Values must match the regular expression
-	Name           pulumi.StringInput
+	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
 	// The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
 	Port pulumi.IntInput

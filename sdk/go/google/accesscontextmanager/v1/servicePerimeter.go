@@ -41,9 +41,6 @@ func NewServicePerimeter(ctx *pulumi.Context,
 	if args.AccessPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'AccessPolicyId'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	var resource ServicePerimeter
 	err := ctx.RegisterResource("google-native:accesscontextmanager/v1:ServicePerimeter", name, args, &resource, opts...)
 	if err != nil {
@@ -108,7 +105,7 @@ type servicePerimeterArgs struct {
 	// Description of the `ServicePerimeter` and its use. Does not affect behavior.
 	Description *string `pulumi:"description"`
 	// Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
 	PerimeterType *string `pulumi:"perimeterType"`
 	// Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the "use_explicit_dry_run_spec" flag is set.
@@ -127,7 +124,7 @@ type ServicePerimeterArgs struct {
 	// Description of the `ServicePerimeter` and its use. Does not affect behavior.
 	Description pulumi.StringPtrInput
 	// Resource name for the ServicePerimeter. The `short_name` component must begin with a letter and only include alphanumeric and '_'. Format: `accessPolicies/{policy_id}/servicePerimeters/{short_name}`
-	Name pulumi.StringInput
+	Name pulumi.StringPtrInput
 	// Perimeter type indicator. A single project is allowed to be a member of single regular perimeter, but multiple service perimeter bridges. A project cannot be a included in a perimeter bridge without being included in regular perimeter. For perimeter bridges, the restricted service list as well as access level lists must be empty.
 	PerimeterType *ServicePerimeterPerimeterType
 	// Proposed (or dry run) ServicePerimeter configuration. This configuration allows to specify and test ServicePerimeter configuration without enforcing actual access restrictions. Only allowed to be set when the "use_explicit_dry_run_spec" flag is set.

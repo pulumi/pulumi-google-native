@@ -12,6 +12,7 @@ import (
 )
 
 // Creates an instruction for how data should be labeled.
+// Auto-naming is currently not supported for this resource.
 type Instruction struct {
 	pulumi.CustomResourceState
 

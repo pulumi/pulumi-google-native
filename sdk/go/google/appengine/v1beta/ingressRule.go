@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a firewall rule for the application.
+// Auto-naming is currently not supported for this resource.
 type IngressRule struct {
 	pulumi.CustomResourceState
 

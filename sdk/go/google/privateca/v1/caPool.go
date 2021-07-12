@@ -12,6 +12,7 @@ import (
 )
 
 // Create a CaPool.
+// Auto-naming is currently not supported for this resource.
 type CaPool struct {
 	pulumi.CustomResourceState
 

@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new Data Fusion instance in the specified project and location.
+// Auto-naming is currently not supported for this resource.
 type Instance struct {
 	pulumi.CustomResourceState
 

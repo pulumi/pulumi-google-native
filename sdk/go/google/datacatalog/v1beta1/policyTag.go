@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a policy tag in the specified taxonomy.
+// Auto-naming is currently not supported for this resource.
 type PolicyTag struct {
 	pulumi.CustomResourceState
 

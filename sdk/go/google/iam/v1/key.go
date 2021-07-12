@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a ServiceAccountKey.
+// Auto-naming is currently not supported for this resource.
 type Key struct {
 	pulumi.CustomResourceState
 

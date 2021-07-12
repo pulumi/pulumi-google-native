@@ -12,6 +12,7 @@ import (
 )
 
 // Creates an annotation spec set by providing a set of labels.
+// Auto-naming is currently not supported for this resource.
 type AnnotationSpecSet struct {
 	pulumi.CustomResourceState
 

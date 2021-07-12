@@ -12,6 +12,7 @@ import (
 )
 
 // Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
+// Auto-naming is currently not supported for this resource.
 type DomainMapping struct {
 	pulumi.CustomResourceState
 

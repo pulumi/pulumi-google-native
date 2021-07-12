@@ -49,9 +49,6 @@ func NewInstance(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.OrganizationId == nil {
 		return nil, errors.New("invalid value for required argument 'OrganizationId'")
 	}
@@ -140,8 +137,8 @@ type instanceArgs struct {
 	// Compute Engine location where the instance resides.
 	Location string `pulumi:"location"`
 	// Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
-	Name           string `pulumi:"name"`
-	OrganizationId string `pulumi:"organizationId"`
+	Name           *string `pulumi:"name"`
+	OrganizationId string  `pulumi:"organizationId"`
 	// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
 	PeeringCidrRange *string `pulumi:"peeringCidrRange"`
 }
@@ -157,7 +154,7 @@ type InstanceArgs struct {
 	// Compute Engine location where the instance resides.
 	Location pulumi.StringInput
 	// Resource ID of the instance. Values must match the regular expression `^a-z{0,30}[a-z\d]$`.
-	Name           pulumi.StringInput
+	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
 	// Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
 	PeeringCidrRange *InstancePeeringCidrRange

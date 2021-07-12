@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new ACL entry on the specified object.
+// Auto-naming is currently not supported for this resource.
 type ObjectAccessControl struct {
 	pulumi.CustomResourceState
 

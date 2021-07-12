@@ -12,6 +12,7 @@ import (
 )
 
 // Adds a user provided trial to a study.
+// Auto-naming is currently not supported for this resource.
 type Trial struct {
 	pulumi.CustomResourceState
 

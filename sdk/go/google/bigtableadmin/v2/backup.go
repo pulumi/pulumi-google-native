@@ -12,6 +12,7 @@ import (
 )
 
 // Starts creating a new Cloud Bigtable Backup. The returned backup long-running operation can be used to track creation of the backup. The metadata field type is CreateBackupMetadata. The response field type is Backup, if successful. Cancelling the returned operation will stop the creation and delete the backup.
+// Auto-naming is currently not supported for this resource.
 type Backup struct {
 	pulumi.CustomResourceState
 

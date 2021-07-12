@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a Cloud Dataflow job from a template.
+// Auto-naming is currently not supported for this resource.
 type Template struct {
 	pulumi.CustomResourceState
 

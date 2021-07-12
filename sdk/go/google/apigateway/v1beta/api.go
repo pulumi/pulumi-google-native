@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new Api in a given project and location.
+// Auto-naming is currently not supported for this resource.
 type Api struct {
 	pulumi.CustomResourceState
 

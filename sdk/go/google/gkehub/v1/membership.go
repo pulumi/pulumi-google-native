@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new Membership. **This is currently only supported for GKE clusters on Google Cloud**. To register other clusters, follow the instructions at https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster.
+// Auto-naming is currently not supported for this resource.
 type Membership struct {
 	pulumi.CustomResourceState
 

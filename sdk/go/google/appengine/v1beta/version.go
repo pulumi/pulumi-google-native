@@ -12,6 +12,7 @@ import (
 )
 
 // Deploys code and resource files to a new version.
+// Auto-naming is currently not supported for this resource.
 type Version struct {
 	pulumi.CustomResourceState
 

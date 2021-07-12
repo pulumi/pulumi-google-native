@@ -42,9 +42,6 @@ func NewSessionEntityType(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
-	if args.Name == nil {
-		return nil, errors.New("invalid value for required argument 'Name'")
-	}
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
@@ -103,9 +100,9 @@ type sessionEntityTypeArgs struct {
 	EnvironmentId      string `pulumi:"environmentId"`
 	Location           string `pulumi:"location"`
 	// The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
-	Name      string `pulumi:"name"`
-	Project   string `pulumi:"project"`
-	SessionId string `pulumi:"sessionId"`
+	Name      *string `pulumi:"name"`
+	Project   string  `pulumi:"project"`
+	SessionId string  `pulumi:"sessionId"`
 }
 
 // The set of arguments for constructing a SessionEntityType resource.
@@ -118,7 +115,7 @@ type SessionEntityTypeArgs struct {
 	EnvironmentId      pulumi.StringInput
 	Location           pulumi.StringInput
 	// The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
-	Name      pulumi.StringInput
+	Name      pulumi.StringPtrInput
 	Project   pulumi.StringInput
 	SessionId pulumi.StringInput
 }

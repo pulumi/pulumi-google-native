@@ -12,6 +12,7 @@ import (
 )
 
 // Starts a new asynchronous job. Requires the Can View project role.
+// Auto-naming is currently not supported for this resource.
 type Job struct {
 	pulumi.CustomResourceState
 

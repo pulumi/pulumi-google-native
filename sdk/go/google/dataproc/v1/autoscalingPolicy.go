@@ -12,6 +12,7 @@ import (
 )
 
 // Creates new autoscaling policy.
+// Auto-naming is currently not supported for this resource.
 type AutoscalingPolicy struct {
 	pulumi.CustomResourceState
 

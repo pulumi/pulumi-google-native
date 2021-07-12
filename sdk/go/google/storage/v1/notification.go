@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a notification subscription for a given bucket.
+// Auto-naming is currently not supported for this resource.
 type Notification struct {
 	pulumi.CustomResourceState
 

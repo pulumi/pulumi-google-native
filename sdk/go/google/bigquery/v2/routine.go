@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a new routine in the dataset.
+// Auto-naming is currently not supported for this resource.
 type Routine struct {
 	pulumi.CustomResourceState
 

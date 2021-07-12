@@ -12,6 +12,7 @@ import (
 )
 
 // Adds a new Feature.
+// Auto-naming is currently not supported for this resource.
 type Feature struct {
 	pulumi.CustomResourceState
 

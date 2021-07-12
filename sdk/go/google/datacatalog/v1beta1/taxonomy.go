@@ -12,6 +12,7 @@ import (
 )
 
 // Creates a taxonomy in the specified project.
+// Auto-naming is currently not supported for this resource.
 type Taxonomy struct {
 	pulumi.CustomResourceState
 

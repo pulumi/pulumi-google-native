@@ -12,6 +12,7 @@ import (
 )
 
 // Adds a new contact for a resource.
+// Auto-naming is currently not supported for this resource.
 type OrganizationContact struct {
 	pulumi.CustomResourceState
 

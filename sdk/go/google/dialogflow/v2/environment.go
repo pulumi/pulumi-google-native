@@ -12,6 +12,7 @@ import (
 )
 
 // Creates an agent environment.
+// Auto-naming is currently not supported for this resource.
 type Environment struct {
 	pulumi.CustomResourceState
 

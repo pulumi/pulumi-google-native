@@ -12,6 +12,7 @@ import (
 )
 
 // Uploads the specified SSL certificate.
+// Auto-naming is currently not supported for this resource.
 type AuthorizedCertificate struct {
 	pulumi.CustomResourceState
 
