@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Outputs
 {
 
     [OutputType]
-    public sealed class ObjectOwnerResponse
+    public sealed class BucketObjectOwnerResponse
     {
         /// <summary>
         /// The entity, in the form user-userId.
@@ -23,7 +23,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Outputs
         public readonly string EntityId;
 
         [OutputConstructor]
-        private ObjectOwnerResponse(
+        private BucketObjectOwnerResponse(
             string entity,
 
             string entityId)

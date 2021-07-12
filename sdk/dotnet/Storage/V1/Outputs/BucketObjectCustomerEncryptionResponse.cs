@@ -7,28 +7,29 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.GoogleNative.Storage.V1.Inputs
+namespace Pulumi.GoogleNative.Storage.V1.Outputs
 {
 
-    /// <summary>
-    /// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
-    /// </summary>
-    public sealed class ObjectCustomerEncryptionArgs : Pulumi.ResourceArgs
+    [OutputType]
+    public sealed class BucketObjectCustomerEncryptionResponse
     {
         /// <summary>
         /// The encryption algorithm.
         /// </summary>
-        [Input("encryptionAlgorithm")]
-        public Input<string>? EncryptionAlgorithm { get; set; }
-
+        public readonly string EncryptionAlgorithm;
         /// <summary>
         /// SHA256 hash value of the encryption key.
         /// </summary>
-        [Input("keySha256")]
-        public Input<string>? KeySha256 { get; set; }
+        public readonly string KeySha256;
 
-        public ObjectCustomerEncryptionArgs()
+        [OutputConstructor]
+        private BucketObjectCustomerEncryptionResponse(
+            string encryptionAlgorithm,
+
+            string keySha256)
         {
+            EncryptionAlgorithm = encryptionAlgorithm;
+            KeySha256 = keySha256;
         }
     }
 }

@@ -124,6 +124,9 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 
+        [Input("source")]
+        public Input<AssetOrArchive>? Source { get; set; }
+
         public JobArgs()
         {
         }
