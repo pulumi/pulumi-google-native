@@ -62,27 +62,9 @@ func GetResponsePolicyRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ResponsePolicyRule resources.
 type responsePolicyRuleState struct {
-	// Answer this query with a behavior rather than DNS data.
-	Behavior *string `pulumi:"behavior"`
-	// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
-	DnsName *string `pulumi:"dnsName"`
-	Kind    *string `pulumi:"kind"`
-	// Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
-	LocalData *ResponsePolicyRuleLocalDataResponse `pulumi:"localData"`
-	// An identifier for this rule. Must be unique with the ResponsePolicy.
-	RuleName *string `pulumi:"ruleName"`
 }
 
 type ResponsePolicyRuleState struct {
-	// Answer this query with a behavior rather than DNS data.
-	Behavior pulumi.StringPtrInput
-	// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
-	DnsName pulumi.StringPtrInput
-	Kind    pulumi.StringPtrInput
-	// Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
-	LocalData ResponsePolicyRuleLocalDataResponsePtrInput
-	// An identifier for this rule. Must be unique with the ResponsePolicy.
-	RuleName pulumi.StringPtrInput
 }
 
 func (ResponsePolicyRuleState) ElementType() reflect.Type {
@@ -91,8 +73,8 @@ func (ResponsePolicyRuleState) ElementType() reflect.Type {
 
 type responsePolicyRuleArgs struct {
 	// Answer this query with a behavior rather than DNS data.
-	Behavior          *string `pulumi:"behavior"`
-	ClientOperationId *string `pulumi:"clientOperationId"`
+	Behavior          *ResponsePolicyRuleBehavior `pulumi:"behavior"`
+	ClientOperationId *string                     `pulumi:"clientOperationId"`
 	// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
 	DnsName *string `pulumi:"dnsName"`
 	Kind    *string `pulumi:"kind"`
@@ -107,7 +89,7 @@ type responsePolicyRuleArgs struct {
 // The set of arguments for constructing a ResponsePolicyRule resource.
 type ResponsePolicyRuleArgs struct {
 	// Answer this query with a behavior rather than DNS data.
-	Behavior          *ResponsePolicyRuleBehavior
+	Behavior          ResponsePolicyRuleBehaviorPtrInput
 	ClientOperationId pulumi.StringPtrInput
 	// The DNS name (wildcard or exact) to apply this rule to. Must be unique within the Response Policy Rule.
 	DnsName pulumi.StringPtrInput

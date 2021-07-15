@@ -1706,7 +1706,7 @@ type GoogleCloudChannelV1Period struct {
 	// Total duration of Period Type defined.
 	Duration *int `pulumi:"duration"`
 	// Period Type.
-	PeriodType *string `pulumi:"periodType"`
+	PeriodType *GoogleCloudChannelV1PeriodPeriodType `pulumi:"periodType"`
 }
 
 // GoogleCloudChannelV1PeriodInput is an input type that accepts GoogleCloudChannelV1PeriodArgs and GoogleCloudChannelV1PeriodOutput values.
@@ -1725,7 +1725,7 @@ type GoogleCloudChannelV1PeriodArgs struct {
 	// Total duration of Period Type defined.
 	Duration pulumi.IntPtrInput `pulumi:"duration"`
 	// Period Type.
-	PeriodType *GoogleCloudChannelV1PeriodPeriodType `pulumi:"periodType"`
+	PeriodType GoogleCloudChannelV1PeriodPeriodTypePtrInput `pulumi:"periodType"`
 }
 
 func (GoogleCloudChannelV1PeriodArgs) ElementType() reflect.Type {
@@ -1812,8 +1812,8 @@ func (o GoogleCloudChannelV1PeriodOutput) Duration() pulumi.IntPtrOutput {
 }
 
 // Period Type.
-func (o GoogleCloudChannelV1PeriodOutput) PeriodType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudChannelV1Period) *string { return v.PeriodType }).(pulumi.StringPtrOutput)
+func (o GoogleCloudChannelV1PeriodOutput) PeriodType() GoogleCloudChannelV1PeriodPeriodTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1Period) *GoogleCloudChannelV1PeriodPeriodType { return v.PeriodType }).(GoogleCloudChannelV1PeriodPeriodTypePtrOutput)
 }
 
 type GoogleCloudChannelV1PeriodPtrOutput struct{ *pulumi.OutputState }
@@ -1845,13 +1845,13 @@ func (o GoogleCloudChannelV1PeriodPtrOutput) Duration() pulumi.IntPtrOutput {
 }
 
 // Period Type.
-func (o GoogleCloudChannelV1PeriodPtrOutput) PeriodType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1Period) *string {
+func (o GoogleCloudChannelV1PeriodPtrOutput) PeriodType() GoogleCloudChannelV1PeriodPeriodTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudChannelV1Period) *GoogleCloudChannelV1PeriodPeriodType {
 		if v == nil {
 			return nil
 		}
 		return v.PeriodType
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudChannelV1PeriodPeriodTypePtrOutput)
 }
 
 // Represents period in days/months/years.
@@ -2188,7 +2188,7 @@ type GoogleCloudChannelV1RenewalSettings struct {
 	// Describes how frequently the reseller will be billed, such as once per month.
 	PaymentCycle *GoogleCloudChannelV1Period `pulumi:"paymentCycle"`
 	// Describes how a reseller will be billed.
-	PaymentPlan *string `pulumi:"paymentPlan"`
+	PaymentPlan *GoogleCloudChannelV1RenewalSettingsPaymentPlan `pulumi:"paymentPlan"`
 	// If true and enable_renewal = true, the unit (for example seats or licenses) will be set to the number of active units at renewal time.
 	ResizeUnitCount *bool `pulumi:"resizeUnitCount"`
 }
@@ -2211,7 +2211,7 @@ type GoogleCloudChannelV1RenewalSettingsArgs struct {
 	// Describes how frequently the reseller will be billed, such as once per month.
 	PaymentCycle GoogleCloudChannelV1PeriodPtrInput `pulumi:"paymentCycle"`
 	// Describes how a reseller will be billed.
-	PaymentPlan *GoogleCloudChannelV1RenewalSettingsPaymentPlan `pulumi:"paymentPlan"`
+	PaymentPlan GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrInput `pulumi:"paymentPlan"`
 	// If true and enable_renewal = true, the unit (for example seats or licenses) will be set to the number of active units at renewal time.
 	ResizeUnitCount pulumi.BoolPtrInput `pulumi:"resizeUnitCount"`
 }
@@ -2305,8 +2305,10 @@ func (o GoogleCloudChannelV1RenewalSettingsOutput) PaymentCycle() GoogleCloudCha
 }
 
 // Describes how a reseller will be billed.
-func (o GoogleCloudChannelV1RenewalSettingsOutput) PaymentPlan() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudChannelV1RenewalSettings) *string { return v.PaymentPlan }).(pulumi.StringPtrOutput)
+func (o GoogleCloudChannelV1RenewalSettingsOutput) PaymentPlan() GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput {
+	return o.ApplyT(func(v GoogleCloudChannelV1RenewalSettings) *GoogleCloudChannelV1RenewalSettingsPaymentPlan {
+		return v.PaymentPlan
+	}).(GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput)
 }
 
 // If true and enable_renewal = true, the unit (for example seats or licenses) will be set to the number of active units at renewal time.
@@ -2353,13 +2355,13 @@ func (o GoogleCloudChannelV1RenewalSettingsPtrOutput) PaymentCycle() GoogleCloud
 }
 
 // Describes how a reseller will be billed.
-func (o GoogleCloudChannelV1RenewalSettingsPtrOutput) PaymentPlan() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudChannelV1RenewalSettings) *string {
+func (o GoogleCloudChannelV1RenewalSettingsPtrOutput) PaymentPlan() GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudChannelV1RenewalSettings) *GoogleCloudChannelV1RenewalSettingsPaymentPlan {
 		if v == nil {
 			return nil
 		}
 		return v.PaymentPlan
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput)
 }
 
 // If true and enable_renewal = true, the unit (for example seats or licenses) will be set to the number of active units at renewal time.

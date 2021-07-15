@@ -3166,11 +3166,11 @@ type GoogleCloudDialogflowCxV3beta1ExperimentResultMetric struct {
 	// Count value of a metric.
 	Count *float64 `pulumi:"count"`
 	// Count-based metric type. Only one of type or count_type is specified in each Metric.
-	CountType *string `pulumi:"countType"`
+	CountType *GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType `pulumi:"countType"`
 	// Ratio value of a metric.
 	Ratio *float64 `pulumi:"ratio"`
 	// Ratio-based metric type. Only one of type or count_type is specified in each Metric.
-	Type *string `pulumi:"type"`
+	Type *GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType `pulumi:"type"`
 }
 
 // GoogleCloudDialogflowCxV3beta1ExperimentResultMetricInput is an input type that accepts GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArgs and GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput values.
@@ -3191,11 +3191,11 @@ type GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArgs struct {
 	// Count value of a metric.
 	Count pulumi.Float64PtrInput `pulumi:"count"`
 	// Count-based metric type. Only one of type or count_type is specified in each Metric.
-	CountType *GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType `pulumi:"countType"`
+	CountType GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypePtrInput `pulumi:"countType"`
 	// Ratio value of a metric.
 	Ratio pulumi.Float64PtrInput `pulumi:"ratio"`
 	// Ratio-based metric type. Only one of type or count_type is specified in each Metric.
-	Type *GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType `pulumi:"type"`
+	Type GoogleCloudDialogflowCxV3beta1ExperimentResultMetricTypePtrInput `pulumi:"type"`
 }
 
 func (GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArgs) ElementType() reflect.Type {
@@ -3263,8 +3263,10 @@ func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput) Count() pulu
 }
 
 // Count-based metric type. Only one of type or count_type is specified in each Metric.
-func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput) CountType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentResultMetric) *string { return v.CountType }).(pulumi.StringPtrOutput)
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput) CountType() GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentResultMetric) *GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountType {
+		return v.CountType
+	}).(GoogleCloudDialogflowCxV3beta1ExperimentResultMetricCountTypePtrOutput)
 }
 
 // Ratio value of a metric.
@@ -3273,8 +3275,10 @@ func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput) Ratio() pulu
 }
 
 // Ratio-based metric type. Only one of type or count_type is specified in each Metric.
-func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentResultMetric) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o GoogleCloudDialogflowCxV3beta1ExperimentResultMetricOutput) Type() GoogleCloudDialogflowCxV3beta1ExperimentResultMetricTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1ExperimentResultMetric) *GoogleCloudDialogflowCxV3beta1ExperimentResultMetricType {
+		return v.Type
+	}).(GoogleCloudDialogflowCxV3beta1ExperimentResultMetricTypePtrOutput)
 }
 
 type GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArrayOutput struct{ *pulumi.OutputState }
@@ -5988,13 +5992,13 @@ func (o GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterActionResponseArray
 // Instructs the speech recognizer on how to process the audio content.
 type GoogleCloudDialogflowCxV3beta1InputAudioConfig struct {
 	// Audio encoding of the audio content to process.
-	AudioEncoding string `pulumi:"audioEncoding"`
+	AudioEncoding GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding `pulumi:"audioEncoding"`
 	// Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
 	EnableWordInfo *bool `pulumi:"enableWordInfo"`
 	// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
 	Model *string `pulumi:"model"`
 	// Optional. Which variant of the Speech model to use.
-	ModelVariant *string `pulumi:"modelVariant"`
+	ModelVariant *GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant `pulumi:"modelVariant"`
 	// Optional. A list of strings containing words and phrases that the speech recognizer should recognize with higher likelihood. See [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints) for more details.
 	PhraseHints []string `pulumi:"phraseHints"`
 	// Sample rate (in Hertz) of the audio content sent in the query. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics) for more details.
@@ -6017,13 +6021,13 @@ type GoogleCloudDialogflowCxV3beta1InputAudioConfigInput interface {
 // Instructs the speech recognizer on how to process the audio content.
 type GoogleCloudDialogflowCxV3beta1InputAudioConfigArgs struct {
 	// Audio encoding of the audio content to process.
-	AudioEncoding GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding `pulumi:"audioEncoding"`
+	AudioEncoding GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingInput `pulumi:"audioEncoding"`
 	// Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
 	EnableWordInfo pulumi.BoolPtrInput `pulumi:"enableWordInfo"`
 	// Optional. Which Speech model to select for the given request. Select the model best suited to your domain to get best results. If a model is not explicitly specified, then we auto-select a model based on the parameters in the InputAudioConfig. If enhanced speech model is enabled for the agent and an enhanced version of the specified model for the language does not exist, then the speech is recognized using the standard version of the specified model. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics#select-model) for more details.
 	Model pulumi.StringPtrInput `pulumi:"model"`
 	// Optional. Which variant of the Speech model to use.
-	ModelVariant *GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant `pulumi:"modelVariant"`
+	ModelVariant GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantPtrInput `pulumi:"modelVariant"`
 	// Optional. A list of strings containing words and phrases that the speech recognizer should recognize with higher likelihood. See [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints) for more details.
 	PhraseHints pulumi.StringArrayInput `pulumi:"phraseHints"`
 	// Sample rate (in Hertz) of the audio content sent in the query. Refer to [Cloud Speech API documentation](https://cloud.google.com/speech-to-text/docs/basics) for more details.
@@ -6111,8 +6115,10 @@ func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigOutput) ToGoogleCloudDialo
 }
 
 // Audio encoding of the audio content to process.
-func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigOutput) AudioEncoding() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1InputAudioConfig) string { return v.AudioEncoding }).(pulumi.StringOutput)
+func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigOutput) AudioEncoding() GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1InputAudioConfig) GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding {
+		return v.AudioEncoding
+	}).(GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingOutput)
 }
 
 // Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
@@ -6126,8 +6132,10 @@ func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigOutput) Model() pulumi.Str
 }
 
 // Optional. Which variant of the Speech model to use.
-func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigOutput) ModelVariant() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1InputAudioConfig) *string { return v.ModelVariant }).(pulumi.StringPtrOutput)
+func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigOutput) ModelVariant() GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1InputAudioConfig) *GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant {
+		return v.ModelVariant
+	}).(GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantPtrOutput)
 }
 
 // Optional. A list of strings containing words and phrases that the speech recognizer should recognize with higher likelihood. See [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints) for more details.
@@ -6166,13 +6174,13 @@ func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigPtrOutput) Elem() GoogleCl
 }
 
 // Audio encoding of the audio content to process.
-func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigPtrOutput) AudioEncoding() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1InputAudioConfig) *string {
+func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigPtrOutput) AudioEncoding() GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1InputAudioConfig) *GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncoding {
 		if v == nil {
 			return nil
 		}
 		return &v.AudioEncoding
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudDialogflowCxV3beta1InputAudioConfigAudioEncodingPtrOutput)
 }
 
 // Optional. If `true`, Dialogflow returns SpeechWordInfo in StreamingRecognitionResult with information about the recognized speech words, e.g. start and end time offsets. If false or unspecified, Speech doesn't return any word-level information.
@@ -6196,13 +6204,13 @@ func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigPtrOutput) Model() pulumi.
 }
 
 // Optional. Which variant of the Speech model to use.
-func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigPtrOutput) ModelVariant() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1InputAudioConfig) *string {
+func (o GoogleCloudDialogflowCxV3beta1InputAudioConfigPtrOutput) ModelVariant() GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1InputAudioConfig) *GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariant {
 		if v == nil {
 			return nil
 		}
 		return v.ModelVariant
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudDialogflowCxV3beta1InputAudioConfigModelVariantPtrOutput)
 }
 
 // Optional. A list of strings containing words and phrases that the speech recognizer should recognize with higher likelihood. See [the Cloud Speech documentation](https://cloud.google.com/speech-to-text/docs/basics#phrase-hints) for more details.
@@ -7618,9 +7626,9 @@ type GoogleCloudDialogflowCxV3beta1NluSettings struct {
 	// To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold. If the returned score value is less than the threshold value, then a no-match event will be triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
 	ClassificationThreshold *float64 `pulumi:"classificationThreshold"`
 	// Indicates NLU model training mode.
-	ModelTrainingMode *string `pulumi:"modelTrainingMode"`
+	ModelTrainingMode *GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode `pulumi:"modelTrainingMode"`
 	// Indicates the type of NLU model.
-	ModelType *string `pulumi:"modelType"`
+	ModelType *GoogleCloudDialogflowCxV3beta1NluSettingsModelType `pulumi:"modelType"`
 }
 
 // GoogleCloudDialogflowCxV3beta1NluSettingsInput is an input type that accepts GoogleCloudDialogflowCxV3beta1NluSettingsArgs and GoogleCloudDialogflowCxV3beta1NluSettingsOutput values.
@@ -7639,9 +7647,9 @@ type GoogleCloudDialogflowCxV3beta1NluSettingsArgs struct {
 	// To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold. If the returned score value is less than the threshold value, then a no-match event will be triggered. The score values range from 0.0 (completely uncertain) to 1.0 (completely certain). If set to 0.0, the default of 0.3 is used.
 	ClassificationThreshold pulumi.Float64PtrInput `pulumi:"classificationThreshold"`
 	// Indicates NLU model training mode.
-	ModelTrainingMode *GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode `pulumi:"modelTrainingMode"`
+	ModelTrainingMode GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModePtrInput `pulumi:"modelTrainingMode"`
 	// Indicates the type of NLU model.
-	ModelType *GoogleCloudDialogflowCxV3beta1NluSettingsModelType `pulumi:"modelType"`
+	ModelType GoogleCloudDialogflowCxV3beta1NluSettingsModelTypePtrInput `pulumi:"modelType"`
 }
 
 func (GoogleCloudDialogflowCxV3beta1NluSettingsArgs) ElementType() reflect.Type {
@@ -7728,13 +7736,17 @@ func (o GoogleCloudDialogflowCxV3beta1NluSettingsOutput) ClassificationThreshold
 }
 
 // Indicates NLU model training mode.
-func (o GoogleCloudDialogflowCxV3beta1NluSettingsOutput) ModelTrainingMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1NluSettings) *string { return v.ModelTrainingMode }).(pulumi.StringPtrOutput)
+func (o GoogleCloudDialogflowCxV3beta1NluSettingsOutput) ModelTrainingMode() GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1NluSettings) *GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode {
+		return v.ModelTrainingMode
+	}).(GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModePtrOutput)
 }
 
 // Indicates the type of NLU model.
-func (o GoogleCloudDialogflowCxV3beta1NluSettingsOutput) ModelType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1NluSettings) *string { return v.ModelType }).(pulumi.StringPtrOutput)
+func (o GoogleCloudDialogflowCxV3beta1NluSettingsOutput) ModelType() GoogleCloudDialogflowCxV3beta1NluSettingsModelTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1NluSettings) *GoogleCloudDialogflowCxV3beta1NluSettingsModelType {
+		return v.ModelType
+	}).(GoogleCloudDialogflowCxV3beta1NluSettingsModelTypePtrOutput)
 }
 
 type GoogleCloudDialogflowCxV3beta1NluSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -7768,23 +7780,23 @@ func (o GoogleCloudDialogflowCxV3beta1NluSettingsPtrOutput) ClassificationThresh
 }
 
 // Indicates NLU model training mode.
-func (o GoogleCloudDialogflowCxV3beta1NluSettingsPtrOutput) ModelTrainingMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1NluSettings) *string {
+func (o GoogleCloudDialogflowCxV3beta1NluSettingsPtrOutput) ModelTrainingMode() GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1NluSettings) *GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingMode {
 		if v == nil {
 			return nil
 		}
 		return v.ModelTrainingMode
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudDialogflowCxV3beta1NluSettingsModelTrainingModePtrOutput)
 }
 
 // Indicates the type of NLU model.
-func (o GoogleCloudDialogflowCxV3beta1NluSettingsPtrOutput) ModelType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1NluSettings) *string {
+func (o GoogleCloudDialogflowCxV3beta1NluSettingsPtrOutput) ModelType() GoogleCloudDialogflowCxV3beta1NluSettingsModelTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1NluSettings) *GoogleCloudDialogflowCxV3beta1NluSettingsModelType {
 		if v == nil {
 			return nil
 		}
 		return v.ModelType
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudDialogflowCxV3beta1NluSettingsModelTypePtrOutput)
 }
 
 // Settings related to NLU.
@@ -10764,7 +10776,7 @@ type GoogleCloudDialogflowCxV3beta1TestCaseResult struct {
 	// The resource name for the test case result. Format: `projects//locations//agents//testCases/ /results/`.
 	Name *string `pulumi:"name"`
 	// Whether the test case passed in the agent environment.
-	TestResult *string `pulumi:"testResult"`
+	TestResult *GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult `pulumi:"testResult"`
 	// The time that the test was run.
 	TestTime *string `pulumi:"testTime"`
 }
@@ -10789,7 +10801,7 @@ type GoogleCloudDialogflowCxV3beta1TestCaseResultArgs struct {
 	// The resource name for the test case result. Format: `projects//locations//agents//testCases/ /results/`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Whether the test case passed in the agent environment.
-	TestResult *GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult `pulumi:"testResult"`
+	TestResult GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrInput `pulumi:"testResult"`
 	// The time that the test was run.
 	TestTime pulumi.StringPtrInput `pulumi:"testTime"`
 }
@@ -10890,8 +10902,10 @@ func (o GoogleCloudDialogflowCxV3beta1TestCaseResultOutput) Name() pulumi.String
 }
 
 // Whether the test case passed in the agent environment.
-func (o GoogleCloudDialogflowCxV3beta1TestCaseResultOutput) TestResult() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1TestCaseResult) *string { return v.TestResult }).(pulumi.StringPtrOutput)
+func (o GoogleCloudDialogflowCxV3beta1TestCaseResultOutput) TestResult() GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowCxV3beta1TestCaseResult) *GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult {
+		return v.TestResult
+	}).(GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrOutput)
 }
 
 // The time that the test was run.
@@ -10950,13 +10964,13 @@ func (o GoogleCloudDialogflowCxV3beta1TestCaseResultPtrOutput) Name() pulumi.Str
 }
 
 // Whether the test case passed in the agent environment.
-func (o GoogleCloudDialogflowCxV3beta1TestCaseResultPtrOutput) TestResult() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1TestCaseResult) *string {
+func (o GoogleCloudDialogflowCxV3beta1TestCaseResultPtrOutput) TestResult() GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3beta1TestCaseResult) *GoogleCloudDialogflowCxV3beta1TestCaseResultTestResult {
 		if v == nil {
 			return nil
 		}
 		return v.TestResult
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudDialogflowCxV3beta1TestCaseResultTestResultPtrOutput)
 }
 
 // The time that the test was run.

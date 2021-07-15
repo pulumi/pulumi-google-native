@@ -11,7 +11,7 @@ import (
 )
 
 // Required. The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
-type GoogleDatastoreAdminV1IndexedPropertyDirection pulumi.String
+type GoogleDatastoreAdminV1IndexedPropertyDirection string
 
 const (
 	// The direction is unspecified.
@@ -23,7 +23,23 @@ const (
 )
 
 func (GoogleDatastoreAdminV1IndexedPropertyDirection) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GoogleDatastoreAdminV1IndexedPropertyDirection)(nil)).Elem()
+}
+
+func (e GoogleDatastoreAdminV1IndexedPropertyDirection) ToGoogleDatastoreAdminV1IndexedPropertyDirectionOutput() GoogleDatastoreAdminV1IndexedPropertyDirectionOutput {
+	return pulumi.ToOutput(e).(GoogleDatastoreAdminV1IndexedPropertyDirectionOutput)
+}
+
+func (e GoogleDatastoreAdminV1IndexedPropertyDirection) ToGoogleDatastoreAdminV1IndexedPropertyDirectionOutputWithContext(ctx context.Context) GoogleDatastoreAdminV1IndexedPropertyDirectionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleDatastoreAdminV1IndexedPropertyDirectionOutput)
+}
+
+func (e GoogleDatastoreAdminV1IndexedPropertyDirection) ToGoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput() GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput {
+	return e.ToGoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleDatastoreAdminV1IndexedPropertyDirection) ToGoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutputWithContext(ctx context.Context) GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput {
+	return GoogleDatastoreAdminV1IndexedPropertyDirection(e).ToGoogleDatastoreAdminV1IndexedPropertyDirectionOutputWithContext(ctx).ToGoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutputWithContext(ctx)
 }
 
 func (e GoogleDatastoreAdminV1IndexedPropertyDirection) ToStringOutput() pulumi.StringOutput {
@@ -42,8 +58,129 @@ func (e GoogleDatastoreAdminV1IndexedPropertyDirection) ToStringPtrOutputWithCon
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type GoogleDatastoreAdminV1IndexedPropertyDirectionOutput struct{ *pulumi.OutputState }
+
+func (GoogleDatastoreAdminV1IndexedPropertyDirectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDatastoreAdminV1IndexedPropertyDirection)(nil)).Elem()
+}
+
+func (o GoogleDatastoreAdminV1IndexedPropertyDirectionOutput) ToGoogleDatastoreAdminV1IndexedPropertyDirectionOutput() GoogleDatastoreAdminV1IndexedPropertyDirectionOutput {
+	return o
+}
+
+func (o GoogleDatastoreAdminV1IndexedPropertyDirectionOutput) ToGoogleDatastoreAdminV1IndexedPropertyDirectionOutputWithContext(ctx context.Context) GoogleDatastoreAdminV1IndexedPropertyDirectionOutput {
+	return o
+}
+
+func (o GoogleDatastoreAdminV1IndexedPropertyDirectionOutput) ToGoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput() GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput {
+	return o.ToGoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDatastoreAdminV1IndexedPropertyDirectionOutput) ToGoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutputWithContext(ctx context.Context) GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDatastoreAdminV1IndexedPropertyDirection) *GoogleDatastoreAdminV1IndexedPropertyDirection {
+		return &v
+	}).(GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput)
+}
+
+func (o GoogleDatastoreAdminV1IndexedPropertyDirectionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleDatastoreAdminV1IndexedPropertyDirectionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleDatastoreAdminV1IndexedPropertyDirection) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleDatastoreAdminV1IndexedPropertyDirectionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDatastoreAdminV1IndexedPropertyDirectionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleDatastoreAdminV1IndexedPropertyDirection) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) ElementType() reflect.Type {
+	return googleDatastoreAdminV1IndexedPropertyDirectionPtrType
+}
+
+func (o GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) ToGoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput() GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput {
+	return o
+}
+
+func (o GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) ToGoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutputWithContext(ctx context.Context) GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput {
+	return o
+}
+
+func (o GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleDatastoreAdminV1IndexedPropertyDirection) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) Elem() GoogleDatastoreAdminV1IndexedPropertyDirectionOutput {
+	return o.ApplyT(func(v *GoogleDatastoreAdminV1IndexedPropertyDirection) GoogleDatastoreAdminV1IndexedPropertyDirection {
+		var ret GoogleDatastoreAdminV1IndexedPropertyDirection
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GoogleDatastoreAdminV1IndexedPropertyDirectionOutput)
+}
+
+// GoogleDatastoreAdminV1IndexedPropertyDirectionInput is an input type that accepts GoogleDatastoreAdminV1IndexedPropertyDirectionArgs and GoogleDatastoreAdminV1IndexedPropertyDirectionOutput values.
+// You can construct a concrete instance of `GoogleDatastoreAdminV1IndexedPropertyDirectionInput` via:
+//
+//          GoogleDatastoreAdminV1IndexedPropertyDirectionArgs{...}
+type GoogleDatastoreAdminV1IndexedPropertyDirectionInput interface {
+	pulumi.Input
+
+	ToGoogleDatastoreAdminV1IndexedPropertyDirectionOutput() GoogleDatastoreAdminV1IndexedPropertyDirectionOutput
+	ToGoogleDatastoreAdminV1IndexedPropertyDirectionOutputWithContext(context.Context) GoogleDatastoreAdminV1IndexedPropertyDirectionOutput
+}
+
+var googleDatastoreAdminV1IndexedPropertyDirectionPtrType = reflect.TypeOf((**GoogleDatastoreAdminV1IndexedPropertyDirection)(nil)).Elem()
+
+type GoogleDatastoreAdminV1IndexedPropertyDirectionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput() GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput
+	ToGoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutputWithContext(context.Context) GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput
+}
+
+type googleDatastoreAdminV1IndexedPropertyDirectionPtr string
+
+func GoogleDatastoreAdminV1IndexedPropertyDirectionPtr(v string) GoogleDatastoreAdminV1IndexedPropertyDirectionPtrInput {
+	return (*googleDatastoreAdminV1IndexedPropertyDirectionPtr)(&v)
+}
+
+func (*googleDatastoreAdminV1IndexedPropertyDirectionPtr) ElementType() reflect.Type {
+	return googleDatastoreAdminV1IndexedPropertyDirectionPtrType
+}
+
+func (in *googleDatastoreAdminV1IndexedPropertyDirectionPtr) ToGoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput() GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput {
+	return pulumi.ToOutput(in).(GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput)
+}
+
+func (in *googleDatastoreAdminV1IndexedPropertyDirectionPtr) ToGoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutputWithContext(ctx context.Context) GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput)
+}
+
 // Required. The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
-type IndexAncestor pulumi.String
+type IndexAncestor string
 
 const (
 	// The ancestor mode is unspecified.
@@ -55,7 +192,23 @@ const (
 )
 
 func (IndexAncestor) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*IndexAncestor)(nil)).Elem()
+}
+
+func (e IndexAncestor) ToIndexAncestorOutput() IndexAncestorOutput {
+	return pulumi.ToOutput(e).(IndexAncestorOutput)
+}
+
+func (e IndexAncestor) ToIndexAncestorOutputWithContext(ctx context.Context) IndexAncestorOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(IndexAncestorOutput)
+}
+
+func (e IndexAncestor) ToIndexAncestorPtrOutput() IndexAncestorPtrOutput {
+	return e.ToIndexAncestorPtrOutputWithContext(context.Background())
+}
+
+func (e IndexAncestor) ToIndexAncestorPtrOutputWithContext(ctx context.Context) IndexAncestorPtrOutput {
+	return IndexAncestor(e).ToIndexAncestorOutputWithContext(ctx).ToIndexAncestorPtrOutputWithContext(ctx)
 }
 
 func (e IndexAncestor) ToStringOutput() pulumi.StringOutput {
@@ -72,4 +225,132 @@ func (e IndexAncestor) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e IndexAncestor) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type IndexAncestorOutput struct{ *pulumi.OutputState }
+
+func (IndexAncestorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*IndexAncestor)(nil)).Elem()
+}
+
+func (o IndexAncestorOutput) ToIndexAncestorOutput() IndexAncestorOutput {
+	return o
+}
+
+func (o IndexAncestorOutput) ToIndexAncestorOutputWithContext(ctx context.Context) IndexAncestorOutput {
+	return o
+}
+
+func (o IndexAncestorOutput) ToIndexAncestorPtrOutput() IndexAncestorPtrOutput {
+	return o.ToIndexAncestorPtrOutputWithContext(context.Background())
+}
+
+func (o IndexAncestorOutput) ToIndexAncestorPtrOutputWithContext(ctx context.Context) IndexAncestorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v IndexAncestor) *IndexAncestor {
+		return &v
+	}).(IndexAncestorPtrOutput)
+}
+
+func (o IndexAncestorOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o IndexAncestorOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IndexAncestor) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o IndexAncestorOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IndexAncestorOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e IndexAncestor) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type IndexAncestorPtrOutput struct{ *pulumi.OutputState }
+
+func (IndexAncestorPtrOutput) ElementType() reflect.Type {
+	return indexAncestorPtrType
+}
+
+func (o IndexAncestorPtrOutput) ToIndexAncestorPtrOutput() IndexAncestorPtrOutput {
+	return o
+}
+
+func (o IndexAncestorPtrOutput) ToIndexAncestorPtrOutputWithContext(ctx context.Context) IndexAncestorPtrOutput {
+	return o
+}
+
+func (o IndexAncestorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o IndexAncestorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *IndexAncestor) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o IndexAncestorPtrOutput) Elem() IndexAncestorOutput {
+	return o.ApplyT(func(v *IndexAncestor) IndexAncestor {
+		var ret IndexAncestor
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(IndexAncestorOutput)
+}
+
+// IndexAncestorInput is an input type that accepts IndexAncestorArgs and IndexAncestorOutput values.
+// You can construct a concrete instance of `IndexAncestorInput` via:
+//
+//          IndexAncestorArgs{...}
+type IndexAncestorInput interface {
+	pulumi.Input
+
+	ToIndexAncestorOutput() IndexAncestorOutput
+	ToIndexAncestorOutputWithContext(context.Context) IndexAncestorOutput
+}
+
+var indexAncestorPtrType = reflect.TypeOf((**IndexAncestor)(nil)).Elem()
+
+type IndexAncestorPtrInput interface {
+	pulumi.Input
+
+	ToIndexAncestorPtrOutput() IndexAncestorPtrOutput
+	ToIndexAncestorPtrOutputWithContext(context.Context) IndexAncestorPtrOutput
+}
+
+type indexAncestorPtr string
+
+func IndexAncestorPtr(v string) IndexAncestorPtrInput {
+	return (*indexAncestorPtr)(&v)
+}
+
+func (*indexAncestorPtr) ElementType() reflect.Type {
+	return indexAncestorPtrType
+}
+
+func (in *indexAncestorPtr) ToIndexAncestorPtrOutput() IndexAncestorPtrOutput {
+	return pulumi.ToOutput(in).(IndexAncestorPtrOutput)
+}
+
+func (in *indexAncestorPtr) ToIndexAncestorPtrOutputWithContext(ctx context.Context) IndexAncestorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(IndexAncestorPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GoogleDatastoreAdminV1IndexedPropertyDirectionOutput{})
+	pulumi.RegisterOutputType(GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput{})
+	pulumi.RegisterOutputType(IndexAncestorOutput{})
+	pulumi.RegisterOutputType(IndexAncestorPtrOutput{})
 }

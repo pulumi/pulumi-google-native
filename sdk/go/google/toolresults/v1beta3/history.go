@@ -57,25 +57,9 @@ func GetHistory(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering History resources.
 type historyState struct {
-	// A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In response: present if set during create. - In create request: optional
-	DisplayName *string `pulumi:"displayName"`
-	// A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
-	HistoryId *string `pulumi:"historyId"`
-	// A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
-	Name *string `pulumi:"name"`
-	// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
-	TestPlatform *string `pulumi:"testPlatform"`
 }
 
 type HistoryState struct {
-	// A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In response: present if set during create. - In create request: optional
-	DisplayName pulumi.StringPtrInput
-	// A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
-	HistoryId pulumi.StringPtrInput
-	// A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
-	Name pulumi.StringPtrInput
-	// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
-	TestPlatform pulumi.StringPtrInput
 }
 
 func (HistoryState) ElementType() reflect.Type {
@@ -92,7 +76,7 @@ type historyArgs struct {
 	Project   string  `pulumi:"project"`
 	RequestId *string `pulumi:"requestId"`
 	// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
-	TestPlatform *string `pulumi:"testPlatform"`
+	TestPlatform *HistoryTestPlatform `pulumi:"testPlatform"`
 }
 
 // The set of arguments for constructing a History resource.
@@ -106,7 +90,7 @@ type HistoryArgs struct {
 	Project   pulumi.StringInput
 	RequestId pulumi.StringPtrInput
 	// The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
-	TestPlatform *HistoryTestPlatform
+	TestPlatform HistoryTestPlatformPtrInput
 }
 
 func (HistoryArgs) ElementType() reflect.Type {

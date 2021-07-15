@@ -13,7 +13,7 @@ import (
 // A property of an index.
 type GoogleDatastoreAdminV1IndexedProperty struct {
 	// The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
-	Direction string `pulumi:"direction"`
+	Direction GoogleDatastoreAdminV1IndexedPropertyDirection `pulumi:"direction"`
 	// The property name to index.
 	Name string `pulumi:"name"`
 }
@@ -32,7 +32,7 @@ type GoogleDatastoreAdminV1IndexedPropertyInput interface {
 // A property of an index.
 type GoogleDatastoreAdminV1IndexedPropertyArgs struct {
 	// The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
-	Direction GoogleDatastoreAdminV1IndexedPropertyDirection `pulumi:"direction"`
+	Direction GoogleDatastoreAdminV1IndexedPropertyDirectionInput `pulumi:"direction"`
 	// The property name to index.
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -90,8 +90,10 @@ func (o GoogleDatastoreAdminV1IndexedPropertyOutput) ToGoogleDatastoreAdminV1Ind
 }
 
 // The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
-func (o GoogleDatastoreAdminV1IndexedPropertyOutput) Direction() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleDatastoreAdminV1IndexedProperty) string { return v.Direction }).(pulumi.StringOutput)
+func (o GoogleDatastoreAdminV1IndexedPropertyOutput) Direction() GoogleDatastoreAdminV1IndexedPropertyDirectionOutput {
+	return o.ApplyT(func(v GoogleDatastoreAdminV1IndexedProperty) GoogleDatastoreAdminV1IndexedPropertyDirection {
+		return v.Direction
+	}).(GoogleDatastoreAdminV1IndexedPropertyDirectionOutput)
 }
 
 // The property name to index.

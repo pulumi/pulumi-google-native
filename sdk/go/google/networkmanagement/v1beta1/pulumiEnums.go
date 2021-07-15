@@ -11,7 +11,7 @@ import (
 )
 
 // The log type that this config enables.
-type AuditLogConfigLogType pulumi.String
+type AuditLogConfigLogType string
 
 const (
 	// Default case. Should never be this.
@@ -25,7 +25,23 @@ const (
 )
 
 func (AuditLogConfigLogType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*AuditLogConfigLogType)(nil)).Elem()
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput {
+	return pulumi.ToOutput(e).(AuditLogConfigLogTypeOutput)
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypeOutputWithContext(ctx context.Context) AuditLogConfigLogTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AuditLogConfigLogTypeOutput)
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return e.ToAuditLogConfigLogTypePtrOutputWithContext(context.Background())
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return AuditLogConfigLogType(e).ToAuditLogConfigLogTypeOutputWithContext(ctx).ToAuditLogConfigLogTypePtrOutputWithContext(ctx)
 }
 
 func (e AuditLogConfigLogType) ToStringOutput() pulumi.StringOutput {
@@ -44,8 +60,129 @@ func (e AuditLogConfigLogType) ToStringPtrOutputWithContext(ctx context.Context)
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type AuditLogConfigLogTypeOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigLogTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigLogType)(nil)).Elem()
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypeOutputWithContext(ctx context.Context) AuditLogConfigLogTypeOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return o.ToAuditLogConfigLogTypePtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuditLogConfigLogType) *AuditLogConfigLogType {
+		return &v
+	}).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuditLogConfigLogType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuditLogConfigLogType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
+	return auditLogConfigLogTypePtrType
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AuditLogConfigLogType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		var ret AuditLogConfigLogType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
+}
+
+// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
+// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+//
+//          AuditLogConfigLogTypeArgs{...}
+type AuditLogConfigLogTypeInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput
+	ToAuditLogConfigLogTypeOutputWithContext(context.Context) AuditLogConfigLogTypeOutput
+}
+
+var auditLogConfigLogTypePtrType = reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
+
+type AuditLogConfigLogTypePtrInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput
+	ToAuditLogConfigLogTypePtrOutputWithContext(context.Context) AuditLogConfigLogTypePtrOutput
+}
+
+type auditLogConfigLogTypePtr string
+
+func AuditLogConfigLogTypePtr(v string) AuditLogConfigLogTypePtrInput {
+	return (*auditLogConfigLogTypePtr)(&v)
+}
+
+func (*auditLogConfigLogTypePtr) ElementType() reflect.Type {
+	return auditLogConfigLogTypePtrType
+}
+
+func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return pulumi.ToOutput(in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
 // Type of the network where the endpoint is located. Applicable only to source endpoint, as destination network type can be inferred from the source.
-type EndpointNetworkType pulumi.String
+type EndpointNetworkType string
 
 const (
 	// Default type if unspecified.
@@ -57,7 +194,23 @@ const (
 )
 
 func (EndpointNetworkType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*EndpointNetworkType)(nil)).Elem()
+}
+
+func (e EndpointNetworkType) ToEndpointNetworkTypeOutput() EndpointNetworkTypeOutput {
+	return pulumi.ToOutput(e).(EndpointNetworkTypeOutput)
+}
+
+func (e EndpointNetworkType) ToEndpointNetworkTypeOutputWithContext(ctx context.Context) EndpointNetworkTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EndpointNetworkTypeOutput)
+}
+
+func (e EndpointNetworkType) ToEndpointNetworkTypePtrOutput() EndpointNetworkTypePtrOutput {
+	return e.ToEndpointNetworkTypePtrOutputWithContext(context.Background())
+}
+
+func (e EndpointNetworkType) ToEndpointNetworkTypePtrOutputWithContext(ctx context.Context) EndpointNetworkTypePtrOutput {
+	return EndpointNetworkType(e).ToEndpointNetworkTypeOutputWithContext(ctx).ToEndpointNetworkTypePtrOutputWithContext(ctx)
 }
 
 func (e EndpointNetworkType) ToStringOutput() pulumi.StringOutput {
@@ -74,4 +227,132 @@ func (e EndpointNetworkType) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e EndpointNetworkType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type EndpointNetworkTypeOutput struct{ *pulumi.OutputState }
+
+func (EndpointNetworkTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EndpointNetworkType)(nil)).Elem()
+}
+
+func (o EndpointNetworkTypeOutput) ToEndpointNetworkTypeOutput() EndpointNetworkTypeOutput {
+	return o
+}
+
+func (o EndpointNetworkTypeOutput) ToEndpointNetworkTypeOutputWithContext(ctx context.Context) EndpointNetworkTypeOutput {
+	return o
+}
+
+func (o EndpointNetworkTypeOutput) ToEndpointNetworkTypePtrOutput() EndpointNetworkTypePtrOutput {
+	return o.ToEndpointNetworkTypePtrOutputWithContext(context.Background())
+}
+
+func (o EndpointNetworkTypeOutput) ToEndpointNetworkTypePtrOutputWithContext(ctx context.Context) EndpointNetworkTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EndpointNetworkType) *EndpointNetworkType {
+		return &v
+	}).(EndpointNetworkTypePtrOutput)
+}
+
+func (o EndpointNetworkTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EndpointNetworkTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EndpointNetworkType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EndpointNetworkTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EndpointNetworkTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EndpointNetworkType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EndpointNetworkTypePtrOutput struct{ *pulumi.OutputState }
+
+func (EndpointNetworkTypePtrOutput) ElementType() reflect.Type {
+	return endpointNetworkTypePtrType
+}
+
+func (o EndpointNetworkTypePtrOutput) ToEndpointNetworkTypePtrOutput() EndpointNetworkTypePtrOutput {
+	return o
+}
+
+func (o EndpointNetworkTypePtrOutput) ToEndpointNetworkTypePtrOutputWithContext(ctx context.Context) EndpointNetworkTypePtrOutput {
+	return o
+}
+
+func (o EndpointNetworkTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EndpointNetworkTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EndpointNetworkType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EndpointNetworkTypePtrOutput) Elem() EndpointNetworkTypeOutput {
+	return o.ApplyT(func(v *EndpointNetworkType) EndpointNetworkType {
+		var ret EndpointNetworkType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(EndpointNetworkTypeOutput)
+}
+
+// EndpointNetworkTypeInput is an input type that accepts EndpointNetworkTypeArgs and EndpointNetworkTypeOutput values.
+// You can construct a concrete instance of `EndpointNetworkTypeInput` via:
+//
+//          EndpointNetworkTypeArgs{...}
+type EndpointNetworkTypeInput interface {
+	pulumi.Input
+
+	ToEndpointNetworkTypeOutput() EndpointNetworkTypeOutput
+	ToEndpointNetworkTypeOutputWithContext(context.Context) EndpointNetworkTypeOutput
+}
+
+var endpointNetworkTypePtrType = reflect.TypeOf((**EndpointNetworkType)(nil)).Elem()
+
+type EndpointNetworkTypePtrInput interface {
+	pulumi.Input
+
+	ToEndpointNetworkTypePtrOutput() EndpointNetworkTypePtrOutput
+	ToEndpointNetworkTypePtrOutputWithContext(context.Context) EndpointNetworkTypePtrOutput
+}
+
+type endpointNetworkTypePtr string
+
+func EndpointNetworkTypePtr(v string) EndpointNetworkTypePtrInput {
+	return (*endpointNetworkTypePtr)(&v)
+}
+
+func (*endpointNetworkTypePtr) ElementType() reflect.Type {
+	return endpointNetworkTypePtrType
+}
+
+func (in *endpointNetworkTypePtr) ToEndpointNetworkTypePtrOutput() EndpointNetworkTypePtrOutput {
+	return pulumi.ToOutput(in).(EndpointNetworkTypePtrOutput)
+}
+
+func (in *endpointNetworkTypePtr) ToEndpointNetworkTypePtrOutputWithContext(ctx context.Context) EndpointNetworkTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EndpointNetworkTypePtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(EndpointNetworkTypeOutput{})
+	pulumi.RegisterOutputType(EndpointNetworkTypePtrOutput{})
 }

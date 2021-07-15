@@ -451,7 +451,7 @@ type AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *string `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
@@ -470,7 +470,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *AuditLogConfigLogType `pulumi:"logType"`
+	LogType AuditLogConfigLogTypePtrInput `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -531,8 +531,8 @@ func (o AuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
 }
 
 // The log type that this config enables.
-func (o AuditLogConfigOutput) LogType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AuditLogConfig) *string { return v.LogType }).(pulumi.StringPtrOutput)
+func (o AuditLogConfigOutput) LogType() AuditLogConfigLogTypePtrOutput {
+	return o.ApplyT(func(v AuditLogConfig) *AuditLogConfigLogType { return v.LogType }).(AuditLogConfigLogTypePtrOutput)
 }
 
 type AuditLogConfigArrayOutput struct{ *pulumi.OutputState }
@@ -1672,7 +1672,7 @@ type GoogleCloudHealthcareV1FhirBigQueryDestination struct {
 	// The configuration for the exported BigQuery schema.
 	SchemaConfig *SchemaConfig `pulumi:"schemaConfig"`
 	// Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
-	WriteDisposition *string `pulumi:"writeDisposition"`
+	WriteDisposition *GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition `pulumi:"writeDisposition"`
 }
 
 // GoogleCloudHealthcareV1FhirBigQueryDestinationInput is an input type that accepts GoogleCloudHealthcareV1FhirBigQueryDestinationArgs and GoogleCloudHealthcareV1FhirBigQueryDestinationOutput values.
@@ -1695,7 +1695,7 @@ type GoogleCloudHealthcareV1FhirBigQueryDestinationArgs struct {
 	// The configuration for the exported BigQuery schema.
 	SchemaConfig SchemaConfigPtrInput `pulumi:"schemaConfig"`
 	// Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
-	WriteDisposition *GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition `pulumi:"writeDisposition"`
+	WriteDisposition GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrInput `pulumi:"writeDisposition"`
 }
 
 func (GoogleCloudHealthcareV1FhirBigQueryDestinationArgs) ElementType() reflect.Type {
@@ -1792,8 +1792,10 @@ func (o GoogleCloudHealthcareV1FhirBigQueryDestinationOutput) SchemaConfig() Sch
 }
 
 // Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
-func (o GoogleCloudHealthcareV1FhirBigQueryDestinationOutput) WriteDisposition() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudHealthcareV1FhirBigQueryDestination) *string { return v.WriteDisposition }).(pulumi.StringPtrOutput)
+func (o GoogleCloudHealthcareV1FhirBigQueryDestinationOutput) WriteDisposition() GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput {
+	return o.ApplyT(func(v GoogleCloudHealthcareV1FhirBigQueryDestination) *GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition {
+		return v.WriteDisposition
+	}).(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput)
 }
 
 type GoogleCloudHealthcareV1FhirBigQueryDestinationPtrOutput struct{ *pulumi.OutputState }
@@ -1847,13 +1849,13 @@ func (o GoogleCloudHealthcareV1FhirBigQueryDestinationPtrOutput) SchemaConfig() 
 }
 
 // Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
-func (o GoogleCloudHealthcareV1FhirBigQueryDestinationPtrOutput) WriteDisposition() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudHealthcareV1FhirBigQueryDestination) *string {
+func (o GoogleCloudHealthcareV1FhirBigQueryDestinationPtrOutput) WriteDisposition() GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudHealthcareV1FhirBigQueryDestination) *GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition {
 		if v == nil {
 			return nil
 		}
 		return v.WriteDisposition
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput)
 }
 
 // The configuration for exporting to BigQuery.
@@ -3954,7 +3956,7 @@ type SchemaConfig struct {
 	// The depth for all recursive structures in the output analytics schema. For example, `concept` in the CodeSystem resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called `concept.concept` but not `concept.concept.concept`. If not specified or set to 0, the server will use the default value 2. The maximum depth allowed is 5.
 	RecursiveStructureDepth *string `pulumi:"recursiveStructureDepth"`
 	// Specifies the output schema type. Schema type is required.
-	SchemaType *string `pulumi:"schemaType"`
+	SchemaType *SchemaConfigSchemaType `pulumi:"schemaType"`
 }
 
 // SchemaConfigInput is an input type that accepts SchemaConfigArgs and SchemaConfigOutput values.
@@ -3973,7 +3975,7 @@ type SchemaConfigArgs struct {
 	// The depth for all recursive structures in the output analytics schema. For example, `concept` in the CodeSystem resource is a recursive structure; when the depth is 2, the CodeSystem table will have a column called `concept.concept` but not `concept.concept.concept`. If not specified or set to 0, the server will use the default value 2. The maximum depth allowed is 5.
 	RecursiveStructureDepth pulumi.StringPtrInput `pulumi:"recursiveStructureDepth"`
 	// Specifies the output schema type. Schema type is required.
-	SchemaType *SchemaConfigSchemaType `pulumi:"schemaType"`
+	SchemaType SchemaConfigSchemaTypePtrInput `pulumi:"schemaType"`
 }
 
 func (SchemaConfigArgs) ElementType() reflect.Type {
@@ -4060,8 +4062,8 @@ func (o SchemaConfigOutput) RecursiveStructureDepth() pulumi.StringPtrOutput {
 }
 
 // Specifies the output schema type. Schema type is required.
-func (o SchemaConfigOutput) SchemaType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SchemaConfig) *string { return v.SchemaType }).(pulumi.StringPtrOutput)
+func (o SchemaConfigOutput) SchemaType() SchemaConfigSchemaTypePtrOutput {
+	return o.ApplyT(func(v SchemaConfig) *SchemaConfigSchemaType { return v.SchemaType }).(SchemaConfigSchemaTypePtrOutput)
 }
 
 type SchemaConfigPtrOutput struct{ *pulumi.OutputState }
@@ -4093,13 +4095,13 @@ func (o SchemaConfigPtrOutput) RecursiveStructureDepth() pulumi.StringPtrOutput 
 }
 
 // Specifies the output schema type. Schema type is required.
-func (o SchemaConfigPtrOutput) SchemaType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SchemaConfig) *string {
+func (o SchemaConfigPtrOutput) SchemaType() SchemaConfigSchemaTypePtrOutput {
+	return o.ApplyT(func(v *SchemaConfig) *SchemaConfigSchemaType {
 		if v == nil {
 			return nil
 		}
 		return v.SchemaType
-	}).(pulumi.StringPtrOutput)
+	}).(SchemaConfigSchemaTypePtrOutput)
 }
 
 // Configuration for the FHIR BigQuery schema. Determines how the server generates the schema.
@@ -4173,7 +4175,7 @@ type SchemaPackage struct {
 	// Schema configs that are layered based on their VersionSources that match the incoming message. Schema configs present in higher indices override those in lower indices with the same message type and trigger event if their VersionSources all match an incoming message.
 	Schemas []Hl7SchemaConfig `pulumi:"schemas"`
 	// Determines how messages that fail to parse are handled.
-	SchematizedParsingType *string `pulumi:"schematizedParsingType"`
+	SchematizedParsingType *SchemaPackageSchematizedParsingType `pulumi:"schematizedParsingType"`
 	// Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message.
 	Types []Hl7TypesConfig `pulumi:"types"`
 }
@@ -4196,7 +4198,7 @@ type SchemaPackageArgs struct {
 	// Schema configs that are layered based on their VersionSources that match the incoming message. Schema configs present in higher indices override those in lower indices with the same message type and trigger event if their VersionSources all match an incoming message.
 	Schemas Hl7SchemaConfigArrayInput `pulumi:"schemas"`
 	// Determines how messages that fail to parse are handled.
-	SchematizedParsingType *SchemaPackageSchematizedParsingType `pulumi:"schematizedParsingType"`
+	SchematizedParsingType SchemaPackageSchematizedParsingTypePtrInput `pulumi:"schematizedParsingType"`
 	// Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message.
 	Types Hl7TypesConfigArrayInput `pulumi:"types"`
 }
@@ -4290,8 +4292,8 @@ func (o SchemaPackageOutput) Schemas() Hl7SchemaConfigArrayOutput {
 }
 
 // Determines how messages that fail to parse are handled.
-func (o SchemaPackageOutput) SchematizedParsingType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SchemaPackage) *string { return v.SchematizedParsingType }).(pulumi.StringPtrOutput)
+func (o SchemaPackageOutput) SchematizedParsingType() SchemaPackageSchematizedParsingTypePtrOutput {
+	return o.ApplyT(func(v SchemaPackage) *SchemaPackageSchematizedParsingType { return v.SchematizedParsingType }).(SchemaPackageSchematizedParsingTypePtrOutput)
 }
 
 // Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message.
@@ -4338,13 +4340,13 @@ func (o SchemaPackagePtrOutput) Schemas() Hl7SchemaConfigArrayOutput {
 }
 
 // Determines how messages that fail to parse are handled.
-func (o SchemaPackagePtrOutput) SchematizedParsingType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SchemaPackage) *string {
+func (o SchemaPackagePtrOutput) SchematizedParsingType() SchemaPackageSchematizedParsingTypePtrOutput {
+	return o.ApplyT(func(v *SchemaPackage) *SchemaPackageSchematizedParsingType {
 		if v == nil {
 			return nil
 		}
 		return v.SchematizedParsingType
-	}).(pulumi.StringPtrOutput)
+	}).(SchemaPackageSchematizedParsingTypePtrOutput)
 }
 
 // Schema type definitions that are layered based on their VersionSources that match the incoming message. Type definitions present in higher indices override those in lower indices with the same type name if their VersionSources all match an incoming message.
@@ -5581,7 +5583,7 @@ type Type struct {
 	// The name of this type. This would be the segment or datatype name. For example, "PID" or "XPN".
 	Name *string `pulumi:"name"`
 	// If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
-	Primitive *string `pulumi:"primitive"`
+	Primitive *TypePrimitive `pulumi:"primitive"`
 }
 
 // TypeInput is an input type that accepts TypeArgs and TypeOutput values.
@@ -5602,7 +5604,7 @@ type TypeArgs struct {
 	// The name of this type. This would be the segment or datatype name. For example, "PID" or "XPN".
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
-	Primitive *TypePrimitive `pulumi:"primitive"`
+	Primitive TypePrimitivePtrInput `pulumi:"primitive"`
 }
 
 func (TypeArgs) ElementType() reflect.Type {
@@ -5668,8 +5670,8 @@ func (o TypeOutput) Name() pulumi.StringPtrOutput {
 }
 
 // If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
-func (o TypeOutput) Primitive() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Type) *string { return v.Primitive }).(pulumi.StringPtrOutput)
+func (o TypeOutput) Primitive() TypePrimitivePtrOutput {
+	return o.ApplyT(func(v Type) *TypePrimitive { return v.Primitive }).(TypePrimitivePtrOutput)
 }
 
 type TypeArrayOutput struct{ *pulumi.OutputState }

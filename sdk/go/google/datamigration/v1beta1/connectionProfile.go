@@ -75,49 +75,9 @@ func GetConnectionProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConnectionProfile resources.
 type connectionProfileState struct {
-	// A CloudSQL database connection profile.
-	Cloudsql *CloudSqlConnectionProfileResponse `pulumi:"cloudsql"`
-	// The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-	CreateTime *string `pulumi:"createTime"`
-	// The connection profile display name.
-	DisplayName *string `pulumi:"displayName"`
-	// The error details in case of state FAILED.
-	Error *StatusResponse `pulumi:"error"`
-	// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-	Labels map[string]string `pulumi:"labels"`
-	// A MySQL database connection profile.
-	Mysql *MySqlConnectionProfileResponse `pulumi:"mysql"`
-	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
-	Name *string `pulumi:"name"`
-	// The database provider.
-	Provider *string `pulumi:"provider"`
-	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
-	State *string `pulumi:"state"`
-	// The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ConnectionProfileState struct {
-	// A CloudSQL database connection profile.
-	Cloudsql CloudSqlConnectionProfileResponsePtrInput
-	// The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-	CreateTime pulumi.StringPtrInput
-	// The connection profile display name.
-	DisplayName pulumi.StringPtrInput
-	// The error details in case of state FAILED.
-	Error StatusResponsePtrInput
-	// The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
-	Labels pulumi.StringMapInput
-	// A MySQL database connection profile.
-	Mysql MySqlConnectionProfileResponsePtrInput
-	// The name of this connection profile resource in the form of projects/{project}/locations/{location}/instances/{instance}.
-	Name pulumi.StringPtrInput
-	// The database provider.
-	Provider pulumi.StringPtrInput
-	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
-	State pulumi.StringPtrInput
-	// The timestamp when the resource was last updated. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (ConnectionProfileState) ElementType() reflect.Type {
@@ -139,10 +99,10 @@ type connectionProfileArgs struct {
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
 	// The database provider.
-	Provider  *string `pulumi:"provider"`
-	RequestId *string `pulumi:"requestId"`
+	Provider  *ConnectionProfileProvider `pulumi:"provider"`
+	RequestId *string                    `pulumi:"requestId"`
 	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
-	State *string `pulumi:"state"`
+	State *ConnectionProfileStateEnum `pulumi:"state"`
 }
 
 // The set of arguments for constructing a ConnectionProfile resource.
@@ -161,10 +121,10 @@ type ConnectionProfileArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// The database provider.
-	Provider  *ConnectionProfileProvider
+	Provider  ConnectionProfileProviderPtrInput
 	RequestId pulumi.StringPtrInput
 	// The current connection profile state (e.g. DRAFT, READY, or FAILED).
-	State *ConnectionProfileStateEnum
+	State ConnectionProfileStateEnumPtrInput
 }
 
 func (ConnectionProfileArgs) ElementType() reflect.Type {

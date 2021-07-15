@@ -75,41 +75,9 @@ func GetPeering(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Peering resources.
 type peeringState struct {
-	// The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
-	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
-	// The time the instance was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form: `projects/{project_id}/locations/global/domains/{domain_name}`
-	DomainResource *string `pulumi:"domainResource"`
-	// Optional. Resource labels to represent user provided metadata.
-	Labels map[string]string `pulumi:"labels"`
-	// Unique name of the peering in this scope including projects and location using the form: `projects/{project_id}/locations/global/peerings/{peering_id}`.
-	Name *string `pulumi:"name"`
-	// The current state of this Peering.
-	State *string `pulumi:"state"`
-	// Additional information about the current status of this peering, if available.
-	StatusMessage *string `pulumi:"statusMessage"`
-	// Last update time.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type PeeringState struct {
-	// The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
-	AuthorizedNetwork pulumi.StringPtrInput
-	// The time the instance was created.
-	CreateTime pulumi.StringPtrInput
-	// Full domain resource path for the Managed AD Domain involved in peering. The resource path should be in the form: `projects/{project_id}/locations/global/domains/{domain_name}`
-	DomainResource pulumi.StringPtrInput
-	// Optional. Resource labels to represent user provided metadata.
-	Labels pulumi.StringMapInput
-	// Unique name of the peering in this scope including projects and location using the form: `projects/{project_id}/locations/global/peerings/{peering_id}`.
-	Name pulumi.StringPtrInput
-	// The current state of this Peering.
-	State pulumi.StringPtrInput
-	// Additional information about the current status of this peering, if available.
-	StatusMessage pulumi.StringPtrInput
-	// Last update time.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (PeeringState) ElementType() reflect.Type {

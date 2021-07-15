@@ -76,45 +76,9 @@ func GetGameServerCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GameServerCluster resources.
 type gameServerClusterState struct {
-	// Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
-	AllocationPriority *string `pulumi:"allocationPriority"`
-	// The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
-	ClusterState *KubernetesClusterStateResponse `pulumi:"clusterState"`
-	// The game server cluster connection information. This information is used to manage game server clusters.
-	ConnectionInfo *GameServerClusterConnectionInfoResponse `pulumi:"connectionInfo"`
-	// The creation time.
-	CreateTime *string `pulumi:"createTime"`
-	// Human readable description of the cluster.
-	Description *string `pulumi:"description"`
-	// ETag of the resource.
-	Etag *string `pulumi:"etag"`
-	// The labels associated with this game server cluster. Each label is a key-value pair.
-	Labels map[string]string `pulumi:"labels"`
-	// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
-	Name *string `pulumi:"name"`
-	// The last-modified time.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type GameServerClusterState struct {
-	// Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
-	AllocationPriority pulumi.StringPtrInput
-	// The state of the Kubernetes cluster, this will be available if 'view' is set to `FULL` in the relevant List/Get/Preview request.
-	ClusterState KubernetesClusterStateResponsePtrInput
-	// The game server cluster connection information. This information is used to manage game server clusters.
-	ConnectionInfo GameServerClusterConnectionInfoResponsePtrInput
-	// The creation time.
-	CreateTime pulumi.StringPtrInput
-	// Human readable description of the cluster.
-	Description pulumi.StringPtrInput
-	// ETag of the resource.
-	Etag pulumi.StringPtrInput
-	// The labels associated with this game server cluster. Each label is a key-value pair.
-	Labels pulumi.StringMapInput
-	// The resource name of the game server cluster, in the following form: `projects/{project}/locations/{location}/realms/{realm}/gameServerClusters/{cluster}`. For example, `projects/my-project/locations/{location}/realms/zanzibar/gameServerClusters/my-onprem-cluster`.
-	Name pulumi.StringPtrInput
-	// The last-modified time.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (GameServerClusterState) ElementType() reflect.Type {
@@ -123,7 +87,7 @@ func (GameServerClusterState) ElementType() reflect.Type {
 
 type gameServerClusterArgs struct {
 	// Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
-	AllocationPriority *string `pulumi:"allocationPriority"`
+	AllocationPriority *GameServerClusterAllocationPriority `pulumi:"allocationPriority"`
 	// The game server cluster connection information. This information is used to manage game server clusters.
 	ConnectionInfo *GameServerClusterConnectionInfo `pulumi:"connectionInfo"`
 	// Human readable description of the cluster.
@@ -143,7 +107,7 @@ type gameServerClusterArgs struct {
 // The set of arguments for constructing a GameServerCluster resource.
 type GameServerClusterArgs struct {
 	// Optional. The allocation priority assigned to the game server cluster. Game server clusters receive new game server allocations based on the relative allocation priorites set for each cluster, if the realm is configured for multicluster allocation.
-	AllocationPriority *GameServerClusterAllocationPriority
+	AllocationPriority GameServerClusterAllocationPriorityPtrInput
 	// The game server cluster connection information. This information is used to manage game server clusters.
 	ConnectionInfo GameServerClusterConnectionInfoPtrInput
 	// Human readable description of the cluster.

@@ -13,7 +13,7 @@ import (
 // Settings for WorkerPool autoscaling.
 type AutoscalingSettings struct {
 	// The algorithm to use for autoscaling.
-	Algorithm *string `pulumi:"algorithm"`
+	Algorithm *AutoscalingSettingsAlgorithm `pulumi:"algorithm"`
 	// The maximum number of workers to cap scaling at.
 	MaxNumWorkers *int `pulumi:"maxNumWorkers"`
 }
@@ -32,7 +32,7 @@ type AutoscalingSettingsInput interface {
 // Settings for WorkerPool autoscaling.
 type AutoscalingSettingsArgs struct {
 	// The algorithm to use for autoscaling.
-	Algorithm *AutoscalingSettingsAlgorithm `pulumi:"algorithm"`
+	Algorithm AutoscalingSettingsAlgorithmPtrInput `pulumi:"algorithm"`
 	// The maximum number of workers to cap scaling at.
 	MaxNumWorkers pulumi.IntPtrInput `pulumi:"maxNumWorkers"`
 }
@@ -116,8 +116,8 @@ func (o AutoscalingSettingsOutput) ToAutoscalingSettingsPtrOutputWithContext(ctx
 }
 
 // The algorithm to use for autoscaling.
-func (o AutoscalingSettingsOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AutoscalingSettings) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
+func (o AutoscalingSettingsOutput) Algorithm() AutoscalingSettingsAlgorithmPtrOutput {
+	return o.ApplyT(func(v AutoscalingSettings) *AutoscalingSettingsAlgorithm { return v.Algorithm }).(AutoscalingSettingsAlgorithmPtrOutput)
 }
 
 // The maximum number of workers to cap scaling at.
@@ -144,13 +144,13 @@ func (o AutoscalingSettingsPtrOutput) Elem() AutoscalingSettingsOutput {
 }
 
 // The algorithm to use for autoscaling.
-func (o AutoscalingSettingsPtrOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AutoscalingSettings) *string {
+func (o AutoscalingSettingsPtrOutput) Algorithm() AutoscalingSettingsAlgorithmPtrOutput {
+	return o.ApplyT(func(v *AutoscalingSettings) *AutoscalingSettingsAlgorithm {
 		if v == nil {
 			return nil
 		}
 		return v.Algorithm
-	}).(pulumi.StringPtrOutput)
+	}).(AutoscalingSettingsAlgorithmPtrOutput)
 }
 
 // The maximum number of workers to cap scaling at.
@@ -2320,7 +2320,7 @@ type Environment struct {
 	// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options.
 	Experiments []string `pulumi:"experiments"`
 	// Which Flexible Resource Scheduling mode to run in.
-	FlexResourceSchedulingGoal *string `pulumi:"flexResourceSchedulingGoal"`
+	FlexResourceSchedulingGoal *EnvironmentFlexResourceSchedulingGoal `pulumi:"flexResourceSchedulingGoal"`
 	// Experimental settings.
 	InternalExperiments map[string]string `pulumi:"internalExperiments"`
 	// The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
@@ -2367,7 +2367,7 @@ type EnvironmentArgs struct {
 	// The list of experiments to enable. This field should be used for SDK related experiments and not for service related experiments. The proper field for service related experiments is service_options.
 	Experiments pulumi.StringArrayInput `pulumi:"experiments"`
 	// Which Flexible Resource Scheduling mode to run in.
-	FlexResourceSchedulingGoal *EnvironmentFlexResourceSchedulingGoal `pulumi:"flexResourceSchedulingGoal"`
+	FlexResourceSchedulingGoal EnvironmentFlexResourceSchedulingGoalPtrInput `pulumi:"flexResourceSchedulingGoal"`
 	// Experimental settings.
 	InternalExperiments pulumi.StringMapInput `pulumi:"internalExperiments"`
 	// The Cloud Dataflow SDK pipeline options specified by the user. These options are passed through the service and are used to recreate the SDK pipeline options on the worker in a language agnostic and platform independent way.
@@ -2491,8 +2491,8 @@ func (o EnvironmentOutput) Experiments() pulumi.StringArrayOutput {
 }
 
 // Which Flexible Resource Scheduling mode to run in.
-func (o EnvironmentOutput) FlexResourceSchedulingGoal() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Environment) *string { return v.FlexResourceSchedulingGoal }).(pulumi.StringPtrOutput)
+func (o EnvironmentOutput) FlexResourceSchedulingGoal() EnvironmentFlexResourceSchedulingGoalPtrOutput {
+	return o.ApplyT(func(v Environment) *EnvironmentFlexResourceSchedulingGoal { return v.FlexResourceSchedulingGoal }).(EnvironmentFlexResourceSchedulingGoalPtrOutput)
 }
 
 // Experimental settings.
@@ -2609,13 +2609,13 @@ func (o EnvironmentPtrOutput) Experiments() pulumi.StringArrayOutput {
 }
 
 // Which Flexible Resource Scheduling mode to run in.
-func (o EnvironmentPtrOutput) FlexResourceSchedulingGoal() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Environment) *string {
+func (o EnvironmentPtrOutput) FlexResourceSchedulingGoal() EnvironmentFlexResourceSchedulingGoalPtrOutput {
+	return o.ApplyT(func(v *Environment) *EnvironmentFlexResourceSchedulingGoal {
 		if v == nil {
 			return nil
 		}
 		return v.FlexResourceSchedulingGoal
-	}).(pulumi.StringPtrOutput)
+	}).(EnvironmentFlexResourceSchedulingGoalPtrOutput)
 }
 
 // Experimental settings.
@@ -3173,7 +3173,7 @@ type ExecutionStageState struct {
 	// The name of the execution stage.
 	ExecutionStageName *string `pulumi:"executionStageName"`
 	// Executions stage states allow the same set of values as JobState.
-	ExecutionStageState *string `pulumi:"executionStageState"`
+	ExecutionStageState *ExecutionStageStateExecutionStageState `pulumi:"executionStageState"`
 }
 
 // ExecutionStageStateInput is an input type that accepts ExecutionStageStateArgs and ExecutionStageStateOutput values.
@@ -3194,7 +3194,7 @@ type ExecutionStageStateArgs struct {
 	// The name of the execution stage.
 	ExecutionStageName pulumi.StringPtrInput `pulumi:"executionStageName"`
 	// Executions stage states allow the same set of values as JobState.
-	ExecutionStageState *ExecutionStageStateExecutionStageState `pulumi:"executionStageState"`
+	ExecutionStageState ExecutionStageStateExecutionStageStatePtrInput `pulumi:"executionStageState"`
 }
 
 func (ExecutionStageStateArgs) ElementType() reflect.Type {
@@ -3260,8 +3260,8 @@ func (o ExecutionStageStateOutput) ExecutionStageName() pulumi.StringPtrOutput {
 }
 
 // Executions stage states allow the same set of values as JobState.
-func (o ExecutionStageStateOutput) ExecutionStageState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExecutionStageState) *string { return v.ExecutionStageState }).(pulumi.StringPtrOutput)
+func (o ExecutionStageStateOutput) ExecutionStageState() ExecutionStageStateExecutionStageStatePtrOutput {
+	return o.ApplyT(func(v ExecutionStageState) *ExecutionStageStateExecutionStageState { return v.ExecutionStageState }).(ExecutionStageStateExecutionStageStatePtrOutput)
 }
 
 type ExecutionStageStateArrayOutput struct{ *pulumi.OutputState }
@@ -3413,7 +3413,7 @@ type ExecutionStageSummary struct {
 	// Input sources for this stage.
 	InputSource []StageSource `pulumi:"inputSource"`
 	// Type of transform this stage is executing.
-	Kind *string `pulumi:"kind"`
+	Kind *ExecutionStageSummaryKind `pulumi:"kind"`
 	// Dataflow service generated name for this stage.
 	Name *string `pulumi:"name"`
 	// Output sources for this stage.
@@ -3444,7 +3444,7 @@ type ExecutionStageSummaryArgs struct {
 	// Input sources for this stage.
 	InputSource StageSourceArrayInput `pulumi:"inputSource"`
 	// Type of transform this stage is executing.
-	Kind *ExecutionStageSummaryKind `pulumi:"kind"`
+	Kind ExecutionStageSummaryKindPtrInput `pulumi:"kind"`
 	// Dataflow service generated name for this stage.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Output sources for this stage.
@@ -3526,8 +3526,8 @@ func (o ExecutionStageSummaryOutput) InputSource() StageSourceArrayOutput {
 }
 
 // Type of transform this stage is executing.
-func (o ExecutionStageSummaryOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExecutionStageSummary) *string { return v.Kind }).(pulumi.StringPtrOutput)
+func (o ExecutionStageSummaryOutput) Kind() ExecutionStageSummaryKindPtrOutput {
+	return o.ApplyT(func(v ExecutionStageSummary) *ExecutionStageSummaryKind { return v.Kind }).(ExecutionStageSummaryKindPtrOutput)
 }
 
 // Dataflow service generated name for this stage.
@@ -5360,7 +5360,7 @@ type RuntimeEnvironment struct {
 	// Whether to enable Streaming Engine for the job.
 	EnableStreamingEngine *bool `pulumi:"enableStreamingEngine"`
 	// Configuration for VM IPs.
-	IpConfiguration *string `pulumi:"ipConfiguration"`
+	IpConfiguration *RuntimeEnvironmentIpConfiguration `pulumi:"ipConfiguration"`
 	// Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
 	KmsKeyName *string `pulumi:"kmsKeyName"`
 	// The machine type to use for the job. Defaults to the value from the template if not specified.
@@ -5407,7 +5407,7 @@ type RuntimeEnvironmentArgs struct {
 	// Whether to enable Streaming Engine for the job.
 	EnableStreamingEngine pulumi.BoolPtrInput `pulumi:"enableStreamingEngine"`
 	// Configuration for VM IPs.
-	IpConfiguration *RuntimeEnvironmentIpConfiguration `pulumi:"ipConfiguration"`
+	IpConfiguration RuntimeEnvironmentIpConfigurationPtrInput `pulumi:"ipConfiguration"`
 	// Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
 	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
 	// The machine type to use for the job. Defaults to the value from the template if not specified.
@@ -5531,8 +5531,8 @@ func (o RuntimeEnvironmentOutput) EnableStreamingEngine() pulumi.BoolPtrOutput {
 }
 
 // Configuration for VM IPs.
-func (o RuntimeEnvironmentOutput) IpConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RuntimeEnvironment) *string { return v.IpConfiguration }).(pulumi.StringPtrOutput)
+func (o RuntimeEnvironmentOutput) IpConfiguration() RuntimeEnvironmentIpConfigurationPtrOutput {
+	return o.ApplyT(func(v RuntimeEnvironment) *RuntimeEnvironmentIpConfiguration { return v.IpConfiguration }).(RuntimeEnvironmentIpConfigurationPtrOutput)
 }
 
 // Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
@@ -5649,13 +5649,13 @@ func (o RuntimeEnvironmentPtrOutput) EnableStreamingEngine() pulumi.BoolPtrOutpu
 }
 
 // Configuration for VM IPs.
-func (o RuntimeEnvironmentPtrOutput) IpConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RuntimeEnvironment) *string {
+func (o RuntimeEnvironmentPtrOutput) IpConfiguration() RuntimeEnvironmentIpConfigurationPtrOutput {
+	return o.ApplyT(func(v *RuntimeEnvironment) *RuntimeEnvironmentIpConfiguration {
 		if v == nil {
 			return nil
 		}
 		return v.IpConfiguration
-	}).(pulumi.StringPtrOutput)
+	}).(RuntimeEnvironmentIpConfigurationPtrOutput)
 }
 
 // Name for the Cloud KMS key for the job. Key format is: projects//locations//keyRings//cryptoKeys/
@@ -6313,7 +6313,7 @@ func (o SdkHarnessContainerImageResponseArrayOutput) Index(i pulumi.IntInput) Sd
 // The version of the SDK used to run the job.
 type SdkVersion struct {
 	// The support status for this SDK version.
-	SdkSupportStatus *string `pulumi:"sdkSupportStatus"`
+	SdkSupportStatus *SdkVersionSdkSupportStatus `pulumi:"sdkSupportStatus"`
 	// The version of the SDK used to run the job.
 	Version *string `pulumi:"version"`
 	// A readable string describing the version of the SDK.
@@ -6334,7 +6334,7 @@ type SdkVersionInput interface {
 // The version of the SDK used to run the job.
 type SdkVersionArgs struct {
 	// The support status for this SDK version.
-	SdkSupportStatus *SdkVersionSdkSupportStatus `pulumi:"sdkSupportStatus"`
+	SdkSupportStatus SdkVersionSdkSupportStatusPtrInput `pulumi:"sdkSupportStatus"`
 	// The version of the SDK used to run the job.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 	// A readable string describing the version of the SDK.
@@ -6420,8 +6420,8 @@ func (o SdkVersionOutput) ToSdkVersionPtrOutputWithContext(ctx context.Context) 
 }
 
 // The support status for this SDK version.
-func (o SdkVersionOutput) SdkSupportStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SdkVersion) *string { return v.SdkSupportStatus }).(pulumi.StringPtrOutput)
+func (o SdkVersionOutput) SdkSupportStatus() SdkVersionSdkSupportStatusPtrOutput {
+	return o.ApplyT(func(v SdkVersion) *SdkVersionSdkSupportStatus { return v.SdkSupportStatus }).(SdkVersionSdkSupportStatusPtrOutput)
 }
 
 // The version of the SDK used to run the job.
@@ -6453,13 +6453,13 @@ func (o SdkVersionPtrOutput) Elem() SdkVersionOutput {
 }
 
 // The support status for this SDK version.
-func (o SdkVersionPtrOutput) SdkSupportStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SdkVersion) *string {
+func (o SdkVersionPtrOutput) SdkSupportStatus() SdkVersionSdkSupportStatusPtrOutput {
+	return o.ApplyT(func(v *SdkVersion) *SdkVersionSdkSupportStatus {
 		if v == nil {
 			return nil
 		}
 		return v.SdkSupportStatus
-	}).(pulumi.StringPtrOutput)
+	}).(SdkVersionSdkSupportStatusPtrOutput)
 }
 
 // The version of the SDK used to run the job.
@@ -8426,7 +8426,7 @@ type TransformSummary struct {
 	// User names for all collection inputs to this transform.
 	InputCollectionName []string `pulumi:"inputCollectionName"`
 	// Type of transform.
-	Kind *string `pulumi:"kind"`
+	Kind *TransformSummaryKind `pulumi:"kind"`
 	// User provided name for this transform instance.
 	Name *string `pulumi:"name"`
 	// User names for all collection outputs to this transform.
@@ -8453,7 +8453,7 @@ type TransformSummaryArgs struct {
 	// User names for all collection inputs to this transform.
 	InputCollectionName pulumi.StringArrayInput `pulumi:"inputCollectionName"`
 	// Type of transform.
-	Kind *TransformSummaryKind `pulumi:"kind"`
+	Kind TransformSummaryKindPtrInput `pulumi:"kind"`
 	// User provided name for this transform instance.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// User names for all collection outputs to this transform.
@@ -8528,8 +8528,8 @@ func (o TransformSummaryOutput) InputCollectionName() pulumi.StringArrayOutput {
 }
 
 // Type of transform.
-func (o TransformSummaryOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TransformSummary) *string { return v.Kind }).(pulumi.StringPtrOutput)
+func (o TransformSummaryOutput) Kind() TransformSummaryKindPtrOutput {
+	return o.ApplyT(func(v TransformSummary) *TransformSummaryKind { return v.Kind }).(TransformSummaryKindPtrOutput)
 }
 
 // User provided name for this transform instance.
@@ -8705,7 +8705,7 @@ type WorkerPool struct {
 	// Data disks that are used by a VM in this workflow.
 	DataDisks []Disk `pulumi:"dataDisks"`
 	// The default package set to install. This allows the service to select a default set of packages which are useful to worker harnesses written in a particular language.
-	DefaultPackageSet *string `pulumi:"defaultPackageSet"`
+	DefaultPackageSet *WorkerPoolDefaultPackageSet `pulumi:"defaultPackageSet"`
 	// Size of root disk for VMs, in GB. If zero or unspecified, the service will attempt to choose a reasonable default.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
 	// Fully qualified source image for disks.
@@ -8713,7 +8713,7 @@ type WorkerPool struct {
 	// Type of root disk for VMs. If empty or unspecified, the service will attempt to choose a reasonable default.
 	DiskType *string `pulumi:"diskType"`
 	// Configuration for VM IPs.
-	IpConfiguration *string `pulumi:"ipConfiguration"`
+	IpConfiguration *WorkerPoolIpConfiguration `pulumi:"ipConfiguration"`
 	// The kind of the worker pool; currently only `harness` and `shuffle` are supported.
 	Kind *string `pulumi:"kind"`
 	// Machine type (e.g. "n1-standard-1"). If empty or unspecified, the service will attempt to choose a reasonable default.
@@ -8739,7 +8739,7 @@ type WorkerPool struct {
 	// Settings passed through to Google Compute Engine workers when using the standard Dataflow task runner. Users should ignore this field.
 	TaskrunnerSettings *TaskRunnerSettings `pulumi:"taskrunnerSettings"`
 	// Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
-	TeardownPolicy *string `pulumi:"teardownPolicy"`
+	TeardownPolicy *WorkerPoolTeardownPolicy `pulumi:"teardownPolicy"`
 	// Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.
 	Zone *string `pulumi:"zone"`
 }
@@ -8762,7 +8762,7 @@ type WorkerPoolArgs struct {
 	// Data disks that are used by a VM in this workflow.
 	DataDisks DiskArrayInput `pulumi:"dataDisks"`
 	// The default package set to install. This allows the service to select a default set of packages which are useful to worker harnesses written in a particular language.
-	DefaultPackageSet *WorkerPoolDefaultPackageSet `pulumi:"defaultPackageSet"`
+	DefaultPackageSet WorkerPoolDefaultPackageSetPtrInput `pulumi:"defaultPackageSet"`
 	// Size of root disk for VMs, in GB. If zero or unspecified, the service will attempt to choose a reasonable default.
 	DiskSizeGb pulumi.IntPtrInput `pulumi:"diskSizeGb"`
 	// Fully qualified source image for disks.
@@ -8770,7 +8770,7 @@ type WorkerPoolArgs struct {
 	// Type of root disk for VMs. If empty or unspecified, the service will attempt to choose a reasonable default.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Configuration for VM IPs.
-	IpConfiguration *WorkerPoolIpConfiguration `pulumi:"ipConfiguration"`
+	IpConfiguration WorkerPoolIpConfigurationPtrInput `pulumi:"ipConfiguration"`
 	// The kind of the worker pool; currently only `harness` and `shuffle` are supported.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Machine type (e.g. "n1-standard-1"). If empty or unspecified, the service will attempt to choose a reasonable default.
@@ -8796,7 +8796,7 @@ type WorkerPoolArgs struct {
 	// Settings passed through to Google Compute Engine workers when using the standard Dataflow task runner. Users should ignore this field.
 	TaskrunnerSettings TaskRunnerSettingsPtrInput `pulumi:"taskrunnerSettings"`
 	// Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
-	TeardownPolicy *WorkerPoolTeardownPolicy `pulumi:"teardownPolicy"`
+	TeardownPolicy WorkerPoolTeardownPolicyPtrInput `pulumi:"teardownPolicy"`
 	// Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.
 	Zone pulumi.StringPtrInput `pulumi:"zone"`
 }
@@ -8864,8 +8864,8 @@ func (o WorkerPoolOutput) DataDisks() DiskArrayOutput {
 }
 
 // The default package set to install. This allows the service to select a default set of packages which are useful to worker harnesses written in a particular language.
-func (o WorkerPoolOutput) DefaultPackageSet() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkerPool) *string { return v.DefaultPackageSet }).(pulumi.StringPtrOutput)
+func (o WorkerPoolOutput) DefaultPackageSet() WorkerPoolDefaultPackageSetPtrOutput {
+	return o.ApplyT(func(v WorkerPool) *WorkerPoolDefaultPackageSet { return v.DefaultPackageSet }).(WorkerPoolDefaultPackageSetPtrOutput)
 }
 
 // Size of root disk for VMs, in GB. If zero or unspecified, the service will attempt to choose a reasonable default.
@@ -8884,8 +8884,8 @@ func (o WorkerPoolOutput) DiskType() pulumi.StringPtrOutput {
 }
 
 // Configuration for VM IPs.
-func (o WorkerPoolOutput) IpConfiguration() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkerPool) *string { return v.IpConfiguration }).(pulumi.StringPtrOutput)
+func (o WorkerPoolOutput) IpConfiguration() WorkerPoolIpConfigurationPtrOutput {
+	return o.ApplyT(func(v WorkerPool) *WorkerPoolIpConfiguration { return v.IpConfiguration }).(WorkerPoolIpConfigurationPtrOutput)
 }
 
 // The kind of the worker pool; currently only `harness` and `shuffle` are supported.
@@ -8949,8 +8949,8 @@ func (o WorkerPoolOutput) TaskrunnerSettings() TaskRunnerSettingsPtrOutput {
 }
 
 // Sets the policy for determining when to turndown worker pool. Allowed values are: `TEARDOWN_ALWAYS`, `TEARDOWN_ON_SUCCESS`, and `TEARDOWN_NEVER`. `TEARDOWN_ALWAYS` means workers are always torn down regardless of whether the job succeeds. `TEARDOWN_ON_SUCCESS` means workers are torn down if the job succeeds. `TEARDOWN_NEVER` means the workers are never torn down. If the workers are not torn down by the service, they will continue to run and use Google Compute Engine VM resources in the user's project until they are explicitly terminated by the user. Because of this, Google recommends using the `TEARDOWN_ALWAYS` policy except for small, manually supervised test jobs. If unknown or unspecified, the service will attempt to choose a reasonable default.
-func (o WorkerPoolOutput) TeardownPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkerPool) *string { return v.TeardownPolicy }).(pulumi.StringPtrOutput)
+func (o WorkerPoolOutput) TeardownPolicy() WorkerPoolTeardownPolicyPtrOutput {
+	return o.ApplyT(func(v WorkerPool) *WorkerPoolTeardownPolicy { return v.TeardownPolicy }).(WorkerPoolTeardownPolicyPtrOutput)
 }
 
 // Zone to run the worker pools in. If empty or unspecified, the service will attempt to choose a reasonable default.

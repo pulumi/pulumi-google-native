@@ -63,29 +63,9 @@ func GetVersion(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Version resources.
 type versionState struct {
-	// The creation time of this version. This field is read-only, i.e., it cannot be set by create and update methods.
-	CreateTime *string `pulumi:"createTime"`
-	// Optional. The developer-provided description of this version.
-	Description *string `pulumi:"description"`
-	// The unique identifier of this agent version. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
-	Name *string `pulumi:"name"`
-	// The status of this version. This field is read-only and cannot be set by create and update methods.
-	Status *string `pulumi:"status"`
-	// The sequential number of this version. This field is read-only which means it cannot be set by create and update methods.
-	VersionNumber *int `pulumi:"versionNumber"`
 }
 
 type VersionState struct {
-	// The creation time of this version. This field is read-only, i.e., it cannot be set by create and update methods.
-	CreateTime pulumi.StringPtrInput
-	// Optional. The developer-provided description of this version.
-	Description pulumi.StringPtrInput
-	// The unique identifier of this agent version. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
-	Name pulumi.StringPtrInput
-	// The status of this version. This field is read-only and cannot be set by create and update methods.
-	Status pulumi.StringPtrInput
-	// The sequential number of this version. This field is read-only which means it cannot be set by create and update methods.
-	VersionNumber pulumi.IntPtrInput
 }
 
 func (VersionState) ElementType() reflect.Type {

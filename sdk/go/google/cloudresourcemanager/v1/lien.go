@@ -57,33 +57,9 @@ func GetLien(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Lien resources.
 type lienState struct {
-	// The creation time of this Lien.
-	CreateTime *string `pulumi:"createTime"`
-	// A system-generated unique identifier for this Lien. Example: `liens/1234abcd`
-	Name *string `pulumi:"name"`
-	// A stable, user-visible/meaningful string identifying the origin of the Lien, intended to be inspected programmatically. Maximum length of 200 characters. Example: 'compute.googleapis.com'
-	Origin *string `pulumi:"origin"`
-	// A reference to the resource this Lien is attached to. The server will validate the parent against those for which Liens are supported. Example: `projects/1234`
-	Parent *string `pulumi:"parent"`
-	// Concise user-visible strings indicating why an action cannot be performed on a resource. Maximum length of 200 characters. Example: 'Holds production API key'
-	Reason *string `pulumi:"reason"`
-	// The types of operations which should be blocked as a result of this Lien. Each value should correspond to an IAM permission. The server will validate the permissions against those for which Liens are supported. An empty list is meaningless and will be rejected. Example: ['resourcemanager.projects.delete']
-	Restrictions []string `pulumi:"restrictions"`
 }
 
 type LienState struct {
-	// The creation time of this Lien.
-	CreateTime pulumi.StringPtrInput
-	// A system-generated unique identifier for this Lien. Example: `liens/1234abcd`
-	Name pulumi.StringPtrInput
-	// A stable, user-visible/meaningful string identifying the origin of the Lien, intended to be inspected programmatically. Maximum length of 200 characters. Example: 'compute.googleapis.com'
-	Origin pulumi.StringPtrInput
-	// A reference to the resource this Lien is attached to. The server will validate the parent against those for which Liens are supported. Example: `projects/1234`
-	Parent pulumi.StringPtrInput
-	// Concise user-visible strings indicating why an action cannot be performed on a resource. Maximum length of 200 characters. Example: 'Holds production API key'
-	Reason pulumi.StringPtrInput
-	// The types of operations which should be blocked as a result of this Lien. Each value should correspond to an IAM permission. The server will validate the permissions against those for which Liens are supported. An empty list is meaningless and will be rejected. Example: ['resourcemanager.projects.delete']
-	Restrictions pulumi.StringArrayInput
 }
 
 func (LienState) ElementType() reflect.Type {

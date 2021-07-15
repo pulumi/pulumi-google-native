@@ -11,7 +11,7 @@ import (
 )
 
 // The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
-type AndroidInstrumentationTestOrchestratorOption pulumi.String
+type AndroidInstrumentationTestOrchestratorOption string
 
 const (
 	// Default value: the server will choose the mode. Currently implies that the test will run without the orchestrator. In the future, all instrumentation tests will be run with the orchestrator. Using the orchestrator is highly encouraged because of all the benefits it offers.
@@ -23,7 +23,23 @@ const (
 )
 
 func (AndroidInstrumentationTestOrchestratorOption) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*AndroidInstrumentationTestOrchestratorOption)(nil)).Elem()
+}
+
+func (e AndroidInstrumentationTestOrchestratorOption) ToAndroidInstrumentationTestOrchestratorOptionOutput() AndroidInstrumentationTestOrchestratorOptionOutput {
+	return pulumi.ToOutput(e).(AndroidInstrumentationTestOrchestratorOptionOutput)
+}
+
+func (e AndroidInstrumentationTestOrchestratorOption) ToAndroidInstrumentationTestOrchestratorOptionOutputWithContext(ctx context.Context) AndroidInstrumentationTestOrchestratorOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AndroidInstrumentationTestOrchestratorOptionOutput)
+}
+
+func (e AndroidInstrumentationTestOrchestratorOption) ToAndroidInstrumentationTestOrchestratorOptionPtrOutput() AndroidInstrumentationTestOrchestratorOptionPtrOutput {
+	return e.ToAndroidInstrumentationTestOrchestratorOptionPtrOutputWithContext(context.Background())
+}
+
+func (e AndroidInstrumentationTestOrchestratorOption) ToAndroidInstrumentationTestOrchestratorOptionPtrOutputWithContext(ctx context.Context) AndroidInstrumentationTestOrchestratorOptionPtrOutput {
+	return AndroidInstrumentationTestOrchestratorOption(e).ToAndroidInstrumentationTestOrchestratorOptionOutputWithContext(ctx).ToAndroidInstrumentationTestOrchestratorOptionPtrOutputWithContext(ctx)
 }
 
 func (e AndroidInstrumentationTestOrchestratorOption) ToStringOutput() pulumi.StringOutput {
@@ -42,8 +58,129 @@ func (e AndroidInstrumentationTestOrchestratorOption) ToStringPtrOutputWithConte
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type AndroidInstrumentationTestOrchestratorOptionOutput struct{ *pulumi.OutputState }
+
+func (AndroidInstrumentationTestOrchestratorOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AndroidInstrumentationTestOrchestratorOption)(nil)).Elem()
+}
+
+func (o AndroidInstrumentationTestOrchestratorOptionOutput) ToAndroidInstrumentationTestOrchestratorOptionOutput() AndroidInstrumentationTestOrchestratorOptionOutput {
+	return o
+}
+
+func (o AndroidInstrumentationTestOrchestratorOptionOutput) ToAndroidInstrumentationTestOrchestratorOptionOutputWithContext(ctx context.Context) AndroidInstrumentationTestOrchestratorOptionOutput {
+	return o
+}
+
+func (o AndroidInstrumentationTestOrchestratorOptionOutput) ToAndroidInstrumentationTestOrchestratorOptionPtrOutput() AndroidInstrumentationTestOrchestratorOptionPtrOutput {
+	return o.ToAndroidInstrumentationTestOrchestratorOptionPtrOutputWithContext(context.Background())
+}
+
+func (o AndroidInstrumentationTestOrchestratorOptionOutput) ToAndroidInstrumentationTestOrchestratorOptionPtrOutputWithContext(ctx context.Context) AndroidInstrumentationTestOrchestratorOptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AndroidInstrumentationTestOrchestratorOption) *AndroidInstrumentationTestOrchestratorOption {
+		return &v
+	}).(AndroidInstrumentationTestOrchestratorOptionPtrOutput)
+}
+
+func (o AndroidInstrumentationTestOrchestratorOptionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AndroidInstrumentationTestOrchestratorOptionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AndroidInstrumentationTestOrchestratorOption) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AndroidInstrumentationTestOrchestratorOptionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AndroidInstrumentationTestOrchestratorOptionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AndroidInstrumentationTestOrchestratorOption) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AndroidInstrumentationTestOrchestratorOptionPtrOutput struct{ *pulumi.OutputState }
+
+func (AndroidInstrumentationTestOrchestratorOptionPtrOutput) ElementType() reflect.Type {
+	return androidInstrumentationTestOrchestratorOptionPtrType
+}
+
+func (o AndroidInstrumentationTestOrchestratorOptionPtrOutput) ToAndroidInstrumentationTestOrchestratorOptionPtrOutput() AndroidInstrumentationTestOrchestratorOptionPtrOutput {
+	return o
+}
+
+func (o AndroidInstrumentationTestOrchestratorOptionPtrOutput) ToAndroidInstrumentationTestOrchestratorOptionPtrOutputWithContext(ctx context.Context) AndroidInstrumentationTestOrchestratorOptionPtrOutput {
+	return o
+}
+
+func (o AndroidInstrumentationTestOrchestratorOptionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AndroidInstrumentationTestOrchestratorOptionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AndroidInstrumentationTestOrchestratorOption) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AndroidInstrumentationTestOrchestratorOptionPtrOutput) Elem() AndroidInstrumentationTestOrchestratorOptionOutput {
+	return o.ApplyT(func(v *AndroidInstrumentationTestOrchestratorOption) AndroidInstrumentationTestOrchestratorOption {
+		var ret AndroidInstrumentationTestOrchestratorOption
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(AndroidInstrumentationTestOrchestratorOptionOutput)
+}
+
+// AndroidInstrumentationTestOrchestratorOptionInput is an input type that accepts AndroidInstrumentationTestOrchestratorOptionArgs and AndroidInstrumentationTestOrchestratorOptionOutput values.
+// You can construct a concrete instance of `AndroidInstrumentationTestOrchestratorOptionInput` via:
+//
+//          AndroidInstrumentationTestOrchestratorOptionArgs{...}
+type AndroidInstrumentationTestOrchestratorOptionInput interface {
+	pulumi.Input
+
+	ToAndroidInstrumentationTestOrchestratorOptionOutput() AndroidInstrumentationTestOrchestratorOptionOutput
+	ToAndroidInstrumentationTestOrchestratorOptionOutputWithContext(context.Context) AndroidInstrumentationTestOrchestratorOptionOutput
+}
+
+var androidInstrumentationTestOrchestratorOptionPtrType = reflect.TypeOf((**AndroidInstrumentationTestOrchestratorOption)(nil)).Elem()
+
+type AndroidInstrumentationTestOrchestratorOptionPtrInput interface {
+	pulumi.Input
+
+	ToAndroidInstrumentationTestOrchestratorOptionPtrOutput() AndroidInstrumentationTestOrchestratorOptionPtrOutput
+	ToAndroidInstrumentationTestOrchestratorOptionPtrOutputWithContext(context.Context) AndroidInstrumentationTestOrchestratorOptionPtrOutput
+}
+
+type androidInstrumentationTestOrchestratorOptionPtr string
+
+func AndroidInstrumentationTestOrchestratorOptionPtr(v string) AndroidInstrumentationTestOrchestratorOptionPtrInput {
+	return (*androidInstrumentationTestOrchestratorOptionPtr)(&v)
+}
+
+func (*androidInstrumentationTestOrchestratorOptionPtr) ElementType() reflect.Type {
+	return androidInstrumentationTestOrchestratorOptionPtrType
+}
+
+func (in *androidInstrumentationTestOrchestratorOptionPtr) ToAndroidInstrumentationTestOrchestratorOptionPtrOutput() AndroidInstrumentationTestOrchestratorOptionPtrOutput {
+	return pulumi.ToOutput(in).(AndroidInstrumentationTestOrchestratorOptionPtrOutput)
+}
+
+func (in *androidInstrumentationTestOrchestratorOptionPtr) ToAndroidInstrumentationTestOrchestratorOptionPtrOutputWithContext(ctx context.Context) AndroidInstrumentationTestOrchestratorOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AndroidInstrumentationTestOrchestratorOptionPtrOutput)
+}
+
 // Required. The type of action that Robo should perform on the specified element.
-type RoboDirectiveActionType pulumi.String
+type RoboDirectiveActionType string
 
 const (
 	// DO NOT USE. For proto versioning only.
@@ -57,7 +194,23 @@ const (
 )
 
 func (RoboDirectiveActionType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*RoboDirectiveActionType)(nil)).Elem()
+}
+
+func (e RoboDirectiveActionType) ToRoboDirectiveActionTypeOutput() RoboDirectiveActionTypeOutput {
+	return pulumi.ToOutput(e).(RoboDirectiveActionTypeOutput)
+}
+
+func (e RoboDirectiveActionType) ToRoboDirectiveActionTypeOutputWithContext(ctx context.Context) RoboDirectiveActionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RoboDirectiveActionTypeOutput)
+}
+
+func (e RoboDirectiveActionType) ToRoboDirectiveActionTypePtrOutput() RoboDirectiveActionTypePtrOutput {
+	return e.ToRoboDirectiveActionTypePtrOutputWithContext(context.Background())
+}
+
+func (e RoboDirectiveActionType) ToRoboDirectiveActionTypePtrOutputWithContext(ctx context.Context) RoboDirectiveActionTypePtrOutput {
+	return RoboDirectiveActionType(e).ToRoboDirectiveActionTypeOutputWithContext(ctx).ToRoboDirectiveActionTypePtrOutputWithContext(ctx)
 }
 
 func (e RoboDirectiveActionType) ToStringOutput() pulumi.StringOutput {
@@ -74,4 +227,132 @@ func (e RoboDirectiveActionType) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e RoboDirectiveActionType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RoboDirectiveActionTypeOutput struct{ *pulumi.OutputState }
+
+func (RoboDirectiveActionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoboDirectiveActionType)(nil)).Elem()
+}
+
+func (o RoboDirectiveActionTypeOutput) ToRoboDirectiveActionTypeOutput() RoboDirectiveActionTypeOutput {
+	return o
+}
+
+func (o RoboDirectiveActionTypeOutput) ToRoboDirectiveActionTypeOutputWithContext(ctx context.Context) RoboDirectiveActionTypeOutput {
+	return o
+}
+
+func (o RoboDirectiveActionTypeOutput) ToRoboDirectiveActionTypePtrOutput() RoboDirectiveActionTypePtrOutput {
+	return o.ToRoboDirectiveActionTypePtrOutputWithContext(context.Background())
+}
+
+func (o RoboDirectiveActionTypeOutput) ToRoboDirectiveActionTypePtrOutputWithContext(ctx context.Context) RoboDirectiveActionTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoboDirectiveActionType) *RoboDirectiveActionType {
+		return &v
+	}).(RoboDirectiveActionTypePtrOutput)
+}
+
+func (o RoboDirectiveActionTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RoboDirectiveActionTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RoboDirectiveActionType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RoboDirectiveActionTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RoboDirectiveActionTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RoboDirectiveActionType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RoboDirectiveActionTypePtrOutput struct{ *pulumi.OutputState }
+
+func (RoboDirectiveActionTypePtrOutput) ElementType() reflect.Type {
+	return roboDirectiveActionTypePtrType
+}
+
+func (o RoboDirectiveActionTypePtrOutput) ToRoboDirectiveActionTypePtrOutput() RoboDirectiveActionTypePtrOutput {
+	return o
+}
+
+func (o RoboDirectiveActionTypePtrOutput) ToRoboDirectiveActionTypePtrOutputWithContext(ctx context.Context) RoboDirectiveActionTypePtrOutput {
+	return o
+}
+
+func (o RoboDirectiveActionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RoboDirectiveActionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RoboDirectiveActionType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RoboDirectiveActionTypePtrOutput) Elem() RoboDirectiveActionTypeOutput {
+	return o.ApplyT(func(v *RoboDirectiveActionType) RoboDirectiveActionType {
+		var ret RoboDirectiveActionType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(RoboDirectiveActionTypeOutput)
+}
+
+// RoboDirectiveActionTypeInput is an input type that accepts RoboDirectiveActionTypeArgs and RoboDirectiveActionTypeOutput values.
+// You can construct a concrete instance of `RoboDirectiveActionTypeInput` via:
+//
+//          RoboDirectiveActionTypeArgs{...}
+type RoboDirectiveActionTypeInput interface {
+	pulumi.Input
+
+	ToRoboDirectiveActionTypeOutput() RoboDirectiveActionTypeOutput
+	ToRoboDirectiveActionTypeOutputWithContext(context.Context) RoboDirectiveActionTypeOutput
+}
+
+var roboDirectiveActionTypePtrType = reflect.TypeOf((**RoboDirectiveActionType)(nil)).Elem()
+
+type RoboDirectiveActionTypePtrInput interface {
+	pulumi.Input
+
+	ToRoboDirectiveActionTypePtrOutput() RoboDirectiveActionTypePtrOutput
+	ToRoboDirectiveActionTypePtrOutputWithContext(context.Context) RoboDirectiveActionTypePtrOutput
+}
+
+type roboDirectiveActionTypePtr string
+
+func RoboDirectiveActionTypePtr(v string) RoboDirectiveActionTypePtrInput {
+	return (*roboDirectiveActionTypePtr)(&v)
+}
+
+func (*roboDirectiveActionTypePtr) ElementType() reflect.Type {
+	return roboDirectiveActionTypePtrType
+}
+
+func (in *roboDirectiveActionTypePtr) ToRoboDirectiveActionTypePtrOutput() RoboDirectiveActionTypePtrOutput {
+	return pulumi.ToOutput(in).(RoboDirectiveActionTypePtrOutput)
+}
+
+func (in *roboDirectiveActionTypePtr) ToRoboDirectiveActionTypePtrOutputWithContext(ctx context.Context) RoboDirectiveActionTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RoboDirectiveActionTypePtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(AndroidInstrumentationTestOrchestratorOptionOutput{})
+	pulumi.RegisterOutputType(AndroidInstrumentationTestOrchestratorOptionPtrOutput{})
+	pulumi.RegisterOutputType(RoboDirectiveActionTypeOutput{})
+	pulumi.RegisterOutputType(RoboDirectiveActionTypePtrOutput{})
 }

@@ -66,41 +66,9 @@ func GetNotification(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Notification resources.
 type notificationState struct {
-	// An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
-	CustomAttributes map[string]string `pulumi:"customAttributes"`
-	// HTTP 1.1 Entity tag for this subscription notification.
-	Etag *string `pulumi:"etag"`
-	// If present, only send notifications about listed event types. If empty, sent notifications for all event types.
-	EventTypes []string `pulumi:"eventTypes"`
-	// The kind of item this is. For notifications, this is always storage#notification.
-	Kind *string `pulumi:"kind"`
-	// If present, only apply this notification configuration to object names that begin with this prefix.
-	ObjectNamePrefix *string `pulumi:"objectNamePrefix"`
-	// The desired content of the Payload.
-	PayloadFormat *string `pulumi:"payloadFormat"`
-	// The canonical URL of this notification.
-	SelfLink *string `pulumi:"selfLink"`
-	// The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
-	Topic *string `pulumi:"topic"`
 }
 
 type NotificationState struct {
-	// An optional list of additional attributes to attach to each Cloud PubSub message published for this notification subscription.
-	CustomAttributes pulumi.StringMapInput
-	// HTTP 1.1 Entity tag for this subscription notification.
-	Etag pulumi.StringPtrInput
-	// If present, only send notifications about listed event types. If empty, sent notifications for all event types.
-	EventTypes pulumi.StringArrayInput
-	// The kind of item this is. For notifications, this is always storage#notification.
-	Kind pulumi.StringPtrInput
-	// If present, only apply this notification configuration to object names that begin with this prefix.
-	ObjectNamePrefix pulumi.StringPtrInput
-	// The desired content of the Payload.
-	PayloadFormat pulumi.StringPtrInput
-	// The canonical URL of this notification.
-	SelfLink pulumi.StringPtrInput
-	// The Cloud PubSub topic to which this subscription publishes. Formatted as: '//pubsub.googleapis.com/projects/{project-identifier}/topics/{my-topic}'
-	Topic pulumi.StringPtrInput
 }
 
 func (NotificationState) ElementType() reflect.Type {

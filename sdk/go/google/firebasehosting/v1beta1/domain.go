@@ -71,33 +71,9 @@ func GetDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Domain resources.
 type domainState struct {
-	// The domain name of the association.
-	DomainName *string `pulumi:"domainName"`
-	// If set, the domain should redirect with the provided parameters.
-	DomainRedirect *DomainRedirectResponse `pulumi:"domainRedirect"`
-	// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
-	Provisioning *DomainProvisioningResponse `pulumi:"provisioning"`
-	// The site name of the association.
-	Site *string `pulumi:"site"`
-	// Additional status of the domain association.
-	Status *string `pulumi:"status"`
-	// The time at which the domain was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type DomainState struct {
-	// The domain name of the association.
-	DomainName pulumi.StringPtrInput
-	// If set, the domain should redirect with the provided parameters.
-	DomainRedirect DomainRedirectResponsePtrInput
-	// Information about the provisioning of certificates and the health of the DNS resolution for the domain.
-	Provisioning DomainProvisioningResponsePtrInput
-	// The site name of the association.
-	Site pulumi.StringPtrInput
-	// Additional status of the domain association.
-	Status pulumi.StringPtrInput
-	// The time at which the domain was last updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (DomainState) ElementType() reflect.Type {

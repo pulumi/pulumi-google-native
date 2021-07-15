@@ -95,77 +95,9 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
-	AuthorizedNetwork *string `pulumi:"authorizedNetwork"`
-	// The time the instance was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Endpoint for the Discovery API.
-	DiscoveryEndpoint *string `pulumi:"discoveryEndpoint"`
-	// User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
-	DisplayName *string `pulumi:"displayName"`
-	// List of messages that describe the current state of the Memcached instance.
-	InstanceMessages []InstanceMessageResponse `pulumi:"instanceMessages"`
-	// Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-	Labels map[string]string `pulumi:"labels"`
-	// The full version of memcached server running on this instance. System automatically determines the full memcached version for an instance based on the input MemcacheVersion. The full version format will be "memcached-1.5.16".
-	MemcacheFullVersion *string `pulumi:"memcacheFullVersion"`
-	// List of Memcached nodes. Refer to Node message for more details.
-	MemcacheNodes []NodeResponse `pulumi:"memcacheNodes"`
-	// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
-	MemcacheVersion *string `pulumi:"memcacheVersion"`
-	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
-	Name *string `pulumi:"name"`
-	// Configuration for Memcached nodes.
-	NodeConfig *NodeConfigResponse `pulumi:"nodeConfig"`
-	// Number of nodes in the Memcached instance.
-	NodeCount *int `pulumi:"nodeCount"`
-	// Optional: User defined parameters to apply to the memcached process on each node.
-	Parameters *MemcacheParametersResponse `pulumi:"parameters"`
-	// The state of this Memcached instance.
-	State *string `pulumi:"state"`
-	// Returns true if there is an update waiting to be applied
-	UpdateAvailable *bool `pulumi:"updateAvailable"`
-	// The time the instance was updated.
-	UpdateTime *string `pulumi:"updateTime"`
-	// Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
-	Zones []string `pulumi:"zones"`
 }
 
 type InstanceState struct {
-	// The full name of the Google Compute Engine [network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected. If left unspecified, the `default` network will be used.
-	AuthorizedNetwork pulumi.StringPtrInput
-	// The time the instance was created.
-	CreateTime pulumi.StringPtrInput
-	// Endpoint for the Discovery API.
-	DiscoveryEndpoint pulumi.StringPtrInput
-	// User provided name for the instance, which is only used for display purposes. Cannot be more than 80 characters.
-	DisplayName pulumi.StringPtrInput
-	// List of messages that describe the current state of the Memcached instance.
-	InstanceMessages InstanceMessageResponseArrayInput
-	// Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-	Labels pulumi.StringMapInput
-	// The full version of memcached server running on this instance. System automatically determines the full memcached version for an instance based on the input MemcacheVersion. The full version format will be "memcached-1.5.16".
-	MemcacheFullVersion pulumi.StringPtrInput
-	// List of Memcached nodes. Refer to Node message for more details.
-	MemcacheNodes NodeResponseArrayInput
-	// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
-	MemcacheVersion pulumi.StringPtrInput
-	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
-	Name pulumi.StringPtrInput
-	// Configuration for Memcached nodes.
-	NodeConfig NodeConfigResponsePtrInput
-	// Number of nodes in the Memcached instance.
-	NodeCount pulumi.IntPtrInput
-	// Optional: User defined parameters to apply to the memcached process on each node.
-	Parameters MemcacheParametersResponsePtrInput
-	// The state of this Memcached instance.
-	State pulumi.StringPtrInput
-	// Returns true if there is an update waiting to be applied
-	UpdateAvailable pulumi.BoolPtrInput
-	// The time the instance was updated.
-	UpdateTime pulumi.StringPtrInput
-	// Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
-	Zones pulumi.StringArrayInput
 }
 
 func (InstanceState) ElementType() reflect.Type {
@@ -184,7 +116,7 @@ type instanceArgs struct {
 	Labels   map[string]string `pulumi:"labels"`
 	Location string            `pulumi:"location"`
 	// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
-	MemcacheVersion *string `pulumi:"memcacheVersion"`
+	MemcacheVersion *InstanceMemcacheVersion `pulumi:"memcacheVersion"`
 	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
 	Name *string `pulumi:"name"`
 	// Configuration for Memcached nodes.
@@ -211,7 +143,7 @@ type InstanceArgs struct {
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringInput
 	// The major version of Memcached software. If not provided, latest supported version will be used. Currently the latest supported major version is `MEMCACHE_1_5`. The minor version will be automatically determined by our system based on the latest supported minor version.
-	MemcacheVersion *InstanceMemcacheVersion
+	MemcacheVersion InstanceMemcacheVersionPtrInput
 	// Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details.
 	Name pulumi.StringPtrInput
 	// Configuration for Memcached nodes.

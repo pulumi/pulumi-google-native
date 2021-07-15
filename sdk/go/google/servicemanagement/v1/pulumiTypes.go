@@ -23,7 +23,7 @@ type Api struct {
 	// Source context for the protocol buffer service represented by this message.
 	SourceContext *SourceContext `pulumi:"sourceContext"`
 	// The source syntax of the service.
-	Syntax *string `pulumi:"syntax"`
+	Syntax *ApiSyntax `pulumi:"syntax"`
 	// A version string for this interface. If specified, must have the form `major-version.minor-version`, as in `1.10`. If the minor version is omitted, it defaults to zero. If the entire version field is empty, the major version is derived from the package name, as outlined below. If the field is not empty, the version in the package name will be verified to be consistent with what is provided here. The versioning schema uses [semantic versioning](http://semver.org) where the major version number indicates a breaking change and the minor version an additive, non-breaking change. Both version numbers are signals to users what to expect from different versions, and should be carefully chosen based on the product plan. The major version is also reflected in the package name of the interface, which must end in `v`, as in `google.feature.v1`. For major versions 0 and 1, the suffix can be omitted. Zero major versions must only be used for experimental, non-GA interfaces.
 	Version *string `pulumi:"version"`
 }
@@ -52,7 +52,7 @@ type ApiArgs struct {
 	// Source context for the protocol buffer service represented by this message.
 	SourceContext SourceContextPtrInput `pulumi:"sourceContext"`
 	// The source syntax of the service.
-	Syntax *ApiSyntax `pulumi:"syntax"`
+	Syntax ApiSyntaxPtrInput `pulumi:"syntax"`
 	// A version string for this interface. If specified, must have the form `major-version.minor-version`, as in `1.10`. If the minor version is omitted, it defaults to zero. If the entire version field is empty, the major version is derived from the package name, as outlined below. If the field is not empty, the version in the package name will be verified to be consistent with what is provided here. The versioning schema uses [semantic versioning](http://semver.org) where the major version number indicates a breaking change and the minor version an additive, non-breaking change. Both version numbers are signals to users what to expect from different versions, and should be carefully chosen based on the product plan. The major version is also reflected in the package name of the interface, which must end in `v`, as in `google.feature.v1`. For major versions 0 and 1, the suffix can be omitted. Zero major versions must only be used for experimental, non-GA interfaces.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
@@ -135,8 +135,8 @@ func (o ApiOutput) SourceContext() SourceContextPtrOutput {
 }
 
 // The source syntax of the service.
-func (o ApiOutput) Syntax() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Api) *string { return v.Syntax }).(pulumi.StringPtrOutput)
+func (o ApiOutput) Syntax() ApiSyntaxPtrOutput {
+	return o.ApplyT(func(v Api) *ApiSyntax { return v.Syntax }).(ApiSyntaxPtrOutput)
 }
 
 // A version string for this interface. If specified, must have the form `major-version.minor-version`, as in `1.10`. If the minor version is omitted, it defaults to zero. If the entire version field is empty, the major version is derived from the package name, as outlined below. If the field is not empty, the version in the package name will be verified to be consistent with what is provided here. The versioning schema uses [semantic versioning](http://semver.org) where the major version number indicates a breaking change and the minor version an additive, non-breaking change. Both version numbers are signals to users what to expect from different versions, and should be carefully chosen based on the product plan. The major version is also reflected in the package name of the interface, which must end in `v`, as in `google.feature.v1`. For major versions 0 and 1, the suffix can be omitted. Zero major versions must only be used for experimental, non-GA interfaces.
@@ -541,7 +541,7 @@ type AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *string `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
@@ -560,7 +560,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *AuditLogConfigLogType `pulumi:"logType"`
+	LogType AuditLogConfigLogTypePtrInput `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -621,8 +621,8 @@ func (o AuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
 }
 
 // The log type that this config enables.
-func (o AuditLogConfigOutput) LogType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AuditLogConfig) *string { return v.LogType }).(pulumi.StringPtrOutput)
+func (o AuditLogConfigOutput) LogType() AuditLogConfigLogTypePtrOutput {
+	return o.ApplyT(func(v AuditLogConfig) *AuditLogConfigLogType { return v.LogType }).(AuditLogConfigLogTypePtrOutput)
 }
 
 type AuditLogConfigArrayOutput struct{ *pulumi.OutputState }
@@ -2092,8 +2092,8 @@ type BackendRule struct {
 	// The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
 	JwtAudience *string `pulumi:"jwtAudience"`
 	// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
-	OperationDeadline *float64 `pulumi:"operationDeadline"`
-	PathTranslation   *string  `pulumi:"pathTranslation"`
+	OperationDeadline *float64                    `pulumi:"operationDeadline"`
+	PathTranslation   *BackendRulePathTranslation `pulumi:"pathTranslation"`
 	// The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
 	Protocol *string `pulumi:"protocol"`
 	// Selects the methods to which this rule applies. Refer to selector for syntax details.
@@ -2122,8 +2122,8 @@ type BackendRuleArgs struct {
 	// The JWT audience is used when generating a JWT ID token for the backend. This ID token will be added in the HTTP "authorization" header, and sent to the backend.
 	JwtAudience pulumi.StringPtrInput `pulumi:"jwtAudience"`
 	// The number of seconds to wait for the completion of a long running operation. The default is no deadline.
-	OperationDeadline pulumi.Float64PtrInput      `pulumi:"operationDeadline"`
-	PathTranslation   *BackendRulePathTranslation `pulumi:"pathTranslation"`
+	OperationDeadline pulumi.Float64PtrInput             `pulumi:"operationDeadline"`
+	PathTranslation   BackendRulePathTranslationPtrInput `pulumi:"pathTranslation"`
 	// The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 	// Selects the methods to which this rule applies. Refer to selector for syntax details.
@@ -2207,8 +2207,8 @@ func (o BackendRuleOutput) OperationDeadline() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v BackendRule) *float64 { return v.OperationDeadline }).(pulumi.Float64PtrOutput)
 }
 
-func (o BackendRuleOutput) PathTranslation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BackendRule) *string { return v.PathTranslation }).(pulumi.StringPtrOutput)
+func (o BackendRuleOutput) PathTranslation() BackendRulePathTranslationPtrOutput {
+	return o.ApplyT(func(v BackendRule) *BackendRulePathTranslation { return v.PathTranslation }).(BackendRulePathTranslationPtrOutput)
 }
 
 // The protocol used for sending a request to the backend. The supported values are "http/1.1" and "h2". The default value is inferred from the scheme in the address field: SCHEME PROTOCOL http:// http/1.1 https:// http/1.1 grpc:// h2 grpcs:// h2 For secure HTTP backends (https://) that support HTTP/2, set this field to "h2" for improved performance. Configuring this field to non-default values is only supported for secure HTTP backends. This field will be ignored for all other backends. See https://www.iana.org/assignments/tls-extensiontype-values/tls-extensiontype-values.xhtml#alpn-protocol-ids for more details on the supported values.
@@ -5843,7 +5843,7 @@ type Enum struct {
 	// The source context.
 	SourceContext *SourceContext `pulumi:"sourceContext"`
 	// The source syntax.
-	Syntax *string `pulumi:"syntax"`
+	Syntax *EnumSyntax `pulumi:"syntax"`
 }
 
 // EnumInput is an input type that accepts EnumArgs and EnumOutput values.
@@ -5868,7 +5868,7 @@ type EnumArgs struct {
 	// The source context.
 	SourceContext SourceContextPtrInput `pulumi:"sourceContext"`
 	// The source syntax.
-	Syntax *EnumSyntax `pulumi:"syntax"`
+	Syntax EnumSyntaxPtrInput `pulumi:"syntax"`
 }
 
 func (EnumArgs) ElementType() reflect.Type {
@@ -5944,8 +5944,8 @@ func (o EnumOutput) SourceContext() SourceContextPtrOutput {
 }
 
 // The source syntax.
-func (o EnumOutput) Syntax() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Enum) *string { return v.Syntax }).(pulumi.StringPtrOutput)
+func (o EnumOutput) Syntax() EnumSyntaxPtrOutput {
+	return o.ApplyT(func(v Enum) *EnumSyntax { return v.Syntax }).(EnumSyntaxPtrOutput)
 }
 
 type EnumArrayOutput struct{ *pulumi.OutputState }
@@ -6616,13 +6616,13 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 // A single field of a message type.
 type Field struct {
 	// The field cardinality.
-	Cardinality *string `pulumi:"cardinality"`
+	Cardinality *FieldCardinality `pulumi:"cardinality"`
 	// The string value of the default value of this field. Proto2 syntax only.
 	DefaultValue *string `pulumi:"defaultValue"`
 	// The field JSON name.
 	JsonName *string `pulumi:"jsonName"`
 	// The field type.
-	Kind *string `pulumi:"kind"`
+	Kind *FieldKind `pulumi:"kind"`
 	// The field name.
 	Name *string `pulumi:"name"`
 	// The field number.
@@ -6651,13 +6651,13 @@ type FieldInput interface {
 // A single field of a message type.
 type FieldArgs struct {
 	// The field cardinality.
-	Cardinality *FieldCardinality `pulumi:"cardinality"`
+	Cardinality FieldCardinalityPtrInput `pulumi:"cardinality"`
 	// The string value of the default value of this field. Proto2 syntax only.
 	DefaultValue pulumi.StringPtrInput `pulumi:"defaultValue"`
 	// The field JSON name.
 	JsonName pulumi.StringPtrInput `pulumi:"jsonName"`
 	// The field type.
-	Kind *FieldKind `pulumi:"kind"`
+	Kind FieldKindPtrInput `pulumi:"kind"`
 	// The field name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The field number.
@@ -6725,8 +6725,8 @@ func (o FieldOutput) ToFieldOutputWithContext(ctx context.Context) FieldOutput {
 }
 
 // The field cardinality.
-func (o FieldOutput) Cardinality() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Field) *string { return v.Cardinality }).(pulumi.StringPtrOutput)
+func (o FieldOutput) Cardinality() FieldCardinalityPtrOutput {
+	return o.ApplyT(func(v Field) *FieldCardinality { return v.Cardinality }).(FieldCardinalityPtrOutput)
 }
 
 // The string value of the default value of this field. Proto2 syntax only.
@@ -6740,8 +6740,8 @@ func (o FieldOutput) JsonName() pulumi.StringPtrOutput {
 }
 
 // The field type.
-func (o FieldOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Field) *string { return v.Kind }).(pulumi.StringPtrOutput)
+func (o FieldOutput) Kind() FieldKindPtrOutput {
+	return o.ApplyT(func(v Field) *FieldKind { return v.Kind }).(FieldKindPtrOutput)
 }
 
 // The field name.
@@ -7886,7 +7886,7 @@ type LabelDescriptor struct {
 	// The label key.
 	Key *string `pulumi:"key"`
 	// The type of data that can be assigned to the label.
-	ValueType *string `pulumi:"valueType"`
+	ValueType *LabelDescriptorValueType `pulumi:"valueType"`
 }
 
 // LabelDescriptorInput is an input type that accepts LabelDescriptorArgs and LabelDescriptorOutput values.
@@ -7907,7 +7907,7 @@ type LabelDescriptorArgs struct {
 	// The label key.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The type of data that can be assigned to the label.
-	ValueType *LabelDescriptorValueType `pulumi:"valueType"`
+	ValueType LabelDescriptorValueTypePtrInput `pulumi:"valueType"`
 }
 
 func (LabelDescriptorArgs) ElementType() reflect.Type {
@@ -7973,8 +7973,8 @@ func (o LabelDescriptorOutput) Key() pulumi.StringPtrOutput {
 }
 
 // The type of data that can be assigned to the label.
-func (o LabelDescriptorOutput) ValueType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LabelDescriptor) *string { return v.ValueType }).(pulumi.StringPtrOutput)
+func (o LabelDescriptorOutput) ValueType() LabelDescriptorValueTypePtrOutput {
+	return o.ApplyT(func(v LabelDescriptor) *LabelDescriptorValueType { return v.ValueType }).(LabelDescriptorValueTypePtrOutput)
 }
 
 type LabelDescriptorArrayOutput struct{ *pulumi.OutputState }
@@ -8908,7 +8908,7 @@ type Method struct {
 	// The URL of the output message type.
 	ResponseTypeUrl *string `pulumi:"responseTypeUrl"`
 	// The source syntax of this method.
-	Syntax *string `pulumi:"syntax"`
+	Syntax *MethodSyntax `pulumi:"syntax"`
 }
 
 // MethodInput is an input type that accepts MethodArgs and MethodOutput values.
@@ -8937,7 +8937,7 @@ type MethodArgs struct {
 	// The URL of the output message type.
 	ResponseTypeUrl pulumi.StringPtrInput `pulumi:"responseTypeUrl"`
 	// The source syntax of this method.
-	Syntax *MethodSyntax `pulumi:"syntax"`
+	Syntax MethodSyntaxPtrInput `pulumi:"syntax"`
 }
 
 func (MethodArgs) ElementType() reflect.Type {
@@ -9023,8 +9023,8 @@ func (o MethodOutput) ResponseTypeUrl() pulumi.StringPtrOutput {
 }
 
 // The source syntax of this method.
-func (o MethodOutput) Syntax() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Method) *string { return v.Syntax }).(pulumi.StringPtrOutput)
+func (o MethodOutput) Syntax() MethodSyntaxPtrOutput {
+	return o.ApplyT(func(v Method) *MethodSyntax { return v.Syntax }).(MethodSyntaxPtrOutput)
 }
 
 type MethodArrayOutput struct{ *pulumi.OutputState }
@@ -9210,11 +9210,11 @@ type MetricDescriptor struct {
 	// The set of labels that can be used to describe a specific instance of this metric type. For example, the `appengine.googleapis.com/http/server/response_latencies` metric type has a label for the HTTP response code, `response_code`, so you can look at latencies for successful responses or just for responses that failed.
 	Labels []LabelDescriptor `pulumi:"labels"`
 	// Optional. The launch stage of the metric definition.
-	LaunchStage *string `pulumi:"launchStage"`
+	LaunchStage *MetricDescriptorLaunchStage `pulumi:"launchStage"`
 	// Optional. Metadata which can be used to guide usage of the metric.
 	Metadata *MetricDescriptorMetadata `pulumi:"metadata"`
 	// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of `metric_kind` and `value_type` might not be supported.
-	MetricKind *string `pulumi:"metricKind"`
+	MetricKind *MetricDescriptorMetricKind `pulumi:"metricKind"`
 	// Read-only. If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here.
 	MonitoredResourceTypes []string `pulumi:"monitoredResourceTypes"`
 	// The resource name of the metric descriptor.
@@ -9224,7 +9224,7 @@ type MetricDescriptor struct {
 	// The units in which the metric value is reported. It is only applicable if the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The `unit` defines the representation of the stored metric values. Different systems might scale the values to be more easily displayed (so a value of `0.02kBy` _might_ be displayed as `20By`, and a value of `3523kBy` _might_ be displayed as `3.5MBy`). However, if the `unit` is `kBy`, then the value of the metric is always in thousands of bytes, no matter how it might be displayed. If you want a custom metric to record the exact number of CPU-seconds used by a job, you can create an `INT64 CUMULATIVE` metric whose `unit` is `s{CPU}` (or equivalently `1s{CPU}` or just `s`). If the job uses 12,005 CPU-seconds, then the value is written as `12005`. Alternatively, if you want a custom metric to record data in a more granular way, you can create a `DOUBLE CUMULATIVE` metric whose `unit` is `ks{CPU}`, and then write the value `12.005` (which is `12005/1000`), or use `Kis{CPU}` and write `11.723` (which is `12005/1024`). The supported units are a subset of [The Unified Code for Units of Measure](https://unitsofmeasure.org/ucum.html) standard: **Basic units (UNIT)** * `bit` bit * `By` byte * `s` second * `min` minute * `h` hour * `d` day * `1` dimensionless **Prefixes (PREFIX)** * `k` kilo (10^3) * `M` mega (10^6) * `G` giga (10^9) * `T` tera (10^12) * `P` peta (10^15) * `E` exa (10^18) * `Z` zetta (10^21) * `Y` yotta (10^24) * `m` milli (10^-3) * `u` micro (10^-6) * `n` nano (10^-9) * `p` pico (10^-12) * `f` femto (10^-15) * `a` atto (10^-18) * `z` zepto (10^-21) * `y` yocto (10^-24) * `Ki` kibi (2^10) * `Mi` mebi (2^20) * `Gi` gibi (2^30) * `Ti` tebi (2^40) * `Pi` pebi (2^50) **Grammar** The grammar also includes these connectors: * `/` division or ratio (as an infix operator). For examples, `kBy/{email}` or `MiBy/10ms` (although you should almost never have `/s` in a metric `unit`; rates should always be computed at query time from the underlying cumulative or delta value). * `.` multiplication or composition (as an infix operator). For examples, `GBy.d` or `k{watt}.h`. The grammar for a unit is as follows: Expression = Component { "." Component } { "/" Component } ; Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] | Annotation | "1" ; Annotation = "{" NAME "}" ; Notes: * `Annotation` is just a comment if it follows a `UNIT`. If the annotation is used alone, then the unit is equivalent to `1`. For examples, `{request}/s == 1/s`, `By{transmitted}/s == By/s`. * `NAME` is a sequence of non-blank printable ASCII characters not containing `{` or `}`. * `1` represents a unitary [dimensionless unit](https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as in `1/s`. It is typically used when none of the basic units are appropriate. For example, "new users per day" can be represented as `1/d` or `{new-users}/d` (and a metric value `5` would mean "5 new users). Alternatively, "thousands of page views per day" would be represented as `1000/d` or `k1/d` or `k{page_views}/d` (and a metric value of `5.3` would mean "5300 page views per day"). * `%` represents dimensionless value of 1/100, and annotates values giving a percentage (so the metric values are typically in the range of 0..100, and a metric value `3` means "3 percent"). * `10^2.%` indicates a metric contains a ratio, typically in the range 0..1, that will be multiplied by 100 and displayed as a percentage (so a metric value `0.03` means "3 percent").
 	Unit *string `pulumi:"unit"`
 	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of `metric_kind` and `value_type` might not be supported.
-	ValueType *string `pulumi:"valueType"`
+	ValueType *MetricDescriptorValueType `pulumi:"valueType"`
 }
 
 // MetricDescriptorInput is an input type that accepts MetricDescriptorArgs and MetricDescriptorOutput values.
@@ -9247,11 +9247,11 @@ type MetricDescriptorArgs struct {
 	// The set of labels that can be used to describe a specific instance of this metric type. For example, the `appengine.googleapis.com/http/server/response_latencies` metric type has a label for the HTTP response code, `response_code`, so you can look at latencies for successful responses or just for responses that failed.
 	Labels LabelDescriptorArrayInput `pulumi:"labels"`
 	// Optional. The launch stage of the metric definition.
-	LaunchStage *MetricDescriptorLaunchStage `pulumi:"launchStage"`
+	LaunchStage MetricDescriptorLaunchStagePtrInput `pulumi:"launchStage"`
 	// Optional. Metadata which can be used to guide usage of the metric.
 	Metadata MetricDescriptorMetadataPtrInput `pulumi:"metadata"`
 	// Whether the metric records instantaneous values, changes to a value, etc. Some combinations of `metric_kind` and `value_type` might not be supported.
-	MetricKind *MetricDescriptorMetricKind `pulumi:"metricKind"`
+	MetricKind MetricDescriptorMetricKindPtrInput `pulumi:"metricKind"`
 	// Read-only. If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here.
 	MonitoredResourceTypes pulumi.StringArrayInput `pulumi:"monitoredResourceTypes"`
 	// The resource name of the metric descriptor.
@@ -9261,7 +9261,7 @@ type MetricDescriptorArgs struct {
 	// The units in which the metric value is reported. It is only applicable if the `value_type` is `INT64`, `DOUBLE`, or `DISTRIBUTION`. The `unit` defines the representation of the stored metric values. Different systems might scale the values to be more easily displayed (so a value of `0.02kBy` _might_ be displayed as `20By`, and a value of `3523kBy` _might_ be displayed as `3.5MBy`). However, if the `unit` is `kBy`, then the value of the metric is always in thousands of bytes, no matter how it might be displayed. If you want a custom metric to record the exact number of CPU-seconds used by a job, you can create an `INT64 CUMULATIVE` metric whose `unit` is `s{CPU}` (or equivalently `1s{CPU}` or just `s`). If the job uses 12,005 CPU-seconds, then the value is written as `12005`. Alternatively, if you want a custom metric to record data in a more granular way, you can create a `DOUBLE CUMULATIVE` metric whose `unit` is `ks{CPU}`, and then write the value `12.005` (which is `12005/1000`), or use `Kis{CPU}` and write `11.723` (which is `12005/1024`). The supported units are a subset of [The Unified Code for Units of Measure](https://unitsofmeasure.org/ucum.html) standard: **Basic units (UNIT)** * `bit` bit * `By` byte * `s` second * `min` minute * `h` hour * `d` day * `1` dimensionless **Prefixes (PREFIX)** * `k` kilo (10^3) * `M` mega (10^6) * `G` giga (10^9) * `T` tera (10^12) * `P` peta (10^15) * `E` exa (10^18) * `Z` zetta (10^21) * `Y` yotta (10^24) * `m` milli (10^-3) * `u` micro (10^-6) * `n` nano (10^-9) * `p` pico (10^-12) * `f` femto (10^-15) * `a` atto (10^-18) * `z` zepto (10^-21) * `y` yocto (10^-24) * `Ki` kibi (2^10) * `Mi` mebi (2^20) * `Gi` gibi (2^30) * `Ti` tebi (2^40) * `Pi` pebi (2^50) **Grammar** The grammar also includes these connectors: * `/` division or ratio (as an infix operator). For examples, `kBy/{email}` or `MiBy/10ms` (although you should almost never have `/s` in a metric `unit`; rates should always be computed at query time from the underlying cumulative or delta value). * `.` multiplication or composition (as an infix operator). For examples, `GBy.d` or `k{watt}.h`. The grammar for a unit is as follows: Expression = Component { "." Component } { "/" Component } ; Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] | Annotation | "1" ; Annotation = "{" NAME "}" ; Notes: * `Annotation` is just a comment if it follows a `UNIT`. If the annotation is used alone, then the unit is equivalent to `1`. For examples, `{request}/s == 1/s`, `By{transmitted}/s == By/s`. * `NAME` is a sequence of non-blank printable ASCII characters not containing `{` or `}`. * `1` represents a unitary [dimensionless unit](https://en.wikipedia.org/wiki/Dimensionless_quantity) of 1, such as in `1/s`. It is typically used when none of the basic units are appropriate. For example, "new users per day" can be represented as `1/d` or `{new-users}/d` (and a metric value `5` would mean "5 new users). Alternatively, "thousands of page views per day" would be represented as `1000/d` or `k1/d` or `k{page_views}/d` (and a metric value of `5.3` would mean "5300 page views per day"). * `%` represents dimensionless value of 1/100, and annotates values giving a percentage (so the metric values are typically in the range of 0..100, and a metric value `3` means "3 percent"). * `10^2.%` indicates a metric contains a ratio, typically in the range 0..1, that will be multiplied by 100 and displayed as a percentage (so a metric value `0.03` means "3 percent").
 	Unit pulumi.StringPtrInput `pulumi:"unit"`
 	// Whether the measurement is an integer, a floating-point number, etc. Some combinations of `metric_kind` and `value_type` might not be supported.
-	ValueType *MetricDescriptorValueType `pulumi:"valueType"`
+	ValueType MetricDescriptorValueTypePtrInput `pulumi:"valueType"`
 }
 
 func (MetricDescriptorArgs) ElementType() reflect.Type {
@@ -9332,8 +9332,8 @@ func (o MetricDescriptorOutput) Labels() LabelDescriptorArrayOutput {
 }
 
 // Optional. The launch stage of the metric definition.
-func (o MetricDescriptorOutput) LaunchStage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MetricDescriptor) *string { return v.LaunchStage }).(pulumi.StringPtrOutput)
+func (o MetricDescriptorOutput) LaunchStage() MetricDescriptorLaunchStagePtrOutput {
+	return o.ApplyT(func(v MetricDescriptor) *MetricDescriptorLaunchStage { return v.LaunchStage }).(MetricDescriptorLaunchStagePtrOutput)
 }
 
 // Optional. Metadata which can be used to guide usage of the metric.
@@ -9342,8 +9342,8 @@ func (o MetricDescriptorOutput) Metadata() MetricDescriptorMetadataPtrOutput {
 }
 
 // Whether the metric records instantaneous values, changes to a value, etc. Some combinations of `metric_kind` and `value_type` might not be supported.
-func (o MetricDescriptorOutput) MetricKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MetricDescriptor) *string { return v.MetricKind }).(pulumi.StringPtrOutput)
+func (o MetricDescriptorOutput) MetricKind() MetricDescriptorMetricKindPtrOutput {
+	return o.ApplyT(func(v MetricDescriptor) *MetricDescriptorMetricKind { return v.MetricKind }).(MetricDescriptorMetricKindPtrOutput)
 }
 
 // Read-only. If present, then a time series, which is identified partially by a metric type and a MonitoredResourceDescriptor, that is associated with this metric type can only be associated with one of the monitored resource types listed here.
@@ -9367,8 +9367,8 @@ func (o MetricDescriptorOutput) Unit() pulumi.StringPtrOutput {
 }
 
 // Whether the measurement is an integer, a floating-point number, etc. Some combinations of `metric_kind` and `value_type` might not be supported.
-func (o MetricDescriptorOutput) ValueType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MetricDescriptor) *string { return v.ValueType }).(pulumi.StringPtrOutput)
+func (o MetricDescriptorOutput) ValueType() MetricDescriptorValueTypePtrOutput {
+	return o.ApplyT(func(v MetricDescriptor) *MetricDescriptorValueType { return v.ValueType }).(MetricDescriptorValueTypePtrOutput)
 }
 
 type MetricDescriptorArrayOutput struct{ *pulumi.OutputState }
@@ -10243,7 +10243,7 @@ type MonitoredResourceDescriptor struct {
 	// A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
 	Labels []LabelDescriptor `pulumi:"labels"`
 	// Optional. The launch stage of the monitored resource definition.
-	LaunchStage *string `pulumi:"launchStage"`
+	LaunchStage *MonitoredResourceDescriptorLaunchStage `pulumi:"launchStage"`
 	// Optional. The resource name of the monitored resource descriptor: `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format `"monitoredResourceDescriptors/{type}"`.
 	Name *string `pulumi:"name"`
 	// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
@@ -10270,7 +10270,7 @@ type MonitoredResourceDescriptorArgs struct {
 	// A set of labels used to describe instances of this monitored resource type. For example, an individual Google Cloud SQL database is identified by values for the labels `"database_id"` and `"zone"`.
 	Labels LabelDescriptorArrayInput `pulumi:"labels"`
 	// Optional. The launch stage of the monitored resource definition.
-	LaunchStage *MonitoredResourceDescriptorLaunchStage `pulumi:"launchStage"`
+	LaunchStage MonitoredResourceDescriptorLaunchStagePtrInput `pulumi:"launchStage"`
 	// Optional. The resource name of the monitored resource descriptor: `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format `"monitoredResourceDescriptors/{type}"`.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The monitored resource type. For example, the type `"cloudsql_database"` represents databases in Google Cloud SQL.
@@ -10345,8 +10345,8 @@ func (o MonitoredResourceDescriptorOutput) Labels() LabelDescriptorArrayOutput {
 }
 
 // Optional. The launch stage of the monitored resource definition.
-func (o MonitoredResourceDescriptorOutput) LaunchStage() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MonitoredResourceDescriptor) *string { return v.LaunchStage }).(pulumi.StringPtrOutput)
+func (o MonitoredResourceDescriptorOutput) LaunchStage() MonitoredResourceDescriptorLaunchStagePtrOutput {
+	return o.ApplyT(func(v MonitoredResourceDescriptor) *MonitoredResourceDescriptorLaunchStage { return v.LaunchStage }).(MonitoredResourceDescriptorLaunchStagePtrOutput)
 }
 
 // Optional. The resource name of the monitored resource descriptor: `"projects/{project_id}/monitoredResourceDescriptors/{type}"` where {type} is the value of the `type` field in this object and {project_id} is a project ID that provides API-specific context for accessing the type. APIs that do not use project information can use the resource name format `"monitoredResourceDescriptors/{type}"`.
@@ -13685,7 +13685,7 @@ type Type struct {
 	// The source context.
 	SourceContext *SourceContext `pulumi:"sourceContext"`
 	// The source syntax.
-	Syntax *string `pulumi:"syntax"`
+	Syntax *TypeSyntax `pulumi:"syntax"`
 }
 
 // TypeInput is an input type that accepts TypeArgs and TypeOutput values.
@@ -13712,7 +13712,7 @@ type TypeArgs struct {
 	// The source context.
 	SourceContext SourceContextPtrInput `pulumi:"sourceContext"`
 	// The source syntax.
-	Syntax *TypeSyntax `pulumi:"syntax"`
+	Syntax TypeSyntaxPtrInput `pulumi:"syntax"`
 }
 
 func (TypeArgs) ElementType() reflect.Type {
@@ -13793,8 +13793,8 @@ func (o TypeOutput) SourceContext() SourceContextPtrOutput {
 }
 
 // The source syntax.
-func (o TypeOutput) Syntax() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Type) *string { return v.Syntax }).(pulumi.StringPtrOutput)
+func (o TypeOutput) Syntax() TypeSyntaxPtrOutput {
+	return o.ApplyT(func(v Type) *TypeSyntax { return v.Syntax }).(TypeSyntaxPtrOutput)
 }
 
 type TypeArrayOutput struct{ *pulumi.OutputState }

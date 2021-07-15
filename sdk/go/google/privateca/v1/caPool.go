@@ -44,6 +44,9 @@ func NewCaPool(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	if args.Tier == nil {
+		return nil, errors.New("invalid value for required argument 'Tier'")
+	}
 	var resource CaPool
 	err := ctx.RegisterResource("google-native:privateca/v1:CaPool", name, args, &resource, opts...)
 	if err != nil {
@@ -66,29 +69,9 @@ func GetCaPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CaPool resources.
 type caPoolState struct {
-	// Optional. The IssuancePolicy to control how Certificates will be issued from this CaPool.
-	IssuancePolicy *IssuancePolicyResponse `pulumi:"issuancePolicy"`
-	// Optional. Labels with user-defined metadata.
-	Labels map[string]string `pulumi:"labels"`
-	// The resource name for this CaPool in the format `projects/*/locations/*/caPools/*`.
-	Name *string `pulumi:"name"`
-	// Optional. The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
-	PublishingOptions *PublishingOptionsResponse `pulumi:"publishingOptions"`
-	// Immutable. The Tier of this CaPool.
-	Tier *string `pulumi:"tier"`
 }
 
 type CaPoolState struct {
-	// Optional. The IssuancePolicy to control how Certificates will be issued from this CaPool.
-	IssuancePolicy IssuancePolicyResponsePtrInput
-	// Optional. Labels with user-defined metadata.
-	Labels pulumi.StringMapInput
-	// The resource name for this CaPool in the format `projects/*/locations/*/caPools/*`.
-	Name pulumi.StringPtrInput
-	// Optional. The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
-	PublishingOptions PublishingOptionsResponsePtrInput
-	// Immutable. The Tier of this CaPool.
-	Tier pulumi.StringPtrInput
 }
 
 func (CaPoolState) ElementType() reflect.Type {
@@ -107,7 +90,7 @@ type caPoolArgs struct {
 	PublishingOptions *PublishingOptions `pulumi:"publishingOptions"`
 	RequestId         *string            `pulumi:"requestId"`
 	// Immutable. The Tier of this CaPool.
-	Tier string `pulumi:"tier"`
+	Tier CaPoolTier `pulumi:"tier"`
 }
 
 // The set of arguments for constructing a CaPool resource.
@@ -123,7 +106,7 @@ type CaPoolArgs struct {
 	PublishingOptions PublishingOptionsPtrInput
 	RequestId         pulumi.StringPtrInput
 	// Immutable. The Tier of this CaPool.
-	Tier CaPoolTier
+	Tier CaPoolTierInput
 }
 
 func (CaPoolArgs) ElementType() reflect.Type {

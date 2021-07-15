@@ -81,53 +81,9 @@ func GetCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Certificate resources.
 type certificateState struct {
-	// A structured description of the issued X.509 certificate.
-	CertificateDescription *CertificateDescriptionResponse `pulumi:"certificateDescription"`
-	// Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
-	Config *CertificateConfigResponse `pulumi:"config"`
-	// The time at which this Certificate was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Optional. Labels with user-defined metadata.
-	Labels map[string]string `pulumi:"labels"`
-	// Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
-	Lifetime *string `pulumi:"lifetime"`
-	// The resource path for this Certificate in the format `projects/*/locations/*/certificateAuthorities/*/certificates/*`.
-	Name *string `pulumi:"name"`
-	// The pem-encoded, signed X.509 certificate.
-	PemCertificate *string `pulumi:"pemCertificate"`
-	// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
-	PemCertificateChain []string `pulumi:"pemCertificateChain"`
-	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
-	PemCsr *string `pulumi:"pemCsr"`
-	// Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
-	RevocationDetails *RevocationDetailsResponse `pulumi:"revocationDetails"`
-	// The time at which this Certificate was updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type CertificateState struct {
-	// A structured description of the issued X.509 certificate.
-	CertificateDescription CertificateDescriptionResponsePtrInput
-	// Immutable. A description of the certificate and key that does not require X.509 or ASN.1.
-	Config CertificateConfigResponsePtrInput
-	// The time at which this Certificate was created.
-	CreateTime pulumi.StringPtrInput
-	// Optional. Labels with user-defined metadata.
-	Labels pulumi.StringMapInput
-	// Immutable. The desired lifetime of a certificate. Used to create the "not_before_time" and "not_after_time" fields inside an X.509 certificate. Note that the lifetime may be truncated if it would extend past the life of any certificate authority in the issuing chain.
-	Lifetime pulumi.StringPtrInput
-	// The resource path for this Certificate in the format `projects/*/locations/*/certificateAuthorities/*/certificates/*`.
-	Name pulumi.StringPtrInput
-	// The pem-encoded, signed X.509 certificate.
-	PemCertificate pulumi.StringPtrInput
-	// The chain that may be used to verify the X.509 certificate. Expected to be in issuer-to-root order according to RFC 5246.
-	PemCertificateChain pulumi.StringArrayInput
-	// Immutable. A pem-encoded X.509 certificate signing request (CSR).
-	PemCsr pulumi.StringPtrInput
-	// Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
-	RevocationDetails RevocationDetailsResponsePtrInput
-	// The time at which this Certificate was updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (CertificateState) ElementType() reflect.Type {

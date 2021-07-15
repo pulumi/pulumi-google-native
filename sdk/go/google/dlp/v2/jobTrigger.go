@@ -50,6 +50,9 @@ func NewJobTrigger(ctx *pulumi.Context,
 	if args.Project == nil {
 		return nil, errors.New("invalid value for required argument 'Project'")
 	}
+	if args.Status == nil {
+		return nil, errors.New("invalid value for required argument 'Status'")
+	}
 	var resource JobTrigger
 	err := ctx.RegisterResource("google-native:dlp/v2:JobTrigger", name, args, &resource, opts...)
 	if err != nil {
@@ -72,49 +75,9 @@ func GetJobTrigger(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering JobTrigger resources.
 type jobTriggerState struct {
-	// The creation timestamp of a triggeredJob.
-	CreateTime *string `pulumi:"createTime"`
-	// User provided description (max 256 chars)
-	Description *string `pulumi:"description"`
-	// Display name (max 100 chars)
-	DisplayName *string `pulumi:"displayName"`
-	// A stream of errors encountered when the trigger was activated. Repeated errors may result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the JobTrigger is modified this list will be cleared.
-	Errors []GooglePrivacyDlpV2ErrorResponse `pulumi:"errors"`
-	// For inspect jobs, a snapshot of the configuration.
-	InspectJob *GooglePrivacyDlpV2InspectJobConfigResponse `pulumi:"inspectJob"`
-	// The timestamp of the last time this trigger executed.
-	LastRunTime *string `pulumi:"lastRunTime"`
-	// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
-	Name *string `pulumi:"name"`
-	// A status for this trigger.
-	Status *string `pulumi:"status"`
-	// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
-	Triggers []GooglePrivacyDlpV2TriggerResponse `pulumi:"triggers"`
-	// The last update timestamp of a triggeredJob.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type JobTriggerState struct {
-	// The creation timestamp of a triggeredJob.
-	CreateTime pulumi.StringPtrInput
-	// User provided description (max 256 chars)
-	Description pulumi.StringPtrInput
-	// Display name (max 100 chars)
-	DisplayName pulumi.StringPtrInput
-	// A stream of errors encountered when the trigger was activated. Repeated errors may result in the JobTrigger automatically being paused. Will return the last 100 errors. Whenever the JobTrigger is modified this list will be cleared.
-	Errors GooglePrivacyDlpV2ErrorResponseArrayInput
-	// For inspect jobs, a snapshot of the configuration.
-	InspectJob GooglePrivacyDlpV2InspectJobConfigResponsePtrInput
-	// The timestamp of the last time this trigger executed.
-	LastRunTime pulumi.StringPtrInput
-	// Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is created, for example `projects/dlp-test-project/jobTriggers/53234423`.
-	Name pulumi.StringPtrInput
-	// A status for this trigger.
-	Status pulumi.StringPtrInput
-	// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
-	Triggers GooglePrivacyDlpV2TriggerResponseArrayInput
-	// The last update timestamp of a triggeredJob.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (JobTriggerState) ElementType() reflect.Type {
@@ -133,7 +96,7 @@ type jobTriggerArgs struct {
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
 	// A status for this trigger.
-	Status string `pulumi:"status"`
+	Status JobTriggerStatus `pulumi:"status"`
 	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TriggerId *string `pulumi:"triggerId"`
 	// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.
@@ -153,7 +116,7 @@ type JobTriggerArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// A status for this trigger.
-	Status JobTriggerStatus
+	Status JobTriggerStatusInput
 	// The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
 	TriggerId pulumi.StringPtrInput
 	// A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to be started. The list may contain only a single Schedule trigger and must have at least one object.

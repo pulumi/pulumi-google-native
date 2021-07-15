@@ -61,21 +61,9 @@ func GetEnvgroupAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EnvgroupAttachment resources.
 type envgroupAttachmentState struct {
-	// The time at which the environment group attachment was created as milliseconds since epoch.
-	CreatedAt *string `pulumi:"createdAt"`
-	// ID of the attached environment.
-	Environment *string `pulumi:"environment"`
-	// ID of the environment group attachment.
-	Name *string `pulumi:"name"`
 }
 
 type EnvgroupAttachmentState struct {
-	// The time at which the environment group attachment was created as milliseconds since epoch.
-	CreatedAt pulumi.StringPtrInput
-	// ID of the attached environment.
-	Environment pulumi.StringPtrInput
-	// ID of the environment group attachment.
-	Name pulumi.StringPtrInput
 }
 
 func (EnvgroupAttachmentState) ElementType() reflect.Type {

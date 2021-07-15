@@ -11,7 +11,7 @@ import (
 )
 
 // The encoding of messages validated against `schema`.
-type SchemaSettingsEncoding pulumi.String
+type SchemaSettingsEncoding string
 
 const (
 	// Unspecified
@@ -23,7 +23,23 @@ const (
 )
 
 func (SchemaSettingsEncoding) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*SchemaSettingsEncoding)(nil)).Elem()
+}
+
+func (e SchemaSettingsEncoding) ToSchemaSettingsEncodingOutput() SchemaSettingsEncodingOutput {
+	return pulumi.ToOutput(e).(SchemaSettingsEncodingOutput)
+}
+
+func (e SchemaSettingsEncoding) ToSchemaSettingsEncodingOutputWithContext(ctx context.Context) SchemaSettingsEncodingOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SchemaSettingsEncodingOutput)
+}
+
+func (e SchemaSettingsEncoding) ToSchemaSettingsEncodingPtrOutput() SchemaSettingsEncodingPtrOutput {
+	return e.ToSchemaSettingsEncodingPtrOutputWithContext(context.Background())
+}
+
+func (e SchemaSettingsEncoding) ToSchemaSettingsEncodingPtrOutputWithContext(ctx context.Context) SchemaSettingsEncodingPtrOutput {
+	return SchemaSettingsEncoding(e).ToSchemaSettingsEncodingOutputWithContext(ctx).ToSchemaSettingsEncodingPtrOutputWithContext(ctx)
 }
 
 func (e SchemaSettingsEncoding) ToStringOutput() pulumi.StringOutput {
@@ -42,8 +58,129 @@ func (e SchemaSettingsEncoding) ToStringPtrOutputWithContext(ctx context.Context
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type SchemaSettingsEncodingOutput struct{ *pulumi.OutputState }
+
+func (SchemaSettingsEncodingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaSettingsEncoding)(nil)).Elem()
+}
+
+func (o SchemaSettingsEncodingOutput) ToSchemaSettingsEncodingOutput() SchemaSettingsEncodingOutput {
+	return o
+}
+
+func (o SchemaSettingsEncodingOutput) ToSchemaSettingsEncodingOutputWithContext(ctx context.Context) SchemaSettingsEncodingOutput {
+	return o
+}
+
+func (o SchemaSettingsEncodingOutput) ToSchemaSettingsEncodingPtrOutput() SchemaSettingsEncodingPtrOutput {
+	return o.ToSchemaSettingsEncodingPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaSettingsEncodingOutput) ToSchemaSettingsEncodingPtrOutputWithContext(ctx context.Context) SchemaSettingsEncodingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchemaSettingsEncoding) *SchemaSettingsEncoding {
+		return &v
+	}).(SchemaSettingsEncodingPtrOutput)
+}
+
+func (o SchemaSettingsEncodingOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SchemaSettingsEncodingOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchemaSettingsEncoding) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SchemaSettingsEncodingOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaSettingsEncodingOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchemaSettingsEncoding) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SchemaSettingsEncodingPtrOutput struct{ *pulumi.OutputState }
+
+func (SchemaSettingsEncodingPtrOutput) ElementType() reflect.Type {
+	return schemaSettingsEncodingPtrType
+}
+
+func (o SchemaSettingsEncodingPtrOutput) ToSchemaSettingsEncodingPtrOutput() SchemaSettingsEncodingPtrOutput {
+	return o
+}
+
+func (o SchemaSettingsEncodingPtrOutput) ToSchemaSettingsEncodingPtrOutputWithContext(ctx context.Context) SchemaSettingsEncodingPtrOutput {
+	return o
+}
+
+func (o SchemaSettingsEncodingPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaSettingsEncodingPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SchemaSettingsEncoding) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SchemaSettingsEncodingPtrOutput) Elem() SchemaSettingsEncodingOutput {
+	return o.ApplyT(func(v *SchemaSettingsEncoding) SchemaSettingsEncoding {
+		var ret SchemaSettingsEncoding
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(SchemaSettingsEncodingOutput)
+}
+
+// SchemaSettingsEncodingInput is an input type that accepts SchemaSettingsEncodingArgs and SchemaSettingsEncodingOutput values.
+// You can construct a concrete instance of `SchemaSettingsEncodingInput` via:
+//
+//          SchemaSettingsEncodingArgs{...}
+type SchemaSettingsEncodingInput interface {
+	pulumi.Input
+
+	ToSchemaSettingsEncodingOutput() SchemaSettingsEncodingOutput
+	ToSchemaSettingsEncodingOutputWithContext(context.Context) SchemaSettingsEncodingOutput
+}
+
+var schemaSettingsEncodingPtrType = reflect.TypeOf((**SchemaSettingsEncoding)(nil)).Elem()
+
+type SchemaSettingsEncodingPtrInput interface {
+	pulumi.Input
+
+	ToSchemaSettingsEncodingPtrOutput() SchemaSettingsEncodingPtrOutput
+	ToSchemaSettingsEncodingPtrOutputWithContext(context.Context) SchemaSettingsEncodingPtrOutput
+}
+
+type schemaSettingsEncodingPtr string
+
+func SchemaSettingsEncodingPtr(v string) SchemaSettingsEncodingPtrInput {
+	return (*schemaSettingsEncodingPtr)(&v)
+}
+
+func (*schemaSettingsEncodingPtr) ElementType() reflect.Type {
+	return schemaSettingsEncodingPtrType
+}
+
+func (in *schemaSettingsEncodingPtr) ToSchemaSettingsEncodingPtrOutput() SchemaSettingsEncodingPtrOutput {
+	return pulumi.ToOutput(in).(SchemaSettingsEncodingPtrOutput)
+}
+
+func (in *schemaSettingsEncodingPtr) ToSchemaSettingsEncodingPtrOutputWithContext(ctx context.Context) SchemaSettingsEncodingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SchemaSettingsEncodingPtrOutput)
+}
+
 // The type of the schema definition.
-type SchemaType pulumi.String
+type SchemaType string
 
 const (
 	// Default value. This value is unused.
@@ -55,7 +192,23 @@ const (
 )
 
 func (SchemaType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*SchemaType)(nil)).Elem()
+}
+
+func (e SchemaType) ToSchemaTypeOutput() SchemaTypeOutput {
+	return pulumi.ToOutput(e).(SchemaTypeOutput)
+}
+
+func (e SchemaType) ToSchemaTypeOutputWithContext(ctx context.Context) SchemaTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SchemaTypeOutput)
+}
+
+func (e SchemaType) ToSchemaTypePtrOutput() SchemaTypePtrOutput {
+	return e.ToSchemaTypePtrOutputWithContext(context.Background())
+}
+
+func (e SchemaType) ToSchemaTypePtrOutputWithContext(ctx context.Context) SchemaTypePtrOutput {
+	return SchemaType(e).ToSchemaTypeOutputWithContext(ctx).ToSchemaTypePtrOutputWithContext(ctx)
 }
 
 func (e SchemaType) ToStringOutput() pulumi.StringOutput {
@@ -72,4 +225,132 @@ func (e SchemaType) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e SchemaType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SchemaTypeOutput struct{ *pulumi.OutputState }
+
+func (SchemaTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaType)(nil)).Elem()
+}
+
+func (o SchemaTypeOutput) ToSchemaTypeOutput() SchemaTypeOutput {
+	return o
+}
+
+func (o SchemaTypeOutput) ToSchemaTypeOutputWithContext(ctx context.Context) SchemaTypeOutput {
+	return o
+}
+
+func (o SchemaTypeOutput) ToSchemaTypePtrOutput() SchemaTypePtrOutput {
+	return o.ToSchemaTypePtrOutputWithContext(context.Background())
+}
+
+func (o SchemaTypeOutput) ToSchemaTypePtrOutputWithContext(ctx context.Context) SchemaTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchemaType) *SchemaType {
+		return &v
+	}).(SchemaTypePtrOutput)
+}
+
+func (o SchemaTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SchemaTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchemaType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SchemaTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchemaType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SchemaTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SchemaTypePtrOutput) ElementType() reflect.Type {
+	return schemaTypePtrType
+}
+
+func (o SchemaTypePtrOutput) ToSchemaTypePtrOutput() SchemaTypePtrOutput {
+	return o
+}
+
+func (o SchemaTypePtrOutput) ToSchemaTypePtrOutputWithContext(ctx context.Context) SchemaTypePtrOutput {
+	return o
+}
+
+func (o SchemaTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SchemaType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SchemaTypePtrOutput) Elem() SchemaTypeOutput {
+	return o.ApplyT(func(v *SchemaType) SchemaType {
+		var ret SchemaType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(SchemaTypeOutput)
+}
+
+// SchemaTypeInput is an input type that accepts SchemaTypeArgs and SchemaTypeOutput values.
+// You can construct a concrete instance of `SchemaTypeInput` via:
+//
+//          SchemaTypeArgs{...}
+type SchemaTypeInput interface {
+	pulumi.Input
+
+	ToSchemaTypeOutput() SchemaTypeOutput
+	ToSchemaTypeOutputWithContext(context.Context) SchemaTypeOutput
+}
+
+var schemaTypePtrType = reflect.TypeOf((**SchemaType)(nil)).Elem()
+
+type SchemaTypePtrInput interface {
+	pulumi.Input
+
+	ToSchemaTypePtrOutput() SchemaTypePtrOutput
+	ToSchemaTypePtrOutputWithContext(context.Context) SchemaTypePtrOutput
+}
+
+type schemaTypePtr string
+
+func SchemaTypePtr(v string) SchemaTypePtrInput {
+	return (*schemaTypePtr)(&v)
+}
+
+func (*schemaTypePtr) ElementType() reflect.Type {
+	return schemaTypePtrType
+}
+
+func (in *schemaTypePtr) ToSchemaTypePtrOutput() SchemaTypePtrOutput {
+	return pulumi.ToOutput(in).(SchemaTypePtrOutput)
+}
+
+func (in *schemaTypePtr) ToSchemaTypePtrOutputWithContext(ctx context.Context) SchemaTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SchemaTypePtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(SchemaSettingsEncodingOutput{})
+	pulumi.RegisterOutputType(SchemaSettingsEncodingPtrOutput{})
+	pulumi.RegisterOutputType(SchemaTypeOutput{})
+	pulumi.RegisterOutputType(SchemaTypePtrOutput{})
 }

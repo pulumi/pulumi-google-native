@@ -61,21 +61,9 @@ func GetSubscription(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Subscription resources.
 type subscriptionState struct {
-	// The settings for this subscription's message delivery.
-	DeliveryConfig *DeliveryConfigResponse `pulumi:"deliveryConfig"`
-	// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
-	Name *string `pulumi:"name"`
-	// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
-	Topic *string `pulumi:"topic"`
 }
 
 type SubscriptionState struct {
-	// The settings for this subscription's message delivery.
-	DeliveryConfig DeliveryConfigResponsePtrInput
-	// The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id}
-	Name pulumi.StringPtrInput
-	// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
-	Topic pulumi.StringPtrInput
 }
 
 func (SubscriptionState) ElementType() reflect.Type {

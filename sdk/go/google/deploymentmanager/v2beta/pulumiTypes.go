@@ -451,7 +451,7 @@ type AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *string `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
@@ -470,7 +470,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *AuditLogConfigLogType `pulumi:"logType"`
+	LogType AuditLogConfigLogTypePtrInput `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -531,8 +531,8 @@ func (o AuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
 }
 
 // The log type that this config enables.
-func (o AuditLogConfigOutput) LogType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AuditLogConfig) *string { return v.LogType }).(pulumi.StringPtrOutput)
+func (o AuditLogConfigOutput) LogType() AuditLogConfigLogTypePtrOutput {
+	return o.ApplyT(func(v AuditLogConfig) *AuditLogConfigLogType { return v.LogType }).(AuditLogConfigLogTypePtrOutput)
 }
 
 type AuditLogConfigArrayOutput struct{ *pulumi.OutputState }
@@ -2730,7 +2730,7 @@ type Diagnostic struct {
 	// JsonPath expression on the resource that if non empty, indicates that this field needs to be extracted as a diagnostic.
 	Field *string `pulumi:"field"`
 	// Level to record this diagnostic.
-	Level *string `pulumi:"level"`
+	Level *DiagnosticLevel `pulumi:"level"`
 }
 
 // DiagnosticInput is an input type that accepts DiagnosticArgs and DiagnosticOutput values.
@@ -2748,7 +2748,7 @@ type DiagnosticArgs struct {
 	// JsonPath expression on the resource that if non empty, indicates that this field needs to be extracted as a diagnostic.
 	Field pulumi.StringPtrInput `pulumi:"field"`
 	// Level to record this diagnostic.
-	Level *DiagnosticLevel `pulumi:"level"`
+	Level DiagnosticLevelPtrInput `pulumi:"level"`
 }
 
 func (DiagnosticArgs) ElementType() reflect.Type {
@@ -2808,8 +2808,8 @@ func (o DiagnosticOutput) Field() pulumi.StringPtrOutput {
 }
 
 // Level to record this diagnostic.
-func (o DiagnosticOutput) Level() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Diagnostic) *string { return v.Level }).(pulumi.StringPtrOutput)
+func (o DiagnosticOutput) Level() DiagnosticLevelPtrOutput {
+	return o.ApplyT(func(v Diagnostic) *DiagnosticLevel { return v.Level }).(DiagnosticLevelPtrOutput)
 }
 
 type DiagnosticArrayOutput struct{ *pulumi.OutputState }
@@ -3428,7 +3428,7 @@ type InputMapping struct {
 	// The name of the field that is going to be injected.
 	FieldName *string `pulumi:"fieldName"`
 	// The location where this mapping applies.
-	Location *string `pulumi:"location"`
+	Location *InputMappingLocation `pulumi:"location"`
 	// Regex to evaluate on method to decide if input applies.
 	MethodMatch *string `pulumi:"methodMatch"`
 	// A jsonPath expression to select an element.
@@ -3451,7 +3451,7 @@ type InputMappingArgs struct {
 	// The name of the field that is going to be injected.
 	FieldName pulumi.StringPtrInput `pulumi:"fieldName"`
 	// The location where this mapping applies.
-	Location *InputMappingLocation `pulumi:"location"`
+	Location InputMappingLocationPtrInput `pulumi:"location"`
 	// Regex to evaluate on method to decide if input applies.
 	MethodMatch pulumi.StringPtrInput `pulumi:"methodMatch"`
 	// A jsonPath expression to select an element.
@@ -3516,8 +3516,8 @@ func (o InputMappingOutput) FieldName() pulumi.StringPtrOutput {
 }
 
 // The location where this mapping applies.
-func (o InputMappingOutput) Location() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InputMapping) *string { return v.Location }).(pulumi.StringPtrOutput)
+func (o InputMappingOutput) Location() InputMappingLocationPtrOutput {
+	return o.ApplyT(func(v InputMapping) *InputMappingLocation { return v.Location }).(InputMappingLocationPtrOutput)
 }
 
 // Regex to evaluate on method to decide if input applies.
@@ -5930,7 +5930,7 @@ type TemplateContents struct {
 	// Import files referenced by the main template.
 	Imports []ImportFile `pulumi:"imports"`
 	// Which interpreter (python or jinja) should be used during expansion.
-	Interpreter *string `pulumi:"interpreter"`
+	Interpreter *TemplateContentsInterpreter `pulumi:"interpreter"`
 	// The filename of the mainTemplate
 	MainTemplate *string `pulumi:"mainTemplate"`
 	// The contents of the template schema.
@@ -5955,7 +5955,7 @@ type TemplateContentsArgs struct {
 	// Import files referenced by the main template.
 	Imports ImportFileArrayInput `pulumi:"imports"`
 	// Which interpreter (python or jinja) should be used during expansion.
-	Interpreter *TemplateContentsInterpreter `pulumi:"interpreter"`
+	Interpreter TemplateContentsInterpreterPtrInput `pulumi:"interpreter"`
 	// The filename of the mainTemplate
 	MainTemplate pulumi.StringPtrInput `pulumi:"mainTemplate"`
 	// The contents of the template schema.
@@ -6048,8 +6048,8 @@ func (o TemplateContentsOutput) Imports() ImportFileArrayOutput {
 }
 
 // Which interpreter (python or jinja) should be used during expansion.
-func (o TemplateContentsOutput) Interpreter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TemplateContents) *string { return v.Interpreter }).(pulumi.StringPtrOutput)
+func (o TemplateContentsOutput) Interpreter() TemplateContentsInterpreterPtrOutput {
+	return o.ApplyT(func(v TemplateContents) *TemplateContentsInterpreter { return v.Interpreter }).(TemplateContentsInterpreterPtrOutput)
 }
 
 // The filename of the mainTemplate
@@ -6096,13 +6096,13 @@ func (o TemplateContentsPtrOutput) Imports() ImportFileArrayOutput {
 }
 
 // Which interpreter (python or jinja) should be used during expansion.
-func (o TemplateContentsPtrOutput) Interpreter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TemplateContents) *string {
+func (o TemplateContentsPtrOutput) Interpreter() TemplateContentsInterpreterPtrOutput {
+	return o.ApplyT(func(v *TemplateContents) *TemplateContentsInterpreter {
 		if v == nil {
 			return nil
 		}
 		return v.Interpreter
-	}).(pulumi.StringPtrOutput)
+	}).(TemplateContentsInterpreterPtrOutput)
 }
 
 // The filename of the mainTemplate
@@ -6566,9 +6566,9 @@ func (o TypeProviderLabelEntryResponseArrayOutput) Index(i pulumi.IntInput) Type
 // Options for how to validate and process properties on a resource.
 type ValidationOptions struct {
 	// Customize how deployment manager will validate the resource against schema errors.
-	SchemaValidation *string `pulumi:"schemaValidation"`
+	SchemaValidation *ValidationOptionsSchemaValidation `pulumi:"schemaValidation"`
 	// Specify what to do with extra properties when executing a request.
-	UndeclaredProperties *string `pulumi:"undeclaredProperties"`
+	UndeclaredProperties *ValidationOptionsUndeclaredProperties `pulumi:"undeclaredProperties"`
 }
 
 // ValidationOptionsInput is an input type that accepts ValidationOptionsArgs and ValidationOptionsOutput values.
@@ -6585,9 +6585,9 @@ type ValidationOptionsInput interface {
 // Options for how to validate and process properties on a resource.
 type ValidationOptionsArgs struct {
 	// Customize how deployment manager will validate the resource against schema errors.
-	SchemaValidation *ValidationOptionsSchemaValidation `pulumi:"schemaValidation"`
+	SchemaValidation ValidationOptionsSchemaValidationPtrInput `pulumi:"schemaValidation"`
 	// Specify what to do with extra properties when executing a request.
-	UndeclaredProperties *ValidationOptionsUndeclaredProperties `pulumi:"undeclaredProperties"`
+	UndeclaredProperties ValidationOptionsUndeclaredPropertiesPtrInput `pulumi:"undeclaredProperties"`
 }
 
 func (ValidationOptionsArgs) ElementType() reflect.Type {
@@ -6669,13 +6669,13 @@ func (o ValidationOptionsOutput) ToValidationOptionsPtrOutputWithContext(ctx con
 }
 
 // Customize how deployment manager will validate the resource against schema errors.
-func (o ValidationOptionsOutput) SchemaValidation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ValidationOptions) *string { return v.SchemaValidation }).(pulumi.StringPtrOutput)
+func (o ValidationOptionsOutput) SchemaValidation() ValidationOptionsSchemaValidationPtrOutput {
+	return o.ApplyT(func(v ValidationOptions) *ValidationOptionsSchemaValidation { return v.SchemaValidation }).(ValidationOptionsSchemaValidationPtrOutput)
 }
 
 // Specify what to do with extra properties when executing a request.
-func (o ValidationOptionsOutput) UndeclaredProperties() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ValidationOptions) *string { return v.UndeclaredProperties }).(pulumi.StringPtrOutput)
+func (o ValidationOptionsOutput) UndeclaredProperties() ValidationOptionsUndeclaredPropertiesPtrOutput {
+	return o.ApplyT(func(v ValidationOptions) *ValidationOptionsUndeclaredProperties { return v.UndeclaredProperties }).(ValidationOptionsUndeclaredPropertiesPtrOutput)
 }
 
 type ValidationOptionsPtrOutput struct{ *pulumi.OutputState }
@@ -6697,23 +6697,23 @@ func (o ValidationOptionsPtrOutput) Elem() ValidationOptionsOutput {
 }
 
 // Customize how deployment manager will validate the resource against schema errors.
-func (o ValidationOptionsPtrOutput) SchemaValidation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ValidationOptions) *string {
+func (o ValidationOptionsPtrOutput) SchemaValidation() ValidationOptionsSchemaValidationPtrOutput {
+	return o.ApplyT(func(v *ValidationOptions) *ValidationOptionsSchemaValidation {
 		if v == nil {
 			return nil
 		}
 		return v.SchemaValidation
-	}).(pulumi.StringPtrOutput)
+	}).(ValidationOptionsSchemaValidationPtrOutput)
 }
 
 // Specify what to do with extra properties when executing a request.
-func (o ValidationOptionsPtrOutput) UndeclaredProperties() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ValidationOptions) *string {
+func (o ValidationOptionsPtrOutput) UndeclaredProperties() ValidationOptionsUndeclaredPropertiesPtrOutput {
+	return o.ApplyT(func(v *ValidationOptions) *ValidationOptionsUndeclaredProperties {
 		if v == nil {
 			return nil
 		}
 		return v.UndeclaredProperties
-	}).(pulumi.StringPtrOutput)
+	}).(ValidationOptionsUndeclaredPropertiesPtrOutput)
 }
 
 // Options for how to validate and process properties on a resource.

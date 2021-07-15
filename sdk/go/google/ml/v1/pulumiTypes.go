@@ -2471,7 +2471,7 @@ func (o GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecRespo
 // Represents a metric to optimize.
 type GoogleCloudMlV1_StudyConfig_MetricSpec struct {
 	// The optimization goal of the metric.
-	Goal string `pulumi:"goal"`
+	Goal GoogleCloudMlV1_StudyConfig_MetricSpecGoal `pulumi:"goal"`
 	// The name of the metric.
 	Metric string `pulumi:"metric"`
 }
@@ -2490,7 +2490,7 @@ type GoogleCloudMlV1_StudyConfig_MetricSpecInput interface {
 // Represents a metric to optimize.
 type GoogleCloudMlV1_StudyConfig_MetricSpecArgs struct {
 	// The optimization goal of the metric.
-	Goal GoogleCloudMlV1_StudyConfig_MetricSpecGoal `pulumi:"goal"`
+	Goal GoogleCloudMlV1_StudyConfig_MetricSpecGoalInput `pulumi:"goal"`
 	// The name of the metric.
 	Metric pulumi.StringInput `pulumi:"metric"`
 }
@@ -2548,8 +2548,10 @@ func (o GoogleCloudMlV1_StudyConfig_MetricSpecOutput) ToGoogleCloudMlV1_StudyCon
 }
 
 // The optimization goal of the metric.
-func (o GoogleCloudMlV1_StudyConfig_MetricSpecOutput) Goal() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfig_MetricSpec) string { return v.Goal }).(pulumi.StringOutput)
+func (o GoogleCloudMlV1_StudyConfig_MetricSpecOutput) Goal() GoogleCloudMlV1_StudyConfig_MetricSpecGoalOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfig_MetricSpec) GoogleCloudMlV1_StudyConfig_MetricSpecGoal {
+		return v.Goal
+	}).(GoogleCloudMlV1_StudyConfig_MetricSpecGoalOutput)
 }
 
 // The name of the metric.
@@ -2704,9 +2706,9 @@ type GoogleCloudMlV1_StudyConfig_ParameterSpec struct {
 	ParentDiscreteValues    *GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec    `pulumi:"parentDiscreteValues"`
 	ParentIntValues         *GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec         `pulumi:"parentIntValues"`
 	// How the parameter should be scaled. Leave unset for categorical parameters.
-	ScaleType *string `pulumi:"scaleType"`
+	ScaleType *GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType `pulumi:"scaleType"`
 	// The type of the parameter.
-	Type string `pulumi:"type"`
+	Type GoogleCloudMlV1_StudyConfig_ParameterSpecType `pulumi:"type"`
 }
 
 // GoogleCloudMlV1_StudyConfig_ParameterSpecInput is an input type that accepts GoogleCloudMlV1_StudyConfig_ParameterSpecArgs and GoogleCloudMlV1_StudyConfig_ParameterSpecOutput values.
@@ -2738,9 +2740,9 @@ type GoogleCloudMlV1_StudyConfig_ParameterSpecArgs struct {
 	ParentDiscreteValues    GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrInput    `pulumi:"parentDiscreteValues"`
 	ParentIntValues         GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrInput         `pulumi:"parentIntValues"`
 	// How the parameter should be scaled. Leave unset for categorical parameters.
-	ScaleType *GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType `pulumi:"scaleType"`
+	ScaleType GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtrInput `pulumi:"scaleType"`
 	// The type of the parameter.
-	Type GoogleCloudMlV1_StudyConfig_ParameterSpecType `pulumi:"type"`
+	Type GoogleCloudMlV1_StudyConfig_ParameterSpecTypeInput `pulumi:"type"`
 }
 
 func (GoogleCloudMlV1_StudyConfig_ParameterSpecArgs) ElementType() reflect.Type {
@@ -2854,13 +2856,17 @@ func (o GoogleCloudMlV1_StudyConfig_ParameterSpecOutput) ParentIntValues() Googl
 }
 
 // How the parameter should be scaled. Leave unset for categorical parameters.
-func (o GoogleCloudMlV1_StudyConfig_ParameterSpecOutput) ScaleType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfig_ParameterSpec) *string { return v.ScaleType }).(pulumi.StringPtrOutput)
+func (o GoogleCloudMlV1_StudyConfig_ParameterSpecOutput) ScaleType() GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfig_ParameterSpec) *GoogleCloudMlV1_StudyConfig_ParameterSpecScaleType {
+		return v.ScaleType
+	}).(GoogleCloudMlV1_StudyConfig_ParameterSpecScaleTypePtrOutput)
 }
 
 // The type of the parameter.
-func (o GoogleCloudMlV1_StudyConfig_ParameterSpecOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfig_ParameterSpec) string { return v.Type }).(pulumi.StringOutput)
+func (o GoogleCloudMlV1_StudyConfig_ParameterSpecOutput) Type() GoogleCloudMlV1_StudyConfig_ParameterSpecTypeOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1_StudyConfig_ParameterSpec) GoogleCloudMlV1_StudyConfig_ParameterSpecType {
+		return v.Type
+	}).(GoogleCloudMlV1_StudyConfig_ParameterSpecTypeOutput)
 }
 
 type GoogleCloudMlV1_StudyConfig_ParameterSpecArrayOutput struct{ *pulumi.OutputState }
@@ -3339,7 +3345,7 @@ type GoogleCloudMlV1__AcceleratorConfig struct {
 	// The number of accelerators to attach to each machine running the job.
 	Count *string `pulumi:"count"`
 	// The type of accelerator to use.
-	Type *string `pulumi:"type"`
+	Type *GoogleCloudMlV1__AcceleratorConfigType `pulumi:"type"`
 }
 
 // GoogleCloudMlV1__AcceleratorConfigInput is an input type that accepts GoogleCloudMlV1__AcceleratorConfigArgs and GoogleCloudMlV1__AcceleratorConfigOutput values.
@@ -3358,7 +3364,7 @@ type GoogleCloudMlV1__AcceleratorConfigArgs struct {
 	// The number of accelerators to attach to each machine running the job.
 	Count pulumi.StringPtrInput `pulumi:"count"`
 	// The type of accelerator to use.
-	Type *GoogleCloudMlV1__AcceleratorConfigType `pulumi:"type"`
+	Type GoogleCloudMlV1__AcceleratorConfigTypePtrInput `pulumi:"type"`
 }
 
 func (GoogleCloudMlV1__AcceleratorConfigArgs) ElementType() reflect.Type {
@@ -3445,8 +3451,8 @@ func (o GoogleCloudMlV1__AcceleratorConfigOutput) Count() pulumi.StringPtrOutput
 }
 
 // The type of accelerator to use.
-func (o GoogleCloudMlV1__AcceleratorConfigOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__AcceleratorConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o GoogleCloudMlV1__AcceleratorConfigOutput) Type() GoogleCloudMlV1__AcceleratorConfigTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__AcceleratorConfig) *GoogleCloudMlV1__AcceleratorConfigType { return v.Type }).(GoogleCloudMlV1__AcceleratorConfigTypePtrOutput)
 }
 
 type GoogleCloudMlV1__AcceleratorConfigPtrOutput struct{ *pulumi.OutputState }
@@ -3478,13 +3484,13 @@ func (o GoogleCloudMlV1__AcceleratorConfigPtrOutput) Count() pulumi.StringPtrOut
 }
 
 // The type of accelerator to use.
-func (o GoogleCloudMlV1__AcceleratorConfigPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__AcceleratorConfig) *string {
+func (o GoogleCloudMlV1__AcceleratorConfigPtrOutput) Type() GoogleCloudMlV1__AcceleratorConfigTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1__AcceleratorConfig) *GoogleCloudMlV1__AcceleratorConfigType {
 		if v == nil {
 			return nil
 		}
 		return v.Type
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudMlV1__AcceleratorConfigTypePtrOutput)
 }
 
 // Represents a hardware accelerator request config. Note that the AcceleratorConfig can be used in both Jobs and Versions. Learn more about [accelerators for training](/ml-engine/docs/using-gpus) and [accelerators for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
@@ -6790,11 +6796,11 @@ func (o GoogleCloudMlV1__HyperparameterOutputResponseArrayOutput) Index(i pulumi
 // Represents a set of hyperparameters to optimize.
 type GoogleCloudMlV1__HyperparameterSpec struct {
 	// Optional. The search algorithm specified for the hyperparameter tuning job. Uses the default AI Platform hyperparameter tuning algorithm if unspecified.
-	Algorithm *string `pulumi:"algorithm"`
+	Algorithm *GoogleCloudMlV1__HyperparameterSpecAlgorithm `pulumi:"algorithm"`
 	// Optional. Indicates if the hyperparameter tuning job enables auto trial early stopping.
 	EnableTrialEarlyStopping *bool `pulumi:"enableTrialEarlyStopping"`
 	// The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
-	Goal string `pulumi:"goal"`
+	Goal GoogleCloudMlV1__HyperparameterSpecGoal `pulumi:"goal"`
 	// Optional. The TensorFlow summary tag name to use for optimizing trials. For current versions of TensorFlow, this tag name should exactly match what is shown in TensorBoard, including all scopes. For versions of TensorFlow prior to 0.12, this should be only the tag passed to tf.Summary. By default, "training/hptuning/metric" will be used.
 	HyperparameterMetricTag *string `pulumi:"hyperparameterMetricTag"`
 	// Optional. The number of failed trials that need to be seen before failing the hyperparameter tuning job. You can specify this field to override the default failing criteria for AI Platform hyperparameter tuning jobs. Defaults to zero, which means the service decides when a hyperparameter job should fail.
@@ -6823,11 +6829,11 @@ type GoogleCloudMlV1__HyperparameterSpecInput interface {
 // Represents a set of hyperparameters to optimize.
 type GoogleCloudMlV1__HyperparameterSpecArgs struct {
 	// Optional. The search algorithm specified for the hyperparameter tuning job. Uses the default AI Platform hyperparameter tuning algorithm if unspecified.
-	Algorithm *GoogleCloudMlV1__HyperparameterSpecAlgorithm `pulumi:"algorithm"`
+	Algorithm GoogleCloudMlV1__HyperparameterSpecAlgorithmPtrInput `pulumi:"algorithm"`
 	// Optional. Indicates if the hyperparameter tuning job enables auto trial early stopping.
 	EnableTrialEarlyStopping pulumi.BoolPtrInput `pulumi:"enableTrialEarlyStopping"`
 	// The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
-	Goal GoogleCloudMlV1__HyperparameterSpecGoal `pulumi:"goal"`
+	Goal GoogleCloudMlV1__HyperparameterSpecGoalInput `pulumi:"goal"`
 	// Optional. The TensorFlow summary tag name to use for optimizing trials. For current versions of TensorFlow, this tag name should exactly match what is shown in TensorBoard, including all scopes. For versions of TensorFlow prior to 0.12, this should be only the tag passed to tf.Summary. By default, "training/hptuning/metric" will be used.
 	HyperparameterMetricTag pulumi.StringPtrInput `pulumi:"hyperparameterMetricTag"`
 	// Optional. The number of failed trials that need to be seen before failing the hyperparameter tuning job. You can specify this field to override the default failing criteria for AI Platform hyperparameter tuning jobs. Defaults to zero, which means the service decides when a hyperparameter job should fail.
@@ -6921,8 +6927,10 @@ func (o GoogleCloudMlV1__HyperparameterSpecOutput) ToGoogleCloudMlV1__Hyperparam
 }
 
 // Optional. The search algorithm specified for the hyperparameter tuning job. Uses the default AI Platform hyperparameter tuning algorithm if unspecified.
-func (o GoogleCloudMlV1__HyperparameterSpecOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterSpec) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
+func (o GoogleCloudMlV1__HyperparameterSpecOutput) Algorithm() GoogleCloudMlV1__HyperparameterSpecAlgorithmPtrOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterSpec) *GoogleCloudMlV1__HyperparameterSpecAlgorithm {
+		return v.Algorithm
+	}).(GoogleCloudMlV1__HyperparameterSpecAlgorithmPtrOutput)
 }
 
 // Optional. Indicates if the hyperparameter tuning job enables auto trial early stopping.
@@ -6931,8 +6939,8 @@ func (o GoogleCloudMlV1__HyperparameterSpecOutput) EnableTrialEarlyStopping() pu
 }
 
 // The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
-func (o GoogleCloudMlV1__HyperparameterSpecOutput) Goal() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterSpec) string { return v.Goal }).(pulumi.StringOutput)
+func (o GoogleCloudMlV1__HyperparameterSpecOutput) Goal() GoogleCloudMlV1__HyperparameterSpecGoalOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__HyperparameterSpec) GoogleCloudMlV1__HyperparameterSpecGoal { return v.Goal }).(GoogleCloudMlV1__HyperparameterSpecGoalOutput)
 }
 
 // Optional. The TensorFlow summary tag name to use for optimizing trials. For current versions of TensorFlow, this tag name should exactly match what is shown in TensorBoard, including all scopes. For versions of TensorFlow prior to 0.12, this should be only the tag passed to tf.Summary. By default, "training/hptuning/metric" will be used.
@@ -6984,13 +6992,13 @@ func (o GoogleCloudMlV1__HyperparameterSpecPtrOutput) Elem() GoogleCloudMlV1__Hy
 }
 
 // Optional. The search algorithm specified for the hyperparameter tuning job. Uses the default AI Platform hyperparameter tuning algorithm if unspecified.
-func (o GoogleCloudMlV1__HyperparameterSpecPtrOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__HyperparameterSpec) *string {
+func (o GoogleCloudMlV1__HyperparameterSpecPtrOutput) Algorithm() GoogleCloudMlV1__HyperparameterSpecAlgorithmPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1__HyperparameterSpec) *GoogleCloudMlV1__HyperparameterSpecAlgorithm {
 		if v == nil {
 			return nil
 		}
 		return v.Algorithm
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudMlV1__HyperparameterSpecAlgorithmPtrOutput)
 }
 
 // Optional. Indicates if the hyperparameter tuning job enables auto trial early stopping.
@@ -7004,13 +7012,13 @@ func (o GoogleCloudMlV1__HyperparameterSpecPtrOutput) EnableTrialEarlyStopping()
 }
 
 // The type of goal to use for tuning. Available types are `MAXIMIZE` and `MINIMIZE`. Defaults to `MAXIMIZE`.
-func (o GoogleCloudMlV1__HyperparameterSpecPtrOutput) Goal() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__HyperparameterSpec) *string {
+func (o GoogleCloudMlV1__HyperparameterSpecPtrOutput) Goal() GoogleCloudMlV1__HyperparameterSpecGoalPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1__HyperparameterSpec) *GoogleCloudMlV1__HyperparameterSpecGoal {
 		if v == nil {
 			return nil
 		}
 		return &v.Goal
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudMlV1__HyperparameterSpecGoalPtrOutput)
 }
 
 // Optional. The TensorFlow summary tag name to use for optimizing trials. For current versions of TensorFlow, this tag name should exactly match what is shown in TensorBoard, including all scopes. For versions of TensorFlow prior to 0.12, this should be only the tag passed to tf.Summary. By default, "training/hptuning/metric" will be used.
@@ -8323,7 +8331,7 @@ func (o GoogleCloudMlV1__MeasurementResponseArrayOutput) Index(i pulumi.IntInput
 // MetricSpec contains the specifications to use to calculate the desired nodes count when autoscaling is enabled.
 type GoogleCloudMlV1__MetricSpec struct {
 	// metric name.
-	Name *string `pulumi:"name"`
+	Name *GoogleCloudMlV1__MetricSpecName `pulumi:"name"`
 	// Target specifies the target value for the given metric; once real metric deviates from the threshold by a certain percentage, the node count changes.
 	Target *int `pulumi:"target"`
 }
@@ -8342,7 +8350,7 @@ type GoogleCloudMlV1__MetricSpecInput interface {
 // MetricSpec contains the specifications to use to calculate the desired nodes count when autoscaling is enabled.
 type GoogleCloudMlV1__MetricSpecArgs struct {
 	// metric name.
-	Name *GoogleCloudMlV1__MetricSpecName `pulumi:"name"`
+	Name GoogleCloudMlV1__MetricSpecNamePtrInput `pulumi:"name"`
 	// Target specifies the target value for the given metric; once real metric deviates from the threshold by a certain percentage, the node count changes.
 	Target pulumi.IntPtrInput `pulumi:"target"`
 }
@@ -8400,8 +8408,8 @@ func (o GoogleCloudMlV1__MetricSpecOutput) ToGoogleCloudMlV1__MetricSpecOutputWi
 }
 
 // metric name.
-func (o GoogleCloudMlV1__MetricSpecOutput) Name() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__MetricSpec) *string { return v.Name }).(pulumi.StringPtrOutput)
+func (o GoogleCloudMlV1__MetricSpecOutput) Name() GoogleCloudMlV1__MetricSpecNamePtrOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__MetricSpec) *GoogleCloudMlV1__MetricSpecName { return v.Name }).(GoogleCloudMlV1__MetricSpecNamePtrOutput)
 }
 
 // Target specifies the target value for the given metric; once real metric deviates from the threshold by a certain percentage, the node count changes.
@@ -8551,9 +8559,9 @@ type GoogleCloudMlV1__ParameterSpec struct {
 	// The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
 	ParameterName string `pulumi:"parameterName"`
 	// Optional. How the parameter should be scaled to the hypercube. Leave unset for categorical parameters. Some kind of scaling is strongly recommended for real or integral parameters (e.g., `UNIT_LINEAR_SCALE`).
-	ScaleType *string `pulumi:"scaleType"`
+	ScaleType *GoogleCloudMlV1__ParameterSpecScaleType `pulumi:"scaleType"`
 	// The type of the parameter.
-	Type string `pulumi:"type"`
+	Type GoogleCloudMlV1__ParameterSpecType `pulumi:"type"`
 }
 
 // GoogleCloudMlV1__ParameterSpecInput is an input type that accepts GoogleCloudMlV1__ParameterSpecArgs and GoogleCloudMlV1__ParameterSpecOutput values.
@@ -8580,9 +8588,9 @@ type GoogleCloudMlV1__ParameterSpecArgs struct {
 	// The parameter name must be unique amongst all ParameterConfigs in a HyperparameterSpec message. E.g., "learning_rate".
 	ParameterName pulumi.StringInput `pulumi:"parameterName"`
 	// Optional. How the parameter should be scaled to the hypercube. Leave unset for categorical parameters. Some kind of scaling is strongly recommended for real or integral parameters (e.g., `UNIT_LINEAR_SCALE`).
-	ScaleType *GoogleCloudMlV1__ParameterSpecScaleType `pulumi:"scaleType"`
+	ScaleType GoogleCloudMlV1__ParameterSpecScaleTypePtrInput `pulumi:"scaleType"`
 	// The type of the parameter.
-	Type GoogleCloudMlV1__ParameterSpecType `pulumi:"type"`
+	Type GoogleCloudMlV1__ParameterSpecTypeInput `pulumi:"type"`
 }
 
 func (GoogleCloudMlV1__ParameterSpecArgs) ElementType() reflect.Type {
@@ -8663,13 +8671,13 @@ func (o GoogleCloudMlV1__ParameterSpecOutput) ParameterName() pulumi.StringOutpu
 }
 
 // Optional. How the parameter should be scaled to the hypercube. Leave unset for categorical parameters. Some kind of scaling is strongly recommended for real or integral parameters (e.g., `UNIT_LINEAR_SCALE`).
-func (o GoogleCloudMlV1__ParameterSpecOutput) ScaleType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__ParameterSpec) *string { return v.ScaleType }).(pulumi.StringPtrOutput)
+func (o GoogleCloudMlV1__ParameterSpecOutput) ScaleType() GoogleCloudMlV1__ParameterSpecScaleTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__ParameterSpec) *GoogleCloudMlV1__ParameterSpecScaleType { return v.ScaleType }).(GoogleCloudMlV1__ParameterSpecScaleTypePtrOutput)
 }
 
 // The type of the parameter.
-func (o GoogleCloudMlV1__ParameterSpecOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__ParameterSpec) string { return v.Type }).(pulumi.StringOutput)
+func (o GoogleCloudMlV1__ParameterSpecOutput) Type() GoogleCloudMlV1__ParameterSpecTypeOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__ParameterSpec) GoogleCloudMlV1__ParameterSpecType { return v.Type }).(GoogleCloudMlV1__ParameterSpecTypeOutput)
 }
 
 type GoogleCloudMlV1__ParameterSpecArrayOutput struct{ *pulumi.OutputState }
@@ -8851,7 +8859,7 @@ type GoogleCloudMlV1__PredictionInput struct {
 	// Optional. Number of records per batch, defaults to 64. The service will buffer batch_size number of records in memory before invoking one Tensorflow prediction call internally. So take the record size and memory available into consideration when setting this parameter.
 	BatchSize *string `pulumi:"batchSize"`
 	// The format of the input data files.
-	DataFormat string `pulumi:"dataFormat"`
+	DataFormat GoogleCloudMlV1__PredictionInputDataFormat `pulumi:"dataFormat"`
 	// The Cloud Storage location of the input data files. May contain wildcards.
 	InputPaths []string `pulumi:"inputPaths"`
 	// Optional. The maximum number of workers to be used for parallel processing. Defaults to 10 if not specified.
@@ -8859,7 +8867,7 @@ type GoogleCloudMlV1__PredictionInput struct {
 	// Use this field if you want to use the default version for the specified model. The string must use the following format: `"projects/YOUR_PROJECT/models/YOUR_MODEL"`
 	ModelName *string `pulumi:"modelName"`
 	// Optional. Format of the output data files, defaults to JSON.
-	OutputDataFormat *string `pulumi:"outputDataFormat"`
+	OutputDataFormat *GoogleCloudMlV1__PredictionInputOutputDataFormat `pulumi:"outputDataFormat"`
 	// The output Google Cloud Storage location.
 	OutputPath string `pulumi:"outputPath"`
 	// The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
@@ -8890,7 +8898,7 @@ type GoogleCloudMlV1__PredictionInputArgs struct {
 	// Optional. Number of records per batch, defaults to 64. The service will buffer batch_size number of records in memory before invoking one Tensorflow prediction call internally. So take the record size and memory available into consideration when setting this parameter.
 	BatchSize pulumi.StringPtrInput `pulumi:"batchSize"`
 	// The format of the input data files.
-	DataFormat GoogleCloudMlV1__PredictionInputDataFormat `pulumi:"dataFormat"`
+	DataFormat GoogleCloudMlV1__PredictionInputDataFormatInput `pulumi:"dataFormat"`
 	// The Cloud Storage location of the input data files. May contain wildcards.
 	InputPaths pulumi.StringArrayInput `pulumi:"inputPaths"`
 	// Optional. The maximum number of workers to be used for parallel processing. Defaults to 10 if not specified.
@@ -8898,7 +8906,7 @@ type GoogleCloudMlV1__PredictionInputArgs struct {
 	// Use this field if you want to use the default version for the specified model. The string must use the following format: `"projects/YOUR_PROJECT/models/YOUR_MODEL"`
 	ModelName pulumi.StringPtrInput `pulumi:"modelName"`
 	// Optional. Format of the output data files, defaults to JSON.
-	OutputDataFormat *GoogleCloudMlV1__PredictionInputOutputDataFormat `pulumi:"outputDataFormat"`
+	OutputDataFormat GoogleCloudMlV1__PredictionInputOutputDataFormatPtrInput `pulumi:"outputDataFormat"`
 	// The output Google Cloud Storage location.
 	OutputPath pulumi.StringInput `pulumi:"outputPath"`
 	// The Google Compute Engine region to run the prediction job in. See the available regions for AI Platform services.
@@ -8997,8 +9005,10 @@ func (o GoogleCloudMlV1__PredictionInputOutput) BatchSize() pulumi.StringPtrOutp
 }
 
 // The format of the input data files.
-func (o GoogleCloudMlV1__PredictionInputOutput) DataFormat() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__PredictionInput) string { return v.DataFormat }).(pulumi.StringOutput)
+func (o GoogleCloudMlV1__PredictionInputOutput) DataFormat() GoogleCloudMlV1__PredictionInputDataFormatOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__PredictionInput) GoogleCloudMlV1__PredictionInputDataFormat {
+		return v.DataFormat
+	}).(GoogleCloudMlV1__PredictionInputDataFormatOutput)
 }
 
 // The Cloud Storage location of the input data files. May contain wildcards.
@@ -9017,8 +9027,10 @@ func (o GoogleCloudMlV1__PredictionInputOutput) ModelName() pulumi.StringPtrOutp
 }
 
 // Optional. Format of the output data files, defaults to JSON.
-func (o GoogleCloudMlV1__PredictionInputOutput) OutputDataFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__PredictionInput) *string { return v.OutputDataFormat }).(pulumi.StringPtrOutput)
+func (o GoogleCloudMlV1__PredictionInputOutput) OutputDataFormat() GoogleCloudMlV1__PredictionInputOutputDataFormatPtrOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__PredictionInput) *GoogleCloudMlV1__PredictionInputOutputDataFormat {
+		return v.OutputDataFormat
+	}).(GoogleCloudMlV1__PredictionInputOutputDataFormatPtrOutput)
 }
 
 // The output Google Cloud Storage location.
@@ -9080,13 +9092,13 @@ func (o GoogleCloudMlV1__PredictionInputPtrOutput) BatchSize() pulumi.StringPtrO
 }
 
 // The format of the input data files.
-func (o GoogleCloudMlV1__PredictionInputPtrOutput) DataFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionInput) *string {
+func (o GoogleCloudMlV1__PredictionInputPtrOutput) DataFormat() GoogleCloudMlV1__PredictionInputDataFormatPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionInput) *GoogleCloudMlV1__PredictionInputDataFormat {
 		if v == nil {
 			return nil
 		}
 		return &v.DataFormat
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudMlV1__PredictionInputDataFormatPtrOutput)
 }
 
 // The Cloud Storage location of the input data files. May contain wildcards.
@@ -9120,13 +9132,13 @@ func (o GoogleCloudMlV1__PredictionInputPtrOutput) ModelName() pulumi.StringPtrO
 }
 
 // Optional. Format of the output data files, defaults to JSON.
-func (o GoogleCloudMlV1__PredictionInputPtrOutput) OutputDataFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionInput) *string {
+func (o GoogleCloudMlV1__PredictionInputPtrOutput) OutputDataFormat() GoogleCloudMlV1__PredictionInputOutputDataFormatPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1__PredictionInput) *GoogleCloudMlV1__PredictionInputOutputDataFormat {
 		if v == nil {
 			return nil
 		}
 		return v.OutputDataFormat
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudMlV1__PredictionInputOutputDataFormatPtrOutput)
 }
 
 // The output Google Cloud Storage location.
@@ -11573,7 +11585,7 @@ func (o GoogleCloudMlV1__SchedulingResponsePtrOutput) MaxWaitTime() pulumi.Strin
 // Represents configuration of a study.
 type GoogleCloudMlV1__StudyConfig struct {
 	// The search algorithm specified for the study.
-	Algorithm *string `pulumi:"algorithm"`
+	Algorithm *GoogleCloudMlV1__StudyConfigAlgorithm `pulumi:"algorithm"`
 	// Configuration for automated stopping of unpromising Trials.
 	AutomatedStoppingConfig *GoogleCloudMlV1__AutomatedStoppingConfig `pulumi:"automatedStoppingConfig"`
 	// Metric specs for the study.
@@ -11596,7 +11608,7 @@ type GoogleCloudMlV1__StudyConfigInput interface {
 // Represents configuration of a study.
 type GoogleCloudMlV1__StudyConfigArgs struct {
 	// The search algorithm specified for the study.
-	Algorithm *GoogleCloudMlV1__StudyConfigAlgorithm `pulumi:"algorithm"`
+	Algorithm GoogleCloudMlV1__StudyConfigAlgorithmPtrInput `pulumi:"algorithm"`
 	// Configuration for automated stopping of unpromising Trials.
 	AutomatedStoppingConfig GoogleCloudMlV1__AutomatedStoppingConfigPtrInput `pulumi:"automatedStoppingConfig"`
 	// Metric specs for the study.
@@ -11684,8 +11696,8 @@ func (o GoogleCloudMlV1__StudyConfigOutput) ToGoogleCloudMlV1__StudyConfigPtrOut
 }
 
 // The search algorithm specified for the study.
-func (o GoogleCloudMlV1__StudyConfigOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__StudyConfig) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
+func (o GoogleCloudMlV1__StudyConfigOutput) Algorithm() GoogleCloudMlV1__StudyConfigAlgorithmPtrOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__StudyConfig) *GoogleCloudMlV1__StudyConfigAlgorithm { return v.Algorithm }).(GoogleCloudMlV1__StudyConfigAlgorithmPtrOutput)
 }
 
 // Configuration for automated stopping of unpromising Trials.
@@ -11724,13 +11736,13 @@ func (o GoogleCloudMlV1__StudyConfigPtrOutput) Elem() GoogleCloudMlV1__StudyConf
 }
 
 // The search algorithm specified for the study.
-func (o GoogleCloudMlV1__StudyConfigPtrOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__StudyConfig) *string {
+func (o GoogleCloudMlV1__StudyConfigPtrOutput) Algorithm() GoogleCloudMlV1__StudyConfigAlgorithmPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1__StudyConfig) *GoogleCloudMlV1__StudyConfigAlgorithm {
 		if v == nil {
 			return nil
 		}
 		return v.Algorithm
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudMlV1__StudyConfigAlgorithmPtrOutput)
 }
 
 // Configuration for automated stopping of unpromising Trials.
@@ -12001,7 +12013,7 @@ type GoogleCloudMlV1__TrainingInput struct {
 	// Optional. The AI Platform runtime version to use for training. You must either specify this field or specify `masterConfig.imageUri`. For more information, see the [runtime version list](/ai-platform/training/docs/runtime-version-list) and learn [how to manage runtime versions](/ai-platform/training/docs/versioning).
 	RuntimeVersion *string `pulumi:"runtimeVersion"`
 	// Specifies the machine types, the number of replicas for workers and parameter servers.
-	ScaleTier string `pulumi:"scaleTier"`
+	ScaleTier GoogleCloudMlV1__TrainingInputScaleTier `pulumi:"scaleTier"`
 	// Optional. Scheduling options for a training job.
 	Scheduling *GoogleCloudMlV1__Scheduling `pulumi:"scheduling"`
 	// Optional. The email address of a service account to use when running the training appplication. You must have the `iam.serviceAccounts.actAs` permission for the specified service account. In addition, the AI Platform Training Google-managed service account must have the `roles/iam.serviceAccountAdmin` role for the specified service account. [Learn more about configuring a service account.](/ai-platform/training/docs/custom-service-account) If not specified, the AI Platform Training Google-managed service account is used by default.
@@ -12068,7 +12080,7 @@ type GoogleCloudMlV1__TrainingInputArgs struct {
 	// Optional. The AI Platform runtime version to use for training. You must either specify this field or specify `masterConfig.imageUri`. For more information, see the [runtime version list](/ai-platform/training/docs/runtime-version-list) and learn [how to manage runtime versions](/ai-platform/training/docs/versioning).
 	RuntimeVersion pulumi.StringPtrInput `pulumi:"runtimeVersion"`
 	// Specifies the machine types, the number of replicas for workers and parameter servers.
-	ScaleTier GoogleCloudMlV1__TrainingInputScaleTier `pulumi:"scaleTier"`
+	ScaleTier GoogleCloudMlV1__TrainingInputScaleTierInput `pulumi:"scaleTier"`
 	// Optional. Scheduling options for a training job.
 	Scheduling GoogleCloudMlV1__SchedulingPtrInput `pulumi:"scheduling"`
 	// Optional. The email address of a service account to use when running the training appplication. You must have the `iam.serviceAccounts.actAs` permission for the specified service account. In addition, the AI Platform Training Google-managed service account must have the `roles/iam.serviceAccountAdmin` role for the specified service account. [Learn more about configuring a service account.](/ai-platform/training/docs/custom-service-account) If not specified, the AI Platform Training Google-managed service account is used by default.
@@ -12257,8 +12269,8 @@ func (o GoogleCloudMlV1__TrainingInputOutput) RuntimeVersion() pulumi.StringPtrO
 }
 
 // Specifies the machine types, the number of replicas for workers and parameter servers.
-func (o GoogleCloudMlV1__TrainingInputOutput) ScaleTier() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInput) string { return v.ScaleTier }).(pulumi.StringOutput)
+func (o GoogleCloudMlV1__TrainingInputOutput) ScaleTier() GoogleCloudMlV1__TrainingInputScaleTierOutput {
+	return o.ApplyT(func(v GoogleCloudMlV1__TrainingInput) GoogleCloudMlV1__TrainingInputScaleTier { return v.ScaleTier }).(GoogleCloudMlV1__TrainingInputScaleTierOutput)
 }
 
 // Optional. Scheduling options for a training job.
@@ -12500,13 +12512,13 @@ func (o GoogleCloudMlV1__TrainingInputPtrOutput) RuntimeVersion() pulumi.StringP
 }
 
 // Specifies the machine types, the number of replicas for workers and parameter servers.
-func (o GoogleCloudMlV1__TrainingInputPtrOutput) ScaleTier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingInput) *string {
+func (o GoogleCloudMlV1__TrainingInputPtrOutput) ScaleTier() GoogleCloudMlV1__TrainingInputScaleTierPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudMlV1__TrainingInput) *GoogleCloudMlV1__TrainingInputScaleTier {
 		if v == nil {
 			return nil
 		}
 		return &v.ScaleTier
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudMlV1__TrainingInputScaleTierPtrOutput)
 }
 
 // Optional. Scheduling options for a training job.
@@ -14823,7 +14835,7 @@ type GoogleIamV1__AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *string `pulumi:"logType"`
+	LogType *GoogleIamV1__AuditLogConfigLogType `pulumi:"logType"`
 }
 
 // GoogleIamV1__AuditLogConfigInput is an input type that accepts GoogleIamV1__AuditLogConfigArgs and GoogleIamV1__AuditLogConfigOutput values.
@@ -14842,7 +14854,7 @@ type GoogleIamV1__AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *GoogleIamV1__AuditLogConfigLogType `pulumi:"logType"`
+	LogType GoogleIamV1__AuditLogConfigLogTypePtrInput `pulumi:"logType"`
 }
 
 func (GoogleIamV1__AuditLogConfigArgs) ElementType() reflect.Type {
@@ -14903,8 +14915,8 @@ func (o GoogleIamV1__AuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayO
 }
 
 // The log type that this config enables.
-func (o GoogleIamV1__AuditLogConfigOutput) LogType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleIamV1__AuditLogConfig) *string { return v.LogType }).(pulumi.StringPtrOutput)
+func (o GoogleIamV1__AuditLogConfigOutput) LogType() GoogleIamV1__AuditLogConfigLogTypePtrOutput {
+	return o.ApplyT(func(v GoogleIamV1__AuditLogConfig) *GoogleIamV1__AuditLogConfigLogType { return v.LogType }).(GoogleIamV1__AuditLogConfigLogTypePtrOutput)
 }
 
 type GoogleIamV1__AuditLogConfigArrayOutput struct{ *pulumi.OutputState }

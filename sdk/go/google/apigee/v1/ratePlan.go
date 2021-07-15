@@ -91,85 +91,9 @@ func GetRatePlan(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RatePlan resources.
 type ratePlanState struct {
-	// Name of the API product that the rate plan is associated with.
-	Apiproduct *string `pulumi:"apiproduct"`
-	// Frequency at which the customer will be billed.
-	BillingPeriod *string `pulumi:"billingPeriod"`
-	// API call volume ranges and the fees charged when the total number of API calls is within a given range. The method used to calculate the final fee depends on the selected pricing model. For example, if the pricing model is `STAIRSTEP` and the ranges are defined as follows: ```{ "start": 1, "end": 100, "fee": 75 }, { "start": 101, "end": 200, "fee": 100 }, }``` Then the following fees would be charged based on the total number of API calls (assuming the currency selected is `USD`): * 1 call costs $75 * 50 calls cost $75 * 150 calls cost $100 The number of API calls cannot exceed 200.
-	ConsumptionPricingRates []GoogleCloudApigeeV1RateRangeResponse `pulumi:"consumptionPricingRates"`
-	// Pricing model used for consumption-based charges.
-	ConsumptionPricingType *string `pulumi:"consumptionPricingType"`
-	// Time that the rate plan was created in milliseconds since epoch.
-	CreatedAt *string `pulumi:"createdAt"`
-	// Currency to be used for billing. Consists of a three-letter code as defined by the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) standard.
-	CurrencyCode *string `pulumi:"currencyCode"`
-	// Description of the rate plan.
-	Description *string `pulumi:"description"`
-	// Display name of the rate plan.
-	DisplayName *string `pulumi:"displayName"`
-	// Time when the rate plan will expire in milliseconds since epoch. Set to 0 or `null` to indicate that the rate plan should never expire.
-	EndTime *string `pulumi:"endTime"`
-	// Frequency at which the fixed fee is charged.
-	FixedFeeFrequency *int `pulumi:"fixedFeeFrequency"`
-	// Fixed amount that is charged at a defined interval and billed in advance of use of the API product. The fee will be prorated for the first billing period.
-	FixedRecurringFee *GoogleTypeMoneyResponse `pulumi:"fixedRecurringFee"`
-	// Time the rate plan was last modified in milliseconds since epoch.
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// Name of the rate plan.
-	Name *string `pulumi:"name"`
-	// Flag that specifies the billing account type, prepaid or postpaid.
-	PaymentFundingModel *string `pulumi:"paymentFundingModel"`
-	// Details of the revenue sharing model.
-	RevenueShareRates []GoogleCloudApigeeV1RevenueShareRangeResponse `pulumi:"revenueShareRates"`
-	// Method used to calculate the revenue that is shared with developers.
-	RevenueShareType *string `pulumi:"revenueShareType"`
-	// Initial, one-time fee paid when purchasing the API product.
-	SetupFee *GoogleTypeMoneyResponse `pulumi:"setupFee"`
-	// Time when the rate plan becomes active in milliseconds since epoch.
-	StartTime *string `pulumi:"startTime"`
-	// Current state of the rate plan (draft or published).
-	State *string `pulumi:"state"`
 }
 
 type RatePlanState struct {
-	// Name of the API product that the rate plan is associated with.
-	Apiproduct pulumi.StringPtrInput
-	// Frequency at which the customer will be billed.
-	BillingPeriod pulumi.StringPtrInput
-	// API call volume ranges and the fees charged when the total number of API calls is within a given range. The method used to calculate the final fee depends on the selected pricing model. For example, if the pricing model is `STAIRSTEP` and the ranges are defined as follows: ```{ "start": 1, "end": 100, "fee": 75 }, { "start": 101, "end": 200, "fee": 100 }, }``` Then the following fees would be charged based on the total number of API calls (assuming the currency selected is `USD`): * 1 call costs $75 * 50 calls cost $75 * 150 calls cost $100 The number of API calls cannot exceed 200.
-	ConsumptionPricingRates GoogleCloudApigeeV1RateRangeResponseArrayInput
-	// Pricing model used for consumption-based charges.
-	ConsumptionPricingType pulumi.StringPtrInput
-	// Time that the rate plan was created in milliseconds since epoch.
-	CreatedAt pulumi.StringPtrInput
-	// Currency to be used for billing. Consists of a three-letter code as defined by the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) standard.
-	CurrencyCode pulumi.StringPtrInput
-	// Description of the rate plan.
-	Description pulumi.StringPtrInput
-	// Display name of the rate plan.
-	DisplayName pulumi.StringPtrInput
-	// Time when the rate plan will expire in milliseconds since epoch. Set to 0 or `null` to indicate that the rate plan should never expire.
-	EndTime pulumi.StringPtrInput
-	// Frequency at which the fixed fee is charged.
-	FixedFeeFrequency pulumi.IntPtrInput
-	// Fixed amount that is charged at a defined interval and billed in advance of use of the API product. The fee will be prorated for the first billing period.
-	FixedRecurringFee GoogleTypeMoneyResponsePtrInput
-	// Time the rate plan was last modified in milliseconds since epoch.
-	LastModifiedAt pulumi.StringPtrInput
-	// Name of the rate plan.
-	Name pulumi.StringPtrInput
-	// Flag that specifies the billing account type, prepaid or postpaid.
-	PaymentFundingModel pulumi.StringPtrInput
-	// Details of the revenue sharing model.
-	RevenueShareRates GoogleCloudApigeeV1RevenueShareRangeResponseArrayInput
-	// Method used to calculate the revenue that is shared with developers.
-	RevenueShareType pulumi.StringPtrInput
-	// Initial, one-time fee paid when purchasing the API product.
-	SetupFee GoogleTypeMoneyResponsePtrInput
-	// Time when the rate plan becomes active in milliseconds since epoch.
-	StartTime pulumi.StringPtrInput
-	// Current state of the rate plan (draft or published).
-	State pulumi.StringPtrInput
 }
 
 func (RatePlanState) ElementType() reflect.Type {
@@ -181,11 +105,11 @@ type ratePlanArgs struct {
 	Apiproduct   *string `pulumi:"apiproduct"`
 	ApiproductId string  `pulumi:"apiproductId"`
 	// Frequency at which the customer will be billed.
-	BillingPeriod *string `pulumi:"billingPeriod"`
+	BillingPeriod *RatePlanBillingPeriod `pulumi:"billingPeriod"`
 	// API call volume ranges and the fees charged when the total number of API calls is within a given range. The method used to calculate the final fee depends on the selected pricing model. For example, if the pricing model is `STAIRSTEP` and the ranges are defined as follows: ```{ "start": 1, "end": 100, "fee": 75 }, { "start": 101, "end": 200, "fee": 100 }, }``` Then the following fees would be charged based on the total number of API calls (assuming the currency selected is `USD`): * 1 call costs $75 * 50 calls cost $75 * 150 calls cost $100 The number of API calls cannot exceed 200.
 	ConsumptionPricingRates []GoogleCloudApigeeV1RateRange `pulumi:"consumptionPricingRates"`
 	// Pricing model used for consumption-based charges.
-	ConsumptionPricingType *string `pulumi:"consumptionPricingType"`
+	ConsumptionPricingType *RatePlanConsumptionPricingType `pulumi:"consumptionPricingType"`
 	// Currency to be used for billing. Consists of a three-letter code as defined by the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) standard.
 	CurrencyCode *string `pulumi:"currencyCode"`
 	// Description of the rate plan.
@@ -200,17 +124,17 @@ type ratePlanArgs struct {
 	FixedRecurringFee *GoogleTypeMoney `pulumi:"fixedRecurringFee"`
 	OrganizationId    string           `pulumi:"organizationId"`
 	// Flag that specifies the billing account type, prepaid or postpaid.
-	PaymentFundingModel *string `pulumi:"paymentFundingModel"`
+	PaymentFundingModel *RatePlanPaymentFundingModel `pulumi:"paymentFundingModel"`
 	// Details of the revenue sharing model.
 	RevenueShareRates []GoogleCloudApigeeV1RevenueShareRange `pulumi:"revenueShareRates"`
 	// Method used to calculate the revenue that is shared with developers.
-	RevenueShareType *string `pulumi:"revenueShareType"`
+	RevenueShareType *RatePlanRevenueShareType `pulumi:"revenueShareType"`
 	// Initial, one-time fee paid when purchasing the API product.
 	SetupFee *GoogleTypeMoney `pulumi:"setupFee"`
 	// Time when the rate plan becomes active in milliseconds since epoch.
 	StartTime *string `pulumi:"startTime"`
 	// Current state of the rate plan (draft or published).
-	State *string `pulumi:"state"`
+	State *RatePlanStateEnum `pulumi:"state"`
 }
 
 // The set of arguments for constructing a RatePlan resource.
@@ -219,11 +143,11 @@ type RatePlanArgs struct {
 	Apiproduct   pulumi.StringPtrInput
 	ApiproductId pulumi.StringInput
 	// Frequency at which the customer will be billed.
-	BillingPeriod *RatePlanBillingPeriod
+	BillingPeriod RatePlanBillingPeriodPtrInput
 	// API call volume ranges and the fees charged when the total number of API calls is within a given range. The method used to calculate the final fee depends on the selected pricing model. For example, if the pricing model is `STAIRSTEP` and the ranges are defined as follows: ```{ "start": 1, "end": 100, "fee": 75 }, { "start": 101, "end": 200, "fee": 100 }, }``` Then the following fees would be charged based on the total number of API calls (assuming the currency selected is `USD`): * 1 call costs $75 * 50 calls cost $75 * 150 calls cost $100 The number of API calls cannot exceed 200.
 	ConsumptionPricingRates GoogleCloudApigeeV1RateRangeArrayInput
 	// Pricing model used for consumption-based charges.
-	ConsumptionPricingType *RatePlanConsumptionPricingType
+	ConsumptionPricingType RatePlanConsumptionPricingTypePtrInput
 	// Currency to be used for billing. Consists of a three-letter code as defined by the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) standard.
 	CurrencyCode pulumi.StringPtrInput
 	// Description of the rate plan.
@@ -238,17 +162,17 @@ type RatePlanArgs struct {
 	FixedRecurringFee GoogleTypeMoneyPtrInput
 	OrganizationId    pulumi.StringInput
 	// Flag that specifies the billing account type, prepaid or postpaid.
-	PaymentFundingModel *RatePlanPaymentFundingModel
+	PaymentFundingModel RatePlanPaymentFundingModelPtrInput
 	// Details of the revenue sharing model.
 	RevenueShareRates GoogleCloudApigeeV1RevenueShareRangeArrayInput
 	// Method used to calculate the revenue that is shared with developers.
-	RevenueShareType *RatePlanRevenueShareType
+	RevenueShareType RatePlanRevenueShareTypePtrInput
 	// Initial, one-time fee paid when purchasing the API product.
 	SetupFee GoogleTypeMoneyPtrInput
 	// Time when the rate plan becomes active in milliseconds since epoch.
 	StartTime pulumi.StringPtrInput
 	// Current state of the rate plan (draft or published).
-	State *RatePlanStateEnum
+	State RatePlanStateEnumPtrInput
 }
 
 func (RatePlanArgs) ElementType() reflect.Type {

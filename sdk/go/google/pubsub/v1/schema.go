@@ -55,21 +55,9 @@ func GetSchema(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Schema resources.
 type schemaState struct {
-	// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
-	Definition *string `pulumi:"definition"`
-	// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
-	Name *string `pulumi:"name"`
-	// The type of the schema definition.
-	Type *string `pulumi:"type"`
 }
 
 type SchemaState struct {
-	// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
-	Definition pulumi.StringPtrInput
-	// Name of the schema. Format is `projects/{project}/schemas/{schema}`.
-	Name pulumi.StringPtrInput
-	// The type of the schema definition.
-	Type pulumi.StringPtrInput
 }
 
 func (SchemaState) ElementType() reflect.Type {
@@ -84,7 +72,7 @@ type schemaArgs struct {
 	Project  string  `pulumi:"project"`
 	SchemaId *string `pulumi:"schemaId"`
 	// The type of the schema definition.
-	Type *string `pulumi:"type"`
+	Type *SchemaType `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Schema resource.
@@ -96,7 +84,7 @@ type SchemaArgs struct {
 	Project  pulumi.StringInput
 	SchemaId pulumi.StringPtrInput
 	// The type of the schema definition.
-	Type *SchemaType
+	Type SchemaTypePtrInput
 }
 
 func (SchemaArgs) ElementType() reflect.Type {

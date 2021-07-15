@@ -41,6 +41,9 @@ func NewInstruction(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.DataType == nil {
+		return nil, errors.New("invalid value for required argument 'DataType'")
+	}
 	if args.DisplayName == nil {
 		return nil, errors.New("invalid value for required argument 'DisplayName'")
 	}
@@ -69,41 +72,9 @@ func GetInstruction(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instruction resources.
 type instructionState struct {
-	// The names of any related resources that are blocking changes to the instruction.
-	BlockingResources []string `pulumi:"blockingResources"`
-	// Creation time of instruction.
-	CreateTime *string `pulumi:"createTime"`
-	// The data type of this instruction.
-	DataType *string `pulumi:"dataType"`
-	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
-	Description *string `pulumi:"description"`
-	// The display name of the instruction. Maximum of 64 characters.
-	DisplayName *string `pulumi:"displayName"`
-	// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
-	Name *string `pulumi:"name"`
-	// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
-	PdfInstruction *GoogleCloudDatalabelingV1beta1PdfInstructionResponse `pulumi:"pdfInstruction"`
-	// Last update time of instruction.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type InstructionState struct {
-	// The names of any related resources that are blocking changes to the instruction.
-	BlockingResources pulumi.StringArrayInput
-	// Creation time of instruction.
-	CreateTime pulumi.StringPtrInput
-	// The data type of this instruction.
-	DataType pulumi.StringPtrInput
-	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
-	Description pulumi.StringPtrInput
-	// The display name of the instruction. Maximum of 64 characters.
-	DisplayName pulumi.StringPtrInput
-	// Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
-	Name pulumi.StringPtrInput
-	// Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
-	PdfInstruction GoogleCloudDatalabelingV1beta1PdfInstructionResponsePtrInput
-	// Last update time of instruction.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (InstructionState) ElementType() reflect.Type {
@@ -112,7 +83,7 @@ func (InstructionState) ElementType() reflect.Type {
 
 type instructionArgs struct {
 	// The data type of this instruction.
-	DataType string `pulumi:"dataType"`
+	DataType InstructionDataType `pulumi:"dataType"`
 	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
 	Description *string `pulumi:"description"`
 	// The display name of the instruction. Maximum of 64 characters.
@@ -125,7 +96,7 @@ type instructionArgs struct {
 // The set of arguments for constructing a Instruction resource.
 type InstructionArgs struct {
 	// The data type of this instruction.
-	DataType InstructionDataType
+	DataType InstructionDataTypeInput
 	// Optional. User-provided description of the instruction. The description can be up to 10000 characters long.
 	Description pulumi.StringPtrInput
 	// The display name of the instruction. Maximum of 64 characters.

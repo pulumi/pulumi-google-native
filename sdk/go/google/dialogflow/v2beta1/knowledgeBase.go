@@ -61,21 +61,9 @@ func GetKnowledgeBase(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KnowledgeBase resources.
 type knowledgeBaseState struct {
-	// The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
-	DisplayName *string `pulumi:"displayName"`
-	// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, this is populated for all non en-us languages. If not populated, the default language en-us applies.
-	LanguageCode *string `pulumi:"languageCode"`
-	// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
-	Name *string `pulumi:"name"`
 }
 
 type KnowledgeBaseState struct {
-	// The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
-	DisplayName pulumi.StringPtrInput
-	// Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, this is populated for all non en-us languages. If not populated, the default language en-us applies.
-	LanguageCode pulumi.StringPtrInput
-	// The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
-	Name pulumi.StringPtrInput
 }
 
 func (KnowledgeBaseState) ElementType() reflect.Type {

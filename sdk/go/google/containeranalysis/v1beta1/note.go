@@ -87,77 +87,9 @@ func GetNote(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Note resources.
 type noteState struct {
-	// A note describing an attestation role.
-	AttestationAuthority *AuthorityResponse `pulumi:"attestationAuthority"`
-	// A note describing a base image.
-	BaseImage *BasisResponse `pulumi:"baseImage"`
-	// A note describing build provenance for a verifiable build.
-	Build *BuildResponse `pulumi:"build"`
-	// The time this note was created. This field can be used as a filter in list requests.
-	CreateTime *string `pulumi:"createTime"`
-	// A note describing something that can be deployed.
-	Deployable *DeployableResponse `pulumi:"deployable"`
-	// A note describing the initial analysis of a resource.
-	Discovery *DiscoveryResponse `pulumi:"discovery"`
-	// Time of expiration for this note. Empty if note does not expire.
-	ExpirationTime *string `pulumi:"expirationTime"`
-	// A note describing an in-toto link.
-	Intoto *InTotoResponse `pulumi:"intoto"`
-	// The type of analysis. This field can be used as a filter in list requests.
-	Kind *string `pulumi:"kind"`
-	// A detailed description of this note.
-	LongDescription *string `pulumi:"longDescription"`
-	// The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
-	Name *string `pulumi:"name"`
-	// A note describing a package hosted by various package managers.
-	Package *PackageResponse `pulumi:"package"`
-	// Other notes related to this note.
-	RelatedNoteNames []string `pulumi:"relatedNoteNames"`
-	// URLs associated with this note.
-	RelatedUrl []RelatedUrlResponse `pulumi:"relatedUrl"`
-	// A one sentence description of this note.
-	ShortDescription *string `pulumi:"shortDescription"`
-	// The time this note was last updated. This field can be used as a filter in list requests.
-	UpdateTime *string `pulumi:"updateTime"`
-	// A note describing a package vulnerability.
-	Vulnerability *VulnerabilityResponse `pulumi:"vulnerability"`
 }
 
 type NoteState struct {
-	// A note describing an attestation role.
-	AttestationAuthority AuthorityResponsePtrInput
-	// A note describing a base image.
-	BaseImage BasisResponsePtrInput
-	// A note describing build provenance for a verifiable build.
-	Build BuildResponsePtrInput
-	// The time this note was created. This field can be used as a filter in list requests.
-	CreateTime pulumi.StringPtrInput
-	// A note describing something that can be deployed.
-	Deployable DeployableResponsePtrInput
-	// A note describing the initial analysis of a resource.
-	Discovery DiscoveryResponsePtrInput
-	// Time of expiration for this note. Empty if note does not expire.
-	ExpirationTime pulumi.StringPtrInput
-	// A note describing an in-toto link.
-	Intoto InTotoResponsePtrInput
-	// The type of analysis. This field can be used as a filter in list requests.
-	Kind pulumi.StringPtrInput
-	// A detailed description of this note.
-	LongDescription pulumi.StringPtrInput
-	// The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`.
-	Name pulumi.StringPtrInput
-	// A note describing a package hosted by various package managers.
-	Package PackageResponsePtrInput
-	// Other notes related to this note.
-	RelatedNoteNames pulumi.StringArrayInput
-	// URLs associated with this note.
-	RelatedUrl RelatedUrlResponseArrayInput
-	// A one sentence description of this note.
-	ShortDescription pulumi.StringPtrInput
-	// The time this note was last updated. This field can be used as a filter in list requests.
-	UpdateTime pulumi.StringPtrInput
-	// A note describing a package vulnerability.
-	Vulnerability VulnerabilityResponsePtrInput
 }
 
 func (NoteState) ElementType() reflect.Type {

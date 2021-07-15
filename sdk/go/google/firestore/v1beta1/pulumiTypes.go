@@ -15,7 +15,7 @@ type GoogleFirestoreAdminV1beta1IndexField struct {
 	// The path of the field. Must match the field path specification described by google.firestore.v1beta1.Document.fields. Special field path `__name__` may be used by itself or at the end of a path. `__type__` may be used only at the end of path.
 	FieldPath *string `pulumi:"fieldPath"`
 	// The field's mode.
-	Mode *string `pulumi:"mode"`
+	Mode *GoogleFirestoreAdminV1beta1IndexFieldMode `pulumi:"mode"`
 }
 
 // GoogleFirestoreAdminV1beta1IndexFieldInput is an input type that accepts GoogleFirestoreAdminV1beta1IndexFieldArgs and GoogleFirestoreAdminV1beta1IndexFieldOutput values.
@@ -34,7 +34,7 @@ type GoogleFirestoreAdminV1beta1IndexFieldArgs struct {
 	// The path of the field. Must match the field path specification described by google.firestore.v1beta1.Document.fields. Special field path `__name__` may be used by itself or at the end of a path. `__type__` may be used only at the end of path.
 	FieldPath pulumi.StringPtrInput `pulumi:"fieldPath"`
 	// The field's mode.
-	Mode *GoogleFirestoreAdminV1beta1IndexFieldMode `pulumi:"mode"`
+	Mode GoogleFirestoreAdminV1beta1IndexFieldModePtrInput `pulumi:"mode"`
 }
 
 func (GoogleFirestoreAdminV1beta1IndexFieldArgs) ElementType() reflect.Type {
@@ -95,8 +95,10 @@ func (o GoogleFirestoreAdminV1beta1IndexFieldOutput) FieldPath() pulumi.StringPt
 }
 
 // The field's mode.
-func (o GoogleFirestoreAdminV1beta1IndexFieldOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleFirestoreAdminV1beta1IndexField) *string { return v.Mode }).(pulumi.StringPtrOutput)
+func (o GoogleFirestoreAdminV1beta1IndexFieldOutput) Mode() GoogleFirestoreAdminV1beta1IndexFieldModePtrOutput {
+	return o.ApplyT(func(v GoogleFirestoreAdminV1beta1IndexField) *GoogleFirestoreAdminV1beta1IndexFieldMode {
+		return v.Mode
+	}).(GoogleFirestoreAdminV1beta1IndexFieldModePtrOutput)
 }
 
 type GoogleFirestoreAdminV1beta1IndexFieldArrayOutput struct{ *pulumi.OutputState }

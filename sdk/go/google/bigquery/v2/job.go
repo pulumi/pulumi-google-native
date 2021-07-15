@@ -66,41 +66,9 @@ func GetJob(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Job resources.
 type jobState struct {
-	// [Required] Describes the job configuration.
-	Configuration *JobConfigurationResponse `pulumi:"configuration"`
-	// A hash of this resource.
-	Etag *string `pulumi:"etag"`
-	// [Optional] Reference describing the unique-per-user name of the job.
-	JobReference *JobReferenceResponse `pulumi:"jobReference"`
-	// The type of the resource.
-	Kind *string `pulumi:"kind"`
-	// A URL that can be used to access this resource again.
-	SelfLink *string `pulumi:"selfLink"`
-	// Information about the job, including starting time and ending time of the job.
-	Statistics *JobStatisticsResponse `pulumi:"statistics"`
-	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
-	Status *JobStatusResponse `pulumi:"status"`
-	// Email address of the user who ran the job.
-	UserEmail *string `pulumi:"userEmail"`
 }
 
 type JobState struct {
-	// [Required] Describes the job configuration.
-	Configuration JobConfigurationResponsePtrInput
-	// A hash of this resource.
-	Etag pulumi.StringPtrInput
-	// [Optional] Reference describing the unique-per-user name of the job.
-	JobReference JobReferenceResponsePtrInput
-	// The type of the resource.
-	Kind pulumi.StringPtrInput
-	// A URL that can be used to access this resource again.
-	SelfLink pulumi.StringPtrInput
-	// Information about the job, including starting time and ending time of the job.
-	Statistics JobStatisticsResponsePtrInput
-	// The status of this job. Examine this value when polling an asynchronous job to see if the job is complete.
-	Status JobStatusResponsePtrInput
-	// Email address of the user who ran the job.
-	UserEmail pulumi.StringPtrInput
 }
 
 func (JobState) ElementType() reflect.Type {

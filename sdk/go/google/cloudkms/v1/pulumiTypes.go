@@ -233,7 +233,7 @@ type AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *string `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
@@ -252,7 +252,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *AuditLogConfigLogType `pulumi:"logType"`
+	LogType AuditLogConfigLogTypePtrInput `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -313,8 +313,8 @@ func (o AuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
 }
 
 // The log type that this config enables.
-func (o AuditLogConfigOutput) LogType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AuditLogConfig) *string { return v.LogType }).(pulumi.StringPtrOutput)
+func (o AuditLogConfigOutput) LogType() AuditLogConfigLogTypePtrOutput {
+	return o.ApplyT(func(v AuditLogConfig) *AuditLogConfigLogType { return v.LogType }).(AuditLogConfigLogTypePtrOutput)
 }
 
 type AuditLogConfigArrayOutput struct{ *pulumi.OutputState }
@@ -1221,9 +1221,9 @@ func (o CryptoKeyVersionResponsePtrOutput) State() pulumi.StringPtrOutput {
 // A CryptoKeyVersionTemplate specifies the properties to use when creating a new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or automatically as a result of auto-rotation.
 type CryptoKeyVersionTemplate struct {
 	// Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
-	Algorithm string `pulumi:"algorithm"`
+	Algorithm CryptoKeyVersionTemplateAlgorithm `pulumi:"algorithm"`
 	// ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
-	ProtectionLevel *string `pulumi:"protectionLevel"`
+	ProtectionLevel *CryptoKeyVersionTemplateProtectionLevel `pulumi:"protectionLevel"`
 }
 
 // CryptoKeyVersionTemplateInput is an input type that accepts CryptoKeyVersionTemplateArgs and CryptoKeyVersionTemplateOutput values.
@@ -1240,9 +1240,9 @@ type CryptoKeyVersionTemplateInput interface {
 // A CryptoKeyVersionTemplate specifies the properties to use when creating a new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or automatically as a result of auto-rotation.
 type CryptoKeyVersionTemplateArgs struct {
 	// Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
-	Algorithm CryptoKeyVersionTemplateAlgorithm `pulumi:"algorithm"`
+	Algorithm CryptoKeyVersionTemplateAlgorithmInput `pulumi:"algorithm"`
 	// ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
-	ProtectionLevel *CryptoKeyVersionTemplateProtectionLevel `pulumi:"protectionLevel"`
+	ProtectionLevel CryptoKeyVersionTemplateProtectionLevelPtrInput `pulumi:"protectionLevel"`
 }
 
 func (CryptoKeyVersionTemplateArgs) ElementType() reflect.Type {
@@ -1324,13 +1324,13 @@ func (o CryptoKeyVersionTemplateOutput) ToCryptoKeyVersionTemplatePtrOutputWithC
 }
 
 // Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
-func (o CryptoKeyVersionTemplateOutput) Algorithm() pulumi.StringOutput {
-	return o.ApplyT(func(v CryptoKeyVersionTemplate) string { return v.Algorithm }).(pulumi.StringOutput)
+func (o CryptoKeyVersionTemplateOutput) Algorithm() CryptoKeyVersionTemplateAlgorithmOutput {
+	return o.ApplyT(func(v CryptoKeyVersionTemplate) CryptoKeyVersionTemplateAlgorithm { return v.Algorithm }).(CryptoKeyVersionTemplateAlgorithmOutput)
 }
 
 // ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
-func (o CryptoKeyVersionTemplateOutput) ProtectionLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CryptoKeyVersionTemplate) *string { return v.ProtectionLevel }).(pulumi.StringPtrOutput)
+func (o CryptoKeyVersionTemplateOutput) ProtectionLevel() CryptoKeyVersionTemplateProtectionLevelPtrOutput {
+	return o.ApplyT(func(v CryptoKeyVersionTemplate) *CryptoKeyVersionTemplateProtectionLevel { return v.ProtectionLevel }).(CryptoKeyVersionTemplateProtectionLevelPtrOutput)
 }
 
 type CryptoKeyVersionTemplatePtrOutput struct{ *pulumi.OutputState }
@@ -1352,23 +1352,23 @@ func (o CryptoKeyVersionTemplatePtrOutput) Elem() CryptoKeyVersionTemplateOutput
 }
 
 // Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
-func (o CryptoKeyVersionTemplatePtrOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionTemplate) *string {
+func (o CryptoKeyVersionTemplatePtrOutput) Algorithm() CryptoKeyVersionTemplateAlgorithmPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersionTemplate) *CryptoKeyVersionTemplateAlgorithm {
 		if v == nil {
 			return nil
 		}
 		return &v.Algorithm
-	}).(pulumi.StringPtrOutput)
+	}).(CryptoKeyVersionTemplateAlgorithmPtrOutput)
 }
 
 // ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
-func (o CryptoKeyVersionTemplatePtrOutput) ProtectionLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKeyVersionTemplate) *string {
+func (o CryptoKeyVersionTemplatePtrOutput) ProtectionLevel() CryptoKeyVersionTemplateProtectionLevelPtrOutput {
+	return o.ApplyT(func(v *CryptoKeyVersionTemplate) *CryptoKeyVersionTemplateProtectionLevel {
 		if v == nil {
 			return nil
 		}
 		return v.ProtectionLevel
-	}).(pulumi.StringPtrOutput)
+	}).(CryptoKeyVersionTemplateProtectionLevelPtrOutput)
 }
 
 // A CryptoKeyVersionTemplate specifies the properties to use when creating a new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or automatically as a result of auto-rotation.

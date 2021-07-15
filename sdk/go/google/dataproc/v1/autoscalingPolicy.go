@@ -66,23 +66,9 @@ func GetAutoscalingPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AutoscalingPolicy resources.
 type autoscalingPolicyState struct {
-	BasicAlgorithm *BasicAutoscalingAlgorithmResponse `pulumi:"basicAlgorithm"`
-	// The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
-	Name *string `pulumi:"name"`
-	// Optional. Describes how the autoscaler will operate for secondary workers.
-	SecondaryWorkerConfig *InstanceGroupAutoscalingPolicyConfigResponse `pulumi:"secondaryWorkerConfig"`
-	// Describes how the autoscaler will operate for primary workers.
-	WorkerConfig *InstanceGroupAutoscalingPolicyConfigResponse `pulumi:"workerConfig"`
 }
 
 type AutoscalingPolicyState struct {
-	BasicAlgorithm BasicAutoscalingAlgorithmResponsePtrInput
-	// The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
-	Name pulumi.StringPtrInput
-	// Optional. Describes how the autoscaler will operate for secondary workers.
-	SecondaryWorkerConfig InstanceGroupAutoscalingPolicyConfigResponsePtrInput
-	// Describes how the autoscaler will operate for primary workers.
-	WorkerConfig InstanceGroupAutoscalingPolicyConfigResponsePtrInput
 }
 
 func (AutoscalingPolicyState) ElementType() reflect.Type {

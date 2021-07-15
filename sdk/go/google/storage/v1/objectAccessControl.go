@@ -88,79 +88,9 @@ func GetObjectAccessControl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ObjectAccessControl resources.
 type objectAccessControlState struct {
-	// The name of the bucket.
-	Bucket *string `pulumi:"bucket"`
-	// The domain associated with the entity, if any.
-	Domain *string `pulumi:"domain"`
-	// The email address associated with the entity, if any.
-	Email *string `pulumi:"email"`
-	// The entity holding the permission, in one of the following forms:
-	// - user-userId
-	// - user-email
-	// - group-groupId
-	// - group-email
-	// - domain-domain
-	// - project-team-projectId
-	// - allUsers
-	// - allAuthenticatedUsers Examples:
-	// - The user liz@example.com would be user-liz@example.com.
-	// - The group example@googlegroups.com would be group-example@googlegroups.com.
-	// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
-	Entity *string `pulumi:"entity"`
-	// The ID for the entity, if any.
-	EntityId *string `pulumi:"entityId"`
-	// HTTP 1.1 Entity tag for the access-control entry.
-	Etag *string `pulumi:"etag"`
-	// The content generation of the object, if applied to an object.
-	Generation *string `pulumi:"generation"`
-	// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
-	Kind *string `pulumi:"kind"`
-	// The name of the object, if applied to an object.
-	Object *string `pulumi:"object"`
-	// The project team associated with the entity, if any.
-	ProjectTeam *ObjectAccessControlProjectTeamResponse `pulumi:"projectTeam"`
-	// The access permission for the entity.
-	Role *string `pulumi:"role"`
-	// The link to this access-control entry.
-	SelfLink *string `pulumi:"selfLink"`
 }
 
 type ObjectAccessControlState struct {
-	// The name of the bucket.
-	Bucket pulumi.StringPtrInput
-	// The domain associated with the entity, if any.
-	Domain pulumi.StringPtrInput
-	// The email address associated with the entity, if any.
-	Email pulumi.StringPtrInput
-	// The entity holding the permission, in one of the following forms:
-	// - user-userId
-	// - user-email
-	// - group-groupId
-	// - group-email
-	// - domain-domain
-	// - project-team-projectId
-	// - allUsers
-	// - allAuthenticatedUsers Examples:
-	// - The user liz@example.com would be user-liz@example.com.
-	// - The group example@googlegroups.com would be group-example@googlegroups.com.
-	// - To refer to all members of the Google Apps for Business domain example.com, the entity would be domain-example.com.
-	Entity pulumi.StringPtrInput
-	// The ID for the entity, if any.
-	EntityId pulumi.StringPtrInput
-	// HTTP 1.1 Entity tag for the access-control entry.
-	Etag pulumi.StringPtrInput
-	// The content generation of the object, if applied to an object.
-	Generation pulumi.StringPtrInput
-	// The kind of item this is. For object access control entries, this is always storage#objectAccessControl.
-	Kind pulumi.StringPtrInput
-	// The name of the object, if applied to an object.
-	Object pulumi.StringPtrInput
-	// The project team associated with the entity, if any.
-	ProjectTeam ObjectAccessControlProjectTeamResponsePtrInput
-	// The access permission for the entity.
-	Role pulumi.StringPtrInput
-	// The link to this access-control entry.
-	SelfLink pulumi.StringPtrInput
 }
 
 func (ObjectAccessControlState) ElementType() reflect.Type {

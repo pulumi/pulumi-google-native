@@ -11,7 +11,7 @@ import (
 )
 
 // Optional. The network connect mode of the Redis instance. If not provided, the connect mode defaults to DIRECT_PEERING.
-type InstanceConnectMode pulumi.String
+type InstanceConnectMode string
 
 const (
 	// Not set.
@@ -23,7 +23,23 @@ const (
 )
 
 func (InstanceConnectMode) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*InstanceConnectMode)(nil)).Elem()
+}
+
+func (e InstanceConnectMode) ToInstanceConnectModeOutput() InstanceConnectModeOutput {
+	return pulumi.ToOutput(e).(InstanceConnectModeOutput)
+}
+
+func (e InstanceConnectMode) ToInstanceConnectModeOutputWithContext(ctx context.Context) InstanceConnectModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InstanceConnectModeOutput)
+}
+
+func (e InstanceConnectMode) ToInstanceConnectModePtrOutput() InstanceConnectModePtrOutput {
+	return e.ToInstanceConnectModePtrOutputWithContext(context.Background())
+}
+
+func (e InstanceConnectMode) ToInstanceConnectModePtrOutputWithContext(ctx context.Context) InstanceConnectModePtrOutput {
+	return InstanceConnectMode(e).ToInstanceConnectModeOutputWithContext(ctx).ToInstanceConnectModePtrOutputWithContext(ctx)
 }
 
 func (e InstanceConnectMode) ToStringOutput() pulumi.StringOutput {
@@ -42,8 +58,129 @@ func (e InstanceConnectMode) ToStringPtrOutputWithContext(ctx context.Context) p
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type InstanceConnectModeOutput struct{ *pulumi.OutputState }
+
+func (InstanceConnectModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceConnectMode)(nil)).Elem()
+}
+
+func (o InstanceConnectModeOutput) ToInstanceConnectModeOutput() InstanceConnectModeOutput {
+	return o
+}
+
+func (o InstanceConnectModeOutput) ToInstanceConnectModeOutputWithContext(ctx context.Context) InstanceConnectModeOutput {
+	return o
+}
+
+func (o InstanceConnectModeOutput) ToInstanceConnectModePtrOutput() InstanceConnectModePtrOutput {
+	return o.ToInstanceConnectModePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceConnectModeOutput) ToInstanceConnectModePtrOutputWithContext(ctx context.Context) InstanceConnectModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceConnectMode) *InstanceConnectMode {
+		return &v
+	}).(InstanceConnectModePtrOutput)
+}
+
+func (o InstanceConnectModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InstanceConnectModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceConnectMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InstanceConnectModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceConnectModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceConnectMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceConnectModePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceConnectModePtrOutput) ElementType() reflect.Type {
+	return instanceConnectModePtrType
+}
+
+func (o InstanceConnectModePtrOutput) ToInstanceConnectModePtrOutput() InstanceConnectModePtrOutput {
+	return o
+}
+
+func (o InstanceConnectModePtrOutput) ToInstanceConnectModePtrOutputWithContext(ctx context.Context) InstanceConnectModePtrOutput {
+	return o
+}
+
+func (o InstanceConnectModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceConnectModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstanceConnectMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceConnectModePtrOutput) Elem() InstanceConnectModeOutput {
+	return o.ApplyT(func(v *InstanceConnectMode) InstanceConnectMode {
+		var ret InstanceConnectMode
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(InstanceConnectModeOutput)
+}
+
+// InstanceConnectModeInput is an input type that accepts InstanceConnectModeArgs and InstanceConnectModeOutput values.
+// You can construct a concrete instance of `InstanceConnectModeInput` via:
+//
+//          InstanceConnectModeArgs{...}
+type InstanceConnectModeInput interface {
+	pulumi.Input
+
+	ToInstanceConnectModeOutput() InstanceConnectModeOutput
+	ToInstanceConnectModeOutputWithContext(context.Context) InstanceConnectModeOutput
+}
+
+var instanceConnectModePtrType = reflect.TypeOf((**InstanceConnectMode)(nil)).Elem()
+
+type InstanceConnectModePtrInput interface {
+	pulumi.Input
+
+	ToInstanceConnectModePtrOutput() InstanceConnectModePtrOutput
+	ToInstanceConnectModePtrOutputWithContext(context.Context) InstanceConnectModePtrOutput
+}
+
+type instanceConnectModePtr string
+
+func InstanceConnectModePtr(v string) InstanceConnectModePtrInput {
+	return (*instanceConnectModePtr)(&v)
+}
+
+func (*instanceConnectModePtr) ElementType() reflect.Type {
+	return instanceConnectModePtrType
+}
+
+func (in *instanceConnectModePtr) ToInstanceConnectModePtrOutput() InstanceConnectModePtrOutput {
+	return pulumi.ToOutput(in).(InstanceConnectModePtrOutput)
+}
+
+func (in *instanceConnectModePtr) ToInstanceConnectModePtrOutputWithContext(ctx context.Context) InstanceConnectModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InstanceConnectModePtrOutput)
+}
+
 // Required. The service tier of the instance.
-type InstanceTier pulumi.String
+type InstanceTier string
 
 const (
 	// Not set.
@@ -55,7 +192,23 @@ const (
 )
 
 func (InstanceTier) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*InstanceTier)(nil)).Elem()
+}
+
+func (e InstanceTier) ToInstanceTierOutput() InstanceTierOutput {
+	return pulumi.ToOutput(e).(InstanceTierOutput)
+}
+
+func (e InstanceTier) ToInstanceTierOutputWithContext(ctx context.Context) InstanceTierOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InstanceTierOutput)
+}
+
+func (e InstanceTier) ToInstanceTierPtrOutput() InstanceTierPtrOutput {
+	return e.ToInstanceTierPtrOutputWithContext(context.Background())
+}
+
+func (e InstanceTier) ToInstanceTierPtrOutputWithContext(ctx context.Context) InstanceTierPtrOutput {
+	return InstanceTier(e).ToInstanceTierOutputWithContext(ctx).ToInstanceTierPtrOutputWithContext(ctx)
 }
 
 func (e InstanceTier) ToStringOutput() pulumi.StringOutput {
@@ -74,8 +227,129 @@ func (e InstanceTier) ToStringPtrOutputWithContext(ctx context.Context) pulumi.S
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type InstanceTierOutput struct{ *pulumi.OutputState }
+
+func (InstanceTierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceTier)(nil)).Elem()
+}
+
+func (o InstanceTierOutput) ToInstanceTierOutput() InstanceTierOutput {
+	return o
+}
+
+func (o InstanceTierOutput) ToInstanceTierOutputWithContext(ctx context.Context) InstanceTierOutput {
+	return o
+}
+
+func (o InstanceTierOutput) ToInstanceTierPtrOutput() InstanceTierPtrOutput {
+	return o.ToInstanceTierPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceTierOutput) ToInstanceTierPtrOutputWithContext(ctx context.Context) InstanceTierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceTier) *InstanceTier {
+		return &v
+	}).(InstanceTierPtrOutput)
+}
+
+func (o InstanceTierOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InstanceTierOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceTier) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InstanceTierOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceTierOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceTier) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceTierPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceTierPtrOutput) ElementType() reflect.Type {
+	return instanceTierPtrType
+}
+
+func (o InstanceTierPtrOutput) ToInstanceTierPtrOutput() InstanceTierPtrOutput {
+	return o
+}
+
+func (o InstanceTierPtrOutput) ToInstanceTierPtrOutputWithContext(ctx context.Context) InstanceTierPtrOutput {
+	return o
+}
+
+func (o InstanceTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstanceTier) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceTierPtrOutput) Elem() InstanceTierOutput {
+	return o.ApplyT(func(v *InstanceTier) InstanceTier {
+		var ret InstanceTier
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(InstanceTierOutput)
+}
+
+// InstanceTierInput is an input type that accepts InstanceTierArgs and InstanceTierOutput values.
+// You can construct a concrete instance of `InstanceTierInput` via:
+//
+//          InstanceTierArgs{...}
+type InstanceTierInput interface {
+	pulumi.Input
+
+	ToInstanceTierOutput() InstanceTierOutput
+	ToInstanceTierOutputWithContext(context.Context) InstanceTierOutput
+}
+
+var instanceTierPtrType = reflect.TypeOf((**InstanceTier)(nil)).Elem()
+
+type InstanceTierPtrInput interface {
+	pulumi.Input
+
+	ToInstanceTierPtrOutput() InstanceTierPtrOutput
+	ToInstanceTierPtrOutputWithContext(context.Context) InstanceTierPtrOutput
+}
+
+type instanceTierPtr string
+
+func InstanceTierPtr(v string) InstanceTierPtrInput {
+	return (*instanceTierPtr)(&v)
+}
+
+func (*instanceTierPtr) ElementType() reflect.Type {
+	return instanceTierPtrType
+}
+
+func (in *instanceTierPtr) ToInstanceTierPtrOutput() InstanceTierPtrOutput {
+	return pulumi.ToOutput(in).(InstanceTierPtrOutput)
+}
+
+func (in *instanceTierPtr) ToInstanceTierPtrOutputWithContext(ctx context.Context) InstanceTierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InstanceTierPtrOutput)
+}
+
 // Optional. The TLS mode of the Redis instance. If not provided, TLS is disabled for the instance.
-type InstanceTransitEncryptionMode pulumi.String
+type InstanceTransitEncryptionMode string
 
 const (
 	// Not set.
@@ -87,7 +361,23 @@ const (
 )
 
 func (InstanceTransitEncryptionMode) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*InstanceTransitEncryptionMode)(nil)).Elem()
+}
+
+func (e InstanceTransitEncryptionMode) ToInstanceTransitEncryptionModeOutput() InstanceTransitEncryptionModeOutput {
+	return pulumi.ToOutput(e).(InstanceTransitEncryptionModeOutput)
+}
+
+func (e InstanceTransitEncryptionMode) ToInstanceTransitEncryptionModeOutputWithContext(ctx context.Context) InstanceTransitEncryptionModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InstanceTransitEncryptionModeOutput)
+}
+
+func (e InstanceTransitEncryptionMode) ToInstanceTransitEncryptionModePtrOutput() InstanceTransitEncryptionModePtrOutput {
+	return e.ToInstanceTransitEncryptionModePtrOutputWithContext(context.Background())
+}
+
+func (e InstanceTransitEncryptionMode) ToInstanceTransitEncryptionModePtrOutputWithContext(ctx context.Context) InstanceTransitEncryptionModePtrOutput {
+	return InstanceTransitEncryptionMode(e).ToInstanceTransitEncryptionModeOutputWithContext(ctx).ToInstanceTransitEncryptionModePtrOutputWithContext(ctx)
 }
 
 func (e InstanceTransitEncryptionMode) ToStringOutput() pulumi.StringOutput {
@@ -106,8 +396,129 @@ func (e InstanceTransitEncryptionMode) ToStringPtrOutputWithContext(ctx context.
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type InstanceTransitEncryptionModeOutput struct{ *pulumi.OutputState }
+
+func (InstanceTransitEncryptionModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceTransitEncryptionMode)(nil)).Elem()
+}
+
+func (o InstanceTransitEncryptionModeOutput) ToInstanceTransitEncryptionModeOutput() InstanceTransitEncryptionModeOutput {
+	return o
+}
+
+func (o InstanceTransitEncryptionModeOutput) ToInstanceTransitEncryptionModeOutputWithContext(ctx context.Context) InstanceTransitEncryptionModeOutput {
+	return o
+}
+
+func (o InstanceTransitEncryptionModeOutput) ToInstanceTransitEncryptionModePtrOutput() InstanceTransitEncryptionModePtrOutput {
+	return o.ToInstanceTransitEncryptionModePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceTransitEncryptionModeOutput) ToInstanceTransitEncryptionModePtrOutputWithContext(ctx context.Context) InstanceTransitEncryptionModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceTransitEncryptionMode) *InstanceTransitEncryptionMode {
+		return &v
+	}).(InstanceTransitEncryptionModePtrOutput)
+}
+
+func (o InstanceTransitEncryptionModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InstanceTransitEncryptionModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceTransitEncryptionMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InstanceTransitEncryptionModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceTransitEncryptionModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceTransitEncryptionMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceTransitEncryptionModePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceTransitEncryptionModePtrOutput) ElementType() reflect.Type {
+	return instanceTransitEncryptionModePtrType
+}
+
+func (o InstanceTransitEncryptionModePtrOutput) ToInstanceTransitEncryptionModePtrOutput() InstanceTransitEncryptionModePtrOutput {
+	return o
+}
+
+func (o InstanceTransitEncryptionModePtrOutput) ToInstanceTransitEncryptionModePtrOutputWithContext(ctx context.Context) InstanceTransitEncryptionModePtrOutput {
+	return o
+}
+
+func (o InstanceTransitEncryptionModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceTransitEncryptionModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstanceTransitEncryptionMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceTransitEncryptionModePtrOutput) Elem() InstanceTransitEncryptionModeOutput {
+	return o.ApplyT(func(v *InstanceTransitEncryptionMode) InstanceTransitEncryptionMode {
+		var ret InstanceTransitEncryptionMode
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(InstanceTransitEncryptionModeOutput)
+}
+
+// InstanceTransitEncryptionModeInput is an input type that accepts InstanceTransitEncryptionModeArgs and InstanceTransitEncryptionModeOutput values.
+// You can construct a concrete instance of `InstanceTransitEncryptionModeInput` via:
+//
+//          InstanceTransitEncryptionModeArgs{...}
+type InstanceTransitEncryptionModeInput interface {
+	pulumi.Input
+
+	ToInstanceTransitEncryptionModeOutput() InstanceTransitEncryptionModeOutput
+	ToInstanceTransitEncryptionModeOutputWithContext(context.Context) InstanceTransitEncryptionModeOutput
+}
+
+var instanceTransitEncryptionModePtrType = reflect.TypeOf((**InstanceTransitEncryptionMode)(nil)).Elem()
+
+type InstanceTransitEncryptionModePtrInput interface {
+	pulumi.Input
+
+	ToInstanceTransitEncryptionModePtrOutput() InstanceTransitEncryptionModePtrOutput
+	ToInstanceTransitEncryptionModePtrOutputWithContext(context.Context) InstanceTransitEncryptionModePtrOutput
+}
+
+type instanceTransitEncryptionModePtr string
+
+func InstanceTransitEncryptionModePtr(v string) InstanceTransitEncryptionModePtrInput {
+	return (*instanceTransitEncryptionModePtr)(&v)
+}
+
+func (*instanceTransitEncryptionModePtr) ElementType() reflect.Type {
+	return instanceTransitEncryptionModePtrType
+}
+
+func (in *instanceTransitEncryptionModePtr) ToInstanceTransitEncryptionModePtrOutput() InstanceTransitEncryptionModePtrOutput {
+	return pulumi.ToOutput(in).(InstanceTransitEncryptionModePtrOutput)
+}
+
+func (in *instanceTransitEncryptionModePtr) ToInstanceTransitEncryptionModePtrOutputWithContext(ctx context.Context) InstanceTransitEncryptionModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InstanceTransitEncryptionModePtrOutput)
+}
+
 // Required. The day of week that maintenance updates occur.
-type WeeklyMaintenanceWindowDay pulumi.String
+type WeeklyMaintenanceWindowDay string
 
 const (
 	// The day of the week is unspecified.
@@ -129,7 +540,23 @@ const (
 )
 
 func (WeeklyMaintenanceWindowDay) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*WeeklyMaintenanceWindowDay)(nil)).Elem()
+}
+
+func (e WeeklyMaintenanceWindowDay) ToWeeklyMaintenanceWindowDayOutput() WeeklyMaintenanceWindowDayOutput {
+	return pulumi.ToOutput(e).(WeeklyMaintenanceWindowDayOutput)
+}
+
+func (e WeeklyMaintenanceWindowDay) ToWeeklyMaintenanceWindowDayOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowDayOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(WeeklyMaintenanceWindowDayOutput)
+}
+
+func (e WeeklyMaintenanceWindowDay) ToWeeklyMaintenanceWindowDayPtrOutput() WeeklyMaintenanceWindowDayPtrOutput {
+	return e.ToWeeklyMaintenanceWindowDayPtrOutputWithContext(context.Background())
+}
+
+func (e WeeklyMaintenanceWindowDay) ToWeeklyMaintenanceWindowDayPtrOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowDayPtrOutput {
+	return WeeklyMaintenanceWindowDay(e).ToWeeklyMaintenanceWindowDayOutputWithContext(ctx).ToWeeklyMaintenanceWindowDayPtrOutputWithContext(ctx)
 }
 
 func (e WeeklyMaintenanceWindowDay) ToStringOutput() pulumi.StringOutput {
@@ -146,4 +573,136 @@ func (e WeeklyMaintenanceWindowDay) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e WeeklyMaintenanceWindowDay) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type WeeklyMaintenanceWindowDayOutput struct{ *pulumi.OutputState }
+
+func (WeeklyMaintenanceWindowDayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeeklyMaintenanceWindowDay)(nil)).Elem()
+}
+
+func (o WeeklyMaintenanceWindowDayOutput) ToWeeklyMaintenanceWindowDayOutput() WeeklyMaintenanceWindowDayOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceWindowDayOutput) ToWeeklyMaintenanceWindowDayOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowDayOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceWindowDayOutput) ToWeeklyMaintenanceWindowDayPtrOutput() WeeklyMaintenanceWindowDayPtrOutput {
+	return o.ToWeeklyMaintenanceWindowDayPtrOutputWithContext(context.Background())
+}
+
+func (o WeeklyMaintenanceWindowDayOutput) ToWeeklyMaintenanceWindowDayPtrOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowDayPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WeeklyMaintenanceWindowDay) *WeeklyMaintenanceWindowDay {
+		return &v
+	}).(WeeklyMaintenanceWindowDayPtrOutput)
+}
+
+func (o WeeklyMaintenanceWindowDayOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o WeeklyMaintenanceWindowDayOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WeeklyMaintenanceWindowDay) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o WeeklyMaintenanceWindowDayOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WeeklyMaintenanceWindowDayOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WeeklyMaintenanceWindowDay) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type WeeklyMaintenanceWindowDayPtrOutput struct{ *pulumi.OutputState }
+
+func (WeeklyMaintenanceWindowDayPtrOutput) ElementType() reflect.Type {
+	return weeklyMaintenanceWindowDayPtrType
+}
+
+func (o WeeklyMaintenanceWindowDayPtrOutput) ToWeeklyMaintenanceWindowDayPtrOutput() WeeklyMaintenanceWindowDayPtrOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceWindowDayPtrOutput) ToWeeklyMaintenanceWindowDayPtrOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowDayPtrOutput {
+	return o
+}
+
+func (o WeeklyMaintenanceWindowDayPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WeeklyMaintenanceWindowDayPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *WeeklyMaintenanceWindowDay) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WeeklyMaintenanceWindowDayPtrOutput) Elem() WeeklyMaintenanceWindowDayOutput {
+	return o.ApplyT(func(v *WeeklyMaintenanceWindowDay) WeeklyMaintenanceWindowDay {
+		var ret WeeklyMaintenanceWindowDay
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(WeeklyMaintenanceWindowDayOutput)
+}
+
+// WeeklyMaintenanceWindowDayInput is an input type that accepts WeeklyMaintenanceWindowDayArgs and WeeklyMaintenanceWindowDayOutput values.
+// You can construct a concrete instance of `WeeklyMaintenanceWindowDayInput` via:
+//
+//          WeeklyMaintenanceWindowDayArgs{...}
+type WeeklyMaintenanceWindowDayInput interface {
+	pulumi.Input
+
+	ToWeeklyMaintenanceWindowDayOutput() WeeklyMaintenanceWindowDayOutput
+	ToWeeklyMaintenanceWindowDayOutputWithContext(context.Context) WeeklyMaintenanceWindowDayOutput
+}
+
+var weeklyMaintenanceWindowDayPtrType = reflect.TypeOf((**WeeklyMaintenanceWindowDay)(nil)).Elem()
+
+type WeeklyMaintenanceWindowDayPtrInput interface {
+	pulumi.Input
+
+	ToWeeklyMaintenanceWindowDayPtrOutput() WeeklyMaintenanceWindowDayPtrOutput
+	ToWeeklyMaintenanceWindowDayPtrOutputWithContext(context.Context) WeeklyMaintenanceWindowDayPtrOutput
+}
+
+type weeklyMaintenanceWindowDayPtr string
+
+func WeeklyMaintenanceWindowDayPtr(v string) WeeklyMaintenanceWindowDayPtrInput {
+	return (*weeklyMaintenanceWindowDayPtr)(&v)
+}
+
+func (*weeklyMaintenanceWindowDayPtr) ElementType() reflect.Type {
+	return weeklyMaintenanceWindowDayPtrType
+}
+
+func (in *weeklyMaintenanceWindowDayPtr) ToWeeklyMaintenanceWindowDayPtrOutput() WeeklyMaintenanceWindowDayPtrOutput {
+	return pulumi.ToOutput(in).(WeeklyMaintenanceWindowDayPtrOutput)
+}
+
+func (in *weeklyMaintenanceWindowDayPtr) ToWeeklyMaintenanceWindowDayPtrOutputWithContext(ctx context.Context) WeeklyMaintenanceWindowDayPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(WeeklyMaintenanceWindowDayPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(InstanceConnectModeOutput{})
+	pulumi.RegisterOutputType(InstanceConnectModePtrOutput{})
+	pulumi.RegisterOutputType(InstanceTierOutput{})
+	pulumi.RegisterOutputType(InstanceTierPtrOutput{})
+	pulumi.RegisterOutputType(InstanceTransitEncryptionModeOutput{})
+	pulumi.RegisterOutputType(InstanceTransitEncryptionModePtrOutput{})
+	pulumi.RegisterOutputType(WeeklyMaintenanceWindowDayOutput{})
+	pulumi.RegisterOutputType(WeeklyMaintenanceWindowDayPtrOutput{})
 }

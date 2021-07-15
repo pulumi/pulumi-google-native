@@ -69,37 +69,9 @@ func GetGlossary(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Glossary resources.
 type glossaryState struct {
-	// When the glossary creation was finished.
-	EndTime *string `pulumi:"endTime"`
-	// The number of entries defined in the glossary.
-	EntryCount *int `pulumi:"entryCount"`
-	// Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
-	InputConfig *GlossaryInputConfigResponse `pulumi:"inputConfig"`
-	// Used with equivalent term set glossaries.
-	LanguageCodesSet *LanguageCodesSetResponse `pulumi:"languageCodesSet"`
-	// Used with unidirectional glossaries.
-	LanguagePair *LanguageCodePairResponse `pulumi:"languagePair"`
-	// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
-	Name *string `pulumi:"name"`
-	// When CreateGlossary was called.
-	SubmitTime *string `pulumi:"submitTime"`
 }
 
 type GlossaryState struct {
-	// When the glossary creation was finished.
-	EndTime pulumi.StringPtrInput
-	// The number of entries defined in the glossary.
-	EntryCount pulumi.IntPtrInput
-	// Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
-	InputConfig GlossaryInputConfigResponsePtrInput
-	// Used with equivalent term set glossaries.
-	LanguageCodesSet LanguageCodesSetResponsePtrInput
-	// Used with unidirectional glossaries.
-	LanguagePair LanguageCodePairResponsePtrInput
-	// The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
-	Name pulumi.StringPtrInput
-	// When CreateGlossary was called.
-	SubmitTime pulumi.StringPtrInput
 }
 
 func (GlossaryState) ElementType() reflect.Type {

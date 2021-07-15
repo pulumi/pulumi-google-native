@@ -58,21 +58,9 @@ func GetNatAddress(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NatAddress resources.
 type natAddressState struct {
-	// The static IPV4 address.
-	IpAddress *string `pulumi:"ipAddress"`
-	// Resource ID of the NAT address.
-	Name *string `pulumi:"name"`
-	// State of the nat address.
-	State *string `pulumi:"state"`
 }
 
 type NatAddressState struct {
-	// The static IPV4 address.
-	IpAddress pulumi.StringPtrInput
-	// Resource ID of the NAT address.
-	Name pulumi.StringPtrInput
-	// State of the nat address.
-	State pulumi.StringPtrInput
 }
 
 func (NatAddressState) ElementType() reflect.Type {

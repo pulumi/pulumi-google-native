@@ -61,33 +61,9 @@ func GetWebApp(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WebApp resources.
 type webAppState struct {
-	// Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier should be treated as an opaque token, as the data format is not specified.
-	AppId *string `pulumi:"appId"`
-	// The URLs where the `WebApp` is hosted.
-	AppUrls []string `pulumi:"appUrls"`
-	// The user-assigned display name for the `WebApp`.
-	DisplayName *string `pulumi:"displayName"`
-	// The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.webApps#WebApp.FIELDS.app_id)).
-	Name *string `pulumi:"name"`
-	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
-	Project *string `pulumi:"project"`
-	// Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps.
-	WebId *string `pulumi:"webId"`
 }
 
 type WebAppState struct {
-	// Immutable. The globally unique, Firebase-assigned identifier for the `WebApp`. This identifier should be treated as an opaque token, as the data format is not specified.
-	AppId pulumi.StringPtrInput
-	// The URLs where the `WebApp` is hosted.
-	AppUrls pulumi.StringArrayInput
-	// The user-assigned display name for the `WebApp`.
-	DisplayName pulumi.StringPtrInput
-	// The resource name of the WebApp, in the format: projects/PROJECT_IDENTIFIER /webApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.webApps#WebApp.FIELDS.app_id)).
-	Name pulumi.StringPtrInput
-	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
-	Project pulumi.StringPtrInput
-	// Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps.
-	WebId pulumi.StringPtrInput
 }
 
 func (WebAppState) ElementType() reflect.Type {

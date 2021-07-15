@@ -711,7 +711,7 @@ type AnimationFade struct {
 	// The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s
 	EndTimeOffset *string `pulumi:"endTimeOffset"`
 	// Type of fade animation: `FADE_IN` or `FADE_OUT`.
-	FadeType string `pulumi:"fadeType"`
+	FadeType AnimationFadeFadeType `pulumi:"fadeType"`
 	// The time to start the fade animation, in seconds. Default: 0
 	StartTimeOffset *string `pulumi:"startTimeOffset"`
 	// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
@@ -734,7 +734,7 @@ type AnimationFadeArgs struct {
 	// The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s
 	EndTimeOffset pulumi.StringPtrInput `pulumi:"endTimeOffset"`
 	// Type of fade animation: `FADE_IN` or `FADE_OUT`.
-	FadeType AnimationFadeFadeType `pulumi:"fadeType"`
+	FadeType AnimationFadeFadeTypeInput `pulumi:"fadeType"`
 	// The time to start the fade animation, in seconds. Default: 0
 	StartTimeOffset pulumi.StringPtrInput `pulumi:"startTimeOffset"`
 	// Normalized coordinates based on output video resolution. Valid values: `0.0`–`1.0`. `xy` is the upper-left coordinate of the overlay object. For example, use the x and y coordinates {0,0} to position the top-left corner of the overlay animation in the top-left corner of the output video.
@@ -825,8 +825,8 @@ func (o AnimationFadeOutput) EndTimeOffset() pulumi.StringPtrOutput {
 }
 
 // Type of fade animation: `FADE_IN` or `FADE_OUT`.
-func (o AnimationFadeOutput) FadeType() pulumi.StringOutput {
-	return o.ApplyT(func(v AnimationFade) string { return v.FadeType }).(pulumi.StringOutput)
+func (o AnimationFadeOutput) FadeType() AnimationFadeFadeTypeOutput {
+	return o.ApplyT(func(v AnimationFade) AnimationFadeFadeType { return v.FadeType }).(AnimationFadeFadeTypeOutput)
 }
 
 // The time to start the fade animation, in seconds. Default: 0
@@ -868,13 +868,13 @@ func (o AnimationFadePtrOutput) EndTimeOffset() pulumi.StringPtrOutput {
 }
 
 // Type of fade animation: `FADE_IN` or `FADE_OUT`.
-func (o AnimationFadePtrOutput) FadeType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AnimationFade) *string {
+func (o AnimationFadePtrOutput) FadeType() AnimationFadeFadeTypePtrOutput {
+	return o.ApplyT(func(v *AnimationFade) *AnimationFadeFadeType {
 		if v == nil {
 			return nil
 		}
 		return &v.FadeType
-	}).(pulumi.StringPtrOutput)
+	}).(AnimationFadeFadeTypePtrOutput)
 }
 
 // The time to start the fade animation, in seconds. Default: 0
@@ -5519,7 +5519,7 @@ type Manifest struct {
 	// List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
 	MuxStreams []string `pulumi:"muxStreams"`
 	// Type of the manifest, can be "HLS" or "DASH".
-	Type string `pulumi:"type"`
+	Type ManifestType `pulumi:"type"`
 }
 
 // ManifestInput is an input type that accepts ManifestArgs and ManifestOutput values.
@@ -5540,7 +5540,7 @@ type ManifestArgs struct {
 	// List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the `Manifest.mux_streams`.
 	MuxStreams pulumi.StringArrayInput `pulumi:"muxStreams"`
 	// Type of the manifest, can be "HLS" or "DASH".
-	Type ManifestType `pulumi:"type"`
+	Type ManifestTypeInput `pulumi:"type"`
 }
 
 func (ManifestArgs) ElementType() reflect.Type {
@@ -5606,8 +5606,8 @@ func (o ManifestOutput) MuxStreams() pulumi.StringArrayOutput {
 }
 
 // Type of the manifest, can be "HLS" or "DASH".
-func (o ManifestOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v Manifest) string { return v.Type }).(pulumi.StringOutput)
+func (o ManifestOutput) Type() ManifestTypeOutput {
+	return o.ApplyT(func(v Manifest) ManifestType { return v.Type }).(ManifestTypeOutput)
 }
 
 type ManifestArrayOutput struct{ *pulumi.OutputState }

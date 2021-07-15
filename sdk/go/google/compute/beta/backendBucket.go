@@ -71,53 +71,9 @@ func GetBackendBucket(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BackendBucket resources.
 type backendBucketState struct {
-	// Cloud Storage bucket name.
-	BucketName *string `pulumi:"bucketName"`
-	// Cloud CDN configuration for this BackendBucket.
-	CdnPolicy *BackendBucketCdnPolicyResponse `pulumi:"cdnPolicy"`
-	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-	CompressionMode *string `pulumi:"compressionMode"`
-	// Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// Headers that the HTTP/S load balancer should add to proxied responses.
-	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
-	// An optional textual description of the resource; provided by the client when the resource is created.
-	Description *string `pulumi:"description"`
-	// The resource URL for the edge security policy associated with this backend bucket.
-	EdgeSecurityPolicy *string `pulumi:"edgeSecurityPolicy"`
-	// If true, enable Cloud CDN for this BackendBucket.
-	EnableCdn *bool `pulumi:"enableCdn"`
-	// Type of the resource.
-	Kind *string `pulumi:"kind"`
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name *string `pulumi:"name"`
-	// Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
 }
 
 type BackendBucketState struct {
-	// Cloud Storage bucket name.
-	BucketName pulumi.StringPtrInput
-	// Cloud CDN configuration for this BackendBucket.
-	CdnPolicy BackendBucketCdnPolicyResponsePtrInput
-	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-	CompressionMode pulumi.StringPtrInput
-	// Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
-	// Headers that the HTTP/S load balancer should add to proxied responses.
-	CustomResponseHeaders pulumi.StringArrayInput
-	// An optional textual description of the resource; provided by the client when the resource is created.
-	Description pulumi.StringPtrInput
-	// The resource URL for the edge security policy associated with this backend bucket.
-	EdgeSecurityPolicy pulumi.StringPtrInput
-	// If true, enable Cloud CDN for this BackendBucket.
-	EnableCdn pulumi.BoolPtrInput
-	// Type of the resource.
-	Kind pulumi.StringPtrInput
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringPtrInput
-	// Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
 }
 
 func (BackendBucketState) ElementType() reflect.Type {
@@ -130,7 +86,7 @@ type backendBucketArgs struct {
 	// Cloud CDN configuration for this BackendBucket.
 	CdnPolicy *BackendBucketCdnPolicy `pulumi:"cdnPolicy"`
 	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-	CompressionMode *string `pulumi:"compressionMode"`
+	CompressionMode *BackendBucketCompressionMode `pulumi:"compressionMode"`
 	// Headers that the HTTP/S load balancer should add to proxied responses.
 	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
 	// An optional textual description of the resource; provided by the client when the resource is created.
@@ -152,7 +108,7 @@ type BackendBucketArgs struct {
 	// Cloud CDN configuration for this BackendBucket.
 	CdnPolicy BackendBucketCdnPolicyPtrInput
 	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
-	CompressionMode *BackendBucketCompressionMode
+	CompressionMode BackendBucketCompressionModePtrInput
 	// Headers that the HTTP/S load balancer should add to proxied responses.
 	CustomResponseHeaders pulumi.StringArrayInput
 	// An optional textual description of the resource; provided by the client when the resource is created.

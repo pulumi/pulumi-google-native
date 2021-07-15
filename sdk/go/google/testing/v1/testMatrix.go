@@ -85,61 +85,9 @@ func GetTestMatrix(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TestMatrix resources.
 type testMatrixState struct {
-	// Information about the client which invoked the test.
-	ClientInfo *ClientInfoResponse `pulumi:"clientInfo"`
-	// The devices the tests are being executed on.
-	EnvironmentMatrix *EnvironmentMatrixResponse `pulumi:"environmentMatrix"`
-	// If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
-	FailFast *bool `pulumi:"failFast"`
-	// The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
-	FlakyTestAttempts *int `pulumi:"flakyTestAttempts"`
-	// Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
-	InvalidMatrixDetails *string `pulumi:"invalidMatrixDetails"`
-	// Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
-	OutcomeSummary *string `pulumi:"outcomeSummary"`
-	// The cloud project that owns the test matrix.
-	Project *string `pulumi:"project"`
-	// Where the results for the matrix are written.
-	ResultStorage *ResultStorageResponse `pulumi:"resultStorage"`
-	// Indicates the current progress of the test matrix.
-	State *string `pulumi:"state"`
-	// The list of test executions that the service creates for this matrix.
-	TestExecutions []TestExecutionResponse `pulumi:"testExecutions"`
-	// Unique id set by the service.
-	TestMatrixId *string `pulumi:"testMatrixId"`
-	// How to run the test.
-	TestSpecification *TestSpecificationResponse `pulumi:"testSpecification"`
-	// The time this test matrix was initially created.
-	Timestamp *string `pulumi:"timestamp"`
 }
 
 type TestMatrixState struct {
-	// Information about the client which invoked the test.
-	ClientInfo ClientInfoResponsePtrInput
-	// The devices the tests are being executed on.
-	EnvironmentMatrix EnvironmentMatrixResponsePtrInput
-	// If true, only a single attempt at most will be made to run each execution/shard in the matrix. Flaky test attempts are not affected. Normally, 2 or more attempts are made if a potential infrastructure issue is detected. This feature is for latency sensitive workloads. The incidence of execution failures may be significantly greater for fail-fast matrices and support is more limited because of that expectation.
-	FailFast pulumi.BoolPtrInput
-	// The number of times a TestExecution should be re-attempted if one or more of its test cases fail for any reason. The maximum number of reruns allowed is 10. Default is 0, which implies no reruns.
-	FlakyTestAttempts pulumi.IntPtrInput
-	// Describes why the matrix is considered invalid. Only useful for matrices in the INVALID state.
-	InvalidMatrixDetails pulumi.StringPtrInput
-	// Output Only. The overall outcome of the test. Only set when the test matrix state is FINISHED.
-	OutcomeSummary pulumi.StringPtrInput
-	// The cloud project that owns the test matrix.
-	Project pulumi.StringPtrInput
-	// Where the results for the matrix are written.
-	ResultStorage ResultStorageResponsePtrInput
-	// Indicates the current progress of the test matrix.
-	State pulumi.StringPtrInput
-	// The list of test executions that the service creates for this matrix.
-	TestExecutions TestExecutionResponseArrayInput
-	// Unique id set by the service.
-	TestMatrixId pulumi.StringPtrInput
-	// How to run the test.
-	TestSpecification TestSpecificationResponsePtrInput
-	// The time this test matrix was initially created.
-	Timestamp pulumi.StringPtrInput
 }
 
 func (TestMatrixState) ElementType() reflect.Type {

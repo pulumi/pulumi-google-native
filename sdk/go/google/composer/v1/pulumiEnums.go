@@ -11,7 +11,7 @@ import (
 )
 
 // The current state of the environment.
-type EnvironmentStateEnum pulumi.String
+type EnvironmentStateEnum string
 
 const (
 	// The state of the environment is unknown.
@@ -29,7 +29,23 @@ const (
 )
 
 func (EnvironmentStateEnum) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*EnvironmentStateEnum)(nil)).Elem()
+}
+
+func (e EnvironmentStateEnum) ToEnvironmentStateEnumOutput() EnvironmentStateEnumOutput {
+	return pulumi.ToOutput(e).(EnvironmentStateEnumOutput)
+}
+
+func (e EnvironmentStateEnum) ToEnvironmentStateEnumOutputWithContext(ctx context.Context) EnvironmentStateEnumOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EnvironmentStateEnumOutput)
+}
+
+func (e EnvironmentStateEnum) ToEnvironmentStateEnumPtrOutput() EnvironmentStateEnumPtrOutput {
+	return e.ToEnvironmentStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (e EnvironmentStateEnum) ToEnvironmentStateEnumPtrOutputWithContext(ctx context.Context) EnvironmentStateEnumPtrOutput {
+	return EnvironmentStateEnum(e).ToEnvironmentStateEnumOutputWithContext(ctx).ToEnvironmentStateEnumPtrOutputWithContext(ctx)
 }
 
 func (e EnvironmentStateEnum) ToStringOutput() pulumi.StringOutput {
@@ -46,4 +62,130 @@ func (e EnvironmentStateEnum) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e EnvironmentStateEnum) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type EnvironmentStateEnumOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentStateEnumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentStateEnum)(nil)).Elem()
+}
+
+func (o EnvironmentStateEnumOutput) ToEnvironmentStateEnumOutput() EnvironmentStateEnumOutput {
+	return o
+}
+
+func (o EnvironmentStateEnumOutput) ToEnvironmentStateEnumOutputWithContext(ctx context.Context) EnvironmentStateEnumOutput {
+	return o
+}
+
+func (o EnvironmentStateEnumOutput) ToEnvironmentStateEnumPtrOutput() EnvironmentStateEnumPtrOutput {
+	return o.ToEnvironmentStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentStateEnumOutput) ToEnvironmentStateEnumPtrOutputWithContext(ctx context.Context) EnvironmentStateEnumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentStateEnum) *EnvironmentStateEnum {
+		return &v
+	}).(EnvironmentStateEnumPtrOutput)
+}
+
+func (o EnvironmentStateEnumOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EnvironmentStateEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnvironmentStateEnum) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EnvironmentStateEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EnvironmentStateEnum) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentStateEnumPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentStateEnumPtrOutput) ElementType() reflect.Type {
+	return environmentStateEnumPtrType
+}
+
+func (o EnvironmentStateEnumPtrOutput) ToEnvironmentStateEnumPtrOutput() EnvironmentStateEnumPtrOutput {
+	return o
+}
+
+func (o EnvironmentStateEnumPtrOutput) ToEnvironmentStateEnumPtrOutputWithContext(ctx context.Context) EnvironmentStateEnumPtrOutput {
+	return o
+}
+
+func (o EnvironmentStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EnvironmentStateEnum) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EnvironmentStateEnumPtrOutput) Elem() EnvironmentStateEnumOutput {
+	return o.ApplyT(func(v *EnvironmentStateEnum) EnvironmentStateEnum {
+		var ret EnvironmentStateEnum
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(EnvironmentStateEnumOutput)
+}
+
+// EnvironmentStateEnumInput is an input type that accepts EnvironmentStateEnumArgs and EnvironmentStateEnumOutput values.
+// You can construct a concrete instance of `EnvironmentStateEnumInput` via:
+//
+//          EnvironmentStateEnumArgs{...}
+type EnvironmentStateEnumInput interface {
+	pulumi.Input
+
+	ToEnvironmentStateEnumOutput() EnvironmentStateEnumOutput
+	ToEnvironmentStateEnumOutputWithContext(context.Context) EnvironmentStateEnumOutput
+}
+
+var environmentStateEnumPtrType = reflect.TypeOf((**EnvironmentStateEnum)(nil)).Elem()
+
+type EnvironmentStateEnumPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentStateEnumPtrOutput() EnvironmentStateEnumPtrOutput
+	ToEnvironmentStateEnumPtrOutputWithContext(context.Context) EnvironmentStateEnumPtrOutput
+}
+
+type environmentStateEnumPtr string
+
+func EnvironmentStateEnumPtr(v string) EnvironmentStateEnumPtrInput {
+	return (*environmentStateEnumPtr)(&v)
+}
+
+func (*environmentStateEnumPtr) ElementType() reflect.Type {
+	return environmentStateEnumPtrType
+}
+
+func (in *environmentStateEnumPtr) ToEnvironmentStateEnumPtrOutput() EnvironmentStateEnumPtrOutput {
+	return pulumi.ToOutput(in).(EnvironmentStateEnumPtrOutput)
+}
+
+func (in *environmentStateEnumPtr) ToEnvironmentStateEnumPtrOutputWithContext(ctx context.Context) EnvironmentStateEnumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EnvironmentStateEnumPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(EnvironmentStateEnumOutput{})
+	pulumi.RegisterOutputType(EnvironmentStateEnumPtrOutput{})
 }

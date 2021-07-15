@@ -63,31 +63,9 @@ func GetRrset(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Rrset resources.
 type rrsetState struct {
-	Kind *string `pulumi:"kind"`
-	// For example, www.example.com.
-	Name *string `pulumi:"name"`
-	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
-	Rrdatas []string `pulumi:"rrdatas"`
-	// As defined in RFC 4034 (section 3.2).
-	SignatureRrdatas []string `pulumi:"signatureRrdatas"`
-	// Number of seconds that this ResourceRecordSet can be cached by resolvers.
-	Ttl *int `pulumi:"ttl"`
-	// The identifier of a supported record type. See the list of Supported DNS record types.
-	Type *string `pulumi:"type"`
 }
 
 type RrsetState struct {
-	Kind pulumi.StringPtrInput
-	// For example, www.example.com.
-	Name pulumi.StringPtrInput
-	// As defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) -- see examples.
-	Rrdatas pulumi.StringArrayInput
-	// As defined in RFC 4034 (section 3.2).
-	SignatureRrdatas pulumi.StringArrayInput
-	// Number of seconds that this ResourceRecordSet can be cached by resolvers.
-	Ttl pulumi.IntPtrInput
-	// The identifier of a supported record type. See the list of Supported DNS record types.
-	Type pulumi.StringPtrInput
 }
 
 func (RrsetState) ElementType() reflect.Type {

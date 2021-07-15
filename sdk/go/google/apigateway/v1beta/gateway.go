@@ -75,41 +75,9 @@ func GetGateway(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Gateway resources.
 type gatewayState struct {
-	// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
-	ApiConfig *string `pulumi:"apiConfig"`
-	// Created time.
-	CreateTime *string `pulumi:"createTime"`
-	// The default API Gateway host name of the form `{gateway_id}-{hash}.{region_code}.gateway.dev`.
-	DefaultHostname *string `pulumi:"defaultHostname"`
-	// Optional. Display name.
-	DisplayName *string `pulumi:"displayName"`
-	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-	Labels map[string]string `pulumi:"labels"`
-	// Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
-	Name *string `pulumi:"name"`
-	// The current state of the Gateway.
-	State *string `pulumi:"state"`
-	// Updated time.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type GatewayState struct {
-	// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
-	ApiConfig pulumi.StringPtrInput
-	// Created time.
-	CreateTime pulumi.StringPtrInput
-	// The default API Gateway host name of the form `{gateway_id}-{hash}.{region_code}.gateway.dev`.
-	DefaultHostname pulumi.StringPtrInput
-	// Optional. Display name.
-	DisplayName pulumi.StringPtrInput
-	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
-	Labels pulumi.StringMapInput
-	// Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway}
-	Name pulumi.StringPtrInput
-	// The current state of the Gateway.
-	State pulumi.StringPtrInput
-	// Updated time.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (GatewayState) ElementType() reflect.Type {

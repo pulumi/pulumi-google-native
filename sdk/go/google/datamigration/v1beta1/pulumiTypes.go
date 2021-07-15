@@ -233,7 +233,7 @@ type AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *string `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
@@ -252,7 +252,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *AuditLogConfigLogType `pulumi:"logType"`
+	LogType AuditLogConfigLogTypePtrInput `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -313,8 +313,8 @@ func (o AuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
 }
 
 // The log type that this config enables.
-func (o AuditLogConfigOutput) LogType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AuditLogConfig) *string { return v.LogType }).(pulumi.StringPtrOutput)
+func (o AuditLogConfigOutput) LogType() AuditLogConfigLogTypePtrOutput {
+	return o.ApplyT(func(v AuditLogConfig) *AuditLogConfigLogType { return v.LogType }).(AuditLogConfigLogTypePtrOutput)
 }
 
 type AuditLogConfigArrayOutput struct{ *pulumi.OutputState }
@@ -1010,17 +1010,17 @@ func (o CloudSqlConnectionProfileResponsePtrOutput) Settings() CloudSqlSettingsR
 // Settings for creating a Cloud SQL database instance.
 type CloudSqlSettings struct {
 	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
-	ActivationPolicy *string `pulumi:"activationPolicy"`
+	ActivationPolicy *CloudSqlSettingsActivationPolicy `pulumi:"activationPolicy"`
 	// [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
 	AutoStorageIncrease *bool `pulumi:"autoStorageIncrease"`
 	// The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
 	DataDiskSizeGb *string `pulumi:"dataDiskSizeGb"`
 	// The type of storage: `PD_SSD` (default) or `PD_HDD`.
-	DataDiskType *string `pulumi:"dataDiskType"`
+	DataDiskType *CloudSqlSettingsDataDiskType `pulumi:"dataDiskType"`
 	// The database flags passed to the Cloud SQL instance at startup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	DatabaseFlags map[string]string `pulumi:"databaseFlags"`
 	// The database engine type and version.
-	DatabaseVersion *string `pulumi:"databaseVersion"`
+	DatabaseVersion *CloudSqlSettingsDatabaseVersion `pulumi:"databaseVersion"`
 	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
 	IpConfig *SqlIpConfig `pulumi:"ipConfig"`
 	// Input only. Initial root password.
@@ -1051,17 +1051,17 @@ type CloudSqlSettingsInput interface {
 // Settings for creating a Cloud SQL database instance.
 type CloudSqlSettingsArgs struct {
 	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
-	ActivationPolicy *CloudSqlSettingsActivationPolicy `pulumi:"activationPolicy"`
+	ActivationPolicy CloudSqlSettingsActivationPolicyPtrInput `pulumi:"activationPolicy"`
 	// [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
 	AutoStorageIncrease pulumi.BoolPtrInput `pulumi:"autoStorageIncrease"`
 	// The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
 	DataDiskSizeGb pulumi.StringPtrInput `pulumi:"dataDiskSizeGb"`
 	// The type of storage: `PD_SSD` (default) or `PD_HDD`.
-	DataDiskType *CloudSqlSettingsDataDiskType `pulumi:"dataDiskType"`
+	DataDiskType CloudSqlSettingsDataDiskTypePtrInput `pulumi:"dataDiskType"`
 	// The database flags passed to the Cloud SQL instance at startup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	DatabaseFlags pulumi.StringMapInput `pulumi:"databaseFlags"`
 	// The database engine type and version.
-	DatabaseVersion *CloudSqlSettingsDatabaseVersion `pulumi:"databaseVersion"`
+	DatabaseVersion CloudSqlSettingsDatabaseVersionPtrInput `pulumi:"databaseVersion"`
 	// The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
 	IpConfig SqlIpConfigPtrInput `pulumi:"ipConfig"`
 	// Input only. Initial root password.
@@ -1157,8 +1157,8 @@ func (o CloudSqlSettingsOutput) ToCloudSqlSettingsPtrOutputWithContext(ctx conte
 }
 
 // The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
-func (o CloudSqlSettingsOutput) ActivationPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudSqlSettings) *string { return v.ActivationPolicy }).(pulumi.StringPtrOutput)
+func (o CloudSqlSettingsOutput) ActivationPolicy() CloudSqlSettingsActivationPolicyPtrOutput {
+	return o.ApplyT(func(v CloudSqlSettings) *CloudSqlSettingsActivationPolicy { return v.ActivationPolicy }).(CloudSqlSettingsActivationPolicyPtrOutput)
 }
 
 // [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
@@ -1172,8 +1172,8 @@ func (o CloudSqlSettingsOutput) DataDiskSizeGb() pulumi.StringPtrOutput {
 }
 
 // The type of storage: `PD_SSD` (default) or `PD_HDD`.
-func (o CloudSqlSettingsOutput) DataDiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudSqlSettings) *string { return v.DataDiskType }).(pulumi.StringPtrOutput)
+func (o CloudSqlSettingsOutput) DataDiskType() CloudSqlSettingsDataDiskTypePtrOutput {
+	return o.ApplyT(func(v CloudSqlSettings) *CloudSqlSettingsDataDiskType { return v.DataDiskType }).(CloudSqlSettingsDataDiskTypePtrOutput)
 }
 
 // The database flags passed to the Cloud SQL instance at startup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -1182,8 +1182,8 @@ func (o CloudSqlSettingsOutput) DatabaseFlags() pulumi.StringMapOutput {
 }
 
 // The database engine type and version.
-func (o CloudSqlSettingsOutput) DatabaseVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudSqlSettings) *string { return v.DatabaseVersion }).(pulumi.StringPtrOutput)
+func (o CloudSqlSettingsOutput) DatabaseVersion() CloudSqlSettingsDatabaseVersionPtrOutput {
+	return o.ApplyT(func(v CloudSqlSettings) *CloudSqlSettingsDatabaseVersion { return v.DatabaseVersion }).(CloudSqlSettingsDatabaseVersionPtrOutput)
 }
 
 // The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
@@ -1240,13 +1240,13 @@ func (o CloudSqlSettingsPtrOutput) Elem() CloudSqlSettingsOutput {
 }
 
 // The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
-func (o CloudSqlSettingsPtrOutput) ActivationPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSqlSettings) *string {
+func (o CloudSqlSettingsPtrOutput) ActivationPolicy() CloudSqlSettingsActivationPolicyPtrOutput {
+	return o.ApplyT(func(v *CloudSqlSettings) *CloudSqlSettingsActivationPolicy {
 		if v == nil {
 			return nil
 		}
 		return v.ActivationPolicy
-	}).(pulumi.StringPtrOutput)
+	}).(CloudSqlSettingsActivationPolicyPtrOutput)
 }
 
 // [default: ON] If you enable this setting, Cloud SQL checks your available storage every 30 seconds. If the available storage falls below a threshold size, Cloud SQL automatically adds additional storage capacity. If the available storage repeatedly falls below the threshold size, Cloud SQL continues to add storage until it reaches the maximum of 30 TB.
@@ -1270,13 +1270,13 @@ func (o CloudSqlSettingsPtrOutput) DataDiskSizeGb() pulumi.StringPtrOutput {
 }
 
 // The type of storage: `PD_SSD` (default) or `PD_HDD`.
-func (o CloudSqlSettingsPtrOutput) DataDiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSqlSettings) *string {
+func (o CloudSqlSettingsPtrOutput) DataDiskType() CloudSqlSettingsDataDiskTypePtrOutput {
+	return o.ApplyT(func(v *CloudSqlSettings) *CloudSqlSettingsDataDiskType {
 		if v == nil {
 			return nil
 		}
 		return v.DataDiskType
-	}).(pulumi.StringPtrOutput)
+	}).(CloudSqlSettingsDataDiskTypePtrOutput)
 }
 
 // The database flags passed to the Cloud SQL instance at startup. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
@@ -1290,13 +1290,13 @@ func (o CloudSqlSettingsPtrOutput) DatabaseFlags() pulumi.StringMapOutput {
 }
 
 // The database engine type and version.
-func (o CloudSqlSettingsPtrOutput) DatabaseVersion() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSqlSettings) *string {
+func (o CloudSqlSettingsPtrOutput) DatabaseVersion() CloudSqlSettingsDatabaseVersionPtrOutput {
+	return o.ApplyT(func(v *CloudSqlSettings) *CloudSqlSettingsDatabaseVersion {
 		if v == nil {
 			return nil
 		}
 		return v.DatabaseVersion
-	}).(pulumi.StringPtrOutput)
+	}).(CloudSqlSettingsDatabaseVersionPtrOutput)
 }
 
 // The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled.
@@ -1753,9 +1753,9 @@ func (o CloudSqlSettingsResponsePtrOutput) Zone() pulumi.StringPtrOutput {
 // A message defining the database engine and provider.
 type DatabaseType struct {
 	// The database engine.
-	Engine *string `pulumi:"engine"`
+	Engine *DatabaseTypeEngine `pulumi:"engine"`
 	// The database provider.
-	Provider *string `pulumi:"provider"`
+	Provider *DatabaseTypeProvider `pulumi:"provider"`
 }
 
 // DatabaseTypeInput is an input type that accepts DatabaseTypeArgs and DatabaseTypeOutput values.
@@ -1772,9 +1772,9 @@ type DatabaseTypeInput interface {
 // A message defining the database engine and provider.
 type DatabaseTypeArgs struct {
 	// The database engine.
-	Engine *DatabaseTypeEngine `pulumi:"engine"`
+	Engine DatabaseTypeEnginePtrInput `pulumi:"engine"`
 	// The database provider.
-	Provider *DatabaseTypeProvider `pulumi:"provider"`
+	Provider DatabaseTypeProviderPtrInput `pulumi:"provider"`
 }
 
 func (DatabaseTypeArgs) ElementType() reflect.Type {
@@ -1856,13 +1856,13 @@ func (o DatabaseTypeOutput) ToDatabaseTypePtrOutputWithContext(ctx context.Conte
 }
 
 // The database engine.
-func (o DatabaseTypeOutput) Engine() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseType) *string { return v.Engine }).(pulumi.StringPtrOutput)
+func (o DatabaseTypeOutput) Engine() DatabaseTypeEnginePtrOutput {
+	return o.ApplyT(func(v DatabaseType) *DatabaseTypeEngine { return v.Engine }).(DatabaseTypeEnginePtrOutput)
 }
 
 // The database provider.
-func (o DatabaseTypeOutput) Provider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseType) *string { return v.Provider }).(pulumi.StringPtrOutput)
+func (o DatabaseTypeOutput) Provider() DatabaseTypeProviderPtrOutput {
+	return o.ApplyT(func(v DatabaseType) *DatabaseTypeProvider { return v.Provider }).(DatabaseTypeProviderPtrOutput)
 }
 
 type DatabaseTypePtrOutput struct{ *pulumi.OutputState }
@@ -1884,23 +1884,23 @@ func (o DatabaseTypePtrOutput) Elem() DatabaseTypeOutput {
 }
 
 // The database engine.
-func (o DatabaseTypePtrOutput) Engine() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseType) *string {
+func (o DatabaseTypePtrOutput) Engine() DatabaseTypeEnginePtrOutput {
+	return o.ApplyT(func(v *DatabaseType) *DatabaseTypeEngine {
 		if v == nil {
 			return nil
 		}
 		return v.Engine
-	}).(pulumi.StringPtrOutput)
+	}).(DatabaseTypeEnginePtrOutput)
 }
 
 // The database provider.
-func (o DatabaseTypePtrOutput) Provider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseType) *string {
+func (o DatabaseTypePtrOutput) Provider() DatabaseTypeProviderPtrOutput {
+	return o.ApplyT(func(v *DatabaseType) *DatabaseTypeProvider {
 		if v == nil {
 			return nil
 		}
 		return v.Provider
-	}).(pulumi.StringPtrOutput)
+	}).(DatabaseTypeProviderPtrOutput)
 }
 
 // A message defining the database engine and provider.

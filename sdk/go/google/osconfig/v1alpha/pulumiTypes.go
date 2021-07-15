@@ -325,7 +325,7 @@ type OSPolicy struct {
 	// The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
 	Id string `pulumi:"id"`
 	// Policy mode
-	Mode string `pulumi:"mode"`
+	Mode OSPolicyMode `pulumi:"mode"`
 	// List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
 	ResourceGroups []OSPolicyResourceGroup `pulumi:"resourceGroups"`
 }
@@ -350,7 +350,7 @@ type OSPolicyArgs struct {
 	// The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Policy mode
-	Mode OSPolicyMode `pulumi:"mode"`
+	Mode OSPolicyModeInput `pulumi:"mode"`
 	// List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
 	ResourceGroups OSPolicyResourceGroupArrayInput `pulumi:"resourceGroups"`
 }
@@ -423,8 +423,8 @@ func (o OSPolicyOutput) Id() pulumi.StringOutput {
 }
 
 // Policy mode
-func (o OSPolicyOutput) Mode() pulumi.StringOutput {
-	return o.ApplyT(func(v OSPolicy) string { return v.Mode }).(pulumi.StringOutput)
+func (o OSPolicyOutput) Mode() OSPolicyModeOutput {
+	return o.ApplyT(func(v OSPolicy) OSPolicyMode { return v.Mode }).(OSPolicyModeOutput)
 }
 
 // List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
@@ -1857,7 +1857,7 @@ type OSPolicyResourceExecResourceExec struct {
 	// A remote or local file.
 	File *OSPolicyResourceFile `pulumi:"file"`
 	// The script interpreter to use.
-	Interpreter string `pulumi:"interpreter"`
+	Interpreter OSPolicyResourceExecResourceExecInterpreter `pulumi:"interpreter"`
 	// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
 	OutputFilePath *string `pulumi:"outputFilePath"`
 	// An inline script. The size of the script is limited to 1024 characters.
@@ -1882,7 +1882,7 @@ type OSPolicyResourceExecResourceExecArgs struct {
 	// A remote or local file.
 	File OSPolicyResourceFilePtrInput `pulumi:"file"`
 	// The script interpreter to use.
-	Interpreter OSPolicyResourceExecResourceExecInterpreter `pulumi:"interpreter"`
+	Interpreter OSPolicyResourceExecResourceExecInterpreterInput `pulumi:"interpreter"`
 	// Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
 	OutputFilePath pulumi.StringPtrInput `pulumi:"outputFilePath"`
 	// An inline script. The size of the script is limited to 1024 characters.
@@ -1978,8 +1978,10 @@ func (o OSPolicyResourceExecResourceExecOutput) File() OSPolicyResourceFilePtrOu
 }
 
 // The script interpreter to use.
-func (o OSPolicyResourceExecResourceExecOutput) Interpreter() pulumi.StringOutput {
-	return o.ApplyT(func(v OSPolicyResourceExecResourceExec) string { return v.Interpreter }).(pulumi.StringOutput)
+func (o OSPolicyResourceExecResourceExecOutput) Interpreter() OSPolicyResourceExecResourceExecInterpreterOutput {
+	return o.ApplyT(func(v OSPolicyResourceExecResourceExec) OSPolicyResourceExecResourceExecInterpreter {
+		return v.Interpreter
+	}).(OSPolicyResourceExecResourceExecInterpreterOutput)
 }
 
 // Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
@@ -2031,13 +2033,13 @@ func (o OSPolicyResourceExecResourceExecPtrOutput) File() OSPolicyResourceFilePt
 }
 
 // The script interpreter to use.
-func (o OSPolicyResourceExecResourceExecPtrOutput) Interpreter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OSPolicyResourceExecResourceExec) *string {
+func (o OSPolicyResourceExecResourceExecPtrOutput) Interpreter() OSPolicyResourceExecResourceExecInterpreterPtrOutput {
+	return o.ApplyT(func(v *OSPolicyResourceExecResourceExec) *OSPolicyResourceExecResourceExecInterpreter {
 		if v == nil {
 			return nil
 		}
 		return &v.Interpreter
-	}).(pulumi.StringPtrOutput)
+	}).(OSPolicyResourceExecResourceExecInterpreterPtrOutput)
 }
 
 // Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
@@ -2883,7 +2885,7 @@ type OSPolicyResourceFileResource struct {
 	// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
 	Permissions *string `pulumi:"permissions"`
 	// Desired state of the file.
-	State string `pulumi:"state"`
+	State OSPolicyResourceFileResourceState `pulumi:"state"`
 }
 
 // OSPolicyResourceFileResourceInput is an input type that accepts OSPolicyResourceFileResourceArgs and OSPolicyResourceFileResourceOutput values.
@@ -2908,7 +2910,7 @@ type OSPolicyResourceFileResourceArgs struct {
 	// Consists of three octal digits which represent, in order, the permissions of the owner, group, and other users for the file (similarly to the numeric mode used in the linux chmod utility). Each digit represents a three bit number with the 4 bit corresponding to the read permissions, the 2 bit corresponds to the write bit, and the one bit corresponds to the execute permission. Default behavior is 755. Below are some examples of permissions and their associated values: read, write, and execute: 7 read and execute: 5 read and write: 6 read only: 4
 	Permissions pulumi.StringPtrInput `pulumi:"permissions"`
 	// Desired state of the file.
-	State OSPolicyResourceFileResourceState `pulumi:"state"`
+	State OSPolicyResourceFileResourceStateInput `pulumi:"state"`
 }
 
 func (OSPolicyResourceFileResourceArgs) ElementType() reflect.Type {
@@ -3010,8 +3012,8 @@ func (o OSPolicyResourceFileResourceOutput) Permissions() pulumi.StringPtrOutput
 }
 
 // Desired state of the file.
-func (o OSPolicyResourceFileResourceOutput) State() pulumi.StringOutput {
-	return o.ApplyT(func(v OSPolicyResourceFileResource) string { return v.State }).(pulumi.StringOutput)
+func (o OSPolicyResourceFileResourceOutput) State() OSPolicyResourceFileResourceStateOutput {
+	return o.ApplyT(func(v OSPolicyResourceFileResource) OSPolicyResourceFileResourceState { return v.State }).(OSPolicyResourceFileResourceStateOutput)
 }
 
 type OSPolicyResourceFileResourcePtrOutput struct{ *pulumi.OutputState }
@@ -3073,13 +3075,13 @@ func (o OSPolicyResourceFileResourcePtrOutput) Permissions() pulumi.StringPtrOut
 }
 
 // Desired state of the file.
-func (o OSPolicyResourceFileResourcePtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OSPolicyResourceFileResource) *string {
+func (o OSPolicyResourceFileResourcePtrOutput) State() OSPolicyResourceFileResourceStatePtrOutput {
+	return o.ApplyT(func(v *OSPolicyResourceFileResource) *OSPolicyResourceFileResourceState {
 		if v == nil {
 			return nil
 		}
 		return &v.State
-	}).(pulumi.StringPtrOutput)
+	}).(OSPolicyResourceFileResourceStatePtrOutput)
 }
 
 // A resource that manages the state of a file.
@@ -3480,7 +3482,7 @@ type OSPolicyResourcePackageResource struct {
 	// A deb package file.
 	Deb *OSPolicyResourcePackageResourceDeb `pulumi:"deb"`
 	// The desired state the agent should maintain for this package.
-	DesiredState string `pulumi:"desiredState"`
+	DesiredState OSPolicyResourcePackageResourceDesiredState `pulumi:"desiredState"`
 	// A package managed by GooGet.
 	Googet *OSPolicyResourcePackageResourceGooGet `pulumi:"googet"`
 	// An MSI package.
@@ -3511,7 +3513,7 @@ type OSPolicyResourcePackageResourceArgs struct {
 	// A deb package file.
 	Deb OSPolicyResourcePackageResourceDebPtrInput `pulumi:"deb"`
 	// The desired state the agent should maintain for this package.
-	DesiredState OSPolicyResourcePackageResourceDesiredState `pulumi:"desiredState"`
+	DesiredState OSPolicyResourcePackageResourceDesiredStateInput `pulumi:"desiredState"`
 	// A package managed by GooGet.
 	Googet OSPolicyResourcePackageResourceGooGetPtrInput `pulumi:"googet"`
 	// An MSI package.
@@ -3613,8 +3615,10 @@ func (o OSPolicyResourcePackageResourceOutput) Deb() OSPolicyResourcePackageReso
 }
 
 // The desired state the agent should maintain for this package.
-func (o OSPolicyResourcePackageResourceOutput) DesiredState() pulumi.StringOutput {
-	return o.ApplyT(func(v OSPolicyResourcePackageResource) string { return v.DesiredState }).(pulumi.StringOutput)
+func (o OSPolicyResourcePackageResourceOutput) DesiredState() OSPolicyResourcePackageResourceDesiredStateOutput {
+	return o.ApplyT(func(v OSPolicyResourcePackageResource) OSPolicyResourcePackageResourceDesiredState {
+		return v.DesiredState
+	}).(OSPolicyResourcePackageResourceDesiredStateOutput)
 }
 
 // A package managed by GooGet.
@@ -3681,13 +3685,13 @@ func (o OSPolicyResourcePackageResourcePtrOutput) Deb() OSPolicyResourcePackageR
 }
 
 // The desired state the agent should maintain for this package.
-func (o OSPolicyResourcePackageResourcePtrOutput) DesiredState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OSPolicyResourcePackageResource) *string {
+func (o OSPolicyResourcePackageResourcePtrOutput) DesiredState() OSPolicyResourcePackageResourceDesiredStatePtrOutput {
+	return o.ApplyT(func(v *OSPolicyResourcePackageResource) *OSPolicyResourcePackageResourceDesiredState {
 		if v == nil {
 			return nil
 		}
 		return &v.DesiredState
-	}).(pulumi.StringPtrOutput)
+	}).(OSPolicyResourcePackageResourceDesiredStatePtrOutput)
 }
 
 // A package managed by GooGet.
@@ -5481,7 +5485,7 @@ func (o OSPolicyResourceRepositoryResourcePtrOutput) Zypper() OSPolicyResourceRe
 // Represents a single apt package repository. These will be added to a repo file that will be managed at `/etc/apt/sources.list.d/google_osconfig.list`.
 type OSPolicyResourceRepositoryResourceAptRepository struct {
 	// Type of archive files in this repository.
-	ArchiveType string `pulumi:"archiveType"`
+	ArchiveType OSPolicyResourceRepositoryResourceAptRepositoryArchiveType `pulumi:"archiveType"`
 	// List of components for this repository. Must contain at least one item.
 	Components []string `pulumi:"components"`
 	// Distribution of this repository.
@@ -5506,7 +5510,7 @@ type OSPolicyResourceRepositoryResourceAptRepositoryInput interface {
 // Represents a single apt package repository. These will be added to a repo file that will be managed at `/etc/apt/sources.list.d/google_osconfig.list`.
 type OSPolicyResourceRepositoryResourceAptRepositoryArgs struct {
 	// Type of archive files in this repository.
-	ArchiveType OSPolicyResourceRepositoryResourceAptRepositoryArchiveType `pulumi:"archiveType"`
+	ArchiveType OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeInput `pulumi:"archiveType"`
 	// List of components for this repository. Must contain at least one item.
 	Components pulumi.StringArrayInput `pulumi:"components"`
 	// Distribution of this repository.
@@ -5596,8 +5600,10 @@ func (o OSPolicyResourceRepositoryResourceAptRepositoryOutput) ToOSPolicyResourc
 }
 
 // Type of archive files in this repository.
-func (o OSPolicyResourceRepositoryResourceAptRepositoryOutput) ArchiveType() pulumi.StringOutput {
-	return o.ApplyT(func(v OSPolicyResourceRepositoryResourceAptRepository) string { return v.ArchiveType }).(pulumi.StringOutput)
+func (o OSPolicyResourceRepositoryResourceAptRepositoryOutput) ArchiveType() OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput {
+	return o.ApplyT(func(v OSPolicyResourceRepositoryResourceAptRepository) OSPolicyResourceRepositoryResourceAptRepositoryArchiveType {
+		return v.ArchiveType
+	}).(OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput)
 }
 
 // List of components for this repository. Must contain at least one item.
@@ -5641,13 +5647,13 @@ func (o OSPolicyResourceRepositoryResourceAptRepositoryPtrOutput) Elem() OSPolic
 }
 
 // Type of archive files in this repository.
-func (o OSPolicyResourceRepositoryResourceAptRepositoryPtrOutput) ArchiveType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *OSPolicyResourceRepositoryResourceAptRepository) *string {
+func (o OSPolicyResourceRepositoryResourceAptRepositoryPtrOutput) ArchiveType() OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput {
+	return o.ApplyT(func(v *OSPolicyResourceRepositoryResourceAptRepository) *OSPolicyResourceRepositoryResourceAptRepositoryArchiveType {
 		if v == nil {
 			return nil
 		}
 		return &v.ArchiveType
-	}).(pulumi.StringPtrOutput)
+	}).(OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput)
 }
 
 // List of components for this repository. Must contain at least one item.

@@ -11,7 +11,7 @@ import (
 )
 
 // The DeliveryRequirement for this subscription.
-type DeliveryConfigDeliveryRequirement pulumi.String
+type DeliveryConfigDeliveryRequirement string
 
 const (
 	// Default value. This value is unused.
@@ -23,7 +23,23 @@ const (
 )
 
 func (DeliveryConfigDeliveryRequirement) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*DeliveryConfigDeliveryRequirement)(nil)).Elem()
+}
+
+func (e DeliveryConfigDeliveryRequirement) ToDeliveryConfigDeliveryRequirementOutput() DeliveryConfigDeliveryRequirementOutput {
+	return pulumi.ToOutput(e).(DeliveryConfigDeliveryRequirementOutput)
+}
+
+func (e DeliveryConfigDeliveryRequirement) ToDeliveryConfigDeliveryRequirementOutputWithContext(ctx context.Context) DeliveryConfigDeliveryRequirementOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DeliveryConfigDeliveryRequirementOutput)
+}
+
+func (e DeliveryConfigDeliveryRequirement) ToDeliveryConfigDeliveryRequirementPtrOutput() DeliveryConfigDeliveryRequirementPtrOutput {
+	return e.ToDeliveryConfigDeliveryRequirementPtrOutputWithContext(context.Background())
+}
+
+func (e DeliveryConfigDeliveryRequirement) ToDeliveryConfigDeliveryRequirementPtrOutputWithContext(ctx context.Context) DeliveryConfigDeliveryRequirementPtrOutput {
+	return DeliveryConfigDeliveryRequirement(e).ToDeliveryConfigDeliveryRequirementOutputWithContext(ctx).ToDeliveryConfigDeliveryRequirementPtrOutputWithContext(ctx)
 }
 
 func (e DeliveryConfigDeliveryRequirement) ToStringOutput() pulumi.StringOutput {
@@ -40,4 +56,130 @@ func (e DeliveryConfigDeliveryRequirement) ToStringPtrOutput() pulumi.StringPtrO
 
 func (e DeliveryConfigDeliveryRequirement) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DeliveryConfigDeliveryRequirementOutput struct{ *pulumi.OutputState }
+
+func (DeliveryConfigDeliveryRequirementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryConfigDeliveryRequirement)(nil)).Elem()
+}
+
+func (o DeliveryConfigDeliveryRequirementOutput) ToDeliveryConfigDeliveryRequirementOutput() DeliveryConfigDeliveryRequirementOutput {
+	return o
+}
+
+func (o DeliveryConfigDeliveryRequirementOutput) ToDeliveryConfigDeliveryRequirementOutputWithContext(ctx context.Context) DeliveryConfigDeliveryRequirementOutput {
+	return o
+}
+
+func (o DeliveryConfigDeliveryRequirementOutput) ToDeliveryConfigDeliveryRequirementPtrOutput() DeliveryConfigDeliveryRequirementPtrOutput {
+	return o.ToDeliveryConfigDeliveryRequirementPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryConfigDeliveryRequirementOutput) ToDeliveryConfigDeliveryRequirementPtrOutputWithContext(ctx context.Context) DeliveryConfigDeliveryRequirementPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryConfigDeliveryRequirement) *DeliveryConfigDeliveryRequirement {
+		return &v
+	}).(DeliveryConfigDeliveryRequirementPtrOutput)
+}
+
+func (o DeliveryConfigDeliveryRequirementOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DeliveryConfigDeliveryRequirementOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DeliveryConfigDeliveryRequirement) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DeliveryConfigDeliveryRequirementOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryConfigDeliveryRequirementOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DeliveryConfigDeliveryRequirement) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeliveryConfigDeliveryRequirementPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryConfigDeliveryRequirementPtrOutput) ElementType() reflect.Type {
+	return deliveryConfigDeliveryRequirementPtrType
+}
+
+func (o DeliveryConfigDeliveryRequirementPtrOutput) ToDeliveryConfigDeliveryRequirementPtrOutput() DeliveryConfigDeliveryRequirementPtrOutput {
+	return o
+}
+
+func (o DeliveryConfigDeliveryRequirementPtrOutput) ToDeliveryConfigDeliveryRequirementPtrOutputWithContext(ctx context.Context) DeliveryConfigDeliveryRequirementPtrOutput {
+	return o
+}
+
+func (o DeliveryConfigDeliveryRequirementPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryConfigDeliveryRequirementPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DeliveryConfigDeliveryRequirement) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DeliveryConfigDeliveryRequirementPtrOutput) Elem() DeliveryConfigDeliveryRequirementOutput {
+	return o.ApplyT(func(v *DeliveryConfigDeliveryRequirement) DeliveryConfigDeliveryRequirement {
+		var ret DeliveryConfigDeliveryRequirement
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(DeliveryConfigDeliveryRequirementOutput)
+}
+
+// DeliveryConfigDeliveryRequirementInput is an input type that accepts DeliveryConfigDeliveryRequirementArgs and DeliveryConfigDeliveryRequirementOutput values.
+// You can construct a concrete instance of `DeliveryConfigDeliveryRequirementInput` via:
+//
+//          DeliveryConfigDeliveryRequirementArgs{...}
+type DeliveryConfigDeliveryRequirementInput interface {
+	pulumi.Input
+
+	ToDeliveryConfigDeliveryRequirementOutput() DeliveryConfigDeliveryRequirementOutput
+	ToDeliveryConfigDeliveryRequirementOutputWithContext(context.Context) DeliveryConfigDeliveryRequirementOutput
+}
+
+var deliveryConfigDeliveryRequirementPtrType = reflect.TypeOf((**DeliveryConfigDeliveryRequirement)(nil)).Elem()
+
+type DeliveryConfigDeliveryRequirementPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryConfigDeliveryRequirementPtrOutput() DeliveryConfigDeliveryRequirementPtrOutput
+	ToDeliveryConfigDeliveryRequirementPtrOutputWithContext(context.Context) DeliveryConfigDeliveryRequirementPtrOutput
+}
+
+type deliveryConfigDeliveryRequirementPtr string
+
+func DeliveryConfigDeliveryRequirementPtr(v string) DeliveryConfigDeliveryRequirementPtrInput {
+	return (*deliveryConfigDeliveryRequirementPtr)(&v)
+}
+
+func (*deliveryConfigDeliveryRequirementPtr) ElementType() reflect.Type {
+	return deliveryConfigDeliveryRequirementPtrType
+}
+
+func (in *deliveryConfigDeliveryRequirementPtr) ToDeliveryConfigDeliveryRequirementPtrOutput() DeliveryConfigDeliveryRequirementPtrOutput {
+	return pulumi.ToOutput(in).(DeliveryConfigDeliveryRequirementPtrOutput)
+}
+
+func (in *deliveryConfigDeliveryRequirementPtr) ToDeliveryConfigDeliveryRequirementPtrOutputWithContext(ctx context.Context) DeliveryConfigDeliveryRequirementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DeliveryConfigDeliveryRequirementPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(DeliveryConfigDeliveryRequirementOutput{})
+	pulumi.RegisterOutputType(DeliveryConfigDeliveryRequirementPtrOutput{})
 }

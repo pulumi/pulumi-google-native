@@ -77,45 +77,9 @@ func GetWorkflowTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkflowTemplate resources.
 type workflowTemplateState struct {
-	// The time template was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
-	DagTimeout *string `pulumi:"dagTimeout"`
-	// The Directed Acyclic Graph of Jobs to submit.
-	Jobs []OrderedJobResponse `pulumi:"jobs"`
-	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
-	Labels map[string]string `pulumi:"labels"`
-	// The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
-	Name *string `pulumi:"name"`
-	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
-	Parameters []TemplateParameterResponse `pulumi:"parameters"`
-	// WorkflowTemplate scheduling information.
-	Placement *WorkflowTemplatePlacementResponse `pulumi:"placement"`
-	// The time template was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
-	// Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
-	Version *int `pulumi:"version"`
 }
 
 type WorkflowTemplateState struct {
-	// The time template was created.
-	CreateTime pulumi.StringPtrInput
-	// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
-	DagTimeout pulumi.StringPtrInput
-	// The Directed Acyclic Graph of Jobs to submit.
-	Jobs OrderedJobResponseArrayInput
-	// Optional. The labels to associate with this template. These labels will be propagated to all jobs and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32 labels can be associated with a template.
-	Labels pulumi.StringMapInput
-	// The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id}
-	Name pulumi.StringPtrInput
-	// Optional. Template parameters whose values are substituted into the template. Values for parameters must be provided when the template is instantiated.
-	Parameters TemplateParameterResponseArrayInput
-	// WorkflowTemplate scheduling information.
-	Placement WorkflowTemplatePlacementResponsePtrInput
-	// The time template was last updated.
-	UpdateTime pulumi.StringPtrInput
-	// Optional. Used to perform a consistent read-modify-write.This field should be left blank for a CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the current server version. A typical update template flow would fetch the current template with a GetWorkflowTemplate request, which will return the current template with the version field filled in with the current server version. The user updates other fields in the template, then returns it as part of the UpdateWorkflowTemplate request.
-	Version pulumi.IntPtrInput
 }
 
 func (WorkflowTemplateState) ElementType() reflect.Type {

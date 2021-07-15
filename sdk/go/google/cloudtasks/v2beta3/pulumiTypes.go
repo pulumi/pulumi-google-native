@@ -287,7 +287,7 @@ type AppEngineHttpRequest struct {
 	// HTTP request headers. This map contains the header field names and values. Headers can be set when the task is created. Repeated headers are not supported but a header value can contain commas. Cloud Tasks sets some headers to default values: * `User-Agent`: By default, this header is `"AppEngine-Google; (+http://code.google.com/appengine)"`. This header can be modified, but Cloud Tasks will append `"AppEngine-Google; (+http://code.google.com/appengine)"` to the modified `User-Agent`. If the task has a body, Cloud Tasks sets the following headers: * `Content-Type`: By default, the `Content-Type` header is set to `"application/octet-stream"`. The default can be overridden by explicitly setting `Content-Type` to a particular media type when the task is created. For example, `Content-Type` can be set to `"application/json"`. * `Content-Length`: This is computed by Cloud Tasks. This value is output only. It cannot be changed. The headers below cannot be set or overridden: * `Host` * `X-Google-*` * `X-AppEngine-*` In addition, Cloud Tasks sets some headers when the task is dispatched, such as headers containing information about the task; see [request headers](https://cloud.google.com/tasks/docs/creating-appengine-handlers#reading_request_headers). These headers are set only when the task is dispatched, so they are not visible when the task is returned in a Cloud Tasks response. Although there is no specific limit for the maximum number of headers or the size, there is a limit on the maximum size of the Task. For more information, see the CreateTask documentation.
 	Headers map[string]string `pulumi:"headers"`
 	// The HTTP method to use for the request. The default is POST. The app's request handler for the task's target URL must be able to handle HTTP requests with this http_method, otherwise the task attempt fails with error code 405 (Method Not Allowed). See [Writing a push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the App Engine documentation for your runtime on [How Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled).
-	HttpMethod *string `pulumi:"httpMethod"`
+	HttpMethod *AppEngineHttpRequestHttpMethod `pulumi:"httpMethod"`
 	// The relative URI. The relative URI must begin with "/" and must be a valid HTTP relative URI. It can contain a path and query string arguments. If the relative URI is empty, then the root path "/" will be used. No spaces are allowed, and the maximum length allowed is 2083 characters.
 	RelativeUri *string `pulumi:"relativeUri"`
 }
@@ -312,7 +312,7 @@ type AppEngineHttpRequestArgs struct {
 	// HTTP request headers. This map contains the header field names and values. Headers can be set when the task is created. Repeated headers are not supported but a header value can contain commas. Cloud Tasks sets some headers to default values: * `User-Agent`: By default, this header is `"AppEngine-Google; (+http://code.google.com/appengine)"`. This header can be modified, but Cloud Tasks will append `"AppEngine-Google; (+http://code.google.com/appengine)"` to the modified `User-Agent`. If the task has a body, Cloud Tasks sets the following headers: * `Content-Type`: By default, the `Content-Type` header is set to `"application/octet-stream"`. The default can be overridden by explicitly setting `Content-Type` to a particular media type when the task is created. For example, `Content-Type` can be set to `"application/json"`. * `Content-Length`: This is computed by Cloud Tasks. This value is output only. It cannot be changed. The headers below cannot be set or overridden: * `Host` * `X-Google-*` * `X-AppEngine-*` In addition, Cloud Tasks sets some headers when the task is dispatched, such as headers containing information about the task; see [request headers](https://cloud.google.com/tasks/docs/creating-appengine-handlers#reading_request_headers). These headers are set only when the task is dispatched, so they are not visible when the task is returned in a Cloud Tasks response. Although there is no specific limit for the maximum number of headers or the size, there is a limit on the maximum size of the Task. For more information, see the CreateTask documentation.
 	Headers pulumi.StringMapInput `pulumi:"headers"`
 	// The HTTP method to use for the request. The default is POST. The app's request handler for the task's target URL must be able to handle HTTP requests with this http_method, otherwise the task attempt fails with error code 405 (Method Not Allowed). See [Writing a push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the App Engine documentation for your runtime on [How Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled).
-	HttpMethod *AppEngineHttpRequestHttpMethod `pulumi:"httpMethod"`
+	HttpMethod AppEngineHttpRequestHttpMethodPtrInput `pulumi:"httpMethod"`
 	// The relative URI. The relative URI must begin with "/" and must be a valid HTTP relative URI. It can contain a path and query string arguments. If the relative URI is empty, then the root path "/" will be used. No spaces are allowed, and the maximum length allowed is 2083 characters.
 	RelativeUri pulumi.StringPtrInput `pulumi:"relativeUri"`
 }
@@ -411,8 +411,8 @@ func (o AppEngineHttpRequestOutput) Headers() pulumi.StringMapOutput {
 }
 
 // The HTTP method to use for the request. The default is POST. The app's request handler for the task's target URL must be able to handle HTTP requests with this http_method, otherwise the task attempt fails with error code 405 (Method Not Allowed). See [Writing a push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the App Engine documentation for your runtime on [How Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled).
-func (o AppEngineHttpRequestOutput) HttpMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AppEngineHttpRequest) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
+func (o AppEngineHttpRequestOutput) HttpMethod() AppEngineHttpRequestHttpMethodPtrOutput {
+	return o.ApplyT(func(v AppEngineHttpRequest) *AppEngineHttpRequestHttpMethod { return v.HttpMethod }).(AppEngineHttpRequestHttpMethodPtrOutput)
 }
 
 // The relative URI. The relative URI must begin with "/" and must be a valid HTTP relative URI. It can contain a path and query string arguments. If the relative URI is empty, then the root path "/" will be used. No spaces are allowed, and the maximum length allowed is 2083 characters.
@@ -469,13 +469,13 @@ func (o AppEngineHttpRequestPtrOutput) Headers() pulumi.StringMapOutput {
 }
 
 // The HTTP method to use for the request. The default is POST. The app's request handler for the task's target URL must be able to handle HTTP requests with this http_method, otherwise the task attempt fails with error code 405 (Method Not Allowed). See [Writing a push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the App Engine documentation for your runtime on [How Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled).
-func (o AppEngineHttpRequestPtrOutput) HttpMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppEngineHttpRequest) *string {
+func (o AppEngineHttpRequestPtrOutput) HttpMethod() AppEngineHttpRequestHttpMethodPtrOutput {
+	return o.ApplyT(func(v *AppEngineHttpRequest) *AppEngineHttpRequestHttpMethod {
 		if v == nil {
 			return nil
 		}
 		return v.HttpMethod
-	}).(pulumi.StringPtrOutput)
+	}).(AppEngineHttpRequestHttpMethodPtrOutput)
 }
 
 // The relative URI. The relative URI must begin with "/" and must be a valid HTTP relative URI. It can contain a path and query string arguments. If the relative URI is empty, then the root path "/" will be used. No spaces are allowed, and the maximum length allowed is 2083 characters.
@@ -1768,7 +1768,7 @@ type HttpRequest struct {
 	// HTTP request headers. This map contains the header field names and values. Headers can be set when the task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * X-Google-*: Google use only. * X-AppEngine-*: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB.
 	Headers map[string]string `pulumi:"headers"`
 	// The HTTP method to use for the request. The default is POST.
-	HttpMethod *string `pulumi:"httpMethod"`
+	HttpMethod *HttpRequestHttpMethod `pulumi:"httpMethod"`
 	// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
 	OauthToken *OAuthToken `pulumi:"oauthToken"`
 	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
@@ -1795,7 +1795,7 @@ type HttpRequestArgs struct {
 	// HTTP request headers. This map contains the header field names and values. Headers can be set when the task is created. These headers represent a subset of the headers that will accompany the task's HTTP request. Some HTTP request headers will be ignored or replaced. A partial list of headers that will be ignored or replaced is: * Host: This will be computed by Cloud Tasks and derived from HttpRequest.url. * Content-Length: This will be computed by Cloud Tasks. * User-Agent: This will be set to `"Google-Cloud-Tasks"`. * X-Google-*: Google use only. * X-AppEngine-*: Google use only. `Content-Type` won't be set by Cloud Tasks. You can explicitly set `Content-Type` to a media type when the task is created. For example, `Content-Type` can be set to `"application/octet-stream"` or `"application/json"`. Headers which can have multiple values (according to RFC2616) can be specified using comma-separated values. The size of the headers must be less than 80KB.
 	Headers pulumi.StringMapInput `pulumi:"headers"`
 	// The HTTP method to use for the request. The default is POST.
-	HttpMethod *HttpRequestHttpMethod `pulumi:"httpMethod"`
+	HttpMethod HttpRequestHttpMethodPtrInput `pulumi:"httpMethod"`
 	// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
 	OauthToken OAuthTokenPtrInput `pulumi:"oauthToken"`
 	// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
@@ -1893,8 +1893,8 @@ func (o HttpRequestOutput) Headers() pulumi.StringMapOutput {
 }
 
 // The HTTP method to use for the request. The default is POST.
-func (o HttpRequestOutput) HttpMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HttpRequest) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
+func (o HttpRequestOutput) HttpMethod() HttpRequestHttpMethodPtrOutput {
+	return o.ApplyT(func(v HttpRequest) *HttpRequestHttpMethod { return v.HttpMethod }).(HttpRequestHttpMethodPtrOutput)
 }
 
 // If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
@@ -1951,13 +1951,13 @@ func (o HttpRequestPtrOutput) Headers() pulumi.StringMapOutput {
 }
 
 // The HTTP method to use for the request. The default is POST.
-func (o HttpRequestPtrOutput) HttpMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HttpRequest) *string {
+func (o HttpRequestPtrOutput) HttpMethod() HttpRequestHttpMethodPtrOutput {
+	return o.ApplyT(func(v *HttpRequest) *HttpRequestHttpMethod {
 		if v == nil {
 			return nil
 		}
 		return v.HttpMethod
-	}).(pulumi.StringPtrOutput)
+	}).(HttpRequestHttpMethodPtrOutput)
 }
 
 // If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.

@@ -70,33 +70,9 @@ func GetAnnotation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Annotation resources.
 type annotationState struct {
-	// Details of the source.
-	AnnotationSource *AnnotationSourceResponse `pulumi:"annotationSource"`
-	// Additional information for this annotation record, such as annotator and verifier information or study campaign.
-	CustomData map[string]string `pulumi:"customData"`
-	// Annotations for images. For example, bounding polygons.
-	ImageAnnotation *ImageAnnotationResponse `pulumi:"imageAnnotation"`
-	// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
-	Name *string `pulumi:"name"`
-	// Annotations for resource. For example, classification tags.
-	ResourceAnnotation *ResourceAnnotationResponse `pulumi:"resourceAnnotation"`
-	// Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
-	TextAnnotation *SensitiveTextAnnotationResponse `pulumi:"textAnnotation"`
 }
 
 type AnnotationState struct {
-	// Details of the source.
-	AnnotationSource AnnotationSourceResponsePtrInput
-	// Additional information for this annotation record, such as annotator and verifier information or study campaign.
-	CustomData pulumi.StringMapInput
-	// Annotations for images. For example, bounding polygons.
-	ImageAnnotation ImageAnnotationResponsePtrInput
-	// Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
-	Name pulumi.StringPtrInput
-	// Annotations for resource. For example, classification tags.
-	ResourceAnnotation ResourceAnnotationResponsePtrInput
-	// Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
-	TextAnnotation SensitiveTextAnnotationResponsePtrInput
 }
 
 func (AnnotationState) ElementType() reflect.Type {

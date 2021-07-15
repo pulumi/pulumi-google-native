@@ -2579,7 +2579,7 @@ type BuildSignature struct {
 	// An Id for the key used to sign. This could be either an Id for the key stored in `public_key` (such as the Id or fingerprint for a PGP key, or the CN for a cert), or a reference to an external key (such as a reference to a key in Cloud Key Management Service).
 	KeyId *string `pulumi:"keyId"`
 	// The type of the key, either stored in `public_key` or referenced in `key_id`
-	KeyType *string `pulumi:"keyType"`
+	KeyType *BuildSignatureKeyType `pulumi:"keyType"`
 	// Public key of the builder which can be used to verify that the related findings are valid and unchanged. If `key_type` is empty, this defaults to PEM encoded public keys. This field may be empty if `key_id` references an external key. For Cloud Build based signatures, this is a PEM encoded public key. To verify the Cloud Build signature, place the contents of this field into a file (public.pem). The signature field is base64-decoded into its binary representation in signature.bin, and the provenance bytes from `BuildDetails` are base64-decoded into a binary representation in signed.bin. OpenSSL can then verify the signature: `openssl sha256 -verify public.pem -signature signature.bin signed.bin`
 	PublicKey *string `pulumi:"publicKey"`
 	// Signature of the related `BuildProvenance`, encoded in a base64 string.
@@ -2602,7 +2602,7 @@ type BuildSignatureArgs struct {
 	// An Id for the key used to sign. This could be either an Id for the key stored in `public_key` (such as the Id or fingerprint for a PGP key, or the CN for a cert), or a reference to an external key (such as a reference to a key in Cloud Key Management Service).
 	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
 	// The type of the key, either stored in `public_key` or referenced in `key_id`
-	KeyType *BuildSignatureKeyType `pulumi:"keyType"`
+	KeyType BuildSignatureKeyTypePtrInput `pulumi:"keyType"`
 	// Public key of the builder which can be used to verify that the related findings are valid and unchanged. If `key_type` is empty, this defaults to PEM encoded public keys. This field may be empty if `key_id` references an external key. For Cloud Build based signatures, this is a PEM encoded public key. To verify the Cloud Build signature, place the contents of this field into a file (public.pem). The signature field is base64-decoded into its binary representation in signature.bin, and the provenance bytes from `BuildDetails` are base64-decoded into a binary representation in signed.bin. OpenSSL can then verify the signature: `openssl sha256 -verify public.pem -signature signature.bin signed.bin`
 	PublicKey pulumi.StringPtrInput `pulumi:"publicKey"`
 	// Signature of the related `BuildProvenance`, encoded in a base64 string.
@@ -2693,8 +2693,8 @@ func (o BuildSignatureOutput) KeyId() pulumi.StringPtrOutput {
 }
 
 // The type of the key, either stored in `public_key` or referenced in `key_id`
-func (o BuildSignatureOutput) KeyType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuildSignature) *string { return v.KeyType }).(pulumi.StringPtrOutput)
+func (o BuildSignatureOutput) KeyType() BuildSignatureKeyTypePtrOutput {
+	return o.ApplyT(func(v BuildSignature) *BuildSignatureKeyType { return v.KeyType }).(BuildSignatureKeyTypePtrOutput)
 }
 
 // Public key of the builder which can be used to verify that the related findings are valid and unchanged. If `key_type` is empty, this defaults to PEM encoded public keys. This field may be empty if `key_id` references an external key. For Cloud Build based signatures, this is a PEM encoded public key. To verify the Cloud Build signature, place the contents of this field into a file (public.pem). The signature field is base64-decoded into its binary representation in signature.bin, and the provenance bytes from `BuildDetails` are base64-decoded into a binary representation in signed.bin. OpenSSL can then verify the signature: `openssl sha256 -verify public.pem -signature signature.bin signed.bin`
@@ -2736,13 +2736,13 @@ func (o BuildSignaturePtrOutput) KeyId() pulumi.StringPtrOutput {
 }
 
 // The type of the key, either stored in `public_key` or referenced in `key_id`
-func (o BuildSignaturePtrOutput) KeyType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildSignature) *string {
+func (o BuildSignaturePtrOutput) KeyType() BuildSignatureKeyTypePtrOutput {
+	return o.ApplyT(func(v *BuildSignature) *BuildSignatureKeyType {
 		if v == nil {
 			return nil
 		}
 		return v.KeyType
-	}).(pulumi.StringPtrOutput)
+	}).(BuildSignatureKeyTypePtrOutput)
 }
 
 // Public key of the builder which can be used to verify that the related findings are valid and unchanged. If `key_type` is empty, this defaults to PEM encoded public keys. This field may be empty if `key_id` references an external key. For Cloud Build based signatures, this is a PEM encoded public key. To verify the Cloud Build signature, place the contents of this field into a file (public.pem). The signature field is base64-decoded into its binary representation in signature.bin, and the provenance bytes from `BuildDetails` are base64-decoded into a binary representation in signed.bin. OpenSSL can then verify the signature: `openssl sha256 -verify public.pem -signature signature.bin signed.bin`
@@ -3267,7 +3267,7 @@ type CisBenchmark struct {
 	// The profile level of this CIS benchmark check.
 	ProfileLevel *int `pulumi:"profileLevel"`
 	// The severity level of this CIS benchmark check.
-	Severity *string `pulumi:"severity"`
+	Severity *CisBenchmarkSeverity `pulumi:"severity"`
 }
 
 // CisBenchmarkInput is an input type that accepts CisBenchmarkArgs and CisBenchmarkOutput values.
@@ -3286,7 +3286,7 @@ type CisBenchmarkArgs struct {
 	// The profile level of this CIS benchmark check.
 	ProfileLevel pulumi.IntPtrInput `pulumi:"profileLevel"`
 	// The severity level of this CIS benchmark check.
-	Severity *CisBenchmarkSeverity `pulumi:"severity"`
+	Severity CisBenchmarkSeverityPtrInput `pulumi:"severity"`
 }
 
 func (CisBenchmarkArgs) ElementType() reflect.Type {
@@ -3373,8 +3373,8 @@ func (o CisBenchmarkOutput) ProfileLevel() pulumi.IntPtrOutput {
 }
 
 // The severity level of this CIS benchmark check.
-func (o CisBenchmarkOutput) Severity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CisBenchmark) *string { return v.Severity }).(pulumi.StringPtrOutput)
+func (o CisBenchmarkOutput) Severity() CisBenchmarkSeverityPtrOutput {
+	return o.ApplyT(func(v CisBenchmark) *CisBenchmarkSeverity { return v.Severity }).(CisBenchmarkSeverityPtrOutput)
 }
 
 type CisBenchmarkPtrOutput struct{ *pulumi.OutputState }
@@ -3406,13 +3406,13 @@ func (o CisBenchmarkPtrOutput) ProfileLevel() pulumi.IntPtrOutput {
 }
 
 // The severity level of this CIS benchmark check.
-func (o CisBenchmarkPtrOutput) Severity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CisBenchmark) *string {
+func (o CisBenchmarkPtrOutput) Severity() CisBenchmarkSeverityPtrOutput {
+	return o.ApplyT(func(v *CisBenchmark) *CisBenchmarkSeverity {
 		if v == nil {
 			return nil
 		}
 		return v.Severity
-	}).(pulumi.StringPtrOutput)
+	}).(CisBenchmarkSeverityPtrOutput)
 }
 
 // A compliance check that is a CIS benchmark.
@@ -5146,7 +5146,7 @@ type Deployment struct {
 	// Beginning of the lifetime of this deployment.
 	DeployTime *string `pulumi:"deployTime"`
 	// Platform hosting this deployment.
-	Platform *string `pulumi:"platform"`
+	Platform *DeploymentPlatform `pulumi:"platform"`
 	// End of the lifetime of this deployment.
 	UndeployTime *string `pulumi:"undeployTime"`
 	// Identity of the user that triggered this deployment.
@@ -5173,7 +5173,7 @@ type DeploymentArgs struct {
 	// Beginning of the lifetime of this deployment.
 	DeployTime pulumi.StringPtrInput `pulumi:"deployTime"`
 	// Platform hosting this deployment.
-	Platform *DeploymentPlatform `pulumi:"platform"`
+	Platform DeploymentPlatformPtrInput `pulumi:"platform"`
 	// End of the lifetime of this deployment.
 	UndeployTime pulumi.StringPtrInput `pulumi:"undeployTime"`
 	// Identity of the user that triggered this deployment.
@@ -5274,8 +5274,8 @@ func (o DeploymentOutput) DeployTime() pulumi.StringPtrOutput {
 }
 
 // Platform hosting this deployment.
-func (o DeploymentOutput) Platform() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Deployment) *string { return v.Platform }).(pulumi.StringPtrOutput)
+func (o DeploymentOutput) Platform() DeploymentPlatformPtrOutput {
+	return o.ApplyT(func(v Deployment) *DeploymentPlatform { return v.Platform }).(DeploymentPlatformPtrOutput)
 }
 
 // End of the lifetime of this deployment.
@@ -5337,13 +5337,13 @@ func (o DeploymentPtrOutput) DeployTime() pulumi.StringPtrOutput {
 }
 
 // Platform hosting this deployment.
-func (o DeploymentPtrOutput) Platform() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Deployment) *string {
+func (o DeploymentPtrOutput) Platform() DeploymentPlatformPtrOutput {
+	return o.ApplyT(func(v *Deployment) *DeploymentPlatform {
 		if v == nil {
 			return nil
 		}
 		return v.Platform
-	}).(pulumi.StringPtrOutput)
+	}).(DeploymentPlatformPtrOutput)
 }
 
 // End of the lifetime of this deployment.
@@ -6341,11 +6341,11 @@ func (o DetailResponseArrayOutput) Index(i pulumi.IntInput) DetailResponseOutput
 // Provides information about the scan status of a discovered resource.
 type Discovered struct {
 	// The status of discovery for the resource.
-	AnalysisStatus *string `pulumi:"analysisStatus"`
+	AnalysisStatus *DiscoveredAnalysisStatus `pulumi:"analysisStatus"`
 	// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
 	AnalysisStatusError *Status `pulumi:"analysisStatusError"`
 	// Whether the resource is continuously analyzed.
-	ContinuousAnalysis *string `pulumi:"continuousAnalysis"`
+	ContinuousAnalysis *DiscoveredContinuousAnalysis `pulumi:"continuousAnalysis"`
 	// The CPE of the resource being scanned.
 	Cpe *string `pulumi:"cpe"`
 }
@@ -6364,11 +6364,11 @@ type DiscoveredInput interface {
 // Provides information about the scan status of a discovered resource.
 type DiscoveredArgs struct {
 	// The status of discovery for the resource.
-	AnalysisStatus *DiscoveredAnalysisStatus `pulumi:"analysisStatus"`
+	AnalysisStatus DiscoveredAnalysisStatusPtrInput `pulumi:"analysisStatus"`
 	// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
 	AnalysisStatusError StatusPtrInput `pulumi:"analysisStatusError"`
 	// Whether the resource is continuously analyzed.
-	ContinuousAnalysis *DiscoveredContinuousAnalysis `pulumi:"continuousAnalysis"`
+	ContinuousAnalysis DiscoveredContinuousAnalysisPtrInput `pulumi:"continuousAnalysis"`
 	// The CPE of the resource being scanned.
 	Cpe pulumi.StringPtrInput `pulumi:"cpe"`
 }
@@ -6452,8 +6452,8 @@ func (o DiscoveredOutput) ToDiscoveredPtrOutputWithContext(ctx context.Context) 
 }
 
 // The status of discovery for the resource.
-func (o DiscoveredOutput) AnalysisStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Discovered) *string { return v.AnalysisStatus }).(pulumi.StringPtrOutput)
+func (o DiscoveredOutput) AnalysisStatus() DiscoveredAnalysisStatusPtrOutput {
+	return o.ApplyT(func(v Discovered) *DiscoveredAnalysisStatus { return v.AnalysisStatus }).(DiscoveredAnalysisStatusPtrOutput)
 }
 
 // When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
@@ -6462,8 +6462,8 @@ func (o DiscoveredOutput) AnalysisStatusError() StatusPtrOutput {
 }
 
 // Whether the resource is continuously analyzed.
-func (o DiscoveredOutput) ContinuousAnalysis() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Discovered) *string { return v.ContinuousAnalysis }).(pulumi.StringPtrOutput)
+func (o DiscoveredOutput) ContinuousAnalysis() DiscoveredContinuousAnalysisPtrOutput {
+	return o.ApplyT(func(v Discovered) *DiscoveredContinuousAnalysis { return v.ContinuousAnalysis }).(DiscoveredContinuousAnalysisPtrOutput)
 }
 
 // The CPE of the resource being scanned.
@@ -6490,13 +6490,13 @@ func (o DiscoveredPtrOutput) Elem() DiscoveredOutput {
 }
 
 // The status of discovery for the resource.
-func (o DiscoveredPtrOutput) AnalysisStatus() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Discovered) *string {
+func (o DiscoveredPtrOutput) AnalysisStatus() DiscoveredAnalysisStatusPtrOutput {
+	return o.ApplyT(func(v *Discovered) *DiscoveredAnalysisStatus {
 		if v == nil {
 			return nil
 		}
 		return v.AnalysisStatus
-	}).(pulumi.StringPtrOutput)
+	}).(DiscoveredAnalysisStatusPtrOutput)
 }
 
 // When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
@@ -6510,13 +6510,13 @@ func (o DiscoveredPtrOutput) AnalysisStatusError() StatusPtrOutput {
 }
 
 // Whether the resource is continuously analyzed.
-func (o DiscoveredPtrOutput) ContinuousAnalysis() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Discovered) *string {
+func (o DiscoveredPtrOutput) ContinuousAnalysis() DiscoveredContinuousAnalysisPtrOutput {
+	return o.ApplyT(func(v *Discovered) *DiscoveredContinuousAnalysis {
 		if v == nil {
 			return nil
 		}
 		return v.ContinuousAnalysis
-	}).(pulumi.StringPtrOutput)
+	}).(DiscoveredContinuousAnalysisPtrOutput)
 }
 
 // The CPE of the resource being scanned.
@@ -6723,7 +6723,7 @@ func (o DiscoveredResponsePtrOutput) Cpe() pulumi.StringPtrOutput {
 // A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis. The occurrence's operation will indicate the status of the analysis. Absence of an occurrence linked to this note for a resource indicates that analysis hasn't started.
 type Discovery struct {
 	// The kind of analysis that is handled by this discovery.
-	AnalysisKind *string `pulumi:"analysisKind"`
+	AnalysisKind *DiscoveryAnalysisKind `pulumi:"analysisKind"`
 }
 
 // DiscoveryInput is an input type that accepts DiscoveryArgs and DiscoveryOutput values.
@@ -6740,7 +6740,7 @@ type DiscoveryInput interface {
 // A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis. The occurrence's operation will indicate the status of the analysis. Absence of an occurrence linked to this note for a resource indicates that analysis hasn't started.
 type DiscoveryArgs struct {
 	// The kind of analysis that is handled by this discovery.
-	AnalysisKind *DiscoveryAnalysisKind `pulumi:"analysisKind"`
+	AnalysisKind DiscoveryAnalysisKindPtrInput `pulumi:"analysisKind"`
 }
 
 func (DiscoveryArgs) ElementType() reflect.Type {
@@ -6822,8 +6822,8 @@ func (o DiscoveryOutput) ToDiscoveryPtrOutputWithContext(ctx context.Context) Di
 }
 
 // The kind of analysis that is handled by this discovery.
-func (o DiscoveryOutput) AnalysisKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Discovery) *string { return v.AnalysisKind }).(pulumi.StringPtrOutput)
+func (o DiscoveryOutput) AnalysisKind() DiscoveryAnalysisKindPtrOutput {
+	return o.ApplyT(func(v Discovery) *DiscoveryAnalysisKind { return v.AnalysisKind }).(DiscoveryAnalysisKindPtrOutput)
 }
 
 type DiscoveryPtrOutput struct{ *pulumi.OutputState }
@@ -6845,13 +6845,13 @@ func (o DiscoveryPtrOutput) Elem() DiscoveryOutput {
 }
 
 // The kind of analysis that is handled by this discovery.
-func (o DiscoveryPtrOutput) AnalysisKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Discovery) *string {
+func (o DiscoveryPtrOutput) AnalysisKind() DiscoveryAnalysisKindPtrOutput {
+	return o.ApplyT(func(v *Discovery) *DiscoveryAnalysisKind {
 		if v == nil {
 			return nil
 		}
 		return v.AnalysisKind
-	}).(pulumi.StringPtrOutput)
+	}).(DiscoveryAnalysisKindPtrOutput)
 }
 
 // A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis. The occurrence's operation will indicate the status of the analysis. Absence of an occurrence linked to this note for a resource indicates that analysis hasn't started.
@@ -6991,7 +6991,7 @@ func (o DiscoveryResponsePtrOutput) AnalysisKind() pulumi.StringPtrOutput {
 // This represents a particular channel of distribution for a given package. e.g. Debian's jessie-backports dpkg mirror
 type Distribution struct {
 	// The CPU architecture for which packages in this distribution channel were built
-	Architecture *string `pulumi:"architecture"`
+	Architecture *DistributionArchitecture `pulumi:"architecture"`
 	// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
 	CpeUri *string `pulumi:"cpeUri"`
 	// The distribution channel-specific description of this package.
@@ -7018,7 +7018,7 @@ type DistributionInput interface {
 // This represents a particular channel of distribution for a given package. e.g. Debian's jessie-backports dpkg mirror
 type DistributionArgs struct {
 	// The CPU architecture for which packages in this distribution channel were built
-	Architecture *DistributionArchitecture `pulumi:"architecture"`
+	Architecture DistributionArchitecturePtrInput `pulumi:"architecture"`
 	// The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
 	CpeUri pulumi.StringPtrInput `pulumi:"cpeUri"`
 	// The distribution channel-specific description of this package.
@@ -7084,8 +7084,8 @@ func (o DistributionOutput) ToDistributionOutputWithContext(ctx context.Context)
 }
 
 // The CPU architecture for which packages in this distribution channel were built
-func (o DistributionOutput) Architecture() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Distribution) *string { return v.Architecture }).(pulumi.StringPtrOutput)
+func (o DistributionOutput) Architecture() DistributionArchitecturePtrOutput {
+	return o.ApplyT(func(v Distribution) *DistributionArchitecture { return v.Architecture }).(DistributionArchitecturePtrOutput)
 }
 
 // The cpe_uri in [cpe format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
@@ -7879,7 +7879,7 @@ func (o FingerprintResponsePtrOutput) V2Name() pulumi.StringPtrOutput {
 // An alias to a repo revision.
 type GoogleDevtoolsContaineranalysisV1alpha1AliasContext struct {
 	// The alias kind.
-	Kind *string `pulumi:"kind"`
+	Kind *GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind `pulumi:"kind"`
 	// The alias name.
 	Name *string `pulumi:"name"`
 }
@@ -7898,7 +7898,7 @@ type GoogleDevtoolsContaineranalysisV1alpha1AliasContextInput interface {
 // An alias to a repo revision.
 type GoogleDevtoolsContaineranalysisV1alpha1AliasContextArgs struct {
 	// The alias kind.
-	Kind *GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind `pulumi:"kind"`
+	Kind GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindPtrInput `pulumi:"kind"`
 	// The alias name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -7982,8 +7982,10 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextOutput) ToGoogleDevto
 }
 
 // The alias kind.
-func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1AliasContext) *string { return v.Kind }).(pulumi.StringPtrOutput)
+func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextOutput) Kind() GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsContaineranalysisV1alpha1AliasContext) *GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind {
+		return v.Kind
+	}).(GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindPtrOutput)
 }
 
 // The alias name.
@@ -8012,13 +8014,13 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextPtrOutput) Elem() Goo
 }
 
 // The alias kind.
-func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextPtrOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1AliasContext) *string {
+func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextPtrOutput) Kind() GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsContaineranalysisV1alpha1AliasContext) *GoogleDevtoolsContaineranalysisV1alpha1AliasContextKind {
 		if v == nil {
 			return nil
 		}
 		return v.Kind
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindPtrOutput)
 }
 
 // The alias name.
@@ -10363,7 +10365,7 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1SourceContextResponseArrayOutput)
 // Container message for hash values.
 type Hash struct {
 	// The type of hash that was performed.
-	Type *string `pulumi:"type"`
+	Type *HashType `pulumi:"type"`
 	// The hash value.
 	Value *string `pulumi:"value"`
 }
@@ -10382,7 +10384,7 @@ type HashInput interface {
 // Container message for hash values.
 type HashArgs struct {
 	// The type of hash that was performed.
-	Type *HashType `pulumi:"type"`
+	Type HashTypePtrInput `pulumi:"type"`
 	// The hash value.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
@@ -10466,8 +10468,8 @@ func (o HashOutput) ToHashPtrOutputWithContext(ctx context.Context) HashPtrOutpu
 }
 
 // The type of hash that was performed.
-func (o HashOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Hash) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o HashOutput) Type() HashTypePtrOutput {
+	return o.ApplyT(func(v Hash) *HashType { return v.Type }).(HashTypePtrOutput)
 }
 
 // The hash value.
@@ -10494,13 +10496,13 @@ func (o HashPtrOutput) Elem() HashOutput {
 }
 
 // The type of hash that was performed.
-func (o HashPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Hash) *string {
+func (o HashPtrOutput) Type() HashTypePtrOutput {
+	return o.ApplyT(func(v *Hash) *HashType {
 		if v == nil {
 			return nil
 		}
 		return v.Type
-	}).(pulumi.StringPtrOutput)
+	}).(HashTypePtrOutput)
 }
 
 // The hash value.
@@ -10958,7 +10960,7 @@ type Layer struct {
 	// The recovered arguments to the Dockerfile directive.
 	Arguments *string `pulumi:"arguments"`
 	// The recovered Dockerfile directive used to construct this layer.
-	Directive *string `pulumi:"directive"`
+	Directive *LayerDirective `pulumi:"directive"`
 }
 
 // LayerInput is an input type that accepts LayerArgs and LayerOutput values.
@@ -10977,7 +10979,7 @@ type LayerArgs struct {
 	// The recovered arguments to the Dockerfile directive.
 	Arguments pulumi.StringPtrInput `pulumi:"arguments"`
 	// The recovered Dockerfile directive used to construct this layer.
-	Directive *LayerDirective `pulumi:"directive"`
+	Directive LayerDirectivePtrInput `pulumi:"directive"`
 }
 
 func (LayerArgs) ElementType() reflect.Type {
@@ -11038,8 +11040,8 @@ func (o LayerOutput) Arguments() pulumi.StringPtrOutput {
 }
 
 // The recovered Dockerfile directive used to construct this layer.
-func (o LayerOutput) Directive() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Layer) *string { return v.Directive }).(pulumi.StringPtrOutput)
+func (o LayerOutput) Directive() LayerDirectivePtrOutput {
+	return o.ApplyT(func(v Layer) *LayerDirective { return v.Directive }).(LayerDirectivePtrOutput)
 }
 
 type LayerArrayOutput struct{ *pulumi.OutputState }
@@ -12182,7 +12184,7 @@ func (o PackageResponsePtrOutput) Name() pulumi.StringPtrOutput {
 // An attestation wrapper with a PGP-compatible signature. This message only supports `ATTACHED` signatures, where the payload that is signed is included alongside the signature itself in the same file.
 type PgpSignedAttestation struct {
 	// Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
-	ContentType *string `pulumi:"contentType"`
+	ContentType *PgpSignedAttestationContentType `pulumi:"contentType"`
 	// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexadecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
 	PgpKeyId *string `pulumi:"pgpKeyId"`
 	// The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
@@ -12203,7 +12205,7 @@ type PgpSignedAttestationInput interface {
 // An attestation wrapper with a PGP-compatible signature. This message only supports `ATTACHED` signatures, where the payload that is signed is included alongside the signature itself in the same file.
 type PgpSignedAttestationArgs struct {
 	// Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
-	ContentType *PgpSignedAttestationContentType `pulumi:"contentType"`
+	ContentType PgpSignedAttestationContentTypePtrInput `pulumi:"contentType"`
 	// The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexadecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
 	PgpKeyId pulumi.StringPtrInput `pulumi:"pgpKeyId"`
 	// The raw content of the signature, as output by GNU Privacy Guard (GPG) or equivalent. Since this message only supports attached signatures, the payload that was signed must be attached. While the signature format supported is dependent on the verification implementation, currently only ASCII-armored (`--armor` to gpg), non-clearsigned (`--sign` rather than `--clearsign` to gpg) are supported. Concretely, `gpg --sign --armor --output=signature.gpg payload.json` will create the signature content expected in this field in `signature.gpg` for the `payload.json` attestation payload.
@@ -12289,8 +12291,8 @@ func (o PgpSignedAttestationOutput) ToPgpSignedAttestationPtrOutputWithContext(c
 }
 
 // Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
-func (o PgpSignedAttestationOutput) ContentType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PgpSignedAttestation) *string { return v.ContentType }).(pulumi.StringPtrOutput)
+func (o PgpSignedAttestationOutput) ContentType() PgpSignedAttestationContentTypePtrOutput {
+	return o.ApplyT(func(v PgpSignedAttestation) *PgpSignedAttestationContentType { return v.ContentType }).(PgpSignedAttestationContentTypePtrOutput)
 }
 
 // The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexadecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
@@ -12322,13 +12324,13 @@ func (o PgpSignedAttestationPtrOutput) Elem() PgpSignedAttestationOutput {
 }
 
 // Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
-func (o PgpSignedAttestationPtrOutput) ContentType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PgpSignedAttestation) *string {
+func (o PgpSignedAttestationPtrOutput) ContentType() PgpSignedAttestationContentTypePtrOutput {
+	return o.ApplyT(func(v *PgpSignedAttestation) *PgpSignedAttestationContentType {
 		if v == nil {
 			return nil
 		}
 		return v.ContentType
-	}).(pulumi.StringPtrOutput)
+	}).(PgpSignedAttestationContentTypePtrOutput)
 }
 
 // The cryptographic fingerprint of the key used to generate the signature, as output by, e.g. `gpg --list-keys`. This should be the version 4, full 160-bit fingerprint, expressed as a 40 character hexadecimal string. See https://tools.ietf.org/html/rfc4880#section-12.2 for details. Implementations may choose to acknowledge "LONG", "SHORT", or other abbreviated key IDs, but only the full fingerprint is guaranteed to work. In gpg, the full fingerprint can be retrieved from the `fpr` field returned when calling --list-keys with --with-colons. For example: ```gpg --with-colons --with-fingerprint --force-v4-certs \ --list-keys attester@example.com tru::1:1513631572:0:3:1:5 pub:...... fpr:::::::::24FF6481B76AC91E66A00AC657A93A81EF3AE6FB:``` Above, the fingerprint is `24FF6481B76AC91E66A00AC657A93A81EF3AE6FB`.
@@ -15820,7 +15822,7 @@ type Version struct {
 	// Whether this version is vulnerable, when defining the version bounds. For example, if the minimum version is 2.0, inclusive=true would say 2.0 is vulnerable, while inclusive=false would say it's not
 	Inclusive *bool `pulumi:"inclusive"`
 	// Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
-	Kind *string `pulumi:"kind"`
+	Kind *VersionKind `pulumi:"kind"`
 	// The main part of the version name.
 	Name *string `pulumi:"name"`
 	// The iteration of the package build from the above version.
@@ -15845,7 +15847,7 @@ type VersionArgs struct {
 	// Whether this version is vulnerable, when defining the version bounds. For example, if the minimum version is 2.0, inclusive=true would say 2.0 is vulnerable, while inclusive=false would say it's not
 	Inclusive pulumi.BoolPtrInput `pulumi:"inclusive"`
 	// Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
-	Kind *VersionKind `pulumi:"kind"`
+	Kind VersionKindPtrInput `pulumi:"kind"`
 	// The main part of the version name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// The iteration of the package build from the above version.
@@ -15941,8 +15943,8 @@ func (o VersionOutput) Inclusive() pulumi.BoolPtrOutput {
 }
 
 // Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
-func (o VersionOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Version) *string { return v.Kind }).(pulumi.StringPtrOutput)
+func (o VersionOutput) Kind() VersionKindPtrOutput {
+	return o.ApplyT(func(v Version) *VersionKind { return v.Kind }).(VersionKindPtrOutput)
 }
 
 // The main part of the version name.
@@ -15994,13 +15996,13 @@ func (o VersionPtrOutput) Inclusive() pulumi.BoolPtrOutput {
 }
 
 // Distinguish between sentinel MIN/MAX versions and normal versions. If kind is not NORMAL, then the other fields are ignored.
-func (o VersionPtrOutput) Kind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Version) *string {
+func (o VersionPtrOutput) Kind() VersionKindPtrOutput {
+	return o.ApplyT(func(v *Version) *VersionKind {
 		if v == nil {
 			return nil
 		}
 		return v.Kind
-	}).(pulumi.StringPtrOutput)
+	}).(VersionKindPtrOutput)
 }
 
 // The main part of the version name.
@@ -16236,7 +16238,7 @@ func (o VersionResponsePtrOutput) Revision() pulumi.StringPtrOutput {
 // Used by Occurrence to point to where the vulnerability exists and how to fix it.
 type VulnerabilityDetails struct {
 	// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
-	EffectiveSeverity *string `pulumi:"effectiveSeverity"`
+	EffectiveSeverity *VulnerabilityDetailsEffectiveSeverity `pulumi:"effectiveSeverity"`
 	// The set of affected locations and their fixes (if available) within the associated resource.
 	PackageIssue []PackageIssue `pulumi:"packageIssue"`
 	// The type of package; whether native or non native(ruby gems, node.js packages etc)
@@ -16257,7 +16259,7 @@ type VulnerabilityDetailsInput interface {
 // Used by Occurrence to point to where the vulnerability exists and how to fix it.
 type VulnerabilityDetailsArgs struct {
 	// The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
-	EffectiveSeverity *VulnerabilityDetailsEffectiveSeverity `pulumi:"effectiveSeverity"`
+	EffectiveSeverity VulnerabilityDetailsEffectiveSeverityPtrInput `pulumi:"effectiveSeverity"`
 	// The set of affected locations and their fixes (if available) within the associated resource.
 	PackageIssue PackageIssueArrayInput `pulumi:"packageIssue"`
 	// The type of package; whether native or non native(ruby gems, node.js packages etc)
@@ -16343,8 +16345,8 @@ func (o VulnerabilityDetailsOutput) ToVulnerabilityDetailsPtrOutputWithContext(c
 }
 
 // The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
-func (o VulnerabilityDetailsOutput) EffectiveSeverity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VulnerabilityDetails) *string { return v.EffectiveSeverity }).(pulumi.StringPtrOutput)
+func (o VulnerabilityDetailsOutput) EffectiveSeverity() VulnerabilityDetailsEffectiveSeverityPtrOutput {
+	return o.ApplyT(func(v VulnerabilityDetails) *VulnerabilityDetailsEffectiveSeverity { return v.EffectiveSeverity }).(VulnerabilityDetailsEffectiveSeverityPtrOutput)
 }
 
 // The set of affected locations and their fixes (if available) within the associated resource.
@@ -16376,13 +16378,13 @@ func (o VulnerabilityDetailsPtrOutput) Elem() VulnerabilityDetailsOutput {
 }
 
 // The distro assigned severity for this vulnerability when that is available and note provider assigned severity when distro has not yet assigned a severity for this vulnerability.
-func (o VulnerabilityDetailsPtrOutput) EffectiveSeverity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VulnerabilityDetails) *string {
+func (o VulnerabilityDetailsPtrOutput) EffectiveSeverity() VulnerabilityDetailsEffectiveSeverityPtrOutput {
+	return o.ApplyT(func(v *VulnerabilityDetails) *VulnerabilityDetailsEffectiveSeverity {
 		if v == nil {
 			return nil
 		}
 		return v.EffectiveSeverity
-	}).(pulumi.StringPtrOutput)
+	}).(VulnerabilityDetailsEffectiveSeverityPtrOutput)
 }
 
 // The set of affected locations and their fixes (if available) within the associated resource.
@@ -16867,7 +16869,7 @@ type VulnerabilityType struct {
 	// All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.
 	Details []Detail `pulumi:"details"`
 	// Note provider assigned impact of the vulnerability
-	Severity *string `pulumi:"severity"`
+	Severity *VulnerabilityTypeSeverity `pulumi:"severity"`
 }
 
 // VulnerabilityTypeInput is an input type that accepts VulnerabilityTypeArgs and VulnerabilityTypeOutput values.
@@ -16888,7 +16890,7 @@ type VulnerabilityTypeArgs struct {
 	// All information about the package to specifically identify this vulnerability. One entry per (version range and cpe_uri) the package vulnerability has manifested in.
 	Details DetailArrayInput `pulumi:"details"`
 	// Note provider assigned impact of the vulnerability
-	Severity *VulnerabilityTypeSeverity `pulumi:"severity"`
+	Severity VulnerabilityTypeSeverityPtrInput `pulumi:"severity"`
 }
 
 func (VulnerabilityTypeArgs) ElementType() reflect.Type {
@@ -16980,8 +16982,8 @@ func (o VulnerabilityTypeOutput) Details() DetailArrayOutput {
 }
 
 // Note provider assigned impact of the vulnerability
-func (o VulnerabilityTypeOutput) Severity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VulnerabilityType) *string { return v.Severity }).(pulumi.StringPtrOutput)
+func (o VulnerabilityTypeOutput) Severity() VulnerabilityTypeSeverityPtrOutput {
+	return o.ApplyT(func(v VulnerabilityType) *VulnerabilityTypeSeverity { return v.Severity }).(VulnerabilityTypeSeverityPtrOutput)
 }
 
 type VulnerabilityTypePtrOutput struct{ *pulumi.OutputState }
@@ -17023,13 +17025,13 @@ func (o VulnerabilityTypePtrOutput) Details() DetailArrayOutput {
 }
 
 // Note provider assigned impact of the vulnerability
-func (o VulnerabilityTypePtrOutput) Severity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VulnerabilityType) *string {
+func (o VulnerabilityTypePtrOutput) Severity() VulnerabilityTypeSeverityPtrOutput {
+	return o.ApplyT(func(v *VulnerabilityType) *VulnerabilityTypeSeverity {
 		if v == nil {
 			return nil
 		}
 		return v.Severity
-	}).(pulumi.StringPtrOutput)
+	}).(VulnerabilityTypeSeverityPtrOutput)
 }
 
 // VulnerabilityType provides metadata about a security vulnerability.

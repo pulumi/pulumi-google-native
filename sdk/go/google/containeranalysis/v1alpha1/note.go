@@ -83,77 +83,9 @@ func GetNote(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Note resources.
 type noteState struct {
-	// A note describing an attestation role.
-	AttestationAuthority *AttestationAuthorityResponse `pulumi:"attestationAuthority"`
-	// A note describing a base image.
-	BaseImage *BasisResponse `pulumi:"baseImage"`
-	// Build provenance type for a verifiable build.
-	BuildType *BuildTypeResponse `pulumi:"buildType"`
-	// A note describing a compliance check.
-	Compliance *ComplianceNoteResponse `pulumi:"compliance"`
-	// The time this note was created. This field can be used as a filter in list requests.
-	CreateTime *string `pulumi:"createTime"`
-	// A note describing something that can be deployed.
-	Deployable *DeployableResponse `pulumi:"deployable"`
-	// A note describing a provider/analysis type.
-	Discovery *DiscoveryResponse `pulumi:"discovery"`
-	// Time of expiration for this note, null if note does not expire.
-	ExpirationTime *string `pulumi:"expirationTime"`
-	// This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
-	Kind *string `pulumi:"kind"`
-	// A detailed description of this `Note`.
-	LongDescription *string `pulumi:"longDescription"`
-	// The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
-	Name *string `pulumi:"name"`
-	// A note describing a package hosted by various package managers.
-	Package *PackageResponse `pulumi:"package"`
-	// URLs associated with this note
-	RelatedUrl []RelatedUrlResponse `pulumi:"relatedUrl"`
-	// A one sentence description of this `Note`.
-	ShortDescription *string `pulumi:"shortDescription"`
-	// The time this note was last updated. This field can be used as a filter in list requests.
-	UpdateTime *string `pulumi:"updateTime"`
-	// A note describing an upgrade.
-	Upgrade *UpgradeNoteResponse `pulumi:"upgrade"`
-	// A package vulnerability type of note.
-	VulnerabilityType *VulnerabilityTypeResponse `pulumi:"vulnerabilityType"`
 }
 
 type NoteState struct {
-	// A note describing an attestation role.
-	AttestationAuthority AttestationAuthorityResponsePtrInput
-	// A note describing a base image.
-	BaseImage BasisResponsePtrInput
-	// Build provenance type for a verifiable build.
-	BuildType BuildTypeResponsePtrInput
-	// A note describing a compliance check.
-	Compliance ComplianceNoteResponsePtrInput
-	// The time this note was created. This field can be used as a filter in list requests.
-	CreateTime pulumi.StringPtrInput
-	// A note describing something that can be deployed.
-	Deployable DeployableResponsePtrInput
-	// A note describing a provider/analysis type.
-	Discovery DiscoveryResponsePtrInput
-	// Time of expiration for this note, null if note does not expire.
-	ExpirationTime pulumi.StringPtrInput
-	// This explicitly denotes which kind of note is specified. This field can be used as a filter in list requests.
-	Kind pulumi.StringPtrInput
-	// A detailed description of this `Note`.
-	LongDescription pulumi.StringPtrInput
-	// The name of the note in the form "projects/{provider_project_id}/notes/{NOTE_ID}"
-	Name pulumi.StringPtrInput
-	// A note describing a package hosted by various package managers.
-	Package PackageResponsePtrInput
-	// URLs associated with this note
-	RelatedUrl RelatedUrlResponseArrayInput
-	// A one sentence description of this `Note`.
-	ShortDescription pulumi.StringPtrInput
-	// The time this note was last updated. This field can be used as a filter in list requests.
-	UpdateTime pulumi.StringPtrInput
-	// A note describing an upgrade.
-	Upgrade UpgradeNoteResponsePtrInput
-	// A package vulnerability type of note.
-	VulnerabilityType VulnerabilityTypeResponsePtrInput
 }
 
 func (NoteState) ElementType() reflect.Type {

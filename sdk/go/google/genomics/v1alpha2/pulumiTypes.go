@@ -23,7 +23,7 @@ type Disk struct {
 	// The full or partial URL of the persistent disk to attach. See https://cloud.google.com/compute/docs/reference/latest/instances#resource and https://cloud.google.com/compute/docs/disks/persistent-disks#snapshots for more details.
 	Source *string `pulumi:"source"`
 	// The type of the disk to create.
-	Type string `pulumi:"type"`
+	Type DiskType `pulumi:"type"`
 }
 
 // DiskInput is an input type that accepts DiskArgs and DiskOutput values.
@@ -50,7 +50,7 @@ type DiskArgs struct {
 	// The full or partial URL of the persistent disk to attach. See https://cloud.google.com/compute/docs/reference/latest/instances#resource and https://cloud.google.com/compute/docs/disks/persistent-disks#snapshots for more details.
 	Source pulumi.StringPtrInput `pulumi:"source"`
 	// The type of the disk to create.
-	Type DiskType `pulumi:"type"`
+	Type DiskTypeInput `pulumi:"type"`
 }
 
 func (DiskArgs) ElementType() reflect.Type {
@@ -131,8 +131,8 @@ func (o DiskOutput) Source() pulumi.StringPtrOutput {
 }
 
 // The type of the disk to create.
-func (o DiskOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v Disk) string { return v.Type }).(pulumi.StringOutput)
+func (o DiskOutput) Type() DiskTypeOutput {
+	return o.ApplyT(func(v Disk) DiskType { return v.Type }).(DiskTypeOutput)
 }
 
 type DiskArrayOutput struct{ *pulumi.OutputState }

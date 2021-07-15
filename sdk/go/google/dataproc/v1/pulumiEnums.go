@@ -11,7 +11,7 @@ import (
 )
 
 // Optional. The type of IPv6 access for a cluster.
-type GceClusterConfigPrivateIpv6GoogleAccess pulumi.String
+type GceClusterConfigPrivateIpv6GoogleAccess string
 
 const (
 	// If unspecified, Compute Engine default behavior will apply, which is the same as INHERIT_FROM_SUBNETWORK.
@@ -25,7 +25,23 @@ const (
 )
 
 func (GceClusterConfigPrivateIpv6GoogleAccess) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GceClusterConfigPrivateIpv6GoogleAccess)(nil)).Elem()
+}
+
+func (e GceClusterConfigPrivateIpv6GoogleAccess) ToGceClusterConfigPrivateIpv6GoogleAccessOutput() GceClusterConfigPrivateIpv6GoogleAccessOutput {
+	return pulumi.ToOutput(e).(GceClusterConfigPrivateIpv6GoogleAccessOutput)
+}
+
+func (e GceClusterConfigPrivateIpv6GoogleAccess) ToGceClusterConfigPrivateIpv6GoogleAccessOutputWithContext(ctx context.Context) GceClusterConfigPrivateIpv6GoogleAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GceClusterConfigPrivateIpv6GoogleAccessOutput)
+}
+
+func (e GceClusterConfigPrivateIpv6GoogleAccess) ToGceClusterConfigPrivateIpv6GoogleAccessPtrOutput() GceClusterConfigPrivateIpv6GoogleAccessPtrOutput {
+	return e.ToGceClusterConfigPrivateIpv6GoogleAccessPtrOutputWithContext(context.Background())
+}
+
+func (e GceClusterConfigPrivateIpv6GoogleAccess) ToGceClusterConfigPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) GceClusterConfigPrivateIpv6GoogleAccessPtrOutput {
+	return GceClusterConfigPrivateIpv6GoogleAccess(e).ToGceClusterConfigPrivateIpv6GoogleAccessOutputWithContext(ctx).ToGceClusterConfigPrivateIpv6GoogleAccessPtrOutputWithContext(ctx)
 }
 
 func (e GceClusterConfigPrivateIpv6GoogleAccess) ToStringOutput() pulumi.StringOutput {
@@ -44,8 +60,129 @@ func (e GceClusterConfigPrivateIpv6GoogleAccess) ToStringPtrOutputWithContext(ct
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type GceClusterConfigPrivateIpv6GoogleAccessOutput struct{ *pulumi.OutputState }
+
+func (GceClusterConfigPrivateIpv6GoogleAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GceClusterConfigPrivateIpv6GoogleAccess)(nil)).Elem()
+}
+
+func (o GceClusterConfigPrivateIpv6GoogleAccessOutput) ToGceClusterConfigPrivateIpv6GoogleAccessOutput() GceClusterConfigPrivateIpv6GoogleAccessOutput {
+	return o
+}
+
+func (o GceClusterConfigPrivateIpv6GoogleAccessOutput) ToGceClusterConfigPrivateIpv6GoogleAccessOutputWithContext(ctx context.Context) GceClusterConfigPrivateIpv6GoogleAccessOutput {
+	return o
+}
+
+func (o GceClusterConfigPrivateIpv6GoogleAccessOutput) ToGceClusterConfigPrivateIpv6GoogleAccessPtrOutput() GceClusterConfigPrivateIpv6GoogleAccessPtrOutput {
+	return o.ToGceClusterConfigPrivateIpv6GoogleAccessPtrOutputWithContext(context.Background())
+}
+
+func (o GceClusterConfigPrivateIpv6GoogleAccessOutput) ToGceClusterConfigPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) GceClusterConfigPrivateIpv6GoogleAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GceClusterConfigPrivateIpv6GoogleAccess) *GceClusterConfigPrivateIpv6GoogleAccess {
+		return &v
+	}).(GceClusterConfigPrivateIpv6GoogleAccessPtrOutput)
+}
+
+func (o GceClusterConfigPrivateIpv6GoogleAccessOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GceClusterConfigPrivateIpv6GoogleAccessOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GceClusterConfigPrivateIpv6GoogleAccess) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GceClusterConfigPrivateIpv6GoogleAccessOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GceClusterConfigPrivateIpv6GoogleAccessOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GceClusterConfigPrivateIpv6GoogleAccess) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GceClusterConfigPrivateIpv6GoogleAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) ElementType() reflect.Type {
+	return gceClusterConfigPrivateIpv6GoogleAccessPtrType
+}
+
+func (o GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) ToGceClusterConfigPrivateIpv6GoogleAccessPtrOutput() GceClusterConfigPrivateIpv6GoogleAccessPtrOutput {
+	return o
+}
+
+func (o GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) ToGceClusterConfigPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) GceClusterConfigPrivateIpv6GoogleAccessPtrOutput {
+	return o
+}
+
+func (o GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GceClusterConfigPrivateIpv6GoogleAccess) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) Elem() GceClusterConfigPrivateIpv6GoogleAccessOutput {
+	return o.ApplyT(func(v *GceClusterConfigPrivateIpv6GoogleAccess) GceClusterConfigPrivateIpv6GoogleAccess {
+		var ret GceClusterConfigPrivateIpv6GoogleAccess
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GceClusterConfigPrivateIpv6GoogleAccessOutput)
+}
+
+// GceClusterConfigPrivateIpv6GoogleAccessInput is an input type that accepts GceClusterConfigPrivateIpv6GoogleAccessArgs and GceClusterConfigPrivateIpv6GoogleAccessOutput values.
+// You can construct a concrete instance of `GceClusterConfigPrivateIpv6GoogleAccessInput` via:
+//
+//          GceClusterConfigPrivateIpv6GoogleAccessArgs{...}
+type GceClusterConfigPrivateIpv6GoogleAccessInput interface {
+	pulumi.Input
+
+	ToGceClusterConfigPrivateIpv6GoogleAccessOutput() GceClusterConfigPrivateIpv6GoogleAccessOutput
+	ToGceClusterConfigPrivateIpv6GoogleAccessOutputWithContext(context.Context) GceClusterConfigPrivateIpv6GoogleAccessOutput
+}
+
+var gceClusterConfigPrivateIpv6GoogleAccessPtrType = reflect.TypeOf((**GceClusterConfigPrivateIpv6GoogleAccess)(nil)).Elem()
+
+type GceClusterConfigPrivateIpv6GoogleAccessPtrInput interface {
+	pulumi.Input
+
+	ToGceClusterConfigPrivateIpv6GoogleAccessPtrOutput() GceClusterConfigPrivateIpv6GoogleAccessPtrOutput
+	ToGceClusterConfigPrivateIpv6GoogleAccessPtrOutputWithContext(context.Context) GceClusterConfigPrivateIpv6GoogleAccessPtrOutput
+}
+
+type gceClusterConfigPrivateIpv6GoogleAccessPtr string
+
+func GceClusterConfigPrivateIpv6GoogleAccessPtr(v string) GceClusterConfigPrivateIpv6GoogleAccessPtrInput {
+	return (*gceClusterConfigPrivateIpv6GoogleAccessPtr)(&v)
+}
+
+func (*gceClusterConfigPrivateIpv6GoogleAccessPtr) ElementType() reflect.Type {
+	return gceClusterConfigPrivateIpv6GoogleAccessPtrType
+}
+
+func (in *gceClusterConfigPrivateIpv6GoogleAccessPtr) ToGceClusterConfigPrivateIpv6GoogleAccessPtrOutput() GceClusterConfigPrivateIpv6GoogleAccessPtrOutput {
+	return pulumi.ToOutput(in).(GceClusterConfigPrivateIpv6GoogleAccessPtrOutput)
+}
+
+func (in *gceClusterConfigPrivateIpv6GoogleAccessPtr) ToGceClusterConfigPrivateIpv6GoogleAccessPtrOutputWithContext(ctx context.Context) GceClusterConfigPrivateIpv6GoogleAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GceClusterConfigPrivateIpv6GoogleAccessPtrOutput)
+}
+
 // Optional. Specifies the preemptibility of the instance group.The default value for master and worker groups is NON_PREEMPTIBLE. This default cannot be changed.The default value for secondary instances is PREEMPTIBLE.
-type InstanceGroupConfigPreemptibility pulumi.String
+type InstanceGroupConfigPreemptibility string
 
 const (
 	// Preemptibility is unspecified, the system will choose the appropriate setting for each instance group.
@@ -57,7 +194,23 @@ const (
 )
 
 func (InstanceGroupConfigPreemptibility) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*InstanceGroupConfigPreemptibility)(nil)).Elem()
+}
+
+func (e InstanceGroupConfigPreemptibility) ToInstanceGroupConfigPreemptibilityOutput() InstanceGroupConfigPreemptibilityOutput {
+	return pulumi.ToOutput(e).(InstanceGroupConfigPreemptibilityOutput)
+}
+
+func (e InstanceGroupConfigPreemptibility) ToInstanceGroupConfigPreemptibilityOutputWithContext(ctx context.Context) InstanceGroupConfigPreemptibilityOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InstanceGroupConfigPreemptibilityOutput)
+}
+
+func (e InstanceGroupConfigPreemptibility) ToInstanceGroupConfigPreemptibilityPtrOutput() InstanceGroupConfigPreemptibilityPtrOutput {
+	return e.ToInstanceGroupConfigPreemptibilityPtrOutputWithContext(context.Background())
+}
+
+func (e InstanceGroupConfigPreemptibility) ToInstanceGroupConfigPreemptibilityPtrOutputWithContext(ctx context.Context) InstanceGroupConfigPreemptibilityPtrOutput {
+	return InstanceGroupConfigPreemptibility(e).ToInstanceGroupConfigPreemptibilityOutputWithContext(ctx).ToInstanceGroupConfigPreemptibilityPtrOutputWithContext(ctx)
 }
 
 func (e InstanceGroupConfigPreemptibility) ToStringOutput() pulumi.StringOutput {
@@ -76,8 +229,129 @@ func (e InstanceGroupConfigPreemptibility) ToStringPtrOutputWithContext(ctx cont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type InstanceGroupConfigPreemptibilityOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupConfigPreemptibilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceGroupConfigPreemptibility)(nil)).Elem()
+}
+
+func (o InstanceGroupConfigPreemptibilityOutput) ToInstanceGroupConfigPreemptibilityOutput() InstanceGroupConfigPreemptibilityOutput {
+	return o
+}
+
+func (o InstanceGroupConfigPreemptibilityOutput) ToInstanceGroupConfigPreemptibilityOutputWithContext(ctx context.Context) InstanceGroupConfigPreemptibilityOutput {
+	return o
+}
+
+func (o InstanceGroupConfigPreemptibilityOutput) ToInstanceGroupConfigPreemptibilityPtrOutput() InstanceGroupConfigPreemptibilityPtrOutput {
+	return o.ToInstanceGroupConfigPreemptibilityPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupConfigPreemptibilityOutput) ToInstanceGroupConfigPreemptibilityPtrOutputWithContext(ctx context.Context) InstanceGroupConfigPreemptibilityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceGroupConfigPreemptibility) *InstanceGroupConfigPreemptibility {
+		return &v
+	}).(InstanceGroupConfigPreemptibilityPtrOutput)
+}
+
+func (o InstanceGroupConfigPreemptibilityOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupConfigPreemptibilityOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceGroupConfigPreemptibility) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InstanceGroupConfigPreemptibilityOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupConfigPreemptibilityOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceGroupConfigPreemptibility) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceGroupConfigPreemptibilityPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceGroupConfigPreemptibilityPtrOutput) ElementType() reflect.Type {
+	return instanceGroupConfigPreemptibilityPtrType
+}
+
+func (o InstanceGroupConfigPreemptibilityPtrOutput) ToInstanceGroupConfigPreemptibilityPtrOutput() InstanceGroupConfigPreemptibilityPtrOutput {
+	return o
+}
+
+func (o InstanceGroupConfigPreemptibilityPtrOutput) ToInstanceGroupConfigPreemptibilityPtrOutputWithContext(ctx context.Context) InstanceGroupConfigPreemptibilityPtrOutput {
+	return o
+}
+
+func (o InstanceGroupConfigPreemptibilityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceGroupConfigPreemptibilityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstanceGroupConfigPreemptibility) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceGroupConfigPreemptibilityPtrOutput) Elem() InstanceGroupConfigPreemptibilityOutput {
+	return o.ApplyT(func(v *InstanceGroupConfigPreemptibility) InstanceGroupConfigPreemptibility {
+		var ret InstanceGroupConfigPreemptibility
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(InstanceGroupConfigPreemptibilityOutput)
+}
+
+// InstanceGroupConfigPreemptibilityInput is an input type that accepts InstanceGroupConfigPreemptibilityArgs and InstanceGroupConfigPreemptibilityOutput values.
+// You can construct a concrete instance of `InstanceGroupConfigPreemptibilityInput` via:
+//
+//          InstanceGroupConfigPreemptibilityArgs{...}
+type InstanceGroupConfigPreemptibilityInput interface {
+	pulumi.Input
+
+	ToInstanceGroupConfigPreemptibilityOutput() InstanceGroupConfigPreemptibilityOutput
+	ToInstanceGroupConfigPreemptibilityOutputWithContext(context.Context) InstanceGroupConfigPreemptibilityOutput
+}
+
+var instanceGroupConfigPreemptibilityPtrType = reflect.TypeOf((**InstanceGroupConfigPreemptibility)(nil)).Elem()
+
+type InstanceGroupConfigPreemptibilityPtrInput interface {
+	pulumi.Input
+
+	ToInstanceGroupConfigPreemptibilityPtrOutput() InstanceGroupConfigPreemptibilityPtrOutput
+	ToInstanceGroupConfigPreemptibilityPtrOutputWithContext(context.Context) InstanceGroupConfigPreemptibilityPtrOutput
+}
+
+type instanceGroupConfigPreemptibilityPtr string
+
+func InstanceGroupConfigPreemptibilityPtr(v string) InstanceGroupConfigPreemptibilityPtrInput {
+	return (*instanceGroupConfigPreemptibilityPtr)(&v)
+}
+
+func (*instanceGroupConfigPreemptibilityPtr) ElementType() reflect.Type {
+	return instanceGroupConfigPreemptibilityPtrType
+}
+
+func (in *instanceGroupConfigPreemptibilityPtr) ToInstanceGroupConfigPreemptibilityPtrOutput() InstanceGroupConfigPreemptibilityPtrOutput {
+	return pulumi.ToOutput(in).(InstanceGroupConfigPreemptibilityPtrOutput)
+}
+
+func (in *instanceGroupConfigPreemptibilityPtr) ToInstanceGroupConfigPreemptibilityPtrOutputWithContext(ctx context.Context) InstanceGroupConfigPreemptibilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupConfigPreemptibilityPtrOutput)
+}
+
 // Optional. Type of reservation to consume
-type ReservationAffinityConsumeReservationType pulumi.String
+type ReservationAffinityConsumeReservationType string
 
 const (
 	ReservationAffinityConsumeReservationTypeTypeUnspecified = ReservationAffinityConsumeReservationType("TYPE_UNSPECIFIED")
@@ -90,7 +364,23 @@ const (
 )
 
 func (ReservationAffinityConsumeReservationType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*ReservationAffinityConsumeReservationType)(nil)).Elem()
+}
+
+func (e ReservationAffinityConsumeReservationType) ToReservationAffinityConsumeReservationTypeOutput() ReservationAffinityConsumeReservationTypeOutput {
+	return pulumi.ToOutput(e).(ReservationAffinityConsumeReservationTypeOutput)
+}
+
+func (e ReservationAffinityConsumeReservationType) ToReservationAffinityConsumeReservationTypeOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ReservationAffinityConsumeReservationTypeOutput)
+}
+
+func (e ReservationAffinityConsumeReservationType) ToReservationAffinityConsumeReservationTypePtrOutput() ReservationAffinityConsumeReservationTypePtrOutput {
+	return e.ToReservationAffinityConsumeReservationTypePtrOutputWithContext(context.Background())
+}
+
+func (e ReservationAffinityConsumeReservationType) ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypePtrOutput {
+	return ReservationAffinityConsumeReservationType(e).ToReservationAffinityConsumeReservationTypeOutputWithContext(ctx).ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx)
 }
 
 func (e ReservationAffinityConsumeReservationType) ToStringOutput() pulumi.StringOutput {
@@ -109,7 +399,128 @@ func (e ReservationAffinityConsumeReservationType) ToStringPtrOutputWithContext(
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type SoftwareConfigOptionalComponentsItem pulumi.String
+type ReservationAffinityConsumeReservationTypeOutput struct{ *pulumi.OutputState }
+
+func (ReservationAffinityConsumeReservationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReservationAffinityConsumeReservationType)(nil)).Elem()
+}
+
+func (o ReservationAffinityConsumeReservationTypeOutput) ToReservationAffinityConsumeReservationTypeOutput() ReservationAffinityConsumeReservationTypeOutput {
+	return o
+}
+
+func (o ReservationAffinityConsumeReservationTypeOutput) ToReservationAffinityConsumeReservationTypeOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypeOutput {
+	return o
+}
+
+func (o ReservationAffinityConsumeReservationTypeOutput) ToReservationAffinityConsumeReservationTypePtrOutput() ReservationAffinityConsumeReservationTypePtrOutput {
+	return o.ToReservationAffinityConsumeReservationTypePtrOutputWithContext(context.Background())
+}
+
+func (o ReservationAffinityConsumeReservationTypeOutput) ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ReservationAffinityConsumeReservationType) *ReservationAffinityConsumeReservationType {
+		return &v
+	}).(ReservationAffinityConsumeReservationTypePtrOutput)
+}
+
+func (o ReservationAffinityConsumeReservationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ReservationAffinityConsumeReservationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ReservationAffinityConsumeReservationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ReservationAffinityConsumeReservationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ReservationAffinityConsumeReservationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ReservationAffinityConsumeReservationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ReservationAffinityConsumeReservationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ReservationAffinityConsumeReservationTypePtrOutput) ElementType() reflect.Type {
+	return reservationAffinityConsumeReservationTypePtrType
+}
+
+func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinityConsumeReservationTypePtrOutput() ReservationAffinityConsumeReservationTypePtrOutput {
+	return o
+}
+
+func (o ReservationAffinityConsumeReservationTypePtrOutput) ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypePtrOutput {
+	return o
+}
+
+func (o ReservationAffinityConsumeReservationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ReservationAffinityConsumeReservationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ReservationAffinityConsumeReservationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ReservationAffinityConsumeReservationTypePtrOutput) Elem() ReservationAffinityConsumeReservationTypeOutput {
+	return o.ApplyT(func(v *ReservationAffinityConsumeReservationType) ReservationAffinityConsumeReservationType {
+		var ret ReservationAffinityConsumeReservationType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ReservationAffinityConsumeReservationTypeOutput)
+}
+
+// ReservationAffinityConsumeReservationTypeInput is an input type that accepts ReservationAffinityConsumeReservationTypeArgs and ReservationAffinityConsumeReservationTypeOutput values.
+// You can construct a concrete instance of `ReservationAffinityConsumeReservationTypeInput` via:
+//
+//          ReservationAffinityConsumeReservationTypeArgs{...}
+type ReservationAffinityConsumeReservationTypeInput interface {
+	pulumi.Input
+
+	ToReservationAffinityConsumeReservationTypeOutput() ReservationAffinityConsumeReservationTypeOutput
+	ToReservationAffinityConsumeReservationTypeOutputWithContext(context.Context) ReservationAffinityConsumeReservationTypeOutput
+}
+
+var reservationAffinityConsumeReservationTypePtrType = reflect.TypeOf((**ReservationAffinityConsumeReservationType)(nil)).Elem()
+
+type ReservationAffinityConsumeReservationTypePtrInput interface {
+	pulumi.Input
+
+	ToReservationAffinityConsumeReservationTypePtrOutput() ReservationAffinityConsumeReservationTypePtrOutput
+	ToReservationAffinityConsumeReservationTypePtrOutputWithContext(context.Context) ReservationAffinityConsumeReservationTypePtrOutput
+}
+
+type reservationAffinityConsumeReservationTypePtr string
+
+func ReservationAffinityConsumeReservationTypePtr(v string) ReservationAffinityConsumeReservationTypePtrInput {
+	return (*reservationAffinityConsumeReservationTypePtr)(&v)
+}
+
+func (*reservationAffinityConsumeReservationTypePtr) ElementType() reflect.Type {
+	return reservationAffinityConsumeReservationTypePtrType
+}
+
+func (in *reservationAffinityConsumeReservationTypePtr) ToReservationAffinityConsumeReservationTypePtrOutput() ReservationAffinityConsumeReservationTypePtrOutput {
+	return pulumi.ToOutput(in).(ReservationAffinityConsumeReservationTypePtrOutput)
+}
+
+func (in *reservationAffinityConsumeReservationTypePtr) ToReservationAffinityConsumeReservationTypePtrOutputWithContext(ctx context.Context) ReservationAffinityConsumeReservationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ReservationAffinityConsumeReservationTypePtrOutput)
+}
+
+type SoftwareConfigOptionalComponentsItem string
 
 const (
 	// Unspecified component. Specifying this will cause Cluster creation to fail.
@@ -141,7 +552,23 @@ const (
 )
 
 func (SoftwareConfigOptionalComponentsItem) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*SoftwareConfigOptionalComponentsItem)(nil)).Elem()
+}
+
+func (e SoftwareConfigOptionalComponentsItem) ToSoftwareConfigOptionalComponentsItemOutput() SoftwareConfigOptionalComponentsItemOutput {
+	return pulumi.ToOutput(e).(SoftwareConfigOptionalComponentsItemOutput)
+}
+
+func (e SoftwareConfigOptionalComponentsItem) ToSoftwareConfigOptionalComponentsItemOutputWithContext(ctx context.Context) SoftwareConfigOptionalComponentsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SoftwareConfigOptionalComponentsItemOutput)
+}
+
+func (e SoftwareConfigOptionalComponentsItem) ToSoftwareConfigOptionalComponentsItemPtrOutput() SoftwareConfigOptionalComponentsItemPtrOutput {
+	return e.ToSoftwareConfigOptionalComponentsItemPtrOutputWithContext(context.Background())
+}
+
+func (e SoftwareConfigOptionalComponentsItem) ToSoftwareConfigOptionalComponentsItemPtrOutputWithContext(ctx context.Context) SoftwareConfigOptionalComponentsItemPtrOutput {
+	return SoftwareConfigOptionalComponentsItem(e).ToSoftwareConfigOptionalComponentsItemOutputWithContext(ctx).ToSoftwareConfigOptionalComponentsItemPtrOutputWithContext(ctx)
 }
 
 func (e SoftwareConfigOptionalComponentsItem) ToStringOutput() pulumi.StringOutput {
@@ -158,6 +585,127 @@ func (e SoftwareConfigOptionalComponentsItem) ToStringPtrOutput() pulumi.StringP
 
 func (e SoftwareConfigOptionalComponentsItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SoftwareConfigOptionalComponentsItemOutput struct{ *pulumi.OutputState }
+
+func (SoftwareConfigOptionalComponentsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareConfigOptionalComponentsItem)(nil)).Elem()
+}
+
+func (o SoftwareConfigOptionalComponentsItemOutput) ToSoftwareConfigOptionalComponentsItemOutput() SoftwareConfigOptionalComponentsItemOutput {
+	return o
+}
+
+func (o SoftwareConfigOptionalComponentsItemOutput) ToSoftwareConfigOptionalComponentsItemOutputWithContext(ctx context.Context) SoftwareConfigOptionalComponentsItemOutput {
+	return o
+}
+
+func (o SoftwareConfigOptionalComponentsItemOutput) ToSoftwareConfigOptionalComponentsItemPtrOutput() SoftwareConfigOptionalComponentsItemPtrOutput {
+	return o.ToSoftwareConfigOptionalComponentsItemPtrOutputWithContext(context.Background())
+}
+
+func (o SoftwareConfigOptionalComponentsItemOutput) ToSoftwareConfigOptionalComponentsItemPtrOutputWithContext(ctx context.Context) SoftwareConfigOptionalComponentsItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareConfigOptionalComponentsItem) *SoftwareConfigOptionalComponentsItem {
+		return &v
+	}).(SoftwareConfigOptionalComponentsItemPtrOutput)
+}
+
+func (o SoftwareConfigOptionalComponentsItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SoftwareConfigOptionalComponentsItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SoftwareConfigOptionalComponentsItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SoftwareConfigOptionalComponentsItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SoftwareConfigOptionalComponentsItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SoftwareConfigOptionalComponentsItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SoftwareConfigOptionalComponentsItemPtrOutput struct{ *pulumi.OutputState }
+
+func (SoftwareConfigOptionalComponentsItemPtrOutput) ElementType() reflect.Type {
+	return softwareConfigOptionalComponentsItemPtrType
+}
+
+func (o SoftwareConfigOptionalComponentsItemPtrOutput) ToSoftwareConfigOptionalComponentsItemPtrOutput() SoftwareConfigOptionalComponentsItemPtrOutput {
+	return o
+}
+
+func (o SoftwareConfigOptionalComponentsItemPtrOutput) ToSoftwareConfigOptionalComponentsItemPtrOutputWithContext(ctx context.Context) SoftwareConfigOptionalComponentsItemPtrOutput {
+	return o
+}
+
+func (o SoftwareConfigOptionalComponentsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SoftwareConfigOptionalComponentsItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SoftwareConfigOptionalComponentsItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SoftwareConfigOptionalComponentsItemPtrOutput) Elem() SoftwareConfigOptionalComponentsItemOutput {
+	return o.ApplyT(func(v *SoftwareConfigOptionalComponentsItem) SoftwareConfigOptionalComponentsItem {
+		var ret SoftwareConfigOptionalComponentsItem
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(SoftwareConfigOptionalComponentsItemOutput)
+}
+
+// SoftwareConfigOptionalComponentsItemInput is an input type that accepts SoftwareConfigOptionalComponentsItemArgs and SoftwareConfigOptionalComponentsItemOutput values.
+// You can construct a concrete instance of `SoftwareConfigOptionalComponentsItemInput` via:
+//
+//          SoftwareConfigOptionalComponentsItemArgs{...}
+type SoftwareConfigOptionalComponentsItemInput interface {
+	pulumi.Input
+
+	ToSoftwareConfigOptionalComponentsItemOutput() SoftwareConfigOptionalComponentsItemOutput
+	ToSoftwareConfigOptionalComponentsItemOutputWithContext(context.Context) SoftwareConfigOptionalComponentsItemOutput
+}
+
+var softwareConfigOptionalComponentsItemPtrType = reflect.TypeOf((**SoftwareConfigOptionalComponentsItem)(nil)).Elem()
+
+type SoftwareConfigOptionalComponentsItemPtrInput interface {
+	pulumi.Input
+
+	ToSoftwareConfigOptionalComponentsItemPtrOutput() SoftwareConfigOptionalComponentsItemPtrOutput
+	ToSoftwareConfigOptionalComponentsItemPtrOutputWithContext(context.Context) SoftwareConfigOptionalComponentsItemPtrOutput
+}
+
+type softwareConfigOptionalComponentsItemPtr string
+
+func SoftwareConfigOptionalComponentsItemPtr(v string) SoftwareConfigOptionalComponentsItemPtrInput {
+	return (*softwareConfigOptionalComponentsItemPtr)(&v)
+}
+
+func (*softwareConfigOptionalComponentsItemPtr) ElementType() reflect.Type {
+	return softwareConfigOptionalComponentsItemPtrType
+}
+
+func (in *softwareConfigOptionalComponentsItemPtr) ToSoftwareConfigOptionalComponentsItemPtrOutput() SoftwareConfigOptionalComponentsItemPtrOutput {
+	return pulumi.ToOutput(in).(SoftwareConfigOptionalComponentsItemPtrOutput)
+}
+
+func (in *softwareConfigOptionalComponentsItemPtr) ToSoftwareConfigOptionalComponentsItemPtrOutputWithContext(ctx context.Context) SoftwareConfigOptionalComponentsItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SoftwareConfigOptionalComponentsItemPtrOutput)
 }
 
 // SoftwareConfigOptionalComponentsItemArrayInput is an input type that accepts SoftwareConfigOptionalComponentsItemArray and SoftwareConfigOptionalComponentsItemArrayOutput values.
@@ -199,8 +747,20 @@ func (o SoftwareConfigOptionalComponentsItemArrayOutput) ToSoftwareConfigOptiona
 	return o
 }
 
-func (o SoftwareConfigOptionalComponentsItemArrayOutput) Index(i pulumi.IntInput) pulumi.StringOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) pulumi.StringOutput {
-		return vs[0].([]SoftwareConfigOptionalComponentsItem)[vs[1].(int)].ToStringOutput()
-	}).(pulumi.StringOutput)
+func (o SoftwareConfigOptionalComponentsItemArrayOutput) Index(i pulumi.IntInput) SoftwareConfigOptionalComponentsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SoftwareConfigOptionalComponentsItemOutput {
+		return vs[0].([]SoftwareConfigOptionalComponentsItem)[vs[1].(int)].ToSoftwareConfigOptionalComponentsItemOutput()
+	}).(SoftwareConfigOptionalComponentsItemOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GceClusterConfigPrivateIpv6GoogleAccessOutput{})
+	pulumi.RegisterOutputType(GceClusterConfigPrivateIpv6GoogleAccessPtrOutput{})
+	pulumi.RegisterOutputType(InstanceGroupConfigPreemptibilityOutput{})
+	pulumi.RegisterOutputType(InstanceGroupConfigPreemptibilityPtrOutput{})
+	pulumi.RegisterOutputType(ReservationAffinityConsumeReservationTypeOutput{})
+	pulumi.RegisterOutputType(ReservationAffinityConsumeReservationTypePtrOutput{})
+	pulumi.RegisterOutputType(SoftwareConfigOptionalComponentsItemOutput{})
+	pulumi.RegisterOutputType(SoftwareConfigOptionalComponentsItemPtrOutput{})
+	pulumi.RegisterOutputType(SoftwareConfigOptionalComponentsItemArrayOutput{})
 }

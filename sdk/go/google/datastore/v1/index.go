@@ -37,6 +37,9 @@ func NewIndex(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Ancestor == nil {
+		return nil, errors.New("invalid value for required argument 'Ancestor'")
+	}
 	if args.Kind == nil {
 		return nil, errors.New("invalid value for required argument 'Kind'")
 	}
@@ -68,33 +71,9 @@ func GetIndex(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Index resources.
 type indexState struct {
-	// The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
-	Ancestor *string `pulumi:"ancestor"`
-	// The resource ID of the index.
-	IndexId *string `pulumi:"indexId"`
-	// The entity kind to which this index applies.
-	Kind *string `pulumi:"kind"`
-	// Project ID.
-	Project *string `pulumi:"project"`
-	// An ordered sequence of property names and their index attributes.
-	Properties []GoogleDatastoreAdminV1IndexedPropertyResponse `pulumi:"properties"`
-	// The state of the index.
-	State *string `pulumi:"state"`
 }
 
 type IndexState struct {
-	// The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
-	Ancestor pulumi.StringPtrInput
-	// The resource ID of the index.
-	IndexId pulumi.StringPtrInput
-	// The entity kind to which this index applies.
-	Kind pulumi.StringPtrInput
-	// Project ID.
-	Project pulumi.StringPtrInput
-	// An ordered sequence of property names and their index attributes.
-	Properties GoogleDatastoreAdminV1IndexedPropertyResponseArrayInput
-	// The state of the index.
-	State pulumi.StringPtrInput
 }
 
 func (IndexState) ElementType() reflect.Type {
@@ -103,7 +82,7 @@ func (IndexState) ElementType() reflect.Type {
 
 type indexArgs struct {
 	// The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
-	Ancestor string `pulumi:"ancestor"`
+	Ancestor IndexAncestor `pulumi:"ancestor"`
 	// The entity kind to which this index applies.
 	Kind    string `pulumi:"kind"`
 	Project string `pulumi:"project"`
@@ -114,7 +93,7 @@ type indexArgs struct {
 // The set of arguments for constructing a Index resource.
 type IndexArgs struct {
 	// The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
-	Ancestor IndexAncestor
+	Ancestor IndexAncestorInput
 	// The entity kind to which this index applies.
 	Kind    pulumi.StringInput
 	Project pulumi.StringInput

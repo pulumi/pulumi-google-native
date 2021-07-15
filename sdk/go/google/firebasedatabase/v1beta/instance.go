@@ -62,29 +62,9 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// Immutable. The globally unique hostname of the database.
-	DatabaseUrl *string `pulumi:"databaseUrl"`
-	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
-	Name *string `pulumi:"name"`
-	// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
-	Project *string `pulumi:"project"`
-	// The database's lifecycle state. Read-only.
-	State *string `pulumi:"state"`
-	// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
-	Type *string `pulumi:"type"`
 }
 
 type InstanceState struct {
-	// Immutable. The globally unique hostname of the database.
-	DatabaseUrl pulumi.StringPtrInput
-	// The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
-	Name pulumi.StringPtrInput
-	// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
-	Project pulumi.StringPtrInput
-	// The database's lifecycle state. Read-only.
-	State pulumi.StringPtrInput
-	// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
-	Type pulumi.StringPtrInput
 }
 
 func (InstanceState) ElementType() reflect.Type {
@@ -101,10 +81,10 @@ type instanceArgs struct {
 	// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
 	Project string `pulumi:"project"`
 	// The database's lifecycle state. Read-only.
-	State *string `pulumi:"state"`
+	State *InstanceStateEnum `pulumi:"state"`
 	// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
-	Type         *string `pulumi:"type"`
-	ValidateOnly *string `pulumi:"validateOnly"`
+	Type         *InstanceType `pulumi:"type"`
+	ValidateOnly *string       `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -118,9 +98,9 @@ type InstanceArgs struct {
 	// The resource name of the project this instance belongs to. For example: `projects/{project-number}`.
 	Project pulumi.StringInput
 	// The database's lifecycle state. Read-only.
-	State *InstanceStateEnum
+	State InstanceStateEnumPtrInput
 	// The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
-	Type         *InstanceType
+	Type         InstanceTypePtrInput
 	ValidateOnly pulumi.StringPtrInput
 }
 

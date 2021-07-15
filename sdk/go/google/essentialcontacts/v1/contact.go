@@ -65,33 +65,9 @@ func GetContact(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Contact resources.
 type contactState struct {
-	// The email address to send notifications to. This does not need to be a Google account.
-	Email *string `pulumi:"email"`
-	// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
-	LanguageTag *string `pulumi:"languageTag"`
-	// The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
-	Name *string `pulumi:"name"`
-	// The categories of notifications that the contact will receive communications for.
-	NotificationCategorySubscriptions []string `pulumi:"notificationCategorySubscriptions"`
-	// The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
-	ValidateTime *string `pulumi:"validateTime"`
-	// The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
-	ValidationState *string `pulumi:"validationState"`
 }
 
 type ContactState struct {
-	// The email address to send notifications to. This does not need to be a Google account.
-	Email pulumi.StringPtrInput
-	// The preferred language for notifications, as a ISO 639-1 language code. See [Supported languages](https://cloud.google.com/resource-manager/docs/managing-notification-contacts#supported-languages) for a list of supported languages.
-	LanguageTag pulumi.StringPtrInput
-	// The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
-	Name pulumi.StringPtrInput
-	// The categories of notifications that the contact will receive communications for.
-	NotificationCategorySubscriptions pulumi.StringArrayInput
-	// The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
-	ValidateTime pulumi.StringPtrInput
-	// The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
-	ValidationState pulumi.StringPtrInput
 }
 
 func (ContactState) ElementType() reflect.Type {
@@ -106,12 +82,12 @@ type contactArgs struct {
 	// The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id}
 	Name *string `pulumi:"name"`
 	// The categories of notifications that the contact will receive communications for.
-	NotificationCategorySubscriptions []string `pulumi:"notificationCategorySubscriptions"`
-	Project                           string   `pulumi:"project"`
+	NotificationCategorySubscriptions []ContactNotificationCategorySubscriptionsItem `pulumi:"notificationCategorySubscriptions"`
+	Project                           string                                         `pulumi:"project"`
 	// The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
 	ValidateTime *string `pulumi:"validateTime"`
 	// The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
-	ValidationState *string `pulumi:"validationState"`
+	ValidationState *ContactValidationState `pulumi:"validationState"`
 }
 
 // The set of arguments for constructing a Contact resource.
@@ -128,7 +104,7 @@ type ContactArgs struct {
 	// The last time the validation_state was updated, either manually or automatically. A contact is considered stale if its validation state was updated more than 1 year ago.
 	ValidateTime pulumi.StringPtrInput
 	// The validity of the contact. A contact is considered valid if it is the correct recipient for notifications for a particular resource.
-	ValidationState *ContactValidationState
+	ValidationState ContactValidationStatePtrInput
 }
 
 func (ContactArgs) ElementType() reflect.Type {

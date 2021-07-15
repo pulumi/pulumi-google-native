@@ -59,17 +59,9 @@ func GetJobTemplate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering JobTemplate resources.
 type jobTemplateState struct {
-	// The configuration for this template.
-	Config *JobConfigResponse `pulumi:"config"`
-	// The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
-	Name *string `pulumi:"name"`
 }
 
 type JobTemplateState struct {
-	// The configuration for this template.
-	Config JobConfigResponsePtrInput
-	// The resource name of the job template. Format: `projects/{project}/locations/{location}/jobTemplates/{job_template}`
-	Name pulumi.StringPtrInput
 }
 
 func (JobTemplateState) ElementType() reflect.Type {

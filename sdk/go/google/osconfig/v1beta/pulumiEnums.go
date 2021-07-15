@@ -11,7 +11,7 @@ import (
 )
 
 // Type of archive files in this repository. The default behavior is DEB.
-type AptRepositoryArchiveType pulumi.String
+type AptRepositoryArchiveType string
 
 const (
 	// Unspecified.
@@ -23,7 +23,23 @@ const (
 )
 
 func (AptRepositoryArchiveType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*AptRepositoryArchiveType)(nil)).Elem()
+}
+
+func (e AptRepositoryArchiveType) ToAptRepositoryArchiveTypeOutput() AptRepositoryArchiveTypeOutput {
+	return pulumi.ToOutput(e).(AptRepositoryArchiveTypeOutput)
+}
+
+func (e AptRepositoryArchiveType) ToAptRepositoryArchiveTypeOutputWithContext(ctx context.Context) AptRepositoryArchiveTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AptRepositoryArchiveTypeOutput)
+}
+
+func (e AptRepositoryArchiveType) ToAptRepositoryArchiveTypePtrOutput() AptRepositoryArchiveTypePtrOutput {
+	return e.ToAptRepositoryArchiveTypePtrOutputWithContext(context.Background())
+}
+
+func (e AptRepositoryArchiveType) ToAptRepositoryArchiveTypePtrOutputWithContext(ctx context.Context) AptRepositoryArchiveTypePtrOutput {
+	return AptRepositoryArchiveType(e).ToAptRepositoryArchiveTypeOutputWithContext(ctx).ToAptRepositoryArchiveTypePtrOutputWithContext(ctx)
 }
 
 func (e AptRepositoryArchiveType) ToStringOutput() pulumi.StringOutput {
@@ -42,8 +58,129 @@ func (e AptRepositoryArchiveType) ToStringPtrOutputWithContext(ctx context.Conte
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type AptRepositoryArchiveTypeOutput struct{ *pulumi.OutputState }
+
+func (AptRepositoryArchiveTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AptRepositoryArchiveType)(nil)).Elem()
+}
+
+func (o AptRepositoryArchiveTypeOutput) ToAptRepositoryArchiveTypeOutput() AptRepositoryArchiveTypeOutput {
+	return o
+}
+
+func (o AptRepositoryArchiveTypeOutput) ToAptRepositoryArchiveTypeOutputWithContext(ctx context.Context) AptRepositoryArchiveTypeOutput {
+	return o
+}
+
+func (o AptRepositoryArchiveTypeOutput) ToAptRepositoryArchiveTypePtrOutput() AptRepositoryArchiveTypePtrOutput {
+	return o.ToAptRepositoryArchiveTypePtrOutputWithContext(context.Background())
+}
+
+func (o AptRepositoryArchiveTypeOutput) ToAptRepositoryArchiveTypePtrOutputWithContext(ctx context.Context) AptRepositoryArchiveTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AptRepositoryArchiveType) *AptRepositoryArchiveType {
+		return &v
+	}).(AptRepositoryArchiveTypePtrOutput)
+}
+
+func (o AptRepositoryArchiveTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AptRepositoryArchiveTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AptRepositoryArchiveType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AptRepositoryArchiveTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AptRepositoryArchiveTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AptRepositoryArchiveType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AptRepositoryArchiveTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AptRepositoryArchiveTypePtrOutput) ElementType() reflect.Type {
+	return aptRepositoryArchiveTypePtrType
+}
+
+func (o AptRepositoryArchiveTypePtrOutput) ToAptRepositoryArchiveTypePtrOutput() AptRepositoryArchiveTypePtrOutput {
+	return o
+}
+
+func (o AptRepositoryArchiveTypePtrOutput) ToAptRepositoryArchiveTypePtrOutputWithContext(ctx context.Context) AptRepositoryArchiveTypePtrOutput {
+	return o
+}
+
+func (o AptRepositoryArchiveTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AptRepositoryArchiveTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AptRepositoryArchiveType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AptRepositoryArchiveTypePtrOutput) Elem() AptRepositoryArchiveTypeOutput {
+	return o.ApplyT(func(v *AptRepositoryArchiveType) AptRepositoryArchiveType {
+		var ret AptRepositoryArchiveType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(AptRepositoryArchiveTypeOutput)
+}
+
+// AptRepositoryArchiveTypeInput is an input type that accepts AptRepositoryArchiveTypeArgs and AptRepositoryArchiveTypeOutput values.
+// You can construct a concrete instance of `AptRepositoryArchiveTypeInput` via:
+//
+//          AptRepositoryArchiveTypeArgs{...}
+type AptRepositoryArchiveTypeInput interface {
+	pulumi.Input
+
+	ToAptRepositoryArchiveTypeOutput() AptRepositoryArchiveTypeOutput
+	ToAptRepositoryArchiveTypeOutputWithContext(context.Context) AptRepositoryArchiveTypeOutput
+}
+
+var aptRepositoryArchiveTypePtrType = reflect.TypeOf((**AptRepositoryArchiveType)(nil)).Elem()
+
+type AptRepositoryArchiveTypePtrInput interface {
+	pulumi.Input
+
+	ToAptRepositoryArchiveTypePtrOutput() AptRepositoryArchiveTypePtrOutput
+	ToAptRepositoryArchiveTypePtrOutputWithContext(context.Context) AptRepositoryArchiveTypePtrOutput
+}
+
+type aptRepositoryArchiveTypePtr string
+
+func AptRepositoryArchiveTypePtr(v string) AptRepositoryArchiveTypePtrInput {
+	return (*aptRepositoryArchiveTypePtr)(&v)
+}
+
+func (*aptRepositoryArchiveTypePtr) ElementType() reflect.Type {
+	return aptRepositoryArchiveTypePtrType
+}
+
+func (in *aptRepositoryArchiveTypePtr) ToAptRepositoryArchiveTypePtrOutput() AptRepositoryArchiveTypePtrOutput {
+	return pulumi.ToOutput(in).(AptRepositoryArchiveTypePtrOutput)
+}
+
+func (in *aptRepositoryArchiveTypePtr) ToAptRepositoryArchiveTypePtrOutputWithContext(ctx context.Context) AptRepositoryArchiveTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AptRepositoryArchiveTypePtrOutput)
+}
+
 // By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
-type AptSettingsType pulumi.String
+type AptSettingsType string
 
 const (
 	// By default, upgrade will be performed.
@@ -55,7 +192,23 @@ const (
 )
 
 func (AptSettingsType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*AptSettingsType)(nil)).Elem()
+}
+
+func (e AptSettingsType) ToAptSettingsTypeOutput() AptSettingsTypeOutput {
+	return pulumi.ToOutput(e).(AptSettingsTypeOutput)
+}
+
+func (e AptSettingsType) ToAptSettingsTypeOutputWithContext(ctx context.Context) AptSettingsTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AptSettingsTypeOutput)
+}
+
+func (e AptSettingsType) ToAptSettingsTypePtrOutput() AptSettingsTypePtrOutput {
+	return e.ToAptSettingsTypePtrOutputWithContext(context.Background())
+}
+
+func (e AptSettingsType) ToAptSettingsTypePtrOutputWithContext(ctx context.Context) AptSettingsTypePtrOutput {
+	return AptSettingsType(e).ToAptSettingsTypeOutputWithContext(ctx).ToAptSettingsTypePtrOutputWithContext(ctx)
 }
 
 func (e AptSettingsType) ToStringOutput() pulumi.StringOutput {
@@ -74,8 +227,129 @@ func (e AptSettingsType) ToStringPtrOutputWithContext(ctx context.Context) pulum
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type AptSettingsTypeOutput struct{ *pulumi.OutputState }
+
+func (AptSettingsTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AptSettingsType)(nil)).Elem()
+}
+
+func (o AptSettingsTypeOutput) ToAptSettingsTypeOutput() AptSettingsTypeOutput {
+	return o
+}
+
+func (o AptSettingsTypeOutput) ToAptSettingsTypeOutputWithContext(ctx context.Context) AptSettingsTypeOutput {
+	return o
+}
+
+func (o AptSettingsTypeOutput) ToAptSettingsTypePtrOutput() AptSettingsTypePtrOutput {
+	return o.ToAptSettingsTypePtrOutputWithContext(context.Background())
+}
+
+func (o AptSettingsTypeOutput) ToAptSettingsTypePtrOutputWithContext(ctx context.Context) AptSettingsTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AptSettingsType) *AptSettingsType {
+		return &v
+	}).(AptSettingsTypePtrOutput)
+}
+
+func (o AptSettingsTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AptSettingsTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AptSettingsType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AptSettingsTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AptSettingsTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AptSettingsType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AptSettingsTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AptSettingsTypePtrOutput) ElementType() reflect.Type {
+	return aptSettingsTypePtrType
+}
+
+func (o AptSettingsTypePtrOutput) ToAptSettingsTypePtrOutput() AptSettingsTypePtrOutput {
+	return o
+}
+
+func (o AptSettingsTypePtrOutput) ToAptSettingsTypePtrOutputWithContext(ctx context.Context) AptSettingsTypePtrOutput {
+	return o
+}
+
+func (o AptSettingsTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AptSettingsTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AptSettingsType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AptSettingsTypePtrOutput) Elem() AptSettingsTypeOutput {
+	return o.ApplyT(func(v *AptSettingsType) AptSettingsType {
+		var ret AptSettingsType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(AptSettingsTypeOutput)
+}
+
+// AptSettingsTypeInput is an input type that accepts AptSettingsTypeArgs and AptSettingsTypeOutput values.
+// You can construct a concrete instance of `AptSettingsTypeInput` via:
+//
+//          AptSettingsTypeArgs{...}
+type AptSettingsTypeInput interface {
+	pulumi.Input
+
+	ToAptSettingsTypeOutput() AptSettingsTypeOutput
+	ToAptSettingsTypeOutputWithContext(context.Context) AptSettingsTypeOutput
+}
+
+var aptSettingsTypePtrType = reflect.TypeOf((**AptSettingsType)(nil)).Elem()
+
+type AptSettingsTypePtrInput interface {
+	pulumi.Input
+
+	ToAptSettingsTypePtrOutput() AptSettingsTypePtrOutput
+	ToAptSettingsTypePtrOutputWithContext(context.Context) AptSettingsTypePtrOutput
+}
+
+type aptSettingsTypePtr string
+
+func AptSettingsTypePtr(v string) AptSettingsTypePtrInput {
+	return (*aptSettingsTypePtr)(&v)
+}
+
+func (*aptSettingsTypePtr) ElementType() reflect.Type {
+	return aptSettingsTypePtrType
+}
+
+func (in *aptSettingsTypePtr) ToAptSettingsTypePtrOutput() AptSettingsTypePtrOutput {
+	return pulumi.ToOutput(in).(AptSettingsTypePtrOutput)
+}
+
+func (in *aptSettingsTypePtr) ToAptSettingsTypePtrOutputWithContext(ctx context.Context) AptSettingsTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AptSettingsTypePtrOutput)
+}
+
 // The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
-type ExecStepConfigInterpreter pulumi.String
+type ExecStepConfigInterpreter string
 
 const (
 	// Invalid for a Windows ExecStepConfig. For a Linux ExecStepConfig, the interpreter will be parsed from the shebang line of the script if unspecified.
@@ -87,7 +361,23 @@ const (
 )
 
 func (ExecStepConfigInterpreter) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*ExecStepConfigInterpreter)(nil)).Elem()
+}
+
+func (e ExecStepConfigInterpreter) ToExecStepConfigInterpreterOutput() ExecStepConfigInterpreterOutput {
+	return pulumi.ToOutput(e).(ExecStepConfigInterpreterOutput)
+}
+
+func (e ExecStepConfigInterpreter) ToExecStepConfigInterpreterOutputWithContext(ctx context.Context) ExecStepConfigInterpreterOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ExecStepConfigInterpreterOutput)
+}
+
+func (e ExecStepConfigInterpreter) ToExecStepConfigInterpreterPtrOutput() ExecStepConfigInterpreterPtrOutput {
+	return e.ToExecStepConfigInterpreterPtrOutputWithContext(context.Background())
+}
+
+func (e ExecStepConfigInterpreter) ToExecStepConfigInterpreterPtrOutputWithContext(ctx context.Context) ExecStepConfigInterpreterPtrOutput {
+	return ExecStepConfigInterpreter(e).ToExecStepConfigInterpreterOutputWithContext(ctx).ToExecStepConfigInterpreterPtrOutputWithContext(ctx)
 }
 
 func (e ExecStepConfigInterpreter) ToStringOutput() pulumi.StringOutput {
@@ -106,8 +396,129 @@ func (e ExecStepConfigInterpreter) ToStringPtrOutputWithContext(ctx context.Cont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type ExecStepConfigInterpreterOutput struct{ *pulumi.OutputState }
+
+func (ExecStepConfigInterpreterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExecStepConfigInterpreter)(nil)).Elem()
+}
+
+func (o ExecStepConfigInterpreterOutput) ToExecStepConfigInterpreterOutput() ExecStepConfigInterpreterOutput {
+	return o
+}
+
+func (o ExecStepConfigInterpreterOutput) ToExecStepConfigInterpreterOutputWithContext(ctx context.Context) ExecStepConfigInterpreterOutput {
+	return o
+}
+
+func (o ExecStepConfigInterpreterOutput) ToExecStepConfigInterpreterPtrOutput() ExecStepConfigInterpreterPtrOutput {
+	return o.ToExecStepConfigInterpreterPtrOutputWithContext(context.Background())
+}
+
+func (o ExecStepConfigInterpreterOutput) ToExecStepConfigInterpreterPtrOutputWithContext(ctx context.Context) ExecStepConfigInterpreterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExecStepConfigInterpreter) *ExecStepConfigInterpreter {
+		return &v
+	}).(ExecStepConfigInterpreterPtrOutput)
+}
+
+func (o ExecStepConfigInterpreterOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ExecStepConfigInterpreterOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExecStepConfigInterpreter) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ExecStepConfigInterpreterOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExecStepConfigInterpreterOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExecStepConfigInterpreter) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ExecStepConfigInterpreterPtrOutput struct{ *pulumi.OutputState }
+
+func (ExecStepConfigInterpreterPtrOutput) ElementType() reflect.Type {
+	return execStepConfigInterpreterPtrType
+}
+
+func (o ExecStepConfigInterpreterPtrOutput) ToExecStepConfigInterpreterPtrOutput() ExecStepConfigInterpreterPtrOutput {
+	return o
+}
+
+func (o ExecStepConfigInterpreterPtrOutput) ToExecStepConfigInterpreterPtrOutputWithContext(ctx context.Context) ExecStepConfigInterpreterPtrOutput {
+	return o
+}
+
+func (o ExecStepConfigInterpreterPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExecStepConfigInterpreterPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ExecStepConfigInterpreter) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ExecStepConfigInterpreterPtrOutput) Elem() ExecStepConfigInterpreterOutput {
+	return o.ApplyT(func(v *ExecStepConfigInterpreter) ExecStepConfigInterpreter {
+		var ret ExecStepConfigInterpreter
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ExecStepConfigInterpreterOutput)
+}
+
+// ExecStepConfigInterpreterInput is an input type that accepts ExecStepConfigInterpreterArgs and ExecStepConfigInterpreterOutput values.
+// You can construct a concrete instance of `ExecStepConfigInterpreterInput` via:
+//
+//          ExecStepConfigInterpreterArgs{...}
+type ExecStepConfigInterpreterInput interface {
+	pulumi.Input
+
+	ToExecStepConfigInterpreterOutput() ExecStepConfigInterpreterOutput
+	ToExecStepConfigInterpreterOutputWithContext(context.Context) ExecStepConfigInterpreterOutput
+}
+
+var execStepConfigInterpreterPtrType = reflect.TypeOf((**ExecStepConfigInterpreter)(nil)).Elem()
+
+type ExecStepConfigInterpreterPtrInput interface {
+	pulumi.Input
+
+	ToExecStepConfigInterpreterPtrOutput() ExecStepConfigInterpreterPtrOutput
+	ToExecStepConfigInterpreterPtrOutputWithContext(context.Context) ExecStepConfigInterpreterPtrOutput
+}
+
+type execStepConfigInterpreterPtr string
+
+func ExecStepConfigInterpreterPtr(v string) ExecStepConfigInterpreterPtrInput {
+	return (*execStepConfigInterpreterPtr)(&v)
+}
+
+func (*execStepConfigInterpreterPtr) ElementType() reflect.Type {
+	return execStepConfigInterpreterPtrType
+}
+
+func (in *execStepConfigInterpreterPtr) ToExecStepConfigInterpreterPtrOutput() ExecStepConfigInterpreterPtrOutput {
+	return pulumi.ToOutput(in).(ExecStepConfigInterpreterPtrOutput)
+}
+
+func (in *execStepConfigInterpreterPtr) ToExecStepConfigInterpreterPtrOutputWithContext(ctx context.Context) ExecStepConfigInterpreterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ExecStepConfigInterpreterPtrOutput)
+}
+
 // The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
-type PackageDesiredState pulumi.String
+type PackageDesiredState string
 
 const (
 	// The default is to ensure the package is installed.
@@ -121,7 +532,23 @@ const (
 )
 
 func (PackageDesiredState) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*PackageDesiredState)(nil)).Elem()
+}
+
+func (e PackageDesiredState) ToPackageDesiredStateOutput() PackageDesiredStateOutput {
+	return pulumi.ToOutput(e).(PackageDesiredStateOutput)
+}
+
+func (e PackageDesiredState) ToPackageDesiredStateOutputWithContext(ctx context.Context) PackageDesiredStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PackageDesiredStateOutput)
+}
+
+func (e PackageDesiredState) ToPackageDesiredStatePtrOutput() PackageDesiredStatePtrOutput {
+	return e.ToPackageDesiredStatePtrOutputWithContext(context.Background())
+}
+
+func (e PackageDesiredState) ToPackageDesiredStatePtrOutputWithContext(ctx context.Context) PackageDesiredStatePtrOutput {
+	return PackageDesiredState(e).ToPackageDesiredStateOutputWithContext(ctx).ToPackageDesiredStatePtrOutputWithContext(ctx)
 }
 
 func (e PackageDesiredState) ToStringOutput() pulumi.StringOutput {
@@ -140,8 +567,129 @@ func (e PackageDesiredState) ToStringPtrOutputWithContext(ctx context.Context) p
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type PackageDesiredStateOutput struct{ *pulumi.OutputState }
+
+func (PackageDesiredStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageDesiredState)(nil)).Elem()
+}
+
+func (o PackageDesiredStateOutput) ToPackageDesiredStateOutput() PackageDesiredStateOutput {
+	return o
+}
+
+func (o PackageDesiredStateOutput) ToPackageDesiredStateOutputWithContext(ctx context.Context) PackageDesiredStateOutput {
+	return o
+}
+
+func (o PackageDesiredStateOutput) ToPackageDesiredStatePtrOutput() PackageDesiredStatePtrOutput {
+	return o.ToPackageDesiredStatePtrOutputWithContext(context.Background())
+}
+
+func (o PackageDesiredStateOutput) ToPackageDesiredStatePtrOutputWithContext(ctx context.Context) PackageDesiredStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageDesiredState) *PackageDesiredState {
+		return &v
+	}).(PackageDesiredStatePtrOutput)
+}
+
+func (o PackageDesiredStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PackageDesiredStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PackageDesiredState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PackageDesiredStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PackageDesiredStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PackageDesiredState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PackageDesiredStatePtrOutput struct{ *pulumi.OutputState }
+
+func (PackageDesiredStatePtrOutput) ElementType() reflect.Type {
+	return packageDesiredStatePtrType
+}
+
+func (o PackageDesiredStatePtrOutput) ToPackageDesiredStatePtrOutput() PackageDesiredStatePtrOutput {
+	return o
+}
+
+func (o PackageDesiredStatePtrOutput) ToPackageDesiredStatePtrOutputWithContext(ctx context.Context) PackageDesiredStatePtrOutput {
+	return o
+}
+
+func (o PackageDesiredStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PackageDesiredStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PackageDesiredState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PackageDesiredStatePtrOutput) Elem() PackageDesiredStateOutput {
+	return o.ApplyT(func(v *PackageDesiredState) PackageDesiredState {
+		var ret PackageDesiredState
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(PackageDesiredStateOutput)
+}
+
+// PackageDesiredStateInput is an input type that accepts PackageDesiredStateArgs and PackageDesiredStateOutput values.
+// You can construct a concrete instance of `PackageDesiredStateInput` via:
+//
+//          PackageDesiredStateArgs{...}
+type PackageDesiredStateInput interface {
+	pulumi.Input
+
+	ToPackageDesiredStateOutput() PackageDesiredStateOutput
+	ToPackageDesiredStateOutputWithContext(context.Context) PackageDesiredStateOutput
+}
+
+var packageDesiredStatePtrType = reflect.TypeOf((**PackageDesiredState)(nil)).Elem()
+
+type PackageDesiredStatePtrInput interface {
+	pulumi.Input
+
+	ToPackageDesiredStatePtrOutput() PackageDesiredStatePtrOutput
+	ToPackageDesiredStatePtrOutputWithContext(context.Context) PackageDesiredStatePtrOutput
+}
+
+type packageDesiredStatePtr string
+
+func PackageDesiredStatePtr(v string) PackageDesiredStatePtrInput {
+	return (*packageDesiredStatePtr)(&v)
+}
+
+func (*packageDesiredStatePtr) ElementType() reflect.Type {
+	return packageDesiredStatePtrType
+}
+
+func (in *packageDesiredStatePtr) ToPackageDesiredStatePtrOutput() PackageDesiredStatePtrOutput {
+	return pulumi.ToOutput(in).(PackageDesiredStatePtrOutput)
+}
+
+func (in *packageDesiredStatePtr) ToPackageDesiredStatePtrOutputWithContext(ctx context.Context) PackageDesiredStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PackageDesiredStatePtrOutput)
+}
+
 // Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
-type PackageManager pulumi.String
+type PackageManager string
 
 const (
 	// The default behavior is ANY.
@@ -159,7 +707,23 @@ const (
 )
 
 func (PackageManager) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*PackageManager)(nil)).Elem()
+}
+
+func (e PackageManager) ToPackageManagerOutput() PackageManagerOutput {
+	return pulumi.ToOutput(e).(PackageManagerOutput)
+}
+
+func (e PackageManager) ToPackageManagerOutputWithContext(ctx context.Context) PackageManagerOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PackageManagerOutput)
+}
+
+func (e PackageManager) ToPackageManagerPtrOutput() PackageManagerPtrOutput {
+	return e.ToPackageManagerPtrOutputWithContext(context.Background())
+}
+
+func (e PackageManager) ToPackageManagerPtrOutputWithContext(ctx context.Context) PackageManagerPtrOutput {
+	return PackageManager(e).ToPackageManagerOutputWithContext(ctx).ToPackageManagerPtrOutputWithContext(ctx)
 }
 
 func (e PackageManager) ToStringOutput() pulumi.StringOutput {
@@ -178,8 +742,129 @@ func (e PackageManager) ToStringPtrOutputWithContext(ctx context.Context) pulumi
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type PackageManagerOutput struct{ *pulumi.OutputState }
+
+func (PackageManagerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PackageManager)(nil)).Elem()
+}
+
+func (o PackageManagerOutput) ToPackageManagerOutput() PackageManagerOutput {
+	return o
+}
+
+func (o PackageManagerOutput) ToPackageManagerOutputWithContext(ctx context.Context) PackageManagerOutput {
+	return o
+}
+
+func (o PackageManagerOutput) ToPackageManagerPtrOutput() PackageManagerPtrOutput {
+	return o.ToPackageManagerPtrOutputWithContext(context.Background())
+}
+
+func (o PackageManagerOutput) ToPackageManagerPtrOutputWithContext(ctx context.Context) PackageManagerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PackageManager) *PackageManager {
+		return &v
+	}).(PackageManagerPtrOutput)
+}
+
+func (o PackageManagerOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PackageManagerOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PackageManager) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PackageManagerOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PackageManagerOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PackageManager) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PackageManagerPtrOutput struct{ *pulumi.OutputState }
+
+func (PackageManagerPtrOutput) ElementType() reflect.Type {
+	return packageManagerPtrType
+}
+
+func (o PackageManagerPtrOutput) ToPackageManagerPtrOutput() PackageManagerPtrOutput {
+	return o
+}
+
+func (o PackageManagerPtrOutput) ToPackageManagerPtrOutputWithContext(ctx context.Context) PackageManagerPtrOutput {
+	return o
+}
+
+func (o PackageManagerPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PackageManagerPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PackageManager) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PackageManagerPtrOutput) Elem() PackageManagerOutput {
+	return o.ApplyT(func(v *PackageManager) PackageManager {
+		var ret PackageManager
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(PackageManagerOutput)
+}
+
+// PackageManagerInput is an input type that accepts PackageManagerArgs and PackageManagerOutput values.
+// You can construct a concrete instance of `PackageManagerInput` via:
+//
+//          PackageManagerArgs{...}
+type PackageManagerInput interface {
+	pulumi.Input
+
+	ToPackageManagerOutput() PackageManagerOutput
+	ToPackageManagerOutputWithContext(context.Context) PackageManagerOutput
+}
+
+var packageManagerPtrType = reflect.TypeOf((**PackageManager)(nil)).Elem()
+
+type PackageManagerPtrInput interface {
+	pulumi.Input
+
+	ToPackageManagerPtrOutput() PackageManagerPtrOutput
+	ToPackageManagerPtrOutputWithContext(context.Context) PackageManagerPtrOutput
+}
+
+type packageManagerPtr string
+
+func PackageManagerPtr(v string) PackageManagerPtrInput {
+	return (*packageManagerPtr)(&v)
+}
+
+func (*packageManagerPtr) ElementType() reflect.Type {
+	return packageManagerPtrType
+}
+
+func (in *packageManagerPtr) ToPackageManagerPtrOutput() PackageManagerPtrOutput {
+	return pulumi.ToOutput(in).(PackageManagerPtrOutput)
+}
+
+func (in *packageManagerPtr) ToPackageManagerPtrOutputWithContext(ctx context.Context) PackageManagerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PackageManagerPtrOutput)
+}
+
 // Post-patch reboot settings.
-type PatchConfigRebootConfig pulumi.String
+type PatchConfigRebootConfig string
 
 const (
 	// The default behavior is DEFAULT.
@@ -193,7 +878,23 @@ const (
 )
 
 func (PatchConfigRebootConfig) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*PatchConfigRebootConfig)(nil)).Elem()
+}
+
+func (e PatchConfigRebootConfig) ToPatchConfigRebootConfigOutput() PatchConfigRebootConfigOutput {
+	return pulumi.ToOutput(e).(PatchConfigRebootConfigOutput)
+}
+
+func (e PatchConfigRebootConfig) ToPatchConfigRebootConfigOutputWithContext(ctx context.Context) PatchConfigRebootConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PatchConfigRebootConfigOutput)
+}
+
+func (e PatchConfigRebootConfig) ToPatchConfigRebootConfigPtrOutput() PatchConfigRebootConfigPtrOutput {
+	return e.ToPatchConfigRebootConfigPtrOutputWithContext(context.Background())
+}
+
+func (e PatchConfigRebootConfig) ToPatchConfigRebootConfigPtrOutputWithContext(ctx context.Context) PatchConfigRebootConfigPtrOutput {
+	return PatchConfigRebootConfig(e).ToPatchConfigRebootConfigOutputWithContext(ctx).ToPatchConfigRebootConfigPtrOutputWithContext(ctx)
 }
 
 func (e PatchConfigRebootConfig) ToStringOutput() pulumi.StringOutput {
@@ -212,8 +913,129 @@ func (e PatchConfigRebootConfig) ToStringPtrOutputWithContext(ctx context.Contex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type PatchConfigRebootConfigOutput struct{ *pulumi.OutputState }
+
+func (PatchConfigRebootConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PatchConfigRebootConfig)(nil)).Elem()
+}
+
+func (o PatchConfigRebootConfigOutput) ToPatchConfigRebootConfigOutput() PatchConfigRebootConfigOutput {
+	return o
+}
+
+func (o PatchConfigRebootConfigOutput) ToPatchConfigRebootConfigOutputWithContext(ctx context.Context) PatchConfigRebootConfigOutput {
+	return o
+}
+
+func (o PatchConfigRebootConfigOutput) ToPatchConfigRebootConfigPtrOutput() PatchConfigRebootConfigPtrOutput {
+	return o.ToPatchConfigRebootConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PatchConfigRebootConfigOutput) ToPatchConfigRebootConfigPtrOutputWithContext(ctx context.Context) PatchConfigRebootConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchConfigRebootConfig) *PatchConfigRebootConfig {
+		return &v
+	}).(PatchConfigRebootConfigPtrOutput)
+}
+
+func (o PatchConfigRebootConfigOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PatchConfigRebootConfigOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PatchConfigRebootConfig) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PatchConfigRebootConfigOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PatchConfigRebootConfigOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PatchConfigRebootConfig) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PatchConfigRebootConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PatchConfigRebootConfigPtrOutput) ElementType() reflect.Type {
+	return patchConfigRebootConfigPtrType
+}
+
+func (o PatchConfigRebootConfigPtrOutput) ToPatchConfigRebootConfigPtrOutput() PatchConfigRebootConfigPtrOutput {
+	return o
+}
+
+func (o PatchConfigRebootConfigPtrOutput) ToPatchConfigRebootConfigPtrOutputWithContext(ctx context.Context) PatchConfigRebootConfigPtrOutput {
+	return o
+}
+
+func (o PatchConfigRebootConfigPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PatchConfigRebootConfigPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PatchConfigRebootConfig) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PatchConfigRebootConfigPtrOutput) Elem() PatchConfigRebootConfigOutput {
+	return o.ApplyT(func(v *PatchConfigRebootConfig) PatchConfigRebootConfig {
+		var ret PatchConfigRebootConfig
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(PatchConfigRebootConfigOutput)
+}
+
+// PatchConfigRebootConfigInput is an input type that accepts PatchConfigRebootConfigArgs and PatchConfigRebootConfigOutput values.
+// You can construct a concrete instance of `PatchConfigRebootConfigInput` via:
+//
+//          PatchConfigRebootConfigArgs{...}
+type PatchConfigRebootConfigInput interface {
+	pulumi.Input
+
+	ToPatchConfigRebootConfigOutput() PatchConfigRebootConfigOutput
+	ToPatchConfigRebootConfigOutputWithContext(context.Context) PatchConfigRebootConfigOutput
+}
+
+var patchConfigRebootConfigPtrType = reflect.TypeOf((**PatchConfigRebootConfig)(nil)).Elem()
+
+type PatchConfigRebootConfigPtrInput interface {
+	pulumi.Input
+
+	ToPatchConfigRebootConfigPtrOutput() PatchConfigRebootConfigPtrOutput
+	ToPatchConfigRebootConfigPtrOutputWithContext(context.Context) PatchConfigRebootConfigPtrOutput
+}
+
+type patchConfigRebootConfigPtr string
+
+func PatchConfigRebootConfigPtr(v string) PatchConfigRebootConfigPtrInput {
+	return (*patchConfigRebootConfigPtr)(&v)
+}
+
+func (*patchConfigRebootConfigPtr) ElementType() reflect.Type {
+	return patchConfigRebootConfigPtrType
+}
+
+func (in *patchConfigRebootConfigPtr) ToPatchConfigRebootConfigPtrOutput() PatchConfigRebootConfigPtrOutput {
+	return pulumi.ToOutput(in).(PatchConfigRebootConfigPtrOutput)
+}
+
+func (in *patchConfigRebootConfigPtr) ToPatchConfigRebootConfigPtrOutputWithContext(ctx context.Context) PatchConfigRebootConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PatchConfigRebootConfigPtrOutput)
+}
+
 // Mode of the patch rollout.
-type PatchRolloutMode pulumi.String
+type PatchRolloutMode string
 
 const (
 	// Mode must be specified.
@@ -225,7 +1047,23 @@ const (
 )
 
 func (PatchRolloutMode) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*PatchRolloutMode)(nil)).Elem()
+}
+
+func (e PatchRolloutMode) ToPatchRolloutModeOutput() PatchRolloutModeOutput {
+	return pulumi.ToOutput(e).(PatchRolloutModeOutput)
+}
+
+func (e PatchRolloutMode) ToPatchRolloutModeOutputWithContext(ctx context.Context) PatchRolloutModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PatchRolloutModeOutput)
+}
+
+func (e PatchRolloutMode) ToPatchRolloutModePtrOutput() PatchRolloutModePtrOutput {
+	return e.ToPatchRolloutModePtrOutputWithContext(context.Background())
+}
+
+func (e PatchRolloutMode) ToPatchRolloutModePtrOutputWithContext(ctx context.Context) PatchRolloutModePtrOutput {
+	return PatchRolloutMode(e).ToPatchRolloutModeOutputWithContext(ctx).ToPatchRolloutModePtrOutputWithContext(ctx)
 }
 
 func (e PatchRolloutMode) ToStringOutput() pulumi.StringOutput {
@@ -244,8 +1082,129 @@ func (e PatchRolloutMode) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type PatchRolloutModeOutput struct{ *pulumi.OutputState }
+
+func (PatchRolloutModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PatchRolloutMode)(nil)).Elem()
+}
+
+func (o PatchRolloutModeOutput) ToPatchRolloutModeOutput() PatchRolloutModeOutput {
+	return o
+}
+
+func (o PatchRolloutModeOutput) ToPatchRolloutModeOutputWithContext(ctx context.Context) PatchRolloutModeOutput {
+	return o
+}
+
+func (o PatchRolloutModeOutput) ToPatchRolloutModePtrOutput() PatchRolloutModePtrOutput {
+	return o.ToPatchRolloutModePtrOutputWithContext(context.Background())
+}
+
+func (o PatchRolloutModeOutput) ToPatchRolloutModePtrOutputWithContext(ctx context.Context) PatchRolloutModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PatchRolloutMode) *PatchRolloutMode {
+		return &v
+	}).(PatchRolloutModePtrOutput)
+}
+
+func (o PatchRolloutModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PatchRolloutModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PatchRolloutMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PatchRolloutModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PatchRolloutModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PatchRolloutMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PatchRolloutModePtrOutput struct{ *pulumi.OutputState }
+
+func (PatchRolloutModePtrOutput) ElementType() reflect.Type {
+	return patchRolloutModePtrType
+}
+
+func (o PatchRolloutModePtrOutput) ToPatchRolloutModePtrOutput() PatchRolloutModePtrOutput {
+	return o
+}
+
+func (o PatchRolloutModePtrOutput) ToPatchRolloutModePtrOutputWithContext(ctx context.Context) PatchRolloutModePtrOutput {
+	return o
+}
+
+func (o PatchRolloutModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PatchRolloutModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PatchRolloutMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PatchRolloutModePtrOutput) Elem() PatchRolloutModeOutput {
+	return o.ApplyT(func(v *PatchRolloutMode) PatchRolloutMode {
+		var ret PatchRolloutMode
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(PatchRolloutModeOutput)
+}
+
+// PatchRolloutModeInput is an input type that accepts PatchRolloutModeArgs and PatchRolloutModeOutput values.
+// You can construct a concrete instance of `PatchRolloutModeInput` via:
+//
+//          PatchRolloutModeArgs{...}
+type PatchRolloutModeInput interface {
+	pulumi.Input
+
+	ToPatchRolloutModeOutput() PatchRolloutModeOutput
+	ToPatchRolloutModeOutputWithContext(context.Context) PatchRolloutModeOutput
+}
+
+var patchRolloutModePtrType = reflect.TypeOf((**PatchRolloutMode)(nil)).Elem()
+
+type PatchRolloutModePtrInput interface {
+	pulumi.Input
+
+	ToPatchRolloutModePtrOutput() PatchRolloutModePtrOutput
+	ToPatchRolloutModePtrOutputWithContext(context.Context) PatchRolloutModePtrOutput
+}
+
+type patchRolloutModePtr string
+
+func PatchRolloutModePtr(v string) PatchRolloutModePtrInput {
+	return (*patchRolloutModePtr)(&v)
+}
+
+func (*patchRolloutModePtr) ElementType() reflect.Type {
+	return patchRolloutModePtrType
+}
+
+func (in *patchRolloutModePtr) ToPatchRolloutModePtrOutput() PatchRolloutModePtrOutput {
+	return pulumi.ToOutput(in).(PatchRolloutModePtrOutput)
+}
+
+func (in *patchRolloutModePtr) ToPatchRolloutModePtrOutputWithContext(ctx context.Context) PatchRolloutModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PatchRolloutModePtrOutput)
+}
+
 // Required. The frequency unit of this recurring schedule.
-type RecurringScheduleFrequency pulumi.String
+type RecurringScheduleFrequency string
 
 const (
 	// Invalid. A frequency must be specified.
@@ -257,7 +1216,23 @@ const (
 )
 
 func (RecurringScheduleFrequency) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*RecurringScheduleFrequency)(nil)).Elem()
+}
+
+func (e RecurringScheduleFrequency) ToRecurringScheduleFrequencyOutput() RecurringScheduleFrequencyOutput {
+	return pulumi.ToOutput(e).(RecurringScheduleFrequencyOutput)
+}
+
+func (e RecurringScheduleFrequency) ToRecurringScheduleFrequencyOutputWithContext(ctx context.Context) RecurringScheduleFrequencyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RecurringScheduleFrequencyOutput)
+}
+
+func (e RecurringScheduleFrequency) ToRecurringScheduleFrequencyPtrOutput() RecurringScheduleFrequencyPtrOutput {
+	return e.ToRecurringScheduleFrequencyPtrOutputWithContext(context.Background())
+}
+
+func (e RecurringScheduleFrequency) ToRecurringScheduleFrequencyPtrOutputWithContext(ctx context.Context) RecurringScheduleFrequencyPtrOutput {
+	return RecurringScheduleFrequency(e).ToRecurringScheduleFrequencyOutputWithContext(ctx).ToRecurringScheduleFrequencyPtrOutputWithContext(ctx)
 }
 
 func (e RecurringScheduleFrequency) ToStringOutput() pulumi.StringOutput {
@@ -276,8 +1251,129 @@ func (e RecurringScheduleFrequency) ToStringPtrOutputWithContext(ctx context.Con
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type RecurringScheduleFrequencyOutput struct{ *pulumi.OutputState }
+
+func (RecurringScheduleFrequencyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RecurringScheduleFrequency)(nil)).Elem()
+}
+
+func (o RecurringScheduleFrequencyOutput) ToRecurringScheduleFrequencyOutput() RecurringScheduleFrequencyOutput {
+	return o
+}
+
+func (o RecurringScheduleFrequencyOutput) ToRecurringScheduleFrequencyOutputWithContext(ctx context.Context) RecurringScheduleFrequencyOutput {
+	return o
+}
+
+func (o RecurringScheduleFrequencyOutput) ToRecurringScheduleFrequencyPtrOutput() RecurringScheduleFrequencyPtrOutput {
+	return o.ToRecurringScheduleFrequencyPtrOutputWithContext(context.Background())
+}
+
+func (o RecurringScheduleFrequencyOutput) ToRecurringScheduleFrequencyPtrOutputWithContext(ctx context.Context) RecurringScheduleFrequencyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RecurringScheduleFrequency) *RecurringScheduleFrequency {
+		return &v
+	}).(RecurringScheduleFrequencyPtrOutput)
+}
+
+func (o RecurringScheduleFrequencyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RecurringScheduleFrequencyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RecurringScheduleFrequency) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RecurringScheduleFrequencyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RecurringScheduleFrequencyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RecurringScheduleFrequency) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RecurringScheduleFrequencyPtrOutput struct{ *pulumi.OutputState }
+
+func (RecurringScheduleFrequencyPtrOutput) ElementType() reflect.Type {
+	return recurringScheduleFrequencyPtrType
+}
+
+func (o RecurringScheduleFrequencyPtrOutput) ToRecurringScheduleFrequencyPtrOutput() RecurringScheduleFrequencyPtrOutput {
+	return o
+}
+
+func (o RecurringScheduleFrequencyPtrOutput) ToRecurringScheduleFrequencyPtrOutputWithContext(ctx context.Context) RecurringScheduleFrequencyPtrOutput {
+	return o
+}
+
+func (o RecurringScheduleFrequencyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RecurringScheduleFrequencyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RecurringScheduleFrequency) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RecurringScheduleFrequencyPtrOutput) Elem() RecurringScheduleFrequencyOutput {
+	return o.ApplyT(func(v *RecurringScheduleFrequency) RecurringScheduleFrequency {
+		var ret RecurringScheduleFrequency
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(RecurringScheduleFrequencyOutput)
+}
+
+// RecurringScheduleFrequencyInput is an input type that accepts RecurringScheduleFrequencyArgs and RecurringScheduleFrequencyOutput values.
+// You can construct a concrete instance of `RecurringScheduleFrequencyInput` via:
+//
+//          RecurringScheduleFrequencyArgs{...}
+type RecurringScheduleFrequencyInput interface {
+	pulumi.Input
+
+	ToRecurringScheduleFrequencyOutput() RecurringScheduleFrequencyOutput
+	ToRecurringScheduleFrequencyOutputWithContext(context.Context) RecurringScheduleFrequencyOutput
+}
+
+var recurringScheduleFrequencyPtrType = reflect.TypeOf((**RecurringScheduleFrequency)(nil)).Elem()
+
+type RecurringScheduleFrequencyPtrInput interface {
+	pulumi.Input
+
+	ToRecurringScheduleFrequencyPtrOutput() RecurringScheduleFrequencyPtrOutput
+	ToRecurringScheduleFrequencyPtrOutputWithContext(context.Context) RecurringScheduleFrequencyPtrOutput
+}
+
+type recurringScheduleFrequencyPtr string
+
+func RecurringScheduleFrequencyPtr(v string) RecurringScheduleFrequencyPtrInput {
+	return (*recurringScheduleFrequencyPtr)(&v)
+}
+
+func (*recurringScheduleFrequencyPtr) ElementType() reflect.Type {
+	return recurringScheduleFrequencyPtrType
+}
+
+func (in *recurringScheduleFrequencyPtr) ToRecurringScheduleFrequencyPtrOutput() RecurringScheduleFrequencyPtrOutput {
+	return pulumi.ToOutput(in).(RecurringScheduleFrequencyPtrOutput)
+}
+
+func (in *recurringScheduleFrequencyPtr) ToRecurringScheduleFrequencyPtrOutputWithContext(ctx context.Context) RecurringScheduleFrequencyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RecurringScheduleFrequencyPtrOutput)
+}
+
 // Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-type SoftwareRecipeDesiredState pulumi.String
+type SoftwareRecipeDesiredState string
 
 const (
 	// The default is to ensure the package is installed.
@@ -291,7 +1387,23 @@ const (
 )
 
 func (SoftwareRecipeDesiredState) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*SoftwareRecipeDesiredState)(nil)).Elem()
+}
+
+func (e SoftwareRecipeDesiredState) ToSoftwareRecipeDesiredStateOutput() SoftwareRecipeDesiredStateOutput {
+	return pulumi.ToOutput(e).(SoftwareRecipeDesiredStateOutput)
+}
+
+func (e SoftwareRecipeDesiredState) ToSoftwareRecipeDesiredStateOutputWithContext(ctx context.Context) SoftwareRecipeDesiredStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SoftwareRecipeDesiredStateOutput)
+}
+
+func (e SoftwareRecipeDesiredState) ToSoftwareRecipeDesiredStatePtrOutput() SoftwareRecipeDesiredStatePtrOutput {
+	return e.ToSoftwareRecipeDesiredStatePtrOutputWithContext(context.Background())
+}
+
+func (e SoftwareRecipeDesiredState) ToSoftwareRecipeDesiredStatePtrOutputWithContext(ctx context.Context) SoftwareRecipeDesiredStatePtrOutput {
+	return SoftwareRecipeDesiredState(e).ToSoftwareRecipeDesiredStateOutputWithContext(ctx).ToSoftwareRecipeDesiredStatePtrOutputWithContext(ctx)
 }
 
 func (e SoftwareRecipeDesiredState) ToStringOutput() pulumi.StringOutput {
@@ -310,8 +1422,129 @@ func (e SoftwareRecipeDesiredState) ToStringPtrOutputWithContext(ctx context.Con
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type SoftwareRecipeDesiredStateOutput struct{ *pulumi.OutputState }
+
+func (SoftwareRecipeDesiredStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeDesiredState)(nil)).Elem()
+}
+
+func (o SoftwareRecipeDesiredStateOutput) ToSoftwareRecipeDesiredStateOutput() SoftwareRecipeDesiredStateOutput {
+	return o
+}
+
+func (o SoftwareRecipeDesiredStateOutput) ToSoftwareRecipeDesiredStateOutputWithContext(ctx context.Context) SoftwareRecipeDesiredStateOutput {
+	return o
+}
+
+func (o SoftwareRecipeDesiredStateOutput) ToSoftwareRecipeDesiredStatePtrOutput() SoftwareRecipeDesiredStatePtrOutput {
+	return o.ToSoftwareRecipeDesiredStatePtrOutputWithContext(context.Background())
+}
+
+func (o SoftwareRecipeDesiredStateOutput) ToSoftwareRecipeDesiredStatePtrOutputWithContext(ctx context.Context) SoftwareRecipeDesiredStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareRecipeDesiredState) *SoftwareRecipeDesiredState {
+		return &v
+	}).(SoftwareRecipeDesiredStatePtrOutput)
+}
+
+func (o SoftwareRecipeDesiredStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SoftwareRecipeDesiredStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SoftwareRecipeDesiredState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SoftwareRecipeDesiredStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SoftwareRecipeDesiredStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SoftwareRecipeDesiredState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SoftwareRecipeDesiredStatePtrOutput struct{ *pulumi.OutputState }
+
+func (SoftwareRecipeDesiredStatePtrOutput) ElementType() reflect.Type {
+	return softwareRecipeDesiredStatePtrType
+}
+
+func (o SoftwareRecipeDesiredStatePtrOutput) ToSoftwareRecipeDesiredStatePtrOutput() SoftwareRecipeDesiredStatePtrOutput {
+	return o
+}
+
+func (o SoftwareRecipeDesiredStatePtrOutput) ToSoftwareRecipeDesiredStatePtrOutputWithContext(ctx context.Context) SoftwareRecipeDesiredStatePtrOutput {
+	return o
+}
+
+func (o SoftwareRecipeDesiredStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SoftwareRecipeDesiredStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SoftwareRecipeDesiredState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SoftwareRecipeDesiredStatePtrOutput) Elem() SoftwareRecipeDesiredStateOutput {
+	return o.ApplyT(func(v *SoftwareRecipeDesiredState) SoftwareRecipeDesiredState {
+		var ret SoftwareRecipeDesiredState
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(SoftwareRecipeDesiredStateOutput)
+}
+
+// SoftwareRecipeDesiredStateInput is an input type that accepts SoftwareRecipeDesiredStateArgs and SoftwareRecipeDesiredStateOutput values.
+// You can construct a concrete instance of `SoftwareRecipeDesiredStateInput` via:
+//
+//          SoftwareRecipeDesiredStateArgs{...}
+type SoftwareRecipeDesiredStateInput interface {
+	pulumi.Input
+
+	ToSoftwareRecipeDesiredStateOutput() SoftwareRecipeDesiredStateOutput
+	ToSoftwareRecipeDesiredStateOutputWithContext(context.Context) SoftwareRecipeDesiredStateOutput
+}
+
+var softwareRecipeDesiredStatePtrType = reflect.TypeOf((**SoftwareRecipeDesiredState)(nil)).Elem()
+
+type SoftwareRecipeDesiredStatePtrInput interface {
+	pulumi.Input
+
+	ToSoftwareRecipeDesiredStatePtrOutput() SoftwareRecipeDesiredStatePtrOutput
+	ToSoftwareRecipeDesiredStatePtrOutputWithContext(context.Context) SoftwareRecipeDesiredStatePtrOutput
+}
+
+type softwareRecipeDesiredStatePtr string
+
+func SoftwareRecipeDesiredStatePtr(v string) SoftwareRecipeDesiredStatePtrInput {
+	return (*softwareRecipeDesiredStatePtr)(&v)
+}
+
+func (*softwareRecipeDesiredStatePtr) ElementType() reflect.Type {
+	return softwareRecipeDesiredStatePtrType
+}
+
+func (in *softwareRecipeDesiredStatePtr) ToSoftwareRecipeDesiredStatePtrOutput() SoftwareRecipeDesiredStatePtrOutput {
+	return pulumi.ToOutput(in).(SoftwareRecipeDesiredStatePtrOutput)
+}
+
+func (in *softwareRecipeDesiredStatePtr) ToSoftwareRecipeDesiredStatePtrOutputWithContext(ctx context.Context) SoftwareRecipeDesiredStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SoftwareRecipeDesiredStatePtrOutput)
+}
+
 // Required. The type of the archive to extract.
-type SoftwareRecipeStepExtractArchiveType pulumi.String
+type SoftwareRecipeStepExtractArchiveType string
 
 const (
 	// Indicates that the archive type isn't specified.
@@ -331,7 +1564,23 @@ const (
 )
 
 func (SoftwareRecipeStepExtractArchiveType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*SoftwareRecipeStepExtractArchiveType)(nil)).Elem()
+}
+
+func (e SoftwareRecipeStepExtractArchiveType) ToSoftwareRecipeStepExtractArchiveTypeOutput() SoftwareRecipeStepExtractArchiveTypeOutput {
+	return pulumi.ToOutput(e).(SoftwareRecipeStepExtractArchiveTypeOutput)
+}
+
+func (e SoftwareRecipeStepExtractArchiveType) ToSoftwareRecipeStepExtractArchiveTypeOutputWithContext(ctx context.Context) SoftwareRecipeStepExtractArchiveTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SoftwareRecipeStepExtractArchiveTypeOutput)
+}
+
+func (e SoftwareRecipeStepExtractArchiveType) ToSoftwareRecipeStepExtractArchiveTypePtrOutput() SoftwareRecipeStepExtractArchiveTypePtrOutput {
+	return e.ToSoftwareRecipeStepExtractArchiveTypePtrOutputWithContext(context.Background())
+}
+
+func (e SoftwareRecipeStepExtractArchiveType) ToSoftwareRecipeStepExtractArchiveTypePtrOutputWithContext(ctx context.Context) SoftwareRecipeStepExtractArchiveTypePtrOutput {
+	return SoftwareRecipeStepExtractArchiveType(e).ToSoftwareRecipeStepExtractArchiveTypeOutputWithContext(ctx).ToSoftwareRecipeStepExtractArchiveTypePtrOutputWithContext(ctx)
 }
 
 func (e SoftwareRecipeStepExtractArchiveType) ToStringOutput() pulumi.StringOutput {
@@ -350,8 +1599,129 @@ func (e SoftwareRecipeStepExtractArchiveType) ToStringPtrOutputWithContext(ctx c
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type SoftwareRecipeStepExtractArchiveTypeOutput struct{ *pulumi.OutputState }
+
+func (SoftwareRecipeStepExtractArchiveTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeStepExtractArchiveType)(nil)).Elem()
+}
+
+func (o SoftwareRecipeStepExtractArchiveTypeOutput) ToSoftwareRecipeStepExtractArchiveTypeOutput() SoftwareRecipeStepExtractArchiveTypeOutput {
+	return o
+}
+
+func (o SoftwareRecipeStepExtractArchiveTypeOutput) ToSoftwareRecipeStepExtractArchiveTypeOutputWithContext(ctx context.Context) SoftwareRecipeStepExtractArchiveTypeOutput {
+	return o
+}
+
+func (o SoftwareRecipeStepExtractArchiveTypeOutput) ToSoftwareRecipeStepExtractArchiveTypePtrOutput() SoftwareRecipeStepExtractArchiveTypePtrOutput {
+	return o.ToSoftwareRecipeStepExtractArchiveTypePtrOutputWithContext(context.Background())
+}
+
+func (o SoftwareRecipeStepExtractArchiveTypeOutput) ToSoftwareRecipeStepExtractArchiveTypePtrOutputWithContext(ctx context.Context) SoftwareRecipeStepExtractArchiveTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareRecipeStepExtractArchiveType) *SoftwareRecipeStepExtractArchiveType {
+		return &v
+	}).(SoftwareRecipeStepExtractArchiveTypePtrOutput)
+}
+
+func (o SoftwareRecipeStepExtractArchiveTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SoftwareRecipeStepExtractArchiveTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SoftwareRecipeStepExtractArchiveType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SoftwareRecipeStepExtractArchiveTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SoftwareRecipeStepExtractArchiveTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SoftwareRecipeStepExtractArchiveType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SoftwareRecipeStepExtractArchiveTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SoftwareRecipeStepExtractArchiveTypePtrOutput) ElementType() reflect.Type {
+	return softwareRecipeStepExtractArchiveTypePtrType
+}
+
+func (o SoftwareRecipeStepExtractArchiveTypePtrOutput) ToSoftwareRecipeStepExtractArchiveTypePtrOutput() SoftwareRecipeStepExtractArchiveTypePtrOutput {
+	return o
+}
+
+func (o SoftwareRecipeStepExtractArchiveTypePtrOutput) ToSoftwareRecipeStepExtractArchiveTypePtrOutputWithContext(ctx context.Context) SoftwareRecipeStepExtractArchiveTypePtrOutput {
+	return o
+}
+
+func (o SoftwareRecipeStepExtractArchiveTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SoftwareRecipeStepExtractArchiveTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SoftwareRecipeStepExtractArchiveType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SoftwareRecipeStepExtractArchiveTypePtrOutput) Elem() SoftwareRecipeStepExtractArchiveTypeOutput {
+	return o.ApplyT(func(v *SoftwareRecipeStepExtractArchiveType) SoftwareRecipeStepExtractArchiveType {
+		var ret SoftwareRecipeStepExtractArchiveType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(SoftwareRecipeStepExtractArchiveTypeOutput)
+}
+
+// SoftwareRecipeStepExtractArchiveTypeInput is an input type that accepts SoftwareRecipeStepExtractArchiveTypeArgs and SoftwareRecipeStepExtractArchiveTypeOutput values.
+// You can construct a concrete instance of `SoftwareRecipeStepExtractArchiveTypeInput` via:
+//
+//          SoftwareRecipeStepExtractArchiveTypeArgs{...}
+type SoftwareRecipeStepExtractArchiveTypeInput interface {
+	pulumi.Input
+
+	ToSoftwareRecipeStepExtractArchiveTypeOutput() SoftwareRecipeStepExtractArchiveTypeOutput
+	ToSoftwareRecipeStepExtractArchiveTypeOutputWithContext(context.Context) SoftwareRecipeStepExtractArchiveTypeOutput
+}
+
+var softwareRecipeStepExtractArchiveTypePtrType = reflect.TypeOf((**SoftwareRecipeStepExtractArchiveType)(nil)).Elem()
+
+type SoftwareRecipeStepExtractArchiveTypePtrInput interface {
+	pulumi.Input
+
+	ToSoftwareRecipeStepExtractArchiveTypePtrOutput() SoftwareRecipeStepExtractArchiveTypePtrOutput
+	ToSoftwareRecipeStepExtractArchiveTypePtrOutputWithContext(context.Context) SoftwareRecipeStepExtractArchiveTypePtrOutput
+}
+
+type softwareRecipeStepExtractArchiveTypePtr string
+
+func SoftwareRecipeStepExtractArchiveTypePtr(v string) SoftwareRecipeStepExtractArchiveTypePtrInput {
+	return (*softwareRecipeStepExtractArchiveTypePtr)(&v)
+}
+
+func (*softwareRecipeStepExtractArchiveTypePtr) ElementType() reflect.Type {
+	return softwareRecipeStepExtractArchiveTypePtrType
+}
+
+func (in *softwareRecipeStepExtractArchiveTypePtr) ToSoftwareRecipeStepExtractArchiveTypePtrOutput() SoftwareRecipeStepExtractArchiveTypePtrOutput {
+	return pulumi.ToOutput(in).(SoftwareRecipeStepExtractArchiveTypePtrOutput)
+}
+
+func (in *softwareRecipeStepExtractArchiveTypePtr) ToSoftwareRecipeStepExtractArchiveTypePtrOutputWithContext(ctx context.Context) SoftwareRecipeStepExtractArchiveTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SoftwareRecipeStepExtractArchiveTypePtrOutput)
+}
+
 // The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](<https://en.wikipedia.org/wiki/Shebang_\(Unix\)>).
-type SoftwareRecipeStepRunScriptInterpreter pulumi.String
+type SoftwareRecipeStepRunScriptInterpreter string
 
 const (
 	// Default value for ScriptType.
@@ -363,7 +1733,23 @@ const (
 )
 
 func (SoftwareRecipeStepRunScriptInterpreter) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*SoftwareRecipeStepRunScriptInterpreter)(nil)).Elem()
+}
+
+func (e SoftwareRecipeStepRunScriptInterpreter) ToSoftwareRecipeStepRunScriptInterpreterOutput() SoftwareRecipeStepRunScriptInterpreterOutput {
+	return pulumi.ToOutput(e).(SoftwareRecipeStepRunScriptInterpreterOutput)
+}
+
+func (e SoftwareRecipeStepRunScriptInterpreter) ToSoftwareRecipeStepRunScriptInterpreterOutputWithContext(ctx context.Context) SoftwareRecipeStepRunScriptInterpreterOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SoftwareRecipeStepRunScriptInterpreterOutput)
+}
+
+func (e SoftwareRecipeStepRunScriptInterpreter) ToSoftwareRecipeStepRunScriptInterpreterPtrOutput() SoftwareRecipeStepRunScriptInterpreterPtrOutput {
+	return e.ToSoftwareRecipeStepRunScriptInterpreterPtrOutputWithContext(context.Background())
+}
+
+func (e SoftwareRecipeStepRunScriptInterpreter) ToSoftwareRecipeStepRunScriptInterpreterPtrOutputWithContext(ctx context.Context) SoftwareRecipeStepRunScriptInterpreterPtrOutput {
+	return SoftwareRecipeStepRunScriptInterpreter(e).ToSoftwareRecipeStepRunScriptInterpreterOutputWithContext(ctx).ToSoftwareRecipeStepRunScriptInterpreterPtrOutputWithContext(ctx)
 }
 
 func (e SoftwareRecipeStepRunScriptInterpreter) ToStringOutput() pulumi.StringOutput {
@@ -382,8 +1768,129 @@ func (e SoftwareRecipeStepRunScriptInterpreter) ToStringPtrOutputWithContext(ctx
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type SoftwareRecipeStepRunScriptInterpreterOutput struct{ *pulumi.OutputState }
+
+func (SoftwareRecipeStepRunScriptInterpreterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SoftwareRecipeStepRunScriptInterpreter)(nil)).Elem()
+}
+
+func (o SoftwareRecipeStepRunScriptInterpreterOutput) ToSoftwareRecipeStepRunScriptInterpreterOutput() SoftwareRecipeStepRunScriptInterpreterOutput {
+	return o
+}
+
+func (o SoftwareRecipeStepRunScriptInterpreterOutput) ToSoftwareRecipeStepRunScriptInterpreterOutputWithContext(ctx context.Context) SoftwareRecipeStepRunScriptInterpreterOutput {
+	return o
+}
+
+func (o SoftwareRecipeStepRunScriptInterpreterOutput) ToSoftwareRecipeStepRunScriptInterpreterPtrOutput() SoftwareRecipeStepRunScriptInterpreterPtrOutput {
+	return o.ToSoftwareRecipeStepRunScriptInterpreterPtrOutputWithContext(context.Background())
+}
+
+func (o SoftwareRecipeStepRunScriptInterpreterOutput) ToSoftwareRecipeStepRunScriptInterpreterPtrOutputWithContext(ctx context.Context) SoftwareRecipeStepRunScriptInterpreterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SoftwareRecipeStepRunScriptInterpreter) *SoftwareRecipeStepRunScriptInterpreter {
+		return &v
+	}).(SoftwareRecipeStepRunScriptInterpreterPtrOutput)
+}
+
+func (o SoftwareRecipeStepRunScriptInterpreterOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SoftwareRecipeStepRunScriptInterpreterOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SoftwareRecipeStepRunScriptInterpreter) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SoftwareRecipeStepRunScriptInterpreterOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SoftwareRecipeStepRunScriptInterpreterOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SoftwareRecipeStepRunScriptInterpreter) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SoftwareRecipeStepRunScriptInterpreterPtrOutput struct{ *pulumi.OutputState }
+
+func (SoftwareRecipeStepRunScriptInterpreterPtrOutput) ElementType() reflect.Type {
+	return softwareRecipeStepRunScriptInterpreterPtrType
+}
+
+func (o SoftwareRecipeStepRunScriptInterpreterPtrOutput) ToSoftwareRecipeStepRunScriptInterpreterPtrOutput() SoftwareRecipeStepRunScriptInterpreterPtrOutput {
+	return o
+}
+
+func (o SoftwareRecipeStepRunScriptInterpreterPtrOutput) ToSoftwareRecipeStepRunScriptInterpreterPtrOutputWithContext(ctx context.Context) SoftwareRecipeStepRunScriptInterpreterPtrOutput {
+	return o
+}
+
+func (o SoftwareRecipeStepRunScriptInterpreterPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SoftwareRecipeStepRunScriptInterpreterPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SoftwareRecipeStepRunScriptInterpreter) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SoftwareRecipeStepRunScriptInterpreterPtrOutput) Elem() SoftwareRecipeStepRunScriptInterpreterOutput {
+	return o.ApplyT(func(v *SoftwareRecipeStepRunScriptInterpreter) SoftwareRecipeStepRunScriptInterpreter {
+		var ret SoftwareRecipeStepRunScriptInterpreter
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(SoftwareRecipeStepRunScriptInterpreterOutput)
+}
+
+// SoftwareRecipeStepRunScriptInterpreterInput is an input type that accepts SoftwareRecipeStepRunScriptInterpreterArgs and SoftwareRecipeStepRunScriptInterpreterOutput values.
+// You can construct a concrete instance of `SoftwareRecipeStepRunScriptInterpreterInput` via:
+//
+//          SoftwareRecipeStepRunScriptInterpreterArgs{...}
+type SoftwareRecipeStepRunScriptInterpreterInput interface {
+	pulumi.Input
+
+	ToSoftwareRecipeStepRunScriptInterpreterOutput() SoftwareRecipeStepRunScriptInterpreterOutput
+	ToSoftwareRecipeStepRunScriptInterpreterOutputWithContext(context.Context) SoftwareRecipeStepRunScriptInterpreterOutput
+}
+
+var softwareRecipeStepRunScriptInterpreterPtrType = reflect.TypeOf((**SoftwareRecipeStepRunScriptInterpreter)(nil)).Elem()
+
+type SoftwareRecipeStepRunScriptInterpreterPtrInput interface {
+	pulumi.Input
+
+	ToSoftwareRecipeStepRunScriptInterpreterPtrOutput() SoftwareRecipeStepRunScriptInterpreterPtrOutput
+	ToSoftwareRecipeStepRunScriptInterpreterPtrOutputWithContext(context.Context) SoftwareRecipeStepRunScriptInterpreterPtrOutput
+}
+
+type softwareRecipeStepRunScriptInterpreterPtr string
+
+func SoftwareRecipeStepRunScriptInterpreterPtr(v string) SoftwareRecipeStepRunScriptInterpreterPtrInput {
+	return (*softwareRecipeStepRunScriptInterpreterPtr)(&v)
+}
+
+func (*softwareRecipeStepRunScriptInterpreterPtr) ElementType() reflect.Type {
+	return softwareRecipeStepRunScriptInterpreterPtrType
+}
+
+func (in *softwareRecipeStepRunScriptInterpreterPtr) ToSoftwareRecipeStepRunScriptInterpreterPtrOutput() SoftwareRecipeStepRunScriptInterpreterPtrOutput {
+	return pulumi.ToOutput(in).(SoftwareRecipeStepRunScriptInterpreterPtrOutput)
+}
+
+func (in *softwareRecipeStepRunScriptInterpreterPtr) ToSoftwareRecipeStepRunScriptInterpreterPtrOutputWithContext(ctx context.Context) SoftwareRecipeStepRunScriptInterpreterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SoftwareRecipeStepRunScriptInterpreterPtrOutput)
+}
+
 // Required. A day of the week.
-type WeekDayOfMonthDayOfWeek pulumi.String
+type WeekDayOfMonthDayOfWeek string
 
 const (
 	// The day of the week is unspecified.
@@ -405,7 +1912,23 @@ const (
 )
 
 func (WeekDayOfMonthDayOfWeek) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*WeekDayOfMonthDayOfWeek)(nil)).Elem()
+}
+
+func (e WeekDayOfMonthDayOfWeek) ToWeekDayOfMonthDayOfWeekOutput() WeekDayOfMonthDayOfWeekOutput {
+	return pulumi.ToOutput(e).(WeekDayOfMonthDayOfWeekOutput)
+}
+
+func (e WeekDayOfMonthDayOfWeek) ToWeekDayOfMonthDayOfWeekOutputWithContext(ctx context.Context) WeekDayOfMonthDayOfWeekOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(WeekDayOfMonthDayOfWeekOutput)
+}
+
+func (e WeekDayOfMonthDayOfWeek) ToWeekDayOfMonthDayOfWeekPtrOutput() WeekDayOfMonthDayOfWeekPtrOutput {
+	return e.ToWeekDayOfMonthDayOfWeekPtrOutputWithContext(context.Background())
+}
+
+func (e WeekDayOfMonthDayOfWeek) ToWeekDayOfMonthDayOfWeekPtrOutputWithContext(ctx context.Context) WeekDayOfMonthDayOfWeekPtrOutput {
+	return WeekDayOfMonthDayOfWeek(e).ToWeekDayOfMonthDayOfWeekOutputWithContext(ctx).ToWeekDayOfMonthDayOfWeekPtrOutputWithContext(ctx)
 }
 
 func (e WeekDayOfMonthDayOfWeek) ToStringOutput() pulumi.StringOutput {
@@ -424,8 +1947,129 @@ func (e WeekDayOfMonthDayOfWeek) ToStringPtrOutputWithContext(ctx context.Contex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type WeekDayOfMonthDayOfWeekOutput struct{ *pulumi.OutputState }
+
+func (WeekDayOfMonthDayOfWeekOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeekDayOfMonthDayOfWeek)(nil)).Elem()
+}
+
+func (o WeekDayOfMonthDayOfWeekOutput) ToWeekDayOfMonthDayOfWeekOutput() WeekDayOfMonthDayOfWeekOutput {
+	return o
+}
+
+func (o WeekDayOfMonthDayOfWeekOutput) ToWeekDayOfMonthDayOfWeekOutputWithContext(ctx context.Context) WeekDayOfMonthDayOfWeekOutput {
+	return o
+}
+
+func (o WeekDayOfMonthDayOfWeekOutput) ToWeekDayOfMonthDayOfWeekPtrOutput() WeekDayOfMonthDayOfWeekPtrOutput {
+	return o.ToWeekDayOfMonthDayOfWeekPtrOutputWithContext(context.Background())
+}
+
+func (o WeekDayOfMonthDayOfWeekOutput) ToWeekDayOfMonthDayOfWeekPtrOutputWithContext(ctx context.Context) WeekDayOfMonthDayOfWeekPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WeekDayOfMonthDayOfWeek) *WeekDayOfMonthDayOfWeek {
+		return &v
+	}).(WeekDayOfMonthDayOfWeekPtrOutput)
+}
+
+func (o WeekDayOfMonthDayOfWeekOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o WeekDayOfMonthDayOfWeekOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WeekDayOfMonthDayOfWeek) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o WeekDayOfMonthDayOfWeekOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WeekDayOfMonthDayOfWeekOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WeekDayOfMonthDayOfWeek) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type WeekDayOfMonthDayOfWeekPtrOutput struct{ *pulumi.OutputState }
+
+func (WeekDayOfMonthDayOfWeekPtrOutput) ElementType() reflect.Type {
+	return weekDayOfMonthDayOfWeekPtrType
+}
+
+func (o WeekDayOfMonthDayOfWeekPtrOutput) ToWeekDayOfMonthDayOfWeekPtrOutput() WeekDayOfMonthDayOfWeekPtrOutput {
+	return o
+}
+
+func (o WeekDayOfMonthDayOfWeekPtrOutput) ToWeekDayOfMonthDayOfWeekPtrOutputWithContext(ctx context.Context) WeekDayOfMonthDayOfWeekPtrOutput {
+	return o
+}
+
+func (o WeekDayOfMonthDayOfWeekPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WeekDayOfMonthDayOfWeekPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *WeekDayOfMonthDayOfWeek) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WeekDayOfMonthDayOfWeekPtrOutput) Elem() WeekDayOfMonthDayOfWeekOutput {
+	return o.ApplyT(func(v *WeekDayOfMonthDayOfWeek) WeekDayOfMonthDayOfWeek {
+		var ret WeekDayOfMonthDayOfWeek
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(WeekDayOfMonthDayOfWeekOutput)
+}
+
+// WeekDayOfMonthDayOfWeekInput is an input type that accepts WeekDayOfMonthDayOfWeekArgs and WeekDayOfMonthDayOfWeekOutput values.
+// You can construct a concrete instance of `WeekDayOfMonthDayOfWeekInput` via:
+//
+//          WeekDayOfMonthDayOfWeekArgs{...}
+type WeekDayOfMonthDayOfWeekInput interface {
+	pulumi.Input
+
+	ToWeekDayOfMonthDayOfWeekOutput() WeekDayOfMonthDayOfWeekOutput
+	ToWeekDayOfMonthDayOfWeekOutputWithContext(context.Context) WeekDayOfMonthDayOfWeekOutput
+}
+
+var weekDayOfMonthDayOfWeekPtrType = reflect.TypeOf((**WeekDayOfMonthDayOfWeek)(nil)).Elem()
+
+type WeekDayOfMonthDayOfWeekPtrInput interface {
+	pulumi.Input
+
+	ToWeekDayOfMonthDayOfWeekPtrOutput() WeekDayOfMonthDayOfWeekPtrOutput
+	ToWeekDayOfMonthDayOfWeekPtrOutputWithContext(context.Context) WeekDayOfMonthDayOfWeekPtrOutput
+}
+
+type weekDayOfMonthDayOfWeekPtr string
+
+func WeekDayOfMonthDayOfWeekPtr(v string) WeekDayOfMonthDayOfWeekPtrInput {
+	return (*weekDayOfMonthDayOfWeekPtr)(&v)
+}
+
+func (*weekDayOfMonthDayOfWeekPtr) ElementType() reflect.Type {
+	return weekDayOfMonthDayOfWeekPtrType
+}
+
+func (in *weekDayOfMonthDayOfWeekPtr) ToWeekDayOfMonthDayOfWeekPtrOutput() WeekDayOfMonthDayOfWeekPtrOutput {
+	return pulumi.ToOutput(in).(WeekDayOfMonthDayOfWeekPtrOutput)
+}
+
+func (in *weekDayOfMonthDayOfWeekPtr) ToWeekDayOfMonthDayOfWeekPtrOutputWithContext(ctx context.Context) WeekDayOfMonthDayOfWeekPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(WeekDayOfMonthDayOfWeekPtrOutput)
+}
+
 // Required. Day of the week.
-type WeeklyScheduleDayOfWeek pulumi.String
+type WeeklyScheduleDayOfWeek string
 
 const (
 	// The day of the week is unspecified.
@@ -447,7 +2091,23 @@ const (
 )
 
 func (WeeklyScheduleDayOfWeek) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*WeeklyScheduleDayOfWeek)(nil)).Elem()
+}
+
+func (e WeeklyScheduleDayOfWeek) ToWeeklyScheduleDayOfWeekOutput() WeeklyScheduleDayOfWeekOutput {
+	return pulumi.ToOutput(e).(WeeklyScheduleDayOfWeekOutput)
+}
+
+func (e WeeklyScheduleDayOfWeek) ToWeeklyScheduleDayOfWeekOutputWithContext(ctx context.Context) WeeklyScheduleDayOfWeekOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(WeeklyScheduleDayOfWeekOutput)
+}
+
+func (e WeeklyScheduleDayOfWeek) ToWeeklyScheduleDayOfWeekPtrOutput() WeeklyScheduleDayOfWeekPtrOutput {
+	return e.ToWeeklyScheduleDayOfWeekPtrOutputWithContext(context.Background())
+}
+
+func (e WeeklyScheduleDayOfWeek) ToWeeklyScheduleDayOfWeekPtrOutputWithContext(ctx context.Context) WeeklyScheduleDayOfWeekPtrOutput {
+	return WeeklyScheduleDayOfWeek(e).ToWeeklyScheduleDayOfWeekOutputWithContext(ctx).ToWeeklyScheduleDayOfWeekPtrOutputWithContext(ctx)
 }
 
 func (e WeeklyScheduleDayOfWeek) ToStringOutput() pulumi.StringOutput {
@@ -466,7 +2126,128 @@ func (e WeeklyScheduleDayOfWeek) ToStringPtrOutputWithContext(ctx context.Contex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type WindowsUpdateSettingsClassificationsItem pulumi.String
+type WeeklyScheduleDayOfWeekOutput struct{ *pulumi.OutputState }
+
+func (WeeklyScheduleDayOfWeekOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WeeklyScheduleDayOfWeek)(nil)).Elem()
+}
+
+func (o WeeklyScheduleDayOfWeekOutput) ToWeeklyScheduleDayOfWeekOutput() WeeklyScheduleDayOfWeekOutput {
+	return o
+}
+
+func (o WeeklyScheduleDayOfWeekOutput) ToWeeklyScheduleDayOfWeekOutputWithContext(ctx context.Context) WeeklyScheduleDayOfWeekOutput {
+	return o
+}
+
+func (o WeeklyScheduleDayOfWeekOutput) ToWeeklyScheduleDayOfWeekPtrOutput() WeeklyScheduleDayOfWeekPtrOutput {
+	return o.ToWeeklyScheduleDayOfWeekPtrOutputWithContext(context.Background())
+}
+
+func (o WeeklyScheduleDayOfWeekOutput) ToWeeklyScheduleDayOfWeekPtrOutputWithContext(ctx context.Context) WeeklyScheduleDayOfWeekPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WeeklyScheduleDayOfWeek) *WeeklyScheduleDayOfWeek {
+		return &v
+	}).(WeeklyScheduleDayOfWeekPtrOutput)
+}
+
+func (o WeeklyScheduleDayOfWeekOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o WeeklyScheduleDayOfWeekOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WeeklyScheduleDayOfWeek) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o WeeklyScheduleDayOfWeekOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WeeklyScheduleDayOfWeekOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WeeklyScheduleDayOfWeek) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type WeeklyScheduleDayOfWeekPtrOutput struct{ *pulumi.OutputState }
+
+func (WeeklyScheduleDayOfWeekPtrOutput) ElementType() reflect.Type {
+	return weeklyScheduleDayOfWeekPtrType
+}
+
+func (o WeeklyScheduleDayOfWeekPtrOutput) ToWeeklyScheduleDayOfWeekPtrOutput() WeeklyScheduleDayOfWeekPtrOutput {
+	return o
+}
+
+func (o WeeklyScheduleDayOfWeekPtrOutput) ToWeeklyScheduleDayOfWeekPtrOutputWithContext(ctx context.Context) WeeklyScheduleDayOfWeekPtrOutput {
+	return o
+}
+
+func (o WeeklyScheduleDayOfWeekPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WeeklyScheduleDayOfWeekPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *WeeklyScheduleDayOfWeek) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WeeklyScheduleDayOfWeekPtrOutput) Elem() WeeklyScheduleDayOfWeekOutput {
+	return o.ApplyT(func(v *WeeklyScheduleDayOfWeek) WeeklyScheduleDayOfWeek {
+		var ret WeeklyScheduleDayOfWeek
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(WeeklyScheduleDayOfWeekOutput)
+}
+
+// WeeklyScheduleDayOfWeekInput is an input type that accepts WeeklyScheduleDayOfWeekArgs and WeeklyScheduleDayOfWeekOutput values.
+// You can construct a concrete instance of `WeeklyScheduleDayOfWeekInput` via:
+//
+//          WeeklyScheduleDayOfWeekArgs{...}
+type WeeklyScheduleDayOfWeekInput interface {
+	pulumi.Input
+
+	ToWeeklyScheduleDayOfWeekOutput() WeeklyScheduleDayOfWeekOutput
+	ToWeeklyScheduleDayOfWeekOutputWithContext(context.Context) WeeklyScheduleDayOfWeekOutput
+}
+
+var weeklyScheduleDayOfWeekPtrType = reflect.TypeOf((**WeeklyScheduleDayOfWeek)(nil)).Elem()
+
+type WeeklyScheduleDayOfWeekPtrInput interface {
+	pulumi.Input
+
+	ToWeeklyScheduleDayOfWeekPtrOutput() WeeklyScheduleDayOfWeekPtrOutput
+	ToWeeklyScheduleDayOfWeekPtrOutputWithContext(context.Context) WeeklyScheduleDayOfWeekPtrOutput
+}
+
+type weeklyScheduleDayOfWeekPtr string
+
+func WeeklyScheduleDayOfWeekPtr(v string) WeeklyScheduleDayOfWeekPtrInput {
+	return (*weeklyScheduleDayOfWeekPtr)(&v)
+}
+
+func (*weeklyScheduleDayOfWeekPtr) ElementType() reflect.Type {
+	return weeklyScheduleDayOfWeekPtrType
+}
+
+func (in *weeklyScheduleDayOfWeekPtr) ToWeeklyScheduleDayOfWeekPtrOutput() WeeklyScheduleDayOfWeekPtrOutput {
+	return pulumi.ToOutput(in).(WeeklyScheduleDayOfWeekPtrOutput)
+}
+
+func (in *weeklyScheduleDayOfWeekPtr) ToWeeklyScheduleDayOfWeekPtrOutputWithContext(ctx context.Context) WeeklyScheduleDayOfWeekPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(WeeklyScheduleDayOfWeekPtrOutput)
+}
+
+type WindowsUpdateSettingsClassificationsItem string
 
 const (
 	// Invalid. If classifications are included, they must be specified.
@@ -492,7 +2273,23 @@ const (
 )
 
 func (WindowsUpdateSettingsClassificationsItem) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*WindowsUpdateSettingsClassificationsItem)(nil)).Elem()
+}
+
+func (e WindowsUpdateSettingsClassificationsItem) ToWindowsUpdateSettingsClassificationsItemOutput() WindowsUpdateSettingsClassificationsItemOutput {
+	return pulumi.ToOutput(e).(WindowsUpdateSettingsClassificationsItemOutput)
+}
+
+func (e WindowsUpdateSettingsClassificationsItem) ToWindowsUpdateSettingsClassificationsItemOutputWithContext(ctx context.Context) WindowsUpdateSettingsClassificationsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(WindowsUpdateSettingsClassificationsItemOutput)
+}
+
+func (e WindowsUpdateSettingsClassificationsItem) ToWindowsUpdateSettingsClassificationsItemPtrOutput() WindowsUpdateSettingsClassificationsItemPtrOutput {
+	return e.ToWindowsUpdateSettingsClassificationsItemPtrOutputWithContext(context.Background())
+}
+
+func (e WindowsUpdateSettingsClassificationsItem) ToWindowsUpdateSettingsClassificationsItemPtrOutputWithContext(ctx context.Context) WindowsUpdateSettingsClassificationsItemPtrOutput {
+	return WindowsUpdateSettingsClassificationsItem(e).ToWindowsUpdateSettingsClassificationsItemOutputWithContext(ctx).ToWindowsUpdateSettingsClassificationsItemPtrOutputWithContext(ctx)
 }
 
 func (e WindowsUpdateSettingsClassificationsItem) ToStringOutput() pulumi.StringOutput {
@@ -509,6 +2306,127 @@ func (e WindowsUpdateSettingsClassificationsItem) ToStringPtrOutput() pulumi.Str
 
 func (e WindowsUpdateSettingsClassificationsItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type WindowsUpdateSettingsClassificationsItemOutput struct{ *pulumi.OutputState }
+
+func (WindowsUpdateSettingsClassificationsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WindowsUpdateSettingsClassificationsItem)(nil)).Elem()
+}
+
+func (o WindowsUpdateSettingsClassificationsItemOutput) ToWindowsUpdateSettingsClassificationsItemOutput() WindowsUpdateSettingsClassificationsItemOutput {
+	return o
+}
+
+func (o WindowsUpdateSettingsClassificationsItemOutput) ToWindowsUpdateSettingsClassificationsItemOutputWithContext(ctx context.Context) WindowsUpdateSettingsClassificationsItemOutput {
+	return o
+}
+
+func (o WindowsUpdateSettingsClassificationsItemOutput) ToWindowsUpdateSettingsClassificationsItemPtrOutput() WindowsUpdateSettingsClassificationsItemPtrOutput {
+	return o.ToWindowsUpdateSettingsClassificationsItemPtrOutputWithContext(context.Background())
+}
+
+func (o WindowsUpdateSettingsClassificationsItemOutput) ToWindowsUpdateSettingsClassificationsItemPtrOutputWithContext(ctx context.Context) WindowsUpdateSettingsClassificationsItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WindowsUpdateSettingsClassificationsItem) *WindowsUpdateSettingsClassificationsItem {
+		return &v
+	}).(WindowsUpdateSettingsClassificationsItemPtrOutput)
+}
+
+func (o WindowsUpdateSettingsClassificationsItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o WindowsUpdateSettingsClassificationsItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WindowsUpdateSettingsClassificationsItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o WindowsUpdateSettingsClassificationsItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WindowsUpdateSettingsClassificationsItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WindowsUpdateSettingsClassificationsItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type WindowsUpdateSettingsClassificationsItemPtrOutput struct{ *pulumi.OutputState }
+
+func (WindowsUpdateSettingsClassificationsItemPtrOutput) ElementType() reflect.Type {
+	return windowsUpdateSettingsClassificationsItemPtrType
+}
+
+func (o WindowsUpdateSettingsClassificationsItemPtrOutput) ToWindowsUpdateSettingsClassificationsItemPtrOutput() WindowsUpdateSettingsClassificationsItemPtrOutput {
+	return o
+}
+
+func (o WindowsUpdateSettingsClassificationsItemPtrOutput) ToWindowsUpdateSettingsClassificationsItemPtrOutputWithContext(ctx context.Context) WindowsUpdateSettingsClassificationsItemPtrOutput {
+	return o
+}
+
+func (o WindowsUpdateSettingsClassificationsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WindowsUpdateSettingsClassificationsItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *WindowsUpdateSettingsClassificationsItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WindowsUpdateSettingsClassificationsItemPtrOutput) Elem() WindowsUpdateSettingsClassificationsItemOutput {
+	return o.ApplyT(func(v *WindowsUpdateSettingsClassificationsItem) WindowsUpdateSettingsClassificationsItem {
+		var ret WindowsUpdateSettingsClassificationsItem
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(WindowsUpdateSettingsClassificationsItemOutput)
+}
+
+// WindowsUpdateSettingsClassificationsItemInput is an input type that accepts WindowsUpdateSettingsClassificationsItemArgs and WindowsUpdateSettingsClassificationsItemOutput values.
+// You can construct a concrete instance of `WindowsUpdateSettingsClassificationsItemInput` via:
+//
+//          WindowsUpdateSettingsClassificationsItemArgs{...}
+type WindowsUpdateSettingsClassificationsItemInput interface {
+	pulumi.Input
+
+	ToWindowsUpdateSettingsClassificationsItemOutput() WindowsUpdateSettingsClassificationsItemOutput
+	ToWindowsUpdateSettingsClassificationsItemOutputWithContext(context.Context) WindowsUpdateSettingsClassificationsItemOutput
+}
+
+var windowsUpdateSettingsClassificationsItemPtrType = reflect.TypeOf((**WindowsUpdateSettingsClassificationsItem)(nil)).Elem()
+
+type WindowsUpdateSettingsClassificationsItemPtrInput interface {
+	pulumi.Input
+
+	ToWindowsUpdateSettingsClassificationsItemPtrOutput() WindowsUpdateSettingsClassificationsItemPtrOutput
+	ToWindowsUpdateSettingsClassificationsItemPtrOutputWithContext(context.Context) WindowsUpdateSettingsClassificationsItemPtrOutput
+}
+
+type windowsUpdateSettingsClassificationsItemPtr string
+
+func WindowsUpdateSettingsClassificationsItemPtr(v string) WindowsUpdateSettingsClassificationsItemPtrInput {
+	return (*windowsUpdateSettingsClassificationsItemPtr)(&v)
+}
+
+func (*windowsUpdateSettingsClassificationsItemPtr) ElementType() reflect.Type {
+	return windowsUpdateSettingsClassificationsItemPtrType
+}
+
+func (in *windowsUpdateSettingsClassificationsItemPtr) ToWindowsUpdateSettingsClassificationsItemPtrOutput() WindowsUpdateSettingsClassificationsItemPtrOutput {
+	return pulumi.ToOutput(in).(WindowsUpdateSettingsClassificationsItemPtrOutput)
+}
+
+func (in *windowsUpdateSettingsClassificationsItemPtr) ToWindowsUpdateSettingsClassificationsItemPtrOutputWithContext(ctx context.Context) WindowsUpdateSettingsClassificationsItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(WindowsUpdateSettingsClassificationsItemPtrOutput)
 }
 
 // WindowsUpdateSettingsClassificationsItemArrayInput is an input type that accepts WindowsUpdateSettingsClassificationsItemArray and WindowsUpdateSettingsClassificationsItemArrayOutput values.
@@ -550,8 +2468,40 @@ func (o WindowsUpdateSettingsClassificationsItemArrayOutput) ToWindowsUpdateSett
 	return o
 }
 
-func (o WindowsUpdateSettingsClassificationsItemArrayOutput) Index(i pulumi.IntInput) pulumi.StringOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) pulumi.StringOutput {
-		return vs[0].([]WindowsUpdateSettingsClassificationsItem)[vs[1].(int)].ToStringOutput()
-	}).(pulumi.StringOutput)
+func (o WindowsUpdateSettingsClassificationsItemArrayOutput) Index(i pulumi.IntInput) WindowsUpdateSettingsClassificationsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WindowsUpdateSettingsClassificationsItemOutput {
+		return vs[0].([]WindowsUpdateSettingsClassificationsItem)[vs[1].(int)].ToWindowsUpdateSettingsClassificationsItemOutput()
+	}).(WindowsUpdateSettingsClassificationsItemOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(AptRepositoryArchiveTypeOutput{})
+	pulumi.RegisterOutputType(AptRepositoryArchiveTypePtrOutput{})
+	pulumi.RegisterOutputType(AptSettingsTypeOutput{})
+	pulumi.RegisterOutputType(AptSettingsTypePtrOutput{})
+	pulumi.RegisterOutputType(ExecStepConfigInterpreterOutput{})
+	pulumi.RegisterOutputType(ExecStepConfigInterpreterPtrOutput{})
+	pulumi.RegisterOutputType(PackageDesiredStateOutput{})
+	pulumi.RegisterOutputType(PackageDesiredStatePtrOutput{})
+	pulumi.RegisterOutputType(PackageManagerOutput{})
+	pulumi.RegisterOutputType(PackageManagerPtrOutput{})
+	pulumi.RegisterOutputType(PatchConfigRebootConfigOutput{})
+	pulumi.RegisterOutputType(PatchConfigRebootConfigPtrOutput{})
+	pulumi.RegisterOutputType(PatchRolloutModeOutput{})
+	pulumi.RegisterOutputType(PatchRolloutModePtrOutput{})
+	pulumi.RegisterOutputType(RecurringScheduleFrequencyOutput{})
+	pulumi.RegisterOutputType(RecurringScheduleFrequencyPtrOutput{})
+	pulumi.RegisterOutputType(SoftwareRecipeDesiredStateOutput{})
+	pulumi.RegisterOutputType(SoftwareRecipeDesiredStatePtrOutput{})
+	pulumi.RegisterOutputType(SoftwareRecipeStepExtractArchiveTypeOutput{})
+	pulumi.RegisterOutputType(SoftwareRecipeStepExtractArchiveTypePtrOutput{})
+	pulumi.RegisterOutputType(SoftwareRecipeStepRunScriptInterpreterOutput{})
+	pulumi.RegisterOutputType(SoftwareRecipeStepRunScriptInterpreterPtrOutput{})
+	pulumi.RegisterOutputType(WeekDayOfMonthDayOfWeekOutput{})
+	pulumi.RegisterOutputType(WeekDayOfMonthDayOfWeekPtrOutput{})
+	pulumi.RegisterOutputType(WeeklyScheduleDayOfWeekOutput{})
+	pulumi.RegisterOutputType(WeeklyScheduleDayOfWeekPtrOutput{})
+	pulumi.RegisterOutputType(WindowsUpdateSettingsClassificationsItemOutput{})
+	pulumi.RegisterOutputType(WindowsUpdateSettingsClassificationsItemPtrOutput{})
+	pulumi.RegisterOutputType(WindowsUpdateSettingsClassificationsItemArrayOutput{})
 }

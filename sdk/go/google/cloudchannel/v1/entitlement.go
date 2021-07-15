@@ -80,57 +80,9 @@ func GetEntitlement(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Entitlement resources.
 type entitlementState struct {
-	// Association information to other entitlements.
-	AssociationInfo *GoogleCloudChannelV1AssociationInfoResponse `pulumi:"associationInfo"`
-	// Commitment settings for a commitment-based Offer. Required for commitment based offers.
-	CommitmentSettings *GoogleCloudChannelV1CommitmentSettingsResponse `pulumi:"commitmentSettings"`
-	// The time at which the entitlement is created.
-	CreateTime *string `pulumi:"createTime"`
-	// Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.
-	Name *string `pulumi:"name"`
-	// The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
-	Offer *string `pulumi:"offer"`
-	// Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
-	Parameters []GoogleCloudChannelV1ParameterResponse `pulumi:"parameters"`
-	// Service provisioning details for the entitlement.
-	ProvisionedService *GoogleCloudChannelV1ProvisionedServiceResponse `pulumi:"provisionedService"`
-	// Current provisioning state of the entitlement.
-	ProvisioningState *string `pulumi:"provisioningState"`
-	// Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
-	PurchaseOrderId *string `pulumi:"purchaseOrderId"`
-	// Enumerable of all current suspension reasons for an entitlement.
-	SuspensionReasons []string `pulumi:"suspensionReasons"`
-	// Settings for trial offers.
-	TrialSettings *GoogleCloudChannelV1TrialSettingsResponse `pulumi:"trialSettings"`
-	// The time at which the entitlement is updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type EntitlementState struct {
-	// Association information to other entitlements.
-	AssociationInfo GoogleCloudChannelV1AssociationInfoResponsePtrInput
-	// Commitment settings for a commitment-based Offer. Required for commitment based offers.
-	CommitmentSettings GoogleCloudChannelV1CommitmentSettingsResponsePtrInput
-	// The time at which the entitlement is created.
-	CreateTime pulumi.StringPtrInput
-	// Resource name of an entitlement in the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}.
-	Name pulumi.StringPtrInput
-	// The offer resource name for which the entitlement is to be created. Takes the form: accounts/{account_id}/offers/{offer_id}.
-	Offer pulumi.StringPtrInput
-	// Extended entitlement parameters. When creating an entitlement, valid parameters' names and values are defined in the offer's parameter definitions.
-	Parameters GoogleCloudChannelV1ParameterResponseArrayInput
-	// Service provisioning details for the entitlement.
-	ProvisionedService GoogleCloudChannelV1ProvisionedServiceResponsePtrInput
-	// Current provisioning state of the entitlement.
-	ProvisioningState pulumi.StringPtrInput
-	// Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters.
-	PurchaseOrderId pulumi.StringPtrInput
-	// Enumerable of all current suspension reasons for an entitlement.
-	SuspensionReasons pulumi.StringArrayInput
-	// Settings for trial offers.
-	TrialSettings GoogleCloudChannelV1TrialSettingsResponsePtrInput
-	// The time at which the entitlement is updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (EntitlementState) ElementType() reflect.Type {

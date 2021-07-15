@@ -38,6 +38,9 @@ func NewAuthorizationPolicy(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
+	if args.Action == nil {
+		return nil, errors.New("invalid value for required argument 'Action'")
+	}
 	if args.AuthorizationPolicyId == nil {
 		return nil, errors.New("invalid value for required argument 'AuthorizationPolicyId'")
 	}
@@ -69,37 +72,9 @@ func GetAuthorizationPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AuthorizationPolicy resources.
 type authorizationPolicyState struct {
-	// The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
-	Action *string `pulumi:"action"`
-	// The timestamp when the resource was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Optional. Free-text description of the resource.
-	Description *string `pulumi:"description"`
-	// Optional. Set of label tags associated with the AuthorizationPolicy resource.
-	Labels map[string]string `pulumi:"labels"`
-	// Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.
-	Name *string `pulumi:"name"`
-	// Optional. List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken. A rule is a match if there is a matching source and destination. If left blank, the action specified in the `action` field will be applied on every request.
-	Rules []RuleResponse `pulumi:"rules"`
-	// The timestamp when the resource was updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type AuthorizationPolicyState struct {
-	// The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
-	Action pulumi.StringPtrInput
-	// The timestamp when the resource was created.
-	CreateTime pulumi.StringPtrInput
-	// Optional. Free-text description of the resource.
-	Description pulumi.StringPtrInput
-	// Optional. Set of label tags associated with the AuthorizationPolicy resource.
-	Labels pulumi.StringMapInput
-	// Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.
-	Name pulumi.StringPtrInput
-	// Optional. List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken. A rule is a match if there is a matching source and destination. If left blank, the action specified in the `action` field will be applied on every request.
-	Rules RuleResponseArrayInput
-	// The timestamp when the resource was updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (AuthorizationPolicyState) ElementType() reflect.Type {
@@ -108,8 +83,8 @@ func (AuthorizationPolicyState) ElementType() reflect.Type {
 
 type authorizationPolicyArgs struct {
 	// The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
-	Action                string `pulumi:"action"`
-	AuthorizationPolicyId string `pulumi:"authorizationPolicyId"`
+	Action                AuthorizationPolicyAction `pulumi:"action"`
+	AuthorizationPolicyId string                    `pulumi:"authorizationPolicyId"`
 	// Optional. Free-text description of the resource.
 	Description *string `pulumi:"description"`
 	// Optional. Set of label tags associated with the AuthorizationPolicy resource.
@@ -125,7 +100,7 @@ type authorizationPolicyArgs struct {
 // The set of arguments for constructing a AuthorizationPolicy resource.
 type AuthorizationPolicyArgs struct {
 	// The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
-	Action                AuthorizationPolicyAction
+	Action                AuthorizationPolicyActionInput
 	AuthorizationPolicyId pulumi.StringInput
 	// Optional. Free-text description of the resource.
 	Description pulumi.StringPtrInput

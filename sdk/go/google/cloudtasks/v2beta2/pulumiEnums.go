@@ -11,7 +11,7 @@ import (
 )
 
 // The HTTP method to use for the request. The default is POST. The app's request handler for the task's target URL must be able to handle HTTP requests with this http_method, otherwise the task attempt fails with error code 405 (Method Not Allowed). See [Writing a push task request handler](https://cloud.google.com/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the App Engine documentation for your runtime on [How Requests are Handled](https://cloud.google.com/appengine/docs/standard/python3/how-requests-are-handled).
-type AppEngineHttpRequestHttpMethod pulumi.String
+type AppEngineHttpRequestHttpMethod string
 
 const (
 	// HTTP method unspecified
@@ -29,7 +29,23 @@ const (
 )
 
 func (AppEngineHttpRequestHttpMethod) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*AppEngineHttpRequestHttpMethod)(nil)).Elem()
+}
+
+func (e AppEngineHttpRequestHttpMethod) ToAppEngineHttpRequestHttpMethodOutput() AppEngineHttpRequestHttpMethodOutput {
+	return pulumi.ToOutput(e).(AppEngineHttpRequestHttpMethodOutput)
+}
+
+func (e AppEngineHttpRequestHttpMethod) ToAppEngineHttpRequestHttpMethodOutputWithContext(ctx context.Context) AppEngineHttpRequestHttpMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AppEngineHttpRequestHttpMethodOutput)
+}
+
+func (e AppEngineHttpRequestHttpMethod) ToAppEngineHttpRequestHttpMethodPtrOutput() AppEngineHttpRequestHttpMethodPtrOutput {
+	return e.ToAppEngineHttpRequestHttpMethodPtrOutputWithContext(context.Background())
+}
+
+func (e AppEngineHttpRequestHttpMethod) ToAppEngineHttpRequestHttpMethodPtrOutputWithContext(ctx context.Context) AppEngineHttpRequestHttpMethodPtrOutput {
+	return AppEngineHttpRequestHttpMethod(e).ToAppEngineHttpRequestHttpMethodOutputWithContext(ctx).ToAppEngineHttpRequestHttpMethodPtrOutputWithContext(ctx)
 }
 
 func (e AppEngineHttpRequestHttpMethod) ToStringOutput() pulumi.StringOutput {
@@ -48,8 +64,129 @@ func (e AppEngineHttpRequestHttpMethod) ToStringPtrOutputWithContext(ctx context
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type AppEngineHttpRequestHttpMethodOutput struct{ *pulumi.OutputState }
+
+func (AppEngineHttpRequestHttpMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppEngineHttpRequestHttpMethod)(nil)).Elem()
+}
+
+func (o AppEngineHttpRequestHttpMethodOutput) ToAppEngineHttpRequestHttpMethodOutput() AppEngineHttpRequestHttpMethodOutput {
+	return o
+}
+
+func (o AppEngineHttpRequestHttpMethodOutput) ToAppEngineHttpRequestHttpMethodOutputWithContext(ctx context.Context) AppEngineHttpRequestHttpMethodOutput {
+	return o
+}
+
+func (o AppEngineHttpRequestHttpMethodOutput) ToAppEngineHttpRequestHttpMethodPtrOutput() AppEngineHttpRequestHttpMethodPtrOutput {
+	return o.ToAppEngineHttpRequestHttpMethodPtrOutputWithContext(context.Background())
+}
+
+func (o AppEngineHttpRequestHttpMethodOutput) ToAppEngineHttpRequestHttpMethodPtrOutputWithContext(ctx context.Context) AppEngineHttpRequestHttpMethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppEngineHttpRequestHttpMethod) *AppEngineHttpRequestHttpMethod {
+		return &v
+	}).(AppEngineHttpRequestHttpMethodPtrOutput)
+}
+
+func (o AppEngineHttpRequestHttpMethodOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AppEngineHttpRequestHttpMethodOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AppEngineHttpRequestHttpMethod) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AppEngineHttpRequestHttpMethodOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AppEngineHttpRequestHttpMethodOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AppEngineHttpRequestHttpMethod) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppEngineHttpRequestHttpMethodPtrOutput struct{ *pulumi.OutputState }
+
+func (AppEngineHttpRequestHttpMethodPtrOutput) ElementType() reflect.Type {
+	return appEngineHttpRequestHttpMethodPtrType
+}
+
+func (o AppEngineHttpRequestHttpMethodPtrOutput) ToAppEngineHttpRequestHttpMethodPtrOutput() AppEngineHttpRequestHttpMethodPtrOutput {
+	return o
+}
+
+func (o AppEngineHttpRequestHttpMethodPtrOutput) ToAppEngineHttpRequestHttpMethodPtrOutputWithContext(ctx context.Context) AppEngineHttpRequestHttpMethodPtrOutput {
+	return o
+}
+
+func (o AppEngineHttpRequestHttpMethodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AppEngineHttpRequestHttpMethodPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AppEngineHttpRequestHttpMethod) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AppEngineHttpRequestHttpMethodPtrOutput) Elem() AppEngineHttpRequestHttpMethodOutput {
+	return o.ApplyT(func(v *AppEngineHttpRequestHttpMethod) AppEngineHttpRequestHttpMethod {
+		var ret AppEngineHttpRequestHttpMethod
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(AppEngineHttpRequestHttpMethodOutput)
+}
+
+// AppEngineHttpRequestHttpMethodInput is an input type that accepts AppEngineHttpRequestHttpMethodArgs and AppEngineHttpRequestHttpMethodOutput values.
+// You can construct a concrete instance of `AppEngineHttpRequestHttpMethodInput` via:
+//
+//          AppEngineHttpRequestHttpMethodArgs{...}
+type AppEngineHttpRequestHttpMethodInput interface {
+	pulumi.Input
+
+	ToAppEngineHttpRequestHttpMethodOutput() AppEngineHttpRequestHttpMethodOutput
+	ToAppEngineHttpRequestHttpMethodOutputWithContext(context.Context) AppEngineHttpRequestHttpMethodOutput
+}
+
+var appEngineHttpRequestHttpMethodPtrType = reflect.TypeOf((**AppEngineHttpRequestHttpMethod)(nil)).Elem()
+
+type AppEngineHttpRequestHttpMethodPtrInput interface {
+	pulumi.Input
+
+	ToAppEngineHttpRequestHttpMethodPtrOutput() AppEngineHttpRequestHttpMethodPtrOutput
+	ToAppEngineHttpRequestHttpMethodPtrOutputWithContext(context.Context) AppEngineHttpRequestHttpMethodPtrOutput
+}
+
+type appEngineHttpRequestHttpMethodPtr string
+
+func AppEngineHttpRequestHttpMethodPtr(v string) AppEngineHttpRequestHttpMethodPtrInput {
+	return (*appEngineHttpRequestHttpMethodPtr)(&v)
+}
+
+func (*appEngineHttpRequestHttpMethodPtr) ElementType() reflect.Type {
+	return appEngineHttpRequestHttpMethodPtrType
+}
+
+func (in *appEngineHttpRequestHttpMethodPtr) ToAppEngineHttpRequestHttpMethodPtrOutput() AppEngineHttpRequestHttpMethodPtrOutput {
+	return pulumi.ToOutput(in).(AppEngineHttpRequestHttpMethodPtrOutput)
+}
+
+func (in *appEngineHttpRequestHttpMethodPtr) ToAppEngineHttpRequestHttpMethodPtrOutputWithContext(ctx context.Context) AppEngineHttpRequestHttpMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AppEngineHttpRequestHttpMethodPtrOutput)
+}
+
 // The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
-type TaskResponseView pulumi.String
+type TaskResponseView string
 
 const (
 	// Unspecified. Defaults to BASIC.
@@ -61,7 +198,23 @@ const (
 )
 
 func (TaskResponseView) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*TaskResponseView)(nil)).Elem()
+}
+
+func (e TaskResponseView) ToTaskResponseViewOutput() TaskResponseViewOutput {
+	return pulumi.ToOutput(e).(TaskResponseViewOutput)
+}
+
+func (e TaskResponseView) ToTaskResponseViewOutputWithContext(ctx context.Context) TaskResponseViewOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TaskResponseViewOutput)
+}
+
+func (e TaskResponseView) ToTaskResponseViewPtrOutput() TaskResponseViewPtrOutput {
+	return e.ToTaskResponseViewPtrOutputWithContext(context.Background())
+}
+
+func (e TaskResponseView) ToTaskResponseViewPtrOutputWithContext(ctx context.Context) TaskResponseViewPtrOutput {
+	return TaskResponseView(e).ToTaskResponseViewOutputWithContext(ctx).ToTaskResponseViewPtrOutputWithContext(ctx)
 }
 
 func (e TaskResponseView) ToStringOutput() pulumi.StringOutput {
@@ -78,4 +231,132 @@ func (e TaskResponseView) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e TaskResponseView) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TaskResponseViewOutput struct{ *pulumi.OutputState }
+
+func (TaskResponseViewOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaskResponseView)(nil)).Elem()
+}
+
+func (o TaskResponseViewOutput) ToTaskResponseViewOutput() TaskResponseViewOutput {
+	return o
+}
+
+func (o TaskResponseViewOutput) ToTaskResponseViewOutputWithContext(ctx context.Context) TaskResponseViewOutput {
+	return o
+}
+
+func (o TaskResponseViewOutput) ToTaskResponseViewPtrOutput() TaskResponseViewPtrOutput {
+	return o.ToTaskResponseViewPtrOutputWithContext(context.Background())
+}
+
+func (o TaskResponseViewOutput) ToTaskResponseViewPtrOutputWithContext(ctx context.Context) TaskResponseViewPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaskResponseView) *TaskResponseView {
+		return &v
+	}).(TaskResponseViewPtrOutput)
+}
+
+func (o TaskResponseViewOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TaskResponseViewOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TaskResponseView) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TaskResponseViewOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TaskResponseViewOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TaskResponseView) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TaskResponseViewPtrOutput struct{ *pulumi.OutputState }
+
+func (TaskResponseViewPtrOutput) ElementType() reflect.Type {
+	return taskResponseViewPtrType
+}
+
+func (o TaskResponseViewPtrOutput) ToTaskResponseViewPtrOutput() TaskResponseViewPtrOutput {
+	return o
+}
+
+func (o TaskResponseViewPtrOutput) ToTaskResponseViewPtrOutputWithContext(ctx context.Context) TaskResponseViewPtrOutput {
+	return o
+}
+
+func (o TaskResponseViewPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TaskResponseViewPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TaskResponseView) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TaskResponseViewPtrOutput) Elem() TaskResponseViewOutput {
+	return o.ApplyT(func(v *TaskResponseView) TaskResponseView {
+		var ret TaskResponseView
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(TaskResponseViewOutput)
+}
+
+// TaskResponseViewInput is an input type that accepts TaskResponseViewArgs and TaskResponseViewOutput values.
+// You can construct a concrete instance of `TaskResponseViewInput` via:
+//
+//          TaskResponseViewArgs{...}
+type TaskResponseViewInput interface {
+	pulumi.Input
+
+	ToTaskResponseViewOutput() TaskResponseViewOutput
+	ToTaskResponseViewOutputWithContext(context.Context) TaskResponseViewOutput
+}
+
+var taskResponseViewPtrType = reflect.TypeOf((**TaskResponseView)(nil)).Elem()
+
+type TaskResponseViewPtrInput interface {
+	pulumi.Input
+
+	ToTaskResponseViewPtrOutput() TaskResponseViewPtrOutput
+	ToTaskResponseViewPtrOutputWithContext(context.Context) TaskResponseViewPtrOutput
+}
+
+type taskResponseViewPtr string
+
+func TaskResponseViewPtr(v string) TaskResponseViewPtrInput {
+	return (*taskResponseViewPtr)(&v)
+}
+
+func (*taskResponseViewPtr) ElementType() reflect.Type {
+	return taskResponseViewPtrType
+}
+
+func (in *taskResponseViewPtr) ToTaskResponseViewPtrOutput() TaskResponseViewPtrOutput {
+	return pulumi.ToOutput(in).(TaskResponseViewPtrOutput)
+}
+
+func (in *taskResponseViewPtr) ToTaskResponseViewPtrOutputWithContext(ctx context.Context) TaskResponseViewPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TaskResponseViewPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(AppEngineHttpRequestHttpMethodOutput{})
+	pulumi.RegisterOutputType(AppEngineHttpRequestHttpMethodPtrOutput{})
+	pulumi.RegisterOutputType(TaskResponseViewOutput{})
+	pulumi.RegisterOutputType(TaskResponseViewPtrOutput{})
 }

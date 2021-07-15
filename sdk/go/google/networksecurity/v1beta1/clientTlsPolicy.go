@@ -71,41 +71,9 @@ func GetClientTlsPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ClientTlsPolicy resources.
 type clientTlsPolicyState struct {
-	// Optional. Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
-	ClientCertificate *GoogleCloudNetworksecurityV1beta1CertificateProviderResponse `pulumi:"clientCertificate"`
-	// The timestamp when the resource was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Optional. Free-text description of the resource.
-	Description *string `pulumi:"description"`
-	// Optional. Set of label tags associated with the resource.
-	Labels map[string]string `pulumi:"labels"`
-	// Name of the ClientTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/clientTlsPolicies/{client_tls_policy}`
-	Name *string `pulumi:"name"`
-	// Optional. Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
-	ServerValidationCa []ValidationCAResponse `pulumi:"serverValidationCa"`
-	// Optional. Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
-	Sni *string `pulumi:"sni"`
-	// The timestamp when the resource was updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ClientTlsPolicyState struct {
-	// Optional. Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
-	ClientCertificate GoogleCloudNetworksecurityV1beta1CertificateProviderResponsePtrInput
-	// The timestamp when the resource was created.
-	CreateTime pulumi.StringPtrInput
-	// Optional. Free-text description of the resource.
-	Description pulumi.StringPtrInput
-	// Optional. Set of label tags associated with the resource.
-	Labels pulumi.StringMapInput
-	// Name of the ClientTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/clientTlsPolicies/{client_tls_policy}`
-	Name pulumi.StringPtrInput
-	// Optional. Defines the mechanism to obtain the Certificate Authority certificate to validate the server certificate. If empty, client does not validate the server certificate.
-	ServerValidationCa ValidationCAResponseArrayInput
-	// Optional. Server Name Indication string to present to the server during TLS handshake. E.g: "secure.example.com".
-	Sni pulumi.StringPtrInput
-	// The timestamp when the resource was updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (ClientTlsPolicyState) ElementType() reflect.Type {

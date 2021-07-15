@@ -72,37 +72,9 @@ func GetConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Config resources.
 type configState struct {
-	// The creation time.
-	CreateTime *string `pulumi:"createTime"`
-	// The description of the game server config.
-	Description *string `pulumi:"description"`
-	// FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
-	FleetConfigs []FleetConfigResponse `pulumi:"fleetConfigs"`
-	// The labels associated with this game server config. Each label is a key-value pair.
-	Labels map[string]string `pulumi:"labels"`
-	// The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
-	Name *string `pulumi:"name"`
-	// The autoscaling settings.
-	ScalingConfigs []ScalingConfigResponse `pulumi:"scalingConfigs"`
-	// The last-modified time.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ConfigState struct {
-	// The creation time.
-	CreateTime pulumi.StringPtrInput
-	// The description of the game server config.
-	Description pulumi.StringPtrInput
-	// FleetConfig contains a list of Agones fleet specs. Only one FleetConfig is allowed.
-	FleetConfigs FleetConfigResponseArrayInput
-	// The labels associated with this game server config. Each label is a key-value pair.
-	Labels pulumi.StringMapInput
-	// The resource name of the game server config, in the following form: `projects/{project}/locations/{location}/gameServerDeployments/{deployment}/configs/{config}`. For example, `projects/my-project/locations/global/gameServerDeployments/my-game/configs/my-config`.
-	Name pulumi.StringPtrInput
-	// The autoscaling settings.
-	ScalingConfigs ScalingConfigResponseArrayInput
-	// The last-modified time.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (ConfigState) ElementType() reflect.Type {

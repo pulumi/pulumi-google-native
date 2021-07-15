@@ -85,57 +85,9 @@ func GetExperiment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Experiment resources.
 type experimentState struct {
-	// Creation time of this experiment.
-	CreateTime *string `pulumi:"createTime"`
-	// The definition of the experiment.
-	Definition *GoogleCloudDialogflowCxV3beta1ExperimentDefinitionResponse `pulumi:"definition"`
-	// The human-readable description of the experiment.
-	Description *string `pulumi:"description"`
-	// The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
-	DisplayName *string `pulumi:"displayName"`
-	// End time of this experiment.
-	EndTime *string `pulumi:"endTime"`
-	// LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
-	ExperimentLength *string `pulumi:"experimentLength"`
-	// Last update time of this experiment.
-	LastUpdateTime *string `pulumi:"lastUpdateTime"`
-	// The name of the experiment. Format: projects//locations//agents//environments//experiments/..
-	Name *string `pulumi:"name"`
-	// Inference result of the experiment.
-	Result *GoogleCloudDialogflowCxV3beta1ExperimentResultResponse `pulumi:"result"`
-	// Start time of this experiment.
-	StartTime *string `pulumi:"startTime"`
-	// The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
-	State *string `pulumi:"state"`
-	// The history of updates to the experiment variants.
-	VariantsHistory []GoogleCloudDialogflowCxV3beta1VariantsHistoryResponse `pulumi:"variantsHistory"`
 }
 
 type ExperimentState struct {
-	// Creation time of this experiment.
-	CreateTime pulumi.StringPtrInput
-	// The definition of the experiment.
-	Definition GoogleCloudDialogflowCxV3beta1ExperimentDefinitionResponsePtrInput
-	// The human-readable description of the experiment.
-	Description pulumi.StringPtrInput
-	// The human-readable name of the experiment (unique in an environment). Limit of 64 characters.
-	DisplayName pulumi.StringPtrInput
-	// End time of this experiment.
-	EndTime pulumi.StringPtrInput
-	// LINT.IfChange(default_experiment_length) Maximum number of days to run the experiment. If auto-rollout is not enabled, default value and maximum will be 30 days. If auto-rollout is enabled, default value and maximum will be 6 days. LINT.ThenChange(//depot/google3/cloud/ml/api/conversation/analytics/compute.cc:default_experiment_length)
-	ExperimentLength pulumi.StringPtrInput
-	// Last update time of this experiment.
-	LastUpdateTime pulumi.StringPtrInput
-	// The name of the experiment. Format: projects//locations//agents//environments//experiments/..
-	Name pulumi.StringPtrInput
-	// Inference result of the experiment.
-	Result GoogleCloudDialogflowCxV3beta1ExperimentResultResponsePtrInput
-	// Start time of this experiment.
-	StartTime pulumi.StringPtrInput
-	// The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
-	State pulumi.StringPtrInput
-	// The history of updates to the experiment variants.
-	VariantsHistory GoogleCloudDialogflowCxV3beta1VariantsHistoryResponseArrayInput
 }
 
 func (ExperimentState) ElementType() reflect.Type {
@@ -168,7 +120,7 @@ type experimentArgs struct {
 	// Start time of this experiment.
 	StartTime *string `pulumi:"startTime"`
 	// The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
-	State *string `pulumi:"state"`
+	State *ExperimentStateEnum `pulumi:"state"`
 	// The history of updates to the experiment variants.
 	VariantsHistory []GoogleCloudDialogflowCxV3beta1VariantsHistory `pulumi:"variantsHistory"`
 }
@@ -200,7 +152,7 @@ type ExperimentArgs struct {
 	// Start time of this experiment.
 	StartTime pulumi.StringPtrInput
 	// The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
-	State *ExperimentStateEnum
+	State ExperimentStateEnumPtrInput
 	// The history of updates to the experiment variants.
 	VariantsHistory GoogleCloudDialogflowCxV3beta1VariantsHistoryArrayInput
 }

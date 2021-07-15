@@ -68,33 +68,9 @@ func GetTaxonomy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Taxonomy resources.
 type taxonomyState struct {
-	// Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list.
-	ActivatedPolicyTypes []string `pulumi:"activatedPolicyTypes"`
-	// Optional. Description of this taxonomy. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.
-	Description *string `pulumi:"description"`
-	// User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
-	DisplayName *string `pulumi:"displayName"`
-	// Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
-	Name *string `pulumi:"name"`
-	// Number of policy tags contained in this taxonomy.
-	PolicyTagCount *int `pulumi:"policyTagCount"`
-	// Timestamps about this taxonomy. Only create_time and update_time are used.
-	TaxonomyTimestamps *GoogleCloudDatacatalogV1beta1SystemTimestampsResponse `pulumi:"taxonomyTimestamps"`
 }
 
 type TaxonomyState struct {
-	// Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list.
-	ActivatedPolicyTypes pulumi.StringArrayInput
-	// Optional. Description of this taxonomy. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.
-	Description pulumi.StringPtrInput
-	// User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.
-	DisplayName pulumi.StringPtrInput
-	// Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}".
-	Name pulumi.StringPtrInput
-	// Number of policy tags contained in this taxonomy.
-	PolicyTagCount pulumi.IntPtrInput
-	// Timestamps about this taxonomy. Only create_time and update_time are used.
-	TaxonomyTimestamps GoogleCloudDatacatalogV1beta1SystemTimestampsResponsePtrInput
 }
 
 func (TaxonomyState) ElementType() reflect.Type {
@@ -103,7 +79,7 @@ func (TaxonomyState) ElementType() reflect.Type {
 
 type taxonomyArgs struct {
 	// Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list.
-	ActivatedPolicyTypes []string `pulumi:"activatedPolicyTypes"`
+	ActivatedPolicyTypes []TaxonomyActivatedPolicyTypesItem `pulumi:"activatedPolicyTypes"`
 	// Optional. Description of this taxonomy. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description.
 	Description *string `pulumi:"description"`
 	// User defined name of this taxonomy. It must: contain only unicode letters, numbers, underscores, dashes and spaces; not start or end with spaces; and be at most 200 bytes long when encoded in UTF-8.

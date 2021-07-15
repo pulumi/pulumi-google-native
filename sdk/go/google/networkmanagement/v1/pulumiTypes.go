@@ -297,7 +297,7 @@ type AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *string `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
@@ -316,7 +316,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *AuditLogConfigLogType `pulumi:"logType"`
+	LogType AuditLogConfigLogTypePtrInput `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -377,8 +377,8 @@ func (o AuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
 }
 
 // The log type that this config enables.
-func (o AuditLogConfigOutput) LogType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AuditLogConfig) *string { return v.LogType }).(pulumi.StringPtrOutput)
+func (o AuditLogConfigOutput) LogType() AuditLogConfigLogTypePtrOutput {
+	return o.ApplyT(func(v AuditLogConfig) *AuditLogConfigLogType { return v.LogType }).(AuditLogConfigLogTypePtrOutput)
 }
 
 type AuditLogConfigArrayOutput struct{ *pulumi.OutputState }
@@ -987,7 +987,7 @@ type Endpoint struct {
 	// A Compute Engine network URI.
 	Network *string `pulumi:"network"`
 	// Type of the network where the endpoint is located. Applicable only to source endpoint, as destination network type can be inferred from the source.
-	NetworkType *string `pulumi:"networkType"`
+	NetworkType *EndpointNetworkType `pulumi:"networkType"`
 	// The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
 	Port *int `pulumi:"port"`
 	// Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
@@ -1018,7 +1018,7 @@ type EndpointArgs struct {
 	// A Compute Engine network URI.
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// Type of the network where the endpoint is located. Applicable only to source endpoint, as destination network type can be inferred from the source.
-	NetworkType *EndpointNetworkType `pulumi:"networkType"`
+	NetworkType EndpointNetworkTypePtrInput `pulumi:"networkType"`
 	// The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
@@ -1129,8 +1129,8 @@ func (o EndpointOutput) Network() pulumi.StringPtrOutput {
 }
 
 // Type of the network where the endpoint is located. Applicable only to source endpoint, as destination network type can be inferred from the source.
-func (o EndpointOutput) NetworkType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Endpoint) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
+func (o EndpointOutput) NetworkType() EndpointNetworkTypePtrOutput {
+	return o.ApplyT(func(v Endpoint) *EndpointNetworkType { return v.NetworkType }).(EndpointNetworkTypePtrOutput)
 }
 
 // The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
@@ -1212,13 +1212,13 @@ func (o EndpointPtrOutput) Network() pulumi.StringPtrOutput {
 }
 
 // Type of the network where the endpoint is located. Applicable only to source endpoint, as destination network type can be inferred from the source.
-func (o EndpointPtrOutput) NetworkType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Endpoint) *string {
+func (o EndpointPtrOutput) NetworkType() EndpointNetworkTypePtrOutput {
+	return o.ApplyT(func(v *Endpoint) *EndpointNetworkType {
 		if v == nil {
 			return nil
 		}
 		return v.NetworkType
-	}).(pulumi.StringPtrOutput)
+	}).(EndpointNetworkTypePtrOutput)
 }
 
 // The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.

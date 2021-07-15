@@ -11,7 +11,7 @@ import (
 )
 
 // Option to define build log streaming behavior to Google Cloud Storage.
-type BuildOptionsLogStreamingOption pulumi.String
+type BuildOptionsLogStreamingOption string
 
 const (
 	// Service may automatically determine build log streaming behavior.
@@ -23,7 +23,23 @@ const (
 )
 
 func (BuildOptionsLogStreamingOption) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*BuildOptionsLogStreamingOption)(nil)).Elem()
+}
+
+func (e BuildOptionsLogStreamingOption) ToBuildOptionsLogStreamingOptionOutput() BuildOptionsLogStreamingOptionOutput {
+	return pulumi.ToOutput(e).(BuildOptionsLogStreamingOptionOutput)
+}
+
+func (e BuildOptionsLogStreamingOption) ToBuildOptionsLogStreamingOptionOutputWithContext(ctx context.Context) BuildOptionsLogStreamingOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BuildOptionsLogStreamingOptionOutput)
+}
+
+func (e BuildOptionsLogStreamingOption) ToBuildOptionsLogStreamingOptionPtrOutput() BuildOptionsLogStreamingOptionPtrOutput {
+	return e.ToBuildOptionsLogStreamingOptionPtrOutputWithContext(context.Background())
+}
+
+func (e BuildOptionsLogStreamingOption) ToBuildOptionsLogStreamingOptionPtrOutputWithContext(ctx context.Context) BuildOptionsLogStreamingOptionPtrOutput {
+	return BuildOptionsLogStreamingOption(e).ToBuildOptionsLogStreamingOptionOutputWithContext(ctx).ToBuildOptionsLogStreamingOptionPtrOutputWithContext(ctx)
 }
 
 func (e BuildOptionsLogStreamingOption) ToStringOutput() pulumi.StringOutput {
@@ -42,8 +58,129 @@ func (e BuildOptionsLogStreamingOption) ToStringPtrOutputWithContext(ctx context
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type BuildOptionsLogStreamingOptionOutput struct{ *pulumi.OutputState }
+
+func (BuildOptionsLogStreamingOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildOptionsLogStreamingOption)(nil)).Elem()
+}
+
+func (o BuildOptionsLogStreamingOptionOutput) ToBuildOptionsLogStreamingOptionOutput() BuildOptionsLogStreamingOptionOutput {
+	return o
+}
+
+func (o BuildOptionsLogStreamingOptionOutput) ToBuildOptionsLogStreamingOptionOutputWithContext(ctx context.Context) BuildOptionsLogStreamingOptionOutput {
+	return o
+}
+
+func (o BuildOptionsLogStreamingOptionOutput) ToBuildOptionsLogStreamingOptionPtrOutput() BuildOptionsLogStreamingOptionPtrOutput {
+	return o.ToBuildOptionsLogStreamingOptionPtrOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsLogStreamingOptionOutput) ToBuildOptionsLogStreamingOptionPtrOutputWithContext(ctx context.Context) BuildOptionsLogStreamingOptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildOptionsLogStreamingOption) *BuildOptionsLogStreamingOption {
+		return &v
+	}).(BuildOptionsLogStreamingOptionPtrOutput)
+}
+
+func (o BuildOptionsLogStreamingOptionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsLogStreamingOptionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BuildOptionsLogStreamingOption) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BuildOptionsLogStreamingOptionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsLogStreamingOptionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BuildOptionsLogStreamingOption) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BuildOptionsLogStreamingOptionPtrOutput struct{ *pulumi.OutputState }
+
+func (BuildOptionsLogStreamingOptionPtrOutput) ElementType() reflect.Type {
+	return buildOptionsLogStreamingOptionPtrType
+}
+
+func (o BuildOptionsLogStreamingOptionPtrOutput) ToBuildOptionsLogStreamingOptionPtrOutput() BuildOptionsLogStreamingOptionPtrOutput {
+	return o
+}
+
+func (o BuildOptionsLogStreamingOptionPtrOutput) ToBuildOptionsLogStreamingOptionPtrOutputWithContext(ctx context.Context) BuildOptionsLogStreamingOptionPtrOutput {
+	return o
+}
+
+func (o BuildOptionsLogStreamingOptionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsLogStreamingOptionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BuildOptionsLogStreamingOption) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BuildOptionsLogStreamingOptionPtrOutput) Elem() BuildOptionsLogStreamingOptionOutput {
+	return o.ApplyT(func(v *BuildOptionsLogStreamingOption) BuildOptionsLogStreamingOption {
+		var ret BuildOptionsLogStreamingOption
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(BuildOptionsLogStreamingOptionOutput)
+}
+
+// BuildOptionsLogStreamingOptionInput is an input type that accepts BuildOptionsLogStreamingOptionArgs and BuildOptionsLogStreamingOptionOutput values.
+// You can construct a concrete instance of `BuildOptionsLogStreamingOptionInput` via:
+//
+//          BuildOptionsLogStreamingOptionArgs{...}
+type BuildOptionsLogStreamingOptionInput interface {
+	pulumi.Input
+
+	ToBuildOptionsLogStreamingOptionOutput() BuildOptionsLogStreamingOptionOutput
+	ToBuildOptionsLogStreamingOptionOutputWithContext(context.Context) BuildOptionsLogStreamingOptionOutput
+}
+
+var buildOptionsLogStreamingOptionPtrType = reflect.TypeOf((**BuildOptionsLogStreamingOption)(nil)).Elem()
+
+type BuildOptionsLogStreamingOptionPtrInput interface {
+	pulumi.Input
+
+	ToBuildOptionsLogStreamingOptionPtrOutput() BuildOptionsLogStreamingOptionPtrOutput
+	ToBuildOptionsLogStreamingOptionPtrOutputWithContext(context.Context) BuildOptionsLogStreamingOptionPtrOutput
+}
+
+type buildOptionsLogStreamingOptionPtr string
+
+func BuildOptionsLogStreamingOptionPtr(v string) BuildOptionsLogStreamingOptionPtrInput {
+	return (*buildOptionsLogStreamingOptionPtr)(&v)
+}
+
+func (*buildOptionsLogStreamingOptionPtr) ElementType() reflect.Type {
+	return buildOptionsLogStreamingOptionPtrType
+}
+
+func (in *buildOptionsLogStreamingOptionPtr) ToBuildOptionsLogStreamingOptionPtrOutput() BuildOptionsLogStreamingOptionPtrOutput {
+	return pulumi.ToOutput(in).(BuildOptionsLogStreamingOptionPtrOutput)
+}
+
+func (in *buildOptionsLogStreamingOptionPtr) ToBuildOptionsLogStreamingOptionPtrOutputWithContext(ctx context.Context) BuildOptionsLogStreamingOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BuildOptionsLogStreamingOptionPtrOutput)
+}
+
 // Option to specify the logging mode, which determines if and where build logs are stored.
-type BuildOptionsLogging pulumi.String
+type BuildOptionsLogging string
 
 const (
 	// The service determines the logging mode. The default is `LEGACY`. Do not rely on the default logging behavior as it may change in the future.
@@ -61,7 +198,23 @@ const (
 )
 
 func (BuildOptionsLogging) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*BuildOptionsLogging)(nil)).Elem()
+}
+
+func (e BuildOptionsLogging) ToBuildOptionsLoggingOutput() BuildOptionsLoggingOutput {
+	return pulumi.ToOutput(e).(BuildOptionsLoggingOutput)
+}
+
+func (e BuildOptionsLogging) ToBuildOptionsLoggingOutputWithContext(ctx context.Context) BuildOptionsLoggingOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BuildOptionsLoggingOutput)
+}
+
+func (e BuildOptionsLogging) ToBuildOptionsLoggingPtrOutput() BuildOptionsLoggingPtrOutput {
+	return e.ToBuildOptionsLoggingPtrOutputWithContext(context.Background())
+}
+
+func (e BuildOptionsLogging) ToBuildOptionsLoggingPtrOutputWithContext(ctx context.Context) BuildOptionsLoggingPtrOutput {
+	return BuildOptionsLogging(e).ToBuildOptionsLoggingOutputWithContext(ctx).ToBuildOptionsLoggingPtrOutputWithContext(ctx)
 }
 
 func (e BuildOptionsLogging) ToStringOutput() pulumi.StringOutput {
@@ -80,8 +233,129 @@ func (e BuildOptionsLogging) ToStringPtrOutputWithContext(ctx context.Context) p
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type BuildOptionsLoggingOutput struct{ *pulumi.OutputState }
+
+func (BuildOptionsLoggingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildOptionsLogging)(nil)).Elem()
+}
+
+func (o BuildOptionsLoggingOutput) ToBuildOptionsLoggingOutput() BuildOptionsLoggingOutput {
+	return o
+}
+
+func (o BuildOptionsLoggingOutput) ToBuildOptionsLoggingOutputWithContext(ctx context.Context) BuildOptionsLoggingOutput {
+	return o
+}
+
+func (o BuildOptionsLoggingOutput) ToBuildOptionsLoggingPtrOutput() BuildOptionsLoggingPtrOutput {
+	return o.ToBuildOptionsLoggingPtrOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsLoggingOutput) ToBuildOptionsLoggingPtrOutputWithContext(ctx context.Context) BuildOptionsLoggingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildOptionsLogging) *BuildOptionsLogging {
+		return &v
+	}).(BuildOptionsLoggingPtrOutput)
+}
+
+func (o BuildOptionsLoggingOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsLoggingOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BuildOptionsLogging) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BuildOptionsLoggingOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsLoggingOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BuildOptionsLogging) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BuildOptionsLoggingPtrOutput struct{ *pulumi.OutputState }
+
+func (BuildOptionsLoggingPtrOutput) ElementType() reflect.Type {
+	return buildOptionsLoggingPtrType
+}
+
+func (o BuildOptionsLoggingPtrOutput) ToBuildOptionsLoggingPtrOutput() BuildOptionsLoggingPtrOutput {
+	return o
+}
+
+func (o BuildOptionsLoggingPtrOutput) ToBuildOptionsLoggingPtrOutputWithContext(ctx context.Context) BuildOptionsLoggingPtrOutput {
+	return o
+}
+
+func (o BuildOptionsLoggingPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsLoggingPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BuildOptionsLogging) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BuildOptionsLoggingPtrOutput) Elem() BuildOptionsLoggingOutput {
+	return o.ApplyT(func(v *BuildOptionsLogging) BuildOptionsLogging {
+		var ret BuildOptionsLogging
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(BuildOptionsLoggingOutput)
+}
+
+// BuildOptionsLoggingInput is an input type that accepts BuildOptionsLoggingArgs and BuildOptionsLoggingOutput values.
+// You can construct a concrete instance of `BuildOptionsLoggingInput` via:
+//
+//          BuildOptionsLoggingArgs{...}
+type BuildOptionsLoggingInput interface {
+	pulumi.Input
+
+	ToBuildOptionsLoggingOutput() BuildOptionsLoggingOutput
+	ToBuildOptionsLoggingOutputWithContext(context.Context) BuildOptionsLoggingOutput
+}
+
+var buildOptionsLoggingPtrType = reflect.TypeOf((**BuildOptionsLogging)(nil)).Elem()
+
+type BuildOptionsLoggingPtrInput interface {
+	pulumi.Input
+
+	ToBuildOptionsLoggingPtrOutput() BuildOptionsLoggingPtrOutput
+	ToBuildOptionsLoggingPtrOutputWithContext(context.Context) BuildOptionsLoggingPtrOutput
+}
+
+type buildOptionsLoggingPtr string
+
+func BuildOptionsLoggingPtr(v string) BuildOptionsLoggingPtrInput {
+	return (*buildOptionsLoggingPtr)(&v)
+}
+
+func (*buildOptionsLoggingPtr) ElementType() reflect.Type {
+	return buildOptionsLoggingPtrType
+}
+
+func (in *buildOptionsLoggingPtr) ToBuildOptionsLoggingPtrOutput() BuildOptionsLoggingPtrOutput {
+	return pulumi.ToOutput(in).(BuildOptionsLoggingPtrOutput)
+}
+
+func (in *buildOptionsLoggingPtr) ToBuildOptionsLoggingPtrOutputWithContext(ctx context.Context) BuildOptionsLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BuildOptionsLoggingPtrOutput)
+}
+
 // Compute Engine machine type on which to run the build.
-type BuildOptionsMachineType pulumi.String
+type BuildOptionsMachineType string
 
 const (
 	// Standard machine type.
@@ -97,7 +371,23 @@ const (
 )
 
 func (BuildOptionsMachineType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*BuildOptionsMachineType)(nil)).Elem()
+}
+
+func (e BuildOptionsMachineType) ToBuildOptionsMachineTypeOutput() BuildOptionsMachineTypeOutput {
+	return pulumi.ToOutput(e).(BuildOptionsMachineTypeOutput)
+}
+
+func (e BuildOptionsMachineType) ToBuildOptionsMachineTypeOutputWithContext(ctx context.Context) BuildOptionsMachineTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BuildOptionsMachineTypeOutput)
+}
+
+func (e BuildOptionsMachineType) ToBuildOptionsMachineTypePtrOutput() BuildOptionsMachineTypePtrOutput {
+	return e.ToBuildOptionsMachineTypePtrOutputWithContext(context.Background())
+}
+
+func (e BuildOptionsMachineType) ToBuildOptionsMachineTypePtrOutputWithContext(ctx context.Context) BuildOptionsMachineTypePtrOutput {
+	return BuildOptionsMachineType(e).ToBuildOptionsMachineTypeOutputWithContext(ctx).ToBuildOptionsMachineTypePtrOutputWithContext(ctx)
 }
 
 func (e BuildOptionsMachineType) ToStringOutput() pulumi.StringOutput {
@@ -116,8 +406,129 @@ func (e BuildOptionsMachineType) ToStringPtrOutputWithContext(ctx context.Contex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type BuildOptionsMachineTypeOutput struct{ *pulumi.OutputState }
+
+func (BuildOptionsMachineTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildOptionsMachineType)(nil)).Elem()
+}
+
+func (o BuildOptionsMachineTypeOutput) ToBuildOptionsMachineTypeOutput() BuildOptionsMachineTypeOutput {
+	return o
+}
+
+func (o BuildOptionsMachineTypeOutput) ToBuildOptionsMachineTypeOutputWithContext(ctx context.Context) BuildOptionsMachineTypeOutput {
+	return o
+}
+
+func (o BuildOptionsMachineTypeOutput) ToBuildOptionsMachineTypePtrOutput() BuildOptionsMachineTypePtrOutput {
+	return o.ToBuildOptionsMachineTypePtrOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsMachineTypeOutput) ToBuildOptionsMachineTypePtrOutputWithContext(ctx context.Context) BuildOptionsMachineTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildOptionsMachineType) *BuildOptionsMachineType {
+		return &v
+	}).(BuildOptionsMachineTypePtrOutput)
+}
+
+func (o BuildOptionsMachineTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsMachineTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BuildOptionsMachineType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BuildOptionsMachineTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsMachineTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BuildOptionsMachineType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BuildOptionsMachineTypePtrOutput struct{ *pulumi.OutputState }
+
+func (BuildOptionsMachineTypePtrOutput) ElementType() reflect.Type {
+	return buildOptionsMachineTypePtrType
+}
+
+func (o BuildOptionsMachineTypePtrOutput) ToBuildOptionsMachineTypePtrOutput() BuildOptionsMachineTypePtrOutput {
+	return o
+}
+
+func (o BuildOptionsMachineTypePtrOutput) ToBuildOptionsMachineTypePtrOutputWithContext(ctx context.Context) BuildOptionsMachineTypePtrOutput {
+	return o
+}
+
+func (o BuildOptionsMachineTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsMachineTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BuildOptionsMachineType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BuildOptionsMachineTypePtrOutput) Elem() BuildOptionsMachineTypeOutput {
+	return o.ApplyT(func(v *BuildOptionsMachineType) BuildOptionsMachineType {
+		var ret BuildOptionsMachineType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(BuildOptionsMachineTypeOutput)
+}
+
+// BuildOptionsMachineTypeInput is an input type that accepts BuildOptionsMachineTypeArgs and BuildOptionsMachineTypeOutput values.
+// You can construct a concrete instance of `BuildOptionsMachineTypeInput` via:
+//
+//          BuildOptionsMachineTypeArgs{...}
+type BuildOptionsMachineTypeInput interface {
+	pulumi.Input
+
+	ToBuildOptionsMachineTypeOutput() BuildOptionsMachineTypeOutput
+	ToBuildOptionsMachineTypeOutputWithContext(context.Context) BuildOptionsMachineTypeOutput
+}
+
+var buildOptionsMachineTypePtrType = reflect.TypeOf((**BuildOptionsMachineType)(nil)).Elem()
+
+type BuildOptionsMachineTypePtrInput interface {
+	pulumi.Input
+
+	ToBuildOptionsMachineTypePtrOutput() BuildOptionsMachineTypePtrOutput
+	ToBuildOptionsMachineTypePtrOutputWithContext(context.Context) BuildOptionsMachineTypePtrOutput
+}
+
+type buildOptionsMachineTypePtr string
+
+func BuildOptionsMachineTypePtr(v string) BuildOptionsMachineTypePtrInput {
+	return (*buildOptionsMachineTypePtr)(&v)
+}
+
+func (*buildOptionsMachineTypePtr) ElementType() reflect.Type {
+	return buildOptionsMachineTypePtrType
+}
+
+func (in *buildOptionsMachineTypePtr) ToBuildOptionsMachineTypePtrOutput() BuildOptionsMachineTypePtrOutput {
+	return pulumi.ToOutput(in).(BuildOptionsMachineTypePtrOutput)
+}
+
+func (in *buildOptionsMachineTypePtr) ToBuildOptionsMachineTypePtrOutputWithContext(ctx context.Context) BuildOptionsMachineTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BuildOptionsMachineTypePtrOutput)
+}
+
 // Requested verifiability options.
-type BuildOptionsRequestedVerifyOption pulumi.String
+type BuildOptionsRequestedVerifyOption string
 
 const (
 	// Not a verifiable build. (default)
@@ -127,7 +538,23 @@ const (
 )
 
 func (BuildOptionsRequestedVerifyOption) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*BuildOptionsRequestedVerifyOption)(nil)).Elem()
+}
+
+func (e BuildOptionsRequestedVerifyOption) ToBuildOptionsRequestedVerifyOptionOutput() BuildOptionsRequestedVerifyOptionOutput {
+	return pulumi.ToOutput(e).(BuildOptionsRequestedVerifyOptionOutput)
+}
+
+func (e BuildOptionsRequestedVerifyOption) ToBuildOptionsRequestedVerifyOptionOutputWithContext(ctx context.Context) BuildOptionsRequestedVerifyOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BuildOptionsRequestedVerifyOptionOutput)
+}
+
+func (e BuildOptionsRequestedVerifyOption) ToBuildOptionsRequestedVerifyOptionPtrOutput() BuildOptionsRequestedVerifyOptionPtrOutput {
+	return e.ToBuildOptionsRequestedVerifyOptionPtrOutputWithContext(context.Background())
+}
+
+func (e BuildOptionsRequestedVerifyOption) ToBuildOptionsRequestedVerifyOptionPtrOutputWithContext(ctx context.Context) BuildOptionsRequestedVerifyOptionPtrOutput {
+	return BuildOptionsRequestedVerifyOption(e).ToBuildOptionsRequestedVerifyOptionOutputWithContext(ctx).ToBuildOptionsRequestedVerifyOptionPtrOutputWithContext(ctx)
 }
 
 func (e BuildOptionsRequestedVerifyOption) ToStringOutput() pulumi.StringOutput {
@@ -146,7 +573,128 @@ func (e BuildOptionsRequestedVerifyOption) ToStringPtrOutputWithContext(ctx cont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type BuildOptionsSourceProvenanceHashItem pulumi.String
+type BuildOptionsRequestedVerifyOptionOutput struct{ *pulumi.OutputState }
+
+func (BuildOptionsRequestedVerifyOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildOptionsRequestedVerifyOption)(nil)).Elem()
+}
+
+func (o BuildOptionsRequestedVerifyOptionOutput) ToBuildOptionsRequestedVerifyOptionOutput() BuildOptionsRequestedVerifyOptionOutput {
+	return o
+}
+
+func (o BuildOptionsRequestedVerifyOptionOutput) ToBuildOptionsRequestedVerifyOptionOutputWithContext(ctx context.Context) BuildOptionsRequestedVerifyOptionOutput {
+	return o
+}
+
+func (o BuildOptionsRequestedVerifyOptionOutput) ToBuildOptionsRequestedVerifyOptionPtrOutput() BuildOptionsRequestedVerifyOptionPtrOutput {
+	return o.ToBuildOptionsRequestedVerifyOptionPtrOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsRequestedVerifyOptionOutput) ToBuildOptionsRequestedVerifyOptionPtrOutputWithContext(ctx context.Context) BuildOptionsRequestedVerifyOptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildOptionsRequestedVerifyOption) *BuildOptionsRequestedVerifyOption {
+		return &v
+	}).(BuildOptionsRequestedVerifyOptionPtrOutput)
+}
+
+func (o BuildOptionsRequestedVerifyOptionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsRequestedVerifyOptionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BuildOptionsRequestedVerifyOption) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BuildOptionsRequestedVerifyOptionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsRequestedVerifyOptionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BuildOptionsRequestedVerifyOption) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BuildOptionsRequestedVerifyOptionPtrOutput struct{ *pulumi.OutputState }
+
+func (BuildOptionsRequestedVerifyOptionPtrOutput) ElementType() reflect.Type {
+	return buildOptionsRequestedVerifyOptionPtrType
+}
+
+func (o BuildOptionsRequestedVerifyOptionPtrOutput) ToBuildOptionsRequestedVerifyOptionPtrOutput() BuildOptionsRequestedVerifyOptionPtrOutput {
+	return o
+}
+
+func (o BuildOptionsRequestedVerifyOptionPtrOutput) ToBuildOptionsRequestedVerifyOptionPtrOutputWithContext(ctx context.Context) BuildOptionsRequestedVerifyOptionPtrOutput {
+	return o
+}
+
+func (o BuildOptionsRequestedVerifyOptionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsRequestedVerifyOptionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BuildOptionsRequestedVerifyOption) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BuildOptionsRequestedVerifyOptionPtrOutput) Elem() BuildOptionsRequestedVerifyOptionOutput {
+	return o.ApplyT(func(v *BuildOptionsRequestedVerifyOption) BuildOptionsRequestedVerifyOption {
+		var ret BuildOptionsRequestedVerifyOption
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(BuildOptionsRequestedVerifyOptionOutput)
+}
+
+// BuildOptionsRequestedVerifyOptionInput is an input type that accepts BuildOptionsRequestedVerifyOptionArgs and BuildOptionsRequestedVerifyOptionOutput values.
+// You can construct a concrete instance of `BuildOptionsRequestedVerifyOptionInput` via:
+//
+//          BuildOptionsRequestedVerifyOptionArgs{...}
+type BuildOptionsRequestedVerifyOptionInput interface {
+	pulumi.Input
+
+	ToBuildOptionsRequestedVerifyOptionOutput() BuildOptionsRequestedVerifyOptionOutput
+	ToBuildOptionsRequestedVerifyOptionOutputWithContext(context.Context) BuildOptionsRequestedVerifyOptionOutput
+}
+
+var buildOptionsRequestedVerifyOptionPtrType = reflect.TypeOf((**BuildOptionsRequestedVerifyOption)(nil)).Elem()
+
+type BuildOptionsRequestedVerifyOptionPtrInput interface {
+	pulumi.Input
+
+	ToBuildOptionsRequestedVerifyOptionPtrOutput() BuildOptionsRequestedVerifyOptionPtrOutput
+	ToBuildOptionsRequestedVerifyOptionPtrOutputWithContext(context.Context) BuildOptionsRequestedVerifyOptionPtrOutput
+}
+
+type buildOptionsRequestedVerifyOptionPtr string
+
+func BuildOptionsRequestedVerifyOptionPtr(v string) BuildOptionsRequestedVerifyOptionPtrInput {
+	return (*buildOptionsRequestedVerifyOptionPtr)(&v)
+}
+
+func (*buildOptionsRequestedVerifyOptionPtr) ElementType() reflect.Type {
+	return buildOptionsRequestedVerifyOptionPtrType
+}
+
+func (in *buildOptionsRequestedVerifyOptionPtr) ToBuildOptionsRequestedVerifyOptionPtrOutput() BuildOptionsRequestedVerifyOptionPtrOutput {
+	return pulumi.ToOutput(in).(BuildOptionsRequestedVerifyOptionPtrOutput)
+}
+
+func (in *buildOptionsRequestedVerifyOptionPtr) ToBuildOptionsRequestedVerifyOptionPtrOutputWithContext(ctx context.Context) BuildOptionsRequestedVerifyOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BuildOptionsRequestedVerifyOptionPtrOutput)
+}
+
+type BuildOptionsSourceProvenanceHashItem string
 
 const (
 	// No hash requested.
@@ -158,7 +706,23 @@ const (
 )
 
 func (BuildOptionsSourceProvenanceHashItem) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*BuildOptionsSourceProvenanceHashItem)(nil)).Elem()
+}
+
+func (e BuildOptionsSourceProvenanceHashItem) ToBuildOptionsSourceProvenanceHashItemOutput() BuildOptionsSourceProvenanceHashItemOutput {
+	return pulumi.ToOutput(e).(BuildOptionsSourceProvenanceHashItemOutput)
+}
+
+func (e BuildOptionsSourceProvenanceHashItem) ToBuildOptionsSourceProvenanceHashItemOutputWithContext(ctx context.Context) BuildOptionsSourceProvenanceHashItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BuildOptionsSourceProvenanceHashItemOutput)
+}
+
+func (e BuildOptionsSourceProvenanceHashItem) ToBuildOptionsSourceProvenanceHashItemPtrOutput() BuildOptionsSourceProvenanceHashItemPtrOutput {
+	return e.ToBuildOptionsSourceProvenanceHashItemPtrOutputWithContext(context.Background())
+}
+
+func (e BuildOptionsSourceProvenanceHashItem) ToBuildOptionsSourceProvenanceHashItemPtrOutputWithContext(ctx context.Context) BuildOptionsSourceProvenanceHashItemPtrOutput {
+	return BuildOptionsSourceProvenanceHashItem(e).ToBuildOptionsSourceProvenanceHashItemOutputWithContext(ctx).ToBuildOptionsSourceProvenanceHashItemPtrOutputWithContext(ctx)
 }
 
 func (e BuildOptionsSourceProvenanceHashItem) ToStringOutput() pulumi.StringOutput {
@@ -175,6 +739,127 @@ func (e BuildOptionsSourceProvenanceHashItem) ToStringPtrOutput() pulumi.StringP
 
 func (e BuildOptionsSourceProvenanceHashItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BuildOptionsSourceProvenanceHashItemOutput struct{ *pulumi.OutputState }
+
+func (BuildOptionsSourceProvenanceHashItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildOptionsSourceProvenanceHashItem)(nil)).Elem()
+}
+
+func (o BuildOptionsSourceProvenanceHashItemOutput) ToBuildOptionsSourceProvenanceHashItemOutput() BuildOptionsSourceProvenanceHashItemOutput {
+	return o
+}
+
+func (o BuildOptionsSourceProvenanceHashItemOutput) ToBuildOptionsSourceProvenanceHashItemOutputWithContext(ctx context.Context) BuildOptionsSourceProvenanceHashItemOutput {
+	return o
+}
+
+func (o BuildOptionsSourceProvenanceHashItemOutput) ToBuildOptionsSourceProvenanceHashItemPtrOutput() BuildOptionsSourceProvenanceHashItemPtrOutput {
+	return o.ToBuildOptionsSourceProvenanceHashItemPtrOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsSourceProvenanceHashItemOutput) ToBuildOptionsSourceProvenanceHashItemPtrOutputWithContext(ctx context.Context) BuildOptionsSourceProvenanceHashItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildOptionsSourceProvenanceHashItem) *BuildOptionsSourceProvenanceHashItem {
+		return &v
+	}).(BuildOptionsSourceProvenanceHashItemPtrOutput)
+}
+
+func (o BuildOptionsSourceProvenanceHashItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsSourceProvenanceHashItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BuildOptionsSourceProvenanceHashItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BuildOptionsSourceProvenanceHashItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsSourceProvenanceHashItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BuildOptionsSourceProvenanceHashItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BuildOptionsSourceProvenanceHashItemPtrOutput struct{ *pulumi.OutputState }
+
+func (BuildOptionsSourceProvenanceHashItemPtrOutput) ElementType() reflect.Type {
+	return buildOptionsSourceProvenanceHashItemPtrType
+}
+
+func (o BuildOptionsSourceProvenanceHashItemPtrOutput) ToBuildOptionsSourceProvenanceHashItemPtrOutput() BuildOptionsSourceProvenanceHashItemPtrOutput {
+	return o
+}
+
+func (o BuildOptionsSourceProvenanceHashItemPtrOutput) ToBuildOptionsSourceProvenanceHashItemPtrOutputWithContext(ctx context.Context) BuildOptionsSourceProvenanceHashItemPtrOutput {
+	return o
+}
+
+func (o BuildOptionsSourceProvenanceHashItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsSourceProvenanceHashItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BuildOptionsSourceProvenanceHashItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BuildOptionsSourceProvenanceHashItemPtrOutput) Elem() BuildOptionsSourceProvenanceHashItemOutput {
+	return o.ApplyT(func(v *BuildOptionsSourceProvenanceHashItem) BuildOptionsSourceProvenanceHashItem {
+		var ret BuildOptionsSourceProvenanceHashItem
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(BuildOptionsSourceProvenanceHashItemOutput)
+}
+
+// BuildOptionsSourceProvenanceHashItemInput is an input type that accepts BuildOptionsSourceProvenanceHashItemArgs and BuildOptionsSourceProvenanceHashItemOutput values.
+// You can construct a concrete instance of `BuildOptionsSourceProvenanceHashItemInput` via:
+//
+//          BuildOptionsSourceProvenanceHashItemArgs{...}
+type BuildOptionsSourceProvenanceHashItemInput interface {
+	pulumi.Input
+
+	ToBuildOptionsSourceProvenanceHashItemOutput() BuildOptionsSourceProvenanceHashItemOutput
+	ToBuildOptionsSourceProvenanceHashItemOutputWithContext(context.Context) BuildOptionsSourceProvenanceHashItemOutput
+}
+
+var buildOptionsSourceProvenanceHashItemPtrType = reflect.TypeOf((**BuildOptionsSourceProvenanceHashItem)(nil)).Elem()
+
+type BuildOptionsSourceProvenanceHashItemPtrInput interface {
+	pulumi.Input
+
+	ToBuildOptionsSourceProvenanceHashItemPtrOutput() BuildOptionsSourceProvenanceHashItemPtrOutput
+	ToBuildOptionsSourceProvenanceHashItemPtrOutputWithContext(context.Context) BuildOptionsSourceProvenanceHashItemPtrOutput
+}
+
+type buildOptionsSourceProvenanceHashItemPtr string
+
+func BuildOptionsSourceProvenanceHashItemPtr(v string) BuildOptionsSourceProvenanceHashItemPtrInput {
+	return (*buildOptionsSourceProvenanceHashItemPtr)(&v)
+}
+
+func (*buildOptionsSourceProvenanceHashItemPtr) ElementType() reflect.Type {
+	return buildOptionsSourceProvenanceHashItemPtrType
+}
+
+func (in *buildOptionsSourceProvenanceHashItemPtr) ToBuildOptionsSourceProvenanceHashItemPtrOutput() BuildOptionsSourceProvenanceHashItemPtrOutput {
+	return pulumi.ToOutput(in).(BuildOptionsSourceProvenanceHashItemPtrOutput)
+}
+
+func (in *buildOptionsSourceProvenanceHashItemPtr) ToBuildOptionsSourceProvenanceHashItemPtrOutputWithContext(ctx context.Context) BuildOptionsSourceProvenanceHashItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BuildOptionsSourceProvenanceHashItemPtrOutput)
 }
 
 // BuildOptionsSourceProvenanceHashItemArrayInput is an input type that accepts BuildOptionsSourceProvenanceHashItemArray and BuildOptionsSourceProvenanceHashItemArrayOutput values.
@@ -216,14 +901,14 @@ func (o BuildOptionsSourceProvenanceHashItemArrayOutput) ToBuildOptionsSourcePro
 	return o
 }
 
-func (o BuildOptionsSourceProvenanceHashItemArrayOutput) Index(i pulumi.IntInput) pulumi.StringOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) pulumi.StringOutput {
-		return vs[0].([]BuildOptionsSourceProvenanceHashItem)[vs[1].(int)].ToStringOutput()
-	}).(pulumi.StringOutput)
+func (o BuildOptionsSourceProvenanceHashItemArrayOutput) Index(i pulumi.IntInput) BuildOptionsSourceProvenanceHashItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BuildOptionsSourceProvenanceHashItemOutput {
+		return vs[0].([]BuildOptionsSourceProvenanceHashItem)[vs[1].(int)].ToBuildOptionsSourceProvenanceHashItemOutput()
+	}).(BuildOptionsSourceProvenanceHashItemOutput)
 }
 
 // Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.
-type BuildOptionsSubstitutionOption pulumi.String
+type BuildOptionsSubstitutionOption string
 
 const (
 	// Fails the build if error in substitutions checks, like missing a substitution in the template or in the map.
@@ -233,7 +918,23 @@ const (
 )
 
 func (BuildOptionsSubstitutionOption) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*BuildOptionsSubstitutionOption)(nil)).Elem()
+}
+
+func (e BuildOptionsSubstitutionOption) ToBuildOptionsSubstitutionOptionOutput() BuildOptionsSubstitutionOptionOutput {
+	return pulumi.ToOutput(e).(BuildOptionsSubstitutionOptionOutput)
+}
+
+func (e BuildOptionsSubstitutionOption) ToBuildOptionsSubstitutionOptionOutputWithContext(ctx context.Context) BuildOptionsSubstitutionOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BuildOptionsSubstitutionOptionOutput)
+}
+
+func (e BuildOptionsSubstitutionOption) ToBuildOptionsSubstitutionOptionPtrOutput() BuildOptionsSubstitutionOptionPtrOutput {
+	return e.ToBuildOptionsSubstitutionOptionPtrOutputWithContext(context.Background())
+}
+
+func (e BuildOptionsSubstitutionOption) ToBuildOptionsSubstitutionOptionPtrOutputWithContext(ctx context.Context) BuildOptionsSubstitutionOptionPtrOutput {
+	return BuildOptionsSubstitutionOption(e).ToBuildOptionsSubstitutionOptionOutputWithContext(ctx).ToBuildOptionsSubstitutionOptionPtrOutputWithContext(ctx)
 }
 
 func (e BuildOptionsSubstitutionOption) ToStringOutput() pulumi.StringOutput {
@@ -252,8 +953,129 @@ func (e BuildOptionsSubstitutionOption) ToStringPtrOutputWithContext(ctx context
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type BuildOptionsSubstitutionOptionOutput struct{ *pulumi.OutputState }
+
+func (BuildOptionsSubstitutionOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BuildOptionsSubstitutionOption)(nil)).Elem()
+}
+
+func (o BuildOptionsSubstitutionOptionOutput) ToBuildOptionsSubstitutionOptionOutput() BuildOptionsSubstitutionOptionOutput {
+	return o
+}
+
+func (o BuildOptionsSubstitutionOptionOutput) ToBuildOptionsSubstitutionOptionOutputWithContext(ctx context.Context) BuildOptionsSubstitutionOptionOutput {
+	return o
+}
+
+func (o BuildOptionsSubstitutionOptionOutput) ToBuildOptionsSubstitutionOptionPtrOutput() BuildOptionsSubstitutionOptionPtrOutput {
+	return o.ToBuildOptionsSubstitutionOptionPtrOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsSubstitutionOptionOutput) ToBuildOptionsSubstitutionOptionPtrOutputWithContext(ctx context.Context) BuildOptionsSubstitutionOptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BuildOptionsSubstitutionOption) *BuildOptionsSubstitutionOption {
+		return &v
+	}).(BuildOptionsSubstitutionOptionPtrOutput)
+}
+
+func (o BuildOptionsSubstitutionOptionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsSubstitutionOptionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BuildOptionsSubstitutionOption) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BuildOptionsSubstitutionOptionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsSubstitutionOptionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BuildOptionsSubstitutionOption) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BuildOptionsSubstitutionOptionPtrOutput struct{ *pulumi.OutputState }
+
+func (BuildOptionsSubstitutionOptionPtrOutput) ElementType() reflect.Type {
+	return buildOptionsSubstitutionOptionPtrType
+}
+
+func (o BuildOptionsSubstitutionOptionPtrOutput) ToBuildOptionsSubstitutionOptionPtrOutput() BuildOptionsSubstitutionOptionPtrOutput {
+	return o
+}
+
+func (o BuildOptionsSubstitutionOptionPtrOutput) ToBuildOptionsSubstitutionOptionPtrOutputWithContext(ctx context.Context) BuildOptionsSubstitutionOptionPtrOutput {
+	return o
+}
+
+func (o BuildOptionsSubstitutionOptionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BuildOptionsSubstitutionOptionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BuildOptionsSubstitutionOption) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o BuildOptionsSubstitutionOptionPtrOutput) Elem() BuildOptionsSubstitutionOptionOutput {
+	return o.ApplyT(func(v *BuildOptionsSubstitutionOption) BuildOptionsSubstitutionOption {
+		var ret BuildOptionsSubstitutionOption
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(BuildOptionsSubstitutionOptionOutput)
+}
+
+// BuildOptionsSubstitutionOptionInput is an input type that accepts BuildOptionsSubstitutionOptionArgs and BuildOptionsSubstitutionOptionOutput values.
+// You can construct a concrete instance of `BuildOptionsSubstitutionOptionInput` via:
+//
+//          BuildOptionsSubstitutionOptionArgs{...}
+type BuildOptionsSubstitutionOptionInput interface {
+	pulumi.Input
+
+	ToBuildOptionsSubstitutionOptionOutput() BuildOptionsSubstitutionOptionOutput
+	ToBuildOptionsSubstitutionOptionOutputWithContext(context.Context) BuildOptionsSubstitutionOptionOutput
+}
+
+var buildOptionsSubstitutionOptionPtrType = reflect.TypeOf((**BuildOptionsSubstitutionOption)(nil)).Elem()
+
+type BuildOptionsSubstitutionOptionPtrInput interface {
+	pulumi.Input
+
+	ToBuildOptionsSubstitutionOptionPtrOutput() BuildOptionsSubstitutionOptionPtrOutput
+	ToBuildOptionsSubstitutionOptionPtrOutputWithContext(context.Context) BuildOptionsSubstitutionOptionPtrOutput
+}
+
+type buildOptionsSubstitutionOptionPtr string
+
+func BuildOptionsSubstitutionOptionPtr(v string) BuildOptionsSubstitutionOptionPtrInput {
+	return (*buildOptionsSubstitutionOptionPtr)(&v)
+}
+
+func (*buildOptionsSubstitutionOptionPtr) ElementType() reflect.Type {
+	return buildOptionsSubstitutionOptionPtrType
+}
+
+func (in *buildOptionsSubstitutionOptionPtr) ToBuildOptionsSubstitutionOptionPtrOutput() BuildOptionsSubstitutionOptionPtrOutput {
+	return pulumi.ToOutput(in).(BuildOptionsSubstitutionOptionPtrOutput)
+}
+
+func (in *buildOptionsSubstitutionOptionPtr) ToBuildOptionsSubstitutionOptionPtrOutputWithContext(ctx context.Context) BuildOptionsSubstitutionOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BuildOptionsSubstitutionOptionPtrOutput)
+}
+
 // Option to configure network egress for the workers.
-type NetworkConfigEgressOption pulumi.String
+type NetworkConfigEgressOption string
 
 const (
 	// If set, defaults to PUBLIC_EGRESS.
@@ -265,7 +1087,23 @@ const (
 )
 
 func (NetworkConfigEgressOption) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*NetworkConfigEgressOption)(nil)).Elem()
+}
+
+func (e NetworkConfigEgressOption) ToNetworkConfigEgressOptionOutput() NetworkConfigEgressOptionOutput {
+	return pulumi.ToOutput(e).(NetworkConfigEgressOptionOutput)
+}
+
+func (e NetworkConfigEgressOption) ToNetworkConfigEgressOptionOutputWithContext(ctx context.Context) NetworkConfigEgressOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NetworkConfigEgressOptionOutput)
+}
+
+func (e NetworkConfigEgressOption) ToNetworkConfigEgressOptionPtrOutput() NetworkConfigEgressOptionPtrOutput {
+	return e.ToNetworkConfigEgressOptionPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkConfigEgressOption) ToNetworkConfigEgressOptionPtrOutputWithContext(ctx context.Context) NetworkConfigEgressOptionPtrOutput {
+	return NetworkConfigEgressOption(e).ToNetworkConfigEgressOptionOutputWithContext(ctx).ToNetworkConfigEgressOptionPtrOutputWithContext(ctx)
 }
 
 func (e NetworkConfigEgressOption) ToStringOutput() pulumi.StringOutput {
@@ -284,8 +1122,129 @@ func (e NetworkConfigEgressOption) ToStringPtrOutputWithContext(ctx context.Cont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type NetworkConfigEgressOptionOutput struct{ *pulumi.OutputState }
+
+func (NetworkConfigEgressOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkConfigEgressOption)(nil)).Elem()
+}
+
+func (o NetworkConfigEgressOptionOutput) ToNetworkConfigEgressOptionOutput() NetworkConfigEgressOptionOutput {
+	return o
+}
+
+func (o NetworkConfigEgressOptionOutput) ToNetworkConfigEgressOptionOutputWithContext(ctx context.Context) NetworkConfigEgressOptionOutput {
+	return o
+}
+
+func (o NetworkConfigEgressOptionOutput) ToNetworkConfigEgressOptionPtrOutput() NetworkConfigEgressOptionPtrOutput {
+	return o.ToNetworkConfigEgressOptionPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkConfigEgressOptionOutput) ToNetworkConfigEgressOptionPtrOutputWithContext(ctx context.Context) NetworkConfigEgressOptionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkConfigEgressOption) *NetworkConfigEgressOption {
+		return &v
+	}).(NetworkConfigEgressOptionPtrOutput)
+}
+
+func (o NetworkConfigEgressOptionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NetworkConfigEgressOptionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkConfigEgressOption) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NetworkConfigEgressOptionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkConfigEgressOptionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkConfigEgressOption) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkConfigEgressOptionPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkConfigEgressOptionPtrOutput) ElementType() reflect.Type {
+	return networkConfigEgressOptionPtrType
+}
+
+func (o NetworkConfigEgressOptionPtrOutput) ToNetworkConfigEgressOptionPtrOutput() NetworkConfigEgressOptionPtrOutput {
+	return o
+}
+
+func (o NetworkConfigEgressOptionPtrOutput) ToNetworkConfigEgressOptionPtrOutputWithContext(ctx context.Context) NetworkConfigEgressOptionPtrOutput {
+	return o
+}
+
+func (o NetworkConfigEgressOptionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkConfigEgressOptionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NetworkConfigEgressOption) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NetworkConfigEgressOptionPtrOutput) Elem() NetworkConfigEgressOptionOutput {
+	return o.ApplyT(func(v *NetworkConfigEgressOption) NetworkConfigEgressOption {
+		var ret NetworkConfigEgressOption
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(NetworkConfigEgressOptionOutput)
+}
+
+// NetworkConfigEgressOptionInput is an input type that accepts NetworkConfigEgressOptionArgs and NetworkConfigEgressOptionOutput values.
+// You can construct a concrete instance of `NetworkConfigEgressOptionInput` via:
+//
+//          NetworkConfigEgressOptionArgs{...}
+type NetworkConfigEgressOptionInput interface {
+	pulumi.Input
+
+	ToNetworkConfigEgressOptionOutput() NetworkConfigEgressOptionOutput
+	ToNetworkConfigEgressOptionOutputWithContext(context.Context) NetworkConfigEgressOptionOutput
+}
+
+var networkConfigEgressOptionPtrType = reflect.TypeOf((**NetworkConfigEgressOption)(nil)).Elem()
+
+type NetworkConfigEgressOptionPtrInput interface {
+	pulumi.Input
+
+	ToNetworkConfigEgressOptionPtrOutput() NetworkConfigEgressOptionPtrOutput
+	ToNetworkConfigEgressOptionPtrOutputWithContext(context.Context) NetworkConfigEgressOptionPtrOutput
+}
+
+type networkConfigEgressOptionPtr string
+
+func NetworkConfigEgressOptionPtr(v string) NetworkConfigEgressOptionPtrInput {
+	return (*networkConfigEgressOptionPtr)(&v)
+}
+
+func (*networkConfigEgressOptionPtr) ElementType() reflect.Type {
+	return networkConfigEgressOptionPtrType
+}
+
+func (in *networkConfigEgressOptionPtr) ToNetworkConfigEgressOptionPtrOutput() NetworkConfigEgressOptionPtrOutput {
+	return pulumi.ToOutput(in).(NetworkConfigEgressOptionPtrOutput)
+}
+
+func (in *networkConfigEgressOptionPtr) ToNetworkConfigEgressOptionPtrOutputWithContext(ctx context.Context) NetworkConfigEgressOptionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NetworkConfigEgressOptionPtrOutput)
+}
+
 // Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-type PubsubConfigState pulumi.String
+type PubsubConfigState string
 
 const (
 	// The subscription configuration has not been checked.
@@ -301,7 +1260,23 @@ const (
 )
 
 func (PubsubConfigState) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*PubsubConfigState)(nil)).Elem()
+}
+
+func (e PubsubConfigState) ToPubsubConfigStateOutput() PubsubConfigStateOutput {
+	return pulumi.ToOutput(e).(PubsubConfigStateOutput)
+}
+
+func (e PubsubConfigState) ToPubsubConfigStateOutputWithContext(ctx context.Context) PubsubConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PubsubConfigStateOutput)
+}
+
+func (e PubsubConfigState) ToPubsubConfigStatePtrOutput() PubsubConfigStatePtrOutput {
+	return e.ToPubsubConfigStatePtrOutputWithContext(context.Background())
+}
+
+func (e PubsubConfigState) ToPubsubConfigStatePtrOutputWithContext(ctx context.Context) PubsubConfigStatePtrOutput {
+	return PubsubConfigState(e).ToPubsubConfigStateOutputWithContext(ctx).ToPubsubConfigStatePtrOutputWithContext(ctx)
 }
 
 func (e PubsubConfigState) ToStringOutput() pulumi.StringOutput {
@@ -320,8 +1295,129 @@ func (e PubsubConfigState) ToStringPtrOutputWithContext(ctx context.Context) pul
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type PubsubConfigStateOutput struct{ *pulumi.OutputState }
+
+func (PubsubConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PubsubConfigState)(nil)).Elem()
+}
+
+func (o PubsubConfigStateOutput) ToPubsubConfigStateOutput() PubsubConfigStateOutput {
+	return o
+}
+
+func (o PubsubConfigStateOutput) ToPubsubConfigStateOutputWithContext(ctx context.Context) PubsubConfigStateOutput {
+	return o
+}
+
+func (o PubsubConfigStateOutput) ToPubsubConfigStatePtrOutput() PubsubConfigStatePtrOutput {
+	return o.ToPubsubConfigStatePtrOutputWithContext(context.Background())
+}
+
+func (o PubsubConfigStateOutput) ToPubsubConfigStatePtrOutputWithContext(ctx context.Context) PubsubConfigStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PubsubConfigState) *PubsubConfigState {
+		return &v
+	}).(PubsubConfigStatePtrOutput)
+}
+
+func (o PubsubConfigStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PubsubConfigStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PubsubConfigState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PubsubConfigStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PubsubConfigStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PubsubConfigState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PubsubConfigStatePtrOutput struct{ *pulumi.OutputState }
+
+func (PubsubConfigStatePtrOutput) ElementType() reflect.Type {
+	return pubsubConfigStatePtrType
+}
+
+func (o PubsubConfigStatePtrOutput) ToPubsubConfigStatePtrOutput() PubsubConfigStatePtrOutput {
+	return o
+}
+
+func (o PubsubConfigStatePtrOutput) ToPubsubConfigStatePtrOutputWithContext(ctx context.Context) PubsubConfigStatePtrOutput {
+	return o
+}
+
+func (o PubsubConfigStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PubsubConfigStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PubsubConfigState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PubsubConfigStatePtrOutput) Elem() PubsubConfigStateOutput {
+	return o.ApplyT(func(v *PubsubConfigState) PubsubConfigState {
+		var ret PubsubConfigState
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(PubsubConfigStateOutput)
+}
+
+// PubsubConfigStateInput is an input type that accepts PubsubConfigStateArgs and PubsubConfigStateOutput values.
+// You can construct a concrete instance of `PubsubConfigStateInput` via:
+//
+//          PubsubConfigStateArgs{...}
+type PubsubConfigStateInput interface {
+	pulumi.Input
+
+	ToPubsubConfigStateOutput() PubsubConfigStateOutput
+	ToPubsubConfigStateOutputWithContext(context.Context) PubsubConfigStateOutput
+}
+
+var pubsubConfigStatePtrType = reflect.TypeOf((**PubsubConfigState)(nil)).Elem()
+
+type PubsubConfigStatePtrInput interface {
+	pulumi.Input
+
+	ToPubsubConfigStatePtrOutput() PubsubConfigStatePtrOutput
+	ToPubsubConfigStatePtrOutputWithContext(context.Context) PubsubConfigStatePtrOutput
+}
+
+type pubsubConfigStatePtr string
+
+func PubsubConfigStatePtr(v string) PubsubConfigStatePtrInput {
+	return (*pubsubConfigStatePtr)(&v)
+}
+
+func (*pubsubConfigStatePtr) ElementType() reflect.Type {
+	return pubsubConfigStatePtrType
+}
+
+func (in *pubsubConfigStatePtr) ToPubsubConfigStatePtrOutput() PubsubConfigStatePtrOutput {
+	return pulumi.ToOutput(in).(PubsubConfigStatePtrOutput)
+}
+
+func (in *pubsubConfigStatePtr) ToPubsubConfigStatePtrOutputWithContext(ctx context.Context) PubsubConfigStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PubsubConfigStatePtrOutput)
+}
+
 // Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
-type PullRequestFilterCommentControl pulumi.String
+type PullRequestFilterCommentControl string
 
 const (
 	// Do not require comments on Pull Requests before builds are triggered.
@@ -333,7 +1429,23 @@ const (
 )
 
 func (PullRequestFilterCommentControl) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*PullRequestFilterCommentControl)(nil)).Elem()
+}
+
+func (e PullRequestFilterCommentControl) ToPullRequestFilterCommentControlOutput() PullRequestFilterCommentControlOutput {
+	return pulumi.ToOutput(e).(PullRequestFilterCommentControlOutput)
+}
+
+func (e PullRequestFilterCommentControl) ToPullRequestFilterCommentControlOutputWithContext(ctx context.Context) PullRequestFilterCommentControlOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PullRequestFilterCommentControlOutput)
+}
+
+func (e PullRequestFilterCommentControl) ToPullRequestFilterCommentControlPtrOutput() PullRequestFilterCommentControlPtrOutput {
+	return e.ToPullRequestFilterCommentControlPtrOutputWithContext(context.Background())
+}
+
+func (e PullRequestFilterCommentControl) ToPullRequestFilterCommentControlPtrOutputWithContext(ctx context.Context) PullRequestFilterCommentControlPtrOutput {
+	return PullRequestFilterCommentControl(e).ToPullRequestFilterCommentControlOutputWithContext(ctx).ToPullRequestFilterCommentControlPtrOutputWithContext(ctx)
 }
 
 func (e PullRequestFilterCommentControl) ToStringOutput() pulumi.StringOutput {
@@ -352,8 +1464,129 @@ func (e PullRequestFilterCommentControl) ToStringPtrOutputWithContext(ctx contex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type PullRequestFilterCommentControlOutput struct{ *pulumi.OutputState }
+
+func (PullRequestFilterCommentControlOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PullRequestFilterCommentControl)(nil)).Elem()
+}
+
+func (o PullRequestFilterCommentControlOutput) ToPullRequestFilterCommentControlOutput() PullRequestFilterCommentControlOutput {
+	return o
+}
+
+func (o PullRequestFilterCommentControlOutput) ToPullRequestFilterCommentControlOutputWithContext(ctx context.Context) PullRequestFilterCommentControlOutput {
+	return o
+}
+
+func (o PullRequestFilterCommentControlOutput) ToPullRequestFilterCommentControlPtrOutput() PullRequestFilterCommentControlPtrOutput {
+	return o.ToPullRequestFilterCommentControlPtrOutputWithContext(context.Background())
+}
+
+func (o PullRequestFilterCommentControlOutput) ToPullRequestFilterCommentControlPtrOutputWithContext(ctx context.Context) PullRequestFilterCommentControlPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PullRequestFilterCommentControl) *PullRequestFilterCommentControl {
+		return &v
+	}).(PullRequestFilterCommentControlPtrOutput)
+}
+
+func (o PullRequestFilterCommentControlOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PullRequestFilterCommentControlOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PullRequestFilterCommentControl) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PullRequestFilterCommentControlOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PullRequestFilterCommentControlOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PullRequestFilterCommentControl) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PullRequestFilterCommentControlPtrOutput struct{ *pulumi.OutputState }
+
+func (PullRequestFilterCommentControlPtrOutput) ElementType() reflect.Type {
+	return pullRequestFilterCommentControlPtrType
+}
+
+func (o PullRequestFilterCommentControlPtrOutput) ToPullRequestFilterCommentControlPtrOutput() PullRequestFilterCommentControlPtrOutput {
+	return o
+}
+
+func (o PullRequestFilterCommentControlPtrOutput) ToPullRequestFilterCommentControlPtrOutputWithContext(ctx context.Context) PullRequestFilterCommentControlPtrOutput {
+	return o
+}
+
+func (o PullRequestFilterCommentControlPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PullRequestFilterCommentControlPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PullRequestFilterCommentControl) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PullRequestFilterCommentControlPtrOutput) Elem() PullRequestFilterCommentControlOutput {
+	return o.ApplyT(func(v *PullRequestFilterCommentControl) PullRequestFilterCommentControl {
+		var ret PullRequestFilterCommentControl
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(PullRequestFilterCommentControlOutput)
+}
+
+// PullRequestFilterCommentControlInput is an input type that accepts PullRequestFilterCommentControlArgs and PullRequestFilterCommentControlOutput values.
+// You can construct a concrete instance of `PullRequestFilterCommentControlInput` via:
+//
+//          PullRequestFilterCommentControlArgs{...}
+type PullRequestFilterCommentControlInput interface {
+	pulumi.Input
+
+	ToPullRequestFilterCommentControlOutput() PullRequestFilterCommentControlOutput
+	ToPullRequestFilterCommentControlOutputWithContext(context.Context) PullRequestFilterCommentControlOutput
+}
+
+var pullRequestFilterCommentControlPtrType = reflect.TypeOf((**PullRequestFilterCommentControl)(nil)).Elem()
+
+type PullRequestFilterCommentControlPtrInput interface {
+	pulumi.Input
+
+	ToPullRequestFilterCommentControlPtrOutput() PullRequestFilterCommentControlPtrOutput
+	ToPullRequestFilterCommentControlPtrOutputWithContext(context.Context) PullRequestFilterCommentControlPtrOutput
+}
+
+type pullRequestFilterCommentControlPtr string
+
+func PullRequestFilterCommentControlPtr(v string) PullRequestFilterCommentControlPtrInput {
+	return (*pullRequestFilterCommentControlPtr)(&v)
+}
+
+func (*pullRequestFilterCommentControlPtr) ElementType() reflect.Type {
+	return pullRequestFilterCommentControlPtrType
+}
+
+func (in *pullRequestFilterCommentControlPtr) ToPullRequestFilterCommentControlPtrOutput() PullRequestFilterCommentControlPtrOutput {
+	return pulumi.ToOutput(in).(PullRequestFilterCommentControlPtrOutput)
+}
+
+func (in *pullRequestFilterCommentControlPtr) ToPullRequestFilterCommentControlPtrOutputWithContext(ctx context.Context) PullRequestFilterCommentControlPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PullRequestFilterCommentControlPtrOutput)
+}
+
 // Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-type WebhookConfigState pulumi.String
+type WebhookConfigState string
 
 const (
 	// The webhook auth configuration not been checked.
@@ -365,7 +1598,23 @@ const (
 )
 
 func (WebhookConfigState) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*WebhookConfigState)(nil)).Elem()
+}
+
+func (e WebhookConfigState) ToWebhookConfigStateOutput() WebhookConfigStateOutput {
+	return pulumi.ToOutput(e).(WebhookConfigStateOutput)
+}
+
+func (e WebhookConfigState) ToWebhookConfigStateOutputWithContext(ctx context.Context) WebhookConfigStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(WebhookConfigStateOutput)
+}
+
+func (e WebhookConfigState) ToWebhookConfigStatePtrOutput() WebhookConfigStatePtrOutput {
+	return e.ToWebhookConfigStatePtrOutputWithContext(context.Background())
+}
+
+func (e WebhookConfigState) ToWebhookConfigStatePtrOutputWithContext(ctx context.Context) WebhookConfigStatePtrOutput {
+	return WebhookConfigState(e).ToWebhookConfigStateOutputWithContext(ctx).ToWebhookConfigStatePtrOutputWithContext(ctx)
 }
 
 func (e WebhookConfigState) ToStringOutput() pulumi.StringOutput {
@@ -382,4 +1631,149 @@ func (e WebhookConfigState) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e WebhookConfigState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type WebhookConfigStateOutput struct{ *pulumi.OutputState }
+
+func (WebhookConfigStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WebhookConfigState)(nil)).Elem()
+}
+
+func (o WebhookConfigStateOutput) ToWebhookConfigStateOutput() WebhookConfigStateOutput {
+	return o
+}
+
+func (o WebhookConfigStateOutput) ToWebhookConfigStateOutputWithContext(ctx context.Context) WebhookConfigStateOutput {
+	return o
+}
+
+func (o WebhookConfigStateOutput) ToWebhookConfigStatePtrOutput() WebhookConfigStatePtrOutput {
+	return o.ToWebhookConfigStatePtrOutputWithContext(context.Background())
+}
+
+func (o WebhookConfigStateOutput) ToWebhookConfigStatePtrOutputWithContext(ctx context.Context) WebhookConfigStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WebhookConfigState) *WebhookConfigState {
+		return &v
+	}).(WebhookConfigStatePtrOutput)
+}
+
+func (o WebhookConfigStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o WebhookConfigStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WebhookConfigState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o WebhookConfigStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WebhookConfigStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WebhookConfigState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type WebhookConfigStatePtrOutput struct{ *pulumi.OutputState }
+
+func (WebhookConfigStatePtrOutput) ElementType() reflect.Type {
+	return webhookConfigStatePtrType
+}
+
+func (o WebhookConfigStatePtrOutput) ToWebhookConfigStatePtrOutput() WebhookConfigStatePtrOutput {
+	return o
+}
+
+func (o WebhookConfigStatePtrOutput) ToWebhookConfigStatePtrOutputWithContext(ctx context.Context) WebhookConfigStatePtrOutput {
+	return o
+}
+
+func (o WebhookConfigStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WebhookConfigStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *WebhookConfigState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WebhookConfigStatePtrOutput) Elem() WebhookConfigStateOutput {
+	return o.ApplyT(func(v *WebhookConfigState) WebhookConfigState {
+		var ret WebhookConfigState
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(WebhookConfigStateOutput)
+}
+
+// WebhookConfigStateInput is an input type that accepts WebhookConfigStateArgs and WebhookConfigStateOutput values.
+// You can construct a concrete instance of `WebhookConfigStateInput` via:
+//
+//          WebhookConfigStateArgs{...}
+type WebhookConfigStateInput interface {
+	pulumi.Input
+
+	ToWebhookConfigStateOutput() WebhookConfigStateOutput
+	ToWebhookConfigStateOutputWithContext(context.Context) WebhookConfigStateOutput
+}
+
+var webhookConfigStatePtrType = reflect.TypeOf((**WebhookConfigState)(nil)).Elem()
+
+type WebhookConfigStatePtrInput interface {
+	pulumi.Input
+
+	ToWebhookConfigStatePtrOutput() WebhookConfigStatePtrOutput
+	ToWebhookConfigStatePtrOutputWithContext(context.Context) WebhookConfigStatePtrOutput
+}
+
+type webhookConfigStatePtr string
+
+func WebhookConfigStatePtr(v string) WebhookConfigStatePtrInput {
+	return (*webhookConfigStatePtr)(&v)
+}
+
+func (*webhookConfigStatePtr) ElementType() reflect.Type {
+	return webhookConfigStatePtrType
+}
+
+func (in *webhookConfigStatePtr) ToWebhookConfigStatePtrOutput() WebhookConfigStatePtrOutput {
+	return pulumi.ToOutput(in).(WebhookConfigStatePtrOutput)
+}
+
+func (in *webhookConfigStatePtr) ToWebhookConfigStatePtrOutputWithContext(ctx context.Context) WebhookConfigStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(WebhookConfigStatePtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(BuildOptionsLogStreamingOptionOutput{})
+	pulumi.RegisterOutputType(BuildOptionsLogStreamingOptionPtrOutput{})
+	pulumi.RegisterOutputType(BuildOptionsLoggingOutput{})
+	pulumi.RegisterOutputType(BuildOptionsLoggingPtrOutput{})
+	pulumi.RegisterOutputType(BuildOptionsMachineTypeOutput{})
+	pulumi.RegisterOutputType(BuildOptionsMachineTypePtrOutput{})
+	pulumi.RegisterOutputType(BuildOptionsRequestedVerifyOptionOutput{})
+	pulumi.RegisterOutputType(BuildOptionsRequestedVerifyOptionPtrOutput{})
+	pulumi.RegisterOutputType(BuildOptionsSourceProvenanceHashItemOutput{})
+	pulumi.RegisterOutputType(BuildOptionsSourceProvenanceHashItemPtrOutput{})
+	pulumi.RegisterOutputType(BuildOptionsSourceProvenanceHashItemArrayOutput{})
+	pulumi.RegisterOutputType(BuildOptionsSubstitutionOptionOutput{})
+	pulumi.RegisterOutputType(BuildOptionsSubstitutionOptionPtrOutput{})
+	pulumi.RegisterOutputType(NetworkConfigEgressOptionOutput{})
+	pulumi.RegisterOutputType(NetworkConfigEgressOptionPtrOutput{})
+	pulumi.RegisterOutputType(PubsubConfigStateOutput{})
+	pulumi.RegisterOutputType(PubsubConfigStatePtrOutput{})
+	pulumi.RegisterOutputType(PullRequestFilterCommentControlOutput{})
+	pulumi.RegisterOutputType(PullRequestFilterCommentControlPtrOutput{})
+	pulumi.RegisterOutputType(WebhookConfigStateOutput{})
+	pulumi.RegisterOutputType(WebhookConfigStatePtrOutput{})
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // Indicates the type of resource. This field should be specified to correspond the id to the right project type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
-type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType pulumi.String
+type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType string
 
 const (
 	// Unknown resource type.
@@ -25,7 +25,23 @@ const (
 )
 
 func (GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType)(nil)).Elem()
+}
+
+func (e GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput)
+}
+
+func (e GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput)
+}
+
+func (e GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput {
+	return e.ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput {
+	return GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType(e).ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutputWithContext(ctx).ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutputWithContext(ctx)
 }
 
 func (e GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType) ToStringOutput() pulumi.StringOutput {
@@ -44,8 +60,129 @@ func (e GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType) ToStr
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType)(nil)).Elem()
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput {
+	return o.ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType) *GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType {
+		return &v
+	}).(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput)
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput) ElementType() reflect.Type {
+	return googleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrType
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput) Elem() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType {
+		var ret GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput)
+}
+
+// GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeInput is an input type that accepts GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeArgs and GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeInput` via:
+//
+//          GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeArgs{...}
+type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput
+	ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutputWithContext(context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput
+}
+
+var googleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrType = reflect.TypeOf((**GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceType)(nil)).Elem()
+
+type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput
+	ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutputWithContext(context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput
+}
+
+type googleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtr string
+
+func GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtr(v string) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrInput {
+	return (*googleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtr)(&v)
+}
+
+func (*googleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtr) ElementType() reflect.Type {
+	return googleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrType
+}
+
+func (in *googleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtr) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput() GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput)
+}
+
+func (in *googleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtr) ToGoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutputWithContext(ctx context.Context) GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput)
+}
+
 // Required. Immutable. Compliance Regime associated with this workload.
-type WorkloadComplianceRegime pulumi.String
+type WorkloadComplianceRegime string
 
 const (
 	// Unknown compliance regime.
@@ -67,7 +204,23 @@ const (
 )
 
 func (WorkloadComplianceRegime) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*WorkloadComplianceRegime)(nil)).Elem()
+}
+
+func (e WorkloadComplianceRegime) ToWorkloadComplianceRegimeOutput() WorkloadComplianceRegimeOutput {
+	return pulumi.ToOutput(e).(WorkloadComplianceRegimeOutput)
+}
+
+func (e WorkloadComplianceRegime) ToWorkloadComplianceRegimeOutputWithContext(ctx context.Context) WorkloadComplianceRegimeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(WorkloadComplianceRegimeOutput)
+}
+
+func (e WorkloadComplianceRegime) ToWorkloadComplianceRegimePtrOutput() WorkloadComplianceRegimePtrOutput {
+	return e.ToWorkloadComplianceRegimePtrOutputWithContext(context.Background())
+}
+
+func (e WorkloadComplianceRegime) ToWorkloadComplianceRegimePtrOutputWithContext(ctx context.Context) WorkloadComplianceRegimePtrOutput {
+	return WorkloadComplianceRegime(e).ToWorkloadComplianceRegimeOutputWithContext(ctx).ToWorkloadComplianceRegimePtrOutputWithContext(ctx)
 }
 
 func (e WorkloadComplianceRegime) ToStringOutput() pulumi.StringOutput {
@@ -84,4 +237,132 @@ func (e WorkloadComplianceRegime) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e WorkloadComplianceRegime) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type WorkloadComplianceRegimeOutput struct{ *pulumi.OutputState }
+
+func (WorkloadComplianceRegimeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkloadComplianceRegime)(nil)).Elem()
+}
+
+func (o WorkloadComplianceRegimeOutput) ToWorkloadComplianceRegimeOutput() WorkloadComplianceRegimeOutput {
+	return o
+}
+
+func (o WorkloadComplianceRegimeOutput) ToWorkloadComplianceRegimeOutputWithContext(ctx context.Context) WorkloadComplianceRegimeOutput {
+	return o
+}
+
+func (o WorkloadComplianceRegimeOutput) ToWorkloadComplianceRegimePtrOutput() WorkloadComplianceRegimePtrOutput {
+	return o.ToWorkloadComplianceRegimePtrOutputWithContext(context.Background())
+}
+
+func (o WorkloadComplianceRegimeOutput) ToWorkloadComplianceRegimePtrOutputWithContext(ctx context.Context) WorkloadComplianceRegimePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkloadComplianceRegime) *WorkloadComplianceRegime {
+		return &v
+	}).(WorkloadComplianceRegimePtrOutput)
+}
+
+func (o WorkloadComplianceRegimeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o WorkloadComplianceRegimeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WorkloadComplianceRegime) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o WorkloadComplianceRegimeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WorkloadComplianceRegimeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WorkloadComplianceRegime) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkloadComplianceRegimePtrOutput struct{ *pulumi.OutputState }
+
+func (WorkloadComplianceRegimePtrOutput) ElementType() reflect.Type {
+	return workloadComplianceRegimePtrType
+}
+
+func (o WorkloadComplianceRegimePtrOutput) ToWorkloadComplianceRegimePtrOutput() WorkloadComplianceRegimePtrOutput {
+	return o
+}
+
+func (o WorkloadComplianceRegimePtrOutput) ToWorkloadComplianceRegimePtrOutputWithContext(ctx context.Context) WorkloadComplianceRegimePtrOutput {
+	return o
+}
+
+func (o WorkloadComplianceRegimePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WorkloadComplianceRegimePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *WorkloadComplianceRegime) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkloadComplianceRegimePtrOutput) Elem() WorkloadComplianceRegimeOutput {
+	return o.ApplyT(func(v *WorkloadComplianceRegime) WorkloadComplianceRegime {
+		var ret WorkloadComplianceRegime
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(WorkloadComplianceRegimeOutput)
+}
+
+// WorkloadComplianceRegimeInput is an input type that accepts WorkloadComplianceRegimeArgs and WorkloadComplianceRegimeOutput values.
+// You can construct a concrete instance of `WorkloadComplianceRegimeInput` via:
+//
+//          WorkloadComplianceRegimeArgs{...}
+type WorkloadComplianceRegimeInput interface {
+	pulumi.Input
+
+	ToWorkloadComplianceRegimeOutput() WorkloadComplianceRegimeOutput
+	ToWorkloadComplianceRegimeOutputWithContext(context.Context) WorkloadComplianceRegimeOutput
+}
+
+var workloadComplianceRegimePtrType = reflect.TypeOf((**WorkloadComplianceRegime)(nil)).Elem()
+
+type WorkloadComplianceRegimePtrInput interface {
+	pulumi.Input
+
+	ToWorkloadComplianceRegimePtrOutput() WorkloadComplianceRegimePtrOutput
+	ToWorkloadComplianceRegimePtrOutputWithContext(context.Context) WorkloadComplianceRegimePtrOutput
+}
+
+type workloadComplianceRegimePtr string
+
+func WorkloadComplianceRegimePtr(v string) WorkloadComplianceRegimePtrInput {
+	return (*workloadComplianceRegimePtr)(&v)
+}
+
+func (*workloadComplianceRegimePtr) ElementType() reflect.Type {
+	return workloadComplianceRegimePtrType
+}
+
+func (in *workloadComplianceRegimePtr) ToWorkloadComplianceRegimePtrOutput() WorkloadComplianceRegimePtrOutput {
+	return pulumi.ToOutput(in).(WorkloadComplianceRegimePtrOutput)
+}
+
+func (in *workloadComplianceRegimePtr) ToWorkloadComplianceRegimePtrOutputWithContext(ctx context.Context) WorkloadComplianceRegimePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(WorkloadComplianceRegimePtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutput{})
+	pulumi.RegisterOutputType(WorkloadComplianceRegimeOutput{})
+	pulumi.RegisterOutputType(WorkloadComplianceRegimePtrOutput{})
 }

@@ -72,49 +72,9 @@ func GetResourcePolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ResourcePolicy resources.
 type resourcePolicyState struct {
-	// Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	Description       *string `pulumi:"description"`
-	// Resource policy for instances for placement configuration.
-	GroupPlacementPolicy *ResourcePolicyGroupPlacementPolicyResponse `pulumi:"groupPlacementPolicy"`
-	// Resource policy for scheduling instance operations.
-	InstanceSchedulePolicy *ResourcePolicyInstanceSchedulePolicyResponse `pulumi:"instanceSchedulePolicy"`
-	// Type of the resource. Always compute#resource_policies for resource policies.
-	Kind *string `pulumi:"kind"`
-	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name   *string `pulumi:"name"`
-	Region *string `pulumi:"region"`
-	// The system status of the resource policy.
-	ResourceStatus *ResourcePolicyResourceStatusResponse `pulumi:"resourceStatus"`
-	// Server-defined fully-qualified URL for this resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// Resource policy for persistent disks for creating snapshots.
-	SnapshotSchedulePolicy *ResourcePolicySnapshotSchedulePolicyResponse `pulumi:"snapshotSchedulePolicy"`
-	// The status of resource policy creation.
-	Status *string `pulumi:"status"`
 }
 
 type ResourcePolicyState struct {
-	// Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
-	Description       pulumi.StringPtrInput
-	// Resource policy for instances for placement configuration.
-	GroupPlacementPolicy ResourcePolicyGroupPlacementPolicyResponsePtrInput
-	// Resource policy for scheduling instance operations.
-	InstanceSchedulePolicy ResourcePolicyInstanceSchedulePolicyResponsePtrInput
-	// Type of the resource. Always compute#resource_policies for resource policies.
-	Kind pulumi.StringPtrInput
-	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name   pulumi.StringPtrInput
-	Region pulumi.StringPtrInput
-	// The system status of the resource policy.
-	ResourceStatus ResourcePolicyResourceStatusResponsePtrInput
-	// Server-defined fully-qualified URL for this resource.
-	SelfLink pulumi.StringPtrInput
-	// Resource policy for persistent disks for creating snapshots.
-	SnapshotSchedulePolicy ResourcePolicySnapshotSchedulePolicyResponsePtrInput
-	// The status of resource policy creation.
-	Status pulumi.StringPtrInput
 }
 
 func (ResourcePolicyState) ElementType() reflect.Type {

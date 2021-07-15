@@ -783,7 +783,7 @@ type GoogleCloudRecommendationengineV1beta1ProductCatalogItem struct {
 	// Optional. The product price range.
 	PriceRange *GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange `pulumi:"priceRange"`
 	// Optional. Online stock state of the catalog item. Default is `IN_STOCK`.
-	StockState *string `pulumi:"stockState"`
+	StockState *GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState `pulumi:"stockState"`
 }
 
 // GoogleCloudRecommendationengineV1beta1ProductCatalogItemInput is an input type that accepts GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs and GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput values.
@@ -814,7 +814,7 @@ type GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs struct {
 	// Optional. The product price range.
 	PriceRange GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrInput `pulumi:"priceRange"`
 	// Optional. Online stock state of the catalog item. Default is `IN_STOCK`.
-	StockState *GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState `pulumi:"stockState"`
+	StockState GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrInput `pulumi:"stockState"`
 }
 
 func (GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs) ElementType() reflect.Type {
@@ -937,8 +937,10 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput) PriceRan
 }
 
 // Optional. Online stock state of the catalog item. Default is `IN_STOCK`.
-func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput) StockState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItem) *string { return v.StockState }).(pulumi.StringPtrOutput)
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput) StockState() GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecommendationengineV1beta1ProductCatalogItem) *GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState {
+		return v.StockState
+	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutput)
 }
 
 type GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput struct{ *pulumi.OutputState }
@@ -1032,13 +1034,13 @@ func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) Price
 }
 
 // Optional. Online stock state of the catalog item. Default is `IN_STOCK`.
-func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) StockState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItem) *string {
+func (o GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput) StockState() GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecommendationengineV1beta1ProductCatalogItem) *GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState {
 		if v == nil {
 			return nil
 		}
 		return v.StockState
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockStatePtrOutput)
 }
 
 // Exact product price.

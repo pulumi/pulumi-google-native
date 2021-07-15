@@ -57,25 +57,9 @@ func GetApi(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Api resources.
 type apiState struct {
-	// The id of the most recently created revision for this api proxy.
-	LatestRevisionId *string `pulumi:"latestRevisionId"`
-	// Metadata describing the API proxy.
-	MetaData *GoogleCloudApigeeV1EntityMetadataResponse `pulumi:"metaData"`
-	// Name of the API proxy.
-	Name *string `pulumi:"name"`
-	// List of revisons defined for the API proxy.
-	Revision []string `pulumi:"revision"`
 }
 
 type ApiState struct {
-	// The id of the most recently created revision for this api proxy.
-	LatestRevisionId pulumi.StringPtrInput
-	// Metadata describing the API proxy.
-	MetaData GoogleCloudApigeeV1EntityMetadataResponsePtrInput
-	// Name of the API proxy.
-	Name pulumi.StringPtrInput
-	// List of revisons defined for the API proxy.
-	Revision pulumi.StringArrayInput
 }
 
 func (ApiState) ElementType() reflect.Type {

@@ -11,7 +11,7 @@ import (
 )
 
 // Required. State of the channel partner link.
-type ChannelPartnerLinkLinkState pulumi.String
+type ChannelPartnerLinkLinkState string
 
 const (
 	// The state is not specified.
@@ -27,7 +27,23 @@ const (
 )
 
 func (ChannelPartnerLinkLinkState) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*ChannelPartnerLinkLinkState)(nil)).Elem()
+}
+
+func (e ChannelPartnerLinkLinkState) ToChannelPartnerLinkLinkStateOutput() ChannelPartnerLinkLinkStateOutput {
+	return pulumi.ToOutput(e).(ChannelPartnerLinkLinkStateOutput)
+}
+
+func (e ChannelPartnerLinkLinkState) ToChannelPartnerLinkLinkStateOutputWithContext(ctx context.Context) ChannelPartnerLinkLinkStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ChannelPartnerLinkLinkStateOutput)
+}
+
+func (e ChannelPartnerLinkLinkState) ToChannelPartnerLinkLinkStatePtrOutput() ChannelPartnerLinkLinkStatePtrOutput {
+	return e.ToChannelPartnerLinkLinkStatePtrOutputWithContext(context.Background())
+}
+
+func (e ChannelPartnerLinkLinkState) ToChannelPartnerLinkLinkStatePtrOutputWithContext(ctx context.Context) ChannelPartnerLinkLinkStatePtrOutput {
+	return ChannelPartnerLinkLinkState(e).ToChannelPartnerLinkLinkStateOutputWithContext(ctx).ToChannelPartnerLinkLinkStatePtrOutputWithContext(ctx)
 }
 
 func (e ChannelPartnerLinkLinkState) ToStringOutput() pulumi.StringOutput {
@@ -46,8 +62,129 @@ func (e ChannelPartnerLinkLinkState) ToStringPtrOutputWithContext(ctx context.Co
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type ChannelPartnerLinkLinkStateOutput struct{ *pulumi.OutputState }
+
+func (ChannelPartnerLinkLinkStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChannelPartnerLinkLinkState)(nil)).Elem()
+}
+
+func (o ChannelPartnerLinkLinkStateOutput) ToChannelPartnerLinkLinkStateOutput() ChannelPartnerLinkLinkStateOutput {
+	return o
+}
+
+func (o ChannelPartnerLinkLinkStateOutput) ToChannelPartnerLinkLinkStateOutputWithContext(ctx context.Context) ChannelPartnerLinkLinkStateOutput {
+	return o
+}
+
+func (o ChannelPartnerLinkLinkStateOutput) ToChannelPartnerLinkLinkStatePtrOutput() ChannelPartnerLinkLinkStatePtrOutput {
+	return o.ToChannelPartnerLinkLinkStatePtrOutputWithContext(context.Background())
+}
+
+func (o ChannelPartnerLinkLinkStateOutput) ToChannelPartnerLinkLinkStatePtrOutputWithContext(ctx context.Context) ChannelPartnerLinkLinkStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ChannelPartnerLinkLinkState) *ChannelPartnerLinkLinkState {
+		return &v
+	}).(ChannelPartnerLinkLinkStatePtrOutput)
+}
+
+func (o ChannelPartnerLinkLinkStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ChannelPartnerLinkLinkStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ChannelPartnerLinkLinkState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ChannelPartnerLinkLinkStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ChannelPartnerLinkLinkStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ChannelPartnerLinkLinkState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ChannelPartnerLinkLinkStatePtrOutput struct{ *pulumi.OutputState }
+
+func (ChannelPartnerLinkLinkStatePtrOutput) ElementType() reflect.Type {
+	return channelPartnerLinkLinkStatePtrType
+}
+
+func (o ChannelPartnerLinkLinkStatePtrOutput) ToChannelPartnerLinkLinkStatePtrOutput() ChannelPartnerLinkLinkStatePtrOutput {
+	return o
+}
+
+func (o ChannelPartnerLinkLinkStatePtrOutput) ToChannelPartnerLinkLinkStatePtrOutputWithContext(ctx context.Context) ChannelPartnerLinkLinkStatePtrOutput {
+	return o
+}
+
+func (o ChannelPartnerLinkLinkStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ChannelPartnerLinkLinkStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ChannelPartnerLinkLinkState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ChannelPartnerLinkLinkStatePtrOutput) Elem() ChannelPartnerLinkLinkStateOutput {
+	return o.ApplyT(func(v *ChannelPartnerLinkLinkState) ChannelPartnerLinkLinkState {
+		var ret ChannelPartnerLinkLinkState
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ChannelPartnerLinkLinkStateOutput)
+}
+
+// ChannelPartnerLinkLinkStateInput is an input type that accepts ChannelPartnerLinkLinkStateArgs and ChannelPartnerLinkLinkStateOutput values.
+// You can construct a concrete instance of `ChannelPartnerLinkLinkStateInput` via:
+//
+//          ChannelPartnerLinkLinkStateArgs{...}
+type ChannelPartnerLinkLinkStateInput interface {
+	pulumi.Input
+
+	ToChannelPartnerLinkLinkStateOutput() ChannelPartnerLinkLinkStateOutput
+	ToChannelPartnerLinkLinkStateOutputWithContext(context.Context) ChannelPartnerLinkLinkStateOutput
+}
+
+var channelPartnerLinkLinkStatePtrType = reflect.TypeOf((**ChannelPartnerLinkLinkState)(nil)).Elem()
+
+type ChannelPartnerLinkLinkStatePtrInput interface {
+	pulumi.Input
+
+	ToChannelPartnerLinkLinkStatePtrOutput() ChannelPartnerLinkLinkStatePtrOutput
+	ToChannelPartnerLinkLinkStatePtrOutputWithContext(context.Context) ChannelPartnerLinkLinkStatePtrOutput
+}
+
+type channelPartnerLinkLinkStatePtr string
+
+func ChannelPartnerLinkLinkStatePtr(v string) ChannelPartnerLinkLinkStatePtrInput {
+	return (*channelPartnerLinkLinkStatePtr)(&v)
+}
+
+func (*channelPartnerLinkLinkStatePtr) ElementType() reflect.Type {
+	return channelPartnerLinkLinkStatePtrType
+}
+
+func (in *channelPartnerLinkLinkStatePtr) ToChannelPartnerLinkLinkStatePtrOutput() ChannelPartnerLinkLinkStatePtrOutput {
+	return pulumi.ToOutput(in).(ChannelPartnerLinkLinkStatePtrOutput)
+}
+
+func (in *channelPartnerLinkLinkStatePtr) ToChannelPartnerLinkLinkStatePtrOutputWithContext(ctx context.Context) ChannelPartnerLinkLinkStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ChannelPartnerLinkLinkStatePtrOutput)
+}
+
 // Period Type.
-type GoogleCloudChannelV1PeriodPeriodType pulumi.String
+type GoogleCloudChannelV1PeriodPeriodType string
 
 const (
 	// Not used.
@@ -61,7 +198,23 @@ const (
 )
 
 func (GoogleCloudChannelV1PeriodPeriodType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GoogleCloudChannelV1PeriodPeriodType)(nil)).Elem()
+}
+
+func (e GoogleCloudChannelV1PeriodPeriodType) ToGoogleCloudChannelV1PeriodPeriodTypeOutput() GoogleCloudChannelV1PeriodPeriodTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudChannelV1PeriodPeriodTypeOutput)
+}
+
+func (e GoogleCloudChannelV1PeriodPeriodType) ToGoogleCloudChannelV1PeriodPeriodTypeOutputWithContext(ctx context.Context) GoogleCloudChannelV1PeriodPeriodTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudChannelV1PeriodPeriodTypeOutput)
+}
+
+func (e GoogleCloudChannelV1PeriodPeriodType) ToGoogleCloudChannelV1PeriodPeriodTypePtrOutput() GoogleCloudChannelV1PeriodPeriodTypePtrOutput {
+	return e.ToGoogleCloudChannelV1PeriodPeriodTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudChannelV1PeriodPeriodType) ToGoogleCloudChannelV1PeriodPeriodTypePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1PeriodPeriodTypePtrOutput {
+	return GoogleCloudChannelV1PeriodPeriodType(e).ToGoogleCloudChannelV1PeriodPeriodTypeOutputWithContext(ctx).ToGoogleCloudChannelV1PeriodPeriodTypePtrOutputWithContext(ctx)
 }
 
 func (e GoogleCloudChannelV1PeriodPeriodType) ToStringOutput() pulumi.StringOutput {
@@ -80,8 +233,129 @@ func (e GoogleCloudChannelV1PeriodPeriodType) ToStringPtrOutputWithContext(ctx c
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type GoogleCloudChannelV1PeriodPeriodTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1PeriodPeriodTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1PeriodPeriodType)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1PeriodPeriodTypeOutput) ToGoogleCloudChannelV1PeriodPeriodTypeOutput() GoogleCloudChannelV1PeriodPeriodTypeOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1PeriodPeriodTypeOutput) ToGoogleCloudChannelV1PeriodPeriodTypeOutputWithContext(ctx context.Context) GoogleCloudChannelV1PeriodPeriodTypeOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1PeriodPeriodTypeOutput) ToGoogleCloudChannelV1PeriodPeriodTypePtrOutput() GoogleCloudChannelV1PeriodPeriodTypePtrOutput {
+	return o.ToGoogleCloudChannelV1PeriodPeriodTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudChannelV1PeriodPeriodTypeOutput) ToGoogleCloudChannelV1PeriodPeriodTypePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1PeriodPeriodTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1PeriodPeriodType) *GoogleCloudChannelV1PeriodPeriodType {
+		return &v
+	}).(GoogleCloudChannelV1PeriodPeriodTypePtrOutput)
+}
+
+func (o GoogleCloudChannelV1PeriodPeriodTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudChannelV1PeriodPeriodTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudChannelV1PeriodPeriodType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudChannelV1PeriodPeriodTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudChannelV1PeriodPeriodTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudChannelV1PeriodPeriodType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudChannelV1PeriodPeriodTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1PeriodPeriodTypePtrOutput) ElementType() reflect.Type {
+	return googleCloudChannelV1PeriodPeriodTypePtrType
+}
+
+func (o GoogleCloudChannelV1PeriodPeriodTypePtrOutput) ToGoogleCloudChannelV1PeriodPeriodTypePtrOutput() GoogleCloudChannelV1PeriodPeriodTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1PeriodPeriodTypePtrOutput) ToGoogleCloudChannelV1PeriodPeriodTypePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1PeriodPeriodTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1PeriodPeriodTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudChannelV1PeriodPeriodTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudChannelV1PeriodPeriodType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleCloudChannelV1PeriodPeriodTypePtrOutput) Elem() GoogleCloudChannelV1PeriodPeriodTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudChannelV1PeriodPeriodType) GoogleCloudChannelV1PeriodPeriodType {
+		var ret GoogleCloudChannelV1PeriodPeriodType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GoogleCloudChannelV1PeriodPeriodTypeOutput)
+}
+
+// GoogleCloudChannelV1PeriodPeriodTypeInput is an input type that accepts GoogleCloudChannelV1PeriodPeriodTypeArgs and GoogleCloudChannelV1PeriodPeriodTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudChannelV1PeriodPeriodTypeInput` via:
+//
+//          GoogleCloudChannelV1PeriodPeriodTypeArgs{...}
+type GoogleCloudChannelV1PeriodPeriodTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudChannelV1PeriodPeriodTypeOutput() GoogleCloudChannelV1PeriodPeriodTypeOutput
+	ToGoogleCloudChannelV1PeriodPeriodTypeOutputWithContext(context.Context) GoogleCloudChannelV1PeriodPeriodTypeOutput
+}
+
+var googleCloudChannelV1PeriodPeriodTypePtrType = reflect.TypeOf((**GoogleCloudChannelV1PeriodPeriodType)(nil)).Elem()
+
+type GoogleCloudChannelV1PeriodPeriodTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudChannelV1PeriodPeriodTypePtrOutput() GoogleCloudChannelV1PeriodPeriodTypePtrOutput
+	ToGoogleCloudChannelV1PeriodPeriodTypePtrOutputWithContext(context.Context) GoogleCloudChannelV1PeriodPeriodTypePtrOutput
+}
+
+type googleCloudChannelV1PeriodPeriodTypePtr string
+
+func GoogleCloudChannelV1PeriodPeriodTypePtr(v string) GoogleCloudChannelV1PeriodPeriodTypePtrInput {
+	return (*googleCloudChannelV1PeriodPeriodTypePtr)(&v)
+}
+
+func (*googleCloudChannelV1PeriodPeriodTypePtr) ElementType() reflect.Type {
+	return googleCloudChannelV1PeriodPeriodTypePtrType
+}
+
+func (in *googleCloudChannelV1PeriodPeriodTypePtr) ToGoogleCloudChannelV1PeriodPeriodTypePtrOutput() GoogleCloudChannelV1PeriodPeriodTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudChannelV1PeriodPeriodTypePtrOutput)
+}
+
+func (in *googleCloudChannelV1PeriodPeriodTypePtr) ToGoogleCloudChannelV1PeriodPeriodTypePtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1PeriodPeriodTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudChannelV1PeriodPeriodTypePtrOutput)
+}
+
 // Describes how a reseller will be billed.
-type GoogleCloudChannelV1RenewalSettingsPaymentPlan pulumi.String
+type GoogleCloudChannelV1RenewalSettingsPaymentPlan string
 
 const (
 	// Not used.
@@ -99,7 +373,23 @@ const (
 )
 
 func (GoogleCloudChannelV1RenewalSettingsPaymentPlan) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GoogleCloudChannelV1RenewalSettingsPaymentPlan)(nil)).Elem()
+}
+
+func (e GoogleCloudChannelV1RenewalSettingsPaymentPlan) ToGoogleCloudChannelV1RenewalSettingsPaymentPlanOutput() GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput {
+	return pulumi.ToOutput(e).(GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput)
+}
+
+func (e GoogleCloudChannelV1RenewalSettingsPaymentPlan) ToGoogleCloudChannelV1RenewalSettingsPaymentPlanOutputWithContext(ctx context.Context) GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput)
+}
+
+func (e GoogleCloudChannelV1RenewalSettingsPaymentPlan) ToGoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput() GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput {
+	return e.ToGoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudChannelV1RenewalSettingsPaymentPlan) ToGoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput {
+	return GoogleCloudChannelV1RenewalSettingsPaymentPlan(e).ToGoogleCloudChannelV1RenewalSettingsPaymentPlanOutputWithContext(ctx).ToGoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutputWithContext(ctx)
 }
 
 func (e GoogleCloudChannelV1RenewalSettingsPaymentPlan) ToStringOutput() pulumi.StringOutput {
@@ -116,4 +406,134 @@ func (e GoogleCloudChannelV1RenewalSettingsPaymentPlan) ToStringPtrOutput() pulu
 
 func (e GoogleCloudChannelV1RenewalSettingsPaymentPlan) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudChannelV1RenewalSettingsPaymentPlan)(nil)).Elem()
+}
+
+func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput) ToGoogleCloudChannelV1RenewalSettingsPaymentPlanOutput() GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput) ToGoogleCloudChannelV1RenewalSettingsPaymentPlanOutputWithContext(ctx context.Context) GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput) ToGoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput() GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput {
+	return o.ToGoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput) ToGoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudChannelV1RenewalSettingsPaymentPlan) *GoogleCloudChannelV1RenewalSettingsPaymentPlan {
+		return &v
+	}).(GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput)
+}
+
+func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudChannelV1RenewalSettingsPaymentPlan) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudChannelV1RenewalSettingsPaymentPlan) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput) ElementType() reflect.Type {
+	return googleCloudChannelV1RenewalSettingsPaymentPlanPtrType
+}
+
+func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput) ToGoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput() GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput) ToGoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput {
+	return o
+}
+
+func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudChannelV1RenewalSettingsPaymentPlan) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput) Elem() GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput {
+	return o.ApplyT(func(v *GoogleCloudChannelV1RenewalSettingsPaymentPlan) GoogleCloudChannelV1RenewalSettingsPaymentPlan {
+		var ret GoogleCloudChannelV1RenewalSettingsPaymentPlan
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput)
+}
+
+// GoogleCloudChannelV1RenewalSettingsPaymentPlanInput is an input type that accepts GoogleCloudChannelV1RenewalSettingsPaymentPlanArgs and GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput values.
+// You can construct a concrete instance of `GoogleCloudChannelV1RenewalSettingsPaymentPlanInput` via:
+//
+//          GoogleCloudChannelV1RenewalSettingsPaymentPlanArgs{...}
+type GoogleCloudChannelV1RenewalSettingsPaymentPlanInput interface {
+	pulumi.Input
+
+	ToGoogleCloudChannelV1RenewalSettingsPaymentPlanOutput() GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput
+	ToGoogleCloudChannelV1RenewalSettingsPaymentPlanOutputWithContext(context.Context) GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput
+}
+
+var googleCloudChannelV1RenewalSettingsPaymentPlanPtrType = reflect.TypeOf((**GoogleCloudChannelV1RenewalSettingsPaymentPlan)(nil)).Elem()
+
+type GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput() GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput
+	ToGoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutputWithContext(context.Context) GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput
+}
+
+type googleCloudChannelV1RenewalSettingsPaymentPlanPtr string
+
+func GoogleCloudChannelV1RenewalSettingsPaymentPlanPtr(v string) GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrInput {
+	return (*googleCloudChannelV1RenewalSettingsPaymentPlanPtr)(&v)
+}
+
+func (*googleCloudChannelV1RenewalSettingsPaymentPlanPtr) ElementType() reflect.Type {
+	return googleCloudChannelV1RenewalSettingsPaymentPlanPtrType
+}
+
+func (in *googleCloudChannelV1RenewalSettingsPaymentPlanPtr) ToGoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput() GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput)
+}
+
+func (in *googleCloudChannelV1RenewalSettingsPaymentPlanPtr) ToGoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutputWithContext(ctx context.Context) GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(ChannelPartnerLinkLinkStateOutput{})
+	pulumi.RegisterOutputType(ChannelPartnerLinkLinkStatePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1PeriodPeriodTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1PeriodPeriodTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput{})
+	pulumi.RegisterOutputType(GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput{})
 }

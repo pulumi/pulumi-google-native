@@ -78,49 +78,9 @@ func GetMessage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Message resources.
 type messageState struct {
-	// The datetime when the message was created. Set by the server.
-	CreateTime *string `pulumi:"createTime"`
-	// Raw message bytes.
-	Data *string `pulumi:"data"`
-	// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-	Labels map[string]string `pulumi:"labels"`
-	// The message type for this message. MSH-9.1.
-	MessageType *string `pulumi:"messageType"`
-	// Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
-	Name *string `pulumi:"name"`
-	// The parsed version of the raw message data.
-	ParsedData *ParsedDataResponse `pulumi:"parsedData"`
-	// All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
-	PatientIds []PatientIdResponse `pulumi:"patientIds"`
-	// The parsed version of the raw message data schematized according to this store's schemas and type definitions.
-	SchematizedData *SchematizedDataResponse `pulumi:"schematizedData"`
-	// The hospital that this message came from. MSH-4.
-	SendFacility *string `pulumi:"sendFacility"`
-	// The datetime the sending application sent this message. MSH-7.
-	SendTime *string `pulumi:"sendTime"`
 }
 
 type MessageState struct {
-	// The datetime when the message was created. Set by the server.
-	CreateTime pulumi.StringPtrInput
-	// Raw message bytes.
-	Data pulumi.StringPtrInput
-	// User-supplied key-value pairs used to organize HL7v2 stores. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values are optional, must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store.
-	Labels pulumi.StringMapInput
-	// The message type for this message. MSH-9.1.
-	MessageType pulumi.StringPtrInput
-	// Resource name of the Message, of the form `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. Assigned by the server.
-	Name pulumi.StringPtrInput
-	// The parsed version of the raw message data.
-	ParsedData ParsedDataResponsePtrInput
-	// All patient IDs listed in the PID-2, PID-3, and PID-4 segments of this message.
-	PatientIds PatientIdResponseArrayInput
-	// The parsed version of the raw message data schematized according to this store's schemas and type definitions.
-	SchematizedData SchematizedDataResponsePtrInput
-	// The hospital that this message came from. MSH-4.
-	SendFacility pulumi.StringPtrInput
-	// The datetime the sending application sent this message. MSH-7.
-	SendTime pulumi.StringPtrInput
 }
 
 func (MessageState) ElementType() reflect.Type {

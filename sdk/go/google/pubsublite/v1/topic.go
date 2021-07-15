@@ -61,21 +61,9 @@ func GetTopic(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Topic resources.
 type topicState struct {
-	// The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
-	Name *string `pulumi:"name"`
-	// The settings for this topic's partitions.
-	PartitionConfig *PartitionConfigResponse `pulumi:"partitionConfig"`
-	// The settings for this topic's message retention.
-	RetentionConfig *RetentionConfigResponse `pulumi:"retentionConfig"`
 }
 
 type TopicState struct {
-	// The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
-	Name pulumi.StringPtrInput
-	// The settings for this topic's partitions.
-	PartitionConfig PartitionConfigResponsePtrInput
-	// The settings for this topic's message retention.
-	RetentionConfig RetentionConfigResponsePtrInput
 }
 
 func (TopicState) ElementType() reflect.Type {

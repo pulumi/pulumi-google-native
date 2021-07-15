@@ -70,33 +70,9 @@ func GetWebhook(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Webhook resources.
 type webhookState struct {
-	// Indicates whether the webhook is disabled.
-	Disabled *bool `pulumi:"disabled"`
-	// The human-readable name of the webhook, unique within the agent.
-	DisplayName *string `pulumi:"displayName"`
-	// Configuration for a generic web service.
-	GenericWebService *GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponse `pulumi:"genericWebService"`
-	// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
-	Name *string `pulumi:"name"`
-	// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
-	ServiceDirectory *GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponse `pulumi:"serviceDirectory"`
-	// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
-	Timeout *string `pulumi:"timeout"`
 }
 
 type WebhookState struct {
-	// Indicates whether the webhook is disabled.
-	Disabled pulumi.BoolPtrInput
-	// The human-readable name of the webhook, unique within the agent.
-	DisplayName pulumi.StringPtrInput
-	// Configuration for a generic web service.
-	GenericWebService GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceResponsePtrInput
-	// The unique identifier of the webhook. Required for the Webhooks.UpdateWebhook method. Webhooks.CreateWebhook populates the name automatically. Format: `projects//locations//agents//webhooks/`.
-	Name pulumi.StringPtrInput
-	// Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
-	ServiceDirectory GoogleCloudDialogflowCxV3beta1WebhookServiceDirectoryConfigResponsePtrInput
-	// Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
-	Timeout pulumi.StringPtrInput
 }
 
 func (WebhookState) ElementType() reflect.Type {

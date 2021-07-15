@@ -85,69 +85,9 @@ func GetNodePool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NodePool resources.
 type nodePoolState struct {
-	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
-	Autoscaling *NodePoolAutoscalingResponse `pulumi:"autoscaling"`
-	// Which conditions caused the current node pool state.
-	Conditions []StatusConditionResponse `pulumi:"conditions"`
-	// The node configuration of the pool.
-	Config *NodeConfigResponse `pulumi:"config"`
-	// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
-	InitialNodeCount *int `pulumi:"initialNodeCount"`
-	// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
-	InstanceGroupUrls []string `pulumi:"instanceGroupUrls"`
-	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
-	Locations []string `pulumi:"locations"`
-	// NodeManagement configuration for this NodePool.
-	Management *NodeManagementResponse `pulumi:"management"`
-	// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
-	MaxPodsConstraint *MaxPodsConstraintResponse `pulumi:"maxPodsConstraint"`
-	// The name of the node pool.
-	Name *string `pulumi:"name"`
-	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
-	NetworkConfig *NodeNetworkConfigResponse `pulumi:"networkConfig"`
-	// [Output only] The pod CIDR block size per node in this node pool.
-	PodIpv4CidrSize *int `pulumi:"podIpv4CidrSize"`
-	// [Output only] Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// [Output only] The status of the nodes in this pool instance.
-	Status *string `pulumi:"status"`
-	// Upgrade settings control disruption and speed of the upgrade.
-	UpgradeSettings *UpgradeSettingsResponse `pulumi:"upgradeSettings"`
-	// The version of the Kubernetes of this node.
-	Version *string `pulumi:"version"`
 }
 
 type NodePoolState struct {
-	// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
-	Autoscaling NodePoolAutoscalingResponsePtrInput
-	// Which conditions caused the current node pool state.
-	Conditions StatusConditionResponseArrayInput
-	// The node configuration of the pool.
-	Config NodeConfigResponsePtrInput
-	// The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota.
-	InitialNodeCount pulumi.IntPtrInput
-	// [Output only] The resource URLs of the [managed instance groups](https://cloud.google.com/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with this node pool.
-	InstanceGroupUrls pulumi.StringArrayInput
-	// The list of Google Compute Engine [zones](https://cloud.google.com/compute/docs/zones#available) in which the NodePool's nodes should be located. If this value is unspecified during node pool creation, the [Cluster.Locations](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters#Cluster.FIELDS.locations) value will be used, instead. Warning: changing node pool locations will result in nodes being added and/or removed.
-	Locations pulumi.StringArrayInput
-	// NodeManagement configuration for this NodePool.
-	Management NodeManagementResponsePtrInput
-	// The constraint on the maximum number of pods that can be run simultaneously on a node in the node pool.
-	MaxPodsConstraint MaxPodsConstraintResponsePtrInput
-	// The name of the node pool.
-	Name pulumi.StringPtrInput
-	// Networking configuration for this NodePool. If specified, it overrides the cluster-level defaults.
-	NetworkConfig NodeNetworkConfigResponsePtrInput
-	// [Output only] The pod CIDR block size per node in this node pool.
-	PodIpv4CidrSize pulumi.IntPtrInput
-	// [Output only] Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	// [Output only] The status of the nodes in this pool instance.
-	Status pulumi.StringPtrInput
-	// Upgrade settings control disruption and speed of the upgrade.
-	UpgradeSettings UpgradeSettingsResponsePtrInput
-	// The version of the Kubernetes of this node.
-	Version pulumi.StringPtrInput
 }
 
 func (NodePoolState) ElementType() reflect.Type {

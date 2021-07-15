@@ -11,7 +11,7 @@ import (
 )
 
 // Required. The type of the disk to create.
-type DiskType pulumi.String
+type DiskType string
 
 const (
 	// Default disk type. Use one of the other options below.
@@ -25,7 +25,23 @@ const (
 )
 
 func (DiskType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*DiskType)(nil)).Elem()
+}
+
+func (e DiskType) ToDiskTypeOutput() DiskTypeOutput {
+	return pulumi.ToOutput(e).(DiskTypeOutput)
+}
+
+func (e DiskType) ToDiskTypeOutputWithContext(ctx context.Context) DiskTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DiskTypeOutput)
+}
+
+func (e DiskType) ToDiskTypePtrOutput() DiskTypePtrOutput {
+	return e.ToDiskTypePtrOutputWithContext(context.Background())
+}
+
+func (e DiskType) ToDiskTypePtrOutputWithContext(ctx context.Context) DiskTypePtrOutput {
+	return DiskType(e).ToDiskTypeOutputWithContext(ctx).ToDiskTypePtrOutputWithContext(ctx)
 }
 
 func (e DiskType) ToStringOutput() pulumi.StringOutput {
@@ -42,4 +58,130 @@ func (e DiskType) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e DiskType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DiskTypeOutput struct{ *pulumi.OutputState }
+
+func (DiskTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskType)(nil)).Elem()
+}
+
+func (o DiskTypeOutput) ToDiskTypeOutput() DiskTypeOutput {
+	return o
+}
+
+func (o DiskTypeOutput) ToDiskTypeOutputWithContext(ctx context.Context) DiskTypeOutput {
+	return o
+}
+
+func (o DiskTypeOutput) ToDiskTypePtrOutput() DiskTypePtrOutput {
+	return o.ToDiskTypePtrOutputWithContext(context.Background())
+}
+
+func (o DiskTypeOutput) ToDiskTypePtrOutputWithContext(ctx context.Context) DiskTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskType) *DiskType {
+		return &v
+	}).(DiskTypePtrOutput)
+}
+
+func (o DiskTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DiskTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiskType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DiskTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DiskTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DiskType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DiskTypePtrOutput struct{ *pulumi.OutputState }
+
+func (DiskTypePtrOutput) ElementType() reflect.Type {
+	return diskTypePtrType
+}
+
+func (o DiskTypePtrOutput) ToDiskTypePtrOutput() DiskTypePtrOutput {
+	return o
+}
+
+func (o DiskTypePtrOutput) ToDiskTypePtrOutputWithContext(ctx context.Context) DiskTypePtrOutput {
+	return o
+}
+
+func (o DiskTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DiskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DiskType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DiskTypePtrOutput) Elem() DiskTypeOutput {
+	return o.ApplyT(func(v *DiskType) DiskType {
+		var ret DiskType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(DiskTypeOutput)
+}
+
+// DiskTypeInput is an input type that accepts DiskTypeArgs and DiskTypeOutput values.
+// You can construct a concrete instance of `DiskTypeInput` via:
+//
+//          DiskTypeArgs{...}
+type DiskTypeInput interface {
+	pulumi.Input
+
+	ToDiskTypeOutput() DiskTypeOutput
+	ToDiskTypeOutputWithContext(context.Context) DiskTypeOutput
+}
+
+var diskTypePtrType = reflect.TypeOf((**DiskType)(nil)).Elem()
+
+type DiskTypePtrInput interface {
+	pulumi.Input
+
+	ToDiskTypePtrOutput() DiskTypePtrOutput
+	ToDiskTypePtrOutputWithContext(context.Context) DiskTypePtrOutput
+}
+
+type diskTypePtr string
+
+func DiskTypePtr(v string) DiskTypePtrInput {
+	return (*diskTypePtr)(&v)
+}
+
+func (*diskTypePtr) ElementType() reflect.Type {
+	return diskTypePtrType
+}
+
+func (in *diskTypePtr) ToDiskTypePtrOutput() DiskTypePtrOutput {
+	return pulumi.ToOutput(in).(DiskTypePtrOutput)
+}
+
+func (in *diskTypePtr) ToDiskTypePtrOutputWithContext(ctx context.Context) DiskTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DiskTypePtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(DiskTypeOutput{})
+	pulumi.RegisterOutputType(DiskTypePtrOutput{})
 }

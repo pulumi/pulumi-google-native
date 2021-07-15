@@ -499,9 +499,9 @@ type CompensationEntry struct {
 	// Optional. Compensation range.
 	Range *CompensationRange `pulumi:"range"`
 	// Optional. Compensation type. Default is CompensationUnit.COMPENSATION_TYPE_UNSPECIFIED.
-	Type *string `pulumi:"type"`
+	Type *CompensationEntryType `pulumi:"type"`
 	// Optional. Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
-	Unit *string `pulumi:"unit"`
+	Unit *CompensationEntryUnit `pulumi:"unit"`
 }
 
 // CompensationEntryInput is an input type that accepts CompensationEntryArgs and CompensationEntryOutput values.
@@ -526,9 +526,9 @@ type CompensationEntryArgs struct {
 	// Optional. Compensation range.
 	Range CompensationRangePtrInput `pulumi:"range"`
 	// Optional. Compensation type. Default is CompensationUnit.COMPENSATION_TYPE_UNSPECIFIED.
-	Type *CompensationEntryType `pulumi:"type"`
+	Type CompensationEntryTypePtrInput `pulumi:"type"`
 	// Optional. Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
-	Unit *CompensationEntryUnit `pulumi:"unit"`
+	Unit CompensationEntryUnitPtrInput `pulumi:"unit"`
 }
 
 func (CompensationEntryArgs) ElementType() reflect.Type {
@@ -604,13 +604,13 @@ func (o CompensationEntryOutput) Range() CompensationRangePtrOutput {
 }
 
 // Optional. Compensation type. Default is CompensationUnit.COMPENSATION_TYPE_UNSPECIFIED.
-func (o CompensationEntryOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CompensationEntry) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o CompensationEntryOutput) Type() CompensationEntryTypePtrOutput {
+	return o.ApplyT(func(v CompensationEntry) *CompensationEntryType { return v.Type }).(CompensationEntryTypePtrOutput)
 }
 
 // Optional. Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
-func (o CompensationEntryOutput) Unit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CompensationEntry) *string { return v.Unit }).(pulumi.StringPtrOutput)
+func (o CompensationEntryOutput) Unit() CompensationEntryUnitPtrOutput {
+	return o.ApplyT(func(v CompensationEntry) *CompensationEntryUnit { return v.Unit }).(CompensationEntryUnitPtrOutput)
 }
 
 type CompensationEntryArrayOutput struct{ *pulumi.OutputState }
@@ -2605,7 +2605,7 @@ type ProcessingOptions struct {
 	// Optional. If set to `true`, the service does not attempt to resolve a more precise address for the job.
 	DisableStreetAddressResolution *bool `pulumi:"disableStreetAddressResolution"`
 	// Optional. Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation is not disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
-	HtmlSanitization *string `pulumi:"htmlSanitization"`
+	HtmlSanitization *ProcessingOptionsHtmlSanitization `pulumi:"htmlSanitization"`
 }
 
 // ProcessingOptionsInput is an input type that accepts ProcessingOptionsArgs and ProcessingOptionsOutput values.
@@ -2624,7 +2624,7 @@ type ProcessingOptionsArgs struct {
 	// Optional. If set to `true`, the service does not attempt to resolve a more precise address for the job.
 	DisableStreetAddressResolution pulumi.BoolPtrInput `pulumi:"disableStreetAddressResolution"`
 	// Optional. Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation is not disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
-	HtmlSanitization *ProcessingOptionsHtmlSanitization `pulumi:"htmlSanitization"`
+	HtmlSanitization ProcessingOptionsHtmlSanitizationPtrInput `pulumi:"htmlSanitization"`
 }
 
 func (ProcessingOptionsArgs) ElementType() reflect.Type {
@@ -2711,8 +2711,8 @@ func (o ProcessingOptionsOutput) DisableStreetAddressResolution() pulumi.BoolPtr
 }
 
 // Optional. Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation is not disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
-func (o ProcessingOptionsOutput) HtmlSanitization() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProcessingOptions) *string { return v.HtmlSanitization }).(pulumi.StringPtrOutput)
+func (o ProcessingOptionsOutput) HtmlSanitization() ProcessingOptionsHtmlSanitizationPtrOutput {
+	return o.ApplyT(func(v ProcessingOptions) *ProcessingOptionsHtmlSanitization { return v.HtmlSanitization }).(ProcessingOptionsHtmlSanitizationPtrOutput)
 }
 
 type ProcessingOptionsPtrOutput struct{ *pulumi.OutputState }
@@ -2744,13 +2744,13 @@ func (o ProcessingOptionsPtrOutput) DisableStreetAddressResolution() pulumi.Bool
 }
 
 // Optional. Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation is not disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
-func (o ProcessingOptionsPtrOutput) HtmlSanitization() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProcessingOptions) *string {
+func (o ProcessingOptionsPtrOutput) HtmlSanitization() ProcessingOptionsHtmlSanitizationPtrOutput {
+	return o.ApplyT(func(v *ProcessingOptions) *ProcessingOptionsHtmlSanitization {
 		if v == nil {
 			return nil
 		}
 		return v.HtmlSanitization
-	}).(pulumi.StringPtrOutput)
+	}).(ProcessingOptionsHtmlSanitizationPtrOutput)
 }
 
 // Input only. Options for job processing.

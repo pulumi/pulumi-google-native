@@ -491,8 +491,8 @@ func (o DynamicGroupMetadataResponsePtrOutput) Status() DynamicGroupStatusRespon
 // Defines a query on a resource.
 type DynamicGroupQuery struct {
 	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
-	Query        *string `pulumi:"query"`
-	ResourceType *string `pulumi:"resourceType"`
+	Query        *string                        `pulumi:"query"`
+	ResourceType *DynamicGroupQueryResourceType `pulumi:"resourceType"`
 }
 
 // DynamicGroupQueryInput is an input type that accepts DynamicGroupQueryArgs and DynamicGroupQueryOutput values.
@@ -509,8 +509,8 @@ type DynamicGroupQueryInput interface {
 // Defines a query on a resource.
 type DynamicGroupQueryArgs struct {
 	// Query that determines the memberships of the dynamic group. Examples: All users with at least one `organizations.department` of engineering. `user.organizations.exists(org, org.department=='engineering')` All users with at least one location that has `area` of `foo` and `building_id` of `bar`. `user.locations.exists(loc, loc.area=='foo' && loc.building_id=='bar')`
-	Query        pulumi.StringPtrInput          `pulumi:"query"`
-	ResourceType *DynamicGroupQueryResourceType `pulumi:"resourceType"`
+	Query        pulumi.StringPtrInput                 `pulumi:"query"`
+	ResourceType DynamicGroupQueryResourceTypePtrInput `pulumi:"resourceType"`
 }
 
 func (DynamicGroupQueryArgs) ElementType() reflect.Type {
@@ -570,8 +570,8 @@ func (o DynamicGroupQueryOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DynamicGroupQuery) *string { return v.Query }).(pulumi.StringPtrOutput)
 }
 
-func (o DynamicGroupQueryOutput) ResourceType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DynamicGroupQuery) *string { return v.ResourceType }).(pulumi.StringPtrOutput)
+func (o DynamicGroupQueryOutput) ResourceType() DynamicGroupQueryResourceTypePtrOutput {
+	return o.ApplyT(func(v DynamicGroupQuery) *DynamicGroupQueryResourceType { return v.ResourceType }).(DynamicGroupQueryResourceTypePtrOutput)
 }
 
 type DynamicGroupQueryArrayOutput struct{ *pulumi.OutputState }

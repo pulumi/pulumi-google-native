@@ -15,11 +15,11 @@ type Aggregation struct {
 	// The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 2 years, or 104 weeks.
 	AlignmentPeriod *string `pulumi:"alignmentPeriod"`
 	// The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
-	CrossSeriesReducer *string `pulumi:"crossSeriesReducer"`
+	CrossSeriesReducer *AggregationCrossSeriesReducer `pulumi:"crossSeriesReducer"`
 	// The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If cross_series_reducer is not defined, this field is ignored.
 	GroupByFields []string `pulumi:"groupByFields"`
 	// An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
-	PerSeriesAligner *string `pulumi:"perSeriesAligner"`
+	PerSeriesAligner *AggregationPerSeriesAligner `pulumi:"perSeriesAligner"`
 }
 
 // AggregationInput is an input type that accepts AggregationArgs and AggregationOutput values.
@@ -38,11 +38,11 @@ type AggregationArgs struct {
 	// The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 2 years, or 104 weeks.
 	AlignmentPeriod pulumi.StringPtrInput `pulumi:"alignmentPeriod"`
 	// The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
-	CrossSeriesReducer *AggregationCrossSeriesReducer `pulumi:"crossSeriesReducer"`
+	CrossSeriesReducer AggregationCrossSeriesReducerPtrInput `pulumi:"crossSeriesReducer"`
 	// The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If cross_series_reducer is not defined, this field is ignored.
 	GroupByFields pulumi.StringArrayInput `pulumi:"groupByFields"`
 	// An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
-	PerSeriesAligner *AggregationPerSeriesAligner `pulumi:"perSeriesAligner"`
+	PerSeriesAligner AggregationPerSeriesAlignerPtrInput `pulumi:"perSeriesAligner"`
 }
 
 func (AggregationArgs) ElementType() reflect.Type {
@@ -129,8 +129,8 @@ func (o AggregationOutput) AlignmentPeriod() pulumi.StringPtrOutput {
 }
 
 // The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
-func (o AggregationOutput) CrossSeriesReducer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Aggregation) *string { return v.CrossSeriesReducer }).(pulumi.StringPtrOutput)
+func (o AggregationOutput) CrossSeriesReducer() AggregationCrossSeriesReducerPtrOutput {
+	return o.ApplyT(func(v Aggregation) *AggregationCrossSeriesReducer { return v.CrossSeriesReducer }).(AggregationCrossSeriesReducerPtrOutput)
 }
 
 // The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If cross_series_reducer is not defined, this field is ignored.
@@ -139,8 +139,8 @@ func (o AggregationOutput) GroupByFields() pulumi.StringArrayOutput {
 }
 
 // An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
-func (o AggregationOutput) PerSeriesAligner() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Aggregation) *string { return v.PerSeriesAligner }).(pulumi.StringPtrOutput)
+func (o AggregationOutput) PerSeriesAligner() AggregationPerSeriesAlignerPtrOutput {
+	return o.ApplyT(func(v Aggregation) *AggregationPerSeriesAligner { return v.PerSeriesAligner }).(AggregationPerSeriesAlignerPtrOutput)
 }
 
 type AggregationPtrOutput struct{ *pulumi.OutputState }
@@ -172,13 +172,13 @@ func (o AggregationPtrOutput) AlignmentPeriod() pulumi.StringPtrOutput {
 }
 
 // The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
-func (o AggregationPtrOutput) CrossSeriesReducer() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Aggregation) *string {
+func (o AggregationPtrOutput) CrossSeriesReducer() AggregationCrossSeriesReducerPtrOutput {
+	return o.ApplyT(func(v *Aggregation) *AggregationCrossSeriesReducer {
 		if v == nil {
 			return nil
 		}
 		return v.CrossSeriesReducer
-	}).(pulumi.StringPtrOutput)
+	}).(AggregationCrossSeriesReducerPtrOutput)
 }
 
 // The set of fields to preserve when cross_series_reducer is specified. The group_by_fields determine how the time series are partitioned into subsets prior to applying the aggregation operation. Each subset contains time series that have the same value for each of the grouping fields. Each individual time series is a member of exactly one subset. The cross_series_reducer is applied to each subset of time series. It is not possible to reduce across different resource types, so this field implicitly contains resource.type. Fields not specified in group_by_fields are aggregated away. If group_by_fields is not specified and all the time series have the same resource type, then the time series are aggregated into a single output time series. If cross_series_reducer is not defined, this field is ignored.
@@ -192,13 +192,13 @@ func (o AggregationPtrOutput) GroupByFields() pulumi.StringArrayOutput {
 }
 
 // An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
-func (o AggregationPtrOutput) PerSeriesAligner() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Aggregation) *string {
+func (o AggregationPtrOutput) PerSeriesAligner() AggregationPerSeriesAlignerPtrOutput {
+	return o.ApplyT(func(v *Aggregation) *AggregationPerSeriesAligner {
 		if v == nil {
 			return nil
 		}
 		return v.PerSeriesAligner
-	}).(pulumi.StringPtrOutput)
+	}).(AggregationPerSeriesAlignerPtrOutput)
 }
 
 // Describes how to combine multiple time series to provide a different view of the data. Aggregation of time series is done in two steps. First, each time series in the set is aligned to the same time interval boundaries, then the set of time series is optionally reduced in number.Alignment consists of applying the per_series_aligner operation to each time series after its data has been divided into regular alignment_period time intervals. This process takes all of the data points in an alignment period, applies a mathematical transformation such as averaging, minimum, maximum, delta, etc., and converts them into a single data point per period.Reduction is when the aligned and transformed time series can optionally be combined, reducing the number of time series through similar mathematical transformations. Reduction involves applying a cross_series_reducer to all the time series, optionally sorting the time series into subsets with group_by_fields, and applying the reducer to each subset.The raw time series data can contain a huge amount of information from multiple sources. Alignment and reduction transforms this mass of data into a more manageable and representative collection of data, for example "the 95% latency across the average of all tasks in a cluster". This representative data can be more easily graphed and comprehended, and the individual time series data is still available for later drilldown. For more details, see Filtering and aggregation (https://cloud.google.com/monitoring/api/v3/aggregation).
@@ -477,7 +477,7 @@ type Axis struct {
 	// The label of the axis.
 	Label *string `pulumi:"label"`
 	// The axis scale. By default, a linear scale is used.
-	Scale *string `pulumi:"scale"`
+	Scale *AxisScale `pulumi:"scale"`
 }
 
 // AxisInput is an input type that accepts AxisArgs and AxisOutput values.
@@ -496,7 +496,7 @@ type AxisArgs struct {
 	// The label of the axis.
 	Label pulumi.StringPtrInput `pulumi:"label"`
 	// The axis scale. By default, a linear scale is used.
-	Scale *AxisScale `pulumi:"scale"`
+	Scale AxisScalePtrInput `pulumi:"scale"`
 }
 
 func (AxisArgs) ElementType() reflect.Type {
@@ -583,8 +583,8 @@ func (o AxisOutput) Label() pulumi.StringPtrOutput {
 }
 
 // The axis scale. By default, a linear scale is used.
-func (o AxisOutput) Scale() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Axis) *string { return v.Scale }).(pulumi.StringPtrOutput)
+func (o AxisOutput) Scale() AxisScalePtrOutput {
+	return o.ApplyT(func(v Axis) *AxisScale { return v.Scale }).(AxisScalePtrOutput)
 }
 
 type AxisPtrOutput struct{ *pulumi.OutputState }
@@ -616,13 +616,13 @@ func (o AxisPtrOutput) Label() pulumi.StringPtrOutput {
 }
 
 // The axis scale. By default, a linear scale is used.
-func (o AxisPtrOutput) Scale() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Axis) *string {
+func (o AxisPtrOutput) Scale() AxisScalePtrOutput {
+	return o.ApplyT(func(v *Axis) *AxisScale {
 		if v == nil {
 			return nil
 		}
 		return v.Scale
-	}).(pulumi.StringPtrOutput)
+	}).(AxisScalePtrOutput)
 }
 
 // A chart axis.
@@ -692,7 +692,7 @@ func (o AxisResponseOutput) Scale() pulumi.StringOutput {
 // Options to control visual rendering of a chart.
 type ChartOptions struct {
 	// The chart mode.
-	Mode *string `pulumi:"mode"`
+	Mode *ChartOptionsMode `pulumi:"mode"`
 }
 
 // ChartOptionsInput is an input type that accepts ChartOptionsArgs and ChartOptionsOutput values.
@@ -709,7 +709,7 @@ type ChartOptionsInput interface {
 // Options to control visual rendering of a chart.
 type ChartOptionsArgs struct {
 	// The chart mode.
-	Mode *ChartOptionsMode `pulumi:"mode"`
+	Mode ChartOptionsModePtrInput `pulumi:"mode"`
 }
 
 func (ChartOptionsArgs) ElementType() reflect.Type {
@@ -791,8 +791,8 @@ func (o ChartOptionsOutput) ToChartOptionsPtrOutputWithContext(ctx context.Conte
 }
 
 // The chart mode.
-func (o ChartOptionsOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ChartOptions) *string { return v.Mode }).(pulumi.StringPtrOutput)
+func (o ChartOptionsOutput) Mode() ChartOptionsModePtrOutput {
+	return o.ApplyT(func(v ChartOptions) *ChartOptionsMode { return v.Mode }).(ChartOptionsModePtrOutput)
 }
 
 type ChartOptionsPtrOutput struct{ *pulumi.OutputState }
@@ -814,13 +814,13 @@ func (o ChartOptionsPtrOutput) Elem() ChartOptionsOutput {
 }
 
 // The chart mode.
-func (o ChartOptionsPtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ChartOptions) *string {
+func (o ChartOptionsPtrOutput) Mode() ChartOptionsModePtrOutput {
+	return o.ApplyT(func(v *ChartOptions) *ChartOptionsMode {
 		if v == nil {
 			return nil
 		}
 		return v.Mode
-	}).(pulumi.StringPtrOutput)
+	}).(ChartOptionsModePtrOutput)
 }
 
 // Options to control visual rendering of a chart.
@@ -1371,7 +1371,7 @@ type DataSet struct {
 	// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
 	MinAlignmentPeriod *string `pulumi:"minAlignmentPeriod"`
 	// How this data should be plotted on the chart.
-	PlotType *string `pulumi:"plotType"`
+	PlotType *DataSetPlotType `pulumi:"plotType"`
 	// Fields for querying time series data from the Stackdriver metrics API.
 	TimeSeriesQuery TimeSeriesQuery `pulumi:"timeSeriesQuery"`
 }
@@ -1394,7 +1394,7 @@ type DataSetArgs struct {
 	// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum alignment period to use in a time series query For example, if the data is published once every 10 minutes, the min_alignment_period should be at least 10 minutes. It would not make sense to fetch and align data at one minute intervals.
 	MinAlignmentPeriod pulumi.StringPtrInput `pulumi:"minAlignmentPeriod"`
 	// How this data should be plotted on the chart.
-	PlotType *DataSetPlotType `pulumi:"plotType"`
+	PlotType DataSetPlotTypePtrInput `pulumi:"plotType"`
 	// Fields for querying time series data from the Stackdriver metrics API.
 	TimeSeriesQuery TimeSeriesQueryInput `pulumi:"timeSeriesQuery"`
 }
@@ -1462,8 +1462,8 @@ func (o DataSetOutput) MinAlignmentPeriod() pulumi.StringPtrOutput {
 }
 
 // How this data should be plotted on the chart.
-func (o DataSetOutput) PlotType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataSet) *string { return v.PlotType }).(pulumi.StringPtrOutput)
+func (o DataSetOutput) PlotType() DataSetPlotTypePtrOutput {
+	return o.ApplyT(func(v DataSet) *DataSetPlotType { return v.PlotType }).(DataSetPlotTypePtrOutput)
 }
 
 // Fields for querying time series data from the Stackdriver metrics API.
@@ -2611,11 +2611,11 @@ func (o MosaicLayoutResponsePtrOutput) Tiles() TileResponseArrayOutput {
 // Describes a ranking-based time series filter. Each input time series is ranked with an aligner. The filter will allow up to num_time_series time series to pass through it, selecting them based on the relative ranking.For example, if ranking_method is METHOD_MEAN,direction is BOTTOM, and num_time_series is 3, then the 3 times series with the lowest mean values will pass through the filter.
 type PickTimeSeriesFilter struct {
 	// How to use the ranking to select time series that pass through the filter.
-	Direction *string `pulumi:"direction"`
+	Direction *PickTimeSeriesFilterDirection `pulumi:"direction"`
 	// How many time series to allow to pass through the filter.
 	NumTimeSeries *int `pulumi:"numTimeSeries"`
 	// ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
-	RankingMethod *string `pulumi:"rankingMethod"`
+	RankingMethod *PickTimeSeriesFilterRankingMethod `pulumi:"rankingMethod"`
 }
 
 // PickTimeSeriesFilterInput is an input type that accepts PickTimeSeriesFilterArgs and PickTimeSeriesFilterOutput values.
@@ -2632,11 +2632,11 @@ type PickTimeSeriesFilterInput interface {
 // Describes a ranking-based time series filter. Each input time series is ranked with an aligner. The filter will allow up to num_time_series time series to pass through it, selecting them based on the relative ranking.For example, if ranking_method is METHOD_MEAN,direction is BOTTOM, and num_time_series is 3, then the 3 times series with the lowest mean values will pass through the filter.
 type PickTimeSeriesFilterArgs struct {
 	// How to use the ranking to select time series that pass through the filter.
-	Direction *PickTimeSeriesFilterDirection `pulumi:"direction"`
+	Direction PickTimeSeriesFilterDirectionPtrInput `pulumi:"direction"`
 	// How many time series to allow to pass through the filter.
 	NumTimeSeries pulumi.IntPtrInput `pulumi:"numTimeSeries"`
 	// ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
-	RankingMethod *PickTimeSeriesFilterRankingMethod `pulumi:"rankingMethod"`
+	RankingMethod PickTimeSeriesFilterRankingMethodPtrInput `pulumi:"rankingMethod"`
 }
 
 func (PickTimeSeriesFilterArgs) ElementType() reflect.Type {
@@ -2718,8 +2718,8 @@ func (o PickTimeSeriesFilterOutput) ToPickTimeSeriesFilterPtrOutputWithContext(c
 }
 
 // How to use the ranking to select time series that pass through the filter.
-func (o PickTimeSeriesFilterOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PickTimeSeriesFilter) *string { return v.Direction }).(pulumi.StringPtrOutput)
+func (o PickTimeSeriesFilterOutput) Direction() PickTimeSeriesFilterDirectionPtrOutput {
+	return o.ApplyT(func(v PickTimeSeriesFilter) *PickTimeSeriesFilterDirection { return v.Direction }).(PickTimeSeriesFilterDirectionPtrOutput)
 }
 
 // How many time series to allow to pass through the filter.
@@ -2728,8 +2728,8 @@ func (o PickTimeSeriesFilterOutput) NumTimeSeries() pulumi.IntPtrOutput {
 }
 
 // ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
-func (o PickTimeSeriesFilterOutput) RankingMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PickTimeSeriesFilter) *string { return v.RankingMethod }).(pulumi.StringPtrOutput)
+func (o PickTimeSeriesFilterOutput) RankingMethod() PickTimeSeriesFilterRankingMethodPtrOutput {
+	return o.ApplyT(func(v PickTimeSeriesFilter) *PickTimeSeriesFilterRankingMethod { return v.RankingMethod }).(PickTimeSeriesFilterRankingMethodPtrOutput)
 }
 
 type PickTimeSeriesFilterPtrOutput struct{ *pulumi.OutputState }
@@ -2751,13 +2751,13 @@ func (o PickTimeSeriesFilterPtrOutput) Elem() PickTimeSeriesFilterOutput {
 }
 
 // How to use the ranking to select time series that pass through the filter.
-func (o PickTimeSeriesFilterPtrOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PickTimeSeriesFilter) *string {
+func (o PickTimeSeriesFilterPtrOutput) Direction() PickTimeSeriesFilterDirectionPtrOutput {
+	return o.ApplyT(func(v *PickTimeSeriesFilter) *PickTimeSeriesFilterDirection {
 		if v == nil {
 			return nil
 		}
 		return v.Direction
-	}).(pulumi.StringPtrOutput)
+	}).(PickTimeSeriesFilterDirectionPtrOutput)
 }
 
 // How many time series to allow to pass through the filter.
@@ -2771,13 +2771,13 @@ func (o PickTimeSeriesFilterPtrOutput) NumTimeSeries() pulumi.IntPtrOutput {
 }
 
 // ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
-func (o PickTimeSeriesFilterPtrOutput) RankingMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PickTimeSeriesFilter) *string {
+func (o PickTimeSeriesFilterPtrOutput) RankingMethod() PickTimeSeriesFilterRankingMethodPtrOutput {
+	return o.ApplyT(func(v *PickTimeSeriesFilter) *PickTimeSeriesFilterRankingMethod {
 		if v == nil {
 			return nil
 		}
 		return v.RankingMethod
-	}).(pulumi.StringPtrOutput)
+	}).(PickTimeSeriesFilterRankingMethodPtrOutput)
 }
 
 // Describes a ranking-based time series filter. Each input time series is ranked with an aligner. The filter will allow up to num_time_series time series to pass through it, selecting them based on the relative ranking.For example, if ranking_method is METHOD_MEAN,direction is BOTTOM, and num_time_series is 3, then the 3 times series with the lowest mean values will pass through the filter.
@@ -3834,7 +3834,7 @@ type SparkChartView struct {
 	// The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.
 	MinAlignmentPeriod *string `pulumi:"minAlignmentPeriod"`
 	// The type of sparkchart to show in this chartView.
-	SparkChartType string `pulumi:"sparkChartType"`
+	SparkChartType SparkChartViewSparkChartType `pulumi:"sparkChartType"`
 }
 
 // SparkChartViewInput is an input type that accepts SparkChartViewArgs and SparkChartViewOutput values.
@@ -3853,7 +3853,7 @@ type SparkChartViewArgs struct {
 	// The lower bound on data point frequency in the chart implemented by specifying the minimum alignment period to use in a time series query. For example, if the data is published once every 10 minutes it would not make sense to fetch and align data at one minute intervals. This field is optional and exists only as a hint.
 	MinAlignmentPeriod pulumi.StringPtrInput `pulumi:"minAlignmentPeriod"`
 	// The type of sparkchart to show in this chartView.
-	SparkChartType SparkChartViewSparkChartType `pulumi:"sparkChartType"`
+	SparkChartType SparkChartViewSparkChartTypeInput `pulumi:"sparkChartType"`
 }
 
 func (SparkChartViewArgs) ElementType() reflect.Type {
@@ -3940,8 +3940,8 @@ func (o SparkChartViewOutput) MinAlignmentPeriod() pulumi.StringPtrOutput {
 }
 
 // The type of sparkchart to show in this chartView.
-func (o SparkChartViewOutput) SparkChartType() pulumi.StringOutput {
-	return o.ApplyT(func(v SparkChartView) string { return v.SparkChartType }).(pulumi.StringOutput)
+func (o SparkChartViewOutput) SparkChartType() SparkChartViewSparkChartTypeOutput {
+	return o.ApplyT(func(v SparkChartView) SparkChartViewSparkChartType { return v.SparkChartType }).(SparkChartViewSparkChartTypeOutput)
 }
 
 type SparkChartViewPtrOutput struct{ *pulumi.OutputState }
@@ -3973,13 +3973,13 @@ func (o SparkChartViewPtrOutput) MinAlignmentPeriod() pulumi.StringPtrOutput {
 }
 
 // The type of sparkchart to show in this chartView.
-func (o SparkChartViewPtrOutput) SparkChartType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SparkChartView) *string {
+func (o SparkChartViewPtrOutput) SparkChartType() SparkChartViewSparkChartTypePtrOutput {
+	return o.ApplyT(func(v *SparkChartView) *SparkChartViewSparkChartType {
 		if v == nil {
 			return nil
 		}
 		return &v.SparkChartType
-	}).(pulumi.StringPtrOutput)
+	}).(SparkChartViewSparkChartTypePtrOutput)
 }
 
 // A sparkChart is a small chart suitable for inclusion in a table-cell or inline in text. This message contains the configuration for a sparkChart to show up on a Scorecard, showing recent trends of the scorecard's timeseries.
@@ -4051,7 +4051,7 @@ type Text struct {
 	// The text content to be displayed.
 	Content *string `pulumi:"content"`
 	// How the text content is formatted.
-	Format *string `pulumi:"format"`
+	Format *TextFormat `pulumi:"format"`
 }
 
 // TextInput is an input type that accepts TextArgs and TextOutput values.
@@ -4070,7 +4070,7 @@ type TextArgs struct {
 	// The text content to be displayed.
 	Content pulumi.StringPtrInput `pulumi:"content"`
 	// How the text content is formatted.
-	Format *TextFormat `pulumi:"format"`
+	Format TextFormatPtrInput `pulumi:"format"`
 }
 
 func (TextArgs) ElementType() reflect.Type {
@@ -4157,8 +4157,8 @@ func (o TextOutput) Content() pulumi.StringPtrOutput {
 }
 
 // How the text content is formatted.
-func (o TextOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Text) *string { return v.Format }).(pulumi.StringPtrOutput)
+func (o TextOutput) Format() TextFormatPtrOutput {
+	return o.ApplyT(func(v Text) *TextFormat { return v.Format }).(TextFormatPtrOutput)
 }
 
 type TextPtrOutput struct{ *pulumi.OutputState }
@@ -4190,13 +4190,13 @@ func (o TextPtrOutput) Content() pulumi.StringPtrOutput {
 }
 
 // How the text content is formatted.
-func (o TextPtrOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Text) *string {
+func (o TextPtrOutput) Format() TextFormatPtrOutput {
+	return o.ApplyT(func(v *Text) *TextFormat {
 		if v == nil {
 			return nil
 		}
 		return v.Format
-	}).(pulumi.StringPtrOutput)
+	}).(TextFormatPtrOutput)
 }
 
 // A widget that displays textual content.
@@ -4266,9 +4266,9 @@ func (o TextResponseOutput) Format() pulumi.StringOutput {
 // Defines a threshold for categorizing time series values.
 type Threshold struct {
 	// The state color for this threshold. Color is not allowed in a XyChart.
-	Color *string `pulumi:"color"`
+	Color *ThresholdColor `pulumi:"color"`
 	// The direction for the current threshold. Direction is not allowed in a XyChart.
-	Direction *string `pulumi:"direction"`
+	Direction *ThresholdDirection `pulumi:"direction"`
 	// A label for the threshold.
 	Label *string `pulumi:"label"`
 	// The value of the threshold. The value should be defined in the native scale of the metric.
@@ -4289,9 +4289,9 @@ type ThresholdInput interface {
 // Defines a threshold for categorizing time series values.
 type ThresholdArgs struct {
 	// The state color for this threshold. Color is not allowed in a XyChart.
-	Color *ThresholdColor `pulumi:"color"`
+	Color ThresholdColorPtrInput `pulumi:"color"`
 	// The direction for the current threshold. Direction is not allowed in a XyChart.
-	Direction *ThresholdDirection `pulumi:"direction"`
+	Direction ThresholdDirectionPtrInput `pulumi:"direction"`
 	// A label for the threshold.
 	Label pulumi.StringPtrInput `pulumi:"label"`
 	// The value of the threshold. The value should be defined in the native scale of the metric.
@@ -4351,13 +4351,13 @@ func (o ThresholdOutput) ToThresholdOutputWithContext(ctx context.Context) Thres
 }
 
 // The state color for this threshold. Color is not allowed in a XyChart.
-func (o ThresholdOutput) Color() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Threshold) *string { return v.Color }).(pulumi.StringPtrOutput)
+func (o ThresholdOutput) Color() ThresholdColorPtrOutput {
+	return o.ApplyT(func(v Threshold) *ThresholdColor { return v.Color }).(ThresholdColorPtrOutput)
 }
 
 // The direction for the current threshold. Direction is not allowed in a XyChart.
-func (o ThresholdOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Threshold) *string { return v.Direction }).(pulumi.StringPtrOutput)
+func (o ThresholdOutput) Direction() ThresholdDirectionPtrOutput {
+	return o.ApplyT(func(v Threshold) *ThresholdDirection { return v.Direction }).(ThresholdDirectionPtrOutput)
 }
 
 // A label for the threshold.

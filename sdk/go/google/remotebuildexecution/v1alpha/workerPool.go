@@ -64,33 +64,9 @@ func GetWorkerPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkerPool resources.
 type workerPoolState struct {
-	// The autoscale policy to apply on a pool.
-	Autoscale *GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse `pulumi:"autoscale"`
-	// Channel specifies the release channel of the pool.
-	Channel *string `pulumi:"channel"`
-	// WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
-	Name *string `pulumi:"name"`
-	// State of the worker pool.
-	State *string `pulumi:"state"`
-	// Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
-	WorkerConfig *GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponse `pulumi:"workerConfig"`
-	// The desired number of workers in the worker pool. Must be a value between 0 and 15000.
-	WorkerCount *string `pulumi:"workerCount"`
 }
 
 type WorkerPoolState struct {
-	// The autoscale policy to apply on a pool.
-	Autoscale GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponsePtrInput
-	// Channel specifies the release channel of the pool.
-	Channel pulumi.StringPtrInput
-	// WorkerPool resource name formatted as: `projects/[PROJECT_ID]/instances/[INSTANCE_ID]/workerpools/[POOL_ID]`. name should not be populated when creating a worker pool since it is provided in the `poolId` field.
-	Name pulumi.StringPtrInput
-	// State of the worker pool.
-	State pulumi.StringPtrInput
-	// Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
-	WorkerConfig GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigResponsePtrInput
-	// The desired number of workers in the worker pool. Must be a value between 0 and 15000.
-	WorkerCount pulumi.StringPtrInput
 }
 
 func (WorkerPoolState) ElementType() reflect.Type {

@@ -809,7 +809,7 @@ type AndroidInstrumentationTest struct {
 	// The java package for the application under test. The default value is determined by examining the application's manifest.
 	AppPackageId *string `pulumi:"appPackageId"`
 	// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
-	OrchestratorOption *string `pulumi:"orchestratorOption"`
+	OrchestratorOption *AndroidInstrumentationTestOrchestratorOption `pulumi:"orchestratorOption"`
 	// The option to run tests in multiple shards in parallel.
 	ShardingOption *ShardingOption `pulumi:"shardingOption"`
 	// The APK containing the test code to be executed.
@@ -842,7 +842,7 @@ type AndroidInstrumentationTestArgs struct {
 	// The java package for the application under test. The default value is determined by examining the application's manifest.
 	AppPackageId pulumi.StringPtrInput `pulumi:"appPackageId"`
 	// The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
-	OrchestratorOption *AndroidInstrumentationTestOrchestratorOption `pulumi:"orchestratorOption"`
+	OrchestratorOption AndroidInstrumentationTestOrchestratorOptionPtrInput `pulumi:"orchestratorOption"`
 	// The option to run tests in multiple shards in parallel.
 	ShardingOption ShardingOptionPtrInput `pulumi:"shardingOption"`
 	// The APK containing the test code to be executed.
@@ -949,8 +949,10 @@ func (o AndroidInstrumentationTestOutput) AppPackageId() pulumi.StringPtrOutput 
 }
 
 // The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
-func (o AndroidInstrumentationTestOutput) OrchestratorOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AndroidInstrumentationTest) *string { return v.OrchestratorOption }).(pulumi.StringPtrOutput)
+func (o AndroidInstrumentationTestOutput) OrchestratorOption() AndroidInstrumentationTestOrchestratorOptionPtrOutput {
+	return o.ApplyT(func(v AndroidInstrumentationTest) *AndroidInstrumentationTestOrchestratorOption {
+		return v.OrchestratorOption
+	}).(AndroidInstrumentationTestOrchestratorOptionPtrOutput)
 }
 
 // The option to run tests in multiple shards in parallel.
@@ -1027,13 +1029,13 @@ func (o AndroidInstrumentationTestPtrOutput) AppPackageId() pulumi.StringPtrOutp
 }
 
 // The option of whether running each test within its own invocation of instrumentation with Android Test Orchestrator or not. ** Orchestrator is only compatible with AndroidJUnitRunner version 1.0 or higher! ** Orchestrator offers the following benefits: - No shared state - Crashes are isolated - Logs are scoped per test See for more information about Android Test Orchestrator. If not set, the test will be run without the orchestrator.
-func (o AndroidInstrumentationTestPtrOutput) OrchestratorOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AndroidInstrumentationTest) *string {
+func (o AndroidInstrumentationTestPtrOutput) OrchestratorOption() AndroidInstrumentationTestOrchestratorOptionPtrOutput {
+	return o.ApplyT(func(v *AndroidInstrumentationTest) *AndroidInstrumentationTestOrchestratorOption {
 		if v == nil {
 			return nil
 		}
 		return v.OrchestratorOption
-	}).(pulumi.StringPtrOutput)
+	}).(AndroidInstrumentationTestOrchestratorOptionPtrOutput)
 }
 
 // The option to run tests in multiple shards in parallel.
@@ -8532,7 +8534,7 @@ func (o ResultStorageResponsePtrOutput) ToolResultsHistory() ToolResultsHistoryR
 // Directs Robo to interact with a specific UI element if it is encountered during the crawl. Currently, Robo can perform text entry or element click.
 type RoboDirective struct {
 	// The type of action that Robo should perform on the specified element.
-	ActionType string `pulumi:"actionType"`
+	ActionType RoboDirectiveActionType `pulumi:"actionType"`
 	// The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name.
 	InputText *string `pulumi:"inputText"`
 	// The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
@@ -8553,7 +8555,7 @@ type RoboDirectiveInput interface {
 // Directs Robo to interact with a specific UI element if it is encountered during the crawl. Currently, Robo can perform text entry or element click.
 type RoboDirectiveArgs struct {
 	// The type of action that Robo should perform on the specified element.
-	ActionType RoboDirectiveActionType `pulumi:"actionType"`
+	ActionType RoboDirectiveActionTypeInput `pulumi:"actionType"`
 	// The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name.
 	InputText pulumi.StringPtrInput `pulumi:"inputText"`
 	// The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
@@ -8613,8 +8615,8 @@ func (o RoboDirectiveOutput) ToRoboDirectiveOutputWithContext(ctx context.Contex
 }
 
 // The type of action that Robo should perform on the specified element.
-func (o RoboDirectiveOutput) ActionType() pulumi.StringOutput {
-	return o.ApplyT(func(v RoboDirective) string { return v.ActionType }).(pulumi.StringOutput)
+func (o RoboDirectiveOutput) ActionType() RoboDirectiveActionTypeOutput {
+	return o.ApplyT(func(v RoboDirective) RoboDirectiveActionType { return v.ActionType }).(RoboDirectiveActionTypeOutput)
 }
 
 // The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name.

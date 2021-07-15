@@ -233,7 +233,7 @@ type AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *string `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
@@ -252,7 +252,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *AuditLogConfigLogType `pulumi:"logType"`
+	LogType AuditLogConfigLogTypePtrInput `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -313,8 +313,8 @@ func (o AuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
 }
 
 // The log type that this config enables.
-func (o AuditLogConfigOutput) LogType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AuditLogConfig) *string { return v.LogType }).(pulumi.StringPtrOutput)
+func (o AuditLogConfigOutput) LogType() AuditLogConfigLogTypePtrOutput {
+	return o.ApplyT(func(v AuditLogConfig) *AuditLogConfigLogType { return v.LogType }).(AuditLogConfigLogTypePtrOutput)
 }
 
 type AuditLogConfigArrayOutput struct{ *pulumi.OutputState }
@@ -1991,7 +1991,7 @@ func (o FeatureStateResponsePtrOutput) UpdateTime() pulumi.StringPtrOutput {
 // **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
 type MultiClusterIngressFeatureSpec struct {
 	// Customer's billing structure
-	Billing *string `pulumi:"billing"`
+	Billing *MultiClusterIngressFeatureSpecBilling `pulumi:"billing"`
 	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
 	ConfigMembership *string `pulumi:"configMembership"`
 }
@@ -2010,7 +2010,7 @@ type MultiClusterIngressFeatureSpecInput interface {
 // **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
 type MultiClusterIngressFeatureSpecArgs struct {
 	// Customer's billing structure
-	Billing *MultiClusterIngressFeatureSpecBilling `pulumi:"billing"`
+	Billing MultiClusterIngressFeatureSpecBillingPtrInput `pulumi:"billing"`
 	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
 	ConfigMembership pulumi.StringPtrInput `pulumi:"configMembership"`
 }
@@ -2094,8 +2094,8 @@ func (o MultiClusterIngressFeatureSpecOutput) ToMultiClusterIngressFeatureSpecPt
 }
 
 // Customer's billing structure
-func (o MultiClusterIngressFeatureSpecOutput) Billing() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MultiClusterIngressFeatureSpec) *string { return v.Billing }).(pulumi.StringPtrOutput)
+func (o MultiClusterIngressFeatureSpecOutput) Billing() MultiClusterIngressFeatureSpecBillingPtrOutput {
+	return o.ApplyT(func(v MultiClusterIngressFeatureSpec) *MultiClusterIngressFeatureSpecBilling { return v.Billing }).(MultiClusterIngressFeatureSpecBillingPtrOutput)
 }
 
 // Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
@@ -2122,13 +2122,13 @@ func (o MultiClusterIngressFeatureSpecPtrOutput) Elem() MultiClusterIngressFeatu
 }
 
 // Customer's billing structure
-func (o MultiClusterIngressFeatureSpecPtrOutput) Billing() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MultiClusterIngressFeatureSpec) *string {
+func (o MultiClusterIngressFeatureSpecPtrOutput) Billing() MultiClusterIngressFeatureSpecBillingPtrOutput {
+	return o.ApplyT(func(v *MultiClusterIngressFeatureSpec) *MultiClusterIngressFeatureSpecBilling {
 		if v == nil {
 			return nil
 		}
 		return v.Billing
-	}).(pulumi.StringPtrOutput)
+	}).(MultiClusterIngressFeatureSpecBillingPtrOutput)
 }
 
 // Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`

@@ -11,7 +11,7 @@ import (
 )
 
 // The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
-type AggregationCrossSeriesReducer pulumi.String
+type AggregationCrossSeriesReducer string
 
 const (
 	// No cross-time series reduction. The output of the Aligner is returned.
@@ -45,7 +45,23 @@ const (
 )
 
 func (AggregationCrossSeriesReducer) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*AggregationCrossSeriesReducer)(nil)).Elem()
+}
+
+func (e AggregationCrossSeriesReducer) ToAggregationCrossSeriesReducerOutput() AggregationCrossSeriesReducerOutput {
+	return pulumi.ToOutput(e).(AggregationCrossSeriesReducerOutput)
+}
+
+func (e AggregationCrossSeriesReducer) ToAggregationCrossSeriesReducerOutputWithContext(ctx context.Context) AggregationCrossSeriesReducerOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AggregationCrossSeriesReducerOutput)
+}
+
+func (e AggregationCrossSeriesReducer) ToAggregationCrossSeriesReducerPtrOutput() AggregationCrossSeriesReducerPtrOutput {
+	return e.ToAggregationCrossSeriesReducerPtrOutputWithContext(context.Background())
+}
+
+func (e AggregationCrossSeriesReducer) ToAggregationCrossSeriesReducerPtrOutputWithContext(ctx context.Context) AggregationCrossSeriesReducerPtrOutput {
+	return AggregationCrossSeriesReducer(e).ToAggregationCrossSeriesReducerOutputWithContext(ctx).ToAggregationCrossSeriesReducerPtrOutputWithContext(ctx)
 }
 
 func (e AggregationCrossSeriesReducer) ToStringOutput() pulumi.StringOutput {
@@ -64,8 +80,129 @@ func (e AggregationCrossSeriesReducer) ToStringPtrOutputWithContext(ctx context.
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type AggregationCrossSeriesReducerOutput struct{ *pulumi.OutputState }
+
+func (AggregationCrossSeriesReducerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationCrossSeriesReducer)(nil)).Elem()
+}
+
+func (o AggregationCrossSeriesReducerOutput) ToAggregationCrossSeriesReducerOutput() AggregationCrossSeriesReducerOutput {
+	return o
+}
+
+func (o AggregationCrossSeriesReducerOutput) ToAggregationCrossSeriesReducerOutputWithContext(ctx context.Context) AggregationCrossSeriesReducerOutput {
+	return o
+}
+
+func (o AggregationCrossSeriesReducerOutput) ToAggregationCrossSeriesReducerPtrOutput() AggregationCrossSeriesReducerPtrOutput {
+	return o.ToAggregationCrossSeriesReducerPtrOutputWithContext(context.Background())
+}
+
+func (o AggregationCrossSeriesReducerOutput) ToAggregationCrossSeriesReducerPtrOutputWithContext(ctx context.Context) AggregationCrossSeriesReducerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AggregationCrossSeriesReducer) *AggregationCrossSeriesReducer {
+		return &v
+	}).(AggregationCrossSeriesReducerPtrOutput)
+}
+
+func (o AggregationCrossSeriesReducerOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AggregationCrossSeriesReducerOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AggregationCrossSeriesReducer) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AggregationCrossSeriesReducerOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AggregationCrossSeriesReducerOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AggregationCrossSeriesReducer) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AggregationCrossSeriesReducerPtrOutput struct{ *pulumi.OutputState }
+
+func (AggregationCrossSeriesReducerPtrOutput) ElementType() reflect.Type {
+	return aggregationCrossSeriesReducerPtrType
+}
+
+func (o AggregationCrossSeriesReducerPtrOutput) ToAggregationCrossSeriesReducerPtrOutput() AggregationCrossSeriesReducerPtrOutput {
+	return o
+}
+
+func (o AggregationCrossSeriesReducerPtrOutput) ToAggregationCrossSeriesReducerPtrOutputWithContext(ctx context.Context) AggregationCrossSeriesReducerPtrOutput {
+	return o
+}
+
+func (o AggregationCrossSeriesReducerPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AggregationCrossSeriesReducerPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AggregationCrossSeriesReducer) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AggregationCrossSeriesReducerPtrOutput) Elem() AggregationCrossSeriesReducerOutput {
+	return o.ApplyT(func(v *AggregationCrossSeriesReducer) AggregationCrossSeriesReducer {
+		var ret AggregationCrossSeriesReducer
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(AggregationCrossSeriesReducerOutput)
+}
+
+// AggregationCrossSeriesReducerInput is an input type that accepts AggregationCrossSeriesReducerArgs and AggregationCrossSeriesReducerOutput values.
+// You can construct a concrete instance of `AggregationCrossSeriesReducerInput` via:
+//
+//          AggregationCrossSeriesReducerArgs{...}
+type AggregationCrossSeriesReducerInput interface {
+	pulumi.Input
+
+	ToAggregationCrossSeriesReducerOutput() AggregationCrossSeriesReducerOutput
+	ToAggregationCrossSeriesReducerOutputWithContext(context.Context) AggregationCrossSeriesReducerOutput
+}
+
+var aggregationCrossSeriesReducerPtrType = reflect.TypeOf((**AggregationCrossSeriesReducer)(nil)).Elem()
+
+type AggregationCrossSeriesReducerPtrInput interface {
+	pulumi.Input
+
+	ToAggregationCrossSeriesReducerPtrOutput() AggregationCrossSeriesReducerPtrOutput
+	ToAggregationCrossSeriesReducerPtrOutputWithContext(context.Context) AggregationCrossSeriesReducerPtrOutput
+}
+
+type aggregationCrossSeriesReducerPtr string
+
+func AggregationCrossSeriesReducerPtr(v string) AggregationCrossSeriesReducerPtrInput {
+	return (*aggregationCrossSeriesReducerPtr)(&v)
+}
+
+func (*aggregationCrossSeriesReducerPtr) ElementType() reflect.Type {
+	return aggregationCrossSeriesReducerPtrType
+}
+
+func (in *aggregationCrossSeriesReducerPtr) ToAggregationCrossSeriesReducerPtrOutput() AggregationCrossSeriesReducerPtrOutput {
+	return pulumi.ToOutput(in).(AggregationCrossSeriesReducerPtrOutput)
+}
+
+func (in *aggregationCrossSeriesReducerPtr) ToAggregationCrossSeriesReducerPtrOutputWithContext(ctx context.Context) AggregationCrossSeriesReducerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AggregationCrossSeriesReducerPtrOutput)
+}
+
 // An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
-type AggregationPerSeriesAligner pulumi.String
+type AggregationPerSeriesAligner string
 
 const (
 	// No alignment. Raw data is returned. Not valid if cross-series reduction is requested. The value_type of the result is the same as the value_type of the input.
@@ -109,7 +246,23 @@ const (
 )
 
 func (AggregationPerSeriesAligner) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*AggregationPerSeriesAligner)(nil)).Elem()
+}
+
+func (e AggregationPerSeriesAligner) ToAggregationPerSeriesAlignerOutput() AggregationPerSeriesAlignerOutput {
+	return pulumi.ToOutput(e).(AggregationPerSeriesAlignerOutput)
+}
+
+func (e AggregationPerSeriesAligner) ToAggregationPerSeriesAlignerOutputWithContext(ctx context.Context) AggregationPerSeriesAlignerOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AggregationPerSeriesAlignerOutput)
+}
+
+func (e AggregationPerSeriesAligner) ToAggregationPerSeriesAlignerPtrOutput() AggregationPerSeriesAlignerPtrOutput {
+	return e.ToAggregationPerSeriesAlignerPtrOutputWithContext(context.Background())
+}
+
+func (e AggregationPerSeriesAligner) ToAggregationPerSeriesAlignerPtrOutputWithContext(ctx context.Context) AggregationPerSeriesAlignerPtrOutput {
+	return AggregationPerSeriesAligner(e).ToAggregationPerSeriesAlignerOutputWithContext(ctx).ToAggregationPerSeriesAlignerPtrOutputWithContext(ctx)
 }
 
 func (e AggregationPerSeriesAligner) ToStringOutput() pulumi.StringOutput {
@@ -128,8 +281,129 @@ func (e AggregationPerSeriesAligner) ToStringPtrOutputWithContext(ctx context.Co
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type AggregationPerSeriesAlignerOutput struct{ *pulumi.OutputState }
+
+func (AggregationPerSeriesAlignerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationPerSeriesAligner)(nil)).Elem()
+}
+
+func (o AggregationPerSeriesAlignerOutput) ToAggregationPerSeriesAlignerOutput() AggregationPerSeriesAlignerOutput {
+	return o
+}
+
+func (o AggregationPerSeriesAlignerOutput) ToAggregationPerSeriesAlignerOutputWithContext(ctx context.Context) AggregationPerSeriesAlignerOutput {
+	return o
+}
+
+func (o AggregationPerSeriesAlignerOutput) ToAggregationPerSeriesAlignerPtrOutput() AggregationPerSeriesAlignerPtrOutput {
+	return o.ToAggregationPerSeriesAlignerPtrOutputWithContext(context.Background())
+}
+
+func (o AggregationPerSeriesAlignerOutput) ToAggregationPerSeriesAlignerPtrOutputWithContext(ctx context.Context) AggregationPerSeriesAlignerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AggregationPerSeriesAligner) *AggregationPerSeriesAligner {
+		return &v
+	}).(AggregationPerSeriesAlignerPtrOutput)
+}
+
+func (o AggregationPerSeriesAlignerOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AggregationPerSeriesAlignerOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AggregationPerSeriesAligner) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AggregationPerSeriesAlignerOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AggregationPerSeriesAlignerOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AggregationPerSeriesAligner) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AggregationPerSeriesAlignerPtrOutput struct{ *pulumi.OutputState }
+
+func (AggregationPerSeriesAlignerPtrOutput) ElementType() reflect.Type {
+	return aggregationPerSeriesAlignerPtrType
+}
+
+func (o AggregationPerSeriesAlignerPtrOutput) ToAggregationPerSeriesAlignerPtrOutput() AggregationPerSeriesAlignerPtrOutput {
+	return o
+}
+
+func (o AggregationPerSeriesAlignerPtrOutput) ToAggregationPerSeriesAlignerPtrOutputWithContext(ctx context.Context) AggregationPerSeriesAlignerPtrOutput {
+	return o
+}
+
+func (o AggregationPerSeriesAlignerPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AggregationPerSeriesAlignerPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AggregationPerSeriesAligner) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AggregationPerSeriesAlignerPtrOutput) Elem() AggregationPerSeriesAlignerOutput {
+	return o.ApplyT(func(v *AggregationPerSeriesAligner) AggregationPerSeriesAligner {
+		var ret AggregationPerSeriesAligner
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(AggregationPerSeriesAlignerOutput)
+}
+
+// AggregationPerSeriesAlignerInput is an input type that accepts AggregationPerSeriesAlignerArgs and AggregationPerSeriesAlignerOutput values.
+// You can construct a concrete instance of `AggregationPerSeriesAlignerInput` via:
+//
+//          AggregationPerSeriesAlignerArgs{...}
+type AggregationPerSeriesAlignerInput interface {
+	pulumi.Input
+
+	ToAggregationPerSeriesAlignerOutput() AggregationPerSeriesAlignerOutput
+	ToAggregationPerSeriesAlignerOutputWithContext(context.Context) AggregationPerSeriesAlignerOutput
+}
+
+var aggregationPerSeriesAlignerPtrType = reflect.TypeOf((**AggregationPerSeriesAligner)(nil)).Elem()
+
+type AggregationPerSeriesAlignerPtrInput interface {
+	pulumi.Input
+
+	ToAggregationPerSeriesAlignerPtrOutput() AggregationPerSeriesAlignerPtrOutput
+	ToAggregationPerSeriesAlignerPtrOutputWithContext(context.Context) AggregationPerSeriesAlignerPtrOutput
+}
+
+type aggregationPerSeriesAlignerPtr string
+
+func AggregationPerSeriesAlignerPtr(v string) AggregationPerSeriesAlignerPtrInput {
+	return (*aggregationPerSeriesAlignerPtr)(&v)
+}
+
+func (*aggregationPerSeriesAlignerPtr) ElementType() reflect.Type {
+	return aggregationPerSeriesAlignerPtrType
+}
+
+func (in *aggregationPerSeriesAlignerPtr) ToAggregationPerSeriesAlignerPtrOutput() AggregationPerSeriesAlignerPtrOutput {
+	return pulumi.ToOutput(in).(AggregationPerSeriesAlignerPtrOutput)
+}
+
+func (in *aggregationPerSeriesAlignerPtr) ToAggregationPerSeriesAlignerPtrOutputWithContext(ctx context.Context) AggregationPerSeriesAlignerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AggregationPerSeriesAlignerPtrOutput)
+}
+
 // The axis scale. By default, a linear scale is used.
-type AxisScale pulumi.String
+type AxisScale string
 
 const (
 	// Scale is unspecified. The view will default to LINEAR.
@@ -141,7 +415,23 @@ const (
 )
 
 func (AxisScale) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*AxisScale)(nil)).Elem()
+}
+
+func (e AxisScale) ToAxisScaleOutput() AxisScaleOutput {
+	return pulumi.ToOutput(e).(AxisScaleOutput)
+}
+
+func (e AxisScale) ToAxisScaleOutputWithContext(ctx context.Context) AxisScaleOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AxisScaleOutput)
+}
+
+func (e AxisScale) ToAxisScalePtrOutput() AxisScalePtrOutput {
+	return e.ToAxisScalePtrOutputWithContext(context.Background())
+}
+
+func (e AxisScale) ToAxisScalePtrOutputWithContext(ctx context.Context) AxisScalePtrOutput {
+	return AxisScale(e).ToAxisScaleOutputWithContext(ctx).ToAxisScalePtrOutputWithContext(ctx)
 }
 
 func (e AxisScale) ToStringOutput() pulumi.StringOutput {
@@ -160,8 +450,129 @@ func (e AxisScale) ToStringPtrOutputWithContext(ctx context.Context) pulumi.Stri
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type AxisScaleOutput struct{ *pulumi.OutputState }
+
+func (AxisScaleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AxisScale)(nil)).Elem()
+}
+
+func (o AxisScaleOutput) ToAxisScaleOutput() AxisScaleOutput {
+	return o
+}
+
+func (o AxisScaleOutput) ToAxisScaleOutputWithContext(ctx context.Context) AxisScaleOutput {
+	return o
+}
+
+func (o AxisScaleOutput) ToAxisScalePtrOutput() AxisScalePtrOutput {
+	return o.ToAxisScalePtrOutputWithContext(context.Background())
+}
+
+func (o AxisScaleOutput) ToAxisScalePtrOutputWithContext(ctx context.Context) AxisScalePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AxisScale) *AxisScale {
+		return &v
+	}).(AxisScalePtrOutput)
+}
+
+func (o AxisScaleOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AxisScaleOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AxisScale) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AxisScaleOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AxisScaleOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AxisScale) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AxisScalePtrOutput struct{ *pulumi.OutputState }
+
+func (AxisScalePtrOutput) ElementType() reflect.Type {
+	return axisScalePtrType
+}
+
+func (o AxisScalePtrOutput) ToAxisScalePtrOutput() AxisScalePtrOutput {
+	return o
+}
+
+func (o AxisScalePtrOutput) ToAxisScalePtrOutputWithContext(ctx context.Context) AxisScalePtrOutput {
+	return o
+}
+
+func (o AxisScalePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AxisScalePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AxisScale) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AxisScalePtrOutput) Elem() AxisScaleOutput {
+	return o.ApplyT(func(v *AxisScale) AxisScale {
+		var ret AxisScale
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(AxisScaleOutput)
+}
+
+// AxisScaleInput is an input type that accepts AxisScaleArgs and AxisScaleOutput values.
+// You can construct a concrete instance of `AxisScaleInput` via:
+//
+//          AxisScaleArgs{...}
+type AxisScaleInput interface {
+	pulumi.Input
+
+	ToAxisScaleOutput() AxisScaleOutput
+	ToAxisScaleOutputWithContext(context.Context) AxisScaleOutput
+}
+
+var axisScalePtrType = reflect.TypeOf((**AxisScale)(nil)).Elem()
+
+type AxisScalePtrInput interface {
+	pulumi.Input
+
+	ToAxisScalePtrOutput() AxisScalePtrOutput
+	ToAxisScalePtrOutputWithContext(context.Context) AxisScalePtrOutput
+}
+
+type axisScalePtr string
+
+func AxisScalePtr(v string) AxisScalePtrInput {
+	return (*axisScalePtr)(&v)
+}
+
+func (*axisScalePtr) ElementType() reflect.Type {
+	return axisScalePtrType
+}
+
+func (in *axisScalePtr) ToAxisScalePtrOutput() AxisScalePtrOutput {
+	return pulumi.ToOutput(in).(AxisScalePtrOutput)
+}
+
+func (in *axisScalePtr) ToAxisScalePtrOutputWithContext(ctx context.Context) AxisScalePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AxisScalePtrOutput)
+}
+
 // The chart mode.
-type ChartOptionsMode pulumi.String
+type ChartOptionsMode string
 
 const (
 	// Mode is unspecified. The view will default to COLOR.
@@ -175,7 +586,23 @@ const (
 )
 
 func (ChartOptionsMode) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*ChartOptionsMode)(nil)).Elem()
+}
+
+func (e ChartOptionsMode) ToChartOptionsModeOutput() ChartOptionsModeOutput {
+	return pulumi.ToOutput(e).(ChartOptionsModeOutput)
+}
+
+func (e ChartOptionsMode) ToChartOptionsModeOutputWithContext(ctx context.Context) ChartOptionsModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ChartOptionsModeOutput)
+}
+
+func (e ChartOptionsMode) ToChartOptionsModePtrOutput() ChartOptionsModePtrOutput {
+	return e.ToChartOptionsModePtrOutputWithContext(context.Background())
+}
+
+func (e ChartOptionsMode) ToChartOptionsModePtrOutputWithContext(ctx context.Context) ChartOptionsModePtrOutput {
+	return ChartOptionsMode(e).ToChartOptionsModeOutputWithContext(ctx).ToChartOptionsModePtrOutputWithContext(ctx)
 }
 
 func (e ChartOptionsMode) ToStringOutput() pulumi.StringOutput {
@@ -194,8 +621,129 @@ func (e ChartOptionsMode) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type ChartOptionsModeOutput struct{ *pulumi.OutputState }
+
+func (ChartOptionsModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ChartOptionsMode)(nil)).Elem()
+}
+
+func (o ChartOptionsModeOutput) ToChartOptionsModeOutput() ChartOptionsModeOutput {
+	return o
+}
+
+func (o ChartOptionsModeOutput) ToChartOptionsModeOutputWithContext(ctx context.Context) ChartOptionsModeOutput {
+	return o
+}
+
+func (o ChartOptionsModeOutput) ToChartOptionsModePtrOutput() ChartOptionsModePtrOutput {
+	return o.ToChartOptionsModePtrOutputWithContext(context.Background())
+}
+
+func (o ChartOptionsModeOutput) ToChartOptionsModePtrOutputWithContext(ctx context.Context) ChartOptionsModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ChartOptionsMode) *ChartOptionsMode {
+		return &v
+	}).(ChartOptionsModePtrOutput)
+}
+
+func (o ChartOptionsModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ChartOptionsModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ChartOptionsMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ChartOptionsModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ChartOptionsModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ChartOptionsMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ChartOptionsModePtrOutput struct{ *pulumi.OutputState }
+
+func (ChartOptionsModePtrOutput) ElementType() reflect.Type {
+	return chartOptionsModePtrType
+}
+
+func (o ChartOptionsModePtrOutput) ToChartOptionsModePtrOutput() ChartOptionsModePtrOutput {
+	return o
+}
+
+func (o ChartOptionsModePtrOutput) ToChartOptionsModePtrOutputWithContext(ctx context.Context) ChartOptionsModePtrOutput {
+	return o
+}
+
+func (o ChartOptionsModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ChartOptionsModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ChartOptionsMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ChartOptionsModePtrOutput) Elem() ChartOptionsModeOutput {
+	return o.ApplyT(func(v *ChartOptionsMode) ChartOptionsMode {
+		var ret ChartOptionsMode
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ChartOptionsModeOutput)
+}
+
+// ChartOptionsModeInput is an input type that accepts ChartOptionsModeArgs and ChartOptionsModeOutput values.
+// You can construct a concrete instance of `ChartOptionsModeInput` via:
+//
+//          ChartOptionsModeArgs{...}
+type ChartOptionsModeInput interface {
+	pulumi.Input
+
+	ToChartOptionsModeOutput() ChartOptionsModeOutput
+	ToChartOptionsModeOutputWithContext(context.Context) ChartOptionsModeOutput
+}
+
+var chartOptionsModePtrType = reflect.TypeOf((**ChartOptionsMode)(nil)).Elem()
+
+type ChartOptionsModePtrInput interface {
+	pulumi.Input
+
+	ToChartOptionsModePtrOutput() ChartOptionsModePtrOutput
+	ToChartOptionsModePtrOutputWithContext(context.Context) ChartOptionsModePtrOutput
+}
+
+type chartOptionsModePtr string
+
+func ChartOptionsModePtr(v string) ChartOptionsModePtrInput {
+	return (*chartOptionsModePtr)(&v)
+}
+
+func (*chartOptionsModePtr) ElementType() reflect.Type {
+	return chartOptionsModePtrType
+}
+
+func (in *chartOptionsModePtr) ToChartOptionsModePtrOutput() ChartOptionsModePtrOutput {
+	return pulumi.ToOutput(in).(ChartOptionsModePtrOutput)
+}
+
+func (in *chartOptionsModePtr) ToChartOptionsModePtrOutputWithContext(ctx context.Context) ChartOptionsModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ChartOptionsModePtrOutput)
+}
+
 // How this data should be plotted on the chart.
-type DataSetPlotType pulumi.String
+type DataSetPlotType string
 
 const (
 	// Plot type is unspecified. The view will default to LINE.
@@ -211,7 +759,23 @@ const (
 )
 
 func (DataSetPlotType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*DataSetPlotType)(nil)).Elem()
+}
+
+func (e DataSetPlotType) ToDataSetPlotTypeOutput() DataSetPlotTypeOutput {
+	return pulumi.ToOutput(e).(DataSetPlotTypeOutput)
+}
+
+func (e DataSetPlotType) ToDataSetPlotTypeOutputWithContext(ctx context.Context) DataSetPlotTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DataSetPlotTypeOutput)
+}
+
+func (e DataSetPlotType) ToDataSetPlotTypePtrOutput() DataSetPlotTypePtrOutput {
+	return e.ToDataSetPlotTypePtrOutputWithContext(context.Background())
+}
+
+func (e DataSetPlotType) ToDataSetPlotTypePtrOutputWithContext(ctx context.Context) DataSetPlotTypePtrOutput {
+	return DataSetPlotType(e).ToDataSetPlotTypeOutputWithContext(ctx).ToDataSetPlotTypePtrOutputWithContext(ctx)
 }
 
 func (e DataSetPlotType) ToStringOutput() pulumi.StringOutput {
@@ -230,8 +794,129 @@ func (e DataSetPlotType) ToStringPtrOutputWithContext(ctx context.Context) pulum
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type DataSetPlotTypeOutput struct{ *pulumi.OutputState }
+
+func (DataSetPlotTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataSetPlotType)(nil)).Elem()
+}
+
+func (o DataSetPlotTypeOutput) ToDataSetPlotTypeOutput() DataSetPlotTypeOutput {
+	return o
+}
+
+func (o DataSetPlotTypeOutput) ToDataSetPlotTypeOutputWithContext(ctx context.Context) DataSetPlotTypeOutput {
+	return o
+}
+
+func (o DataSetPlotTypeOutput) ToDataSetPlotTypePtrOutput() DataSetPlotTypePtrOutput {
+	return o.ToDataSetPlotTypePtrOutputWithContext(context.Background())
+}
+
+func (o DataSetPlotTypeOutput) ToDataSetPlotTypePtrOutputWithContext(ctx context.Context) DataSetPlotTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataSetPlotType) *DataSetPlotType {
+		return &v
+	}).(DataSetPlotTypePtrOutput)
+}
+
+func (o DataSetPlotTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DataSetPlotTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DataSetPlotType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DataSetPlotTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DataSetPlotTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DataSetPlotType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DataSetPlotTypePtrOutput struct{ *pulumi.OutputState }
+
+func (DataSetPlotTypePtrOutput) ElementType() reflect.Type {
+	return dataSetPlotTypePtrType
+}
+
+func (o DataSetPlotTypePtrOutput) ToDataSetPlotTypePtrOutput() DataSetPlotTypePtrOutput {
+	return o
+}
+
+func (o DataSetPlotTypePtrOutput) ToDataSetPlotTypePtrOutputWithContext(ctx context.Context) DataSetPlotTypePtrOutput {
+	return o
+}
+
+func (o DataSetPlotTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DataSetPlotTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DataSetPlotType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DataSetPlotTypePtrOutput) Elem() DataSetPlotTypeOutput {
+	return o.ApplyT(func(v *DataSetPlotType) DataSetPlotType {
+		var ret DataSetPlotType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(DataSetPlotTypeOutput)
+}
+
+// DataSetPlotTypeInput is an input type that accepts DataSetPlotTypeArgs and DataSetPlotTypeOutput values.
+// You can construct a concrete instance of `DataSetPlotTypeInput` via:
+//
+//          DataSetPlotTypeArgs{...}
+type DataSetPlotTypeInput interface {
+	pulumi.Input
+
+	ToDataSetPlotTypeOutput() DataSetPlotTypeOutput
+	ToDataSetPlotTypeOutputWithContext(context.Context) DataSetPlotTypeOutput
+}
+
+var dataSetPlotTypePtrType = reflect.TypeOf((**DataSetPlotType)(nil)).Elem()
+
+type DataSetPlotTypePtrInput interface {
+	pulumi.Input
+
+	ToDataSetPlotTypePtrOutput() DataSetPlotTypePtrOutput
+	ToDataSetPlotTypePtrOutputWithContext(context.Context) DataSetPlotTypePtrOutput
+}
+
+type dataSetPlotTypePtr string
+
+func DataSetPlotTypePtr(v string) DataSetPlotTypePtrInput {
+	return (*dataSetPlotTypePtr)(&v)
+}
+
+func (*dataSetPlotTypePtr) ElementType() reflect.Type {
+	return dataSetPlotTypePtrType
+}
+
+func (in *dataSetPlotTypePtr) ToDataSetPlotTypePtrOutput() DataSetPlotTypePtrOutput {
+	return pulumi.ToOutput(in).(DataSetPlotTypePtrOutput)
+}
+
+func (in *dataSetPlotTypePtr) ToDataSetPlotTypePtrOutputWithContext(ctx context.Context) DataSetPlotTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DataSetPlotTypePtrOutput)
+}
+
 // How to use the ranking to select time series that pass through the filter.
-type PickTimeSeriesFilterDirection pulumi.String
+type PickTimeSeriesFilterDirection string
 
 const (
 	// Not allowed. You must specify a different Direction if you specify a PickTimeSeriesFilter.
@@ -243,7 +928,23 @@ const (
 )
 
 func (PickTimeSeriesFilterDirection) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*PickTimeSeriesFilterDirection)(nil)).Elem()
+}
+
+func (e PickTimeSeriesFilterDirection) ToPickTimeSeriesFilterDirectionOutput() PickTimeSeriesFilterDirectionOutput {
+	return pulumi.ToOutput(e).(PickTimeSeriesFilterDirectionOutput)
+}
+
+func (e PickTimeSeriesFilterDirection) ToPickTimeSeriesFilterDirectionOutputWithContext(ctx context.Context) PickTimeSeriesFilterDirectionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PickTimeSeriesFilterDirectionOutput)
+}
+
+func (e PickTimeSeriesFilterDirection) ToPickTimeSeriesFilterDirectionPtrOutput() PickTimeSeriesFilterDirectionPtrOutput {
+	return e.ToPickTimeSeriesFilterDirectionPtrOutputWithContext(context.Background())
+}
+
+func (e PickTimeSeriesFilterDirection) ToPickTimeSeriesFilterDirectionPtrOutputWithContext(ctx context.Context) PickTimeSeriesFilterDirectionPtrOutput {
+	return PickTimeSeriesFilterDirection(e).ToPickTimeSeriesFilterDirectionOutputWithContext(ctx).ToPickTimeSeriesFilterDirectionPtrOutputWithContext(ctx)
 }
 
 func (e PickTimeSeriesFilterDirection) ToStringOutput() pulumi.StringOutput {
@@ -262,8 +963,129 @@ func (e PickTimeSeriesFilterDirection) ToStringPtrOutputWithContext(ctx context.
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type PickTimeSeriesFilterDirectionOutput struct{ *pulumi.OutputState }
+
+func (PickTimeSeriesFilterDirectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PickTimeSeriesFilterDirection)(nil)).Elem()
+}
+
+func (o PickTimeSeriesFilterDirectionOutput) ToPickTimeSeriesFilterDirectionOutput() PickTimeSeriesFilterDirectionOutput {
+	return o
+}
+
+func (o PickTimeSeriesFilterDirectionOutput) ToPickTimeSeriesFilterDirectionOutputWithContext(ctx context.Context) PickTimeSeriesFilterDirectionOutput {
+	return o
+}
+
+func (o PickTimeSeriesFilterDirectionOutput) ToPickTimeSeriesFilterDirectionPtrOutput() PickTimeSeriesFilterDirectionPtrOutput {
+	return o.ToPickTimeSeriesFilterDirectionPtrOutputWithContext(context.Background())
+}
+
+func (o PickTimeSeriesFilterDirectionOutput) ToPickTimeSeriesFilterDirectionPtrOutputWithContext(ctx context.Context) PickTimeSeriesFilterDirectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PickTimeSeriesFilterDirection) *PickTimeSeriesFilterDirection {
+		return &v
+	}).(PickTimeSeriesFilterDirectionPtrOutput)
+}
+
+func (o PickTimeSeriesFilterDirectionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PickTimeSeriesFilterDirectionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PickTimeSeriesFilterDirection) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PickTimeSeriesFilterDirectionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PickTimeSeriesFilterDirectionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PickTimeSeriesFilterDirection) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PickTimeSeriesFilterDirectionPtrOutput struct{ *pulumi.OutputState }
+
+func (PickTimeSeriesFilterDirectionPtrOutput) ElementType() reflect.Type {
+	return pickTimeSeriesFilterDirectionPtrType
+}
+
+func (o PickTimeSeriesFilterDirectionPtrOutput) ToPickTimeSeriesFilterDirectionPtrOutput() PickTimeSeriesFilterDirectionPtrOutput {
+	return o
+}
+
+func (o PickTimeSeriesFilterDirectionPtrOutput) ToPickTimeSeriesFilterDirectionPtrOutputWithContext(ctx context.Context) PickTimeSeriesFilterDirectionPtrOutput {
+	return o
+}
+
+func (o PickTimeSeriesFilterDirectionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PickTimeSeriesFilterDirectionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PickTimeSeriesFilterDirection) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PickTimeSeriesFilterDirectionPtrOutput) Elem() PickTimeSeriesFilterDirectionOutput {
+	return o.ApplyT(func(v *PickTimeSeriesFilterDirection) PickTimeSeriesFilterDirection {
+		var ret PickTimeSeriesFilterDirection
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(PickTimeSeriesFilterDirectionOutput)
+}
+
+// PickTimeSeriesFilterDirectionInput is an input type that accepts PickTimeSeriesFilterDirectionArgs and PickTimeSeriesFilterDirectionOutput values.
+// You can construct a concrete instance of `PickTimeSeriesFilterDirectionInput` via:
+//
+//          PickTimeSeriesFilterDirectionArgs{...}
+type PickTimeSeriesFilterDirectionInput interface {
+	pulumi.Input
+
+	ToPickTimeSeriesFilterDirectionOutput() PickTimeSeriesFilterDirectionOutput
+	ToPickTimeSeriesFilterDirectionOutputWithContext(context.Context) PickTimeSeriesFilterDirectionOutput
+}
+
+var pickTimeSeriesFilterDirectionPtrType = reflect.TypeOf((**PickTimeSeriesFilterDirection)(nil)).Elem()
+
+type PickTimeSeriesFilterDirectionPtrInput interface {
+	pulumi.Input
+
+	ToPickTimeSeriesFilterDirectionPtrOutput() PickTimeSeriesFilterDirectionPtrOutput
+	ToPickTimeSeriesFilterDirectionPtrOutputWithContext(context.Context) PickTimeSeriesFilterDirectionPtrOutput
+}
+
+type pickTimeSeriesFilterDirectionPtr string
+
+func PickTimeSeriesFilterDirectionPtr(v string) PickTimeSeriesFilterDirectionPtrInput {
+	return (*pickTimeSeriesFilterDirectionPtr)(&v)
+}
+
+func (*pickTimeSeriesFilterDirectionPtr) ElementType() reflect.Type {
+	return pickTimeSeriesFilterDirectionPtrType
+}
+
+func (in *pickTimeSeriesFilterDirectionPtr) ToPickTimeSeriesFilterDirectionPtrOutput() PickTimeSeriesFilterDirectionPtrOutput {
+	return pulumi.ToOutput(in).(PickTimeSeriesFilterDirectionPtrOutput)
+}
+
+func (in *pickTimeSeriesFilterDirectionPtr) ToPickTimeSeriesFilterDirectionPtrOutputWithContext(ctx context.Context) PickTimeSeriesFilterDirectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PickTimeSeriesFilterDirectionPtrOutput)
+}
+
 // ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
-type PickTimeSeriesFilterRankingMethod pulumi.String
+type PickTimeSeriesFilterRankingMethod string
 
 const (
 	// Not allowed. You must specify a different Method if you specify a PickTimeSeriesFilter.
@@ -281,7 +1103,23 @@ const (
 )
 
 func (PickTimeSeriesFilterRankingMethod) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*PickTimeSeriesFilterRankingMethod)(nil)).Elem()
+}
+
+func (e PickTimeSeriesFilterRankingMethod) ToPickTimeSeriesFilterRankingMethodOutput() PickTimeSeriesFilterRankingMethodOutput {
+	return pulumi.ToOutput(e).(PickTimeSeriesFilterRankingMethodOutput)
+}
+
+func (e PickTimeSeriesFilterRankingMethod) ToPickTimeSeriesFilterRankingMethodOutputWithContext(ctx context.Context) PickTimeSeriesFilterRankingMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PickTimeSeriesFilterRankingMethodOutput)
+}
+
+func (e PickTimeSeriesFilterRankingMethod) ToPickTimeSeriesFilterRankingMethodPtrOutput() PickTimeSeriesFilterRankingMethodPtrOutput {
+	return e.ToPickTimeSeriesFilterRankingMethodPtrOutputWithContext(context.Background())
+}
+
+func (e PickTimeSeriesFilterRankingMethod) ToPickTimeSeriesFilterRankingMethodPtrOutputWithContext(ctx context.Context) PickTimeSeriesFilterRankingMethodPtrOutput {
+	return PickTimeSeriesFilterRankingMethod(e).ToPickTimeSeriesFilterRankingMethodOutputWithContext(ctx).ToPickTimeSeriesFilterRankingMethodPtrOutputWithContext(ctx)
 }
 
 func (e PickTimeSeriesFilterRankingMethod) ToStringOutput() pulumi.StringOutput {
@@ -300,8 +1138,129 @@ func (e PickTimeSeriesFilterRankingMethod) ToStringPtrOutputWithContext(ctx cont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type PickTimeSeriesFilterRankingMethodOutput struct{ *pulumi.OutputState }
+
+func (PickTimeSeriesFilterRankingMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PickTimeSeriesFilterRankingMethod)(nil)).Elem()
+}
+
+func (o PickTimeSeriesFilterRankingMethodOutput) ToPickTimeSeriesFilterRankingMethodOutput() PickTimeSeriesFilterRankingMethodOutput {
+	return o
+}
+
+func (o PickTimeSeriesFilterRankingMethodOutput) ToPickTimeSeriesFilterRankingMethodOutputWithContext(ctx context.Context) PickTimeSeriesFilterRankingMethodOutput {
+	return o
+}
+
+func (o PickTimeSeriesFilterRankingMethodOutput) ToPickTimeSeriesFilterRankingMethodPtrOutput() PickTimeSeriesFilterRankingMethodPtrOutput {
+	return o.ToPickTimeSeriesFilterRankingMethodPtrOutputWithContext(context.Background())
+}
+
+func (o PickTimeSeriesFilterRankingMethodOutput) ToPickTimeSeriesFilterRankingMethodPtrOutputWithContext(ctx context.Context) PickTimeSeriesFilterRankingMethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PickTimeSeriesFilterRankingMethod) *PickTimeSeriesFilterRankingMethod {
+		return &v
+	}).(PickTimeSeriesFilterRankingMethodPtrOutput)
+}
+
+func (o PickTimeSeriesFilterRankingMethodOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PickTimeSeriesFilterRankingMethodOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PickTimeSeriesFilterRankingMethod) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PickTimeSeriesFilterRankingMethodOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PickTimeSeriesFilterRankingMethodOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PickTimeSeriesFilterRankingMethod) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PickTimeSeriesFilterRankingMethodPtrOutput struct{ *pulumi.OutputState }
+
+func (PickTimeSeriesFilterRankingMethodPtrOutput) ElementType() reflect.Type {
+	return pickTimeSeriesFilterRankingMethodPtrType
+}
+
+func (o PickTimeSeriesFilterRankingMethodPtrOutput) ToPickTimeSeriesFilterRankingMethodPtrOutput() PickTimeSeriesFilterRankingMethodPtrOutput {
+	return o
+}
+
+func (o PickTimeSeriesFilterRankingMethodPtrOutput) ToPickTimeSeriesFilterRankingMethodPtrOutputWithContext(ctx context.Context) PickTimeSeriesFilterRankingMethodPtrOutput {
+	return o
+}
+
+func (o PickTimeSeriesFilterRankingMethodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PickTimeSeriesFilterRankingMethodPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PickTimeSeriesFilterRankingMethod) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PickTimeSeriesFilterRankingMethodPtrOutput) Elem() PickTimeSeriesFilterRankingMethodOutput {
+	return o.ApplyT(func(v *PickTimeSeriesFilterRankingMethod) PickTimeSeriesFilterRankingMethod {
+		var ret PickTimeSeriesFilterRankingMethod
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(PickTimeSeriesFilterRankingMethodOutput)
+}
+
+// PickTimeSeriesFilterRankingMethodInput is an input type that accepts PickTimeSeriesFilterRankingMethodArgs and PickTimeSeriesFilterRankingMethodOutput values.
+// You can construct a concrete instance of `PickTimeSeriesFilterRankingMethodInput` via:
+//
+//          PickTimeSeriesFilterRankingMethodArgs{...}
+type PickTimeSeriesFilterRankingMethodInput interface {
+	pulumi.Input
+
+	ToPickTimeSeriesFilterRankingMethodOutput() PickTimeSeriesFilterRankingMethodOutput
+	ToPickTimeSeriesFilterRankingMethodOutputWithContext(context.Context) PickTimeSeriesFilterRankingMethodOutput
+}
+
+var pickTimeSeriesFilterRankingMethodPtrType = reflect.TypeOf((**PickTimeSeriesFilterRankingMethod)(nil)).Elem()
+
+type PickTimeSeriesFilterRankingMethodPtrInput interface {
+	pulumi.Input
+
+	ToPickTimeSeriesFilterRankingMethodPtrOutput() PickTimeSeriesFilterRankingMethodPtrOutput
+	ToPickTimeSeriesFilterRankingMethodPtrOutputWithContext(context.Context) PickTimeSeriesFilterRankingMethodPtrOutput
+}
+
+type pickTimeSeriesFilterRankingMethodPtr string
+
+func PickTimeSeriesFilterRankingMethodPtr(v string) PickTimeSeriesFilterRankingMethodPtrInput {
+	return (*pickTimeSeriesFilterRankingMethodPtr)(&v)
+}
+
+func (*pickTimeSeriesFilterRankingMethodPtr) ElementType() reflect.Type {
+	return pickTimeSeriesFilterRankingMethodPtrType
+}
+
+func (in *pickTimeSeriesFilterRankingMethodPtr) ToPickTimeSeriesFilterRankingMethodPtrOutput() PickTimeSeriesFilterRankingMethodPtrOutput {
+	return pulumi.ToOutput(in).(PickTimeSeriesFilterRankingMethodPtrOutput)
+}
+
+func (in *pickTimeSeriesFilterRankingMethodPtr) ToPickTimeSeriesFilterRankingMethodPtrOutputWithContext(ctx context.Context) PickTimeSeriesFilterRankingMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PickTimeSeriesFilterRankingMethodPtrOutput)
+}
+
 // Required. The type of sparkchart to show in this chartView.
-type SparkChartViewSparkChartType pulumi.String
+type SparkChartViewSparkChartType string
 
 const (
 	// Not allowed in well-formed requests.
@@ -313,7 +1272,23 @@ const (
 )
 
 func (SparkChartViewSparkChartType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*SparkChartViewSparkChartType)(nil)).Elem()
+}
+
+func (e SparkChartViewSparkChartType) ToSparkChartViewSparkChartTypeOutput() SparkChartViewSparkChartTypeOutput {
+	return pulumi.ToOutput(e).(SparkChartViewSparkChartTypeOutput)
+}
+
+func (e SparkChartViewSparkChartType) ToSparkChartViewSparkChartTypeOutputWithContext(ctx context.Context) SparkChartViewSparkChartTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SparkChartViewSparkChartTypeOutput)
+}
+
+func (e SparkChartViewSparkChartType) ToSparkChartViewSparkChartTypePtrOutput() SparkChartViewSparkChartTypePtrOutput {
+	return e.ToSparkChartViewSparkChartTypePtrOutputWithContext(context.Background())
+}
+
+func (e SparkChartViewSparkChartType) ToSparkChartViewSparkChartTypePtrOutputWithContext(ctx context.Context) SparkChartViewSparkChartTypePtrOutput {
+	return SparkChartViewSparkChartType(e).ToSparkChartViewSparkChartTypeOutputWithContext(ctx).ToSparkChartViewSparkChartTypePtrOutputWithContext(ctx)
 }
 
 func (e SparkChartViewSparkChartType) ToStringOutput() pulumi.StringOutput {
@@ -332,8 +1307,129 @@ func (e SparkChartViewSparkChartType) ToStringPtrOutputWithContext(ctx context.C
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type SparkChartViewSparkChartTypeOutput struct{ *pulumi.OutputState }
+
+func (SparkChartViewSparkChartTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkChartViewSparkChartType)(nil)).Elem()
+}
+
+func (o SparkChartViewSparkChartTypeOutput) ToSparkChartViewSparkChartTypeOutput() SparkChartViewSparkChartTypeOutput {
+	return o
+}
+
+func (o SparkChartViewSparkChartTypeOutput) ToSparkChartViewSparkChartTypeOutputWithContext(ctx context.Context) SparkChartViewSparkChartTypeOutput {
+	return o
+}
+
+func (o SparkChartViewSparkChartTypeOutput) ToSparkChartViewSparkChartTypePtrOutput() SparkChartViewSparkChartTypePtrOutput {
+	return o.ToSparkChartViewSparkChartTypePtrOutputWithContext(context.Background())
+}
+
+func (o SparkChartViewSparkChartTypeOutput) ToSparkChartViewSparkChartTypePtrOutputWithContext(ctx context.Context) SparkChartViewSparkChartTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SparkChartViewSparkChartType) *SparkChartViewSparkChartType {
+		return &v
+	}).(SparkChartViewSparkChartTypePtrOutput)
+}
+
+func (o SparkChartViewSparkChartTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SparkChartViewSparkChartTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SparkChartViewSparkChartType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SparkChartViewSparkChartTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SparkChartViewSparkChartTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SparkChartViewSparkChartType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SparkChartViewSparkChartTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SparkChartViewSparkChartTypePtrOutput) ElementType() reflect.Type {
+	return sparkChartViewSparkChartTypePtrType
+}
+
+func (o SparkChartViewSparkChartTypePtrOutput) ToSparkChartViewSparkChartTypePtrOutput() SparkChartViewSparkChartTypePtrOutput {
+	return o
+}
+
+func (o SparkChartViewSparkChartTypePtrOutput) ToSparkChartViewSparkChartTypePtrOutputWithContext(ctx context.Context) SparkChartViewSparkChartTypePtrOutput {
+	return o
+}
+
+func (o SparkChartViewSparkChartTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SparkChartViewSparkChartTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SparkChartViewSparkChartType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SparkChartViewSparkChartTypePtrOutput) Elem() SparkChartViewSparkChartTypeOutput {
+	return o.ApplyT(func(v *SparkChartViewSparkChartType) SparkChartViewSparkChartType {
+		var ret SparkChartViewSparkChartType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(SparkChartViewSparkChartTypeOutput)
+}
+
+// SparkChartViewSparkChartTypeInput is an input type that accepts SparkChartViewSparkChartTypeArgs and SparkChartViewSparkChartTypeOutput values.
+// You can construct a concrete instance of `SparkChartViewSparkChartTypeInput` via:
+//
+//          SparkChartViewSparkChartTypeArgs{...}
+type SparkChartViewSparkChartTypeInput interface {
+	pulumi.Input
+
+	ToSparkChartViewSparkChartTypeOutput() SparkChartViewSparkChartTypeOutput
+	ToSparkChartViewSparkChartTypeOutputWithContext(context.Context) SparkChartViewSparkChartTypeOutput
+}
+
+var sparkChartViewSparkChartTypePtrType = reflect.TypeOf((**SparkChartViewSparkChartType)(nil)).Elem()
+
+type SparkChartViewSparkChartTypePtrInput interface {
+	pulumi.Input
+
+	ToSparkChartViewSparkChartTypePtrOutput() SparkChartViewSparkChartTypePtrOutput
+	ToSparkChartViewSparkChartTypePtrOutputWithContext(context.Context) SparkChartViewSparkChartTypePtrOutput
+}
+
+type sparkChartViewSparkChartTypePtr string
+
+func SparkChartViewSparkChartTypePtr(v string) SparkChartViewSparkChartTypePtrInput {
+	return (*sparkChartViewSparkChartTypePtr)(&v)
+}
+
+func (*sparkChartViewSparkChartTypePtr) ElementType() reflect.Type {
+	return sparkChartViewSparkChartTypePtrType
+}
+
+func (in *sparkChartViewSparkChartTypePtr) ToSparkChartViewSparkChartTypePtrOutput() SparkChartViewSparkChartTypePtrOutput {
+	return pulumi.ToOutput(in).(SparkChartViewSparkChartTypePtrOutput)
+}
+
+func (in *sparkChartViewSparkChartTypePtr) ToSparkChartViewSparkChartTypePtrOutputWithContext(ctx context.Context) SparkChartViewSparkChartTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SparkChartViewSparkChartTypePtrOutput)
+}
+
 // How the text content is formatted.
-type TextFormat pulumi.String
+type TextFormat string
 
 const (
 	// Format is unspecified. Defaults to MARKDOWN.
@@ -345,7 +1441,23 @@ const (
 )
 
 func (TextFormat) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*TextFormat)(nil)).Elem()
+}
+
+func (e TextFormat) ToTextFormatOutput() TextFormatOutput {
+	return pulumi.ToOutput(e).(TextFormatOutput)
+}
+
+func (e TextFormat) ToTextFormatOutputWithContext(ctx context.Context) TextFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TextFormatOutput)
+}
+
+func (e TextFormat) ToTextFormatPtrOutput() TextFormatPtrOutput {
+	return e.ToTextFormatPtrOutputWithContext(context.Background())
+}
+
+func (e TextFormat) ToTextFormatPtrOutputWithContext(ctx context.Context) TextFormatPtrOutput {
+	return TextFormat(e).ToTextFormatOutputWithContext(ctx).ToTextFormatPtrOutputWithContext(ctx)
 }
 
 func (e TextFormat) ToStringOutput() pulumi.StringOutput {
@@ -364,8 +1476,129 @@ func (e TextFormat) ToStringPtrOutputWithContext(ctx context.Context) pulumi.Str
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type TextFormatOutput struct{ *pulumi.OutputState }
+
+func (TextFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TextFormat)(nil)).Elem()
+}
+
+func (o TextFormatOutput) ToTextFormatOutput() TextFormatOutput {
+	return o
+}
+
+func (o TextFormatOutput) ToTextFormatOutputWithContext(ctx context.Context) TextFormatOutput {
+	return o
+}
+
+func (o TextFormatOutput) ToTextFormatPtrOutput() TextFormatPtrOutput {
+	return o.ToTextFormatPtrOutputWithContext(context.Background())
+}
+
+func (o TextFormatOutput) ToTextFormatPtrOutputWithContext(ctx context.Context) TextFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TextFormat) *TextFormat {
+		return &v
+	}).(TextFormatPtrOutput)
+}
+
+func (o TextFormatOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TextFormatOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TextFormat) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TextFormatOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TextFormatOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TextFormat) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TextFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (TextFormatPtrOutput) ElementType() reflect.Type {
+	return textFormatPtrType
+}
+
+func (o TextFormatPtrOutput) ToTextFormatPtrOutput() TextFormatPtrOutput {
+	return o
+}
+
+func (o TextFormatPtrOutput) ToTextFormatPtrOutputWithContext(ctx context.Context) TextFormatPtrOutput {
+	return o
+}
+
+func (o TextFormatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TextFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TextFormat) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TextFormatPtrOutput) Elem() TextFormatOutput {
+	return o.ApplyT(func(v *TextFormat) TextFormat {
+		var ret TextFormat
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(TextFormatOutput)
+}
+
+// TextFormatInput is an input type that accepts TextFormatArgs and TextFormatOutput values.
+// You can construct a concrete instance of `TextFormatInput` via:
+//
+//          TextFormatArgs{...}
+type TextFormatInput interface {
+	pulumi.Input
+
+	ToTextFormatOutput() TextFormatOutput
+	ToTextFormatOutputWithContext(context.Context) TextFormatOutput
+}
+
+var textFormatPtrType = reflect.TypeOf((**TextFormat)(nil)).Elem()
+
+type TextFormatPtrInput interface {
+	pulumi.Input
+
+	ToTextFormatPtrOutput() TextFormatPtrOutput
+	ToTextFormatPtrOutputWithContext(context.Context) TextFormatPtrOutput
+}
+
+type textFormatPtr string
+
+func TextFormatPtr(v string) TextFormatPtrInput {
+	return (*textFormatPtr)(&v)
+}
+
+func (*textFormatPtr) ElementType() reflect.Type {
+	return textFormatPtrType
+}
+
+func (in *textFormatPtr) ToTextFormatPtrOutput() TextFormatPtrOutput {
+	return pulumi.ToOutput(in).(TextFormatPtrOutput)
+}
+
+func (in *textFormatPtr) ToTextFormatPtrOutputWithContext(ctx context.Context) TextFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TextFormatPtrOutput)
+}
+
 // The state color for this threshold. Color is not allowed in a XyChart.
-type ThresholdColor pulumi.String
+type ThresholdColor string
 
 const (
 	// Color is unspecified. Not allowed in well-formed requests.
@@ -377,7 +1610,23 @@ const (
 )
 
 func (ThresholdColor) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*ThresholdColor)(nil)).Elem()
+}
+
+func (e ThresholdColor) ToThresholdColorOutput() ThresholdColorOutput {
+	return pulumi.ToOutput(e).(ThresholdColorOutput)
+}
+
+func (e ThresholdColor) ToThresholdColorOutputWithContext(ctx context.Context) ThresholdColorOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ThresholdColorOutput)
+}
+
+func (e ThresholdColor) ToThresholdColorPtrOutput() ThresholdColorPtrOutput {
+	return e.ToThresholdColorPtrOutputWithContext(context.Background())
+}
+
+func (e ThresholdColor) ToThresholdColorPtrOutputWithContext(ctx context.Context) ThresholdColorPtrOutput {
+	return ThresholdColor(e).ToThresholdColorOutputWithContext(ctx).ToThresholdColorPtrOutputWithContext(ctx)
 }
 
 func (e ThresholdColor) ToStringOutput() pulumi.StringOutput {
@@ -396,8 +1645,129 @@ func (e ThresholdColor) ToStringPtrOutputWithContext(ctx context.Context) pulumi
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type ThresholdColorOutput struct{ *pulumi.OutputState }
+
+func (ThresholdColorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThresholdColor)(nil)).Elem()
+}
+
+func (o ThresholdColorOutput) ToThresholdColorOutput() ThresholdColorOutput {
+	return o
+}
+
+func (o ThresholdColorOutput) ToThresholdColorOutputWithContext(ctx context.Context) ThresholdColorOutput {
+	return o
+}
+
+func (o ThresholdColorOutput) ToThresholdColorPtrOutput() ThresholdColorPtrOutput {
+	return o.ToThresholdColorPtrOutputWithContext(context.Background())
+}
+
+func (o ThresholdColorOutput) ToThresholdColorPtrOutputWithContext(ctx context.Context) ThresholdColorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ThresholdColor) *ThresholdColor {
+		return &v
+	}).(ThresholdColorPtrOutput)
+}
+
+func (o ThresholdColorOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ThresholdColorOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ThresholdColor) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ThresholdColorOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ThresholdColorOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ThresholdColor) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ThresholdColorPtrOutput struct{ *pulumi.OutputState }
+
+func (ThresholdColorPtrOutput) ElementType() reflect.Type {
+	return thresholdColorPtrType
+}
+
+func (o ThresholdColorPtrOutput) ToThresholdColorPtrOutput() ThresholdColorPtrOutput {
+	return o
+}
+
+func (o ThresholdColorPtrOutput) ToThresholdColorPtrOutputWithContext(ctx context.Context) ThresholdColorPtrOutput {
+	return o
+}
+
+func (o ThresholdColorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ThresholdColorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ThresholdColor) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ThresholdColorPtrOutput) Elem() ThresholdColorOutput {
+	return o.ApplyT(func(v *ThresholdColor) ThresholdColor {
+		var ret ThresholdColor
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ThresholdColorOutput)
+}
+
+// ThresholdColorInput is an input type that accepts ThresholdColorArgs and ThresholdColorOutput values.
+// You can construct a concrete instance of `ThresholdColorInput` via:
+//
+//          ThresholdColorArgs{...}
+type ThresholdColorInput interface {
+	pulumi.Input
+
+	ToThresholdColorOutput() ThresholdColorOutput
+	ToThresholdColorOutputWithContext(context.Context) ThresholdColorOutput
+}
+
+var thresholdColorPtrType = reflect.TypeOf((**ThresholdColor)(nil)).Elem()
+
+type ThresholdColorPtrInput interface {
+	pulumi.Input
+
+	ToThresholdColorPtrOutput() ThresholdColorPtrOutput
+	ToThresholdColorPtrOutputWithContext(context.Context) ThresholdColorPtrOutput
+}
+
+type thresholdColorPtr string
+
+func ThresholdColorPtr(v string) ThresholdColorPtrInput {
+	return (*thresholdColorPtr)(&v)
+}
+
+func (*thresholdColorPtr) ElementType() reflect.Type {
+	return thresholdColorPtrType
+}
+
+func (in *thresholdColorPtr) ToThresholdColorPtrOutput() ThresholdColorPtrOutput {
+	return pulumi.ToOutput(in).(ThresholdColorPtrOutput)
+}
+
+func (in *thresholdColorPtr) ToThresholdColorPtrOutputWithContext(ctx context.Context) ThresholdColorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ThresholdColorPtrOutput)
+}
+
 // The direction for the current threshold. Direction is not allowed in a XyChart.
-type ThresholdDirection pulumi.String
+type ThresholdDirection string
 
 const (
 	// Not allowed in well-formed requests.
@@ -409,7 +1779,23 @@ const (
 )
 
 func (ThresholdDirection) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*ThresholdDirection)(nil)).Elem()
+}
+
+func (e ThresholdDirection) ToThresholdDirectionOutput() ThresholdDirectionOutput {
+	return pulumi.ToOutput(e).(ThresholdDirectionOutput)
+}
+
+func (e ThresholdDirection) ToThresholdDirectionOutputWithContext(ctx context.Context) ThresholdDirectionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ThresholdDirectionOutput)
+}
+
+func (e ThresholdDirection) ToThresholdDirectionPtrOutput() ThresholdDirectionPtrOutput {
+	return e.ToThresholdDirectionPtrOutputWithContext(context.Background())
+}
+
+func (e ThresholdDirection) ToThresholdDirectionPtrOutputWithContext(ctx context.Context) ThresholdDirectionPtrOutput {
+	return ThresholdDirection(e).ToThresholdDirectionOutputWithContext(ctx).ToThresholdDirectionPtrOutputWithContext(ctx)
 }
 
 func (e ThresholdDirection) ToStringOutput() pulumi.StringOutput {
@@ -426,4 +1812,150 @@ func (e ThresholdDirection) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e ThresholdDirection) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ThresholdDirectionOutput struct{ *pulumi.OutputState }
+
+func (ThresholdDirectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ThresholdDirection)(nil)).Elem()
+}
+
+func (o ThresholdDirectionOutput) ToThresholdDirectionOutput() ThresholdDirectionOutput {
+	return o
+}
+
+func (o ThresholdDirectionOutput) ToThresholdDirectionOutputWithContext(ctx context.Context) ThresholdDirectionOutput {
+	return o
+}
+
+func (o ThresholdDirectionOutput) ToThresholdDirectionPtrOutput() ThresholdDirectionPtrOutput {
+	return o.ToThresholdDirectionPtrOutputWithContext(context.Background())
+}
+
+func (o ThresholdDirectionOutput) ToThresholdDirectionPtrOutputWithContext(ctx context.Context) ThresholdDirectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ThresholdDirection) *ThresholdDirection {
+		return &v
+	}).(ThresholdDirectionPtrOutput)
+}
+
+func (o ThresholdDirectionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ThresholdDirectionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ThresholdDirection) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ThresholdDirectionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ThresholdDirectionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ThresholdDirection) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ThresholdDirectionPtrOutput struct{ *pulumi.OutputState }
+
+func (ThresholdDirectionPtrOutput) ElementType() reflect.Type {
+	return thresholdDirectionPtrType
+}
+
+func (o ThresholdDirectionPtrOutput) ToThresholdDirectionPtrOutput() ThresholdDirectionPtrOutput {
+	return o
+}
+
+func (o ThresholdDirectionPtrOutput) ToThresholdDirectionPtrOutputWithContext(ctx context.Context) ThresholdDirectionPtrOutput {
+	return o
+}
+
+func (o ThresholdDirectionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ThresholdDirectionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ThresholdDirection) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ThresholdDirectionPtrOutput) Elem() ThresholdDirectionOutput {
+	return o.ApplyT(func(v *ThresholdDirection) ThresholdDirection {
+		var ret ThresholdDirection
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ThresholdDirectionOutput)
+}
+
+// ThresholdDirectionInput is an input type that accepts ThresholdDirectionArgs and ThresholdDirectionOutput values.
+// You can construct a concrete instance of `ThresholdDirectionInput` via:
+//
+//          ThresholdDirectionArgs{...}
+type ThresholdDirectionInput interface {
+	pulumi.Input
+
+	ToThresholdDirectionOutput() ThresholdDirectionOutput
+	ToThresholdDirectionOutputWithContext(context.Context) ThresholdDirectionOutput
+}
+
+var thresholdDirectionPtrType = reflect.TypeOf((**ThresholdDirection)(nil)).Elem()
+
+type ThresholdDirectionPtrInput interface {
+	pulumi.Input
+
+	ToThresholdDirectionPtrOutput() ThresholdDirectionPtrOutput
+	ToThresholdDirectionPtrOutputWithContext(context.Context) ThresholdDirectionPtrOutput
+}
+
+type thresholdDirectionPtr string
+
+func ThresholdDirectionPtr(v string) ThresholdDirectionPtrInput {
+	return (*thresholdDirectionPtr)(&v)
+}
+
+func (*thresholdDirectionPtr) ElementType() reflect.Type {
+	return thresholdDirectionPtrType
+}
+
+func (in *thresholdDirectionPtr) ToThresholdDirectionPtrOutput() ThresholdDirectionPtrOutput {
+	return pulumi.ToOutput(in).(ThresholdDirectionPtrOutput)
+}
+
+func (in *thresholdDirectionPtr) ToThresholdDirectionPtrOutputWithContext(ctx context.Context) ThresholdDirectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ThresholdDirectionPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(AggregationCrossSeriesReducerOutput{})
+	pulumi.RegisterOutputType(AggregationCrossSeriesReducerPtrOutput{})
+	pulumi.RegisterOutputType(AggregationPerSeriesAlignerOutput{})
+	pulumi.RegisterOutputType(AggregationPerSeriesAlignerPtrOutput{})
+	pulumi.RegisterOutputType(AxisScaleOutput{})
+	pulumi.RegisterOutputType(AxisScalePtrOutput{})
+	pulumi.RegisterOutputType(ChartOptionsModeOutput{})
+	pulumi.RegisterOutputType(ChartOptionsModePtrOutput{})
+	pulumi.RegisterOutputType(DataSetPlotTypeOutput{})
+	pulumi.RegisterOutputType(DataSetPlotTypePtrOutput{})
+	pulumi.RegisterOutputType(PickTimeSeriesFilterDirectionOutput{})
+	pulumi.RegisterOutputType(PickTimeSeriesFilterDirectionPtrOutput{})
+	pulumi.RegisterOutputType(PickTimeSeriesFilterRankingMethodOutput{})
+	pulumi.RegisterOutputType(PickTimeSeriesFilterRankingMethodPtrOutput{})
+	pulumi.RegisterOutputType(SparkChartViewSparkChartTypeOutput{})
+	pulumi.RegisterOutputType(SparkChartViewSparkChartTypePtrOutput{})
+	pulumi.RegisterOutputType(TextFormatOutput{})
+	pulumi.RegisterOutputType(TextFormatPtrOutput{})
+	pulumi.RegisterOutputType(ThresholdColorOutput{})
+	pulumi.RegisterOutputType(ThresholdColorPtrOutput{})
+	pulumi.RegisterOutputType(ThresholdDirectionOutput{})
+	pulumi.RegisterOutputType(ThresholdDirectionPtrOutput{})
 }

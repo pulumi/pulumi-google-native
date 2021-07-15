@@ -42,6 +42,9 @@ func NewAttributeDefinition(ctx *pulumi.Context,
 	if args.AttributeDefinitionId == nil {
 		return nil, errors.New("invalid value for required argument 'AttributeDefinitionId'")
 	}
+	if args.Category == nil {
+		return nil, errors.New("invalid value for required argument 'Category'")
+	}
 	if args.ConsentStoreId == nil {
 		return nil, errors.New("invalid value for required argument 'ConsentStoreId'")
 	}
@@ -76,33 +79,9 @@ func GetAttributeDefinition(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AttributeDefinition resources.
 type attributeDefinitionState struct {
-	// Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
-	AllowedValues []string `pulumi:"allowedValues"`
-	// The category of the attribute. The value of this field cannot be changed after creation.
-	Category *string `pulumi:"category"`
-	// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
-	ConsentDefaultValues []string `pulumi:"consentDefaultValues"`
-	// Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
-	DataMappingDefaultValue *string `pulumi:"dataMappingDefaultValue"`
-	// Optional. A description of the attribute.
-	Description *string `pulumi:"description"`
-	// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
-	Name *string `pulumi:"name"`
 }
 
 type AttributeDefinitionState struct {
-	// Possible values for the attribute. The number of allowed values must not exceed 100. An empty list is invalid. The list can only be expanded after creation.
-	AllowedValues pulumi.StringArrayInput
-	// The category of the attribute. The value of this field cannot be changed after creation.
-	Category pulumi.StringPtrInput
-	// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
-	ConsentDefaultValues pulumi.StringArrayInput
-	// Optional. Default value of the attribute in User data mappings. If no default value is specified, it defaults to an empty value. This field is only applicable to attributes of the category `RESOURCE`.
-	DataMappingDefaultValue pulumi.StringPtrInput
-	// Optional. A description of the attribute.
-	Description pulumi.StringPtrInput
-	// Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation.
-	Name pulumi.StringPtrInput
 }
 
 func (AttributeDefinitionState) ElementType() reflect.Type {
@@ -114,7 +93,7 @@ type attributeDefinitionArgs struct {
 	AllowedValues         []string `pulumi:"allowedValues"`
 	AttributeDefinitionId string   `pulumi:"attributeDefinitionId"`
 	// The category of the attribute. The value of this field cannot be changed after creation.
-	Category string `pulumi:"category"`
+	Category AttributeDefinitionCategory `pulumi:"category"`
 	// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
 	ConsentDefaultValues []string `pulumi:"consentDefaultValues"`
 	ConsentStoreId       string   `pulumi:"consentStoreId"`
@@ -135,7 +114,7 @@ type AttributeDefinitionArgs struct {
 	AllowedValues         pulumi.StringArrayInput
 	AttributeDefinitionId pulumi.StringInput
 	// The category of the attribute. The value of this field cannot be changed after creation.
-	Category AttributeDefinitionCategory
+	Category AttributeDefinitionCategoryInput
 	// Optional. Default values of the attribute in Consents. If no default values are specified, it defaults to an empty value.
 	ConsentDefaultValues pulumi.StringArrayInput
 	ConsentStoreId       pulumi.StringInput

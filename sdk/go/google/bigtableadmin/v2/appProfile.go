@@ -65,29 +65,9 @@ func GetAppProfile(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering AppProfile resources.
 type appProfileState struct {
-	// Long form description of the use case for this AppProfile.
-	Description *string `pulumi:"description"`
-	// Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
-	Etag *string `pulumi:"etag"`
-	// Use a multi-cluster routing policy.
-	MultiClusterRoutingUseAny *MultiClusterRoutingUseAnyResponse `pulumi:"multiClusterRoutingUseAny"`
-	// The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
-	Name *string `pulumi:"name"`
-	// Use a single-cluster routing policy.
-	SingleClusterRouting *SingleClusterRoutingResponse `pulumi:"singleClusterRouting"`
 }
 
 type AppProfileState struct {
-	// Long form description of the use case for this AppProfile.
-	Description pulumi.StringPtrInput
-	// Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
-	Etag pulumi.StringPtrInput
-	// Use a multi-cluster routing policy.
-	MultiClusterRoutingUseAny MultiClusterRoutingUseAnyResponsePtrInput
-	// The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
-	Name pulumi.StringPtrInput
-	// Use a single-cluster routing policy.
-	SingleClusterRouting SingleClusterRoutingResponsePtrInput
 }
 
 func (AppProfileState) ElementType() reflect.Type {

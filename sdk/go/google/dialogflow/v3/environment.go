@@ -71,29 +71,9 @@ func GetEnvironment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Environment resources.
 type environmentState struct {
-	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
-	Description *string `pulumi:"description"`
-	// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
-	DisplayName *string `pulumi:"displayName"`
-	// The name of the environment. Format: `projects//locations//agents//environments/`.
-	Name *string `pulumi:"name"`
-	// Update time of this environment.
-	UpdateTime *string `pulumi:"updateTime"`
-	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
-	VersionConfigs []GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponse `pulumi:"versionConfigs"`
 }
 
 type EnvironmentState struct {
-	// The human-readable description of the environment. The maximum length is 500 characters. If exceeded, the request is rejected.
-	Description pulumi.StringPtrInput
-	// The human-readable name of the environment (unique in an agent). Limit of 64 characters.
-	DisplayName pulumi.StringPtrInput
-	// The name of the environment. Format: `projects//locations//agents//environments/`.
-	Name pulumi.StringPtrInput
-	// Update time of this environment.
-	UpdateTime pulumi.StringPtrInput
-	// A list of configurations for flow versions. You should include version configs for all flows that are reachable from `Start Flow` in the agent. Otherwise, an error will be returned.
-	VersionConfigs GoogleCloudDialogflowCxV3EnvironmentVersionConfigResponseArrayInput
 }
 
 func (EnvironmentState) ElementType() reflect.Type {

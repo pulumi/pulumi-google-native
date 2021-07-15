@@ -61,21 +61,9 @@ func GetParticipant(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Participant resources.
 type participantState struct {
-	// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
-	Name *string `pulumi:"name"`
-	// Optional. Obfuscated user id that should be associated with the created participant. You can specify a user id as follows: 1. If you set this field in CreateParticipantRequest or UpdateParticipantRequest, Dialogflow adds the obfuscated user id with the participant. 2. If you set this field in AnalyzeContent or StreamingAnalyzeContent, Dialogflow will update Participant.obfuscated_external_user_id. Dialogflow uses this user id for following purposes: 1) Billing and measurement. If user with the same obfuscated_external_user_id is created in a later conversation, dialogflow will know it's the same user. 2) Agent assist suggestion personalization. For example, Dialogflow can use it to provide personalized smart reply suggestions for this user. Note: * Please never pass raw user ids to Dialogflow. Always obfuscate your user id first. * Dialogflow only accepts a UTF-8 encoded string, e.g., a hex digest of a hash function like SHA-512. * The length of the user id must be <= 256 characters.
-	ObfuscatedExternalUserId *string `pulumi:"obfuscatedExternalUserId"`
-	// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
-	Role *string `pulumi:"role"`
 }
 
 type ParticipantState struct {
-	// Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`.
-	Name pulumi.StringPtrInput
-	// Optional. Obfuscated user id that should be associated with the created participant. You can specify a user id as follows: 1. If you set this field in CreateParticipantRequest or UpdateParticipantRequest, Dialogflow adds the obfuscated user id with the participant. 2. If you set this field in AnalyzeContent or StreamingAnalyzeContent, Dialogflow will update Participant.obfuscated_external_user_id. Dialogflow uses this user id for following purposes: 1) Billing and measurement. If user with the same obfuscated_external_user_id is created in a later conversation, dialogflow will know it's the same user. 2) Agent assist suggestion personalization. For example, Dialogflow can use it to provide personalized smart reply suggestions for this user. Note: * Please never pass raw user ids to Dialogflow. Always obfuscate your user id first. * Dialogflow only accepts a UTF-8 encoded string, e.g., a hex digest of a hash function like SHA-512. * The length of the user id must be <= 256 characters.
-	ObfuscatedExternalUserId pulumi.StringPtrInput
-	// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
-	Role pulumi.StringPtrInput
 }
 
 func (ParticipantState) ElementType() reflect.Type {
@@ -91,7 +79,7 @@ type participantArgs struct {
 	ObfuscatedExternalUserId *string `pulumi:"obfuscatedExternalUserId"`
 	Project                  string  `pulumi:"project"`
 	// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
-	Role *string `pulumi:"role"`
+	Role *ParticipantRole `pulumi:"role"`
 }
 
 // The set of arguments for constructing a Participant resource.
@@ -104,7 +92,7 @@ type ParticipantArgs struct {
 	ObfuscatedExternalUserId pulumi.StringPtrInput
 	Project                  pulumi.StringInput
 	// Immutable. The role this participant plays in the conversation. This field must be set during participant creation and is then immutable.
-	Role *ParticipantRole
+	Role ParticipantRolePtrInput
 }
 
 func (ParticipantArgs) ElementType() reflect.Type {

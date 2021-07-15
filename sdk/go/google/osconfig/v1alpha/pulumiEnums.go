@@ -11,7 +11,7 @@ import (
 )
 
 // Required. Policy mode
-type OSPolicyMode pulumi.String
+type OSPolicyMode string
 
 const (
 	// Invalid mode
@@ -23,7 +23,23 @@ const (
 )
 
 func (OSPolicyMode) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*OSPolicyMode)(nil)).Elem()
+}
+
+func (e OSPolicyMode) ToOSPolicyModeOutput() OSPolicyModeOutput {
+	return pulumi.ToOutput(e).(OSPolicyModeOutput)
+}
+
+func (e OSPolicyMode) ToOSPolicyModeOutputWithContext(ctx context.Context) OSPolicyModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OSPolicyModeOutput)
+}
+
+func (e OSPolicyMode) ToOSPolicyModePtrOutput() OSPolicyModePtrOutput {
+	return e.ToOSPolicyModePtrOutputWithContext(context.Background())
+}
+
+func (e OSPolicyMode) ToOSPolicyModePtrOutputWithContext(ctx context.Context) OSPolicyModePtrOutput {
+	return OSPolicyMode(e).ToOSPolicyModeOutputWithContext(ctx).ToOSPolicyModePtrOutputWithContext(ctx)
 }
 
 func (e OSPolicyMode) ToStringOutput() pulumi.StringOutput {
@@ -42,8 +58,129 @@ func (e OSPolicyMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.S
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type OSPolicyModeOutput struct{ *pulumi.OutputState }
+
+func (OSPolicyModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OSPolicyMode)(nil)).Elem()
+}
+
+func (o OSPolicyModeOutput) ToOSPolicyModeOutput() OSPolicyModeOutput {
+	return o
+}
+
+func (o OSPolicyModeOutput) ToOSPolicyModeOutputWithContext(ctx context.Context) OSPolicyModeOutput {
+	return o
+}
+
+func (o OSPolicyModeOutput) ToOSPolicyModePtrOutput() OSPolicyModePtrOutput {
+	return o.ToOSPolicyModePtrOutputWithContext(context.Background())
+}
+
+func (o OSPolicyModeOutput) ToOSPolicyModePtrOutputWithContext(ctx context.Context) OSPolicyModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyMode) *OSPolicyMode {
+		return &v
+	}).(OSPolicyModePtrOutput)
+}
+
+func (o OSPolicyModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OSPolicyModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OSPolicyMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OSPolicyModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OSPolicyModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OSPolicyMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OSPolicyModePtrOutput struct{ *pulumi.OutputState }
+
+func (OSPolicyModePtrOutput) ElementType() reflect.Type {
+	return ospolicyModePtrType
+}
+
+func (o OSPolicyModePtrOutput) ToOSPolicyModePtrOutput() OSPolicyModePtrOutput {
+	return o
+}
+
+func (o OSPolicyModePtrOutput) ToOSPolicyModePtrOutputWithContext(ctx context.Context) OSPolicyModePtrOutput {
+	return o
+}
+
+func (o OSPolicyModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OSPolicyModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OSPolicyMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OSPolicyModePtrOutput) Elem() OSPolicyModeOutput {
+	return o.ApplyT(func(v *OSPolicyMode) OSPolicyMode {
+		var ret OSPolicyMode
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(OSPolicyModeOutput)
+}
+
+// OSPolicyModeInput is an input type that accepts OSPolicyModeArgs and OSPolicyModeOutput values.
+// You can construct a concrete instance of `OSPolicyModeInput` via:
+//
+//          OSPolicyModeArgs{...}
+type OSPolicyModeInput interface {
+	pulumi.Input
+
+	ToOSPolicyModeOutput() OSPolicyModeOutput
+	ToOSPolicyModeOutputWithContext(context.Context) OSPolicyModeOutput
+}
+
+var ospolicyModePtrType = reflect.TypeOf((**OSPolicyMode)(nil)).Elem()
+
+type OSPolicyModePtrInput interface {
+	pulumi.Input
+
+	ToOSPolicyModePtrOutput() OSPolicyModePtrOutput
+	ToOSPolicyModePtrOutputWithContext(context.Context) OSPolicyModePtrOutput
+}
+
+type ospolicyModePtr string
+
+func OSPolicyModePtr(v string) OSPolicyModePtrInput {
+	return (*ospolicyModePtr)(&v)
+}
+
+func (*ospolicyModePtr) ElementType() reflect.Type {
+	return ospolicyModePtrType
+}
+
+func (in *ospolicyModePtr) ToOSPolicyModePtrOutput() OSPolicyModePtrOutput {
+	return pulumi.ToOutput(in).(OSPolicyModePtrOutput)
+}
+
+func (in *ospolicyModePtr) ToOSPolicyModePtrOutputWithContext(ctx context.Context) OSPolicyModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OSPolicyModePtrOutput)
+}
+
 // Required. The script interpreter to use.
-type OSPolicyResourceExecResourceExecInterpreter pulumi.String
+type OSPolicyResourceExecResourceExecInterpreter string
 
 const (
 	// Defaults to NONE.
@@ -57,7 +194,23 @@ const (
 )
 
 func (OSPolicyResourceExecResourceExecInterpreter) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*OSPolicyResourceExecResourceExecInterpreter)(nil)).Elem()
+}
+
+func (e OSPolicyResourceExecResourceExecInterpreter) ToOSPolicyResourceExecResourceExecInterpreterOutput() OSPolicyResourceExecResourceExecInterpreterOutput {
+	return pulumi.ToOutput(e).(OSPolicyResourceExecResourceExecInterpreterOutput)
+}
+
+func (e OSPolicyResourceExecResourceExecInterpreter) ToOSPolicyResourceExecResourceExecInterpreterOutputWithContext(ctx context.Context) OSPolicyResourceExecResourceExecInterpreterOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OSPolicyResourceExecResourceExecInterpreterOutput)
+}
+
+func (e OSPolicyResourceExecResourceExecInterpreter) ToOSPolicyResourceExecResourceExecInterpreterPtrOutput() OSPolicyResourceExecResourceExecInterpreterPtrOutput {
+	return e.ToOSPolicyResourceExecResourceExecInterpreterPtrOutputWithContext(context.Background())
+}
+
+func (e OSPolicyResourceExecResourceExecInterpreter) ToOSPolicyResourceExecResourceExecInterpreterPtrOutputWithContext(ctx context.Context) OSPolicyResourceExecResourceExecInterpreterPtrOutput {
+	return OSPolicyResourceExecResourceExecInterpreter(e).ToOSPolicyResourceExecResourceExecInterpreterOutputWithContext(ctx).ToOSPolicyResourceExecResourceExecInterpreterPtrOutputWithContext(ctx)
 }
 
 func (e OSPolicyResourceExecResourceExecInterpreter) ToStringOutput() pulumi.StringOutput {
@@ -76,8 +229,129 @@ func (e OSPolicyResourceExecResourceExecInterpreter) ToStringPtrOutputWithContex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type OSPolicyResourceExecResourceExecInterpreterOutput struct{ *pulumi.OutputState }
+
+func (OSPolicyResourceExecResourceExecInterpreterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OSPolicyResourceExecResourceExecInterpreter)(nil)).Elem()
+}
+
+func (o OSPolicyResourceExecResourceExecInterpreterOutput) ToOSPolicyResourceExecResourceExecInterpreterOutput() OSPolicyResourceExecResourceExecInterpreterOutput {
+	return o
+}
+
+func (o OSPolicyResourceExecResourceExecInterpreterOutput) ToOSPolicyResourceExecResourceExecInterpreterOutputWithContext(ctx context.Context) OSPolicyResourceExecResourceExecInterpreterOutput {
+	return o
+}
+
+func (o OSPolicyResourceExecResourceExecInterpreterOutput) ToOSPolicyResourceExecResourceExecInterpreterPtrOutput() OSPolicyResourceExecResourceExecInterpreterPtrOutput {
+	return o.ToOSPolicyResourceExecResourceExecInterpreterPtrOutputWithContext(context.Background())
+}
+
+func (o OSPolicyResourceExecResourceExecInterpreterOutput) ToOSPolicyResourceExecResourceExecInterpreterPtrOutputWithContext(ctx context.Context) OSPolicyResourceExecResourceExecInterpreterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourceExecResourceExecInterpreter) *OSPolicyResourceExecResourceExecInterpreter {
+		return &v
+	}).(OSPolicyResourceExecResourceExecInterpreterPtrOutput)
+}
+
+func (o OSPolicyResourceExecResourceExecInterpreterOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OSPolicyResourceExecResourceExecInterpreterOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OSPolicyResourceExecResourceExecInterpreter) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OSPolicyResourceExecResourceExecInterpreterOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OSPolicyResourceExecResourceExecInterpreterOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OSPolicyResourceExecResourceExecInterpreter) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OSPolicyResourceExecResourceExecInterpreterPtrOutput struct{ *pulumi.OutputState }
+
+func (OSPolicyResourceExecResourceExecInterpreterPtrOutput) ElementType() reflect.Type {
+	return ospolicyResourceExecResourceExecInterpreterPtrType
+}
+
+func (o OSPolicyResourceExecResourceExecInterpreterPtrOutput) ToOSPolicyResourceExecResourceExecInterpreterPtrOutput() OSPolicyResourceExecResourceExecInterpreterPtrOutput {
+	return o
+}
+
+func (o OSPolicyResourceExecResourceExecInterpreterPtrOutput) ToOSPolicyResourceExecResourceExecInterpreterPtrOutputWithContext(ctx context.Context) OSPolicyResourceExecResourceExecInterpreterPtrOutput {
+	return o
+}
+
+func (o OSPolicyResourceExecResourceExecInterpreterPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OSPolicyResourceExecResourceExecInterpreterPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OSPolicyResourceExecResourceExecInterpreter) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OSPolicyResourceExecResourceExecInterpreterPtrOutput) Elem() OSPolicyResourceExecResourceExecInterpreterOutput {
+	return o.ApplyT(func(v *OSPolicyResourceExecResourceExecInterpreter) OSPolicyResourceExecResourceExecInterpreter {
+		var ret OSPolicyResourceExecResourceExecInterpreter
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(OSPolicyResourceExecResourceExecInterpreterOutput)
+}
+
+// OSPolicyResourceExecResourceExecInterpreterInput is an input type that accepts OSPolicyResourceExecResourceExecInterpreterArgs and OSPolicyResourceExecResourceExecInterpreterOutput values.
+// You can construct a concrete instance of `OSPolicyResourceExecResourceExecInterpreterInput` via:
+//
+//          OSPolicyResourceExecResourceExecInterpreterArgs{...}
+type OSPolicyResourceExecResourceExecInterpreterInput interface {
+	pulumi.Input
+
+	ToOSPolicyResourceExecResourceExecInterpreterOutput() OSPolicyResourceExecResourceExecInterpreterOutput
+	ToOSPolicyResourceExecResourceExecInterpreterOutputWithContext(context.Context) OSPolicyResourceExecResourceExecInterpreterOutput
+}
+
+var ospolicyResourceExecResourceExecInterpreterPtrType = reflect.TypeOf((**OSPolicyResourceExecResourceExecInterpreter)(nil)).Elem()
+
+type OSPolicyResourceExecResourceExecInterpreterPtrInput interface {
+	pulumi.Input
+
+	ToOSPolicyResourceExecResourceExecInterpreterPtrOutput() OSPolicyResourceExecResourceExecInterpreterPtrOutput
+	ToOSPolicyResourceExecResourceExecInterpreterPtrOutputWithContext(context.Context) OSPolicyResourceExecResourceExecInterpreterPtrOutput
+}
+
+type ospolicyResourceExecResourceExecInterpreterPtr string
+
+func OSPolicyResourceExecResourceExecInterpreterPtr(v string) OSPolicyResourceExecResourceExecInterpreterPtrInput {
+	return (*ospolicyResourceExecResourceExecInterpreterPtr)(&v)
+}
+
+func (*ospolicyResourceExecResourceExecInterpreterPtr) ElementType() reflect.Type {
+	return ospolicyResourceExecResourceExecInterpreterPtrType
+}
+
+func (in *ospolicyResourceExecResourceExecInterpreterPtr) ToOSPolicyResourceExecResourceExecInterpreterPtrOutput() OSPolicyResourceExecResourceExecInterpreterPtrOutput {
+	return pulumi.ToOutput(in).(OSPolicyResourceExecResourceExecInterpreterPtrOutput)
+}
+
+func (in *ospolicyResourceExecResourceExecInterpreterPtr) ToOSPolicyResourceExecResourceExecInterpreterPtrOutputWithContext(ctx context.Context) OSPolicyResourceExecResourceExecInterpreterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OSPolicyResourceExecResourceExecInterpreterPtrOutput)
+}
+
 // Required. Desired state of the file.
-type OSPolicyResourceFileResourceState pulumi.String
+type OSPolicyResourceFileResourceState string
 
 const (
 	// Unspecified is invalid.
@@ -91,7 +365,23 @@ const (
 )
 
 func (OSPolicyResourceFileResourceState) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*OSPolicyResourceFileResourceState)(nil)).Elem()
+}
+
+func (e OSPolicyResourceFileResourceState) ToOSPolicyResourceFileResourceStateOutput() OSPolicyResourceFileResourceStateOutput {
+	return pulumi.ToOutput(e).(OSPolicyResourceFileResourceStateOutput)
+}
+
+func (e OSPolicyResourceFileResourceState) ToOSPolicyResourceFileResourceStateOutputWithContext(ctx context.Context) OSPolicyResourceFileResourceStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OSPolicyResourceFileResourceStateOutput)
+}
+
+func (e OSPolicyResourceFileResourceState) ToOSPolicyResourceFileResourceStatePtrOutput() OSPolicyResourceFileResourceStatePtrOutput {
+	return e.ToOSPolicyResourceFileResourceStatePtrOutputWithContext(context.Background())
+}
+
+func (e OSPolicyResourceFileResourceState) ToOSPolicyResourceFileResourceStatePtrOutputWithContext(ctx context.Context) OSPolicyResourceFileResourceStatePtrOutput {
+	return OSPolicyResourceFileResourceState(e).ToOSPolicyResourceFileResourceStateOutputWithContext(ctx).ToOSPolicyResourceFileResourceStatePtrOutputWithContext(ctx)
 }
 
 func (e OSPolicyResourceFileResourceState) ToStringOutput() pulumi.StringOutput {
@@ -110,8 +400,129 @@ func (e OSPolicyResourceFileResourceState) ToStringPtrOutputWithContext(ctx cont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type OSPolicyResourceFileResourceStateOutput struct{ *pulumi.OutputState }
+
+func (OSPolicyResourceFileResourceStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OSPolicyResourceFileResourceState)(nil)).Elem()
+}
+
+func (o OSPolicyResourceFileResourceStateOutput) ToOSPolicyResourceFileResourceStateOutput() OSPolicyResourceFileResourceStateOutput {
+	return o
+}
+
+func (o OSPolicyResourceFileResourceStateOutput) ToOSPolicyResourceFileResourceStateOutputWithContext(ctx context.Context) OSPolicyResourceFileResourceStateOutput {
+	return o
+}
+
+func (o OSPolicyResourceFileResourceStateOutput) ToOSPolicyResourceFileResourceStatePtrOutput() OSPolicyResourceFileResourceStatePtrOutput {
+	return o.ToOSPolicyResourceFileResourceStatePtrOutputWithContext(context.Background())
+}
+
+func (o OSPolicyResourceFileResourceStateOutput) ToOSPolicyResourceFileResourceStatePtrOutputWithContext(ctx context.Context) OSPolicyResourceFileResourceStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourceFileResourceState) *OSPolicyResourceFileResourceState {
+		return &v
+	}).(OSPolicyResourceFileResourceStatePtrOutput)
+}
+
+func (o OSPolicyResourceFileResourceStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OSPolicyResourceFileResourceStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OSPolicyResourceFileResourceState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OSPolicyResourceFileResourceStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OSPolicyResourceFileResourceStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OSPolicyResourceFileResourceState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OSPolicyResourceFileResourceStatePtrOutput struct{ *pulumi.OutputState }
+
+func (OSPolicyResourceFileResourceStatePtrOutput) ElementType() reflect.Type {
+	return ospolicyResourceFileResourceStatePtrType
+}
+
+func (o OSPolicyResourceFileResourceStatePtrOutput) ToOSPolicyResourceFileResourceStatePtrOutput() OSPolicyResourceFileResourceStatePtrOutput {
+	return o
+}
+
+func (o OSPolicyResourceFileResourceStatePtrOutput) ToOSPolicyResourceFileResourceStatePtrOutputWithContext(ctx context.Context) OSPolicyResourceFileResourceStatePtrOutput {
+	return o
+}
+
+func (o OSPolicyResourceFileResourceStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OSPolicyResourceFileResourceStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OSPolicyResourceFileResourceState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OSPolicyResourceFileResourceStatePtrOutput) Elem() OSPolicyResourceFileResourceStateOutput {
+	return o.ApplyT(func(v *OSPolicyResourceFileResourceState) OSPolicyResourceFileResourceState {
+		var ret OSPolicyResourceFileResourceState
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(OSPolicyResourceFileResourceStateOutput)
+}
+
+// OSPolicyResourceFileResourceStateInput is an input type that accepts OSPolicyResourceFileResourceStateArgs and OSPolicyResourceFileResourceStateOutput values.
+// You can construct a concrete instance of `OSPolicyResourceFileResourceStateInput` via:
+//
+//          OSPolicyResourceFileResourceStateArgs{...}
+type OSPolicyResourceFileResourceStateInput interface {
+	pulumi.Input
+
+	ToOSPolicyResourceFileResourceStateOutput() OSPolicyResourceFileResourceStateOutput
+	ToOSPolicyResourceFileResourceStateOutputWithContext(context.Context) OSPolicyResourceFileResourceStateOutput
+}
+
+var ospolicyResourceFileResourceStatePtrType = reflect.TypeOf((**OSPolicyResourceFileResourceState)(nil)).Elem()
+
+type OSPolicyResourceFileResourceStatePtrInput interface {
+	pulumi.Input
+
+	ToOSPolicyResourceFileResourceStatePtrOutput() OSPolicyResourceFileResourceStatePtrOutput
+	ToOSPolicyResourceFileResourceStatePtrOutputWithContext(context.Context) OSPolicyResourceFileResourceStatePtrOutput
+}
+
+type ospolicyResourceFileResourceStatePtr string
+
+func OSPolicyResourceFileResourceStatePtr(v string) OSPolicyResourceFileResourceStatePtrInput {
+	return (*ospolicyResourceFileResourceStatePtr)(&v)
+}
+
+func (*ospolicyResourceFileResourceStatePtr) ElementType() reflect.Type {
+	return ospolicyResourceFileResourceStatePtrType
+}
+
+func (in *ospolicyResourceFileResourceStatePtr) ToOSPolicyResourceFileResourceStatePtrOutput() OSPolicyResourceFileResourceStatePtrOutput {
+	return pulumi.ToOutput(in).(OSPolicyResourceFileResourceStatePtrOutput)
+}
+
+func (in *ospolicyResourceFileResourceStatePtr) ToOSPolicyResourceFileResourceStatePtrOutputWithContext(ctx context.Context) OSPolicyResourceFileResourceStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OSPolicyResourceFileResourceStatePtrOutput)
+}
+
 // Required. The desired state the agent should maintain for this package.
-type OSPolicyResourcePackageResourceDesiredState pulumi.String
+type OSPolicyResourcePackageResourceDesiredState string
 
 const (
 	// Unspecified is invalid.
@@ -123,7 +534,23 @@ const (
 )
 
 func (OSPolicyResourcePackageResourceDesiredState) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*OSPolicyResourcePackageResourceDesiredState)(nil)).Elem()
+}
+
+func (e OSPolicyResourcePackageResourceDesiredState) ToOSPolicyResourcePackageResourceDesiredStateOutput() OSPolicyResourcePackageResourceDesiredStateOutput {
+	return pulumi.ToOutput(e).(OSPolicyResourcePackageResourceDesiredStateOutput)
+}
+
+func (e OSPolicyResourcePackageResourceDesiredState) ToOSPolicyResourcePackageResourceDesiredStateOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceDesiredStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OSPolicyResourcePackageResourceDesiredStateOutput)
+}
+
+func (e OSPolicyResourcePackageResourceDesiredState) ToOSPolicyResourcePackageResourceDesiredStatePtrOutput() OSPolicyResourcePackageResourceDesiredStatePtrOutput {
+	return e.ToOSPolicyResourcePackageResourceDesiredStatePtrOutputWithContext(context.Background())
+}
+
+func (e OSPolicyResourcePackageResourceDesiredState) ToOSPolicyResourcePackageResourceDesiredStatePtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceDesiredStatePtrOutput {
+	return OSPolicyResourcePackageResourceDesiredState(e).ToOSPolicyResourcePackageResourceDesiredStateOutputWithContext(ctx).ToOSPolicyResourcePackageResourceDesiredStatePtrOutputWithContext(ctx)
 }
 
 func (e OSPolicyResourcePackageResourceDesiredState) ToStringOutput() pulumi.StringOutput {
@@ -142,8 +569,129 @@ func (e OSPolicyResourcePackageResourceDesiredState) ToStringPtrOutputWithContex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type OSPolicyResourcePackageResourceDesiredStateOutput struct{ *pulumi.OutputState }
+
+func (OSPolicyResourcePackageResourceDesiredStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OSPolicyResourcePackageResourceDesiredState)(nil)).Elem()
+}
+
+func (o OSPolicyResourcePackageResourceDesiredStateOutput) ToOSPolicyResourcePackageResourceDesiredStateOutput() OSPolicyResourcePackageResourceDesiredStateOutput {
+	return o
+}
+
+func (o OSPolicyResourcePackageResourceDesiredStateOutput) ToOSPolicyResourcePackageResourceDesiredStateOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceDesiredStateOutput {
+	return o
+}
+
+func (o OSPolicyResourcePackageResourceDesiredStateOutput) ToOSPolicyResourcePackageResourceDesiredStatePtrOutput() OSPolicyResourcePackageResourceDesiredStatePtrOutput {
+	return o.ToOSPolicyResourcePackageResourceDesiredStatePtrOutputWithContext(context.Background())
+}
+
+func (o OSPolicyResourcePackageResourceDesiredStateOutput) ToOSPolicyResourcePackageResourceDesiredStatePtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceDesiredStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourcePackageResourceDesiredState) *OSPolicyResourcePackageResourceDesiredState {
+		return &v
+	}).(OSPolicyResourcePackageResourceDesiredStatePtrOutput)
+}
+
+func (o OSPolicyResourcePackageResourceDesiredStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OSPolicyResourcePackageResourceDesiredStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OSPolicyResourcePackageResourceDesiredState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OSPolicyResourcePackageResourceDesiredStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OSPolicyResourcePackageResourceDesiredStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OSPolicyResourcePackageResourceDesiredState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OSPolicyResourcePackageResourceDesiredStatePtrOutput struct{ *pulumi.OutputState }
+
+func (OSPolicyResourcePackageResourceDesiredStatePtrOutput) ElementType() reflect.Type {
+	return ospolicyResourcePackageResourceDesiredStatePtrType
+}
+
+func (o OSPolicyResourcePackageResourceDesiredStatePtrOutput) ToOSPolicyResourcePackageResourceDesiredStatePtrOutput() OSPolicyResourcePackageResourceDesiredStatePtrOutput {
+	return o
+}
+
+func (o OSPolicyResourcePackageResourceDesiredStatePtrOutput) ToOSPolicyResourcePackageResourceDesiredStatePtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceDesiredStatePtrOutput {
+	return o
+}
+
+func (o OSPolicyResourcePackageResourceDesiredStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OSPolicyResourcePackageResourceDesiredStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OSPolicyResourcePackageResourceDesiredState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OSPolicyResourcePackageResourceDesiredStatePtrOutput) Elem() OSPolicyResourcePackageResourceDesiredStateOutput {
+	return o.ApplyT(func(v *OSPolicyResourcePackageResourceDesiredState) OSPolicyResourcePackageResourceDesiredState {
+		var ret OSPolicyResourcePackageResourceDesiredState
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(OSPolicyResourcePackageResourceDesiredStateOutput)
+}
+
+// OSPolicyResourcePackageResourceDesiredStateInput is an input type that accepts OSPolicyResourcePackageResourceDesiredStateArgs and OSPolicyResourcePackageResourceDesiredStateOutput values.
+// You can construct a concrete instance of `OSPolicyResourcePackageResourceDesiredStateInput` via:
+//
+//          OSPolicyResourcePackageResourceDesiredStateArgs{...}
+type OSPolicyResourcePackageResourceDesiredStateInput interface {
+	pulumi.Input
+
+	ToOSPolicyResourcePackageResourceDesiredStateOutput() OSPolicyResourcePackageResourceDesiredStateOutput
+	ToOSPolicyResourcePackageResourceDesiredStateOutputWithContext(context.Context) OSPolicyResourcePackageResourceDesiredStateOutput
+}
+
+var ospolicyResourcePackageResourceDesiredStatePtrType = reflect.TypeOf((**OSPolicyResourcePackageResourceDesiredState)(nil)).Elem()
+
+type OSPolicyResourcePackageResourceDesiredStatePtrInput interface {
+	pulumi.Input
+
+	ToOSPolicyResourcePackageResourceDesiredStatePtrOutput() OSPolicyResourcePackageResourceDesiredStatePtrOutput
+	ToOSPolicyResourcePackageResourceDesiredStatePtrOutputWithContext(context.Context) OSPolicyResourcePackageResourceDesiredStatePtrOutput
+}
+
+type ospolicyResourcePackageResourceDesiredStatePtr string
+
+func OSPolicyResourcePackageResourceDesiredStatePtr(v string) OSPolicyResourcePackageResourceDesiredStatePtrInput {
+	return (*ospolicyResourcePackageResourceDesiredStatePtr)(&v)
+}
+
+func (*ospolicyResourcePackageResourceDesiredStatePtr) ElementType() reflect.Type {
+	return ospolicyResourcePackageResourceDesiredStatePtrType
+}
+
+func (in *ospolicyResourcePackageResourceDesiredStatePtr) ToOSPolicyResourcePackageResourceDesiredStatePtrOutput() OSPolicyResourcePackageResourceDesiredStatePtrOutput {
+	return pulumi.ToOutput(in).(OSPolicyResourcePackageResourceDesiredStatePtrOutput)
+}
+
+func (in *ospolicyResourcePackageResourceDesiredStatePtr) ToOSPolicyResourcePackageResourceDesiredStatePtrOutputWithContext(ctx context.Context) OSPolicyResourcePackageResourceDesiredStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OSPolicyResourcePackageResourceDesiredStatePtrOutput)
+}
+
 // Required. Type of archive files in this repository.
-type OSPolicyResourceRepositoryResourceAptRepositoryArchiveType pulumi.String
+type OSPolicyResourceRepositoryResourceAptRepositoryArchiveType string
 
 const (
 	// Unspecified is invalid.
@@ -155,7 +703,23 @@ const (
 )
 
 func (OSPolicyResourceRepositoryResourceAptRepositoryArchiveType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*OSPolicyResourceRepositoryResourceAptRepositoryArchiveType)(nil)).Elem()
+}
+
+func (e OSPolicyResourceRepositoryResourceAptRepositoryArchiveType) ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput() OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput {
+	return pulumi.ToOutput(e).(OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput)
+}
+
+func (e OSPolicyResourceRepositoryResourceAptRepositoryArchiveType) ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput)
+}
+
+func (e OSPolicyResourceRepositoryResourceAptRepositoryArchiveType) ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput() OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput {
+	return e.ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutputWithContext(context.Background())
+}
+
+func (e OSPolicyResourceRepositoryResourceAptRepositoryArchiveType) ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput {
+	return OSPolicyResourceRepositoryResourceAptRepositoryArchiveType(e).ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutputWithContext(ctx).ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutputWithContext(ctx)
 }
 
 func (e OSPolicyResourceRepositoryResourceAptRepositoryArchiveType) ToStringOutput() pulumi.StringOutput {
@@ -172,4 +736,138 @@ func (e OSPolicyResourceRepositoryResourceAptRepositoryArchiveType) ToStringPtrO
 
 func (e OSPolicyResourceRepositoryResourceAptRepositoryArchiveType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput struct{ *pulumi.OutputState }
+
+func (OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OSPolicyResourceRepositoryResourceAptRepositoryArchiveType)(nil)).Elem()
+}
+
+func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput) ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput() OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput {
+	return o
+}
+
+func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput) ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput {
+	return o
+}
+
+func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput) ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput() OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput {
+	return o.ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutputWithContext(context.Background())
+}
+
+func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput) ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OSPolicyResourceRepositoryResourceAptRepositoryArchiveType) *OSPolicyResourceRepositoryResourceAptRepositoryArchiveType {
+		return &v
+	}).(OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput)
+}
+
+func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OSPolicyResourceRepositoryResourceAptRepositoryArchiveType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OSPolicyResourceRepositoryResourceAptRepositoryArchiveType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput struct{ *pulumi.OutputState }
+
+func (OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) ElementType() reflect.Type {
+	return ospolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrType
+}
+
+func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput() OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput {
+	return o
+}
+
+func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput {
+	return o
+}
+
+func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OSPolicyResourceRepositoryResourceAptRepositoryArchiveType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput) Elem() OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput {
+	return o.ApplyT(func(v *OSPolicyResourceRepositoryResourceAptRepositoryArchiveType) OSPolicyResourceRepositoryResourceAptRepositoryArchiveType {
+		var ret OSPolicyResourceRepositoryResourceAptRepositoryArchiveType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput)
+}
+
+// OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeInput is an input type that accepts OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeArgs and OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput values.
+// You can construct a concrete instance of `OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeInput` via:
+//
+//          OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeArgs{...}
+type OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeInput interface {
+	pulumi.Input
+
+	ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput() OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput
+	ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutputWithContext(context.Context) OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput
+}
+
+var ospolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrType = reflect.TypeOf((**OSPolicyResourceRepositoryResourceAptRepositoryArchiveType)(nil)).Elem()
+
+type OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrInput interface {
+	pulumi.Input
+
+	ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput() OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput
+	ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutputWithContext(context.Context) OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput
+}
+
+type ospolicyResourceRepositoryResourceAptRepositoryArchiveTypePtr string
+
+func OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtr(v string) OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrInput {
+	return (*ospolicyResourceRepositoryResourceAptRepositoryArchiveTypePtr)(&v)
+}
+
+func (*ospolicyResourceRepositoryResourceAptRepositoryArchiveTypePtr) ElementType() reflect.Type {
+	return ospolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrType
+}
+
+func (in *ospolicyResourceRepositoryResourceAptRepositoryArchiveTypePtr) ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput() OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput {
+	return pulumi.ToOutput(in).(OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput)
+}
+
+func (in *ospolicyResourceRepositoryResourceAptRepositoryArchiveTypePtr) ToOSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutputWithContext(ctx context.Context) OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(OSPolicyModeOutput{})
+	pulumi.RegisterOutputType(OSPolicyModePtrOutput{})
+	pulumi.RegisterOutputType(OSPolicyResourceExecResourceExecInterpreterOutput{})
+	pulumi.RegisterOutputType(OSPolicyResourceExecResourceExecInterpreterPtrOutput{})
+	pulumi.RegisterOutputType(OSPolicyResourceFileResourceStateOutput{})
+	pulumi.RegisterOutputType(OSPolicyResourceFileResourceStatePtrOutput{})
+	pulumi.RegisterOutputType(OSPolicyResourcePackageResourceDesiredStateOutput{})
+	pulumi.RegisterOutputType(OSPolicyResourcePackageResourceDesiredStatePtrOutput{})
+	pulumi.RegisterOutputType(OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypeOutput{})
+	pulumi.RegisterOutputType(OSPolicyResourceRepositoryResourceAptRepositoryArchiveTypePtrOutput{})
 }

@@ -12,7 +12,7 @@ import (
 
 type InstanceMessage struct {
 	// A code that correspond to one type of user-facing message.
-	Code *string `pulumi:"code"`
+	Code *InstanceMessageCode `pulumi:"code"`
 	// Message on memcached instance which will be exposed to users.
 	Message *string `pulumi:"message"`
 }
@@ -30,7 +30,7 @@ type InstanceMessageInput interface {
 
 type InstanceMessageArgs struct {
 	// A code that correspond to one type of user-facing message.
-	Code *InstanceMessageCode `pulumi:"code"`
+	Code InstanceMessageCodePtrInput `pulumi:"code"`
 	// Message on memcached instance which will be exposed to users.
 	Message pulumi.StringPtrInput `pulumi:"message"`
 }
@@ -87,8 +87,8 @@ func (o InstanceMessageOutput) ToInstanceMessageOutputWithContext(ctx context.Co
 }
 
 // A code that correspond to one type of user-facing message.
-func (o InstanceMessageOutput) Code() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v InstanceMessage) *string { return v.Code }).(pulumi.StringPtrOutput)
+func (o InstanceMessageOutput) Code() InstanceMessageCodePtrOutput {
+	return o.ApplyT(func(v InstanceMessage) *InstanceMessageCode { return v.Code }).(InstanceMessageCodePtrOutput)
 }
 
 // Message on memcached instance which will be exposed to users.

@@ -13,7 +13,7 @@ import (
 // `BasicLevel` is an `AccessLevel` using a set of recommended features.
 type BasicLevel struct {
 	// How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
-	CombiningFunction *string `pulumi:"combiningFunction"`
+	CombiningFunction *BasicLevelCombiningFunction `pulumi:"combiningFunction"`
 	// A list of requirements for the `AccessLevel` to be granted.
 	Conditions []Condition `pulumi:"conditions"`
 }
@@ -32,7 +32,7 @@ type BasicLevelInput interface {
 // `BasicLevel` is an `AccessLevel` using a set of recommended features.
 type BasicLevelArgs struct {
 	// How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
-	CombiningFunction *BasicLevelCombiningFunction `pulumi:"combiningFunction"`
+	CombiningFunction BasicLevelCombiningFunctionPtrInput `pulumi:"combiningFunction"`
 	// A list of requirements for the `AccessLevel` to be granted.
 	Conditions ConditionArrayInput `pulumi:"conditions"`
 }
@@ -116,8 +116,8 @@ func (o BasicLevelOutput) ToBasicLevelPtrOutputWithContext(ctx context.Context) 
 }
 
 // How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
-func (o BasicLevelOutput) CombiningFunction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BasicLevel) *string { return v.CombiningFunction }).(pulumi.StringPtrOutput)
+func (o BasicLevelOutput) CombiningFunction() BasicLevelCombiningFunctionPtrOutput {
+	return o.ApplyT(func(v BasicLevel) *BasicLevelCombiningFunction { return v.CombiningFunction }).(BasicLevelCombiningFunctionPtrOutput)
 }
 
 // A list of requirements for the `AccessLevel` to be granted.
@@ -144,13 +144,13 @@ func (o BasicLevelPtrOutput) Elem() BasicLevelOutput {
 }
 
 // How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
-func (o BasicLevelPtrOutput) CombiningFunction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BasicLevel) *string {
+func (o BasicLevelPtrOutput) CombiningFunction() BasicLevelCombiningFunctionPtrOutput {
+	return o.ApplyT(func(v *BasicLevel) *BasicLevelCombiningFunction {
 		if v == nil {
 			return nil
 		}
 		return v.CombiningFunction
-	}).(pulumi.StringPtrOutput)
+	}).(BasicLevelCombiningFunctionPtrOutput)
 }
 
 // A list of requirements for the `AccessLevel` to be granted.
@@ -877,9 +877,9 @@ func (o CustomLevelResponsePtrOutput) Expr() ExprResponsePtrOutput {
 // `DevicePolicy` specifies device specific restrictions necessary to acquire a given access level. A `DevicePolicy` specifies requirements for requests from devices to be granted access levels, it does not do any enforcement on the device. `DevicePolicy` acts as an AND over all specified fields, and each repeated field is an OR over its elements. Any unset fields are ignored. For example, if the proto is { os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX, encryption_status: ENCRYPTED}, then the DevicePolicy will be true for requests originating from encrypted Linux desktops and encrypted Windows desktops.
 type DevicePolicy struct {
 	// Allowed device management levels, an empty list allows all management levels.
-	AllowedDeviceManagementLevels []string `pulumi:"allowedDeviceManagementLevels"`
+	AllowedDeviceManagementLevels []DevicePolicyAllowedDeviceManagementLevelsItem `pulumi:"allowedDeviceManagementLevels"`
 	// Allowed encryptions statuses, an empty list allows all statuses.
-	AllowedEncryptionStatuses []string `pulumi:"allowedEncryptionStatuses"`
+	AllowedEncryptionStatuses []DevicePolicyAllowedEncryptionStatusesItem `pulumi:"allowedEncryptionStatuses"`
 	// Allowed OS versions, an empty list allows all types and all versions.
 	OsConstraints []OsConstraint `pulumi:"osConstraints"`
 	// Whether the device needs to be approved by the customer admin.
@@ -996,13 +996,15 @@ func (o DevicePolicyOutput) ToDevicePolicyPtrOutputWithContext(ctx context.Conte
 }
 
 // Allowed device management levels, an empty list allows all management levels.
-func (o DevicePolicyOutput) AllowedDeviceManagementLevels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v DevicePolicy) []string { return v.AllowedDeviceManagementLevels }).(pulumi.StringArrayOutput)
+func (o DevicePolicyOutput) AllowedDeviceManagementLevels() DevicePolicyAllowedDeviceManagementLevelsItemArrayOutput {
+	return o.ApplyT(func(v DevicePolicy) []DevicePolicyAllowedDeviceManagementLevelsItem {
+		return v.AllowedDeviceManagementLevels
+	}).(DevicePolicyAllowedDeviceManagementLevelsItemArrayOutput)
 }
 
 // Allowed encryptions statuses, an empty list allows all statuses.
-func (o DevicePolicyOutput) AllowedEncryptionStatuses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v DevicePolicy) []string { return v.AllowedEncryptionStatuses }).(pulumi.StringArrayOutput)
+func (o DevicePolicyOutput) AllowedEncryptionStatuses() DevicePolicyAllowedEncryptionStatusesItemArrayOutput {
+	return o.ApplyT(func(v DevicePolicy) []DevicePolicyAllowedEncryptionStatusesItem { return v.AllowedEncryptionStatuses }).(DevicePolicyAllowedEncryptionStatusesItemArrayOutput)
 }
 
 // Allowed OS versions, an empty list allows all types and all versions.
@@ -1044,23 +1046,23 @@ func (o DevicePolicyPtrOutput) Elem() DevicePolicyOutput {
 }
 
 // Allowed device management levels, an empty list allows all management levels.
-func (o DevicePolicyPtrOutput) AllowedDeviceManagementLevels() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *DevicePolicy) []string {
+func (o DevicePolicyPtrOutput) AllowedDeviceManagementLevels() DevicePolicyAllowedDeviceManagementLevelsItemArrayOutput {
+	return o.ApplyT(func(v *DevicePolicy) []DevicePolicyAllowedDeviceManagementLevelsItem {
 		if v == nil {
 			return nil
 		}
 		return v.AllowedDeviceManagementLevels
-	}).(pulumi.StringArrayOutput)
+	}).(DevicePolicyAllowedDeviceManagementLevelsItemArrayOutput)
 }
 
 // Allowed encryptions statuses, an empty list allows all statuses.
-func (o DevicePolicyPtrOutput) AllowedEncryptionStatuses() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *DevicePolicy) []string {
+func (o DevicePolicyPtrOutput) AllowedEncryptionStatuses() DevicePolicyAllowedEncryptionStatusesItemArrayOutput {
+	return o.ApplyT(func(v *DevicePolicy) []DevicePolicyAllowedEncryptionStatusesItem {
 		if v == nil {
 			return nil
 		}
 		return v.AllowedEncryptionStatuses
-	}).(pulumi.StringArrayOutput)
+	}).(DevicePolicyAllowedEncryptionStatusesItemArrayOutput)
 }
 
 // Allowed OS versions, an empty list allows all types and all versions.
@@ -1590,7 +1592,7 @@ type OsConstraint struct {
 	// The minimum allowed OS version. If not set, any version of this OS satisfies the constraint. Format: `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
 	MinimumVersion *string `pulumi:"minimumVersion"`
 	// The allowed OS type.
-	OsType string `pulumi:"osType"`
+	OsType OsConstraintOsType `pulumi:"osType"`
 	// Only allows requests from devices with a verified Chrome OS. Verifications includes requirements that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call the API targeted by the request.
 	RequireVerifiedChromeOs *bool `pulumi:"requireVerifiedChromeOs"`
 }
@@ -1611,7 +1613,7 @@ type OsConstraintArgs struct {
 	// The minimum allowed OS version. If not set, any version of this OS satisfies the constraint. Format: `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
 	MinimumVersion pulumi.StringPtrInput `pulumi:"minimumVersion"`
 	// The allowed OS type.
-	OsType OsConstraintOsType `pulumi:"osType"`
+	OsType OsConstraintOsTypeInput `pulumi:"osType"`
 	// Only allows requests from devices with a verified Chrome OS. Verifications includes requirements that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call the API targeted by the request.
 	RequireVerifiedChromeOs pulumi.BoolPtrInput `pulumi:"requireVerifiedChromeOs"`
 }
@@ -1674,8 +1676,8 @@ func (o OsConstraintOutput) MinimumVersion() pulumi.StringPtrOutput {
 }
 
 // The allowed OS type.
-func (o OsConstraintOutput) OsType() pulumi.StringOutput {
-	return o.ApplyT(func(v OsConstraint) string { return v.OsType }).(pulumi.StringOutput)
+func (o OsConstraintOutput) OsType() OsConstraintOsTypeOutput {
+	return o.ApplyT(func(v OsConstraint) OsConstraintOsType { return v.OsType }).(OsConstraintOsTypeOutput)
 }
 
 // Only allows requests from devices with a verified Chrome OS. Verifications includes requirements that the device is enterprise-managed, conformant to domain policies, and the caller has permission to call the API targeted by the request.

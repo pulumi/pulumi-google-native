@@ -13,7 +13,7 @@ import (
 // Represents a single Apt package repository. This repository is added to a repo file that is stored at `/etc/apt/sources.list.d/google_osconfig.list`.
 type AptRepository struct {
 	// Type of archive files in this repository. The default behavior is DEB.
-	ArchiveType *string `pulumi:"archiveType"`
+	ArchiveType *AptRepositoryArchiveType `pulumi:"archiveType"`
 	// List of components for this repository. Must contain at least one item.
 	Components []string `pulumi:"components"`
 	// Distribution of this repository.
@@ -38,7 +38,7 @@ type AptRepositoryInput interface {
 // Represents a single Apt package repository. This repository is added to a repo file that is stored at `/etc/apt/sources.list.d/google_osconfig.list`.
 type AptRepositoryArgs struct {
 	// Type of archive files in this repository. The default behavior is DEB.
-	ArchiveType *AptRepositoryArchiveType `pulumi:"archiveType"`
+	ArchiveType AptRepositoryArchiveTypePtrInput `pulumi:"archiveType"`
 	// List of components for this repository. Must contain at least one item.
 	Components pulumi.StringArrayInput `pulumi:"components"`
 	// Distribution of this repository.
@@ -128,8 +128,8 @@ func (o AptRepositoryOutput) ToAptRepositoryPtrOutputWithContext(ctx context.Con
 }
 
 // Type of archive files in this repository. The default behavior is DEB.
-func (o AptRepositoryOutput) ArchiveType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AptRepository) *string { return v.ArchiveType }).(pulumi.StringPtrOutput)
+func (o AptRepositoryOutput) ArchiveType() AptRepositoryArchiveTypePtrOutput {
+	return o.ApplyT(func(v AptRepository) *AptRepositoryArchiveType { return v.ArchiveType }).(AptRepositoryArchiveTypePtrOutput)
 }
 
 // List of components for this repository. Must contain at least one item.
@@ -171,13 +171,13 @@ func (o AptRepositoryPtrOutput) Elem() AptRepositoryOutput {
 }
 
 // Type of archive files in this repository. The default behavior is DEB.
-func (o AptRepositoryPtrOutput) ArchiveType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AptRepository) *string {
+func (o AptRepositoryPtrOutput) ArchiveType() AptRepositoryArchiveTypePtrOutput {
+	return o.ApplyT(func(v *AptRepository) *AptRepositoryArchiveType {
 		if v == nil {
 			return nil
 		}
 		return v.ArchiveType
-	}).(pulumi.StringPtrOutput)
+	}).(AptRepositoryArchiveTypePtrOutput)
 }
 
 // List of components for this repository. Must contain at least one item.
@@ -318,7 +318,7 @@ type AptSettings struct {
 	// An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field cannot be specified with any other patch configuration fields.
 	ExclusivePackages []string `pulumi:"exclusivePackages"`
 	// By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
-	Type *string `pulumi:"type"`
+	Type *AptSettingsType `pulumi:"type"`
 }
 
 // AptSettingsInput is an input type that accepts AptSettingsArgs and AptSettingsOutput values.
@@ -339,7 +339,7 @@ type AptSettingsArgs struct {
 	// An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field cannot be specified with any other patch configuration fields.
 	ExclusivePackages pulumi.StringArrayInput `pulumi:"exclusivePackages"`
 	// By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
-	Type *AptSettingsType `pulumi:"type"`
+	Type AptSettingsTypePtrInput `pulumi:"type"`
 }
 
 func (AptSettingsArgs) ElementType() reflect.Type {
@@ -431,8 +431,8 @@ func (o AptSettingsOutput) ExclusivePackages() pulumi.StringArrayOutput {
 }
 
 // By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
-func (o AptSettingsOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AptSettings) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o AptSettingsOutput) Type() AptSettingsTypePtrOutput {
+	return o.ApplyT(func(v AptSettings) *AptSettingsType { return v.Type }).(AptSettingsTypePtrOutput)
 }
 
 type AptSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -474,13 +474,13 @@ func (o AptSettingsPtrOutput) ExclusivePackages() pulumi.StringArrayOutput {
 }
 
 // By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
-func (o AptSettingsPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AptSettings) *string {
+func (o AptSettingsPtrOutput) Type() AptSettingsTypePtrOutput {
+	return o.ApplyT(func(v *AptSettings) *AptSettingsType {
 		if v == nil {
 			return nil
 		}
 		return v.Type
-	}).(pulumi.StringPtrOutput)
+	}).(AptSettingsTypePtrOutput)
 }
 
 // Apt patching is completed by executing `apt-get update && apt-get upgrade`. Additional options can be set to control how this is executed.
@@ -1671,7 +1671,7 @@ type ExecStepConfig struct {
 	// A Google Cloud Storage object containing the executable.
 	GcsObject *GcsObject `pulumi:"gcsObject"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
-	Interpreter *string `pulumi:"interpreter"`
+	Interpreter *ExecStepConfigInterpreter `pulumi:"interpreter"`
 	// An absolute path to the executable on the VM.
 	LocalPath *string `pulumi:"localPath"`
 }
@@ -1694,7 +1694,7 @@ type ExecStepConfigArgs struct {
 	// A Google Cloud Storage object containing the executable.
 	GcsObject GcsObjectPtrInput `pulumi:"gcsObject"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
-	Interpreter *ExecStepConfigInterpreter `pulumi:"interpreter"`
+	Interpreter ExecStepConfigInterpreterPtrInput `pulumi:"interpreter"`
 	// An absolute path to the executable on the VM.
 	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
 }
@@ -1788,8 +1788,8 @@ func (o ExecStepConfigOutput) GcsObject() GcsObjectPtrOutput {
 }
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
-func (o ExecStepConfigOutput) Interpreter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExecStepConfig) *string { return v.Interpreter }).(pulumi.StringPtrOutput)
+func (o ExecStepConfigOutput) Interpreter() ExecStepConfigInterpreterPtrOutput {
+	return o.ApplyT(func(v ExecStepConfig) *ExecStepConfigInterpreter { return v.Interpreter }).(ExecStepConfigInterpreterPtrOutput)
 }
 
 // An absolute path to the executable on the VM.
@@ -1836,13 +1836,13 @@ func (o ExecStepConfigPtrOutput) GcsObject() GcsObjectPtrOutput {
 }
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
-func (o ExecStepConfigPtrOutput) Interpreter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExecStepConfig) *string {
+func (o ExecStepConfigPtrOutput) Interpreter() ExecStepConfigInterpreterPtrOutput {
+	return o.ApplyT(func(v *ExecStepConfig) *ExecStepConfigInterpreter {
 		if v == nil {
 			return nil
 		}
 		return v.Interpreter
-	}).(pulumi.StringPtrOutput)
+	}).(ExecStepConfigInterpreterPtrOutput)
 }
 
 // An absolute path to the executable on the VM.
@@ -3873,9 +3873,9 @@ func (o OneTimeScheduleResponsePtrOutput) ExecuteTime() pulumi.StringPtrOutput {
 // Package is a reference to the software package to be installed or removed. The agent on the VM instance uses the system package manager to apply the config. These are the commands that the agent uses to install or remove packages. Apt install: `apt-get update && apt-get -y install package1 package2 package3` remove: `apt-get -y remove package1 package2 package3` Yum install: `yum -y install package1 package2 package3` remove: `yum -y remove package1 package2 package3` Zypper install: `zypper install package1 package2 package3` remove: `zypper rm package1 package2` Googet install: `googet -noconfirm install package1 package2 package3` remove: `googet -noconfirm remove package1 package2 package3`
 type Package struct {
 	// The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
-	DesiredState *string `pulumi:"desiredState"`
+	DesiredState *PackageDesiredState `pulumi:"desiredState"`
 	// Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
-	Manager *string `pulumi:"manager"`
+	Manager *PackageManager `pulumi:"manager"`
 	// The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
 	Name string `pulumi:"name"`
 }
@@ -3894,9 +3894,9 @@ type PackageInput interface {
 // Package is a reference to the software package to be installed or removed. The agent on the VM instance uses the system package manager to apply the config. These are the commands that the agent uses to install or remove packages. Apt install: `apt-get update && apt-get -y install package1 package2 package3` remove: `apt-get -y remove package1 package2 package3` Yum install: `yum -y install package1 package2 package3` remove: `yum -y remove package1 package2 package3` Zypper install: `zypper install package1 package2 package3` remove: `zypper rm package1 package2` Googet install: `googet -noconfirm install package1 package2 package3` remove: `googet -noconfirm remove package1 package2 package3`
 type PackageArgs struct {
 	// The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
-	DesiredState *PackageDesiredState `pulumi:"desiredState"`
+	DesiredState PackageDesiredStatePtrInput `pulumi:"desiredState"`
 	// Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
-	Manager *PackageManager `pulumi:"manager"`
+	Manager PackageManagerPtrInput `pulumi:"manager"`
 	// The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
 	Name pulumi.StringInput `pulumi:"name"`
 }
@@ -3954,13 +3954,13 @@ func (o PackageOutput) ToPackageOutputWithContext(ctx context.Context) PackageOu
 }
 
 // The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
-func (o PackageOutput) DesiredState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Package) *string { return v.DesiredState }).(pulumi.StringPtrOutput)
+func (o PackageOutput) DesiredState() PackageDesiredStatePtrOutput {
+	return o.ApplyT(func(v Package) *PackageDesiredState { return v.DesiredState }).(PackageDesiredStatePtrOutput)
 }
 
 // Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
-func (o PackageOutput) Manager() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Package) *string { return v.Manager }).(pulumi.StringPtrOutput)
+func (o PackageOutput) Manager() PackageManagerPtrOutput {
+	return o.ApplyT(func(v Package) *PackageManager { return v.Manager }).(PackageManagerPtrOutput)
 }
 
 // The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
@@ -4371,7 +4371,7 @@ type PatchConfig struct {
 	// The `ExecStep` to run before the patch update.
 	PreStep *ExecStep `pulumi:"preStep"`
 	// Post-patch reboot settings.
-	RebootConfig *string `pulumi:"rebootConfig"`
+	RebootConfig *PatchConfigRebootConfig `pulumi:"rebootConfig"`
 	// Windows update settings. Use this override the default windows patch rules.
 	WindowsUpdate *WindowsUpdateSettings `pulumi:"windowsUpdate"`
 	// Yum update settings. Use this setting to override the default `yum` patch rules.
@@ -4402,7 +4402,7 @@ type PatchConfigArgs struct {
 	// The `ExecStep` to run before the patch update.
 	PreStep ExecStepPtrInput `pulumi:"preStep"`
 	// Post-patch reboot settings.
-	RebootConfig *PatchConfigRebootConfig `pulumi:"rebootConfig"`
+	RebootConfig PatchConfigRebootConfigPtrInput `pulumi:"rebootConfig"`
 	// Windows update settings. Use this override the default windows patch rules.
 	WindowsUpdate WindowsUpdateSettingsPtrInput `pulumi:"windowsUpdate"`
 	// Yum update settings. Use this setting to override the default `yum` patch rules.
@@ -4510,8 +4510,8 @@ func (o PatchConfigOutput) PreStep() ExecStepPtrOutput {
 }
 
 // Post-patch reboot settings.
-func (o PatchConfigOutput) RebootConfig() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PatchConfig) *string { return v.RebootConfig }).(pulumi.StringPtrOutput)
+func (o PatchConfigOutput) RebootConfig() PatchConfigRebootConfigPtrOutput {
+	return o.ApplyT(func(v PatchConfig) *PatchConfigRebootConfig { return v.RebootConfig }).(PatchConfigRebootConfigPtrOutput)
 }
 
 // Windows update settings. Use this override the default windows patch rules.
@@ -4588,13 +4588,13 @@ func (o PatchConfigPtrOutput) PreStep() ExecStepPtrOutput {
 }
 
 // Post-patch reboot settings.
-func (o PatchConfigPtrOutput) RebootConfig() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PatchConfig) *string {
+func (o PatchConfigPtrOutput) RebootConfig() PatchConfigRebootConfigPtrOutput {
+	return o.ApplyT(func(v *PatchConfig) *PatchConfigRebootConfig {
 		if v == nil {
 			return nil
 		}
 		return v.RebootConfig
-	}).(pulumi.StringPtrOutput)
+	}).(PatchConfigRebootConfigPtrOutput)
 }
 
 // Windows update settings. Use this override the default windows patch rules.
@@ -5519,7 +5519,7 @@ type PatchRollout struct {
 	// The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
 	DisruptionBudget *FixedOrPercent `pulumi:"disruptionBudget"`
 	// Mode of the patch rollout.
-	Mode *string `pulumi:"mode"`
+	Mode *PatchRolloutMode `pulumi:"mode"`
 }
 
 // PatchRolloutInput is an input type that accepts PatchRolloutArgs and PatchRolloutOutput values.
@@ -5538,7 +5538,7 @@ type PatchRolloutArgs struct {
 	// The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
 	DisruptionBudget FixedOrPercentPtrInput `pulumi:"disruptionBudget"`
 	// Mode of the patch rollout.
-	Mode *PatchRolloutMode `pulumi:"mode"`
+	Mode PatchRolloutModePtrInput `pulumi:"mode"`
 }
 
 func (PatchRolloutArgs) ElementType() reflect.Type {
@@ -5625,8 +5625,8 @@ func (o PatchRolloutOutput) DisruptionBudget() FixedOrPercentPtrOutput {
 }
 
 // Mode of the patch rollout.
-func (o PatchRolloutOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PatchRollout) *string { return v.Mode }).(pulumi.StringPtrOutput)
+func (o PatchRolloutOutput) Mode() PatchRolloutModePtrOutput {
+	return o.ApplyT(func(v PatchRollout) *PatchRolloutMode { return v.Mode }).(PatchRolloutModePtrOutput)
 }
 
 type PatchRolloutPtrOutput struct{ *pulumi.OutputState }
@@ -5658,13 +5658,13 @@ func (o PatchRolloutPtrOutput) DisruptionBudget() FixedOrPercentPtrOutput {
 }
 
 // Mode of the patch rollout.
-func (o PatchRolloutPtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PatchRollout) *string {
+func (o PatchRolloutPtrOutput) Mode() PatchRolloutModePtrOutput {
+	return o.ApplyT(func(v *PatchRollout) *PatchRolloutMode {
 		if v == nil {
 			return nil
 		}
 		return v.Mode
-	}).(pulumi.StringPtrOutput)
+	}).(PatchRolloutModePtrOutput)
 }
 
 // Patch rollout configuration specifications. Contains details on the concurrency control when applying patch(es) to all targeted VMs.
@@ -5825,7 +5825,7 @@ type RecurringSchedule struct {
 	// Optional. The end time at which a recurring patch deployment schedule is no longer active.
 	EndTime *string `pulumi:"endTime"`
 	// The frequency unit of this recurring schedule.
-	Frequency string `pulumi:"frequency"`
+	Frequency RecurringScheduleFrequency `pulumi:"frequency"`
 	// Schedule with monthly executions.
 	Monthly MonthlySchedule `pulumi:"monthly"`
 	// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
@@ -5854,7 +5854,7 @@ type RecurringScheduleArgs struct {
 	// Optional. The end time at which a recurring patch deployment schedule is no longer active.
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
 	// The frequency unit of this recurring schedule.
-	Frequency RecurringScheduleFrequency `pulumi:"frequency"`
+	Frequency RecurringScheduleFrequencyInput `pulumi:"frequency"`
 	// Schedule with monthly executions.
 	Monthly MonthlyScheduleInput `pulumi:"monthly"`
 	// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
@@ -5951,8 +5951,8 @@ func (o RecurringScheduleOutput) EndTime() pulumi.StringPtrOutput {
 }
 
 // The frequency unit of this recurring schedule.
-func (o RecurringScheduleOutput) Frequency() pulumi.StringOutput {
-	return o.ApplyT(func(v RecurringSchedule) string { return v.Frequency }).(pulumi.StringOutput)
+func (o RecurringScheduleOutput) Frequency() RecurringScheduleFrequencyOutput {
+	return o.ApplyT(func(v RecurringSchedule) RecurringScheduleFrequency { return v.Frequency }).(RecurringScheduleFrequencyOutput)
 }
 
 // Schedule with monthly executions.
@@ -6009,13 +6009,13 @@ func (o RecurringSchedulePtrOutput) EndTime() pulumi.StringPtrOutput {
 }
 
 // The frequency unit of this recurring schedule.
-func (o RecurringSchedulePtrOutput) Frequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurringSchedule) *string {
+func (o RecurringSchedulePtrOutput) Frequency() RecurringScheduleFrequencyPtrOutput {
+	return o.ApplyT(func(v *RecurringSchedule) *RecurringScheduleFrequency {
 		if v == nil {
 			return nil
 		}
 		return &v.Frequency
-	}).(pulumi.StringPtrOutput)
+	}).(RecurringScheduleFrequencyPtrOutput)
 }
 
 // Schedule with monthly executions.
@@ -6359,7 +6359,7 @@ type SoftwareRecipe struct {
 	// Resources available to be used in the steps in the recipe.
 	Artifacts []SoftwareRecipeArtifact `pulumi:"artifacts"`
 	// Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-	DesiredState *string `pulumi:"desiredState"`
+	DesiredState *SoftwareRecipeDesiredState `pulumi:"desiredState"`
 	// Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back.
 	InstallSteps []SoftwareRecipeStep `pulumi:"installSteps"`
 	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
@@ -6386,7 +6386,7 @@ type SoftwareRecipeArgs struct {
 	// Resources available to be used in the steps in the recipe.
 	Artifacts SoftwareRecipeArtifactArrayInput `pulumi:"artifacts"`
 	// Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-	DesiredState *SoftwareRecipeDesiredState `pulumi:"desiredState"`
+	DesiredState SoftwareRecipeDesiredStatePtrInput `pulumi:"desiredState"`
 	// Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back.
 	InstallSteps SoftwareRecipeStepArrayInput `pulumi:"installSteps"`
 	// Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
@@ -6455,8 +6455,8 @@ func (o SoftwareRecipeOutput) Artifacts() SoftwareRecipeArtifactArrayOutput {
 }
 
 // Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-func (o SoftwareRecipeOutput) DesiredState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SoftwareRecipe) *string { return v.DesiredState }).(pulumi.StringPtrOutput)
+func (o SoftwareRecipeOutput) DesiredState() SoftwareRecipeDesiredStatePtrOutput {
+	return o.ApplyT(func(v SoftwareRecipe) *SoftwareRecipeDesiredState { return v.DesiredState }).(SoftwareRecipeDesiredStatePtrOutput)
 }
 
 // Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back.
@@ -8058,7 +8058,7 @@ type SoftwareRecipeStepExtractArchive struct {
 	// Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows.
 	Destination *string `pulumi:"destination"`
 	// The type of the archive to extract.
-	Type string `pulumi:"type"`
+	Type SoftwareRecipeStepExtractArchiveType `pulumi:"type"`
 }
 
 // SoftwareRecipeStepExtractArchiveInput is an input type that accepts SoftwareRecipeStepExtractArchiveArgs and SoftwareRecipeStepExtractArchiveOutput values.
@@ -8079,7 +8079,7 @@ type SoftwareRecipeStepExtractArchiveArgs struct {
 	// Directory to extract archive to. Defaults to `/` on Linux or `C:\` on Windows.
 	Destination pulumi.StringPtrInput `pulumi:"destination"`
 	// The type of the archive to extract.
-	Type SoftwareRecipeStepExtractArchiveType `pulumi:"type"`
+	Type SoftwareRecipeStepExtractArchiveTypeInput `pulumi:"type"`
 }
 
 func (SoftwareRecipeStepExtractArchiveArgs) ElementType() reflect.Type {
@@ -8171,8 +8171,8 @@ func (o SoftwareRecipeStepExtractArchiveOutput) Destination() pulumi.StringPtrOu
 }
 
 // The type of the archive to extract.
-func (o SoftwareRecipeStepExtractArchiveOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v SoftwareRecipeStepExtractArchive) string { return v.Type }).(pulumi.StringOutput)
+func (o SoftwareRecipeStepExtractArchiveOutput) Type() SoftwareRecipeStepExtractArchiveTypeOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepExtractArchive) SoftwareRecipeStepExtractArchiveType { return v.Type }).(SoftwareRecipeStepExtractArchiveTypeOutput)
 }
 
 type SoftwareRecipeStepExtractArchivePtrOutput struct{ *pulumi.OutputState }
@@ -8214,13 +8214,13 @@ func (o SoftwareRecipeStepExtractArchivePtrOutput) Destination() pulumi.StringPt
 }
 
 // The type of the archive to extract.
-func (o SoftwareRecipeStepExtractArchivePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SoftwareRecipeStepExtractArchive) *string {
+func (o SoftwareRecipeStepExtractArchivePtrOutput) Type() SoftwareRecipeStepExtractArchiveTypePtrOutput {
+	return o.ApplyT(func(v *SoftwareRecipeStepExtractArchive) *SoftwareRecipeStepExtractArchiveType {
 		if v == nil {
 			return nil
 		}
 		return &v.Type
-	}).(pulumi.StringPtrOutput)
+	}).(SoftwareRecipeStepExtractArchiveTypePtrOutput)
 }
 
 // Extracts an archive of the type specified in the specified directory.
@@ -9080,7 +9080,7 @@ type SoftwareRecipeStepRunScript struct {
 	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
 	AllowedExitCodes []int `pulumi:"allowedExitCodes"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](<https://en.wikipedia.org/wiki/Shebang_\(Unix\)>).
-	Interpreter *string `pulumi:"interpreter"`
+	Interpreter *SoftwareRecipeStepRunScriptInterpreter `pulumi:"interpreter"`
 	// The shell script to be executed.
 	Script string `pulumi:"script"`
 }
@@ -9101,7 +9101,7 @@ type SoftwareRecipeStepRunScriptArgs struct {
 	// Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
 	AllowedExitCodes pulumi.IntArrayInput `pulumi:"allowedExitCodes"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](<https://en.wikipedia.org/wiki/Shebang_\(Unix\)>).
-	Interpreter *SoftwareRecipeStepRunScriptInterpreter `pulumi:"interpreter"`
+	Interpreter SoftwareRecipeStepRunScriptInterpreterPtrInput `pulumi:"interpreter"`
 	// The shell script to be executed.
 	Script pulumi.StringInput `pulumi:"script"`
 }
@@ -9190,8 +9190,8 @@ func (o SoftwareRecipeStepRunScriptOutput) AllowedExitCodes() pulumi.IntArrayOut
 }
 
 // The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](<https://en.wikipedia.org/wiki/Shebang_\(Unix\)>).
-func (o SoftwareRecipeStepRunScriptOutput) Interpreter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SoftwareRecipeStepRunScript) *string { return v.Interpreter }).(pulumi.StringPtrOutput)
+func (o SoftwareRecipeStepRunScriptOutput) Interpreter() SoftwareRecipeStepRunScriptInterpreterPtrOutput {
+	return o.ApplyT(func(v SoftwareRecipeStepRunScript) *SoftwareRecipeStepRunScriptInterpreter { return v.Interpreter }).(SoftwareRecipeStepRunScriptInterpreterPtrOutput)
 }
 
 // The shell script to be executed.
@@ -9228,13 +9228,13 @@ func (o SoftwareRecipeStepRunScriptPtrOutput) AllowedExitCodes() pulumi.IntArray
 }
 
 // The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](<https://en.wikipedia.org/wiki/Shebang_\(Unix\)>).
-func (o SoftwareRecipeStepRunScriptPtrOutput) Interpreter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SoftwareRecipeStepRunScript) *string {
+func (o SoftwareRecipeStepRunScriptPtrOutput) Interpreter() SoftwareRecipeStepRunScriptInterpreterPtrOutput {
+	return o.ApplyT(func(v *SoftwareRecipeStepRunScript) *SoftwareRecipeStepRunScriptInterpreter {
 		if v == nil {
 			return nil
 		}
 		return v.Interpreter
-	}).(pulumi.StringPtrOutput)
+	}).(SoftwareRecipeStepRunScriptInterpreterPtrOutput)
 }
 
 // The shell script to be executed.
@@ -9992,7 +9992,7 @@ func (o TimeZoneResponsePtrOutput) Version() pulumi.StringPtrOutput {
 // Represents one week day in a month. An example is "the 4th Sunday".
 type WeekDayOfMonth struct {
 	// A day of the week.
-	DayOfWeek string `pulumi:"dayOfWeek"`
+	DayOfWeek WeekDayOfMonthDayOfWeek `pulumi:"dayOfWeek"`
 	// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 	WeekOrdinal int `pulumi:"weekOrdinal"`
 }
@@ -10011,7 +10011,7 @@ type WeekDayOfMonthInput interface {
 // Represents one week day in a month. An example is "the 4th Sunday".
 type WeekDayOfMonthArgs struct {
 	// A day of the week.
-	DayOfWeek WeekDayOfMonthDayOfWeek `pulumi:"dayOfWeek"`
+	DayOfWeek WeekDayOfMonthDayOfWeekInput `pulumi:"dayOfWeek"`
 	// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 	WeekOrdinal pulumi.IntInput `pulumi:"weekOrdinal"`
 }
@@ -10095,8 +10095,8 @@ func (o WeekDayOfMonthOutput) ToWeekDayOfMonthPtrOutputWithContext(ctx context.C
 }
 
 // A day of the week.
-func (o WeekDayOfMonthOutput) DayOfWeek() pulumi.StringOutput {
-	return o.ApplyT(func(v WeekDayOfMonth) string { return v.DayOfWeek }).(pulumi.StringOutput)
+func (o WeekDayOfMonthOutput) DayOfWeek() WeekDayOfMonthDayOfWeekOutput {
+	return o.ApplyT(func(v WeekDayOfMonth) WeekDayOfMonthDayOfWeek { return v.DayOfWeek }).(WeekDayOfMonthDayOfWeekOutput)
 }
 
 // Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
@@ -10123,13 +10123,13 @@ func (o WeekDayOfMonthPtrOutput) Elem() WeekDayOfMonthOutput {
 }
 
 // A day of the week.
-func (o WeekDayOfMonthPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WeekDayOfMonth) *string {
+func (o WeekDayOfMonthPtrOutput) DayOfWeek() WeekDayOfMonthDayOfWeekPtrOutput {
+	return o.ApplyT(func(v *WeekDayOfMonth) *WeekDayOfMonthDayOfWeek {
 		if v == nil {
 			return nil
 		}
 		return &v.DayOfWeek
-	}).(pulumi.StringPtrOutput)
+	}).(WeekDayOfMonthDayOfWeekPtrOutput)
 }
 
 // Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
@@ -10298,7 +10298,7 @@ func (o WeekDayOfMonthResponsePtrOutput) WeekOrdinal() pulumi.IntPtrOutput {
 // Represents a weekly schedule.
 type WeeklySchedule struct {
 	// Day of the week.
-	DayOfWeek string `pulumi:"dayOfWeek"`
+	DayOfWeek WeeklyScheduleDayOfWeek `pulumi:"dayOfWeek"`
 }
 
 // WeeklyScheduleInput is an input type that accepts WeeklyScheduleArgs and WeeklyScheduleOutput values.
@@ -10315,7 +10315,7 @@ type WeeklyScheduleInput interface {
 // Represents a weekly schedule.
 type WeeklyScheduleArgs struct {
 	// Day of the week.
-	DayOfWeek WeeklyScheduleDayOfWeek `pulumi:"dayOfWeek"`
+	DayOfWeek WeeklyScheduleDayOfWeekInput `pulumi:"dayOfWeek"`
 }
 
 func (WeeklyScheduleArgs) ElementType() reflect.Type {
@@ -10397,8 +10397,8 @@ func (o WeeklyScheduleOutput) ToWeeklySchedulePtrOutputWithContext(ctx context.C
 }
 
 // Day of the week.
-func (o WeeklyScheduleOutput) DayOfWeek() pulumi.StringOutput {
-	return o.ApplyT(func(v WeeklySchedule) string { return v.DayOfWeek }).(pulumi.StringOutput)
+func (o WeeklyScheduleOutput) DayOfWeek() WeeklyScheduleDayOfWeekOutput {
+	return o.ApplyT(func(v WeeklySchedule) WeeklyScheduleDayOfWeek { return v.DayOfWeek }).(WeeklyScheduleDayOfWeekOutput)
 }
 
 type WeeklySchedulePtrOutput struct{ *pulumi.OutputState }
@@ -10420,13 +10420,13 @@ func (o WeeklySchedulePtrOutput) Elem() WeeklyScheduleOutput {
 }
 
 // Day of the week.
-func (o WeeklySchedulePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WeeklySchedule) *string {
+func (o WeeklySchedulePtrOutput) DayOfWeek() WeeklyScheduleDayOfWeekPtrOutput {
+	return o.ApplyT(func(v *WeeklySchedule) *WeeklyScheduleDayOfWeek {
 		if v == nil {
 			return nil
 		}
 		return &v.DayOfWeek
-	}).(pulumi.StringPtrOutput)
+	}).(WeeklyScheduleDayOfWeekPtrOutput)
 }
 
 // Represents a weekly schedule.
@@ -10566,7 +10566,7 @@ func (o WeeklyScheduleResponsePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 // Windows patching is performed using the Windows Update Agent.
 type WindowsUpdateSettings struct {
 	// Only apply updates of these windows update classifications. If empty, all updates are applied.
-	Classifications []string `pulumi:"classifications"`
+	Classifications []WindowsUpdateSettingsClassificationsItem `pulumi:"classifications"`
 	// List of KBs to exclude from update.
 	Excludes []string `pulumi:"excludes"`
 	// An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not be used with other patch configurations.
@@ -10673,8 +10673,8 @@ func (o WindowsUpdateSettingsOutput) ToWindowsUpdateSettingsPtrOutputWithContext
 }
 
 // Only apply updates of these windows update classifications. If empty, all updates are applied.
-func (o WindowsUpdateSettingsOutput) Classifications() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v WindowsUpdateSettings) []string { return v.Classifications }).(pulumi.StringArrayOutput)
+func (o WindowsUpdateSettingsOutput) Classifications() WindowsUpdateSettingsClassificationsItemArrayOutput {
+	return o.ApplyT(func(v WindowsUpdateSettings) []WindowsUpdateSettingsClassificationsItem { return v.Classifications }).(WindowsUpdateSettingsClassificationsItemArrayOutput)
 }
 
 // List of KBs to exclude from update.
@@ -10706,13 +10706,13 @@ func (o WindowsUpdateSettingsPtrOutput) Elem() WindowsUpdateSettingsOutput {
 }
 
 // Only apply updates of these windows update classifications. If empty, all updates are applied.
-func (o WindowsUpdateSettingsPtrOutput) Classifications() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *WindowsUpdateSettings) []string {
+func (o WindowsUpdateSettingsPtrOutput) Classifications() WindowsUpdateSettingsClassificationsItemArrayOutput {
+	return o.ApplyT(func(v *WindowsUpdateSettings) []WindowsUpdateSettingsClassificationsItem {
 		if v == nil {
 			return nil
 		}
 		return v.Classifications
-	}).(pulumi.StringArrayOutput)
+	}).(WindowsUpdateSettingsClassificationsItemArrayOutput)
 }
 
 // List of KBs to exclude from update.

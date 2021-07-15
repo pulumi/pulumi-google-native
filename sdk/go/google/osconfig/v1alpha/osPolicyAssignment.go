@@ -88,57 +88,9 @@ func GetOsPolicyAssignment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering OsPolicyAssignment resources.
 type osPolicyAssignmentState struct {
-	// Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
-	Baseline *bool `pulumi:"baseline"`
-	// Indicates that this revision deletes the OS policy assignment.
-	Deleted *bool `pulumi:"deleted"`
-	// OS policy assignment description. Length of the description is limited to 1024 characters.
-	Description *string `pulumi:"description"`
-	// Filter to select VMs.
-	InstanceFilter *OSPolicyAssignmentInstanceFilterResponse `pulumi:"instanceFilter"`
-	// Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.
-	Name *string `pulumi:"name"`
-	// List of OS policies to be applied to the VMs.
-	OsPolicies []OSPolicyResponse `pulumi:"osPolicies"`
-	// Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
-	Reconciling *bool `pulumi:"reconciling"`
-	// The timestamp that the revision was created.
-	RevisionCreateTime *string `pulumi:"revisionCreateTime"`
-	// The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
-	RevisionId *string `pulumi:"revisionId"`
-	// Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
-	Rollout *OSPolicyAssignmentRolloutResponse `pulumi:"rollout"`
-	// OS policy assignment rollout state
-	RolloutState *string `pulumi:"rolloutState"`
-	// Server generated unique id for the OS policy assignment resource.
-	Uid *string `pulumi:"uid"`
 }
 
 type OsPolicyAssignmentState struct {
-	// Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
-	Baseline pulumi.BoolPtrInput
-	// Indicates that this revision deletes the OS policy assignment.
-	Deleted pulumi.BoolPtrInput
-	// OS policy assignment description. Length of the description is limited to 1024 characters.
-	Description pulumi.StringPtrInput
-	// Filter to select VMs.
-	InstanceFilter OSPolicyAssignmentInstanceFilterResponsePtrInput
-	// Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment.
-	Name pulumi.StringPtrInput
-	// List of OS policies to be applied to the VMs.
-	OsPolicies OSPolicyResponseArrayInput
-	// Indicates that reconciliation is in progress for the revision. This value is `true` when the `rollout_state` is one of: * IN_PROGRESS * CANCELLING
-	Reconciling pulumi.BoolPtrInput
-	// The timestamp that the revision was created.
-	RevisionCreateTime pulumi.StringPtrInput
-	// The assignment revision ID A new revision is committed whenever a rollout is triggered for a OS policy assignment
-	RevisionId pulumi.StringPtrInput
-	// Rollout to deploy the OS policy assignment. A rollout is triggered in the following situations: 1) OSPolicyAssignment is created. 2) OSPolicyAssignment is updated and the update contains changes to one of the following fields: - instance_filter - os_policies 3) OSPolicyAssignment is deleted.
-	Rollout OSPolicyAssignmentRolloutResponsePtrInput
-	// OS policy assignment rollout state
-	RolloutState pulumi.StringPtrInput
-	// Server generated unique id for the OS policy assignment resource.
-	Uid pulumi.StringPtrInput
 }
 
 func (OsPolicyAssignmentState) ElementType() reflect.Type {

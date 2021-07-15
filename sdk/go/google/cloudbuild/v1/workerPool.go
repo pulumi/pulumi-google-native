@@ -76,49 +76,9 @@ func GetWorkerPool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkerPool resources.
 type workerPoolState struct {
-	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
-	Annotations map[string]string `pulumi:"annotations"`
-	// Time at which the request to create the `WorkerPool` was received.
-	CreateTime *string `pulumi:"createTime"`
-	// Time at which the request to delete the `WorkerPool` was received.
-	DeleteTime *string `pulumi:"deleteTime"`
-	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
-	DisplayName *string `pulumi:"displayName"`
-	// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
-	Etag *string `pulumi:"etag"`
-	// The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
-	Name *string `pulumi:"name"`
-	// Private Pool using a v1 configuration.
-	PrivatePoolV1Config *PrivatePoolV1ConfigResponse `pulumi:"privatePoolV1Config"`
-	// `WorkerPool` state.
-	State *string `pulumi:"state"`
-	// A unique identifier for the `WorkerPool`.
-	Uid *string `pulumi:"uid"`
-	// Time at which the request to update the `WorkerPool` was received.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type WorkerPoolState struct {
-	// User specified annotations. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
-	Annotations pulumi.StringMapInput
-	// Time at which the request to create the `WorkerPool` was received.
-	CreateTime pulumi.StringPtrInput
-	// Time at which the request to delete the `WorkerPool` was received.
-	DeleteTime pulumi.StringPtrInput
-	// A user-specified, human-readable name for the `WorkerPool`. If provided, this value must be 1-63 characters.
-	DisplayName pulumi.StringPtrInput
-	// Checksum computed by the server. May be sent on update and delete requests to ensure that the client has an up-to-date value before proceeding.
-	Etag pulumi.StringPtrInput
-	// The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed.
-	Name pulumi.StringPtrInput
-	// Private Pool using a v1 configuration.
-	PrivatePoolV1Config PrivatePoolV1ConfigResponsePtrInput
-	// `WorkerPool` state.
-	State pulumi.StringPtrInput
-	// A unique identifier for the `WorkerPool`.
-	Uid pulumi.StringPtrInput
-	// Time at which the request to update the `WorkerPool` was received.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (WorkerPoolState) ElementType() reflect.Type {

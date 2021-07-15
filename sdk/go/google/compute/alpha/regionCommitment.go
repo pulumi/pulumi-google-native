@@ -88,81 +88,9 @@ func GetRegionCommitment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionCommitment resources.
 type regionCommitmentState struct {
-	// Specifies whether to enable automatic renewal for the commitment. The default value is false if not specified. The field can be updated until the day of the commitment expiration at 12:00am PST. If the field is set to true, the commitment will be automatically renewed for either one or three years according to the terms of the existing commitment.
-	AutoRenew *bool `pulumi:"autoRenew"`
-	// The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
-	Category *string `pulumi:"category"`
-	// Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// An optional description of this resource. Provide this property when you create the resource.
-	Description *string `pulumi:"description"`
-	// Commitment end time in RFC3339 text format.
-	EndTimestamp *string `pulumi:"endTimestamp"`
-	// Type of the resource. Always compute#commitment for commitments.
-	Kind *string `pulumi:"kind"`
-	// The license specification required as part of a license commitment.
-	LicenseResource *LicenseResourceCommitmentResponse `pulumi:"licenseResource"`
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name *string `pulumi:"name"`
-	// The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
-	Plan *string `pulumi:"plan"`
-	// URL of the region where this commitment may be used.
-	Region *string `pulumi:"region"`
-	// List of reservations in this commitment.
-	Reservations []ReservationResponse `pulumi:"reservations"`
-	// A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
-	Resources []ResourceCommitmentResponse `pulumi:"resources"`
-	// Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// Server-defined URL for this resource with the resource id.
-	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
-	// Commitment start time in RFC3339 text format.
-	StartTimestamp *string `pulumi:"startTimestamp"`
-	// Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
-	Status *string `pulumi:"status"`
-	// An optional, human-readable explanation of the status.
-	StatusMessage *string `pulumi:"statusMessage"`
-	// The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
-	Type *string `pulumi:"type"`
 }
 
 type RegionCommitmentState struct {
-	// Specifies whether to enable automatic renewal for the commitment. The default value is false if not specified. The field can be updated until the day of the commitment expiration at 12:00am PST. If the field is set to true, the commitment will be automatically renewed for either one or three years according to the terms of the existing commitment.
-	AutoRenew pulumi.BoolPtrInput
-	// The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
-	Category pulumi.StringPtrInput
-	// Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
-	// An optional description of this resource. Provide this property when you create the resource.
-	Description pulumi.StringPtrInput
-	// Commitment end time in RFC3339 text format.
-	EndTimestamp pulumi.StringPtrInput
-	// Type of the resource. Always compute#commitment for commitments.
-	Kind pulumi.StringPtrInput
-	// The license specification required as part of a license commitment.
-	LicenseResource LicenseResourceCommitmentResponsePtrInput
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringPtrInput
-	// The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
-	Plan pulumi.StringPtrInput
-	// URL of the region where this commitment may be used.
-	Region pulumi.StringPtrInput
-	// List of reservations in this commitment.
-	Reservations ReservationResponseArrayInput
-	// A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
-	Resources ResourceCommitmentResponseArrayInput
-	// Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	// Server-defined URL for this resource with the resource id.
-	SelfLinkWithId pulumi.StringPtrInput
-	// Commitment start time in RFC3339 text format.
-	StartTimestamp pulumi.StringPtrInput
-	// Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
-	Status pulumi.StringPtrInput
-	// An optional, human-readable explanation of the status.
-	StatusMessage pulumi.StringPtrInput
-	// The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
-	Type pulumi.StringPtrInput
 }
 
 func (RegionCommitmentState) ElementType() reflect.Type {
@@ -173,7 +101,7 @@ type regionCommitmentArgs struct {
 	// Specifies whether to enable automatic renewal for the commitment. The default value is false if not specified. The field can be updated until the day of the commitment expiration at 12:00am PST. If the field is set to true, the commitment will be automatically renewed for either one or three years according to the terms of the existing commitment.
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
-	Category *string `pulumi:"category"`
+	Category *RegionCommitmentCategory `pulumi:"category"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// The license specification required as part of a license commitment.
@@ -181,16 +109,16 @@ type regionCommitmentArgs struct {
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
 	// The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
-	Plan      *string `pulumi:"plan"`
-	Project   string  `pulumi:"project"`
-	Region    string  `pulumi:"region"`
-	RequestId *string `pulumi:"requestId"`
+	Plan      *RegionCommitmentPlan `pulumi:"plan"`
+	Project   string                `pulumi:"project"`
+	Region    string                `pulumi:"region"`
+	RequestId *string               `pulumi:"requestId"`
 	// List of reservations in this commitment.
 	Reservations []ReservationType `pulumi:"reservations"`
 	// A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
 	Resources []ResourceCommitment `pulumi:"resources"`
 	// The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
-	Type *string `pulumi:"type"`
+	Type *RegionCommitmentType `pulumi:"type"`
 }
 
 // The set of arguments for constructing a RegionCommitment resource.
@@ -198,7 +126,7 @@ type RegionCommitmentArgs struct {
 	// Specifies whether to enable automatic renewal for the commitment. The default value is false if not specified. The field can be updated until the day of the commitment expiration at 12:00am PST. If the field is set to true, the commitment will be automatically renewed for either one or three years according to the terms of the existing commitment.
 	AutoRenew pulumi.BoolPtrInput
 	// The category of the commitment. Category MACHINE specifies commitments composed of machine resources such as VCPU or MEMORY, listed in resources. Category LICENSE specifies commitments composed of software licenses, listed in licenseResources. Note that only MACHINE commitments should have a Type specified.
-	Category *RegionCommitmentCategory
+	Category RegionCommitmentCategoryPtrInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// The license specification required as part of a license commitment.
@@ -206,7 +134,7 @@ type RegionCommitmentArgs struct {
 	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
 	// The plan for this commitment, which determines duration and discount rate. The currently supported plans are TWELVE_MONTH (1 year), and THIRTY_SIX_MONTH (3 years).
-	Plan      *RegionCommitmentPlan
+	Plan      RegionCommitmentPlanPtrInput
 	Project   pulumi.StringInput
 	Region    pulumi.StringInput
 	RequestId pulumi.StringPtrInput
@@ -215,7 +143,7 @@ type RegionCommitmentArgs struct {
 	// A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
 	Resources ResourceCommitmentArrayInput
 	// The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
-	Type *RegionCommitmentType
+	Type RegionCommitmentTypePtrInput
 }
 
 func (RegionCommitmentArgs) ElementType() reflect.Type {

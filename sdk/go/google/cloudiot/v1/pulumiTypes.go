@@ -1436,9 +1436,9 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 // Gateway-related configuration and state.
 type GatewayConfig struct {
 	// Indicates how to authorize and/or authenticate devices to access the gateway.
-	GatewayAuthMethod *string `pulumi:"gatewayAuthMethod"`
+	GatewayAuthMethod *GatewayConfigGatewayAuthMethod `pulumi:"gatewayAuthMethod"`
 	// Indicates whether the device is a gateway.
-	GatewayType *string `pulumi:"gatewayType"`
+	GatewayType *GatewayConfigGatewayType `pulumi:"gatewayType"`
 }
 
 // GatewayConfigInput is an input type that accepts GatewayConfigArgs and GatewayConfigOutput values.
@@ -1455,9 +1455,9 @@ type GatewayConfigInput interface {
 // Gateway-related configuration and state.
 type GatewayConfigArgs struct {
 	// Indicates how to authorize and/or authenticate devices to access the gateway.
-	GatewayAuthMethod *GatewayConfigGatewayAuthMethod `pulumi:"gatewayAuthMethod"`
+	GatewayAuthMethod GatewayConfigGatewayAuthMethodPtrInput `pulumi:"gatewayAuthMethod"`
 	// Indicates whether the device is a gateway.
-	GatewayType *GatewayConfigGatewayType `pulumi:"gatewayType"`
+	GatewayType GatewayConfigGatewayTypePtrInput `pulumi:"gatewayType"`
 }
 
 func (GatewayConfigArgs) ElementType() reflect.Type {
@@ -1539,13 +1539,13 @@ func (o GatewayConfigOutput) ToGatewayConfigPtrOutputWithContext(ctx context.Con
 }
 
 // Indicates how to authorize and/or authenticate devices to access the gateway.
-func (o GatewayConfigOutput) GatewayAuthMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayConfig) *string { return v.GatewayAuthMethod }).(pulumi.StringPtrOutput)
+func (o GatewayConfigOutput) GatewayAuthMethod() GatewayConfigGatewayAuthMethodPtrOutput {
+	return o.ApplyT(func(v GatewayConfig) *GatewayConfigGatewayAuthMethod { return v.GatewayAuthMethod }).(GatewayConfigGatewayAuthMethodPtrOutput)
 }
 
 // Indicates whether the device is a gateway.
-func (o GatewayConfigOutput) GatewayType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GatewayConfig) *string { return v.GatewayType }).(pulumi.StringPtrOutput)
+func (o GatewayConfigOutput) GatewayType() GatewayConfigGatewayTypePtrOutput {
+	return o.ApplyT(func(v GatewayConfig) *GatewayConfigGatewayType { return v.GatewayType }).(GatewayConfigGatewayTypePtrOutput)
 }
 
 type GatewayConfigPtrOutput struct{ *pulumi.OutputState }
@@ -1567,23 +1567,23 @@ func (o GatewayConfigPtrOutput) Elem() GatewayConfigOutput {
 }
 
 // Indicates how to authorize and/or authenticate devices to access the gateway.
-func (o GatewayConfigPtrOutput) GatewayAuthMethod() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GatewayConfig) *string {
+func (o GatewayConfigPtrOutput) GatewayAuthMethod() GatewayConfigGatewayAuthMethodPtrOutput {
+	return o.ApplyT(func(v *GatewayConfig) *GatewayConfigGatewayAuthMethod {
 		if v == nil {
 			return nil
 		}
 		return v.GatewayAuthMethod
-	}).(pulumi.StringPtrOutput)
+	}).(GatewayConfigGatewayAuthMethodPtrOutput)
 }
 
 // Indicates whether the device is a gateway.
-func (o GatewayConfigPtrOutput) GatewayType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GatewayConfig) *string {
+func (o GatewayConfigPtrOutput) GatewayType() GatewayConfigGatewayTypePtrOutput {
+	return o.ApplyT(func(v *GatewayConfig) *GatewayConfigGatewayType {
 		if v == nil {
 			return nil
 		}
 		return v.GatewayType
-	}).(pulumi.StringPtrOutput)
+	}).(GatewayConfigGatewayTypePtrOutput)
 }
 
 // Gateway-related configuration and state.
@@ -1780,7 +1780,7 @@ func (o GatewayConfigResponsePtrOutput) LastAccessedGatewayTime() pulumi.StringP
 // The configuration of the HTTP bridge for a device registry.
 type HttpConfig struct {
 	// If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
-	HttpEnabledState *string `pulumi:"httpEnabledState"`
+	HttpEnabledState *HttpConfigHttpEnabledState `pulumi:"httpEnabledState"`
 }
 
 // HttpConfigInput is an input type that accepts HttpConfigArgs and HttpConfigOutput values.
@@ -1797,7 +1797,7 @@ type HttpConfigInput interface {
 // The configuration of the HTTP bridge for a device registry.
 type HttpConfigArgs struct {
 	// If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
-	HttpEnabledState *HttpConfigHttpEnabledState `pulumi:"httpEnabledState"`
+	HttpEnabledState HttpConfigHttpEnabledStatePtrInput `pulumi:"httpEnabledState"`
 }
 
 func (HttpConfigArgs) ElementType() reflect.Type {
@@ -1879,8 +1879,8 @@ func (o HttpConfigOutput) ToHttpConfigPtrOutputWithContext(ctx context.Context) 
 }
 
 // If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
-func (o HttpConfigOutput) HttpEnabledState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HttpConfig) *string { return v.HttpEnabledState }).(pulumi.StringPtrOutput)
+func (o HttpConfigOutput) HttpEnabledState() HttpConfigHttpEnabledStatePtrOutput {
+	return o.ApplyT(func(v HttpConfig) *HttpConfigHttpEnabledState { return v.HttpEnabledState }).(HttpConfigHttpEnabledStatePtrOutput)
 }
 
 type HttpConfigPtrOutput struct{ *pulumi.OutputState }
@@ -1902,13 +1902,13 @@ func (o HttpConfigPtrOutput) Elem() HttpConfigOutput {
 }
 
 // If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
-func (o HttpConfigPtrOutput) HttpEnabledState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HttpConfig) *string {
+func (o HttpConfigPtrOutput) HttpEnabledState() HttpConfigHttpEnabledStatePtrOutput {
+	return o.ApplyT(func(v *HttpConfig) *HttpConfigHttpEnabledState {
 		if v == nil {
 			return nil
 		}
 		return v.HttpEnabledState
-	}).(pulumi.StringPtrOutput)
+	}).(HttpConfigHttpEnabledStatePtrOutput)
 }
 
 // The configuration of the HTTP bridge for a device registry.
@@ -2048,7 +2048,7 @@ func (o HttpConfigResponsePtrOutput) HttpEnabledState() pulumi.StringPtrOutput {
 // The configuration of MQTT for a device registry.
 type MqttConfig struct {
 	// If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
-	MqttEnabledState *string `pulumi:"mqttEnabledState"`
+	MqttEnabledState *MqttConfigMqttEnabledState `pulumi:"mqttEnabledState"`
 }
 
 // MqttConfigInput is an input type that accepts MqttConfigArgs and MqttConfigOutput values.
@@ -2065,7 +2065,7 @@ type MqttConfigInput interface {
 // The configuration of MQTT for a device registry.
 type MqttConfigArgs struct {
 	// If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
-	MqttEnabledState *MqttConfigMqttEnabledState `pulumi:"mqttEnabledState"`
+	MqttEnabledState MqttConfigMqttEnabledStatePtrInput `pulumi:"mqttEnabledState"`
 }
 
 func (MqttConfigArgs) ElementType() reflect.Type {
@@ -2147,8 +2147,8 @@ func (o MqttConfigOutput) ToMqttConfigPtrOutputWithContext(ctx context.Context) 
 }
 
 // If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
-func (o MqttConfigOutput) MqttEnabledState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MqttConfig) *string { return v.MqttEnabledState }).(pulumi.StringPtrOutput)
+func (o MqttConfigOutput) MqttEnabledState() MqttConfigMqttEnabledStatePtrOutput {
+	return o.ApplyT(func(v MqttConfig) *MqttConfigMqttEnabledState { return v.MqttEnabledState }).(MqttConfigMqttEnabledStatePtrOutput)
 }
 
 type MqttConfigPtrOutput struct{ *pulumi.OutputState }
@@ -2170,13 +2170,13 @@ func (o MqttConfigPtrOutput) Elem() MqttConfigOutput {
 }
 
 // If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
-func (o MqttConfigPtrOutput) MqttEnabledState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MqttConfig) *string {
+func (o MqttConfigPtrOutput) MqttEnabledState() MqttConfigMqttEnabledStatePtrOutput {
+	return o.ApplyT(func(v *MqttConfig) *MqttConfigMqttEnabledState {
 		if v == nil {
 			return nil
 		}
 		return v.MqttEnabledState
-	}).(pulumi.StringPtrOutput)
+	}).(MqttConfigMqttEnabledStatePtrOutput)
 }
 
 // The configuration of MQTT for a device registry.
@@ -2318,7 +2318,7 @@ type PublicKeyCertificate struct {
 	// The certificate data.
 	Certificate *string `pulumi:"certificate"`
 	// The certificate format.
-	Format *string `pulumi:"format"`
+	Format *PublicKeyCertificateFormat `pulumi:"format"`
 }
 
 // PublicKeyCertificateInput is an input type that accepts PublicKeyCertificateArgs and PublicKeyCertificateOutput values.
@@ -2337,7 +2337,7 @@ type PublicKeyCertificateArgs struct {
 	// The certificate data.
 	Certificate pulumi.StringPtrInput `pulumi:"certificate"`
 	// The certificate format.
-	Format *PublicKeyCertificateFormat `pulumi:"format"`
+	Format PublicKeyCertificateFormatPtrInput `pulumi:"format"`
 }
 
 func (PublicKeyCertificateArgs) ElementType() reflect.Type {
@@ -2424,8 +2424,8 @@ func (o PublicKeyCertificateOutput) Certificate() pulumi.StringPtrOutput {
 }
 
 // The certificate format.
-func (o PublicKeyCertificateOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PublicKeyCertificate) *string { return v.Format }).(pulumi.StringPtrOutput)
+func (o PublicKeyCertificateOutput) Format() PublicKeyCertificateFormatPtrOutput {
+	return o.ApplyT(func(v PublicKeyCertificate) *PublicKeyCertificateFormat { return v.Format }).(PublicKeyCertificateFormatPtrOutput)
 }
 
 type PublicKeyCertificatePtrOutput struct{ *pulumi.OutputState }
@@ -2457,13 +2457,13 @@ func (o PublicKeyCertificatePtrOutput) Certificate() pulumi.StringPtrOutput {
 }
 
 // The certificate format.
-func (o PublicKeyCertificatePtrOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PublicKeyCertificate) *string {
+func (o PublicKeyCertificatePtrOutput) Format() PublicKeyCertificateFormatPtrOutput {
+	return o.ApplyT(func(v *PublicKeyCertificate) *PublicKeyCertificateFormat {
 		if v == nil {
 			return nil
 		}
 		return v.Format
-	}).(pulumi.StringPtrOutput)
+	}).(PublicKeyCertificateFormatPtrOutput)
 }
 
 // A public key certificate format and data.
@@ -2542,7 +2542,7 @@ func (o PublicKeyCertificateResponseOutput) X509Details() X509CertificateDetails
 // A public key format and data.
 type PublicKeyCredential struct {
 	// The format of the key.
-	Format *string `pulumi:"format"`
+	Format *PublicKeyCredentialFormat `pulumi:"format"`
 	// The key data.
 	Key *string `pulumi:"key"`
 }
@@ -2561,7 +2561,7 @@ type PublicKeyCredentialInput interface {
 // A public key format and data.
 type PublicKeyCredentialArgs struct {
 	// The format of the key.
-	Format *PublicKeyCredentialFormat `pulumi:"format"`
+	Format PublicKeyCredentialFormatPtrInput `pulumi:"format"`
 	// The key data.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 }
@@ -2645,8 +2645,8 @@ func (o PublicKeyCredentialOutput) ToPublicKeyCredentialPtrOutputWithContext(ctx
 }
 
 // The format of the key.
-func (o PublicKeyCredentialOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PublicKeyCredential) *string { return v.Format }).(pulumi.StringPtrOutput)
+func (o PublicKeyCredentialOutput) Format() PublicKeyCredentialFormatPtrOutput {
+	return o.ApplyT(func(v PublicKeyCredential) *PublicKeyCredentialFormat { return v.Format }).(PublicKeyCredentialFormatPtrOutput)
 }
 
 // The key data.
@@ -2673,13 +2673,13 @@ func (o PublicKeyCredentialPtrOutput) Elem() PublicKeyCredentialOutput {
 }
 
 // The format of the key.
-func (o PublicKeyCredentialPtrOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PublicKeyCredential) *string {
+func (o PublicKeyCredentialPtrOutput) Format() PublicKeyCredentialFormatPtrOutput {
+	return o.ApplyT(func(v *PublicKeyCredential) *PublicKeyCredentialFormat {
 		if v == nil {
 			return nil
 		}
 		return v.Format
-	}).(pulumi.StringPtrOutput)
+	}).(PublicKeyCredentialFormatPtrOutput)
 }
 
 // The key data.

@@ -71,45 +71,9 @@ func GetKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Key resources.
 type keyState struct {
-	// Specifies the algorithm (and possibly key size) for the key.
-	KeyAlgorithm *string `pulumi:"keyAlgorithm"`
-	// The key origin.
-	KeyOrigin *string `pulumi:"keyOrigin"`
-	// The key type.
-	KeyType *string `pulumi:"keyType"`
-	// The resource name of the service account key in the following format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`.
-	Name *string `pulumi:"name"`
-	// The private key data. Only provided in `CreateServiceAccountKey` responses. Make sure to keep the private key data secure because it allows for the assertion of the service account identity. When base64 decoded, the private key data can be used to authenticate with Google API client libraries and with gcloud auth activate-service-account.
-	PrivateKeyData *string `pulumi:"privateKeyData"`
-	// The output format for the private key. Only provided in `CreateServiceAccountKey` responses, not in `GetServiceAccountKey` or `ListServiceAccountKey` responses. Google never exposes system-managed private keys, and never retains user-managed private keys.
-	PrivateKeyType *string `pulumi:"privateKeyType"`
-	// The public key data. Only provided in `GetServiceAccountKey` responses.
-	PublicKeyData *string `pulumi:"publicKeyData"`
-	// The key can be used after this timestamp.
-	ValidAfterTime *string `pulumi:"validAfterTime"`
-	// The key can be used before this timestamp. For system-managed key pairs, this timestamp is the end time for the private key signing operation. The public key could still be used for verification for a few hours after this time.
-	ValidBeforeTime *string `pulumi:"validBeforeTime"`
 }
 
 type KeyState struct {
-	// Specifies the algorithm (and possibly key size) for the key.
-	KeyAlgorithm pulumi.StringPtrInput
-	// The key origin.
-	KeyOrigin pulumi.StringPtrInput
-	// The key type.
-	KeyType pulumi.StringPtrInput
-	// The resource name of the service account key in the following format `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}`.
-	Name pulumi.StringPtrInput
-	// The private key data. Only provided in `CreateServiceAccountKey` responses. Make sure to keep the private key data secure because it allows for the assertion of the service account identity. When base64 decoded, the private key data can be used to authenticate with Google API client libraries and with gcloud auth activate-service-account.
-	PrivateKeyData pulumi.StringPtrInput
-	// The output format for the private key. Only provided in `CreateServiceAccountKey` responses, not in `GetServiceAccountKey` or `ListServiceAccountKey` responses. Google never exposes system-managed private keys, and never retains user-managed private keys.
-	PrivateKeyType pulumi.StringPtrInput
-	// The public key data. Only provided in `GetServiceAccountKey` responses.
-	PublicKeyData pulumi.StringPtrInput
-	// The key can be used after this timestamp.
-	ValidAfterTime pulumi.StringPtrInput
-	// The key can be used before this timestamp. For system-managed key pairs, this timestamp is the end time for the private key signing operation. The public key could still be used for verification for a few hours after this time.
-	ValidBeforeTime pulumi.StringPtrInput
 }
 
 func (KeyState) ElementType() reflect.Type {
@@ -118,19 +82,19 @@ func (KeyState) ElementType() reflect.Type {
 
 type keyArgs struct {
 	// Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
-	KeyAlgorithm *string `pulumi:"keyAlgorithm"`
+	KeyAlgorithm *KeyKeyAlgorithm `pulumi:"keyAlgorithm"`
 	// The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
-	PrivateKeyType   *string `pulumi:"privateKeyType"`
-	Project          string  `pulumi:"project"`
-	ServiceAccountId string  `pulumi:"serviceAccountId"`
+	PrivateKeyType   *KeyPrivateKeyType `pulumi:"privateKeyType"`
+	Project          string             `pulumi:"project"`
+	ServiceAccountId string             `pulumi:"serviceAccountId"`
 }
 
 // The set of arguments for constructing a Key resource.
 type KeyArgs struct {
 	// Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
-	KeyAlgorithm *KeyKeyAlgorithm
+	KeyAlgorithm KeyKeyAlgorithmPtrInput
 	// The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
-	PrivateKeyType   *KeyPrivateKeyType
+	PrivateKeyType   KeyPrivateKeyTypePtrInput
 	Project          pulumi.StringInput
 	ServiceAccountId pulumi.StringInput
 }

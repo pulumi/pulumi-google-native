@@ -62,29 +62,9 @@ func GetNotificationConfig(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering NotificationConfig resources.
 type notificationConfigState struct {
-	// The description of the notification config (max of 1024 characters).
-	Description *string `pulumi:"description"`
-	// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
-	Name *string `pulumi:"name"`
-	// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
-	PubsubTopic *string `pulumi:"pubsubTopic"`
-	// The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
-	ServiceAccount *string `pulumi:"serviceAccount"`
-	// The config for triggering streaming-based notifications.
-	StreamingConfig *StreamingConfigResponse `pulumi:"streamingConfig"`
 }
 
 type NotificationConfigState struct {
-	// The description of the notification config (max of 1024 characters).
-	Description pulumi.StringPtrInput
-	// The relative resource name of this notification config. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/notificationConfigs/notify_public_bucket".
-	Name pulumi.StringPtrInput
-	// The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
-	PubsubTopic pulumi.StringPtrInput
-	// The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
-	ServiceAccount pulumi.StringPtrInput
-	// The config for triggering streaming-based notifications.
-	StreamingConfig StreamingConfigResponsePtrInput
 }
 
 func (NotificationConfigState) ElementType() reflect.Type {
