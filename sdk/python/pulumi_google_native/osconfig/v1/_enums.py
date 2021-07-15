@@ -21,8 +21,11 @@ class AptSettingsType(str, Enum):
     By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
     """
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
+    """By default, upgrade will be performed."""
     DIST = "DIST"
+    """Runs `apt-get dist-upgrade`."""
     UPGRADE = "UPGRADE"
+    """Runs `apt-get upgrade`."""
 
 
 class ExecStepConfigInterpreter(str, Enum):
@@ -30,8 +33,11 @@ class ExecStepConfigInterpreter(str, Enum):
     The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
     """
     INTERPRETER_UNSPECIFIED = "INTERPRETER_UNSPECIFIED"
+    """Invalid for a Windows ExecStepConfig. For a Linux ExecStepConfig, the interpreter will be parsed from the shebang line of the script if unspecified."""
     SHELL = "SHELL"
+    """Indicates that the script is run with `/bin/sh` on Linux and `cmd` on Windows."""
     POWERSHELL = "POWERSHELL"
+    """Indicates that the file is run with PowerShell flags `-NonInteractive`, `-NoProfile`, and `-ExecutionPolicy Bypass`."""
 
 
 class PatchConfigRebootConfig(str, Enum):
@@ -39,9 +45,13 @@ class PatchConfigRebootConfig(str, Enum):
     Post-patch reboot settings.
     """
     REBOOT_CONFIG_UNSPECIFIED = "REBOOT_CONFIG_UNSPECIFIED"
+    """The default behavior is DEFAULT."""
     DEFAULT = "DEFAULT"
+    """The agent decides if a reboot is necessary by checking signals such as registry keys on Windows or `/var/run/reboot-required` on APT based systems. On RPM based systems, a set of core system package install times are compared with system boot time."""
     ALWAYS = "ALWAYS"
+    """Always reboot the machine after the update completes."""
     NEVER = "NEVER"
+    """Never reboot the machine after the update completes."""
 
 
 class PatchRolloutMode(str, Enum):
@@ -49,8 +59,11 @@ class PatchRolloutMode(str, Enum):
     Mode of the patch rollout.
     """
     MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
+    """Mode must be specified."""
     ZONE_BY_ZONE = "ZONE_BY_ZONE"
+    """Patches are applied one zone at a time. The patch job begins in the region with the lowest number of targeted VMs. Within the region, patching begins in the zone with the lowest number of targeted VMs. If multiple regions (or zones within a region) have the same number of targeted VMs, a tie-breaker is achieved by sorting the regions or zones in alphabetical order."""
     CONCURRENT_ZONES = "CONCURRENT_ZONES"
+    """Patches are applied to VMs in all zones at the same time."""
 
 
 class RecurringScheduleFrequency(str, Enum):
@@ -58,8 +71,11 @@ class RecurringScheduleFrequency(str, Enum):
     Required. The frequency unit of this recurring schedule.
     """
     FREQUENCY_UNSPECIFIED = "FREQUENCY_UNSPECIFIED"
+    """Invalid. A frequency must be specified."""
     WEEKLY = "WEEKLY"
+    """Indicates that the frequency should be expressed in terms of weeks."""
     MONTHLY = "MONTHLY"
+    """Indicates that the frequency should be expressed in terms of months."""
 
 
 class WeekDayOfMonthDayOfWeek(str, Enum):
@@ -67,13 +83,21 @@ class WeekDayOfMonthDayOfWeek(str, Enum):
     Required. A day of the week.
     """
     DAY_OF_WEEK_UNSPECIFIED = "DAY_OF_WEEK_UNSPECIFIED"
+    """The day of the week is unspecified."""
     MONDAY = "MONDAY"
+    """Monday"""
     TUESDAY = "TUESDAY"
+    """Tuesday"""
     WEDNESDAY = "WEDNESDAY"
+    """Wednesday"""
     THURSDAY = "THURSDAY"
+    """Thursday"""
     FRIDAY = "FRIDAY"
+    """Friday"""
     SATURDAY = "SATURDAY"
+    """Saturday"""
     SUNDAY = "SUNDAY"
+    """Sunday"""
 
 
 class WeeklyScheduleDayOfWeek(str, Enum):
@@ -81,23 +105,41 @@ class WeeklyScheduleDayOfWeek(str, Enum):
     Required. Day of the week.
     """
     DAY_OF_WEEK_UNSPECIFIED = "DAY_OF_WEEK_UNSPECIFIED"
+    """The day of the week is unspecified."""
     MONDAY = "MONDAY"
+    """Monday"""
     TUESDAY = "TUESDAY"
+    """Tuesday"""
     WEDNESDAY = "WEDNESDAY"
+    """Wednesday"""
     THURSDAY = "THURSDAY"
+    """Thursday"""
     FRIDAY = "FRIDAY"
+    """Friday"""
     SATURDAY = "SATURDAY"
+    """Saturday"""
     SUNDAY = "SUNDAY"
+    """Sunday"""
 
 
 class WindowsUpdateSettingsClassificationsItem(str, Enum):
     CLASSIFICATION_UNSPECIFIED = "CLASSIFICATION_UNSPECIFIED"
+    """Invalid. If classifications are included, they must be specified."""
     CRITICAL = "CRITICAL"
+    """"A widely released fix for a specific problem that addresses a critical, non-security-related bug." [1]"""
     SECURITY = "SECURITY"
+    """"A widely released fix for a product-specific, security-related vulnerability. Security vulnerabilities are rated by their severity. The severity rating is indicated in the Microsoft security bulletin as critical, important, moderate, or low." [1]"""
     DEFINITION = "DEFINITION"
+    """"A widely released and frequent software update that contains additions to a product's definition database. Definition databases are often used to detect objects that have specific attributes, such as malicious code, phishing websites, or junk mail." [1]"""
     DRIVER = "DRIVER"
+    """"Software that controls the input and output of a device." [1]"""
     FEATURE_PACK = "FEATURE_PACK"
+    """"New product functionality that is first distributed outside the context of a product release and that is typically included in the next full product release." [1]"""
     SERVICE_PACK = "SERVICE_PACK"
+    """"A tested, cumulative set of all hotfixes, security updates, critical updates, and updates. Additionally, service packs may contain additional fixes for problems that are found internally since the release of the product. Service packs my also contain a limited number of customer-requested design changes or features." [1]"""
     TOOL = "TOOL"
+    """"A utility or feature that helps complete a task or set of tasks." [1]"""
     UPDATE_ROLLUP = "UPDATE_ROLLUP"
+    """"A tested, cumulative set of hotfixes, security updates, critical updates, and updates that are packaged together for easy deployment. A rollup generally targets a specific area, such as security, or a component of a product, such as Internet Information Services (IIS)." [1]"""
     UPDATE = "UPDATE"
+    """"A widely released fix for a specific problem. An update addresses a noncritical, non-security-related bug." [1]"""

@@ -23,18 +23,18 @@ __all__ = [
     'ExtendedKeyUsageOptionsArgs',
     'IssuanceModesArgs',
     'IssuancePolicyArgs',
-    'KeyUsageArgs',
     'KeyUsageOptionsArgs',
+    'KeyUsageArgs',
     'KeyVersionSpecArgs',
     'ObjectIdArgs',
     'PublicKeyArgs',
     'PublishingOptionsArgs',
     'RsaKeyTypeArgs',
-    'SubjectArgs',
     'SubjectAltNamesArgs',
     'SubjectConfigArgs',
-    'SubordinateConfigArgs',
+    'SubjectArgs',
     'SubordinateConfigChainArgs',
+    'SubordinateConfigArgs',
     'X509ExtensionArgs',
     'X509ParametersArgs',
 ]
@@ -748,62 +748,6 @@ class IssuancePolicyArgs:
 
 
 @pulumi.input_type
-class KeyUsageArgs:
-    def __init__(__self__, *,
-                 base_key_usage: Optional[pulumi.Input['KeyUsageOptionsArgs']] = None,
-                 extended_key_usage: Optional[pulumi.Input['ExtendedKeyUsageOptionsArgs']] = None,
-                 unknown_extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectIdArgs']]]] = None):
-        """
-        A KeyUsage describes key usage values that may appear in an X.509 certificate.
-        :param pulumi.Input['KeyUsageOptionsArgs'] base_key_usage: Describes high-level ways in which a key may be used.
-        :param pulumi.Input['ExtendedKeyUsageOptionsArgs'] extended_key_usage: Detailed scenarios in which a key may be used.
-        :param pulumi.Input[Sequence[pulumi.Input['ObjectIdArgs']]] unknown_extended_key_usages: Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
-        """
-        if base_key_usage is not None:
-            pulumi.set(__self__, "base_key_usage", base_key_usage)
-        if extended_key_usage is not None:
-            pulumi.set(__self__, "extended_key_usage", extended_key_usage)
-        if unknown_extended_key_usages is not None:
-            pulumi.set(__self__, "unknown_extended_key_usages", unknown_extended_key_usages)
-
-    @property
-    @pulumi.getter(name="baseKeyUsage")
-    def base_key_usage(self) -> Optional[pulumi.Input['KeyUsageOptionsArgs']]:
-        """
-        Describes high-level ways in which a key may be used.
-        """
-        return pulumi.get(self, "base_key_usage")
-
-    @base_key_usage.setter
-    def base_key_usage(self, value: Optional[pulumi.Input['KeyUsageOptionsArgs']]):
-        pulumi.set(self, "base_key_usage", value)
-
-    @property
-    @pulumi.getter(name="extendedKeyUsage")
-    def extended_key_usage(self) -> Optional[pulumi.Input['ExtendedKeyUsageOptionsArgs']]:
-        """
-        Detailed scenarios in which a key may be used.
-        """
-        return pulumi.get(self, "extended_key_usage")
-
-    @extended_key_usage.setter
-    def extended_key_usage(self, value: Optional[pulumi.Input['ExtendedKeyUsageOptionsArgs']]):
-        pulumi.set(self, "extended_key_usage", value)
-
-    @property
-    @pulumi.getter(name="unknownExtendedKeyUsages")
-    def unknown_extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ObjectIdArgs']]]]:
-        """
-        Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
-        """
-        return pulumi.get(self, "unknown_extended_key_usages")
-
-    @unknown_extended_key_usages.setter
-    def unknown_extended_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectIdArgs']]]]):
-        pulumi.set(self, "unknown_extended_key_usages", value)
-
-
-@pulumi.input_type
 class KeyUsageOptionsArgs:
     def __init__(__self__, *,
                  cert_sign: Optional[pulumi.Input[bool]] = None,
@@ -953,6 +897,62 @@ class KeyUsageOptionsArgs:
     @key_encipherment.setter
     def key_encipherment(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "key_encipherment", value)
+
+
+@pulumi.input_type
+class KeyUsageArgs:
+    def __init__(__self__, *,
+                 base_key_usage: Optional[pulumi.Input['KeyUsageOptionsArgs']] = None,
+                 extended_key_usage: Optional[pulumi.Input['ExtendedKeyUsageOptionsArgs']] = None,
+                 unknown_extended_key_usages: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectIdArgs']]]] = None):
+        """
+        A KeyUsage describes key usage values that may appear in an X.509 certificate.
+        :param pulumi.Input['KeyUsageOptionsArgs'] base_key_usage: Describes high-level ways in which a key may be used.
+        :param pulumi.Input['ExtendedKeyUsageOptionsArgs'] extended_key_usage: Detailed scenarios in which a key may be used.
+        :param pulumi.Input[Sequence[pulumi.Input['ObjectIdArgs']]] unknown_extended_key_usages: Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+        """
+        if base_key_usage is not None:
+            pulumi.set(__self__, "base_key_usage", base_key_usage)
+        if extended_key_usage is not None:
+            pulumi.set(__self__, "extended_key_usage", extended_key_usage)
+        if unknown_extended_key_usages is not None:
+            pulumi.set(__self__, "unknown_extended_key_usages", unknown_extended_key_usages)
+
+    @property
+    @pulumi.getter(name="baseKeyUsage")
+    def base_key_usage(self) -> Optional[pulumi.Input['KeyUsageOptionsArgs']]:
+        """
+        Describes high-level ways in which a key may be used.
+        """
+        return pulumi.get(self, "base_key_usage")
+
+    @base_key_usage.setter
+    def base_key_usage(self, value: Optional[pulumi.Input['KeyUsageOptionsArgs']]):
+        pulumi.set(self, "base_key_usage", value)
+
+    @property
+    @pulumi.getter(name="extendedKeyUsage")
+    def extended_key_usage(self) -> Optional[pulumi.Input['ExtendedKeyUsageOptionsArgs']]:
+        """
+        Detailed scenarios in which a key may be used.
+        """
+        return pulumi.get(self, "extended_key_usage")
+
+    @extended_key_usage.setter
+    def extended_key_usage(self, value: Optional[pulumi.Input['ExtendedKeyUsageOptionsArgs']]):
+        pulumi.set(self, "extended_key_usage", value)
+
+    @property
+    @pulumi.getter(name="unknownExtendedKeyUsages")
+    def unknown_extended_key_usages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ObjectIdArgs']]]]:
+        """
+        Used to describe extended key usages that are not listed in the KeyUsage.ExtendedKeyUsageOptions message.
+        """
+        return pulumi.get(self, "unknown_extended_key_usages")
+
+    @unknown_extended_key_usages.setter
+    def unknown_extended_key_usages(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ObjectIdArgs']]]]):
+        pulumi.set(self, "unknown_extended_key_usages", value)
 
 
 @pulumi.input_type
@@ -1137,6 +1137,133 @@ class RsaKeyTypeArgs:
 
 
 @pulumi.input_type
+class SubjectAltNamesArgs:
+    def __init__(__self__, *,
+                 custom_sans: Optional[pulumi.Input[Sequence[pulumi.Input['X509ExtensionArgs']]]] = None,
+                 dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        SubjectAltNames corresponds to a more modern way of listing what the asserted identity is in a certificate (i.e., compared to the "common name" in the distinguished name).
+        :param pulumi.Input[Sequence[pulumi.Input['X509ExtensionArgs']]] custom_sans: Contains additional subject alternative name values.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_names: Contains only valid, fully-qualified host names.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_addresses: Contains only valid RFC 2822 E-mail addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] uris: Contains only valid RFC 3986 URIs.
+        """
+        if custom_sans is not None:
+            pulumi.set(__self__, "custom_sans", custom_sans)
+        if dns_names is not None:
+            pulumi.set(__self__, "dns_names", dns_names)
+        if email_addresses is not None:
+            pulumi.set(__self__, "email_addresses", email_addresses)
+        if ip_addresses is not None:
+            pulumi.set(__self__, "ip_addresses", ip_addresses)
+        if uris is not None:
+            pulumi.set(__self__, "uris", uris)
+
+    @property
+    @pulumi.getter(name="customSans")
+    def custom_sans(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['X509ExtensionArgs']]]]:
+        """
+        Contains additional subject alternative name values.
+        """
+        return pulumi.get(self, "custom_sans")
+
+    @custom_sans.setter
+    def custom_sans(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['X509ExtensionArgs']]]]):
+        pulumi.set(self, "custom_sans", value)
+
+    @property
+    @pulumi.getter(name="dnsNames")
+    def dns_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains only valid, fully-qualified host names.
+        """
+        return pulumi.get(self, "dns_names")
+
+    @dns_names.setter
+    def dns_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dns_names", value)
+
+    @property
+    @pulumi.getter(name="emailAddresses")
+    def email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains only valid RFC 2822 E-mail addresses.
+        """
+        return pulumi.get(self, "email_addresses")
+
+    @email_addresses.setter
+    def email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "email_addresses", value)
+
+    @property
+    @pulumi.getter(name="ipAddresses")
+    def ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
+        """
+        return pulumi.get(self, "ip_addresses")
+
+    @ip_addresses.setter
+    def ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ip_addresses", value)
+
+    @property
+    @pulumi.getter
+    def uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Contains only valid RFC 3986 URIs.
+        """
+        return pulumi.get(self, "uris")
+
+    @uris.setter
+    def uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "uris", value)
+
+
+@pulumi.input_type
+class SubjectConfigArgs:
+    def __init__(__self__, *,
+                 subject: pulumi.Input['SubjectArgs'],
+                 subject_alt_name: Optional[pulumi.Input['SubjectAltNamesArgs']] = None):
+        """
+        These values are used to create the distinguished name and subject alternative name fields in an X.509 certificate.
+        :param pulumi.Input['SubjectArgs'] subject: Contains distinguished name fields such as the common name, location and organization.
+        :param pulumi.Input['SubjectAltNamesArgs'] subject_alt_name: Optional. The subject alternative name fields.
+        """
+        pulumi.set(__self__, "subject", subject)
+        if subject_alt_name is not None:
+            pulumi.set(__self__, "subject_alt_name", subject_alt_name)
+
+    @property
+    @pulumi.getter
+    def subject(self) -> pulumi.Input['SubjectArgs']:
+        """
+        Contains distinguished name fields such as the common name, location and organization.
+        """
+        return pulumi.get(self, "subject")
+
+    @subject.setter
+    def subject(self, value: pulumi.Input['SubjectArgs']):
+        pulumi.set(self, "subject", value)
+
+    @property
+    @pulumi.getter(name="subjectAltName")
+    def subject_alt_name(self) -> Optional[pulumi.Input['SubjectAltNamesArgs']]:
+        """
+        Optional. The subject alternative name fields.
+        """
+        return pulumi.get(self, "subject_alt_name")
+
+    @subject_alt_name.setter
+    def subject_alt_name(self, value: Optional[pulumi.Input['SubjectAltNamesArgs']]):
+        pulumi.set(self, "subject_alt_name", value)
+
+
+@pulumi.input_type
 class SubjectArgs:
     def __init__(__self__, *,
                  common_name: Optional[pulumi.Input[str]] = None,
@@ -1273,130 +1400,26 @@ class SubjectArgs:
 
 
 @pulumi.input_type
-class SubjectAltNamesArgs:
+class SubordinateConfigChainArgs:
     def __init__(__self__, *,
-                 custom_sans: Optional[pulumi.Input[Sequence[pulumi.Input['X509ExtensionArgs']]]] = None,
-                 dns_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 email_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 pem_certificates: pulumi.Input[Sequence[pulumi.Input[str]]]):
         """
-        SubjectAltNames corresponds to a more modern way of listing what the asserted identity is in a certificate (i.e., compared to the "common name" in the distinguished name).
-        :param pulumi.Input[Sequence[pulumi.Input['X509ExtensionArgs']]] custom_sans: Contains additional subject alternative name values.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_names: Contains only valid, fully-qualified host names.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] email_addresses: Contains only valid RFC 2822 E-mail addresses.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] ip_addresses: Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] uris: Contains only valid RFC 3986 URIs.
+        This message describes a subordinate CA's issuer certificate chain. This wrapper exists for compatibility reasons.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificates: Expected to be in leaf-to-root order according to RFC 5246.
         """
-        if custom_sans is not None:
-            pulumi.set(__self__, "custom_sans", custom_sans)
-        if dns_names is not None:
-            pulumi.set(__self__, "dns_names", dns_names)
-        if email_addresses is not None:
-            pulumi.set(__self__, "email_addresses", email_addresses)
-        if ip_addresses is not None:
-            pulumi.set(__self__, "ip_addresses", ip_addresses)
-        if uris is not None:
-            pulumi.set(__self__, "uris", uris)
+        pulumi.set(__self__, "pem_certificates", pem_certificates)
 
     @property
-    @pulumi.getter(name="customSans")
-    def custom_sans(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['X509ExtensionArgs']]]]:
+    @pulumi.getter(name="pemCertificates")
+    def pem_certificates(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        Contains additional subject alternative name values.
+        Expected to be in leaf-to-root order according to RFC 5246.
         """
-        return pulumi.get(self, "custom_sans")
+        return pulumi.get(self, "pem_certificates")
 
-    @custom_sans.setter
-    def custom_sans(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['X509ExtensionArgs']]]]):
-        pulumi.set(self, "custom_sans", value)
-
-    @property
-    @pulumi.getter(name="dnsNames")
-    def dns_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Contains only valid, fully-qualified host names.
-        """
-        return pulumi.get(self, "dns_names")
-
-    @dns_names.setter
-    def dns_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "dns_names", value)
-
-    @property
-    @pulumi.getter(name="emailAddresses")
-    def email_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Contains only valid RFC 2822 E-mail addresses.
-        """
-        return pulumi.get(self, "email_addresses")
-
-    @email_addresses.setter
-    def email_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "email_addresses", value)
-
-    @property
-    @pulumi.getter(name="ipAddresses")
-    def ip_addresses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Contains only valid 32-bit IPv4 addresses or RFC 4291 IPv6 addresses.
-        """
-        return pulumi.get(self, "ip_addresses")
-
-    @ip_addresses.setter
-    def ip_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "ip_addresses", value)
-
-    @property
-    @pulumi.getter
-    def uris(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Contains only valid RFC 3986 URIs.
-        """
-        return pulumi.get(self, "uris")
-
-    @uris.setter
-    def uris(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "uris", value)
-
-
-@pulumi.input_type
-class SubjectConfigArgs:
-    def __init__(__self__, *,
-                 subject: pulumi.Input['SubjectArgs'],
-                 subject_alt_name: Optional[pulumi.Input['SubjectAltNamesArgs']] = None):
-        """
-        These values are used to create the distinguished name and subject alternative name fields in an X.509 certificate.
-        :param pulumi.Input['SubjectArgs'] subject: Contains distinguished name fields such as the common name, location and organization.
-        :param pulumi.Input['SubjectAltNamesArgs'] subject_alt_name: Optional. The subject alternative name fields.
-        """
-        pulumi.set(__self__, "subject", subject)
-        if subject_alt_name is not None:
-            pulumi.set(__self__, "subject_alt_name", subject_alt_name)
-
-    @property
-    @pulumi.getter
-    def subject(self) -> pulumi.Input['SubjectArgs']:
-        """
-        Contains distinguished name fields such as the common name, location and organization.
-        """
-        return pulumi.get(self, "subject")
-
-    @subject.setter
-    def subject(self, value: pulumi.Input['SubjectArgs']):
-        pulumi.set(self, "subject", value)
-
-    @property
-    @pulumi.getter(name="subjectAltName")
-    def subject_alt_name(self) -> Optional[pulumi.Input['SubjectAltNamesArgs']]:
-        """
-        Optional. The subject alternative name fields.
-        """
-        return pulumi.get(self, "subject_alt_name")
-
-    @subject_alt_name.setter
-    def subject_alt_name(self, value: Optional[pulumi.Input['SubjectAltNamesArgs']]):
-        pulumi.set(self, "subject_alt_name", value)
+    @pem_certificates.setter
+    def pem_certificates(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "pem_certificates", value)
 
 
 @pulumi.input_type
@@ -1435,29 +1458,6 @@ class SubordinateConfigArgs:
     @pem_issuer_chain.setter
     def pem_issuer_chain(self, value: pulumi.Input['SubordinateConfigChainArgs']):
         pulumi.set(self, "pem_issuer_chain", value)
-
-
-@pulumi.input_type
-class SubordinateConfigChainArgs:
-    def __init__(__self__, *,
-                 pem_certificates: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        """
-        This message describes a subordinate CA's issuer certificate chain. This wrapper exists for compatibility reasons.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] pem_certificates: Expected to be in leaf-to-root order according to RFC 5246.
-        """
-        pulumi.set(__self__, "pem_certificates", pem_certificates)
-
-    @property
-    @pulumi.getter(name="pemCertificates")
-    def pem_certificates(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
-        """
-        Expected to be in leaf-to-root order according to RFC 5246.
-        """
-        return pulumi.get(self, "pem_certificates")
-
-    @pem_certificates.setter
-    def pem_certificates(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
-        pulumi.set(self, "pem_certificates", value)
 
 
 @pulumi.input_type

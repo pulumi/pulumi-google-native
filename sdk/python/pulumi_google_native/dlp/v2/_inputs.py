@@ -15,8 +15,8 @@ __all__ = [
     'GooglePrivacyDlpV2BigQueryFieldArgs',
     'GooglePrivacyDlpV2BigQueryOptionsArgs',
     'GooglePrivacyDlpV2BigQueryTableArgs',
-    'GooglePrivacyDlpV2BucketArgs',
     'GooglePrivacyDlpV2BucketingConfigArgs',
+    'GooglePrivacyDlpV2BucketArgs',
     'GooglePrivacyDlpV2CategoricalStatsConfigArgs',
     'GooglePrivacyDlpV2CharacterMaskConfigArgs',
     'GooglePrivacyDlpV2CharsToIgnoreArgs',
@@ -24,8 +24,8 @@ __all__ = [
     'GooglePrivacyDlpV2CloudStorageOptionsArgs',
     'GooglePrivacyDlpV2CloudStoragePathArgs',
     'GooglePrivacyDlpV2CloudStorageRegexFileSetArgs',
-    'GooglePrivacyDlpV2ConditionArgs',
     'GooglePrivacyDlpV2ConditionsArgs',
+    'GooglePrivacyDlpV2ConditionArgs',
     'GooglePrivacyDlpV2CryptoDeterministicConfigArgs',
     'GooglePrivacyDlpV2CryptoHashConfigArgs',
     'GooglePrivacyDlpV2CryptoKeyArgs',
@@ -48,14 +48,14 @@ __all__ = [
     'GooglePrivacyDlpV2FixedSizeBucketingConfigArgs',
     'GooglePrivacyDlpV2HotwordRuleArgs',
     'GooglePrivacyDlpV2HybridOptionsArgs',
-    'GooglePrivacyDlpV2InfoTypeArgs',
     'GooglePrivacyDlpV2InfoTypeLimitArgs',
-    'GooglePrivacyDlpV2InfoTypeTransformationArgs',
     'GooglePrivacyDlpV2InfoTypeTransformationsArgs',
+    'GooglePrivacyDlpV2InfoTypeTransformationArgs',
+    'GooglePrivacyDlpV2InfoTypeArgs',
     'GooglePrivacyDlpV2InspectConfigArgs',
     'GooglePrivacyDlpV2InspectJobConfigArgs',
-    'GooglePrivacyDlpV2InspectionRuleArgs',
     'GooglePrivacyDlpV2InspectionRuleSetArgs',
+    'GooglePrivacyDlpV2InspectionRuleArgs',
     'GooglePrivacyDlpV2JobNotificationEmailsArgs',
     'GooglePrivacyDlpV2KAnonymityConfigArgs',
     'GooglePrivacyDlpV2KMapEstimationConfigArgs',
@@ -76,9 +76,9 @@ __all__ = [
     'GooglePrivacyDlpV2PublishSummaryToCsccArgs',
     'GooglePrivacyDlpV2PublishToPubSubArgs',
     'GooglePrivacyDlpV2PublishToStackdriverArgs',
-    'GooglePrivacyDlpV2QuasiIdArgs',
     'GooglePrivacyDlpV2QuasiIdFieldArgs',
     'GooglePrivacyDlpV2QuasiIdentifierFieldArgs',
+    'GooglePrivacyDlpV2QuasiIdArgs',
     'GooglePrivacyDlpV2RecordConditionArgs',
     'GooglePrivacyDlpV2RecordSuppressionArgs',
     'GooglePrivacyDlpV2RecordTransformationsArgs',
@@ -464,6 +464,30 @@ class GooglePrivacyDlpV2BigQueryTableArgs:
 
 
 @pulumi.input_type
+class GooglePrivacyDlpV2BucketingConfigArgs:
+    def __init__(__self__, *,
+                 buckets: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2BucketArgs']]]] = None):
+        """
+        Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH This can be used on data of type: number, long, string, timestamp. If the bound `Value` type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
+        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2BucketArgs']]] buckets: Set of buckets. Ranges must be non-overlapping.
+        """
+        if buckets is not None:
+            pulumi.set(__self__, "buckets", buckets)
+
+    @property
+    @pulumi.getter
+    def buckets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2BucketArgs']]]]:
+        """
+        Set of buckets. Ranges must be non-overlapping.
+        """
+        return pulumi.get(self, "buckets")
+
+    @buckets.setter
+    def buckets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2BucketArgs']]]]):
+        pulumi.set(self, "buckets", value)
+
+
+@pulumi.input_type
 class GooglePrivacyDlpV2BucketArgs:
     def __init__(__self__, *,
                  replacement_value: pulumi.Input['GooglePrivacyDlpV2ValueArgs'],
@@ -516,30 +540,6 @@ class GooglePrivacyDlpV2BucketArgs:
     @min.setter
     def min(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2ValueArgs']]):
         pulumi.set(self, "min", value)
-
-
-@pulumi.input_type
-class GooglePrivacyDlpV2BucketingConfigArgs:
-    def __init__(__self__, *,
-                 buckets: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2BucketArgs']]]] = None):
-        """
-        Generalization function that buckets values based on ranges. The ranges and replacement values are dynamically provided by the user for custom behavior, such as 1-30 -> LOW 31-65 -> MEDIUM 66-100 -> HIGH This can be used on data of type: number, long, string, timestamp. If the bound `Value` type differs from the type of data being transformed, we will first attempt converting the type of the data to be transformed to match the type of the bound before comparing. See https://cloud.google.com/dlp/docs/concepts-bucketing to learn more.
-        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2BucketArgs']]] buckets: Set of buckets. Ranges must be non-overlapping.
-        """
-        if buckets is not None:
-            pulumi.set(__self__, "buckets", buckets)
-
-    @property
-    @pulumi.getter
-    def buckets(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2BucketArgs']]]]:
-        """
-        Set of buckets. Ranges must be non-overlapping.
-        """
-        return pulumi.get(self, "buckets")
-
-    @buckets.setter
-    def buckets(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2BucketArgs']]]]):
-        pulumi.set(self, "buckets", value)
 
 
 @pulumi.input_type
@@ -883,6 +883,30 @@ class GooglePrivacyDlpV2CloudStorageRegexFileSetArgs:
 
 
 @pulumi.input_type
+class GooglePrivacyDlpV2ConditionsArgs:
+    def __init__(__self__, *,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2ConditionArgs']]]] = None):
+        """
+        A collection of conditions.
+        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2ConditionArgs']]] conditions: A collection of conditions.
+        """
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2ConditionArgs']]]]:
+        """
+        A collection of conditions.
+        """
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2ConditionArgs']]]]):
+        pulumi.set(self, "conditions", value)
+
+
+@pulumi.input_type
 class GooglePrivacyDlpV2ConditionArgs:
     def __init__(__self__, *,
                  field: pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'],
@@ -934,30 +958,6 @@ class GooglePrivacyDlpV2ConditionArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2ValueArgs']]):
         pulumi.set(self, "value", value)
-
-
-@pulumi.input_type
-class GooglePrivacyDlpV2ConditionsArgs:
-    def __init__(__self__, *,
-                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2ConditionArgs']]]] = None):
-        """
-        A collection of conditions.
-        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2ConditionArgs']]] conditions: A collection of conditions.
-        """
-        if conditions is not None:
-            pulumi.set(__self__, "conditions", conditions)
-
-    @property
-    @pulumi.getter
-    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2ConditionArgs']]]]:
-        """
-        A collection of conditions.
-        """
-        return pulumi.get(self, "conditions")
-
-    @conditions.setter
-    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2ConditionArgs']]]]):
-        pulumi.set(self, "conditions", value)
 
 
 @pulumi.input_type
@@ -2153,30 +2153,6 @@ class GooglePrivacyDlpV2HybridOptionsArgs:
 
 
 @pulumi.input_type
-class GooglePrivacyDlpV2InfoTypeArgs:
-    def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None):
-        """
-        Type of information detected by the API.
-        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
-        """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-
-@pulumi.input_type
 class GooglePrivacyDlpV2InfoTypeLimitArgs:
     def __init__(__self__, *,
                  info_type: Optional[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']] = None,
@@ -2214,6 +2190,29 @@ class GooglePrivacyDlpV2InfoTypeLimitArgs:
     @max_findings.setter
     def max_findings(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_findings", value)
+
+
+@pulumi.input_type
+class GooglePrivacyDlpV2InfoTypeTransformationsArgs:
+    def __init__(__self__, *,
+                 transformations: pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeTransformationArgs']]]):
+        """
+        A type of transformation that will scan unstructured text and apply various `PrimitiveTransformation`s to each finding, where the transformation is applied to only values that were identified as a specific info_type.
+        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeTransformationArgs']]] transformations: Transformation for each infoType. Cannot specify more than one for a given infoType.
+        """
+        pulumi.set(__self__, "transformations", transformations)
+
+    @property
+    @pulumi.getter
+    def transformations(self) -> pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeTransformationArgs']]]:
+        """
+        Transformation for each infoType. Cannot specify more than one for a given infoType.
+        """
+        return pulumi.get(self, "transformations")
+
+    @transformations.setter
+    def transformations(self, value: pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeTransformationArgs']]]):
+        pulumi.set(self, "transformations", value)
 
 
 @pulumi.input_type
@@ -2256,26 +2255,27 @@ class GooglePrivacyDlpV2InfoTypeTransformationArgs:
 
 
 @pulumi.input_type
-class GooglePrivacyDlpV2InfoTypeTransformationsArgs:
+class GooglePrivacyDlpV2InfoTypeArgs:
     def __init__(__self__, *,
-                 transformations: pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeTransformationArgs']]]):
+                 name: Optional[pulumi.Input[str]] = None):
         """
-        A type of transformation that will scan unstructured text and apply various `PrimitiveTransformation`s to each finding, where the transformation is applied to only values that were identified as a specific info_type.
-        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeTransformationArgs']]] transformations: Transformation for each infoType. Cannot specify more than one for a given infoType.
+        Type of information detected by the API.
+        :param pulumi.Input[str] name: Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
         """
-        pulumi.set(__self__, "transformations", transformations)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
-    def transformations(self) -> pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeTransformationArgs']]]:
+    def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Transformation for each infoType. Cannot specify more than one for a given infoType.
+        Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
         """
-        return pulumi.get(self, "transformations")
+        return pulumi.get(self, "name")
 
-    @transformations.setter
-    def transformations(self, value: pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeTransformationArgs']]]):
-        pulumi.set(self, "transformations", value)
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type
@@ -2487,46 +2487,6 @@ class GooglePrivacyDlpV2InspectJobConfigArgs:
 
 
 @pulumi.input_type
-class GooglePrivacyDlpV2InspectionRuleArgs:
-    def __init__(__self__, *,
-                 exclusion_rule: Optional[pulumi.Input['GooglePrivacyDlpV2ExclusionRuleArgs']] = None,
-                 hotword_rule: Optional[pulumi.Input['GooglePrivacyDlpV2HotwordRuleArgs']] = None):
-        """
-        A single inspection rule to be applied to infoTypes, specified in `InspectionRuleSet`.
-        :param pulumi.Input['GooglePrivacyDlpV2ExclusionRuleArgs'] exclusion_rule: Exclusion rule.
-        :param pulumi.Input['GooglePrivacyDlpV2HotwordRuleArgs'] hotword_rule: Hotword-based detection rule.
-        """
-        if exclusion_rule is not None:
-            pulumi.set(__self__, "exclusion_rule", exclusion_rule)
-        if hotword_rule is not None:
-            pulumi.set(__self__, "hotword_rule", hotword_rule)
-
-    @property
-    @pulumi.getter(name="exclusionRule")
-    def exclusion_rule(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2ExclusionRuleArgs']]:
-        """
-        Exclusion rule.
-        """
-        return pulumi.get(self, "exclusion_rule")
-
-    @exclusion_rule.setter
-    def exclusion_rule(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2ExclusionRuleArgs']]):
-        pulumi.set(self, "exclusion_rule", value)
-
-    @property
-    @pulumi.getter(name="hotwordRule")
-    def hotword_rule(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2HotwordRuleArgs']]:
-        """
-        Hotword-based detection rule.
-        """
-        return pulumi.get(self, "hotword_rule")
-
-    @hotword_rule.setter
-    def hotword_rule(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2HotwordRuleArgs']]):
-        pulumi.set(self, "hotword_rule", value)
-
-
-@pulumi.input_type
 class GooglePrivacyDlpV2InspectionRuleSetArgs:
     def __init__(__self__, *,
                  info_types: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']]]] = None,
@@ -2564,6 +2524,46 @@ class GooglePrivacyDlpV2InspectionRuleSetArgs:
     @rules.setter
     def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InspectionRuleArgs']]]]):
         pulumi.set(self, "rules", value)
+
+
+@pulumi.input_type
+class GooglePrivacyDlpV2InspectionRuleArgs:
+    def __init__(__self__, *,
+                 exclusion_rule: Optional[pulumi.Input['GooglePrivacyDlpV2ExclusionRuleArgs']] = None,
+                 hotword_rule: Optional[pulumi.Input['GooglePrivacyDlpV2HotwordRuleArgs']] = None):
+        """
+        A single inspection rule to be applied to infoTypes, specified in `InspectionRuleSet`.
+        :param pulumi.Input['GooglePrivacyDlpV2ExclusionRuleArgs'] exclusion_rule: Exclusion rule.
+        :param pulumi.Input['GooglePrivacyDlpV2HotwordRuleArgs'] hotword_rule: Hotword-based detection rule.
+        """
+        if exclusion_rule is not None:
+            pulumi.set(__self__, "exclusion_rule", exclusion_rule)
+        if hotword_rule is not None:
+            pulumi.set(__self__, "hotword_rule", hotword_rule)
+
+    @property
+    @pulumi.getter(name="exclusionRule")
+    def exclusion_rule(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2ExclusionRuleArgs']]:
+        """
+        Exclusion rule.
+        """
+        return pulumi.get(self, "exclusion_rule")
+
+    @exclusion_rule.setter
+    def exclusion_rule(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2ExclusionRuleArgs']]):
+        pulumi.set(self, "exclusion_rule", value)
+
+    @property
+    @pulumi.getter(name="hotwordRule")
+    def hotword_rule(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2HotwordRuleArgs']]:
+        """
+        Hotword-based detection rule.
+        """
+        return pulumi.get(self, "hotword_rule")
+
+    @hotword_rule.setter
+    def hotword_rule(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2HotwordRuleArgs']]):
+        pulumi.set(self, "hotword_rule", value)
 
 
 @pulumi.input_type
@@ -3370,77 +3370,6 @@ class GooglePrivacyDlpV2PublishToStackdriverArgs:
 
 
 @pulumi.input_type
-class GooglePrivacyDlpV2QuasiIdArgs:
-    def __init__(__self__, *,
-                 field: pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'],
-                 custom_tag: Optional[pulumi.Input[str]] = None,
-                 inferred: Optional[pulumi.Input['GoogleProtobufEmptyArgs']] = None,
-                 info_type: Optional[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']] = None):
-        """
-        A column with a semantic tag attached.
-        :param pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'] field: Identifies the column.
-        :param pulumi.Input[str] custom_tag: A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
-        :param pulumi.Input['GoogleProtobufEmptyArgs'] inferred: If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data
-        :param pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs'] info_type: A column can be tagged with a InfoType to use the relevant public dataset as a statistical model of population, if available. We currently support US ZIP codes, region codes, ages and genders. To programmatically obtain the list of supported InfoTypes, use ListInfoTypes with the supported_by=RISK_ANALYSIS filter.
-        """
-        pulumi.set(__self__, "field", field)
-        if custom_tag is not None:
-            pulumi.set(__self__, "custom_tag", custom_tag)
-        if inferred is not None:
-            pulumi.set(__self__, "inferred", inferred)
-        if info_type is not None:
-            pulumi.set(__self__, "info_type", info_type)
-
-    @property
-    @pulumi.getter
-    def field(self) -> pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']:
-        """
-        Identifies the column.
-        """
-        return pulumi.get(self, "field")
-
-    @field.setter
-    def field(self, value: pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']):
-        pulumi.set(self, "field", value)
-
-    @property
-    @pulumi.getter(name="customTag")
-    def custom_tag(self) -> Optional[pulumi.Input[str]]:
-        """
-        A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
-        """
-        return pulumi.get(self, "custom_tag")
-
-    @custom_tag.setter
-    def custom_tag(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "custom_tag", value)
-
-    @property
-    @pulumi.getter
-    def inferred(self) -> Optional[pulumi.Input['GoogleProtobufEmptyArgs']]:
-        """
-        If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data
-        """
-        return pulumi.get(self, "inferred")
-
-    @inferred.setter
-    def inferred(self, value: Optional[pulumi.Input['GoogleProtobufEmptyArgs']]):
-        pulumi.set(self, "inferred", value)
-
-    @property
-    @pulumi.getter(name="infoType")
-    def info_type(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']]:
-        """
-        A column can be tagged with a InfoType to use the relevant public dataset as a statistical model of population, if available. We currently support US ZIP codes, region codes, ages and genders. To programmatically obtain the list of supported InfoTypes, use ListInfoTypes with the supported_by=RISK_ANALYSIS filter.
-        """
-        return pulumi.get(self, "info_type")
-
-    @info_type.setter
-    def info_type(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']]):
-        pulumi.set(self, "info_type", value)
-
-
-@pulumi.input_type
 class GooglePrivacyDlpV2QuasiIdFieldArgs:
     def __init__(__self__, *,
                  custom_tag: Optional[pulumi.Input[str]] = None,
@@ -3518,6 +3447,77 @@ class GooglePrivacyDlpV2QuasiIdentifierFieldArgs:
     @field.setter
     def field(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']]):
         pulumi.set(self, "field", value)
+
+
+@pulumi.input_type
+class GooglePrivacyDlpV2QuasiIdArgs:
+    def __init__(__self__, *,
+                 field: pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'],
+                 custom_tag: Optional[pulumi.Input[str]] = None,
+                 inferred: Optional[pulumi.Input['GoogleProtobufEmptyArgs']] = None,
+                 info_type: Optional[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']] = None):
+        """
+        A column with a semantic tag attached.
+        :param pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'] field: Identifies the column.
+        :param pulumi.Input[str] custom_tag: A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
+        :param pulumi.Input['GoogleProtobufEmptyArgs'] inferred: If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data
+        :param pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs'] info_type: A column can be tagged with a InfoType to use the relevant public dataset as a statistical model of population, if available. We currently support US ZIP codes, region codes, ages and genders. To programmatically obtain the list of supported InfoTypes, use ListInfoTypes with the supported_by=RISK_ANALYSIS filter.
+        """
+        pulumi.set(__self__, "field", field)
+        if custom_tag is not None:
+            pulumi.set(__self__, "custom_tag", custom_tag)
+        if inferred is not None:
+            pulumi.set(__self__, "inferred", inferred)
+        if info_type is not None:
+            pulumi.set(__self__, "info_type", info_type)
+
+    @property
+    @pulumi.getter
+    def field(self) -> pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']:
+        """
+        Identifies the column.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']):
+        pulumi.set(self, "field", value)
+
+    @property
+    @pulumi.getter(name="customTag")
+    def custom_tag(self) -> Optional[pulumi.Input[str]]:
+        """
+        A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
+        """
+        return pulumi.get(self, "custom_tag")
+
+    @custom_tag.setter
+    def custom_tag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "custom_tag", value)
+
+    @property
+    @pulumi.getter
+    def inferred(self) -> Optional[pulumi.Input['GoogleProtobufEmptyArgs']]:
+        """
+        If no semantic tag is indicated, we infer the statistical model from the distribution of values in the input data
+        """
+        return pulumi.get(self, "inferred")
+
+    @inferred.setter
+    def inferred(self, value: Optional[pulumi.Input['GoogleProtobufEmptyArgs']]):
+        pulumi.set(self, "inferred", value)
+
+    @property
+    @pulumi.getter(name="infoType")
+    def info_type(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']]:
+        """
+        A column can be tagged with a InfoType to use the relevant public dataset as a statistical model of population, if available. We currently support US ZIP codes, region codes, ages and genders. To programmatically obtain the list of supported InfoTypes, use ListInfoTypes with the supported_by=RISK_ANALYSIS filter.
+        """
+        return pulumi.get(self, "info_type")
+
+    @info_type.setter
+    def info_type(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']]):
+        pulumi.set(self, "info_type", value)
 
 
 @pulumi.input_type

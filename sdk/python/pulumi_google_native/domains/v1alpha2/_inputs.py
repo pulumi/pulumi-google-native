@@ -13,8 +13,8 @@ __all__ = [
     'AuditConfigArgs',
     'AuditLogConfigArgs',
     'BindingArgs',
-    'ContactArgs',
     'ContactSettingsArgs',
+    'ContactArgs',
     'CustomDnsArgs',
     'DnsSettingsArgs',
     'DsRecordArgs',
@@ -163,6 +163,74 @@ class BindingArgs:
 
 
 @pulumi.input_type
+class ContactSettingsArgs:
+    def __init__(__self__, *,
+                 admin_contact: pulumi.Input['ContactArgs'],
+                 privacy: pulumi.Input['ContactSettingsPrivacy'],
+                 registrant_contact: pulumi.Input['ContactArgs'],
+                 technical_contact: pulumi.Input['ContactArgs']):
+        """
+        Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
+        :param pulumi.Input['ContactArgs'] admin_contact: The administrative contact for the `Registration`.
+        :param pulumi.Input['ContactSettingsPrivacy'] privacy: Privacy setting for the contacts associated with the `Registration`.
+        :param pulumi.Input['ContactArgs'] registrant_contact: The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+        :param pulumi.Input['ContactArgs'] technical_contact: The technical contact for the `Registration`.
+        """
+        pulumi.set(__self__, "admin_contact", admin_contact)
+        pulumi.set(__self__, "privacy", privacy)
+        pulumi.set(__self__, "registrant_contact", registrant_contact)
+        pulumi.set(__self__, "technical_contact", technical_contact)
+
+    @property
+    @pulumi.getter(name="adminContact")
+    def admin_contact(self) -> pulumi.Input['ContactArgs']:
+        """
+        The administrative contact for the `Registration`.
+        """
+        return pulumi.get(self, "admin_contact")
+
+    @admin_contact.setter
+    def admin_contact(self, value: pulumi.Input['ContactArgs']):
+        pulumi.set(self, "admin_contact", value)
+
+    @property
+    @pulumi.getter
+    def privacy(self) -> pulumi.Input['ContactSettingsPrivacy']:
+        """
+        Privacy setting for the contacts associated with the `Registration`.
+        """
+        return pulumi.get(self, "privacy")
+
+    @privacy.setter
+    def privacy(self, value: pulumi.Input['ContactSettingsPrivacy']):
+        pulumi.set(self, "privacy", value)
+
+    @property
+    @pulumi.getter(name="registrantContact")
+    def registrant_contact(self) -> pulumi.Input['ContactArgs']:
+        """
+        The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
+        """
+        return pulumi.get(self, "registrant_contact")
+
+    @registrant_contact.setter
+    def registrant_contact(self, value: pulumi.Input['ContactArgs']):
+        pulumi.set(self, "registrant_contact", value)
+
+    @property
+    @pulumi.getter(name="technicalContact")
+    def technical_contact(self) -> pulumi.Input['ContactArgs']:
+        """
+        The technical contact for the `Registration`.
+        """
+        return pulumi.get(self, "technical_contact")
+
+    @technical_contact.setter
+    def technical_contact(self, value: pulumi.Input['ContactArgs']):
+        pulumi.set(self, "technical_contact", value)
+
+
+@pulumi.input_type
 class ContactArgs:
     def __init__(__self__, *,
                  email: pulumi.Input[str],
@@ -229,74 +297,6 @@ class ContactArgs:
     @fax_number.setter
     def fax_number(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "fax_number", value)
-
-
-@pulumi.input_type
-class ContactSettingsArgs:
-    def __init__(__self__, *,
-                 admin_contact: pulumi.Input['ContactArgs'],
-                 privacy: pulumi.Input['ContactSettingsPrivacy'],
-                 registrant_contact: pulumi.Input['ContactArgs'],
-                 technical_contact: pulumi.Input['ContactArgs']):
-        """
-        Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
-        :param pulumi.Input['ContactArgs'] admin_contact: The administrative contact for the `Registration`.
-        :param pulumi.Input['ContactSettingsPrivacy'] privacy: Privacy setting for the contacts associated with the `Registration`.
-        :param pulumi.Input['ContactArgs'] registrant_contact: The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
-        :param pulumi.Input['ContactArgs'] technical_contact: The technical contact for the `Registration`.
-        """
-        pulumi.set(__self__, "admin_contact", admin_contact)
-        pulumi.set(__self__, "privacy", privacy)
-        pulumi.set(__self__, "registrant_contact", registrant_contact)
-        pulumi.set(__self__, "technical_contact", technical_contact)
-
-    @property
-    @pulumi.getter(name="adminContact")
-    def admin_contact(self) -> pulumi.Input['ContactArgs']:
-        """
-        The administrative contact for the `Registration`.
-        """
-        return pulumi.get(self, "admin_contact")
-
-    @admin_contact.setter
-    def admin_contact(self, value: pulumi.Input['ContactArgs']):
-        pulumi.set(self, "admin_contact", value)
-
-    @property
-    @pulumi.getter
-    def privacy(self) -> pulumi.Input['ContactSettingsPrivacy']:
-        """
-        Privacy setting for the contacts associated with the `Registration`.
-        """
-        return pulumi.get(self, "privacy")
-
-    @privacy.setter
-    def privacy(self, value: pulumi.Input['ContactSettingsPrivacy']):
-        pulumi.set(self, "privacy", value)
-
-    @property
-    @pulumi.getter(name="registrantContact")
-    def registrant_contact(self) -> pulumi.Input['ContactArgs']:
-        """
-        The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
-        """
-        return pulumi.get(self, "registrant_contact")
-
-    @registrant_contact.setter
-    def registrant_contact(self, value: pulumi.Input['ContactArgs']):
-        pulumi.set(self, "registrant_contact", value)
-
-    @property
-    @pulumi.getter(name="technicalContact")
-    def technical_contact(self) -> pulumi.Input['ContactArgs']:
-        """
-        The technical contact for the `Registration`.
-        """
-        return pulumi.get(self, "technical_contact")
-
-    @technical_contact.setter
-    def technical_contact(self, value: pulumi.Input['ContactArgs']):
-        pulumi.set(self, "technical_contact", value)
 
 
 @pulumi.input_type

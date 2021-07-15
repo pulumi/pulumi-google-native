@@ -21,8 +21,11 @@ class AttributeDefinitionCategory(str, Enum):
     Required. The category of the attribute. The value of this field cannot be changed after creation.
     """
     CATEGORY_UNSPECIFIED = "CATEGORY_UNSPECIFIED"
+    """No category specified. This option is invalid."""
     RESOURCE = "RESOURCE"
+    """Specify this category when this attribute describes the properties of resources. For example, data anonymity or data type."""
     REQUEST = "REQUEST"
+    """Specify this category when this attribute describes the properties of requests. For example, requester's role or requester's organization."""
 
 
 class AuditLogConfigLogType(str, Enum):
@@ -30,9 +33,13 @@ class AuditLogConfigLogType(str, Enum):
     The log type that this config enables.
     """
     LOG_TYPE_UNSPECIFIED = "LOG_TYPE_UNSPECIFIED"
+    """Default case. Should never be this."""
     ADMIN_READ = "ADMIN_READ"
+    """Admin reads. Example: CloudIAM getIamPolicy"""
     DATA_WRITE = "DATA_WRITE"
+    """Data writes. Example: CloudSQL Users create"""
     DATA_READ = "DATA_READ"
+    """Data reads. Example: CloudSQL Users list"""
 
 
 class ConsentState(str, Enum):
@@ -40,11 +47,17 @@ class ConsentState(str, Enum):
     Required. Indicates the current state of this Consent.
     """
     STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    """No state specified."""
     ACTIVE = "ACTIVE"
+    """The Consent is active and is considered when evaluating a user's consent on resources."""
     ARCHIVED = "ARCHIVED"
+    """When a Consent is updated, the current version is archived and a new one is created with its state set to the updated Consent's previous state."""
     REVOKED = "REVOKED"
+    """A revoked Consent is not considered when evaluating a user's consent on resources."""
     DRAFT = "DRAFT"
+    """A draft Consent is not considered when evaluating a user's consent on resources unless explicitly specified."""
     REJECTED = "REJECTED"
+    """When a draft Consent is rejected by a user, it is set to a rejected state. A rejected Consent is not considered when evaluating a user's consent on resources."""
 
 
 class FhirStoreVersion(str, Enum):
@@ -52,9 +65,13 @@ class FhirStoreVersion(str, Enum):
     Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
     """
     VERSION_UNSPECIFIED = "VERSION_UNSPECIFIED"
+    """Users must specify a version on store creation or an error is returned."""
     DSTU2 = "DSTU2"
+    """Draft Standard for Trial Use, [Release 2](https://www.hl7.org/fhir/DSTU2)"""
     STU3 = "STU3"
+    """Standard for Trial Use, [Release 3](https://www.hl7.org/fhir/STU3)"""
     R4 = "R4"
+    """[Release 4](https://www.hl7.org/fhir/R4)"""
 
 
 class GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition(str, Enum):
@@ -62,9 +79,13 @@ class GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition(str, Enum):
     Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
     """
     WRITE_DISPOSITION_UNSPECIFIED = "WRITE_DISPOSITION_UNSPECIFIED"
+    """Default behavior is the same as WRITE_EMPTY."""
     WRITE_EMPTY = "WRITE_EMPTY"
+    """Only export data if the destination tables are empty."""
     WRITE_TRUNCATE = "WRITE_TRUNCATE"
+    """Erase all existing data in the tables before writing the instances."""
     WRITE_APPEND = "WRITE_APPEND"
+    """Append data to the existing tables."""
 
 
 class SchemaConfigSchemaType(str, Enum):
@@ -72,7 +93,9 @@ class SchemaConfigSchemaType(str, Enum):
     Specifies the output schema type. Schema type is required.
     """
     SCHEMA_TYPE_UNSPECIFIED = "SCHEMA_TYPE_UNSPECIFIED"
+    """No schema type specified. This type is unsupported."""
     ANALYTICS = "ANALYTICS"
+    """Analytics schema defined by the FHIR community. See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md. BigQuery only allows a maximum of 10,000 columns per table. Due to this limitation, the server will not generate schemas for fields of type `Resource`, which can hold any resource type. The affected fields are `Parameters.parameter.resource`, `Bundle.entry.resource`, and `Bundle.entry.response.outcome`."""
 
 
 class SchemaPackageSchematizedParsingType(str, Enum):
@@ -80,8 +103,11 @@ class SchemaPackageSchematizedParsingType(str, Enum):
     Determines how messages that fail to parse are handled.
     """
     SCHEMATIZED_PARSING_TYPE_UNSPECIFIED = "SCHEMATIZED_PARSING_TYPE_UNSPECIFIED"
+    """Unspecified schematized parsing type, equivalent to `SOFT_FAIL`."""
     SOFT_FAIL = "SOFT_FAIL"
+    """Messages that fail to parse are still stored and ACKed but a parser error is stored in place of the schematized data."""
     HARD_FAIL = "HARD_FAIL"
+    """Messages that fail to parse are rejected from ingestion/insertion and return an error code."""
 
 
 class TypePrimitive(str, Enum):
@@ -89,6 +115,10 @@ class TypePrimitive(str, Enum):
     If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
     """
     PRIMITIVE_UNSPECIFIED = "PRIMITIVE_UNSPECIFIED"
+    """Not a primitive."""
     STRING = "STRING"
+    """String primitive."""
     VARIES = "VARIES"
+    """Element that can have unschematized children."""
     UNESCAPED_STRING = "UNESCAPED_STRING"
+    """Like STRING, but all delimiters below this element are ignored."""

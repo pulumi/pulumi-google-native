@@ -11,4 +11,6 @@ __all__ = [
 
 class DynamicGroupQueryResourceType(str, Enum):
     RESOURCE_TYPE_UNSPECIFIED = "RESOURCE_TYPE_UNSPECIFIED"
+    """Default value (not valid)"""
     USER = "USER"
+    """For queries on User"""

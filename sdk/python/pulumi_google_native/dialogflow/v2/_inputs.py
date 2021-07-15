@@ -13,55 +13,55 @@ __all__ = [
     'GoogleCloudDialogflowV2AutomatedAgentConfigArgs',
     'GoogleCloudDialogflowV2ContextArgs',
     'GoogleCloudDialogflowV2EntityTypeEntityArgs',
-    'GoogleCloudDialogflowV2FulfillmentArgs',
     'GoogleCloudDialogflowV2FulfillmentFeatureArgs',
     'GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs',
-    'GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs',
+    'GoogleCloudDialogflowV2FulfillmentArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigArgs',
-    'GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs',
+    'GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigArgs',
     'GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsArgs',
-    'GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs',
+    'GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs',
     'GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs',
     'GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs',
+    'GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs',
     'GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs',
-    'GoogleCloudDialogflowV2IntentMessageArgs',
-    'GoogleCloudDialogflowV2IntentMessageBasicCardArgs',
-    'GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs',
     'GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs',
-    'GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardArgs',
-    'GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs',
+    'GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs',
+    'GoogleCloudDialogflowV2IntentMessageBasicCardArgs',
     'GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs',
-    'GoogleCloudDialogflowV2IntentMessageCardArgs',
+    'GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs',
+    'GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardArgs',
     'GoogleCloudDialogflowV2IntentMessageCardButtonArgs',
-    'GoogleCloudDialogflowV2IntentMessageCarouselSelectArgs',
+    'GoogleCloudDialogflowV2IntentMessageCardArgs',
     'GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArgs',
+    'GoogleCloudDialogflowV2IntentMessageCarouselSelectArgs',
     'GoogleCloudDialogflowV2IntentMessageColumnPropertiesArgs',
     'GoogleCloudDialogflowV2IntentMessageImageArgs',
     'GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionArgs',
-    'GoogleCloudDialogflowV2IntentMessageListSelectArgs',
     'GoogleCloudDialogflowV2IntentMessageListSelectItemArgs',
-    'GoogleCloudDialogflowV2IntentMessageMediaContentArgs',
+    'GoogleCloudDialogflowV2IntentMessageListSelectArgs',
     'GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArgs',
+    'GoogleCloudDialogflowV2IntentMessageMediaContentArgs',
     'GoogleCloudDialogflowV2IntentMessageQuickRepliesArgs',
     'GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs',
-    'GoogleCloudDialogflowV2IntentMessageSimpleResponseArgs',
     'GoogleCloudDialogflowV2IntentMessageSimpleResponsesArgs',
-    'GoogleCloudDialogflowV2IntentMessageSuggestionArgs',
+    'GoogleCloudDialogflowV2IntentMessageSimpleResponseArgs',
     'GoogleCloudDialogflowV2IntentMessageSuggestionsArgs',
-    'GoogleCloudDialogflowV2IntentMessageTableCardArgs',
+    'GoogleCloudDialogflowV2IntentMessageSuggestionArgs',
     'GoogleCloudDialogflowV2IntentMessageTableCardCellArgs',
     'GoogleCloudDialogflowV2IntentMessageTableCardRowArgs',
+    'GoogleCloudDialogflowV2IntentMessageTableCardArgs',
     'GoogleCloudDialogflowV2IntentMessageTextArgs',
+    'GoogleCloudDialogflowV2IntentMessageArgs',
     'GoogleCloudDialogflowV2IntentParameterArgs',
-    'GoogleCloudDialogflowV2IntentTrainingPhraseArgs',
     'GoogleCloudDialogflowV2IntentTrainingPhrasePartArgs',
+    'GoogleCloudDialogflowV2IntentTrainingPhraseArgs',
     'GoogleCloudDialogflowV2LoggingConfigArgs',
     'GoogleCloudDialogflowV2NotificationConfigArgs',
     'GoogleCloudDialogflowV2SpeechToTextConfigArgs',
@@ -186,93 +186,6 @@ class GoogleCloudDialogflowV2EntityTypeEntityArgs:
 
 
 @pulumi.input_type
-class GoogleCloudDialogflowV2FulfillmentArgs:
-    def __init__(__self__, *,
-                 name: pulumi.Input[str],
-                 display_name: Optional[pulumi.Input[str]] = None,
-                 enabled: Optional[pulumi.Input[bool]] = None,
-                 features: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2FulfillmentFeatureArgs']]]] = None,
-                 generic_web_service: Optional[pulumi.Input['GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs']] = None):
-        """
-        By default, your agent responds to a matched intent with a static response. As an alternative, you can provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on Friday, your service can check your database and respond to the end-user with availability information for Friday. For more information, see the [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
-        :param pulumi.Input[str] name: The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
-        :param pulumi.Input[str] display_name: Optional. The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
-        :param pulumi.Input[bool] enabled: Optional. Whether fulfillment is enabled.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2FulfillmentFeatureArgs']]] features: Optional. The field defines whether the fulfillment is enabled for certain features.
-        :param pulumi.Input['GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs'] generic_web_service: Configuration for a generic web service.
-        """
-        pulumi.set(__self__, "name", name)
-        if display_name is not None:
-            pulumi.set(__self__, "display_name", display_name)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if features is not None:
-            pulumi.set(__self__, "features", features)
-        if generic_web_service is not None:
-            pulumi.set(__self__, "generic_web_service", generic_web_service)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="displayName")
-    def display_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
-        """
-        return pulumi.get(self, "display_name")
-
-    @display_name.setter
-    def display_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_name", value)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Optional. Whether fulfillment is enabled.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enabled", value)
-
-    @property
-    @pulumi.getter
-    def features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2FulfillmentFeatureArgs']]]]:
-        """
-        Optional. The field defines whether the fulfillment is enabled for certain features.
-        """
-        return pulumi.get(self, "features")
-
-    @features.setter
-    def features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2FulfillmentFeatureArgs']]]]):
-        pulumi.set(self, "features", value)
-
-    @property
-    @pulumi.getter(name="genericWebService")
-    def generic_web_service(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs']]:
-        """
-        Configuration for a generic web service.
-        """
-        return pulumi.get(self, "generic_web_service")
-
-    @generic_web_service.setter
-    def generic_web_service(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs']]):
-        pulumi.set(self, "generic_web_service", value)
-
-
-@pulumi.input_type
 class GoogleCloudDialogflowV2FulfillmentFeatureArgs:
     def __init__(__self__, *,
                  type: Optional[pulumi.Input['GoogleCloudDialogflowV2FulfillmentFeatureType']] = None):
@@ -384,75 +297,90 @@ class GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs:
 
 
 @pulumi.input_type
-class GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs:
+class GoogleCloudDialogflowV2FulfillmentArgs:
     def __init__(__self__, *,
-                 end_user_suggestion_config: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigArgs']] = None,
-                 human_agent_suggestion_config: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigArgs']] = None,
-                 message_analysis_config: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigArgs']] = None,
-                 notification_config: Optional[pulumi.Input['GoogleCloudDialogflowV2NotificationConfigArgs']] = None):
+                 name: pulumi.Input[str],
+                 display_name: Optional[pulumi.Input[str]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 features: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2FulfillmentFeatureArgs']]]] = None,
+                 generic_web_service: Optional[pulumi.Input['GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs']] = None):
         """
-        Defines the Human Agent Assist to connect to a conversation.
-        :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigArgs'] end_user_suggestion_config: Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
-        :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigArgs'] human_agent_suggestion_config: Configuration for agent assistance of human agent participant.
-        :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigArgs'] message_analysis_config: Configuration for message analysis.
-        :param pulumi.Input['GoogleCloudDialogflowV2NotificationConfigArgs'] notification_config: Pub/Sub topic on which to publish new agent assistant events.
+        By default, your agent responds to a matched intent with a static response. As an alternative, you can provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on Friday, your service can check your database and respond to the end-user with availability information for Friday. For more information, see the [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
+        :param pulumi.Input[str] name: The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
+        :param pulumi.Input[str] display_name: Optional. The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
+        :param pulumi.Input[bool] enabled: Optional. Whether fulfillment is enabled.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2FulfillmentFeatureArgs']]] features: Optional. The field defines whether the fulfillment is enabled for certain features.
+        :param pulumi.Input['GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs'] generic_web_service: Configuration for a generic web service.
         """
-        if end_user_suggestion_config is not None:
-            pulumi.set(__self__, "end_user_suggestion_config", end_user_suggestion_config)
-        if human_agent_suggestion_config is not None:
-            pulumi.set(__self__, "human_agent_suggestion_config", human_agent_suggestion_config)
-        if message_analysis_config is not None:
-            pulumi.set(__self__, "message_analysis_config", message_analysis_config)
-        if notification_config is not None:
-            pulumi.set(__self__, "notification_config", notification_config)
+        pulumi.set(__self__, "name", name)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if features is not None:
+            pulumi.set(__self__, "features", features)
+        if generic_web_service is not None:
+            pulumi.set(__self__, "generic_web_service", generic_web_service)
 
     @property
-    @pulumi.getter(name="endUserSuggestionConfig")
-    def end_user_suggestion_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigArgs']]:
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
         """
-        Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
+        The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
         """
-        return pulumi.get(self, "end_user_suggestion_config")
+        return pulumi.get(self, "name")
 
-    @end_user_suggestion_config.setter
-    def end_user_suggestion_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigArgs']]):
-        pulumi.set(self, "end_user_suggestion_config", value)
-
-    @property
-    @pulumi.getter(name="humanAgentSuggestionConfig")
-    def human_agent_suggestion_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigArgs']]:
-        """
-        Configuration for agent assistance of human agent participant.
-        """
-        return pulumi.get(self, "human_agent_suggestion_config")
-
-    @human_agent_suggestion_config.setter
-    def human_agent_suggestion_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigArgs']]):
-        pulumi.set(self, "human_agent_suggestion_config", value)
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="messageAnalysisConfig")
-    def message_analysis_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigArgs']]:
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Configuration for message analysis.
+        Optional. The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
         """
-        return pulumi.get(self, "message_analysis_config")
+        return pulumi.get(self, "display_name")
 
-    @message_analysis_config.setter
-    def message_analysis_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigArgs']]):
-        pulumi.set(self, "message_analysis_config", value)
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
 
     @property
-    @pulumi.getter(name="notificationConfig")
-    def notification_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2NotificationConfigArgs']]:
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Pub/Sub topic on which to publish new agent assistant events.
+        Optional. Whether fulfillment is enabled.
         """
-        return pulumi.get(self, "notification_config")
+        return pulumi.get(self, "enabled")
 
-    @notification_config.setter
-    def notification_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2NotificationConfigArgs']]):
-        pulumi.set(self, "notification_config", value)
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter
+    def features(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2FulfillmentFeatureArgs']]]]:
+        """
+        Optional. The field defines whether the fulfillment is enabled for certain features.
+        """
+        return pulumi.get(self, "features")
+
+    @features.setter
+    def features(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2FulfillmentFeatureArgs']]]]):
+        pulumi.set(self, "features", value)
+
+    @property
+    @pulumi.getter(name="genericWebService")
+    def generic_web_service(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs']]:
+        """
+        Configuration for a generic web service.
+        """
+        return pulumi.get(self, "generic_web_service")
+
+    @generic_web_service.setter
+    def generic_web_service(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2FulfillmentGenericWebServiceArgs']]):
+        pulumi.set(self, "generic_web_service", value)
 
 
 @pulumi.input_type
@@ -648,110 +576,6 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionFeatureConfigArg
 
 
 @pulumi.input_type
-class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigArgs:
-    def __init__(__self__, *,
-                 confidence_threshold: Optional[pulumi.Input[float]] = None,
-                 context_filter_settings: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs']] = None,
-                 dialogflow_query_source: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs']] = None,
-                 document_query_source: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs']] = None,
-                 knowledge_base_query_source: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs']] = None,
-                 max_results: Optional[pulumi.Input[int]] = None):
-        """
-        Config for suggestion query.
-        :param pulumi.Input[float] confidence_threshold: Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION.
-        :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs'] context_filter_settings: Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
-        :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs'] dialogflow_query_source: Query from Dialogflow agent. It is used by DIALOGFLOW_ASSIST.
-        :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs'] document_query_source: Query from knowledge base document. It is used by: SMART_REPLY, SMART_COMPOSE.
-        :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs'] knowledge_base_query_source: Query from knowledgebase. It is used by: ARTICLE_SUGGESTION, FAQ.
-        :param pulumi.Input[int] max_results: Maximum number of results to return. Currently, if unset, defaults to 10. And the max number is 20.
-        """
-        if confidence_threshold is not None:
-            pulumi.set(__self__, "confidence_threshold", confidence_threshold)
-        if context_filter_settings is not None:
-            pulumi.set(__self__, "context_filter_settings", context_filter_settings)
-        if dialogflow_query_source is not None:
-            pulumi.set(__self__, "dialogflow_query_source", dialogflow_query_source)
-        if document_query_source is not None:
-            pulumi.set(__self__, "document_query_source", document_query_source)
-        if knowledge_base_query_source is not None:
-            pulumi.set(__self__, "knowledge_base_query_source", knowledge_base_query_source)
-        if max_results is not None:
-            pulumi.set(__self__, "max_results", max_results)
-
-    @property
-    @pulumi.getter(name="confidenceThreshold")
-    def confidence_threshold(self) -> Optional[pulumi.Input[float]]:
-        """
-        Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION.
-        """
-        return pulumi.get(self, "confidence_threshold")
-
-    @confidence_threshold.setter
-    def confidence_threshold(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "confidence_threshold", value)
-
-    @property
-    @pulumi.getter(name="contextFilterSettings")
-    def context_filter_settings(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs']]:
-        """
-        Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
-        """
-        return pulumi.get(self, "context_filter_settings")
-
-    @context_filter_settings.setter
-    def context_filter_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs']]):
-        pulumi.set(self, "context_filter_settings", value)
-
-    @property
-    @pulumi.getter(name="dialogflowQuerySource")
-    def dialogflow_query_source(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs']]:
-        """
-        Query from Dialogflow agent. It is used by DIALOGFLOW_ASSIST.
-        """
-        return pulumi.get(self, "dialogflow_query_source")
-
-    @dialogflow_query_source.setter
-    def dialogflow_query_source(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs']]):
-        pulumi.set(self, "dialogflow_query_source", value)
-
-    @property
-    @pulumi.getter(name="documentQuerySource")
-    def document_query_source(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs']]:
-        """
-        Query from knowledge base document. It is used by: SMART_REPLY, SMART_COMPOSE.
-        """
-        return pulumi.get(self, "document_query_source")
-
-    @document_query_source.setter
-    def document_query_source(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs']]):
-        pulumi.set(self, "document_query_source", value)
-
-    @property
-    @pulumi.getter(name="knowledgeBaseQuerySource")
-    def knowledge_base_query_source(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs']]:
-        """
-        Query from knowledgebase. It is used by: ARTICLE_SUGGESTION, FAQ.
-        """
-        return pulumi.get(self, "knowledge_base_query_source")
-
-    @knowledge_base_query_source.setter
-    def knowledge_base_query_source(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs']]):
-        pulumi.set(self, "knowledge_base_query_source", value)
-
-    @property
-    @pulumi.getter(name="maxResults")
-    def max_results(self) -> Optional[pulumi.Input[int]]:
-        """
-        Maximum number of results to return. Currently, if unset, defaults to 10. And the max number is 20.
-        """
-        return pulumi.get(self, "max_results")
-
-    @max_results.setter
-    def max_results(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "max_results", value)
-
-
-@pulumi.input_type
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs:
     def __init__(__self__, *,
                  drop_handoff_messages: Optional[pulumi.Input[bool]] = None,
@@ -877,6 +701,110 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowl
 
 
 @pulumi.input_type
+class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigArgs:
+    def __init__(__self__, *,
+                 confidence_threshold: Optional[pulumi.Input[float]] = None,
+                 context_filter_settings: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs']] = None,
+                 dialogflow_query_source: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs']] = None,
+                 document_query_source: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs']] = None,
+                 knowledge_base_query_source: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs']] = None,
+                 max_results: Optional[pulumi.Input[int]] = None):
+        """
+        Config for suggestion query.
+        :param pulumi.Input[float] confidence_threshold: Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION.
+        :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs'] context_filter_settings: Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+        :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs'] dialogflow_query_source: Query from Dialogflow agent. It is used by DIALOGFLOW_ASSIST.
+        :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs'] document_query_source: Query from knowledge base document. It is used by: SMART_REPLY, SMART_COMPOSE.
+        :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs'] knowledge_base_query_source: Query from knowledgebase. It is used by: ARTICLE_SUGGESTION, FAQ.
+        :param pulumi.Input[int] max_results: Maximum number of results to return. Currently, if unset, defaults to 10. And the max number is 20.
+        """
+        if confidence_threshold is not None:
+            pulumi.set(__self__, "confidence_threshold", confidence_threshold)
+        if context_filter_settings is not None:
+            pulumi.set(__self__, "context_filter_settings", context_filter_settings)
+        if dialogflow_query_source is not None:
+            pulumi.set(__self__, "dialogflow_query_source", dialogflow_query_source)
+        if document_query_source is not None:
+            pulumi.set(__self__, "document_query_source", document_query_source)
+        if knowledge_base_query_source is not None:
+            pulumi.set(__self__, "knowledge_base_query_source", knowledge_base_query_source)
+        if max_results is not None:
+            pulumi.set(__self__, "max_results", max_results)
+
+    @property
+    @pulumi.getter(name="confidenceThreshold")
+    def confidence_threshold(self) -> Optional[pulumi.Input[float]]:
+        """
+        Confidence threshold of query result. Agent Assist gives each suggestion a score in the range [0.0, 1.0], based on the relevance between the suggestion and the current conversation context. A score of 0.0 has no relevance, while a score of 1.0 has high relevance. Only suggestions with a score greater than or equal to the value of this field are included in the results. For a baseline model (the default), the recommended value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by starting from a very low value and slowly increasing until you have desired results. If this field is not set, it defaults to 0.0, which means that all suggestions are returned. Supported features: ARTICLE_SUGGESTION.
+        """
+        return pulumi.get(self, "confidence_threshold")
+
+    @confidence_threshold.setter
+    def confidence_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "confidence_threshold", value)
+
+    @property
+    @pulumi.getter(name="contextFilterSettings")
+    def context_filter_settings(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs']]:
+        """
+        Determines how recent conversation context is filtered when generating suggestions. If unspecified, no messages will be dropped.
+        """
+        return pulumi.get(self, "context_filter_settings")
+
+    @context_filter_settings.setter
+    def context_filter_settings(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs']]):
+        pulumi.set(self, "context_filter_settings", value)
+
+    @property
+    @pulumi.getter(name="dialogflowQuerySource")
+    def dialogflow_query_source(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs']]:
+        """
+        Query from Dialogflow agent. It is used by DIALOGFLOW_ASSIST.
+        """
+        return pulumi.get(self, "dialogflow_query_source")
+
+    @dialogflow_query_source.setter
+    def dialogflow_query_source(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs']]):
+        pulumi.set(self, "dialogflow_query_source", value)
+
+    @property
+    @pulumi.getter(name="documentQuerySource")
+    def document_query_source(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs']]:
+        """
+        Query from knowledge base document. It is used by: SMART_REPLY, SMART_COMPOSE.
+        """
+        return pulumi.get(self, "document_query_source")
+
+    @document_query_source.setter
+    def document_query_source(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs']]):
+        pulumi.set(self, "document_query_source", value)
+
+    @property
+    @pulumi.getter(name="knowledgeBaseQuerySource")
+    def knowledge_base_query_source(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs']]:
+        """
+        Query from knowledgebase. It is used by: ARTICLE_SUGGESTION, FAQ.
+        """
+        return pulumi.get(self, "knowledge_base_query_source")
+
+    @knowledge_base_query_source.setter
+    def knowledge_base_query_source(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs']]):
+        pulumi.set(self, "knowledge_base_query_source", value)
+
+    @property
+    @pulumi.getter(name="maxResults")
+    def max_results(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of results to return. Currently, if unset, defaults to 10. And the max number is 20.
+        """
+        return pulumi.get(self, "max_results")
+
+    @max_results.setter
+    def max_results(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_results", value)
+
+
+@pulumi.input_type
 class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsArgs:
     def __init__(__self__, *,
                  no_smalltalk: Optional[pulumi.Input[bool]] = None,
@@ -917,43 +845,75 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionTriggerSettingsA
 
 
 @pulumi.input_type
-class GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs:
+class GoogleCloudDialogflowV2HumanAgentAssistantConfigArgs:
     def __init__(__self__, *,
-                 live_person_config: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs']] = None,
-                 salesforce_live_agent_config: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs']] = None):
+                 end_user_suggestion_config: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigArgs']] = None,
+                 human_agent_suggestion_config: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigArgs']] = None,
+                 message_analysis_config: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigArgs']] = None,
+                 notification_config: Optional[pulumi.Input['GoogleCloudDialogflowV2NotificationConfigArgs']] = None):
         """
-        Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation. Currently, this feature is not general available, please contact Google to get access.
-        :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs'] live_person_config: Uses LivePerson (https://www.liveperson.com).
-        :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs'] salesforce_live_agent_config: Uses Salesforce Live Agent.
+        Defines the Human Agent Assist to connect to a conversation.
+        :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigArgs'] end_user_suggestion_config: Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
+        :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigArgs'] human_agent_suggestion_config: Configuration for agent assistance of human agent participant.
+        :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigArgs'] message_analysis_config: Configuration for message analysis.
+        :param pulumi.Input['GoogleCloudDialogflowV2NotificationConfigArgs'] notification_config: Pub/Sub topic on which to publish new agent assistant events.
         """
-        if live_person_config is not None:
-            pulumi.set(__self__, "live_person_config", live_person_config)
-        if salesforce_live_agent_config is not None:
-            pulumi.set(__self__, "salesforce_live_agent_config", salesforce_live_agent_config)
+        if end_user_suggestion_config is not None:
+            pulumi.set(__self__, "end_user_suggestion_config", end_user_suggestion_config)
+        if human_agent_suggestion_config is not None:
+            pulumi.set(__self__, "human_agent_suggestion_config", human_agent_suggestion_config)
+        if message_analysis_config is not None:
+            pulumi.set(__self__, "message_analysis_config", message_analysis_config)
+        if notification_config is not None:
+            pulumi.set(__self__, "notification_config", notification_config)
 
     @property
-    @pulumi.getter(name="livePersonConfig")
-    def live_person_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs']]:
+    @pulumi.getter(name="endUserSuggestionConfig")
+    def end_user_suggestion_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigArgs']]:
         """
-        Uses LivePerson (https://www.liveperson.com).
+        Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
         """
-        return pulumi.get(self, "live_person_config")
+        return pulumi.get(self, "end_user_suggestion_config")
 
-    @live_person_config.setter
-    def live_person_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs']]):
-        pulumi.set(self, "live_person_config", value)
+    @end_user_suggestion_config.setter
+    def end_user_suggestion_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigArgs']]):
+        pulumi.set(self, "end_user_suggestion_config", value)
 
     @property
-    @pulumi.getter(name="salesforceLiveAgentConfig")
-    def salesforce_live_agent_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs']]:
+    @pulumi.getter(name="humanAgentSuggestionConfig")
+    def human_agent_suggestion_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigArgs']]:
         """
-        Uses Salesforce Live Agent.
+        Configuration for agent assistance of human agent participant.
         """
-        return pulumi.get(self, "salesforce_live_agent_config")
+        return pulumi.get(self, "human_agent_suggestion_config")
 
-    @salesforce_live_agent_config.setter
-    def salesforce_live_agent_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs']]):
-        pulumi.set(self, "salesforce_live_agent_config", value)
+    @human_agent_suggestion_config.setter
+    def human_agent_suggestion_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionConfigArgs']]):
+        pulumi.set(self, "human_agent_suggestion_config", value)
+
+    @property
+    @pulumi.getter(name="messageAnalysisConfig")
+    def message_analysis_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigArgs']]:
+        """
+        Configuration for message analysis.
+        """
+        return pulumi.get(self, "message_analysis_config")
+
+    @message_analysis_config.setter
+    def message_analysis_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigArgs']]):
+        pulumi.set(self, "message_analysis_config", value)
+
+    @property
+    @pulumi.getter(name="notificationConfig")
+    def notification_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2NotificationConfigArgs']]:
+        """
+        Pub/Sub topic on which to publish new agent assistant events.
+        """
+        return pulumi.get(self, "notification_config")
+
+    @notification_config.setter
+    def notification_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2NotificationConfigArgs']]):
+        pulumi.set(self, "notification_config", value)
 
 
 @pulumi.input_type
@@ -1048,6 +1008,46 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArg
 
 
 @pulumi.input_type
+class GoogleCloudDialogflowV2HumanAgentHandoffConfigArgs:
+    def __init__(__self__, *,
+                 live_person_config: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs']] = None,
+                 salesforce_live_agent_config: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs']] = None):
+        """
+        Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation. Currently, this feature is not general available, please contact Google to get access.
+        :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs'] live_person_config: Uses LivePerson (https://www.liveperson.com).
+        :param pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs'] salesforce_live_agent_config: Uses Salesforce Live Agent.
+        """
+        if live_person_config is not None:
+            pulumi.set(__self__, "live_person_config", live_person_config)
+        if salesforce_live_agent_config is not None:
+            pulumi.set(__self__, "salesforce_live_agent_config", salesforce_live_agent_config)
+
+    @property
+    @pulumi.getter(name="livePersonConfig")
+    def live_person_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs']]:
+        """
+        Uses LivePerson (https://www.liveperson.com).
+        """
+        return pulumi.get(self, "live_person_config")
+
+    @live_person_config.setter
+    def live_person_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigArgs']]):
+        pulumi.set(self, "live_person_config", value)
+
+    @property
+    @pulumi.getter(name="salesforceLiveAgentConfig")
+    def salesforce_live_agent_config(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs']]:
+        """
+        Uses Salesforce Live Agent.
+        """
+        return pulumi.get(self, "salesforce_live_agent_config")
+
+    @salesforce_live_agent_config.setter
+    def salesforce_live_agent_config(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs']]):
+        pulumi.set(self, "salesforce_live_agent_config", value)
+
+
+@pulumi.input_type
 class GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs:
     def __init__(__self__, *,
                  followup_intent_name: Optional[pulumi.Input[str]] = None,
@@ -1085,6 +1085,1285 @@ class GoogleCloudDialogflowV2IntentFollowupIntentInfoArgs:
     @parent_followup_intent_name.setter
     def parent_followup_intent_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "parent_followup_intent_name", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs:
+    def __init__(__self__, *,
+                 uri: pulumi.Input[str]):
+        """
+        Opens the given URI.
+        :param pulumi.Input[str] uri: The HTTP or HTTPS scheme URI.
+        """
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        The HTTP or HTTPS scheme URI.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs:
+    def __init__(__self__, *,
+                 open_uri_action: pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs'],
+                 title: pulumi.Input[str]):
+        """
+        The button object that appears at the bottom of a card.
+        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs'] open_uri_action: Action to take when a user taps on the button.
+        :param pulumi.Input[str] title: The title of the button.
+        """
+        pulumi.set(__self__, "open_uri_action", open_uri_action)
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="openUriAction")
+    def open_uri_action(self) -> pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs']:
+        """
+        Action to take when a user taps on the button.
+        """
+        return pulumi.get(self, "open_uri_action")
+
+    @open_uri_action.setter
+    def open_uri_action(self, value: pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs']):
+        pulumi.set(self, "open_uri_action", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        The title of the button.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageBasicCardArgs:
+    def __init__(__self__, *,
+                 buttons: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs']]]] = None,
+                 formatted_text: Optional[pulumi.Input[str]] = None,
+                 image: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']] = None,
+                 subtitle: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        The basic card message. Useful for displaying information.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs']]] buttons: Optional. The collection of card buttons.
+        :param pulumi.Input[str] formatted_text: Required, unless image is present. The body text of the card.
+        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs'] image: Optional. The image for the card.
+        :param pulumi.Input[str] subtitle: Optional. The subtitle of the card.
+        :param pulumi.Input[str] title: Optional. The title of the card.
+        """
+        if buttons is not None:
+            pulumi.set(__self__, "buttons", buttons)
+        if formatted_text is not None:
+            pulumi.set(__self__, "formatted_text", formatted_text)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if subtitle is not None:
+            pulumi.set(__self__, "subtitle", subtitle)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def buttons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs']]]]:
+        """
+        Optional. The collection of card buttons.
+        """
+        return pulumi.get(self, "buttons")
+
+    @buttons.setter
+    def buttons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs']]]]):
+        pulumi.set(self, "buttons", value)
+
+    @property
+    @pulumi.getter(name="formattedText")
+    def formatted_text(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required, unless image is present. The body text of the card.
+        """
+        return pulumi.get(self, "formatted_text")
+
+    @formatted_text.setter
+    def formatted_text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "formatted_text", value)
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]:
+        """
+        Optional. The image for the card.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]):
+        pulumi.set(self, "image", value)
+
+    @property
+    @pulumi.getter
+    def subtitle(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The subtitle of the card.
+        """
+        return pulumi.get(self, "subtitle")
+
+    @subtitle.setter
+    def subtitle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subtitle", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The title of the card.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs:
+    def __init__(__self__, *,
+                 url: pulumi.Input[str],
+                 url_type_hint: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint']] = None):
+        """
+        Actions on Google action to open a given url.
+        :param pulumi.Input[str] url: URL
+        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint'] url_type_hint: Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
+        """
+        pulumi.set(__self__, "url", url)
+        if url_type_hint is not None:
+            pulumi.set(__self__, "url_type_hint", url_type_hint)
+
+    @property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[str]:
+        """
+        URL
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "url", value)
+
+    @property
+    @pulumi.getter(name="urlTypeHint")
+    def url_type_hint(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint']]:
+        """
+        Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
+        """
+        return pulumi.get(self, "url_type_hint")
+
+    @url_type_hint.setter
+    def url_type_hint(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint']]):
+        pulumi.set(self, "url_type_hint", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs:
+    def __init__(__self__, *,
+                 open_uri_action: pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs'],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 footer: Optional[pulumi.Input[str]] = None,
+                 image: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']] = None):
+        """
+        Browsing carousel tile
+        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs'] open_uri_action: Action to present to the user.
+        :param pulumi.Input[str] title: Title of the carousel item. Maximum of two lines of text.
+        :param pulumi.Input[str] description: Optional. Description of the carousel item. Maximum of four lines of text.
+        :param pulumi.Input[str] footer: Optional. Text that appears at the bottom of the Browse Carousel Card. Maximum of one line of text.
+        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs'] image: Optional. Hero image for the carousel item.
+        """
+        pulumi.set(__self__, "open_uri_action", open_uri_action)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if footer is not None:
+            pulumi.set(__self__, "footer", footer)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+
+    @property
+    @pulumi.getter(name="openUriAction")
+    def open_uri_action(self) -> pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs']:
+        """
+        Action to present to the user.
+        """
+        return pulumi.get(self, "open_uri_action")
+
+    @open_uri_action.setter
+    def open_uri_action(self, value: pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs']):
+        pulumi.set(self, "open_uri_action", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        Title of the carousel item. Maximum of two lines of text.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Description of the carousel item. Maximum of four lines of text.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def footer(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Text that appears at the bottom of the Browse Carousel Card. Maximum of one line of text.
+        """
+        return pulumi.get(self, "footer")
+
+    @footer.setter
+    def footer(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "footer", value)
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]:
+        """
+        Optional. Hero image for the carousel item.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]):
+        pulumi.set(self, "image", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardArgs:
+    def __init__(__self__, *,
+                 items: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs']]],
+                 image_display_options: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions']] = None):
+        """
+        Browse Carousel Card for Actions on Google. https://developers.google.com/actions/assistant/responses#browsing_carousel
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs']]] items: List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
+        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions'] image_display_options: Optional. Settings for displaying the image. Applies to every image in items.
+        """
+        pulumi.set(__self__, "items", items)
+        if image_display_options is not None:
+            pulumi.set(__self__, "image_display_options", image_display_options)
+
+    @property
+    @pulumi.getter
+    def items(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs']]]:
+        """
+        List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
+        """
+        return pulumi.get(self, "items")
+
+    @items.setter
+    def items(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs']]]):
+        pulumi.set(self, "items", value)
+
+    @property
+    @pulumi.getter(name="imageDisplayOptions")
+    def image_display_options(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions']]:
+        """
+        Optional. Settings for displaying the image. Applies to every image in items.
+        """
+        return pulumi.get(self, "image_display_options")
+
+    @image_display_options.setter
+    def image_display_options(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions']]):
+        pulumi.set(self, "image_display_options", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageCardButtonArgs:
+    def __init__(__self__, *,
+                 postback: Optional[pulumi.Input[str]] = None,
+                 text: Optional[pulumi.Input[str]] = None):
+        """
+        Contains information about a button.
+        :param pulumi.Input[str] postback: Optional. The text to send back to the Dialogflow API or a URI to open.
+        :param pulumi.Input[str] text: Optional. The text to show on the button.
+        """
+        if postback is not None:
+            pulumi.set(__self__, "postback", postback)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def postback(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The text to send back to the Dialogflow API or a URI to open.
+        """
+        return pulumi.get(self, "postback")
+
+    @postback.setter
+    def postback(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "postback", value)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The text to show on the button.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageCardArgs:
+    def __init__(__self__, *,
+                 buttons: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageCardButtonArgs']]]] = None,
+                 image_uri: Optional[pulumi.Input[str]] = None,
+                 subtitle: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        The card response message.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageCardButtonArgs']]] buttons: Optional. The collection of card buttons.
+        :param pulumi.Input[str] image_uri: Optional. The public URI to an image file for the card.
+        :param pulumi.Input[str] subtitle: Optional. The subtitle of the card.
+        :param pulumi.Input[str] title: Optional. The title of the card.
+        """
+        if buttons is not None:
+            pulumi.set(__self__, "buttons", buttons)
+        if image_uri is not None:
+            pulumi.set(__self__, "image_uri", image_uri)
+        if subtitle is not None:
+            pulumi.set(__self__, "subtitle", subtitle)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def buttons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageCardButtonArgs']]]]:
+        """
+        Optional. The collection of card buttons.
+        """
+        return pulumi.get(self, "buttons")
+
+    @buttons.setter
+    def buttons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageCardButtonArgs']]]]):
+        pulumi.set(self, "buttons", value)
+
+    @property
+    @pulumi.getter(name="imageUri")
+    def image_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The public URI to an image file for the card.
+        """
+        return pulumi.get(self, "image_uri")
+
+    @image_uri.setter
+    def image_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_uri", value)
+
+    @property
+    @pulumi.getter
+    def subtitle(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The subtitle of the card.
+        """
+        return pulumi.get(self, "subtitle")
+
+    @subtitle.setter
+    def subtitle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subtitle", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The title of the card.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArgs:
+    def __init__(__self__, *,
+                 info: pulumi.Input['GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs'],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 image: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']] = None):
+        """
+        An item in the carousel.
+        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs'] info: Additional info about the option item.
+        :param pulumi.Input[str] title: Title of the carousel item.
+        :param pulumi.Input[str] description: Optional. The body text of the card.
+        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs'] image: Optional. The image to display.
+        """
+        pulumi.set(__self__, "info", info)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+
+    @property
+    @pulumi.getter
+    def info(self) -> pulumi.Input['GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs']:
+        """
+        Additional info about the option item.
+        """
+        return pulumi.get(self, "info")
+
+    @info.setter
+    def info(self, value: pulumi.Input['GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs']):
+        pulumi.set(self, "info", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        Title of the carousel item.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The body text of the card.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]:
+        """
+        Optional. The image to display.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]):
+        pulumi.set(self, "image", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageCarouselSelectArgs:
+    def __init__(__self__, *,
+                 items: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArgs']]]):
+        """
+        The card for presenting a carousel of options to select from.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArgs']]] items: Carousel items.
+        """
+        pulumi.set(__self__, "items", items)
+
+    @property
+    @pulumi.getter
+    def items(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArgs']]]:
+        """
+        Carousel items.
+        """
+        return pulumi.get(self, "items")
+
+    @items.setter
+    def items(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArgs']]]):
+        pulumi.set(self, "items", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageColumnPropertiesArgs:
+    def __init__(__self__, *,
+                 header: pulumi.Input[str],
+                 horizontal_alignment: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment']] = None):
+        """
+        Column properties for TableCard.
+        :param pulumi.Input[str] header: Column heading.
+        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment'] horizontal_alignment: Optional. Defines text alignment for all cells in this column.
+        """
+        pulumi.set(__self__, "header", header)
+        if horizontal_alignment is not None:
+            pulumi.set(__self__, "horizontal_alignment", horizontal_alignment)
+
+    @property
+    @pulumi.getter
+    def header(self) -> pulumi.Input[str]:
+        """
+        Column heading.
+        """
+        return pulumi.get(self, "header")
+
+    @header.setter
+    def header(self, value: pulumi.Input[str]):
+        pulumi.set(self, "header", value)
+
+    @property
+    @pulumi.getter(name="horizontalAlignment")
+    def horizontal_alignment(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment']]:
+        """
+        Optional. Defines text alignment for all cells in this column.
+        """
+        return pulumi.get(self, "horizontal_alignment")
+
+    @horizontal_alignment.setter
+    def horizontal_alignment(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment']]):
+        pulumi.set(self, "horizontal_alignment", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageImageArgs:
+    def __init__(__self__, *,
+                 accessibility_text: Optional[pulumi.Input[str]] = None,
+                 image_uri: Optional[pulumi.Input[str]] = None):
+        """
+        The image response message.
+        :param pulumi.Input[str] accessibility_text: Optional. A text description of the image to be used for accessibility, e.g., screen readers.
+        :param pulumi.Input[str] image_uri: Optional. The public URI to an image file.
+        """
+        if accessibility_text is not None:
+            pulumi.set(__self__, "accessibility_text", accessibility_text)
+        if image_uri is not None:
+            pulumi.set(__self__, "image_uri", image_uri)
+
+    @property
+    @pulumi.getter(name="accessibilityText")
+    def accessibility_text(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. A text description of the image to be used for accessibility, e.g., screen readers.
+        """
+        return pulumi.get(self, "accessibility_text")
+
+    @accessibility_text.setter
+    def accessibility_text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "accessibility_text", value)
+
+    @property
+    @pulumi.getter(name="imageUri")
+    def image_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The public URI to an image file.
+        """
+        return pulumi.get(self, "image_uri")
+
+    @image_uri.setter
+    def image_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_uri", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionArgs:
+    def __init__(__self__, *,
+                 destination_name: pulumi.Input[str],
+                 uri: pulumi.Input[str]):
+        """
+        The suggestion chip message that allows the user to jump out to the app or website associated with this agent.
+        :param pulumi.Input[str] destination_name: The name of the app or site this chip is linking to.
+        :param pulumi.Input[str] uri: The URI of the app or site to open when the user taps the suggestion chip.
+        """
+        pulumi.set(__self__, "destination_name", destination_name)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="destinationName")
+    def destination_name(self) -> pulumi.Input[str]:
+        """
+        The name of the app or site this chip is linking to.
+        """
+        return pulumi.get(self, "destination_name")
+
+    @destination_name.setter
+    def destination_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "destination_name", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        The URI of the app or site to open when the user taps the suggestion chip.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageListSelectItemArgs:
+    def __init__(__self__, *,
+                 info: pulumi.Input['GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs'],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 image: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']] = None):
+        """
+        An item in the list.
+        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs'] info: Additional information about this option.
+        :param pulumi.Input[str] title: The title of the list item.
+        :param pulumi.Input[str] description: Optional. The main text describing the item.
+        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs'] image: Optional. The image to display.
+        """
+        pulumi.set(__self__, "info", info)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+
+    @property
+    @pulumi.getter
+    def info(self) -> pulumi.Input['GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs']:
+        """
+        Additional information about this option.
+        """
+        return pulumi.get(self, "info")
+
+    @info.setter
+    def info(self, value: pulumi.Input['GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs']):
+        pulumi.set(self, "info", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        The title of the list item.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The main text describing the item.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]:
+        """
+        Optional. The image to display.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]):
+        pulumi.set(self, "image", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageListSelectArgs:
+    def __init__(__self__, *,
+                 items: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageListSelectItemArgs']]],
+                 subtitle: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        The card for presenting a list of options to select from.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageListSelectItemArgs']]] items: List items.
+        :param pulumi.Input[str] subtitle: Optional. Subtitle of the list.
+        :param pulumi.Input[str] title: Optional. The overall title of the list.
+        """
+        pulumi.set(__self__, "items", items)
+        if subtitle is not None:
+            pulumi.set(__self__, "subtitle", subtitle)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def items(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageListSelectItemArgs']]]:
+        """
+        List items.
+        """
+        return pulumi.get(self, "items")
+
+    @items.setter
+    def items(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageListSelectItemArgs']]]):
+        pulumi.set(self, "items", value)
+
+    @property
+    @pulumi.getter
+    def subtitle(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Subtitle of the list.
+        """
+        return pulumi.get(self, "subtitle")
+
+    @subtitle.setter
+    def subtitle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subtitle", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The overall title of the list.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArgs:
+    def __init__(__self__, *,
+                 content_url: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None,
+                 icon: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']] = None,
+                 large_image: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']] = None):
+        """
+        Response media object for media content card.
+        :param pulumi.Input[str] content_url: Url where the media is stored.
+        :param pulumi.Input[str] name: Name of media card.
+        :param pulumi.Input[str] description: Optional. Description of media card.
+        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs'] icon: Optional. Icon to display above media content.
+        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs'] large_image: Optional. Image to display above media content.
+        """
+        pulumi.set(__self__, "content_url", content_url)
+        pulumi.set(__self__, "name", name)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if icon is not None:
+            pulumi.set(__self__, "icon", icon)
+        if large_image is not None:
+            pulumi.set(__self__, "large_image", large_image)
+
+    @property
+    @pulumi.getter(name="contentUrl")
+    def content_url(self) -> pulumi.Input[str]:
+        """
+        Url where the media is stored.
+        """
+        return pulumi.get(self, "content_url")
+
+    @content_url.setter
+    def content_url(self, value: pulumi.Input[str]):
+        pulumi.set(self, "content_url", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of media card.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Description of media card.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def icon(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]:
+        """
+        Optional. Icon to display above media content.
+        """
+        return pulumi.get(self, "icon")
+
+    @icon.setter
+    def icon(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]):
+        pulumi.set(self, "icon", value)
+
+    @property
+    @pulumi.getter(name="largeImage")
+    def large_image(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]:
+        """
+        Optional. Image to display above media content.
+        """
+        return pulumi.get(self, "large_image")
+
+    @large_image.setter
+    def large_image(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]):
+        pulumi.set(self, "large_image", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageMediaContentArgs:
+    def __init__(__self__, *,
+                 media_objects: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArgs']]],
+                 media_type: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageMediaContentMediaType']] = None):
+        """
+        The media content card for Actions on Google.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArgs']]] media_objects: List of media objects.
+        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageMediaContentMediaType'] media_type: Optional. What type of media is the content (ie "audio").
+        """
+        pulumi.set(__self__, "media_objects", media_objects)
+        if media_type is not None:
+            pulumi.set(__self__, "media_type", media_type)
+
+    @property
+    @pulumi.getter(name="mediaObjects")
+    def media_objects(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArgs']]]:
+        """
+        List of media objects.
+        """
+        return pulumi.get(self, "media_objects")
+
+    @media_objects.setter
+    def media_objects(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArgs']]]):
+        pulumi.set(self, "media_objects", value)
+
+    @property
+    @pulumi.getter(name="mediaType")
+    def media_type(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageMediaContentMediaType']]:
+        """
+        Optional. What type of media is the content (ie "audio").
+        """
+        return pulumi.get(self, "media_type")
+
+    @media_type.setter
+    def media_type(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageMediaContentMediaType']]):
+        pulumi.set(self, "media_type", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageQuickRepliesArgs:
+    def __init__(__self__, *,
+                 quick_replies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        The quick replies response message.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] quick_replies: Optional. The collection of quick replies.
+        :param pulumi.Input[str] title: Optional. The title of the collection of quick replies.
+        """
+        if quick_replies is not None:
+            pulumi.set(__self__, "quick_replies", quick_replies)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter(name="quickReplies")
+    def quick_replies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The collection of quick replies.
+        """
+        return pulumi.get(self, "quick_replies")
+
+    @quick_replies.setter
+    def quick_replies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "quick_replies", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The title of the collection of quick replies.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 synonyms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Additional info about the select item for when it is triggered in a dialog.
+        :param pulumi.Input[str] key: A unique key that will be sent back to the agent if this response is given.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] synonyms: Optional. A list of synonyms that can also be used to trigger this item in dialog.
+        """
+        pulumi.set(__self__, "key", key)
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        """
+        A unique key that will be sent back to the agent if this response is given.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def synonyms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. A list of synonyms that can also be used to trigger this item in dialog.
+        """
+        return pulumi.get(self, "synonyms")
+
+    @synonyms.setter
+    def synonyms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "synonyms", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageSimpleResponsesArgs:
+    def __init__(__self__, *,
+                 simple_responses: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageSimpleResponseArgs']]]):
+        """
+        The collection of simple response candidates. This message in `QueryResult.fulfillment_messages` and `WebhookResponse.fulfillment_messages` should contain only one `SimpleResponse`.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageSimpleResponseArgs']]] simple_responses: The list of simple responses.
+        """
+        pulumi.set(__self__, "simple_responses", simple_responses)
+
+    @property
+    @pulumi.getter(name="simpleResponses")
+    def simple_responses(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageSimpleResponseArgs']]]:
+        """
+        The list of simple responses.
+        """
+        return pulumi.get(self, "simple_responses")
+
+    @simple_responses.setter
+    def simple_responses(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageSimpleResponseArgs']]]):
+        pulumi.set(self, "simple_responses", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageSimpleResponseArgs:
+    def __init__(__self__, *,
+                 display_text: Optional[pulumi.Input[str]] = None,
+                 ssml: Optional[pulumi.Input[str]] = None,
+                 text_to_speech: Optional[pulumi.Input[str]] = None):
+        """
+        The simple response message containing speech or text.
+        :param pulumi.Input[str] display_text: Optional. The text to display.
+        :param pulumi.Input[str] ssml: One of text_to_speech or ssml must be provided. Structured spoken response to the user in the SSML format. Mutually exclusive with text_to_speech.
+        :param pulumi.Input[str] text_to_speech: One of text_to_speech or ssml must be provided. The plain text of the speech output. Mutually exclusive with ssml.
+        """
+        if display_text is not None:
+            pulumi.set(__self__, "display_text", display_text)
+        if ssml is not None:
+            pulumi.set(__self__, "ssml", ssml)
+        if text_to_speech is not None:
+            pulumi.set(__self__, "text_to_speech", text_to_speech)
+
+    @property
+    @pulumi.getter(name="displayText")
+    def display_text(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The text to display.
+        """
+        return pulumi.get(self, "display_text")
+
+    @display_text.setter
+    def display_text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_text", value)
+
+    @property
+    @pulumi.getter
+    def ssml(self) -> Optional[pulumi.Input[str]]:
+        """
+        One of text_to_speech or ssml must be provided. Structured spoken response to the user in the SSML format. Mutually exclusive with text_to_speech.
+        """
+        return pulumi.get(self, "ssml")
+
+    @ssml.setter
+    def ssml(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssml", value)
+
+    @property
+    @pulumi.getter(name="textToSpeech")
+    def text_to_speech(self) -> Optional[pulumi.Input[str]]:
+        """
+        One of text_to_speech or ssml must be provided. The plain text of the speech output. Mutually exclusive with ssml.
+        """
+        return pulumi.get(self, "text_to_speech")
+
+    @text_to_speech.setter
+    def text_to_speech(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text_to_speech", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageSuggestionsArgs:
+    def __init__(__self__, *,
+                 suggestions: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageSuggestionArgs']]]):
+        """
+        The collection of suggestions.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageSuggestionArgs']]] suggestions: The list of suggested replies.
+        """
+        pulumi.set(__self__, "suggestions", suggestions)
+
+    @property
+    @pulumi.getter
+    def suggestions(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageSuggestionArgs']]]:
+        """
+        The list of suggested replies.
+        """
+        return pulumi.get(self, "suggestions")
+
+    @suggestions.setter
+    def suggestions(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageSuggestionArgs']]]):
+        pulumi.set(self, "suggestions", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageSuggestionArgs:
+    def __init__(__self__, *,
+                 title: pulumi.Input[str]):
+        """
+        The suggestion chip message that the user can tap to quickly post a reply to the conversation.
+        :param pulumi.Input[str] title: The text shown the in the suggestion chip.
+        """
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        The text shown the in the suggestion chip.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageTableCardCellArgs:
+    def __init__(__self__, *,
+                 text: pulumi.Input[str]):
+        """
+        Cell of TableCardRow.
+        :param pulumi.Input[str] text: Text in this cell.
+        """
+        pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def text(self) -> pulumi.Input[str]:
+        """
+        Text in this cell.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: pulumi.Input[str]):
+        pulumi.set(self, "text", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageTableCardRowArgs:
+    def __init__(__self__, *,
+                 cells: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageTableCardCellArgs']]]] = None,
+                 divider_after: Optional[pulumi.Input[bool]] = None):
+        """
+        Row of TableCard.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageTableCardCellArgs']]] cells: Optional. List of cells that make up this row.
+        :param pulumi.Input[bool] divider_after: Optional. Whether to add a visual divider after this row.
+        """
+        if cells is not None:
+            pulumi.set(__self__, "cells", cells)
+        if divider_after is not None:
+            pulumi.set(__self__, "divider_after", divider_after)
+
+    @property
+    @pulumi.getter
+    def cells(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageTableCardCellArgs']]]]:
+        """
+        Optional. List of cells that make up this row.
+        """
+        return pulumi.get(self, "cells")
+
+    @cells.setter
+    def cells(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageTableCardCellArgs']]]]):
+        pulumi.set(self, "cells", value)
+
+    @property
+    @pulumi.getter(name="dividerAfter")
+    def divider_after(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Whether to add a visual divider after this row.
+        """
+        return pulumi.get(self, "divider_after")
+
+    @divider_after.setter
+    def divider_after(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "divider_after", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageTableCardArgs:
+    def __init__(__self__, *,
+                 title: pulumi.Input[str],
+                 buttons: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs']]]] = None,
+                 column_properties: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageColumnPropertiesArgs']]]] = None,
+                 image: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']] = None,
+                 rows: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageTableCardRowArgs']]]] = None,
+                 subtitle: Optional[pulumi.Input[str]] = None):
+        """
+        Table card for Actions on Google.
+        :param pulumi.Input[str] title: Title of the card.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs']]] buttons: Optional. List of buttons for the card.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageColumnPropertiesArgs']]] column_properties: Optional. Display properties for the columns in this table.
+        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs'] image: Optional. Image which should be displayed on the card.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageTableCardRowArgs']]] rows: Optional. Rows in this table of data.
+        :param pulumi.Input[str] subtitle: Optional. Subtitle to the title.
+        """
+        pulumi.set(__self__, "title", title)
+        if buttons is not None:
+            pulumi.set(__self__, "buttons", buttons)
+        if column_properties is not None:
+            pulumi.set(__self__, "column_properties", column_properties)
+        if image is not None:
+            pulumi.set(__self__, "image", image)
+        if rows is not None:
+            pulumi.set(__self__, "rows", rows)
+        if subtitle is not None:
+            pulumi.set(__self__, "subtitle", subtitle)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        Title of the card.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def buttons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs']]]]:
+        """
+        Optional. List of buttons for the card.
+        """
+        return pulumi.get(self, "buttons")
+
+    @buttons.setter
+    def buttons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs']]]]):
+        pulumi.set(self, "buttons", value)
+
+    @property
+    @pulumi.getter(name="columnProperties")
+    def column_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageColumnPropertiesArgs']]]]:
+        """
+        Optional. Display properties for the columns in this table.
+        """
+        return pulumi.get(self, "column_properties")
+
+    @column_properties.setter
+    def column_properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageColumnPropertiesArgs']]]]):
+        pulumi.set(self, "column_properties", value)
+
+    @property
+    @pulumi.getter
+    def image(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]:
+        """
+        Optional. Image which should be displayed on the card.
+        """
+        return pulumi.get(self, "image")
+
+    @image.setter
+    def image(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]):
+        pulumi.set(self, "image", value)
+
+    @property
+    @pulumi.getter
+    def rows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageTableCardRowArgs']]]]:
+        """
+        Optional. Rows in this table of data.
+        """
+        return pulumi.get(self, "rows")
+
+    @rows.setter
+    def rows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageTableCardRowArgs']]]]):
+        pulumi.set(self, "rows", value)
+
+    @property
+    @pulumi.getter
+    def subtitle(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Subtitle to the title.
+        """
+        return pulumi.get(self, "subtitle")
+
+    @subtitle.setter
+    def subtitle(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subtitle", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentMessageTextArgs:
+    def __init__(__self__, *,
+                 text: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        The text response message.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] text: Optional. The collection of the agent's responses.
+        """
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The collection of the agent's responses.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "text", value)
 
 
 @pulumi.input_type
@@ -1336,1285 +2615,6 @@ class GoogleCloudDialogflowV2IntentMessageArgs:
 
 
 @pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageBasicCardArgs:
-    def __init__(__self__, *,
-                 buttons: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs']]]] = None,
-                 formatted_text: Optional[pulumi.Input[str]] = None,
-                 image: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']] = None,
-                 subtitle: Optional[pulumi.Input[str]] = None,
-                 title: Optional[pulumi.Input[str]] = None):
-        """
-        The basic card message. Useful for displaying information.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs']]] buttons: Optional. The collection of card buttons.
-        :param pulumi.Input[str] formatted_text: Required, unless image is present. The body text of the card.
-        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs'] image: Optional. The image for the card.
-        :param pulumi.Input[str] subtitle: Optional. The subtitle of the card.
-        :param pulumi.Input[str] title: Optional. The title of the card.
-        """
-        if buttons is not None:
-            pulumi.set(__self__, "buttons", buttons)
-        if formatted_text is not None:
-            pulumi.set(__self__, "formatted_text", formatted_text)
-        if image is not None:
-            pulumi.set(__self__, "image", image)
-        if subtitle is not None:
-            pulumi.set(__self__, "subtitle", subtitle)
-        if title is not None:
-            pulumi.set(__self__, "title", title)
-
-    @property
-    @pulumi.getter
-    def buttons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs']]]]:
-        """
-        Optional. The collection of card buttons.
-        """
-        return pulumi.get(self, "buttons")
-
-    @buttons.setter
-    def buttons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs']]]]):
-        pulumi.set(self, "buttons", value)
-
-    @property
-    @pulumi.getter(name="formattedText")
-    def formatted_text(self) -> Optional[pulumi.Input[str]]:
-        """
-        Required, unless image is present. The body text of the card.
-        """
-        return pulumi.get(self, "formatted_text")
-
-    @formatted_text.setter
-    def formatted_text(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "formatted_text", value)
-
-    @property
-    @pulumi.getter
-    def image(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]:
-        """
-        Optional. The image for the card.
-        """
-        return pulumi.get(self, "image")
-
-    @image.setter
-    def image(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]):
-        pulumi.set(self, "image", value)
-
-    @property
-    @pulumi.getter
-    def subtitle(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The subtitle of the card.
-        """
-        return pulumi.get(self, "subtitle")
-
-    @subtitle.setter
-    def subtitle(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "subtitle", value)
-
-    @property
-    @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The title of the card.
-        """
-        return pulumi.get(self, "title")
-
-    @title.setter
-    def title(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "title", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs:
-    def __init__(__self__, *,
-                 open_uri_action: pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs'],
-                 title: pulumi.Input[str]):
-        """
-        The button object that appears at the bottom of a card.
-        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs'] open_uri_action: Action to take when a user taps on the button.
-        :param pulumi.Input[str] title: The title of the button.
-        """
-        pulumi.set(__self__, "open_uri_action", open_uri_action)
-        pulumi.set(__self__, "title", title)
-
-    @property
-    @pulumi.getter(name="openUriAction")
-    def open_uri_action(self) -> pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs']:
-        """
-        Action to take when a user taps on the button.
-        """
-        return pulumi.get(self, "open_uri_action")
-
-    @open_uri_action.setter
-    def open_uri_action(self, value: pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs']):
-        pulumi.set(self, "open_uri_action", value)
-
-    @property
-    @pulumi.getter
-    def title(self) -> pulumi.Input[str]:
-        """
-        The title of the button.
-        """
-        return pulumi.get(self, "title")
-
-    @title.setter
-    def title(self, value: pulumi.Input[str]):
-        pulumi.set(self, "title", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriActionArgs:
-    def __init__(__self__, *,
-                 uri: pulumi.Input[str]):
-        """
-        Opens the given URI.
-        :param pulumi.Input[str] uri: The HTTP or HTTPS scheme URI.
-        """
-        pulumi.set(__self__, "uri", uri)
-
-    @property
-    @pulumi.getter
-    def uri(self) -> pulumi.Input[str]:
-        """
-        The HTTP or HTTPS scheme URI.
-        """
-        return pulumi.get(self, "uri")
-
-    @uri.setter
-    def uri(self, value: pulumi.Input[str]):
-        pulumi.set(self, "uri", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardArgs:
-    def __init__(__self__, *,
-                 items: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs']]],
-                 image_display_options: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions']] = None):
-        """
-        Browse Carousel Card for Actions on Google. https://developers.google.com/actions/assistant/responses#browsing_carousel
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs']]] items: List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
-        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions'] image_display_options: Optional. Settings for displaying the image. Applies to every image in items.
-        """
-        pulumi.set(__self__, "items", items)
-        if image_display_options is not None:
-            pulumi.set(__self__, "image_display_options", image_display_options)
-
-    @property
-    @pulumi.getter
-    def items(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs']]]:
-        """
-        List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
-        """
-        return pulumi.get(self, "items")
-
-    @items.setter
-    def items(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs']]]):
-        pulumi.set(self, "items", value)
-
-    @property
-    @pulumi.getter(name="imageDisplayOptions")
-    def image_display_options(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions']]:
-        """
-        Optional. Settings for displaying the image. Applies to every image in items.
-        """
-        return pulumi.get(self, "image_display_options")
-
-    @image_display_options.setter
-    def image_display_options(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions']]):
-        pulumi.set(self, "image_display_options", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs:
-    def __init__(__self__, *,
-                 open_uri_action: pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs'],
-                 title: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None,
-                 footer: Optional[pulumi.Input[str]] = None,
-                 image: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']] = None):
-        """
-        Browsing carousel tile
-        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs'] open_uri_action: Action to present to the user.
-        :param pulumi.Input[str] title: Title of the carousel item. Maximum of two lines of text.
-        :param pulumi.Input[str] description: Optional. Description of the carousel item. Maximum of four lines of text.
-        :param pulumi.Input[str] footer: Optional. Text that appears at the bottom of the Browse Carousel Card. Maximum of one line of text.
-        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs'] image: Optional. Hero image for the carousel item.
-        """
-        pulumi.set(__self__, "open_uri_action", open_uri_action)
-        pulumi.set(__self__, "title", title)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if footer is not None:
-            pulumi.set(__self__, "footer", footer)
-        if image is not None:
-            pulumi.set(__self__, "image", image)
-
-    @property
-    @pulumi.getter(name="openUriAction")
-    def open_uri_action(self) -> pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs']:
-        """
-        Action to present to the user.
-        """
-        return pulumi.get(self, "open_uri_action")
-
-    @open_uri_action.setter
-    def open_uri_action(self, value: pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs']):
-        pulumi.set(self, "open_uri_action", value)
-
-    @property
-    @pulumi.getter
-    def title(self) -> pulumi.Input[str]:
-        """
-        Title of the carousel item. Maximum of two lines of text.
-        """
-        return pulumi.get(self, "title")
-
-    @title.setter
-    def title(self, value: pulumi.Input[str]):
-        pulumi.set(self, "title", value)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Description of the carousel item. Maximum of four lines of text.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def footer(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Text that appears at the bottom of the Browse Carousel Card. Maximum of one line of text.
-        """
-        return pulumi.get(self, "footer")
-
-    @footer.setter
-    def footer(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "footer", value)
-
-    @property
-    @pulumi.getter
-    def image(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]:
-        """
-        Optional. Hero image for the carousel item.
-        """
-        return pulumi.get(self, "image")
-
-    @image.setter
-    def image(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]):
-        pulumi.set(self, "image", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs:
-    def __init__(__self__, *,
-                 url: pulumi.Input[str],
-                 url_type_hint: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint']] = None):
-        """
-        Actions on Google action to open a given url.
-        :param pulumi.Input[str] url: URL
-        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint'] url_type_hint: Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
-        """
-        pulumi.set(__self__, "url", url)
-        if url_type_hint is not None:
-            pulumi.set(__self__, "url_type_hint", url_type_hint)
-
-    @property
-    @pulumi.getter
-    def url(self) -> pulumi.Input[str]:
-        """
-        URL
-        """
-        return pulumi.get(self, "url")
-
-    @url.setter
-    def url(self, value: pulumi.Input[str]):
-        pulumi.set(self, "url", value)
-
-    @property
-    @pulumi.getter(name="urlTypeHint")
-    def url_type_hint(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint']]:
-        """
-        Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
-        """
-        return pulumi.get(self, "url_type_hint")
-
-    @url_type_hint.setter
-    def url_type_hint(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint']]):
-        pulumi.set(self, "url_type_hint", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageCardArgs:
-    def __init__(__self__, *,
-                 buttons: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageCardButtonArgs']]]] = None,
-                 image_uri: Optional[pulumi.Input[str]] = None,
-                 subtitle: Optional[pulumi.Input[str]] = None,
-                 title: Optional[pulumi.Input[str]] = None):
-        """
-        The card response message.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageCardButtonArgs']]] buttons: Optional. The collection of card buttons.
-        :param pulumi.Input[str] image_uri: Optional. The public URI to an image file for the card.
-        :param pulumi.Input[str] subtitle: Optional. The subtitle of the card.
-        :param pulumi.Input[str] title: Optional. The title of the card.
-        """
-        if buttons is not None:
-            pulumi.set(__self__, "buttons", buttons)
-        if image_uri is not None:
-            pulumi.set(__self__, "image_uri", image_uri)
-        if subtitle is not None:
-            pulumi.set(__self__, "subtitle", subtitle)
-        if title is not None:
-            pulumi.set(__self__, "title", title)
-
-    @property
-    @pulumi.getter
-    def buttons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageCardButtonArgs']]]]:
-        """
-        Optional. The collection of card buttons.
-        """
-        return pulumi.get(self, "buttons")
-
-    @buttons.setter
-    def buttons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageCardButtonArgs']]]]):
-        pulumi.set(self, "buttons", value)
-
-    @property
-    @pulumi.getter(name="imageUri")
-    def image_uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The public URI to an image file for the card.
-        """
-        return pulumi.get(self, "image_uri")
-
-    @image_uri.setter
-    def image_uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "image_uri", value)
-
-    @property
-    @pulumi.getter
-    def subtitle(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The subtitle of the card.
-        """
-        return pulumi.get(self, "subtitle")
-
-    @subtitle.setter
-    def subtitle(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "subtitle", value)
-
-    @property
-    @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The title of the card.
-        """
-        return pulumi.get(self, "title")
-
-    @title.setter
-    def title(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "title", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageCardButtonArgs:
-    def __init__(__self__, *,
-                 postback: Optional[pulumi.Input[str]] = None,
-                 text: Optional[pulumi.Input[str]] = None):
-        """
-        Contains information about a button.
-        :param pulumi.Input[str] postback: Optional. The text to send back to the Dialogflow API or a URI to open.
-        :param pulumi.Input[str] text: Optional. The text to show on the button.
-        """
-        if postback is not None:
-            pulumi.set(__self__, "postback", postback)
-        if text is not None:
-            pulumi.set(__self__, "text", text)
-
-    @property
-    @pulumi.getter
-    def postback(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The text to send back to the Dialogflow API or a URI to open.
-        """
-        return pulumi.get(self, "postback")
-
-    @postback.setter
-    def postback(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "postback", value)
-
-    @property
-    @pulumi.getter
-    def text(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The text to show on the button.
-        """
-        return pulumi.get(self, "text")
-
-    @text.setter
-    def text(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "text", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageCarouselSelectArgs:
-    def __init__(__self__, *,
-                 items: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArgs']]]):
-        """
-        The card for presenting a carousel of options to select from.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArgs']]] items: Carousel items.
-        """
-        pulumi.set(__self__, "items", items)
-
-    @property
-    @pulumi.getter
-    def items(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArgs']]]:
-        """
-        Carousel items.
-        """
-        return pulumi.get(self, "items")
-
-    @items.setter
-    def items(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArgs']]]):
-        pulumi.set(self, "items", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageCarouselSelectItemArgs:
-    def __init__(__self__, *,
-                 info: pulumi.Input['GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs'],
-                 title: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None,
-                 image: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']] = None):
-        """
-        An item in the carousel.
-        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs'] info: Additional info about the option item.
-        :param pulumi.Input[str] title: Title of the carousel item.
-        :param pulumi.Input[str] description: Optional. The body text of the card.
-        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs'] image: Optional. The image to display.
-        """
-        pulumi.set(__self__, "info", info)
-        pulumi.set(__self__, "title", title)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if image is not None:
-            pulumi.set(__self__, "image", image)
-
-    @property
-    @pulumi.getter
-    def info(self) -> pulumi.Input['GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs']:
-        """
-        Additional info about the option item.
-        """
-        return pulumi.get(self, "info")
-
-    @info.setter
-    def info(self, value: pulumi.Input['GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs']):
-        pulumi.set(self, "info", value)
-
-    @property
-    @pulumi.getter
-    def title(self) -> pulumi.Input[str]:
-        """
-        Title of the carousel item.
-        """
-        return pulumi.get(self, "title")
-
-    @title.setter
-    def title(self, value: pulumi.Input[str]):
-        pulumi.set(self, "title", value)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The body text of the card.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def image(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]:
-        """
-        Optional. The image to display.
-        """
-        return pulumi.get(self, "image")
-
-    @image.setter
-    def image(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]):
-        pulumi.set(self, "image", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageColumnPropertiesArgs:
-    def __init__(__self__, *,
-                 header: pulumi.Input[str],
-                 horizontal_alignment: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment']] = None):
-        """
-        Column properties for TableCard.
-        :param pulumi.Input[str] header: Column heading.
-        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment'] horizontal_alignment: Optional. Defines text alignment for all cells in this column.
-        """
-        pulumi.set(__self__, "header", header)
-        if horizontal_alignment is not None:
-            pulumi.set(__self__, "horizontal_alignment", horizontal_alignment)
-
-    @property
-    @pulumi.getter
-    def header(self) -> pulumi.Input[str]:
-        """
-        Column heading.
-        """
-        return pulumi.get(self, "header")
-
-    @header.setter
-    def header(self, value: pulumi.Input[str]):
-        pulumi.set(self, "header", value)
-
-    @property
-    @pulumi.getter(name="horizontalAlignment")
-    def horizontal_alignment(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment']]:
-        """
-        Optional. Defines text alignment for all cells in this column.
-        """
-        return pulumi.get(self, "horizontal_alignment")
-
-    @horizontal_alignment.setter
-    def horizontal_alignment(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment']]):
-        pulumi.set(self, "horizontal_alignment", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageImageArgs:
-    def __init__(__self__, *,
-                 accessibility_text: Optional[pulumi.Input[str]] = None,
-                 image_uri: Optional[pulumi.Input[str]] = None):
-        """
-        The image response message.
-        :param pulumi.Input[str] accessibility_text: Optional. A text description of the image to be used for accessibility, e.g., screen readers.
-        :param pulumi.Input[str] image_uri: Optional. The public URI to an image file.
-        """
-        if accessibility_text is not None:
-            pulumi.set(__self__, "accessibility_text", accessibility_text)
-        if image_uri is not None:
-            pulumi.set(__self__, "image_uri", image_uri)
-
-    @property
-    @pulumi.getter(name="accessibilityText")
-    def accessibility_text(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. A text description of the image to be used for accessibility, e.g., screen readers.
-        """
-        return pulumi.get(self, "accessibility_text")
-
-    @accessibility_text.setter
-    def accessibility_text(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "accessibility_text", value)
-
-    @property
-    @pulumi.getter(name="imageUri")
-    def image_uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The public URI to an image file.
-        """
-        return pulumi.get(self, "image_uri")
-
-    @image_uri.setter
-    def image_uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "image_uri", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionArgs:
-    def __init__(__self__, *,
-                 destination_name: pulumi.Input[str],
-                 uri: pulumi.Input[str]):
-        """
-        The suggestion chip message that allows the user to jump out to the app or website associated with this agent.
-        :param pulumi.Input[str] destination_name: The name of the app or site this chip is linking to.
-        :param pulumi.Input[str] uri: The URI of the app or site to open when the user taps the suggestion chip.
-        """
-        pulumi.set(__self__, "destination_name", destination_name)
-        pulumi.set(__self__, "uri", uri)
-
-    @property
-    @pulumi.getter(name="destinationName")
-    def destination_name(self) -> pulumi.Input[str]:
-        """
-        The name of the app or site this chip is linking to.
-        """
-        return pulumi.get(self, "destination_name")
-
-    @destination_name.setter
-    def destination_name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "destination_name", value)
-
-    @property
-    @pulumi.getter
-    def uri(self) -> pulumi.Input[str]:
-        """
-        The URI of the app or site to open when the user taps the suggestion chip.
-        """
-        return pulumi.get(self, "uri")
-
-    @uri.setter
-    def uri(self, value: pulumi.Input[str]):
-        pulumi.set(self, "uri", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageListSelectArgs:
-    def __init__(__self__, *,
-                 items: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageListSelectItemArgs']]],
-                 subtitle: Optional[pulumi.Input[str]] = None,
-                 title: Optional[pulumi.Input[str]] = None):
-        """
-        The card for presenting a list of options to select from.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageListSelectItemArgs']]] items: List items.
-        :param pulumi.Input[str] subtitle: Optional. Subtitle of the list.
-        :param pulumi.Input[str] title: Optional. The overall title of the list.
-        """
-        pulumi.set(__self__, "items", items)
-        if subtitle is not None:
-            pulumi.set(__self__, "subtitle", subtitle)
-        if title is not None:
-            pulumi.set(__self__, "title", title)
-
-    @property
-    @pulumi.getter
-    def items(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageListSelectItemArgs']]]:
-        """
-        List items.
-        """
-        return pulumi.get(self, "items")
-
-    @items.setter
-    def items(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageListSelectItemArgs']]]):
-        pulumi.set(self, "items", value)
-
-    @property
-    @pulumi.getter
-    def subtitle(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Subtitle of the list.
-        """
-        return pulumi.get(self, "subtitle")
-
-    @subtitle.setter
-    def subtitle(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "subtitle", value)
-
-    @property
-    @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The overall title of the list.
-        """
-        return pulumi.get(self, "title")
-
-    @title.setter
-    def title(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "title", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageListSelectItemArgs:
-    def __init__(__self__, *,
-                 info: pulumi.Input['GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs'],
-                 title: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None,
-                 image: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']] = None):
-        """
-        An item in the list.
-        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs'] info: Additional information about this option.
-        :param pulumi.Input[str] title: The title of the list item.
-        :param pulumi.Input[str] description: Optional. The main text describing the item.
-        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs'] image: Optional. The image to display.
-        """
-        pulumi.set(__self__, "info", info)
-        pulumi.set(__self__, "title", title)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if image is not None:
-            pulumi.set(__self__, "image", image)
-
-    @property
-    @pulumi.getter
-    def info(self) -> pulumi.Input['GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs']:
-        """
-        Additional information about this option.
-        """
-        return pulumi.get(self, "info")
-
-    @info.setter
-    def info(self, value: pulumi.Input['GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs']):
-        pulumi.set(self, "info", value)
-
-    @property
-    @pulumi.getter
-    def title(self) -> pulumi.Input[str]:
-        """
-        The title of the list item.
-        """
-        return pulumi.get(self, "title")
-
-    @title.setter
-    def title(self, value: pulumi.Input[str]):
-        pulumi.set(self, "title", value)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The main text describing the item.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def image(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]:
-        """
-        Optional. The image to display.
-        """
-        return pulumi.get(self, "image")
-
-    @image.setter
-    def image(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]):
-        pulumi.set(self, "image", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageMediaContentArgs:
-    def __init__(__self__, *,
-                 media_objects: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArgs']]],
-                 media_type: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageMediaContentMediaType']] = None):
-        """
-        The media content card for Actions on Google.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArgs']]] media_objects: List of media objects.
-        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageMediaContentMediaType'] media_type: Optional. What type of media is the content (ie "audio").
-        """
-        pulumi.set(__self__, "media_objects", media_objects)
-        if media_type is not None:
-            pulumi.set(__self__, "media_type", media_type)
-
-    @property
-    @pulumi.getter(name="mediaObjects")
-    def media_objects(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArgs']]]:
-        """
-        List of media objects.
-        """
-        return pulumi.get(self, "media_objects")
-
-    @media_objects.setter
-    def media_objects(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArgs']]]):
-        pulumi.set(self, "media_objects", value)
-
-    @property
-    @pulumi.getter(name="mediaType")
-    def media_type(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageMediaContentMediaType']]:
-        """
-        Optional. What type of media is the content (ie "audio").
-        """
-        return pulumi.get(self, "media_type")
-
-    @media_type.setter
-    def media_type(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageMediaContentMediaType']]):
-        pulumi.set(self, "media_type", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArgs:
-    def __init__(__self__, *,
-                 content_url: pulumi.Input[str],
-                 name: pulumi.Input[str],
-                 description: Optional[pulumi.Input[str]] = None,
-                 icon: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']] = None,
-                 large_image: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']] = None):
-        """
-        Response media object for media content card.
-        :param pulumi.Input[str] content_url: Url where the media is stored.
-        :param pulumi.Input[str] name: Name of media card.
-        :param pulumi.Input[str] description: Optional. Description of media card.
-        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs'] icon: Optional. Icon to display above media content.
-        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs'] large_image: Optional. Image to display above media content.
-        """
-        pulumi.set(__self__, "content_url", content_url)
-        pulumi.set(__self__, "name", name)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if icon is not None:
-            pulumi.set(__self__, "icon", icon)
-        if large_image is not None:
-            pulumi.set(__self__, "large_image", large_image)
-
-    @property
-    @pulumi.getter(name="contentUrl")
-    def content_url(self) -> pulumi.Input[str]:
-        """
-        Url where the media is stored.
-        """
-        return pulumi.get(self, "content_url")
-
-    @content_url.setter
-    def content_url(self, value: pulumi.Input[str]):
-        pulumi.set(self, "content_url", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        Name of media card.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Description of media card.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def icon(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]:
-        """
-        Optional. Icon to display above media content.
-        """
-        return pulumi.get(self, "icon")
-
-    @icon.setter
-    def icon(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]):
-        pulumi.set(self, "icon", value)
-
-    @property
-    @pulumi.getter(name="largeImage")
-    def large_image(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]:
-        """
-        Optional. Image to display above media content.
-        """
-        return pulumi.get(self, "large_image")
-
-    @large_image.setter
-    def large_image(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]):
-        pulumi.set(self, "large_image", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageQuickRepliesArgs:
-    def __init__(__self__, *,
-                 quick_replies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 title: Optional[pulumi.Input[str]] = None):
-        """
-        The quick replies response message.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] quick_replies: Optional. The collection of quick replies.
-        :param pulumi.Input[str] title: Optional. The title of the collection of quick replies.
-        """
-        if quick_replies is not None:
-            pulumi.set(__self__, "quick_replies", quick_replies)
-        if title is not None:
-            pulumi.set(__self__, "title", title)
-
-    @property
-    @pulumi.getter(name="quickReplies")
-    def quick_replies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Optional. The collection of quick replies.
-        """
-        return pulumi.get(self, "quick_replies")
-
-    @quick_replies.setter
-    def quick_replies(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "quick_replies", value)
-
-    @property
-    @pulumi.getter
-    def title(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The title of the collection of quick replies.
-        """
-        return pulumi.get(self, "title")
-
-    @title.setter
-    def title(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "title", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageSelectItemInfoArgs:
-    def __init__(__self__, *,
-                 key: pulumi.Input[str],
-                 synonyms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        Additional info about the select item for when it is triggered in a dialog.
-        :param pulumi.Input[str] key: A unique key that will be sent back to the agent if this response is given.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] synonyms: Optional. A list of synonyms that can also be used to trigger this item in dialog.
-        """
-        pulumi.set(__self__, "key", key)
-        if synonyms is not None:
-            pulumi.set(__self__, "synonyms", synonyms)
-
-    @property
-    @pulumi.getter
-    def key(self) -> pulumi.Input[str]:
-        """
-        A unique key that will be sent back to the agent if this response is given.
-        """
-        return pulumi.get(self, "key")
-
-    @key.setter
-    def key(self, value: pulumi.Input[str]):
-        pulumi.set(self, "key", value)
-
-    @property
-    @pulumi.getter
-    def synonyms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Optional. A list of synonyms that can also be used to trigger this item in dialog.
-        """
-        return pulumi.get(self, "synonyms")
-
-    @synonyms.setter
-    def synonyms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "synonyms", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageSimpleResponseArgs:
-    def __init__(__self__, *,
-                 display_text: Optional[pulumi.Input[str]] = None,
-                 ssml: Optional[pulumi.Input[str]] = None,
-                 text_to_speech: Optional[pulumi.Input[str]] = None):
-        """
-        The simple response message containing speech or text.
-        :param pulumi.Input[str] display_text: Optional. The text to display.
-        :param pulumi.Input[str] ssml: One of text_to_speech or ssml must be provided. Structured spoken response to the user in the SSML format. Mutually exclusive with text_to_speech.
-        :param pulumi.Input[str] text_to_speech: One of text_to_speech or ssml must be provided. The plain text of the speech output. Mutually exclusive with ssml.
-        """
-        if display_text is not None:
-            pulumi.set(__self__, "display_text", display_text)
-        if ssml is not None:
-            pulumi.set(__self__, "ssml", ssml)
-        if text_to_speech is not None:
-            pulumi.set(__self__, "text_to_speech", text_to_speech)
-
-    @property
-    @pulumi.getter(name="displayText")
-    def display_text(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. The text to display.
-        """
-        return pulumi.get(self, "display_text")
-
-    @display_text.setter
-    def display_text(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "display_text", value)
-
-    @property
-    @pulumi.getter
-    def ssml(self) -> Optional[pulumi.Input[str]]:
-        """
-        One of text_to_speech or ssml must be provided. Structured spoken response to the user in the SSML format. Mutually exclusive with text_to_speech.
-        """
-        return pulumi.get(self, "ssml")
-
-    @ssml.setter
-    def ssml(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "ssml", value)
-
-    @property
-    @pulumi.getter(name="textToSpeech")
-    def text_to_speech(self) -> Optional[pulumi.Input[str]]:
-        """
-        One of text_to_speech or ssml must be provided. The plain text of the speech output. Mutually exclusive with ssml.
-        """
-        return pulumi.get(self, "text_to_speech")
-
-    @text_to_speech.setter
-    def text_to_speech(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "text_to_speech", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageSimpleResponsesArgs:
-    def __init__(__self__, *,
-                 simple_responses: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageSimpleResponseArgs']]]):
-        """
-        The collection of simple response candidates. This message in `QueryResult.fulfillment_messages` and `WebhookResponse.fulfillment_messages` should contain only one `SimpleResponse`.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageSimpleResponseArgs']]] simple_responses: The list of simple responses.
-        """
-        pulumi.set(__self__, "simple_responses", simple_responses)
-
-    @property
-    @pulumi.getter(name="simpleResponses")
-    def simple_responses(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageSimpleResponseArgs']]]:
-        """
-        The list of simple responses.
-        """
-        return pulumi.get(self, "simple_responses")
-
-    @simple_responses.setter
-    def simple_responses(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageSimpleResponseArgs']]]):
-        pulumi.set(self, "simple_responses", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageSuggestionArgs:
-    def __init__(__self__, *,
-                 title: pulumi.Input[str]):
-        """
-        The suggestion chip message that the user can tap to quickly post a reply to the conversation.
-        :param pulumi.Input[str] title: The text shown the in the suggestion chip.
-        """
-        pulumi.set(__self__, "title", title)
-
-    @property
-    @pulumi.getter
-    def title(self) -> pulumi.Input[str]:
-        """
-        The text shown the in the suggestion chip.
-        """
-        return pulumi.get(self, "title")
-
-    @title.setter
-    def title(self, value: pulumi.Input[str]):
-        pulumi.set(self, "title", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageSuggestionsArgs:
-    def __init__(__self__, *,
-                 suggestions: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageSuggestionArgs']]]):
-        """
-        The collection of suggestions.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageSuggestionArgs']]] suggestions: The list of suggested replies.
-        """
-        pulumi.set(__self__, "suggestions", suggestions)
-
-    @property
-    @pulumi.getter
-    def suggestions(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageSuggestionArgs']]]:
-        """
-        The list of suggested replies.
-        """
-        return pulumi.get(self, "suggestions")
-
-    @suggestions.setter
-    def suggestions(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageSuggestionArgs']]]):
-        pulumi.set(self, "suggestions", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageTableCardArgs:
-    def __init__(__self__, *,
-                 title: pulumi.Input[str],
-                 buttons: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs']]]] = None,
-                 column_properties: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageColumnPropertiesArgs']]]] = None,
-                 image: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']] = None,
-                 rows: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageTableCardRowArgs']]]] = None,
-                 subtitle: Optional[pulumi.Input[str]] = None):
-        """
-        Table card for Actions on Google.
-        :param pulumi.Input[str] title: Title of the card.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs']]] buttons: Optional. List of buttons for the card.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageColumnPropertiesArgs']]] column_properties: Optional. Display properties for the columns in this table.
-        :param pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs'] image: Optional. Image which should be displayed on the card.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageTableCardRowArgs']]] rows: Optional. Rows in this table of data.
-        :param pulumi.Input[str] subtitle: Optional. Subtitle to the title.
-        """
-        pulumi.set(__self__, "title", title)
-        if buttons is not None:
-            pulumi.set(__self__, "buttons", buttons)
-        if column_properties is not None:
-            pulumi.set(__self__, "column_properties", column_properties)
-        if image is not None:
-            pulumi.set(__self__, "image", image)
-        if rows is not None:
-            pulumi.set(__self__, "rows", rows)
-        if subtitle is not None:
-            pulumi.set(__self__, "subtitle", subtitle)
-
-    @property
-    @pulumi.getter
-    def title(self) -> pulumi.Input[str]:
-        """
-        Title of the card.
-        """
-        return pulumi.get(self, "title")
-
-    @title.setter
-    def title(self, value: pulumi.Input[str]):
-        pulumi.set(self, "title", value)
-
-    @property
-    @pulumi.getter
-    def buttons(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs']]]]:
-        """
-        Optional. List of buttons for the card.
-        """
-        return pulumi.get(self, "buttons")
-
-    @buttons.setter
-    def buttons(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs']]]]):
-        pulumi.set(self, "buttons", value)
-
-    @property
-    @pulumi.getter(name="columnProperties")
-    def column_properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageColumnPropertiesArgs']]]]:
-        """
-        Optional. Display properties for the columns in this table.
-        """
-        return pulumi.get(self, "column_properties")
-
-    @column_properties.setter
-    def column_properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageColumnPropertiesArgs']]]]):
-        pulumi.set(self, "column_properties", value)
-
-    @property
-    @pulumi.getter
-    def image(self) -> Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]:
-        """
-        Optional. Image which should be displayed on the card.
-        """
-        return pulumi.get(self, "image")
-
-    @image.setter
-    def image(self, value: Optional[pulumi.Input['GoogleCloudDialogflowV2IntentMessageImageArgs']]):
-        pulumi.set(self, "image", value)
-
-    @property
-    @pulumi.getter
-    def rows(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageTableCardRowArgs']]]]:
-        """
-        Optional. Rows in this table of data.
-        """
-        return pulumi.get(self, "rows")
-
-    @rows.setter
-    def rows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageTableCardRowArgs']]]]):
-        pulumi.set(self, "rows", value)
-
-    @property
-    @pulumi.getter
-    def subtitle(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Subtitle to the title.
-        """
-        return pulumi.get(self, "subtitle")
-
-    @subtitle.setter
-    def subtitle(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "subtitle", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageTableCardCellArgs:
-    def __init__(__self__, *,
-                 text: pulumi.Input[str]):
-        """
-        Cell of TableCardRow.
-        :param pulumi.Input[str] text: Text in this cell.
-        """
-        pulumi.set(__self__, "text", text)
-
-    @property
-    @pulumi.getter
-    def text(self) -> pulumi.Input[str]:
-        """
-        Text in this cell.
-        """
-        return pulumi.get(self, "text")
-
-    @text.setter
-    def text(self, value: pulumi.Input[str]):
-        pulumi.set(self, "text", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageTableCardRowArgs:
-    def __init__(__self__, *,
-                 cells: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageTableCardCellArgs']]]] = None,
-                 divider_after: Optional[pulumi.Input[bool]] = None):
-        """
-        Row of TableCard.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageTableCardCellArgs']]] cells: Optional. List of cells that make up this row.
-        :param pulumi.Input[bool] divider_after: Optional. Whether to add a visual divider after this row.
-        """
-        if cells is not None:
-            pulumi.set(__self__, "cells", cells)
-        if divider_after is not None:
-            pulumi.set(__self__, "divider_after", divider_after)
-
-    @property
-    @pulumi.getter
-    def cells(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageTableCardCellArgs']]]]:
-        """
-        Optional. List of cells that make up this row.
-        """
-        return pulumi.get(self, "cells")
-
-    @cells.setter
-    def cells(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentMessageTableCardCellArgs']]]]):
-        pulumi.set(self, "cells", value)
-
-    @property
-    @pulumi.getter(name="dividerAfter")
-    def divider_after(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Optional. Whether to add a visual divider after this row.
-        """
-        return pulumi.get(self, "divider_after")
-
-    @divider_after.setter
-    def divider_after(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "divider_after", value)
-
-
-@pulumi.input_type
-class GoogleCloudDialogflowV2IntentMessageTextArgs:
-    def __init__(__self__, *,
-                 text: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        The text response message.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] text: Optional. The collection of the agent's responses.
-        """
-        if text is not None:
-            pulumi.set(__self__, "text", text)
-
-    @property
-    @pulumi.getter
-    def text(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Optional. The collection of the agent's responses.
-        """
-        return pulumi.get(self, "text")
-
-    @text.setter
-    def text(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "text", value)
-
-
-@pulumi.input_type
 class GoogleCloudDialogflowV2IntentParameterArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
@@ -2750,60 +2750,6 @@ class GoogleCloudDialogflowV2IntentParameterArgs:
 
 
 @pulumi.input_type
-class GoogleCloudDialogflowV2IntentTrainingPhraseArgs:
-    def __init__(__self__, *,
-                 parts: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhrasePartArgs']]],
-                 type: pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhraseType'],
-                 times_added_count: Optional[pulumi.Input[int]] = None):
-        """
-        Represents an example that the agent is trained on.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhrasePartArgs']]] parts: The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
-        :param pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhraseType'] type: The type of the training phrase.
-        :param pulumi.Input[int] times_added_count: Optional. Indicates how many times this example was added to the intent. Each time a developer adds an existing sample by editing an intent or training, this counter is increased.
-        """
-        pulumi.set(__self__, "parts", parts)
-        pulumi.set(__self__, "type", type)
-        if times_added_count is not None:
-            pulumi.set(__self__, "times_added_count", times_added_count)
-
-    @property
-    @pulumi.getter
-    def parts(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhrasePartArgs']]]:
-        """
-        The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
-        """
-        return pulumi.get(self, "parts")
-
-    @parts.setter
-    def parts(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhrasePartArgs']]]):
-        pulumi.set(self, "parts", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhraseType']:
-        """
-        The type of the training phrase.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhraseType']):
-        pulumi.set(self, "type", value)
-
-    @property
-    @pulumi.getter(name="timesAddedCount")
-    def times_added_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        Optional. Indicates how many times this example was added to the intent. Each time a developer adds an existing sample by editing an intent or training, this counter is increased.
-        """
-        return pulumi.get(self, "times_added_count")
-
-    @times_added_count.setter
-    def times_added_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "times_added_count", value)
-
-
-@pulumi.input_type
 class GoogleCloudDialogflowV2IntentTrainingPhrasePartArgs:
     def __init__(__self__, *,
                  text: pulumi.Input[str],
@@ -2872,6 +2818,60 @@ class GoogleCloudDialogflowV2IntentTrainingPhrasePartArgs:
     @user_defined.setter
     def user_defined(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "user_defined", value)
+
+
+@pulumi.input_type
+class GoogleCloudDialogflowV2IntentTrainingPhraseArgs:
+    def __init__(__self__, *,
+                 parts: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhrasePartArgs']]],
+                 type: pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhraseType'],
+                 times_added_count: Optional[pulumi.Input[int]] = None):
+        """
+        Represents an example that the agent is trained on.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhrasePartArgs']]] parts: The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
+        :param pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhraseType'] type: The type of the training phrase.
+        :param pulumi.Input[int] times_added_count: Optional. Indicates how many times this example was added to the intent. Each time a developer adds an existing sample by editing an intent or training, this counter is increased.
+        """
+        pulumi.set(__self__, "parts", parts)
+        pulumi.set(__self__, "type", type)
+        if times_added_count is not None:
+            pulumi.set(__self__, "times_added_count", times_added_count)
+
+    @property
+    @pulumi.getter
+    def parts(self) -> pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhrasePartArgs']]]:
+        """
+        The ordered list of training phrase parts. The parts are concatenated in order to form the training phrase. Note: The API does not automatically annotate training phrases like the Dialogflow Console does. Note: Do not forget to include whitespace at part boundaries, so the training phrase is well formatted when the parts are concatenated. If the training phrase does not need to be annotated with parameters, you just need a single part with only the Part.text field set. If you want to annotate the training phrase, you must create multiple parts, where the fields of each part are populated in one of two ways: - `Part.text` is set to a part of the phrase that has no parameters. - `Part.text` is set to a part of the phrase that you want to annotate, and the `entity_type`, `alias`, and `user_defined` fields are all set.
+        """
+        return pulumi.get(self, "parts")
+
+    @parts.setter
+    def parts(self, value: pulumi.Input[Sequence[pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhrasePartArgs']]]):
+        pulumi.set(self, "parts", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhraseType']:
+        """
+        The type of the training phrase.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input['GoogleCloudDialogflowV2IntentTrainingPhraseType']):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="timesAddedCount")
+    def times_added_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Optional. Indicates how many times this example was added to the intent. Each time a developer adds an existing sample by editing an intent or training, this counter is increased.
+        """
+        return pulumi.get(self, "times_added_count")
+
+    @times_added_count.setter
+    def times_added_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "times_added_count", value)
 
 
 @pulumi.input_type

@@ -14,17 +14,17 @@ __all__ = [
     'DataSourceRestrictionArgs',
     'DateArgs',
     'FacetOptionsArgs',
-    'FilterArgs',
     'FilterOptionsArgs',
+    'FilterArgs',
     'GSuitePrincipalArgs',
     'ScoringConfigArgs',
     'SortOptionsArgs',
-    'SourceArgs',
     'SourceConfigArgs',
     'SourceCrowdingConfigArgs',
     'SourceScoringConfigArgs',
-    'ValueArgs',
+    'SourceArgs',
     'ValueFilterArgs',
+    'ValueArgs',
 ]
 
 @pulumi.input_type
@@ -235,38 +235,6 @@ class FacetOptionsArgs:
 
 
 @pulumi.input_type
-class FilterArgs:
-    def __init__(__self__, *,
-                 composite_filter: Optional[pulumi.Input['CompositeFilterArgs']] = None,
-                 value_filter: Optional[pulumi.Input['ValueFilterArgs']] = None):
-        """
-        A generic way of expressing filters in a query, which supports two approaches: **1. Setting a ValueFilter.** The name must match an operator_name defined in the schema for your data source. **2. Setting a CompositeFilter.** The filters are evaluated using the logical operator. The top-level operators can only be either an AND or a NOT. AND can appear only at the top-most level. OR can appear only under a top-level AND.
-        """
-        if composite_filter is not None:
-            pulumi.set(__self__, "composite_filter", composite_filter)
-        if value_filter is not None:
-            pulumi.set(__self__, "value_filter", value_filter)
-
-    @property
-    @pulumi.getter(name="compositeFilter")
-    def composite_filter(self) -> Optional[pulumi.Input['CompositeFilterArgs']]:
-        return pulumi.get(self, "composite_filter")
-
-    @composite_filter.setter
-    def composite_filter(self, value: Optional[pulumi.Input['CompositeFilterArgs']]):
-        pulumi.set(self, "composite_filter", value)
-
-    @property
-    @pulumi.getter(name="valueFilter")
-    def value_filter(self) -> Optional[pulumi.Input['ValueFilterArgs']]:
-        return pulumi.get(self, "value_filter")
-
-    @value_filter.setter
-    def value_filter(self, value: Optional[pulumi.Input['ValueFilterArgs']]):
-        pulumi.set(self, "value_filter", value)
-
-
-@pulumi.input_type
 class FilterOptionsArgs:
     def __init__(__self__, *,
                  filter: Optional[pulumi.Input['FilterArgs']] = None,
@@ -304,6 +272,38 @@ class FilterOptionsArgs:
     @object_type.setter
     def object_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "object_type", value)
+
+
+@pulumi.input_type
+class FilterArgs:
+    def __init__(__self__, *,
+                 composite_filter: Optional[pulumi.Input['CompositeFilterArgs']] = None,
+                 value_filter: Optional[pulumi.Input['ValueFilterArgs']] = None):
+        """
+        A generic way of expressing filters in a query, which supports two approaches: **1. Setting a ValueFilter.** The name must match an operator_name defined in the schema for your data source. **2. Setting a CompositeFilter.** The filters are evaluated using the logical operator. The top-level operators can only be either an AND or a NOT. AND can appear only at the top-most level. OR can appear only under a top-level AND.
+        """
+        if composite_filter is not None:
+            pulumi.set(__self__, "composite_filter", composite_filter)
+        if value_filter is not None:
+            pulumi.set(__self__, "value_filter", value_filter)
+
+    @property
+    @pulumi.getter(name="compositeFilter")
+    def composite_filter(self) -> Optional[pulumi.Input['CompositeFilterArgs']]:
+        return pulumi.get(self, "composite_filter")
+
+    @composite_filter.setter
+    def composite_filter(self, value: Optional[pulumi.Input['CompositeFilterArgs']]):
+        pulumi.set(self, "composite_filter", value)
+
+    @property
+    @pulumi.getter(name="valueFilter")
+    def value_filter(self) -> Optional[pulumi.Input['ValueFilterArgs']]:
+        return pulumi.get(self, "value_filter")
+
+    @value_filter.setter
+    def value_filter(self, value: Optional[pulumi.Input['ValueFilterArgs']]):
+        pulumi.set(self, "value_filter", value)
 
 
 @pulumi.input_type
@@ -441,46 +441,6 @@ class SortOptionsArgs:
 
 
 @pulumi.input_type
-class SourceArgs:
-    def __init__(__self__, *,
-                 name: Optional[pulumi.Input[str]] = None,
-                 predefined_source: Optional[pulumi.Input['SourcePredefinedSource']] = None):
-        """
-        Defines sources for the suggest/search APIs.
-        :param pulumi.Input[str] name: Source name for content indexed by the Indexing API.
-        :param pulumi.Input['SourcePredefinedSource'] predefined_source: Predefined content source for Google Apps.
-        """
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if predefined_source is not None:
-            pulumi.set(__self__, "predefined_source", predefined_source)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Source name for content indexed by the Indexing API.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="predefinedSource")
-    def predefined_source(self) -> Optional[pulumi.Input['SourcePredefinedSource']]:
-        """
-        Predefined content source for Google Apps.
-        """
-        return pulumi.get(self, "predefined_source")
-
-    @predefined_source.setter
-    def predefined_source(self, value: Optional[pulumi.Input['SourcePredefinedSource']]):
-        pulumi.set(self, "predefined_source", value)
-
-
-@pulumi.input_type
 class SourceConfigArgs:
     def __init__(__self__, *,
                  crowding_config: Optional[pulumi.Input['SourceCrowdingConfigArgs']] = None,
@@ -601,6 +561,85 @@ class SourceScoringConfigArgs:
 
 
 @pulumi.input_type
+class SourceArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 predefined_source: Optional[pulumi.Input['SourcePredefinedSource']] = None):
+        """
+        Defines sources for the suggest/search APIs.
+        :param pulumi.Input[str] name: Source name for content indexed by the Indexing API.
+        :param pulumi.Input['SourcePredefinedSource'] predefined_source: Predefined content source for Google Apps.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if predefined_source is not None:
+            pulumi.set(__self__, "predefined_source", predefined_source)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Source name for content indexed by the Indexing API.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="predefinedSource")
+    def predefined_source(self) -> Optional[pulumi.Input['SourcePredefinedSource']]:
+        """
+        Predefined content source for Google Apps.
+        """
+        return pulumi.get(self, "predefined_source")
+
+    @predefined_source.setter
+    def predefined_source(self, value: Optional[pulumi.Input['SourcePredefinedSource']]):
+        pulumi.set(self, "predefined_source", value)
+
+
+@pulumi.input_type
+class ValueFilterArgs:
+    def __init__(__self__, *,
+                 operator_name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input['ValueArgs']] = None):
+        """
+        :param pulumi.Input[str] operator_name: The `operator_name` applied to the query, such as *price_greater_than*. The filter can work against both types of filters defined in the schema for your data source: 1. `operator_name`, where the query filters results by the property that matches the value. 2. `greater_than_operator_name` or `less_than_operator_name` in your schema. The query filters the results for the property values that are greater than or less than the supplied value in the query.
+        :param pulumi.Input['ValueArgs'] value: The value to be compared with.
+        """
+        if operator_name is not None:
+            pulumi.set(__self__, "operator_name", operator_name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="operatorName")
+    def operator_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The `operator_name` applied to the query, such as *price_greater_than*. The filter can work against both types of filters defined in the schema for your data source: 1. `operator_name`, where the query filters results by the property that matches the value. 2. `greater_than_operator_name` or `less_than_operator_name` in your schema. The query filters the results for the property values that are greater than or less than the supplied value in the query.
+        """
+        return pulumi.get(self, "operator_name")
+
+    @operator_name.setter
+    def operator_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "operator_name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input['ValueArgs']]:
+        """
+        The value to be compared with.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input['ValueArgs']]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
 class ValueArgs:
     def __init__(__self__, *,
                  boolean_value: Optional[pulumi.Input[bool]] = None,
@@ -678,44 +717,5 @@ class ValueArgs:
     @timestamp_value.setter
     def timestamp_value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "timestamp_value", value)
-
-
-@pulumi.input_type
-class ValueFilterArgs:
-    def __init__(__self__, *,
-                 operator_name: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input['ValueArgs']] = None):
-        """
-        :param pulumi.Input[str] operator_name: The `operator_name` applied to the query, such as *price_greater_than*. The filter can work against both types of filters defined in the schema for your data source: 1. `operator_name`, where the query filters results by the property that matches the value. 2. `greater_than_operator_name` or `less_than_operator_name` in your schema. The query filters the results for the property values that are greater than or less than the supplied value in the query.
-        :param pulumi.Input['ValueArgs'] value: The value to be compared with.
-        """
-        if operator_name is not None:
-            pulumi.set(__self__, "operator_name", operator_name)
-        if value is not None:
-            pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter(name="operatorName")
-    def operator_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The `operator_name` applied to the query, such as *price_greater_than*. The filter can work against both types of filters defined in the schema for your data source: 1. `operator_name`, where the query filters results by the property that matches the value. 2. `greater_than_operator_name` or `less_than_operator_name` in your schema. The query filters the results for the property values that are greater than or less than the supplied value in the query.
-        """
-        return pulumi.get(self, "operator_name")
-
-    @operator_name.setter
-    def operator_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "operator_name", value)
-
-    @property
-    @pulumi.getter
-    def value(self) -> Optional[pulumi.Input['ValueArgs']]:
-        """
-        The value to be compared with.
-        """
-        return pulumi.get(self, "value")
-
-    @value.setter
-    def value(self, value: Optional[pulumi.Input['ValueArgs']]):
-        pulumi.set(self, "value", value)
 
 

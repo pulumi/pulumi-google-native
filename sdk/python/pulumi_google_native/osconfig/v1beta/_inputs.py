@@ -12,29 +12,27 @@ from ._enums import *
 __all__ = [
     'AptRepositoryArgs',
     'AptSettingsArgs',
-    'AssignmentArgs',
     'AssignmentGroupLabelArgs',
     'AssignmentOsTypeArgs',
-    'ExecStepArgs',
+    'AssignmentArgs',
     'ExecStepConfigArgs',
+    'ExecStepArgs',
     'FixedOrPercentArgs',
     'GcsObjectArgs',
     'GooRepositoryArgs',
     'GooSettingsArgs',
     'MonthlyScheduleArgs',
     'OneTimeScheduleArgs',
-    'PackageArgs',
     'PackageRepositoryArgs',
+    'PackageArgs',
     'PatchConfigArgs',
-    'PatchInstanceFilterArgs',
     'PatchInstanceFilterGroupLabelArgs',
+    'PatchInstanceFilterArgs',
     'PatchRolloutArgs',
     'RecurringScheduleArgs',
-    'SoftwareRecipeArgs',
-    'SoftwareRecipeArtifactArgs',
     'SoftwareRecipeArtifactGcsArgs',
     'SoftwareRecipeArtifactRemoteArgs',
-    'SoftwareRecipeStepArgs',
+    'SoftwareRecipeArtifactArgs',
     'SoftwareRecipeStepCopyFileArgs',
     'SoftwareRecipeStepExecFileArgs',
     'SoftwareRecipeStepExtractArchiveArgs',
@@ -42,6 +40,8 @@ __all__ = [
     'SoftwareRecipeStepInstallMsiArgs',
     'SoftwareRecipeStepInstallRpmArgs',
     'SoftwareRecipeStepRunScriptArgs',
+    'SoftwareRecipeStepArgs',
+    'SoftwareRecipeArgs',
     'TimeOfDayArgs',
     'TimeZoneArgs',
     'WeekDayOfMonthArgs',
@@ -195,6 +195,86 @@ class AptSettingsArgs:
 
 
 @pulumi.input_type
+class AssignmentGroupLabelArgs:
+    def __init__(__self__, *,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        Represents a group of VM intances that can be identified as having all these labels, for example "env=prod and app=web".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
+        """
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+
+@pulumi.input_type
+class AssignmentOsTypeArgs:
+    def __init__(__self__, *,
+                 os_architecture: Optional[pulumi.Input[str]] = None,
+                 os_short_name: Optional[pulumi.Input[str]] = None,
+                 os_version: Optional[pulumi.Input[str]] = None):
+        """
+        Defines the criteria for selecting VM Instances by OS type.
+        :param pulumi.Input[str] os_architecture: Targets VM instances with OS Inventory enabled and having the following OS architecture.
+        :param pulumi.Input[str] os_short_name: Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
+        :param pulumi.Input[str] os_version: Targets VM instances with OS Inventory enabled and having the following following OS version.
+        """
+        if os_architecture is not None:
+            pulumi.set(__self__, "os_architecture", os_architecture)
+        if os_short_name is not None:
+            pulumi.set(__self__, "os_short_name", os_short_name)
+        if os_version is not None:
+            pulumi.set(__self__, "os_version", os_version)
+
+    @property
+    @pulumi.getter(name="osArchitecture")
+    def os_architecture(self) -> Optional[pulumi.Input[str]]:
+        """
+        Targets VM instances with OS Inventory enabled and having the following OS architecture.
+        """
+        return pulumi.get(self, "os_architecture")
+
+    @os_architecture.setter
+    def os_architecture(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os_architecture", value)
+
+    @property
+    @pulumi.getter(name="osShortName")
+    def os_short_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
+        """
+        return pulumi.get(self, "os_short_name")
+
+    @os_short_name.setter
+    def os_short_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os_short_name", value)
+
+    @property
+    @pulumi.getter(name="osVersion")
+    def os_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Targets VM instances with OS Inventory enabled and having the following following OS version.
+        """
+        return pulumi.get(self, "os_version")
+
+    @os_version.setter
+    def os_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "os_version", value)
+
+
+@pulumi.input_type
 class AssignmentArgs:
     def __init__(__self__, *,
                  group_labels: Optional[pulumi.Input[Sequence[pulumi.Input['AssignmentGroupLabelArgs']]]] = None,
@@ -283,126 +363,6 @@ class AssignmentArgs:
 
 
 @pulumi.input_type
-class AssignmentGroupLabelArgs:
-    def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
-        """
-        Represents a group of VM intances that can be identified as having all these labels, for example "env=prod and app=web".
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
-        """
-        if labels is not None:
-            pulumi.set(__self__, "labels", labels)
-
-    @property
-    @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
-        """
-        return pulumi.get(self, "labels")
-
-    @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "labels", value)
-
-
-@pulumi.input_type
-class AssignmentOsTypeArgs:
-    def __init__(__self__, *,
-                 os_architecture: Optional[pulumi.Input[str]] = None,
-                 os_short_name: Optional[pulumi.Input[str]] = None,
-                 os_version: Optional[pulumi.Input[str]] = None):
-        """
-        Defines the criteria for selecting VM Instances by OS type.
-        :param pulumi.Input[str] os_architecture: Targets VM instances with OS Inventory enabled and having the following OS architecture.
-        :param pulumi.Input[str] os_short_name: Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
-        :param pulumi.Input[str] os_version: Targets VM instances with OS Inventory enabled and having the following following OS version.
-        """
-        if os_architecture is not None:
-            pulumi.set(__self__, "os_architecture", os_architecture)
-        if os_short_name is not None:
-            pulumi.set(__self__, "os_short_name", os_short_name)
-        if os_version is not None:
-            pulumi.set(__self__, "os_version", os_version)
-
-    @property
-    @pulumi.getter(name="osArchitecture")
-    def os_architecture(self) -> Optional[pulumi.Input[str]]:
-        """
-        Targets VM instances with OS Inventory enabled and having the following OS architecture.
-        """
-        return pulumi.get(self, "os_architecture")
-
-    @os_architecture.setter
-    def os_architecture(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "os_architecture", value)
-
-    @property
-    @pulumi.getter(name="osShortName")
-    def os_short_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Targets VM instances with OS Inventory enabled and having the following OS short name, for example "debian" or "windows".
-        """
-        return pulumi.get(self, "os_short_name")
-
-    @os_short_name.setter
-    def os_short_name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "os_short_name", value)
-
-    @property
-    @pulumi.getter(name="osVersion")
-    def os_version(self) -> Optional[pulumi.Input[str]]:
-        """
-        Targets VM instances with OS Inventory enabled and having the following following OS version.
-        """
-        return pulumi.get(self, "os_version")
-
-    @os_version.setter
-    def os_version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "os_version", value)
-
-
-@pulumi.input_type
-class ExecStepArgs:
-    def __init__(__self__, *,
-                 linux_exec_step_config: Optional[pulumi.Input['ExecStepConfigArgs']] = None,
-                 windows_exec_step_config: Optional[pulumi.Input['ExecStepConfigArgs']] = None):
-        """
-        A step that runs an executable for a PatchJob.
-        :param pulumi.Input['ExecStepConfigArgs'] linux_exec_step_config: The ExecStepConfig for all Linux VMs targeted by the PatchJob.
-        :param pulumi.Input['ExecStepConfigArgs'] windows_exec_step_config: The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-        """
-        if linux_exec_step_config is not None:
-            pulumi.set(__self__, "linux_exec_step_config", linux_exec_step_config)
-        if windows_exec_step_config is not None:
-            pulumi.set(__self__, "windows_exec_step_config", windows_exec_step_config)
-
-    @property
-    @pulumi.getter(name="linuxExecStepConfig")
-    def linux_exec_step_config(self) -> Optional[pulumi.Input['ExecStepConfigArgs']]:
-        """
-        The ExecStepConfig for all Linux VMs targeted by the PatchJob.
-        """
-        return pulumi.get(self, "linux_exec_step_config")
-
-    @linux_exec_step_config.setter
-    def linux_exec_step_config(self, value: Optional[pulumi.Input['ExecStepConfigArgs']]):
-        pulumi.set(self, "linux_exec_step_config", value)
-
-    @property
-    @pulumi.getter(name="windowsExecStepConfig")
-    def windows_exec_step_config(self) -> Optional[pulumi.Input['ExecStepConfigArgs']]:
-        """
-        The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-        """
-        return pulumi.get(self, "windows_exec_step_config")
-
-    @windows_exec_step_config.setter
-    def windows_exec_step_config(self, value: Optional[pulumi.Input['ExecStepConfigArgs']]):
-        pulumi.set(self, "windows_exec_step_config", value)
-
-
-@pulumi.input_type
 class ExecStepConfigArgs:
     def __init__(__self__, *,
                  allowed_success_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
@@ -472,6 +432,46 @@ class ExecStepConfigArgs:
     @local_path.setter
     def local_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "local_path", value)
+
+
+@pulumi.input_type
+class ExecStepArgs:
+    def __init__(__self__, *,
+                 linux_exec_step_config: Optional[pulumi.Input['ExecStepConfigArgs']] = None,
+                 windows_exec_step_config: Optional[pulumi.Input['ExecStepConfigArgs']] = None):
+        """
+        A step that runs an executable for a PatchJob.
+        :param pulumi.Input['ExecStepConfigArgs'] linux_exec_step_config: The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+        :param pulumi.Input['ExecStepConfigArgs'] windows_exec_step_config: The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+        """
+        if linux_exec_step_config is not None:
+            pulumi.set(__self__, "linux_exec_step_config", linux_exec_step_config)
+        if windows_exec_step_config is not None:
+            pulumi.set(__self__, "windows_exec_step_config", windows_exec_step_config)
+
+    @property
+    @pulumi.getter(name="linuxExecStepConfig")
+    def linux_exec_step_config(self) -> Optional[pulumi.Input['ExecStepConfigArgs']]:
+        """
+        The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+        """
+        return pulumi.get(self, "linux_exec_step_config")
+
+    @linux_exec_step_config.setter
+    def linux_exec_step_config(self, value: Optional[pulumi.Input['ExecStepConfigArgs']]):
+        pulumi.set(self, "linux_exec_step_config", value)
+
+    @property
+    @pulumi.getter(name="windowsExecStepConfig")
+    def windows_exec_step_config(self) -> Optional[pulumi.Input['ExecStepConfigArgs']]:
+        """
+        The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+        """
+        return pulumi.get(self, "windows_exec_step_config")
+
+    @windows_exec_step_config.setter
+    def windows_exec_step_config(self, value: Optional[pulumi.Input['ExecStepConfigArgs']]):
+        pulumi.set(self, "windows_exec_step_config", value)
 
 
 @pulumi.input_type
@@ -676,61 +676,6 @@ class OneTimeScheduleArgs:
 
 
 @pulumi.input_type
-class PackageArgs:
-    def __init__(__self__, *,
-                 name: pulumi.Input[str],
-                 desired_state: Optional[pulumi.Input['PackageDesiredState']] = None,
-                 manager: Optional[pulumi.Input['PackageManager']] = None):
-        """
-        Package is a reference to the software package to be installed or removed. The agent on the VM instance uses the system package manager to apply the config. These are the commands that the agent uses to install or remove packages. Apt install: `apt-get update && apt-get -y install package1 package2 package3` remove: `apt-get -y remove package1 package2 package3` Yum install: `yum -y install package1 package2 package3` remove: `yum -y remove package1 package2 package3` Zypper install: `zypper install package1 package2 package3` remove: `zypper rm package1 package2` Googet install: `googet -noconfirm install package1 package2 package3` remove: `googet -noconfirm remove package1 package2 package3`
-        :param pulumi.Input[str] name: The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
-        :param pulumi.Input['PackageDesiredState'] desired_state: The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
-        :param pulumi.Input['PackageManager'] manager: Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
-        """
-        pulumi.set(__self__, "name", name)
-        if desired_state is not None:
-            pulumi.set(__self__, "desired_state", desired_state)
-        if manager is not None:
-            pulumi.set(__self__, "manager", manager)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter(name="desiredState")
-    def desired_state(self) -> Optional[pulumi.Input['PackageDesiredState']]:
-        """
-        The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
-        """
-        return pulumi.get(self, "desired_state")
-
-    @desired_state.setter
-    def desired_state(self, value: Optional[pulumi.Input['PackageDesiredState']]):
-        pulumi.set(self, "desired_state", value)
-
-    @property
-    @pulumi.getter
-    def manager(self) -> Optional[pulumi.Input['PackageManager']]:
-        """
-        Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
-        """
-        return pulumi.get(self, "manager")
-
-    @manager.setter
-    def manager(self, value: Optional[pulumi.Input['PackageManager']]):
-        pulumi.set(self, "manager", value)
-
-
-@pulumi.input_type
 class PackageRepositoryArgs:
     def __init__(__self__, *,
                  apt: Optional[pulumi.Input['AptRepositoryArgs']] = None,
@@ -800,6 +745,61 @@ class PackageRepositoryArgs:
     @zypper.setter
     def zypper(self, value: Optional[pulumi.Input['ZypperRepositoryArgs']]):
         pulumi.set(self, "zypper", value)
+
+
+@pulumi.input_type
+class PackageArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 desired_state: Optional[pulumi.Input['PackageDesiredState']] = None,
+                 manager: Optional[pulumi.Input['PackageManager']] = None):
+        """
+        Package is a reference to the software package to be installed or removed. The agent on the VM instance uses the system package manager to apply the config. These are the commands that the agent uses to install or remove packages. Apt install: `apt-get update && apt-get -y install package1 package2 package3` remove: `apt-get -y remove package1 package2 package3` Yum install: `yum -y install package1 package2 package3` remove: `yum -y remove package1 package2 package3` Zypper install: `zypper install package1 package2 package3` remove: `zypper rm package1 package2` Googet install: `googet -noconfirm install package1 package2 package3` remove: `googet -noconfirm remove package1 package2 package3`
+        :param pulumi.Input[str] name: The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
+        :param pulumi.Input['PackageDesiredState'] desired_state: The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
+        :param pulumi.Input['PackageManager'] manager: Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
+        """
+        pulumi.set(__self__, "name", name)
+        if desired_state is not None:
+            pulumi.set(__self__, "desired_state", desired_state)
+        if manager is not None:
+            pulumi.set(__self__, "manager", manager)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the package. A package is uniquely identified for conflict validation by checking the package name and the manager(s) that the package targets.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> Optional[pulumi.Input['PackageDesiredState']]:
+        """
+        The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
+        """
+        return pulumi.get(self, "desired_state")
+
+    @desired_state.setter
+    def desired_state(self, value: Optional[pulumi.Input['PackageDesiredState']]):
+        pulumi.set(self, "desired_state", value)
+
+    @property
+    @pulumi.getter
+    def manager(self) -> Optional[pulumi.Input['PackageManager']]:
+        """
+        Type of package manager that can be used to install this package. If a system does not have the package manager, the package is not installed or removed no error message is returned. By default, or if you specify `ANY`, the agent attempts to install and remove this package using the default package manager. This is useful when creating a policy that applies to different types of systems. The default behavior is ANY.
+        """
+        return pulumi.get(self, "manager")
+
+    @manager.setter
+    def manager(self, value: Optional[pulumi.Input['PackageManager']]):
+        pulumi.set(self, "manager", value)
 
 
 @pulumi.input_type
@@ -939,6 +939,30 @@ class PatchConfigArgs:
 
 
 @pulumi.input_type
+class PatchInstanceFilterGroupLabelArgs:
+    def __init__(__self__, *,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        Represents a group of VMs that can be identified as having all these labels, for example "env=prod and app=web".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
+        """
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+
+@pulumi.input_type
 class PatchInstanceFilterArgs:
     def __init__(__self__, *,
                  all: Optional[pulumi.Input[bool]] = None,
@@ -1024,30 +1048,6 @@ class PatchInstanceFilterArgs:
     @zones.setter
     def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "zones", value)
-
-
-@pulumi.input_type
-class PatchInstanceFilterGroupLabelArgs:
-    def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
-        """
-        Represents a group of VMs that can be identified as having all these labels, for example "env=prod and app=web".
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
-        """
-        if labels is not None:
-            pulumi.set(__self__, "labels", labels)
-
-    @property
-    @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
-        """
-        return pulumi.get(self, "labels")
-
-    @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "labels", value)
 
 
 @pulumi.input_type
@@ -1206,180 +1206,6 @@ class RecurringScheduleArgs:
 
 
 @pulumi.input_type
-class SoftwareRecipeArgs:
-    def __init__(__self__, *,
-                 name: pulumi.Input[str],
-                 artifacts: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeArtifactArgs']]]] = None,
-                 desired_state: Optional[pulumi.Input['SoftwareRecipeDesiredState']] = None,
-                 install_steps: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]]] = None,
-                 update_steps: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]]] = None,
-                 version: Optional[pulumi.Input[str]] = None):
-        """
-        A software recipe is a set of instructions for installing and configuring a piece of software. It consists of a set of artifacts that are downloaded, and a set of steps that install, configure, and/or update the software. Recipes support installing and updating software from artifacts in the following formats: Zip archive, Tar archive, Windows MSI, Debian package, and RPM package. Additionally, recipes support executing a script (either defined in a file or directly in this api) in bash, sh, cmd, and powershell. Updating a software recipe If a recipe is assigned to an instance and there is a recipe with the same name but a lower version already installed and the assigned state of the recipe is `UPDATED`, then the recipe is updated to the new version. Script Working Directories Each script or execution step is run in its own temporary directory which is deleted after completing the step.
-        :param pulumi.Input[str] name: Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
-        :param pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeArtifactArgs']]] artifacts: Resources available to be used in the steps in the recipe.
-        :param pulumi.Input['SoftwareRecipeDesiredState'] desired_state: Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-        :param pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]] install_steps: Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back.
-        :param pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]] update_steps: Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe. Any steps taken (including partially completed steps) are not rolled back.
-        :param pulumi.Input[str] version: The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
-        """
-        pulumi.set(__self__, "name", name)
-        if artifacts is not None:
-            pulumi.set(__self__, "artifacts", artifacts)
-        if desired_state is not None:
-            pulumi.set(__self__, "desired_state", desired_state)
-        if install_steps is not None:
-            pulumi.set(__self__, "install_steps", install_steps)
-        if update_steps is not None:
-            pulumi.set(__self__, "update_steps", update_steps)
-        if version is not None:
-            pulumi.set(__self__, "version", version)
-
-    @property
-    @pulumi.getter
-    def name(self) -> pulumi.Input[str]:
-        """
-        Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: pulumi.Input[str]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def artifacts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeArtifactArgs']]]]:
-        """
-        Resources available to be used in the steps in the recipe.
-        """
-        return pulumi.get(self, "artifacts")
-
-    @artifacts.setter
-    def artifacts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeArtifactArgs']]]]):
-        pulumi.set(self, "artifacts", value)
-
-    @property
-    @pulumi.getter(name="desiredState")
-    def desired_state(self) -> Optional[pulumi.Input['SoftwareRecipeDesiredState']]:
-        """
-        Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
-        """
-        return pulumi.get(self, "desired_state")
-
-    @desired_state.setter
-    def desired_state(self, value: Optional[pulumi.Input['SoftwareRecipeDesiredState']]):
-        pulumi.set(self, "desired_state", value)
-
-    @property
-    @pulumi.getter(name="installSteps")
-    def install_steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]]]:
-        """
-        Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back.
-        """
-        return pulumi.get(self, "install_steps")
-
-    @install_steps.setter
-    def install_steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]]]):
-        pulumi.set(self, "install_steps", value)
-
-    @property
-    @pulumi.getter(name="updateSteps")
-    def update_steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]]]:
-        """
-        Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe. Any steps taken (including partially completed steps) are not rolled back.
-        """
-        return pulumi.get(self, "update_steps")
-
-    @update_steps.setter
-    def update_steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]]]):
-        pulumi.set(self, "update_steps", value)
-
-    @property
-    @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[str]]:
-        """
-        The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
-        """
-        return pulumi.get(self, "version")
-
-    @version.setter
-    def version(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "version", value)
-
-
-@pulumi.input_type
-class SoftwareRecipeArtifactArgs:
-    def __init__(__self__, *,
-                 id: pulumi.Input[str],
-                 allow_insecure: Optional[pulumi.Input[bool]] = None,
-                 gcs: Optional[pulumi.Input['SoftwareRecipeArtifactGcsArgs']] = None,
-                 remote: Optional[pulumi.Input['SoftwareRecipeArtifactRemoteArgs']] = None):
-        """
-        Specifies a resource to be used in the recipe.
-        :param pulumi.Input[str] id: Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
-        :param pulumi.Input[bool] allow_insecure: Defaults to false. When false, recipes are subject to validations based on the artifact type: Remote: A checksum must be specified, and only protocols with transport-layer security are permitted. GCS: An object generation number must be specified.
-        :param pulumi.Input['SoftwareRecipeArtifactGcsArgs'] gcs: A Google Cloud Storage artifact.
-        :param pulumi.Input['SoftwareRecipeArtifactRemoteArgs'] remote: A generic remote artifact.
-        """
-        pulumi.set(__self__, "id", id)
-        if allow_insecure is not None:
-            pulumi.set(__self__, "allow_insecure", allow_insecure)
-        if gcs is not None:
-            pulumi.set(__self__, "gcs", gcs)
-        if remote is not None:
-            pulumi.set(__self__, "remote", remote)
-
-    @property
-    @pulumi.getter
-    def id(self) -> pulumi.Input[str]:
-        """
-        Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Defaults to false. When false, recipes are subject to validations based on the artifact type: Remote: A checksum must be specified, and only protocols with transport-layer security are permitted. GCS: An object generation number must be specified.
-        """
-        return pulumi.get(self, "allow_insecure")
-
-    @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "allow_insecure", value)
-
-    @property
-    @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['SoftwareRecipeArtifactGcsArgs']]:
-        """
-        A Google Cloud Storage artifact.
-        """
-        return pulumi.get(self, "gcs")
-
-    @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['SoftwareRecipeArtifactGcsArgs']]):
-        pulumi.set(self, "gcs", value)
-
-    @property
-    @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['SoftwareRecipeArtifactRemoteArgs']]:
-        """
-        A generic remote artifact.
-        """
-        return pulumi.get(self, "remote")
-
-    @remote.setter
-    def remote(self, value: Optional[pulumi.Input['SoftwareRecipeArtifactRemoteArgs']]):
-        pulumi.set(self, "remote", value)
-
-
-@pulumi.input_type
 class SoftwareRecipeArtifactGcsArgs:
     def __init__(__self__, *,
                  bucket: Optional[pulumi.Input[str]] = None,
@@ -1476,123 +1302,74 @@ class SoftwareRecipeArtifactRemoteArgs:
 
 
 @pulumi.input_type
-class SoftwareRecipeStepArgs:
+class SoftwareRecipeArtifactArgs:
     def __init__(__self__, *,
-                 archive_extraction: Optional[pulumi.Input['SoftwareRecipeStepExtractArchiveArgs']] = None,
-                 dpkg_installation: Optional[pulumi.Input['SoftwareRecipeStepInstallDpkgArgs']] = None,
-                 file_copy: Optional[pulumi.Input['SoftwareRecipeStepCopyFileArgs']] = None,
-                 file_exec: Optional[pulumi.Input['SoftwareRecipeStepExecFileArgs']] = None,
-                 msi_installation: Optional[pulumi.Input['SoftwareRecipeStepInstallMsiArgs']] = None,
-                 rpm_installation: Optional[pulumi.Input['SoftwareRecipeStepInstallRpmArgs']] = None,
-                 script_run: Optional[pulumi.Input['SoftwareRecipeStepRunScriptArgs']] = None):
+                 id: pulumi.Input[str],
+                 allow_insecure: Optional[pulumi.Input[bool]] = None,
+                 gcs: Optional[pulumi.Input['SoftwareRecipeArtifactGcsArgs']] = None,
+                 remote: Optional[pulumi.Input['SoftwareRecipeArtifactRemoteArgs']] = None):
         """
-        An action that can be taken as part of installing or updating a recipe.
-        :param pulumi.Input['SoftwareRecipeStepExtractArchiveArgs'] archive_extraction: Extracts an archive into the specified directory.
-        :param pulumi.Input['SoftwareRecipeStepInstallDpkgArgs'] dpkg_installation: Installs a deb file via dpkg.
-        :param pulumi.Input['SoftwareRecipeStepCopyFileArgs'] file_copy: Copies a file onto the instance.
-        :param pulumi.Input['SoftwareRecipeStepExecFileArgs'] file_exec: Executes an artifact or local file.
-        :param pulumi.Input['SoftwareRecipeStepInstallMsiArgs'] msi_installation: Installs an MSI file.
-        :param pulumi.Input['SoftwareRecipeStepInstallRpmArgs'] rpm_installation: Installs an rpm file via the rpm utility.
-        :param pulumi.Input['SoftwareRecipeStepRunScriptArgs'] script_run: Runs commands in a shell.
+        Specifies a resource to be used in the recipe.
+        :param pulumi.Input[str] id: Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
+        :param pulumi.Input[bool] allow_insecure: Defaults to false. When false, recipes are subject to validations based on the artifact type: Remote: A checksum must be specified, and only protocols with transport-layer security are permitted. GCS: An object generation number must be specified.
+        :param pulumi.Input['SoftwareRecipeArtifactGcsArgs'] gcs: A Google Cloud Storage artifact.
+        :param pulumi.Input['SoftwareRecipeArtifactRemoteArgs'] remote: A generic remote artifact.
         """
-        if archive_extraction is not None:
-            pulumi.set(__self__, "archive_extraction", archive_extraction)
-        if dpkg_installation is not None:
-            pulumi.set(__self__, "dpkg_installation", dpkg_installation)
-        if file_copy is not None:
-            pulumi.set(__self__, "file_copy", file_copy)
-        if file_exec is not None:
-            pulumi.set(__self__, "file_exec", file_exec)
-        if msi_installation is not None:
-            pulumi.set(__self__, "msi_installation", msi_installation)
-        if rpm_installation is not None:
-            pulumi.set(__self__, "rpm_installation", rpm_installation)
-        if script_run is not None:
-            pulumi.set(__self__, "script_run", script_run)
+        pulumi.set(__self__, "id", id)
+        if allow_insecure is not None:
+            pulumi.set(__self__, "allow_insecure", allow_insecure)
+        if gcs is not None:
+            pulumi.set(__self__, "gcs", gcs)
+        if remote is not None:
+            pulumi.set(__self__, "remote", remote)
 
     @property
-    @pulumi.getter(name="archiveExtraction")
-    def archive_extraction(self) -> Optional[pulumi.Input['SoftwareRecipeStepExtractArchiveArgs']]:
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
         """
-        Extracts an archive into the specified directory.
+        Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
         """
-        return pulumi.get(self, "archive_extraction")
+        return pulumi.get(self, "id")
 
-    @archive_extraction.setter
-    def archive_extraction(self, value: Optional[pulumi.Input['SoftwareRecipeStepExtractArchiveArgs']]):
-        pulumi.set(self, "archive_extraction", value)
-
-    @property
-    @pulumi.getter(name="dpkgInstallation")
-    def dpkg_installation(self) -> Optional[pulumi.Input['SoftwareRecipeStepInstallDpkgArgs']]:
-        """
-        Installs a deb file via dpkg.
-        """
-        return pulumi.get(self, "dpkg_installation")
-
-    @dpkg_installation.setter
-    def dpkg_installation(self, value: Optional[pulumi.Input['SoftwareRecipeStepInstallDpkgArgs']]):
-        pulumi.set(self, "dpkg_installation", value)
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
 
     @property
-    @pulumi.getter(name="fileCopy")
-    def file_copy(self) -> Optional[pulumi.Input['SoftwareRecipeStepCopyFileArgs']]:
+    @pulumi.getter(name="allowInsecure")
+    def allow_insecure(self) -> Optional[pulumi.Input[bool]]:
         """
-        Copies a file onto the instance.
+        Defaults to false. When false, recipes are subject to validations based on the artifact type: Remote: A checksum must be specified, and only protocols with transport-layer security are permitted. GCS: An object generation number must be specified.
         """
-        return pulumi.get(self, "file_copy")
+        return pulumi.get(self, "allow_insecure")
 
-    @file_copy.setter
-    def file_copy(self, value: Optional[pulumi.Input['SoftwareRecipeStepCopyFileArgs']]):
-        pulumi.set(self, "file_copy", value)
-
-    @property
-    @pulumi.getter(name="fileExec")
-    def file_exec(self) -> Optional[pulumi.Input['SoftwareRecipeStepExecFileArgs']]:
-        """
-        Executes an artifact or local file.
-        """
-        return pulumi.get(self, "file_exec")
-
-    @file_exec.setter
-    def file_exec(self, value: Optional[pulumi.Input['SoftwareRecipeStepExecFileArgs']]):
-        pulumi.set(self, "file_exec", value)
+    @allow_insecure.setter
+    def allow_insecure(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_insecure", value)
 
     @property
-    @pulumi.getter(name="msiInstallation")
-    def msi_installation(self) -> Optional[pulumi.Input['SoftwareRecipeStepInstallMsiArgs']]:
+    @pulumi.getter
+    def gcs(self) -> Optional[pulumi.Input['SoftwareRecipeArtifactGcsArgs']]:
         """
-        Installs an MSI file.
+        A Google Cloud Storage artifact.
         """
-        return pulumi.get(self, "msi_installation")
+        return pulumi.get(self, "gcs")
 
-    @msi_installation.setter
-    def msi_installation(self, value: Optional[pulumi.Input['SoftwareRecipeStepInstallMsiArgs']]):
-        pulumi.set(self, "msi_installation", value)
-
-    @property
-    @pulumi.getter(name="rpmInstallation")
-    def rpm_installation(self) -> Optional[pulumi.Input['SoftwareRecipeStepInstallRpmArgs']]:
-        """
-        Installs an rpm file via the rpm utility.
-        """
-        return pulumi.get(self, "rpm_installation")
-
-    @rpm_installation.setter
-    def rpm_installation(self, value: Optional[pulumi.Input['SoftwareRecipeStepInstallRpmArgs']]):
-        pulumi.set(self, "rpm_installation", value)
+    @gcs.setter
+    def gcs(self, value: Optional[pulumi.Input['SoftwareRecipeArtifactGcsArgs']]):
+        pulumi.set(self, "gcs", value)
 
     @property
-    @pulumi.getter(name="scriptRun")
-    def script_run(self) -> Optional[pulumi.Input['SoftwareRecipeStepRunScriptArgs']]:
+    @pulumi.getter
+    def remote(self) -> Optional[pulumi.Input['SoftwareRecipeArtifactRemoteArgs']]:
         """
-        Runs commands in a shell.
+        A generic remote artifact.
         """
-        return pulumi.get(self, "script_run")
+        return pulumi.get(self, "remote")
 
-    @script_run.setter
-    def script_run(self, value: Optional[pulumi.Input['SoftwareRecipeStepRunScriptArgs']]):
-        pulumi.set(self, "script_run", value)
+    @remote.setter
+    def remote(self, value: Optional[pulumi.Input['SoftwareRecipeArtifactRemoteArgs']]):
+        pulumi.set(self, "remote", value)
 
 
 @pulumi.input_type
@@ -1945,6 +1722,229 @@ class SoftwareRecipeStepRunScriptArgs:
     @interpreter.setter
     def interpreter(self, value: Optional[pulumi.Input['SoftwareRecipeStepRunScriptInterpreter']]):
         pulumi.set(self, "interpreter", value)
+
+
+@pulumi.input_type
+class SoftwareRecipeStepArgs:
+    def __init__(__self__, *,
+                 archive_extraction: Optional[pulumi.Input['SoftwareRecipeStepExtractArchiveArgs']] = None,
+                 dpkg_installation: Optional[pulumi.Input['SoftwareRecipeStepInstallDpkgArgs']] = None,
+                 file_copy: Optional[pulumi.Input['SoftwareRecipeStepCopyFileArgs']] = None,
+                 file_exec: Optional[pulumi.Input['SoftwareRecipeStepExecFileArgs']] = None,
+                 msi_installation: Optional[pulumi.Input['SoftwareRecipeStepInstallMsiArgs']] = None,
+                 rpm_installation: Optional[pulumi.Input['SoftwareRecipeStepInstallRpmArgs']] = None,
+                 script_run: Optional[pulumi.Input['SoftwareRecipeStepRunScriptArgs']] = None):
+        """
+        An action that can be taken as part of installing or updating a recipe.
+        :param pulumi.Input['SoftwareRecipeStepExtractArchiveArgs'] archive_extraction: Extracts an archive into the specified directory.
+        :param pulumi.Input['SoftwareRecipeStepInstallDpkgArgs'] dpkg_installation: Installs a deb file via dpkg.
+        :param pulumi.Input['SoftwareRecipeStepCopyFileArgs'] file_copy: Copies a file onto the instance.
+        :param pulumi.Input['SoftwareRecipeStepExecFileArgs'] file_exec: Executes an artifact or local file.
+        :param pulumi.Input['SoftwareRecipeStepInstallMsiArgs'] msi_installation: Installs an MSI file.
+        :param pulumi.Input['SoftwareRecipeStepInstallRpmArgs'] rpm_installation: Installs an rpm file via the rpm utility.
+        :param pulumi.Input['SoftwareRecipeStepRunScriptArgs'] script_run: Runs commands in a shell.
+        """
+        if archive_extraction is not None:
+            pulumi.set(__self__, "archive_extraction", archive_extraction)
+        if dpkg_installation is not None:
+            pulumi.set(__self__, "dpkg_installation", dpkg_installation)
+        if file_copy is not None:
+            pulumi.set(__self__, "file_copy", file_copy)
+        if file_exec is not None:
+            pulumi.set(__self__, "file_exec", file_exec)
+        if msi_installation is not None:
+            pulumi.set(__self__, "msi_installation", msi_installation)
+        if rpm_installation is not None:
+            pulumi.set(__self__, "rpm_installation", rpm_installation)
+        if script_run is not None:
+            pulumi.set(__self__, "script_run", script_run)
+
+    @property
+    @pulumi.getter(name="archiveExtraction")
+    def archive_extraction(self) -> Optional[pulumi.Input['SoftwareRecipeStepExtractArchiveArgs']]:
+        """
+        Extracts an archive into the specified directory.
+        """
+        return pulumi.get(self, "archive_extraction")
+
+    @archive_extraction.setter
+    def archive_extraction(self, value: Optional[pulumi.Input['SoftwareRecipeStepExtractArchiveArgs']]):
+        pulumi.set(self, "archive_extraction", value)
+
+    @property
+    @pulumi.getter(name="dpkgInstallation")
+    def dpkg_installation(self) -> Optional[pulumi.Input['SoftwareRecipeStepInstallDpkgArgs']]:
+        """
+        Installs a deb file via dpkg.
+        """
+        return pulumi.get(self, "dpkg_installation")
+
+    @dpkg_installation.setter
+    def dpkg_installation(self, value: Optional[pulumi.Input['SoftwareRecipeStepInstallDpkgArgs']]):
+        pulumi.set(self, "dpkg_installation", value)
+
+    @property
+    @pulumi.getter(name="fileCopy")
+    def file_copy(self) -> Optional[pulumi.Input['SoftwareRecipeStepCopyFileArgs']]:
+        """
+        Copies a file onto the instance.
+        """
+        return pulumi.get(self, "file_copy")
+
+    @file_copy.setter
+    def file_copy(self, value: Optional[pulumi.Input['SoftwareRecipeStepCopyFileArgs']]):
+        pulumi.set(self, "file_copy", value)
+
+    @property
+    @pulumi.getter(name="fileExec")
+    def file_exec(self) -> Optional[pulumi.Input['SoftwareRecipeStepExecFileArgs']]:
+        """
+        Executes an artifact or local file.
+        """
+        return pulumi.get(self, "file_exec")
+
+    @file_exec.setter
+    def file_exec(self, value: Optional[pulumi.Input['SoftwareRecipeStepExecFileArgs']]):
+        pulumi.set(self, "file_exec", value)
+
+    @property
+    @pulumi.getter(name="msiInstallation")
+    def msi_installation(self) -> Optional[pulumi.Input['SoftwareRecipeStepInstallMsiArgs']]:
+        """
+        Installs an MSI file.
+        """
+        return pulumi.get(self, "msi_installation")
+
+    @msi_installation.setter
+    def msi_installation(self, value: Optional[pulumi.Input['SoftwareRecipeStepInstallMsiArgs']]):
+        pulumi.set(self, "msi_installation", value)
+
+    @property
+    @pulumi.getter(name="rpmInstallation")
+    def rpm_installation(self) -> Optional[pulumi.Input['SoftwareRecipeStepInstallRpmArgs']]:
+        """
+        Installs an rpm file via the rpm utility.
+        """
+        return pulumi.get(self, "rpm_installation")
+
+    @rpm_installation.setter
+    def rpm_installation(self, value: Optional[pulumi.Input['SoftwareRecipeStepInstallRpmArgs']]):
+        pulumi.set(self, "rpm_installation", value)
+
+    @property
+    @pulumi.getter(name="scriptRun")
+    def script_run(self) -> Optional[pulumi.Input['SoftwareRecipeStepRunScriptArgs']]:
+        """
+        Runs commands in a shell.
+        """
+        return pulumi.get(self, "script_run")
+
+    @script_run.setter
+    def script_run(self, value: Optional[pulumi.Input['SoftwareRecipeStepRunScriptArgs']]):
+        pulumi.set(self, "script_run", value)
+
+
+@pulumi.input_type
+class SoftwareRecipeArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 artifacts: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeArtifactArgs']]]] = None,
+                 desired_state: Optional[pulumi.Input['SoftwareRecipeDesiredState']] = None,
+                 install_steps: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]]] = None,
+                 update_steps: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        A software recipe is a set of instructions for installing and configuring a piece of software. It consists of a set of artifacts that are downloaded, and a set of steps that install, configure, and/or update the software. Recipes support installing and updating software from artifacts in the following formats: Zip archive, Tar archive, Windows MSI, Debian package, and RPM package. Additionally, recipes support executing a script (either defined in a file or directly in this api) in bash, sh, cmd, and powershell. Updating a software recipe If a recipe is assigned to an instance and there is a recipe with the same name but a lower version already installed and the assigned state of the recipe is `UPDATED`, then the recipe is updated to the new version. Script Working Directories Each script or execution step is run in its own temporary directory which is deleted after completing the step.
+        :param pulumi.Input[str] name: Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
+        :param pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeArtifactArgs']]] artifacts: Resources available to be used in the steps in the recipe.
+        :param pulumi.Input['SoftwareRecipeDesiredState'] desired_state: Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+        :param pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]] install_steps: Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back.
+        :param pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]] update_steps: Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe. Any steps taken (including partially completed steps) are not rolled back.
+        :param pulumi.Input[str] version: The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
+        """
+        pulumi.set(__self__, "name", name)
+        if artifacts is not None:
+            pulumi.set(__self__, "artifacts", artifacts)
+        if desired_state is not None:
+            pulumi.set(__self__, "desired_state", desired_state)
+        if install_steps is not None:
+            pulumi.set(__self__, "install_steps", install_steps)
+        if update_steps is not None:
+            pulumi.set(__self__, "update_steps", update_steps)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Unique identifier for the recipe. Only one recipe with a given name is installed on an instance. Names are also used to identify resources which helps to determine whether guest policies have conflicts. This means that requests to create multiple recipes with the same name and version are rejected since they could potentially have conflicting assignments.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def artifacts(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeArtifactArgs']]]]:
+        """
+        Resources available to be used in the steps in the recipe.
+        """
+        return pulumi.get(self, "artifacts")
+
+    @artifacts.setter
+    def artifacts(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeArtifactArgs']]]]):
+        pulumi.set(self, "artifacts", value)
+
+    @property
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> Optional[pulumi.Input['SoftwareRecipeDesiredState']]:
+        """
+        Default is INSTALLED. The desired state the agent should maintain for this recipe. INSTALLED: The software recipe is installed on the instance but won't be updated to new versions. UPDATED: The software recipe is installed on the instance. The recipe is updated to a higher version, if a higher version of the recipe is assigned to this instance. REMOVE: Remove is unsupported for software recipes and attempts to create or update a recipe to the REMOVE state is rejected.
+        """
+        return pulumi.get(self, "desired_state")
+
+    @desired_state.setter
+    def desired_state(self, value: Optional[pulumi.Input['SoftwareRecipeDesiredState']]):
+        pulumi.set(self, "desired_state", value)
+
+    @property
+    @pulumi.getter(name="installSteps")
+    def install_steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]]]:
+        """
+        Actions to be taken for installing this recipe. On failure it stops executing steps and does not attempt another installation. Any steps taken (including partially completed steps) are not rolled back.
+        """
+        return pulumi.get(self, "install_steps")
+
+    @install_steps.setter
+    def install_steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]]]):
+        pulumi.set(self, "install_steps", value)
+
+    @property
+    @pulumi.getter(name="updateSteps")
+    def update_steps(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]]]:
+        """
+        Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe. Any steps taken (including partially completed steps) are not rolled back.
+        """
+        return pulumi.get(self, "update_steps")
+
+    @update_steps.setter
+    def update_steps(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SoftwareRecipeStepArgs']]]]):
+        pulumi.set(self, "update_steps", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
 
 
 @pulumi.input_type

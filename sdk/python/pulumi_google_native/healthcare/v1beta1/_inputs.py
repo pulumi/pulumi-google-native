@@ -26,8 +26,8 @@ __all__ = [
     'Hl7SchemaConfigArgs',
     'Hl7TypesConfigArgs',
     'Hl7V2NotificationConfigArgs',
-    'ImageArgs',
     'ImageAnnotationArgs',
+    'ImageArgs',
     'NotificationConfigArgs',
     'ParserConfigArgs',
     'PatientIdArgs',
@@ -782,46 +782,6 @@ class Hl7V2NotificationConfigArgs:
 
 
 @pulumi.input_type
-class ImageArgs:
-    def __init__(__self__, *,
-                 gcs_uri: Optional[pulumi.Input[str]] = None,
-                 raw_bytes: Optional[pulumi.Input[str]] = None):
-        """
-        Raw bytes representing consent artifact content.
-        :param pulumi.Input[str] gcs_uri: Input only. Points to a Cloud Storage URI containing the consent artifact content. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The consent artifact content at this URI is copied to a Cloud Storage location managed by the Cloud Healthcare API. Responses to fetching requests return the consent artifact content in raw_bytes.
-        :param pulumi.Input[str] raw_bytes: Consent artifact content represented as a stream of bytes. This field is populated when returned in GetConsentArtifact response, but not included in CreateConsentArtifact and ListConsentArtifact response.
-        """
-        if gcs_uri is not None:
-            pulumi.set(__self__, "gcs_uri", gcs_uri)
-        if raw_bytes is not None:
-            pulumi.set(__self__, "raw_bytes", raw_bytes)
-
-    @property
-    @pulumi.getter(name="gcsUri")
-    def gcs_uri(self) -> Optional[pulumi.Input[str]]:
-        """
-        Input only. Points to a Cloud Storage URI containing the consent artifact content. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The consent artifact content at this URI is copied to a Cloud Storage location managed by the Cloud Healthcare API. Responses to fetching requests return the consent artifact content in raw_bytes.
-        """
-        return pulumi.get(self, "gcs_uri")
-
-    @gcs_uri.setter
-    def gcs_uri(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "gcs_uri", value)
-
-    @property
-    @pulumi.getter(name="rawBytes")
-    def raw_bytes(self) -> Optional[pulumi.Input[str]]:
-        """
-        Consent artifact content represented as a stream of bytes. This field is populated when returned in GetConsentArtifact response, but not included in CreateConsentArtifact and ListConsentArtifact response.
-        """
-        return pulumi.get(self, "raw_bytes")
-
-    @raw_bytes.setter
-    def raw_bytes(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "raw_bytes", value)
-
-
-@pulumi.input_type
 class ImageAnnotationArgs:
     def __init__(__self__, *,
                  bounding_polys: Optional[pulumi.Input[Sequence[pulumi.Input['BoundingPolyArgs']]]] = None,
@@ -859,6 +819,46 @@ class ImageAnnotationArgs:
     @frame_index.setter
     def frame_index(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "frame_index", value)
+
+
+@pulumi.input_type
+class ImageArgs:
+    def __init__(__self__, *,
+                 gcs_uri: Optional[pulumi.Input[str]] = None,
+                 raw_bytes: Optional[pulumi.Input[str]] = None):
+        """
+        Raw bytes representing consent artifact content.
+        :param pulumi.Input[str] gcs_uri: Input only. Points to a Cloud Storage URI containing the consent artifact content. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The consent artifact content at this URI is copied to a Cloud Storage location managed by the Cloud Healthcare API. Responses to fetching requests return the consent artifact content in raw_bytes.
+        :param pulumi.Input[str] raw_bytes: Consent artifact content represented as a stream of bytes. This field is populated when returned in GetConsentArtifact response, but not included in CreateConsentArtifact and ListConsentArtifact response.
+        """
+        if gcs_uri is not None:
+            pulumi.set(__self__, "gcs_uri", gcs_uri)
+        if raw_bytes is not None:
+            pulumi.set(__self__, "raw_bytes", raw_bytes)
+
+    @property
+    @pulumi.getter(name="gcsUri")
+    def gcs_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Input only. Points to a Cloud Storage URI containing the consent artifact content. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The consent artifact content at this URI is copied to a Cloud Storage location managed by the Cloud Healthcare API. Responses to fetching requests return the consent artifact content in raw_bytes.
+        """
+        return pulumi.get(self, "gcs_uri")
+
+    @gcs_uri.setter
+    def gcs_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gcs_uri", value)
+
+    @property
+    @pulumi.getter(name="rawBytes")
+    def raw_bytes(self) -> Optional[pulumi.Input[str]]:
+        """
+        Consent artifact content represented as a stream of bytes. This field is populated when returned in GetConsentArtifact response, but not included in CreateConsentArtifact and ListConsentArtifact response.
+        """
+        return pulumi.get(self, "raw_bytes")
+
+    @raw_bytes.setter
+    def raw_bytes(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "raw_bytes", value)
 
 
 @pulumi.input_type

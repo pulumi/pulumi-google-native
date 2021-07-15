@@ -12,8 +12,8 @@ from ._enums import *
 __all__ = [
     'GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs',
     'GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs',
-    'GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs',
     'GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs',
+    'GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs',
     'GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs',
 ]
 
@@ -95,6 +95,46 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs:
     @min_size.setter
     def min_size(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "min_size", value)
+
+
+@pulumi.input_type
+class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs:
+    def __init__(__self__, *,
+                 allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 policy: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy']] = None):
+        """
+        Defines whether a feature can be used or what values are accepted.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_values: A list of acceptable values. Only effective when the policy is `RESTRICTED`.
+        :param pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy'] policy: The policy of the feature.
+        """
+        if allowed_values is not None:
+            pulumi.set(__self__, "allowed_values", allowed_values)
+        if policy is not None:
+            pulumi.set(__self__, "policy", policy)
+
+    @property
+    @pulumi.getter(name="allowedValues")
+    def allowed_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of acceptable values. Only effective when the policy is `RESTRICTED`.
+        """
+        return pulumi.get(self, "allowed_values")
+
+    @allowed_values.setter
+    def allowed_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_values", value)
+
+    @property
+    @pulumi.getter
+    def policy(self) -> Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy']]:
+        """
+        The policy of the feature.
+        """
+        return pulumi.get(self, "policy")
+
+    @policy.setter
+    def policy(self, value: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy']]):
+        pulumi.set(self, "policy", value)
 
 
 @pulumi.input_type
@@ -247,46 +287,6 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs:
     @linux_isolation.setter
     def linux_isolation(self, value: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation']]):
         pulumi.set(self, "linux_isolation", value)
-
-
-@pulumi.input_type
-class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs:
-    def __init__(__self__, *,
-                 allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 policy: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy']] = None):
-        """
-        Defines whether a feature can be used or what values are accepted.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_values: A list of acceptable values. Only effective when the policy is `RESTRICTED`.
-        :param pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy'] policy: The policy of the feature.
-        """
-        if allowed_values is not None:
-            pulumi.set(__self__, "allowed_values", allowed_values)
-        if policy is not None:
-            pulumi.set(__self__, "policy", policy)
-
-    @property
-    @pulumi.getter(name="allowedValues")
-    def allowed_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of acceptable values. Only effective when the policy is `RESTRICTED`.
-        """
-        return pulumi.get(self, "allowed_values")
-
-    @allowed_values.setter
-    def allowed_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "allowed_values", value)
-
-    @property
-    @pulumi.getter
-    def policy(self) -> Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy']]:
-        """
-        The policy of the feature.
-        """
-        return pulumi.get(self, "policy")
-
-    @policy.setter
-    def policy(self, value: Optional[pulumi.Input['GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy']]):
-        pulumi.set(self, "policy", value)
 
 
 @pulumi.input_type

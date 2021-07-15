@@ -14,4 +14,6 @@ class DomainRedirectType(str, Enum):
     Required. The redirect status code.
     """
     REDIRECT_TYPE_UNSPECIFIED = "REDIRECT_TYPE_UNSPECIFIED"
+    """The default redirect type; should not be intentionlly used."""
     MOVED_PERMANENTLY = "MOVED_PERMANENTLY"
+    """The redirect will respond with an HTTP status code of `301 Moved Permanently`."""

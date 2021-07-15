@@ -13,18 +13,18 @@ __all__ = [
     'ArgumentArgs',
     'AuditConfigArgs',
     'AuditLogConfigArgs',
-    'BigtableColumnArgs',
     'BigtableColumnFamilyArgs',
+    'BigtableColumnArgs',
     'BigtableOptionsArgs',
     'BindingArgs',
     'BqmlIterationResultArgs',
-    'BqmlTrainingRunArgs',
     'BqmlTrainingRunTrainingOptionsArgs',
+    'BqmlTrainingRunArgs',
     'ClusteringArgs',
     'ConnectionPropertyArgs',
     'CsvOptionsArgs',
-    'DatasetAccessEntryArgs',
     'DatasetAccessEntryTargetTypesItemArgs',
+    'DatasetAccessEntryArgs',
     'DatasetAccessItemArgs',
     'DatasetReferenceArgs',
     'DestinationTablePropertiesArgs',
@@ -33,31 +33,31 @@ __all__ = [
     'ExternalDataConfigurationArgs',
     'GoogleSheetsOptionsArgs',
     'HivePartitioningOptionsArgs',
-    'JobConfigurationArgs',
     'JobConfigurationExtractArgs',
     'JobConfigurationLoadArgs',
     'JobConfigurationQueryArgs',
     'JobConfigurationTableCopyArgs',
+    'JobConfigurationArgs',
     'JobReferenceArgs',
     'MaterializedViewDefinitionArgs',
-    'ModelDefinitionArgs',
     'ModelDefinitionModelOptionsArgs',
+    'ModelDefinitionArgs',
     'ModelReferenceArgs',
     'ParquetOptionsArgs',
-    'QueryParameterArgs',
-    'QueryParameterTypeArgs',
     'QueryParameterTypeStructTypesItemArgs',
+    'QueryParameterTypeArgs',
     'QueryParameterValueArgs',
-    'RangePartitioningArgs',
+    'QueryParameterArgs',
     'RangePartitioningRangeArgs',
+    'RangePartitioningArgs',
     'RoutineReferenceArgs',
     'StandardSqlDataTypeArgs',
     'StandardSqlFieldArgs',
     'StandardSqlStructTypeArgs',
     'StandardSqlTableTypeArgs',
-    'TableFieldSchemaArgs',
     'TableFieldSchemaCategoriesArgs',
     'TableFieldSchemaPolicyTagsArgs',
+    'TableFieldSchemaArgs',
     'TableReferenceArgs',
     'TableSchemaArgs',
     'TimePartitioningArgs',
@@ -218,6 +218,93 @@ class AuditLogConfigArgs:
 
 
 @pulumi.input_type
+class BigtableColumnFamilyArgs:
+    def __init__(__self__, *,
+                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['BigtableColumnArgs']]]] = None,
+                 encoding: Optional[pulumi.Input[str]] = None,
+                 family_id: Optional[pulumi.Input[str]] = None,
+                 only_read_latest: Optional[pulumi.Input[bool]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['BigtableColumnArgs']]] columns: [Optional] Lists of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as .. Other columns can be accessed as a list through .Column field.
+        :param pulumi.Input[str] encoding: [Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
+        :param pulumi.Input[str] family_id: Identifier of the column family.
+        :param pulumi.Input[bool] only_read_latest: [Optional] If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
+        :param pulumi.Input[str] type: [Optional] The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
+        """
+        if columns is not None:
+            pulumi.set(__self__, "columns", columns)
+        if encoding is not None:
+            pulumi.set(__self__, "encoding", encoding)
+        if family_id is not None:
+            pulumi.set(__self__, "family_id", family_id)
+        if only_read_latest is not None:
+            pulumi.set(__self__, "only_read_latest", only_read_latest)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BigtableColumnArgs']]]]:
+        """
+        [Optional] Lists of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as .. Other columns can be accessed as a list through .Column field.
+        """
+        return pulumi.get(self, "columns")
+
+    @columns.setter
+    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BigtableColumnArgs']]]]):
+        pulumi.set(self, "columns", value)
+
+    @property
+    @pulumi.getter
+    def encoding(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
+        """
+        return pulumi.get(self, "encoding")
+
+    @encoding.setter
+    def encoding(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "encoding", value)
+
+    @property
+    @pulumi.getter(name="familyId")
+    def family_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Identifier of the column family.
+        """
+        return pulumi.get(self, "family_id")
+
+    @family_id.setter
+    def family_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "family_id", value)
+
+    @property
+    @pulumi.getter(name="onlyReadLatest")
+    def only_read_latest(self) -> Optional[pulumi.Input[bool]]:
+        """
+        [Optional] If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
+        """
+        return pulumi.get(self, "only_read_latest")
+
+    @only_read_latest.setter
+    def only_read_latest(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "only_read_latest", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Optional] The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
 class BigtableColumnArgs:
     def __init__(__self__, *,
                  encoding: Optional[pulumi.Input[str]] = None,
@@ -308,93 +395,6 @@ class BigtableColumnArgs:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         [Optional] The type to convert the value in cells of this column. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is BYTES. 'type' can also be set at the column family level. However, the setting at this level takes precedence if 'type' is set at both levels.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
-
-
-@pulumi.input_type
-class BigtableColumnFamilyArgs:
-    def __init__(__self__, *,
-                 columns: Optional[pulumi.Input[Sequence[pulumi.Input['BigtableColumnArgs']]]] = None,
-                 encoding: Optional[pulumi.Input[str]] = None,
-                 family_id: Optional[pulumi.Input[str]] = None,
-                 only_read_latest: Optional[pulumi.Input[bool]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['BigtableColumnArgs']]] columns: [Optional] Lists of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as .. Other columns can be accessed as a list through .Column field.
-        :param pulumi.Input[str] encoding: [Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
-        :param pulumi.Input[str] family_id: Identifier of the column family.
-        :param pulumi.Input[bool] only_read_latest: [Optional] If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
-        :param pulumi.Input[str] type: [Optional] The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
-        """
-        if columns is not None:
-            pulumi.set(__self__, "columns", columns)
-        if encoding is not None:
-            pulumi.set(__self__, "encoding", encoding)
-        if family_id is not None:
-            pulumi.set(__self__, "family_id", family_id)
-        if only_read_latest is not None:
-            pulumi.set(__self__, "only_read_latest", only_read_latest)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BigtableColumnArgs']]]]:
-        """
-        [Optional] Lists of columns that should be exposed as individual fields as opposed to a list of (column name, value) pairs. All columns whose qualifier matches a qualifier in this list can be accessed as .. Other columns can be accessed as a list through .Column field.
-        """
-        return pulumi.get(self, "columns")
-
-    @columns.setter
-    def columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BigtableColumnArgs']]]]):
-        pulumi.set(self, "columns", value)
-
-    @property
-    @pulumi.getter
-    def encoding(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. This can be overridden for a specific column by listing that column in 'columns' and specifying an encoding for it.
-        """
-        return pulumi.get(self, "encoding")
-
-    @encoding.setter
-    def encoding(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "encoding", value)
-
-    @property
-    @pulumi.getter(name="familyId")
-    def family_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Identifier of the column family.
-        """
-        return pulumi.get(self, "family_id")
-
-    @family_id.setter
-    def family_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "family_id", value)
-
-    @property
-    @pulumi.getter(name="onlyReadLatest")
-    def only_read_latest(self) -> Optional[pulumi.Input[bool]]:
-        """
-        [Optional] If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
-        """
-        return pulumi.get(self, "only_read_latest")
-
-    @only_read_latest.setter
-    def only_read_latest(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "only_read_latest", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Optional] The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
         """
         return pulumi.get(self, "type")
 
@@ -602,77 +602,6 @@ class BqmlIterationResultArgs:
 
 
 @pulumi.input_type
-class BqmlTrainingRunArgs:
-    def __init__(__self__, *,
-                 iteration_results: Optional[pulumi.Input[Sequence[pulumi.Input['BqmlIterationResultArgs']]]] = None,
-                 start_time: Optional[pulumi.Input[str]] = None,
-                 state: Optional[pulumi.Input[str]] = None,
-                 training_options: Optional[pulumi.Input['BqmlTrainingRunTrainingOptionsArgs']] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['BqmlIterationResultArgs']]] iteration_results: [Output-only, Beta] List of each iteration results.
-        :param pulumi.Input[str] start_time: [Output-only, Beta] Training run start time in milliseconds since the epoch.
-        :param pulumi.Input[str] state: [Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user.
-        :param pulumi.Input['BqmlTrainingRunTrainingOptionsArgs'] training_options: [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-        """
-        if iteration_results is not None:
-            pulumi.set(__self__, "iteration_results", iteration_results)
-        if start_time is not None:
-            pulumi.set(__self__, "start_time", start_time)
-        if state is not None:
-            pulumi.set(__self__, "state", state)
-        if training_options is not None:
-            pulumi.set(__self__, "training_options", training_options)
-
-    @property
-    @pulumi.getter(name="iterationResults")
-    def iteration_results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BqmlIterationResultArgs']]]]:
-        """
-        [Output-only, Beta] List of each iteration results.
-        """
-        return pulumi.get(self, "iteration_results")
-
-    @iteration_results.setter
-    def iteration_results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BqmlIterationResultArgs']]]]):
-        pulumi.set(self, "iteration_results", value)
-
-    @property
-    @pulumi.getter(name="startTime")
-    def start_time(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output-only, Beta] Training run start time in milliseconds since the epoch.
-        """
-        return pulumi.get(self, "start_time")
-
-    @start_time.setter
-    def start_time(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "start_time", value)
-
-    @property
-    @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user.
-        """
-        return pulumi.get(self, "state")
-
-    @state.setter
-    def state(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "state", value)
-
-    @property
-    @pulumi.getter(name="trainingOptions")
-    def training_options(self) -> Optional[pulumi.Input['BqmlTrainingRunTrainingOptionsArgs']]:
-        """
-        [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
-        """
-        return pulumi.get(self, "training_options")
-
-    @training_options.setter
-    def training_options(self, value: Optional[pulumi.Input['BqmlTrainingRunTrainingOptionsArgs']]):
-        pulumi.set(self, "training_options", value)
-
-
-@pulumi.input_type
 class BqmlTrainingRunTrainingOptionsArgs:
     def __init__(__self__, *,
                  early_stop: Optional[pulumi.Input[bool]] = None,
@@ -786,6 +715,77 @@ class BqmlTrainingRunTrainingOptionsArgs:
     @warm_start.setter
     def warm_start(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "warm_start", value)
+
+
+@pulumi.input_type
+class BqmlTrainingRunArgs:
+    def __init__(__self__, *,
+                 iteration_results: Optional[pulumi.Input[Sequence[pulumi.Input['BqmlIterationResultArgs']]]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 training_options: Optional[pulumi.Input['BqmlTrainingRunTrainingOptionsArgs']] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['BqmlIterationResultArgs']]] iteration_results: [Output-only, Beta] List of each iteration results.
+        :param pulumi.Input[str] start_time: [Output-only, Beta] Training run start time in milliseconds since the epoch.
+        :param pulumi.Input[str] state: [Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user.
+        :param pulumi.Input['BqmlTrainingRunTrainingOptionsArgs'] training_options: [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
+        """
+        if iteration_results is not None:
+            pulumi.set(__self__, "iteration_results", iteration_results)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if training_options is not None:
+            pulumi.set(__self__, "training_options", training_options)
+
+    @property
+    @pulumi.getter(name="iterationResults")
+    def iteration_results(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BqmlIterationResultArgs']]]]:
+        """
+        [Output-only, Beta] List of each iteration results.
+        """
+        return pulumi.get(self, "iteration_results")
+
+    @iteration_results.setter
+    def iteration_results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BqmlIterationResultArgs']]]]):
+        pulumi.set(self, "iteration_results", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output-only, Beta] Training run start time in milliseconds since the epoch.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Output-only, Beta] Different state applicable for a training run. IN PROGRESS: Training run is in progress. FAILED: Training run ended due to a non-retryable failure. SUCCEEDED: Training run successfully completed. CANCELLED: Training run cancelled by the user.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter(name="trainingOptions")
+    def training_options(self) -> Optional[pulumi.Input['BqmlTrainingRunTrainingOptionsArgs']]:
+        """
+        [Output-only, Beta] Training options used by this training run. These options are mutable for subsequent training runs. Default values are explicitly stored for options not specified in the input query of the first training run. For subsequent training runs, any option not explicitly specified in the input query will be copied from the previous training run.
+        """
+        return pulumi.get(self, "training_options")
+
+    @training_options.setter
+    def training_options(self, value: Optional[pulumi.Input['BqmlTrainingRunTrainingOptionsArgs']]):
+        pulumi.set(self, "training_options", value)
 
 
 @pulumi.input_type
@@ -954,6 +954,29 @@ class CsvOptionsArgs:
 
 
 @pulumi.input_type
+class DatasetAccessEntryTargetTypesItemArgs:
+    def __init__(__self__, *,
+                 target_type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] target_type: [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
+        """
+        if target_type is not None:
+            pulumi.set(__self__, "target_type", target_type)
+
+    @property
+    @pulumi.getter(name="targetType")
+    def target_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
+        """
+        return pulumi.get(self, "target_type")
+
+    @target_type.setter
+    def target_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_type", value)
+
+
+@pulumi.input_type
 class DatasetAccessEntryArgs:
     def __init__(__self__, *,
                  dataset: Optional[pulumi.Input['DatasetReferenceArgs']] = None,
@@ -986,29 +1009,6 @@ class DatasetAccessEntryArgs:
     @target_types.setter
     def target_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatasetAccessEntryTargetTypesItemArgs']]]]):
         pulumi.set(self, "target_types", value)
-
-
-@pulumi.input_type
-class DatasetAccessEntryTargetTypesItemArgs:
-    def __init__(__self__, *,
-                 target_type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] target_type: [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-        """
-        if target_type is not None:
-            pulumi.set(__self__, "target_type", target_type)
-
-    @property
-    @pulumi.getter(name="targetType")
-    def target_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Required] Which resources in the dataset this entry applies to. Currently, only views are supported, but additional target types may be added in the future. Possible values: VIEWS: This entry applies to all views in the dataset.
-        """
-        return pulumi.get(self, "target_type")
-
-    @target_type.setter
-    def target_type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "target_type", value)
 
 
 @pulumi.input_type
@@ -1674,125 +1674,6 @@ class HivePartitioningOptionsArgs:
     @source_uri_prefix.setter
     def source_uri_prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "source_uri_prefix", value)
-
-
-@pulumi.input_type
-class JobConfigurationArgs:
-    def __init__(__self__, *,
-                 copy: Optional[pulumi.Input['JobConfigurationTableCopyArgs']] = None,
-                 dry_run: Optional[pulumi.Input[bool]] = None,
-                 extract: Optional[pulumi.Input['JobConfigurationExtractArgs']] = None,
-                 job_timeout_ms: Optional[pulumi.Input[str]] = None,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 load: Optional[pulumi.Input['JobConfigurationLoadArgs']] = None,
-                 query: Optional[pulumi.Input['JobConfigurationQueryArgs']] = None):
-        """
-        :param pulumi.Input['JobConfigurationTableCopyArgs'] copy: [Pick one] Copies a table.
-        :param pulumi.Input[bool] dry_run: [Optional] If set, don't actually run this job. A valid query will return a mostly empty response with some processing statistics, while an invalid query will return the same error it would if it wasn't a dry run. Behavior of non-query jobs is undefined.
-        :param pulumi.Input['JobConfigurationExtractArgs'] extract: [Pick one] Configures an extract job.
-        :param pulumi.Input[str] job_timeout_ms: [Optional] Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
-        :param pulumi.Input['JobConfigurationLoadArgs'] load: [Pick one] Configures a load job.
-        :param pulumi.Input['JobConfigurationQueryArgs'] query: [Pick one] Configures a query job.
-        """
-        if copy is not None:
-            pulumi.set(__self__, "copy", copy)
-        if dry_run is not None:
-            pulumi.set(__self__, "dry_run", dry_run)
-        if extract is not None:
-            pulumi.set(__self__, "extract", extract)
-        if job_timeout_ms is not None:
-            pulumi.set(__self__, "job_timeout_ms", job_timeout_ms)
-        if labels is not None:
-            pulumi.set(__self__, "labels", labels)
-        if load is not None:
-            pulumi.set(__self__, "load", load)
-        if query is not None:
-            pulumi.set(__self__, "query", query)
-
-    @property
-    @pulumi.getter
-    def copy(self) -> Optional[pulumi.Input['JobConfigurationTableCopyArgs']]:
-        """
-        [Pick one] Copies a table.
-        """
-        return pulumi.get(self, "copy")
-
-    @copy.setter
-    def copy(self, value: Optional[pulumi.Input['JobConfigurationTableCopyArgs']]):
-        pulumi.set(self, "copy", value)
-
-    @property
-    @pulumi.getter(name="dryRun")
-    def dry_run(self) -> Optional[pulumi.Input[bool]]:
-        """
-        [Optional] If set, don't actually run this job. A valid query will return a mostly empty response with some processing statistics, while an invalid query will return the same error it would if it wasn't a dry run. Behavior of non-query jobs is undefined.
-        """
-        return pulumi.get(self, "dry_run")
-
-    @dry_run.setter
-    def dry_run(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "dry_run", value)
-
-    @property
-    @pulumi.getter
-    def extract(self) -> Optional[pulumi.Input['JobConfigurationExtractArgs']]:
-        """
-        [Pick one] Configures an extract job.
-        """
-        return pulumi.get(self, "extract")
-
-    @extract.setter
-    def extract(self, value: Optional[pulumi.Input['JobConfigurationExtractArgs']]):
-        pulumi.set(self, "extract", value)
-
-    @property
-    @pulumi.getter(name="jobTimeoutMs")
-    def job_timeout_ms(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Optional] Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
-        """
-        return pulumi.get(self, "job_timeout_ms")
-
-    @job_timeout_ms.setter
-    def job_timeout_ms(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "job_timeout_ms", value)
-
-    @property
-    @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        The labels associated with this job. You can use these to organize and group your jobs. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
-        """
-        return pulumi.get(self, "labels")
-
-    @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "labels", value)
-
-    @property
-    @pulumi.getter
-    def load(self) -> Optional[pulumi.Input['JobConfigurationLoadArgs']]:
-        """
-        [Pick one] Configures a load job.
-        """
-        return pulumi.get(self, "load")
-
-    @load.setter
-    def load(self, value: Optional[pulumi.Input['JobConfigurationLoadArgs']]):
-        pulumi.set(self, "load", value)
-
-    @property
-    @pulumi.getter
-    def query(self) -> Optional[pulumi.Input['JobConfigurationQueryArgs']]:
-        """
-        [Pick one] Configures a query job.
-        """
-        return pulumi.get(self, "query")
-
-    @query.setter
-    def query(self, value: Optional[pulumi.Input['JobConfigurationQueryArgs']]):
-        pulumi.set(self, "query", value)
 
 
 @pulumi.input_type
@@ -2912,6 +2793,125 @@ class JobConfigurationTableCopyArgs:
 
 
 @pulumi.input_type
+class JobConfigurationArgs:
+    def __init__(__self__, *,
+                 copy: Optional[pulumi.Input['JobConfigurationTableCopyArgs']] = None,
+                 dry_run: Optional[pulumi.Input[bool]] = None,
+                 extract: Optional[pulumi.Input['JobConfigurationExtractArgs']] = None,
+                 job_timeout_ms: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 load: Optional[pulumi.Input['JobConfigurationLoadArgs']] = None,
+                 query: Optional[pulumi.Input['JobConfigurationQueryArgs']] = None):
+        """
+        :param pulumi.Input['JobConfigurationTableCopyArgs'] copy: [Pick one] Copies a table.
+        :param pulumi.Input[bool] dry_run: [Optional] If set, don't actually run this job. A valid query will return a mostly empty response with some processing statistics, while an invalid query will return the same error it would if it wasn't a dry run. Behavior of non-query jobs is undefined.
+        :param pulumi.Input['JobConfigurationExtractArgs'] extract: [Pick one] Configures an extract job.
+        :param pulumi.Input[str] job_timeout_ms: [Optional] Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels associated with this job. You can use these to organize and group your jobs. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
+        :param pulumi.Input['JobConfigurationLoadArgs'] load: [Pick one] Configures a load job.
+        :param pulumi.Input['JobConfigurationQueryArgs'] query: [Pick one] Configures a query job.
+        """
+        if copy is not None:
+            pulumi.set(__self__, "copy", copy)
+        if dry_run is not None:
+            pulumi.set(__self__, "dry_run", dry_run)
+        if extract is not None:
+            pulumi.set(__self__, "extract", extract)
+        if job_timeout_ms is not None:
+            pulumi.set(__self__, "job_timeout_ms", job_timeout_ms)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if load is not None:
+            pulumi.set(__self__, "load", load)
+        if query is not None:
+            pulumi.set(__self__, "query", query)
+
+    @property
+    @pulumi.getter
+    def copy(self) -> Optional[pulumi.Input['JobConfigurationTableCopyArgs']]:
+        """
+        [Pick one] Copies a table.
+        """
+        return pulumi.get(self, "copy")
+
+    @copy.setter
+    def copy(self, value: Optional[pulumi.Input['JobConfigurationTableCopyArgs']]):
+        pulumi.set(self, "copy", value)
+
+    @property
+    @pulumi.getter(name="dryRun")
+    def dry_run(self) -> Optional[pulumi.Input[bool]]:
+        """
+        [Optional] If set, don't actually run this job. A valid query will return a mostly empty response with some processing statistics, while an invalid query will return the same error it would if it wasn't a dry run. Behavior of non-query jobs is undefined.
+        """
+        return pulumi.get(self, "dry_run")
+
+    @dry_run.setter
+    def dry_run(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dry_run", value)
+
+    @property
+    @pulumi.getter
+    def extract(self) -> Optional[pulumi.Input['JobConfigurationExtractArgs']]:
+        """
+        [Pick one] Configures an extract job.
+        """
+        return pulumi.get(self, "extract")
+
+    @extract.setter
+    def extract(self, value: Optional[pulumi.Input['JobConfigurationExtractArgs']]):
+        pulumi.set(self, "extract", value)
+
+    @property
+    @pulumi.getter(name="jobTimeoutMs")
+    def job_timeout_ms(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Optional] Job timeout in milliseconds. If this time limit is exceeded, BigQuery may attempt to terminate the job.
+        """
+        return pulumi.get(self, "job_timeout_ms")
+
+    @job_timeout_ms.setter
+    def job_timeout_ms(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "job_timeout_ms", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The labels associated with this job. You can use these to organize and group your jobs. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
+    def load(self) -> Optional[pulumi.Input['JobConfigurationLoadArgs']]:
+        """
+        [Pick one] Configures a load job.
+        """
+        return pulumi.get(self, "load")
+
+    @load.setter
+    def load(self, value: Optional[pulumi.Input['JobConfigurationLoadArgs']]):
+        pulumi.set(self, "load", value)
+
+    @property
+    @pulumi.getter
+    def query(self) -> Optional[pulumi.Input['JobConfigurationQueryArgs']]:
+        """
+        [Pick one] Configures a query job.
+        """
+        return pulumi.get(self, "query")
+
+    @query.setter
+    def query(self, value: Optional[pulumi.Input['JobConfigurationQueryArgs']]):
+        pulumi.set(self, "query", value)
+
+
+@pulumi.input_type
 class JobReferenceArgs:
     def __init__(__self__, *,
                  job_id: Optional[pulumi.Input[str]] = None,
@@ -3022,45 +3022,6 @@ class MaterializedViewDefinitionArgs:
 
 
 @pulumi.input_type
-class ModelDefinitionArgs:
-    def __init__(__self__, *,
-                 model_options: Optional[pulumi.Input['ModelDefinitionModelOptionsArgs']] = None,
-                 training_runs: Optional[pulumi.Input[Sequence[pulumi.Input['BqmlTrainingRunArgs']]]] = None):
-        """
-        :param pulumi.Input['ModelDefinitionModelOptionsArgs'] model_options: [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-        :param pulumi.Input[Sequence[pulumi.Input['BqmlTrainingRunArgs']]] training_runs: [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
-        """
-        if model_options is not None:
-            pulumi.set(__self__, "model_options", model_options)
-        if training_runs is not None:
-            pulumi.set(__self__, "training_runs", training_runs)
-
-    @property
-    @pulumi.getter(name="modelOptions")
-    def model_options(self) -> Optional[pulumi.Input['ModelDefinitionModelOptionsArgs']]:
-        """
-        [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
-        """
-        return pulumi.get(self, "model_options")
-
-    @model_options.setter
-    def model_options(self, value: Optional[pulumi.Input['ModelDefinitionModelOptionsArgs']]):
-        pulumi.set(self, "model_options", value)
-
-    @property
-    @pulumi.getter(name="trainingRuns")
-    def training_runs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BqmlTrainingRunArgs']]]]:
-        """
-        [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
-        """
-        return pulumi.get(self, "training_runs")
-
-    @training_runs.setter
-    def training_runs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BqmlTrainingRunArgs']]]]):
-        pulumi.set(self, "training_runs", value)
-
-
-@pulumi.input_type
 class ModelDefinitionModelOptionsArgs:
     def __init__(__self__, *,
                  labels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -3102,6 +3063,45 @@ class ModelDefinitionModelOptionsArgs:
     @model_type.setter
     def model_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "model_type", value)
+
+
+@pulumi.input_type
+class ModelDefinitionArgs:
+    def __init__(__self__, *,
+                 model_options: Optional[pulumi.Input['ModelDefinitionModelOptionsArgs']] = None,
+                 training_runs: Optional[pulumi.Input[Sequence[pulumi.Input['BqmlTrainingRunArgs']]]] = None):
+        """
+        :param pulumi.Input['ModelDefinitionModelOptionsArgs'] model_options: [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
+        :param pulumi.Input[Sequence[pulumi.Input['BqmlTrainingRunArgs']]] training_runs: [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
+        """
+        if model_options is not None:
+            pulumi.set(__self__, "model_options", model_options)
+        if training_runs is not None:
+            pulumi.set(__self__, "training_runs", training_runs)
+
+    @property
+    @pulumi.getter(name="modelOptions")
+    def model_options(self) -> Optional[pulumi.Input['ModelDefinitionModelOptionsArgs']]:
+        """
+        [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
+        """
+        return pulumi.get(self, "model_options")
+
+    @model_options.setter
+    def model_options(self, value: Optional[pulumi.Input['ModelDefinitionModelOptionsArgs']]):
+        pulumi.set(self, "model_options", value)
+
+    @property
+    @pulumi.getter(name="trainingRuns")
+    def training_runs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['BqmlTrainingRunArgs']]]]:
+        """
+        [Output-only, Beta] Information about ml training runs, each training run comprises of multiple iterations and there may be multiple training runs for the model if warm start is used or if a user decides to continue a previously cancelled query.
+        """
+        return pulumi.get(self, "training_runs")
+
+    @training_runs.setter
+    def training_runs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['BqmlTrainingRunArgs']]]]):
+        pulumi.set(self, "training_runs", value)
 
 
 @pulumi.input_type
@@ -3199,28 +3199,40 @@ class ParquetOptionsArgs:
 
 
 @pulumi.input_type
-class QueryParameterArgs:
+class QueryParameterTypeStructTypesItemArgs:
     def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 parameter_type: Optional[pulumi.Input['QueryParameterTypeArgs']] = None,
-                 parameter_value: Optional[pulumi.Input['QueryParameterValueArgs']] = None):
+                 type: Optional[pulumi.Input['QueryParameterTypeArgs']] = None):
         """
-        :param pulumi.Input[str] name: [Optional] If unset, this is a positional parameter. Otherwise, should be unique within a query.
-        :param pulumi.Input['QueryParameterTypeArgs'] parameter_type: [Required] The type of this parameter.
-        :param pulumi.Input['QueryParameterValueArgs'] parameter_value: [Required] The value of this parameter.
+        :param pulumi.Input[str] description: [Optional] Human-oriented description of the field.
+        :param pulumi.Input[str] name: [Optional] The name of this field.
+        :param pulumi.Input['QueryParameterTypeArgs'] type: [Required] The type of this field.
         """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
-        if parameter_type is not None:
-            pulumi.set(__self__, "parameter_type", parameter_type)
-        if parameter_value is not None:
-            pulumi.set(__self__, "parameter_value", parameter_value)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Optional] Human-oriented description of the field.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        [Optional] If unset, this is a positional parameter. Otherwise, should be unique within a query.
+        [Optional] The name of this field.
         """
         return pulumi.get(self, "name")
 
@@ -3229,28 +3241,16 @@ class QueryParameterArgs:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="parameterType")
-    def parameter_type(self) -> Optional[pulumi.Input['QueryParameterTypeArgs']]:
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input['QueryParameterTypeArgs']]:
         """
-        [Required] The type of this parameter.
+        [Required] The type of this field.
         """
-        return pulumi.get(self, "parameter_type")
+        return pulumi.get(self, "type")
 
-    @parameter_type.setter
-    def parameter_type(self, value: Optional[pulumi.Input['QueryParameterTypeArgs']]):
-        pulumi.set(self, "parameter_type", value)
-
-    @property
-    @pulumi.getter(name="parameterValue")
-    def parameter_value(self) -> Optional[pulumi.Input['QueryParameterValueArgs']]:
-        """
-        [Required] The value of this parameter.
-        """
-        return pulumi.get(self, "parameter_value")
-
-    @parameter_value.setter
-    def parameter_value(self, value: Optional[pulumi.Input['QueryParameterValueArgs']]):
-        pulumi.set(self, "parameter_value", value)
+    @type.setter
+    def type(self, value: Optional[pulumi.Input['QueryParameterTypeArgs']]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
@@ -3305,61 +3305,6 @@ class QueryParameterTypeArgs:
 
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
-
-
-@pulumi.input_type
-class QueryParameterTypeStructTypesItemArgs:
-    def __init__(__self__, *,
-                 description: Optional[pulumi.Input[str]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input['QueryParameterTypeArgs']] = None):
-        """
-        :param pulumi.Input[str] description: [Optional] Human-oriented description of the field.
-        :param pulumi.Input[str] name: [Optional] The name of this field.
-        :param pulumi.Input['QueryParameterTypeArgs'] type: [Required] The type of this field.
-        """
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Optional] Human-oriented description of the field.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        [Optional] The name of this field.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input['QueryParameterTypeArgs']]:
-        """
-        [Required] The type of this field.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input['QueryParameterTypeArgs']]):
         pulumi.set(self, "type", value)
 
 
@@ -3419,42 +3364,58 @@ class QueryParameterValueArgs:
 
 
 @pulumi.input_type
-class RangePartitioningArgs:
+class QueryParameterArgs:
     def __init__(__self__, *,
-                 field: Optional[pulumi.Input[str]] = None,
-                 range: Optional[pulumi.Input['RangePartitioningRangeArgs']] = None):
+                 name: Optional[pulumi.Input[str]] = None,
+                 parameter_type: Optional[pulumi.Input['QueryParameterTypeArgs']] = None,
+                 parameter_value: Optional[pulumi.Input['QueryParameterValueArgs']] = None):
         """
-        :param pulumi.Input[str] field: [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
-        :param pulumi.Input['RangePartitioningRangeArgs'] range: [TrustedTester] [Required] Defines the ranges for range partitioning.
+        :param pulumi.Input[str] name: [Optional] If unset, this is a positional parameter. Otherwise, should be unique within a query.
+        :param pulumi.Input['QueryParameterTypeArgs'] parameter_type: [Required] The type of this parameter.
+        :param pulumi.Input['QueryParameterValueArgs'] parameter_value: [Required] The value of this parameter.
         """
-        if field is not None:
-            pulumi.set(__self__, "field", field)
-        if range is not None:
-            pulumi.set(__self__, "range", range)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parameter_type is not None:
+            pulumi.set(__self__, "parameter_type", parameter_type)
+        if parameter_value is not None:
+            pulumi.set(__self__, "parameter_value", parameter_value)
 
     @property
     @pulumi.getter
-    def field(self) -> Optional[pulumi.Input[str]]:
+    def name(self) -> Optional[pulumi.Input[str]]:
         """
-        [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
+        [Optional] If unset, this is a positional parameter. Otherwise, should be unique within a query.
         """
-        return pulumi.get(self, "field")
+        return pulumi.get(self, "name")
 
-    @field.setter
-    def field(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "field", value)
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter
-    def range(self) -> Optional[pulumi.Input['RangePartitioningRangeArgs']]:
+    @pulumi.getter(name="parameterType")
+    def parameter_type(self) -> Optional[pulumi.Input['QueryParameterTypeArgs']]:
         """
-        [TrustedTester] [Required] Defines the ranges for range partitioning.
+        [Required] The type of this parameter.
         """
-        return pulumi.get(self, "range")
+        return pulumi.get(self, "parameter_type")
 
-    @range.setter
-    def range(self, value: Optional[pulumi.Input['RangePartitioningRangeArgs']]):
-        pulumi.set(self, "range", value)
+    @parameter_type.setter
+    def parameter_type(self, value: Optional[pulumi.Input['QueryParameterTypeArgs']]):
+        pulumi.set(self, "parameter_type", value)
+
+    @property
+    @pulumi.getter(name="parameterValue")
+    def parameter_value(self) -> Optional[pulumi.Input['QueryParameterValueArgs']]:
+        """
+        [Required] The value of this parameter.
+        """
+        return pulumi.get(self, "parameter_value")
+
+    @parameter_value.setter
+    def parameter_value(self, value: Optional[pulumi.Input['QueryParameterValueArgs']]):
+        pulumi.set(self, "parameter_value", value)
 
 
 @pulumi.input_type
@@ -3511,6 +3472,45 @@ class RangePartitioningRangeArgs:
     @start.setter
     def start(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start", value)
+
+
+@pulumi.input_type
+class RangePartitioningArgs:
+    def __init__(__self__, *,
+                 field: Optional[pulumi.Input[str]] = None,
+                 range: Optional[pulumi.Input['RangePartitioningRangeArgs']] = None):
+        """
+        :param pulumi.Input[str] field: [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
+        :param pulumi.Input['RangePartitioningRangeArgs'] range: [TrustedTester] [Required] Defines the ranges for range partitioning.
+        """
+        if field is not None:
+            pulumi.set(__self__, "field", field)
+        if range is not None:
+            pulumi.set(__self__, "range", range)
+
+    @property
+    @pulumi.getter
+    def field(self) -> Optional[pulumi.Input[str]]:
+        """
+        [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
+        """
+        return pulumi.get(self, "field")
+
+    @field.setter
+    def field(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "field", value)
+
+    @property
+    @pulumi.getter
+    def range(self) -> Optional[pulumi.Input['RangePartitioningRangeArgs']]:
+        """
+        [TrustedTester] [Required] Defines the ranges for range partitioning.
+        """
+        return pulumi.get(self, "range")
+
+    @range.setter
+    def range(self, value: Optional[pulumi.Input['RangePartitioningRangeArgs']]):
+        pulumi.set(self, "range", value)
 
 
 @pulumi.input_type
@@ -3705,6 +3705,53 @@ class StandardSqlTableTypeArgs:
 
 
 @pulumi.input_type
+class TableFieldSchemaCategoriesArgs:
+    def __init__(__self__, *,
+                 names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        [Optional] The categories attached to this field, used for field-level access control.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
+        """
+        if names is not None:
+            pulumi.set(__self__, "names", names)
+
+    @property
+    @pulumi.getter
+    def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
+        """
+        return pulumi.get(self, "names")
+
+    @names.setter
+    def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "names", value)
+
+
+@pulumi.input_type
+class TableFieldSchemaPolicyTagsArgs:
+    def __init__(__self__, *,
+                 names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
+        """
+        if names is not None:
+            pulumi.set(__self__, "names", names)
+
+    @property
+    @pulumi.getter
+    def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
+        """
+        return pulumi.get(self, "names")
+
+    @names.setter
+    def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "names", value)
+
+
+@pulumi.input_type
 class TableFieldSchemaArgs:
     def __init__(__self__, *,
                  categories: Optional[pulumi.Input['TableFieldSchemaCategoriesArgs']] = None,
@@ -3865,53 +3912,6 @@ class TableFieldSchemaArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
-
-
-@pulumi.input_type
-class TableFieldSchemaCategoriesArgs:
-    def __init__(__self__, *,
-                 names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        [Optional] The categories attached to this field, used for field-level access control.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
-        """
-        if names is not None:
-            pulumi.set(__self__, "names", names)
-
-    @property
-    @pulumi.getter
-    def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
-        """
-        return pulumi.get(self, "names")
-
-    @names.setter
-    def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "names", value)
-
-
-@pulumi.input_type
-class TableFieldSchemaPolicyTagsArgs:
-    def __init__(__self__, *,
-                 names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] names: A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
-        """
-        if names is not None:
-            pulumi.set(__self__, "names", names)
-
-    @property
-    @pulumi.getter
-    def names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        A list of category resource names. For example, "projects/1/location/eu/taxonomies/2/policyTags/3". At most 1 policy tag is allowed.
-        """
-        return pulumi.get(self, "names")
-
-    @names.setter
-    def names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "names", value)
 
 
 @pulumi.input_type

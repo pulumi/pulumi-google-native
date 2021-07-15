@@ -21,8 +21,8 @@ __all__ = [
     'GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs',
     'GoogleCloudDatacatalogV1DatabaseTableSpecArgs',
     'GoogleCloudDatacatalogV1GcsFilesetSpecArgs',
-    'GoogleCloudDatacatalogV1RoutineSpecArgs',
     'GoogleCloudDatacatalogV1RoutineSpecArgumentArgs',
+    'GoogleCloudDatacatalogV1RoutineSpecArgs',
     'GoogleCloudDatacatalogV1SchemaArgs',
     'GoogleCloudDatacatalogV1SystemTimestampsArgs',
     'GoogleCloudDatacatalogV1TableSpecArgs',
@@ -500,6 +500,62 @@ class GoogleCloudDatacatalogV1GcsFilesetSpecArgs:
 
 
 @pulumi.input_type
+class GoogleCloudDatacatalogV1RoutineSpecArgumentArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input['GoogleCloudDatacatalogV1RoutineSpecArgumentMode']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        Input or output argument of a function or stored procedure.
+        :param pulumi.Input['GoogleCloudDatacatalogV1RoutineSpecArgumentMode'] mode: Specifies whether the argument is input or output.
+        :param pulumi.Input[str] name: The name of the argument. A return argument of a function might not have a name.
+        :param pulumi.Input[str] type: Type of the argument. The exact value depends on the source system and the language.
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1RoutineSpecArgumentMode']]:
+        """
+        Specifies whether the argument is input or output.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1RoutineSpecArgumentMode']]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the argument. A return argument of a function might not have a name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Type of the argument. The exact value depends on the source system and the language.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+@pulumi.input_type
 class GoogleCloudDatacatalogV1RoutineSpecArgs:
     def __init__(__self__, *,
                  bigquery_routine_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs']] = None,
@@ -601,62 +657,6 @@ class GoogleCloudDatacatalogV1RoutineSpecArgs:
     @routine_type.setter
     def routine_type(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1RoutineSpecRoutineType']]):
         pulumi.set(self, "routine_type", value)
-
-
-@pulumi.input_type
-class GoogleCloudDatacatalogV1RoutineSpecArgumentArgs:
-    def __init__(__self__, *,
-                 mode: Optional[pulumi.Input['GoogleCloudDatacatalogV1RoutineSpecArgumentMode']] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
-        """
-        Input or output argument of a function or stored procedure.
-        :param pulumi.Input['GoogleCloudDatacatalogV1RoutineSpecArgumentMode'] mode: Specifies whether the argument is input or output.
-        :param pulumi.Input[str] name: The name of the argument. A return argument of a function might not have a name.
-        :param pulumi.Input[str] type: Type of the argument. The exact value depends on the source system and the language.
-        """
-        if mode is not None:
-            pulumi.set(__self__, "mode", mode)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1RoutineSpecArgumentMode']]:
-        """
-        Specifies whether the argument is input or output.
-        """
-        return pulumi.get(self, "mode")
-
-    @mode.setter
-    def mode(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1RoutineSpecArgumentMode']]):
-        pulumi.set(self, "mode", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the argument. A return argument of a function might not have a name.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Type of the argument. The exact value depends on the source system and the language.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
