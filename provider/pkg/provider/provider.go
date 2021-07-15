@@ -626,6 +626,11 @@ func (p *googleCloudProvider) Construct(_ context.Context, _ *rpc.ConstructReque
 	return nil, status.Error(codes.Unimplemented, "Construct is not yet implemented")
 }
 
+// Call dynamically executes a method in the provider associated with a component resource.
+func (p *googleCloudProvider) Call(_ context.Context, _ *rpc.CallRequest) (*rpc.CallResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "Call is not yet implemented")
+}
+
 // GetPluginInfo returns generic information about this plugin, like its version.
 func (p *googleCloudProvider) GetPluginInfo(context.Context, *empty.Empty) (*rpc.PluginInfo, error) {
 	return &rpc.PluginInfo{

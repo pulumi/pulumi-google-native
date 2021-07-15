@@ -3,7 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 
-(None)
+- Update dependencies to pulumi/pulumi 3.7.0
 
 ---
 
