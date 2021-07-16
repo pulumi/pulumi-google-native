@@ -266,6 +266,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		CreateVerb: dd.createMethod.HttpMethod,
 		NoDelete:   dd.deleteMethod == nil,
 	}
+	patternParams := codegen.NewStringSet()
 
 	for _, name := range codegen.SortedKeys(dd.createMethod.Parameters) {
 		param := dd.createMethod.Parameters[name]
@@ -283,6 +284,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			p.SdkName = sdkName
 		}
 		resourceMeta.CreateParams = append(resourceMeta.CreateParams, p)
+		patternParams.Add(sdkName)
 
 		inputProperties[sdkName] = schema.PropertySpec{
 			TypeSpec: schema.TypeSpec{Type: "string"},
@@ -311,6 +313,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			param.SdkName = sdkName
 		}
 		resourceMeta.CreateParams = append(resourceMeta.CreateParams, param)
+		patternParams.Add(sdkName)
 		requiredInputProperties.Add(sdkName)
 	}
 
@@ -329,7 +332,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			}
 		}
 
-		bodyBag, err := g.genProperties(typeName, &createRequest, flatten, false)
+		bodyBag, err := g.genProperties(typeName, &createRequest, flatten, false, patternParams)
 		if err != nil {
 			return err
 		}
@@ -355,7 +358,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 				}
 			}
 			resourceMeta.UpdateProperties = map[string]resources.CloudAPIProperty{}
-			updateBag, err := g.genProperties(typeName, &updateRequest, updateFlatten, false)
+			updateBag, err := g.genProperties(typeName, &updateRequest, updateFlatten, false, nil)
 			if err != nil {
 				return err
 			}
@@ -377,7 +380,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	requiredProperties := codegen.NewStringSet()
 	if dd.getMethod.Response != nil {
 		response := g.rest.Schemas[dd.getMethod.Response.Ref]
-		responseBag, err := g.genProperties(typeName, &response, "", true)
+		responseBag, err := g.genProperties(typeName, &response, "", true, nil)
 		if err != nil {
 			return err
 		}
@@ -531,7 +534,7 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 	requiredProperties := codegen.NewStringSet()
 	if dd.getMethod.Response != nil {
 		response := g.rest.Schemas[dd.getMethod.Response.Ref]
-		responseBag, err := g.genProperties(typeName, &response, "", true)
+		responseBag, err := g.genProperties(typeName, &response, "", true, nil)
 		if err != nil {
 			return err
 		}
@@ -665,7 +668,8 @@ func (g *packageGenerator) schemaContainsProperty(schema *discovery.JsonSchema, 
 	return false
 }
 
-func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.JsonSchema, flatten string, isOutput bool) (*propertyBag, error) {
+func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.JsonSchema, flatten string,
+	isOutput bool, patternParams codegen.StringSet) (*propertyBag, error) {
 	result := propertyBag{
 		specs:         map[string]schema.PropertySpec{},
 		requiredSpecs: codegen.NewStringSet(),
@@ -690,7 +694,7 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 
 		if name == flatten {
 			subtypeSchema := g.rest.Schemas[prop.Ref]
-			sub, err := g.genProperties(typeName, &subtypeSchema, "", isOutput)
+			sub, err := g.genProperties(typeName, &subtypeSchema, "", isOutput, patternParams)
 			if err != nil {
 				return nil, err
 			}
@@ -730,6 +734,7 @@ func (g *packageGenerator) genProperties(typeName string, typeSchema *discovery.
 			Items:                g.itemTypeToProperty(typeSpec.Items),
 			AdditionalProperties: g.itemTypeToProperty(typeSpec.AdditionalProperties),
 			CopyFromOutputs:      copyFromOutput,
+			Pattern:              propertyPattern(sdkName, prop.Description, patternParams),
 		}
 		if name != sdkName {
 			apiProp.SdkName = sdkName
@@ -789,7 +794,7 @@ func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discover
 			return nil, errors.Errorf("properties type name %q conflicts with a schema type", tok)
 		}
 		referencedTypeName := fmt.Sprintf("#/types/%s", tok)
-		bag, err := g.genProperties(typePropName, prop, "", isOutput)
+		bag, err := g.genProperties(typePropName, prop, "", isOutput, nil)
 		if err != nil {
 			return nil, err
 		}
@@ -824,7 +829,7 @@ func (g *packageGenerator) genTypeSpec(typeName, propName string, prop *discover
 			g.visitedTypes.Add(tok)
 
 			typeSchema := g.rest.Schemas[schemaName]
-			bag, err := g.genProperties(schemaName, &typeSchema, "", isOutput)
+			bag, err := g.genProperties(schemaName, &typeSchema, "", isOutput, nil)
 			if err != nil {
 				return nil, err
 			}

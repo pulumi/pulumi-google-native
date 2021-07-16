@@ -74,6 +74,11 @@ type CloudAPIProperty struct {
 	// CopyFromOutputs equal to true means that the value for this property during an update should be taken from
 	// the previous state of the resource, not user inputs.
 	CopyFromOutputs bool `json:"copyFromOutputs,omitempty"`
+	// Pattern contains a string pattern that the property value needs to adhere to.
+	// Example: projects/{project}/zones/{zones}/machineTypes/{machineType}.
+	// If a user specifies a plain value (with no '/' characters in it),
+	// the provider automatically applies the pattern.
+	Pattern string `json:"pattern,omitempty"`
 }
 
 // CloudAPIType represents the shape of an auxiliary type in the API.

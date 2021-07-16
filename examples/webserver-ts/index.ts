@@ -29,7 +29,7 @@ nohup python -m SimpleHTTPServer 80 &`;
 const computeInstance = new google.compute.v1.Instance("instance", {
     project: project,
     zone: zone,
-    machineType: `projects/${project}/zones/${zone}/machineTypes/f1-micro`,
+    machineType: "f1-micro",
     metadata: {
         items: [{
             "key": "startup-script",

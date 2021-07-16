@@ -5,6 +5,9 @@ CHANGELOG
 
 - Update dependencies to pulumi/pulumi 3.7.0
 
+- Allow for shorthand property values instead of duplicating project, zone, etc.
+  [#56](https://github.com/pulumi/pulumi-google-native/issues/56)
+
 ---
 
 ## 0.5.0 (2021-07-12)
