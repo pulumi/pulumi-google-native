@@ -11,7 +11,7 @@ import (
 )
 
 // Required. The redirect status code.
-type DomainRedirectType pulumi.String
+type DomainRedirectType string
 
 const (
 	// The default redirect type; should not be intentionlly used.
@@ -21,7 +21,23 @@ const (
 )
 
 func (DomainRedirectType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*DomainRedirectType)(nil)).Elem()
+}
+
+func (e DomainRedirectType) ToDomainRedirectTypeOutput() DomainRedirectTypeOutput {
+	return pulumi.ToOutput(e).(DomainRedirectTypeOutput)
+}
+
+func (e DomainRedirectType) ToDomainRedirectTypeOutputWithContext(ctx context.Context) DomainRedirectTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DomainRedirectTypeOutput)
+}
+
+func (e DomainRedirectType) ToDomainRedirectTypePtrOutput() DomainRedirectTypePtrOutput {
+	return e.ToDomainRedirectTypePtrOutputWithContext(context.Background())
+}
+
+func (e DomainRedirectType) ToDomainRedirectTypePtrOutputWithContext(ctx context.Context) DomainRedirectTypePtrOutput {
+	return DomainRedirectType(e).ToDomainRedirectTypeOutputWithContext(ctx).ToDomainRedirectTypePtrOutputWithContext(ctx)
 }
 
 func (e DomainRedirectType) ToStringOutput() pulumi.StringOutput {
@@ -38,4 +54,130 @@ func (e DomainRedirectType) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e DomainRedirectType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DomainRedirectTypeOutput struct{ *pulumi.OutputState }
+
+func (DomainRedirectTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DomainRedirectType)(nil)).Elem()
+}
+
+func (o DomainRedirectTypeOutput) ToDomainRedirectTypeOutput() DomainRedirectTypeOutput {
+	return o
+}
+
+func (o DomainRedirectTypeOutput) ToDomainRedirectTypeOutputWithContext(ctx context.Context) DomainRedirectTypeOutput {
+	return o
+}
+
+func (o DomainRedirectTypeOutput) ToDomainRedirectTypePtrOutput() DomainRedirectTypePtrOutput {
+	return o.ToDomainRedirectTypePtrOutputWithContext(context.Background())
+}
+
+func (o DomainRedirectTypeOutput) ToDomainRedirectTypePtrOutputWithContext(ctx context.Context) DomainRedirectTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DomainRedirectType) *DomainRedirectType {
+		return &v
+	}).(DomainRedirectTypePtrOutput)
+}
+
+func (o DomainRedirectTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DomainRedirectTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DomainRedirectType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DomainRedirectTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DomainRedirectTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DomainRedirectType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DomainRedirectTypePtrOutput struct{ *pulumi.OutputState }
+
+func (DomainRedirectTypePtrOutput) ElementType() reflect.Type {
+	return domainRedirectTypePtrType
+}
+
+func (o DomainRedirectTypePtrOutput) ToDomainRedirectTypePtrOutput() DomainRedirectTypePtrOutput {
+	return o
+}
+
+func (o DomainRedirectTypePtrOutput) ToDomainRedirectTypePtrOutputWithContext(ctx context.Context) DomainRedirectTypePtrOutput {
+	return o
+}
+
+func (o DomainRedirectTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DomainRedirectTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DomainRedirectType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DomainRedirectTypePtrOutput) Elem() DomainRedirectTypeOutput {
+	return o.ApplyT(func(v *DomainRedirectType) DomainRedirectType {
+		var ret DomainRedirectType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(DomainRedirectTypeOutput)
+}
+
+// DomainRedirectTypeInput is an input type that accepts DomainRedirectTypeArgs and DomainRedirectTypeOutput values.
+// You can construct a concrete instance of `DomainRedirectTypeInput` via:
+//
+//          DomainRedirectTypeArgs{...}
+type DomainRedirectTypeInput interface {
+	pulumi.Input
+
+	ToDomainRedirectTypeOutput() DomainRedirectTypeOutput
+	ToDomainRedirectTypeOutputWithContext(context.Context) DomainRedirectTypeOutput
+}
+
+var domainRedirectTypePtrType = reflect.TypeOf((**DomainRedirectType)(nil)).Elem()
+
+type DomainRedirectTypePtrInput interface {
+	pulumi.Input
+
+	ToDomainRedirectTypePtrOutput() DomainRedirectTypePtrOutput
+	ToDomainRedirectTypePtrOutputWithContext(context.Context) DomainRedirectTypePtrOutput
+}
+
+type domainRedirectTypePtr string
+
+func DomainRedirectTypePtr(v string) DomainRedirectTypePtrInput {
+	return (*domainRedirectTypePtr)(&v)
+}
+
+func (*domainRedirectTypePtr) ElementType() reflect.Type {
+	return domainRedirectTypePtrType
+}
+
+func (in *domainRedirectTypePtr) ToDomainRedirectTypePtrOutput() DomainRedirectTypePtrOutput {
+	return pulumi.ToOutput(in).(DomainRedirectTypePtrOutput)
+}
+
+func (in *domainRedirectTypePtr) ToDomainRedirectTypePtrOutputWithContext(ctx context.Context) DomainRedirectTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DomainRedirectTypePtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(DomainRedirectTypeOutput{})
+	pulumi.RegisterOutputType(DomainRedirectTypePtrOutput{})
 }

@@ -76,49 +76,9 @@ func GetTrial(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Trial resources.
 type trialState struct {
-	// The identifier of the client that originally requested this trial.
-	ClientId *string `pulumi:"clientId"`
-	// Time at which the trial's status changed to COMPLETED.
-	EndTime *string `pulumi:"endTime"`
-	// The final measurement containing the objective value.
-	FinalMeasurement *GoogleCloudMlV1__MeasurementResponse `pulumi:"finalMeasurement"`
-	// A human readable string describing why the trial is infeasible. This should only be set if trial_infeasible is true.
-	InfeasibleReason *string `pulumi:"infeasibleReason"`
-	// A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
-	Measurements []GoogleCloudMlV1__MeasurementResponse `pulumi:"measurements"`
-	// Name of the trial assigned by the service.
-	Name *string `pulumi:"name"`
-	// The parameters of the trial.
-	Parameters []GoogleCloudMlV1_Trial_ParameterResponse `pulumi:"parameters"`
-	// Time at which the trial was started.
-	StartTime *string `pulumi:"startTime"`
-	// The detailed state of a trial.
-	State *string `pulumi:"state"`
-	// If true, the parameters in this trial are not attempted again.
-	TrialInfeasible *bool `pulumi:"trialInfeasible"`
 }
 
 type TrialState struct {
-	// The identifier of the client that originally requested this trial.
-	ClientId pulumi.StringPtrInput
-	// Time at which the trial's status changed to COMPLETED.
-	EndTime pulumi.StringPtrInput
-	// The final measurement containing the objective value.
-	FinalMeasurement GoogleCloudMlV1__MeasurementResponsePtrInput
-	// A human readable string describing why the trial is infeasible. This should only be set if trial_infeasible is true.
-	InfeasibleReason pulumi.StringPtrInput
-	// A list of measurements that are strictly lexicographically ordered by their induced tuples (steps, elapsed_time). These are used for early stopping computations.
-	Measurements GoogleCloudMlV1__MeasurementResponseArrayInput
-	// Name of the trial assigned by the service.
-	Name pulumi.StringPtrInput
-	// The parameters of the trial.
-	Parameters GoogleCloudMlV1_Trial_ParameterResponseArrayInput
-	// Time at which the trial was started.
-	StartTime pulumi.StringPtrInput
-	// The detailed state of a trial.
-	State pulumi.StringPtrInput
-	// If true, the parameters in this trial are not attempted again.
-	TrialInfeasible pulumi.BoolPtrInput
 }
 
 func (TrialState) ElementType() reflect.Type {
@@ -135,8 +95,8 @@ type trialArgs struct {
 	Parameters []GoogleCloudMlV1_Trial_Parameter `pulumi:"parameters"`
 	Project    string                            `pulumi:"project"`
 	// The detailed state of a trial.
-	State   *string `pulumi:"state"`
-	StudyId string  `pulumi:"studyId"`
+	State   *TrialStateEnum `pulumi:"state"`
+	StudyId string          `pulumi:"studyId"`
 }
 
 // The set of arguments for constructing a Trial resource.
@@ -150,7 +110,7 @@ type TrialArgs struct {
 	Parameters GoogleCloudMlV1_Trial_ParameterArrayInput
 	Project    pulumi.StringInput
 	// The detailed state of a trial.
-	State   *TrialStateEnum
+	State   TrialStateEnumPtrInput
 	StudyId pulumi.StringInput
 }
 

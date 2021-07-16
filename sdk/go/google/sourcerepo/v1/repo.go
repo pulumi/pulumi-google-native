@@ -59,29 +59,9 @@ func GetRepo(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Repo resources.
 type repoState struct {
-	// How this repository mirrors a repository managed by another service. Read-only field.
-	MirrorConfig *MirrorConfigResponse `pulumi:"mirrorConfig"`
-	// Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
-	Name *string `pulumi:"name"`
-	// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
-	PubsubConfigs map[string]string `pulumi:"pubsubConfigs"`
-	// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
-	Size *string `pulumi:"size"`
-	// URL to clone the repository from Google Cloud Source Repositories. Read-only field.
-	Url *string `pulumi:"url"`
 }
 
 type RepoState struct {
-	// How this repository mirrors a repository managed by another service. Read-only field.
-	MirrorConfig MirrorConfigResponsePtrInput
-	// Resource name of the repository, of the form `projects//repos/`. The repo name may contain slashes. eg, `projects/myproject/repos/name/with/slash`
-	Name pulumi.StringPtrInput
-	// How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic names.
-	PubsubConfigs pulumi.StringMapInput
-	// The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.
-	Size pulumi.StringPtrInput
-	// URL to clone the repository from Google Cloud Source Repositories. Read-only field.
-	Url pulumi.StringPtrInput
 }
 
 func (RepoState) ElementType() reflect.Type {

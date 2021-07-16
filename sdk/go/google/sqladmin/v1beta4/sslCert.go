@@ -71,45 +71,9 @@ func GetSslCert(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SslCert resources.
 type sslCertState struct {
-	// PEM representation.
-	Cert *string `pulumi:"cert"`
-	// Serial number, as extracted from the certificate.
-	CertSerialNumber *string `pulumi:"certSerialNumber"`
-	// User supplied name. Constrained to [a-zA-Z.-_ ]+.
-	CommonName *string `pulumi:"commonName"`
-	// The time when the certificate was created in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*
-	CreateTime *string `pulumi:"createTime"`
-	// The time when the certificate expires in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
-	ExpirationTime *string `pulumi:"expirationTime"`
-	// Name of the database instance.
-	Instance *string `pulumi:"instance"`
-	// This is always *sql#sslCert*.
-	Kind *string `pulumi:"kind"`
-	// The URI of this resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// Sha1 Fingerprint.
-	Sha1Fingerprint *string `pulumi:"sha1Fingerprint"`
 }
 
 type SslCertState struct {
-	// PEM representation.
-	Cert pulumi.StringPtrInput
-	// Serial number, as extracted from the certificate.
-	CertSerialNumber pulumi.StringPtrInput
-	// User supplied name. Constrained to [a-zA-Z.-_ ]+.
-	CommonName pulumi.StringPtrInput
-	// The time when the certificate was created in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*
-	CreateTime pulumi.StringPtrInput
-	// The time when the certificate expires in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.
-	ExpirationTime pulumi.StringPtrInput
-	// Name of the database instance.
-	Instance pulumi.StringPtrInput
-	// This is always *sql#sslCert*.
-	Kind pulumi.StringPtrInput
-	// The URI of this resource.
-	SelfLink pulumi.StringPtrInput
-	// Sha1 Fingerprint.
-	Sha1Fingerprint pulumi.StringPtrInput
 }
 
 func (SslCertState) ElementType() reflect.Type {

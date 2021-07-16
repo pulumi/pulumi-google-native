@@ -65,41 +65,9 @@ func GetKey(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Key resources.
 type keyState struct {
-	// Settings for keys that can be used by Android apps.
-	AndroidSettings *GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse `pulumi:"androidSettings"`
-	// The timestamp corresponding to the creation of this Key.
-	CreateTime *string `pulumi:"createTime"`
-	// Human-readable display name of this key. Modifiable by user.
-	DisplayName *string `pulumi:"displayName"`
-	// Settings for keys that can be used by iOS apps.
-	IosSettings *GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponse `pulumi:"iosSettings"`
-	// See Creating and managing labels.
-	Labels map[string]string `pulumi:"labels"`
-	// The resource name for the Key in the format "projects/{project}/keys/{key}".
-	Name *string `pulumi:"name"`
-	// Options for user acceptance testing.
-	TestingOptions *GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse `pulumi:"testingOptions"`
-	// Settings for keys that can be used by websites.
-	WebSettings *GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponse `pulumi:"webSettings"`
 }
 
 type KeyState struct {
-	// Settings for keys that can be used by Android apps.
-	AndroidSettings GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponsePtrInput
-	// The timestamp corresponding to the creation of this Key.
-	CreateTime pulumi.StringPtrInput
-	// Human-readable display name of this key. Modifiable by user.
-	DisplayName pulumi.StringPtrInput
-	// Settings for keys that can be used by iOS apps.
-	IosSettings GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponsePtrInput
-	// See Creating and managing labels.
-	Labels pulumi.StringMapInput
-	// The resource name for the Key in the format "projects/{project}/keys/{key}".
-	Name pulumi.StringPtrInput
-	// Options for user acceptance testing.
-	TestingOptions GoogleCloudRecaptchaenterpriseV1TestingOptionsResponsePtrInput
-	// Settings for keys that can be used by websites.
-	WebSettings GoogleCloudRecaptchaenterpriseV1WebKeySettingsResponsePtrInput
 }
 
 func (KeyState) ElementType() reflect.Type {

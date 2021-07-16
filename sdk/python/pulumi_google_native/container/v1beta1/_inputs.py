@@ -43,21 +43,21 @@ __all__ = [
     'LinuxNodeConfigArgs',
     'MaintenancePolicyArgs',
     'MaintenanceWindowArgs',
-    'MasterArgs',
-    'MasterAuthArgs',
     'MasterAuthorizedNetworksConfigArgs',
+    'MasterAuthArgs',
+    'MasterArgs',
     'MaxPodsConstraintArgs',
     'NetworkConfigArgs',
-    'NetworkPolicyArgs',
     'NetworkPolicyConfigArgs',
-    'NodeConfigArgs',
+    'NetworkPolicyArgs',
     'NodeConfigDefaultsArgs',
+    'NodeConfigArgs',
     'NodeKubeletConfigArgs',
     'NodeManagementArgs',
     'NodeNetworkConfigArgs',
-    'NodePoolArgs',
     'NodePoolAutoscalingArgs',
     'NodePoolDefaultsArgs',
+    'NodePoolArgs',
     'NodeTaintArgs',
     'NotificationConfigArgs',
     'PodSecurityPolicyConfigArgs',
@@ -1549,12 +1549,43 @@ class MaintenanceWindowArgs:
 
 
 @pulumi.input_type
-class MasterArgs:
-    def __init__(__self__):
+class MasterAuthorizedNetworksConfigArgs:
+    def __init__(__self__, *,
+                 cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['CidrBlockArgs']]]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None):
         """
-        Master is the configuration for components on master.
+        Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
+        :param pulumi.Input[Sequence[pulumi.Input['CidrBlockArgs']]] cidr_blocks: cidr_blocks define up to 10 external networks that could access Kubernetes master through HTTPS.
+        :param pulumi.Input[bool] enabled: Whether or not master authorized networks is enabled.
         """
-        pass
+        if cidr_blocks is not None:
+            pulumi.set(__self__, "cidr_blocks", cidr_blocks)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="cidrBlocks")
+    def cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CidrBlockArgs']]]]:
+        """
+        cidr_blocks define up to 10 external networks that could access Kubernetes master through HTTPS.
+        """
+        return pulumi.get(self, "cidr_blocks")
+
+    @cidr_blocks.setter
+    def cidr_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CidrBlockArgs']]]]):
+        pulumi.set(self, "cidr_blocks", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not master authorized networks is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
 
 
 @pulumi.input_type
@@ -1626,43 +1657,12 @@ class MasterAuthArgs:
 
 
 @pulumi.input_type
-class MasterAuthorizedNetworksConfigArgs:
-    def __init__(__self__, *,
-                 cidr_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['CidrBlockArgs']]]] = None,
-                 enabled: Optional[pulumi.Input[bool]] = None):
+class MasterArgs:
+    def __init__(__self__):
         """
-        Configuration options for the master authorized networks feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod IPs.
-        :param pulumi.Input[Sequence[pulumi.Input['CidrBlockArgs']]] cidr_blocks: cidr_blocks define up to 10 external networks that could access Kubernetes master through HTTPS.
-        :param pulumi.Input[bool] enabled: Whether or not master authorized networks is enabled.
+        Master is the configuration for components on master.
         """
-        if cidr_blocks is not None:
-            pulumi.set(__self__, "cidr_blocks", cidr_blocks)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-
-    @property
-    @pulumi.getter(name="cidrBlocks")
-    def cidr_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CidrBlockArgs']]]]:
-        """
-        cidr_blocks define up to 10 external networks that could access Kubernetes master through HTTPS.
-        """
-        return pulumi.get(self, "cidr_blocks")
-
-    @cidr_blocks.setter
-    def cidr_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CidrBlockArgs']]]]):
-        pulumi.set(self, "cidr_blocks", value)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether or not master authorized networks is enabled.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enabled", value)
+        pass
 
 
 @pulumi.input_type
@@ -1810,6 +1810,30 @@ class NetworkConfigArgs:
 
 
 @pulumi.input_type
+class NetworkPolicyConfigArgs:
+    def __init__(__self__, *,
+                 disabled: Optional[pulumi.Input[bool]] = None):
+        """
+        Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
+        :param pulumi.Input[bool] disabled: Whether NetworkPolicy is enabled for this cluster.
+        """
+        if disabled is not None:
+            pulumi.set(__self__, "disabled", disabled)
+
+    @property
+    @pulumi.getter
+    def disabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether NetworkPolicy is enabled for this cluster.
+        """
+        return pulumi.get(self, "disabled")
+
+    @disabled.setter
+    def disabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disabled", value)
+
+
+@pulumi.input_type
 class NetworkPolicyArgs:
     def __init__(__self__, *,
                  enabled: Optional[pulumi.Input[bool]] = None,
@@ -1850,27 +1874,12 @@ class NetworkPolicyArgs:
 
 
 @pulumi.input_type
-class NetworkPolicyConfigArgs:
-    def __init__(__self__, *,
-                 disabled: Optional[pulumi.Input[bool]] = None):
+class NodeConfigDefaultsArgs:
+    def __init__(__self__):
         """
-        Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
-        :param pulumi.Input[bool] disabled: Whether NetworkPolicy is enabled for this cluster.
+        Subset of NodeConfig message that has defaults.
         """
-        if disabled is not None:
-            pulumi.set(__self__, "disabled", disabled)
-
-    @property
-    @pulumi.getter
-    def disabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether NetworkPolicy is enabled for this cluster.
-        """
-        return pulumi.get(self, "disabled")
-
-    @disabled.setter
-    def disabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "disabled", value)
+        pass
 
 
 @pulumi.input_type
@@ -2250,15 +2259,6 @@ class NodeConfigArgs:
 
 
 @pulumi.input_type
-class NodeConfigDefaultsArgs:
-    def __init__(__self__):
-        """
-        Subset of NodeConfig message that has defaults.
-        """
-        pass
-
-
-@pulumi.input_type
 class NodeKubeletConfigArgs:
     def __init__(__self__, *,
                  cpu_cfs_quota: Optional[pulumi.Input[bool]] = None,
@@ -2424,6 +2424,102 @@ class NodeNetworkConfigArgs:
     @pod_range.setter
     def pod_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "pod_range", value)
+
+
+@pulumi.input_type
+class NodePoolAutoscalingArgs:
+    def __init__(__self__, *,
+                 autoprovisioned: Optional[pulumi.Input[bool]] = None,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 max_node_count: Optional[pulumi.Input[int]] = None,
+                 min_node_count: Optional[pulumi.Input[int]] = None):
+        """
+        NodePoolAutoscaling contains information required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
+        :param pulumi.Input[bool] autoprovisioned: Can this node pool be deleted automatically.
+        :param pulumi.Input[bool] enabled: Is autoscaling enabled for this node pool.
+        :param pulumi.Input[int] max_node_count: Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to enough quota to scale up the cluster.
+        :param pulumi.Input[int] min_node_count: Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+        """
+        if autoprovisioned is not None:
+            pulumi.set(__self__, "autoprovisioned", autoprovisioned)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if max_node_count is not None:
+            pulumi.set(__self__, "max_node_count", max_node_count)
+        if min_node_count is not None:
+            pulumi.set(__self__, "min_node_count", min_node_count)
+
+    @property
+    @pulumi.getter
+    def autoprovisioned(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Can this node pool be deleted automatically.
+        """
+        return pulumi.get(self, "autoprovisioned")
+
+    @autoprovisioned.setter
+    def autoprovisioned(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "autoprovisioned", value)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Is autoscaling enabled for this node pool.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="maxNodeCount")
+    def max_node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to enough quota to scale up the cluster.
+        """
+        return pulumi.get(self, "max_node_count")
+
+    @max_node_count.setter
+    def max_node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_node_count", value)
+
+    @property
+    @pulumi.getter(name="minNodeCount")
+    def min_node_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
+        """
+        return pulumi.get(self, "min_node_count")
+
+    @min_node_count.setter
+    def min_node_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "min_node_count", value)
+
+
+@pulumi.input_type
+class NodePoolDefaultsArgs:
+    def __init__(__self__, *,
+                 node_config_defaults: Optional[pulumi.Input['NodeConfigDefaultsArgs']] = None):
+        """
+        Subset of Nodepool message that has defaults.
+        :param pulumi.Input['NodeConfigDefaultsArgs'] node_config_defaults: Subset of NodeConfig message that has defaults.
+        """
+        if node_config_defaults is not None:
+            pulumi.set(__self__, "node_config_defaults", node_config_defaults)
+
+    @property
+    @pulumi.getter(name="nodeConfigDefaults")
+    def node_config_defaults(self) -> Optional[pulumi.Input['NodeConfigDefaultsArgs']]:
+        """
+        Subset of NodeConfig message that has defaults.
+        """
+        return pulumi.get(self, "node_config_defaults")
+
+    @node_config_defaults.setter
+    def node_config_defaults(self, value: Optional[pulumi.Input['NodeConfigDefaultsArgs']]):
+        pulumi.set(self, "node_config_defaults", value)
 
 
 @pulumi.input_type
@@ -2608,102 +2704,6 @@ class NodePoolArgs:
     @version.setter
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
-
-
-@pulumi.input_type
-class NodePoolAutoscalingArgs:
-    def __init__(__self__, *,
-                 autoprovisioned: Optional[pulumi.Input[bool]] = None,
-                 enabled: Optional[pulumi.Input[bool]] = None,
-                 max_node_count: Optional[pulumi.Input[int]] = None,
-                 min_node_count: Optional[pulumi.Input[int]] = None):
-        """
-        NodePoolAutoscaling contains information required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
-        :param pulumi.Input[bool] autoprovisioned: Can this node pool be deleted automatically.
-        :param pulumi.Input[bool] enabled: Is autoscaling enabled for this node pool.
-        :param pulumi.Input[int] max_node_count: Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to enough quota to scale up the cluster.
-        :param pulumi.Input[int] min_node_count: Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
-        """
-        if autoprovisioned is not None:
-            pulumi.set(__self__, "autoprovisioned", autoprovisioned)
-        if enabled is not None:
-            pulumi.set(__self__, "enabled", enabled)
-        if max_node_count is not None:
-            pulumi.set(__self__, "max_node_count", max_node_count)
-        if min_node_count is not None:
-            pulumi.set(__self__, "min_node_count", min_node_count)
-
-    @property
-    @pulumi.getter
-    def autoprovisioned(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Can this node pool be deleted automatically.
-        """
-        return pulumi.get(self, "autoprovisioned")
-
-    @autoprovisioned.setter
-    def autoprovisioned(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "autoprovisioned", value)
-
-    @property
-    @pulumi.getter
-    def enabled(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Is autoscaling enabled for this node pool.
-        """
-        return pulumi.get(self, "enabled")
-
-    @enabled.setter
-    def enabled(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "enabled", value)
-
-    @property
-    @pulumi.getter(name="maxNodeCount")
-    def max_node_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        Maximum number of nodes in the NodePool. Must be >= min_node_count. There has to enough quota to scale up the cluster.
-        """
-        return pulumi.get(self, "max_node_count")
-
-    @max_node_count.setter
-    def max_node_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "max_node_count", value)
-
-    @property
-    @pulumi.getter(name="minNodeCount")
-    def min_node_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        Minimum number of nodes in the NodePool. Must be >= 1 and <= max_node_count.
-        """
-        return pulumi.get(self, "min_node_count")
-
-    @min_node_count.setter
-    def min_node_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "min_node_count", value)
-
-
-@pulumi.input_type
-class NodePoolDefaultsArgs:
-    def __init__(__self__, *,
-                 node_config_defaults: Optional[pulumi.Input['NodeConfigDefaultsArgs']] = None):
-        """
-        Subset of Nodepool message that has defaults.
-        :param pulumi.Input['NodeConfigDefaultsArgs'] node_config_defaults: Subset of NodeConfig message that has defaults.
-        """
-        if node_config_defaults is not None:
-            pulumi.set(__self__, "node_config_defaults", node_config_defaults)
-
-    @property
-    @pulumi.getter(name="nodeConfigDefaults")
-    def node_config_defaults(self) -> Optional[pulumi.Input['NodeConfigDefaultsArgs']]:
-        """
-        Subset of NodeConfig message that has defaults.
-        """
-        return pulumi.get(self, "node_config_defaults")
-
-    @node_config_defaults.setter
-    def node_config_defaults(self, value: Optional[pulumi.Input['NodeConfigDefaultsArgs']]):
-        pulumi.set(self, "node_config_defaults", value)
 
 
 @pulumi.input_type

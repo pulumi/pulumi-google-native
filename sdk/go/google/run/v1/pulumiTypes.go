@@ -491,7 +491,7 @@ type AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *string `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
@@ -510,7 +510,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *AuditLogConfigLogType `pulumi:"logType"`
+	LogType AuditLogConfigLogTypePtrInput `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -571,8 +571,8 @@ func (o AuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
 }
 
 // The log type that this config enables.
-func (o AuditLogConfigOutput) LogType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AuditLogConfig) *string { return v.LogType }).(pulumi.StringPtrOutput)
+func (o AuditLogConfigOutput) LogType() AuditLogConfigLogTypePtrOutput {
+	return o.ApplyT(func(v AuditLogConfig) *AuditLogConfigLogType { return v.LogType }).(AuditLogConfigLogTypePtrOutput)
 }
 
 type AuditLogConfigArrayOutput struct{ *pulumi.OutputState }
@@ -2452,7 +2452,7 @@ func (o ContainerResponseArrayOutput) Index(i pulumi.IntInput) ContainerResponse
 // The desired state of the Domain Mapping.
 type DomainMappingSpec struct {
 	// The mode of the certificate.
-	CertificateMode *string `pulumi:"certificateMode"`
+	CertificateMode *DomainMappingSpecCertificateMode `pulumi:"certificateMode"`
 	// If set, the mapping will override any mapping set before this spec was set. It is recommended that the user leaves this empty to receive an error warning about a potential conflict and only set it once the respective UI has given such a warning.
 	ForceOverride *bool `pulumi:"forceOverride"`
 	// The name of the Knative Route that this DomainMapping applies to. The route must exist.
@@ -2473,7 +2473,7 @@ type DomainMappingSpecInput interface {
 // The desired state of the Domain Mapping.
 type DomainMappingSpecArgs struct {
 	// The mode of the certificate.
-	CertificateMode *DomainMappingSpecCertificateMode `pulumi:"certificateMode"`
+	CertificateMode DomainMappingSpecCertificateModePtrInput `pulumi:"certificateMode"`
 	// If set, the mapping will override any mapping set before this spec was set. It is recommended that the user leaves this empty to receive an error warning about a potential conflict and only set it once the respective UI has given such a warning.
 	ForceOverride pulumi.BoolPtrInput `pulumi:"forceOverride"`
 	// The name of the Knative Route that this DomainMapping applies to. The route must exist.
@@ -2559,8 +2559,8 @@ func (o DomainMappingSpecOutput) ToDomainMappingSpecPtrOutputWithContext(ctx con
 }
 
 // The mode of the certificate.
-func (o DomainMappingSpecOutput) CertificateMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DomainMappingSpec) *string { return v.CertificateMode }).(pulumi.StringPtrOutput)
+func (o DomainMappingSpecOutput) CertificateMode() DomainMappingSpecCertificateModePtrOutput {
+	return o.ApplyT(func(v DomainMappingSpec) *DomainMappingSpecCertificateMode { return v.CertificateMode }).(DomainMappingSpecCertificateModePtrOutput)
 }
 
 // If set, the mapping will override any mapping set before this spec was set. It is recommended that the user leaves this empty to receive an error warning about a potential conflict and only set it once the respective UI has given such a warning.
@@ -2592,13 +2592,13 @@ func (o DomainMappingSpecPtrOutput) Elem() DomainMappingSpecOutput {
 }
 
 // The mode of the certificate.
-func (o DomainMappingSpecPtrOutput) CertificateMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainMappingSpec) *string {
+func (o DomainMappingSpecPtrOutput) CertificateMode() DomainMappingSpecCertificateModePtrOutput {
+	return o.ApplyT(func(v *DomainMappingSpec) *DomainMappingSpecCertificateMode {
 		if v == nil {
 			return nil
 		}
 		return v.CertificateMode
-	}).(pulumi.StringPtrOutput)
+	}).(DomainMappingSpecCertificateModePtrOutput)
 }
 
 // If set, the mapping will override any mapping set before this spec was set. It is recommended that the user leaves this empty to receive an error warning about a potential conflict and only set it once the respective UI has given such a warning.
@@ -7052,7 +7052,7 @@ type ResourceRecord struct {
 	// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
 	Rrdata *string `pulumi:"rrdata"`
 	// Resource record type. Example: `AAAA`.
-	Type *string `pulumi:"type"`
+	Type *ResourceRecordType `pulumi:"type"`
 }
 
 // ResourceRecordInput is an input type that accepts ResourceRecordArgs and ResourceRecordOutput values.
@@ -7073,7 +7073,7 @@ type ResourceRecordArgs struct {
 	// Data for this record. Values vary by record type, as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1).
 	Rrdata pulumi.StringPtrInput `pulumi:"rrdata"`
 	// Resource record type. Example: `AAAA`.
-	Type *ResourceRecordType `pulumi:"type"`
+	Type ResourceRecordTypePtrInput `pulumi:"type"`
 }
 
 func (ResourceRecordArgs) ElementType() reflect.Type {
@@ -7139,8 +7139,8 @@ func (o ResourceRecordOutput) Rrdata() pulumi.StringPtrOutput {
 }
 
 // Resource record type. Example: `AAAA`.
-func (o ResourceRecordOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ResourceRecord) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o ResourceRecordOutput) Type() ResourceRecordTypePtrOutput {
+	return o.ApplyT(func(v ResourceRecord) *ResourceRecordType { return v.Type }).(ResourceRecordTypePtrOutput)
 }
 
 type ResourceRecordArrayOutput struct{ *pulumi.OutputState }

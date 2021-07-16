@@ -11,7 +11,7 @@ import (
 )
 
 // The logs to use as input for the Replay.
-type GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource pulumi.String
+type GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource string
 
 const (
 	// An unspecified log source. If the log source is unspecified, the Replay defaults to using `RECENT_ACCESSES`.
@@ -21,7 +21,23 @@ const (
 )
 
 func (GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource)(nil)).Elem()
+}
+
+func (e GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput() GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput {
+	return pulumi.ToOutput(e).(GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput)
+}
+
+func (e GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput)
+}
+
+func (e GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput() GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput {
+	return e.ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput {
+	return GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource(e).ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutputWithContext(ctx).ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutputWithContext(ctx)
 }
 
 func (e GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource) ToStringOutput() pulumi.StringOutput {
@@ -38,4 +54,130 @@ func (e GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource) ToStringPtrOutpu
 
 func (e GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource)(nil)).Elem()
+}
+
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput() GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput() GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput {
+	return o.ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource) *GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource {
+		return &v
+	}).(GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput)
+}
+
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput) ElementType() reflect.Type {
+	return googleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrType
+}
+
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput() GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput {
+	return o
+}
+
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput) Elem() GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput {
+	return o.ApplyT(func(v *GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource) GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource {
+		var ret GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput)
+}
+
+// GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceInput is an input type that accepts GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceArgs and GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput values.
+// You can construct a concrete instance of `GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceInput` via:
+//
+//          GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceArgs{...}
+type GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceInput interface {
+	pulumi.Input
+
+	ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput() GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput
+	ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutputWithContext(context.Context) GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput
+}
+
+var googleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrType = reflect.TypeOf((**GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSource)(nil)).Elem()
+
+type GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput() GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput
+	ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutputWithContext(context.Context) GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput
+}
+
+type googleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtr string
+
+func GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtr(v string) GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrInput {
+	return (*googleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtr)(&v)
+}
+
+func (*googleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtr) ElementType() reflect.Type {
+	return googleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrType
+}
+
+func (in *googleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtr) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput() GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput)
+}
+
+func (in *googleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtr) ToGoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutputWithContext(ctx context.Context) GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourceOutput{})
+	pulumi.RegisterOutputType(GoogleCloudPolicysimulatorV1beta1ReplayConfigLogSourcePtrOutput{})
 }

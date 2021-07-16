@@ -11,7 +11,7 @@ import (
 )
 
 // The type of the entry. Only used for Entries with types in the EntryType enum.
-type EntryType pulumi.String
+type EntryType string
 
 const (
 	// Default unknown type.
@@ -27,7 +27,23 @@ const (
 )
 
 func (EntryType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*EntryType)(nil)).Elem()
+}
+
+func (e EntryType) ToEntryTypeOutput() EntryTypeOutput {
+	return pulumi.ToOutput(e).(EntryTypeOutput)
+}
+
+func (e EntryType) ToEntryTypeOutputWithContext(ctx context.Context) EntryTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EntryTypeOutput)
+}
+
+func (e EntryType) ToEntryTypePtrOutput() EntryTypePtrOutput {
+	return e.ToEntryTypePtrOutputWithContext(context.Background())
+}
+
+func (e EntryType) ToEntryTypePtrOutputWithContext(ctx context.Context) EntryTypePtrOutput {
+	return EntryType(e).ToEntryTypeOutputWithContext(ctx).ToEntryTypePtrOutputWithContext(ctx)
 }
 
 func (e EntryType) ToStringOutput() pulumi.StringOutput {
@@ -46,7 +62,128 @@ func (e EntryType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.Stri
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type TaxonomyActivatedPolicyTypesItem pulumi.String
+type EntryTypeOutput struct{ *pulumi.OutputState }
+
+func (EntryTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntryType)(nil)).Elem()
+}
+
+func (o EntryTypeOutput) ToEntryTypeOutput() EntryTypeOutput {
+	return o
+}
+
+func (o EntryTypeOutput) ToEntryTypeOutputWithContext(ctx context.Context) EntryTypeOutput {
+	return o
+}
+
+func (o EntryTypeOutput) ToEntryTypePtrOutput() EntryTypePtrOutput {
+	return o.ToEntryTypePtrOutputWithContext(context.Background())
+}
+
+func (o EntryTypeOutput) ToEntryTypePtrOutputWithContext(ctx context.Context) EntryTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntryType) *EntryType {
+		return &v
+	}).(EntryTypePtrOutput)
+}
+
+func (o EntryTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EntryTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EntryType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EntryTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EntryTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EntryType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EntryTypePtrOutput struct{ *pulumi.OutputState }
+
+func (EntryTypePtrOutput) ElementType() reflect.Type {
+	return entryTypePtrType
+}
+
+func (o EntryTypePtrOutput) ToEntryTypePtrOutput() EntryTypePtrOutput {
+	return o
+}
+
+func (o EntryTypePtrOutput) ToEntryTypePtrOutputWithContext(ctx context.Context) EntryTypePtrOutput {
+	return o
+}
+
+func (o EntryTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EntryTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EntryType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EntryTypePtrOutput) Elem() EntryTypeOutput {
+	return o.ApplyT(func(v *EntryType) EntryType {
+		var ret EntryType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(EntryTypeOutput)
+}
+
+// EntryTypeInput is an input type that accepts EntryTypeArgs and EntryTypeOutput values.
+// You can construct a concrete instance of `EntryTypeInput` via:
+//
+//          EntryTypeArgs{...}
+type EntryTypeInput interface {
+	pulumi.Input
+
+	ToEntryTypeOutput() EntryTypeOutput
+	ToEntryTypeOutputWithContext(context.Context) EntryTypeOutput
+}
+
+var entryTypePtrType = reflect.TypeOf((**EntryType)(nil)).Elem()
+
+type EntryTypePtrInput interface {
+	pulumi.Input
+
+	ToEntryTypePtrOutput() EntryTypePtrOutput
+	ToEntryTypePtrOutputWithContext(context.Context) EntryTypePtrOutput
+}
+
+type entryTypePtr string
+
+func EntryTypePtr(v string) EntryTypePtrInput {
+	return (*entryTypePtr)(&v)
+}
+
+func (*entryTypePtr) ElementType() reflect.Type {
+	return entryTypePtrType
+}
+
+func (in *entryTypePtr) ToEntryTypePtrOutput() EntryTypePtrOutput {
+	return pulumi.ToOutput(in).(EntryTypePtrOutput)
+}
+
+func (in *entryTypePtr) ToEntryTypePtrOutputWithContext(ctx context.Context) EntryTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EntryTypePtrOutput)
+}
+
+type TaxonomyActivatedPolicyTypesItem string
 
 const (
 	// Unspecified policy type.
@@ -56,7 +193,23 @@ const (
 )
 
 func (TaxonomyActivatedPolicyTypesItem) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*TaxonomyActivatedPolicyTypesItem)(nil)).Elem()
+}
+
+func (e TaxonomyActivatedPolicyTypesItem) ToTaxonomyActivatedPolicyTypesItemOutput() TaxonomyActivatedPolicyTypesItemOutput {
+	return pulumi.ToOutput(e).(TaxonomyActivatedPolicyTypesItemOutput)
+}
+
+func (e TaxonomyActivatedPolicyTypesItem) ToTaxonomyActivatedPolicyTypesItemOutputWithContext(ctx context.Context) TaxonomyActivatedPolicyTypesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TaxonomyActivatedPolicyTypesItemOutput)
+}
+
+func (e TaxonomyActivatedPolicyTypesItem) ToTaxonomyActivatedPolicyTypesItemPtrOutput() TaxonomyActivatedPolicyTypesItemPtrOutput {
+	return e.ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (e TaxonomyActivatedPolicyTypesItem) ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(ctx context.Context) TaxonomyActivatedPolicyTypesItemPtrOutput {
+	return TaxonomyActivatedPolicyTypesItem(e).ToTaxonomyActivatedPolicyTypesItemOutputWithContext(ctx).ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(ctx)
 }
 
 func (e TaxonomyActivatedPolicyTypesItem) ToStringOutput() pulumi.StringOutput {
@@ -73,6 +226,127 @@ func (e TaxonomyActivatedPolicyTypesItem) ToStringPtrOutput() pulumi.StringPtrOu
 
 func (e TaxonomyActivatedPolicyTypesItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TaxonomyActivatedPolicyTypesItemOutput struct{ *pulumi.OutputState }
+
+func (TaxonomyActivatedPolicyTypesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaxonomyActivatedPolicyTypesItem)(nil)).Elem()
+}
+
+func (o TaxonomyActivatedPolicyTypesItemOutput) ToTaxonomyActivatedPolicyTypesItemOutput() TaxonomyActivatedPolicyTypesItemOutput {
+	return o
+}
+
+func (o TaxonomyActivatedPolicyTypesItemOutput) ToTaxonomyActivatedPolicyTypesItemOutputWithContext(ctx context.Context) TaxonomyActivatedPolicyTypesItemOutput {
+	return o
+}
+
+func (o TaxonomyActivatedPolicyTypesItemOutput) ToTaxonomyActivatedPolicyTypesItemPtrOutput() TaxonomyActivatedPolicyTypesItemPtrOutput {
+	return o.ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (o TaxonomyActivatedPolicyTypesItemOutput) ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(ctx context.Context) TaxonomyActivatedPolicyTypesItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaxonomyActivatedPolicyTypesItem) *TaxonomyActivatedPolicyTypesItem {
+		return &v
+	}).(TaxonomyActivatedPolicyTypesItemPtrOutput)
+}
+
+func (o TaxonomyActivatedPolicyTypesItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TaxonomyActivatedPolicyTypesItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TaxonomyActivatedPolicyTypesItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TaxonomyActivatedPolicyTypesItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TaxonomyActivatedPolicyTypesItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TaxonomyActivatedPolicyTypesItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TaxonomyActivatedPolicyTypesItemPtrOutput struct{ *pulumi.OutputState }
+
+func (TaxonomyActivatedPolicyTypesItemPtrOutput) ElementType() reflect.Type {
+	return taxonomyActivatedPolicyTypesItemPtrType
+}
+
+func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToTaxonomyActivatedPolicyTypesItemPtrOutput() TaxonomyActivatedPolicyTypesItemPtrOutput {
+	return o
+}
+
+func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(ctx context.Context) TaxonomyActivatedPolicyTypesItemPtrOutput {
+	return o
+}
+
+func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TaxonomyActivatedPolicyTypesItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TaxonomyActivatedPolicyTypesItemPtrOutput) Elem() TaxonomyActivatedPolicyTypesItemOutput {
+	return o.ApplyT(func(v *TaxonomyActivatedPolicyTypesItem) TaxonomyActivatedPolicyTypesItem {
+		var ret TaxonomyActivatedPolicyTypesItem
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(TaxonomyActivatedPolicyTypesItemOutput)
+}
+
+// TaxonomyActivatedPolicyTypesItemInput is an input type that accepts TaxonomyActivatedPolicyTypesItemArgs and TaxonomyActivatedPolicyTypesItemOutput values.
+// You can construct a concrete instance of `TaxonomyActivatedPolicyTypesItemInput` via:
+//
+//          TaxonomyActivatedPolicyTypesItemArgs{...}
+type TaxonomyActivatedPolicyTypesItemInput interface {
+	pulumi.Input
+
+	ToTaxonomyActivatedPolicyTypesItemOutput() TaxonomyActivatedPolicyTypesItemOutput
+	ToTaxonomyActivatedPolicyTypesItemOutputWithContext(context.Context) TaxonomyActivatedPolicyTypesItemOutput
+}
+
+var taxonomyActivatedPolicyTypesItemPtrType = reflect.TypeOf((**TaxonomyActivatedPolicyTypesItem)(nil)).Elem()
+
+type TaxonomyActivatedPolicyTypesItemPtrInput interface {
+	pulumi.Input
+
+	ToTaxonomyActivatedPolicyTypesItemPtrOutput() TaxonomyActivatedPolicyTypesItemPtrOutput
+	ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(context.Context) TaxonomyActivatedPolicyTypesItemPtrOutput
+}
+
+type taxonomyActivatedPolicyTypesItemPtr string
+
+func TaxonomyActivatedPolicyTypesItemPtr(v string) TaxonomyActivatedPolicyTypesItemPtrInput {
+	return (*taxonomyActivatedPolicyTypesItemPtr)(&v)
+}
+
+func (*taxonomyActivatedPolicyTypesItemPtr) ElementType() reflect.Type {
+	return taxonomyActivatedPolicyTypesItemPtrType
+}
+
+func (in *taxonomyActivatedPolicyTypesItemPtr) ToTaxonomyActivatedPolicyTypesItemPtrOutput() TaxonomyActivatedPolicyTypesItemPtrOutput {
+	return pulumi.ToOutput(in).(TaxonomyActivatedPolicyTypesItemPtrOutput)
+}
+
+func (in *taxonomyActivatedPolicyTypesItemPtr) ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(ctx context.Context) TaxonomyActivatedPolicyTypesItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TaxonomyActivatedPolicyTypesItemPtrOutput)
 }
 
 // TaxonomyActivatedPolicyTypesItemArrayInput is an input type that accepts TaxonomyActivatedPolicyTypesItemArray and TaxonomyActivatedPolicyTypesItemArrayOutput values.
@@ -114,8 +388,16 @@ func (o TaxonomyActivatedPolicyTypesItemArrayOutput) ToTaxonomyActivatedPolicyTy
 	return o
 }
 
-func (o TaxonomyActivatedPolicyTypesItemArrayOutput) Index(i pulumi.IntInput) pulumi.StringOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) pulumi.StringOutput {
-		return vs[0].([]TaxonomyActivatedPolicyTypesItem)[vs[1].(int)].ToStringOutput()
-	}).(pulumi.StringOutput)
+func (o TaxonomyActivatedPolicyTypesItemArrayOutput) Index(i pulumi.IntInput) TaxonomyActivatedPolicyTypesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaxonomyActivatedPolicyTypesItemOutput {
+		return vs[0].([]TaxonomyActivatedPolicyTypesItem)[vs[1].(int)].ToTaxonomyActivatedPolicyTypesItemOutput()
+	}).(TaxonomyActivatedPolicyTypesItemOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(EntryTypeOutput{})
+	pulumi.RegisterOutputType(EntryTypePtrOutput{})
+	pulumi.RegisterOutputType(TaxonomyActivatedPolicyTypesItemOutput{})
+	pulumi.RegisterOutputType(TaxonomyActivatedPolicyTypesItemPtrOutput{})
+	pulumi.RegisterOutputType(TaxonomyActivatedPolicyTypesItemArrayOutput{})
 }

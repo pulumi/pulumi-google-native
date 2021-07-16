@@ -63,37 +63,9 @@ func GetEnvironment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Environment resources.
 type environmentState struct {
-	// Creation time of this environment as milliseconds since epoch.
-	CreatedAt *string `pulumi:"createdAt"`
-	// Optional. Description of the environment.
-	Description *string `pulumi:"description"`
-	// Optional. Display name for this environment.
-	DisplayName *string `pulumi:"displayName"`
-	// Last modification time of this environment as milliseconds since epoch.
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
-	Name *string `pulumi:"name"`
-	// Optional. Key-value pairs that may be used for customizing the environment.
-	Properties *GoogleCloudApigeeV1PropertiesResponse `pulumi:"properties"`
-	// State of the environment. Values other than ACTIVE means the resource is not ready to use.
-	State *string `pulumi:"state"`
 }
 
 type EnvironmentState struct {
-	// Creation time of this environment as milliseconds since epoch.
-	CreatedAt pulumi.StringPtrInput
-	// Optional. Description of the environment.
-	Description pulumi.StringPtrInput
-	// Optional. Display name for this environment.
-	DisplayName pulumi.StringPtrInput
-	// Last modification time of this environment as milliseconds since epoch.
-	LastModifiedAt pulumi.StringPtrInput
-	// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
-	Name pulumi.StringPtrInput
-	// Optional. Key-value pairs that may be used for customizing the environment.
-	Properties GoogleCloudApigeeV1PropertiesResponsePtrInput
-	// State of the environment. Values other than ACTIVE means the resource is not ready to use.
-	State pulumi.StringPtrInput
 }
 
 func (EnvironmentState) ElementType() reflect.Type {

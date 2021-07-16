@@ -2063,9 +2063,9 @@ func (o AnyResponseOutput) Value() pulumi.StringOutput {
 
 // Encapsulates the metadata for basic sample series represented by a line chart
 type BasicPerfSampleSeries struct {
-	PerfMetricType    *string `pulumi:"perfMetricType"`
-	PerfUnit          *string `pulumi:"perfUnit"`
-	SampleSeriesLabel *string `pulumi:"sampleSeriesLabel"`
+	PerfMetricType    *BasicPerfSampleSeriesPerfMetricType    `pulumi:"perfMetricType"`
+	PerfUnit          *BasicPerfSampleSeriesPerfUnit          `pulumi:"perfUnit"`
+	SampleSeriesLabel *BasicPerfSampleSeriesSampleSeriesLabel `pulumi:"sampleSeriesLabel"`
 }
 
 // BasicPerfSampleSeriesInput is an input type that accepts BasicPerfSampleSeriesArgs and BasicPerfSampleSeriesOutput values.
@@ -2081,9 +2081,9 @@ type BasicPerfSampleSeriesInput interface {
 
 // Encapsulates the metadata for basic sample series represented by a line chart
 type BasicPerfSampleSeriesArgs struct {
-	PerfMetricType    *BasicPerfSampleSeriesPerfMetricType    `pulumi:"perfMetricType"`
-	PerfUnit          *BasicPerfSampleSeriesPerfUnit          `pulumi:"perfUnit"`
-	SampleSeriesLabel *BasicPerfSampleSeriesSampleSeriesLabel `pulumi:"sampleSeriesLabel"`
+	PerfMetricType    BasicPerfSampleSeriesPerfMetricTypePtrInput    `pulumi:"perfMetricType"`
+	PerfUnit          BasicPerfSampleSeriesPerfUnitPtrInput          `pulumi:"perfUnit"`
+	SampleSeriesLabel BasicPerfSampleSeriesSampleSeriesLabelPtrInput `pulumi:"sampleSeriesLabel"`
 }
 
 func (BasicPerfSampleSeriesArgs) ElementType() reflect.Type {
@@ -2163,16 +2163,16 @@ func (o BasicPerfSampleSeriesOutput) ToBasicPerfSampleSeriesPtrOutputWithContext
 		return &v
 	}).(BasicPerfSampleSeriesPtrOutput)
 }
-func (o BasicPerfSampleSeriesOutput) PerfMetricType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BasicPerfSampleSeries) *string { return v.PerfMetricType }).(pulumi.StringPtrOutput)
+func (o BasicPerfSampleSeriesOutput) PerfMetricType() BasicPerfSampleSeriesPerfMetricTypePtrOutput {
+	return o.ApplyT(func(v BasicPerfSampleSeries) *BasicPerfSampleSeriesPerfMetricType { return v.PerfMetricType }).(BasicPerfSampleSeriesPerfMetricTypePtrOutput)
 }
 
-func (o BasicPerfSampleSeriesOutput) PerfUnit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BasicPerfSampleSeries) *string { return v.PerfUnit }).(pulumi.StringPtrOutput)
+func (o BasicPerfSampleSeriesOutput) PerfUnit() BasicPerfSampleSeriesPerfUnitPtrOutput {
+	return o.ApplyT(func(v BasicPerfSampleSeries) *BasicPerfSampleSeriesPerfUnit { return v.PerfUnit }).(BasicPerfSampleSeriesPerfUnitPtrOutput)
 }
 
-func (o BasicPerfSampleSeriesOutput) SampleSeriesLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BasicPerfSampleSeries) *string { return v.SampleSeriesLabel }).(pulumi.StringPtrOutput)
+func (o BasicPerfSampleSeriesOutput) SampleSeriesLabel() BasicPerfSampleSeriesSampleSeriesLabelPtrOutput {
+	return o.ApplyT(func(v BasicPerfSampleSeries) *BasicPerfSampleSeriesSampleSeriesLabel { return v.SampleSeriesLabel }).(BasicPerfSampleSeriesSampleSeriesLabelPtrOutput)
 }
 
 type BasicPerfSampleSeriesPtrOutput struct{ *pulumi.OutputState }
@@ -2193,31 +2193,31 @@ func (o BasicPerfSampleSeriesPtrOutput) Elem() BasicPerfSampleSeriesOutput {
 	return o.ApplyT(func(v *BasicPerfSampleSeries) BasicPerfSampleSeries { return *v }).(BasicPerfSampleSeriesOutput)
 }
 
-func (o BasicPerfSampleSeriesPtrOutput) PerfMetricType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BasicPerfSampleSeries) *string {
+func (o BasicPerfSampleSeriesPtrOutput) PerfMetricType() BasicPerfSampleSeriesPerfMetricTypePtrOutput {
+	return o.ApplyT(func(v *BasicPerfSampleSeries) *BasicPerfSampleSeriesPerfMetricType {
 		if v == nil {
 			return nil
 		}
 		return v.PerfMetricType
-	}).(pulumi.StringPtrOutput)
+	}).(BasicPerfSampleSeriesPerfMetricTypePtrOutput)
 }
 
-func (o BasicPerfSampleSeriesPtrOutput) PerfUnit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BasicPerfSampleSeries) *string {
+func (o BasicPerfSampleSeriesPtrOutput) PerfUnit() BasicPerfSampleSeriesPerfUnitPtrOutput {
+	return o.ApplyT(func(v *BasicPerfSampleSeries) *BasicPerfSampleSeriesPerfUnit {
 		if v == nil {
 			return nil
 		}
 		return v.PerfUnit
-	}).(pulumi.StringPtrOutput)
+	}).(BasicPerfSampleSeriesPerfUnitPtrOutput)
 }
 
-func (o BasicPerfSampleSeriesPtrOutput) SampleSeriesLabel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BasicPerfSampleSeries) *string {
+func (o BasicPerfSampleSeriesPtrOutput) SampleSeriesLabel() BasicPerfSampleSeriesSampleSeriesLabelPtrOutput {
+	return o.ApplyT(func(v *BasicPerfSampleSeries) *BasicPerfSampleSeriesSampleSeriesLabel {
 		if v == nil {
 			return nil
 		}
 		return v.SampleSeriesLabel
-	}).(pulumi.StringPtrOutput)
+	}).(BasicPerfSampleSeriesSampleSeriesLabelPtrOutput)
 }
 
 // Encapsulates the metadata for basic sample series represented by a line chart
@@ -3807,8 +3807,8 @@ func (o InconclusiveDetailResponsePtrOutput) InfrastructureFailure() pulumi.Bool
 // Step Id and outcome of each individual step that was run as a group with other steps with the same configuration.
 type IndividualOutcome struct {
 	// Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0.
-	MultistepNumber *int    `pulumi:"multistepNumber"`
-	OutcomeSummary  *string `pulumi:"outcomeSummary"`
+	MultistepNumber *int                             `pulumi:"multistepNumber"`
+	OutcomeSummary  *IndividualOutcomeOutcomeSummary `pulumi:"outcomeSummary"`
 	// How long it took for this step to run.
 	RunDuration *Duration `pulumi:"runDuration"`
 	StepId      *string   `pulumi:"stepId"`
@@ -3828,8 +3828,8 @@ type IndividualOutcomeInput interface {
 // Step Id and outcome of each individual step that was run as a group with other steps with the same configuration.
 type IndividualOutcomeArgs struct {
 	// Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0.
-	MultistepNumber pulumi.IntPtrInput               `pulumi:"multistepNumber"`
-	OutcomeSummary  *IndividualOutcomeOutcomeSummary `pulumi:"outcomeSummary"`
+	MultistepNumber pulumi.IntPtrInput                      `pulumi:"multistepNumber"`
+	OutcomeSummary  IndividualOutcomeOutcomeSummaryPtrInput `pulumi:"outcomeSummary"`
 	// How long it took for this step to run.
 	RunDuration DurationPtrInput      `pulumi:"runDuration"`
 	StepId      pulumi.StringPtrInput `pulumi:"stepId"`
@@ -3892,8 +3892,8 @@ func (o IndividualOutcomeOutput) MultistepNumber() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v IndividualOutcome) *int { return v.MultistepNumber }).(pulumi.IntPtrOutput)
 }
 
-func (o IndividualOutcomeOutput) OutcomeSummary() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IndividualOutcome) *string { return v.OutcomeSummary }).(pulumi.StringPtrOutput)
+func (o IndividualOutcomeOutput) OutcomeSummary() IndividualOutcomeOutcomeSummaryPtrOutput {
+	return o.ApplyT(func(v IndividualOutcome) *IndividualOutcomeOutcomeSummary { return v.OutcomeSummary }).(IndividualOutcomeOutcomeSummaryPtrOutput)
 }
 
 // How long it took for this step to run.
@@ -6075,7 +6075,7 @@ type Outcome struct {
 	// More information about a SUCCESS outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SUCCESS. Optional
 	SuccessDetail *SuccessDetail `pulumi:"successDetail"`
 	// The simplest way to interpret a result. Required
-	Summary *string `pulumi:"summary"`
+	Summary *OutcomeSummary `pulumi:"summary"`
 }
 
 // OutcomeInput is an input type that accepts OutcomeArgs and OutcomeOutput values.
@@ -6100,7 +6100,7 @@ type OutcomeArgs struct {
 	// More information about a SUCCESS outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SUCCESS. Optional
 	SuccessDetail SuccessDetailPtrInput `pulumi:"successDetail"`
 	// The simplest way to interpret a result. Required
-	Summary *OutcomeSummary `pulumi:"summary"`
+	Summary OutcomeSummaryPtrInput `pulumi:"summary"`
 }
 
 func (OutcomeArgs) ElementType() reflect.Type {
@@ -6202,8 +6202,8 @@ func (o OutcomeOutput) SuccessDetail() SuccessDetailPtrOutput {
 }
 
 // The simplest way to interpret a result. Required
-func (o OutcomeOutput) Summary() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Outcome) *string { return v.Summary }).(pulumi.StringPtrOutput)
+func (o OutcomeOutput) Summary() OutcomeSummaryPtrOutput {
+	return o.ApplyT(func(v Outcome) *OutcomeSummary { return v.Summary }).(OutcomeSummaryPtrOutput)
 }
 
 type OutcomePtrOutput struct{ *pulumi.OutputState }
@@ -6265,13 +6265,13 @@ func (o OutcomePtrOutput) SuccessDetail() SuccessDetailPtrOutput {
 }
 
 // The simplest way to interpret a result. Required
-func (o OutcomePtrOutput) Summary() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Outcome) *string {
+func (o OutcomePtrOutput) Summary() OutcomeSummaryPtrOutput {
+	return o.ApplyT(func(v *Outcome) *OutcomeSummary {
 		if v == nil {
 			return nil
 		}
 		return v.Summary
-	}).(pulumi.StringPtrOutput)
+	}).(OutcomeSummaryPtrOutput)
 }
 
 // Interprets a result so that humans and machines can act on it.
@@ -6489,7 +6489,7 @@ type PrimaryStep struct {
 	// Step Id and outcome of each individual step.
 	IndividualOutcome []IndividualOutcome `pulumi:"individualOutcome"`
 	// Rollup test status of multiple steps that were run with the same configuration as a group.
-	RollUp *string `pulumi:"rollUp"`
+	RollUp *PrimaryStepRollUp `pulumi:"rollUp"`
 }
 
 // PrimaryStepInput is an input type that accepts PrimaryStepArgs and PrimaryStepOutput values.
@@ -6508,7 +6508,7 @@ type PrimaryStepArgs struct {
 	// Step Id and outcome of each individual step.
 	IndividualOutcome IndividualOutcomeArrayInput `pulumi:"individualOutcome"`
 	// Rollup test status of multiple steps that were run with the same configuration as a group.
-	RollUp *PrimaryStepRollUp `pulumi:"rollUp"`
+	RollUp PrimaryStepRollUpPtrInput `pulumi:"rollUp"`
 }
 
 func (PrimaryStepArgs) ElementType() reflect.Type {
@@ -6595,8 +6595,8 @@ func (o PrimaryStepOutput) IndividualOutcome() IndividualOutcomeArrayOutput {
 }
 
 // Rollup test status of multiple steps that were run with the same configuration as a group.
-func (o PrimaryStepOutput) RollUp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PrimaryStep) *string { return v.RollUp }).(pulumi.StringPtrOutput)
+func (o PrimaryStepOutput) RollUp() PrimaryStepRollUpPtrOutput {
+	return o.ApplyT(func(v PrimaryStep) *PrimaryStepRollUp { return v.RollUp }).(PrimaryStepRollUpPtrOutput)
 }
 
 type PrimaryStepPtrOutput struct{ *pulumi.OutputState }
@@ -6628,13 +6628,13 @@ func (o PrimaryStepPtrOutput) IndividualOutcome() IndividualOutcomeArrayOutput {
 }
 
 // Rollup test status of multiple steps that were run with the same configuration as a group.
-func (o PrimaryStepPtrOutput) RollUp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PrimaryStep) *string {
+func (o PrimaryStepPtrOutput) RollUp() PrimaryStepRollUpPtrOutput {
+	return o.ApplyT(func(v *PrimaryStep) *PrimaryStepRollUp {
 		if v == nil {
 			return nil
 		}
 		return v.RollUp
-	}).(pulumi.StringPtrOutput)
+	}).(PrimaryStepRollUpPtrOutput)
 }
 
 // Stores rollup test status of multiple steps that were run as a group and outcome of each individual step.
@@ -8738,13 +8738,13 @@ func (o TestExecutionStepResponsePtrOutput) ToolExecution() ToolExecutionRespons
 // An issue detected occurring during a test execution.
 type TestIssue struct {
 	// Category of issue. Required.
-	Category *string `pulumi:"category"`
+	Category *TestIssueCategory `pulumi:"category"`
 	// A brief human-readable message describing the issue. Required.
 	ErrorMessage *string `pulumi:"errorMessage"`
 	// Severity of issue. Required.
-	Severity *string `pulumi:"severity"`
+	Severity *TestIssueSeverity `pulumi:"severity"`
 	// Type of issue. Required.
-	Type *string `pulumi:"type"`
+	Type *TestIssueType `pulumi:"type"`
 	// Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings
 	Warning *Any `pulumi:"warning"`
 }
@@ -8763,13 +8763,13 @@ type TestIssueInput interface {
 // An issue detected occurring during a test execution.
 type TestIssueArgs struct {
 	// Category of issue. Required.
-	Category *TestIssueCategory `pulumi:"category"`
+	Category TestIssueCategoryPtrInput `pulumi:"category"`
 	// A brief human-readable message describing the issue. Required.
 	ErrorMessage pulumi.StringPtrInput `pulumi:"errorMessage"`
 	// Severity of issue. Required.
-	Severity *TestIssueSeverity `pulumi:"severity"`
+	Severity TestIssueSeverityPtrInput `pulumi:"severity"`
 	// Type of issue. Required.
-	Type *TestIssueType `pulumi:"type"`
+	Type TestIssueTypePtrInput `pulumi:"type"`
 	// Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings
 	Warning AnyPtrInput `pulumi:"warning"`
 }
@@ -8827,8 +8827,8 @@ func (o TestIssueOutput) ToTestIssueOutputWithContext(ctx context.Context) TestI
 }
 
 // Category of issue. Required.
-func (o TestIssueOutput) Category() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TestIssue) *string { return v.Category }).(pulumi.StringPtrOutput)
+func (o TestIssueOutput) Category() TestIssueCategoryPtrOutput {
+	return o.ApplyT(func(v TestIssue) *TestIssueCategory { return v.Category }).(TestIssueCategoryPtrOutput)
 }
 
 // A brief human-readable message describing the issue. Required.
@@ -8837,13 +8837,13 @@ func (o TestIssueOutput) ErrorMessage() pulumi.StringPtrOutput {
 }
 
 // Severity of issue. Required.
-func (o TestIssueOutput) Severity() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TestIssue) *string { return v.Severity }).(pulumi.StringPtrOutput)
+func (o TestIssueOutput) Severity() TestIssueSeverityPtrOutput {
+	return o.ApplyT(func(v TestIssue) *TestIssueSeverity { return v.Severity }).(TestIssueSeverityPtrOutput)
 }
 
 // Type of issue. Required.
-func (o TestIssueOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v TestIssue) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o TestIssueOutput) Type() TestIssueTypePtrOutput {
+	return o.ApplyT(func(v TestIssue) *TestIssueType { return v.Type }).(TestIssueTypePtrOutput)
 }
 
 // Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings

@@ -13,11 +13,11 @@ import (
 // A field in an index. The field_path describes which field is indexed, the value_mode describes how the field value is indexed.
 type GoogleFirestoreAdminV1IndexField struct {
 	// Indicates that this field supports operations on `array_value`s.
-	ArrayConfig *string `pulumi:"arrayConfig"`
+	ArrayConfig *GoogleFirestoreAdminV1IndexFieldArrayConfig `pulumi:"arrayConfig"`
 	// Can be __name__. For single field indexes, this must match the name of the field or may be omitted.
 	FieldPath *string `pulumi:"fieldPath"`
 	// Indicates that this field supports ordering by the specified order or comparing using =, !=, <, <=, >, >=.
-	Order *string `pulumi:"order"`
+	Order *GoogleFirestoreAdminV1IndexFieldOrder `pulumi:"order"`
 }
 
 // GoogleFirestoreAdminV1IndexFieldInput is an input type that accepts GoogleFirestoreAdminV1IndexFieldArgs and GoogleFirestoreAdminV1IndexFieldOutput values.
@@ -34,11 +34,11 @@ type GoogleFirestoreAdminV1IndexFieldInput interface {
 // A field in an index. The field_path describes which field is indexed, the value_mode describes how the field value is indexed.
 type GoogleFirestoreAdminV1IndexFieldArgs struct {
 	// Indicates that this field supports operations on `array_value`s.
-	ArrayConfig *GoogleFirestoreAdminV1IndexFieldArrayConfig `pulumi:"arrayConfig"`
+	ArrayConfig GoogleFirestoreAdminV1IndexFieldArrayConfigPtrInput `pulumi:"arrayConfig"`
 	// Can be __name__. For single field indexes, this must match the name of the field or may be omitted.
 	FieldPath pulumi.StringPtrInput `pulumi:"fieldPath"`
 	// Indicates that this field supports ordering by the specified order or comparing using =, !=, <, <=, >, >=.
-	Order *GoogleFirestoreAdminV1IndexFieldOrder `pulumi:"order"`
+	Order GoogleFirestoreAdminV1IndexFieldOrderPtrInput `pulumi:"order"`
 }
 
 func (GoogleFirestoreAdminV1IndexFieldArgs) ElementType() reflect.Type {
@@ -94,8 +94,10 @@ func (o GoogleFirestoreAdminV1IndexFieldOutput) ToGoogleFirestoreAdminV1IndexFie
 }
 
 // Indicates that this field supports operations on `array_value`s.
-func (o GoogleFirestoreAdminV1IndexFieldOutput) ArrayConfig() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleFirestoreAdminV1IndexField) *string { return v.ArrayConfig }).(pulumi.StringPtrOutput)
+func (o GoogleFirestoreAdminV1IndexFieldOutput) ArrayConfig() GoogleFirestoreAdminV1IndexFieldArrayConfigPtrOutput {
+	return o.ApplyT(func(v GoogleFirestoreAdminV1IndexField) *GoogleFirestoreAdminV1IndexFieldArrayConfig {
+		return v.ArrayConfig
+	}).(GoogleFirestoreAdminV1IndexFieldArrayConfigPtrOutput)
 }
 
 // Can be __name__. For single field indexes, this must match the name of the field or may be omitted.
@@ -104,8 +106,8 @@ func (o GoogleFirestoreAdminV1IndexFieldOutput) FieldPath() pulumi.StringPtrOutp
 }
 
 // Indicates that this field supports ordering by the specified order or comparing using =, !=, <, <=, >, >=.
-func (o GoogleFirestoreAdminV1IndexFieldOutput) Order() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleFirestoreAdminV1IndexField) *string { return v.Order }).(pulumi.StringPtrOutput)
+func (o GoogleFirestoreAdminV1IndexFieldOutput) Order() GoogleFirestoreAdminV1IndexFieldOrderPtrOutput {
+	return o.ApplyT(func(v GoogleFirestoreAdminV1IndexField) *GoogleFirestoreAdminV1IndexFieldOrder { return v.Order }).(GoogleFirestoreAdminV1IndexFieldOrderPtrOutput)
 }
 
 type GoogleFirestoreAdminV1IndexFieldArrayOutput struct{ *pulumi.OutputState }

@@ -67,37 +67,9 @@ func GetMembership(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Membership resources.
 type membershipState struct {
-	// The time when the `Membership` was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
-	MemberKey *EntityKeyResponse `pulumi:"memberKey"`
-	// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
-	Name *string `pulumi:"name"`
-	// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
-	PreferredMemberKey *EntityKeyResponse `pulumi:"preferredMemberKey"`
-	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
-	Roles []MembershipRoleResponse `pulumi:"roles"`
-	// The type of the membership.
-	Type *string `pulumi:"type"`
-	// The time when the `Membership` was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type MembershipState struct {
-	// The time when the `Membership` was created.
-	CreateTime pulumi.StringPtrInput
-	// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
-	MemberKey EntityKeyResponsePtrInput
-	// The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership`. Shall be of the form `groups/{group_id}/memberships/{membership_id}`.
-	Name pulumi.StringPtrInput
-	// Immutable. The `EntityKey` of the member. Either `member_key` or `preferred_member_key` must be set when calling MembershipsService.CreateMembership but not both; both shall be set when returned.
-	PreferredMemberKey EntityKeyResponsePtrInput
-	// The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`.
-	Roles MembershipRoleResponseArrayInput
-	// The type of the membership.
-	Type pulumi.StringPtrInput
-	// The time when the `Membership` was last updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (MembershipState) ElementType() reflect.Type {

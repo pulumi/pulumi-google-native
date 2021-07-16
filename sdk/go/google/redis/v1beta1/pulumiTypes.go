@@ -848,7 +848,7 @@ func (o TlsCertificateResponseArrayOutput) Index(i pulumi.IntInput) TlsCertifica
 // Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside this window.
 type WeeklyMaintenanceWindow struct {
 	// The day of week that maintenance updates occur.
-	Day string `pulumi:"day"`
+	Day WeeklyMaintenanceWindowDay `pulumi:"day"`
 	// Start time of the window in UTC time.
 	StartTime TimeOfDay `pulumi:"startTime"`
 }
@@ -867,7 +867,7 @@ type WeeklyMaintenanceWindowInput interface {
 // Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside this window.
 type WeeklyMaintenanceWindowArgs struct {
 	// The day of week that maintenance updates occur.
-	Day WeeklyMaintenanceWindowDay `pulumi:"day"`
+	Day WeeklyMaintenanceWindowDayInput `pulumi:"day"`
 	// Start time of the window in UTC time.
 	StartTime TimeOfDayInput `pulumi:"startTime"`
 }
@@ -925,8 +925,8 @@ func (o WeeklyMaintenanceWindowOutput) ToWeeklyMaintenanceWindowOutputWithContex
 }
 
 // The day of week that maintenance updates occur.
-func (o WeeklyMaintenanceWindowOutput) Day() pulumi.StringOutput {
-	return o.ApplyT(func(v WeeklyMaintenanceWindow) string { return v.Day }).(pulumi.StringOutput)
+func (o WeeklyMaintenanceWindowOutput) Day() WeeklyMaintenanceWindowDayOutput {
+	return o.ApplyT(func(v WeeklyMaintenanceWindow) WeeklyMaintenanceWindowDay { return v.Day }).(WeeklyMaintenanceWindowDayOutput)
 }
 
 // Start time of the window in UTC time.

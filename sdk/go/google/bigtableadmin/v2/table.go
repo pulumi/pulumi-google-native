@@ -65,29 +65,9 @@ func GetTable(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Table resources.
 type tableState struct {
-	// Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
-	ClusterStates map[string]string `pulumi:"clusterStates"`
-	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
-	ColumnFamilies map[string]string `pulumi:"columnFamilies"`
-	// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
-	Granularity *string `pulumi:"granularity"`
-	// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
-	Name *string `pulumi:"name"`
-	// If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.
-	RestoreInfo *RestoreInfoResponse `pulumi:"restoreInfo"`
 }
 
 type TableState struct {
-	// Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
-	ClusterStates pulumi.StringMapInput
-	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
-	ColumnFamilies pulumi.StringMapInput
-	// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
-	Granularity pulumi.StringPtrInput
-	// The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`
-	Name pulumi.StringPtrInput
-	// If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.
-	RestoreInfo RestoreInfoResponsePtrInput
 }
 
 func (TableState) ElementType() reflect.Type {
@@ -98,7 +78,7 @@ type tableArgs struct {
 	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
 	ColumnFamilies map[string]string `pulumi:"columnFamilies"`
 	// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
-	Granularity *string `pulumi:"granularity"`
+	Granularity *TableGranularity `pulumi:"granularity"`
 	// The optional list of row keys that will be used to initially split the table into several tablets (tablets are similar to HBase regions). Given two split keys, `s1` and `s2`, three tablets will be created, spanning the key ranges: `[, s1), [s1, s2), [s2, )`. Example: * Row keys := `["a", "apple", "custom", "customer_1", "customer_2",` `"other", "zz"]` * initial_split_keys := `["apple", "customer_1", "customer_2", "other"]` * Key assignment: - Tablet 1 `[, apple) => {"a"}.` - Tablet 2 `[apple, customer_1) => {"apple", "custom"}.` - Tablet 3 `[customer_1, customer_2) => {"customer_1"}.` - Tablet 4 `[customer_2, other) => {"customer_2"}.` - Tablet 5 `[other, ) => {"other", "zz"}.`
 	InitialSplits []Split `pulumi:"initialSplits"`
 	InstanceId    string  `pulumi:"instanceId"`
@@ -114,7 +94,7 @@ type TableArgs struct {
 	// The column families configured for this table, mapped by column family ID. Views: `SCHEMA_VIEW`, `FULL`
 	ColumnFamilies pulumi.StringMapInput
 	// Immutable. The granularity (i.e. `MILLIS`) at which timestamps are stored in this table. Timestamps not matching the granularity will be rejected. If unspecified at creation time, the value will be set to `MILLIS`. Views: `SCHEMA_VIEW`, `FULL`.
-	Granularity *TableGranularity
+	Granularity TableGranularityPtrInput
 	// The optional list of row keys that will be used to initially split the table into several tablets (tablets are similar to HBase regions). Given two split keys, `s1` and `s2`, three tablets will be created, spanning the key ranges: `[, s1), [s1, s2), [s2, )`. Example: * Row keys := `["a", "apple", "custom", "customer_1", "customer_2",` `"other", "zz"]` * initial_split_keys := `["apple", "customer_1", "customer_2", "other"]` * Key assignment: - Tablet 1 `[, apple) => {"a"}.` - Tablet 2 `[apple, customer_1) => {"apple", "custom"}.` - Tablet 3 `[customer_1, customer_2) => {"customer_1"}.` - Tablet 4 `[customer_2, other) => {"customer_2"}.` - Tablet 5 `[other, ) => {"other", "zz"}.`
 	InitialSplits SplitArrayInput
 	InstanceId    pulumi.StringInput

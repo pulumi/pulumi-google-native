@@ -12,17 +12,17 @@ from ._enums import *
 __all__ = [
     'DnsKeySpecArgs',
     'ManagedZoneDnsSecConfigArgs',
-    'ManagedZoneForwardingConfigArgs',
     'ManagedZoneForwardingConfigNameServerTargetArgs',
-    'ManagedZonePeeringConfigArgs',
+    'ManagedZoneForwardingConfigArgs',
     'ManagedZonePeeringConfigTargetNetworkArgs',
-    'ManagedZonePrivateVisibilityConfigArgs',
+    'ManagedZonePeeringConfigArgs',
     'ManagedZonePrivateVisibilityConfigNetworkArgs',
+    'ManagedZonePrivateVisibilityConfigArgs',
     'ManagedZoneReverseLookupConfigArgs',
-    'ManagedZoneServiceDirectoryConfigArgs',
     'ManagedZoneServiceDirectoryConfigNamespaceArgs',
-    'PolicyAlternativeNameServerConfigArgs',
+    'ManagedZoneServiceDirectoryConfigArgs',
     'PolicyAlternativeNameServerConfigTargetNameServerArgs',
+    'PolicyAlternativeNameServerConfigArgs',
     'PolicyNetworkArgs',
     'ResourceRecordSetArgs',
 ]
@@ -163,41 +163,6 @@ class ManagedZoneDnsSecConfigArgs:
 
 
 @pulumi.input_type
-class ManagedZoneForwardingConfigArgs:
-    def __init__(__self__, *,
-                 kind: Optional[pulumi.Input[str]] = None,
-                 target_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigNameServerTargetArgs']]]] = None):
-        """
-        :param pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigNameServerTargetArgs']]] target_name_servers: List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given.
-        """
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
-        if target_name_servers is not None:
-            pulumi.set(__self__, "target_name_servers", target_name_servers)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
-
-    @property
-    @pulumi.getter(name="targetNameServers")
-    def target_name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigNameServerTargetArgs']]]]:
-        """
-        List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given.
-        """
-        return pulumi.get(self, "target_name_servers")
-
-    @target_name_servers.setter
-    def target_name_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigNameServerTargetArgs']]]]):
-        pulumi.set(self, "target_name_servers", value)
-
-
-@pulumi.input_type
 class ManagedZoneForwardingConfigNameServerTargetArgs:
     def __init__(__self__, *,
                  forwarding_path: Optional[pulumi.Input['ManagedZoneForwardingConfigNameServerTargetForwardingPath']] = None,
@@ -249,17 +214,17 @@ class ManagedZoneForwardingConfigNameServerTargetArgs:
 
 
 @pulumi.input_type
-class ManagedZonePeeringConfigArgs:
+class ManagedZoneForwardingConfigArgs:
     def __init__(__self__, *,
                  kind: Optional[pulumi.Input[str]] = None,
-                 target_network: Optional[pulumi.Input['ManagedZonePeeringConfigTargetNetworkArgs']] = None):
+                 target_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigNameServerTargetArgs']]]] = None):
         """
-        :param pulumi.Input['ManagedZonePeeringConfigTargetNetworkArgs'] target_network: The network with which to peer.
+        :param pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigNameServerTargetArgs']]] target_name_servers: List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given.
         """
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
-        if target_network is not None:
-            pulumi.set(__self__, "target_network", target_network)
+        if target_name_servers is not None:
+            pulumi.set(__self__, "target_name_servers", target_name_servers)
 
     @property
     @pulumi.getter
@@ -271,16 +236,16 @@ class ManagedZonePeeringConfigArgs:
         pulumi.set(self, "kind", value)
 
     @property
-    @pulumi.getter(name="targetNetwork")
-    def target_network(self) -> Optional[pulumi.Input['ManagedZonePeeringConfigTargetNetworkArgs']]:
+    @pulumi.getter(name="targetNameServers")
+    def target_name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigNameServerTargetArgs']]]]:
         """
-        The network with which to peer.
+        List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given.
         """
-        return pulumi.get(self, "target_network")
+        return pulumi.get(self, "target_name_servers")
 
-    @target_network.setter
-    def target_network(self, value: Optional[pulumi.Input['ManagedZonePeeringConfigTargetNetworkArgs']]):
-        pulumi.set(self, "target_network", value)
+    @target_name_servers.setter
+    def target_name_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZoneForwardingConfigNameServerTargetArgs']]]]):
+        pulumi.set(self, "target_name_servers", value)
 
 
 @pulumi.input_type
@@ -335,17 +300,17 @@ class ManagedZonePeeringConfigTargetNetworkArgs:
 
 
 @pulumi.input_type
-class ManagedZonePrivateVisibilityConfigArgs:
+class ManagedZonePeeringConfigArgs:
     def __init__(__self__, *,
                  kind: Optional[pulumi.Input[str]] = None,
-                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]] = None):
+                 target_network: Optional[pulumi.Input['ManagedZonePeeringConfigTargetNetworkArgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]] networks: The list of VPC networks that can see this zone.
+        :param pulumi.Input['ManagedZonePeeringConfigTargetNetworkArgs'] target_network: The network with which to peer.
         """
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
-        if networks is not None:
-            pulumi.set(__self__, "networks", networks)
+        if target_network is not None:
+            pulumi.set(__self__, "target_network", target_network)
 
     @property
     @pulumi.getter
@@ -357,16 +322,16 @@ class ManagedZonePrivateVisibilityConfigArgs:
         pulumi.set(self, "kind", value)
 
     @property
-    @pulumi.getter
-    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]]:
+    @pulumi.getter(name="targetNetwork")
+    def target_network(self) -> Optional[pulumi.Input['ManagedZonePeeringConfigTargetNetworkArgs']]:
         """
-        The list of VPC networks that can see this zone.
+        The network with which to peer.
         """
-        return pulumi.get(self, "networks")
+        return pulumi.get(self, "target_network")
 
-    @networks.setter
-    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]]):
-        pulumi.set(self, "networks", value)
+    @target_network.setter
+    def target_network(self, value: Optional[pulumi.Input['ManagedZonePeeringConfigTargetNetworkArgs']]):
+        pulumi.set(self, "target_network", value)
 
 
 @pulumi.input_type
@@ -405,6 +370,41 @@ class ManagedZonePrivateVisibilityConfigNetworkArgs:
 
 
 @pulumi.input_type
+class ManagedZonePrivateVisibilityConfigArgs:
+    def __init__(__self__, *,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 networks: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]] networks: The list of VPC networks that can see this zone.
+        """
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if networks is not None:
+            pulumi.set(__self__, "networks", networks)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter
+    def networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]]:
+        """
+        The list of VPC networks that can see this zone.
+        """
+        return pulumi.get(self, "networks")
+
+    @networks.setter
+    def networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ManagedZonePrivateVisibilityConfigNetworkArgs']]]]):
+        pulumi.set(self, "networks", value)
+
+
+@pulumi.input_type
 class ManagedZoneReverseLookupConfigArgs:
     def __init__(__self__, *,
                  kind: Optional[pulumi.Input[str]] = None):
@@ -419,42 +419,6 @@ class ManagedZoneReverseLookupConfigArgs:
     @kind.setter
     def kind(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kind", value)
-
-
-@pulumi.input_type
-class ManagedZoneServiceDirectoryConfigArgs:
-    def __init__(__self__, *,
-                 kind: Optional[pulumi.Input[str]] = None,
-                 namespace: Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigNamespaceArgs']] = None):
-        """
-        Contains information about Service Directory-backed zones.
-        :param pulumi.Input['ManagedZoneServiceDirectoryConfigNamespaceArgs'] namespace: Contains information about the namespace associated with the zone.
-        """
-        if kind is not None:
-            pulumi.set(__self__, "kind", kind)
-        if namespace is not None:
-            pulumi.set(__self__, "namespace", namespace)
-
-    @property
-    @pulumi.getter
-    def kind(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "kind")
-
-    @kind.setter
-    def kind(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "kind", value)
-
-    @property
-    @pulumi.getter
-    def namespace(self) -> Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigNamespaceArgs']]:
-        """
-        Contains information about the namespace associated with the zone.
-        """
-        return pulumi.get(self, "namespace")
-
-    @namespace.setter
-    def namespace(self, value: Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigNamespaceArgs']]):
-        pulumi.set(self, "namespace", value)
 
 
 @pulumi.input_type
@@ -509,17 +473,18 @@ class ManagedZoneServiceDirectoryConfigNamespaceArgs:
 
 
 @pulumi.input_type
-class PolicyAlternativeNameServerConfigArgs:
+class ManagedZoneServiceDirectoryConfigArgs:
     def __init__(__self__, *,
                  kind: Optional[pulumi.Input[str]] = None,
-                 target_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]]] = None):
+                 namespace: Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigNamespaceArgs']] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]] target_name_servers: Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
+        Contains information about Service Directory-backed zones.
+        :param pulumi.Input['ManagedZoneServiceDirectoryConfigNamespaceArgs'] namespace: Contains information about the namespace associated with the zone.
         """
         if kind is not None:
             pulumi.set(__self__, "kind", kind)
-        if target_name_servers is not None:
-            pulumi.set(__self__, "target_name_servers", target_name_servers)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
 
     @property
     @pulumi.getter
@@ -531,16 +496,16 @@ class PolicyAlternativeNameServerConfigArgs:
         pulumi.set(self, "kind", value)
 
     @property
-    @pulumi.getter(name="targetNameServers")
-    def target_name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]]]:
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigNamespaceArgs']]:
         """
-        Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
+        Contains information about the namespace associated with the zone.
         """
-        return pulumi.get(self, "target_name_servers")
+        return pulumi.get(self, "namespace")
 
-    @target_name_servers.setter
-    def target_name_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]]]):
-        pulumi.set(self, "target_name_servers", value)
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input['ManagedZoneServiceDirectoryConfigNamespaceArgs']]):
+        pulumi.set(self, "namespace", value)
 
 
 @pulumi.input_type
@@ -592,6 +557,41 @@ class PolicyAlternativeNameServerConfigTargetNameServerArgs:
     @kind.setter
     def kind(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "kind", value)
+
+
+@pulumi.input_type
+class PolicyAlternativeNameServerConfigArgs:
+    def __init__(__self__, *,
+                 kind: Optional[pulumi.Input[str]] = None,
+                 target_name_servers: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]] target_name_servers: Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
+        """
+        if kind is not None:
+            pulumi.set(__self__, "kind", kind)
+        if target_name_servers is not None:
+            pulumi.set(__self__, "target_name_servers", target_name_servers)
+
+    @property
+    @pulumi.getter
+    def kind(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "kind")
+
+    @kind.setter
+    def kind(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kind", value)
+
+    @property
+    @pulumi.getter(name="targetNameServers")
+    def target_name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]]]:
+        """
+        Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
+        """
+        return pulumi.get(self, "target_name_servers")
+
+    @target_name_servers.setter
+    def target_name_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PolicyAlternativeNameServerConfigTargetNameServerArgs']]]]):
+        pulumi.set(self, "target_name_servers", value)
 
 
 @pulumi.input_type

@@ -524,7 +524,7 @@ type GoogleCloudDatacatalogV1BigQueryConnectionSpec struct {
 	// Specification for the BigQuery connection to a Cloud SQL instance.
 	CloudSql *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec `pulumi:"cloudSql"`
 	// The type of the BigQuery connection.
-	ConnectionType *string `pulumi:"connectionType"`
+	ConnectionType *GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType `pulumi:"connectionType"`
 	// True if there are credentials attached to the BigQuery connection; false otherwise.
 	HasCredential *bool `pulumi:"hasCredential"`
 }
@@ -545,7 +545,7 @@ type GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs struct {
 	// Specification for the BigQuery connection to a Cloud SQL instance.
 	CloudSql GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrInput `pulumi:"cloudSql"`
 	// The type of the BigQuery connection.
-	ConnectionType *GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType `pulumi:"connectionType"`
+	ConnectionType GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrInput `pulumi:"connectionType"`
 	// True if there are credentials attached to the BigQuery connection; false otherwise.
 	HasCredential pulumi.BoolPtrInput `pulumi:"hasCredential"`
 }
@@ -636,8 +636,10 @@ func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput) CloudSql() GoogleC
 }
 
 // The type of the BigQuery connection.
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput) ConnectionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1BigQueryConnectionSpec) *string { return v.ConnectionType }).(pulumi.StringPtrOutput)
+func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput) ConnectionType() GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1BigQueryConnectionSpec) *GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType {
+		return v.ConnectionType
+	}).(GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput)
 }
 
 // True if there are credentials attached to the BigQuery connection; false otherwise.
@@ -676,13 +678,13 @@ func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput) CloudSql() Goog
 }
 
 // The type of the BigQuery connection.
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput) ConnectionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryConnectionSpec) *string {
+func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput) ConnectionType() GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryConnectionSpec) *GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType {
 		if v == nil {
 			return nil
 		}
 		return v.ConnectionType
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput)
 }
 
 // True if there are credentials attached to the BigQuery connection; false otherwise.
@@ -1776,7 +1778,7 @@ type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec struct {
 	// Cloud SQL instance ID in the format of `project:location:instance`.
 	InstanceId *string `pulumi:"instanceId"`
 	// Type of the Cloud SQL database.
-	Type *string `pulumi:"type"`
+	Type *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType `pulumi:"type"`
 }
 
 // GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecInput is an input type that accepts GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs and GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput values.
@@ -1797,7 +1799,7 @@ type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs struct {
 	// Cloud SQL instance ID in the format of `project:location:instance`.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
 	// Type of the Cloud SQL database.
-	Type *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType `pulumi:"type"`
+	Type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrInput `pulumi:"type"`
 }
 
 func (GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs) ElementType() reflect.Type {
@@ -1889,8 +1891,10 @@ func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput) InstanceId
 }
 
 // Type of the Cloud SQL database.
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput) Type() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec) *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType {
+		return v.Type
+	}).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput)
 }
 
 type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput struct{ *pulumi.OutputState }
@@ -1934,13 +1938,13 @@ func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput) Instanc
 }
 
 // Type of the Cloud SQL database.
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec) *string {
+func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput) Type() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec) *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType {
 		if v == nil {
 			return nil
 		}
 		return v.Type
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput)
 }
 
 // Specification for the BigQuery connection to a Cloud SQL instance.
@@ -2827,7 +2831,7 @@ func (o GoogleCloudDatacatalogV1DataSourceResponsePtrOutput) Service() pulumi.St
 // Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
 type GoogleCloudDatacatalogV1DatabaseTableSpec struct {
 	// Type of this table.
-	Type *string `pulumi:"type"`
+	Type *GoogleCloudDatacatalogV1DatabaseTableSpecType `pulumi:"type"`
 }
 
 // GoogleCloudDatacatalogV1DatabaseTableSpecInput is an input type that accepts GoogleCloudDatacatalogV1DatabaseTableSpecArgs and GoogleCloudDatacatalogV1DatabaseTableSpecOutput values.
@@ -2844,7 +2848,7 @@ type GoogleCloudDatacatalogV1DatabaseTableSpecInput interface {
 // Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
 type GoogleCloudDatacatalogV1DatabaseTableSpecArgs struct {
 	// Type of this table.
-	Type *GoogleCloudDatacatalogV1DatabaseTableSpecType `pulumi:"type"`
+	Type GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrInput `pulumi:"type"`
 }
 
 func (GoogleCloudDatacatalogV1DatabaseTableSpecArgs) ElementType() reflect.Type {
@@ -2926,8 +2930,10 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecOutput) ToGoogleCloudDatacatalo
 }
 
 // Type of this table.
-func (o GoogleCloudDatacatalogV1DatabaseTableSpecOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1DatabaseTableSpec) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecOutput) Type() GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1DatabaseTableSpec) *GoogleCloudDatacatalogV1DatabaseTableSpecType {
+		return v.Type
+	}).(GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput)
 }
 
 type GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput struct{ *pulumi.OutputState }
@@ -2951,13 +2957,13 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput) Elem() GoogleCloudDa
 }
 
 // Type of this table.
-func (o GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DatabaseTableSpec) *string {
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput) Type() GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DatabaseTableSpec) *GoogleCloudDatacatalogV1DatabaseTableSpecType {
 		if v == nil {
 			return nil
 		}
 		return v.Type
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput)
 }
 
 // Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
@@ -3520,7 +3526,7 @@ type GoogleCloudDatacatalogV1RoutineSpec struct {
 	// Arguments of the routine.
 	RoutineArguments []GoogleCloudDatacatalogV1RoutineSpecArgument `pulumi:"routineArguments"`
 	// The type of the routine.
-	RoutineType *string `pulumi:"routineType"`
+	RoutineType *GoogleCloudDatacatalogV1RoutineSpecRoutineType `pulumi:"routineType"`
 }
 
 // GoogleCloudDatacatalogV1RoutineSpecInput is an input type that accepts GoogleCloudDatacatalogV1RoutineSpecArgs and GoogleCloudDatacatalogV1RoutineSpecOutput values.
@@ -3547,7 +3553,7 @@ type GoogleCloudDatacatalogV1RoutineSpecArgs struct {
 	// Arguments of the routine.
 	RoutineArguments GoogleCloudDatacatalogV1RoutineSpecArgumentArrayInput `pulumi:"routineArguments"`
 	// The type of the routine.
-	RoutineType *GoogleCloudDatacatalogV1RoutineSpecRoutineType `pulumi:"routineType"`
+	RoutineType GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrInput `pulumi:"routineType"`
 }
 
 func (GoogleCloudDatacatalogV1RoutineSpecArgs) ElementType() reflect.Type {
@@ -3658,8 +3664,10 @@ func (o GoogleCloudDatacatalogV1RoutineSpecOutput) RoutineArguments() GoogleClou
 }
 
 // The type of the routine.
-func (o GoogleCloudDatacatalogV1RoutineSpecOutput) RoutineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1RoutineSpec) *string { return v.RoutineType }).(pulumi.StringPtrOutput)
+func (o GoogleCloudDatacatalogV1RoutineSpecOutput) RoutineType() GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1RoutineSpec) *GoogleCloudDatacatalogV1RoutineSpecRoutineType {
+		return v.RoutineType
+	}).(GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput)
 }
 
 type GoogleCloudDatacatalogV1RoutineSpecPtrOutput struct{ *pulumi.OutputState }
@@ -3731,19 +3739,19 @@ func (o GoogleCloudDatacatalogV1RoutineSpecPtrOutput) RoutineArguments() GoogleC
 }
 
 // The type of the routine.
-func (o GoogleCloudDatacatalogV1RoutineSpecPtrOutput) RoutineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1RoutineSpec) *string {
+func (o GoogleCloudDatacatalogV1RoutineSpecPtrOutput) RoutineType() GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1RoutineSpec) *GoogleCloudDatacatalogV1RoutineSpecRoutineType {
 		if v == nil {
 			return nil
 		}
 		return v.RoutineType
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput)
 }
 
 // Input or output argument of a function or stored procedure.
 type GoogleCloudDatacatalogV1RoutineSpecArgument struct {
 	// Specifies whether the argument is input or output.
-	Mode *string `pulumi:"mode"`
+	Mode *GoogleCloudDatacatalogV1RoutineSpecArgumentMode `pulumi:"mode"`
 	// The name of the argument. A return argument of a function might not have a name.
 	Name *string `pulumi:"name"`
 	// Type of the argument. The exact value depends on the source system and the language.
@@ -3764,7 +3772,7 @@ type GoogleCloudDatacatalogV1RoutineSpecArgumentInput interface {
 // Input or output argument of a function or stored procedure.
 type GoogleCloudDatacatalogV1RoutineSpecArgumentArgs struct {
 	// Specifies whether the argument is input or output.
-	Mode *GoogleCloudDatacatalogV1RoutineSpecArgumentMode `pulumi:"mode"`
+	Mode GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrInput `pulumi:"mode"`
 	// The name of the argument. A return argument of a function might not have a name.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Type of the argument. The exact value depends on the source system and the language.
@@ -3824,8 +3832,10 @@ func (o GoogleCloudDatacatalogV1RoutineSpecArgumentOutput) ToGoogleCloudDatacata
 }
 
 // Specifies whether the argument is input or output.
-func (o GoogleCloudDatacatalogV1RoutineSpecArgumentOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1RoutineSpecArgument) *string { return v.Mode }).(pulumi.StringPtrOutput)
+func (o GoogleCloudDatacatalogV1RoutineSpecArgumentOutput) Mode() GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatacatalogV1RoutineSpecArgument) *GoogleCloudDatacatalogV1RoutineSpecArgumentMode {
+		return v.Mode
+	}).(GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput)
 }
 
 // The name of the argument. A return argument of a function might not have a name.

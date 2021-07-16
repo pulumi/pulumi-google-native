@@ -63,29 +63,9 @@ func GetDomainMapping(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DomainMapping resources.
 type domainMappingState struct {
-	// The API version for this call such as "domains.cloudrun.com/v1".
-	ApiVersion *string `pulumi:"apiVersion"`
-	// The kind of resource, in this case "DomainMapping".
-	Kind *string `pulumi:"kind"`
-	// Metadata associated with this BuildTemplate.
-	Metadata *ObjectMetaResponse `pulumi:"metadata"`
-	// The spec for this DomainMapping.
-	Spec *DomainMappingSpecResponse `pulumi:"spec"`
-	// The current status of the DomainMapping.
-	Status *DomainMappingStatusResponse `pulumi:"status"`
 }
 
 type DomainMappingState struct {
-	// The API version for this call such as "domains.cloudrun.com/v1".
-	ApiVersion pulumi.StringPtrInput
-	// The kind of resource, in this case "DomainMapping".
-	Kind pulumi.StringPtrInput
-	// Metadata associated with this BuildTemplate.
-	Metadata ObjectMetaResponsePtrInput
-	// The spec for this DomainMapping.
-	Spec DomainMappingSpecResponsePtrInput
-	// The current status of the DomainMapping.
-	Status DomainMappingStatusResponsePtrInput
 }
 
 func (DomainMappingState) ElementType() reflect.Type {

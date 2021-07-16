@@ -68,29 +68,9 @@ func GetFeedbackMessage(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FeedbackMessage resources.
 type feedbackMessageState struct {
-	// String content of the feedback. Maximum of 10000 characters.
-	Body *string `pulumi:"body"`
-	// Create time.
-	CreateTime *string `pulumi:"createTime"`
-	// The image storing this feedback if the feedback is an image representing operator's comments.
-	Image *string `pulumi:"image"`
-	// Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
-	Name                      *string                                                          `pulumi:"name"`
-	OperatorFeedbackMetadata  *GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponse  `pulumi:"operatorFeedbackMetadata"`
-	RequesterFeedbackMetadata *GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponse `pulumi:"requesterFeedbackMetadata"`
 }
 
 type FeedbackMessageState struct {
-	// String content of the feedback. Maximum of 10000 characters.
-	Body pulumi.StringPtrInput
-	// Create time.
-	CreateTime pulumi.StringPtrInput
-	// The image storing this feedback if the feedback is an image representing operator's comments.
-	Image pulumi.StringPtrInput
-	// Name of the feedback message in a feedback thread. Format: 'project/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}/feedbackMessage/{feedback_message_id}'
-	Name                      pulumi.StringPtrInput
-	OperatorFeedbackMetadata  GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataResponsePtrInput
-	RequesterFeedbackMetadata GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataResponsePtrInput
 }
 
 func (FeedbackMessageState) ElementType() reflect.Type {

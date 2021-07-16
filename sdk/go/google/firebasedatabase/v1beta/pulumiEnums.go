@@ -11,7 +11,7 @@ import (
 )
 
 // The database's lifecycle state. Read-only.
-type InstanceStateEnum pulumi.String
+type InstanceStateEnum string
 
 const (
 	// Unspecified state, likely the result of an error on the backend. This is only used for distinguishing unset values.
@@ -25,7 +25,23 @@ const (
 )
 
 func (InstanceStateEnum) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*InstanceStateEnum)(nil)).Elem()
+}
+
+func (e InstanceStateEnum) ToInstanceStateEnumOutput() InstanceStateEnumOutput {
+	return pulumi.ToOutput(e).(InstanceStateEnumOutput)
+}
+
+func (e InstanceStateEnum) ToInstanceStateEnumOutputWithContext(ctx context.Context) InstanceStateEnumOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InstanceStateEnumOutput)
+}
+
+func (e InstanceStateEnum) ToInstanceStateEnumPtrOutput() InstanceStateEnumPtrOutput {
+	return e.ToInstanceStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (e InstanceStateEnum) ToInstanceStateEnumPtrOutputWithContext(ctx context.Context) InstanceStateEnumPtrOutput {
+	return InstanceStateEnum(e).ToInstanceStateEnumOutputWithContext(ctx).ToInstanceStateEnumPtrOutputWithContext(ctx)
 }
 
 func (e InstanceStateEnum) ToStringOutput() pulumi.StringOutput {
@@ -44,8 +60,129 @@ func (e InstanceStateEnum) ToStringPtrOutputWithContext(ctx context.Context) pul
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type InstanceStateEnumOutput struct{ *pulumi.OutputState }
+
+func (InstanceStateEnumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceStateEnum)(nil)).Elem()
+}
+
+func (o InstanceStateEnumOutput) ToInstanceStateEnumOutput() InstanceStateEnumOutput {
+	return o
+}
+
+func (o InstanceStateEnumOutput) ToInstanceStateEnumOutputWithContext(ctx context.Context) InstanceStateEnumOutput {
+	return o
+}
+
+func (o InstanceStateEnumOutput) ToInstanceStateEnumPtrOutput() InstanceStateEnumPtrOutput {
+	return o.ToInstanceStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceStateEnumOutput) ToInstanceStateEnumPtrOutputWithContext(ctx context.Context) InstanceStateEnumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceStateEnum) *InstanceStateEnum {
+		return &v
+	}).(InstanceStateEnumPtrOutput)
+}
+
+func (o InstanceStateEnumOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InstanceStateEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceStateEnum) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InstanceStateEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceStateEnum) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceStateEnumPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceStateEnumPtrOutput) ElementType() reflect.Type {
+	return instanceStateEnumPtrType
+}
+
+func (o InstanceStateEnumPtrOutput) ToInstanceStateEnumPtrOutput() InstanceStateEnumPtrOutput {
+	return o
+}
+
+func (o InstanceStateEnumPtrOutput) ToInstanceStateEnumPtrOutputWithContext(ctx context.Context) InstanceStateEnumPtrOutput {
+	return o
+}
+
+func (o InstanceStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstanceStateEnum) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceStateEnumPtrOutput) Elem() InstanceStateEnumOutput {
+	return o.ApplyT(func(v *InstanceStateEnum) InstanceStateEnum {
+		var ret InstanceStateEnum
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(InstanceStateEnumOutput)
+}
+
+// InstanceStateEnumInput is an input type that accepts InstanceStateEnumArgs and InstanceStateEnumOutput values.
+// You can construct a concrete instance of `InstanceStateEnumInput` via:
+//
+//          InstanceStateEnumArgs{...}
+type InstanceStateEnumInput interface {
+	pulumi.Input
+
+	ToInstanceStateEnumOutput() InstanceStateEnumOutput
+	ToInstanceStateEnumOutputWithContext(context.Context) InstanceStateEnumOutput
+}
+
+var instanceStateEnumPtrType = reflect.TypeOf((**InstanceStateEnum)(nil)).Elem()
+
+type InstanceStateEnumPtrInput interface {
+	pulumi.Input
+
+	ToInstanceStateEnumPtrOutput() InstanceStateEnumPtrOutput
+	ToInstanceStateEnumPtrOutputWithContext(context.Context) InstanceStateEnumPtrOutput
+}
+
+type instanceStateEnumPtr string
+
+func InstanceStateEnumPtr(v string) InstanceStateEnumPtrInput {
+	return (*instanceStateEnumPtr)(&v)
+}
+
+func (*instanceStateEnumPtr) ElementType() reflect.Type {
+	return instanceStateEnumPtrType
+}
+
+func (in *instanceStateEnumPtr) ToInstanceStateEnumPtrOutput() InstanceStateEnumPtrOutput {
+	return pulumi.ToOutput(in).(InstanceStateEnumPtrOutput)
+}
+
+func (in *instanceStateEnumPtr) ToInstanceStateEnumPtrOutputWithContext(ctx context.Context) InstanceStateEnumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InstanceStateEnumPtrOutput)
+}
+
 // The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
-type InstanceType pulumi.String
+type InstanceType string
 
 const (
 	// Unknown state, likely the result of an error on the backend. This is only used for distinguishing unset values.
@@ -57,7 +194,23 @@ const (
 )
 
 func (InstanceType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*InstanceType)(nil)).Elem()
+}
+
+func (e InstanceType) ToInstanceTypeOutput() InstanceTypeOutput {
+	return pulumi.ToOutput(e).(InstanceTypeOutput)
+}
+
+func (e InstanceType) ToInstanceTypeOutputWithContext(ctx context.Context) InstanceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InstanceTypeOutput)
+}
+
+func (e InstanceType) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
+	return e.ToInstanceTypePtrOutputWithContext(context.Background())
+}
+
+func (e InstanceType) ToInstanceTypePtrOutputWithContext(ctx context.Context) InstanceTypePtrOutput {
+	return InstanceType(e).ToInstanceTypeOutputWithContext(ctx).ToInstanceTypePtrOutputWithContext(ctx)
 }
 
 func (e InstanceType) ToStringOutput() pulumi.StringOutput {
@@ -74,4 +227,132 @@ func (e InstanceType) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e InstanceType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type InstanceTypeOutput struct{ *pulumi.OutputState }
+
+func (InstanceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceType)(nil)).Elem()
+}
+
+func (o InstanceTypeOutput) ToInstanceTypeOutput() InstanceTypeOutput {
+	return o
+}
+
+func (o InstanceTypeOutput) ToInstanceTypeOutputWithContext(ctx context.Context) InstanceTypeOutput {
+	return o
+}
+
+func (o InstanceTypeOutput) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
+	return o.ToInstanceTypePtrOutputWithContext(context.Background())
+}
+
+func (o InstanceTypeOutput) ToInstanceTypePtrOutputWithContext(ctx context.Context) InstanceTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceType) *InstanceType {
+		return &v
+	}).(InstanceTypePtrOutput)
+}
+
+func (o InstanceTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InstanceTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InstanceTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceTypePtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceTypePtrOutput) ElementType() reflect.Type {
+	return instanceTypePtrType
+}
+
+func (o InstanceTypePtrOutput) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
+	return o
+}
+
+func (o InstanceTypePtrOutput) ToInstanceTypePtrOutputWithContext(ctx context.Context) InstanceTypePtrOutput {
+	return o
+}
+
+func (o InstanceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstanceType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceTypePtrOutput) Elem() InstanceTypeOutput {
+	return o.ApplyT(func(v *InstanceType) InstanceType {
+		var ret InstanceType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(InstanceTypeOutput)
+}
+
+// InstanceTypeInput is an input type that accepts InstanceTypeArgs and InstanceTypeOutput values.
+// You can construct a concrete instance of `InstanceTypeInput` via:
+//
+//          InstanceTypeArgs{...}
+type InstanceTypeInput interface {
+	pulumi.Input
+
+	ToInstanceTypeOutput() InstanceTypeOutput
+	ToInstanceTypeOutputWithContext(context.Context) InstanceTypeOutput
+}
+
+var instanceTypePtrType = reflect.TypeOf((**InstanceType)(nil)).Elem()
+
+type InstanceTypePtrInput interface {
+	pulumi.Input
+
+	ToInstanceTypePtrOutput() InstanceTypePtrOutput
+	ToInstanceTypePtrOutputWithContext(context.Context) InstanceTypePtrOutput
+}
+
+type instanceTypePtr string
+
+func InstanceTypePtr(v string) InstanceTypePtrInput {
+	return (*instanceTypePtr)(&v)
+}
+
+func (*instanceTypePtr) ElementType() reflect.Type {
+	return instanceTypePtrType
+}
+
+func (in *instanceTypePtr) ToInstanceTypePtrOutput() InstanceTypePtrOutput {
+	return pulumi.ToOutput(in).(InstanceTypePtrOutput)
+}
+
+func (in *instanceTypePtr) ToInstanceTypePtrOutputWithContext(ctx context.Context) InstanceTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InstanceTypePtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(InstanceStateEnumOutput{})
+	pulumi.RegisterOutputType(InstanceStateEnumPtrOutput{})
+	pulumi.RegisterOutputType(InstanceTypeOutput{})
+	pulumi.RegisterOutputType(InstanceTypePtrOutput{})
 }

@@ -62,29 +62,9 @@ func GetReservation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Reservation resources.
 type reservationState struct {
-	// Creation time of the reservation.
-	CreationTime *string `pulumi:"creationTime"`
-	// If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified above at most.
-	IgnoreIdleSlots *bool `pulumi:"ignoreIdleSlots"`
-	// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
-	Name *string `pulumi:"name"`
-	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
-	SlotCapacity *string `pulumi:"slotCapacity"`
-	// Last update time of the reservation.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ReservationState struct {
-	// Creation time of the reservation.
-	CreationTime pulumi.StringPtrInput
-	// If false, any query or pipeline job using this reservation will use idle slots from other reservations within the same admin project. If true, a query or pipeline job using this reservation will execute with the slot capacity specified above at most.
-	IgnoreIdleSlots pulumi.BoolPtrInput
-	// The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`.
-	Name pulumi.StringPtrInput
-	// Minimum slots available to this reservation. A slot is a unit of computational power in BigQuery, and serves as the unit of parallelism. Queries using this reservation might use more slots during runtime if ignore_idle_slots is set to false. If the new reservation's slot capacity exceed the parent's slot capacity or if total slot capacity of the new reservation and its siblings exceeds the parent's slot capacity, the request will fail with `google.rpc.Code.RESOURCE_EXHAUSTED`.
-	SlotCapacity pulumi.StringPtrInput
-	// Last update time of the reservation.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (ReservationState) ElementType() reflect.Type {

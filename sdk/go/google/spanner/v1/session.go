@@ -64,25 +64,9 @@ func GetSession(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Session resources.
 type sessionState struct {
-	// The approximate timestamp when the session is last used. It is typically earlier than the actual last use time.
-	ApproximateLastUseTime *string `pulumi:"approximateLastUseTime"`
-	// The timestamp when the session is created.
-	CreateTime *string `pulumi:"createTime"`
-	// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
-	Labels map[string]string `pulumi:"labels"`
-	// The name of the session. This is always system-assigned.
-	Name *string `pulumi:"name"`
 }
 
 type SessionState struct {
-	// The approximate timestamp when the session is last used. It is typically earlier than the actual last use time.
-	ApproximateLastUseTime pulumi.StringPtrInput
-	// The timestamp when the session is created.
-	CreateTime pulumi.StringPtrInput
-	// The labels for the session. * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 64 labels can be associated with a given session. See https://goo.gl/xmQnxf for more information on and examples of labels.
-	Labels pulumi.StringMapInput
-	// The name of the session. This is always system-assigned.
-	Name pulumi.StringPtrInput
 }
 
 func (SessionState) ElementType() reflect.Type {

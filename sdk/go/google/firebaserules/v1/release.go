@@ -57,25 +57,9 @@ func GetRelease(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Release resources.
 type releaseState struct {
-	// Time the release was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Format: `projects/{project_id}/releases/{release_id}`
-	Name *string `pulumi:"name"`
-	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
-	RulesetName *string `pulumi:"rulesetName"`
-	// Time the release was updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type ReleaseState struct {
-	// Time the release was created.
-	CreateTime pulumi.StringPtrInput
-	// Format: `projects/{project_id}/releases/{release_id}`
-	Name pulumi.StringPtrInput
-	// Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist the `Release` to be created.
-	RulesetName pulumi.StringPtrInput
-	// Time the release was updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (ReleaseState) ElementType() reflect.Type {

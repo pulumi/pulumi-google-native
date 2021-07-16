@@ -72,37 +72,9 @@ func GetTargetServer(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TargetServer resources.
 type targetServerState struct {
-	// Optional. A human-readable description of this TargetServer.
-	Description *string `pulumi:"description"`
-	// The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
-	Host *string `pulumi:"host"`
-	// Optional. Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
-	IsEnabled *bool `pulumi:"isEnabled"`
-	// The resource id of this target server. Values must match the regular expression
-	Name *string `pulumi:"name"`
-	// The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
-	Port *int `pulumi:"port"`
-	// Immutable. The protocol used by this TargetServer.
-	Protocol *string `pulumi:"protocol"`
-	// Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
-	SSLInfo *GoogleCloudApigeeV1TlsInfoResponse `pulumi:"sSLInfo"`
 }
 
 type TargetServerState struct {
-	// Optional. A human-readable description of this TargetServer.
-	Description pulumi.StringPtrInput
-	// The host name this target connects to. Value must be a valid hostname as described by RFC-1123.
-	Host pulumi.StringPtrInput
-	// Optional. Enabling/disabling a TargetServer is useful when TargetServers are used in load balancing configurations, and one or more TargetServers need to taken out of rotation periodically. Defaults to true.
-	IsEnabled pulumi.BoolPtrInput
-	// The resource id of this target server. Values must match the regular expression
-	Name pulumi.StringPtrInput
-	// The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
-	Port pulumi.IntPtrInput
-	// Immutable. The protocol used by this TargetServer.
-	Protocol pulumi.StringPtrInput
-	// Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
-	SSLInfo GoogleCloudApigeeV1TlsInfoResponsePtrInput
 }
 
 func (TargetServerState) ElementType() reflect.Type {
@@ -123,7 +95,7 @@ type targetServerArgs struct {
 	// The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
 	Port int `pulumi:"port"`
 	// Immutable. The protocol used by this TargetServer.
-	Protocol *string `pulumi:"protocol"`
+	Protocol *TargetServerProtocol `pulumi:"protocol"`
 	// Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
 	SSLInfo *GoogleCloudApigeeV1TlsInfo `pulumi:"sSLInfo"`
 }
@@ -143,7 +115,7 @@ type TargetServerArgs struct {
 	// The port number this target connects to on the given host. Value must be between 1 and 65535, inclusive.
 	Port pulumi.IntInput
 	// Immutable. The protocol used by this TargetServer.
-	Protocol *TargetServerProtocol
+	Protocol TargetServerProtocolPtrInput
 	// Optional. Specifies TLS configuration info for this TargetServer. The JSON name is `sSLInfo` for legacy/backwards compatibility reasons -- Edge originally supported SSL, and the name is still used for TLS configuration.
 	SSLInfo GoogleCloudApigeeV1TlsInfoPtrInput
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // The log type that this config enables.
-type AuditLogConfigLogType pulumi.String
+type AuditLogConfigLogType string
 
 const (
 	// Default case. Should never be this.
@@ -25,7 +25,23 @@ const (
 )
 
 func (AuditLogConfigLogType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*AuditLogConfigLogType)(nil)).Elem()
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput {
+	return pulumi.ToOutput(e).(AuditLogConfigLogTypeOutput)
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypeOutputWithContext(ctx context.Context) AuditLogConfigLogTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AuditLogConfigLogTypeOutput)
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return e.ToAuditLogConfigLogTypePtrOutputWithContext(context.Background())
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return AuditLogConfigLogType(e).ToAuditLogConfigLogTypeOutputWithContext(ctx).ToAuditLogConfigLogTypePtrOutputWithContext(ctx)
 }
 
 func (e AuditLogConfigLogType) ToStringOutput() pulumi.StringOutput {
@@ -44,8 +60,129 @@ func (e AuditLogConfigLogType) ToStringPtrOutputWithContext(ctx context.Context)
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type AuditLogConfigLogTypeOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigLogTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigLogType)(nil)).Elem()
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypeOutputWithContext(ctx context.Context) AuditLogConfigLogTypeOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return o.ToAuditLogConfigLogTypePtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuditLogConfigLogType) *AuditLogConfigLogType {
+		return &v
+	}).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuditLogConfigLogType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuditLogConfigLogType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
+	return auditLogConfigLogTypePtrType
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AuditLogConfigLogType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		var ret AuditLogConfigLogType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
+}
+
+// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
+// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+//
+//          AuditLogConfigLogTypeArgs{...}
+type AuditLogConfigLogTypeInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput
+	ToAuditLogConfigLogTypeOutputWithContext(context.Context) AuditLogConfigLogTypeOutput
+}
+
+var auditLogConfigLogTypePtrType = reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
+
+type AuditLogConfigLogTypePtrInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput
+	ToAuditLogConfigLogTypePtrOutputWithContext(context.Context) AuditLogConfigLogTypePtrOutput
+}
+
+type auditLogConfigLogTypePtr string
+
+func AuditLogConfigLogTypePtr(v string) AuditLogConfigLogTypePtrInput {
+	return (*auditLogConfigLogTypePtr)(&v)
+}
+
+func (*auditLogConfigLogTypePtr) ElementType() reflect.Type {
+	return auditLogConfigLogTypePtrType
+}
+
+func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return pulumi.ToOutput(in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
 // Required. Immutable. The Tier of this CertificateAuthority.
-type CertificateAuthorityTier pulumi.String
+type CertificateAuthorityTier string
 
 const (
 	// Not specified.
@@ -57,7 +194,23 @@ const (
 )
 
 func (CertificateAuthorityTier) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*CertificateAuthorityTier)(nil)).Elem()
+}
+
+func (e CertificateAuthorityTier) ToCertificateAuthorityTierOutput() CertificateAuthorityTierOutput {
+	return pulumi.ToOutput(e).(CertificateAuthorityTierOutput)
+}
+
+func (e CertificateAuthorityTier) ToCertificateAuthorityTierOutputWithContext(ctx context.Context) CertificateAuthorityTierOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CertificateAuthorityTierOutput)
+}
+
+func (e CertificateAuthorityTier) ToCertificateAuthorityTierPtrOutput() CertificateAuthorityTierPtrOutput {
+	return e.ToCertificateAuthorityTierPtrOutputWithContext(context.Background())
+}
+
+func (e CertificateAuthorityTier) ToCertificateAuthorityTierPtrOutputWithContext(ctx context.Context) CertificateAuthorityTierPtrOutput {
+	return CertificateAuthorityTier(e).ToCertificateAuthorityTierOutputWithContext(ctx).ToCertificateAuthorityTierPtrOutputWithContext(ctx)
 }
 
 func (e CertificateAuthorityTier) ToStringOutput() pulumi.StringOutput {
@@ -76,8 +229,129 @@ func (e CertificateAuthorityTier) ToStringPtrOutputWithContext(ctx context.Conte
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type CertificateAuthorityTierOutput struct{ *pulumi.OutputState }
+
+func (CertificateAuthorityTierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateAuthorityTier)(nil)).Elem()
+}
+
+func (o CertificateAuthorityTierOutput) ToCertificateAuthorityTierOutput() CertificateAuthorityTierOutput {
+	return o
+}
+
+func (o CertificateAuthorityTierOutput) ToCertificateAuthorityTierOutputWithContext(ctx context.Context) CertificateAuthorityTierOutput {
+	return o
+}
+
+func (o CertificateAuthorityTierOutput) ToCertificateAuthorityTierPtrOutput() CertificateAuthorityTierPtrOutput {
+	return o.ToCertificateAuthorityTierPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateAuthorityTierOutput) ToCertificateAuthorityTierPtrOutputWithContext(ctx context.Context) CertificateAuthorityTierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateAuthorityTier) *CertificateAuthorityTier {
+		return &v
+	}).(CertificateAuthorityTierPtrOutput)
+}
+
+func (o CertificateAuthorityTierOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CertificateAuthorityTierOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CertificateAuthorityTier) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CertificateAuthorityTierOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateAuthorityTierOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CertificateAuthorityTier) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CertificateAuthorityTierPtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateAuthorityTierPtrOutput) ElementType() reflect.Type {
+	return certificateAuthorityTierPtrType
+}
+
+func (o CertificateAuthorityTierPtrOutput) ToCertificateAuthorityTierPtrOutput() CertificateAuthorityTierPtrOutput {
+	return o
+}
+
+func (o CertificateAuthorityTierPtrOutput) ToCertificateAuthorityTierPtrOutputWithContext(ctx context.Context) CertificateAuthorityTierPtrOutput {
+	return o
+}
+
+func (o CertificateAuthorityTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateAuthorityTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CertificateAuthorityTier) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CertificateAuthorityTierPtrOutput) Elem() CertificateAuthorityTierOutput {
+	return o.ApplyT(func(v *CertificateAuthorityTier) CertificateAuthorityTier {
+		var ret CertificateAuthorityTier
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(CertificateAuthorityTierOutput)
+}
+
+// CertificateAuthorityTierInput is an input type that accepts CertificateAuthorityTierArgs and CertificateAuthorityTierOutput values.
+// You can construct a concrete instance of `CertificateAuthorityTierInput` via:
+//
+//          CertificateAuthorityTierArgs{...}
+type CertificateAuthorityTierInput interface {
+	pulumi.Input
+
+	ToCertificateAuthorityTierOutput() CertificateAuthorityTierOutput
+	ToCertificateAuthorityTierOutputWithContext(context.Context) CertificateAuthorityTierOutput
+}
+
+var certificateAuthorityTierPtrType = reflect.TypeOf((**CertificateAuthorityTier)(nil)).Elem()
+
+type CertificateAuthorityTierPtrInput interface {
+	pulumi.Input
+
+	ToCertificateAuthorityTierPtrOutput() CertificateAuthorityTierPtrOutput
+	ToCertificateAuthorityTierPtrOutputWithContext(context.Context) CertificateAuthorityTierPtrOutput
+}
+
+type certificateAuthorityTierPtr string
+
+func CertificateAuthorityTierPtr(v string) CertificateAuthorityTierPtrInput {
+	return (*certificateAuthorityTierPtr)(&v)
+}
+
+func (*certificateAuthorityTierPtr) ElementType() reflect.Type {
+	return certificateAuthorityTierPtrType
+}
+
+func (in *certificateAuthorityTierPtr) ToCertificateAuthorityTierPtrOutput() CertificateAuthorityTierPtrOutput {
+	return pulumi.ToOutput(in).(CertificateAuthorityTierPtrOutput)
+}
+
+func (in *certificateAuthorityTierPtr) ToCertificateAuthorityTierPtrOutputWithContext(ctx context.Context) CertificateAuthorityTierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CertificateAuthorityTierPtrOutput)
+}
+
 // Required. Immutable. The Type of this CertificateAuthority.
-type CertificateAuthorityType pulumi.String
+type CertificateAuthorityType string
 
 const (
 	// Not specified.
@@ -89,7 +363,23 @@ const (
 )
 
 func (CertificateAuthorityType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*CertificateAuthorityType)(nil)).Elem()
+}
+
+func (e CertificateAuthorityType) ToCertificateAuthorityTypeOutput() CertificateAuthorityTypeOutput {
+	return pulumi.ToOutput(e).(CertificateAuthorityTypeOutput)
+}
+
+func (e CertificateAuthorityType) ToCertificateAuthorityTypeOutputWithContext(ctx context.Context) CertificateAuthorityTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CertificateAuthorityTypeOutput)
+}
+
+func (e CertificateAuthorityType) ToCertificateAuthorityTypePtrOutput() CertificateAuthorityTypePtrOutput {
+	return e.ToCertificateAuthorityTypePtrOutputWithContext(context.Background())
+}
+
+func (e CertificateAuthorityType) ToCertificateAuthorityTypePtrOutputWithContext(ctx context.Context) CertificateAuthorityTypePtrOutput {
+	return CertificateAuthorityType(e).ToCertificateAuthorityTypeOutputWithContext(ctx).ToCertificateAuthorityTypePtrOutputWithContext(ctx)
 }
 
 func (e CertificateAuthorityType) ToStringOutput() pulumi.StringOutput {
@@ -108,8 +398,129 @@ func (e CertificateAuthorityType) ToStringPtrOutputWithContext(ctx context.Conte
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type CertificateAuthorityTypeOutput struct{ *pulumi.OutputState }
+
+func (CertificateAuthorityTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CertificateAuthorityType)(nil)).Elem()
+}
+
+func (o CertificateAuthorityTypeOutput) ToCertificateAuthorityTypeOutput() CertificateAuthorityTypeOutput {
+	return o
+}
+
+func (o CertificateAuthorityTypeOutput) ToCertificateAuthorityTypeOutputWithContext(ctx context.Context) CertificateAuthorityTypeOutput {
+	return o
+}
+
+func (o CertificateAuthorityTypeOutput) ToCertificateAuthorityTypePtrOutput() CertificateAuthorityTypePtrOutput {
+	return o.ToCertificateAuthorityTypePtrOutputWithContext(context.Background())
+}
+
+func (o CertificateAuthorityTypeOutput) ToCertificateAuthorityTypePtrOutputWithContext(ctx context.Context) CertificateAuthorityTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CertificateAuthorityType) *CertificateAuthorityType {
+		return &v
+	}).(CertificateAuthorityTypePtrOutput)
+}
+
+func (o CertificateAuthorityTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CertificateAuthorityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CertificateAuthorityType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CertificateAuthorityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateAuthorityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CertificateAuthorityType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CertificateAuthorityTypePtrOutput struct{ *pulumi.OutputState }
+
+func (CertificateAuthorityTypePtrOutput) ElementType() reflect.Type {
+	return certificateAuthorityTypePtrType
+}
+
+func (o CertificateAuthorityTypePtrOutput) ToCertificateAuthorityTypePtrOutput() CertificateAuthorityTypePtrOutput {
+	return o
+}
+
+func (o CertificateAuthorityTypePtrOutput) ToCertificateAuthorityTypePtrOutputWithContext(ctx context.Context) CertificateAuthorityTypePtrOutput {
+	return o
+}
+
+func (o CertificateAuthorityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CertificateAuthorityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CertificateAuthorityType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CertificateAuthorityTypePtrOutput) Elem() CertificateAuthorityTypeOutput {
+	return o.ApplyT(func(v *CertificateAuthorityType) CertificateAuthorityType {
+		var ret CertificateAuthorityType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(CertificateAuthorityTypeOutput)
+}
+
+// CertificateAuthorityTypeInput is an input type that accepts CertificateAuthorityTypeArgs and CertificateAuthorityTypeOutput values.
+// You can construct a concrete instance of `CertificateAuthorityTypeInput` via:
+//
+//          CertificateAuthorityTypeArgs{...}
+type CertificateAuthorityTypeInput interface {
+	pulumi.Input
+
+	ToCertificateAuthorityTypeOutput() CertificateAuthorityTypeOutput
+	ToCertificateAuthorityTypeOutputWithContext(context.Context) CertificateAuthorityTypeOutput
+}
+
+var certificateAuthorityTypePtrType = reflect.TypeOf((**CertificateAuthorityType)(nil)).Elem()
+
+type CertificateAuthorityTypePtrInput interface {
+	pulumi.Input
+
+	ToCertificateAuthorityTypePtrOutput() CertificateAuthorityTypePtrOutput
+	ToCertificateAuthorityTypePtrOutputWithContext(context.Context) CertificateAuthorityTypePtrOutput
+}
+
+type certificateAuthorityTypePtr string
+
+func CertificateAuthorityTypePtr(v string) CertificateAuthorityTypePtrInput {
+	return (*certificateAuthorityTypePtr)(&v)
+}
+
+func (*certificateAuthorityTypePtr) ElementType() reflect.Type {
+	return certificateAuthorityTypePtrType
+}
+
+func (in *certificateAuthorityTypePtr) ToCertificateAuthorityTypePtrOutput() CertificateAuthorityTypePtrOutput {
+	return pulumi.ToOutput(in).(CertificateAuthorityTypePtrOutput)
+}
+
+func (in *certificateAuthorityTypePtr) ToCertificateAuthorityTypePtrOutputWithContext(ctx context.Context) CertificateAuthorityTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CertificateAuthorityTypePtrOutput)
+}
+
 // Required. The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
-type KeyVersionSpecAlgorithm pulumi.String
+type KeyVersionSpecAlgorithm string
 
 const (
 	// Not specified.
@@ -133,7 +544,23 @@ const (
 )
 
 func (KeyVersionSpecAlgorithm) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*KeyVersionSpecAlgorithm)(nil)).Elem()
+}
+
+func (e KeyVersionSpecAlgorithm) ToKeyVersionSpecAlgorithmOutput() KeyVersionSpecAlgorithmOutput {
+	return pulumi.ToOutput(e).(KeyVersionSpecAlgorithmOutput)
+}
+
+func (e KeyVersionSpecAlgorithm) ToKeyVersionSpecAlgorithmOutputWithContext(ctx context.Context) KeyVersionSpecAlgorithmOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(KeyVersionSpecAlgorithmOutput)
+}
+
+func (e KeyVersionSpecAlgorithm) ToKeyVersionSpecAlgorithmPtrOutput() KeyVersionSpecAlgorithmPtrOutput {
+	return e.ToKeyVersionSpecAlgorithmPtrOutputWithContext(context.Background())
+}
+
+func (e KeyVersionSpecAlgorithm) ToKeyVersionSpecAlgorithmPtrOutputWithContext(ctx context.Context) KeyVersionSpecAlgorithmPtrOutput {
+	return KeyVersionSpecAlgorithm(e).ToKeyVersionSpecAlgorithmOutputWithContext(ctx).ToKeyVersionSpecAlgorithmPtrOutputWithContext(ctx)
 }
 
 func (e KeyVersionSpecAlgorithm) ToStringOutput() pulumi.StringOutput {
@@ -152,8 +579,129 @@ func (e KeyVersionSpecAlgorithm) ToStringPtrOutputWithContext(ctx context.Contex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type KeyVersionSpecAlgorithmOutput struct{ *pulumi.OutputState }
+
+func (KeyVersionSpecAlgorithmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyVersionSpecAlgorithm)(nil)).Elem()
+}
+
+func (o KeyVersionSpecAlgorithmOutput) ToKeyVersionSpecAlgorithmOutput() KeyVersionSpecAlgorithmOutput {
+	return o
+}
+
+func (o KeyVersionSpecAlgorithmOutput) ToKeyVersionSpecAlgorithmOutputWithContext(ctx context.Context) KeyVersionSpecAlgorithmOutput {
+	return o
+}
+
+func (o KeyVersionSpecAlgorithmOutput) ToKeyVersionSpecAlgorithmPtrOutput() KeyVersionSpecAlgorithmPtrOutput {
+	return o.ToKeyVersionSpecAlgorithmPtrOutputWithContext(context.Background())
+}
+
+func (o KeyVersionSpecAlgorithmOutput) ToKeyVersionSpecAlgorithmPtrOutputWithContext(ctx context.Context) KeyVersionSpecAlgorithmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyVersionSpecAlgorithm) *KeyVersionSpecAlgorithm {
+		return &v
+	}).(KeyVersionSpecAlgorithmPtrOutput)
+}
+
+func (o KeyVersionSpecAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o KeyVersionSpecAlgorithmOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e KeyVersionSpecAlgorithm) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o KeyVersionSpecAlgorithmOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o KeyVersionSpecAlgorithmOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e KeyVersionSpecAlgorithm) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type KeyVersionSpecAlgorithmPtrOutput struct{ *pulumi.OutputState }
+
+func (KeyVersionSpecAlgorithmPtrOutput) ElementType() reflect.Type {
+	return keyVersionSpecAlgorithmPtrType
+}
+
+func (o KeyVersionSpecAlgorithmPtrOutput) ToKeyVersionSpecAlgorithmPtrOutput() KeyVersionSpecAlgorithmPtrOutput {
+	return o
+}
+
+func (o KeyVersionSpecAlgorithmPtrOutput) ToKeyVersionSpecAlgorithmPtrOutputWithContext(ctx context.Context) KeyVersionSpecAlgorithmPtrOutput {
+	return o
+}
+
+func (o KeyVersionSpecAlgorithmPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o KeyVersionSpecAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *KeyVersionSpecAlgorithm) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KeyVersionSpecAlgorithmPtrOutput) Elem() KeyVersionSpecAlgorithmOutput {
+	return o.ApplyT(func(v *KeyVersionSpecAlgorithm) KeyVersionSpecAlgorithm {
+		var ret KeyVersionSpecAlgorithm
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(KeyVersionSpecAlgorithmOutput)
+}
+
+// KeyVersionSpecAlgorithmInput is an input type that accepts KeyVersionSpecAlgorithmArgs and KeyVersionSpecAlgorithmOutput values.
+// You can construct a concrete instance of `KeyVersionSpecAlgorithmInput` via:
+//
+//          KeyVersionSpecAlgorithmArgs{...}
+type KeyVersionSpecAlgorithmInput interface {
+	pulumi.Input
+
+	ToKeyVersionSpecAlgorithmOutput() KeyVersionSpecAlgorithmOutput
+	ToKeyVersionSpecAlgorithmOutputWithContext(context.Context) KeyVersionSpecAlgorithmOutput
+}
+
+var keyVersionSpecAlgorithmPtrType = reflect.TypeOf((**KeyVersionSpecAlgorithm)(nil)).Elem()
+
+type KeyVersionSpecAlgorithmPtrInput interface {
+	pulumi.Input
+
+	ToKeyVersionSpecAlgorithmPtrOutput() KeyVersionSpecAlgorithmPtrOutput
+	ToKeyVersionSpecAlgorithmPtrOutputWithContext(context.Context) KeyVersionSpecAlgorithmPtrOutput
+}
+
+type keyVersionSpecAlgorithmPtr string
+
+func KeyVersionSpecAlgorithmPtr(v string) KeyVersionSpecAlgorithmPtrInput {
+	return (*keyVersionSpecAlgorithmPtr)(&v)
+}
+
+func (*keyVersionSpecAlgorithmPtr) ElementType() reflect.Type {
+	return keyVersionSpecAlgorithmPtrType
+}
+
+func (in *keyVersionSpecAlgorithmPtr) ToKeyVersionSpecAlgorithmPtrOutput() KeyVersionSpecAlgorithmPtrOutput {
+	return pulumi.ToOutput(in).(KeyVersionSpecAlgorithmPtrOutput)
+}
+
+func (in *keyVersionSpecAlgorithmPtr) ToKeyVersionSpecAlgorithmPtrOutputWithContext(ctx context.Context) KeyVersionSpecAlgorithmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(KeyVersionSpecAlgorithmPtrOutput)
+}
+
 // Optional. The type of public key. If specified, it must match the public key used for the`key` field.
-type PublicKeyType pulumi.String
+type PublicKeyType string
 
 const (
 	// Default unspecified value.
@@ -165,7 +713,23 @@ const (
 )
 
 func (PublicKeyType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*PublicKeyType)(nil)).Elem()
+}
+
+func (e PublicKeyType) ToPublicKeyTypeOutput() PublicKeyTypeOutput {
+	return pulumi.ToOutput(e).(PublicKeyTypeOutput)
+}
+
+func (e PublicKeyType) ToPublicKeyTypeOutputWithContext(ctx context.Context) PublicKeyTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PublicKeyTypeOutput)
+}
+
+func (e PublicKeyType) ToPublicKeyTypePtrOutput() PublicKeyTypePtrOutput {
+	return e.ToPublicKeyTypePtrOutputWithContext(context.Background())
+}
+
+func (e PublicKeyType) ToPublicKeyTypePtrOutputWithContext(ctx context.Context) PublicKeyTypePtrOutput {
+	return PublicKeyType(e).ToPublicKeyTypeOutputWithContext(ctx).ToPublicKeyTypePtrOutputWithContext(ctx)
 }
 
 func (e PublicKeyType) ToStringOutput() pulumi.StringOutput {
@@ -182,4 +746,138 @@ func (e PublicKeyType) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e PublicKeyType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PublicKeyTypeOutput struct{ *pulumi.OutputState }
+
+func (PublicKeyTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicKeyType)(nil)).Elem()
+}
+
+func (o PublicKeyTypeOutput) ToPublicKeyTypeOutput() PublicKeyTypeOutput {
+	return o
+}
+
+func (o PublicKeyTypeOutput) ToPublicKeyTypeOutputWithContext(ctx context.Context) PublicKeyTypeOutput {
+	return o
+}
+
+func (o PublicKeyTypeOutput) ToPublicKeyTypePtrOutput() PublicKeyTypePtrOutput {
+	return o.ToPublicKeyTypePtrOutputWithContext(context.Background())
+}
+
+func (o PublicKeyTypeOutput) ToPublicKeyTypePtrOutputWithContext(ctx context.Context) PublicKeyTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicKeyType) *PublicKeyType {
+		return &v
+	}).(PublicKeyTypePtrOutput)
+}
+
+func (o PublicKeyTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PublicKeyTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicKeyType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PublicKeyTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicKeyTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicKeyType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PublicKeyTypePtrOutput struct{ *pulumi.OutputState }
+
+func (PublicKeyTypePtrOutput) ElementType() reflect.Type {
+	return publicKeyTypePtrType
+}
+
+func (o PublicKeyTypePtrOutput) ToPublicKeyTypePtrOutput() PublicKeyTypePtrOutput {
+	return o
+}
+
+func (o PublicKeyTypePtrOutput) ToPublicKeyTypePtrOutputWithContext(ctx context.Context) PublicKeyTypePtrOutput {
+	return o
+}
+
+func (o PublicKeyTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicKeyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PublicKeyType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PublicKeyTypePtrOutput) Elem() PublicKeyTypeOutput {
+	return o.ApplyT(func(v *PublicKeyType) PublicKeyType {
+		var ret PublicKeyType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(PublicKeyTypeOutput)
+}
+
+// PublicKeyTypeInput is an input type that accepts PublicKeyTypeArgs and PublicKeyTypeOutput values.
+// You can construct a concrete instance of `PublicKeyTypeInput` via:
+//
+//          PublicKeyTypeArgs{...}
+type PublicKeyTypeInput interface {
+	pulumi.Input
+
+	ToPublicKeyTypeOutput() PublicKeyTypeOutput
+	ToPublicKeyTypeOutputWithContext(context.Context) PublicKeyTypeOutput
+}
+
+var publicKeyTypePtrType = reflect.TypeOf((**PublicKeyType)(nil)).Elem()
+
+type PublicKeyTypePtrInput interface {
+	pulumi.Input
+
+	ToPublicKeyTypePtrOutput() PublicKeyTypePtrOutput
+	ToPublicKeyTypePtrOutputWithContext(context.Context) PublicKeyTypePtrOutput
+}
+
+type publicKeyTypePtr string
+
+func PublicKeyTypePtr(v string) PublicKeyTypePtrInput {
+	return (*publicKeyTypePtr)(&v)
+}
+
+func (*publicKeyTypePtr) ElementType() reflect.Type {
+	return publicKeyTypePtrType
+}
+
+func (in *publicKeyTypePtr) ToPublicKeyTypePtrOutput() PublicKeyTypePtrOutput {
+	return pulumi.ToOutput(in).(PublicKeyTypePtrOutput)
+}
+
+func (in *publicKeyTypePtr) ToPublicKeyTypePtrOutputWithContext(ctx context.Context) PublicKeyTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PublicKeyTypePtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(CertificateAuthorityTierOutput{})
+	pulumi.RegisterOutputType(CertificateAuthorityTierPtrOutput{})
+	pulumi.RegisterOutputType(CertificateAuthorityTypeOutput{})
+	pulumi.RegisterOutputType(CertificateAuthorityTypePtrOutput{})
+	pulumi.RegisterOutputType(KeyVersionSpecAlgorithmOutput{})
+	pulumi.RegisterOutputType(KeyVersionSpecAlgorithmPtrOutput{})
+	pulumi.RegisterOutputType(PublicKeyTypeOutput{})
+	pulumi.RegisterOutputType(PublicKeyTypePtrOutput{})
 }

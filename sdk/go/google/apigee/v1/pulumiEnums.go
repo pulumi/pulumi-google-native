@@ -11,7 +11,7 @@ import (
 )
 
 // Immutable. The type of data this data collector will collect.
-type DataCollectorType pulumi.String
+type DataCollectorType string
 
 const (
 	// For future compatibility.
@@ -29,7 +29,23 @@ const (
 )
 
 func (DataCollectorType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*DataCollectorType)(nil)).Elem()
+}
+
+func (e DataCollectorType) ToDataCollectorTypeOutput() DataCollectorTypeOutput {
+	return pulumi.ToOutput(e).(DataCollectorTypeOutput)
+}
+
+func (e DataCollectorType) ToDataCollectorTypeOutputWithContext(ctx context.Context) DataCollectorTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DataCollectorTypeOutput)
+}
+
+func (e DataCollectorType) ToDataCollectorTypePtrOutput() DataCollectorTypePtrOutput {
+	return e.ToDataCollectorTypePtrOutputWithContext(context.Background())
+}
+
+func (e DataCollectorType) ToDataCollectorTypePtrOutputWithContext(ctx context.Context) DataCollectorTypePtrOutput {
+	return DataCollectorType(e).ToDataCollectorTypeOutputWithContext(ctx).ToDataCollectorTypePtrOutputWithContext(ctx)
 }
 
 func (e DataCollectorType) ToStringOutput() pulumi.StringOutput {
@@ -48,8 +64,129 @@ func (e DataCollectorType) ToStringPtrOutputWithContext(ctx context.Context) pul
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type DataCollectorTypeOutput struct{ *pulumi.OutputState }
+
+func (DataCollectorTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataCollectorType)(nil)).Elem()
+}
+
+func (o DataCollectorTypeOutput) ToDataCollectorTypeOutput() DataCollectorTypeOutput {
+	return o
+}
+
+func (o DataCollectorTypeOutput) ToDataCollectorTypeOutputWithContext(ctx context.Context) DataCollectorTypeOutput {
+	return o
+}
+
+func (o DataCollectorTypeOutput) ToDataCollectorTypePtrOutput() DataCollectorTypePtrOutput {
+	return o.ToDataCollectorTypePtrOutputWithContext(context.Background())
+}
+
+func (o DataCollectorTypeOutput) ToDataCollectorTypePtrOutputWithContext(ctx context.Context) DataCollectorTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataCollectorType) *DataCollectorType {
+		return &v
+	}).(DataCollectorTypePtrOutput)
+}
+
+func (o DataCollectorTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DataCollectorTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DataCollectorType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DataCollectorTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DataCollectorTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DataCollectorType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DataCollectorTypePtrOutput struct{ *pulumi.OutputState }
+
+func (DataCollectorTypePtrOutput) ElementType() reflect.Type {
+	return dataCollectorTypePtrType
+}
+
+func (o DataCollectorTypePtrOutput) ToDataCollectorTypePtrOutput() DataCollectorTypePtrOutput {
+	return o
+}
+
+func (o DataCollectorTypePtrOutput) ToDataCollectorTypePtrOutputWithContext(ctx context.Context) DataCollectorTypePtrOutput {
+	return o
+}
+
+func (o DataCollectorTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DataCollectorTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DataCollectorType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DataCollectorTypePtrOutput) Elem() DataCollectorTypeOutput {
+	return o.ApplyT(func(v *DataCollectorType) DataCollectorType {
+		var ret DataCollectorType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(DataCollectorTypeOutput)
+}
+
+// DataCollectorTypeInput is an input type that accepts DataCollectorTypeArgs and DataCollectorTypeOutput values.
+// You can construct a concrete instance of `DataCollectorTypeInput` via:
+//
+//          DataCollectorTypeArgs{...}
+type DataCollectorTypeInput interface {
+	pulumi.Input
+
+	ToDataCollectorTypeOutput() DataCollectorTypeOutput
+	ToDataCollectorTypeOutputWithContext(context.Context) DataCollectorTypeOutput
+}
+
+var dataCollectorTypePtrType = reflect.TypeOf((**DataCollectorType)(nil)).Elem()
+
+type DataCollectorTypePtrInput interface {
+	pulumi.Input
+
+	ToDataCollectorTypePtrOutput() DataCollectorTypePtrOutput
+	ToDataCollectorTypePtrOutputWithContext(context.Context) DataCollectorTypePtrOutput
+}
+
+type dataCollectorTypePtr string
+
+func DataCollectorTypePtr(v string) DataCollectorTypePtrInput {
+	return (*dataCollectorTypePtr)(&v)
+}
+
+func (*dataCollectorTypePtr) ElementType() reflect.Type {
+	return dataCollectorTypePtrType
+}
+
+func (in *dataCollectorTypePtr) ToDataCollectorTypePtrOutput() DataCollectorTypePtrOutput {
+	return pulumi.ToOutput(in).(DataCollectorTypePtrOutput)
+}
+
+func (in *dataCollectorTypePtr) ToDataCollectorTypePtrOutputWithContext(ctx context.Context) DataCollectorTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DataCollectorTypePtrOutput)
+}
+
 // Sampler of distributed tracing. OFF is the default value.
-type GoogleCloudApigeeV1TraceSamplingConfigSampler pulumi.String
+type GoogleCloudApigeeV1TraceSamplingConfigSampler string
 
 const (
 	// Sampler unspecified.
@@ -61,7 +198,23 @@ const (
 )
 
 func (GoogleCloudApigeeV1TraceSamplingConfigSampler) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GoogleCloudApigeeV1TraceSamplingConfigSampler)(nil)).Elem()
+}
+
+func (e GoogleCloudApigeeV1TraceSamplingConfigSampler) ToGoogleCloudApigeeV1TraceSamplingConfigSamplerOutput() GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput {
+	return pulumi.ToOutput(e).(GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput)
+}
+
+func (e GoogleCloudApigeeV1TraceSamplingConfigSampler) ToGoogleCloudApigeeV1TraceSamplingConfigSamplerOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput)
+}
+
+func (e GoogleCloudApigeeV1TraceSamplingConfigSampler) ToGoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput() GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput {
+	return e.ToGoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudApigeeV1TraceSamplingConfigSampler) ToGoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput {
+	return GoogleCloudApigeeV1TraceSamplingConfigSampler(e).ToGoogleCloudApigeeV1TraceSamplingConfigSamplerOutputWithContext(ctx).ToGoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutputWithContext(ctx)
 }
 
 func (e GoogleCloudApigeeV1TraceSamplingConfigSampler) ToStringOutput() pulumi.StringOutput {
@@ -80,8 +233,129 @@ func (e GoogleCloudApigeeV1TraceSamplingConfigSampler) ToStringPtrOutputWithCont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1TraceSamplingConfigSampler)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput) ToGoogleCloudApigeeV1TraceSamplingConfigSamplerOutput() GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput) ToGoogleCloudApigeeV1TraceSamplingConfigSamplerOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput) ToGoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput() GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput {
+	return o.ToGoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput) ToGoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1TraceSamplingConfigSampler) *GoogleCloudApigeeV1TraceSamplingConfigSampler {
+		return &v
+	}).(GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput)
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudApigeeV1TraceSamplingConfigSampler) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudApigeeV1TraceSamplingConfigSampler) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput) ElementType() reflect.Type {
+	return googleCloudApigeeV1TraceSamplingConfigSamplerPtrType
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput) ToGoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput() GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput) ToGoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudApigeeV1TraceSamplingConfigSampler) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput) Elem() GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1TraceSamplingConfigSampler) GoogleCloudApigeeV1TraceSamplingConfigSampler {
+		var ret GoogleCloudApigeeV1TraceSamplingConfigSampler
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput)
+}
+
+// GoogleCloudApigeeV1TraceSamplingConfigSamplerInput is an input type that accepts GoogleCloudApigeeV1TraceSamplingConfigSamplerArgs and GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1TraceSamplingConfigSamplerInput` via:
+//
+//          GoogleCloudApigeeV1TraceSamplingConfigSamplerArgs{...}
+type GoogleCloudApigeeV1TraceSamplingConfigSamplerInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1TraceSamplingConfigSamplerOutput() GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput
+	ToGoogleCloudApigeeV1TraceSamplingConfigSamplerOutputWithContext(context.Context) GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput
+}
+
+var googleCloudApigeeV1TraceSamplingConfigSamplerPtrType = reflect.TypeOf((**GoogleCloudApigeeV1TraceSamplingConfigSampler)(nil)).Elem()
+
+type GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput() GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput
+	ToGoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutputWithContext(context.Context) GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput
+}
+
+type googleCloudApigeeV1TraceSamplingConfigSamplerPtr string
+
+func GoogleCloudApigeeV1TraceSamplingConfigSamplerPtr(v string) GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrInput {
+	return (*googleCloudApigeeV1TraceSamplingConfigSamplerPtr)(&v)
+}
+
+func (*googleCloudApigeeV1TraceSamplingConfigSamplerPtr) ElementType() reflect.Type {
+	return googleCloudApigeeV1TraceSamplingConfigSamplerPtrType
+}
+
+func (in *googleCloudApigeeV1TraceSamplingConfigSamplerPtr) ToGoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput() GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput)
+}
+
+func (in *googleCloudApigeeV1TraceSamplingConfigSamplerPtr) ToGoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput)
+}
+
 // The log type that this config enables.
-type GoogleIamV1AuditLogConfigLogType pulumi.String
+type GoogleIamV1AuditLogConfigLogType string
 
 const (
 	// Default case. Should never be this.
@@ -95,7 +369,23 @@ const (
 )
 
 func (GoogleIamV1AuditLogConfigLogType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GoogleIamV1AuditLogConfigLogType)(nil)).Elem()
+}
+
+func (e GoogleIamV1AuditLogConfigLogType) ToGoogleIamV1AuditLogConfigLogTypeOutput() GoogleIamV1AuditLogConfigLogTypeOutput {
+	return pulumi.ToOutput(e).(GoogleIamV1AuditLogConfigLogTypeOutput)
+}
+
+func (e GoogleIamV1AuditLogConfigLogType) ToGoogleIamV1AuditLogConfigLogTypeOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleIamV1AuditLogConfigLogTypeOutput)
+}
+
+func (e GoogleIamV1AuditLogConfigLogType) ToGoogleIamV1AuditLogConfigLogTypePtrOutput() GoogleIamV1AuditLogConfigLogTypePtrOutput {
+	return e.ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleIamV1AuditLogConfigLogType) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
+	return GoogleIamV1AuditLogConfigLogType(e).ToGoogleIamV1AuditLogConfigLogTypeOutputWithContext(ctx).ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx)
 }
 
 func (e GoogleIamV1AuditLogConfigLogType) ToStringOutput() pulumi.StringOutput {
@@ -114,8 +404,129 @@ func (e GoogleIamV1AuditLogConfigLogType) ToStringPtrOutputWithContext(ctx conte
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type GoogleIamV1AuditLogConfigLogTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1AuditLogConfigLogTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleIamV1AuditLogConfigLogType)(nil)).Elem()
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToGoogleIamV1AuditLogConfigLogTypeOutput() GoogleIamV1AuditLogConfigLogTypeOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToGoogleIamV1AuditLogConfigLogTypeOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypeOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutput() GoogleIamV1AuditLogConfigLogTypePtrOutput {
+	return o.ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleIamV1AuditLogConfigLogType) *GoogleIamV1AuditLogConfigLogType {
+		return &v
+	}).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleIamV1AuditLogConfigLogType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleIamV1AuditLogConfigLogType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleIamV1AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleIamV1AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
+	return googleIamV1AuditLogConfigLogTypePtrType
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutput() GoogleIamV1AuditLogConfigLogTypePtrOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
+	return o
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleIamV1AuditLogConfigLogType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) Elem() GoogleIamV1AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *GoogleIamV1AuditLogConfigLogType) GoogleIamV1AuditLogConfigLogType {
+		var ret GoogleIamV1AuditLogConfigLogType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GoogleIamV1AuditLogConfigLogTypeOutput)
+}
+
+// GoogleIamV1AuditLogConfigLogTypeInput is an input type that accepts GoogleIamV1AuditLogConfigLogTypeArgs and GoogleIamV1AuditLogConfigLogTypeOutput values.
+// You can construct a concrete instance of `GoogleIamV1AuditLogConfigLogTypeInput` via:
+//
+//          GoogleIamV1AuditLogConfigLogTypeArgs{...}
+type GoogleIamV1AuditLogConfigLogTypeInput interface {
+	pulumi.Input
+
+	ToGoogleIamV1AuditLogConfigLogTypeOutput() GoogleIamV1AuditLogConfigLogTypeOutput
+	ToGoogleIamV1AuditLogConfigLogTypeOutputWithContext(context.Context) GoogleIamV1AuditLogConfigLogTypeOutput
+}
+
+var googleIamV1AuditLogConfigLogTypePtrType = reflect.TypeOf((**GoogleIamV1AuditLogConfigLogType)(nil)).Elem()
+
+type GoogleIamV1AuditLogConfigLogTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleIamV1AuditLogConfigLogTypePtrOutput() GoogleIamV1AuditLogConfigLogTypePtrOutput
+	ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput
+}
+
+type googleIamV1AuditLogConfigLogTypePtr string
+
+func GoogleIamV1AuditLogConfigLogTypePtr(v string) GoogleIamV1AuditLogConfigLogTypePtrInput {
+	return (*googleIamV1AuditLogConfigLogTypePtr)(&v)
+}
+
+func (*googleIamV1AuditLogConfigLogTypePtr) ElementType() reflect.Type {
+	return googleIamV1AuditLogConfigLogTypePtrType
+}
+
+func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTypePtrOutput() GoogleIamV1AuditLogConfigLogTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *googleIamV1AuditLogConfigLogTypePtr) ToGoogleIamV1AuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) GoogleIamV1AuditLogConfigLogTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
+}
+
 // Optional. Size of the CIDR block range that will be reserved by the instance. PAID organizations support `SLASH_16` to `SLASH_20` and defaults to `SLASH_16`. Evaluation organizations support only `SLASH_23`.
-type InstancePeeringCidrRange pulumi.String
+type InstancePeeringCidrRange string
 
 const (
 	// Range not specified.
@@ -135,7 +546,23 @@ const (
 )
 
 func (InstancePeeringCidrRange) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*InstancePeeringCidrRange)(nil)).Elem()
+}
+
+func (e InstancePeeringCidrRange) ToInstancePeeringCidrRangeOutput() InstancePeeringCidrRangeOutput {
+	return pulumi.ToOutput(e).(InstancePeeringCidrRangeOutput)
+}
+
+func (e InstancePeeringCidrRange) ToInstancePeeringCidrRangeOutputWithContext(ctx context.Context) InstancePeeringCidrRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InstancePeeringCidrRangeOutput)
+}
+
+func (e InstancePeeringCidrRange) ToInstancePeeringCidrRangePtrOutput() InstancePeeringCidrRangePtrOutput {
+	return e.ToInstancePeeringCidrRangePtrOutputWithContext(context.Background())
+}
+
+func (e InstancePeeringCidrRange) ToInstancePeeringCidrRangePtrOutputWithContext(ctx context.Context) InstancePeeringCidrRangePtrOutput {
+	return InstancePeeringCidrRange(e).ToInstancePeeringCidrRangeOutputWithContext(ctx).ToInstancePeeringCidrRangePtrOutputWithContext(ctx)
 }
 
 func (e InstancePeeringCidrRange) ToStringOutput() pulumi.StringOutput {
@@ -154,8 +581,129 @@ func (e InstancePeeringCidrRange) ToStringPtrOutputWithContext(ctx context.Conte
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type InstancePeeringCidrRangeOutput struct{ *pulumi.OutputState }
+
+func (InstancePeeringCidrRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePeeringCidrRange)(nil)).Elem()
+}
+
+func (o InstancePeeringCidrRangeOutput) ToInstancePeeringCidrRangeOutput() InstancePeeringCidrRangeOutput {
+	return o
+}
+
+func (o InstancePeeringCidrRangeOutput) ToInstancePeeringCidrRangeOutputWithContext(ctx context.Context) InstancePeeringCidrRangeOutput {
+	return o
+}
+
+func (o InstancePeeringCidrRangeOutput) ToInstancePeeringCidrRangePtrOutput() InstancePeeringCidrRangePtrOutput {
+	return o.ToInstancePeeringCidrRangePtrOutputWithContext(context.Background())
+}
+
+func (o InstancePeeringCidrRangeOutput) ToInstancePeeringCidrRangePtrOutputWithContext(ctx context.Context) InstancePeeringCidrRangePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstancePeeringCidrRange) *InstancePeeringCidrRange {
+		return &v
+	}).(InstancePeeringCidrRangePtrOutput)
+}
+
+func (o InstancePeeringCidrRangeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InstancePeeringCidrRangeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstancePeeringCidrRange) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InstancePeeringCidrRangeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstancePeeringCidrRangeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstancePeeringCidrRange) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstancePeeringCidrRangePtrOutput struct{ *pulumi.OutputState }
+
+func (InstancePeeringCidrRangePtrOutput) ElementType() reflect.Type {
+	return instancePeeringCidrRangePtrType
+}
+
+func (o InstancePeeringCidrRangePtrOutput) ToInstancePeeringCidrRangePtrOutput() InstancePeeringCidrRangePtrOutput {
+	return o
+}
+
+func (o InstancePeeringCidrRangePtrOutput) ToInstancePeeringCidrRangePtrOutputWithContext(ctx context.Context) InstancePeeringCidrRangePtrOutput {
+	return o
+}
+
+func (o InstancePeeringCidrRangePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstancePeeringCidrRangePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstancePeeringCidrRange) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o InstancePeeringCidrRangePtrOutput) Elem() InstancePeeringCidrRangeOutput {
+	return o.ApplyT(func(v *InstancePeeringCidrRange) InstancePeeringCidrRange {
+		var ret InstancePeeringCidrRange
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(InstancePeeringCidrRangeOutput)
+}
+
+// InstancePeeringCidrRangeInput is an input type that accepts InstancePeeringCidrRangeArgs and InstancePeeringCidrRangeOutput values.
+// You can construct a concrete instance of `InstancePeeringCidrRangeInput` via:
+//
+//          InstancePeeringCidrRangeArgs{...}
+type InstancePeeringCidrRangeInput interface {
+	pulumi.Input
+
+	ToInstancePeeringCidrRangeOutput() InstancePeeringCidrRangeOutput
+	ToInstancePeeringCidrRangeOutputWithContext(context.Context) InstancePeeringCidrRangeOutput
+}
+
+var instancePeeringCidrRangePtrType = reflect.TypeOf((**InstancePeeringCidrRange)(nil)).Elem()
+
+type InstancePeeringCidrRangePtrInput interface {
+	pulumi.Input
+
+	ToInstancePeeringCidrRangePtrOutput() InstancePeeringCidrRangePtrOutput
+	ToInstancePeeringCidrRangePtrOutputWithContext(context.Context) InstancePeeringCidrRangePtrOutput
+}
+
+type instancePeeringCidrRangePtr string
+
+func InstancePeeringCidrRangePtr(v string) InstancePeeringCidrRangePtrInput {
+	return (*instancePeeringCidrRangePtr)(&v)
+}
+
+func (*instancePeeringCidrRangePtr) ElementType() reflect.Type {
+	return instancePeeringCidrRangePtrType
+}
+
+func (in *instancePeeringCidrRangePtr) ToInstancePeeringCidrRangePtrOutput() InstancePeeringCidrRangePtrOutput {
+	return pulumi.ToOutput(in).(InstancePeeringCidrRangePtrOutput)
+}
+
+func (in *instancePeeringCidrRangePtr) ToInstancePeeringCidrRangePtrOutputWithContext(ctx context.Context) InstancePeeringCidrRangePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InstancePeeringCidrRangePtrOutput)
+}
+
 // Billing type of the Apigee organization. See [Apigee pricing](https://cloud.google.com/apigee/pricing).
-type OrganizationBillingType pulumi.String
+type OrganizationBillingType string
 
 const (
 	// Billing type not specified.
@@ -167,7 +715,23 @@ const (
 )
 
 func (OrganizationBillingType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*OrganizationBillingType)(nil)).Elem()
+}
+
+func (e OrganizationBillingType) ToOrganizationBillingTypeOutput() OrganizationBillingTypeOutput {
+	return pulumi.ToOutput(e).(OrganizationBillingTypeOutput)
+}
+
+func (e OrganizationBillingType) ToOrganizationBillingTypeOutputWithContext(ctx context.Context) OrganizationBillingTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OrganizationBillingTypeOutput)
+}
+
+func (e OrganizationBillingType) ToOrganizationBillingTypePtrOutput() OrganizationBillingTypePtrOutput {
+	return e.ToOrganizationBillingTypePtrOutputWithContext(context.Background())
+}
+
+func (e OrganizationBillingType) ToOrganizationBillingTypePtrOutputWithContext(ctx context.Context) OrganizationBillingTypePtrOutput {
+	return OrganizationBillingType(e).ToOrganizationBillingTypeOutputWithContext(ctx).ToOrganizationBillingTypePtrOutputWithContext(ctx)
 }
 
 func (e OrganizationBillingType) ToStringOutput() pulumi.StringOutput {
@@ -186,8 +750,129 @@ func (e OrganizationBillingType) ToStringPtrOutputWithContext(ctx context.Contex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type OrganizationBillingTypeOutput struct{ *pulumi.OutputState }
+
+func (OrganizationBillingTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationBillingType)(nil)).Elem()
+}
+
+func (o OrganizationBillingTypeOutput) ToOrganizationBillingTypeOutput() OrganizationBillingTypeOutput {
+	return o
+}
+
+func (o OrganizationBillingTypeOutput) ToOrganizationBillingTypeOutputWithContext(ctx context.Context) OrganizationBillingTypeOutput {
+	return o
+}
+
+func (o OrganizationBillingTypeOutput) ToOrganizationBillingTypePtrOutput() OrganizationBillingTypePtrOutput {
+	return o.ToOrganizationBillingTypePtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationBillingTypeOutput) ToOrganizationBillingTypePtrOutputWithContext(ctx context.Context) OrganizationBillingTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationBillingType) *OrganizationBillingType {
+		return &v
+	}).(OrganizationBillingTypePtrOutput)
+}
+
+func (o OrganizationBillingTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OrganizationBillingTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationBillingType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OrganizationBillingTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationBillingTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationBillingType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OrganizationBillingTypePtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationBillingTypePtrOutput) ElementType() reflect.Type {
+	return organizationBillingTypePtrType
+}
+
+func (o OrganizationBillingTypePtrOutput) ToOrganizationBillingTypePtrOutput() OrganizationBillingTypePtrOutput {
+	return o
+}
+
+func (o OrganizationBillingTypePtrOutput) ToOrganizationBillingTypePtrOutputWithContext(ctx context.Context) OrganizationBillingTypePtrOutput {
+	return o
+}
+
+func (o OrganizationBillingTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationBillingTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OrganizationBillingType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OrganizationBillingTypePtrOutput) Elem() OrganizationBillingTypeOutput {
+	return o.ApplyT(func(v *OrganizationBillingType) OrganizationBillingType {
+		var ret OrganizationBillingType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(OrganizationBillingTypeOutput)
+}
+
+// OrganizationBillingTypeInput is an input type that accepts OrganizationBillingTypeArgs and OrganizationBillingTypeOutput values.
+// You can construct a concrete instance of `OrganizationBillingTypeInput` via:
+//
+//          OrganizationBillingTypeArgs{...}
+type OrganizationBillingTypeInput interface {
+	pulumi.Input
+
+	ToOrganizationBillingTypeOutput() OrganizationBillingTypeOutput
+	ToOrganizationBillingTypeOutputWithContext(context.Context) OrganizationBillingTypeOutput
+}
+
+var organizationBillingTypePtrType = reflect.TypeOf((**OrganizationBillingType)(nil)).Elem()
+
+type OrganizationBillingTypePtrInput interface {
+	pulumi.Input
+
+	ToOrganizationBillingTypePtrOutput() OrganizationBillingTypePtrOutput
+	ToOrganizationBillingTypePtrOutputWithContext(context.Context) OrganizationBillingTypePtrOutput
+}
+
+type organizationBillingTypePtr string
+
+func OrganizationBillingTypePtr(v string) OrganizationBillingTypePtrInput {
+	return (*organizationBillingTypePtr)(&v)
+}
+
+func (*organizationBillingTypePtr) ElementType() reflect.Type {
+	return organizationBillingTypePtrType
+}
+
+func (in *organizationBillingTypePtr) ToOrganizationBillingTypePtrOutput() OrganizationBillingTypePtrOutput {
+	return pulumi.ToOutput(in).(OrganizationBillingTypePtrOutput)
+}
+
+func (in *organizationBillingTypePtr) ToOrganizationBillingTypePtrOutputWithContext(ctx context.Context) OrganizationBillingTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OrganizationBillingTypePtrOutput)
+}
+
 // Required. Runtime type of the Apigee organization based on the Apigee subscription purchased.
-type OrganizationRuntimeType pulumi.String
+type OrganizationRuntimeType string
 
 const (
 	// Runtime type not specified.
@@ -199,7 +884,23 @@ const (
 )
 
 func (OrganizationRuntimeType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*OrganizationRuntimeType)(nil)).Elem()
+}
+
+func (e OrganizationRuntimeType) ToOrganizationRuntimeTypeOutput() OrganizationRuntimeTypeOutput {
+	return pulumi.ToOutput(e).(OrganizationRuntimeTypeOutput)
+}
+
+func (e OrganizationRuntimeType) ToOrganizationRuntimeTypeOutputWithContext(ctx context.Context) OrganizationRuntimeTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OrganizationRuntimeTypeOutput)
+}
+
+func (e OrganizationRuntimeType) ToOrganizationRuntimeTypePtrOutput() OrganizationRuntimeTypePtrOutput {
+	return e.ToOrganizationRuntimeTypePtrOutputWithContext(context.Background())
+}
+
+func (e OrganizationRuntimeType) ToOrganizationRuntimeTypePtrOutputWithContext(ctx context.Context) OrganizationRuntimeTypePtrOutput {
+	return OrganizationRuntimeType(e).ToOrganizationRuntimeTypeOutputWithContext(ctx).ToOrganizationRuntimeTypePtrOutputWithContext(ctx)
 }
 
 func (e OrganizationRuntimeType) ToStringOutput() pulumi.StringOutput {
@@ -218,8 +919,129 @@ func (e OrganizationRuntimeType) ToStringPtrOutputWithContext(ctx context.Contex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type OrganizationRuntimeTypeOutput struct{ *pulumi.OutputState }
+
+func (OrganizationRuntimeTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationRuntimeType)(nil)).Elem()
+}
+
+func (o OrganizationRuntimeTypeOutput) ToOrganizationRuntimeTypeOutput() OrganizationRuntimeTypeOutput {
+	return o
+}
+
+func (o OrganizationRuntimeTypeOutput) ToOrganizationRuntimeTypeOutputWithContext(ctx context.Context) OrganizationRuntimeTypeOutput {
+	return o
+}
+
+func (o OrganizationRuntimeTypeOutput) ToOrganizationRuntimeTypePtrOutput() OrganizationRuntimeTypePtrOutput {
+	return o.ToOrganizationRuntimeTypePtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationRuntimeTypeOutput) ToOrganizationRuntimeTypePtrOutputWithContext(ctx context.Context) OrganizationRuntimeTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationRuntimeType) *OrganizationRuntimeType {
+		return &v
+	}).(OrganizationRuntimeTypePtrOutput)
+}
+
+func (o OrganizationRuntimeTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OrganizationRuntimeTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationRuntimeType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OrganizationRuntimeTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationRuntimeTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationRuntimeType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OrganizationRuntimeTypePtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationRuntimeTypePtrOutput) ElementType() reflect.Type {
+	return organizationRuntimeTypePtrType
+}
+
+func (o OrganizationRuntimeTypePtrOutput) ToOrganizationRuntimeTypePtrOutput() OrganizationRuntimeTypePtrOutput {
+	return o
+}
+
+func (o OrganizationRuntimeTypePtrOutput) ToOrganizationRuntimeTypePtrOutputWithContext(ctx context.Context) OrganizationRuntimeTypePtrOutput {
+	return o
+}
+
+func (o OrganizationRuntimeTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationRuntimeTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OrganizationRuntimeType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OrganizationRuntimeTypePtrOutput) Elem() OrganizationRuntimeTypeOutput {
+	return o.ApplyT(func(v *OrganizationRuntimeType) OrganizationRuntimeType {
+		var ret OrganizationRuntimeType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(OrganizationRuntimeTypeOutput)
+}
+
+// OrganizationRuntimeTypeInput is an input type that accepts OrganizationRuntimeTypeArgs and OrganizationRuntimeTypeOutput values.
+// You can construct a concrete instance of `OrganizationRuntimeTypeInput` via:
+//
+//          OrganizationRuntimeTypeArgs{...}
+type OrganizationRuntimeTypeInput interface {
+	pulumi.Input
+
+	ToOrganizationRuntimeTypeOutput() OrganizationRuntimeTypeOutput
+	ToOrganizationRuntimeTypeOutputWithContext(context.Context) OrganizationRuntimeTypeOutput
+}
+
+var organizationRuntimeTypePtrType = reflect.TypeOf((**OrganizationRuntimeType)(nil)).Elem()
+
+type OrganizationRuntimeTypePtrInput interface {
+	pulumi.Input
+
+	ToOrganizationRuntimeTypePtrOutput() OrganizationRuntimeTypePtrOutput
+	ToOrganizationRuntimeTypePtrOutputWithContext(context.Context) OrganizationRuntimeTypePtrOutput
+}
+
+type organizationRuntimeTypePtr string
+
+func OrganizationRuntimeTypePtr(v string) OrganizationRuntimeTypePtrInput {
+	return (*organizationRuntimeTypePtr)(&v)
+}
+
+func (*organizationRuntimeTypePtr) ElementType() reflect.Type {
+	return organizationRuntimeTypePtrType
+}
+
+func (in *organizationRuntimeTypePtr) ToOrganizationRuntimeTypePtrOutput() OrganizationRuntimeTypePtrOutput {
+	return pulumi.ToOutput(in).(OrganizationRuntimeTypePtrOutput)
+}
+
+func (in *organizationRuntimeTypePtr) ToOrganizationRuntimeTypePtrOutputWithContext(ctx context.Context) OrganizationRuntimeTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OrganizationRuntimeTypePtrOutput)
+}
+
 // Not used by Apigee.
-type OrganizationType pulumi.String
+type OrganizationType string
 
 const (
 	// Subscription type not specified.
@@ -233,7 +1055,23 @@ const (
 )
 
 func (OrganizationType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*OrganizationType)(nil)).Elem()
+}
+
+func (e OrganizationType) ToOrganizationTypeOutput() OrganizationTypeOutput {
+	return pulumi.ToOutput(e).(OrganizationTypeOutput)
+}
+
+func (e OrganizationType) ToOrganizationTypeOutputWithContext(ctx context.Context) OrganizationTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OrganizationTypeOutput)
+}
+
+func (e OrganizationType) ToOrganizationTypePtrOutput() OrganizationTypePtrOutput {
+	return e.ToOrganizationTypePtrOutputWithContext(context.Background())
+}
+
+func (e OrganizationType) ToOrganizationTypePtrOutputWithContext(ctx context.Context) OrganizationTypePtrOutput {
+	return OrganizationType(e).ToOrganizationTypeOutputWithContext(ctx).ToOrganizationTypePtrOutputWithContext(ctx)
 }
 
 func (e OrganizationType) ToStringOutput() pulumi.StringOutput {
@@ -252,8 +1090,129 @@ func (e OrganizationType) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type OrganizationTypeOutput struct{ *pulumi.OutputState }
+
+func (OrganizationTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationType)(nil)).Elem()
+}
+
+func (o OrganizationTypeOutput) ToOrganizationTypeOutput() OrganizationTypeOutput {
+	return o
+}
+
+func (o OrganizationTypeOutput) ToOrganizationTypeOutputWithContext(ctx context.Context) OrganizationTypeOutput {
+	return o
+}
+
+func (o OrganizationTypeOutput) ToOrganizationTypePtrOutput() OrganizationTypePtrOutput {
+	return o.ToOrganizationTypePtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationTypeOutput) ToOrganizationTypePtrOutputWithContext(ctx context.Context) OrganizationTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationType) *OrganizationType {
+		return &v
+	}).(OrganizationTypePtrOutput)
+}
+
+func (o OrganizationTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OrganizationTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OrganizationTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OrganizationTypePtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationTypePtrOutput) ElementType() reflect.Type {
+	return organizationTypePtrType
+}
+
+func (o OrganizationTypePtrOutput) ToOrganizationTypePtrOutput() OrganizationTypePtrOutput {
+	return o
+}
+
+func (o OrganizationTypePtrOutput) ToOrganizationTypePtrOutputWithContext(ctx context.Context) OrganizationTypePtrOutput {
+	return o
+}
+
+func (o OrganizationTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OrganizationType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OrganizationTypePtrOutput) Elem() OrganizationTypeOutput {
+	return o.ApplyT(func(v *OrganizationType) OrganizationType {
+		var ret OrganizationType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(OrganizationTypeOutput)
+}
+
+// OrganizationTypeInput is an input type that accepts OrganizationTypeArgs and OrganizationTypeOutput values.
+// You can construct a concrete instance of `OrganizationTypeInput` via:
+//
+//          OrganizationTypeArgs{...}
+type OrganizationTypeInput interface {
+	pulumi.Input
+
+	ToOrganizationTypeOutput() OrganizationTypeOutput
+	ToOrganizationTypeOutputWithContext(context.Context) OrganizationTypeOutput
+}
+
+var organizationTypePtrType = reflect.TypeOf((**OrganizationType)(nil)).Elem()
+
+type OrganizationTypePtrInput interface {
+	pulumi.Input
+
+	ToOrganizationTypePtrOutput() OrganizationTypePtrOutput
+	ToOrganizationTypePtrOutputWithContext(context.Context) OrganizationTypePtrOutput
+}
+
+type organizationTypePtr string
+
+func OrganizationTypePtr(v string) OrganizationTypePtrInput {
+	return (*organizationTypePtr)(&v)
+}
+
+func (*organizationTypePtr) ElementType() reflect.Type {
+	return organizationTypePtrType
+}
+
+func (in *organizationTypePtr) ToOrganizationTypePtrOutput() OrganizationTypePtrOutput {
+	return pulumi.ToOutput(in).(OrganizationTypePtrOutput)
+}
+
+func (in *organizationTypePtr) ToOrganizationTypePtrOutputWithContext(ctx context.Context) OrganizationTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OrganizationTypePtrOutput)
+}
+
 // Frequency at which the customer will be billed.
-type RatePlanBillingPeriod pulumi.String
+type RatePlanBillingPeriod string
 
 const (
 	// Billing period not specified.
@@ -265,7 +1224,23 @@ const (
 )
 
 func (RatePlanBillingPeriod) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*RatePlanBillingPeriod)(nil)).Elem()
+}
+
+func (e RatePlanBillingPeriod) ToRatePlanBillingPeriodOutput() RatePlanBillingPeriodOutput {
+	return pulumi.ToOutput(e).(RatePlanBillingPeriodOutput)
+}
+
+func (e RatePlanBillingPeriod) ToRatePlanBillingPeriodOutputWithContext(ctx context.Context) RatePlanBillingPeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RatePlanBillingPeriodOutput)
+}
+
+func (e RatePlanBillingPeriod) ToRatePlanBillingPeriodPtrOutput() RatePlanBillingPeriodPtrOutput {
+	return e.ToRatePlanBillingPeriodPtrOutputWithContext(context.Background())
+}
+
+func (e RatePlanBillingPeriod) ToRatePlanBillingPeriodPtrOutputWithContext(ctx context.Context) RatePlanBillingPeriodPtrOutput {
+	return RatePlanBillingPeriod(e).ToRatePlanBillingPeriodOutputWithContext(ctx).ToRatePlanBillingPeriodPtrOutputWithContext(ctx)
 }
 
 func (e RatePlanBillingPeriod) ToStringOutput() pulumi.StringOutput {
@@ -284,8 +1259,129 @@ func (e RatePlanBillingPeriod) ToStringPtrOutputWithContext(ctx context.Context)
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type RatePlanBillingPeriodOutput struct{ *pulumi.OutputState }
+
+func (RatePlanBillingPeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RatePlanBillingPeriod)(nil)).Elem()
+}
+
+func (o RatePlanBillingPeriodOutput) ToRatePlanBillingPeriodOutput() RatePlanBillingPeriodOutput {
+	return o
+}
+
+func (o RatePlanBillingPeriodOutput) ToRatePlanBillingPeriodOutputWithContext(ctx context.Context) RatePlanBillingPeriodOutput {
+	return o
+}
+
+func (o RatePlanBillingPeriodOutput) ToRatePlanBillingPeriodPtrOutput() RatePlanBillingPeriodPtrOutput {
+	return o.ToRatePlanBillingPeriodPtrOutputWithContext(context.Background())
+}
+
+func (o RatePlanBillingPeriodOutput) ToRatePlanBillingPeriodPtrOutputWithContext(ctx context.Context) RatePlanBillingPeriodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RatePlanBillingPeriod) *RatePlanBillingPeriod {
+		return &v
+	}).(RatePlanBillingPeriodPtrOutput)
+}
+
+func (o RatePlanBillingPeriodOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RatePlanBillingPeriodOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RatePlanBillingPeriod) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RatePlanBillingPeriodOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RatePlanBillingPeriodOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RatePlanBillingPeriod) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RatePlanBillingPeriodPtrOutput struct{ *pulumi.OutputState }
+
+func (RatePlanBillingPeriodPtrOutput) ElementType() reflect.Type {
+	return ratePlanBillingPeriodPtrType
+}
+
+func (o RatePlanBillingPeriodPtrOutput) ToRatePlanBillingPeriodPtrOutput() RatePlanBillingPeriodPtrOutput {
+	return o
+}
+
+func (o RatePlanBillingPeriodPtrOutput) ToRatePlanBillingPeriodPtrOutputWithContext(ctx context.Context) RatePlanBillingPeriodPtrOutput {
+	return o
+}
+
+func (o RatePlanBillingPeriodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RatePlanBillingPeriodPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RatePlanBillingPeriod) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RatePlanBillingPeriodPtrOutput) Elem() RatePlanBillingPeriodOutput {
+	return o.ApplyT(func(v *RatePlanBillingPeriod) RatePlanBillingPeriod {
+		var ret RatePlanBillingPeriod
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(RatePlanBillingPeriodOutput)
+}
+
+// RatePlanBillingPeriodInput is an input type that accepts RatePlanBillingPeriodArgs and RatePlanBillingPeriodOutput values.
+// You can construct a concrete instance of `RatePlanBillingPeriodInput` via:
+//
+//          RatePlanBillingPeriodArgs{...}
+type RatePlanBillingPeriodInput interface {
+	pulumi.Input
+
+	ToRatePlanBillingPeriodOutput() RatePlanBillingPeriodOutput
+	ToRatePlanBillingPeriodOutputWithContext(context.Context) RatePlanBillingPeriodOutput
+}
+
+var ratePlanBillingPeriodPtrType = reflect.TypeOf((**RatePlanBillingPeriod)(nil)).Elem()
+
+type RatePlanBillingPeriodPtrInput interface {
+	pulumi.Input
+
+	ToRatePlanBillingPeriodPtrOutput() RatePlanBillingPeriodPtrOutput
+	ToRatePlanBillingPeriodPtrOutputWithContext(context.Context) RatePlanBillingPeriodPtrOutput
+}
+
+type ratePlanBillingPeriodPtr string
+
+func RatePlanBillingPeriodPtr(v string) RatePlanBillingPeriodPtrInput {
+	return (*ratePlanBillingPeriodPtr)(&v)
+}
+
+func (*ratePlanBillingPeriodPtr) ElementType() reflect.Type {
+	return ratePlanBillingPeriodPtrType
+}
+
+func (in *ratePlanBillingPeriodPtr) ToRatePlanBillingPeriodPtrOutput() RatePlanBillingPeriodPtrOutput {
+	return pulumi.ToOutput(in).(RatePlanBillingPeriodPtrOutput)
+}
+
+func (in *ratePlanBillingPeriodPtr) ToRatePlanBillingPeriodPtrOutputWithContext(ctx context.Context) RatePlanBillingPeriodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RatePlanBillingPeriodPtrOutput)
+}
+
 // Pricing model used for consumption-based charges.
-type RatePlanConsumptionPricingType pulumi.String
+type RatePlanConsumptionPricingType string
 
 const (
 	// Pricing model not specified. This is the default.
@@ -301,7 +1397,23 @@ const (
 )
 
 func (RatePlanConsumptionPricingType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*RatePlanConsumptionPricingType)(nil)).Elem()
+}
+
+func (e RatePlanConsumptionPricingType) ToRatePlanConsumptionPricingTypeOutput() RatePlanConsumptionPricingTypeOutput {
+	return pulumi.ToOutput(e).(RatePlanConsumptionPricingTypeOutput)
+}
+
+func (e RatePlanConsumptionPricingType) ToRatePlanConsumptionPricingTypeOutputWithContext(ctx context.Context) RatePlanConsumptionPricingTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RatePlanConsumptionPricingTypeOutput)
+}
+
+func (e RatePlanConsumptionPricingType) ToRatePlanConsumptionPricingTypePtrOutput() RatePlanConsumptionPricingTypePtrOutput {
+	return e.ToRatePlanConsumptionPricingTypePtrOutputWithContext(context.Background())
+}
+
+func (e RatePlanConsumptionPricingType) ToRatePlanConsumptionPricingTypePtrOutputWithContext(ctx context.Context) RatePlanConsumptionPricingTypePtrOutput {
+	return RatePlanConsumptionPricingType(e).ToRatePlanConsumptionPricingTypeOutputWithContext(ctx).ToRatePlanConsumptionPricingTypePtrOutputWithContext(ctx)
 }
 
 func (e RatePlanConsumptionPricingType) ToStringOutput() pulumi.StringOutput {
@@ -320,8 +1432,129 @@ func (e RatePlanConsumptionPricingType) ToStringPtrOutputWithContext(ctx context
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type RatePlanConsumptionPricingTypeOutput struct{ *pulumi.OutputState }
+
+func (RatePlanConsumptionPricingTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RatePlanConsumptionPricingType)(nil)).Elem()
+}
+
+func (o RatePlanConsumptionPricingTypeOutput) ToRatePlanConsumptionPricingTypeOutput() RatePlanConsumptionPricingTypeOutput {
+	return o
+}
+
+func (o RatePlanConsumptionPricingTypeOutput) ToRatePlanConsumptionPricingTypeOutputWithContext(ctx context.Context) RatePlanConsumptionPricingTypeOutput {
+	return o
+}
+
+func (o RatePlanConsumptionPricingTypeOutput) ToRatePlanConsumptionPricingTypePtrOutput() RatePlanConsumptionPricingTypePtrOutput {
+	return o.ToRatePlanConsumptionPricingTypePtrOutputWithContext(context.Background())
+}
+
+func (o RatePlanConsumptionPricingTypeOutput) ToRatePlanConsumptionPricingTypePtrOutputWithContext(ctx context.Context) RatePlanConsumptionPricingTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RatePlanConsumptionPricingType) *RatePlanConsumptionPricingType {
+		return &v
+	}).(RatePlanConsumptionPricingTypePtrOutput)
+}
+
+func (o RatePlanConsumptionPricingTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RatePlanConsumptionPricingTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RatePlanConsumptionPricingType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RatePlanConsumptionPricingTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RatePlanConsumptionPricingTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RatePlanConsumptionPricingType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RatePlanConsumptionPricingTypePtrOutput struct{ *pulumi.OutputState }
+
+func (RatePlanConsumptionPricingTypePtrOutput) ElementType() reflect.Type {
+	return ratePlanConsumptionPricingTypePtrType
+}
+
+func (o RatePlanConsumptionPricingTypePtrOutput) ToRatePlanConsumptionPricingTypePtrOutput() RatePlanConsumptionPricingTypePtrOutput {
+	return o
+}
+
+func (o RatePlanConsumptionPricingTypePtrOutput) ToRatePlanConsumptionPricingTypePtrOutputWithContext(ctx context.Context) RatePlanConsumptionPricingTypePtrOutput {
+	return o
+}
+
+func (o RatePlanConsumptionPricingTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RatePlanConsumptionPricingTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RatePlanConsumptionPricingType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RatePlanConsumptionPricingTypePtrOutput) Elem() RatePlanConsumptionPricingTypeOutput {
+	return o.ApplyT(func(v *RatePlanConsumptionPricingType) RatePlanConsumptionPricingType {
+		var ret RatePlanConsumptionPricingType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(RatePlanConsumptionPricingTypeOutput)
+}
+
+// RatePlanConsumptionPricingTypeInput is an input type that accepts RatePlanConsumptionPricingTypeArgs and RatePlanConsumptionPricingTypeOutput values.
+// You can construct a concrete instance of `RatePlanConsumptionPricingTypeInput` via:
+//
+//          RatePlanConsumptionPricingTypeArgs{...}
+type RatePlanConsumptionPricingTypeInput interface {
+	pulumi.Input
+
+	ToRatePlanConsumptionPricingTypeOutput() RatePlanConsumptionPricingTypeOutput
+	ToRatePlanConsumptionPricingTypeOutputWithContext(context.Context) RatePlanConsumptionPricingTypeOutput
+}
+
+var ratePlanConsumptionPricingTypePtrType = reflect.TypeOf((**RatePlanConsumptionPricingType)(nil)).Elem()
+
+type RatePlanConsumptionPricingTypePtrInput interface {
+	pulumi.Input
+
+	ToRatePlanConsumptionPricingTypePtrOutput() RatePlanConsumptionPricingTypePtrOutput
+	ToRatePlanConsumptionPricingTypePtrOutputWithContext(context.Context) RatePlanConsumptionPricingTypePtrOutput
+}
+
+type ratePlanConsumptionPricingTypePtr string
+
+func RatePlanConsumptionPricingTypePtr(v string) RatePlanConsumptionPricingTypePtrInput {
+	return (*ratePlanConsumptionPricingTypePtr)(&v)
+}
+
+func (*ratePlanConsumptionPricingTypePtr) ElementType() reflect.Type {
+	return ratePlanConsumptionPricingTypePtrType
+}
+
+func (in *ratePlanConsumptionPricingTypePtr) ToRatePlanConsumptionPricingTypePtrOutput() RatePlanConsumptionPricingTypePtrOutput {
+	return pulumi.ToOutput(in).(RatePlanConsumptionPricingTypePtrOutput)
+}
+
+func (in *ratePlanConsumptionPricingTypePtr) ToRatePlanConsumptionPricingTypePtrOutputWithContext(ctx context.Context) RatePlanConsumptionPricingTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RatePlanConsumptionPricingTypePtrOutput)
+}
+
 // Flag that specifies the billing account type, prepaid or postpaid.
-type RatePlanPaymentFundingModel pulumi.String
+type RatePlanPaymentFundingModel string
 
 const (
 	// Billing account type not specified.
@@ -333,7 +1566,23 @@ const (
 )
 
 func (RatePlanPaymentFundingModel) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*RatePlanPaymentFundingModel)(nil)).Elem()
+}
+
+func (e RatePlanPaymentFundingModel) ToRatePlanPaymentFundingModelOutput() RatePlanPaymentFundingModelOutput {
+	return pulumi.ToOutput(e).(RatePlanPaymentFundingModelOutput)
+}
+
+func (e RatePlanPaymentFundingModel) ToRatePlanPaymentFundingModelOutputWithContext(ctx context.Context) RatePlanPaymentFundingModelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RatePlanPaymentFundingModelOutput)
+}
+
+func (e RatePlanPaymentFundingModel) ToRatePlanPaymentFundingModelPtrOutput() RatePlanPaymentFundingModelPtrOutput {
+	return e.ToRatePlanPaymentFundingModelPtrOutputWithContext(context.Background())
+}
+
+func (e RatePlanPaymentFundingModel) ToRatePlanPaymentFundingModelPtrOutputWithContext(ctx context.Context) RatePlanPaymentFundingModelPtrOutput {
+	return RatePlanPaymentFundingModel(e).ToRatePlanPaymentFundingModelOutputWithContext(ctx).ToRatePlanPaymentFundingModelPtrOutputWithContext(ctx)
 }
 
 func (e RatePlanPaymentFundingModel) ToStringOutput() pulumi.StringOutput {
@@ -352,8 +1601,129 @@ func (e RatePlanPaymentFundingModel) ToStringPtrOutputWithContext(ctx context.Co
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type RatePlanPaymentFundingModelOutput struct{ *pulumi.OutputState }
+
+func (RatePlanPaymentFundingModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RatePlanPaymentFundingModel)(nil)).Elem()
+}
+
+func (o RatePlanPaymentFundingModelOutput) ToRatePlanPaymentFundingModelOutput() RatePlanPaymentFundingModelOutput {
+	return o
+}
+
+func (o RatePlanPaymentFundingModelOutput) ToRatePlanPaymentFundingModelOutputWithContext(ctx context.Context) RatePlanPaymentFundingModelOutput {
+	return o
+}
+
+func (o RatePlanPaymentFundingModelOutput) ToRatePlanPaymentFundingModelPtrOutput() RatePlanPaymentFundingModelPtrOutput {
+	return o.ToRatePlanPaymentFundingModelPtrOutputWithContext(context.Background())
+}
+
+func (o RatePlanPaymentFundingModelOutput) ToRatePlanPaymentFundingModelPtrOutputWithContext(ctx context.Context) RatePlanPaymentFundingModelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RatePlanPaymentFundingModel) *RatePlanPaymentFundingModel {
+		return &v
+	}).(RatePlanPaymentFundingModelPtrOutput)
+}
+
+func (o RatePlanPaymentFundingModelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RatePlanPaymentFundingModelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RatePlanPaymentFundingModel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RatePlanPaymentFundingModelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RatePlanPaymentFundingModelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RatePlanPaymentFundingModel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RatePlanPaymentFundingModelPtrOutput struct{ *pulumi.OutputState }
+
+func (RatePlanPaymentFundingModelPtrOutput) ElementType() reflect.Type {
+	return ratePlanPaymentFundingModelPtrType
+}
+
+func (o RatePlanPaymentFundingModelPtrOutput) ToRatePlanPaymentFundingModelPtrOutput() RatePlanPaymentFundingModelPtrOutput {
+	return o
+}
+
+func (o RatePlanPaymentFundingModelPtrOutput) ToRatePlanPaymentFundingModelPtrOutputWithContext(ctx context.Context) RatePlanPaymentFundingModelPtrOutput {
+	return o
+}
+
+func (o RatePlanPaymentFundingModelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RatePlanPaymentFundingModelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RatePlanPaymentFundingModel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RatePlanPaymentFundingModelPtrOutput) Elem() RatePlanPaymentFundingModelOutput {
+	return o.ApplyT(func(v *RatePlanPaymentFundingModel) RatePlanPaymentFundingModel {
+		var ret RatePlanPaymentFundingModel
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(RatePlanPaymentFundingModelOutput)
+}
+
+// RatePlanPaymentFundingModelInput is an input type that accepts RatePlanPaymentFundingModelArgs and RatePlanPaymentFundingModelOutput values.
+// You can construct a concrete instance of `RatePlanPaymentFundingModelInput` via:
+//
+//          RatePlanPaymentFundingModelArgs{...}
+type RatePlanPaymentFundingModelInput interface {
+	pulumi.Input
+
+	ToRatePlanPaymentFundingModelOutput() RatePlanPaymentFundingModelOutput
+	ToRatePlanPaymentFundingModelOutputWithContext(context.Context) RatePlanPaymentFundingModelOutput
+}
+
+var ratePlanPaymentFundingModelPtrType = reflect.TypeOf((**RatePlanPaymentFundingModel)(nil)).Elem()
+
+type RatePlanPaymentFundingModelPtrInput interface {
+	pulumi.Input
+
+	ToRatePlanPaymentFundingModelPtrOutput() RatePlanPaymentFundingModelPtrOutput
+	ToRatePlanPaymentFundingModelPtrOutputWithContext(context.Context) RatePlanPaymentFundingModelPtrOutput
+}
+
+type ratePlanPaymentFundingModelPtr string
+
+func RatePlanPaymentFundingModelPtr(v string) RatePlanPaymentFundingModelPtrInput {
+	return (*ratePlanPaymentFundingModelPtr)(&v)
+}
+
+func (*ratePlanPaymentFundingModelPtr) ElementType() reflect.Type {
+	return ratePlanPaymentFundingModelPtrType
+}
+
+func (in *ratePlanPaymentFundingModelPtr) ToRatePlanPaymentFundingModelPtrOutput() RatePlanPaymentFundingModelPtrOutput {
+	return pulumi.ToOutput(in).(RatePlanPaymentFundingModelPtrOutput)
+}
+
+func (in *ratePlanPaymentFundingModelPtr) ToRatePlanPaymentFundingModelPtrOutputWithContext(ctx context.Context) RatePlanPaymentFundingModelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RatePlanPaymentFundingModelPtrOutput)
+}
+
 // Method used to calculate the revenue that is shared with developers.
-type RatePlanRevenueShareType pulumi.String
+type RatePlanRevenueShareType string
 
 const (
 	// Revenue share type is not specified.
@@ -365,7 +1735,23 @@ const (
 )
 
 func (RatePlanRevenueShareType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*RatePlanRevenueShareType)(nil)).Elem()
+}
+
+func (e RatePlanRevenueShareType) ToRatePlanRevenueShareTypeOutput() RatePlanRevenueShareTypeOutput {
+	return pulumi.ToOutput(e).(RatePlanRevenueShareTypeOutput)
+}
+
+func (e RatePlanRevenueShareType) ToRatePlanRevenueShareTypeOutputWithContext(ctx context.Context) RatePlanRevenueShareTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RatePlanRevenueShareTypeOutput)
+}
+
+func (e RatePlanRevenueShareType) ToRatePlanRevenueShareTypePtrOutput() RatePlanRevenueShareTypePtrOutput {
+	return e.ToRatePlanRevenueShareTypePtrOutputWithContext(context.Background())
+}
+
+func (e RatePlanRevenueShareType) ToRatePlanRevenueShareTypePtrOutputWithContext(ctx context.Context) RatePlanRevenueShareTypePtrOutput {
+	return RatePlanRevenueShareType(e).ToRatePlanRevenueShareTypeOutputWithContext(ctx).ToRatePlanRevenueShareTypePtrOutputWithContext(ctx)
 }
 
 func (e RatePlanRevenueShareType) ToStringOutput() pulumi.StringOutput {
@@ -384,8 +1770,129 @@ func (e RatePlanRevenueShareType) ToStringPtrOutputWithContext(ctx context.Conte
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type RatePlanRevenueShareTypeOutput struct{ *pulumi.OutputState }
+
+func (RatePlanRevenueShareTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RatePlanRevenueShareType)(nil)).Elem()
+}
+
+func (o RatePlanRevenueShareTypeOutput) ToRatePlanRevenueShareTypeOutput() RatePlanRevenueShareTypeOutput {
+	return o
+}
+
+func (o RatePlanRevenueShareTypeOutput) ToRatePlanRevenueShareTypeOutputWithContext(ctx context.Context) RatePlanRevenueShareTypeOutput {
+	return o
+}
+
+func (o RatePlanRevenueShareTypeOutput) ToRatePlanRevenueShareTypePtrOutput() RatePlanRevenueShareTypePtrOutput {
+	return o.ToRatePlanRevenueShareTypePtrOutputWithContext(context.Background())
+}
+
+func (o RatePlanRevenueShareTypeOutput) ToRatePlanRevenueShareTypePtrOutputWithContext(ctx context.Context) RatePlanRevenueShareTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RatePlanRevenueShareType) *RatePlanRevenueShareType {
+		return &v
+	}).(RatePlanRevenueShareTypePtrOutput)
+}
+
+func (o RatePlanRevenueShareTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RatePlanRevenueShareTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RatePlanRevenueShareType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RatePlanRevenueShareTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RatePlanRevenueShareTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RatePlanRevenueShareType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RatePlanRevenueShareTypePtrOutput struct{ *pulumi.OutputState }
+
+func (RatePlanRevenueShareTypePtrOutput) ElementType() reflect.Type {
+	return ratePlanRevenueShareTypePtrType
+}
+
+func (o RatePlanRevenueShareTypePtrOutput) ToRatePlanRevenueShareTypePtrOutput() RatePlanRevenueShareTypePtrOutput {
+	return o
+}
+
+func (o RatePlanRevenueShareTypePtrOutput) ToRatePlanRevenueShareTypePtrOutputWithContext(ctx context.Context) RatePlanRevenueShareTypePtrOutput {
+	return o
+}
+
+func (o RatePlanRevenueShareTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RatePlanRevenueShareTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RatePlanRevenueShareType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RatePlanRevenueShareTypePtrOutput) Elem() RatePlanRevenueShareTypeOutput {
+	return o.ApplyT(func(v *RatePlanRevenueShareType) RatePlanRevenueShareType {
+		var ret RatePlanRevenueShareType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(RatePlanRevenueShareTypeOutput)
+}
+
+// RatePlanRevenueShareTypeInput is an input type that accepts RatePlanRevenueShareTypeArgs and RatePlanRevenueShareTypeOutput values.
+// You can construct a concrete instance of `RatePlanRevenueShareTypeInput` via:
+//
+//          RatePlanRevenueShareTypeArgs{...}
+type RatePlanRevenueShareTypeInput interface {
+	pulumi.Input
+
+	ToRatePlanRevenueShareTypeOutput() RatePlanRevenueShareTypeOutput
+	ToRatePlanRevenueShareTypeOutputWithContext(context.Context) RatePlanRevenueShareTypeOutput
+}
+
+var ratePlanRevenueShareTypePtrType = reflect.TypeOf((**RatePlanRevenueShareType)(nil)).Elem()
+
+type RatePlanRevenueShareTypePtrInput interface {
+	pulumi.Input
+
+	ToRatePlanRevenueShareTypePtrOutput() RatePlanRevenueShareTypePtrOutput
+	ToRatePlanRevenueShareTypePtrOutputWithContext(context.Context) RatePlanRevenueShareTypePtrOutput
+}
+
+type ratePlanRevenueShareTypePtr string
+
+func RatePlanRevenueShareTypePtr(v string) RatePlanRevenueShareTypePtrInput {
+	return (*ratePlanRevenueShareTypePtr)(&v)
+}
+
+func (*ratePlanRevenueShareTypePtr) ElementType() reflect.Type {
+	return ratePlanRevenueShareTypePtrType
+}
+
+func (in *ratePlanRevenueShareTypePtr) ToRatePlanRevenueShareTypePtrOutput() RatePlanRevenueShareTypePtrOutput {
+	return pulumi.ToOutput(in).(RatePlanRevenueShareTypePtrOutput)
+}
+
+func (in *ratePlanRevenueShareTypePtr) ToRatePlanRevenueShareTypePtrOutputWithContext(ctx context.Context) RatePlanRevenueShareTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RatePlanRevenueShareTypePtrOutput)
+}
+
 // Current state of the rate plan (draft or published).
-type RatePlanStateEnum pulumi.String
+type RatePlanStateEnum string
 
 const (
 	// State of the rate plan is not specified.
@@ -397,7 +1904,23 @@ const (
 )
 
 func (RatePlanStateEnum) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*RatePlanStateEnum)(nil)).Elem()
+}
+
+func (e RatePlanStateEnum) ToRatePlanStateEnumOutput() RatePlanStateEnumOutput {
+	return pulumi.ToOutput(e).(RatePlanStateEnumOutput)
+}
+
+func (e RatePlanStateEnum) ToRatePlanStateEnumOutputWithContext(ctx context.Context) RatePlanStateEnumOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RatePlanStateEnumOutput)
+}
+
+func (e RatePlanStateEnum) ToRatePlanStateEnumPtrOutput() RatePlanStateEnumPtrOutput {
+	return e.ToRatePlanStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (e RatePlanStateEnum) ToRatePlanStateEnumPtrOutputWithContext(ctx context.Context) RatePlanStateEnumPtrOutput {
+	return RatePlanStateEnum(e).ToRatePlanStateEnumOutputWithContext(ctx).ToRatePlanStateEnumPtrOutputWithContext(ctx)
 }
 
 func (e RatePlanStateEnum) ToStringOutput() pulumi.StringOutput {
@@ -416,8 +1939,129 @@ func (e RatePlanStateEnum) ToStringPtrOutputWithContext(ctx context.Context) pul
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type RatePlanStateEnumOutput struct{ *pulumi.OutputState }
+
+func (RatePlanStateEnumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RatePlanStateEnum)(nil)).Elem()
+}
+
+func (o RatePlanStateEnumOutput) ToRatePlanStateEnumOutput() RatePlanStateEnumOutput {
+	return o
+}
+
+func (o RatePlanStateEnumOutput) ToRatePlanStateEnumOutputWithContext(ctx context.Context) RatePlanStateEnumOutput {
+	return o
+}
+
+func (o RatePlanStateEnumOutput) ToRatePlanStateEnumPtrOutput() RatePlanStateEnumPtrOutput {
+	return o.ToRatePlanStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (o RatePlanStateEnumOutput) ToRatePlanStateEnumPtrOutputWithContext(ctx context.Context) RatePlanStateEnumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RatePlanStateEnum) *RatePlanStateEnum {
+		return &v
+	}).(RatePlanStateEnumPtrOutput)
+}
+
+func (o RatePlanStateEnumOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RatePlanStateEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RatePlanStateEnum) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RatePlanStateEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RatePlanStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RatePlanStateEnum) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RatePlanStateEnumPtrOutput struct{ *pulumi.OutputState }
+
+func (RatePlanStateEnumPtrOutput) ElementType() reflect.Type {
+	return ratePlanStateEnumPtrType
+}
+
+func (o RatePlanStateEnumPtrOutput) ToRatePlanStateEnumPtrOutput() RatePlanStateEnumPtrOutput {
+	return o
+}
+
+func (o RatePlanStateEnumPtrOutput) ToRatePlanStateEnumPtrOutputWithContext(ctx context.Context) RatePlanStateEnumPtrOutput {
+	return o
+}
+
+func (o RatePlanStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RatePlanStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RatePlanStateEnum) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RatePlanStateEnumPtrOutput) Elem() RatePlanStateEnumOutput {
+	return o.ApplyT(func(v *RatePlanStateEnum) RatePlanStateEnum {
+		var ret RatePlanStateEnum
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(RatePlanStateEnumOutput)
+}
+
+// RatePlanStateEnumInput is an input type that accepts RatePlanStateEnumArgs and RatePlanStateEnumOutput values.
+// You can construct a concrete instance of `RatePlanStateEnumInput` via:
+//
+//          RatePlanStateEnumArgs{...}
+type RatePlanStateEnumInput interface {
+	pulumi.Input
+
+	ToRatePlanStateEnumOutput() RatePlanStateEnumOutput
+	ToRatePlanStateEnumOutputWithContext(context.Context) RatePlanStateEnumOutput
+}
+
+var ratePlanStateEnumPtrType = reflect.TypeOf((**RatePlanStateEnum)(nil)).Elem()
+
+type RatePlanStateEnumPtrInput interface {
+	pulumi.Input
+
+	ToRatePlanStateEnumPtrOutput() RatePlanStateEnumPtrOutput
+	ToRatePlanStateEnumPtrOutputWithContext(context.Context) RatePlanStateEnumPtrOutput
+}
+
+type ratePlanStateEnumPtr string
+
+func RatePlanStateEnumPtr(v string) RatePlanStateEnumPtrInput {
+	return (*ratePlanStateEnumPtr)(&v)
+}
+
+func (*ratePlanStateEnumPtr) ElementType() reflect.Type {
+	return ratePlanStateEnumPtrType
+}
+
+func (in *ratePlanStateEnumPtr) ToRatePlanStateEnumPtrOutput() RatePlanStateEnumPtrOutput {
+	return pulumi.ToOutput(in).(RatePlanStateEnumPtrOutput)
+}
+
+func (in *ratePlanStateEnumPtr) ToRatePlanStateEnumPtrOutputWithContext(ctx context.Context) RatePlanStateEnumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RatePlanStateEnumPtrOutput)
+}
+
 // Immutable. The protocol used by this TargetServer.
-type TargetServerProtocol pulumi.String
+type TargetServerProtocol string
 
 const (
 	// UNSPECIFIED defaults to HTTP for backwards compatibility.
@@ -429,7 +2073,23 @@ const (
 )
 
 func (TargetServerProtocol) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*TargetServerProtocol)(nil)).Elem()
+}
+
+func (e TargetServerProtocol) ToTargetServerProtocolOutput() TargetServerProtocolOutput {
+	return pulumi.ToOutput(e).(TargetServerProtocolOutput)
+}
+
+func (e TargetServerProtocol) ToTargetServerProtocolOutputWithContext(ctx context.Context) TargetServerProtocolOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TargetServerProtocolOutput)
+}
+
+func (e TargetServerProtocol) ToTargetServerProtocolPtrOutput() TargetServerProtocolPtrOutput {
+	return e.ToTargetServerProtocolPtrOutputWithContext(context.Background())
+}
+
+func (e TargetServerProtocol) ToTargetServerProtocolPtrOutputWithContext(ctx context.Context) TargetServerProtocolPtrOutput {
+	return TargetServerProtocol(e).ToTargetServerProtocolOutputWithContext(ctx).ToTargetServerProtocolPtrOutputWithContext(ctx)
 }
 
 func (e TargetServerProtocol) ToStringOutput() pulumi.StringOutput {
@@ -446,4 +2106,154 @@ func (e TargetServerProtocol) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e TargetServerProtocol) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TargetServerProtocolOutput struct{ *pulumi.OutputState }
+
+func (TargetServerProtocolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetServerProtocol)(nil)).Elem()
+}
+
+func (o TargetServerProtocolOutput) ToTargetServerProtocolOutput() TargetServerProtocolOutput {
+	return o
+}
+
+func (o TargetServerProtocolOutput) ToTargetServerProtocolOutputWithContext(ctx context.Context) TargetServerProtocolOutput {
+	return o
+}
+
+func (o TargetServerProtocolOutput) ToTargetServerProtocolPtrOutput() TargetServerProtocolPtrOutput {
+	return o.ToTargetServerProtocolPtrOutputWithContext(context.Background())
+}
+
+func (o TargetServerProtocolOutput) ToTargetServerProtocolPtrOutputWithContext(ctx context.Context) TargetServerProtocolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TargetServerProtocol) *TargetServerProtocol {
+		return &v
+	}).(TargetServerProtocolPtrOutput)
+}
+
+func (o TargetServerProtocolOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TargetServerProtocolOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TargetServerProtocol) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TargetServerProtocolOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TargetServerProtocolOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TargetServerProtocol) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TargetServerProtocolPtrOutput struct{ *pulumi.OutputState }
+
+func (TargetServerProtocolPtrOutput) ElementType() reflect.Type {
+	return targetServerProtocolPtrType
+}
+
+func (o TargetServerProtocolPtrOutput) ToTargetServerProtocolPtrOutput() TargetServerProtocolPtrOutput {
+	return o
+}
+
+func (o TargetServerProtocolPtrOutput) ToTargetServerProtocolPtrOutputWithContext(ctx context.Context) TargetServerProtocolPtrOutput {
+	return o
+}
+
+func (o TargetServerProtocolPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TargetServerProtocolPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TargetServerProtocol) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TargetServerProtocolPtrOutput) Elem() TargetServerProtocolOutput {
+	return o.ApplyT(func(v *TargetServerProtocol) TargetServerProtocol {
+		var ret TargetServerProtocol
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(TargetServerProtocolOutput)
+}
+
+// TargetServerProtocolInput is an input type that accepts TargetServerProtocolArgs and TargetServerProtocolOutput values.
+// You can construct a concrete instance of `TargetServerProtocolInput` via:
+//
+//          TargetServerProtocolArgs{...}
+type TargetServerProtocolInput interface {
+	pulumi.Input
+
+	ToTargetServerProtocolOutput() TargetServerProtocolOutput
+	ToTargetServerProtocolOutputWithContext(context.Context) TargetServerProtocolOutput
+}
+
+var targetServerProtocolPtrType = reflect.TypeOf((**TargetServerProtocol)(nil)).Elem()
+
+type TargetServerProtocolPtrInput interface {
+	pulumi.Input
+
+	ToTargetServerProtocolPtrOutput() TargetServerProtocolPtrOutput
+	ToTargetServerProtocolPtrOutputWithContext(context.Context) TargetServerProtocolPtrOutput
+}
+
+type targetServerProtocolPtr string
+
+func TargetServerProtocolPtr(v string) TargetServerProtocolPtrInput {
+	return (*targetServerProtocolPtr)(&v)
+}
+
+func (*targetServerProtocolPtr) ElementType() reflect.Type {
+	return targetServerProtocolPtrType
+}
+
+func (in *targetServerProtocolPtr) ToTargetServerProtocolPtrOutput() TargetServerProtocolPtrOutput {
+	return pulumi.ToOutput(in).(TargetServerProtocolPtrOutput)
+}
+
+func (in *targetServerProtocolPtr) ToTargetServerProtocolPtrOutputWithContext(ctx context.Context) TargetServerProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TargetServerProtocolPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(DataCollectorTypeOutput{})
+	pulumi.RegisterOutputType(DataCollectorTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigLogTypeOutput{})
+	pulumi.RegisterOutputType(GoogleIamV1AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(InstancePeeringCidrRangeOutput{})
+	pulumi.RegisterOutputType(InstancePeeringCidrRangePtrOutput{})
+	pulumi.RegisterOutputType(OrganizationBillingTypeOutput{})
+	pulumi.RegisterOutputType(OrganizationBillingTypePtrOutput{})
+	pulumi.RegisterOutputType(OrganizationRuntimeTypeOutput{})
+	pulumi.RegisterOutputType(OrganizationRuntimeTypePtrOutput{})
+	pulumi.RegisterOutputType(OrganizationTypeOutput{})
+	pulumi.RegisterOutputType(OrganizationTypePtrOutput{})
+	pulumi.RegisterOutputType(RatePlanBillingPeriodOutput{})
+	pulumi.RegisterOutputType(RatePlanBillingPeriodPtrOutput{})
+	pulumi.RegisterOutputType(RatePlanConsumptionPricingTypeOutput{})
+	pulumi.RegisterOutputType(RatePlanConsumptionPricingTypePtrOutput{})
+	pulumi.RegisterOutputType(RatePlanPaymentFundingModelOutput{})
+	pulumi.RegisterOutputType(RatePlanPaymentFundingModelPtrOutput{})
+	pulumi.RegisterOutputType(RatePlanRevenueShareTypeOutput{})
+	pulumi.RegisterOutputType(RatePlanRevenueShareTypePtrOutput{})
+	pulumi.RegisterOutputType(RatePlanStateEnumOutput{})
+	pulumi.RegisterOutputType(RatePlanStateEnumPtrOutput{})
+	pulumi.RegisterOutputType(TargetServerProtocolOutput{})
+	pulumi.RegisterOutputType(TargetServerProtocolPtrOutput{})
 }

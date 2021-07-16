@@ -64,25 +64,9 @@ func GetIndex(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Index resources.
 type indexState struct {
-	// The fields supported by this index. For composite indexes, this is always 2 or more fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
-	Fields []GoogleFirestoreAdminV1beta2IndexFieldResponse `pulumi:"fields"`
-	// A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
-	Name *string `pulumi:"name"`
-	// Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
-	QueryScope *string `pulumi:"queryScope"`
-	// The serving state of the index.
-	State *string `pulumi:"state"`
 }
 
 type IndexState struct {
-	// The fields supported by this index. For composite indexes, this is always 2 or more fields. The last field entry is always for the field path `__name__`. If, on creation, `__name__` was not specified as the last field, it will be added automatically with the same direction as that of the last field defined. If the final field in a composite index is not directional, the `__name__` will be ordered ASCENDING (unless explicitly specified). For single field indexes, this will always be exactly one entry with a field path equal to the field path of the associated field.
-	Fields GoogleFirestoreAdminV1beta2IndexFieldResponseArrayInput
-	// A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
-	Name pulumi.StringPtrInput
-	// Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
-	QueryScope pulumi.StringPtrInput
-	// The serving state of the index.
-	State pulumi.StringPtrInput
 }
 
 func (IndexState) ElementType() reflect.Type {
@@ -96,7 +80,7 @@ type indexArgs struct {
 	Fields  []GoogleFirestoreAdminV1beta2IndexField `pulumi:"fields"`
 	Project string                                  `pulumi:"project"`
 	// Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
-	QueryScope *string `pulumi:"queryScope"`
+	QueryScope *IndexQueryScope `pulumi:"queryScope"`
 }
 
 // The set of arguments for constructing a Index resource.
@@ -107,7 +91,7 @@ type IndexArgs struct {
 	Fields  GoogleFirestoreAdminV1beta2IndexFieldArrayInput
 	Project pulumi.StringInput
 	// Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
-	QueryScope *IndexQueryScope
+	QueryScope IndexQueryScopePtrInput
 }
 
 func (IndexArgs) ElementType() reflect.Type {

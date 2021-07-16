@@ -31,8 +31,8 @@ __all__ = [
     'LibraryArgs',
     'LivenessCheckArgs',
     'ManualScalingArgs',
-    'NetworkArgs',
     'NetworkUtilizationArgs',
+    'NetworkArgs',
     'ReadinessCheckArgs',
     'RequestUtilizationArgs',
     'ResourcesArgs',
@@ -1400,6 +1400,78 @@ class ManualScalingArgs:
 
 
 @pulumi.input_type
+class NetworkUtilizationArgs:
+    def __init__(__self__, *,
+                 target_received_bytes_per_second: Optional[pulumi.Input[int]] = None,
+                 target_received_packets_per_second: Optional[pulumi.Input[int]] = None,
+                 target_sent_bytes_per_second: Optional[pulumi.Input[int]] = None,
+                 target_sent_packets_per_second: Optional[pulumi.Input[int]] = None):
+        """
+        Target scaling by network usage. Only applicable in the App Engine flexible environment.
+        :param pulumi.Input[int] target_received_bytes_per_second: Target bytes received per second.
+        :param pulumi.Input[int] target_received_packets_per_second: Target packets received per second.
+        :param pulumi.Input[int] target_sent_bytes_per_second: Target bytes sent per second.
+        :param pulumi.Input[int] target_sent_packets_per_second: Target packets sent per second.
+        """
+        if target_received_bytes_per_second is not None:
+            pulumi.set(__self__, "target_received_bytes_per_second", target_received_bytes_per_second)
+        if target_received_packets_per_second is not None:
+            pulumi.set(__self__, "target_received_packets_per_second", target_received_packets_per_second)
+        if target_sent_bytes_per_second is not None:
+            pulumi.set(__self__, "target_sent_bytes_per_second", target_sent_bytes_per_second)
+        if target_sent_packets_per_second is not None:
+            pulumi.set(__self__, "target_sent_packets_per_second", target_sent_packets_per_second)
+
+    @property
+    @pulumi.getter(name="targetReceivedBytesPerSecond")
+    def target_received_bytes_per_second(self) -> Optional[pulumi.Input[int]]:
+        """
+        Target bytes received per second.
+        """
+        return pulumi.get(self, "target_received_bytes_per_second")
+
+    @target_received_bytes_per_second.setter
+    def target_received_bytes_per_second(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "target_received_bytes_per_second", value)
+
+    @property
+    @pulumi.getter(name="targetReceivedPacketsPerSecond")
+    def target_received_packets_per_second(self) -> Optional[pulumi.Input[int]]:
+        """
+        Target packets received per second.
+        """
+        return pulumi.get(self, "target_received_packets_per_second")
+
+    @target_received_packets_per_second.setter
+    def target_received_packets_per_second(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "target_received_packets_per_second", value)
+
+    @property
+    @pulumi.getter(name="targetSentBytesPerSecond")
+    def target_sent_bytes_per_second(self) -> Optional[pulumi.Input[int]]:
+        """
+        Target bytes sent per second.
+        """
+        return pulumi.get(self, "target_sent_bytes_per_second")
+
+    @target_sent_bytes_per_second.setter
+    def target_sent_bytes_per_second(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "target_sent_bytes_per_second", value)
+
+    @property
+    @pulumi.getter(name="targetSentPacketsPerSecond")
+    def target_sent_packets_per_second(self) -> Optional[pulumi.Input[int]]:
+        """
+        Target packets sent per second.
+        """
+        return pulumi.get(self, "target_sent_packets_per_second")
+
+    @target_sent_packets_per_second.setter
+    def target_sent_packets_per_second(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "target_sent_packets_per_second", value)
+
+
+@pulumi.input_type
 class NetworkArgs:
     def __init__(__self__, *,
                  forwarded_ports: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1485,78 +1557,6 @@ class NetworkArgs:
     @subnetwork_name.setter
     def subnetwork_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "subnetwork_name", value)
-
-
-@pulumi.input_type
-class NetworkUtilizationArgs:
-    def __init__(__self__, *,
-                 target_received_bytes_per_second: Optional[pulumi.Input[int]] = None,
-                 target_received_packets_per_second: Optional[pulumi.Input[int]] = None,
-                 target_sent_bytes_per_second: Optional[pulumi.Input[int]] = None,
-                 target_sent_packets_per_second: Optional[pulumi.Input[int]] = None):
-        """
-        Target scaling by network usage. Only applicable in the App Engine flexible environment.
-        :param pulumi.Input[int] target_received_bytes_per_second: Target bytes received per second.
-        :param pulumi.Input[int] target_received_packets_per_second: Target packets received per second.
-        :param pulumi.Input[int] target_sent_bytes_per_second: Target bytes sent per second.
-        :param pulumi.Input[int] target_sent_packets_per_second: Target packets sent per second.
-        """
-        if target_received_bytes_per_second is not None:
-            pulumi.set(__self__, "target_received_bytes_per_second", target_received_bytes_per_second)
-        if target_received_packets_per_second is not None:
-            pulumi.set(__self__, "target_received_packets_per_second", target_received_packets_per_second)
-        if target_sent_bytes_per_second is not None:
-            pulumi.set(__self__, "target_sent_bytes_per_second", target_sent_bytes_per_second)
-        if target_sent_packets_per_second is not None:
-            pulumi.set(__self__, "target_sent_packets_per_second", target_sent_packets_per_second)
-
-    @property
-    @pulumi.getter(name="targetReceivedBytesPerSecond")
-    def target_received_bytes_per_second(self) -> Optional[pulumi.Input[int]]:
-        """
-        Target bytes received per second.
-        """
-        return pulumi.get(self, "target_received_bytes_per_second")
-
-    @target_received_bytes_per_second.setter
-    def target_received_bytes_per_second(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "target_received_bytes_per_second", value)
-
-    @property
-    @pulumi.getter(name="targetReceivedPacketsPerSecond")
-    def target_received_packets_per_second(self) -> Optional[pulumi.Input[int]]:
-        """
-        Target packets received per second.
-        """
-        return pulumi.get(self, "target_received_packets_per_second")
-
-    @target_received_packets_per_second.setter
-    def target_received_packets_per_second(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "target_received_packets_per_second", value)
-
-    @property
-    @pulumi.getter(name="targetSentBytesPerSecond")
-    def target_sent_bytes_per_second(self) -> Optional[pulumi.Input[int]]:
-        """
-        Target bytes sent per second.
-        """
-        return pulumi.get(self, "target_sent_bytes_per_second")
-
-    @target_sent_bytes_per_second.setter
-    def target_sent_bytes_per_second(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "target_sent_bytes_per_second", value)
-
-    @property
-    @pulumi.getter(name="targetSentPacketsPerSecond")
-    def target_sent_packets_per_second(self) -> Optional[pulumi.Input[int]]:
-        """
-        Target packets sent per second.
-        """
-        return pulumi.get(self, "target_sent_packets_per_second")
-
-    @target_sent_packets_per_second.setter
-    def target_sent_packets_per_second(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "target_sent_packets_per_second", value)
 
 
 @pulumi.input_type

@@ -11,7 +11,7 @@ import (
 )
 
 // The signature algorithm used to verify a message against a signature using this key. These signature algorithm must match the structure and any object identifiers encoded in `public_key_pem` (i.e. this algorithm must match that of the public key).
-type PkixPublicKeySignatureAlgorithm pulumi.String
+type PkixPublicKeySignatureAlgorithm string
 
 const (
 	// Not specified.
@@ -47,7 +47,23 @@ const (
 )
 
 func (PkixPublicKeySignatureAlgorithm) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*PkixPublicKeySignatureAlgorithm)(nil)).Elem()
+}
+
+func (e PkixPublicKeySignatureAlgorithm) ToPkixPublicKeySignatureAlgorithmOutput() PkixPublicKeySignatureAlgorithmOutput {
+	return pulumi.ToOutput(e).(PkixPublicKeySignatureAlgorithmOutput)
+}
+
+func (e PkixPublicKeySignatureAlgorithm) ToPkixPublicKeySignatureAlgorithmOutputWithContext(ctx context.Context) PkixPublicKeySignatureAlgorithmOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PkixPublicKeySignatureAlgorithmOutput)
+}
+
+func (e PkixPublicKeySignatureAlgorithm) ToPkixPublicKeySignatureAlgorithmPtrOutput() PkixPublicKeySignatureAlgorithmPtrOutput {
+	return e.ToPkixPublicKeySignatureAlgorithmPtrOutputWithContext(context.Background())
+}
+
+func (e PkixPublicKeySignatureAlgorithm) ToPkixPublicKeySignatureAlgorithmPtrOutputWithContext(ctx context.Context) PkixPublicKeySignatureAlgorithmPtrOutput {
+	return PkixPublicKeySignatureAlgorithm(e).ToPkixPublicKeySignatureAlgorithmOutputWithContext(ctx).ToPkixPublicKeySignatureAlgorithmPtrOutputWithContext(ctx)
 }
 
 func (e PkixPublicKeySignatureAlgorithm) ToStringOutput() pulumi.StringOutput {
@@ -64,4 +80,130 @@ func (e PkixPublicKeySignatureAlgorithm) ToStringPtrOutput() pulumi.StringPtrOut
 
 func (e PkixPublicKeySignatureAlgorithm) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type PkixPublicKeySignatureAlgorithmOutput struct{ *pulumi.OutputState }
+
+func (PkixPublicKeySignatureAlgorithmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PkixPublicKeySignatureAlgorithm)(nil)).Elem()
+}
+
+func (o PkixPublicKeySignatureAlgorithmOutput) ToPkixPublicKeySignatureAlgorithmOutput() PkixPublicKeySignatureAlgorithmOutput {
+	return o
+}
+
+func (o PkixPublicKeySignatureAlgorithmOutput) ToPkixPublicKeySignatureAlgorithmOutputWithContext(ctx context.Context) PkixPublicKeySignatureAlgorithmOutput {
+	return o
+}
+
+func (o PkixPublicKeySignatureAlgorithmOutput) ToPkixPublicKeySignatureAlgorithmPtrOutput() PkixPublicKeySignatureAlgorithmPtrOutput {
+	return o.ToPkixPublicKeySignatureAlgorithmPtrOutputWithContext(context.Background())
+}
+
+func (o PkixPublicKeySignatureAlgorithmOutput) ToPkixPublicKeySignatureAlgorithmPtrOutputWithContext(ctx context.Context) PkixPublicKeySignatureAlgorithmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PkixPublicKeySignatureAlgorithm) *PkixPublicKeySignatureAlgorithm {
+		return &v
+	}).(PkixPublicKeySignatureAlgorithmPtrOutput)
+}
+
+func (o PkixPublicKeySignatureAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PkixPublicKeySignatureAlgorithmOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PkixPublicKeySignatureAlgorithm) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PkixPublicKeySignatureAlgorithmOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PkixPublicKeySignatureAlgorithmOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PkixPublicKeySignatureAlgorithm) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PkixPublicKeySignatureAlgorithmPtrOutput struct{ *pulumi.OutputState }
+
+func (PkixPublicKeySignatureAlgorithmPtrOutput) ElementType() reflect.Type {
+	return pkixPublicKeySignatureAlgorithmPtrType
+}
+
+func (o PkixPublicKeySignatureAlgorithmPtrOutput) ToPkixPublicKeySignatureAlgorithmPtrOutput() PkixPublicKeySignatureAlgorithmPtrOutput {
+	return o
+}
+
+func (o PkixPublicKeySignatureAlgorithmPtrOutput) ToPkixPublicKeySignatureAlgorithmPtrOutputWithContext(ctx context.Context) PkixPublicKeySignatureAlgorithmPtrOutput {
+	return o
+}
+
+func (o PkixPublicKeySignatureAlgorithmPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PkixPublicKeySignatureAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PkixPublicKeySignatureAlgorithm) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PkixPublicKeySignatureAlgorithmPtrOutput) Elem() PkixPublicKeySignatureAlgorithmOutput {
+	return o.ApplyT(func(v *PkixPublicKeySignatureAlgorithm) PkixPublicKeySignatureAlgorithm {
+		var ret PkixPublicKeySignatureAlgorithm
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(PkixPublicKeySignatureAlgorithmOutput)
+}
+
+// PkixPublicKeySignatureAlgorithmInput is an input type that accepts PkixPublicKeySignatureAlgorithmArgs and PkixPublicKeySignatureAlgorithmOutput values.
+// You can construct a concrete instance of `PkixPublicKeySignatureAlgorithmInput` via:
+//
+//          PkixPublicKeySignatureAlgorithmArgs{...}
+type PkixPublicKeySignatureAlgorithmInput interface {
+	pulumi.Input
+
+	ToPkixPublicKeySignatureAlgorithmOutput() PkixPublicKeySignatureAlgorithmOutput
+	ToPkixPublicKeySignatureAlgorithmOutputWithContext(context.Context) PkixPublicKeySignatureAlgorithmOutput
+}
+
+var pkixPublicKeySignatureAlgorithmPtrType = reflect.TypeOf((**PkixPublicKeySignatureAlgorithm)(nil)).Elem()
+
+type PkixPublicKeySignatureAlgorithmPtrInput interface {
+	pulumi.Input
+
+	ToPkixPublicKeySignatureAlgorithmPtrOutput() PkixPublicKeySignatureAlgorithmPtrOutput
+	ToPkixPublicKeySignatureAlgorithmPtrOutputWithContext(context.Context) PkixPublicKeySignatureAlgorithmPtrOutput
+}
+
+type pkixPublicKeySignatureAlgorithmPtr string
+
+func PkixPublicKeySignatureAlgorithmPtr(v string) PkixPublicKeySignatureAlgorithmPtrInput {
+	return (*pkixPublicKeySignatureAlgorithmPtr)(&v)
+}
+
+func (*pkixPublicKeySignatureAlgorithmPtr) ElementType() reflect.Type {
+	return pkixPublicKeySignatureAlgorithmPtrType
+}
+
+func (in *pkixPublicKeySignatureAlgorithmPtr) ToPkixPublicKeySignatureAlgorithmPtrOutput() PkixPublicKeySignatureAlgorithmPtrOutput {
+	return pulumi.ToOutput(in).(PkixPublicKeySignatureAlgorithmPtrOutput)
+}
+
+func (in *pkixPublicKeySignatureAlgorithmPtr) ToPkixPublicKeySignatureAlgorithmPtrOutputWithContext(ctx context.Context) PkixPublicKeySignatureAlgorithmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PkixPublicKeySignatureAlgorithmPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(PkixPublicKeySignatureAlgorithmOutput{})
+	pulumi.RegisterOutputType(PkixPublicKeySignatureAlgorithmPtrOutput{})
 }

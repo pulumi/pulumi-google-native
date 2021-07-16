@@ -11,7 +11,7 @@ import (
 )
 
 // The log type that this config enables.
-type AuditLogConfigLogType pulumi.String
+type AuditLogConfigLogType string
 
 const (
 	// Default case. Should never be this.
@@ -25,7 +25,23 @@ const (
 )
 
 func (AuditLogConfigLogType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*AuditLogConfigLogType)(nil)).Elem()
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput {
+	return pulumi.ToOutput(e).(AuditLogConfigLogTypeOutput)
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypeOutputWithContext(ctx context.Context) AuditLogConfigLogTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AuditLogConfigLogTypeOutput)
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return e.ToAuditLogConfigLogTypePtrOutputWithContext(context.Background())
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return AuditLogConfigLogType(e).ToAuditLogConfigLogTypeOutputWithContext(ctx).ToAuditLogConfigLogTypePtrOutputWithContext(ctx)
 }
 
 func (e AuditLogConfigLogType) ToStringOutput() pulumi.StringOutput {
@@ -44,8 +60,129 @@ func (e AuditLogConfigLogType) ToStringPtrOutputWithContext(ctx context.Context)
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type AuditLogConfigLogTypeOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigLogTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigLogType)(nil)).Elem()
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypeOutputWithContext(ctx context.Context) AuditLogConfigLogTypeOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return o.ToAuditLogConfigLogTypePtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuditLogConfigLogType) *AuditLogConfigLogType {
+		return &v
+	}).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuditLogConfigLogType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuditLogConfigLogType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
+	return auditLogConfigLogTypePtrType
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AuditLogConfigLogType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		var ret AuditLogConfigLogType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
+}
+
+// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
+// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+//
+//          AuditLogConfigLogTypeArgs{...}
+type AuditLogConfigLogTypeInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput
+	ToAuditLogConfigLogTypeOutputWithContext(context.Context) AuditLogConfigLogTypeOutput
+}
+
+var auditLogConfigLogTypePtrType = reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
+
+type AuditLogConfigLogTypePtrInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput
+	ToAuditLogConfigLogTypePtrOutputWithContext(context.Context) AuditLogConfigLogTypePtrOutput
+}
+
+type auditLogConfigLogTypePtr string
+
+func AuditLogConfigLogTypePtr(v string) AuditLogConfigLogTypePtrInput {
+	return (*auditLogConfigLogTypePtr)(&v)
+}
+
+func (*auditLogConfigLogTypePtr) ElementType() reflect.Type {
+	return auditLogConfigLogTypePtrType
+}
+
+func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return pulumi.ToOutput(in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
 // The ingress settings for the function, controlling what traffic can reach it.
-type FunctionIngressSettings pulumi.String
+type FunctionIngressSettings string
 
 const (
 	// Unspecified.
@@ -59,7 +196,23 @@ const (
 )
 
 func (FunctionIngressSettings) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*FunctionIngressSettings)(nil)).Elem()
+}
+
+func (e FunctionIngressSettings) ToFunctionIngressSettingsOutput() FunctionIngressSettingsOutput {
+	return pulumi.ToOutput(e).(FunctionIngressSettingsOutput)
+}
+
+func (e FunctionIngressSettings) ToFunctionIngressSettingsOutputWithContext(ctx context.Context) FunctionIngressSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FunctionIngressSettingsOutput)
+}
+
+func (e FunctionIngressSettings) ToFunctionIngressSettingsPtrOutput() FunctionIngressSettingsPtrOutput {
+	return e.ToFunctionIngressSettingsPtrOutputWithContext(context.Background())
+}
+
+func (e FunctionIngressSettings) ToFunctionIngressSettingsPtrOutputWithContext(ctx context.Context) FunctionIngressSettingsPtrOutput {
+	return FunctionIngressSettings(e).ToFunctionIngressSettingsOutputWithContext(ctx).ToFunctionIngressSettingsPtrOutputWithContext(ctx)
 }
 
 func (e FunctionIngressSettings) ToStringOutput() pulumi.StringOutput {
@@ -78,8 +231,129 @@ func (e FunctionIngressSettings) ToStringPtrOutputWithContext(ctx context.Contex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type FunctionIngressSettingsOutput struct{ *pulumi.OutputState }
+
+func (FunctionIngressSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionIngressSettings)(nil)).Elem()
+}
+
+func (o FunctionIngressSettingsOutput) ToFunctionIngressSettingsOutput() FunctionIngressSettingsOutput {
+	return o
+}
+
+func (o FunctionIngressSettingsOutput) ToFunctionIngressSettingsOutputWithContext(ctx context.Context) FunctionIngressSettingsOutput {
+	return o
+}
+
+func (o FunctionIngressSettingsOutput) ToFunctionIngressSettingsPtrOutput() FunctionIngressSettingsPtrOutput {
+	return o.ToFunctionIngressSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionIngressSettingsOutput) ToFunctionIngressSettingsPtrOutputWithContext(ctx context.Context) FunctionIngressSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionIngressSettings) *FunctionIngressSettings {
+		return &v
+	}).(FunctionIngressSettingsPtrOutput)
+}
+
+func (o FunctionIngressSettingsOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FunctionIngressSettingsOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FunctionIngressSettings) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FunctionIngressSettingsOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionIngressSettingsOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FunctionIngressSettings) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FunctionIngressSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionIngressSettingsPtrOutput) ElementType() reflect.Type {
+	return functionIngressSettingsPtrType
+}
+
+func (o FunctionIngressSettingsPtrOutput) ToFunctionIngressSettingsPtrOutput() FunctionIngressSettingsPtrOutput {
+	return o
+}
+
+func (o FunctionIngressSettingsPtrOutput) ToFunctionIngressSettingsPtrOutputWithContext(ctx context.Context) FunctionIngressSettingsPtrOutput {
+	return o
+}
+
+func (o FunctionIngressSettingsPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionIngressSettingsPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FunctionIngressSettings) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FunctionIngressSettingsPtrOutput) Elem() FunctionIngressSettingsOutput {
+	return o.ApplyT(func(v *FunctionIngressSettings) FunctionIngressSettings {
+		var ret FunctionIngressSettings
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(FunctionIngressSettingsOutput)
+}
+
+// FunctionIngressSettingsInput is an input type that accepts FunctionIngressSettingsArgs and FunctionIngressSettingsOutput values.
+// You can construct a concrete instance of `FunctionIngressSettingsInput` via:
+//
+//          FunctionIngressSettingsArgs{...}
+type FunctionIngressSettingsInput interface {
+	pulumi.Input
+
+	ToFunctionIngressSettingsOutput() FunctionIngressSettingsOutput
+	ToFunctionIngressSettingsOutputWithContext(context.Context) FunctionIngressSettingsOutput
+}
+
+var functionIngressSettingsPtrType = reflect.TypeOf((**FunctionIngressSettings)(nil)).Elem()
+
+type FunctionIngressSettingsPtrInput interface {
+	pulumi.Input
+
+	ToFunctionIngressSettingsPtrOutput() FunctionIngressSettingsPtrOutput
+	ToFunctionIngressSettingsPtrOutputWithContext(context.Context) FunctionIngressSettingsPtrOutput
+}
+
+type functionIngressSettingsPtr string
+
+func FunctionIngressSettingsPtr(v string) FunctionIngressSettingsPtrInput {
+	return (*functionIngressSettingsPtr)(&v)
+}
+
+func (*functionIngressSettingsPtr) ElementType() reflect.Type {
+	return functionIngressSettingsPtrType
+}
+
+func (in *functionIngressSettingsPtr) ToFunctionIngressSettingsPtrOutput() FunctionIngressSettingsPtrOutput {
+	return pulumi.ToOutput(in).(FunctionIngressSettingsPtrOutput)
+}
+
+func (in *functionIngressSettingsPtr) ToFunctionIngressSettingsPtrOutputWithContext(ctx context.Context) FunctionIngressSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FunctionIngressSettingsPtrOutput)
+}
+
 // The egress settings for the connector, controlling what traffic is diverted through it.
-type FunctionVpcConnectorEgressSettings pulumi.String
+type FunctionVpcConnectorEgressSettings string
 
 const (
 	// Unspecified.
@@ -91,7 +365,23 @@ const (
 )
 
 func (FunctionVpcConnectorEgressSettings) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*FunctionVpcConnectorEgressSettings)(nil)).Elem()
+}
+
+func (e FunctionVpcConnectorEgressSettings) ToFunctionVpcConnectorEgressSettingsOutput() FunctionVpcConnectorEgressSettingsOutput {
+	return pulumi.ToOutput(e).(FunctionVpcConnectorEgressSettingsOutput)
+}
+
+func (e FunctionVpcConnectorEgressSettings) ToFunctionVpcConnectorEgressSettingsOutputWithContext(ctx context.Context) FunctionVpcConnectorEgressSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FunctionVpcConnectorEgressSettingsOutput)
+}
+
+func (e FunctionVpcConnectorEgressSettings) ToFunctionVpcConnectorEgressSettingsPtrOutput() FunctionVpcConnectorEgressSettingsPtrOutput {
+	return e.ToFunctionVpcConnectorEgressSettingsPtrOutputWithContext(context.Background())
+}
+
+func (e FunctionVpcConnectorEgressSettings) ToFunctionVpcConnectorEgressSettingsPtrOutputWithContext(ctx context.Context) FunctionVpcConnectorEgressSettingsPtrOutput {
+	return FunctionVpcConnectorEgressSettings(e).ToFunctionVpcConnectorEgressSettingsOutputWithContext(ctx).ToFunctionVpcConnectorEgressSettingsPtrOutputWithContext(ctx)
 }
 
 func (e FunctionVpcConnectorEgressSettings) ToStringOutput() pulumi.StringOutput {
@@ -110,8 +400,129 @@ func (e FunctionVpcConnectorEgressSettings) ToStringPtrOutputWithContext(ctx con
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type FunctionVpcConnectorEgressSettingsOutput struct{ *pulumi.OutputState }
+
+func (FunctionVpcConnectorEgressSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FunctionVpcConnectorEgressSettings)(nil)).Elem()
+}
+
+func (o FunctionVpcConnectorEgressSettingsOutput) ToFunctionVpcConnectorEgressSettingsOutput() FunctionVpcConnectorEgressSettingsOutput {
+	return o
+}
+
+func (o FunctionVpcConnectorEgressSettingsOutput) ToFunctionVpcConnectorEgressSettingsOutputWithContext(ctx context.Context) FunctionVpcConnectorEgressSettingsOutput {
+	return o
+}
+
+func (o FunctionVpcConnectorEgressSettingsOutput) ToFunctionVpcConnectorEgressSettingsPtrOutput() FunctionVpcConnectorEgressSettingsPtrOutput {
+	return o.ToFunctionVpcConnectorEgressSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionVpcConnectorEgressSettingsOutput) ToFunctionVpcConnectorEgressSettingsPtrOutputWithContext(ctx context.Context) FunctionVpcConnectorEgressSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FunctionVpcConnectorEgressSettings) *FunctionVpcConnectorEgressSettings {
+		return &v
+	}).(FunctionVpcConnectorEgressSettingsPtrOutput)
+}
+
+func (o FunctionVpcConnectorEgressSettingsOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FunctionVpcConnectorEgressSettingsOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FunctionVpcConnectorEgressSettings) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FunctionVpcConnectorEgressSettingsOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionVpcConnectorEgressSettingsOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FunctionVpcConnectorEgressSettings) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FunctionVpcConnectorEgressSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (FunctionVpcConnectorEgressSettingsPtrOutput) ElementType() reflect.Type {
+	return functionVpcConnectorEgressSettingsPtrType
+}
+
+func (o FunctionVpcConnectorEgressSettingsPtrOutput) ToFunctionVpcConnectorEgressSettingsPtrOutput() FunctionVpcConnectorEgressSettingsPtrOutput {
+	return o
+}
+
+func (o FunctionVpcConnectorEgressSettingsPtrOutput) ToFunctionVpcConnectorEgressSettingsPtrOutputWithContext(ctx context.Context) FunctionVpcConnectorEgressSettingsPtrOutput {
+	return o
+}
+
+func (o FunctionVpcConnectorEgressSettingsPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FunctionVpcConnectorEgressSettingsPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FunctionVpcConnectorEgressSettings) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FunctionVpcConnectorEgressSettingsPtrOutput) Elem() FunctionVpcConnectorEgressSettingsOutput {
+	return o.ApplyT(func(v *FunctionVpcConnectorEgressSettings) FunctionVpcConnectorEgressSettings {
+		var ret FunctionVpcConnectorEgressSettings
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(FunctionVpcConnectorEgressSettingsOutput)
+}
+
+// FunctionVpcConnectorEgressSettingsInput is an input type that accepts FunctionVpcConnectorEgressSettingsArgs and FunctionVpcConnectorEgressSettingsOutput values.
+// You can construct a concrete instance of `FunctionVpcConnectorEgressSettingsInput` via:
+//
+//          FunctionVpcConnectorEgressSettingsArgs{...}
+type FunctionVpcConnectorEgressSettingsInput interface {
+	pulumi.Input
+
+	ToFunctionVpcConnectorEgressSettingsOutput() FunctionVpcConnectorEgressSettingsOutput
+	ToFunctionVpcConnectorEgressSettingsOutputWithContext(context.Context) FunctionVpcConnectorEgressSettingsOutput
+}
+
+var functionVpcConnectorEgressSettingsPtrType = reflect.TypeOf((**FunctionVpcConnectorEgressSettings)(nil)).Elem()
+
+type FunctionVpcConnectorEgressSettingsPtrInput interface {
+	pulumi.Input
+
+	ToFunctionVpcConnectorEgressSettingsPtrOutput() FunctionVpcConnectorEgressSettingsPtrOutput
+	ToFunctionVpcConnectorEgressSettingsPtrOutputWithContext(context.Context) FunctionVpcConnectorEgressSettingsPtrOutput
+}
+
+type functionVpcConnectorEgressSettingsPtr string
+
+func FunctionVpcConnectorEgressSettingsPtr(v string) FunctionVpcConnectorEgressSettingsPtrInput {
+	return (*functionVpcConnectorEgressSettingsPtr)(&v)
+}
+
+func (*functionVpcConnectorEgressSettingsPtr) ElementType() reflect.Type {
+	return functionVpcConnectorEgressSettingsPtrType
+}
+
+func (in *functionVpcConnectorEgressSettingsPtr) ToFunctionVpcConnectorEgressSettingsPtrOutput() FunctionVpcConnectorEgressSettingsPtrOutput {
+	return pulumi.ToOutput(in).(FunctionVpcConnectorEgressSettingsPtrOutput)
+}
+
+func (in *functionVpcConnectorEgressSettingsPtr) ToFunctionVpcConnectorEgressSettingsPtrOutputWithContext(ctx context.Context) FunctionVpcConnectorEgressSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FunctionVpcConnectorEgressSettingsPtrOutput)
+}
+
 // The security level for the function.
-type HttpsTriggerSecurityLevel pulumi.String
+type HttpsTriggerSecurityLevel string
 
 const (
 	// Unspecified.
@@ -123,7 +534,23 @@ const (
 )
 
 func (HttpsTriggerSecurityLevel) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*HttpsTriggerSecurityLevel)(nil)).Elem()
+}
+
+func (e HttpsTriggerSecurityLevel) ToHttpsTriggerSecurityLevelOutput() HttpsTriggerSecurityLevelOutput {
+	return pulumi.ToOutput(e).(HttpsTriggerSecurityLevelOutput)
+}
+
+func (e HttpsTriggerSecurityLevel) ToHttpsTriggerSecurityLevelOutputWithContext(ctx context.Context) HttpsTriggerSecurityLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(HttpsTriggerSecurityLevelOutput)
+}
+
+func (e HttpsTriggerSecurityLevel) ToHttpsTriggerSecurityLevelPtrOutput() HttpsTriggerSecurityLevelPtrOutput {
+	return e.ToHttpsTriggerSecurityLevelPtrOutputWithContext(context.Background())
+}
+
+func (e HttpsTriggerSecurityLevel) ToHttpsTriggerSecurityLevelPtrOutputWithContext(ctx context.Context) HttpsTriggerSecurityLevelPtrOutput {
+	return HttpsTriggerSecurityLevel(e).ToHttpsTriggerSecurityLevelOutputWithContext(ctx).ToHttpsTriggerSecurityLevelPtrOutputWithContext(ctx)
 }
 
 func (e HttpsTriggerSecurityLevel) ToStringOutput() pulumi.StringOutput {
@@ -140,4 +567,136 @@ func (e HttpsTriggerSecurityLevel) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e HttpsTriggerSecurityLevel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type HttpsTriggerSecurityLevelOutput struct{ *pulumi.OutputState }
+
+func (HttpsTriggerSecurityLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpsTriggerSecurityLevel)(nil)).Elem()
+}
+
+func (o HttpsTriggerSecurityLevelOutput) ToHttpsTriggerSecurityLevelOutput() HttpsTriggerSecurityLevelOutput {
+	return o
+}
+
+func (o HttpsTriggerSecurityLevelOutput) ToHttpsTriggerSecurityLevelOutputWithContext(ctx context.Context) HttpsTriggerSecurityLevelOutput {
+	return o
+}
+
+func (o HttpsTriggerSecurityLevelOutput) ToHttpsTriggerSecurityLevelPtrOutput() HttpsTriggerSecurityLevelPtrOutput {
+	return o.ToHttpsTriggerSecurityLevelPtrOutputWithContext(context.Background())
+}
+
+func (o HttpsTriggerSecurityLevelOutput) ToHttpsTriggerSecurityLevelPtrOutputWithContext(ctx context.Context) HttpsTriggerSecurityLevelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpsTriggerSecurityLevel) *HttpsTriggerSecurityLevel {
+		return &v
+	}).(HttpsTriggerSecurityLevelPtrOutput)
+}
+
+func (o HttpsTriggerSecurityLevelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o HttpsTriggerSecurityLevelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HttpsTriggerSecurityLevel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o HttpsTriggerSecurityLevelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HttpsTriggerSecurityLevelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HttpsTriggerSecurityLevel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type HttpsTriggerSecurityLevelPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpsTriggerSecurityLevelPtrOutput) ElementType() reflect.Type {
+	return httpsTriggerSecurityLevelPtrType
+}
+
+func (o HttpsTriggerSecurityLevelPtrOutput) ToHttpsTriggerSecurityLevelPtrOutput() HttpsTriggerSecurityLevelPtrOutput {
+	return o
+}
+
+func (o HttpsTriggerSecurityLevelPtrOutput) ToHttpsTriggerSecurityLevelPtrOutputWithContext(ctx context.Context) HttpsTriggerSecurityLevelPtrOutput {
+	return o
+}
+
+func (o HttpsTriggerSecurityLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HttpsTriggerSecurityLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *HttpsTriggerSecurityLevel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o HttpsTriggerSecurityLevelPtrOutput) Elem() HttpsTriggerSecurityLevelOutput {
+	return o.ApplyT(func(v *HttpsTriggerSecurityLevel) HttpsTriggerSecurityLevel {
+		var ret HttpsTriggerSecurityLevel
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(HttpsTriggerSecurityLevelOutput)
+}
+
+// HttpsTriggerSecurityLevelInput is an input type that accepts HttpsTriggerSecurityLevelArgs and HttpsTriggerSecurityLevelOutput values.
+// You can construct a concrete instance of `HttpsTriggerSecurityLevelInput` via:
+//
+//          HttpsTriggerSecurityLevelArgs{...}
+type HttpsTriggerSecurityLevelInput interface {
+	pulumi.Input
+
+	ToHttpsTriggerSecurityLevelOutput() HttpsTriggerSecurityLevelOutput
+	ToHttpsTriggerSecurityLevelOutputWithContext(context.Context) HttpsTriggerSecurityLevelOutput
+}
+
+var httpsTriggerSecurityLevelPtrType = reflect.TypeOf((**HttpsTriggerSecurityLevel)(nil)).Elem()
+
+type HttpsTriggerSecurityLevelPtrInput interface {
+	pulumi.Input
+
+	ToHttpsTriggerSecurityLevelPtrOutput() HttpsTriggerSecurityLevelPtrOutput
+	ToHttpsTriggerSecurityLevelPtrOutputWithContext(context.Context) HttpsTriggerSecurityLevelPtrOutput
+}
+
+type httpsTriggerSecurityLevelPtr string
+
+func HttpsTriggerSecurityLevelPtr(v string) HttpsTriggerSecurityLevelPtrInput {
+	return (*httpsTriggerSecurityLevelPtr)(&v)
+}
+
+func (*httpsTriggerSecurityLevelPtr) ElementType() reflect.Type {
+	return httpsTriggerSecurityLevelPtrType
+}
+
+func (in *httpsTriggerSecurityLevelPtr) ToHttpsTriggerSecurityLevelPtrOutput() HttpsTriggerSecurityLevelPtrOutput {
+	return pulumi.ToOutput(in).(HttpsTriggerSecurityLevelPtrOutput)
+}
+
+func (in *httpsTriggerSecurityLevelPtr) ToHttpsTriggerSecurityLevelPtrOutputWithContext(ctx context.Context) HttpsTriggerSecurityLevelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(HttpsTriggerSecurityLevelPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(FunctionIngressSettingsOutput{})
+	pulumi.RegisterOutputType(FunctionIngressSettingsPtrOutput{})
+	pulumi.RegisterOutputType(FunctionVpcConnectorEgressSettingsOutput{})
+	pulumi.RegisterOutputType(FunctionVpcConnectorEgressSettingsPtrOutput{})
+	pulumi.RegisterOutputType(HttpsTriggerSecurityLevelOutput{})
+	pulumi.RegisterOutputType(HttpsTriggerSecurityLevelPtrOutput{})
 }

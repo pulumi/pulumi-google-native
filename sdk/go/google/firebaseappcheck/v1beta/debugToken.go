@@ -61,21 +61,9 @@ func GetDebugToken(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DebugToken resources.
 type debugTokenState struct {
-	// A human readable display name used to identify this debug token.
-	DisplayName *string `pulumi:"displayName"`
-	// The relative resource name of the debug token, in the format: ```projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id}```
-	Name *string `pulumi:"name"`
-	// Input only. Immutable. The secret token itself. Must be provided during creation, and must be a UUID4, case insensitive. This field is immutable once set, and cannot be provided during an UpdateDebugToken request. You can, however, delete this debug token using DeleteDebugToken to revoke it. For security reasons, this field will never be populated in any response.
-	Token *string `pulumi:"token"`
 }
 
 type DebugTokenState struct {
-	// A human readable display name used to identify this debug token.
-	DisplayName pulumi.StringPtrInput
-	// The relative resource name of the debug token, in the format: ```projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id}```
-	Name pulumi.StringPtrInput
-	// Input only. Immutable. The secret token itself. Must be provided during creation, and must be a UUID4, case insensitive. This field is immutable once set, and cannot be provided during an UpdateDebugToken request. You can, however, delete this debug token using DeleteDebugToken to revoke it. For security reasons, this field will never be populated in any response.
-	Token pulumi.StringPtrInput
 }
 
 func (DebugTokenState) ElementType() reflect.Type {

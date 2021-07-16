@@ -1244,7 +1244,7 @@ func (o GoogleCloudDialogflowV2FulfillmentPtrOutput) Name() pulumi.StringPtrOutp
 // Whether fulfillment is enabled for the specific feature.
 type GoogleCloudDialogflowV2FulfillmentFeature struct {
 	// The type of the feature that enabled for fulfillment.
-	Type *string `pulumi:"type"`
+	Type *GoogleCloudDialogflowV2FulfillmentFeatureType `pulumi:"type"`
 }
 
 // GoogleCloudDialogflowV2FulfillmentFeatureInput is an input type that accepts GoogleCloudDialogflowV2FulfillmentFeatureArgs and GoogleCloudDialogflowV2FulfillmentFeatureOutput values.
@@ -1261,7 +1261,7 @@ type GoogleCloudDialogflowV2FulfillmentFeatureInput interface {
 // Whether fulfillment is enabled for the specific feature.
 type GoogleCloudDialogflowV2FulfillmentFeatureArgs struct {
 	// The type of the feature that enabled for fulfillment.
-	Type *GoogleCloudDialogflowV2FulfillmentFeatureType `pulumi:"type"`
+	Type GoogleCloudDialogflowV2FulfillmentFeatureTypePtrInput `pulumi:"type"`
 }
 
 func (GoogleCloudDialogflowV2FulfillmentFeatureArgs) ElementType() reflect.Type {
@@ -1317,8 +1317,10 @@ func (o GoogleCloudDialogflowV2FulfillmentFeatureOutput) ToGoogleCloudDialogflow
 }
 
 // The type of the feature that enabled for fulfillment.
-func (o GoogleCloudDialogflowV2FulfillmentFeatureOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2FulfillmentFeature) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o GoogleCloudDialogflowV2FulfillmentFeatureOutput) Type() GoogleCloudDialogflowV2FulfillmentFeatureTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2FulfillmentFeature) *GoogleCloudDialogflowV2FulfillmentFeatureType {
+		return v.Type
+	}).(GoogleCloudDialogflowV2FulfillmentFeatureTypePtrOutput)
 }
 
 type GoogleCloudDialogflowV2FulfillmentFeatureArrayOutput struct{ *pulumi.OutputState }
@@ -6269,7 +6271,7 @@ type GoogleCloudDialogflowV2IntentMessage struct {
 	// A custom platform-specific response.
 	Payload map[string]string `pulumi:"payload"`
 	// Optional. The platform that this message is intended for.
-	Platform *string `pulumi:"platform"`
+	Platform *GoogleCloudDialogflowV2IntentMessagePlatform `pulumi:"platform"`
 	// The quick replies response.
 	QuickReplies *GoogleCloudDialogflowV2IntentMessageQuickReplies `pulumi:"quickReplies"`
 	// The voice and text-only responses for Actions on Google.
@@ -6314,7 +6316,7 @@ type GoogleCloudDialogflowV2IntentMessageArgs struct {
 	// A custom platform-specific response.
 	Payload pulumi.StringMapInput `pulumi:"payload"`
 	// Optional. The platform that this message is intended for.
-	Platform *GoogleCloudDialogflowV2IntentMessagePlatform `pulumi:"platform"`
+	Platform GoogleCloudDialogflowV2IntentMessagePlatformPtrInput `pulumi:"platform"`
 	// The quick replies response.
 	QuickReplies GoogleCloudDialogflowV2IntentMessageQuickRepliesPtrInput `pulumi:"quickReplies"`
 	// The voice and text-only responses for Actions on Google.
@@ -6439,8 +6441,10 @@ func (o GoogleCloudDialogflowV2IntentMessageOutput) Payload() pulumi.StringMapOu
 }
 
 // Optional. The platform that this message is intended for.
-func (o GoogleCloudDialogflowV2IntentMessageOutput) Platform() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessage) *string { return v.Platform }).(pulumi.StringPtrOutput)
+func (o GoogleCloudDialogflowV2IntentMessageOutput) Platform() GoogleCloudDialogflowV2IntentMessagePlatformPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessage) *GoogleCloudDialogflowV2IntentMessagePlatform {
+		return v.Platform
+	}).(GoogleCloudDialogflowV2IntentMessagePlatformPtrOutput)
 }
 
 // The quick replies response.
@@ -7142,7 +7146,7 @@ func (o GoogleCloudDialogflowV2IntentMessageBasicCardResponseOutput) Title() pul
 // Browse Carousel Card for Actions on Google. https://developers.google.com/actions/assistant/responses#browsing_carousel
 type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard struct {
 	// Optional. Settings for displaying the image. Applies to every image in items.
-	ImageDisplayOptions *string `pulumi:"imageDisplayOptions"`
+	ImageDisplayOptions *GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions `pulumi:"imageDisplayOptions"`
 	// List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
 	Items []GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem `pulumi:"items"`
 }
@@ -7161,7 +7165,7 @@ type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardInput interface {
 // Browse Carousel Card for Actions on Google. https://developers.google.com/actions/assistant/responses#browsing_carousel
 type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardArgs struct {
 	// Optional. Settings for displaying the image. Applies to every image in items.
-	ImageDisplayOptions *GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions `pulumi:"imageDisplayOptions"`
+	ImageDisplayOptions GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptionsPtrInput `pulumi:"imageDisplayOptions"`
 	// List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
 	Items GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArrayInput `pulumi:"items"`
 }
@@ -7245,8 +7249,10 @@ func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardOutput) ToGoogleCl
 }
 
 // Optional. Settings for displaying the image. Applies to every image in items.
-func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardOutput) ImageDisplayOptions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard) *string { return v.ImageDisplayOptions }).(pulumi.StringPtrOutput)
+func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardOutput) ImageDisplayOptions() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard) *GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions {
+		return v.ImageDisplayOptions
+	}).(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutput)
 }
 
 // List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
@@ -7277,13 +7283,13 @@ func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardPtrOutput) Elem() 
 }
 
 // Optional. Settings for displaying the image. Applies to every image in items.
-func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardPtrOutput) ImageDisplayOptions() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard) *string {
+func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardPtrOutput) ImageDisplayOptions() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard) *GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptions {
 		if v == nil {
 			return nil
 		}
 		return v.ImageDisplayOptions
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardImageDisplayOptionsPtrOutput)
 }
 
 // List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
@@ -7447,7 +7453,7 @@ type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIte
 	// URL
 	Url string `pulumi:"url"`
 	// Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
-	UrlTypeHint *string `pulumi:"urlTypeHint"`
+	UrlTypeHint *GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint `pulumi:"urlTypeHint"`
 }
 
 // GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs and GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionOutput values.
@@ -7466,7 +7472,7 @@ type GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIte
 	// URL
 	Url pulumi.StringInput `pulumi:"url"`
 	// Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
-	UrlTypeHint *GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint `pulumi:"urlTypeHint"`
+	UrlTypeHint GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrInput `pulumi:"urlTypeHint"`
 }
 
 func (GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs) ElementType() reflect.Type {
@@ -7504,10 +7510,10 @@ func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCard
 }
 
 // Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
-func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionOutput) UrlTypeHint() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction) *string {
+func (o GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionOutput) UrlTypeHint() GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction) *GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHint {
 		return v.UrlTypeHint
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintPtrOutput)
 }
 
 // Actions on Google action to open a given url.
@@ -8749,7 +8755,7 @@ type GoogleCloudDialogflowV2IntentMessageColumnProperties struct {
 	// Column heading.
 	Header string `pulumi:"header"`
 	// Optional. Defines text alignment for all cells in this column.
-	HorizontalAlignment *string `pulumi:"horizontalAlignment"`
+	HorizontalAlignment *GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment `pulumi:"horizontalAlignment"`
 }
 
 // GoogleCloudDialogflowV2IntentMessageColumnPropertiesInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageColumnPropertiesArgs and GoogleCloudDialogflowV2IntentMessageColumnPropertiesOutput values.
@@ -8768,7 +8774,7 @@ type GoogleCloudDialogflowV2IntentMessageColumnPropertiesArgs struct {
 	// Column heading.
 	Header pulumi.StringInput `pulumi:"header"`
 	// Optional. Defines text alignment for all cells in this column.
-	HorizontalAlignment *GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment `pulumi:"horizontalAlignment"`
+	HorizontalAlignment GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignmentPtrInput `pulumi:"horizontalAlignment"`
 }
 
 func (GoogleCloudDialogflowV2IntentMessageColumnPropertiesArgs) ElementType() reflect.Type {
@@ -8829,8 +8835,10 @@ func (o GoogleCloudDialogflowV2IntentMessageColumnPropertiesOutput) Header() pul
 }
 
 // Optional. Defines text alignment for all cells in this column.
-func (o GoogleCloudDialogflowV2IntentMessageColumnPropertiesOutput) HorizontalAlignment() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageColumnProperties) *string { return v.HorizontalAlignment }).(pulumi.StringPtrOutput)
+func (o GoogleCloudDialogflowV2IntentMessageColumnPropertiesOutput) HorizontalAlignment() GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignmentPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageColumnProperties) *GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignment {
+		return v.HorizontalAlignment
+	}).(GoogleCloudDialogflowV2IntentMessageColumnPropertiesHorizontalAlignmentPtrOutput)
 }
 
 type GoogleCloudDialogflowV2IntentMessageColumnPropertiesArrayOutput struct{ *pulumi.OutputState }
@@ -9920,7 +9928,7 @@ type GoogleCloudDialogflowV2IntentMessageMediaContent struct {
 	// List of media objects.
 	MediaObjects []GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject `pulumi:"mediaObjects"`
 	// Optional. What type of media is the content (ie "audio").
-	MediaType *string `pulumi:"mediaType"`
+	MediaType *GoogleCloudDialogflowV2IntentMessageMediaContentMediaType `pulumi:"mediaType"`
 }
 
 // GoogleCloudDialogflowV2IntentMessageMediaContentInput is an input type that accepts GoogleCloudDialogflowV2IntentMessageMediaContentArgs and GoogleCloudDialogflowV2IntentMessageMediaContentOutput values.
@@ -9939,7 +9947,7 @@ type GoogleCloudDialogflowV2IntentMessageMediaContentArgs struct {
 	// List of media objects.
 	MediaObjects GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObjectArrayInput `pulumi:"mediaObjects"`
 	// Optional. What type of media is the content (ie "audio").
-	MediaType *GoogleCloudDialogflowV2IntentMessageMediaContentMediaType `pulumi:"mediaType"`
+	MediaType GoogleCloudDialogflowV2IntentMessageMediaContentMediaTypePtrInput `pulumi:"mediaType"`
 }
 
 func (GoogleCloudDialogflowV2IntentMessageMediaContentArgs) ElementType() reflect.Type {
@@ -10028,8 +10036,10 @@ func (o GoogleCloudDialogflowV2IntentMessageMediaContentOutput) MediaObjects() G
 }
 
 // Optional. What type of media is the content (ie "audio").
-func (o GoogleCloudDialogflowV2IntentMessageMediaContentOutput) MediaType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageMediaContent) *string { return v.MediaType }).(pulumi.StringPtrOutput)
+func (o GoogleCloudDialogflowV2IntentMessageMediaContentOutput) MediaType() GoogleCloudDialogflowV2IntentMessageMediaContentMediaTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentMessageMediaContent) *GoogleCloudDialogflowV2IntentMessageMediaContentMediaType {
+		return v.MediaType
+	}).(GoogleCloudDialogflowV2IntentMessageMediaContentMediaTypePtrOutput)
 }
 
 type GoogleCloudDialogflowV2IntentMessageMediaContentPtrOutput struct{ *pulumi.OutputState }
@@ -10063,13 +10073,13 @@ func (o GoogleCloudDialogflowV2IntentMessageMediaContentPtrOutput) MediaObjects(
 }
 
 // Optional. What type of media is the content (ie "audio").
-func (o GoogleCloudDialogflowV2IntentMessageMediaContentPtrOutput) MediaType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageMediaContent) *string {
+func (o GoogleCloudDialogflowV2IntentMessageMediaContentPtrOutput) MediaType() GoogleCloudDialogflowV2IntentMessageMediaContentMediaTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2IntentMessageMediaContent) *GoogleCloudDialogflowV2IntentMessageMediaContentMediaType {
 		if v == nil {
 			return nil
 		}
 		return v.MediaType
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudDialogflowV2IntentMessageMediaContentMediaTypePtrOutput)
 }
 
 // The media content card for Actions on Google.
@@ -13144,7 +13154,7 @@ type GoogleCloudDialogflowV2IntentTrainingPhrase struct {
 	// Optional. Indicates how many times this example was added to the intent. Each time a developer adds an existing sample by editing an intent or training, this counter is increased.
 	TimesAddedCount *int `pulumi:"timesAddedCount"`
 	// The type of the training phrase.
-	Type string `pulumi:"type"`
+	Type GoogleCloudDialogflowV2IntentTrainingPhraseType `pulumi:"type"`
 }
 
 // GoogleCloudDialogflowV2IntentTrainingPhraseInput is an input type that accepts GoogleCloudDialogflowV2IntentTrainingPhraseArgs and GoogleCloudDialogflowV2IntentTrainingPhraseOutput values.
@@ -13165,7 +13175,7 @@ type GoogleCloudDialogflowV2IntentTrainingPhraseArgs struct {
 	// Optional. Indicates how many times this example was added to the intent. Each time a developer adds an existing sample by editing an intent or training, this counter is increased.
 	TimesAddedCount pulumi.IntPtrInput `pulumi:"timesAddedCount"`
 	// The type of the training phrase.
-	Type GoogleCloudDialogflowV2IntentTrainingPhraseType `pulumi:"type"`
+	Type GoogleCloudDialogflowV2IntentTrainingPhraseTypeInput `pulumi:"type"`
 }
 
 func (GoogleCloudDialogflowV2IntentTrainingPhraseArgs) ElementType() reflect.Type {
@@ -13233,8 +13243,10 @@ func (o GoogleCloudDialogflowV2IntentTrainingPhraseOutput) TimesAddedCount() pul
 }
 
 // The type of the training phrase.
-func (o GoogleCloudDialogflowV2IntentTrainingPhraseOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentTrainingPhrase) string { return v.Type }).(pulumi.StringOutput)
+func (o GoogleCloudDialogflowV2IntentTrainingPhraseOutput) Type() GoogleCloudDialogflowV2IntentTrainingPhraseTypeOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2IntentTrainingPhrase) GoogleCloudDialogflowV2IntentTrainingPhraseType {
+		return v.Type
+	}).(GoogleCloudDialogflowV2IntentTrainingPhraseTypeOutput)
 }
 
 type GoogleCloudDialogflowV2IntentTrainingPhraseArrayOutput struct{ *pulumi.OutputState }
@@ -13913,7 +13925,7 @@ func (o GoogleCloudDialogflowV2LoggingConfigResponsePtrOutput) EnableStackdriver
 // Defines notification behavior.
 type GoogleCloudDialogflowV2NotificationConfig struct {
 	// Format of message.
-	MessageFormat *string `pulumi:"messageFormat"`
+	MessageFormat *GoogleCloudDialogflowV2NotificationConfigMessageFormat `pulumi:"messageFormat"`
 	// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
 	Topic *string `pulumi:"topic"`
 }
@@ -13932,7 +13944,7 @@ type GoogleCloudDialogflowV2NotificationConfigInput interface {
 // Defines notification behavior.
 type GoogleCloudDialogflowV2NotificationConfigArgs struct {
 	// Format of message.
-	MessageFormat *GoogleCloudDialogflowV2NotificationConfigMessageFormat `pulumi:"messageFormat"`
+	MessageFormat GoogleCloudDialogflowV2NotificationConfigMessageFormatPtrInput `pulumi:"messageFormat"`
 	// Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
 	Topic pulumi.StringPtrInput `pulumi:"topic"`
 }
@@ -14016,8 +14028,10 @@ func (o GoogleCloudDialogflowV2NotificationConfigOutput) ToGoogleCloudDialogflow
 }
 
 // Format of message.
-func (o GoogleCloudDialogflowV2NotificationConfigOutput) MessageFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2NotificationConfig) *string { return v.MessageFormat }).(pulumi.StringPtrOutput)
+func (o GoogleCloudDialogflowV2NotificationConfigOutput) MessageFormat() GoogleCloudDialogflowV2NotificationConfigMessageFormatPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2NotificationConfig) *GoogleCloudDialogflowV2NotificationConfigMessageFormat {
+		return v.MessageFormat
+	}).(GoogleCloudDialogflowV2NotificationConfigMessageFormatPtrOutput)
 }
 
 // Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
@@ -14046,13 +14060,13 @@ func (o GoogleCloudDialogflowV2NotificationConfigPtrOutput) Elem() GoogleCloudDi
 }
 
 // Format of message.
-func (o GoogleCloudDialogflowV2NotificationConfigPtrOutput) MessageFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2NotificationConfig) *string {
+func (o GoogleCloudDialogflowV2NotificationConfigPtrOutput) MessageFormat() GoogleCloudDialogflowV2NotificationConfigMessageFormatPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2NotificationConfig) *GoogleCloudDialogflowV2NotificationConfigMessageFormat {
 		if v == nil {
 			return nil
 		}
 		return v.MessageFormat
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudDialogflowV2NotificationConfigMessageFormatPtrOutput)
 }
 
 // Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos. Notification works for phone calls, if this topic either is in the same project as the conversation or you grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Dialogflow Service Agent` role in the topic project. Format: `projects//locations//topics/`.
@@ -14223,7 +14237,7 @@ func (o GoogleCloudDialogflowV2NotificationConfigResponsePtrOutput) Topic() pulu
 // Configures speech transcription for ConversationProfile.
 type GoogleCloudDialogflowV2SpeechToTextConfig struct {
 	// Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
-	SpeechModelVariant *string `pulumi:"speechModelVariant"`
+	SpeechModelVariant *GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant `pulumi:"speechModelVariant"`
 }
 
 // GoogleCloudDialogflowV2SpeechToTextConfigInput is an input type that accepts GoogleCloudDialogflowV2SpeechToTextConfigArgs and GoogleCloudDialogflowV2SpeechToTextConfigOutput values.
@@ -14240,7 +14254,7 @@ type GoogleCloudDialogflowV2SpeechToTextConfigInput interface {
 // Configures speech transcription for ConversationProfile.
 type GoogleCloudDialogflowV2SpeechToTextConfigArgs struct {
 	// Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
-	SpeechModelVariant *GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant `pulumi:"speechModelVariant"`
+	SpeechModelVariant GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariantPtrInput `pulumi:"speechModelVariant"`
 }
 
 func (GoogleCloudDialogflowV2SpeechToTextConfigArgs) ElementType() reflect.Type {
@@ -14322,8 +14336,10 @@ func (o GoogleCloudDialogflowV2SpeechToTextConfigOutput) ToGoogleCloudDialogflow
 }
 
 // Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
-func (o GoogleCloudDialogflowV2SpeechToTextConfigOutput) SpeechModelVariant() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2SpeechToTextConfig) *string { return v.SpeechModelVariant }).(pulumi.StringPtrOutput)
+func (o GoogleCloudDialogflowV2SpeechToTextConfigOutput) SpeechModelVariant() GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariantPtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2SpeechToTextConfig) *GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant {
+		return v.SpeechModelVariant
+	}).(GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariantPtrOutput)
 }
 
 type GoogleCloudDialogflowV2SpeechToTextConfigPtrOutput struct{ *pulumi.OutputState }
@@ -14347,13 +14363,13 @@ func (o GoogleCloudDialogflowV2SpeechToTextConfigPtrOutput) Elem() GoogleCloudDi
 }
 
 // Optional. The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request.
-func (o GoogleCloudDialogflowV2SpeechToTextConfigPtrOutput) SpeechModelVariant() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2SpeechToTextConfig) *string {
+func (o GoogleCloudDialogflowV2SpeechToTextConfigPtrOutput) SpeechModelVariant() GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariantPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2SpeechToTextConfig) *GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariant {
 		if v == nil {
 			return nil
 		}
 		return v.SpeechModelVariant
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudDialogflowV2SpeechToTextConfigSpeechModelVariantPtrOutput)
 }
 
 // Configures speech transcription for ConversationProfile.
@@ -14495,7 +14511,7 @@ func (o GoogleCloudDialogflowV2SpeechToTextConfigResponsePtrOutput) SpeechModelV
 // The type of Human Agent Assistant API suggestion to perform, and the maximum number of results to return for that type. Multiple `Feature` objects can be specified in the `features` list.
 type GoogleCloudDialogflowV2SuggestionFeature struct {
 	// Type of Human Agent Assistant API feature to request.
-	Type *string `pulumi:"type"`
+	Type *GoogleCloudDialogflowV2SuggestionFeatureType `pulumi:"type"`
 }
 
 // GoogleCloudDialogflowV2SuggestionFeatureInput is an input type that accepts GoogleCloudDialogflowV2SuggestionFeatureArgs and GoogleCloudDialogflowV2SuggestionFeatureOutput values.
@@ -14512,7 +14528,7 @@ type GoogleCloudDialogflowV2SuggestionFeatureInput interface {
 // The type of Human Agent Assistant API suggestion to perform, and the maximum number of results to return for that type. Multiple `Feature` objects can be specified in the `features` list.
 type GoogleCloudDialogflowV2SuggestionFeatureArgs struct {
 	// Type of Human Agent Assistant API feature to request.
-	Type *GoogleCloudDialogflowV2SuggestionFeatureType `pulumi:"type"`
+	Type GoogleCloudDialogflowV2SuggestionFeatureTypePtrInput `pulumi:"type"`
 }
 
 func (GoogleCloudDialogflowV2SuggestionFeatureArgs) ElementType() reflect.Type {
@@ -14594,8 +14610,10 @@ func (o GoogleCloudDialogflowV2SuggestionFeatureOutput) ToGoogleCloudDialogflowV
 }
 
 // Type of Human Agent Assistant API feature to request.
-func (o GoogleCloudDialogflowV2SuggestionFeatureOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2SuggestionFeature) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o GoogleCloudDialogflowV2SuggestionFeatureOutput) Type() GoogleCloudDialogflowV2SuggestionFeatureTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2SuggestionFeature) *GoogleCloudDialogflowV2SuggestionFeatureType {
+		return v.Type
+	}).(GoogleCloudDialogflowV2SuggestionFeatureTypePtrOutput)
 }
 
 type GoogleCloudDialogflowV2SuggestionFeaturePtrOutput struct{ *pulumi.OutputState }
@@ -14617,13 +14635,13 @@ func (o GoogleCloudDialogflowV2SuggestionFeaturePtrOutput) Elem() GoogleCloudDia
 }
 
 // Type of Human Agent Assistant API feature to request.
-func (o GoogleCloudDialogflowV2SuggestionFeaturePtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2SuggestionFeature) *string {
+func (o GoogleCloudDialogflowV2SuggestionFeaturePtrOutput) Type() GoogleCloudDialogflowV2SuggestionFeatureTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2SuggestionFeature) *GoogleCloudDialogflowV2SuggestionFeatureType {
 		if v == nil {
 			return nil
 		}
 		return v.Type
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudDialogflowV2SuggestionFeatureTypePtrOutput)
 }
 
 // The type of Human Agent Assistant API suggestion to perform, and the maximum number of results to return for that type. Multiple `Feature` objects can be specified in the `features` list.
@@ -14686,7 +14704,7 @@ type GoogleCloudDialogflowV2TextToSpeechSettings struct {
 	// Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
 	EnableTextToSpeech *bool `pulumi:"enableTextToSpeech"`
 	// Audio encoding of the synthesized audio content.
-	OutputAudioEncoding string `pulumi:"outputAudioEncoding"`
+	OutputAudioEncoding GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding `pulumi:"outputAudioEncoding"`
 	// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
 	SampleRateHertz *int `pulumi:"sampleRateHertz"`
 	// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
@@ -14709,7 +14727,7 @@ type GoogleCloudDialogflowV2TextToSpeechSettingsArgs struct {
 	// Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
 	EnableTextToSpeech pulumi.BoolPtrInput `pulumi:"enableTextToSpeech"`
 	// Audio encoding of the synthesized audio content.
-	OutputAudioEncoding GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding `pulumi:"outputAudioEncoding"`
+	OutputAudioEncoding GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncodingInput `pulumi:"outputAudioEncoding"`
 	// Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
 	SampleRateHertz pulumi.IntPtrInput `pulumi:"sampleRateHertz"`
 	// Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
@@ -14800,8 +14818,10 @@ func (o GoogleCloudDialogflowV2TextToSpeechSettingsOutput) EnableTextToSpeech() 
 }
 
 // Audio encoding of the synthesized audio content.
-func (o GoogleCloudDialogflowV2TextToSpeechSettingsOutput) OutputAudioEncoding() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudDialogflowV2TextToSpeechSettings) string { return v.OutputAudioEncoding }).(pulumi.StringOutput)
+func (o GoogleCloudDialogflowV2TextToSpeechSettingsOutput) OutputAudioEncoding() GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncodingOutput {
+	return o.ApplyT(func(v GoogleCloudDialogflowV2TextToSpeechSettings) GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding {
+		return v.OutputAudioEncoding
+	}).(GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncodingOutput)
 }
 
 // Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
@@ -14847,13 +14867,13 @@ func (o GoogleCloudDialogflowV2TextToSpeechSettingsPtrOutput) EnableTextToSpeech
 }
 
 // Audio encoding of the synthesized audio content.
-func (o GoogleCloudDialogflowV2TextToSpeechSettingsPtrOutput) OutputAudioEncoding() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDialogflowV2TextToSpeechSettings) *string {
+func (o GoogleCloudDialogflowV2TextToSpeechSettingsPtrOutput) OutputAudioEncoding() GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncodingPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowV2TextToSpeechSettings) *GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncoding {
 		if v == nil {
 			return nil
 		}
 		return &v.OutputAudioEncoding
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudDialogflowV2TextToSpeechSettingsOutputAudioEncodingPtrOutput)
 }
 
 // Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).

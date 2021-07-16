@@ -9,82 +9,50 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 
 __all__ = [
-    'GoogleCloudOrgpolicyV2PolicySpecArgs',
-    'GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs',
     'GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs',
+    'GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs',
+    'GoogleCloudOrgpolicyV2PolicySpecArgs',
     'GoogleTypeExprArgs',
 ]
 
 @pulumi.input_type
-class GoogleCloudOrgpolicyV2PolicySpecArgs:
+class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs:
     def __init__(__self__, *,
-                 etag: Optional[pulumi.Input[str]] = None,
-                 inherit_from_parent: Optional[pulumi.Input[bool]] = None,
-                 reset: Optional[pulumi.Input[bool]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs']]]] = None):
+                 allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 denied_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        Defines a Cloud Organization `PolicySpec` which is used to specify `Constraints` for configurations of Cloud Platform resources.
-        :param pulumi.Input[str] etag: An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
-        :param pulumi.Input[bool] inherit_from_parent: Determines the inheritance behavior for this `Policy`. If `inherit_from_parent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
-        :param pulumi.Input[bool] reset: Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
-        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs']]] rules: Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
+        A message that holds specific allowed and denied values. This message can define specific values and subtrees of Cloud Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - "projects/", e.g. "projects/tokyo-rain-123" - "folders/", e.g. "folders/1234" - "organizations/", e.g. "organizations/1234" The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_values: List of values allowed at this resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] denied_values: List of values denied at this resource.
         """
-        if etag is not None:
-            pulumi.set(__self__, "etag", etag)
-        if inherit_from_parent is not None:
-            pulumi.set(__self__, "inherit_from_parent", inherit_from_parent)
-        if reset is not None:
-            pulumi.set(__self__, "reset", reset)
-        if rules is not None:
-            pulumi.set(__self__, "rules", rules)
+        if allowed_values is not None:
+            pulumi.set(__self__, "allowed_values", allowed_values)
+        if denied_values is not None:
+            pulumi.set(__self__, "denied_values", denied_values)
 
     @property
-    @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="allowedValues")
+    def allowed_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+        List of values allowed at this resource.
         """
-        return pulumi.get(self, "etag")
+        return pulumi.get(self, "allowed_values")
 
-    @etag.setter
-    def etag(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "etag", value)
-
-    @property
-    @pulumi.getter(name="inheritFromParent")
-    def inherit_from_parent(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Determines the inheritance behavior for this `Policy`. If `inherit_from_parent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
-        """
-        return pulumi.get(self, "inherit_from_parent")
-
-    @inherit_from_parent.setter
-    def inherit_from_parent(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "inherit_from_parent", value)
+    @allowed_values.setter
+    def allowed_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_values", value)
 
     @property
-    @pulumi.getter
-    def reset(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="deniedValues")
+    def denied_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
+        List of values denied at this resource.
         """
-        return pulumi.get(self, "reset")
+        return pulumi.get(self, "denied_values")
 
-    @reset.setter
-    def reset(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "reset", value)
-
-    @property
-    @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs']]]]:
-        """
-        Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
-        """
-        return pulumi.get(self, "rules")
-
-    @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs']]]]):
-        pulumi.set(self, "rules", value)
+    @denied_values.setter
+    def denied_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "denied_values", value)
 
 
 @pulumi.input_type
@@ -176,43 +144,75 @@ class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs:
 
 
 @pulumi.input_type
-class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs:
+class GoogleCloudOrgpolicyV2PolicySpecArgs:
     def __init__(__self__, *,
-                 allowed_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 denied_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 etag: Optional[pulumi.Input[str]] = None,
+                 inherit_from_parent: Optional[pulumi.Input[bool]] = None,
+                 reset: Optional[pulumi.Input[bool]] = None,
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs']]]] = None):
         """
-        A message that holds specific allowed and denied values. This message can define specific values and subtrees of Cloud Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied. This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must be in one of the following formats: - "projects/", e.g. "projects/tokyo-rain-123" - "folders/", e.g. "folders/1234" - "organizations/", e.g. "organizations/1234" The `supports_under` field of the associated `Constraint` defines whether ancestry prefixes can be used.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_values: List of values allowed at this resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] denied_values: List of values denied at this resource.
+        Defines a Cloud Organization `PolicySpec` which is used to specify `Constraints` for configurations of Cloud Platform resources.
+        :param pulumi.Input[str] etag: An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+        :param pulumi.Input[bool] inherit_from_parent: Determines the inheritance behavior for this `Policy`. If `inherit_from_parent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
+        :param pulumi.Input[bool] reset: Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs']]] rules: Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
         """
-        if allowed_values is not None:
-            pulumi.set(__self__, "allowed_values", allowed_values)
-        if denied_values is not None:
-            pulumi.set(__self__, "denied_values", denied_values)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
+        if inherit_from_parent is not None:
+            pulumi.set(__self__, "inherit_from_parent", inherit_from_parent)
+        if reset is not None:
+            pulumi.set(__self__, "reset", reset)
+        if rules is not None:
+            pulumi.set(__self__, "rules", rules)
 
     @property
-    @pulumi.getter(name="allowedValues")
-    def allowed_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        List of values allowed at this resource.
+        An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
         """
-        return pulumi.get(self, "allowed_values")
+        return pulumi.get(self, "etag")
 
-    @allowed_values.setter
-    def allowed_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "allowed_values", value)
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
 
     @property
-    @pulumi.getter(name="deniedValues")
-    def denied_values(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+    @pulumi.getter(name="inheritFromParent")
+    def inherit_from_parent(self) -> Optional[pulumi.Input[bool]]:
         """
-        List of values denied at this resource.
+        Determines the inheritance behavior for this `Policy`. If `inherit_from_parent` is true, PolicyRules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this Policy becomes the new root for evaluation. This field can be set only for Policies which configure list constraints.
         """
-        return pulumi.get(self, "denied_values")
+        return pulumi.get(self, "inherit_from_parent")
 
-    @denied_values.setter
-    def denied_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "denied_values", value)
+    @inherit_from_parent.setter
+    def inherit_from_parent(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "inherit_from_parent", value)
+
+    @property
+    @pulumi.getter
+    def reset(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific `Constraint` at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
+        """
+        return pulumi.get(self, "reset")
+
+    @reset.setter
+    def reset(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "reset", value)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs']]]]:
+        """
+        Up to 10 PolicyRules are allowed. In Policies for boolean constraints, the following requirements apply: - There must be one and only one PolicyRule where condition is unset. - BooleanPolicyRules with conditions must set `enforced` to the opposite of the PolicyRule without a condition. - During policy evaluation, PolicyRules with conditions that are true for a target resource take precedence.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs']]]]):
+        pulumi.set(self, "rules", value)
 
 
 @pulumi.input_type

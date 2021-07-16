@@ -27,17 +27,29 @@ class AcceleratorConfigType(str, Enum):
     Type of this accelerator.
     """
     ACCELERATOR_TYPE_UNSPECIFIED = "ACCELERATOR_TYPE_UNSPECIFIED"
+    """Accelerator type is not specified."""
     NVIDIA_TESLA_K80 = "NVIDIA_TESLA_K80"
+    """Accelerator type is Nvidia Tesla K80."""
     NVIDIA_TESLA_P100 = "NVIDIA_TESLA_P100"
+    """Accelerator type is Nvidia Tesla P100."""
     NVIDIA_TESLA_V100 = "NVIDIA_TESLA_V100"
+    """Accelerator type is Nvidia Tesla V100."""
     NVIDIA_TESLA_P4 = "NVIDIA_TESLA_P4"
+    """Accelerator type is Nvidia Tesla P4."""
     NVIDIA_TESLA_T4 = "NVIDIA_TESLA_T4"
+    """Accelerator type is Nvidia Tesla T4."""
     NVIDIA_TESLA_A100 = "NVIDIA_TESLA_A100"
+    """Accelerator type is Nvidia Tesla A100."""
     NVIDIA_TESLA_T4_VWS = "NVIDIA_TESLA_T4_VWS"
+    """Accelerator type is NVIDIA Tesla T4 Virtual Workstations."""
     NVIDIA_TESLA_P100_VWS = "NVIDIA_TESLA_P100_VWS"
+    """Accelerator type is NVIDIA Tesla P100 Virtual Workstations."""
     NVIDIA_TESLA_P4_VWS = "NVIDIA_TESLA_P4_VWS"
+    """Accelerator type is NVIDIA Tesla P4 Virtual Workstations."""
     TPU_V2 = "TPU_V2"
+    """(Coming soon) Accelerator type is TPU V2."""
     TPU_V3 = "TPU_V3"
+    """(Coming soon) Accelerator type is TPU V3."""
 
 
 class ExecutionTemplateScaleTier(str, Enum):
@@ -45,12 +57,19 @@ class ExecutionTemplateScaleTier(str, Enum):
     Required. Scale tier of the hardware used for notebook execution.
     """
     SCALE_TIER_UNSPECIFIED = "SCALE_TIER_UNSPECIFIED"
+    """Unspecified Scale Tier."""
     BASIC = "BASIC"
+    """A single worker instance. This tier is suitable for learning how to use Cloud ML, and for experimenting with new models using small datasets."""
     STANDARD1 = "STANDARD_1"
+    """Many workers and a few parameter servers."""
     PREMIUM1 = "PREMIUM_1"
+    """A large number of workers with many parameter servers."""
     BASIC_GPU = "BASIC_GPU"
+    """A single worker instance with a K80 GPU."""
     BASIC_TPU = "BASIC_TPU"
+    """A single worker instance with a Cloud TPU."""
     CUSTOM = "CUSTOM"
+    """The CUSTOM tier is not a set tier, but rather enables you to use your own cluster specification. When you use this tier, set values to configure your processing cluster according to these guidelines: * You _must_ set `TrainingInput.masterType` to specify the type of machine to use for your master node. This is the only required setting. * You _may_ set `TrainingInput.workerCount` to specify the number of workers to use. If you specify one or more workers, you _must_ also set `TrainingInput.workerType` to specify the type of machine to use for your worker nodes. * You _may_ set `TrainingInput.parameterServerCount` to specify the number of parameter servers to use. If you specify one or more parameter servers, you _must_ also set `TrainingInput.parameterServerType` to specify the type of machine to use for your parameter servers. Note that all of your workers must use the same machine type, which can be different from your parameter server type and master type. Your parameter servers must likewise use the same machine type, which can be different from your worker type and master type."""
 
 
 class InstanceBootDiskType(str, Enum):
@@ -58,9 +77,13 @@ class InstanceBootDiskType(str, Enum):
     Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
     """
     DISK_TYPE_UNSPECIFIED = "DISK_TYPE_UNSPECIFIED"
+    """Disk type not set."""
     PD_STANDARD = "PD_STANDARD"
+    """Standard persistent disk type."""
     PD_SSD = "PD_SSD"
+    """SSD persistent disk type."""
     PD_BALANCED = "PD_BALANCED"
+    """Balanced persistent disk type."""
 
 
 class InstanceDataDiskType(str, Enum):
@@ -68,9 +91,13 @@ class InstanceDataDiskType(str, Enum):
     Input only. The type of the data disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
     """
     DISK_TYPE_UNSPECIFIED = "DISK_TYPE_UNSPECIFIED"
+    """Disk type not set."""
     PD_STANDARD = "PD_STANDARD"
+    """Standard persistent disk type."""
     PD_SSD = "PD_SSD"
+    """SSD persistent disk type."""
     PD_BALANCED = "PD_BALANCED"
+    """Balanced persistent disk type."""
 
 
 class InstanceDiskEncryption(str, Enum):
@@ -78,8 +105,11 @@ class InstanceDiskEncryption(str, Enum):
     Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
     """
     DISK_ENCRYPTION_UNSPECIFIED = "DISK_ENCRYPTION_UNSPECIFIED"
+    """Disk encryption is not specified."""
     GMEK = "GMEK"
+    """Use Google managed encryption keys to encrypt the boot disk."""
     CMEK = "CMEK"
+    """Use customer managed encryption keys to encrypt the boot disk."""
 
 
 class InstanceNicType(str, Enum):
@@ -87,8 +117,11 @@ class InstanceNicType(str, Enum):
     Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
     """
     UNSPECIFIED_NIC_TYPE = "UNSPECIFIED_NIC_TYPE"
+    """No type specified."""
     VIRTIO_NET = "VIRTIO_NET"
+    """VIRTIO"""
     GVNIC = "GVNIC"
+    """GVNIC"""
 
 
 class LocalDiskInitializeParamsDiskType(str, Enum):
@@ -96,9 +129,13 @@ class LocalDiskInitializeParamsDiskType(str, Enum):
     Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
     """
     DISK_TYPE_UNSPECIFIED = "DISK_TYPE_UNSPECIFIED"
+    """Disk type not set."""
     PD_STANDARD = "PD_STANDARD"
+    """Standard persistent disk type."""
     PD_SSD = "PD_SSD"
+    """SSD persistent disk type."""
     PD_BALANCED = "PD_BALANCED"
+    """Balanced persistent disk type."""
 
 
 class RuntimeAcceleratorConfigType(str, Enum):
@@ -106,17 +143,29 @@ class RuntimeAcceleratorConfigType(str, Enum):
     Accelerator model.
     """
     ACCELERATOR_TYPE_UNSPECIFIED = "ACCELERATOR_TYPE_UNSPECIFIED"
+    """Accelerator type is not specified."""
     NVIDIA_TESLA_K80 = "NVIDIA_TESLA_K80"
+    """Accelerator type is Nvidia Tesla K80."""
     NVIDIA_TESLA_P100 = "NVIDIA_TESLA_P100"
+    """Accelerator type is Nvidia Tesla P100."""
     NVIDIA_TESLA_V100 = "NVIDIA_TESLA_V100"
+    """Accelerator type is Nvidia Tesla V100."""
     NVIDIA_TESLA_P4 = "NVIDIA_TESLA_P4"
+    """Accelerator type is Nvidia Tesla P4."""
     NVIDIA_TESLA_T4 = "NVIDIA_TESLA_T4"
+    """Accelerator type is Nvidia Tesla T4."""
     NVIDIA_TESLA_A100 = "NVIDIA_TESLA_A100"
+    """Accelerator type is Nvidia Tesla A100."""
     TPU_V2 = "TPU_V2"
+    """(Coming soon) Accelerator type is TPU V2."""
     TPU_V3 = "TPU_V3"
+    """(Coming soon) Accelerator type is TPU V3."""
     NVIDIA_TESLA_T4_VWS = "NVIDIA_TESLA_T4_VWS"
+    """Accelerator type is NVIDIA Tesla T4 Virtual Workstations."""
     NVIDIA_TESLA_P100_VWS = "NVIDIA_TESLA_P100_VWS"
+    """Accelerator type is NVIDIA Tesla P100 Virtual Workstations."""
     NVIDIA_TESLA_P4_VWS = "NVIDIA_TESLA_P4_VWS"
+    """Accelerator type is NVIDIA Tesla P4 Virtual Workstations."""
 
 
 class RuntimeAccessConfigAccessType(str, Enum):
@@ -124,15 +173,22 @@ class RuntimeAccessConfigAccessType(str, Enum):
     The type of access mode this instance.
     """
     RUNTIME_ACCESS_TYPE_UNSPECIFIED = "RUNTIME_ACCESS_TYPE_UNSPECIFIED"
+    """Unspecified access."""
     SINGLE_USER = "SINGLE_USER"
+    """Single user login."""
 
 
 class ScheduleState(str, Enum):
     STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    """Unspecified state."""
     ENABLED = "ENABLED"
+    """The job is executing normally."""
     PAUSED = "PAUSED"
+    """The job is paused by the user. It will not execute. A user can intentionally pause the job using PauseJobRequest."""
     DISABLED = "DISABLED"
+    """The job is disabled by the system due to error. The user cannot directly set a job to be disabled."""
     UPDATE_FAILED = "UPDATE_FAILED"
+    """The job state resulting from a failed CloudScheduler.UpdateJob operation. To recover a job from this state, retry CloudScheduler.UpdateJob until a successful response is received."""
 
 
 class SchedulerAcceleratorConfigType(str, Enum):
@@ -140,13 +196,21 @@ class SchedulerAcceleratorConfigType(str, Enum):
     Type of this accelerator.
     """
     SCHEDULER_ACCELERATOR_TYPE_UNSPECIFIED = "SCHEDULER_ACCELERATOR_TYPE_UNSPECIFIED"
+    """Unspecified accelerator type. Default to no GPU."""
     NVIDIA_TESLA_K80 = "NVIDIA_TESLA_K80"
+    """Nvidia Tesla K80 GPU."""
     NVIDIA_TESLA_P100 = "NVIDIA_TESLA_P100"
+    """Nvidia Tesla P100 GPU."""
     NVIDIA_TESLA_V100 = "NVIDIA_TESLA_V100"
+    """Nvidia Tesla V100 GPU."""
     NVIDIA_TESLA_P4 = "NVIDIA_TESLA_P4"
+    """Nvidia Tesla P4 GPU."""
     NVIDIA_TESLA_T4 = "NVIDIA_TESLA_T4"
+    """Nvidia Tesla T4 GPU."""
     TPU_V2 = "TPU_V2"
+    """TPU v2."""
     TPU_V3 = "TPU_V3"
+    """TPU v3."""
 
 
 class UpgradeHistoryEntryAction(str, Enum):
@@ -154,8 +218,11 @@ class UpgradeHistoryEntryAction(str, Enum):
     Action. Rolloback or Upgrade.
     """
     ACTION_UNSPECIFIED = "ACTION_UNSPECIFIED"
+    """Operation is not specified."""
     UPGRADE = "UPGRADE"
+    """Upgrade."""
     ROLLBACK = "ROLLBACK"
+    """Rollback."""
 
 
 class UpgradeHistoryEntryState(str, Enum):
@@ -163,9 +230,13 @@ class UpgradeHistoryEntryState(str, Enum):
     The state of this instance upgrade history entry.
     """
     STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    """State is not specified."""
     STARTED = "STARTED"
+    """The instance upgrade is started."""
     SUCCEEDED = "SUCCEEDED"
+    """The instance upgrade is succeeded."""
     FAILED = "FAILED"
+    """The instance upgrade is failed."""
 
 
 class VirtualMachineConfigNicType(str, Enum):
@@ -173,5 +244,8 @@ class VirtualMachineConfigNicType(str, Enum):
     Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
     """
     UNSPECIFIED_NIC_TYPE = "UNSPECIFIED_NIC_TYPE"
+    """No type specified."""
     VIRTIO_NET = "VIRTIO_NET"
+    """VIRTIO"""
     GVNIC = "GVNIC"
+    """GVNIC"""

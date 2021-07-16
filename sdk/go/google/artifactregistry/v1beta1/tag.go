@@ -62,17 +62,9 @@ func GetTag(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Tag resources.
 type tagState struct {
-	// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
-	Name *string `pulumi:"name"`
-	// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
-	Version *string `pulumi:"version"`
 }
 
 type TagState struct {
-	// The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package or tag ID parts contain slashes, the slashes are escaped.
-	Name pulumi.StringPtrInput
-	// The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811"
-	Version pulumi.StringPtrInput
 }
 
 func (TagState) ElementType() reflect.Type {

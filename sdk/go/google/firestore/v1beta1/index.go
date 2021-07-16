@@ -60,25 +60,9 @@ func GetIndex(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Index resources.
 type indexState struct {
-	// The collection ID to which this index applies. Required.
-	CollectionId *string `pulumi:"collectionId"`
-	// The fields to index.
-	Fields []GoogleFirestoreAdminV1beta1IndexFieldResponse `pulumi:"fields"`
-	// The resource name of the index. Output only.
-	Name *string `pulumi:"name"`
-	// The state of the index. Output only.
-	State *string `pulumi:"state"`
 }
 
 type IndexState struct {
-	// The collection ID to which this index applies. Required.
-	CollectionId pulumi.StringPtrInput
-	// The fields to index.
-	Fields GoogleFirestoreAdminV1beta1IndexFieldResponseArrayInput
-	// The resource name of the index. Output only.
-	Name pulumi.StringPtrInput
-	// The state of the index. Output only.
-	State pulumi.StringPtrInput
 }
 
 func (IndexState) ElementType() reflect.Type {
@@ -95,7 +79,7 @@ type indexArgs struct {
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
 	// The state of the index. Output only.
-	State *string `pulumi:"state"`
+	State *IndexStateEnum `pulumi:"state"`
 }
 
 // The set of arguments for constructing a Index resource.
@@ -109,7 +93,7 @@ type IndexArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// The state of the index. Output only.
-	State *IndexStateEnum
+	State IndexStateEnumPtrInput
 }
 
 func (IndexArgs) ElementType() reflect.Type {

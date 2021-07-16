@@ -71,33 +71,9 @@ func GetPerfSampleSeries(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering PerfSampleSeries resources.
 type perfSampleSeriesState struct {
-	// Basic series represented by a line chart
-	BasicPerfSampleSeries *BasicPerfSampleSeriesResponse `pulumi:"basicPerfSampleSeries"`
-	// A tool results execution ID.
-	ExecutionId *string `pulumi:"executionId"`
-	// A tool results history ID.
-	HistoryId *string `pulumi:"historyId"`
-	// The cloud project
-	Project *string `pulumi:"project"`
-	// A sample series id
-	SampleSeriesId *string `pulumi:"sampleSeriesId"`
-	// A tool results step ID.
-	StepId *string `pulumi:"stepId"`
 }
 
 type PerfSampleSeriesState struct {
-	// Basic series represented by a line chart
-	BasicPerfSampleSeries BasicPerfSampleSeriesResponsePtrInput
-	// A tool results execution ID.
-	ExecutionId pulumi.StringPtrInput
-	// A tool results history ID.
-	HistoryId pulumi.StringPtrInput
-	// The cloud project
-	Project pulumi.StringPtrInput
-	// A sample series id
-	SampleSeriesId pulumi.StringPtrInput
-	// A tool results step ID.
-	StepId pulumi.StringPtrInput
 }
 
 func (PerfSampleSeriesState) ElementType() reflect.Type {

@@ -67,45 +67,9 @@ func GetTargetSslProxy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TargetSslProxy resources.
 type targetSslProxyState struct {
-	// Creation timestamp in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// An optional description of this resource. Provide this property when you create the resource.
-	Description *string `pulumi:"description"`
-	// Type of the resource. Always compute#targetSslProxy for target SSL proxies.
-	Kind *string `pulumi:"kind"`
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name *string `pulumi:"name"`
-	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-	ProxyHeader *string `pulumi:"proxyHeader"`
-	// Server-defined URL for the resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// URL to the BackendService resource.
-	Service *string `pulumi:"service"`
-	// URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
-	SslCertificates []string `pulumi:"sslCertificates"`
-	// URL of SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the TargetSslProxy resource will not have any SSL policy configured.
-	SslPolicy *string `pulumi:"sslPolicy"`
 }
 
 type TargetSslProxyState struct {
-	// Creation timestamp in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
-	// An optional description of this resource. Provide this property when you create the resource.
-	Description pulumi.StringPtrInput
-	// Type of the resource. Always compute#targetSslProxy for target SSL proxies.
-	Kind pulumi.StringPtrInput
-	// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringPtrInput
-	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-	ProxyHeader pulumi.StringPtrInput
-	// Server-defined URL for the resource.
-	SelfLink pulumi.StringPtrInput
-	// URL to the BackendService resource.
-	Service pulumi.StringPtrInput
-	// URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
-	SslCertificates pulumi.StringArrayInput
-	// URL of SslPolicy resource that will be associated with the TargetSslProxy resource. If not set, the TargetSslProxy resource will not have any SSL policy configured.
-	SslPolicy pulumi.StringPtrInput
 }
 
 func (TargetSslProxyState) ElementType() reflect.Type {
@@ -119,8 +83,8 @@ type targetSslProxyArgs struct {
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-	ProxyHeader *string `pulumi:"proxyHeader"`
-	RequestId   *string `pulumi:"requestId"`
+	ProxyHeader *TargetSslProxyProxyHeader `pulumi:"proxyHeader"`
+	RequestId   *string                    `pulumi:"requestId"`
 	// URL to the BackendService resource.
 	Service *string `pulumi:"service"`
 	// URLs to SslCertificate resources that are used to authenticate connections to Backends. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
@@ -137,7 +101,7 @@ type TargetSslProxyArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringInput
 	// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
-	ProxyHeader *TargetSslProxyProxyHeader
+	ProxyHeader TargetSslProxyProxyHeaderPtrInput
 	RequestId   pulumi.StringPtrInput
 	// URL to the BackendService resource.
 	Service pulumi.StringPtrInput

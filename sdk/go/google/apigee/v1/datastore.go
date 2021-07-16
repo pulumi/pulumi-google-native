@@ -67,37 +67,9 @@ func GetDatastore(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Datastore resources.
 type datastoreState struct {
-	// Datastore create time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
-	CreateTime *string `pulumi:"createTime"`
-	// Datastore Configurations.
-	DatastoreConfig *GoogleCloudApigeeV1DatastoreConfigResponse `pulumi:"datastoreConfig"`
-	// Display name in UI
-	DisplayName *string `pulumi:"displayName"`
-	// Datastore last update time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
-	LastUpdateTime *string `pulumi:"lastUpdateTime"`
-	// Organization that the datastore belongs to
-	Org *string `pulumi:"org"`
-	// Resource link of Datastore. Example: `/organizations/{org}/analytics/datastores/{uuid}`
-	Self *string `pulumi:"self"`
-	// Destination storage type. Supported types `gcs` or `bigquery`.
-	TargetType *string `pulumi:"targetType"`
 }
 
 type DatastoreState struct {
-	// Datastore create time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
-	CreateTime pulumi.StringPtrInput
-	// Datastore Configurations.
-	DatastoreConfig GoogleCloudApigeeV1DatastoreConfigResponsePtrInput
-	// Display name in UI
-	DisplayName pulumi.StringPtrInput
-	// Datastore last update time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
-	LastUpdateTime pulumi.StringPtrInput
-	// Organization that the datastore belongs to
-	Org pulumi.StringPtrInput
-	// Resource link of Datastore. Example: `/organizations/{org}/analytics/datastores/{uuid}`
-	Self pulumi.StringPtrInput
-	// Destination storage type. Supported types `gcs` or `bigquery`.
-	TargetType pulumi.StringPtrInput
 }
 
 func (DatastoreState) ElementType() reflect.Type {

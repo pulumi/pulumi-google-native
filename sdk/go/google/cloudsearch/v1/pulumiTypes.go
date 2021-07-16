@@ -12,7 +12,7 @@ import (
 
 type CompositeFilter struct {
 	// The logic operator of the sub filter.
-	LogicOperator *string `pulumi:"logicOperator"`
+	LogicOperator *CompositeFilterLogicOperator `pulumi:"logicOperator"`
 	// Sub filters.
 	SubFilters []Filter `pulumi:"subFilters"`
 }
@@ -30,7 +30,7 @@ type CompositeFilterInput interface {
 
 type CompositeFilterArgs struct {
 	// The logic operator of the sub filter.
-	LogicOperator *CompositeFilterLogicOperator `pulumi:"logicOperator"`
+	LogicOperator CompositeFilterLogicOperatorPtrInput `pulumi:"logicOperator"`
 	// Sub filters.
 	SubFilters FilterArrayInput `pulumi:"subFilters"`
 }
@@ -113,8 +113,8 @@ func (o CompositeFilterOutput) ToCompositeFilterPtrOutputWithContext(ctx context
 }
 
 // The logic operator of the sub filter.
-func (o CompositeFilterOutput) LogicOperator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CompositeFilter) *string { return v.LogicOperator }).(pulumi.StringPtrOutput)
+func (o CompositeFilterOutput) LogicOperator() CompositeFilterLogicOperatorPtrOutput {
+	return o.ApplyT(func(v CompositeFilter) *CompositeFilterLogicOperator { return v.LogicOperator }).(CompositeFilterLogicOperatorPtrOutput)
 }
 
 // Sub filters.
@@ -141,13 +141,13 @@ func (o CompositeFilterPtrOutput) Elem() CompositeFilterOutput {
 }
 
 // The logic operator of the sub filter.
-func (o CompositeFilterPtrOutput) LogicOperator() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CompositeFilter) *string {
+func (o CompositeFilterPtrOutput) LogicOperator() CompositeFilterLogicOperatorPtrOutput {
+	return o.ApplyT(func(v *CompositeFilter) *CompositeFilterLogicOperator {
 		if v == nil {
 			return nil
 		}
 		return v.LogicOperator
-	}).(pulumi.StringPtrOutput)
+	}).(CompositeFilterLogicOperatorPtrOutput)
 }
 
 // Sub filters.
@@ -2043,7 +2043,7 @@ type SortOptions struct {
 	// Name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
 	OperatorName *string `pulumi:"operatorName"`
 	// Ascending is the default sort order
-	SortOrder *string `pulumi:"sortOrder"`
+	SortOrder *SortOptionsSortOrder `pulumi:"sortOrder"`
 }
 
 // SortOptionsInput is an input type that accepts SortOptionsArgs and SortOptionsOutput values.
@@ -2061,7 +2061,7 @@ type SortOptionsArgs struct {
 	// Name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
 	OperatorName pulumi.StringPtrInput `pulumi:"operatorName"`
 	// Ascending is the default sort order
-	SortOrder *SortOptionsSortOrder `pulumi:"sortOrder"`
+	SortOrder SortOptionsSortOrderPtrInput `pulumi:"sortOrder"`
 }
 
 func (SortOptionsArgs) ElementType() reflect.Type {
@@ -2147,8 +2147,8 @@ func (o SortOptionsOutput) OperatorName() pulumi.StringPtrOutput {
 }
 
 // Ascending is the default sort order
-func (o SortOptionsOutput) SortOrder() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SortOptions) *string { return v.SortOrder }).(pulumi.StringPtrOutput)
+func (o SortOptionsOutput) SortOrder() SortOptionsSortOrderPtrOutput {
+	return o.ApplyT(func(v SortOptions) *SortOptionsSortOrder { return v.SortOrder }).(SortOptionsSortOrderPtrOutput)
 }
 
 type SortOptionsPtrOutput struct{ *pulumi.OutputState }
@@ -2180,13 +2180,13 @@ func (o SortOptionsPtrOutput) OperatorName() pulumi.StringPtrOutput {
 }
 
 // Ascending is the default sort order
-func (o SortOptionsPtrOutput) SortOrder() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SortOptions) *string {
+func (o SortOptionsPtrOutput) SortOrder() SortOptionsSortOrderPtrOutput {
+	return o.ApplyT(func(v *SortOptions) *SortOptionsSortOrder {
 		if v == nil {
 			return nil
 		}
 		return v.SortOrder
-	}).(pulumi.StringPtrOutput)
+	}).(SortOptionsSortOrderPtrOutput)
 }
 
 type SortOptionsResponse struct {
@@ -2344,7 +2344,7 @@ type Source struct {
 	// Source name for content indexed by the Indexing API.
 	Name *string `pulumi:"name"`
 	// Predefined content source for Google Apps.
-	PredefinedSource *string `pulumi:"predefinedSource"`
+	PredefinedSource *SourcePredefinedSource `pulumi:"predefinedSource"`
 }
 
 // SourceInput is an input type that accepts SourceArgs and SourceOutput values.
@@ -2363,7 +2363,7 @@ type SourceArgs struct {
 	// Source name for content indexed by the Indexing API.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Predefined content source for Google Apps.
-	PredefinedSource *SourcePredefinedSource `pulumi:"predefinedSource"`
+	PredefinedSource SourcePredefinedSourcePtrInput `pulumi:"predefinedSource"`
 }
 
 func (SourceArgs) ElementType() reflect.Type {
@@ -2450,8 +2450,8 @@ func (o SourceOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Predefined content source for Google Apps.
-func (o SourceOutput) PredefinedSource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Source) *string { return v.PredefinedSource }).(pulumi.StringPtrOutput)
+func (o SourceOutput) PredefinedSource() SourcePredefinedSourcePtrOutput {
+	return o.ApplyT(func(v Source) *SourcePredefinedSource { return v.PredefinedSource }).(SourcePredefinedSourcePtrOutput)
 }
 
 type SourcePtrOutput struct{ *pulumi.OutputState }
@@ -2483,13 +2483,13 @@ func (o SourcePtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Predefined content source for Google Apps.
-func (o SourcePtrOutput) PredefinedSource() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Source) *string {
+func (o SourcePtrOutput) PredefinedSource() SourcePredefinedSourcePtrOutput {
+	return o.ApplyT(func(v *Source) *SourcePredefinedSource {
 		if v == nil {
 			return nil
 		}
 		return v.PredefinedSource
-	}).(pulumi.StringPtrOutput)
+	}).(SourcePredefinedSourcePtrOutput)
 }
 
 // Configurations for a source while processing a Search or Suggest request.
@@ -3012,7 +3012,7 @@ func (o SourceResponseOutput) PredefinedSource() pulumi.StringOutput {
 // Set the scoring configuration. This allows modifying the ranking of results for a source.
 type SourceScoringConfig struct {
 	// Importance of the source.
-	SourceImportance *string `pulumi:"sourceImportance"`
+	SourceImportance *SourceScoringConfigSourceImportance `pulumi:"sourceImportance"`
 }
 
 // SourceScoringConfigInput is an input type that accepts SourceScoringConfigArgs and SourceScoringConfigOutput values.
@@ -3029,7 +3029,7 @@ type SourceScoringConfigInput interface {
 // Set the scoring configuration. This allows modifying the ranking of results for a source.
 type SourceScoringConfigArgs struct {
 	// Importance of the source.
-	SourceImportance *SourceScoringConfigSourceImportance `pulumi:"sourceImportance"`
+	SourceImportance SourceScoringConfigSourceImportancePtrInput `pulumi:"sourceImportance"`
 }
 
 func (SourceScoringConfigArgs) ElementType() reflect.Type {
@@ -3111,8 +3111,8 @@ func (o SourceScoringConfigOutput) ToSourceScoringConfigPtrOutputWithContext(ctx
 }
 
 // Importance of the source.
-func (o SourceScoringConfigOutput) SourceImportance() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SourceScoringConfig) *string { return v.SourceImportance }).(pulumi.StringPtrOutput)
+func (o SourceScoringConfigOutput) SourceImportance() SourceScoringConfigSourceImportancePtrOutput {
+	return o.ApplyT(func(v SourceScoringConfig) *SourceScoringConfigSourceImportance { return v.SourceImportance }).(SourceScoringConfigSourceImportancePtrOutput)
 }
 
 type SourceScoringConfigPtrOutput struct{ *pulumi.OutputState }
@@ -3134,13 +3134,13 @@ func (o SourceScoringConfigPtrOutput) Elem() SourceScoringConfigOutput {
 }
 
 // Importance of the source.
-func (o SourceScoringConfigPtrOutput) SourceImportance() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SourceScoringConfig) *string {
+func (o SourceScoringConfigPtrOutput) SourceImportance() SourceScoringConfigSourceImportancePtrOutput {
+	return o.ApplyT(func(v *SourceScoringConfig) *SourceScoringConfigSourceImportance {
 		if v == nil {
 			return nil
 		}
 		return v.SourceImportance
-	}).(pulumi.StringPtrOutput)
+	}).(SourceScoringConfigSourceImportancePtrOutput)
 }
 
 // Set the scoring configuration. This allows modifying the ranking of results for a source.

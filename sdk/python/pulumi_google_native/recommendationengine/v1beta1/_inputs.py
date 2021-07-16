@@ -13,9 +13,9 @@ __all__ = [
     'GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs',
     'GoogleCloudRecommendationengineV1beta1FeatureMapArgs',
     'GoogleCloudRecommendationengineV1beta1ImageArgs',
-    'GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs',
     'GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceArgs',
     'GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs',
+    'GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs',
 ]
 
 @pulumi.input_type
@@ -134,6 +134,84 @@ class GoogleCloudRecommendationengineV1beta1ImageArgs:
     @width.setter
     def width(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "width", value)
+
+
+@pulumi.input_type
+class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceArgs:
+    def __init__(__self__, *,
+                 display_price: Optional[pulumi.Input[float]] = None,
+                 original_price: Optional[pulumi.Input[float]] = None):
+        """
+        Exact product price.
+        :param pulumi.Input[float] display_price: Optional. Display price of the product.
+        :param pulumi.Input[float] original_price: Optional. Price of the product without any discount. If zero, by default set to be the 'displayPrice'.
+        """
+        if display_price is not None:
+            pulumi.set(__self__, "display_price", display_price)
+        if original_price is not None:
+            pulumi.set(__self__, "original_price", original_price)
+
+    @property
+    @pulumi.getter(name="displayPrice")
+    def display_price(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. Display price of the product.
+        """
+        return pulumi.get(self, "display_price")
+
+    @display_price.setter
+    def display_price(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "display_price", value)
+
+    @property
+    @pulumi.getter(name="originalPrice")
+    def original_price(self) -> Optional[pulumi.Input[float]]:
+        """
+        Optional. Price of the product without any discount. If zero, by default set to be the 'displayPrice'.
+        """
+        return pulumi.get(self, "original_price")
+
+    @original_price.setter
+    def original_price(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "original_price", value)
+
+
+@pulumi.input_type
+class GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs:
+    def __init__(__self__, *,
+                 max: pulumi.Input[float],
+                 min: pulumi.Input[float]):
+        """
+        Product price range when there are a range of prices for different variations of the same product.
+        :param pulumi.Input[float] max: The maximum product price.
+        :param pulumi.Input[float] min: The minimum product price.
+        """
+        pulumi.set(__self__, "max", max)
+        pulumi.set(__self__, "min", min)
+
+    @property
+    @pulumi.getter
+    def max(self) -> pulumi.Input[float]:
+        """
+        The maximum product price.
+        """
+        return pulumi.get(self, "max")
+
+    @max.setter
+    def max(self, value: pulumi.Input[float]):
+        pulumi.set(self, "max", value)
+
+    @property
+    @pulumi.getter
+    def min(self) -> pulumi.Input[float]:
+        """
+        The minimum product price.
+        """
+        return pulumi.get(self, "min")
+
+    @min.setter
+    def min(self, value: pulumi.Input[float]):
+        pulumi.set(self, "min", value)
 
 
 @pulumi.input_type
@@ -270,83 +348,5 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs:
     @stock_state.setter
     def stock_state(self, value: Optional[pulumi.Input['GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState']]):
         pulumi.set(self, "stock_state", value)
-
-
-@pulumi.input_type
-class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceArgs:
-    def __init__(__self__, *,
-                 display_price: Optional[pulumi.Input[float]] = None,
-                 original_price: Optional[pulumi.Input[float]] = None):
-        """
-        Exact product price.
-        :param pulumi.Input[float] display_price: Optional. Display price of the product.
-        :param pulumi.Input[float] original_price: Optional. Price of the product without any discount. If zero, by default set to be the 'displayPrice'.
-        """
-        if display_price is not None:
-            pulumi.set(__self__, "display_price", display_price)
-        if original_price is not None:
-            pulumi.set(__self__, "original_price", original_price)
-
-    @property
-    @pulumi.getter(name="displayPrice")
-    def display_price(self) -> Optional[pulumi.Input[float]]:
-        """
-        Optional. Display price of the product.
-        """
-        return pulumi.get(self, "display_price")
-
-    @display_price.setter
-    def display_price(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "display_price", value)
-
-    @property
-    @pulumi.getter(name="originalPrice")
-    def original_price(self) -> Optional[pulumi.Input[float]]:
-        """
-        Optional. Price of the product without any discount. If zero, by default set to be the 'displayPrice'.
-        """
-        return pulumi.get(self, "original_price")
-
-    @original_price.setter
-    def original_price(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "original_price", value)
-
-
-@pulumi.input_type
-class GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs:
-    def __init__(__self__, *,
-                 max: pulumi.Input[float],
-                 min: pulumi.Input[float]):
-        """
-        Product price range when there are a range of prices for different variations of the same product.
-        :param pulumi.Input[float] max: The maximum product price.
-        :param pulumi.Input[float] min: The minimum product price.
-        """
-        pulumi.set(__self__, "max", max)
-        pulumi.set(__self__, "min", min)
-
-    @property
-    @pulumi.getter
-    def max(self) -> pulumi.Input[float]:
-        """
-        The maximum product price.
-        """
-        return pulumi.get(self, "max")
-
-    @max.setter
-    def max(self, value: pulumi.Input[float]):
-        pulumi.set(self, "max", value)
-
-    @property
-    @pulumi.getter
-    def min(self) -> pulumi.Input[float]:
-        """
-        The minimum product price.
-        """
-        return pulumi.get(self, "min")
-
-    @min.setter
-    def min(self, value: pulumi.Input[float]):
-        pulumi.set(self, "min", value)
 
 

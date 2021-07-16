@@ -11,10 +11,10 @@ from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['ReservationArgs', 'Reservation']
+__all__ = ['ReservationInitArgs', 'Reservation']
 
 @pulumi.input_type
-class ReservationArgs:
+class ReservationInitArgs:
     def __init__(__self__, *,
                  project: pulumi.Input[str],
                  zone: pulumi.Input[str],
@@ -151,18 +151,18 @@ class Reservation(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ReservationArgs,
+                 args: ReservationInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new reservation. For more information, read Reserving zonal resources.
 
         :param str resource_name: The name of the resource.
-        :param ReservationArgs args: The arguments to use to populate this resource's properties.
+        :param ReservationInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(ReservationArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ReservationInitArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -188,7 +188,7 @@ class Reservation(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = ReservationArgs.__new__(ReservationArgs)
+            __props__ = ReservationInitArgs.__new__(ReservationInitArgs)
 
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
@@ -227,7 +227,7 @@ class Reservation(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = ReservationArgs.__new__(ReservationArgs)
+        __props__ = ReservationInitArgs.__new__(ReservationInitArgs)
 
         __props__.__dict__["commitment"] = None
         __props__.__dict__["creation_timestamp"] = None

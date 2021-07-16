@@ -233,7 +233,7 @@ type AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *string `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
@@ -252,7 +252,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *AuditLogConfigLogType `pulumi:"logType"`
+	LogType AuditLogConfigLogTypePtrInput `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -313,8 +313,8 @@ func (o AuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
 }
 
 // The log type that this config enables.
-func (o AuditLogConfigOutput) LogType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AuditLogConfig) *string { return v.LogType }).(pulumi.StringPtrOutput)
+func (o AuditLogConfigOutput) LogType() AuditLogConfigLogTypePtrOutput {
+	return o.ApplyT(func(v AuditLogConfig) *AuditLogConfigLogType { return v.LogType }).(AuditLogConfigLogTypePtrOutput)
 }
 
 type AuditLogConfigArrayOutput struct{ *pulumi.OutputState }
@@ -1069,7 +1069,7 @@ type ContactSettings struct {
 	// The administrative contact for the `Registration`.
 	AdminContact Contact `pulumi:"adminContact"`
 	// Privacy setting for the contacts associated with the `Registration`.
-	Privacy string `pulumi:"privacy"`
+	Privacy ContactSettingsPrivacy `pulumi:"privacy"`
 	// The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
 	RegistrantContact Contact `pulumi:"registrantContact"`
 	// The technical contact for the `Registration`.
@@ -1092,7 +1092,7 @@ type ContactSettingsArgs struct {
 	// The administrative contact for the `Registration`.
 	AdminContact ContactInput `pulumi:"adminContact"`
 	// Privacy setting for the contacts associated with the `Registration`.
-	Privacy ContactSettingsPrivacy `pulumi:"privacy"`
+	Privacy ContactSettingsPrivacyInput `pulumi:"privacy"`
 	// The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
 	RegistrantContact ContactInput `pulumi:"registrantContact"`
 	// The technical contact for the `Registration`.
@@ -1183,8 +1183,8 @@ func (o ContactSettingsOutput) AdminContact() ContactOutput {
 }
 
 // Privacy setting for the contacts associated with the `Registration`.
-func (o ContactSettingsOutput) Privacy() pulumi.StringOutput {
-	return o.ApplyT(func(v ContactSettings) string { return v.Privacy }).(pulumi.StringOutput)
+func (o ContactSettingsOutput) Privacy() ContactSettingsPrivacyOutput {
+	return o.ApplyT(func(v ContactSettings) ContactSettingsPrivacy { return v.Privacy }).(ContactSettingsPrivacyOutput)
 }
 
 // The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
@@ -1226,13 +1226,13 @@ func (o ContactSettingsPtrOutput) AdminContact() ContactPtrOutput {
 }
 
 // Privacy setting for the contacts associated with the `Registration`.
-func (o ContactSettingsPtrOutput) Privacy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ContactSettings) *string {
+func (o ContactSettingsPtrOutput) Privacy() ContactSettingsPrivacyPtrOutput {
+	return o.ApplyT(func(v *ContactSettings) *ContactSettingsPrivacy {
 		if v == nil {
 			return nil
 		}
 		return &v.Privacy
-	}).(pulumi.StringPtrOutput)
+	}).(ContactSettingsPrivacyPtrOutput)
 }
 
 // The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant will receive an email confirmation that they must complete within 15 days to avoid domain suspension.*
@@ -2099,11 +2099,11 @@ func (o DnsSettingsResponsePtrOutput) GoogleDomainsDns() GoogleDomainsDnsRespons
 // Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest (hash) of a DNSKEY record that must be present in the domain's DNS zone.
 type DsRecord struct {
 	// The algorithm used to generate the referenced DNSKEY.
-	Algorithm *string `pulumi:"algorithm"`
+	Algorithm *DsRecordAlgorithm `pulumi:"algorithm"`
 	// The digest generated from the referenced DNSKEY.
 	Digest *string `pulumi:"digest"`
 	// The hash function used to generate the digest of the referenced DNSKEY.
-	DigestType *string `pulumi:"digestType"`
+	DigestType *DsRecordDigestType `pulumi:"digestType"`
 	// The key tag of the record. Must be set in range 0 -- 65535.
 	KeyTag *int `pulumi:"keyTag"`
 }
@@ -2122,11 +2122,11 @@ type DsRecordInput interface {
 // Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest (hash) of a DNSKEY record that must be present in the domain's DNS zone.
 type DsRecordArgs struct {
 	// The algorithm used to generate the referenced DNSKEY.
-	Algorithm *DsRecordAlgorithm `pulumi:"algorithm"`
+	Algorithm DsRecordAlgorithmPtrInput `pulumi:"algorithm"`
 	// The digest generated from the referenced DNSKEY.
 	Digest pulumi.StringPtrInput `pulumi:"digest"`
 	// The hash function used to generate the digest of the referenced DNSKEY.
-	DigestType *DsRecordDigestType `pulumi:"digestType"`
+	DigestType DsRecordDigestTypePtrInput `pulumi:"digestType"`
 	// The key tag of the record. Must be set in range 0 -- 65535.
 	KeyTag pulumi.IntPtrInput `pulumi:"keyTag"`
 }
@@ -2184,8 +2184,8 @@ func (o DsRecordOutput) ToDsRecordOutputWithContext(ctx context.Context) DsRecor
 }
 
 // The algorithm used to generate the referenced DNSKEY.
-func (o DsRecordOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DsRecord) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
+func (o DsRecordOutput) Algorithm() DsRecordAlgorithmPtrOutput {
+	return o.ApplyT(func(v DsRecord) *DsRecordAlgorithm { return v.Algorithm }).(DsRecordAlgorithmPtrOutput)
 }
 
 // The digest generated from the referenced DNSKEY.
@@ -2194,8 +2194,8 @@ func (o DsRecordOutput) Digest() pulumi.StringPtrOutput {
 }
 
 // The hash function used to generate the digest of the referenced DNSKEY.
-func (o DsRecordOutput) DigestType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DsRecord) *string { return v.DigestType }).(pulumi.StringPtrOutput)
+func (o DsRecordOutput) DigestType() DsRecordDigestTypePtrOutput {
+	return o.ApplyT(func(v DsRecord) *DsRecordDigestType { return v.DigestType }).(DsRecordDigestTypePtrOutput)
 }
 
 // The key tag of the record. Must be set in range 0 -- 65535.
@@ -2862,7 +2862,7 @@ func (o GlueRecordResponseArrayOutput) Index(i pulumi.IntInput) GlueRecordRespon
 // Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
 type GoogleDomainsDns struct {
 	// The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
-	DsState string `pulumi:"dsState"`
+	DsState GoogleDomainsDnsDsState `pulumi:"dsState"`
 }
 
 // GoogleDomainsDnsInput is an input type that accepts GoogleDomainsDnsArgs and GoogleDomainsDnsOutput values.
@@ -2879,7 +2879,7 @@ type GoogleDomainsDnsInput interface {
 // Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
 type GoogleDomainsDnsArgs struct {
 	// The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
-	DsState GoogleDomainsDnsDsState `pulumi:"dsState"`
+	DsState GoogleDomainsDnsDsStateInput `pulumi:"dsState"`
 }
 
 func (GoogleDomainsDnsArgs) ElementType() reflect.Type {
@@ -2961,8 +2961,8 @@ func (o GoogleDomainsDnsOutput) ToGoogleDomainsDnsPtrOutputWithContext(ctx conte
 }
 
 // The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
-func (o GoogleDomainsDnsOutput) DsState() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleDomainsDns) string { return v.DsState }).(pulumi.StringOutput)
+func (o GoogleDomainsDnsOutput) DsState() GoogleDomainsDnsDsStateOutput {
+	return o.ApplyT(func(v GoogleDomainsDns) GoogleDomainsDnsDsState { return v.DsState }).(GoogleDomainsDnsDsStateOutput)
 }
 
 type GoogleDomainsDnsPtrOutput struct{ *pulumi.OutputState }
@@ -2984,13 +2984,13 @@ func (o GoogleDomainsDnsPtrOutput) Elem() GoogleDomainsDnsOutput {
 }
 
 // The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
-func (o GoogleDomainsDnsPtrOutput) DsState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleDomainsDns) *string {
+func (o GoogleDomainsDnsPtrOutput) DsState() GoogleDomainsDnsDsStatePtrOutput {
+	return o.ApplyT(func(v *GoogleDomainsDns) *GoogleDomainsDnsDsState {
 		if v == nil {
 			return nil
 		}
 		return &v.DsState
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleDomainsDnsDsStatePtrOutput)
 }
 
 // Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
@@ -3168,7 +3168,7 @@ func (o GoogleDomainsDnsResponsePtrOutput) NameServers() pulumi.StringArrayOutpu
 // Defines renewal, billing, and transfer settings for a `Registration`.
 type ManagementSettings struct {
 	// Controls whether the domain can be transferred to another registrar.
-	TransferLockState *string `pulumi:"transferLockState"`
+	TransferLockState *ManagementSettingsTransferLockState `pulumi:"transferLockState"`
 }
 
 // ManagementSettingsInput is an input type that accepts ManagementSettingsArgs and ManagementSettingsOutput values.
@@ -3185,7 +3185,7 @@ type ManagementSettingsInput interface {
 // Defines renewal, billing, and transfer settings for a `Registration`.
 type ManagementSettingsArgs struct {
 	// Controls whether the domain can be transferred to another registrar.
-	TransferLockState *ManagementSettingsTransferLockState `pulumi:"transferLockState"`
+	TransferLockState ManagementSettingsTransferLockStatePtrInput `pulumi:"transferLockState"`
 }
 
 func (ManagementSettingsArgs) ElementType() reflect.Type {
@@ -3267,8 +3267,8 @@ func (o ManagementSettingsOutput) ToManagementSettingsPtrOutputWithContext(ctx c
 }
 
 // Controls whether the domain can be transferred to another registrar.
-func (o ManagementSettingsOutput) TransferLockState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ManagementSettings) *string { return v.TransferLockState }).(pulumi.StringPtrOutput)
+func (o ManagementSettingsOutput) TransferLockState() ManagementSettingsTransferLockStatePtrOutput {
+	return o.ApplyT(func(v ManagementSettings) *ManagementSettingsTransferLockState { return v.TransferLockState }).(ManagementSettingsTransferLockStatePtrOutput)
 }
 
 type ManagementSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -3290,13 +3290,13 @@ func (o ManagementSettingsPtrOutput) Elem() ManagementSettingsOutput {
 }
 
 // Controls whether the domain can be transferred to another registrar.
-func (o ManagementSettingsPtrOutput) TransferLockState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ManagementSettings) *string {
+func (o ManagementSettingsPtrOutput) TransferLockState() ManagementSettingsTransferLockStatePtrOutput {
+	return o.ApplyT(func(v *ManagementSettings) *ManagementSettingsTransferLockState {
 		if v == nil {
 			return nil
 		}
 		return v.TransferLockState
-	}).(pulumi.StringPtrOutput)
+	}).(ManagementSettingsTransferLockStatePtrOutput)
 }
 
 // Defines renewal, billing, and transfer settings for a `Registration`.

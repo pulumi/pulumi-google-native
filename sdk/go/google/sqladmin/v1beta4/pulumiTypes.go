@@ -841,7 +841,7 @@ type BackupRetentionSettings struct {
 	// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
 	RetainedBackups *int `pulumi:"retainedBackups"`
 	// The unit that 'retained_backups' represents.
-	RetentionUnit *string `pulumi:"retentionUnit"`
+	RetentionUnit *BackupRetentionSettingsRetentionUnit `pulumi:"retentionUnit"`
 }
 
 // BackupRetentionSettingsInput is an input type that accepts BackupRetentionSettingsArgs and BackupRetentionSettingsOutput values.
@@ -860,7 +860,7 @@ type BackupRetentionSettingsArgs struct {
 	// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
 	RetainedBackups pulumi.IntPtrInput `pulumi:"retainedBackups"`
 	// The unit that 'retained_backups' represents.
-	RetentionUnit *BackupRetentionSettingsRetentionUnit `pulumi:"retentionUnit"`
+	RetentionUnit BackupRetentionSettingsRetentionUnitPtrInput `pulumi:"retentionUnit"`
 }
 
 func (BackupRetentionSettingsArgs) ElementType() reflect.Type {
@@ -947,8 +947,8 @@ func (o BackupRetentionSettingsOutput) RetainedBackups() pulumi.IntPtrOutput {
 }
 
 // The unit that 'retained_backups' represents.
-func (o BackupRetentionSettingsOutput) RetentionUnit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BackupRetentionSettings) *string { return v.RetentionUnit }).(pulumi.StringPtrOutput)
+func (o BackupRetentionSettingsOutput) RetentionUnit() BackupRetentionSettingsRetentionUnitPtrOutput {
+	return o.ApplyT(func(v BackupRetentionSettings) *BackupRetentionSettingsRetentionUnit { return v.RetentionUnit }).(BackupRetentionSettingsRetentionUnitPtrOutput)
 }
 
 type BackupRetentionSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -980,13 +980,13 @@ func (o BackupRetentionSettingsPtrOutput) RetainedBackups() pulumi.IntPtrOutput 
 }
 
 // The unit that 'retained_backups' represents.
-func (o BackupRetentionSettingsPtrOutput) RetentionUnit() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BackupRetentionSettings) *string {
+func (o BackupRetentionSettingsPtrOutput) RetentionUnit() BackupRetentionSettingsRetentionUnitPtrOutput {
+	return o.ApplyT(func(v *BackupRetentionSettings) *BackupRetentionSettingsRetentionUnit {
 		if v == nil {
 			return nil
 		}
 		return v.RetentionUnit
-	}).(pulumi.StringPtrOutput)
+	}).(BackupRetentionSettingsRetentionUnitPtrOutput)
 }
 
 // We currently only support backup retention by specifying the number of backups we will retain.
@@ -3323,7 +3323,7 @@ type IpMapping struct {
 	// The due time for this IP to be retired in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*. This field is only available when the IP is scheduled to be retired.
 	TimeToRetire *string `pulumi:"timeToRetire"`
 	// The type of this IP address. A *PRIMARY* address is a public address that can accept incoming connections. A *PRIVATE* address is a private address that can accept incoming connections. An *OUTGOING* address is the source address of connections originating from the instance, if supported.
-	Type *string `pulumi:"type"`
+	Type *IpMappingType `pulumi:"type"`
 }
 
 // IpMappingInput is an input type that accepts IpMappingArgs and IpMappingOutput values.
@@ -3344,7 +3344,7 @@ type IpMappingArgs struct {
 	// The due time for this IP to be retired in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*. This field is only available when the IP is scheduled to be retired.
 	TimeToRetire pulumi.StringPtrInput `pulumi:"timeToRetire"`
 	// The type of this IP address. A *PRIMARY* address is a public address that can accept incoming connections. A *PRIVATE* address is a private address that can accept incoming connections. An *OUTGOING* address is the source address of connections originating from the instance, if supported.
-	Type *IpMappingType `pulumi:"type"`
+	Type IpMappingTypePtrInput `pulumi:"type"`
 }
 
 func (IpMappingArgs) ElementType() reflect.Type {
@@ -3410,8 +3410,8 @@ func (o IpMappingOutput) TimeToRetire() pulumi.StringPtrOutput {
 }
 
 // The type of this IP address. A *PRIMARY* address is a public address that can accept incoming connections. A *PRIVATE* address is a private address that can accept incoming connections. An *OUTGOING* address is the source address of connections originating from the instance, if supported.
-func (o IpMappingOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IpMapping) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o IpMappingOutput) Type() IpMappingTypePtrOutput {
+	return o.ApplyT(func(v IpMapping) *IpMappingType { return v.Type }).(IpMappingTypePtrOutput)
 }
 
 type IpMappingArrayOutput struct{ *pulumi.OutputState }
@@ -3943,7 +3943,7 @@ type MaintenanceWindow struct {
 	// This is always *sql#maintenanceWindow*.
 	Kind *string `pulumi:"kind"`
 	// Maintenance timing setting: *canary* (Earlier) or *stable* (Later). Learn more.
-	UpdateTrack *string `pulumi:"updateTrack"`
+	UpdateTrack *MaintenanceWindowUpdateTrack `pulumi:"updateTrack"`
 }
 
 // MaintenanceWindowInput is an input type that accepts MaintenanceWindowArgs and MaintenanceWindowOutput values.
@@ -3966,7 +3966,7 @@ type MaintenanceWindowArgs struct {
 	// This is always *sql#maintenanceWindow*.
 	Kind pulumi.StringPtrInput `pulumi:"kind"`
 	// Maintenance timing setting: *canary* (Earlier) or *stable* (Later). Learn more.
-	UpdateTrack *MaintenanceWindowUpdateTrack `pulumi:"updateTrack"`
+	UpdateTrack MaintenanceWindowUpdateTrackPtrInput `pulumi:"updateTrack"`
 }
 
 func (MaintenanceWindowArgs) ElementType() reflect.Type {
@@ -4063,8 +4063,8 @@ func (o MaintenanceWindowOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Maintenance timing setting: *canary* (Earlier) or *stable* (Later). Learn more.
-func (o MaintenanceWindowOutput) UpdateTrack() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MaintenanceWindow) *string { return v.UpdateTrack }).(pulumi.StringPtrOutput)
+func (o MaintenanceWindowOutput) UpdateTrack() MaintenanceWindowUpdateTrackPtrOutput {
+	return o.ApplyT(func(v MaintenanceWindow) *MaintenanceWindowUpdateTrack { return v.UpdateTrack }).(MaintenanceWindowUpdateTrackPtrOutput)
 }
 
 type MaintenanceWindowPtrOutput struct{ *pulumi.OutputState }
@@ -4116,13 +4116,13 @@ func (o MaintenanceWindowPtrOutput) Kind() pulumi.StringPtrOutput {
 }
 
 // Maintenance timing setting: *canary* (Earlier) or *stable* (Later). Learn more.
-func (o MaintenanceWindowPtrOutput) UpdateTrack() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MaintenanceWindow) *string {
+func (o MaintenanceWindowPtrOutput) UpdateTrack() MaintenanceWindowUpdateTrackPtrOutput {
+	return o.ApplyT(func(v *MaintenanceWindow) *MaintenanceWindowUpdateTrack {
 		if v == nil {
 			return nil
 		}
 		return v.UpdateTrack
-	}).(pulumi.StringPtrOutput)
+	}).(MaintenanceWindowUpdateTrackPtrOutput)
 }
 
 // Maintenance window. This specifies when a Cloud SQL instance is restarted for system maintenance purposes.
@@ -6191,11 +6191,11 @@ func (o ReplicaConfigurationResponsePtrOutput) MysqlReplicaConfiguration() MySql
 // Database instance settings.
 type Settings struct {
 	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: *ALWAYS*: The instance is on, and remains so even in the absence of connection requests. *NEVER*: The instance is off; it is not activated, even if a connection request arrives.
-	ActivationPolicy *string `pulumi:"activationPolicy"`
+	ActivationPolicy *SettingsActivationPolicy `pulumi:"activationPolicy"`
 	// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 	ActiveDirectoryConfig *SqlActiveDirectoryConfig `pulumi:"activeDirectoryConfig"`
 	// Availability type. Potential values: *ZONAL*: The instance serves data from only one zone. Outages in that zone affect data accessibility. *REGIONAL*: The instance can serve data from more than one zone in a region (it is highly available). For more information, see Overview of the High Availability Configuration.
-	AvailabilityType *string `pulumi:"availabilityType"`
+	AvailabilityType *SettingsAvailabilityType `pulumi:"availabilityType"`
 	// The daily backup configuration for the instance.
 	BackupConfiguration *BackupConfiguration `pulumi:"backupConfiguration"`
 	// The name of server Instance collation.
@@ -6205,7 +6205,7 @@ type Settings struct {
 	// The size of data disk, in GB. The data disk size minimum is 10GB.
 	DataDiskSizeGb *string `pulumi:"dataDiskSizeGb"`
 	// The type of data disk: PD_SSD (default) or PD_HDD. Not used for First Generation instances.
-	DataDiskType *string `pulumi:"dataDiskType"`
+	DataDiskType *SettingsDataDiskType `pulumi:"dataDiskType"`
 	// The database flags passed to the instance at startup.
 	DatabaseFlags []DatabaseFlags `pulumi:"databaseFlags"`
 	// Configuration specific to read replica instances. Indicates whether replication is enabled or not.
@@ -6223,7 +6223,7 @@ type Settings struct {
 	// The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
 	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The pricing plan for this instance. This can be either *PER_USE* or *PACKAGE*. Only *PER_USE* is supported for Second Generation instances.
-	PricingPlan *string `pulumi:"pricingPlan"`
+	PricingPlan *SettingsPricingPlan `pulumi:"pricingPlan"`
 	// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
 	SettingsVersion *string `pulumi:"settingsVersion"`
 	// Configuration to increase storage size automatically. The default value is true.
@@ -6250,11 +6250,11 @@ type SettingsInput interface {
 // Database instance settings.
 type SettingsArgs struct {
 	// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: *ALWAYS*: The instance is on, and remains so even in the absence of connection requests. *NEVER*: The instance is off; it is not activated, even if a connection request arrives.
-	ActivationPolicy *SettingsActivationPolicy `pulumi:"activationPolicy"`
+	ActivationPolicy SettingsActivationPolicyPtrInput `pulumi:"activationPolicy"`
 	// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
 	ActiveDirectoryConfig SqlActiveDirectoryConfigPtrInput `pulumi:"activeDirectoryConfig"`
 	// Availability type. Potential values: *ZONAL*: The instance serves data from only one zone. Outages in that zone affect data accessibility. *REGIONAL*: The instance can serve data from more than one zone in a region (it is highly available). For more information, see Overview of the High Availability Configuration.
-	AvailabilityType *SettingsAvailabilityType `pulumi:"availabilityType"`
+	AvailabilityType SettingsAvailabilityTypePtrInput `pulumi:"availabilityType"`
 	// The daily backup configuration for the instance.
 	BackupConfiguration BackupConfigurationPtrInput `pulumi:"backupConfiguration"`
 	// The name of server Instance collation.
@@ -6264,7 +6264,7 @@ type SettingsArgs struct {
 	// The size of data disk, in GB. The data disk size minimum is 10GB.
 	DataDiskSizeGb pulumi.StringPtrInput `pulumi:"dataDiskSizeGb"`
 	// The type of data disk: PD_SSD (default) or PD_HDD. Not used for First Generation instances.
-	DataDiskType *SettingsDataDiskType `pulumi:"dataDiskType"`
+	DataDiskType SettingsDataDiskTypePtrInput `pulumi:"dataDiskType"`
 	// The database flags passed to the instance at startup.
 	DatabaseFlags DatabaseFlagsArrayInput `pulumi:"databaseFlags"`
 	// Configuration specific to read replica instances. Indicates whether replication is enabled or not.
@@ -6282,7 +6282,7 @@ type SettingsArgs struct {
 	// The maintenance window for this instance. This specifies when the instance can be restarted for maintenance purposes.
 	MaintenanceWindow MaintenanceWindowPtrInput `pulumi:"maintenanceWindow"`
 	// The pricing plan for this instance. This can be either *PER_USE* or *PACKAGE*. Only *PER_USE* is supported for Second Generation instances.
-	PricingPlan *SettingsPricingPlan `pulumi:"pricingPlan"`
+	PricingPlan SettingsPricingPlanPtrInput `pulumi:"pricingPlan"`
 	// The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
 	SettingsVersion pulumi.StringPtrInput `pulumi:"settingsVersion"`
 	// Configuration to increase storage size automatically. The default value is true.
@@ -6374,8 +6374,8 @@ func (o SettingsOutput) ToSettingsPtrOutputWithContext(ctx context.Context) Sett
 }
 
 // The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: *ALWAYS*: The instance is on, and remains so even in the absence of connection requests. *NEVER*: The instance is off; it is not activated, even if a connection request arrives.
-func (o SettingsOutput) ActivationPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Settings) *string { return v.ActivationPolicy }).(pulumi.StringPtrOutput)
+func (o SettingsOutput) ActivationPolicy() SettingsActivationPolicyPtrOutput {
+	return o.ApplyT(func(v Settings) *SettingsActivationPolicy { return v.ActivationPolicy }).(SettingsActivationPolicyPtrOutput)
 }
 
 // Active Directory configuration, relevant only for Cloud SQL for SQL Server.
@@ -6384,8 +6384,8 @@ func (o SettingsOutput) ActiveDirectoryConfig() SqlActiveDirectoryConfigPtrOutpu
 }
 
 // Availability type. Potential values: *ZONAL*: The instance serves data from only one zone. Outages in that zone affect data accessibility. *REGIONAL*: The instance can serve data from more than one zone in a region (it is highly available). For more information, see Overview of the High Availability Configuration.
-func (o SettingsOutput) AvailabilityType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Settings) *string { return v.AvailabilityType }).(pulumi.StringPtrOutput)
+func (o SettingsOutput) AvailabilityType() SettingsAvailabilityTypePtrOutput {
+	return o.ApplyT(func(v Settings) *SettingsAvailabilityType { return v.AvailabilityType }).(SettingsAvailabilityTypePtrOutput)
 }
 
 // The daily backup configuration for the instance.
@@ -6409,8 +6409,8 @@ func (o SettingsOutput) DataDiskSizeGb() pulumi.StringPtrOutput {
 }
 
 // The type of data disk: PD_SSD (default) or PD_HDD. Not used for First Generation instances.
-func (o SettingsOutput) DataDiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Settings) *string { return v.DataDiskType }).(pulumi.StringPtrOutput)
+func (o SettingsOutput) DataDiskType() SettingsDataDiskTypePtrOutput {
+	return o.ApplyT(func(v Settings) *SettingsDataDiskType { return v.DataDiskType }).(SettingsDataDiskTypePtrOutput)
 }
 
 // The database flags passed to the instance at startup.
@@ -6454,8 +6454,8 @@ func (o SettingsOutput) MaintenanceWindow() MaintenanceWindowPtrOutput {
 }
 
 // The pricing plan for this instance. This can be either *PER_USE* or *PACKAGE*. Only *PER_USE* is supported for Second Generation instances.
-func (o SettingsOutput) PricingPlan() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Settings) *string { return v.PricingPlan }).(pulumi.StringPtrOutput)
+func (o SettingsOutput) PricingPlan() SettingsPricingPlanPtrOutput {
+	return o.ApplyT(func(v Settings) *SettingsPricingPlan { return v.PricingPlan }).(SettingsPricingPlanPtrOutput)
 }
 
 // The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
@@ -6502,13 +6502,13 @@ func (o SettingsPtrOutput) Elem() SettingsOutput {
 }
 
 // The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: *ALWAYS*: The instance is on, and remains so even in the absence of connection requests. *NEVER*: The instance is off; it is not activated, even if a connection request arrives.
-func (o SettingsPtrOutput) ActivationPolicy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Settings) *string {
+func (o SettingsPtrOutput) ActivationPolicy() SettingsActivationPolicyPtrOutput {
+	return o.ApplyT(func(v *Settings) *SettingsActivationPolicy {
 		if v == nil {
 			return nil
 		}
 		return v.ActivationPolicy
-	}).(pulumi.StringPtrOutput)
+	}).(SettingsActivationPolicyPtrOutput)
 }
 
 // Active Directory configuration, relevant only for Cloud SQL for SQL Server.
@@ -6522,13 +6522,13 @@ func (o SettingsPtrOutput) ActiveDirectoryConfig() SqlActiveDirectoryConfigPtrOu
 }
 
 // Availability type. Potential values: *ZONAL*: The instance serves data from only one zone. Outages in that zone affect data accessibility. *REGIONAL*: The instance can serve data from more than one zone in a region (it is highly available). For more information, see Overview of the High Availability Configuration.
-func (o SettingsPtrOutput) AvailabilityType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Settings) *string {
+func (o SettingsPtrOutput) AvailabilityType() SettingsAvailabilityTypePtrOutput {
+	return o.ApplyT(func(v *Settings) *SettingsAvailabilityType {
 		if v == nil {
 			return nil
 		}
 		return v.AvailabilityType
-	}).(pulumi.StringPtrOutput)
+	}).(SettingsAvailabilityTypePtrOutput)
 }
 
 // The daily backup configuration for the instance.
@@ -6572,13 +6572,13 @@ func (o SettingsPtrOutput) DataDiskSizeGb() pulumi.StringPtrOutput {
 }
 
 // The type of data disk: PD_SSD (default) or PD_HDD. Not used for First Generation instances.
-func (o SettingsPtrOutput) DataDiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Settings) *string {
+func (o SettingsPtrOutput) DataDiskType() SettingsDataDiskTypePtrOutput {
+	return o.ApplyT(func(v *Settings) *SettingsDataDiskType {
 		if v == nil {
 			return nil
 		}
 		return v.DataDiskType
-	}).(pulumi.StringPtrOutput)
+	}).(SettingsDataDiskTypePtrOutput)
 }
 
 // The database flags passed to the instance at startup.
@@ -6662,13 +6662,13 @@ func (o SettingsPtrOutput) MaintenanceWindow() MaintenanceWindowPtrOutput {
 }
 
 // The pricing plan for this instance. This can be either *PER_USE* or *PACKAGE*. Only *PER_USE* is supported for Second Generation instances.
-func (o SettingsPtrOutput) PricingPlan() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Settings) *string {
+func (o SettingsPtrOutput) PricingPlan() SettingsPricingPlanPtrOutput {
+	return o.ApplyT(func(v *Settings) *SettingsPricingPlan {
 		if v == nil {
 			return nil
 		}
 		return v.PricingPlan
-	}).(pulumi.StringPtrOutput)
+	}).(SettingsPricingPlanPtrOutput)
 }
 
 // The version of instance settings. This is a required field for update method to make sure concurrent updates are handled properly. During update, use the most recent settingsVersion value for this instance and do not try to update this value.
@@ -7565,7 +7565,7 @@ type SqlOutOfDiskReport struct {
 	// The minimum recommended increase size in GigaBytes This field is consumed by the frontend Writers: -- the proactive database wellness job for OOD.
 	SqlMinRecommendedIncreaseSizeGb *int `pulumi:"sqlMinRecommendedIncreaseSizeGb"`
 	// This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the proactive database wellness job
-	SqlOutOfDiskState *string `pulumi:"sqlOutOfDiskState"`
+	SqlOutOfDiskState *SqlOutOfDiskReportSqlOutOfDiskState `pulumi:"sqlOutOfDiskState"`
 }
 
 // SqlOutOfDiskReportInput is an input type that accepts SqlOutOfDiskReportArgs and SqlOutOfDiskReportOutput values.
@@ -7584,7 +7584,7 @@ type SqlOutOfDiskReportArgs struct {
 	// The minimum recommended increase size in GigaBytes This field is consumed by the frontend Writers: -- the proactive database wellness job for OOD.
 	SqlMinRecommendedIncreaseSizeGb pulumi.IntPtrInput `pulumi:"sqlMinRecommendedIncreaseSizeGb"`
 	// This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the proactive database wellness job
-	SqlOutOfDiskState *SqlOutOfDiskReportSqlOutOfDiskState `pulumi:"sqlOutOfDiskState"`
+	SqlOutOfDiskState SqlOutOfDiskReportSqlOutOfDiskStatePtrInput `pulumi:"sqlOutOfDiskState"`
 }
 
 func (SqlOutOfDiskReportArgs) ElementType() reflect.Type {
@@ -7671,8 +7671,8 @@ func (o SqlOutOfDiskReportOutput) SqlMinRecommendedIncreaseSizeGb() pulumi.IntPt
 }
 
 // This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the proactive database wellness job
-func (o SqlOutOfDiskReportOutput) SqlOutOfDiskState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SqlOutOfDiskReport) *string { return v.SqlOutOfDiskState }).(pulumi.StringPtrOutput)
+func (o SqlOutOfDiskReportOutput) SqlOutOfDiskState() SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput {
+	return o.ApplyT(func(v SqlOutOfDiskReport) *SqlOutOfDiskReportSqlOutOfDiskState { return v.SqlOutOfDiskState }).(SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput)
 }
 
 type SqlOutOfDiskReportPtrOutput struct{ *pulumi.OutputState }
@@ -7704,13 +7704,13 @@ func (o SqlOutOfDiskReportPtrOutput) SqlMinRecommendedIncreaseSizeGb() pulumi.In
 }
 
 // This field represents the state generated by the proactive database wellness job for OutOfDisk issues. Writers: -- the proactive database wellness job for OOD. Readers: -- the proactive database wellness job
-func (o SqlOutOfDiskReportPtrOutput) SqlOutOfDiskState() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SqlOutOfDiskReport) *string {
+func (o SqlOutOfDiskReportPtrOutput) SqlOutOfDiskState() SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput {
+	return o.ApplyT(func(v *SqlOutOfDiskReport) *SqlOutOfDiskReportSqlOutOfDiskState {
 		if v == nil {
 			return nil
 		}
 		return v.SqlOutOfDiskState
-	}).(pulumi.StringPtrOutput)
+	}).(SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput)
 }
 
 // This message wraps up the information written by out-of-disk detection job.

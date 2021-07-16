@@ -769,7 +769,7 @@ type PkixPublicKey struct {
 	// A PEM-encoded public key, as described in https://tools.ietf.org/html/rfc7468#section-13
 	PublicKeyPem *string `pulumi:"publicKeyPem"`
 	// The signature algorithm used to verify a message against a signature using this key. These signature algorithm must match the structure and any object identifiers encoded in `public_key_pem` (i.e. this algorithm must match that of the public key).
-	SignatureAlgorithm *string `pulumi:"signatureAlgorithm"`
+	SignatureAlgorithm *PkixPublicKeySignatureAlgorithm `pulumi:"signatureAlgorithm"`
 }
 
 // PkixPublicKeyInput is an input type that accepts PkixPublicKeyArgs and PkixPublicKeyOutput values.
@@ -788,7 +788,7 @@ type PkixPublicKeyArgs struct {
 	// A PEM-encoded public key, as described in https://tools.ietf.org/html/rfc7468#section-13
 	PublicKeyPem pulumi.StringPtrInput `pulumi:"publicKeyPem"`
 	// The signature algorithm used to verify a message against a signature using this key. These signature algorithm must match the structure and any object identifiers encoded in `public_key_pem` (i.e. this algorithm must match that of the public key).
-	SignatureAlgorithm *PkixPublicKeySignatureAlgorithm `pulumi:"signatureAlgorithm"`
+	SignatureAlgorithm PkixPublicKeySignatureAlgorithmPtrInput `pulumi:"signatureAlgorithm"`
 }
 
 func (PkixPublicKeyArgs) ElementType() reflect.Type {
@@ -875,8 +875,8 @@ func (o PkixPublicKeyOutput) PublicKeyPem() pulumi.StringPtrOutput {
 }
 
 // The signature algorithm used to verify a message against a signature using this key. These signature algorithm must match the structure and any object identifiers encoded in `public_key_pem` (i.e. this algorithm must match that of the public key).
-func (o PkixPublicKeyOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PkixPublicKey) *string { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
+func (o PkixPublicKeyOutput) SignatureAlgorithm() PkixPublicKeySignatureAlgorithmPtrOutput {
+	return o.ApplyT(func(v PkixPublicKey) *PkixPublicKeySignatureAlgorithm { return v.SignatureAlgorithm }).(PkixPublicKeySignatureAlgorithmPtrOutput)
 }
 
 type PkixPublicKeyPtrOutput struct{ *pulumi.OutputState }
@@ -908,13 +908,13 @@ func (o PkixPublicKeyPtrOutput) PublicKeyPem() pulumi.StringPtrOutput {
 }
 
 // The signature algorithm used to verify a message against a signature using this key. These signature algorithm must match the structure and any object identifiers encoded in `public_key_pem` (i.e. this algorithm must match that of the public key).
-func (o PkixPublicKeyPtrOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PkixPublicKey) *string {
+func (o PkixPublicKeyPtrOutput) SignatureAlgorithm() PkixPublicKeySignatureAlgorithmPtrOutput {
+	return o.ApplyT(func(v *PkixPublicKey) *PkixPublicKeySignatureAlgorithm {
 		if v == nil {
 			return nil
 		}
 		return v.SignatureAlgorithm
-	}).(pulumi.StringPtrOutput)
+	}).(PkixPublicKeySignatureAlgorithmPtrOutput)
 }
 
 // A public key in the PkixPublicKey format (see https://tools.ietf.org/html/rfc5280#section-4.1.2.7 for details). Public keys of this type are typically textually encoded using the PEM format.

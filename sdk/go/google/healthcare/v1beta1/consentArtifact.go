@@ -77,41 +77,9 @@ func GetConsentArtifact(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ConsentArtifact resources.
 type consentArtifactState struct {
-	// Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
-	ConsentContentScreenshots []ImageResponse `pulumi:"consentContentScreenshots"`
-	// Optional. An string indicating the version of the consent information shown to the user.
-	ConsentContentVersion *string `pulumi:"consentContentVersion"`
-	// Optional. A signature from a guardian.
-	GuardianSignature *SignatureResponse `pulumi:"guardianSignature"`
-	// Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
-	Metadata map[string]string `pulumi:"metadata"`
-	// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
-	Name *string `pulumi:"name"`
-	// User's UUID provided by the client.
-	UserId *string `pulumi:"userId"`
-	// Optional. User's signature.
-	UserSignature *SignatureResponse `pulumi:"userSignature"`
-	// Optional. A signature from a witness.
-	WitnessSignature *SignatureResponse `pulumi:"witnessSignature"`
 }
 
 type ConsentArtifactState struct {
-	// Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
-	ConsentContentScreenshots ImageResponseArrayInput
-	// Optional. An string indicating the version of the consent information shown to the user.
-	ConsentContentVersion pulumi.StringPtrInput
-	// Optional. A signature from a guardian.
-	GuardianSignature SignatureResponsePtrInput
-	// Optional. Metadata associated with the Consent artifact. For example, the consent locale or user agent version.
-	Metadata pulumi.StringMapInput
-	// Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation.
-	Name pulumi.StringPtrInput
-	// User's UUID provided by the client.
-	UserId pulumi.StringPtrInput
-	// Optional. User's signature.
-	UserSignature SignatureResponsePtrInput
-	// Optional. A signature from a witness.
-	WitnessSignature SignatureResponsePtrInput
 }
 
 func (ConsentArtifactState) ElementType() reflect.Type {

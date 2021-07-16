@@ -1012,21 +1012,21 @@ type BuildOptions struct {
 	// A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
 	Env []string `pulumi:"env"`
 	// Option to define build log streaming behavior to Google Cloud Storage.
-	LogStreamingOption *string `pulumi:"logStreamingOption"`
+	LogStreamingOption *BuildOptionsLogStreamingOption `pulumi:"logStreamingOption"`
 	// Option to specify the logging mode, which determines if and where build logs are stored.
-	Logging *string `pulumi:"logging"`
+	Logging *BuildOptionsLogging `pulumi:"logging"`
 	// Compute Engine machine type on which to run the build.
-	MachineType *string `pulumi:"machineType"`
+	MachineType *BuildOptionsMachineType `pulumi:"machineType"`
 	// Optional. Specification for execution on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
 	Pool *PoolOption `pulumi:"pool"`
 	// Requested verifiability options.
-	RequestedVerifyOption *string `pulumi:"requestedVerifyOption"`
+	RequestedVerifyOption *BuildOptionsRequestedVerifyOption `pulumi:"requestedVerifyOption"`
 	// A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. These variables will be available to all build steps in this build.
 	SecretEnv []string `pulumi:"secretEnv"`
 	// Requested hash for SourceProvenance.
-	SourceProvenanceHash []string `pulumi:"sourceProvenanceHash"`
+	SourceProvenanceHash []BuildOptionsSourceProvenanceHashItem `pulumi:"sourceProvenanceHash"`
 	// Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.
-	SubstitutionOption *string `pulumi:"substitutionOption"`
+	SubstitutionOption *BuildOptionsSubstitutionOption `pulumi:"substitutionOption"`
 	// Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration.
 	Volumes []Volume `pulumi:"volumes"`
 	// This field deprecated; please use `pool.name` instead.
@@ -1053,21 +1053,21 @@ type BuildOptionsArgs struct {
 	// A list of global environment variable definitions that will exist for all build steps in this build. If a variable is defined in both globally and in a build step, the variable will use the build step value. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
 	Env pulumi.StringArrayInput `pulumi:"env"`
 	// Option to define build log streaming behavior to Google Cloud Storage.
-	LogStreamingOption *BuildOptionsLogStreamingOption `pulumi:"logStreamingOption"`
+	LogStreamingOption BuildOptionsLogStreamingOptionPtrInput `pulumi:"logStreamingOption"`
 	// Option to specify the logging mode, which determines if and where build logs are stored.
-	Logging *BuildOptionsLogging `pulumi:"logging"`
+	Logging BuildOptionsLoggingPtrInput `pulumi:"logging"`
 	// Compute Engine machine type on which to run the build.
-	MachineType *BuildOptionsMachineType `pulumi:"machineType"`
+	MachineType BuildOptionsMachineTypePtrInput `pulumi:"machineType"`
 	// Optional. Specification for execution on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
 	Pool PoolOptionPtrInput `pulumi:"pool"`
 	// Requested verifiability options.
-	RequestedVerifyOption *BuildOptionsRequestedVerifyOption `pulumi:"requestedVerifyOption"`
+	RequestedVerifyOption BuildOptionsRequestedVerifyOptionPtrInput `pulumi:"requestedVerifyOption"`
 	// A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. These variables will be available to all build steps in this build.
 	SecretEnv pulumi.StringArrayInput `pulumi:"secretEnv"`
 	// Requested hash for SourceProvenance.
 	SourceProvenanceHash BuildOptionsSourceProvenanceHashItemArrayInput `pulumi:"sourceProvenanceHash"`
 	// Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.
-	SubstitutionOption *BuildOptionsSubstitutionOption `pulumi:"substitutionOption"`
+	SubstitutionOption BuildOptionsSubstitutionOptionPtrInput `pulumi:"substitutionOption"`
 	// Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration.
 	Volumes VolumeArrayInput `pulumi:"volumes"`
 	// This field deprecated; please use `pool.name` instead.
@@ -1168,18 +1168,18 @@ func (o BuildOptionsOutput) Env() pulumi.StringArrayOutput {
 }
 
 // Option to define build log streaming behavior to Google Cloud Storage.
-func (o BuildOptionsOutput) LogStreamingOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuildOptions) *string { return v.LogStreamingOption }).(pulumi.StringPtrOutput)
+func (o BuildOptionsOutput) LogStreamingOption() BuildOptionsLogStreamingOptionPtrOutput {
+	return o.ApplyT(func(v BuildOptions) *BuildOptionsLogStreamingOption { return v.LogStreamingOption }).(BuildOptionsLogStreamingOptionPtrOutput)
 }
 
 // Option to specify the logging mode, which determines if and where build logs are stored.
-func (o BuildOptionsOutput) Logging() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuildOptions) *string { return v.Logging }).(pulumi.StringPtrOutput)
+func (o BuildOptionsOutput) Logging() BuildOptionsLoggingPtrOutput {
+	return o.ApplyT(func(v BuildOptions) *BuildOptionsLogging { return v.Logging }).(BuildOptionsLoggingPtrOutput)
 }
 
 // Compute Engine machine type on which to run the build.
-func (o BuildOptionsOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuildOptions) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+func (o BuildOptionsOutput) MachineType() BuildOptionsMachineTypePtrOutput {
+	return o.ApplyT(func(v BuildOptions) *BuildOptionsMachineType { return v.MachineType }).(BuildOptionsMachineTypePtrOutput)
 }
 
 // Optional. Specification for execution on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
@@ -1188,8 +1188,8 @@ func (o BuildOptionsOutput) Pool() PoolOptionPtrOutput {
 }
 
 // Requested verifiability options.
-func (o BuildOptionsOutput) RequestedVerifyOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuildOptions) *string { return v.RequestedVerifyOption }).(pulumi.StringPtrOutput)
+func (o BuildOptionsOutput) RequestedVerifyOption() BuildOptionsRequestedVerifyOptionPtrOutput {
+	return o.ApplyT(func(v BuildOptions) *BuildOptionsRequestedVerifyOption { return v.RequestedVerifyOption }).(BuildOptionsRequestedVerifyOptionPtrOutput)
 }
 
 // A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. These variables will be available to all build steps in this build.
@@ -1198,13 +1198,13 @@ func (o BuildOptionsOutput) SecretEnv() pulumi.StringArrayOutput {
 }
 
 // Requested hash for SourceProvenance.
-func (o BuildOptionsOutput) SourceProvenanceHash() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v BuildOptions) []string { return v.SourceProvenanceHash }).(pulumi.StringArrayOutput)
+func (o BuildOptionsOutput) SourceProvenanceHash() BuildOptionsSourceProvenanceHashItemArrayOutput {
+	return o.ApplyT(func(v BuildOptions) []BuildOptionsSourceProvenanceHashItem { return v.SourceProvenanceHash }).(BuildOptionsSourceProvenanceHashItemArrayOutput)
 }
 
 // Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.
-func (o BuildOptionsOutput) SubstitutionOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BuildOptions) *string { return v.SubstitutionOption }).(pulumi.StringPtrOutput)
+func (o BuildOptionsOutput) SubstitutionOption() BuildOptionsSubstitutionOptionPtrOutput {
+	return o.ApplyT(func(v BuildOptions) *BuildOptionsSubstitutionOption { return v.SubstitutionOption }).(BuildOptionsSubstitutionOptionPtrOutput)
 }
 
 // Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration.
@@ -1266,33 +1266,33 @@ func (o BuildOptionsPtrOutput) Env() pulumi.StringArrayOutput {
 }
 
 // Option to define build log streaming behavior to Google Cloud Storage.
-func (o BuildOptionsPtrOutput) LogStreamingOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildOptions) *string {
+func (o BuildOptionsPtrOutput) LogStreamingOption() BuildOptionsLogStreamingOptionPtrOutput {
+	return o.ApplyT(func(v *BuildOptions) *BuildOptionsLogStreamingOption {
 		if v == nil {
 			return nil
 		}
 		return v.LogStreamingOption
-	}).(pulumi.StringPtrOutput)
+	}).(BuildOptionsLogStreamingOptionPtrOutput)
 }
 
 // Option to specify the logging mode, which determines if and where build logs are stored.
-func (o BuildOptionsPtrOutput) Logging() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildOptions) *string {
+func (o BuildOptionsPtrOutput) Logging() BuildOptionsLoggingPtrOutput {
+	return o.ApplyT(func(v *BuildOptions) *BuildOptionsLogging {
 		if v == nil {
 			return nil
 		}
 		return v.Logging
-	}).(pulumi.StringPtrOutput)
+	}).(BuildOptionsLoggingPtrOutput)
 }
 
 // Compute Engine machine type on which to run the build.
-func (o BuildOptionsPtrOutput) MachineType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildOptions) *string {
+func (o BuildOptionsPtrOutput) MachineType() BuildOptionsMachineTypePtrOutput {
+	return o.ApplyT(func(v *BuildOptions) *BuildOptionsMachineType {
 		if v == nil {
 			return nil
 		}
 		return v.MachineType
-	}).(pulumi.StringPtrOutput)
+	}).(BuildOptionsMachineTypePtrOutput)
 }
 
 // Optional. Specification for execution on a `WorkerPool`. See [running builds in a custom worker pool](https://cloud.google.com/build/docs/custom-workers/run-builds-in-custom-worker-pool) for more information.
@@ -1306,13 +1306,13 @@ func (o BuildOptionsPtrOutput) Pool() PoolOptionPtrOutput {
 }
 
 // Requested verifiability options.
-func (o BuildOptionsPtrOutput) RequestedVerifyOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildOptions) *string {
+func (o BuildOptionsPtrOutput) RequestedVerifyOption() BuildOptionsRequestedVerifyOptionPtrOutput {
+	return o.ApplyT(func(v *BuildOptions) *BuildOptionsRequestedVerifyOption {
 		if v == nil {
 			return nil
 		}
 		return v.RequestedVerifyOption
-	}).(pulumi.StringPtrOutput)
+	}).(BuildOptionsRequestedVerifyOptionPtrOutput)
 }
 
 // A list of global environment variables, which are encrypted using a Cloud Key Management Service crypto key. These values must be specified in the build's `Secret`. These variables will be available to all build steps in this build.
@@ -1326,23 +1326,23 @@ func (o BuildOptionsPtrOutput) SecretEnv() pulumi.StringArrayOutput {
 }
 
 // Requested hash for SourceProvenance.
-func (o BuildOptionsPtrOutput) SourceProvenanceHash() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *BuildOptions) []string {
+func (o BuildOptionsPtrOutput) SourceProvenanceHash() BuildOptionsSourceProvenanceHashItemArrayOutput {
+	return o.ApplyT(func(v *BuildOptions) []BuildOptionsSourceProvenanceHashItem {
 		if v == nil {
 			return nil
 		}
 		return v.SourceProvenanceHash
-	}).(pulumi.StringArrayOutput)
+	}).(BuildOptionsSourceProvenanceHashItemArrayOutput)
 }
 
 // Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.
-func (o BuildOptionsPtrOutput) SubstitutionOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BuildOptions) *string {
+func (o BuildOptionsPtrOutput) SubstitutionOption() BuildOptionsSubstitutionOptionPtrOutput {
+	return o.ApplyT(func(v *BuildOptions) *BuildOptionsSubstitutionOption {
 		if v == nil {
 			return nil
 		}
 		return v.SubstitutionOption
-	}).(pulumi.StringPtrOutput)
+	}).(BuildOptionsSubstitutionOptionPtrOutput)
 }
 
 // Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration.
@@ -3475,7 +3475,7 @@ func (o InlineSecretResponseArrayOutput) Index(i pulumi.IntInput) InlineSecretRe
 // Defines the network configuration for the pool.
 type NetworkConfig struct {
 	// Option to configure network egress for the workers.
-	EgressOption *string `pulumi:"egressOption"`
+	EgressOption *NetworkConfigEgressOption `pulumi:"egressOption"`
 	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
 	PeeredNetwork string `pulumi:"peeredNetwork"`
 }
@@ -3494,7 +3494,7 @@ type NetworkConfigInput interface {
 // Defines the network configuration for the pool.
 type NetworkConfigArgs struct {
 	// Option to configure network egress for the workers.
-	EgressOption *NetworkConfigEgressOption `pulumi:"egressOption"`
+	EgressOption NetworkConfigEgressOptionPtrInput `pulumi:"egressOption"`
 	// Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
 	PeeredNetwork pulumi.StringInput `pulumi:"peeredNetwork"`
 }
@@ -3578,8 +3578,8 @@ func (o NetworkConfigOutput) ToNetworkConfigPtrOutputWithContext(ctx context.Con
 }
 
 // Option to configure network egress for the workers.
-func (o NetworkConfigOutput) EgressOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkConfig) *string { return v.EgressOption }).(pulumi.StringPtrOutput)
+func (o NetworkConfigOutput) EgressOption() NetworkConfigEgressOptionPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *NetworkConfigEgressOption { return v.EgressOption }).(NetworkConfigEgressOptionPtrOutput)
 }
 
 // Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
@@ -3606,13 +3606,13 @@ func (o NetworkConfigPtrOutput) Elem() NetworkConfigOutput {
 }
 
 // Option to configure network egress for the workers.
-func (o NetworkConfigPtrOutput) EgressOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkConfig) *string {
+func (o NetworkConfigPtrOutput) EgressOption() NetworkConfigEgressOptionPtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *NetworkConfigEgressOption {
 		if v == nil {
 			return nil
 		}
 		return v.EgressOption
-	}).(pulumi.StringPtrOutput)
+	}).(NetworkConfigEgressOptionPtrOutput)
 }
 
 // Immutable. The network definition that the workers are peered to. If this section is left empty, the workers will be peered to `WorkerPool.project_id` on the service producer network. Must be in the format `projects/{project}/global/networks/{network}`, where `{project}` is a project number, such as `12345`, and `{network}` is the name of a VPC network in the project. See [Understanding network configuration options](https://cloud.google.com/cloud-build/docs/custom-workers/set-up-custom-worker-pool-environment#understanding_the_network_configuration_options)
@@ -4357,7 +4357,7 @@ type PubsubConfig struct {
 	// Service account that will make the push request.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-	State *string `pulumi:"state"`
+	State *PubsubConfigState `pulumi:"state"`
 	// The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
 	Topic *string `pulumi:"topic"`
 }
@@ -4378,7 +4378,7 @@ type PubsubConfigArgs struct {
 	// Service account that will make the push request.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
 	// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-	State *PubsubConfigState `pulumi:"state"`
+	State PubsubConfigStatePtrInput `pulumi:"state"`
 	// The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
 	Topic pulumi.StringPtrInput `pulumi:"topic"`
 }
@@ -4467,8 +4467,8 @@ func (o PubsubConfigOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 }
 
 // Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-func (o PubsubConfigOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PubsubConfig) *string { return v.State }).(pulumi.StringPtrOutput)
+func (o PubsubConfigOutput) State() PubsubConfigStatePtrOutput {
+	return o.ApplyT(func(v PubsubConfig) *PubsubConfigState { return v.State }).(PubsubConfigStatePtrOutput)
 }
 
 // The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
@@ -4505,13 +4505,13 @@ func (o PubsubConfigPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 }
 
 // Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-func (o PubsubConfigPtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PubsubConfig) *string {
+func (o PubsubConfigPtrOutput) State() PubsubConfigStatePtrOutput {
+	return o.ApplyT(func(v *PubsubConfig) *PubsubConfigState {
 		if v == nil {
 			return nil
 		}
 		return v.State
-	}).(pulumi.StringPtrOutput)
+	}).(PubsubConfigStatePtrOutput)
 }
 
 // The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
@@ -4720,7 +4720,7 @@ type PullRequestFilter struct {
 	// Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch *string `pulumi:"branch"`
 	// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
-	CommentControl *string `pulumi:"commentControl"`
+	CommentControl *PullRequestFilterCommentControl `pulumi:"commentControl"`
 	// If true, branches that do NOT match the git_ref will trigger a build.
 	InvertRegex *bool `pulumi:"invertRegex"`
 }
@@ -4741,7 +4741,7 @@ type PullRequestFilterArgs struct {
 	// Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
 	Branch pulumi.StringPtrInput `pulumi:"branch"`
 	// Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
-	CommentControl *PullRequestFilterCommentControl `pulumi:"commentControl"`
+	CommentControl PullRequestFilterCommentControlPtrInput `pulumi:"commentControl"`
 	// If true, branches that do NOT match the git_ref will trigger a build.
 	InvertRegex pulumi.BoolPtrInput `pulumi:"invertRegex"`
 }
@@ -4830,8 +4830,8 @@ func (o PullRequestFilterOutput) Branch() pulumi.StringPtrOutput {
 }
 
 // Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
-func (o PullRequestFilterOutput) CommentControl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PullRequestFilter) *string { return v.CommentControl }).(pulumi.StringPtrOutput)
+func (o PullRequestFilterOutput) CommentControl() PullRequestFilterCommentControlPtrOutput {
+	return o.ApplyT(func(v PullRequestFilter) *PullRequestFilterCommentControl { return v.CommentControl }).(PullRequestFilterCommentControlPtrOutput)
 }
 
 // If true, branches that do NOT match the git_ref will trigger a build.
@@ -4868,13 +4868,13 @@ func (o PullRequestFilterPtrOutput) Branch() pulumi.StringPtrOutput {
 }
 
 // Configure builds to run whether a repository owner or collaborator need to comment `/gcbrun`.
-func (o PullRequestFilterPtrOutput) CommentControl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PullRequestFilter) *string {
+func (o PullRequestFilterPtrOutput) CommentControl() PullRequestFilterCommentControlPtrOutput {
+	return o.ApplyT(func(v *PullRequestFilter) *PullRequestFilterCommentControl {
 		if v == nil {
 			return nil
 		}
 		return v.CommentControl
-	}).(pulumi.StringPtrOutput)
+	}).(PullRequestFilterCommentControlPtrOutput)
 }
 
 // If true, branches that do NOT match the git_ref will trigger a build.
@@ -8616,7 +8616,7 @@ type WebhookConfig struct {
 	// Resource name for the secret required as a URL parameter.
 	Secret string `pulumi:"secret"`
 	// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-	State *string `pulumi:"state"`
+	State *WebhookConfigState `pulumi:"state"`
 }
 
 // WebhookConfigInput is an input type that accepts WebhookConfigArgs and WebhookConfigOutput values.
@@ -8635,7 +8635,7 @@ type WebhookConfigArgs struct {
 	// Resource name for the secret required as a URL parameter.
 	Secret pulumi.StringInput `pulumi:"secret"`
 	// Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-	State *WebhookConfigState `pulumi:"state"`
+	State WebhookConfigStatePtrInput `pulumi:"state"`
 }
 
 func (WebhookConfigArgs) ElementType() reflect.Type {
@@ -8722,8 +8722,8 @@ func (o WebhookConfigOutput) Secret() pulumi.StringOutput {
 }
 
 // Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-func (o WebhookConfigOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WebhookConfig) *string { return v.State }).(pulumi.StringPtrOutput)
+func (o WebhookConfigOutput) State() WebhookConfigStatePtrOutput {
+	return o.ApplyT(func(v WebhookConfig) *WebhookConfigState { return v.State }).(WebhookConfigStatePtrOutput)
 }
 
 type WebhookConfigPtrOutput struct{ *pulumi.OutputState }
@@ -8755,13 +8755,13 @@ func (o WebhookConfigPtrOutput) Secret() pulumi.StringPtrOutput {
 }
 
 // Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-func (o WebhookConfigPtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WebhookConfig) *string {
+func (o WebhookConfigPtrOutput) State() WebhookConfigStatePtrOutput {
+	return o.ApplyT(func(v *WebhookConfig) *WebhookConfigState {
 		if v == nil {
 			return nil
 		}
 		return v.State
-	}).(pulumi.StringPtrOutput)
+	}).(WebhookConfigStatePtrOutput)
 }
 
 // WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL.

@@ -771,7 +771,7 @@ type EnvironmentConfig struct {
 	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 	EncryptionConfig *EncryptionConfig `pulumi:"encryptionConfig"`
 	// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-	EnvironmentSize *string `pulumi:"environmentSize"`
+	EnvironmentSize *EnvironmentConfigEnvironmentSize `pulumi:"environmentSize"`
 	// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
 	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The configuration used for the Kubernetes Engine cluster.
@@ -808,7 +808,7 @@ type EnvironmentConfigArgs struct {
 	// Optional. The encryption options for the Cloud Composer environment and its dependencies. Cannot be updated.
 	EncryptionConfig EncryptionConfigPtrInput `pulumi:"encryptionConfig"`
 	// Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-	EnvironmentSize *EnvironmentConfigEnvironmentSize `pulumi:"environmentSize"`
+	EnvironmentSize EnvironmentConfigEnvironmentSizePtrInput `pulumi:"environmentSize"`
 	// Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
 	MaintenanceWindow MaintenanceWindowPtrInput `pulumi:"maintenanceWindow"`
 	// The configuration used for the Kubernetes Engine cluster.
@@ -916,8 +916,8 @@ func (o EnvironmentConfigOutput) EncryptionConfig() EncryptionConfigPtrOutput {
 }
 
 // Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-func (o EnvironmentConfigOutput) EnvironmentSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EnvironmentConfig) *string { return v.EnvironmentSize }).(pulumi.StringPtrOutput)
+func (o EnvironmentConfigOutput) EnvironmentSize() EnvironmentConfigEnvironmentSizePtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigEnvironmentSize { return v.EnvironmentSize }).(EnvironmentConfigEnvironmentSizePtrOutput)
 }
 
 // Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.
@@ -999,13 +999,13 @@ func (o EnvironmentConfigPtrOutput) EncryptionConfig() EncryptionConfigPtrOutput
 }
 
 // Optional. The size of the Cloud Composer environment. This field is supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-func (o EnvironmentConfigPtrOutput) EnvironmentSize() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EnvironmentConfig) *string {
+func (o EnvironmentConfigPtrOutput) EnvironmentSize() EnvironmentConfigEnvironmentSizePtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *EnvironmentConfigEnvironmentSize {
 		if v == nil {
 			return nil
 		}
 		return v.EnvironmentSize
-	}).(pulumi.StringPtrOutput)
+	}).(EnvironmentConfigEnvironmentSizePtrOutput)
 }
 
 // Optional. The maintenance window is the period when Cloud Composer components may undergo maintenance. It is defined so that maintenance is not executed during peak hours or critical time periods. The system will not be under maintenance for every occurrence of this window, but when maintenance is planned, it will be scheduled during the window. The maintenance window period must encompass at least 12 hours per week. This may be split into multiple chunks, each with a size of at least 4 hours. If this value is omitted, Cloud Composer components may be subject to maintenance at any time.

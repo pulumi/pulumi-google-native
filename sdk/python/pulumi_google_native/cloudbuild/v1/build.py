@@ -11,10 +11,10 @@ from . import outputs
 from ._enums import *
 from ._inputs import *
 
-__all__ = ['BuildArgs', 'Build']
+__all__ = ['BuildInitArgs', 'Build']
 
 @pulumi.input_type
-class BuildArgs:
+class BuildInitArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  project: pulumi.Input[str],
@@ -307,19 +307,19 @@ class Build(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: BuildArgs,
+                 args: BuildInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Starts a build with the specified configuration. This method returns a long-running `Operation`, which includes the build ID. Pass the build ID to `GetBuild` to determine the build status (such as `SUCCESS` or `FAILURE`).
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
-        :param BuildArgs args: The arguments to use to populate this resource's properties.
+        :param BuildInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(BuildArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(BuildInitArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -354,7 +354,7 @@ class Build(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = BuildArgs.__new__(BuildArgs)
+            __props__ = BuildInitArgs.__new__(BuildInitArgs)
 
             __props__.__dict__["artifacts"] = artifacts
             __props__.__dict__["available_secrets"] = available_secrets
@@ -412,7 +412,7 @@ class Build(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = BuildArgs.__new__(BuildArgs)
+        __props__ = BuildInitArgs.__new__(BuildInitArgs)
 
         __props__.__dict__["artifacts"] = None
         __props__.__dict__["available_secrets"] = None

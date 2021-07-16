@@ -17,7 +17,7 @@ type AptSettings struct {
 	// An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field cannot be specified with any other patch configuration fields.
 	ExclusivePackages []string `pulumi:"exclusivePackages"`
 	// By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
-	Type *string `pulumi:"type"`
+	Type *AptSettingsType `pulumi:"type"`
 }
 
 // AptSettingsInput is an input type that accepts AptSettingsArgs and AptSettingsOutput values.
@@ -38,7 +38,7 @@ type AptSettingsArgs struct {
 	// An exclusive list of packages to be updated. These are the only packages that will be updated. If these packages are not installed, they will be ignored. This field cannot be specified with any other patch configuration fields.
 	ExclusivePackages pulumi.StringArrayInput `pulumi:"exclusivePackages"`
 	// By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
-	Type *AptSettingsType `pulumi:"type"`
+	Type AptSettingsTypePtrInput `pulumi:"type"`
 }
 
 func (AptSettingsArgs) ElementType() reflect.Type {
@@ -130,8 +130,8 @@ func (o AptSettingsOutput) ExclusivePackages() pulumi.StringArrayOutput {
 }
 
 // By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
-func (o AptSettingsOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AptSettings) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o AptSettingsOutput) Type() AptSettingsTypePtrOutput {
+	return o.ApplyT(func(v AptSettings) *AptSettingsType { return v.Type }).(AptSettingsTypePtrOutput)
 }
 
 type AptSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -173,13 +173,13 @@ func (o AptSettingsPtrOutput) ExclusivePackages() pulumi.StringArrayOutput {
 }
 
 // By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead.
-func (o AptSettingsPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AptSettings) *string {
+func (o AptSettingsPtrOutput) Type() AptSettingsTypePtrOutput {
+	return o.ApplyT(func(v *AptSettings) *AptSettingsType {
 		if v == nil {
 			return nil
 		}
 		return v.Type
-	}).(pulumi.StringPtrOutput)
+	}).(AptSettingsTypePtrOutput)
 }
 
 // Apt patching is completed by executing `apt-get update && apt-get upgrade`. Additional options can be set to control how this is executed.
@@ -514,7 +514,7 @@ type ExecStepConfig struct {
 	// A Cloud Storage object containing the executable.
 	GcsObject *GcsObject `pulumi:"gcsObject"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
-	Interpreter *string `pulumi:"interpreter"`
+	Interpreter *ExecStepConfigInterpreter `pulumi:"interpreter"`
 	// An absolute path to the executable on the VM.
 	LocalPath *string `pulumi:"localPath"`
 }
@@ -537,7 +537,7 @@ type ExecStepConfigArgs struct {
 	// A Cloud Storage object containing the executable.
 	GcsObject GcsObjectPtrInput `pulumi:"gcsObject"`
 	// The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
-	Interpreter *ExecStepConfigInterpreter `pulumi:"interpreter"`
+	Interpreter ExecStepConfigInterpreterPtrInput `pulumi:"interpreter"`
 	// An absolute path to the executable on the VM.
 	LocalPath pulumi.StringPtrInput `pulumi:"localPath"`
 }
@@ -631,8 +631,8 @@ func (o ExecStepConfigOutput) GcsObject() GcsObjectPtrOutput {
 }
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
-func (o ExecStepConfigOutput) Interpreter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ExecStepConfig) *string { return v.Interpreter }).(pulumi.StringPtrOutput)
+func (o ExecStepConfigOutput) Interpreter() ExecStepConfigInterpreterPtrOutput {
+	return o.ApplyT(func(v ExecStepConfig) *ExecStepConfigInterpreter { return v.Interpreter }).(ExecStepConfigInterpreterPtrOutput)
 }
 
 // An absolute path to the executable on the VM.
@@ -679,13 +679,13 @@ func (o ExecStepConfigPtrOutput) GcsObject() GcsObjectPtrOutput {
 }
 
 // The script interpreter to use to run the script. If no interpreter is specified the script will be executed directly, which will likely only succeed for scripts with [shebang lines] (https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
-func (o ExecStepConfigPtrOutput) Interpreter() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExecStepConfig) *string {
+func (o ExecStepConfigPtrOutput) Interpreter() ExecStepConfigInterpreterPtrOutput {
+	return o.ApplyT(func(v *ExecStepConfig) *ExecStepConfigInterpreter {
 		if v == nil {
 			return nil
 		}
 		return v.Interpreter
-	}).(pulumi.StringPtrOutput)
+	}).(ExecStepConfigInterpreterPtrOutput)
 }
 
 // An absolute path to the executable on the VM.
@@ -2507,7 +2507,7 @@ type PatchConfig struct {
 	// The `ExecStep` to run before the patch update.
 	PreStep *ExecStep `pulumi:"preStep"`
 	// Post-patch reboot settings.
-	RebootConfig *string `pulumi:"rebootConfig"`
+	RebootConfig *PatchConfigRebootConfig `pulumi:"rebootConfig"`
 	// Windows update settings. Use this override the default windows patch rules.
 	WindowsUpdate *WindowsUpdateSettings `pulumi:"windowsUpdate"`
 	// Yum update settings. Use this setting to override the default `yum` patch rules.
@@ -2538,7 +2538,7 @@ type PatchConfigArgs struct {
 	// The `ExecStep` to run before the patch update.
 	PreStep ExecStepPtrInput `pulumi:"preStep"`
 	// Post-patch reboot settings.
-	RebootConfig *PatchConfigRebootConfig `pulumi:"rebootConfig"`
+	RebootConfig PatchConfigRebootConfigPtrInput `pulumi:"rebootConfig"`
 	// Windows update settings. Use this override the default windows patch rules.
 	WindowsUpdate WindowsUpdateSettingsPtrInput `pulumi:"windowsUpdate"`
 	// Yum update settings. Use this setting to override the default `yum` patch rules.
@@ -2646,8 +2646,8 @@ func (o PatchConfigOutput) PreStep() ExecStepPtrOutput {
 }
 
 // Post-patch reboot settings.
-func (o PatchConfigOutput) RebootConfig() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PatchConfig) *string { return v.RebootConfig }).(pulumi.StringPtrOutput)
+func (o PatchConfigOutput) RebootConfig() PatchConfigRebootConfigPtrOutput {
+	return o.ApplyT(func(v PatchConfig) *PatchConfigRebootConfig { return v.RebootConfig }).(PatchConfigRebootConfigPtrOutput)
 }
 
 // Windows update settings. Use this override the default windows patch rules.
@@ -2724,13 +2724,13 @@ func (o PatchConfigPtrOutput) PreStep() ExecStepPtrOutput {
 }
 
 // Post-patch reboot settings.
-func (o PatchConfigPtrOutput) RebootConfig() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PatchConfig) *string {
+func (o PatchConfigPtrOutput) RebootConfig() PatchConfigRebootConfigPtrOutput {
+	return o.ApplyT(func(v *PatchConfig) *PatchConfigRebootConfig {
 		if v == nil {
 			return nil
 		}
 		return v.RebootConfig
-	}).(pulumi.StringPtrOutput)
+	}).(PatchConfigRebootConfigPtrOutput)
 }
 
 // Windows update settings. Use this override the default windows patch rules.
@@ -3655,7 +3655,7 @@ type PatchRollout struct {
 	// The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
 	DisruptionBudget *FixedOrPercent `pulumi:"disruptionBudget"`
 	// Mode of the patch rollout.
-	Mode *string `pulumi:"mode"`
+	Mode *PatchRolloutMode `pulumi:"mode"`
 }
 
 // PatchRolloutInput is an input type that accepts PatchRolloutArgs and PatchRolloutOutput values.
@@ -3674,7 +3674,7 @@ type PatchRolloutArgs struct {
 	// The maximum number (or percentage) of VMs per zone to disrupt at any given moment. The number of VMs calculated from multiplying the percentage by the total number of VMs in a zone is rounded up. During patching, a VM is considered disrupted from the time the agent is notified to begin until patching has completed. This disruption time includes the time to complete reboot and any post-patch steps. A VM contributes to the disruption budget if its patching operation fails either when applying the patches, running pre or post patch steps, or if it fails to respond with a success notification before timing out. VMs that are not running or do not have an active agent do not count toward this disruption budget. For zone-by-zone rollouts, if the disruption budget in a zone is exceeded, the patch job stops, because continuing to the next zone requires completion of the patch process in the previous zone. For example, if the disruption budget has a fixed value of `10`, and 8 VMs fail to patch in the current zone, the patch job continues to patch 2 VMs at a time until the zone is completed. When that zone is completed successfully, patching begins with 10 VMs at a time in the next zone. If 10 VMs in the next zone fail to patch, the patch job stops.
 	DisruptionBudget FixedOrPercentPtrInput `pulumi:"disruptionBudget"`
 	// Mode of the patch rollout.
-	Mode *PatchRolloutMode `pulumi:"mode"`
+	Mode PatchRolloutModePtrInput `pulumi:"mode"`
 }
 
 func (PatchRolloutArgs) ElementType() reflect.Type {
@@ -3761,8 +3761,8 @@ func (o PatchRolloutOutput) DisruptionBudget() FixedOrPercentPtrOutput {
 }
 
 // Mode of the patch rollout.
-func (o PatchRolloutOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PatchRollout) *string { return v.Mode }).(pulumi.StringPtrOutput)
+func (o PatchRolloutOutput) Mode() PatchRolloutModePtrOutput {
+	return o.ApplyT(func(v PatchRollout) *PatchRolloutMode { return v.Mode }).(PatchRolloutModePtrOutput)
 }
 
 type PatchRolloutPtrOutput struct{ *pulumi.OutputState }
@@ -3794,13 +3794,13 @@ func (o PatchRolloutPtrOutput) DisruptionBudget() FixedOrPercentPtrOutput {
 }
 
 // Mode of the patch rollout.
-func (o PatchRolloutPtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PatchRollout) *string {
+func (o PatchRolloutPtrOutput) Mode() PatchRolloutModePtrOutput {
+	return o.ApplyT(func(v *PatchRollout) *PatchRolloutMode {
 		if v == nil {
 			return nil
 		}
 		return v.Mode
-	}).(pulumi.StringPtrOutput)
+	}).(PatchRolloutModePtrOutput)
 }
 
 // Patch rollout configuration specifications. Contains details on the concurrency control when applying patch(es) to all targeted VMs.
@@ -3961,7 +3961,7 @@ type RecurringSchedule struct {
 	// Optional. The end time at which a recurring patch deployment schedule is no longer active.
 	EndTime *string `pulumi:"endTime"`
 	// The frequency unit of this recurring schedule.
-	Frequency string `pulumi:"frequency"`
+	Frequency RecurringScheduleFrequency `pulumi:"frequency"`
 	// Schedule with monthly executions.
 	Monthly MonthlySchedule `pulumi:"monthly"`
 	// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
@@ -3990,7 +3990,7 @@ type RecurringScheduleArgs struct {
 	// Optional. The end time at which a recurring patch deployment schedule is no longer active.
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
 	// The frequency unit of this recurring schedule.
-	Frequency RecurringScheduleFrequency `pulumi:"frequency"`
+	Frequency RecurringScheduleFrequencyInput `pulumi:"frequency"`
 	// Schedule with monthly executions.
 	Monthly MonthlyScheduleInput `pulumi:"monthly"`
 	// Optional. The time that the recurring schedule becomes effective. Defaults to `create_time` of the patch deployment.
@@ -4087,8 +4087,8 @@ func (o RecurringScheduleOutput) EndTime() pulumi.StringPtrOutput {
 }
 
 // The frequency unit of this recurring schedule.
-func (o RecurringScheduleOutput) Frequency() pulumi.StringOutput {
-	return o.ApplyT(func(v RecurringSchedule) string { return v.Frequency }).(pulumi.StringOutput)
+func (o RecurringScheduleOutput) Frequency() RecurringScheduleFrequencyOutput {
+	return o.ApplyT(func(v RecurringSchedule) RecurringScheduleFrequency { return v.Frequency }).(RecurringScheduleFrequencyOutput)
 }
 
 // Schedule with monthly executions.
@@ -4145,13 +4145,13 @@ func (o RecurringSchedulePtrOutput) EndTime() pulumi.StringPtrOutput {
 }
 
 // The frequency unit of this recurring schedule.
-func (o RecurringSchedulePtrOutput) Frequency() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RecurringSchedule) *string {
+func (o RecurringSchedulePtrOutput) Frequency() RecurringScheduleFrequencyPtrOutput {
+	return o.ApplyT(func(v *RecurringSchedule) *RecurringScheduleFrequency {
 		if v == nil {
 			return nil
 		}
 		return &v.Frequency
-	}).(pulumi.StringPtrOutput)
+	}).(RecurringScheduleFrequencyPtrOutput)
 }
 
 // Schedule with monthly executions.
@@ -5162,7 +5162,7 @@ func (o TimeZoneResponsePtrOutput) Version() pulumi.StringPtrOutput {
 // Represents one week day in a month. An example is "the 4th Sunday".
 type WeekDayOfMonth struct {
 	// A day of the week.
-	DayOfWeek string `pulumi:"dayOfWeek"`
+	DayOfWeek WeekDayOfMonthDayOfWeek `pulumi:"dayOfWeek"`
 	// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 	WeekOrdinal int `pulumi:"weekOrdinal"`
 }
@@ -5181,7 +5181,7 @@ type WeekDayOfMonthInput interface {
 // Represents one week day in a month. An example is "the 4th Sunday".
 type WeekDayOfMonthArgs struct {
 	// A day of the week.
-	DayOfWeek WeekDayOfMonthDayOfWeek `pulumi:"dayOfWeek"`
+	DayOfWeek WeekDayOfMonthDayOfWeekInput `pulumi:"dayOfWeek"`
 	// Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
 	WeekOrdinal pulumi.IntInput `pulumi:"weekOrdinal"`
 }
@@ -5265,8 +5265,8 @@ func (o WeekDayOfMonthOutput) ToWeekDayOfMonthPtrOutputWithContext(ctx context.C
 }
 
 // A day of the week.
-func (o WeekDayOfMonthOutput) DayOfWeek() pulumi.StringOutput {
-	return o.ApplyT(func(v WeekDayOfMonth) string { return v.DayOfWeek }).(pulumi.StringOutput)
+func (o WeekDayOfMonthOutput) DayOfWeek() WeekDayOfMonthDayOfWeekOutput {
+	return o.ApplyT(func(v WeekDayOfMonth) WeekDayOfMonthDayOfWeek { return v.DayOfWeek }).(WeekDayOfMonthDayOfWeekOutput)
 }
 
 // Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
@@ -5293,13 +5293,13 @@ func (o WeekDayOfMonthPtrOutput) Elem() WeekDayOfMonthOutput {
 }
 
 // A day of the week.
-func (o WeekDayOfMonthPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WeekDayOfMonth) *string {
+func (o WeekDayOfMonthPtrOutput) DayOfWeek() WeekDayOfMonthDayOfWeekPtrOutput {
+	return o.ApplyT(func(v *WeekDayOfMonth) *WeekDayOfMonthDayOfWeek {
 		if v == nil {
 			return nil
 		}
 		return &v.DayOfWeek
-	}).(pulumi.StringPtrOutput)
+	}).(WeekDayOfMonthDayOfWeekPtrOutput)
 }
 
 // Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month.
@@ -5468,7 +5468,7 @@ func (o WeekDayOfMonthResponsePtrOutput) WeekOrdinal() pulumi.IntPtrOutput {
 // Represents a weekly schedule.
 type WeeklySchedule struct {
 	// Day of the week.
-	DayOfWeek string `pulumi:"dayOfWeek"`
+	DayOfWeek WeeklyScheduleDayOfWeek `pulumi:"dayOfWeek"`
 }
 
 // WeeklyScheduleInput is an input type that accepts WeeklyScheduleArgs and WeeklyScheduleOutput values.
@@ -5485,7 +5485,7 @@ type WeeklyScheduleInput interface {
 // Represents a weekly schedule.
 type WeeklyScheduleArgs struct {
 	// Day of the week.
-	DayOfWeek WeeklyScheduleDayOfWeek `pulumi:"dayOfWeek"`
+	DayOfWeek WeeklyScheduleDayOfWeekInput `pulumi:"dayOfWeek"`
 }
 
 func (WeeklyScheduleArgs) ElementType() reflect.Type {
@@ -5567,8 +5567,8 @@ func (o WeeklyScheduleOutput) ToWeeklySchedulePtrOutputWithContext(ctx context.C
 }
 
 // Day of the week.
-func (o WeeklyScheduleOutput) DayOfWeek() pulumi.StringOutput {
-	return o.ApplyT(func(v WeeklySchedule) string { return v.DayOfWeek }).(pulumi.StringOutput)
+func (o WeeklyScheduleOutput) DayOfWeek() WeeklyScheduleDayOfWeekOutput {
+	return o.ApplyT(func(v WeeklySchedule) WeeklyScheduleDayOfWeek { return v.DayOfWeek }).(WeeklyScheduleDayOfWeekOutput)
 }
 
 type WeeklySchedulePtrOutput struct{ *pulumi.OutputState }
@@ -5590,13 +5590,13 @@ func (o WeeklySchedulePtrOutput) Elem() WeeklyScheduleOutput {
 }
 
 // Day of the week.
-func (o WeeklySchedulePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WeeklySchedule) *string {
+func (o WeeklySchedulePtrOutput) DayOfWeek() WeeklyScheduleDayOfWeekPtrOutput {
+	return o.ApplyT(func(v *WeeklySchedule) *WeeklyScheduleDayOfWeek {
 		if v == nil {
 			return nil
 		}
 		return &v.DayOfWeek
-	}).(pulumi.StringPtrOutput)
+	}).(WeeklyScheduleDayOfWeekPtrOutput)
 }
 
 // Represents a weekly schedule.
@@ -5736,7 +5736,7 @@ func (o WeeklyScheduleResponsePtrOutput) DayOfWeek() pulumi.StringPtrOutput {
 // Windows patching is performed using the Windows Update Agent.
 type WindowsUpdateSettings struct {
 	// Only apply updates of these windows update classifications. If empty, all updates are applied.
-	Classifications []string `pulumi:"classifications"`
+	Classifications []WindowsUpdateSettingsClassificationsItem `pulumi:"classifications"`
 	// List of KBs to exclude from update.
 	Excludes []string `pulumi:"excludes"`
 	// An exclusive list of kbs to be updated. These are the only patches that will be updated. This field must not be used with other patch configurations.
@@ -5843,8 +5843,8 @@ func (o WindowsUpdateSettingsOutput) ToWindowsUpdateSettingsPtrOutputWithContext
 }
 
 // Only apply updates of these windows update classifications. If empty, all updates are applied.
-func (o WindowsUpdateSettingsOutput) Classifications() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v WindowsUpdateSettings) []string { return v.Classifications }).(pulumi.StringArrayOutput)
+func (o WindowsUpdateSettingsOutput) Classifications() WindowsUpdateSettingsClassificationsItemArrayOutput {
+	return o.ApplyT(func(v WindowsUpdateSettings) []WindowsUpdateSettingsClassificationsItem { return v.Classifications }).(WindowsUpdateSettingsClassificationsItemArrayOutput)
 }
 
 // List of KBs to exclude from update.
@@ -5876,13 +5876,13 @@ func (o WindowsUpdateSettingsPtrOutput) Elem() WindowsUpdateSettingsOutput {
 }
 
 // Only apply updates of these windows update classifications. If empty, all updates are applied.
-func (o WindowsUpdateSettingsPtrOutput) Classifications() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *WindowsUpdateSettings) []string {
+func (o WindowsUpdateSettingsPtrOutput) Classifications() WindowsUpdateSettingsClassificationsItemArrayOutput {
+	return o.ApplyT(func(v *WindowsUpdateSettings) []WindowsUpdateSettingsClassificationsItem {
 		if v == nil {
 			return nil
 		}
 		return v.Classifications
-	}).(pulumi.StringArrayOutput)
+	}).(WindowsUpdateSettingsClassificationsItemArrayOutput)
 }
 
 // List of KBs to exclude from update.

@@ -62,29 +62,9 @@ func GetEnvgroup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Envgroup resources.
 type envgroupState struct {
-	// The time at which the environment group was created as milliseconds since epoch.
-	CreatedAt *string `pulumi:"createdAt"`
-	// Host names for this environment group.
-	Hostnames []string `pulumi:"hostnames"`
-	// The time at which the environment group was last updated as milliseconds since epoch.
-	LastModifiedAt *string `pulumi:"lastModifiedAt"`
-	// ID of the environment group.
-	Name *string `pulumi:"name"`
-	// State of the environment group. Values other than ACTIVE means the resource is not ready to use.
-	State *string `pulumi:"state"`
 }
 
 type EnvgroupState struct {
-	// The time at which the environment group was created as milliseconds since epoch.
-	CreatedAt pulumi.StringPtrInput
-	// Host names for this environment group.
-	Hostnames pulumi.StringArrayInput
-	// The time at which the environment group was last updated as milliseconds since epoch.
-	LastModifiedAt pulumi.StringPtrInput
-	// ID of the environment group.
-	Name pulumi.StringPtrInput
-	// State of the environment group. Values other than ACTIVE means the resource is not ready to use.
-	State pulumi.StringPtrInput
 }
 
 func (EnvgroupState) ElementType() reflect.Type {

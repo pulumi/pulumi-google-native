@@ -559,7 +559,7 @@ func (o GoogleCloudRecaptchaenterpriseV1IOSKeySettingsResponsePtrOutput) Allowed
 // Options for user acceptance testing.
 type GoogleCloudRecaptchaenterpriseV1TestingOptions struct {
 	// For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
-	TestingChallenge *string `pulumi:"testingChallenge"`
+	TestingChallenge *GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge `pulumi:"testingChallenge"`
 	// All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
 	TestingScore *float64 `pulumi:"testingScore"`
 }
@@ -578,7 +578,7 @@ type GoogleCloudRecaptchaenterpriseV1TestingOptionsInput interface {
 // Options for user acceptance testing.
 type GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs struct {
 	// For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
-	TestingChallenge *GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge `pulumi:"testingChallenge"`
+	TestingChallenge GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengePtrInput `pulumi:"testingChallenge"`
 	// All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
 	TestingScore pulumi.Float64PtrInput `pulumi:"testingScore"`
 }
@@ -662,8 +662,10 @@ func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsOutput) ToGoogleCloudRecap
 }
 
 // For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
-func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsOutput) TestingChallenge() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1TestingOptions) *string { return v.TestingChallenge }).(pulumi.StringPtrOutput)
+func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsOutput) TestingChallenge() GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengePtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1TestingOptions) *GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge {
+		return v.TestingChallenge
+	}).(GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengePtrOutput)
 }
 
 // All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
@@ -692,13 +694,13 @@ func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrOutput) Elem() GoogleCl
 }
 
 // For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
-func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrOutput) TestingChallenge() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1TestingOptions) *string {
+func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrOutput) TestingChallenge() GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1TestingOptions) *GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallenge {
 		if v == nil {
 			return nil
 		}
 		return v.TestingChallenge
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengePtrOutput)
 }
 
 // All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
@@ -875,9 +877,9 @@ type GoogleCloudRecaptchaenterpriseV1WebKeySettings struct {
 	// Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
 	AllowedDomains []string `pulumi:"allowedDomains"`
 	// Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
-	ChallengeSecurityPreference *string `pulumi:"challengeSecurityPreference"`
+	ChallengeSecurityPreference *GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference `pulumi:"challengeSecurityPreference"`
 	// Describes how this key is integrated with the website.
-	IntegrationType string `pulumi:"integrationType"`
+	IntegrationType GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType `pulumi:"integrationType"`
 }
 
 // GoogleCloudRecaptchaenterpriseV1WebKeySettingsInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs and GoogleCloudRecaptchaenterpriseV1WebKeySettingsOutput values.
@@ -900,9 +902,9 @@ type GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs struct {
 	// Domains or subdomains of websites allowed to use the key. All subdomains of an allowed domain are automatically allowed. A valid domain requires a host and must not include any path, port, query or fragment. Examples: 'example.com' or 'subdomain.example.com'
 	AllowedDomains pulumi.StringArrayInput `pulumi:"allowedDomains"`
 	// Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
-	ChallengeSecurityPreference *GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference `pulumi:"challengeSecurityPreference"`
+	ChallengeSecurityPreference GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferencePtrInput `pulumi:"challengeSecurityPreference"`
 	// Describes how this key is integrated with the website.
-	IntegrationType GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType `pulumi:"integrationType"`
+	IntegrationType GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeInput `pulumi:"integrationType"`
 }
 
 func (GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs) ElementType() reflect.Type {
@@ -999,13 +1001,17 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsOutput) AllowedDomains() p
 }
 
 // Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
-func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsOutput) ChallengeSecurityPreference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1WebKeySettings) *string { return v.ChallengeSecurityPreference }).(pulumi.StringPtrOutput)
+func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsOutput) ChallengeSecurityPreference() GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferencePtrOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1WebKeySettings) *GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference {
+		return v.ChallengeSecurityPreference
+	}).(GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferencePtrOutput)
 }
 
 // Describes how this key is integrated with the website.
-func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsOutput) IntegrationType() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1WebKeySettings) string { return v.IntegrationType }).(pulumi.StringOutput)
+func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsOutput) IntegrationType() GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeOutput {
+	return o.ApplyT(func(v GoogleCloudRecaptchaenterpriseV1WebKeySettings) GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType {
+		return v.IntegrationType
+	}).(GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeOutput)
 }
 
 type GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput struct{ *pulumi.OutputState }
@@ -1059,23 +1065,23 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput) AllowedDomains(
 }
 
 // Settings for the frequency and difficulty at which this key triggers captcha challenges. This should only be specified for IntegrationTypes CHECKBOX and INVISIBLE.
-func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput) ChallengeSecurityPreference() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1WebKeySettings) *string {
+func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput) ChallengeSecurityPreference() GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferencePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1WebKeySettings) *GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreference {
 		if v == nil {
 			return nil
 		}
 		return v.ChallengeSecurityPreference
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferencePtrOutput)
 }
 
 // Describes how this key is integrated with the website.
-func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput) IntegrationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1WebKeySettings) *string {
+func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput) IntegrationType() GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRecaptchaenterpriseV1WebKeySettings) *GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationType {
 		if v == nil {
 			return nil
 		}
 		return &v.IntegrationType
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypePtrOutput)
 }
 
 // Settings specific to keys that can be used by websites.

@@ -14,7 +14,12 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemStockState(str, En
     Optional. Online stock state of the catalog item. Default is `IN_STOCK`.
     """
     STOCK_STATE_UNSPECIFIED = "STOCK_STATE_UNSPECIFIED"
+    """Default item stock status. Should never be used."""
     IN_STOCK = "IN_STOCK"
+    """Item in stock."""
     OUT_OF_STOCK = "OUT_OF_STOCK"
+    """Item out of stock."""
     PREORDER = "PREORDER"
+    """Item that is in pre-order state."""
     BACKORDER = "BACKORDER"
+    """Item that is back-ordered (i.e. temporarily out of stock)."""

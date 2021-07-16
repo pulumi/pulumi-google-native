@@ -1618,7 +1618,7 @@ type GoogleIamV1AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *string `pulumi:"logType"`
+	LogType *GoogleIamV1AuditLogConfigLogType `pulumi:"logType"`
 }
 
 // GoogleIamV1AuditLogConfigInput is an input type that accepts GoogleIamV1AuditLogConfigArgs and GoogleIamV1AuditLogConfigOutput values.
@@ -1637,7 +1637,7 @@ type GoogleIamV1AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *GoogleIamV1AuditLogConfigLogType `pulumi:"logType"`
+	LogType GoogleIamV1AuditLogConfigLogTypePtrInput `pulumi:"logType"`
 }
 
 func (GoogleIamV1AuditLogConfigArgs) ElementType() reflect.Type {
@@ -1698,8 +1698,8 @@ func (o GoogleIamV1AuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOut
 }
 
 // The log type that this config enables.
-func (o GoogleIamV1AuditLogConfigOutput) LogType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleIamV1AuditLogConfig) *string { return v.LogType }).(pulumi.StringPtrOutput)
+func (o GoogleIamV1AuditLogConfigOutput) LogType() GoogleIamV1AuditLogConfigLogTypePtrOutput {
+	return o.ApplyT(func(v GoogleIamV1AuditLogConfig) *GoogleIamV1AuditLogConfigLogType { return v.LogType }).(GoogleIamV1AuditLogConfigLogTypePtrOutput)
 }
 
 type GoogleIamV1AuditLogConfigArrayOutput struct{ *pulumi.OutputState }

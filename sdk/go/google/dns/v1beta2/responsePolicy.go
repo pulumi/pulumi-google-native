@@ -59,27 +59,9 @@ func GetResponsePolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ResponsePolicy resources.
 type responsePolicyState struct {
-	// User-provided description for this Response Policy.
-	Description *string `pulumi:"description"`
-	// The list of Google Kubernetes Engine clusters to which this response policy is applied.
-	GkeClusters []ResponsePolicyGKEClusterResponse `pulumi:"gkeClusters"`
-	Kind        *string                            `pulumi:"kind"`
-	// List of network names specifying networks to which this policy is applied.
-	Networks []ResponsePolicyNetworkResponse `pulumi:"networks"`
-	// User assigned name for this Response Policy.
-	ResponsePolicyName *string `pulumi:"responsePolicyName"`
 }
 
 type ResponsePolicyState struct {
-	// User-provided description for this Response Policy.
-	Description pulumi.StringPtrInput
-	// The list of Google Kubernetes Engine clusters to which this response policy is applied.
-	GkeClusters ResponsePolicyGKEClusterResponseArrayInput
-	Kind        pulumi.StringPtrInput
-	// List of network names specifying networks to which this policy is applied.
-	Networks ResponsePolicyNetworkResponseArrayInput
-	// User assigned name for this Response Policy.
-	ResponsePolicyName pulumi.StringPtrInput
 }
 
 func (ResponsePolicyState) ElementType() reflect.Type {

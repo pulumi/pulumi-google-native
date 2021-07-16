@@ -64,33 +64,9 @@ func GetTopic(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Topic resources.
 type topicState struct {
-	// The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
-	KmsKeyName *string `pulumi:"kmsKeyName"`
-	// See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
-	Labels map[string]string `pulumi:"labels"`
-	// Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
-	MessageStoragePolicy *MessageStoragePolicyResponse `pulumi:"messageStoragePolicy"`
-	// The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
-	Name *string `pulumi:"name"`
-	// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
-	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
-	// Settings for validating messages published against a schema.
-	SchemaSettings *SchemaSettingsResponse `pulumi:"schemaSettings"`
 }
 
 type TopicState struct {
-	// The resource name of the Cloud KMS CryptoKey to be used to protect access to messages published on this topic. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
-	KmsKeyName pulumi.StringPtrInput
-	// See [Creating and managing labels] (https://cloud.google.com/pubsub/docs/labels).
-	Labels pulumi.StringMapInput
-	// Policy constraining the set of Google Cloud Platform regions where messages published to the topic may be stored. If not present, then no constraints are in effect.
-	MessageStoragePolicy MessageStoragePolicyResponsePtrInput
-	// The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
-	Name pulumi.StringPtrInput
-	// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
-	SatisfiesPzs pulumi.BoolPtrInput
-	// Settings for validating messages published against a schema.
-	SchemaSettings SchemaSettingsResponsePtrInput
 }
 
 func (TopicState) ElementType() reflect.Type {

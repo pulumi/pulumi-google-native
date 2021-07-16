@@ -60,25 +60,9 @@ func GetAttestor(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Attestor resources.
 type attestorState struct {
-	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
-	Description *string `pulumi:"description"`
-	// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
-	Name *string `pulumi:"name"`
-	// Time when the attestor was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
-	// This specifies how an attestation will be read, and how it will be used during policy enforcement.
-	UserOwnedGrafeasNote *UserOwnedGrafeasNoteResponse `pulumi:"userOwnedGrafeasNote"`
 }
 
 type AttestorState struct {
-	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
-	Description pulumi.StringPtrInput
-	// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
-	Name pulumi.StringPtrInput
-	// Time when the attestor was last updated.
-	UpdateTime pulumi.StringPtrInput
-	// This specifies how an attestation will be read, and how it will be used during policy enforcement.
-	UserOwnedGrafeasNote UserOwnedGrafeasNoteResponsePtrInput
 }
 
 func (AttestorState) ElementType() reflect.Type {

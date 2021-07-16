@@ -11,7 +11,7 @@ import (
 )
 
 // The format of packages that are stored in the repository.
-type RepositoryFormat pulumi.String
+type RepositoryFormat string
 
 const (
 	// Unspecified package format.
@@ -29,7 +29,23 @@ const (
 )
 
 func (RepositoryFormat) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*RepositoryFormat)(nil)).Elem()
+}
+
+func (e RepositoryFormat) ToRepositoryFormatOutput() RepositoryFormatOutput {
+	return pulumi.ToOutput(e).(RepositoryFormatOutput)
+}
+
+func (e RepositoryFormat) ToRepositoryFormatOutputWithContext(ctx context.Context) RepositoryFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RepositoryFormatOutput)
+}
+
+func (e RepositoryFormat) ToRepositoryFormatPtrOutput() RepositoryFormatPtrOutput {
+	return e.ToRepositoryFormatPtrOutputWithContext(context.Background())
+}
+
+func (e RepositoryFormat) ToRepositoryFormatPtrOutputWithContext(ctx context.Context) RepositoryFormatPtrOutput {
+	return RepositoryFormat(e).ToRepositoryFormatOutputWithContext(ctx).ToRepositoryFormatPtrOutputWithContext(ctx)
 }
 
 func (e RepositoryFormat) ToStringOutput() pulumi.StringOutput {
@@ -46,4 +62,130 @@ func (e RepositoryFormat) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e RepositoryFormat) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RepositoryFormatOutput struct{ *pulumi.OutputState }
+
+func (RepositoryFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryFormat)(nil)).Elem()
+}
+
+func (o RepositoryFormatOutput) ToRepositoryFormatOutput() RepositoryFormatOutput {
+	return o
+}
+
+func (o RepositoryFormatOutput) ToRepositoryFormatOutputWithContext(ctx context.Context) RepositoryFormatOutput {
+	return o
+}
+
+func (o RepositoryFormatOutput) ToRepositoryFormatPtrOutput() RepositoryFormatPtrOutput {
+	return o.ToRepositoryFormatPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryFormatOutput) ToRepositoryFormatPtrOutputWithContext(ctx context.Context) RepositoryFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryFormat) *RepositoryFormat {
+		return &v
+	}).(RepositoryFormatPtrOutput)
+}
+
+func (o RepositoryFormatOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RepositoryFormatOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RepositoryFormat) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RepositoryFormatOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryFormatOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RepositoryFormat) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RepositoryFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryFormatPtrOutput) ElementType() reflect.Type {
+	return repositoryFormatPtrType
+}
+
+func (o RepositoryFormatPtrOutput) ToRepositoryFormatPtrOutput() RepositoryFormatPtrOutput {
+	return o
+}
+
+func (o RepositoryFormatPtrOutput) ToRepositoryFormatPtrOutputWithContext(ctx context.Context) RepositoryFormatPtrOutput {
+	return o
+}
+
+func (o RepositoryFormatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RepositoryFormat) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RepositoryFormatPtrOutput) Elem() RepositoryFormatOutput {
+	return o.ApplyT(func(v *RepositoryFormat) RepositoryFormat {
+		var ret RepositoryFormat
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(RepositoryFormatOutput)
+}
+
+// RepositoryFormatInput is an input type that accepts RepositoryFormatArgs and RepositoryFormatOutput values.
+// You can construct a concrete instance of `RepositoryFormatInput` via:
+//
+//          RepositoryFormatArgs{...}
+type RepositoryFormatInput interface {
+	pulumi.Input
+
+	ToRepositoryFormatOutput() RepositoryFormatOutput
+	ToRepositoryFormatOutputWithContext(context.Context) RepositoryFormatOutput
+}
+
+var repositoryFormatPtrType = reflect.TypeOf((**RepositoryFormat)(nil)).Elem()
+
+type RepositoryFormatPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryFormatPtrOutput() RepositoryFormatPtrOutput
+	ToRepositoryFormatPtrOutputWithContext(context.Context) RepositoryFormatPtrOutput
+}
+
+type repositoryFormatPtr string
+
+func RepositoryFormatPtr(v string) RepositoryFormatPtrInput {
+	return (*repositoryFormatPtr)(&v)
+}
+
+func (*repositoryFormatPtr) ElementType() reflect.Type {
+	return repositoryFormatPtrType
+}
+
+func (in *repositoryFormatPtr) ToRepositoryFormatPtrOutput() RepositoryFormatPtrOutput {
+	return pulumi.ToOutput(in).(RepositoryFormatPtrOutput)
+}
+
+func (in *repositoryFormatPtr) ToRepositoryFormatPtrOutputWithContext(ctx context.Context) RepositoryFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RepositoryFormatPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(RepositoryFormatOutput{})
+	pulumi.RegisterOutputType(RepositoryFormatPtrOutput{})
 }

@@ -54,17 +54,9 @@ func GetFolderPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FolderPolicy resources.
 type folderPolicyState struct {
-	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
-	Name *string `pulumi:"name"`
-	// Basic information about the Organization Policy.
-	Spec *GoogleCloudOrgpolicyV2PolicySpecResponse `pulumi:"spec"`
 }
 
 type FolderPolicyState struct {
-	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
-	Name pulumi.StringPtrInput
-	// Basic information about the Organization Policy.
-	Spec GoogleCloudOrgpolicyV2PolicySpecResponsePtrInput
 }
 
 func (FolderPolicyState) ElementType() reflect.Type {

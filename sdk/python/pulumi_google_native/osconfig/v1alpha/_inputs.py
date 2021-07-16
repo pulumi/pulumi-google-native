@@ -11,20 +11,17 @@ from ._enums import *
 
 __all__ = [
     'FixedOrPercentArgs',
-    'OSPolicyArgs',
     'OSPolicyAssignmentInstanceFilterArgs',
     'OSPolicyAssignmentLabelSetArgs',
     'OSPolicyAssignmentRolloutArgs',
     'OSPolicyOSFilterArgs',
-    'OSPolicyResourceArgs',
-    'OSPolicyResourceExecResourceArgs',
     'OSPolicyResourceExecResourceExecArgs',
-    'OSPolicyResourceFileArgs',
+    'OSPolicyResourceExecResourceArgs',
     'OSPolicyResourceFileGcsArgs',
     'OSPolicyResourceFileRemoteArgs',
     'OSPolicyResourceFileResourceArgs',
+    'OSPolicyResourceFileArgs',
     'OSPolicyResourceGroupArgs',
-    'OSPolicyResourcePackageResourceArgs',
     'OSPolicyResourcePackageResourceAPTArgs',
     'OSPolicyResourcePackageResourceDebArgs',
     'OSPolicyResourcePackageResourceGooGetArgs',
@@ -32,11 +29,14 @@ __all__ = [
     'OSPolicyResourcePackageResourceRPMArgs',
     'OSPolicyResourcePackageResourceYUMArgs',
     'OSPolicyResourcePackageResourceZypperArgs',
-    'OSPolicyResourceRepositoryResourceArgs',
+    'OSPolicyResourcePackageResourceArgs',
     'OSPolicyResourceRepositoryResourceAptRepositoryArgs',
     'OSPolicyResourceRepositoryResourceGooRepositoryArgs',
     'OSPolicyResourceRepositoryResourceYumRepositoryArgs',
     'OSPolicyResourceRepositoryResourceZypperRepositoryArgs',
+    'OSPolicyResourceRepositoryResourceArgs',
+    'OSPolicyResourceArgs',
+    'OSPolicyArgs',
 ]
 
 @pulumi.input_type
@@ -77,91 +77,6 @@ class FixedOrPercentArgs:
     @percent.setter
     def percent(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "percent", value)
-
-
-@pulumi.input_type
-class OSPolicyArgs:
-    def __init__(__self__, *,
-                 id: pulumi.Input[str],
-                 mode: pulumi.Input['OSPolicyMode'],
-                 resource_groups: pulumi.Input[Sequence[pulumi.Input['OSPolicyResourceGroupArgs']]],
-                 allow_no_resource_group_match: Optional[pulumi.Input[bool]] = None,
-                 description: Optional[pulumi.Input[str]] = None):
-        """
-        An OS policy defines the desired state configuration for a VM.
-        :param pulumi.Input[str] id: The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
-        :param pulumi.Input['OSPolicyMode'] mode: Policy mode
-        :param pulumi.Input[Sequence[pulumi.Input['OSPolicyResourceGroupArgs']]] resource_groups: List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
-        :param pulumi.Input[bool] allow_no_resource_group_match: This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
-        :param pulumi.Input[str] description: Policy description. Length of the description is limited to 1024 characters.
-        """
-        pulumi.set(__self__, "id", id)
-        pulumi.set(__self__, "mode", mode)
-        pulumi.set(__self__, "resource_groups", resource_groups)
-        if allow_no_resource_group_match is not None:
-            pulumi.set(__self__, "allow_no_resource_group_match", allow_no_resource_group_match)
-        if description is not None:
-            pulumi.set(__self__, "description", description)
-
-    @property
-    @pulumi.getter
-    def id(self) -> pulumi.Input[str]:
-        """
-        The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter
-    def mode(self) -> pulumi.Input['OSPolicyMode']:
-        """
-        Policy mode
-        """
-        return pulumi.get(self, "mode")
-
-    @mode.setter
-    def mode(self, value: pulumi.Input['OSPolicyMode']):
-        pulumi.set(self, "mode", value)
-
-    @property
-    @pulumi.getter(name="resourceGroups")
-    def resource_groups(self) -> pulumi.Input[Sequence[pulumi.Input['OSPolicyResourceGroupArgs']]]:
-        """
-        List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
-        """
-        return pulumi.get(self, "resource_groups")
-
-    @resource_groups.setter
-    def resource_groups(self, value: pulumi.Input[Sequence[pulumi.Input['OSPolicyResourceGroupArgs']]]):
-        pulumi.set(self, "resource_groups", value)
-
-    @property
-    @pulumi.getter(name="allowNoResourceGroupMatch")
-    def allow_no_resource_group_match(self) -> Optional[pulumi.Input[bool]]:
-        """
-        This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
-        """
-        return pulumi.get(self, "allow_no_resource_group_match")
-
-    @allow_no_resource_group_match.setter
-    def allow_no_resource_group_match(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "allow_no_resource_group_match", value)
-
-    @property
-    @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[str]]:
-        """
-        Policy description. Length of the description is limited to 1024 characters.
-        """
-        return pulumi.get(self, "description")
-
-    @description.setter
-    def description(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "description", value)
 
 
 @pulumi.input_type
@@ -339,132 +254,6 @@ class OSPolicyOSFilterArgs:
 
 
 @pulumi.input_type
-class OSPolicyResourceArgs:
-    def __init__(__self__, *,
-                 id: pulumi.Input[str],
-                 exec_: Optional[pulumi.Input['OSPolicyResourceExecResourceArgs']] = None,
-                 file: Optional[pulumi.Input['OSPolicyResourceFileResourceArgs']] = None,
-                 pkg: Optional[pulumi.Input['OSPolicyResourcePackageResourceArgs']] = None,
-                 repository: Optional[pulumi.Input['OSPolicyResourceRepositoryResourceArgs']] = None):
-        """
-        An OS policy resource is used to define the desired state configuration and provides a specific functionality like installing/removing packages, executing a script etc. The system ensures that resources are always in their desired state by taking necessary actions if they have drifted from their desired state.
-        :param pulumi.Input[str] id: The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
-        :param pulumi.Input['OSPolicyResourceExecResourceArgs'] exec_: Exec resource
-        :param pulumi.Input['OSPolicyResourceFileResourceArgs'] file: File resource
-        :param pulumi.Input['OSPolicyResourcePackageResourceArgs'] pkg: Package resource
-        :param pulumi.Input['OSPolicyResourceRepositoryResourceArgs'] repository: Package repository resource
-        """
-        pulumi.set(__self__, "id", id)
-        if exec_ is not None:
-            pulumi.set(__self__, "exec_", exec_)
-        if file is not None:
-            pulumi.set(__self__, "file", file)
-        if pkg is not None:
-            pulumi.set(__self__, "pkg", pkg)
-        if repository is not None:
-            pulumi.set(__self__, "repository", repository)
-
-    @property
-    @pulumi.getter
-    def id(self) -> pulumi.Input[str]:
-        """
-        The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
-        """
-        return pulumi.get(self, "id")
-
-    @id.setter
-    def id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "id", value)
-
-    @property
-    @pulumi.getter(name="exec")
-    def exec_(self) -> Optional[pulumi.Input['OSPolicyResourceExecResourceArgs']]:
-        """
-        Exec resource
-        """
-        return pulumi.get(self, "exec_")
-
-    @exec_.setter
-    def exec_(self, value: Optional[pulumi.Input['OSPolicyResourceExecResourceArgs']]):
-        pulumi.set(self, "exec_", value)
-
-    @property
-    @pulumi.getter
-    def file(self) -> Optional[pulumi.Input['OSPolicyResourceFileResourceArgs']]:
-        """
-        File resource
-        """
-        return pulumi.get(self, "file")
-
-    @file.setter
-    def file(self, value: Optional[pulumi.Input['OSPolicyResourceFileResourceArgs']]):
-        pulumi.set(self, "file", value)
-
-    @property
-    @pulumi.getter
-    def pkg(self) -> Optional[pulumi.Input['OSPolicyResourcePackageResourceArgs']]:
-        """
-        Package resource
-        """
-        return pulumi.get(self, "pkg")
-
-    @pkg.setter
-    def pkg(self, value: Optional[pulumi.Input['OSPolicyResourcePackageResourceArgs']]):
-        pulumi.set(self, "pkg", value)
-
-    @property
-    @pulumi.getter
-    def repository(self) -> Optional[pulumi.Input['OSPolicyResourceRepositoryResourceArgs']]:
-        """
-        Package repository resource
-        """
-        return pulumi.get(self, "repository")
-
-    @repository.setter
-    def repository(self, value: Optional[pulumi.Input['OSPolicyResourceRepositoryResourceArgs']]):
-        pulumi.set(self, "repository", value)
-
-
-@pulumi.input_type
-class OSPolicyResourceExecResourceArgs:
-    def __init__(__self__, *,
-                 validate: pulumi.Input['OSPolicyResourceExecResourceExecArgs'],
-                 enforce: Optional[pulumi.Input['OSPolicyResourceExecResourceExecArgs']] = None):
-        """
-        A resource that allows executing scripts on the VM. The `ExecResource` has 2 stages: `validate` and `enforce` and both stages accept a script as an argument to execute. When the `ExecResource` is applied by the agent, it first executes the script in the `validate` stage. The `validate` stage can signal that the `ExecResource` is already in the desired state by returning an exit code of `100`. If the `ExecResource` is not in the desired state, it should return an exit code of `101`. Any other exit code returned by this stage is considered an error. If the `ExecResource` is not in the desired state based on the exit code from the `validate` stage, the agent proceeds to execute the script from the `enforce` stage. If the `ExecResource` is already in the desired state, the `enforce` stage will not be run. Similar to `validate` stage, the `enforce` stage should return an exit code of `100` to indicate that the resource in now in its desired state. Any other exit code is considered an error. NOTE: An exit code of `100` was chosen over `0` (and `101` vs `1`) to have an explicit indicator of `in desired state`, `not in desired state` and errors. Because, for example, Powershell will always return an exit code of `0` unless an `exit` statement is provided in the script. So, for reasons of consistency and being explicit, exit codes `100` and `101` were chosen.
-        :param pulumi.Input['OSPolicyResourceExecResourceExecArgs'] validate: What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
-        :param pulumi.Input['OSPolicyResourceExecResourceExecArgs'] enforce: What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
-        """
-        pulumi.set(__self__, "validate", validate)
-        if enforce is not None:
-            pulumi.set(__self__, "enforce", enforce)
-
-    @property
-    @pulumi.getter
-    def validate(self) -> pulumi.Input['OSPolicyResourceExecResourceExecArgs']:
-        """
-        What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
-        """
-        return pulumi.get(self, "validate")
-
-    @validate.setter
-    def validate(self, value: pulumi.Input['OSPolicyResourceExecResourceExecArgs']):
-        pulumi.set(self, "validate", value)
-
-    @property
-    @pulumi.getter
-    def enforce(self) -> Optional[pulumi.Input['OSPolicyResourceExecResourceExecArgs']]:
-        """
-        What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
-        """
-        return pulumi.get(self, "enforce")
-
-    @enforce.setter
-    def enforce(self, value: Optional[pulumi.Input['OSPolicyResourceExecResourceExecArgs']]):
-        pulumi.set(self, "enforce", value)
-
-
-@pulumi.input_type
 class OSPolicyResourceExecResourceExecArgs:
     def __init__(__self__, *,
                  interpreter: pulumi.Input['OSPolicyResourceExecResourceExecInterpreter'],
@@ -552,75 +341,42 @@ class OSPolicyResourceExecResourceExecArgs:
 
 
 @pulumi.input_type
-class OSPolicyResourceFileArgs:
+class OSPolicyResourceExecResourceArgs:
     def __init__(__self__, *,
-                 allow_insecure: Optional[pulumi.Input[bool]] = None,
-                 gcs: Optional[pulumi.Input['OSPolicyResourceFileGcsArgs']] = None,
-                 local_path: Optional[pulumi.Input[str]] = None,
-                 remote: Optional[pulumi.Input['OSPolicyResourceFileRemoteArgs']] = None):
+                 validate: pulumi.Input['OSPolicyResourceExecResourceExecArgs'],
+                 enforce: Optional[pulumi.Input['OSPolicyResourceExecResourceExecArgs']] = None):
         """
-        A remote or local file.
-        :param pulumi.Input[bool] allow_insecure: Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
-        :param pulumi.Input['OSPolicyResourceFileGcsArgs'] gcs: A Cloud Storage object.
-        :param pulumi.Input[str] local_path: A local path within the VM to use.
-        :param pulumi.Input['OSPolicyResourceFileRemoteArgs'] remote: A generic remote file.
+        A resource that allows executing scripts on the VM. The `ExecResource` has 2 stages: `validate` and `enforce` and both stages accept a script as an argument to execute. When the `ExecResource` is applied by the agent, it first executes the script in the `validate` stage. The `validate` stage can signal that the `ExecResource` is already in the desired state by returning an exit code of `100`. If the `ExecResource` is not in the desired state, it should return an exit code of `101`. Any other exit code returned by this stage is considered an error. If the `ExecResource` is not in the desired state based on the exit code from the `validate` stage, the agent proceeds to execute the script from the `enforce` stage. If the `ExecResource` is already in the desired state, the `enforce` stage will not be run. Similar to `validate` stage, the `enforce` stage should return an exit code of `100` to indicate that the resource in now in its desired state. Any other exit code is considered an error. NOTE: An exit code of `100` was chosen over `0` (and `101` vs `1`) to have an explicit indicator of `in desired state`, `not in desired state` and errors. Because, for example, Powershell will always return an exit code of `0` unless an `exit` statement is provided in the script. So, for reasons of consistency and being explicit, exit codes `100` and `101` were chosen.
+        :param pulumi.Input['OSPolicyResourceExecResourceExecArgs'] validate: What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
+        :param pulumi.Input['OSPolicyResourceExecResourceExecArgs'] enforce: What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
         """
-        if allow_insecure is not None:
-            pulumi.set(__self__, "allow_insecure", allow_insecure)
-        if gcs is not None:
-            pulumi.set(__self__, "gcs", gcs)
-        if local_path is not None:
-            pulumi.set(__self__, "local_path", local_path)
-        if remote is not None:
-            pulumi.set(__self__, "remote", remote)
-
-    @property
-    @pulumi.getter(name="allowInsecure")
-    def allow_insecure(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
-        """
-        return pulumi.get(self, "allow_insecure")
-
-    @allow_insecure.setter
-    def allow_insecure(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "allow_insecure", value)
+        pulumi.set(__self__, "validate", validate)
+        if enforce is not None:
+            pulumi.set(__self__, "enforce", enforce)
 
     @property
     @pulumi.getter
-    def gcs(self) -> Optional[pulumi.Input['OSPolicyResourceFileGcsArgs']]:
+    def validate(self) -> pulumi.Input['OSPolicyResourceExecResourceExecArgs']:
         """
-        A Cloud Storage object.
+        What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate.
         """
-        return pulumi.get(self, "gcs")
+        return pulumi.get(self, "validate")
 
-    @gcs.setter
-    def gcs(self, value: Optional[pulumi.Input['OSPolicyResourceFileGcsArgs']]):
-        pulumi.set(self, "gcs", value)
-
-    @property
-    @pulumi.getter(name="localPath")
-    def local_path(self) -> Optional[pulumi.Input[str]]:
-        """
-        A local path within the VM to use.
-        """
-        return pulumi.get(self, "local_path")
-
-    @local_path.setter
-    def local_path(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "local_path", value)
+    @validate.setter
+    def validate(self, value: pulumi.Input['OSPolicyResourceExecResourceExecArgs']):
+        pulumi.set(self, "validate", value)
 
     @property
     @pulumi.getter
-    def remote(self) -> Optional[pulumi.Input['OSPolicyResourceFileRemoteArgs']]:
+    def enforce(self) -> Optional[pulumi.Input['OSPolicyResourceExecResourceExecArgs']]:
         """
-        A generic remote file.
+        What to run to bring this resource into the desired state. An exit code of 100 indicates "success", any other exit code indicates a failure running enforce.
         """
-        return pulumi.get(self, "remote")
+        return pulumi.get(self, "enforce")
 
-    @remote.setter
-    def remote(self, value: Optional[pulumi.Input['OSPolicyResourceFileRemoteArgs']]):
-        pulumi.set(self, "remote", value)
+    @enforce.setter
+    def enforce(self, value: Optional[pulumi.Input['OSPolicyResourceExecResourceExecArgs']]):
+        pulumi.set(self, "enforce", value)
 
 
 @pulumi.input_type
@@ -803,6 +559,78 @@ class OSPolicyResourceFileResourceArgs:
 
 
 @pulumi.input_type
+class OSPolicyResourceFileArgs:
+    def __init__(__self__, *,
+                 allow_insecure: Optional[pulumi.Input[bool]] = None,
+                 gcs: Optional[pulumi.Input['OSPolicyResourceFileGcsArgs']] = None,
+                 local_path: Optional[pulumi.Input[str]] = None,
+                 remote: Optional[pulumi.Input['OSPolicyResourceFileRemoteArgs']] = None):
+        """
+        A remote or local file.
+        :param pulumi.Input[bool] allow_insecure: Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+        :param pulumi.Input['OSPolicyResourceFileGcsArgs'] gcs: A Cloud Storage object.
+        :param pulumi.Input[str] local_path: A local path within the VM to use.
+        :param pulumi.Input['OSPolicyResourceFileRemoteArgs'] remote: A generic remote file.
+        """
+        if allow_insecure is not None:
+            pulumi.set(__self__, "allow_insecure", allow_insecure)
+        if gcs is not None:
+            pulumi.set(__self__, "gcs", gcs)
+        if local_path is not None:
+            pulumi.set(__self__, "local_path", local_path)
+        if remote is not None:
+            pulumi.set(__self__, "remote", remote)
+
+    @property
+    @pulumi.getter(name="allowInsecure")
+    def allow_insecure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
+        """
+        return pulumi.get(self, "allow_insecure")
+
+    @allow_insecure.setter
+    def allow_insecure(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_insecure", value)
+
+    @property
+    @pulumi.getter
+    def gcs(self) -> Optional[pulumi.Input['OSPolicyResourceFileGcsArgs']]:
+        """
+        A Cloud Storage object.
+        """
+        return pulumi.get(self, "gcs")
+
+    @gcs.setter
+    def gcs(self, value: Optional[pulumi.Input['OSPolicyResourceFileGcsArgs']]):
+        pulumi.set(self, "gcs", value)
+
+    @property
+    @pulumi.getter(name="localPath")
+    def local_path(self) -> Optional[pulumi.Input[str]]:
+        """
+        A local path within the VM to use.
+        """
+        return pulumi.get(self, "local_path")
+
+    @local_path.setter
+    def local_path(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "local_path", value)
+
+    @property
+    @pulumi.getter
+    def remote(self) -> Optional[pulumi.Input['OSPolicyResourceFileRemoteArgs']]:
+        """
+        A generic remote file.
+        """
+        return pulumi.get(self, "remote")
+
+    @remote.setter
+    def remote(self, value: Optional[pulumi.Input['OSPolicyResourceFileRemoteArgs']]):
+        pulumi.set(self, "remote", value)
+
+
+@pulumi.input_type
 class OSPolicyResourceGroupArgs:
     def __init__(__self__, *,
                  resources: pulumi.Input[Sequence[pulumi.Input['OSPolicyResourceArgs']]],
@@ -839,141 +667,6 @@ class OSPolicyResourceGroupArgs:
     @os_filter.setter
     def os_filter(self, value: Optional[pulumi.Input['OSPolicyOSFilterArgs']]):
         pulumi.set(self, "os_filter", value)
-
-
-@pulumi.input_type
-class OSPolicyResourcePackageResourceArgs:
-    def __init__(__self__, *,
-                 desired_state: pulumi.Input['OSPolicyResourcePackageResourceDesiredState'],
-                 apt: Optional[pulumi.Input['OSPolicyResourcePackageResourceAPTArgs']] = None,
-                 deb: Optional[pulumi.Input['OSPolicyResourcePackageResourceDebArgs']] = None,
-                 googet: Optional[pulumi.Input['OSPolicyResourcePackageResourceGooGetArgs']] = None,
-                 msi: Optional[pulumi.Input['OSPolicyResourcePackageResourceMSIArgs']] = None,
-                 rpm: Optional[pulumi.Input['OSPolicyResourcePackageResourceRPMArgs']] = None,
-                 yum: Optional[pulumi.Input['OSPolicyResourcePackageResourceYUMArgs']] = None,
-                 zypper: Optional[pulumi.Input['OSPolicyResourcePackageResourceZypperArgs']] = None):
-        """
-        A resource that manages a system package.
-        :param pulumi.Input['OSPolicyResourcePackageResourceDesiredState'] desired_state: The desired state the agent should maintain for this package.
-        :param pulumi.Input['OSPolicyResourcePackageResourceAPTArgs'] apt: A package managed by Apt.
-        :param pulumi.Input['OSPolicyResourcePackageResourceDebArgs'] deb: A deb package file.
-        :param pulumi.Input['OSPolicyResourcePackageResourceGooGetArgs'] googet: A package managed by GooGet.
-        :param pulumi.Input['OSPolicyResourcePackageResourceMSIArgs'] msi: An MSI package.
-        :param pulumi.Input['OSPolicyResourcePackageResourceRPMArgs'] rpm: An rpm package file.
-        :param pulumi.Input['OSPolicyResourcePackageResourceYUMArgs'] yum: A package managed by YUM.
-        :param pulumi.Input['OSPolicyResourcePackageResourceZypperArgs'] zypper: A package managed by Zypper.
-        """
-        pulumi.set(__self__, "desired_state", desired_state)
-        if apt is not None:
-            pulumi.set(__self__, "apt", apt)
-        if deb is not None:
-            pulumi.set(__self__, "deb", deb)
-        if googet is not None:
-            pulumi.set(__self__, "googet", googet)
-        if msi is not None:
-            pulumi.set(__self__, "msi", msi)
-        if rpm is not None:
-            pulumi.set(__self__, "rpm", rpm)
-        if yum is not None:
-            pulumi.set(__self__, "yum", yum)
-        if zypper is not None:
-            pulumi.set(__self__, "zypper", zypper)
-
-    @property
-    @pulumi.getter(name="desiredState")
-    def desired_state(self) -> pulumi.Input['OSPolicyResourcePackageResourceDesiredState']:
-        """
-        The desired state the agent should maintain for this package.
-        """
-        return pulumi.get(self, "desired_state")
-
-    @desired_state.setter
-    def desired_state(self, value: pulumi.Input['OSPolicyResourcePackageResourceDesiredState']):
-        pulumi.set(self, "desired_state", value)
-
-    @property
-    @pulumi.getter
-    def apt(self) -> Optional[pulumi.Input['OSPolicyResourcePackageResourceAPTArgs']]:
-        """
-        A package managed by Apt.
-        """
-        return pulumi.get(self, "apt")
-
-    @apt.setter
-    def apt(self, value: Optional[pulumi.Input['OSPolicyResourcePackageResourceAPTArgs']]):
-        pulumi.set(self, "apt", value)
-
-    @property
-    @pulumi.getter
-    def deb(self) -> Optional[pulumi.Input['OSPolicyResourcePackageResourceDebArgs']]:
-        """
-        A deb package file.
-        """
-        return pulumi.get(self, "deb")
-
-    @deb.setter
-    def deb(self, value: Optional[pulumi.Input['OSPolicyResourcePackageResourceDebArgs']]):
-        pulumi.set(self, "deb", value)
-
-    @property
-    @pulumi.getter
-    def googet(self) -> Optional[pulumi.Input['OSPolicyResourcePackageResourceGooGetArgs']]:
-        """
-        A package managed by GooGet.
-        """
-        return pulumi.get(self, "googet")
-
-    @googet.setter
-    def googet(self, value: Optional[pulumi.Input['OSPolicyResourcePackageResourceGooGetArgs']]):
-        pulumi.set(self, "googet", value)
-
-    @property
-    @pulumi.getter
-    def msi(self) -> Optional[pulumi.Input['OSPolicyResourcePackageResourceMSIArgs']]:
-        """
-        An MSI package.
-        """
-        return pulumi.get(self, "msi")
-
-    @msi.setter
-    def msi(self, value: Optional[pulumi.Input['OSPolicyResourcePackageResourceMSIArgs']]):
-        pulumi.set(self, "msi", value)
-
-    @property
-    @pulumi.getter
-    def rpm(self) -> Optional[pulumi.Input['OSPolicyResourcePackageResourceRPMArgs']]:
-        """
-        An rpm package file.
-        """
-        return pulumi.get(self, "rpm")
-
-    @rpm.setter
-    def rpm(self, value: Optional[pulumi.Input['OSPolicyResourcePackageResourceRPMArgs']]):
-        pulumi.set(self, "rpm", value)
-
-    @property
-    @pulumi.getter
-    def yum(self) -> Optional[pulumi.Input['OSPolicyResourcePackageResourceYUMArgs']]:
-        """
-        A package managed by YUM.
-        """
-        return pulumi.get(self, "yum")
-
-    @yum.setter
-    def yum(self, value: Optional[pulumi.Input['OSPolicyResourcePackageResourceYUMArgs']]):
-        pulumi.set(self, "yum", value)
-
-    @property
-    @pulumi.getter
-    def zypper(self) -> Optional[pulumi.Input['OSPolicyResourcePackageResourceZypperArgs']]:
-        """
-        A package managed by Zypper.
-        """
-        return pulumi.get(self, "zypper")
-
-    @zypper.setter
-    def zypper(self, value: Optional[pulumi.Input['OSPolicyResourcePackageResourceZypperArgs']]):
-        pulumi.set(self, "zypper", value)
 
 
 @pulumi.input_type
@@ -1186,74 +879,137 @@ class OSPolicyResourcePackageResourceZypperArgs:
 
 
 @pulumi.input_type
-class OSPolicyResourceRepositoryResourceArgs:
+class OSPolicyResourcePackageResourceArgs:
     def __init__(__self__, *,
-                 apt: Optional[pulumi.Input['OSPolicyResourceRepositoryResourceAptRepositoryArgs']] = None,
-                 goo: Optional[pulumi.Input['OSPolicyResourceRepositoryResourceGooRepositoryArgs']] = None,
-                 yum: Optional[pulumi.Input['OSPolicyResourceRepositoryResourceYumRepositoryArgs']] = None,
-                 zypper: Optional[pulumi.Input['OSPolicyResourceRepositoryResourceZypperRepositoryArgs']] = None):
+                 desired_state: pulumi.Input['OSPolicyResourcePackageResourceDesiredState'],
+                 apt: Optional[pulumi.Input['OSPolicyResourcePackageResourceAPTArgs']] = None,
+                 deb: Optional[pulumi.Input['OSPolicyResourcePackageResourceDebArgs']] = None,
+                 googet: Optional[pulumi.Input['OSPolicyResourcePackageResourceGooGetArgs']] = None,
+                 msi: Optional[pulumi.Input['OSPolicyResourcePackageResourceMSIArgs']] = None,
+                 rpm: Optional[pulumi.Input['OSPolicyResourcePackageResourceRPMArgs']] = None,
+                 yum: Optional[pulumi.Input['OSPolicyResourcePackageResourceYUMArgs']] = None,
+                 zypper: Optional[pulumi.Input['OSPolicyResourcePackageResourceZypperArgs']] = None):
         """
-        A resource that manages a package repository.
-        :param pulumi.Input['OSPolicyResourceRepositoryResourceAptRepositoryArgs'] apt: An Apt Repository.
-        :param pulumi.Input['OSPolicyResourceRepositoryResourceGooRepositoryArgs'] goo: A Goo Repository.
-        :param pulumi.Input['OSPolicyResourceRepositoryResourceYumRepositoryArgs'] yum: A Yum Repository.
-        :param pulumi.Input['OSPolicyResourceRepositoryResourceZypperRepositoryArgs'] zypper: A Zypper Repository.
+        A resource that manages a system package.
+        :param pulumi.Input['OSPolicyResourcePackageResourceDesiredState'] desired_state: The desired state the agent should maintain for this package.
+        :param pulumi.Input['OSPolicyResourcePackageResourceAPTArgs'] apt: A package managed by Apt.
+        :param pulumi.Input['OSPolicyResourcePackageResourceDebArgs'] deb: A deb package file.
+        :param pulumi.Input['OSPolicyResourcePackageResourceGooGetArgs'] googet: A package managed by GooGet.
+        :param pulumi.Input['OSPolicyResourcePackageResourceMSIArgs'] msi: An MSI package.
+        :param pulumi.Input['OSPolicyResourcePackageResourceRPMArgs'] rpm: An rpm package file.
+        :param pulumi.Input['OSPolicyResourcePackageResourceYUMArgs'] yum: A package managed by YUM.
+        :param pulumi.Input['OSPolicyResourcePackageResourceZypperArgs'] zypper: A package managed by Zypper.
         """
+        pulumi.set(__self__, "desired_state", desired_state)
         if apt is not None:
             pulumi.set(__self__, "apt", apt)
-        if goo is not None:
-            pulumi.set(__self__, "goo", goo)
+        if deb is not None:
+            pulumi.set(__self__, "deb", deb)
+        if googet is not None:
+            pulumi.set(__self__, "googet", googet)
+        if msi is not None:
+            pulumi.set(__self__, "msi", msi)
+        if rpm is not None:
+            pulumi.set(__self__, "rpm", rpm)
         if yum is not None:
             pulumi.set(__self__, "yum", yum)
         if zypper is not None:
             pulumi.set(__self__, "zypper", zypper)
 
     @property
-    @pulumi.getter
-    def apt(self) -> Optional[pulumi.Input['OSPolicyResourceRepositoryResourceAptRepositoryArgs']]:
+    @pulumi.getter(name="desiredState")
+    def desired_state(self) -> pulumi.Input['OSPolicyResourcePackageResourceDesiredState']:
         """
-        An Apt Repository.
+        The desired state the agent should maintain for this package.
+        """
+        return pulumi.get(self, "desired_state")
+
+    @desired_state.setter
+    def desired_state(self, value: pulumi.Input['OSPolicyResourcePackageResourceDesiredState']):
+        pulumi.set(self, "desired_state", value)
+
+    @property
+    @pulumi.getter
+    def apt(self) -> Optional[pulumi.Input['OSPolicyResourcePackageResourceAPTArgs']]:
+        """
+        A package managed by Apt.
         """
         return pulumi.get(self, "apt")
 
     @apt.setter
-    def apt(self, value: Optional[pulumi.Input['OSPolicyResourceRepositoryResourceAptRepositoryArgs']]):
+    def apt(self, value: Optional[pulumi.Input['OSPolicyResourcePackageResourceAPTArgs']]):
         pulumi.set(self, "apt", value)
 
     @property
     @pulumi.getter
-    def goo(self) -> Optional[pulumi.Input['OSPolicyResourceRepositoryResourceGooRepositoryArgs']]:
+    def deb(self) -> Optional[pulumi.Input['OSPolicyResourcePackageResourceDebArgs']]:
         """
-        A Goo Repository.
+        A deb package file.
         """
-        return pulumi.get(self, "goo")
+        return pulumi.get(self, "deb")
 
-    @goo.setter
-    def goo(self, value: Optional[pulumi.Input['OSPolicyResourceRepositoryResourceGooRepositoryArgs']]):
-        pulumi.set(self, "goo", value)
+    @deb.setter
+    def deb(self, value: Optional[pulumi.Input['OSPolicyResourcePackageResourceDebArgs']]):
+        pulumi.set(self, "deb", value)
 
     @property
     @pulumi.getter
-    def yum(self) -> Optional[pulumi.Input['OSPolicyResourceRepositoryResourceYumRepositoryArgs']]:
+    def googet(self) -> Optional[pulumi.Input['OSPolicyResourcePackageResourceGooGetArgs']]:
         """
-        A Yum Repository.
+        A package managed by GooGet.
+        """
+        return pulumi.get(self, "googet")
+
+    @googet.setter
+    def googet(self, value: Optional[pulumi.Input['OSPolicyResourcePackageResourceGooGetArgs']]):
+        pulumi.set(self, "googet", value)
+
+    @property
+    @pulumi.getter
+    def msi(self) -> Optional[pulumi.Input['OSPolicyResourcePackageResourceMSIArgs']]:
+        """
+        An MSI package.
+        """
+        return pulumi.get(self, "msi")
+
+    @msi.setter
+    def msi(self, value: Optional[pulumi.Input['OSPolicyResourcePackageResourceMSIArgs']]):
+        pulumi.set(self, "msi", value)
+
+    @property
+    @pulumi.getter
+    def rpm(self) -> Optional[pulumi.Input['OSPolicyResourcePackageResourceRPMArgs']]:
+        """
+        An rpm package file.
+        """
+        return pulumi.get(self, "rpm")
+
+    @rpm.setter
+    def rpm(self, value: Optional[pulumi.Input['OSPolicyResourcePackageResourceRPMArgs']]):
+        pulumi.set(self, "rpm", value)
+
+    @property
+    @pulumi.getter
+    def yum(self) -> Optional[pulumi.Input['OSPolicyResourcePackageResourceYUMArgs']]:
+        """
+        A package managed by YUM.
         """
         return pulumi.get(self, "yum")
 
     @yum.setter
-    def yum(self, value: Optional[pulumi.Input['OSPolicyResourceRepositoryResourceYumRepositoryArgs']]):
+    def yum(self, value: Optional[pulumi.Input['OSPolicyResourcePackageResourceYUMArgs']]):
         pulumi.set(self, "yum", value)
 
     @property
     @pulumi.getter
-    def zypper(self) -> Optional[pulumi.Input['OSPolicyResourceRepositoryResourceZypperRepositoryArgs']]:
+    def zypper(self) -> Optional[pulumi.Input['OSPolicyResourcePackageResourceZypperArgs']]:
         """
-        A Zypper Repository.
+        A package managed by Zypper.
         """
         return pulumi.get(self, "zypper")
 
     @zypper.setter
-    def zypper(self, value: Optional[pulumi.Input['OSPolicyResourceRepositoryResourceZypperRepositoryArgs']]):
+    def zypper(self, value: Optional[pulumi.Input['OSPolicyResourcePackageResourceZypperArgs']]):
         pulumi.set(self, "zypper", value)
 
 
@@ -1517,5 +1273,249 @@ class OSPolicyResourceRepositoryResourceZypperRepositoryArgs:
     @gpg_keys.setter
     def gpg_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "gpg_keys", value)
+
+
+@pulumi.input_type
+class OSPolicyResourceRepositoryResourceArgs:
+    def __init__(__self__, *,
+                 apt: Optional[pulumi.Input['OSPolicyResourceRepositoryResourceAptRepositoryArgs']] = None,
+                 goo: Optional[pulumi.Input['OSPolicyResourceRepositoryResourceGooRepositoryArgs']] = None,
+                 yum: Optional[pulumi.Input['OSPolicyResourceRepositoryResourceYumRepositoryArgs']] = None,
+                 zypper: Optional[pulumi.Input['OSPolicyResourceRepositoryResourceZypperRepositoryArgs']] = None):
+        """
+        A resource that manages a package repository.
+        :param pulumi.Input['OSPolicyResourceRepositoryResourceAptRepositoryArgs'] apt: An Apt Repository.
+        :param pulumi.Input['OSPolicyResourceRepositoryResourceGooRepositoryArgs'] goo: A Goo Repository.
+        :param pulumi.Input['OSPolicyResourceRepositoryResourceYumRepositoryArgs'] yum: A Yum Repository.
+        :param pulumi.Input['OSPolicyResourceRepositoryResourceZypperRepositoryArgs'] zypper: A Zypper Repository.
+        """
+        if apt is not None:
+            pulumi.set(__self__, "apt", apt)
+        if goo is not None:
+            pulumi.set(__self__, "goo", goo)
+        if yum is not None:
+            pulumi.set(__self__, "yum", yum)
+        if zypper is not None:
+            pulumi.set(__self__, "zypper", zypper)
+
+    @property
+    @pulumi.getter
+    def apt(self) -> Optional[pulumi.Input['OSPolicyResourceRepositoryResourceAptRepositoryArgs']]:
+        """
+        An Apt Repository.
+        """
+        return pulumi.get(self, "apt")
+
+    @apt.setter
+    def apt(self, value: Optional[pulumi.Input['OSPolicyResourceRepositoryResourceAptRepositoryArgs']]):
+        pulumi.set(self, "apt", value)
+
+    @property
+    @pulumi.getter
+    def goo(self) -> Optional[pulumi.Input['OSPolicyResourceRepositoryResourceGooRepositoryArgs']]:
+        """
+        A Goo Repository.
+        """
+        return pulumi.get(self, "goo")
+
+    @goo.setter
+    def goo(self, value: Optional[pulumi.Input['OSPolicyResourceRepositoryResourceGooRepositoryArgs']]):
+        pulumi.set(self, "goo", value)
+
+    @property
+    @pulumi.getter
+    def yum(self) -> Optional[pulumi.Input['OSPolicyResourceRepositoryResourceYumRepositoryArgs']]:
+        """
+        A Yum Repository.
+        """
+        return pulumi.get(self, "yum")
+
+    @yum.setter
+    def yum(self, value: Optional[pulumi.Input['OSPolicyResourceRepositoryResourceYumRepositoryArgs']]):
+        pulumi.set(self, "yum", value)
+
+    @property
+    @pulumi.getter
+    def zypper(self) -> Optional[pulumi.Input['OSPolicyResourceRepositoryResourceZypperRepositoryArgs']]:
+        """
+        A Zypper Repository.
+        """
+        return pulumi.get(self, "zypper")
+
+    @zypper.setter
+    def zypper(self, value: Optional[pulumi.Input['OSPolicyResourceRepositoryResourceZypperRepositoryArgs']]):
+        pulumi.set(self, "zypper", value)
+
+
+@pulumi.input_type
+class OSPolicyResourceArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 exec_: Optional[pulumi.Input['OSPolicyResourceExecResourceArgs']] = None,
+                 file: Optional[pulumi.Input['OSPolicyResourceFileResourceArgs']] = None,
+                 pkg: Optional[pulumi.Input['OSPolicyResourcePackageResourceArgs']] = None,
+                 repository: Optional[pulumi.Input['OSPolicyResourceRepositoryResourceArgs']] = None):
+        """
+        An OS policy resource is used to define the desired state configuration and provides a specific functionality like installing/removing packages, executing a script etc. The system ensures that resources are always in their desired state by taking necessary actions if they have drifted from their desired state.
+        :param pulumi.Input[str] id: The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
+        :param pulumi.Input['OSPolicyResourceExecResourceArgs'] exec_: Exec resource
+        :param pulumi.Input['OSPolicyResourceFileResourceArgs'] file: File resource
+        :param pulumi.Input['OSPolicyResourcePackageResourceArgs'] pkg: Package resource
+        :param pulumi.Input['OSPolicyResourceRepositoryResourceArgs'] repository: Package repository resource
+        """
+        pulumi.set(__self__, "id", id)
+        if exec_ is not None:
+            pulumi.set(__self__, "exec_", exec_)
+        if file is not None:
+            pulumi.set(__self__, "file", file)
+        if pkg is not None:
+            pulumi.set(__self__, "pkg", pkg)
+        if repository is not None:
+            pulumi.set(__self__, "repository", repository)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="exec")
+    def exec_(self) -> Optional[pulumi.Input['OSPolicyResourceExecResourceArgs']]:
+        """
+        Exec resource
+        """
+        return pulumi.get(self, "exec_")
+
+    @exec_.setter
+    def exec_(self, value: Optional[pulumi.Input['OSPolicyResourceExecResourceArgs']]):
+        pulumi.set(self, "exec_", value)
+
+    @property
+    @pulumi.getter
+    def file(self) -> Optional[pulumi.Input['OSPolicyResourceFileResourceArgs']]:
+        """
+        File resource
+        """
+        return pulumi.get(self, "file")
+
+    @file.setter
+    def file(self, value: Optional[pulumi.Input['OSPolicyResourceFileResourceArgs']]):
+        pulumi.set(self, "file", value)
+
+    @property
+    @pulumi.getter
+    def pkg(self) -> Optional[pulumi.Input['OSPolicyResourcePackageResourceArgs']]:
+        """
+        Package resource
+        """
+        return pulumi.get(self, "pkg")
+
+    @pkg.setter
+    def pkg(self, value: Optional[pulumi.Input['OSPolicyResourcePackageResourceArgs']]):
+        pulumi.set(self, "pkg", value)
+
+    @property
+    @pulumi.getter
+    def repository(self) -> Optional[pulumi.Input['OSPolicyResourceRepositoryResourceArgs']]:
+        """
+        Package repository resource
+        """
+        return pulumi.get(self, "repository")
+
+    @repository.setter
+    def repository(self, value: Optional[pulumi.Input['OSPolicyResourceRepositoryResourceArgs']]):
+        pulumi.set(self, "repository", value)
+
+
+@pulumi.input_type
+class OSPolicyArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 mode: pulumi.Input['OSPolicyMode'],
+                 resource_groups: pulumi.Input[Sequence[pulumi.Input['OSPolicyResourceGroupArgs']]],
+                 allow_no_resource_group_match: Optional[pulumi.Input[bool]] = None,
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        An OS policy defines the desired state configuration for a VM.
+        :param pulumi.Input[str] id: The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
+        :param pulumi.Input['OSPolicyMode'] mode: Policy mode
+        :param pulumi.Input[Sequence[pulumi.Input['OSPolicyResourceGroupArgs']]] resource_groups: List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
+        :param pulumi.Input[bool] allow_no_resource_group_match: This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
+        :param pulumi.Input[str] description: Policy description. Length of the description is limited to 1024 characters.
+        """
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "resource_groups", resource_groups)
+        if allow_no_resource_group_match is not None:
+            pulumi.set(__self__, "allow_no_resource_group_match", allow_no_resource_group_match)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> pulumi.Input['OSPolicyMode']:
+        """
+        Policy mode
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: pulumi.Input['OSPolicyMode']):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter(name="resourceGroups")
+    def resource_groups(self) -> pulumi.Input[Sequence[pulumi.Input['OSPolicyResourceGroupArgs']]]:
+        """
+        List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
+        """
+        return pulumi.get(self, "resource_groups")
+
+    @resource_groups.setter
+    def resource_groups(self, value: pulumi.Input[Sequence[pulumi.Input['OSPolicyResourceGroupArgs']]]):
+        pulumi.set(self, "resource_groups", value)
+
+    @property
+    @pulumi.getter(name="allowNoResourceGroupMatch")
+    def allow_no_resource_group_match(self) -> Optional[pulumi.Input[bool]]:
+        """
+        This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
+        """
+        return pulumi.get(self, "allow_no_resource_group_match")
+
+    @allow_no_resource_group_match.setter
+    def allow_no_resource_group_match(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_no_resource_group_match", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Policy description. Length of the description is limited to 1024 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
 

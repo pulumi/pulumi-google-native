@@ -15,7 +15,7 @@ type AcceleratorConfig struct {
 	// Count of cores of this accelerator.
 	CoreCount *string `pulumi:"coreCount"`
 	// Type of this accelerator.
-	Type *string `pulumi:"type"`
+	Type *AcceleratorConfigType `pulumi:"type"`
 }
 
 // AcceleratorConfigInput is an input type that accepts AcceleratorConfigArgs and AcceleratorConfigOutput values.
@@ -34,7 +34,7 @@ type AcceleratorConfigArgs struct {
 	// Count of cores of this accelerator.
 	CoreCount pulumi.StringPtrInput `pulumi:"coreCount"`
 	// Type of this accelerator.
-	Type *AcceleratorConfigType `pulumi:"type"`
+	Type AcceleratorConfigTypePtrInput `pulumi:"type"`
 }
 
 func (AcceleratorConfigArgs) ElementType() reflect.Type {
@@ -121,8 +121,8 @@ func (o AcceleratorConfigOutput) CoreCount() pulumi.StringPtrOutput {
 }
 
 // Type of this accelerator.
-func (o AcceleratorConfigOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AcceleratorConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o AcceleratorConfigOutput) Type() AcceleratorConfigTypePtrOutput {
+	return o.ApplyT(func(v AcceleratorConfig) *AcceleratorConfigType { return v.Type }).(AcceleratorConfigTypePtrOutput)
 }
 
 type AcceleratorConfigPtrOutput struct{ *pulumi.OutputState }
@@ -154,13 +154,13 @@ func (o AcceleratorConfigPtrOutput) CoreCount() pulumi.StringPtrOutput {
 }
 
 // Type of this accelerator.
-func (o AcceleratorConfigPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AcceleratorConfig) *string {
+func (o AcceleratorConfigPtrOutput) Type() AcceleratorConfigTypePtrOutput {
+	return o.ApplyT(func(v *AcceleratorConfig) *AcceleratorConfigType {
 		if v == nil {
 			return nil
 		}
 		return v.Type
-	}).(pulumi.StringPtrOutput)
+	}).(AcceleratorConfigTypePtrOutput)
 }
 
 // Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check [GPUs on Compute Engine](/compute/docs/gpus/#gpus-list) to find a valid combination. TPUs are not supported.
@@ -1597,7 +1597,7 @@ type ExecutionTemplate struct {
 	// Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
 	ParamsYamlFile *string `pulumi:"paramsYamlFile"`
 	// Scale tier of the hardware used for notebook execution.
-	ScaleTier string `pulumi:"scaleTier"`
+	ScaleTier ExecutionTemplateScaleTier `pulumi:"scaleTier"`
 	// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
 	ServiceAccount *string `pulumi:"serviceAccount"`
 }
@@ -1632,7 +1632,7 @@ type ExecutionTemplateArgs struct {
 	// Parameters to be overridden in the notebook during execution. Ref https://papermill.readthedocs.io/en/latest/usage-parameterize.html on how to specifying parameters in the input notebook and pass them here in an YAML file. Ex: gs://notebook_user/scheduled_notebooks/sentiment_notebook_params.yaml
 	ParamsYamlFile pulumi.StringPtrInput `pulumi:"paramsYamlFile"`
 	// Scale tier of the hardware used for notebook execution.
-	ScaleTier ExecutionTemplateScaleTier `pulumi:"scaleTier"`
+	ScaleTier ExecutionTemplateScaleTierInput `pulumi:"scaleTier"`
 	// The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
 	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
 }
@@ -1756,8 +1756,8 @@ func (o ExecutionTemplateOutput) ParamsYamlFile() pulumi.StringPtrOutput {
 }
 
 // Scale tier of the hardware used for notebook execution.
-func (o ExecutionTemplateOutput) ScaleTier() pulumi.StringOutput {
-	return o.ApplyT(func(v ExecutionTemplate) string { return v.ScaleTier }).(pulumi.StringOutput)
+func (o ExecutionTemplateOutput) ScaleTier() ExecutionTemplateScaleTierOutput {
+	return o.ApplyT(func(v ExecutionTemplate) ExecutionTemplateScaleTier { return v.ScaleTier }).(ExecutionTemplateScaleTierOutput)
 }
 
 // The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
@@ -1864,13 +1864,13 @@ func (o ExecutionTemplatePtrOutput) ParamsYamlFile() pulumi.StringPtrOutput {
 }
 
 // Scale tier of the hardware used for notebook execution.
-func (o ExecutionTemplatePtrOutput) ScaleTier() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ExecutionTemplate) *string {
+func (o ExecutionTemplatePtrOutput) ScaleTier() ExecutionTemplateScaleTierPtrOutput {
+	return o.ApplyT(func(v *ExecutionTemplate) *ExecutionTemplateScaleTier {
 		if v == nil {
 			return nil
 		}
 		return &v.ScaleTier
-	}).(pulumi.StringPtrOutput)
+	}).(ExecutionTemplateScaleTierPtrOutput)
 }
 
 // The email address of a service account to use when running the execution. You must have the `iam.serviceAccounts.actAs` permission for the specified service account.
@@ -2780,7 +2780,7 @@ type LocalDiskInitializeParams struct {
 	// Optional. Specifies the size of the disk in base-2 GB. If not specified, the disk will be the same size as the image (usually 10GB). If specified, the size must be equal to or larger than 10GB. Default 100 GB.
 	DiskSizeGb *string `pulumi:"diskSizeGb"`
 	// Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
-	DiskType *string `pulumi:"diskType"`
+	DiskType *LocalDiskInitializeParamsDiskType `pulumi:"diskType"`
 	// Optional. Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
 	Labels map[string]string `pulumi:"labels"`
 }
@@ -2805,7 +2805,7 @@ type LocalDiskInitializeParamsArgs struct {
 	// Optional. Specifies the size of the disk in base-2 GB. If not specified, the disk will be the same size as the image (usually 10GB). If specified, the size must be equal to or larger than 10GB. Default 100 GB.
 	DiskSizeGb pulumi.StringPtrInput `pulumi:"diskSizeGb"`
 	// Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
-	DiskType *LocalDiskInitializeParamsDiskType `pulumi:"diskType"`
+	DiskType LocalDiskInitializeParamsDiskTypePtrInput `pulumi:"diskType"`
 	// Optional. Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 }
@@ -2904,8 +2904,8 @@ func (o LocalDiskInitializeParamsOutput) DiskSizeGb() pulumi.StringPtrOutput {
 }
 
 // Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
-func (o LocalDiskInitializeParamsOutput) DiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v LocalDiskInitializeParams) *string { return v.DiskType }).(pulumi.StringPtrOutput)
+func (o LocalDiskInitializeParamsOutput) DiskType() LocalDiskInitializeParamsDiskTypePtrOutput {
+	return o.ApplyT(func(v LocalDiskInitializeParams) *LocalDiskInitializeParamsDiskType { return v.DiskType }).(LocalDiskInitializeParamsDiskTypePtrOutput)
 }
 
 // Optional. Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
@@ -2962,13 +2962,13 @@ func (o LocalDiskInitializeParamsPtrOutput) DiskSizeGb() pulumi.StringPtrOutput 
 }
 
 // Input only. The type of the boot disk attached to this instance, defaults to standard persistent disk (`PD_STANDARD`).
-func (o LocalDiskInitializeParamsPtrOutput) DiskType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LocalDiskInitializeParams) *string {
+func (o LocalDiskInitializeParamsPtrOutput) DiskType() LocalDiskInitializeParamsDiskTypePtrOutput {
+	return o.ApplyT(func(v *LocalDiskInitializeParams) *LocalDiskInitializeParamsDiskType {
 		if v == nil {
 			return nil
 		}
 		return v.DiskType
-	}).(pulumi.StringPtrOutput)
+	}).(LocalDiskInitializeParamsDiskTypePtrOutput)
 }
 
 // Optional. Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field is only applicable for persistent disks.
@@ -3539,7 +3539,7 @@ type RuntimeAcceleratorConfig struct {
 	// Count of cores of this accelerator.
 	CoreCount *string `pulumi:"coreCount"`
 	// Accelerator model.
-	Type *string `pulumi:"type"`
+	Type *RuntimeAcceleratorConfigType `pulumi:"type"`
 }
 
 // RuntimeAcceleratorConfigInput is an input type that accepts RuntimeAcceleratorConfigArgs and RuntimeAcceleratorConfigOutput values.
@@ -3558,7 +3558,7 @@ type RuntimeAcceleratorConfigArgs struct {
 	// Count of cores of this accelerator.
 	CoreCount pulumi.StringPtrInput `pulumi:"coreCount"`
 	// Accelerator model.
-	Type *RuntimeAcceleratorConfigType `pulumi:"type"`
+	Type RuntimeAcceleratorConfigTypePtrInput `pulumi:"type"`
 }
 
 func (RuntimeAcceleratorConfigArgs) ElementType() reflect.Type {
@@ -3645,8 +3645,8 @@ func (o RuntimeAcceleratorConfigOutput) CoreCount() pulumi.StringPtrOutput {
 }
 
 // Accelerator model.
-func (o RuntimeAcceleratorConfigOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RuntimeAcceleratorConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o RuntimeAcceleratorConfigOutput) Type() RuntimeAcceleratorConfigTypePtrOutput {
+	return o.ApplyT(func(v RuntimeAcceleratorConfig) *RuntimeAcceleratorConfigType { return v.Type }).(RuntimeAcceleratorConfigTypePtrOutput)
 }
 
 type RuntimeAcceleratorConfigPtrOutput struct{ *pulumi.OutputState }
@@ -3678,13 +3678,13 @@ func (o RuntimeAcceleratorConfigPtrOutput) CoreCount() pulumi.StringPtrOutput {
 }
 
 // Accelerator model.
-func (o RuntimeAcceleratorConfigPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RuntimeAcceleratorConfig) *string {
+func (o RuntimeAcceleratorConfigPtrOutput) Type() RuntimeAcceleratorConfigTypePtrOutput {
+	return o.ApplyT(func(v *RuntimeAcceleratorConfig) *RuntimeAcceleratorConfigType {
 		if v == nil {
 			return nil
 		}
 		return v.Type
-	}).(pulumi.StringPtrOutput)
+	}).(RuntimeAcceleratorConfigTypePtrOutput)
 }
 
 // Definition of the types of hardware accelerators that can be used. Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
@@ -3843,7 +3843,7 @@ func (o RuntimeAcceleratorConfigResponsePtrOutput) Type() pulumi.StringPtrOutput
 // Specifies the login configuration for Runtime
 type RuntimeAccessConfig struct {
 	// The type of access mode this instance.
-	AccessType *string `pulumi:"accessType"`
+	AccessType *RuntimeAccessConfigAccessType `pulumi:"accessType"`
 	// The owner of this runtime after creation. Format: `alias@example.com` Currently supports one owner only.
 	RuntimeOwner *string `pulumi:"runtimeOwner"`
 }
@@ -3862,7 +3862,7 @@ type RuntimeAccessConfigInput interface {
 // Specifies the login configuration for Runtime
 type RuntimeAccessConfigArgs struct {
 	// The type of access mode this instance.
-	AccessType *RuntimeAccessConfigAccessType `pulumi:"accessType"`
+	AccessType RuntimeAccessConfigAccessTypePtrInput `pulumi:"accessType"`
 	// The owner of this runtime after creation. Format: `alias@example.com` Currently supports one owner only.
 	RuntimeOwner pulumi.StringPtrInput `pulumi:"runtimeOwner"`
 }
@@ -3946,8 +3946,8 @@ func (o RuntimeAccessConfigOutput) ToRuntimeAccessConfigPtrOutputWithContext(ctx
 }
 
 // The type of access mode this instance.
-func (o RuntimeAccessConfigOutput) AccessType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v RuntimeAccessConfig) *string { return v.AccessType }).(pulumi.StringPtrOutput)
+func (o RuntimeAccessConfigOutput) AccessType() RuntimeAccessConfigAccessTypePtrOutput {
+	return o.ApplyT(func(v RuntimeAccessConfig) *RuntimeAccessConfigAccessType { return v.AccessType }).(RuntimeAccessConfigAccessTypePtrOutput)
 }
 
 // The owner of this runtime after creation. Format: `alias@example.com` Currently supports one owner only.
@@ -3974,13 +3974,13 @@ func (o RuntimeAccessConfigPtrOutput) Elem() RuntimeAccessConfigOutput {
 }
 
 // The type of access mode this instance.
-func (o RuntimeAccessConfigPtrOutput) AccessType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *RuntimeAccessConfig) *string {
+func (o RuntimeAccessConfigPtrOutput) AccessType() RuntimeAccessConfigAccessTypePtrOutput {
+	return o.ApplyT(func(v *RuntimeAccessConfig) *RuntimeAccessConfigAccessType {
 		if v == nil {
 			return nil
 		}
 		return v.AccessType
-	}).(pulumi.StringPtrOutput)
+	}).(RuntimeAccessConfigAccessTypePtrOutput)
 }
 
 // The owner of this runtime after creation. Format: `alias@example.com` Currently supports one owner only.
@@ -5244,7 +5244,7 @@ type SchedulerAcceleratorConfig struct {
 	// Count of cores of this accelerator.
 	CoreCount *string `pulumi:"coreCount"`
 	// Type of this accelerator.
-	Type *string `pulumi:"type"`
+	Type *SchedulerAcceleratorConfigType `pulumi:"type"`
 }
 
 // SchedulerAcceleratorConfigInput is an input type that accepts SchedulerAcceleratorConfigArgs and SchedulerAcceleratorConfigOutput values.
@@ -5263,7 +5263,7 @@ type SchedulerAcceleratorConfigArgs struct {
 	// Count of cores of this accelerator.
 	CoreCount pulumi.StringPtrInput `pulumi:"coreCount"`
 	// Type of this accelerator.
-	Type *SchedulerAcceleratorConfigType `pulumi:"type"`
+	Type SchedulerAcceleratorConfigTypePtrInput `pulumi:"type"`
 }
 
 func (SchedulerAcceleratorConfigArgs) ElementType() reflect.Type {
@@ -5350,8 +5350,8 @@ func (o SchedulerAcceleratorConfigOutput) CoreCount() pulumi.StringPtrOutput {
 }
 
 // Type of this accelerator.
-func (o SchedulerAcceleratorConfigOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SchedulerAcceleratorConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o SchedulerAcceleratorConfigOutput) Type() SchedulerAcceleratorConfigTypePtrOutput {
+	return o.ApplyT(func(v SchedulerAcceleratorConfig) *SchedulerAcceleratorConfigType { return v.Type }).(SchedulerAcceleratorConfigTypePtrOutput)
 }
 
 type SchedulerAcceleratorConfigPtrOutput struct{ *pulumi.OutputState }
@@ -5383,13 +5383,13 @@ func (o SchedulerAcceleratorConfigPtrOutput) CoreCount() pulumi.StringPtrOutput 
 }
 
 // Type of this accelerator.
-func (o SchedulerAcceleratorConfigPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SchedulerAcceleratorConfig) *string {
+func (o SchedulerAcceleratorConfigPtrOutput) Type() SchedulerAcceleratorConfigTypePtrOutput {
+	return o.ApplyT(func(v *SchedulerAcceleratorConfig) *SchedulerAcceleratorConfigType {
 		if v == nil {
 			return nil
 		}
 		return v.Type
-	}).(pulumi.StringPtrOutput)
+	}).(SchedulerAcceleratorConfigTypePtrOutput)
 }
 
 // Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check GPUs on Compute Engine to find a valid combination. TPUs are not supported.
@@ -5892,7 +5892,7 @@ func (o ShieldedInstanceConfigResponsePtrOutput) EnableVtpm() pulumi.BoolPtrOutp
 // The entry of VM image upgrade history.
 type UpgradeHistoryEntry struct {
 	// Action. Rolloback or Upgrade.
-	Action *string `pulumi:"action"`
+	Action *UpgradeHistoryEntryAction `pulumi:"action"`
 	// The container image before this instance upgrade.
 	ContainerImage *string `pulumi:"containerImage"`
 	// The time that this instance upgrade history entry is created.
@@ -5902,7 +5902,7 @@ type UpgradeHistoryEntry struct {
 	// The snapshot of the boot disk of this notebook instance before upgrade.
 	Snapshot *string `pulumi:"snapshot"`
 	// The state of this instance upgrade history entry.
-	State *string `pulumi:"state"`
+	State *UpgradeHistoryEntryState `pulumi:"state"`
 	// Target VM Image. Format: ainotebooks-vm/project/image-name/name.
 	TargetImage *string `pulumi:"targetImage"`
 	// Target VM Version, like m63.
@@ -5927,7 +5927,7 @@ type UpgradeHistoryEntryInput interface {
 // The entry of VM image upgrade history.
 type UpgradeHistoryEntryArgs struct {
 	// Action. Rolloback or Upgrade.
-	Action *UpgradeHistoryEntryAction `pulumi:"action"`
+	Action UpgradeHistoryEntryActionPtrInput `pulumi:"action"`
 	// The container image before this instance upgrade.
 	ContainerImage pulumi.StringPtrInput `pulumi:"containerImage"`
 	// The time that this instance upgrade history entry is created.
@@ -5937,7 +5937,7 @@ type UpgradeHistoryEntryArgs struct {
 	// The snapshot of the boot disk of this notebook instance before upgrade.
 	Snapshot pulumi.StringPtrInput `pulumi:"snapshot"`
 	// The state of this instance upgrade history entry.
-	State *UpgradeHistoryEntryState `pulumi:"state"`
+	State UpgradeHistoryEntryStatePtrInput `pulumi:"state"`
 	// Target VM Image. Format: ainotebooks-vm/project/image-name/name.
 	TargetImage pulumi.StringPtrInput `pulumi:"targetImage"`
 	// Target VM Version, like m63.
@@ -6001,8 +6001,8 @@ func (o UpgradeHistoryEntryOutput) ToUpgradeHistoryEntryOutputWithContext(ctx co
 }
 
 // Action. Rolloback or Upgrade.
-func (o UpgradeHistoryEntryOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UpgradeHistoryEntry) *string { return v.Action }).(pulumi.StringPtrOutput)
+func (o UpgradeHistoryEntryOutput) Action() UpgradeHistoryEntryActionPtrOutput {
+	return o.ApplyT(func(v UpgradeHistoryEntry) *UpgradeHistoryEntryAction { return v.Action }).(UpgradeHistoryEntryActionPtrOutput)
 }
 
 // The container image before this instance upgrade.
@@ -6026,8 +6026,8 @@ func (o UpgradeHistoryEntryOutput) Snapshot() pulumi.StringPtrOutput {
 }
 
 // The state of this instance upgrade history entry.
-func (o UpgradeHistoryEntryOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UpgradeHistoryEntry) *string { return v.State }).(pulumi.StringPtrOutput)
+func (o UpgradeHistoryEntryOutput) State() UpgradeHistoryEntryStatePtrOutput {
+	return o.ApplyT(func(v UpgradeHistoryEntry) *UpgradeHistoryEntryState { return v.State }).(UpgradeHistoryEntryStatePtrOutput)
 }
 
 // Target VM Image. Format: ainotebooks-vm/project/image-name/name.
@@ -6406,7 +6406,7 @@ type VirtualMachineConfig struct {
 	// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
 	Network *string `pulumi:"network"`
 	// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
-	NicType *string `pulumi:"nicType"`
+	NicType *VirtualMachineConfigNicType `pulumi:"nicType"`
 	// Optional. Shielded VM Instance configuration settings.
 	ShieldedInstanceConfig *RuntimeShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network. A full URL or partial URI are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0` * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
@@ -6447,7 +6447,7 @@ type VirtualMachineConfigArgs struct {
 	// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
-	NicType *VirtualMachineConfigNicType `pulumi:"nicType"`
+	NicType VirtualMachineConfigNicTypePtrInput `pulumi:"nicType"`
 	// Optional. Shielded VM Instance configuration settings.
 	ShieldedInstanceConfig RuntimeShieldedInstanceConfigPtrInput `pulumi:"shieldedInstanceConfig"`
 	// Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified with network. A full URL or partial URI are valid. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/subnetworks/sub0` * `projects/[project_id]/regions/us-east1/subnetworks/sub0`
@@ -6580,8 +6580,8 @@ func (o VirtualMachineConfigOutput) Network() pulumi.StringPtrOutput {
 }
 
 // Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
-func (o VirtualMachineConfigOutput) NicType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VirtualMachineConfig) *string { return v.NicType }).(pulumi.StringPtrOutput)
+func (o VirtualMachineConfigOutput) NicType() VirtualMachineConfigNicTypePtrOutput {
+	return o.ApplyT(func(v VirtualMachineConfig) *VirtualMachineConfigNicType { return v.NicType }).(VirtualMachineConfigNicTypePtrOutput)
 }
 
 // Optional. Shielded VM Instance configuration settings.
@@ -6708,13 +6708,13 @@ func (o VirtualMachineConfigPtrOutput) Network() pulumi.StringPtrOutput {
 }
 
 // Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
-func (o VirtualMachineConfigPtrOutput) NicType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VirtualMachineConfig) *string {
+func (o VirtualMachineConfigPtrOutput) NicType() VirtualMachineConfigNicTypePtrOutput {
+	return o.ApplyT(func(v *VirtualMachineConfig) *VirtualMachineConfigNicType {
 		if v == nil {
 			return nil
 		}
 		return v.NicType
-	}).(pulumi.StringPtrOutput)
+	}).(VirtualMachineConfigNicTypePtrOutput)
 }
 
 // Optional. Shielded VM Instance configuration settings.

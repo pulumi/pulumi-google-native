@@ -69,37 +69,9 @@ func GetTask(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Task resources.
 type taskState struct {
-	// App Engine HTTP request that is sent to the task's target. Can be set only if app_engine_http_target is set on the queue. An App Engine task is a task that has AppEngineHttpRequest set.
-	AppEngineHttpRequest *AppEngineHttpRequestResponse `pulumi:"appEngineHttpRequest"`
-	// The time that the task was created. `create_time` will be truncated to the nearest second.
-	CreateTime *string `pulumi:"createTime"`
-	// Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
-	Name *string `pulumi:"name"`
-	// LeaseTasks to process the task. Can be set only if pull_target is set on the queue. A pull task is a task that has PullMessage set.
-	PullMessage *PullMessageResponse `pulumi:"pullMessage"`
-	// The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. For pull queues, this is the time when the task is available to be leased; if a task is currently leased, this is the time when the current lease expires, that is, the time that the task was leased plus the lease_duration. `schedule_time` will be truncated to the nearest microsecond.
-	ScheduleTime *string `pulumi:"scheduleTime"`
-	// The task status.
-	Status *TaskStatusResponse `pulumi:"status"`
-	// The view specifies which subset of the Task has been returned.
-	View *string `pulumi:"view"`
 }
 
 type TaskState struct {
-	// App Engine HTTP request that is sent to the task's target. Can be set only if app_engine_http_target is set on the queue. An App Engine task is a task that has AppEngineHttpRequest set.
-	AppEngineHttpRequest AppEngineHttpRequestResponsePtrInput
-	// The time that the task was created. `create_time` will be truncated to the nearest second.
-	CreateTime pulumi.StringPtrInput
-	// Optionally caller-specified in CreateTask. The task name. The task name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
-	Name pulumi.StringPtrInput
-	// LeaseTasks to process the task. Can be set only if pull_target is set on the queue. A pull task is a task that has PullMessage set.
-	PullMessage PullMessageResponsePtrInput
-	// The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. For pull queues, this is the time when the task is available to be leased; if a task is currently leased, this is the time when the current lease expires, that is, the time that the task was leased plus the lease_duration. `schedule_time` will be truncated to the nearest microsecond.
-	ScheduleTime pulumi.StringPtrInput
-	// The task status.
-	Status TaskStatusResponsePtrInput
-	// The view specifies which subset of the Task has been returned.
-	View pulumi.StringPtrInput
 }
 
 func (TaskState) ElementType() reflect.Type {
@@ -117,7 +89,7 @@ type taskArgs struct {
 	PullMessage *PullMessage `pulumi:"pullMessage"`
 	QueueId     string       `pulumi:"queueId"`
 	// The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
-	ResponseView *string `pulumi:"responseView"`
+	ResponseView *TaskResponseView `pulumi:"responseView"`
 	// The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. For pull queues, this is the time when the task is available to be leased; if a task is currently leased, this is the time when the current lease expires, that is, the time that the task was leased plus the lease_duration. `schedule_time` will be truncated to the nearest microsecond.
 	ScheduleTime *string `pulumi:"scheduleTime"`
 }
@@ -134,7 +106,7 @@ type TaskArgs struct {
 	PullMessage PullMessagePtrInput
 	QueueId     pulumi.StringInput
 	// The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
-	ResponseView *TaskResponseView
+	ResponseView TaskResponseViewPtrInput
 	// The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. For pull queues, this is the time when the task is available to be leased; if a task is currently leased, this is the time when the current lease expires, that is, the time that the task was leased plus the lease_duration. `schedule_time` will be truncated to the nearest microsecond.
 	ScheduleTime pulumi.StringPtrInput
 }

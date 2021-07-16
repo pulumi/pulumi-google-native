@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-type WorkerPoolRegionsItem pulumi.String
+type WorkerPoolRegionsItem string
 
 const (
 	// no region
@@ -26,7 +26,23 @@ const (
 )
 
 func (WorkerPoolRegionsItem) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*WorkerPoolRegionsItem)(nil)).Elem()
+}
+
+func (e WorkerPoolRegionsItem) ToWorkerPoolRegionsItemOutput() WorkerPoolRegionsItemOutput {
+	return pulumi.ToOutput(e).(WorkerPoolRegionsItemOutput)
+}
+
+func (e WorkerPoolRegionsItem) ToWorkerPoolRegionsItemOutputWithContext(ctx context.Context) WorkerPoolRegionsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(WorkerPoolRegionsItemOutput)
+}
+
+func (e WorkerPoolRegionsItem) ToWorkerPoolRegionsItemPtrOutput() WorkerPoolRegionsItemPtrOutput {
+	return e.ToWorkerPoolRegionsItemPtrOutputWithContext(context.Background())
+}
+
+func (e WorkerPoolRegionsItem) ToWorkerPoolRegionsItemPtrOutputWithContext(ctx context.Context) WorkerPoolRegionsItemPtrOutput {
+	return WorkerPoolRegionsItem(e).ToWorkerPoolRegionsItemOutputWithContext(ctx).ToWorkerPoolRegionsItemPtrOutputWithContext(ctx)
 }
 
 func (e WorkerPoolRegionsItem) ToStringOutput() pulumi.StringOutput {
@@ -43,6 +59,127 @@ func (e WorkerPoolRegionsItem) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e WorkerPoolRegionsItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type WorkerPoolRegionsItemOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolRegionsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolRegionsItem)(nil)).Elem()
+}
+
+func (o WorkerPoolRegionsItemOutput) ToWorkerPoolRegionsItemOutput() WorkerPoolRegionsItemOutput {
+	return o
+}
+
+func (o WorkerPoolRegionsItemOutput) ToWorkerPoolRegionsItemOutputWithContext(ctx context.Context) WorkerPoolRegionsItemOutput {
+	return o
+}
+
+func (o WorkerPoolRegionsItemOutput) ToWorkerPoolRegionsItemPtrOutput() WorkerPoolRegionsItemPtrOutput {
+	return o.ToWorkerPoolRegionsItemPtrOutputWithContext(context.Background())
+}
+
+func (o WorkerPoolRegionsItemOutput) ToWorkerPoolRegionsItemPtrOutputWithContext(ctx context.Context) WorkerPoolRegionsItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerPoolRegionsItem) *WorkerPoolRegionsItem {
+		return &v
+	}).(WorkerPoolRegionsItemPtrOutput)
+}
+
+func (o WorkerPoolRegionsItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o WorkerPoolRegionsItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WorkerPoolRegionsItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o WorkerPoolRegionsItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WorkerPoolRegionsItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e WorkerPoolRegionsItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type WorkerPoolRegionsItemPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolRegionsItemPtrOutput) ElementType() reflect.Type {
+	return workerPoolRegionsItemPtrType
+}
+
+func (o WorkerPoolRegionsItemPtrOutput) ToWorkerPoolRegionsItemPtrOutput() WorkerPoolRegionsItemPtrOutput {
+	return o
+}
+
+func (o WorkerPoolRegionsItemPtrOutput) ToWorkerPoolRegionsItemPtrOutputWithContext(ctx context.Context) WorkerPoolRegionsItemPtrOutput {
+	return o
+}
+
+func (o WorkerPoolRegionsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o WorkerPoolRegionsItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *WorkerPoolRegionsItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o WorkerPoolRegionsItemPtrOutput) Elem() WorkerPoolRegionsItemOutput {
+	return o.ApplyT(func(v *WorkerPoolRegionsItem) WorkerPoolRegionsItem {
+		var ret WorkerPoolRegionsItem
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(WorkerPoolRegionsItemOutput)
+}
+
+// WorkerPoolRegionsItemInput is an input type that accepts WorkerPoolRegionsItemArgs and WorkerPoolRegionsItemOutput values.
+// You can construct a concrete instance of `WorkerPoolRegionsItemInput` via:
+//
+//          WorkerPoolRegionsItemArgs{...}
+type WorkerPoolRegionsItemInput interface {
+	pulumi.Input
+
+	ToWorkerPoolRegionsItemOutput() WorkerPoolRegionsItemOutput
+	ToWorkerPoolRegionsItemOutputWithContext(context.Context) WorkerPoolRegionsItemOutput
+}
+
+var workerPoolRegionsItemPtrType = reflect.TypeOf((**WorkerPoolRegionsItem)(nil)).Elem()
+
+type WorkerPoolRegionsItemPtrInput interface {
+	pulumi.Input
+
+	ToWorkerPoolRegionsItemPtrOutput() WorkerPoolRegionsItemPtrOutput
+	ToWorkerPoolRegionsItemPtrOutputWithContext(context.Context) WorkerPoolRegionsItemPtrOutput
+}
+
+type workerPoolRegionsItemPtr string
+
+func WorkerPoolRegionsItemPtr(v string) WorkerPoolRegionsItemPtrInput {
+	return (*workerPoolRegionsItemPtr)(&v)
+}
+
+func (*workerPoolRegionsItemPtr) ElementType() reflect.Type {
+	return workerPoolRegionsItemPtrType
+}
+
+func (in *workerPoolRegionsItemPtr) ToWorkerPoolRegionsItemPtrOutput() WorkerPoolRegionsItemPtrOutput {
+	return pulumi.ToOutput(in).(WorkerPoolRegionsItemPtrOutput)
+}
+
+func (in *workerPoolRegionsItemPtr) ToWorkerPoolRegionsItemPtrOutputWithContext(ctx context.Context) WorkerPoolRegionsItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(WorkerPoolRegionsItemPtrOutput)
 }
 
 // WorkerPoolRegionsItemArrayInput is an input type that accepts WorkerPoolRegionsItemArray and WorkerPoolRegionsItemArrayOutput values.
@@ -84,8 +221,14 @@ func (o WorkerPoolRegionsItemArrayOutput) ToWorkerPoolRegionsItemArrayOutputWith
 	return o
 }
 
-func (o WorkerPoolRegionsItemArrayOutput) Index(i pulumi.IntInput) pulumi.StringOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) pulumi.StringOutput {
-		return vs[0].([]WorkerPoolRegionsItem)[vs[1].(int)].ToStringOutput()
-	}).(pulumi.StringOutput)
+func (o WorkerPoolRegionsItemArrayOutput) Index(i pulumi.IntInput) WorkerPoolRegionsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkerPoolRegionsItemOutput {
+		return vs[0].([]WorkerPoolRegionsItem)[vs[1].(int)].ToWorkerPoolRegionsItemOutput()
+	}).(WorkerPoolRegionsItemOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(WorkerPoolRegionsItemOutput{})
+	pulumi.RegisterOutputType(WorkerPoolRegionsItemPtrOutput{})
+	pulumi.RegisterOutputType(WorkerPoolRegionsItemArrayOutput{})
 }

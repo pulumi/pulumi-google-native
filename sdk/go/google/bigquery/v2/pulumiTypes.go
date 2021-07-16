@@ -13,11 +13,11 @@ import (
 // Input/output argument of a function or a stored procedure.
 type Argument struct {
 	// Optional. Defaults to FIXED_TYPE.
-	ArgumentKind *string `pulumi:"argumentKind"`
+	ArgumentKind *ArgumentArgumentKind `pulumi:"argumentKind"`
 	// Required unless argument_kind = ANY_TYPE.
 	DataType *StandardSqlDataType `pulumi:"dataType"`
 	// Optional. Specifies whether the argument is input or output. Can be set for procedures only.
-	Mode *string `pulumi:"mode"`
+	Mode *ArgumentMode `pulumi:"mode"`
 	// Optional. The name of this argument. Can be absent for function return argument.
 	Name *string `pulumi:"name"`
 }
@@ -36,11 +36,11 @@ type ArgumentInput interface {
 // Input/output argument of a function or a stored procedure.
 type ArgumentArgs struct {
 	// Optional. Defaults to FIXED_TYPE.
-	ArgumentKind *ArgumentArgumentKind `pulumi:"argumentKind"`
+	ArgumentKind ArgumentArgumentKindPtrInput `pulumi:"argumentKind"`
 	// Required unless argument_kind = ANY_TYPE.
 	DataType StandardSqlDataTypePtrInput `pulumi:"dataType"`
 	// Optional. Specifies whether the argument is input or output. Can be set for procedures only.
-	Mode *ArgumentMode `pulumi:"mode"`
+	Mode ArgumentModePtrInput `pulumi:"mode"`
 	// Optional. The name of this argument. Can be absent for function return argument.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -98,8 +98,8 @@ func (o ArgumentOutput) ToArgumentOutputWithContext(ctx context.Context) Argumen
 }
 
 // Optional. Defaults to FIXED_TYPE.
-func (o ArgumentOutput) ArgumentKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Argument) *string { return v.ArgumentKind }).(pulumi.StringPtrOutput)
+func (o ArgumentOutput) ArgumentKind() ArgumentArgumentKindPtrOutput {
+	return o.ApplyT(func(v Argument) *ArgumentArgumentKind { return v.ArgumentKind }).(ArgumentArgumentKindPtrOutput)
 }
 
 // Required unless argument_kind = ANY_TYPE.
@@ -108,8 +108,8 @@ func (o ArgumentOutput) DataType() StandardSqlDataTypePtrOutput {
 }
 
 // Optional. Specifies whether the argument is input or output. Can be set for procedures only.
-func (o ArgumentOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Argument) *string { return v.Mode }).(pulumi.StringPtrOutput)
+func (o ArgumentOutput) Mode() ArgumentModePtrOutput {
+	return o.ApplyT(func(v Argument) *ArgumentMode { return v.Mode }).(ArgumentModePtrOutput)
 }
 
 // Optional. The name of this argument. Can be absent for function return argument.
@@ -487,7 +487,7 @@ type AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *string `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
@@ -506,7 +506,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *AuditLogConfigLogType `pulumi:"logType"`
+	LogType AuditLogConfigLogTypePtrInput `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -567,8 +567,8 @@ func (o AuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
 }
 
 // The log type that this config enables.
-func (o AuditLogConfigOutput) LogType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AuditLogConfig) *string { return v.LogType }).(pulumi.StringPtrOutput)
+func (o AuditLogConfigOutput) LogType() AuditLogConfigLogTypePtrOutput {
+	return o.ApplyT(func(v AuditLogConfig) *AuditLogConfigLogType { return v.LogType }).(AuditLogConfigLogTypePtrOutput)
 }
 
 type AuditLogConfigArrayOutput struct{ *pulumi.OutputState }
@@ -19012,7 +19012,7 @@ type StandardSqlDataType struct {
 	// The fields of this struct, in order, if type_kind = "STRUCT".
 	StructType *StandardSqlStructType `pulumi:"structType"`
 	// The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
-	TypeKind string `pulumi:"typeKind"`
+	TypeKind StandardSqlDataTypeTypeKind `pulumi:"typeKind"`
 }
 
 // StandardSqlDataTypeInput is an input type that accepts StandardSqlDataTypeArgs and StandardSqlDataTypeOutput values.
@@ -19033,7 +19033,7 @@ type StandardSqlDataTypeArgs struct {
 	// The fields of this struct, in order, if type_kind = "STRUCT".
 	StructType StandardSqlStructTypePtrInput `pulumi:"structType"`
 	// The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
-	TypeKind StandardSqlDataTypeTypeKind `pulumi:"typeKind"`
+	TypeKind StandardSqlDataTypeTypeKindInput `pulumi:"typeKind"`
 }
 
 func (StandardSqlDataTypeArgs) ElementType() reflect.Type {
@@ -19125,8 +19125,8 @@ func (o StandardSqlDataTypeOutput) StructType() StandardSqlStructTypePtrOutput {
 }
 
 // The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
-func (o StandardSqlDataTypeOutput) TypeKind() pulumi.StringOutput {
-	return o.ApplyT(func(v StandardSqlDataType) string { return v.TypeKind }).(pulumi.StringOutput)
+func (o StandardSqlDataTypeOutput) TypeKind() StandardSqlDataTypeTypeKindOutput {
+	return o.ApplyT(func(v StandardSqlDataType) StandardSqlDataTypeTypeKind { return v.TypeKind }).(StandardSqlDataTypeTypeKindOutput)
 }
 
 type StandardSqlDataTypePtrOutput struct{ *pulumi.OutputState }
@@ -19168,13 +19168,13 @@ func (o StandardSqlDataTypePtrOutput) StructType() StandardSqlStructTypePtrOutpu
 }
 
 // The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").
-func (o StandardSqlDataTypePtrOutput) TypeKind() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *StandardSqlDataType) *string {
+func (o StandardSqlDataTypePtrOutput) TypeKind() StandardSqlDataTypeTypeKindPtrOutput {
+	return o.ApplyT(func(v *StandardSqlDataType) *StandardSqlDataTypeTypeKind {
 		if v == nil {
 			return nil
 		}
 		return &v.TypeKind
-	}).(pulumi.StringPtrOutput)
+	}).(StandardSqlDataTypeTypeKindPtrOutput)
 }
 
 // The type of a variable, e.g., a function argument. Examples: INT64: {type_kind="INT64"} ARRAY: {type_kind="ARRAY", array_element_type="STRING"} STRUCT>: {type_kind="STRUCT", struct_type={fields=[ {name="x", type={type_kind="STRING"}}, {name="y", type={type_kind="ARRAY", array_element_type="DATE"}} ]}}

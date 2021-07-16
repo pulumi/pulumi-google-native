@@ -11,7 +11,7 @@ import (
 )
 
 // Required. The category of the attribute. The value of this field cannot be changed after creation.
-type AttributeDefinitionCategory pulumi.String
+type AttributeDefinitionCategory string
 
 const (
 	// No category specified. This option is invalid.
@@ -23,7 +23,23 @@ const (
 )
 
 func (AttributeDefinitionCategory) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*AttributeDefinitionCategory)(nil)).Elem()
+}
+
+func (e AttributeDefinitionCategory) ToAttributeDefinitionCategoryOutput() AttributeDefinitionCategoryOutput {
+	return pulumi.ToOutput(e).(AttributeDefinitionCategoryOutput)
+}
+
+func (e AttributeDefinitionCategory) ToAttributeDefinitionCategoryOutputWithContext(ctx context.Context) AttributeDefinitionCategoryOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AttributeDefinitionCategoryOutput)
+}
+
+func (e AttributeDefinitionCategory) ToAttributeDefinitionCategoryPtrOutput() AttributeDefinitionCategoryPtrOutput {
+	return e.ToAttributeDefinitionCategoryPtrOutputWithContext(context.Background())
+}
+
+func (e AttributeDefinitionCategory) ToAttributeDefinitionCategoryPtrOutputWithContext(ctx context.Context) AttributeDefinitionCategoryPtrOutput {
+	return AttributeDefinitionCategory(e).ToAttributeDefinitionCategoryOutputWithContext(ctx).ToAttributeDefinitionCategoryPtrOutputWithContext(ctx)
 }
 
 func (e AttributeDefinitionCategory) ToStringOutput() pulumi.StringOutput {
@@ -42,8 +58,129 @@ func (e AttributeDefinitionCategory) ToStringPtrOutputWithContext(ctx context.Co
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type AttributeDefinitionCategoryOutput struct{ *pulumi.OutputState }
+
+func (AttributeDefinitionCategoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AttributeDefinitionCategory)(nil)).Elem()
+}
+
+func (o AttributeDefinitionCategoryOutput) ToAttributeDefinitionCategoryOutput() AttributeDefinitionCategoryOutput {
+	return o
+}
+
+func (o AttributeDefinitionCategoryOutput) ToAttributeDefinitionCategoryOutputWithContext(ctx context.Context) AttributeDefinitionCategoryOutput {
+	return o
+}
+
+func (o AttributeDefinitionCategoryOutput) ToAttributeDefinitionCategoryPtrOutput() AttributeDefinitionCategoryPtrOutput {
+	return o.ToAttributeDefinitionCategoryPtrOutputWithContext(context.Background())
+}
+
+func (o AttributeDefinitionCategoryOutput) ToAttributeDefinitionCategoryPtrOutputWithContext(ctx context.Context) AttributeDefinitionCategoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AttributeDefinitionCategory) *AttributeDefinitionCategory {
+		return &v
+	}).(AttributeDefinitionCategoryPtrOutput)
+}
+
+func (o AttributeDefinitionCategoryOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AttributeDefinitionCategoryOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AttributeDefinitionCategory) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AttributeDefinitionCategoryOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AttributeDefinitionCategoryOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AttributeDefinitionCategory) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AttributeDefinitionCategoryPtrOutput struct{ *pulumi.OutputState }
+
+func (AttributeDefinitionCategoryPtrOutput) ElementType() reflect.Type {
+	return attributeDefinitionCategoryPtrType
+}
+
+func (o AttributeDefinitionCategoryPtrOutput) ToAttributeDefinitionCategoryPtrOutput() AttributeDefinitionCategoryPtrOutput {
+	return o
+}
+
+func (o AttributeDefinitionCategoryPtrOutput) ToAttributeDefinitionCategoryPtrOutputWithContext(ctx context.Context) AttributeDefinitionCategoryPtrOutput {
+	return o
+}
+
+func (o AttributeDefinitionCategoryPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AttributeDefinitionCategoryPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AttributeDefinitionCategory) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AttributeDefinitionCategoryPtrOutput) Elem() AttributeDefinitionCategoryOutput {
+	return o.ApplyT(func(v *AttributeDefinitionCategory) AttributeDefinitionCategory {
+		var ret AttributeDefinitionCategory
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(AttributeDefinitionCategoryOutput)
+}
+
+// AttributeDefinitionCategoryInput is an input type that accepts AttributeDefinitionCategoryArgs and AttributeDefinitionCategoryOutput values.
+// You can construct a concrete instance of `AttributeDefinitionCategoryInput` via:
+//
+//          AttributeDefinitionCategoryArgs{...}
+type AttributeDefinitionCategoryInput interface {
+	pulumi.Input
+
+	ToAttributeDefinitionCategoryOutput() AttributeDefinitionCategoryOutput
+	ToAttributeDefinitionCategoryOutputWithContext(context.Context) AttributeDefinitionCategoryOutput
+}
+
+var attributeDefinitionCategoryPtrType = reflect.TypeOf((**AttributeDefinitionCategory)(nil)).Elem()
+
+type AttributeDefinitionCategoryPtrInput interface {
+	pulumi.Input
+
+	ToAttributeDefinitionCategoryPtrOutput() AttributeDefinitionCategoryPtrOutput
+	ToAttributeDefinitionCategoryPtrOutputWithContext(context.Context) AttributeDefinitionCategoryPtrOutput
+}
+
+type attributeDefinitionCategoryPtr string
+
+func AttributeDefinitionCategoryPtr(v string) AttributeDefinitionCategoryPtrInput {
+	return (*attributeDefinitionCategoryPtr)(&v)
+}
+
+func (*attributeDefinitionCategoryPtr) ElementType() reflect.Type {
+	return attributeDefinitionCategoryPtrType
+}
+
+func (in *attributeDefinitionCategoryPtr) ToAttributeDefinitionCategoryPtrOutput() AttributeDefinitionCategoryPtrOutput {
+	return pulumi.ToOutput(in).(AttributeDefinitionCategoryPtrOutput)
+}
+
+func (in *attributeDefinitionCategoryPtr) ToAttributeDefinitionCategoryPtrOutputWithContext(ctx context.Context) AttributeDefinitionCategoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AttributeDefinitionCategoryPtrOutput)
+}
+
 // The log type that this config enables.
-type AuditLogConfigLogType pulumi.String
+type AuditLogConfigLogType string
 
 const (
 	// Default case. Should never be this.
@@ -57,7 +194,23 @@ const (
 )
 
 func (AuditLogConfigLogType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*AuditLogConfigLogType)(nil)).Elem()
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput {
+	return pulumi.ToOutput(e).(AuditLogConfigLogTypeOutput)
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypeOutputWithContext(ctx context.Context) AuditLogConfigLogTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AuditLogConfigLogTypeOutput)
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return e.ToAuditLogConfigLogTypePtrOutputWithContext(context.Background())
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return AuditLogConfigLogType(e).ToAuditLogConfigLogTypeOutputWithContext(ctx).ToAuditLogConfigLogTypePtrOutputWithContext(ctx)
 }
 
 func (e AuditLogConfigLogType) ToStringOutput() pulumi.StringOutput {
@@ -76,8 +229,129 @@ func (e AuditLogConfigLogType) ToStringPtrOutputWithContext(ctx context.Context)
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type AuditLogConfigLogTypeOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigLogTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigLogType)(nil)).Elem()
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypeOutputWithContext(ctx context.Context) AuditLogConfigLogTypeOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return o.ToAuditLogConfigLogTypePtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuditLogConfigLogType) *AuditLogConfigLogType {
+		return &v
+	}).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuditLogConfigLogType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuditLogConfigLogType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
+	return auditLogConfigLogTypePtrType
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AuditLogConfigLogType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		var ret AuditLogConfigLogType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
+}
+
+// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
+// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+//
+//          AuditLogConfigLogTypeArgs{...}
+type AuditLogConfigLogTypeInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput
+	ToAuditLogConfigLogTypeOutputWithContext(context.Context) AuditLogConfigLogTypeOutput
+}
+
+var auditLogConfigLogTypePtrType = reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
+
+type AuditLogConfigLogTypePtrInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput
+	ToAuditLogConfigLogTypePtrOutputWithContext(context.Context) AuditLogConfigLogTypePtrOutput
+}
+
+type auditLogConfigLogTypePtr string
+
+func AuditLogConfigLogTypePtr(v string) AuditLogConfigLogTypePtrInput {
+	return (*auditLogConfigLogTypePtr)(&v)
+}
+
+func (*auditLogConfigLogTypePtr) ElementType() reflect.Type {
+	return auditLogConfigLogTypePtrType
+}
+
+func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return pulumi.ToOutput(in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
 // Required. Indicates the current state of this Consent.
-type ConsentStateEnum pulumi.String
+type ConsentStateEnum string
 
 const (
 	// No state specified.
@@ -95,7 +369,23 @@ const (
 )
 
 func (ConsentStateEnum) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*ConsentStateEnum)(nil)).Elem()
+}
+
+func (e ConsentStateEnum) ToConsentStateEnumOutput() ConsentStateEnumOutput {
+	return pulumi.ToOutput(e).(ConsentStateEnumOutput)
+}
+
+func (e ConsentStateEnum) ToConsentStateEnumOutputWithContext(ctx context.Context) ConsentStateEnumOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ConsentStateEnumOutput)
+}
+
+func (e ConsentStateEnum) ToConsentStateEnumPtrOutput() ConsentStateEnumPtrOutput {
+	return e.ToConsentStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (e ConsentStateEnum) ToConsentStateEnumPtrOutputWithContext(ctx context.Context) ConsentStateEnumPtrOutput {
+	return ConsentStateEnum(e).ToConsentStateEnumOutputWithContext(ctx).ToConsentStateEnumPtrOutputWithContext(ctx)
 }
 
 func (e ConsentStateEnum) ToStringOutput() pulumi.StringOutput {
@@ -114,8 +404,129 @@ func (e ConsentStateEnum) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type ConsentStateEnumOutput struct{ *pulumi.OutputState }
+
+func (ConsentStateEnumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConsentStateEnum)(nil)).Elem()
+}
+
+func (o ConsentStateEnumOutput) ToConsentStateEnumOutput() ConsentStateEnumOutput {
+	return o
+}
+
+func (o ConsentStateEnumOutput) ToConsentStateEnumOutputWithContext(ctx context.Context) ConsentStateEnumOutput {
+	return o
+}
+
+func (o ConsentStateEnumOutput) ToConsentStateEnumPtrOutput() ConsentStateEnumPtrOutput {
+	return o.ToConsentStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (o ConsentStateEnumOutput) ToConsentStateEnumPtrOutputWithContext(ctx context.Context) ConsentStateEnumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConsentStateEnum) *ConsentStateEnum {
+		return &v
+	}).(ConsentStateEnumPtrOutput)
+}
+
+func (o ConsentStateEnumOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ConsentStateEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConsentStateEnum) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ConsentStateEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConsentStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConsentStateEnum) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConsentStateEnumPtrOutput struct{ *pulumi.OutputState }
+
+func (ConsentStateEnumPtrOutput) ElementType() reflect.Type {
+	return consentStateEnumPtrType
+}
+
+func (o ConsentStateEnumPtrOutput) ToConsentStateEnumPtrOutput() ConsentStateEnumPtrOutput {
+	return o
+}
+
+func (o ConsentStateEnumPtrOutput) ToConsentStateEnumPtrOutputWithContext(ctx context.Context) ConsentStateEnumPtrOutput {
+	return o
+}
+
+func (o ConsentStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConsentStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ConsentStateEnum) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConsentStateEnumPtrOutput) Elem() ConsentStateEnumOutput {
+	return o.ApplyT(func(v *ConsentStateEnum) ConsentStateEnum {
+		var ret ConsentStateEnum
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ConsentStateEnumOutput)
+}
+
+// ConsentStateEnumInput is an input type that accepts ConsentStateEnumArgs and ConsentStateEnumOutput values.
+// You can construct a concrete instance of `ConsentStateEnumInput` via:
+//
+//          ConsentStateEnumArgs{...}
+type ConsentStateEnumInput interface {
+	pulumi.Input
+
+	ToConsentStateEnumOutput() ConsentStateEnumOutput
+	ToConsentStateEnumOutputWithContext(context.Context) ConsentStateEnumOutput
+}
+
+var consentStateEnumPtrType = reflect.TypeOf((**ConsentStateEnum)(nil)).Elem()
+
+type ConsentStateEnumPtrInput interface {
+	pulumi.Input
+
+	ToConsentStateEnumPtrOutput() ConsentStateEnumPtrOutput
+	ToConsentStateEnumPtrOutputWithContext(context.Context) ConsentStateEnumPtrOutput
+}
+
+type consentStateEnumPtr string
+
+func ConsentStateEnumPtr(v string) ConsentStateEnumPtrInput {
+	return (*consentStateEnumPtr)(&v)
+}
+
+func (*consentStateEnumPtr) ElementType() reflect.Type {
+	return consentStateEnumPtrType
+}
+
+func (in *consentStateEnumPtr) ToConsentStateEnumPtrOutput() ConsentStateEnumPtrOutput {
+	return pulumi.ToOutput(in).(ConsentStateEnumPtrOutput)
+}
+
+func (in *consentStateEnumPtr) ToConsentStateEnumPtrOutputWithContext(ctx context.Context) ConsentStateEnumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ConsentStateEnumPtrOutput)
+}
+
 // Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
-type FhirStoreVersion pulumi.String
+type FhirStoreVersion string
 
 const (
 	// Users must specify a version on store creation or an error is returned.
@@ -129,7 +540,23 @@ const (
 )
 
 func (FhirStoreVersion) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*FhirStoreVersion)(nil)).Elem()
+}
+
+func (e FhirStoreVersion) ToFhirStoreVersionOutput() FhirStoreVersionOutput {
+	return pulumi.ToOutput(e).(FhirStoreVersionOutput)
+}
+
+func (e FhirStoreVersion) ToFhirStoreVersionOutputWithContext(ctx context.Context) FhirStoreVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FhirStoreVersionOutput)
+}
+
+func (e FhirStoreVersion) ToFhirStoreVersionPtrOutput() FhirStoreVersionPtrOutput {
+	return e.ToFhirStoreVersionPtrOutputWithContext(context.Background())
+}
+
+func (e FhirStoreVersion) ToFhirStoreVersionPtrOutputWithContext(ctx context.Context) FhirStoreVersionPtrOutput {
+	return FhirStoreVersion(e).ToFhirStoreVersionOutputWithContext(ctx).ToFhirStoreVersionPtrOutputWithContext(ctx)
 }
 
 func (e FhirStoreVersion) ToStringOutput() pulumi.StringOutput {
@@ -148,8 +575,129 @@ func (e FhirStoreVersion) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type FhirStoreVersionOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FhirStoreVersion)(nil)).Elem()
+}
+
+func (o FhirStoreVersionOutput) ToFhirStoreVersionOutput() FhirStoreVersionOutput {
+	return o
+}
+
+func (o FhirStoreVersionOutput) ToFhirStoreVersionOutputWithContext(ctx context.Context) FhirStoreVersionOutput {
+	return o
+}
+
+func (o FhirStoreVersionOutput) ToFhirStoreVersionPtrOutput() FhirStoreVersionPtrOutput {
+	return o.ToFhirStoreVersionPtrOutputWithContext(context.Background())
+}
+
+func (o FhirStoreVersionOutput) ToFhirStoreVersionPtrOutputWithContext(ctx context.Context) FhirStoreVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FhirStoreVersion) *FhirStoreVersion {
+		return &v
+	}).(FhirStoreVersionPtrOutput)
+}
+
+func (o FhirStoreVersionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FhirStoreVersionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FhirStoreVersion) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FhirStoreVersionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FhirStoreVersionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FhirStoreVersion) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FhirStoreVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (FhirStoreVersionPtrOutput) ElementType() reflect.Type {
+	return fhirStoreVersionPtrType
+}
+
+func (o FhirStoreVersionPtrOutput) ToFhirStoreVersionPtrOutput() FhirStoreVersionPtrOutput {
+	return o
+}
+
+func (o FhirStoreVersionPtrOutput) ToFhirStoreVersionPtrOutputWithContext(ctx context.Context) FhirStoreVersionPtrOutput {
+	return o
+}
+
+func (o FhirStoreVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FhirStoreVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FhirStoreVersion) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o FhirStoreVersionPtrOutput) Elem() FhirStoreVersionOutput {
+	return o.ApplyT(func(v *FhirStoreVersion) FhirStoreVersion {
+		var ret FhirStoreVersion
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(FhirStoreVersionOutput)
+}
+
+// FhirStoreVersionInput is an input type that accepts FhirStoreVersionArgs and FhirStoreVersionOutput values.
+// You can construct a concrete instance of `FhirStoreVersionInput` via:
+//
+//          FhirStoreVersionArgs{...}
+type FhirStoreVersionInput interface {
+	pulumi.Input
+
+	ToFhirStoreVersionOutput() FhirStoreVersionOutput
+	ToFhirStoreVersionOutputWithContext(context.Context) FhirStoreVersionOutput
+}
+
+var fhirStoreVersionPtrType = reflect.TypeOf((**FhirStoreVersion)(nil)).Elem()
+
+type FhirStoreVersionPtrInput interface {
+	pulumi.Input
+
+	ToFhirStoreVersionPtrOutput() FhirStoreVersionPtrOutput
+	ToFhirStoreVersionPtrOutputWithContext(context.Context) FhirStoreVersionPtrOutput
+}
+
+type fhirStoreVersionPtr string
+
+func FhirStoreVersionPtr(v string) FhirStoreVersionPtrInput {
+	return (*fhirStoreVersionPtr)(&v)
+}
+
+func (*fhirStoreVersionPtr) ElementType() reflect.Type {
+	return fhirStoreVersionPtrType
+}
+
+func (in *fhirStoreVersionPtr) ToFhirStoreVersionPtrOutput() FhirStoreVersionPtrOutput {
+	return pulumi.ToOutput(in).(FhirStoreVersionPtrOutput)
+}
+
+func (in *fhirStoreVersionPtr) ToFhirStoreVersionPtrOutputWithContext(ctx context.Context) FhirStoreVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FhirStoreVersionPtrOutput)
+}
+
 // Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
-type GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition pulumi.String
+type GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition string
 
 const (
 	// Default behavior is the same as WRITE_EMPTY.
@@ -163,7 +711,23 @@ const (
 )
 
 func (GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition)(nil)).Elem()
+}
+
+func (e GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition) ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput() GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput {
+	return pulumi.ToOutput(e).(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput)
+}
+
+func (e GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition) ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput)
+}
+
+func (e GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition) ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput() GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput {
+	return e.ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition) ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput {
+	return GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition(e).ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutputWithContext(ctx).ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutputWithContext(ctx)
 }
 
 func (e GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition) ToStringOutput() pulumi.StringOutput {
@@ -182,8 +746,129 @@ func (e GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition) ToString
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition)(nil)).Elem()
+}
+
+func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput) ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput() GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput) ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput) ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput() GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput {
+	return o.ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput) ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition) *GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition {
+		return &v
+	}).(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput)
+}
+
+func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput) ElementType() reflect.Type {
+	return googleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrType
+}
+
+func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput) ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput() GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput) ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput {
+	return o
+}
+
+func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput) Elem() GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput {
+	return o.ApplyT(func(v *GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition) GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition {
+		var ret GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput)
+}
+
+// GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionInput is an input type that accepts GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionArgs and GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput values.
+// You can construct a concrete instance of `GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionInput` via:
+//
+//          GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionArgs{...}
+type GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionInput interface {
+	pulumi.Input
+
+	ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput() GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput
+	ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutputWithContext(context.Context) GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput
+}
+
+var googleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrType = reflect.TypeOf((**GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition)(nil)).Elem()
+
+type GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput() GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput
+	ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutputWithContext(context.Context) GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput
+}
+
+type googleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtr string
+
+func GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtr(v string) GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrInput {
+	return (*googleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtr)(&v)
+}
+
+func (*googleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtr) ElementType() reflect.Type {
+	return googleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrType
+}
+
+func (in *googleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtr) ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput() GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput)
+}
+
+func (in *googleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtr) ToGoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutputWithContext(ctx context.Context) GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput)
+}
+
 // Specifies the output schema type. Schema type is required.
-type SchemaConfigSchemaType pulumi.String
+type SchemaConfigSchemaType string
 
 const (
 	// No schema type specified. This type is unsupported.
@@ -193,7 +878,23 @@ const (
 )
 
 func (SchemaConfigSchemaType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*SchemaConfigSchemaType)(nil)).Elem()
+}
+
+func (e SchemaConfigSchemaType) ToSchemaConfigSchemaTypeOutput() SchemaConfigSchemaTypeOutput {
+	return pulumi.ToOutput(e).(SchemaConfigSchemaTypeOutput)
+}
+
+func (e SchemaConfigSchemaType) ToSchemaConfigSchemaTypeOutputWithContext(ctx context.Context) SchemaConfigSchemaTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SchemaConfigSchemaTypeOutput)
+}
+
+func (e SchemaConfigSchemaType) ToSchemaConfigSchemaTypePtrOutput() SchemaConfigSchemaTypePtrOutput {
+	return e.ToSchemaConfigSchemaTypePtrOutputWithContext(context.Background())
+}
+
+func (e SchemaConfigSchemaType) ToSchemaConfigSchemaTypePtrOutputWithContext(ctx context.Context) SchemaConfigSchemaTypePtrOutput {
+	return SchemaConfigSchemaType(e).ToSchemaConfigSchemaTypeOutputWithContext(ctx).ToSchemaConfigSchemaTypePtrOutputWithContext(ctx)
 }
 
 func (e SchemaConfigSchemaType) ToStringOutput() pulumi.StringOutput {
@@ -212,8 +913,129 @@ func (e SchemaConfigSchemaType) ToStringPtrOutputWithContext(ctx context.Context
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type SchemaConfigSchemaTypeOutput struct{ *pulumi.OutputState }
+
+func (SchemaConfigSchemaTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaConfigSchemaType)(nil)).Elem()
+}
+
+func (o SchemaConfigSchemaTypeOutput) ToSchemaConfigSchemaTypeOutput() SchemaConfigSchemaTypeOutput {
+	return o
+}
+
+func (o SchemaConfigSchemaTypeOutput) ToSchemaConfigSchemaTypeOutputWithContext(ctx context.Context) SchemaConfigSchemaTypeOutput {
+	return o
+}
+
+func (o SchemaConfigSchemaTypeOutput) ToSchemaConfigSchemaTypePtrOutput() SchemaConfigSchemaTypePtrOutput {
+	return o.ToSchemaConfigSchemaTypePtrOutputWithContext(context.Background())
+}
+
+func (o SchemaConfigSchemaTypeOutput) ToSchemaConfigSchemaTypePtrOutputWithContext(ctx context.Context) SchemaConfigSchemaTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchemaConfigSchemaType) *SchemaConfigSchemaType {
+		return &v
+	}).(SchemaConfigSchemaTypePtrOutput)
+}
+
+func (o SchemaConfigSchemaTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SchemaConfigSchemaTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchemaConfigSchemaType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SchemaConfigSchemaTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaConfigSchemaTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchemaConfigSchemaType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SchemaConfigSchemaTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SchemaConfigSchemaTypePtrOutput) ElementType() reflect.Type {
+	return schemaConfigSchemaTypePtrType
+}
+
+func (o SchemaConfigSchemaTypePtrOutput) ToSchemaConfigSchemaTypePtrOutput() SchemaConfigSchemaTypePtrOutput {
+	return o
+}
+
+func (o SchemaConfigSchemaTypePtrOutput) ToSchemaConfigSchemaTypePtrOutputWithContext(ctx context.Context) SchemaConfigSchemaTypePtrOutput {
+	return o
+}
+
+func (o SchemaConfigSchemaTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaConfigSchemaTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SchemaConfigSchemaType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SchemaConfigSchemaTypePtrOutput) Elem() SchemaConfigSchemaTypeOutput {
+	return o.ApplyT(func(v *SchemaConfigSchemaType) SchemaConfigSchemaType {
+		var ret SchemaConfigSchemaType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(SchemaConfigSchemaTypeOutput)
+}
+
+// SchemaConfigSchemaTypeInput is an input type that accepts SchemaConfigSchemaTypeArgs and SchemaConfigSchemaTypeOutput values.
+// You can construct a concrete instance of `SchemaConfigSchemaTypeInput` via:
+//
+//          SchemaConfigSchemaTypeArgs{...}
+type SchemaConfigSchemaTypeInput interface {
+	pulumi.Input
+
+	ToSchemaConfigSchemaTypeOutput() SchemaConfigSchemaTypeOutput
+	ToSchemaConfigSchemaTypeOutputWithContext(context.Context) SchemaConfigSchemaTypeOutput
+}
+
+var schemaConfigSchemaTypePtrType = reflect.TypeOf((**SchemaConfigSchemaType)(nil)).Elem()
+
+type SchemaConfigSchemaTypePtrInput interface {
+	pulumi.Input
+
+	ToSchemaConfigSchemaTypePtrOutput() SchemaConfigSchemaTypePtrOutput
+	ToSchemaConfigSchemaTypePtrOutputWithContext(context.Context) SchemaConfigSchemaTypePtrOutput
+}
+
+type schemaConfigSchemaTypePtr string
+
+func SchemaConfigSchemaTypePtr(v string) SchemaConfigSchemaTypePtrInput {
+	return (*schemaConfigSchemaTypePtr)(&v)
+}
+
+func (*schemaConfigSchemaTypePtr) ElementType() reflect.Type {
+	return schemaConfigSchemaTypePtrType
+}
+
+func (in *schemaConfigSchemaTypePtr) ToSchemaConfigSchemaTypePtrOutput() SchemaConfigSchemaTypePtrOutput {
+	return pulumi.ToOutput(in).(SchemaConfigSchemaTypePtrOutput)
+}
+
+func (in *schemaConfigSchemaTypePtr) ToSchemaConfigSchemaTypePtrOutputWithContext(ctx context.Context) SchemaConfigSchemaTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SchemaConfigSchemaTypePtrOutput)
+}
+
 // Determines how messages that fail to parse are handled.
-type SchemaPackageSchematizedParsingType pulumi.String
+type SchemaPackageSchematizedParsingType string
 
 const (
 	// Unspecified schematized parsing type, equivalent to `SOFT_FAIL`.
@@ -225,7 +1047,23 @@ const (
 )
 
 func (SchemaPackageSchematizedParsingType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*SchemaPackageSchematizedParsingType)(nil)).Elem()
+}
+
+func (e SchemaPackageSchematizedParsingType) ToSchemaPackageSchematizedParsingTypeOutput() SchemaPackageSchematizedParsingTypeOutput {
+	return pulumi.ToOutput(e).(SchemaPackageSchematizedParsingTypeOutput)
+}
+
+func (e SchemaPackageSchematizedParsingType) ToSchemaPackageSchematizedParsingTypeOutputWithContext(ctx context.Context) SchemaPackageSchematizedParsingTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SchemaPackageSchematizedParsingTypeOutput)
+}
+
+func (e SchemaPackageSchematizedParsingType) ToSchemaPackageSchematizedParsingTypePtrOutput() SchemaPackageSchematizedParsingTypePtrOutput {
+	return e.ToSchemaPackageSchematizedParsingTypePtrOutputWithContext(context.Background())
+}
+
+func (e SchemaPackageSchematizedParsingType) ToSchemaPackageSchematizedParsingTypePtrOutputWithContext(ctx context.Context) SchemaPackageSchematizedParsingTypePtrOutput {
+	return SchemaPackageSchematizedParsingType(e).ToSchemaPackageSchematizedParsingTypeOutputWithContext(ctx).ToSchemaPackageSchematizedParsingTypePtrOutputWithContext(ctx)
 }
 
 func (e SchemaPackageSchematizedParsingType) ToStringOutput() pulumi.StringOutput {
@@ -244,8 +1082,129 @@ func (e SchemaPackageSchematizedParsingType) ToStringPtrOutputWithContext(ctx co
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type SchemaPackageSchematizedParsingTypeOutput struct{ *pulumi.OutputState }
+
+func (SchemaPackageSchematizedParsingTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchemaPackageSchematizedParsingType)(nil)).Elem()
+}
+
+func (o SchemaPackageSchematizedParsingTypeOutput) ToSchemaPackageSchematizedParsingTypeOutput() SchemaPackageSchematizedParsingTypeOutput {
+	return o
+}
+
+func (o SchemaPackageSchematizedParsingTypeOutput) ToSchemaPackageSchematizedParsingTypeOutputWithContext(ctx context.Context) SchemaPackageSchematizedParsingTypeOutput {
+	return o
+}
+
+func (o SchemaPackageSchematizedParsingTypeOutput) ToSchemaPackageSchematizedParsingTypePtrOutput() SchemaPackageSchematizedParsingTypePtrOutput {
+	return o.ToSchemaPackageSchematizedParsingTypePtrOutputWithContext(context.Background())
+}
+
+func (o SchemaPackageSchematizedParsingTypeOutput) ToSchemaPackageSchematizedParsingTypePtrOutputWithContext(ctx context.Context) SchemaPackageSchematizedParsingTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchemaPackageSchematizedParsingType) *SchemaPackageSchematizedParsingType {
+		return &v
+	}).(SchemaPackageSchematizedParsingTypePtrOutput)
+}
+
+func (o SchemaPackageSchematizedParsingTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SchemaPackageSchematizedParsingTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchemaPackageSchematizedParsingType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SchemaPackageSchematizedParsingTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaPackageSchematizedParsingTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchemaPackageSchematizedParsingType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SchemaPackageSchematizedParsingTypePtrOutput struct{ *pulumi.OutputState }
+
+func (SchemaPackageSchematizedParsingTypePtrOutput) ElementType() reflect.Type {
+	return schemaPackageSchematizedParsingTypePtrType
+}
+
+func (o SchemaPackageSchematizedParsingTypePtrOutput) ToSchemaPackageSchematizedParsingTypePtrOutput() SchemaPackageSchematizedParsingTypePtrOutput {
+	return o
+}
+
+func (o SchemaPackageSchematizedParsingTypePtrOutput) ToSchemaPackageSchematizedParsingTypePtrOutputWithContext(ctx context.Context) SchemaPackageSchematizedParsingTypePtrOutput {
+	return o
+}
+
+func (o SchemaPackageSchematizedParsingTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SchemaPackageSchematizedParsingTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SchemaPackageSchematizedParsingType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SchemaPackageSchematizedParsingTypePtrOutput) Elem() SchemaPackageSchematizedParsingTypeOutput {
+	return o.ApplyT(func(v *SchemaPackageSchematizedParsingType) SchemaPackageSchematizedParsingType {
+		var ret SchemaPackageSchematizedParsingType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(SchemaPackageSchematizedParsingTypeOutput)
+}
+
+// SchemaPackageSchematizedParsingTypeInput is an input type that accepts SchemaPackageSchematizedParsingTypeArgs and SchemaPackageSchematizedParsingTypeOutput values.
+// You can construct a concrete instance of `SchemaPackageSchematizedParsingTypeInput` via:
+//
+//          SchemaPackageSchematizedParsingTypeArgs{...}
+type SchemaPackageSchematizedParsingTypeInput interface {
+	pulumi.Input
+
+	ToSchemaPackageSchematizedParsingTypeOutput() SchemaPackageSchematizedParsingTypeOutput
+	ToSchemaPackageSchematizedParsingTypeOutputWithContext(context.Context) SchemaPackageSchematizedParsingTypeOutput
+}
+
+var schemaPackageSchematizedParsingTypePtrType = reflect.TypeOf((**SchemaPackageSchematizedParsingType)(nil)).Elem()
+
+type SchemaPackageSchematizedParsingTypePtrInput interface {
+	pulumi.Input
+
+	ToSchemaPackageSchematizedParsingTypePtrOutput() SchemaPackageSchematizedParsingTypePtrOutput
+	ToSchemaPackageSchematizedParsingTypePtrOutputWithContext(context.Context) SchemaPackageSchematizedParsingTypePtrOutput
+}
+
+type schemaPackageSchematizedParsingTypePtr string
+
+func SchemaPackageSchematizedParsingTypePtr(v string) SchemaPackageSchematizedParsingTypePtrInput {
+	return (*schemaPackageSchematizedParsingTypePtr)(&v)
+}
+
+func (*schemaPackageSchematizedParsingTypePtr) ElementType() reflect.Type {
+	return schemaPackageSchematizedParsingTypePtrType
+}
+
+func (in *schemaPackageSchematizedParsingTypePtr) ToSchemaPackageSchematizedParsingTypePtrOutput() SchemaPackageSchematizedParsingTypePtrOutput {
+	return pulumi.ToOutput(in).(SchemaPackageSchematizedParsingTypePtrOutput)
+}
+
+func (in *schemaPackageSchematizedParsingTypePtr) ToSchemaPackageSchematizedParsingTypePtrOutputWithContext(ctx context.Context) SchemaPackageSchematizedParsingTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SchemaPackageSchematizedParsingTypePtrOutput)
+}
+
 // If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
-type TypePrimitive pulumi.String
+type TypePrimitive string
 
 const (
 	// Not a primitive.
@@ -259,7 +1218,23 @@ const (
 )
 
 func (TypePrimitive) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*TypePrimitive)(nil)).Elem()
+}
+
+func (e TypePrimitive) ToTypePrimitiveOutput() TypePrimitiveOutput {
+	return pulumi.ToOutput(e).(TypePrimitiveOutput)
+}
+
+func (e TypePrimitive) ToTypePrimitiveOutputWithContext(ctx context.Context) TypePrimitiveOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TypePrimitiveOutput)
+}
+
+func (e TypePrimitive) ToTypePrimitivePtrOutput() TypePrimitivePtrOutput {
+	return e.ToTypePrimitivePtrOutputWithContext(context.Background())
+}
+
+func (e TypePrimitive) ToTypePrimitivePtrOutputWithContext(ctx context.Context) TypePrimitivePtrOutput {
+	return TypePrimitive(e).ToTypePrimitiveOutputWithContext(ctx).ToTypePrimitivePtrOutputWithContext(ctx)
 }
 
 func (e TypePrimitive) ToStringOutput() pulumi.StringOutput {
@@ -276,4 +1251,144 @@ func (e TypePrimitive) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e TypePrimitive) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TypePrimitiveOutput struct{ *pulumi.OutputState }
+
+func (TypePrimitiveOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TypePrimitive)(nil)).Elem()
+}
+
+func (o TypePrimitiveOutput) ToTypePrimitiveOutput() TypePrimitiveOutput {
+	return o
+}
+
+func (o TypePrimitiveOutput) ToTypePrimitiveOutputWithContext(ctx context.Context) TypePrimitiveOutput {
+	return o
+}
+
+func (o TypePrimitiveOutput) ToTypePrimitivePtrOutput() TypePrimitivePtrOutput {
+	return o.ToTypePrimitivePtrOutputWithContext(context.Background())
+}
+
+func (o TypePrimitiveOutput) ToTypePrimitivePtrOutputWithContext(ctx context.Context) TypePrimitivePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TypePrimitive) *TypePrimitive {
+		return &v
+	}).(TypePrimitivePtrOutput)
+}
+
+func (o TypePrimitiveOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TypePrimitiveOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TypePrimitive) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TypePrimitiveOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TypePrimitiveOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TypePrimitive) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TypePrimitivePtrOutput struct{ *pulumi.OutputState }
+
+func (TypePrimitivePtrOutput) ElementType() reflect.Type {
+	return typePrimitivePtrType
+}
+
+func (o TypePrimitivePtrOutput) ToTypePrimitivePtrOutput() TypePrimitivePtrOutput {
+	return o
+}
+
+func (o TypePrimitivePtrOutput) ToTypePrimitivePtrOutputWithContext(ctx context.Context) TypePrimitivePtrOutput {
+	return o
+}
+
+func (o TypePrimitivePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TypePrimitivePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TypePrimitive) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TypePrimitivePtrOutput) Elem() TypePrimitiveOutput {
+	return o.ApplyT(func(v *TypePrimitive) TypePrimitive {
+		var ret TypePrimitive
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(TypePrimitiveOutput)
+}
+
+// TypePrimitiveInput is an input type that accepts TypePrimitiveArgs and TypePrimitiveOutput values.
+// You can construct a concrete instance of `TypePrimitiveInput` via:
+//
+//          TypePrimitiveArgs{...}
+type TypePrimitiveInput interface {
+	pulumi.Input
+
+	ToTypePrimitiveOutput() TypePrimitiveOutput
+	ToTypePrimitiveOutputWithContext(context.Context) TypePrimitiveOutput
+}
+
+var typePrimitivePtrType = reflect.TypeOf((**TypePrimitive)(nil)).Elem()
+
+type TypePrimitivePtrInput interface {
+	pulumi.Input
+
+	ToTypePrimitivePtrOutput() TypePrimitivePtrOutput
+	ToTypePrimitivePtrOutputWithContext(context.Context) TypePrimitivePtrOutput
+}
+
+type typePrimitivePtr string
+
+func TypePrimitivePtr(v string) TypePrimitivePtrInput {
+	return (*typePrimitivePtr)(&v)
+}
+
+func (*typePrimitivePtr) ElementType() reflect.Type {
+	return typePrimitivePtrType
+}
+
+func (in *typePrimitivePtr) ToTypePrimitivePtrOutput() TypePrimitivePtrOutput {
+	return pulumi.ToOutput(in).(TypePrimitivePtrOutput)
+}
+
+func (in *typePrimitivePtr) ToTypePrimitivePtrOutputWithContext(ctx context.Context) TypePrimitivePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TypePrimitivePtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(AttributeDefinitionCategoryOutput{})
+	pulumi.RegisterOutputType(AttributeDefinitionCategoryPtrOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(ConsentStateEnumOutput{})
+	pulumi.RegisterOutputType(ConsentStateEnumPtrOutput{})
+	pulumi.RegisterOutputType(FhirStoreVersionOutput{})
+	pulumi.RegisterOutputType(FhirStoreVersionPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput{})
+	pulumi.RegisterOutputType(GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput{})
+	pulumi.RegisterOutputType(SchemaConfigSchemaTypeOutput{})
+	pulumi.RegisterOutputType(SchemaConfigSchemaTypePtrOutput{})
+	pulumi.RegisterOutputType(SchemaPackageSchematizedParsingTypeOutput{})
+	pulumi.RegisterOutputType(SchemaPackageSchematizedParsingTypePtrOutput{})
+	pulumi.RegisterOutputType(TypePrimitiveOutput{})
+	pulumi.RegisterOutputType(TypePrimitivePtrOutput{})
 }

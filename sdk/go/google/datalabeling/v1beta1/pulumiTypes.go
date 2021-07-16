@@ -3612,7 +3612,7 @@ type GoogleCloudDatalabelingV1beta1ImageClassificationConfig struct {
 	// Annotation spec set resource name.
 	AnnotationSpecSet string `pulumi:"annotationSpecSet"`
 	// Optional. The type of how to aggregate answers.
-	AnswerAggregationType *string `pulumi:"answerAggregationType"`
+	AnswerAggregationType *GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType `pulumi:"answerAggregationType"`
 }
 
 // GoogleCloudDatalabelingV1beta1ImageClassificationConfigInput is an input type that accepts GoogleCloudDatalabelingV1beta1ImageClassificationConfigArgs and GoogleCloudDatalabelingV1beta1ImageClassificationConfigOutput values.
@@ -3633,7 +3633,7 @@ type GoogleCloudDatalabelingV1beta1ImageClassificationConfigArgs struct {
 	// Annotation spec set resource name.
 	AnnotationSpecSet pulumi.StringInput `pulumi:"annotationSpecSet"`
 	// Optional. The type of how to aggregate answers.
-	AnswerAggregationType *GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType `pulumi:"answerAggregationType"`
+	AnswerAggregationType GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrInput `pulumi:"answerAggregationType"`
 }
 
 func (GoogleCloudDatalabelingV1beta1ImageClassificationConfigArgs) ElementType() reflect.Type {
@@ -3725,10 +3725,10 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigOutput) Annotatio
 }
 
 // Optional. The type of how to aggregate answers.
-func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigOutput) AnswerAggregationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1ImageClassificationConfig) *string {
+func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigOutput) AnswerAggregationType() GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1ImageClassificationConfig) *GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType {
 		return v.AnswerAggregationType
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutput)
 }
 
 type GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput struct{ *pulumi.OutputState }
@@ -3772,13 +3772,13 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput) Annota
 }
 
 // Optional. The type of how to aggregate answers.
-func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput) AnswerAggregationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1ImageClassificationConfig) *string {
+func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput) AnswerAggregationType() GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1ImageClassificationConfig) *GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationType {
 		if v == nil {
 			return nil
 		}
 		return v.AnswerAggregationType
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypePtrOutput)
 }
 
 // Config for image classification human labeling task.
@@ -3962,13 +3962,13 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigResponsePtrOutput
 // The configuration of input data, including data type, location, etc.
 type GoogleCloudDatalabelingV1beta1InputConfig struct {
 	// Optional. The type of annotation to be performed on this data. You must specify this field if you are using this InputConfig in an EvaluationJob.
-	AnnotationType *string `pulumi:"annotationType"`
+	AnnotationType *GoogleCloudDatalabelingV1beta1InputConfigAnnotationType `pulumi:"annotationType"`
 	// Source located in BigQuery. You must specify this field if you are using this InputConfig in an EvaluationJob.
 	BigquerySource *GoogleCloudDatalabelingV1beta1BigQuerySource `pulumi:"bigquerySource"`
 	// Optional. Metadata about annotations for the input. You must specify this field if you are using this InputConfig in an EvaluationJob for a model version that performs classification.
 	ClassificationMetadata *GoogleCloudDatalabelingV1beta1ClassificationMetadata `pulumi:"classificationMetadata"`
 	// Data type must be specifed when user tries to import data.
-	DataType string `pulumi:"dataType"`
+	DataType GoogleCloudDatalabelingV1beta1InputConfigDataType `pulumi:"dataType"`
 	// Source located in Cloud Storage.
 	GcsSource *GoogleCloudDatalabelingV1beta1GcsSource `pulumi:"gcsSource"`
 	// Required for text import, as language code must be specified.
@@ -3989,13 +3989,13 @@ type GoogleCloudDatalabelingV1beta1InputConfigInput interface {
 // The configuration of input data, including data type, location, etc.
 type GoogleCloudDatalabelingV1beta1InputConfigArgs struct {
 	// Optional. The type of annotation to be performed on this data. You must specify this field if you are using this InputConfig in an EvaluationJob.
-	AnnotationType *GoogleCloudDatalabelingV1beta1InputConfigAnnotationType `pulumi:"annotationType"`
+	AnnotationType GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrInput `pulumi:"annotationType"`
 	// Source located in BigQuery. You must specify this field if you are using this InputConfig in an EvaluationJob.
 	BigquerySource GoogleCloudDatalabelingV1beta1BigQuerySourcePtrInput `pulumi:"bigquerySource"`
 	// Optional. Metadata about annotations for the input. You must specify this field if you are using this InputConfig in an EvaluationJob for a model version that performs classification.
 	ClassificationMetadata GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrInput `pulumi:"classificationMetadata"`
 	// Data type must be specifed when user tries to import data.
-	DataType GoogleCloudDatalabelingV1beta1InputConfigDataType `pulumi:"dataType"`
+	DataType GoogleCloudDatalabelingV1beta1InputConfigDataTypeInput `pulumi:"dataType"`
 	// Source located in Cloud Storage.
 	GcsSource GoogleCloudDatalabelingV1beta1GcsSourcePtrInput `pulumi:"gcsSource"`
 	// Required for text import, as language code must be specified.
@@ -4081,8 +4081,10 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigOutput) ToGoogleCloudDatalabeli
 }
 
 // Optional. The type of annotation to be performed on this data. You must specify this field if you are using this InputConfig in an EvaluationJob.
-func (o GoogleCloudDatalabelingV1beta1InputConfigOutput) AnnotationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1InputConfig) *string { return v.AnnotationType }).(pulumi.StringPtrOutput)
+func (o GoogleCloudDatalabelingV1beta1InputConfigOutput) AnnotationType() GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput {
+	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1InputConfig) *GoogleCloudDatalabelingV1beta1InputConfigAnnotationType {
+		return v.AnnotationType
+	}).(GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput)
 }
 
 // Source located in BigQuery. You must specify this field if you are using this InputConfig in an EvaluationJob.
@@ -4100,8 +4102,10 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigOutput) ClassificationMetadata(
 }
 
 // Data type must be specifed when user tries to import data.
-func (o GoogleCloudDatalabelingV1beta1InputConfigOutput) DataType() pulumi.StringOutput {
-	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1InputConfig) string { return v.DataType }).(pulumi.StringOutput)
+func (o GoogleCloudDatalabelingV1beta1InputConfigOutput) DataType() GoogleCloudDatalabelingV1beta1InputConfigDataTypeOutput {
+	return o.ApplyT(func(v GoogleCloudDatalabelingV1beta1InputConfig) GoogleCloudDatalabelingV1beta1InputConfigDataType {
+		return v.DataType
+	}).(GoogleCloudDatalabelingV1beta1InputConfigDataTypeOutput)
 }
 
 // Source located in Cloud Storage.
@@ -4139,13 +4143,13 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigPtrOutput) Elem() GoogleCloudDa
 }
 
 // Optional. The type of annotation to be performed on this data. You must specify this field if you are using this InputConfig in an EvaluationJob.
-func (o GoogleCloudDatalabelingV1beta1InputConfigPtrOutput) AnnotationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1InputConfig) *string {
+func (o GoogleCloudDatalabelingV1beta1InputConfigPtrOutput) AnnotationType() GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1InputConfig) *GoogleCloudDatalabelingV1beta1InputConfigAnnotationType {
 		if v == nil {
 			return nil
 		}
 		return v.AnnotationType
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput)
 }
 
 // Source located in BigQuery. You must specify this field if you are using this InputConfig in an EvaluationJob.
@@ -4169,13 +4173,13 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigPtrOutput) ClassificationMetada
 }
 
 // Data type must be specifed when user tries to import data.
-func (o GoogleCloudDatalabelingV1beta1InputConfigPtrOutput) DataType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1InputConfig) *string {
+func (o GoogleCloudDatalabelingV1beta1InputConfigPtrOutput) DataType() GoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudDatalabelingV1beta1InputConfig) *GoogleCloudDatalabelingV1beta1InputConfigDataType {
 		if v == nil {
 			return nil
 		}
 		return &v.DataType
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutput)
 }
 
 // Source located in Cloud Storage.

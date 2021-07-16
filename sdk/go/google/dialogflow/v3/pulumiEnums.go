@@ -11,7 +11,7 @@ import (
 )
 
 // Indicates whether the entity type can be automatically expanded.
-type EntityTypeAutoExpansionMode pulumi.String
+type EntityTypeAutoExpansionMode string
 
 const (
 	// Auto expansion disabled for the entity.
@@ -21,7 +21,23 @@ const (
 )
 
 func (EntityTypeAutoExpansionMode) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*EntityTypeAutoExpansionMode)(nil)).Elem()
+}
+
+func (e EntityTypeAutoExpansionMode) ToEntityTypeAutoExpansionModeOutput() EntityTypeAutoExpansionModeOutput {
+	return pulumi.ToOutput(e).(EntityTypeAutoExpansionModeOutput)
+}
+
+func (e EntityTypeAutoExpansionMode) ToEntityTypeAutoExpansionModeOutputWithContext(ctx context.Context) EntityTypeAutoExpansionModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EntityTypeAutoExpansionModeOutput)
+}
+
+func (e EntityTypeAutoExpansionMode) ToEntityTypeAutoExpansionModePtrOutput() EntityTypeAutoExpansionModePtrOutput {
+	return e.ToEntityTypeAutoExpansionModePtrOutputWithContext(context.Background())
+}
+
+func (e EntityTypeAutoExpansionMode) ToEntityTypeAutoExpansionModePtrOutputWithContext(ctx context.Context) EntityTypeAutoExpansionModePtrOutput {
+	return EntityTypeAutoExpansionMode(e).ToEntityTypeAutoExpansionModeOutputWithContext(ctx).ToEntityTypeAutoExpansionModePtrOutputWithContext(ctx)
 }
 
 func (e EntityTypeAutoExpansionMode) ToStringOutput() pulumi.StringOutput {
@@ -40,8 +56,129 @@ func (e EntityTypeAutoExpansionMode) ToStringPtrOutputWithContext(ctx context.Co
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type EntityTypeAutoExpansionModeOutput struct{ *pulumi.OutputState }
+
+func (EntityTypeAutoExpansionModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityTypeAutoExpansionMode)(nil)).Elem()
+}
+
+func (o EntityTypeAutoExpansionModeOutput) ToEntityTypeAutoExpansionModeOutput() EntityTypeAutoExpansionModeOutput {
+	return o
+}
+
+func (o EntityTypeAutoExpansionModeOutput) ToEntityTypeAutoExpansionModeOutputWithContext(ctx context.Context) EntityTypeAutoExpansionModeOutput {
+	return o
+}
+
+func (o EntityTypeAutoExpansionModeOutput) ToEntityTypeAutoExpansionModePtrOutput() EntityTypeAutoExpansionModePtrOutput {
+	return o.ToEntityTypeAutoExpansionModePtrOutputWithContext(context.Background())
+}
+
+func (o EntityTypeAutoExpansionModeOutput) ToEntityTypeAutoExpansionModePtrOutputWithContext(ctx context.Context) EntityTypeAutoExpansionModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntityTypeAutoExpansionMode) *EntityTypeAutoExpansionMode {
+		return &v
+	}).(EntityTypeAutoExpansionModePtrOutput)
+}
+
+func (o EntityTypeAutoExpansionModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EntityTypeAutoExpansionModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EntityTypeAutoExpansionMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EntityTypeAutoExpansionModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EntityTypeAutoExpansionModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EntityTypeAutoExpansionMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EntityTypeAutoExpansionModePtrOutput struct{ *pulumi.OutputState }
+
+func (EntityTypeAutoExpansionModePtrOutput) ElementType() reflect.Type {
+	return entityTypeAutoExpansionModePtrType
+}
+
+func (o EntityTypeAutoExpansionModePtrOutput) ToEntityTypeAutoExpansionModePtrOutput() EntityTypeAutoExpansionModePtrOutput {
+	return o
+}
+
+func (o EntityTypeAutoExpansionModePtrOutput) ToEntityTypeAutoExpansionModePtrOutputWithContext(ctx context.Context) EntityTypeAutoExpansionModePtrOutput {
+	return o
+}
+
+func (o EntityTypeAutoExpansionModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EntityTypeAutoExpansionModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EntityTypeAutoExpansionMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EntityTypeAutoExpansionModePtrOutput) Elem() EntityTypeAutoExpansionModeOutput {
+	return o.ApplyT(func(v *EntityTypeAutoExpansionMode) EntityTypeAutoExpansionMode {
+		var ret EntityTypeAutoExpansionMode
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(EntityTypeAutoExpansionModeOutput)
+}
+
+// EntityTypeAutoExpansionModeInput is an input type that accepts EntityTypeAutoExpansionModeArgs and EntityTypeAutoExpansionModeOutput values.
+// You can construct a concrete instance of `EntityTypeAutoExpansionModeInput` via:
+//
+//          EntityTypeAutoExpansionModeArgs{...}
+type EntityTypeAutoExpansionModeInput interface {
+	pulumi.Input
+
+	ToEntityTypeAutoExpansionModeOutput() EntityTypeAutoExpansionModeOutput
+	ToEntityTypeAutoExpansionModeOutputWithContext(context.Context) EntityTypeAutoExpansionModeOutput
+}
+
+var entityTypeAutoExpansionModePtrType = reflect.TypeOf((**EntityTypeAutoExpansionMode)(nil)).Elem()
+
+type EntityTypeAutoExpansionModePtrInput interface {
+	pulumi.Input
+
+	ToEntityTypeAutoExpansionModePtrOutput() EntityTypeAutoExpansionModePtrOutput
+	ToEntityTypeAutoExpansionModePtrOutputWithContext(context.Context) EntityTypeAutoExpansionModePtrOutput
+}
+
+type entityTypeAutoExpansionModePtr string
+
+func EntityTypeAutoExpansionModePtr(v string) EntityTypeAutoExpansionModePtrInput {
+	return (*entityTypeAutoExpansionModePtr)(&v)
+}
+
+func (*entityTypeAutoExpansionModePtr) ElementType() reflect.Type {
+	return entityTypeAutoExpansionModePtrType
+}
+
+func (in *entityTypeAutoExpansionModePtr) ToEntityTypeAutoExpansionModePtrOutput() EntityTypeAutoExpansionModePtrOutput {
+	return pulumi.ToOutput(in).(EntityTypeAutoExpansionModePtrOutput)
+}
+
+func (in *entityTypeAutoExpansionModePtr) ToEntityTypeAutoExpansionModePtrOutputWithContext(ctx context.Context) EntityTypeAutoExpansionModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EntityTypeAutoExpansionModePtrOutput)
+}
+
 // Required. Indicates the kind of entity type.
-type EntityTypeKind pulumi.String
+type EntityTypeKind string
 
 const (
 	// Not specified. This value should be never used.
@@ -55,7 +192,23 @@ const (
 )
 
 func (EntityTypeKind) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*EntityTypeKind)(nil)).Elem()
+}
+
+func (e EntityTypeKind) ToEntityTypeKindOutput() EntityTypeKindOutput {
+	return pulumi.ToOutput(e).(EntityTypeKindOutput)
+}
+
+func (e EntityTypeKind) ToEntityTypeKindOutputWithContext(ctx context.Context) EntityTypeKindOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EntityTypeKindOutput)
+}
+
+func (e EntityTypeKind) ToEntityTypeKindPtrOutput() EntityTypeKindPtrOutput {
+	return e.ToEntityTypeKindPtrOutputWithContext(context.Background())
+}
+
+func (e EntityTypeKind) ToEntityTypeKindPtrOutputWithContext(ctx context.Context) EntityTypeKindPtrOutput {
+	return EntityTypeKind(e).ToEntityTypeKindOutputWithContext(ctx).ToEntityTypeKindPtrOutputWithContext(ctx)
 }
 
 func (e EntityTypeKind) ToStringOutput() pulumi.StringOutput {
@@ -74,8 +227,129 @@ func (e EntityTypeKind) ToStringPtrOutputWithContext(ctx context.Context) pulumi
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type EntityTypeKindOutput struct{ *pulumi.OutputState }
+
+func (EntityTypeKindOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntityTypeKind)(nil)).Elem()
+}
+
+func (o EntityTypeKindOutput) ToEntityTypeKindOutput() EntityTypeKindOutput {
+	return o
+}
+
+func (o EntityTypeKindOutput) ToEntityTypeKindOutputWithContext(ctx context.Context) EntityTypeKindOutput {
+	return o
+}
+
+func (o EntityTypeKindOutput) ToEntityTypeKindPtrOutput() EntityTypeKindPtrOutput {
+	return o.ToEntityTypeKindPtrOutputWithContext(context.Background())
+}
+
+func (o EntityTypeKindOutput) ToEntityTypeKindPtrOutputWithContext(ctx context.Context) EntityTypeKindPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntityTypeKind) *EntityTypeKind {
+		return &v
+	}).(EntityTypeKindPtrOutput)
+}
+
+func (o EntityTypeKindOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EntityTypeKindOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EntityTypeKind) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EntityTypeKindOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EntityTypeKindOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EntityTypeKind) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EntityTypeKindPtrOutput struct{ *pulumi.OutputState }
+
+func (EntityTypeKindPtrOutput) ElementType() reflect.Type {
+	return entityTypeKindPtrType
+}
+
+func (o EntityTypeKindPtrOutput) ToEntityTypeKindPtrOutput() EntityTypeKindPtrOutput {
+	return o
+}
+
+func (o EntityTypeKindPtrOutput) ToEntityTypeKindPtrOutputWithContext(ctx context.Context) EntityTypeKindPtrOutput {
+	return o
+}
+
+func (o EntityTypeKindPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EntityTypeKindPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EntityTypeKind) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EntityTypeKindPtrOutput) Elem() EntityTypeKindOutput {
+	return o.ApplyT(func(v *EntityTypeKind) EntityTypeKind {
+		var ret EntityTypeKind
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(EntityTypeKindOutput)
+}
+
+// EntityTypeKindInput is an input type that accepts EntityTypeKindArgs and EntityTypeKindOutput values.
+// You can construct a concrete instance of `EntityTypeKindInput` via:
+//
+//          EntityTypeKindArgs{...}
+type EntityTypeKindInput interface {
+	pulumi.Input
+
+	ToEntityTypeKindOutput() EntityTypeKindOutput
+	ToEntityTypeKindOutputWithContext(context.Context) EntityTypeKindOutput
+}
+
+var entityTypeKindPtrType = reflect.TypeOf((**EntityTypeKind)(nil)).Elem()
+
+type EntityTypeKindPtrInput interface {
+	pulumi.Input
+
+	ToEntityTypeKindPtrOutput() EntityTypeKindPtrOutput
+	ToEntityTypeKindPtrOutputWithContext(context.Context) EntityTypeKindPtrOutput
+}
+
+type entityTypeKindPtr string
+
+func EntityTypeKindPtr(v string) EntityTypeKindPtrInput {
+	return (*entityTypeKindPtr)(&v)
+}
+
+func (*entityTypeKindPtr) ElementType() reflect.Type {
+	return entityTypeKindPtrType
+}
+
+func (in *entityTypeKindPtr) ToEntityTypeKindPtrOutput() EntityTypeKindPtrOutput {
+	return pulumi.ToOutput(in).(EntityTypeKindPtrOutput)
+}
+
+func (in *entityTypeKindPtr) ToEntityTypeKindPtrOutputWithContext(ctx context.Context) EntityTypeKindPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EntityTypeKindPtrOutput)
+}
+
 // The current state of the experiment. Transition triggered by Experiments.StartExperiment: DRAFT->RUNNING. Transition triggered by Experiments.CancelExperiment: DRAFT->DONE or RUNNING->DONE.
-type ExperimentStateEnum pulumi.String
+type ExperimentStateEnum string
 
 const (
 	// State unspecified.
@@ -91,7 +365,23 @@ const (
 )
 
 func (ExperimentStateEnum) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*ExperimentStateEnum)(nil)).Elem()
+}
+
+func (e ExperimentStateEnum) ToExperimentStateEnumOutput() ExperimentStateEnumOutput {
+	return pulumi.ToOutput(e).(ExperimentStateEnumOutput)
+}
+
+func (e ExperimentStateEnum) ToExperimentStateEnumOutputWithContext(ctx context.Context) ExperimentStateEnumOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ExperimentStateEnumOutput)
+}
+
+func (e ExperimentStateEnum) ToExperimentStateEnumPtrOutput() ExperimentStateEnumPtrOutput {
+	return e.ToExperimentStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (e ExperimentStateEnum) ToExperimentStateEnumPtrOutputWithContext(ctx context.Context) ExperimentStateEnumPtrOutput {
+	return ExperimentStateEnum(e).ToExperimentStateEnumOutputWithContext(ctx).ToExperimentStateEnumPtrOutputWithContext(ctx)
 }
 
 func (e ExperimentStateEnum) ToStringOutput() pulumi.StringOutput {
@@ -110,8 +400,129 @@ func (e ExperimentStateEnum) ToStringPtrOutputWithContext(ctx context.Context) p
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type ExperimentStateEnumOutput struct{ *pulumi.OutputState }
+
+func (ExperimentStateEnumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExperimentStateEnum)(nil)).Elem()
+}
+
+func (o ExperimentStateEnumOutput) ToExperimentStateEnumOutput() ExperimentStateEnumOutput {
+	return o
+}
+
+func (o ExperimentStateEnumOutput) ToExperimentStateEnumOutputWithContext(ctx context.Context) ExperimentStateEnumOutput {
+	return o
+}
+
+func (o ExperimentStateEnumOutput) ToExperimentStateEnumPtrOutput() ExperimentStateEnumPtrOutput {
+	return o.ToExperimentStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (o ExperimentStateEnumOutput) ToExperimentStateEnumPtrOutputWithContext(ctx context.Context) ExperimentStateEnumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ExperimentStateEnum) *ExperimentStateEnum {
+		return &v
+	}).(ExperimentStateEnumPtrOutput)
+}
+
+func (o ExperimentStateEnumOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ExperimentStateEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExperimentStateEnum) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ExperimentStateEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExperimentStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ExperimentStateEnum) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ExperimentStateEnumPtrOutput struct{ *pulumi.OutputState }
+
+func (ExperimentStateEnumPtrOutput) ElementType() reflect.Type {
+	return experimentStateEnumPtrType
+}
+
+func (o ExperimentStateEnumPtrOutput) ToExperimentStateEnumPtrOutput() ExperimentStateEnumPtrOutput {
+	return o
+}
+
+func (o ExperimentStateEnumPtrOutput) ToExperimentStateEnumPtrOutputWithContext(ctx context.Context) ExperimentStateEnumPtrOutput {
+	return o
+}
+
+func (o ExperimentStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ExperimentStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ExperimentStateEnum) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ExperimentStateEnumPtrOutput) Elem() ExperimentStateEnumOutput {
+	return o.ApplyT(func(v *ExperimentStateEnum) ExperimentStateEnum {
+		var ret ExperimentStateEnum
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ExperimentStateEnumOutput)
+}
+
+// ExperimentStateEnumInput is an input type that accepts ExperimentStateEnumArgs and ExperimentStateEnumOutput values.
+// You can construct a concrete instance of `ExperimentStateEnumInput` via:
+//
+//          ExperimentStateEnumArgs{...}
+type ExperimentStateEnumInput interface {
+	pulumi.Input
+
+	ToExperimentStateEnumOutput() ExperimentStateEnumOutput
+	ToExperimentStateEnumOutputWithContext(context.Context) ExperimentStateEnumOutput
+}
+
+var experimentStateEnumPtrType = reflect.TypeOf((**ExperimentStateEnum)(nil)).Elem()
+
+type ExperimentStateEnumPtrInput interface {
+	pulumi.Input
+
+	ToExperimentStateEnumPtrOutput() ExperimentStateEnumPtrOutput
+	ToExperimentStateEnumPtrOutputWithContext(context.Context) ExperimentStateEnumPtrOutput
+}
+
+type experimentStateEnumPtr string
+
+func ExperimentStateEnumPtr(v string) ExperimentStateEnumPtrInput {
+	return (*experimentStateEnumPtr)(&v)
+}
+
+func (*experimentStateEnumPtr) ElementType() reflect.Type {
+	return experimentStateEnumPtrType
+}
+
+func (in *experimentStateEnumPtr) ToExperimentStateEnumPtrOutput() ExperimentStateEnumPtrOutput {
+	return pulumi.ToOutput(in).(ExperimentStateEnumPtrOutput)
+}
+
+func (in *experimentStateEnumPtr) ToExperimentStateEnumPtrOutputWithContext(ctx context.Context) ExperimentStateEnumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ExperimentStateEnumPtrOutput)
+}
+
 // Count-based metric type. Only one of type or count_type is specified in each Metric.
-type GoogleCloudDialogflowCxV3ExperimentResultMetricCountType pulumi.String
+type GoogleCloudDialogflowCxV3ExperimentResultMetricCountType string
 
 const (
 	// Count type unspecified.
@@ -125,7 +536,23 @@ const (
 )
 
 func (GoogleCloudDialogflowCxV3ExperimentResultMetricCountType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentResultMetricCountType)(nil)).Elem()
+}
+
+func (e GoogleCloudDialogflowCxV3ExperimentResultMetricCountType) ToGoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput() GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3ExperimentResultMetricCountType) ToGoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3ExperimentResultMetricCountType) ToGoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput() GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput {
+	return e.ToGoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowCxV3ExperimentResultMetricCountType) ToGoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput {
+	return GoogleCloudDialogflowCxV3ExperimentResultMetricCountType(e).ToGoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutputWithContext(ctx).ToGoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutputWithContext(ctx)
 }
 
 func (e GoogleCloudDialogflowCxV3ExperimentResultMetricCountType) ToStringOutput() pulumi.StringOutput {
@@ -144,8 +571,129 @@ func (e GoogleCloudDialogflowCxV3ExperimentResultMetricCountType) ToStringPtrOut
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentResultMetricCountType)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput) ToGoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput() GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput) ToGoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput) ToGoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput() GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput) ToGoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowCxV3ExperimentResultMetricCountType) *GoogleCloudDialogflowCxV3ExperimentResultMetricCountType {
+		return &v
+	}).(GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3ExperimentResultMetricCountType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3ExperimentResultMetricCountType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput) ElementType() reflect.Type {
+	return googleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrType
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput) ToGoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput() GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput) ToGoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDialogflowCxV3ExperimentResultMetricCountType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput) Elem() GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3ExperimentResultMetricCountType) GoogleCloudDialogflowCxV3ExperimentResultMetricCountType {
+		var ret GoogleCloudDialogflowCxV3ExperimentResultMetricCountType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput)
+}
+
+// GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeInput is an input type that accepts GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeArgs and GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeInput` via:
+//
+//          GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeArgs{...}
+type GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput() GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput
+	ToGoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutputWithContext(context.Context) GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput
+}
+
+var googleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrType = reflect.TypeOf((**GoogleCloudDialogflowCxV3ExperimentResultMetricCountType)(nil)).Elem()
+
+type GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput() GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput
+	ToGoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput
+}
+
+type googleCloudDialogflowCxV3ExperimentResultMetricCountTypePtr string
+
+func GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtr(v string) GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrInput {
+	return (*googleCloudDialogflowCxV3ExperimentResultMetricCountTypePtr)(&v)
+}
+
+func (*googleCloudDialogflowCxV3ExperimentResultMetricCountTypePtr) ElementType() reflect.Type {
+	return googleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrType
+}
+
+func (in *googleCloudDialogflowCxV3ExperimentResultMetricCountTypePtr) ToGoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput() GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3ExperimentResultMetricCountTypePtr) ToGoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput)
+}
+
 // Ratio-based metric type. Only one of type or count_type is specified in each Metric.
-type GoogleCloudDialogflowCxV3ExperimentResultMetricType pulumi.String
+type GoogleCloudDialogflowCxV3ExperimentResultMetricType string
 
 const (
 	// Metric unspecified.
@@ -163,7 +711,23 @@ const (
 )
 
 func (GoogleCloudDialogflowCxV3ExperimentResultMetricType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentResultMetricType)(nil)).Elem()
+}
+
+func (e GoogleCloudDialogflowCxV3ExperimentResultMetricType) ToGoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput() GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3ExperimentResultMetricType) ToGoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3ExperimentResultMetricType) ToGoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput() GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput {
+	return e.ToGoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowCxV3ExperimentResultMetricType) ToGoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput {
+	return GoogleCloudDialogflowCxV3ExperimentResultMetricType(e).ToGoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutputWithContext(ctx).ToGoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutputWithContext(ctx)
 }
 
 func (e GoogleCloudDialogflowCxV3ExperimentResultMetricType) ToStringOutput() pulumi.StringOutput {
@@ -182,8 +746,129 @@ func (e GoogleCloudDialogflowCxV3ExperimentResultMetricType) ToStringPtrOutputWi
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3ExperimentResultMetricType)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput) ToGoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput() GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput) ToGoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput) ToGoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput() GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput) ToGoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowCxV3ExperimentResultMetricType) *GoogleCloudDialogflowCxV3ExperimentResultMetricType {
+		return &v
+	}).(GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3ExperimentResultMetricType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3ExperimentResultMetricType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput) ElementType() reflect.Type {
+	return googleCloudDialogflowCxV3ExperimentResultMetricTypePtrType
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput) ToGoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput() GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput) ToGoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDialogflowCxV3ExperimentResultMetricType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput) Elem() GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3ExperimentResultMetricType) GoogleCloudDialogflowCxV3ExperimentResultMetricType {
+		var ret GoogleCloudDialogflowCxV3ExperimentResultMetricType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput)
+}
+
+// GoogleCloudDialogflowCxV3ExperimentResultMetricTypeInput is an input type that accepts GoogleCloudDialogflowCxV3ExperimentResultMetricTypeArgs and GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3ExperimentResultMetricTypeInput` via:
+//
+//          GoogleCloudDialogflowCxV3ExperimentResultMetricTypeArgs{...}
+type GoogleCloudDialogflowCxV3ExperimentResultMetricTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput() GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput
+	ToGoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutputWithContext(context.Context) GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput
+}
+
+var googleCloudDialogflowCxV3ExperimentResultMetricTypePtrType = reflect.TypeOf((**GoogleCloudDialogflowCxV3ExperimentResultMetricType)(nil)).Elem()
+
+type GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput() GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput
+	ToGoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput
+}
+
+type googleCloudDialogflowCxV3ExperimentResultMetricTypePtr string
+
+func GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtr(v string) GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrInput {
+	return (*googleCloudDialogflowCxV3ExperimentResultMetricTypePtr)(&v)
+}
+
+func (*googleCloudDialogflowCxV3ExperimentResultMetricTypePtr) ElementType() reflect.Type {
+	return googleCloudDialogflowCxV3ExperimentResultMetricTypePtrType
+}
+
+func (in *googleCloudDialogflowCxV3ExperimentResultMetricTypePtr) ToGoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput() GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3ExperimentResultMetricTypePtr) ToGoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput)
+}
+
 // Required. Audio encoding of the audio content to process.
-type GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding pulumi.String
+type GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding string
 
 const (
 	// Not specified.
@@ -205,7 +890,23 @@ const (
 )
 
 func (GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding)(nil)).Elem()
+}
+
+func (e GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding) ToGoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput() GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding) ToGoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding) ToGoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput() GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput {
+	return e.ToGoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding) ToGoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput {
+	return GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding(e).ToGoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutputWithContext(ctx).ToGoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutputWithContext(ctx)
 }
 
 func (e GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding) ToStringOutput() pulumi.StringOutput {
@@ -224,8 +925,129 @@ func (e GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding) ToStringPtrOutpu
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput) ToGoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput() GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput) ToGoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput) ToGoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput() GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput) ToGoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding) *GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding {
+		return &v
+	}).(GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput) ElementType() reflect.Type {
+	return googleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrType
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput) ToGoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput() GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput) ToGoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput) Elem() GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding) GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding {
+		var ret GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput)
+}
+
+// GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingInput is an input type that accepts GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingArgs and GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingInput` via:
+//
+//          GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingArgs{...}
+type GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput() GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput
+	ToGoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutputWithContext(context.Context) GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput
+}
+
+var googleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrType = reflect.TypeOf((**GoogleCloudDialogflowCxV3InputAudioConfigAudioEncoding)(nil)).Elem()
+
+type GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput() GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput
+	ToGoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput
+}
+
+type googleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtr string
+
+func GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtr(v string) GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrInput {
+	return (*googleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtr)(&v)
+}
+
+func (*googleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtr) ElementType() reflect.Type {
+	return googleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrType
+}
+
+func (in *googleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtr) ToGoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput() GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtr) ToGoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput)
+}
+
 // Optional. Which variant of the Speech model to use.
-type GoogleCloudDialogflowCxV3InputAudioConfigModelVariant pulumi.String
+type GoogleCloudDialogflowCxV3InputAudioConfigModelVariant string
 
 const (
 	// No model variant specified. In this case Dialogflow defaults to USE_BEST_AVAILABLE.
@@ -239,7 +1061,23 @@ const (
 )
 
 func (GoogleCloudDialogflowCxV3InputAudioConfigModelVariant) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3InputAudioConfigModelVariant)(nil)).Elem()
+}
+
+func (e GoogleCloudDialogflowCxV3InputAudioConfigModelVariant) ToGoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput() GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3InputAudioConfigModelVariant) ToGoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3InputAudioConfigModelVariant) ToGoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput() GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput {
+	return e.ToGoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowCxV3InputAudioConfigModelVariant) ToGoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput {
+	return GoogleCloudDialogflowCxV3InputAudioConfigModelVariant(e).ToGoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutputWithContext(ctx).ToGoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutputWithContext(ctx)
 }
 
 func (e GoogleCloudDialogflowCxV3InputAudioConfigModelVariant) ToStringOutput() pulumi.StringOutput {
@@ -258,8 +1096,129 @@ func (e GoogleCloudDialogflowCxV3InputAudioConfigModelVariant) ToStringPtrOutput
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3InputAudioConfigModelVariant)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput) ToGoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput() GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput) ToGoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput) ToGoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput() GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput) ToGoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowCxV3InputAudioConfigModelVariant) *GoogleCloudDialogflowCxV3InputAudioConfigModelVariant {
+		return &v
+	}).(GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3InputAudioConfigModelVariant) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3InputAudioConfigModelVariant) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput) ElementType() reflect.Type {
+	return googleCloudDialogflowCxV3InputAudioConfigModelVariantPtrType
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput) ToGoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput() GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput) ToGoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDialogflowCxV3InputAudioConfigModelVariant) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput) Elem() GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3InputAudioConfigModelVariant) GoogleCloudDialogflowCxV3InputAudioConfigModelVariant {
+		var ret GoogleCloudDialogflowCxV3InputAudioConfigModelVariant
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput)
+}
+
+// GoogleCloudDialogflowCxV3InputAudioConfigModelVariantInput is an input type that accepts GoogleCloudDialogflowCxV3InputAudioConfigModelVariantArgs and GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3InputAudioConfigModelVariantInput` via:
+//
+//          GoogleCloudDialogflowCxV3InputAudioConfigModelVariantArgs{...}
+type GoogleCloudDialogflowCxV3InputAudioConfigModelVariantInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput() GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput
+	ToGoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutputWithContext(context.Context) GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput
+}
+
+var googleCloudDialogflowCxV3InputAudioConfigModelVariantPtrType = reflect.TypeOf((**GoogleCloudDialogflowCxV3InputAudioConfigModelVariant)(nil)).Elem()
+
+type GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput() GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput
+	ToGoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput
+}
+
+type googleCloudDialogflowCxV3InputAudioConfigModelVariantPtr string
+
+func GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtr(v string) GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrInput {
+	return (*googleCloudDialogflowCxV3InputAudioConfigModelVariantPtr)(&v)
+}
+
+func (*googleCloudDialogflowCxV3InputAudioConfigModelVariantPtr) ElementType() reflect.Type {
+	return googleCloudDialogflowCxV3InputAudioConfigModelVariantPtrType
+}
+
+func (in *googleCloudDialogflowCxV3InputAudioConfigModelVariantPtr) ToGoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput() GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3InputAudioConfigModelVariantPtr) ToGoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput)
+}
+
 // Indicates NLU model training mode.
-type GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode pulumi.String
+type GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode string
 
 const (
 	// Not specified. `MODEL_TRAINING_MODE_AUTOMATIC` will be used.
@@ -271,7 +1230,23 @@ const (
 )
 
 func (GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode)(nil)).Elem()
+}
+
+func (e GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode) ToGoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput() GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode) ToGoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode) ToGoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput() GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput {
+	return e.ToGoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode) ToGoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput {
+	return GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode(e).ToGoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutputWithContext(ctx).ToGoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutputWithContext(ctx)
 }
 
 func (e GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode) ToStringOutput() pulumi.StringOutput {
@@ -290,8 +1265,129 @@ func (e GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode) ToStringPtrOutput
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput) ToGoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput() GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput) ToGoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput) ToGoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput() GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput) ToGoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode) *GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode {
+		return &v
+	}).(GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput) ElementType() reflect.Type {
+	return googleCloudDialogflowCxV3NluSettingsModelTrainingModePtrType
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput) ToGoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput() GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput) ToGoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput) Elem() GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode) GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode {
+		var ret GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput)
+}
+
+// GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeInput is an input type that accepts GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeArgs and GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeInput` via:
+//
+//          GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeArgs{...}
+type GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput() GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput
+	ToGoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutputWithContext(context.Context) GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput
+}
+
+var googleCloudDialogflowCxV3NluSettingsModelTrainingModePtrType = reflect.TypeOf((**GoogleCloudDialogflowCxV3NluSettingsModelTrainingMode)(nil)).Elem()
+
+type GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput() GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput
+	ToGoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput
+}
+
+type googleCloudDialogflowCxV3NluSettingsModelTrainingModePtr string
+
+func GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtr(v string) GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrInput {
+	return (*googleCloudDialogflowCxV3NluSettingsModelTrainingModePtr)(&v)
+}
+
+func (*googleCloudDialogflowCxV3NluSettingsModelTrainingModePtr) ElementType() reflect.Type {
+	return googleCloudDialogflowCxV3NluSettingsModelTrainingModePtrType
+}
+
+func (in *googleCloudDialogflowCxV3NluSettingsModelTrainingModePtr) ToGoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput() GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3NluSettingsModelTrainingModePtr) ToGoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput)
+}
+
 // Indicates the type of NLU model.
-type GoogleCloudDialogflowCxV3NluSettingsModelType pulumi.String
+type GoogleCloudDialogflowCxV3NluSettingsModelType string
 
 const (
 	// Not specified. `MODEL_TYPE_STANDARD` will be used.
@@ -303,7 +1399,23 @@ const (
 )
 
 func (GoogleCloudDialogflowCxV3NluSettingsModelType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3NluSettingsModelType)(nil)).Elem()
+}
+
+func (e GoogleCloudDialogflowCxV3NluSettingsModelType) ToGoogleCloudDialogflowCxV3NluSettingsModelTypeOutput() GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3NluSettingsModelType) ToGoogleCloudDialogflowCxV3NluSettingsModelTypeOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3NluSettingsModelType) ToGoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput() GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput {
+	return e.ToGoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowCxV3NluSettingsModelType) ToGoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput {
+	return GoogleCloudDialogflowCxV3NluSettingsModelType(e).ToGoogleCloudDialogflowCxV3NluSettingsModelTypeOutputWithContext(ctx).ToGoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutputWithContext(ctx)
 }
 
 func (e GoogleCloudDialogflowCxV3NluSettingsModelType) ToStringOutput() pulumi.StringOutput {
@@ -322,8 +1434,129 @@ func (e GoogleCloudDialogflowCxV3NluSettingsModelType) ToStringPtrOutputWithCont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3NluSettingsModelType)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput) ToGoogleCloudDialogflowCxV3NluSettingsModelTypeOutput() GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput) ToGoogleCloudDialogflowCxV3NluSettingsModelTypeOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput) ToGoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput() GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput) ToGoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowCxV3NluSettingsModelType) *GoogleCloudDialogflowCxV3NluSettingsModelType {
+		return &v
+	}).(GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3NluSettingsModelType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3NluSettingsModelType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput) ElementType() reflect.Type {
+	return googleCloudDialogflowCxV3NluSettingsModelTypePtrType
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput) ToGoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput() GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput) ToGoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDialogflowCxV3NluSettingsModelType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput) Elem() GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3NluSettingsModelType) GoogleCloudDialogflowCxV3NluSettingsModelType {
+		var ret GoogleCloudDialogflowCxV3NluSettingsModelType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput)
+}
+
+// GoogleCloudDialogflowCxV3NluSettingsModelTypeInput is an input type that accepts GoogleCloudDialogflowCxV3NluSettingsModelTypeArgs and GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3NluSettingsModelTypeInput` via:
+//
+//          GoogleCloudDialogflowCxV3NluSettingsModelTypeArgs{...}
+type GoogleCloudDialogflowCxV3NluSettingsModelTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3NluSettingsModelTypeOutput() GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput
+	ToGoogleCloudDialogflowCxV3NluSettingsModelTypeOutputWithContext(context.Context) GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput
+}
+
+var googleCloudDialogflowCxV3NluSettingsModelTypePtrType = reflect.TypeOf((**GoogleCloudDialogflowCxV3NluSettingsModelType)(nil)).Elem()
+
+type GoogleCloudDialogflowCxV3NluSettingsModelTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput() GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput
+	ToGoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput
+}
+
+type googleCloudDialogflowCxV3NluSettingsModelTypePtr string
+
+func GoogleCloudDialogflowCxV3NluSettingsModelTypePtr(v string) GoogleCloudDialogflowCxV3NluSettingsModelTypePtrInput {
+	return (*googleCloudDialogflowCxV3NluSettingsModelTypePtr)(&v)
+}
+
+func (*googleCloudDialogflowCxV3NluSettingsModelTypePtr) ElementType() reflect.Type {
+	return googleCloudDialogflowCxV3NluSettingsModelTypePtrType
+}
+
+func (in *googleCloudDialogflowCxV3NluSettingsModelTypePtr) ToGoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput() GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3NluSettingsModelTypePtr) ToGoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput)
+}
+
 // Whether the test case passed in the agent environment.
-type GoogleCloudDialogflowCxV3TestCaseResultTestResult pulumi.String
+type GoogleCloudDialogflowCxV3TestCaseResultTestResult string
 
 const (
 	// Not specified. Should never be used.
@@ -335,7 +1568,23 @@ const (
 )
 
 func (GoogleCloudDialogflowCxV3TestCaseResultTestResult) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3TestCaseResultTestResult)(nil)).Elem()
+}
+
+func (e GoogleCloudDialogflowCxV3TestCaseResultTestResult) ToGoogleCloudDialogflowCxV3TestCaseResultTestResultOutput() GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3TestCaseResultTestResult) ToGoogleCloudDialogflowCxV3TestCaseResultTestResultOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput)
+}
+
+func (e GoogleCloudDialogflowCxV3TestCaseResultTestResult) ToGoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput() GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput {
+	return e.ToGoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDialogflowCxV3TestCaseResultTestResult) ToGoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput {
+	return GoogleCloudDialogflowCxV3TestCaseResultTestResult(e).ToGoogleCloudDialogflowCxV3TestCaseResultTestResultOutputWithContext(ctx).ToGoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutputWithContext(ctx)
 }
 
 func (e GoogleCloudDialogflowCxV3TestCaseResultTestResult) ToStringOutput() pulumi.StringOutput {
@@ -354,7 +1603,128 @@ func (e GoogleCloudDialogflowCxV3TestCaseResultTestResult) ToStringPtrOutputWith
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type SecuritySettingPurgeDataTypesItem pulumi.String
+type GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDialogflowCxV3TestCaseResultTestResult)(nil)).Elem()
+}
+
+func (o GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput) ToGoogleCloudDialogflowCxV3TestCaseResultTestResultOutput() GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput) ToGoogleCloudDialogflowCxV3TestCaseResultTestResultOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput) ToGoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput() GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput {
+	return o.ToGoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput) ToGoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDialogflowCxV3TestCaseResultTestResult) *GoogleCloudDialogflowCxV3TestCaseResultTestResult {
+		return &v
+	}).(GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3TestCaseResultTestResult) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDialogflowCxV3TestCaseResultTestResult) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput) ElementType() reflect.Type {
+	return googleCloudDialogflowCxV3TestCaseResultTestResultPtrType
+}
+
+func (o GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput) ToGoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput() GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput) ToGoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput {
+	return o
+}
+
+func (o GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDialogflowCxV3TestCaseResultTestResult) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput) Elem() GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput {
+	return o.ApplyT(func(v *GoogleCloudDialogflowCxV3TestCaseResultTestResult) GoogleCloudDialogflowCxV3TestCaseResultTestResult {
+		var ret GoogleCloudDialogflowCxV3TestCaseResultTestResult
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput)
+}
+
+// GoogleCloudDialogflowCxV3TestCaseResultTestResultInput is an input type that accepts GoogleCloudDialogflowCxV3TestCaseResultTestResultArgs and GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput values.
+// You can construct a concrete instance of `GoogleCloudDialogflowCxV3TestCaseResultTestResultInput` via:
+//
+//          GoogleCloudDialogflowCxV3TestCaseResultTestResultArgs{...}
+type GoogleCloudDialogflowCxV3TestCaseResultTestResultInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3TestCaseResultTestResultOutput() GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput
+	ToGoogleCloudDialogflowCxV3TestCaseResultTestResultOutputWithContext(context.Context) GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput
+}
+
+var googleCloudDialogflowCxV3TestCaseResultTestResultPtrType = reflect.TypeOf((**GoogleCloudDialogflowCxV3TestCaseResultTestResult)(nil)).Elem()
+
+type GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput() GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput
+	ToGoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutputWithContext(context.Context) GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput
+}
+
+type googleCloudDialogflowCxV3TestCaseResultTestResultPtr string
+
+func GoogleCloudDialogflowCxV3TestCaseResultTestResultPtr(v string) GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrInput {
+	return (*googleCloudDialogflowCxV3TestCaseResultTestResultPtr)(&v)
+}
+
+func (*googleCloudDialogflowCxV3TestCaseResultTestResultPtr) ElementType() reflect.Type {
+	return googleCloudDialogflowCxV3TestCaseResultTestResultPtrType
+}
+
+func (in *googleCloudDialogflowCxV3TestCaseResultTestResultPtr) ToGoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput() GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput)
+}
+
+func (in *googleCloudDialogflowCxV3TestCaseResultTestResultPtr) ToGoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutputWithContext(ctx context.Context) GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput)
+}
+
+type SecuritySettingPurgeDataTypesItem string
 
 const (
 	// Unspecified. Do not use.
@@ -364,7 +1734,23 @@ const (
 )
 
 func (SecuritySettingPurgeDataTypesItem) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*SecuritySettingPurgeDataTypesItem)(nil)).Elem()
+}
+
+func (e SecuritySettingPurgeDataTypesItem) ToSecuritySettingPurgeDataTypesItemOutput() SecuritySettingPurgeDataTypesItemOutput {
+	return pulumi.ToOutput(e).(SecuritySettingPurgeDataTypesItemOutput)
+}
+
+func (e SecuritySettingPurgeDataTypesItem) ToSecuritySettingPurgeDataTypesItemOutputWithContext(ctx context.Context) SecuritySettingPurgeDataTypesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecuritySettingPurgeDataTypesItemOutput)
+}
+
+func (e SecuritySettingPurgeDataTypesItem) ToSecuritySettingPurgeDataTypesItemPtrOutput() SecuritySettingPurgeDataTypesItemPtrOutput {
+	return e.ToSecuritySettingPurgeDataTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (e SecuritySettingPurgeDataTypesItem) ToSecuritySettingPurgeDataTypesItemPtrOutputWithContext(ctx context.Context) SecuritySettingPurgeDataTypesItemPtrOutput {
+	return SecuritySettingPurgeDataTypesItem(e).ToSecuritySettingPurgeDataTypesItemOutputWithContext(ctx).ToSecuritySettingPurgeDataTypesItemPtrOutputWithContext(ctx)
 }
 
 func (e SecuritySettingPurgeDataTypesItem) ToStringOutput() pulumi.StringOutput {
@@ -381,6 +1767,127 @@ func (e SecuritySettingPurgeDataTypesItem) ToStringPtrOutput() pulumi.StringPtrO
 
 func (e SecuritySettingPurgeDataTypesItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecuritySettingPurgeDataTypesItemOutput struct{ *pulumi.OutputState }
+
+func (SecuritySettingPurgeDataTypesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecuritySettingPurgeDataTypesItem)(nil)).Elem()
+}
+
+func (o SecuritySettingPurgeDataTypesItemOutput) ToSecuritySettingPurgeDataTypesItemOutput() SecuritySettingPurgeDataTypesItemOutput {
+	return o
+}
+
+func (o SecuritySettingPurgeDataTypesItemOutput) ToSecuritySettingPurgeDataTypesItemOutputWithContext(ctx context.Context) SecuritySettingPurgeDataTypesItemOutput {
+	return o
+}
+
+func (o SecuritySettingPurgeDataTypesItemOutput) ToSecuritySettingPurgeDataTypesItemPtrOutput() SecuritySettingPurgeDataTypesItemPtrOutput {
+	return o.ToSecuritySettingPurgeDataTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (o SecuritySettingPurgeDataTypesItemOutput) ToSecuritySettingPurgeDataTypesItemPtrOutputWithContext(ctx context.Context) SecuritySettingPurgeDataTypesItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecuritySettingPurgeDataTypesItem) *SecuritySettingPurgeDataTypesItem {
+		return &v
+	}).(SecuritySettingPurgeDataTypesItemPtrOutput)
+}
+
+func (o SecuritySettingPurgeDataTypesItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecuritySettingPurgeDataTypesItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecuritySettingPurgeDataTypesItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecuritySettingPurgeDataTypesItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecuritySettingPurgeDataTypesItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecuritySettingPurgeDataTypesItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecuritySettingPurgeDataTypesItemPtrOutput struct{ *pulumi.OutputState }
+
+func (SecuritySettingPurgeDataTypesItemPtrOutput) ElementType() reflect.Type {
+	return securitySettingPurgeDataTypesItemPtrType
+}
+
+func (o SecuritySettingPurgeDataTypesItemPtrOutput) ToSecuritySettingPurgeDataTypesItemPtrOutput() SecuritySettingPurgeDataTypesItemPtrOutput {
+	return o
+}
+
+func (o SecuritySettingPurgeDataTypesItemPtrOutput) ToSecuritySettingPurgeDataTypesItemPtrOutputWithContext(ctx context.Context) SecuritySettingPurgeDataTypesItemPtrOutput {
+	return o
+}
+
+func (o SecuritySettingPurgeDataTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecuritySettingPurgeDataTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecuritySettingPurgeDataTypesItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SecuritySettingPurgeDataTypesItemPtrOutput) Elem() SecuritySettingPurgeDataTypesItemOutput {
+	return o.ApplyT(func(v *SecuritySettingPurgeDataTypesItem) SecuritySettingPurgeDataTypesItem {
+		var ret SecuritySettingPurgeDataTypesItem
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(SecuritySettingPurgeDataTypesItemOutput)
+}
+
+// SecuritySettingPurgeDataTypesItemInput is an input type that accepts SecuritySettingPurgeDataTypesItemArgs and SecuritySettingPurgeDataTypesItemOutput values.
+// You can construct a concrete instance of `SecuritySettingPurgeDataTypesItemInput` via:
+//
+//          SecuritySettingPurgeDataTypesItemArgs{...}
+type SecuritySettingPurgeDataTypesItemInput interface {
+	pulumi.Input
+
+	ToSecuritySettingPurgeDataTypesItemOutput() SecuritySettingPurgeDataTypesItemOutput
+	ToSecuritySettingPurgeDataTypesItemOutputWithContext(context.Context) SecuritySettingPurgeDataTypesItemOutput
+}
+
+var securitySettingPurgeDataTypesItemPtrType = reflect.TypeOf((**SecuritySettingPurgeDataTypesItem)(nil)).Elem()
+
+type SecuritySettingPurgeDataTypesItemPtrInput interface {
+	pulumi.Input
+
+	ToSecuritySettingPurgeDataTypesItemPtrOutput() SecuritySettingPurgeDataTypesItemPtrOutput
+	ToSecuritySettingPurgeDataTypesItemPtrOutputWithContext(context.Context) SecuritySettingPurgeDataTypesItemPtrOutput
+}
+
+type securitySettingPurgeDataTypesItemPtr string
+
+func SecuritySettingPurgeDataTypesItemPtr(v string) SecuritySettingPurgeDataTypesItemPtrInput {
+	return (*securitySettingPurgeDataTypesItemPtr)(&v)
+}
+
+func (*securitySettingPurgeDataTypesItemPtr) ElementType() reflect.Type {
+	return securitySettingPurgeDataTypesItemPtrType
+}
+
+func (in *securitySettingPurgeDataTypesItemPtr) ToSecuritySettingPurgeDataTypesItemPtrOutput() SecuritySettingPurgeDataTypesItemPtrOutput {
+	return pulumi.ToOutput(in).(SecuritySettingPurgeDataTypesItemPtrOutput)
+}
+
+func (in *securitySettingPurgeDataTypesItemPtr) ToSecuritySettingPurgeDataTypesItemPtrOutputWithContext(ctx context.Context) SecuritySettingPurgeDataTypesItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecuritySettingPurgeDataTypesItemPtrOutput)
 }
 
 // SecuritySettingPurgeDataTypesItemArrayInput is an input type that accepts SecuritySettingPurgeDataTypesItemArray and SecuritySettingPurgeDataTypesItemArrayOutput values.
@@ -422,14 +1929,14 @@ func (o SecuritySettingPurgeDataTypesItemArrayOutput) ToSecuritySettingPurgeData
 	return o
 }
 
-func (o SecuritySettingPurgeDataTypesItemArrayOutput) Index(i pulumi.IntInput) pulumi.StringOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) pulumi.StringOutput {
-		return vs[0].([]SecuritySettingPurgeDataTypesItem)[vs[1].(int)].ToStringOutput()
-	}).(pulumi.StringOutput)
+func (o SecuritySettingPurgeDataTypesItemArrayOutput) Index(i pulumi.IntInput) SecuritySettingPurgeDataTypesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecuritySettingPurgeDataTypesItemOutput {
+		return vs[0].([]SecuritySettingPurgeDataTypesItem)[vs[1].(int)].ToSecuritySettingPurgeDataTypesItemOutput()
+	}).(SecuritySettingPurgeDataTypesItemOutput)
 }
 
 // Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
-type SecuritySettingRedactionScope pulumi.String
+type SecuritySettingRedactionScope string
 
 const (
 	// Don't redact any kind of data.
@@ -439,7 +1946,23 @@ const (
 )
 
 func (SecuritySettingRedactionScope) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*SecuritySettingRedactionScope)(nil)).Elem()
+}
+
+func (e SecuritySettingRedactionScope) ToSecuritySettingRedactionScopeOutput() SecuritySettingRedactionScopeOutput {
+	return pulumi.ToOutput(e).(SecuritySettingRedactionScopeOutput)
+}
+
+func (e SecuritySettingRedactionScope) ToSecuritySettingRedactionScopeOutputWithContext(ctx context.Context) SecuritySettingRedactionScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecuritySettingRedactionScopeOutput)
+}
+
+func (e SecuritySettingRedactionScope) ToSecuritySettingRedactionScopePtrOutput() SecuritySettingRedactionScopePtrOutput {
+	return e.ToSecuritySettingRedactionScopePtrOutputWithContext(context.Background())
+}
+
+func (e SecuritySettingRedactionScope) ToSecuritySettingRedactionScopePtrOutputWithContext(ctx context.Context) SecuritySettingRedactionScopePtrOutput {
+	return SecuritySettingRedactionScope(e).ToSecuritySettingRedactionScopeOutputWithContext(ctx).ToSecuritySettingRedactionScopePtrOutputWithContext(ctx)
 }
 
 func (e SecuritySettingRedactionScope) ToStringOutput() pulumi.StringOutput {
@@ -458,8 +1981,129 @@ func (e SecuritySettingRedactionScope) ToStringPtrOutputWithContext(ctx context.
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type SecuritySettingRedactionScopeOutput struct{ *pulumi.OutputState }
+
+func (SecuritySettingRedactionScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecuritySettingRedactionScope)(nil)).Elem()
+}
+
+func (o SecuritySettingRedactionScopeOutput) ToSecuritySettingRedactionScopeOutput() SecuritySettingRedactionScopeOutput {
+	return o
+}
+
+func (o SecuritySettingRedactionScopeOutput) ToSecuritySettingRedactionScopeOutputWithContext(ctx context.Context) SecuritySettingRedactionScopeOutput {
+	return o
+}
+
+func (o SecuritySettingRedactionScopeOutput) ToSecuritySettingRedactionScopePtrOutput() SecuritySettingRedactionScopePtrOutput {
+	return o.ToSecuritySettingRedactionScopePtrOutputWithContext(context.Background())
+}
+
+func (o SecuritySettingRedactionScopeOutput) ToSecuritySettingRedactionScopePtrOutputWithContext(ctx context.Context) SecuritySettingRedactionScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecuritySettingRedactionScope) *SecuritySettingRedactionScope {
+		return &v
+	}).(SecuritySettingRedactionScopePtrOutput)
+}
+
+func (o SecuritySettingRedactionScopeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecuritySettingRedactionScopeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecuritySettingRedactionScope) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecuritySettingRedactionScopeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecuritySettingRedactionScopeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecuritySettingRedactionScope) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecuritySettingRedactionScopePtrOutput struct{ *pulumi.OutputState }
+
+func (SecuritySettingRedactionScopePtrOutput) ElementType() reflect.Type {
+	return securitySettingRedactionScopePtrType
+}
+
+func (o SecuritySettingRedactionScopePtrOutput) ToSecuritySettingRedactionScopePtrOutput() SecuritySettingRedactionScopePtrOutput {
+	return o
+}
+
+func (o SecuritySettingRedactionScopePtrOutput) ToSecuritySettingRedactionScopePtrOutputWithContext(ctx context.Context) SecuritySettingRedactionScopePtrOutput {
+	return o
+}
+
+func (o SecuritySettingRedactionScopePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecuritySettingRedactionScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecuritySettingRedactionScope) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SecuritySettingRedactionScopePtrOutput) Elem() SecuritySettingRedactionScopeOutput {
+	return o.ApplyT(func(v *SecuritySettingRedactionScope) SecuritySettingRedactionScope {
+		var ret SecuritySettingRedactionScope
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(SecuritySettingRedactionScopeOutput)
+}
+
+// SecuritySettingRedactionScopeInput is an input type that accepts SecuritySettingRedactionScopeArgs and SecuritySettingRedactionScopeOutput values.
+// You can construct a concrete instance of `SecuritySettingRedactionScopeInput` via:
+//
+//          SecuritySettingRedactionScopeArgs{...}
+type SecuritySettingRedactionScopeInput interface {
+	pulumi.Input
+
+	ToSecuritySettingRedactionScopeOutput() SecuritySettingRedactionScopeOutput
+	ToSecuritySettingRedactionScopeOutputWithContext(context.Context) SecuritySettingRedactionScopeOutput
+}
+
+var securitySettingRedactionScopePtrType = reflect.TypeOf((**SecuritySettingRedactionScope)(nil)).Elem()
+
+type SecuritySettingRedactionScopePtrInput interface {
+	pulumi.Input
+
+	ToSecuritySettingRedactionScopePtrOutput() SecuritySettingRedactionScopePtrOutput
+	ToSecuritySettingRedactionScopePtrOutputWithContext(context.Context) SecuritySettingRedactionScopePtrOutput
+}
+
+type securitySettingRedactionScopePtr string
+
+func SecuritySettingRedactionScopePtr(v string) SecuritySettingRedactionScopePtrInput {
+	return (*securitySettingRedactionScopePtr)(&v)
+}
+
+func (*securitySettingRedactionScopePtr) ElementType() reflect.Type {
+	return securitySettingRedactionScopePtrType
+}
+
+func (in *securitySettingRedactionScopePtr) ToSecuritySettingRedactionScopePtrOutput() SecuritySettingRedactionScopePtrOutput {
+	return pulumi.ToOutput(in).(SecuritySettingRedactionScopePtrOutput)
+}
+
+func (in *securitySettingRedactionScopePtr) ToSecuritySettingRedactionScopePtrOutputWithContext(ctx context.Context) SecuritySettingRedactionScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecuritySettingRedactionScopePtrOutput)
+}
+
 // Strategy that defines how we do redaction.
-type SecuritySettingRedactionStrategy pulumi.String
+type SecuritySettingRedactionStrategy string
 
 const (
 	// Do not redact.
@@ -469,7 +2113,23 @@ const (
 )
 
 func (SecuritySettingRedactionStrategy) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*SecuritySettingRedactionStrategy)(nil)).Elem()
+}
+
+func (e SecuritySettingRedactionStrategy) ToSecuritySettingRedactionStrategyOutput() SecuritySettingRedactionStrategyOutput {
+	return pulumi.ToOutput(e).(SecuritySettingRedactionStrategyOutput)
+}
+
+func (e SecuritySettingRedactionStrategy) ToSecuritySettingRedactionStrategyOutputWithContext(ctx context.Context) SecuritySettingRedactionStrategyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecuritySettingRedactionStrategyOutput)
+}
+
+func (e SecuritySettingRedactionStrategy) ToSecuritySettingRedactionStrategyPtrOutput() SecuritySettingRedactionStrategyPtrOutput {
+	return e.ToSecuritySettingRedactionStrategyPtrOutputWithContext(context.Background())
+}
+
+func (e SecuritySettingRedactionStrategy) ToSecuritySettingRedactionStrategyPtrOutputWithContext(ctx context.Context) SecuritySettingRedactionStrategyPtrOutput {
+	return SecuritySettingRedactionStrategy(e).ToSecuritySettingRedactionStrategyOutputWithContext(ctx).ToSecuritySettingRedactionStrategyPtrOutputWithContext(ctx)
 }
 
 func (e SecuritySettingRedactionStrategy) ToStringOutput() pulumi.StringOutput {
@@ -488,8 +2148,129 @@ func (e SecuritySettingRedactionStrategy) ToStringPtrOutputWithContext(ctx conte
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type SecuritySettingRedactionStrategyOutput struct{ *pulumi.OutputState }
+
+func (SecuritySettingRedactionStrategyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecuritySettingRedactionStrategy)(nil)).Elem()
+}
+
+func (o SecuritySettingRedactionStrategyOutput) ToSecuritySettingRedactionStrategyOutput() SecuritySettingRedactionStrategyOutput {
+	return o
+}
+
+func (o SecuritySettingRedactionStrategyOutput) ToSecuritySettingRedactionStrategyOutputWithContext(ctx context.Context) SecuritySettingRedactionStrategyOutput {
+	return o
+}
+
+func (o SecuritySettingRedactionStrategyOutput) ToSecuritySettingRedactionStrategyPtrOutput() SecuritySettingRedactionStrategyPtrOutput {
+	return o.ToSecuritySettingRedactionStrategyPtrOutputWithContext(context.Background())
+}
+
+func (o SecuritySettingRedactionStrategyOutput) ToSecuritySettingRedactionStrategyPtrOutputWithContext(ctx context.Context) SecuritySettingRedactionStrategyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecuritySettingRedactionStrategy) *SecuritySettingRedactionStrategy {
+		return &v
+	}).(SecuritySettingRedactionStrategyPtrOutput)
+}
+
+func (o SecuritySettingRedactionStrategyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecuritySettingRedactionStrategyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecuritySettingRedactionStrategy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecuritySettingRedactionStrategyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecuritySettingRedactionStrategyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecuritySettingRedactionStrategy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecuritySettingRedactionStrategyPtrOutput struct{ *pulumi.OutputState }
+
+func (SecuritySettingRedactionStrategyPtrOutput) ElementType() reflect.Type {
+	return securitySettingRedactionStrategyPtrType
+}
+
+func (o SecuritySettingRedactionStrategyPtrOutput) ToSecuritySettingRedactionStrategyPtrOutput() SecuritySettingRedactionStrategyPtrOutput {
+	return o
+}
+
+func (o SecuritySettingRedactionStrategyPtrOutput) ToSecuritySettingRedactionStrategyPtrOutputWithContext(ctx context.Context) SecuritySettingRedactionStrategyPtrOutput {
+	return o
+}
+
+func (o SecuritySettingRedactionStrategyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecuritySettingRedactionStrategyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecuritySettingRedactionStrategy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SecuritySettingRedactionStrategyPtrOutput) Elem() SecuritySettingRedactionStrategyOutput {
+	return o.ApplyT(func(v *SecuritySettingRedactionStrategy) SecuritySettingRedactionStrategy {
+		var ret SecuritySettingRedactionStrategy
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(SecuritySettingRedactionStrategyOutput)
+}
+
+// SecuritySettingRedactionStrategyInput is an input type that accepts SecuritySettingRedactionStrategyArgs and SecuritySettingRedactionStrategyOutput values.
+// You can construct a concrete instance of `SecuritySettingRedactionStrategyInput` via:
+//
+//          SecuritySettingRedactionStrategyArgs{...}
+type SecuritySettingRedactionStrategyInput interface {
+	pulumi.Input
+
+	ToSecuritySettingRedactionStrategyOutput() SecuritySettingRedactionStrategyOutput
+	ToSecuritySettingRedactionStrategyOutputWithContext(context.Context) SecuritySettingRedactionStrategyOutput
+}
+
+var securitySettingRedactionStrategyPtrType = reflect.TypeOf((**SecuritySettingRedactionStrategy)(nil)).Elem()
+
+type SecuritySettingRedactionStrategyPtrInput interface {
+	pulumi.Input
+
+	ToSecuritySettingRedactionStrategyPtrOutput() SecuritySettingRedactionStrategyPtrOutput
+	ToSecuritySettingRedactionStrategyPtrOutputWithContext(context.Context) SecuritySettingRedactionStrategyPtrOutput
+}
+
+type securitySettingRedactionStrategyPtr string
+
+func SecuritySettingRedactionStrategyPtr(v string) SecuritySettingRedactionStrategyPtrInput {
+	return (*securitySettingRedactionStrategyPtr)(&v)
+}
+
+func (*securitySettingRedactionStrategyPtr) ElementType() reflect.Type {
+	return securitySettingRedactionStrategyPtrType
+}
+
+func (in *securitySettingRedactionStrategyPtr) ToSecuritySettingRedactionStrategyPtrOutput() SecuritySettingRedactionStrategyPtrOutput {
+	return pulumi.ToOutput(in).(SecuritySettingRedactionStrategyPtrOutput)
+}
+
+func (in *securitySettingRedactionStrategyPtr) ToSecuritySettingRedactionStrategyPtrOutputWithContext(ctx context.Context) SecuritySettingRedactionStrategyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecuritySettingRedactionStrategyPtrOutput)
+}
+
 // Required. Indicates whether the additional data should override or supplement the custom entity type definition.
-type SessionEntityTypeEntityOverrideMode pulumi.String
+type SessionEntityTypeEntityOverrideMode string
 
 const (
 	// Not specified. This value should be never used.
@@ -501,7 +2282,23 @@ const (
 )
 
 func (SessionEntityTypeEntityOverrideMode) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*SessionEntityTypeEntityOverrideMode)(nil)).Elem()
+}
+
+func (e SessionEntityTypeEntityOverrideMode) ToSessionEntityTypeEntityOverrideModeOutput() SessionEntityTypeEntityOverrideModeOutput {
+	return pulumi.ToOutput(e).(SessionEntityTypeEntityOverrideModeOutput)
+}
+
+func (e SessionEntityTypeEntityOverrideMode) ToSessionEntityTypeEntityOverrideModeOutputWithContext(ctx context.Context) SessionEntityTypeEntityOverrideModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SessionEntityTypeEntityOverrideModeOutput)
+}
+
+func (e SessionEntityTypeEntityOverrideMode) ToSessionEntityTypeEntityOverrideModePtrOutput() SessionEntityTypeEntityOverrideModePtrOutput {
+	return e.ToSessionEntityTypeEntityOverrideModePtrOutputWithContext(context.Background())
+}
+
+func (e SessionEntityTypeEntityOverrideMode) ToSessionEntityTypeEntityOverrideModePtrOutputWithContext(ctx context.Context) SessionEntityTypeEntityOverrideModePtrOutput {
+	return SessionEntityTypeEntityOverrideMode(e).ToSessionEntityTypeEntityOverrideModeOutputWithContext(ctx).ToSessionEntityTypeEntityOverrideModePtrOutputWithContext(ctx)
 }
 
 func (e SessionEntityTypeEntityOverrideMode) ToStringOutput() pulumi.StringOutput {
@@ -518,4 +2315,157 @@ func (e SessionEntityTypeEntityOverrideMode) ToStringPtrOutput() pulumi.StringPt
 
 func (e SessionEntityTypeEntityOverrideMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SessionEntityTypeEntityOverrideModeOutput struct{ *pulumi.OutputState }
+
+func (SessionEntityTypeEntityOverrideModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SessionEntityTypeEntityOverrideMode)(nil)).Elem()
+}
+
+func (o SessionEntityTypeEntityOverrideModeOutput) ToSessionEntityTypeEntityOverrideModeOutput() SessionEntityTypeEntityOverrideModeOutput {
+	return o
+}
+
+func (o SessionEntityTypeEntityOverrideModeOutput) ToSessionEntityTypeEntityOverrideModeOutputWithContext(ctx context.Context) SessionEntityTypeEntityOverrideModeOutput {
+	return o
+}
+
+func (o SessionEntityTypeEntityOverrideModeOutput) ToSessionEntityTypeEntityOverrideModePtrOutput() SessionEntityTypeEntityOverrideModePtrOutput {
+	return o.ToSessionEntityTypeEntityOverrideModePtrOutputWithContext(context.Background())
+}
+
+func (o SessionEntityTypeEntityOverrideModeOutput) ToSessionEntityTypeEntityOverrideModePtrOutputWithContext(ctx context.Context) SessionEntityTypeEntityOverrideModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SessionEntityTypeEntityOverrideMode) *SessionEntityTypeEntityOverrideMode {
+		return &v
+	}).(SessionEntityTypeEntityOverrideModePtrOutput)
+}
+
+func (o SessionEntityTypeEntityOverrideModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SessionEntityTypeEntityOverrideModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SessionEntityTypeEntityOverrideMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SessionEntityTypeEntityOverrideModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SessionEntityTypeEntityOverrideModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SessionEntityTypeEntityOverrideMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SessionEntityTypeEntityOverrideModePtrOutput struct{ *pulumi.OutputState }
+
+func (SessionEntityTypeEntityOverrideModePtrOutput) ElementType() reflect.Type {
+	return sessionEntityTypeEntityOverrideModePtrType
+}
+
+func (o SessionEntityTypeEntityOverrideModePtrOutput) ToSessionEntityTypeEntityOverrideModePtrOutput() SessionEntityTypeEntityOverrideModePtrOutput {
+	return o
+}
+
+func (o SessionEntityTypeEntityOverrideModePtrOutput) ToSessionEntityTypeEntityOverrideModePtrOutputWithContext(ctx context.Context) SessionEntityTypeEntityOverrideModePtrOutput {
+	return o
+}
+
+func (o SessionEntityTypeEntityOverrideModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SessionEntityTypeEntityOverrideModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SessionEntityTypeEntityOverrideMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o SessionEntityTypeEntityOverrideModePtrOutput) Elem() SessionEntityTypeEntityOverrideModeOutput {
+	return o.ApplyT(func(v *SessionEntityTypeEntityOverrideMode) SessionEntityTypeEntityOverrideMode {
+		var ret SessionEntityTypeEntityOverrideMode
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(SessionEntityTypeEntityOverrideModeOutput)
+}
+
+// SessionEntityTypeEntityOverrideModeInput is an input type that accepts SessionEntityTypeEntityOverrideModeArgs and SessionEntityTypeEntityOverrideModeOutput values.
+// You can construct a concrete instance of `SessionEntityTypeEntityOverrideModeInput` via:
+//
+//          SessionEntityTypeEntityOverrideModeArgs{...}
+type SessionEntityTypeEntityOverrideModeInput interface {
+	pulumi.Input
+
+	ToSessionEntityTypeEntityOverrideModeOutput() SessionEntityTypeEntityOverrideModeOutput
+	ToSessionEntityTypeEntityOverrideModeOutputWithContext(context.Context) SessionEntityTypeEntityOverrideModeOutput
+}
+
+var sessionEntityTypeEntityOverrideModePtrType = reflect.TypeOf((**SessionEntityTypeEntityOverrideMode)(nil)).Elem()
+
+type SessionEntityTypeEntityOverrideModePtrInput interface {
+	pulumi.Input
+
+	ToSessionEntityTypeEntityOverrideModePtrOutput() SessionEntityTypeEntityOverrideModePtrOutput
+	ToSessionEntityTypeEntityOverrideModePtrOutputWithContext(context.Context) SessionEntityTypeEntityOverrideModePtrOutput
+}
+
+type sessionEntityTypeEntityOverrideModePtr string
+
+func SessionEntityTypeEntityOverrideModePtr(v string) SessionEntityTypeEntityOverrideModePtrInput {
+	return (*sessionEntityTypeEntityOverrideModePtr)(&v)
+}
+
+func (*sessionEntityTypeEntityOverrideModePtr) ElementType() reflect.Type {
+	return sessionEntityTypeEntityOverrideModePtrType
+}
+
+func (in *sessionEntityTypeEntityOverrideModePtr) ToSessionEntityTypeEntityOverrideModePtrOutput() SessionEntityTypeEntityOverrideModePtrOutput {
+	return pulumi.ToOutput(in).(SessionEntityTypeEntityOverrideModePtrOutput)
+}
+
+func (in *sessionEntityTypeEntityOverrideModePtr) ToSessionEntityTypeEntityOverrideModePtrOutputWithContext(ctx context.Context) SessionEntityTypeEntityOverrideModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SessionEntityTypeEntityOverrideModePtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(EntityTypeAutoExpansionModeOutput{})
+	pulumi.RegisterOutputType(EntityTypeAutoExpansionModePtrOutput{})
+	pulumi.RegisterOutputType(EntityTypeKindOutput{})
+	pulumi.RegisterOutputType(EntityTypeKindPtrOutput{})
+	pulumi.RegisterOutputType(ExperimentStateEnumOutput{})
+	pulumi.RegisterOutputType(ExperimentStateEnumPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3ExperimentResultMetricCountTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3ExperimentResultMetricTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3ExperimentResultMetricTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3InputAudioConfigAudioEncodingPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3InputAudioConfigModelVariantOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3InputAudioConfigModelVariantPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3NluSettingsModelTrainingModeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3NluSettingsModelTrainingModePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3NluSettingsModelTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3NluSettingsModelTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3TestCaseResultTestResultOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDialogflowCxV3TestCaseResultTestResultPtrOutput{})
+	pulumi.RegisterOutputType(SecuritySettingPurgeDataTypesItemOutput{})
+	pulumi.RegisterOutputType(SecuritySettingPurgeDataTypesItemPtrOutput{})
+	pulumi.RegisterOutputType(SecuritySettingPurgeDataTypesItemArrayOutput{})
+	pulumi.RegisterOutputType(SecuritySettingRedactionScopeOutput{})
+	pulumi.RegisterOutputType(SecuritySettingRedactionScopePtrOutput{})
+	pulumi.RegisterOutputType(SecuritySettingRedactionStrategyOutput{})
+	pulumi.RegisterOutputType(SecuritySettingRedactionStrategyPtrOutput{})
+	pulumi.RegisterOutputType(SessionEntityTypeEntityOverrideModeOutput{})
+	pulumi.RegisterOutputType(SessionEntityTypeEntityOverrideModePtrOutput{})
 }

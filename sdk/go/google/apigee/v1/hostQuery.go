@@ -78,61 +78,9 @@ func GetHostQuery(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering HostQuery resources.
 type hostQueryState struct {
-	// Creation time of the query.
-	Created *string `pulumi:"created"`
-	// Hostname is available only when query is executed at host level.
-	EnvgroupHostname *string `pulumi:"envgroupHostname"`
-	// Error is set when query fails.
-	Error *string `pulumi:"error"`
-	// ExecutionTime is available only after the query is completed.
-	ExecutionTime *string `pulumi:"executionTime"`
-	// Asynchronous Query Name.
-	Name *string `pulumi:"name"`
-	// Contains information like metrics, dimenstions etc of the AsyncQuery.
-	QueryParams *GoogleCloudApigeeV1QueryMetadataResponse `pulumi:"queryParams"`
-	// Asynchronous Report ID.
-	ReportDefinitionId *string `pulumi:"reportDefinitionId"`
-	// Result is available only after the query is completed.
-	Result *GoogleCloudApigeeV1AsyncQueryResultResponse `pulumi:"result"`
-	// ResultFileSize is available only after the query is completed.
-	ResultFileSize *string `pulumi:"resultFileSize"`
-	// ResultRows is available only after the query is completed.
-	ResultRows *string `pulumi:"resultRows"`
-	// Self link of the query. Example: `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd` or following format if query is running at host level: `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
-	Self *string `pulumi:"self"`
-	// Query state could be "enqueued", "running", "completed", "failed".
-	State *string `pulumi:"state"`
-	// Last updated timestamp for the query.
-	Updated *string `pulumi:"updated"`
 }
 
 type HostQueryState struct {
-	// Creation time of the query.
-	Created pulumi.StringPtrInput
-	// Hostname is available only when query is executed at host level.
-	EnvgroupHostname pulumi.StringPtrInput
-	// Error is set when query fails.
-	Error pulumi.StringPtrInput
-	// ExecutionTime is available only after the query is completed.
-	ExecutionTime pulumi.StringPtrInput
-	// Asynchronous Query Name.
-	Name pulumi.StringPtrInput
-	// Contains information like metrics, dimenstions etc of the AsyncQuery.
-	QueryParams GoogleCloudApigeeV1QueryMetadataResponsePtrInput
-	// Asynchronous Report ID.
-	ReportDefinitionId pulumi.StringPtrInput
-	// Result is available only after the query is completed.
-	Result GoogleCloudApigeeV1AsyncQueryResultResponsePtrInput
-	// ResultFileSize is available only after the query is completed.
-	ResultFileSize pulumi.StringPtrInput
-	// ResultRows is available only after the query is completed.
-	ResultRows pulumi.StringPtrInput
-	// Self link of the query. Example: `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd` or following format if query is running at host level: `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd`
-	Self pulumi.StringPtrInput
-	// Query state could be "enqueued", "running", "completed", "failed".
-	State pulumi.StringPtrInput
-	// Last updated timestamp for the query.
-	Updated pulumi.StringPtrInput
 }
 
 func (HostQueryState) ElementType() reflect.Type {

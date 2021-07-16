@@ -319,7 +319,7 @@ func (o CapacityResponsePtrOutput) SubscribeMibPerSec() pulumi.IntPtrOutput {
 // The settings for a subscription's message delivery.
 type DeliveryConfig struct {
 	// The DeliveryRequirement for this subscription.
-	DeliveryRequirement *string `pulumi:"deliveryRequirement"`
+	DeliveryRequirement *DeliveryConfigDeliveryRequirement `pulumi:"deliveryRequirement"`
 }
 
 // DeliveryConfigInput is an input type that accepts DeliveryConfigArgs and DeliveryConfigOutput values.
@@ -336,7 +336,7 @@ type DeliveryConfigInput interface {
 // The settings for a subscription's message delivery.
 type DeliveryConfigArgs struct {
 	// The DeliveryRequirement for this subscription.
-	DeliveryRequirement *DeliveryConfigDeliveryRequirement `pulumi:"deliveryRequirement"`
+	DeliveryRequirement DeliveryConfigDeliveryRequirementPtrInput `pulumi:"deliveryRequirement"`
 }
 
 func (DeliveryConfigArgs) ElementType() reflect.Type {
@@ -418,8 +418,8 @@ func (o DeliveryConfigOutput) ToDeliveryConfigPtrOutputWithContext(ctx context.C
 }
 
 // The DeliveryRequirement for this subscription.
-func (o DeliveryConfigOutput) DeliveryRequirement() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DeliveryConfig) *string { return v.DeliveryRequirement }).(pulumi.StringPtrOutput)
+func (o DeliveryConfigOutput) DeliveryRequirement() DeliveryConfigDeliveryRequirementPtrOutput {
+	return o.ApplyT(func(v DeliveryConfig) *DeliveryConfigDeliveryRequirement { return v.DeliveryRequirement }).(DeliveryConfigDeliveryRequirementPtrOutput)
 }
 
 type DeliveryConfigPtrOutput struct{ *pulumi.OutputState }
@@ -441,13 +441,13 @@ func (o DeliveryConfigPtrOutput) Elem() DeliveryConfigOutput {
 }
 
 // The DeliveryRequirement for this subscription.
-func (o DeliveryConfigPtrOutput) DeliveryRequirement() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeliveryConfig) *string {
+func (o DeliveryConfigPtrOutput) DeliveryRequirement() DeliveryConfigDeliveryRequirementPtrOutput {
+	return o.ApplyT(func(v *DeliveryConfig) *DeliveryConfigDeliveryRequirement {
 		if v == nil {
 			return nil
 		}
 		return v.DeliveryRequirement
-	}).(pulumi.StringPtrOutput)
+	}).(DeliveryConfigDeliveryRequirementPtrOutput)
 }
 
 // The settings for a subscription's message delivery.

@@ -67,37 +67,9 @@ func GetBudget(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Budget resources.
 type budgetState struct {
-	// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
-	AllUpdatesRule *GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponse `pulumi:"allUpdatesRule"`
-	// Budgeted amount.
-	Amount *GoogleCloudBillingBudgetsV1beta1BudgetAmountResponse `pulumi:"amount"`
-	// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
-	BudgetFilter *GoogleCloudBillingBudgetsV1beta1FilterResponse `pulumi:"budgetFilter"`
-	// User data for display name in UI. Validation: <= 60 chars.
-	DisplayName *string `pulumi:"displayName"`
-	// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
-	Etag *string `pulumi:"etag"`
-	// Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
-	Name *string `pulumi:"name"`
-	// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
-	ThresholdRules []GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponse `pulumi:"thresholdRules"`
 }
 
 type BudgetState struct {
-	// Optional. Rules to apply to notifications sent based on budget spend and thresholds.
-	AllUpdatesRule GoogleCloudBillingBudgetsV1beta1AllUpdatesRuleResponsePtrInput
-	// Budgeted amount.
-	Amount GoogleCloudBillingBudgetsV1beta1BudgetAmountResponsePtrInput
-	// Optional. Filters that define which resources are used to compute the actual spend against the budget amount, such as projects, services, and the budget's time period, as well as other filters.
-	BudgetFilter GoogleCloudBillingBudgetsV1beta1FilterResponsePtrInput
-	// User data for display name in UI. Validation: <= 60 chars.
-	DisplayName pulumi.StringPtrInput
-	// Optional. Etag to validate that the object is unchanged for a read-modify-write operation. An empty etag will cause an update to overwrite other changes.
-	Etag pulumi.StringPtrInput
-	// Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
-	Name pulumi.StringPtrInput
-	// Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
-	ThresholdRules GoogleCloudBillingBudgetsV1beta1ThresholdRuleResponseArrayInput
 }
 
 func (BudgetState) ElementType() reflect.Type {

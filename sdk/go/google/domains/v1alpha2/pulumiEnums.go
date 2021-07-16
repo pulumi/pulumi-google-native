@@ -11,7 +11,7 @@ import (
 )
 
 // The log type that this config enables.
-type AuditLogConfigLogType pulumi.String
+type AuditLogConfigLogType string
 
 const (
 	// Default case. Should never be this.
@@ -25,7 +25,23 @@ const (
 )
 
 func (AuditLogConfigLogType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*AuditLogConfigLogType)(nil)).Elem()
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput {
+	return pulumi.ToOutput(e).(AuditLogConfigLogTypeOutput)
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypeOutputWithContext(ctx context.Context) AuditLogConfigLogTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AuditLogConfigLogTypeOutput)
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return e.ToAuditLogConfigLogTypePtrOutputWithContext(context.Background())
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return AuditLogConfigLogType(e).ToAuditLogConfigLogTypeOutputWithContext(ctx).ToAuditLogConfigLogTypePtrOutputWithContext(ctx)
 }
 
 func (e AuditLogConfigLogType) ToStringOutput() pulumi.StringOutput {
@@ -44,8 +60,129 @@ func (e AuditLogConfigLogType) ToStringPtrOutputWithContext(ctx context.Context)
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type AuditLogConfigLogTypeOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigLogTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigLogType)(nil)).Elem()
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypeOutputWithContext(ctx context.Context) AuditLogConfigLogTypeOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return o.ToAuditLogConfigLogTypePtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuditLogConfigLogType) *AuditLogConfigLogType {
+		return &v
+	}).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuditLogConfigLogType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuditLogConfigLogType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
+	return auditLogConfigLogTypePtrType
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AuditLogConfigLogType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		var ret AuditLogConfigLogType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
+}
+
+// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
+// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+//
+//          AuditLogConfigLogTypeArgs{...}
+type AuditLogConfigLogTypeInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput
+	ToAuditLogConfigLogTypeOutputWithContext(context.Context) AuditLogConfigLogTypeOutput
+}
+
+var auditLogConfigLogTypePtrType = reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
+
+type AuditLogConfigLogTypePtrInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput
+	ToAuditLogConfigLogTypePtrOutputWithContext(context.Context) AuditLogConfigLogTypePtrOutput
+}
+
+type auditLogConfigLogTypePtr string
+
+func AuditLogConfigLogTypePtr(v string) AuditLogConfigLogTypePtrInput {
+	return (*auditLogConfigLogTypePtr)(&v)
+}
+
+func (*auditLogConfigLogTypePtr) ElementType() reflect.Type {
+	return auditLogConfigLogTypePtrType
+}
+
+func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return pulumi.ToOutput(in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
 // Required. Privacy setting for the contacts associated with the `Registration`.
-type ContactSettingsPrivacy pulumi.String
+type ContactSettingsPrivacy string
 
 const (
 	// The contact privacy settings are undefined.
@@ -59,7 +196,23 @@ const (
 )
 
 func (ContactSettingsPrivacy) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*ContactSettingsPrivacy)(nil)).Elem()
+}
+
+func (e ContactSettingsPrivacy) ToContactSettingsPrivacyOutput() ContactSettingsPrivacyOutput {
+	return pulumi.ToOutput(e).(ContactSettingsPrivacyOutput)
+}
+
+func (e ContactSettingsPrivacy) ToContactSettingsPrivacyOutputWithContext(ctx context.Context) ContactSettingsPrivacyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ContactSettingsPrivacyOutput)
+}
+
+func (e ContactSettingsPrivacy) ToContactSettingsPrivacyPtrOutput() ContactSettingsPrivacyPtrOutput {
+	return e.ToContactSettingsPrivacyPtrOutputWithContext(context.Background())
+}
+
+func (e ContactSettingsPrivacy) ToContactSettingsPrivacyPtrOutputWithContext(ctx context.Context) ContactSettingsPrivacyPtrOutput {
+	return ContactSettingsPrivacy(e).ToContactSettingsPrivacyOutputWithContext(ctx).ToContactSettingsPrivacyPtrOutputWithContext(ctx)
 }
 
 func (e ContactSettingsPrivacy) ToStringOutput() pulumi.StringOutput {
@@ -78,8 +231,129 @@ func (e ContactSettingsPrivacy) ToStringPtrOutputWithContext(ctx context.Context
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type ContactSettingsPrivacyOutput struct{ *pulumi.OutputState }
+
+func (ContactSettingsPrivacyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContactSettingsPrivacy)(nil)).Elem()
+}
+
+func (o ContactSettingsPrivacyOutput) ToContactSettingsPrivacyOutput() ContactSettingsPrivacyOutput {
+	return o
+}
+
+func (o ContactSettingsPrivacyOutput) ToContactSettingsPrivacyOutputWithContext(ctx context.Context) ContactSettingsPrivacyOutput {
+	return o
+}
+
+func (o ContactSettingsPrivacyOutput) ToContactSettingsPrivacyPtrOutput() ContactSettingsPrivacyPtrOutput {
+	return o.ToContactSettingsPrivacyPtrOutputWithContext(context.Background())
+}
+
+func (o ContactSettingsPrivacyOutput) ToContactSettingsPrivacyPtrOutputWithContext(ctx context.Context) ContactSettingsPrivacyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContactSettingsPrivacy) *ContactSettingsPrivacy {
+		return &v
+	}).(ContactSettingsPrivacyPtrOutput)
+}
+
+func (o ContactSettingsPrivacyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ContactSettingsPrivacyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ContactSettingsPrivacy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ContactSettingsPrivacyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ContactSettingsPrivacyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ContactSettingsPrivacy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ContactSettingsPrivacyPtrOutput struct{ *pulumi.OutputState }
+
+func (ContactSettingsPrivacyPtrOutput) ElementType() reflect.Type {
+	return contactSettingsPrivacyPtrType
+}
+
+func (o ContactSettingsPrivacyPtrOutput) ToContactSettingsPrivacyPtrOutput() ContactSettingsPrivacyPtrOutput {
+	return o
+}
+
+func (o ContactSettingsPrivacyPtrOutput) ToContactSettingsPrivacyPtrOutputWithContext(ctx context.Context) ContactSettingsPrivacyPtrOutput {
+	return o
+}
+
+func (o ContactSettingsPrivacyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ContactSettingsPrivacyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ContactSettingsPrivacy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ContactSettingsPrivacyPtrOutput) Elem() ContactSettingsPrivacyOutput {
+	return o.ApplyT(func(v *ContactSettingsPrivacy) ContactSettingsPrivacy {
+		var ret ContactSettingsPrivacy
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ContactSettingsPrivacyOutput)
+}
+
+// ContactSettingsPrivacyInput is an input type that accepts ContactSettingsPrivacyArgs and ContactSettingsPrivacyOutput values.
+// You can construct a concrete instance of `ContactSettingsPrivacyInput` via:
+//
+//          ContactSettingsPrivacyArgs{...}
+type ContactSettingsPrivacyInput interface {
+	pulumi.Input
+
+	ToContactSettingsPrivacyOutput() ContactSettingsPrivacyOutput
+	ToContactSettingsPrivacyOutputWithContext(context.Context) ContactSettingsPrivacyOutput
+}
+
+var contactSettingsPrivacyPtrType = reflect.TypeOf((**ContactSettingsPrivacy)(nil)).Elem()
+
+type ContactSettingsPrivacyPtrInput interface {
+	pulumi.Input
+
+	ToContactSettingsPrivacyPtrOutput() ContactSettingsPrivacyPtrOutput
+	ToContactSettingsPrivacyPtrOutputWithContext(context.Context) ContactSettingsPrivacyPtrOutput
+}
+
+type contactSettingsPrivacyPtr string
+
+func ContactSettingsPrivacyPtr(v string) ContactSettingsPrivacyPtrInput {
+	return (*contactSettingsPrivacyPtr)(&v)
+}
+
+func (*contactSettingsPrivacyPtr) ElementType() reflect.Type {
+	return contactSettingsPrivacyPtrType
+}
+
+func (in *contactSettingsPrivacyPtr) ToContactSettingsPrivacyPtrOutput() ContactSettingsPrivacyPtrOutput {
+	return pulumi.ToOutput(in).(ContactSettingsPrivacyPtrOutput)
+}
+
+func (in *contactSettingsPrivacyPtr) ToContactSettingsPrivacyPtrOutputWithContext(ctx context.Context) ContactSettingsPrivacyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ContactSettingsPrivacyPtrOutput)
+}
+
 // The algorithm used to generate the referenced DNSKEY.
-type DsRecordAlgorithm pulumi.String
+type DsRecordAlgorithm string
 
 const (
 	// The algorithm is unspecified.
@@ -111,7 +385,23 @@ const (
 )
 
 func (DsRecordAlgorithm) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*DsRecordAlgorithm)(nil)).Elem()
+}
+
+func (e DsRecordAlgorithm) ToDsRecordAlgorithmOutput() DsRecordAlgorithmOutput {
+	return pulumi.ToOutput(e).(DsRecordAlgorithmOutput)
+}
+
+func (e DsRecordAlgorithm) ToDsRecordAlgorithmOutputWithContext(ctx context.Context) DsRecordAlgorithmOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DsRecordAlgorithmOutput)
+}
+
+func (e DsRecordAlgorithm) ToDsRecordAlgorithmPtrOutput() DsRecordAlgorithmPtrOutput {
+	return e.ToDsRecordAlgorithmPtrOutputWithContext(context.Background())
+}
+
+func (e DsRecordAlgorithm) ToDsRecordAlgorithmPtrOutputWithContext(ctx context.Context) DsRecordAlgorithmPtrOutput {
+	return DsRecordAlgorithm(e).ToDsRecordAlgorithmOutputWithContext(ctx).ToDsRecordAlgorithmPtrOutputWithContext(ctx)
 }
 
 func (e DsRecordAlgorithm) ToStringOutput() pulumi.StringOutput {
@@ -130,8 +420,129 @@ func (e DsRecordAlgorithm) ToStringPtrOutputWithContext(ctx context.Context) pul
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type DsRecordAlgorithmOutput struct{ *pulumi.OutputState }
+
+func (DsRecordAlgorithmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DsRecordAlgorithm)(nil)).Elem()
+}
+
+func (o DsRecordAlgorithmOutput) ToDsRecordAlgorithmOutput() DsRecordAlgorithmOutput {
+	return o
+}
+
+func (o DsRecordAlgorithmOutput) ToDsRecordAlgorithmOutputWithContext(ctx context.Context) DsRecordAlgorithmOutput {
+	return o
+}
+
+func (o DsRecordAlgorithmOutput) ToDsRecordAlgorithmPtrOutput() DsRecordAlgorithmPtrOutput {
+	return o.ToDsRecordAlgorithmPtrOutputWithContext(context.Background())
+}
+
+func (o DsRecordAlgorithmOutput) ToDsRecordAlgorithmPtrOutputWithContext(ctx context.Context) DsRecordAlgorithmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DsRecordAlgorithm) *DsRecordAlgorithm {
+		return &v
+	}).(DsRecordAlgorithmPtrOutput)
+}
+
+func (o DsRecordAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DsRecordAlgorithmOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DsRecordAlgorithm) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DsRecordAlgorithmOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DsRecordAlgorithmOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DsRecordAlgorithm) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DsRecordAlgorithmPtrOutput struct{ *pulumi.OutputState }
+
+func (DsRecordAlgorithmPtrOutput) ElementType() reflect.Type {
+	return dsRecordAlgorithmPtrType
+}
+
+func (o DsRecordAlgorithmPtrOutput) ToDsRecordAlgorithmPtrOutput() DsRecordAlgorithmPtrOutput {
+	return o
+}
+
+func (o DsRecordAlgorithmPtrOutput) ToDsRecordAlgorithmPtrOutputWithContext(ctx context.Context) DsRecordAlgorithmPtrOutput {
+	return o
+}
+
+func (o DsRecordAlgorithmPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DsRecordAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DsRecordAlgorithm) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DsRecordAlgorithmPtrOutput) Elem() DsRecordAlgorithmOutput {
+	return o.ApplyT(func(v *DsRecordAlgorithm) DsRecordAlgorithm {
+		var ret DsRecordAlgorithm
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(DsRecordAlgorithmOutput)
+}
+
+// DsRecordAlgorithmInput is an input type that accepts DsRecordAlgorithmArgs and DsRecordAlgorithmOutput values.
+// You can construct a concrete instance of `DsRecordAlgorithmInput` via:
+//
+//          DsRecordAlgorithmArgs{...}
+type DsRecordAlgorithmInput interface {
+	pulumi.Input
+
+	ToDsRecordAlgorithmOutput() DsRecordAlgorithmOutput
+	ToDsRecordAlgorithmOutputWithContext(context.Context) DsRecordAlgorithmOutput
+}
+
+var dsRecordAlgorithmPtrType = reflect.TypeOf((**DsRecordAlgorithm)(nil)).Elem()
+
+type DsRecordAlgorithmPtrInput interface {
+	pulumi.Input
+
+	ToDsRecordAlgorithmPtrOutput() DsRecordAlgorithmPtrOutput
+	ToDsRecordAlgorithmPtrOutputWithContext(context.Context) DsRecordAlgorithmPtrOutput
+}
+
+type dsRecordAlgorithmPtr string
+
+func DsRecordAlgorithmPtr(v string) DsRecordAlgorithmPtrInput {
+	return (*dsRecordAlgorithmPtr)(&v)
+}
+
+func (*dsRecordAlgorithmPtr) ElementType() reflect.Type {
+	return dsRecordAlgorithmPtrType
+}
+
+func (in *dsRecordAlgorithmPtr) ToDsRecordAlgorithmPtrOutput() DsRecordAlgorithmPtrOutput {
+	return pulumi.ToOutput(in).(DsRecordAlgorithmPtrOutput)
+}
+
+func (in *dsRecordAlgorithmPtr) ToDsRecordAlgorithmPtrOutputWithContext(ctx context.Context) DsRecordAlgorithmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DsRecordAlgorithmPtrOutput)
+}
+
 // The hash function used to generate the digest of the referenced DNSKEY.
-type DsRecordDigestType pulumi.String
+type DsRecordDigestType string
 
 const (
 	// The DigestType is unspecified.
@@ -147,7 +558,23 @@ const (
 )
 
 func (DsRecordDigestType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*DsRecordDigestType)(nil)).Elem()
+}
+
+func (e DsRecordDigestType) ToDsRecordDigestTypeOutput() DsRecordDigestTypeOutput {
+	return pulumi.ToOutput(e).(DsRecordDigestTypeOutput)
+}
+
+func (e DsRecordDigestType) ToDsRecordDigestTypeOutputWithContext(ctx context.Context) DsRecordDigestTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DsRecordDigestTypeOutput)
+}
+
+func (e DsRecordDigestType) ToDsRecordDigestTypePtrOutput() DsRecordDigestTypePtrOutput {
+	return e.ToDsRecordDigestTypePtrOutputWithContext(context.Background())
+}
+
+func (e DsRecordDigestType) ToDsRecordDigestTypePtrOutputWithContext(ctx context.Context) DsRecordDigestTypePtrOutput {
+	return DsRecordDigestType(e).ToDsRecordDigestTypeOutputWithContext(ctx).ToDsRecordDigestTypePtrOutputWithContext(ctx)
 }
 
 func (e DsRecordDigestType) ToStringOutput() pulumi.StringOutput {
@@ -166,8 +593,129 @@ func (e DsRecordDigestType) ToStringPtrOutputWithContext(ctx context.Context) pu
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type DsRecordDigestTypeOutput struct{ *pulumi.OutputState }
+
+func (DsRecordDigestTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DsRecordDigestType)(nil)).Elem()
+}
+
+func (o DsRecordDigestTypeOutput) ToDsRecordDigestTypeOutput() DsRecordDigestTypeOutput {
+	return o
+}
+
+func (o DsRecordDigestTypeOutput) ToDsRecordDigestTypeOutputWithContext(ctx context.Context) DsRecordDigestTypeOutput {
+	return o
+}
+
+func (o DsRecordDigestTypeOutput) ToDsRecordDigestTypePtrOutput() DsRecordDigestTypePtrOutput {
+	return o.ToDsRecordDigestTypePtrOutputWithContext(context.Background())
+}
+
+func (o DsRecordDigestTypeOutput) ToDsRecordDigestTypePtrOutputWithContext(ctx context.Context) DsRecordDigestTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DsRecordDigestType) *DsRecordDigestType {
+		return &v
+	}).(DsRecordDigestTypePtrOutput)
+}
+
+func (o DsRecordDigestTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DsRecordDigestTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DsRecordDigestType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DsRecordDigestTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DsRecordDigestTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DsRecordDigestType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DsRecordDigestTypePtrOutput struct{ *pulumi.OutputState }
+
+func (DsRecordDigestTypePtrOutput) ElementType() reflect.Type {
+	return dsRecordDigestTypePtrType
+}
+
+func (o DsRecordDigestTypePtrOutput) ToDsRecordDigestTypePtrOutput() DsRecordDigestTypePtrOutput {
+	return o
+}
+
+func (o DsRecordDigestTypePtrOutput) ToDsRecordDigestTypePtrOutputWithContext(ctx context.Context) DsRecordDigestTypePtrOutput {
+	return o
+}
+
+func (o DsRecordDigestTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DsRecordDigestTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DsRecordDigestType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DsRecordDigestTypePtrOutput) Elem() DsRecordDigestTypeOutput {
+	return o.ApplyT(func(v *DsRecordDigestType) DsRecordDigestType {
+		var ret DsRecordDigestType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(DsRecordDigestTypeOutput)
+}
+
+// DsRecordDigestTypeInput is an input type that accepts DsRecordDigestTypeArgs and DsRecordDigestTypeOutput values.
+// You can construct a concrete instance of `DsRecordDigestTypeInput` via:
+//
+//          DsRecordDigestTypeArgs{...}
+type DsRecordDigestTypeInput interface {
+	pulumi.Input
+
+	ToDsRecordDigestTypeOutput() DsRecordDigestTypeOutput
+	ToDsRecordDigestTypeOutputWithContext(context.Context) DsRecordDigestTypeOutput
+}
+
+var dsRecordDigestTypePtrType = reflect.TypeOf((**DsRecordDigestType)(nil)).Elem()
+
+type DsRecordDigestTypePtrInput interface {
+	pulumi.Input
+
+	ToDsRecordDigestTypePtrOutput() DsRecordDigestTypePtrOutput
+	ToDsRecordDigestTypePtrOutputWithContext(context.Context) DsRecordDigestTypePtrOutput
+}
+
+type dsRecordDigestTypePtr string
+
+func DsRecordDigestTypePtr(v string) DsRecordDigestTypePtrInput {
+	return (*dsRecordDigestTypePtr)(&v)
+}
+
+func (*dsRecordDigestTypePtr) ElementType() reflect.Type {
+	return dsRecordDigestTypePtrType
+}
+
+func (in *dsRecordDigestTypePtr) ToDsRecordDigestTypePtrOutput() DsRecordDigestTypePtrOutput {
+	return pulumi.ToOutput(in).(DsRecordDigestTypePtrOutput)
+}
+
+func (in *dsRecordDigestTypePtr) ToDsRecordDigestTypePtrOutputWithContext(ctx context.Context) DsRecordDigestTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DsRecordDigestTypePtrOutput)
+}
+
 // Required. The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
-type GoogleDomainsDnsDsState pulumi.String
+type GoogleDomainsDnsDsState string
 
 const (
 	// DS state is unspecified.
@@ -179,7 +727,23 @@ const (
 )
 
 func (GoogleDomainsDnsDsState) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GoogleDomainsDnsDsState)(nil)).Elem()
+}
+
+func (e GoogleDomainsDnsDsState) ToGoogleDomainsDnsDsStateOutput() GoogleDomainsDnsDsStateOutput {
+	return pulumi.ToOutput(e).(GoogleDomainsDnsDsStateOutput)
+}
+
+func (e GoogleDomainsDnsDsState) ToGoogleDomainsDnsDsStateOutputWithContext(ctx context.Context) GoogleDomainsDnsDsStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleDomainsDnsDsStateOutput)
+}
+
+func (e GoogleDomainsDnsDsState) ToGoogleDomainsDnsDsStatePtrOutput() GoogleDomainsDnsDsStatePtrOutput {
+	return e.ToGoogleDomainsDnsDsStatePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleDomainsDnsDsState) ToGoogleDomainsDnsDsStatePtrOutputWithContext(ctx context.Context) GoogleDomainsDnsDsStatePtrOutput {
+	return GoogleDomainsDnsDsState(e).ToGoogleDomainsDnsDsStateOutputWithContext(ctx).ToGoogleDomainsDnsDsStatePtrOutputWithContext(ctx)
 }
 
 func (e GoogleDomainsDnsDsState) ToStringOutput() pulumi.StringOutput {
@@ -198,8 +762,129 @@ func (e GoogleDomainsDnsDsState) ToStringPtrOutputWithContext(ctx context.Contex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type GoogleDomainsDnsDsStateOutput struct{ *pulumi.OutputState }
+
+func (GoogleDomainsDnsDsStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleDomainsDnsDsState)(nil)).Elem()
+}
+
+func (o GoogleDomainsDnsDsStateOutput) ToGoogleDomainsDnsDsStateOutput() GoogleDomainsDnsDsStateOutput {
+	return o
+}
+
+func (o GoogleDomainsDnsDsStateOutput) ToGoogleDomainsDnsDsStateOutputWithContext(ctx context.Context) GoogleDomainsDnsDsStateOutput {
+	return o
+}
+
+func (o GoogleDomainsDnsDsStateOutput) ToGoogleDomainsDnsDsStatePtrOutput() GoogleDomainsDnsDsStatePtrOutput {
+	return o.ToGoogleDomainsDnsDsStatePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDomainsDnsDsStateOutput) ToGoogleDomainsDnsDsStatePtrOutputWithContext(ctx context.Context) GoogleDomainsDnsDsStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleDomainsDnsDsState) *GoogleDomainsDnsDsState {
+		return &v
+	}).(GoogleDomainsDnsDsStatePtrOutput)
+}
+
+func (o GoogleDomainsDnsDsStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleDomainsDnsDsStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleDomainsDnsDsState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleDomainsDnsDsStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDomainsDnsDsStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleDomainsDnsDsState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleDomainsDnsDsStatePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleDomainsDnsDsStatePtrOutput) ElementType() reflect.Type {
+	return googleDomainsDnsDsStatePtrType
+}
+
+func (o GoogleDomainsDnsDsStatePtrOutput) ToGoogleDomainsDnsDsStatePtrOutput() GoogleDomainsDnsDsStatePtrOutput {
+	return o
+}
+
+func (o GoogleDomainsDnsDsStatePtrOutput) ToGoogleDomainsDnsDsStatePtrOutputWithContext(ctx context.Context) GoogleDomainsDnsDsStatePtrOutput {
+	return o
+}
+
+func (o GoogleDomainsDnsDsStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleDomainsDnsDsStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleDomainsDnsDsState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleDomainsDnsDsStatePtrOutput) Elem() GoogleDomainsDnsDsStateOutput {
+	return o.ApplyT(func(v *GoogleDomainsDnsDsState) GoogleDomainsDnsDsState {
+		var ret GoogleDomainsDnsDsState
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GoogleDomainsDnsDsStateOutput)
+}
+
+// GoogleDomainsDnsDsStateInput is an input type that accepts GoogleDomainsDnsDsStateArgs and GoogleDomainsDnsDsStateOutput values.
+// You can construct a concrete instance of `GoogleDomainsDnsDsStateInput` via:
+//
+//          GoogleDomainsDnsDsStateArgs{...}
+type GoogleDomainsDnsDsStateInput interface {
+	pulumi.Input
+
+	ToGoogleDomainsDnsDsStateOutput() GoogleDomainsDnsDsStateOutput
+	ToGoogleDomainsDnsDsStateOutputWithContext(context.Context) GoogleDomainsDnsDsStateOutput
+}
+
+var googleDomainsDnsDsStatePtrType = reflect.TypeOf((**GoogleDomainsDnsDsState)(nil)).Elem()
+
+type GoogleDomainsDnsDsStatePtrInput interface {
+	pulumi.Input
+
+	ToGoogleDomainsDnsDsStatePtrOutput() GoogleDomainsDnsDsStatePtrOutput
+	ToGoogleDomainsDnsDsStatePtrOutputWithContext(context.Context) GoogleDomainsDnsDsStatePtrOutput
+}
+
+type googleDomainsDnsDsStatePtr string
+
+func GoogleDomainsDnsDsStatePtr(v string) GoogleDomainsDnsDsStatePtrInput {
+	return (*googleDomainsDnsDsStatePtr)(&v)
+}
+
+func (*googleDomainsDnsDsStatePtr) ElementType() reflect.Type {
+	return googleDomainsDnsDsStatePtrType
+}
+
+func (in *googleDomainsDnsDsStatePtr) ToGoogleDomainsDnsDsStatePtrOutput() GoogleDomainsDnsDsStatePtrOutput {
+	return pulumi.ToOutput(in).(GoogleDomainsDnsDsStatePtrOutput)
+}
+
+func (in *googleDomainsDnsDsStatePtr) ToGoogleDomainsDnsDsStatePtrOutputWithContext(ctx context.Context) GoogleDomainsDnsDsStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleDomainsDnsDsStatePtrOutput)
+}
+
 // Controls whether the domain can be transferred to another registrar.
-type ManagementSettingsTransferLockState pulumi.String
+type ManagementSettingsTransferLockState string
 
 const (
 	// The state is unspecified.
@@ -211,7 +896,23 @@ const (
 )
 
 func (ManagementSettingsTransferLockState) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*ManagementSettingsTransferLockState)(nil)).Elem()
+}
+
+func (e ManagementSettingsTransferLockState) ToManagementSettingsTransferLockStateOutput() ManagementSettingsTransferLockStateOutput {
+	return pulumi.ToOutput(e).(ManagementSettingsTransferLockStateOutput)
+}
+
+func (e ManagementSettingsTransferLockState) ToManagementSettingsTransferLockStateOutputWithContext(ctx context.Context) ManagementSettingsTransferLockStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ManagementSettingsTransferLockStateOutput)
+}
+
+func (e ManagementSettingsTransferLockState) ToManagementSettingsTransferLockStatePtrOutput() ManagementSettingsTransferLockStatePtrOutput {
+	return e.ToManagementSettingsTransferLockStatePtrOutputWithContext(context.Background())
+}
+
+func (e ManagementSettingsTransferLockState) ToManagementSettingsTransferLockStatePtrOutputWithContext(ctx context.Context) ManagementSettingsTransferLockStatePtrOutput {
+	return ManagementSettingsTransferLockState(e).ToManagementSettingsTransferLockStateOutputWithContext(ctx).ToManagementSettingsTransferLockStatePtrOutputWithContext(ctx)
 }
 
 func (e ManagementSettingsTransferLockState) ToStringOutput() pulumi.StringOutput {
@@ -230,7 +931,128 @@ func (e ManagementSettingsTransferLockState) ToStringPtrOutputWithContext(ctx co
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type RegistrationContactNoticesItem pulumi.String
+type ManagementSettingsTransferLockStateOutput struct{ *pulumi.OutputState }
+
+func (ManagementSettingsTransferLockStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagementSettingsTransferLockState)(nil)).Elem()
+}
+
+func (o ManagementSettingsTransferLockStateOutput) ToManagementSettingsTransferLockStateOutput() ManagementSettingsTransferLockStateOutput {
+	return o
+}
+
+func (o ManagementSettingsTransferLockStateOutput) ToManagementSettingsTransferLockStateOutputWithContext(ctx context.Context) ManagementSettingsTransferLockStateOutput {
+	return o
+}
+
+func (o ManagementSettingsTransferLockStateOutput) ToManagementSettingsTransferLockStatePtrOutput() ManagementSettingsTransferLockStatePtrOutput {
+	return o.ToManagementSettingsTransferLockStatePtrOutputWithContext(context.Background())
+}
+
+func (o ManagementSettingsTransferLockStateOutput) ToManagementSettingsTransferLockStatePtrOutputWithContext(ctx context.Context) ManagementSettingsTransferLockStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ManagementSettingsTransferLockState) *ManagementSettingsTransferLockState {
+		return &v
+	}).(ManagementSettingsTransferLockStatePtrOutput)
+}
+
+func (o ManagementSettingsTransferLockStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ManagementSettingsTransferLockStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagementSettingsTransferLockState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ManagementSettingsTransferLockStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ManagementSettingsTransferLockStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ManagementSettingsTransferLockState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ManagementSettingsTransferLockStatePtrOutput struct{ *pulumi.OutputState }
+
+func (ManagementSettingsTransferLockStatePtrOutput) ElementType() reflect.Type {
+	return managementSettingsTransferLockStatePtrType
+}
+
+func (o ManagementSettingsTransferLockStatePtrOutput) ToManagementSettingsTransferLockStatePtrOutput() ManagementSettingsTransferLockStatePtrOutput {
+	return o
+}
+
+func (o ManagementSettingsTransferLockStatePtrOutput) ToManagementSettingsTransferLockStatePtrOutputWithContext(ctx context.Context) ManagementSettingsTransferLockStatePtrOutput {
+	return o
+}
+
+func (o ManagementSettingsTransferLockStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ManagementSettingsTransferLockStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ManagementSettingsTransferLockState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ManagementSettingsTransferLockStatePtrOutput) Elem() ManagementSettingsTransferLockStateOutput {
+	return o.ApplyT(func(v *ManagementSettingsTransferLockState) ManagementSettingsTransferLockState {
+		var ret ManagementSettingsTransferLockState
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ManagementSettingsTransferLockStateOutput)
+}
+
+// ManagementSettingsTransferLockStateInput is an input type that accepts ManagementSettingsTransferLockStateArgs and ManagementSettingsTransferLockStateOutput values.
+// You can construct a concrete instance of `ManagementSettingsTransferLockStateInput` via:
+//
+//          ManagementSettingsTransferLockStateArgs{...}
+type ManagementSettingsTransferLockStateInput interface {
+	pulumi.Input
+
+	ToManagementSettingsTransferLockStateOutput() ManagementSettingsTransferLockStateOutput
+	ToManagementSettingsTransferLockStateOutputWithContext(context.Context) ManagementSettingsTransferLockStateOutput
+}
+
+var managementSettingsTransferLockStatePtrType = reflect.TypeOf((**ManagementSettingsTransferLockState)(nil)).Elem()
+
+type ManagementSettingsTransferLockStatePtrInput interface {
+	pulumi.Input
+
+	ToManagementSettingsTransferLockStatePtrOutput() ManagementSettingsTransferLockStatePtrOutput
+	ToManagementSettingsTransferLockStatePtrOutputWithContext(context.Context) ManagementSettingsTransferLockStatePtrOutput
+}
+
+type managementSettingsTransferLockStatePtr string
+
+func ManagementSettingsTransferLockStatePtr(v string) ManagementSettingsTransferLockStatePtrInput {
+	return (*managementSettingsTransferLockStatePtr)(&v)
+}
+
+func (*managementSettingsTransferLockStatePtr) ElementType() reflect.Type {
+	return managementSettingsTransferLockStatePtrType
+}
+
+func (in *managementSettingsTransferLockStatePtr) ToManagementSettingsTransferLockStatePtrOutput() ManagementSettingsTransferLockStatePtrOutput {
+	return pulumi.ToOutput(in).(ManagementSettingsTransferLockStatePtrOutput)
+}
+
+func (in *managementSettingsTransferLockStatePtr) ToManagementSettingsTransferLockStatePtrOutputWithContext(ctx context.Context) ManagementSettingsTransferLockStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ManagementSettingsTransferLockStatePtrOutput)
+}
+
+type RegistrationContactNoticesItem string
 
 const (
 	// The notice is undefined.
@@ -240,7 +1062,23 @@ const (
 )
 
 func (RegistrationContactNoticesItem) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*RegistrationContactNoticesItem)(nil)).Elem()
+}
+
+func (e RegistrationContactNoticesItem) ToRegistrationContactNoticesItemOutput() RegistrationContactNoticesItemOutput {
+	return pulumi.ToOutput(e).(RegistrationContactNoticesItemOutput)
+}
+
+func (e RegistrationContactNoticesItem) ToRegistrationContactNoticesItemOutputWithContext(ctx context.Context) RegistrationContactNoticesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegistrationContactNoticesItemOutput)
+}
+
+func (e RegistrationContactNoticesItem) ToRegistrationContactNoticesItemPtrOutput() RegistrationContactNoticesItemPtrOutput {
+	return e.ToRegistrationContactNoticesItemPtrOutputWithContext(context.Background())
+}
+
+func (e RegistrationContactNoticesItem) ToRegistrationContactNoticesItemPtrOutputWithContext(ctx context.Context) RegistrationContactNoticesItemPtrOutput {
+	return RegistrationContactNoticesItem(e).ToRegistrationContactNoticesItemOutputWithContext(ctx).ToRegistrationContactNoticesItemPtrOutputWithContext(ctx)
 }
 
 func (e RegistrationContactNoticesItem) ToStringOutput() pulumi.StringOutput {
@@ -257,6 +1095,127 @@ func (e RegistrationContactNoticesItem) ToStringPtrOutput() pulumi.StringPtrOutp
 
 func (e RegistrationContactNoticesItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegistrationContactNoticesItemOutput struct{ *pulumi.OutputState }
+
+func (RegistrationContactNoticesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistrationContactNoticesItem)(nil)).Elem()
+}
+
+func (o RegistrationContactNoticesItemOutput) ToRegistrationContactNoticesItemOutput() RegistrationContactNoticesItemOutput {
+	return o
+}
+
+func (o RegistrationContactNoticesItemOutput) ToRegistrationContactNoticesItemOutputWithContext(ctx context.Context) RegistrationContactNoticesItemOutput {
+	return o
+}
+
+func (o RegistrationContactNoticesItemOutput) ToRegistrationContactNoticesItemPtrOutput() RegistrationContactNoticesItemPtrOutput {
+	return o.ToRegistrationContactNoticesItemPtrOutputWithContext(context.Background())
+}
+
+func (o RegistrationContactNoticesItemOutput) ToRegistrationContactNoticesItemPtrOutputWithContext(ctx context.Context) RegistrationContactNoticesItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistrationContactNoticesItem) *RegistrationContactNoticesItem {
+		return &v
+	}).(RegistrationContactNoticesItemPtrOutput)
+}
+
+func (o RegistrationContactNoticesItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegistrationContactNoticesItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegistrationContactNoticesItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegistrationContactNoticesItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegistrationContactNoticesItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegistrationContactNoticesItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegistrationContactNoticesItemPtrOutput struct{ *pulumi.OutputState }
+
+func (RegistrationContactNoticesItemPtrOutput) ElementType() reflect.Type {
+	return registrationContactNoticesItemPtrType
+}
+
+func (o RegistrationContactNoticesItemPtrOutput) ToRegistrationContactNoticesItemPtrOutput() RegistrationContactNoticesItemPtrOutput {
+	return o
+}
+
+func (o RegistrationContactNoticesItemPtrOutput) ToRegistrationContactNoticesItemPtrOutputWithContext(ctx context.Context) RegistrationContactNoticesItemPtrOutput {
+	return o
+}
+
+func (o RegistrationContactNoticesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegistrationContactNoticesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegistrationContactNoticesItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RegistrationContactNoticesItemPtrOutput) Elem() RegistrationContactNoticesItemOutput {
+	return o.ApplyT(func(v *RegistrationContactNoticesItem) RegistrationContactNoticesItem {
+		var ret RegistrationContactNoticesItem
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(RegistrationContactNoticesItemOutput)
+}
+
+// RegistrationContactNoticesItemInput is an input type that accepts RegistrationContactNoticesItemArgs and RegistrationContactNoticesItemOutput values.
+// You can construct a concrete instance of `RegistrationContactNoticesItemInput` via:
+//
+//          RegistrationContactNoticesItemArgs{...}
+type RegistrationContactNoticesItemInput interface {
+	pulumi.Input
+
+	ToRegistrationContactNoticesItemOutput() RegistrationContactNoticesItemOutput
+	ToRegistrationContactNoticesItemOutputWithContext(context.Context) RegistrationContactNoticesItemOutput
+}
+
+var registrationContactNoticesItemPtrType = reflect.TypeOf((**RegistrationContactNoticesItem)(nil)).Elem()
+
+type RegistrationContactNoticesItemPtrInput interface {
+	pulumi.Input
+
+	ToRegistrationContactNoticesItemPtrOutput() RegistrationContactNoticesItemPtrOutput
+	ToRegistrationContactNoticesItemPtrOutputWithContext(context.Context) RegistrationContactNoticesItemPtrOutput
+}
+
+type registrationContactNoticesItemPtr string
+
+func RegistrationContactNoticesItemPtr(v string) RegistrationContactNoticesItemPtrInput {
+	return (*registrationContactNoticesItemPtr)(&v)
+}
+
+func (*registrationContactNoticesItemPtr) ElementType() reflect.Type {
+	return registrationContactNoticesItemPtrType
+}
+
+func (in *registrationContactNoticesItemPtr) ToRegistrationContactNoticesItemPtrOutput() RegistrationContactNoticesItemPtrOutput {
+	return pulumi.ToOutput(in).(RegistrationContactNoticesItemPtrOutput)
+}
+
+func (in *registrationContactNoticesItemPtr) ToRegistrationContactNoticesItemPtrOutputWithContext(ctx context.Context) RegistrationContactNoticesItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegistrationContactNoticesItemPtrOutput)
 }
 
 // RegistrationContactNoticesItemArrayInput is an input type that accepts RegistrationContactNoticesItemArray and RegistrationContactNoticesItemArrayOutput values.
@@ -298,13 +1257,13 @@ func (o RegistrationContactNoticesItemArrayOutput) ToRegistrationContactNoticesI
 	return o
 }
 
-func (o RegistrationContactNoticesItemArrayOutput) Index(i pulumi.IntInput) pulumi.StringOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) pulumi.StringOutput {
-		return vs[0].([]RegistrationContactNoticesItem)[vs[1].(int)].ToStringOutput()
-	}).(pulumi.StringOutput)
+func (o RegistrationContactNoticesItemArrayOutput) Index(i pulumi.IntInput) RegistrationContactNoticesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistrationContactNoticesItemOutput {
+		return vs[0].([]RegistrationContactNoticesItem)[vs[1].(int)].ToRegistrationContactNoticesItemOutput()
+	}).(RegistrationContactNoticesItemOutput)
 }
 
-type RegistrationDomainNoticesItem pulumi.String
+type RegistrationDomainNoticesItem string
 
 const (
 	// The notice is undefined.
@@ -314,7 +1273,23 @@ const (
 )
 
 func (RegistrationDomainNoticesItem) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*RegistrationDomainNoticesItem)(nil)).Elem()
+}
+
+func (e RegistrationDomainNoticesItem) ToRegistrationDomainNoticesItemOutput() RegistrationDomainNoticesItemOutput {
+	return pulumi.ToOutput(e).(RegistrationDomainNoticesItemOutput)
+}
+
+func (e RegistrationDomainNoticesItem) ToRegistrationDomainNoticesItemOutputWithContext(ctx context.Context) RegistrationDomainNoticesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegistrationDomainNoticesItemOutput)
+}
+
+func (e RegistrationDomainNoticesItem) ToRegistrationDomainNoticesItemPtrOutput() RegistrationDomainNoticesItemPtrOutput {
+	return e.ToRegistrationDomainNoticesItemPtrOutputWithContext(context.Background())
+}
+
+func (e RegistrationDomainNoticesItem) ToRegistrationDomainNoticesItemPtrOutputWithContext(ctx context.Context) RegistrationDomainNoticesItemPtrOutput {
+	return RegistrationDomainNoticesItem(e).ToRegistrationDomainNoticesItemOutputWithContext(ctx).ToRegistrationDomainNoticesItemPtrOutputWithContext(ctx)
 }
 
 func (e RegistrationDomainNoticesItem) ToStringOutput() pulumi.StringOutput {
@@ -331,6 +1306,127 @@ func (e RegistrationDomainNoticesItem) ToStringPtrOutput() pulumi.StringPtrOutpu
 
 func (e RegistrationDomainNoticesItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegistrationDomainNoticesItemOutput struct{ *pulumi.OutputState }
+
+func (RegistrationDomainNoticesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistrationDomainNoticesItem)(nil)).Elem()
+}
+
+func (o RegistrationDomainNoticesItemOutput) ToRegistrationDomainNoticesItemOutput() RegistrationDomainNoticesItemOutput {
+	return o
+}
+
+func (o RegistrationDomainNoticesItemOutput) ToRegistrationDomainNoticesItemOutputWithContext(ctx context.Context) RegistrationDomainNoticesItemOutput {
+	return o
+}
+
+func (o RegistrationDomainNoticesItemOutput) ToRegistrationDomainNoticesItemPtrOutput() RegistrationDomainNoticesItemPtrOutput {
+	return o.ToRegistrationDomainNoticesItemPtrOutputWithContext(context.Background())
+}
+
+func (o RegistrationDomainNoticesItemOutput) ToRegistrationDomainNoticesItemPtrOutputWithContext(ctx context.Context) RegistrationDomainNoticesItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistrationDomainNoticesItem) *RegistrationDomainNoticesItem {
+		return &v
+	}).(RegistrationDomainNoticesItemPtrOutput)
+}
+
+func (o RegistrationDomainNoticesItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegistrationDomainNoticesItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegistrationDomainNoticesItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegistrationDomainNoticesItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegistrationDomainNoticesItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegistrationDomainNoticesItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegistrationDomainNoticesItemPtrOutput struct{ *pulumi.OutputState }
+
+func (RegistrationDomainNoticesItemPtrOutput) ElementType() reflect.Type {
+	return registrationDomainNoticesItemPtrType
+}
+
+func (o RegistrationDomainNoticesItemPtrOutput) ToRegistrationDomainNoticesItemPtrOutput() RegistrationDomainNoticesItemPtrOutput {
+	return o
+}
+
+func (o RegistrationDomainNoticesItemPtrOutput) ToRegistrationDomainNoticesItemPtrOutputWithContext(ctx context.Context) RegistrationDomainNoticesItemPtrOutput {
+	return o
+}
+
+func (o RegistrationDomainNoticesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegistrationDomainNoticesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegistrationDomainNoticesItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RegistrationDomainNoticesItemPtrOutput) Elem() RegistrationDomainNoticesItemOutput {
+	return o.ApplyT(func(v *RegistrationDomainNoticesItem) RegistrationDomainNoticesItem {
+		var ret RegistrationDomainNoticesItem
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(RegistrationDomainNoticesItemOutput)
+}
+
+// RegistrationDomainNoticesItemInput is an input type that accepts RegistrationDomainNoticesItemArgs and RegistrationDomainNoticesItemOutput values.
+// You can construct a concrete instance of `RegistrationDomainNoticesItemInput` via:
+//
+//          RegistrationDomainNoticesItemArgs{...}
+type RegistrationDomainNoticesItemInput interface {
+	pulumi.Input
+
+	ToRegistrationDomainNoticesItemOutput() RegistrationDomainNoticesItemOutput
+	ToRegistrationDomainNoticesItemOutputWithContext(context.Context) RegistrationDomainNoticesItemOutput
+}
+
+var registrationDomainNoticesItemPtrType = reflect.TypeOf((**RegistrationDomainNoticesItem)(nil)).Elem()
+
+type RegistrationDomainNoticesItemPtrInput interface {
+	pulumi.Input
+
+	ToRegistrationDomainNoticesItemPtrOutput() RegistrationDomainNoticesItemPtrOutput
+	ToRegistrationDomainNoticesItemPtrOutputWithContext(context.Context) RegistrationDomainNoticesItemPtrOutput
+}
+
+type registrationDomainNoticesItemPtr string
+
+func RegistrationDomainNoticesItemPtr(v string) RegistrationDomainNoticesItemPtrInput {
+	return (*registrationDomainNoticesItemPtr)(&v)
+}
+
+func (*registrationDomainNoticesItemPtr) ElementType() reflect.Type {
+	return registrationDomainNoticesItemPtrType
+}
+
+func (in *registrationDomainNoticesItemPtr) ToRegistrationDomainNoticesItemPtrOutput() RegistrationDomainNoticesItemPtrOutput {
+	return pulumi.ToOutput(in).(RegistrationDomainNoticesItemPtrOutput)
+}
+
+func (in *registrationDomainNoticesItemPtr) ToRegistrationDomainNoticesItemPtrOutputWithContext(ctx context.Context) RegistrationDomainNoticesItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegistrationDomainNoticesItemPtrOutput)
 }
 
 // RegistrationDomainNoticesItemArrayInput is an input type that accepts RegistrationDomainNoticesItemArray and RegistrationDomainNoticesItemArrayOutput values.
@@ -372,8 +1468,29 @@ func (o RegistrationDomainNoticesItemArrayOutput) ToRegistrationDomainNoticesIte
 	return o
 }
 
-func (o RegistrationDomainNoticesItemArrayOutput) Index(i pulumi.IntInput) pulumi.StringOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) pulumi.StringOutput {
-		return vs[0].([]RegistrationDomainNoticesItem)[vs[1].(int)].ToStringOutput()
-	}).(pulumi.StringOutput)
+func (o RegistrationDomainNoticesItemArrayOutput) Index(i pulumi.IntInput) RegistrationDomainNoticesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RegistrationDomainNoticesItemOutput {
+		return vs[0].([]RegistrationDomainNoticesItem)[vs[1].(int)].ToRegistrationDomainNoticesItemOutput()
+	}).(RegistrationDomainNoticesItemOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(ContactSettingsPrivacyOutput{})
+	pulumi.RegisterOutputType(ContactSettingsPrivacyPtrOutput{})
+	pulumi.RegisterOutputType(DsRecordAlgorithmOutput{})
+	pulumi.RegisterOutputType(DsRecordAlgorithmPtrOutput{})
+	pulumi.RegisterOutputType(DsRecordDigestTypeOutput{})
+	pulumi.RegisterOutputType(DsRecordDigestTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleDomainsDnsDsStateOutput{})
+	pulumi.RegisterOutputType(GoogleDomainsDnsDsStatePtrOutput{})
+	pulumi.RegisterOutputType(ManagementSettingsTransferLockStateOutput{})
+	pulumi.RegisterOutputType(ManagementSettingsTransferLockStatePtrOutput{})
+	pulumi.RegisterOutputType(RegistrationContactNoticesItemOutput{})
+	pulumi.RegisterOutputType(RegistrationContactNoticesItemPtrOutput{})
+	pulumi.RegisterOutputType(RegistrationContactNoticesItemArrayOutput{})
+	pulumi.RegisterOutputType(RegistrationDomainNoticesItemOutput{})
+	pulumi.RegisterOutputType(RegistrationDomainNoticesItemPtrOutput{})
+	pulumi.RegisterOutputType(RegistrationDomainNoticesItemArrayOutput{})
 }

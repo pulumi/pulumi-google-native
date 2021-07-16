@@ -69,37 +69,9 @@ func GetSecuritySetting(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SecuritySetting resources.
 type securitySettingState struct {
-	// The human-readable name of the security settings, unique within the location.
-	DisplayName *string `pulumi:"displayName"`
-	// [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR `organizations//inspectTemplates/`
-	InspectTemplate *string `pulumi:"inspectTemplate"`
-	// Resource name of the settings. Format: `projects//locations//securitySettings/`.
-	Name *string `pulumi:"name"`
-	// List of types of data to remove when retention settings triggers purge.
-	PurgeDataTypes []string `pulumi:"purgeDataTypes"`
-	// Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
-	RedactionScope *string `pulumi:"redactionScope"`
-	// Strategy that defines how we do redaction.
-	RedactionStrategy *string `pulumi:"redactionStrategy"`
-	// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
-	RetentionWindowDays *int `pulumi:"retentionWindowDays"`
 }
 
 type SecuritySettingState struct {
-	// The human-readable name of the security settings, unique within the location.
-	DisplayName pulumi.StringPtrInput
-	// [DLP](https://cloud.google.com/dlp/docs) inspect template name. Use this template to define inspect base settings. If empty, we use the default DLP inspect config. The template name will have one of the following formats: `projects//inspectTemplates/` OR `projects//locations//inspectTemplates/` OR `organizations//inspectTemplates/`
-	InspectTemplate pulumi.StringPtrInput
-	// Resource name of the settings. Format: `projects//locations//securitySettings/`.
-	Name pulumi.StringPtrInput
-	// List of types of data to remove when retention settings triggers purge.
-	PurgeDataTypes pulumi.StringArrayInput
-	// Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
-	RedactionScope pulumi.StringPtrInput
-	// Strategy that defines how we do redaction.
-	RedactionStrategy pulumi.StringPtrInput
-	// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
-	RetentionWindowDays pulumi.IntPtrInput
 }
 
 func (SecuritySettingState) ElementType() reflect.Type {
@@ -116,11 +88,11 @@ type securitySettingArgs struct {
 	Name    *string `pulumi:"name"`
 	Project string  `pulumi:"project"`
 	// List of types of data to remove when retention settings triggers purge.
-	PurgeDataTypes []string `pulumi:"purgeDataTypes"`
+	PurgeDataTypes []SecuritySettingPurgeDataTypesItem `pulumi:"purgeDataTypes"`
 	// Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
-	RedactionScope *string `pulumi:"redactionScope"`
+	RedactionScope *SecuritySettingRedactionScope `pulumi:"redactionScope"`
 	// Strategy that defines how we do redaction.
-	RedactionStrategy *string `pulumi:"redactionStrategy"`
+	RedactionStrategy *SecuritySettingRedactionStrategy `pulumi:"redactionStrategy"`
 	// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
 	RetentionWindowDays *int `pulumi:"retentionWindowDays"`
 }
@@ -138,9 +110,9 @@ type SecuritySettingArgs struct {
 	// List of types of data to remove when retention settings triggers purge.
 	PurgeDataTypes SecuritySettingPurgeDataTypesItemArrayInput
 	// Defines the data for which Dialogflow applies redaction. Dialogflow does not redact data that it does not have access to – for example, Cloud logging.
-	RedactionScope *SecuritySettingRedactionScope
+	RedactionScope SecuritySettingRedactionScopePtrInput
 	// Strategy that defines how we do redaction.
-	RedactionStrategy *SecuritySettingRedactionStrategy
+	RedactionStrategy SecuritySettingRedactionStrategyPtrInput
 	// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging, which is owned by the user - not Dialogflow. User must Set a value lower than Dialogflow's default 30d TTL. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use Dialogflow's default TTL. Note: Interaction logging is a limited access feature. Talk to your Google representative to check availability for you.
 	RetentionWindowDays pulumi.IntPtrInput
 }

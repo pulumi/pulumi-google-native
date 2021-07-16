@@ -11,7 +11,7 @@ import (
 )
 
 // The online availability of the Product. Default to Availability.IN_STOCK. Google Merchant Center Property [availability](https://support.google.com/merchants/answer/6324448). Schema.org Property [Offer.availability](https://schema.org/availability).
-type ProductAvailability pulumi.String
+type ProductAvailability string
 
 const (
 	// Default product availability. Default to Availability.IN_STOCK if unset.
@@ -27,7 +27,23 @@ const (
 )
 
 func (ProductAvailability) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*ProductAvailability)(nil)).Elem()
+}
+
+func (e ProductAvailability) ToProductAvailabilityOutput() ProductAvailabilityOutput {
+	return pulumi.ToOutput(e).(ProductAvailabilityOutput)
+}
+
+func (e ProductAvailability) ToProductAvailabilityOutputWithContext(ctx context.Context) ProductAvailabilityOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ProductAvailabilityOutput)
+}
+
+func (e ProductAvailability) ToProductAvailabilityPtrOutput() ProductAvailabilityPtrOutput {
+	return e.ToProductAvailabilityPtrOutputWithContext(context.Background())
+}
+
+func (e ProductAvailability) ToProductAvailabilityPtrOutputWithContext(ctx context.Context) ProductAvailabilityPtrOutput {
+	return ProductAvailability(e).ToProductAvailabilityOutputWithContext(ctx).ToProductAvailabilityPtrOutputWithContext(ctx)
 }
 
 func (e ProductAvailability) ToStringOutput() pulumi.StringOutput {
@@ -46,8 +62,129 @@ func (e ProductAvailability) ToStringPtrOutputWithContext(ctx context.Context) p
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type ProductAvailabilityOutput struct{ *pulumi.OutputState }
+
+func (ProductAvailabilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProductAvailability)(nil)).Elem()
+}
+
+func (o ProductAvailabilityOutput) ToProductAvailabilityOutput() ProductAvailabilityOutput {
+	return o
+}
+
+func (o ProductAvailabilityOutput) ToProductAvailabilityOutputWithContext(ctx context.Context) ProductAvailabilityOutput {
+	return o
+}
+
+func (o ProductAvailabilityOutput) ToProductAvailabilityPtrOutput() ProductAvailabilityPtrOutput {
+	return o.ToProductAvailabilityPtrOutputWithContext(context.Background())
+}
+
+func (o ProductAvailabilityOutput) ToProductAvailabilityPtrOutputWithContext(ctx context.Context) ProductAvailabilityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProductAvailability) *ProductAvailability {
+		return &v
+	}).(ProductAvailabilityPtrOutput)
+}
+
+func (o ProductAvailabilityOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ProductAvailabilityOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProductAvailability) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ProductAvailabilityOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ProductAvailabilityOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProductAvailability) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ProductAvailabilityPtrOutput struct{ *pulumi.OutputState }
+
+func (ProductAvailabilityPtrOutput) ElementType() reflect.Type {
+	return productAvailabilityPtrType
+}
+
+func (o ProductAvailabilityPtrOutput) ToProductAvailabilityPtrOutput() ProductAvailabilityPtrOutput {
+	return o
+}
+
+func (o ProductAvailabilityPtrOutput) ToProductAvailabilityPtrOutputWithContext(ctx context.Context) ProductAvailabilityPtrOutput {
+	return o
+}
+
+func (o ProductAvailabilityPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ProductAvailabilityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ProductAvailability) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProductAvailabilityPtrOutput) Elem() ProductAvailabilityOutput {
+	return o.ApplyT(func(v *ProductAvailability) ProductAvailability {
+		var ret ProductAvailability
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ProductAvailabilityOutput)
+}
+
+// ProductAvailabilityInput is an input type that accepts ProductAvailabilityArgs and ProductAvailabilityOutput values.
+// You can construct a concrete instance of `ProductAvailabilityInput` via:
+//
+//          ProductAvailabilityArgs{...}
+type ProductAvailabilityInput interface {
+	pulumi.Input
+
+	ToProductAvailabilityOutput() ProductAvailabilityOutput
+	ToProductAvailabilityOutputWithContext(context.Context) ProductAvailabilityOutput
+}
+
+var productAvailabilityPtrType = reflect.TypeOf((**ProductAvailability)(nil)).Elem()
+
+type ProductAvailabilityPtrInput interface {
+	pulumi.Input
+
+	ToProductAvailabilityPtrOutput() ProductAvailabilityPtrOutput
+	ToProductAvailabilityPtrOutputWithContext(context.Context) ProductAvailabilityPtrOutput
+}
+
+type productAvailabilityPtr string
+
+func ProductAvailabilityPtr(v string) ProductAvailabilityPtrInput {
+	return (*productAvailabilityPtr)(&v)
+}
+
+func (*productAvailabilityPtr) ElementType() reflect.Type {
+	return productAvailabilityPtrType
+}
+
+func (in *productAvailabilityPtr) ToProductAvailabilityPtrOutput() ProductAvailabilityPtrOutput {
+	return pulumi.ToOutput(in).(ProductAvailabilityPtrOutput)
+}
+
+func (in *productAvailabilityPtr) ToProductAvailabilityPtrOutputWithContext(ctx context.Context) ProductAvailabilityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ProductAvailabilityPtrOutput)
+}
+
 // Immutable. The type of the product. Default to Catalog.product_level_config.ingestion_product_type if unset.
-type ProductType pulumi.String
+type ProductType string
 
 const (
 	// Default value. Default to Catalog.product_level_config.ingestion_product_type if unset.
@@ -61,7 +198,23 @@ const (
 )
 
 func (ProductType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*ProductType)(nil)).Elem()
+}
+
+func (e ProductType) ToProductTypeOutput() ProductTypeOutput {
+	return pulumi.ToOutput(e).(ProductTypeOutput)
+}
+
+func (e ProductType) ToProductTypeOutputWithContext(ctx context.Context) ProductTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ProductTypeOutput)
+}
+
+func (e ProductType) ToProductTypePtrOutput() ProductTypePtrOutput {
+	return e.ToProductTypePtrOutputWithContext(context.Background())
+}
+
+func (e ProductType) ToProductTypePtrOutputWithContext(ctx context.Context) ProductTypePtrOutput {
+	return ProductType(e).ToProductTypeOutputWithContext(ctx).ToProductTypePtrOutputWithContext(ctx)
 }
 
 func (e ProductType) ToStringOutput() pulumi.StringOutput {
@@ -78,4 +231,132 @@ func (e ProductType) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e ProductType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ProductTypeOutput struct{ *pulumi.OutputState }
+
+func (ProductTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProductType)(nil)).Elem()
+}
+
+func (o ProductTypeOutput) ToProductTypeOutput() ProductTypeOutput {
+	return o
+}
+
+func (o ProductTypeOutput) ToProductTypeOutputWithContext(ctx context.Context) ProductTypeOutput {
+	return o
+}
+
+func (o ProductTypeOutput) ToProductTypePtrOutput() ProductTypePtrOutput {
+	return o.ToProductTypePtrOutputWithContext(context.Background())
+}
+
+func (o ProductTypeOutput) ToProductTypePtrOutputWithContext(ctx context.Context) ProductTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProductType) *ProductType {
+		return &v
+	}).(ProductTypePtrOutput)
+}
+
+func (o ProductTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ProductTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProductType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ProductTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ProductTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProductType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ProductTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ProductTypePtrOutput) ElementType() reflect.Type {
+	return productTypePtrType
+}
+
+func (o ProductTypePtrOutput) ToProductTypePtrOutput() ProductTypePtrOutput {
+	return o
+}
+
+func (o ProductTypePtrOutput) ToProductTypePtrOutputWithContext(ctx context.Context) ProductTypePtrOutput {
+	return o
+}
+
+func (o ProductTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ProductTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ProductType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProductTypePtrOutput) Elem() ProductTypeOutput {
+	return o.ApplyT(func(v *ProductType) ProductType {
+		var ret ProductType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ProductTypeOutput)
+}
+
+// ProductTypeInput is an input type that accepts ProductTypeArgs and ProductTypeOutput values.
+// You can construct a concrete instance of `ProductTypeInput` via:
+//
+//          ProductTypeArgs{...}
+type ProductTypeInput interface {
+	pulumi.Input
+
+	ToProductTypeOutput() ProductTypeOutput
+	ToProductTypeOutputWithContext(context.Context) ProductTypeOutput
+}
+
+var productTypePtrType = reflect.TypeOf((**ProductType)(nil)).Elem()
+
+type ProductTypePtrInput interface {
+	pulumi.Input
+
+	ToProductTypePtrOutput() ProductTypePtrOutput
+	ToProductTypePtrOutputWithContext(context.Context) ProductTypePtrOutput
+}
+
+type productTypePtr string
+
+func ProductTypePtr(v string) ProductTypePtrInput {
+	return (*productTypePtr)(&v)
+}
+
+func (*productTypePtr) ElementType() reflect.Type {
+	return productTypePtrType
+}
+
+func (in *productTypePtr) ToProductTypePtrOutput() ProductTypePtrOutput {
+	return pulumi.ToOutput(in).(ProductTypePtrOutput)
+}
+
+func (in *productTypePtr) ToProductTypePtrOutputWithContext(ctx context.Context) ProductTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ProductTypePtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(ProductAvailabilityOutput{})
+	pulumi.RegisterOutputType(ProductAvailabilityPtrOutput{})
+	pulumi.RegisterOutputType(ProductTypeOutput{})
+	pulumi.RegisterOutputType(ProductTypePtrOutput{})
 }

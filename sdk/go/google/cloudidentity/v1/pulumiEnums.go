@@ -11,7 +11,7 @@ import (
 )
 
 // Resource type for the Dynamic Group Query
-type DynamicGroupQueryResourceType pulumi.String
+type DynamicGroupQueryResourceType string
 
 const (
 	// Default value (not valid)
@@ -21,7 +21,23 @@ const (
 )
 
 func (DynamicGroupQueryResourceType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*DynamicGroupQueryResourceType)(nil)).Elem()
+}
+
+func (e DynamicGroupQueryResourceType) ToDynamicGroupQueryResourceTypeOutput() DynamicGroupQueryResourceTypeOutput {
+	return pulumi.ToOutput(e).(DynamicGroupQueryResourceTypeOutput)
+}
+
+func (e DynamicGroupQueryResourceType) ToDynamicGroupQueryResourceTypeOutputWithContext(ctx context.Context) DynamicGroupQueryResourceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DynamicGroupQueryResourceTypeOutput)
+}
+
+func (e DynamicGroupQueryResourceType) ToDynamicGroupQueryResourceTypePtrOutput() DynamicGroupQueryResourceTypePtrOutput {
+	return e.ToDynamicGroupQueryResourceTypePtrOutputWithContext(context.Background())
+}
+
+func (e DynamicGroupQueryResourceType) ToDynamicGroupQueryResourceTypePtrOutputWithContext(ctx context.Context) DynamicGroupQueryResourceTypePtrOutput {
+	return DynamicGroupQueryResourceType(e).ToDynamicGroupQueryResourceTypeOutputWithContext(ctx).ToDynamicGroupQueryResourceTypePtrOutputWithContext(ctx)
 }
 
 func (e DynamicGroupQueryResourceType) ToStringOutput() pulumi.StringOutput {
@@ -38,4 +54,130 @@ func (e DynamicGroupQueryResourceType) ToStringPtrOutput() pulumi.StringPtrOutpu
 
 func (e DynamicGroupQueryResourceType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type DynamicGroupQueryResourceTypeOutput struct{ *pulumi.OutputState }
+
+func (DynamicGroupQueryResourceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DynamicGroupQueryResourceType)(nil)).Elem()
+}
+
+func (o DynamicGroupQueryResourceTypeOutput) ToDynamicGroupQueryResourceTypeOutput() DynamicGroupQueryResourceTypeOutput {
+	return o
+}
+
+func (o DynamicGroupQueryResourceTypeOutput) ToDynamicGroupQueryResourceTypeOutputWithContext(ctx context.Context) DynamicGroupQueryResourceTypeOutput {
+	return o
+}
+
+func (o DynamicGroupQueryResourceTypeOutput) ToDynamicGroupQueryResourceTypePtrOutput() DynamicGroupQueryResourceTypePtrOutput {
+	return o.ToDynamicGroupQueryResourceTypePtrOutputWithContext(context.Background())
+}
+
+func (o DynamicGroupQueryResourceTypeOutput) ToDynamicGroupQueryResourceTypePtrOutputWithContext(ctx context.Context) DynamicGroupQueryResourceTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DynamicGroupQueryResourceType) *DynamicGroupQueryResourceType {
+		return &v
+	}).(DynamicGroupQueryResourceTypePtrOutput)
+}
+
+func (o DynamicGroupQueryResourceTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DynamicGroupQueryResourceTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DynamicGroupQueryResourceType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DynamicGroupQueryResourceTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DynamicGroupQueryResourceTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DynamicGroupQueryResourceType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DynamicGroupQueryResourceTypePtrOutput struct{ *pulumi.OutputState }
+
+func (DynamicGroupQueryResourceTypePtrOutput) ElementType() reflect.Type {
+	return dynamicGroupQueryResourceTypePtrType
+}
+
+func (o DynamicGroupQueryResourceTypePtrOutput) ToDynamicGroupQueryResourceTypePtrOutput() DynamicGroupQueryResourceTypePtrOutput {
+	return o
+}
+
+func (o DynamicGroupQueryResourceTypePtrOutput) ToDynamicGroupQueryResourceTypePtrOutputWithContext(ctx context.Context) DynamicGroupQueryResourceTypePtrOutput {
+	return o
+}
+
+func (o DynamicGroupQueryResourceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DynamicGroupQueryResourceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DynamicGroupQueryResourceType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DynamicGroupQueryResourceTypePtrOutput) Elem() DynamicGroupQueryResourceTypeOutput {
+	return o.ApplyT(func(v *DynamicGroupQueryResourceType) DynamicGroupQueryResourceType {
+		var ret DynamicGroupQueryResourceType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(DynamicGroupQueryResourceTypeOutput)
+}
+
+// DynamicGroupQueryResourceTypeInput is an input type that accepts DynamicGroupQueryResourceTypeArgs and DynamicGroupQueryResourceTypeOutput values.
+// You can construct a concrete instance of `DynamicGroupQueryResourceTypeInput` via:
+//
+//          DynamicGroupQueryResourceTypeArgs{...}
+type DynamicGroupQueryResourceTypeInput interface {
+	pulumi.Input
+
+	ToDynamicGroupQueryResourceTypeOutput() DynamicGroupQueryResourceTypeOutput
+	ToDynamicGroupQueryResourceTypeOutputWithContext(context.Context) DynamicGroupQueryResourceTypeOutput
+}
+
+var dynamicGroupQueryResourceTypePtrType = reflect.TypeOf((**DynamicGroupQueryResourceType)(nil)).Elem()
+
+type DynamicGroupQueryResourceTypePtrInput interface {
+	pulumi.Input
+
+	ToDynamicGroupQueryResourceTypePtrOutput() DynamicGroupQueryResourceTypePtrOutput
+	ToDynamicGroupQueryResourceTypePtrOutputWithContext(context.Context) DynamicGroupQueryResourceTypePtrOutput
+}
+
+type dynamicGroupQueryResourceTypePtr string
+
+func DynamicGroupQueryResourceTypePtr(v string) DynamicGroupQueryResourceTypePtrInput {
+	return (*dynamicGroupQueryResourceTypePtr)(&v)
+}
+
+func (*dynamicGroupQueryResourceTypePtr) ElementType() reflect.Type {
+	return dynamicGroupQueryResourceTypePtrType
+}
+
+func (in *dynamicGroupQueryResourceTypePtr) ToDynamicGroupQueryResourceTypePtrOutput() DynamicGroupQueryResourceTypePtrOutput {
+	return pulumi.ToOutput(in).(DynamicGroupQueryResourceTypePtrOutput)
+}
+
+func (in *dynamicGroupQueryResourceTypePtr) ToDynamicGroupQueryResourceTypePtrOutputWithContext(ctx context.Context) DynamicGroupQueryResourceTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DynamicGroupQueryResourceTypePtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(DynamicGroupQueryResourceTypeOutput{})
+	pulumi.RegisterOutputType(DynamicGroupQueryResourceTypePtrOutput{})
 }

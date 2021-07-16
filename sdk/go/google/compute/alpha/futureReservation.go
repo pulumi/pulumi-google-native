@@ -75,55 +75,9 @@ func GetFutureReservation(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering FutureReservation resources.
 type futureReservationState struct {
-	// The creation timestamp for this future reservation in RFC3339 text format.
-	CreationTimestamp *string `pulumi:"creationTimestamp"`
-	// An optional description of this resource. Provide this property when you create the future reservation.
-	Description *string `pulumi:"description"`
-	Kind        *string `pulumi:"kind"`
-	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name *string `pulumi:"name"`
-	// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
-	NamePrefix *string `pulumi:"namePrefix"`
-	// Server-defined fully-qualified URL for this resource.
-	SelfLink *string `pulumi:"selfLink"`
-	// Server-defined URL for this resource with the resource id.
-	SelfLinkWithId *string `pulumi:"selfLinkWithId"`
-	// List of Projects/Folders to share with.
-	ShareSettings *ShareSettingsResponse `pulumi:"shareSettings"`
-	// Future Reservation configuration to indicate instance properties and total count.
-	SpecificSkuProperties *FutureReservationSpecificSKUPropertiesResponse `pulumi:"specificSkuProperties"`
-	// [Output only] Status of the Future Reservation
-	Status *FutureReservationStatusResponse `pulumi:"status"`
-	// Time window for this Future Reservation.
-	TimeWindow *FutureReservationTimeWindowResponse `pulumi:"timeWindow"`
-	// URL of the Zone where this future reservation resides.
-	Zone *string `pulumi:"zone"`
 }
 
 type FutureReservationState struct {
-	// The creation timestamp for this future reservation in RFC3339 text format.
-	CreationTimestamp pulumi.StringPtrInput
-	// An optional description of this resource. Provide this property when you create the future reservation.
-	Description pulumi.StringPtrInput
-	Kind        pulumi.StringPtrInput
-	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
-	Name pulumi.StringPtrInput
-	// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
-	NamePrefix pulumi.StringPtrInput
-	// Server-defined fully-qualified URL for this resource.
-	SelfLink pulumi.StringPtrInput
-	// Server-defined URL for this resource with the resource id.
-	SelfLinkWithId pulumi.StringPtrInput
-	// List of Projects/Folders to share with.
-	ShareSettings ShareSettingsResponsePtrInput
-	// Future Reservation configuration to indicate instance properties and total count.
-	SpecificSkuProperties FutureReservationSpecificSKUPropertiesResponsePtrInput
-	// [Output only] Status of the Future Reservation
-	Status FutureReservationStatusResponsePtrInput
-	// Time window for this Future Reservation.
-	TimeWindow FutureReservationTimeWindowResponsePtrInput
-	// URL of the Zone where this future reservation resides.
-	Zone pulumi.StringPtrInput
 }
 
 func (FutureReservationState) ElementType() reflect.Type {

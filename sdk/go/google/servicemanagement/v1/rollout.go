@@ -62,33 +62,9 @@ func GetRollout(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Rollout resources.
 type rolloutState struct {
-	// Creation time of the rollout. Readonly.
-	CreateTime *string `pulumi:"createTime"`
-	// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
-	DeleteServiceStrategy *DeleteServiceStrategyResponse `pulumi:"deleteServiceStrategy"`
-	// Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
-	RolloutId *string `pulumi:"rolloutId"`
-	// The name of the service associated with this Rollout.
-	ServiceName *string `pulumi:"serviceName"`
-	// The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
-	Status *string `pulumi:"status"`
-	// Google Service Control selects service configurations based on traffic percentage.
-	TrafficPercentStrategy *TrafficPercentStrategyResponse `pulumi:"trafficPercentStrategy"`
 }
 
 type RolloutState struct {
-	// Creation time of the rollout. Readonly.
-	CreateTime pulumi.StringPtrInput
-	// The strategy associated with a rollout to delete a `ManagedService`. Readonly.
-	DeleteServiceStrategy DeleteServiceStrategyResponsePtrInput
-	// Optional. Unique identifier of this Rollout. Must be no longer than 63 characters and only lower case letters, digits, '.', '_' and '-' are allowed. If not specified by client, the server will generate one. The generated id will have the form of , where "date" is the create date in ISO 8601 format. "revision number" is a monotonically increasing positive number that is reset every day for each service. An example of the generated rollout_id is '2016-02-16r1'
-	RolloutId pulumi.StringPtrInput
-	// The name of the service associated with this Rollout.
-	ServiceName pulumi.StringPtrInput
-	// The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
-	Status pulumi.StringPtrInput
-	// Google Service Control selects service configurations based on traffic percentage.
-	TrafficPercentStrategy TrafficPercentStrategyResponsePtrInput
 }
 
 func (RolloutState) ElementType() reflect.Type {
@@ -105,7 +81,7 @@ type rolloutArgs struct {
 	// The name of the service associated with this Rollout.
 	ServiceName string `pulumi:"serviceName"`
 	// The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
-	Status *string `pulumi:"status"`
+	Status *RolloutStatus `pulumi:"status"`
 	// Google Service Control selects service configurations based on traffic percentage.
 	TrafficPercentStrategy *TrafficPercentStrategy `pulumi:"trafficPercentStrategy"`
 }
@@ -121,7 +97,7 @@ type RolloutArgs struct {
 	// The name of the service associated with this Rollout.
 	ServiceName pulumi.StringInput
 	// The status of this rollout. Readonly. In case of a failed rollout, the system will automatically rollback to the current Rollout version. Readonly.
-	Status *RolloutStatus
+	Status RolloutStatusPtrInput
 	// Google Service Control selects service configurations based on traffic percentage.
 	TrafficPercentStrategy TrafficPercentStrategyPtrInput
 }

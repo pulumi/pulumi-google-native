@@ -10,10 +10,10 @@ from ... import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['BucketAccessControlArgs', 'BucketAccessControl']
+__all__ = ['BucketAccessControlInitArgs', 'BucketAccessControl']
 
 @pulumi.input_type
-class BucketAccessControlArgs:
+class BucketAccessControlInitArgs:
     def __init__(__self__, *,
                  bucket: pulumi.Input[str],
                  domain: Optional[pulumi.Input[str]] = None,
@@ -293,19 +293,19 @@ class BucketAccessControl(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: BucketAccessControlArgs,
+                 args: BucketAccessControlInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Creates a new ACL entry on the specified bucket.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
-        :param BucketAccessControlArgs args: The arguments to use to populate this resource's properties.
+        :param BucketAccessControlInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(BucketAccessControlArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(BucketAccessControlInitArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -337,7 +337,7 @@ class BucketAccessControl(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = BucketAccessControlArgs.__new__(BucketAccessControlArgs)
+            __props__ = BucketAccessControlInitArgs.__new__(BucketAccessControlInitArgs)
 
             if bucket is None and not opts.urn:
                 raise TypeError("Missing required property 'bucket'")
@@ -374,7 +374,7 @@ class BucketAccessControl(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = BucketAccessControlArgs.__new__(BucketAccessControlArgs)
+        __props__ = BucketAccessControlInitArgs.__new__(BucketAccessControlInitArgs)
 
         __props__.__dict__["bucket"] = None
         __props__.__dict__["domain"] = None

@@ -59,21 +59,9 @@ func GetInstanceAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceAttachment resources.
 type instanceAttachmentState struct {
-	// Time the attachment was created in milliseconds since epoch.
-	CreatedAt *string `pulumi:"createdAt"`
-	// ID of the attached environment.
-	Environment *string `pulumi:"environment"`
-	// ID of the attachment.
-	Name *string `pulumi:"name"`
 }
 
 type InstanceAttachmentState struct {
-	// Time the attachment was created in milliseconds since epoch.
-	CreatedAt pulumi.StringPtrInput
-	// ID of the attached environment.
-	Environment pulumi.StringPtrInput
-	// ID of the attachment.
-	Name pulumi.StringPtrInput
 }
 
 func (InstanceAttachmentState) ElementType() reflect.Type {

@@ -11,7 +11,7 @@ import (
 )
 
 // The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
-type EntryType pulumi.String
+type EntryType string
 
 const (
 	// Default unknown type.
@@ -37,7 +37,23 @@ const (
 )
 
 func (EntryType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*EntryType)(nil)).Elem()
+}
+
+func (e EntryType) ToEntryTypeOutput() EntryTypeOutput {
+	return pulumi.ToOutput(e).(EntryTypeOutput)
+}
+
+func (e EntryType) ToEntryTypeOutputWithContext(ctx context.Context) EntryTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(EntryTypeOutput)
+}
+
+func (e EntryType) ToEntryTypePtrOutput() EntryTypePtrOutput {
+	return e.ToEntryTypePtrOutputWithContext(context.Background())
+}
+
+func (e EntryType) ToEntryTypePtrOutputWithContext(ctx context.Context) EntryTypePtrOutput {
+	return EntryType(e).ToEntryTypeOutputWithContext(ctx).ToEntryTypePtrOutputWithContext(ctx)
 }
 
 func (e EntryType) ToStringOutput() pulumi.StringOutput {
@@ -56,8 +72,129 @@ func (e EntryType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.Stri
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type EntryTypeOutput struct{ *pulumi.OutputState }
+
+func (EntryTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EntryType)(nil)).Elem()
+}
+
+func (o EntryTypeOutput) ToEntryTypeOutput() EntryTypeOutput {
+	return o
+}
+
+func (o EntryTypeOutput) ToEntryTypeOutputWithContext(ctx context.Context) EntryTypeOutput {
+	return o
+}
+
+func (o EntryTypeOutput) ToEntryTypePtrOutput() EntryTypePtrOutput {
+	return o.ToEntryTypePtrOutputWithContext(context.Background())
+}
+
+func (o EntryTypeOutput) ToEntryTypePtrOutputWithContext(ctx context.Context) EntryTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EntryType) *EntryType {
+		return &v
+	}).(EntryTypePtrOutput)
+}
+
+func (o EntryTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o EntryTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EntryType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o EntryTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EntryTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e EntryType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type EntryTypePtrOutput struct{ *pulumi.OutputState }
+
+func (EntryTypePtrOutput) ElementType() reflect.Type {
+	return entryTypePtrType
+}
+
+func (o EntryTypePtrOutput) ToEntryTypePtrOutput() EntryTypePtrOutput {
+	return o
+}
+
+func (o EntryTypePtrOutput) ToEntryTypePtrOutputWithContext(ctx context.Context) EntryTypePtrOutput {
+	return o
+}
+
+func (o EntryTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o EntryTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *EntryType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o EntryTypePtrOutput) Elem() EntryTypeOutput {
+	return o.ApplyT(func(v *EntryType) EntryType {
+		var ret EntryType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(EntryTypeOutput)
+}
+
+// EntryTypeInput is an input type that accepts EntryTypeArgs and EntryTypeOutput values.
+// You can construct a concrete instance of `EntryTypeInput` via:
+//
+//          EntryTypeArgs{...}
+type EntryTypeInput interface {
+	pulumi.Input
+
+	ToEntryTypeOutput() EntryTypeOutput
+	ToEntryTypeOutputWithContext(context.Context) EntryTypeOutput
+}
+
+var entryTypePtrType = reflect.TypeOf((**EntryType)(nil)).Elem()
+
+type EntryTypePtrInput interface {
+	pulumi.Input
+
+	ToEntryTypePtrOutput() EntryTypePtrOutput
+	ToEntryTypePtrOutputWithContext(context.Context) EntryTypePtrOutput
+}
+
+type entryTypePtr string
+
+func EntryTypePtr(v string) EntryTypePtrInput {
+	return (*entryTypePtr)(&v)
+}
+
+func (*entryTypePtr) ElementType() reflect.Type {
+	return entryTypePtrType
+}
+
+func (in *entryTypePtr) ToEntryTypePtrOutput() EntryTypePtrOutput {
+	return pulumi.ToOutput(in).(EntryTypePtrOutput)
+}
+
+func (in *entryTypePtr) ToEntryTypePtrOutputWithContext(ctx context.Context) EntryTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(EntryTypePtrOutput)
+}
+
 // The type of the BigQuery connection.
-type GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType pulumi.String
+type GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType string
 
 const (
 	// Unspecified type.
@@ -67,7 +204,23 @@ const (
 )
 
 func (GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType)(nil)).Elem()
+}
+
+func (e GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput)
+}
+
+func (e GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput)
+}
+
+func (e GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput {
+	return e.ToGoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput {
+	return GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType(e).ToGoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutputWithContext(ctx).ToGoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutputWithContext(ctx)
 }
 
 func (e GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType) ToStringOutput() pulumi.StringOutput {
@@ -86,8 +239,129 @@ func (e GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType) ToStringPt
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput {
+	return o.ToGoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType) *GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType {
+		return &v
+	}).(GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput) ElementType() reflect.Type {
+	return googleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrType
+}
+
+func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput) Elem() GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType) GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType {
+		var ret GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput)
+}
+
+// GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeInput is an input type that accepts GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeArgs and GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeInput` via:
+//
+//          GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeArgs{...}
+type GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput
+	ToGoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutputWithContext(context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput
+}
+
+var googleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrType = reflect.TypeOf((**GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType)(nil)).Elem()
+
+type GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput
+	ToGoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput
+}
+
+type googleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtr string
+
+func GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtr(v string) GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrInput {
+	return (*googleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtr)(&v)
+}
+
+func (*googleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtr) ElementType() reflect.Type {
+	return googleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrType
+}
+
+func (in *googleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtr) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput)
+}
+
+func (in *googleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtr) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput)
+}
+
 // Type of the Cloud SQL database.
-type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType pulumi.String
+type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType string
 
 const (
 	// Unspecified database type.
@@ -99,7 +373,23 @@ const (
 )
 
 func (GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType)(nil)).Elem()
+}
+
+func (e GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput)
+}
+
+func (e GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput)
+}
+
+func (e GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput {
+	return e.ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput {
+	return GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType(e).ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutputWithContext(ctx).ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutputWithContext(ctx)
 }
 
 func (e GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType) ToStringOutput() pulumi.StringOutput {
@@ -118,8 +408,129 @@ func (e GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType) ToStringPtrO
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput {
+	return o.ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType) *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType {
+		return &v
+	}).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput) ElementType() reflect.Type {
+	return googleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrType
+}
+
+func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput) Elem() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType {
+		var ret GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput)
+}
+
+// GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeInput is an input type that accepts GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeArgs and GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeInput` via:
+//
+//          GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeArgs{...}
+type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput
+	ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutputWithContext(context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput
+}
+
+var googleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrType = reflect.TypeOf((**GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType)(nil)).Elem()
+
+type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput
+	ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput
+}
+
+type googleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtr string
+
+func GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtr(v string) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrInput {
+	return (*googleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtr)(&v)
+}
+
+func (*googleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtr) ElementType() reflect.Type {
+	return googleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrType
+}
+
+func (in *googleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtr) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput)
+}
+
+func (in *googleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtr) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput)
+}
+
 // Type of this table.
-type GoogleCloudDatacatalogV1DatabaseTableSpecType pulumi.String
+type GoogleCloudDatacatalogV1DatabaseTableSpecType string
 
 const (
 	// Default unknown table type.
@@ -131,7 +542,23 @@ const (
 )
 
 func (GoogleCloudDatacatalogV1DatabaseTableSpecType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecType)(nil)).Elem()
+}
+
+func (e GoogleCloudDatacatalogV1DatabaseTableSpecType) ToGoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput() GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput)
+}
+
+func (e GoogleCloudDatacatalogV1DatabaseTableSpecType) ToGoogleCloudDatacatalogV1DatabaseTableSpecTypeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput)
+}
+
+func (e GoogleCloudDatacatalogV1DatabaseTableSpecType) ToGoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput() GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput {
+	return e.ToGoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDatacatalogV1DatabaseTableSpecType) ToGoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput {
+	return GoogleCloudDatacatalogV1DatabaseTableSpecType(e).ToGoogleCloudDatacatalogV1DatabaseTableSpecTypeOutputWithContext(ctx).ToGoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutputWithContext(ctx)
 }
 
 func (e GoogleCloudDatacatalogV1DatabaseTableSpecType) ToStringOutput() pulumi.StringOutput {
@@ -150,8 +577,129 @@ func (e GoogleCloudDatacatalogV1DatabaseTableSpecType) ToStringPtrOutputWithCont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1DatabaseTableSpecType)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput() GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecTypeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput() GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput {
+	return o.ToGoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1DatabaseTableSpecType) *GoogleCloudDatacatalogV1DatabaseTableSpecType {
+		return &v
+	}).(GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDatacatalogV1DatabaseTableSpecType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDatacatalogV1DatabaseTableSpecType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput) ElementType() reflect.Type {
+	return googleCloudDatacatalogV1DatabaseTableSpecTypePtrType
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput() GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput) ToGoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDatacatalogV1DatabaseTableSpecType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput) Elem() GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DatabaseTableSpecType) GoogleCloudDatacatalogV1DatabaseTableSpecType {
+		var ret GoogleCloudDatacatalogV1DatabaseTableSpecType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput)
+}
+
+// GoogleCloudDatacatalogV1DatabaseTableSpecTypeInput is an input type that accepts GoogleCloudDatacatalogV1DatabaseTableSpecTypeArgs and GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1DatabaseTableSpecTypeInput` via:
+//
+//          GoogleCloudDatacatalogV1DatabaseTableSpecTypeArgs{...}
+type GoogleCloudDatacatalogV1DatabaseTableSpecTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput() GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput
+	ToGoogleCloudDatacatalogV1DatabaseTableSpecTypeOutputWithContext(context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput
+}
+
+var googleCloudDatacatalogV1DatabaseTableSpecTypePtrType = reflect.TypeOf((**GoogleCloudDatacatalogV1DatabaseTableSpecType)(nil)).Elem()
+
+type GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput() GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput
+	ToGoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput
+}
+
+type googleCloudDatacatalogV1DatabaseTableSpecTypePtr string
+
+func GoogleCloudDatacatalogV1DatabaseTableSpecTypePtr(v string) GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrInput {
+	return (*googleCloudDatacatalogV1DatabaseTableSpecTypePtr)(&v)
+}
+
+func (*googleCloudDatacatalogV1DatabaseTableSpecTypePtr) ElementType() reflect.Type {
+	return googleCloudDatacatalogV1DatabaseTableSpecTypePtrType
+}
+
+func (in *googleCloudDatacatalogV1DatabaseTableSpecTypePtr) ToGoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput() GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput)
+}
+
+func (in *googleCloudDatacatalogV1DatabaseTableSpecTypePtr) ToGoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput)
+}
+
 // Specifies whether the argument is input or output.
-type GoogleCloudDatacatalogV1RoutineSpecArgumentMode pulumi.String
+type GoogleCloudDatacatalogV1RoutineSpecArgumentMode string
 
 const (
 	// Unspecified mode.
@@ -165,7 +713,23 @@ const (
 )
 
 func (GoogleCloudDatacatalogV1RoutineSpecArgumentMode) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecArgumentMode)(nil)).Elem()
+}
+
+func (e GoogleCloudDatacatalogV1RoutineSpecArgumentMode) ToGoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput() GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput)
+}
+
+func (e GoogleCloudDatacatalogV1RoutineSpecArgumentMode) ToGoogleCloudDatacatalogV1RoutineSpecArgumentModeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput)
+}
+
+func (e GoogleCloudDatacatalogV1RoutineSpecArgumentMode) ToGoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput() GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput {
+	return e.ToGoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDatacatalogV1RoutineSpecArgumentMode) ToGoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput {
+	return GoogleCloudDatacatalogV1RoutineSpecArgumentMode(e).ToGoogleCloudDatacatalogV1RoutineSpecArgumentModeOutputWithContext(ctx).ToGoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutputWithContext(ctx)
 }
 
 func (e GoogleCloudDatacatalogV1RoutineSpecArgumentMode) ToStringOutput() pulumi.StringOutput {
@@ -184,8 +748,129 @@ func (e GoogleCloudDatacatalogV1RoutineSpecArgumentMode) ToStringPtrOutputWithCo
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecArgumentMode)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput) ToGoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput() GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput) ToGoogleCloudDatacatalogV1RoutineSpecArgumentModeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput) ToGoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput() GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput {
+	return o.ToGoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput) ToGoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1RoutineSpecArgumentMode) *GoogleCloudDatacatalogV1RoutineSpecArgumentMode {
+		return &v
+	}).(GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDatacatalogV1RoutineSpecArgumentMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDatacatalogV1RoutineSpecArgumentMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput) ElementType() reflect.Type {
+	return googleCloudDatacatalogV1RoutineSpecArgumentModePtrType
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput) ToGoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput() GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput) ToGoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDatacatalogV1RoutineSpecArgumentMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput) Elem() GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1RoutineSpecArgumentMode) GoogleCloudDatacatalogV1RoutineSpecArgumentMode {
+		var ret GoogleCloudDatacatalogV1RoutineSpecArgumentMode
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput)
+}
+
+// GoogleCloudDatacatalogV1RoutineSpecArgumentModeInput is an input type that accepts GoogleCloudDatacatalogV1RoutineSpecArgumentModeArgs and GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1RoutineSpecArgumentModeInput` via:
+//
+//          GoogleCloudDatacatalogV1RoutineSpecArgumentModeArgs{...}
+type GoogleCloudDatacatalogV1RoutineSpecArgumentModeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput() GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput
+	ToGoogleCloudDatacatalogV1RoutineSpecArgumentModeOutputWithContext(context.Context) GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput
+}
+
+var googleCloudDatacatalogV1RoutineSpecArgumentModePtrType = reflect.TypeOf((**GoogleCloudDatacatalogV1RoutineSpecArgumentMode)(nil)).Elem()
+
+type GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput() GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput
+	ToGoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput
+}
+
+type googleCloudDatacatalogV1RoutineSpecArgumentModePtr string
+
+func GoogleCloudDatacatalogV1RoutineSpecArgumentModePtr(v string) GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrInput {
+	return (*googleCloudDatacatalogV1RoutineSpecArgumentModePtr)(&v)
+}
+
+func (*googleCloudDatacatalogV1RoutineSpecArgumentModePtr) ElementType() reflect.Type {
+	return googleCloudDatacatalogV1RoutineSpecArgumentModePtrType
+}
+
+func (in *googleCloudDatacatalogV1RoutineSpecArgumentModePtr) ToGoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput() GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput)
+}
+
+func (in *googleCloudDatacatalogV1RoutineSpecArgumentModePtr) ToGoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput)
+}
+
 // The type of the routine.
-type GoogleCloudDatacatalogV1RoutineSpecRoutineType pulumi.String
+type GoogleCloudDatacatalogV1RoutineSpecRoutineType string
 
 const (
 	// Unspecified type.
@@ -197,7 +882,23 @@ const (
 )
 
 func (GoogleCloudDatacatalogV1RoutineSpecRoutineType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecRoutineType)(nil)).Elem()
+}
+
+func (e GoogleCloudDatacatalogV1RoutineSpecRoutineType) ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput() GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput)
+}
+
+func (e GoogleCloudDatacatalogV1RoutineSpecRoutineType) ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput)
+}
+
+func (e GoogleCloudDatacatalogV1RoutineSpecRoutineType) ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput() GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput {
+	return e.ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudDatacatalogV1RoutineSpecRoutineType) ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput {
+	return GoogleCloudDatacatalogV1RoutineSpecRoutineType(e).ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutputWithContext(ctx).ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutputWithContext(ctx)
 }
 
 func (e GoogleCloudDatacatalogV1RoutineSpecRoutineType) ToStringOutput() pulumi.StringOutput {
@@ -216,7 +917,128 @@ func (e GoogleCloudDatacatalogV1RoutineSpecRoutineType) ToStringPtrOutputWithCon
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type TaxonomyActivatedPolicyTypesItem pulumi.String
+type GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudDatacatalogV1RoutineSpecRoutineType)(nil)).Elem()
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput) ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput() GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput) ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput) ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput() GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput {
+	return o.ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput) ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1RoutineSpecRoutineType) *GoogleCloudDatacatalogV1RoutineSpecRoutineType {
+		return &v
+	}).(GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDatacatalogV1RoutineSpecRoutineType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudDatacatalogV1RoutineSpecRoutineType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput) ElementType() reflect.Type {
+	return googleCloudDatacatalogV1RoutineSpecRoutineTypePtrType
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput) ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput() GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput) ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput {
+	return o
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudDatacatalogV1RoutineSpecRoutineType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput) Elem() GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput {
+	return o.ApplyT(func(v *GoogleCloudDatacatalogV1RoutineSpecRoutineType) GoogleCloudDatacatalogV1RoutineSpecRoutineType {
+		var ret GoogleCloudDatacatalogV1RoutineSpecRoutineType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput)
+}
+
+// GoogleCloudDatacatalogV1RoutineSpecRoutineTypeInput is an input type that accepts GoogleCloudDatacatalogV1RoutineSpecRoutineTypeArgs and GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput values.
+// You can construct a concrete instance of `GoogleCloudDatacatalogV1RoutineSpecRoutineTypeInput` via:
+//
+//          GoogleCloudDatacatalogV1RoutineSpecRoutineTypeArgs{...}
+type GoogleCloudDatacatalogV1RoutineSpecRoutineTypeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput() GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput
+	ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutputWithContext(context.Context) GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput
+}
+
+var googleCloudDatacatalogV1RoutineSpecRoutineTypePtrType = reflect.TypeOf((**GoogleCloudDatacatalogV1RoutineSpecRoutineType)(nil)).Elem()
+
+type GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput() GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput
+	ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput
+}
+
+type googleCloudDatacatalogV1RoutineSpecRoutineTypePtr string
+
+func GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtr(v string) GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrInput {
+	return (*googleCloudDatacatalogV1RoutineSpecRoutineTypePtr)(&v)
+}
+
+func (*googleCloudDatacatalogV1RoutineSpecRoutineTypePtr) ElementType() reflect.Type {
+	return googleCloudDatacatalogV1RoutineSpecRoutineTypePtrType
+}
+
+func (in *googleCloudDatacatalogV1RoutineSpecRoutineTypePtr) ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput() GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput)
+}
+
+func (in *googleCloudDatacatalogV1RoutineSpecRoutineTypePtr) ToGoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput)
+}
+
+type TaxonomyActivatedPolicyTypesItem string
 
 const (
 	// Unspecified policy type.
@@ -226,7 +1048,23 @@ const (
 )
 
 func (TaxonomyActivatedPolicyTypesItem) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*TaxonomyActivatedPolicyTypesItem)(nil)).Elem()
+}
+
+func (e TaxonomyActivatedPolicyTypesItem) ToTaxonomyActivatedPolicyTypesItemOutput() TaxonomyActivatedPolicyTypesItemOutput {
+	return pulumi.ToOutput(e).(TaxonomyActivatedPolicyTypesItemOutput)
+}
+
+func (e TaxonomyActivatedPolicyTypesItem) ToTaxonomyActivatedPolicyTypesItemOutputWithContext(ctx context.Context) TaxonomyActivatedPolicyTypesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TaxonomyActivatedPolicyTypesItemOutput)
+}
+
+func (e TaxonomyActivatedPolicyTypesItem) ToTaxonomyActivatedPolicyTypesItemPtrOutput() TaxonomyActivatedPolicyTypesItemPtrOutput {
+	return e.ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (e TaxonomyActivatedPolicyTypesItem) ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(ctx context.Context) TaxonomyActivatedPolicyTypesItemPtrOutput {
+	return TaxonomyActivatedPolicyTypesItem(e).ToTaxonomyActivatedPolicyTypesItemOutputWithContext(ctx).ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(ctx)
 }
 
 func (e TaxonomyActivatedPolicyTypesItem) ToStringOutput() pulumi.StringOutput {
@@ -243,6 +1081,127 @@ func (e TaxonomyActivatedPolicyTypesItem) ToStringPtrOutput() pulumi.StringPtrOu
 
 func (e TaxonomyActivatedPolicyTypesItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TaxonomyActivatedPolicyTypesItemOutput struct{ *pulumi.OutputState }
+
+func (TaxonomyActivatedPolicyTypesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TaxonomyActivatedPolicyTypesItem)(nil)).Elem()
+}
+
+func (o TaxonomyActivatedPolicyTypesItemOutput) ToTaxonomyActivatedPolicyTypesItemOutput() TaxonomyActivatedPolicyTypesItemOutput {
+	return o
+}
+
+func (o TaxonomyActivatedPolicyTypesItemOutput) ToTaxonomyActivatedPolicyTypesItemOutputWithContext(ctx context.Context) TaxonomyActivatedPolicyTypesItemOutput {
+	return o
+}
+
+func (o TaxonomyActivatedPolicyTypesItemOutput) ToTaxonomyActivatedPolicyTypesItemPtrOutput() TaxonomyActivatedPolicyTypesItemPtrOutput {
+	return o.ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (o TaxonomyActivatedPolicyTypesItemOutput) ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(ctx context.Context) TaxonomyActivatedPolicyTypesItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TaxonomyActivatedPolicyTypesItem) *TaxonomyActivatedPolicyTypesItem {
+		return &v
+	}).(TaxonomyActivatedPolicyTypesItemPtrOutput)
+}
+
+func (o TaxonomyActivatedPolicyTypesItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TaxonomyActivatedPolicyTypesItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TaxonomyActivatedPolicyTypesItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TaxonomyActivatedPolicyTypesItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TaxonomyActivatedPolicyTypesItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TaxonomyActivatedPolicyTypesItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TaxonomyActivatedPolicyTypesItemPtrOutput struct{ *pulumi.OutputState }
+
+func (TaxonomyActivatedPolicyTypesItemPtrOutput) ElementType() reflect.Type {
+	return taxonomyActivatedPolicyTypesItemPtrType
+}
+
+func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToTaxonomyActivatedPolicyTypesItemPtrOutput() TaxonomyActivatedPolicyTypesItemPtrOutput {
+	return o
+}
+
+func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(ctx context.Context) TaxonomyActivatedPolicyTypesItemPtrOutput {
+	return o
+}
+
+func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TaxonomyActivatedPolicyTypesItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TaxonomyActivatedPolicyTypesItemPtrOutput) Elem() TaxonomyActivatedPolicyTypesItemOutput {
+	return o.ApplyT(func(v *TaxonomyActivatedPolicyTypesItem) TaxonomyActivatedPolicyTypesItem {
+		var ret TaxonomyActivatedPolicyTypesItem
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(TaxonomyActivatedPolicyTypesItemOutput)
+}
+
+// TaxonomyActivatedPolicyTypesItemInput is an input type that accepts TaxonomyActivatedPolicyTypesItemArgs and TaxonomyActivatedPolicyTypesItemOutput values.
+// You can construct a concrete instance of `TaxonomyActivatedPolicyTypesItemInput` via:
+//
+//          TaxonomyActivatedPolicyTypesItemArgs{...}
+type TaxonomyActivatedPolicyTypesItemInput interface {
+	pulumi.Input
+
+	ToTaxonomyActivatedPolicyTypesItemOutput() TaxonomyActivatedPolicyTypesItemOutput
+	ToTaxonomyActivatedPolicyTypesItemOutputWithContext(context.Context) TaxonomyActivatedPolicyTypesItemOutput
+}
+
+var taxonomyActivatedPolicyTypesItemPtrType = reflect.TypeOf((**TaxonomyActivatedPolicyTypesItem)(nil)).Elem()
+
+type TaxonomyActivatedPolicyTypesItemPtrInput interface {
+	pulumi.Input
+
+	ToTaxonomyActivatedPolicyTypesItemPtrOutput() TaxonomyActivatedPolicyTypesItemPtrOutput
+	ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(context.Context) TaxonomyActivatedPolicyTypesItemPtrOutput
+}
+
+type taxonomyActivatedPolicyTypesItemPtr string
+
+func TaxonomyActivatedPolicyTypesItemPtr(v string) TaxonomyActivatedPolicyTypesItemPtrInput {
+	return (*taxonomyActivatedPolicyTypesItemPtr)(&v)
+}
+
+func (*taxonomyActivatedPolicyTypesItemPtr) ElementType() reflect.Type {
+	return taxonomyActivatedPolicyTypesItemPtrType
+}
+
+func (in *taxonomyActivatedPolicyTypesItemPtr) ToTaxonomyActivatedPolicyTypesItemPtrOutput() TaxonomyActivatedPolicyTypesItemPtrOutput {
+	return pulumi.ToOutput(in).(TaxonomyActivatedPolicyTypesItemPtrOutput)
+}
+
+func (in *taxonomyActivatedPolicyTypesItemPtr) ToTaxonomyActivatedPolicyTypesItemPtrOutputWithContext(ctx context.Context) TaxonomyActivatedPolicyTypesItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TaxonomyActivatedPolicyTypesItemPtrOutput)
 }
 
 // TaxonomyActivatedPolicyTypesItemArrayInput is an input type that accepts TaxonomyActivatedPolicyTypesItemArray and TaxonomyActivatedPolicyTypesItemArrayOutput values.
@@ -284,8 +1243,26 @@ func (o TaxonomyActivatedPolicyTypesItemArrayOutput) ToTaxonomyActivatedPolicyTy
 	return o
 }
 
-func (o TaxonomyActivatedPolicyTypesItemArrayOutput) Index(i pulumi.IntInput) pulumi.StringOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) pulumi.StringOutput {
-		return vs[0].([]TaxonomyActivatedPolicyTypesItem)[vs[1].(int)].ToStringOutput()
-	}).(pulumi.StringOutput)
+func (o TaxonomyActivatedPolicyTypesItemArrayOutput) Index(i pulumi.IntInput) TaxonomyActivatedPolicyTypesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TaxonomyActivatedPolicyTypesItemOutput {
+		return vs[0].([]TaxonomyActivatedPolicyTypesItem)[vs[1].(int)].ToTaxonomyActivatedPolicyTypesItemOutput()
+	}).(TaxonomyActivatedPolicyTypesItemOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(EntryTypeOutput{})
+	pulumi.RegisterOutputType(EntryTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput{})
+	pulumi.RegisterOutputType(TaxonomyActivatedPolicyTypesItemOutput{})
+	pulumi.RegisterOutputType(TaxonomyActivatedPolicyTypesItemPtrOutput{})
+	pulumi.RegisterOutputType(TaxonomyActivatedPolicyTypesItemArrayOutput{})
 }

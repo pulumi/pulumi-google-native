@@ -11,7 +11,7 @@ import (
 )
 
 // The log type that this config enables.
-type AuditLogConfigLogType pulumi.String
+type AuditLogConfigLogType string
 
 const (
 	// Default case. Should never be this.
@@ -25,7 +25,23 @@ const (
 )
 
 func (AuditLogConfigLogType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*AuditLogConfigLogType)(nil)).Elem()
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput {
+	return pulumi.ToOutput(e).(AuditLogConfigLogTypeOutput)
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypeOutputWithContext(ctx context.Context) AuditLogConfigLogTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AuditLogConfigLogTypeOutput)
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return e.ToAuditLogConfigLogTypePtrOutputWithContext(context.Background())
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return AuditLogConfigLogType(e).ToAuditLogConfigLogTypeOutputWithContext(ctx).ToAuditLogConfigLogTypePtrOutputWithContext(ctx)
 }
 
 func (e AuditLogConfigLogType) ToStringOutput() pulumi.StringOutput {
@@ -44,8 +60,129 @@ func (e AuditLogConfigLogType) ToStringPtrOutputWithContext(ctx context.Context)
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type AuditLogConfigLogTypeOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigLogTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigLogType)(nil)).Elem()
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypeOutputWithContext(ctx context.Context) AuditLogConfigLogTypeOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return o.ToAuditLogConfigLogTypePtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuditLogConfigLogType) *AuditLogConfigLogType {
+		return &v
+	}).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuditLogConfigLogType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuditLogConfigLogType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
+	return auditLogConfigLogTypePtrType
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AuditLogConfigLogType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		var ret AuditLogConfigLogType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
+}
+
+// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
+// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+//
+//          AuditLogConfigLogTypeArgs{...}
+type AuditLogConfigLogTypeInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput
+	ToAuditLogConfigLogTypeOutputWithContext(context.Context) AuditLogConfigLogTypeOutput
+}
+
+var auditLogConfigLogTypePtrType = reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
+
+type AuditLogConfigLogTypePtrInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput
+	ToAuditLogConfigLogTypePtrOutputWithContext(context.Context) AuditLogConfigLogTypePtrOutput
+}
+
+type auditLogConfigLogTypePtr string
+
+func AuditLogConfigLogTypePtr(v string) AuditLogConfigLogTypePtrInput {
+	return (*auditLogConfigLogTypePtr)(&v)
+}
+
+func (*auditLogConfigLogTypePtr) ElementType() reflect.Type {
+	return auditLogConfigLogTypePtrType
+}
+
+func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return pulumi.ToOutput(in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
 // Immutable. The immutable purpose of this CryptoKey.
-type CryptoKeyPurpose pulumi.String
+type CryptoKeyPurpose string
 
 const (
 	// Not specified.
@@ -59,7 +196,23 @@ const (
 )
 
 func (CryptoKeyPurpose) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*CryptoKeyPurpose)(nil)).Elem()
+}
+
+func (e CryptoKeyPurpose) ToCryptoKeyPurposeOutput() CryptoKeyPurposeOutput {
+	return pulumi.ToOutput(e).(CryptoKeyPurposeOutput)
+}
+
+func (e CryptoKeyPurpose) ToCryptoKeyPurposeOutputWithContext(ctx context.Context) CryptoKeyPurposeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CryptoKeyPurposeOutput)
+}
+
+func (e CryptoKeyPurpose) ToCryptoKeyPurposePtrOutput() CryptoKeyPurposePtrOutput {
+	return e.ToCryptoKeyPurposePtrOutputWithContext(context.Background())
+}
+
+func (e CryptoKeyPurpose) ToCryptoKeyPurposePtrOutputWithContext(ctx context.Context) CryptoKeyPurposePtrOutput {
+	return CryptoKeyPurpose(e).ToCryptoKeyPurposeOutputWithContext(ctx).ToCryptoKeyPurposePtrOutputWithContext(ctx)
 }
 
 func (e CryptoKeyPurpose) ToStringOutput() pulumi.StringOutput {
@@ -78,8 +231,129 @@ func (e CryptoKeyPurpose) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type CryptoKeyPurposeOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyPurposeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyPurpose)(nil)).Elem()
+}
+
+func (o CryptoKeyPurposeOutput) ToCryptoKeyPurposeOutput() CryptoKeyPurposeOutput {
+	return o
+}
+
+func (o CryptoKeyPurposeOutput) ToCryptoKeyPurposeOutputWithContext(ctx context.Context) CryptoKeyPurposeOutput {
+	return o
+}
+
+func (o CryptoKeyPurposeOutput) ToCryptoKeyPurposePtrOutput() CryptoKeyPurposePtrOutput {
+	return o.ToCryptoKeyPurposePtrOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyPurposeOutput) ToCryptoKeyPurposePtrOutputWithContext(ctx context.Context) CryptoKeyPurposePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyPurpose) *CryptoKeyPurpose {
+		return &v
+	}).(CryptoKeyPurposePtrOutput)
+}
+
+func (o CryptoKeyPurposeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyPurposeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CryptoKeyPurpose) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CryptoKeyPurposeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyPurposeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CryptoKeyPurpose) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CryptoKeyPurposePtrOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyPurposePtrOutput) ElementType() reflect.Type {
+	return cryptoKeyPurposePtrType
+}
+
+func (o CryptoKeyPurposePtrOutput) ToCryptoKeyPurposePtrOutput() CryptoKeyPurposePtrOutput {
+	return o
+}
+
+func (o CryptoKeyPurposePtrOutput) ToCryptoKeyPurposePtrOutputWithContext(ctx context.Context) CryptoKeyPurposePtrOutput {
+	return o
+}
+
+func (o CryptoKeyPurposePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyPurposePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CryptoKeyPurpose) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CryptoKeyPurposePtrOutput) Elem() CryptoKeyPurposeOutput {
+	return o.ApplyT(func(v *CryptoKeyPurpose) CryptoKeyPurpose {
+		var ret CryptoKeyPurpose
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(CryptoKeyPurposeOutput)
+}
+
+// CryptoKeyPurposeInput is an input type that accepts CryptoKeyPurposeArgs and CryptoKeyPurposeOutput values.
+// You can construct a concrete instance of `CryptoKeyPurposeInput` via:
+//
+//          CryptoKeyPurposeArgs{...}
+type CryptoKeyPurposeInput interface {
+	pulumi.Input
+
+	ToCryptoKeyPurposeOutput() CryptoKeyPurposeOutput
+	ToCryptoKeyPurposeOutputWithContext(context.Context) CryptoKeyPurposeOutput
+}
+
+var cryptoKeyPurposePtrType = reflect.TypeOf((**CryptoKeyPurpose)(nil)).Elem()
+
+type CryptoKeyPurposePtrInput interface {
+	pulumi.Input
+
+	ToCryptoKeyPurposePtrOutput() CryptoKeyPurposePtrOutput
+	ToCryptoKeyPurposePtrOutputWithContext(context.Context) CryptoKeyPurposePtrOutput
+}
+
+type cryptoKeyPurposePtr string
+
+func CryptoKeyPurposePtr(v string) CryptoKeyPurposePtrInput {
+	return (*cryptoKeyPurposePtr)(&v)
+}
+
+func (*cryptoKeyPurposePtr) ElementType() reflect.Type {
+	return cryptoKeyPurposePtrType
+}
+
+func (in *cryptoKeyPurposePtr) ToCryptoKeyPurposePtrOutput() CryptoKeyPurposePtrOutput {
+	return pulumi.ToOutput(in).(CryptoKeyPurposePtrOutput)
+}
+
+func (in *cryptoKeyPurposePtr) ToCryptoKeyPurposePtrOutputWithContext(ctx context.Context) CryptoKeyPurposePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CryptoKeyPurposePtrOutput)
+}
+
 // The current state of the CryptoKeyVersion.
-type CryptoKeyVersionStateEnum pulumi.String
+type CryptoKeyVersionStateEnum string
 
 const (
 	// Not specified.
@@ -101,7 +375,23 @@ const (
 )
 
 func (CryptoKeyVersionStateEnum) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*CryptoKeyVersionStateEnum)(nil)).Elem()
+}
+
+func (e CryptoKeyVersionStateEnum) ToCryptoKeyVersionStateEnumOutput() CryptoKeyVersionStateEnumOutput {
+	return pulumi.ToOutput(e).(CryptoKeyVersionStateEnumOutput)
+}
+
+func (e CryptoKeyVersionStateEnum) ToCryptoKeyVersionStateEnumOutputWithContext(ctx context.Context) CryptoKeyVersionStateEnumOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CryptoKeyVersionStateEnumOutput)
+}
+
+func (e CryptoKeyVersionStateEnum) ToCryptoKeyVersionStateEnumPtrOutput() CryptoKeyVersionStateEnumPtrOutput {
+	return e.ToCryptoKeyVersionStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (e CryptoKeyVersionStateEnum) ToCryptoKeyVersionStateEnumPtrOutputWithContext(ctx context.Context) CryptoKeyVersionStateEnumPtrOutput {
+	return CryptoKeyVersionStateEnum(e).ToCryptoKeyVersionStateEnumOutputWithContext(ctx).ToCryptoKeyVersionStateEnumPtrOutputWithContext(ctx)
 }
 
 func (e CryptoKeyVersionStateEnum) ToStringOutput() pulumi.StringOutput {
@@ -120,8 +410,129 @@ func (e CryptoKeyVersionStateEnum) ToStringPtrOutputWithContext(ctx context.Cont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type CryptoKeyVersionStateEnumOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyVersionStateEnumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyVersionStateEnum)(nil)).Elem()
+}
+
+func (o CryptoKeyVersionStateEnumOutput) ToCryptoKeyVersionStateEnumOutput() CryptoKeyVersionStateEnumOutput {
+	return o
+}
+
+func (o CryptoKeyVersionStateEnumOutput) ToCryptoKeyVersionStateEnumOutputWithContext(ctx context.Context) CryptoKeyVersionStateEnumOutput {
+	return o
+}
+
+func (o CryptoKeyVersionStateEnumOutput) ToCryptoKeyVersionStateEnumPtrOutput() CryptoKeyVersionStateEnumPtrOutput {
+	return o.ToCryptoKeyVersionStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyVersionStateEnumOutput) ToCryptoKeyVersionStateEnumPtrOutputWithContext(ctx context.Context) CryptoKeyVersionStateEnumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyVersionStateEnum) *CryptoKeyVersionStateEnum {
+		return &v
+	}).(CryptoKeyVersionStateEnumPtrOutput)
+}
+
+func (o CryptoKeyVersionStateEnumOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyVersionStateEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CryptoKeyVersionStateEnum) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CryptoKeyVersionStateEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyVersionStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CryptoKeyVersionStateEnum) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CryptoKeyVersionStateEnumPtrOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyVersionStateEnumPtrOutput) ElementType() reflect.Type {
+	return cryptoKeyVersionStateEnumPtrType
+}
+
+func (o CryptoKeyVersionStateEnumPtrOutput) ToCryptoKeyVersionStateEnumPtrOutput() CryptoKeyVersionStateEnumPtrOutput {
+	return o
+}
+
+func (o CryptoKeyVersionStateEnumPtrOutput) ToCryptoKeyVersionStateEnumPtrOutputWithContext(ctx context.Context) CryptoKeyVersionStateEnumPtrOutput {
+	return o
+}
+
+func (o CryptoKeyVersionStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyVersionStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CryptoKeyVersionStateEnum) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CryptoKeyVersionStateEnumPtrOutput) Elem() CryptoKeyVersionStateEnumOutput {
+	return o.ApplyT(func(v *CryptoKeyVersionStateEnum) CryptoKeyVersionStateEnum {
+		var ret CryptoKeyVersionStateEnum
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(CryptoKeyVersionStateEnumOutput)
+}
+
+// CryptoKeyVersionStateEnumInput is an input type that accepts CryptoKeyVersionStateEnumArgs and CryptoKeyVersionStateEnumOutput values.
+// You can construct a concrete instance of `CryptoKeyVersionStateEnumInput` via:
+//
+//          CryptoKeyVersionStateEnumArgs{...}
+type CryptoKeyVersionStateEnumInput interface {
+	pulumi.Input
+
+	ToCryptoKeyVersionStateEnumOutput() CryptoKeyVersionStateEnumOutput
+	ToCryptoKeyVersionStateEnumOutputWithContext(context.Context) CryptoKeyVersionStateEnumOutput
+}
+
+var cryptoKeyVersionStateEnumPtrType = reflect.TypeOf((**CryptoKeyVersionStateEnum)(nil)).Elem()
+
+type CryptoKeyVersionStateEnumPtrInput interface {
+	pulumi.Input
+
+	ToCryptoKeyVersionStateEnumPtrOutput() CryptoKeyVersionStateEnumPtrOutput
+	ToCryptoKeyVersionStateEnumPtrOutputWithContext(context.Context) CryptoKeyVersionStateEnumPtrOutput
+}
+
+type cryptoKeyVersionStateEnumPtr string
+
+func CryptoKeyVersionStateEnumPtr(v string) CryptoKeyVersionStateEnumPtrInput {
+	return (*cryptoKeyVersionStateEnumPtr)(&v)
+}
+
+func (*cryptoKeyVersionStateEnumPtr) ElementType() reflect.Type {
+	return cryptoKeyVersionStateEnumPtrType
+}
+
+func (in *cryptoKeyVersionStateEnumPtr) ToCryptoKeyVersionStateEnumPtrOutput() CryptoKeyVersionStateEnumPtrOutput {
+	return pulumi.ToOutput(in).(CryptoKeyVersionStateEnumPtrOutput)
+}
+
+func (in *cryptoKeyVersionStateEnumPtr) ToCryptoKeyVersionStateEnumPtrOutputWithContext(ctx context.Context) CryptoKeyVersionStateEnumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CryptoKeyVersionStateEnumPtrOutput)
+}
+
 // Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
-type CryptoKeyVersionTemplateAlgorithm pulumi.String
+type CryptoKeyVersionTemplateAlgorithm string
 
 const (
 	// Not specified.
@@ -163,7 +574,23 @@ const (
 )
 
 func (CryptoKeyVersionTemplateAlgorithm) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*CryptoKeyVersionTemplateAlgorithm)(nil)).Elem()
+}
+
+func (e CryptoKeyVersionTemplateAlgorithm) ToCryptoKeyVersionTemplateAlgorithmOutput() CryptoKeyVersionTemplateAlgorithmOutput {
+	return pulumi.ToOutput(e).(CryptoKeyVersionTemplateAlgorithmOutput)
+}
+
+func (e CryptoKeyVersionTemplateAlgorithm) ToCryptoKeyVersionTemplateAlgorithmOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateAlgorithmOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CryptoKeyVersionTemplateAlgorithmOutput)
+}
+
+func (e CryptoKeyVersionTemplateAlgorithm) ToCryptoKeyVersionTemplateAlgorithmPtrOutput() CryptoKeyVersionTemplateAlgorithmPtrOutput {
+	return e.ToCryptoKeyVersionTemplateAlgorithmPtrOutputWithContext(context.Background())
+}
+
+func (e CryptoKeyVersionTemplateAlgorithm) ToCryptoKeyVersionTemplateAlgorithmPtrOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateAlgorithmPtrOutput {
+	return CryptoKeyVersionTemplateAlgorithm(e).ToCryptoKeyVersionTemplateAlgorithmOutputWithContext(ctx).ToCryptoKeyVersionTemplateAlgorithmPtrOutputWithContext(ctx)
 }
 
 func (e CryptoKeyVersionTemplateAlgorithm) ToStringOutput() pulumi.StringOutput {
@@ -182,8 +609,129 @@ func (e CryptoKeyVersionTemplateAlgorithm) ToStringPtrOutputWithContext(ctx cont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type CryptoKeyVersionTemplateAlgorithmOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyVersionTemplateAlgorithmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyVersionTemplateAlgorithm)(nil)).Elem()
+}
+
+func (o CryptoKeyVersionTemplateAlgorithmOutput) ToCryptoKeyVersionTemplateAlgorithmOutput() CryptoKeyVersionTemplateAlgorithmOutput {
+	return o
+}
+
+func (o CryptoKeyVersionTemplateAlgorithmOutput) ToCryptoKeyVersionTemplateAlgorithmOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateAlgorithmOutput {
+	return o
+}
+
+func (o CryptoKeyVersionTemplateAlgorithmOutput) ToCryptoKeyVersionTemplateAlgorithmPtrOutput() CryptoKeyVersionTemplateAlgorithmPtrOutput {
+	return o.ToCryptoKeyVersionTemplateAlgorithmPtrOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyVersionTemplateAlgorithmOutput) ToCryptoKeyVersionTemplateAlgorithmPtrOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateAlgorithmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyVersionTemplateAlgorithm) *CryptoKeyVersionTemplateAlgorithm {
+		return &v
+	}).(CryptoKeyVersionTemplateAlgorithmPtrOutput)
+}
+
+func (o CryptoKeyVersionTemplateAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyVersionTemplateAlgorithmOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CryptoKeyVersionTemplateAlgorithm) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CryptoKeyVersionTemplateAlgorithmOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyVersionTemplateAlgorithmOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CryptoKeyVersionTemplateAlgorithm) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CryptoKeyVersionTemplateAlgorithmPtrOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyVersionTemplateAlgorithmPtrOutput) ElementType() reflect.Type {
+	return cryptoKeyVersionTemplateAlgorithmPtrType
+}
+
+func (o CryptoKeyVersionTemplateAlgorithmPtrOutput) ToCryptoKeyVersionTemplateAlgorithmPtrOutput() CryptoKeyVersionTemplateAlgorithmPtrOutput {
+	return o
+}
+
+func (o CryptoKeyVersionTemplateAlgorithmPtrOutput) ToCryptoKeyVersionTemplateAlgorithmPtrOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateAlgorithmPtrOutput {
+	return o
+}
+
+func (o CryptoKeyVersionTemplateAlgorithmPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyVersionTemplateAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CryptoKeyVersionTemplateAlgorithm) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CryptoKeyVersionTemplateAlgorithmPtrOutput) Elem() CryptoKeyVersionTemplateAlgorithmOutput {
+	return o.ApplyT(func(v *CryptoKeyVersionTemplateAlgorithm) CryptoKeyVersionTemplateAlgorithm {
+		var ret CryptoKeyVersionTemplateAlgorithm
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(CryptoKeyVersionTemplateAlgorithmOutput)
+}
+
+// CryptoKeyVersionTemplateAlgorithmInput is an input type that accepts CryptoKeyVersionTemplateAlgorithmArgs and CryptoKeyVersionTemplateAlgorithmOutput values.
+// You can construct a concrete instance of `CryptoKeyVersionTemplateAlgorithmInput` via:
+//
+//          CryptoKeyVersionTemplateAlgorithmArgs{...}
+type CryptoKeyVersionTemplateAlgorithmInput interface {
+	pulumi.Input
+
+	ToCryptoKeyVersionTemplateAlgorithmOutput() CryptoKeyVersionTemplateAlgorithmOutput
+	ToCryptoKeyVersionTemplateAlgorithmOutputWithContext(context.Context) CryptoKeyVersionTemplateAlgorithmOutput
+}
+
+var cryptoKeyVersionTemplateAlgorithmPtrType = reflect.TypeOf((**CryptoKeyVersionTemplateAlgorithm)(nil)).Elem()
+
+type CryptoKeyVersionTemplateAlgorithmPtrInput interface {
+	pulumi.Input
+
+	ToCryptoKeyVersionTemplateAlgorithmPtrOutput() CryptoKeyVersionTemplateAlgorithmPtrOutput
+	ToCryptoKeyVersionTemplateAlgorithmPtrOutputWithContext(context.Context) CryptoKeyVersionTemplateAlgorithmPtrOutput
+}
+
+type cryptoKeyVersionTemplateAlgorithmPtr string
+
+func CryptoKeyVersionTemplateAlgorithmPtr(v string) CryptoKeyVersionTemplateAlgorithmPtrInput {
+	return (*cryptoKeyVersionTemplateAlgorithmPtr)(&v)
+}
+
+func (*cryptoKeyVersionTemplateAlgorithmPtr) ElementType() reflect.Type {
+	return cryptoKeyVersionTemplateAlgorithmPtrType
+}
+
+func (in *cryptoKeyVersionTemplateAlgorithmPtr) ToCryptoKeyVersionTemplateAlgorithmPtrOutput() CryptoKeyVersionTemplateAlgorithmPtrOutput {
+	return pulumi.ToOutput(in).(CryptoKeyVersionTemplateAlgorithmPtrOutput)
+}
+
+func (in *cryptoKeyVersionTemplateAlgorithmPtr) ToCryptoKeyVersionTemplateAlgorithmPtrOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateAlgorithmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CryptoKeyVersionTemplateAlgorithmPtrOutput)
+}
+
 // ProtectionLevel to use when creating a CryptoKeyVersion based on this template. Immutable. Defaults to SOFTWARE.
-type CryptoKeyVersionTemplateProtectionLevel pulumi.String
+type CryptoKeyVersionTemplateProtectionLevel string
 
 const (
 	// Not specified.
@@ -197,7 +745,23 @@ const (
 )
 
 func (CryptoKeyVersionTemplateProtectionLevel) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*CryptoKeyVersionTemplateProtectionLevel)(nil)).Elem()
+}
+
+func (e CryptoKeyVersionTemplateProtectionLevel) ToCryptoKeyVersionTemplateProtectionLevelOutput() CryptoKeyVersionTemplateProtectionLevelOutput {
+	return pulumi.ToOutput(e).(CryptoKeyVersionTemplateProtectionLevelOutput)
+}
+
+func (e CryptoKeyVersionTemplateProtectionLevel) ToCryptoKeyVersionTemplateProtectionLevelOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateProtectionLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CryptoKeyVersionTemplateProtectionLevelOutput)
+}
+
+func (e CryptoKeyVersionTemplateProtectionLevel) ToCryptoKeyVersionTemplateProtectionLevelPtrOutput() CryptoKeyVersionTemplateProtectionLevelPtrOutput {
+	return e.ToCryptoKeyVersionTemplateProtectionLevelPtrOutputWithContext(context.Background())
+}
+
+func (e CryptoKeyVersionTemplateProtectionLevel) ToCryptoKeyVersionTemplateProtectionLevelPtrOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateProtectionLevelPtrOutput {
+	return CryptoKeyVersionTemplateProtectionLevel(e).ToCryptoKeyVersionTemplateProtectionLevelOutputWithContext(ctx).ToCryptoKeyVersionTemplateProtectionLevelPtrOutputWithContext(ctx)
 }
 
 func (e CryptoKeyVersionTemplateProtectionLevel) ToStringOutput() pulumi.StringOutput {
@@ -216,8 +780,129 @@ func (e CryptoKeyVersionTemplateProtectionLevel) ToStringPtrOutputWithContext(ct
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type CryptoKeyVersionTemplateProtectionLevelOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyVersionTemplateProtectionLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyVersionTemplateProtectionLevel)(nil)).Elem()
+}
+
+func (o CryptoKeyVersionTemplateProtectionLevelOutput) ToCryptoKeyVersionTemplateProtectionLevelOutput() CryptoKeyVersionTemplateProtectionLevelOutput {
+	return o
+}
+
+func (o CryptoKeyVersionTemplateProtectionLevelOutput) ToCryptoKeyVersionTemplateProtectionLevelOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateProtectionLevelOutput {
+	return o
+}
+
+func (o CryptoKeyVersionTemplateProtectionLevelOutput) ToCryptoKeyVersionTemplateProtectionLevelPtrOutput() CryptoKeyVersionTemplateProtectionLevelPtrOutput {
+	return o.ToCryptoKeyVersionTemplateProtectionLevelPtrOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyVersionTemplateProtectionLevelOutput) ToCryptoKeyVersionTemplateProtectionLevelPtrOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateProtectionLevelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CryptoKeyVersionTemplateProtectionLevel) *CryptoKeyVersionTemplateProtectionLevel {
+		return &v
+	}).(CryptoKeyVersionTemplateProtectionLevelPtrOutput)
+}
+
+func (o CryptoKeyVersionTemplateProtectionLevelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyVersionTemplateProtectionLevelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CryptoKeyVersionTemplateProtectionLevel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CryptoKeyVersionTemplateProtectionLevelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyVersionTemplateProtectionLevelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CryptoKeyVersionTemplateProtectionLevel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CryptoKeyVersionTemplateProtectionLevelPtrOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyVersionTemplateProtectionLevelPtrOutput) ElementType() reflect.Type {
+	return cryptoKeyVersionTemplateProtectionLevelPtrType
+}
+
+func (o CryptoKeyVersionTemplateProtectionLevelPtrOutput) ToCryptoKeyVersionTemplateProtectionLevelPtrOutput() CryptoKeyVersionTemplateProtectionLevelPtrOutput {
+	return o
+}
+
+func (o CryptoKeyVersionTemplateProtectionLevelPtrOutput) ToCryptoKeyVersionTemplateProtectionLevelPtrOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateProtectionLevelPtrOutput {
+	return o
+}
+
+func (o CryptoKeyVersionTemplateProtectionLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CryptoKeyVersionTemplateProtectionLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CryptoKeyVersionTemplateProtectionLevel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CryptoKeyVersionTemplateProtectionLevelPtrOutput) Elem() CryptoKeyVersionTemplateProtectionLevelOutput {
+	return o.ApplyT(func(v *CryptoKeyVersionTemplateProtectionLevel) CryptoKeyVersionTemplateProtectionLevel {
+		var ret CryptoKeyVersionTemplateProtectionLevel
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(CryptoKeyVersionTemplateProtectionLevelOutput)
+}
+
+// CryptoKeyVersionTemplateProtectionLevelInput is an input type that accepts CryptoKeyVersionTemplateProtectionLevelArgs and CryptoKeyVersionTemplateProtectionLevelOutput values.
+// You can construct a concrete instance of `CryptoKeyVersionTemplateProtectionLevelInput` via:
+//
+//          CryptoKeyVersionTemplateProtectionLevelArgs{...}
+type CryptoKeyVersionTemplateProtectionLevelInput interface {
+	pulumi.Input
+
+	ToCryptoKeyVersionTemplateProtectionLevelOutput() CryptoKeyVersionTemplateProtectionLevelOutput
+	ToCryptoKeyVersionTemplateProtectionLevelOutputWithContext(context.Context) CryptoKeyVersionTemplateProtectionLevelOutput
+}
+
+var cryptoKeyVersionTemplateProtectionLevelPtrType = reflect.TypeOf((**CryptoKeyVersionTemplateProtectionLevel)(nil)).Elem()
+
+type CryptoKeyVersionTemplateProtectionLevelPtrInput interface {
+	pulumi.Input
+
+	ToCryptoKeyVersionTemplateProtectionLevelPtrOutput() CryptoKeyVersionTemplateProtectionLevelPtrOutput
+	ToCryptoKeyVersionTemplateProtectionLevelPtrOutputWithContext(context.Context) CryptoKeyVersionTemplateProtectionLevelPtrOutput
+}
+
+type cryptoKeyVersionTemplateProtectionLevelPtr string
+
+func CryptoKeyVersionTemplateProtectionLevelPtr(v string) CryptoKeyVersionTemplateProtectionLevelPtrInput {
+	return (*cryptoKeyVersionTemplateProtectionLevelPtr)(&v)
+}
+
+func (*cryptoKeyVersionTemplateProtectionLevelPtr) ElementType() reflect.Type {
+	return cryptoKeyVersionTemplateProtectionLevelPtrType
+}
+
+func (in *cryptoKeyVersionTemplateProtectionLevelPtr) ToCryptoKeyVersionTemplateProtectionLevelPtrOutput() CryptoKeyVersionTemplateProtectionLevelPtrOutput {
+	return pulumi.ToOutput(in).(CryptoKeyVersionTemplateProtectionLevelPtrOutput)
+}
+
+func (in *cryptoKeyVersionTemplateProtectionLevelPtr) ToCryptoKeyVersionTemplateProtectionLevelPtrOutputWithContext(ctx context.Context) CryptoKeyVersionTemplateProtectionLevelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CryptoKeyVersionTemplateProtectionLevelPtrOutput)
+}
+
 // Required. Immutable. The wrapping method to be used for incoming key material.
-type ImportJobImportMethod pulumi.String
+type ImportJobImportMethod string
 
 const (
 	// Not specified.
@@ -229,7 +914,23 @@ const (
 )
 
 func (ImportJobImportMethod) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*ImportJobImportMethod)(nil)).Elem()
+}
+
+func (e ImportJobImportMethod) ToImportJobImportMethodOutput() ImportJobImportMethodOutput {
+	return pulumi.ToOutput(e).(ImportJobImportMethodOutput)
+}
+
+func (e ImportJobImportMethod) ToImportJobImportMethodOutputWithContext(ctx context.Context) ImportJobImportMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ImportJobImportMethodOutput)
+}
+
+func (e ImportJobImportMethod) ToImportJobImportMethodPtrOutput() ImportJobImportMethodPtrOutput {
+	return e.ToImportJobImportMethodPtrOutputWithContext(context.Background())
+}
+
+func (e ImportJobImportMethod) ToImportJobImportMethodPtrOutputWithContext(ctx context.Context) ImportJobImportMethodPtrOutput {
+	return ImportJobImportMethod(e).ToImportJobImportMethodOutputWithContext(ctx).ToImportJobImportMethodPtrOutputWithContext(ctx)
 }
 
 func (e ImportJobImportMethod) ToStringOutput() pulumi.StringOutput {
@@ -248,8 +949,129 @@ func (e ImportJobImportMethod) ToStringPtrOutputWithContext(ctx context.Context)
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type ImportJobImportMethodOutput struct{ *pulumi.OutputState }
+
+func (ImportJobImportMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobImportMethod)(nil)).Elem()
+}
+
+func (o ImportJobImportMethodOutput) ToImportJobImportMethodOutput() ImportJobImportMethodOutput {
+	return o
+}
+
+func (o ImportJobImportMethodOutput) ToImportJobImportMethodOutputWithContext(ctx context.Context) ImportJobImportMethodOutput {
+	return o
+}
+
+func (o ImportJobImportMethodOutput) ToImportJobImportMethodPtrOutput() ImportJobImportMethodPtrOutput {
+	return o.ToImportJobImportMethodPtrOutputWithContext(context.Background())
+}
+
+func (o ImportJobImportMethodOutput) ToImportJobImportMethodPtrOutputWithContext(ctx context.Context) ImportJobImportMethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImportJobImportMethod) *ImportJobImportMethod {
+		return &v
+	}).(ImportJobImportMethodPtrOutput)
+}
+
+func (o ImportJobImportMethodOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ImportJobImportMethodOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ImportJobImportMethod) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ImportJobImportMethodOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ImportJobImportMethodOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ImportJobImportMethod) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ImportJobImportMethodPtrOutput struct{ *pulumi.OutputState }
+
+func (ImportJobImportMethodPtrOutput) ElementType() reflect.Type {
+	return importJobImportMethodPtrType
+}
+
+func (o ImportJobImportMethodPtrOutput) ToImportJobImportMethodPtrOutput() ImportJobImportMethodPtrOutput {
+	return o
+}
+
+func (o ImportJobImportMethodPtrOutput) ToImportJobImportMethodPtrOutputWithContext(ctx context.Context) ImportJobImportMethodPtrOutput {
+	return o
+}
+
+func (o ImportJobImportMethodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ImportJobImportMethodPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ImportJobImportMethod) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ImportJobImportMethodPtrOutput) Elem() ImportJobImportMethodOutput {
+	return o.ApplyT(func(v *ImportJobImportMethod) ImportJobImportMethod {
+		var ret ImportJobImportMethod
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ImportJobImportMethodOutput)
+}
+
+// ImportJobImportMethodInput is an input type that accepts ImportJobImportMethodArgs and ImportJobImportMethodOutput values.
+// You can construct a concrete instance of `ImportJobImportMethodInput` via:
+//
+//          ImportJobImportMethodArgs{...}
+type ImportJobImportMethodInput interface {
+	pulumi.Input
+
+	ToImportJobImportMethodOutput() ImportJobImportMethodOutput
+	ToImportJobImportMethodOutputWithContext(context.Context) ImportJobImportMethodOutput
+}
+
+var importJobImportMethodPtrType = reflect.TypeOf((**ImportJobImportMethod)(nil)).Elem()
+
+type ImportJobImportMethodPtrInput interface {
+	pulumi.Input
+
+	ToImportJobImportMethodPtrOutput() ImportJobImportMethodPtrOutput
+	ToImportJobImportMethodPtrOutputWithContext(context.Context) ImportJobImportMethodPtrOutput
+}
+
+type importJobImportMethodPtr string
+
+func ImportJobImportMethodPtr(v string) ImportJobImportMethodPtrInput {
+	return (*importJobImportMethodPtr)(&v)
+}
+
+func (*importJobImportMethodPtr) ElementType() reflect.Type {
+	return importJobImportMethodPtrType
+}
+
+func (in *importJobImportMethodPtr) ToImportJobImportMethodPtrOutput() ImportJobImportMethodPtrOutput {
+	return pulumi.ToOutput(in).(ImportJobImportMethodPtrOutput)
+}
+
+func (in *importJobImportMethodPtr) ToImportJobImportMethodPtrOutputWithContext(ctx context.Context) ImportJobImportMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ImportJobImportMethodPtrOutput)
+}
+
 // Required. Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
-type ImportJobProtectionLevel pulumi.String
+type ImportJobProtectionLevel string
 
 const (
 	// Not specified.
@@ -263,7 +1085,23 @@ const (
 )
 
 func (ImportJobProtectionLevel) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*ImportJobProtectionLevel)(nil)).Elem()
+}
+
+func (e ImportJobProtectionLevel) ToImportJobProtectionLevelOutput() ImportJobProtectionLevelOutput {
+	return pulumi.ToOutput(e).(ImportJobProtectionLevelOutput)
+}
+
+func (e ImportJobProtectionLevel) ToImportJobProtectionLevelOutputWithContext(ctx context.Context) ImportJobProtectionLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ImportJobProtectionLevelOutput)
+}
+
+func (e ImportJobProtectionLevel) ToImportJobProtectionLevelPtrOutput() ImportJobProtectionLevelPtrOutput {
+	return e.ToImportJobProtectionLevelPtrOutputWithContext(context.Background())
+}
+
+func (e ImportJobProtectionLevel) ToImportJobProtectionLevelPtrOutputWithContext(ctx context.Context) ImportJobProtectionLevelPtrOutput {
+	return ImportJobProtectionLevel(e).ToImportJobProtectionLevelOutputWithContext(ctx).ToImportJobProtectionLevelPtrOutputWithContext(ctx)
 }
 
 func (e ImportJobProtectionLevel) ToStringOutput() pulumi.StringOutput {
@@ -280,4 +1118,142 @@ func (e ImportJobProtectionLevel) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e ImportJobProtectionLevel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ImportJobProtectionLevelOutput struct{ *pulumi.OutputState }
+
+func (ImportJobProtectionLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ImportJobProtectionLevel)(nil)).Elem()
+}
+
+func (o ImportJobProtectionLevelOutput) ToImportJobProtectionLevelOutput() ImportJobProtectionLevelOutput {
+	return o
+}
+
+func (o ImportJobProtectionLevelOutput) ToImportJobProtectionLevelOutputWithContext(ctx context.Context) ImportJobProtectionLevelOutput {
+	return o
+}
+
+func (o ImportJobProtectionLevelOutput) ToImportJobProtectionLevelPtrOutput() ImportJobProtectionLevelPtrOutput {
+	return o.ToImportJobProtectionLevelPtrOutputWithContext(context.Background())
+}
+
+func (o ImportJobProtectionLevelOutput) ToImportJobProtectionLevelPtrOutputWithContext(ctx context.Context) ImportJobProtectionLevelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ImportJobProtectionLevel) *ImportJobProtectionLevel {
+		return &v
+	}).(ImportJobProtectionLevelPtrOutput)
+}
+
+func (o ImportJobProtectionLevelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ImportJobProtectionLevelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ImportJobProtectionLevel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ImportJobProtectionLevelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ImportJobProtectionLevelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ImportJobProtectionLevel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ImportJobProtectionLevelPtrOutput struct{ *pulumi.OutputState }
+
+func (ImportJobProtectionLevelPtrOutput) ElementType() reflect.Type {
+	return importJobProtectionLevelPtrType
+}
+
+func (o ImportJobProtectionLevelPtrOutput) ToImportJobProtectionLevelPtrOutput() ImportJobProtectionLevelPtrOutput {
+	return o
+}
+
+func (o ImportJobProtectionLevelPtrOutput) ToImportJobProtectionLevelPtrOutputWithContext(ctx context.Context) ImportJobProtectionLevelPtrOutput {
+	return o
+}
+
+func (o ImportJobProtectionLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ImportJobProtectionLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ImportJobProtectionLevel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ImportJobProtectionLevelPtrOutput) Elem() ImportJobProtectionLevelOutput {
+	return o.ApplyT(func(v *ImportJobProtectionLevel) ImportJobProtectionLevel {
+		var ret ImportJobProtectionLevel
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ImportJobProtectionLevelOutput)
+}
+
+// ImportJobProtectionLevelInput is an input type that accepts ImportJobProtectionLevelArgs and ImportJobProtectionLevelOutput values.
+// You can construct a concrete instance of `ImportJobProtectionLevelInput` via:
+//
+//          ImportJobProtectionLevelArgs{...}
+type ImportJobProtectionLevelInput interface {
+	pulumi.Input
+
+	ToImportJobProtectionLevelOutput() ImportJobProtectionLevelOutput
+	ToImportJobProtectionLevelOutputWithContext(context.Context) ImportJobProtectionLevelOutput
+}
+
+var importJobProtectionLevelPtrType = reflect.TypeOf((**ImportJobProtectionLevel)(nil)).Elem()
+
+type ImportJobProtectionLevelPtrInput interface {
+	pulumi.Input
+
+	ToImportJobProtectionLevelPtrOutput() ImportJobProtectionLevelPtrOutput
+	ToImportJobProtectionLevelPtrOutputWithContext(context.Context) ImportJobProtectionLevelPtrOutput
+}
+
+type importJobProtectionLevelPtr string
+
+func ImportJobProtectionLevelPtr(v string) ImportJobProtectionLevelPtrInput {
+	return (*importJobProtectionLevelPtr)(&v)
+}
+
+func (*importJobProtectionLevelPtr) ElementType() reflect.Type {
+	return importJobProtectionLevelPtrType
+}
+
+func (in *importJobProtectionLevelPtr) ToImportJobProtectionLevelPtrOutput() ImportJobProtectionLevelPtrOutput {
+	return pulumi.ToOutput(in).(ImportJobProtectionLevelPtrOutput)
+}
+
+func (in *importJobProtectionLevelPtr) ToImportJobProtectionLevelPtrOutputWithContext(ctx context.Context) ImportJobProtectionLevelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ImportJobProtectionLevelPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(CryptoKeyPurposeOutput{})
+	pulumi.RegisterOutputType(CryptoKeyPurposePtrOutput{})
+	pulumi.RegisterOutputType(CryptoKeyVersionStateEnumOutput{})
+	pulumi.RegisterOutputType(CryptoKeyVersionStateEnumPtrOutput{})
+	pulumi.RegisterOutputType(CryptoKeyVersionTemplateAlgorithmOutput{})
+	pulumi.RegisterOutputType(CryptoKeyVersionTemplateAlgorithmPtrOutput{})
+	pulumi.RegisterOutputType(CryptoKeyVersionTemplateProtectionLevelOutput{})
+	pulumi.RegisterOutputType(CryptoKeyVersionTemplateProtectionLevelPtrOutput{})
+	pulumi.RegisterOutputType(ImportJobImportMethodOutput{})
+	pulumi.RegisterOutputType(ImportJobImportMethodPtrOutput{})
+	pulumi.RegisterOutputType(ImportJobProtectionLevelOutput{})
+	pulumi.RegisterOutputType(ImportJobProtectionLevelPtrOutput{})
 }

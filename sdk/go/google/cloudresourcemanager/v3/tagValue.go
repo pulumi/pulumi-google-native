@@ -65,41 +65,9 @@ func GetTagValue(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering TagValue resources.
 type tagValueState struct {
-	// Creation time.
-	CreateTime *string `pulumi:"createTime"`
-	// Optional. User-assigned description of the TagValue. Must not exceed 256 characters. Read-write.
-	Description *string `pulumi:"description"`
-	// Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagValueRequest for details.
-	Etag *string `pulumi:"etag"`
-	// Immutable. Resource name for TagValue in the format `tagValues/456`.
-	Name *string `pulumi:"name"`
-	// Namespaced name of the TagValue. Must be in the format `{organization_id}/{tag_key_short_name}/{short_name}`.
-	NamespacedName *string `pulumi:"namespacedName"`
-	// Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
-	Parent *string `pulumi:"parent"`
-	// Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	ShortName *string `pulumi:"shortName"`
-	// Update time.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type TagValueState struct {
-	// Creation time.
-	CreateTime pulumi.StringPtrInput
-	// Optional. User-assigned description of the TagValue. Must not exceed 256 characters. Read-write.
-	Description pulumi.StringPtrInput
-	// Optional. Entity tag which users can pass to prevent race conditions. This field is always set in server responses. See UpdateTagValueRequest for details.
-	Etag pulumi.StringPtrInput
-	// Immutable. Resource name for TagValue in the format `tagValues/456`.
-	Name pulumi.StringPtrInput
-	// Namespaced name of the TagValue. Must be in the format `{organization_id}/{tag_key_short_name}/{short_name}`.
-	NamespacedName pulumi.StringPtrInput
-	// Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
-	Parent pulumi.StringPtrInput
-	// Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-	ShortName pulumi.StringPtrInput
-	// Update time.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (TagValueState) ElementType() reflect.Type {

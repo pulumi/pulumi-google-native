@@ -50,17 +50,9 @@ func GetService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Service resources.
 type serviceState struct {
-	// ID of the project that produces and owns this service.
-	ProducerProjectId *string `pulumi:"producerProjectId"`
-	// The name of the service. See the [overview](/service-management/overview) for naming requirements.
-	ServiceName *string `pulumi:"serviceName"`
 }
 
 type ServiceState struct {
-	// ID of the project that produces and owns this service.
-	ProducerProjectId pulumi.StringPtrInput
-	// The name of the service. See the [overview](/service-management/overview) for naming requirements.
-	ServiceName pulumi.StringPtrInput
 }
 
 func (ServiceState) ElementType() reflect.Type {

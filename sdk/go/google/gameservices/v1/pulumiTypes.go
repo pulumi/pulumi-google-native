@@ -246,7 +246,7 @@ type AuditLogConfig struct {
 	ExemptedMembers       []string `pulumi:"exemptedMembers"`
 	IgnoreChildExemptions *bool    `pulumi:"ignoreChildExemptions"`
 	// The log type that this config enables.
-	LogType *string `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
@@ -266,7 +266,7 @@ type AuditLogConfigArgs struct {
 	ExemptedMembers       pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	IgnoreChildExemptions pulumi.BoolPtrInput     `pulumi:"ignoreChildExemptions"`
 	// The log type that this config enables.
-	LogType *AuditLogConfigLogType `pulumi:"logType"`
+	LogType AuditLogConfigLogTypePtrInput `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -331,8 +331,8 @@ func (o AuditLogConfigOutput) IgnoreChildExemptions() pulumi.BoolPtrOutput {
 }
 
 // The log type that this config enables.
-func (o AuditLogConfigOutput) LogType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AuditLogConfig) *string { return v.LogType }).(pulumi.StringPtrOutput)
+func (o AuditLogConfigOutput) LogType() AuditLogConfigLogTypePtrOutput {
+	return o.ApplyT(func(v AuditLogConfig) *AuditLogConfigLogType { return v.LogType }).(AuditLogConfigLogTypePtrOutput)
 }
 
 type AuditLogConfigArrayOutput struct{ *pulumi.OutputState }
@@ -473,7 +473,7 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 // Authorization-related information used by Cloud Audit Logging.
 type AuthorizationLoggingOptions struct {
 	// The type of the permission that was checked.
-	PermissionType *string `pulumi:"permissionType"`
+	PermissionType *AuthorizationLoggingOptionsPermissionType `pulumi:"permissionType"`
 }
 
 // AuthorizationLoggingOptionsInput is an input type that accepts AuthorizationLoggingOptionsArgs and AuthorizationLoggingOptionsOutput values.
@@ -490,7 +490,7 @@ type AuthorizationLoggingOptionsInput interface {
 // Authorization-related information used by Cloud Audit Logging.
 type AuthorizationLoggingOptionsArgs struct {
 	// The type of the permission that was checked.
-	PermissionType *AuthorizationLoggingOptionsPermissionType `pulumi:"permissionType"`
+	PermissionType AuthorizationLoggingOptionsPermissionTypePtrInput `pulumi:"permissionType"`
 }
 
 func (AuthorizationLoggingOptionsArgs) ElementType() reflect.Type {
@@ -572,8 +572,10 @@ func (o AuthorizationLoggingOptionsOutput) ToAuthorizationLoggingOptionsPtrOutpu
 }
 
 // The type of the permission that was checked.
-func (o AuthorizationLoggingOptionsOutput) PermissionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AuthorizationLoggingOptions) *string { return v.PermissionType }).(pulumi.StringPtrOutput)
+func (o AuthorizationLoggingOptionsOutput) PermissionType() AuthorizationLoggingOptionsPermissionTypePtrOutput {
+	return o.ApplyT(func(v AuthorizationLoggingOptions) *AuthorizationLoggingOptionsPermissionType {
+		return v.PermissionType
+	}).(AuthorizationLoggingOptionsPermissionTypePtrOutput)
 }
 
 type AuthorizationLoggingOptionsPtrOutput struct{ *pulumi.OutputState }
@@ -595,13 +597,13 @@ func (o AuthorizationLoggingOptionsPtrOutput) Elem() AuthorizationLoggingOptions
 }
 
 // The type of the permission that was checked.
-func (o AuthorizationLoggingOptionsPtrOutput) PermissionType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AuthorizationLoggingOptions) *string {
+func (o AuthorizationLoggingOptionsPtrOutput) PermissionType() AuthorizationLoggingOptionsPermissionTypePtrOutput {
+	return o.ApplyT(func(v *AuthorizationLoggingOptions) *AuthorizationLoggingOptionsPermissionType {
 		if v == nil {
 			return nil
 		}
 		return v.PermissionType
-	}).(pulumi.StringPtrOutput)
+	}).(AuthorizationLoggingOptionsPermissionTypePtrOutput)
 }
 
 // Authorization-related information used by Cloud Audit Logging.
@@ -912,7 +914,7 @@ type CloudAuditOptions struct {
 	// Information used by the Cloud Audit Logging pipeline.
 	AuthorizationLoggingOptions *AuthorizationLoggingOptions `pulumi:"authorizationLoggingOptions"`
 	// The log_name to populate in the Cloud Audit Record.
-	LogName *string `pulumi:"logName"`
+	LogName *CloudAuditOptionsLogName `pulumi:"logName"`
 }
 
 // CloudAuditOptionsInput is an input type that accepts CloudAuditOptionsArgs and CloudAuditOptionsOutput values.
@@ -931,7 +933,7 @@ type CloudAuditOptionsArgs struct {
 	// Information used by the Cloud Audit Logging pipeline.
 	AuthorizationLoggingOptions AuthorizationLoggingOptionsPtrInput `pulumi:"authorizationLoggingOptions"`
 	// The log_name to populate in the Cloud Audit Record.
-	LogName *CloudAuditOptionsLogName `pulumi:"logName"`
+	LogName CloudAuditOptionsLogNamePtrInput `pulumi:"logName"`
 }
 
 func (CloudAuditOptionsArgs) ElementType() reflect.Type {
@@ -1018,8 +1020,8 @@ func (o CloudAuditOptionsOutput) AuthorizationLoggingOptions() AuthorizationLogg
 }
 
 // The log_name to populate in the Cloud Audit Record.
-func (o CloudAuditOptionsOutput) LogName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudAuditOptions) *string { return v.LogName }).(pulumi.StringPtrOutput)
+func (o CloudAuditOptionsOutput) LogName() CloudAuditOptionsLogNamePtrOutput {
+	return o.ApplyT(func(v CloudAuditOptions) *CloudAuditOptionsLogName { return v.LogName }).(CloudAuditOptionsLogNamePtrOutput)
 }
 
 type CloudAuditOptionsPtrOutput struct{ *pulumi.OutputState }
@@ -1051,13 +1053,13 @@ func (o CloudAuditOptionsPtrOutput) AuthorizationLoggingOptions() AuthorizationL
 }
 
 // The log_name to populate in the Cloud Audit Record.
-func (o CloudAuditOptionsPtrOutput) LogName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudAuditOptions) *string {
+func (o CloudAuditOptionsPtrOutput) LogName() CloudAuditOptionsLogNamePtrOutput {
+	return o.ApplyT(func(v *CloudAuditOptions) *CloudAuditOptionsLogName {
 		if v == nil {
 			return nil
 		}
 		return v.LogName
-	}).(pulumi.StringPtrOutput)
+	}).(CloudAuditOptionsLogNamePtrOutput)
 }
 
 // Write a Cloud Audit log
@@ -1129,13 +1131,13 @@ func (o CloudAuditOptionsResponseOutput) LogName() pulumi.StringOutput {
 // A condition to be met.
 type Condition struct {
 	// Trusted attributes supplied by the IAM system.
-	Iam *string `pulumi:"iam"`
+	Iam *ConditionIam `pulumi:"iam"`
 	// An operator to apply the subject with.
-	Op *string `pulumi:"op"`
+	Op *ConditionOp `pulumi:"op"`
 	// Trusted attributes discharged by the service.
 	Svc *string `pulumi:"svc"`
 	// Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
-	Sys *string `pulumi:"sys"`
+	Sys *ConditionSys `pulumi:"sys"`
 	// The objects of the condition.
 	Values []string `pulumi:"values"`
 }
@@ -1154,13 +1156,13 @@ type ConditionInput interface {
 // A condition to be met.
 type ConditionArgs struct {
 	// Trusted attributes supplied by the IAM system.
-	Iam *ConditionIam `pulumi:"iam"`
+	Iam ConditionIamPtrInput `pulumi:"iam"`
 	// An operator to apply the subject with.
-	Op *ConditionOp `pulumi:"op"`
+	Op ConditionOpPtrInput `pulumi:"op"`
 	// Trusted attributes discharged by the service.
 	Svc pulumi.StringPtrInput `pulumi:"svc"`
 	// Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
-	Sys *ConditionSys `pulumi:"sys"`
+	Sys ConditionSysPtrInput `pulumi:"sys"`
 	// The objects of the condition.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
@@ -1218,13 +1220,13 @@ func (o ConditionOutput) ToConditionOutputWithContext(ctx context.Context) Condi
 }
 
 // Trusted attributes supplied by the IAM system.
-func (o ConditionOutput) Iam() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Condition) *string { return v.Iam }).(pulumi.StringPtrOutput)
+func (o ConditionOutput) Iam() ConditionIamPtrOutput {
+	return o.ApplyT(func(v Condition) *ConditionIam { return v.Iam }).(ConditionIamPtrOutput)
 }
 
 // An operator to apply the subject with.
-func (o ConditionOutput) Op() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Condition) *string { return v.Op }).(pulumi.StringPtrOutput)
+func (o ConditionOutput) Op() ConditionOpPtrOutput {
+	return o.ApplyT(func(v Condition) *ConditionOp { return v.Op }).(ConditionOpPtrOutput)
 }
 
 // Trusted attributes discharged by the service.
@@ -1233,8 +1235,8 @@ func (o ConditionOutput) Svc() pulumi.StringPtrOutput {
 }
 
 // Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
-func (o ConditionOutput) Sys() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Condition) *string { return v.Sys }).(pulumi.StringPtrOutput)
+func (o ConditionOutput) Sys() ConditionSysPtrOutput {
+	return o.ApplyT(func(v Condition) *ConditionSys { return v.Sys }).(ConditionSysPtrOutput)
 }
 
 // The objects of the condition.
@@ -1863,7 +1865,7 @@ func (o CustomFieldResponseArrayOutput) Index(i pulumi.IntInput) CustomFieldResp
 
 // Write a Data Access (Gin) log
 type DataAccessOptions struct {
-	LogMode *string `pulumi:"logMode"`
+	LogMode *DataAccessOptionsLogMode `pulumi:"logMode"`
 }
 
 // DataAccessOptionsInput is an input type that accepts DataAccessOptionsArgs and DataAccessOptionsOutput values.
@@ -1879,7 +1881,7 @@ type DataAccessOptionsInput interface {
 
 // Write a Data Access (Gin) log
 type DataAccessOptionsArgs struct {
-	LogMode *DataAccessOptionsLogMode `pulumi:"logMode"`
+	LogMode DataAccessOptionsLogModePtrInput `pulumi:"logMode"`
 }
 
 func (DataAccessOptionsArgs) ElementType() reflect.Type {
@@ -1959,8 +1961,8 @@ func (o DataAccessOptionsOutput) ToDataAccessOptionsPtrOutputWithContext(ctx con
 		return &v
 	}).(DataAccessOptionsPtrOutput)
 }
-func (o DataAccessOptionsOutput) LogMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DataAccessOptions) *string { return v.LogMode }).(pulumi.StringPtrOutput)
+func (o DataAccessOptionsOutput) LogMode() DataAccessOptionsLogModePtrOutput {
+	return o.ApplyT(func(v DataAccessOptions) *DataAccessOptionsLogMode { return v.LogMode }).(DataAccessOptionsLogModePtrOutput)
 }
 
 type DataAccessOptionsPtrOutput struct{ *pulumi.OutputState }
@@ -1981,13 +1983,13 @@ func (o DataAccessOptionsPtrOutput) Elem() DataAccessOptionsOutput {
 	return o.ApplyT(func(v *DataAccessOptions) DataAccessOptions { return *v }).(DataAccessOptionsOutput)
 }
 
-func (o DataAccessOptionsPtrOutput) LogMode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DataAccessOptions) *string {
+func (o DataAccessOptionsPtrOutput) LogMode() DataAccessOptionsLogModePtrOutput {
+	return o.ApplyT(func(v *DataAccessOptions) *DataAccessOptionsLogMode {
 		if v == nil {
 			return nil
 		}
 		return v.LogMode
-	}).(pulumi.StringPtrOutput)
+	}).(DataAccessOptionsLogModePtrOutput)
 }
 
 // Write a Data Access (Gin) log
@@ -3548,7 +3550,7 @@ func (o LogConfigResponseArrayOutput) Index(i pulumi.IntInput) LogConfigResponse
 // A rule to be applied in a Policy.
 type Rule struct {
 	// Required
-	Action *string `pulumi:"action"`
+	Action *RuleAction `pulumi:"action"`
 	// Additional restrictions that must be met. All conditions must pass for the rule to match.
 	Conditions []Condition `pulumi:"conditions"`
 	// Human-readable description of the rule.
@@ -3577,7 +3579,7 @@ type RuleInput interface {
 // A rule to be applied in a Policy.
 type RuleArgs struct {
 	// Required
-	Action *RuleAction `pulumi:"action"`
+	Action RuleActionPtrInput `pulumi:"action"`
 	// Additional restrictions that must be met. All conditions must pass for the rule to match.
 	Conditions ConditionArrayInput `pulumi:"conditions"`
 	// Human-readable description of the rule.
@@ -3645,8 +3647,8 @@ func (o RuleOutput) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 }
 
 // Required
-func (o RuleOutput) Action() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Rule) *string { return v.Action }).(pulumi.StringPtrOutput)
+func (o RuleOutput) Action() RuleActionPtrOutput {
+	return o.ApplyT(func(v Rule) *RuleAction { return v.Action }).(RuleActionPtrOutput)
 }
 
 // Additional restrictions that must be met. All conditions must pass for the rule to match.

@@ -3339,7 +3339,7 @@ type CloudRunConfig struct {
 	// Whether Cloud Run addon is enabled for this cluster.
 	Disabled *bool `pulumi:"disabled"`
 	// Which load balancer type is installed for Cloud Run.
-	LoadBalancerType *string `pulumi:"loadBalancerType"`
+	LoadBalancerType *CloudRunConfigLoadBalancerType `pulumi:"loadBalancerType"`
 }
 
 // CloudRunConfigInput is an input type that accepts CloudRunConfigArgs and CloudRunConfigOutput values.
@@ -3358,7 +3358,7 @@ type CloudRunConfigArgs struct {
 	// Whether Cloud Run addon is enabled for this cluster.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// Which load balancer type is installed for Cloud Run.
-	LoadBalancerType *CloudRunConfigLoadBalancerType `pulumi:"loadBalancerType"`
+	LoadBalancerType CloudRunConfigLoadBalancerTypePtrInput `pulumi:"loadBalancerType"`
 }
 
 func (CloudRunConfigArgs) ElementType() reflect.Type {
@@ -3445,8 +3445,8 @@ func (o CloudRunConfigOutput) Disabled() pulumi.BoolPtrOutput {
 }
 
 // Which load balancer type is installed for Cloud Run.
-func (o CloudRunConfigOutput) LoadBalancerType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudRunConfig) *string { return v.LoadBalancerType }).(pulumi.StringPtrOutput)
+func (o CloudRunConfigOutput) LoadBalancerType() CloudRunConfigLoadBalancerTypePtrOutput {
+	return o.ApplyT(func(v CloudRunConfig) *CloudRunConfigLoadBalancerType { return v.LoadBalancerType }).(CloudRunConfigLoadBalancerTypePtrOutput)
 }
 
 type CloudRunConfigPtrOutput struct{ *pulumi.OutputState }
@@ -3478,13 +3478,13 @@ func (o CloudRunConfigPtrOutput) Disabled() pulumi.BoolPtrOutput {
 }
 
 // Which load balancer type is installed for Cloud Run.
-func (o CloudRunConfigPtrOutput) LoadBalancerType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudRunConfig) *string {
+func (o CloudRunConfigPtrOutput) LoadBalancerType() CloudRunConfigLoadBalancerTypePtrOutput {
+	return o.ApplyT(func(v *CloudRunConfig) *CloudRunConfigLoadBalancerType {
 		if v == nil {
 			return nil
 		}
 		return v.LoadBalancerType
-	}).(pulumi.StringPtrOutput)
+	}).(CloudRunConfigLoadBalancerTypePtrOutput)
 }
 
 // Configuration options for the Cloud Run feature.
@@ -3647,7 +3647,7 @@ type ClusterAutoscaling struct {
 	// AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.
 	AutoprovisioningNodePoolDefaults *AutoprovisioningNodePoolDefaults `pulumi:"autoprovisioningNodePoolDefaults"`
 	// Defines autoscaling behaviour.
-	AutoscalingProfile *string `pulumi:"autoscalingProfile"`
+	AutoscalingProfile *ClusterAutoscalingAutoscalingProfile `pulumi:"autoscalingProfile"`
 	// Enables automatic node pool creation and deletion.
 	EnableNodeAutoprovisioning *bool `pulumi:"enableNodeAutoprovisioning"`
 	// Contains global constraints regarding minimum and maximum amount of resources in the cluster.
@@ -3672,7 +3672,7 @@ type ClusterAutoscalingArgs struct {
 	// AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.
 	AutoprovisioningNodePoolDefaults AutoprovisioningNodePoolDefaultsPtrInput `pulumi:"autoprovisioningNodePoolDefaults"`
 	// Defines autoscaling behaviour.
-	AutoscalingProfile *ClusterAutoscalingAutoscalingProfile `pulumi:"autoscalingProfile"`
+	AutoscalingProfile ClusterAutoscalingAutoscalingProfilePtrInput `pulumi:"autoscalingProfile"`
 	// Enables automatic node pool creation and deletion.
 	EnableNodeAutoprovisioning pulumi.BoolPtrInput `pulumi:"enableNodeAutoprovisioning"`
 	// Contains global constraints regarding minimum and maximum amount of resources in the cluster.
@@ -3770,8 +3770,8 @@ func (o ClusterAutoscalingOutput) AutoprovisioningNodePoolDefaults() Autoprovisi
 }
 
 // Defines autoscaling behaviour.
-func (o ClusterAutoscalingOutput) AutoscalingProfile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterAutoscaling) *string { return v.AutoscalingProfile }).(pulumi.StringPtrOutput)
+func (o ClusterAutoscalingOutput) AutoscalingProfile() ClusterAutoscalingAutoscalingProfilePtrOutput {
+	return o.ApplyT(func(v ClusterAutoscaling) *ClusterAutoscalingAutoscalingProfile { return v.AutoscalingProfile }).(ClusterAutoscalingAutoscalingProfilePtrOutput)
 }
 
 // Enables automatic node pool creation and deletion.
@@ -3823,13 +3823,13 @@ func (o ClusterAutoscalingPtrOutput) AutoprovisioningNodePoolDefaults() Autoprov
 }
 
 // Defines autoscaling behaviour.
-func (o ClusterAutoscalingPtrOutput) AutoscalingProfile() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterAutoscaling) *string {
+func (o ClusterAutoscalingPtrOutput) AutoscalingProfile() ClusterAutoscalingAutoscalingProfilePtrOutput {
+	return o.ApplyT(func(v *ClusterAutoscaling) *ClusterAutoscalingAutoscalingProfile {
 		if v == nil {
 			return nil
 		}
 		return v.AutoscalingProfile
-	}).(pulumi.StringPtrOutput)
+	}).(ClusterAutoscalingAutoscalingProfilePtrOutput)
 }
 
 // Enables automatic node pool creation and deletion.
@@ -4067,7 +4067,7 @@ func (o ClusterAutoscalingResponsePtrOutput) ResourceLimits() ResourceLimitRespo
 // Telemetry integration for the cluster.
 type ClusterTelemetry struct {
 	// Type of the integration.
-	Type *string `pulumi:"type"`
+	Type *ClusterTelemetryType `pulumi:"type"`
 }
 
 // ClusterTelemetryInput is an input type that accepts ClusterTelemetryArgs and ClusterTelemetryOutput values.
@@ -4084,7 +4084,7 @@ type ClusterTelemetryInput interface {
 // Telemetry integration for the cluster.
 type ClusterTelemetryArgs struct {
 	// Type of the integration.
-	Type *ClusterTelemetryType `pulumi:"type"`
+	Type ClusterTelemetryTypePtrInput `pulumi:"type"`
 }
 
 func (ClusterTelemetryArgs) ElementType() reflect.Type {
@@ -4166,8 +4166,8 @@ func (o ClusterTelemetryOutput) ToClusterTelemetryPtrOutputWithContext(ctx conte
 }
 
 // Type of the integration.
-func (o ClusterTelemetryOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterTelemetry) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o ClusterTelemetryOutput) Type() ClusterTelemetryTypePtrOutput {
+	return o.ApplyT(func(v ClusterTelemetry) *ClusterTelemetryType { return v.Type }).(ClusterTelemetryTypePtrOutput)
 }
 
 type ClusterTelemetryPtrOutput struct{ *pulumi.OutputState }
@@ -4189,13 +4189,13 @@ func (o ClusterTelemetryPtrOutput) Elem() ClusterTelemetryOutput {
 }
 
 // Type of the integration.
-func (o ClusterTelemetryPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ClusterTelemetry) *string {
+func (o ClusterTelemetryPtrOutput) Type() ClusterTelemetryTypePtrOutput {
+	return o.ApplyT(func(v *ClusterTelemetry) *ClusterTelemetryType {
 		if v == nil {
 			return nil
 		}
 		return v.Type
-	}).(pulumi.StringPtrOutput)
+	}).(ClusterTelemetryTypePtrOutput)
 }
 
 // Telemetry integration for the cluster.
@@ -4349,7 +4349,7 @@ type ClusterUpdate struct {
 	// Configuration of etcd encryption.
 	DesiredDatabaseEncryption *DatabaseEncryption `pulumi:"desiredDatabaseEncryption"`
 	// The desired datapath provider for the cluster.
-	DesiredDatapathProvider *string `pulumi:"desiredDatapathProvider"`
+	DesiredDatapathProvider *ClusterUpdateDesiredDatapathProvider `pulumi:"desiredDatapathProvider"`
 	// The desired status of whether to disable default sNAT for this cluster.
 	DesiredDefaultSnatStatus *DefaultSnatStatus `pulumi:"desiredDefaultSnatStatus"`
 	// DNSConfig contains clusterDNS config for this cluster.
@@ -4385,7 +4385,7 @@ type ClusterUpdate struct {
 	// The desired private cluster configuration.
 	DesiredPrivateClusterConfig *PrivateClusterConfig `pulumi:"desiredPrivateClusterConfig"`
 	// The desired state of IPv6 connectivity to Google Services.
-	DesiredPrivateIpv6GoogleAccess *string `pulumi:"desiredPrivateIpv6GoogleAccess"`
+	DesiredPrivateIpv6GoogleAccess *ClusterUpdateDesiredPrivateIpv6GoogleAccess `pulumi:"desiredPrivateIpv6GoogleAccess"`
 	// The desired release channel configuration.
 	DesiredReleaseChannel *ReleaseChannel `pulumi:"desiredReleaseChannel"`
 	// The desired configuration for exporting resource usage.
@@ -4432,7 +4432,7 @@ type ClusterUpdateArgs struct {
 	// Configuration of etcd encryption.
 	DesiredDatabaseEncryption DatabaseEncryptionPtrInput `pulumi:"desiredDatabaseEncryption"`
 	// The desired datapath provider for the cluster.
-	DesiredDatapathProvider *ClusterUpdateDesiredDatapathProvider `pulumi:"desiredDatapathProvider"`
+	DesiredDatapathProvider ClusterUpdateDesiredDatapathProviderPtrInput `pulumi:"desiredDatapathProvider"`
 	// The desired status of whether to disable default sNAT for this cluster.
 	DesiredDefaultSnatStatus DefaultSnatStatusPtrInput `pulumi:"desiredDefaultSnatStatus"`
 	// DNSConfig contains clusterDNS config for this cluster.
@@ -4468,7 +4468,7 @@ type ClusterUpdateArgs struct {
 	// The desired private cluster configuration.
 	DesiredPrivateClusterConfig PrivateClusterConfigPtrInput `pulumi:"desiredPrivateClusterConfig"`
 	// The desired state of IPv6 connectivity to Google Services.
-	DesiredPrivateIpv6GoogleAccess *ClusterUpdateDesiredPrivateIpv6GoogleAccess `pulumi:"desiredPrivateIpv6GoogleAccess"`
+	DesiredPrivateIpv6GoogleAccess ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrInput `pulumi:"desiredPrivateIpv6GoogleAccess"`
 	// The desired release channel configuration.
 	DesiredReleaseChannel ReleaseChannelPtrInput `pulumi:"desiredReleaseChannel"`
 	// The desired configuration for exporting resource usage.
@@ -4550,8 +4550,8 @@ func (o ClusterUpdateOutput) DesiredDatabaseEncryption() DatabaseEncryptionPtrOu
 }
 
 // The desired datapath provider for the cluster.
-func (o ClusterUpdateOutput) DesiredDatapathProvider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterUpdate) *string { return v.DesiredDatapathProvider }).(pulumi.StringPtrOutput)
+func (o ClusterUpdateOutput) DesiredDatapathProvider() ClusterUpdateDesiredDatapathProviderPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *ClusterUpdateDesiredDatapathProvider { return v.DesiredDatapathProvider }).(ClusterUpdateDesiredDatapathProviderPtrOutput)
 }
 
 // The desired status of whether to disable default sNAT for this cluster.
@@ -4640,8 +4640,10 @@ func (o ClusterUpdateOutput) DesiredPrivateClusterConfig() PrivateClusterConfigP
 }
 
 // The desired state of IPv6 connectivity to Google Services.
-func (o ClusterUpdateOutput) DesiredPrivateIpv6GoogleAccess() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ClusterUpdate) *string { return v.DesiredPrivateIpv6GoogleAccess }).(pulumi.StringPtrOutput)
+func (o ClusterUpdateOutput) DesiredPrivateIpv6GoogleAccess() ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput {
+	return o.ApplyT(func(v ClusterUpdate) *ClusterUpdateDesiredPrivateIpv6GoogleAccess {
+		return v.DesiredPrivateIpv6GoogleAccess
+	}).(ClusterUpdateDesiredPrivateIpv6GoogleAccessPtrOutput)
 }
 
 // The desired release channel configuration.
@@ -5491,11 +5493,11 @@ func (o ConsumptionMeteringConfigResponsePtrOutput) Enabled() pulumi.BoolPtrOutp
 // DNSConfig contains the desired set of options for configuring clusterDNS.
 type DNSConfig struct {
 	// cluster_dns indicates which in-cluster DNS provider should be used.
-	ClusterDns *string `pulumi:"clusterDns"`
+	ClusterDns *DNSConfigClusterDns `pulumi:"clusterDns"`
 	// cluster_dns_domain is the suffix used for all cluster service records.
 	ClusterDnsDomain *string `pulumi:"clusterDnsDomain"`
 	// cluster_dns_scope indicates the scope of access to cluster DNS records.
-	ClusterDnsScope *string `pulumi:"clusterDnsScope"`
+	ClusterDnsScope *DNSConfigClusterDnsScope `pulumi:"clusterDnsScope"`
 }
 
 // DNSConfigInput is an input type that accepts DNSConfigArgs and DNSConfigOutput values.
@@ -5512,11 +5514,11 @@ type DNSConfigInput interface {
 // DNSConfig contains the desired set of options for configuring clusterDNS.
 type DNSConfigArgs struct {
 	// cluster_dns indicates which in-cluster DNS provider should be used.
-	ClusterDns *DNSConfigClusterDns `pulumi:"clusterDns"`
+	ClusterDns DNSConfigClusterDnsPtrInput `pulumi:"clusterDns"`
 	// cluster_dns_domain is the suffix used for all cluster service records.
 	ClusterDnsDomain pulumi.StringPtrInput `pulumi:"clusterDnsDomain"`
 	// cluster_dns_scope indicates the scope of access to cluster DNS records.
-	ClusterDnsScope *DNSConfigClusterDnsScope `pulumi:"clusterDnsScope"`
+	ClusterDnsScope DNSConfigClusterDnsScopePtrInput `pulumi:"clusterDnsScope"`
 }
 
 func (DNSConfigArgs) ElementType() reflect.Type {
@@ -5598,8 +5600,8 @@ func (o DNSConfigOutput) ToDNSConfigPtrOutputWithContext(ctx context.Context) DN
 }
 
 // cluster_dns indicates which in-cluster DNS provider should be used.
-func (o DNSConfigOutput) ClusterDns() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DNSConfig) *string { return v.ClusterDns }).(pulumi.StringPtrOutput)
+func (o DNSConfigOutput) ClusterDns() DNSConfigClusterDnsPtrOutput {
+	return o.ApplyT(func(v DNSConfig) *DNSConfigClusterDns { return v.ClusterDns }).(DNSConfigClusterDnsPtrOutput)
 }
 
 // cluster_dns_domain is the suffix used for all cluster service records.
@@ -5608,8 +5610,8 @@ func (o DNSConfigOutput) ClusterDnsDomain() pulumi.StringPtrOutput {
 }
 
 // cluster_dns_scope indicates the scope of access to cluster DNS records.
-func (o DNSConfigOutput) ClusterDnsScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DNSConfig) *string { return v.ClusterDnsScope }).(pulumi.StringPtrOutput)
+func (o DNSConfigOutput) ClusterDnsScope() DNSConfigClusterDnsScopePtrOutput {
+	return o.ApplyT(func(v DNSConfig) *DNSConfigClusterDnsScope { return v.ClusterDnsScope }).(DNSConfigClusterDnsScopePtrOutput)
 }
 
 type DNSConfigPtrOutput struct{ *pulumi.OutputState }
@@ -5631,13 +5633,13 @@ func (o DNSConfigPtrOutput) Elem() DNSConfigOutput {
 }
 
 // cluster_dns indicates which in-cluster DNS provider should be used.
-func (o DNSConfigPtrOutput) ClusterDns() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DNSConfig) *string {
+func (o DNSConfigPtrOutput) ClusterDns() DNSConfigClusterDnsPtrOutput {
+	return o.ApplyT(func(v *DNSConfig) *DNSConfigClusterDns {
 		if v == nil {
 			return nil
 		}
 		return v.ClusterDns
-	}).(pulumi.StringPtrOutput)
+	}).(DNSConfigClusterDnsPtrOutput)
 }
 
 // cluster_dns_domain is the suffix used for all cluster service records.
@@ -5651,13 +5653,13 @@ func (o DNSConfigPtrOutput) ClusterDnsDomain() pulumi.StringPtrOutput {
 }
 
 // cluster_dns_scope indicates the scope of access to cluster DNS records.
-func (o DNSConfigPtrOutput) ClusterDnsScope() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DNSConfig) *string {
+func (o DNSConfigPtrOutput) ClusterDnsScope() DNSConfigClusterDnsScopePtrOutput {
+	return o.ApplyT(func(v *DNSConfig) *DNSConfigClusterDnsScope {
 		if v == nil {
 			return nil
 		}
 		return v.ClusterDnsScope
-	}).(pulumi.StringPtrOutput)
+	}).(DNSConfigClusterDnsScopePtrOutput)
 }
 
 // DNSConfig contains the desired set of options for configuring clusterDNS.
@@ -6124,7 +6126,7 @@ type DatabaseEncryption struct {
 	// Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
 	KeyName *string `pulumi:"keyName"`
 	// Denotes the state of etcd encryption.
-	State *string `pulumi:"state"`
+	State *DatabaseEncryptionState `pulumi:"state"`
 }
 
 // DatabaseEncryptionInput is an input type that accepts DatabaseEncryptionArgs and DatabaseEncryptionOutput values.
@@ -6143,7 +6145,7 @@ type DatabaseEncryptionArgs struct {
 	// Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
 	KeyName pulumi.StringPtrInput `pulumi:"keyName"`
 	// Denotes the state of etcd encryption.
-	State *DatabaseEncryptionState `pulumi:"state"`
+	State DatabaseEncryptionStatePtrInput `pulumi:"state"`
 }
 
 func (DatabaseEncryptionArgs) ElementType() reflect.Type {
@@ -6230,8 +6232,8 @@ func (o DatabaseEncryptionOutput) KeyName() pulumi.StringPtrOutput {
 }
 
 // Denotes the state of etcd encryption.
-func (o DatabaseEncryptionOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseEncryption) *string { return v.State }).(pulumi.StringPtrOutput)
+func (o DatabaseEncryptionOutput) State() DatabaseEncryptionStatePtrOutput {
+	return o.ApplyT(func(v DatabaseEncryption) *DatabaseEncryptionState { return v.State }).(DatabaseEncryptionStatePtrOutput)
 }
 
 type DatabaseEncryptionPtrOutput struct{ *pulumi.OutputState }
@@ -6263,13 +6265,13 @@ func (o DatabaseEncryptionPtrOutput) KeyName() pulumi.StringPtrOutput {
 }
 
 // Denotes the state of etcd encryption.
-func (o DatabaseEncryptionPtrOutput) State() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseEncryption) *string {
+func (o DatabaseEncryptionPtrOutput) State() DatabaseEncryptionStatePtrOutput {
+	return o.ApplyT(func(v *DatabaseEncryption) *DatabaseEncryptionState {
 		if v == nil {
 			return nil
 		}
 		return v.State
-	}).(pulumi.StringPtrOutput)
+	}).(DatabaseEncryptionStatePtrOutput)
 }
 
 // Configuration of etcd encryption.
@@ -8914,7 +8916,7 @@ func (o IntraNodeVisibilityConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 // Configuration options for Istio addon.
 type IstioConfig struct {
 	// The specified Istio auth mode, either none, or mutual TLS.
-	Auth *string `pulumi:"auth"`
+	Auth *IstioConfigAuth `pulumi:"auth"`
 	// Whether Istio is enabled for this cluster.
 	Disabled *bool `pulumi:"disabled"`
 }
@@ -8933,7 +8935,7 @@ type IstioConfigInput interface {
 // Configuration options for Istio addon.
 type IstioConfigArgs struct {
 	// The specified Istio auth mode, either none, or mutual TLS.
-	Auth *IstioConfigAuth `pulumi:"auth"`
+	Auth IstioConfigAuthPtrInput `pulumi:"auth"`
 	// Whether Istio is enabled for this cluster.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 }
@@ -9017,8 +9019,8 @@ func (o IstioConfigOutput) ToIstioConfigPtrOutputWithContext(ctx context.Context
 }
 
 // The specified Istio auth mode, either none, or mutual TLS.
-func (o IstioConfigOutput) Auth() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v IstioConfig) *string { return v.Auth }).(pulumi.StringPtrOutput)
+func (o IstioConfigOutput) Auth() IstioConfigAuthPtrOutput {
+	return o.ApplyT(func(v IstioConfig) *IstioConfigAuth { return v.Auth }).(IstioConfigAuthPtrOutput)
 }
 
 // Whether Istio is enabled for this cluster.
@@ -9045,13 +9047,13 @@ func (o IstioConfigPtrOutput) Elem() IstioConfigOutput {
 }
 
 // The specified Istio auth mode, either none, or mutual TLS.
-func (o IstioConfigPtrOutput) Auth() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *IstioConfig) *string {
+func (o IstioConfigPtrOutput) Auth() IstioConfigAuthPtrOutput {
+	return o.ApplyT(func(v *IstioConfig) *IstioConfigAuth {
 		if v == nil {
 			return nil
 		}
 		return v.Auth
-	}).(pulumi.StringPtrOutput)
+	}).(IstioConfigAuthPtrOutput)
 }
 
 // Whether Istio is enabled for this cluster.
@@ -12158,7 +12160,7 @@ func (o MaxPodsConstraintResponsePtrOutput) MaxPodsPerNode() pulumi.StringPtrOut
 // NetworkConfig reports the relative names of network & subnetwork.
 type NetworkConfig struct {
 	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
-	DatapathProvider *string `pulumi:"datapathProvider"`
+	DatapathProvider *NetworkConfigDatapathProvider `pulumi:"datapathProvider"`
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
 	DefaultSnatStatus *DefaultSnatStatus `pulumi:"defaultSnatStatus"`
 	// DNSConfig contains clusterDNS config for this cluster.
@@ -12168,7 +12170,7 @@ type NetworkConfig struct {
 	// Whether L4ILB Subsetting is enabled for this cluster.
 	EnableL4ilbSubsetting *bool `pulumi:"enableL4ilbSubsetting"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
-	PrivateIpv6GoogleAccess *string `pulumi:"privateIpv6GoogleAccess"`
+	PrivateIpv6GoogleAccess *NetworkConfigPrivateIpv6GoogleAccess `pulumi:"privateIpv6GoogleAccess"`
 	// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
 	ServiceExternalIpsConfig *ServiceExternalIPsConfig `pulumi:"serviceExternalIpsConfig"`
 }
@@ -12187,7 +12189,7 @@ type NetworkConfigInput interface {
 // NetworkConfig reports the relative names of network & subnetwork.
 type NetworkConfigArgs struct {
 	// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
-	DatapathProvider *NetworkConfigDatapathProvider `pulumi:"datapathProvider"`
+	DatapathProvider NetworkConfigDatapathProviderPtrInput `pulumi:"datapathProvider"`
 	// Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
 	DefaultSnatStatus DefaultSnatStatusPtrInput `pulumi:"defaultSnatStatus"`
 	// DNSConfig contains clusterDNS config for this cluster.
@@ -12197,7 +12199,7 @@ type NetworkConfigArgs struct {
 	// Whether L4ILB Subsetting is enabled for this cluster.
 	EnableL4ilbSubsetting pulumi.BoolPtrInput `pulumi:"enableL4ilbSubsetting"`
 	// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
-	PrivateIpv6GoogleAccess *NetworkConfigPrivateIpv6GoogleAccess `pulumi:"privateIpv6GoogleAccess"`
+	PrivateIpv6GoogleAccess NetworkConfigPrivateIpv6GoogleAccessPtrInput `pulumi:"privateIpv6GoogleAccess"`
 	// ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
 	ServiceExternalIpsConfig ServiceExternalIPsConfigPtrInput `pulumi:"serviceExternalIpsConfig"`
 }
@@ -12281,8 +12283,8 @@ func (o NetworkConfigOutput) ToNetworkConfigPtrOutputWithContext(ctx context.Con
 }
 
 // The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
-func (o NetworkConfigOutput) DatapathProvider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkConfig) *string { return v.DatapathProvider }).(pulumi.StringPtrOutput)
+func (o NetworkConfigOutput) DatapathProvider() NetworkConfigDatapathProviderPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *NetworkConfigDatapathProvider { return v.DatapathProvider }).(NetworkConfigDatapathProviderPtrOutput)
 }
 
 // Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
@@ -12306,8 +12308,8 @@ func (o NetworkConfigOutput) EnableL4ilbSubsetting() pulumi.BoolPtrOutput {
 }
 
 // The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
-func (o NetworkConfigOutput) PrivateIpv6GoogleAccess() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkConfig) *string { return v.PrivateIpv6GoogleAccess }).(pulumi.StringPtrOutput)
+func (o NetworkConfigOutput) PrivateIpv6GoogleAccess() NetworkConfigPrivateIpv6GoogleAccessPtrOutput {
+	return o.ApplyT(func(v NetworkConfig) *NetworkConfigPrivateIpv6GoogleAccess { return v.PrivateIpv6GoogleAccess }).(NetworkConfigPrivateIpv6GoogleAccessPtrOutput)
 }
 
 // ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
@@ -12334,13 +12336,13 @@ func (o NetworkConfigPtrOutput) Elem() NetworkConfigOutput {
 }
 
 // The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
-func (o NetworkConfigPtrOutput) DatapathProvider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkConfig) *string {
+func (o NetworkConfigPtrOutput) DatapathProvider() NetworkConfigDatapathProviderPtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *NetworkConfigDatapathProvider {
 		if v == nil {
 			return nil
 		}
 		return v.DatapathProvider
-	}).(pulumi.StringPtrOutput)
+	}).(NetworkConfigDatapathProviderPtrOutput)
 }
 
 // Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when default_snat_status is disabled. When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic.
@@ -12384,13 +12386,13 @@ func (o NetworkConfigPtrOutput) EnableL4ilbSubsetting() pulumi.BoolPtrOutput {
 }
 
 // The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
-func (o NetworkConfigPtrOutput) PrivateIpv6GoogleAccess() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkConfig) *string {
+func (o NetworkConfigPtrOutput) PrivateIpv6GoogleAccess() NetworkConfigPrivateIpv6GoogleAccessPtrOutput {
+	return o.ApplyT(func(v *NetworkConfig) *NetworkConfigPrivateIpv6GoogleAccess {
 		if v == nil {
 			return nil
 		}
 		return v.PrivateIpv6GoogleAccess
-	}).(pulumi.StringPtrOutput)
+	}).(NetworkConfigPrivateIpv6GoogleAccessPtrOutput)
 }
 
 // ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
@@ -12694,7 +12696,7 @@ type NetworkPolicy struct {
 	// Whether network policy is enabled on the cluster.
 	Enabled *bool `pulumi:"enabled"`
 	// The selected network policy provider.
-	Provider *string `pulumi:"provider"`
+	Provider *NetworkPolicyProvider `pulumi:"provider"`
 }
 
 // NetworkPolicyInput is an input type that accepts NetworkPolicyArgs and NetworkPolicyOutput values.
@@ -12713,7 +12715,7 @@ type NetworkPolicyArgs struct {
 	// Whether network policy is enabled on the cluster.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// The selected network policy provider.
-	Provider *NetworkPolicyProvider `pulumi:"provider"`
+	Provider NetworkPolicyProviderPtrInput `pulumi:"provider"`
 }
 
 func (NetworkPolicyArgs) ElementType() reflect.Type {
@@ -12800,8 +12802,8 @@ func (o NetworkPolicyOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // The selected network policy provider.
-func (o NetworkPolicyOutput) Provider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NetworkPolicy) *string { return v.Provider }).(pulumi.StringPtrOutput)
+func (o NetworkPolicyOutput) Provider() NetworkPolicyProviderPtrOutput {
+	return o.ApplyT(func(v NetworkPolicy) *NetworkPolicyProvider { return v.Provider }).(NetworkPolicyProviderPtrOutput)
 }
 
 type NetworkPolicyPtrOutput struct{ *pulumi.OutputState }
@@ -12833,13 +12835,13 @@ func (o NetworkPolicyPtrOutput) Enabled() pulumi.BoolPtrOutput {
 }
 
 // The selected network policy provider.
-func (o NetworkPolicyPtrOutput) Provider() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkPolicy) *string {
+func (o NetworkPolicyPtrOutput) Provider() NetworkPolicyProviderPtrOutput {
+	return o.ApplyT(func(v *NetworkPolicy) *NetworkPolicyProvider {
 		if v == nil {
 			return nil
 		}
 		return v.Provider
-	}).(pulumi.StringPtrOutput)
+	}).(NetworkPolicyProviderPtrOutput)
 }
 
 // Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
@@ -16808,7 +16810,7 @@ func (o NodePoolResponseArrayOutput) Index(i pulumi.IntInput) NodePoolResponseOu
 // Kubernetes taint is comprised of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values.
 type NodeTaint struct {
 	// Effect for taint.
-	Effect *string `pulumi:"effect"`
+	Effect *NodeTaintEffect `pulumi:"effect"`
 	// Key for taint.
 	Key *string `pulumi:"key"`
 	// Value for taint.
@@ -16829,7 +16831,7 @@ type NodeTaintInput interface {
 // Kubernetes taint is comprised of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values.
 type NodeTaintArgs struct {
 	// Effect for taint.
-	Effect *NodeTaintEffect `pulumi:"effect"`
+	Effect NodeTaintEffectPtrInput `pulumi:"effect"`
 	// Key for taint.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// Value for taint.
@@ -16889,8 +16891,8 @@ func (o NodeTaintOutput) ToNodeTaintOutputWithContext(ctx context.Context) NodeT
 }
 
 // Effect for taint.
-func (o NodeTaintOutput) Effect() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v NodeTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
+func (o NodeTaintOutput) Effect() NodeTaintEffectPtrOutput {
+	return o.ApplyT(func(v NodeTaint) *NodeTaintEffect { return v.Effect }).(NodeTaintEffectPtrOutput)
 }
 
 // Key for taint.
@@ -18960,7 +18962,7 @@ func (o RecurringTimeWindowResponsePtrOutput) Window() TimeWindowResponsePtrOutp
 // ReleaseChannel indicates which release channel a cluster is subscribed to. Release channels are arranged in order of risk. When a cluster is subscribed to a release channel, Google maintains both the master version and the node version. Node auto-upgrade defaults to true and cannot be disabled.
 type ReleaseChannel struct {
 	// channel specifies which release channel the cluster is subscribed to.
-	Channel *string `pulumi:"channel"`
+	Channel *ReleaseChannelChannel `pulumi:"channel"`
 }
 
 // ReleaseChannelInput is an input type that accepts ReleaseChannelArgs and ReleaseChannelOutput values.
@@ -18977,7 +18979,7 @@ type ReleaseChannelInput interface {
 // ReleaseChannel indicates which release channel a cluster is subscribed to. Release channels are arranged in order of risk. When a cluster is subscribed to a release channel, Google maintains both the master version and the node version. Node auto-upgrade defaults to true and cannot be disabled.
 type ReleaseChannelArgs struct {
 	// channel specifies which release channel the cluster is subscribed to.
-	Channel *ReleaseChannelChannel `pulumi:"channel"`
+	Channel ReleaseChannelChannelPtrInput `pulumi:"channel"`
 }
 
 func (ReleaseChannelArgs) ElementType() reflect.Type {
@@ -19059,8 +19061,8 @@ func (o ReleaseChannelOutput) ToReleaseChannelPtrOutputWithContext(ctx context.C
 }
 
 // channel specifies which release channel the cluster is subscribed to.
-func (o ReleaseChannelOutput) Channel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReleaseChannel) *string { return v.Channel }).(pulumi.StringPtrOutput)
+func (o ReleaseChannelOutput) Channel() ReleaseChannelChannelPtrOutput {
+	return o.ApplyT(func(v ReleaseChannel) *ReleaseChannelChannel { return v.Channel }).(ReleaseChannelChannelPtrOutput)
 }
 
 type ReleaseChannelPtrOutput struct{ *pulumi.OutputState }
@@ -19082,13 +19084,13 @@ func (o ReleaseChannelPtrOutput) Elem() ReleaseChannelOutput {
 }
 
 // channel specifies which release channel the cluster is subscribed to.
-func (o ReleaseChannelPtrOutput) Channel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReleaseChannel) *string {
+func (o ReleaseChannelPtrOutput) Channel() ReleaseChannelChannelPtrOutput {
+	return o.ApplyT(func(v *ReleaseChannel) *ReleaseChannelChannel {
 		if v == nil {
 			return nil
 		}
 		return v.Channel
-	}).(pulumi.StringPtrOutput)
+	}).(ReleaseChannelChannelPtrOutput)
 }
 
 // ReleaseChannel indicates which release channel a cluster is subscribed to. Release channels are arranged in order of risk. When a cluster is subscribed to a release channel, Google maintains both the master version and the node version. Node auto-upgrade defaults to true and cannot be disabled.
@@ -19228,7 +19230,7 @@ func (o ReleaseChannelResponsePtrOutput) Channel() pulumi.StringPtrOutput {
 // [ReservationAffinity](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) is the configuration of desired reservation which instances could take capacity from.
 type ReservationAffinity struct {
 	// Corresponds to the type of reservation consumption.
-	ConsumeReservationType *string `pulumi:"consumeReservationType"`
+	ConsumeReservationType *ReservationAffinityConsumeReservationType `pulumi:"consumeReservationType"`
 	// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
 	Key *string `pulumi:"key"`
 	// Corresponds to the label value(s) of reservation resource(s).
@@ -19249,7 +19251,7 @@ type ReservationAffinityInput interface {
 // [ReservationAffinity](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) is the configuration of desired reservation which instances could take capacity from.
 type ReservationAffinityArgs struct {
 	// Corresponds to the type of reservation consumption.
-	ConsumeReservationType *ReservationAffinityConsumeReservationType `pulumi:"consumeReservationType"`
+	ConsumeReservationType ReservationAffinityConsumeReservationTypePtrInput `pulumi:"consumeReservationType"`
 	// Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// Corresponds to the label value(s) of reservation resource(s).
@@ -19335,8 +19337,10 @@ func (o ReservationAffinityOutput) ToReservationAffinityPtrOutputWithContext(ctx
 }
 
 // Corresponds to the type of reservation consumption.
-func (o ReservationAffinityOutput) ConsumeReservationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ReservationAffinity) *string { return v.ConsumeReservationType }).(pulumi.StringPtrOutput)
+func (o ReservationAffinityOutput) ConsumeReservationType() ReservationAffinityConsumeReservationTypePtrOutput {
+	return o.ApplyT(func(v ReservationAffinity) *ReservationAffinityConsumeReservationType {
+		return v.ConsumeReservationType
+	}).(ReservationAffinityConsumeReservationTypePtrOutput)
 }
 
 // Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
@@ -19368,13 +19372,13 @@ func (o ReservationAffinityPtrOutput) Elem() ReservationAffinityOutput {
 }
 
 // Corresponds to the type of reservation consumption.
-func (o ReservationAffinityPtrOutput) ConsumeReservationType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ReservationAffinity) *string {
+func (o ReservationAffinityPtrOutput) ConsumeReservationType() ReservationAffinityConsumeReservationTypePtrOutput {
+	return o.ApplyT(func(v *ReservationAffinity) *ReservationAffinityConsumeReservationType {
 		if v == nil {
 			return nil
 		}
 		return v.ConsumeReservationType
-	}).(pulumi.StringPtrOutput)
+	}).(ReservationAffinityConsumeReservationTypePtrOutput)
 }
 
 // Corresponds to the label key of a reservation resource. To target a SPECIFIC_RESERVATION by name, specify "googleapis.com/reservation-name" as the key and specify the name of your reservation as its value.
@@ -20156,7 +20160,7 @@ type SandboxConfig struct {
 	// Type of the sandbox to use for the node (e.g. 'gvisor')
 	SandboxType *string `pulumi:"sandboxType"`
 	// Type of the sandbox to use for the node.
-	Type *string `pulumi:"type"`
+	Type *SandboxConfigType `pulumi:"type"`
 }
 
 // SandboxConfigInput is an input type that accepts SandboxConfigArgs and SandboxConfigOutput values.
@@ -20175,7 +20179,7 @@ type SandboxConfigArgs struct {
 	// Type of the sandbox to use for the node (e.g. 'gvisor')
 	SandboxType pulumi.StringPtrInput `pulumi:"sandboxType"`
 	// Type of the sandbox to use for the node.
-	Type *SandboxConfigType `pulumi:"type"`
+	Type SandboxConfigTypePtrInput `pulumi:"type"`
 }
 
 func (SandboxConfigArgs) ElementType() reflect.Type {
@@ -20262,8 +20266,8 @@ func (o SandboxConfigOutput) SandboxType() pulumi.StringPtrOutput {
 }
 
 // Type of the sandbox to use for the node.
-func (o SandboxConfigOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SandboxConfig) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o SandboxConfigOutput) Type() SandboxConfigTypePtrOutput {
+	return o.ApplyT(func(v SandboxConfig) *SandboxConfigType { return v.Type }).(SandboxConfigTypePtrOutput)
 }
 
 type SandboxConfigPtrOutput struct{ *pulumi.OutputState }
@@ -20295,13 +20299,13 @@ func (o SandboxConfigPtrOutput) SandboxType() pulumi.StringPtrOutput {
 }
 
 // Type of the sandbox to use for the node.
-func (o SandboxConfigPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SandboxConfig) *string {
+func (o SandboxConfigPtrOutput) Type() SandboxConfigTypePtrOutput {
+	return o.ApplyT(func(v *SandboxConfig) *SandboxConfigType {
 		if v == nil {
 			return nil
 		}
 		return v.Type
-	}).(pulumi.StringPtrOutput)
+	}).(SandboxConfigTypePtrOutput)
 }
 
 // SandboxConfig contains configurations of the sandbox to use for the node.
@@ -21302,7 +21306,7 @@ func (o ShieldedNodesResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
 // StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
 type StatusCondition struct {
 	// Canonical code of the condition.
-	CanonicalCode *string `pulumi:"canonicalCode"`
+	CanonicalCode *StatusConditionCanonicalCode `pulumi:"canonicalCode"`
 	// Human-friendly representation of the condition
 	Message *string `pulumi:"message"`
 }
@@ -21321,7 +21325,7 @@ type StatusConditionInput interface {
 // StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
 type StatusConditionArgs struct {
 	// Canonical code of the condition.
-	CanonicalCode *StatusConditionCanonicalCode `pulumi:"canonicalCode"`
+	CanonicalCode StatusConditionCanonicalCodePtrInput `pulumi:"canonicalCode"`
 	// Human-friendly representation of the condition
 	Message pulumi.StringPtrInput `pulumi:"message"`
 }
@@ -21379,8 +21383,8 @@ func (o StatusConditionOutput) ToStatusConditionOutputWithContext(ctx context.Co
 }
 
 // Canonical code of the condition.
-func (o StatusConditionOutput) CanonicalCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v StatusCondition) *string { return v.CanonicalCode }).(pulumi.StringPtrOutput)
+func (o StatusConditionOutput) CanonicalCode() StatusConditionCanonicalCodePtrOutput {
+	return o.ApplyT(func(v StatusCondition) *StatusConditionCanonicalCode { return v.CanonicalCode }).(StatusConditionCanonicalCodePtrOutput)
 }
 
 // Human-friendly representation of the condition
@@ -23350,9 +23354,9 @@ func (o WorkloadIdentityConfigResponsePtrOutput) WorkloadPool() pulumi.StringPtr
 // WorkloadMetadataConfig defines the metadata configuration to expose to workloads on the node pool.
 type WorkloadMetadataConfig struct {
 	// Mode is the configuration for how to expose metadata to workloads running on the node pool.
-	Mode *string `pulumi:"mode"`
+	Mode *WorkloadMetadataConfigMode `pulumi:"mode"`
 	// NodeMetadata is the configuration for how to expose metadata to the workloads running on the node.
-	NodeMetadata *string `pulumi:"nodeMetadata"`
+	NodeMetadata *WorkloadMetadataConfigNodeMetadata `pulumi:"nodeMetadata"`
 }
 
 // WorkloadMetadataConfigInput is an input type that accepts WorkloadMetadataConfigArgs and WorkloadMetadataConfigOutput values.
@@ -23369,9 +23373,9 @@ type WorkloadMetadataConfigInput interface {
 // WorkloadMetadataConfig defines the metadata configuration to expose to workloads on the node pool.
 type WorkloadMetadataConfigArgs struct {
 	// Mode is the configuration for how to expose metadata to workloads running on the node pool.
-	Mode *WorkloadMetadataConfigMode `pulumi:"mode"`
+	Mode WorkloadMetadataConfigModePtrInput `pulumi:"mode"`
 	// NodeMetadata is the configuration for how to expose metadata to the workloads running on the node.
-	NodeMetadata *WorkloadMetadataConfigNodeMetadata `pulumi:"nodeMetadata"`
+	NodeMetadata WorkloadMetadataConfigNodeMetadataPtrInput `pulumi:"nodeMetadata"`
 }
 
 func (WorkloadMetadataConfigArgs) ElementType() reflect.Type {
@@ -23453,13 +23457,13 @@ func (o WorkloadMetadataConfigOutput) ToWorkloadMetadataConfigPtrOutputWithConte
 }
 
 // Mode is the configuration for how to expose metadata to workloads running on the node pool.
-func (o WorkloadMetadataConfigOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkloadMetadataConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
+func (o WorkloadMetadataConfigOutput) Mode() WorkloadMetadataConfigModePtrOutput {
+	return o.ApplyT(func(v WorkloadMetadataConfig) *WorkloadMetadataConfigMode { return v.Mode }).(WorkloadMetadataConfigModePtrOutput)
 }
 
 // NodeMetadata is the configuration for how to expose metadata to the workloads running on the node.
-func (o WorkloadMetadataConfigOutput) NodeMetadata() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v WorkloadMetadataConfig) *string { return v.NodeMetadata }).(pulumi.StringPtrOutput)
+func (o WorkloadMetadataConfigOutput) NodeMetadata() WorkloadMetadataConfigNodeMetadataPtrOutput {
+	return o.ApplyT(func(v WorkloadMetadataConfig) *WorkloadMetadataConfigNodeMetadata { return v.NodeMetadata }).(WorkloadMetadataConfigNodeMetadataPtrOutput)
 }
 
 type WorkloadMetadataConfigPtrOutput struct{ *pulumi.OutputState }
@@ -23481,23 +23485,23 @@ func (o WorkloadMetadataConfigPtrOutput) Elem() WorkloadMetadataConfigOutput {
 }
 
 // Mode is the configuration for how to expose metadata to workloads running on the node pool.
-func (o WorkloadMetadataConfigPtrOutput) Mode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkloadMetadataConfig) *string {
+func (o WorkloadMetadataConfigPtrOutput) Mode() WorkloadMetadataConfigModePtrOutput {
+	return o.ApplyT(func(v *WorkloadMetadataConfig) *WorkloadMetadataConfigMode {
 		if v == nil {
 			return nil
 		}
 		return v.Mode
-	}).(pulumi.StringPtrOutput)
+	}).(WorkloadMetadataConfigModePtrOutput)
 }
 
 // NodeMetadata is the configuration for how to expose metadata to the workloads running on the node.
-func (o WorkloadMetadataConfigPtrOutput) NodeMetadata() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *WorkloadMetadataConfig) *string {
+func (o WorkloadMetadataConfigPtrOutput) NodeMetadata() WorkloadMetadataConfigNodeMetadataPtrOutput {
+	return o.ApplyT(func(v *WorkloadMetadataConfig) *WorkloadMetadataConfigNodeMetadata {
 		if v == nil {
 			return nil
 		}
 		return v.NodeMetadata
-	}).(pulumi.StringPtrOutput)
+	}).(WorkloadMetadataConfigNodeMetadataPtrOutput)
 }
 
 // WorkloadMetadataConfig defines the metadata configuration to expose to workloads on the node pool.

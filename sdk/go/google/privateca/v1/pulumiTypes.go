@@ -604,7 +604,7 @@ type AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *string `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
@@ -623,7 +623,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *AuditLogConfigLogType `pulumi:"logType"`
+	LogType AuditLogConfigLogTypePtrInput `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -684,8 +684,8 @@ func (o AuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
 }
 
 // The log type that this config enables.
-func (o AuditLogConfigOutput) LogType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AuditLogConfig) *string { return v.LogType }).(pulumi.StringPtrOutput)
+func (o AuditLogConfigOutput) LogType() AuditLogConfigLogTypePtrOutput {
+	return o.ApplyT(func(v AuditLogConfig) *AuditLogConfigLogType { return v.LogType }).(AuditLogConfigLogTypePtrOutput)
 }
 
 type AuditLogConfigArrayOutput struct{ *pulumi.OutputState }
@@ -2020,7 +2020,7 @@ type CertificateExtensionConstraints struct {
 	// Optional. A set of ObjectIds identifying custom X.509 extensions. Will be combined with known_extensions to determine the full set of X.509 extensions.
 	AdditionalExtensions []ObjectId `pulumi:"additionalExtensions"`
 	// Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
-	KnownExtensions []string `pulumi:"knownExtensions"`
+	KnownExtensions []CertificateExtensionConstraintsKnownExtensionsItem `pulumi:"knownExtensions"`
 }
 
 // CertificateExtensionConstraintsInput is an input type that accepts CertificateExtensionConstraintsArgs and CertificateExtensionConstraintsOutput values.
@@ -2126,8 +2126,10 @@ func (o CertificateExtensionConstraintsOutput) AdditionalExtensions() ObjectIdAr
 }
 
 // Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
-func (o CertificateExtensionConstraintsOutput) KnownExtensions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v CertificateExtensionConstraints) []string { return v.KnownExtensions }).(pulumi.StringArrayOutput)
+func (o CertificateExtensionConstraintsOutput) KnownExtensions() CertificateExtensionConstraintsKnownExtensionsItemArrayOutput {
+	return o.ApplyT(func(v CertificateExtensionConstraints) []CertificateExtensionConstraintsKnownExtensionsItem {
+		return v.KnownExtensions
+	}).(CertificateExtensionConstraintsKnownExtensionsItemArrayOutput)
 }
 
 type CertificateExtensionConstraintsPtrOutput struct{ *pulumi.OutputState }
@@ -2159,13 +2161,13 @@ func (o CertificateExtensionConstraintsPtrOutput) AdditionalExtensions() ObjectI
 }
 
 // Optional. A set of named X.509 extensions. Will be combined with additional_extensions to determine the full set of X.509 extensions.
-func (o CertificateExtensionConstraintsPtrOutput) KnownExtensions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *CertificateExtensionConstraints) []string {
+func (o CertificateExtensionConstraintsPtrOutput) KnownExtensions() CertificateExtensionConstraintsKnownExtensionsItemArrayOutput {
+	return o.ApplyT(func(v *CertificateExtensionConstraints) []CertificateExtensionConstraintsKnownExtensionsItem {
 		if v == nil {
 			return nil
 		}
 		return v.KnownExtensions
-	}).(pulumi.StringArrayOutput)
+	}).(CertificateExtensionConstraintsKnownExtensionsItemArrayOutput)
 }
 
 // Describes a set of X.509 extensions that may be part of some certificate issuance controls.
@@ -2802,7 +2804,7 @@ func (o CertificateIdentityConstraintsResponsePtrOutput) CelExpression() ExprRes
 // Describes an Elliptic Curve key that may be used in a Certificate issued from a CaPool.
 type EcKeyType struct {
 	// Optional. A signature algorithm that must be used. If this is omitted, any EC-based signature algorithm will be allowed.
-	SignatureAlgorithm *string `pulumi:"signatureAlgorithm"`
+	SignatureAlgorithm *EcKeyTypeSignatureAlgorithm `pulumi:"signatureAlgorithm"`
 }
 
 // EcKeyTypeInput is an input type that accepts EcKeyTypeArgs and EcKeyTypeOutput values.
@@ -2819,7 +2821,7 @@ type EcKeyTypeInput interface {
 // Describes an Elliptic Curve key that may be used in a Certificate issued from a CaPool.
 type EcKeyTypeArgs struct {
 	// Optional. A signature algorithm that must be used. If this is omitted, any EC-based signature algorithm will be allowed.
-	SignatureAlgorithm *EcKeyTypeSignatureAlgorithm `pulumi:"signatureAlgorithm"`
+	SignatureAlgorithm EcKeyTypeSignatureAlgorithmPtrInput `pulumi:"signatureAlgorithm"`
 }
 
 func (EcKeyTypeArgs) ElementType() reflect.Type {
@@ -2901,8 +2903,8 @@ func (o EcKeyTypeOutput) ToEcKeyTypePtrOutputWithContext(ctx context.Context) Ec
 }
 
 // Optional. A signature algorithm that must be used. If this is omitted, any EC-based signature algorithm will be allowed.
-func (o EcKeyTypeOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EcKeyType) *string { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
+func (o EcKeyTypeOutput) SignatureAlgorithm() EcKeyTypeSignatureAlgorithmPtrOutput {
+	return o.ApplyT(func(v EcKeyType) *EcKeyTypeSignatureAlgorithm { return v.SignatureAlgorithm }).(EcKeyTypeSignatureAlgorithmPtrOutput)
 }
 
 type EcKeyTypePtrOutput struct{ *pulumi.OutputState }
@@ -2924,13 +2926,13 @@ func (o EcKeyTypePtrOutput) Elem() EcKeyTypeOutput {
 }
 
 // Optional. A signature algorithm that must be used. If this is omitted, any EC-based signature algorithm will be allowed.
-func (o EcKeyTypePtrOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EcKeyType) *string {
+func (o EcKeyTypePtrOutput) SignatureAlgorithm() EcKeyTypeSignatureAlgorithmPtrOutput {
+	return o.ApplyT(func(v *EcKeyType) *EcKeyTypeSignatureAlgorithm {
 		if v == nil {
 			return nil
 		}
 		return v.SignatureAlgorithm
-	}).(pulumi.StringPtrOutput)
+	}).(EcKeyTypeSignatureAlgorithmPtrOutput)
 }
 
 // Describes an Elliptic Curve key that may be used in a Certificate issued from a CaPool.
@@ -5645,7 +5647,7 @@ func (o KeyUsageResponsePtrOutput) UnknownExtendedKeyUsages() ObjectIdResponseAr
 // A Cloud KMS key configuration that a CertificateAuthority will use.
 type KeyVersionSpec struct {
 	// The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
-	Algorithm *string `pulumi:"algorithm"`
+	Algorithm *KeyVersionSpecAlgorithm `pulumi:"algorithm"`
 	// The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
 	CloudKmsKeyVersion *string `pulumi:"cloudKmsKeyVersion"`
 }
@@ -5664,7 +5666,7 @@ type KeyVersionSpecInput interface {
 // A Cloud KMS key configuration that a CertificateAuthority will use.
 type KeyVersionSpecArgs struct {
 	// The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
-	Algorithm *KeyVersionSpecAlgorithm `pulumi:"algorithm"`
+	Algorithm KeyVersionSpecAlgorithmPtrInput `pulumi:"algorithm"`
 	// The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
 	CloudKmsKeyVersion pulumi.StringPtrInput `pulumi:"cloudKmsKeyVersion"`
 }
@@ -5748,8 +5750,8 @@ func (o KeyVersionSpecOutput) ToKeyVersionSpecPtrOutputWithContext(ctx context.C
 }
 
 // The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
-func (o KeyVersionSpecOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v KeyVersionSpec) *string { return v.Algorithm }).(pulumi.StringPtrOutput)
+func (o KeyVersionSpecOutput) Algorithm() KeyVersionSpecAlgorithmPtrOutput {
+	return o.ApplyT(func(v KeyVersionSpec) *KeyVersionSpecAlgorithm { return v.Algorithm }).(KeyVersionSpecAlgorithmPtrOutput)
 }
 
 // The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
@@ -5776,13 +5778,13 @@ func (o KeyVersionSpecPtrOutput) Elem() KeyVersionSpecOutput {
 }
 
 // The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
-func (o KeyVersionSpecPtrOutput) Algorithm() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *KeyVersionSpec) *string {
+func (o KeyVersionSpecPtrOutput) Algorithm() KeyVersionSpecAlgorithmPtrOutput {
+	return o.ApplyT(func(v *KeyVersionSpec) *KeyVersionSpecAlgorithm {
 		if v == nil {
 			return nil
 		}
 		return v.Algorithm
-	}).(pulumi.StringPtrOutput)
+	}).(KeyVersionSpecAlgorithmPtrOutput)
 }
 
 // The resource name for an existing Cloud KMS CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. This option enables full flexibility in the key's capabilities and properties.
@@ -6151,7 +6153,7 @@ func (o ObjectIdResponseArrayOutput) Index(i pulumi.IntInput) ObjectIdResponseOu
 // A PublicKey describes a public key.
 type PublicKey struct {
 	// The format of the public key.
-	Format string `pulumi:"format"`
+	Format PublicKeyFormat `pulumi:"format"`
 	// A public key. The padding and encoding must match with the `KeyFormat` value specified for the `format` field.
 	Key string `pulumi:"key"`
 }
@@ -6170,7 +6172,7 @@ type PublicKeyInput interface {
 // A PublicKey describes a public key.
 type PublicKeyArgs struct {
 	// The format of the public key.
-	Format PublicKeyFormat `pulumi:"format"`
+	Format PublicKeyFormatInput `pulumi:"format"`
 	// A public key. The padding and encoding must match with the `KeyFormat` value specified for the `format` field.
 	Key pulumi.StringInput `pulumi:"key"`
 }
@@ -6254,8 +6256,8 @@ func (o PublicKeyOutput) ToPublicKeyPtrOutputWithContext(ctx context.Context) Pu
 }
 
 // The format of the public key.
-func (o PublicKeyOutput) Format() pulumi.StringOutput {
-	return o.ApplyT(func(v PublicKey) string { return v.Format }).(pulumi.StringOutput)
+func (o PublicKeyOutput) Format() PublicKeyFormatOutput {
+	return o.ApplyT(func(v PublicKey) PublicKeyFormat { return v.Format }).(PublicKeyFormatOutput)
 }
 
 // A public key. The padding and encoding must match with the `KeyFormat` value specified for the `format` field.
@@ -6282,13 +6284,13 @@ func (o PublicKeyPtrOutput) Elem() PublicKeyOutput {
 }
 
 // The format of the public key.
-func (o PublicKeyPtrOutput) Format() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PublicKey) *string {
+func (o PublicKeyPtrOutput) Format() PublicKeyFormatPtrOutput {
+	return o.ApplyT(func(v *PublicKey) *PublicKeyFormat {
 		if v == nil {
 			return nil
 		}
 		return &v.Format
-	}).(pulumi.StringPtrOutput)
+	}).(PublicKeyFormatPtrOutput)
 }
 
 // A public key. The padding and encoding must match with the `KeyFormat` value specified for the `format` field.

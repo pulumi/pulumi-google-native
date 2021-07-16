@@ -11,7 +11,7 @@ import (
 )
 
 // **Beta Feature** The logging verbosity for device activity. If unspecified, DeviceRegistry.log_level will be used.
-type DeviceLogLevel pulumi.String
+type DeviceLogLevel string
 
 const (
 	// No logging specified. If not specified, logging will be disabled.
@@ -27,7 +27,23 @@ const (
 )
 
 func (DeviceLogLevel) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*DeviceLogLevel)(nil)).Elem()
+}
+
+func (e DeviceLogLevel) ToDeviceLogLevelOutput() DeviceLogLevelOutput {
+	return pulumi.ToOutput(e).(DeviceLogLevelOutput)
+}
+
+func (e DeviceLogLevel) ToDeviceLogLevelOutputWithContext(ctx context.Context) DeviceLogLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DeviceLogLevelOutput)
+}
+
+func (e DeviceLogLevel) ToDeviceLogLevelPtrOutput() DeviceLogLevelPtrOutput {
+	return e.ToDeviceLogLevelPtrOutputWithContext(context.Background())
+}
+
+func (e DeviceLogLevel) ToDeviceLogLevelPtrOutputWithContext(ctx context.Context) DeviceLogLevelPtrOutput {
+	return DeviceLogLevel(e).ToDeviceLogLevelOutputWithContext(ctx).ToDeviceLogLevelPtrOutputWithContext(ctx)
 }
 
 func (e DeviceLogLevel) ToStringOutput() pulumi.StringOutput {
@@ -46,8 +62,129 @@ func (e DeviceLogLevel) ToStringPtrOutputWithContext(ctx context.Context) pulumi
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type DeviceLogLevelOutput struct{ *pulumi.OutputState }
+
+func (DeviceLogLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeviceLogLevel)(nil)).Elem()
+}
+
+func (o DeviceLogLevelOutput) ToDeviceLogLevelOutput() DeviceLogLevelOutput {
+	return o
+}
+
+func (o DeviceLogLevelOutput) ToDeviceLogLevelOutputWithContext(ctx context.Context) DeviceLogLevelOutput {
+	return o
+}
+
+func (o DeviceLogLevelOutput) ToDeviceLogLevelPtrOutput() DeviceLogLevelPtrOutput {
+	return o.ToDeviceLogLevelPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceLogLevelOutput) ToDeviceLogLevelPtrOutputWithContext(ctx context.Context) DeviceLogLevelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeviceLogLevel) *DeviceLogLevel {
+		return &v
+	}).(DeviceLogLevelPtrOutput)
+}
+
+func (o DeviceLogLevelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DeviceLogLevelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DeviceLogLevel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DeviceLogLevelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceLogLevelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DeviceLogLevel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DeviceLogLevelPtrOutput struct{ *pulumi.OutputState }
+
+func (DeviceLogLevelPtrOutput) ElementType() reflect.Type {
+	return deviceLogLevelPtrType
+}
+
+func (o DeviceLogLevelPtrOutput) ToDeviceLogLevelPtrOutput() DeviceLogLevelPtrOutput {
+	return o
+}
+
+func (o DeviceLogLevelPtrOutput) ToDeviceLogLevelPtrOutputWithContext(ctx context.Context) DeviceLogLevelPtrOutput {
+	return o
+}
+
+func (o DeviceLogLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DeviceLogLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DeviceLogLevel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DeviceLogLevelPtrOutput) Elem() DeviceLogLevelOutput {
+	return o.ApplyT(func(v *DeviceLogLevel) DeviceLogLevel {
+		var ret DeviceLogLevel
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(DeviceLogLevelOutput)
+}
+
+// DeviceLogLevelInput is an input type that accepts DeviceLogLevelArgs and DeviceLogLevelOutput values.
+// You can construct a concrete instance of `DeviceLogLevelInput` via:
+//
+//          DeviceLogLevelArgs{...}
+type DeviceLogLevelInput interface {
+	pulumi.Input
+
+	ToDeviceLogLevelOutput() DeviceLogLevelOutput
+	ToDeviceLogLevelOutputWithContext(context.Context) DeviceLogLevelOutput
+}
+
+var deviceLogLevelPtrType = reflect.TypeOf((**DeviceLogLevel)(nil)).Elem()
+
+type DeviceLogLevelPtrInput interface {
+	pulumi.Input
+
+	ToDeviceLogLevelPtrOutput() DeviceLogLevelPtrOutput
+	ToDeviceLogLevelPtrOutputWithContext(context.Context) DeviceLogLevelPtrOutput
+}
+
+type deviceLogLevelPtr string
+
+func DeviceLogLevelPtr(v string) DeviceLogLevelPtrInput {
+	return (*deviceLogLevelPtr)(&v)
+}
+
+func (*deviceLogLevelPtr) ElementType() reflect.Type {
+	return deviceLogLevelPtrType
+}
+
+func (in *deviceLogLevelPtr) ToDeviceLogLevelPtrOutput() DeviceLogLevelPtrOutput {
+	return pulumi.ToOutput(in).(DeviceLogLevelPtrOutput)
+}
+
+func (in *deviceLogLevelPtr) ToDeviceLogLevelPtrOutputWithContext(ctx context.Context) DeviceLogLevelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DeviceLogLevelPtrOutput)
+}
+
 // Indicates how to authorize and/or authenticate devices to access the gateway.
-type GatewayConfigGatewayAuthMethod pulumi.String
+type GatewayConfigGatewayAuthMethod string
 
 const (
 	// No authentication/authorization method specified. No devices are allowed to access the gateway.
@@ -61,7 +198,23 @@ const (
 )
 
 func (GatewayConfigGatewayAuthMethod) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GatewayConfigGatewayAuthMethod)(nil)).Elem()
+}
+
+func (e GatewayConfigGatewayAuthMethod) ToGatewayConfigGatewayAuthMethodOutput() GatewayConfigGatewayAuthMethodOutput {
+	return pulumi.ToOutput(e).(GatewayConfigGatewayAuthMethodOutput)
+}
+
+func (e GatewayConfigGatewayAuthMethod) ToGatewayConfigGatewayAuthMethodOutputWithContext(ctx context.Context) GatewayConfigGatewayAuthMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GatewayConfigGatewayAuthMethodOutput)
+}
+
+func (e GatewayConfigGatewayAuthMethod) ToGatewayConfigGatewayAuthMethodPtrOutput() GatewayConfigGatewayAuthMethodPtrOutput {
+	return e.ToGatewayConfigGatewayAuthMethodPtrOutputWithContext(context.Background())
+}
+
+func (e GatewayConfigGatewayAuthMethod) ToGatewayConfigGatewayAuthMethodPtrOutputWithContext(ctx context.Context) GatewayConfigGatewayAuthMethodPtrOutput {
+	return GatewayConfigGatewayAuthMethod(e).ToGatewayConfigGatewayAuthMethodOutputWithContext(ctx).ToGatewayConfigGatewayAuthMethodPtrOutputWithContext(ctx)
 }
 
 func (e GatewayConfigGatewayAuthMethod) ToStringOutput() pulumi.StringOutput {
@@ -80,8 +233,129 @@ func (e GatewayConfigGatewayAuthMethod) ToStringPtrOutputWithContext(ctx context
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type GatewayConfigGatewayAuthMethodOutput struct{ *pulumi.OutputState }
+
+func (GatewayConfigGatewayAuthMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayConfigGatewayAuthMethod)(nil)).Elem()
+}
+
+func (o GatewayConfigGatewayAuthMethodOutput) ToGatewayConfigGatewayAuthMethodOutput() GatewayConfigGatewayAuthMethodOutput {
+	return o
+}
+
+func (o GatewayConfigGatewayAuthMethodOutput) ToGatewayConfigGatewayAuthMethodOutputWithContext(ctx context.Context) GatewayConfigGatewayAuthMethodOutput {
+	return o
+}
+
+func (o GatewayConfigGatewayAuthMethodOutput) ToGatewayConfigGatewayAuthMethodPtrOutput() GatewayConfigGatewayAuthMethodPtrOutput {
+	return o.ToGatewayConfigGatewayAuthMethodPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayConfigGatewayAuthMethodOutput) ToGatewayConfigGatewayAuthMethodPtrOutputWithContext(ctx context.Context) GatewayConfigGatewayAuthMethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayConfigGatewayAuthMethod) *GatewayConfigGatewayAuthMethod {
+		return &v
+	}).(GatewayConfigGatewayAuthMethodPtrOutput)
+}
+
+func (o GatewayConfigGatewayAuthMethodOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GatewayConfigGatewayAuthMethodOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GatewayConfigGatewayAuthMethod) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GatewayConfigGatewayAuthMethodOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayConfigGatewayAuthMethodOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GatewayConfigGatewayAuthMethod) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GatewayConfigGatewayAuthMethodPtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayConfigGatewayAuthMethodPtrOutput) ElementType() reflect.Type {
+	return gatewayConfigGatewayAuthMethodPtrType
+}
+
+func (o GatewayConfigGatewayAuthMethodPtrOutput) ToGatewayConfigGatewayAuthMethodPtrOutput() GatewayConfigGatewayAuthMethodPtrOutput {
+	return o
+}
+
+func (o GatewayConfigGatewayAuthMethodPtrOutput) ToGatewayConfigGatewayAuthMethodPtrOutputWithContext(ctx context.Context) GatewayConfigGatewayAuthMethodPtrOutput {
+	return o
+}
+
+func (o GatewayConfigGatewayAuthMethodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayConfigGatewayAuthMethodPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GatewayConfigGatewayAuthMethod) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayConfigGatewayAuthMethodPtrOutput) Elem() GatewayConfigGatewayAuthMethodOutput {
+	return o.ApplyT(func(v *GatewayConfigGatewayAuthMethod) GatewayConfigGatewayAuthMethod {
+		var ret GatewayConfigGatewayAuthMethod
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GatewayConfigGatewayAuthMethodOutput)
+}
+
+// GatewayConfigGatewayAuthMethodInput is an input type that accepts GatewayConfigGatewayAuthMethodArgs and GatewayConfigGatewayAuthMethodOutput values.
+// You can construct a concrete instance of `GatewayConfigGatewayAuthMethodInput` via:
+//
+//          GatewayConfigGatewayAuthMethodArgs{...}
+type GatewayConfigGatewayAuthMethodInput interface {
+	pulumi.Input
+
+	ToGatewayConfigGatewayAuthMethodOutput() GatewayConfigGatewayAuthMethodOutput
+	ToGatewayConfigGatewayAuthMethodOutputWithContext(context.Context) GatewayConfigGatewayAuthMethodOutput
+}
+
+var gatewayConfigGatewayAuthMethodPtrType = reflect.TypeOf((**GatewayConfigGatewayAuthMethod)(nil)).Elem()
+
+type GatewayConfigGatewayAuthMethodPtrInput interface {
+	pulumi.Input
+
+	ToGatewayConfigGatewayAuthMethodPtrOutput() GatewayConfigGatewayAuthMethodPtrOutput
+	ToGatewayConfigGatewayAuthMethodPtrOutputWithContext(context.Context) GatewayConfigGatewayAuthMethodPtrOutput
+}
+
+type gatewayConfigGatewayAuthMethodPtr string
+
+func GatewayConfigGatewayAuthMethodPtr(v string) GatewayConfigGatewayAuthMethodPtrInput {
+	return (*gatewayConfigGatewayAuthMethodPtr)(&v)
+}
+
+func (*gatewayConfigGatewayAuthMethodPtr) ElementType() reflect.Type {
+	return gatewayConfigGatewayAuthMethodPtrType
+}
+
+func (in *gatewayConfigGatewayAuthMethodPtr) ToGatewayConfigGatewayAuthMethodPtrOutput() GatewayConfigGatewayAuthMethodPtrOutput {
+	return pulumi.ToOutput(in).(GatewayConfigGatewayAuthMethodPtrOutput)
+}
+
+func (in *gatewayConfigGatewayAuthMethodPtr) ToGatewayConfigGatewayAuthMethodPtrOutputWithContext(ctx context.Context) GatewayConfigGatewayAuthMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GatewayConfigGatewayAuthMethodPtrOutput)
+}
+
 // Indicates whether the device is a gateway.
-type GatewayConfigGatewayType pulumi.String
+type GatewayConfigGatewayType string
 
 const (
 	// If unspecified, the device is considered a non-gateway device.
@@ -93,7 +367,23 @@ const (
 )
 
 func (GatewayConfigGatewayType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*GatewayConfigGatewayType)(nil)).Elem()
+}
+
+func (e GatewayConfigGatewayType) ToGatewayConfigGatewayTypeOutput() GatewayConfigGatewayTypeOutput {
+	return pulumi.ToOutput(e).(GatewayConfigGatewayTypeOutput)
+}
+
+func (e GatewayConfigGatewayType) ToGatewayConfigGatewayTypeOutputWithContext(ctx context.Context) GatewayConfigGatewayTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GatewayConfigGatewayTypeOutput)
+}
+
+func (e GatewayConfigGatewayType) ToGatewayConfigGatewayTypePtrOutput() GatewayConfigGatewayTypePtrOutput {
+	return e.ToGatewayConfigGatewayTypePtrOutputWithContext(context.Background())
+}
+
+func (e GatewayConfigGatewayType) ToGatewayConfigGatewayTypePtrOutputWithContext(ctx context.Context) GatewayConfigGatewayTypePtrOutput {
+	return GatewayConfigGatewayType(e).ToGatewayConfigGatewayTypeOutputWithContext(ctx).ToGatewayConfigGatewayTypePtrOutputWithContext(ctx)
 }
 
 func (e GatewayConfigGatewayType) ToStringOutput() pulumi.StringOutput {
@@ -112,8 +402,129 @@ func (e GatewayConfigGatewayType) ToStringPtrOutputWithContext(ctx context.Conte
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type GatewayConfigGatewayTypeOutput struct{ *pulumi.OutputState }
+
+func (GatewayConfigGatewayTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GatewayConfigGatewayType)(nil)).Elem()
+}
+
+func (o GatewayConfigGatewayTypeOutput) ToGatewayConfigGatewayTypeOutput() GatewayConfigGatewayTypeOutput {
+	return o
+}
+
+func (o GatewayConfigGatewayTypeOutput) ToGatewayConfigGatewayTypeOutputWithContext(ctx context.Context) GatewayConfigGatewayTypeOutput {
+	return o
+}
+
+func (o GatewayConfigGatewayTypeOutput) ToGatewayConfigGatewayTypePtrOutput() GatewayConfigGatewayTypePtrOutput {
+	return o.ToGatewayConfigGatewayTypePtrOutputWithContext(context.Background())
+}
+
+func (o GatewayConfigGatewayTypeOutput) ToGatewayConfigGatewayTypePtrOutputWithContext(ctx context.Context) GatewayConfigGatewayTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GatewayConfigGatewayType) *GatewayConfigGatewayType {
+		return &v
+	}).(GatewayConfigGatewayTypePtrOutput)
+}
+
+func (o GatewayConfigGatewayTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GatewayConfigGatewayTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GatewayConfigGatewayType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GatewayConfigGatewayTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayConfigGatewayTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GatewayConfigGatewayType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GatewayConfigGatewayTypePtrOutput struct{ *pulumi.OutputState }
+
+func (GatewayConfigGatewayTypePtrOutput) ElementType() reflect.Type {
+	return gatewayConfigGatewayTypePtrType
+}
+
+func (o GatewayConfigGatewayTypePtrOutput) ToGatewayConfigGatewayTypePtrOutput() GatewayConfigGatewayTypePtrOutput {
+	return o
+}
+
+func (o GatewayConfigGatewayTypePtrOutput) ToGatewayConfigGatewayTypePtrOutputWithContext(ctx context.Context) GatewayConfigGatewayTypePtrOutput {
+	return o
+}
+
+func (o GatewayConfigGatewayTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GatewayConfigGatewayTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GatewayConfigGatewayType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GatewayConfigGatewayTypePtrOutput) Elem() GatewayConfigGatewayTypeOutput {
+	return o.ApplyT(func(v *GatewayConfigGatewayType) GatewayConfigGatewayType {
+		var ret GatewayConfigGatewayType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(GatewayConfigGatewayTypeOutput)
+}
+
+// GatewayConfigGatewayTypeInput is an input type that accepts GatewayConfigGatewayTypeArgs and GatewayConfigGatewayTypeOutput values.
+// You can construct a concrete instance of `GatewayConfigGatewayTypeInput` via:
+//
+//          GatewayConfigGatewayTypeArgs{...}
+type GatewayConfigGatewayTypeInput interface {
+	pulumi.Input
+
+	ToGatewayConfigGatewayTypeOutput() GatewayConfigGatewayTypeOutput
+	ToGatewayConfigGatewayTypeOutputWithContext(context.Context) GatewayConfigGatewayTypeOutput
+}
+
+var gatewayConfigGatewayTypePtrType = reflect.TypeOf((**GatewayConfigGatewayType)(nil)).Elem()
+
+type GatewayConfigGatewayTypePtrInput interface {
+	pulumi.Input
+
+	ToGatewayConfigGatewayTypePtrOutput() GatewayConfigGatewayTypePtrOutput
+	ToGatewayConfigGatewayTypePtrOutputWithContext(context.Context) GatewayConfigGatewayTypePtrOutput
+}
+
+type gatewayConfigGatewayTypePtr string
+
+func GatewayConfigGatewayTypePtr(v string) GatewayConfigGatewayTypePtrInput {
+	return (*gatewayConfigGatewayTypePtr)(&v)
+}
+
+func (*gatewayConfigGatewayTypePtr) ElementType() reflect.Type {
+	return gatewayConfigGatewayTypePtrType
+}
+
+func (in *gatewayConfigGatewayTypePtr) ToGatewayConfigGatewayTypePtrOutput() GatewayConfigGatewayTypePtrOutput {
+	return pulumi.ToOutput(in).(GatewayConfigGatewayTypePtrOutput)
+}
+
+func (in *gatewayConfigGatewayTypePtr) ToGatewayConfigGatewayTypePtrOutputWithContext(ctx context.Context) GatewayConfigGatewayTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GatewayConfigGatewayTypePtrOutput)
+}
+
 // If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
-type HttpConfigHttpEnabledState pulumi.String
+type HttpConfigHttpEnabledState string
 
 const (
 	// No HTTP state specified. If not specified, DeviceService will be enabled by default.
@@ -125,7 +536,23 @@ const (
 )
 
 func (HttpConfigHttpEnabledState) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*HttpConfigHttpEnabledState)(nil)).Elem()
+}
+
+func (e HttpConfigHttpEnabledState) ToHttpConfigHttpEnabledStateOutput() HttpConfigHttpEnabledStateOutput {
+	return pulumi.ToOutput(e).(HttpConfigHttpEnabledStateOutput)
+}
+
+func (e HttpConfigHttpEnabledState) ToHttpConfigHttpEnabledStateOutputWithContext(ctx context.Context) HttpConfigHttpEnabledStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(HttpConfigHttpEnabledStateOutput)
+}
+
+func (e HttpConfigHttpEnabledState) ToHttpConfigHttpEnabledStatePtrOutput() HttpConfigHttpEnabledStatePtrOutput {
+	return e.ToHttpConfigHttpEnabledStatePtrOutputWithContext(context.Background())
+}
+
+func (e HttpConfigHttpEnabledState) ToHttpConfigHttpEnabledStatePtrOutputWithContext(ctx context.Context) HttpConfigHttpEnabledStatePtrOutput {
+	return HttpConfigHttpEnabledState(e).ToHttpConfigHttpEnabledStateOutputWithContext(ctx).ToHttpConfigHttpEnabledStatePtrOutputWithContext(ctx)
 }
 
 func (e HttpConfigHttpEnabledState) ToStringOutput() pulumi.StringOutput {
@@ -144,8 +571,129 @@ func (e HttpConfigHttpEnabledState) ToStringPtrOutputWithContext(ctx context.Con
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type HttpConfigHttpEnabledStateOutput struct{ *pulumi.OutputState }
+
+func (HttpConfigHttpEnabledStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpConfigHttpEnabledState)(nil)).Elem()
+}
+
+func (o HttpConfigHttpEnabledStateOutput) ToHttpConfigHttpEnabledStateOutput() HttpConfigHttpEnabledStateOutput {
+	return o
+}
+
+func (o HttpConfigHttpEnabledStateOutput) ToHttpConfigHttpEnabledStateOutputWithContext(ctx context.Context) HttpConfigHttpEnabledStateOutput {
+	return o
+}
+
+func (o HttpConfigHttpEnabledStateOutput) ToHttpConfigHttpEnabledStatePtrOutput() HttpConfigHttpEnabledStatePtrOutput {
+	return o.ToHttpConfigHttpEnabledStatePtrOutputWithContext(context.Background())
+}
+
+func (o HttpConfigHttpEnabledStateOutput) ToHttpConfigHttpEnabledStatePtrOutputWithContext(ctx context.Context) HttpConfigHttpEnabledStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpConfigHttpEnabledState) *HttpConfigHttpEnabledState {
+		return &v
+	}).(HttpConfigHttpEnabledStatePtrOutput)
+}
+
+func (o HttpConfigHttpEnabledStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o HttpConfigHttpEnabledStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HttpConfigHttpEnabledState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o HttpConfigHttpEnabledStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HttpConfigHttpEnabledStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HttpConfigHttpEnabledState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type HttpConfigHttpEnabledStatePtrOutput struct{ *pulumi.OutputState }
+
+func (HttpConfigHttpEnabledStatePtrOutput) ElementType() reflect.Type {
+	return httpConfigHttpEnabledStatePtrType
+}
+
+func (o HttpConfigHttpEnabledStatePtrOutput) ToHttpConfigHttpEnabledStatePtrOutput() HttpConfigHttpEnabledStatePtrOutput {
+	return o
+}
+
+func (o HttpConfigHttpEnabledStatePtrOutput) ToHttpConfigHttpEnabledStatePtrOutputWithContext(ctx context.Context) HttpConfigHttpEnabledStatePtrOutput {
+	return o
+}
+
+func (o HttpConfigHttpEnabledStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HttpConfigHttpEnabledStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *HttpConfigHttpEnabledState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o HttpConfigHttpEnabledStatePtrOutput) Elem() HttpConfigHttpEnabledStateOutput {
+	return o.ApplyT(func(v *HttpConfigHttpEnabledState) HttpConfigHttpEnabledState {
+		var ret HttpConfigHttpEnabledState
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(HttpConfigHttpEnabledStateOutput)
+}
+
+// HttpConfigHttpEnabledStateInput is an input type that accepts HttpConfigHttpEnabledStateArgs and HttpConfigHttpEnabledStateOutput values.
+// You can construct a concrete instance of `HttpConfigHttpEnabledStateInput` via:
+//
+//          HttpConfigHttpEnabledStateArgs{...}
+type HttpConfigHttpEnabledStateInput interface {
+	pulumi.Input
+
+	ToHttpConfigHttpEnabledStateOutput() HttpConfigHttpEnabledStateOutput
+	ToHttpConfigHttpEnabledStateOutputWithContext(context.Context) HttpConfigHttpEnabledStateOutput
+}
+
+var httpConfigHttpEnabledStatePtrType = reflect.TypeOf((**HttpConfigHttpEnabledState)(nil)).Elem()
+
+type HttpConfigHttpEnabledStatePtrInput interface {
+	pulumi.Input
+
+	ToHttpConfigHttpEnabledStatePtrOutput() HttpConfigHttpEnabledStatePtrOutput
+	ToHttpConfigHttpEnabledStatePtrOutputWithContext(context.Context) HttpConfigHttpEnabledStatePtrOutput
+}
+
+type httpConfigHttpEnabledStatePtr string
+
+func HttpConfigHttpEnabledStatePtr(v string) HttpConfigHttpEnabledStatePtrInput {
+	return (*httpConfigHttpEnabledStatePtr)(&v)
+}
+
+func (*httpConfigHttpEnabledStatePtr) ElementType() reflect.Type {
+	return httpConfigHttpEnabledStatePtrType
+}
+
+func (in *httpConfigHttpEnabledStatePtr) ToHttpConfigHttpEnabledStatePtrOutput() HttpConfigHttpEnabledStatePtrOutput {
+	return pulumi.ToOutput(in).(HttpConfigHttpEnabledStatePtrOutput)
+}
+
+func (in *httpConfigHttpEnabledStatePtr) ToHttpConfigHttpEnabledStatePtrOutputWithContext(ctx context.Context) HttpConfigHttpEnabledStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(HttpConfigHttpEnabledStatePtrOutput)
+}
+
 // If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
-type MqttConfigMqttEnabledState pulumi.String
+type MqttConfigMqttEnabledState string
 
 const (
 	// No MQTT state specified. If not specified, MQTT will be enabled by default.
@@ -157,7 +705,23 @@ const (
 )
 
 func (MqttConfigMqttEnabledState) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*MqttConfigMqttEnabledState)(nil)).Elem()
+}
+
+func (e MqttConfigMqttEnabledState) ToMqttConfigMqttEnabledStateOutput() MqttConfigMqttEnabledStateOutput {
+	return pulumi.ToOutput(e).(MqttConfigMqttEnabledStateOutput)
+}
+
+func (e MqttConfigMqttEnabledState) ToMqttConfigMqttEnabledStateOutputWithContext(ctx context.Context) MqttConfigMqttEnabledStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MqttConfigMqttEnabledStateOutput)
+}
+
+func (e MqttConfigMqttEnabledState) ToMqttConfigMqttEnabledStatePtrOutput() MqttConfigMqttEnabledStatePtrOutput {
+	return e.ToMqttConfigMqttEnabledStatePtrOutputWithContext(context.Background())
+}
+
+func (e MqttConfigMqttEnabledState) ToMqttConfigMqttEnabledStatePtrOutputWithContext(ctx context.Context) MqttConfigMqttEnabledStatePtrOutput {
+	return MqttConfigMqttEnabledState(e).ToMqttConfigMqttEnabledStateOutputWithContext(ctx).ToMqttConfigMqttEnabledStatePtrOutputWithContext(ctx)
 }
 
 func (e MqttConfigMqttEnabledState) ToStringOutput() pulumi.StringOutput {
@@ -176,8 +740,129 @@ func (e MqttConfigMqttEnabledState) ToStringPtrOutputWithContext(ctx context.Con
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type MqttConfigMqttEnabledStateOutput struct{ *pulumi.OutputState }
+
+func (MqttConfigMqttEnabledStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MqttConfigMqttEnabledState)(nil)).Elem()
+}
+
+func (o MqttConfigMqttEnabledStateOutput) ToMqttConfigMqttEnabledStateOutput() MqttConfigMqttEnabledStateOutput {
+	return o
+}
+
+func (o MqttConfigMqttEnabledStateOutput) ToMqttConfigMqttEnabledStateOutputWithContext(ctx context.Context) MqttConfigMqttEnabledStateOutput {
+	return o
+}
+
+func (o MqttConfigMqttEnabledStateOutput) ToMqttConfigMqttEnabledStatePtrOutput() MqttConfigMqttEnabledStatePtrOutput {
+	return o.ToMqttConfigMqttEnabledStatePtrOutputWithContext(context.Background())
+}
+
+func (o MqttConfigMqttEnabledStateOutput) ToMqttConfigMqttEnabledStatePtrOutputWithContext(ctx context.Context) MqttConfigMqttEnabledStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MqttConfigMqttEnabledState) *MqttConfigMqttEnabledState {
+		return &v
+	}).(MqttConfigMqttEnabledStatePtrOutput)
+}
+
+func (o MqttConfigMqttEnabledStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MqttConfigMqttEnabledStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MqttConfigMqttEnabledState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MqttConfigMqttEnabledStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MqttConfigMqttEnabledStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MqttConfigMqttEnabledState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MqttConfigMqttEnabledStatePtrOutput struct{ *pulumi.OutputState }
+
+func (MqttConfigMqttEnabledStatePtrOutput) ElementType() reflect.Type {
+	return mqttConfigMqttEnabledStatePtrType
+}
+
+func (o MqttConfigMqttEnabledStatePtrOutput) ToMqttConfigMqttEnabledStatePtrOutput() MqttConfigMqttEnabledStatePtrOutput {
+	return o
+}
+
+func (o MqttConfigMqttEnabledStatePtrOutput) ToMqttConfigMqttEnabledStatePtrOutputWithContext(ctx context.Context) MqttConfigMqttEnabledStatePtrOutput {
+	return o
+}
+
+func (o MqttConfigMqttEnabledStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MqttConfigMqttEnabledStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MqttConfigMqttEnabledState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MqttConfigMqttEnabledStatePtrOutput) Elem() MqttConfigMqttEnabledStateOutput {
+	return o.ApplyT(func(v *MqttConfigMqttEnabledState) MqttConfigMqttEnabledState {
+		var ret MqttConfigMqttEnabledState
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(MqttConfigMqttEnabledStateOutput)
+}
+
+// MqttConfigMqttEnabledStateInput is an input type that accepts MqttConfigMqttEnabledStateArgs and MqttConfigMqttEnabledStateOutput values.
+// You can construct a concrete instance of `MqttConfigMqttEnabledStateInput` via:
+//
+//          MqttConfigMqttEnabledStateArgs{...}
+type MqttConfigMqttEnabledStateInput interface {
+	pulumi.Input
+
+	ToMqttConfigMqttEnabledStateOutput() MqttConfigMqttEnabledStateOutput
+	ToMqttConfigMqttEnabledStateOutputWithContext(context.Context) MqttConfigMqttEnabledStateOutput
+}
+
+var mqttConfigMqttEnabledStatePtrType = reflect.TypeOf((**MqttConfigMqttEnabledState)(nil)).Elem()
+
+type MqttConfigMqttEnabledStatePtrInput interface {
+	pulumi.Input
+
+	ToMqttConfigMqttEnabledStatePtrOutput() MqttConfigMqttEnabledStatePtrOutput
+	ToMqttConfigMqttEnabledStatePtrOutputWithContext(context.Context) MqttConfigMqttEnabledStatePtrOutput
+}
+
+type mqttConfigMqttEnabledStatePtr string
+
+func MqttConfigMqttEnabledStatePtr(v string) MqttConfigMqttEnabledStatePtrInput {
+	return (*mqttConfigMqttEnabledStatePtr)(&v)
+}
+
+func (*mqttConfigMqttEnabledStatePtr) ElementType() reflect.Type {
+	return mqttConfigMqttEnabledStatePtrType
+}
+
+func (in *mqttConfigMqttEnabledStatePtr) ToMqttConfigMqttEnabledStatePtrOutput() MqttConfigMqttEnabledStatePtrOutput {
+	return pulumi.ToOutput(in).(MqttConfigMqttEnabledStatePtrOutput)
+}
+
+func (in *mqttConfigMqttEnabledStatePtr) ToMqttConfigMqttEnabledStatePtrOutputWithContext(ctx context.Context) MqttConfigMqttEnabledStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MqttConfigMqttEnabledStatePtrOutput)
+}
+
 // The certificate format.
-type PublicKeyCertificateFormat pulumi.String
+type PublicKeyCertificateFormat string
 
 const (
 	// The format has not been specified. This is an invalid default value and must not be used.
@@ -187,7 +872,23 @@ const (
 )
 
 func (PublicKeyCertificateFormat) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*PublicKeyCertificateFormat)(nil)).Elem()
+}
+
+func (e PublicKeyCertificateFormat) ToPublicKeyCertificateFormatOutput() PublicKeyCertificateFormatOutput {
+	return pulumi.ToOutput(e).(PublicKeyCertificateFormatOutput)
+}
+
+func (e PublicKeyCertificateFormat) ToPublicKeyCertificateFormatOutputWithContext(ctx context.Context) PublicKeyCertificateFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PublicKeyCertificateFormatOutput)
+}
+
+func (e PublicKeyCertificateFormat) ToPublicKeyCertificateFormatPtrOutput() PublicKeyCertificateFormatPtrOutput {
+	return e.ToPublicKeyCertificateFormatPtrOutputWithContext(context.Background())
+}
+
+func (e PublicKeyCertificateFormat) ToPublicKeyCertificateFormatPtrOutputWithContext(ctx context.Context) PublicKeyCertificateFormatPtrOutput {
+	return PublicKeyCertificateFormat(e).ToPublicKeyCertificateFormatOutputWithContext(ctx).ToPublicKeyCertificateFormatPtrOutputWithContext(ctx)
 }
 
 func (e PublicKeyCertificateFormat) ToStringOutput() pulumi.StringOutput {
@@ -206,8 +907,129 @@ func (e PublicKeyCertificateFormat) ToStringPtrOutputWithContext(ctx context.Con
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type PublicKeyCertificateFormatOutput struct{ *pulumi.OutputState }
+
+func (PublicKeyCertificateFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicKeyCertificateFormat)(nil)).Elem()
+}
+
+func (o PublicKeyCertificateFormatOutput) ToPublicKeyCertificateFormatOutput() PublicKeyCertificateFormatOutput {
+	return o
+}
+
+func (o PublicKeyCertificateFormatOutput) ToPublicKeyCertificateFormatOutputWithContext(ctx context.Context) PublicKeyCertificateFormatOutput {
+	return o
+}
+
+func (o PublicKeyCertificateFormatOutput) ToPublicKeyCertificateFormatPtrOutput() PublicKeyCertificateFormatPtrOutput {
+	return o.ToPublicKeyCertificateFormatPtrOutputWithContext(context.Background())
+}
+
+func (o PublicKeyCertificateFormatOutput) ToPublicKeyCertificateFormatPtrOutputWithContext(ctx context.Context) PublicKeyCertificateFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicKeyCertificateFormat) *PublicKeyCertificateFormat {
+		return &v
+	}).(PublicKeyCertificateFormatPtrOutput)
+}
+
+func (o PublicKeyCertificateFormatOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PublicKeyCertificateFormatOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicKeyCertificateFormat) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PublicKeyCertificateFormatOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicKeyCertificateFormatOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicKeyCertificateFormat) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PublicKeyCertificateFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (PublicKeyCertificateFormatPtrOutput) ElementType() reflect.Type {
+	return publicKeyCertificateFormatPtrType
+}
+
+func (o PublicKeyCertificateFormatPtrOutput) ToPublicKeyCertificateFormatPtrOutput() PublicKeyCertificateFormatPtrOutput {
+	return o
+}
+
+func (o PublicKeyCertificateFormatPtrOutput) ToPublicKeyCertificateFormatPtrOutputWithContext(ctx context.Context) PublicKeyCertificateFormatPtrOutput {
+	return o
+}
+
+func (o PublicKeyCertificateFormatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicKeyCertificateFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PublicKeyCertificateFormat) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PublicKeyCertificateFormatPtrOutput) Elem() PublicKeyCertificateFormatOutput {
+	return o.ApplyT(func(v *PublicKeyCertificateFormat) PublicKeyCertificateFormat {
+		var ret PublicKeyCertificateFormat
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(PublicKeyCertificateFormatOutput)
+}
+
+// PublicKeyCertificateFormatInput is an input type that accepts PublicKeyCertificateFormatArgs and PublicKeyCertificateFormatOutput values.
+// You can construct a concrete instance of `PublicKeyCertificateFormatInput` via:
+//
+//          PublicKeyCertificateFormatArgs{...}
+type PublicKeyCertificateFormatInput interface {
+	pulumi.Input
+
+	ToPublicKeyCertificateFormatOutput() PublicKeyCertificateFormatOutput
+	ToPublicKeyCertificateFormatOutputWithContext(context.Context) PublicKeyCertificateFormatOutput
+}
+
+var publicKeyCertificateFormatPtrType = reflect.TypeOf((**PublicKeyCertificateFormat)(nil)).Elem()
+
+type PublicKeyCertificateFormatPtrInput interface {
+	pulumi.Input
+
+	ToPublicKeyCertificateFormatPtrOutput() PublicKeyCertificateFormatPtrOutput
+	ToPublicKeyCertificateFormatPtrOutputWithContext(context.Context) PublicKeyCertificateFormatPtrOutput
+}
+
+type publicKeyCertificateFormatPtr string
+
+func PublicKeyCertificateFormatPtr(v string) PublicKeyCertificateFormatPtrInput {
+	return (*publicKeyCertificateFormatPtr)(&v)
+}
+
+func (*publicKeyCertificateFormatPtr) ElementType() reflect.Type {
+	return publicKeyCertificateFormatPtrType
+}
+
+func (in *publicKeyCertificateFormatPtr) ToPublicKeyCertificateFormatPtrOutput() PublicKeyCertificateFormatPtrOutput {
+	return pulumi.ToOutput(in).(PublicKeyCertificateFormatPtrOutput)
+}
+
+func (in *publicKeyCertificateFormatPtr) ToPublicKeyCertificateFormatPtrOutputWithContext(ctx context.Context) PublicKeyCertificateFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PublicKeyCertificateFormatPtrOutput)
+}
+
 // The format of the key.
-type PublicKeyCredentialFormat pulumi.String
+type PublicKeyCredentialFormat string
 
 const (
 	// The format has not been specified. This is an invalid default value and must not be used.
@@ -223,7 +1045,23 @@ const (
 )
 
 func (PublicKeyCredentialFormat) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*PublicKeyCredentialFormat)(nil)).Elem()
+}
+
+func (e PublicKeyCredentialFormat) ToPublicKeyCredentialFormatOutput() PublicKeyCredentialFormatOutput {
+	return pulumi.ToOutput(e).(PublicKeyCredentialFormatOutput)
+}
+
+func (e PublicKeyCredentialFormat) ToPublicKeyCredentialFormatOutputWithContext(ctx context.Context) PublicKeyCredentialFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(PublicKeyCredentialFormatOutput)
+}
+
+func (e PublicKeyCredentialFormat) ToPublicKeyCredentialFormatPtrOutput() PublicKeyCredentialFormatPtrOutput {
+	return e.ToPublicKeyCredentialFormatPtrOutputWithContext(context.Background())
+}
+
+func (e PublicKeyCredentialFormat) ToPublicKeyCredentialFormatPtrOutputWithContext(ctx context.Context) PublicKeyCredentialFormatPtrOutput {
+	return PublicKeyCredentialFormat(e).ToPublicKeyCredentialFormatOutputWithContext(ctx).ToPublicKeyCredentialFormatPtrOutputWithContext(ctx)
 }
 
 func (e PublicKeyCredentialFormat) ToStringOutput() pulumi.StringOutput {
@@ -242,8 +1080,129 @@ func (e PublicKeyCredentialFormat) ToStringPtrOutputWithContext(ctx context.Cont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type PublicKeyCredentialFormatOutput struct{ *pulumi.OutputState }
+
+func (PublicKeyCredentialFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PublicKeyCredentialFormat)(nil)).Elem()
+}
+
+func (o PublicKeyCredentialFormatOutput) ToPublicKeyCredentialFormatOutput() PublicKeyCredentialFormatOutput {
+	return o
+}
+
+func (o PublicKeyCredentialFormatOutput) ToPublicKeyCredentialFormatOutputWithContext(ctx context.Context) PublicKeyCredentialFormatOutput {
+	return o
+}
+
+func (o PublicKeyCredentialFormatOutput) ToPublicKeyCredentialFormatPtrOutput() PublicKeyCredentialFormatPtrOutput {
+	return o.ToPublicKeyCredentialFormatPtrOutputWithContext(context.Background())
+}
+
+func (o PublicKeyCredentialFormatOutput) ToPublicKeyCredentialFormatPtrOutputWithContext(ctx context.Context) PublicKeyCredentialFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PublicKeyCredentialFormat) *PublicKeyCredentialFormat {
+		return &v
+	}).(PublicKeyCredentialFormatPtrOutput)
+}
+
+func (o PublicKeyCredentialFormatOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o PublicKeyCredentialFormatOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicKeyCredentialFormat) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o PublicKeyCredentialFormatOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicKeyCredentialFormatOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e PublicKeyCredentialFormat) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type PublicKeyCredentialFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (PublicKeyCredentialFormatPtrOutput) ElementType() reflect.Type {
+	return publicKeyCredentialFormatPtrType
+}
+
+func (o PublicKeyCredentialFormatPtrOutput) ToPublicKeyCredentialFormatPtrOutput() PublicKeyCredentialFormatPtrOutput {
+	return o
+}
+
+func (o PublicKeyCredentialFormatPtrOutput) ToPublicKeyCredentialFormatPtrOutputWithContext(ctx context.Context) PublicKeyCredentialFormatPtrOutput {
+	return o
+}
+
+func (o PublicKeyCredentialFormatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o PublicKeyCredentialFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *PublicKeyCredentialFormat) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PublicKeyCredentialFormatPtrOutput) Elem() PublicKeyCredentialFormatOutput {
+	return o.ApplyT(func(v *PublicKeyCredentialFormat) PublicKeyCredentialFormat {
+		var ret PublicKeyCredentialFormat
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(PublicKeyCredentialFormatOutput)
+}
+
+// PublicKeyCredentialFormatInput is an input type that accepts PublicKeyCredentialFormatArgs and PublicKeyCredentialFormatOutput values.
+// You can construct a concrete instance of `PublicKeyCredentialFormatInput` via:
+//
+//          PublicKeyCredentialFormatArgs{...}
+type PublicKeyCredentialFormatInput interface {
+	pulumi.Input
+
+	ToPublicKeyCredentialFormatOutput() PublicKeyCredentialFormatOutput
+	ToPublicKeyCredentialFormatOutputWithContext(context.Context) PublicKeyCredentialFormatOutput
+}
+
+var publicKeyCredentialFormatPtrType = reflect.TypeOf((**PublicKeyCredentialFormat)(nil)).Elem()
+
+type PublicKeyCredentialFormatPtrInput interface {
+	pulumi.Input
+
+	ToPublicKeyCredentialFormatPtrOutput() PublicKeyCredentialFormatPtrOutput
+	ToPublicKeyCredentialFormatPtrOutputWithContext(context.Context) PublicKeyCredentialFormatPtrOutput
+}
+
+type publicKeyCredentialFormatPtr string
+
+func PublicKeyCredentialFormatPtr(v string) PublicKeyCredentialFormatPtrInput {
+	return (*publicKeyCredentialFormatPtr)(&v)
+}
+
+func (*publicKeyCredentialFormatPtr) ElementType() reflect.Type {
+	return publicKeyCredentialFormatPtrType
+}
+
+func (in *publicKeyCredentialFormatPtr) ToPublicKeyCredentialFormatPtrOutput() PublicKeyCredentialFormatPtrOutput {
+	return pulumi.ToOutput(in).(PublicKeyCredentialFormatPtrOutput)
+}
+
+func (in *publicKeyCredentialFormatPtr) ToPublicKeyCredentialFormatPtrOutputWithContext(ctx context.Context) PublicKeyCredentialFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(PublicKeyCredentialFormatPtrOutput)
+}
+
 // **Beta Feature** The default logging verbosity for activity from devices in this registry. The verbosity level can be overridden by Device.log_level.
-type RegistryLogLevel pulumi.String
+type RegistryLogLevel string
 
 const (
 	// No logging specified. If not specified, logging will be disabled.
@@ -259,7 +1218,23 @@ const (
 )
 
 func (RegistryLogLevel) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*RegistryLogLevel)(nil)).Elem()
+}
+
+func (e RegistryLogLevel) ToRegistryLogLevelOutput() RegistryLogLevelOutput {
+	return pulumi.ToOutput(e).(RegistryLogLevelOutput)
+}
+
+func (e RegistryLogLevel) ToRegistryLogLevelOutputWithContext(ctx context.Context) RegistryLogLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegistryLogLevelOutput)
+}
+
+func (e RegistryLogLevel) ToRegistryLogLevelPtrOutput() RegistryLogLevelPtrOutput {
+	return e.ToRegistryLogLevelPtrOutputWithContext(context.Background())
+}
+
+func (e RegistryLogLevel) ToRegistryLogLevelPtrOutputWithContext(ctx context.Context) RegistryLogLevelPtrOutput {
+	return RegistryLogLevel(e).ToRegistryLogLevelOutputWithContext(ctx).ToRegistryLogLevelPtrOutputWithContext(ctx)
 }
 
 func (e RegistryLogLevel) ToStringOutput() pulumi.StringOutput {
@@ -276,4 +1251,144 @@ func (e RegistryLogLevel) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e RegistryLogLevel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegistryLogLevelOutput struct{ *pulumi.OutputState }
+
+func (RegistryLogLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegistryLogLevel)(nil)).Elem()
+}
+
+func (o RegistryLogLevelOutput) ToRegistryLogLevelOutput() RegistryLogLevelOutput {
+	return o
+}
+
+func (o RegistryLogLevelOutput) ToRegistryLogLevelOutputWithContext(ctx context.Context) RegistryLogLevelOutput {
+	return o
+}
+
+func (o RegistryLogLevelOutput) ToRegistryLogLevelPtrOutput() RegistryLogLevelPtrOutput {
+	return o.ToRegistryLogLevelPtrOutputWithContext(context.Background())
+}
+
+func (o RegistryLogLevelOutput) ToRegistryLogLevelPtrOutputWithContext(ctx context.Context) RegistryLogLevelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegistryLogLevel) *RegistryLogLevel {
+		return &v
+	}).(RegistryLogLevelPtrOutput)
+}
+
+func (o RegistryLogLevelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegistryLogLevelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegistryLogLevel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegistryLogLevelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegistryLogLevelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegistryLogLevel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegistryLogLevelPtrOutput struct{ *pulumi.OutputState }
+
+func (RegistryLogLevelPtrOutput) ElementType() reflect.Type {
+	return registryLogLevelPtrType
+}
+
+func (o RegistryLogLevelPtrOutput) ToRegistryLogLevelPtrOutput() RegistryLogLevelPtrOutput {
+	return o
+}
+
+func (o RegistryLogLevelPtrOutput) ToRegistryLogLevelPtrOutputWithContext(ctx context.Context) RegistryLogLevelPtrOutput {
+	return o
+}
+
+func (o RegistryLogLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegistryLogLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegistryLogLevel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RegistryLogLevelPtrOutput) Elem() RegistryLogLevelOutput {
+	return o.ApplyT(func(v *RegistryLogLevel) RegistryLogLevel {
+		var ret RegistryLogLevel
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(RegistryLogLevelOutput)
+}
+
+// RegistryLogLevelInput is an input type that accepts RegistryLogLevelArgs and RegistryLogLevelOutput values.
+// You can construct a concrete instance of `RegistryLogLevelInput` via:
+//
+//          RegistryLogLevelArgs{...}
+type RegistryLogLevelInput interface {
+	pulumi.Input
+
+	ToRegistryLogLevelOutput() RegistryLogLevelOutput
+	ToRegistryLogLevelOutputWithContext(context.Context) RegistryLogLevelOutput
+}
+
+var registryLogLevelPtrType = reflect.TypeOf((**RegistryLogLevel)(nil)).Elem()
+
+type RegistryLogLevelPtrInput interface {
+	pulumi.Input
+
+	ToRegistryLogLevelPtrOutput() RegistryLogLevelPtrOutput
+	ToRegistryLogLevelPtrOutputWithContext(context.Context) RegistryLogLevelPtrOutput
+}
+
+type registryLogLevelPtr string
+
+func RegistryLogLevelPtr(v string) RegistryLogLevelPtrInput {
+	return (*registryLogLevelPtr)(&v)
+}
+
+func (*registryLogLevelPtr) ElementType() reflect.Type {
+	return registryLogLevelPtrType
+}
+
+func (in *registryLogLevelPtr) ToRegistryLogLevelPtrOutput() RegistryLogLevelPtrOutput {
+	return pulumi.ToOutput(in).(RegistryLogLevelPtrOutput)
+}
+
+func (in *registryLogLevelPtr) ToRegistryLogLevelPtrOutputWithContext(ctx context.Context) RegistryLogLevelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegistryLogLevelPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(DeviceLogLevelOutput{})
+	pulumi.RegisterOutputType(DeviceLogLevelPtrOutput{})
+	pulumi.RegisterOutputType(GatewayConfigGatewayAuthMethodOutput{})
+	pulumi.RegisterOutputType(GatewayConfigGatewayAuthMethodPtrOutput{})
+	pulumi.RegisterOutputType(GatewayConfigGatewayTypeOutput{})
+	pulumi.RegisterOutputType(GatewayConfigGatewayTypePtrOutput{})
+	pulumi.RegisterOutputType(HttpConfigHttpEnabledStateOutput{})
+	pulumi.RegisterOutputType(HttpConfigHttpEnabledStatePtrOutput{})
+	pulumi.RegisterOutputType(MqttConfigMqttEnabledStateOutput{})
+	pulumi.RegisterOutputType(MqttConfigMqttEnabledStatePtrOutput{})
+	pulumi.RegisterOutputType(PublicKeyCertificateFormatOutput{})
+	pulumi.RegisterOutputType(PublicKeyCertificateFormatPtrOutput{})
+	pulumi.RegisterOutputType(PublicKeyCredentialFormatOutput{})
+	pulumi.RegisterOutputType(PublicKeyCredentialFormatPtrOutput{})
+	pulumi.RegisterOutputType(RegistryLogLevelOutput{})
+	pulumi.RegisterOutputType(RegistryLogLevelPtrOutput{})
 }

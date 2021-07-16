@@ -15,8 +15,8 @@ __all__ = [
     'AutomaticArgs',
     'BindingArgs',
     'ExprArgs',
-    'ReplicaArgs',
     'ReplicationArgs',
+    'ReplicaArgs',
     'UserManagedArgs',
 ]
 
@@ -238,30 +238,6 @@ class ExprArgs:
 
 
 @pulumi.input_type
-class ReplicaArgs:
-    def __init__(__self__, *,
-                 location: Optional[pulumi.Input[str]] = None):
-        """
-        Represents a Replica for this Secret.
-        :param pulumi.Input[str] location: The canonical IDs of the location to replicate data. For example: `"us-east1"`.
-        """
-        if location is not None:
-            pulumi.set(__self__, "location", location)
-
-    @property
-    @pulumi.getter
-    def location(self) -> Optional[pulumi.Input[str]]:
-        """
-        The canonical IDs of the location to replicate data. For example: `"us-east1"`.
-        """
-        return pulumi.get(self, "location")
-
-    @location.setter
-    def location(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "location", value)
-
-
-@pulumi.input_type
 class ReplicationArgs:
     def __init__(__self__, *,
                  automatic: Optional[pulumi.Input['AutomaticArgs']] = None,
@@ -299,6 +275,30 @@ class ReplicationArgs:
     @user_managed.setter
     def user_managed(self, value: Optional[pulumi.Input['UserManagedArgs']]):
         pulumi.set(self, "user_managed", value)
+
+
+@pulumi.input_type
+class ReplicaArgs:
+    def __init__(__self__, *,
+                 location: Optional[pulumi.Input[str]] = None):
+        """
+        Represents a Replica for this Secret.
+        :param pulumi.Input[str] location: The canonical IDs of the location to replicate data. For example: `"us-east1"`.
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The canonical IDs of the location to replicate data. For example: `"us-east1"`.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
 
 
 @pulumi.input_type

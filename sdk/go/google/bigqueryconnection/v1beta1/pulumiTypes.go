@@ -233,7 +233,7 @@ type AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *string `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
@@ -252,7 +252,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *AuditLogConfigLogType `pulumi:"logType"`
+	LogType AuditLogConfigLogTypePtrInput `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -313,8 +313,8 @@ func (o AuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
 }
 
 // The log type that this config enables.
-func (o AuditLogConfigOutput) LogType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AuditLogConfig) *string { return v.LogType }).(pulumi.StringPtrOutput)
+func (o AuditLogConfigOutput) LogType() AuditLogConfigLogTypePtrOutput {
+	return o.ApplyT(func(v AuditLogConfig) *AuditLogConfigLogType { return v.LogType }).(AuditLogConfigLogTypePtrOutput)
 }
 
 type AuditLogConfigArrayOutput struct{ *pulumi.OutputState }
@@ -997,7 +997,7 @@ type CloudSqlProperties struct {
 	// Cloud SQL instance ID in the form `project:location:instance`.
 	InstanceId *string `pulumi:"instanceId"`
 	// Type of the Cloud SQL database.
-	Type *string `pulumi:"type"`
+	Type *CloudSqlPropertiesType `pulumi:"type"`
 }
 
 // CloudSqlPropertiesInput is an input type that accepts CloudSqlPropertiesArgs and CloudSqlPropertiesOutput values.
@@ -1020,7 +1020,7 @@ type CloudSqlPropertiesArgs struct {
 	// Cloud SQL instance ID in the form `project:location:instance`.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
 	// Type of the Cloud SQL database.
-	Type *CloudSqlPropertiesType `pulumi:"type"`
+	Type CloudSqlPropertiesTypePtrInput `pulumi:"type"`
 }
 
 func (CloudSqlPropertiesArgs) ElementType() reflect.Type {
@@ -1117,8 +1117,8 @@ func (o CloudSqlPropertiesOutput) InstanceId() pulumi.StringPtrOutput {
 }
 
 // Type of the Cloud SQL database.
-func (o CloudSqlPropertiesOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v CloudSqlProperties) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o CloudSqlPropertiesOutput) Type() CloudSqlPropertiesTypePtrOutput {
+	return o.ApplyT(func(v CloudSqlProperties) *CloudSqlPropertiesType { return v.Type }).(CloudSqlPropertiesTypePtrOutput)
 }
 
 type CloudSqlPropertiesPtrOutput struct{ *pulumi.OutputState }
@@ -1170,13 +1170,13 @@ func (o CloudSqlPropertiesPtrOutput) InstanceId() pulumi.StringPtrOutput {
 }
 
 // Type of the Cloud SQL database.
-func (o CloudSqlPropertiesPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CloudSqlProperties) *string {
+func (o CloudSqlPropertiesPtrOutput) Type() CloudSqlPropertiesTypePtrOutput {
+	return o.ApplyT(func(v *CloudSqlProperties) *CloudSqlPropertiesType {
 		if v == nil {
 			return nil
 		}
 		return v.Type
-	}).(pulumi.StringPtrOutput)
+	}).(CloudSqlPropertiesTypePtrOutput)
 }
 
 // Connection properties specific to the Cloud SQL.

@@ -962,7 +962,7 @@ type ApigatewayAuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *string `pulumi:"logType"`
+	LogType *ApigatewayAuditLogConfigLogType `pulumi:"logType"`
 }
 
 // ApigatewayAuditLogConfigInput is an input type that accepts ApigatewayAuditLogConfigArgs and ApigatewayAuditLogConfigOutput values.
@@ -981,7 +981,7 @@ type ApigatewayAuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *ApigatewayAuditLogConfigLogType `pulumi:"logType"`
+	LogType ApigatewayAuditLogConfigLogTypePtrInput `pulumi:"logType"`
 }
 
 func (ApigatewayAuditLogConfigArgs) ElementType() reflect.Type {
@@ -1042,8 +1042,8 @@ func (o ApigatewayAuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutp
 }
 
 // The log type that this config enables.
-func (o ApigatewayAuditLogConfigOutput) LogType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApigatewayAuditLogConfig) *string { return v.LogType }).(pulumi.StringPtrOutput)
+func (o ApigatewayAuditLogConfigOutput) LogType() ApigatewayAuditLogConfigLogTypePtrOutput {
+	return o.ApplyT(func(v ApigatewayAuditLogConfig) *ApigatewayAuditLogConfigLogType { return v.LogType }).(ApigatewayAuditLogConfigLogTypePtrOutput)
 }
 
 type ApigatewayAuditLogConfigArrayOutput struct{ *pulumi.OutputState }

@@ -11,7 +11,7 @@ import (
 )
 
 // The service tier of the instance.
-type InstanceTier pulumi.String
+type InstanceTier string
 
 const (
 	// Not set.
@@ -29,7 +29,23 @@ const (
 )
 
 func (InstanceTier) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*InstanceTier)(nil)).Elem()
+}
+
+func (e InstanceTier) ToInstanceTierOutput() InstanceTierOutput {
+	return pulumi.ToOutput(e).(InstanceTierOutput)
+}
+
+func (e InstanceTier) ToInstanceTierOutputWithContext(ctx context.Context) InstanceTierOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InstanceTierOutput)
+}
+
+func (e InstanceTier) ToInstanceTierPtrOutput() InstanceTierPtrOutput {
+	return e.ToInstanceTierPtrOutputWithContext(context.Background())
+}
+
+func (e InstanceTier) ToInstanceTierPtrOutputWithContext(ctx context.Context) InstanceTierPtrOutput {
+	return InstanceTier(e).ToInstanceTierOutputWithContext(ctx).ToInstanceTierPtrOutputWithContext(ctx)
 }
 
 func (e InstanceTier) ToStringOutput() pulumi.StringOutput {
@@ -48,7 +64,128 @@ func (e InstanceTier) ToStringPtrOutputWithContext(ctx context.Context) pulumi.S
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type NetworkConfigModesItem pulumi.String
+type InstanceTierOutput struct{ *pulumi.OutputState }
+
+func (InstanceTierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceTier)(nil)).Elem()
+}
+
+func (o InstanceTierOutput) ToInstanceTierOutput() InstanceTierOutput {
+	return o
+}
+
+func (o InstanceTierOutput) ToInstanceTierOutputWithContext(ctx context.Context) InstanceTierOutput {
+	return o
+}
+
+func (o InstanceTierOutput) ToInstanceTierPtrOutput() InstanceTierPtrOutput {
+	return o.ToInstanceTierPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceTierOutput) ToInstanceTierPtrOutputWithContext(ctx context.Context) InstanceTierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceTier) *InstanceTier {
+		return &v
+	}).(InstanceTierPtrOutput)
+}
+
+func (o InstanceTierOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InstanceTierOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceTier) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InstanceTierOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceTierOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InstanceTier) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InstanceTierPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceTierPtrOutput) ElementType() reflect.Type {
+	return instanceTierPtrType
+}
+
+func (o InstanceTierPtrOutput) ToInstanceTierPtrOutput() InstanceTierPtrOutput {
+	return o
+}
+
+func (o InstanceTierPtrOutput) ToInstanceTierPtrOutputWithContext(ctx context.Context) InstanceTierPtrOutput {
+	return o
+}
+
+func (o InstanceTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InstanceTier) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o InstanceTierPtrOutput) Elem() InstanceTierOutput {
+	return o.ApplyT(func(v *InstanceTier) InstanceTier {
+		var ret InstanceTier
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(InstanceTierOutput)
+}
+
+// InstanceTierInput is an input type that accepts InstanceTierArgs and InstanceTierOutput values.
+// You can construct a concrete instance of `InstanceTierInput` via:
+//
+//          InstanceTierArgs{...}
+type InstanceTierInput interface {
+	pulumi.Input
+
+	ToInstanceTierOutput() InstanceTierOutput
+	ToInstanceTierOutputWithContext(context.Context) InstanceTierOutput
+}
+
+var instanceTierPtrType = reflect.TypeOf((**InstanceTier)(nil)).Elem()
+
+type InstanceTierPtrInput interface {
+	pulumi.Input
+
+	ToInstanceTierPtrOutput() InstanceTierPtrOutput
+	ToInstanceTierPtrOutputWithContext(context.Context) InstanceTierPtrOutput
+}
+
+type instanceTierPtr string
+
+func InstanceTierPtr(v string) InstanceTierPtrInput {
+	return (*instanceTierPtr)(&v)
+}
+
+func (*instanceTierPtr) ElementType() reflect.Type {
+	return instanceTierPtrType
+}
+
+func (in *instanceTierPtr) ToInstanceTierPtrOutput() InstanceTierPtrOutput {
+	return pulumi.ToOutput(in).(InstanceTierPtrOutput)
+}
+
+func (in *instanceTierPtr) ToInstanceTierPtrOutputWithContext(ctx context.Context) InstanceTierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InstanceTierPtrOutput)
+}
+
+type NetworkConfigModesItem string
 
 const (
 	// Internet protocol not set.
@@ -58,7 +195,23 @@ const (
 )
 
 func (NetworkConfigModesItem) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*NetworkConfigModesItem)(nil)).Elem()
+}
+
+func (e NetworkConfigModesItem) ToNetworkConfigModesItemOutput() NetworkConfigModesItemOutput {
+	return pulumi.ToOutput(e).(NetworkConfigModesItemOutput)
+}
+
+func (e NetworkConfigModesItem) ToNetworkConfigModesItemOutputWithContext(ctx context.Context) NetworkConfigModesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NetworkConfigModesItemOutput)
+}
+
+func (e NetworkConfigModesItem) ToNetworkConfigModesItemPtrOutput() NetworkConfigModesItemPtrOutput {
+	return e.ToNetworkConfigModesItemPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkConfigModesItem) ToNetworkConfigModesItemPtrOutputWithContext(ctx context.Context) NetworkConfigModesItemPtrOutput {
+	return NetworkConfigModesItem(e).ToNetworkConfigModesItemOutputWithContext(ctx).ToNetworkConfigModesItemPtrOutputWithContext(ctx)
 }
 
 func (e NetworkConfigModesItem) ToStringOutput() pulumi.StringOutput {
@@ -75,6 +228,127 @@ func (e NetworkConfigModesItem) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e NetworkConfigModesItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NetworkConfigModesItemOutput struct{ *pulumi.OutputState }
+
+func (NetworkConfigModesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkConfigModesItem)(nil)).Elem()
+}
+
+func (o NetworkConfigModesItemOutput) ToNetworkConfigModesItemOutput() NetworkConfigModesItemOutput {
+	return o
+}
+
+func (o NetworkConfigModesItemOutput) ToNetworkConfigModesItemOutputWithContext(ctx context.Context) NetworkConfigModesItemOutput {
+	return o
+}
+
+func (o NetworkConfigModesItemOutput) ToNetworkConfigModesItemPtrOutput() NetworkConfigModesItemPtrOutput {
+	return o.ToNetworkConfigModesItemPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkConfigModesItemOutput) ToNetworkConfigModesItemPtrOutputWithContext(ctx context.Context) NetworkConfigModesItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkConfigModesItem) *NetworkConfigModesItem {
+		return &v
+	}).(NetworkConfigModesItemPtrOutput)
+}
+
+func (o NetworkConfigModesItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NetworkConfigModesItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkConfigModesItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NetworkConfigModesItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkConfigModesItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkConfigModesItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkConfigModesItemPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkConfigModesItemPtrOutput) ElementType() reflect.Type {
+	return networkConfigModesItemPtrType
+}
+
+func (o NetworkConfigModesItemPtrOutput) ToNetworkConfigModesItemPtrOutput() NetworkConfigModesItemPtrOutput {
+	return o
+}
+
+func (o NetworkConfigModesItemPtrOutput) ToNetworkConfigModesItemPtrOutputWithContext(ctx context.Context) NetworkConfigModesItemPtrOutput {
+	return o
+}
+
+func (o NetworkConfigModesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkConfigModesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NetworkConfigModesItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NetworkConfigModesItemPtrOutput) Elem() NetworkConfigModesItemOutput {
+	return o.ApplyT(func(v *NetworkConfigModesItem) NetworkConfigModesItem {
+		var ret NetworkConfigModesItem
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(NetworkConfigModesItemOutput)
+}
+
+// NetworkConfigModesItemInput is an input type that accepts NetworkConfigModesItemArgs and NetworkConfigModesItemOutput values.
+// You can construct a concrete instance of `NetworkConfigModesItemInput` via:
+//
+//          NetworkConfigModesItemArgs{...}
+type NetworkConfigModesItemInput interface {
+	pulumi.Input
+
+	ToNetworkConfigModesItemOutput() NetworkConfigModesItemOutput
+	ToNetworkConfigModesItemOutputWithContext(context.Context) NetworkConfigModesItemOutput
+}
+
+var networkConfigModesItemPtrType = reflect.TypeOf((**NetworkConfigModesItem)(nil)).Elem()
+
+type NetworkConfigModesItemPtrInput interface {
+	pulumi.Input
+
+	ToNetworkConfigModesItemPtrOutput() NetworkConfigModesItemPtrOutput
+	ToNetworkConfigModesItemPtrOutputWithContext(context.Context) NetworkConfigModesItemPtrOutput
+}
+
+type networkConfigModesItemPtr string
+
+func NetworkConfigModesItemPtr(v string) NetworkConfigModesItemPtrInput {
+	return (*networkConfigModesItemPtr)(&v)
+}
+
+func (*networkConfigModesItemPtr) ElementType() reflect.Type {
+	return networkConfigModesItemPtrType
+}
+
+func (in *networkConfigModesItemPtr) ToNetworkConfigModesItemPtrOutput() NetworkConfigModesItemPtrOutput {
+	return pulumi.ToOutput(in).(NetworkConfigModesItemPtrOutput)
+}
+
+func (in *networkConfigModesItemPtr) ToNetworkConfigModesItemPtrOutputWithContext(ctx context.Context) NetworkConfigModesItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NetworkConfigModesItemPtrOutput)
 }
 
 // NetworkConfigModesItemArrayInput is an input type that accepts NetworkConfigModesItemArray and NetworkConfigModesItemArrayOutput values.
@@ -116,14 +390,14 @@ func (o NetworkConfigModesItemArrayOutput) ToNetworkConfigModesItemArrayOutputWi
 	return o
 }
 
-func (o NetworkConfigModesItemArrayOutput) Index(i pulumi.IntInput) pulumi.StringOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) pulumi.StringOutput {
-		return vs[0].([]NetworkConfigModesItem)[vs[1].(int)].ToStringOutput()
-	}).(pulumi.StringOutput)
+func (o NetworkConfigModesItemArrayOutput) Index(i pulumi.IntInput) NetworkConfigModesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkConfigModesItemOutput {
+		return vs[0].([]NetworkConfigModesItem)[vs[1].(int)].ToNetworkConfigModesItemOutput()
+	}).(NetworkConfigModesItemOutput)
 }
 
 // Either READ_ONLY, for allowing only read requests on the exported directory, or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
-type NfsExportOptionsAccessMode pulumi.String
+type NfsExportOptionsAccessMode string
 
 const (
 	// AccessMode not set.
@@ -135,7 +409,23 @@ const (
 )
 
 func (NfsExportOptionsAccessMode) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*NfsExportOptionsAccessMode)(nil)).Elem()
+}
+
+func (e NfsExportOptionsAccessMode) ToNfsExportOptionsAccessModeOutput() NfsExportOptionsAccessModeOutput {
+	return pulumi.ToOutput(e).(NfsExportOptionsAccessModeOutput)
+}
+
+func (e NfsExportOptionsAccessMode) ToNfsExportOptionsAccessModeOutputWithContext(ctx context.Context) NfsExportOptionsAccessModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NfsExportOptionsAccessModeOutput)
+}
+
+func (e NfsExportOptionsAccessMode) ToNfsExportOptionsAccessModePtrOutput() NfsExportOptionsAccessModePtrOutput {
+	return e.ToNfsExportOptionsAccessModePtrOutputWithContext(context.Background())
+}
+
+func (e NfsExportOptionsAccessMode) ToNfsExportOptionsAccessModePtrOutputWithContext(ctx context.Context) NfsExportOptionsAccessModePtrOutput {
+	return NfsExportOptionsAccessMode(e).ToNfsExportOptionsAccessModeOutputWithContext(ctx).ToNfsExportOptionsAccessModePtrOutputWithContext(ctx)
 }
 
 func (e NfsExportOptionsAccessMode) ToStringOutput() pulumi.StringOutput {
@@ -154,8 +444,129 @@ func (e NfsExportOptionsAccessMode) ToStringPtrOutputWithContext(ctx context.Con
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type NfsExportOptionsAccessModeOutput struct{ *pulumi.OutputState }
+
+func (NfsExportOptionsAccessModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsExportOptionsAccessMode)(nil)).Elem()
+}
+
+func (o NfsExportOptionsAccessModeOutput) ToNfsExportOptionsAccessModeOutput() NfsExportOptionsAccessModeOutput {
+	return o
+}
+
+func (o NfsExportOptionsAccessModeOutput) ToNfsExportOptionsAccessModeOutputWithContext(ctx context.Context) NfsExportOptionsAccessModeOutput {
+	return o
+}
+
+func (o NfsExportOptionsAccessModeOutput) ToNfsExportOptionsAccessModePtrOutput() NfsExportOptionsAccessModePtrOutput {
+	return o.ToNfsExportOptionsAccessModePtrOutputWithContext(context.Background())
+}
+
+func (o NfsExportOptionsAccessModeOutput) ToNfsExportOptionsAccessModePtrOutputWithContext(ctx context.Context) NfsExportOptionsAccessModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NfsExportOptionsAccessMode) *NfsExportOptionsAccessMode {
+		return &v
+	}).(NfsExportOptionsAccessModePtrOutput)
+}
+
+func (o NfsExportOptionsAccessModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NfsExportOptionsAccessModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NfsExportOptionsAccessMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NfsExportOptionsAccessModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NfsExportOptionsAccessModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NfsExportOptionsAccessMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NfsExportOptionsAccessModePtrOutput struct{ *pulumi.OutputState }
+
+func (NfsExportOptionsAccessModePtrOutput) ElementType() reflect.Type {
+	return nfsExportOptionsAccessModePtrType
+}
+
+func (o NfsExportOptionsAccessModePtrOutput) ToNfsExportOptionsAccessModePtrOutput() NfsExportOptionsAccessModePtrOutput {
+	return o
+}
+
+func (o NfsExportOptionsAccessModePtrOutput) ToNfsExportOptionsAccessModePtrOutputWithContext(ctx context.Context) NfsExportOptionsAccessModePtrOutput {
+	return o
+}
+
+func (o NfsExportOptionsAccessModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NfsExportOptionsAccessModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NfsExportOptionsAccessMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NfsExportOptionsAccessModePtrOutput) Elem() NfsExportOptionsAccessModeOutput {
+	return o.ApplyT(func(v *NfsExportOptionsAccessMode) NfsExportOptionsAccessMode {
+		var ret NfsExportOptionsAccessMode
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(NfsExportOptionsAccessModeOutput)
+}
+
+// NfsExportOptionsAccessModeInput is an input type that accepts NfsExportOptionsAccessModeArgs and NfsExportOptionsAccessModeOutput values.
+// You can construct a concrete instance of `NfsExportOptionsAccessModeInput` via:
+//
+//          NfsExportOptionsAccessModeArgs{...}
+type NfsExportOptionsAccessModeInput interface {
+	pulumi.Input
+
+	ToNfsExportOptionsAccessModeOutput() NfsExportOptionsAccessModeOutput
+	ToNfsExportOptionsAccessModeOutputWithContext(context.Context) NfsExportOptionsAccessModeOutput
+}
+
+var nfsExportOptionsAccessModePtrType = reflect.TypeOf((**NfsExportOptionsAccessMode)(nil)).Elem()
+
+type NfsExportOptionsAccessModePtrInput interface {
+	pulumi.Input
+
+	ToNfsExportOptionsAccessModePtrOutput() NfsExportOptionsAccessModePtrOutput
+	ToNfsExportOptionsAccessModePtrOutputWithContext(context.Context) NfsExportOptionsAccessModePtrOutput
+}
+
+type nfsExportOptionsAccessModePtr string
+
+func NfsExportOptionsAccessModePtr(v string) NfsExportOptionsAccessModePtrInput {
+	return (*nfsExportOptionsAccessModePtr)(&v)
+}
+
+func (*nfsExportOptionsAccessModePtr) ElementType() reflect.Type {
+	return nfsExportOptionsAccessModePtrType
+}
+
+func (in *nfsExportOptionsAccessModePtr) ToNfsExportOptionsAccessModePtrOutput() NfsExportOptionsAccessModePtrOutput {
+	return pulumi.ToOutput(in).(NfsExportOptionsAccessModePtrOutput)
+}
+
+func (in *nfsExportOptionsAccessModePtr) ToNfsExportOptionsAccessModePtrOutputWithContext(ctx context.Context) NfsExportOptionsAccessModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NfsExportOptionsAccessModePtrOutput)
+}
+
 // Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing root access. The default is NO_ROOT_SQUASH.
-type NfsExportOptionsSquashMode pulumi.String
+type NfsExportOptionsSquashMode string
 
 const (
 	// SquashMode not set.
@@ -167,7 +578,23 @@ const (
 )
 
 func (NfsExportOptionsSquashMode) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*NfsExportOptionsSquashMode)(nil)).Elem()
+}
+
+func (e NfsExportOptionsSquashMode) ToNfsExportOptionsSquashModeOutput() NfsExportOptionsSquashModeOutput {
+	return pulumi.ToOutput(e).(NfsExportOptionsSquashModeOutput)
+}
+
+func (e NfsExportOptionsSquashMode) ToNfsExportOptionsSquashModeOutputWithContext(ctx context.Context) NfsExportOptionsSquashModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NfsExportOptionsSquashModeOutput)
+}
+
+func (e NfsExportOptionsSquashMode) ToNfsExportOptionsSquashModePtrOutput() NfsExportOptionsSquashModePtrOutput {
+	return e.ToNfsExportOptionsSquashModePtrOutputWithContext(context.Background())
+}
+
+func (e NfsExportOptionsSquashMode) ToNfsExportOptionsSquashModePtrOutputWithContext(ctx context.Context) NfsExportOptionsSquashModePtrOutput {
+	return NfsExportOptionsSquashMode(e).ToNfsExportOptionsSquashModeOutputWithContext(ctx).ToNfsExportOptionsSquashModePtrOutputWithContext(ctx)
 }
 
 func (e NfsExportOptionsSquashMode) ToStringOutput() pulumi.StringOutput {
@@ -184,4 +611,137 @@ func (e NfsExportOptionsSquashMode) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e NfsExportOptionsSquashMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NfsExportOptionsSquashModeOutput struct{ *pulumi.OutputState }
+
+func (NfsExportOptionsSquashModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsExportOptionsSquashMode)(nil)).Elem()
+}
+
+func (o NfsExportOptionsSquashModeOutput) ToNfsExportOptionsSquashModeOutput() NfsExportOptionsSquashModeOutput {
+	return o
+}
+
+func (o NfsExportOptionsSquashModeOutput) ToNfsExportOptionsSquashModeOutputWithContext(ctx context.Context) NfsExportOptionsSquashModeOutput {
+	return o
+}
+
+func (o NfsExportOptionsSquashModeOutput) ToNfsExportOptionsSquashModePtrOutput() NfsExportOptionsSquashModePtrOutput {
+	return o.ToNfsExportOptionsSquashModePtrOutputWithContext(context.Background())
+}
+
+func (o NfsExportOptionsSquashModeOutput) ToNfsExportOptionsSquashModePtrOutputWithContext(ctx context.Context) NfsExportOptionsSquashModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NfsExportOptionsSquashMode) *NfsExportOptionsSquashMode {
+		return &v
+	}).(NfsExportOptionsSquashModePtrOutput)
+}
+
+func (o NfsExportOptionsSquashModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NfsExportOptionsSquashModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NfsExportOptionsSquashMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NfsExportOptionsSquashModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NfsExportOptionsSquashModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NfsExportOptionsSquashMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NfsExportOptionsSquashModePtrOutput struct{ *pulumi.OutputState }
+
+func (NfsExportOptionsSquashModePtrOutput) ElementType() reflect.Type {
+	return nfsExportOptionsSquashModePtrType
+}
+
+func (o NfsExportOptionsSquashModePtrOutput) ToNfsExportOptionsSquashModePtrOutput() NfsExportOptionsSquashModePtrOutput {
+	return o
+}
+
+func (o NfsExportOptionsSquashModePtrOutput) ToNfsExportOptionsSquashModePtrOutputWithContext(ctx context.Context) NfsExportOptionsSquashModePtrOutput {
+	return o
+}
+
+func (o NfsExportOptionsSquashModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NfsExportOptionsSquashModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NfsExportOptionsSquashMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NfsExportOptionsSquashModePtrOutput) Elem() NfsExportOptionsSquashModeOutput {
+	return o.ApplyT(func(v *NfsExportOptionsSquashMode) NfsExportOptionsSquashMode {
+		var ret NfsExportOptionsSquashMode
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(NfsExportOptionsSquashModeOutput)
+}
+
+// NfsExportOptionsSquashModeInput is an input type that accepts NfsExportOptionsSquashModeArgs and NfsExportOptionsSquashModeOutput values.
+// You can construct a concrete instance of `NfsExportOptionsSquashModeInput` via:
+//
+//          NfsExportOptionsSquashModeArgs{...}
+type NfsExportOptionsSquashModeInput interface {
+	pulumi.Input
+
+	ToNfsExportOptionsSquashModeOutput() NfsExportOptionsSquashModeOutput
+	ToNfsExportOptionsSquashModeOutputWithContext(context.Context) NfsExportOptionsSquashModeOutput
+}
+
+var nfsExportOptionsSquashModePtrType = reflect.TypeOf((**NfsExportOptionsSquashMode)(nil)).Elem()
+
+type NfsExportOptionsSquashModePtrInput interface {
+	pulumi.Input
+
+	ToNfsExportOptionsSquashModePtrOutput() NfsExportOptionsSquashModePtrOutput
+	ToNfsExportOptionsSquashModePtrOutputWithContext(context.Context) NfsExportOptionsSquashModePtrOutput
+}
+
+type nfsExportOptionsSquashModePtr string
+
+func NfsExportOptionsSquashModePtr(v string) NfsExportOptionsSquashModePtrInput {
+	return (*nfsExportOptionsSquashModePtr)(&v)
+}
+
+func (*nfsExportOptionsSquashModePtr) ElementType() reflect.Type {
+	return nfsExportOptionsSquashModePtrType
+}
+
+func (in *nfsExportOptionsSquashModePtr) ToNfsExportOptionsSquashModePtrOutput() NfsExportOptionsSquashModePtrOutput {
+	return pulumi.ToOutput(in).(NfsExportOptionsSquashModePtrOutput)
+}
+
+func (in *nfsExportOptionsSquashModePtr) ToNfsExportOptionsSquashModePtrOutputWithContext(ctx context.Context) NfsExportOptionsSquashModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NfsExportOptionsSquashModePtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(InstanceTierOutput{})
+	pulumi.RegisterOutputType(InstanceTierPtrOutput{})
+	pulumi.RegisterOutputType(NetworkConfigModesItemOutput{})
+	pulumi.RegisterOutputType(NetworkConfigModesItemPtrOutput{})
+	pulumi.RegisterOutputType(NetworkConfigModesItemArrayOutput{})
+	pulumi.RegisterOutputType(NfsExportOptionsAccessModeOutput{})
+	pulumi.RegisterOutputType(NfsExportOptionsAccessModePtrOutput{})
+	pulumi.RegisterOutputType(NfsExportOptionsSquashModeOutput{})
+	pulumi.RegisterOutputType(NfsExportOptionsSquashModePtrOutput{})
 }

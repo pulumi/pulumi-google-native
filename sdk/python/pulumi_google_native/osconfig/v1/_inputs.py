@@ -11,16 +11,16 @@ from ._enums import *
 
 __all__ = [
     'AptSettingsArgs',
-    'ExecStepArgs',
     'ExecStepConfigArgs',
+    'ExecStepArgs',
     'FixedOrPercentArgs',
     'GcsObjectArgs',
     'GooSettingsArgs',
     'MonthlyScheduleArgs',
     'OneTimeScheduleArgs',
     'PatchConfigArgs',
-    'PatchInstanceFilterArgs',
     'PatchInstanceFilterGroupLabelArgs',
+    'PatchInstanceFilterArgs',
     'PatchRolloutArgs',
     'RecurringScheduleArgs',
     'TimeOfDayArgs',
@@ -86,46 +86,6 @@ class AptSettingsArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input['AptSettingsType']]):
         pulumi.set(self, "type", value)
-
-
-@pulumi.input_type
-class ExecStepArgs:
-    def __init__(__self__, *,
-                 linux_exec_step_config: Optional[pulumi.Input['ExecStepConfigArgs']] = None,
-                 windows_exec_step_config: Optional[pulumi.Input['ExecStepConfigArgs']] = None):
-        """
-        A step that runs an executable for a PatchJob.
-        :param pulumi.Input['ExecStepConfigArgs'] linux_exec_step_config: The ExecStepConfig for all Linux VMs targeted by the PatchJob.
-        :param pulumi.Input['ExecStepConfigArgs'] windows_exec_step_config: The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-        """
-        if linux_exec_step_config is not None:
-            pulumi.set(__self__, "linux_exec_step_config", linux_exec_step_config)
-        if windows_exec_step_config is not None:
-            pulumi.set(__self__, "windows_exec_step_config", windows_exec_step_config)
-
-    @property
-    @pulumi.getter(name="linuxExecStepConfig")
-    def linux_exec_step_config(self) -> Optional[pulumi.Input['ExecStepConfigArgs']]:
-        """
-        The ExecStepConfig for all Linux VMs targeted by the PatchJob.
-        """
-        return pulumi.get(self, "linux_exec_step_config")
-
-    @linux_exec_step_config.setter
-    def linux_exec_step_config(self, value: Optional[pulumi.Input['ExecStepConfigArgs']]):
-        pulumi.set(self, "linux_exec_step_config", value)
-
-    @property
-    @pulumi.getter(name="windowsExecStepConfig")
-    def windows_exec_step_config(self) -> Optional[pulumi.Input['ExecStepConfigArgs']]:
-        """
-        The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-        """
-        return pulumi.get(self, "windows_exec_step_config")
-
-    @windows_exec_step_config.setter
-    def windows_exec_step_config(self, value: Optional[pulumi.Input['ExecStepConfigArgs']]):
-        pulumi.set(self, "windows_exec_step_config", value)
 
 
 @pulumi.input_type
@@ -198,6 +158,46 @@ class ExecStepConfigArgs:
     @local_path.setter
     def local_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "local_path", value)
+
+
+@pulumi.input_type
+class ExecStepArgs:
+    def __init__(__self__, *,
+                 linux_exec_step_config: Optional[pulumi.Input['ExecStepConfigArgs']] = None,
+                 windows_exec_step_config: Optional[pulumi.Input['ExecStepConfigArgs']] = None):
+        """
+        A step that runs an executable for a PatchJob.
+        :param pulumi.Input['ExecStepConfigArgs'] linux_exec_step_config: The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+        :param pulumi.Input['ExecStepConfigArgs'] windows_exec_step_config: The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+        """
+        if linux_exec_step_config is not None:
+            pulumi.set(__self__, "linux_exec_step_config", linux_exec_step_config)
+        if windows_exec_step_config is not None:
+            pulumi.set(__self__, "windows_exec_step_config", windows_exec_step_config)
+
+    @property
+    @pulumi.getter(name="linuxExecStepConfig")
+    def linux_exec_step_config(self) -> Optional[pulumi.Input['ExecStepConfigArgs']]:
+        """
+        The ExecStepConfig for all Linux VMs targeted by the PatchJob.
+        """
+        return pulumi.get(self, "linux_exec_step_config")
+
+    @linux_exec_step_config.setter
+    def linux_exec_step_config(self, value: Optional[pulumi.Input['ExecStepConfigArgs']]):
+        pulumi.set(self, "linux_exec_step_config", value)
+
+    @property
+    @pulumi.getter(name="windowsExecStepConfig")
+    def windows_exec_step_config(self) -> Optional[pulumi.Input['ExecStepConfigArgs']]:
+        """
+        The ExecStepConfig for all Windows VMs targeted by the PatchJob.
+        """
+        return pulumi.get(self, "windows_exec_step_config")
+
+    @windows_exec_step_config.setter
+    def windows_exec_step_config(self, value: Optional[pulumi.Input['ExecStepConfigArgs']]):
+        pulumi.set(self, "windows_exec_step_config", value)
 
 
 @pulumi.input_type
@@ -500,6 +500,30 @@ class PatchConfigArgs:
 
 
 @pulumi.input_type
+class PatchInstanceFilterGroupLabelArgs:
+    def __init__(__self__, *,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        Targets a group of VM instances by using their [assigned labels](https://cloud.google.com/compute/docs/labeling-resources). Labels are key-value pairs. A `GroupLabel` is a combination of labels that is used to target VMs for a patch job. For example, a patch job can target VMs that have the following `GroupLabel`: `{"env":"test", "app":"web"}`. This means that the patch job is applied to VMs that have both the labels `env=test` and `app=web`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
+        """
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+
+@pulumi.input_type
 class PatchInstanceFilterArgs:
     def __init__(__self__, *,
                  all: Optional[pulumi.Input[bool]] = None,
@@ -585,30 +609,6 @@ class PatchInstanceFilterArgs:
     @zones.setter
     def zones(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "zones", value)
-
-
-@pulumi.input_type
-class PatchInstanceFilterGroupLabelArgs:
-    def __init__(__self__, *,
-                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
-        """
-        Targets a group of VM instances by using their [assigned labels](https://cloud.google.com/compute/docs/labeling-resources). Labels are key-value pairs. A `GroupLabel` is a combination of labels that is used to target VMs for a patch job. For example, a patch job can target VMs that have the following `GroupLabel`: `{"env":"test", "app":"web"}`. This means that the patch job is applied to VMs that have both the labels `env=test` and `app=web`.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
-        """
-        if labels is not None:
-            pulumi.set(__self__, "labels", labels)
-
-    @property
-    @pulumi.getter
-    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
-        """
-        Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
-        """
-        return pulumi.get(self, "labels")
-
-    @labels.setter
-    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
-        pulumi.set(self, "labels", value)
 
 
 @pulumi.input_type

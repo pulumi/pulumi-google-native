@@ -233,7 +233,7 @@ type AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *string `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
@@ -252,7 +252,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *AuditLogConfigLogType `pulumi:"logType"`
+	LogType AuditLogConfigLogTypePtrInput `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -313,8 +313,8 @@ func (o AuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
 }
 
 // The log type that this config enables.
-func (o AuditLogConfigOutput) LogType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AuditLogConfig) *string { return v.LogType }).(pulumi.StringPtrOutput)
+func (o AuditLogConfigOutput) LogType() AuditLogConfigLogTypePtrOutput {
+	return o.ApplyT(func(v AuditLogConfig) *AuditLogConfigLogType { return v.LogType }).(AuditLogConfigLogTypePtrOutput)
 }
 
 type AuditLogConfigArrayOutput struct{ *pulumi.OutputState }
@@ -1608,7 +1608,7 @@ func (o FailurePolicyResponsePtrOutput) Retry() RetryResponsePtrOutput {
 // Describes HttpsTrigger, could be used to connect web hooks to function.
 type HttpsTrigger struct {
 	// The security level for the function.
-	SecurityLevel *string `pulumi:"securityLevel"`
+	SecurityLevel *HttpsTriggerSecurityLevel `pulumi:"securityLevel"`
 }
 
 // HttpsTriggerInput is an input type that accepts HttpsTriggerArgs and HttpsTriggerOutput values.
@@ -1625,7 +1625,7 @@ type HttpsTriggerInput interface {
 // Describes HttpsTrigger, could be used to connect web hooks to function.
 type HttpsTriggerArgs struct {
 	// The security level for the function.
-	SecurityLevel *HttpsTriggerSecurityLevel `pulumi:"securityLevel"`
+	SecurityLevel HttpsTriggerSecurityLevelPtrInput `pulumi:"securityLevel"`
 }
 
 func (HttpsTriggerArgs) ElementType() reflect.Type {
@@ -1707,8 +1707,8 @@ func (o HttpsTriggerOutput) ToHttpsTriggerPtrOutputWithContext(ctx context.Conte
 }
 
 // The security level for the function.
-func (o HttpsTriggerOutput) SecurityLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HttpsTrigger) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
+func (o HttpsTriggerOutput) SecurityLevel() HttpsTriggerSecurityLevelPtrOutput {
+	return o.ApplyT(func(v HttpsTrigger) *HttpsTriggerSecurityLevel { return v.SecurityLevel }).(HttpsTriggerSecurityLevelPtrOutput)
 }
 
 type HttpsTriggerPtrOutput struct{ *pulumi.OutputState }
@@ -1730,13 +1730,13 @@ func (o HttpsTriggerPtrOutput) Elem() HttpsTriggerOutput {
 }
 
 // The security level for the function.
-func (o HttpsTriggerPtrOutput) SecurityLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *HttpsTrigger) *string {
+func (o HttpsTriggerPtrOutput) SecurityLevel() HttpsTriggerSecurityLevelPtrOutput {
+	return o.ApplyT(func(v *HttpsTrigger) *HttpsTriggerSecurityLevel {
 		if v == nil {
 			return nil
 		}
 		return v.SecurityLevel
-	}).(pulumi.StringPtrOutput)
+	}).(HttpsTriggerSecurityLevelPtrOutput)
 }
 
 // Describes HttpsTrigger, could be used to connect web hooks to function.

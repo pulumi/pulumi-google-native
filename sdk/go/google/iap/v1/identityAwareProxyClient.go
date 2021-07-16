@@ -59,21 +59,9 @@ func GetIdentityAwareProxyClient(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IdentityAwareProxyClient resources.
 type identityAwareProxyClientState struct {
-	// Human-friendly name given to the OAuth client.
-	DisplayName *string `pulumi:"displayName"`
-	// Unique identifier of the OAuth client.
-	Name *string `pulumi:"name"`
-	// Client secret of the OAuth client.
-	Secret *string `pulumi:"secret"`
 }
 
 type IdentityAwareProxyClientState struct {
-	// Human-friendly name given to the OAuth client.
-	DisplayName pulumi.StringPtrInput
-	// Unique identifier of the OAuth client.
-	Name pulumi.StringPtrInput
-	// Client secret of the OAuth client.
-	Secret pulumi.StringPtrInput
 }
 
 func (IdentityAwareProxyClientState) ElementType() reflect.Type {

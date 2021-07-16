@@ -860,7 +860,7 @@ func (g *packageGenerator) genEnumType(typeName, propName string, prop *discover
 	tok := fmt.Sprintf("%s:%s:%s", g.pkg.Name, g.mod, enumName)
 
 	enumSpec := &schema.ComplexTypeSpec{
-		Enum: []*schema.EnumValueSpec{},
+		Enum: []schema.EnumValueSpec{},
 		ObjectTypeSpec: schema.ObjectTypeSpec{
 			Description: prop.Description,
 			Type:        "string",
@@ -870,7 +870,7 @@ func (g *packageGenerator) genEnumType(typeName, propName string, prop *discover
 	values := codegen.NewStringSet()
 	for idx, val := range prop.Enum {
 		values.Add(val)
-		enumVal := &schema.EnumValueSpec{
+		enumVal := schema.EnumValueSpec{
 			Value:       val,
 			Name:        ToUpperCamel(val),
 			Description: prop.EnumDescriptions[idx],

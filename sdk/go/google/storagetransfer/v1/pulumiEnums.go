@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-type NotificationConfigEventTypesItem pulumi.String
+type NotificationConfigEventTypesItem string
 
 const (
 	// Illegal value, to avoid allowing a default.
@@ -24,7 +24,23 @@ const (
 )
 
 func (NotificationConfigEventTypesItem) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*NotificationConfigEventTypesItem)(nil)).Elem()
+}
+
+func (e NotificationConfigEventTypesItem) ToNotificationConfigEventTypesItemOutput() NotificationConfigEventTypesItemOutput {
+	return pulumi.ToOutput(e).(NotificationConfigEventTypesItemOutput)
+}
+
+func (e NotificationConfigEventTypesItem) ToNotificationConfigEventTypesItemOutputWithContext(ctx context.Context) NotificationConfigEventTypesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NotificationConfigEventTypesItemOutput)
+}
+
+func (e NotificationConfigEventTypesItem) ToNotificationConfigEventTypesItemPtrOutput() NotificationConfigEventTypesItemPtrOutput {
+	return e.ToNotificationConfigEventTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (e NotificationConfigEventTypesItem) ToNotificationConfigEventTypesItemPtrOutputWithContext(ctx context.Context) NotificationConfigEventTypesItemPtrOutput {
+	return NotificationConfigEventTypesItem(e).ToNotificationConfigEventTypesItemOutputWithContext(ctx).ToNotificationConfigEventTypesItemPtrOutputWithContext(ctx)
 }
 
 func (e NotificationConfigEventTypesItem) ToStringOutput() pulumi.StringOutput {
@@ -41,6 +57,127 @@ func (e NotificationConfigEventTypesItem) ToStringPtrOutput() pulumi.StringPtrOu
 
 func (e NotificationConfigEventTypesItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NotificationConfigEventTypesItemOutput struct{ *pulumi.OutputState }
+
+func (NotificationConfigEventTypesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationConfigEventTypesItem)(nil)).Elem()
+}
+
+func (o NotificationConfigEventTypesItemOutput) ToNotificationConfigEventTypesItemOutput() NotificationConfigEventTypesItemOutput {
+	return o
+}
+
+func (o NotificationConfigEventTypesItemOutput) ToNotificationConfigEventTypesItemOutputWithContext(ctx context.Context) NotificationConfigEventTypesItemOutput {
+	return o
+}
+
+func (o NotificationConfigEventTypesItemOutput) ToNotificationConfigEventTypesItemPtrOutput() NotificationConfigEventTypesItemPtrOutput {
+	return o.ToNotificationConfigEventTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (o NotificationConfigEventTypesItemOutput) ToNotificationConfigEventTypesItemPtrOutputWithContext(ctx context.Context) NotificationConfigEventTypesItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationConfigEventTypesItem) *NotificationConfigEventTypesItem {
+		return &v
+	}).(NotificationConfigEventTypesItemPtrOutput)
+}
+
+func (o NotificationConfigEventTypesItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NotificationConfigEventTypesItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NotificationConfigEventTypesItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NotificationConfigEventTypesItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NotificationConfigEventTypesItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NotificationConfigEventTypesItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NotificationConfigEventTypesItemPtrOutput struct{ *pulumi.OutputState }
+
+func (NotificationConfigEventTypesItemPtrOutput) ElementType() reflect.Type {
+	return notificationConfigEventTypesItemPtrType
+}
+
+func (o NotificationConfigEventTypesItemPtrOutput) ToNotificationConfigEventTypesItemPtrOutput() NotificationConfigEventTypesItemPtrOutput {
+	return o
+}
+
+func (o NotificationConfigEventTypesItemPtrOutput) ToNotificationConfigEventTypesItemPtrOutputWithContext(ctx context.Context) NotificationConfigEventTypesItemPtrOutput {
+	return o
+}
+
+func (o NotificationConfigEventTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NotificationConfigEventTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NotificationConfigEventTypesItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NotificationConfigEventTypesItemPtrOutput) Elem() NotificationConfigEventTypesItemOutput {
+	return o.ApplyT(func(v *NotificationConfigEventTypesItem) NotificationConfigEventTypesItem {
+		var ret NotificationConfigEventTypesItem
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(NotificationConfigEventTypesItemOutput)
+}
+
+// NotificationConfigEventTypesItemInput is an input type that accepts NotificationConfigEventTypesItemArgs and NotificationConfigEventTypesItemOutput values.
+// You can construct a concrete instance of `NotificationConfigEventTypesItemInput` via:
+//
+//          NotificationConfigEventTypesItemArgs{...}
+type NotificationConfigEventTypesItemInput interface {
+	pulumi.Input
+
+	ToNotificationConfigEventTypesItemOutput() NotificationConfigEventTypesItemOutput
+	ToNotificationConfigEventTypesItemOutputWithContext(context.Context) NotificationConfigEventTypesItemOutput
+}
+
+var notificationConfigEventTypesItemPtrType = reflect.TypeOf((**NotificationConfigEventTypesItem)(nil)).Elem()
+
+type NotificationConfigEventTypesItemPtrInput interface {
+	pulumi.Input
+
+	ToNotificationConfigEventTypesItemPtrOutput() NotificationConfigEventTypesItemPtrOutput
+	ToNotificationConfigEventTypesItemPtrOutputWithContext(context.Context) NotificationConfigEventTypesItemPtrOutput
+}
+
+type notificationConfigEventTypesItemPtr string
+
+func NotificationConfigEventTypesItemPtr(v string) NotificationConfigEventTypesItemPtrInput {
+	return (*notificationConfigEventTypesItemPtr)(&v)
+}
+
+func (*notificationConfigEventTypesItemPtr) ElementType() reflect.Type {
+	return notificationConfigEventTypesItemPtrType
+}
+
+func (in *notificationConfigEventTypesItemPtr) ToNotificationConfigEventTypesItemPtrOutput() NotificationConfigEventTypesItemPtrOutput {
+	return pulumi.ToOutput(in).(NotificationConfigEventTypesItemPtrOutput)
+}
+
+func (in *notificationConfigEventTypesItemPtr) ToNotificationConfigEventTypesItemPtrOutputWithContext(ctx context.Context) NotificationConfigEventTypesItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NotificationConfigEventTypesItemPtrOutput)
 }
 
 // NotificationConfigEventTypesItemArrayInput is an input type that accepts NotificationConfigEventTypesItemArray and NotificationConfigEventTypesItemArrayOutput values.
@@ -82,14 +219,14 @@ func (o NotificationConfigEventTypesItemArrayOutput) ToNotificationConfigEventTy
 	return o
 }
 
-func (o NotificationConfigEventTypesItemArrayOutput) Index(i pulumi.IntInput) pulumi.StringOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) pulumi.StringOutput {
-		return vs[0].([]NotificationConfigEventTypesItem)[vs[1].(int)].ToStringOutput()
-	}).(pulumi.StringOutput)
+func (o NotificationConfigEventTypesItemArrayOutput) Index(i pulumi.IntInput) NotificationConfigEventTypesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NotificationConfigEventTypesItemOutput {
+		return vs[0].([]NotificationConfigEventTypesItem)[vs[1].(int)].ToNotificationConfigEventTypesItemOutput()
+	}).(NotificationConfigEventTypesItemOutput)
 }
 
 // Required. The desired format of the notification message payloads.
-type NotificationConfigPayloadFormat pulumi.String
+type NotificationConfigPayloadFormat string
 
 const (
 	// Illegal value, to avoid allowing a default.
@@ -101,7 +238,23 @@ const (
 )
 
 func (NotificationConfigPayloadFormat) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*NotificationConfigPayloadFormat)(nil)).Elem()
+}
+
+func (e NotificationConfigPayloadFormat) ToNotificationConfigPayloadFormatOutput() NotificationConfigPayloadFormatOutput {
+	return pulumi.ToOutput(e).(NotificationConfigPayloadFormatOutput)
+}
+
+func (e NotificationConfigPayloadFormat) ToNotificationConfigPayloadFormatOutputWithContext(ctx context.Context) NotificationConfigPayloadFormatOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NotificationConfigPayloadFormatOutput)
+}
+
+func (e NotificationConfigPayloadFormat) ToNotificationConfigPayloadFormatPtrOutput() NotificationConfigPayloadFormatPtrOutput {
+	return e.ToNotificationConfigPayloadFormatPtrOutputWithContext(context.Background())
+}
+
+func (e NotificationConfigPayloadFormat) ToNotificationConfigPayloadFormatPtrOutputWithContext(ctx context.Context) NotificationConfigPayloadFormatPtrOutput {
+	return NotificationConfigPayloadFormat(e).ToNotificationConfigPayloadFormatOutputWithContext(ctx).ToNotificationConfigPayloadFormatPtrOutputWithContext(ctx)
 }
 
 func (e NotificationConfigPayloadFormat) ToStringOutput() pulumi.StringOutput {
@@ -120,8 +273,129 @@ func (e NotificationConfigPayloadFormat) ToStringPtrOutputWithContext(ctx contex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type NotificationConfigPayloadFormatOutput struct{ *pulumi.OutputState }
+
+func (NotificationConfigPayloadFormatOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationConfigPayloadFormat)(nil)).Elem()
+}
+
+func (o NotificationConfigPayloadFormatOutput) ToNotificationConfigPayloadFormatOutput() NotificationConfigPayloadFormatOutput {
+	return o
+}
+
+func (o NotificationConfigPayloadFormatOutput) ToNotificationConfigPayloadFormatOutputWithContext(ctx context.Context) NotificationConfigPayloadFormatOutput {
+	return o
+}
+
+func (o NotificationConfigPayloadFormatOutput) ToNotificationConfigPayloadFormatPtrOutput() NotificationConfigPayloadFormatPtrOutput {
+	return o.ToNotificationConfigPayloadFormatPtrOutputWithContext(context.Background())
+}
+
+func (o NotificationConfigPayloadFormatOutput) ToNotificationConfigPayloadFormatPtrOutputWithContext(ctx context.Context) NotificationConfigPayloadFormatPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationConfigPayloadFormat) *NotificationConfigPayloadFormat {
+		return &v
+	}).(NotificationConfigPayloadFormatPtrOutput)
+}
+
+func (o NotificationConfigPayloadFormatOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NotificationConfigPayloadFormatOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NotificationConfigPayloadFormat) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NotificationConfigPayloadFormatOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NotificationConfigPayloadFormatOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NotificationConfigPayloadFormat) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NotificationConfigPayloadFormatPtrOutput struct{ *pulumi.OutputState }
+
+func (NotificationConfigPayloadFormatPtrOutput) ElementType() reflect.Type {
+	return notificationConfigPayloadFormatPtrType
+}
+
+func (o NotificationConfigPayloadFormatPtrOutput) ToNotificationConfigPayloadFormatPtrOutput() NotificationConfigPayloadFormatPtrOutput {
+	return o
+}
+
+func (o NotificationConfigPayloadFormatPtrOutput) ToNotificationConfigPayloadFormatPtrOutputWithContext(ctx context.Context) NotificationConfigPayloadFormatPtrOutput {
+	return o
+}
+
+func (o NotificationConfigPayloadFormatPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NotificationConfigPayloadFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NotificationConfigPayloadFormat) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NotificationConfigPayloadFormatPtrOutput) Elem() NotificationConfigPayloadFormatOutput {
+	return o.ApplyT(func(v *NotificationConfigPayloadFormat) NotificationConfigPayloadFormat {
+		var ret NotificationConfigPayloadFormat
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(NotificationConfigPayloadFormatOutput)
+}
+
+// NotificationConfigPayloadFormatInput is an input type that accepts NotificationConfigPayloadFormatArgs and NotificationConfigPayloadFormatOutput values.
+// You can construct a concrete instance of `NotificationConfigPayloadFormatInput` via:
+//
+//          NotificationConfigPayloadFormatArgs{...}
+type NotificationConfigPayloadFormatInput interface {
+	pulumi.Input
+
+	ToNotificationConfigPayloadFormatOutput() NotificationConfigPayloadFormatOutput
+	ToNotificationConfigPayloadFormatOutputWithContext(context.Context) NotificationConfigPayloadFormatOutput
+}
+
+var notificationConfigPayloadFormatPtrType = reflect.TypeOf((**NotificationConfigPayloadFormat)(nil)).Elem()
+
+type NotificationConfigPayloadFormatPtrInput interface {
+	pulumi.Input
+
+	ToNotificationConfigPayloadFormatPtrOutput() NotificationConfigPayloadFormatPtrOutput
+	ToNotificationConfigPayloadFormatPtrOutputWithContext(context.Context) NotificationConfigPayloadFormatPtrOutput
+}
+
+type notificationConfigPayloadFormatPtr string
+
+func NotificationConfigPayloadFormatPtr(v string) NotificationConfigPayloadFormatPtrInput {
+	return (*notificationConfigPayloadFormatPtr)(&v)
+}
+
+func (*notificationConfigPayloadFormatPtr) ElementType() reflect.Type {
+	return notificationConfigPayloadFormatPtrType
+}
+
+func (in *notificationConfigPayloadFormatPtr) ToNotificationConfigPayloadFormatPtrOutput() NotificationConfigPayloadFormatPtrOutput {
+	return pulumi.ToOutput(in).(NotificationConfigPayloadFormatPtrOutput)
+}
+
+func (in *notificationConfigPayloadFormatPtr) ToNotificationConfigPayloadFormatPtrOutputWithContext(ctx context.Context) NotificationConfigPayloadFormatPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NotificationConfigPayloadFormatPtrOutput)
+}
+
 // Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
-type TransferJobStatus pulumi.String
+type TransferJobStatus string
 
 const (
 	// Zero is an illegal value.
@@ -135,7 +409,23 @@ const (
 )
 
 func (TransferJobStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*TransferJobStatus)(nil)).Elem()
+}
+
+func (e TransferJobStatus) ToTransferJobStatusOutput() TransferJobStatusOutput {
+	return pulumi.ToOutput(e).(TransferJobStatusOutput)
+}
+
+func (e TransferJobStatus) ToTransferJobStatusOutputWithContext(ctx context.Context) TransferJobStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TransferJobStatusOutput)
+}
+
+func (e TransferJobStatus) ToTransferJobStatusPtrOutput() TransferJobStatusPtrOutput {
+	return e.ToTransferJobStatusPtrOutputWithContext(context.Background())
+}
+
+func (e TransferJobStatus) ToTransferJobStatusPtrOutputWithContext(ctx context.Context) TransferJobStatusPtrOutput {
+	return TransferJobStatus(e).ToTransferJobStatusOutputWithContext(ctx).ToTransferJobStatusPtrOutputWithContext(ctx)
 }
 
 func (e TransferJobStatus) ToStringOutput() pulumi.StringOutput {
@@ -152,4 +442,135 @@ func (e TransferJobStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e TransferJobStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TransferJobStatusOutput struct{ *pulumi.OutputState }
+
+func (TransferJobStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobStatus)(nil)).Elem()
+}
+
+func (o TransferJobStatusOutput) ToTransferJobStatusOutput() TransferJobStatusOutput {
+	return o
+}
+
+func (o TransferJobStatusOutput) ToTransferJobStatusOutputWithContext(ctx context.Context) TransferJobStatusOutput {
+	return o
+}
+
+func (o TransferJobStatusOutput) ToTransferJobStatusPtrOutput() TransferJobStatusPtrOutput {
+	return o.ToTransferJobStatusPtrOutputWithContext(context.Background())
+}
+
+func (o TransferJobStatusOutput) ToTransferJobStatusPtrOutputWithContext(ctx context.Context) TransferJobStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobStatus) *TransferJobStatus {
+		return &v
+	}).(TransferJobStatusPtrOutput)
+}
+
+func (o TransferJobStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TransferJobStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TransferJobStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TransferJobStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TransferJobStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TransferJobStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TransferJobStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (TransferJobStatusPtrOutput) ElementType() reflect.Type {
+	return transferJobStatusPtrType
+}
+
+func (o TransferJobStatusPtrOutput) ToTransferJobStatusPtrOutput() TransferJobStatusPtrOutput {
+	return o
+}
+
+func (o TransferJobStatusPtrOutput) ToTransferJobStatusPtrOutputWithContext(ctx context.Context) TransferJobStatusPtrOutput {
+	return o
+}
+
+func (o TransferJobStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TransferJobStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TransferJobStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TransferJobStatusPtrOutput) Elem() TransferJobStatusOutput {
+	return o.ApplyT(func(v *TransferJobStatus) TransferJobStatus {
+		var ret TransferJobStatus
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(TransferJobStatusOutput)
+}
+
+// TransferJobStatusInput is an input type that accepts TransferJobStatusArgs and TransferJobStatusOutput values.
+// You can construct a concrete instance of `TransferJobStatusInput` via:
+//
+//          TransferJobStatusArgs{...}
+type TransferJobStatusInput interface {
+	pulumi.Input
+
+	ToTransferJobStatusOutput() TransferJobStatusOutput
+	ToTransferJobStatusOutputWithContext(context.Context) TransferJobStatusOutput
+}
+
+var transferJobStatusPtrType = reflect.TypeOf((**TransferJobStatus)(nil)).Elem()
+
+type TransferJobStatusPtrInput interface {
+	pulumi.Input
+
+	ToTransferJobStatusPtrOutput() TransferJobStatusPtrOutput
+	ToTransferJobStatusPtrOutputWithContext(context.Context) TransferJobStatusPtrOutput
+}
+
+type transferJobStatusPtr string
+
+func TransferJobStatusPtr(v string) TransferJobStatusPtrInput {
+	return (*transferJobStatusPtr)(&v)
+}
+
+func (*transferJobStatusPtr) ElementType() reflect.Type {
+	return transferJobStatusPtrType
+}
+
+func (in *transferJobStatusPtr) ToTransferJobStatusPtrOutput() TransferJobStatusPtrOutput {
+	return pulumi.ToOutput(in).(TransferJobStatusPtrOutput)
+}
+
+func (in *transferJobStatusPtr) ToTransferJobStatusPtrOutputWithContext(ctx context.Context) TransferJobStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TransferJobStatusPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(NotificationConfigEventTypesItemOutput{})
+	pulumi.RegisterOutputType(NotificationConfigEventTypesItemPtrOutput{})
+	pulumi.RegisterOutputType(NotificationConfigEventTypesItemArrayOutput{})
+	pulumi.RegisterOutputType(NotificationConfigPayloadFormatOutput{})
+	pulumi.RegisterOutputType(NotificationConfigPayloadFormatPtrOutput{})
+	pulumi.RegisterOutputType(TransferJobStatusOutput{})
+	pulumi.RegisterOutputType(TransferJobStatusPtrOutput{})
 }

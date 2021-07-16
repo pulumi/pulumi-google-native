@@ -70,37 +70,9 @@ func GetEnvironment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Environment resources.
 type environmentState struct {
-	// Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
-	AgentVersion *string `pulumi:"agentVersion"`
-	// Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
-	Description *string `pulumi:"description"`
-	// Optional. The fulfillment settings to use for this environment.
-	Fulfillment *GoogleCloudDialogflowV2FulfillmentResponse `pulumi:"fulfillment"`
-	// The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.
-	Name *string `pulumi:"name"`
-	// The state of this environment. This field is read-only, i.e., it cannot be set by create and update methods.
-	State *string `pulumi:"state"`
-	// Optional. Text to speech settings for this environment.
-	TextToSpeechSettings *GoogleCloudDialogflowV2TextToSpeechSettingsResponse `pulumi:"textToSpeechSettings"`
-	// The last update time of this environment. This field is read-only, i.e., it cannot be set by create and update methods.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type EnvironmentState struct {
-	// Optional. The agent version loaded into this environment. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/`
-	AgentVersion pulumi.StringPtrInput
-	// Optional. The developer-provided description for this environment. The maximum length is 500 characters. If exceeded, the request is rejected.
-	Description pulumi.StringPtrInput
-	// Optional. The fulfillment settings to use for this environment.
-	Fulfillment GoogleCloudDialogflowV2FulfillmentResponsePtrInput
-	// The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`.
-	Name pulumi.StringPtrInput
-	// The state of this environment. This field is read-only, i.e., it cannot be set by create and update methods.
-	State pulumi.StringPtrInput
-	// Optional. Text to speech settings for this environment.
-	TextToSpeechSettings GoogleCloudDialogflowV2TextToSpeechSettingsResponsePtrInput
-	// The last update time of this environment. This field is read-only, i.e., it cannot be set by create and update methods.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (EnvironmentState) ElementType() reflect.Type {

@@ -17,13 +17,13 @@ __all__ = [
     'ConfigMapEnvSourceArgs',
     'ConfigMapKeySelectorArgs',
     'ConfigMapVolumeSourceArgs',
-    'ContainerArgs',
     'ContainerPortArgs',
+    'ContainerArgs',
     'DomainMappingSpecArgs',
     'DomainMappingStatusArgs',
     'EnvFromSourceArgs',
-    'EnvVarArgs',
     'EnvVarSourceArgs',
+    'EnvVarArgs',
     'ExecActionArgs',
     'ExprArgs',
     'GoogleCloudRunV1ConditionArgs',
@@ -46,8 +46,8 @@ __all__ = [
     'ServiceStatusArgs',
     'TCPSocketActionArgs',
     'TrafficTargetArgs',
-    'VolumeArgs',
     'VolumeMountArgs',
+    'VolumeArgs',
 ]
 
 @pulumi.input_type
@@ -407,6 +407,62 @@ class ConfigMapVolumeSourceArgs:
 
 
 @pulumi.input_type
+class ContainerPortArgs:
+    def __init__(__self__, *,
+                 container_port: Optional[pulumi.Input[int]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 protocol: Optional[pulumi.Input[str]] = None):
+        """
+        ContainerPort represents a network port in a single container.
+        :param pulumi.Input[int] container_port: (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+        :param pulumi.Input[str] name: (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+        :param pulumi.Input[str] protocol: (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
+        """
+        if container_port is not None:
+            pulumi.set(__self__, "container_port", container_port)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if protocol is not None:
+            pulumi.set(__self__, "protocol", protocol)
+
+    @property
+    @pulumi.getter(name="containerPort")
+    def container_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+        """
+        return pulumi.get(self, "container_port")
+
+    @container_port.setter
+    def container_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "container_port", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
+        """
+        return pulumi.get(self, "protocol")
+
+    @protocol.setter
+    def protocol(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "protocol", value)
+
+
+@pulumi.input_type
 class ContainerArgs:
     def __init__(__self__, *,
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -683,62 +739,6 @@ class ContainerArgs:
 
 
 @pulumi.input_type
-class ContainerPortArgs:
-    def __init__(__self__, *,
-                 container_port: Optional[pulumi.Input[int]] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 protocol: Optional[pulumi.Input[str]] = None):
-        """
-        ContainerPort represents a network port in a single container.
-        :param pulumi.Input[int] container_port: (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
-        :param pulumi.Input[str] name: (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
-        :param pulumi.Input[str] protocol: (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
-        """
-        if container_port is not None:
-            pulumi.set(__self__, "container_port", container_port)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if protocol is not None:
-            pulumi.set(__self__, "protocol", protocol)
-
-    @property
-    @pulumi.getter(name="containerPort")
-    def container_port(self) -> Optional[pulumi.Input[int]]:
-        """
-        (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
-        """
-        return pulumi.get(self, "container_port")
-
-    @container_port.setter
-    def container_port(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "container_port", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def protocol(self) -> Optional[pulumi.Input[str]]:
-        """
-        (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
-        """
-        return pulumi.get(self, "protocol")
-
-    @protocol.setter
-    def protocol(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "protocol", value)
-
-
-@pulumi.input_type
 class DomainMappingSpecArgs:
     def __init__(__self__, *,
                  certificate_mode: Optional[pulumi.Input['DomainMappingSpecCertificateMode']] = None,
@@ -939,6 +939,46 @@ class EnvFromSourceArgs:
 
 
 @pulumi.input_type
+class EnvVarSourceArgs:
+    def __init__(__self__, *,
+                 config_map_key_ref: Optional[pulumi.Input['ConfigMapKeySelectorArgs']] = None,
+                 secret_key_ref: Optional[pulumi.Input['SecretKeySelectorArgs']] = None):
+        """
+        EnvVarSource represents a source for the value of an EnvVar.
+        :param pulumi.Input['ConfigMapKeySelectorArgs'] config_map_key_ref: (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
+        :param pulumi.Input['SecretKeySelectorArgs'] secret_key_ref: (Optional) Selects a key (version) of a secret in Secret Manager.
+        """
+        if config_map_key_ref is not None:
+            pulumi.set(__self__, "config_map_key_ref", config_map_key_ref)
+        if secret_key_ref is not None:
+            pulumi.set(__self__, "secret_key_ref", secret_key_ref)
+
+    @property
+    @pulumi.getter(name="configMapKeyRef")
+    def config_map_key_ref(self) -> Optional[pulumi.Input['ConfigMapKeySelectorArgs']]:
+        """
+        (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
+        """
+        return pulumi.get(self, "config_map_key_ref")
+
+    @config_map_key_ref.setter
+    def config_map_key_ref(self, value: Optional[pulumi.Input['ConfigMapKeySelectorArgs']]):
+        pulumi.set(self, "config_map_key_ref", value)
+
+    @property
+    @pulumi.getter(name="secretKeyRef")
+    def secret_key_ref(self) -> Optional[pulumi.Input['SecretKeySelectorArgs']]:
+        """
+        (Optional) Selects a key (version) of a secret in Secret Manager.
+        """
+        return pulumi.get(self, "secret_key_ref")
+
+    @secret_key_ref.setter
+    def secret_key_ref(self, value: Optional[pulumi.Input['SecretKeySelectorArgs']]):
+        pulumi.set(self, "secret_key_ref", value)
+
+
+@pulumi.input_type
 class EnvVarArgs:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
@@ -992,46 +1032,6 @@ class EnvVarArgs:
     @value_from.setter
     def value_from(self, value: Optional[pulumi.Input['EnvVarSourceArgs']]):
         pulumi.set(self, "value_from", value)
-
-
-@pulumi.input_type
-class EnvVarSourceArgs:
-    def __init__(__self__, *,
-                 config_map_key_ref: Optional[pulumi.Input['ConfigMapKeySelectorArgs']] = None,
-                 secret_key_ref: Optional[pulumi.Input['SecretKeySelectorArgs']] = None):
-        """
-        EnvVarSource represents a source for the value of an EnvVar.
-        :param pulumi.Input['ConfigMapKeySelectorArgs'] config_map_key_ref: (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
-        :param pulumi.Input['SecretKeySelectorArgs'] secret_key_ref: (Optional) Selects a key (version) of a secret in Secret Manager.
-        """
-        if config_map_key_ref is not None:
-            pulumi.set(__self__, "config_map_key_ref", config_map_key_ref)
-        if secret_key_ref is not None:
-            pulumi.set(__self__, "secret_key_ref", secret_key_ref)
-
-    @property
-    @pulumi.getter(name="configMapKeyRef")
-    def config_map_key_ref(self) -> Optional[pulumi.Input['ConfigMapKeySelectorArgs']]:
-        """
-        (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
-        """
-        return pulumi.get(self, "config_map_key_ref")
-
-    @config_map_key_ref.setter
-    def config_map_key_ref(self, value: Optional[pulumi.Input['ConfigMapKeySelectorArgs']]):
-        pulumi.set(self, "config_map_key_ref", value)
-
-    @property
-    @pulumi.getter(name="secretKeyRef")
-    def secret_key_ref(self) -> Optional[pulumi.Input['SecretKeySelectorArgs']]:
-        """
-        (Optional) Selects a key (version) of a secret in Secret Manager.
-        """
-        return pulumi.get(self, "secret_key_ref")
-
-    @secret_key_ref.setter
-    def secret_key_ref(self, value: Optional[pulumi.Input['SecretKeySelectorArgs']]):
-        pulumi.set(self, "secret_key_ref", value)
 
 
 @pulumi.input_type
@@ -2647,54 +2647,6 @@ class TrafficTargetArgs:
 
 
 @pulumi.input_type
-class VolumeArgs:
-    def __init__(__self__, *,
-                 config_map: Optional[pulumi.Input['ConfigMapVolumeSourceArgs']] = None,
-                 name: Optional[pulumi.Input[str]] = None,
-                 secret: Optional[pulumi.Input['SecretVolumeSourceArgs']] = None):
-        """
-        Not supported by Cloud Run Volume represents a named volume in a container.
-        :param pulumi.Input[str] name: Volume's name.
-        """
-        if config_map is not None:
-            pulumi.set(__self__, "config_map", config_map)
-        if name is not None:
-            pulumi.set(__self__, "name", name)
-        if secret is not None:
-            pulumi.set(__self__, "secret", secret)
-
-    @property
-    @pulumi.getter(name="configMap")
-    def config_map(self) -> Optional[pulumi.Input['ConfigMapVolumeSourceArgs']]:
-        return pulumi.get(self, "config_map")
-
-    @config_map.setter
-    def config_map(self, value: Optional[pulumi.Input['ConfigMapVolumeSourceArgs']]):
-        pulumi.set(self, "config_map", value)
-
-    @property
-    @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        Volume's name.
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "name", value)
-
-    @property
-    @pulumi.getter
-    def secret(self) -> Optional[pulumi.Input['SecretVolumeSourceArgs']]:
-        return pulumi.get(self, "secret")
-
-    @secret.setter
-    def secret(self, value: Optional[pulumi.Input['SecretVolumeSourceArgs']]):
-        pulumi.set(self, "secret", value)
-
-
-@pulumi.input_type
 class VolumeMountArgs:
     def __init__(__self__, *,
                  mount_path: Optional[pulumi.Input[str]] = None,
@@ -2764,5 +2716,53 @@ class VolumeMountArgs:
     @sub_path.setter
     def sub_path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "sub_path", value)
+
+
+@pulumi.input_type
+class VolumeArgs:
+    def __init__(__self__, *,
+                 config_map: Optional[pulumi.Input['ConfigMapVolumeSourceArgs']] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 secret: Optional[pulumi.Input['SecretVolumeSourceArgs']] = None):
+        """
+        Not supported by Cloud Run Volume represents a named volume in a container.
+        :param pulumi.Input[str] name: Volume's name.
+        """
+        if config_map is not None:
+            pulumi.set(__self__, "config_map", config_map)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if secret is not None:
+            pulumi.set(__self__, "secret", secret)
+
+    @property
+    @pulumi.getter(name="configMap")
+    def config_map(self) -> Optional[pulumi.Input['ConfigMapVolumeSourceArgs']]:
+        return pulumi.get(self, "config_map")
+
+    @config_map.setter
+    def config_map(self, value: Optional[pulumi.Input['ConfigMapVolumeSourceArgs']]):
+        pulumi.set(self, "config_map", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Volume's name.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def secret(self) -> Optional[pulumi.Input['SecretVolumeSourceArgs']]:
+        return pulumi.get(self, "secret")
+
+    @secret.setter
+    def secret(self, value: Optional[pulumi.Input['SecretVolumeSourceArgs']]):
+        pulumi.set(self, "secret", value)
 
 

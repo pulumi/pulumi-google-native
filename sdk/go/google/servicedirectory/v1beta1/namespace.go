@@ -63,25 +63,9 @@ func GetNamespace(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Namespace resources.
 type namespaceState struct {
-	// The timestamp when the namespace was created.
-	CreateTime *string `pulumi:"createTime"`
-	// Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
-	Labels map[string]string `pulumi:"labels"`
-	// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
-	Name *string `pulumi:"name"`
-	// The timestamp when the namespace was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type NamespaceState struct {
-	// The timestamp when the namespace was created.
-	CreateTime pulumi.StringPtrInput
-	// Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
-	Labels pulumi.StringMapInput
-	// Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
-	Name pulumi.StringPtrInput
-	// The timestamp when the namespace was last updated.
-	UpdateTime pulumi.StringPtrInput
 }
 
 func (NamespaceState) ElementType() reflect.Type {

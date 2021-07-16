@@ -11,7 +11,7 @@ import (
 )
 
 // The reduction operation to be used to combine time series into a single time series, where the value of each data point in the resulting series is a function of all the already aligned values in the input time series.Not all reducer operations can be applied to all time series. The valid choices depend on the metric_kind and the value_type of the original time series. Reduction can yield a time series with a different metric_kind or value_type than the input time series.Time series data must first be aligned (see per_series_aligner) in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified, and must not be ALIGN_NONE. An alignment_period must also be specified; otherwise, an error is returned.
-type AggregationCrossSeriesReducer pulumi.String
+type AggregationCrossSeriesReducer string
 
 const (
 	// No cross-time series reduction. The output of the Aligner is returned.
@@ -45,7 +45,23 @@ const (
 )
 
 func (AggregationCrossSeriesReducer) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*AggregationCrossSeriesReducer)(nil)).Elem()
+}
+
+func (e AggregationCrossSeriesReducer) ToAggregationCrossSeriesReducerOutput() AggregationCrossSeriesReducerOutput {
+	return pulumi.ToOutput(e).(AggregationCrossSeriesReducerOutput)
+}
+
+func (e AggregationCrossSeriesReducer) ToAggregationCrossSeriesReducerOutputWithContext(ctx context.Context) AggregationCrossSeriesReducerOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AggregationCrossSeriesReducerOutput)
+}
+
+func (e AggregationCrossSeriesReducer) ToAggregationCrossSeriesReducerPtrOutput() AggregationCrossSeriesReducerPtrOutput {
+	return e.ToAggregationCrossSeriesReducerPtrOutputWithContext(context.Background())
+}
+
+func (e AggregationCrossSeriesReducer) ToAggregationCrossSeriesReducerPtrOutputWithContext(ctx context.Context) AggregationCrossSeriesReducerPtrOutput {
+	return AggregationCrossSeriesReducer(e).ToAggregationCrossSeriesReducerOutputWithContext(ctx).ToAggregationCrossSeriesReducerPtrOutputWithContext(ctx)
 }
 
 func (e AggregationCrossSeriesReducer) ToStringOutput() pulumi.StringOutput {
@@ -64,8 +80,129 @@ func (e AggregationCrossSeriesReducer) ToStringPtrOutputWithContext(ctx context.
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type AggregationCrossSeriesReducerOutput struct{ *pulumi.OutputState }
+
+func (AggregationCrossSeriesReducerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationCrossSeriesReducer)(nil)).Elem()
+}
+
+func (o AggregationCrossSeriesReducerOutput) ToAggregationCrossSeriesReducerOutput() AggregationCrossSeriesReducerOutput {
+	return o
+}
+
+func (o AggregationCrossSeriesReducerOutput) ToAggregationCrossSeriesReducerOutputWithContext(ctx context.Context) AggregationCrossSeriesReducerOutput {
+	return o
+}
+
+func (o AggregationCrossSeriesReducerOutput) ToAggregationCrossSeriesReducerPtrOutput() AggregationCrossSeriesReducerPtrOutput {
+	return o.ToAggregationCrossSeriesReducerPtrOutputWithContext(context.Background())
+}
+
+func (o AggregationCrossSeriesReducerOutput) ToAggregationCrossSeriesReducerPtrOutputWithContext(ctx context.Context) AggregationCrossSeriesReducerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AggregationCrossSeriesReducer) *AggregationCrossSeriesReducer {
+		return &v
+	}).(AggregationCrossSeriesReducerPtrOutput)
+}
+
+func (o AggregationCrossSeriesReducerOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AggregationCrossSeriesReducerOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AggregationCrossSeriesReducer) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AggregationCrossSeriesReducerOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AggregationCrossSeriesReducerOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AggregationCrossSeriesReducer) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AggregationCrossSeriesReducerPtrOutput struct{ *pulumi.OutputState }
+
+func (AggregationCrossSeriesReducerPtrOutput) ElementType() reflect.Type {
+	return aggregationCrossSeriesReducerPtrType
+}
+
+func (o AggregationCrossSeriesReducerPtrOutput) ToAggregationCrossSeriesReducerPtrOutput() AggregationCrossSeriesReducerPtrOutput {
+	return o
+}
+
+func (o AggregationCrossSeriesReducerPtrOutput) ToAggregationCrossSeriesReducerPtrOutputWithContext(ctx context.Context) AggregationCrossSeriesReducerPtrOutput {
+	return o
+}
+
+func (o AggregationCrossSeriesReducerPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AggregationCrossSeriesReducerPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AggregationCrossSeriesReducer) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AggregationCrossSeriesReducerPtrOutput) Elem() AggregationCrossSeriesReducerOutput {
+	return o.ApplyT(func(v *AggregationCrossSeriesReducer) AggregationCrossSeriesReducer {
+		var ret AggregationCrossSeriesReducer
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(AggregationCrossSeriesReducerOutput)
+}
+
+// AggregationCrossSeriesReducerInput is an input type that accepts AggregationCrossSeriesReducerArgs and AggregationCrossSeriesReducerOutput values.
+// You can construct a concrete instance of `AggregationCrossSeriesReducerInput` via:
+//
+//          AggregationCrossSeriesReducerArgs{...}
+type AggregationCrossSeriesReducerInput interface {
+	pulumi.Input
+
+	ToAggregationCrossSeriesReducerOutput() AggregationCrossSeriesReducerOutput
+	ToAggregationCrossSeriesReducerOutputWithContext(context.Context) AggregationCrossSeriesReducerOutput
+}
+
+var aggregationCrossSeriesReducerPtrType = reflect.TypeOf((**AggregationCrossSeriesReducer)(nil)).Elem()
+
+type AggregationCrossSeriesReducerPtrInput interface {
+	pulumi.Input
+
+	ToAggregationCrossSeriesReducerPtrOutput() AggregationCrossSeriesReducerPtrOutput
+	ToAggregationCrossSeriesReducerPtrOutputWithContext(context.Context) AggregationCrossSeriesReducerPtrOutput
+}
+
+type aggregationCrossSeriesReducerPtr string
+
+func AggregationCrossSeriesReducerPtr(v string) AggregationCrossSeriesReducerPtrInput {
+	return (*aggregationCrossSeriesReducerPtr)(&v)
+}
+
+func (*aggregationCrossSeriesReducerPtr) ElementType() reflect.Type {
+	return aggregationCrossSeriesReducerPtrType
+}
+
+func (in *aggregationCrossSeriesReducerPtr) ToAggregationCrossSeriesReducerPtrOutput() AggregationCrossSeriesReducerPtrOutput {
+	return pulumi.ToOutput(in).(AggregationCrossSeriesReducerPtrOutput)
+}
+
+func (in *aggregationCrossSeriesReducerPtr) ToAggregationCrossSeriesReducerPtrOutputWithContext(ctx context.Context) AggregationCrossSeriesReducerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AggregationCrossSeriesReducerPtrOutput)
+}
+
 // An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned.
-type AggregationPerSeriesAligner pulumi.String
+type AggregationPerSeriesAligner string
 
 const (
 	// No alignment. Raw data is returned. Not valid if cross-series reduction is requested. The value_type of the result is the same as the value_type of the input.
@@ -109,7 +246,23 @@ const (
 )
 
 func (AggregationPerSeriesAligner) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*AggregationPerSeriesAligner)(nil)).Elem()
+}
+
+func (e AggregationPerSeriesAligner) ToAggregationPerSeriesAlignerOutput() AggregationPerSeriesAlignerOutput {
+	return pulumi.ToOutput(e).(AggregationPerSeriesAlignerOutput)
+}
+
+func (e AggregationPerSeriesAligner) ToAggregationPerSeriesAlignerOutputWithContext(ctx context.Context) AggregationPerSeriesAlignerOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AggregationPerSeriesAlignerOutput)
+}
+
+func (e AggregationPerSeriesAligner) ToAggregationPerSeriesAlignerPtrOutput() AggregationPerSeriesAlignerPtrOutput {
+	return e.ToAggregationPerSeriesAlignerPtrOutputWithContext(context.Background())
+}
+
+func (e AggregationPerSeriesAligner) ToAggregationPerSeriesAlignerPtrOutputWithContext(ctx context.Context) AggregationPerSeriesAlignerPtrOutput {
+	return AggregationPerSeriesAligner(e).ToAggregationPerSeriesAlignerOutputWithContext(ctx).ToAggregationPerSeriesAlignerPtrOutputWithContext(ctx)
 }
 
 func (e AggregationPerSeriesAligner) ToStringOutput() pulumi.StringOutput {
@@ -128,8 +281,129 @@ func (e AggregationPerSeriesAligner) ToStringPtrOutputWithContext(ctx context.Co
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type AggregationPerSeriesAlignerOutput struct{ *pulumi.OutputState }
+
+func (AggregationPerSeriesAlignerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AggregationPerSeriesAligner)(nil)).Elem()
+}
+
+func (o AggregationPerSeriesAlignerOutput) ToAggregationPerSeriesAlignerOutput() AggregationPerSeriesAlignerOutput {
+	return o
+}
+
+func (o AggregationPerSeriesAlignerOutput) ToAggregationPerSeriesAlignerOutputWithContext(ctx context.Context) AggregationPerSeriesAlignerOutput {
+	return o
+}
+
+func (o AggregationPerSeriesAlignerOutput) ToAggregationPerSeriesAlignerPtrOutput() AggregationPerSeriesAlignerPtrOutput {
+	return o.ToAggregationPerSeriesAlignerPtrOutputWithContext(context.Background())
+}
+
+func (o AggregationPerSeriesAlignerOutput) ToAggregationPerSeriesAlignerPtrOutputWithContext(ctx context.Context) AggregationPerSeriesAlignerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AggregationPerSeriesAligner) *AggregationPerSeriesAligner {
+		return &v
+	}).(AggregationPerSeriesAlignerPtrOutput)
+}
+
+func (o AggregationPerSeriesAlignerOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AggregationPerSeriesAlignerOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AggregationPerSeriesAligner) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AggregationPerSeriesAlignerOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AggregationPerSeriesAlignerOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AggregationPerSeriesAligner) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AggregationPerSeriesAlignerPtrOutput struct{ *pulumi.OutputState }
+
+func (AggregationPerSeriesAlignerPtrOutput) ElementType() reflect.Type {
+	return aggregationPerSeriesAlignerPtrType
+}
+
+func (o AggregationPerSeriesAlignerPtrOutput) ToAggregationPerSeriesAlignerPtrOutput() AggregationPerSeriesAlignerPtrOutput {
+	return o
+}
+
+func (o AggregationPerSeriesAlignerPtrOutput) ToAggregationPerSeriesAlignerPtrOutputWithContext(ctx context.Context) AggregationPerSeriesAlignerPtrOutput {
+	return o
+}
+
+func (o AggregationPerSeriesAlignerPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AggregationPerSeriesAlignerPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AggregationPerSeriesAligner) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AggregationPerSeriesAlignerPtrOutput) Elem() AggregationPerSeriesAlignerOutput {
+	return o.ApplyT(func(v *AggregationPerSeriesAligner) AggregationPerSeriesAligner {
+		var ret AggregationPerSeriesAligner
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(AggregationPerSeriesAlignerOutput)
+}
+
+// AggregationPerSeriesAlignerInput is an input type that accepts AggregationPerSeriesAlignerArgs and AggregationPerSeriesAlignerOutput values.
+// You can construct a concrete instance of `AggregationPerSeriesAlignerInput` via:
+//
+//          AggregationPerSeriesAlignerArgs{...}
+type AggregationPerSeriesAlignerInput interface {
+	pulumi.Input
+
+	ToAggregationPerSeriesAlignerOutput() AggregationPerSeriesAlignerOutput
+	ToAggregationPerSeriesAlignerOutputWithContext(context.Context) AggregationPerSeriesAlignerOutput
+}
+
+var aggregationPerSeriesAlignerPtrType = reflect.TypeOf((**AggregationPerSeriesAligner)(nil)).Elem()
+
+type AggregationPerSeriesAlignerPtrInput interface {
+	pulumi.Input
+
+	ToAggregationPerSeriesAlignerPtrOutput() AggregationPerSeriesAlignerPtrOutput
+	ToAggregationPerSeriesAlignerPtrOutputWithContext(context.Context) AggregationPerSeriesAlignerPtrOutput
+}
+
+type aggregationPerSeriesAlignerPtr string
+
+func AggregationPerSeriesAlignerPtr(v string) AggregationPerSeriesAlignerPtrInput {
+	return (*aggregationPerSeriesAlignerPtr)(&v)
+}
+
+func (*aggregationPerSeriesAlignerPtr) ElementType() reflect.Type {
+	return aggregationPerSeriesAlignerPtrType
+}
+
+func (in *aggregationPerSeriesAlignerPtr) ToAggregationPerSeriesAlignerPtrOutput() AggregationPerSeriesAlignerPtrOutput {
+	return pulumi.ToOutput(in).(AggregationPerSeriesAlignerPtrOutput)
+}
+
+func (in *aggregationPerSeriesAlignerPtr) ToAggregationPerSeriesAlignerPtrOutputWithContext(ctx context.Context) AggregationPerSeriesAlignerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AggregationPerSeriesAlignerPtrOutput)
+}
+
 // How to combine the results of multiple conditions to determine if an incident should be opened. If condition_time_series_query_language is present, this must be COMBINE_UNSPECIFIED.
-type AlertPolicyCombiner pulumi.String
+type AlertPolicyCombiner string
 
 const (
 	// An unspecified combiner.
@@ -143,7 +417,23 @@ const (
 )
 
 func (AlertPolicyCombiner) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*AlertPolicyCombiner)(nil)).Elem()
+}
+
+func (e AlertPolicyCombiner) ToAlertPolicyCombinerOutput() AlertPolicyCombinerOutput {
+	return pulumi.ToOutput(e).(AlertPolicyCombinerOutput)
+}
+
+func (e AlertPolicyCombiner) ToAlertPolicyCombinerOutputWithContext(ctx context.Context) AlertPolicyCombinerOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AlertPolicyCombinerOutput)
+}
+
+func (e AlertPolicyCombiner) ToAlertPolicyCombinerPtrOutput() AlertPolicyCombinerPtrOutput {
+	return e.ToAlertPolicyCombinerPtrOutputWithContext(context.Background())
+}
+
+func (e AlertPolicyCombiner) ToAlertPolicyCombinerPtrOutputWithContext(ctx context.Context) AlertPolicyCombinerPtrOutput {
+	return AlertPolicyCombiner(e).ToAlertPolicyCombinerOutputWithContext(ctx).ToAlertPolicyCombinerPtrOutputWithContext(ctx)
 }
 
 func (e AlertPolicyCombiner) ToStringOutput() pulumi.StringOutput {
@@ -162,8 +452,129 @@ func (e AlertPolicyCombiner) ToStringPtrOutputWithContext(ctx context.Context) p
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type AlertPolicyCombinerOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyCombinerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlertPolicyCombiner)(nil)).Elem()
+}
+
+func (o AlertPolicyCombinerOutput) ToAlertPolicyCombinerOutput() AlertPolicyCombinerOutput {
+	return o
+}
+
+func (o AlertPolicyCombinerOutput) ToAlertPolicyCombinerOutputWithContext(ctx context.Context) AlertPolicyCombinerOutput {
+	return o
+}
+
+func (o AlertPolicyCombinerOutput) ToAlertPolicyCombinerPtrOutput() AlertPolicyCombinerPtrOutput {
+	return o.ToAlertPolicyCombinerPtrOutputWithContext(context.Background())
+}
+
+func (o AlertPolicyCombinerOutput) ToAlertPolicyCombinerPtrOutputWithContext(ctx context.Context) AlertPolicyCombinerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlertPolicyCombiner) *AlertPolicyCombiner {
+		return &v
+	}).(AlertPolicyCombinerPtrOutput)
+}
+
+func (o AlertPolicyCombinerOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AlertPolicyCombinerOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AlertPolicyCombiner) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AlertPolicyCombinerOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AlertPolicyCombinerOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AlertPolicyCombiner) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AlertPolicyCombinerPtrOutput struct{ *pulumi.OutputState }
+
+func (AlertPolicyCombinerPtrOutput) ElementType() reflect.Type {
+	return alertPolicyCombinerPtrType
+}
+
+func (o AlertPolicyCombinerPtrOutput) ToAlertPolicyCombinerPtrOutput() AlertPolicyCombinerPtrOutput {
+	return o
+}
+
+func (o AlertPolicyCombinerPtrOutput) ToAlertPolicyCombinerPtrOutputWithContext(ctx context.Context) AlertPolicyCombinerPtrOutput {
+	return o
+}
+
+func (o AlertPolicyCombinerPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AlertPolicyCombinerPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AlertPolicyCombiner) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AlertPolicyCombinerPtrOutput) Elem() AlertPolicyCombinerOutput {
+	return o.ApplyT(func(v *AlertPolicyCombiner) AlertPolicyCombiner {
+		var ret AlertPolicyCombiner
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(AlertPolicyCombinerOutput)
+}
+
+// AlertPolicyCombinerInput is an input type that accepts AlertPolicyCombinerArgs and AlertPolicyCombinerOutput values.
+// You can construct a concrete instance of `AlertPolicyCombinerInput` via:
+//
+//          AlertPolicyCombinerArgs{...}
+type AlertPolicyCombinerInput interface {
+	pulumi.Input
+
+	ToAlertPolicyCombinerOutput() AlertPolicyCombinerOutput
+	ToAlertPolicyCombinerOutputWithContext(context.Context) AlertPolicyCombinerOutput
+}
+
+var alertPolicyCombinerPtrType = reflect.TypeOf((**AlertPolicyCombiner)(nil)).Elem()
+
+type AlertPolicyCombinerPtrInput interface {
+	pulumi.Input
+
+	ToAlertPolicyCombinerPtrOutput() AlertPolicyCombinerPtrOutput
+	ToAlertPolicyCombinerPtrOutputWithContext(context.Context) AlertPolicyCombinerPtrOutput
+}
+
+type alertPolicyCombinerPtr string
+
+func AlertPolicyCombinerPtr(v string) AlertPolicyCombinerPtrInput {
+	return (*alertPolicyCombinerPtr)(&v)
+}
+
+func (*alertPolicyCombinerPtr) ElementType() reflect.Type {
+	return alertPolicyCombinerPtrType
+}
+
+func (in *alertPolicyCombinerPtr) ToAlertPolicyCombinerPtrOutput() AlertPolicyCombinerPtrOutput {
+	return pulumi.ToOutput(in).(AlertPolicyCombinerPtrOutput)
+}
+
+func (in *alertPolicyCombinerPtr) ToAlertPolicyCombinerPtrOutputWithContext(ctx context.Context) AlertPolicyCombinerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AlertPolicyCombinerPtrOutput)
+}
+
 // The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
-type ContentMatcherMatcher pulumi.String
+type ContentMatcherMatcher string
 
 const (
 	// No content matcher type specified (maintained for backward compatibility, but deprecated for future use). Treated as CONTAINS_STRING.
@@ -179,7 +590,23 @@ const (
 )
 
 func (ContentMatcherMatcher) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*ContentMatcherMatcher)(nil)).Elem()
+}
+
+func (e ContentMatcherMatcher) ToContentMatcherMatcherOutput() ContentMatcherMatcherOutput {
+	return pulumi.ToOutput(e).(ContentMatcherMatcherOutput)
+}
+
+func (e ContentMatcherMatcher) ToContentMatcherMatcherOutputWithContext(ctx context.Context) ContentMatcherMatcherOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ContentMatcherMatcherOutput)
+}
+
+func (e ContentMatcherMatcher) ToContentMatcherMatcherPtrOutput() ContentMatcherMatcherPtrOutput {
+	return e.ToContentMatcherMatcherPtrOutputWithContext(context.Background())
+}
+
+func (e ContentMatcherMatcher) ToContentMatcherMatcherPtrOutputWithContext(ctx context.Context) ContentMatcherMatcherPtrOutput {
+	return ContentMatcherMatcher(e).ToContentMatcherMatcherOutputWithContext(ctx).ToContentMatcherMatcherPtrOutputWithContext(ctx)
 }
 
 func (e ContentMatcherMatcher) ToStringOutput() pulumi.StringOutput {
@@ -198,8 +625,129 @@ func (e ContentMatcherMatcher) ToStringPtrOutputWithContext(ctx context.Context)
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type ContentMatcherMatcherOutput struct{ *pulumi.OutputState }
+
+func (ContentMatcherMatcherOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ContentMatcherMatcher)(nil)).Elem()
+}
+
+func (o ContentMatcherMatcherOutput) ToContentMatcherMatcherOutput() ContentMatcherMatcherOutput {
+	return o
+}
+
+func (o ContentMatcherMatcherOutput) ToContentMatcherMatcherOutputWithContext(ctx context.Context) ContentMatcherMatcherOutput {
+	return o
+}
+
+func (o ContentMatcherMatcherOutput) ToContentMatcherMatcherPtrOutput() ContentMatcherMatcherPtrOutput {
+	return o.ToContentMatcherMatcherPtrOutputWithContext(context.Background())
+}
+
+func (o ContentMatcherMatcherOutput) ToContentMatcherMatcherPtrOutputWithContext(ctx context.Context) ContentMatcherMatcherPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ContentMatcherMatcher) *ContentMatcherMatcher {
+		return &v
+	}).(ContentMatcherMatcherPtrOutput)
+}
+
+func (o ContentMatcherMatcherOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ContentMatcherMatcherOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ContentMatcherMatcher) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ContentMatcherMatcherOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ContentMatcherMatcherOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ContentMatcherMatcher) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ContentMatcherMatcherPtrOutput struct{ *pulumi.OutputState }
+
+func (ContentMatcherMatcherPtrOutput) ElementType() reflect.Type {
+	return contentMatcherMatcherPtrType
+}
+
+func (o ContentMatcherMatcherPtrOutput) ToContentMatcherMatcherPtrOutput() ContentMatcherMatcherPtrOutput {
+	return o
+}
+
+func (o ContentMatcherMatcherPtrOutput) ToContentMatcherMatcherPtrOutputWithContext(ctx context.Context) ContentMatcherMatcherPtrOutput {
+	return o
+}
+
+func (o ContentMatcherMatcherPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ContentMatcherMatcherPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ContentMatcherMatcher) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ContentMatcherMatcherPtrOutput) Elem() ContentMatcherMatcherOutput {
+	return o.ApplyT(func(v *ContentMatcherMatcher) ContentMatcherMatcher {
+		var ret ContentMatcherMatcher
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ContentMatcherMatcherOutput)
+}
+
+// ContentMatcherMatcherInput is an input type that accepts ContentMatcherMatcherArgs and ContentMatcherMatcherOutput values.
+// You can construct a concrete instance of `ContentMatcherMatcherInput` via:
+//
+//          ContentMatcherMatcherArgs{...}
+type ContentMatcherMatcherInput interface {
+	pulumi.Input
+
+	ToContentMatcherMatcherOutput() ContentMatcherMatcherOutput
+	ToContentMatcherMatcherOutputWithContext(context.Context) ContentMatcherMatcherOutput
+}
+
+var contentMatcherMatcherPtrType = reflect.TypeOf((**ContentMatcherMatcher)(nil)).Elem()
+
+type ContentMatcherMatcherPtrInput interface {
+	pulumi.Input
+
+	ToContentMatcherMatcherPtrOutput() ContentMatcherMatcherPtrOutput
+	ToContentMatcherMatcherPtrOutputWithContext(context.Context) ContentMatcherMatcherPtrOutput
+}
+
+type contentMatcherMatcherPtr string
+
+func ContentMatcherMatcherPtr(v string) ContentMatcherMatcherPtrInput {
+	return (*contentMatcherMatcherPtr)(&v)
+}
+
+func (*contentMatcherMatcherPtr) ElementType() reflect.Type {
+	return contentMatcherMatcherPtrType
+}
+
+func (in *contentMatcherMatcherPtr) ToContentMatcherMatcherPtrOutput() ContentMatcherMatcherPtrOutput {
+	return pulumi.ToOutput(in).(ContentMatcherMatcherPtrOutput)
+}
+
+func (in *contentMatcherMatcherPtr) ToContentMatcherMatcherPtrOutputWithContext(ctx context.Context) ContentMatcherMatcherPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ContentMatcherMatcherPtrOutput)
+}
+
 // The content type header to use for the check. The following configurations result in errors: 1. Content type is specified in both the headers field and the content_type field. 2. Request method is GET and content_type is not TYPE_UNSPECIFIED 3. Request method is POST and content_type is TYPE_UNSPECIFIED. 4. Request method is POST and a "Content-Type" header is provided via headers field. The content_type field should be used instead.
-type HttpCheckContentType pulumi.String
+type HttpCheckContentType string
 
 const (
 	// No content type specified.
@@ -209,7 +757,23 @@ const (
 )
 
 func (HttpCheckContentType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*HttpCheckContentType)(nil)).Elem()
+}
+
+func (e HttpCheckContentType) ToHttpCheckContentTypeOutput() HttpCheckContentTypeOutput {
+	return pulumi.ToOutput(e).(HttpCheckContentTypeOutput)
+}
+
+func (e HttpCheckContentType) ToHttpCheckContentTypeOutputWithContext(ctx context.Context) HttpCheckContentTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(HttpCheckContentTypeOutput)
+}
+
+func (e HttpCheckContentType) ToHttpCheckContentTypePtrOutput() HttpCheckContentTypePtrOutput {
+	return e.ToHttpCheckContentTypePtrOutputWithContext(context.Background())
+}
+
+func (e HttpCheckContentType) ToHttpCheckContentTypePtrOutputWithContext(ctx context.Context) HttpCheckContentTypePtrOutput {
+	return HttpCheckContentType(e).ToHttpCheckContentTypeOutputWithContext(ctx).ToHttpCheckContentTypePtrOutputWithContext(ctx)
 }
 
 func (e HttpCheckContentType) ToStringOutput() pulumi.StringOutput {
@@ -228,8 +792,129 @@ func (e HttpCheckContentType) ToStringPtrOutputWithContext(ctx context.Context) 
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type HttpCheckContentTypeOutput struct{ *pulumi.OutputState }
+
+func (HttpCheckContentTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpCheckContentType)(nil)).Elem()
+}
+
+func (o HttpCheckContentTypeOutput) ToHttpCheckContentTypeOutput() HttpCheckContentTypeOutput {
+	return o
+}
+
+func (o HttpCheckContentTypeOutput) ToHttpCheckContentTypeOutputWithContext(ctx context.Context) HttpCheckContentTypeOutput {
+	return o
+}
+
+func (o HttpCheckContentTypeOutput) ToHttpCheckContentTypePtrOutput() HttpCheckContentTypePtrOutput {
+	return o.ToHttpCheckContentTypePtrOutputWithContext(context.Background())
+}
+
+func (o HttpCheckContentTypeOutput) ToHttpCheckContentTypePtrOutputWithContext(ctx context.Context) HttpCheckContentTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpCheckContentType) *HttpCheckContentType {
+		return &v
+	}).(HttpCheckContentTypePtrOutput)
+}
+
+func (o HttpCheckContentTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o HttpCheckContentTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HttpCheckContentType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o HttpCheckContentTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HttpCheckContentTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HttpCheckContentType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type HttpCheckContentTypePtrOutput struct{ *pulumi.OutputState }
+
+func (HttpCheckContentTypePtrOutput) ElementType() reflect.Type {
+	return httpCheckContentTypePtrType
+}
+
+func (o HttpCheckContentTypePtrOutput) ToHttpCheckContentTypePtrOutput() HttpCheckContentTypePtrOutput {
+	return o
+}
+
+func (o HttpCheckContentTypePtrOutput) ToHttpCheckContentTypePtrOutputWithContext(ctx context.Context) HttpCheckContentTypePtrOutput {
+	return o
+}
+
+func (o HttpCheckContentTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HttpCheckContentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *HttpCheckContentType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o HttpCheckContentTypePtrOutput) Elem() HttpCheckContentTypeOutput {
+	return o.ApplyT(func(v *HttpCheckContentType) HttpCheckContentType {
+		var ret HttpCheckContentType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(HttpCheckContentTypeOutput)
+}
+
+// HttpCheckContentTypeInput is an input type that accepts HttpCheckContentTypeArgs and HttpCheckContentTypeOutput values.
+// You can construct a concrete instance of `HttpCheckContentTypeInput` via:
+//
+//          HttpCheckContentTypeArgs{...}
+type HttpCheckContentTypeInput interface {
+	pulumi.Input
+
+	ToHttpCheckContentTypeOutput() HttpCheckContentTypeOutput
+	ToHttpCheckContentTypeOutputWithContext(context.Context) HttpCheckContentTypeOutput
+}
+
+var httpCheckContentTypePtrType = reflect.TypeOf((**HttpCheckContentType)(nil)).Elem()
+
+type HttpCheckContentTypePtrInput interface {
+	pulumi.Input
+
+	ToHttpCheckContentTypePtrOutput() HttpCheckContentTypePtrOutput
+	ToHttpCheckContentTypePtrOutputWithContext(context.Context) HttpCheckContentTypePtrOutput
+}
+
+type httpCheckContentTypePtr string
+
+func HttpCheckContentTypePtr(v string) HttpCheckContentTypePtrInput {
+	return (*httpCheckContentTypePtr)(&v)
+}
+
+func (*httpCheckContentTypePtr) ElementType() reflect.Type {
+	return httpCheckContentTypePtrType
+}
+
+func (in *httpCheckContentTypePtr) ToHttpCheckContentTypePtrOutput() HttpCheckContentTypePtrOutput {
+	return pulumi.ToOutput(in).(HttpCheckContentTypePtrOutput)
+}
+
+func (in *httpCheckContentTypePtr) ToHttpCheckContentTypePtrOutputWithContext(ctx context.Context) HttpCheckContentTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(HttpCheckContentTypePtrOutput)
+}
+
 // The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then request_method defaults to GET.
-type HttpCheckRequestMethod pulumi.String
+type HttpCheckRequestMethod string
 
 const (
 	// No request method specified.
@@ -241,7 +926,23 @@ const (
 )
 
 func (HttpCheckRequestMethod) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*HttpCheckRequestMethod)(nil)).Elem()
+}
+
+func (e HttpCheckRequestMethod) ToHttpCheckRequestMethodOutput() HttpCheckRequestMethodOutput {
+	return pulumi.ToOutput(e).(HttpCheckRequestMethodOutput)
+}
+
+func (e HttpCheckRequestMethod) ToHttpCheckRequestMethodOutputWithContext(ctx context.Context) HttpCheckRequestMethodOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(HttpCheckRequestMethodOutput)
+}
+
+func (e HttpCheckRequestMethod) ToHttpCheckRequestMethodPtrOutput() HttpCheckRequestMethodPtrOutput {
+	return e.ToHttpCheckRequestMethodPtrOutputWithContext(context.Background())
+}
+
+func (e HttpCheckRequestMethod) ToHttpCheckRequestMethodPtrOutputWithContext(ctx context.Context) HttpCheckRequestMethodPtrOutput {
+	return HttpCheckRequestMethod(e).ToHttpCheckRequestMethodOutputWithContext(ctx).ToHttpCheckRequestMethodPtrOutputWithContext(ctx)
 }
 
 func (e HttpCheckRequestMethod) ToStringOutput() pulumi.StringOutput {
@@ -260,8 +961,129 @@ func (e HttpCheckRequestMethod) ToStringPtrOutputWithContext(ctx context.Context
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type HttpCheckRequestMethodOutput struct{ *pulumi.OutputState }
+
+func (HttpCheckRequestMethodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*HttpCheckRequestMethod)(nil)).Elem()
+}
+
+func (o HttpCheckRequestMethodOutput) ToHttpCheckRequestMethodOutput() HttpCheckRequestMethodOutput {
+	return o
+}
+
+func (o HttpCheckRequestMethodOutput) ToHttpCheckRequestMethodOutputWithContext(ctx context.Context) HttpCheckRequestMethodOutput {
+	return o
+}
+
+func (o HttpCheckRequestMethodOutput) ToHttpCheckRequestMethodPtrOutput() HttpCheckRequestMethodPtrOutput {
+	return o.ToHttpCheckRequestMethodPtrOutputWithContext(context.Background())
+}
+
+func (o HttpCheckRequestMethodOutput) ToHttpCheckRequestMethodPtrOutputWithContext(ctx context.Context) HttpCheckRequestMethodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v HttpCheckRequestMethod) *HttpCheckRequestMethod {
+		return &v
+	}).(HttpCheckRequestMethodPtrOutput)
+}
+
+func (o HttpCheckRequestMethodOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o HttpCheckRequestMethodOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HttpCheckRequestMethod) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o HttpCheckRequestMethodOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HttpCheckRequestMethodOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e HttpCheckRequestMethod) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type HttpCheckRequestMethodPtrOutput struct{ *pulumi.OutputState }
+
+func (HttpCheckRequestMethodPtrOutput) ElementType() reflect.Type {
+	return httpCheckRequestMethodPtrType
+}
+
+func (o HttpCheckRequestMethodPtrOutput) ToHttpCheckRequestMethodPtrOutput() HttpCheckRequestMethodPtrOutput {
+	return o
+}
+
+func (o HttpCheckRequestMethodPtrOutput) ToHttpCheckRequestMethodPtrOutputWithContext(ctx context.Context) HttpCheckRequestMethodPtrOutput {
+	return o
+}
+
+func (o HttpCheckRequestMethodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o HttpCheckRequestMethodPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *HttpCheckRequestMethod) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o HttpCheckRequestMethodPtrOutput) Elem() HttpCheckRequestMethodOutput {
+	return o.ApplyT(func(v *HttpCheckRequestMethod) HttpCheckRequestMethod {
+		var ret HttpCheckRequestMethod
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(HttpCheckRequestMethodOutput)
+}
+
+// HttpCheckRequestMethodInput is an input type that accepts HttpCheckRequestMethodArgs and HttpCheckRequestMethodOutput values.
+// You can construct a concrete instance of `HttpCheckRequestMethodInput` via:
+//
+//          HttpCheckRequestMethodArgs{...}
+type HttpCheckRequestMethodInput interface {
+	pulumi.Input
+
+	ToHttpCheckRequestMethodOutput() HttpCheckRequestMethodOutput
+	ToHttpCheckRequestMethodOutputWithContext(context.Context) HttpCheckRequestMethodOutput
+}
+
+var httpCheckRequestMethodPtrType = reflect.TypeOf((**HttpCheckRequestMethod)(nil)).Elem()
+
+type HttpCheckRequestMethodPtrInput interface {
+	pulumi.Input
+
+	ToHttpCheckRequestMethodPtrOutput() HttpCheckRequestMethodPtrOutput
+	ToHttpCheckRequestMethodPtrOutputWithContext(context.Context) HttpCheckRequestMethodPtrOutput
+}
+
+type httpCheckRequestMethodPtr string
+
+func HttpCheckRequestMethodPtr(v string) HttpCheckRequestMethodPtrInput {
+	return (*httpCheckRequestMethodPtr)(&v)
+}
+
+func (*httpCheckRequestMethodPtr) ElementType() reflect.Type {
+	return httpCheckRequestMethodPtrType
+}
+
+func (in *httpCheckRequestMethodPtr) ToHttpCheckRequestMethodPtrOutput() HttpCheckRequestMethodPtrOutput {
+	return pulumi.ToOutput(in).(HttpCheckRequestMethodPtrOutput)
+}
+
+func (in *httpCheckRequestMethodPtr) ToHttpCheckRequestMethodPtrOutputWithContext(ctx context.Context) HttpCheckRequestMethodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(HttpCheckRequestMethodPtrOutput)
+}
+
 // The current operational state of the internal checker.
-type InternalCheckerState pulumi.String
+type InternalCheckerState string
 
 const (
 	// An internal checker should never be in the unspecified state.
@@ -273,7 +1095,23 @@ const (
 )
 
 func (InternalCheckerState) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*InternalCheckerState)(nil)).Elem()
+}
+
+func (e InternalCheckerState) ToInternalCheckerStateOutput() InternalCheckerStateOutput {
+	return pulumi.ToOutput(e).(InternalCheckerStateOutput)
+}
+
+func (e InternalCheckerState) ToInternalCheckerStateOutputWithContext(ctx context.Context) InternalCheckerStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(InternalCheckerStateOutput)
+}
+
+func (e InternalCheckerState) ToInternalCheckerStatePtrOutput() InternalCheckerStatePtrOutput {
+	return e.ToInternalCheckerStatePtrOutputWithContext(context.Background())
+}
+
+func (e InternalCheckerState) ToInternalCheckerStatePtrOutputWithContext(ctx context.Context) InternalCheckerStatePtrOutput {
+	return InternalCheckerState(e).ToInternalCheckerStateOutputWithContext(ctx).ToInternalCheckerStatePtrOutputWithContext(ctx)
 }
 
 func (e InternalCheckerState) ToStringOutput() pulumi.StringOutput {
@@ -292,8 +1130,129 @@ func (e InternalCheckerState) ToStringPtrOutputWithContext(ctx context.Context) 
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type InternalCheckerStateOutput struct{ *pulumi.OutputState }
+
+func (InternalCheckerStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InternalCheckerState)(nil)).Elem()
+}
+
+func (o InternalCheckerStateOutput) ToInternalCheckerStateOutput() InternalCheckerStateOutput {
+	return o
+}
+
+func (o InternalCheckerStateOutput) ToInternalCheckerStateOutputWithContext(ctx context.Context) InternalCheckerStateOutput {
+	return o
+}
+
+func (o InternalCheckerStateOutput) ToInternalCheckerStatePtrOutput() InternalCheckerStatePtrOutput {
+	return o.ToInternalCheckerStatePtrOutputWithContext(context.Background())
+}
+
+func (o InternalCheckerStateOutput) ToInternalCheckerStatePtrOutputWithContext(ctx context.Context) InternalCheckerStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InternalCheckerState) *InternalCheckerState {
+		return &v
+	}).(InternalCheckerStatePtrOutput)
+}
+
+func (o InternalCheckerStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o InternalCheckerStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InternalCheckerState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o InternalCheckerStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InternalCheckerStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e InternalCheckerState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type InternalCheckerStatePtrOutput struct{ *pulumi.OutputState }
+
+func (InternalCheckerStatePtrOutput) ElementType() reflect.Type {
+	return internalCheckerStatePtrType
+}
+
+func (o InternalCheckerStatePtrOutput) ToInternalCheckerStatePtrOutput() InternalCheckerStatePtrOutput {
+	return o
+}
+
+func (o InternalCheckerStatePtrOutput) ToInternalCheckerStatePtrOutputWithContext(ctx context.Context) InternalCheckerStatePtrOutput {
+	return o
+}
+
+func (o InternalCheckerStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o InternalCheckerStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *InternalCheckerState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o InternalCheckerStatePtrOutput) Elem() InternalCheckerStateOutput {
+	return o.ApplyT(func(v *InternalCheckerState) InternalCheckerState {
+		var ret InternalCheckerState
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(InternalCheckerStateOutput)
+}
+
+// InternalCheckerStateInput is an input type that accepts InternalCheckerStateArgs and InternalCheckerStateOutput values.
+// You can construct a concrete instance of `InternalCheckerStateInput` via:
+//
+//          InternalCheckerStateArgs{...}
+type InternalCheckerStateInput interface {
+	pulumi.Input
+
+	ToInternalCheckerStateOutput() InternalCheckerStateOutput
+	ToInternalCheckerStateOutputWithContext(context.Context) InternalCheckerStateOutput
+}
+
+var internalCheckerStatePtrType = reflect.TypeOf((**InternalCheckerState)(nil)).Elem()
+
+type InternalCheckerStatePtrInput interface {
+	pulumi.Input
+
+	ToInternalCheckerStatePtrOutput() InternalCheckerStatePtrOutput
+	ToInternalCheckerStatePtrOutputWithContext(context.Context) InternalCheckerStatePtrOutput
+}
+
+type internalCheckerStatePtr string
+
+func InternalCheckerStatePtr(v string) InternalCheckerStatePtrInput {
+	return (*internalCheckerStatePtr)(&v)
+}
+
+func (*internalCheckerStatePtr) ElementType() reflect.Type {
+	return internalCheckerStatePtrType
+}
+
+func (in *internalCheckerStatePtr) ToInternalCheckerStatePtrOutput() InternalCheckerStatePtrOutput {
+	return pulumi.ToOutput(in).(InternalCheckerStatePtrOutput)
+}
+
+func (in *internalCheckerStatePtr) ToInternalCheckerStatePtrOutputWithContext(ctx context.Context) InternalCheckerStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(InternalCheckerStatePtrOutput)
+}
+
 // The type of data that can be assigned to the label.
-type LabelDescriptorValueType pulumi.String
+type LabelDescriptorValueType string
 
 const (
 	// A variable-length string, not to exceed 1,024 characters. This is the default value type.
@@ -305,7 +1264,23 @@ const (
 )
 
 func (LabelDescriptorValueType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*LabelDescriptorValueType)(nil)).Elem()
+}
+
+func (e LabelDescriptorValueType) ToLabelDescriptorValueTypeOutput() LabelDescriptorValueTypeOutput {
+	return pulumi.ToOutput(e).(LabelDescriptorValueTypeOutput)
+}
+
+func (e LabelDescriptorValueType) ToLabelDescriptorValueTypeOutputWithContext(ctx context.Context) LabelDescriptorValueTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LabelDescriptorValueTypeOutput)
+}
+
+func (e LabelDescriptorValueType) ToLabelDescriptorValueTypePtrOutput() LabelDescriptorValueTypePtrOutput {
+	return e.ToLabelDescriptorValueTypePtrOutputWithContext(context.Background())
+}
+
+func (e LabelDescriptorValueType) ToLabelDescriptorValueTypePtrOutputWithContext(ctx context.Context) LabelDescriptorValueTypePtrOutput {
+	return LabelDescriptorValueType(e).ToLabelDescriptorValueTypeOutputWithContext(ctx).ToLabelDescriptorValueTypePtrOutputWithContext(ctx)
 }
 
 func (e LabelDescriptorValueType) ToStringOutput() pulumi.StringOutput {
@@ -324,8 +1299,129 @@ func (e LabelDescriptorValueType) ToStringPtrOutputWithContext(ctx context.Conte
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type LabelDescriptorValueTypeOutput struct{ *pulumi.OutputState }
+
+func (LabelDescriptorValueTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LabelDescriptorValueType)(nil)).Elem()
+}
+
+func (o LabelDescriptorValueTypeOutput) ToLabelDescriptorValueTypeOutput() LabelDescriptorValueTypeOutput {
+	return o
+}
+
+func (o LabelDescriptorValueTypeOutput) ToLabelDescriptorValueTypeOutputWithContext(ctx context.Context) LabelDescriptorValueTypeOutput {
+	return o
+}
+
+func (o LabelDescriptorValueTypeOutput) ToLabelDescriptorValueTypePtrOutput() LabelDescriptorValueTypePtrOutput {
+	return o.ToLabelDescriptorValueTypePtrOutputWithContext(context.Background())
+}
+
+func (o LabelDescriptorValueTypeOutput) ToLabelDescriptorValueTypePtrOutputWithContext(ctx context.Context) LabelDescriptorValueTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LabelDescriptorValueType) *LabelDescriptorValueType {
+		return &v
+	}).(LabelDescriptorValueTypePtrOutput)
+}
+
+func (o LabelDescriptorValueTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LabelDescriptorValueTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LabelDescriptorValueType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LabelDescriptorValueTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LabelDescriptorValueTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LabelDescriptorValueType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LabelDescriptorValueTypePtrOutput struct{ *pulumi.OutputState }
+
+func (LabelDescriptorValueTypePtrOutput) ElementType() reflect.Type {
+	return labelDescriptorValueTypePtrType
+}
+
+func (o LabelDescriptorValueTypePtrOutput) ToLabelDescriptorValueTypePtrOutput() LabelDescriptorValueTypePtrOutput {
+	return o
+}
+
+func (o LabelDescriptorValueTypePtrOutput) ToLabelDescriptorValueTypePtrOutputWithContext(ctx context.Context) LabelDescriptorValueTypePtrOutput {
+	return o
+}
+
+func (o LabelDescriptorValueTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LabelDescriptorValueTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LabelDescriptorValueType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o LabelDescriptorValueTypePtrOutput) Elem() LabelDescriptorValueTypeOutput {
+	return o.ApplyT(func(v *LabelDescriptorValueType) LabelDescriptorValueType {
+		var ret LabelDescriptorValueType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(LabelDescriptorValueTypeOutput)
+}
+
+// LabelDescriptorValueTypeInput is an input type that accepts LabelDescriptorValueTypeArgs and LabelDescriptorValueTypeOutput values.
+// You can construct a concrete instance of `LabelDescriptorValueTypeInput` via:
+//
+//          LabelDescriptorValueTypeArgs{...}
+type LabelDescriptorValueTypeInput interface {
+	pulumi.Input
+
+	ToLabelDescriptorValueTypeOutput() LabelDescriptorValueTypeOutput
+	ToLabelDescriptorValueTypeOutputWithContext(context.Context) LabelDescriptorValueTypeOutput
+}
+
+var labelDescriptorValueTypePtrType = reflect.TypeOf((**LabelDescriptorValueType)(nil)).Elem()
+
+type LabelDescriptorValueTypePtrInput interface {
+	pulumi.Input
+
+	ToLabelDescriptorValueTypePtrOutput() LabelDescriptorValueTypePtrOutput
+	ToLabelDescriptorValueTypePtrOutputWithContext(context.Context) LabelDescriptorValueTypePtrOutput
+}
+
+type labelDescriptorValueTypePtr string
+
+func LabelDescriptorValueTypePtr(v string) LabelDescriptorValueTypePtrInput {
+	return (*labelDescriptorValueTypePtr)(&v)
+}
+
+func (*labelDescriptorValueTypePtr) ElementType() reflect.Type {
+	return labelDescriptorValueTypePtrType
+}
+
+func (in *labelDescriptorValueTypePtr) ToLabelDescriptorValueTypePtrOutput() LabelDescriptorValueTypePtrOutput {
+	return pulumi.ToOutput(in).(LabelDescriptorValueTypePtrOutput)
+}
+
+func (in *labelDescriptorValueTypePtr) ToLabelDescriptorValueTypePtrOutputWithContext(ctx context.Context) LabelDescriptorValueTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LabelDescriptorValueTypePtrOutput)
+}
+
 // Optional. The launch stage of the metric definition.
-type MetricDescriptorLaunchStage pulumi.String
+type MetricDescriptorLaunchStage string
 
 const (
 	// Do not use this default value.
@@ -347,7 +1443,23 @@ const (
 )
 
 func (MetricDescriptorLaunchStage) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*MetricDescriptorLaunchStage)(nil)).Elem()
+}
+
+func (e MetricDescriptorLaunchStage) ToMetricDescriptorLaunchStageOutput() MetricDescriptorLaunchStageOutput {
+	return pulumi.ToOutput(e).(MetricDescriptorLaunchStageOutput)
+}
+
+func (e MetricDescriptorLaunchStage) ToMetricDescriptorLaunchStageOutputWithContext(ctx context.Context) MetricDescriptorLaunchStageOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MetricDescriptorLaunchStageOutput)
+}
+
+func (e MetricDescriptorLaunchStage) ToMetricDescriptorLaunchStagePtrOutput() MetricDescriptorLaunchStagePtrOutput {
+	return e.ToMetricDescriptorLaunchStagePtrOutputWithContext(context.Background())
+}
+
+func (e MetricDescriptorLaunchStage) ToMetricDescriptorLaunchStagePtrOutputWithContext(ctx context.Context) MetricDescriptorLaunchStagePtrOutput {
+	return MetricDescriptorLaunchStage(e).ToMetricDescriptorLaunchStageOutputWithContext(ctx).ToMetricDescriptorLaunchStagePtrOutputWithContext(ctx)
 }
 
 func (e MetricDescriptorLaunchStage) ToStringOutput() pulumi.StringOutput {
@@ -366,8 +1478,129 @@ func (e MetricDescriptorLaunchStage) ToStringPtrOutputWithContext(ctx context.Co
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type MetricDescriptorLaunchStageOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorLaunchStageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDescriptorLaunchStage)(nil)).Elem()
+}
+
+func (o MetricDescriptorLaunchStageOutput) ToMetricDescriptorLaunchStageOutput() MetricDescriptorLaunchStageOutput {
+	return o
+}
+
+func (o MetricDescriptorLaunchStageOutput) ToMetricDescriptorLaunchStageOutputWithContext(ctx context.Context) MetricDescriptorLaunchStageOutput {
+	return o
+}
+
+func (o MetricDescriptorLaunchStageOutput) ToMetricDescriptorLaunchStagePtrOutput() MetricDescriptorLaunchStagePtrOutput {
+	return o.ToMetricDescriptorLaunchStagePtrOutputWithContext(context.Background())
+}
+
+func (o MetricDescriptorLaunchStageOutput) ToMetricDescriptorLaunchStagePtrOutputWithContext(ctx context.Context) MetricDescriptorLaunchStagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricDescriptorLaunchStage) *MetricDescriptorLaunchStage {
+		return &v
+	}).(MetricDescriptorLaunchStagePtrOutput)
+}
+
+func (o MetricDescriptorLaunchStageOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MetricDescriptorLaunchStageOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetricDescriptorLaunchStage) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MetricDescriptorLaunchStageOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetricDescriptorLaunchStageOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetricDescriptorLaunchStage) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetricDescriptorLaunchStagePtrOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorLaunchStagePtrOutput) ElementType() reflect.Type {
+	return metricDescriptorLaunchStagePtrType
+}
+
+func (o MetricDescriptorLaunchStagePtrOutput) ToMetricDescriptorLaunchStagePtrOutput() MetricDescriptorLaunchStagePtrOutput {
+	return o
+}
+
+func (o MetricDescriptorLaunchStagePtrOutput) ToMetricDescriptorLaunchStagePtrOutputWithContext(ctx context.Context) MetricDescriptorLaunchStagePtrOutput {
+	return o
+}
+
+func (o MetricDescriptorLaunchStagePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetricDescriptorLaunchStagePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MetricDescriptorLaunchStage) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MetricDescriptorLaunchStagePtrOutput) Elem() MetricDescriptorLaunchStageOutput {
+	return o.ApplyT(func(v *MetricDescriptorLaunchStage) MetricDescriptorLaunchStage {
+		var ret MetricDescriptorLaunchStage
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(MetricDescriptorLaunchStageOutput)
+}
+
+// MetricDescriptorLaunchStageInput is an input type that accepts MetricDescriptorLaunchStageArgs and MetricDescriptorLaunchStageOutput values.
+// You can construct a concrete instance of `MetricDescriptorLaunchStageInput` via:
+//
+//          MetricDescriptorLaunchStageArgs{...}
+type MetricDescriptorLaunchStageInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorLaunchStageOutput() MetricDescriptorLaunchStageOutput
+	ToMetricDescriptorLaunchStageOutputWithContext(context.Context) MetricDescriptorLaunchStageOutput
+}
+
+var metricDescriptorLaunchStagePtrType = reflect.TypeOf((**MetricDescriptorLaunchStage)(nil)).Elem()
+
+type MetricDescriptorLaunchStagePtrInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorLaunchStagePtrOutput() MetricDescriptorLaunchStagePtrOutput
+	ToMetricDescriptorLaunchStagePtrOutputWithContext(context.Context) MetricDescriptorLaunchStagePtrOutput
+}
+
+type metricDescriptorLaunchStagePtr string
+
+func MetricDescriptorLaunchStagePtr(v string) MetricDescriptorLaunchStagePtrInput {
+	return (*metricDescriptorLaunchStagePtr)(&v)
+}
+
+func (*metricDescriptorLaunchStagePtr) ElementType() reflect.Type {
+	return metricDescriptorLaunchStagePtrType
+}
+
+func (in *metricDescriptorLaunchStagePtr) ToMetricDescriptorLaunchStagePtrOutput() MetricDescriptorLaunchStagePtrOutput {
+	return pulumi.ToOutput(in).(MetricDescriptorLaunchStagePtrOutput)
+}
+
+func (in *metricDescriptorLaunchStagePtr) ToMetricDescriptorLaunchStagePtrOutputWithContext(ctx context.Context) MetricDescriptorLaunchStagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MetricDescriptorLaunchStagePtrOutput)
+}
+
 // Whether the metric records instantaneous values, changes to a value, etc. Some combinations of metric_kind and value_type might not be supported.
-type MetricDescriptorMetricKind pulumi.String
+type MetricDescriptorMetricKind string
 
 const (
 	// Do not use this default value.
@@ -381,7 +1614,23 @@ const (
 )
 
 func (MetricDescriptorMetricKind) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*MetricDescriptorMetricKind)(nil)).Elem()
+}
+
+func (e MetricDescriptorMetricKind) ToMetricDescriptorMetricKindOutput() MetricDescriptorMetricKindOutput {
+	return pulumi.ToOutput(e).(MetricDescriptorMetricKindOutput)
+}
+
+func (e MetricDescriptorMetricKind) ToMetricDescriptorMetricKindOutputWithContext(ctx context.Context) MetricDescriptorMetricKindOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MetricDescriptorMetricKindOutput)
+}
+
+func (e MetricDescriptorMetricKind) ToMetricDescriptorMetricKindPtrOutput() MetricDescriptorMetricKindPtrOutput {
+	return e.ToMetricDescriptorMetricKindPtrOutputWithContext(context.Background())
+}
+
+func (e MetricDescriptorMetricKind) ToMetricDescriptorMetricKindPtrOutputWithContext(ctx context.Context) MetricDescriptorMetricKindPtrOutput {
+	return MetricDescriptorMetricKind(e).ToMetricDescriptorMetricKindOutputWithContext(ctx).ToMetricDescriptorMetricKindPtrOutputWithContext(ctx)
 }
 
 func (e MetricDescriptorMetricKind) ToStringOutput() pulumi.StringOutput {
@@ -400,8 +1649,129 @@ func (e MetricDescriptorMetricKind) ToStringPtrOutputWithContext(ctx context.Con
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type MetricDescriptorMetricKindOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorMetricKindOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDescriptorMetricKind)(nil)).Elem()
+}
+
+func (o MetricDescriptorMetricKindOutput) ToMetricDescriptorMetricKindOutput() MetricDescriptorMetricKindOutput {
+	return o
+}
+
+func (o MetricDescriptorMetricKindOutput) ToMetricDescriptorMetricKindOutputWithContext(ctx context.Context) MetricDescriptorMetricKindOutput {
+	return o
+}
+
+func (o MetricDescriptorMetricKindOutput) ToMetricDescriptorMetricKindPtrOutput() MetricDescriptorMetricKindPtrOutput {
+	return o.ToMetricDescriptorMetricKindPtrOutputWithContext(context.Background())
+}
+
+func (o MetricDescriptorMetricKindOutput) ToMetricDescriptorMetricKindPtrOutputWithContext(ctx context.Context) MetricDescriptorMetricKindPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricDescriptorMetricKind) *MetricDescriptorMetricKind {
+		return &v
+	}).(MetricDescriptorMetricKindPtrOutput)
+}
+
+func (o MetricDescriptorMetricKindOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MetricDescriptorMetricKindOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetricDescriptorMetricKind) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MetricDescriptorMetricKindOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetricDescriptorMetricKindOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetricDescriptorMetricKind) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetricDescriptorMetricKindPtrOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorMetricKindPtrOutput) ElementType() reflect.Type {
+	return metricDescriptorMetricKindPtrType
+}
+
+func (o MetricDescriptorMetricKindPtrOutput) ToMetricDescriptorMetricKindPtrOutput() MetricDescriptorMetricKindPtrOutput {
+	return o
+}
+
+func (o MetricDescriptorMetricKindPtrOutput) ToMetricDescriptorMetricKindPtrOutputWithContext(ctx context.Context) MetricDescriptorMetricKindPtrOutput {
+	return o
+}
+
+func (o MetricDescriptorMetricKindPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetricDescriptorMetricKindPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MetricDescriptorMetricKind) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MetricDescriptorMetricKindPtrOutput) Elem() MetricDescriptorMetricKindOutput {
+	return o.ApplyT(func(v *MetricDescriptorMetricKind) MetricDescriptorMetricKind {
+		var ret MetricDescriptorMetricKind
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(MetricDescriptorMetricKindOutput)
+}
+
+// MetricDescriptorMetricKindInput is an input type that accepts MetricDescriptorMetricKindArgs and MetricDescriptorMetricKindOutput values.
+// You can construct a concrete instance of `MetricDescriptorMetricKindInput` via:
+//
+//          MetricDescriptorMetricKindArgs{...}
+type MetricDescriptorMetricKindInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorMetricKindOutput() MetricDescriptorMetricKindOutput
+	ToMetricDescriptorMetricKindOutputWithContext(context.Context) MetricDescriptorMetricKindOutput
+}
+
+var metricDescriptorMetricKindPtrType = reflect.TypeOf((**MetricDescriptorMetricKind)(nil)).Elem()
+
+type MetricDescriptorMetricKindPtrInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorMetricKindPtrOutput() MetricDescriptorMetricKindPtrOutput
+	ToMetricDescriptorMetricKindPtrOutputWithContext(context.Context) MetricDescriptorMetricKindPtrOutput
+}
+
+type metricDescriptorMetricKindPtr string
+
+func MetricDescriptorMetricKindPtr(v string) MetricDescriptorMetricKindPtrInput {
+	return (*metricDescriptorMetricKindPtr)(&v)
+}
+
+func (*metricDescriptorMetricKindPtr) ElementType() reflect.Type {
+	return metricDescriptorMetricKindPtrType
+}
+
+func (in *metricDescriptorMetricKindPtr) ToMetricDescriptorMetricKindPtrOutput() MetricDescriptorMetricKindPtrOutput {
+	return pulumi.ToOutput(in).(MetricDescriptorMetricKindPtrOutput)
+}
+
+func (in *metricDescriptorMetricKindPtr) ToMetricDescriptorMetricKindPtrOutputWithContext(ctx context.Context) MetricDescriptorMetricKindPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MetricDescriptorMetricKindPtrOutput)
+}
+
 // Whether the measurement is an integer, a floating-point number, etc. Some combinations of metric_kind and value_type might not be supported.
-type MetricDescriptorValueType pulumi.String
+type MetricDescriptorValueType string
 
 const (
 	// Do not use this default value.
@@ -421,7 +1791,23 @@ const (
 )
 
 func (MetricDescriptorValueType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*MetricDescriptorValueType)(nil)).Elem()
+}
+
+func (e MetricDescriptorValueType) ToMetricDescriptorValueTypeOutput() MetricDescriptorValueTypeOutput {
+	return pulumi.ToOutput(e).(MetricDescriptorValueTypeOutput)
+}
+
+func (e MetricDescriptorValueType) ToMetricDescriptorValueTypeOutputWithContext(ctx context.Context) MetricDescriptorValueTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MetricDescriptorValueTypeOutput)
+}
+
+func (e MetricDescriptorValueType) ToMetricDescriptorValueTypePtrOutput() MetricDescriptorValueTypePtrOutput {
+	return e.ToMetricDescriptorValueTypePtrOutputWithContext(context.Background())
+}
+
+func (e MetricDescriptorValueType) ToMetricDescriptorValueTypePtrOutputWithContext(ctx context.Context) MetricDescriptorValueTypePtrOutput {
+	return MetricDescriptorValueType(e).ToMetricDescriptorValueTypeOutputWithContext(ctx).ToMetricDescriptorValueTypePtrOutputWithContext(ctx)
 }
 
 func (e MetricDescriptorValueType) ToStringOutput() pulumi.StringOutput {
@@ -440,8 +1826,129 @@ func (e MetricDescriptorValueType) ToStringPtrOutputWithContext(ctx context.Cont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type MetricDescriptorValueTypeOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorValueTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricDescriptorValueType)(nil)).Elem()
+}
+
+func (o MetricDescriptorValueTypeOutput) ToMetricDescriptorValueTypeOutput() MetricDescriptorValueTypeOutput {
+	return o
+}
+
+func (o MetricDescriptorValueTypeOutput) ToMetricDescriptorValueTypeOutputWithContext(ctx context.Context) MetricDescriptorValueTypeOutput {
+	return o
+}
+
+func (o MetricDescriptorValueTypeOutput) ToMetricDescriptorValueTypePtrOutput() MetricDescriptorValueTypePtrOutput {
+	return o.ToMetricDescriptorValueTypePtrOutputWithContext(context.Background())
+}
+
+func (o MetricDescriptorValueTypeOutput) ToMetricDescriptorValueTypePtrOutputWithContext(ctx context.Context) MetricDescriptorValueTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricDescriptorValueType) *MetricDescriptorValueType {
+		return &v
+	}).(MetricDescriptorValueTypePtrOutput)
+}
+
+func (o MetricDescriptorValueTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MetricDescriptorValueTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetricDescriptorValueType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MetricDescriptorValueTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetricDescriptorValueTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetricDescriptorValueType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetricDescriptorValueTypePtrOutput struct{ *pulumi.OutputState }
+
+func (MetricDescriptorValueTypePtrOutput) ElementType() reflect.Type {
+	return metricDescriptorValueTypePtrType
+}
+
+func (o MetricDescriptorValueTypePtrOutput) ToMetricDescriptorValueTypePtrOutput() MetricDescriptorValueTypePtrOutput {
+	return o
+}
+
+func (o MetricDescriptorValueTypePtrOutput) ToMetricDescriptorValueTypePtrOutputWithContext(ctx context.Context) MetricDescriptorValueTypePtrOutput {
+	return o
+}
+
+func (o MetricDescriptorValueTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetricDescriptorValueTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MetricDescriptorValueType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MetricDescriptorValueTypePtrOutput) Elem() MetricDescriptorValueTypeOutput {
+	return o.ApplyT(func(v *MetricDescriptorValueType) MetricDescriptorValueType {
+		var ret MetricDescriptorValueType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(MetricDescriptorValueTypeOutput)
+}
+
+// MetricDescriptorValueTypeInput is an input type that accepts MetricDescriptorValueTypeArgs and MetricDescriptorValueTypeOutput values.
+// You can construct a concrete instance of `MetricDescriptorValueTypeInput` via:
+//
+//          MetricDescriptorValueTypeArgs{...}
+type MetricDescriptorValueTypeInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorValueTypeOutput() MetricDescriptorValueTypeOutput
+	ToMetricDescriptorValueTypeOutputWithContext(context.Context) MetricDescriptorValueTypeOutput
+}
+
+var metricDescriptorValueTypePtrType = reflect.TypeOf((**MetricDescriptorValueType)(nil)).Elem()
+
+type MetricDescriptorValueTypePtrInput interface {
+	pulumi.Input
+
+	ToMetricDescriptorValueTypePtrOutput() MetricDescriptorValueTypePtrOutput
+	ToMetricDescriptorValueTypePtrOutputWithContext(context.Context) MetricDescriptorValueTypePtrOutput
+}
+
+type metricDescriptorValueTypePtr string
+
+func MetricDescriptorValueTypePtr(v string) MetricDescriptorValueTypePtrInput {
+	return (*metricDescriptorValueTypePtr)(&v)
+}
+
+func (*metricDescriptorValueTypePtr) ElementType() reflect.Type {
+	return metricDescriptorValueTypePtrType
+}
+
+func (in *metricDescriptorValueTypePtr) ToMetricDescriptorValueTypePtrOutput() MetricDescriptorValueTypePtrOutput {
+	return pulumi.ToOutput(in).(MetricDescriptorValueTypePtrOutput)
+}
+
+func (in *metricDescriptorValueTypePtr) ToMetricDescriptorValueTypePtrOutputWithContext(ctx context.Context) MetricDescriptorValueTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MetricDescriptorValueTypePtrOutput)
+}
+
 // The comparison to apply between the time series (indicated by filter and aggregation) and the threshold (indicated by threshold_value). The comparison is applied on each time series, with the time series on the left-hand side and the threshold on the right-hand side.Only COMPARISON_LT and COMPARISON_GT are supported currently.
-type MetricThresholdComparison pulumi.String
+type MetricThresholdComparison string
 
 const (
 	// No ordering relationship is specified.
@@ -461,7 +1968,23 @@ const (
 )
 
 func (MetricThresholdComparison) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*MetricThresholdComparison)(nil)).Elem()
+}
+
+func (e MetricThresholdComparison) ToMetricThresholdComparisonOutput() MetricThresholdComparisonOutput {
+	return pulumi.ToOutput(e).(MetricThresholdComparisonOutput)
+}
+
+func (e MetricThresholdComparison) ToMetricThresholdComparisonOutputWithContext(ctx context.Context) MetricThresholdComparisonOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MetricThresholdComparisonOutput)
+}
+
+func (e MetricThresholdComparison) ToMetricThresholdComparisonPtrOutput() MetricThresholdComparisonPtrOutput {
+	return e.ToMetricThresholdComparisonPtrOutputWithContext(context.Background())
+}
+
+func (e MetricThresholdComparison) ToMetricThresholdComparisonPtrOutputWithContext(ctx context.Context) MetricThresholdComparisonPtrOutput {
+	return MetricThresholdComparison(e).ToMetricThresholdComparisonOutputWithContext(ctx).ToMetricThresholdComparisonPtrOutputWithContext(ctx)
 }
 
 func (e MetricThresholdComparison) ToStringOutput() pulumi.StringOutput {
@@ -480,8 +2003,129 @@ func (e MetricThresholdComparison) ToStringPtrOutputWithContext(ctx context.Cont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type MetricThresholdComparisonOutput struct{ *pulumi.OutputState }
+
+func (MetricThresholdComparisonOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetricThresholdComparison)(nil)).Elem()
+}
+
+func (o MetricThresholdComparisonOutput) ToMetricThresholdComparisonOutput() MetricThresholdComparisonOutput {
+	return o
+}
+
+func (o MetricThresholdComparisonOutput) ToMetricThresholdComparisonOutputWithContext(ctx context.Context) MetricThresholdComparisonOutput {
+	return o
+}
+
+func (o MetricThresholdComparisonOutput) ToMetricThresholdComparisonPtrOutput() MetricThresholdComparisonPtrOutput {
+	return o.ToMetricThresholdComparisonPtrOutputWithContext(context.Background())
+}
+
+func (o MetricThresholdComparisonOutput) ToMetricThresholdComparisonPtrOutputWithContext(ctx context.Context) MetricThresholdComparisonPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MetricThresholdComparison) *MetricThresholdComparison {
+		return &v
+	}).(MetricThresholdComparisonPtrOutput)
+}
+
+func (o MetricThresholdComparisonOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MetricThresholdComparisonOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetricThresholdComparison) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MetricThresholdComparisonOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetricThresholdComparisonOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MetricThresholdComparison) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MetricThresholdComparisonPtrOutput struct{ *pulumi.OutputState }
+
+func (MetricThresholdComparisonPtrOutput) ElementType() reflect.Type {
+	return metricThresholdComparisonPtrType
+}
+
+func (o MetricThresholdComparisonPtrOutput) ToMetricThresholdComparisonPtrOutput() MetricThresholdComparisonPtrOutput {
+	return o
+}
+
+func (o MetricThresholdComparisonPtrOutput) ToMetricThresholdComparisonPtrOutputWithContext(ctx context.Context) MetricThresholdComparisonPtrOutput {
+	return o
+}
+
+func (o MetricThresholdComparisonPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MetricThresholdComparisonPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MetricThresholdComparison) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MetricThresholdComparisonPtrOutput) Elem() MetricThresholdComparisonOutput {
+	return o.ApplyT(func(v *MetricThresholdComparison) MetricThresholdComparison {
+		var ret MetricThresholdComparison
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(MetricThresholdComparisonOutput)
+}
+
+// MetricThresholdComparisonInput is an input type that accepts MetricThresholdComparisonArgs and MetricThresholdComparisonOutput values.
+// You can construct a concrete instance of `MetricThresholdComparisonInput` via:
+//
+//          MetricThresholdComparisonArgs{...}
+type MetricThresholdComparisonInput interface {
+	pulumi.Input
+
+	ToMetricThresholdComparisonOutput() MetricThresholdComparisonOutput
+	ToMetricThresholdComparisonOutputWithContext(context.Context) MetricThresholdComparisonOutput
+}
+
+var metricThresholdComparisonPtrType = reflect.TypeOf((**MetricThresholdComparison)(nil)).Elem()
+
+type MetricThresholdComparisonPtrInput interface {
+	pulumi.Input
+
+	ToMetricThresholdComparisonPtrOutput() MetricThresholdComparisonPtrOutput
+	ToMetricThresholdComparisonPtrOutputWithContext(context.Context) MetricThresholdComparisonPtrOutput
+}
+
+type metricThresholdComparisonPtr string
+
+func MetricThresholdComparisonPtr(v string) MetricThresholdComparisonPtrInput {
+	return (*metricThresholdComparisonPtr)(&v)
+}
+
+func (*metricThresholdComparisonPtr) ElementType() reflect.Type {
+	return metricThresholdComparisonPtrType
+}
+
+func (in *metricThresholdComparisonPtr) ToMetricThresholdComparisonPtrOutput() MetricThresholdComparisonPtrOutput {
+	return pulumi.ToOutput(in).(MetricThresholdComparisonPtrOutput)
+}
+
+func (in *metricThresholdComparisonPtr) ToMetricThresholdComparisonPtrOutputWithContext(ctx context.Context) MetricThresholdComparisonPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MetricThresholdComparisonPtrOutput)
+}
+
 // Indicates whether this channel has been verified or not. On a ListNotificationChannels or GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it indicates that the channel is non-functioning (it both requires verification and lacks verification); otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it implies that the channel is of a type that does not require verification or that this specific channel has been exempted from verification because it was created prior to verification being required for channels of this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the value of this field, you must call VerifyNotificationChannel.
-type NotificationChannelVerificationStatus pulumi.String
+type NotificationChannelVerificationStatus string
 
 const (
 	// Sentinel value used to indicate that the state is unknown, omitted, or is not applicable (as in the case of channels that neither support nor require verification in order to function).
@@ -493,7 +2137,23 @@ const (
 )
 
 func (NotificationChannelVerificationStatus) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*NotificationChannelVerificationStatus)(nil)).Elem()
+}
+
+func (e NotificationChannelVerificationStatus) ToNotificationChannelVerificationStatusOutput() NotificationChannelVerificationStatusOutput {
+	return pulumi.ToOutput(e).(NotificationChannelVerificationStatusOutput)
+}
+
+func (e NotificationChannelVerificationStatus) ToNotificationChannelVerificationStatusOutputWithContext(ctx context.Context) NotificationChannelVerificationStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NotificationChannelVerificationStatusOutput)
+}
+
+func (e NotificationChannelVerificationStatus) ToNotificationChannelVerificationStatusPtrOutput() NotificationChannelVerificationStatusPtrOutput {
+	return e.ToNotificationChannelVerificationStatusPtrOutputWithContext(context.Background())
+}
+
+func (e NotificationChannelVerificationStatus) ToNotificationChannelVerificationStatusPtrOutputWithContext(ctx context.Context) NotificationChannelVerificationStatusPtrOutput {
+	return NotificationChannelVerificationStatus(e).ToNotificationChannelVerificationStatusOutputWithContext(ctx).ToNotificationChannelVerificationStatusPtrOutputWithContext(ctx)
 }
 
 func (e NotificationChannelVerificationStatus) ToStringOutput() pulumi.StringOutput {
@@ -512,8 +2172,129 @@ func (e NotificationChannelVerificationStatus) ToStringPtrOutputWithContext(ctx 
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type NotificationChannelVerificationStatusOutput struct{ *pulumi.OutputState }
+
+func (NotificationChannelVerificationStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NotificationChannelVerificationStatus)(nil)).Elem()
+}
+
+func (o NotificationChannelVerificationStatusOutput) ToNotificationChannelVerificationStatusOutput() NotificationChannelVerificationStatusOutput {
+	return o
+}
+
+func (o NotificationChannelVerificationStatusOutput) ToNotificationChannelVerificationStatusOutputWithContext(ctx context.Context) NotificationChannelVerificationStatusOutput {
+	return o
+}
+
+func (o NotificationChannelVerificationStatusOutput) ToNotificationChannelVerificationStatusPtrOutput() NotificationChannelVerificationStatusPtrOutput {
+	return o.ToNotificationChannelVerificationStatusPtrOutputWithContext(context.Background())
+}
+
+func (o NotificationChannelVerificationStatusOutput) ToNotificationChannelVerificationStatusPtrOutputWithContext(ctx context.Context) NotificationChannelVerificationStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NotificationChannelVerificationStatus) *NotificationChannelVerificationStatus {
+		return &v
+	}).(NotificationChannelVerificationStatusPtrOutput)
+}
+
+func (o NotificationChannelVerificationStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NotificationChannelVerificationStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NotificationChannelVerificationStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NotificationChannelVerificationStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NotificationChannelVerificationStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NotificationChannelVerificationStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NotificationChannelVerificationStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (NotificationChannelVerificationStatusPtrOutput) ElementType() reflect.Type {
+	return notificationChannelVerificationStatusPtrType
+}
+
+func (o NotificationChannelVerificationStatusPtrOutput) ToNotificationChannelVerificationStatusPtrOutput() NotificationChannelVerificationStatusPtrOutput {
+	return o
+}
+
+func (o NotificationChannelVerificationStatusPtrOutput) ToNotificationChannelVerificationStatusPtrOutputWithContext(ctx context.Context) NotificationChannelVerificationStatusPtrOutput {
+	return o
+}
+
+func (o NotificationChannelVerificationStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NotificationChannelVerificationStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NotificationChannelVerificationStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o NotificationChannelVerificationStatusPtrOutput) Elem() NotificationChannelVerificationStatusOutput {
+	return o.ApplyT(func(v *NotificationChannelVerificationStatus) NotificationChannelVerificationStatus {
+		var ret NotificationChannelVerificationStatus
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(NotificationChannelVerificationStatusOutput)
+}
+
+// NotificationChannelVerificationStatusInput is an input type that accepts NotificationChannelVerificationStatusArgs and NotificationChannelVerificationStatusOutput values.
+// You can construct a concrete instance of `NotificationChannelVerificationStatusInput` via:
+//
+//          NotificationChannelVerificationStatusArgs{...}
+type NotificationChannelVerificationStatusInput interface {
+	pulumi.Input
+
+	ToNotificationChannelVerificationStatusOutput() NotificationChannelVerificationStatusOutput
+	ToNotificationChannelVerificationStatusOutputWithContext(context.Context) NotificationChannelVerificationStatusOutput
+}
+
+var notificationChannelVerificationStatusPtrType = reflect.TypeOf((**NotificationChannelVerificationStatus)(nil)).Elem()
+
+type NotificationChannelVerificationStatusPtrInput interface {
+	pulumi.Input
+
+	ToNotificationChannelVerificationStatusPtrOutput() NotificationChannelVerificationStatusPtrOutput
+	ToNotificationChannelVerificationStatusPtrOutputWithContext(context.Context) NotificationChannelVerificationStatusPtrOutput
+}
+
+type notificationChannelVerificationStatusPtr string
+
+func NotificationChannelVerificationStatusPtr(v string) NotificationChannelVerificationStatusPtrInput {
+	return (*notificationChannelVerificationStatusPtr)(&v)
+}
+
+func (*notificationChannelVerificationStatusPtr) ElementType() reflect.Type {
+	return notificationChannelVerificationStatusPtrType
+}
+
+func (in *notificationChannelVerificationStatusPtr) ToNotificationChannelVerificationStatusPtrOutput() NotificationChannelVerificationStatusPtrOutput {
+	return pulumi.ToOutput(in).(NotificationChannelVerificationStatusPtrOutput)
+}
+
+func (in *notificationChannelVerificationStatusPtr) ToNotificationChannelVerificationStatusPtrOutputWithContext(ctx context.Context) NotificationChannelVerificationStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NotificationChannelVerificationStatusPtrOutput)
+}
+
 // The resource type of the group members.
-type ResourceGroupResourceType pulumi.String
+type ResourceGroupResourceType string
 
 const (
 	// Default value (not valid).
@@ -525,7 +2306,23 @@ const (
 )
 
 func (ResourceGroupResourceType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*ResourceGroupResourceType)(nil)).Elem()
+}
+
+func (e ResourceGroupResourceType) ToResourceGroupResourceTypeOutput() ResourceGroupResourceTypeOutput {
+	return pulumi.ToOutput(e).(ResourceGroupResourceTypeOutput)
+}
+
+func (e ResourceGroupResourceType) ToResourceGroupResourceTypeOutputWithContext(ctx context.Context) ResourceGroupResourceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ResourceGroupResourceTypeOutput)
+}
+
+func (e ResourceGroupResourceType) ToResourceGroupResourceTypePtrOutput() ResourceGroupResourceTypePtrOutput {
+	return e.ToResourceGroupResourceTypePtrOutputWithContext(context.Background())
+}
+
+func (e ResourceGroupResourceType) ToResourceGroupResourceTypePtrOutputWithContext(ctx context.Context) ResourceGroupResourceTypePtrOutput {
+	return ResourceGroupResourceType(e).ToResourceGroupResourceTypeOutputWithContext(ctx).ToResourceGroupResourceTypePtrOutputWithContext(ctx)
 }
 
 func (e ResourceGroupResourceType) ToStringOutput() pulumi.StringOutput {
@@ -544,8 +2341,129 @@ func (e ResourceGroupResourceType) ToStringPtrOutputWithContext(ctx context.Cont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type ResourceGroupResourceTypeOutput struct{ *pulumi.OutputState }
+
+func (ResourceGroupResourceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResourceGroupResourceType)(nil)).Elem()
+}
+
+func (o ResourceGroupResourceTypeOutput) ToResourceGroupResourceTypeOutput() ResourceGroupResourceTypeOutput {
+	return o
+}
+
+func (o ResourceGroupResourceTypeOutput) ToResourceGroupResourceTypeOutputWithContext(ctx context.Context) ResourceGroupResourceTypeOutput {
+	return o
+}
+
+func (o ResourceGroupResourceTypeOutput) ToResourceGroupResourceTypePtrOutput() ResourceGroupResourceTypePtrOutput {
+	return o.ToResourceGroupResourceTypePtrOutputWithContext(context.Background())
+}
+
+func (o ResourceGroupResourceTypeOutput) ToResourceGroupResourceTypePtrOutputWithContext(ctx context.Context) ResourceGroupResourceTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ResourceGroupResourceType) *ResourceGroupResourceType {
+		return &v
+	}).(ResourceGroupResourceTypePtrOutput)
+}
+
+func (o ResourceGroupResourceTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ResourceGroupResourceTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ResourceGroupResourceType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ResourceGroupResourceTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceGroupResourceTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ResourceGroupResourceType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ResourceGroupResourceTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ResourceGroupResourceTypePtrOutput) ElementType() reflect.Type {
+	return resourceGroupResourceTypePtrType
+}
+
+func (o ResourceGroupResourceTypePtrOutput) ToResourceGroupResourceTypePtrOutput() ResourceGroupResourceTypePtrOutput {
+	return o
+}
+
+func (o ResourceGroupResourceTypePtrOutput) ToResourceGroupResourceTypePtrOutputWithContext(ctx context.Context) ResourceGroupResourceTypePtrOutput {
+	return o
+}
+
+func (o ResourceGroupResourceTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ResourceGroupResourceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ResourceGroupResourceType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ResourceGroupResourceTypePtrOutput) Elem() ResourceGroupResourceTypeOutput {
+	return o.ApplyT(func(v *ResourceGroupResourceType) ResourceGroupResourceType {
+		var ret ResourceGroupResourceType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ResourceGroupResourceTypeOutput)
+}
+
+// ResourceGroupResourceTypeInput is an input type that accepts ResourceGroupResourceTypeArgs and ResourceGroupResourceTypeOutput values.
+// You can construct a concrete instance of `ResourceGroupResourceTypeInput` via:
+//
+//          ResourceGroupResourceTypeArgs{...}
+type ResourceGroupResourceTypeInput interface {
+	pulumi.Input
+
+	ToResourceGroupResourceTypeOutput() ResourceGroupResourceTypeOutput
+	ToResourceGroupResourceTypeOutputWithContext(context.Context) ResourceGroupResourceTypeOutput
+}
+
+var resourceGroupResourceTypePtrType = reflect.TypeOf((**ResourceGroupResourceType)(nil)).Elem()
+
+type ResourceGroupResourceTypePtrInput interface {
+	pulumi.Input
+
+	ToResourceGroupResourceTypePtrOutput() ResourceGroupResourceTypePtrOutput
+	ToResourceGroupResourceTypePtrOutputWithContext(context.Context) ResourceGroupResourceTypePtrOutput
+}
+
+type resourceGroupResourceTypePtr string
+
+func ResourceGroupResourceTypePtr(v string) ResourceGroupResourceTypePtrInput {
+	return (*resourceGroupResourceTypePtr)(&v)
+}
+
+func (*resourceGroupResourceTypePtr) ElementType() reflect.Type {
+	return resourceGroupResourceTypePtrType
+}
+
+func (in *resourceGroupResourceTypePtr) ToResourceGroupResourceTypePtrOutput() ResourceGroupResourceTypePtrOutput {
+	return pulumi.ToOutput(in).(ResourceGroupResourceTypePtrOutput)
+}
+
+func (in *resourceGroupResourceTypePtr) ToResourceGroupResourceTypePtrOutputWithContext(ctx context.Context) ResourceGroupResourceTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ResourceGroupResourceTypePtrOutput)
+}
+
 // A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
-type ServiceLevelObjectiveCalendarPeriod pulumi.String
+type ServiceLevelObjectiveCalendarPeriod string
 
 const (
 	// Undefined period, raises an error.
@@ -567,7 +2485,23 @@ const (
 )
 
 func (ServiceLevelObjectiveCalendarPeriod) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*ServiceLevelObjectiveCalendarPeriod)(nil)).Elem()
+}
+
+func (e ServiceLevelObjectiveCalendarPeriod) ToServiceLevelObjectiveCalendarPeriodOutput() ServiceLevelObjectiveCalendarPeriodOutput {
+	return pulumi.ToOutput(e).(ServiceLevelObjectiveCalendarPeriodOutput)
+}
+
+func (e ServiceLevelObjectiveCalendarPeriod) ToServiceLevelObjectiveCalendarPeriodOutputWithContext(ctx context.Context) ServiceLevelObjectiveCalendarPeriodOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ServiceLevelObjectiveCalendarPeriodOutput)
+}
+
+func (e ServiceLevelObjectiveCalendarPeriod) ToServiceLevelObjectiveCalendarPeriodPtrOutput() ServiceLevelObjectiveCalendarPeriodPtrOutput {
+	return e.ToServiceLevelObjectiveCalendarPeriodPtrOutputWithContext(context.Background())
+}
+
+func (e ServiceLevelObjectiveCalendarPeriod) ToServiceLevelObjectiveCalendarPeriodPtrOutputWithContext(ctx context.Context) ServiceLevelObjectiveCalendarPeriodPtrOutput {
+	return ServiceLevelObjectiveCalendarPeriod(e).ToServiceLevelObjectiveCalendarPeriodOutputWithContext(ctx).ToServiceLevelObjectiveCalendarPeriodPtrOutputWithContext(ctx)
 }
 
 func (e ServiceLevelObjectiveCalendarPeriod) ToStringOutput() pulumi.StringOutput {
@@ -586,7 +2520,128 @@ func (e ServiceLevelObjectiveCalendarPeriod) ToStringPtrOutputWithContext(ctx co
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type UptimeCheckConfigSelectedRegionsItem pulumi.String
+type ServiceLevelObjectiveCalendarPeriodOutput struct{ *pulumi.OutputState }
+
+func (ServiceLevelObjectiveCalendarPeriodOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceLevelObjectiveCalendarPeriod)(nil)).Elem()
+}
+
+func (o ServiceLevelObjectiveCalendarPeriodOutput) ToServiceLevelObjectiveCalendarPeriodOutput() ServiceLevelObjectiveCalendarPeriodOutput {
+	return o
+}
+
+func (o ServiceLevelObjectiveCalendarPeriodOutput) ToServiceLevelObjectiveCalendarPeriodOutputWithContext(ctx context.Context) ServiceLevelObjectiveCalendarPeriodOutput {
+	return o
+}
+
+func (o ServiceLevelObjectiveCalendarPeriodOutput) ToServiceLevelObjectiveCalendarPeriodPtrOutput() ServiceLevelObjectiveCalendarPeriodPtrOutput {
+	return o.ToServiceLevelObjectiveCalendarPeriodPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceLevelObjectiveCalendarPeriodOutput) ToServiceLevelObjectiveCalendarPeriodPtrOutputWithContext(ctx context.Context) ServiceLevelObjectiveCalendarPeriodPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceLevelObjectiveCalendarPeriod) *ServiceLevelObjectiveCalendarPeriod {
+		return &v
+	}).(ServiceLevelObjectiveCalendarPeriodPtrOutput)
+}
+
+func (o ServiceLevelObjectiveCalendarPeriodOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ServiceLevelObjectiveCalendarPeriodOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceLevelObjectiveCalendarPeriod) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ServiceLevelObjectiveCalendarPeriodOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceLevelObjectiveCalendarPeriodOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServiceLevelObjectiveCalendarPeriod) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceLevelObjectiveCalendarPeriodPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceLevelObjectiveCalendarPeriodPtrOutput) ElementType() reflect.Type {
+	return serviceLevelObjectiveCalendarPeriodPtrType
+}
+
+func (o ServiceLevelObjectiveCalendarPeriodPtrOutput) ToServiceLevelObjectiveCalendarPeriodPtrOutput() ServiceLevelObjectiveCalendarPeriodPtrOutput {
+	return o
+}
+
+func (o ServiceLevelObjectiveCalendarPeriodPtrOutput) ToServiceLevelObjectiveCalendarPeriodPtrOutputWithContext(ctx context.Context) ServiceLevelObjectiveCalendarPeriodPtrOutput {
+	return o
+}
+
+func (o ServiceLevelObjectiveCalendarPeriodPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceLevelObjectiveCalendarPeriodPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ServiceLevelObjectiveCalendarPeriod) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ServiceLevelObjectiveCalendarPeriodPtrOutput) Elem() ServiceLevelObjectiveCalendarPeriodOutput {
+	return o.ApplyT(func(v *ServiceLevelObjectiveCalendarPeriod) ServiceLevelObjectiveCalendarPeriod {
+		var ret ServiceLevelObjectiveCalendarPeriod
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ServiceLevelObjectiveCalendarPeriodOutput)
+}
+
+// ServiceLevelObjectiveCalendarPeriodInput is an input type that accepts ServiceLevelObjectiveCalendarPeriodArgs and ServiceLevelObjectiveCalendarPeriodOutput values.
+// You can construct a concrete instance of `ServiceLevelObjectiveCalendarPeriodInput` via:
+//
+//          ServiceLevelObjectiveCalendarPeriodArgs{...}
+type ServiceLevelObjectiveCalendarPeriodInput interface {
+	pulumi.Input
+
+	ToServiceLevelObjectiveCalendarPeriodOutput() ServiceLevelObjectiveCalendarPeriodOutput
+	ToServiceLevelObjectiveCalendarPeriodOutputWithContext(context.Context) ServiceLevelObjectiveCalendarPeriodOutput
+}
+
+var serviceLevelObjectiveCalendarPeriodPtrType = reflect.TypeOf((**ServiceLevelObjectiveCalendarPeriod)(nil)).Elem()
+
+type ServiceLevelObjectiveCalendarPeriodPtrInput interface {
+	pulumi.Input
+
+	ToServiceLevelObjectiveCalendarPeriodPtrOutput() ServiceLevelObjectiveCalendarPeriodPtrOutput
+	ToServiceLevelObjectiveCalendarPeriodPtrOutputWithContext(context.Context) ServiceLevelObjectiveCalendarPeriodPtrOutput
+}
+
+type serviceLevelObjectiveCalendarPeriodPtr string
+
+func ServiceLevelObjectiveCalendarPeriodPtr(v string) ServiceLevelObjectiveCalendarPeriodPtrInput {
+	return (*serviceLevelObjectiveCalendarPeriodPtr)(&v)
+}
+
+func (*serviceLevelObjectiveCalendarPeriodPtr) ElementType() reflect.Type {
+	return serviceLevelObjectiveCalendarPeriodPtrType
+}
+
+func (in *serviceLevelObjectiveCalendarPeriodPtr) ToServiceLevelObjectiveCalendarPeriodPtrOutput() ServiceLevelObjectiveCalendarPeriodPtrOutput {
+	return pulumi.ToOutput(in).(ServiceLevelObjectiveCalendarPeriodPtrOutput)
+}
+
+func (in *serviceLevelObjectiveCalendarPeriodPtr) ToServiceLevelObjectiveCalendarPeriodPtrOutputWithContext(ctx context.Context) ServiceLevelObjectiveCalendarPeriodPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ServiceLevelObjectiveCalendarPeriodPtrOutput)
+}
+
+type UptimeCheckConfigSelectedRegionsItem string
 
 const (
 	// Default value if no region is specified. Will result in Uptime checks running from all regions.
@@ -602,7 +2657,23 @@ const (
 )
 
 func (UptimeCheckConfigSelectedRegionsItem) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*UptimeCheckConfigSelectedRegionsItem)(nil)).Elem()
+}
+
+func (e UptimeCheckConfigSelectedRegionsItem) ToUptimeCheckConfigSelectedRegionsItemOutput() UptimeCheckConfigSelectedRegionsItemOutput {
+	return pulumi.ToOutput(e).(UptimeCheckConfigSelectedRegionsItemOutput)
+}
+
+func (e UptimeCheckConfigSelectedRegionsItem) ToUptimeCheckConfigSelectedRegionsItemOutputWithContext(ctx context.Context) UptimeCheckConfigSelectedRegionsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(UptimeCheckConfigSelectedRegionsItemOutput)
+}
+
+func (e UptimeCheckConfigSelectedRegionsItem) ToUptimeCheckConfigSelectedRegionsItemPtrOutput() UptimeCheckConfigSelectedRegionsItemPtrOutput {
+	return e.ToUptimeCheckConfigSelectedRegionsItemPtrOutputWithContext(context.Background())
+}
+
+func (e UptimeCheckConfigSelectedRegionsItem) ToUptimeCheckConfigSelectedRegionsItemPtrOutputWithContext(ctx context.Context) UptimeCheckConfigSelectedRegionsItemPtrOutput {
+	return UptimeCheckConfigSelectedRegionsItem(e).ToUptimeCheckConfigSelectedRegionsItemOutputWithContext(ctx).ToUptimeCheckConfigSelectedRegionsItemPtrOutputWithContext(ctx)
 }
 
 func (e UptimeCheckConfigSelectedRegionsItem) ToStringOutput() pulumi.StringOutput {
@@ -619,6 +2690,127 @@ func (e UptimeCheckConfigSelectedRegionsItem) ToStringPtrOutput() pulumi.StringP
 
 func (e UptimeCheckConfigSelectedRegionsItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type UptimeCheckConfigSelectedRegionsItemOutput struct{ *pulumi.OutputState }
+
+func (UptimeCheckConfigSelectedRegionsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UptimeCheckConfigSelectedRegionsItem)(nil)).Elem()
+}
+
+func (o UptimeCheckConfigSelectedRegionsItemOutput) ToUptimeCheckConfigSelectedRegionsItemOutput() UptimeCheckConfigSelectedRegionsItemOutput {
+	return o
+}
+
+func (o UptimeCheckConfigSelectedRegionsItemOutput) ToUptimeCheckConfigSelectedRegionsItemOutputWithContext(ctx context.Context) UptimeCheckConfigSelectedRegionsItemOutput {
+	return o
+}
+
+func (o UptimeCheckConfigSelectedRegionsItemOutput) ToUptimeCheckConfigSelectedRegionsItemPtrOutput() UptimeCheckConfigSelectedRegionsItemPtrOutput {
+	return o.ToUptimeCheckConfigSelectedRegionsItemPtrOutputWithContext(context.Background())
+}
+
+func (o UptimeCheckConfigSelectedRegionsItemOutput) ToUptimeCheckConfigSelectedRegionsItemPtrOutputWithContext(ctx context.Context) UptimeCheckConfigSelectedRegionsItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UptimeCheckConfigSelectedRegionsItem) *UptimeCheckConfigSelectedRegionsItem {
+		return &v
+	}).(UptimeCheckConfigSelectedRegionsItemPtrOutput)
+}
+
+func (o UptimeCheckConfigSelectedRegionsItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o UptimeCheckConfigSelectedRegionsItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UptimeCheckConfigSelectedRegionsItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o UptimeCheckConfigSelectedRegionsItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o UptimeCheckConfigSelectedRegionsItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e UptimeCheckConfigSelectedRegionsItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type UptimeCheckConfigSelectedRegionsItemPtrOutput struct{ *pulumi.OutputState }
+
+func (UptimeCheckConfigSelectedRegionsItemPtrOutput) ElementType() reflect.Type {
+	return uptimeCheckConfigSelectedRegionsItemPtrType
+}
+
+func (o UptimeCheckConfigSelectedRegionsItemPtrOutput) ToUptimeCheckConfigSelectedRegionsItemPtrOutput() UptimeCheckConfigSelectedRegionsItemPtrOutput {
+	return o
+}
+
+func (o UptimeCheckConfigSelectedRegionsItemPtrOutput) ToUptimeCheckConfigSelectedRegionsItemPtrOutputWithContext(ctx context.Context) UptimeCheckConfigSelectedRegionsItemPtrOutput {
+	return o
+}
+
+func (o UptimeCheckConfigSelectedRegionsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o UptimeCheckConfigSelectedRegionsItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *UptimeCheckConfigSelectedRegionsItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o UptimeCheckConfigSelectedRegionsItemPtrOutput) Elem() UptimeCheckConfigSelectedRegionsItemOutput {
+	return o.ApplyT(func(v *UptimeCheckConfigSelectedRegionsItem) UptimeCheckConfigSelectedRegionsItem {
+		var ret UptimeCheckConfigSelectedRegionsItem
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(UptimeCheckConfigSelectedRegionsItemOutput)
+}
+
+// UptimeCheckConfigSelectedRegionsItemInput is an input type that accepts UptimeCheckConfigSelectedRegionsItemArgs and UptimeCheckConfigSelectedRegionsItemOutput values.
+// You can construct a concrete instance of `UptimeCheckConfigSelectedRegionsItemInput` via:
+//
+//          UptimeCheckConfigSelectedRegionsItemArgs{...}
+type UptimeCheckConfigSelectedRegionsItemInput interface {
+	pulumi.Input
+
+	ToUptimeCheckConfigSelectedRegionsItemOutput() UptimeCheckConfigSelectedRegionsItemOutput
+	ToUptimeCheckConfigSelectedRegionsItemOutputWithContext(context.Context) UptimeCheckConfigSelectedRegionsItemOutput
+}
+
+var uptimeCheckConfigSelectedRegionsItemPtrType = reflect.TypeOf((**UptimeCheckConfigSelectedRegionsItem)(nil)).Elem()
+
+type UptimeCheckConfigSelectedRegionsItemPtrInput interface {
+	pulumi.Input
+
+	ToUptimeCheckConfigSelectedRegionsItemPtrOutput() UptimeCheckConfigSelectedRegionsItemPtrOutput
+	ToUptimeCheckConfigSelectedRegionsItemPtrOutputWithContext(context.Context) UptimeCheckConfigSelectedRegionsItemPtrOutput
+}
+
+type uptimeCheckConfigSelectedRegionsItemPtr string
+
+func UptimeCheckConfigSelectedRegionsItemPtr(v string) UptimeCheckConfigSelectedRegionsItemPtrInput {
+	return (*uptimeCheckConfigSelectedRegionsItemPtr)(&v)
+}
+
+func (*uptimeCheckConfigSelectedRegionsItemPtr) ElementType() reflect.Type {
+	return uptimeCheckConfigSelectedRegionsItemPtrType
+}
+
+func (in *uptimeCheckConfigSelectedRegionsItemPtr) ToUptimeCheckConfigSelectedRegionsItemPtrOutput() UptimeCheckConfigSelectedRegionsItemPtrOutput {
+	return pulumi.ToOutput(in).(UptimeCheckConfigSelectedRegionsItemPtrOutput)
+}
+
+func (in *uptimeCheckConfigSelectedRegionsItemPtr) ToUptimeCheckConfigSelectedRegionsItemPtrOutputWithContext(ctx context.Context) UptimeCheckConfigSelectedRegionsItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(UptimeCheckConfigSelectedRegionsItemPtrOutput)
 }
 
 // UptimeCheckConfigSelectedRegionsItemArrayInput is an input type that accepts UptimeCheckConfigSelectedRegionsItemArray and UptimeCheckConfigSelectedRegionsItemArrayOutput values.
@@ -660,8 +2852,44 @@ func (o UptimeCheckConfigSelectedRegionsItemArrayOutput) ToUptimeCheckConfigSele
 	return o
 }
 
-func (o UptimeCheckConfigSelectedRegionsItemArrayOutput) Index(i pulumi.IntInput) pulumi.StringOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) pulumi.StringOutput {
-		return vs[0].([]UptimeCheckConfigSelectedRegionsItem)[vs[1].(int)].ToStringOutput()
-	}).(pulumi.StringOutput)
+func (o UptimeCheckConfigSelectedRegionsItemArrayOutput) Index(i pulumi.IntInput) UptimeCheckConfigSelectedRegionsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UptimeCheckConfigSelectedRegionsItemOutput {
+		return vs[0].([]UptimeCheckConfigSelectedRegionsItem)[vs[1].(int)].ToUptimeCheckConfigSelectedRegionsItemOutput()
+	}).(UptimeCheckConfigSelectedRegionsItemOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(AggregationCrossSeriesReducerOutput{})
+	pulumi.RegisterOutputType(AggregationCrossSeriesReducerPtrOutput{})
+	pulumi.RegisterOutputType(AggregationPerSeriesAlignerOutput{})
+	pulumi.RegisterOutputType(AggregationPerSeriesAlignerPtrOutput{})
+	pulumi.RegisterOutputType(AlertPolicyCombinerOutput{})
+	pulumi.RegisterOutputType(AlertPolicyCombinerPtrOutput{})
+	pulumi.RegisterOutputType(ContentMatcherMatcherOutput{})
+	pulumi.RegisterOutputType(ContentMatcherMatcherPtrOutput{})
+	pulumi.RegisterOutputType(HttpCheckContentTypeOutput{})
+	pulumi.RegisterOutputType(HttpCheckContentTypePtrOutput{})
+	pulumi.RegisterOutputType(HttpCheckRequestMethodOutput{})
+	pulumi.RegisterOutputType(HttpCheckRequestMethodPtrOutput{})
+	pulumi.RegisterOutputType(InternalCheckerStateOutput{})
+	pulumi.RegisterOutputType(InternalCheckerStatePtrOutput{})
+	pulumi.RegisterOutputType(LabelDescriptorValueTypeOutput{})
+	pulumi.RegisterOutputType(LabelDescriptorValueTypePtrOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorLaunchStageOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorLaunchStagePtrOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorMetricKindOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorMetricKindPtrOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorValueTypeOutput{})
+	pulumi.RegisterOutputType(MetricDescriptorValueTypePtrOutput{})
+	pulumi.RegisterOutputType(MetricThresholdComparisonOutput{})
+	pulumi.RegisterOutputType(MetricThresholdComparisonPtrOutput{})
+	pulumi.RegisterOutputType(NotificationChannelVerificationStatusOutput{})
+	pulumi.RegisterOutputType(NotificationChannelVerificationStatusPtrOutput{})
+	pulumi.RegisterOutputType(ResourceGroupResourceTypeOutput{})
+	pulumi.RegisterOutputType(ResourceGroupResourceTypePtrOutput{})
+	pulumi.RegisterOutputType(ServiceLevelObjectiveCalendarPeriodOutput{})
+	pulumi.RegisterOutputType(ServiceLevelObjectiveCalendarPeriodPtrOutput{})
+	pulumi.RegisterOutputType(UptimeCheckConfigSelectedRegionsItemOutput{})
+	pulumi.RegisterOutputType(UptimeCheckConfigSelectedRegionsItemPtrOutput{})
+	pulumi.RegisterOutputType(UptimeCheckConfigSelectedRegionsItemArrayOutput{})
 }

@@ -24,8 +24,11 @@ class AttributeDefinitionCategory(str, Enum):
     Required. The category of the attribute. The value of this field cannot be changed after creation.
     """
     CATEGORY_UNSPECIFIED = "CATEGORY_UNSPECIFIED"
+    """No category specified. This option is invalid."""
     RESOURCE = "RESOURCE"
+    """Specify this category when this attribute describes the properties of resources. For example, data anonymity or data type."""
     REQUEST = "REQUEST"
+    """Specify this category when this attribute describes the properties of requests. For example, requester's role or requester's organization."""
 
 
 class AuditLogConfigLogType(str, Enum):
@@ -33,9 +36,13 @@ class AuditLogConfigLogType(str, Enum):
     The log type that this config enables.
     """
     LOG_TYPE_UNSPECIFIED = "LOG_TYPE_UNSPECIFIED"
+    """Default case. Should never be this."""
     ADMIN_READ = "ADMIN_READ"
+    """Admin reads. Example: CloudIAM getIamPolicy"""
     DATA_WRITE = "DATA_WRITE"
+    """Data writes. Example: CloudSQL Users create"""
     DATA_READ = "DATA_READ"
+    """Data reads. Example: CloudSQL Users list"""
 
 
 class ConsentState(str, Enum):
@@ -43,11 +50,17 @@ class ConsentState(str, Enum):
     Required. Indicates the current state of this Consent.
     """
     STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    """No state specified."""
     ACTIVE = "ACTIVE"
+    """The Consent is active and is considered when evaluating a user's consent on resources."""
     ARCHIVED = "ARCHIVED"
+    """When a Consent is updated, the current version is archived and a new one is created with its state set to the updated Consent's previous state."""
     REVOKED = "REVOKED"
+    """A revoked Consent is not considered when evaluating a user's consent on resources."""
     DRAFT = "DRAFT"
+    """A draft Consent is not considered when evaluating a user's consent on resources unless explicitly specified."""
     REJECTED = "REJECTED"
+    """When a draft Consent is rejected by a user, it is set to a rejected state. A rejected Consent is not considered when evaluating a user's consent on resources."""
 
 
 class FhirStoreVersion(str, Enum):
@@ -55,9 +68,13 @@ class FhirStoreVersion(str, Enum):
     Immutable. The FHIR specification version that this FHIR store supports natively. This field is immutable after store creation. Requests are rejected if they contain FHIR resources of a different version. Version is required for every FHIR store.
     """
     VERSION_UNSPECIFIED = "VERSION_UNSPECIFIED"
+    """VERSION_UNSPECIFIED is treated as STU3 to accommodate the existing FHIR stores."""
     DSTU2 = "DSTU2"
+    """Draft Standard for Trial Use, [Release 2](https://www.hl7.org/fhir/DSTU2)"""
     STU3 = "STU3"
+    """Standard for Trial Use, [Release 3](https://www.hl7.org/fhir/STU3)"""
     R4 = "R4"
+    """[Release 4](https://www.hl7.org/fhir/R4)"""
 
 
 class GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDisposition(str, Enum):
@@ -65,9 +82,13 @@ class GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDisposition(str, 
     Determines whether the existing table in the destination is to be overwritten or appended to. If a write_disposition is specified, the `force` parameter is ignored.
     """
     WRITE_DISPOSITION_UNSPECIFIED = "WRITE_DISPOSITION_UNSPECIFIED"
+    """Default behavior is the same as WRITE_EMPTY."""
     WRITE_EMPTY = "WRITE_EMPTY"
+    """Only export data if the destination table is empty."""
     WRITE_TRUNCATE = "WRITE_TRUNCATE"
+    """Erase all existing data in a table before writing the instances."""
     WRITE_APPEND = "WRITE_APPEND"
+    """Append data to the existing table."""
 
 
 class GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDisposition(str, Enum):
@@ -75,9 +96,13 @@ class GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDisposition(str, E
     Determines if existing data in the destination dataset is overwritten, appended to, or not written if the tables contain data. If a write_disposition is specified, the `force` parameter is ignored.
     """
     WRITE_DISPOSITION_UNSPECIFIED = "WRITE_DISPOSITION_UNSPECIFIED"
+    """Default behavior is the same as WRITE_EMPTY."""
     WRITE_EMPTY = "WRITE_EMPTY"
+    """Only export data if the destination tables are empty."""
     WRITE_TRUNCATE = "WRITE_TRUNCATE"
+    """Erase all existing data in the tables before writing the instances."""
     WRITE_APPEND = "WRITE_APPEND"
+    """Append data to the existing tables."""
 
 
 class ParserConfigVersion(str, Enum):
@@ -85,8 +110,11 @@ class ParserConfigVersion(str, Enum):
     Immutable. Determines the version of the unschematized parser to be used when `schema` is not given. This field is immutable after store creation.
     """
     PARSER_VERSION_UNSPECIFIED = "PARSER_VERSION_UNSPECIFIED"
+    """Unspecified parser version, equivalent to V1."""
     V1 = "V1"
+    """The `parsed_data` includes every given non-empty message field except the Field Separator (MSH-1) field. As a result, the parsed MSH segment starts with the MSH-2 field and the field numbers are off-by-one with respect to the HL7 standard."""
     V2 = "V2"
+    """The `parsed_data` includes every given non-empty message field."""
 
 
 class SchemaConfigSchemaType(str, Enum):
@@ -94,8 +122,11 @@ class SchemaConfigSchemaType(str, Enum):
     Specifies the output schema type. Schema type is required.
     """
     SCHEMA_TYPE_UNSPECIFIED = "SCHEMA_TYPE_UNSPECIFIED"
+    """No schema type specified. This type is unsupported."""
     LOSSLESS = "LOSSLESS"
+    """A data-driven schema generated from the fields present in the FHIR data being exported, with no additional simplification."""
     ANALYTICS = "ANALYTICS"
+    """Analytics schema defined by the FHIR community. See https://github.com/FHIR/sql-on-fhir/blob/master/sql-on-fhir.md. BigQuery only allows a maximum of 10,000 columns per table. Due to this limitation, the server will not generate schemas for fields of type `Resource`, which can hold any resource type. The affected fields are `Parameters.parameter.resource`, `Bundle.entry.resource`, and `Bundle.entry.response.outcome`."""
 
 
 class SchemaPackageSchematizedParsingType(str, Enum):
@@ -103,8 +134,11 @@ class SchemaPackageSchematizedParsingType(str, Enum):
     Determines how messages that fail to parse are handled.
     """
     SCHEMATIZED_PARSING_TYPE_UNSPECIFIED = "SCHEMATIZED_PARSING_TYPE_UNSPECIFIED"
+    """Unspecified schematized parsing type, equivalent to `SOFT_FAIL`."""
     SOFT_FAIL = "SOFT_FAIL"
+    """Messages that fail to parse are still stored and ACKed but a parser error is stored in place of the schematized data."""
     HARD_FAIL = "HARD_FAIL"
+    """Messages that fail to parse are rejected from ingestion/insertion and return an error code."""
 
 
 class SchemaPackageUnexpectedSegmentHandling(str, Enum):
@@ -112,9 +146,13 @@ class SchemaPackageUnexpectedSegmentHandling(str, Enum):
     Determines how unexpected segments (segments not matched to the schema) are handled.
     """
     UNEXPECTED_SEGMENT_HANDLING_MODE_UNSPECIFIED = "UNEXPECTED_SEGMENT_HANDLING_MODE_UNSPECIFIED"
+    """Unspecified handling mode, equivalent to FAIL."""
     FAIL = "FAIL"
+    """Unexpected segments fail to parse and return an error."""
     SKIP = "SKIP"
+    """Unexpected segments do not fail, but are omitted from the output."""
     PARSE = "PARSE"
+    """Unexpected segments do not fail, but are parsed in place and added to the current group. If a segment has a type definition, it is used, otherwise it is parsed as VARIES."""
 
 
 class TypePrimitive(str, Enum):
@@ -122,6 +160,10 @@ class TypePrimitive(str, Enum):
     If this is a primitive type then this field is the type of the primitive For example, STRING. Leave unspecified for composite types.
     """
     PRIMITIVE_UNSPECIFIED = "PRIMITIVE_UNSPECIFIED"
+    """Not a primitive."""
     STRING = "STRING"
+    """String primitive."""
     VARIES = "VARIES"
+    """Element that can have unschematized children."""
     UNESCAPED_STRING = "UNESCAPED_STRING"
+    """Like STRING, but all delimiters below this element are ignored."""

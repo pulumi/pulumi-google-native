@@ -11,7 +11,7 @@ import (
 )
 
 // The log type that this config enables.
-type AuditLogConfigLogType pulumi.String
+type AuditLogConfigLogType string
 
 const (
 	// Default case. Should never be this.
@@ -25,7 +25,23 @@ const (
 )
 
 func (AuditLogConfigLogType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*AuditLogConfigLogType)(nil)).Elem()
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput {
+	return pulumi.ToOutput(e).(AuditLogConfigLogTypeOutput)
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypeOutputWithContext(ctx context.Context) AuditLogConfigLogTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AuditLogConfigLogTypeOutput)
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return e.ToAuditLogConfigLogTypePtrOutputWithContext(context.Background())
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return AuditLogConfigLogType(e).ToAuditLogConfigLogTypeOutputWithContext(ctx).ToAuditLogConfigLogTypePtrOutputWithContext(ctx)
 }
 
 func (e AuditLogConfigLogType) ToStringOutput() pulumi.StringOutput {
@@ -44,8 +60,129 @@ func (e AuditLogConfigLogType) ToStringPtrOutputWithContext(ctx context.Context)
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type AuditLogConfigLogTypeOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigLogTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigLogType)(nil)).Elem()
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypeOutputWithContext(ctx context.Context) AuditLogConfigLogTypeOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return o.ToAuditLogConfigLogTypePtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuditLogConfigLogType) *AuditLogConfigLogType {
+		return &v
+	}).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuditLogConfigLogType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuditLogConfigLogType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
+	return auditLogConfigLogTypePtrType
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AuditLogConfigLogType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		var ret AuditLogConfigLogType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
+}
+
+// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
+// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+//
+//          AuditLogConfigLogTypeArgs{...}
+type AuditLogConfigLogTypeInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput
+	ToAuditLogConfigLogTypeOutputWithContext(context.Context) AuditLogConfigLogTypeOutput
+}
+
+var auditLogConfigLogTypePtrType = reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
+
+type AuditLogConfigLogTypePtrInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput
+	ToAuditLogConfigLogTypePtrOutputWithContext(context.Context) AuditLogConfigLogTypePtrOutput
+}
+
+type auditLogConfigLogTypePtr string
+
+func AuditLogConfigLogTypePtr(v string) AuditLogConfigLogTypePtrInput {
+	return (*auditLogConfigLogTypePtr)(&v)
+}
+
+func (*auditLogConfigLogTypePtr) ElementType() reflect.Type {
+	return auditLogConfigLogTypePtrType
+}
+
+func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return pulumi.ToOutput(in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
 // Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
-type KeyKeyAlgorithm pulumi.String
+type KeyKeyAlgorithm string
 
 const (
 	// An unspecified key algorithm.
@@ -57,7 +194,23 @@ const (
 )
 
 func (KeyKeyAlgorithm) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*KeyKeyAlgorithm)(nil)).Elem()
+}
+
+func (e KeyKeyAlgorithm) ToKeyKeyAlgorithmOutput() KeyKeyAlgorithmOutput {
+	return pulumi.ToOutput(e).(KeyKeyAlgorithmOutput)
+}
+
+func (e KeyKeyAlgorithm) ToKeyKeyAlgorithmOutputWithContext(ctx context.Context) KeyKeyAlgorithmOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(KeyKeyAlgorithmOutput)
+}
+
+func (e KeyKeyAlgorithm) ToKeyKeyAlgorithmPtrOutput() KeyKeyAlgorithmPtrOutput {
+	return e.ToKeyKeyAlgorithmPtrOutputWithContext(context.Background())
+}
+
+func (e KeyKeyAlgorithm) ToKeyKeyAlgorithmPtrOutputWithContext(ctx context.Context) KeyKeyAlgorithmPtrOutput {
+	return KeyKeyAlgorithm(e).ToKeyKeyAlgorithmOutputWithContext(ctx).ToKeyKeyAlgorithmPtrOutputWithContext(ctx)
 }
 
 func (e KeyKeyAlgorithm) ToStringOutput() pulumi.StringOutput {
@@ -76,8 +229,129 @@ func (e KeyKeyAlgorithm) ToStringPtrOutputWithContext(ctx context.Context) pulum
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type KeyKeyAlgorithmOutput struct{ *pulumi.OutputState }
+
+func (KeyKeyAlgorithmOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyKeyAlgorithm)(nil)).Elem()
+}
+
+func (o KeyKeyAlgorithmOutput) ToKeyKeyAlgorithmOutput() KeyKeyAlgorithmOutput {
+	return o
+}
+
+func (o KeyKeyAlgorithmOutput) ToKeyKeyAlgorithmOutputWithContext(ctx context.Context) KeyKeyAlgorithmOutput {
+	return o
+}
+
+func (o KeyKeyAlgorithmOutput) ToKeyKeyAlgorithmPtrOutput() KeyKeyAlgorithmPtrOutput {
+	return o.ToKeyKeyAlgorithmPtrOutputWithContext(context.Background())
+}
+
+func (o KeyKeyAlgorithmOutput) ToKeyKeyAlgorithmPtrOutputWithContext(ctx context.Context) KeyKeyAlgorithmPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyKeyAlgorithm) *KeyKeyAlgorithm {
+		return &v
+	}).(KeyKeyAlgorithmPtrOutput)
+}
+
+func (o KeyKeyAlgorithmOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o KeyKeyAlgorithmOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e KeyKeyAlgorithm) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o KeyKeyAlgorithmOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o KeyKeyAlgorithmOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e KeyKeyAlgorithm) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type KeyKeyAlgorithmPtrOutput struct{ *pulumi.OutputState }
+
+func (KeyKeyAlgorithmPtrOutput) ElementType() reflect.Type {
+	return keyKeyAlgorithmPtrType
+}
+
+func (o KeyKeyAlgorithmPtrOutput) ToKeyKeyAlgorithmPtrOutput() KeyKeyAlgorithmPtrOutput {
+	return o
+}
+
+func (o KeyKeyAlgorithmPtrOutput) ToKeyKeyAlgorithmPtrOutputWithContext(ctx context.Context) KeyKeyAlgorithmPtrOutput {
+	return o
+}
+
+func (o KeyKeyAlgorithmPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o KeyKeyAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *KeyKeyAlgorithm) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KeyKeyAlgorithmPtrOutput) Elem() KeyKeyAlgorithmOutput {
+	return o.ApplyT(func(v *KeyKeyAlgorithm) KeyKeyAlgorithm {
+		var ret KeyKeyAlgorithm
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(KeyKeyAlgorithmOutput)
+}
+
+// KeyKeyAlgorithmInput is an input type that accepts KeyKeyAlgorithmArgs and KeyKeyAlgorithmOutput values.
+// You can construct a concrete instance of `KeyKeyAlgorithmInput` via:
+//
+//          KeyKeyAlgorithmArgs{...}
+type KeyKeyAlgorithmInput interface {
+	pulumi.Input
+
+	ToKeyKeyAlgorithmOutput() KeyKeyAlgorithmOutput
+	ToKeyKeyAlgorithmOutputWithContext(context.Context) KeyKeyAlgorithmOutput
+}
+
+var keyKeyAlgorithmPtrType = reflect.TypeOf((**KeyKeyAlgorithm)(nil)).Elem()
+
+type KeyKeyAlgorithmPtrInput interface {
+	pulumi.Input
+
+	ToKeyKeyAlgorithmPtrOutput() KeyKeyAlgorithmPtrOutput
+	ToKeyKeyAlgorithmPtrOutputWithContext(context.Context) KeyKeyAlgorithmPtrOutput
+}
+
+type keyKeyAlgorithmPtr string
+
+func KeyKeyAlgorithmPtr(v string) KeyKeyAlgorithmPtrInput {
+	return (*keyKeyAlgorithmPtr)(&v)
+}
+
+func (*keyKeyAlgorithmPtr) ElementType() reflect.Type {
+	return keyKeyAlgorithmPtrType
+}
+
+func (in *keyKeyAlgorithmPtr) ToKeyKeyAlgorithmPtrOutput() KeyKeyAlgorithmPtrOutput {
+	return pulumi.ToOutput(in).(KeyKeyAlgorithmPtrOutput)
+}
+
+func (in *keyKeyAlgorithmPtr) ToKeyKeyAlgorithmPtrOutputWithContext(ctx context.Context) KeyKeyAlgorithmPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(KeyKeyAlgorithmPtrOutput)
+}
+
 // The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format.
-type KeyPrivateKeyType pulumi.String
+type KeyPrivateKeyType string
 
 const (
 	// Unspecified. Equivalent to `TYPE_GOOGLE_CREDENTIALS_FILE`.
@@ -89,7 +363,23 @@ const (
 )
 
 func (KeyPrivateKeyType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*KeyPrivateKeyType)(nil)).Elem()
+}
+
+func (e KeyPrivateKeyType) ToKeyPrivateKeyTypeOutput() KeyPrivateKeyTypeOutput {
+	return pulumi.ToOutput(e).(KeyPrivateKeyTypeOutput)
+}
+
+func (e KeyPrivateKeyType) ToKeyPrivateKeyTypeOutputWithContext(ctx context.Context) KeyPrivateKeyTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(KeyPrivateKeyTypeOutput)
+}
+
+func (e KeyPrivateKeyType) ToKeyPrivateKeyTypePtrOutput() KeyPrivateKeyTypePtrOutput {
+	return e.ToKeyPrivateKeyTypePtrOutputWithContext(context.Background())
+}
+
+func (e KeyPrivateKeyType) ToKeyPrivateKeyTypePtrOutputWithContext(ctx context.Context) KeyPrivateKeyTypePtrOutput {
+	return KeyPrivateKeyType(e).ToKeyPrivateKeyTypeOutputWithContext(ctx).ToKeyPrivateKeyTypePtrOutputWithContext(ctx)
 }
 
 func (e KeyPrivateKeyType) ToStringOutput() pulumi.StringOutput {
@@ -108,8 +398,129 @@ func (e KeyPrivateKeyType) ToStringPtrOutputWithContext(ctx context.Context) pul
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type KeyPrivateKeyTypeOutput struct{ *pulumi.OutputState }
+
+func (KeyPrivateKeyTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KeyPrivateKeyType)(nil)).Elem()
+}
+
+func (o KeyPrivateKeyTypeOutput) ToKeyPrivateKeyTypeOutput() KeyPrivateKeyTypeOutput {
+	return o
+}
+
+func (o KeyPrivateKeyTypeOutput) ToKeyPrivateKeyTypeOutputWithContext(ctx context.Context) KeyPrivateKeyTypeOutput {
+	return o
+}
+
+func (o KeyPrivateKeyTypeOutput) ToKeyPrivateKeyTypePtrOutput() KeyPrivateKeyTypePtrOutput {
+	return o.ToKeyPrivateKeyTypePtrOutputWithContext(context.Background())
+}
+
+func (o KeyPrivateKeyTypeOutput) ToKeyPrivateKeyTypePtrOutputWithContext(ctx context.Context) KeyPrivateKeyTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KeyPrivateKeyType) *KeyPrivateKeyType {
+		return &v
+	}).(KeyPrivateKeyTypePtrOutput)
+}
+
+func (o KeyPrivateKeyTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o KeyPrivateKeyTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e KeyPrivateKeyType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o KeyPrivateKeyTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o KeyPrivateKeyTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e KeyPrivateKeyType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type KeyPrivateKeyTypePtrOutput struct{ *pulumi.OutputState }
+
+func (KeyPrivateKeyTypePtrOutput) ElementType() reflect.Type {
+	return keyPrivateKeyTypePtrType
+}
+
+func (o KeyPrivateKeyTypePtrOutput) ToKeyPrivateKeyTypePtrOutput() KeyPrivateKeyTypePtrOutput {
+	return o
+}
+
+func (o KeyPrivateKeyTypePtrOutput) ToKeyPrivateKeyTypePtrOutputWithContext(ctx context.Context) KeyPrivateKeyTypePtrOutput {
+	return o
+}
+
+func (o KeyPrivateKeyTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o KeyPrivateKeyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *KeyPrivateKeyType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o KeyPrivateKeyTypePtrOutput) Elem() KeyPrivateKeyTypeOutput {
+	return o.ApplyT(func(v *KeyPrivateKeyType) KeyPrivateKeyType {
+		var ret KeyPrivateKeyType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(KeyPrivateKeyTypeOutput)
+}
+
+// KeyPrivateKeyTypeInput is an input type that accepts KeyPrivateKeyTypeArgs and KeyPrivateKeyTypeOutput values.
+// You can construct a concrete instance of `KeyPrivateKeyTypeInput` via:
+//
+//          KeyPrivateKeyTypeArgs{...}
+type KeyPrivateKeyTypeInput interface {
+	pulumi.Input
+
+	ToKeyPrivateKeyTypeOutput() KeyPrivateKeyTypeOutput
+	ToKeyPrivateKeyTypeOutputWithContext(context.Context) KeyPrivateKeyTypeOutput
+}
+
+var keyPrivateKeyTypePtrType = reflect.TypeOf((**KeyPrivateKeyType)(nil)).Elem()
+
+type KeyPrivateKeyTypePtrInput interface {
+	pulumi.Input
+
+	ToKeyPrivateKeyTypePtrOutput() KeyPrivateKeyTypePtrOutput
+	ToKeyPrivateKeyTypePtrOutputWithContext(context.Context) KeyPrivateKeyTypePtrOutput
+}
+
+type keyPrivateKeyTypePtr string
+
+func KeyPrivateKeyTypePtr(v string) KeyPrivateKeyTypePtrInput {
+	return (*keyPrivateKeyTypePtr)(&v)
+}
+
+func (*keyPrivateKeyTypePtr) ElementType() reflect.Type {
+	return keyPrivateKeyTypePtrType
+}
+
+func (in *keyPrivateKeyTypePtr) ToKeyPrivateKeyTypePtrOutput() KeyPrivateKeyTypePtrOutput {
+	return pulumi.ToOutput(in).(KeyPrivateKeyTypePtrOutput)
+}
+
+func (in *keyPrivateKeyTypePtr) ToKeyPrivateKeyTypePtrOutputWithContext(ctx context.Context) KeyPrivateKeyTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(KeyPrivateKeyTypePtrOutput)
+}
+
 // The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
-type OrganizationRoleStage pulumi.String
+type OrganizationRoleStage string
 
 const (
 	// The user has indicated this role is currently in an Alpha phase. If this launch stage is selected, the `stage` field will not be included when requesting the definition for a given role.
@@ -127,7 +538,23 @@ const (
 )
 
 func (OrganizationRoleStage) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*OrganizationRoleStage)(nil)).Elem()
+}
+
+func (e OrganizationRoleStage) ToOrganizationRoleStageOutput() OrganizationRoleStageOutput {
+	return pulumi.ToOutput(e).(OrganizationRoleStageOutput)
+}
+
+func (e OrganizationRoleStage) ToOrganizationRoleStageOutputWithContext(ctx context.Context) OrganizationRoleStageOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(OrganizationRoleStageOutput)
+}
+
+func (e OrganizationRoleStage) ToOrganizationRoleStagePtrOutput() OrganizationRoleStagePtrOutput {
+	return e.ToOrganizationRoleStagePtrOutputWithContext(context.Background())
+}
+
+func (e OrganizationRoleStage) ToOrganizationRoleStagePtrOutputWithContext(ctx context.Context) OrganizationRoleStagePtrOutput {
+	return OrganizationRoleStage(e).ToOrganizationRoleStageOutputWithContext(ctx).ToOrganizationRoleStagePtrOutputWithContext(ctx)
 }
 
 func (e OrganizationRoleStage) ToStringOutput() pulumi.StringOutput {
@@ -146,8 +573,129 @@ func (e OrganizationRoleStage) ToStringPtrOutputWithContext(ctx context.Context)
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type OrganizationRoleStageOutput struct{ *pulumi.OutputState }
+
+func (OrganizationRoleStageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationRoleStage)(nil)).Elem()
+}
+
+func (o OrganizationRoleStageOutput) ToOrganizationRoleStageOutput() OrganizationRoleStageOutput {
+	return o
+}
+
+func (o OrganizationRoleStageOutput) ToOrganizationRoleStageOutputWithContext(ctx context.Context) OrganizationRoleStageOutput {
+	return o
+}
+
+func (o OrganizationRoleStageOutput) ToOrganizationRoleStagePtrOutput() OrganizationRoleStagePtrOutput {
+	return o.ToOrganizationRoleStagePtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationRoleStageOutput) ToOrganizationRoleStagePtrOutputWithContext(ctx context.Context) OrganizationRoleStagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationRoleStage) *OrganizationRoleStage {
+		return &v
+	}).(OrganizationRoleStagePtrOutput)
+}
+
+func (o OrganizationRoleStageOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o OrganizationRoleStageOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationRoleStage) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o OrganizationRoleStageOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationRoleStageOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e OrganizationRoleStage) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type OrganizationRoleStagePtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationRoleStagePtrOutput) ElementType() reflect.Type {
+	return organizationRoleStagePtrType
+}
+
+func (o OrganizationRoleStagePtrOutput) ToOrganizationRoleStagePtrOutput() OrganizationRoleStagePtrOutput {
+	return o
+}
+
+func (o OrganizationRoleStagePtrOutput) ToOrganizationRoleStagePtrOutputWithContext(ctx context.Context) OrganizationRoleStagePtrOutput {
+	return o
+}
+
+func (o OrganizationRoleStagePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationRoleStagePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *OrganizationRoleStage) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o OrganizationRoleStagePtrOutput) Elem() OrganizationRoleStageOutput {
+	return o.ApplyT(func(v *OrganizationRoleStage) OrganizationRoleStage {
+		var ret OrganizationRoleStage
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(OrganizationRoleStageOutput)
+}
+
+// OrganizationRoleStageInput is an input type that accepts OrganizationRoleStageArgs and OrganizationRoleStageOutput values.
+// You can construct a concrete instance of `OrganizationRoleStageInput` via:
+//
+//          OrganizationRoleStageArgs{...}
+type OrganizationRoleStageInput interface {
+	pulumi.Input
+
+	ToOrganizationRoleStageOutput() OrganizationRoleStageOutput
+	ToOrganizationRoleStageOutputWithContext(context.Context) OrganizationRoleStageOutput
+}
+
+var organizationRoleStagePtrType = reflect.TypeOf((**OrganizationRoleStage)(nil)).Elem()
+
+type OrganizationRoleStagePtrInput interface {
+	pulumi.Input
+
+	ToOrganizationRoleStagePtrOutput() OrganizationRoleStagePtrOutput
+	ToOrganizationRoleStagePtrOutputWithContext(context.Context) OrganizationRoleStagePtrOutput
+}
+
+type organizationRoleStagePtr string
+
+func OrganizationRoleStagePtr(v string) OrganizationRoleStagePtrInput {
+	return (*organizationRoleStagePtr)(&v)
+}
+
+func (*organizationRoleStagePtr) ElementType() reflect.Type {
+	return organizationRoleStagePtrType
+}
+
+func (in *organizationRoleStagePtr) ToOrganizationRoleStagePtrOutput() OrganizationRoleStagePtrOutput {
+	return pulumi.ToOutput(in).(OrganizationRoleStagePtrOutput)
+}
+
+func (in *organizationRoleStagePtr) ToOrganizationRoleStagePtrOutputWithContext(ctx context.Context) OrganizationRoleStagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(OrganizationRoleStagePtrOutput)
+}
+
 // The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
-type RoleStage pulumi.String
+type RoleStage string
 
 const (
 	// The user has indicated this role is currently in an Alpha phase. If this launch stage is selected, the `stage` field will not be included when requesting the definition for a given role.
@@ -165,7 +713,23 @@ const (
 )
 
 func (RoleStage) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*RoleStage)(nil)).Elem()
+}
+
+func (e RoleStage) ToRoleStageOutput() RoleStageOutput {
+	return pulumi.ToOutput(e).(RoleStageOutput)
+}
+
+func (e RoleStage) ToRoleStageOutputWithContext(ctx context.Context) RoleStageOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RoleStageOutput)
+}
+
+func (e RoleStage) ToRoleStagePtrOutput() RoleStagePtrOutput {
+	return e.ToRoleStagePtrOutputWithContext(context.Background())
+}
+
+func (e RoleStage) ToRoleStagePtrOutputWithContext(ctx context.Context) RoleStagePtrOutput {
+	return RoleStage(e).ToRoleStageOutputWithContext(ctx).ToRoleStagePtrOutputWithContext(ctx)
 }
 
 func (e RoleStage) ToStringOutput() pulumi.StringOutput {
@@ -182,4 +746,138 @@ func (e RoleStage) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e RoleStage) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RoleStageOutput struct{ *pulumi.OutputState }
+
+func (RoleStageOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoleStage)(nil)).Elem()
+}
+
+func (o RoleStageOutput) ToRoleStageOutput() RoleStageOutput {
+	return o
+}
+
+func (o RoleStageOutput) ToRoleStageOutputWithContext(ctx context.Context) RoleStageOutput {
+	return o
+}
+
+func (o RoleStageOutput) ToRoleStagePtrOutput() RoleStagePtrOutput {
+	return o.ToRoleStagePtrOutputWithContext(context.Background())
+}
+
+func (o RoleStageOutput) ToRoleStagePtrOutputWithContext(ctx context.Context) RoleStagePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoleStage) *RoleStage {
+		return &v
+	}).(RoleStagePtrOutput)
+}
+
+func (o RoleStageOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RoleStageOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RoleStage) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RoleStageOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RoleStageOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RoleStage) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RoleStagePtrOutput struct{ *pulumi.OutputState }
+
+func (RoleStagePtrOutput) ElementType() reflect.Type {
+	return roleStagePtrType
+}
+
+func (o RoleStagePtrOutput) ToRoleStagePtrOutput() RoleStagePtrOutput {
+	return o
+}
+
+func (o RoleStagePtrOutput) ToRoleStagePtrOutputWithContext(ctx context.Context) RoleStagePtrOutput {
+	return o
+}
+
+func (o RoleStagePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RoleStagePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RoleStage) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RoleStagePtrOutput) Elem() RoleStageOutput {
+	return o.ApplyT(func(v *RoleStage) RoleStage {
+		var ret RoleStage
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(RoleStageOutput)
+}
+
+// RoleStageInput is an input type that accepts RoleStageArgs and RoleStageOutput values.
+// You can construct a concrete instance of `RoleStageInput` via:
+//
+//          RoleStageArgs{...}
+type RoleStageInput interface {
+	pulumi.Input
+
+	ToRoleStageOutput() RoleStageOutput
+	ToRoleStageOutputWithContext(context.Context) RoleStageOutput
+}
+
+var roleStagePtrType = reflect.TypeOf((**RoleStage)(nil)).Elem()
+
+type RoleStagePtrInput interface {
+	pulumi.Input
+
+	ToRoleStagePtrOutput() RoleStagePtrOutput
+	ToRoleStagePtrOutputWithContext(context.Context) RoleStagePtrOutput
+}
+
+type roleStagePtr string
+
+func RoleStagePtr(v string) RoleStagePtrInput {
+	return (*roleStagePtr)(&v)
+}
+
+func (*roleStagePtr) ElementType() reflect.Type {
+	return roleStagePtrType
+}
+
+func (in *roleStagePtr) ToRoleStagePtrOutput() RoleStagePtrOutput {
+	return pulumi.ToOutput(in).(RoleStagePtrOutput)
+}
+
+func (in *roleStagePtr) ToRoleStagePtrOutputWithContext(ctx context.Context) RoleStagePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RoleStagePtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(KeyKeyAlgorithmOutput{})
+	pulumi.RegisterOutputType(KeyKeyAlgorithmPtrOutput{})
+	pulumi.RegisterOutputType(KeyPrivateKeyTypeOutput{})
+	pulumi.RegisterOutputType(KeyPrivateKeyTypePtrOutput{})
+	pulumi.RegisterOutputType(OrganizationRoleStageOutput{})
+	pulumi.RegisterOutputType(OrganizationRoleStagePtrOutput{})
+	pulumi.RegisterOutputType(RoleStageOutput{})
+	pulumi.RegisterOutputType(RoleStagePtrOutput{})
 }

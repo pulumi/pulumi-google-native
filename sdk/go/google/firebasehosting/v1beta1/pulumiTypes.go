@@ -805,7 +805,7 @@ type DomainRedirect struct {
 	// The domain name to redirect to.
 	DomainName string `pulumi:"domainName"`
 	// The redirect status code.
-	Type string `pulumi:"type"`
+	Type DomainRedirectType `pulumi:"type"`
 }
 
 // DomainRedirectInput is an input type that accepts DomainRedirectArgs and DomainRedirectOutput values.
@@ -824,7 +824,7 @@ type DomainRedirectArgs struct {
 	// The domain name to redirect to.
 	DomainName pulumi.StringInput `pulumi:"domainName"`
 	// The redirect status code.
-	Type DomainRedirectType `pulumi:"type"`
+	Type DomainRedirectTypeInput `pulumi:"type"`
 }
 
 func (DomainRedirectArgs) ElementType() reflect.Type {
@@ -911,8 +911,8 @@ func (o DomainRedirectOutput) DomainName() pulumi.StringOutput {
 }
 
 // The redirect status code.
-func (o DomainRedirectOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v DomainRedirect) string { return v.Type }).(pulumi.StringOutput)
+func (o DomainRedirectOutput) Type() DomainRedirectTypeOutput {
+	return o.ApplyT(func(v DomainRedirect) DomainRedirectType { return v.Type }).(DomainRedirectTypeOutput)
 }
 
 type DomainRedirectPtrOutput struct{ *pulumi.OutputState }
@@ -944,13 +944,13 @@ func (o DomainRedirectPtrOutput) DomainName() pulumi.StringPtrOutput {
 }
 
 // The redirect status code.
-func (o DomainRedirectPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainRedirect) *string {
+func (o DomainRedirectPtrOutput) Type() DomainRedirectTypePtrOutput {
+	return o.ApplyT(func(v *DomainRedirect) *DomainRedirectType {
 		if v == nil {
 			return nil
 		}
 		return &v.Type
-	}).(pulumi.StringPtrOutput)
+	}).(DomainRedirectTypePtrOutput)
 }
 
 // Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration.

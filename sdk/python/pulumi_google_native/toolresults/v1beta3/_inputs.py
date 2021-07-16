@@ -13,8 +13,8 @@ __all__ = [
     'AndroidAppInfoArgs',
     'AndroidInstrumentationTestArgs',
     'AndroidRoboTestArgs',
-    'AndroidTestArgs',
     'AndroidTestLoopArgs',
+    'AndroidTestArgs',
     'AnyArgs',
     'BasicPerfSampleSeriesArgs',
     'DurationArgs',
@@ -24,8 +24,8 @@ __all__ = [
     'IndividualOutcomeArgs',
     'IosAppInfoArgs',
     'IosRoboTestArgs',
-    'IosTestArgs',
     'IosTestLoopArgs',
+    'IosTestArgs',
     'IosXcTestArgs',
     'MatrixDimensionDefinitionArgs',
     'MultiStepArgs',
@@ -42,8 +42,8 @@ __all__ = [
     'TestSuiteOverviewArgs',
     'TestTimingArgs',
     'TimestampArgs',
-    'ToolExecutionArgs',
     'ToolExecutionStepArgs',
+    'ToolExecutionArgs',
     'ToolExitCodeArgs',
     'ToolOutputReferenceArgs',
 ]
@@ -281,6 +281,15 @@ class AndroidRoboTestArgs:
 
 
 @pulumi.input_type
+class AndroidTestLoopArgs:
+    def __init__(__self__):
+        """
+        Test Loops are tests that can be launched by the app itself, determining when to run by listening for an intent.
+        """
+        pass
+
+
+@pulumi.input_type
 class AndroidTestArgs:
     def __init__(__self__, *,
                  android_app_info: Optional[pulumi.Input['AndroidAppInfoArgs']] = None,
@@ -366,15 +375,6 @@ class AndroidTestArgs:
     @test_timeout.setter
     def test_timeout(self, value: Optional[pulumi.Input['DurationArgs']]):
         pulumi.set(self, "test_timeout", value)
-
-
-@pulumi.input_type
-class AndroidTestLoopArgs:
-    def __init__(__self__):
-        """
-        Test Loops are tests that can be launched by the app itself, determining when to run by listening for an intent.
-        """
-        pass
 
 
 @pulumi.input_type
@@ -799,6 +799,30 @@ class IosRoboTestArgs:
 
 
 @pulumi.input_type
+class IosTestLoopArgs:
+    def __init__(__self__, *,
+                 bundle_id: Optional[pulumi.Input[str]] = None):
+        """
+        A game loop test of an iOS application.
+        :param pulumi.Input[str] bundle_id: Bundle ID of the app.
+        """
+        if bundle_id is not None:
+            pulumi.set(__self__, "bundle_id", bundle_id)
+
+    @property
+    @pulumi.getter(name="bundleId")
+    def bundle_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Bundle ID of the app.
+        """
+        return pulumi.get(self, "bundle_id")
+
+    @bundle_id.setter
+    def bundle_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "bundle_id", value)
+
+
+@pulumi.input_type
 class IosTestArgs:
     def __init__(__self__, *,
                  ios_app_info: Optional[pulumi.Input['IosAppInfoArgs']] = None,
@@ -884,30 +908,6 @@ class IosTestArgs:
     @test_timeout.setter
     def test_timeout(self, value: Optional[pulumi.Input['DurationArgs']]):
         pulumi.set(self, "test_timeout", value)
-
-
-@pulumi.input_type
-class IosTestLoopArgs:
-    def __init__(__self__, *,
-                 bundle_id: Optional[pulumi.Input[str]] = None):
-        """
-        A game loop test of an iOS application.
-        :param pulumi.Input[str] bundle_id: Bundle ID of the app.
-        """
-        if bundle_id is not None:
-            pulumi.set(__self__, "bundle_id", bundle_id)
-
-    @property
-    @pulumi.getter(name="bundleId")
-    def bundle_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Bundle ID of the app.
-        """
-        return pulumi.get(self, "bundle_id")
-
-    @bundle_id.setter
-    def bundle_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "bundle_id", value)
 
 
 @pulumi.input_type
@@ -1738,6 +1738,30 @@ class TimestampArgs:
 
 
 @pulumi.input_type
+class ToolExecutionStepArgs:
+    def __init__(__self__, *,
+                 tool_execution: Optional[pulumi.Input['ToolExecutionArgs']] = None):
+        """
+        Generic tool step to be used for binaries we do not explicitly support. For example: running cp to copy artifacts from one location to another.
+        :param pulumi.Input['ToolExecutionArgs'] tool_execution: A Tool execution. - In response: present if set by create/update request - In create/update request: optional
+        """
+        if tool_execution is not None:
+            pulumi.set(__self__, "tool_execution", tool_execution)
+
+    @property
+    @pulumi.getter(name="toolExecution")
+    def tool_execution(self) -> Optional[pulumi.Input['ToolExecutionArgs']]:
+        """
+        A Tool execution. - In response: present if set by create/update request - In create/update request: optional
+        """
+        return pulumi.get(self, "tool_execution")
+
+    @tool_execution.setter
+    def tool_execution(self, value: Optional[pulumi.Input['ToolExecutionArgs']]):
+        pulumi.set(self, "tool_execution", value)
+
+
+@pulumi.input_type
 class ToolExecutionArgs:
     def __init__(__self__, *,
                  command_line_arguments: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1807,30 +1831,6 @@ class ToolExecutionArgs:
     @tool_outputs.setter
     def tool_outputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ToolOutputReferenceArgs']]]]):
         pulumi.set(self, "tool_outputs", value)
-
-
-@pulumi.input_type
-class ToolExecutionStepArgs:
-    def __init__(__self__, *,
-                 tool_execution: Optional[pulumi.Input['ToolExecutionArgs']] = None):
-        """
-        Generic tool step to be used for binaries we do not explicitly support. For example: running cp to copy artifacts from one location to another.
-        :param pulumi.Input['ToolExecutionArgs'] tool_execution: A Tool execution. - In response: present if set by create/update request - In create/update request: optional
-        """
-        if tool_execution is not None:
-            pulumi.set(__self__, "tool_execution", tool_execution)
-
-    @property
-    @pulumi.getter(name="toolExecution")
-    def tool_execution(self) -> Optional[pulumi.Input['ToolExecutionArgs']]:
-        """
-        A Tool execution. - In response: present if set by create/update request - In create/update request: optional
-        """
-        return pulumi.get(self, "tool_execution")
-
-    @tool_execution.setter
-    def tool_execution(self, value: Optional[pulumi.Input['ToolExecutionArgs']]):
-        pulumi.set(self, "tool_execution", value)
 
 
 @pulumi.input_type

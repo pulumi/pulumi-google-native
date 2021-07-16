@@ -16,8 +16,8 @@ __all__ = [
     'EncryptionConfigArgs',
     'ExecutionTemplateArgs',
     'ExprArgs',
-    'LocalDiskArgs',
     'LocalDiskInitializeParamsArgs',
+    'LocalDiskArgs',
     'RuntimeAcceleratorConfigArgs',
     'RuntimeAccessConfigArgs',
     'RuntimeShieldedInstanceConfigArgs',
@@ -25,8 +25,8 @@ __all__ = [
     'SchedulerAcceleratorConfigArgs',
     'ShieldedInstanceConfigArgs',
     'UpgradeHistoryEntryArgs',
-    'VirtualMachineArgs',
     'VirtualMachineConfigArgs',
+    'VirtualMachineArgs',
     'VmImageArgs',
 ]
 
@@ -429,94 +429,6 @@ class ExprArgs:
 
 
 @pulumi.input_type
-class LocalDiskArgs:
-    def __init__(__self__, *,
-                 initialize_params: Optional[pulumi.Input['LocalDiskInitializeParamsArgs']] = None,
-                 interface: Optional[pulumi.Input[str]] = None,
-                 mode: Optional[pulumi.Input[str]] = None,
-                 source: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input[str]] = None):
-        """
-        An Local attached disk resource.
-        :param pulumi.Input['LocalDiskInitializeParamsArgs'] initialize_params: Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
-        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
-        :param pulumi.Input[str] mode: The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
-        :param pulumi.Input[str] source: Specifies a valid partial or full URL to an existing Persistent Disk resource.
-        :param pulumi.Input[str] type: Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: PERSISTENT SCRATCH
-        """
-        if initialize_params is not None:
-            pulumi.set(__self__, "initialize_params", initialize_params)
-        if interface is not None:
-            pulumi.set(__self__, "interface", interface)
-        if mode is not None:
-            pulumi.set(__self__, "mode", mode)
-        if source is not None:
-            pulumi.set(__self__, "source", source)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter(name="initializeParams")
-    def initialize_params(self) -> Optional[pulumi.Input['LocalDiskInitializeParamsArgs']]:
-        """
-        Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
-        """
-        return pulumi.get(self, "initialize_params")
-
-    @initialize_params.setter
-    def initialize_params(self, value: Optional[pulumi.Input['LocalDiskInitializeParamsArgs']]):
-        pulumi.set(self, "initialize_params", value)
-
-    @property
-    @pulumi.getter
-    def interface(self) -> Optional[pulumi.Input[str]]:
-        """
-        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
-        """
-        return pulumi.get(self, "interface")
-
-    @interface.setter
-    def interface(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "interface", value)
-
-    @property
-    @pulumi.getter
-    def mode(self) -> Optional[pulumi.Input[str]]:
-        """
-        The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
-        """
-        return pulumi.get(self, "mode")
-
-    @mode.setter
-    def mode(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "mode", value)
-
-    @property
-    @pulumi.getter
-    def source(self) -> Optional[pulumi.Input[str]]:
-        """
-        Specifies a valid partial or full URL to an existing Persistent Disk resource.
-        """
-        return pulumi.get(self, "source")
-
-    @source.setter
-    def source(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "source", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: PERSISTENT SCRATCH
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "type", value)
-
-
-@pulumi.input_type
 class LocalDiskInitializeParamsArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
@@ -602,6 +514,94 @@ class LocalDiskInitializeParamsArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+
+@pulumi.input_type
+class LocalDiskArgs:
+    def __init__(__self__, *,
+                 initialize_params: Optional[pulumi.Input['LocalDiskInitializeParamsArgs']] = None,
+                 interface: Optional[pulumi.Input[str]] = None,
+                 mode: Optional[pulumi.Input[str]] = None,
+                 source: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        An Local attached disk resource.
+        :param pulumi.Input['LocalDiskInitializeParamsArgs'] initialize_params: Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+        :param pulumi.Input[str] interface: Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+        :param pulumi.Input[str] mode: The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+        :param pulumi.Input[str] source: Specifies a valid partial or full URL to an existing Persistent Disk resource.
+        :param pulumi.Input[str] type: Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: PERSISTENT SCRATCH
+        """
+        if initialize_params is not None:
+            pulumi.set(__self__, "initialize_params", initialize_params)
+        if interface is not None:
+            pulumi.set(__self__, "interface", interface)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if source is not None:
+            pulumi.set(__self__, "source", source)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="initializeParams")
+    def initialize_params(self) -> Optional[pulumi.Input['LocalDiskInitializeParamsArgs']]:
+        """
+        Input only. [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
+        """
+        return pulumi.get(self, "initialize_params")
+
+    @initialize_params.setter
+    def initialize_params(self, value: Optional[pulumi.Input['LocalDiskInitializeParamsArgs']]):
+        pulumi.set(self, "initialize_params", value)
+
+    @property
+    @pulumi.getter
+    def interface(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance. Valid values: NVME SCSI
+        """
+        return pulumi.get(self, "interface")
+
+    @interface.setter
+    def interface(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "interface", value)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mode in which to attach this disk, either READ_WRITE or READ_ONLY. If not specified, the default is to attach the disk in READ_WRITE mode. Valid values: READ_ONLY READ_WRITE
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "mode", value)
+
+    @property
+    @pulumi.getter
+    def source(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies a valid partial or full URL to an existing Persistent Disk resource.
+        """
+        return pulumi.get(self, "source")
+
+    @source.setter
+    def source(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the type of the disk, either SCRATCH or PERSISTENT. If not specified, the default is PERSISTENT. Valid values: PERSISTENT SCRATCH
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
@@ -1125,30 +1125,6 @@ class UpgradeHistoryEntryArgs:
 
 
 @pulumi.input_type
-class VirtualMachineArgs:
-    def __init__(__self__, *,
-                 virtual_machine_config: Optional[pulumi.Input['VirtualMachineConfigArgs']] = None):
-        """
-        Runtime using Virtual Machine for computing.
-        :param pulumi.Input['VirtualMachineConfigArgs'] virtual_machine_config: Virtual Machine configuration settings.
-        """
-        if virtual_machine_config is not None:
-            pulumi.set(__self__, "virtual_machine_config", virtual_machine_config)
-
-    @property
-    @pulumi.getter(name="virtualMachineConfig")
-    def virtual_machine_config(self) -> Optional[pulumi.Input['VirtualMachineConfigArgs']]:
-        """
-        Virtual Machine configuration settings.
-        """
-        return pulumi.get(self, "virtual_machine_config")
-
-    @virtual_machine_config.setter
-    def virtual_machine_config(self, value: Optional[pulumi.Input['VirtualMachineConfigArgs']]):
-        pulumi.set(self, "virtual_machine_config", value)
-
-
-@pulumi.input_type
 class VirtualMachineConfigArgs:
     def __init__(__self__, *,
                  data_disk: pulumi.Input['LocalDiskArgs'],
@@ -1360,6 +1336,30 @@ class VirtualMachineConfigArgs:
     @tags.setter
     def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "tags", value)
+
+
+@pulumi.input_type
+class VirtualMachineArgs:
+    def __init__(__self__, *,
+                 virtual_machine_config: Optional[pulumi.Input['VirtualMachineConfigArgs']] = None):
+        """
+        Runtime using Virtual Machine for computing.
+        :param pulumi.Input['VirtualMachineConfigArgs'] virtual_machine_config: Virtual Machine configuration settings.
+        """
+        if virtual_machine_config is not None:
+            pulumi.set(__self__, "virtual_machine_config", virtual_machine_config)
+
+    @property
+    @pulumi.getter(name="virtualMachineConfig")
+    def virtual_machine_config(self) -> Optional[pulumi.Input['VirtualMachineConfigArgs']]:
+        """
+        Virtual Machine configuration settings.
+        """
+        return pulumi.get(self, "virtual_machine_config")
+
+    @virtual_machine_config.setter
+    def virtual_machine_config(self, value: Optional[pulumi.Input['VirtualMachineConfigArgs']]):
+        pulumi.set(self, "virtual_machine_config", value)
 
 
 @pulumi.input_type

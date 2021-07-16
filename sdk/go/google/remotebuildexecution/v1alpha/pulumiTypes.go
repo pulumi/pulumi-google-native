@@ -657,7 +657,7 @@ type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy struct {
 	// Whether dockerSiblingContainers can be used.
 	DockerSiblingContainers *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature `pulumi:"dockerSiblingContainers"`
 	// linux_isolation allows overriding the docker runtime used for containers started on Linux.
-	LinuxIsolation *string `pulumi:"linuxIsolation"`
+	LinuxIsolation *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation `pulumi:"linuxIsolation"`
 }
 
 // GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs and GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyOutput values.
@@ -690,7 +690,7 @@ type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs struct {
 	// Whether dockerSiblingContainers can be used.
 	DockerSiblingContainers GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrInput `pulumi:"dockerSiblingContainers"`
 	// linux_isolation allows overriding the docker runtime used for containers started on Linux.
-	LinuxIsolation *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation `pulumi:"linuxIsolation"`
+	LinuxIsolation GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrInput `pulumi:"linuxIsolation"`
 }
 
 func (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs) ElementType() reflect.Type {
@@ -828,8 +828,10 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyOutput) Docke
 }
 
 // linux_isolation allows overriding the docker runtime used for containers started on Linux.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyOutput) LinuxIsolation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy) *string { return v.LinuxIsolation }).(pulumi.StringPtrOutput)
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyOutput) LinuxIsolation() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation {
+		return v.LinuxIsolation
+	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput)
 }
 
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutput struct{ *pulumi.OutputState }
@@ -933,13 +935,13 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutput) Do
 }
 
 // linux_isolation allows overriding the docker runtime used for containers started on Linux.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutput) LinuxIsolation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy) *string {
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutput) LinuxIsolation() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolation {
 		if v == nil {
 			return nil
 		}
 		return v.LinuxIsolation
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationPtrOutput)
 }
 
 // Defines whether a feature can be used or what values are accepted.
@@ -947,7 +949,7 @@ type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature struct {
 	// A list of acceptable values. Only effective when the policy is `RESTRICTED`.
 	AllowedValues []string `pulumi:"allowedValues"`
 	// The policy of the feature.
-	Policy *string `pulumi:"policy"`
+	Policy *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy `pulumi:"policy"`
 }
 
 // GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs and GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureOutput values.
@@ -966,7 +968,7 @@ type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs stru
 	// A list of acceptable values. Only effective when the policy is `RESTRICTED`.
 	AllowedValues pulumi.StringArrayInput `pulumi:"allowedValues"`
 	// The policy of the feature.
-	Policy *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy `pulumi:"policy"`
+	Policy GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrInput `pulumi:"policy"`
 }
 
 func (GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs) ElementType() reflect.Type {
@@ -1055,8 +1057,10 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureOutput
 }
 
 // The policy of the feature.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureOutput) Policy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature) *string { return v.Policy }).(pulumi.StringPtrOutput)
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureOutput) Policy() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput {
+	return o.ApplyT(func(v GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy {
+		return v.Policy
+	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput)
 }
 
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOutput struct{ *pulumi.OutputState }
@@ -1090,13 +1094,13 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOut
 }
 
 // The policy of the feature.
-func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOutput) Policy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature) *string {
+func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOutput) Policy() GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput {
+	return o.ApplyT(func(v *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature) *GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy {
 		if v == nil {
 			return nil
 		}
 		return v.Policy
-	}).(pulumi.StringPtrOutput)
+	}).(GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyPtrOutput)
 }
 
 // Defines whether a feature can be used or what values are accepted.

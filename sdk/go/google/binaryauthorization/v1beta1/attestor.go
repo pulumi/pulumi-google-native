@@ -60,25 +60,9 @@ func GetAttestor(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Attestor resources.
 type attestorState struct {
-	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
-	Description *string `pulumi:"description"`
-	// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
-	Name *string `pulumi:"name"`
-	// Time when the attestor was last updated.
-	UpdateTime *string `pulumi:"updateTime"`
-	// A Drydock ATTESTATION_AUTHORITY Note, created by the user.
-	UserOwnedDrydockNote *UserOwnedDrydockNoteResponse `pulumi:"userOwnedDrydockNote"`
 }
 
 type AttestorState struct {
-	// Optional. A descriptive comment. This field may be updated. The field may be displayed in chooser dialogs.
-	Description pulumi.StringPtrInput
-	// The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
-	Name pulumi.StringPtrInput
-	// Time when the attestor was last updated.
-	UpdateTime pulumi.StringPtrInput
-	// A Drydock ATTESTATION_AUTHORITY Note, created by the user.
-	UserOwnedDrydockNote UserOwnedDrydockNoteResponsePtrInput
 }
 
 func (AttestorState) ElementType() reflect.Type {

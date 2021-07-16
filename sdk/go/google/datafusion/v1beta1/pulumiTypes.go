@@ -13,7 +13,7 @@ import (
 // Identifies Data Fusion accelerators for an instance.
 type Accelerator struct {
 	// The type of an accelator for a CDF instance.
-	AcceleratorType *string `pulumi:"acceleratorType"`
+	AcceleratorType *AcceleratorAcceleratorType `pulumi:"acceleratorType"`
 }
 
 // AcceleratorInput is an input type that accepts AcceleratorArgs and AcceleratorOutput values.
@@ -30,7 +30,7 @@ type AcceleratorInput interface {
 // Identifies Data Fusion accelerators for an instance.
 type AcceleratorArgs struct {
 	// The type of an accelator for a CDF instance.
-	AcceleratorType *AcceleratorAcceleratorType `pulumi:"acceleratorType"`
+	AcceleratorType AcceleratorAcceleratorTypePtrInput `pulumi:"acceleratorType"`
 }
 
 func (AcceleratorArgs) ElementType() reflect.Type {
@@ -86,8 +86,8 @@ func (o AcceleratorOutput) ToAcceleratorOutputWithContext(ctx context.Context) A
 }
 
 // The type of an accelator for a CDF instance.
-func (o AcceleratorOutput) AcceleratorType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v Accelerator) *string { return v.AcceleratorType }).(pulumi.StringPtrOutput)
+func (o AcceleratorOutput) AcceleratorType() AcceleratorAcceleratorTypePtrOutput {
+	return o.ApplyT(func(v Accelerator) *AcceleratorAcceleratorType { return v.AcceleratorType }).(AcceleratorAcceleratorTypePtrOutput)
 }
 
 type AcceleratorArrayOutput struct{ *pulumi.OutputState }
@@ -433,7 +433,7 @@ type AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *string `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
@@ -452,7 +452,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *AuditLogConfigLogType `pulumi:"logType"`
+	LogType AuditLogConfigLogTypePtrInput `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -513,8 +513,8 @@ func (o AuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
 }
 
 // The log type that this config enables.
-func (o AuditLogConfigOutput) LogType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AuditLogConfig) *string { return v.LogType }).(pulumi.StringPtrOutput)
+func (o AuditLogConfigOutput) LogType() AuditLogConfigLogTypePtrOutput {
+	return o.ApplyT(func(v AuditLogConfig) *AuditLogConfigLogType { return v.LogType }).(AuditLogConfigLogTypePtrOutput)
 }
 
 type AuditLogConfigArrayOutput struct{ *pulumi.OutputState }

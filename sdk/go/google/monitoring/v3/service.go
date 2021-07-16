@@ -73,49 +73,9 @@ func GetService(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Service resources.
 type serviceState struct {
-	// Type used for App Engine services.
-	AppEngine *AppEngineResponse `pulumi:"appEngine"`
-	// Type used for Cloud Endpoints services.
-	CloudEndpoints *CloudEndpointsResponse `pulumi:"cloudEndpoints"`
-	// Type used for Istio services that live in a Kubernetes cluster.
-	ClusterIstio *ClusterIstioResponse `pulumi:"clusterIstio"`
-	// Custom service type.
-	Custom *CustomResponse `pulumi:"custom"`
-	// Name used for UI elements listing this Service.
-	DisplayName *string `pulumi:"displayName"`
-	// Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
-	IstioCanonicalService *IstioCanonicalServiceResponse `pulumi:"istioCanonicalService"`
-	// Type used for Istio services scoped to an Istio mesh.
-	MeshIstio *MeshIstioResponse `pulumi:"meshIstio"`
-	// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
-	Name *string `pulumi:"name"`
-	// Configuration for how to query telemetry on a Service.
-	Telemetry *TelemetryResponse `pulumi:"telemetry"`
-	// Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
-	UserLabels map[string]string `pulumi:"userLabels"`
 }
 
 type ServiceState struct {
-	// Type used for App Engine services.
-	AppEngine AppEngineResponsePtrInput
-	// Type used for Cloud Endpoints services.
-	CloudEndpoints CloudEndpointsResponsePtrInput
-	// Type used for Istio services that live in a Kubernetes cluster.
-	ClusterIstio ClusterIstioResponsePtrInput
-	// Custom service type.
-	Custom CustomResponsePtrInput
-	// Name used for UI elements listing this Service.
-	DisplayName pulumi.StringPtrInput
-	// Type used for canonical services scoped to an Istio mesh. Metrics for Istio are documented here (https://istio.io/latest/docs/reference/config/metrics/)
-	IstioCanonicalService IstioCanonicalServiceResponsePtrInput
-	// Type used for Istio services scoped to an Istio mesh.
-	MeshIstio MeshIstioResponsePtrInput
-	// Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID]
-	Name pulumi.StringPtrInput
-	// Configuration for how to query telemetry on a Service.
-	Telemetry TelemetryResponsePtrInput
-	// Labels which have been used to annotate the service. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
-	UserLabels pulumi.StringMapInput
 }
 
 func (ServiceState) ElementType() reflect.Type {

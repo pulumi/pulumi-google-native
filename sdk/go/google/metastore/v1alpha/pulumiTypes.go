@@ -233,7 +233,7 @@ type AuditLogConfig struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers []string `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *string `pulumi:"logType"`
+	LogType *AuditLogConfigLogType `pulumi:"logType"`
 }
 
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
@@ -252,7 +252,7 @@ type AuditLogConfigArgs struct {
 	// Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
 	ExemptedMembers pulumi.StringArrayInput `pulumi:"exemptedMembers"`
 	// The log type that this config enables.
-	LogType *AuditLogConfigLogType `pulumi:"logType"`
+	LogType AuditLogConfigLogTypePtrInput `pulumi:"logType"`
 }
 
 func (AuditLogConfigArgs) ElementType() reflect.Type {
@@ -313,8 +313,8 @@ func (o AuditLogConfigOutput) ExemptedMembers() pulumi.StringArrayOutput {
 }
 
 // The log type that this config enables.
-func (o AuditLogConfigOutput) LogType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v AuditLogConfig) *string { return v.LogType }).(pulumi.StringPtrOutput)
+func (o AuditLogConfigOutput) LogType() AuditLogConfigLogTypePtrOutput {
+	return o.ApplyT(func(v AuditLogConfig) *AuditLogConfigLogType { return v.LogType }).(AuditLogConfigLogTypePtrOutput)
 }
 
 type AuditLogConfigArrayOutput struct{ *pulumi.OutputState }
@@ -953,13 +953,13 @@ func (o DataCatalogConfigResponsePtrOutput) Enabled() pulumi.BoolPtrOutput {
 // A specification of the location of and metadata about a database dump from a relational database management system.
 type DatabaseDump struct {
 	// The type of the database.
-	DatabaseType *string `pulumi:"databaseType"`
+	DatabaseType *DatabaseDumpDatabaseType `pulumi:"databaseType"`
 	// A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
 	GcsUri *string `pulumi:"gcsUri"`
 	// The name of the source database.
 	SourceDatabase *string `pulumi:"sourceDatabase"`
 	// Optional. The type of the database dump. If unspecified, defaults to MYSQL.
-	Type *string `pulumi:"type"`
+	Type *DatabaseDumpType `pulumi:"type"`
 }
 
 // DatabaseDumpInput is an input type that accepts DatabaseDumpArgs and DatabaseDumpOutput values.
@@ -976,13 +976,13 @@ type DatabaseDumpInput interface {
 // A specification of the location of and metadata about a database dump from a relational database management system.
 type DatabaseDumpArgs struct {
 	// The type of the database.
-	DatabaseType *DatabaseDumpDatabaseType `pulumi:"databaseType"`
+	DatabaseType DatabaseDumpDatabaseTypePtrInput `pulumi:"databaseType"`
 	// A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
 	GcsUri pulumi.StringPtrInput `pulumi:"gcsUri"`
 	// The name of the source database.
 	SourceDatabase pulumi.StringPtrInput `pulumi:"sourceDatabase"`
 	// Optional. The type of the database dump. If unspecified, defaults to MYSQL.
-	Type *DatabaseDumpType `pulumi:"type"`
+	Type DatabaseDumpTypePtrInput `pulumi:"type"`
 }
 
 func (DatabaseDumpArgs) ElementType() reflect.Type {
@@ -1064,8 +1064,8 @@ func (o DatabaseDumpOutput) ToDatabaseDumpPtrOutputWithContext(ctx context.Conte
 }
 
 // The type of the database.
-func (o DatabaseDumpOutput) DatabaseType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseDump) *string { return v.DatabaseType }).(pulumi.StringPtrOutput)
+func (o DatabaseDumpOutput) DatabaseType() DatabaseDumpDatabaseTypePtrOutput {
+	return o.ApplyT(func(v DatabaseDump) *DatabaseDumpDatabaseType { return v.DatabaseType }).(DatabaseDumpDatabaseTypePtrOutput)
 }
 
 // A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
@@ -1079,8 +1079,8 @@ func (o DatabaseDumpOutput) SourceDatabase() pulumi.StringPtrOutput {
 }
 
 // Optional. The type of the database dump. If unspecified, defaults to MYSQL.
-func (o DatabaseDumpOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v DatabaseDump) *string { return v.Type }).(pulumi.StringPtrOutput)
+func (o DatabaseDumpOutput) Type() DatabaseDumpTypePtrOutput {
+	return o.ApplyT(func(v DatabaseDump) *DatabaseDumpType { return v.Type }).(DatabaseDumpTypePtrOutput)
 }
 
 type DatabaseDumpPtrOutput struct{ *pulumi.OutputState }
@@ -1102,13 +1102,13 @@ func (o DatabaseDumpPtrOutput) Elem() DatabaseDumpOutput {
 }
 
 // The type of the database.
-func (o DatabaseDumpPtrOutput) DatabaseType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseDump) *string {
+func (o DatabaseDumpPtrOutput) DatabaseType() DatabaseDumpDatabaseTypePtrOutput {
+	return o.ApplyT(func(v *DatabaseDump) *DatabaseDumpDatabaseType {
 		if v == nil {
 			return nil
 		}
 		return v.DatabaseType
-	}).(pulumi.StringPtrOutput)
+	}).(DatabaseDumpDatabaseTypePtrOutput)
 }
 
 // A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
@@ -1132,13 +1132,13 @@ func (o DatabaseDumpPtrOutput) SourceDatabase() pulumi.StringPtrOutput {
 }
 
 // Optional. The type of the database dump. If unspecified, defaults to MYSQL.
-func (o DatabaseDumpPtrOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DatabaseDump) *string {
+func (o DatabaseDumpPtrOutput) Type() DatabaseDumpTypePtrOutput {
+	return o.ApplyT(func(v *DatabaseDump) *DatabaseDumpType {
 		if v == nil {
 			return nil
 		}
 		return v.Type
-	}).(pulumi.StringPtrOutput)
+	}).(DatabaseDumpTypePtrOutput)
 }
 
 // A specification of the location of and metadata about a database dump from a relational database management system.
@@ -2296,7 +2296,7 @@ func (o KerberosConfigResponsePtrOutput) Principal() pulumi.StringPtrOutput {
 // Maintenance window. This specifies when Dataproc Metastore may perform system maintenance operation to the service.
 type MaintenanceWindow struct {
 	// The day of week, when the window starts.
-	DayOfWeek *string `pulumi:"dayOfWeek"`
+	DayOfWeek *MaintenanceWindowDayOfWeek `pulumi:"dayOfWeek"`
 	// The hour of day (0-23) when the window starts.
 	HourOfDay *int `pulumi:"hourOfDay"`
 }
@@ -2315,7 +2315,7 @@ type MaintenanceWindowInput interface {
 // Maintenance window. This specifies when Dataproc Metastore may perform system maintenance operation to the service.
 type MaintenanceWindowArgs struct {
 	// The day of week, when the window starts.
-	DayOfWeek *MaintenanceWindowDayOfWeek `pulumi:"dayOfWeek"`
+	DayOfWeek MaintenanceWindowDayOfWeekPtrInput `pulumi:"dayOfWeek"`
 	// The hour of day (0-23) when the window starts.
 	HourOfDay pulumi.IntPtrInput `pulumi:"hourOfDay"`
 }
@@ -2399,8 +2399,8 @@ func (o MaintenanceWindowOutput) ToMaintenanceWindowPtrOutputWithContext(ctx con
 }
 
 // The day of week, when the window starts.
-func (o MaintenanceWindowOutput) DayOfWeek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v MaintenanceWindow) *string { return v.DayOfWeek }).(pulumi.StringPtrOutput)
+func (o MaintenanceWindowOutput) DayOfWeek() MaintenanceWindowDayOfWeekPtrOutput {
+	return o.ApplyT(func(v MaintenanceWindow) *MaintenanceWindowDayOfWeek { return v.DayOfWeek }).(MaintenanceWindowDayOfWeekPtrOutput)
 }
 
 // The hour of day (0-23) when the window starts.
@@ -2427,13 +2427,13 @@ func (o MaintenanceWindowPtrOutput) Elem() MaintenanceWindowOutput {
 }
 
 // The day of week, when the window starts.
-func (o MaintenanceWindowPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *MaintenanceWindow) *string {
+func (o MaintenanceWindowPtrOutput) DayOfWeek() MaintenanceWindowDayOfWeekPtrOutput {
+	return o.ApplyT(func(v *MaintenanceWindow) *MaintenanceWindowDayOfWeek {
 		if v == nil {
 			return nil
 		}
 		return v.DayOfWeek
-	}).(pulumi.StringPtrOutput)
+	}).(MaintenanceWindowDayOfWeekPtrOutput)
 }
 
 // The hour of day (0-23) when the window starts.

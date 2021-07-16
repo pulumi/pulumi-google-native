@@ -13,13 +13,13 @@ import (
 // Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
 type ApiConfigHandler struct {
 	// Action to take when users access resources that require authentication. Defaults to redirect.
-	AuthFailAction *string `pulumi:"authFailAction"`
+	AuthFailAction *ApiConfigHandlerAuthFailAction `pulumi:"authFailAction"`
 	// Level of login required to access this resource. Defaults to optional.
-	Login *string `pulumi:"login"`
+	Login *ApiConfigHandlerLogin `pulumi:"login"`
 	// Path to the script from the application root directory.
 	Script *string `pulumi:"script"`
 	// Security (HTTPS) enforcement for this URL.
-	SecurityLevel *string `pulumi:"securityLevel"`
+	SecurityLevel *ApiConfigHandlerSecurityLevel `pulumi:"securityLevel"`
 	// URL to serve the endpoint at.
 	Url *string `pulumi:"url"`
 }
@@ -38,13 +38,13 @@ type ApiConfigHandlerInput interface {
 // Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
 type ApiConfigHandlerArgs struct {
 	// Action to take when users access resources that require authentication. Defaults to redirect.
-	AuthFailAction *ApiConfigHandlerAuthFailAction `pulumi:"authFailAction"`
+	AuthFailAction ApiConfigHandlerAuthFailActionPtrInput `pulumi:"authFailAction"`
 	// Level of login required to access this resource. Defaults to optional.
-	Login *ApiConfigHandlerLogin `pulumi:"login"`
+	Login ApiConfigHandlerLoginPtrInput `pulumi:"login"`
 	// Path to the script from the application root directory.
 	Script pulumi.StringPtrInput `pulumi:"script"`
 	// Security (HTTPS) enforcement for this URL.
-	SecurityLevel *ApiConfigHandlerSecurityLevel `pulumi:"securityLevel"`
+	SecurityLevel ApiConfigHandlerSecurityLevelPtrInput `pulumi:"securityLevel"`
 	// URL to serve the endpoint at.
 	Url pulumi.StringPtrInput `pulumi:"url"`
 }
@@ -128,13 +128,13 @@ func (o ApiConfigHandlerOutput) ToApiConfigHandlerPtrOutputWithContext(ctx conte
 }
 
 // Action to take when users access resources that require authentication. Defaults to redirect.
-func (o ApiConfigHandlerOutput) AuthFailAction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApiConfigHandler) *string { return v.AuthFailAction }).(pulumi.StringPtrOutput)
+func (o ApiConfigHandlerOutput) AuthFailAction() ApiConfigHandlerAuthFailActionPtrOutput {
+	return o.ApplyT(func(v ApiConfigHandler) *ApiConfigHandlerAuthFailAction { return v.AuthFailAction }).(ApiConfigHandlerAuthFailActionPtrOutput)
 }
 
 // Level of login required to access this resource. Defaults to optional.
-func (o ApiConfigHandlerOutput) Login() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApiConfigHandler) *string { return v.Login }).(pulumi.StringPtrOutput)
+func (o ApiConfigHandlerOutput) Login() ApiConfigHandlerLoginPtrOutput {
+	return o.ApplyT(func(v ApiConfigHandler) *ApiConfigHandlerLogin { return v.Login }).(ApiConfigHandlerLoginPtrOutput)
 }
 
 // Path to the script from the application root directory.
@@ -143,8 +143,8 @@ func (o ApiConfigHandlerOutput) Script() pulumi.StringPtrOutput {
 }
 
 // Security (HTTPS) enforcement for this URL.
-func (o ApiConfigHandlerOutput) SecurityLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ApiConfigHandler) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
+func (o ApiConfigHandlerOutput) SecurityLevel() ApiConfigHandlerSecurityLevelPtrOutput {
+	return o.ApplyT(func(v ApiConfigHandler) *ApiConfigHandlerSecurityLevel { return v.SecurityLevel }).(ApiConfigHandlerSecurityLevelPtrOutput)
 }
 
 // URL to serve the endpoint at.
@@ -171,23 +171,23 @@ func (o ApiConfigHandlerPtrOutput) Elem() ApiConfigHandlerOutput {
 }
 
 // Action to take when users access resources that require authentication. Defaults to redirect.
-func (o ApiConfigHandlerPtrOutput) AuthFailAction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApiConfigHandler) *string {
+func (o ApiConfigHandlerPtrOutput) AuthFailAction() ApiConfigHandlerAuthFailActionPtrOutput {
+	return o.ApplyT(func(v *ApiConfigHandler) *ApiConfigHandlerAuthFailAction {
 		if v == nil {
 			return nil
 		}
 		return v.AuthFailAction
-	}).(pulumi.StringPtrOutput)
+	}).(ApiConfigHandlerAuthFailActionPtrOutput)
 }
 
 // Level of login required to access this resource. Defaults to optional.
-func (o ApiConfigHandlerPtrOutput) Login() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApiConfigHandler) *string {
+func (o ApiConfigHandlerPtrOutput) Login() ApiConfigHandlerLoginPtrOutput {
+	return o.ApplyT(func(v *ApiConfigHandler) *ApiConfigHandlerLogin {
 		if v == nil {
 			return nil
 		}
 		return v.Login
-	}).(pulumi.StringPtrOutput)
+	}).(ApiConfigHandlerLoginPtrOutput)
 }
 
 // Path to the script from the application root directory.
@@ -201,13 +201,13 @@ func (o ApiConfigHandlerPtrOutput) Script() pulumi.StringPtrOutput {
 }
 
 // Security (HTTPS) enforcement for this URL.
-func (o ApiConfigHandlerPtrOutput) SecurityLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ApiConfigHandler) *string {
+func (o ApiConfigHandlerPtrOutput) SecurityLevel() ApiConfigHandlerSecurityLevelPtrOutput {
+	return o.ApplyT(func(v *ApiConfigHandler) *ApiConfigHandlerSecurityLevel {
 		if v == nil {
 			return nil
 		}
 		return v.SecurityLevel
-	}).(pulumi.StringPtrOutput)
+	}).(ApiConfigHandlerSecurityLevelPtrOutput)
 }
 
 // URL to serve the endpoint at.
@@ -3608,7 +3608,7 @@ type EndpointsApiService struct {
 	// Endpoints service name which is the name of the "service" resource in the Service Management API. For example "myapi.endpoints.myproject.cloud.goog"
 	Name *string `pulumi:"name"`
 	// Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED, config_id must be omitted.
-	RolloutStrategy *string `pulumi:"rolloutStrategy"`
+	RolloutStrategy *EndpointsApiServiceRolloutStrategy `pulumi:"rolloutStrategy"`
 }
 
 // EndpointsApiServiceInput is an input type that accepts EndpointsApiServiceArgs and EndpointsApiServiceOutput values.
@@ -3631,7 +3631,7 @@ type EndpointsApiServiceArgs struct {
 	// Endpoints service name which is the name of the "service" resource in the Service Management API. For example "myapi.endpoints.myproject.cloud.goog"
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED, config_id must be omitted.
-	RolloutStrategy *EndpointsApiServiceRolloutStrategy `pulumi:"rolloutStrategy"`
+	RolloutStrategy EndpointsApiServiceRolloutStrategyPtrInput `pulumi:"rolloutStrategy"`
 }
 
 func (EndpointsApiServiceArgs) ElementType() reflect.Type {
@@ -3728,8 +3728,8 @@ func (o EndpointsApiServiceOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED, config_id must be omitted.
-func (o EndpointsApiServiceOutput) RolloutStrategy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v EndpointsApiService) *string { return v.RolloutStrategy }).(pulumi.StringPtrOutput)
+func (o EndpointsApiServiceOutput) RolloutStrategy() EndpointsApiServiceRolloutStrategyPtrOutput {
+	return o.ApplyT(func(v EndpointsApiService) *EndpointsApiServiceRolloutStrategy { return v.RolloutStrategy }).(EndpointsApiServiceRolloutStrategyPtrOutput)
 }
 
 type EndpointsApiServicePtrOutput struct{ *pulumi.OutputState }
@@ -3781,13 +3781,13 @@ func (o EndpointsApiServicePtrOutput) Name() pulumi.StringPtrOutput {
 }
 
 // Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED, config_id must be omitted.
-func (o EndpointsApiServicePtrOutput) RolloutStrategy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *EndpointsApiService) *string {
+func (o EndpointsApiServicePtrOutput) RolloutStrategy() EndpointsApiServiceRolloutStrategyPtrOutput {
+	return o.ApplyT(func(v *EndpointsApiService) *EndpointsApiServiceRolloutStrategy {
 		if v == nil {
 			return nil
 		}
 		return v.RolloutStrategy
-	}).(pulumi.StringPtrOutput)
+	}).(EndpointsApiServiceRolloutStrategyPtrOutput)
 }
 
 // Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service Management API (https://cloud.google.com/service-management/overview).
@@ -4252,7 +4252,7 @@ func (o EntrypointResponsePtrOutput) Shell() pulumi.StringPtrOutput {
 // Custom static error page to be served when an error occurs.
 type ErrorHandler struct {
 	// Error condition this handler applies to.
-	ErrorCode *string `pulumi:"errorCode"`
+	ErrorCode *ErrorHandlerErrorCode `pulumi:"errorCode"`
 	// MIME type of file. Defaults to text/html.
 	MimeType *string `pulumi:"mimeType"`
 	// Static file content to be served for this error.
@@ -4273,7 +4273,7 @@ type ErrorHandlerInput interface {
 // Custom static error page to be served when an error occurs.
 type ErrorHandlerArgs struct {
 	// Error condition this handler applies to.
-	ErrorCode *ErrorHandlerErrorCode `pulumi:"errorCode"`
+	ErrorCode ErrorHandlerErrorCodePtrInput `pulumi:"errorCode"`
 	// MIME type of file. Defaults to text/html.
 	MimeType pulumi.StringPtrInput `pulumi:"mimeType"`
 	// Static file content to be served for this error.
@@ -4333,8 +4333,8 @@ func (o ErrorHandlerOutput) ToErrorHandlerOutputWithContext(ctx context.Context)
 }
 
 // Error condition this handler applies to.
-func (o ErrorHandlerOutput) ErrorCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ErrorHandler) *string { return v.ErrorCode }).(pulumi.StringPtrOutput)
+func (o ErrorHandlerOutput) ErrorCode() ErrorHandlerErrorCodePtrOutput {
+	return o.ApplyT(func(v ErrorHandler) *ErrorHandlerErrorCode { return v.ErrorCode }).(ErrorHandlerErrorCodePtrOutput)
 }
 
 // MIME type of file. Defaults to text/html.
@@ -9121,7 +9121,7 @@ type SslSettings struct {
 	// ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
 	CertificateId *string `pulumi:"certificateId"`
 	// SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
-	SslManagementType *string `pulumi:"sslManagementType"`
+	SslManagementType *SslSettingsSslManagementType `pulumi:"sslManagementType"`
 }
 
 // SslSettingsInput is an input type that accepts SslSettingsArgs and SslSettingsOutput values.
@@ -9140,7 +9140,7 @@ type SslSettingsArgs struct {
 	// ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
 	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
 	// SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
-	SslManagementType *SslSettingsSslManagementType `pulumi:"sslManagementType"`
+	SslManagementType SslSettingsSslManagementTypePtrInput `pulumi:"sslManagementType"`
 }
 
 func (SslSettingsArgs) ElementType() reflect.Type {
@@ -9227,8 +9227,8 @@ func (o SslSettingsOutput) CertificateId() pulumi.StringPtrOutput {
 }
 
 // SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
-func (o SslSettingsOutput) SslManagementType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SslSettings) *string { return v.SslManagementType }).(pulumi.StringPtrOutput)
+func (o SslSettingsOutput) SslManagementType() SslSettingsSslManagementTypePtrOutput {
+	return o.ApplyT(func(v SslSettings) *SslSettingsSslManagementType { return v.SslManagementType }).(SslSettingsSslManagementTypePtrOutput)
 }
 
 type SslSettingsPtrOutput struct{ *pulumi.OutputState }
@@ -9260,13 +9260,13 @@ func (o SslSettingsPtrOutput) CertificateId() pulumi.StringPtrOutput {
 }
 
 // SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this domain.
-func (o SslSettingsPtrOutput) SslManagementType() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *SslSettings) *string {
+func (o SslSettingsPtrOutput) SslManagementType() SslSettingsSslManagementTypePtrOutput {
+	return o.ApplyT(func(v *SslSettings) *SslSettingsSslManagementType {
 		if v == nil {
 			return nil
 		}
 		return v.SslManagementType
-	}).(pulumi.StringPtrOutput)
+	}).(SslSettingsSslManagementTypePtrOutput)
 }
 
 // SSL configuration for a DomainMapping resource.
@@ -10421,15 +10421,15 @@ type UrlMap struct {
 	// Uses API Endpoints to handle requests.
 	ApiEndpoint *ApiEndpointHandler `pulumi:"apiEndpoint"`
 	// Action to take when users access resources that require authentication. Defaults to redirect.
-	AuthFailAction *string `pulumi:"authFailAction"`
+	AuthFailAction *UrlMapAuthFailAction `pulumi:"authFailAction"`
 	// Level of login required to access this resource. Not supported for Node.js in the App Engine standard environment.
-	Login *string `pulumi:"login"`
+	Login *UrlMapLogin `pulumi:"login"`
 	// 30x code to use when performing redirects for the secure field. Defaults to 302.
-	RedirectHttpResponseCode *string `pulumi:"redirectHttpResponseCode"`
+	RedirectHttpResponseCode *UrlMapRedirectHttpResponseCode `pulumi:"redirectHttpResponseCode"`
 	// Executes a script to handle the requests that match this URL pattern. Only the auto value is supported for Node.js in the App Engine standard environment, for example "script": "auto".
 	Script *ScriptHandler `pulumi:"script"`
 	// Security (HTTPS) enforcement for this URL.
-	SecurityLevel *string `pulumi:"securityLevel"`
+	SecurityLevel *UrlMapSecurityLevel `pulumi:"securityLevel"`
 	// Returns the contents of a file, such as an image, as the response.
 	StaticFiles *StaticFilesHandler `pulumi:"staticFiles"`
 	// URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings. All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
@@ -10452,15 +10452,15 @@ type UrlMapArgs struct {
 	// Uses API Endpoints to handle requests.
 	ApiEndpoint ApiEndpointHandlerPtrInput `pulumi:"apiEndpoint"`
 	// Action to take when users access resources that require authentication. Defaults to redirect.
-	AuthFailAction *UrlMapAuthFailAction `pulumi:"authFailAction"`
+	AuthFailAction UrlMapAuthFailActionPtrInput `pulumi:"authFailAction"`
 	// Level of login required to access this resource. Not supported for Node.js in the App Engine standard environment.
-	Login *UrlMapLogin `pulumi:"login"`
+	Login UrlMapLoginPtrInput `pulumi:"login"`
 	// 30x code to use when performing redirects for the secure field. Defaults to 302.
-	RedirectHttpResponseCode *UrlMapRedirectHttpResponseCode `pulumi:"redirectHttpResponseCode"`
+	RedirectHttpResponseCode UrlMapRedirectHttpResponseCodePtrInput `pulumi:"redirectHttpResponseCode"`
 	// Executes a script to handle the requests that match this URL pattern. Only the auto value is supported for Node.js in the App Engine standard environment, for example "script": "auto".
 	Script ScriptHandlerPtrInput `pulumi:"script"`
 	// Security (HTTPS) enforcement for this URL.
-	SecurityLevel *UrlMapSecurityLevel `pulumi:"securityLevel"`
+	SecurityLevel UrlMapSecurityLevelPtrInput `pulumi:"securityLevel"`
 	// Returns the contents of a file, such as an image, as the response.
 	StaticFiles StaticFilesHandlerPtrInput `pulumi:"staticFiles"`
 	// URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings. All URLs that begin with this prefix are handled by this handler, using the portion of the URL after the prefix as part of the file path.
@@ -10525,18 +10525,18 @@ func (o UrlMapOutput) ApiEndpoint() ApiEndpointHandlerPtrOutput {
 }
 
 // Action to take when users access resources that require authentication. Defaults to redirect.
-func (o UrlMapOutput) AuthFailAction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UrlMap) *string { return v.AuthFailAction }).(pulumi.StringPtrOutput)
+func (o UrlMapOutput) AuthFailAction() UrlMapAuthFailActionPtrOutput {
+	return o.ApplyT(func(v UrlMap) *UrlMapAuthFailAction { return v.AuthFailAction }).(UrlMapAuthFailActionPtrOutput)
 }
 
 // Level of login required to access this resource. Not supported for Node.js in the App Engine standard environment.
-func (o UrlMapOutput) Login() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UrlMap) *string { return v.Login }).(pulumi.StringPtrOutput)
+func (o UrlMapOutput) Login() UrlMapLoginPtrOutput {
+	return o.ApplyT(func(v UrlMap) *UrlMapLogin { return v.Login }).(UrlMapLoginPtrOutput)
 }
 
 // 30x code to use when performing redirects for the secure field. Defaults to 302.
-func (o UrlMapOutput) RedirectHttpResponseCode() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UrlMap) *string { return v.RedirectHttpResponseCode }).(pulumi.StringPtrOutput)
+func (o UrlMapOutput) RedirectHttpResponseCode() UrlMapRedirectHttpResponseCodePtrOutput {
+	return o.ApplyT(func(v UrlMap) *UrlMapRedirectHttpResponseCode { return v.RedirectHttpResponseCode }).(UrlMapRedirectHttpResponseCodePtrOutput)
 }
 
 // Executes a script to handle the requests that match this URL pattern. Only the auto value is supported for Node.js in the App Engine standard environment, for example "script": "auto".
@@ -10545,8 +10545,8 @@ func (o UrlMapOutput) Script() ScriptHandlerPtrOutput {
 }
 
 // Security (HTTPS) enforcement for this URL.
-func (o UrlMapOutput) SecurityLevel() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v UrlMap) *string { return v.SecurityLevel }).(pulumi.StringPtrOutput)
+func (o UrlMapOutput) SecurityLevel() UrlMapSecurityLevelPtrOutput {
+	return o.ApplyT(func(v UrlMap) *UrlMapSecurityLevel { return v.SecurityLevel }).(UrlMapSecurityLevelPtrOutput)
 }
 
 // Returns the contents of a file, such as an image, as the response.
@@ -10981,7 +10981,7 @@ func (o VolumeResponseArrayOutput) Index(i pulumi.IntInput) VolumeResponseOutput
 // VPC access connector specification.
 type VpcAccessConnector struct {
 	// The egress setting for the connector, controlling what traffic is diverted through it.
-	EgressSetting *string `pulumi:"egressSetting"`
+	EgressSetting *VpcAccessConnectorEgressSetting `pulumi:"egressSetting"`
 	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name *string `pulumi:"name"`
 }
@@ -11000,7 +11000,7 @@ type VpcAccessConnectorInput interface {
 // VPC access connector specification.
 type VpcAccessConnectorArgs struct {
 	// The egress setting for the connector, controlling what traffic is diverted through it.
-	EgressSetting *VpcAccessConnectorEgressSetting `pulumi:"egressSetting"`
+	EgressSetting VpcAccessConnectorEgressSettingPtrInput `pulumi:"egressSetting"`
 	// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
@@ -11084,8 +11084,8 @@ func (o VpcAccessConnectorOutput) ToVpcAccessConnectorPtrOutputWithContext(ctx c
 }
 
 // The egress setting for the connector, controlling what traffic is diverted through it.
-func (o VpcAccessConnectorOutput) EgressSetting() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v VpcAccessConnector) *string { return v.EgressSetting }).(pulumi.StringPtrOutput)
+func (o VpcAccessConnectorOutput) EgressSetting() VpcAccessConnectorEgressSettingPtrOutput {
+	return o.ApplyT(func(v VpcAccessConnector) *VpcAccessConnectorEgressSetting { return v.EgressSetting }).(VpcAccessConnectorEgressSettingPtrOutput)
 }
 
 // Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
@@ -11112,13 +11112,13 @@ func (o VpcAccessConnectorPtrOutput) Elem() VpcAccessConnectorOutput {
 }
 
 // The egress setting for the connector, controlling what traffic is diverted through it.
-func (o VpcAccessConnectorPtrOutput) EgressSetting() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *VpcAccessConnector) *string {
+func (o VpcAccessConnectorPtrOutput) EgressSetting() VpcAccessConnectorEgressSettingPtrOutput {
+	return o.ApplyT(func(v *VpcAccessConnector) *VpcAccessConnectorEgressSetting {
 		if v == nil {
 			return nil
 		}
 		return v.EgressSetting
-	}).(pulumi.StringPtrOutput)
+	}).(VpcAccessConnectorEgressSettingPtrOutput)
 }
 
 // Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.

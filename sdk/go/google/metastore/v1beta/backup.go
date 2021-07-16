@@ -70,33 +70,9 @@ func GetBackup(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Backup resources.
 type backupState struct {
-	// The time when the backup was started.
-	CreateTime *string `pulumi:"createTime"`
-	// The description of the backup.
-	Description *string `pulumi:"description"`
-	// The time when the backup finished creating.
-	EndTime *string `pulumi:"endTime"`
-	// Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
-	Name *string `pulumi:"name"`
-	// The revision of the service at the time of backup.
-	ServiceRevision *ServiceResponse `pulumi:"serviceRevision"`
-	// The current state of the backup.
-	State *string `pulumi:"state"`
 }
 
 type BackupState struct {
-	// The time when the backup was started.
-	CreateTime pulumi.StringPtrInput
-	// The description of the backup.
-	Description pulumi.StringPtrInput
-	// The time when the backup finished creating.
-	EndTime pulumi.StringPtrInput
-	// Immutable. The relative resource name of the backup, in the following form:projects/{project_number}/locations/{location_id}/services/{service_id}/backups/{backup_id}
-	Name pulumi.StringPtrInput
-	// The revision of the service at the time of backup.
-	ServiceRevision ServiceResponsePtrInput
-	// The current state of the backup.
-	State pulumi.StringPtrInput
 }
 
 func (BackupState) ElementType() reflect.Type {

@@ -11,7 +11,7 @@ import (
 )
 
 // The log type that this config enables.
-type AuditLogConfigLogType pulumi.String
+type AuditLogConfigLogType string
 
 const (
 	// Default case. Should never be this.
@@ -25,7 +25,23 @@ const (
 )
 
 func (AuditLogConfigLogType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*AuditLogConfigLogType)(nil)).Elem()
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput {
+	return pulumi.ToOutput(e).(AuditLogConfigLogTypeOutput)
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypeOutputWithContext(ctx context.Context) AuditLogConfigLogTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AuditLogConfigLogTypeOutput)
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return e.ToAuditLogConfigLogTypePtrOutputWithContext(context.Background())
+}
+
+func (e AuditLogConfigLogType) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return AuditLogConfigLogType(e).ToAuditLogConfigLogTypeOutputWithContext(ctx).ToAuditLogConfigLogTypePtrOutputWithContext(ctx)
 }
 
 func (e AuditLogConfigLogType) ToStringOutput() pulumi.StringOutput {
@@ -44,8 +60,129 @@ func (e AuditLogConfigLogType) ToStringPtrOutputWithContext(ctx context.Context)
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type AuditLogConfigLogTypeOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigLogTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AuditLogConfigLogType)(nil)).Elem()
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypeOutputWithContext(ctx context.Context) AuditLogConfigLogTypeOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return o.ToAuditLogConfigLogTypePtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AuditLogConfigLogType) *AuditLogConfigLogType {
+		return &v
+	}).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuditLogConfigLogType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AuditLogConfigLogType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AuditLogConfigLogTypePtrOutput struct{ *pulumi.OutputState }
+
+func (AuditLogConfigLogTypePtrOutput) ElementType() reflect.Type {
+	return auditLogConfigLogTypePtrType
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return o
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AuditLogConfigLogType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AuditLogConfigLogTypePtrOutput) Elem() AuditLogConfigLogTypeOutput {
+	return o.ApplyT(func(v *AuditLogConfigLogType) AuditLogConfigLogType {
+		var ret AuditLogConfigLogType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(AuditLogConfigLogTypeOutput)
+}
+
+// AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
+// You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
+//
+//          AuditLogConfigLogTypeArgs{...}
+type AuditLogConfigLogTypeInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigLogTypeOutput() AuditLogConfigLogTypeOutput
+	ToAuditLogConfigLogTypeOutputWithContext(context.Context) AuditLogConfigLogTypeOutput
+}
+
+var auditLogConfigLogTypePtrType = reflect.TypeOf((**AuditLogConfigLogType)(nil)).Elem()
+
+type AuditLogConfigLogTypePtrInput interface {
+	pulumi.Input
+
+	ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput
+	ToAuditLogConfigLogTypePtrOutputWithContext(context.Context) AuditLogConfigLogTypePtrOutput
+}
+
+type auditLogConfigLogTypePtr string
+
+func AuditLogConfigLogTypePtr(v string) AuditLogConfigLogTypePtrInput {
+	return (*auditLogConfigLogTypePtr)(&v)
+}
+
+func (*auditLogConfigLogTypePtr) ElementType() reflect.Type {
+	return auditLogConfigLogTypePtrType
+}
+
+func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutput() AuditLogConfigLogTypePtrOutput {
+	return pulumi.ToOutput(in).(AuditLogConfigLogTypePtrOutput)
+}
+
+func (in *auditLogConfigLogTypePtr) ToAuditLogConfigLogTypePtrOutputWithContext(ctx context.Context) AuditLogConfigLogTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AuditLogConfigLogTypePtrOutput)
+}
+
 // The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
-type CloudSqlSettingsActivationPolicy pulumi.String
+type CloudSqlSettingsActivationPolicy string
 
 const (
 	// unspecified policy.
@@ -57,7 +194,23 @@ const (
 )
 
 func (CloudSqlSettingsActivationPolicy) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*CloudSqlSettingsActivationPolicy)(nil)).Elem()
+}
+
+func (e CloudSqlSettingsActivationPolicy) ToCloudSqlSettingsActivationPolicyOutput() CloudSqlSettingsActivationPolicyOutput {
+	return pulumi.ToOutput(e).(CloudSqlSettingsActivationPolicyOutput)
+}
+
+func (e CloudSqlSettingsActivationPolicy) ToCloudSqlSettingsActivationPolicyOutputWithContext(ctx context.Context) CloudSqlSettingsActivationPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CloudSqlSettingsActivationPolicyOutput)
+}
+
+func (e CloudSqlSettingsActivationPolicy) ToCloudSqlSettingsActivationPolicyPtrOutput() CloudSqlSettingsActivationPolicyPtrOutput {
+	return e.ToCloudSqlSettingsActivationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (e CloudSqlSettingsActivationPolicy) ToCloudSqlSettingsActivationPolicyPtrOutputWithContext(ctx context.Context) CloudSqlSettingsActivationPolicyPtrOutput {
+	return CloudSqlSettingsActivationPolicy(e).ToCloudSqlSettingsActivationPolicyOutputWithContext(ctx).ToCloudSqlSettingsActivationPolicyPtrOutputWithContext(ctx)
 }
 
 func (e CloudSqlSettingsActivationPolicy) ToStringOutput() pulumi.StringOutput {
@@ -76,8 +229,129 @@ func (e CloudSqlSettingsActivationPolicy) ToStringPtrOutputWithContext(ctx conte
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type CloudSqlSettingsActivationPolicyOutput struct{ *pulumi.OutputState }
+
+func (CloudSqlSettingsActivationPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudSqlSettingsActivationPolicy)(nil)).Elem()
+}
+
+func (o CloudSqlSettingsActivationPolicyOutput) ToCloudSqlSettingsActivationPolicyOutput() CloudSqlSettingsActivationPolicyOutput {
+	return o
+}
+
+func (o CloudSqlSettingsActivationPolicyOutput) ToCloudSqlSettingsActivationPolicyOutputWithContext(ctx context.Context) CloudSqlSettingsActivationPolicyOutput {
+	return o
+}
+
+func (o CloudSqlSettingsActivationPolicyOutput) ToCloudSqlSettingsActivationPolicyPtrOutput() CloudSqlSettingsActivationPolicyPtrOutput {
+	return o.ToCloudSqlSettingsActivationPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o CloudSqlSettingsActivationPolicyOutput) ToCloudSqlSettingsActivationPolicyPtrOutputWithContext(ctx context.Context) CloudSqlSettingsActivationPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudSqlSettingsActivationPolicy) *CloudSqlSettingsActivationPolicy {
+		return &v
+	}).(CloudSqlSettingsActivationPolicyPtrOutput)
+}
+
+func (o CloudSqlSettingsActivationPolicyOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CloudSqlSettingsActivationPolicyOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CloudSqlSettingsActivationPolicy) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CloudSqlSettingsActivationPolicyOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CloudSqlSettingsActivationPolicyOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CloudSqlSettingsActivationPolicy) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudSqlSettingsActivationPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudSqlSettingsActivationPolicyPtrOutput) ElementType() reflect.Type {
+	return cloudSqlSettingsActivationPolicyPtrType
+}
+
+func (o CloudSqlSettingsActivationPolicyPtrOutput) ToCloudSqlSettingsActivationPolicyPtrOutput() CloudSqlSettingsActivationPolicyPtrOutput {
+	return o
+}
+
+func (o CloudSqlSettingsActivationPolicyPtrOutput) ToCloudSqlSettingsActivationPolicyPtrOutputWithContext(ctx context.Context) CloudSqlSettingsActivationPolicyPtrOutput {
+	return o
+}
+
+func (o CloudSqlSettingsActivationPolicyPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CloudSqlSettingsActivationPolicyPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CloudSqlSettingsActivationPolicy) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudSqlSettingsActivationPolicyPtrOutput) Elem() CloudSqlSettingsActivationPolicyOutput {
+	return o.ApplyT(func(v *CloudSqlSettingsActivationPolicy) CloudSqlSettingsActivationPolicy {
+		var ret CloudSqlSettingsActivationPolicy
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(CloudSqlSettingsActivationPolicyOutput)
+}
+
+// CloudSqlSettingsActivationPolicyInput is an input type that accepts CloudSqlSettingsActivationPolicyArgs and CloudSqlSettingsActivationPolicyOutput values.
+// You can construct a concrete instance of `CloudSqlSettingsActivationPolicyInput` via:
+//
+//          CloudSqlSettingsActivationPolicyArgs{...}
+type CloudSqlSettingsActivationPolicyInput interface {
+	pulumi.Input
+
+	ToCloudSqlSettingsActivationPolicyOutput() CloudSqlSettingsActivationPolicyOutput
+	ToCloudSqlSettingsActivationPolicyOutputWithContext(context.Context) CloudSqlSettingsActivationPolicyOutput
+}
+
+var cloudSqlSettingsActivationPolicyPtrType = reflect.TypeOf((**CloudSqlSettingsActivationPolicy)(nil)).Elem()
+
+type CloudSqlSettingsActivationPolicyPtrInput interface {
+	pulumi.Input
+
+	ToCloudSqlSettingsActivationPolicyPtrOutput() CloudSqlSettingsActivationPolicyPtrOutput
+	ToCloudSqlSettingsActivationPolicyPtrOutputWithContext(context.Context) CloudSqlSettingsActivationPolicyPtrOutput
+}
+
+type cloudSqlSettingsActivationPolicyPtr string
+
+func CloudSqlSettingsActivationPolicyPtr(v string) CloudSqlSettingsActivationPolicyPtrInput {
+	return (*cloudSqlSettingsActivationPolicyPtr)(&v)
+}
+
+func (*cloudSqlSettingsActivationPolicyPtr) ElementType() reflect.Type {
+	return cloudSqlSettingsActivationPolicyPtrType
+}
+
+func (in *cloudSqlSettingsActivationPolicyPtr) ToCloudSqlSettingsActivationPolicyPtrOutput() CloudSqlSettingsActivationPolicyPtrOutput {
+	return pulumi.ToOutput(in).(CloudSqlSettingsActivationPolicyPtrOutput)
+}
+
+func (in *cloudSqlSettingsActivationPolicyPtr) ToCloudSqlSettingsActivationPolicyPtrOutputWithContext(ctx context.Context) CloudSqlSettingsActivationPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CloudSqlSettingsActivationPolicyPtrOutput)
+}
+
 // The type of storage: `PD_SSD` (default) or `PD_HDD`.
-type CloudSqlSettingsDataDiskType pulumi.String
+type CloudSqlSettingsDataDiskType string
 
 const (
 	// Unspecified.
@@ -89,7 +363,23 @@ const (
 )
 
 func (CloudSqlSettingsDataDiskType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*CloudSqlSettingsDataDiskType)(nil)).Elem()
+}
+
+func (e CloudSqlSettingsDataDiskType) ToCloudSqlSettingsDataDiskTypeOutput() CloudSqlSettingsDataDiskTypeOutput {
+	return pulumi.ToOutput(e).(CloudSqlSettingsDataDiskTypeOutput)
+}
+
+func (e CloudSqlSettingsDataDiskType) ToCloudSqlSettingsDataDiskTypeOutputWithContext(ctx context.Context) CloudSqlSettingsDataDiskTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CloudSqlSettingsDataDiskTypeOutput)
+}
+
+func (e CloudSqlSettingsDataDiskType) ToCloudSqlSettingsDataDiskTypePtrOutput() CloudSqlSettingsDataDiskTypePtrOutput {
+	return e.ToCloudSqlSettingsDataDiskTypePtrOutputWithContext(context.Background())
+}
+
+func (e CloudSqlSettingsDataDiskType) ToCloudSqlSettingsDataDiskTypePtrOutputWithContext(ctx context.Context) CloudSqlSettingsDataDiskTypePtrOutput {
+	return CloudSqlSettingsDataDiskType(e).ToCloudSqlSettingsDataDiskTypeOutputWithContext(ctx).ToCloudSqlSettingsDataDiskTypePtrOutputWithContext(ctx)
 }
 
 func (e CloudSqlSettingsDataDiskType) ToStringOutput() pulumi.StringOutput {
@@ -108,8 +398,129 @@ func (e CloudSqlSettingsDataDiskType) ToStringPtrOutputWithContext(ctx context.C
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type CloudSqlSettingsDataDiskTypeOutput struct{ *pulumi.OutputState }
+
+func (CloudSqlSettingsDataDiskTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudSqlSettingsDataDiskType)(nil)).Elem()
+}
+
+func (o CloudSqlSettingsDataDiskTypeOutput) ToCloudSqlSettingsDataDiskTypeOutput() CloudSqlSettingsDataDiskTypeOutput {
+	return o
+}
+
+func (o CloudSqlSettingsDataDiskTypeOutput) ToCloudSqlSettingsDataDiskTypeOutputWithContext(ctx context.Context) CloudSqlSettingsDataDiskTypeOutput {
+	return o
+}
+
+func (o CloudSqlSettingsDataDiskTypeOutput) ToCloudSqlSettingsDataDiskTypePtrOutput() CloudSqlSettingsDataDiskTypePtrOutput {
+	return o.ToCloudSqlSettingsDataDiskTypePtrOutputWithContext(context.Background())
+}
+
+func (o CloudSqlSettingsDataDiskTypeOutput) ToCloudSqlSettingsDataDiskTypePtrOutputWithContext(ctx context.Context) CloudSqlSettingsDataDiskTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudSqlSettingsDataDiskType) *CloudSqlSettingsDataDiskType {
+		return &v
+	}).(CloudSqlSettingsDataDiskTypePtrOutput)
+}
+
+func (o CloudSqlSettingsDataDiskTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CloudSqlSettingsDataDiskTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CloudSqlSettingsDataDiskType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CloudSqlSettingsDataDiskTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CloudSqlSettingsDataDiskTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CloudSqlSettingsDataDiskType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudSqlSettingsDataDiskTypePtrOutput struct{ *pulumi.OutputState }
+
+func (CloudSqlSettingsDataDiskTypePtrOutput) ElementType() reflect.Type {
+	return cloudSqlSettingsDataDiskTypePtrType
+}
+
+func (o CloudSqlSettingsDataDiskTypePtrOutput) ToCloudSqlSettingsDataDiskTypePtrOutput() CloudSqlSettingsDataDiskTypePtrOutput {
+	return o
+}
+
+func (o CloudSqlSettingsDataDiskTypePtrOutput) ToCloudSqlSettingsDataDiskTypePtrOutputWithContext(ctx context.Context) CloudSqlSettingsDataDiskTypePtrOutput {
+	return o
+}
+
+func (o CloudSqlSettingsDataDiskTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CloudSqlSettingsDataDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CloudSqlSettingsDataDiskType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudSqlSettingsDataDiskTypePtrOutput) Elem() CloudSqlSettingsDataDiskTypeOutput {
+	return o.ApplyT(func(v *CloudSqlSettingsDataDiskType) CloudSqlSettingsDataDiskType {
+		var ret CloudSqlSettingsDataDiskType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(CloudSqlSettingsDataDiskTypeOutput)
+}
+
+// CloudSqlSettingsDataDiskTypeInput is an input type that accepts CloudSqlSettingsDataDiskTypeArgs and CloudSqlSettingsDataDiskTypeOutput values.
+// You can construct a concrete instance of `CloudSqlSettingsDataDiskTypeInput` via:
+//
+//          CloudSqlSettingsDataDiskTypeArgs{...}
+type CloudSqlSettingsDataDiskTypeInput interface {
+	pulumi.Input
+
+	ToCloudSqlSettingsDataDiskTypeOutput() CloudSqlSettingsDataDiskTypeOutput
+	ToCloudSqlSettingsDataDiskTypeOutputWithContext(context.Context) CloudSqlSettingsDataDiskTypeOutput
+}
+
+var cloudSqlSettingsDataDiskTypePtrType = reflect.TypeOf((**CloudSqlSettingsDataDiskType)(nil)).Elem()
+
+type CloudSqlSettingsDataDiskTypePtrInput interface {
+	pulumi.Input
+
+	ToCloudSqlSettingsDataDiskTypePtrOutput() CloudSqlSettingsDataDiskTypePtrOutput
+	ToCloudSqlSettingsDataDiskTypePtrOutputWithContext(context.Context) CloudSqlSettingsDataDiskTypePtrOutput
+}
+
+type cloudSqlSettingsDataDiskTypePtr string
+
+func CloudSqlSettingsDataDiskTypePtr(v string) CloudSqlSettingsDataDiskTypePtrInput {
+	return (*cloudSqlSettingsDataDiskTypePtr)(&v)
+}
+
+func (*cloudSqlSettingsDataDiskTypePtr) ElementType() reflect.Type {
+	return cloudSqlSettingsDataDiskTypePtrType
+}
+
+func (in *cloudSqlSettingsDataDiskTypePtr) ToCloudSqlSettingsDataDiskTypePtrOutput() CloudSqlSettingsDataDiskTypePtrOutput {
+	return pulumi.ToOutput(in).(CloudSqlSettingsDataDiskTypePtrOutput)
+}
+
+func (in *cloudSqlSettingsDataDiskTypePtr) ToCloudSqlSettingsDataDiskTypePtrOutputWithContext(ctx context.Context) CloudSqlSettingsDataDiskTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CloudSqlSettingsDataDiskTypePtrOutput)
+}
+
 // The database engine type and version.
-type CloudSqlSettingsDatabaseVersion pulumi.String
+type CloudSqlSettingsDatabaseVersion string
 
 const (
 	// Unspecified version.
@@ -133,7 +544,23 @@ const (
 )
 
 func (CloudSqlSettingsDatabaseVersion) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*CloudSqlSettingsDatabaseVersion)(nil)).Elem()
+}
+
+func (e CloudSqlSettingsDatabaseVersion) ToCloudSqlSettingsDatabaseVersionOutput() CloudSqlSettingsDatabaseVersionOutput {
+	return pulumi.ToOutput(e).(CloudSqlSettingsDatabaseVersionOutput)
+}
+
+func (e CloudSqlSettingsDatabaseVersion) ToCloudSqlSettingsDatabaseVersionOutputWithContext(ctx context.Context) CloudSqlSettingsDatabaseVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CloudSqlSettingsDatabaseVersionOutput)
+}
+
+func (e CloudSqlSettingsDatabaseVersion) ToCloudSqlSettingsDatabaseVersionPtrOutput() CloudSqlSettingsDatabaseVersionPtrOutput {
+	return e.ToCloudSqlSettingsDatabaseVersionPtrOutputWithContext(context.Background())
+}
+
+func (e CloudSqlSettingsDatabaseVersion) ToCloudSqlSettingsDatabaseVersionPtrOutputWithContext(ctx context.Context) CloudSqlSettingsDatabaseVersionPtrOutput {
+	return CloudSqlSettingsDatabaseVersion(e).ToCloudSqlSettingsDatabaseVersionOutputWithContext(ctx).ToCloudSqlSettingsDatabaseVersionPtrOutputWithContext(ctx)
 }
 
 func (e CloudSqlSettingsDatabaseVersion) ToStringOutput() pulumi.StringOutput {
@@ -152,8 +579,129 @@ func (e CloudSqlSettingsDatabaseVersion) ToStringPtrOutputWithContext(ctx contex
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type CloudSqlSettingsDatabaseVersionOutput struct{ *pulumi.OutputState }
+
+func (CloudSqlSettingsDatabaseVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudSqlSettingsDatabaseVersion)(nil)).Elem()
+}
+
+func (o CloudSqlSettingsDatabaseVersionOutput) ToCloudSqlSettingsDatabaseVersionOutput() CloudSqlSettingsDatabaseVersionOutput {
+	return o
+}
+
+func (o CloudSqlSettingsDatabaseVersionOutput) ToCloudSqlSettingsDatabaseVersionOutputWithContext(ctx context.Context) CloudSqlSettingsDatabaseVersionOutput {
+	return o
+}
+
+func (o CloudSqlSettingsDatabaseVersionOutput) ToCloudSqlSettingsDatabaseVersionPtrOutput() CloudSqlSettingsDatabaseVersionPtrOutput {
+	return o.ToCloudSqlSettingsDatabaseVersionPtrOutputWithContext(context.Background())
+}
+
+func (o CloudSqlSettingsDatabaseVersionOutput) ToCloudSqlSettingsDatabaseVersionPtrOutputWithContext(ctx context.Context) CloudSqlSettingsDatabaseVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudSqlSettingsDatabaseVersion) *CloudSqlSettingsDatabaseVersion {
+		return &v
+	}).(CloudSqlSettingsDatabaseVersionPtrOutput)
+}
+
+func (o CloudSqlSettingsDatabaseVersionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CloudSqlSettingsDatabaseVersionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CloudSqlSettingsDatabaseVersion) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CloudSqlSettingsDatabaseVersionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CloudSqlSettingsDatabaseVersionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CloudSqlSettingsDatabaseVersion) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CloudSqlSettingsDatabaseVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudSqlSettingsDatabaseVersionPtrOutput) ElementType() reflect.Type {
+	return cloudSqlSettingsDatabaseVersionPtrType
+}
+
+func (o CloudSqlSettingsDatabaseVersionPtrOutput) ToCloudSqlSettingsDatabaseVersionPtrOutput() CloudSqlSettingsDatabaseVersionPtrOutput {
+	return o
+}
+
+func (o CloudSqlSettingsDatabaseVersionPtrOutput) ToCloudSqlSettingsDatabaseVersionPtrOutputWithContext(ctx context.Context) CloudSqlSettingsDatabaseVersionPtrOutput {
+	return o
+}
+
+func (o CloudSqlSettingsDatabaseVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CloudSqlSettingsDatabaseVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CloudSqlSettingsDatabaseVersion) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CloudSqlSettingsDatabaseVersionPtrOutput) Elem() CloudSqlSettingsDatabaseVersionOutput {
+	return o.ApplyT(func(v *CloudSqlSettingsDatabaseVersion) CloudSqlSettingsDatabaseVersion {
+		var ret CloudSqlSettingsDatabaseVersion
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(CloudSqlSettingsDatabaseVersionOutput)
+}
+
+// CloudSqlSettingsDatabaseVersionInput is an input type that accepts CloudSqlSettingsDatabaseVersionArgs and CloudSqlSettingsDatabaseVersionOutput values.
+// You can construct a concrete instance of `CloudSqlSettingsDatabaseVersionInput` via:
+//
+//          CloudSqlSettingsDatabaseVersionArgs{...}
+type CloudSqlSettingsDatabaseVersionInput interface {
+	pulumi.Input
+
+	ToCloudSqlSettingsDatabaseVersionOutput() CloudSqlSettingsDatabaseVersionOutput
+	ToCloudSqlSettingsDatabaseVersionOutputWithContext(context.Context) CloudSqlSettingsDatabaseVersionOutput
+}
+
+var cloudSqlSettingsDatabaseVersionPtrType = reflect.TypeOf((**CloudSqlSettingsDatabaseVersion)(nil)).Elem()
+
+type CloudSqlSettingsDatabaseVersionPtrInput interface {
+	pulumi.Input
+
+	ToCloudSqlSettingsDatabaseVersionPtrOutput() CloudSqlSettingsDatabaseVersionPtrOutput
+	ToCloudSqlSettingsDatabaseVersionPtrOutputWithContext(context.Context) CloudSqlSettingsDatabaseVersionPtrOutput
+}
+
+type cloudSqlSettingsDatabaseVersionPtr string
+
+func CloudSqlSettingsDatabaseVersionPtr(v string) CloudSqlSettingsDatabaseVersionPtrInput {
+	return (*cloudSqlSettingsDatabaseVersionPtr)(&v)
+}
+
+func (*cloudSqlSettingsDatabaseVersionPtr) ElementType() reflect.Type {
+	return cloudSqlSettingsDatabaseVersionPtrType
+}
+
+func (in *cloudSqlSettingsDatabaseVersionPtr) ToCloudSqlSettingsDatabaseVersionPtrOutput() CloudSqlSettingsDatabaseVersionPtrOutput {
+	return pulumi.ToOutput(in).(CloudSqlSettingsDatabaseVersionPtrOutput)
+}
+
+func (in *cloudSqlSettingsDatabaseVersionPtr) ToCloudSqlSettingsDatabaseVersionPtrOutputWithContext(ctx context.Context) CloudSqlSettingsDatabaseVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CloudSqlSettingsDatabaseVersionPtrOutput)
+}
+
 // The database provider.
-type ConnectionProfileProvider pulumi.String
+type ConnectionProfileProvider string
 
 const (
 	// The database provider is unknown.
@@ -165,7 +713,23 @@ const (
 )
 
 func (ConnectionProfileProvider) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*ConnectionProfileProvider)(nil)).Elem()
+}
+
+func (e ConnectionProfileProvider) ToConnectionProfileProviderOutput() ConnectionProfileProviderOutput {
+	return pulumi.ToOutput(e).(ConnectionProfileProviderOutput)
+}
+
+func (e ConnectionProfileProvider) ToConnectionProfileProviderOutputWithContext(ctx context.Context) ConnectionProfileProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ConnectionProfileProviderOutput)
+}
+
+func (e ConnectionProfileProvider) ToConnectionProfileProviderPtrOutput() ConnectionProfileProviderPtrOutput {
+	return e.ToConnectionProfileProviderPtrOutputWithContext(context.Background())
+}
+
+func (e ConnectionProfileProvider) ToConnectionProfileProviderPtrOutputWithContext(ctx context.Context) ConnectionProfileProviderPtrOutput {
+	return ConnectionProfileProvider(e).ToConnectionProfileProviderOutputWithContext(ctx).ToConnectionProfileProviderPtrOutputWithContext(ctx)
 }
 
 func (e ConnectionProfileProvider) ToStringOutput() pulumi.StringOutput {
@@ -184,8 +748,129 @@ func (e ConnectionProfileProvider) ToStringPtrOutputWithContext(ctx context.Cont
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type ConnectionProfileProviderOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileProvider)(nil)).Elem()
+}
+
+func (o ConnectionProfileProviderOutput) ToConnectionProfileProviderOutput() ConnectionProfileProviderOutput {
+	return o
+}
+
+func (o ConnectionProfileProviderOutput) ToConnectionProfileProviderOutputWithContext(ctx context.Context) ConnectionProfileProviderOutput {
+	return o
+}
+
+func (o ConnectionProfileProviderOutput) ToConnectionProfileProviderPtrOutput() ConnectionProfileProviderPtrOutput {
+	return o.ToConnectionProfileProviderPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileProviderOutput) ToConnectionProfileProviderPtrOutputWithContext(ctx context.Context) ConnectionProfileProviderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileProvider) *ConnectionProfileProvider {
+		return &v
+	}).(ConnectionProfileProviderPtrOutput)
+}
+
+func (o ConnectionProfileProviderOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileProviderOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConnectionProfileProvider) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ConnectionProfileProviderOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileProviderOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConnectionProfileProvider) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionProfileProviderPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileProviderPtrOutput) ElementType() reflect.Type {
+	return connectionProfileProviderPtrType
+}
+
+func (o ConnectionProfileProviderPtrOutput) ToConnectionProfileProviderPtrOutput() ConnectionProfileProviderPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileProviderPtrOutput) ToConnectionProfileProviderPtrOutputWithContext(ctx context.Context) ConnectionProfileProviderPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileProviderPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileProviderPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ConnectionProfileProvider) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionProfileProviderPtrOutput) Elem() ConnectionProfileProviderOutput {
+	return o.ApplyT(func(v *ConnectionProfileProvider) ConnectionProfileProvider {
+		var ret ConnectionProfileProvider
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ConnectionProfileProviderOutput)
+}
+
+// ConnectionProfileProviderInput is an input type that accepts ConnectionProfileProviderArgs and ConnectionProfileProviderOutput values.
+// You can construct a concrete instance of `ConnectionProfileProviderInput` via:
+//
+//          ConnectionProfileProviderArgs{...}
+type ConnectionProfileProviderInput interface {
+	pulumi.Input
+
+	ToConnectionProfileProviderOutput() ConnectionProfileProviderOutput
+	ToConnectionProfileProviderOutputWithContext(context.Context) ConnectionProfileProviderOutput
+}
+
+var connectionProfileProviderPtrType = reflect.TypeOf((**ConnectionProfileProvider)(nil)).Elem()
+
+type ConnectionProfileProviderPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileProviderPtrOutput() ConnectionProfileProviderPtrOutput
+	ToConnectionProfileProviderPtrOutputWithContext(context.Context) ConnectionProfileProviderPtrOutput
+}
+
+type connectionProfileProviderPtr string
+
+func ConnectionProfileProviderPtr(v string) ConnectionProfileProviderPtrInput {
+	return (*connectionProfileProviderPtr)(&v)
+}
+
+func (*connectionProfileProviderPtr) ElementType() reflect.Type {
+	return connectionProfileProviderPtrType
+}
+
+func (in *connectionProfileProviderPtr) ToConnectionProfileProviderPtrOutput() ConnectionProfileProviderPtrOutput {
+	return pulumi.ToOutput(in).(ConnectionProfileProviderPtrOutput)
+}
+
+func (in *connectionProfileProviderPtr) ToConnectionProfileProviderPtrOutputWithContext(ctx context.Context) ConnectionProfileProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ConnectionProfileProviderPtrOutput)
+}
+
 // The current connection profile state (e.g. DRAFT, READY, or FAILED).
-type ConnectionProfileStateEnum pulumi.String
+type ConnectionProfileStateEnum string
 
 const (
 	// The state of the connection profile is unknown.
@@ -207,7 +892,23 @@ const (
 )
 
 func (ConnectionProfileStateEnum) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*ConnectionProfileStateEnum)(nil)).Elem()
+}
+
+func (e ConnectionProfileStateEnum) ToConnectionProfileStateEnumOutput() ConnectionProfileStateEnumOutput {
+	return pulumi.ToOutput(e).(ConnectionProfileStateEnumOutput)
+}
+
+func (e ConnectionProfileStateEnum) ToConnectionProfileStateEnumOutputWithContext(ctx context.Context) ConnectionProfileStateEnumOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ConnectionProfileStateEnumOutput)
+}
+
+func (e ConnectionProfileStateEnum) ToConnectionProfileStateEnumPtrOutput() ConnectionProfileStateEnumPtrOutput {
+	return e.ToConnectionProfileStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (e ConnectionProfileStateEnum) ToConnectionProfileStateEnumPtrOutputWithContext(ctx context.Context) ConnectionProfileStateEnumPtrOutput {
+	return ConnectionProfileStateEnum(e).ToConnectionProfileStateEnumOutputWithContext(ctx).ToConnectionProfileStateEnumPtrOutputWithContext(ctx)
 }
 
 func (e ConnectionProfileStateEnum) ToStringOutput() pulumi.StringOutput {
@@ -226,8 +927,129 @@ func (e ConnectionProfileStateEnum) ToStringPtrOutputWithContext(ctx context.Con
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type ConnectionProfileStateEnumOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStateEnumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ConnectionProfileStateEnum)(nil)).Elem()
+}
+
+func (o ConnectionProfileStateEnumOutput) ToConnectionProfileStateEnumOutput() ConnectionProfileStateEnumOutput {
+	return o
+}
+
+func (o ConnectionProfileStateEnumOutput) ToConnectionProfileStateEnumOutputWithContext(ctx context.Context) ConnectionProfileStateEnumOutput {
+	return o
+}
+
+func (o ConnectionProfileStateEnumOutput) ToConnectionProfileStateEnumPtrOutput() ConnectionProfileStateEnumPtrOutput {
+	return o.ToConnectionProfileStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileStateEnumOutput) ToConnectionProfileStateEnumPtrOutputWithContext(ctx context.Context) ConnectionProfileStateEnumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ConnectionProfileStateEnum) *ConnectionProfileStateEnum {
+		return &v
+	}).(ConnectionProfileStateEnumPtrOutput)
+}
+
+func (o ConnectionProfileStateEnumOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileStateEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConnectionProfileStateEnum) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ConnectionProfileStateEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ConnectionProfileStateEnum) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ConnectionProfileStateEnumPtrOutput struct{ *pulumi.OutputState }
+
+func (ConnectionProfileStateEnumPtrOutput) ElementType() reflect.Type {
+	return connectionProfileStateEnumPtrType
+}
+
+func (o ConnectionProfileStateEnumPtrOutput) ToConnectionProfileStateEnumPtrOutput() ConnectionProfileStateEnumPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStateEnumPtrOutput) ToConnectionProfileStateEnumPtrOutputWithContext(ctx context.Context) ConnectionProfileStateEnumPtrOutput {
+	return o
+}
+
+func (o ConnectionProfileStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ConnectionProfileStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ConnectionProfileStateEnum) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ConnectionProfileStateEnumPtrOutput) Elem() ConnectionProfileStateEnumOutput {
+	return o.ApplyT(func(v *ConnectionProfileStateEnum) ConnectionProfileStateEnum {
+		var ret ConnectionProfileStateEnum
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ConnectionProfileStateEnumOutput)
+}
+
+// ConnectionProfileStateEnumInput is an input type that accepts ConnectionProfileStateEnumArgs and ConnectionProfileStateEnumOutput values.
+// You can construct a concrete instance of `ConnectionProfileStateEnumInput` via:
+//
+//          ConnectionProfileStateEnumArgs{...}
+type ConnectionProfileStateEnumInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStateEnumOutput() ConnectionProfileStateEnumOutput
+	ToConnectionProfileStateEnumOutputWithContext(context.Context) ConnectionProfileStateEnumOutput
+}
+
+var connectionProfileStateEnumPtrType = reflect.TypeOf((**ConnectionProfileStateEnum)(nil)).Elem()
+
+type ConnectionProfileStateEnumPtrInput interface {
+	pulumi.Input
+
+	ToConnectionProfileStateEnumPtrOutput() ConnectionProfileStateEnumPtrOutput
+	ToConnectionProfileStateEnumPtrOutputWithContext(context.Context) ConnectionProfileStateEnumPtrOutput
+}
+
+type connectionProfileStateEnumPtr string
+
+func ConnectionProfileStateEnumPtr(v string) ConnectionProfileStateEnumPtrInput {
+	return (*connectionProfileStateEnumPtr)(&v)
+}
+
+func (*connectionProfileStateEnumPtr) ElementType() reflect.Type {
+	return connectionProfileStateEnumPtrType
+}
+
+func (in *connectionProfileStateEnumPtr) ToConnectionProfileStateEnumPtrOutput() ConnectionProfileStateEnumPtrOutput {
+	return pulumi.ToOutput(in).(ConnectionProfileStateEnumPtrOutput)
+}
+
+func (in *connectionProfileStateEnumPtr) ToConnectionProfileStateEnumPtrOutputWithContext(ctx context.Context) ConnectionProfileStateEnumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ConnectionProfileStateEnumPtrOutput)
+}
+
 // The database engine.
-type DatabaseTypeEngine pulumi.String
+type DatabaseTypeEngine string
 
 const (
 	// The source database engine of the migration job is unknown.
@@ -239,7 +1061,23 @@ const (
 )
 
 func (DatabaseTypeEngine) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*DatabaseTypeEngine)(nil)).Elem()
+}
+
+func (e DatabaseTypeEngine) ToDatabaseTypeEngineOutput() DatabaseTypeEngineOutput {
+	return pulumi.ToOutput(e).(DatabaseTypeEngineOutput)
+}
+
+func (e DatabaseTypeEngine) ToDatabaseTypeEngineOutputWithContext(ctx context.Context) DatabaseTypeEngineOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DatabaseTypeEngineOutput)
+}
+
+func (e DatabaseTypeEngine) ToDatabaseTypeEnginePtrOutput() DatabaseTypeEnginePtrOutput {
+	return e.ToDatabaseTypeEnginePtrOutputWithContext(context.Background())
+}
+
+func (e DatabaseTypeEngine) ToDatabaseTypeEnginePtrOutputWithContext(ctx context.Context) DatabaseTypeEnginePtrOutput {
+	return DatabaseTypeEngine(e).ToDatabaseTypeEngineOutputWithContext(ctx).ToDatabaseTypeEnginePtrOutputWithContext(ctx)
 }
 
 func (e DatabaseTypeEngine) ToStringOutput() pulumi.StringOutput {
@@ -258,8 +1096,129 @@ func (e DatabaseTypeEngine) ToStringPtrOutputWithContext(ctx context.Context) pu
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type DatabaseTypeEngineOutput struct{ *pulumi.OutputState }
+
+func (DatabaseTypeEngineOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseTypeEngine)(nil)).Elem()
+}
+
+func (o DatabaseTypeEngineOutput) ToDatabaseTypeEngineOutput() DatabaseTypeEngineOutput {
+	return o
+}
+
+func (o DatabaseTypeEngineOutput) ToDatabaseTypeEngineOutputWithContext(ctx context.Context) DatabaseTypeEngineOutput {
+	return o
+}
+
+func (o DatabaseTypeEngineOutput) ToDatabaseTypeEnginePtrOutput() DatabaseTypeEnginePtrOutput {
+	return o.ToDatabaseTypeEnginePtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseTypeEngineOutput) ToDatabaseTypeEnginePtrOutputWithContext(ctx context.Context) DatabaseTypeEnginePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseTypeEngine) *DatabaseTypeEngine {
+		return &v
+	}).(DatabaseTypeEnginePtrOutput)
+}
+
+func (o DatabaseTypeEngineOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DatabaseTypeEngineOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatabaseTypeEngine) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DatabaseTypeEngineOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseTypeEngineOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatabaseTypeEngine) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatabaseTypeEnginePtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseTypeEnginePtrOutput) ElementType() reflect.Type {
+	return databaseTypeEnginePtrType
+}
+
+func (o DatabaseTypeEnginePtrOutput) ToDatabaseTypeEnginePtrOutput() DatabaseTypeEnginePtrOutput {
+	return o
+}
+
+func (o DatabaseTypeEnginePtrOutput) ToDatabaseTypeEnginePtrOutputWithContext(ctx context.Context) DatabaseTypeEnginePtrOutput {
+	return o
+}
+
+func (o DatabaseTypeEnginePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseTypeEnginePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DatabaseTypeEngine) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DatabaseTypeEnginePtrOutput) Elem() DatabaseTypeEngineOutput {
+	return o.ApplyT(func(v *DatabaseTypeEngine) DatabaseTypeEngine {
+		var ret DatabaseTypeEngine
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(DatabaseTypeEngineOutput)
+}
+
+// DatabaseTypeEngineInput is an input type that accepts DatabaseTypeEngineArgs and DatabaseTypeEngineOutput values.
+// You can construct a concrete instance of `DatabaseTypeEngineInput` via:
+//
+//          DatabaseTypeEngineArgs{...}
+type DatabaseTypeEngineInput interface {
+	pulumi.Input
+
+	ToDatabaseTypeEngineOutput() DatabaseTypeEngineOutput
+	ToDatabaseTypeEngineOutputWithContext(context.Context) DatabaseTypeEngineOutput
+}
+
+var databaseTypeEnginePtrType = reflect.TypeOf((**DatabaseTypeEngine)(nil)).Elem()
+
+type DatabaseTypeEnginePtrInput interface {
+	pulumi.Input
+
+	ToDatabaseTypeEnginePtrOutput() DatabaseTypeEnginePtrOutput
+	ToDatabaseTypeEnginePtrOutputWithContext(context.Context) DatabaseTypeEnginePtrOutput
+}
+
+type databaseTypeEnginePtr string
+
+func DatabaseTypeEnginePtr(v string) DatabaseTypeEnginePtrInput {
+	return (*databaseTypeEnginePtr)(&v)
+}
+
+func (*databaseTypeEnginePtr) ElementType() reflect.Type {
+	return databaseTypeEnginePtrType
+}
+
+func (in *databaseTypeEnginePtr) ToDatabaseTypeEnginePtrOutput() DatabaseTypeEnginePtrOutput {
+	return pulumi.ToOutput(in).(DatabaseTypeEnginePtrOutput)
+}
+
+func (in *databaseTypeEnginePtr) ToDatabaseTypeEnginePtrOutputWithContext(ctx context.Context) DatabaseTypeEnginePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DatabaseTypeEnginePtrOutput)
+}
+
 // The database provider.
-type DatabaseTypeProvider pulumi.String
+type DatabaseTypeProvider string
 
 const (
 	// The database provider is unknown.
@@ -271,7 +1230,23 @@ const (
 )
 
 func (DatabaseTypeProvider) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*DatabaseTypeProvider)(nil)).Elem()
+}
+
+func (e DatabaseTypeProvider) ToDatabaseTypeProviderOutput() DatabaseTypeProviderOutput {
+	return pulumi.ToOutput(e).(DatabaseTypeProviderOutput)
+}
+
+func (e DatabaseTypeProvider) ToDatabaseTypeProviderOutputWithContext(ctx context.Context) DatabaseTypeProviderOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(DatabaseTypeProviderOutput)
+}
+
+func (e DatabaseTypeProvider) ToDatabaseTypeProviderPtrOutput() DatabaseTypeProviderPtrOutput {
+	return e.ToDatabaseTypeProviderPtrOutputWithContext(context.Background())
+}
+
+func (e DatabaseTypeProvider) ToDatabaseTypeProviderPtrOutputWithContext(ctx context.Context) DatabaseTypeProviderPtrOutput {
+	return DatabaseTypeProvider(e).ToDatabaseTypeProviderOutputWithContext(ctx).ToDatabaseTypeProviderPtrOutputWithContext(ctx)
 }
 
 func (e DatabaseTypeProvider) ToStringOutput() pulumi.StringOutput {
@@ -290,8 +1265,129 @@ func (e DatabaseTypeProvider) ToStringPtrOutputWithContext(ctx context.Context) 
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type DatabaseTypeProviderOutput struct{ *pulumi.OutputState }
+
+func (DatabaseTypeProviderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseTypeProvider)(nil)).Elem()
+}
+
+func (o DatabaseTypeProviderOutput) ToDatabaseTypeProviderOutput() DatabaseTypeProviderOutput {
+	return o
+}
+
+func (o DatabaseTypeProviderOutput) ToDatabaseTypeProviderOutputWithContext(ctx context.Context) DatabaseTypeProviderOutput {
+	return o
+}
+
+func (o DatabaseTypeProviderOutput) ToDatabaseTypeProviderPtrOutput() DatabaseTypeProviderPtrOutput {
+	return o.ToDatabaseTypeProviderPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseTypeProviderOutput) ToDatabaseTypeProviderPtrOutputWithContext(ctx context.Context) DatabaseTypeProviderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseTypeProvider) *DatabaseTypeProvider {
+		return &v
+	}).(DatabaseTypeProviderPtrOutput)
+}
+
+func (o DatabaseTypeProviderOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o DatabaseTypeProviderOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatabaseTypeProvider) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o DatabaseTypeProviderOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseTypeProviderOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e DatabaseTypeProvider) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatabaseTypeProviderPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseTypeProviderPtrOutput) ElementType() reflect.Type {
+	return databaseTypeProviderPtrType
+}
+
+func (o DatabaseTypeProviderPtrOutput) ToDatabaseTypeProviderPtrOutput() DatabaseTypeProviderPtrOutput {
+	return o
+}
+
+func (o DatabaseTypeProviderPtrOutput) ToDatabaseTypeProviderPtrOutputWithContext(ctx context.Context) DatabaseTypeProviderPtrOutput {
+	return o
+}
+
+func (o DatabaseTypeProviderPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseTypeProviderPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *DatabaseTypeProvider) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o DatabaseTypeProviderPtrOutput) Elem() DatabaseTypeProviderOutput {
+	return o.ApplyT(func(v *DatabaseTypeProvider) DatabaseTypeProvider {
+		var ret DatabaseTypeProvider
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(DatabaseTypeProviderOutput)
+}
+
+// DatabaseTypeProviderInput is an input type that accepts DatabaseTypeProviderArgs and DatabaseTypeProviderOutput values.
+// You can construct a concrete instance of `DatabaseTypeProviderInput` via:
+//
+//          DatabaseTypeProviderArgs{...}
+type DatabaseTypeProviderInput interface {
+	pulumi.Input
+
+	ToDatabaseTypeProviderOutput() DatabaseTypeProviderOutput
+	ToDatabaseTypeProviderOutputWithContext(context.Context) DatabaseTypeProviderOutput
+}
+
+var databaseTypeProviderPtrType = reflect.TypeOf((**DatabaseTypeProvider)(nil)).Elem()
+
+type DatabaseTypeProviderPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseTypeProviderPtrOutput() DatabaseTypeProviderPtrOutput
+	ToDatabaseTypeProviderPtrOutputWithContext(context.Context) DatabaseTypeProviderPtrOutput
+}
+
+type databaseTypeProviderPtr string
+
+func DatabaseTypeProviderPtr(v string) DatabaseTypeProviderPtrInput {
+	return (*databaseTypeProviderPtr)(&v)
+}
+
+func (*databaseTypeProviderPtr) ElementType() reflect.Type {
+	return databaseTypeProviderPtrType
+}
+
+func (in *databaseTypeProviderPtr) ToDatabaseTypeProviderPtrOutput() DatabaseTypeProviderPtrOutput {
+	return pulumi.ToOutput(in).(DatabaseTypeProviderPtrOutput)
+}
+
+func (in *databaseTypeProviderPtr) ToDatabaseTypeProviderPtrOutputWithContext(ctx context.Context) DatabaseTypeProviderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(DatabaseTypeProviderPtrOutput)
+}
+
 // The current migration job state.
-type MigrationJobStateEnum pulumi.String
+type MigrationJobStateEnum string
 
 const (
 	// The state of the migration job is unknown.
@@ -329,7 +1425,23 @@ const (
 )
 
 func (MigrationJobStateEnum) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*MigrationJobStateEnum)(nil)).Elem()
+}
+
+func (e MigrationJobStateEnum) ToMigrationJobStateEnumOutput() MigrationJobStateEnumOutput {
+	return pulumi.ToOutput(e).(MigrationJobStateEnumOutput)
+}
+
+func (e MigrationJobStateEnum) ToMigrationJobStateEnumOutputWithContext(ctx context.Context) MigrationJobStateEnumOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MigrationJobStateEnumOutput)
+}
+
+func (e MigrationJobStateEnum) ToMigrationJobStateEnumPtrOutput() MigrationJobStateEnumPtrOutput {
+	return e.ToMigrationJobStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (e MigrationJobStateEnum) ToMigrationJobStateEnumPtrOutputWithContext(ctx context.Context) MigrationJobStateEnumPtrOutput {
+	return MigrationJobStateEnum(e).ToMigrationJobStateEnumOutputWithContext(ctx).ToMigrationJobStateEnumPtrOutputWithContext(ctx)
 }
 
 func (e MigrationJobStateEnum) ToStringOutput() pulumi.StringOutput {
@@ -348,8 +1460,129 @@ func (e MigrationJobStateEnum) ToStringPtrOutputWithContext(ctx context.Context)
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type MigrationJobStateEnumOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobStateEnumOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobStateEnum)(nil)).Elem()
+}
+
+func (o MigrationJobStateEnumOutput) ToMigrationJobStateEnumOutput() MigrationJobStateEnumOutput {
+	return o
+}
+
+func (o MigrationJobStateEnumOutput) ToMigrationJobStateEnumOutputWithContext(ctx context.Context) MigrationJobStateEnumOutput {
+	return o
+}
+
+func (o MigrationJobStateEnumOutput) ToMigrationJobStateEnumPtrOutput() MigrationJobStateEnumPtrOutput {
+	return o.ToMigrationJobStateEnumPtrOutputWithContext(context.Background())
+}
+
+func (o MigrationJobStateEnumOutput) ToMigrationJobStateEnumPtrOutputWithContext(ctx context.Context) MigrationJobStateEnumPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MigrationJobStateEnum) *MigrationJobStateEnum {
+		return &v
+	}).(MigrationJobStateEnumPtrOutput)
+}
+
+func (o MigrationJobStateEnumOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MigrationJobStateEnumOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MigrationJobStateEnum) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MigrationJobStateEnumOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MigrationJobStateEnumOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MigrationJobStateEnum) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MigrationJobStateEnumPtrOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobStateEnumPtrOutput) ElementType() reflect.Type {
+	return migrationJobStateEnumPtrType
+}
+
+func (o MigrationJobStateEnumPtrOutput) ToMigrationJobStateEnumPtrOutput() MigrationJobStateEnumPtrOutput {
+	return o
+}
+
+func (o MigrationJobStateEnumPtrOutput) ToMigrationJobStateEnumPtrOutputWithContext(ctx context.Context) MigrationJobStateEnumPtrOutput {
+	return o
+}
+
+func (o MigrationJobStateEnumPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MigrationJobStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MigrationJobStateEnum) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MigrationJobStateEnumPtrOutput) Elem() MigrationJobStateEnumOutput {
+	return o.ApplyT(func(v *MigrationJobStateEnum) MigrationJobStateEnum {
+		var ret MigrationJobStateEnum
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(MigrationJobStateEnumOutput)
+}
+
+// MigrationJobStateEnumInput is an input type that accepts MigrationJobStateEnumArgs and MigrationJobStateEnumOutput values.
+// You can construct a concrete instance of `MigrationJobStateEnumInput` via:
+//
+//          MigrationJobStateEnumArgs{...}
+type MigrationJobStateEnumInput interface {
+	pulumi.Input
+
+	ToMigrationJobStateEnumOutput() MigrationJobStateEnumOutput
+	ToMigrationJobStateEnumOutputWithContext(context.Context) MigrationJobStateEnumOutput
+}
+
+var migrationJobStateEnumPtrType = reflect.TypeOf((**MigrationJobStateEnum)(nil)).Elem()
+
+type MigrationJobStateEnumPtrInput interface {
+	pulumi.Input
+
+	ToMigrationJobStateEnumPtrOutput() MigrationJobStateEnumPtrOutput
+	ToMigrationJobStateEnumPtrOutputWithContext(context.Context) MigrationJobStateEnumPtrOutput
+}
+
+type migrationJobStateEnumPtr string
+
+func MigrationJobStateEnumPtr(v string) MigrationJobStateEnumPtrInput {
+	return (*migrationJobStateEnumPtr)(&v)
+}
+
+func (*migrationJobStateEnumPtr) ElementType() reflect.Type {
+	return migrationJobStateEnumPtrType
+}
+
+func (in *migrationJobStateEnumPtr) ToMigrationJobStateEnumPtrOutput() MigrationJobStateEnumPtrOutput {
+	return pulumi.ToOutput(in).(MigrationJobStateEnumPtrOutput)
+}
+
+func (in *migrationJobStateEnumPtr) ToMigrationJobStateEnumPtrOutputWithContext(ctx context.Context) MigrationJobStateEnumPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MigrationJobStateEnumPtrOutput)
+}
+
 // Required. The migration job type.
-type MigrationJobType pulumi.String
+type MigrationJobType string
 
 const (
 	// The type of the migration job is unknown.
@@ -361,7 +1594,23 @@ const (
 )
 
 func (MigrationJobType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*MigrationJobType)(nil)).Elem()
+}
+
+func (e MigrationJobType) ToMigrationJobTypeOutput() MigrationJobTypeOutput {
+	return pulumi.ToOutput(e).(MigrationJobTypeOutput)
+}
+
+func (e MigrationJobType) ToMigrationJobTypeOutputWithContext(ctx context.Context) MigrationJobTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(MigrationJobTypeOutput)
+}
+
+func (e MigrationJobType) ToMigrationJobTypePtrOutput() MigrationJobTypePtrOutput {
+	return e.ToMigrationJobTypePtrOutputWithContext(context.Background())
+}
+
+func (e MigrationJobType) ToMigrationJobTypePtrOutputWithContext(ctx context.Context) MigrationJobTypePtrOutput {
+	return MigrationJobType(e).ToMigrationJobTypeOutputWithContext(ctx).ToMigrationJobTypePtrOutputWithContext(ctx)
 }
 
 func (e MigrationJobType) ToStringOutput() pulumi.StringOutput {
@@ -378,4 +1627,148 @@ func (e MigrationJobType) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e MigrationJobType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type MigrationJobTypeOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MigrationJobType)(nil)).Elem()
+}
+
+func (o MigrationJobTypeOutput) ToMigrationJobTypeOutput() MigrationJobTypeOutput {
+	return o
+}
+
+func (o MigrationJobTypeOutput) ToMigrationJobTypeOutputWithContext(ctx context.Context) MigrationJobTypeOutput {
+	return o
+}
+
+func (o MigrationJobTypeOutput) ToMigrationJobTypePtrOutput() MigrationJobTypePtrOutput {
+	return o.ToMigrationJobTypePtrOutputWithContext(context.Background())
+}
+
+func (o MigrationJobTypeOutput) ToMigrationJobTypePtrOutputWithContext(ctx context.Context) MigrationJobTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MigrationJobType) *MigrationJobType {
+		return &v
+	}).(MigrationJobTypePtrOutput)
+}
+
+func (o MigrationJobTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o MigrationJobTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MigrationJobType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o MigrationJobTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MigrationJobTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e MigrationJobType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type MigrationJobTypePtrOutput struct{ *pulumi.OutputState }
+
+func (MigrationJobTypePtrOutput) ElementType() reflect.Type {
+	return migrationJobTypePtrType
+}
+
+func (o MigrationJobTypePtrOutput) ToMigrationJobTypePtrOutput() MigrationJobTypePtrOutput {
+	return o
+}
+
+func (o MigrationJobTypePtrOutput) ToMigrationJobTypePtrOutputWithContext(ctx context.Context) MigrationJobTypePtrOutput {
+	return o
+}
+
+func (o MigrationJobTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o MigrationJobTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *MigrationJobType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o MigrationJobTypePtrOutput) Elem() MigrationJobTypeOutput {
+	return o.ApplyT(func(v *MigrationJobType) MigrationJobType {
+		var ret MigrationJobType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(MigrationJobTypeOutput)
+}
+
+// MigrationJobTypeInput is an input type that accepts MigrationJobTypeArgs and MigrationJobTypeOutput values.
+// You can construct a concrete instance of `MigrationJobTypeInput` via:
+//
+//          MigrationJobTypeArgs{...}
+type MigrationJobTypeInput interface {
+	pulumi.Input
+
+	ToMigrationJobTypeOutput() MigrationJobTypeOutput
+	ToMigrationJobTypeOutputWithContext(context.Context) MigrationJobTypeOutput
+}
+
+var migrationJobTypePtrType = reflect.TypeOf((**MigrationJobType)(nil)).Elem()
+
+type MigrationJobTypePtrInput interface {
+	pulumi.Input
+
+	ToMigrationJobTypePtrOutput() MigrationJobTypePtrOutput
+	ToMigrationJobTypePtrOutputWithContext(context.Context) MigrationJobTypePtrOutput
+}
+
+type migrationJobTypePtr string
+
+func MigrationJobTypePtr(v string) MigrationJobTypePtrInput {
+	return (*migrationJobTypePtr)(&v)
+}
+
+func (*migrationJobTypePtr) ElementType() reflect.Type {
+	return migrationJobTypePtrType
+}
+
+func (in *migrationJobTypePtr) ToMigrationJobTypePtrOutput() MigrationJobTypePtrOutput {
+	return pulumi.ToOutput(in).(MigrationJobTypePtrOutput)
+}
+
+func (in *migrationJobTypePtr) ToMigrationJobTypePtrOutputWithContext(ctx context.Context) MigrationJobTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(MigrationJobTypePtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(AuditLogConfigLogTypeOutput{})
+	pulumi.RegisterOutputType(AuditLogConfigLogTypePtrOutput{})
+	pulumi.RegisterOutputType(CloudSqlSettingsActivationPolicyOutput{})
+	pulumi.RegisterOutputType(CloudSqlSettingsActivationPolicyPtrOutput{})
+	pulumi.RegisterOutputType(CloudSqlSettingsDataDiskTypeOutput{})
+	pulumi.RegisterOutputType(CloudSqlSettingsDataDiskTypePtrOutput{})
+	pulumi.RegisterOutputType(CloudSqlSettingsDatabaseVersionOutput{})
+	pulumi.RegisterOutputType(CloudSqlSettingsDatabaseVersionPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileProviderOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileProviderPtrOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStateEnumOutput{})
+	pulumi.RegisterOutputType(ConnectionProfileStateEnumPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseTypeEngineOutput{})
+	pulumi.RegisterOutputType(DatabaseTypeEnginePtrOutput{})
+	pulumi.RegisterOutputType(DatabaseTypeProviderOutput{})
+	pulumi.RegisterOutputType(DatabaseTypeProviderPtrOutput{})
+	pulumi.RegisterOutputType(MigrationJobStateEnumOutput{})
+	pulumi.RegisterOutputType(MigrationJobStateEnumPtrOutput{})
+	pulumi.RegisterOutputType(MigrationJobTypeOutput{})
+	pulumi.RegisterOutputType(MigrationJobTypePtrOutput{})
 }

@@ -56,17 +56,9 @@ func GetKeystore(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Keystore resources.
 type keystoreState struct {
-	// Aliases in this keystore.
-	Aliases []string `pulumi:"aliases"`
-	// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
-	Name *string `pulumi:"name"`
 }
 
 type KeystoreState struct {
-	// Aliases in this keystore.
-	Aliases pulumi.StringArrayInput
-	// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
-	Name pulumi.StringPtrInput
 }
 
 func (KeystoreState) ElementType() reflect.Type {

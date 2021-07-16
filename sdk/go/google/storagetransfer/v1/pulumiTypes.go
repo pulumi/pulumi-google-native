@@ -2269,9 +2269,9 @@ func (o HttpDataResponsePtrOutput) ListUrl() pulumi.StringPtrOutput {
 // Specification to configure notifications published to Pub/Sub. Notifications are published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` contains a TransferOperation resource formatted according to the specified `PayloadFormat`.
 type NotificationConfig struct {
 	// Event types for which a notification is desired. If empty, send notifications for all event types.
-	EventTypes []string `pulumi:"eventTypes"`
+	EventTypes []NotificationConfigEventTypesItem `pulumi:"eventTypes"`
 	// The desired format of the notification message payloads.
-	PayloadFormat string `pulumi:"payloadFormat"`
+	PayloadFormat NotificationConfigPayloadFormat `pulumi:"payloadFormat"`
 	// The `Topic.name` of the Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format results in an INVALID_ARGUMENT error.
 	PubsubTopic string `pulumi:"pubsubTopic"`
 }
@@ -2292,7 +2292,7 @@ type NotificationConfigArgs struct {
 	// Event types for which a notification is desired. If empty, send notifications for all event types.
 	EventTypes NotificationConfigEventTypesItemArrayInput `pulumi:"eventTypes"`
 	// The desired format of the notification message payloads.
-	PayloadFormat NotificationConfigPayloadFormat `pulumi:"payloadFormat"`
+	PayloadFormat NotificationConfigPayloadFormatInput `pulumi:"payloadFormat"`
 	// The `Topic.name` of the Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format results in an INVALID_ARGUMENT error.
 	PubsubTopic pulumi.StringInput `pulumi:"pubsubTopic"`
 }
@@ -2376,13 +2376,13 @@ func (o NotificationConfigOutput) ToNotificationConfigPtrOutputWithContext(ctx c
 }
 
 // Event types for which a notification is desired. If empty, send notifications for all event types.
-func (o NotificationConfigOutput) EventTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v NotificationConfig) []string { return v.EventTypes }).(pulumi.StringArrayOutput)
+func (o NotificationConfigOutput) EventTypes() NotificationConfigEventTypesItemArrayOutput {
+	return o.ApplyT(func(v NotificationConfig) []NotificationConfigEventTypesItem { return v.EventTypes }).(NotificationConfigEventTypesItemArrayOutput)
 }
 
 // The desired format of the notification message payloads.
-func (o NotificationConfigOutput) PayloadFormat() pulumi.StringOutput {
-	return o.ApplyT(func(v NotificationConfig) string { return v.PayloadFormat }).(pulumi.StringOutput)
+func (o NotificationConfigOutput) PayloadFormat() NotificationConfigPayloadFormatOutput {
+	return o.ApplyT(func(v NotificationConfig) NotificationConfigPayloadFormat { return v.PayloadFormat }).(NotificationConfigPayloadFormatOutput)
 }
 
 // The `Topic.name` of the Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format results in an INVALID_ARGUMENT error.
@@ -2409,23 +2409,23 @@ func (o NotificationConfigPtrOutput) Elem() NotificationConfigOutput {
 }
 
 // Event types for which a notification is desired. If empty, send notifications for all event types.
-func (o NotificationConfigPtrOutput) EventTypes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v *NotificationConfig) []string {
+func (o NotificationConfigPtrOutput) EventTypes() NotificationConfigEventTypesItemArrayOutput {
+	return o.ApplyT(func(v *NotificationConfig) []NotificationConfigEventTypesItem {
 		if v == nil {
 			return nil
 		}
 		return v.EventTypes
-	}).(pulumi.StringArrayOutput)
+	}).(NotificationConfigEventTypesItemArrayOutput)
 }
 
 // The desired format of the notification message payloads.
-func (o NotificationConfigPtrOutput) PayloadFormat() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NotificationConfig) *string {
+func (o NotificationConfigPtrOutput) PayloadFormat() NotificationConfigPayloadFormatPtrOutput {
+	return o.ApplyT(func(v *NotificationConfig) *NotificationConfigPayloadFormat {
 		if v == nil {
 			return nil
 		}
 		return &v.PayloadFormat
-	}).(pulumi.StringPtrOutput)
+	}).(NotificationConfigPayloadFormatPtrOutput)
 }
 
 // The `Topic.name` of the Pub/Sub topic to which to publish notifications. Must be of the format: `projects/{project}/topics/{topic}`. Not matching this format results in an INVALID_ARGUMENT error.

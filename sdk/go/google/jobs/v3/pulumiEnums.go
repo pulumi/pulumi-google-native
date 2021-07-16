@@ -11,7 +11,7 @@ import (
 )
 
 // Optional. The employer's company size.
-type CompanySize pulumi.String
+type CompanySize string
 
 const (
 	// Default value if the size is not specified.
@@ -33,7 +33,23 @@ const (
 )
 
 func (CompanySize) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*CompanySize)(nil)).Elem()
+}
+
+func (e CompanySize) ToCompanySizeOutput() CompanySizeOutput {
+	return pulumi.ToOutput(e).(CompanySizeOutput)
+}
+
+func (e CompanySize) ToCompanySizeOutputWithContext(ctx context.Context) CompanySizeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CompanySizeOutput)
+}
+
+func (e CompanySize) ToCompanySizePtrOutput() CompanySizePtrOutput {
+	return e.ToCompanySizePtrOutputWithContext(context.Background())
+}
+
+func (e CompanySize) ToCompanySizePtrOutputWithContext(ctx context.Context) CompanySizePtrOutput {
+	return CompanySize(e).ToCompanySizeOutputWithContext(ctx).ToCompanySizePtrOutputWithContext(ctx)
 }
 
 func (e CompanySize) ToStringOutput() pulumi.StringOutput {
@@ -52,8 +68,129 @@ func (e CompanySize) ToStringPtrOutputWithContext(ctx context.Context) pulumi.St
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type CompanySizeOutput struct{ *pulumi.OutputState }
+
+func (CompanySizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompanySize)(nil)).Elem()
+}
+
+func (o CompanySizeOutput) ToCompanySizeOutput() CompanySizeOutput {
+	return o
+}
+
+func (o CompanySizeOutput) ToCompanySizeOutputWithContext(ctx context.Context) CompanySizeOutput {
+	return o
+}
+
+func (o CompanySizeOutput) ToCompanySizePtrOutput() CompanySizePtrOutput {
+	return o.ToCompanySizePtrOutputWithContext(context.Background())
+}
+
+func (o CompanySizeOutput) ToCompanySizePtrOutputWithContext(ctx context.Context) CompanySizePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CompanySize) *CompanySize {
+		return &v
+	}).(CompanySizePtrOutput)
+}
+
+func (o CompanySizeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CompanySizeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CompanySize) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CompanySizeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CompanySizeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CompanySize) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CompanySizePtrOutput struct{ *pulumi.OutputState }
+
+func (CompanySizePtrOutput) ElementType() reflect.Type {
+	return companySizePtrType
+}
+
+func (o CompanySizePtrOutput) ToCompanySizePtrOutput() CompanySizePtrOutput {
+	return o
+}
+
+func (o CompanySizePtrOutput) ToCompanySizePtrOutputWithContext(ctx context.Context) CompanySizePtrOutput {
+	return o
+}
+
+func (o CompanySizePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CompanySizePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CompanySize) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CompanySizePtrOutput) Elem() CompanySizeOutput {
+	return o.ApplyT(func(v *CompanySize) CompanySize {
+		var ret CompanySize
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(CompanySizeOutput)
+}
+
+// CompanySizeInput is an input type that accepts CompanySizeArgs and CompanySizeOutput values.
+// You can construct a concrete instance of `CompanySizeInput` via:
+//
+//          CompanySizeArgs{...}
+type CompanySizeInput interface {
+	pulumi.Input
+
+	ToCompanySizeOutput() CompanySizeOutput
+	ToCompanySizeOutputWithContext(context.Context) CompanySizeOutput
+}
+
+var companySizePtrType = reflect.TypeOf((**CompanySize)(nil)).Elem()
+
+type CompanySizePtrInput interface {
+	pulumi.Input
+
+	ToCompanySizePtrOutput() CompanySizePtrOutput
+	ToCompanySizePtrOutputWithContext(context.Context) CompanySizePtrOutput
+}
+
+type companySizePtr string
+
+func CompanySizePtr(v string) CompanySizePtrInput {
+	return (*companySizePtr)(&v)
+}
+
+func (*companySizePtr) ElementType() reflect.Type {
+	return companySizePtrType
+}
+
+func (in *companySizePtr) ToCompanySizePtrOutput() CompanySizePtrOutput {
+	return pulumi.ToOutput(in).(CompanySizePtrOutput)
+}
+
+func (in *companySizePtr) ToCompanySizePtrOutputWithContext(ctx context.Context) CompanySizePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CompanySizePtrOutput)
+}
+
 // Optional. Compensation type. Default is CompensationUnit.COMPENSATION_TYPE_UNSPECIFIED.
-type CompensationEntryType pulumi.String
+type CompensationEntryType string
 
 const (
 	// Default value.
@@ -77,7 +214,23 @@ const (
 )
 
 func (CompensationEntryType) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*CompensationEntryType)(nil)).Elem()
+}
+
+func (e CompensationEntryType) ToCompensationEntryTypeOutput() CompensationEntryTypeOutput {
+	return pulumi.ToOutput(e).(CompensationEntryTypeOutput)
+}
+
+func (e CompensationEntryType) ToCompensationEntryTypeOutputWithContext(ctx context.Context) CompensationEntryTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CompensationEntryTypeOutput)
+}
+
+func (e CompensationEntryType) ToCompensationEntryTypePtrOutput() CompensationEntryTypePtrOutput {
+	return e.ToCompensationEntryTypePtrOutputWithContext(context.Background())
+}
+
+func (e CompensationEntryType) ToCompensationEntryTypePtrOutputWithContext(ctx context.Context) CompensationEntryTypePtrOutput {
+	return CompensationEntryType(e).ToCompensationEntryTypeOutputWithContext(ctx).ToCompensationEntryTypePtrOutputWithContext(ctx)
 }
 
 func (e CompensationEntryType) ToStringOutput() pulumi.StringOutput {
@@ -96,8 +249,129 @@ func (e CompensationEntryType) ToStringPtrOutputWithContext(ctx context.Context)
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type CompensationEntryTypeOutput struct{ *pulumi.OutputState }
+
+func (CompensationEntryTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompensationEntryType)(nil)).Elem()
+}
+
+func (o CompensationEntryTypeOutput) ToCompensationEntryTypeOutput() CompensationEntryTypeOutput {
+	return o
+}
+
+func (o CompensationEntryTypeOutput) ToCompensationEntryTypeOutputWithContext(ctx context.Context) CompensationEntryTypeOutput {
+	return o
+}
+
+func (o CompensationEntryTypeOutput) ToCompensationEntryTypePtrOutput() CompensationEntryTypePtrOutput {
+	return o.ToCompensationEntryTypePtrOutputWithContext(context.Background())
+}
+
+func (o CompensationEntryTypeOutput) ToCompensationEntryTypePtrOutputWithContext(ctx context.Context) CompensationEntryTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CompensationEntryType) *CompensationEntryType {
+		return &v
+	}).(CompensationEntryTypePtrOutput)
+}
+
+func (o CompensationEntryTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CompensationEntryTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CompensationEntryType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CompensationEntryTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CompensationEntryTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CompensationEntryType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CompensationEntryTypePtrOutput struct{ *pulumi.OutputState }
+
+func (CompensationEntryTypePtrOutput) ElementType() reflect.Type {
+	return compensationEntryTypePtrType
+}
+
+func (o CompensationEntryTypePtrOutput) ToCompensationEntryTypePtrOutput() CompensationEntryTypePtrOutput {
+	return o
+}
+
+func (o CompensationEntryTypePtrOutput) ToCompensationEntryTypePtrOutputWithContext(ctx context.Context) CompensationEntryTypePtrOutput {
+	return o
+}
+
+func (o CompensationEntryTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CompensationEntryTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CompensationEntryType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CompensationEntryTypePtrOutput) Elem() CompensationEntryTypeOutput {
+	return o.ApplyT(func(v *CompensationEntryType) CompensationEntryType {
+		var ret CompensationEntryType
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(CompensationEntryTypeOutput)
+}
+
+// CompensationEntryTypeInput is an input type that accepts CompensationEntryTypeArgs and CompensationEntryTypeOutput values.
+// You can construct a concrete instance of `CompensationEntryTypeInput` via:
+//
+//          CompensationEntryTypeArgs{...}
+type CompensationEntryTypeInput interface {
+	pulumi.Input
+
+	ToCompensationEntryTypeOutput() CompensationEntryTypeOutput
+	ToCompensationEntryTypeOutputWithContext(context.Context) CompensationEntryTypeOutput
+}
+
+var compensationEntryTypePtrType = reflect.TypeOf((**CompensationEntryType)(nil)).Elem()
+
+type CompensationEntryTypePtrInput interface {
+	pulumi.Input
+
+	ToCompensationEntryTypePtrOutput() CompensationEntryTypePtrOutput
+	ToCompensationEntryTypePtrOutputWithContext(context.Context) CompensationEntryTypePtrOutput
+}
+
+type compensationEntryTypePtr string
+
+func CompensationEntryTypePtr(v string) CompensationEntryTypePtrInput {
+	return (*compensationEntryTypePtr)(&v)
+}
+
+func (*compensationEntryTypePtr) ElementType() reflect.Type {
+	return compensationEntryTypePtrType
+}
+
+func (in *compensationEntryTypePtr) ToCompensationEntryTypePtrOutput() CompensationEntryTypePtrOutput {
+	return pulumi.ToOutput(in).(CompensationEntryTypePtrOutput)
+}
+
+func (in *compensationEntryTypePtr) ToCompensationEntryTypePtrOutputWithContext(ctx context.Context) CompensationEntryTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CompensationEntryTypePtrOutput)
+}
+
 // Optional. Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
-type CompensationEntryUnit pulumi.String
+type CompensationEntryUnit string
 
 const (
 	// Default value.
@@ -119,7 +393,23 @@ const (
 )
 
 func (CompensationEntryUnit) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*CompensationEntryUnit)(nil)).Elem()
+}
+
+func (e CompensationEntryUnit) ToCompensationEntryUnitOutput() CompensationEntryUnitOutput {
+	return pulumi.ToOutput(e).(CompensationEntryUnitOutput)
+}
+
+func (e CompensationEntryUnit) ToCompensationEntryUnitOutputWithContext(ctx context.Context) CompensationEntryUnitOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(CompensationEntryUnitOutput)
+}
+
+func (e CompensationEntryUnit) ToCompensationEntryUnitPtrOutput() CompensationEntryUnitPtrOutput {
+	return e.ToCompensationEntryUnitPtrOutputWithContext(context.Background())
+}
+
+func (e CompensationEntryUnit) ToCompensationEntryUnitPtrOutputWithContext(ctx context.Context) CompensationEntryUnitPtrOutput {
+	return CompensationEntryUnit(e).ToCompensationEntryUnitOutputWithContext(ctx).ToCompensationEntryUnitPtrOutputWithContext(ctx)
 }
 
 func (e CompensationEntryUnit) ToStringOutput() pulumi.StringOutput {
@@ -138,7 +428,128 @@ func (e CompensationEntryUnit) ToStringPtrOutputWithContext(ctx context.Context)
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
-type JobDegreeTypesItem pulumi.String
+type CompensationEntryUnitOutput struct{ *pulumi.OutputState }
+
+func (CompensationEntryUnitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CompensationEntryUnit)(nil)).Elem()
+}
+
+func (o CompensationEntryUnitOutput) ToCompensationEntryUnitOutput() CompensationEntryUnitOutput {
+	return o
+}
+
+func (o CompensationEntryUnitOutput) ToCompensationEntryUnitOutputWithContext(ctx context.Context) CompensationEntryUnitOutput {
+	return o
+}
+
+func (o CompensationEntryUnitOutput) ToCompensationEntryUnitPtrOutput() CompensationEntryUnitPtrOutput {
+	return o.ToCompensationEntryUnitPtrOutputWithContext(context.Background())
+}
+
+func (o CompensationEntryUnitOutput) ToCompensationEntryUnitPtrOutputWithContext(ctx context.Context) CompensationEntryUnitPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CompensationEntryUnit) *CompensationEntryUnit {
+		return &v
+	}).(CompensationEntryUnitPtrOutput)
+}
+
+func (o CompensationEntryUnitOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o CompensationEntryUnitOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CompensationEntryUnit) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o CompensationEntryUnitOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CompensationEntryUnitOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e CompensationEntryUnit) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type CompensationEntryUnitPtrOutput struct{ *pulumi.OutputState }
+
+func (CompensationEntryUnitPtrOutput) ElementType() reflect.Type {
+	return compensationEntryUnitPtrType
+}
+
+func (o CompensationEntryUnitPtrOutput) ToCompensationEntryUnitPtrOutput() CompensationEntryUnitPtrOutput {
+	return o
+}
+
+func (o CompensationEntryUnitPtrOutput) ToCompensationEntryUnitPtrOutputWithContext(ctx context.Context) CompensationEntryUnitPtrOutput {
+	return o
+}
+
+func (o CompensationEntryUnitPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o CompensationEntryUnitPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *CompensationEntryUnit) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o CompensationEntryUnitPtrOutput) Elem() CompensationEntryUnitOutput {
+	return o.ApplyT(func(v *CompensationEntryUnit) CompensationEntryUnit {
+		var ret CompensationEntryUnit
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(CompensationEntryUnitOutput)
+}
+
+// CompensationEntryUnitInput is an input type that accepts CompensationEntryUnitArgs and CompensationEntryUnitOutput values.
+// You can construct a concrete instance of `CompensationEntryUnitInput` via:
+//
+//          CompensationEntryUnitArgs{...}
+type CompensationEntryUnitInput interface {
+	pulumi.Input
+
+	ToCompensationEntryUnitOutput() CompensationEntryUnitOutput
+	ToCompensationEntryUnitOutputWithContext(context.Context) CompensationEntryUnitOutput
+}
+
+var compensationEntryUnitPtrType = reflect.TypeOf((**CompensationEntryUnit)(nil)).Elem()
+
+type CompensationEntryUnitPtrInput interface {
+	pulumi.Input
+
+	ToCompensationEntryUnitPtrOutput() CompensationEntryUnitPtrOutput
+	ToCompensationEntryUnitPtrOutputWithContext(context.Context) CompensationEntryUnitPtrOutput
+}
+
+type compensationEntryUnitPtr string
+
+func CompensationEntryUnitPtr(v string) CompensationEntryUnitPtrInput {
+	return (*compensationEntryUnitPtr)(&v)
+}
+
+func (*compensationEntryUnitPtr) ElementType() reflect.Type {
+	return compensationEntryUnitPtrType
+}
+
+func (in *compensationEntryUnitPtr) ToCompensationEntryUnitPtrOutput() CompensationEntryUnitPtrOutput {
+	return pulumi.ToOutput(in).(CompensationEntryUnitPtrOutput)
+}
+
+func (in *compensationEntryUnitPtr) ToCompensationEntryUnitPtrOutputWithContext(ctx context.Context) CompensationEntryUnitPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(CompensationEntryUnitPtrOutput)
+}
+
+type JobDegreeTypesItem string
 
 const (
 	// Default value. Represents no degree, or early childhood education. Maps to ISCED code 0. Ex) Kindergarten
@@ -162,7 +573,23 @@ const (
 )
 
 func (JobDegreeTypesItem) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*JobDegreeTypesItem)(nil)).Elem()
+}
+
+func (e JobDegreeTypesItem) ToJobDegreeTypesItemOutput() JobDegreeTypesItemOutput {
+	return pulumi.ToOutput(e).(JobDegreeTypesItemOutput)
+}
+
+func (e JobDegreeTypesItem) ToJobDegreeTypesItemOutputWithContext(ctx context.Context) JobDegreeTypesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(JobDegreeTypesItemOutput)
+}
+
+func (e JobDegreeTypesItem) ToJobDegreeTypesItemPtrOutput() JobDegreeTypesItemPtrOutput {
+	return e.ToJobDegreeTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (e JobDegreeTypesItem) ToJobDegreeTypesItemPtrOutputWithContext(ctx context.Context) JobDegreeTypesItemPtrOutput {
+	return JobDegreeTypesItem(e).ToJobDegreeTypesItemOutputWithContext(ctx).ToJobDegreeTypesItemPtrOutputWithContext(ctx)
 }
 
 func (e JobDegreeTypesItem) ToStringOutput() pulumi.StringOutput {
@@ -179,6 +606,127 @@ func (e JobDegreeTypesItem) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e JobDegreeTypesItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type JobDegreeTypesItemOutput struct{ *pulumi.OutputState }
+
+func (JobDegreeTypesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobDegreeTypesItem)(nil)).Elem()
+}
+
+func (o JobDegreeTypesItemOutput) ToJobDegreeTypesItemOutput() JobDegreeTypesItemOutput {
+	return o
+}
+
+func (o JobDegreeTypesItemOutput) ToJobDegreeTypesItemOutputWithContext(ctx context.Context) JobDegreeTypesItemOutput {
+	return o
+}
+
+func (o JobDegreeTypesItemOutput) ToJobDegreeTypesItemPtrOutput() JobDegreeTypesItemPtrOutput {
+	return o.ToJobDegreeTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (o JobDegreeTypesItemOutput) ToJobDegreeTypesItemPtrOutputWithContext(ctx context.Context) JobDegreeTypesItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobDegreeTypesItem) *JobDegreeTypesItem {
+		return &v
+	}).(JobDegreeTypesItemPtrOutput)
+}
+
+func (o JobDegreeTypesItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o JobDegreeTypesItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobDegreeTypesItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o JobDegreeTypesItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobDegreeTypesItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobDegreeTypesItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobDegreeTypesItemPtrOutput struct{ *pulumi.OutputState }
+
+func (JobDegreeTypesItemPtrOutput) ElementType() reflect.Type {
+	return jobDegreeTypesItemPtrType
+}
+
+func (o JobDegreeTypesItemPtrOutput) ToJobDegreeTypesItemPtrOutput() JobDegreeTypesItemPtrOutput {
+	return o
+}
+
+func (o JobDegreeTypesItemPtrOutput) ToJobDegreeTypesItemPtrOutputWithContext(ctx context.Context) JobDegreeTypesItemPtrOutput {
+	return o
+}
+
+func (o JobDegreeTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobDegreeTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *JobDegreeTypesItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobDegreeTypesItemPtrOutput) Elem() JobDegreeTypesItemOutput {
+	return o.ApplyT(func(v *JobDegreeTypesItem) JobDegreeTypesItem {
+		var ret JobDegreeTypesItem
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(JobDegreeTypesItemOutput)
+}
+
+// JobDegreeTypesItemInput is an input type that accepts JobDegreeTypesItemArgs and JobDegreeTypesItemOutput values.
+// You can construct a concrete instance of `JobDegreeTypesItemInput` via:
+//
+//          JobDegreeTypesItemArgs{...}
+type JobDegreeTypesItemInput interface {
+	pulumi.Input
+
+	ToJobDegreeTypesItemOutput() JobDegreeTypesItemOutput
+	ToJobDegreeTypesItemOutputWithContext(context.Context) JobDegreeTypesItemOutput
+}
+
+var jobDegreeTypesItemPtrType = reflect.TypeOf((**JobDegreeTypesItem)(nil)).Elem()
+
+type JobDegreeTypesItemPtrInput interface {
+	pulumi.Input
+
+	ToJobDegreeTypesItemPtrOutput() JobDegreeTypesItemPtrOutput
+	ToJobDegreeTypesItemPtrOutputWithContext(context.Context) JobDegreeTypesItemPtrOutput
+}
+
+type jobDegreeTypesItemPtr string
+
+func JobDegreeTypesItemPtr(v string) JobDegreeTypesItemPtrInput {
+	return (*jobDegreeTypesItemPtr)(&v)
+}
+
+func (*jobDegreeTypesItemPtr) ElementType() reflect.Type {
+	return jobDegreeTypesItemPtrType
+}
+
+func (in *jobDegreeTypesItemPtr) ToJobDegreeTypesItemPtrOutput() JobDegreeTypesItemPtrOutput {
+	return pulumi.ToOutput(in).(JobDegreeTypesItemPtrOutput)
+}
+
+func (in *jobDegreeTypesItemPtr) ToJobDegreeTypesItemPtrOutputWithContext(ctx context.Context) JobDegreeTypesItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(JobDegreeTypesItemPtrOutput)
 }
 
 // JobDegreeTypesItemArrayInput is an input type that accepts JobDegreeTypesItemArray and JobDegreeTypesItemArrayOutput values.
@@ -220,13 +768,13 @@ func (o JobDegreeTypesItemArrayOutput) ToJobDegreeTypesItemArrayOutputWithContex
 	return o
 }
 
-func (o JobDegreeTypesItemArrayOutput) Index(i pulumi.IntInput) pulumi.StringOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) pulumi.StringOutput {
-		return vs[0].([]JobDegreeTypesItem)[vs[1].(int)].ToStringOutput()
-	}).(pulumi.StringOutput)
+func (o JobDegreeTypesItemArrayOutput) Index(i pulumi.IntInput) JobDegreeTypesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobDegreeTypesItemOutput {
+		return vs[0].([]JobDegreeTypesItem)[vs[1].(int)].ToJobDegreeTypesItemOutput()
+	}).(JobDegreeTypesItemOutput)
 }
 
-type JobEmploymentTypesItem pulumi.String
+type JobEmploymentTypesItem string
 
 const (
 	// The default value if the employment type is not specified.
@@ -254,7 +802,23 @@ const (
 )
 
 func (JobEmploymentTypesItem) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*JobEmploymentTypesItem)(nil)).Elem()
+}
+
+func (e JobEmploymentTypesItem) ToJobEmploymentTypesItemOutput() JobEmploymentTypesItemOutput {
+	return pulumi.ToOutput(e).(JobEmploymentTypesItemOutput)
+}
+
+func (e JobEmploymentTypesItem) ToJobEmploymentTypesItemOutputWithContext(ctx context.Context) JobEmploymentTypesItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(JobEmploymentTypesItemOutput)
+}
+
+func (e JobEmploymentTypesItem) ToJobEmploymentTypesItemPtrOutput() JobEmploymentTypesItemPtrOutput {
+	return e.ToJobEmploymentTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (e JobEmploymentTypesItem) ToJobEmploymentTypesItemPtrOutputWithContext(ctx context.Context) JobEmploymentTypesItemPtrOutput {
+	return JobEmploymentTypesItem(e).ToJobEmploymentTypesItemOutputWithContext(ctx).ToJobEmploymentTypesItemPtrOutputWithContext(ctx)
 }
 
 func (e JobEmploymentTypesItem) ToStringOutput() pulumi.StringOutput {
@@ -271,6 +835,127 @@ func (e JobEmploymentTypesItem) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e JobEmploymentTypesItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type JobEmploymentTypesItemOutput struct{ *pulumi.OutputState }
+
+func (JobEmploymentTypesItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobEmploymentTypesItem)(nil)).Elem()
+}
+
+func (o JobEmploymentTypesItemOutput) ToJobEmploymentTypesItemOutput() JobEmploymentTypesItemOutput {
+	return o
+}
+
+func (o JobEmploymentTypesItemOutput) ToJobEmploymentTypesItemOutputWithContext(ctx context.Context) JobEmploymentTypesItemOutput {
+	return o
+}
+
+func (o JobEmploymentTypesItemOutput) ToJobEmploymentTypesItemPtrOutput() JobEmploymentTypesItemPtrOutput {
+	return o.ToJobEmploymentTypesItemPtrOutputWithContext(context.Background())
+}
+
+func (o JobEmploymentTypesItemOutput) ToJobEmploymentTypesItemPtrOutputWithContext(ctx context.Context) JobEmploymentTypesItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobEmploymentTypesItem) *JobEmploymentTypesItem {
+		return &v
+	}).(JobEmploymentTypesItemPtrOutput)
+}
+
+func (o JobEmploymentTypesItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o JobEmploymentTypesItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobEmploymentTypesItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o JobEmploymentTypesItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobEmploymentTypesItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobEmploymentTypesItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobEmploymentTypesItemPtrOutput struct{ *pulumi.OutputState }
+
+func (JobEmploymentTypesItemPtrOutput) ElementType() reflect.Type {
+	return jobEmploymentTypesItemPtrType
+}
+
+func (o JobEmploymentTypesItemPtrOutput) ToJobEmploymentTypesItemPtrOutput() JobEmploymentTypesItemPtrOutput {
+	return o
+}
+
+func (o JobEmploymentTypesItemPtrOutput) ToJobEmploymentTypesItemPtrOutputWithContext(ctx context.Context) JobEmploymentTypesItemPtrOutput {
+	return o
+}
+
+func (o JobEmploymentTypesItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobEmploymentTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *JobEmploymentTypesItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobEmploymentTypesItemPtrOutput) Elem() JobEmploymentTypesItemOutput {
+	return o.ApplyT(func(v *JobEmploymentTypesItem) JobEmploymentTypesItem {
+		var ret JobEmploymentTypesItem
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(JobEmploymentTypesItemOutput)
+}
+
+// JobEmploymentTypesItemInput is an input type that accepts JobEmploymentTypesItemArgs and JobEmploymentTypesItemOutput values.
+// You can construct a concrete instance of `JobEmploymentTypesItemInput` via:
+//
+//          JobEmploymentTypesItemArgs{...}
+type JobEmploymentTypesItemInput interface {
+	pulumi.Input
+
+	ToJobEmploymentTypesItemOutput() JobEmploymentTypesItemOutput
+	ToJobEmploymentTypesItemOutputWithContext(context.Context) JobEmploymentTypesItemOutput
+}
+
+var jobEmploymentTypesItemPtrType = reflect.TypeOf((**JobEmploymentTypesItem)(nil)).Elem()
+
+type JobEmploymentTypesItemPtrInput interface {
+	pulumi.Input
+
+	ToJobEmploymentTypesItemPtrOutput() JobEmploymentTypesItemPtrOutput
+	ToJobEmploymentTypesItemPtrOutputWithContext(context.Context) JobEmploymentTypesItemPtrOutput
+}
+
+type jobEmploymentTypesItemPtr string
+
+func JobEmploymentTypesItemPtr(v string) JobEmploymentTypesItemPtrInput {
+	return (*jobEmploymentTypesItemPtr)(&v)
+}
+
+func (*jobEmploymentTypesItemPtr) ElementType() reflect.Type {
+	return jobEmploymentTypesItemPtrType
+}
+
+func (in *jobEmploymentTypesItemPtr) ToJobEmploymentTypesItemPtrOutput() JobEmploymentTypesItemPtrOutput {
+	return pulumi.ToOutput(in).(JobEmploymentTypesItemPtrOutput)
+}
+
+func (in *jobEmploymentTypesItemPtr) ToJobEmploymentTypesItemPtrOutputWithContext(ctx context.Context) JobEmploymentTypesItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(JobEmploymentTypesItemPtrOutput)
 }
 
 // JobEmploymentTypesItemArrayInput is an input type that accepts JobEmploymentTypesItemArray and JobEmploymentTypesItemArrayOutput values.
@@ -312,13 +997,13 @@ func (o JobEmploymentTypesItemArrayOutput) ToJobEmploymentTypesItemArrayOutputWi
 	return o
 }
 
-func (o JobEmploymentTypesItemArrayOutput) Index(i pulumi.IntInput) pulumi.StringOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) pulumi.StringOutput {
-		return vs[0].([]JobEmploymentTypesItem)[vs[1].(int)].ToStringOutput()
-	}).(pulumi.StringOutput)
+func (o JobEmploymentTypesItemArrayOutput) Index(i pulumi.IntInput) JobEmploymentTypesItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobEmploymentTypesItemOutput {
+		return vs[0].([]JobEmploymentTypesItem)[vs[1].(int)].ToJobEmploymentTypesItemOutput()
+	}).(JobEmploymentTypesItemOutput)
 }
 
-type JobJobBenefitsItem pulumi.String
+type JobJobBenefitsItem string
 
 const (
 	// Default value if the type is not specified.
@@ -348,7 +1033,23 @@ const (
 )
 
 func (JobJobBenefitsItem) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*JobJobBenefitsItem)(nil)).Elem()
+}
+
+func (e JobJobBenefitsItem) ToJobJobBenefitsItemOutput() JobJobBenefitsItemOutput {
+	return pulumi.ToOutput(e).(JobJobBenefitsItemOutput)
+}
+
+func (e JobJobBenefitsItem) ToJobJobBenefitsItemOutputWithContext(ctx context.Context) JobJobBenefitsItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(JobJobBenefitsItemOutput)
+}
+
+func (e JobJobBenefitsItem) ToJobJobBenefitsItemPtrOutput() JobJobBenefitsItemPtrOutput {
+	return e.ToJobJobBenefitsItemPtrOutputWithContext(context.Background())
+}
+
+func (e JobJobBenefitsItem) ToJobJobBenefitsItemPtrOutputWithContext(ctx context.Context) JobJobBenefitsItemPtrOutput {
+	return JobJobBenefitsItem(e).ToJobJobBenefitsItemOutputWithContext(ctx).ToJobJobBenefitsItemPtrOutputWithContext(ctx)
 }
 
 func (e JobJobBenefitsItem) ToStringOutput() pulumi.StringOutput {
@@ -365,6 +1066,127 @@ func (e JobJobBenefitsItem) ToStringPtrOutput() pulumi.StringPtrOutput {
 
 func (e JobJobBenefitsItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type JobJobBenefitsItemOutput struct{ *pulumi.OutputState }
+
+func (JobJobBenefitsItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobBenefitsItem)(nil)).Elem()
+}
+
+func (o JobJobBenefitsItemOutput) ToJobJobBenefitsItemOutput() JobJobBenefitsItemOutput {
+	return o
+}
+
+func (o JobJobBenefitsItemOutput) ToJobJobBenefitsItemOutputWithContext(ctx context.Context) JobJobBenefitsItemOutput {
+	return o
+}
+
+func (o JobJobBenefitsItemOutput) ToJobJobBenefitsItemPtrOutput() JobJobBenefitsItemPtrOutput {
+	return o.ToJobJobBenefitsItemPtrOutputWithContext(context.Background())
+}
+
+func (o JobJobBenefitsItemOutput) ToJobJobBenefitsItemPtrOutputWithContext(ctx context.Context) JobJobBenefitsItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobJobBenefitsItem) *JobJobBenefitsItem {
+		return &v
+	}).(JobJobBenefitsItemPtrOutput)
+}
+
+func (o JobJobBenefitsItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o JobJobBenefitsItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobJobBenefitsItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o JobJobBenefitsItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobJobBenefitsItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobJobBenefitsItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobJobBenefitsItemPtrOutput struct{ *pulumi.OutputState }
+
+func (JobJobBenefitsItemPtrOutput) ElementType() reflect.Type {
+	return jobJobBenefitsItemPtrType
+}
+
+func (o JobJobBenefitsItemPtrOutput) ToJobJobBenefitsItemPtrOutput() JobJobBenefitsItemPtrOutput {
+	return o
+}
+
+func (o JobJobBenefitsItemPtrOutput) ToJobJobBenefitsItemPtrOutputWithContext(ctx context.Context) JobJobBenefitsItemPtrOutput {
+	return o
+}
+
+func (o JobJobBenefitsItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobJobBenefitsItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *JobJobBenefitsItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobJobBenefitsItemPtrOutput) Elem() JobJobBenefitsItemOutput {
+	return o.ApplyT(func(v *JobJobBenefitsItem) JobJobBenefitsItem {
+		var ret JobJobBenefitsItem
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(JobJobBenefitsItemOutput)
+}
+
+// JobJobBenefitsItemInput is an input type that accepts JobJobBenefitsItemArgs and JobJobBenefitsItemOutput values.
+// You can construct a concrete instance of `JobJobBenefitsItemInput` via:
+//
+//          JobJobBenefitsItemArgs{...}
+type JobJobBenefitsItemInput interface {
+	pulumi.Input
+
+	ToJobJobBenefitsItemOutput() JobJobBenefitsItemOutput
+	ToJobJobBenefitsItemOutputWithContext(context.Context) JobJobBenefitsItemOutput
+}
+
+var jobJobBenefitsItemPtrType = reflect.TypeOf((**JobJobBenefitsItem)(nil)).Elem()
+
+type JobJobBenefitsItemPtrInput interface {
+	pulumi.Input
+
+	ToJobJobBenefitsItemPtrOutput() JobJobBenefitsItemPtrOutput
+	ToJobJobBenefitsItemPtrOutputWithContext(context.Context) JobJobBenefitsItemPtrOutput
+}
+
+type jobJobBenefitsItemPtr string
+
+func JobJobBenefitsItemPtr(v string) JobJobBenefitsItemPtrInput {
+	return (*jobJobBenefitsItemPtr)(&v)
+}
+
+func (*jobJobBenefitsItemPtr) ElementType() reflect.Type {
+	return jobJobBenefitsItemPtrType
+}
+
+func (in *jobJobBenefitsItemPtr) ToJobJobBenefitsItemPtrOutput() JobJobBenefitsItemPtrOutput {
+	return pulumi.ToOutput(in).(JobJobBenefitsItemPtrOutput)
+}
+
+func (in *jobJobBenefitsItemPtr) ToJobJobBenefitsItemPtrOutputWithContext(ctx context.Context) JobJobBenefitsItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(JobJobBenefitsItemPtrOutput)
 }
 
 // JobJobBenefitsItemArrayInput is an input type that accepts JobJobBenefitsItemArray and JobJobBenefitsItemArrayOutput values.
@@ -406,14 +1228,14 @@ func (o JobJobBenefitsItemArrayOutput) ToJobJobBenefitsItemArrayOutputWithContex
 	return o
 }
 
-func (o JobJobBenefitsItemArrayOutput) Index(i pulumi.IntInput) pulumi.StringOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) pulumi.StringOutput {
-		return vs[0].([]JobJobBenefitsItem)[vs[1].(int)].ToStringOutput()
-	}).(pulumi.StringOutput)
+func (o JobJobBenefitsItemArrayOutput) Index(i pulumi.IntInput) JobJobBenefitsItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) JobJobBenefitsItemOutput {
+		return vs[0].([]JobJobBenefitsItem)[vs[1].(int)].ToJobJobBenefitsItemOutput()
+	}).(JobJobBenefitsItemOutput)
 }
 
 // Optional. The experience level associated with the job, such as "Entry Level".
-type JobJobLevel pulumi.String
+type JobJobLevel string
 
 const (
 	// The default value if the level is not specified.
@@ -431,7 +1253,23 @@ const (
 )
 
 func (JobJobLevel) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*JobJobLevel)(nil)).Elem()
+}
+
+func (e JobJobLevel) ToJobJobLevelOutput() JobJobLevelOutput {
+	return pulumi.ToOutput(e).(JobJobLevelOutput)
+}
+
+func (e JobJobLevel) ToJobJobLevelOutputWithContext(ctx context.Context) JobJobLevelOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(JobJobLevelOutput)
+}
+
+func (e JobJobLevel) ToJobJobLevelPtrOutput() JobJobLevelPtrOutput {
+	return e.ToJobJobLevelPtrOutputWithContext(context.Background())
+}
+
+func (e JobJobLevel) ToJobJobLevelPtrOutputWithContext(ctx context.Context) JobJobLevelPtrOutput {
+	return JobJobLevel(e).ToJobJobLevelOutputWithContext(ctx).ToJobJobLevelPtrOutputWithContext(ctx)
 }
 
 func (e JobJobLevel) ToStringOutput() pulumi.StringOutput {
@@ -450,8 +1288,129 @@ func (e JobJobLevel) ToStringPtrOutputWithContext(ctx context.Context) pulumi.St
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type JobJobLevelOutput struct{ *pulumi.OutputState }
+
+func (JobJobLevelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobJobLevel)(nil)).Elem()
+}
+
+func (o JobJobLevelOutput) ToJobJobLevelOutput() JobJobLevelOutput {
+	return o
+}
+
+func (o JobJobLevelOutput) ToJobJobLevelOutputWithContext(ctx context.Context) JobJobLevelOutput {
+	return o
+}
+
+func (o JobJobLevelOutput) ToJobJobLevelPtrOutput() JobJobLevelPtrOutput {
+	return o.ToJobJobLevelPtrOutputWithContext(context.Background())
+}
+
+func (o JobJobLevelOutput) ToJobJobLevelPtrOutputWithContext(ctx context.Context) JobJobLevelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobJobLevel) *JobJobLevel {
+		return &v
+	}).(JobJobLevelPtrOutput)
+}
+
+func (o JobJobLevelOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o JobJobLevelOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobJobLevel) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o JobJobLevelOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobJobLevelOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobJobLevel) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobJobLevelPtrOutput struct{ *pulumi.OutputState }
+
+func (JobJobLevelPtrOutput) ElementType() reflect.Type {
+	return jobJobLevelPtrType
+}
+
+func (o JobJobLevelPtrOutput) ToJobJobLevelPtrOutput() JobJobLevelPtrOutput {
+	return o
+}
+
+func (o JobJobLevelPtrOutput) ToJobJobLevelPtrOutputWithContext(ctx context.Context) JobJobLevelPtrOutput {
+	return o
+}
+
+func (o JobJobLevelPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobJobLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *JobJobLevel) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobJobLevelPtrOutput) Elem() JobJobLevelOutput {
+	return o.ApplyT(func(v *JobJobLevel) JobJobLevel {
+		var ret JobJobLevel
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(JobJobLevelOutput)
+}
+
+// JobJobLevelInput is an input type that accepts JobJobLevelArgs and JobJobLevelOutput values.
+// You can construct a concrete instance of `JobJobLevelInput` via:
+//
+//          JobJobLevelArgs{...}
+type JobJobLevelInput interface {
+	pulumi.Input
+
+	ToJobJobLevelOutput() JobJobLevelOutput
+	ToJobJobLevelOutputWithContext(context.Context) JobJobLevelOutput
+}
+
+var jobJobLevelPtrType = reflect.TypeOf((**JobJobLevel)(nil)).Elem()
+
+type JobJobLevelPtrInput interface {
+	pulumi.Input
+
+	ToJobJobLevelPtrOutput() JobJobLevelPtrOutput
+	ToJobJobLevelPtrOutputWithContext(context.Context) JobJobLevelPtrOutput
+}
+
+type jobJobLevelPtr string
+
+func JobJobLevelPtr(v string) JobJobLevelPtrInput {
+	return (*jobJobLevelPtr)(&v)
+}
+
+func (*jobJobLevelPtr) ElementType() reflect.Type {
+	return jobJobLevelPtrType
+}
+
+func (in *jobJobLevelPtr) ToJobJobLevelPtrOutput() JobJobLevelPtrOutput {
+	return pulumi.ToOutput(in).(JobJobLevelPtrOutput)
+}
+
+func (in *jobJobLevelPtr) ToJobJobLevelPtrOutputWithContext(ctx context.Context) JobJobLevelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(JobJobLevelPtrOutput)
+}
+
 // Optional. The job PostingRegion (for example, state, country) throughout which the job is available. If this field is set, a LocationFilter in a search query within the job region finds this job posting if an exact location match isn't specified. If this field is set to PostingRegion.NATION or PostingRegion.ADMINISTRATIVE_AREA, setting job Job.addresses to the same location level as this field is strongly recommended.
-type JobPostingRegion pulumi.String
+type JobPostingRegion string
 
 const (
 	// If the region is unspecified, the job is only returned if it matches the LocationFilter.
@@ -465,7 +1424,23 @@ const (
 )
 
 func (JobPostingRegion) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*JobPostingRegion)(nil)).Elem()
+}
+
+func (e JobPostingRegion) ToJobPostingRegionOutput() JobPostingRegionOutput {
+	return pulumi.ToOutput(e).(JobPostingRegionOutput)
+}
+
+func (e JobPostingRegion) ToJobPostingRegionOutputWithContext(ctx context.Context) JobPostingRegionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(JobPostingRegionOutput)
+}
+
+func (e JobPostingRegion) ToJobPostingRegionPtrOutput() JobPostingRegionPtrOutput {
+	return e.ToJobPostingRegionPtrOutputWithContext(context.Background())
+}
+
+func (e JobPostingRegion) ToJobPostingRegionPtrOutputWithContext(ctx context.Context) JobPostingRegionPtrOutput {
+	return JobPostingRegion(e).ToJobPostingRegionOutputWithContext(ctx).ToJobPostingRegionPtrOutputWithContext(ctx)
 }
 
 func (e JobPostingRegion) ToStringOutput() pulumi.StringOutput {
@@ -484,8 +1459,129 @@ func (e JobPostingRegion) ToStringPtrOutputWithContext(ctx context.Context) pulu
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
 }
 
+type JobPostingRegionOutput struct{ *pulumi.OutputState }
+
+func (JobPostingRegionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*JobPostingRegion)(nil)).Elem()
+}
+
+func (o JobPostingRegionOutput) ToJobPostingRegionOutput() JobPostingRegionOutput {
+	return o
+}
+
+func (o JobPostingRegionOutput) ToJobPostingRegionOutputWithContext(ctx context.Context) JobPostingRegionOutput {
+	return o
+}
+
+func (o JobPostingRegionOutput) ToJobPostingRegionPtrOutput() JobPostingRegionPtrOutput {
+	return o.ToJobPostingRegionPtrOutputWithContext(context.Background())
+}
+
+func (o JobPostingRegionOutput) ToJobPostingRegionPtrOutputWithContext(ctx context.Context) JobPostingRegionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v JobPostingRegion) *JobPostingRegion {
+		return &v
+	}).(JobPostingRegionPtrOutput)
+}
+
+func (o JobPostingRegionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o JobPostingRegionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobPostingRegion) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o JobPostingRegionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobPostingRegionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e JobPostingRegion) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type JobPostingRegionPtrOutput struct{ *pulumi.OutputState }
+
+func (JobPostingRegionPtrOutput) ElementType() reflect.Type {
+	return jobPostingRegionPtrType
+}
+
+func (o JobPostingRegionPtrOutput) ToJobPostingRegionPtrOutput() JobPostingRegionPtrOutput {
+	return o
+}
+
+func (o JobPostingRegionPtrOutput) ToJobPostingRegionPtrOutputWithContext(ctx context.Context) JobPostingRegionPtrOutput {
+	return o
+}
+
+func (o JobPostingRegionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o JobPostingRegionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *JobPostingRegion) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o JobPostingRegionPtrOutput) Elem() JobPostingRegionOutput {
+	return o.ApplyT(func(v *JobPostingRegion) JobPostingRegion {
+		var ret JobPostingRegion
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(JobPostingRegionOutput)
+}
+
+// JobPostingRegionInput is an input type that accepts JobPostingRegionArgs and JobPostingRegionOutput values.
+// You can construct a concrete instance of `JobPostingRegionInput` via:
+//
+//          JobPostingRegionArgs{...}
+type JobPostingRegionInput interface {
+	pulumi.Input
+
+	ToJobPostingRegionOutput() JobPostingRegionOutput
+	ToJobPostingRegionOutputWithContext(context.Context) JobPostingRegionOutput
+}
+
+var jobPostingRegionPtrType = reflect.TypeOf((**JobPostingRegion)(nil)).Elem()
+
+type JobPostingRegionPtrInput interface {
+	pulumi.Input
+
+	ToJobPostingRegionPtrOutput() JobPostingRegionPtrOutput
+	ToJobPostingRegionPtrOutputWithContext(context.Context) JobPostingRegionPtrOutput
+}
+
+type jobPostingRegionPtr string
+
+func JobPostingRegionPtr(v string) JobPostingRegionPtrInput {
+	return (*jobPostingRegionPtr)(&v)
+}
+
+func (*jobPostingRegionPtr) ElementType() reflect.Type {
+	return jobPostingRegionPtrType
+}
+
+func (in *jobPostingRegionPtr) ToJobPostingRegionPtrOutput() JobPostingRegionPtrOutput {
+	return pulumi.ToOutput(in).(JobPostingRegionPtrOutput)
+}
+
+func (in *jobPostingRegionPtr) ToJobPostingRegionPtrOutputWithContext(ctx context.Context) JobPostingRegionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(JobPostingRegionPtrOutput)
+}
+
 // Optional. Option for job HTML content sanitization. Applied fields are: * description * applicationInfo.instruction * incentives * qualifications * responsibilities HTML tags in these fields may be stripped if sanitiazation is not disabled. Defaults to HtmlSanitization.SIMPLE_FORMATTING_ONLY.
-type ProcessingOptionsHtmlSanitization pulumi.String
+type ProcessingOptionsHtmlSanitization string
 
 const (
 	// Default value.
@@ -497,7 +1593,23 @@ const (
 )
 
 func (ProcessingOptionsHtmlSanitization) ElementType() reflect.Type {
-	return reflect.TypeOf((*pulumi.String)(nil)).Elem()
+	return reflect.TypeOf((*ProcessingOptionsHtmlSanitization)(nil)).Elem()
+}
+
+func (e ProcessingOptionsHtmlSanitization) ToProcessingOptionsHtmlSanitizationOutput() ProcessingOptionsHtmlSanitizationOutput {
+	return pulumi.ToOutput(e).(ProcessingOptionsHtmlSanitizationOutput)
+}
+
+func (e ProcessingOptionsHtmlSanitization) ToProcessingOptionsHtmlSanitizationOutputWithContext(ctx context.Context) ProcessingOptionsHtmlSanitizationOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ProcessingOptionsHtmlSanitizationOutput)
+}
+
+func (e ProcessingOptionsHtmlSanitization) ToProcessingOptionsHtmlSanitizationPtrOutput() ProcessingOptionsHtmlSanitizationPtrOutput {
+	return e.ToProcessingOptionsHtmlSanitizationPtrOutputWithContext(context.Background())
+}
+
+func (e ProcessingOptionsHtmlSanitization) ToProcessingOptionsHtmlSanitizationPtrOutputWithContext(ctx context.Context) ProcessingOptionsHtmlSanitizationPtrOutput {
+	return ProcessingOptionsHtmlSanitization(e).ToProcessingOptionsHtmlSanitizationOutputWithContext(ctx).ToProcessingOptionsHtmlSanitizationPtrOutputWithContext(ctx)
 }
 
 func (e ProcessingOptionsHtmlSanitization) ToStringOutput() pulumi.StringOutput {
@@ -514,4 +1626,149 @@ func (e ProcessingOptionsHtmlSanitization) ToStringPtrOutput() pulumi.StringPtrO
 
 func (e ProcessingOptionsHtmlSanitization) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
 	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ProcessingOptionsHtmlSanitizationOutput struct{ *pulumi.OutputState }
+
+func (ProcessingOptionsHtmlSanitizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ProcessingOptionsHtmlSanitization)(nil)).Elem()
+}
+
+func (o ProcessingOptionsHtmlSanitizationOutput) ToProcessingOptionsHtmlSanitizationOutput() ProcessingOptionsHtmlSanitizationOutput {
+	return o
+}
+
+func (o ProcessingOptionsHtmlSanitizationOutput) ToProcessingOptionsHtmlSanitizationOutputWithContext(ctx context.Context) ProcessingOptionsHtmlSanitizationOutput {
+	return o
+}
+
+func (o ProcessingOptionsHtmlSanitizationOutput) ToProcessingOptionsHtmlSanitizationPtrOutput() ProcessingOptionsHtmlSanitizationPtrOutput {
+	return o.ToProcessingOptionsHtmlSanitizationPtrOutputWithContext(context.Background())
+}
+
+func (o ProcessingOptionsHtmlSanitizationOutput) ToProcessingOptionsHtmlSanitizationPtrOutputWithContext(ctx context.Context) ProcessingOptionsHtmlSanitizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProcessingOptionsHtmlSanitization) *ProcessingOptionsHtmlSanitization {
+		return &v
+	}).(ProcessingOptionsHtmlSanitizationPtrOutput)
+}
+
+func (o ProcessingOptionsHtmlSanitizationOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ProcessingOptionsHtmlSanitizationOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProcessingOptionsHtmlSanitization) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ProcessingOptionsHtmlSanitizationOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ProcessingOptionsHtmlSanitizationOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ProcessingOptionsHtmlSanitization) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ProcessingOptionsHtmlSanitizationPtrOutput struct{ *pulumi.OutputState }
+
+func (ProcessingOptionsHtmlSanitizationPtrOutput) ElementType() reflect.Type {
+	return processingOptionsHtmlSanitizationPtrType
+}
+
+func (o ProcessingOptionsHtmlSanitizationPtrOutput) ToProcessingOptionsHtmlSanitizationPtrOutput() ProcessingOptionsHtmlSanitizationPtrOutput {
+	return o
+}
+
+func (o ProcessingOptionsHtmlSanitizationPtrOutput) ToProcessingOptionsHtmlSanitizationPtrOutputWithContext(ctx context.Context) ProcessingOptionsHtmlSanitizationPtrOutput {
+	return o
+}
+
+func (o ProcessingOptionsHtmlSanitizationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ProcessingOptionsHtmlSanitizationPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ProcessingOptionsHtmlSanitization) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o ProcessingOptionsHtmlSanitizationPtrOutput) Elem() ProcessingOptionsHtmlSanitizationOutput {
+	return o.ApplyT(func(v *ProcessingOptionsHtmlSanitization) ProcessingOptionsHtmlSanitization {
+		var ret ProcessingOptionsHtmlSanitization
+		if v != nil {
+			ret = *v
+		}
+		return ret
+	}).(ProcessingOptionsHtmlSanitizationOutput)
+}
+
+// ProcessingOptionsHtmlSanitizationInput is an input type that accepts ProcessingOptionsHtmlSanitizationArgs and ProcessingOptionsHtmlSanitizationOutput values.
+// You can construct a concrete instance of `ProcessingOptionsHtmlSanitizationInput` via:
+//
+//          ProcessingOptionsHtmlSanitizationArgs{...}
+type ProcessingOptionsHtmlSanitizationInput interface {
+	pulumi.Input
+
+	ToProcessingOptionsHtmlSanitizationOutput() ProcessingOptionsHtmlSanitizationOutput
+	ToProcessingOptionsHtmlSanitizationOutputWithContext(context.Context) ProcessingOptionsHtmlSanitizationOutput
+}
+
+var processingOptionsHtmlSanitizationPtrType = reflect.TypeOf((**ProcessingOptionsHtmlSanitization)(nil)).Elem()
+
+type ProcessingOptionsHtmlSanitizationPtrInput interface {
+	pulumi.Input
+
+	ToProcessingOptionsHtmlSanitizationPtrOutput() ProcessingOptionsHtmlSanitizationPtrOutput
+	ToProcessingOptionsHtmlSanitizationPtrOutputWithContext(context.Context) ProcessingOptionsHtmlSanitizationPtrOutput
+}
+
+type processingOptionsHtmlSanitizationPtr string
+
+func ProcessingOptionsHtmlSanitizationPtr(v string) ProcessingOptionsHtmlSanitizationPtrInput {
+	return (*processingOptionsHtmlSanitizationPtr)(&v)
+}
+
+func (*processingOptionsHtmlSanitizationPtr) ElementType() reflect.Type {
+	return processingOptionsHtmlSanitizationPtrType
+}
+
+func (in *processingOptionsHtmlSanitizationPtr) ToProcessingOptionsHtmlSanitizationPtrOutput() ProcessingOptionsHtmlSanitizationPtrOutput {
+	return pulumi.ToOutput(in).(ProcessingOptionsHtmlSanitizationPtrOutput)
+}
+
+func (in *processingOptionsHtmlSanitizationPtr) ToProcessingOptionsHtmlSanitizationPtrOutputWithContext(ctx context.Context) ProcessingOptionsHtmlSanitizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ProcessingOptionsHtmlSanitizationPtrOutput)
+}
+
+func init() {
+	pulumi.RegisterOutputType(CompanySizeOutput{})
+	pulumi.RegisterOutputType(CompanySizePtrOutput{})
+	pulumi.RegisterOutputType(CompensationEntryTypeOutput{})
+	pulumi.RegisterOutputType(CompensationEntryTypePtrOutput{})
+	pulumi.RegisterOutputType(CompensationEntryUnitOutput{})
+	pulumi.RegisterOutputType(CompensationEntryUnitPtrOutput{})
+	pulumi.RegisterOutputType(JobDegreeTypesItemOutput{})
+	pulumi.RegisterOutputType(JobDegreeTypesItemPtrOutput{})
+	pulumi.RegisterOutputType(JobDegreeTypesItemArrayOutput{})
+	pulumi.RegisterOutputType(JobEmploymentTypesItemOutput{})
+	pulumi.RegisterOutputType(JobEmploymentTypesItemPtrOutput{})
+	pulumi.RegisterOutputType(JobEmploymentTypesItemArrayOutput{})
+	pulumi.RegisterOutputType(JobJobBenefitsItemOutput{})
+	pulumi.RegisterOutputType(JobJobBenefitsItemPtrOutput{})
+	pulumi.RegisterOutputType(JobJobBenefitsItemArrayOutput{})
+	pulumi.RegisterOutputType(JobJobLevelOutput{})
+	pulumi.RegisterOutputType(JobJobLevelPtrOutput{})
+	pulumi.RegisterOutputType(JobPostingRegionOutput{})
+	pulumi.RegisterOutputType(JobPostingRegionPtrOutput{})
+	pulumi.RegisterOutputType(ProcessingOptionsHtmlSanitizationOutput{})
+	pulumi.RegisterOutputType(ProcessingOptionsHtmlSanitizationPtrOutput{})
 }

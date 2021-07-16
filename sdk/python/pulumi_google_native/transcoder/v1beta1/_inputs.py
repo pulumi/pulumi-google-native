@@ -12,15 +12,15 @@ from ._enums import *
 __all__ = [
     'AdBreakArgs',
     'Aes128EncryptionArgs',
-    'AnimationArgs',
     'AnimationEndArgs',
     'AnimationFadeArgs',
     'AnimationStaticArgs',
-    'AudioArgs',
+    'AnimationArgs',
     'AudioAtomArgs',
-    'AudioChannelArgs',
     'AudioChannelInputArgs',
+    'AudioChannelArgs',
     'AudioStreamArgs',
+    'AudioArgs',
     'ColorArgs',
     'CropArgs',
     'DeblockArgs',
@@ -94,62 +94,6 @@ class Aes128EncryptionArgs:
     @key_uri.setter
     def key_uri(self, value: pulumi.Input[str]):
         pulumi.set(self, "key_uri", value)
-
-
-@pulumi.input_type
-class AnimationArgs:
-    def __init__(__self__, *,
-                 animation_end: Optional[pulumi.Input['AnimationEndArgs']] = None,
-                 animation_fade: Optional[pulumi.Input['AnimationFadeArgs']] = None,
-                 animation_static: Optional[pulumi.Input['AnimationStaticArgs']] = None):
-        """
-        Animation types.
-        :param pulumi.Input['AnimationEndArgs'] animation_end: End previous animation.
-        :param pulumi.Input['AnimationFadeArgs'] animation_fade: Display overlay object with fade animation.
-        :param pulumi.Input['AnimationStaticArgs'] animation_static: Display static overlay object.
-        """
-        if animation_end is not None:
-            pulumi.set(__self__, "animation_end", animation_end)
-        if animation_fade is not None:
-            pulumi.set(__self__, "animation_fade", animation_fade)
-        if animation_static is not None:
-            pulumi.set(__self__, "animation_static", animation_static)
-
-    @property
-    @pulumi.getter(name="animationEnd")
-    def animation_end(self) -> Optional[pulumi.Input['AnimationEndArgs']]:
-        """
-        End previous animation.
-        """
-        return pulumi.get(self, "animation_end")
-
-    @animation_end.setter
-    def animation_end(self, value: Optional[pulumi.Input['AnimationEndArgs']]):
-        pulumi.set(self, "animation_end", value)
-
-    @property
-    @pulumi.getter(name="animationFade")
-    def animation_fade(self) -> Optional[pulumi.Input['AnimationFadeArgs']]:
-        """
-        Display overlay object with fade animation.
-        """
-        return pulumi.get(self, "animation_fade")
-
-    @animation_fade.setter
-    def animation_fade(self, value: Optional[pulumi.Input['AnimationFadeArgs']]):
-        pulumi.set(self, "animation_fade", value)
-
-    @property
-    @pulumi.getter(name="animationStatic")
-    def animation_static(self) -> Optional[pulumi.Input['AnimationStaticArgs']]:
-        """
-        Display static overlay object.
-        """
-        return pulumi.get(self, "animation_static")
-
-    @animation_static.setter
-    def animation_static(self, value: Optional[pulumi.Input['AnimationStaticArgs']]):
-        pulumi.set(self, "animation_static", value)
 
 
 @pulumi.input_type
@@ -288,59 +232,59 @@ class AnimationStaticArgs:
 
 
 @pulumi.input_type
-class AudioArgs:
+class AnimationArgs:
     def __init__(__self__, *,
-                 high_boost: Optional[pulumi.Input[bool]] = None,
-                 low_boost: Optional[pulumi.Input[bool]] = None,
-                 lufs: Optional[pulumi.Input[float]] = None):
+                 animation_end: Optional[pulumi.Input['AnimationEndArgs']] = None,
+                 animation_fade: Optional[pulumi.Input['AnimationFadeArgs']] = None,
+                 animation_static: Optional[pulumi.Input['AnimationStaticArgs']] = None):
         """
-        Audio preprocessing configuration.
-        :param pulumi.Input[bool] high_boost: Enable boosting high frequency components. The default is `false`.
-        :param pulumi.Input[bool] low_boost: Enable boosting low frequency components. The default is `false`.
-        :param pulumi.Input[float] lufs: Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo * 0 disables normalization
+        Animation types.
+        :param pulumi.Input['AnimationEndArgs'] animation_end: End previous animation.
+        :param pulumi.Input['AnimationFadeArgs'] animation_fade: Display overlay object with fade animation.
+        :param pulumi.Input['AnimationStaticArgs'] animation_static: Display static overlay object.
         """
-        if high_boost is not None:
-            pulumi.set(__self__, "high_boost", high_boost)
-        if low_boost is not None:
-            pulumi.set(__self__, "low_boost", low_boost)
-        if lufs is not None:
-            pulumi.set(__self__, "lufs", lufs)
+        if animation_end is not None:
+            pulumi.set(__self__, "animation_end", animation_end)
+        if animation_fade is not None:
+            pulumi.set(__self__, "animation_fade", animation_fade)
+        if animation_static is not None:
+            pulumi.set(__self__, "animation_static", animation_static)
 
     @property
-    @pulumi.getter(name="highBoost")
-    def high_boost(self) -> Optional[pulumi.Input[bool]]:
+    @pulumi.getter(name="animationEnd")
+    def animation_end(self) -> Optional[pulumi.Input['AnimationEndArgs']]:
         """
-        Enable boosting high frequency components. The default is `false`.
+        End previous animation.
         """
-        return pulumi.get(self, "high_boost")
+        return pulumi.get(self, "animation_end")
 
-    @high_boost.setter
-    def high_boost(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "high_boost", value)
-
-    @property
-    @pulumi.getter(name="lowBoost")
-    def low_boost(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable boosting low frequency components. The default is `false`.
-        """
-        return pulumi.get(self, "low_boost")
-
-    @low_boost.setter
-    def low_boost(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "low_boost", value)
+    @animation_end.setter
+    def animation_end(self, value: Optional[pulumi.Input['AnimationEndArgs']]):
+        pulumi.set(self, "animation_end", value)
 
     @property
-    @pulumi.getter
-    def lufs(self) -> Optional[pulumi.Input[float]]:
+    @pulumi.getter(name="animationFade")
+    def animation_fade(self) -> Optional[pulumi.Input['AnimationFadeArgs']]:
         """
-        Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo * 0 disables normalization
+        Display overlay object with fade animation.
         """
-        return pulumi.get(self, "lufs")
+        return pulumi.get(self, "animation_fade")
 
-    @lufs.setter
-    def lufs(self, value: Optional[pulumi.Input[float]]):
-        pulumi.set(self, "lufs", value)
+    @animation_fade.setter
+    def animation_fade(self, value: Optional[pulumi.Input['AnimationFadeArgs']]):
+        pulumi.set(self, "animation_fade", value)
+
+    @property
+    @pulumi.getter(name="animationStatic")
+    def animation_static(self) -> Optional[pulumi.Input['AnimationStaticArgs']]:
+        """
+        Display static overlay object.
+        """
+        return pulumi.get(self, "animation_static")
+
+    @animation_static.setter
+    def animation_static(self, value: Optional[pulumi.Input['AnimationStaticArgs']]):
+        pulumi.set(self, "animation_static", value)
 
 
 @pulumi.input_type
@@ -380,30 +324,6 @@ class AudioAtomArgs:
     @channels.setter
     def channels(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AudioChannelArgs']]]]):
         pulumi.set(self, "channels", value)
-
-
-@pulumi.input_type
-class AudioChannelArgs:
-    def __init__(__self__, *,
-                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input['AudioChannelInputArgs']]]] = None):
-        """
-        The audio channel.
-        :param pulumi.Input[Sequence[pulumi.Input['AudioChannelInputArgs']]] inputs: List of `Job.inputs` for this audio channel.
-        """
-        if inputs is not None:
-            pulumi.set(__self__, "inputs", inputs)
-
-    @property
-    @pulumi.getter
-    def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AudioChannelInputArgs']]]]:
-        """
-        List of `Job.inputs` for this audio channel.
-        """
-        return pulumi.get(self, "inputs")
-
-    @inputs.setter
-    def inputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AudioChannelInputArgs']]]]):
-        pulumi.set(self, "inputs", value)
 
 
 @pulumi.input_type
@@ -473,6 +393,30 @@ class AudioChannelInputArgs:
     @gain_db.setter
     def gain_db(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "gain_db", value)
+
+
+@pulumi.input_type
+class AudioChannelArgs:
+    def __init__(__self__, *,
+                 inputs: Optional[pulumi.Input[Sequence[pulumi.Input['AudioChannelInputArgs']]]] = None):
+        """
+        The audio channel.
+        :param pulumi.Input[Sequence[pulumi.Input['AudioChannelInputArgs']]] inputs: List of `Job.inputs` for this audio channel.
+        """
+        if inputs is not None:
+            pulumi.set(__self__, "inputs", inputs)
+
+    @property
+    @pulumi.getter
+    def inputs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AudioChannelInputArgs']]]]:
+        """
+        List of `Job.inputs` for this audio channel.
+        """
+        return pulumi.get(self, "inputs")
+
+    @inputs.setter
+    def inputs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AudioChannelInputArgs']]]]):
+        pulumi.set(self, "inputs", value)
 
 
 @pulumi.input_type
@@ -576,6 +520,62 @@ class AudioStreamArgs:
     @sample_rate_hertz.setter
     def sample_rate_hertz(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "sample_rate_hertz", value)
+
+
+@pulumi.input_type
+class AudioArgs:
+    def __init__(__self__, *,
+                 high_boost: Optional[pulumi.Input[bool]] = None,
+                 low_boost: Optional[pulumi.Input[bool]] = None,
+                 lufs: Optional[pulumi.Input[float]] = None):
+        """
+        Audio preprocessing configuration.
+        :param pulumi.Input[bool] high_boost: Enable boosting high frequency components. The default is `false`.
+        :param pulumi.Input[bool] low_boost: Enable boosting low frequency components. The default is `false`.
+        :param pulumi.Input[float] lufs: Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo * 0 disables normalization
+        """
+        if high_boost is not None:
+            pulumi.set(__self__, "high_boost", high_boost)
+        if low_boost is not None:
+            pulumi.set(__self__, "low_boost", low_boost)
+        if lufs is not None:
+            pulumi.set(__self__, "lufs", lufs)
+
+    @property
+    @pulumi.getter(name="highBoost")
+    def high_boost(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable boosting high frequency components. The default is `false`.
+        """
+        return pulumi.get(self, "high_boost")
+
+    @high_boost.setter
+    def high_boost(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "high_boost", value)
+
+    @property
+    @pulumi.getter(name="lowBoost")
+    def low_boost(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable boosting low frequency components. The default is `false`.
+        """
+        return pulumi.get(self, "low_boost")
+
+    @low_boost.setter
+    def low_boost(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "low_boost", value)
+
+    @property
+    @pulumi.getter
+    def lufs(self) -> Optional[pulumi.Input[float]]:
+        """
+        Specify audio loudness normalization in loudness units relative to full scale (LUFS). Enter a value between -24 and 0 (the default), where: * -24 is the Advanced Television Systems Committee (ATSC A/85) standard * -23 is the EU R128 broadcast standard * -19 is the prior standard for online mono audio * -18 is the ReplayGain standard * -16 is the prior standard for stereo audio * -14 is the new online audio standard recommended by Spotify, as well as Amazon Echo * 0 disables normalization
+        """
+        return pulumi.get(self, "lufs")
+
+    @lufs.setter
+    def lufs(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "lufs", value)
 
 
 @pulumi.input_type
