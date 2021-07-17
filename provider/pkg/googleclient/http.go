@@ -1,6 +1,6 @@
 // Copyright 2016-2021, Pulumi Corporation.
 
-package provider
+package googleclient
 
 import (
 	"bytes"
@@ -26,38 +26,36 @@ import (
 	"time"
 )
 
-const (
-	requestFormat   = `HTTP Request Begin %[1]s %[2]s ===================================================
-%[3]s
-===================================================== HTTP Request End %[1]s %[2]s
-`
-	responseFormat = `HTTP Response Begin %[1]s [%[2]s ===================================================
-%[3]s
-===================================================== HTTP Response End %[1]s %[2]s
-`
-)
-
-// prettyPrintJsonLines iterates through a []byte line-by-line,
-// transforming any lines that are complete json into pretty-printed json.
-func prettyPrintJsonLines(b []byte) string {
-	parts := strings.Split(string(b), "\n")
-	for i, p := range parts {
-		if b := []byte(p); json.Valid(b) {
-			var out bytes.Buffer
-			json.Indent(&out, b, "", " ")
-			parts[i] = out.String()
-		}
-	}
-	return strings.Join(parts, "\n")
+type GoogleClient struct {
+	config        Config
+	http          *http.Client
+	credValidator CredentialValidator
+	userAgent     string
 }
 
+type Config struct {
+	Credentials                        string
+	AccessToken                        string
+	ImpersonateServiceAccount          string
+	ImpersonateServiceAccountDelegates []string
+	Scopes                             []string
+	PulumiVersion                      string
+	ProviderVersion                    string
+	PartnerName                        string
+	AppendUserAgent                    string
+}
 
-func newGoogleHttpClient(ctx context.Context, config httpClientConfig) (*googleHttpClient, error) {
-	client, err := newClient(ctx, config)
-	if err != nil {
-		return nil, err
-	}
+type CredentialValidator interface {
+	IsValid() (bool, error)
+}
 
+type credentialValidatorFunc func() (bool, error)
+
+func (c credentialValidatorFunc) IsValid() (bool, error) {
+	return c()
+}
+
+func New(ctx context.Context, config Config) (*GoogleClient, error) {
 	partnerString := ""
 	if config.PartnerName != "" {
 		partnerString = fmt.Sprintf("GPN:%s; ", config.PartnerName)
@@ -70,28 +68,17 @@ func newGoogleHttpClient(ctx context.Context, config httpClientConfig) (*googleH
 		userAgent = fmt.Sprintf("%s %s", userAgent, config.AppendUserAgent)
 	}
 
-	return &googleHttpClient{http: client, userAgent: userAgent}, nil
-}
+	googleClient := &GoogleClient{config: config, userAgent: userAgent}
+	err := googleClient.refreshClientCredentials(ctx)
+	if err != nil {
+		return nil, err
+	}
 
-type httpClientConfig struct {
-	Credentials                        string
-	AccessToken                        string
-	ImpersonateServiceAccount          string
-	ImpersonateServiceAccountDelegates []string
-	Scopes                             []string
-	PulumiVersion                      string
-	ProviderVersion                    string
-	PartnerName                        string
-	AppendUserAgent                    string
-}
-
-type googleHttpClient struct {
-	http *http.Client
-	userAgent string
+	return googleClient, nil
 }
 
 // TODO: This is taken from the TF provider (cut down to a minimal viable thing). We need to make it "good".
-func (c *googleHttpClient) sendRequestWithTimeout(method, rawurl string, body map[string]interface{}, timeout time.Duration) (map[string]interface{}, error) {
+func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string]interface{}, timeout time.Duration) (map[string]interface{}, error) {
 	reqHeaders := make(http.Header)
 	reqHeaders.Set("User-Agent", c.userAgent)
 	reqHeaders.Set("Content-Type", "application/json")
@@ -121,6 +108,11 @@ func (c *googleHttpClient) sendRequestWithTimeout(method, rawurl string, body ma
 
 	debugBody, _ := httputil.DumpRequest(req, true)
 	logging.V(9).Infof(requestFormat, req.Method, req.URL, prettyPrintJsonLines(debugBody))
+
+	if err := c.refreshClientCredentials(context.Background()); err != nil {
+		return nil, err
+	}
+
 	res, err = c.http.Do(req)
 	if err != nil {
 		return nil, err
@@ -157,7 +149,7 @@ func (c *googleHttpClient) sendRequestWithTimeout(method, rawurl string, body ma
 // multipartBoundary is a random string used to separate parts of multi-part request bodies.
 const multipartBoundary = "boundary-fa78ad331d"
 
-func (c *googleHttpClient) sendUploadWithTimeout(method, rawurl string, metadata map[string]interface{}, binary []byte, timeout time.Duration) (map[string]interface{}, error) {
+func (c *GoogleClient) UploadWithTimeout(method, rawurl string, metadata map[string]interface{}, binary []byte, timeout time.Duration) (map[string]interface{}, error) {
 	reqHeaders := make(http.Header)
 	reqHeaders.Set("User-Agent", c.userAgent)
 	reqHeaders.Set("Content-Type", fmt.Sprintf("multipart/related; boundary=%s", multipartBoundary))
@@ -195,6 +187,11 @@ func (c *googleHttpClient) sendUploadWithTimeout(method, rawurl string, metadata
 
 	debugBody, _ := httputil.DumpRequest(req, true)
 	logging.V(9).Infof(requestFormat, req.Method, req.URL, prettyPrintJsonLines(debugBody))
+
+	if err := c.refreshClientCredentials(context.Background()); err != nil {
+		return nil, err
+	}
+
 	res, err := c.http.Do(req)
 	if err != nil {
 		return nil, err
@@ -237,20 +234,39 @@ var defaultClientScopes = []string{
 	"https://www.googleapis.com/auth/userinfo.email",
 }
 
-func newClient(ctx context.Context, config httpClientConfig) (*http.Client, error) {
-	if len(config.Scopes) == 0 {
-		config.Scopes = defaultClientScopes
+func (c *GoogleClient) refreshClientCredentials(ctx context.Context) error {
+	if c.credValidator != nil {
+		valid, err := c.credValidator.IsValid()
+		if err != nil {
+			return err
+		}
+		if valid {
+			return nil
+		}
 	}
 
-	credentials, err := getCredentials(ctx, config)
-	if err != nil {
-		return nil, errors.Wrapf(err, "getting credentials")
+	if len(c.config.Scopes) == 0 {
+		c.config.Scopes = defaultClientScopes
 	}
+
+	credentials, err := getCredentials(ctx, c.config)
+	if err != nil {
+		return errors.Wrapf(err, "getting credentials")
+	}
+
+	ts := oauth2.ReuseTokenSource(nil, credentials.TokenSource)
+	c.credValidator = credentialValidatorFunc(func() (bool, error) {
+		t, err := ts.Token()
+		if err != nil {
+			return false, err
+		}
+		return t.Valid(), nil
+	})
 
 	cleanCtx := context.WithValue(ctx, oauth2.HTTPClient, cleanhttp.DefaultClient())
 
 	// 1. OAUTH2 TRANSPORT/CLIENT - sets up proper auth headers
-	client := oauth2.NewClient(cleanCtx, credentials.TokenSource)
+	client := oauth2.NewClient(cleanCtx, ts)
 
 	// 3. Retry Transport - retries common temporary errors
 	// Keep order for wrapping logging so we log each retried request as well.
@@ -265,10 +281,11 @@ func newClient(ctx context.Context, config httpClientConfig) (*http.Client, erro
 	// This timeout is a timeout per HTTP request, not per logical operation.
 	client.Timeout = 30 * time.Second
 
-	return client, nil
+	c.http = client
+	return nil
 }
 
-func getCredentials(ctx context.Context, c httpClientConfig) (*google.Credentials, error) {
+func getCredentials(ctx context.Context, c Config) (*google.Credentials, error) {
 	if c.AccessToken != "" {
 		contents, _, err := pathOrContents(c.AccessToken)
 		if err != nil {
@@ -277,7 +294,11 @@ func getCredentials(ctx context.Context, c httpClientConfig) (*google.Credential
 		token := &oauth2.Token{AccessToken: contents}
 
 		if c.ImpersonateServiceAccount != "" {
-			opts := []option.ClientOption{option.WithTokenSource(oauth2.StaticTokenSource(token)), option.ImpersonateCredentials(c.ImpersonateServiceAccount, c.ImpersonateServiceAccountDelegates...), option.WithScopes(c.Scopes...)}
+			opts := []option.ClientOption{
+				option.WithTokenSource(oauth2.StaticTokenSource(token)),
+				option.ImpersonateCredentials(c.ImpersonateServiceAccount, c.ImpersonateServiceAccountDelegates...),
+				option.WithScopes(c.Scopes...),
+			}
 			creds, err := transport.Creds(ctx, opts...)
 			if err != nil {
 				return nil, err
@@ -391,3 +412,28 @@ func pathOrContents(poc string) (string, bool, error) {
 
 	return poc, false, nil
 }
+
+// prettyPrintJsonLines iterates through a []byte line-by-line,
+// transforming any lines that are complete json into pretty-printed json.
+func prettyPrintJsonLines(b []byte) string {
+	parts := strings.Split(string(b), "\n")
+	for i, p := range parts {
+		if b := []byte(p); json.Valid(b) {
+			var out bytes.Buffer
+			json.Indent(&out, b, "", " ")
+			parts[i] = out.String()
+		}
+	}
+	return strings.Join(parts, "\n")
+}
+
+const (
+	requestFormat = `HTTP Request Begin %[1]s %[2]s ===================================================
+%[3]s
+===================================================== HTTP Request End %[1]s %[2]s
+`
+	responseFormat = `HTTP Response Begin %[1]s [%[2]s ===================================================
+%[3]s
+===================================================== HTTP Response End %[1]s %[2]s
+`
+)
