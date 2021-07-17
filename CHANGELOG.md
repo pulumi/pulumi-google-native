@@ -4,6 +4,7 @@ CHANGELOG
 ## HEAD (Unreleased)
 
 - Update dependencies to pulumi/pulumi 3.7.0
+- Refresh credentials for client if backing credentials are expired. [#156](https://github.com/pulumi/pulumi-google-native/pull/156)
 
 ---
 
