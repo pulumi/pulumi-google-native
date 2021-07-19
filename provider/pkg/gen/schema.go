@@ -34,6 +34,10 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 		Repository:  "https://github.com/pulumi/pulumi-google-native",
 		Config:      schema.ConfigSpec{
 			Variables: map[string]schema.PropertySpec{
+				"project": {
+					TypeSpec: schema.TypeSpec{Type: "string"},
+					Description: "A Google Cloud project name.",
+				},
 				// Google Partner Name for User-Agent.
 				"partnerName": {
 					TypeSpec:    schema.TypeSpec{Type: "string"},
@@ -55,6 +59,18 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 				Type:        "object",
 			},
 			InputProperties: map[string]schema.PropertySpec{
+				"project": {
+					TypeSpec: schema.TypeSpec{Type: "string"},
+					DefaultInfo: &schema.DefaultSpec{
+						Environment: []string{
+							"GOOGLE_PROJECT",
+							"GOOGLE_CLOUD_PROJECT",
+							"GCLOUD_PROJECT",
+							"CLOUDSDK_CORE_PROJECT",
+						},
+					},
+					Description: "A Google Cloud project name.",
+				},
 				// Google Partner Name for User-Agent.
 				"partnerName": {
 					TypeSpec: schema.TypeSpec{Type: "string"},
@@ -453,6 +469,9 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		}
 	}
 
+	// Apply auto-project population.
+	requiredInputProperties.Delete("project")
+
 	resourceSpec := schema.ResourceSpec{
 		ObjectTypeSpec: schema.ObjectTypeSpec{
 			Description: description,
@@ -541,6 +560,9 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 		properties = responseBag.specs
 		requiredProperties = responseBag.requiredSpecs
 	}
+
+	// Apply auto-project population.
+	requiredInputProperties.Delete("project")
 
 	functionSpec := schema.FunctionSpec{
 		Description: dd.getMethod.Description,
