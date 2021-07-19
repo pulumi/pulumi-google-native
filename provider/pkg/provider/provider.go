@@ -203,9 +203,21 @@ func (p *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*
 		return nil, errors.Errorf("resource %q not found", resourceKey)
 	}
 
-	key := resource.PropertyKey("name")
-	if res.AutoNamePattern != "" && !news.HasValue(key) {
-		news[key] = getDefaultName(urn, res.AutoNamePattern, olds, news)
+	// Auto-naming.
+	nameKey := resource.PropertyKey("name")
+	if res.AutoNamePattern != "" && !news.HasValue(nameKey) {
+		news[nameKey] = getDefaultName(urn, res.AutoNamePattern, olds, news)
+	}
+
+	// Apply property patterns.
+	for name, prop := range res.CreateProperties {
+		key := resource.PropertyKey(name)
+		if prop.SdkName != "" {
+			key = resource.PropertyKey(prop.SdkName)
+		}
+		if value, ok := applyPropertyPattern(key, prop, news); ok {
+			news[key] = *value
+		}
 	}
 
 	resInputs, err := plugin.MarshalProperties(news, plugin.MarshalOptions{

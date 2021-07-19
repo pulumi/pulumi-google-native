@@ -135,3 +135,36 @@ func getDefaultName(urn resource.URN, pattern string,
 
 	return resource.NewStringProperty(result)
 }
+
+// applyPropertyPattern composes a pattern-based string value from the given property map, if the property
+// has a pattern attached.
+func applyPropertyPattern(name resource.PropertyKey, prop resources.CloudAPIProperty,
+	news resource.PropertyMap) (*resource.PropertyValue, bool) {
+	if prop.Pattern == "" {
+		return nil, false
+	}
+
+	// Find the value from the user and check that it's a simple values without a path pattern.
+	userValue, ok := news[name]
+	if !ok || !userValue.HasValue() || !userValue.IsString() || strings.Contains(userValue.StringValue(), "/") {
+		return nil, false
+	}
+
+	// Build the pattern-based value from the template and parameters.
+	result := prop.Pattern
+	for key, value := range news {
+		if !value.HasValue() || !value.IsString() {
+			continue
+		}
+		part := fmt.Sprintf("{%s}", string(key))
+		result = strings.Replace(result, part, value.StringValue(), 1)
+	}
+
+	if strings.Contains(result, "{") {
+		// Not all properties resolved, so the result is invalid.
+		return nil, false
+	}
+
+	newValue := resource.NewStringProperty(result)
+	return &newValue, true
+}

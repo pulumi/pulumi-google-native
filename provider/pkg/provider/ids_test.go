@@ -90,7 +90,7 @@ func TestGetDefaultName_Generated(t *testing.T) {
 	actual := getDefaultName(urn, "projects/{project}/locations/{location}/things/{name}", olds, news)
 	expectedPrefix := "projects/p01/locations/west/things/myName-"
 	assert.True(t, strings.HasPrefix(actual.StringValue(), expectedPrefix))
-	assert.Equal(t, len(expectedPrefix) + 7, len(actual.StringValue()))
+	assert.Equal(t, len(expectedPrefix)+7, len(actual.StringValue()))
 }
 
 func TestGetDefaultName_OldApplied(t *testing.T) {
@@ -106,4 +106,53 @@ func TestGetDefaultName_OldApplied(t *testing.T) {
 	})
 	actual := getDefaultName(urn, "projects/{project}/locations/{location}/things/{name}", olds, news)
 	assert.Equal(t, fixedName, actual.StringValue())
+}
+
+func TestApplyPropertyPattern_Applied(t *testing.T) {
+	name := resource.PropertyKey("machineType")
+	prop := resources.CloudAPIProperty{Pattern: "zones/{zone}/machineTypes/{machineType}"}
+	news := resource.NewPropertyMapFromMap(map[string]interface{}{
+		"zone":        "uswest-1a",
+		"machineType": "f1-micro",
+		"ignoreMe":    1.2,
+	})
+	actual, ok := applyPropertyPattern(name, prop, news)
+	assert.True(t, ok)
+	assert.Equal(t, "zones/uswest-1a/machineTypes/f1-micro", actual.StringValue())
+}
+
+func TestApplyPropertyPattern_UserValue(t *testing.T) {
+	name := resource.PropertyKey("machineType")
+	prop := resources.CloudAPIProperty{Pattern: "zones/{zone}/machineTypes/{machineType}"}
+	news := resource.NewPropertyMapFromMap(map[string]interface{}{
+		"zone":        "uswest-1a", // this is ignored
+		"machineType": "zones/uswest-2a/machineTypes/f1-micro",
+	})
+	actual, ok := applyPropertyPattern(name, prop, news)
+	assert.False(t, ok)
+	assert.Nil(t, actual)
+}
+
+func TestApplyPropertyPattern_UnknownValue(t *testing.T) {
+	name := resource.PropertyKey("machineType")
+	prop := resources.CloudAPIProperty{Pattern: "zones/{zone}/machineTypes/{machineType}"}
+	news := resource.NewPropertyMapFromMap(map[string]interface{}{
+		"zone":        "uswest-1a",
+		"machineType": resource.NewOutputProperty(resource.Output{Element: resource.NewStringProperty("")}),
+	})
+	actual, ok := applyPropertyPattern(name, prop, news)
+	assert.False(t, ok)
+	assert.Nil(t, actual)
+}
+
+func TestApplyPropertyPattern_UnknownParameter(t *testing.T) {
+	name := resource.PropertyKey("machineType")
+	prop := resources.CloudAPIProperty{Pattern: "zones/{zone}/machineTypes/{machineType}"}
+	news := resource.NewPropertyMapFromMap(map[string]interface{}{
+		"zone":        resource.NewOutputProperty(resource.Output{Element: resource.NewStringProperty("")}),
+		"machineType": "f1-micro",
+	})
+	actual, ok := applyPropertyPattern(name, prop, news)
+	assert.False(t, ok)
+	assert.Nil(t, actual)
 }
