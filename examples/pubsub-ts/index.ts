@@ -5,7 +5,6 @@ import * as google from "@pulumi/google-native";
 import * as random from "@pulumi/random"
 
 const config = new pulumi.Config("google-native");
-const project = config.require("project");
 const region = config.require("region");
 
 const randomString = new random.RandomString("name", {
@@ -16,20 +15,17 @@ const randomString = new random.RandomString("name", {
 });
 
 const topic = new google.pubsub.v1.Topic("topic", {
-    project,
     topicId: randomString.result,
     name: randomString.result,
 });
 
 const sub = new google.pubsub.v1.Subscription("sub", {
-    project,
     topic: topic.name,
     subscriptionId: randomString.result,
     name: randomString.result,
 });
 
 const schema = new google.pubsub.v1.Schema("schema", {
-    project,
     schemaId: randomString.result,
     definition: JSON.stringify({
         type: "record",
@@ -57,6 +53,6 @@ const schema = new google.pubsub.v1.Schema("schema", {
 export const topicReadName = topic.name.apply(async name => {
     const parts = name.split('/');
     const topicId = parts[parts.length-1];
-    const resp = await google.pubsub.v1.getTopic({ project, topicId });
+    const resp = await google.pubsub.v1.getTopic({ topicId });
     return resp.name;
 });
