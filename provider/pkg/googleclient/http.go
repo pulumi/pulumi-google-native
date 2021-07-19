@@ -7,16 +7,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/golang/glog"
-	"github.com/hashicorp/go-cleanhttp"
-	"github.com/mitchellh/go-homedir"
-	"github.com/pkg/errors"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/logging"
-	"golang.org/x/oauth2"
-	"golang.org/x/oauth2/google"
-	"google.golang.org/api/googleapi"
-	"google.golang.org/api/option"
-	"google.golang.org/api/transport"
 	"io/ioutil"
 	"net/http"
 	"net/http/httputil"
@@ -24,12 +14,20 @@ import (
 	"os"
 	"strings"
 	"time"
+
+	"github.com/hashicorp/go-cleanhttp"
+	"github.com/mitchellh/go-homedir"
+	"github.com/pkg/errors"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/logging"
+	"golang.org/x/oauth2"
+	"google.golang.org/api/googleapi"
 )
 
 type GoogleClient struct {
 	config        Config
 	http          *http.Client
-	credValidator CredentialValidator
+	credRetriever credentialRetriever
+	credValidator credentialValidator
 	userAgent     string
 }
 
@@ -45,16 +43,6 @@ type Config struct {
 	AppendUserAgent                    string
 }
 
-type CredentialValidator interface {
-	IsValid() (bool, error)
-}
-
-type credentialValidatorFunc func() (bool, error)
-
-func (c credentialValidatorFunc) IsValid() (bool, error) {
-	return c()
-}
-
 func New(ctx context.Context, config Config) (*GoogleClient, error) {
 	partnerString := ""
 	if config.PartnerName != "" {
@@ -68,7 +56,7 @@ func New(ctx context.Context, config Config) (*GoogleClient, error) {
 		userAgent = fmt.Sprintf("%s %s", userAgent, config.AppendUserAgent)
 	}
 
-	googleClient := &GoogleClient{config: config, userAgent: userAgent}
+	googleClient := &GoogleClient{config: config, userAgent: userAgent, credRetriever: defaultCredentialRetriever()}
 	err := googleClient.refreshClientCredentials(ctx)
 	if err != nil {
 		return nil, err
@@ -96,6 +84,10 @@ func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string
 		}
 	}
 
+	if err := c.refreshClientCredentials(context.Background()); err != nil {
+		return nil, err
+	}
+
 	u, err := addQueryParams(rawurl, map[string]string{"alt": "json"})
 	if err != nil {
 		return nil, err
@@ -108,10 +100,6 @@ func (c *GoogleClient) RequestWithTimeout(method, rawurl string, body map[string
 
 	debugBody, _ := httputil.DumpRequest(req, true)
 	logging.V(9).Infof(requestFormat, req.Method, req.URL, prettyPrintJsonLines(debugBody))
-
-	if err := c.refreshClientCredentials(context.Background()); err != nil {
-		return nil, err
-	}
 
 	res, err = c.http.Do(req)
 	if err != nil {
@@ -175,6 +163,10 @@ func (c *GoogleClient) UploadWithTimeout(method, rawurl string, metadata map[str
 	buf.Write(binary)
 	buf.WriteString(fmt.Sprintf("\r\n--%s--\r\n", multipartBoundary))
 
+	if err := c.refreshClientCredentials(context.Background()); err != nil {
+		return nil, err
+	}
+
 	u, err := addQueryParams(rawurl, map[string]string{"alt": "json", "uploadType": "multipart"})
 	if err != nil {
 		return nil, err
@@ -187,10 +179,6 @@ func (c *GoogleClient) UploadWithTimeout(method, rawurl string, metadata map[str
 
 	debugBody, _ := httputil.DumpRequest(req, true)
 	logging.V(9).Infof(requestFormat, req.Method, req.URL, prettyPrintJsonLines(debugBody))
-
-	if err := c.refreshClientCredentials(context.Background()); err != nil {
-		return nil, err
-	}
 
 	res, err := c.http.Do(req)
 	if err != nil {
@@ -236,7 +224,7 @@ var defaultClientScopes = []string{
 
 func (c *GoogleClient) refreshClientCredentials(ctx context.Context) error {
 	if c.credValidator != nil {
-		valid, err := c.credValidator.IsValid()
+		valid, err := c.credValidator.isValid()
 		if err != nil {
 			return err
 		}
@@ -249,12 +237,12 @@ func (c *GoogleClient) refreshClientCredentials(ctx context.Context) error {
 		c.config.Scopes = defaultClientScopes
 	}
 
-	credentials, err := getCredentials(ctx, c.config)
+	credentials, err := c.credRetriever.getCredentials(ctx, c.config)
 	if err != nil {
 		return errors.Wrapf(err, "getting credentials")
 	}
 
-	ts := oauth2.ReuseTokenSource(nil, credentials.TokenSource)
+	ts := newReuseValidatedTokenSource(nil, credentials.TokenSource)
 	c.credValidator = credentialValidatorFunc(func() (bool, error) {
 		t, err := ts.Token()
 		if err != nil {
@@ -285,85 +273,6 @@ func (c *GoogleClient) refreshClientCredentials(ctx context.Context) error {
 	return nil
 }
 
-func getCredentials(ctx context.Context, c Config) (*google.Credentials, error) {
-	if c.AccessToken != "" {
-		contents, _, err := pathOrContents(c.AccessToken)
-		if err != nil {
-			return nil, errors.Wrapf(err, "Error loading access token")
-		}
-		token := &oauth2.Token{AccessToken: contents}
-
-		if c.ImpersonateServiceAccount != "" {
-			opts := []option.ClientOption{
-				option.WithTokenSource(oauth2.StaticTokenSource(token)),
-				option.ImpersonateCredentials(c.ImpersonateServiceAccount, c.ImpersonateServiceAccountDelegates...),
-				option.WithScopes(c.Scopes...),
-			}
-			creds, err := transport.Creds(ctx, opts...)
-			if err != nil {
-				return nil, err
-			}
-			return creds, nil
-		}
-
-		glog.V(9).Info("Authenticating using configured Google JSON Access Token...")
-		glog.V(9).Infof("  -- Scopes: %s", c.Scopes)
-
-		return &google.Credentials{
-			TokenSource: staticTokenSource{oauth2.StaticTokenSource(token)},
-		}, nil
-	}
-
-	if c.Credentials != "" {
-		contents, _, err := pathOrContents(c.Credentials)
-		if err != nil {
-			return nil, errors.Wrapf(err, "error loading credentials")
-		}
-		if c.ImpersonateServiceAccount != "" {
-			opts := []option.ClientOption{option.WithCredentialsJSON([]byte(contents)), option.ImpersonateCredentials(c.ImpersonateServiceAccount, c.ImpersonateServiceAccountDelegates...), option.WithScopes(c.Scopes...)}
-			creds, err := transport.Creds(ctx, opts...)
-			if err != nil {
-				return nil, err
-			}
-
-			glog.V(9).Info("Authenticating using configured Google JSON Credentials and Impersonate Service Account...")
-			glog.V(9).Infof("   -- Scopes: %s", c.Scopes)
-			return creds, nil
-		}
-		creds, err := google.CredentialsFromJSON(ctx, []byte(contents), c.Scopes...)
-		if err != nil {
-			return nil, errors.Wrapf(err, "unable to parse credentials from %q", contents)
-		}
-
-		glog.V(9).Info("Authenticating using configured Google JSON Credentials...")
-		glog.V(9).Infof("   -- Scopes: %s", c.Scopes)
-		return creds, nil
-	}
-
-	if c.ImpersonateServiceAccount != "" {
-		opts := option.ImpersonateCredentials(c.ImpersonateServiceAccount, c.ImpersonateServiceAccountDelegates...)
-		creds, err := transport.Creds(ctx, opts, option.WithScopes(c.Scopes...))
-		if err != nil {
-			return nil, err
-		}
-
-		glog.V(9).Info("Authenticating using configured Impersonate Service Account...")
-		glog.V(9).Infof("   -- Scopes: %s", c.Scopes)
-		return creds, nil
-	}
-
-	glog.V(9).Info("Authenticating using DefaultClient...")
-	glog.V(9).Infof("   -- Scopes: %s", c.Scopes)
-
-	defaultTS, err := google.DefaultTokenSource(context.Background(), c.Scopes...)
-	if err != nil {
-		return nil, fmt.Errorf("Attempted to load application default credentials since neither `credentials` nor `access_token` was set in the provider block.  No credentials loaded. To use your gcloud credentials, run 'gcloud auth application-default login'.  Original error: %w", err)
-	}
-	return &google.Credentials{
-		TokenSource: defaultTS,
-	}, err
-}
-
 func addQueryParams(rawurl string, params map[string]string) (string, error) {
 	u, err := url.Parse(rawurl)
 	if err != nil {
@@ -375,11 +284,6 @@ func addQueryParams(rawurl string, params map[string]string) (string, error) {
 	}
 	u.RawQuery = q.Encode()
 	return u.String(), nil
-}
-
-// staticTokenSource is used to be able to identify static token sources without reflection.
-type staticTokenSource struct {
-	oauth2.TokenSource
 }
 
 // If the argument is a path, pathOrContents loads it and returns the contents,
